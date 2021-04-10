@@ -7,10 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class AccountStatementTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class AccountStatementTestCase(CompanyTestMixin, ModuleTestCase):
     'Test AccountStatement module'
     module = 'account_statement'
 
