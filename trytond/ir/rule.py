@@ -191,9 +191,7 @@ class Rule(ModelSQL, ModelView):
         user_id = transaction.user
         # root user above constraint
         if user_id == 0:
-            user_id = transaction.context.get('user')
-            if not user_id:
-                return {}, {}
+            return {}, {}
         cursor.execute(*rule_table.join(rule_group,
                 condition=rule_group.id == rule_table.rule_group
                 ).join(model,
@@ -256,11 +254,9 @@ class Rule(ModelSQL, ModelView):
     def domain_get(cls, model_name, mode='read'):
         transaction = Transaction()
         # root user above constraint
-        if transaction.user == 0:
-            if not transaction.context.get('user'):
-                return
-            with transaction.set_user(Transaction().context['user']):
-                return cls.domain_get(model_name, mode=mode)
+        if ((transaction.user == 0)
+                or not transaction.context.get('_check_access')):
+            return []
 
         assert mode in cls.modes
 

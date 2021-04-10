@@ -681,7 +681,8 @@ class ModelView(Model):
             link_name = element.attrib['name']
             action_id = ModelData.get_id(*link_name.split('.'))
             try:
-                action, = ActionWindow.search([('id', '=', action_id)])
+                with Transaction().set_context(_check_access=True):
+                    action, = ActionWindow.search([('id', '=', action_id)])
             except ValueError:
                 action = None
             if (not action

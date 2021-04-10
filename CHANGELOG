@@ -1,3 +1,4 @@
+* Check rule only if _check_access is set
 * Add statistics to Cache
 * Add support for avatars
 * Add status command

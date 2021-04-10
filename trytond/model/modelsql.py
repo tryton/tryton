@@ -1456,7 +1456,8 @@ class ModelSQL(ModelStorage):
                 return And((convert(d) for d in (
                             domain[1:] if domain[0] == 'AND' else domain)))
 
-        expression = convert(domain)
+        with Transaction().set_context(_check_access=False):
+            expression = convert(domain)
 
         if cls._history and transaction.context.get('_datetime'):
             table, _ = tables[None]
