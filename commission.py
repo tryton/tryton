@@ -29,6 +29,10 @@ class Agent(ModelSQL, ModelView):
     'Commission Agent'
     __name__ = 'commission.agent'
     party = fields.Many2One('party.party', "Party", required=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'],
         help="The party for whom the commission is calculated.")
     type_ = fields.Selection([
             ('agent', 'Agent Of'),
@@ -161,9 +165,13 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
         depends=['start_date'],
         help="The last date that the agent will be considered for selection.")
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     company = fields.Function(fields.Many2One('company.company', "Company"),
-        'on_change_with_company')
+        'on_change_with_company', searcher='search_company')
     employee = fields.Many2One(
         'company.employee', "Employee", select=True,
         domain=[
@@ -181,6 +189,10 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     def on_change_with_company(self, name=None):
         if self.agent:
             return self.agent.company.id
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('agent.' + clause[0],) + tuple(clause[1:])]
 
     def match(self, pattern):
         pool = Pool()
