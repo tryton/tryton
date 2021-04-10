@@ -9,10 +9,11 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 
 
-class StockSplitTestCase(ModuleTestCase):
+class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Stock Lot module'
     module = 'stock_split'
 
