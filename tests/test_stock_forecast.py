@@ -10,10 +10,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import (
-    create_company, set_company, CompanyMultiValueTestMixin)
+    create_company, set_company, CompanyTestMixin)
 
 
-class StockForecastTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
     'Test StockForecast module'
     module = 'stock_forecast'
 
