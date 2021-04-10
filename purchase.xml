@@ -429,16 +429,16 @@ this repository contains the full copyright notices and license terms. -->
             action="act_product_supplier_form"
             id="menu_product_supplier"/>
 
-        <record model="ir.rule.group" id="rule_group_product_supplier">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_product_supplier_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_product_supplier">
+        <record model="ir.rule" id="rule_product_supplier_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_product_supplier"/>
+            <field name="rule_group" ref="rule_group_product_supplier_companies"/>
         </record>
 
         <record model="ir.ui.view" id="product_supplier_price_view_form">
@@ -525,16 +525,16 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_purchase">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_purchase_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_purchase1">
+        <record model="ir.rule" id="rule_purchase_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_purchase"/>
+            <field name="rule_group" ref="rule_group_purchase_companies"/>
         </record>
 
         <record model="ir.model.access" id="access_invoice_purchase">
