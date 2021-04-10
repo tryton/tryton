@@ -6,11 +6,10 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class StockInventoryLocationTestCase(
-        CompanyMultiValueTestMixin, ModuleTestCase):
+class StockInventoryLocationTestCase(CompanyTestMixin, ModuleTestCase):
     'Test StockInventoryLocation module'
     module = 'stock_inventory_location'
 
