@@ -206,16 +206,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_opportunity"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_opportunity">
-            <field name="name">User in company of opportunity</field>
+        <record model="ir.rule.group" id="rule_group_opportunity_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_group_opportunity1">
+        <record model="ir.rule" id="rule_opportunity_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_opportunity"/>
+            <field name="rule_group" ref="rule_group_opportunity_companies"/>
         </record>
 
         <record model="ir.action.act_window" id="act_open_sale_form">
@@ -290,16 +290,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_employee_form"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_opportunity_employee">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_opportunity_employee_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_employee')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_group_opportunity_employee1">
+        <record model="ir.rule" id="rule_opportunity_employee_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_opportunity_employee"/>
+            <field name="rule_group" ref="rule_group_opportunity_employee_companies"/>
         </record>
 
         <menuitem
@@ -355,16 +355,16 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_opportunity_monthly_form"/>
 
-        <record model="ir.rule.group" id="rule_group_opportunity_monthly">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_opportunity_monthly_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_monthly')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_group_opportunity_monthly1">
+        <record model="ir.rule" id="rule_opportunity_monthly_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_opportunity_monthly"/>
+            <field name="rule_group" ref="rule_group_opportunity_monthly_companies"/>
         </record>
 
         <record model="ir.ui.view" id="opportunity_employee_monthly_view_tree">
@@ -390,16 +390,16 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_opportunity_employee_monthly_form"/>
 
-        <record model="ir.rule.group" id="rule_group_opportunity_employee_monthly">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_opportunity_employee_monthly_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_employee_monthly')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_group_opportunity_employee_monthly1">
+        <record model="ir.rule" id="rule_opportunity_employee_monthly_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_opportunity_employee_monthly"/>
+            <field name="rule_group" ref="rule_group_opportunity_employee_monthly_companies"/>
         </record>
 
     </data>
