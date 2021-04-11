@@ -5,10 +5,8 @@
 Sale Subscription
 =================
 
-.. glossary::
+`Subscription </projects/modules-sale-subscription/en/latest>`_
+    Fundamentals to manage subscriptions.
 
-    `Subscription </projects/modules-sale-subscription/en/latest>`_
-        Fundamentals to manage subscriptions.
-
-    `Asset </projects/modules-sale-subscription-asset/en/latest>`_
-        Add asset to subscribed service.
+`Asset </projects/modules-sale-subscription-asset/en/latest>`_
+    Add asset to subscribed service.
