@@ -653,6 +653,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IX"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="passif_IX_B">
             <field name="name" lang="fr">B. Dettes financières</field>
