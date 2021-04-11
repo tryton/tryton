@@ -27,7 +27,10 @@ this repository contains the full copyright notices and license terms. -->
         <field name="sip" widget="sip"/>
     </group>
     <label name="name"/>
-    <field name="name" colspan="3"/>
+    <field name="name"/>
+    <label name="language"/>
+    <field name="language" widget="selection"/>
+
     <separator name="comment" colspan="6"/>
     <field name="comment" colspan="6"/>
 </form>

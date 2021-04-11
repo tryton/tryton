@@ -24,6 +24,7 @@ def register():
         address.AddressFormat,
         address.SubdivisionType,
         contact_mechanism.ContactMechanism,
+        contact_mechanism.ContactMechanismLanguage,
         configuration.Configuration,
         configuration.ConfigurationSequence,
         configuration.ConfigurationLang,

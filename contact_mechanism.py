@@ -9,7 +9,8 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
+    ModelView, ModelSQL, DeactivableMixin, MultiValueMixin, ValueMixin, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -37,7 +38,8 @@ _PHONE_TYPES = {
 
 
 class ContactMechanism(
-        DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
+        DeactivableMixin, sequence_ordered(), ModelSQL, ModelView,
+        MultiValueMixin):
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
     _rec_name = 'value'
@@ -53,6 +55,13 @@ class ContactMechanism(
     comment = fields.Text("Comment")
     party = fields.Many2One(
         'party.party', "Party", required=True, ondelete='CASCADE', select=True)
+    language = fields.MultiValue(
+        fields.Many2One('ir.lang', "Language",
+            help="Used to translate communication made "
+            "using the contact mechanism.\n"
+            "Leave empty for the party language."))
+    languages = fields.One2Many(
+        'party.contact_mechanism.language', 'contact_mechanism', "Languages")
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
@@ -267,3 +276,12 @@ class ContactMechanism(
             for name, desc in cls.fields_get(_fields).items():
                 usages.append((name, desc['string']))
         return usages
+
+
+class ContactMechanismLanguage(ModelSQL, ValueMixin):
+    "Contact Mechanism Language"
+    __name__ = 'party.contact_mechanism.language'
+    contact_mechanism = fields.Many2One(
+        'party.contact_mechanism', "Contact Mechanism",
+        ondelete='CASCADE', select=True)
+    language = fields.Many2One('ir.lang', "Language")

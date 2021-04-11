@@ -76,8 +76,16 @@ class EmailTemplate(metaclass=PoolMeta):
         Party = pool.get('party.party')
         ContactMechanism = pool.get('party.contact_mechanism')
         language = super()._get_language(record)
-        if isinstance(record, Party) and record.lang:
-            language = record.lang
-        if isinstance(record, ContactMechanism) and record.party.lang:
-            language = record.party.lang
+        if isinstance(record, Party):
+            usage = Transaction().context.get('usage')
+            contact = record.contact_mechanism_get('email', usage=usage)
+            if contact.language:
+                language = contact.language
+            elif record.lang:
+                language = record.lang
+        if isinstance(record, ContactMechanism):
+            if record.language:
+                language = record.language
+            elif record.party.lang:
+                language = record.party.lang
         return language

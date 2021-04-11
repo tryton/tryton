@@ -6,5 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="value" expand="1"/>
     <field name="name" expand="1"/>
     <field name="party" expand="2"/>
+    <field name="language" widget="selection"/>
     <field name="url" widget="url"/>
 </tree>
