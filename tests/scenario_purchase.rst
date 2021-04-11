@@ -188,6 +188,8 @@ Purchase 5 products::
     >>> invoice, = purchase.invoices
     >>> invoice.origins == purchase.rec_name
     True
+    >>> invoice.untaxed_amount, invoice.tax_amount, invoice.total_amount
+    (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
 
 Invoice line must be linked to stock move::
 
