@@ -22,6 +22,20 @@ Create company::
     >>> _ = create_company()
     >>> company = get_company()
 
+Set employee::
+
+    >>> User = Model.get('res.user')
+    >>> Party = Model.get('party.party')
+    >>> Employee = Model.get('company.employee')
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+
 Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear(company)
@@ -46,7 +60,6 @@ Create payment journal::
 
 Create parties::
 
-    >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
     >>> supplier = Party(name='Supplier')
@@ -81,6 +94,8 @@ Partially pay line::
     Decimal('50.00')
     >>> payment.amount = Decimal('20.00')
     >>> payment.click('approve')
+    >>> payment.approved_by == employee
+    True
     >>> payment.state
     'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
@@ -106,6 +121,8 @@ Check the properties of the payment group::
 Success the payment and recheck the payment group::
 
     >>> payment.click('succeed')
+    >>> payment.succeeded_by == employee
+    True
     >>> payment.state
     'succeeded'
     >>> group.reload()
@@ -139,6 +156,8 @@ Partially fail to pay the remaining::
     Decimal('0.00')
     >>> payment.reload()
     >>> payment.click('fail')
+    >>> payment.failed_by == employee
+    True
     >>> payment.state
     'failed'
     >>> payment.group.payment_complete

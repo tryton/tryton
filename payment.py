@@ -17,7 +17,8 @@ from trytond.transaction import Transaction
 from trytond.tools import sortable_values
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
-
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
 from .exceptions import OverpayWarning
 
 KINDS = [
@@ -311,6 +312,14 @@ class Payment(Workflow, ModelSQL, ModelView):
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
         'on_change_with_process_method', searcher='search_process_method')
+    approved_by = employee_field(
+        "Approved by",
+        states=['approved', 'processing', 'succeeded', 'failed'])
+    succeeded_by = employee_field(
+        "Success Noted by", states=['succeeded', 'processing'])
+    failed_by = employee_field(
+        "Failure Noted by",
+        states=['failed', 'processing'])
     state = fields.Selection([
             ('draft', 'Draft'),
             ('approved', 'Approved'),
@@ -446,6 +455,9 @@ class Payment(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('group', None)
+        default.setdefault('approved_by')
+        default.setdefault('succeeded_by')
+        default.setdefault('failed_by')
         return super().copy(payments, default=default)
 
     @classmethod
@@ -460,12 +472,14 @@ class Payment(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('approved_by', 'succeeded_by', 'failed_by')
     def draft(cls, payments):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('approved')
+    @set_employee('approved_by')
     def approve(cls, payments):
         pass
 
@@ -497,12 +511,14 @@ class Payment(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('succeeded')
+    @set_employee('succeeded_by')
     def succeed(cls, payments):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('failed')
+    @set_employee('failed_by')
     def fail(cls, payments):
         pass
 
