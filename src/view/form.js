@@ -4864,12 +4864,37 @@ function eval_pyson(value){
             }
         });
 
-    Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Entry, {
-        class_: 'dict-float',
+    Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-integer',
         create_widget: function() {
-            Sao.View.Form.Dict.Float._super.create_widget.call(this);
+            Sao.View.Form.Dict.Integer._super.create_widget.call(this);
             this.input_text = this.labelled = integer_input(this.input);
         },
+        get_value: function() {
+            var value = parseInt(this.input.val(), 10);
+            if (isNaN(value)) {
+                return null;
+            }
+            return value;
+        },
+        set_value: function(value, options) {
+            if (value !== null) {
+                this.input.val(value);
+                this.input_text.val(value.toLocaleString(
+                    Sao.i18n.BC47(Sao.i18n.getlang()), options));
+            } else {
+                this.input.val('');
+                this.input_text.val('');
+            }
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.Dict.Integer._super.set_readonly.call(this, readonly);
+            this.input_text.prop('readonly', readonly);
+        },
+    });
+
+    Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Integer, {
+        class_: 'dict-float',
         get digits() {
             var record = this.parent_widget.record;
             if (record) {
@@ -4899,18 +4924,8 @@ function eval_pyson(value){
                 options.maximumFractionDigits = digits[1];
             }
             this.input.attr('step', step);
-            Sao.View.Form.Dict.Float._super.set_value.call(this, value);
-            if (value !== null) {
-                this.input_text.val(value.toLocaleString(
-                    Sao.i18n.BC47(Sao.i18n.getlang()), options));
-            } else {
-                this.input_text.val('');
-            }
+            Sao.View.Form.Dict.Float._super.set_value.call(this, value, options);
         },
-        set_readonly: function(readonly) {
-            Sao.View.Form.Dict.Float._super.set_readonly.call(this, readonly);
-            this.input_text.prop('readonly', readonly);
-        }
     });
 
     Sao.View.Form.Dict.Numeric = Sao.class_(Sao.View.Form.Dict.Float, {
@@ -4923,18 +4938,6 @@ function eval_pyson(value){
             return value;
         }
     });
-
-    Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Float, {
-        class_: 'dict-integer',
-        get_value: function() {
-            var value = parseInt(this.input.val(), 10);
-            if (isNaN(value)) {
-                return null;
-            }
-            return value;
-        },
-    });
-
 
     Sao.View.Form.Dict.Date = Sao.class_(Sao.View.Form.Dict.Entry, {
         class_: 'dict-date',
