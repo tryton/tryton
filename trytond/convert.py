@@ -221,25 +221,26 @@ class RecordTagHandler:
             eval_attr = attributes.get('eval', '')
             pyson_attr = bool(int(attributes.get('pyson', '0')))
 
+            context = {}
+            context['time'] = time
+            context['version'] = __version__.rsplit('.', 1)[0]
+            context['ref'] = self.mh.get_id
+            context['Decimal'] = Decimal
+            context['datetime'] = datetime
+            if pyson_attr:
+                context.update(CONTEXT)
+
             if search_attr:
                 search_model = self.model._fields[field_name].model_name
                 SearchModel = self.mh.pool.get(search_model)
                 with Transaction().set_context(active_test=False):
-                    found, = SearchModel.search(eval(search_attr))
+                    found, = SearchModel.search(eval(search_attr, context))
                     self.values[field_name] = found.id
 
             elif ref_attr:
                 self.values[field_name] = self.mh.get_id(ref_attr)
 
             elif eval_attr:
-                context = {}
-                context['time'] = time
-                context['version'] = __version__.rsplit('.', 1)[0]
-                context['ref'] = self.mh.get_id
-                context['Decimal'] = Decimal
-                context['datetime'] = datetime
-                if pyson_attr:
-                    context.update(CONTEXT)
                 value = eval(eval_attr, context)
                 if pyson_attr:
                     value = PYSONEncoder(sort_keys=True).encode(value)
