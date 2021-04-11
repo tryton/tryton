@@ -1820,6 +1820,16 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'readonly': _states['readonly'] | ~Bool(Eval('account')),
             },
         depends=['type', 'invoice_type', 'company', 'account'] + _depends)
+    taxes_deductible_rate = fields.Numeric(
+        "Taxes Deductible Rate", digits=(14, 10),
+        domain=[
+            ('taxes_deductible_rate', '>=', 0),
+            ('taxes_deductible_rate', '<=', 1),
+            ],
+        states={
+            'invisible': Eval('invoice_type') != 'in',
+            },
+        depends=['invoice_type'])
     taxes_date = fields.Date(
         "Taxes Date",
         states={
@@ -1908,11 +1918,24 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return Invoice.fields_get(['type'])['type']['selection'] + [(None, '')]
 
     @fields.depends(
-        'invoice', '_parent_invoice.currency', '_parent_invoice.company')
+        'invoice', '_parent_invoice.currency', '_parent_invoice.company',
+        '_parent_invoice.type',
+        methods=['on_change_company'])
     def on_change_invoice(self):
         if self.invoice:
             self.currency = self.invoice.currency
             self.company = self.invoice.company
+            self.on_change_company()
+            self.invoice_type = self.invoice.type
+
+    @fields.depends('company', 'invoice',
+        '_parent_invoice.type', 'invoice_type')
+    def on_change_company(self):
+        invoice_type = self.invoice.type if self.invoice else self.invoice_type
+        if (invoice_type == 'in'
+                and self.company
+                and self.company.purchase_taxes_expense):
+            self.taxes_deductible_rate = 0
 
     @staticmethod
     def default_currency():
@@ -1984,14 +2007,26 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.currency.digits
         return 2
 
-    @fields.depends('type', 'quantity', 'unit_price', 'invoice',
-        '_parent_invoice.currency', 'currency')
+    @fields.depends(
+        'type', 'quantity', 'unit_price', 'taxes_deductible_rate', 'invoice',
+        '_parent_invoice.currency', 'currency', 'taxes',
+        '_parent_invoice.type', 'invoice_type',
+        methods=['_get_taxes'])
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = (self.invoice.currency if self.invoice
                 else self.currency)
             amount = (Decimal(str(self.quantity or '0.0'))
                 * (self.unit_price or Decimal('0.0')))
+            invoice_type = (
+                self.invoice.type if self.invoice else self.invoice_type)
+            if invoice_type == 'in' and self.taxes_deductible_rate != 1:
+                with Transaction().set_context(_deductible_rate=1):
+                    tax_amount = sum(
+                        t['amount'] for t in self._get_taxes().values())
+                non_deductible_amount = (
+                    tax_amount * (1 - self.taxes_deductible_rate))
+                amount += non_deductible_amount
             if currency:
                 return currency.round(amount)
             return amount
@@ -2004,8 +2039,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             subtotal = Decimal(0)
             for line2 in self.invoice.lines:
                 if line2.type == 'line':
-                    subtotal += line2.invoice.currency.round(
-                        Decimal(str(line2.quantity)) * line2.unit_price)
+                    subtotal += line2.amount
                 elif line2.type == 'subtotal':
                     if self == line2:
                         break
@@ -2020,20 +2054,43 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.origin.invoice.rec_name
         return self.origin.rec_name if self.origin else None
 
+    @classmethod
+    def default_taxes_deductible_rate(cls):
+        return 1
+
     @property
     def taxable_lines(self):
         # In case we're called from an on_change we have to use some sensible
         # defaults
+        context = Transaction().context
+        if (getattr(self, 'invoice', None)
+                and getattr(self.invoice, 'type', None)):
+            invoice_type = self.invoice.type
+        else:
+            invoice_type = getattr(self, 'invoice_type', None)
+        if invoice_type == 'in':
+            if context.get('_deductible_rate') is not None:
+                deductible_rate = context['_deductible_rate']
+            else:
+                deductible_rate = getattr(self, 'taxes_deductible_rate', 1)
+            if not deductible_rate:
+                return []
+        else:
+            deductible_rate = 1
         return [(
                 getattr(self, 'taxes', None) or [],
-                getattr(self, 'unit_price', None) or Decimal(0),
+                ((getattr(self, 'unit_price', None) or Decimal(0))
+                    * deductible_rate),
                 getattr(self, 'quantity', None) or 0,
                 getattr(self, 'tax_date', None),
                 )]
 
     @property
     def tax_date(self):
-        return self.taxes_date or self.invoice.tax_date
+        if getattr(self, 'taxes_date', None):
+            return self.taxes_date
+        elif hasattr(self, 'invoice') and hasattr(self.invoice, 'tax_date'):
+            return self.invoice.tax_date
 
     def _get_tax_context(self):
         if self.invoice:
@@ -2074,6 +2131,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @fields.depends('product', 'unit', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
         '_parent_invoice.invoice_date', '_parent_invoice.accounting_date',
+        'company',
         methods=['_get_tax_rule_pattern'])
     def on_change_product(self):
         if not self.product:
@@ -2108,6 +2166,12 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 if tax_ids:
                     taxes.extend(tax_ids)
             self.taxes = taxes
+
+            if self.company and self.company.purchase_taxes_expense:
+                self.taxes_deductible_rate = 0
+            else:
+                self.taxes_deductible_rate = (
+                    self.product.supplier_taxes_deductible_rate_used)
         else:
             with Transaction().set_context(date=date):
                 self.account = self.product.account_revenue_used

@@ -4,6 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
         <page string="Invoice" id="invoice">
+            <label name="purchase_taxes_expense"/>
+            <field name="purchase_taxes_expense"/>
             <label name="cancel_invoice_out"/>
             <field name="cancel_invoice_out"/>
         </page>

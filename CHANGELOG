@@ -1,3 +1,4 @@
+* Add deductible rate of taxes to supplier invoice
 * Add method to post invoices by batch
 * Add payment term date in invoice
 * Raise warning on invoice with maturity dates on the past

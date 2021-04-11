@@ -22,10 +22,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="unit_price" symbol="currency"/>
             <label name="amount"/>
             <field name="amount" symbol="currency"/>
-            <field name="taxes" colspan="4"/>
             <label name="taxes_date"/>
             <field name="taxes_date"/>
-            <newline/>
+            <label name="taxes_deductible_rate"/>
+            <group col="2" id="taxes_deductible_rate">
+                <field name="taxes_deductible_rate" factor="100" xexpand="0"/>
+                <label name="taxes_deductible_rate" string="%" xalign="0.0" xexpand="1"/>
+            </group>
+            <field name="taxes" colspan="4"/>
 
             <label name="origin"/>
             <field name="origin" colspan="3"/>

@@ -42,6 +42,8 @@ setting in the `Account Configuration <account:model-account.configuration>`.
 Additional taxes can be manually added to the invoice when required.
 It is also possible to change calculated tax amounts, although these changes
 get overwritten if the invoice's tax amounts get recalculated.
+For supplier invoice it is possible to define per line the deductible rate of
+the taxes.
 
 When an invoice is processed an `Account Move <account:model-account.move>` is
 automatically created for it.
