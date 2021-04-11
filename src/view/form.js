@@ -2998,9 +2998,15 @@ function eval_pyson(value){
                     'class': 'form-control input-sm',
                     'name': attributes.name,
                 }).appendTo(group);
-                // TODO add completion
-                //
-                //
+
+                if (!attributes.completion || attributes.completion == '1') {
+                    Sao.common.get_completion(this.wid_text,
+                        this._update_completion.bind(this),
+                        this._completion_match_selected.bind(this),
+                        this._completion_action_activated.bind(this));
+                    this.wid_completion = true;
+                }
+
                 buttons =  jQuery('<div/>', {
                     'class': 'input-group-btn',
                 }).appendTo(group);
@@ -3488,7 +3494,31 @@ function eval_pyson(value){
         },
         set_value: function() {
             this.screen.save_tree_state();
-        }
+        },
+        _update_completion: function(text) {
+            if (!this.record) {
+                return;
+            }
+            var model = this.attributes.relation;
+            var domain = this.field.get_domain(this.record);
+            domain = [domain,
+                this.record.expr_eval(this.attributes.add_remove)];
+            var removed_ids = this.field.get_removed_ids(this.record);
+            domain = ['OR', domain, ['id', 'in', removed_ids]];
+            return Sao.common.update_completion(
+                this.wid_text, this.record, this.field, model, domain);
+        },
+        _completion_match_selected: function(value) {
+            this.screen.group.load([value.id], true);
+            this.wid_text.val('');
+        },
+        _completion_action_activated: function(action) {
+            if (action == 'search') {
+                this.add();
+            } else if (action == 'create') {
+                this.new_();
+            }
+        },
     });
 
     Sao.View.Form.Many2Many = Sao.class_(Sao.View.Form.Widget, {
@@ -3536,7 +3566,13 @@ function eval_pyson(value){
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
 
-            // TODO completion
+            if (!attributes.completion || attributes.completion == '1') {
+                Sao.common.get_completion(group,
+                    this._update_completion.bind(this),
+                    this._completion_match_selected.bind(this),
+                    this._completion_action_activated.bind(this));
+                this.wid_completion = true;
+            }
 
             var buttons = jQuery('<div/>', {
                 'class': 'input-group-btn'
@@ -3758,14 +3794,40 @@ function eval_pyson(value){
                 }
                 this.entry.val('');
             }.bind(this);
+            var text = this.entry.val();
             screen.switch_view().done(function() {
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
                     'save_current': true,
-                    rec_name: this.entry.val()
+                    rec_name: text,
                 });
             }.bind(this));
-        }
+        },
+        _update_completion: function(text) {
+            if (!this.record) {
+                return;
+            }
+            var model = this.attributes.relation;
+            var domain = this.field.get_domain(this.record);
+            var add_remove = this.record.expr_eval(
+                this.attributes.add_remove);
+            if (!jQuery.isEmptyObject(add_remove)) {
+                domain = [domain, add_remove];
+            }
+            return Sao.common.update_completion(
+                this.entry, this.record, this.field, model, domain);
+        },
+        _completion_match_selected: function(value) {
+            this.screen.group.load([value.id], true);
+            this.entry.val('');
+        },
+        _completion_action_activated: function(action) {
+            if (action == 'search') {
+                this.add();
+            } else if (action == 'create') {
+                this.new_();
+            }
+        },
     });
 
     Sao.View.Form.BinaryMixin = Sao.class_(Sao.View.Form.Widget, {
@@ -4377,7 +4439,12 @@ function eval_pyson(value){
                 'name': attributes.name,
             }).appendTo(group);
 
-            // TODO completion
+            if (!attributes.completion || attributes.completion == '1') {
+                Sao.common.get_completion(group,
+                    this._update_completion.bind(this),
+                    this._completion_match_selected.bind(this));
+                this.wid_completion = true;
+            }
 
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
@@ -4604,6 +4671,20 @@ function eval_pyson(value){
                 }
             }.bind(this));
             this._set_button_sensitive();
+        },
+        _update_completion: function(text) {
+            if (this.wid_text.prop('disabled')) {
+                return;
+            }
+            if (!this.record) {
+                return;
+            }
+            return Sao.common.update_completion(
+                this.wid_text, this.record, this.field, this.schema_model);
+        },
+        _completion_match_selected: function(value) {
+            this.add_new_keys([value.id]);
+            this.wid_text.val('');
         },
         get_entries: function(type) {
             switch (type) {

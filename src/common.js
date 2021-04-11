@@ -3388,6 +3388,7 @@
             } else {
                 el.wrap('<div class="dropdown"/>');
                 this.dropdown = el.parent();
+                this.dropdown.css('display', 'table');
             }
             this.input = el.find('input').add(el.filter('input')).first();
             this.input.attr('autocomplete', 'off');
@@ -3545,10 +3546,12 @@
         };
         var completion = new Sao.common.InputCompletion(
                 el, source, match_selected, format);
-        completion.set_actions([
+        if (action_activated) {
+            completion.set_actions([
                 ['search', Sao.i18n.gettext('Search...')],
                 ['create', Sao.i18n.gettext('Create...')]],
                 action_activated);
+        }
     };
 
     Sao.common.update_completion = function(
