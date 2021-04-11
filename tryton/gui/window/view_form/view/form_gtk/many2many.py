@@ -288,7 +288,12 @@ class Many2Many(Widget):
         if not self.record:
             return
         model = self.attrs['relation']
-        update_completion(self.wid_text, self.record, self.field, model)
+        domain = self.field.domain_get(self.record)
+        add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
+        if add_remove:
+            domain = [domain, add_remove]
+        update_completion(
+            self.wid_text, self.record, self.field, model, domain)
 
     def _completion_action_activated(self, completion, index):
         if index == 0:
