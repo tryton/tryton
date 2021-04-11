@@ -1881,7 +1881,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if type_ == 'out':
             return ['OR', ('type.revenue', '=', True)]
         elif type_ == 'in':
-            return ['OR', ('type.expense', '=', True)]
+            return ['OR',
+                ('type.expense', '=', True),
+                ('type.debt', '=', True),
+                ]
 
     @classmethod
     def __register__(cls, module_name):
