@@ -151,7 +151,7 @@ class InventoryCount(metaclass=PoolMeta):
         values = super(InventoryCount, self).default_quantity(fields)
         line = InventoryLine(values['line'])
         if line.lot and line.lot.unit:
-            values['quantity_added'] = UoM.compute_qty(
+            values['quantity'] = UoM.compute_qty(
                 line.lot.unit, line.lot.unit_quantity,
                 line.uom)
         return values
