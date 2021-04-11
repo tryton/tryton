@@ -600,7 +600,7 @@ class Count(Wizard):
         values['uom'] = line.uom.id
         values['unit_digits'] = line.unit_digits
         if line.uom.rounding == 1:
-            values['quantity_added'] = 1
+            values['quantity'] = 1
         return values
 
     def get_line_domain(self, inventory):
@@ -623,12 +623,12 @@ class Count(Wizard):
         return values
 
     def transition_add(self):
-        if self.quantity.line and self.quantity.quantity_added:
+        if self.quantity.line and self.quantity.quantity:
             line = self.quantity.line
             if line.quantity:
-                line.quantity += self.quantity.quantity_added
+                line.quantity += self.quantity.quantity
             else:
-                line.quantity = self.quantity.quantity_added
+                line.quantity = self.quantity.quantity
             line.save()
         return 'search'
 
@@ -682,15 +682,15 @@ class CountQuantity(ModelView):
         readonly=True, depends=['unit_digits'],
         help="The total amount of the line counted so far.")
 
-    quantity_added = fields.Float(
-        "Added Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
+    quantity = fields.Float(
+        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
         depends=['unit_digits'],
         help="The quantity to add to the existing count.")
 
     unit_digits = fields.Integer("Unit Digits", readonly=True)
 
-    @fields.depends('quantity_added', 'line')
-    def on_change_quantity_added(self):
+    @fields.depends('quantity', 'line')
+    def on_change_quantity(self):
         if self.line:
             self.total_quantity = (
-                (self.line.quantity or 0) + (self.quantity_added or 0))
+                (self.line.quantity or 0) + (self.quantity or 0))

@@ -82,7 +82,7 @@ Count inventory::
     ...     name='stock.inventory,%s.product.product,%s.count_create' % (
     ...     inventory.id, product.id)).save()
     >>> count.execute('quantity')
-    >>> count.form.quantity_added
+    >>> count.form.quantity
     1
     >>> count.form.total_quantity
     1
@@ -99,9 +99,9 @@ Count inventory::
     ...     name='stock.inventory,%s.product.product,%s.count_create' % (
     ...     inventory.id, product2.id)).save()
     >>> count.execute('quantity')
-    >>> count.form.quantity_added
+    >>> count.form.quantity
     >>> count.form.total_quantity
-    >>> count.form.quantity_added = 10
+    >>> count.form.quantity = 10
     >>> count.form.total_quantity
     10.0
     >>> count.execute('add')

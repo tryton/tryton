@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product"/>
     <label name="total_quantity"/>
     <field name="total_quantity" symbol="uom"/>
-    <label name="quantity_added"/>
-    <field name="quantity_added" symbol="uom"/>
+    <label name="quantity"/>
+    <field name="quantity" symbol="uom"/>
     <field name="line" colspan="-1" invisible="1"/>
 </form>
