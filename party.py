@@ -116,6 +116,17 @@ class ContactMechanism(CompanyMultiValueMixin, metaclass=PoolMeta):
                     yield address.country.code
 
 
+class ContactMechanismLanguage(CompanyValueMixin, metaclass=PoolMeta):
+    __name__ = 'party.contact_mechanism.language'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.contact_mechanism.context['company'] = Eval('company', -1)
+        if 'company' not in cls.contact_mechanism.depends:
+            cls.contact_mechanism.depends.append('company')
+
+
 class LetterReport(CompanyReport):
     __name__ = 'party.letter'
 

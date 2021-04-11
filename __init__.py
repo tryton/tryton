@@ -31,6 +31,7 @@ def register():
         party.Party,
         party.PartyLang,
         party.ContactMechanism,
+        party.ContactMechanismLanguage,
         module='company', type_='model')
     Pool.register(
         company.CompanyConfig,
