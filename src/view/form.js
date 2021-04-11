@@ -3094,7 +3094,10 @@ function eval_pyson(value){
                 this.content.append(this.screen.screen_container.el);
             }.bind(this));
 
-            // TODO key_press
+            if (attributes.add_remove) {
+                // Use keydown to not receive focus-in TAB
+                this.wid_text.on('keydown', this.key_press.bind(this));
+            }
 
             this.but_switch.prop('disabled', this.screen.number_of_views <= 0);
         },
@@ -3429,6 +3432,24 @@ function eval_pyson(value){
                     var win = new Sao.Window.Form(this.screen, function() {});
                 }
             }.bind(this));
+        },
+        key_press: function(event_) {
+            if (event_.which == Sao.common.F3_KEYCODE) {
+                this.new_(event_);
+                event_.preventDefault();
+            } else if (event_.which ==  Sao.common.F2_KEYCODE) {
+                this.add(event_);
+                event_.preventDefault();
+            }
+            if (this.attributes.add_remove) {
+                var activate_keys = [Sao.common.TAB_KEYCODE];
+                if (!this.wid_completion) {
+                    activate_keys.push(Sao.common.RETURN_KEYCODE);
+                }
+                if (~activate_keys.indexOf(event_.which) && this.wid_text.val()) {
+                    this.add(event_);
+                }
+            }
         },
         record_label: function(data) {
             this._position = data[0];
