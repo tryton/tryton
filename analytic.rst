@@ -1,3 +1,5 @@
+:orphan:
+
 .. _index-analytic-accounting:
 
 Analytic Accounting

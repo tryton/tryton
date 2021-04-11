@@ -1,3 +1,5 @@
+:orphan:
+
 .. _index-sale_subscription:
 
 Sale Subscription

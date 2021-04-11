@@ -1,3 +1,5 @@
+:orphan:
+
 .. _index-stock:
 
 Stock
