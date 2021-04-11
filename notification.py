@@ -167,7 +167,8 @@ class Email(ModelSQL, ModelView):
     def _get_languages(self, value):
         pool = Pool()
         EmailTemplate = pool.get('ir.email.template')
-        return EmailTemplate.get_languages(value)
+        with Transaction().set_context(usage=self.contact_mechanism):
+            return EmailTemplate.get_languages(value)
 
     def get_email(self, record, from_, to, cc, bcc, languages):
         pool = Pool()
