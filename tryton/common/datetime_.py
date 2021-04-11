@@ -84,7 +84,8 @@ class Date(Gtk.Entry):
         self.__calendar = Gtk.Calendar()
         cal_options = (
             Gtk.CalendarDisplayOptions.SHOW_DAY_NAMES
-            | Gtk.CalendarDisplayOptions.SHOW_HEADING)
+            | Gtk.CalendarDisplayOptions.SHOW_HEADING
+            | Gtk.CalendarDisplayOptions.SHOW_WEEK_NUMBERS)
         self.__calendar.set_display_options(cal_options)
         self.__cal_popup.add(self.__calendar)
         self.__calendar.connect('day-selected', self.cal_popup_changed)
