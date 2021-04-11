@@ -1,3 +1,4 @@
+* Add check to mark types as debt
 * Add relate from party to general ledger accounts
 * Accumulate start balance on general ledger line
 * Print general journal from moves

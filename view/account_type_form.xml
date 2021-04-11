@@ -25,6 +25,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="stock" xexpand="0" width="25"/>
         <label name="payable"/>
         <field name="payable" xexpand="0" width="25"/>
+        <label name="debt"/>
+        <field name="debt" xexpand="0" width="25"/>
         <label name="revenue"/>
         <field name="revenue" xexpand="0" width="25"/>
         <label name="expense"/>

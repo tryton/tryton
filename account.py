@@ -93,6 +93,19 @@ def TypeMixin(template=False):
                 },
             depends=['statement', 'assets'])
 
+        debt = fields.Boolean(
+            "Debt",
+            domain=[
+                If(Eval('statement') != 'balance',
+                    ('debt', '=', False), ()),
+                ],
+            states={
+                'invisible': ((Eval('statement') != 'balance')
+                    | Eval('assets', False)),
+                },
+            depends=['statement', 'assets'],
+            help="Check to allow booking debt via supplier invoice.")
+
         revenue = fields.Boolean(
             "Revenue",
             domain=[
@@ -166,7 +179,8 @@ class TypeTemplate(
         if not type or type.assets != self.assets:
             res['assets'] = self.assets
         for boolean in [
-                'receivable', 'stock', 'payable', 'revenue', 'expense']:
+                'receivable', 'stock', 'payable', 'revenue', 'expense',
+                'debt']:
             if not type or getattr(type, boolean) != getattr(self, boolean):
                 res[boolean] = getattr(self, boolean)
         if not type or type.template != self:
