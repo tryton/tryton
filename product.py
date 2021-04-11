@@ -126,6 +126,17 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             },
         depends=['taxes_parent', 'accounting'],
         help="The taxes to apply when purchasing products of this category.")
+    supplier_taxes_deductible_rate = fields.Numeric(
+        "Supplier Taxes Deductible Rate", digits=(14, 10),
+        domain=[
+            ('supplier_taxes_deductible_rate', '>=', 0),
+            ('supplier_taxes_deductible_rate', '<=', 1),
+            ],
+        states={
+            'invisible': (
+                Eval('taxes_parent') | ~Eval('accounting', False)),
+            },
+        depends=['taxes_parent', 'accounting'])
     customer_taxes_used = fields.Function(fields.Many2Many(
             'account.tax', None, None, "Customer Taxes Used"), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.Many2Many(
@@ -171,6 +182,10 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         account = config.get_multivalue(
             'default_category_account_revenue', **pattern)
         return account.id if account else None
+
+    @classmethod
+    def default_supplier_taxes_deductible_rate(cls):
+        return 1
 
     def get_account(self, name, **pattern):
         if self.account_parent:
@@ -234,6 +249,13 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     @account_used('account_revenue')
     def account_revenue_used(self):
         pass
+
+    @property
+    def supplier_taxes_deductible_rate_used(self):
+        if self.taxes_parent:
+            return self.parent.supplier_taxes_deductible_rate_used
+        else:
+            return self.supplier_taxes_deductible_rate
 
 
 class CategoryAccount(ModelSQL, CompanyValueMixin):
@@ -368,6 +390,10 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
                         name=self.rec_name))
         return taxes
 
+    @property
+    def supplier_taxes_deductible_rate_used(self):
+        return self.get_taxes('supplier_taxes_deductible_rate_used')
+
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -375,6 +401,8 @@ class Product(metaclass=PoolMeta):
     account_revenue_used = template_property('account_revenue_used')
     customer_taxes_used = template_property('customer_taxes_used')
     supplier_taxes_used = template_property('supplier_taxes_used')
+    supplier_taxes_deductible_rate_used = template_property(
+        'supplier_taxes_deductible_rate_used')
 
 
 class TemplateAccountCategory(ModelSQL):

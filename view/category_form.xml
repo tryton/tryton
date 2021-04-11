@@ -21,7 +21,9 @@ this repository contains the full copyright notices and license terms. -->
             <separator string="Taxes" id="taxes" colspan="4"/>
             <label name="taxes_parent"/>
             <field name="taxes_parent"/>
-            <newline/>
+            <label name="supplier_taxes_deductible_rate"/>
+            <field name="supplier_taxes_deductible_rate"/>
+
             <field name="customer_taxes" colspan="2"/>
             <field name="supplier_taxes" colspan="2"/>
         </page>
