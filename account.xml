@@ -849,6 +849,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_deudas_entidades_credito_largo_plazo">
             <field name="name" chart="pyme">1. Deudas con entidades de crédito</field>
@@ -856,6 +857,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_acreedores_arrendamiento_financiero_largo_plazo">
             <field name="name" chart="pyme">2. Acreedores por arrendamiento financiero</field>
@@ -863,30 +865,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_otras_deudas_largo_plazo" chart="pyme">
             <field name="name">3. Otras deudas a largo plazo</field>
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_derivados_deudas_largo_plazo" chart="normal">
             <field name="name">4. Derivados</field>
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_otros_pasivos_financieros_largo_plazo" chart="normal">
             <field name="name">5. Otros pasivos financieros</field>
             <field name="parent" ref="es_balance_deudas_largo_plazo"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_obligaciones_y_otros_valores_negociables_corto_plazo" chart="normal">
             <field name="name">1. Obligaciones y otros valores negociables</field>
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_deudas_entidades_credito_corto_plazo">
             <field name="name" chart="pyme">1. Deudas con entidades de crédito</field>
@@ -894,6 +901,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_acreedores_arrendamiento_financiero_cotro_plazo">
             <field name="name" chart="pyme">2. Acreedores por arrendamiento financiero</field>
@@ -901,12 +909,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_otras_deudas_corto_plazo" chart="pyme">
             <field name="name">3. Otras deudas a corto plazo</field>
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_proveedores">
             <field name="name">1. Proveedores</field>
@@ -927,12 +937,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_otros_pasivos_financieros_deudas_corto_plazo" chart="normal">
             <field name="name">5. Otros pasivos financieros</field>
             <field name="parent" ref="es_balance_deudas_corto_plazo"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_proveedores_empresas_del_grupo" chart="normal">
             <field name="name">2. Proveedores, empresas del grupo y asociadas</field>
