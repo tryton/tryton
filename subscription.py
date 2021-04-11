@@ -869,7 +869,7 @@ class LineConsumption(ModelSQL, ModelView):
         'sale.subscription.line', "Line", required=True, select=True,
         ondelete='RESTRICT')
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
         depends=['unit_digits'])
     unit_digits = fields.Function(
         fields.Integer("Unit Digits"), 'on_change_with_unit_digits')

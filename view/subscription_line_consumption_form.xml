@@ -6,6 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="line"/>
     <label name="date"/>
     <field name="date"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
     <label name="invoice_line"/>
     <field name="invoice_line"/>
 </form>
