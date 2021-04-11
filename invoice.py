@@ -878,7 +878,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def tax_date(self):
         return self.accounting_date or self.invoice_date
 
-    @fields.depends('party')
+    @fields.depends('party', 'company')
     def _get_tax_context(self):
         context = {}
         if self.party and self.party.lang:
