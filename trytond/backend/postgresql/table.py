@@ -218,22 +218,10 @@ class TableHandler(TableHandlerInterface):
     def alter_size(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
         cursor.execute(
-            SQL(
-                "ALTER TABLE {} RENAME COLUMN {} TO _temp_change_size").format(
-                Identifier(self.table_name),
-                Identifier(column_name)))
-        cursor.execute(SQL("ALTER TABLE {} ADD COLUMN {} {}").format(
+            SQL("ALTER TABLE {} ALTER COLUMN {} TYPE {}").format(
                 Identifier(self.table_name),
                 Identifier(column_name),
                 SQL(column_type)))
-        cursor.execute(
-            SQL("UPDATE {} SET {} = _temp_change_size::%s").format(
-                Identifier(self.table_name),
-                Identifier(column_name),
-                SQL(column_type)))
-        cursor.execute(
-            SQL("ALTER TABLE {} " "DROP COLUMN _temp_change_size")
-            .format(Identifier(self.table_name)))
         self._update_definitions(columns=True)
 
     def alter_type(self, column_name, column_type):
