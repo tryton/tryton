@@ -17,6 +17,7 @@ try:
 except ImportError:
     pass
 from psycopg2 import connect, Binary
+from psycopg2.sql import SQL, Identifier
 from psycopg2.pool import ThreadedConnectionPool, PoolError
 from psycopg2.extensions import cursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
@@ -295,14 +296,19 @@ class Database(DatabaseInterface):
     @classmethod
     def create(cls, connection, database_name, template='template0'):
         cursor = connection.cursor()
-        cursor.execute('CREATE DATABASE "' + database_name + '" '
-            'TEMPLATE "' + template + '" ENCODING \'unicode\'')
+        cursor.execute(
+            SQL(
+                "CREATE DATABASE {} TEMPLATE {} ENCODING 'unicode'")
+            .format(
+                Identifier(database_name),
+                Identifier(template)))
         connection.commit()
         cls._list_cache.clear()
 
     def drop(self, connection, database_name):
         cursor = connection.cursor()
-        cursor.execute('DROP DATABASE "' + database_name + '"')
+        cursor.execute(SQL("DROP DATABASE {}")
+            .format(Identifier(database_name)))
         self.__class__._list_cache.clear()
 
     def get_version(self, connection):
@@ -412,21 +418,23 @@ class Database(DatabaseInterface):
 
     def nextid(self, connection, table):
         cursor = connection.cursor()
-        cursor.execute("SELECT NEXTVAL('" + table + "_id_seq')")
+        cursor.execute("SELECT NEXTVAL(%s)", (table + '_id_seq',))
         return cursor.fetchone()[0]
 
     def setnextid(self, connection, table, value):
         cursor = connection.cursor()
-        cursor.execute("SELECT SETVAL('" + table + "_id_seq', %d)" % value)
+        cursor.execute("SELECT SETVAL(%s, %s)", (table + '_id_seq', value))
 
     def currid(self, connection, table):
         cursor = connection.cursor()
-        cursor.execute('SELECT last_value FROM "' + table + '_id_seq"')
+        cursor.execute(SQL("SELECT last_value FROM {}").format(
+                Identifier(table + '_id_seq')))
         return cursor.fetchone()[0]
 
     def lock(self, connection, table):
         cursor = connection.cursor()
-        cursor.execute('LOCK "%s" IN EXCLUSIVE MODE NOWAIT' % table)
+        cursor.execute(SQL('LOCK {} IN EXCLUSIVE MODE NOWAIT').format(
+                Identifier(table)))
 
     def lock_id(self, id, timeout=None):
         if not timeout:
@@ -660,35 +668,32 @@ class Database(DatabaseInterface):
             self, connection, name, number_increment=1, start_value=1):
         cursor = connection.cursor()
 
-        param = self.flavor.param
         cursor.execute(
-            'CREATE SEQUENCE "%s" '
-            'INCREMENT BY %s '
-            'START WITH %s'
-            % (name, param, param),
+            SQL("CREATE SEQUENCE {} INCREMENT BY %s START WITH %s").format(
+                Identifier(name)),
             (number_increment, start_value))
 
     def sequence_update(
             self, connection, name, number_increment=1, start_value=1):
         cursor = connection.cursor()
-        param = self.flavor.param
         cursor.execute(
-            'ALTER SEQUENCE "%s" '
-            'INCREMENT BY %s '
-            'RESTART WITH %s'
-            % (name, param, param),
+            SQL("ALTER SEQUENCE {} INCREMENT BY %s RESTART WITH %s").format(
+                Identifier(name)),
             (number_increment, start_value))
 
     def sequence_rename(self, connection, old_name, new_name):
         cursor = connection.cursor()
         if (self.sequence_exist(connection, old_name)
                 and not self.sequence_exist(connection, new_name)):
-            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
-                % (old_name, new_name))
+            cursor.execute(
+                SQL("ALTER TABLE {} to {}").format(
+                    Identifier(old_name),
+                    Identifier(new_name)))
 
     def sequence_delete(self, connection, name):
         cursor = connection.cursor()
-        cursor.execute('DROP SEQUENCE "%s"' % name)
+        cursor.execute(SQL("DROP SEQUENCE {}").format(
+                Identifier(name)))
 
     def sequence_next_number(self, connection, name):
         cursor = connection.cursor()
@@ -697,22 +702,23 @@ class Database(DatabaseInterface):
             cursor.execute(
                 'SELECT increment_by '
                 'FROM pg_sequences '
-                'WHERE sequencename=%s '
-                % self.flavor.param,
+                'WHERE sequencename=%s',
                 (name,))
             increment, = cursor.fetchone()
             cursor.execute(
-                'SELECT CASE WHEN NOT is_called THEN last_value '
-                'ELSE last_value + %s '
-                'END '
-                'FROM "%s"' % (self.flavor.param, name),
+                SQL(
+                    'SELECT CASE WHEN NOT is_called THEN last_value '
+                    'ELSE last_value + %s '
+                    'END '
+                    'FROM {}').format(Identifier(name)),
                 (increment,))
         else:
             cursor.execute(
-                'SELECT CASE WHEN NOT is_called THEN last_value '
-                'ELSE last_value + increment_by '
-                'END '
-                'FROM "%s"' % name)
+                SQL(
+                    'SELECT CASE WHEN NOT is_called THEN last_value '
+                    'ELSE last_value + increment_by '
+                    'END '
+                    'FROM {}').format(sequence=Identifier(name)))
         return cursor.fetchone()[0]
 
     def has_channel(self):

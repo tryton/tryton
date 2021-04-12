@@ -13,6 +13,10 @@ logger = logging.getLogger(__name__)
 VARCHAR_SIZE_RE = re.compile(r'VARCHAR\(([0-9]+)\)')
 
 
+def _escape_identifier(name):
+    return '"%s"' % name.replace('"', '""')
+
+
 class TableHandler(TableHandlerInterface):
     def __init__(self, model, module_name=None, history=False):
         super(TableHandler, self).__init__(model,
@@ -27,13 +31,13 @@ class TableHandler(TableHandlerInterface):
         # Create new table if necessary
         if not self.table_exist(self.table_name):
             if not self.history:
-                cursor.execute('CREATE TABLE "%s" '
+                cursor.execute('CREATE TABLE %s '
                     '(id INTEGER PRIMARY KEY AUTOINCREMENT)'
-                    % self.table_name)
+                    % _escape_identifier(self.table_name))
             else:
-                cursor.execute('CREATE TABLE "%s" '
+                cursor.execute('CREATE TABLE %s '
                     '(__id INTEGER PRIMARY KEY AUTOINCREMENT, '
-                    'id INTEGER)' % self.table_name)
+                    'id INTEGER)' % _escape_identifier(self.table_name))
 
         self._update_definitions()
 
@@ -54,12 +58,15 @@ class TableHandler(TableHandlerInterface):
             temp_sql = sql.replace(table_name, '_temp_%s' % table_name)
             cursor.execute(temp_sql)
             cursor.execute('PRAGMA table_info("' + table_name + '")')
-            columns = ['"%s"' % column for _, column, _, _, _, _ in cursor]
-            cursor.execute(('INSERT INTO "_temp_%s" '
+            columns = [_escape_identifier(column)
+                for _, column, _, _, _, _ in cursor]
+            cursor.execute(('INSERT INTO %s '
                     '(' + ','.join(columns) + ') '
                     'SELECT ' + ','.join(columns)
-                    + ' FROM "%s"') % (table_name, table_name))
-            cursor.execute('DROP TABLE "%s"' % table_name)
+                    + ' FROM %s') % (
+                    _escape_identifier('_temp_' + table_name),
+                    _escape_identifier(table_name)))
+            cursor.execute('DROP TABLE %s' % _escape_identifier(table_name))
             new_sql = sql.replace('PRIMARY KEY',
                     'PRIMARY KEY AUTOINCREMENT')
             cursor.execute(new_sql)
@@ -75,15 +82,16 @@ class TableHandler(TableHandlerInterface):
         cursor = Transaction().connection.cursor()
         if (TableHandler.table_exist(old_name)
                 and not TableHandler.table_exist(new_name)):
-            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
-                % (old_name, new_name))
+            cursor.execute('ALTER TABLE %s RENAME TO %s'
+                % (_escape_identifier(old_name), _escape_identifier(new_name)))
         # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
         if (TableHandler.table_exist(old_history)
                 and not TableHandler.table_exist(new_history)):
-            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
-                % (old_history, new_history))
+            cursor.execute('ALTER TABLE %s RENAME TO %s'
+                % (_escape_identifier(old_history),
+                    _escape_identifier(new_history)))
 
     def column_exist(self, column_name):
         return column_name in self._columns
@@ -105,12 +113,14 @@ class TableHandler(TableHandlerInterface):
                 new_column, database.sql_type(typname), field_size=size)
             columns.append(new_column)
             old_columns.append(column)
-        cursor.execute(('INSERT INTO "%s" ('
-                + ','.join('"%s"' % x for x in columns)
+        cursor.execute(('INSERT INTO %s ('
+                + ','.join(_escape_identifier(x) for x in columns)
                 + ') SELECT '
-                + ','.join('"%s"' % x for x in old_columns) + ' '
-                + 'FROM "%s"') % (self.table_name, temp_table))
-        cursor.execute('DROP TABLE "%s"' % temp_table)
+                + ','.join(_escape_identifier(x) for x in old_columns)
+                + ' FROM %s') % (
+                _escape_identifier(self.table_name),
+                _escape_identifier(temp_table)))
+        cursor.execute('DROP TABLE %s' % _escape_identifier(temp_table))
         self._update_definitions()
 
     def column_rename(self, old_name, new_name):
@@ -235,16 +245,20 @@ class TableHandler(TableHandlerInterface):
 
         cursor = Transaction().connection.cursor()
         column_type = column_type[1]
-        cursor.execute(('ALTER TABLE "%s" ADD COLUMN "%s" %s') %
-                       (self.table_name, column_name, column_type))
+        cursor.execute(('ALTER TABLE %s ADD COLUMN %s %s') % (
+                _escape_identifier(self.table_name),
+                _escape_identifier(column_name),
+                column_type))
 
         if default:
             # check if table is non-empty:
-            cursor.execute('SELECT 1 FROM "%s" limit 1' % self.table_name)
+            cursor.execute('SELECT 1 FROM %s limit 1'
+                % _escape_identifier(self.table_name))
             if cursor.fetchone():
                 # Populate column with default values:
-                cursor.execute('UPDATE "' + self.table_name + '" '
-                    'SET "' + column_name + '" = ?', (default(),))
+                cursor.execute('UPDATE ' + _escape_identifier(self.table_name)
+                    + ' SET ' + _escape_identifier(column_name) + ' = ?',
+                    (default(),))
 
         self._update_definitions(columns=True)
 
@@ -264,7 +278,6 @@ class TableHandler(TableHandlerInterface):
             else:
                 return ('_'.join(
                         map(str, (column,) + column.params))
-                    .replace('"', '')
                     .replace('?', '__'))
 
         name = [table or self.table_name]
@@ -279,12 +292,6 @@ class TableHandler(TableHandlerInterface):
         if action == 'add':
             if index_name in self._indexes:
                 return
-            columns_quoted = []
-            for column in columns:
-                if isinstance(column, str):
-                    columns_quoted.append('"%s"' % column)
-                else:
-                    columns_quoted.append(str(column))
             params = sum(
                 (c.params for c in columns if hasattr(c, 'params')), ())
             if where:
@@ -293,9 +300,14 @@ class TableHandler(TableHandlerInterface):
             if params:
                 warnings.warn('Unable to create index with parameters')
                 return
-            cursor.execute('CREATE INDEX "' + index_name + '" '
-                'ON "' + self.table_name + '" '
-                + '(' + ','.join(columns_quoted) + ')' + where,
+            cursor.execute(
+                'CREATE INDEX %s ON %s (%s)' % (
+                    _escape_identifier(index_name),
+                    _escape_identifier(self.table_name),
+                    ','.join(
+                        _escape_identifier(c) if isinstance(c, str) else str(c)
+                        for c in columns)
+                    ) + where,
                 params)
             self._update_definitions(indexes=True)
         elif action == 'remove':
@@ -305,7 +317,8 @@ class TableHandler(TableHandlerInterface):
                     return
 
             if index_name in self._indexes:
-                cursor.execute('DROP INDEX "%s" ' % (index_name,))
+                cursor.execute('DROP INDEX %s'
+                    % (_escape_identifier(index_name),))
                 self._update_definitions(indexes=True)
         else:
             raise Exception('Index action not supported!')
@@ -343,21 +356,25 @@ class TableHandler(TableHandlerInterface):
                 new_table._add_raw_column(
                     name, database.sql_type(typname), field_size=size)
         columns_name = list(new_table._columns.keys())
-        cursor.execute(('INSERT INTO "%s" ('
-                        + ','.join('"%s"' % c for c in columns_name)
-                        + ') SELECT '
-                        + ','.join('"%s"' % c for c in columns_name) + ' '
-                        + 'FROM "%s"') % (self.table_name, temp_table))
-        cursor.execute('DROP TABLE "%s"' % temp_table)
+        cursor.execute(
+            ('INSERT INTO %s ('
+                + ','.join(str(_escape_identifier(c))
+                    for c in columns_name)
+                + ') SELECT '
+                + ','.join(_escape_identifier(c) for c in columns_name)
+                + ' FROM %s')
+            % (_escape_identifier(self.table_name),
+                _escape_identifier(temp_table)))
+        cursor.execute('DROP TABLE %s' % _escape_identifier(temp_table))
         self._update_definitions()
 
     @staticmethod
     def drop_table(model, table, cascade=False):
         cursor = Transaction().connection.cursor()
-        cursor.execute('DELETE from ir_model_data where '
-            'model = \'%s\'' % model)
+        cursor.execute('DELETE from ir_model_data where model = %s',
+            (model,))
 
-        query = 'DROP TABLE "%s"' % table
+        query = 'DROP TABLE %s' % _escape_identifier(table)
         if cascade:
             query = query + ' CASCADE'
         cursor.execute(query)

@@ -3,6 +3,8 @@
 import re
 import logging
 
+from psycopg2.sql import SQL, Identifier, Composed
+
 from trytond.transaction import Transaction
 from trytond.backend.table import TableHandlerInterface
 
@@ -33,7 +35,8 @@ class TableHandler(TableHandlerInterface):
 
         # Create new table if necessary
         if not self.table_exist(self.table_name):
-            cursor.execute('CREATE TABLE "%s" ()' % self.table_name)
+            cursor.execute(SQL('CREATE TABLE {} ()').format(
+                    Identifier(self.table_name)))
         self.table_schema = transaction.database.get_table_schema(
             transaction.connection, self.table_name)
 
@@ -43,41 +46,52 @@ class TableHandler(TableHandlerInterface):
         self.is_owner, = cursor.fetchone()
 
         if model.__doc__ and self.is_owner:
-            cursor.execute('COMMENT ON TABLE "%s" IS \'%s\'' %
-                (self.table_name, model.__doc__.replace("'", "''")))
+            cursor.execute(SQL('COMMENT ON TABLE {} IS %s').format(
+                        Identifier(self.table_name)),
+                (model.__doc__,))
 
         self._update_definitions(columns=True)
         if 'id' not in self._columns:
             if not self.history:
-                cursor.execute('ALTER TABLE "%s" '
-                    'ADD COLUMN id INTEGER '
-                    'DEFAULT nextval(\'"%s"\') NOT NULL'
-                    % (self.table_name, self.sequence_name))
-                cursor.execute('ALTER TABLE "%s" '
-                    'ADD PRIMARY KEY(id)' % self.table_name)
+                cursor.execute(
+                    SQL(
+                        "ALTER TABLE {} ADD COLUMN id INTEGER "
+                        "DEFAULT nextval(%s) NOT NULL").format(
+                        Identifier(self.table_name)),
+                    (self.sequence_name,))
+                cursor.execute(
+                    SQL('ALTER TABLE {} ADD PRIMARY KEY(id)')
+                    .format(Identifier(self.table_name)))
             else:
-                cursor.execute('ALTER TABLE "%s" '
-                    'ADD COLUMN id INTEGER' % self.table_name)
+                cursor.execute(
+                    SQL('ALTER TABLE {} ADD COLUMN id INTEGER')
+                    .format(Identifier(self.table_name)))
             self._update_definitions(columns=True)
         if self.history and '__id' not in self._columns:
-            cursor.execute('ALTER TABLE "%s" '
-                'ADD COLUMN __id INTEGER '
-                'DEFAULT nextval(\'"%s"\') NOT NULL' %
-                (self.table_name, self.sequence_name))
-            cursor.execute('ALTER TABLE "%s" '
-                'ADD PRIMARY KEY(__id)' % self.table_name)
+            cursor.execute(
+                SQL(
+                    "ALTER TABLE {} ADD COLUMN __id INTEGER "
+                    "DEFAULT nextval(%s) NOT NULL").format(
+                        Identifier(self.table_name)),
+                (self.sequence_name,))
+            cursor.execute(
+                SQL('ALTER TABLE {} ADD PRIMARY KEY(__id)')
+                .format(Identifier(self.table_name)))
         else:
             default = "nextval('%s'::regclass)" % self.sequence_name
             if self.history:
                 if self._columns['__id']['default'] != default:
-                    cursor.execute('ALTER TABLE "%s" '
-                        'ALTER __id SET DEFAULT %s'
-                        % (self.table_name, default))
+                    cursor.execute(
+                        SQL("ALTER TABLE {} "
+                            "ALTER __id SET DEFAULT nextval(%s::regclass)")
+                        .format(Identifier(self.table_name)),
+                        (self.sequence_name,))
             if self._columns['id']['default'] != default:
                 cursor.execute(
-                    'ALTER TABLE "%s" '
-                    'ALTER id SET DEFAULT %s'
-                    % (self.table_name, default))
+                    SQL("ALTER TABLE {} "
+                        "ALTER id SET DEFAULT nextval(%s::regclass)")
+                    .format(Identifier(self.table_name)),
+                    (self.sequence_name,))
         self._update_definitions()
 
     @staticmethod
@@ -93,8 +107,8 @@ class TableHandler(TableHandlerInterface):
         # Rename table
         if (TableHandler.table_exist(old_name)
                 and not TableHandler.table_exist(new_name)):
-            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
-                % (old_name, new_name))
+            cursor.execute(SQL('ALTER TABLE {} RENAME TO {}').format(
+                    Identifier(old_name), Identifier(new_name)))
         # Rename sequence
         old_sequence = old_name + '_id_seq'
         new_sequence = new_name + '_id_seq'
@@ -115,9 +129,11 @@ class TableHandler(TableHandlerInterface):
         cursor = Transaction().connection.cursor()
         if self.column_exist(old_name):
             if not self.column_exist(new_name):
-                cursor.execute('ALTER TABLE "%s" '
-                    'RENAME COLUMN "%s" TO "%s"'
-                    % (self.table_name, old_name, new_name))
+                cursor.execute(SQL(
+                        'ALTER TABLE {} RENAME COLUMN {} TO {}').format(
+                        Identifier(self.table_name),
+                        Identifier(old_name),
+                        Identifier(new_name)))
                 self._update_definitions(columns=True)
             else:
                 logger.warning(
@@ -201,24 +217,31 @@ class TableHandler(TableHandlerInterface):
 
     def alter_size(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
-        cursor.execute("ALTER TABLE \"%s\" "
-            "RENAME COLUMN \"%s\" TO _temp_change_size"
-            % (self.table_name, column_name))
-        cursor.execute("ALTER TABLE \"%s\" "
-            "ADD COLUMN \"%s\" %s"
-            % (self.table_name, column_name, column_type))
-        cursor.execute("UPDATE \"%s\" "
-            "SET \"%s\" = _temp_change_size::%s"
-            % (self.table_name, column_name, column_type))
-        cursor.execute("ALTER TABLE \"%s\" "
-            "DROP COLUMN _temp_change_size"
-            % (self.table_name,))
+        cursor.execute(
+            SQL(
+                "ALTER TABLE {} RENAME COLUMN {} TO _temp_change_size").format(
+                Identifier(self.table_name),
+                Identifier(column_name)))
+        cursor.execute(SQL("ALTER TABLE {} ADD COLUMN {} {}").format(
+                Identifier(self.table_name),
+                Identifier(column_name),
+                SQL(column_type)))
+        cursor.execute(
+            SQL("UPDATE {} SET {} = _temp_change_size::%s").format(
+                Identifier(self.table_name),
+                Identifier(column_name),
+                SQL(column_type)))
+        cursor.execute(
+            SQL("ALTER TABLE {} " "DROP COLUMN _temp_change_size")
+            .format(Identifier(self.table_name)))
         self._update_definitions(columns=True)
 
     def alter_type(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
-        cursor.execute('ALTER TABLE "' + self.table_name + '" '
-            'ALTER "' + column_name + '" TYPE ' + column_type)
+        cursor.execute(SQL('ALTER TABLE {} ALTER {} TYPE {}').format(
+                Identifier(self.table_name),
+                Identifier(column_name),
+                SQL(column_type)))
         self._update_definitions(columns=True)
 
     def column_is_type(self, column_name, type_, *, size=-1):
@@ -240,8 +263,11 @@ class TableHandler(TableHandlerInterface):
             test = value
         if self._columns[column_name]['default'] != test:
             cursor = Transaction().connection.cursor()
-            cursor.execute('ALTER TABLE "' + self.table_name + '" '
-                'ALTER COLUMN "' + column_name + '" SET DEFAULT %s',
+            cursor.execute(
+                SQL(
+                    'ALTER TABLE {} ALTER COLUMN {} SET DEFAULT %s').format(
+                    Identifier(self.table_name),
+                    Identifier(column_name)),
                 (value,))
 
     def add_column(self, column_name, sql_type, default=None, comment=''):
@@ -254,14 +280,22 @@ class TableHandler(TableHandlerInterface):
 
         def add_comment():
             if comment and self.is_owner:
-                cursor.execute('COMMENT ON COLUMN "%s"."%s" IS \'%s\'' %
-                    (self.table_name, column_name, comment.replace("'", "''")))
+                cursor.execute(
+                    SQL('COMMENT ON COLUMN {}.{} IS %s').format(
+                        Identifier(self.table_name),
+                        Identifier(column_name)),
+                    (comment,))
         if self.column_exist(column_name):
             if (column_name in ('create_date', 'write_date')
                     and column_type[1].lower() != 'timestamp(6)'):
                 # Migrate dates from timestamp(0) to timestamp
-                cursor.execute('ALTER TABLE "' + self.table_name + '" '
-                    'ALTER COLUMN "' + column_name + '" TYPE timestamp')
+                cursor.execute(
+                    SQL(
+                        'ALTER TABLE {} ALTER COLUMN {} TYPE timestamp')
+                    .format(
+                        Identifier(self.table_name),
+                        Identifier(column_name)))
+
             add_comment()
             base_type = column_type[0].lower()
             if base_type != self._columns[column_name]['typname']:
@@ -300,8 +334,11 @@ class TableHandler(TableHandlerInterface):
             return
 
         column_type = column_type[1]
-        cursor.execute('ALTER TABLE "%s" ADD COLUMN "%s" %s'
-            % (self.table_name, column_name, column_type))
+        cursor.execute(
+            SQL('ALTER TABLE {} ADD COLUMN {} {}').format(
+                Identifier(self.table_name),
+                Identifier(column_name),
+                SQL(column_type)))
         add_comment()
 
         if default:
@@ -309,8 +346,11 @@ class TableHandler(TableHandlerInterface):
             cursor.execute('SELECT 1 FROM "%s" limit 1' % self.table_name)
             if cursor.rowcount:
                 # Populate column with default values:
-                cursor.execute('UPDATE "' + self.table_name + '" '
-                    'SET "' + column_name + '" = %s', (default(),))
+                cursor.execute(
+                    SQL('UPDATE {} SET {} = %s').format(
+                        Identifier(self.table_name),
+                        Identifier(column_name)),
+                    (default(),))
 
         self._update_definitions(columns=True)
 
@@ -331,11 +371,19 @@ class TableHandler(TableHandlerInterface):
         else:
             add = True
         if add:
-            cursor.execute('ALTER TABLE "' + self.table_name + '" '
-                'ADD CONSTRAINT "' + name + '" '
-                'FOREIGN KEY ("' + column_name + '") '
-                'REFERENCES "' + reference + '" '
-                'ON DELETE ' + on_delete)
+            cursor.execute(
+                SQL(
+                    "ALTER TABLE {table} "
+                    "ADD CONSTRAINT {constraint} "
+                    "FOREIGN KEY ({column}) REFERENCES {reference} "
+                    "ON DELETE {action}"
+                    )
+                .format(
+                    table=Identifier(self.table_name),
+                    constraint=Identifier(name),
+                    column=Identifier(column_name),
+                    reference=Identifier(reference),
+                    action=SQL(on_delete)))
         self._update_definitions(constraints=True)
 
     def drop_fk(self, column_name, table=None):
@@ -366,20 +414,23 @@ class TableHandler(TableHandlerInterface):
             if action == 'add':
                 if index_name in self._indexes:
                     return
-                columns_quoted = []
-                for column in columns:
-                    if isinstance(column, str):
-                        columns_quoted.append('"%s"' % column)
-                    else:
-                        columns_quoted.append(str(column))
                 params = sum(
                     (c.params for c in columns if hasattr(c, 'params')), ())
                 if where:
                     params += where.params
                     where = ' WHERE %s' % where
-                cursor.execute('CREATE INDEX "' + index_name + '" '
-                    'ON "' + self.table_name + '" '
-                    + '(' + ','.join(columns_quoted) + ')' + where,
+                cursor.execute(Composed([
+                            SQL('CREATE INDEX {name} ON {table} ({columns})')
+                            .format(
+                                name=Identifier(index_name),
+                                table=Identifier(self.table_name),
+                                columns=SQL(',').join(
+                                    (Identifier(c) if isinstance(c, str)
+                                        else SQL(str(c)))
+                                    for c in columns
+                                    )),
+                            SQL(where)
+                            ]),
                     params)
                 self._update_definitions(indexes=True)
             elif action == 'remove':
@@ -389,7 +440,8 @@ class TableHandler(TableHandlerInterface):
                         return
 
                 if index_name in self._indexes:
-                    cursor.execute('DROP INDEX "%s" ' % (index_name,))
+                    cursor.execute(SQL('DROP INDEX {}').format(
+                            Identifier(index_name)))
                     self._update_definitions(indexes=True)
             else:
                 raise Exception('Index action not supported!')
@@ -402,12 +454,17 @@ class TableHandler(TableHandlerInterface):
             if action == 'add':
                 if self._columns[column_name]['notnull']:
                     return
-                cursor.execute('SELECT id FROM "%s" '
-                    'WHERE "%s" IS NULL'
-                    % (self.table_name, column_name))
+                cursor.execute(SQL(
+                        'SELECT id FROM {} WHERE {} IS NULL').format(
+                        Identifier(self.table_name),
+                        Identifier(column_name)))
                 if not cursor.rowcount:
-                    cursor.execute('ALTER TABLE "' + self.table_name + '" '
-                        'ALTER COLUMN "' + column_name + '" SET NOT NULL')
+                    cursor.execute(
+                        SQL(
+                            'ALTER TABLE {} ALTER COLUMN {} SET NOT NULL')
+                        .format(
+                            Identifier(self.table_name),
+                            Identifier(column_name)))
                     self._update_definitions(columns=True)
                 else:
                     logger.warning(
@@ -426,9 +483,11 @@ class TableHandler(TableHandlerInterface):
                 if (self._field2module.get(column_name, self.module_name)
                         != self.module_name):
                     return
-                cursor.execute('ALTER TABLE "%s" '
-                    'ALTER COLUMN "%s" DROP NOT NULL'
-                    % (self.table_name, column_name))
+                cursor.execute(
+                    SQL('ALTER TABLE {} ALTER COLUMN {} DROP NOT NULL')
+                    .format(
+                        Identifier(self.table_name),
+                        Identifier(column_name)))
                 self._update_definitions(columns=True)
             else:
                 raise Exception('Not null action not supported!')
@@ -439,8 +498,12 @@ class TableHandler(TableHandlerInterface):
             # This constrain already exist
             return
         cursor = Transaction().connection.cursor()
-        cursor.execute('ALTER TABLE "%s" ADD CONSTRAINT "%s" %s'
-            % (self.table_name, ident, constraint), constraint.params)
+        cursor.execute(
+            SQL('ALTER TABLE {} ADD CONSTRAINT {} {}').format(
+                Identifier(self.table_name),
+                Identifier(ident),
+                SQL(str(constraint))),
+            constraint.params)
         self._update_definitions(constraints=True)
 
     def drop_constraint(self, ident, table=None):
@@ -448,25 +511,26 @@ class TableHandler(TableHandlerInterface):
         if ident not in self._constraints:
             return
         cursor = Transaction().connection.cursor()
-        cursor.execute('ALTER TABLE "%s" DROP CONSTRAINT "%s"'
-            % (self.table_name, ident))
+        cursor.execute(
+            SQL('ALTER TABLE {} DROP CONSTRAINT {}').format(
+                Identifier(self.table_name), Identifier(ident)))
         self._update_definitions(constraints=True)
 
     def drop_column(self, column_name):
         if not self.column_exist(column_name):
             return
         cursor = Transaction().connection.cursor()
-        cursor.execute('ALTER TABLE "%s" DROP COLUMN "%s"'
-            % (self.table_name, column_name))
+        cursor.execute(SQL('ALTER TABLE {} DROP COLUMN {}').format(
+                Identifier(self.table_name),
+                Identifier(column_name)))
         self._update_definitions(columns=True)
 
     @staticmethod
     def drop_table(model, table, cascade=False):
         cursor = Transaction().connection.cursor()
-        cursor.execute('DELETE FROM ir_model_data '
-            'WHERE model = \'%s\'' % model)
+        cursor.execute('DELETE FROM ir_model_data WHERE model = %s', (model,))
 
-        query = 'DROP TABLE "%s"' % table
+        query = SQL('DROP TABLE {}').format(Identifier(table))
         if cascade:
             query = query + ' CASCADE'
         cursor.execute(query)
