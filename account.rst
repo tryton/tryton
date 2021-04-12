@@ -39,7 +39,7 @@ Accounting
     Spanish accounting.
 
 `Europe </projects/modules-account-eu/en/latest>`_
-    Common European requiremenets.
+    Common European requirements.
 
 `French </projects/modules-account-fr/en/latest>`_
     French accounting.
@@ -90,7 +90,7 @@ Accounting
     Adds accounting on product and category.
 
 `Statement </projects/modules-account-statement/en/latest>`_
-    Books bank statement, cash daybook etc.
+    Books bank statement, cash day book etc.
 
 `Statement AEB43 </projects/modules-account-statement-aeb43/en/latest>`_
     Imports statements in AEB43 format.
