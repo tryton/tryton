@@ -37,13 +37,18 @@ class ModelSingleton(ModelStorage):
     def read(cls, ids, fields_names):
         singleton = cls.get_singleton()
         if not singleton:
-            fname_no_rec_name = [f for f in fields_names if '.' not in f]
+            fname_no_rec_name = [
+                f for f in fields_names
+                if '.' not in f and not f.startswith('_')]
             res = cls.default_get(fname_no_rec_name,
                 with_rec_name=len(fname_no_rec_name) != len(fields_names))
             for field_name in fields_names:
                 if field_name not in res:
                     res[field_name] = None
             res['id'] = ids[0]
+            res['_write'] = True
+            res['_delete'] = True
+            res['_timestamp'] = '0'
             return [res]
         res = super(ModelSingleton, cls).read([singleton.id], fields_names)
         res[0]['id'] = ids[0]
