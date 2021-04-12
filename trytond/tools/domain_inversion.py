@@ -164,15 +164,60 @@ def filter_leaf(domain, field, model):
 
 def prepare_reference_domain(domain, reference):
     "convert domain to replace reference fields by their local part"
+
+    def value2reference(value):
+        model, ref_id = None, None
+        if isinstance(value, str) and ',' in value:
+            model, ref_id = value.split(',', 1)
+            if ref_id != '%':
+                try:
+                    ref_id = int(ref_id)
+                except ValueError:
+                    model, ref_id = None, value
+        elif (isinstance(value, (list, tuple))
+                and len(value) == 2
+                and isinstance(value[0], str)
+                and (isinstance(value[1], int) or value[1] == '%')):
+            model, ref_id = value
+        else:
+            ref_id = value
+        return model, ref_id
+
     if domain in ('AND', 'OR'):
         return domain
     elif is_leaf(domain):
-        # When a Reference field is using the dotted notation the model
-        # specified must be removed from the clause
-        if domain[0].count('.') and len(domain) > 3:
-            local_name, target_name = domain[0].split('.', 1)
-            if local_name == reference:
-                return [target_name] + list(domain[1:3] + domain[4:])
+        if domain[0] == reference:
+            if domain[1] in {'=', '!='}:
+                model, ref_id = value2reference(domain[2])
+                if model is not None:
+                    if ref_id == '%':
+                        if domain[1] == '=':
+                            return [reference + '.id', '!=', None, model]
+                        else:
+                            return [reference, 'not like', domain[2]]
+                    return [reference + '.id', domain[1], ref_id, model]
+            elif domain[1] in {'in', 'not in'}:
+                model_values = {}
+                for value in domain[2]:
+                    model, ref_id = value2reference(value)
+                    if model is None:
+                        break
+                    model_values.setdefault(model, []).append(ref_id)
+                else:
+                    new_domain = ['OR'] if domain[1] == 'in' else ['AND']
+                    for model, ref_ids in model_values.items():
+                        if '%' in ref_ids:
+                            if domain[1] == 'in':
+                                new_domain.append(
+                                    [reference + '.id', '!=', None, model])
+                            else:
+                                new_domain.append(
+                                    [reference, 'not like', model + ',%'])
+                        else:
+                            new_domain.append(
+                                [reference + '.id', domain[1], ref_ids, model])
+                    return new_domain
+            return []
         return domain
     else:
         return [prepare_reference_domain(d, reference) for d in domain]
