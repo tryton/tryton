@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
     '/<database_name>/account_payment_braintree/checkout/<model>/<id>',
     methods=['GET', 'POST'])
 @with_pool
-@with_transaction()
+@with_transaction(context={'_skip_warnings': True})
 def checkout(request, pool, model, id):
     Payment = pool.get('account.payment')
     Customer = pool.get('account.payment.braintree.customer')
@@ -61,7 +61,7 @@ def checkout(request, pool, model, id):
     '/<database_name>/account_payment_braintree/webhook/<account>',
     methods={'POST'})
 @with_pool
-@with_transaction()
+@with_transaction(context={'_skip_warnings': True})
 def webhooks_endpoint(request, pool, account):
     Account = pool.get('account.payment.braintree.account')
     account, = Account.search([
