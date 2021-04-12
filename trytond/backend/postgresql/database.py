@@ -4,8 +4,8 @@ from collections import defaultdict
 import time
 import logging
 import os
-import urllib.parse
 import json
+import warnings
 from datetime import datetime
 from decimal import Decimal
 from itertools import chain, repeat
@@ -243,17 +243,11 @@ class Database(DatabaseInterface):
     @classmethod
     def _connection_params(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
+        if uri.path:
+            warnings.warn("The path specified in the URI will be overridden")
         params = {
-            'dbname': name,
+            'dsn': uri._replace(path=name).geturl(),
             }
-        if uri.username:
-            params['user'] = uri.username
-        if uri.password:
-            params['password'] = urllib.parse.unquote_plus(uri.password)
-        if uri.hostname:
-            params['host'] = uri.hostname
-        if uri.port:
-            params['port'] = uri.port
         return params
 
     def connect(self):

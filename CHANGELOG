@@ -1,3 +1,4 @@
+* Add support for database connection parameters to configuration URI
 * Use immutable datastructures for Dict and MultiSelection fields
 * Skip warnings for non-interactive operations
 * Check rule only if _check_access is set

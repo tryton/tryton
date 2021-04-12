@@ -106,7 +106,10 @@ uri
 Contains the URI to connect to the SQL database. The URI follows the RFC-3986_.
 The typical form is:
 
-    database://username:password@host:port/
+    database://username:password@host:port/?param1=value1&param2=value2
+
+The parameters are database dependent, check the database documentation for a
+list of valid parameters.
 
 Default: The value of the environment variable ``TRYTOND_DATABASE_URI`` or
 ``sqlite://`` if not set.
@@ -116,15 +119,27 @@ The available databases are:
 PostgreSQL
 **********
 
-``pyscopg2`` supports two type of connections:
+``psycopg2`` supports two type of connections:
 
     - TCP/IP connection: ``postgresql://user:password@localhost:5432/``
     - Unix domain connection: ``postgresql://username:password@/``
 
+Please refer to `psycopg2 for the complete specification of the URI
+<https://www.psycopg.org/docs/module.html#psycopg2.connect>`_.
+
+A list of parameters supported by PostgreSQL can be found in the
+`documentation <https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS>`_.
+
 SQLite
 ******
 
-The only possible URI is: ``sqlite://``
+The URI is defined as ``sqlite://``
+
+If the name of the database is ``:memory:``, the parameter ``mode`` will be set
+to ``memory`` thus using a pure in-memory database.
+
+The recognized query parameters can be found in SQLite's
+`documentation <https://www.sqlite.org/uri.html#recognized_query_parameters>`_.
 
 path
 ~~~~
