@@ -513,20 +513,16 @@ class CreatePurchaseRequestQuotation(Wizard):
 
         reqs = [r for r in self.records if r.state in ['draft', 'quotation']]
         for supplier in self.ask_suppliers.suppliers:
-            quotation = Quotation()
-            quotation.supplier = supplier
-            quotation.supplier_address = supplier.address_get()
             reqs = [r for r in reqs if self.filter_request(r, supplier)]
             sorted_reqs = sorted(reqs, key=lambda r: r.company)
             for key, grouped_requests in groupby(sorted_reqs,
                     key=self._group_request_key):
-                for f, v in key:
-                    setattr(quotation, f, v)
-                quotations.append(quotation)
-                for r in grouped_requests:
-                    line = self.get_quotation_line(r)
+                quotation = self.get_quotation(supplier, key)
+                for request in grouped_requests:
+                    line = self.get_quotation_line(request, quotation)
                     line.quotation = quotation
                     lines.append(line)
+                quotations.append(quotation)
         QuotationLine.save(lines)
         Quotation.save(quotations)
 
@@ -534,7 +530,17 @@ class CreatePurchaseRequestQuotation(Wizard):
         self.succeed.number_quotations = len(quotations)
         return 'succeed'
 
-    def get_quotation_line(self, request):
+    def get_quotation(self, supplier, key):
+        pool = Pool()
+        Quotation = pool.get('purchase.request.quotation')
+        quotation = Quotation()
+        quotation.supplier = supplier
+        quotation.supplier_address = supplier.address_get()
+        for f, v in key:
+            setattr(quotation, f, v)
+        return quotation
+
+    def get_quotation_line(self, request, quotation):
         pool = Pool()
         QuotationLine = pool.get('purchase.request.quotation.line')
         quotation_line = QuotationLine()
