@@ -7,9 +7,8 @@ from sql import Literal
 from sql.aggregate import Sum
 
 from trytond.i18n import gettext
-from trytond.model import (
-    ModelView, ModelSQL, ModelStorage, DeactivableMixin, fields, Unique)
-from trytond.pyson import Not, Bool, Eval, If
+from trytond.model import ModelView, ModelSQL, ModelStorage, fields, Unique
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
@@ -17,7 +16,7 @@ from trytond.tools import reduce_ids, grouped_slice
 from .exceptions import CompanyValidationError
 
 
-class Work(DeactivableMixin, ModelSQL, ModelView):
+class Work(ModelSQL, ModelView):
     'Work'
     __name__ = 'timesheet.work'
     name = fields.Char('Name',
@@ -57,10 +56,6 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
         select=True, help="Make the work belong to the company.")
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
         'Timesheet Lines',
-        depends=['active'],
-        states={
-            'readonly': Not(Bool(Eval('active'))),
-            },
         help="Spend time on this work.")
     # Self referring field to use for aggregation in graph view
     work = fields.Function(fields.Many2One('timesheet.work', 'Work'),
