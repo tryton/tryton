@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
     '/<database_name>/web_shop_vue_storefront/<shop>/<target>/<action>/<sku>',
     methods={'GET'})
 @with_pool
-@with_transaction()
+@with_transaction(context={'_skip_warnings': True})
 def route(request, pool, shop, target, action, sku=None):
     Shop = pool.get('web.shop')
     Session = pool.get('web.user.session')
