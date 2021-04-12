@@ -278,10 +278,12 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 5.0: use ir.calendar
         migrate_calendar = False
-        if backend.TableHandler.table_exist(cls._table):
+        if (backend.TableHandler.table_exist(cls._table)
+                and table_h.column_exist('month')
+                and table_h.column_exist('weekday')):
             migrate_calendar = (
-                (table_h.column_is_type('month', 'VARCHAR')
-                or (table_h.column_is_type('weekday', 'VARCHAR'))
+                table_h.column_is_type('month', 'VARCHAR')
+                or table_h.column_is_type('weekday', 'VARCHAR'))
             if migrate_calendar:
                 table_h.column_rename('month', '_temp_month')
                 table_h.column_rename('weekday', '_temp_weekday')
