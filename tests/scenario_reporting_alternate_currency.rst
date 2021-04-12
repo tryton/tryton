@@ -119,3 +119,17 @@ EC Operation and VATList report uses company currency::
     True
     >>> record.amount == Decimal('50.00')
     True
+    >>> VatBook = Model.get('account.reporting.vat_book_es')
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     'es_vat_book_type': 'E',
+    ...     }
+    >>> with config.set_context(context):
+    ...     record, = VatBook.find([])
+    >>> record.party == party
+    True
+    >>> record.base_amount == Decimal('100.00')
+    True
+    >>> record.tax_amount == Decimal('21.00')
+    True

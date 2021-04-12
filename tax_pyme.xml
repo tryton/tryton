@@ -468,6 +468,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.21')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_exclude_from_vat_book" eval="True"/>
         </record>
         <record id="iva_sop_intracomunitario_servicios_1_pyme" model="account.tax.template">
             <field name="name">IVA Intracomunitario. Servicios (1)</field>
@@ -491,6 +492,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.21')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_exclude_from_vat_book" eval="True"/>
         </record>
         <record id="iva_sop_intracomunitario_inv_1_pyme" model="account.tax.template">
             <field name="name">IVA Intracomunitario. Bienes inversión (1)</field>
@@ -514,6 +516,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.21')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_exclude_from_vat_book" eval="True"/>
         </record>
         <record id="vat_code_iva_pyme" model="account.tax.code.template">
             <field name="name">Impuesto sobre el Valor Añadido - Autoliquidación</field>

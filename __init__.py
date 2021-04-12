@@ -14,12 +14,15 @@ def register():
         account.TaxCode,
         account.TaxTemplate,
         account.Tax,
+        account.Invoice,
         party.Party,
         party.Identifier,
         reporting_tax.ESVATList,
         reporting_tax.ESVATListContext,
         reporting_tax.ECOperationList,
         reporting_tax.ECOperationListContext,
+        reporting_tax.ESVATBook,
+        reporting_tax.ESVATBookContext,
         module='account_es', type_='model')
     Pool.register(
         reporting_tax.AEAT111,
@@ -27,6 +30,7 @@ def register():
         reporting_tax.AEAT303,
         reporting_tax.AEAT347,
         reporting_tax.AEAT349,
+        reporting_tax.VATBookReport,
         module='account_es', type_='report')
     Pool.register(
         reporting_tax.PrintAEAT,

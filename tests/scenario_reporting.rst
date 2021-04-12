@@ -234,3 +234,27 @@ Generate aeat reports::
     True
     >>> name.startswith('AEAT Model 349')
     True
+
+
+Only one tax of intracomunitary invoices is included on VAT Book::
+
+    >>> VatBook = Model.get('account.reporting.vat_book_es')
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     'es_vat_book_type': 'R',
+    ...     }
+    >>> with config.set_context(context):
+    ...     records = VatBook.find([])
+    >>> len(records)
+    2
+    >>> supplier_record, = [r for r in records if r.party == supplier]
+    >>> supplier_record.base_amount == Decimal('100.00')
+    True
+    >>> supplier_record.tax_amount == Decimal('21.00')
+    True
+    >>> ec_supplier_record, = [r for r in records if r.party == ec_supplier]
+    >>> ec_supplier_record.base_amount == Decimal('100.00')
+    True
+    >>> ec_supplier_record.tax_amount == Decimal('21.00')
+    True

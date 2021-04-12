@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="es_vat_list_code"/>
             <label name="es_reported_with"/>
             <field name="es_reported_with"/>
+            <label name="es_exclude_from_vat_book"/>
+            <field name="es_exclude_from_vat_book"/>
         </page>
     </xpath>
     <xpath expr="/form//field[@name='ec_sales_list_code']" position="after">

@@ -3,6 +3,7 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Bool, Eval
+from trytond.transaction import Transaction
 
 
 class TaxCodeTemplate(metaclass=PoolMeta):
@@ -43,10 +44,17 @@ class TaxTemplate(metaclass=PoolMeta):
     es_vat_list_code = fields.Char("Spanish VAT List Code")
     es_ec_purchases_list_code = fields.Char("Spanish EC Purchase List Code")
     es_reported_with = fields.Many2One('account.tax.template', "Reported With")
+    es_exclude_from_vat_book = fields.Boolean("Exclude from Spanish VAT Book")
+
+    @classmethod
+    def default_es_exclude_from_vat_book(cls):
+        return False
 
     def _get_tax_value(self, tax=None):
         value = super()._get_tax_value(tax=tax)
-        for name in ['es_vat_list_code', 'es_ec_purchases_list_code']:
+        for name in [
+                'es_vat_list_code', 'es_ec_purchases_list_code',
+                'es_exclude_from_vat_book']:
             if not tax or getattr(tax, name) != getattr(self, name):
                 value[name] = getattr(self, name)
         return value
@@ -96,6 +104,16 @@ class Tax(metaclass=PoolMeta):
                 & ~Eval('template_override', False)),
             },
         depends=['template', 'template_override'])
+    es_exclude_from_vat_book = fields.Boolean("Exclude from Spanish VAT Book",
+        states={
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
+            },
+        depends=['template', 'template_override'])
+
+    @classmethod
+    def default_es_exclude_from_vat_book(cls):
+        return False
 
     @classmethod
     def update_tax(cls, company_id, template2account, template2tax=None):
@@ -123,3 +141,26 @@ class Tax(metaclass=PoolMeta):
 
         if to_write:
             cls.write(*to_write)
+
+
+class Invoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice'
+
+    @property
+    def es_vat_book_type(self):
+        if 'credit_note' in self._sequence_field:
+            return 'R0'
+        if not self.party_tax_identifier:
+            return 'F2'
+        return 'F1'
+
+    @property
+    def es_vat_book_serie(self):
+        return ''
+
+    @property
+    def es_vat_book_number(self):
+        vat_book_type = Transaction().context.get('es_vat_book_type', 'E')
+        if vat_book_type != 'E' and self.reference:
+            return self.reference
+        return self.number

@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import csv
 import unicodedata
+from io import StringIO
 
 from collections import defaultdict
 from dateutil.relativedelta import relativedelta
@@ -9,7 +11,7 @@ from operator import attrgetter
 
 from sql import Cast, Null, Literal
 from sql.aggregate import Count, Min, Sum
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import Substring, Position, Extract, CurrentTimestamp
 from sql.operators import Exists
 
@@ -708,3 +710,264 @@ class AEAT349(Report):
         context['format_decimal'] = format_decimal
 
         return context
+
+
+class ESVATBookContext(ModelView):
+    "Spanish VAT Book Context"
+    __name__ = 'account.reporting.vat_book_es.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
+    fiscalyear = fields.Many2One('account.fiscalyear', "Fiscal Year",
+        required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
+    start_period = fields.Many2One('account.period', "Start Period",
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ], depends=['fiscalyear', 'end_period'])
+    end_period = fields.Many2One('account.period', "End Period",
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ],
+        depends=['fiscalyear', 'start_period'])
+    es_vat_book_type = fields.Selection([
+            # Use same key as tax authority
+            ('E', "Issued"),
+            ('R', "Received"),
+            ('S', "Investment Goods"),
+            ],
+        "Type", required=True)
+
+    @classmethod
+    def default_es_vat_book_type(cls):
+        return 'E'
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def default_fiscalyear(cls):
+        pool = Pool()
+        Fiscalyear = pool.get('account.fiscalyear')
+        return Fiscalyear.find(cls.default_company(), exception=False)
+
+
+class ESVATBook(ModelSQL, ModelView):
+    "Spanish VAT Book"
+    __name__ = 'account.reporting.vat_book_es'
+
+    invoice = fields.Many2One('account.invoice', "Invoice")
+    invoice_date = fields.Date("Invoice Date")
+    party = fields.Many2One('party.party', "Party")
+    party_tax_identifier = fields.Many2One(
+        'party.identifier', "Party Tax Identifier")
+    tax = fields.Many2One('account.tax', "Tax")
+    base_amount = fields.Numeric("Base Amount",
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    tax_amount = fields.Numeric("Tax Amount",
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    surcharge_tax = fields.Many2One('account.tax', "Surcharge Tax")
+    surcharge_tax_amount = fields.Numeric("Surcharge Tax Amount",
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    currency_digits = fields.Function(fields.Integer("Currency Digits"),
+        'get_currency_digits')
+
+    @classmethod
+    def included_tax_groups(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        tax_groups = []
+        vat_book_type = Transaction().context.get('es_vat_book_type')
+        if vat_book_type == 'E':
+            tax_groups.append(ModelData.get_id(
+                    'account_es', 'tax_group_sale'))
+            tax_groups.append(ModelData.get_id(
+                    'account_es', 'tax_group_sale_service'))
+        elif vat_book_type == 'R':
+            tax_groups.append(ModelData.get_id(
+                    'account_es', 'tax_group_purchase'))
+            tax_groups.append(ModelData.get_id(
+                    'account_es', 'tax_group_purchase_service'))
+        elif vat_book_type == 'S':
+            tax_groups.append(ModelData.get_id(
+                    'account_es', 'tax_group_purchase_investment'))
+        return tax_groups
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        Invoice = pool.get('account.invoice')
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
+        Period = pool.get('account.period')
+        Tax = pool.get('account.tax')
+        context = Transaction().context
+        company = Company.__table__()
+        invoice = Invoice.__table__()
+        move = Move.__table__()
+        line = Line.__table__()
+        tax_line = TaxLine.__table__()
+        period = Period.__table__()
+        tax = Tax.__table__()
+
+        where = ((invoice.company == context.get('company'))
+            & (period.fiscalyear == context.get('fiscalyear'))
+            & ~tax.es_exclude_from_vat_book)
+        groups = cls.included_tax_groups()
+        if groups:
+            where &= tax.group.in_(groups)
+        if context.get('start_period'):
+            start_period = Period(context['start_period'])
+            where &= (period.start_date >= start_period.start_date)
+        if context.get('end_period'):
+            end_period = Period(context['end_period'])
+            where &= (period.end_date <= end_period.end_date)
+
+        query = (tax_line
+            .join(tax, condition=tax_line.tax == tax.id)
+            .join(line, condition=tax_line.move_line == line.id)
+            .join(move, condition=line.move == move.id)
+            .join(period, condition=move.period == period.id)
+            .join(invoice, condition=invoice.move == move.id)
+            .join(company, condition=company.id == invoice.company)
+            .select(
+                Min(tax_line.id).as_('id'),
+                Literal(0).as_('create_uid'),
+                CurrentTimestamp().as_('create_date'),
+                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
+                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
+                invoice.id.as_('invoice'),
+                invoice.invoice_date.as_('invoice_date'),
+                invoice.party.as_('party'),
+                invoice.party_tax_identifier.as_('party_tax_identifier'),
+                Coalesce(tax.es_reported_with, tax.id).as_('tax'),
+                Sum(tax_line.amount,
+                    filter_=((tax_line.type == 'base')
+                        & (tax.es_reported_with == Null))).as_('base_amount'),
+                Coalesce(
+                    Sum(tax_line.amount,
+                        filter_=((tax_line.type == 'tax')
+                            & (tax.es_reported_with == Null))),
+                    0).as_('tax_amount'),
+                Min(tax.id,
+                    filter_=(tax.es_reported_with != Null)).as_(
+                    'surcharge_tax'),
+                Sum(tax_line.amount,
+                    filter_=((tax_line.type == 'tax')
+                        & (tax.es_reported_with != Null))).as_(
+                    'surcharge_tax_amount'),
+                where=where,
+                group_by=[
+                    invoice.id,
+                    invoice.party,
+                    invoice.invoice_date,
+                    invoice.party_tax_identifier,
+                    Coalesce(tax.es_reported_with, tax.id),
+                    ]))
+        return query
+
+    def get_currency_digits(self, name):
+        return self.invoice.company.currency.digits
+
+
+class VATBookReport(Report):
+    __name__ = 'account.reporting.aeat.vat_book'
+
+    @classmethod
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
+
+        context['format_decimal'] = cls.format_decimal
+        context['get_period'] = cls.get_period
+        return context
+
+    @classmethod
+    def render(cls, report, report_context):
+        return cls.render_csv(report, report_context)
+
+    @classmethod
+    def convert(cls, report, data, **kwargs):
+        output_format = report.extension or report.template_extension
+        if not report.report_content and output_format == 'csv':
+            return output_format, data
+        return super().convert(report, data, **kwargs)
+
+    @classmethod
+    def get_period(cls, date):
+        return str((date.month + 2) // 3) + 'T'
+
+    @classmethod
+    def format_decimal(cls, n):
+        if not isinstance(n, Decimal):
+            n = Decimal(n)
+        sign = '-' if n < 0 else ''
+        return sign + '{0:.2f}'.format(abs(n)).replace('.', ',')
+
+    @classmethod
+    def get_format_date(cls):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        es = Lang(code='es', date='%d/%m/%Y')
+        return lambda value: es.strftime(value, '%d/%m/%Y')
+
+    @classmethod
+    def render_csv(cls, report, report_context):
+        vat_book = StringIO()
+        writer = csv.writer(
+            vat_book, delimiter=';', doublequote=False, escapechar='\\',
+            quoting=csv.QUOTE_NONE)
+        for record in report_context['records']:
+            writer.writerow(cls.get_row(record, report_context))
+        value = vat_book.getvalue()
+        if not isinstance(value, bytes):
+            value = value.encode('utf-8')
+        return value
+
+    @classmethod
+    def get_row(cls, record, report_context):
+        context = Transaction().context
+        format_date = cls.get_format_date()
+        return [
+            record.invoice_date.year,
+            report_context['get_period'](record.invoice_date),
+            context['es_vat_book_type'],
+            '',
+            record.invoice.es_vat_book_type,
+            '',
+            '',
+            format_date(record.invoice_date),
+            '',
+            record.invoice.es_vat_book_serie,
+            record.invoice.es_vat_book_number,
+            (record.party_tax_identifier.es_vat_type()
+                if record.party_tax_identifier else ''),
+            (record.party_tax_identifier.es_code()
+                if record.party_tax_identifier else ''),
+            country_code(record),
+            record.party.name[:40],
+            '',
+            cls.format_decimal(record.invoice.total_amount),
+            cls.format_decimal(record.base_amount),
+            cls.format_decimal(record.tax.rate * 100),
+            cls.format_decimal(record.tax_amount),
+            (cls.format_decimal(record.surcharge_tax.rate * 100)
+                if record.surcharge_tax else ''),
+            (cls.format_decimal(record.surcharge_tax_amount)
+                if record.surcharge_tax else ''),
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ]
