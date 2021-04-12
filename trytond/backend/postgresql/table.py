@@ -221,6 +221,18 @@ class TableHandler(TableHandlerInterface):
             'ALTER "' + column_name + '" TYPE ' + column_type)
         self._update_definitions(columns=True)
 
+    def column_is_type(self, column_name, type_, *, size=-1):
+        db_type = self._columns[column_name]['typname'].upper()
+
+        database = Transaction().database
+        base_type = database.sql_type(type_).base.upper()
+        if base_type == 'VARCHAR':
+            same_size = self._columns[column_name]['size'] == size
+        else:
+            same_size = True
+
+        return base_type == db_type and same_size
+
     def db_default(self, column_name, value):
         if value in [True, False]:
             test = str(value).lower()

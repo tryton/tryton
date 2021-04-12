@@ -138,7 +138,7 @@ class TableHandler(TableHandlerInterface):
                     size = match.group(3) and int(match.group(3)) or 0
                 else:
                     typname = type_.upper()
-                    size = -1
+                    size = None
                 self._columns[column] = {
                     'notnull': notnull,
                     'hasdef': hasdef,
@@ -169,6 +169,18 @@ class TableHandler(TableHandlerInterface):
 
     def alter_type(self, column_name, column_type):
         self._recreate_table({column_name: {'typname': column_type}})
+
+    def column_is_type(self, column_name, type_, *, size=-1):
+        db_type = self._columns[column_name]['typname'].upper()
+
+        database = Transaction().database
+        base_type = database.sql_type(type_).base.upper()
+        if base_type == 'VARCHAR':
+            same_size = self._columns[column_name]['size'] == size
+        else:
+            same_size = True
+
+        return base_type == db_type and same_size
 
     def db_default(self, column_name, value):
         warnings.warn('Unable to set default on column with SQLite backend')

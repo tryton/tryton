@@ -84,6 +84,18 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
+    def column_is_type(self, column_name, type_, *, size=-1):
+        '''
+        Return True if the column is of type type_
+
+        :param column_name: the column name
+        :param type_: the generic name of the type
+        :param size: if `type` is VARCHAR you can specify its size.
+                     Defaults to -1 which will won't match any size
+        :return: a boolean
+        '''
+        raise NotImplementedError
+
     def db_default(self, column_name, value):
         '''
         Set a default on a column
