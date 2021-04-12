@@ -267,6 +267,7 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         line = Line.__table__()
         month = Month.__table__()
         day = Day.__table__()
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 4.0: rename long table
         old_model_name = 'account.invoice.payment_term.line.relativedelta'
@@ -278,20 +279,10 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 5.0: use ir.calendar
         migrate_calendar = False
         if backend.TableHandler.table_exist(cls._table):
-            cursor.execute(*sql_table.select(
-                    sql_table.month, sql_table.weekday,
-                    where=(sql_table.month != Null)
-                    | (sql_table.weekday != Null),
-                    limit=1))
-            try:
-                row, = cursor.fetchall()
-                migrate_calendar = any(isinstance(v, str) for v in row)
-            except ValueError:
-                # As we cannot know the column type
-                # we migrate any way as no data need to be migrated
-                migrate_calendar = True
+            migrate_calendar = (
+                (table_h.column_is_type('month', 'VARCHAR')
+                or (table_h.column_is_type('weekday', 'VARCHAR'))
             if migrate_calendar:
-                table_h = cls.__table_handler__(module_name)
                 table_h.column_rename('month', '_temp_month')
                 table_h.column_rename('weekday', '_temp_weekday')
 
