@@ -12,7 +12,7 @@ from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields,
-    sequence_ordered)
+    sequence_ordered, ModelSingleton)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSON, Eval
@@ -109,7 +109,8 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_action_values(cls, type_, action_ids, columns=None):
-        Action = Pool().get(type_)
+        pool = Pool()
+        Action = pool.get(type_)
         if columns is None:
             columns = []
         columns += ['id', 'name', 'type', 'records', 'icon.rec_name']
@@ -125,7 +126,12 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
             columns += ['wiz_name', 'window']
         elif type_ == 'ir.action.url':
             columns += ['url']
-        return Action.read(action_ids, columns)
+        actions = Action.read(action_ids, columns)
+        if type_ == 'ir.action.act_window':
+            for values in actions:
+                if issubclass(pool.get(values['res_model']), ModelSingleton):
+                    values['res_id'] = 1
+        return actions
 
     def get_action_value(self):
         return self.get_action_values(
