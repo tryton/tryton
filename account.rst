@@ -56,6 +56,9 @@ Accounting
 `Invoice Correction </projects/modules-account-invoice-correction/en/latest>`_
     Correct price on posted invoices.
 
+`Invoice Defer </projects/modules-account-invoice-defer/en/latest>`_
+  Defer expense and revenue.
+
 `Invoice History </projects/modules-account-invoice-history/en/latest>`_
     Historize invoice.
 
