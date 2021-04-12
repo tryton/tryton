@@ -721,16 +721,67 @@ class DomainInversionTestCase(unittest.TestCase):
         domain = [['x', 'like', 'A%']]
         self.assertEqual(
             prepare_reference_domain(domain, 'x'),
-            [['x', 'like', 'A%']])
+            [[]])
 
-        domain = [['x.y', 'like', 'A%', 'model']]
+        domain = [['x', '=', 'A']]
         self.assertEqual(
-            prepare_reference_domain(domain, 'x'), [['y', 'like', 'A%']])
+            prepare_reference_domain(domain, 'x'),
+            [[]])
 
         domain = [['x.y', 'child_of', [1], 'model', 'parent']]
         self.assertEqual(
             prepare_reference_domain(domain, 'x'),
-            [['y', 'child_of', [1], 'parent']])
+            [['x.y', 'child_of', [1], 'model', 'parent']])
+
+        domain = [['x.y', 'like', 'A%', 'model']]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['x.y', 'like', 'A%', 'model']])
+
+        domain = [['x', '=', 'model,1']]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['x.id', '=', 1, 'model']])
+
+        domain = [['x', '!=', 'model,1']]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['x.id', '!=', 1, 'model']])
+
+        domain = [['x', '=', 'model,%']]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['x.id', '!=', None, 'model']])
+
+        domain = [['x', '!=', 'model,%']]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['x', 'not like', 'model,%']])
+
+        domain = [['x', 'in',
+                ['model_a,1', 'model_b,%', 'model_c,3', 'model_a,2']]]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['OR',
+                ['x.id', 'in', [1, 2], 'model_a'],
+                ['x.id', '!=', None, 'model_b'],
+                ['x.id', 'in', [3], 'model_c'],
+                ]])
+
+        domain = [['x', 'not in',
+                ['model_a,1', 'model_b,%', 'model_c,3', 'model_a,2']]]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [['AND',
+                ['x.id', 'not in', [1, 2], 'model_a'],
+                ['x', 'not like', 'model_b,%'],
+                ['x.id', 'not in', [3], 'model_c'],
+                ]])
+
+        domain = [['x', 'in', ['model_a,1', 'foo']]]
+        self.assertEqual(
+            prepare_reference_domain(domain, 'x'),
+            [[]])
 
     def test_extract_models(self):
         domain = [['x', 'like', 'A%']]
