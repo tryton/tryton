@@ -886,6 +886,19 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertDictEqual(
             dict_.dico_string_keys, {'a': 'A', 'type': "Type"})
 
+    @with_transaction
+    def test_set_key(self):
+        "Test setting a key of dict"
+        Dict = Pool().get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'a': 1, 'type': 'arabic'},
+                    }])
+
+        with self.assertRaises(TypeError):
+            dict.dico['a'] = 5
+
 
 @unittest.skipUnless(backend.name == 'postgresql',
     "unaccent works only on postgresql")

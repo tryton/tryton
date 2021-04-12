@@ -34,6 +34,8 @@ class ModelView(unittest.TestCase):
         record.target = Target(1)
         record.ref_target = Target(2)
         record.targets = [Target(name='bar')]
+        record.multiselection = ['a']
+        record.dictionary = {'key': 'value'}
         self.assertEqual(record._changed_values, {
                 'name': 'foo',
                 'target': 1,
@@ -43,12 +45,18 @@ class ModelView(unittest.TestCase):
                         (0, {'id': None, 'name': 'bar'}),
                         ],
                     },
+                'multiselection': ('a',),
+                'dictionary': {'key': 'value'},
                 })
 
         record = Model(name='test', target=1, targets=[
                 {'id': 1, 'name': 'foo'},
                 {'id': 2},
-                ], m2m_targets=[5, 6, 7])
+                ],
+            m2m_targets=[5, 6, 7],
+            multiselection=['a'],
+            dictionary={'key': 'value'},
+            )
 
         self.assertEqual(record._changed_values, {})
 
@@ -56,6 +64,12 @@ class ModelView(unittest.TestCase):
         target.name = 'bar'
         record.targets = [target]
         record.m2m_targets = [Target(9), Target(10)]
+        ms = list(record.multiselection)
+        ms.append('b')
+        record.multiselection = ms
+        dico = record.dictionary.copy()
+        dico['key'] = 'another value'
+        record.dictionary = dico
         self.assertEqual(record._changed_values, {
                 'targets': {
                     'update': [{'id': 1, 'name': 'bar'}],
@@ -65,6 +79,8 @@ class ModelView(unittest.TestCase):
                     'remove': [5, 6, 7],
                     'add': [(0, {'id': 9}), (1, {'id': 10})],
                     },
+                'multiselection': ('a', 'b'),
+                'dictionary': {'key': 'another value'},
                 })
 
         # change only one2many record

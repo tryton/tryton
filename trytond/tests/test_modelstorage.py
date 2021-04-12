@@ -638,7 +638,7 @@ class EvalEnvironmentTestCase(unittest.TestCase):
         record = Model(multiselection=['value1', 'value2'])
         env = EvalEnvironment(record, Model)
 
-        self.assertEqual(env.get('multiselection'), ['value1', 'value2'])
+        self.assertEqual(env.get('multiselection'), ('value1', 'value2'))
 
     @with_transaction()
     def test_parent_field(self):

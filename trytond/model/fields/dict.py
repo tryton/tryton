@@ -17,6 +17,25 @@ dumps = partial(
     json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
 
 
+class ImmutableDict(dict):
+
+    __slots__ = ()
+
+    def _not_allowed(cls, *args, **kwargs):
+        raise TypeError("Operation not allowed on ImmutableDict")
+
+    __setitem__ = _not_allowed
+    __delitem__ = _not_allowed
+    __ior__ = _not_allowed
+    clear = _not_allowed
+    pop = _not_allowed
+    popitem = _not_allowed
+    setdefault = _not_allowed
+    update = _not_allowed
+
+    del _not_allowed
+
+
 class Dict(Field):
     'Define dict field.'
     _type = 'dict'
@@ -41,7 +60,7 @@ class Dict(Field):
                 # If stored as JSON conversion is done on backend
                 if isinstance(data, str):
                     data = json.loads(data, object_hook=JSONDecoder())
-                dicts[value['id']] = data
+                dicts[value['id']] = ImmutableDict(data)
         return dicts
 
     def sql_format(self, value):
@@ -56,6 +75,11 @@ class Dict(Field):
                 d[k] = v
             value = dumps(d)
         return value
+
+    def __set__(self, inst, value):
+        if value:
+            value = ImmutableDict(value)
+        super().__set__(inst, value)
 
     def translated(self, name=None, type_='values'):
         "Return a descriptor for the translated value of the field"

@@ -28,7 +28,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'selects': None,
                     }])
 
-        self.assertEqual(selection.selects, ['bar', 'foo'])
+        self.assertEqual(selection.selects, ('bar', 'foo'))
         self.assertEqual(selection_none.selects, None)
 
     @with_transaction()
@@ -38,7 +38,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
 
         with self.assertRaises(SelectionValidationError):
             Selection.create([{
-                        'selects': ['invalid'],
+                        'selects': ('invalid'),
                         }])
 
     @with_transaction()
@@ -54,8 +54,8 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'dyn_selects': ['baz'],
                     }])
 
-        self.assertEqual(selection_foo.dyn_selects, ['foo'])
-        self.assertEqual(selection_bar.dyn_selects, ['baz'])
+        self.assertEqual(selection_foo.dyn_selects, ('foo',))
+        self.assertEqual(selection_bar.dyn_selects, ('baz',))
 
     @with_transaction()
     def test_create_dynamic_none(self):
@@ -89,7 +89,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'static_selects': ['foo', 'bar'],
                     }])
 
-        self.assertEqual(selection.static_selects, ['bar', 'foo'])
+        self.assertEqual(selection.static_selects, ('bar', 'foo'))
 
     @with_transaction()
     def test_create_static_none(self):
@@ -121,7 +121,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'selects': ['foo', 'bar'],
                     }])
 
-        self.assertEqual(selection.selects, ['bar', 'foo'])
+        self.assertEqual(selection.selects, ('bar', 'foo'))
 
     @with_transaction()
     def test_create_required_without_value(self):
@@ -163,7 +163,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                 'selects': ['foo', 'bar'],
                 })
 
-        self.assertEqual(selection.selects, ['bar', 'foo'])
+        self.assertEqual(selection.selects, ('bar', 'foo'))
 
     @with_transaction()
     def test_string(self):

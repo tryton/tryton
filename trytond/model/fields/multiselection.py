@@ -61,7 +61,7 @@ class MultiSelection(SelectionMixin, Field):
                 # If stored as JSON conversion is done on backend
                 if isinstance(data, str):
                     data = json.loads(data)
-                lists[value['id']] = data
+                lists[value['id']] = tuple(data)
         return lists
 
     def sql_format(self, value):
@@ -69,6 +69,11 @@ class MultiSelection(SelectionMixin, Field):
         if isinstance(value, list):
             value = dumps(sorted(set(value)))
         return value
+
+    def __set__(self, inst, value):
+        if value:
+            value = tuple(value)
+        super().__set__(inst, value)
 
     def _domain_column(self, operator, column):
         database = Transaction().database

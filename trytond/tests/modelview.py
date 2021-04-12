@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, DictSchemaMixin, fields
 from trytond.pool import Pool
 from trytond.pyson import If, Eval
 
@@ -20,6 +20,16 @@ class ModelViewChangedValues(ModelView):
         'Targets')
     m2m_targets = fields.Many2Many('test.modelview.changed_values.target',
         None, None, 'Targets')
+    multiselection = fields.MultiSelection([
+            ('a', 'A'), ('b', 'B'),
+            ], "MultiSelection")
+    dictionary = fields.Dict(
+        'test.modelview.changed_values.dictionary', "Dictionary")
+
+
+class ModelViewChangedValuesDictSchema(DictSchemaMixin, ModelSQL):
+    'ModelView Changed Values Dict Schema'
+    __name__ = 'test.modelview.changed_values.dictionary'
 
 
 class ModelViewChangedValuesTarget(ModelView):
@@ -253,6 +263,7 @@ class ModelViewViewAttributesDepends(ModelView):
 def register(module):
     Pool.register(
         ModelViewChangedValues,
+        ModelViewChangedValuesDictSchema,
         ModelViewChangedValuesTarget,
         ModelViewChangedValuesStoredTarget,
         ModelViewStoredChangedValues,
