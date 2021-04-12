@@ -971,10 +971,11 @@ class ReferenceField(Field):
         screen_domain = filter_leaf(screen_domain, self.name, model)
         screen_domain = prepare_reference_domain(screen_domain, self.name)
         return concat(localize_domain(
-                screen_domain, strip_target=True), attr_domain)
+                screen_domain, self.name, strip_target=True), attr_domain)
 
     def get_models(self, record):
         screen_domain, attr_domain = self.domains_get(record)
+        screen_domain = prepare_reference_domain(screen_domain, self.name)
         return extract_reference_models(
             concat(screen_domain, attr_domain), self.name)
 
