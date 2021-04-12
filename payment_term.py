@@ -3,7 +3,7 @@
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
-from sql import Column, Null
+from sql import Column
 
 from trytond.i18n import gettext
 from trytond.model import (
