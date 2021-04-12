@@ -2480,14 +2480,16 @@
             screen_domain = inversion.prepare_reference_domain(
                 screen_domain, this.name);
             return inversion.concat([
-                inversion.localize_domain(screen_domain, undefined, true),
+                inversion.localize_domain(screen_domain, this.name, true),
                 attr_domain]);
         },
         get_models: function(record) {
             var domains = this.get_domains(record);
             var inversion = new Sao.common.DomainInversion();
+            var screen_domain = inversion.prepare_reference_domain(
+                domains[0], this.name);
             return inversion.extract_reference_models(
-                inversion.concat([domains[0], domains[1]]),
+                inversion.concat([screen_domain, domains[1]]),
                 this.name);
         },
         _is_empty: function(record) {
