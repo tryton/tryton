@@ -152,7 +152,8 @@ class Queue(ModelSQL):
         transaction = Transaction()
         Model = Pool().get(self.data['model'])
         with transaction.set_user(self.data['user']), \
-                transaction.set_context(self.data['context']):
+                transaction.set_context(
+                    self.data['context'], _skip_warnings=True):
             instances = self.data['instances']
             # Ensure record ids still exist
             if isinstance(instances, int):
