@@ -25,6 +25,7 @@ from trytond.rpc import RPC
 from trytond.pyson import Eval, If
 
 from .exceptions import RateError
+from .ir import rate_decimal
 
 logger = logging.getLogger(__name__)
 
@@ -40,7 +41,8 @@ class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
         help="The 3 chars ISO currency code.")
     numeric_code = fields.Char('Numeric Code', size=3,
         help="The 3 digits ISO currency code.")
-    rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6)),
+    rate = fields.Function(fields.Numeric(
+            "Current rate", digits=(rate_decimal * 2, rate_decimal)),
         'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates',
         help="Add floating exchange rates for the currency.")

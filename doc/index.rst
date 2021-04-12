@@ -12,4 +12,5 @@ different currencies.
 
    setup
    usage
+   configuration
    design
