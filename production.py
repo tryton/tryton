@@ -24,6 +24,7 @@ BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
 class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Production"
     __name__ = 'production'
+    _assign_moves_field = 'inputs'
 
     number = fields.Char('Number', select=True, readonly=True)
     reference = fields.Char('Reference', select=1,
@@ -760,10 +761,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @ModelView.button_action('production.wizard_production_assign')
     def assign_wizard(cls, productions):
         pass
-
-    @property
-    def assign_moves(self):
-        return self.inputs
 
     @dualmethod
     @ModelView.button

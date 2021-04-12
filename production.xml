@@ -110,9 +110,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_available">
+            <field name="name">Partially Assigned</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('partially_assigned', '=', True)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_production_list_domain_assigned">
             <field name="name">Assigned</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_production_list"/>
@@ -120,7 +128,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain"
             id="act_production_list_domain_running">
             <field name="name">Running</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="60"/>
             <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_production_list"/>
