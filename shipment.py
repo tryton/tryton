@@ -30,6 +30,12 @@ class ShipmentMixin:
 
 
 class ShipmentAssignMixin(ShipmentMixin):
+    _assign_moves_field = None
+
+    partially_assigned = fields.Function(
+        fields.Boolean("Partially Assigned"),
+        'get_partially_assigned',
+        searcher='search_partially_assigned')
 
     @classmethod
     def assign_wizard(cls, shipments):
@@ -37,7 +43,7 @@ class ShipmentAssignMixin(ShipmentMixin):
 
     @property
     def assign_moves(self):
-        raise NotImplementedError
+        return getattr(self, self._assign_moves_field)
 
     @dualmethod
     @ModelView.button
@@ -64,6 +70,48 @@ class ShipmentAssignMixin(ShipmentMixin):
                 'quantity': 0,
                 })
         cls.assign(shipments)
+
+    @classmethod
+    def _get_assign_domain(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return [
+            ('state', '=', 'waiting'),
+            ('planned_date', '=', Date.today()),
+            ]
+
+    @classmethod
+    def assign_cron(cls):
+        shipments = cls.search(cls._get_assign_domain())
+        cls.assign_try(shipments)
+
+    def get_partially_assigned(self, name):
+        return any(m.state == 'assigned' for m in self.assign_moves
+            if m.assignation_required)
+
+    @classmethod
+    def search_partially_assigned(cls, name, clause):
+        operators = {
+            '=': 'where',
+            '!=': 'not where',
+            }
+        reverse = {
+            '=': '!=',
+            '!=': '=',
+            }
+        if clause[1] in operators:
+            if not clause[2]:
+                operator = reverse[clause[1]]
+            else:
+                operator = clause[1]
+            return [
+                (cls._assign_moves_field, operators[operator], [
+                        ('state', '=', 'assigned'),
+                        ('assignation_required', '=', True),
+                        ]),
+                ]
+        else:
+            return []
 
 
 class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
@@ -515,6 +563,8 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
     _rec_name = 'number'
+    _assign_moves_field = 'moves'
+
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
@@ -830,10 +880,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def assign_wizard(cls, shipments):
         pass
 
-    @property
-    def assign_moves(self):
-        return self.moves
-
     @dualmethod
     @ModelView.button
     def assign_try(cls, shipments, with_childs=None):
@@ -880,6 +926,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _rec_name = 'number'
+    _assign_moves_field = 'moves'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
@@ -1934,6 +1981,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _rec_name = 'number'
+    _assign_moves_field = 'moves'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),

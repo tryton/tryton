@@ -301,7 +301,8 @@ class Move(Workflow, ModelSQL, ModelView):
         'on_change_with_cost_price_required')
     assignation_required = fields.Function(
         fields.Boolean('Assignation Required'),
-        'on_change_with_assignation_required')
+        'on_change_with_assignation_required',
+        searcher='search_assignation_required')
 
     @classmethod
     def __setup__(cls):
@@ -487,6 +488,29 @@ class Move(Workflow, ModelSQL, ModelView):
             return (
                 self.quantity
                 and self.from_location.type in {'storage', 'view'})
+
+    @classmethod
+    def search_assignation_required(cls, name, clause):
+        operators = {
+            '=': 'in',
+            '!=': 'not in',
+            }
+        reverse = {
+            '=': '!=',
+            '!=': '=',
+            }
+        if clause[1] in operators:
+            if not clause[2]:
+                operator = reverse[clause[1]]
+            else:
+                operator = clause[1]
+            return [
+                ('quantity', '!=', 0),
+                ('from_location.type', operators[operator], [
+                        'storage', 'view']),
+                ]
+        else:
+            return []
 
     @staticmethod
     def _get_shipment():

@@ -18,4 +18,8 @@ class Cron(metaclass=PoolMeta):
                     "Reschedule Supplier Return Shipments"),
                 ('stock.shipment.internal|reschedule',
                     "Reschedule Internal Shipments"),
+                ('stock.shipment.out|assign_cron',
+                    "Assign Customer Shipments"),
+                ('stock.shipment.internal|assign_cron',
+                    "Assign Internal Shipments"),
                 ])

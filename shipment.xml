@@ -93,18 +93,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
         <record model="ir.action.act_window.domain"
-            id="act_shipment_in_return_form_domain_assigned">
-            <field name="name">Assigned</field>
-            <field name="sequence" eval="30"/>
-            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
-            <field name="count" eval="True"/>
-            <field name="act_window" ref="act_shipment_in_return_form"/>
-        </record>
-        <record model="ir.action.act_window.domain"
             id="act_shipment_in_return_form_domain_waiting">
             <field name="name">Waiting</field>
             <field name="sequence" eval="20"/>
             <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_available">
+            <field name="name">Partially Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('partially_assigned', '=', 'True')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
@@ -163,23 +171,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_available">
+            <field name="name">Partially Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('partially_assigned', '=', True)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
         <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_assigned">
             <field name="name">Assigned</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_picked">
             <field name="name">Picked</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'picked')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_packed">
             <field name="name">Packed</field>
-            <field name="sequence" eval="50"/>
+            <field name="sequence" eval="60"/>
             <field name="domain" eval="[('state', '=', 'packed')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
@@ -248,9 +263,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_available">
+            <field name="name">Partially Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('partially_assigned', '=', True)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_shipment_internal_form_domain_assigned">
             <field name="name">Assigned</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_internal_form"/>
@@ -258,7 +281,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain"
             id="act_shipment_internal_form_domain_shipped">
             <field name="name">Shipped</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'shipped')]" pyson="1"/>
             <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
