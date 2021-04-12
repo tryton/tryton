@@ -768,9 +768,13 @@ class Line(ModelSQL, ModelView):
     def __register__(cls, module_name):
         super(Line, cls).__register__(module_name)
 
-        table = cls.__table_handler__(module_name)
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module_name)
         # Index for General Ledger
-        table.index_action(['move', 'account'], 'add')
+        table_h.index_action(['move', 'account'], 'add')
+        # Index for account.account.party
+        table_h.index_action(
+            ['party', 'account', 'id'], 'add', where=table.party != Null)
 
     @classmethod
     def default_date(cls):
