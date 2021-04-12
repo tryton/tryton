@@ -841,10 +841,16 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
-    def wait(cls, shipments):
+    def wait(cls, shipments, moves=None):
+        """
+        If moves is set, only this subset is set to draft.
+        """
         Move = Pool().get('stock.move')
-        for shipment in shipments:
-            Move.draft([m for m in shipment.moves])
+        if moves is None:
+            moves = sum((s.moves for s in shipments), ())
+        else:
+            assert all(m.shipment in shipments for m in moves)
+        Move.draft(moves)
         cls._set_move_planned_date(shipments)
 
     @classmethod
@@ -1240,14 +1246,19 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
-    def wait(cls, shipments):
+    def wait(cls, shipments, moves=None):
         """
         Complete inventory moves to match the products and quantities
         that are in the outgoing moves.
+        If moves is set, only this subset is set to draft.
         """
         Move = Pool().get('stock.move')
 
-        Move.draft([m for s in shipments for m in s.inventory_moves])
+        if moves is None:
+            moves = sum((s.inventory_moves for s in shipments), ())
+        else:
+            assert all(m.shipment in shipments for m in moves)
+        Move.draft(moves)
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancelled')])
 
@@ -1259,20 +1270,32 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             for move in shipment.outgoing_moves:
                 if move.state in ('cancelled', 'done'):
                     continue
-                to_create.append(shipment._get_inventory_move(move))
+                inventory_move = shipment._get_inventory_move(move)
+                if inventory_move:
+                    to_create.append(inventory_move)
         if to_create:
             Move.save(to_create)
 
     def _get_inventory_move(self, move):
-        'Return inventory move for the outgoing move'
+        'Return inventory move for the outgoing move if necessary'
         pool = Pool()
         Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        quantity = move.quantity
+        for inventory_move in self.inventory_moves:
+            if (inventory_move.origin == move
+                    and inventory_move.state != 'cancelled'):
+                quantity -= Uom.compute_qty(
+                    inventory_move.uom, inventory_move.quantity, move.uom)
+        quantity = move.uom.round(quantity)
+        if quantity <= 0:
+            return
         inventory_move = Move(
             from_location=self.warehouse_storage,
             to_location=move.from_location,
             product=move.product,
             uom=move.uom,
-            quantity=move.quantity,
+            quantity=quantity,
             shipment=self,
             planned_date=move.planned_date,
             company=move.company,
@@ -2509,10 +2532,17 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
-    def wait(cls, shipments):
+    def wait(cls, shipments, moves=None):
+        """
+        If moves is set, only this subset is set to draft.
+        """
         Move = Pool().get('stock.move')
 
-        Move.draft([m for s in shipments for m in s.moves])
+        if moves is None:
+            moves = sum((s.moves for s in shipments), ())
+        else:
+            assert all(m.shipment in shipments for m in moves)
+        Move.draft(moves)
 
         moves = []
         for shipment in shipments:
