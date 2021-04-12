@@ -244,7 +244,7 @@ class Database(DatabaseInterface):
     @classmethod
     def _connection_params(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
-        if uri.path:
+        if uri.path and uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
         params = {
             'dsn': uri._replace(path=name).geturl(),

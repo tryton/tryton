@@ -402,7 +402,7 @@ class Database(DatabaseInterface):
     def _make_uri(self):
         uri = config.get('database', 'uri')
         base_uri = parse_uri(uri)
-        if base_uri.path:
+        if base_uri.path and base_uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
 
         if self.name == ':memory:':
