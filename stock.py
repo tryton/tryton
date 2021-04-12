@@ -4,7 +4,8 @@ import json
 
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import Model, ModelStorage, ModelView, fields
+from trytond.model import (
+    Model, ModelStorage, ModelView, ModelSQL, fields, dualmethod)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -12,7 +13,41 @@ from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 
 
-class ShipmentInReturn(metaclass=PoolMeta):
+class ShipmentUnassignMixin:
+    '''Mixin to unassign quantity from assigned shipment moves'''
+
+    @dualmethod
+    def unassign(cls, shipments, moves, quantities):
+        '''
+        Unassign the quantity from the corresponding move of the shipments.
+        '''
+        pool = Pool()
+        Move = pool.get('stock.move')
+        to_unassign = []
+        if not all(m.state == 'assigned' for m in moves):
+            raise ValueError("Not assigned move")
+        Move.draft(moves)
+        for move, unassign_quantity in zip(moves, quantities):
+            if not unassign_quantity:
+                continue
+            if unassign_quantity > move.quantity:
+                raise ValueError(
+                    "Unassigned quantity greater than move quantity")
+            if unassign_quantity == move.quantity:
+                to_unassign.append(move)
+            else:
+                with Transaction().set_context(_stock_move_split=True):
+                    to_unassign.extend(Move.copy(
+                            [move],
+                            {'quantity': unassign_quantity}))
+                move.quantity -= unassign_quantity
+        Move.save(moves)
+        Move.assign(moves)
+        if to_unassign:
+            cls.wait(shipments, to_unassign)
+
+
+class ShipmentInReturn(ShipmentUnassignMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
@@ -32,7 +67,7 @@ class ShipmentInReturn(metaclass=PoolMeta):
         pass
 
 
-class ShipmentOut(metaclass=PoolMeta):
+class ShipmentOut(ShipmentUnassignMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -55,7 +90,7 @@ class ShipmentOut(metaclass=PoolMeta):
         pass
 
 
-class ShipmentInternal(metaclass=PoolMeta):
+class ShipmentInternal(ShipmentUnassignMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.internal'
 
     @classmethod
@@ -277,3 +312,122 @@ class ShipmentAssignManualShow(ModelView):
         for field, value in zip(grouping, key[1:]):
             if value is not None and '.' not in field:
                 setattr(self.move, field, value)
+
+
+class ShipmentUnassignManual(Wizard):
+    "Manual Unassign Shipment"
+    __name__ = 'stock.shipment.unassign.manual'
+    start = StateTransition()
+    show = StateView('stock.shipment.unassign.manual.show',
+        'stock_assign_manual.shipment_unassign_manual_show_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Unassign", 'unassign', 'tryton-ok', default=True),
+            ])
+    unassign = StateTransition()
+
+    def transition_start(self):
+        moves = self.record.assign_moves
+        if any(m.state == 'assigned' for m in moves):
+            return 'show'
+        return 'end'
+
+    def default_show(self, fields):
+        moves = self.record.assign_moves
+        move_ids = [m.id for m in moves if m.state == 'assigned']
+        return {
+            'assigned_moves': move_ids,
+            }
+
+    def transition_unassign(self):
+        moves = []
+        quantities = []
+        for m in self.show.moves:
+            moves.append(m.move)
+            quantities.append(m.unassigned_quantity)
+        self.record.unassign(moves, quantities)
+        return 'end'
+
+
+class ShipmentAssignedMove(ModelView, ModelSQL):
+    "Shipment Assigned Move"
+    __name__ = 'stock.shipment.assigned.move'
+
+    move = fields.Many2One('stock.move', "Move", required=True)
+    unassigned_quantity = fields.Float(
+        "Unassigned Quantity", digits=(16, Eval('unit_digits', 2)),
+        domain=['OR',
+            ('unassigned_quantity', '=', None),
+            [
+                ('unassigned_quantity', '>=', 0),
+                ('unassigned_quantity', '<=', Eval('move_quantity', 0)),
+                ],
+            ],
+        depends=['unit_digits', 'move_quantity'],
+        help="The quantity to unassign")
+    assigned_quantity = fields.Float(
+        "Assigned Quantity", digits=(16, Eval('unit_digits', 2)),
+        domain=['OR',
+            ('assigned_quantity', '=', None),
+            [
+                ('assigned_quantity', '>=', 0),
+                ('assigned_quantity', '<=', Eval('move_quantity', 0)),
+                ],
+            ],
+        depends=['unit_digits', 'move_quantity'],
+        help="The quantity left assigned")
+    unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
+    unit_digits = fields.Function(
+        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+    move_quantity = fields.Function(
+        fields.Float("Move Quantity"), 'on_change_with_move_quantity')
+
+    @staticmethod
+    def default_unassigned_quantity():
+        return 0.0
+
+    @fields.depends('move', 'unassigned_quantity', 'assigned_quantity')
+    def on_change_move(self, name=None):
+        if self.move:
+            self.assigned_quantity = self.move.quantity
+            self.unassigned_quantity = 0.0
+
+    @fields.depends('assigned_quantity', 'move', 'unassigned_quantity', 'unit')
+    def on_change_unassigned_quantity(self, name=None):
+        if self.move and self.unassigned_quantity:
+            self.assigned_quantity = self.unit.round(
+                self.move.quantity - self.unassigned_quantity)
+
+    @fields.depends('unassigned_quantity', 'move', 'assigned_quantity', 'unit')
+    def on_change_assigned_quantity(self, name=None):
+        if self.move and self.assigned_quantity:
+            self.unassigned_quantity = self.unit.round(
+                self.move.quantity - self.assigned_quantity)
+
+    @fields.depends('move')
+    def on_change_with_unit(self, name=None):
+        if self.move:
+            return self.move.uom.id
+
+    @fields.depends('move')
+    def on_change_with_unit_digits(self, name=None):
+        if self.move:
+            return self.move.uom.digits
+
+    @fields.depends('move')
+    def on_change_with_move_quantity(self, name=None):
+        if self.move:
+            return self.move.quantity
+
+
+class ShipmentUnassignManualShow(ModelView):
+    "Manually Unassign Shipment"
+    __name__ = 'stock.shipment.unassign.manual.show'
+
+    moves = fields.One2Many(
+        'stock.shipment.assigned.move', None, "Moves",
+        domain=[('move.id', 'in', Eval('assigned_moves'))],
+        depends=['assigned_moves'],
+        help="The moves to unassign.")
+    assigned_moves = fields.Many2Many(
+        'stock.move', None, None, "Assigned Moves")

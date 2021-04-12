@@ -137,3 +137,50 @@ Assign manually remaining move::
 
     >>> shipment.state
     'assigned'
+
+Unassign move::
+
+    >>> AssignedMove = Model.get('stock.shipment.assigned.move')
+    >>> sorted([m.state for m in shipment.inventory_moves])
+    ['assigned', 'assigned', 'assigned']
+    >>> move1, _, _ = shipment.inventory_moves
+    >>> unassign_manual = Wizard('stock.shipment.unassign.manual', [shipment])
+    >>> move_to_unassign = AssignedMove()
+    >>> move_to_unassign.move = StockMove(move1.id)
+    >>> move_to_unassign.unassigned_quantity = 1.0
+    >>> unassign_manual.form.moves.append(move_to_unassign)
+    >>> unassign_manual.execute('unassign')
+    >>> shipment.state
+    'waiting'
+    >>> sorted([(m.state, m.quantity) for m in shipment.inventory_moves])
+    [('assigned', 1.0), ('assigned', 3.0), ('draft', 1.0)]
+
+Unassign a second move to be merged::
+
+    >>> move2, = [i for i in shipment.inventory_moves if (
+    ...     i.quantity == 1.0 and i.state == 'assigned')]
+    >>> unassign_manual = Wizard('stock.shipment.unassign.manual', [shipment])
+    >>> move_to_unassign = AssignedMove()
+    >>> move_to_unassign.move = StockMove(move2.id)
+    >>> move_to_unassign.unassigned_quantity = 1.0
+    >>> unassign_manual.form.moves.append(move_to_unassign)
+    >>> unassign_manual.execute('unassign')
+    >>> shipment.state
+    'waiting'
+    >>> sorted([(m.state, m.quantity) for m in shipment.inventory_moves])
+    [('assigned', 3.0), ('draft', 2.0)]
+
+Unassign partially third move::
+
+    >>> move3, = [i for i in shipment.inventory_moves
+    ...     if i.quantity == 3.0 and i.state == 'assigned']
+    >>> unassign_manual = Wizard('stock.shipment.unassign.manual', [shipment])
+    >>> move_to_unassign = AssignedMove()
+    >>> move_to_unassign.move = StockMove(move3.id)
+    >>> move_to_unassign.unassigned_quantity = 2.0
+    >>> unassign_manual.form.moves.append(move_to_unassign)
+    >>> unassign_manual.execute('unassign')
+    >>> shipment.state
+    'waiting'
+    >>> sorted([(m.state, m.quantity) for m in shipment.inventory_moves])
+    [('assigned', 1.0), ('draft', 2.0), ('draft', 2.0)]

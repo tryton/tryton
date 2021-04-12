@@ -72,5 +72,42 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">shipment_assign_manual_show_form</field>
         </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_unassign_manual">
+            <field name="name">Manually Unassign Shipment</field>
+            <field name="wiz_name">stock.shipment.unassign.manual</field>
+        </record>
+        <record model="ir.action.keyword" id="shipment_in_return_unassign_manual_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="wizard_shipment_unassign_manual"/>
+        </record>
+        <record model="ir.action.keyword" id="shipment_out_unassign_manual_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="wizard_shipment_unassign_manual"/>
+        </record>
+        <record model="ir.action.keyword" id="shipment_internal_unassign_manual_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="wizard_shipment_unassign_manual"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_unassign_manual_show_view_form">
+            <field name="model">stock.shipment.unassign.manual.show</field>
+            <field name="type">form</field>
+            <field name="name">shipment_unassign_manual_show_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_assigned_move_view_form">
+            <field name="model">stock.shipment.assigned.move</field>
+            <field name="type">form</field>
+            <field name="name">shipment_assigned_move_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_assigned_move_view_list">
+            <field name="model">stock.shipment.assigned.move</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_assigned_move_list</field>
+        </record>
     </data>
 </tryton>

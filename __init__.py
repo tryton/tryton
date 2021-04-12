@@ -14,10 +14,13 @@ def register():
         stock.ShipmentInReturn,
         stock.ShipmentOut,
         stock.ShipmentInternal,
+        stock.ShipmentAssignedMove,
         stock.ShipmentAssignManualShow,
+        stock.ShipmentUnassignManualShow,
         module='stock_assign_manual', type_='model')
     Pool.register(
         stock.ShipmentAssignManual,
+        stock.ShipmentUnassignManual,
         module='stock_assign_manual', type_='wizard')
     Pool.register(
         production.Production,
