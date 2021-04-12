@@ -139,7 +139,8 @@ class ShipmentIn(metaclass=PoolMeta):
 
     def _get_inventory_move(self, incoming_move):
         move = super()._get_inventory_move(incoming_move)
-        move.secondary_unit = incoming_move.secondary_unit
+        if move:
+            move.secondary_unit = incoming_move.secondary_unit
         return move
 
 
@@ -148,7 +149,8 @@ class ShipmentOut(metaclass=PoolMeta):
 
     def _get_inventory_move(self, move):
         inventory_move = super()._get_inventory_move(move)
-        inventory_move.secondary_unit = move.secondary_unit
+        if inventory_move:
+            inventory_move.secondary_unit = move.secondary_unit
         return inventory_move
 
 
@@ -157,5 +159,6 @@ class ShipmentOutReturn(metaclass=PoolMeta):
 
     def _get_inventory_move(self, incoming_move):
         move = super()._get_inventory_move(incoming_move)
-        move.secondary_unit = incoming_move.secondary_unit
+        if move:
+            move.secondary_unit = incoming_move.secondary_unit
         return move
