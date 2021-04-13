@@ -48,7 +48,6 @@ class ModelSingleton(ModelStorage):
             res['id'] = ids[0]
             res['_write'] = True
             res['_delete'] = True
-            res['_timestamp'] = '0'
             return [res]
         res = super(ModelSingleton, cls).read([singleton.id], fields_names)
         res[0]['id'] = ids[0]
