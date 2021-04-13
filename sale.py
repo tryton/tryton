@@ -193,7 +193,7 @@ class Sale(
     total_amount = fields.Function(fields.Numeric('Total',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount')
-    total_amount_cache = fields.Numeric('Total Tax',
+    total_amount_cache = fields.Numeric('Total Cache',
         digits=(16, Eval('currency_digits', 2)),
         readonly=True,
         depends=['currency_digits'])
