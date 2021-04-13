@@ -253,7 +253,8 @@ class CurrencyRate(ModelSQL, ModelView):
     __name__ = 'currency.currency.rate'
     date = fields.Date('Date', required=True, select=True,
         help="From when the rate applies.")
-    rate = fields.Numeric('Rate', digits=(12, 6), required=1,
+    rate = fields.Numeric(
+        "Rate", digits=(rate_decimal * 2, rate_decimal), required=1,
         help="The floating exchange rate used to convert the currency.")
     currency = fields.Many2One('currency.currency', 'Currency',
             ondelete='CASCADE',
