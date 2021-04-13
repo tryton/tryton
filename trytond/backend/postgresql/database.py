@@ -686,7 +686,7 @@ class Database(DatabaseInterface):
         if (self.sequence_exist(connection, old_name)
                 and not self.sequence_exist(connection, new_name)):
             cursor.execute(
-                SQL("ALTER TABLE {} to {}").format(
+                SQL("ALTER TABLE {} RENAME TO {}").format(
                     Identifier(old_name),
                     Identifier(new_name)))
 
