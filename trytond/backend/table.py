@@ -91,7 +91,8 @@ class TableHandlerInterface(object):
         :param column_name: the column name
         :param type_: the generic name of the type
         :param size: if `type` is VARCHAR you can specify its size.
-                     Defaults to -1 which will won't match any size
+                     Use a negative value to ignore the size check.
+                     Defaults to -1
         :return: a boolean
         '''
         raise NotImplementedError

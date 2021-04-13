@@ -237,7 +237,7 @@ class TableHandler(TableHandlerInterface):
 
         database = Transaction().database
         base_type = database.sql_type(type_).base.upper()
-        if base_type == 'VARCHAR':
+        if base_type == 'VARCHAR' and (size is None or size >= 0):
             same_size = self._columns[column_name]['size'] == size
         else:
             same_size = True
