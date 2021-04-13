@@ -518,7 +518,7 @@ class TableHandler(TableHandlerInterface):
         cursor = Transaction().connection.cursor()
         cursor.execute('DELETE FROM ir_model_data WHERE model = %s', (model,))
 
-        query = SQL('DROP TABLE {}').format(Identifier(table))
+        query = 'DROP TABLE {}'
         if cascade:
             query = query + ' CASCADE'
-        cursor.execute(query)
+        cursor.execute(SQL(query).format(Identifier(table)))
