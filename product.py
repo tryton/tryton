@@ -59,6 +59,20 @@ def check_no_move(func):
                             Template.raise_user_error(error)
                         # No moves for those records
                         break
+
+                if not values.get('template'):
+                    continue
+                template = Template(values['template'])
+                for record in records:
+                    for field, msg in Template._modify_no_move:
+                        if isinstance(
+                                getattr(Template, field), fields.Function):
+                            continue
+                        if getattr(record, field) != getattr(template, field):
+                            if find_moves(cls, [record]):
+                                raise AccessError(gettext(msg))
+                            # No moves for this record
+                            break
         func(cls, *args)
     return decorator
 
