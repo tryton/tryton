@@ -86,7 +86,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_mandate_form"/>
 
         <record model="ir.rule.group" id="rule_group_mandate_companies">
-            <field name="name">User in company</field>
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
             <field name="global_p" eval="True"/>
         </record>
