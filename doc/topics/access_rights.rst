@@ -14,10 +14,6 @@ The access rights are checked if the :attr:`Transaction.context
 <trytond.rpc.RPC.check_access>`) and if the
 :attr:`~trytond.transaction.Transaction.user` is not ``root``.
 
-.. warning::
-    The record rules are always enforced regardless of the ``_check_access``
-    value.
-
 Model
 =====
 
