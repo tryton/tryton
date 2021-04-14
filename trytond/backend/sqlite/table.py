@@ -371,7 +371,7 @@ class TableHandler(TableHandlerInterface):
     @staticmethod
     def drop_table(model, table, cascade=False):
         cursor = Transaction().connection.cursor()
-        cursor.execute('DELETE from ir_model_data where model = %s',
+        cursor.execute('DELETE from ir_model_data where model = ?',
             (model,))
 
         query = 'DROP TABLE %s' % _escape_identifier(table)
