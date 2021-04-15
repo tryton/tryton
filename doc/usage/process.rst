@@ -45,7 +45,7 @@ may be created for you automatically.
    The customer shipments that have been generated from the sale can be found
    using the sale's :guilabel:`Shipments` link.
 
-   The :guilabel`Shipments` and stock :guilabel:`Moves` related to a sale
+   The :guilabel:`Shipments` and stock :guilabel:`Moves` related to a sale
    can also be found using the items in the sale's
    :guilabel:`Open related records` menu.
 
@@ -73,7 +73,7 @@ automatically generate `Invoices <account_invoice:model-account.invoice>`.
 .. tip::
 
    The invoices that have been generated from the sale can be found using the
-   sale's :guilabel:`Invoices` link or the :guilabel`Invoices` item found in
+   sale's :guilabel:`Invoices` link or the :guilabel:`Invoices` item found in
    the sale's :guilabel:`Open related records` menu.
 
 .. _Handling shipment and invoice exceptions:
