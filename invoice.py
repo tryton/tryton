@@ -2042,7 +2042,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             subtotal = Decimal(0)
             for line2 in self.invoice.lines:
                 if line2.type == 'line':
-                    subtotal += line2.amount
+                    subtotal += line2.on_change_with_amount()
                 elif line2.type == 'subtotal':
                     if self == line2:
                         break
