@@ -122,14 +122,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="template_extension">txt</field>
             <field name="translatable" eval="False"/>
         </record>
-        <record model="ir.action-res.group" id="report_aeat_347_group_account">
-            <field name="action" ref="report_aeat_347"/>
-            <field name="group" ref="account.group_account"/>
-        </record>
-        <record model="ir.action-res.group" id="report_aeat_347_group_account_admin">
-            <field name="action" ref="report_aeat_347"/>
-            <field name="group" ref="account.group_account_admin"/>
-        </record>
         <record model="ir.action.keyword" id="report_aeat_347_keyword">
             <field name="keyword">form_print</field>
             <field name="model">account.reporting.vat_list_es,-1</field>
@@ -165,6 +157,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">es_ec_operation_list_context_form</field>
         </record>
 
+        <record model="ir.model.access" id="access_es_ec_operation_list">
+            <field name="model" search="[('model', '=', 'account.reporting.es_ec_operation_list')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_es_ec_operation_list_account">
+            <field name="model" search="[('model', '=', 'account.reporting.es_ec_operation_list')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
         <record model="ir.action.report" id="report_aeat_349">
             <field name="name">AEAT Model 349</field>
             <field name="records">listed</field>
@@ -173,14 +181,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report">account_es/aeat349.txt</field>
             <field name="template_extension">txt</field>
             <field name="translatable" eval="False"/>
-        </record>
-        <record model="ir.action-res.group" id="report_aeat_349_group_account">
-            <field name="action" ref="report_aeat_349"/>
-            <field name="group" ref="account.group_account"/>
-        </record>
-        <record model="ir.action-res.group" id="report_aeat_349_group_account_admin">
-            <field name="action" ref="report_aeat_349"/>
-            <field name="group" ref="account.group_account_admin"/>
         </record>
         <record model="ir.action.keyword" id="report_aeat_349_keyword">
             <field name="keyword">form_print</field>
