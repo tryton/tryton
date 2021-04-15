@@ -66,7 +66,7 @@ These can be added to later shipments, split up further, or cancelled.
    The supplier shipments that are related to the purchase can be found using
    the purchase's :guilabel:`Shipments` link.
 
-   The :guilabel`Shipments` and stock :guilabel:`Moves` related to a purchase
+   The :guilabel:`Shipments` and stock :guilabel:`Moves` related to a purchase
    can also be found using the items in the purchase's
    :guilabel:`Open related records` menu.
 
