@@ -120,6 +120,85 @@ class CurrencyTestCase(ModuleTestCase):
         self.assertEqual(rounded, Decimal('1E50'))
 
     @with_transaction()
+    def test_round_negative(self):
+        "Test rounding with negative rounding"
+        cu = create_currency('cu')
+        cu.rounding = -Decimal('0.1')
+        cu.digits = 1
+        cu.save()
+
+        rounded = cu.round(Decimal('1.23'))
+
+        self.assertEqual(rounded, Decimal('1.2'))
+
+    @with_transaction()
+    def test_round_zero(self):
+        "Test rounding with 0 as rounding"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('0')
+        cu.save()
+
+        rounded = cu.round(Decimal('1.2345'))
+
+        self.assertEqual(rounded, Decimal('1.2345'))
+
+    @with_transaction()
+    def test_is_zero(self):
+        "Test is zero"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('0.001')
+        cu.digits = 3
+        cu.save()
+
+        for value, result in [
+                (Decimal('0'), True),
+                (Decimal('0.0002'), True),
+                (Decimal('0.0009'), False),
+                (Decimal('0.002'), False),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(cu.is_zero(value), result)
+            with self.subTest(value=-value):
+                self.assertEqual(cu.is_zero(-value), result)
+
+    @with_transaction()
+    def test_is_zero_negative(self):
+        "Test is zero with negative rounding"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('-0.001')
+        cu.digits = 3
+        cu.save()
+
+        for value, result in [
+                (Decimal('0'), True),
+                (Decimal('0.0002'), True),
+                (Decimal('0.0009'), False),
+                (Decimal('0.002'), False),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(cu.is_zero(value), result)
+            with self.subTest(value=-value):
+                self.assertEqual(cu.is_zero(-value), result)
+
+    @with_transaction()
+    def test_is_zero_zero(self):
+        "Test is zero with 0 as rounding"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('0')
+        cu.save()
+
+        for value, result in [
+                (Decimal('0'), True),
+                (Decimal('0.0002'), False),
+                (Decimal('0.0009'), False),
+                (Decimal('0.002'), False),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(cu.is_zero(value), result)
+            with self.subTest(value=-value):
+                self.assertEqual(cu.is_zero(-value), result)
+
+    @with_transaction()
     def test_compute_simple(self):
         'Simple conversion'
         pool = Pool()
