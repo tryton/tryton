@@ -158,6 +158,8 @@ class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def _round(cls, amount, factor, rounding):
+        if not factor:
+            return amount
         with localcontext() as ctx:
             ctx.prec = max(ctx.prec, (amount / factor).adjusted() + 1)
             # Divide and multiple by factor for case factor is not 10En
@@ -167,7 +169,9 @@ class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
 
     def is_zero(self, amount):
         'Return True if the amount can be considered as zero for the currency'
-        return abs(self.round(amount)) < self.rounding
+        if not self.rounding:
+            return not amount
+        return abs(self.round(amount)) < abs(self.rounding)
 
     @classmethod
     def compute(cls, from_currency, amount, to_currency, round=True):
