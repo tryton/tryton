@@ -361,7 +361,8 @@ class Action(ModelSQL, ModelView):
         }
     _line_depends = _depends
 
-    complaint = fields.Many2One('sale.complaint', 'Complaint', required=True,
+    complaint = fields.Many2One(
+        'sale.complaint', 'Complaint', required=True, ondelete='CASCADE',
         states=_states, depends=_depends)
     action = fields.Selection([
             ('sale_return', 'Create Sale Return'),
