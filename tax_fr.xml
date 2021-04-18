@@ -235,7 +235,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.template" id="tva_vente_intracommunautaire_biens_0">
             <field name="name">Exonération de TVA sur ventes intracommunautaires de biens</field>
-            <field name="description">Autoliquidation de la TVA</field>
+            <field name="description">Hors TVA</field>
+            <field name="legal_notice">Livraison intracommunautaire exonérée (Article 262 Ter 1 du CGI)</field>
             <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
@@ -246,7 +247,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.template" id="tva_vente_intracommunautaire_services_0">
             <field name="name">Exonération de TVA sur ventes intracommunautaires de services</field>
-            <field name="description">Autoliquidation de la TVA</field>
+            <field name="description">Hors TVA</field>
             <field name="group" ref="group_tva_vente_services"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
@@ -257,7 +258,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.template" id="tva_vente_biens_hors_communaute">
             <field name="name">Exonération de TVA sur ventes de biens hors communauté</field>
-            <field name="description">Hors TVA (art. 259 1° du CGI)</field>
+            <field name="description">Hors TVA</field>
+            <field name="legal_notice">Exportation exonérée (Article 262-I du CGI)</field>
             <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
@@ -268,7 +270,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.template" id="tva_vente_services_hors_communaute">
             <field name="name">Exonération de TVA sur ventes de services hors communauté</field>
-            <field name="description">Hors TVA (art. 259 1° du CGI)</field>
+            <field name="description">Hors TVA</field>
+            <field name="legal_notice">Exportation exonérée (Article 262-I du CGI)</field>
             <field name="group" ref="group_tva_vente_services"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
