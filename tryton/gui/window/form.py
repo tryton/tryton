@@ -81,6 +81,7 @@ class Form(SignalEvent, TabContent):
                 self.screen.search_filter()
 
         self.update_revision()
+        self.activate_save()
 
     def get_toolbars(self):
         try:
