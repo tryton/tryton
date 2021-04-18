@@ -265,7 +265,8 @@
             <field name="parent" ref="creances"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
-            <field name="receivable" eval="True"/>
+            <field name="receivable" eval="False"/>
+            <field name="payable" eval="True"/>
         </record>
         <record model="account.account.type.template" id="capital_souscrit_appele">
             <field name="name">Capital souscrit - appelé, non versé</field>
