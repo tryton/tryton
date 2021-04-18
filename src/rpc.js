@@ -142,7 +142,7 @@
                        value = Sao.DateTime(value.year,
                                value.month - 1, value.day, value.hour,
                                value.minute, value.second,
-                               value.microsecond / 1000, true);
+                               Math.ceil(value.microsecond / 1000), true);
                        break;
                    case 'date':
                        value = Sao.Date(value.year,
@@ -150,7 +150,7 @@
                        break;
                    case 'time':
                        value = Sao.Time(value.hour, value.minute,
-                               value.second, value.microsecond / 1000);
+                           value.second, Math.ceil(value.microsecond / 1000));
                        break;
                     case 'timedelta':
                        value = Sao.TimeDelta(null, value.seconds);
