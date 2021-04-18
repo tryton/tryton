@@ -1729,7 +1729,7 @@ class Reconcile(Wizard):
             party = parties.pop()
             self.show.party = party
             self.show.parties = parties
-            return party
+            return party,
 
         if getattr(self.show, 'accounts', None) is None:
             self.show.accounts = self.get_accounts()
