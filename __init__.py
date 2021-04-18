@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from . import account
 from . import configuration
+from . import company
 from . import fiscalyear
 from . import journal
 from . import move
@@ -17,6 +18,7 @@ def register():
     Pool.register(
         fiscalyear.FiscalYear,
         fiscalyear.BalanceNonDeferralStart,
+        company.Company,
         account.TypeTemplate,
         account.Type,
         account.AccountTemplate,

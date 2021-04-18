@@ -193,5 +193,8 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_cancel_line_delegated">
             <field name="text">The moves "%(moves)s" contain grouped lines, cancelling them will ungroup the lines.</field>
         </record>
+        <record model="ir.message" id="msg_company_change_currency">
+            <field name="text">You cannot change the currency of a company which is associated with account moves.</field>
+        </record>
     </data>
 </tryton>
