@@ -18,7 +18,8 @@ class Sequence(metaclass=PoolMeta):
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
-            ], help="Restrict the sequence usage to the company.")
+            ],
+        help="Restricts the sequence usage to the company.")
 
     @classmethod
     def __setup__(cls):
