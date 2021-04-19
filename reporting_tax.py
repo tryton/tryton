@@ -302,8 +302,9 @@ class AEAT303(AEATReport):
         amounts['46'] = amounts['27'] - amounts['45']
         amounts['64'] = amounts['46'] + amounts['58'] + amounts['76']
         amounts['66'] = amounts['64'] * Decimal(amounts['65']) / Decimal(100.0)
-        amounts['67'] = amount_to_compensate
-        amounts['69'] = (amounts['66'] + amounts['77'] - amounts['67']
+        amounts['110'] = amounts['78'] = amount_to_compensate
+        amounts['87'] = amounts['110'] - amounts['78']
+        amounts['69'] = (amounts['66'] + amounts['77'] - amounts['78']
             + amounts['68'])
         amounts['71'] = (amounts['69'] - amounts['70'])
         amounts['88'] = (amounts['80'] + amounts['81'] - amounts['93']
