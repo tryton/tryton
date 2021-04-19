@@ -105,7 +105,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
         'on_change_with_unit_digits')
     fixed = fields.Boolean("Fixed",
         help="Check to make the quantity of the component independent "
-        "of the kit quantity")
+        "of the kit quantity.")
 
     @classmethod
     def get_product_types(cls):
