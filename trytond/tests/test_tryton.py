@@ -675,7 +675,7 @@ class ModuleTestCase(unittest.TestCase):
                         continue
                     self.assertTrue(getattr(model, func_name, None),
                         msg="Missing method '%(func_name)s' "
-                        "on model '%(model)s' for field '%(field)s" % {
+                        "on model '%(model)s' for field '%(field)s'" % {
                             'func_name': func_name,
                             'model': model.__name__,
                             'field': field_name,
