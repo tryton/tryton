@@ -218,7 +218,7 @@ class RequisitionLine(metaclass=PoolMeta):
                     Uom.compute_qty(
                         request.uom, request.quantity,
                         product.purchase_uom, round=True,
-                        factor=product.purchase_secondary_uom_normal_factor,
-                        rate=product.purchase_secondary_uom_normal_rate),
+                        factor=product.purchase_secondary_uom_normal_rate,
+                        rate=product.purchase_secondary_uom_normal_factor),
                     product.purchase_uom)
         return request
