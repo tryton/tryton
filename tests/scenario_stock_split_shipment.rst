@@ -55,7 +55,7 @@ Create shipment with 2 lines::
     >>> shipment1 = Shipment()
     >>> shipment1.customer = customer
 
-    >>> for i in range(2):
+    >>> for i in range(1, 3):
     ...     move = shipment1.outgoing_moves.new()
     ...     move.product = product
     ...     move.uom = unit
