@@ -74,15 +74,12 @@ class Purchase(
         }
     _depends = ['state']
 
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        depends=['state'], select=True)
+        depends=['state'])
     number = fields.Char('Number', size=None, readonly=True, select=True)
     reference = fields.Char('Reference', select=True)
     description = fields.Char('Description', size=None, states=_states,

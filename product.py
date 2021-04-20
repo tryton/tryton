@@ -285,12 +285,9 @@ class ProductSupplier(
     code = fields.Char('Code', size=None, select=True)
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
-    company = fields.Many2One('company.company', 'Company', required=True,
-        ondelete='CASCADE', select=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ])
+    company = fields.Many2One(
+        'company.company', "Company",
+        required=True, ondelete='CASCADE', select=True)
     lead_time = fields.TimeDelta('Lead Time',
         help="The time from confirming the purchase order to receiving the "
         "products.\n"
