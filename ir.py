@@ -8,17 +8,13 @@ except ImportError:
 from trytond.model import (
     ModelSQL, ModelView, fields, dualmethod, EvalEnvironment)
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 
 class Sequence(metaclass=PoolMeta):
     __name__ = 'ir.sequence'
-    company = fields.Many2One('company.company', 'Company',
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+    company = fields.Many2One(
+        'company.company', "Company",
         help="Restricts the sequence usage to the company.")
 
     @classmethod
