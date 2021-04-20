@@ -34,10 +34,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="Make the subscription belong to the company.")
 
