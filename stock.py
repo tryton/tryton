@@ -106,10 +106,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'])
     reference = fields.Char('Reference', select=1,
         states={
