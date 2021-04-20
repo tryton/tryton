@@ -72,12 +72,9 @@ class Statement(Workflow, ModelSQL, ModelView):
     _number_depends = _depends + ['validation']
 
     name = fields.Char('Name', required=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, states=_states, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        depends=_depends)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
+        states=_states, depends=_depends)
     journal = fields.Many2One('account.statement.journal', 'Journal',
         required=True, select=True,
         domain=[
