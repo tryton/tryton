@@ -85,15 +85,11 @@ class Promotion(
     __name__ = 'sale.promotion'
 
     name = fields.Char('Name', translate=True, required=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
         states={
             'readonly': Eval('id', 0) > 0,
-            },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        select=True)
+            })
     start_date = fields.Date('Start Date',
         domain=['OR',
             ('start_date', '<=', If(~Eval('end_date', None),
