@@ -128,14 +128,11 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             }, depends=['state'],
         help="When the stock is expected to be received.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the shipment is associated with.")
     reference = fields.Char("Reference", size=None, select=True,
@@ -576,14 +573,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             }, depends=['state'],
         help="When the stock is expected to be returned.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the shipment is associated with.")
     number = fields.Char('Number', size=None, select=True, readonly=True,
@@ -944,14 +938,11 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             }, depends=['state'],
         help="When the stock is expected to be sent.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
@@ -1592,14 +1583,11 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             }, depends=['state'],
         help="When the stock is expected to be returned.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
@@ -2029,14 +2017,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         help="When the stock is expected to be sent.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the shipment is associated with.")
     number = fields.Char('Number', size=None, select=True, readonly=True,

@@ -6,7 +6,7 @@ from sql import Literal, For
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
@@ -21,11 +21,8 @@ class Period(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') == 'closed',
             }, depends=['state'],
         help="When the stock period ends.")
-    company = fields.Many2One('company.company', 'Company', required=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         help="The company the stock period is associated with.")
     caches = fields.One2Many('stock.period.cache', 'period', 'Caches',
         readonly=True)

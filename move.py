@@ -245,14 +245,11 @@ class Move(Workflow, ModelSQL, ModelView):
         ('cancelled', 'Cancelled'),
         ], 'State', select=True, readonly=True,
         help="The current state of the stock move.")
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
         depends=['state'],
         help="The company the stock move is associated with.")
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
