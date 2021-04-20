@@ -722,11 +722,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
         states=_states)
     childs = fields.One2Many('account.tax', 'parent', 'Children')
-    company = fields.Many2One('company.company', 'Company', required=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ], select=True)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
             ('company', '=', Eval('company')),
@@ -1386,11 +1383,8 @@ class TaxRule(ModelSQL, ModelView):
         }
     name = fields.Char('Name', required=True, states=_states)
     kind = fields.Selection(KINDS, 'Kind', required=True, states=_states)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ])
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True)
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
     template_override = fields.Boolean("Override Template",

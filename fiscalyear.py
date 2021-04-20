@@ -51,11 +51,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
-    company = fields.Many2One('company.company', 'Company', required=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ], select=True)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True)
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod
