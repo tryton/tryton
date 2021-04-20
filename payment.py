@@ -439,12 +439,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
         depends=['state', 'identification_readonly'])
     identification_readonly = fields.Function(fields.Boolean(
             'Identification Readonly'), 'get_identification_readonly')
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
@@ -726,12 +722,8 @@ class Message(Workflow, ModelSQL, ModelView):
             ('in', 'IN'),
             ('out', 'OUT'),
             ], 'Type', required=True, states=_states, depends=_depends)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
