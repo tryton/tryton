@@ -95,11 +95,12 @@ class Quotation(Workflow, ModelSQL, ModelView):
         help="Number incremented each time the quotation is sent.")
     reference = fields.Char('Reference', select=True,
         help="The reference used by the supplier.")
-    company = fields.Many2One('company.company', 'Company', required=True,
-        readonly=True, select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ])
+    company = fields.Many2One(
+        'company.company', "Company",
+        required=True, select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')])
     supplier = fields.Many2One(
