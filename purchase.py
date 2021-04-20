@@ -96,15 +96,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     _depends = ['state']
 
     company = fields.Many2One(
-        'company.company', 'Company', required=True,
+        'company.company', "Company", required=True, select=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        depends=['lines'] + _depends, select=True)
+        depends=['lines'] + _depends)
     number = fields.Char('Number', readonly=True, select=True)
     description = fields.Char(
         'Description', states=_states, depends=_depends)
