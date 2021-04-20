@@ -60,19 +60,21 @@ class Group(ModelSQL, ModelView):
     __name__ = 'account.payment.group'
     _rec_name = 'number'
     number = fields.Char('Number', required=True, readonly=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        readonly=True, select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ])
+    company = fields.Many2One(
+        'company.company', "Company",
+        required=True, readonly=True, select=True)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, readonly=True, domain=[
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     kind = fields.Selection(KINDS, 'Kind', required=True, readonly=True)
-    payments = fields.One2Many('account.payment', 'group', 'Payments',
-        readonly=True)
+    payments = fields.One2Many(
+        'account.payment', 'group', 'Payments', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     currency_digits = fields.Function(fields.Integer("Currency Digits"),
         'on_change_with_currency_digits')
     payment_count = fields.Function(fields.Integer(
@@ -237,12 +239,9 @@ _DEPENDS = ['state']
 class Payment(Workflow, ModelSQL, ModelView):
     'Payment'
     __name__ = 'account.payment'
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, states=_STATES, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        depends=_DEPENDS)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
+        states=_STATES, depends=_DEPENDS)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, states=_STATES, domain=[
             ('company', '=', Eval('company', -1)),
