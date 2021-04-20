@@ -49,12 +49,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     }
     _depends = ['state']
 
-    company = fields.Many2One('company.company', 'Company', required=True,
-        states=_states, select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        depends=_depends)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
+        states=_states, depends=_depends)
     company_party = fields.Function(
         fields.Many2One(
             'party.party', "Company Party",
@@ -1714,11 +1711,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         states=_states, depends=_depends)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
-    company = fields.Many2One('company.company', 'Company', required=True,
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ], select=True, states=_states, depends=_depends)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
+        states=_states, depends=_depends)
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
