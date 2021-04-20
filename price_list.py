@@ -8,7 +8,6 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     DeactivableMixin, sequence_ordered
 from trytond.tools import decistmt
-from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -21,13 +20,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of the price list.")
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
-        help=("Make the price list belong to the company.\n"
-            "It defines the currency of the price list."))
+    company = fields.Many2One(
+        'company.company', "Company", required=True, select=True,
+        help="Make the price list belong to the company.\n"
+        "It defines the currency of the price list.")
     tax_included = fields.Boolean('Tax Included',
         help="Check if result's formula includes taxes.")
     unit = fields.Selection([
