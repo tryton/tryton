@@ -1413,23 +1413,29 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             if self.warehouse:
                 return self.warehouse.input_location.id
 
-    @fields.depends('product', 'quantity', 'moves', 'sale',
-        '_parent_sale.sale_date', methods=['shipping_planned_date'])
+    @fields.depends('moves', methods=['planned_shipping_date'])
     def on_change_with_shipping_date(self, name=None):
-        pool = Pool()
-        Date = pool.get('ir.date')
         if self.moves:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
                     if m.state != 'cancelled'))
             return min(dates, default=None)
+        self.planned_shipping_date
+
+    @property
+    @fields.depends(
+        'product', 'quantity', 'sale',
+        '_parent_sale.sale_date', '_parent_sale.shipping_date')
+    def planned_shipping_date(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             shipping_date = self.product.compute_shipping_date(date=date)
             if shipping_date == datetime.date.max:
                 shipping_date = None
-            elif self.shipping_planned_date:
-                shipping_date = max(shipping_date, self.shipping_planned_date)
+            elif self.sale and self.sale.shipping_date:
+                shipping_date = max(shipping_date, self.sale.shipping_date)
             if shipping_date:
                 shipping_date = max(shipping_date, Date.today())
             return shipping_date
@@ -1438,11 +1444,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.sale:
             return self.sale.currency.id
-
-    @property
-    @fields.depends('sale', '_parent_sale.shipping_date')
-    def shipping_planned_date(self):
-        return self.sale.shipping_date if self.sale else None
 
     @classmethod
     def get_sale_states(cls):
@@ -1613,16 +1614,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if move.on_change_with_unit_price_required():
             move.unit_price = self.unit_price
             move.currency = self.sale.currency
-        if self.moves:
-            # backorder can not be planned but shipping date could be used
-            # if set in the future
-            today = Date.today()
-            if self.shipping_date and self.shipping_date > today:
-                move.planned_date = self.shipping_date
-            else:
-                move.planned_date = today
-        else:
-            move.planned_date = self.shipping_date
+        move.planned_date = self.planned_shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
         return move
