@@ -145,6 +145,7 @@
                     'sort', 'context', 'size', 'filename', 'autocomplete',
                     'translate', 'create', 'delete', 'selection_change_with',
                     'schema_model', 'required', 'help_selection', 'help_field',
+                    'order',
                 ].forEach(function(name) {
                         if ((name in field) && (!(name in node_attrs))) {
                             node_attrs[name] = field[name];
