@@ -811,11 +811,9 @@ def post_import(pool, module, to_delete):
         except Exception:
             transaction.rollback()
             logger.error(
-                'Could not delete id: %d of model %s\n'
-                'There should be some relation '
-                'that points to this resource\n'
-                'You should manually fix this '
-                'and restart --update=module\n',
+                "Could not delete id %d from model %s.\n"
+                "There may be a relation that points to this resource "
+                "that must be manually fixed before restarting the update.",
                 db_id, model, exc_info=True)
             if 'active' in Model._fields:
                 try:
