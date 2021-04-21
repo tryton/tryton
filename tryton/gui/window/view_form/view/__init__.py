@@ -117,7 +117,7 @@ class XMLViewParser:
                     'relation_field', 'views', 'invisible', 'add_remove',
                     'sort', 'context', 'size', 'filename', 'autocomplete',
                     'translate', 'create', 'delete', 'selection_change_with',
-                    'schema_model', 'required']:
+                    'schema_model', 'required', 'order']:
                 if name in field:
                     node_attrs.setdefault(name, field[name])
         return node_attrs
