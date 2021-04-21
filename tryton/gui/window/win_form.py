@@ -68,7 +68,12 @@ class WinForm(NoModal, InfoBar):
                 label, icon = _("Delete"), 'tryton-delete'
             else:
                 label, icon = _("Cancel"), 'tryton-cancel'
-                self._initial_value = self.screen.current_record.get_eval()
+                record = self.screen.current_record
+                self._initial_value = record.get_on_change_value()
+                if record.parent and record.parent_name in record.group.fields:
+                    parent_field = record.group.fields[record.parent_name]
+                    self._initial_value[record.parent_name] = (
+                        parent_field.get_eval(record))
             self.but_cancel = self.win.add_button(
                 set_underline(label), Gtk.ResponseType.CANCEL)
             self.but_cancel.set_image(common.IconFactory.get_image(
