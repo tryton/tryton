@@ -634,8 +634,12 @@ class Screen(SignalEvent):
 
     @property
     def new_position(self):
-        if self.order:
-            for oexpr, otype in self.order:
+        if self.order is not None:
+            order = self.order
+        else:
+            order = self.default_order
+        if order:
+            for oexpr, otype in order:
                 if oexpr == 'id' and otype:
                     if otype.startswith('DESC'):
                         return 0
