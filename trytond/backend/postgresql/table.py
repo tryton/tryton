@@ -399,15 +399,11 @@ class TableHandler(TableHandlerInterface):
                     self._update_definitions(columns=True)
                 else:
                     logger.warning(
-                        'Unable to set column %s '
-                        'of table %s not null !\n'
-                        'Try to re-run: '
-                        'trytond.py --update=module\n'
-                        'If it doesn\'t work, update records '
-                        'and execute manually:\n'
-                        'ALTER TABLE "%s" ALTER COLUMN "%s" SET NOT NULL',
-                        column_name, self.table_name, self.table_name,
-                        column_name)
+                        "Unable to set not null on column %s of table %s.\n"
+                        "Try restarting one more time.\n"
+                        "If that doesn't work update the records and restart "
+                        "again.",
+                        column_name, self.table_name)
             elif action == 'remove':
                 if not self._columns[column_name]['notnull']:
                     return
