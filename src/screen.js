@@ -1436,10 +1436,16 @@
             }.bind(this));
         },
         get new_position() {
-            if (this.order) {
-                for (var j = 0; j < this.order.length; j++) {
-                    var oexpr = this.order[j][0],
-                        otype = this.order[j][1];
+            var order;
+            if (this.order !== null) {
+                order = this.order;
+            } else {
+                order = this.default_order;
+            }
+            if (order) {
+                for (var j = 0; j < order.length; j++) {
+                    var oexpr = order[j][0],
+                        otype = order[j][1];
                     if ((oexpr == 'id') && otype) {
                         if (otype.startsWith('DESC')) {
                             return 0;
