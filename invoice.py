@@ -50,8 +50,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     _depends = ['state']
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
-        states=_states, depends=_depends)
+        'company.company', 'Company', required=True, select=True,
+        states={
+            'readonly': _states['readonly'] | Eval('party', True),
+            },
+        depends=_depends + ['party'])
     company_party = fields.Function(
         fields.Many2One(
             'party.party', "Company Party",
