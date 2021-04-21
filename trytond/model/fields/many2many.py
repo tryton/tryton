@@ -468,8 +468,8 @@ class Many2Many(Field):
         definition['search_context'] = encoder.encode(self.search_context)
         definition['search_order'] = encoder.encode(self.search_order)
         definition['sortable'] &= hasattr(model, 'order_' + self.name)
-        definition['order'] = encoder.encode(
-            getattr(model, '_order', None)
+        definition['order'] = (
+            getattr(self.get_target(), '_order', None)
             if self.order is None else self.order)
         if self.size is not None:
             definition['size'] = encoder.encode(self.size)
