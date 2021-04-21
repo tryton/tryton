@@ -131,7 +131,15 @@
                     button_text = Sao.i18n.gettext('Delete');
                 } else {
                     button_text = Sao.i18n.gettext('Cancel');
-                    this._initial_value = this.screen.current_record.get_eval();
+                    var record = this.screen.current_record;
+                    this._initial_value = record.get_on_change_value();
+                    if (record.group.parent &&
+                        record.model.fields[record.group.parent_name]) {
+                        var parent_field = record.model.fields[
+                            record.group.parent_name];
+                        this._initial_value[record.group.parent_name] = (
+                            parent_field.get_eval(record));
+                    }
                 }
 
                 dialog.footer.append(jQuery('<button/>', {
