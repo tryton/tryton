@@ -65,10 +65,15 @@ class SaleOpportunity(
         select=True, depends=['party', 'state'],
         states=_states_stop)
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, states=_states_stop, domain=[
+        select=True,
+        states={
+            'readonly': _states_stop['readonly'] | Eval('party', True),
+            },
+        domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
-            ], depends=_depends_stop)
+            ],
+        depends=_depends_stop)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
