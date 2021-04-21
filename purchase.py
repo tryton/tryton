@@ -1436,19 +1436,25 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         else:
             return self.purchase.party.supplier_location.id
 
-    @fields.depends('product_supplier', 'quantity', 'moves', 'purchase',
-        '_parent_purchase.purchase_date',
-        'delivery_date_edit', 'delivery_date_store',
-        '_parent_purchase.delivery_date', '_parent_purchase.party')
+    @fields.depends('moves', methods=['planned_delivery_date'])
     def on_change_with_delivery_date(self, name=None):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        ProductSupplier = pool.get('purchase.product_supplier')
         if self.moves:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
                     if m.state != 'cancelled'))
             return min(dates, default=None)
+        return self.planned_delivery_date
+
+    @property
+    @fields.depends(
+        'product_supplier', 'quantity', 'purchase',
+        '_parent_purchase.purchase_date',
+        'delivery_date_edit', 'delivery_date_store',
+        '_parent_purchase.delivery_date', '_parent_purchase.party')
+    def planned_delivery_date(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        ProductSupplier = pool.get('purchase.product_supplier')
         product_supplier = self.product_supplier
         if not product_supplier:
             product_supplier = ProductSupplier()
@@ -1617,7 +1623,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
@@ -1652,15 +1657,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if move.on_change_with_unit_price_required():
             move.unit_price = self.unit_price
             move.currency = self.purchase.currency
-        if self.moves:
-            # backorder can not be planned but delivery date could be used
-            # if set in the future
-            if self.delivery_date and self.delivery_date > Date.today():
-                move.planned_date = self.delivery_date
-            else:
-                move.planned_date = None
-        else:
-            move.planned_date = self.delivery_date
+        move.planned_date = self.planned_delivery_date
         move.invoice_lines = self._get_move_invoice_lines(move_type)
         move.origin = self
         return move
