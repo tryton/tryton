@@ -494,7 +494,9 @@
                         this._initial_value);
                 } else if (record.has_changed()) {
                     record.cancel();
-                    cancel_prm = record.reload();
+                    cancel_prm = record.reload().then(function() {
+                        this.screen.display();
+                    }.bind(this));
                 }
                 if (added) {
                     record._changed.id = added;
@@ -502,7 +504,7 @@
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
             }
-            (cancel_prm || jQuery.when()).done(function() {
+            (cancel_prm || jQuery.when()).then(function() {
                 this.callback(result);
                 this.destroy();
             }.bind(this));
