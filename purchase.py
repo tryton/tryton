@@ -77,7 +77,11 @@ class Purchase(
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': (
+                (Eval('state') != 'draft')
+                | Eval('lines', [0])
+                | Eval('party', True)
+                | Eval('invoice_party', True)),
             },
         depends=['state'])
     number = fields.Char('Number', size=None, readonly=True, select=True)
