@@ -9,6 +9,7 @@ def sequence_ordered(
         field_label=lazy_gettext('ir.msg_sequence'),
         order='ASC NULLS FIRST'):
     "Returns a mixin to order the model by order fields"
+    assert order.startswith('ASC')
 
     class SequenceOrderedMixin(object):
         "Mixin to order model by a sequence field"
