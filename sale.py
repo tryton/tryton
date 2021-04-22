@@ -1425,7 +1425,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 None, (m.effective_date or m.planned_date for m in self.moves
                     if m.state != 'cancelled'))
             return min(dates, default=None)
-        self.planned_shipping_date
+        return self.planned_shipping_date
 
     @property
     @fields.depends(
