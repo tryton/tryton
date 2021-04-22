@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import operator
+
 from .record import Record
 from .field import Field, M2OField, ReferenceField
 from tryton import rpc
@@ -346,9 +348,13 @@ class Group(SignalEvent, list):
                     field.set_client(record, value)
         return record
 
-    def set_sequence(self, field='sequence'):
+    def set_sequence(self, field='sequence', position=-1):
         changed = False
         prev = None
+        if position == 0:
+            cmp = operator.gt
+        else:
+            cmp = operator.lt
         for record in self:
             # Assume not loaded records are correctly ordered
             # as far as we do not change any previous records.
@@ -362,11 +368,17 @@ class Group(SignalEvent, list):
                 if value is None:
                     if index:
                         update = True
-                    elif prev and record.id >= 0:
-                        update = record.id < prev.id
+                    elif prev:
+                        if record.id >= 0:
+                            update = cmp(record.id, prev.id)
+                        elif position == 0:
+                            update = True
                 elif value == index:
-                    if prev and record.id >= 0:
-                        update = record.id < prev.id
+                    if prev:
+                        if record.id >= 0:
+                            update = cmp(record.id, prev.id)
+                        elif position == 0:
+                            update = True
                 elif value <= (index or 0):
                     update = True
                 if update:

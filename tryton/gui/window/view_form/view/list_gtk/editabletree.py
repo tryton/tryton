@@ -125,7 +125,8 @@ class EditableTreeView(TreeView):
         res = method(new_record)
         sequence = self.view.attributes.get('sequence')
         if sequence:
-            model.group.set_sequence(field=sequence)
+            model.group.set_sequence(
+                field=sequence, position=self.view.screen.new_position)
         return res
 
     def set_cursor(

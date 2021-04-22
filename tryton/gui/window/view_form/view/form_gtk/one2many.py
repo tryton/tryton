@@ -348,7 +348,8 @@ class One2Many(Widget):
 
         def update_sequence():
             if sequence:
-                self.screen.group.set_sequence(field=sequence)
+                self.screen.group.set_sequence(
+                    field=sequence, position=self.screen.new_position)
 
         if self.screen.current_view.editable:
             self.screen.new()
@@ -408,7 +409,8 @@ class One2Many(Widget):
 
             sequence = self._sequence()
             if sequence:
-                self.screen.group.set_sequence(field=sequence)
+                self.screen.group.set_sequence(
+                    field=sequence, position=self.screen.new_position)
 
         search_set()
 
@@ -471,7 +473,8 @@ class One2Many(Widget):
                 self.screen.load(ids, modified=True)
                 self.screen.display(res_id=ids[0])
                 if sequence:
-                    self.screen.group.set_sequence(field=sequence)
+                    self.screen.group.set_sequence(
+                        field=sequence, position=self.screen.new_position)
             self.screen.set_cursor()
             self.wid_text.set_text('')
 

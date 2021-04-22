@@ -831,7 +831,9 @@ class ViewTree(View):
         selection.unselect_all()
         selection.select_path(record.get_index_path(model.group))
         if self.attributes.get('sequence'):
-            record.group.set_sequence(field=self.attributes['sequence'])
+            record.group.set_sequence(
+                field=self.attributes['sequence'],
+                position=self.screen.new_position)
         return True
 
     def drag_drop(self, treeview, context, x, y, time):
