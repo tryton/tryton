@@ -181,12 +181,12 @@ class Transport(xmlrpc.client.SafeTransport):
     def make_connection(self, host):
         if self._connection and host == self._connection[0]:
             return self._connection[1]
-        host, self._extra_headers, x509 = self.get_host_info(host)
+        chost, self._extra_headers, x509 = self.get_host_info(host)
 
         ssl_ctx = ssl.create_default_context(cafile=self.__ca_certs)
 
         def http_connection():
-            self._connection = host, http.client.HTTPConnection(host,
+            self._connection = host, http.client.HTTPConnection(chost,
                 timeout=CONNECT_TIMEOUT)
             self._connection[1].connect()
             sock = self._connection[1].sock
@@ -194,7 +194,7 @@ class Transport(xmlrpc.client.SafeTransport):
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
 
         def https_connection(allow_http=False):
-            self._connection = host, http.client.HTTPSConnection(host,
+            self._connection = host, http.client.HTTPSConnection(chost,
                 timeout=CONNECT_TIMEOUT, context=ssl_ctx)
             try:
                 self._connection[1].connect()
@@ -219,8 +219,8 @@ class Transport(xmlrpc.client.SafeTransport):
 
         fingerprint = ''
         if (self.__fingerprints is not None
-                and self.__fingerprints.exists(host)):
-            if self.__fingerprints.get(host):
+                and self.__fingerprints.exists(chost)):
+            if self.__fingerprints.get(chost):
                 fingerprint = https_connection()
             else:
                 http_connection()
@@ -228,7 +228,7 @@ class Transport(xmlrpc.client.SafeTransport):
             fingerprint = https_connection(allow_http=True)
 
         if self.__fingerprints is not None:
-            self.__fingerprints.set(host, fingerprint)
+            self.__fingerprints.set(chost, fingerprint)
         self._connection[1].timeout = DEFAULT_TIMEOUT
         self._connection[1].sock.settimeout(DEFAULT_TIMEOUT)
         return self._connection[1]
