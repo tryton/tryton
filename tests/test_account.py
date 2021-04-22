@@ -70,10 +70,12 @@ def create_chart(company, tax=False, chart='account.account_template_root_en'):
     create_chart.transition_create_account()
     receivable, = Account.search([
             ('type.receivable', '=', True),
+            ('party_required', '=', True),
             ('company', '=', company.id),
             ], limit=1)
     payable, = Account.search([
             ('type.payable', '=', True),
+            ('party_required', '=', True),
             ('company', '=', company.id),
             ], limit=1)
     create_chart.properties.company = company
