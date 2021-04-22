@@ -513,7 +513,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('requisition', '_parent_requisition.currency')
     def on_change_with_currency(self, name=None):
-        if self.requisition:
+        if self.requisition and self.requisition.currency:
             return self.requisition.currency.id
 
     @classmethod
