@@ -493,10 +493,15 @@
             };
             return jQuery.when().then(browse_child);
         };
-        array.set_sequence = function(field) {
+        array.set_sequence = function(field, position) {
             var changed = false;
             var prev = null;
-            var record, index, update, value;
+            var record, index, update, value, cmp;
+            if (position === 0) {
+                cmp = function(a, b) { return a > b; };
+            } else {
+                cmp = function(a, b) { return a < b; };
+            }
             for (var i=0; i < this.length; i++) {
                 record = this[i];
                 if (record.get_loaded([field]) || changed || record.id < 0) {
@@ -510,12 +515,20 @@
                     if (value === null) {
                         if (index) {
                             update = true;
-                        } else if (prev && (record.id >= 0)) {
-                            update = record.id < prev.id;
+                        } else if (prev) {
+                            if (record.id >= 0) {
+                                update = cmp(record.id, prev.id);
+                            } else if (position === 0) {
+                                update = true;
+                            }
                         }
                     } else if (value === index) {
-                        if (prev && (record.id >= 0)) {
-                            update = record.id < prev.id;
+                        if (prev) {
+                            if (record.id >= 0) {
+                                update = cmp(record.id, prev.id);
+                            } else if (position === 0) {
+                                update = true;
+                            }
                         }
                     } else if (value <= (index || 0)) {
                         update = true;

@@ -541,7 +541,8 @@
                 row.rows.forEach(child_redraw);
 
                 if (this.attributes.sequence) {
-                    row.record.group.set_sequence(this.attributes.sequence);
+                    row.record.group.set_sequence(
+                        this.attributes.sequence, this.screen.new_position);
                 }
             }.bind(this));
         },
@@ -1944,7 +1945,8 @@
                                             .then(function(record) {
                                                 var sequence = this.tree.attributes.sequence;
                                                 if (sequence) {
-                                                    record.group.set_sequence(sequence);
+                                                    record.group.set_sequence(
+                                                        sequence, this.tree.screen.new_position);
                                                 }
                                             }.bind(this));
                                     }

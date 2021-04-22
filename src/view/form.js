@@ -3264,7 +3264,8 @@ function eval_pyson(value){
                     this.screen.group.load(ids, true);
                     prm = this.screen.display();
                     if (sequence) {
-                        this.screen.group.set_sequence(sequence);
+                        this.screen.group.set_sequence(
+                            sequence, this.screen.new_position);
                     }
                 }
                 prm.done(function() {
@@ -3313,7 +3314,8 @@ function eval_pyson(value){
             var sequence = this._sequence();
             var update_sequence = function() {
                 if (sequence) {
-                    this.screen.group.set_sequence(sequence);
+                    this.screen.group.set_sequence(
+                        sequence, this.screen.new_position);
                 }
             }.bind(this);
             if (this.screen.current_view.type == 'form' ||
@@ -3394,7 +3396,8 @@ function eval_pyson(value){
                         });
                         var sequence = this._sequence();
                         if (sequence) {
-                            screen.group.set_sequence(sequence);
+                            screen.group.set_sequence(
+                                sequence, screen.new_position);
                         }
                     }.bind(this);
 
