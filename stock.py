@@ -138,7 +138,7 @@ class CreateDPDShipping(Wizard):
         for package, label, parcel in zip_longest(packages, labels, parcels):
             package.shipping_label = fields.Binary.cast(label.getvalue())
             package.shipping_reference = parcel.parcelLabelNumber
-        Package.save(shipment.root_packages)
+        Package.save(packages)
         shipment.save()
 
         return 'end'
