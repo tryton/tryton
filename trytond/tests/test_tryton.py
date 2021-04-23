@@ -398,7 +398,7 @@ class ModuleTestCase(unittest.TestCase):
             if depend.startswith('_parent_'):
                 depend = depend[len('_parent_'):]
             self.assertIsInstance(getattr(model, depend, None), fields.Field,
-                msg='Unknonw "%s" in %s' % (depend, qualname))
+                msg='Unknown "%s" in %s' % (depend, qualname))
             if nested:
                 target = getattr(model, depend).get_target()
                 test_depend_exists(target, nested, qualname)
