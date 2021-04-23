@@ -80,14 +80,6 @@ def without_check_access(func):
     return wrapper
 
 
-def without_rule(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        with Transaction().set_user(0):
-            return func(*args, **kwargs)
-    return wrapper
-
-
 def cache_size():
     return Transaction().context.get('_record_cache_size', _cache_record)
 
@@ -1058,12 +1050,9 @@ class ModelStorage(Model):
 
     @classmethod
     @without_check_access
-    @without_rule
     def _validate(cls, records, field_names=None):
         pool = Pool()
-        # Ensure that records are readable
-        # TODO: remove when rules support _check_access
-        records = cls.browse(records)
+        records = list(records)  # convert iterator to list
 
         ctx_pref = {}
         if Transaction().user:
