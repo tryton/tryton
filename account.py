@@ -52,11 +52,15 @@ class InvoiceLine(metaclass=PoolMeta):
         pattern = super(InvoiceLine, self)._get_tax_rule_pattern()
 
         from_country, to_country = None, None
-        if SaleLine and isinstance(self.origin, SaleLine):
+        if (SaleLine
+                and isinstance(self.origin, SaleLine)
+                and self.origin.id >= 0):
             if self.origin.warehouse.address:
                 from_country = self.origin.warehouse.address.country
             to_country = self.origin.sale.shipment_address.country
-        elif PurchaseLine and isinstance(self.origin, PurchaseLine):
+        elif (PurchaseLine
+                and isinstance(self.origin, PurchaseLine)
+                and self.origin.id >= 0):
             from_country = self.origin.purchase.invoice_address.country
             if self.origin.purchase.warehouse.address:
                 to_country = self.origin.purchase.warehouse.address.country
