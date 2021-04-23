@@ -1234,6 +1234,12 @@
     QUnit.test('PYSON eval', function() {
         QUnit.strictEqual(eval_pyson('True'), true, "eval_pyson('True')");
         QUnit.strictEqual(eval_pyson('False'), false, "eval_pyson('False')");
+        QUnit.strictEqual(
+            eval_pyson('And(True, True).toString()'),
+            "And(true, true)", "eval_pyson('And(True, True)').toString()");
+        QUnit.strictEqual(
+            eval_pyson('Or(True, False).toString()'),
+            "Or(true, false)", "eval_pyson('Or(True, False)').toString()");
     });
 
     QUnit.test('DomainParser.group_operator', function() {

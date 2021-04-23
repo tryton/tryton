@@ -267,8 +267,8 @@
     };
 
 
-    Sao.PYSON.eval.And = function(statements) {
-        return Sao.PYSON.And.new_(statements);
+    Sao.PYSON.eval.And = function() {
+        return Sao.PYSON.And.new_(arguments);
     };
     Sao.PYSON.And = Sao.class_(Sao.PYSON.PYSON, {
         init: function() {
@@ -317,8 +317,8 @@
     };
 
 
-    Sao.PYSON.eval.Or = function(statements) {
-        return Sao.PYSON.Or.new_(statements);
+    Sao.PYSON.eval.Or = function() {
+        return Sao.PYSON.Or.new_(arguments);
     };
     Sao.PYSON.Or = Sao.class_(Sao.PYSON.And, {
         pyson: function() {
