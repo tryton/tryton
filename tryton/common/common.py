@@ -729,7 +729,7 @@ class ConcurrencyDialog(UniqueDialog):
                 Window.create(
                     model,
                     res_id=id_,
-                    name=_("Compare: %s", name),
+                    name=_("Compare: %s") % name,
                     domain=[('id', '=', id_)],
                     context=context,
                     mode=['form'])
