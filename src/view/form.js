@@ -4229,6 +4229,7 @@ function eval_pyson(value){
         class_: 'form-url',
         init: function(view, attributes) {
             Sao.View.Form.URL._super.init.call(this, view, attributes);
+            this.input.attr('type', 'url');
             this.button = jQuery('<a/>', {
                 'class': 'btn btn-default',
                 'target': '_blank',
@@ -4284,6 +4285,10 @@ function eval_pyson(value){
 
     Sao.View.Form.Email = Sao.class_(Sao.View.Form.URL, {
         class_: 'form-email',
+        init: function(view, attributes) {
+            Sao.View.Form.Email._super.init.call(this, view, attributes);
+            this.input.attr('type', 'email');
+        },
         set_url: function(value) {
             Sao.View.Form.Email._super.set_url.call(this, 'mailto:' + value);
         }
