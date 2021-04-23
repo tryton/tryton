@@ -142,13 +142,15 @@
             this.process();
         },
         _get_button: function(definition) {
-            var button = new Sao.common.Button(definition);
-            this.states[definition.state] = button;
+            var style = 'btn-default';
             if (definition.default) {
-                button.el.addClass('btn-primary');
+                style = 'btn-primary';
             } else if (definition.state == this.end_state) {
-                button.el.addClass('btn-link');
+                style = 'btn-link';
             }
+            var button = new Sao.common.Button(
+                definition, undefined, undefined, style);
+            this.states[definition.state] = button;
             return button;
         },
         update_buttons: function() {

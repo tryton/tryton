@@ -807,7 +807,7 @@
     };
 
     Sao.common.Button = Sao.class_(Object, {
-        init: function(attributes, el, size) {
+        init: function(attributes, el, size, style) {
             this.attributes = attributes;
             if (el) {
                 this.el = el;
@@ -830,7 +830,8 @@
                 }).prependTo(this.el);
                 this.icon.hide();
             }
-            this.el.addClass('btn btn-default ' + (size || ''));
+            this.el.addClass(
+                ['btn', (style || 'btn-default'), (size || '')].join(' '));
             this.el.attr('type', 'button');
             this.icon.attr('aria-hidden', true);
             this.set_icon(attributes.icon);
