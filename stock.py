@@ -119,8 +119,6 @@ class ShipmentOut(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
-        # The shipment reference will be set by the shipping service
-        cls.reference.readonly = True
         cls._buttons.update({
                 'create_shipping': {
                     'invisible': (Eval('reference', False)
