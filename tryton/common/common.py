@@ -35,6 +35,7 @@ try:
     import ssl
 except ImportError:
     ssl = None
+import zipfile
 from threading import Lock
 
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk
@@ -504,6 +505,15 @@ def file_open(filename, type=None, print_p=False):
             save_p.close()
             file_p.close()
 
+    if print_p and type == 'zip':
+        with zipfile.ZipFile(filename, 'r') as zip_file:
+            for name in zip_file.namelist():
+                ztype = os.path.splitext(name)
+                with zip_file.open(name) as zfile:
+                    zfilename = file_write(name, zfile.read())
+                    file_open(zfilename, type=ztype, print_p=True)
+        return
+
     if os.name == 'nt':
         operation = 'open'
         if print_p:
@@ -512,6 +522,20 @@ def file_open(filename, type=None, print_p=False):
             os.startfile(os.path.normpath(filename), operation)
         except WindowsError:
             save()
+    elif print_p:
+        if type in {'odt', 'odp', 'ods', 'odg'}:
+            try:
+                subprocess.Popen(['soffice', '-p', filename])
+            except OSError:
+                save()
+        else:
+            try:
+                subprocess.Popen(['lpr', filename])
+            except OSError:
+                try:
+                    subprocess.Popen(['lp', filename])
+                except OSError:
+                    save()
     elif sys.platform == 'darwin':
         try:
             subprocess.Popen(['/usr/bin/open', filename])
