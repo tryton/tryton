@@ -496,11 +496,30 @@ class FieldTranslate(Field):
 
     def _get_translation_join(self, Model, name,
             translation, model, table, from_, language):
+        if backend.name == 'postgresql' and _sql_version >= (1, 1, 0):
+            query = translation.select(
+                translation.res_id.as_('res_id'),
+                translation.value.as_('value'),
+                translation.name.as_('name'),
+                distinct=True,
+                distinct_on=[translation.res_id, translation.name],
+                order_by=[
+                    translation.res_id,
+                    translation.name,
+                    translation.id.desc])
+        else:
+            query = translation.select(
+                translation.res_id.as_('res_id'),
+                Min(translation.value).as_('value'),
+                translation.name.as_('name'),
+                group_by=[translation.res_id, translation.name])
         if Model.__name__ == 'ir.model':
             name_ = Concat(Concat(table.model, ','), name)
             type_ = 'model'
             res_id = -1
         elif Model.__name__ == 'ir.model.field':
+            from_ = from_.join(model, 'LEFT',
+                condition=model.id == table.model)
             name_ = Concat(Concat(model.model, ','), table.name)
             if name == 'field_description':
                 type_ = 'field'
@@ -511,26 +530,13 @@ class FieldTranslate(Field):
             name_ = '%s,%s' % (Model.__name__, name)
             type_ = 'model'
             res_id = table.id
-        if backend.name == 'postgresql' and _sql_version >= (1, 1, 0):
-            query = translation.select(
-                translation.res_id.as_('res_id'),
-                translation.value.as_('value'),
-                distinct=True,
-                distinct_on=[translation.res_id],
-                order_by=[translation.res_id, translation.id.desc])
-        else:
-            query = translation.select(
-                translation.res_id.as_('res_id'),
-                Min(translation.value).as_('value'),
-                group_by=[translation.res_id])
         query.where = (
             (translation.lang == language)
             & (translation.type == type_)
-            & (translation.name == name_)
             & (translation.fuzzy == Literal(False))
             )
         return query, from_.join(query, 'LEFT',
-            condition=(query.res_id == res_id))
+            condition=(query.res_id == res_id) & (query.name == name_))
 
     def convert_domain(self, domain, tables, Model):
         from trytond.ir.lang import get_parent_language
