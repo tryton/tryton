@@ -14,6 +14,58 @@ class IrTestCase(ModuleTestCase):
     module = 'ir'
 
     @with_transaction()
+    def test_model_search_name(self):
+        "Test searching on name of model"
+        pool = Pool()
+        Model = pool.get('ir.model')
+
+        record, = Model.search([
+                ('name', '=', "Language"),
+                ('module', '=', 'ir'),
+                ])
+        self.assertEqual(record.name, "Language")
+
+    @with_transaction()
+    def test_model_search_order(self):
+        "Test searching and ordering on name of model"
+        pool = Pool()
+        Model = pool.get('ir.model')
+
+        records = Model.search([
+                ('name', 'in', ["Language", "Module"]),
+                ('module', '=', 'ir'),
+                ],
+            order=[('name', 'ASC')])
+        self.assertEqual([r.name for r in records], ["Language", "Module"])
+
+    @with_transaction()
+    def test_model_field_search_description(self):
+        "Test searching on description of model field"
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+
+        field, = ModelField.search([
+                ('field_description', '=', "Name"),
+                ('model.model', '=', 'ir.lang'),
+                ('module', '=', 'ir'),
+                ])
+        self.assertEqual(field.field_description, "Name")
+
+    @with_transaction()
+    def test_model_field_search_order_description(self):
+        "Test searching and ordering on description of model field"
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+
+        fields = ModelField.search([
+                ('field_description', 'in', ["Name", "Code"]),
+                ('model.model', '=', 'ir.lang'),
+                ('module', '=', 'ir'),
+                ])
+        self.assertEqual(
+            [f.field_description for f in fields], ["Code", "Name"])
+
+    @with_transaction()
     def test_sequence_substitutions(self):
         'Test Sequence Substitutions'
         pool = Pool()
