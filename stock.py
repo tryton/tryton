@@ -18,8 +18,10 @@ class Location(metaclass=PoolMeta):
             ('type', '=', 'warehouse'),
             ],
         states={
-            'invisible': ((Eval('type') != 'storage')
-                | Bool(Eval('warehouse'))),
+            'invisible': (
+                (Eval('type') != 'storage')
+                | Bool(Eval('warehouse'))
+                | (Eval('id', -1) < 0)),
             },
         depends=['type', 'warehouse'])
 
