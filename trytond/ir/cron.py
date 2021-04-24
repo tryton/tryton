@@ -30,11 +30,19 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('months', 'Months'),
             ], "Interval Type", sort=False, required=True)
     minute = fields.Integer("Minute",
+        domain=['OR',
+            ('minute', '=', None),
+            [('minute', '>=', 0), ('minute', '<=', 59)],
+            ],
         states={
             'invisible': Eval('interval_type').in_(['minutes']),
             },
         depends=['interval_type'])
     hour = fields.Integer("Hour",
+        domain=['OR',
+            ('hour', '=', None),
+            [('hour', '>=', 0), ('hour', '<=', 23)],
+            ],
         states={
             'invisible': Eval('interval_type').in_(['minutes', 'hours']),
             },
@@ -47,6 +55,10 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             },
         depends=['interval_type'])
     day = fields.Integer("Day",
+        domain=['OR',
+            ('day', '=', None),
+            ('day', '>=', 0),
+            ],
         states={
             'invisible': Eval('interval_type').in_(
                 ['minutes', 'hours', 'days', 'weeks']),
