@@ -160,5 +160,5 @@ class TrytonConfigParser(configparser.ConfigParser):
 
 config = TrytonConfigParser()
 
-if os.path.basename(main.__file__) != 'trytond-stat':
+if os.path.basename(getattr(main, '__file__', '')) != 'trytond-stat':
     status.start(config.get('database', 'path'))
