@@ -116,6 +116,10 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
     def on_change_with_parent_type(self, name):
         raise NotImplementedError
 
+    @property
+    def parent_uom(self):
+        raise NotImplementedError
+
     @fields.depends('product', 'unit', 'quantity',
         methods=['on_change_with_product_unit_category'])
     def on_change_product(self):
@@ -145,7 +149,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
             line.quantity = self.quantity
         else:
             quantity = Uom.compute_qty(
-                unit, quantity, self.product.default_uom, round=False)
+                unit, quantity, self.parent_uom, round=False)
             line.quantity = self.unit.round(quantity * self.quantity)
         return line
 
@@ -206,6 +210,13 @@ class Component(ComponentMixin, ModelSQL, ModelView):
             return self.parent_product.type
         elif self.parent_template:
             return self.parent_template.type
+
+    @property
+    def parent_uom(self):
+        if self.parent_product:
+            return self.parent_product.default_uom
+        elif self.parent_template:
+            return self.parent_template.default_uom
 
     def get_rec_name(self, name):
         return super().get_rec_name(name) + (

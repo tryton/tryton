@@ -57,6 +57,7 @@ Create products::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> meter, = ProductUom.find([('name', '=', "Meter")])
     >>> ProductTemplate = Model.get('product.template')
 
     >>> template = ProductTemplate()
@@ -73,7 +74,7 @@ Create products::
 
     >>> template = ProductTemplate()
     >>> template.name = "Product 2"
-    >>> template.default_uom = unit
+    >>> template.default_uom = meter
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
     >>> template.account_category = account_category
