@@ -66,6 +66,19 @@ class IrTestCase(ModuleTestCase):
             [f.field_description for f in fields], ["Code", "Name"])
 
     @with_transaction()
+    def test_model_field_lazy(self):
+        "Test searching on lazy string of model field"
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+
+        field, = ModelField.search([
+                ('field_description', '=', "ID"),
+                ('model.model', '=', 'ir.lang'),
+                ('module', '=', 'ir'),
+                ])
+        self.assertEqual(field.field_description, "ID")
+
+    @with_transaction()
     def test_sequence_substitutions(self):
         'Test Sequence Substitutions'
         pool = Pool()

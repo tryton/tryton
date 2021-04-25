@@ -19,7 +19,7 @@ from relatorio.templates.opendocument import get_zip_file
 
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.tools.string_ import LazyString
+from trytond.tools.string_ import LazyString, StringPartitioned
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -327,6 +327,26 @@ class Translation(ModelSQL, ModelView):
                 else:
                     name = record.model + ',' + field_name
                 translations[record.id] = cls.get_source(name, ttype, lang)
+                if translations[record.id] is None:
+                    with Transaction().set_context(language=lang):
+                        if ttype in {'field', 'help'}:
+                            field = getattr(
+                                pool.get(record.model.model), record.name)
+                            translations[record.id] = ''
+                            if ttype == 'field':
+                                value = field.string
+                            else:
+                                value = field.help
+                        else:
+                            model = pool.get(record.model)
+                            if not model.__doc__:
+                                continue
+                            value = model._get_name()
+                        if isinstance(value, StringPartitioned):
+                            for source in value:
+                                translations[record.id] += source
+                        else:
+                            translations[record.id] = value
             return translations
 
         # Don't use cache for fuzzy translation
