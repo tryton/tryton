@@ -453,7 +453,10 @@ class Many2Many(Field):
             relation_domain, tables=relation_tables)
         query_table = convert_from(None, relation_tables)
         query = query_table.select(origin, where=expression)
-        return table.id.in_(query)
+        expression = table.id.in_(query)
+        if operator.startswith('!') or operator.startswith('not '):
+            expression |= ~table.id.in_(relation.select(origin))
+        return expression
 
     def definition(self, model, language):
         encoder = PYSONEncoder()
