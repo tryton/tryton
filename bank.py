@@ -23,7 +23,7 @@ class Bank(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party',) + tuple(clause[1:])]
+        return [('party.rec_name',) + tuple(clause[1:])]
 
     @fields.depends('bic')
     def on_change_with_bic(self):
@@ -69,8 +69,8 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             bool_op = 'OR'
         return [bool_op,
             ('bank.rec_name',) + tuple(clause[1:]),
-            ('currency',) + tuple(clause[1:]),
-            ('numbers',) + tuple(clause[1:]),
+            ('currency.rec_name',) + tuple(clause[1:]),
+            ('numbers.rec_name',) + tuple(clause[1:]),
             ]
 
 
