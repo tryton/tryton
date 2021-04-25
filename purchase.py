@@ -11,6 +11,7 @@ from trytond.modules.company import CompanyReport
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool, If, Id
+from trytond.tools import sortable_values
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
@@ -515,7 +516,8 @@ class CreatePurchaseRequestQuotation(Wizard):
         reqs = [r for r in self.records if r.state in ['draft', 'quotation']]
         for supplier in self.ask_suppliers.suppliers:
             reqs = [r for r in reqs if self.filter_request(r, supplier)]
-            sorted_reqs = sorted(reqs, key=lambda r: r.company)
+            sorted_reqs = sorted(
+                reqs, key=sortable_values(self._group_request_key))
             for key, grouped_requests in groupby(sorted_reqs,
                     key=self._group_request_key):
                 quotation = self.get_quotation(supplier, key)
