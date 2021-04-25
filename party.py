@@ -22,7 +22,7 @@ class Party(metaclass=PoolMeta):
             code_value = lstrip_wildcard(clause[2])
         return [bool_op,
             domain,
-            ('bank_accounts.numbers',
+            ('bank_accounts.numbers.rec_name',
                 clause[1], code_value) + tuple(clause[3:]),
             ]
 
