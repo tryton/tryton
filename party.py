@@ -21,7 +21,7 @@ class Party(metaclass=PoolMeta):
             bool_op = 'OR'
         return [bool_op,
             domain,
-            ('bank_accounts',) + tuple(clause[1:]),
+            ('bank_accounts.rec_name',) + tuple(clause[1:]),
             ]
 
 

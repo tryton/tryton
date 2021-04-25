@@ -22,7 +22,7 @@ class Bank(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party',) + tuple(clause[1:])]
+        return [('party.rec_name',) + tuple(clause[1:])]
 
 
 class BankAccount(DeactivableMixin, ModelSQL, ModelView):
@@ -42,7 +42,7 @@ class BankAccount(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('numbers',) + tuple(clause[1:])]
+        return [('numbers.rec_name',) + tuple(clause[1:])]
 
 
 class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
