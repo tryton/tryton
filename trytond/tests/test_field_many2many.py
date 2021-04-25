@@ -39,6 +39,21 @@ class CommonTestCaseMixin:
         self.assertListEqual(many2manys, [many2many])
 
     @with_transaction()
+    def test_search_equals_no_link(self):
+        "Test search many2many equals without link"
+        Many2Many = self.Many2Many()
+        many2many, no_link = Many2Many.create([{
+                    'targets': [('create', [{'name': "Target"}])],
+                    }, {
+                    }])
+
+        many2manys = Many2Many.search([
+                ('targets', '=', "Target"),
+                ])
+
+        self.assertListEqual(many2manys, [many2many])
+
+    @with_transaction()
     def test_search_non_equals(self):
         "Test search many2many non equals"
         Many2Many = self.Many2Many()
@@ -83,6 +98,21 @@ class CommonTestCaseMixin:
                 ])
 
         self.assertListEqual(many2manys, [many2many1])
+
+    @with_transaction()
+    def test_search_non_equals_no_link(self):
+        "Test search many2many non equals without link"
+        Many2Many = self.Many2Many()
+        many2many, no_link = Many2Many.create([{
+                    'targets': [('create', [{'name': "Target"}])],
+                    }, {
+                    }])
+
+        many2manys = Many2Many.search([
+                ('targets', '!=', "Target"),
+                ])
+
+        self.assertListEqual(many2manys, [no_link])
 
     @with_transaction()
     def test_search_in(self):

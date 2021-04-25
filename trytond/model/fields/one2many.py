@@ -326,4 +326,6 @@ class One2Many(Field):
 
         if operator == 'not where':
             expression = ~expression
+        elif operator.startswith('!') or operator.startswith('not '):
+            expression |= ~table.id.in_(target.select(origin))
         return expression
