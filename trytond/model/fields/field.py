@@ -496,6 +496,51 @@ class FieldTranslate(Field):
 
     def _get_translation_join(self, Model, name,
             translation, model, table, from_, language):
+        if Model.__name__ == 'ir.model.field':
+            pool = Pool()
+            IrModel = pool.get('ir.model')
+            ModelData = pool.get('ir.model.data')
+            ModelField = pool.get('ir.model.field')
+            Translation = pool.get('ir.translation')
+            model = IrModel.__table__()
+            model_data = ModelData.__table__()
+            model_field = ModelField.__table__()
+            msg_trans = Translation.__table__()
+            if name == 'field_description':
+                type_ = 'field'
+            else:
+                type_ = 'help'
+            translation = translation.select(
+                translation.id.as_('id'),
+                translation.res_id.as_('res_id'),
+                translation.value.as_('value'),
+                translation.name.as_('name'),
+                translation.lang.as_('lang'),
+                translation.type.as_('type'),
+                translation.fuzzy.as_('fuzzy'),
+                )
+            translation |= (msg_trans
+                .join(model_data,
+                    condition=(msg_trans.res_id == model_data.db_id)
+                    & (model_data.model == 'ir.message')
+                    & (msg_trans.name == 'ir.message,text'))
+                .join(model_field,
+                    condition=Concat(
+                        Concat(model_data.module, '.'),
+                        model_data.fs_id) == getattr(model_field, name))
+                .join(model,
+                    condition=model_field.model == model.id)
+                .select(
+                    msg_trans.id.as_('id'),
+                    Literal(-1).as_('res_id'),
+                    msg_trans.value.as_('value'),
+                    Concat(
+                        Concat(model.model, ','),
+                        model_field.name).as_('name'),
+                    msg_trans.lang.as_('lang'),
+                    Literal(type_).as_('type'),
+                    msg_trans.fuzzy.as_('fuzzy'),
+                    ))
         if backend.name == 'postgresql' and _sql_version >= (1, 1, 0):
             query = translation.select(
                 translation.res_id.as_('res_id'),

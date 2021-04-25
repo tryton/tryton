@@ -25,7 +25,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder, Eval
 from trytond.tools import file_open, grouped_slice, cursor_dict
-from trytond.tools.string_ import LazyString
+from trytond.tools.string_ import LazyString, StringPartitioned
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Wizard, StateView, StateTransition, StateAction, Button)
@@ -321,6 +321,26 @@ class Translation(ModelSQL, ModelView):
                 else:
                     name = record.model + ',' + field_name
                 translations[record.id] = cls.get_source(name, ttype, lang)
+                if translations[record.id] is None:
+                    with Transaction().set_context(language=lang):
+                        if ttype in {'field', 'help'}:
+                            field = getattr(
+                                pool.get(record.model.model), record.name)
+                            translations[record.id] = ''
+                            if ttype == 'field':
+                                value = field.string
+                            else:
+                                value = field.help
+                        else:
+                            model = pool.get(record.model)
+                            if not model.__doc__:
+                                continue
+                            value = model._get_name()
+                        if isinstance(value, StringPartitioned):
+                            for source in value:
+                                translations[record.id] += source
+                        else:
+                            translations[record.id] = value
             return translations
 
         # Don't use cache for fuzzy translation
