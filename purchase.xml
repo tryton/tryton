@@ -429,6 +429,22 @@ this repository contains the full copyright notices and license terms. -->
             action="act_product_supplier_form"
             id="menu_product_supplier"/>
 
+        <record model="ir.model.access" id="access_product_supplier">
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_supplier_purchase">
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_product_supplier_companies">
             <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
