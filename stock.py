@@ -113,7 +113,7 @@ class Move(metaclass=PoolMeta):
         if self.secondary_unit:
             # Stay valid even if origin has been deleted
             category = self.secondary_unit.category.id
-        if isinstance(self.origin, self.__class__):
+        if isinstance(self.origin, self.__class__) and self.origin != self:
             if self.origin.product_secondary_uom_category:
                 category = self.origin.product_secondary_uom_category.id
         return category
@@ -124,12 +124,12 @@ class Move(metaclass=PoolMeta):
 
     @property
     def secondary_uom_factor(self):
-        if isinstance(self.origin, self.__class__):
+        if isinstance(self.origin, self.__class__) and self.origin != self:
             return self.origin.secondary_uom_factor
 
     @property
     def secondary_uom_rate(self):
-        if isinstance(self.origin, self.__class__):
+        if isinstance(self.origin, self.__class__) and self.origin != self:
             return self.origin.secondary_uom_rate
 
 
