@@ -499,14 +499,16 @@ class CreatePurchaseRequestQuotation(Wizard):
         quotations = []
         lines = []
 
-        reqs = [r for r in self.records if r.state in ['draft', 'quotation']]
+        requests = [
+            r for r in self.records if r.state in ['draft', 'quotation']]
         for supplier in self.ask_suppliers.suppliers:
             quotation = Quotation()
             quotation.supplier = supplier
             quotation.supplier_address = supplier.address_get()
-            reqs = [r for r in reqs if self.filter_request(r, supplier)]
+            sub_requests = [
+                r for r in requests if self.filter_request(r, supplier)]
             sorted_reqs = sorted(
-                reqs, key=sortable_values(self._group_request_key))
+                sub_requests, key=sortable_values(self._group_request_key))
             for key, grouped_requests in groupby(sorted_reqs,
                     key=self._group_request_key):
                 for f, v in key:
@@ -519,7 +521,7 @@ class CreatePurchaseRequestQuotation(Wizard):
         QuotationLine.save(lines)
         Quotation.save(quotations)
 
-        self.model.update_state(reqs)
+        self.model.update_state(requests)
         self.succeed.number_quotations = len(quotations)
         return 'succeed'
 
