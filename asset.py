@@ -784,8 +784,8 @@ class UpdateAssetShowDepreciation(ModelView):
     amount = fields.Numeric('Amount', readonly=True)
     date = fields.Date('Date', required=True,
         domain=[
-            ('date', '>', Eval('latest_move_date')),
-            ('date', '<', Eval('next_depreciation_date')),
+            ('date', '>=', Eval('latest_move_date')),
+            ('date', '<=', Eval('next_depreciation_date')),
             ],
         depends=['latest_move_date', 'next_depreciation_date'],
         help=('The date must be between the last update/depreciation date '
@@ -894,7 +894,7 @@ class UpdateAsset(Wizard):
         asset = Asset(Transaction().context['active_id'])
         latest_move_date = self.show_move.latest_move_date
         next_date = self.show_move.next_depreciation_date
-        if not (latest_move_date < self.show_move.date < next_date):
+        if not (latest_move_date <= self.show_move.date <= next_date):
             raise ValueError('The update move date is invalid')
         move = self.get_move(asset)
         move.lines = self.get_move_lines(asset)
