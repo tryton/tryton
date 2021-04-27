@@ -330,15 +330,21 @@ class Translation(ModelSQL, ModelView):
                 if translations[record.id] is None:
                     with Transaction().set_context(language=lang):
                         if ttype in {'field', 'help'}:
-                            field = getattr(
-                                pool.get(record.model.model), record.name)
+                            try:
+                                field = getattr(
+                                    pool.get(record.model.model), record.name)
+                            except KeyError:
+                                continue
                             translations[record.id] = ''
                             if ttype == 'field':
                                 value = field.string
                             else:
                                 value = field.help
                         else:
-                            model = pool.get(record.model)
+                            try:
+                                model = pool.get(record.model)
+                            except KeyError:
+                                continue
                             if not model.__doc__:
                                 continue
                             value = model._get_name()
