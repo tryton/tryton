@@ -12,7 +12,7 @@ from trytond.modules.product import round_price
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
-    def _compute_component_unit_price(self):
+    def _compute_component_unit_price(self, unit_price):
         pool = Pool()
         Currency = pool.get('currency.currency')
         UoM = pool.get('product.uom')
@@ -25,9 +25,7 @@ class Move(metaclass=PoolMeta):
                 quantity = UoM.compute_qty(
                     line.unit, line.quantity, self.uom)
         amount *= self.origin.price_ratio
-        if not quantity:
-            unit_price = self.unit_price
-        else:
+        if quantity:
             unit_price = round_price(amount / Decimal(str(quantity)))
         return unit_price
 
@@ -103,12 +101,12 @@ class MoveSale(metaclass=PoolMeta):
             name = self.origin.line.sale.rec_name
         return name
 
-    def _compute_unit_price(self):
+    def _compute_unit_price(self, unit_price):
         pool = Pool()
         SaleLineComponent = pool.get('sale.line.component')
-        unit_price = super()._compute_unit_price()
+        unit_price = super()._compute_unit_price(unit_price)
         if isinstance(self.origin, SaleLineComponent):
-            unit_price = self._compute_component_unit_price()
+            unit_price = self._compute_component_unit_price(unit_price)
         return unit_price
 
 
@@ -156,10 +154,10 @@ class MovePurchase(metaclass=PoolMeta):
             name = self.origin.line.sale.rec_name
         return name
 
-    def _compute_unit_price(self):
+    def _compute_unit_price(self, unit_price):
         pool = Pool()
         PurchaseLineComponent = pool.get('purchase.line.component')
-        unit_price = super()._compute_unit_price()
+        unit_price = super()._compute_unit_price(unit_price)
         if isinstance(self.origin, PurchaseLineComponent):
-            unit_price = self._compute_component_unit_price()
+            unit_price = self._compute_component_unit_price(unit_price)
         return unit_price
