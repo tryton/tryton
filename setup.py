@@ -69,6 +69,7 @@ for dep in info.get('extras_depend', []):
         extras_require[dep] = get_require_version('trytond_%s' % dep)
 
 tests_require = [get_require_version('proteus'),
+    get_require_version('trytond_account_invoice_stock'),
     get_require_version('trytond_account_stock_continental'),
     get_require_version('trytond_account_stock_anglo_saxon'),
     get_require_version('trytond_purchase')]

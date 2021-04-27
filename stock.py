@@ -190,6 +190,22 @@ class Move(metaclass=PoolMeta):
     unit_shipment_cost = fields.Numeric('Unit Shipment Cost',
         digits=price_digits, readonly=True)
 
+    def _compute_unit_price(self, unit_price):
+        if self.unit_shipment_cost:
+            unit_price -= self.unit_shipment_cost
+        unit_price = super()._compute_unit_price(unit_price)
+        if self.unit_shipment_cost:
+            unit_price += self.unit_shipment_cost
+        return unit_price
+
+    def _compute_component_unit_price(self, unit_price):
+        if self.unit_shipment_cost:
+            unit_price -= self.unit_shipment_cost
+        unit_price = super()._compute_component_unit_price(unit_price)
+        if self.unit_shipment_cost:
+            unit_price += self.unit_shipment_cost
+        return unit_price
+
     # Split the shipment cost if account_stock_continental is activated
     def _get_account_stock_move_lines(self, type_):
         pool = Pool()
