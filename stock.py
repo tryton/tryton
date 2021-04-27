@@ -93,12 +93,13 @@ class Move(metaclass=PoolMeta):
     def update_unit_price(cls, moves):
         for move in moves:
             if move.state == 'done':
-                unit_price = move._compute_unit_price()
+                unit_price = move._compute_unit_price(
+                    unit_price=move.unit_price)
                 if unit_price != move.unit_price:
                     move.unit_price = unit_price
         cls.save(moves)
 
-    def _compute_unit_price(self):
+    def _compute_unit_price(self, unit_price):
         pool = Pool()
         UoM = pool.get('product.uom')
         Currency = pool.get('currency.currency')
@@ -111,9 +112,7 @@ class Move(metaclass=PoolMeta):
                 if line.invoice.type == 'out' or not line.correction:
                     quantity += UoM.compute_qty(
                         line.unit, line.quantity, self.uom)
-        if not quantity:
-            unit_price = self.unit_price
-        else:
+        if quantity:
             unit_price = round_price(amount / Decimal(str(quantity)))
         return unit_price
 
