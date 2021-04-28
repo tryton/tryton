@@ -15,6 +15,14 @@ __all__ = ['Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime']
 _ = gettext.gettext
 
 
+def _fix_format(format_):
+    if '%Y' in format_:
+        if (datetime.date.min.strftime('%Y') != '0001'
+                and datetime.date.min.strftime('%4Y') == '0001'):
+            format_ = format_.replace('%Y', '%4Y')
+    return format_
+
+
 def date_parse(text, format_='%x'):
     try:
         return datetime.datetime.strptime(text, format_)
@@ -192,7 +200,7 @@ class Date(Gtk.Entry):
             self.update_label()
             self.emit('date-changed')
         elif prop.name == 'format':
-            self.__format = value
+            self.__format = _fix_format(value)
             self.update_label()
 
     def do_get_property(self, prop):
@@ -223,7 +231,7 @@ class CellRendererDate(Gtk.CellRendererText):
 
     def do_set_property(self, prop, value):
         if prop.name == 'format':
-            self.__format = value
+            self.__format = _fix_format(value)
             return
         Gtk.CellRendererText.set_property(self, prop, value)
 
@@ -363,7 +371,7 @@ class Time(Gtk.ComboBox):
             self.update_label()
             self.emit('time-changed')
         elif prop.name == 'format':
-            self.__format = value
+            self.__format = _fix_format(value)
             self.update_label()
             self.update_model()
 
@@ -395,7 +403,7 @@ class CellRendererTime(Gtk.CellRendererCombo):
 
     def do_set_property(self, prop, value):
         if prop.name == 'format':
-            self.__format = value
+            self.__format = _fix_format(value)
             return
         Gtk.CellRendererText.set_property(self, prop, value)
 
