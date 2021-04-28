@@ -774,7 +774,7 @@ class Line(ModelSQL, ModelView):
         table_h.index_action(['move', 'account'], 'add')
         # Index for account.account.party
         table_h.index_action(
-            ['party', 'account', 'id'], 'add', where=table.party != Null)
+            ['account', 'party', 'id'], 'add', where=table.party != Null)
 
     @classmethod
     def default_date(cls):
