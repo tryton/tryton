@@ -128,8 +128,8 @@ Check reports::
     >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
     >>> vat_list_record, = vat_list_records
-    >>> vat_list_record.amount
-    Decimal('0.0')
+    >>> vat_list_record.amount == Decimal(0)
+    True
     >>> with config.set_context(vat_book_context):
     ...     vat_book_records = VatBook.find([])
     >>> len(vat_book_records)
@@ -149,8 +149,8 @@ Create another invoice::
     >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
     >>> vat_list_record, = vat_list_records
-    >>> vat_list_record.amount
-    Decimal('242.0')
+    >>> vat_list_record.amount == Decimal('242.0')
+    True
     >>> with config.set_context(vat_book_context):
     ...     vat_book_records = VatBook.find([])
     >>> len(vat_book_records)
@@ -164,8 +164,8 @@ Cancel the invoice and check reports::
     >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
     >>> vat_list_record, = vat_list_records
-    >>> vat_list_record.amount
-    Decimal('0.0')
+    >>> vat_list_record.amount == Decimal(0)
+    True
     >>> with config.set_context(vat_book_context):
     ...     vat_book_records = VatBook.find([])
     >>> len(vat_book_records)
