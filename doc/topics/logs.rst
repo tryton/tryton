@@ -32,7 +32,7 @@ file rotated every day.
     keys=root
 
     [formatter_simple]
-    format=%(asctime)s] %(levelname)s:%(name)s:%(message)s
+    format=[%(asctime)s] %(levelname)s:%(name)s:%(message)s
     datefmt=%a %b %d %H:%M:%S %Y
 
     [handler_rotate]
