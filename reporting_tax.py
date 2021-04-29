@@ -434,6 +434,7 @@ class ESVATList(ModelSQL, ModelView):
         invoice = Invoice.__table__()
         cancel_invoice = Invoice.__table__()
         move = Move.__table__()
+        cancel_move = Move.__table__()
         line = Line.__table__()
         tax_line = TaxLine.__table__()
         tax = Tax.__table__()
@@ -452,13 +453,15 @@ class ESVATList(ModelSQL, ModelView):
                     where=tax_code.aeat_report.in_(cls.excluded_tax_codes())))
 
         where = ((invoice.company == context.get('company'))
-            & (invoice.state.in_(['posted', 'paid']))
             & (tax.es_vat_list_code != Null)
             & (Extract('year', invoice.invoice_date)
                 == context.get('date', Date.today()).year)
-            & ~Exists(cancel_invoice.select(
-                    cancel_invoice.cancel_move, distinct=True,
-                    where=(cancel_invoice.cancel_move == invoice.move)))
+            & ~Exists(cancel_invoice
+                .join(cancel_move,
+                    condition=cancel_invoice.cancel_move == cancel_move.id)
+                .select(cancel_invoice.id, distinct=True,
+                     where=((cancel_invoice.id == invoice.id)
+                         & (~cancel_move.origin.like('account.invoice,%')))))
             # Use exists to exclude the full invoice when it has multiple taxes
             & ~Exists(exclude_invoice_tax.select(
                     exclude_invoice_tax.invoice,
