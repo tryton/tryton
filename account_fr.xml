@@ -935,7 +935,7 @@
         </record>
 
         <record model="account.account.template" id="root">
-            <field name="name">Plan comptable (French)</field>
+            <field name="name">Plan comptable (France)</field>
             <field name="type" ref="fr"/>
         </record>
         <record model="account.account.template" id="1">
