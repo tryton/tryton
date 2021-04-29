@@ -91,16 +91,26 @@ Create invoice::
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
 
-Compute VAT LIST report::
+Compute reports::
 
     >>> VatList = Model.get('account.reporting.vat_list_es')
-    >>> context = {
+    >>> VatBook = Model.get('account.reporting.vat_book_es')
+    >>> vat_list_context = {
     ...     'company': company.id,
     ...     'date': period.end_date,
     ...     }
-    >>> with config.set_context(context):
+    >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
     >>> len(vat_list_records)
+    1
+    >>> vat_book_context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     'es_vat_book_type': 'R',
+    ...     }
+    >>> with config.set_context(vat_book_context):
+    ...     vat_book_records = VatBook.find([])
+    >>> len(vat_book_records)
     1
 
 Refund the invoice::
@@ -113,12 +123,17 @@ Refund the invoice::
     >>> invoice.state
     'cancelled'
 
-VAT List is empty::
+Check reports::
 
-    >>> with config.set_context(context):
+    >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    0
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount
+    Decimal('0.0')
+    >>> with config.set_context(vat_book_context):
+    ...     vat_book_records = VatBook.find([])
+    >>> len(vat_book_records)
+    2
 
 Create another invoice::
 
@@ -131,17 +146,27 @@ Create another invoice::
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
-    >>> with config.set_context(context):
+    >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    1
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount
+    Decimal('242.0')
+    >>> with config.set_context(vat_book_context):
+    ...     vat_book_records = VatBook.find([])
+    >>> len(vat_book_records)
+    3
 
-Cancel the invoice and check VAT List is empty::
+Cancel the invoice and check reports::
 
     >>> invoice.click('cancel')
     >>> invoice.state
     'cancelled'
-    >>> with config.set_context(context):
+    >>> with config.set_context(vat_list_context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    0
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount
+    Decimal('0.0')
+    >>> with config.set_context(vat_book_context):
+    ...     vat_book_records = VatBook.find([])
+    >>> len(vat_book_records)
+    2
