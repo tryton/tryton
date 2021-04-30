@@ -58,9 +58,9 @@ class Move(metaclass=PoolMeta):
                             'uom': uom.id,
                             }))
             remainder -= quantity
-            remainder = uom.round(remainder)
             if count:
                 count -= 1
+        remainder = uom.round(remainder)
         assert remainder >= 0
         if remainder:
             with Transaction().set_context(_stock_move_split=True):
