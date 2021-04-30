@@ -13,210 +13,245 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="type_balance"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1020">
             <field name="name">Ausstehende Einlagen</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1025">
             <field name="name">davon eingefordert</field>
             <field name="parent" ref="type_1020"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1050">
             <field name="name">Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1060">
             <field name="name">Aufwendungen für die Währungsumstellung auf den Euro</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1080">
             <field name="name">Anlagevermögen</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1100">
             <field name="name">Immaterielle Vermögensgegenstände</field>
             <field name="parent" ref="type_1080"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1120">
             <field name="name">Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten</field>
             <field name="parent" ref="type_1100"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1130">
             <field name="name">Geschäfts- oder Firmenwert</field>
             <field name="parent" ref="type_1100"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1150">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="type_1100"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1180">
             <field name="name">Sachanlagen</field>
             <field name="parent" ref="type_1080"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1200">
             <field name="name">Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken</field>
             <field name="parent" ref="type_1180"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1210">
             <field name="name">technische Anlagen und Maschinen</field>
             <field name="parent" ref="type_1180"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1220">
             <field name="name">andere Anlagen, Betriebs- und Geschäftsausstattung</field>
             <field name="parent" ref="type_1180"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1230">
             <field name="name">geleistete Anzahlungen und Anlagen im Bau</field>
             <field name="parent" ref="type_1180"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1260">
             <field name="name">Finanzanlagen</field>
             <field name="parent" ref="type_1080"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1280">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1290">
             <field name="name">Ausleihungen an verbundene Unternehmen</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1300">
             <field name="name">Beteiligungen</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1310">
             <field name="name">Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1320">
             <field name="name">Wertpapiere des Anlagevermögens</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1325">
             <field name="name">sonstige Ausleihungen</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1328">
             <field name="name">Genossenschaftsanteile</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1330">
             <field name="name">Rückdeckungsansprüche aus Lebensversicherungen</field>
             <field name="parent" ref="type_1260"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1410">
             <field name="name">Umlaufvermögen</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1430">
             <field name="name">Vorräte</field>
             <field name="parent" ref="type_1410"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1450">
             <field name="name">Roh-, Hilfs- und Betriebsstoffe</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1460">
             <field name="name">unfertige Erzeugnisse, unfertige Leistungen</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1465">
             <field name="name">in Ausführung befindliche Bauaufträge</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1467">
             <field name="name">in Arbeit befindliche Aufträge</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1470">
             <field name="name">fertige Erzeugnisse und Waren</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1480">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1490">
             <field name="name">erhaltene Anzahlungen auf Bestellungen</field>
             <field name="parent" ref="type_1430"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1510">
             <field name="name">Forderungen und sonstige Vermögensgegenstände</field>
             <field name="parent" ref="type_1410"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1530">
             <field name="name">Forderungen aus Lieferungen und Leistungen</field>
             <field name="parent" ref="type_1510"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="receivable" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1535">
@@ -224,6 +259,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="type_1530"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="receivable" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1540">
@@ -231,78 +267,91 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="type_1510"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1545">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1540"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1550">
             <field name="name">Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="type_1510"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1555">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1550"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1580">
             <field name="name">sonstige Vermögensgegenstände</field>
             <field name="parent" ref="type_1510"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1585">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1580"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1600">
             <field name="name">Wertpapiere</field>
             <field name="parent" ref="type_1410"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1620">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="type_1600"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1630">
             <field name="name">eigene Anteile</field>
             <field name="parent" ref="type_1600"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1640">
             <field name="name">sonstige Wertpapiere</field>
             <field name="parent" ref="type_1600"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1660">
             <field name="name">Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks</field>
             <field name="parent" ref="type_1410"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1680">
             <field name="name">Rechnungsabgrenzungsposten</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1700">
             <field name="name">Abgrenzung latenter Steuern</field>
             <field name="parent" ref="type_960"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="type_1960">
             <field name="name">Passiva</field>
