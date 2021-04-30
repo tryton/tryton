@@ -1187,7 +1187,6 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;
-            this.el.prop('disabled', readonly);
         },
         set_required: function(required) {
         },
@@ -1508,6 +1507,7 @@ function eval_pyson(value){
             return this.input.val();
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Char._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
         },
         focus: function() {
@@ -1669,6 +1669,7 @@ function eval_pyson(value){
             this.field.set_client(this.record, this.get_value());
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Date._super.set_readonly.call(this, readonly);
             this.date.find('button').prop('disabled', readonly);
             this.date.find('input').prop('readonly', readonly);
         }
@@ -1744,6 +1745,7 @@ function eval_pyson(value){
             this.field.set_client(this.record, this.input.val());
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.TimeDelta._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
         }
     });
@@ -2017,6 +2019,7 @@ function eval_pyson(value){
             this.field.set_client(this.record, value);
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Selection._super.set_readonly.call(this, readonly);
             this.select.prop('disabled', readonly);
         }
     });
@@ -2057,6 +2060,7 @@ function eval_pyson(value){
             this.field.set_client(this.record, value);
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Boolean._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
         }
     });
@@ -2119,6 +2123,7 @@ function eval_pyson(value){
             this.field.set_client(this.record, this.get_value());
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Text._super.set_readonly.call(this, readonly);
             this.input.prop('readonly', readonly);
         },
         translate_widget: function() {
@@ -2215,6 +2220,7 @@ function eval_pyson(value){
             return false;
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.RichText._super.set_readonly.call(this, readonly);
             this.input.prop('contenteditable', !readonly);
             if (this.toolbar) {
                 this.toolbar.find('button,input,select')
@@ -2408,6 +2414,7 @@ function eval_pyson(value){
             this.entry.focus();
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Many2One._super.set_readonly.call(this, readonly);
             this._readonly = readonly;
             this._set_button_sensitive();
         },
@@ -3046,7 +3053,7 @@ function eval_pyson(value){
             return this.screen.current_view.modified;
         },
         set_readonly: function(readonly) {
-            this._readonly = readonly;
+            Sao.View.Form.One2Many._super.set_readonly.call(this, readonly);
             this._set_button_sensitive();
             this._set_label_state();
         },
@@ -3506,7 +3513,7 @@ function eval_pyson(value){
             }.bind(this));
         },
         set_readonly: function(readonly) {
-            this._readonly = readonly;
+            Sao.View.Form.Many2Many._super.set_readonly.call(this, readonly);
             this._set_button_sensitive();
             this._set_label_state();
         },
@@ -3888,6 +3895,7 @@ function eval_pyson(value){
             }
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Binary._super.set_readonly.call(this, readonly);
             this.but_select.prop('disabled', readonly);
             this.but_clear.prop('disabled', readonly);
             if (this.text) {
@@ -3966,6 +3974,7 @@ function eval_pyson(value){
             }
         },
         set_readonly: function(readonly) {
+            Sao.View.Form.Image._super.set_readonly.call(this, readonly);
             this.but_select.prop('disable', readonly);
             this.but_clear.prop('disable', readonly);
         },
@@ -4325,7 +4334,7 @@ function eval_pyson(value){
             return false;
         },
         set_readonly: function(readonly) {
-            this._readonly = readonly;
+            Sao.View.Form.Dict._super.set_readonly.call(this, readonly);
             this._set_button_sensitive();
             for (var key in this.fields) {
                 var widget = this.fields[key];
