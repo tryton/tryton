@@ -12,14 +12,14 @@ Installation
 Once you've downloaded and unpacked the sao source release, enter the directory
 where the archive was unpacked, and run:
 
-    $ npm install --production
+    $ npm install --production --legacy-peer-deps
 
 Development
 ...........
 
 For development, you have to run instead:
 
-    $ npm install
+    $ npm install --legacy-peer-deps
     $ grunt dev
 
 Setup
