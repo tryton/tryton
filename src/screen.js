@@ -1128,7 +1128,6 @@
             if (set_cursor === undefined) {
                 set_cursor = true;
             }
-            this.tree_states = {};
             this.tree_states_done = [];
             this.group.load(ids, modified);
             if (ids.length && this.current_view.view_type != 'calendar') {
