@@ -909,7 +909,6 @@ class Screen(SignalEvent):
         return json_domain
 
     def load(self, ids, set_cursor=True, modified=False, position=-1):
-        self.tree_states.clear()
         self.tree_states_done.clear()
         self.group.load(ids, modified=modified, position=position)
         self.current_view.reset()
