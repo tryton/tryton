@@ -269,12 +269,14 @@
             context._timestamp = {};
             records.forEach(function(record) {
                 jQuery.extend(context._timestamp, record.get_timestamp());
-                record.destroy();
             });
             var record_ids = records.map(function(record) {
                 return record.id;
             });
             return root_group.on_write_ids(record_ids).then(function(reload_ids) {
+                records.forEach(function(record) {
+                    record.destroy();
+                });
                 reload_ids = reload_ids.filter(function(e) {
                     return !~record_ids.indexOf(e);
                 });
@@ -651,7 +653,13 @@
                 async = true;
             }
             if (this.destroyed || this.is_loaded(name)) {
-                return async? jQuery.when() : this.model.fields[name];
+                if (async) {
+                    return jQuery.when();
+                } else if (name !== '*') {
+                    return this.model.fields[name];
+                } else {
+                    return;
+                }
             }
             if (this.group.prm.state() == 'pending') {
                 return this.group.prm.then(function() {
@@ -830,7 +838,11 @@
                 } else {
                     failed();
                 }
-                return this.model.fields[name];
+                if (name !== '*') {
+                    return this.model.fields[name];
+                } else {
+                    return;
+                }
             }
         },
         set: function(values, validate) {
