@@ -976,7 +976,7 @@
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Table5.A4" office:value-type="string">
-      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;format_date(line.maturity_date, invoice.party.lang)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;format_date(line.maturity_date, invoice.party.lang) if line.maturity_date else ''&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table5.B4" office:value-type="string">
       <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;line.amount_second_currency and format_currency(line.amount_second_currency, invoice.party.lang, invoice.currency) or format_currency(line.debit - line.credit, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
