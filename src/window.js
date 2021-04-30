@@ -1069,15 +1069,13 @@
 
             var csv_param_label = jQuery('<label/>', {
                 'text': Sao.i18n.gettext('CSV Parameters')
-            }).css('cursor', 'pointer')
-            .on('click', function(){
-                this.expander_csv.collapse('toggle');
-            }.bind(this)).appendTo(row_csv_param);
-
-            var expander_icon = jQuery('<span/>', {
+            }).append(jQuery('<span/>', {
                 'class': 'caret',
-            }).css('cursor', 'pointer').html('&nbsp;')
-            .appendTo(row_csv_param);
+            }).html('&nbsp;'))
+                .css('cursor', 'pointer')
+                .on('click', function(){
+                    this.expander_csv.collapse('toggle');
+                }.bind(this)).appendTo(row_csv_param);
 
             this.expander_csv = jQuery('<div/>', {
                 'id': 'expander_csv',
