@@ -65,8 +65,10 @@ def create_chart(
 
     accounts = get_accounts(company, config=config)
 
-    create_chart.form.account_receivable = accounts['receivable']
-    create_chart.form.account_payable = accounts['payable']
+    if accounts['receivable'].party_required:
+        create_chart.form.account_receivable = accounts['receivable']
+    if accounts['payable'].party_required:
+        create_chart.form.account_payable = accounts['payable']
     create_chart.execute('create_properties')
     return create_chart
 
