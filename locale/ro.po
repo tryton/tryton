@@ -4,52 +4,52 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr "操作"
+msgstr "Acțiune"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "用户"
+msgstr "Utilizator"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "看板操作"
+msgstr ""
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr "看板布局"
+msgstr ""
 
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "看板操作"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "看板"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "看板"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr "正方形"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "靠下"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "靠左"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "靠右"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "靠上"
+msgstr ""
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr "看板"
+msgstr ""
