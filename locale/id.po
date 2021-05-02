@@ -53,7 +53,7 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.landed_cost-product.category,category:"
 msgid "Category"
@@ -166,8 +166,9 @@ msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
+msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"

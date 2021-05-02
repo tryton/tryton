@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Secuencia de costo final"
+msgstr ""
 
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Secuencia de costo final"
+msgstr ""
 
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
@@ -29,7 +29,7 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -49,7 +49,7 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr ""
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
@@ -59,15 +59,13 @@ msgctxt "field:account.landed_cost-product.category,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost-product.category,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost-product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "field:account.landed_cost-product.product,product:"
 msgid "Product"
@@ -75,23 +73,23 @@ msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Envíos"
+msgstr ""
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
-msgstr "Unidad de costo final"
+msgstr ""
 
 msgctxt "help:account.landed_cost,categories:"
 msgid "Apply only to products of these categories."
@@ -103,34 +101,31 @@ msgstr ""
 
 msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
-msgstr "Secuencia de cuenta de configuración de costo final"
+msgstr ""
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "model:account.landed_cost-product.category,name:"
 msgid "Landed Cost - Product Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.landed_cost-product.product,name:"
 msgid "Landed Cost - Product"
-msgstr "Costo de final - Envío"
+msgstr ""
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
-msgstr "Costo de final - Envío"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Costo final"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
 msgid "Landed Costs"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
@@ -175,24 +170,21 @@ msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
 msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
-msgstr "Por valor"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Cancelled"
@@ -208,7 +200,7 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr "Costo final"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

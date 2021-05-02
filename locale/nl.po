@@ -170,9 +170,9 @@ msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr "Post"
 
-msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

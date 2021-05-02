@@ -6,102 +6,90 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség felosztás"
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
-msgstr ""
+msgstr "Felosztás módja"
 
 msgctxt "field:account.landed_cost,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "Termékkategóriák"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Számlasorok"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
 msgstr "Szám"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
-msgstr ""
+msgstr "Rögzítés dátuma"
 
 msgctxt "field:account.landed_cost,products:"
 msgid "Products"
-msgstr ""
+msgstr "Termékek"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Szállítási tétel"
+msgstr "Szállítmányok"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
 msgstr "Állapot"
 
 msgctxt "field:account.landed_cost-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
-#, fuzzy
 msgctxt "field:account.landed_cost-product.category,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
-#, fuzzy
 msgctxt "field:account.landed_cost-product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
 msgctxt "field:account.landed_cost-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
-#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
-#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Szállítási tétel"
+msgstr "Szállítmány"
 
-#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
-#, fuzzy
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
-msgstr ""
+msgstr "Rárakódó költség egységár"
 
 msgctxt "help:account.landed_cost,categories:"
 msgid "Apply only to products of these categories."
@@ -115,10 +103,9 @@ msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
 msgctxt "model:account.landed_cost-product.category,name:"
 msgid "Landed Cost - Product Category"
@@ -135,32 +122,32 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr "Járulékos költség felosztások"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr "Járulékos költség felosztások"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr "összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "lekönyvelt"
 
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
 msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
 msgstr ""
+"A „%(landed_cost)s” számú járulékos költség felosztáshoz nem kapcsolódnak "
+"készletmozgások."
 
 msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
 msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
@@ -172,57 +159,52 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Érvénytelenítés"
 
 msgctxt "model:ir.model.button,string:landed_cost_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Újra vázlatba"
 
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Rögzítés"
 
-msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr "Járulékos költség felosztások"
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
-msgstr ""
+msgstr "érték alapján"
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Cancelled"
-msgstr "Mégse"
+msgstr "érvénytelen"
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr "lekönyvelt"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr "Járulékos költség"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Számkör"
+msgstr "Sorszám"
