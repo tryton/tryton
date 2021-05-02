@@ -403,10 +403,22 @@ msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
 msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_consumption_recurrence_invalid"
+msgid ""
+"The consumption recurrence of line \"%(line)s\" of subscription "
+"\"%(subscription)s\" does not generate any occurrence."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending subscriptions "
 "with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_recurrence_invalid"
+msgid ""
+"The invoice recurrence of subscription \"%(subscription)s\" does not "
+"generate any occurrence."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
@@ -431,11 +443,20 @@ msgctxt "model:ir.model.button,string:subscription_run_button"
 msgid "Run"
 msgstr "Run"
 
+msgctxt "model:ir.rule.group,name:rule_group_subscription_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
 msgstr "Subscription"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_subscription"
+msgid "Subscription"
+msgstr "Subscription"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Subscription"
 msgstr "Subscription"
 
