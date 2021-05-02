@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:company.company,childs:"
-msgid "Children"
-msgstr ""
-
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr ""
@@ -21,10 +17,6 @@ msgstr ""
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr ""
-
-msgctxt "field:company.company,parent:"
-msgid "Parent"
 msgstr ""
 
 msgctxt "field:company.company,party:"
@@ -84,6 +76,11 @@ msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.contact_mechanism.language,company:"
+msgid "Company"
+msgstr "Companies"
+
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
 msgstr ""
@@ -97,6 +94,11 @@ msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:res.user,company_filter:"
+msgid "Company Filter"
+msgstr "Companies"
+
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
 msgstr ""
@@ -106,8 +108,13 @@ msgctxt "field:res.user,employees:"
 msgid "Employees"
 msgstr "Employees"
 
-msgctxt "field:res.user,main_company:"
-msgid "Main Company"
+#, fuzzy
+msgctxt "field:res.user-company.company,company:"
+msgid "Company"
+msgstr "Companies"
+
+msgctxt "field:res.user-company.company,user:"
+msgid "User"
 msgstr ""
 
 #, fuzzy
@@ -117,10 +124,6 @@ msgstr "Employees"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr ""
-
-msgctxt "help:company.company,childs:"
-msgid "Add children below the company."
 msgstr ""
 
 msgctxt "help:company.company,currency:"
@@ -137,10 +140,6 @@ msgstr ""
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr ""
-
-msgctxt "help:company.company,parent:"
-msgid "Add the company below the parent."
 msgstr ""
 
 msgctxt "help:company.company,timezone:"
@@ -182,15 +181,23 @@ msgid ""
 msgstr ""
 
 msgctxt "help:ir.sequence,company:"
-msgid "Restrict the sequence usage to the company."
+msgid "Restricts the sequence usage to the company."
 msgstr ""
 
 msgctxt "help:ir.sequence.strict,company:"
-msgid "Restrict the sequence usage to the company."
+msgid "Restricts the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:res.user,companies:"
+msgid "The companies that the user has access to."
 msgstr ""
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
+msgstr ""
+
+msgctxt "help:res.user,company_filter:"
+msgid "Define records of which companies are shown."
 msgstr ""
 
 msgctxt "help:res.user,employee:"
@@ -199,10 +206,6 @@ msgstr ""
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
-msgstr ""
-
-msgctxt "help:res.user,main_company:"
-msgid "Grant access to the company and its children."
 msgstr ""
 
 msgctxt "model:company.company,name:"
@@ -226,10 +229,6 @@ msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
 msgstr "Companies"
 
-msgctxt "model:ir.action,name:act_company_tree"
-msgid "Companies"
-msgstr "Companies"
-
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "Employees"
@@ -246,13 +245,15 @@ msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
+msgid "User in companies"
+msgstr "Companies"
 
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
+msgid "User in companies"
+msgstr "Companies"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
@@ -260,10 +261,6 @@ msgid "Company"
 msgstr "Companies"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
-msgid "Companies"
-msgstr "Companies"
-
-msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
 msgstr "Companies"
 
@@ -278,6 +275,11 @@ msgstr ""
 msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:res.user-company.company,name:"
+msgid "User - Company"
+msgstr "Companies"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -299,12 +301,16 @@ msgctxt "report:party.letter:"
 msgid "Subject:"
 msgstr ""
 
-msgctxt "view:company.company.config.start:"
-msgid "You can now add your company into the system."
+msgctxt "selection:res.user,company_filter:"
+msgid "All"
 msgstr ""
 
-msgctxt "view:company.company:"
-msgid "Company"
+msgctxt "selection:res.user,company_filter:"
+msgid "Current"
+msgstr ""
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
 msgstr ""
 
 msgctxt "view:company.company:"

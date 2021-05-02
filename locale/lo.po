@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:company.company,childs:"
-msgid "Children"
-msgstr "ບັນຊີຍ່ອຍ"
-
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
@@ -21,10 +17,6 @@ msgstr "ຕີນກະດາດ"
 msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "ຫົວກະດາດ"
-
-msgctxt "field:company.company,parent:"
-msgid "Parent"
-msgstr "ບັນຊີແມ່"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
@@ -84,6 +76,11 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
+msgctxt "field:party.contact_mechanism.language,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
@@ -97,6 +94,11 @@ msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານປັດຈຸບັນ"
 
+#, fuzzy
+msgctxt "field:res.user,company_filter:"
+msgid "Company Filter"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
 msgstr "ປັດຈຸບັນເຮັດວຽກຢູ່"
@@ -105,9 +107,15 @@ msgctxt "field:res.user,employees:"
 msgid "Employees"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:res.user,main_company:"
-msgid "Main Company"
-msgstr "ສຳນັກງານ/ບໍລິສັດໃຫຍ່"
+#, fuzzy
+msgctxt "field:res.user-company.company,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:res.user-company.company,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
@@ -116,10 +124,6 @@ msgstr "ພະນັກງານ"
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
-
-msgctxt "help:company.company,childs:"
-msgid "Add children below the company."
-msgstr ""
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
@@ -135,10 +139,6 @@ msgstr ""
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr ""
-
-msgctxt "help:company.company,parent:"
-msgid "Add the company below the parent."
 msgstr ""
 
 msgctxt "help:company.company,timezone:"
@@ -181,15 +181,23 @@ msgid ""
 msgstr ""
 
 msgctxt "help:ir.sequence,company:"
-msgid "Restrict the sequence usage to the company."
+msgid "Restricts the sequence usage to the company."
 msgstr ""
 
 msgctxt "help:ir.sequence.strict,company:"
-msgid "Restrict the sequence usage to the company."
+msgid "Restricts the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:res.user,companies:"
+msgid "The companies that the user has access to."
 msgstr ""
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
+msgstr ""
+
+msgctxt "help:res.user,company_filter:"
+msgid "Define records of which companies are shown."
 msgstr ""
 
 msgctxt "help:res.user,employee:"
@@ -198,10 +206,6 @@ msgstr ""
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
-msgstr ""
-
-msgctxt "help:res.user,main_company:"
-msgid "Grant access to the company and its children."
 msgstr ""
 
 msgctxt "model:company.company,name:"
@@ -227,11 +231,6 @@ msgid "Companies"
 msgstr "Companies"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_company_tree"
-msgid "Companies"
-msgstr "Companies"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "Employees"
@@ -249,13 +248,15 @@ msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "ຄຣັອນ - ສຳນັກງານ"
 
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
+msgid "User in companies"
+msgstr "ຄຣັອນ - ສຳນັກງານ"
 
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
+msgid "User in companies"
+msgstr "ຄຣັອນ - ສຳນັກງານ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
@@ -264,11 +265,6 @@ msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
-msgid "Companies"
-msgstr "Companies"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
 msgstr "Companies"
 
@@ -284,6 +280,11 @@ msgstr ""
 msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:res.user-company.company,name:"
+msgid "User - Company"
+msgstr "ຄຣັອນ - ສຳນັກງານ"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -305,13 +306,18 @@ msgctxt "report:party.letter:"
 msgid "Subject:"
 msgstr "ເລື່ອງ:"
 
+msgctxt "selection:res.user,company_filter:"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:res.user,company_filter:"
+msgid "Current"
+msgstr "ສະກຸນເງິນ"
+
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "ທ່ານສາມາດເພີ່ມສຳນັກງານຂອງທ່ານເຂົ້າໃສ່ໃນລະບົບໄດ້ແລ້ວ."
-
-msgctxt "view:company.company:"
-msgid "Company"
-msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "view:company.company:"
 msgid "Reports"

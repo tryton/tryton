@@ -2,33 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:company.company,childs:"
-msgid "Children"
-msgstr "Alárendelt (vállalkozás)"
-
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Alkalmazott"
+msgstr "Alkalmazottak"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Lábjegyzet"
+msgstr "Lábléc"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Fejléc"
 
-msgctxt "field:company.company,parent:"
-msgid "Parent"
-msgstr "Fölérendelt (vállalkozás)"
-
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -36,35 +28,35 @@ msgstr "Időzóna"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Befejező dátum"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Kezdődátum"
 
 msgctxt "field:company.employee,subordinates:"
 msgid "Subordinates"
-msgstr ""
+msgstr "Beosztottak"
 
 msgctxt "field:company.employee,supervisor:"
 msgid "Supervisor"
-msgstr ""
+msgstr "Felettes"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Társaságok"
+msgstr "Cégek"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
@@ -72,42 +64,54 @@ msgstr "Cron"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
+msgctxt "field:party.contact_mechanism.language,company:"
+msgid "Company"
+msgstr "Cég"
+
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:res.user,companies:"
 msgid "Companies"
-msgstr "Társaságok"
+msgstr "Cégek"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Aktuális társaság"
+msgstr "Kiválasztott cég"
+
+#, fuzzy
+msgctxt "field:res.user,company_filter:"
+msgid "Company Filter"
+msgstr "Cégek"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Aktuális alkalmazott"
+msgstr "Kiválasztott alkalmazott"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Alkalmazott"
+msgstr "Alkalmazottak"
 
-msgctxt "field:res.user,main_company:"
-msgid "Main Company"
-msgstr "Anyavállalat"
+#, fuzzy
+msgctxt "field:res.user-company.company,company:"
+msgid "Company"
+msgstr "Cég"
+
+#, fuzzy
+msgctxt "field:res.user-company.company,user:"
+msgid "User"
+msgstr "Felhasználó"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
@@ -117,17 +121,13 @@ msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Felhasználó"
 
-msgctxt "help:company.company,childs:"
-msgid "Add children below the company."
-msgstr ""
-
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr ""
+msgstr "A cég fő pénzneme."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
-msgstr ""
+msgstr "Alkalmazottak hozzáadása a céghez."
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
@@ -137,37 +137,33 @@ msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
 msgstr ""
 
-msgctxt "help:company.company,parent:"
-msgid "Add the company below the parent."
-msgstr ""
-
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
 msgstr ""
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
-msgstr ""
+msgstr "Az alkalmazott munkaadója."
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr ""
+msgstr "Az alkalmazott távozásának dátuma."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr ""
+msgstr "Az alkalmazottat képviselő ügyfél."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr ""
+msgstr "Alkalmazott felvételének dátuma."
 
 msgctxt "help:company.employee,subordinates:"
 msgid "The employees to be overseen by this employee."
-msgstr ""
+msgstr "Ezen alkalmazott beosztottjai."
 
 msgctxt "help:company.employee,supervisor:"
 msgid "The employee who oversees this employee."
-msgstr ""
+msgstr "Ezen alkalmazott felettese."
 
 #, fuzzy
 msgctxt "help:ir.cron,companies:"
@@ -180,37 +176,44 @@ msgid ""
 "- \"employee\" from the current user"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:ir.sequence,company:"
-msgid "Restrict the sequence usage to the company."
-msgstr ""
+msgid "Restricts the sequence usage to the company."
+msgstr "Az alkalmazott távozásának dátuma."
 
+#, fuzzy
 msgctxt "help:ir.sequence.strict,company:"
-msgid "Restrict the sequence usage to the company."
+msgid "Restricts the sequence usage to the company."
+msgstr "Az alkalmazott távozásának dátuma."
+
+msgctxt "help:res.user,companies:"
+msgid "The companies that the user has access to."
 msgstr ""
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
+msgstr "Válassza ki a céget, amelyikkel munkát szeretne végezni."
+
+msgctxt "help:res.user,company_filter:"
+msgid "Define records of which companies are shown."
 msgstr ""
 
 msgctxt "help:res.user,employee:"
 msgid "Select the employee to make the user behave as such."
 msgstr ""
+"Válassza ki az alkalmazottat, amelyik szerepében munkát szeretne végezni."
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr ""
 
-msgctxt "help:res.user,main_company:"
-msgid "Grant access to the company and its children."
-msgstr ""
-
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Társaság konfiguráció"
+msgstr "Cég beállításai"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -221,61 +224,47 @@ msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
 msgstr "Configure Company"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "Cégek"
 
-#, fuzzy
-msgctxt "model:ir.action,name:act_company_tree"
-msgid "Companies"
-msgstr "Companies"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "Alkalmazottak"
 
 msgctxt "model:ir.action,name:act_employee_subordinates"
 msgid "Supervised by"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Levél"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Időterv-Társaság"
 
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
+msgid "User in companies"
+msgstr "Felhasználó a cég alkalmazotta"
 
 #, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
+msgid "User in companies"
+msgstr "Felhasználó a cég alkalmazotta"
+
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "Cégek"
 
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_company_tree"
-msgid "Companies"
-msgstr "Companies"
-
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "Alkalmazottak"
 
 msgctxt "model:res.group,name:group_company_admin"
 msgid "Company Administration"
@@ -284,6 +273,11 @@ msgstr ""
 msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:res.user-company.company,name:"
+msgid "User - Company"
+msgstr "Felhasználó a cég alkalmazotta"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -305,21 +299,26 @@ msgctxt "report:party.letter:"
 msgid "Subject:"
 msgstr "Tárgy:"
 
+msgctxt "selection:res.user,company_filter:"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:res.user,company_filter:"
+msgid "Current"
+msgstr "Pénznem"
+
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Most tudja a rendszerhez hozzáadni a vállalatot."
-
-msgctxt "view:company.company:"
-msgid "Company"
-msgstr "Társaság"
+msgstr "Most tudja a rendszerhez hozzáadni a céget."
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Jelentések"
+msgstr "Nyomtatványok"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Hozzáadás"
+msgstr "Hozzáad"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
