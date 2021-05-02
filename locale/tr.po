@@ -68,8 +68,8 @@ msgstr "Hesap İhtarname Ücreti İhtarname Seviyesi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Ücretler"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
@@ -78,8 +78,8 @@ msgstr "Ücret her bir ihtarname ve seviye için özgün olmalı."
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Ücretler"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

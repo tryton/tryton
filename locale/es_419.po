@@ -67,7 +67,7 @@ msgid "Account Dunning Fee Dunning-Level"
 msgstr "Cuenta de los gatos de cobro - Nivel"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
+msgid "Fees"
 msgstr ""
 
 #, fuzzy
@@ -76,7 +76,7 @@ msgid "Fee must be unique by dunning and level."
 msgstr "Los gastos deben ser únicos por cobro y nivel."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
+msgid "Fees"
 msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"

@@ -67,7 +67,7 @@ msgid "Account Dunning Fee Dunning-Level"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
+msgid "Fees"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
@@ -75,7 +75,7 @@ msgid "Fee must be unique by dunning and level."
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
+msgid "Fees"
 msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"

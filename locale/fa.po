@@ -66,17 +66,19 @@ msgctxt "model:account.dunning.fee.dunning_level,name:"
 msgid "Account Dunning Fee Dunning-Level"
 msgstr "حساب دانینگ قیمت سطح - دانینگ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "بهای دانینگ"
+msgid "Fees"
+msgstr "قیمت ها"
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
 msgstr "قیمت باید منحصربفرد باشد در هر دانینگ و هر سطح."
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "بهای دانینگ"
+msgid "Fees"
+msgstr "قیمت ها"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

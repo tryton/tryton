@@ -67,16 +67,16 @@ msgid "Account Dunning Fee Dunning-Level"
 msgstr "Frais de relance comptable Relance—Niveau"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Frais de relance"
+msgid "Fees"
+msgstr "Frais"
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
 msgstr "Les frais doivent être unique par relance et niveau."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Frais de relance"
+msgid "Fees"
+msgstr "Frais"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

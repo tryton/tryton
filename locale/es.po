@@ -67,16 +67,16 @@ msgid "Account Dunning Fee Dunning-Level"
 msgstr "Cuenta de los gatos de reclamación - Nivel"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Gastos de reclamación"
+msgid "Fees"
+msgstr "Gastos"
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
 msgstr "Los gastos deben ser únicos por reclamación y nivel."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Gastos de reclamación"
+msgid "Fees"
+msgstr "Gastos"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

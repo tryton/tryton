@@ -67,8 +67,8 @@ msgid "Account Dunning Fee Dunning-Level"
 msgstr "Mahngebühren - Mahnstufe"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Mahngebühren"
+msgid "Fees"
+msgstr "Gebühren"
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
@@ -76,8 +76,8 @@ msgstr ""
 "Eine Mahngebühr kann nur einmal pro Mahnung und Mahnstufe vergeben werden."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Mahngebühren"
+msgid "Fees"
+msgstr "Gebühren"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

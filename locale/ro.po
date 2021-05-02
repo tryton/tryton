@@ -4,39 +4,39 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning,fees:"
 msgid "Fees"
-msgstr "Opłaty"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,compute_method:"
 msgid "Compute Method"
-msgstr "Metoda obliczeniowa"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,journal:"
 msgid "Journal"
-msgstr "Dziennik"
+msgstr "Jurnal"
 
 msgctxt "field:account.dunning.fee,name:"
 msgid "Name"
-msgstr "Nazwa"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,percentage:"
 msgid "Percentage"
-msgstr "Procent"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
-msgstr "Produkt"
+msgstr "Produs"
 
 msgctxt "field:account.dunning.fee.dunning_level,amount:"
 msgid "Amount"
-msgstr "Ilość"
+msgstr "Suma"
 
 msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
-msgstr "Waluta"
+msgstr "Moneda"
 
 msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,level:"
 msgid "Level"
-msgstr "Poziom"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,moves:"
 msgid "Moves"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
-msgstr "Opłata"
+msgstr ""
 
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
@@ -66,28 +66,26 @@ msgctxt "model:account.dunning.fee.dunning_level,name:"
 msgid "Account Dunning Fee Dunning-Level"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Fees"
-msgstr "Opłaty"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Fees"
-msgstr "Opłaty"
+msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"
-msgstr "Cena sprzedaży"
+msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "Percentage"
-msgstr "Procent"
+msgstr ""
 
 msgctxt "view:account.dunning.fee:"
 msgid "%"
-msgstr "%"
+msgstr ""

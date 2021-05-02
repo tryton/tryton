@@ -68,8 +68,8 @@ msgstr "Contabilidade Taxas das Cobranças Cobrança-Nível"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Taxas"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
@@ -78,8 +78,8 @@ msgstr "Taxa deve ser única por cobrança e por nível."
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Taxas"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

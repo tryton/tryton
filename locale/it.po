@@ -68,8 +68,8 @@ msgstr "Conto di imputazione della spesa per livello di sollecito"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Spese"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
@@ -78,8 +78,8 @@ msgstr "L'addebito di spesa dev'essere unico per ogni sollecito e livello"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "Spese"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

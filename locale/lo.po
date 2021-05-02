@@ -68,8 +68,8 @@ msgstr "ຂັ້ນການທວງໜີ້ ຄ່າທຳນຽມບັ�
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "ຄ່າທຳນຽມ"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
@@ -78,8 +78,8 @@ msgstr "ຄ່າທຳນຽມຕໍ່ແຕ່ລະການທວງໜີ
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
-msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgid "Fees"
+msgstr "ຄ່າທຳນຽມ"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"
