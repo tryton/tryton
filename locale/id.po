@@ -269,7 +269,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
-msgstr ""
+msgstr "URL Baru"
 
 msgctxt "model:ir.model.button,string:customer_braintree_checkout_button"
 msgid "Add Card"
@@ -297,10 +297,6 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_refund"
-msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"

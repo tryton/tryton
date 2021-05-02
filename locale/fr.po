@@ -304,10 +304,6 @@ msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
 msgstr "Brouillon"
 
-msgctxt "model:ir.rule.group,name:rule_group_refund"
-msgid "User in company"
-msgstr "Utilisateur dans la société"
-
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Braintree Accounts"
 msgstr "Comptes Braintree"
