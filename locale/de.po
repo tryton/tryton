@@ -10,6 +10,10 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
 
+msgctxt "field:sale.promotion,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr "Kategorien"
@@ -17,6 +21,14 @@ msgstr "Kategorien"
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Unternehmen"
+
+msgctxt "field:sale.promotion,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.promotion,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -53,6 +65,10 @@ msgstr "Einheit"
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Nachkommastellen"
+
+msgctxt "field:sale.promotion,untaxed_amount:"
+msgid "Untaxed Amount"
+msgstr "Nettobetrag"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -94,8 +110,8 @@ msgstr ""
 "Ungültige Formel \"%(formula)s\" in Verkaufsaktion \"%(promotion)s\" mit "
 "Fehler \"%(exception)s\"."
 
-msgctxt "model:ir.rule.group,name:rule_group_promotion"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"

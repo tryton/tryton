@@ -10,6 +10,10 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Promoties"
 
+msgctxt "field:sale.promotion,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr "Categorieën"
@@ -17,6 +21,14 @@ msgstr "Categorieën"
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Bedrijf"
+
+msgctxt "field:sale.promotion,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.promotion,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -53,6 +65,10 @@ msgstr "Eenheid"
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.promotion,untaxed_amount:"
+msgid "Untaxed Amount"
+msgstr "Onbelast bedrag"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -94,8 +110,9 @@ msgstr ""
 "Ongeldige formule \"%(formula)s\" in promotie \"%(promotion)s\" 'met "
 "uitzondering \"%(exception)s\"."
 
-msgctxt "model:ir.rule.group,name:rule_group_promotion"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"

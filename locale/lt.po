@@ -11,6 +11,10 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Promotions"
 
+msgctxt "field:sale.promotion,amount:"
+msgid "Amount"
+msgstr ""
+
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
@@ -18,6 +22,14 @@ msgstr ""
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Organizacija"
+
+msgctxt "field:sale.promotion,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.promotion,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -54,6 +66,10 @@ msgstr ""
 
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.promotion,untaxed_amount:"
+msgid "Untaxed Amount"
 msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
@@ -94,8 +110,8 @@ msgid ""
 "exception \"%(exception)s\"."
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_promotion"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"

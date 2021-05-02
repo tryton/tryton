@@ -10,6 +10,10 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Spodbuda"
 
+msgctxt "field:sale.promotion,amount:"
+msgid "Amount"
+msgstr ""
+
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
@@ -17,6 +21,15 @@ msgstr ""
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Družba"
+
+msgctxt "field:sale.promotion,currency:"
+msgid "Currency"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -53,6 +66,10 @@ msgstr "enota"
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalke"
+
+msgctxt "field:sale.promotion,untaxed_amount:"
+msgid "Untaxed Amount"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -98,8 +115,8 @@ msgstr ""
 "Neveljavna formula \"%(formula)s\" v spodbude \"%(promotion)s\" z napako "
 "\"%(exception)s\"."
 
-msgctxt "model:ir.rule.group,name:rule_group_promotion"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy

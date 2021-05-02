@@ -10,6 +10,10 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Promoção"
 
+msgctxt "field:sale.promotion,amount:"
+msgid "Amount"
+msgstr ""
+
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
@@ -17,6 +21,15 @@ msgstr ""
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:sale.promotion,currency:"
+msgid "Currency"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos Decimais da Unidade"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -53,6 +66,10 @@ msgstr "Unidade"
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Dígitos Decimais da Unidade"
+
+msgctxt "field:sale.promotion,untaxed_amount:"
+msgid "Untaxed Amount"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -96,10 +113,10 @@ msgid ""
 "exception \"%(exception)s\"."
 msgstr ""
 "Fórmula inválida \"%(formula)s\" na promoção \"%(promotion)s\" com a exceção"
-"  \"%(exception)s\"."
+" \"%(exception)s\"."
 
-msgctxt "model:ir.rule.group,name:rule_group_promotion"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_promotion_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
