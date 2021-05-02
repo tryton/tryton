@@ -1,0 +1,288 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.component,fixed:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "field:product.component,parent_product:"
+msgid "Parent Variant"
+msgstr "Variant pare"
+
+msgctxt "field:product.component,parent_template:"
+msgid "Parent Product"
+msgstr "Producte pare"
+
+msgctxt "field:product.component,parent_type:"
+msgid "Parent Type"
+msgstr "Tipus de pare"
+
+msgctxt "field:product.component,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categoria d'unitats del producte"
+
+msgctxt "field:product.component,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:product.component,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:product.component,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:product.product,components:"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "field:product.template,components:"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "field:purchase.line,component_children:"
+msgid "Component Children"
+msgstr "Components fills"
+
+msgctxt "field:purchase.line,component_parent:"
+msgid "Component Parent"
+msgstr "Component pare"
+
+msgctxt "field:purchase.line,components:"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "field:purchase.line.component,fixed:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "field:purchase.line.component,line:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "field:purchase.line.component,move_done:"
+msgid "Moves Done"
+msgstr "Moviments finalitzats"
+
+msgctxt "field:purchase.line.component,move_exception:"
+msgid "Moves Exception"
+msgstr "Moviments en excepció"
+
+msgctxt "field:purchase.line.component,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:purchase.line.component,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Moviments ignorats"
+
+msgctxt "field:purchase.line.component,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Moviments recreats"
+
+msgctxt "field:purchase.line.component,parent_type:"
+msgid "Parent Type"
+msgstr "Tipus pare"
+
+msgctxt "field:purchase.line.component,price_ratio:"
+msgid "Price Ratio"
+msgstr "Rati del preu"
+
+msgctxt "field:purchase.line.component,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.line.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categoria d'unitats del producte"
+
+msgctxt "field:purchase.line.component,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:purchase.line.component,quantity_ratio:"
+msgid "Quantity Ratio"
+msgstr "Rati de la quantitat"
+
+msgctxt "field:purchase.line.component,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:purchase.line.component,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:purchase.line.component-ignored-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:purchase.line.component-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:purchase.line.component-recreated-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:purchase.line.component-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.line,component_children:"
+msgid "Component Children"
+msgstr "Component fill"
+
+msgctxt "field:sale.line,component_parent:"
+msgid "Component Parent"
+msgstr "Component pare"
+
+msgctxt "field:sale.line,components:"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "field:sale.line.component,fixed:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "field:sale.line.component,line:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "field:sale.line.component,move_done:"
+msgid "Moves Done"
+msgstr "Moviments finalitzats"
+
+msgctxt "field:sale.line.component,move_exception:"
+msgid "Moves Exception"
+msgstr "Moviments en excepció"
+
+msgctxt "field:sale.line.component,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:sale.line.component,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Moviments ignorats"
+
+msgctxt "field:sale.line.component,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Moviments recreats"
+
+msgctxt "field:sale.line.component,parent_type:"
+msgid "Parent Type"
+msgstr "Tipus pare"
+
+msgctxt "field:sale.line.component,price_ratio:"
+msgid "Price Ratio"
+msgstr "Rati de preu"
+
+msgctxt "field:sale.line.component,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.line.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categoria d'unitats del producte"
+
+msgctxt "field:sale.line.component,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.line.component,quantity_ratio:"
+msgid "Quantity Ratio"
+msgstr "Rati de la quantitat"
+
+msgctxt "field:sale.line.component,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.line.component,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:sale.line.component-ignored-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:sale.line.component-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.line.component-recreated-stock.move,component:"
+msgid "Sale Line Component"
+msgstr "Component de la línia de venda"
+
+msgctxt "field:sale.line.component-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "help:product.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Marca perque la quantitat del component sigui independent de la quantitat "
+"del kit."
+
+msgctxt "help:purchase.line.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Marca perque la quantitat del component sigui independent de la quantitat "
+"del kit."
+
+msgctxt "help:sale.line.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Marca perque la quantitat del component sigui independent de la quantitat "
+"del kit."
+
+msgctxt "model:product.component,name:"
+msgid "Product Component"
+msgstr "Component del producte"
+
+msgctxt "model:purchase.line.component,name:"
+msgid "Purchase Line Component"
+msgstr "Component de línia de compra"
+
+msgctxt "model:purchase.line.component-ignored-stock.move,name:"
+msgid "Purchase Line Component - Ignored Move"
+msgstr "Component de línia de compra - Moviment ignorat"
+
+msgctxt "model:purchase.line.component-recreated-stock.move,name:"
+msgid "Purchase Line Component - Recreated Move"
+msgstr "Component de línia de compra - Moviment recreat"
+
+msgctxt "model:sale.line.component,name:"
+msgid "Sale Line Component"
+msgstr "Component de la línia de venda"
+
+msgctxt "model:sale.line.component-ignored-stock.move,name:"
+msgid "Sale Line Component - Ignored Move"
+msgstr "Component de línia de venda - Moviment ignorat"
+
+msgctxt "model:sale.line.component-recreated-stock.move,name:"
+msgid "Sale Line Component - Recreated Move"
+msgstr "Component de la línia de venda - Moviment recreat"
+
+msgctxt "selection:product.product,type:"
+msgid "Kit"
+msgstr "Kit"
+
+msgctxt "selection:product.template,type:"
+msgid "Kit"
+msgstr "Kit"
+
+msgctxt "view:purchase.line:"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "view:sale.line:"
+msgid "Components"
+msgstr "Components"
