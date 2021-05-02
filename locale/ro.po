@@ -12,15 +12,15 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.statement.rule,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:account.statement.rule,lines:"
 msgid "Lines"
@@ -88,19 +88,19 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 msgctxt "field:account.statement.rule.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
@@ -163,15 +163,13 @@ msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.statement.rule.information:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.statement.rule:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
 msgctxt "view:account.statement.rule:"
 msgid "Between"
