@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.ec_sales_list,amount:"
 msgid "Amount"
-msgstr "Import"
+msgstr "Suma"
 
 msgctxt "field:account.ec_sales_list,code:"
 msgid "Code"
-msgstr "Codi"
+msgstr "Cod"
 
 msgctxt "field:account.ec_sales_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificador fiscal de l'empresa"
+msgstr ""
 
 msgctxt "field:account.ec_sales_list,currency:"
 msgid "Currency"
@@ -20,56 +20,56 @@ msgstr "Moneda"
 
 msgctxt "field:account.ec_sales_list,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimals de la moneda"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.ec_sales_list,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Parte"
 
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr "Identificador fiscal del tercer"
+msgstr ""
 
 msgctxt "field:account.ec_sales_list.context,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Companie"
 
 msgctxt "field:account.ec_sales_list.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Exercici fiscal"
+msgstr "An Fiscal"
 
 msgctxt "field:account.ec_sales_list.context,period:"
 msgid "Period"
-msgstr "Període"
+msgstr "Perioadă"
 
 msgctxt "field:account.tax,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr "Codi llistat de ventes intracomunitaries"
+msgstr ""
 
 msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr "Codi llistat de ventes intracomunitaries"
+msgstr ""
 
 msgctxt "model:account.ec_sales_list,name:"
 msgid "EC Sales List"
-msgstr "Resum ventes intracomunitàries"
+msgstr ""
 
 msgctxt "model:account.ec_sales_list.context,name:"
 msgid "EC Sales List Context"
-msgstr "Context resum ventes intracomunitàries"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr "Resum ventes intracomunitàries"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr "Resum ventes intracomunitàries"
+msgstr ""
 
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
-msgstr "Resum ventes intracomunitàries"
+msgstr ""
 
 msgctxt "view:account.tax:"
 msgid "EC Sales List"
-msgstr "Resum ventes intracomunitàries"
+msgstr ""
