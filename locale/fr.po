@@ -160,8 +160,8 @@ msgid "Quotations"
 msgstr "Devis"
 
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
-msgid "Purchase Request Quotations"
-msgstr "Devis de demande d'achat"
+msgid "Quotations"
+msgstr "Devis"
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
@@ -190,13 +190,9 @@ msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "Un devis a déjà été fait pour la demande « %(request)s »."
 
-msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
-msgid "User in company"
-msgstr "Utilisateur dans la société"
-
-msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
-msgid "User in company"
-msgstr "Utilisateur dans la société"
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
@@ -207,8 +203,8 @@ msgid "Purchase Request Quotation"
 msgstr "Devis de demande d'achat"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
-msgid "Purchase Request Quotations"
-msgstr "Devis de demande d'achat"
+msgid "Quotations"
+msgstr "Devis"
 
 msgctxt "model:purchase.request.quotation,name:"
 msgid "Purchase Request For Quotation"

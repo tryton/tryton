@@ -159,9 +159,10 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
 msgstr "offertes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
-msgid "Purchase Request Quotations"
-msgstr "Aankoopaanvraag Offertes"
+msgid "Quotations"
+msgstr "offertes"
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
@@ -190,12 +191,9 @@ msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "Er is al een offerte gemaakt voor aanvraag \"%(request)s\"."
 
-msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
-
-msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
@@ -206,9 +204,10 @@ msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
 msgstr "Aankoopaanvraag Offerte"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
-msgid "Purchase Request Quotations"
-msgstr "Aankoopaanvraag Offertes"
+msgid "Quotations"
+msgstr "offertes"
 
 msgctxt "model:purchase.request.quotation,name:"
 msgid "Purchase Request For Quotation"

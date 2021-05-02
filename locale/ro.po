@@ -29,15 +29,15 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:purchase.request.quotation,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Rânduri"
 
 msgctxt "field:purchase.request.quotation,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:purchase.request.quotation,reference:"
 msgid "Reference"
@@ -73,19 +73,19 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 msgctxt "field:purchase.request.quotation.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
 msgctxt "field:purchase.request.quotation.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produs"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
 msgid "Product Uom Category"
@@ -95,15 +95,13 @@ msgctxt "field:purchase.request.quotation.line,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request.quotation.line,quotation:"
 msgid "Quotation"
-msgstr "Quotations"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request.quotation.line,quotation_state:"
 msgid "Quotation State"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,request:"
 msgid "Request"
@@ -157,35 +155,34 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
-msgstr "Create Quotation"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
 msgid "Sent"
-msgstr "Sent"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
@@ -197,21 +194,19 @@ msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.request.quotation,name:"
 msgid "Purchase Request For Quotation"
-msgstr "Purchase Request Quotation"
+msgstr ""
 
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
 msgid "Create Purchase Request Quotation Ask Suppliers"
@@ -221,15 +216,13 @@ msgctxt "model:purchase.request.quotation.create.succeed,name:"
 msgid "Create Purchase Request Quotation Succeed"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.request.quotation.line,name:"
 msgid "Purchase Request For Quotation Line"
-msgstr "Purchase Request Quotation"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:purchase.request.quotation:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Customer Code:"
@@ -245,12 +238,11 @@ msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
-#, fuzzy
 msgctxt "report:purchase.request.quotation:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
@@ -264,10 +256,9 @@ msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:purchase.request.quotation:"
 msgid "Quotation"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
@@ -285,10 +276,9 @@ msgctxt "report:purchase.request.quotation:"
 msgid "Unit Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Quotation"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt "selection:purchase.request,state:"
 msgid "Received"
@@ -298,10 +288,9 @@ msgctxt "selection:purchase.request.quotation,state:"
 msgid "Cancelled"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Received"
@@ -311,10 +300,9 @@ msgctxt "selection:purchase.request.quotation,state:"
 msgid "Rejected"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Sent"
-msgstr "Sent"
+msgstr ""
 
 msgctxt "view:purchase.request.quotation.line:"
 msgid "General"
@@ -324,19 +312,17 @@ msgctxt "view:purchase.request.quotation:"
 msgid "Cancel"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request.quotation:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Other Info"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request.quotation:"
 msgid "Quotation"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Receive"
@@ -346,20 +332,17 @@ msgctxt "view:purchase.request.quotation:"
 msgid "Reject"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request.quotation:"
 msgid "Send"
-msgstr "Sent"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request:"
 msgid "Preferred Quotation:"
-msgstr "Create Quotation"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request:"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr ""
 
 msgctxt ""
 "wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
