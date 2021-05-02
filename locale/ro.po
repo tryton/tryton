@@ -49,11 +49,11 @@ msgstr ""
 
 msgctxt "field:stock.lot,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
@@ -61,11 +61,11 @@ msgstr ""
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr "Pada Tanggal"
+msgstr ""
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr "Pada Tanggal"
+msgstr ""
 
 msgctxt "field:stock.lots_by_locations,default_uom:"
 msgid "Default UOM"
@@ -86,26 +86,23 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.lots_by_locations,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:stock.lots_by_locations,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
 msgid "At Date"
-msgstr "Pada Tanggal"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lots_by_warehouse.context,locations:"
 msgid "Locations"
-msgstr "Lokasi"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
 msgid "At Date"
-msgstr "Pada Tanggal"
+msgstr ""
 
 msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -126,7 +123,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.move.add.lots.start,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:stock.move.add.lots.start,quantity:"
 msgid "Quantity"
@@ -148,10 +145,9 @@ msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
 msgid "Has Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:stock.move.add.lots.start.lot,parent:"
 msgid "Parent"
@@ -160,7 +156,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
@@ -180,7 +176,7 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
-msgstr "Lokasi"
+msgstr ""
 
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
@@ -188,11 +184,11 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Perioadă"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required."
@@ -230,20 +226,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
-msgstr ""
+msgstr "Locaţii Lista Cantităţi"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
-msgstr ""
+msgstr "Arbore Cantitate Locaţii"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
 msgid "Lots by Locations"
-msgstr "Lokasi"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
 msgid "Lots By Warehouse"
@@ -251,7 +246,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Perpindahan"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
@@ -304,10 +299,9 @@ msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.lots_by_locations,name:"
 msgid "Lots by Locations"
-msgstr "Lokasi"
+msgstr ""
 
 msgctxt "model:stock.lots_by_warehouse.context,name:"
 msgid "Lot by Warehouse"
@@ -335,7 +329,7 @@ msgstr ""
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Production"
-msgstr "Produksi"
+msgstr ""
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Storage"
@@ -343,7 +337,7 @@ msgstr ""
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Supplier"
-msgstr "Pemasok"
+msgstr ""
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Customer"
@@ -355,7 +349,7 @@ msgstr ""
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Production"
-msgstr "Produksi"
+msgstr ""
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Storage"
@@ -363,7 +357,7 @@ msgstr ""
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Supplier"
-msgstr "Pemasok"
+msgstr ""
 
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
