@@ -176,6 +176,10 @@ msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr "De naam van de webshop moet uniek zijn."
 
+msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Webwinkels"

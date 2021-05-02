@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Webáruházak"
 
 msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Webáruházak"
 
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Webáruházak"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Webáruház"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Jellemző értékek"
 
 msgctxt "field:web.shop,attributes_removed:"
 msgid "Attributes Removed"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:web.shop,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "Kategóriák"
 
 msgctxt "field:web.shop,categories_removed:"
 msgid "Categories Removed"
@@ -40,27 +40,27 @@ msgstr ""
 
 msgctxt "field:web.shop,company:"
 msgid "Company"
-msgstr ""
+msgstr "Cég"
 
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:web.shop,guest_party:"
 msgid "Guest Party"
-msgstr ""
+msgstr "Vendég ügyfél"
 
 msgctxt "field:web.shop,language:"
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 msgctxt "field:web.shop,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:web.shop,products:"
 msgid "Products"
-msgstr ""
+msgstr "Termékek"
 
 msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
@@ -68,51 +68,51 @@ msgstr ""
 
 msgctxt "field:web.shop,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Raktárak"
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
-msgstr ""
+msgstr "Jellemző érték"
 
 msgctxt "field:web.shop-product.attribute,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Bolt"
 
 msgctxt "field:web.shop-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
 msgctxt "field:web.shop-product.category,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Bolt"
 
 msgctxt "field:web.shop-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
 msgctxt "field:web.shop-product.product,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Bolt"
 
 msgctxt "field:web.shop-stock.location,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Bolt"
 
 msgctxt "field:web.shop-stock.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktár"
 
 msgctxt "field:web.user,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Számlázási cím"
 
 msgctxt "field:web.user,shipment_address:"
 msgid "Shipment Address"
-msgstr ""
+msgstr "Szállítási cím"
 
 msgctxt "help:product.attribute,web_shops:"
 msgid "The list of web shops on which the attribute is published."
@@ -156,7 +156,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Webáruházak"
 
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
 msgid ""
@@ -172,13 +172,17 @@ msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Webáruházak"
 
 msgctxt "model:web.shop,name:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Webáruház"
 
 msgctxt "model:web.shop-product.attribute,name:"
 msgid "Web Shop - Attribute"
@@ -198,4 +202,4 @@ msgstr ""
 
 msgctxt "view:web.shop:"
 msgid "Products"
-msgstr ""
+msgstr "Termékek"
