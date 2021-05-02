@@ -2,6 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:carrier,dpd_paper_format:"
+msgid "Paper Format"
+msgstr "Format paper"
+
+msgctxt "field:carrier,dpd_printer_language:"
+msgid "Printer Language"
+msgstr "Idioma de la impressió"
+
+msgctxt "field:carrier,dpd_product:"
+msgid "Product"
+msgstr "Producte"
+
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -85,3 +97,7 @@ msgstr "Proves"
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Information"
 msgstr "Informació de les credencials"
+
+msgctxt "view:carrier:"
+msgid "DPD"
+msgstr "DPD"
