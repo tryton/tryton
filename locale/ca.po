@@ -202,6 +202,10 @@ msgstr ""
 "Per re-obrir el treball \"%(work)s\", heu de re-obrir primer el seu pare "
 "\"%(parent)s\"."
 
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
@@ -217,6 +221,10 @@ msgstr "Projectes"
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
 msgstr "Arbre de projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"

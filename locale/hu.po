@@ -207,6 +207,10 @@ msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -223,6 +227,10 @@ msgstr "Projects"
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
 msgstr "Projects"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"

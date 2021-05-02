@@ -4,35 +4,35 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Cabang"
+msgstr "Copii"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr ""
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr ""
+msgstr "Efort"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr "Kiri"
+msgstr "Rămas"
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr "Denumire"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Induk"
+msgstr "Părinte"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr "Parte"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr "Kanan"
+msgstr ""
 
 msgctxt "field:project.work,status:"
 msgid "Status"
@@ -90,10 +90,9 @@ msgctxt "field:project.work.status,default:"
 msgid "Default"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work.status,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:project.work.status,progress:"
 msgid "Progress"
@@ -201,7 +200,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Konfigurasi"
+msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
@@ -217,7 +216,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
@@ -263,14 +262,13 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:project.work.status:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "End:"
@@ -278,11 +276,11 @@ msgstr ""
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "Umum"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Start:"
-msgstr "Mulai:"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Timesheet:"

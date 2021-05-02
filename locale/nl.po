@@ -202,6 +202,10 @@ msgstr ""
 "Om werk \"%(work)s\" opnieuw te openen, moet u ook het bovenliggende niveau "
 "\"%(parent)s\" opnieuw openen."
 
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -217,6 +221,10 @@ msgstr "projecten"
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
 msgstr "projecten"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapporten"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
