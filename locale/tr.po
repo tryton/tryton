@@ -63,8 +63,8 @@ msgstr "Cultivarlar"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
-msgid "Cultivar Groups"
-msgstr "Cultivar Grupları"
+msgid "Groups"
+msgstr "Gruplar"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
@@ -83,8 +83,8 @@ msgstr "Cultivarlar"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
-msgid "Cultivar Groups"
-msgstr "Cultivar Grupları"
+msgid "Groups"
+msgstr "Gruplar"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"

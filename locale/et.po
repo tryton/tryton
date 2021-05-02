@@ -58,9 +58,10 @@ msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
 msgstr "Kasvav"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
-msgid "Cultivar Groups"
-msgstr "Kasvav grupp"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
@@ -74,9 +75,10 @@ msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
 msgstr "Kasvavad"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
-msgid "Cultivar Groups"
-msgstr "Kasvav grupp"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"

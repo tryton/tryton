@@ -59,7 +59,7 @@ msgid "Cultivars"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
-msgid "Cultivar Groups"
+msgid "Groups"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_taxon_form"
@@ -75,7 +75,7 @@ msgid "Cultivars"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
-msgid "Cultivar Groups"
+msgid "Groups"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
