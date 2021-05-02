@@ -7,7 +7,7 @@ msgid ""
 "The forcast quantity (%(forecast_quantity)s%(default_uom)s) for line "
 "\"%(line)s\" is lower than its quantity (%(quantity)s%(unit)s)."
 msgstr ""
-"Die erwartete Menge %(forecast_quantity)s%(default_uom)s von Bewegung "
+"Die erwartete Menge %(forecast_quantity)s%(default_uom)s von Lagerbewegung "
 "\"%(line)s\" ist geringer als %(quantity)s%(unit)s."
 
 msgctxt "model:res.group,name:group_sale_stock_quantity"
