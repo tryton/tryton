@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
-msgstr "Sor"
+msgstr "Sorok"
 
 msgctxt "field:product.price_list,name:"
 msgid "Name"
@@ -16,19 +16,19 @@ msgstr "Név"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
-msgstr "ÁFÁ-val együtt"
+msgstr "Az ár adót tartalmaz"
 
 msgctxt "field:product.price_list,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Mértékegység"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
-msgstr "Űrlap"
+msgstr "Képlet"
 
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
@@ -51,32 +51,36 @@ msgstr ""
 msgctxt "help:product.price_list,lines:"
 msgid "Add price formulas for different criterias."
 msgstr ""
+"Az árszámításhoz használt képleteket adhatja itt meg, különböző "
+"feltételekkel."
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
-msgstr ""
+msgstr "Az árlista megnevezése."
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
-msgstr ""
+msgstr "Jelölje be, ha az árba bele van számítva az adó."
 
 msgctxt "help:product.price_list,unit:"
 msgid "The unit in which the quantity is expressed."
-msgstr ""
+msgstr "A mértékegység, amiben a mennyiség ki van fejezve."
 
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
-msgstr ""
+msgstr "Csak ezen kategóriába tartozó termékekre érvényes."
 
-#, fuzzy
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price\n"
-"- cost_price: the cost price of the product"
+"- cost_price: the cost price of the product\n"
+"- list_price: the list price of the product"
 msgstr ""
-"Python kifejezés, mely :\n"
-" unit_price: originaler unit_price, szerint van kiértékelve (ár/egység)"
+"Egy Python programozási nyelven megadott kifejezés, amiben a következő változók szerepelhetnek:\n"
+"- unit_price: az eredeti egységár\n"
+"- cost_price: a termék költségára\n"
+"- list_price: a termék listaára"
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
@@ -84,16 +88,15 @@ msgstr ""
 
 msgctxt "help:product.price_list.line,product:"
 msgid "Apply only to this product."
-msgstr ""
+msgstr "Csak erre a termékre érvényes."
 
 msgctxt "help:product.price_list.line,quantity:"
 msgid "Apply only when quantity is greater."
-msgstr ""
+msgstr "Csak ettől a mennyiségtől kezdve érvényes."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr "Árlisták"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_formula"
@@ -104,14 +107,13 @@ msgstr ""
 "Érvénytelen \"%(formula)s\" űrlap a \"%(line)s\" árlista sorban "
 "\"%(exception)s\" hibajelentéssel."
 
-msgctxt "model:ir.rule.group,name:rule_group_product_list"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
+msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr "Árlisták"
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
@@ -121,7 +123,6 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Árlista sor"
 
-#, fuzzy
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"
-msgstr "Termék"
+msgstr "a termék alapértelmezett ME-e"

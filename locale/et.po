@@ -72,7 +72,8 @@ msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price\n"
-"- cost_price: the cost price of the product"
+"- cost_price: the cost price of the product\n"
+"- list_price: the list price of the product"
 msgstr ""
 
 msgctxt "help:product.price_list.line,price_list:"
@@ -97,8 +98,9 @@ msgid ""
 "exception \"%(exception)s\"."
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_product_list"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
