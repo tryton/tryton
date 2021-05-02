@@ -898,6 +898,7 @@ def process_exception(exception, *args, **kwargs):
                 except TrytonError as exception:
                     if exception.faultCode == 'QueryCanceled':
                         Main().on_quit()
+                        sys.exit()
                     raise
                 finally:
                     PLOCK.release()
