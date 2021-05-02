@@ -102,6 +102,10 @@ msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
 msgstr "Petició"
 
+msgctxt "field:purchase.requisition.line,summary:"
+msgid "Summary"
+msgstr "Resum"
+
 msgctxt "field:purchase.requisition.line,supplier:"
 msgid "Supplier"
 msgstr "Proveïdor"
@@ -127,8 +131,8 @@ msgid "Requests"
 msgstr "Sol·licituds"
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
-msgid "Purchase Requisitions"
-msgstr "Peticions de compra"
+msgid "Requisitions"
+msgstr "Peticions"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
@@ -182,21 +186,17 @@ msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
 msgstr "En espera"
 
-msgctxt "model:ir.rule.group,name:rule_group_requisition"
+msgctxt "model:ir.rule.group,name:rule_group_requisition_admin"
 msgid "Any requisition"
-msgstr "Qualsevol petició"
+msgstr "Qualsevol requisit"
 
-msgctxt "model:ir.rule.group,name:rule_group_requisition_default"
+msgctxt "model:ir.rule.group,name:rule_group_requisition_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_employees"
 msgid "Own requisition"
 msgstr "Petició pròpia"
-
-msgctxt "model:ir.rule.group,name:rule_group_requisition_line"
-msgid "Any requisition line"
-msgstr "Qualsevol línia de petició"
-
-msgctxt "model:ir.rule.group,name:rule_group_requisition_line_default"
-msgid "Own requisition line"
-msgstr "Línia de petició pròpia"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
@@ -207,8 +207,8 @@ msgid "Purchase Requisition"
 msgstr "Petició de compra"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
-msgid "Purchase Requisitions"
-msgstr "Peticions de compra"
+msgid "Requisitions"
+msgstr "Peticions"
 
 msgctxt "model:purchase.requisition,name:"
 msgid "Purchase Requisition"
@@ -260,7 +260,7 @@ msgstr "General"
 
 msgctxt "view:purchase.requisition:"
 msgid "Other Info"
-msgstr "Altra informació"
+msgstr "Informació addicional"
 
 msgctxt "view:purchase.requisition:"
 msgid "Requisition"

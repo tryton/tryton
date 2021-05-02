@@ -103,6 +103,10 @@ msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
 msgstr ""
 
+msgctxt "field:purchase.requisition.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:purchase.requisition.line,supplier:"
 msgid "Supplier"
 msgstr ""
@@ -128,7 +132,7 @@ msgid "Requests"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
-msgid "Purchase Requisitions"
+msgid "Requisitions"
 msgstr ""
 
 msgctxt ""
@@ -184,20 +188,16 @@ msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_requisition"
+msgctxt "model:ir.rule.group,name:rule_group_requisition_admin"
 msgid "Any requisition"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_requisition_default"
+msgctxt "model:ir.rule.group,name:rule_group_requisition_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_employees"
 msgid "Own requisition"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_requisition_line"
-msgid "Any requisition line"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_requisition_line_default"
-msgid "Own requisition line"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
@@ -209,7 +209,7 @@ msgid "Purchase Requisition"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
-msgid "Purchase Requisitions"
+msgid "Requisitions"
 msgstr ""
 
 msgctxt "model:purchase.requisition,name:"
