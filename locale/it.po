@@ -38,13 +38,15 @@ msgctxt "field:sale.product_customer,template:"
 msgid "Product"
 msgstr "Prodotto"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_customer_form"
-msgid "Product Customers"
-msgstr ""
+msgid "Customers"
+msgstr "Clienti"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_customer"
-msgid "Product Customers"
-msgstr ""
+msgid "Customers"
+msgstr "Clienti"
 
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"

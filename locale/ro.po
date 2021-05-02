@@ -12,23 +12,23 @@ msgstr ""
 
 msgctxt "field:sale.amendment.line,product_customer:"
 msgid "Customer's Product"
-msgstr "Produk Pelanggan"
+msgstr ""
 
 msgctxt "field:sale.line,product_customer:"
 msgid "Customer's Product"
-msgstr "Produk Pelanggan"
+msgstr ""
 
 msgctxt "field:sale.product_customer,code:"
 msgid "Code"
-msgstr "Kode"
+msgstr "Cod"
 
 msgctxt "field:sale.product_customer,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:sale.product_customer,party:"
 msgid "Customer"
-msgstr "Pelanggan"
+msgstr ""
 
 msgctxt "field:sale.product_customer,product:"
 msgid "Variant"
@@ -36,17 +36,15 @@ msgstr ""
 
 msgctxt "field:sale.product_customer,template:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_customer_form"
 msgid "Customers"
-msgstr "Pelanggan"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_customer"
 msgid "Customers"
-msgstr "Pelanggan"
+msgstr ""
 
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"

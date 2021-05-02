@@ -39,12 +39,12 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "model:ir.action,name:act_product_customer_form"
-msgid "Product Customers"
-msgstr "Productos de cliente"
+msgid "Customers"
+msgstr "Clientes"
 
 msgctxt "model:ir.ui.menu,name:menu_product_customer"
-msgid "Product Customers"
-msgstr "Productos de cliente"
+msgid "Customers"
+msgstr "Clientes"
 
 msgctxt "model:sale.product_customer,name:"
 msgid "Product Customer"
