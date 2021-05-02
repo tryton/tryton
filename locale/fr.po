@@ -14,6 +14,10 @@ msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Coût d'expédition"
 
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr "Montant avec coût d'expédition inclus"
+
 msgctxt "field:sale.sale,available_carriers:"
 msgid "Available Carriers"
 msgstr "Transporteurs disponibles"
@@ -34,13 +38,37 @@ msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
 msgstr "Coût"
 
-msgctxt "field:stock.shipment.out,cost_currency:"
-msgid "Cost Currency"
-msgstr "Devise du coût"
+msgctxt "field:stock.shipment.out,cost_edit:"
+msgid "Edit Cost"
+msgstr "Modifier le coût"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Ligne de facture du coût"
+
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Coût de la vente"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Devise du coût de la vente"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Devise du coût de la vente"
+
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Coût de la vente"
+
+msgctxt "field:stock.shipment.out,cost_used:"
+msgid "Cost"
+msgstr "Coût"
+
+msgctxt "help:stock.shipment.out,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Cochez pour modifier le coût."
 
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
@@ -58,9 +86,17 @@ msgstr ""
 "un compte de produits pour le produit « %(product)s »."
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
 msgstr "À la commande"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
 msgstr "À l'expédition"
+
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr "Coût d'expédition inclus"
