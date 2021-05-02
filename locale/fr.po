@@ -66,6 +66,66 @@ msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
+msgctxt "field:account.reporting.vat_book_es,base_amount:"
+msgid "Base Amount"
+msgstr "Montant de base"
+
+msgctxt "field:account.reporting.vat_book_es,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.reporting.vat_book_es,invoice:"
+msgid "Invoice"
+msgstr "Facture"
+
+msgctxt "field:account.reporting.vat_book_es,invoice_date:"
+msgid "Invoice Date"
+msgstr "Date de facturation"
+
+msgctxt "field:account.reporting.vat_book_es,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.reporting.vat_book_es,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identifiant de taxe du tiers"
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax:"
+msgid "Surcharge Tax"
+msgstr "Taxe supplémentaire"
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax_amount:"
+msgid "Surcharge Tax Amount"
+msgstr "Montant de taxe supplémentaire"
+
+msgctxt "field:account.reporting.vat_book_es,tax:"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "field:account.reporting.vat_book_es,tax_amount:"
+msgid "Tax Amount"
+msgstr "Montant de taxe"
+
+msgctxt "field:account.reporting.vat_book_es.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.reporting.vat_book_es.context,end_period:"
+msgid "End Period"
+msgstr "Période de fin"
+
+msgctxt "field:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.reporting.vat_book_es.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.reporting.vat_book_es.context,start_period:"
+msgid "Start Period"
+msgstr "Période de début"
+
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
 msgstr "Montant"
@@ -126,6 +186,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Code de la liste des achats CE espagnoles"
 
+msgctxt "field:account.tax,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr "Exclure du livre de TVA espagnol"
+
 msgctxt "field:account.tax,es_reported_with:"
 msgid "Reported with"
 msgstr "Rapportée avec"
@@ -145,6 +209,10 @@ msgstr "Rapport AEAT"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Code de la liste d'achat CE espagnole"
+
+msgctxt "field:account.tax.template,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr "Exclure du livre de TVA espagnol"
 
 msgctxt "field:account.tax.template,es_reported_with:"
 msgid "Reported With"
@@ -178,6 +246,14 @@ msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
 msgid "EC Operation List Context"
 msgstr "Contexte de la liste des opérations CE"
 
+msgctxt "model:account.reporting.vat_book_es,name:"
+msgid "Spanish VAT Book"
+msgstr "Livre de TVA espagnol"
+
+msgctxt "model:account.reporting.vat_book_es.context,name:"
+msgid "Spanish VAT Book Context"
+msgstr "Contexte du livre de TVA espagnol"
+
 msgctxt "model:account.reporting.vat_list_es,name:"
 msgid "Spanish VAT List"
 msgstr "Liste TVA espagnole"
@@ -189,6 +265,10 @@ msgstr "Contexte de la liste TVA espagnole"
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"
 msgstr "Liste des opérations CE"
+
+msgctxt "model:ir.action,name:act_vat_book_list"
+msgid "Spanish VAT Book"
+msgstr "Livre de TVA espagnol"
 
 msgctxt "model:ir.action,name:act_vat_list_form"
 msgid "Spanish VAT List"
@@ -214,6 +294,10 @@ msgctxt "model:ir.action,name:report_aeat_349"
 msgid "AEAT Model 349"
 msgstr "AEAT Modèle 349"
 
+msgctxt "model:ir.action,name:report_aeat_vat_book"
+msgid "VAT Book"
+msgstr "Livre de TVA"
+
 msgctxt "model:ir.action,name:wizard_print_aeat_report"
 msgid "Print AEAT"
 msgstr "Imprimer AEAT"
@@ -232,6 +316,10 @@ msgctxt "model:ir.ui.menu,name:menu_print_aeat"
 msgid "Print AEAT"
 msgstr "Imprimer AEAT"
 
+msgctxt "model:ir.ui.menu,name:menu_vat_book"
+msgid "Spanish VAT Book"
+msgstr "Livre de TVA espagnol"
+
 msgctxt "model:ir.ui.menu,name:menu_vat_list"
 msgid "Spanish VAT List"
 msgstr "Liste TVA espagnole"
@@ -247,6 +335,18 @@ msgstr "Modèle 115"
 msgctxt "selection:account.reporting.aeat.start,report:"
 msgid "Model 303"
 msgstr "Modèle 303"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Investment Goods"
+msgstr "Biens d'investissement"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Issued"
+msgstr "Publié"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Received"
+msgstr "Reçues"
 
 msgctxt "selection:account.tax.code,aeat_report:"
 msgid "Model 111"

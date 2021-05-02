@@ -68,6 +68,76 @@ msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
 msgid "Start Date"
 msgstr "Kirjutamise kuupäev"
 
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,base_amount:"
+msgid "Base Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.reporting.vat_book_es,invoice:"
+msgid "Invoice"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,invoice_date:"
+msgid "Invoice Date"
+msgstr "Kirjutamise kuupäev"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,party:"
+msgid "Party"
+msgstr "Ospaool"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Osapoole TIN kood"
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax:"
+msgid "Surcharge Tax"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax_amount:"
+msgid "Surcharge Tax Amount"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,tax:"
+msgid "Tax"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es,tax_amount:"
+msgid "Tax Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,end_period:"
+msgid "End Period"
+msgstr "Periood"
+
+msgctxt "field:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Type"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,start_period:"
+msgid "Start Period"
+msgstr "Periood"
+
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
 msgstr "Väärtus"
@@ -128,6 +198,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Hispaania EC ostu nimekirja kood"
 
+msgctxt "field:account.tax,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.tax,es_reported_with:"
 msgid "Reported with"
@@ -148,6 +222,10 @@ msgstr "AETA aruanne"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Hispaania EC ostu nimekirja kood"
+
+msgctxt "field:account.tax.template,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.template,es_reported_with:"
@@ -182,6 +260,16 @@ msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
 msgid "EC Operation List Context"
 msgstr "EC operatsioonide nimekirja sisu"
 
+#, fuzzy
+msgctxt "model:account.reporting.vat_book_es,name:"
+msgid "Spanish VAT Book"
+msgstr "Hispaania KM nimekiri"
+
+#, fuzzy
+msgctxt "model:account.reporting.vat_book_es.context,name:"
+msgid "Spanish VAT Book Context"
+msgstr "Hispaania KM nimekirja sisu"
+
 msgctxt "model:account.reporting.vat_list_es,name:"
 msgid "Spanish VAT List"
 msgstr "Hispaania KM nimekiri"
@@ -193,6 +281,11 @@ msgstr "Hispaania KM nimekirja sisu"
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"
 msgstr "EC operatsioonide nimekiri"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_vat_book_list"
+msgid "Spanish VAT Book"
+msgstr "Hispaania KM nimekiri"
 
 msgctxt "model:ir.action,name:act_vat_list_form"
 msgid "Spanish VAT List"
@@ -218,6 +311,10 @@ msgctxt "model:ir.action,name:report_aeat_349"
 msgid "AEAT Model 349"
 msgstr "AETA mudel 349"
 
+msgctxt "model:ir.action,name:report_aeat_vat_book"
+msgid "VAT Book"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_print_aeat_report"
 msgid "Print AEAT"
 msgstr "Prindi AETA"
@@ -234,6 +331,11 @@ msgctxt "model:ir.ui.menu,name:menu_print_aeat"
 msgid "Print AEAT"
 msgstr "Prindi AETA"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_vat_book"
+msgid "Spanish VAT Book"
+msgstr "Hispaania KM nimekiri"
+
 msgctxt "model:ir.ui.menu,name:menu_vat_list"
 msgid "Spanish VAT List"
 msgstr "HIspaania KM nimekiri"
@@ -249,6 +351,18 @@ msgstr "Mudel 115"
 msgctxt "selection:account.reporting.aeat.start,report:"
 msgid "Model 303"
 msgstr "Mudel 303"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Investment Goods"
+msgstr ""
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Issued"
+msgstr ""
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Received"
+msgstr ""
 
 msgctxt "selection:account.tax.code,aeat_report:"
 msgid "Model 111"

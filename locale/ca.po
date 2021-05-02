@@ -66,6 +66,66 @@ msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
 
+msgctxt "field:account.reporting.vat_book_es,base_amount:"
+msgid "Base Amount"
+msgstr "Base Imponible"
+
+msgctxt "field:account.reporting.vat_book_es,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.reporting.vat_book_es,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.reporting.vat_book_es,invoice_date:"
+msgid "Invoice Date"
+msgstr "Data factura"
+
+msgctxt "field:account.reporting.vat_book_es,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.reporting.vat_book_es,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identificador fiscal del tercer"
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax:"
+msgid "Surcharge Tax"
+msgstr "Recàrrec d'equivalència"
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax_amount:"
+msgid "Surcharge Tax Amount"
+msgstr "Import recàrrec d'equivalència"
+
+msgctxt "field:account.reporting.vat_book_es,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.reporting.vat_book_es,tax_amount:"
+msgid "Tax Amount"
+msgstr "Import Impost"
+
+msgctxt "field:account.reporting.vat_book_es.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.reporting.vat_book_es.context,end_period:"
+msgid "End Period"
+msgstr "Període final"
+
+msgctxt "field:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.reporting.vat_book_es.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:account.reporting.vat_book_es.context,start_period:"
+msgid "Start Period"
+msgstr "Període inicial"
+
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
 msgstr "Import"
@@ -126,6 +186,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Codi resum espanyol compres intracomunitàries"
 
+msgctxt "field:account.tax,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr "Excloure del llibre d’IVA espanyol"
+
 msgctxt "field:account.tax,es_reported_with:"
 msgid "Reported with"
 msgstr "Reportat amb"
@@ -145,6 +209,10 @@ msgstr "Informe AEAT"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Codi resum espanyol compres intracomunitàries"
+
+msgctxt "field:account.tax.template,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr "Excloure del llibre d’IVA espanyol"
 
 msgctxt "field:account.tax.template,es_reported_with:"
 msgid "Reported With"
@@ -178,6 +246,14 @@ msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
 msgid "EC Operation List Context"
 msgstr "Context resum operacions intracomunitàries"
 
+msgctxt "model:account.reporting.vat_book_es,name:"
+msgid "Spanish VAT Book"
+msgstr "Llibre d'IVA Espanyol"
+
+msgctxt "model:account.reporting.vat_book_es.context,name:"
+msgid "Spanish VAT Book Context"
+msgstr "Context del llibre d'IVA espanyol"
+
 msgctxt "model:account.reporting.vat_list_es,name:"
 msgid "Spanish VAT List"
 msgstr "Resum operacions terceres persones"
@@ -189,6 +265,10 @@ msgstr "Context resum operacions terceres persones"
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"
 msgstr "Resum operacions intracomunitàries"
+
+msgctxt "model:ir.action,name:act_vat_book_list"
+msgid "Spanish VAT Book"
+msgstr "Llibre d'IVA Espanyol"
 
 msgctxt "model:ir.action,name:act_vat_list_form"
 msgid "Spanish VAT List"
@@ -214,6 +294,10 @@ msgctxt "model:ir.action,name:report_aeat_349"
 msgid "AEAT Model 349"
 msgstr "Model 349 AEAT"
 
+msgctxt "model:ir.action,name:report_aeat_vat_book"
+msgid "VAT Book"
+msgstr "Lilbre d'IVA"
+
 msgctxt "model:ir.action,name:wizard_print_aeat_report"
 msgid "Print AEAT"
 msgstr "Imprimeix AEAT"
@@ -231,6 +315,10 @@ msgctxt "model:ir.ui.menu,name:menu_print_aeat"
 msgid "Print AEAT"
 msgstr "Imprimeix AEAT"
 
+msgctxt "model:ir.ui.menu,name:menu_vat_book"
+msgid "Spanish VAT Book"
+msgstr "Llibre d'IVA Espanyol"
+
 msgctxt "model:ir.ui.menu,name:menu_vat_list"
 msgid "Spanish VAT List"
 msgstr "Resum operacions terceres persones"
@@ -246,6 +334,18 @@ msgstr "Model 115"
 msgctxt "selection:account.reporting.aeat.start,report:"
 msgid "Model 303"
 msgstr "Model 303"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Investment Goods"
+msgstr "Béns d’inversió"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Issued"
+msgstr "Emeses"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Received"
+msgstr "Rebudes"
 
 msgctxt "selection:account.tax.code,aeat_report:"
 msgid "Model 111"

@@ -67,6 +67,68 @@ msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
 msgid "Start Date"
 msgstr ""
 
+msgctxt "field:account.reporting.vat_book_es,base_amount:"
+msgid "Base Amount"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,invoice:"
+msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,invoice_date:"
+msgid "Invoice Date"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax:"
+msgid "Surcharge Tax"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,surcharge_tax_amount:"
+msgid "Surcharge Tax Amount"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es,tax_amount:"
+msgid "Tax Amount"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es.context,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,end_period:"
+msgid "End Period"
+msgstr "دوره ها"
+
+msgctxt "field:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:account.reporting.vat_book_es.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.vat_book_es.context,start_period:"
+msgid "Start Period"
+msgstr "دوره ها"
+
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
 msgstr ""
@@ -127,6 +189,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr ""
 
+msgctxt "field:account.tax,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.tax,es_reported_with:"
 msgid "Reported with"
@@ -146,6 +212,10 @@ msgstr "گزارش AEAT"
 
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
+msgstr ""
+
+msgctxt "field:account.tax.template,es_exclude_from_vat_book:"
+msgid "Exclude from Spanish VAT Book"
 msgstr ""
 
 #, fuzzy
@@ -181,6 +251,14 @@ msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
 msgid "EC Operation List Context"
 msgstr ""
 
+msgctxt "model:account.reporting.vat_book_es,name:"
+msgid "Spanish VAT Book"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_book_es.context,name:"
+msgid "Spanish VAT Book Context"
+msgstr ""
+
 msgctxt "model:account.reporting.vat_list_es,name:"
 msgid "Spanish VAT List"
 msgstr ""
@@ -191,6 +269,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_vat_book_list"
+msgid "Spanish VAT Book"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_vat_list_form"
@@ -219,6 +301,10 @@ msgctxt "model:ir.action,name:report_aeat_349"
 msgid "AEAT Model 349"
 msgstr "AEAT مدل 303"
 
+msgctxt "model:ir.action,name:report_aeat_vat_book"
+msgid "VAT Book"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_print_aeat_report"
 msgid "Print AEAT"
 msgstr "پرینت AEAT"
@@ -235,6 +321,10 @@ msgctxt "model:ir.ui.menu,name:menu_print_aeat"
 msgid "Print AEAT"
 msgstr "پرینت AEAT"
 
+msgctxt "model:ir.ui.menu,name:menu_vat_book"
+msgid "Spanish VAT Book"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_vat_list"
 msgid "Spanish VAT List"
 msgstr ""
@@ -250,6 +340,18 @@ msgstr "مدل 115"
 msgctxt "selection:account.reporting.aeat.start,report:"
 msgid "Model 303"
 msgstr "مدل 303"
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Investment Goods"
+msgstr ""
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Issued"
+msgstr ""
+
+msgctxt "selection:account.reporting.vat_book_es.context,es_vat_book_type:"
+msgid "Received"
+msgstr ""
 
 msgctxt "selection:account.tax.code,aeat_report:"
 msgid "Model 111"
