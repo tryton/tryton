@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
@@ -20,23 +20,23 @@ msgstr ""
 
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Angajat"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:sale.complaint,origin_id:"
 msgid "Origin ID"
@@ -54,28 +54,25 @@ msgctxt "field:sale.complaint,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr "Types"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
-msgstr ""
+msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
@@ -115,22 +112,20 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,amount:"
 msgid "Amount"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
-msgstr "Complaints"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
 msgid "Complaint State"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
@@ -162,21 +157,19 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Acțiune"
 
 msgctxt "field:sale.complaint.action-sale.line,amount:"
 msgid "Amount"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
-msgstr "Complaints"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
 msgid "Complaint State"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
@@ -206,14 +199,13 @@ msgctxt "field:sale.complaint.action-sale.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -249,39 +241,38 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Customer Complaints"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "Types"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Approved"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
@@ -293,62 +284,59 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
-msgstr "Process"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_reject_button"
 msgid "Reject"
-msgstr "Reject"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_complaint_companies"
 msgid "User in companies"
-msgstr "Customer Complaint"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "Types"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
-msgstr "Customer Complaint"
+msgstr ""
 
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
@@ -358,15 +346,13 @@ msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"
-msgstr "Customer Complaint"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr "Approve"
+msgstr ""
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
@@ -376,20 +362,17 @@ msgctxt "selection:sale.complaint,state:"
 msgid "Done"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr "Reject"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
@@ -403,12 +386,10 @@ msgctxt "view:sale.complaint.action:"
 msgid "Amount"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Process"
-msgstr "Process"
+msgstr ""

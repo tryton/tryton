@@ -62,6 +62,10 @@ msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr "Action"
 
+msgctxt "field:sale.complaint.action,amount:"
+msgid "Amount"
+msgstr "Montant"
+
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Plainte"
@@ -69,6 +73,14 @@ msgstr "Plainte"
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
 msgstr "État de la plainte"
+
+msgctxt "field:sale.complaint.action,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.complaint.action,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
@@ -102,6 +114,10 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Action"
 
+msgctxt "field:sale.complaint.action-account.invoice.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
 msgctxt ""
 "field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
@@ -110,6 +126,14 @@ msgstr "ID de l'origine de la plainte"
 msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
 msgid "Complaint State"
 msgstr "État de la plainte"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -135,6 +159,10 @@ msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Action"
 
+msgctxt "field:sale.complaint.action-sale.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
 msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
 msgstr "ID de l'origine de la plainte"
@@ -142,6 +170,14 @@ msgstr "ID de l'origine de la plainte"
 msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
 msgid "Complaint State"
 msgstr "État de la plainte"
+
+msgctxt "field:sale.complaint.action-sale.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
@@ -274,21 +310,9 @@ msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
 msgstr "Attendre"
 
-msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in complaint's company"
-msgstr "Utilisateur dans le société de la plainte"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
-msgid "User in complaint's company"
-msgstr "Utilisateur dans le société de la plainte"
-
-msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
-msgid "User in complaint's company"
-msgstr "Utilisateur dans le société de la plainte"
-
-msgctxt "model:ir.rule.group,name:rule_group_complaint"
-msgid "User in company"
-msgstr "Utilisateur dans le société"
+msgctxt "model:ir.rule.group,name:rule_group_complaint_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
@@ -361,6 +385,10 @@ msgstr "Créer une note de crédit"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Créer un retour de vente"
+
+msgctxt "view:sale.complaint.action:"
+msgid "Amount"
+msgstr "Montant"
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

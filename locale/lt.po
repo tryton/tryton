@@ -63,6 +63,10 @@ msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr ""
 
+msgctxt "field:sale.complaint.action,amount:"
+msgid "Amount"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
@@ -72,6 +76,14 @@ msgstr "Complaints"
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
 msgstr "Complaints"
+
+msgctxt "field:sale.complaint.action,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.complaint.action,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
@@ -105,6 +117,10 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr ""
 
+msgctxt "field:sale.complaint.action-account.invoice.line,amount:"
+msgid "Amount"
+msgstr ""
+
 #, fuzzy
 msgctxt ""
 "field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
@@ -115,6 +131,14 @@ msgstr "Complaints"
 msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
 msgid "Complaint State"
 msgstr "Complaints"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -140,6 +164,10 @@ msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr ""
 
+msgctxt "field:sale.complaint.action-sale.line,amount:"
+msgid "Amount"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
 msgid "Complaint Origin ID"
@@ -149,6 +177,14 @@ msgstr "Complaints"
 msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
 msgid "Complaint State"
 msgstr "Complaints"
+
+msgctxt "field:sale.complaint.action-sale.line,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
@@ -279,23 +315,10 @@ msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in complaint's company"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
-msgid "User in complaint's company"
+msgctxt "model:ir.rule.group,name:rule_group_complaint_companies"
+msgid "User in companies"
 msgstr "Customer Complaint"
-
-#, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
-msgid "User in complaint's company"
-msgstr "Customer Complaint"
-
-msgctxt "model:ir.rule.group,name:rule_group_complaint"
-msgid "User in company"
-msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
@@ -374,6 +397,10 @@ msgstr ""
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
+msgstr ""
+
+msgctxt "view:sale.complaint.action:"
+msgid "Amount"
 msgstr ""
 
 #, fuzzy
