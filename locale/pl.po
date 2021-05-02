@@ -72,10 +72,6 @@ msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
 msgstr "Porzuć odbiorcę"
 
-msgctxt "field:stock.shipment.drop,code:"
-msgid "Code"
-msgstr "Kod"
-
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
 msgstr "Firma"
@@ -104,6 +100,10 @@ msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Ruchy"
 
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr "Data planowana"
@@ -123,6 +123,14 @@ msgstr "Dostawca"
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr "Ruchy dostawcy"
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
@@ -144,6 +152,11 @@ msgstr "Sales"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Porzuć wysyłki"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
 msgid "Drop Shipments"
 msgstr "Porzuć wysyłki"
 
@@ -211,8 +224,8 @@ msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-msgctxt "model:ir.rule.group,name:rule_group_shipment_drop"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy

@@ -77,11 +77,6 @@ msgid "Drop Customer"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.shipment.drop,code:"
-msgid "Code"
-msgstr "Partner kód"
-
-#, fuzzy
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
 msgstr "Társaság"
@@ -112,6 +107,10 @@ msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Raktár mozgás"
 
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr ""
@@ -134,6 +133,14 @@ msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr ""
 
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr "Drop Shipments"
@@ -151,6 +158,11 @@ msgid "Sales"
 msgstr "Sales"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
 msgid "Drop Shipments"
 msgstr "Drop Shipments"
 
@@ -216,8 +228,8 @@ msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-msgctxt "model:ir.rule.group,name:rule_group_shipment_drop"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"

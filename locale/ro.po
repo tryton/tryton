@@ -25,7 +25,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr "Alamat Pengiriman"
+msgstr ""
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr "Alamat Pengiriman"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -73,7 +73,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
@@ -89,7 +89,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr "Alamat Pengiriman"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
@@ -97,7 +97,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr "Perpindahan"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,number:"
 msgid "Number"
@@ -109,15 +109,15 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr "Referensi"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr "Pemasok"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
@@ -145,7 +145,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr ""
+msgstr "Vânzări"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
@@ -198,7 +198,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_done_button"
 msgid "Done"
@@ -216,10 +216,9 @@ msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
@@ -249,10 +248,9 @@ msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Cancelled"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
