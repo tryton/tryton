@@ -176,8 +176,8 @@ msgstr "Dunnings"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
-msgid "Dunning Procedures"
-msgstr "Dunning Procedures"
+msgid "Procedures"
+msgstr "ຂັ້ນຕອນ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_dunning_create"
@@ -213,8 +213,8 @@ msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
 msgstr "ລາຍການຕິດຕາມໜີ້ສາມາດໃຊ້ໄດ້ພຽງແຕ່ກັບໜຶ່ງການຕິດຕາມໜີ້ເທົ່ານັ້ນ."
 
-msgctxt "model:ir.rule.group,name:rule_group_dunning"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -234,8 +234,8 @@ msgstr "Dunnings"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
-msgid "Dunning Procedures"
-msgstr "Dunning Procedures"
+msgid "Procedures"
+msgstr "ຂັ້ນຕອນ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunnings"

@@ -181,7 +181,7 @@ msgstr "Dunnings"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
-msgid "Dunning Procedures"
+msgid "Procedures"
 msgstr "Dunning Procedures"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
@@ -214,8 +214,8 @@ msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_dunning"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -234,7 +234,7 @@ msgstr "Dunnings"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
-msgid "Dunning Procedures"
+msgid "Procedures"
 msgstr "Dunning Procedures"
 
 #, fuzzy
