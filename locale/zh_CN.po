@@ -48,6 +48,10 @@ msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
 msgstr "用户"
 
+msgctxt "field:web.user.authenticate.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "IP地址"
@@ -74,7 +78,7 @@ msgstr "Web 用户"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "重置密码"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
@@ -90,7 +94,7 @@ msgstr "Web用户会话密钥必须唯一."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "重置密码"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"

@@ -46,6 +46,10 @@ msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
 msgstr "Utilisateur"
 
+msgctxt "field:web.user.authenticate.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr "Cookie de l'appareil"
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Adresse IP"
