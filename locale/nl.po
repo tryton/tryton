@@ -22,9 +22,26 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Boekingen/bewegingen"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pakket"
+
+msgctxt "field:stock.package,packaging_weight_digits:"
+msgid "Packaging Weight Digits"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight Uom"
+msgstr ""
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
@@ -46,6 +63,19 @@ msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Naam"
 
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pakket"
+
+msgctxt "field:stock.package.type,packaging_weight_digits:"
+msgid "Packaging Weight Digits"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight Uom"
+msgstr ""
+
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
 msgstr "pakketten"
@@ -62,6 +92,14 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "pakketten"
 
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Pakkettypen"
@@ -75,6 +113,10 @@ msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
 "Om verzending \"%(shipment)s\" te verwerken, moet u alle bewegingen "
 "inpakken."
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -111,3 +153,11 @@ msgstr "Afgesloten"
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr "Open"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr ""

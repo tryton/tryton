@@ -22,9 +22,25 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Codi"
 
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Moviments"
+
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pes del paquet"
+
+msgctxt "field:stock.package,packaging_weight_digits:"
+msgid "Packaging Weight Digits"
+msgstr "Dígits de pes del paquet"
+
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight Uom"
+msgstr "UdM del pes del paquet"
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
@@ -46,6 +62,18 @@ msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pes del paquet"
+
+msgctxt "field:stock.package.type,packaging_weight_digits:"
+msgid "Packaging Weight Digits"
+msgstr "Dígits del pes del paquet"
+
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight Uom"
+msgstr "UdM del pes del paquet"
+
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
 msgstr "Paquets"
@@ -62,6 +90,14 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Paquets"
 
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "El pes del paquet quan està buit."
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "El pes del paquet quan està buit."
+
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Tipus de paquet"
@@ -75,6 +111,10 @@ msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
 "Per a processar l'albarà \"%(shipment)s\", heu d'empaquetar tots els seus "
 "moviments."
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -111,3 +151,11 @@ msgstr "Tancat"
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr "Obert"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr "Mesures"
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr "Mesures"
