@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr "ELÁBÉ számla"
+msgstr ""
 
 msgctxt "field:product.category.account,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr "ELÁBÉ számla"
+msgstr ""
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"
@@ -23,8 +23,6 @@ msgid ""
 "The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
 "This may compute a wrong COGS."
 msgstr ""
-"A „%(line)s” számlasorhoz nem a „%(product)s” termékhez kapcsolódó készletmozgások tartoznak.\n"
-"Ez rossz ELÁBÉ számításához vezethet."
 
 msgctxt "model:ir.message,text:msg_move_quantity_greater"
 msgid "Anglo-Saxon quantity cannot be greater than quantity."
@@ -32,4 +30,4 @@ msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"
-msgstr "angolszász"
+msgstr ""
