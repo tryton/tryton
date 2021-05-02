@@ -210,13 +210,13 @@ msgstr "Строка аналитики"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
-msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgid "Accounts"
+msgstr "Счет"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
-msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgid "Accounts"
+msgstr "Счет"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_tree2"
@@ -242,10 +242,9 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Open Chart of Analytic Accounts"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_rule_form"
-msgid "Analytic Rules"
-msgstr "Строки аналитики"
+msgid "Rules"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
@@ -262,24 +261,36 @@ msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
 msgid "Apply Analytic Rules"
 msgstr "Строки аналитики"
 
-msgctxt "model:ir.rule.group,name:rule_group_rule"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_entry_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
-msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgid "Accounts"
+msgstr "Счет"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
-msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgid "Accounts"
+msgstr "Счет"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
-msgid "Analytic Account"
-msgstr "Analytic Account"
+msgid "Analytic"
+msgstr "Аналитика"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
@@ -290,10 +301,9 @@ msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Open Chart of Analytic Accounts"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
-msgid "Analytic Rules"
-msgstr "Строки аналитики"
+msgid "Rules"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:res.group,name:group_analytic_admin"
