@@ -313,11 +313,12 @@ msgstr ""
 
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr "Der Monat in dem die Abschreibungen verbucht werden."
+msgstr "Der Monat in dem die Abschreibungsbuchungssätze verbucht werden."
 
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
+msgstr ""
+"Der Tag des Monats an dem die Abschreibungsbuchungssätze verbucht werden."
 
 msgctxt "help:account.configuration,asset_frequency:"
 msgid "The default depreciation frequency for new assets."
@@ -325,11 +326,12 @@ msgstr "Die Standardabschreibungsbuchungsfrequenz für neue Anlagen."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr "Der Monat in dem die Abschreibungen verbucht werden."
+msgstr "Der Monat in dem die Abschreibungsbuchungssätze verbucht werden."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
+msgstr ""
+"Der Tag des Monats an dem die Abschreibungsbuchungssätze verbucht werden."
 
 msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
 msgid "The default depreciation frequency for new assets."
@@ -439,13 +441,17 @@ msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
 "still have lines without move."
 msgstr ""
-"Periode \"%(period)s\" kann nicht geschlossen werden, da die Anlagen "
-"\"%(assets)s\" noch Positionen ohne Buchungssatz haben."
+"Der Buchungszeitraum \"%(period)s\" kann nicht geschlossen werden, da die "
+"Anlagen \"%(assets)s\" noch Positionen ohne Buchungssatz haben."
 
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
 msgstr ""
 "Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein."
+
+msgctxt "model:ir.message,text:msg_no_assets"
+msgid "There is no started asset."
+msgstr "Es konnten keine Anlagen mit Abschreibungen gefunden werden."
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
@@ -479,8 +485,8 @@ msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "Anlage aktualisieren"
 
-msgctxt "model:ir.rule.group,name:rule_group_asset"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
@@ -505,7 +511,7 @@ msgstr "Entwicklung des Anlagevermögens drucken"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Abschreibungsbuchungen erstellen"
+msgstr "Abschreibungsbuchungssätze erstellen"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -721,7 +727,7 @@ msgstr "Anlage"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Abschreibungsbuchungen erstellen bis"
+msgstr "Abschreibungsbuchungssätze erstellen bis"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
@@ -737,7 +743,7 @@ msgstr "Anlage"
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr "Buchungen Anlagevermögen"
+msgstr "Buchungssätze Anlagevermögen"
 
 msgctxt "view:account.configuration:"
 msgid "Depreciation Frequency"

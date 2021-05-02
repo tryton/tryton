@@ -88,7 +88,7 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
@@ -438,6 +438,10 @@ msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_no_assets"
+msgid "There is no started asset."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
@@ -468,8 +472,9 @@ msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_asset"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
+msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_asset"

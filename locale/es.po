@@ -104,7 +104,7 @@ msgstr "Dígitos de la unidad"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "Actualizar asientos"
+msgstr "Asientos de actualización"
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
@@ -444,6 +444,10 @@ msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
 msgstr "El activo sólo se puede usar una vez en una línea de factura."
 
+msgctxt "model:ir.message,text:msg_no_assets"
+msgid "There is no started asset."
+msgstr "No hay ningún activo en curso."
+
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
@@ -476,9 +480,9 @@ msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "Actualizar activo"
 
-msgctxt "model:ir.rule.group,name:rule_group_asset"
-msgid "User in company"
-msgstr "Usuario en la empresa"
+msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
