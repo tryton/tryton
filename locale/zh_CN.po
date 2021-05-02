@@ -129,7 +129,7 @@ msgstr "Work Centers"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
@@ -186,17 +186,20 @@ msgctxt "model:ir.model.button,string:work_stop_button"
 msgid "Stop"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_work"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_work_center_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_work_center"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
@@ -212,7 +215,7 @@ msgstr "Work Centers"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"
