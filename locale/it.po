@@ -14,6 +14,11 @@ msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
 msgstr "Metodo di fatturazione"
 
+#, fuzzy
+msgctxt "field:project.work,invoice_timesheet_up_to:"
+msgid "Invoice up to"
+msgstr "Metodo di fatturazione"
+
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
 msgstr "Importo fatturato"
@@ -24,6 +29,11 @@ msgstr ""
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
+msgstr "Metodo di fatturazione"
+
+#, fuzzy
+msgctxt "field:project.work,project_invoice_timesheet_up_to:"
+msgid "Invoice up to"
 msgstr "Metodo di fatturazione"
 
 msgctxt "field:project.work,quantity_to_invoice:"
@@ -45,6 +55,11 @@ msgstr "Lavoro"
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
 msgstr "Riga fattura"
+
+msgctxt "help:project.work,project_invoice_timesheet_up_to:"
+msgid ""
+"Limits which timesheet lines get invoiced to only those before the date."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"

@@ -15,6 +15,11 @@ msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
 msgstr "Arve meetod"
 
+#, fuzzy
+msgctxt "field:project.work,invoice_timesheet_up_to:"
+msgid "Invoice up to"
+msgstr "Arve meetod"
+
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
 msgstr "Arveldatav summa"
@@ -25,6 +30,11 @@ msgstr "Arveldatud progress"
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
+msgstr "Arve meetod"
+
+#, fuzzy
+msgctxt "field:project.work,project_invoice_timesheet_up_to:"
+msgid "Invoice up to"
 msgstr "Arve meetod"
 
 #, fuzzy
@@ -48,6 +58,11 @@ msgstr "Töö"
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
 msgstr "Arve rida"
+
+msgctxt "help:project.work,project_invoice_timesheet_up_to:"
+msgid ""
+"Limits which timesheet lines get invoiced to only those before the date."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"

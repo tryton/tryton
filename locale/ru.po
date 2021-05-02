@@ -17,6 +17,11 @@ msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
 msgstr "Метод инвойса"
 
+#, fuzzy
+msgctxt "field:project.work,invoice_timesheet_up_to:"
+msgid "Invoice up to"
+msgstr "Метод инвойса"
+
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
 msgstr ""
@@ -28,6 +33,11 @@ msgstr ""
 #, fuzzy
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
+msgstr "Метод инвойса"
+
+#, fuzzy
+msgctxt "field:project.work,project_invoice_timesheet_up_to:"
+msgid "Invoice up to"
 msgstr "Метод инвойса"
 
 msgctxt "field:project.work,quantity_to_invoice:"
@@ -52,6 +62,11 @@ msgstr "Работа"
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
 msgstr "Строка инвойса"
+
+msgctxt "help:project.work,project_invoice_timesheet_up_to:"
+msgid ""
+"Limits which timesheet lines get invoiced to only those before the date."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"

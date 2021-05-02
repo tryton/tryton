@@ -2,10 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:project.work,amount_to_invoice:"
 msgid "Amount to Invoice"
-msgstr "Project Invoice"
+msgstr ""
 
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
@@ -15,10 +14,9 @@ msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Invoice"
+msgstr ""
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -32,10 +30,9 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,project_invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Invoice"
+msgstr ""
 
 msgctxt "field:project.work,quantity_to_invoice:"
 msgid "Quantity to Invoice"
@@ -49,10 +46,9 @@ msgctxt "field:project.work.invoiced_progress,progress:"
 msgid "Progress"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr "Tevékenység"
+msgstr ""
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
@@ -63,15 +59,13 @@ msgid ""
 "Limits which timesheet lines get invoiced to only those before the date."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Időpozíció"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_delete_invoiced_line"
 msgid "You cannot delete an invoiced line."
@@ -101,7 +95,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr ""
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
@@ -109,7 +103,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr "Project Invoice"
+msgstr ""
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
