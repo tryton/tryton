@@ -59,6 +59,26 @@ msgid "Shelf Life Expiration State"
 msgstr "Trajanje"
 
 #, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Rok uporabe"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Uporabnost"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Rok trajanja"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Trajanje"
+
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr "V dnevih"
@@ -183,6 +203,36 @@ msgid "Optional"
 msgstr "Neobvezno"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Obvezno"
 

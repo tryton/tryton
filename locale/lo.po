@@ -58,6 +58,22 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr ""
 
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr ""
+
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr ""
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr ""
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr ""
+
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr ""
@@ -187,6 +203,34 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "ຕ້ອງມີ"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "ຕ້ອງມີ"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "ຕ້ອງມີ"
 

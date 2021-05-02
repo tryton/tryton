@@ -59,6 +59,26 @@ msgid "Shelf Life Expiration State"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Aegumistähtaeg"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Aegumise staatus"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Aegumistähtaeg"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Aegumise staatus"
+
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr "Päevades"
@@ -179,6 +199,36 @@ msgid "Optional"
 msgstr "Valikuline"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Nõutud"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "Mitte"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr "Valikuline"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "Nõutud"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Mitte"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Valikuline"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Nõutud"
 

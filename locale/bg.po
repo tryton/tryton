@@ -65,6 +65,26 @@ msgid "Shelf Life Expiration State"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Крайна дата"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Крайна дата"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Крайна дата"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Крайна дата"
+
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr "В брой дни"
@@ -197,6 +217,34 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Задължителен"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "Няма"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "Задължителен"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Няма"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Задължителен"
 

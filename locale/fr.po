@@ -56,7 +56,23 @@ msgstr "Date limite d'utilisation optimale"
 
 msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
+msgstr "État de la date limite d'utilisation optimale"
+
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "État d'expiration"
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
 msgstr "Date limite d'utilisation optimale"
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "État de la date limite d'utilisation optimale"
 
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
@@ -181,6 +197,30 @@ msgid "Optional"
 msgstr "Optionnelle"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Requis"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "Requise"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Aucun"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Optionnel"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Requis"
 

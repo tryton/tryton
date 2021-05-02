@@ -58,6 +58,22 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Mindesthaltbarkeitsstatus"
 
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Verfallsdatum"
+
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Verfallsstatus"
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Mindesthaltbarkeitsdatum"
+
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Mindesthaltbarkeitsstatus"
+
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr "In Tagen."
@@ -88,8 +104,8 @@ msgid ""
 "move \"%(move)s\" in a closed period."
 msgstr ""
 "Das Verfallsdatum von Charge \"%(lot)s\" kann nicht verändert werden, weil "
-"sie in Lagerbewegung \"%(move)s\" in einer geschlossenen Lagerperiode "
-"verwendet wird."
+"sie in Lagerbewegung \"%(move)s\" in einem geschlossenen "
+"Lagerbuchungszeitraum verwendet wird."
 
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
@@ -102,8 +118,9 @@ msgid ""
 "You cannot close periods before the expiration of lot \"%(lot)s\" "
 "(%(date)s)."
 msgstr ""
-"Lagerperioden können nicht vor Erreichen des Mindesthaltbarkeitsdatums der "
-"Charge \"%(lot)s\" (%(date)s) geschlossen werden."
+"Lagerbuchungszeiträume können nicht vor Erreichen des "
+"Mindesthaltbarkeitsdatums der Charge \"%(lot)s\" (%(date)s) geschlossen "
+"werden."
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
@@ -182,6 +199,30 @@ msgid "Optional"
 msgstr "Optional"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Erforderlich"
 

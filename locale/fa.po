@@ -59,6 +59,26 @@ msgid "Shelf Life Expiration State"
 msgstr "وضعیت مفید تاریخ انقضاء"
 
 #, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "تاریخ انقضاء"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "وضعیت انقضاء"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "عمر مفید تاریخ انقضاء"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "وضعیت مفید تاریخ انقضاء"
+
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
 msgstr "در تعداد روزها"
@@ -184,6 +204,36 @@ msgid "Optional"
 msgstr "اختیاری"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+#, fuzzy
+msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "مورد نیاز"
 

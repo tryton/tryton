@@ -2,106 +2,93 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
-msgstr "Lejárat dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
-msgstr "Lejárat időpontja"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
-msgstr "Raktáridő állapota"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
-msgstr "Raktáridő"
+msgstr ""
 
 msgctxt "field:product.template,expiration_state:"
 msgid "Expiration State"
-msgstr "Lejárat dátuma"
+msgstr ""
 
 msgctxt "field:product.template,expiration_time:"
 msgid "Expiration Time"
-msgstr "Lejárat időpontja"
+msgstr ""
 
 msgctxt "field:product.template,shelf_life_state:"
 msgid "Shelf Life Time State"
-msgstr "Raktáridő állapota"
+msgstr ""
 
 msgctxt "field:product.template,shelf_life_time:"
 msgid "Shelf Life Time"
-msgstr "Raktáridő"
+msgstr ""
 
 msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
-msgstr "Raktáridő várakozás időtartama"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
-msgstr "Raktáridő várakozás időtartama"
+msgstr ""
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
-msgstr "Lejárati dátuma"
+msgstr ""
 
 msgctxt "field:stock.lot,expiration_state:"
 msgid "Expiration State"
-msgstr "Lejárati állapot"
+msgstr ""
 
 msgctxt "field:stock.lot,shelf_life_expiration_date:"
 msgid "Shelf Life Expiration Date"
-msgstr "Raktáridő lejárati dátum"
+msgstr ""
 
 msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
-msgstr "Raktáridő lejárati dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
 msgid "Expiration Date"
-msgstr "Lejárati dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Expiration State"
-msgstr "Lejárat dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
 msgid "Shelf Life Expiration Date"
-msgstr "Raktáridő lejárati dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
-msgstr "Raktáridő lejárati dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
-msgstr "Napok száma"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
 msgid "In number of days."
-msgstr "Napok száma"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:product.template,expiration_time:"
 msgid "In number of days."
-msgstr "Napok száma"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:product.template,shelf_life_time:"
 msgid "In number of days."
-msgstr "Napok száma"
+msgstr ""
 
 msgctxt "help:stock.configuration,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
@@ -111,14 +98,11 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
 msgid ""
 "You cannot modify expiration dates of lot \"%(lot)s because it is used on "
 "move \"%(move)s\" in a closed period."
 msgstr ""
-"A Charge \"%(lot)s\" lejárati dátuma nem módosítható, egy zárt raktár "
-"időszakban raktármozgás \"%(move)s\" van."
 
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
@@ -130,123 +114,110 @@ msgid ""
 "(%(date)s)."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Stock Force Expiration"
+msgstr ""
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "None"
-msgstr "Nincs"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr "Opcionális"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
-msgstr "Szükséges"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Shelf Life"
-msgstr "Raktár idő"
+msgstr ""
