@@ -19,6 +19,16 @@ msgid "Customer Codes"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Dobavni rok"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "Dobavni rok"
+
+#, fuzzy
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
 msgstr "Družba"
@@ -31,6 +41,21 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Partner"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Partner"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Dobavni rok"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -191,6 +216,10 @@ msgstr "Stanje nabave"
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Količina"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -376,6 +405,10 @@ msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "Številka"
 
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Partner"
@@ -482,6 +515,12 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -500,6 +539,12 @@ msgstr "Izbran promet bo ponovno izdelan, ostalo bo prezrto."
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "Označite, če popravljate datum dostave."
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:purchase.product_supplier.price,quantity:"
@@ -531,8 +576,8 @@ msgstr "Parties associated to Purchases"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "Dobavitelji"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
@@ -541,8 +586,8 @@ msgstr "Prices"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
@@ -744,12 +789,12 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -769,18 +814,18 @@ msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "Dobavitelji"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
-msgstr "Purchase"
+msgid "Purchases"
+msgstr "Nabavni nalogi"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
@@ -794,12 +839,17 @@ msgstr "Reporting"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "Parties associated to Purchases"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Dobavni rok"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"

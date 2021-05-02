@@ -19,6 +19,16 @@ msgid "Customer Codes"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tiekimo laikas"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "Tiekimo laikas"
+
+#, fuzzy
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -31,6 +41,21 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tiekimo laikas"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -191,6 +216,10 @@ msgstr "Pirkimo būsena"
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Kiekis"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -375,6 +404,10 @@ msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "Numeris"
 
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Kontrahentas"
@@ -481,6 +514,12 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -498,6 +537,12 @@ msgstr ""
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
 msgstr ""
 
 #, fuzzy
@@ -526,17 +571,19 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Su pirkimais susieti kontrahentai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Prekės tiekėjai"
+msgid "Suppliers"
+msgstr "Tiekėjai"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr "Kainos"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "Pirkimų nuostatos"
+msgid "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
@@ -719,12 +766,14 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "Pasiūlymas"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
@@ -739,17 +788,20 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Nuostatos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "Prekės tiekėjai"
+msgid "Suppliers"
+msgstr "Tiekėjai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
-msgstr "Pirkimas"
+msgid "Purchases"
+msgstr "Pirkimai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "Pirkimų nuostatos"
+msgid "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
@@ -759,13 +811,19 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Ataskaitos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "Su pirkimais susieti kontrahentai"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Tiekimo laikas"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"

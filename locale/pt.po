@@ -19,6 +19,16 @@ msgid "Customer Codes"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tempo de Espera"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "Tempo de Espera"
+
+#, fuzzy
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -31,6 +41,21 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Parceiro"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tempo de Espera"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -191,6 +216,10 @@ msgstr "Estado da Compra"
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -376,6 +405,10 @@ msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Parceiro"
@@ -482,6 +515,12 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -502,6 +541,12 @@ msgstr ""
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "Marque para editar a data de entrega."
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:purchase.product_supplier.price,quantity:"
@@ -533,8 +578,8 @@ msgstr "Parties associated to Purchases"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "Fornecedores"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
@@ -543,8 +588,8 @@ msgstr "Prices"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
@@ -746,12 +791,12 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -771,18 +816,18 @@ msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "Fornecedores"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
-msgstr "Purchase"
+msgid "Purchases"
+msgstr "Compras"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
@@ -796,12 +841,17 @@ msgstr "Reporting"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "Parties associated to Purchases"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Tempo de Espera"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
@@ -908,7 +958,7 @@ msgstr "Rascunho de Ordem de Compra"
 
 msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr "Ordem de Compra  nº:"
+msgstr "Ordem de Compra nº:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"

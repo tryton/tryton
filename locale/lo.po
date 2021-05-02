@@ -18,6 +18,14 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr ""
 
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
@@ -31,6 +39,20 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.product,product_suppliers:"
@@ -201,6 +223,10 @@ msgstr "ວັນທີຈັດຊື້"
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -412,6 +438,10 @@ msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "ເລກທີ"
 
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -529,6 +559,12 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -546,6 +582,12 @@ msgstr ""
 
 msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
 msgstr ""
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
@@ -573,9 +615,10 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Parties associated to Purchases"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
@@ -583,8 +626,8 @@ msgstr "Prices"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "ຕັ້ງຄ່າການຈັດຊື້"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
@@ -775,12 +818,12 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -798,19 +841,20 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "ຜູ້ສະໜອງ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
-msgstr "Purchase"
+msgid "Purchases"
+msgstr "ການຈັດຊື້"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "ຕັ້ງຄ່າການຈັດຊື້"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
@@ -822,13 +866,19 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "ກຳລັງລາຍງາຍ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "Parties associated to Purchases"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"

@@ -18,6 +18,14 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr "Klantencodes"
 
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Doorlooptijd"
+
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "Doorlooptijden"
+
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -29,6 +37,18 @@ msgstr "Klantencode"
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Relatiie"
+
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Relatiie"
+
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Doorlooptijd"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -186,6 +206,10 @@ msgstr "Aankoopstaat"
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr "Samenvatting"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -367,6 +391,10 @@ msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "Nummer"
 
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Relatiie"
@@ -474,6 +502,14 @@ msgstr ""
 "De code die de relatie als leverancier heeft toegewezen aan het bedrijf "
 "(klant)."
 
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+"De tijd vanaf de bevesting van get inkooporder tot het ontvangen van de goederen van de relatie waanner gebruikt als leverancier.\n"
+"Wordt gebruikt als er geen doorlooptijd is ingesteld op de productleverancier."
+
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
 "The grace period during which confirmed purchase can still be reset to draft.\n"
@@ -499,6 +535,14 @@ msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "Vink aan om de leverdatum te bewerken."
 
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
+"De tijd tussen het bevestigen van de bestelling en het ontvangen van de producten.\n"
+"Indien leeg wordt de doorlooptijd van de leverancier gehanteerd."
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "Minimale hoeveelheid."
@@ -523,17 +567,19 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Relaties geassocieerd met aankopen"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Productleveranciers"
+msgid "Suppliers"
+msgstr "Leverancier"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr "prijzen"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "Aankoopconfiguratie"
+msgid "Configuration"
+msgstr "Instellingen"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
@@ -733,12 +779,14 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "offerte"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
@@ -753,17 +801,20 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "Productleveranciers"
+msgid "Suppliers"
+msgstr "Leverancier"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
+msgid "Purchases"
 msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "Aankoopconfiguratie"
+msgid "Configuration"
+msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
@@ -773,13 +824,18 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapporten"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "Relaties geassocieerd met aankopen"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr "Relatie klant code"
+
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Doorlooptijd leverancier"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"

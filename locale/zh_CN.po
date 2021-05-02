@@ -18,6 +18,16 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr "客户代码"
 
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "交付时间"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "交付时间"
+
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
 msgstr "公司"
@@ -30,17 +40,32 @@ msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "参与者"
 
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "交付时间"
+
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "供应商"
 
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
-msgstr "可买到"
+msgstr "可采购"
 
 msgctxt "field:product.product,purchase_price_uom:"
 msgid "Purchase Price"
-msgstr "购买价格"
+msgstr "买价"
 
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
@@ -52,7 +77,7 @@ msgstr "供应商"
 
 msgctxt "field:product.template,purchasable:"
 msgid "Purchasable"
-msgstr "可买到"
+msgstr "可采购"
 
 msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
@@ -64,7 +89,7 @@ msgstr "发票法"
 
 msgctxt "field:purchase.configuration,purchase_process_after:"
 msgid "Process Purchase after"
-msgstr ""
+msgstr "采购后的流程"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
@@ -93,27 +118,24 @@ msgstr "重新创建发票"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
-msgstr ""
+msgstr "域移动"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "重新创建移动"
 
-#, fuzzy
 msgctxt "field:purchase.line,actual_quantity:"
 msgid "Actual Quantity"
-msgstr "数量"
+msgstr "实际数量"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "合计"
 
-#, fuzzy
 msgctxt "field:purchase.line,company:"
 msgid "Company"
 msgstr "公司"
 
-#, fuzzy
 msgctxt "field:purchase.line,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -132,7 +154,7 @@ msgstr "交货日期"
 
 msgctxt "field:purchase.line,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "说明"
 
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
@@ -140,7 +162,7 @@ msgstr "从位置"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "发票列表"
+msgstr "发票明细"
 
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
@@ -190,6 +212,10 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "数量"
 
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
 msgstr "税"
@@ -216,7 +242,7 @@ msgstr "单位价格"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
-msgstr "采购订单行"
+msgstr "采购明细"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -228,7 +254,7 @@ msgstr "移动"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr "采购订单行"
+msgstr "采购明细"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
@@ -236,11 +262,11 @@ msgstr "移动"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr "采购订单行"
+msgstr "采购明细"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr "编码"
+msgstr "代码"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
@@ -268,7 +294,7 @@ msgstr "价格"
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
-msgstr "变种"
+msgstr "变体"
 
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
@@ -276,9 +302,8 @@ msgstr "产品"
 
 msgctxt "field:purchase.product_supplier,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "计量单位"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.price,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -297,7 +322,7 @@ msgstr "单价"
 
 msgctxt "field:purchase.product_supplier.price,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "计量单位"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -307,14 +332,13 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "公司"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,confirmed_by:"
 msgid "Confirmed By"
-msgstr "已确认"
+msgstr "确认者"
 
 msgctxt "field:purchase.purchase,contact:"
 msgid "Contact"
-msgstr ""
+msgstr "联系"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -340,10 +364,9 @@ msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "发票法"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoice_party:"
 msgid "Invoice Party"
-msgstr "发票状态"
+msgstr "发票单位"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -363,7 +386,7 @@ msgstr "重开的发票"
 
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
-msgstr "采购列表"
+msgstr "明细"
 
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
@@ -372,6 +395,10 @@ msgstr "移动"
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
 msgstr "采购编号"
+
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -387,12 +414,11 @@ msgstr "付款条件"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr "购买日期"
+msgstr "采购日期"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
-msgstr "报价"
+msgstr "报价者"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -408,7 +434,7 @@ msgstr "发货状态"
 
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "运输"
+msgstr "发货"
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
@@ -432,7 +458,7 @@ msgstr "总缓存"
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr "未缴税"
+msgstr "免税"
 
 msgctxt "field:purchase.purchase,untaxed_amount_cache:"
 msgid "Untaxed Cache"
@@ -477,7 +503,13 @@ msgstr "供应商"
 msgctxt "help:party.party,customer_code:"
 msgid ""
 "The code the party as supplier has assigned to the company as customer."
-msgstr "供应商的代码已做为客户分配给公司"
+msgstr "参与者代码已做为客户分配给公司."
+
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -490,7 +522,7 @@ msgstr ""
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
-msgstr "已经选择的发票将重新创建，忽略其它未选择的发票."
+msgstr "已经选择的发票将重开，忽略其它未选择的发票."
 
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
@@ -500,13 +532,19 @@ msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "选中后编辑交货日期."
 
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "最小数量."
 
 msgctxt "help:purchase.product_supplier.price,uom:"
 msgid "The unit in which the quantity is specified."
-msgstr ""
+msgstr "指定数量的单位."
 
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
@@ -524,17 +562,19 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "与采购相关的各个参与者"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
-msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgid "Suppliers"
+msgstr "供应商"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr "价格"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
-msgid "Purchase Configuration"
-msgstr "购买配置"
+msgid "Configuration"
+msgstr "设置"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
@@ -548,7 +588,6 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "采购"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
 msgstr "移动"
@@ -567,7 +606,7 @@ msgstr "退货"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "运输"
+msgstr "发货"
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
@@ -581,14 +620,13 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "修改标题"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_return_purchase"
 msgid "Return Purchase"
-msgstr "采购"
+msgstr "退货"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "处理装运异常"
+msgstr "处理发货异常"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
@@ -604,7 +642,6 @@ msgctxt ""
 msgid "Draft"
 msgstr "草案"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
 msgid "Exception"
@@ -640,37 +677,37 @@ msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
 msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a purchase."
-msgstr "要修改采购 \"%(purchase)s\" 的标题，需要让其处于草稿状态."
+msgstr "无法将发票 \"%(invoice)s\" 重置为草稿状态，因为因为它与某个采购关联。"
 
 msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
 msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft purchase "
 "\"%(purchase)s\"."
-msgstr "要删除 \"%(line)s\" ，你必须将采购 \"%(purchase)s\"取消或者重置为草稿状态."
+msgstr "要删除明细 \"%(line)s\" ，你必须将采购 \"%(purchase)s\"取消或者重置为草稿状态."
 
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
 "expense."
-msgstr "要开具发票“％（purchase）s”，您必须配置默认帐户费用。"
+msgstr "要开具采购发票“％(purchase)s”，您必须配置默认帐户费用。"
 
 msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
 msgid ""
 "To modify the header of purchase \"%(purchase)s\", it must be in draft "
 "state."
-msgstr "状态在草案时，才能修改采购  \"%(purchase)s\" 标题."
+msgstr "状态在草案时，才能修改采购 \"%(purchase)s\" 标题."
 
 msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
 msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
 "purchase."
-msgstr "你无法将移动 \"%(move)s\" 重置为草稿状态，因为它是有采购生成 ."
+msgstr "你无法将移动 \"%(move)s\" 重置为草稿状态，因为它关联着一个采购 ."
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must define an account expense for "
 "product \"%(product)s\"."
-msgstr ""
+msgstr "要给采购 \"%(purchase)s\" 开具发票，您必须为产品 \"%(product)s\" 定义一个费用账户."
 
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
@@ -703,7 +740,7 @@ msgstr "处理发票异常"
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "处理装运异常"
+msgstr "处理发货异常"
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
@@ -711,18 +748,20 @@ msgstr "修改标题"
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "处理"
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "报价"
 
-msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
 msgstr "公司中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
 msgstr "公司中的用户"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
@@ -737,17 +776,20 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
-msgid "Product Suppliers"
-msgstr "产品供应商"
+msgid "Suppliers"
+msgstr "供应商"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase"
+msgid "Purchases"
 msgstr "采购"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
-msgid "Purchase Configuration"
-msgstr "购买配置"
+msgid "Configuration"
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
@@ -755,19 +797,25 @@ msgstr "采购"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "报告中"
+msgstr "报表"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
-msgid "Parties associated to Purchases"
+msgid "Associated to Purchases"
 msgstr "与采购相关的各个参与者"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr "客户代码"
 
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "交付时间"
+
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr "购买配置"
+msgstr "采购配置"
 
 msgctxt "model:purchase.configuration.purchase_method,name:"
 msgid "Purchase Configuration Purchase Method"
@@ -783,23 +831,23 @@ msgstr "处理发票异常"
 
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "处理装运异常"
+msgstr "处理发货异常"
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
-msgstr "采购订单行"
+msgstr "采购明细"
 
 msgctxt "model:purchase.line-account.tax,name:"
 msgid "Purchase Line - Tax"
-msgstr "采购订单行 - 税"
+msgstr "采购明细 - 税"
 
 msgctxt "model:purchase.line-ignored-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr "采购订单行 - 忽略的移动"
+msgstr "采购明细 - 忽略的移动"
 
 msgctxt "model:purchase.line-recreated-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr "采购订单行 - 忽略的移动"
+msgstr "采购明细 - 忽略的移动"
 
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
@@ -819,12 +867,11 @@ msgstr "采购 -忽略的发票"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
-msgstr "采购-重新创建的发票"
+msgstr "采购-重开的发票"
 
-#, fuzzy
 msgctxt "model:purchase.return_purchase.start,name:"
 msgid "Return Purchase"
-msgstr "采购"
+msgstr "退货"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
@@ -834,7 +881,6 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "采购管理员"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid ":"
 msgstr ":"
@@ -889,7 +935,7 @@ msgstr "税"
 
 msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
-msgstr "税"
+msgstr "税:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
@@ -909,7 +955,7 @@ msgstr "已忽略"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
-msgstr "已创建"
+msgstr "已重开"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -917,7 +963,7 @@ msgstr "说明"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
-msgstr "采购申请行"
+msgstr "明细"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Subtotal"
@@ -961,7 +1007,7 @@ msgstr "异常"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr "没有"
+msgstr "无"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
@@ -971,7 +1017,6 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr "正在等待"
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Cancelled"
 msgstr "已取消"
@@ -1012,15 +1057,13 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "供应商"
 
-#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate:"
-msgstr "选择要重新创建的发票"
+msgstr "选择要重开的发票:"
 
-#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate:"
-msgstr "选择要重新创建的移动"
+msgstr "选择要重新创建的移动:"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date:"
@@ -1048,7 +1091,7 @@ msgstr "采购"
 
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"
-msgstr ""
+msgstr "你确定要退货？"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
@@ -1074,12 +1117,10 @@ msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "更改"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.return_purchase,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.return_purchase,start,return_:"
 msgid "Return"
-msgstr "退货"
+msgstr "返回"
