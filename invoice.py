@@ -1386,9 +1386,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         '''
         credit = self.__class__(**values)
 
-        for field in ('company', 'party', 'invoice_address', 'currency',
-               'journal', 'account', 'payment_term', 'description',
-               'comment', 'type'):
+        for field in [
+                'company', 'tax_identifier', 'party', 'party_tax_identifier',
+                'invoice_address', 'currency', 'journal', 'account',
+                'payment_term', 'description', 'comment', 'type']:
             setattr(credit, field, getattr(self, field))
 
         credit.lines = [line._credit() for line in self.lines]
@@ -2290,8 +2291,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         else:
             line.quantity = self.quantity
 
-        for field in ('sequence', 'type', 'invoice_type', 'unit_price',
-                'description', 'unit', 'product', 'account'):
+        for field in [
+                'sequence', 'type', 'invoice_type', 'party', 'currency',
+                'company', 'unit_price', 'description', 'unit', 'product',
+                'account']:
             setattr(line, field, getattr(self, field))
         line.taxes_date = self.tax_date
         line.taxes = self.taxes
