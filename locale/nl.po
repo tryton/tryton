@@ -130,10 +130,6 @@ msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
 msgstr "Geheime handtekening sleutel Webhook"
 
-msgctxt "field:account.payment.stripe.account,zip_code:"
-msgid "Zip Code"
-msgstr "Postcode"
-
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
 msgstr "Relatie"
@@ -237,10 +233,6 @@ msgstr "De URL die Stripe moet aanroepen."
 msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr "Het Stripe tekengeheim van de webhook."
-
-msgctxt "help:account.payment.stripe.account,zip_code:"
-msgid "Verification on checkout"
-msgstr "Verificatie bij het afrekenen"
 
 msgctxt "model:account.payment.stripe.account,name:"
 msgid "Stripe Account"
@@ -362,10 +354,6 @@ msgstr "Goedkeuren"
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
 msgstr "Concept"
-
-msgctxt "model:ir.rule.group,name:rule_group_refund"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
