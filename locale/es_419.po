@@ -212,9 +212,10 @@ msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
-msgid "Timesheet Lines"
-msgstr ""
+msgid "Lines"
+msgstr "Ingresar líneas"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
@@ -226,6 +227,14 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
+msgid "Open"
 msgstr ""
 
 #, fuzzy
@@ -245,12 +254,12 @@ msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
-msgid "Own employee hours"
-msgstr ""
-
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own employee hours"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
@@ -261,12 +270,12 @@ msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_work"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_work_admin"
-msgid "Any work"
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
@@ -291,9 +300,10 @@ msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
-msgid "Timesheet Lines"
-msgstr ""
+msgid "Lines"
+msgstr "Ingresar líneas"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"

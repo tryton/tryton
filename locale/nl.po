@@ -210,9 +210,10 @@ msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr "Voer urenstaat in"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
-msgid "Timesheet Lines"
-msgstr "Tijdregistratieregel"
+msgid "Lines"
+msgstr "Lijnen invoeren"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
@@ -225,6 +226,14 @@ msgstr "Werken"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Werken"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
+msgid "Open"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
@@ -244,13 +253,14 @@ msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
 msgstr "De oorsprong van het werk moet uniek zijn per bedrijf."
 
-msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
-msgid "Own employee hours"
-msgstr "Eigen medewerkersuren"
-
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr "alle medewerkers uren"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own employee hours"
+msgstr "Eigen medewerkersuren"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
@@ -260,13 +270,14 @@ msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
 msgstr "eender welke tijdregistratieregel"
 
-msgctxt "model:ir.rule.group,name:rule_group_work"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
 
-msgctxt "model:ir.rule.group,name:rule_group_work_admin"
-msgid "Any work"
-msgstr "Elk werk"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -288,9 +299,10 @@ msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
 msgstr "Voer urenstaat in"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
-msgid "Timesheet Lines"
-msgstr "Tijdregistratieregel"
+msgid "Lines"
+msgstr "Lijnen invoeren"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"

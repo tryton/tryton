@@ -211,7 +211,7 @@ msgid "Enter Timesheet"
 msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.action,name:act_line_form"
-msgid "Timesheet Lines"
+msgid "Lines"
 msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:act_line_form_work"
@@ -225,6 +225,14 @@ msgstr "Tätigkeiten"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Tätigkeiten"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
+msgid "Open"
+msgstr "Offen"
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
@@ -245,13 +253,13 @@ msgid "Work origin must be unique by company."
 msgstr ""
 "Die Herkunft der Arbeit pro Unternehmen kann nur einmal vergeben werden."
 
-msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
-msgid "Own employee hours"
-msgstr "Eigene Mitarbeiterzeiten"
-
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr "Alle Mitarbeiterzeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own employee hours"
+msgstr "Zeiterfassungspositionen Auswertung (Nur Eigene)"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
@@ -261,13 +269,13 @@ msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
 msgstr "Alle Zeiterfassungspositionen"
 
-msgctxt "model:ir.rule.group,name:rule_group_work"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
-msgctxt "model:ir.rule.group,name:rule_group_work_admin"
-msgid "Any work"
-msgstr "Alle Tätigkeiten"
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -290,7 +298,7 @@ msgid "Enter Timesheet"
 msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
-msgid "Timesheet Lines"
+msgid "Lines"
 msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"

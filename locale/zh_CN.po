@@ -4,275 +4,279 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "雇员"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "结束日期"
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "开始日期"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "雇员"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "雇员"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
-#, fuzzy
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "日期"
 
-#, fuzzy
 msgctxt "field:timesheet.line,description:"
 msgid "Description"
 msgstr "描述"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "雇员"
 
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
-#, fuzzy
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr "Works"
+msgstr "工作"
 
-#, fuzzy
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "日期"
 
 msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "雇员"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr ""
+msgstr "时间表持续时间"
 
-#, fuzzy
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "名称"
 
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "来源"
 
-#, fuzzy
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Timesheet Lines"
+msgstr "时间表结束"
 
-#, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "时间表明细"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr ""
+msgstr "时间表开始"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "从日期"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "到日期"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
-msgstr ""
+msgstr "消耗时间的公司."
 
 msgctxt "help:timesheet.line,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "时间消耗的时候."
 
 msgctxt "help:timesheet.line,description:"
 msgid "Additional description of the work done."
-msgstr ""
+msgstr "完成工作的附加说明."
 
 msgctxt "help:timesheet.line,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "消耗时间的雇员."
 
 msgctxt "help:timesheet.line,work:"
 msgid "The work on which the time is spent."
-msgstr ""
+msgstr "消耗时间的工作."
 
 msgctxt "help:timesheet.line.enter.start,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "消耗时间的时候."
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "消耗时间的雇员."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
-msgstr ""
+msgstr "让这项工作属于公司."
 
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work."
-msgstr ""
+msgstr "消耗在这项工作上的总时间."
 
 msgctxt "help:timesheet.work,name:"
 msgid "The main identifier of the work."
-msgstr ""
+msgstr "工作的主标识符."
 
 msgctxt "help:timesheet.work,origin:"
 msgid "Use to relate the time spent to other records."
-msgstr ""
+msgstr "用于将所花费的时间与其他记录相关联."
 
 msgctxt "help:timesheet.work,timesheet_end_date:"
 msgid "Restrict adding lines after the date."
-msgstr ""
+msgstr "限制只允许在日期之后添加行."
 
 msgctxt "help:timesheet.work,timesheet_lines:"
 msgid "Spend time on this work."
-msgstr ""
+msgstr "此项工作消耗的时间."
 
 msgctxt "help:timesheet.work,timesheet_start_date:"
 msgid "Restrict adding lines before the date."
-msgstr ""
+msgstr "限制只允许在日期之前添加行."
 
 msgctxt "help:timesheet.work.context,from_date:"
 msgid "Do not take into account lines before the date."
-msgstr ""
+msgstr "不考虑日期之前的行."
 
 msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
-msgstr ""
+msgstr "不考虑日期之后的行."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "雇员工作小时数"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "雇员月工作小时数"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "雇员周工作小时数"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "输入时间表"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
-msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgid "Lines"
+msgstr "输入行"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "时间表明细"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
+msgid "Open"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
-msgstr ""
+msgstr "持续时间明细 \"%(line)s\" 必须为正."
 
 msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
-msgstr ""
+msgstr "时间表的 UUID 不能重复."
 
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
-msgstr ""
+msgstr "工作\"%(work)s\"关联的公司与其来源关联的公司不一致."
 
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
-msgid "Own employee hours"
-msgstr ""
+msgstr "工作来源必须按公司唯一."
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "任意雇员工时"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own employee hours"
+msgstr "自有雇员工时"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
-msgstr ""
+msgstr "自有雇员时间表明细"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
-msgstr ""
+msgstr "任意雇员工时间表明细"
 
-msgctxt "model:ir.rule.group,name:rule_group_work"
-msgid "User in company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
 
-msgctxt "model:ir.rule.group,name:rule_group_work_admin"
-msgid "Any work"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -280,99 +284,93 @@ msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "雇员工作小时数"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "雇员月工作小时数"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "雇员周工作小时数"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "输入时间表"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
-msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgid "Lines"
+msgstr "输入行"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "报告中"
+msgstr "报表"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Timesheet"
+msgstr "时间表"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Timesheet Administration"
+msgstr "时间表管理"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "雇员工作小时数"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "雇员的工作时间"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "雇员月工作小时数"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "雇员周工作小时数"
 
-#, fuzzy
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr "Timesheet Lines"
+msgstr "时间表明细"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr ""
+msgstr "输入行"
 
-#, fuzzy
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr "Works"
+msgstr "工作"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "工作环境"
 
-#, fuzzy
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr "Timesheet"
+msgstr "时间表"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr ""
+msgstr "持续时间"
 
-#, fuzzy
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr ""
+msgstr "输入"
