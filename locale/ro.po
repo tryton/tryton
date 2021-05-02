@@ -4,197 +4,191 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr "ລະຫັດ 3 ໂຕອັກສອນ"
+msgstr "Cod din 3 litere"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr "ລະຫັດປະເທດ"
+msgstr "Cod"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr "ລະຫັດໂຕເລກ"
+msgstr "Cod Numeric"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Denumire"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
-msgstr "ແຂວງ"
+msgstr "Subdiviziune"
 
-#, fuzzy
 msgctxt "field:country.postal_code,city:"
 msgid "City"
-msgstr "ບ້ານ"
+msgstr "Oraș"
 
-#, fuzzy
 msgctxt "field:country.postal_code,country:"
 msgid "Country"
-msgstr "ປະເທດ"
+msgstr "Țară"
 
 msgctxt "field:country.postal_code,postal_code:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Cod Poștal"
 
-#, fuzzy
 msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
-msgstr "ແຂວງ"
+msgstr "Subdiviziune"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr "ລະຫັດແຂວງ"
+msgstr "Cod"
 
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr "ປະເທດ"
+msgstr "Țară"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Denumire"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "ຂຶ້ນກັບ"
+msgstr "Parinte"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr "ຮູບແບບ"
+msgstr "Tip"
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
-msgstr ""
+msgstr "Cod ISO de țara din 3 litere."
 
 msgctxt "help:country.country,code:"
 msgid "The 2 chars ISO country code."
-msgstr ""
+msgstr "Cod ISO de țara din 2 litere."
 
 msgctxt "help:country.country,code_numeric:"
 msgid "The ISO numeric country code."
-msgstr ""
+msgstr "Cod numeric de țara ISO."
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
-msgstr ""
+msgstr "Identificatorul principal al țarii."
 
 msgctxt "help:country.postal_code,city:"
 msgid "The city associated with the postal code."
-msgstr ""
+msgstr "Orașul asociat cu codul poștal."
 
 msgctxt "help:country.postal_code,country:"
 msgid "The country that contains the postal code."
-msgstr ""
+msgstr "Țara care conține codul poștal."
 
 msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
-msgstr ""
+msgstr "Subdiviziunea în care se află codul poștal."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
-msgstr ""
+msgstr "Codul ISO al subdiviziuni."
 
 msgctxt "help:country.subdivision,country:"
 msgid "The country where this subdivision is."
-msgstr ""
+msgstr "Țara unde se afla subdiviziunea."
 
 msgctxt "help:country.subdivision,name:"
 msgid "The main identifier of the subdivision."
-msgstr ""
+msgstr "Identificatorul principal al subdiviziunii."
 
 msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
-msgstr ""
+msgstr "Adăugați subdiviziune sub părintele."
 
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr "ປະເທດ"
+msgstr "Țară"
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Cod Poștal"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr "ແຂວງ"
+msgstr "Subdiviziune"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr "Țări"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
-msgstr ""
+msgstr "Coduri Poștale"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr "Țări"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr "ເຂດການປົກຄອງ"
+msgstr "Administrare"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr "ພາກການປົກຄອງ"
+msgstr "Regiunea administrativă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
-msgstr "ດິນແດນການປົກຄອງ"
+msgstr "Teritoriul administrativ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
-msgstr "ພື້ນທີ່ການປົກຄອງ"
+msgstr "Zona administrativă"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr "ພື້ນທີ່ການປົກຄອງ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
-msgstr ""
+msgstr "Regiunea Arctică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr "ເຂດ"
+msgstr "Zonă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
-msgstr ""
+msgstr "Atol"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr "ເມືອງປົກຄອງຕົນເອງ"
+msgstr "Oraș autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr "ເຂດການປົກຄອງສະຫະກອນ"
+msgstr "Comuna autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr "ເມືອງປົກຄອງຕົນເອງ"
+msgstr "District autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
-msgstr "ແຂວງປົກຄອງຕົນເອງ"
+msgstr "Provincia autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
-msgstr "ເຂດປົກຄອງຕົນເອງ"
+msgstr "Regiune autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr "ຊຸມຊົນປົກຄອງຕົນເອງ"
+msgstr "Comunitățile autonome"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr "ເຂດຊຸມຊົນເອກະລາດ"
+msgstr "Comunitatea autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr "ເກາະເອກະລາດ"
+msgstr "Insula autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
@@ -202,23 +196,23 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr "ກຳແພງນະຄອນປົກຄອງຕົນເອງ"
+msgstr "Municipalitate autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr "ສາທາລະນະລັດປົກຄອງຕົນເອງ"
+msgstr "Republica autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
-msgstr "ຂະແໜງປົກຄອງຕົນເອງ"
+msgstr "Sector autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territorial unit"
-msgstr "ໜ່ວຍດິນແດນປົກຄອງຕົນເອງ"
+msgstr "Unitatea teritorială autonomă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
-msgstr "ດິນແດນປົກຄອງຕົນເອງ"
+msgstr "Teritoriu autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
@@ -226,11 +220,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
-msgstr ""
+msgstr "Canton"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
-msgstr "ເມືອງເອກ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
@@ -242,7 +236,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
-msgstr "ນະຄອນຫຼວງ"
+msgstr "Capitala"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
@@ -250,7 +244,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
-msgstr "ບ້ານ"
+msgstr "Oraș"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
@@ -262,7 +256,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
-msgstr "ເຂດປົກຄອງ"
+msgstr "Comună"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
@@ -270,31 +264,31 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
-msgstr "ເຂດສະພາບໍລິຫານ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
-msgstr "ປະເທດ"
+msgstr "Țară"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "ປະເທດ"
+msgstr "Județ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
-msgstr "ເຂດການປົກຄອງ"
+msgstr "Departament"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr ""
+msgstr "Dependenţă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
-msgstr ""
+msgstr "Regiunea de dezvoltare"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District"
-msgstr "ເມືອງ"
+msgstr "District"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
@@ -302,23 +296,23 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
-msgstr ""
+msgstr "Divizia"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic Prefecture"
-msgstr ""
+msgstr "Prefectura economică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic region"
-msgstr "ເຂດເສດຖະກິດ"
+msgstr "Regiunea economică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
-msgstr ""
+msgstr "Emirat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
-msgstr ""
+msgstr "Entitate"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
@@ -334,15 +328,15 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
-msgstr ""
+msgstr "Entitate geografică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
-msgstr ""
+msgstr "Regiunea geografică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
-msgstr ""
+msgstr "Unitate geografică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
@@ -358,19 +352,19 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island"
-msgstr ""
+msgstr "Insulă"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island council"
-msgstr ""
+msgstr "Consiliu Insular"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
-msgstr ""
+msgstr "Grup de insule"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
-msgstr ""
+msgstr "Consiliu Local"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
@@ -378,7 +372,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
-msgstr ""
+msgstr "Orașe metropolitane"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
@@ -394,11 +388,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
-msgstr "ເທສະບານ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipality"
-msgstr "ເທສະບານ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Nation"
@@ -410,7 +404,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
-msgstr ""
+msgstr "Zona periferică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
@@ -428,10 +422,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr "ປາຣີ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -439,40 +432,39 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Prefecture"
-msgstr "ກຳແພງນະຄອນ"
+msgstr "Prefectură"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
-msgstr "ອານາຈັກ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Province"
-msgstr "ແຂວງ"
+msgstr "Provincie"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
-msgstr "ຄຸ້ມ"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr "ຣະຢອງ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
-msgstr "ພາກ"
+msgstr "Regiune"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
-msgstr "ສະພາເຂດ"
+msgstr "Consiliul regional"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
-msgstr "ສາທາລະນະລັດ"
+msgstr "Republică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
-msgstr "ສາທາລະນະລັດ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -480,43 +472,43 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
-msgstr "ເມືອງພິເສດ"
+msgstr "District special"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
-msgstr "ກຳແພງນະຄອນພິເສດ"
+msgstr "Municipalitatea specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
-msgstr "ພາກພິເສດ"
+msgstr "Regiunea specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
-msgstr "ເຂດປົກຄອງພິເສດ"
+msgstr "Regiunea administrativă specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
-msgstr "ບ້ານພິເສດ"
+msgstr "Oraș special"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
-msgstr "ເກາະພິເສດ"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
-msgstr "ເຂດພິເສດ"
+msgstr "Zona specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr "ລັດ"
+msgstr "Stat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
-msgstr "ໜ່ວຍດິນແດນ"
+msgstr "Unitatea teritorială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
-msgstr "ດິນແດນ"
+msgstr "Teritoriu"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -544,4 +536,4 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"
-msgstr "ເຂດ"
+msgstr "zona"

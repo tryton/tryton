@@ -23,6 +23,25 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Области"
 
+#, fuzzy
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Город"
+
+#, fuzzy
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Страны мира"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Подраздел"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Код"
@@ -43,26 +62,6 @@ msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Тип"
 
-#, fuzzy
-msgctxt "field:country.zip,city:"
-msgid "City"
-msgstr "Город"
-
-#, fuzzy
-msgctxt "field:country.zip,country:"
-msgid "Country"
-msgstr "Страны мира"
-
-#, fuzzy
-msgctxt "field:country.zip,subdivision:"
-msgid "Subdivision"
-msgstr "Подраздел"
-
-#, fuzzy
-msgctxt "field:country.zip,zip:"
-msgid "Zip"
-msgstr "Индекс"
-
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr ""
@@ -77,6 +76,18 @@ msgstr ""
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
+msgstr ""
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
 msgstr ""
 
 msgctxt "help:country.subdivision,code:"
@@ -95,40 +106,26 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr ""
 
-msgctxt "help:country.zip,city:"
-msgid "The name of the city for the zip."
-msgstr ""
-
-msgctxt "help:country.zip,country:"
-msgid "The country where the zip is."
-msgstr ""
-
-msgctxt "help:country.zip,subdivision:"
-msgid "The subdivision where the zip is."
-msgstr ""
-
 msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "Страны мира"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr ""
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Подраздел"
 
 #, fuzzy
-msgctxt "model:country.zip,name:"
-msgid "Zip"
-msgstr "Индекс"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Countries"
 
-#, fuzzy
-msgctxt "model:ir.action,name:act_zip_form"
-msgid "Zip"
-msgstr "Индекс"
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_country_form"

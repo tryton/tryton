@@ -22,6 +22,22 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Jednostki podrzędne"
 
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Miejscowość"
+
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Kraj"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr "Kod pocztowy"
+
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Jednostka podrzędna"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Kod"
@@ -42,22 +58,6 @@ msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Typ"
 
-msgctxt "field:country.zip,city:"
-msgid "City"
-msgstr "Miejscowość"
-
-msgctxt "field:country.zip,country:"
-msgid "Country"
-msgstr "Kraj"
-
-msgctxt "field:country.zip,subdivision:"
-msgid "Subdivision"
-msgstr "Jednostka podrzędna"
-
-msgctxt "field:country.zip,zip:"
-msgid "Zip"
-msgstr "Kod pocztowy"
-
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr "Trzyliterowy kod ISO kraju."
@@ -73,6 +73,18 @@ msgstr "Cyfrowy kod ISO kraju."
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
 msgstr "Główny identyfikator kraju."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr "Miejscowość powiązana z kodem pocztowym."
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr "Kraj, który zawiera kod pocztowy."
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "Jednostka podrzędna, w której występuje kod pocztowy."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -90,37 +102,25 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Dodaj jednostkę podrzędną."
 
-msgctxt "help:country.zip,city:"
-msgid "The name of the city for the zip."
-msgstr "Nazwa miejscowości dla kodu pocztowego."
-
-msgctxt "help:country.zip,country:"
-msgid "The country where the zip is."
-msgstr "Kraj, w którym występuje kod pocztowy."
-
-msgctxt "help:country.zip,subdivision:"
-msgid "The subdivision where the zip is."
-msgstr "Jednostka podrzędna, w której występuje kod pocztowy."
-
 msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "Kraj"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr "Kod pocztowy"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Jednostka podrzędna"
 
-msgctxt "model:country.zip,name:"
-msgid "Zip"
-msgstr "Kod pocztowy"
-
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Kraje"
 
-msgctxt "model:ir.action,name:act_zip_form"
-msgid "Zip"
-msgstr "Kod pocztowy"
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr "Kody pocztowe"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"

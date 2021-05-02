@@ -22,6 +22,25 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Alamjaotus"
 
+#, fuzzy
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Linn"
+
+#, fuzzy
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Riik"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Alamjaotus"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Kood"
@@ -42,22 +61,6 @@ msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:country.zip,city:"
-msgid "City"
-msgstr "Linn"
-
-msgctxt "field:country.zip,country:"
-msgid "Country"
-msgstr "Riik"
-
-msgctxt "field:country.zip,subdivision:"
-msgid "Subdivision"
-msgstr "Alamjaotus"
-
-msgctxt "field:country.zip,zip:"
-msgid "Zip"
-msgstr "Postiindeks"
-
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr "3e sümboliga ISO riigikood."
@@ -73,6 +76,19 @@ msgstr "ISO numbriline riigikood."
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
 msgstr "Riigi peamine identifikaator."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "Alamjaotus, kus asub postiindeks."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -90,37 +106,25 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Lisa alamjaotus ülema alla."
 
-msgctxt "help:country.zip,city:"
-msgid "The name of the city for the zip."
-msgstr "Linna nimi või postiindeks."
-
-msgctxt "help:country.zip,country:"
-msgid "The country where the zip is."
-msgstr "Riik, kus asub postiindeks."
-
-msgctxt "help:country.zip,subdivision:"
-msgid "The subdivision where the zip is."
-msgstr "Alamjaotus, kus asub postiindeks."
-
 msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "Riik"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr ""
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Alamjaotus"
 
-msgctxt "model:country.zip,name:"
-msgid "Zip"
-msgstr "Postiindeks"
-
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Countries"
 
-msgctxt "model:ir.action,name:act_zip_form"
-msgid "Zip"
-msgstr "Postiindeks"
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"

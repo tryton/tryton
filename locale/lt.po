@@ -22,6 +22,25 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Regionas"
 
+#, fuzzy
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Miestas"
+
+#, fuzzy
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Šalis"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Regionas"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Kodas"
@@ -42,22 +61,6 @@ msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Tipas"
 
-msgctxt "field:country.zip,city:"
-msgid "City"
-msgstr "Miestas"
-
-msgctxt "field:country.zip,country:"
-msgid "Country"
-msgstr "Šalis"
-
-msgctxt "field:country.zip,subdivision:"
-msgid "Subdivision"
-msgstr "Regionas"
-
-msgctxt "field:country.zip,zip:"
-msgid "Zip"
-msgstr "Pašto kodas"
-
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr "3 raidžių šalies ISO kodas."
@@ -73,6 +76,18 @@ msgstr "Skaitmeninis ISO šalies kodas."
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
 msgstr "Pagrindinis šalies identifikatorius."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr ""
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -90,37 +105,25 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr ""
 
-msgctxt "help:country.zip,city:"
-msgid "The name of the city for the zip."
-msgstr ""
-
-msgctxt "help:country.zip,country:"
-msgid "The country where the zip is."
-msgstr ""
-
-msgctxt "help:country.zip,subdivision:"
-msgid "The subdivision where the zip is."
-msgstr ""
-
 msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "Šalis"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr ""
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Regionas"
 
-msgctxt "model:country.zip,name:"
-msgid "Zip"
-msgstr "Pašto kodas"
-
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Šalys"
 
-msgctxt "model:ir.action,name:act_zip_form"
-msgid "Zip"
-msgstr "Pašto kodas"
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
