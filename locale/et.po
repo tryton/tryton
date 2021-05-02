@@ -80,6 +80,10 @@ msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
 msgstr ""
 
+msgctxt "field:purchase.request,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Eeldatav tarne kuupäev"
@@ -116,9 +120,20 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Toode"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_purchase_form"
+msgid "Purchases"
+msgstr "Ost"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_request_form"
+msgid "Requests"
+msgstr "Päringud"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Ostupäring"
+msgid "Requests"
+msgstr "Päringud"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -170,13 +185,15 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Halda hanke tühistamist"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Hankesoov"
+msgid "Requests"
+msgstr "Päringud"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"

@@ -88,6 +88,10 @@ msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
 msgstr ""
 
+msgctxt "field:purchase.request,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr ""
@@ -131,8 +135,18 @@ msgid "Product"
 msgstr "Продукт"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_open_purchase_form"
+msgid "Purchases"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_request_form"
+msgid "Requests"
+msgstr "Заявки за покупки"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
+msgid "Requests"
 msgstr "Заявки за покупки"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
@@ -187,13 +201,13 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Handle Purchase Cancellation"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
+msgid "Requests"
 msgstr "Заявки за покупки"
 
 #, fuzzy

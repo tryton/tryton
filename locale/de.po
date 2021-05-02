@@ -78,6 +78,10 @@ msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
 msgstr "Lagerbestand zum Anlieferungstermin"
 
+msgctxt "field:purchase.request,summary:"
+msgid "Summary"
+msgstr "Kurzbeschreibung"
+
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Voraussichtliches Anlieferungsdatum"
@@ -114,8 +118,16 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Artikel"
 
+msgctxt "model:ir.action,name:act_open_purchase_form"
+msgid "Purchases"
+msgstr "Einkäufe"
+
+msgctxt "model:ir.action,name:act_open_request_form"
+msgid "Requests"
+msgstr "Bestellvorschläge"
+
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
+msgid "Requests"
 msgstr "Bestellvorschläge"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
@@ -175,12 +187,12 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Einkaufsannullierung bearbeiten"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
+msgid "Requests"
 msgstr "Bestellvorschläge"
 
 msgctxt "model:purchase.request,name:"

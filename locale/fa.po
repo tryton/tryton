@@ -80,6 +80,10 @@ msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
 msgstr "تاریخ عرضه موجودی"
 
+msgctxt "field:purchase.request,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "تاریخ انتظار عرضه"
@@ -116,9 +120,20 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "محصول"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_purchase_form"
+msgid "Purchases"
+msgstr "خرید"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_request_form"
+msgid "Requests"
+msgstr "درخواست ها"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "درخواست های خرید"
+msgid "Requests"
+msgstr "درخواست ها"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -176,13 +191,14 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Handle Purchase Cancellation"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
+msgid "User in companies"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "درخواست های خرید"
+msgid "Requests"
+msgstr "درخواست ها"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"

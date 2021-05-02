@@ -4,30 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.line,requests:"
 msgid "Requests"
-msgstr ""
+msgstr "Beszerzési igények"
 
-#, fuzzy
 msgctxt "field:purchase.request,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
-msgstr ""
+msgstr "Kiszámított mennyiség"
 
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
-msgstr ""
+msgstr "Kiszámított mennyiség ME-e"
 
 msgctxt "field:purchase.request,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "Alapegység"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request,description:"
 msgid "Description"
 msgstr "Leírás"
@@ -38,59 +36,56 @@ msgstr ""
 
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Eredet"
 
-#, fuzzy
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
-#, fuzzy
 msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "Termék"
 
 msgctxt "field:purchase.request,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Mértékegység kategória"
 
-#, fuzzy
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
-msgstr "Vásárlás"
+msgstr "Beszerzési rendelés"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
-msgstr ""
+msgstr "Ideális rendelési dátum"
 
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Beszerzési rendelés sora"
 
-#, fuzzy
 msgctxt "field:purchase.request,purchased_by:"
 msgid "Purchased By"
-msgstr "Vásárlás"
+msgstr "Megrendelte"
 
-#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
-#, fuzzy
 msgctxt "field:purchase.request,state:"
 msgid "State"
 msgstr "Állapot"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
-msgstr ""
+msgstr "Készlet a leszállítás napján"
+
+msgctxt "field:purchase.request,summary:"
+msgid "Summary"
+msgstr "Leírás"
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
-msgstr ""
+msgstr "Várható leszállítási dátum"
 
-#, fuzzy
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
 msgstr "Mértékegység"
@@ -99,7 +94,6 @@ msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
 msgstr "Raktár"
@@ -108,53 +102,56 @@ msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,description:"
 msgid "Description"
 msgstr "Leírás"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
-msgstr "Beszállítók"
+msgstr "Szállító"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Termék"
 
+msgctxt "model:ir.action,name:act_open_purchase_form"
+msgid "Purchases"
+msgstr "Beszerzési rendelések"
+
+msgctxt "model:ir.action,name:act_open_request_form"
+msgid "Requests"
+msgstr "Beszerzési igények"
+
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgid "Requests"
+msgstr "Beszerzési igények"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr "Create Purchase"
+msgstr "Beszerzési rendelés létrehozása"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr "Visszautasított rendelés kezelése"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr "összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
-msgstr "Exception"
+msgstr "visszautasítva"
 
 msgctxt "model:ir.message,text:msg_purchase_delete_request"
 msgid ""
@@ -176,25 +173,24 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_request_no_create"
 msgid "Purchase requests can only be created by the system."
-msgstr ""
+msgstr "Beszerzési igényeket csak a rendszer tud létrehozni."
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr "Visszautasított rendelés kezelése"
 
-msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgid "Requests"
+msgstr "Beszerzési igények"
 
-#, fuzzy
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr "Beszerzési igény"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
@@ -206,61 +202,55 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr "Beszerzési igény"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Cancelled"
-msgstr "Mégse"
+msgstr "érvénytelen"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr "Kész"
+msgstr "kész"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
-msgstr "Exception"
+msgstr "visszautasítva"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
-msgstr "Vásárlás"
+msgstr "rendelés létrehozva"
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""
+"Érvényteleníteni szeretné a beszerzési igényt vagy újra vázlatos állapotba "
+"tenni?"
 
-#, fuzzy
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr "Termék infó"
+msgstr "Termék és mennyiség"
 
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
-msgstr ""
+msgstr "Beszerzés"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
 msgstr "Mégse"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
-msgstr ""
+msgstr "Tovább"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
 msgid "Cancel Request"
-msgstr ""
+msgstr "Beszerzési igény érvénytelenítése"
 
-#, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
 msgid "Cancel"
@@ -269,4 +259,4 @@ msgstr "Mégse"
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
 msgid "Reset to draft"
-msgstr ""
+msgstr "Újra vázlatba"
