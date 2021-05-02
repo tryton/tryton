@@ -200,13 +200,17 @@
                         this.record_deleted.splice(
                                 this.record_deleted.indexOf(record), 1);
                     }
-                    this.record_removed.push(record);
+                    if (!~this.record_removed.indexOf(record)) {
+                        this.record_removed.push(record);
+                    }
                 } else {
                     if (~this.record_removed.indexOf(record)) {
                         this.record_removed.splice(
                                 this.record_removed.indexOf(record), 1);
                     }
-                    this.record_deleted.push(record);
+                    if (!~this.record_deleted.indexOf(record)) {
+                        this.record_deleted.push(record);
+                    }
                 }
             }
             if (record.group.parent) {
