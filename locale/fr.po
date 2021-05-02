@@ -1,0 +1,199 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Compte de charges différées"
+
+msgctxt "field:account.configuration,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Compte de produits différés"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Compte de charges différées"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Compte de produits différés"
+
+msgctxt "field:account.invoice.deferred,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.invoice.deferred,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.invoice.deferred,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.invoice.deferred,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.invoice.deferred,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:account.invoice.deferred,invoice_line:"
+msgid "Invoice Line"
+msgstr "Ligne de facture"
+
+msgctxt "field:account.invoice.deferred,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.invoice.deferred,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "field:account.invoice.deferred,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:account.invoice.deferred,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.invoice.deferred,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice.line,defer_from:"
+msgid "Defer From"
+msgstr "Différer de"
+
+msgctxt "field:account.invoice.line,defer_to:"
+msgid "Defer To"
+msgstr "Différer jusqu'à"
+
+msgctxt "field:account.invoice.line,deferrable:"
+msgid "Deferrable"
+msgstr "Différable"
+
+msgctxt "model:account.invoice.deferred,name:"
+msgid "Invoice Deferred"
+msgstr "Facture différée"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Factures fournisseurs différées"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Factures client différées"
+
+msgctxt "model:ir.action,name:wizard_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Créer les mouvements de factures différées"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_running"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_running"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
+msgid "Invoice line can be deferred only once."
+msgstr "Les lignes de facture ne peuvent être différées qu'une seule fois."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
+msgid ""
+"You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
+"\"draft\" state."
+msgstr ""
+"Vous ne pouvez pas supprimer la facture différée « %(deferral)s » car elle "
+"n'est pas à l'état « brouillon »."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some invoices deferred "
+"\"%(deferrals)s\" do not have yet move for the period."
+msgstr ""
+"Vous ne pouvez pas fermer la période « %(period)s » car certaines factures "
+"différées « %(deferrals)s » n'ont pas encore de mouvement pour la période."
+
+msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
+msgid "Are you sure you want to defer the invoices?"
+msgstr "Êtes-vous sûr de vouloir différer les factures ?"
+
+msgctxt "model:ir.model.button,help:invoice_deferred_run_button"
+msgid "Start deferring the invoice"
+msgstr "Commencer à différer la facture"
+
+msgctxt "model:ir.model.button,string:invoice_deferred_run_button"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_deferred_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Créer les mouvements de factures différées"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Factures fournisseurs différées"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Factures client différées"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Closed"
+msgstr "Clôturée"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "view:account.configuration:"
+msgid "Deferred"
+msgstr "Différés"
+
+msgctxt "view:account.invoice.deferred:"
+msgid "Other Info"
+msgstr "Autre information"
