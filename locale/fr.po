@@ -30,6 +30,38 @@ msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
 msgid "Unit Digits"
 msgstr "Décimales de l'unité"
 
+msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
+msgid "Assigned Quantity"
+msgstr "Quantité assignée"
+
+msgctxt "field:stock.shipment.assigned.move,move:"
+msgid "Move"
+msgstr "Mouvement"
+
+msgctxt "field:stock.shipment.assigned.move,move_quantity:"
+msgid "Move Quantity"
+msgstr "Quantité du mouvement"
+
+msgctxt "field:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "Unassigned Quantity"
+msgstr "Quantité non-assignée"
+
+msgctxt "field:stock.shipment.assigned.move,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.shipment.assigned.move,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"
+msgid "Assigned Moves"
+msgstr "Mouvements assignés"
+
+msgctxt "field:stock.shipment.unassign.manual.show,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
 msgctxt "help:stock.shipment.assign.manual.show,quantity:"
 msgid ""
 "The maximum quantity to assign from the place.\n"
@@ -37,6 +69,18 @@ msgid ""
 msgstr ""
 "La quantité maximale à assigner à partir du l'endroit.\n"
 "Laissez vide pour la quantité totale du mouvement."
+
+msgctxt "help:stock.shipment.assigned.move,assigned_quantity:"
+msgid "The quantity left assigned"
+msgstr "La quantité assignée laissée"
+
+msgctxt "help:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "The quantity to unassign"
+msgstr "La quantité à dés-assigner"
+
+msgctxt "help:stock.shipment.unassign.manual.show,moves:"
+msgid "The moves to unassign."
+msgstr "Les mouvements à dés-assigner."
 
 msgctxt "model:ir.action,name:wizard_production_assign_manual"
 msgid "Manual Assign Production"
@@ -53,6 +97,10 @@ msgstr "Assigner manuellement l'expédition interne"
 msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
 msgid "Manual Assign Customer Shipment"
 msgstr "Assigner manuellement l'expédition cliente"
+
+msgctxt "model:ir.action,name:wizard_shipment_unassign_manual"
+msgid "Manually Unassign Shipment"
+msgstr "Dés-assigner manuellement l'expédition"
 
 msgctxt "model:ir.message,text:msg_assign_failed"
 msgid "Failed to assign of %(move)s from %(place)s, please retry."
@@ -85,6 +133,18 @@ msgctxt "model:stock.shipment.assign.manual.show,name:"
 msgid "Manual Assign Shipment"
 msgstr "Assigner manuellement l'expédition"
 
+msgctxt "model:stock.shipment.assigned.move,name:"
+msgid "Shipment Assigned Move"
+msgstr "Mouvement assigné de l'expédition"
+
+msgctxt "model:stock.shipment.unassign.manual.show,name:"
+msgid "Manually Unassign Shipment"
+msgstr "Dés-assigner manuellement l'expédition"
+
+msgctxt "view:stock.shipment.unassign.manual.show:"
+msgid "Enter the quantities to unassign:"
+msgstr "Entrez les quantités à dés-assigner :"
+
 msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
 msgid "Assign"
 msgstr "Assigner"
@@ -96,3 +156,11 @@ msgstr "Annuler"
 msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
 msgid "Skip"
 msgstr "Passer"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,unassign:"
+msgid "Unassign"
+msgstr "Dés-assigner"
