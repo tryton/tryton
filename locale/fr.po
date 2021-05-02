@@ -22,10 +22,6 @@ msgctxt "field:marketing.email,web_user:"
 msgid "Web User"
 msgstr "Utilisateur web"
 
-msgctxt "field:marketing.email.list,active:"
-msgid "Active"
-msgstr "Actif"
-
 msgctxt "field:marketing.email.list,emails:"
 msgid "Emails"
 msgstr "E-mails"
