@@ -4,96 +4,96 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Companie"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgstr "Zecimale valută"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr "Date de fin"
+msgstr ""
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr "Lignes"
+msgstr "Rânduri"
 
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr "Liste de prix"
+msgstr "Listă de prețuri"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr "Montant de la vente"
+msgstr ""
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr "Date de début"
+msgstr ""
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr "Extra"
+msgstr ""
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr "Gratuit"
+msgstr ""
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Produs"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr "Catégorie d'unité de mesure"
+msgstr ""
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr ""
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr "Montant de la vente"
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr "Unité"
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Décimales de l'unité"
+msgstr ""
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr "Extra"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Extras de vente"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_extra_companies"
 msgid "User in companies"
-msgstr "Utilisateur dans les sociétés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr "Extra de vente"
+msgstr ""
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr "Ligne de vente extra"
+msgstr ""
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr "Ligne de vente"
+msgstr ""
