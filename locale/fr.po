@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.selection,from_postal_code:"
+msgid "From Postal Code"
+msgstr "Du code postal"
+
+msgctxt "field:carrier.selection,from_subdivision:"
+msgid "From Subdivision"
+msgstr "De la subdivision"
+
+msgctxt "field:carrier.selection,to_postal_code:"
+msgid "To Postal Code"
+msgstr "Vers le code postal"
+
+msgctxt "field:carrier.selection,to_subdivision:"
+msgid "To Subdivision"
+msgstr "Vers la subdivision"
+
+msgctxt "help:carrier.selection,from_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier collects from.\n"
+"Leave empty to allow collection from any postal code."
+msgstr ""
+"Expression régulière correspondant aux codes postaux desquelles le transporteur collecte.\n"
+"Laissez vide pour autoriser la collecte à partir de n'importe quel code postal."
+
+msgctxt "help:carrier.selection,from_subdivision:"
+msgid ""
+"The subdivision the carrier collects from.\n"
+"Leave empty to allow collection from any subdivision."
+msgstr ""
+"La subdivision à partir de laquelle le transporteur collecte.\n"
+"Laissez vide pour autoriser la collecte à partir de n'importe quelle subdivision."
+
+msgctxt "help:carrier.selection,to_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier delivers to.\n"
+"Leave empty to allow delivery to any postal code."
+msgstr ""
+"L'expression régulière correspondant aux codes postaux vers lesquelles le transporteur livre.\n"
+"Laissez vide pour autoriser la livraison à n'importe quel code postal."
+
+msgctxt "help:carrier.selection,to_subdivision:"
+msgid ""
+"The subdivision the carrier delivers to.\n"
+"Leave empty to allow delivery to any subdivision."
+msgstr ""
+"La subdivision vers laquelle le transporteur livre.\n"
+"Laissez vide pour permettre la livraison dans n'importe quelle subdivision."

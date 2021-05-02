@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.selection,from_postal_code:"
+msgid "From Postal Code"
+msgstr "Ursprungsland Postleitzahl"
+
+msgctxt "field:carrier.selection,from_subdivision:"
+msgid "From Subdivision"
+msgstr "Ursprungsland Subnationale Einheit"
+
+msgctxt "field:carrier.selection,to_postal_code:"
+msgid "To Postal Code"
+msgstr "Bestimmungsland Postleitzahl"
+
+msgctxt "field:carrier.selection,to_subdivision:"
+msgid "To Subdivision"
+msgstr "Bestimmungsland Subnationale Einheit"
+
+msgctxt "help:carrier.selection,from_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier collects from.\n"
+"Leave empty to allow collection from any postal code."
+msgstr ""
+"Der reguläre Ausdruck um die Postleitzahlen zuzuordnen von denen der Versanddienstleister abhholt.\n"
+"Leer lassen um Abholung von allen Postleitzahlen zuzulassen."
+
+msgctxt "help:carrier.selection,from_subdivision:"
+msgid ""
+"The subdivision the carrier collects from.\n"
+"Leave empty to allow collection from any subdivision."
+msgstr ""
+"Von dieser subnationalen Einheit holt der Versanddienstleister ab.\n"
+"Leer lassen, um die Abholung von allen subnationalen Einheiten zuzulassen."
+
+msgctxt "help:carrier.selection,to_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier delivers to.\n"
+"Leave empty to allow delivery to any postal code."
+msgstr ""
+"Der reguläre Ausdruck um die Postleitzahlen zuzuordnen an die der Versanddienstleister liefert.\n"
+"Leer lassen um die Lieferung an alle Postleitzahlen zuzulassen."
+
+msgctxt "help:carrier.selection,to_subdivision:"
+msgid ""
+"The subdivision the carrier delivers to.\n"
+"Leave empty to allow delivery to any subdivision."
+msgstr ""
+"Die Subnationale Einheit an die der Versanddienstleister liefert.\n"
+"Leer lassen um die Lieferung an alle Subnationalen Einheiten zuzulassen."
