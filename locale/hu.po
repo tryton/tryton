@@ -8,7 +8,7 @@ msgstr "Aktív"
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
@@ -16,11 +16,11 @@ msgstr "Cél"
 
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
-msgstr "Dátumtól"
+msgstr "Ettől"
 
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
-msgstr "Pozíció"
+msgstr "Sorok"
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -28,19 +28,19 @@ msgstr "Állapot"
 
 msgctxt "field:stock.forecast,to_date:"
 msgid "To Date"
-msgstr "Dátumig"
+msgstr "Eddig"
 
 msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
-msgstr "Hely"
+msgstr "Tárhely"
 
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
-msgstr "Dátumtól"
+msgstr "Ettől"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
-msgstr "Dátumig"
+msgstr "Eddig"
 
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
@@ -60,7 +60,7 @@ msgstr "Minimum mennyiség"
 
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr "Lépések"
+msgstr "Készletmozgások"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
@@ -80,7 +80,7 @@ msgstr "Mennyiség kész"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Tizedes vessző után"
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -88,28 +88,24 @@ msgstr "Mértékegység"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
-msgstr ""
+msgstr "Előrejelzés sor"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr "Lépések"
+msgstr "Tétel"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
-msgstr "Előrejelzés"
+msgstr "Előrejelzések"
 
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
 msgstr "Complete Forecast"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr "összes"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
 msgstr "Kész"
@@ -117,7 +113,7 @@ msgstr "Kész"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt "model:ir.message,text:msg_forecast_date_overlap"
 msgid ""
@@ -136,20 +132,23 @@ msgstr "Egy variáció csak egyszer írható be ."
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Mégse"
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Jóváhagyás"
 
 msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
-#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
-msgstr "Előrejelzés"
+msgstr "Előrejelzések"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
@@ -178,20 +177,17 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"
-msgstr "Mégse"
+msgstr "érvénytelen"
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
 msgstr "Kész"
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
@@ -210,7 +206,6 @@ msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
 msgstr "Mégse"
@@ -223,7 +218,6 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Mégse"

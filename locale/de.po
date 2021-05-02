@@ -60,7 +60,7 @@ msgstr "Minimale Anzahl"
 
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr "Bewegungen"
+msgstr "Lagerbewegungen"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
@@ -92,7 +92,7 @@ msgstr "Bedarfsprognoseposition"
 
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr "Bewegung"
+msgstr "Lagerbewegung"
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
@@ -144,6 +144,10 @@ msgstr "Bestätigen"
 msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
 msgstr "Entwurf"
+
+msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"

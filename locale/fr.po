@@ -143,6 +143,10 @@ msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
 msgstr "Brouillon"
 
+msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
 msgstr "Prévisions"

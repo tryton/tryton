@@ -141,6 +141,10 @@ msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
 msgstr "Rancangan"
 
+msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
 msgstr "Prakiraan"
