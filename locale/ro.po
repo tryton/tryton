@@ -4,333 +4,315 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account,active:"
 msgid "Active"
-msgstr "Veiksni"
+msgstr "Activ"
 
 msgctxt "field:account.account,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Koresponduojančios sąskaitos antroji valiuta"
+msgstr "Suma Valută Secundara"
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "field:account.account,childs:"
 msgid "Children"
-msgstr "Dukterinės"
+msgstr "Copii"
 
 msgctxt "field:account.account,closed:"
 msgid "Closed"
-msgstr "Uždaryta"
+msgstr "Închis"
 
 msgctxt "field:account.account,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.account,debit_type:"
 msgid "Debit Type"
-msgstr "Debeto tipas"
+msgstr "Tip de Debit"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
-msgstr "Atidėtoji"
+msgstr "Amânare"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr "Atidėtosios"
+msgstr "Amânari"
 
 msgctxt "field:account.account,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data finală"
 
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "Didžiosios knygos balansas"
+msgstr "Sold registru general contabil"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
-msgstr "Kairė"
+msgstr "Rămas"
 
 msgctxt "field:account.account,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.account,note:"
 msgid "Note"
-msgstr "Pastaba"
+msgstr "Notă"
 
 msgctxt "field:account.account,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Parinte"
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr "Būtinas kontrahentas"
+msgstr "Parte obligatorie"
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
-msgstr "Sudengimas"
+msgstr "Reconciliere"
 
 msgctxt "field:account.account,replaced_by:"
 msgid "Replaced By"
-msgstr "Pakeičiančioji"
+msgstr "Înlocuit de"
 
 msgctxt "field:account.account,right:"
 msgid "Right"
-msgstr "Dešinė"
+msgstr "Dreapta"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr "Antroji valiuta"
+msgstr "Monedă Secundară"
 
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Antrosios valiutos skaitmenų skaičius"
+msgstr "Zecimale Monedă Secundară"
 
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de pornire"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
-msgstr "Numatytieji mokesčiai"
+msgstr "Taxe predeterminate"
 
 msgctxt "field:account.account,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.account,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere șablon"
 
 msgctxt "field:account.account,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
-msgstr "Mokesčiai"
+msgstr "Impozit"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.account.deferral,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Koresponduojančios sąskaitos antroji valiuta"
+msgstr "Suma Valută Secundara"
 
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
-msgstr "Antroji valiuta"
+msgstr "Valută Secundara"
 
 msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Antrosios valiutos skaitmenų skaičius"
+msgstr "Zecimale a Doua Monedă"
 
-#, fuzzy
 msgctxt "field:account.account.party,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
-#, fuzzy
 msgctxt "field:account.account.party,active:"
 msgid "Active"
-msgstr "Veiksni"
+msgstr "Activ"
 
-#, fuzzy
 msgctxt "field:account.account.party,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Koresponduojančios sąskaitos antroji valiuta"
+msgstr "Suma Valută Secundara"
 
-#, fuzzy
 msgctxt "field:account.account.party,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
-#, fuzzy
 msgctxt "field:account.account.party,closed:"
 msgid "Closed"
-msgstr "Uždaryta"
+msgstr "Închis"
 
-#, fuzzy
 msgctxt "field:account.account.party,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
-#, fuzzy
 msgctxt "field:account.account.party,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.account.party,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
-#, fuzzy
 msgctxt "field:account.account.party,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
-#, fuzzy
 msgctxt "field:account.account.party,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.account.party,debit_type:"
 msgid "Debit Type"
-msgstr "Debeto tipas"
+msgstr "Tip de Debit"
 
-#, fuzzy
 msgctxt "field:account.account.party,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
-#, fuzzy
 msgctxt "field:account.account.party,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
-#, fuzzy
 msgctxt "field:account.account.party,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
-#, fuzzy
 msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
-msgstr "Antroji valiuta"
+msgstr "Monedă Secundară"
 
-#, fuzzy
 msgctxt "field:account.account.party,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Antrosios valiutos skaitmenų skaičius"
+msgstr "Zecimale Monedă Secundară"
 
-#, fuzzy
 msgctxt "field:account.account.party,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
-#, fuzzy
 msgctxt "field:account.account.party,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
-msgstr "Dukterinės"
+msgstr "Copii"
 
 msgctxt "field:account.account.template,closed:"
 msgid "Closed"
-msgstr "Uždarytas"
+msgstr "Închis"
 
 msgctxt "field:account.account.template,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.account.template,debit_type:"
 msgid "Debit Type"
-msgstr "Debeto tipas"
+msgstr "Tip de Debit"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
-msgstr "Atidėtasis"
+msgstr "Amânare"
 
 msgctxt "field:account.account.template,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "Didžiosios knygos balansas"
+msgstr "Sold registru general contabil"
 
 msgctxt "field:account.account.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.account.template,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Părinte"
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr "Būtinas kontrahentas"
+msgstr "Parte obligatorie"
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
-msgstr "Sudengimas"
+msgstr "Reconciliere"
 
 msgctxt "field:account.account.template,replaced_by:"
 msgid "Replaced By"
-msgstr "Pakeičiantysis"
+msgstr "Înlocuit de"
 
 msgctxt "field:account.account.template,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
-msgstr "Numatytieji mokesčiai"
+msgstr "Taxe predeterminate"
 
 msgctxt "field:account.account.template,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.account.template-account.tax.template,account:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
-msgstr "Mokesčio šablonas"
+msgstr "Şablon Impozite"
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
@@ -342,153 +324,152 @@ msgstr "Suma"
 
 msgctxt "field:account.account.type,assets:"
 msgid "Assets"
-msgstr "Turtas"
+msgstr "Active"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.account.type,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.account.type,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.account.type,debt:"
 msgid "Debt"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.account.type,expense:"
 msgid "Expense"
-msgstr "Išlaidos"
+msgstr "Cheltuiala"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.account.type,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Parinte"
 
 msgctxt "field:account.account.type,payable:"
 msgid "Payable"
-msgstr "Mokėtinas"
+msgstr "Furnizor"
 
 msgctxt "field:account.account.type,receivable:"
 msgid "Receivable"
-msgstr "Gautinas"
+msgstr "Client"
 
 msgctxt "field:account.account.type,revenue:"
 msgid "Revenue"
-msgstr "Pajamos"
+msgstr "Venituri"
 
 msgctxt "field:account.account.type,statement:"
 msgid "Statement"
-msgstr "Išrašas"
+msgstr "Raport"
 
 msgctxt "field:account.account.type,stock:"
 msgid "Stock"
-msgstr "Sandėlys"
+msgstr "Stoc"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.account.type,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere șablon"
 
 msgctxt "field:account.account.type.template,assets:"
 msgid "Assets"
-msgstr "Turtas"
+msgstr "Active"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.account.type.template,debt:"
 msgid "Debt"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.account.type.template,expense:"
 msgid "Expense"
-msgstr "Išlaidos"
+msgstr "Cheltuiala"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Părinte"
 
 msgctxt "field:account.account.type.template,payable:"
 msgid "Payable"
-msgstr "Mokėtina"
+msgstr "Furnizor"
 
 msgctxt "field:account.account.type.template,receivable:"
 msgid "Receivable"
-msgstr "Gautinas"
+msgstr "Client"
 
 msgctxt "field:account.account.type.template,revenue:"
 msgid "Revenue"
-msgstr "Pajamos"
+msgstr "Venit"
 
 msgctxt "field:account.account.type.template,statement:"
 msgid "Statement"
-msgstr "Išrašas"
+msgstr "Raport"
 
 msgctxt "field:account.account.type.template,stock:"
 msgid "Stock"
-msgstr "Sandėlys"
+msgstr "Stoc"
 
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
-msgstr "Dabar"
+msgstr "Acum"
 
 msgctxt "field:account.aged_balance,term1:"
 msgid "First Term"
-msgstr "Pirmasis teminas"
+msgstr "Primul termen"
 
 msgctxt "field:account.aged_balance,term2:"
 msgid "Second Term"
-msgstr "Antrasis terminas"
+msgstr "Termen secundar"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,term3:"
 msgid "Third Term"
-msgstr "Trečiasis terminas"
+msgstr "Al treilea termen"
 
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
@@ -496,35 +477,38 @@ msgstr "Data"
 
 msgctxt "field:account.aged_balance.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,term1:"
 msgid "First Term"
-msgstr "Pirmasis teminas"
+msgstr "Primul termen"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,term2:"
 msgid "Second Term"
-msgstr "Antrasis terminas"
+msgstr "Termen secundar"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,term3:"
 msgid "Third Term"
-msgstr "Trečiasis terminas"
+msgstr "Al treilea termen"
 
 msgctxt "field:account.aged_balance.context,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
-msgstr "Mato vienetas"
+msgstr "Unitate"
 
 msgctxt "field:account.balance_sheet.comparision.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.balance_sheet.comparision.context,comparison:"
 msgid "Comparison"
-msgstr "Palyginimas"
+msgstr "Comparație"
 
 msgctxt "field:account.balance_sheet.comparision.context,date:"
 msgid "Date"
@@ -536,11 +520,11 @@ msgstr "Data"
 
 msgctxt "field:account.balance_sheet.comparision.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
@@ -548,414 +532,390 @@ msgstr "Data"
 
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
-msgstr "Numatytoji koresponduojanti sąskaita mokėtinoms sumoms"
+msgstr "Cont Implicit Furnizor"
 
 msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr "Numatytoji sąskaita gautinoms sumoms"
+msgstr "Cont Implicit Client"
 
 msgctxt "field:account.configuration,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "Numatytoji mokesčių pirkėjui taisyklė"
+msgstr "Regula Implicita de Impozitare al Clientului"
 
 msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "Numatytoji tiekėjo mokesčių taisyklė"
+msgstr "Regula Implicita de Impozitare al Furnizorului"
 
-#, fuzzy
 msgctxt "field:account.configuration,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "Sudengimo eilutės"
+msgstr "Secvenţa de Reconciliere"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
-msgstr "Mokesčių apvalinimas"
+msgstr "Rotunjire Impozit"
 
 msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
-msgstr "Numatytoji koresponduojanti sąskaita mokėtinoms sumoms"
+msgstr "Cont Implicit Furnizor"
 
 msgctxt ""
 "field:account.configuration.default_account,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr "Numatytoji koresponduojanti sąskaita gautinoms sumoms"
+msgstr "Cont Implicit Client"
 
 msgctxt "field:account.configuration.default_tax_rule,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "Numatytoji mokesčių pirkėjui taisyklė"
+msgstr "Regula Implicita de Impozitare al Clientului"
 
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "Numatytoji tiekėjo mokesčių taisyklė"
+msgstr "Regula Implicita de Impozitare al Furnizorului"
 
-#, fuzzy
 msgctxt "field:account.configuration.sequence,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "Sudengimo eilutės"
+msgstr "Secvenţa de Reconciliere"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
 msgid "Method"
-msgstr "Metodas"
+msgstr "Metodă"
 
 msgctxt "field:account.create_chart.account,account_template:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.create_chart.properties,account_payable:"
 msgid "Default Payable Account"
-msgstr "Numatytoji koresponduojanti sąskaita mokėtinoms sumoms"
+msgstr "Cont Implicit Furnizor"
 
 msgctxt "field:account.create_chart.properties,account_receivable:"
 msgid "Default Receivable Account"
-msgstr "Numatytoji koresponduojanti sąskaita gautinoms sumoms"
+msgstr "Cont Implicit Furnizor"
 
 msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
-msgstr "Ikona"
+msgstr "Pictogramă"
 
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr "Periodai"
+msgstr "Perioade"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Įtraukimo į apskaitą numeruotė"
+msgstr "Secvenţa După Mişcare"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
-msgstr "Kreditinė koresponduojanti sąskaita"
+msgstr "Cont Credit"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
 msgid "Debit Account"
-msgstr "Debetinė koresponduojanti sąskaita"
+msgstr "Cont Debit"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
 msgid "End Day"
-msgstr "Pabaigos data"
+msgstr "Sfarsit Zi"
 
 msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
 msgid "Frequency"
-msgstr "Dažnis"
+msgstr "Frecvență"
 
 msgctxt "field:account.fiscalyear.create_periods.start,interval:"
 msgid "Interval"
-msgstr "Intervalas"
+msgstr "Interval"
 
 msgctxt "field:account.fiscalyear.renew.start,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.fiscalyear.renew.start,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.fiscalyear.renew.start,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Previous Fiscalyear"
-msgstr "Praėję finansiniai metai"
+msgstr "Anul fiscal anterior"
 
 msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
 msgid "Reset Sequences"
-msgstr "Nustatyti iš naujo numeruotes"
+msgstr "Resetare Secvența"
 
 msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
-msgstr "Veiksni"
+msgstr "Activ"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.general_ledger.account,debit_type:"
 msgid "Debit Type"
-msgstr "Debeto tipas"
+msgstr "Tip de Debit"
 
 msgctxt "field:account.general_ledger.account,end_balance:"
 msgid "End Balance"
-msgstr "Galinis balansas"
+msgstr "Sold Final"
 
 msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
-msgstr "Galutinis kreditas"
+msgstr "Sfarsit Credit"
 
 msgctxt "field:account.general_ledger.account,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
-msgstr "Galutinis debetas"
+msgstr "Sfarsit Debit"
 
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "Didžiosios knygos balansas"
+msgstr "Sold registru general contabil"
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
-msgstr "Pradinis balansas"
+msgstr "Sold Initial"
 
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
-msgstr "Pradinis kreditas"
+msgstr "Început Credit"
 
 msgctxt "field:account.general_ledger.account,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
-msgstr "Pradinis debetas"
+msgstr "Început Debit"
 
 msgctxt "field:account.general_ledger.account,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
-msgstr "Galutinis periodas"
+msgstr "Sfârșit de Perioada"
 
 msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
-msgstr "Pradinė data"
+msgstr "Din data"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
-msgstr "Pradinis periodas"
+msgstr "Perioada inceput"
 
 msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
-msgstr "Pabaigos data"
+msgstr "pâna la Data"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,active:"
 msgid "Active"
-msgstr "Veiksni"
+msgstr "Activ"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_balance:"
 msgid "End Balance"
-msgstr "Galinis balansas"
+msgstr "Sold Final"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_credit:"
 msgid "End Credit"
-msgstr "Galutinis kreditas"
+msgstr "Sfarsit Credit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_debit:"
 msgid "End Debit"
-msgstr "Galutinis debetas"
+msgstr "Sfarsit Debit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_balance:"
 msgid "Start Balance"
-msgstr "Pradinis balansas"
+msgstr "Sold Initial"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_credit:"
 msgid "Start Credit"
-msgstr "Pradinis kreditas"
+msgstr "Început Credit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,start_debit:"
 msgid "Start Debit"
-msgstr "Pradinis debetas"
+msgstr "Început Debit"
 
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,account_party:"
 msgid "Account Party"
-msgstr "Mokėtinų sumų koresponduojanti sąskaita"
+msgstr "Cont Parte"
 
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
@@ -963,258 +923,257 @@ msgstr "Data"
 
 msgctxt "field:account.general_ledger.line,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.line,internal_balance:"
 msgid "Internal Balance"
-msgstr "Bandomasis balansas"
+msgstr "Sold Intern"
 
 msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
 msgctxt "field:account.general_ledger.line,move_description:"
 msgid "Move Description"
-msgstr "Operacijos aprašymas"
+msgstr "Descriere Mișcare"
 
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
 msgctxt "field:account.general_ledger.line,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
-msgstr "Būtinas kontrahentas"
+msgstr "Parte obligatorie"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,reconciliation:"
 msgid "Reconciliation"
-msgstr "Sudengimas"
+msgstr "Reconciliere"
 
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
-msgstr "Galutinis periodas"
+msgstr "Sfârșit de Perioada"
 
 msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
-msgstr "Pradinė data"
+msgstr "Din data"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr "Sumuojama kontrahentui"
+msgstr "Cumulare pe Parte"
 
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
-msgstr "Pradinis periodas"
+msgstr "Perioada inceput"
 
 msgctxt "field:account.general_ledger.line.context,to_date:"
 msgid "To Date"
-msgstr "Pabaigos data"
+msgstr "pâna la Data"
 
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.income_statement.context,comparison:"
 msgid "Comparison"
-msgstr "Palyginimas"
+msgstr "Comparație"
 
 msgctxt "field:account.income_statement.context,end_period:"
 msgid "End Period"
-msgstr "Galutinis periodas"
+msgstr "Sfârșit de Perioada"
 
 msgctxt "field:account.income_statement.context,end_period_cmp:"
 msgid "End Period"
-msgstr "Galutinis periodas"
+msgstr "Sfârșit de Perioada"
 
 msgctxt "field:account.income_statement.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.income_statement.context,from_date:"
 msgid "From Date"
-msgstr "Pradinė data"
+msgstr "Din data"
 
 msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
-msgstr "Pradinė data"
+msgstr "Din data"
 
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
-msgstr "Įtraukta į apskaitą operacija"
+msgstr "Mișcare postata"
 
 msgctxt "field:account.income_statement.context,start_period:"
 msgid "Start Period"
-msgstr "Pradinis periodas"
+msgstr "Perioada inceput"
 
 msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
-msgstr "Pradinis periodas"
+msgstr "Perioada inceput"
 
 msgctxt "field:account.income_statement.context,to_date:"
 msgid "To Date"
-msgstr "Pabaigos data"
+msgstr "pâna la Data"
 
 msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
-msgstr "Pabaigos data"
+msgstr "pâna la Data"
 
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
-msgstr "Numeruotė"
+msgstr "Secvenţă"
 
 msgctxt "field:account.journal,sequences:"
 msgid "Sequences"
-msgstr "Numeruotės"
+msgstr "Secvenţe"
 
 msgctxt "field:account.journal,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.journal.open_cash.context,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr "Ikona"
+msgstr "Pictogramă"
 
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.journal.period,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.journal.period,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.journal.sequence,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.journal.sequence,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.journal.sequence,sequence:"
 msgid "Sequence"
-msgstr "Numeruotė"
+msgstr "Secvenţă"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move,date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectiva"
 
 msgctxt "field:account.move,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.move,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:account.move,origin:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
 msgctxt "field:account.move,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
-msgstr "Įtraukimo į apskaitą data"
+msgstr "Data Postare"
 
 msgctxt "field:account.move,post_number:"
 msgid "Post Number"
-msgstr "Įtraukimo į apskaitą numeris"
+msgstr "Număr Postare"
 
 msgctxt "field:account.move,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.move.line,amount:"
 msgid "Amount"
@@ -1222,125 +1181,124 @@ msgstr "Suma"
 
 msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
-msgstr "Sumos valiuta"
+msgstr "Suma Valută"
 
+#, fuzzy
 msgctxt "field:account.move.line,amount_currency_digits:"
 msgid "Amount Currency Digits"
-msgstr "Sumos valiutos skaitmenų skaičius"
+msgstr "Sumă Zevimale al Valutei"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Sąskaitos antroji valiuta"
+msgstr "Suma Valută Secundara"
 
-#, fuzzy
 msgctxt "field:account.move.line,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
-#, fuzzy
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectiva"
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "field:account.move.line,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
-msgstr "Mokėjimo terminas"
+msgstr "Data scadenței"
 
 msgctxt "field:account.move.line,move:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
 msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
-msgstr "Operacijos aprašymas"
+msgstr "Descriere Mișcare"
 
 msgctxt "field:account.move.line,move_origin:"
 msgid "Move Origin"
-msgstr "Operacijos šaltinis"
+msgstr "Origine Mișcare"
 
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
-msgstr "Operacijos būsena"
+msgstr "Stare Mișcare"
 
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
-msgstr "Būtinas kontrahentas"
+msgstr "Parte obligatorie"
 
 msgctxt "field:account.move.line,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
-msgstr "Sudengimas"
+msgstr "Reconciliere"
 
 msgctxt "field:account.move.line,reconciliations_delegated:"
 msgid "Reconciliations Delegated"
-msgstr "Deleguotieji suderinimai"
+msgstr "Reconcilieri delegate"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr "Antroji valiuta"
+msgstr "Valută Secundara"
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Antrosios valiutos skaitmenų skaičius"
+msgstr "Zecimale Monedă Secundară"
 
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
-msgstr "Būtina antroji valiuta"
+msgstr "Valută Secundara Obligatorie"
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
-msgstr "Mokesčių eilutės"
+msgstr "Rânduri Impozit"
 
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
@@ -1348,55 +1306,55 @@ msgstr "Suma"
 
 msgctxt "field:account.move.line.template,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.line.template,move:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
 msgctxt "field:account.move.line.template,operation:"
 msgid "Operation"
-msgstr "Pusė"
+msgstr "Operațiune"
 
 msgctxt "field:account.move.line.template,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
-msgstr "Būtinas kontrahentas"
+msgstr "Parte obligatorie"
 
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
 msgid "Credit Account"
-msgstr "Kreditinė koresponduojanti sąskaita"
+msgstr "Cont Credit"
 
 msgctxt "field:account.move.reconcile.write_off,debit_account:"
 msgid "Debit Account"
-msgstr "Debetinė koresponduojanti sąskaita"
+msgstr "Cont Debit"
 
 msgctxt "field:account.move.reconcile.write_off,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.reconcile.write_off,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
@@ -1404,11 +1362,11 @@ msgstr "Suma"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1416,16 +1374,16 @@ msgstr "Data"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
-msgstr "Nurašymas"
+msgstr "Prescriere"
 
 #, fuzzy
 msgctxt "field:account.move.reconciliation,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
@@ -1433,19 +1391,19 @@ msgstr "Data"
 
 msgctxt "field:account.move.reconciliation,delegate_to:"
 msgid "Delegate To"
-msgstr "Deleguota"
+msgstr "Delegat la"
 
 msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.move.template,date:"
 msgid "Date"
@@ -1453,116 +1411,115 @@ msgstr "Data"
 
 msgctxt "field:account.move.template,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.move.template,journal:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
-msgstr "Raktiniai žodžiai"
+msgstr "Cuvinte cheie"
 
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.move.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
-msgstr "Skaitmenys"
+msgstr "Cifre"
 
 msgctxt "field:account.move.template.keyword,move:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
 msgctxt "field:account.move.template.keyword,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
-msgstr "Būtinas"
+msgstr "Obligatoriu"
 
 msgctxt "field:account.move.template.keyword,string:"
 msgid "String"
-msgstr "Tekstas"
+msgstr "Şir"
 
 msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
-msgstr "Įtrauktos į apskaitą operacijos"
+msgstr "Mișcari Postate"
 
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.period,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Fiscal Years"
+msgstr "An Fiscal"
 
 msgctxt "field:account.period,icon:"
 msgid "Icon"
-msgstr "Ikona"
+msgstr "Pictogramă"
 
 msgctxt "field:account.period,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Įtraukimo į apskaitą numeruotė"
+msgstr "Secvenţa După Mişcare"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.period,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:account.period,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
@@ -1570,23 +1527,23 @@ msgstr "Data"
 
 msgctxt "field:account.reconcile.show,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr "Kontrahentai"
+msgstr "Părți"
 
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write Off"
-msgstr "Nurašymas"
+msgstr "Prescriere"
 
 msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
@@ -1598,91 +1555,92 @@ msgstr "Suma"
 
 msgctxt "field:account.tax,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.tax,credit_base_amount:"
 msgid "Credit Base Amount"
-msgstr "Kreditinės sąskaitos faktūros suma be mokesčių"
+msgstr "Sumă de Baza Credit"
 
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Kreditinės sąskaitos faktūros koresponduojanti sąskaita"
+msgstr "Cont Storno"
 
 msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
-msgstr "Kreditinės sąskaitos faktūros mokesčių suma"
+msgstr "Creditare Sumă Impozit"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.tax,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
-msgstr "Grupė"
+msgstr "Grup"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr "Sąskaitos faktūros koresponduojanti sąskaita"
+msgstr "Cont Facturare"
 
 msgctxt "field:account.tax,invoice_base_amount:"
 msgid "Invoice Base Amount"
-msgstr "Sąskaitos faktūros suma be mokesčių"
+msgstr "Sumă Baza Factură"
 
 msgctxt "field:account.tax,invoice_tax_amount:"
 msgid "Invoice Tax Amount"
-msgstr "Sąskaitos faktūros mokesčių suma"
+msgstr "Sumă Impozit Factură"
 
 msgctxt "field:account.tax,legal_notice:"
 msgid "Legal Notice"
-msgstr "Teisinė informacija"
+msgstr "Adresă Oficială"
 
 msgctxt "field:account.tax,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Părinte"
 
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr "Vertė"
+msgstr "Rata"
 
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
+#, fuzzy
 msgctxt "field:account.tax,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere Şablon"
 
 msgctxt "field:account.tax,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
-msgstr "Atnaujinti kainą"
+msgstr "Actualizare Preț Unitar"
 
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
-msgstr "Aktyvus"
+msgstr "Activ"
 
 msgctxt "field:account.tax.code,amount:"
 msgid "Amount"
@@ -1690,56 +1648,55 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.code,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.tax.code,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.tax.code,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax.code,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Parinte"
 
 msgctxt "field:account.tax.code,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere șablon"
 
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
@@ -1747,27 +1704,27 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.code.line,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.tax.code.line,operator:"
 msgid "Operator"
-msgstr "Operatorius"
+msgstr "Operator"
 
 msgctxt "field:account.tax.code.line,tax:"
 msgid "Tax"
-msgstr "PVM"
+msgstr "Impozit"
 
 msgctxt "field:account.tax.code.line,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.tax.code.line,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere șablon"
 
 msgctxt "field:account.tax.code.line,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax.code.line.template,amount:"
 msgid "Amount"
@@ -1775,79 +1732,79 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.code.line.template,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.tax.code.line.template,operator:"
 msgid "Operator"
-msgstr "Operatorius"
+msgstr "Operator"
 
 msgctxt "field:account.tax.code.line.template,tax:"
 msgid "Tax"
-msgstr "PVM"
+msgstr "Impozit"
 
 msgctxt "field:account.tax.code.line.template,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
-msgstr "Metodas"
+msgstr "Metodă"
 
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
-msgstr "Periodai"
+msgstr "Perioade"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "field:account.tax.code.template,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.tax.code.template,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax.code.template,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Parinte"
 
 msgctxt "field:account.tax.code.template,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax.group,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:account.tax.group,kind:"
 msgid "Kind"
-msgstr "Rūšis"
+msgstr "Tip"
 
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
@@ -1855,23 +1812,23 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
-msgstr "Operacijos eilutė"
+msgstr "Rând Mișcare"
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
-msgstr "PVM"
+msgstr "Impozit"
 
 msgctxt "field:account.tax.line,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
@@ -1879,127 +1836,124 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr "Eilutė"
+msgstr "Rând"
 
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
-msgstr "PVM"
+msgstr "Impozit"
 
 msgctxt "field:account.tax.line.template,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:account.tax.rule,kind:"
 msgid "Kind"
-msgstr "Rūšis"
+msgstr "Tip"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.tax.rule,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
-msgstr "Šablonas"
-
-msgctxt "field:account.tax.rule,template_override:"
-msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Șablon"
 
 #, fuzzy
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "Suprascriere Şablon"
+
 msgctxt "field:account.tax.rule.line,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
-msgstr "Mokesčių grupė"
+msgstr "Grup Impozite"
 
 msgctxt "field:account.tax.rule.line,keep_origin:"
 msgid "Keep Origin"
-msgstr "Palikti pradinį mokestį"
+msgstr "Păstrează Origine"
 
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
-msgstr "Pradinis mokestis"
+msgstr "Impozit Sursa"
 
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
-msgstr "Taisyklė"
+msgstr "Regulă"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
-msgstr "Pakeičiantysis mokestis"
+msgstr "Impozit de substituție"
 
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
-msgstr "Šablonas"
+msgstr "Șablon"
 
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
-msgstr "Perrašyti šabloną"
+msgstr "Suprascriere Şablon"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
-msgstr "Mokesčių grupė"
+msgstr "Grup Impozite"
 
 msgctxt "field:account.tax.rule.line.template,keep_origin:"
 msgid "Keep Origin"
-msgstr "Palikti pradinį mokestį"
+msgstr "Păstrează Origine"
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr "Pradinis mokestis"
+msgstr "Impozit Sursa"
 
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
-msgstr "Taisyklė"
+msgstr "Regulă"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
-msgstr "Pakeičiantysis mokestis"
+msgstr "Impozit de substituție"
 
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "field:account.tax.rule.template,kind:"
 msgid "Kind"
-msgstr "Rūšis"
+msgstr "Tip"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
@@ -2007,67 +1961,67 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Kreditinės sąskaitos faktūros koresponduojanti sąskaita"
+msgstr "Cont Nota de Credit"
 
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.tax.template,end_date:"
 msgid "Ending Date"
-msgstr "Pabaigos data"
+msgstr "Data de încheiere"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
-msgstr "Groupė"
+msgstr "Grup"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr "Sąskaitos faktūros koresponduojanti sąskaita"
+msgstr "Cont Facturare"
 
 msgctxt "field:account.tax.template,legal_notice:"
 msgid "Legal Notice"
-msgstr "Teisinė informacija"
+msgstr "Adresă Oficială"
 
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Parinte"
 
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr "Vertė"
+msgstr "Impozit"
 
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
-msgstr "Pradžios data"
+msgstr "Data de început"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Tip"
 
 msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
-msgstr "Atnaujinti kainą"
+msgstr "Actualizare Preț Unitar"
 
 msgctxt "field:account.tax.test,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:account.tax.test,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:account.tax.test,result:"
 msgid "Result"
-msgstr "Rezultatas"
+msgstr "Rezultat"
 
 msgctxt "field:account.tax.test,tax_date:"
 msgid "Date"
@@ -2075,15 +2029,15 @@ msgstr "Data"
 
 msgctxt "field:account.tax.test,taxes:"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "field:account.tax.test,unit_price:"
 msgid "Unit Price"
-msgstr "Kaina"
+msgstr "Preț unitar"
 
 msgctxt "field:account.tax.test.result,account:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "field:account.tax.test.result,amount:"
 msgid "Amount"
@@ -2091,1001 +2045,998 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr "Bazė"
+msgstr "Baza"
 
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
-msgstr "Aprašymas"
+msgstr "Descriere"
 
 msgctxt "field:account.tax.test.result,legal_notice:"
 msgid "Legal Notice"
-msgstr "Teisinė informacija"
+msgstr "Adresă Oficială"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
-msgstr "PVM"
+msgstr "Impozit"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr "Pagrindinė koresponduojanti sąskaita"
+msgstr "Cont Radacină"
 
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
-msgstr "Mokėtinų sumų koresponduojanti sąskaita"
+msgstr "Cont Furnizor"
 
 msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
-msgstr "Gautinų sumų koresponduojanti sąskaita"
+msgstr "Cont Client"
 
 msgctxt "field:party.party,accounts:"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "field:party.party,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
+msgstr "Zecimale valută"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr "Mokesčių pirkėjui taisyklė"
+msgstr "Regula de Impozitare al Clientului"
 
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr "Mokėtina suma"
+msgstr "Platibil"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr "Šiandien mokėtina suma"
+msgstr "Scadent Astazi"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr "Gautina suma"
+msgstr "Client"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr "Šiandien gautina suma"
+msgstr "Scadent Astazi"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "Tiekėjo mokesčių taisyklė"
+msgstr "Regula de Impozitare Furnizor"
 
 msgctxt "field:party.party.account,account_payable:"
 msgid "Account Payable"
-msgstr "Mokėtinų sumų koresponduojanti sąskaita"
+msgstr "Cont Furnizor"
 
 msgctxt "field:party.party.account,account_receivable:"
 msgid "Account Receivable"
-msgstr "Gautinų sumų koresponduojanti sąskaita"
+msgstr "Cont Client"
 
 msgctxt "field:party.party.account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:party.party.account,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr "Mokesčių pirkėjui taisyklė"
+msgstr "Regula de Impozitare al Clientului"
 
 msgctxt "field:party.party.account,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:party.party.account,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "Tiekėjo mokesčių taisyklė"
+msgstr "Regula de Impozitare Furnizor"
 
 msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
-msgstr ""
-"Pažymėkite, kad išvengti operacijų šioje koresponduojančioje sąskaitoje."
+msgstr "Bifați pentru a nu permite o mișcare pe contul."
 
 msgctxt "help:account.account,debit_type:"
 msgid "The type used if not empty and debit > credit."
-msgstr ""
+msgstr "Tipul folosit dacă nu este gol şi debit > credit."
 
+#, fuzzy
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr "Didžiosios knygos ataskaitoje rodyti tik balansą."
+msgstr "Afişare numai sold în registru general."
 
 msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
-msgstr "Leisti šios koresponduojančios sąskaitos eilučių suderinimą."
+msgstr "Permite reconciliere al randurilr al contului."
 
+#, fuzzy
 msgctxt "help:account.account,second_currency:"
 msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
 msgstr ""
-"Visoms operacijoms šioje koresponduojančioje \n"
-"sąskaitoje priskirti šią papildomą valiutą."
+"Obligatoriu pentru toate mişcările pe acest cont\n"
+"să aiba o valută secundară."
 
 msgctxt "help:account.account,taxes:"
 msgid ""
 "Default tax for manual encoding of move lines\n"
 "for journal types: \"expense\" and \"revenue\"."
 msgstr ""
-"Numatytieji mokesčiai, kuriant operacijų eilutes \n"
-"\"išlaidų\" ir \"pajamų\" tipo žurnalams rankiniu būdu."
+"Impozit prestabilit pentru codificare manuala al rândurilor cu mişcari\n"
+"pentru jurnale de tip: \"cheltuiala\" şi \"venit\"."
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon."
 
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
-msgstr ""
-"Pažymėkite, kad išvengti operacijų šioje koresponduojančioje sąskaitoje."
+msgstr "Bifați pentru a nu permite o mișcare pe contul."
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr "Didžiosios knygos ataskaitoje rodyti tik balansą."
+msgstr "Afişare numai sold în registru general."
 
 msgctxt "help:account.account.template,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
-msgstr "Leisti šios koresponduojančios sąskaitos eilučių suderinimą."
+msgstr "Permite reconciliere a rândurile al acestui cont."
 
+#, fuzzy
 msgctxt "help:account.account.type,debt:"
 msgid "Check to allow booking debt via supplier invoice."
-msgstr ""
+msgstr "Bifaţi pentru a permite postare debit prin factură de furnizor."
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon"
 
+#, fuzzy
 msgctxt "help:account.account.type.template,debt:"
 msgid "Check to allow booking debt via supplier invoice."
-msgstr ""
+msgstr "Bifaţi pentru a permite postare debit prin factură de furnizor."
 
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Only include posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Include numai mişcări postate."
 
 msgctxt "help:account.balance_sheet.comparision.context,posted:"
 msgid "Only include posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Includere numai mişcări postate."
 
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Only include posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Includere numai mişcări postate."
 
 msgctxt "help:account.configuration,default_customer_tax_rule:"
 msgid "Default customer tax rule for new parties."
-msgstr "Numatytoji mokesčių pirkėjui taisyklė naujiems kontrahentams."
+msgstr "Regula implicita pentru parti noi."
 
 msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
-msgstr "Numatytoji tiekėjo mokesčių taisyklė naujiems kontrahentams."
+msgstr "Regula Implicita de Impozitare pentru parti noi."
 
 msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
 msgid ""
 "The day of the month on which periods end.\n"
 "Months with fewer days will end on the last day."
 msgstr ""
-"Periodo pabaigos mėnesio diena.\n"
-"Trumpesni mėnesiai baigsis paskutinę mėnesio dieną."
+"Ziua al lunii în care se termina perioadă.\n"
+"Luni cu mai puţine zile se termina în ultima zi."
 
 msgctxt "help:account.fiscalyear.create_periods.start,interval:"
 msgid "The length of each period, in months."
-msgstr "Periodo trukmė mėnesiais."
+msgstr "Lungimea fiecărei perioade, în luni."
 
 msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Used as reference for fiscalyear configuration."
-msgstr "Naudojama kaip fiskalinių metų konfigūracijos nuoroda."
+msgstr "Utilizat că referinţa pentru configurarea anului fiscal."
 
 msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
-msgstr "Jei pažymėta, bus sukurtos naujos numeruotės."
+msgstr "Dacă este bifat, secvenţe noi vor fi create."
 
-#, fuzzy
 msgctxt "help:account.general_ledger.account.context,journal:"
 msgid "Only included moves from the journal."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Singurele mişcări incluse de la jurnal."
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Only included posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Singurele mişcari postate care sunt incluse."
 
-#, fuzzy
 msgctxt "help:account.general_ledger.line.context,journal:"
 msgid "Only included moves from the journal."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Singurele mişcări incluse de la jurnal."
 
 msgctxt "help:account.general_ledger.line.context,posted:"
 msgid "Only included posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Singurele mişcari postate care sunt incluse."
 
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Include numai mişcări postate."
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
-msgstr "Dar žinomas kaip Folio numeris."
+msgstr "Cunoscut şi că Numărul Folio."
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency."
-msgstr "Suma antrąja valiuta."
+msgstr "Sumă exprimata în valută secundară."
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
 "This field is used for payable and receivable lines. \n"
 "You can put the limit date for the payment."
 msgstr ""
-"Šis laukas naudojamas mokėtinoms ir gautinoms eilutėms.\n"
-"Jūs galite įvesti datą, iki kurios turi būti atliktas mokėjimas."
+"Acest câmp este folosit pentru rânduri de client şi furnizor.\n"
+"Puteţi pune scadenţa pentru plata."
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
-msgstr "Antroji valiuta."
+msgstr "Valută secundara."
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr "Išraiška Python kalba, kuri turi būti atlikta su raktiniais žodžiais."
+msgstr "O expresie python care va fi evaluata cu cuvintele cheie."
 
 msgctxt "help:account.move.line.template,description:"
 msgid "Keywords values substitutions are identified by braces ('{' and '}')."
 msgstr ""
-"Pakeičiamieji raktiniai žodžiai atpažįstami pagal riestinius skliaustus ('{'"
-" and '}')."
+"Substituţii de valorii al cuvintelor cheie sunt identificaţi cu ('{' şi "
+"'}')."
 
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
-msgstr "'Kontrahento' pavadinimo raktinis žodis."
+msgstr "Denumirea al cuvântului cheie 'Parte'."
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines."
-msgstr "Vėliausia suderinamų eilučių data."
+msgstr "Data cea mai mare pe rândurile reconciliate."
 
 msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
-msgstr "Eilutė, su kuria vyksta sudengimas."
+msgstr "Linia către care este delegat statutul de reconciliere."
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today."
-msgstr "Palikite tuščią šiandienai."
+msgstr "Lasaţi gol pentru astăzi."
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr ""
-"Raktažodžių verčių pakaitos yra atpažįstamos pagal riestinius skliaustus "
-"('{' and '}')."
+"Substituţii de valorii al cuvintelor cheie sunt identificaţi cu ('{' şi "
+"'}')."
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr "Palikite tuščią visiems atviriems finansiniams metams."
+msgstr "Lăsaţi gol pentru toţi anii fiscali deschişi."
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Only include posted moves."
-msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
+msgstr "Include numai mişcări postate."
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency."
-msgstr "Suma organizacijos valiuta."
+msgstr "În valuta companiei."
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports."
-msgstr "Pavadinimas, kuris bus naudojamas ataskaitose."
+msgstr "Denumirea care va fi folosita în rapoarte."
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon."
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
 "by this tax."
 msgstr ""
+"Dacă este bifat, preţul unitar pentru calculul ulterior al impozitului va fi"
+" modificat de această taxă."
 
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon."
 
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon."
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr "Palikite tuščią visiems atviriems finansiniams metams."
+msgstr "Lăsaţi gol pentru toţi anii fiscali deschişi."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year."
-msgstr "Palikite tuščią visų atvirų finansinių metų visiems periodams."
+msgstr "Lăsați gol pentru toate perioadele pentru toţi anii fiscali deschişi."
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr "Išraiška Python kalba, kuri turi būti atlikta su raktiniais žodžiais."
+msgstr "O expresie python care va fi evaluata cu cuvintele cheie."
 
 msgctxt "help:account.tax.rule,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon"
 
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
-msgstr ""
+msgstr "Bifați pentru a atașa taxa inițială la taxa substituită."
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
+"Dacă taxa originală este completată, regula se va aplica numai pentru "
+"această taxă."
 
 msgctxt "help:account.tax.rule.line,template_override:"
 msgid "Check to override template definition"
-msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
+msgstr "Bifaţi pentru a modifica fără să ţine cont de şablon."
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
-msgstr ""
+msgstr "Bifați pentru a atașa taxa inițială la taxa substituită."
 
+#, fuzzy
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
 msgstr ""
+"Dacă este completat șablonul de impozitare original, regula se va aplica "
+"numai pentru acest șablon de impozitare."
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
-msgstr "Taikyti šią mokesčių taisyklę, kai kontrahentas yra pirkėjas."
+msgstr ""
+"Se aplică această regulă pentru impozite atunci când partea este client."
 
 msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
-msgstr "Taikyti šią mokesčių taisyklę kai kontrahentas yra tiekėjas."
+msgstr ""
+"Se aplica această regulă pentru impozite atunci când partea este furnizor."
 
 msgctxt "model:account.account,name:"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
-msgstr "Koresponduojanti sąskaita - mokesčiai"
+msgstr "Cont - Impozit"
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
-msgstr "Koresponduojanti sąskaita ateinantiems laikotarpiams"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.account.party,name:"
 msgid "Account Party"
-msgstr "Mokėtinų sumų koresponduojanti sąskaita"
+msgstr "Cont Parte"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
-msgstr "Koresponduojančios sąskaitos šablonas"
+msgstr "Șablon Conturi"
 
 msgctxt "model:account.account.template-account.tax.template,name:"
 msgid "Account Template - Tax Template"
-msgstr "Koresponduojančios sąskaitos šablonas - mokesčio šablonas"
+msgstr "Șablon Conturi - Șablon Impozite"
 
 msgctxt "model:account.account.type,name:"
 msgid "Account Type"
-msgstr "Koresponduojančios sąskaitos tipas"
+msgstr "Tip de cont"
 
 msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
-msgstr "Koresponduojančios sąskaitos tipo šablonas"
+msgstr "Şablon Tip Cont"
 
 msgctxt "model:account.aged_balance,name:"
 msgid "Aged Balance"
-msgstr "Vėluojantys mokėjimai"
+msgstr ""
 
 msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
-msgstr "Vėluojančio mokėjimo kontekstas"
+msgstr ""
 
 msgctxt "model:account.balance_sheet.comparision.context,name:"
 msgid "Balance Sheet Context"
-msgstr "Balanso kontekstas"
+msgstr "Contextul Bilanţului"
 
 msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
-msgstr "Balanso kontekstas"
+msgstr "Contextul Bilanţului"
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
-msgstr "Koresponduojančių sąskaitų valdymas"
+msgstr "Configurare"
 
 msgctxt "model:account.configuration.default_account,name:"
 msgid "Account Configuration Default Account"
-msgstr ""
-"Koresponduojančių sąskaitų valdymas - numatytoji koresponduojanti sąskaita"
+msgstr "Configurare Implicita pentru Cont"
 
 msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
-msgstr "Koresponduojančios sąskaitos numatytoji mokesčių taisyklė"
+msgstr "Configurare Implicita pentru Reguli de Impozitare"
 
 #, fuzzy
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
-msgstr "Koresponduojančių sąskaitų valdymas"
+msgstr "Configurare"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
-msgstr "Koresponduojančių sąskaitų valdymas - mokesčių apvalinimas"
+msgstr "Configurare Rotunjire Impozit"
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
-msgstr "Sukurti koresponduojančių sąskaitų planą"
+msgstr "Creare Plan"
 
 msgctxt "model:account.create_chart.properties,name:"
 msgid "Create Chart"
-msgstr "Sukurti koresponduojančių sąskaitų planą"
+msgstr "Creare Plan"
 
 msgctxt "model:account.create_chart.start,name:"
 msgid "Create Chart"
-msgstr "Sukurti koresponduojančių sąskaitų planą"
+msgstr "Creare Plan"
 
 msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
-msgstr "Finansiniai metai"
+msgstr "An Fiscal"
 
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
-msgstr "Metinis pajamų ir išlaidų koresponduojančių sąskaitų uždarymas"
+msgstr ""
 
 msgctxt "model:account.fiscalyear.create_periods.start,name:"
 msgid "Create Periods Start"
-msgstr "Pradėti periodų kūrimą"
+msgstr "Creare Început Perioade"
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
-msgstr "Finansinių metų atnaujinimas - pradžia"
+msgstr "Renoire Început An Fiscal"
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
-msgstr "Didžiosios knygos koresponduojanti sąskaita"
+msgstr "Registru General Conturi"
 
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
-msgstr "Didžiosios knygos koresponduojančios sąskaitos kontekstas"
+msgstr "Registru General Conturi Context"
 
-#, fuzzy
 msgctxt "model:account.general_ledger.account.party,name:"
 msgid "General Ledger Account Party"
-msgstr "Didžiosios knygos koresponduojanti sąskaita"
+msgstr "Registru General Conturi Parte"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
-msgstr "Didžiosios knygos eilutė"
+msgstr "Registru General Rând"
 
 msgctxt "model:account.general_ledger.line.context,name:"
 msgid "General Ledger Line Context"
-msgstr "Didžiosios knygos eilutės kontekstas"
+msgstr "Registru General Context Rând"
 
 msgctxt "model:account.income_statement.context,name:"
 msgid "Income Statement Context"
-msgstr "Pelno ataskaitos kontekstas"
+msgstr "Context Declaraţiei de Venit"
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr "Žurnalas"
+msgstr "Jurnal"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "Kasa"
+msgstr "Cash"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Išlaidos"
+msgstr "Cheltuiala"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr "Pajamos"
+msgstr "Venituri"
 
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr "Sandėlys"
+msgstr "Stoc"
 
+#, fuzzy
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
-msgstr "Kasos žurnalo kontekstas"
+msgstr "Jurnal Cash Context"
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr "Periodų žurnalai"
+msgstr "Jurnal - Perioadă"
 
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
-msgstr "Žurnalų numeruotė"
+msgstr "Jurnal - Secvenţa"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
-msgstr "Koresponduojančios sąskaitos operacija"
+msgstr "Mişcare Cont"
 
 msgctxt "model:account.move.cancel.default,name:"
 msgid "Cancel Moves"
-msgstr "Anuliuotos operacijos"
+msgstr "Anulare Mişcari"
 
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
-msgstr "Koresponduojančios sąskaitos operacijos eilutė"
+msgstr "Rând Mişcare Cont"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
-msgstr "Grupuoti eilutes"
+msgstr "Grup de Rânduri"
 
+#, fuzzy
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
-msgstr "Koresponduojančios sąskaitos operacijos eilutės šablonas"
+msgstr "Şablon Cont Rânduri Mişcare"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Atverti žurnalą"
+msgstr "Deschidere Jurnal Intreaba"
 
 msgctxt "model:account.move.reconcile.write_off,name:"
 msgid "Reconcile Write Off"
-msgstr "Sudengimo nurašymas"
+msgstr "Reconciliere Prescriere"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
-msgstr "Sudengimo eilučių nurašymas"
+msgstr "Reconciliere Rânduri Prescriere"
 
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
-msgstr "Koresponduojančios sąskaitos operacijos sudengimo eilutės"
+msgstr "Rânduri de Reconciliere al Rişcarilor pe Cont"
 
 msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
-msgstr "Koresponduojančios sąskaitos operacijos šablonas"
+msgstr "Mișcari"
 
 msgctxt "model:account.move.template.create.keywords,name:"
 msgid "Create Move from Template"
-msgstr "Sukurti operaciją pagal šabloną"
+msgstr "Creare Mişcare de la Şablon"
 
 msgctxt "model:account.move.template.create.template,name:"
 msgid "Create Move from Template"
-msgstr "Sukurti operaciją pagal šabloną"
+msgstr "Creare Mişcare de la Şablon"
 
 msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
-msgstr "Koresponduojančios sąskaitos operacijos šablono raktažodis"
+msgstr ""
 
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Atverti koresponduojančių sąskaitų planą"
+msgstr "Deschidere Plan de Conturi"
 
 msgctxt "model:account.period,name:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
-msgstr "Sudengimas"
+msgstr "Reconciliere"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
-msgstr "Koresponduojančios sąskaitos mokesčiai"
+msgstr "Cont Impozit"
 
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
-msgstr "Mokesčio kodas"
+msgstr "Cod Fiscal"
 
 msgctxt "model:account.tax.code.line,name:"
 msgid "Tax Code Line"
-msgstr "Mokesčio kodo eilutė"
+msgstr "Rând Cod Fiscal"
 
 msgctxt "model:account.tax.code.line.template,name:"
 msgid "Tax Code Line Template"
-msgstr "Mokesčio kodo šablonas"
+msgstr "Şablon Rând Cod Fiscal"
 
+#, fuzzy
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Atverti mokesčių kodų planą"
+msgstr "Deschidere Plan Coduri Impozitare"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
-msgstr "Mokesčio kodo šablonas"
+msgstr "Şablon Cod Fiscal"
 
 msgctxt "model:account.tax.group,name:"
 msgid "Tax Group"
-msgstr "Mokesčių grupė"
+msgstr "Grup Impozite"
 
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
-msgstr "Mokesčio eilutė"
+msgstr "Rând Impozit"
 
 msgctxt "model:account.tax.line.template,name:"
 msgid "Account Tax Line Template"
-msgstr "Koresponduojančios sąskaitos mokesčio eilutės šablonas"
+msgstr "Şablon Cont Rând Impozit"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
-msgstr "Mokesčio taisyklė"
+msgstr "Regula Impozit"
 
 msgctxt "model:account.tax.rule.line,name:"
 msgid "Tax Rule Line"
-msgstr "Mokesčio taisyklės eilutė"
+msgstr "Rând Regula Impozit"
 
 msgctxt "model:account.tax.rule.line.template,name:"
 msgid "Tax Rule Line Template"
-msgstr "Mokesčio taisyklės eilutės šablonas"
+msgstr "Şablon Rând Regula Impozit"
 
 msgctxt "model:account.tax.rule.template,name:"
 msgid "Tax Rule Template"
-msgstr "Mokesčio taisyklės šablonas"
+msgstr "Şablon Regula Impozit"
 
 msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
-msgstr "Koresponduojančios sąskaitos mokesčio šablonas"
+msgstr "Şablon Cont Impozit"
 
 msgctxt "model:account.tax.test,name:"
 msgid "Test Tax"
-msgstr "Tikrinti mokestį"
+msgstr "Proba Impozit"
 
 msgctxt "model:account.tax.test.result,name:"
 msgid "Test Tax"
-msgstr "Tikrinti mokestį"
+msgstr "Proba Impozit"
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
-msgstr "Atnaujinti planą"
+msgstr "Actualizare Plan"
 
 msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
-msgstr "Atnaujinti planą"
+msgstr "Actualizare Plan"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Balansas"
+msgstr "Bilanţ"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Pelno (nuostolių) ataskaita"
+msgstr "Declaraţie de Venit"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr "Koresponduojančių sąskaitų tipai"
+msgstr "Tipuri de Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Types"
-msgstr "Tipas"
+msgstr "Tipuri"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr "Koresponduojančių sąskaitų tipai"
+msgstr "Tipuri de Conturi"
 
 msgctxt "model:ir.action,name:act_aged_balance_list"
 msgid "Aged Balance"
-msgstr "Vėluojantys mokėjimai"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Metinis pajamų ir išlaidų koresponduojančių sąskaitų uždarymas"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
-msgstr "Anuliuotos operacijos"
+msgstr "Anulare Mişcari"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Atverti mokesčių kodų planą"
+msgstr "Deschidere Plan de Coruri Impozitare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
-msgstr "Sukurti periodus"
+msgstr "Creare Perioade"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Finansiniai metai"
+msgstr "Ani Fiscali"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
 msgid "Close Fiscal Years"
-msgstr "Uždaryti finansinius metus"
+msgstr "Închidere Ani Fiscali"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
-msgstr "Didžioji knyga - koresponduojančios sąskaitos"
+msgstr "Registru General - Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
 msgid "General Ledger - Account Parties"
-msgstr "Didžioji knyga - koresponduojančios sąskaitos"
+msgstr "Registru General - Conturi Părţi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
 msgid "Open General Ledger Account Parties"
-msgstr "Didžiosios knygos koresponduojanti sąskaita"
+msgstr "Deschidere Registru General Cont Părţi"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
-msgstr "Didžioji knyga - eilutės"
+msgstr "Registru General - Rânduri"
 
 msgctxt "model:ir.action,name:act_group_lines_wizard"
 msgid "Group Lines"
-msgstr "Grupuoti eilutes"
+msgstr "Grup de Rânduri"
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Žurnalai"
+msgstr "Jurnale"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Kasos žurnalai"
+msgstr "Jurnale Cash"
 
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
-msgstr "Užverti kasos žurnalus pagal periodus"
+msgstr "Închidere Jurnale - Perioade"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Žurnalai pagal periodus"
+msgstr "Jurnale - Perioade"
 
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Žurnalai pagal periodus"
+msgstr "Jurnale - Perioade"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr "Operacijos koresponduojančiose sąskaitose"
+msgstr "Mişcari Cont"
 
 msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
-msgstr "Apjungta koresponduojančios sąskaitos operacija"
+msgstr "Mişcari Cont Grupate"
 
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
-msgstr "Koresponduojančios sąskaitos operacija"
+msgstr "Mişcare Cont"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr "Koresponduojančios sąskaitos operacijos eilutės"
+msgstr "Rânduri Mişcari Cont"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr "Mokėtinos/Gautinos eilutės"
+msgstr "Rânduri Client/Furnizor"
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
-msgstr "Sudengimo eilutės"
+msgstr "Rânduri Reconciliere"
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr "Sukurti operaciją pagal šabloną"
+msgstr "Creare Mişcare de la Şablon"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Moves"
-msgstr "Operacija"
+msgstr "Mișcari"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Atverti operacijos koresponduojančią sąskaitą"
+msgstr "Deschidere Mişcare Cont"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Atverti koresponduojančių sąskaitų planą"
+msgstr "Deschidere Plan de Conturi"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Atverti žurnalą"
+msgstr "Deschidere Jurnal"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
-msgstr "Atverti mokesčio kodą"
+msgstr "Deschidere Cod Fiscal"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr "Atverti tipą"
+msgstr "Deschidere Tip"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Periodai"
+msgstr "Perioade"
 
 msgctxt "model:ir.action,name:act_period_form_close"
 msgid "Close Periods"
-msgstr "Užverti periodus"
+msgstr "Închidere Perioade"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Sudengti koresponduojančias sąskaitas"
+msgstr "Reconciliere Conturi"
 
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr "Sudengimo eilutės"
+msgstr "Reconciliere Rânduri"
 
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
 msgid "WriteOff Methods"
-msgstr "Nurašymo metodai"
+msgstr "Metode de Prescriere"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Atnaujinti finansinius metus"
+msgstr "Renoire An Fiscal"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Codes"
-msgstr "Kodas"
+msgstr "Coduri"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes"
-msgstr "Mokesčių kodai"
+msgstr "Cod"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Codes"
-msgstr "Kodas"
+msgstr "Coduri"
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr "Mokesčių kodai"
+msgstr "Coduri Impozitare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Groups"
-msgstr "Grupė"
+msgstr "Grupuri"
 
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
-msgstr "Mokesčių eilutės"
+msgstr "Rânduri Impozit"
 
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Mokesčių taisyklės"
+msgstr "Regule de Impozitare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Rules"
-msgstr "Taisyklė"
+msgstr "Reguli"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Nesudengtos eilutės"
+msgstr "De-reconciliere Rânduri"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_account_type_statement"
 msgid "Statement"
-msgstr "Išrašas"
+msgstr "Raport"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr "Vėluojantys mokėjimai"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr "Pagrindinis žurnalas"
+msgstr "Jurnal General"
 
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr "Didžioji knyga"
+msgstr "Registru General"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr "Bandomasis balansas"
+msgstr "Sold Provizoriu"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Sukurti koresponduojančių sąskaitų planą iš šablono"
+msgstr "Creare Plan de Conturi de la Șablon"
 
 msgctxt "model:ir.action,name:wizard_tax_test"
 msgid "Test Tax"
-msgstr "Tikrinti mokestį"
+msgstr "Proba Impozit"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Atnaujinti koresponduojančių sąskaitų planą pagal šabloną"
+msgstr "Actualizare Plan de Conturi de la Șablon"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
 msgid "All"
-msgstr "Viskas"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
 msgid "Payable"
-msgstr "Mokėtina"
+msgstr "Clienți"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
 msgid "Receivable"
-msgstr "Gautina"
+msgstr "Client"
 
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
-msgstr "Organizacija \"%(company)s\" jau turi sąskaitų planą."
+msgstr "Un plan de conturi exista deja pentru compania \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
-"Norint nustatyti antrąją valiutą koresponduojančiai sąskaitai "
-"\"%(account)s\", pastaroji turi būti perkeliama."
 
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
-"Norint nustatyti antrąją valiutą koresponduojančiai sąskaitai "
-"\"%(account)s\", pastaroji turi būti vieno iš šių tipų: \"mokėtinos\", "
-"\"pajamos\", \"gautinos\" ar \"išlaidos\"."
+"Pentru a seta o valută secundara pentru cont \"%(account)s\", nu trebuie sa "
+"aiba tip \"furnizor\", \"venit\", \"client\" şi nici \"cheltuială\"."
 
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
 "the lines."
 msgstr ""
-"Operacijoje \"%(moves)s\" yra apjungtų eilučių, panaikinus operaciją jos bus"
-" išgrupuotos."
+"Mişcările \"%(moves)s\" conşin rânduri grupate, anularea lor o sa le "
+"dezgrupeze."
 
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
-"Negalima keisti finansinių metų \"%(fiscalyear)s\" įtraukimo į apskaitą "
-"numeruotės, nes jau yra įtrauktų į apskaitą numeruočių."
+"Nu se poate schimba secvenţa al mişcărilor postate pentru anul fiscal "
+"\"%(fiscalyear)s\" pentru că conţine mişcări postate."
 
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
 " has posted moves."
 msgstr ""
-"Negalima keisti periodo \"%(period)s\" įtraukimo į apskaitą numeruotės, nes "
-"jau yra įtrauktų į apskaitą operacijų."
+"Nu se poate schimba secvenţa al mişcărilor postate pentru perioadă "
+"\"%(period)s\" pentru că conţine mişcări postate."
 
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
 msgstr ""
-"Finansinių metų uždarymui koresponduojančios sąskaitos \"%(account)s\" "
-"balansas turi būti lygus nuliui."
+"Pentru a închide anul fiscal, soldul al contului \"%(account)s\" trebuie să "
+"fie zero."
 
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
 msgstr ""
-"Finansinių metų \"%(fiscalyear)s\" uždarymui reikia uždaryti visus "
-"ankstesnius finansinius metus."
+"Pentru a închide anul fiscal \"%(fiscalyear)s\", trebuie închişi toţi ani "
+"fiscali anteriori."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
-"Periodo \"%(period)s\" uždarymui reikia įtraukti į apskaitą operacijas "
+"Pentru a închide perioada \"%(period)s\" trebuie postate mişcările "
 "\"%(moves)s\"."
 
 msgctxt "model:ir.message,text:msg_company_change_currency"
@@ -3093,17 +3044,20 @@ msgid ""
 "You cannot change the currency of a company which is associated with account"
 " moves."
 msgstr ""
+"Nu se poate schimbă valuta al unei companii care este deja asociat cu "
+"mişcări pe conturi."
 
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
-msgstr "Negalima sukurti žurnalo uždarytam periodui \"%(period)s\"."
+msgstr "Nu se poate crea jurnal-perioadă în perioadă inchisă \"%(period)s\"."
 
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
 msgstr ""
-"Negalima sukurti periodo uždarytiems finansiniams metams \"%(fiscalyear)s\"."
+"Nu se poate crea o perioadă în anul fiscal \"%(fiscalyear)s\" deoarece este "
+"închis."
 
 msgctxt "model:ir.message,text:msg_deferral_unique"
 msgid "Deferral must be unique by account and fiscal year."
@@ -3112,12 +3066,15 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
 msgstr ""
+"Contul \"%(account)s\" nu se poate şterge deoarece are rânduri de mişcări."
 
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
 "receivable/payable with company \"%(company)s\"."
 msgstr ""
+"Nu se poate şterge partea \"%(party)s\" deoarece au un sold neachitat de "
+"client/furnizor cu compania \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
 msgid ""
@@ -3133,37 +3090,35 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
-msgstr "Eilutė \"%(line)s\" negali būti apjungiama."
+msgstr "Rândul \"%(line)s\" nu poate fi grupat."
 
 msgctxt "model:ir.message,text:msg_group_line_many_parties"
 msgid "You cannot group lines with different parties."
-msgstr "Negalima apjungti eilučių su skirtingais kontrahentais."
+msgstr "Nu se pot grupa rânduri cu diferite părţi."
 
 msgctxt "model:ir.message,text:msg_group_line_maximum_account"
 msgid "You cannot group lines from more than 2 different accounts."
-msgstr ""
-"Negalima apjungti eilučių iš daugiau nei dviejų skirtingų koresponduojančių "
-"sąskaitų."
+msgstr "Nu se pot grupa rânduri de la mai mult decât 2 conturi diferite."
 
 msgctxt "model:ir.message,text:msg_group_line_same_company"
 msgid "You cannot group lines of different companies."
-msgstr "Negalima apjungti kelių skirtingų organizacijų eilučių."
+msgstr "Nu se pot grupa rânduri de la companii diferite."
 
 msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
 msgid "You cannot group lines of different second currencies."
-msgstr "Negalima apjungti eilučių su skirtingomis antrosiomis valiutomis."
+msgstr "Nu se pot grupa rânduri care nu au acelaşi valută secundară."
 
 msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
-msgstr "Negalima apjungti vienos eilutės."
+msgstr "Nu se poate grupa un singur rând."
 
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
-msgstr "Negalima sukurti tik vieno žurnalo periodui."
+msgstr "Se poate crea un sigur jurnal pe perioadă."
 
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
-msgstr "Eilutė \"%(line)s\" jau sudengta."
+msgstr "Nu se poate reconcilia rândul \"%(line)s\" care este deja reconciliat."
 
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
@@ -3173,7 +3128,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
-msgstr "Negalima vienoje eilutėje pasirinkti debetą ir kreditą vienu metu."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
@@ -3203,560 +3158,497 @@ msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
 msgid ""
 "You cannot modify or delete period \"%(period)s\" because it contains moves."
 msgstr ""
-"Negalima keisti ar pašalinti periodą \"%(period)s\", nes jo metu jau "
-"atliktos operacijos."
 
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
 "\"%(journal_period)s\"."
 msgstr ""
-"Negalima sukurti, keisti ar ištrinti eilučių, kai žurnalo periodas "
-"\"%(journal_period)s\" yra uždarytas."
 
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
-"Negalima keisti įtrauktos į apskaitą operacijos \"%(move)s\" eilutės "
-"\"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr "Negalima keisti sudengtos eilutės \"%(line)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
-msgstr "Negalima keisti įtrauktos į apskaitą operacijos \"%(move)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
-"Negalima sukurti, keisti ar ištrinti mokesčių eilučių, kai periodas "
-"\"%(period)s\" yra uždarytas."
+"Nu se po tadăuga/modifica/șterge randuri cu impozite din perioada "
+"\"%(period)s\" inchisă."
 
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
 "Use the current period to cancel the move?"
 msgstr ""
-"Operacijos \"%(move)s\" periodas yra uždarytas.\n"
-"Ar naudoti dabartinį periodą, kad panaikinti šią operaciją?"
 
 msgctxt "model:ir.message,text:msg_move_date_outside_period"
 msgid ""
 "The date of move \"%(move)s\" is outside the period, you must change the "
 "date or the period."
 msgstr ""
-"Operacijos \"%(move)s\" data yra už periodo ribų, jūs turite pakeisti datą "
-"arba periodą."
 
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
-msgstr "Norint tęsti, reikia datai \"%(date)s\" sukurti finansinius metus."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid "To continue, you must create a period for the date \"%(date)s\"."
-msgstr "Norint tęsti, reikia datai \"%(date)s\" sukurti periodą."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
 "\"%(period)s\"."
 msgstr ""
-"Negalima atverti periodo žurnalo \"%(journal_period)s\", nes periodas "
-"\"%(period)s\" yra uždarytas."
 
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
 "\"%(fiscalyear)s\" is closed."
 msgstr ""
-"Negalima atverti periodo žurnalo \"%(journal_period)s\", nes finansiniai "
-"metai \"%(fiscalyear)s\" yra uždaryti."
 
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
-"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" mokėtinų sumų "
-"koresponduojančią sąskaitą."
 
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
-"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" gautinų sumų "
-"koresponduojančią sąskaitą."
 
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
 msgstr ""
-"Periodo \"%(period)s\" datos turi priklausyti finansiniams metams "
-"\"%(fiscalyear)s\"."
 
 msgctxt "model:ir.message,text:msg_period_overlap"
 msgid ""
 "The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
 " dates."
 msgstr ""
-"Periodai \"%(first)s\" ir \"%(second)s\" persidengia, reikia nurodyti kitas "
-"datas."
 
 msgctxt "model:ir.message,text:msg_period_same_sequence"
 msgid ""
 "You cannot use the same post move sequence for the periods \"%(first)s\" and"
 " \"%(second)s\" because they are from different fiscal years."
 msgstr ""
-"Negalima naudoti tą pačią operacijų įtraukimo į apskaitą numeruotės "
-"periodams \"%(first)s\" ir \"%(second)s\", nes jie priklauso skirtingiems "
-"finansiniams metams."
 
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
-"Norint įtraukti į apskaitą operaciją \"%(move)s\", reikia užpildyti jos "
-"eilutes."
 
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
 "credits."
 msgstr ""
-"Norint įtraukti į apskaitą operaciją \"%(move)s\", reikia kad jos eilučių "
-"debetas ir kreditas būtų lygūs."
 
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr ""
-"Norint sudengti eilutę \"%(line)s\", turite jos koresponduojančioje "
-"sąskaitoje \"%(account)s\" nurodyti, kad ši sąskaita yra sudengiama."
 
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
-"Sudengimas \"%(reconciliation)s\" yra nukreiptas į eilutę \"%(line)s\".\n"
-"Gali prisireikti panaikinti operaciją \"%(move)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
 "\"%(account1)s\" is different from \"%(account2)s\"."
 msgstr ""
-"Negalima sudengti eilutės \"%(line)s\" su kitomis, nes jos koresponduojanti "
-"sąskaita \"%(account1)s\" skiriasi nuo \"%(account2)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
 "\"%(party1)s\" is different from \"%(party2)s\"."
 msgstr ""
-"Negalima sudengti eilutės \"%(line)s\" su kitomis, nes jos kontrahentas "
-"\"%(party1)s\" skiriasi nuo \"%(party2)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
-msgstr "Negalima sudengti nepatikrintos eilutės \"%(line)s\"."
+msgstr "Rândul \"%(line)s\" este neconform si nu se poate reconcilia."
 
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr ""
-"Norint sudengti eilutes, jos turi turėti tą patį debetą \"%(debit)s\" ir "
-"kreditą \"%(credit)s\"."
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
 "years."
 msgstr ""
-"Norint iš naujo atverti finansinius metus \"%(fiscalyear)s\", reikia iš "
-"pradžių atverti visus vėlesnius finansinius metus."
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
-"Negalima vykdyti vieneto kainos atnaujinimo dukteriniams mokesčiams "
-"\"%(tax)s\"."
 
 msgctxt "model:ir.message,text:msg_write_deferral"
 msgid "You cannot modify any account deferrals."
-msgstr "Negalima taisyti jokių perkeliamų koresponduojančių sąskaitų."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_write_reconciliation"
 msgid "You cannot modify any reconciliation."
-msgstr "Negalima keisti jokių sudengimų."
+msgstr ""
 
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure you want to lock the fiscal year?"
-msgstr "Ar tikrai norite užrakinti finansinius metus?"
+msgstr ""
 
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure you want to lock the period?"
-msgstr "Ar tikrai norite užrakinti periodą?"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
-msgstr "Užverti"
+msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
 msgid "Create Periods"
-msgstr "Sukurti periodą"
+msgstr "Creare Perioade"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Užrakinti"
+msgstr "Blocare"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
-msgstr "Iš naujo atverti"
+msgstr "Re-Deschide"
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
-msgstr "Įtraukti į apskaitą"
+msgstr "Postare"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Užverti"
+msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Užrakinti"
+msgstr "Blocare"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
-msgstr "Iš naujo atverti"
+msgstr "Re-Deschide"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator din companie"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator din companie"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator din companie"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator din companie"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator din companie"
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_move_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
-msgstr "Numatytasis koresponduojančios sąskaitos žurnalas"
+msgstr "Jurnal Implicit Cont"
 
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
-msgstr "Numatytasis koresponduojančios sąskaitos operacijos sudengimas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
 msgid "Account Journal"
-msgstr "Koresponduojančios sąskaitos žurnalas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
-msgstr "Koresponduojančios sąskaitos operacija"
+msgstr "Mişcare Cont"
 
 msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
-msgstr "Koresponduojančios sąskaitos operacijos sudengimas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
-msgstr "Finansai"
+msgstr "Financiar"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Koresponduojančios sąskaitos"
+msgstr "Conturi"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
-msgstr "Koresponduojančių sąskaitų tipai"
+msgstr "Tipuri de Conturi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Types"
-msgstr "Tipas"
+msgstr "Tipuri"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
-msgstr "Koresponduojančių sąskaitų tipai"
+msgstr "Tipuri de Conturi"
 
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr "Vėluojantys mokėjimai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Metinis pajamų ir išlaidų koresponduojančių sąskaitų uždarymas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr "Koresponduojančių sąskaitų planas"
+msgstr "Planuri"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
-msgstr "Uždaryti finansinius metus"
+msgstr "Închidere Ani Fiscali"
 
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
 msgid "Close Journals - Periods"
-msgstr "Užverti žurnalus pagal periodus"
+msgstr "Închidere Jurnale - Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
-msgstr "Užverti periodus"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Atverti mokesčių kodų planą"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Sukurti koresponduojančių sąskaitų planą iš šablono"
+msgstr "Creare Plan de Conturi de la Șablon"
 
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr "Įrašai"
+msgstr "Înregistrari"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr "Finansiniai metai"
+msgstr "Ani Fiscali"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Finansiniai metai"
+msgstr "Ani Fiscali"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "Pagrindinė koresponduojanti sąskaita"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
-msgstr "Didžioji knyga"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Žurnalai"
+msgstr "Jurnale"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Žurnalai"
+msgstr "Jurnale"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Kasos žurnalai"
+msgstr "Jurnale Cash"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Žurnalai pagal periodus"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Žurnalai pagal periodus"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr "Koresponduojančios sąskaitos operacijos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr "Sukurti operaciją pagal šabloną"
+msgstr "Creare Mişcare de la Şablon"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Moves"
-msgstr "Operacija"
+msgstr "Mișcari"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Balansas"
+msgstr "Bilanţ"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Atverti koresponduojančių sąskaitų planą"
+msgstr "Deschidere Plan de Conturi"
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Pelno (nuostolių) ataskaita"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Atverti žurnalą"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr "Periodai"
+msgstr "Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Aptarnavimas"
+msgstr "Se prelucreaza"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Sudengti koresponduojančias sąskaitas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
 msgid "WriteOff Methods"
-msgstr "Nurašymo metodai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Atnaujinti finansinius metus"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Ataskaitos"
+msgstr "Raportare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Codes"
-msgstr "Kodas"
+msgstr "Coduri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes"
-msgstr "Mokesčių kodai"
+msgstr "Coduri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Codes"
-msgstr "Kodas"
+msgstr "Coduri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Groups"
-msgstr "Grupė"
+msgstr "Grupuri"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Mokesčių taisyklės"
+msgstr "Regule de Impozitare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Rules"
-msgstr "Taisyklė"
+msgstr "Reguli"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_test"
 msgid "Test Tax"
-msgstr "Tikrinti mokestį"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr "Mokesčiai"
+msgstr "Impozite"
 
 msgctxt "model:ir.ui.menu,name:menu_templates"
 msgid "Templates"
-msgstr "Šablonai"
+msgstr "Șabloane"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Atnaujinti koresponduojančių sąskaitų planą pagal šabloną"
+msgstr "Actualizare Plan de Conturi de la Șablon"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:party.party.account,name:"
 msgid "Party Account"
-msgstr "Kontrahento sąskaita"
+msgstr ""
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Koresponduojanti sąskaita"
+msgstr "Cont"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
-msgstr "Koresponduojančių sąskaitų valdymas"
+msgstr ""
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -3771,12 +3663,12 @@ msgstr ":"
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Balance Sheet"
-msgstr "Balansas"
+msgstr "Bilanţ"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Company:"
-msgstr "Organizacija:"
+msgstr "Companie:"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -3786,47 +3678,47 @@ msgstr "Data:"
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Fiscal Year:"
-msgstr "Fiscal Years"
+msgstr "An Fiscal"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "From Date:"
-msgstr "Pradinė data:"
+msgstr "Din data"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "From Period"
-msgstr "Pradinis periodas"
+msgstr "Perioadă"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Income Statement"
-msgstr "Pelno (nuostolių) ataskaita"
+msgstr "Raport"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Print Date:"
-msgstr "Spausdinimo data:"
+msgstr "Tiparește Data:"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Statement"
-msgstr "Išrašas"
+msgstr "Raport"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "To"
-msgstr "Iki"
+msgstr "La"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "User:"
-msgstr "Naudotojas:"
+msgstr "Utilizator:"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "at"
-msgstr "datai"
+msgstr "la"
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
@@ -3838,15 +3730,15 @@ msgstr "/"
 
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "report:account.aged_balance:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr "Organizacija:"
+msgstr "Companie:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
@@ -3854,45 +3746,43 @@ msgstr "Data:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
-msgstr "Spausdinimo data:"
+msgstr "Tiparește Data:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Total"
-msgstr "Viso"
+msgstr "Total"
 
 msgctxt "report:account.aged_balance:"
 msgid "User:"
-msgstr "Naudotojas:"
+msgstr "Utilizator:"
 
 msgctxt "report:account.aged_balance:"
 msgid "at"
-msgstr "datai"
+msgstr "la"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr "Organizacija:"
+msgstr "Companie:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "report:account.general_ledger:"
 msgid "Date"
@@ -3900,84 +3790,79 @@ msgstr "Data"
 
 msgctxt "report:account.general_ledger:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "report:account.general_ledger:"
 msgid "Descr."
-msgstr "Apraš."
+msgstr "Descr."
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
-msgstr "Fiscal Years"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "From Date:"
-msgstr "Pradinė data:"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
-msgstr "Pradinis periodas"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Denumire"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
-msgstr "Spausdinimo data:"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
-msgstr "Iki"
+msgstr "La"
 
 msgctxt "report:account.general_ledger:"
 msgid "Total"
-msgstr "Viso"
+msgstr "Total"
 
 msgctxt "report:account.general_ledger:"
 msgid "User:"
-msgstr "Naudotojas:"
+msgstr "Utilizator:"
 
 msgctxt "report:account.general_ledger:"
 msgid "at"
-msgstr "datai"
+msgstr "la"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Cont"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr "Organizacija:"
+msgstr "Companie:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
@@ -3985,279 +3870,265 @@ msgstr "Data:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
-msgstr "General Journal"
+msgstr ""
 
 msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
-msgstr "Žurnalo įrašas:"
+msgstr ""
 
 msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
-msgstr "Šaltinis:"
+msgstr "Origine:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Posted"
-msgstr "Įtraukta į apskaitą"
+msgstr "Postat"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
-msgstr "Spausdinimo data:"
+msgstr ""
 
 msgctxt "report:account.move.general_journal:"
 msgid "User:"
-msgstr "Naudotojas:"
+msgstr "Utilizator:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "at"
-msgstr "datai"
+msgstr "la"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Cont"
 
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr "Organizacija:"
+msgstr "Companie:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "report:account.trial_balance:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
-msgstr "Fiscal Years"
+msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "From Date:"
-msgstr "Pradinė data:"
+msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
-msgstr "Pradinis periodas:"
+msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
-msgstr "Spausdinimo data:"
+msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
-msgstr "Pradinis balansas"
+msgstr "Sold Initial"
 
 msgctxt "report:account.trial_balance:"
 msgid "To"
-msgstr "Iki"
+msgstr "La"
 
 msgctxt "report:account.trial_balance:"
 msgid "Total"
-msgstr "Viso"
+msgstr "Total"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
-msgstr "Trial Balance"
+msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "User:"
-msgstr "Naudotojas:"
+msgstr "Utilizator:"
 
 msgctxt "report:account.trial_balance:"
 msgid "at"
-msgstr "datai"
+msgstr "la"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Income"
-msgstr "Pajamos"
+msgstr "Venit"
 
+#, fuzzy
 msgctxt "selection:account.account.type,statement:"
 msgid "Off-Balance"
-msgstr "Nebalansiniai"
+msgstr "In afara Bilantului"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Balance"
-msgstr "Balansas"
+msgstr "Sold"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Income"
-msgstr "Pajamos"
+msgstr "Venit"
 
+#, fuzzy
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Off-Balance"
-msgstr "Nebalansiniai"
+msgstr "In afara Bilantului"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers"
-msgstr "Pirkėjai"
+msgstr "Clienți"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers and Suppliers"
-msgstr "Pirkėjai ir tiekėjai"
+msgstr "Clienți și furnizori"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Suppliers"
-msgstr "Tiekėjai"
+msgstr "Furnizori"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Days"
-msgstr "Dienos"
+msgstr "Zile"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Months"
-msgstr "Mėnesiai"
+msgstr "Luni"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Weeks"
-msgstr ""
+msgstr "Săptămâni"
 
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Years"
+msgstr "Ani"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "Pe Document"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "Pe Rând"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Document"
 msgstr ""
 
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Document"
-msgstr "Dokumentui"
-
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Line"
-msgstr "Eilutei"
-
-msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
-msgid "Per Document"
-msgstr "Dokumentui"
-
 msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
-msgstr "Eilutei"
+msgstr "Pe rând"
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
-msgstr "Close"
+msgstr "Închis"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Locked"
-msgstr "Užrakinta"
+msgstr "Blocat"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
-msgstr "Atvira"
+msgstr "Deschis"
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Monthly"
-msgstr "Mėnesiai"
+msgstr "Lunar"
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Other"
-msgstr "Kita informacija"
+msgstr "Alte"
 
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Quarterly"
-msgstr ""
+msgstr "Trimestrial"
 
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
-msgstr "Įtraukta į apskaitą"
+msgstr "Postat"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Cash"
 msgstr "Cash"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Cheltuiala"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "General"
 msgstr "General"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Venituri"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Situation"
-msgstr "Situation"
+msgstr "Situație"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
-msgstr "Write-Off"
+msgstr "Prescriere"
 
-#, fuzzy
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
-msgstr "Close"
+msgstr "Închis"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
-msgstr "Atviras"
+msgstr "Deschis"
 
 msgctxt "selection:account.move,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt "selection:account.move,state:"
 msgid "Posted"
-msgstr "Įtraukta į apskaitą"
+msgstr "Postat"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Valid"
-msgstr "Galiojanti"
+msgstr "Valabil"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Char"
-msgstr "Tekstas"
+msgstr "Char"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Date"
@@ -4265,198 +4136,196 @@ msgstr "Data"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Numeric"
-msgstr "Skaičius"
+msgstr "Numeric"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
-#, fuzzy
 msgctxt "selection:account.period,state:"
 msgid "Close"
-msgstr "Close"
+msgstr "Închis"
 
 msgctxt "selection:account.period,state:"
 msgid "Locked"
-msgstr "Užrakinta"
+msgstr "Blocat"
 
 msgctxt "selection:account.period,state:"
 msgid "Open"
-msgstr "Atvira"
+msgstr "Deschis"
 
+#, fuzzy
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
-msgstr "Koreguojantis"
+msgstr "Reglare"
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
-msgstr "Standartinis"
+msgstr "Standard"
 
 msgctxt "selection:account.tax,type:"
 msgid "Fixed"
-msgstr "Fiksuotas"
+msgstr "Fix"
 
-#, fuzzy
 msgctxt "selection:account.tax,type:"
 msgid "None"
-msgstr "Pastaba"
+msgstr "Nici unul"
 
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
-msgstr "Procentinis"
+msgstr "Procent"
 
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Base"
-msgstr "Bazė"
+msgstr "Baza"
 
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Tax"
-msgstr "Mokestis"
+msgstr "Impozit"
 
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "+"
 msgstr "+"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "-"
 msgstr "-"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Invoice"
-msgstr "Sąskaita faktūra"
+msgstr "Factura fiscala"
 
 msgctxt "selection:account.tax.code.line.template,amount:"
 msgid "Base"
-msgstr "Bazė"
+msgstr "Baza"
 
 msgctxt "selection:account.tax.code.line.template,amount:"
 msgid "Tax"
-msgstr "Mokestis"
+msgstr "Impozit"
 
 msgctxt "selection:account.tax.code.line.template,operator:"
 msgid "+"
 msgstr "+"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line.template,operator:"
 msgid "-"
 msgstr "-"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Invoice"
-msgstr "Sąskaita faktūra"
+msgstr "Factura fiscala"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr "Fiscal Years"
+msgstr ""
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
-msgstr "Pagal periodus"
+msgstr ""
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
-msgstr "Abu"
+msgstr "Ambele"
 
+#, fuzzy
 msgctxt "selection:account.tax.group,kind:"
 msgid "Purchase"
-msgstr "Pirkimas"
+msgstr "Achizitie"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Sale"
-msgstr "Pardavimas"
+msgstr "Vânzare"
 
 msgctxt "selection:account.tax.line,type:"
 msgid "Base"
-msgstr "Bazė"
+msgstr "Baza"
 
 msgctxt "selection:account.tax.line,type:"
 msgid "Tax"
-msgstr "Mokestis"
+msgstr "Impozit"
 
 msgctxt "selection:account.tax.line.template,type:"
 msgid "Base"
-msgstr "Bazė"
+msgstr "Baza"
 
 msgctxt "selection:account.tax.line.template,type:"
 msgid "Tax"
-msgstr "Mokestis"
+msgstr "Impozit"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Both"
-msgstr "Abu"
+msgstr "Ambele"
 
+#, fuzzy
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Purchase"
-msgstr "Pirkimas"
+msgstr "Achizitie"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Sale"
-msgstr "Pardavimas"
+msgstr "Vânzare"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Both"
-msgstr "Abu"
+msgstr "Ambele"
 
+#, fuzzy
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Purchase"
-msgstr "Pirkimas"
+msgstr "Achizitie"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Sale"
-msgstr "Pardavimas"
+msgstr "Vânzare"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
-msgstr "Fiksuotas"
+msgstr "Fix"
 
-#, fuzzy
 msgctxt "selection:account.tax.template,type:"
 msgid "None"
-msgstr "Pastaba"
+msgstr "Nici unul"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
-msgstr "Procentinis"
+msgstr "Procent"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"
-msgstr "Palyginimas"
+msgstr "Comparație"
 
 msgctxt "view:account.account:"
 msgid "Children"
-msgstr "Dukterinės"
+msgstr "Copii"
 
 msgctxt "view:account.account:"
 msgid "General Information"
-msgstr "Pagrindinė informacija"
+msgstr ""
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr "Sąlygos"
+msgstr "Termene"
 
 msgctxt "view:account.configuration:"
 msgid "Invoice"
-msgstr "Sąskaita faktūra"
+msgstr "Factura fiscala"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Move"
-msgstr "Operacija"
+msgstr "Mișcare"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "view:account.create_chart.start:"
 msgid ""
@@ -4466,254 +4335,241 @@ msgstr ""
 
 msgctxt "view:account.fiscalyear.create_periods.start:"
 msgid "every"
-msgstr ""
+msgstr "fiecare"
 
-#, fuzzy
 msgctxt "view:account.fiscalyear.create_periods.start:"
 msgid "months"
-msgstr "Mėnesiai"
+msgstr "luni"
 
-#, fuzzy
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr "Periods"
+msgstr "Perioade"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
-msgstr "Numeruotės"
+msgstr "Secvenţe"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Start Balance"
-msgstr "Pradinis balansas"
+msgstr "Sold Initial"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Close"
-msgstr "Close"
+msgstr "Închidere"
 
-#, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Re-Deschide"
 
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Credit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.move.template:"
 msgid "Template"
-msgstr "Templates"
+msgstr "Șablon"
 
-#, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax.template:"
 msgid "General Information"
-msgstr "Pagrindinė informacija"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.tax:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "General Information"
-msgstr "Pagrindinė informacija"
+msgstr ""
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
-msgstr ""
+msgstr "Planul de Conturi a fost actualizat cu success."
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Cont"
 
 msgctxt "view:party.party:"
 msgid "Accounting"
-msgstr "Apskaita"
+msgstr "Contabilitate"
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr "Impozite"
 
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
-msgstr "Sukurti"
+msgstr "Creare"
 
 msgctxt "wizard_button:account.create_chart,account,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.create_chart,properties,create_properties:"
 msgid "Create"
-msgstr "Sukurti"
+msgstr "Creare"
 
 msgctxt "wizard_button:account.create_chart,properties,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.create_chart,start,account:"
 msgid "OK"
-msgstr "Gerai"
+msgstr "OK"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
 msgid "OK"
-msgstr "Gerai"
+msgstr "OK"
 
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
-#, fuzzy
 msgctxt ""
 "wizard_button:account.fiscalyear.create_periods,start,create_periods:"
 msgid "Create"
-msgstr "Sukurti"
+msgstr "Creare"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
 msgid "Create"
-msgstr "Sukurti"
+msgstr "Creare"
 
 msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.cancel,default,cancel:"
 msgid "OK"
-msgstr "Gerai"
+msgstr "OK"
 
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
-msgstr "Grupuoti"
+msgstr "Grup"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
-msgstr "Atverti"
+msgstr "Deschidere"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
-msgstr "Sudengti"
+msgstr "Reconciliere"
 
 msgctxt "wizard_button:account.move.template.create,keywords,create_:"
 msgid "Create"
-msgstr "Sukurti"
+msgstr "Creare"
 
 msgctxt "wizard_button:account.move.template.create,keywords,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.template.create,template,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
-msgstr "Kitas"
+msgstr "Următorul"
 
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Atverti"
+msgstr "Deschidere"
 
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.reconcile,show,next_:"
 msgid "Skip"
-msgstr "Praleisti"
+msgstr "Sare Peste"
 
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
-msgstr "Sudengti"
+msgstr "Reconciliere"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
-msgstr "Atverti"
+msgstr "Deschidere"
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"
-msgstr "Close"
+msgstr "Închidere"
 
 msgctxt "wizard_button:account.update_chart,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.update_chart,start,update:"
 msgid "Update"
-msgstr "Atnaujinti"
+msgstr "Actualizare"
 
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
-msgstr "Gerai"
+msgstr "OK"

@@ -363,6 +363,10 @@ msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtuste arv"
 
+msgctxt "field:account.account.type,debt:"
+msgid "Debt"
+msgstr ""
+
 msgctxt "field:account.account.type,expense:"
 msgid "Expense"
 msgstr "Kulu"
@@ -410,6 +414,10 @@ msgstr "Varad"
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
 msgstr "Alamjaotus"
+
+msgctxt "field:account.account.type.template,debt:"
+msgid "Debt"
+msgstr ""
 
 msgctxt "field:account.account.type.template,expense:"
 msgid "Expense"
@@ -562,6 +570,11 @@ msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "Hankija maksu reegel"
 
+#, fuzzy
+msgctxt "field:account.configuration,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Saldeeri read"
+
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
 msgstr "Maksu ümardus"
@@ -595,6 +608,16 @@ msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "Hankija maksu reegel"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Saldeeri read"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
@@ -817,6 +840,11 @@ msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
 msgstr "Alates kuupäevast"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
 msgstr "Postitatud kanne"
@@ -913,6 +941,11 @@ msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "Konto"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account_party:"
+msgid "Account Party"
+msgstr "Võlgade konto"
+
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
 msgstr "Saldo"
@@ -946,6 +979,11 @@ msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
 msgstr "Kulum"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,internal_balance:"
+msgid "Internal Balance"
+msgstr "Proovibilanss"
+
 msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Kanne"
@@ -966,6 +1004,11 @@ msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
 msgstr "Osapool vajalik"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "Kontroll"
+
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
 msgstr "Olek"
@@ -985,6 +1028,11 @@ msgstr "Majandusaasta"
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
 msgstr "Alates kuupäevast"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,journal:"
+msgid "Journal"
+msgstr "Andmik"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
@@ -1194,6 +1242,11 @@ msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "Sekundaarse valuuta väärtus"
 
+#, fuzzy
+msgctxt "field:account.move.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Kreedit"
@@ -1335,22 +1388,6 @@ msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
 msgstr "Periood"
 
-msgctxt "field:account.move.print_general_journal.start,company:"
-msgid "Company"
-msgstr "Ettevõte"
-
-msgctxt "field:account.move.print_general_journal.start,from_date:"
-msgid "From Date"
-msgstr "Alates"
-
-msgctxt "field:account.move.print_general_journal.start,posted:"
-msgid "Posted Move"
-msgstr "Postitatud kanne"
-
-msgctxt "field:account.move.print_general_journal.start,to_date:"
-msgid "To Date"
-msgstr "Kuni"
-
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -1394,6 +1431,11 @@ msgstr "Selgitus"
 msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
 msgstr "Maha kandmine"
+
+#, fuzzy
+msgctxt "field:account.move.reconciliation,company:"
+msgid "Company"
+msgstr "Ettevõte"
 
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
@@ -1522,6 +1564,11 @@ msgstr "Konto"
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
 msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,company:"
+msgid "Company"
+msgstr "Ettevõte"
 
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
@@ -2187,9 +2234,17 @@ msgctxt "help:account.account.template,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
 msgstr "Luba selle konto kande ridu saldeerida."
 
+msgctxt "help:account.account.type,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
 msgstr "Märgista et kirjutada üle vormi määratlus"
+
+msgctxt "help:account.account.type.template,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:account.aged_balance.context,posted:"
@@ -2233,8 +2288,18 @@ msgid "If checked, new sequences will be created."
 msgstr "Kui märgistatud, luuakse uued jadad."
 
 #, fuzzy
+msgctxt "help:account.general_ledger.account.context,journal:"
+msgid "Only included moves from the journal."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Only included posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,journal:"
+msgid "Only included moves from the journal."
 msgstr "Näita ainult postitatud kannet"
 
 #, fuzzy
@@ -2282,11 +2347,6 @@ msgstr ""
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
 msgstr "'Osapool' võtmesõna nimetus."
-
-#, fuzzy
-msgctxt "help:account.move.print_general_journal.start,posted:"
-msgid "Only include posted moves."
-msgstr "Näita ainult postitatud kannet"
 
 #, fuzzy
 msgctxt "help:account.move.reconciliation,date:"
@@ -2460,6 +2520,11 @@ msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Konto seadistus vaikimisi konto"
 
+#, fuzzy
+msgctxt "model:account.configuration.sequence,name:"
+msgid "Account Configuration Sequence"
+msgstr "Konto seadistus"
+
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
 msgstr "Konto seadistus maksu ümardus"
@@ -2573,10 +2638,6 @@ msgstr "Konto kande rea vorm"
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
 msgstr "Ava andmik - küsi"
-
-msgctxt "model:account.move.print_general_journal.start,name:"
-msgid "Print General Journal"
-msgstr "Prindi Pearaamat"
 
 msgctxt "model:account.move.reconcile.write_off,name:"
 msgid "Reconcile Write Off"
@@ -2710,9 +2771,10 @@ msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
 msgstr "Kontod"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_template_tree"
-msgid "Account Templates"
-msgstr "Konto mallid"
+msgid "Accounts"
+msgstr "Kontod"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
@@ -2726,9 +2788,10 @@ msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
 msgstr "Kontotüübid"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
-msgid "Account Type Templates"
-msgstr "Konto tüübi mallid"
+msgid "Types"
+msgstr "Tüüp"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
@@ -2750,9 +2813,10 @@ msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
 msgstr "Ava maksu koodide loend"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_configuration_form"
-msgid "Account Configuration"
-msgstr "Konto seadistus"
+msgid "Configuration"
+msgstr "Seadistus"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_create_periods"
@@ -2775,6 +2839,11 @@ msgstr "Pearaamat - kontod"
 msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
 msgid "General Ledger - Account Parties"
 msgstr "Pearaamat - kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
+msgid "Accounts"
+msgstr "Kontod"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
@@ -2838,9 +2907,10 @@ msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
 msgstr "Koosta kanne vormilt"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_template_form"
-msgid "Account Move Template"
-msgstr "Konto kande vorm"
+msgid "Moves"
+msgstr "Kanne"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
@@ -2886,25 +2956,29 @@ msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Loo uus majandusaasta"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
-msgid "Tax Codes"
-msgstr "Maksu kood"
+msgid "Codes"
+msgstr "Kood"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
-msgid "Tax Codes Templates"
-msgstr "Maksu koodi vorm"
-
-msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
 msgstr "Maksu kood"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Codes"
+msgstr "Kood"
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
 msgstr "Maksu kood"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
-msgid "Tax Groups"
-msgstr "Maksu grupid"
+msgid "Groups"
+msgstr "Grupp"
 
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
@@ -2918,17 +2992,24 @@ msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
 msgstr "Maksu reeglid"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
-msgid "Tax Rule Templates"
-msgstr "Maksu reegli vormid"
+msgid "Rules"
+msgstr "Reegel"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
-msgid "Taxes Templates"
-msgstr "Maksu vormid"
+msgid "Taxes"
+msgstr "Maksud"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
 msgstr "De-saldeeri read"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_account_type_statement"
+msgid "Statement"
+msgstr "Aruanne"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
@@ -2949,10 +3030,6 @@ msgstr "Proovibilanss"
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
 msgstr "Koosta kontoplaan vormi pealt"
-
-msgctxt "model:ir.action,name:wizard_print_general_journal"
-msgid "Print General Journal"
-msgstr "Pringi peamine andmik"
 
 msgctxt "model:ir.action,name:wizard_tax_test"
 msgid "Test Tax"
@@ -3034,6 +3111,12 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr "Perioodi \"%(periood)ide\" sulgemiseks tuleb postitada kõik kanded."
+
+msgctxt "model:ir.message,text:msg_company_change_currency"
+msgid ""
+"You cannot change the currency of a company which is associated with account"
+" moves."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
@@ -3361,53 +3444,80 @@ msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
 msgstr "Ava uuesti"
 
-msgctxt "model:ir.rule.group,name:rule_group_account"
-msgid "User in company"
-msgstr "Kasutaja ettevõttes"
-
-msgctxt "model:ir.rule.group,name:rule_group_account_type"
-msgid "User in company"
-msgstr "Kasutaja ettevõttes"
-
-msgctxt "model:ir.rule.group,name:rule_group_aged_balance"
-msgid "User in company"
-msgstr "Kasutaja ettevõttes"
-
-msgctxt "model:ir.rule.group,name:rule_group_fiscalyear"
-msgid "User in company"
-msgstr "Kasutaja ettevõttes"
-
-msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_period"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_tax"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_tax_code"
-msgid "User in company"
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_tax_code_line"
-msgid "User in code's company"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
 
-msgctxt "model:ir.rule.group,name:rule_group_tax_rule"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
@@ -3445,9 +3555,10 @@ msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
 msgstr "Kontod"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
-msgid "Account Templates"
-msgstr "Konto mallid"
+msgid "Accounts"
+msgstr "Kontod"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
@@ -3457,9 +3568,10 @@ msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr "Kontotüübid"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
-msgid "Account Type Templates"
-msgstr "Konto tüübi mallid"
+msgid "Types"
+msgstr "Tüüp"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
@@ -3545,9 +3657,10 @@ msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
 msgstr "Koosta kanne mallist"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
-msgid "Account Move Template"
-msgstr "Konto tüübi mall"
+msgid "Moves"
+msgstr "Kanne"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
@@ -3569,10 +3682,6 @@ msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
 msgstr "Perioodid"
 
-msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
-msgid "Print General Journal"
-msgstr "Prindi peamine andmik"
-
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
 msgstr "Töötluses"
@@ -3593,21 +3702,25 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Aruandlus"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
-msgid "Tax Codes"
-msgstr "Maksu koodid"
+msgid "Codes"
+msgstr "Kood"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
-msgid "Tax Codes Templates"
-msgstr "Maksu koodide mall"
-
-msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Maksu koodid"
+msgstr "Maksu kood"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Codes"
+msgstr "Kood"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
-msgid "Tax Groups"
-msgstr "Maksu grupid"
+msgid "Groups"
+msgstr "Grupp"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
@@ -3617,13 +3730,15 @@ msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
 msgstr "Maksu reeglid"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
-msgid "Tax Rule Templates"
-msgstr "Maksu reegli mallid"
+msgid "Rules"
+msgstr "Reegel"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
-msgid "Taxes Templates"
-msgstr "Maksude mallid"
+msgid "Taxes"
+msgstr "Maksud"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_test"
 msgid "Test Tax"
@@ -3641,9 +3756,10 @@ msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Uuenda kontoplaani mallist"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
-msgid "Account Configuration"
-msgstr "Konto seadistus"
+msgid "Configuration"
+msgstr "Seadistus"
 
 msgctxt "model:party.party.account,name:"
 msgid "Party Account"
@@ -3656,6 +3772,76 @@ msgstr "Konto"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Konto administreerimine"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Balance Sheet"
+msgstr "Bilanss"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Fiscal Year:"
+msgstr "Majandusaasta:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Date:"
+msgstr "Kuupäevast:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Period"
+msgstr "Perioodist"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Income Statement"
+msgstr "Kasumiaruanne"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Print Date:"
+msgstr "Printimise kuupäev:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Statement"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "To"
+msgstr "Kuni"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "at"
+msgstr "@"
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
@@ -3810,16 +3996,8 @@ msgid "Debit"
 msgstr "Deebet"
 
 msgctxt "report:account.move.general_journal:"
-msgid "Description"
-msgstr "Selgitus"
-
-msgctxt "report:account.move.general_journal:"
 msgid "Draft"
 msgstr "Mustand"
-
-msgctxt "report:account.move.general_journal:"
-msgid "From Date:"
-msgstr "Alates kuupäevast:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
@@ -3840,10 +4018,6 @@ msgstr "Postitatud"
 msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Prindi kuupäev:"
-
-msgctxt "report:account.move.general_journal:"
-msgid "To Date:"
-msgstr "Kuni kuupäevani:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "User:"
@@ -3961,6 +4135,14 @@ msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Months"
 msgstr "Kuud"
 
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Weeks"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Years"
+msgstr ""
+
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Document"
 msgstr "Dokumendi kohta"
@@ -4048,14 +4230,6 @@ msgid "Draft"
 msgstr "Mustand"
 
 msgctxt "selection:account.move,state:"
-msgid "Posted"
-msgstr "Postitatud"
-
-msgctxt "selection:account.move.line,move_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
 msgstr "Postitatud"
 
@@ -4263,6 +4437,11 @@ msgctxt "view:account.configuration:"
 msgid "Invoice"
 msgstr "Arve"
 
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Move"
+msgstr "Kanne"
+
 msgctxt "view:account.configuration:"
 msgid "Party"
 msgstr "Osapool"
@@ -4448,14 +4627,6 @@ msgstr "Tühista"
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
 msgstr "Ava"
-
-msgctxt "wizard_button:account.move.print_general_journal,start,end:"
-msgid "Cancel"
-msgstr "Tühista"
-
-msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
-msgid "Print"
-msgstr "Prindi"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
