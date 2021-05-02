@@ -4,175 +4,167 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
-msgstr "Pristatymas"
+msgstr "Livrare"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
-msgstr "Pristatymas"
+msgstr "Livrare"
 
 msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
-msgstr "Pirkėjo vieta"
+msgstr "Locaţia Client"
 
 msgctxt "field:party.party,locations:"
 msgid "Locations"
-msgstr "Vietos"
+msgstr "Locaţii"
 
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
-msgstr "Tiekėjo vieta"
+msgstr "Locaţia Furnizor"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
-msgstr "Pirkėjo vieta"
+msgstr "Locaţia Client"
 
 msgctxt "field:party.party.location,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Parte"
 
 msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
-msgstr "Tiekėjo vieta"
+msgstr "Locaţia Furnizor"
 
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
-msgstr "Data"
+msgstr "La Data"
 
 msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr "Data"
+msgstr "La Data"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,cost_price:"
 msgid "New Cost Price"
-msgstr "Savikaina"
+msgstr "Preţ de Cost Nou"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,date:"
 msgid "Date"
 msgstr "Data"
 
 msgctxt "field:product.cost_price.revision,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Varianta"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,template:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:product.modify_cost_price.start,cost_price:"
 msgid "New Cost Price"
-msgstr "Savikaina"
+msgstr "Preţ de Cost Nou"
 
-#, fuzzy
 msgctxt "field:product.modify_cost_price.start,date:"
 msgid "Date"
 msgstr "Data"
 
 msgctxt "field:product.product,cost_value:"
 msgid "Cost Value"
-msgstr "Bendra savikaina"
+msgstr "Valoare Cost"
 
 msgctxt "field:product.product,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Prognozuojamas kiekis"
+msgstr "Prognoza Cantitate"
 
 msgctxt "field:product.product,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:product.recompute_cost_price.start,from_:"
 msgid "From"
-msgstr ""
+msgstr "De la"
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
-msgstr "Bendra savikaina"
+msgstr "Valoare Cost"
 
 msgctxt "field:product.template,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Prognozuojamas kiekis"
+msgstr "Prognoza Cantitate"
 
 msgctxt "field:product.template,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
-#, fuzzy
 msgctxt "field:res.user,warehouse:"
 msgid "Current Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit Curent"
 
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
-msgstr "Inventorizacijos numeruotė"
+msgstr "Secvenţa Inventar"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Grąžinimų tiekėjui numeruotė"
+msgstr "Secvența Retur Expediere Furnizor"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Tiekėjo siuntimų numeruotė"
+msgstr "Secvența Expediere Furnizor"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Vidinių siuntimų numeruotė"
+msgstr "Secvența Transport Intern"
 
 msgctxt "field:stock.configuration,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
-msgstr "Vidinio siuntimo tranzitas"
+msgstr "Transport Intern Tranzit"
 
 msgctxt "field:stock.configuration,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Gražinimų iš pirkėjų numeruotė"
+msgstr "Secvența Retur Transport Client"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Siuntimų pirkėjui numeruotė"
+msgstr "Secvența Transport Client"
 
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
-msgstr "Vidinio siuntimo tranzitas"
+msgstr "Transport Intern Tranzit"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.configuration.sequence,inventory_sequence:"
 msgid "Inventory Sequence"
-msgstr "Inventorizacijos numeruotė"
+msgstr "Secvenţa Inventar"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Grąžinimų tiekėjui numeruotė"
+msgstr "Secvența Retur Transport Furnizor"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Tiekėjo siuntimų numeruotė"
+msgstr "Secvența Transport Furnizor"
 
 msgctxt "field:stock.configuration.sequence,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Vidinių siuntimų numeruotė"
+msgstr "Secvența Transport Intern"
 
 msgctxt "field:stock.configuration.sequence,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Gražinimų iš pirkėjų numeruotė"
+msgstr "Secvența Retur Transport Client"
 
 msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Siuntimų pirkėjui numeruotė"
+msgstr "Secvența Transport Client"
 
 msgctxt "field:stock.inventory,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
@@ -180,312 +172,300 @@ msgstr "Data"
 
 msgctxt "field:stock.inventory,empty_quantity:"
 msgid "Empty Quantity"
-msgstr "Tušti kiekiai"
+msgstr "Cantitate Goală"
 
 msgctxt "field:stock.inventory,lines:"
 msgid "Lines"
-msgstr "Eilutės"
+msgstr "Rânduri"
 
 msgctxt "field:stock.inventory,location:"
 msgid "Location"
-msgstr "Vietos"
+msgstr "Locație"
 
 msgctxt "field:stock.inventory,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.inventory,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.inventory.count.quantity,line:"
 msgid "Line"
-msgstr "Eilutė"
+msgstr "Rând"
 
 msgctxt "field:stock.inventory.count.quantity,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:stock.inventory.count.quantity,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.inventory.count.quantity,total_quantity:"
 msgid "Total Quantity"
-msgstr "Bendras kiekis"
+msgstr "Cantitate Totală"
 
 msgctxt "field:stock.inventory.count.quantity,unit_digits:"
 msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Zecimale Unitate"
 
 msgctxt "field:stock.inventory.count.quantity,uom:"
 msgid "UOM"
-msgstr "Mato vienetas"
+msgstr "UM"
 
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
-msgstr "Ieškoti"
+msgstr "Căutare"
 
 msgctxt "field:stock.inventory.count.search,search_model:"
 msgid "Search Model"
-msgstr "Paieškos modelis"
+msgstr "Căutare Model"
 
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
-msgstr "Laukiamas kiekis"
+msgstr "Cantitate Așteptată"
 
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
-msgstr "Inventorizacija"
+msgstr "Inventar"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,inventory_date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,inventory_location:"
 msgid "Location"
-msgstr "Vietos"
+msgstr "Locație"
 
 msgctxt "field:stock.inventory.line,inventory_state:"
 msgid "Inventory State"
-msgstr "Inventorizacijos būsena"
+msgstr "Stare Inventar"
 
 msgctxt "field:stock.inventory.line,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Zecimale Unitate"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
-msgstr "Mato vienetas"
+msgstr "UM"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
-msgstr "Adresas"
+msgstr "Adresa"
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
 msgctxt "field:stock.location,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Cod"
 
 msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
-msgstr "Bendra savikaina"
+msgstr "Valoare Cost"
 
 msgctxt "field:stock.location,flat_childs:"
 msgid "Flat Children"
-msgstr "Plokšti dukteriniai"
+msgstr "Copii Plat"
 
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Prognozuojamas kiekis"
+msgstr "Prognoza Cantitate"
 
 msgctxt "field:stock.location,input_location:"
 msgid "Input"
-msgstr "Priėmimas"
+msgstr "Intrare"
 
 msgctxt "field:stock.location,left:"
 msgid "Left"
-msgstr "Kairė"
+msgstr "Rămas"
 
-#, fuzzy
 msgctxt "field:stock.location,lost_found_location:"
 msgid "Lost and Found"
-msgstr "Prarasta ir rasta"
+msgstr "Pierdut și Găsit"
 
 msgctxt "field:stock.location,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
 msgctxt "field:stock.location,output_location:"
 msgid "Output"
-msgstr "Išdavimas"
+msgstr "Ieșire"
 
 msgctxt "field:stock.location,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Părinte"
 
 msgctxt "field:stock.location,picking_location:"
 msgid "Picking"
-msgstr "Pakavimas"
+msgstr "Picking"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
-#, fuzzy
 msgctxt "field:stock.location,quantity_uom:"
 msgid "Quantity UOM"
-msgstr "Kiekis"
+msgstr "Cantitate UM"
 
-#, fuzzy
 msgctxt "field:stock.location,quantity_uom_digits:"
 msgid "Quantity UOM Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Cantitate UM Zecimale"
 
+#, fuzzy
 msgctxt "field:stock.location,right:"
 msgid "Right"
-msgstr "Dešinė"
+msgstr "Corect"
 
 msgctxt "field:stock.location,storage_location:"
 msgid "Storage"
-msgstr "Saugojimas"
+msgstr "Depozitare"
 
 msgctxt "field:stock.location,type:"
 msgid "Location type"
-msgstr "Vietos tipas"
+msgstr "Tip Locație"
 
 msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
-#, fuzzy
 msgctxt "field:stock.location,waste_locations:"
 msgid "Waste Locations"
-msgstr "Tranzito vieta"
+msgstr "Locații Deșeuri"
 
-#, fuzzy
 msgctxt "field:stock.location,waste_warehouses:"
 msgid "Waste Warehouses"
-msgstr "Sandėlys"
+msgstr "Depozit Deșeuri"
 
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
-msgstr "Tiekimo laikas"
+msgstr "Timp Execuție"
 
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
-msgstr "Sandėlys"
+msgstr "Din Depozit"
 
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
-msgstr "Į sandėlį"
+msgstr "Către Depozit"
 
-#, fuzzy
 msgctxt "field:stock.location.waste,location:"
 msgid "Waste Location"
-msgstr "Tranzito vieta"
+msgstr "Locație Deșeuri"
 
-#, fuzzy
 msgctxt "field:stock.location.waste,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
-msgstr "Būtinas priskyrimas"
+msgstr "Atribuire Obligatorie"
 
 msgctxt "field:stock.move,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
-msgstr "Savikaina"
+msgstr "Cost"
 
-#, fuzzy
 msgctxt "field:stock.move,cost_price_required:"
 msgid "Cost Price Required"
-msgstr "Būtina vieneto kaina"
+msgstr "Cost Obligatoriu"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr "Din locație"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Vidinis kiekis"
+msgstr "Cantitate Internă"
 
 msgctxt "field:stock.move,origin:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.move,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "field:stock.move,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Prekės mato vieneto kategorija"
+msgstr "Categorie UM Produs"
 
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
-msgstr "Transportavimas"
+msgstr "Expediere"
 
 msgctxt "field:stock.move,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.move,to_location:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr "Spre Locație"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Zecimale Unitate"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
-msgstr "Kaina"
+msgstr "Preț unitar"
 
-#, fuzzy
 msgctxt "field:stock.move,unit_price_company:"
 msgid "Unit Price"
-msgstr "Kaina"
+msgstr "Preț unitar"
 
 msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
-msgstr "Būtina vieneto kaina"
+msgstr "Preț Unitar Obligatoriu"
 
-#, fuzzy
 msgctxt "field:stock.move,unit_price_updated:"
 msgid "Unit Price Updated"
-msgstr "Kaina"
+msgstr "Preț Unitar Actualizat"
 
 msgctxt "field:stock.move,uom:"
 msgid "Uom"
-msgstr "Mato vienetas"
+msgstr "Um"
 
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
-msgstr "Išsaugotos vertės"
+msgstr ""
 
 msgctxt "field:stock.period,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.period,date:"
 msgid "Date"
@@ -493,667 +473,630 @@ msgstr "Data"
 
 msgctxt "field:stock.period,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.period.cache,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Vidinis kiekis"
+msgstr "Cantitate Internă"
 
 msgctxt "field:stock.period.cache,location:"
 msgid "Location"
-msgstr "Vietos"
+msgstr "Locație"
 
 msgctxt "field:stock.period.cache,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
 msgctxt "field:stock.period.cache,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
-#, fuzzy
 msgctxt ""
 "field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
 msgid "Only storage zone"
-msgstr "Saugojimo zona"
+msgstr "Zonă exclusiv pentru depozitare"
 
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt ""
 "field:stock.product_quantities_warehouse.move,cumulative_quantity_delta:"
 msgid "Cumulative Quantity Delta"
-msgstr ""
+msgstr "Diferență Cumulată Cantitativă"
 
 msgctxt ""
 "field:stock.product_quantities_warehouse.move,cumulative_quantity_end:"
 msgid "Cumulative Quantity End"
-msgstr ""
+msgstr "Cantitate Cumulată Sfârșit"
 
 msgctxt ""
 "field:stock.product_quantities_warehouse.move,cumulative_quantity_start:"
 msgid "Cumulative Quantity Start"
-msgstr ""
+msgstr "Cantitate Cumulată Început"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,date:"
 msgid "Date"
 msgstr "Data"
 
 msgctxt "field:stock.product_quantities_warehouse.move,document:"
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,move:"
 msgid "Move"
-msgstr "Operacijos"
+msgstr "Mișcare"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,origin:"
 msgid "Origin"
-msgstr "Šaltinis"
+msgstr "Origine"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.products_by_locations,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Consumabil"
 
-#, fuzzy
 msgctxt "field:stock.products_by_locations,cost_value:"
 msgid "Cost Value"
-msgstr "Bendra savikaina"
+msgstr "Valoare Cost"
 
 msgctxt "field:stock.products_by_locations,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "UM Implicită"
 
 msgctxt "field:stock.products_by_locations,default_uom_digits:"
 msgid "Default UOM Digits"
-msgstr ""
+msgstr "Zecimale Implicite UM"
 
-#, fuzzy
 msgctxt "field:stock.products_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Prognozuojamas kiekis"
+msgstr "Prognoza Cantitate"
 
-#, fuzzy
 msgctxt "field:stock.products_by_locations,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 #, fuzzy
 msgctxt "field:stock.products_by_locations,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
-msgstr "Data"
+msgstr "La Data"
 
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
-msgstr "Data"
+msgstr "La Data"
 
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
 msgctxt "field:stock.reporting.margin.category,time_series:"
 msgid "Time Series"
-msgstr ""
+msgstr "Seria de timp"
 
 msgctxt "field:stock.reporting.margin.category.time_series,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.time_series,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.time_series,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.tree,children:"
 msgid "Children"
-msgstr "Dukteriniai"
+msgstr "Copii"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.tree,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Denumire"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.tree,parent:"
 msgid "Parent"
-msgstr "Motininis"
+msgstr "Părinte"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,from_date:"
 msgid "From Date"
-msgstr "Išsiuntimo vieta"
+msgstr "Din data"
 
 msgctxt "field:stock.reporting.margin.context,include_lost:"
 msgid "Include Lost"
-msgstr ""
+msgstr "Include Pierdute"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,period:"
 msgid "Period"
-msgstr "Periodas"
+msgstr "Perioadă"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,to_date:"
 msgid "To Date"
-msgstr "Data"
+msgstr "Până la Data"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Vidinis kiekis"
+msgstr "Cantitate Internă"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.reporting.margin.product,time_series:"
 msgid "Time Series"
-msgstr ""
+msgstr "Seria de timp"
 
 msgctxt "field:stock.reporting.margin.product,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,unit_digits:"
 msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Zecimale Unitate"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Valută"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Vidinis kiekis"
+msgstr "Cantitate Internă"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,quantity:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "field:stock.reporting.margin.product.time_series,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,unit_digits:"
 msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+msgstr "Cifre de unitate"
 
-#, fuzzy
 msgctxt "field:stock.shipment.assign.partial,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcări"
 
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
-msgstr "Kontaktinis adresas"
+msgstr "Adresa de Contact"
 
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
-msgstr "Įvykdęs naudotojas"
+msgstr "Făcut De"
 
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
-msgstr "Gavimo operacijos"
+msgstr "Mișcări Intrare"
 
 msgctxt "field:stock.shipment.in,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Inventorizacijos operacijos"
+msgstr "Mișcări Inventar"
 
 msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.shipment.in,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
-msgstr "Šaltiniai"
+msgstr "Origine"
 
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
-msgstr "Priėmęs naudotojas"
+msgstr "Primit De"
 
 msgctxt "field:stock.shipment.in,reference:"
 msgid "Reference"
-msgstr "Nuoroda"
+msgstr "Referinţă"
 
 msgctxt "field:stock.shipment.in,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.shipment.in,supplier:"
 msgid "Supplier"
-msgstr "Tiekėjas"
+msgstr "Furnizor"
 
 msgctxt "field:stock.shipment.in,supplier_location:"
 msgid "Supplier Location"
-msgstr "Tiekėjo vieta"
+msgstr "Locaţia Furnizor"
 
 msgctxt "field:stock.shipment.in,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
 msgctxt "field:stock.shipment.in,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Sandėlio priėmimo vieta"
+msgstr "Intrare Depozit"
 
 msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Sandėlio saugojimo vieta"
+msgstr "Depozit Depozitare"
 
 msgctxt "field:stock.shipment.in.return,assigned_by:"
 msgid "Assigned By"
-msgstr "Priskirta"
+msgstr "Atribuit De"
 
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
-msgstr "Siuntimo adresas"
+msgstr "Adresa de Livrare"
 
 msgctxt "field:stock.shipment.in.return,done_by:"
 msgid "Done By"
-msgstr "Įvykdęs naudotojas"
+msgstr "Făcut De"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr "Din locație"
 
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.shipment.in.return,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.shipment.in.return,origins:"
 msgid "Origins"
-msgstr "Šaltiniai"
+msgstr "Origine"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in.return,partially_assigned:"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
-msgstr "Nuoroda"
+msgstr "Referinţă"
 
 msgctxt "field:stock.shipment.in.return,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.shipment.in.return,supplier:"
 msgid "Supplier"
-msgstr "Tiekėjas"
+msgstr "Furnizor"
 
 msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr "Spre Locație"
 
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
-msgstr "Priėmęs naudotojas"
+msgstr "Primit De"
 
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
-msgstr "Įvykdęs naudotojas"
+msgstr "Făcut De"
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.shipment.internal,effective_start_date:"
 msgid "Effective Start Date"
-msgstr "Faktinė pradžios data"
+msgstr "Data de Pornire Efectivă"
 
 msgctxt "field:stock.shipment.internal,from_location:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr "Din locație"
 
 msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
-msgstr "Gavimo operacijos"
+msgstr "Mișcări Intrare"
 
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.shipment.internal,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.shipment.internal,outgoing_moves:"
 msgid "Outgoing Moves"
-msgstr "Išsiuntimo operacijos"
+msgstr "Mișcări Ieșire"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,partially_assigned:"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
 msgctxt "field:stock.shipment.internal,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
-msgstr "Planuojama pradžios data"
+msgstr "Data de Pornire Planificată"
 
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
-msgstr "Nuoroda"
+msgstr "Referinţă"
 
 msgctxt "field:stock.shipment.internal,shipped_by:"
 msgid "Shipped By"
-msgstr "Išsiuntęs naudotojas"
+msgstr "Expediat De"
 
 msgctxt "field:stock.shipment.internal,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr "Spre Locație"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
-msgstr "Tranzito vieta"
+msgstr "Locaţie Tranzit"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
-msgstr "Pirkėjas"
+msgstr "Client"
 
 msgctxt "field:stock.shipment.out,customer_location:"
 msgid "Customer Location"
-msgstr "Pirkėjo vieta"
+msgstr "Locaţia Client"
 
 msgctxt "field:stock.shipment.out,delivery_address:"
 msgid "Delivery Address"
-msgstr "Siuntimo adresas"
+msgstr "Adresa de Livrare"
 
 msgctxt "field:stock.shipment.out,done_by:"
 msgid "Done By"
-msgstr "Įvykdęs naudotojas"
+msgstr "Făcut De"
 
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Inventorizacijos operacijos"
+msgstr "Mișcări Inventar"
 
 msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.shipment.out,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.shipment.out,origins:"
 msgid "Origins"
-msgstr "Šaltiniai"
+msgstr "Origine"
 
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
-msgstr "Išsiuntimo operacijos"
+msgstr "Mișcări Ieșire"
 
 msgctxt "field:stock.shipment.out,packed_by:"
 msgid "Packed By"
-msgstr "Supakavęs naudotojas"
+msgstr "Ambalat De"
 
-#, fuzzy
 msgctxt "field:stock.shipment.out,partially_assigned:"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
-#, fuzzy
 msgctxt "field:stock.shipment.out,picked_by:"
 msgid "Picked By"
-msgstr "Supakavęs naudotojas"
+msgstr "Colectat De"
 
 msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
-msgstr "Nuoroda"
+msgstr "Referinţă"
 
 msgctxt "field:stock.shipment.out,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.shipment.out,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
 msgctxt "field:stock.shipment.out,warehouse_output:"
 msgid "Warehouse Output"
-msgstr "Sandėlio išdavimo vieta"
+msgstr "Ieşire Depozit"
 
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Sandėlio saugojimo vieta"
+msgstr "Depozit Depozitare"
 
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
-msgstr "Pirkėjas"
+msgstr "Client"
 
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
-msgstr "Pirkėjo vieta"
+msgstr "Locaţia Client"
 
 msgctxt "field:stock.shipment.out.return,delivery_address:"
 msgid "Delivery Address"
-msgstr "Siuntimo adresas"
+msgstr "Adresa de Livrare"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
-msgstr "Įvykdęs naudotojas"
+msgstr "Făcut De"
 
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
-msgstr "Faktinė data"
+msgstr "Data Efectivă"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
-msgstr "Gavimo operacijos"
+msgstr "Mișcări Intrare"
 
 msgctxt "field:stock.shipment.out.return,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Inventorizacijos operacijos"
+msgstr "Mișcări Inventar"
 
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcari"
 
 msgctxt "field:stock.shipment.out.return,number:"
 msgid "Number"
-msgstr "Numeris"
+msgstr "Număr"
 
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
-msgstr "Šaltiniai"
+msgstr "Origine"
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
-msgstr "Planuojama data"
+msgstr "Data Planificată"
 
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
-msgstr "Priėmęs naudotojas"
+msgstr "Primit De"
 
 msgctxt "field:stock.shipment.out.return,reference:"
 msgid "Reference"
-msgstr "Nuoroda"
+msgstr "Referinţă"
 
 msgctxt "field:stock.shipment.out.return,state:"
 msgid "State"
-msgstr "Būsena"
+msgstr "Stare"
 
 msgctxt "field:stock.shipment.out.return,warehouse:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr "Depozit"
 
 msgctxt "field:stock.shipment.out.return,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Sandėlio priėmimo vieta"
+msgstr "Intrare Depozit"
 
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Sandėlio saugojimo vieta"
+msgstr "Depozit Depozitare"
 
 msgctxt "help:party.address,delivery:"
 msgid "Check to send deliveries to the address."
-msgstr ""
+msgstr "Bifaţi pentru a trimite livrări către această adresă."
 
 msgctxt "help:party.contact_mechanism,delivery:"
 msgid "Check to use for delivery."
-msgstr ""
+msgstr "Bifaţi pentru a utiliza pentru livrare."
 
 msgctxt "help:party.party,customer_location:"
 msgid "The default destination location for stock sent to the party."
 msgstr ""
+"Locaţie Implicită ca destinaţie pentru stoc care se trimite către parte."
 
 msgctxt "help:party.party,supplier_location:"
 msgid "The default source location for stock received from the party."
-msgstr ""
+msgstr "Locaţie Implicită ca sursă pentru stoc care se primeşte de la parte."
 
 msgctxt "help:party.party.location,customer_location:"
 msgid "The default destination location for stock sent to the party."
 msgstr ""
+"Locaţie Implicită ca destinaţie pentru stoc care se trimite către parte."
 
 msgctxt "help:party.party.location,supplier_location:"
 msgid "The default source location for stock received from the party."
-msgstr ""
+msgstr "Locaţie Implicită ca sursă pentru stoc care se primeşte de la parte."
 
 msgctxt "help:product.by_location.context,forecast_date:"
 msgid ""
@@ -1161,182 +1104,195 @@ msgid ""
 "* An empty value calculates as far ahead as possible.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Data pentru care cantitatea stocului este calculată.\n"
+"* Nicio dată calculează cât se poate mai departe în viitor.\n"
+"* O dată în trecut arată valori istorice."
 
 msgctxt "help:product.cost_price.revision,cost_price:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- cost_price: the current cost price of the product"
 msgstr ""
+"O expresie python care va fi evaluată cu:\n"
+"-cost_price: costul curent al produsului"
 
 msgctxt "help:product.modify_cost_price.start,cost_price:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- cost_price: the current cost price of the product"
 msgstr ""
+"O expresie python care va fi evaluată cu:\n"
+"-cost_price: costul curent al produsului"
 
 msgctxt "help:product.product,cost_value:"
 msgid "The value of the stock in the location."
-msgstr ""
+msgstr "Valoarea stocului pentru locaţie."
 
 msgctxt "help:product.product,forecast_quantity:"
 msgid "The amount of stock expected to be in the location."
-msgstr ""
+msgstr "Cantitatea de stoc aşteptată la locaţie."
 
 msgctxt "help:product.product,quantity:"
 msgid "The amount of stock in the location."
-msgstr ""
+msgstr "Cantitatea de stoc în locaţie."
 
 msgctxt "help:product.template,cost_value:"
 msgid "The value of the stock in the location."
-msgstr ""
+msgstr "Valoarea stocului pentru locaţie."
 
 msgctxt "help:product.template,forecast_quantity:"
 msgid "The amount of stock expected to be in the location."
-msgstr ""
+msgstr "Cantitatea de stoc aşteptată la locaţie."
 
 msgctxt "help:product.template,quantity:"
 msgid "The amount of stock in the location."
-msgstr ""
+msgstr "Cantitatea de stoc în locaţie."
 
 msgctxt "help:res.user,warehouse:"
 msgid "The warehouse that the user works at."
-msgstr ""
+msgstr "Depozitul la care lucrează utilizatorul."
 
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
-msgstr ""
+msgstr "Utilizat pentru a genera numărul dat la inventare."
 
 msgctxt "help:stock.configuration,shipment_in_return_sequence:"
 msgid "Used to generate the number given to supplier return shipments."
 msgstr ""
+"Utilizat pentru a genera numărul dat la expedieri de retur către furnizor."
 
 msgctxt "help:stock.configuration,shipment_in_sequence:"
 msgid "Used to generate the number given to supplier shipments."
-msgstr ""
+msgstr "Utilizat pentru a genera numărul dat la expedieri de la furnizor."
 
 msgctxt "help:stock.configuration,shipment_internal_sequence:"
 msgid "Used to generate the number given to internal shipments."
-msgstr ""
+msgstr "Utilizat pentru a genera numărul dat la expedieri interne."
 
 msgctxt "help:stock.configuration,shipment_internal_transit:"
 msgid ""
 "The default location used for stock that is in transit between warehouses."
 msgstr ""
+"Locaţia implicită utilizată pentru stoc care este în tranzit între depozite."
 
 msgctxt "help:stock.configuration,shipment_out_return_sequence:"
 msgid "Used to generate the number given to customer return shipments."
 msgstr ""
+"Utilizat pentru a genera numărul dat la expedieri de retur de la client."
 
 msgctxt "help:stock.configuration,shipment_out_sequence:"
 msgid "Used to generate the number given to customer shipments."
-msgstr ""
+msgstr "Utilizat pentru a genera numărul dat la expedieri către client."
 
 msgctxt "help:stock.configuration.location,shipment_internal_transit:"
 msgid ""
 "The default location used for stock that is in transit between warehouses."
 msgstr ""
+"Locaţia implicită utilizată pentru stoc care este în tranzit între depozite."
 
 msgctxt "help:stock.inventory,company:"
 msgid "The company the inventory is associated with."
-msgstr ""
+msgstr "Compania cu care este asociat inventarul."
 
 msgctxt "help:stock.inventory,date:"
 msgid "The date of the stock count."
-msgstr ""
+msgstr "Data la care s-a numărat stocul."
 
 msgctxt "help:stock.inventory,empty_quantity:"
 msgid "How lines without a quantity are handled."
-msgstr ""
+msgstr "Cum se gestionează rânduri fără o cantitate."
 
 msgctxt "help:stock.inventory,location:"
 msgid "The location inventoried."
-msgstr ""
+msgstr "Locaţia a fost inventariată."
 
 msgctxt "help:stock.inventory,number:"
 msgid "The main identifier for the inventory."
-msgstr ""
+msgstr "Identificatorul principal al inventarului."
 
 msgctxt "help:stock.inventory,state:"
 msgid "The current state of the inventory."
-msgstr ""
+msgstr "Starea curentă al inventarului."
 
 msgctxt "help:stock.inventory.count.quantity,quantity:"
 msgid "The quantity to add to the existing count."
-msgstr ""
+msgstr "Cantitatea de adăugat la numărătoarea existentă."
 
 msgctxt "help:stock.inventory.count.quantity,total_quantity:"
 msgid "The total amount of the line counted so far."
-msgstr ""
+msgstr "Suma totală din rândurile numărate până acum."
 
 msgctxt "help:stock.inventory.count.quantity,uom:"
 msgid "The unit in which the quantities are specified."
-msgstr ""
+msgstr "Unitatea în care este specificată cantitatea."
 
 msgctxt "help:stock.inventory.count.search,search:"
 msgid "The item that's counted."
-msgstr ""
+msgstr "Articolul care este numărat."
 
 msgctxt "help:stock.inventory.line,expected_quantity:"
 msgid "The quantity the system calculated should be in the location."
-msgstr ""
+msgstr "Cantitatea calculată de sistem care ar trebui să fie în locaţie."
 
 msgctxt "help:stock.inventory.line,inventory:"
 msgid "The inventory the line belongs to."
-msgstr ""
+msgstr "Inventarul de care aparţine rândul."
 
 msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
-msgstr ""
+msgstr "Cantitatea faptică găsită în locaţie."
 
 msgctxt "help:stock.inventory.line,uom:"
 msgid "The unit in which the quantity is specified."
-msgstr ""
+msgstr "Unitatea în care este exprimată cantitatea."
 
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
-msgstr ""
+msgstr "Utilizat pentru a adăuga structura sub locaţie."
 
 msgctxt "help:stock.location,code:"
 msgid "The internal identifier used for the location."
-msgstr ""
+msgstr "Identificatorul intern utilizat pentru locaţie."
 
 msgctxt "help:stock.location,cost_value:"
 msgid "The value of the stock in the location."
-msgstr ""
+msgstr "Valoarea stocului pentru locaţie."
 
 msgctxt "help:stock.location,flat_childs:"
 msgid "Check to enforce a single level of children with no grandchildren."
-msgstr ""
+msgstr "Bifaţi pentru a impune un sigur nivel de copii fără nepoţi."
 
 msgctxt "help:stock.location,forecast_quantity:"
 msgid "The amount of stock expected to be in the location."
-msgstr ""
+msgstr "Cantitatea de stoc aşteptată la locaţie."
 
 msgctxt "help:stock.location,input_location:"
 msgid "Where incoming stock is received."
-msgstr ""
+msgstr "Unde se recepţionează stocuri primite."
 
 msgctxt "help:stock.location,lost_found_location:"
 msgid "Used, by inventories, when correcting stock levels in the warehouse."
-msgstr ""
+msgstr "Utilizat când se corectează nivelul stocului în depozit."
 
 msgctxt "help:stock.location,output_location:"
 msgid "Where outgoing stock is sent from."
-msgstr ""
+msgstr "De unde se trimite stocul care iese."
 
 msgctxt "help:stock.location,parent:"
 msgid "Used to add structure above the location."
-msgstr ""
+msgstr "Utilizat pentru a adăuga structura deasupra locaţiei."
 
 msgctxt "help:stock.location,picking_location:"
 msgid ""
 "Where stock is picked from.\n"
 "Leave empty to use the storage location."
 msgstr ""
+"De unde este colectat stocul.\n"
+"Lăsaţi gol pentru a utiliza locaţia de stocare."
 
 msgctxt "help:stock.location,quantity:"
 msgid "The amount of stock in the location."
-msgstr ""
+msgstr "Cantitatea de stoc în locaţie."
 
 msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
@@ -1344,88 +1300,88 @@ msgstr ""
 
 msgctxt "help:stock.location,waste_locations:"
 msgid "The locations used for waste products from the warehouse."
-msgstr ""
+msgstr "Locaţiile utilizate pentru produse deşeu de la depozit."
 
 msgctxt "help:stock.location,waste_warehouses:"
 msgid "The warehouses that use the location for waste products."
-msgstr ""
+msgstr "Depozitele care folosesc locaţia pentru deşeuri."
 
 msgctxt "help:stock.location.lead_time,lead_time:"
 msgid "The time it takes to move stock between the warehouses."
-msgstr ""
+msgstr "Timpul necesar pentru a muta stoc între depozite."
 
 msgctxt "help:stock.move,company:"
 msgid "The company the stock move is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată mişcarea de stoc."
 
 msgctxt "help:stock.move,currency:"
 msgid "The currency in which the unit price is specified."
-msgstr "Valiuta, kuria nurodyta vieneto kaina."
+msgstr "Valuta în care este specificat preţul unitar."
 
 msgctxt "help:stock.move,effective_date:"
 msgid "When the stock was actually moved."
-msgstr ""
+msgstr "Când stocul a fost mutat faptic."
 
 msgctxt "help:stock.move,from_location:"
 msgid "Where the stock is moved from."
-msgstr ""
+msgstr "De unde a fost mutat stocul."
 
 msgctxt "help:stock.move,origin:"
 msgid "The source of the stock move."
-msgstr ""
+msgstr "Sursa mişcării de stoc."
 
 msgctxt "help:stock.move,planned_date:"
 msgid "When the stock is expected to be moved."
-msgstr ""
+msgstr "Când se aşteaptă să se mute stocul."
 
 msgctxt "help:stock.move,product:"
 msgid "The product that the move is associated with."
-msgstr ""
+msgstr "Produsul cu care este asociată mişcarea."
 
 msgctxt "help:stock.move,quantity:"
 msgid "The amount of stock moved."
-msgstr ""
+msgstr "Cantitatea de stoc mişcată."
 
 msgctxt "help:stock.move,shipment:"
 msgid "Used to group several stock moves together."
-msgstr ""
+msgstr "Utilizat pentru a grupa mişcări de stoc."
 
 msgctxt "help:stock.move,state:"
 msgid "The current state of the stock move."
-msgstr ""
+msgstr "Starea curentă a mişcării de stoc."
 
 msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
-msgstr ""
+msgstr "Unde este mutat stocul."
 
 msgctxt "help:stock.move,unit_price_company:"
 msgid "Unit price in company currency."
-msgstr ""
+msgstr "Preţul unitar în valuta companiei."
 
 msgctxt "help:stock.move,uom:"
 msgid "The unit in which the quantity is specified."
-msgstr ""
+msgstr "Unitatea în care este exprimată cantitatea."
 
 msgctxt "help:stock.period,company:"
 msgid "The company the stock period is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată perioada de stoc."
 
 msgctxt "help:stock.period,date:"
 msgid "When the stock period ends."
-msgstr ""
+msgstr "Când se termină perioada de stoc."
 
 msgctxt "help:stock.period,state:"
 msgid "The current state of the stock period."
-msgstr ""
+msgstr "Starea curentă a perioadei de stoc."
 
 msgctxt ""
 "help:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
 msgid "Check to use only the quantity of the storage zone."
-msgstr ""
+msgstr "Bifaţi pentru a folosi numai cantitatea zonei de stocare."
 
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
 msgid "The warehouse for which the quantities will be calculated."
-msgstr ""
+msgstr "Depozitul pentru care vor fi calculate cantităţile."
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
@@ -1433,620 +1389,616 @@ msgid ""
 "* An empty value calculates as far ahead as possible.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Data pentru care cantitatea stocului este calculata.\n"
+"* Nicio dată calculează cât se poate mai departe în viitor.\n"
+"* O dată în trecut arată valori istorice."
 
 msgctxt "help:stock.reporting.margin.context,include_lost:"
 msgid ""
 "If checked, the cost of product moved to a lost and found location is "
 "included."
 msgstr ""
+"Dacă este bifat, costul produsului mutat la o locaţie pierdute şi găsite "
+"este inclus."
 
 msgctxt "help:stock.shipment.assign.partial,moves:"
 msgid "The moves that were not assigned."
-msgstr ""
+msgstr "Mişcările care nu au fost atribuite."
 
 msgctxt "help:stock.shipment.in,company:"
 msgid "The company the shipment is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată expedierea."
 
 msgctxt "help:stock.shipment.in,contact_address:"
 msgid "The address at which the supplier can be contacted."
-msgstr ""
+msgstr "Adresa la care poate fi contactat furnizorul."
 
 msgctxt "help:stock.shipment.in,effective_date:"
 msgid "When the stock was actually received."
-msgstr ""
+msgstr "Când stocul a fost recepţionat faptic."
 
 msgctxt "help:stock.shipment.in,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
-msgstr ""
+msgstr "Mişcările care aduc stocul în depozit."
 
 msgctxt "help:stock.shipment.in,inventory_moves:"
 msgid "The moves that put the stock away into the storage area."
-msgstr ""
+msgstr "Mişcările care pun stocul în zonă de stocare."
 
 msgctxt "help:stock.shipment.in,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:stock.shipment.in,planned_date:"
 msgid "When the stock is expected to be received."
-msgstr ""
+msgstr "Când se aşteaptă să sosească stocul."
 
 msgctxt "help:stock.shipment.in,reference:"
 msgid "The supplier's identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul furnizorului pentru expediere."
 
 msgctxt "help:stock.shipment.in,state:"
 msgid "The current state of the shipment."
-msgstr ""
+msgstr "Starea curentă a expedierii."
 
 msgctxt "help:stock.shipment.in,supplier:"
 msgid "The party that supplied the stock."
-msgstr ""
+msgstr "Partea care a furnizat stocul."
 
 msgctxt "help:stock.shipment.in,warehouse:"
 msgid "Where the stock is received."
-msgstr ""
+msgstr "Unde se recepţionează stocul."
 
 msgctxt "help:stock.shipment.in.return,company:"
 msgid "The company the shipment is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată expedierea."
 
 msgctxt "help:stock.shipment.in.return,delivery_address:"
 msgid "Where the stock is sent to."
-msgstr ""
+msgstr "Unde este trimis stocul."
 
 msgctxt "help:stock.shipment.in.return,effective_date:"
 msgid "When the stock was actually returned."
-msgstr ""
+msgstr "Când stocul a fost returnat faptic."
 
 msgctxt "help:stock.shipment.in.return,from_location:"
 msgid "Where the stock is moved from."
-msgstr ""
+msgstr "De unde a fost mutat stocul."
 
 msgctxt "help:stock.shipment.in.return,moves:"
 msgid "The moves that return the stock to the supplier."
-msgstr ""
+msgstr "Mişcarea care returnează stocul la furnizor."
 
 msgctxt "help:stock.shipment.in.return,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:stock.shipment.in.return,planned_date:"
 msgid "When the stock is expected to be returned."
-msgstr ""
+msgstr "Când se aşteaptă sa se returneze stocul."
 
 msgctxt "help:stock.shipment.in.return,reference:"
 msgid "The supplier's identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul furnizorului pentru expediere."
 
 msgctxt "help:stock.shipment.in.return,state:"
 msgid "The current state of the shipment."
-msgstr ""
+msgstr "Starea curentă a expedierii."
 
 msgctxt "help:stock.shipment.in.return,supplier:"
 msgid "The party that supplied the stock."
-msgstr ""
+msgstr "Partea care a furnizat stocul."
 
 msgctxt "help:stock.shipment.in.return,to_location:"
 msgid "Where the stock is moved to."
-msgstr ""
+msgstr "Unde este mutat stocul."
 
 msgctxt "help:stock.shipment.internal,company:"
 msgid "The company the shipment is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată expedierea."
 
 msgctxt "help:stock.shipment.internal,effective_date:"
 msgid "When the shipment was actually completed."
-msgstr ""
+msgstr "Când s-a completat expedierea faptic."
 
 msgctxt "help:stock.shipment.internal,effective_start_date:"
 msgid "When the stock was actually sent."
-msgstr ""
+msgstr "Când stocul a fost trimis faptic."
 
 msgctxt "help:stock.shipment.internal,from_location:"
 msgid "Where the stock is moved from."
-msgstr ""
+msgstr "De unde a fost mutat stocul."
 
 msgctxt "help:stock.shipment.internal,incoming_moves:"
 msgid "The moves that receive the stock in."
-msgstr ""
+msgstr "Mişcările care recepţionez stocul."
 
 msgctxt "help:stock.shipment.internal,moves:"
 msgid "The moves that perform the shipment."
-msgstr ""
+msgstr "Mişcările care fac expedierea."
 
 msgctxt "help:stock.shipment.internal,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:stock.shipment.internal,outgoing_moves:"
 msgid "The moves that send the stock out."
-msgstr ""
+msgstr "Mişcările care trimit stocul."
 
 msgctxt "help:stock.shipment.internal,planned_date:"
 msgid "When the shipment is expected to be completed."
-msgstr ""
+msgstr "Când se aşteaptă să se completeze expediere."
 
 msgctxt "help:stock.shipment.internal,planned_start_date:"
 msgid "When the stock is expected to be sent."
-msgstr ""
+msgstr "Când se aşteaptă să se trimită stocul."
 
 msgctxt "help:stock.shipment.internal,reference:"
 msgid "The external identifiers for the shipment."
-msgstr ""
+msgstr "Identificatori externi ai expedierii."
 
 msgctxt "help:stock.shipment.internal,state:"
 msgid "The current state of the shipment."
-msgstr ""
+msgstr "Starea curentă a expedierii."
 
 msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
-msgstr ""
+msgstr "Unde este mutat stocul."
 
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
-msgstr ""
+msgstr "Unde este stocul când este în tranzit între depozite."
 
 msgctxt "help:stock.shipment.internal,warehouse:"
 msgid "Where the stock is sent from."
-msgstr ""
+msgstr "De unde este trimis stocul."
 
 msgctxt "help:stock.shipment.out,company:"
 msgid "The company the shipment is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată expedierea."
 
 msgctxt "help:stock.shipment.out,customer:"
 msgid "The party that purchased the stock."
-msgstr ""
+msgstr "Partea care a achiziţionat stocul."
 
 msgctxt "help:stock.shipment.out,delivery_address:"
 msgid "Where the stock is sent to."
-msgstr ""
+msgstr "Unde este trimis stocul."
 
 msgctxt "help:stock.shipment.out,effective_date:"
 msgid "When the stock was actually sent."
-msgstr ""
+msgstr "Când stocul a fost trimis faptic."
 
 msgctxt "help:stock.shipment.out,inventory_moves:"
 msgid "The moves that pick the stock from the storage area."
-msgstr ""
+msgstr "Mişcările care iau stocul de la zona de stocare."
 
 msgctxt "help:stock.shipment.out,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:stock.shipment.out,outgoing_moves:"
 msgid "The moves that send the stock to the customer."
-msgstr ""
+msgstr "Mişcările care trimit stocul la client."
 
 msgctxt "help:stock.shipment.out,planned_date:"
 msgid "When the stock is expected to be sent."
-msgstr ""
+msgstr "Când se aşteaptă să se trimită stocul."
 
 msgctxt "help:stock.shipment.out,reference:"
 msgid "The customer's identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul clientului pentru expediere."
 
 msgctxt "help:stock.shipment.out,state:"
 msgid "The current state of the shipment."
-msgstr ""
+msgstr "Starea curentă a expedierii."
 
 msgctxt "help:stock.shipment.out,warehouse:"
 msgid "Where the stock is sent from."
-msgstr ""
+msgstr "De unde este trimis stocul."
 
 msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
-msgstr ""
+msgstr "Compania cu care este asociată expedierea."
 
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
-msgstr ""
+msgstr "Partea care a achiziţionat stocul."
 
 msgctxt "help:stock.shipment.out.return,delivery_address:"
 msgid "The address the customer can be contacted at."
-msgstr ""
+msgstr "Adresa la care poate fi contactat clientul."
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
-msgstr ""
+msgstr "Când a fost returnat stocul."
 
 msgctxt "help:stock.shipment.out.return,incoming_moves:"
 msgid "The moves that bring the stock into the warehouse."
-msgstr ""
+msgstr "Mişcările care aduc stocul în depozit."
 
 msgctxt "help:stock.shipment.out.return,inventory_moves:"
 msgid "The moves that put the stock away into the storage area."
-msgstr ""
+msgstr "Mişcările care pun stocul în zona de stocare."
 
 msgctxt "help:stock.shipment.out.return,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul principal pentru expediere."
 
 msgctxt "help:stock.shipment.out.return,planned_date:"
 msgid "When the stock is expected to be returned."
-msgstr ""
+msgstr "Când se aşteaptă sa se returneze stocul."
 
 msgctxt "help:stock.shipment.out.return,reference:"
 msgid "The customer's identifier for the shipment."
-msgstr ""
+msgstr "Identificatorul al clientului pentru expediere."
 
 msgctxt "help:stock.shipment.out.return,state:"
 msgid "The current state of the shipment."
-msgstr ""
+msgstr "Starea curentă a expedierii."
 
 msgctxt "help:stock.shipment.out.return,warehouse:"
 msgid "Where the stock is returned."
-msgstr ""
+msgstr "Unde se returnează stocul."
 
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
-msgstr "Inventorizacijos"
+msgstr "Inventare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_inventory_line_relate"
 msgid "Inventory Lines"
-msgstr "Inventorizacijos"
+msgstr "Rânduri Inventar"
 
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr "Vietos"
+msgstr "Locaţii"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Tiekimo terminas vietai"
+msgstr "Timp de Execuţie Locaţii"
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
-msgstr "Vietų sąrašas - Kiekis"
+msgstr "Locaţii Lista Cantităţi"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
-msgstr "Hierarchinis sąrašas - Kiekis"
+msgstr "Arbore Cantitate Locaţii"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr "Vietos"
+msgstr "Locaţii"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr "Mișcări"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Periodai"
+msgstr "Perioade"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
-msgstr "Savikaina"
+msgstr "Revizuire a Preţului de Cost"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_moves"
 msgid "Stock Moves"
-msgstr "Sandėlio operacijos"
+msgstr "Mişcări Stoc"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr "Cantităţi de Produs după Depozit"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_quantities_warehouse_move"
 msgid "Stock Moves By Warehouse"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr "Mişcări de Stocuri După Depozit"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products by Locations"
-msgstr "Prekės pagal vietas"
+msgstr "Produse după Locație"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
-msgstr ""
+msgstr "Marja după Categorie"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category_time_series"
 msgid "Margins per Category"
-msgstr ""
+msgstr "Marja după Categorie"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category_tree"
 msgid "Margins per Category"
-msgstr ""
+msgstr "Marja după Categorie"
 
 msgctxt "model:ir.action,name:act_reporting_margin_product"
 msgid "Margins per Product"
-msgstr ""
+msgstr "Marja după Produs"
 
 msgctxt "model:ir.action,name:act_reporting_margin_product_time_series"
 msgid "Margins per Product"
-msgstr ""
+msgstr "Marja după Produs"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Tiekėjo siuntimai"
+msgstr "Expedieri Furnizor"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Returns"
-msgstr ""
+msgstr "Retururi"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Vidiniai siuntimai"
+msgstr "Expedieri Interne"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Siuntimai pirkėjui"
+msgstr "Expedieri Client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Siuntimai pirkėjui"
+msgstr "Expedieri Client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Tiekėjo siuntimai"
+msgstr "Expedieri Furnizor"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Returns"
-msgstr ""
+msgstr "Retururi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
-msgstr "Sandėlio papildymo sąrašas"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr "Expediere Interna"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
-msgstr "Važtaraštis"
+msgstr "Aviz de Însoţire a Mărfii"
 
 msgctxt "model:ir.action,name:report_shipment_out_picking_list"
 msgid "Picking List"
-msgstr "Pakavimo lapas"
+msgstr "Lista Picking"
 
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
-msgstr "Sandėlio papildymo sąrašas"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_inventory_count"
 msgid "Count"
-msgstr "Skaičiavimas"
+msgstr "Numărare"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
 msgid "Products Quantities By Warehouse"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr "Cantităţi de Produs după Depozit"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action,name:wizard_open_product_quantities_by_warehouse_move"
 msgid "Stock Moves"
-msgstr "Sandėlio operacijos"
+msgstr "Mişcări Stoc"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_product_modify_cost_price"
 msgid "Modify Cost Price"
-msgstr "Savikaina"
+msgstr "Modificare Cost"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
-msgstr "Perskaičiuoti savikainą"
+msgstr "Recalculare Cost"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Supplier Return Shipment"
-msgstr "Grąžinimo tiekėjui siuntimas"
+msgstr "Atribuire Expediere Retur Furnizor"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
 msgid "Assign Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr "Atribuire Expediere Internă"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
-msgstr "Priskirti siuntimą pirkėjui"
+msgstr "Atribuire Expediere Client"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
 msgid "From Suppliers"
-msgstr "Iš tiekėjų"
+msgstr "De la Furnizori"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
 msgid "From Suppliers Waiting"
-msgstr "Laukiantys iš tiekėjų"
+msgstr "În Aşteptare de la Furnizori"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
 msgid "To Customers"
-msgstr "Pirkėjams"
+msgstr "La Clienţi"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
 msgid "Received"
-msgstr "Gauti"
+msgstr "Recepţionat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
 msgid "Assigned"
-msgstr "Priskirti"
+msgstr "Atribuit"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_available"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
 msgid "Waiting"
-msgstr "Laukiantis"
+msgstr "În Aşteptare"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
 msgid "Assigned"
-msgstr "Priskirti"
+msgstr "Atribuit"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_available"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
-msgstr "Užklausimai"
+msgstr "Cereri"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
 msgid "Shipped"
-msgstr "Įvykdyti"
+msgstr "Expediat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_waiting"
 msgid "Waiting"
-msgstr "Laukiantys"
+msgstr "În Aşteptare"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
 msgid "Assigned"
-msgstr "Priskirti"
+msgstr "Atribuit"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_available"
 msgid "Partially Assigned"
-msgstr "Priskirti"
+msgstr "Parțial Atribuit"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
 msgid "Packed"
-msgstr "Supakuotas"
+msgstr "Ambalat"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_picked"
 msgid "Picked"
-msgstr "Supakuotas"
+msgstr "Colectat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
-msgstr "Laukiantys"
+msgstr "În Aşteptare"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
 msgid "All"
-msgstr "Visi"
+msgstr "Totul"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
 msgid "Received"
-msgstr "Gauti"
+msgstr "Recepţionat"
 
 msgctxt "model:ir.message,text:msg_erase_party_shipment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending shipments with "
 "company \"%(company)s\"."
 msgstr ""
+"Nu se poate şterge \"%(party)s\" când au expedieri în aşteptare cu compania "
+"\"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_invalid_cost_price"
 msgid ""
 "Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Cost invalid \"%(cost_price)s\" pentru produs \"%(product)s\" cu excepţia "
+"\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
-msgstr ""
+msgstr "Nu s-a găsit un rând existent pentru \"%(search)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
 msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr ""
+msgstr "Inventarele \"%(inventories)s\" au data în viitor."
 
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
-msgstr ""
+msgstr "Pentru a şterge inventarul \"%(inventory)s\" trebuie anulat."
 
 msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
 msgid ""
 "To delete inventory line \"%(line)s\" you must cancel inventory "
 "\"%(inventory)s\"."
 msgstr ""
+"Pentru a șterge rând inventar \"%(line)s\" trebuie anulat inventarul "
+"\"%(inventory)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_line_quantity_positive"
 msgid "Inventory line quantity must be positive."
-msgstr ""
+msgstr "Cantitatea rând inventar trebuie să fie pozitivă."
 
 msgctxt "model:ir.message,text:msg_inventory_line_unique"
 msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
-msgstr ""
+msgstr "Rând inventar \"%(line)s\" nu este unic în inventar \"%(inventory)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
 msgid ""
@@ -2088,19 +2040,22 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_move_from_to_location"
 msgid "The source and destination of stock move must be different."
-msgstr ""
+msgstr "Sursa şi destinaţia unei mişcări de stoc trebuie sa fie diferite."
 
 msgctxt "model:ir.message,text:msg_move_internal_quantity_positive"
 msgid "Internal move quantity must be positive."
-msgstr ""
+msgstr "Cantitatea unei mişcări interne trebuie să fie pozitivă."
 
 msgctxt "model:ir.message,text:msg_move_modify_assigned"
 msgid "To modify stock move \"%(move)s\" you must reset its state to draft."
 msgstr ""
+"Pentru a modifica o mişcarea de stoc \"%(move)s, trebuie resetată în stare "
+"de draft."
 
 msgctxt "model:ir.message,text:msg_move_modify_cancelled"
 msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
 msgstr ""
+"Nu se poate modifica mişcarea de stoc \"%(move)s\" pentru că este anulată."
 
 msgctxt "model:ir.message,text:msg_move_modify_done"
 msgid "You cannot modify stock move \"%(move)s\" because it is done."
@@ -2151,16 +2106,15 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Companie"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_cost"
 msgid "Cost"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_currency_digits"
 msgid "Currency Digits"
-msgstr "Valiuta"
+msgstr "Zecimale Valută"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin"
 msgid "Margin"
@@ -2170,10 +2124,9 @@ msgctxt "model:ir.message,text:msg_stock_reporting_margin_trend"
 msgid "Margin Trend"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_number"
 msgid "Number"
-msgstr "Numeris"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_stock_reporting_profit"
 msgid "Profit"
@@ -2217,7 +2170,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr "Add an inventory line for each missing products"
+msgstr ""
 
 msgctxt "model:ir.model.button,help:inventory_count_button"
 msgid "Launch the wizard to count products"
@@ -2225,320 +2178,302 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
 msgid "Complete"
-msgstr "Užpildyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
-msgstr "Patvirtinti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:inventory_count_button"
 msgid "Count"
-msgstr "Skaičiuoti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_do_button"
 msgid "Do"
-msgstr "Vykdyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_draft_button"
 msgid "Reset to Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Užverti"
+msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
 msgid "Done"
-msgstr "Atlikti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_receive_button"
 msgid "Receive"
-msgstr "Gauta"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
 msgid "Assign"
-msgstr "Priskirti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
 msgid "Done"
-msgstr "Atlikti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
 msgid "Wait"
-msgstr "Laukti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
 msgid "Assign"
-msgstr "Priskirti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
 msgid "Done"
-msgstr "Atlikti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
-msgstr "Siųsti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
 msgid "Wait"
-msgstr "Laukti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
 msgid "Assign"
-msgstr "Priskirti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
 msgid "Done"
-msgstr "Atlikti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
-msgstr "Taisyti"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
 msgid "Pack"
-msgstr "Supakuotas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_pick_button"
 msgid "Pick"
-msgstr "Pakavimas"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
 msgid "Done"
-msgstr "Pabaigti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
-msgstr "Taisyti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
-msgstr "Gauti"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
-msgstr "Laukti"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_inventory_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_move_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_cost_price_revision_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_move_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_time_series_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_time_series_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_return_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_internal_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_return_companies"
 msgid "User in companies"
-msgstr "Organizacijos naudotojas"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
-msgstr "Inventorizacija"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Tiekėjo siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Grąžinimo tiekėjui siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Siuntimas pirkėjui"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Pirkėjo grąžinimo siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
-msgstr "Inventorizacija"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Tiekėjo siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Grąžinimo tiekėjui siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Siuntimas pirkėjui"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Pirkėjo grąžinimo siuntimas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr "Inventorizacijos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr "Vietos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_location_form2"
 msgid "Locations"
-msgstr "Vietos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Tiekimo terminas vietai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr "Vietos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "Operacijos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Periodai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Ataskaitos"
+msgstr "Raportare"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
-msgstr "Šaltiniai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Tiekėjo siuntimai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Returns"
@@ -2546,11 +2481,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Vidiniai siuntimai"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Siuntimai pirkėjui"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Returns"
@@ -2558,153 +2493,148 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
-msgstr "Inventorizacijos ir sandėlys"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
-msgstr "Nuostatos"
+msgstr "Configurare"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
-msgstr "Kontrahento vieta"
+msgstr ""
 
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
-msgstr "Prekės pagal vietą"
+msgstr ""
 
 msgctxt "model:product.cost_price.revision,name:"
 msgid "Product Cost Price Revision"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:product.modify_cost_price.start,name:"
 msgid "Modify Cost Price"
-msgstr "Savikaina"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:product.recompute_cost_price.start,name:"
 msgid "Recompute Cost Price"
-msgstr "Perskaičiuoti savikainą"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
-msgstr "Sandėlys"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr "Sandėlio valdymas"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Forsuoti priskyrimą sandėlyje"
+msgstr ""
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
-msgstr "Sandėlio nuostatos"
+msgstr ""
 
 msgctxt "model:stock.configuration.location,name:"
 msgid "Stock Configuration Location"
-msgstr "Sandėlio valdymas - vietos"
+msgstr ""
 
 msgctxt "model:stock.configuration.sequence,name:"
 msgid "Stock Configuration Sequence"
-msgstr "Sandėlio valdymas - numeruotė"
+msgstr ""
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
-msgstr "Sandėlio inventorizacija"
+msgstr ""
 
 msgctxt "model:stock.inventory.count.quantity,name:"
 msgid "Stock Inventory Count"
-msgstr "Sandėlio inventorizacijos kiekis"
+msgstr ""
 
 msgctxt "model:stock.inventory.count.search,name:"
 msgid "Stock Inventory Count"
-msgstr "Sandėlio inventorizacija - skaičiavimas"
+msgstr ""
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
-msgstr "Sandėlio inventorizacijos eilutė"
+msgstr ""
 
 msgctxt "model:stock.location,name:"
 msgid "Stock Location"
-msgstr "Sandėlio vieta"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr "Pirkėjas"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr "Priėmimo zona"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Prarasta ir rasta"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr "Išdavimo zona"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr "Saugojimo zona"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
-msgstr "Tiekėjas"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_transit"
 msgid "Transit"
-msgstr "Tranzitas"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr ""
 
 msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
-msgstr "Tiekimo laikas iš šios vietos"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.location.waste,name:"
 msgid "Warehouse Waste Location"
-msgstr "Tranzito vieta"
+msgstr ""
 
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
-msgstr "Sandėlio operacija"
+msgstr ""
 
 msgctxt "model:stock.period,name:"
 msgid "Stock Period"
-msgstr "Sandėlio periodas"
+msgstr ""
 
 msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
-msgstr "Išsaugotas sandėlio periodas"
+msgstr ""
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr ""
 
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.product_quantities_warehouse.move,name:"
 msgid "Product Quantities By Warehouse Moves"
-msgstr "Prekių kiekis pagal sandėlius"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:stock.products_by_locations,name:"
 msgid "Products by Locations"
-msgstr "Prekės pagal vietas"
+msgstr "Locația furnizorului"
 
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
-msgstr "Prekės pagal vietas"
+msgstr ""
 
 msgctxt "model:stock.reporting.margin.category,name:"
 msgid "Stock Reporting Margin per Category"
@@ -2730,379 +2660,370 @@ msgctxt "model:stock.reporting.margin.product.time_series,name:"
 msgid "Stock Reporting Margin per Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.shipment.assign.partial,name:"
 msgid "Assign Shipment"
-msgstr "Priskirti vidinį siuntimą"
+msgstr ""
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
-msgstr "Tiekėjo siuntimas"
+msgstr ""
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr "Grąžinimo tiekėjui siuntimas"
+msgstr ""
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr ""
 
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
-msgstr "Siuntimas pirkėjui"
+msgstr ""
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
-msgstr "Pirkėjo grąžinimo siuntimas"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
-msgstr "Planuojama data:"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
-msgstr "Nuoroda:"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
-msgstr "Sandėlio papildymo sąrašas"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Shipment Number"
-msgstr "Siuntimo numeris"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
-msgstr "Tiekėjas:"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr "Sandėlys:"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
-msgstr "Išsiuntimo vieta:"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr "Vidinis siuntimas"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
-msgstr "Planuojama data:"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
-msgstr "Nuoroda:"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Shipment Number"
-msgstr "Siuntimo numeris"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
-msgstr "Gavimo vieta:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
-msgstr "Pirkėjo kodas:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
-msgstr "Data:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr "Važtaraštis"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
-msgstr "Nuoroda:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
-msgstr "Siuntimo numeris:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr "Pirkėjas:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr "Pakavimo lapas"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
-msgstr "Planuojama data:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
-msgstr "Nuoroda:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Shipment Number"
-msgstr "Siuntimo numeris"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
-msgstr "Sandėlys:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr "Pirkėjas"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
-msgstr "Išsiuntimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Number"
-msgstr "Numeris"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
-msgstr "Planuojama data:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
-msgstr "Kiekis"
+msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
-msgstr "Nuoroda:"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr "Sandėlio papildymo sąrašas"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Shipment"
-msgstr "Transportavimas"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
-msgstr "Gavimo vieta"
+msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
-msgstr "Sandėlys:"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Customer Shipments"
-msgstr "Priskirti siuntimą pirkėjui"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Internal Shipments"
-msgstr "Vidinis siuntimas"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
-msgstr "Perskaičiuoti savikainą"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Customer Shipments"
-msgstr "Siuntimai pirkėjui"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Internal Shipments"
-msgstr "Vidiniai siuntimai"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Supplier Return Shipments"
-msgstr "Grąžinimo tiekėjui siuntimai"
+msgstr ""
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
-msgstr "Ištrinti"
+msgstr ""
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Keep"
-msgstr "Nekeisti"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.inventory,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
-msgstr "Pirkėjas"
+msgstr "Client"
 
 msgctxt "selection:stock.location,type:"
 msgid "Drop"
-msgstr "Trikampė prekyba"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
-msgstr "Prarasta ir rasta"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Production"
-msgstr "Gamyba"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Storage"
-msgstr "Saugojimas"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Supplier"
-msgstr "Tiekėjas"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "View"
-msgstr "Peržiūra"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Warehouse"
-msgstr "Sandėlys"
+msgstr ""
 
 msgctxt "selection:stock.move,state:"
 msgid "Assigned"
-msgstr "Priskirta"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.move,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.move,state:"
 msgid "Staging"
-msgstr "Saugojama"
+msgstr ""
 
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
-msgstr "Pabaigta"
+msgstr "Închis"
 
 msgctxt "selection:stock.period,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:stock.product_quantities_warehouse,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "selection:stock.product_quantities_warehouse,product:"
 msgid "Variant"
@@ -3111,7 +3032,7 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Product"
-msgstr "Prekė"
+msgstr "Produs"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Variant"
@@ -3129,123 +3050,117 @@ msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Year"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Received"
-msgstr "Gauta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Assigned"
-msgstr "Priskirta"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Waiting"
-msgstr "Laukiama"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Assigned"
-msgstr "Priskirta"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"
-msgstr "Užklausa"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Shipped"
-msgstr "Nusiųsta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Waiting"
-msgstr "Laukiama"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Assigned"
-msgstr "Priskirta"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Packed"
-msgstr "Supakuota"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Picked"
-msgstr "Supakuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
-msgstr "Laukiama"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Cancelled"
-msgstr "Anuliuota"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr "Pabaigta"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
-msgstr "Juodraštis"
+msgstr ""
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Received"
-msgstr "Gauta"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Stock"
-msgstr "Sandėlys"
+msgstr ""
 
 msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
@@ -3253,16 +3168,15 @@ msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
-msgstr "Inventorizacija"
+msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
-msgstr "Siuntimai"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"
-msgstr "Bendra savikaina"
+msgstr ""
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
@@ -3284,80 +3198,73 @@ msgctxt "view:stock.reporting.margin.product:"
 msgid "%"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.assign.partial:"
 msgid "Unable to assign these products:"
-msgstr "Nepavyko priskirti šių prekių:"
+msgstr ""
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:stock.shipment.in:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:stock.shipment.out:"
 msgid "Other Info"
-msgstr "Kita informacija"
+msgstr ""
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
-msgstr "Išsiuntimo operacijos"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:product.modify_cost_price,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:product.modify_cost_price,start,modify:"
 msgid "OK"
-msgstr "Gerai"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:product.recompute_cost_price,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:product.recompute_cost_price,start,recompute:"
 msgid "Recompute"
-msgstr "Perskaičiuoti savikainą"
+msgstr ""
 
 msgctxt "wizard_button:stock.inventory.count,quantity,add:"
 msgid "Add"
-msgstr "Pridėti"
+msgstr ""
 
 msgctxt "wizard_button:stock.inventory.count,quantity,search:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
 msgctxt "wizard_button:stock.inventory.count,search,end:"
 msgid "End"
-msgstr "Pabaigti"
+msgstr ""
 
 msgctxt "wizard_button:stock.inventory.count,search,quantity:"
 msgid "Select"
-msgstr "Pasirinkti"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.assign,partial,cancel:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.assign,partial,end:"
 msgid "Wait"
-msgstr "Laukti"
+msgstr ""
 
 msgctxt "wizard_button:stock.shipment.assign,partial,force:"
 msgid "Force"
