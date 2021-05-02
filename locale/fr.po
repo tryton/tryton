@@ -2,6 +2,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Devises"
+
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr "Jour du mois"
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr "Fréquence"
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr "Dernière mise à jour"
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr "Source"
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr "Jour de la semaine"
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr "Tâche planifiée"
+
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Devise"
+
 msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Code"
@@ -46,6 +82,22 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Taux"
 
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr "Les devises à mettre à jour le taux."
+
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr "La devise de base pour récupérer le taux."
+
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr "À quelle fréquence les taux doivent être mis à jour."
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr "La source externe des taux."
+
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
 msgstr "Le code pays ISO à 3 caractères."
@@ -86,6 +138,14 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "Le taux d'échange flottant utilisé pour convertir la devise."
 
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Tâche planifiée de devise"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr "Tâche planifiée de devise - Devise"
+
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Devise"
@@ -93,6 +153,10 @@ msgstr "Devise"
 msgctxt "model:currency.currency.rate,name:"
 msgid "Currency Rate"
 msgstr "Taux de devise"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Mises à jour programmées des taux"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -111,6 +175,14 @@ msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr ""
 "Aucun taux trouvé pour la devise « %(currency)s » à la date « %(date)s »."
 
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Mises à jour programmées des taux"
+
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
 msgstr "Devise"
@@ -122,6 +194,22 @@ msgstr "Devises"
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administration des devises"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr "Quotidien"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr "Mensuel"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Mettre à jour les taux de change"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

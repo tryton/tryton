@@ -2,6 +2,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Monedes"
+
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr "Dia del més"
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr "Freqüència"
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr "Darrera actualització"
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr "Font"
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr "Dia de la setmana"
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr "Planificador de tasques"
+
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
 msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Codi"
@@ -46,6 +82,22 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Taxa de canvi"
 
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr "Les monedes per actualitzar la taxa de canvi."
+
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr "La moneda base per obtenir les taxes de canvi."
+
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr "Amb quina freqüència s’han d’actualitzar les taxes de canvi."
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr "La font externa de les taxes de canvi."
+
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
 msgstr "El codi ISO de 3 dígits de la moneda."
@@ -86,6 +138,14 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "La taxa de canvi flotant que s'utilitza per a convertir la moneda."
 
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Tasques programades monedes"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr "Tasques programades monedes - Monedes"
+
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Moneda"
@@ -93,6 +153,10 @@ msgstr "Moneda"
 msgctxt "model:currency.currency.rate,name:"
 msgid "Currency Rate"
 msgstr "Taxa de canvi"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Actualització de taxes de canvi"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -112,6 +176,14 @@ msgstr ""
 "No s'ha trobat cap taxa de canvi per a la moneda \"%(currency)s\" per la "
 "data \"%(date)s\"."
 
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Actualització de taxes de canvi"
+
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
 msgstr "Moneda"
@@ -123,6 +195,22 @@ msgstr "Monedes"
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administració de monedes"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr "Diàriament"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr "Mensualment"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr "Setmanalment"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Actualitza taxes de canvi"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
