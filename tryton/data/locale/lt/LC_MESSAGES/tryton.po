@@ -6,7 +6,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgid "specify alternate config file"
-msgstr "nurodyti alternatyvų konfigūravimo failą "
+msgstr "nurodyti alternatyvų konfigūravimo failą"
 
 msgid "development mode"
 msgstr "kūrimo veiksena"
@@ -18,7 +18,7 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "nurodyti rašymo į žurnalą lygmenį: DEBUG, INFO, ERROR, CRITICAL"
 
 msgid "specify the login user"
-msgstr "nurodyti vartotoją"
+msgstr "nurodyti naudotoją"
 
 msgid "specify the server hostname:port"
 msgstr "nurodyti tarnybinę stotį pavadinimas:prievadas"
@@ -34,8 +34,8 @@ msgstr "Nepavyko nustatyti lokalės %s"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ""
 
 #, python-format
 msgid "%s (%s)"
@@ -45,13 +45,13 @@ msgid "Select your action"
 msgstr "Pasirinkite veiksmą"
 
 msgid "No action defined."
-msgstr "Nėra apibrėžtų veiksmų!"
+msgstr "Nėra apibrėžtų veiksmų."
 
 msgid "By: "
 msgstr ""
 
 msgid "Selection"
-msgstr "Pasirinkimas"
+msgstr "Parinktis"
 
 msgid "Cancel"
 msgstr "Atsisakyti"
@@ -71,11 +71,11 @@ msgstr "Išsaugoti"
 msgid "Save As..."
 msgstr "Įrašyti kaip..."
 
-msgid "Always ignore this warning."
-msgstr "Daugiau nepaisyti šio pranešimo."
-
 msgid "Do you want to proceed?"
 msgstr "Ar tikrai norite vykdyti?"
+
+msgid "Always ignore this warning."
+msgstr "Daugiau nepaisyti šio pranešimo."
 
 msgid "No"
 msgstr "Ne"
@@ -104,11 +104,15 @@ msgstr "Rašyti visvien"
 msgid "Save your current version"
 msgstr "Išsaugoti dabartinę jūsų versiją"
 
+#, fuzzy, python-format
+msgid "Compare: %s"
+msgstr "Palyginti"
+
 msgid "Close"
 msgstr "Užverti"
 
 msgid "Application Error"
-msgstr "Programos klaida!"
+msgstr "Programos klaida"
 
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
@@ -117,14 +121,18 @@ msgstr "Pranešti apie klaidą"
 msgid "Check URL: %s"
 msgstr "Pasirinkti URL: %s"
 
-msgid "Unable to check for new version"
+#, fuzzy
+msgid "Unable to check for new version."
 msgstr "Negalima patikrinti naujos versijos"
 
 msgid "A new version is available!"
-msgstr "Yra prieinama nauja versija"
+msgstr "Yra prieinama nauja versija!"
 
 msgid "Download"
 msgstr "Atsisiųsti"
+
+msgid "Too many requests. Try again later."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -173,10 +181,14 @@ msgid "False"
 msgstr "Netiesa"
 
 msgid "Digits"
-msgstr ""
+msgstr "Skaitmenys"
 
 msgid "The number of decimal"
-msgstr ""
+msgstr "Dešimtainių skaitmenų skaičius"
+
+#, fuzzy
+msgid "Template"
+msgstr "Susijęs"
 
 msgid "Edit..."
 msgstr "Keisti..."
@@ -196,32 +208,59 @@ msgstr "Susiję įrašai..."
 msgid "Report..."
 msgstr "Ataskaita..."
 
-msgid "E-Mail..."
-msgstr "El. paštas..."
-
 msgid "Print..."
 msgstr "Spausdinti..."
 
+msgid "E-Mail..."
+msgstr "El. paštas..."
+
+msgid "Bold"
+msgstr "Pusjuodis"
+
+msgid "Italic"
+msgstr "Kursyvas"
+
+msgid "Underline"
+msgstr "Pabrauktas"
+
+msgid "Align Left"
+msgstr "Kairinė lygiuotė"
+
+msgid "Align Center"
+msgstr "Centrinė lygiuotė"
+
+msgid "Align Right"
+msgstr "Dešininė lygiuotė"
+
+msgid "Justify"
+msgstr "Išlyginti"
+
+msgid "Foreground Color"
+msgstr "Priekinio plano spalva"
+
+msgid "Select a color"
+msgstr "Pasirinkti spalvą"
+
 msgid "Y"
-msgstr "Y"
+msgstr "m."
 
 msgid "M"
-msgstr "M"
+msgstr "mėn."
 
 msgid "w"
-msgstr "w"
+msgstr "sav."
 
 msgid "d"
-msgstr "d"
+msgstr "d."
 
 msgid "h"
-msgstr "h"
+msgstr "val."
 
 msgid "m"
-msgstr "m"
+msgstr "min."
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "Preferences..."
 msgstr "Nustatymai..."
@@ -233,26 +272,22 @@ msgid "Default"
 msgstr "Numatytasis"
 
 msgid "Text and Icons"
-msgstr "Tekstas ir piktogramos"
+msgstr "Tekstas ir ikonos"
 
 msgid "Text"
 msgstr "Tekstas"
 
 msgid "Icons"
-msgstr "Piktogramos"
+msgstr "Ikonos"
 
 msgid "Form"
 msgstr "Forma"
 
-msgid "Save Width/Height"
-msgstr "Įsiminti plotį/aukštį"
+msgid "Save Column Width"
+msgstr ""
 
 msgid "Save Tree State"
 msgstr "Įsiminti hierarchinio sąrašo būseną"
-
-#, fuzzy
-msgid "Fast Tabbing"
-msgstr "Greitas kortelių perjungėjas"
 
 msgid "Spell Checking"
 msgstr "Rašybos klaidų tikrinimas"
@@ -262,9 +297,6 @@ msgstr "PDA režimas"
 
 msgid "Search Limit..."
 msgstr "Paieškos ribojimas..."
-
-msgid "Email..."
-msgstr "El. paštas..."
 
 msgid "Check Version"
 msgstr "Tikrinti versiją"
@@ -279,10 +311,7 @@ msgid "About..."
 msgstr "Apie..."
 
 msgid "Help"
-msgstr "Žinynas"
-
-msgid "Quit"
-msgstr "Išeiti"
+msgstr "Pagalba"
 
 msgid "No result found."
 msgstr "Nerasta rezultatų."
@@ -307,7 +336,10 @@ msgid "Application Shortcuts"
 msgstr "Programų šaukiniai"
 
 msgid "Global"
-msgstr ""
+msgstr "Visuotinis"
+
+msgid "Preferences"
+msgstr "Nustatymai"
 
 msgid "Search menu"
 msgstr "Paieškos meniu"
@@ -325,6 +357,9 @@ msgstr "Kita kortelė"
 
 msgid "Shortcuts"
 msgstr "Šaukiniai"
+
+msgid "Quit"
+msgstr "Išeiti"
 
 msgid "Edition Shortcuts"
 msgstr ""
@@ -363,31 +398,29 @@ msgid "Switch view"
 msgstr "Perjungti rodymą"
 
 msgid "Create/Select new line"
-msgstr ""
+msgstr "Sukurti/pasirinkti naują eilutę"
 
 msgid "Open relation"
 msgstr "Atverti sąryšį"
 
 msgid "Mark line for deletion/removal"
-msgstr ""
+msgstr "Pažymėti eilutę trynimui/pašalinimui"
 
 msgid "Mark line for removal"
-msgstr ""
+msgstr "Pažymėti eilutę pašalinimui"
 
 msgid "Unmark line for deletion"
-msgstr "Nužymėti eilutę ištrinimui"
+msgstr "Nuimti eilutės pažymėjimą ištrynimui"
 
 msgid "List/Tree Shortcuts"
-msgstr ""
+msgstr "Sąrašo/Hierarchinio sąrašo šaukiniai"
 
 msgid "Move Cursor"
 msgstr "Paslinkti žymeklį"
 
-#, fuzzy
 msgid "Move right"
 msgstr "Paslinkti į dešinę"
 
-#, fuzzy
 msgid "Move left"
 msgstr "Paslinkti į kairę"
 
@@ -407,10 +440,10 @@ msgid "Move to top"
 msgstr "Perkelti į viršų"
 
 msgid "Move to bottom"
-msgstr "Perkelti į apačią "
+msgstr "Perkelti į apačią"
 
 msgid "Move to parent"
-msgstr "Perkelti į viršesnį"
+msgstr "Perkelti į motininį"
 
 msgid "Select all"
 msgstr "Pasirinkti viską"
@@ -419,7 +452,7 @@ msgid "Unselect all"
 msgstr "Panaikinti visą žymėjimą"
 
 msgid "Select parent"
-msgstr "Pasirinkti viršesnį"
+msgstr "Pasirinkti motininį"
 
 msgid "Select/Activate current row"
 msgstr "Pasirinkti/Aktyvuoti esamą eilutę"
@@ -452,9 +485,9 @@ msgid "modularity, scalability and security"
 msgstr "moduliškumas, išplečiamumas ir saugumas"
 
 msgid "translator-credits"
-msgstr ""
+msgstr "Mindaugas"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Attachments (%s)"
 msgstr "Priedai (%s)"
 
@@ -482,10 +515,12 @@ msgstr "Gaunamas duomenų bazių sąrašas"
 msgid "Username:"
 msgstr "Naudotojas:"
 
-msgid "Incompatible version of the server"
+#, fuzzy
+msgid "Incompatible version of the server."
 msgstr "Nesuderinama serverio versija"
 
-msgid "Could not connect to the server"
+#, fuzzy
+msgid "Could not connect to the server."
 msgstr "Nepavyko prisijungti prie serverio"
 
 msgid "Login"
@@ -512,61 +547,93 @@ msgstr "Serverio / duomenų bazės duomenys"
 msgid "User name:"
 msgstr "Naudotojas:"
 
-msgid "Email"
+#, fuzzy
+msgid "Unable to complete email entry"
+msgstr "Negalima ištrinti %s vedlio"
+
+#, fuzzy, python-format
+msgid "E-mail %s"
 msgstr "El. paštas"
-
-msgid "Email Program Settings"
-msgstr "El. pašto programos nustatymai"
-
-msgid "Command Line:"
-msgstr "Komandinė eilutė:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Galimos žymekliai:"
 
 msgid "To:"
 msgstr "Kam:"
 
-msgid "CC:"
+#, fuzzy
+msgid "Cc:"
 msgstr "CC:"
+
+msgid "Bcc:"
+msgstr ""
 
 msgid "Subject:"
 msgstr "Tema:"
 
-msgid "Body:"
+#, fuzzy
+msgid "Body"
 msgstr "Turinys:"
 
-msgid "Attachment:"
+#, fuzzy
+msgid "Reports"
+msgstr "Ataskaita"
+
+#, fuzzy
+msgid "Attachments"
 msgstr "Priedas:"
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Select File"
+msgstr "Pasirinkti viską"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "Šalinti <Del>"
 
 msgid "Add..."
 msgstr "Sukurti naują..."
 
-#, python-format, fuzzy, python-format
+#, fuzzy
+msgid "Preview"
+msgstr "Buvęs"
+
+msgid "Previous"
+msgstr "Buvęs"
+
+msgid "Next"
+msgstr "Kitas"
+
+#, fuzzy, python-format
 msgid "Attachment (%s)"
 msgstr "Priedai (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Pastaba (%d/%d)"
 
 msgid "You have to select one record."
-msgstr "Pasirinkite bent vieną įrašą!"
+msgstr "Pasirinkite bent vieną įrašą."
 
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "Sukūręs naudotojas:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Sukūręs naudotojas"
 
-msgid "Creation Date:"
-msgstr "Sukūrimo data:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Sukūrimo data"
 
-msgid "Latest Modification by:"
-msgstr "Paskutinį kartą redagavo:"
+msgid "Edited by:"
+msgstr "Pakeitęs naudotojas:"
 
-msgid "Latest Modification Date:"
-msgstr "Paskutinio redagavimo data:"
+msgid "Edited at:"
+msgstr "Keitimo data:"
 
 msgid "Model:"
 msgstr "Modelis:"
@@ -578,7 +645,7 @@ msgid "Are you sure to remove those records?"
 msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
 
 msgid "Records not removed."
-msgstr "Įrašai nebuvo ištrinti!"
+msgstr "Įrašai nebuvo ištrinti."
 
 msgid "Records removed."
 msgstr "Įrašai ištrinti."
@@ -609,16 +676,10 @@ msgid "Open related records"
 msgstr "Atverti susijusius įrašus"
 
 msgid "Report"
-msgstr "Ataskaitos"
+msgstr "Ataskaita"
 
 msgid "Open report"
 msgstr "Atverti ataskaitą"
-
-msgid "E-Mail"
-msgstr "Siuntimas"
-
-msgid "E-Mail report"
-msgstr "Siųsti ataskaitą el. paštu"
 
 msgid "Print"
 msgstr "Spausdinimas"
@@ -647,9 +708,6 @@ msgstr "Riba:"
 #, python-format
 msgid "Notes (%s)"
 msgstr "Pastabos (%s)"
-
-msgid "Preferences"
-msgstr "Nustatymai"
 
 msgid "Edit User Preferences"
 msgstr "Keisti naudotojo nustatymus"
@@ -718,7 +776,7 @@ msgid "Show revisions..."
 msgstr "Rodyti pakeitimus..."
 
 msgid "A_ttachments..."
-msgstr "P_riedas:"
+msgstr "P_riedas..."
 
 msgid "Add an attachment to the record"
 msgstr "Prisegti failą prie įrašo"
@@ -738,11 +796,15 @@ msgstr "_Susiję įrašai..."
 msgid "_Report..."
 msgstr "_Ataskaita..."
 
+msgid "_Print..."
+msgstr "_Spausdinti..."
+
 msgid "_E-Mail..."
 msgstr "Siųsti _el. paštu..."
 
-msgid "_Print..."
-msgstr "_Spausdinti..."
+#, fuzzy
+msgid "Send an e-mail using the record"
+msgstr "Prisegti pastabą prie įrašo"
 
 msgid "_Export Data..."
 msgstr "_Eksportuoti duomenis..."
@@ -778,13 +840,13 @@ msgid "Delimiter:"
 msgstr "Skirtukas:"
 
 msgid "Quote char:"
-msgstr ""
+msgstr "Citavimo simbolis:"
 
 msgid "Encoding:"
 msgstr "Koduotė:"
 
 msgid "Use locale format"
-msgstr ""
+msgstr "Naudoti lokalės formatą"
 
 msgid "Field name"
 msgstr "Lauko pavadinimas"
@@ -794,6 +856,10 @@ msgid "CSV Export: %s"
 msgstr "CSV eksportavimas: %s"
 
 msgid "_Save Export"
+msgstr "Išsaugoti eksporto šabloną"
+
+#, fuzzy
+msgid "_URL Export"
 msgstr "Išsaugoti eksporto šabloną"
 
 msgid "_Delete Export"
@@ -807,6 +873,15 @@ msgstr "Pavadinimas"
 
 msgid "Open"
 msgstr "Atvėrimas"
+
+msgid "Listed Records"
+msgstr "Rodomi įrašai"
+
+msgid "Selected Records"
+msgstr "Pasirinkti įrašai"
+
+msgid "Ignore search limit"
+msgstr ""
 
 #, fuzzy
 msgid "Add field names"
@@ -831,15 +906,15 @@ msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"
 msgid "Override '%s' definition?"
 msgstr "Perrašyti '%s' apibrėžimą?"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record saved."
 msgstr "%d įrašas išsaugotas."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records saved."
 msgstr "%d įrašai išsaugoti."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
@@ -863,12 +938,6 @@ msgstr "Naujas"
 
 msgid "Switch"
 msgstr "Perjungti"
-
-msgid "Previous"
-msgstr "Buvęs"
-
-msgid "Next"
-msgstr "Kitas"
 
 msgid "Add"
 msgstr "Pridėti"
@@ -902,7 +971,7 @@ msgid "Lines to Skip:"
 msgstr "Praleisti eilutes:"
 
 msgid "You must select an import file first."
-msgstr "Pasirinkite failą, iš kurio importuosite."
+msgstr "Jūs pirmiausiai turite pasirinkti importo failą."
 
 msgid "Error opening CSV file"
 msgstr "Klaida atveriant CSV failą"
@@ -911,11 +980,11 @@ msgstr "Klaida atveriant CSV failą"
 msgid "Error processing the file at field %s."
 msgstr "Klaida apdorojant failą ties lauku %s."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record imported."
 msgstr "%d įrašas importuotas."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records imported."
 msgstr "%d įrašai importuoti."
 
@@ -926,45 +995,45 @@ msgstr "Ieškoti"
 msgid "Search %s"
 msgstr "Ieškoti %s"
 
+msgid "Wizard"
+msgstr "Vedlys"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "Negalima ištrinti %s vedlio"
 
-msgid "Wizard"
-msgstr "Vedlys"
-
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
+msgid "Create by"
 msgstr "Sukūręs naudotojas"
 
-msgid "Creation Date"
-msgstr "Sukūrimo data:"
+msgid "Created at"
+msgstr "Sukūrimo data"
 
-msgid "Modification User"
-msgstr "Pakeitęs naudotojas"
+msgid "Edited by"
+msgstr "Taisęs naudotojas"
 
-msgid "Modification Date"
-msgstr "Paskutinio pakeitimo data"
+msgid "Edited at"
+msgstr "Taisymo data"
 
-#, python-format, python-format, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
 msgstr "Nepavyko gauti hierarchinio rodinio būsenos %s"
 
 msgid "Unable to set view tree state"
 msgstr "Nepavyko nustatyti hierarchinio sąrašo rodinio"
 
-#, python-format
-msgid "\"%s\" is not valid according to its domain"
+#, fuzzy, python-format
+msgid "\"%s\" is not valid according to its domain."
 msgstr "\"%s\" negalioja šioje srityje"
 
-#, python-format
-msgid "\"%s\" is required"
+#, fuzzy, python-format
+msgid "\"%s\" is required."
 msgstr "Būtina nurodyti \"%s\""
 
-#, python-format
-msgid "The values of \"%s\" are not valid"
+#, fuzzy, python-format
+msgid "The values of \"%s\" are not valid."
 msgstr "\"%s\" vertės nėra leistinos"
 
 msgid "Pre-validation"
@@ -974,13 +1043,13 @@ msgid ":"
 msgstr ":"
 
 msgid "Image Size"
-msgstr "Paveiklėlio dydis"
+msgstr "Paveikslėlio dydis"
 
 msgid "Width:"
 msgstr "Plotis:"
 
 msgid "Height:"
-msgstr "Aukštis"
+msgstr "Aukštis:"
 
 msgid "PNG image (*.png)"
 msgstr "PNG paveikslėlis (*.png)"
@@ -992,10 +1061,10 @@ msgid "Image size too large."
 msgstr "Paveikslėlis yra per didelis."
 
 msgid "Copy"
-msgstr ""
+msgstr "Kopijuoti"
 
 msgid "Paste"
-msgstr ""
+msgstr "Įdėti"
 
 msgid ".."
 msgstr ".."
@@ -1040,7 +1109,7 @@ msgid "next year"
 msgstr "kiti metai"
 
 msgid "Day View"
-msgstr ""
+msgstr "Dienos rodinys"
 
 msgid "Week View"
 msgstr "Savaitės rodinys"
@@ -1100,35 +1169,8 @@ msgstr "Pašalinti pasirinktą įrašą"
 msgid "%s%%"
 msgstr "%s%%"
 
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
-msgstr "Pasirinkti spalvą"
-
 msgid "Choose a language"
-msgstr ""
+msgstr "Pasirinkti kalbą"
 
 msgid "Translation"
 msgstr "Vertimas"
@@ -1137,13 +1179,13 @@ msgid "Edit"
 msgstr "Keisti"
 
 msgid "Fuzzy"
-msgstr "Neaiškus"
+msgstr "Netikslus"
 
 msgid "You need to save the record before adding translations."
 msgstr "Išsaugokite įrašą prieš pridedant vertimą."
 
 msgid "No other language available."
-msgstr "Jokia kita kalba nėra prieinama."
+msgstr "Nėra kitų kalbų."
 
 msgid "Translate view"
-msgstr "Vertimų peržiūra"
+msgstr "Išversti rodinį"

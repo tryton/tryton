@@ -25,7 +25,7 @@ msgstr "ລະບຸ ຜູ້ເຂົ້າໃຊ້ງານ"
 msgid "specify the server hostname:port"
 msgstr "ລະບຸ ທີ່ຢູ່ ຂອງ ເຄື່ອງແມ່ຂ່າຍ"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to write config file %s."
 msgstr "ບໍ່ສາມາດ ຂຽນ ຟາຍລ໌ ຕັ້ງຄ່າ (config file) %s ນີ້ໄດ້."
 
@@ -36,8 +36,8 @@ msgstr "ບໍ່ສາມາດຕັ້ງຄ່າ ທ້ອງຖິ່ນ %
 msgid ", "
 msgstr ","
 
-msgid ",…"
-msgstr ",..."
+msgid ",..."
+msgstr ""
 
 #, python-format
 msgid "%s (%s)"
@@ -74,11 +74,11 @@ msgstr "ບັນທຶກ"
 msgid "Save As..."
 msgstr "ບັນທຶກເປັນ..."
 
-msgid "Always ignore this warning."
-msgstr "ບໍ່ສົນກັບຄຳເຕືອນນີ້ເລີຍ."
-
 msgid "Do you want to proceed?"
 msgstr "ທ່ານຕ້ອງການດຳເນີນການຕໍ່ໄປບໍ່?"
+
+msgid "Always ignore this warning."
+msgstr "ບໍ່ສົນກັບຄຳເຕືອນນີ້ເລີຍ."
 
 msgid "No"
 msgstr ""
@@ -107,6 +107,10 @@ msgstr "ຂຽນລົງເລີຍ"
 msgid "Save your current version"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "Compare: %s"
+msgstr "ສົມທຽບ"
+
 msgid "Close"
 msgstr ""
 
@@ -121,13 +125,16 @@ msgstr "ລາຍງານຂໍ້ຜິດພາດ"
 msgid "Check URL: %s"
 msgstr ""
 
-msgid "Unable to check for new version"
+msgid "Unable to check for new version."
 msgstr ""
 
 msgid "A new version is available!"
 msgstr ""
 
 msgid "Download"
+msgstr ""
+
+msgid "Too many requests. Try again later."
 msgstr ""
 
 msgid "..."
@@ -182,6 +189,10 @@ msgstr ""
 msgid "The number of decimal"
 msgstr ""
 
+#, fuzzy
+msgid "Template"
+msgstr "ທີ່ກ່ຽວພັນ"
+
 msgid "Edit..."
 msgstr "ແກ້ໄຂ..."
 
@@ -200,11 +211,38 @@ msgstr "ທີ່ກ່ຽວພັນ..."
 msgid "Report..."
 msgstr "ລາຍງານ..."
 
+msgid "Print..."
+msgstr "ພິມອອກ..."
+
 msgid "E-Mail..."
 msgstr "ອີ-ເມວລ໌..."
 
-msgid "Print..."
-msgstr "ພິມອອກ..."
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr "ເລືອກສີ"
 
 msgid "Y"
 msgstr "ປ"
@@ -255,14 +293,11 @@ msgstr "_ປຸ່ມລັດ"
 msgid "Form"
 msgstr "_ແບບຟອມ"
 
-msgid "Save Width/Height"
-msgstr "ບັນທຶກ ຄວາມກວ້າງ/ຄວາມສູງ"
+msgid "Save Column Width"
+msgstr ""
 
 msgid "Save Tree State"
 msgstr "ບັນທຶກ ສະຖານະ ໂຄງສ້າງ"
-
-msgid "Fast Tabbing"
-msgstr "ຍ້າຍແບບໄວ"
 
 msgid "Spell Checking"
 msgstr "ກວດສອບການສະກົດຄຳ"
@@ -272,10 +307,6 @@ msgstr ""
 
 msgid "Search Limit..."
 msgstr "ຈຳກັດການຊອກຫາ..."
-
-#, fuzzy
-msgid "Email..."
-msgstr "_ອີເມວລ໌..."
 
 msgid "Check Version"
 msgstr ""
@@ -295,9 +326,6 @@ msgstr "_ກ່ຽວກັບ..."
 #, fuzzy
 msgid "Help"
 msgstr "_ຊ່ອຍເຫຼືອ"
-
-msgid "Quit"
-msgstr ""
 
 msgid "No result found."
 msgstr "ບໍ່ພົບຜົນຊອກຫາ"
@@ -325,6 +353,9 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
+msgid "Preferences"
+msgstr "ການຕັ້ງຄ່າ"
+
 msgid "Search menu"
 msgstr ""
 
@@ -340,6 +371,9 @@ msgid "Next tab"
 msgstr "_ແຖບງານ ຕໍ່ໄປ"
 
 msgid "Shortcuts"
+msgstr ""
+
+msgid "Quit"
 msgstr ""
 
 msgid "Edition Shortcuts"
@@ -470,7 +504,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Attachments (%s)"
 msgstr "ເອກະສານຄັດຕິດ (%s)"
 
@@ -498,10 +532,12 @@ msgstr "ລາຍການດຶງເອົາຖານຂໍ້ມູນ"
 msgid "Username:"
 msgstr "ຜູ້ໃຊ້:"
 
-msgid "Incompatible version of the server"
+#, fuzzy
+msgid "Incompatible version of the server."
 msgstr "ບໍ່ຖືກລຸ່ນກັບແມ່ຂ່າຍ"
 
-msgid "Could not connect to the server"
+#, fuzzy
+msgid "Could not connect to the server."
 msgstr "ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບແມ່ຂ່າຍໄດ້"
 
 msgid "Login"
@@ -528,37 +564,67 @@ msgstr "ແມ່ຂ່າຍ / ຂໍ້ມູນກ່ຽວກັບຖານ
 msgid "User name:"
 msgstr "ຊື່ຜູ້ໃຊ້:"
 
-msgid "Email"
+#, fuzzy
+msgid "Unable to complete email entry"
+msgstr "ບໍ່ສາມາດຕັ້ງຄ່າ ທ້ອງຖິ່ນ %s ໄດ້."
+
+#, fuzzy, python-format
+msgid "E-mail %s"
 msgstr "ອີເມວລ໌"
-
-msgid "Email Program Settings"
-msgstr "ການຕັ້ງຄ່າໂປຣແກຣມອີເມວລ໌"
-
-msgid "Command Line:"
-msgstr "ຄຳສັ່ງງານ:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "ເລື່ອງຂອງ ທີ່ຢູ່ ທີ່ມີປັດຈຸບັນ:"
 
 msgid "To:"
 msgstr "ເຖິງ:"
 
-msgid "CC:"
+#, fuzzy
+msgid "Cc:"
 msgstr "CC:"
+
+msgid "Bcc:"
+msgstr ""
 
 msgid "Subject:"
 msgstr "ຫົວເລື່ອງ:"
 
-msgid "Body:"
+#, fuzzy
+msgid "Body"
 msgstr "ເນື້ອຄວາມ:"
 
-msgid "Attachment:"
+#, fuzzy
+msgid "Reports"
+msgstr "ລາຍງານ..."
+
+#, fuzzy
+msgid "Attachments"
 msgstr "ເອກະສານຄັດຕິດ:"
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Select File"
+msgstr "ເລືອກທັງໝົດ"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "ເອົາອອກ"
 
 msgid "Add..."
 msgstr ""
 
-#, python-format, fuzzy, python-format
+#, fuzzy
+msgid "Preview"
+msgstr "ກ່ອນໜ້າ"
+
+msgid "Previous"
+msgstr "ກ່ອນໜ້າ"
+
+msgid "Next"
+msgstr "ຕໍ່ໄປ"
+
+#, fuzzy, python-format
 msgid "Attachment (%s)"
 msgstr "ເອກະສານຄັດຕິດ (%s)"
 
@@ -572,17 +638,21 @@ msgstr "ທ່ານຕ້ອງໄດ້ເລືອກ ໜຶ່ງແຖວ�
 msgid "ID:"
 msgstr "ເລກລໍາດັບ:"
 
-msgid "Creation User:"
-msgstr "ຜູ້ສ້າງ:"
+#, fuzzy
+msgid "Created by:"
+msgstr "ວັນທີສ້າງ"
 
-msgid "Creation Date:"
-msgstr "ວັນທີສ້າງ:"
+#, fuzzy
+msgid "Created at:"
+msgstr "ວັນທີສ້າງ"
 
-msgid "Latest Modification by:"
-msgstr "ປັບປ່ຽນລ້າສຸດ ໂດຍ:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "ແກ້ໄຂ"
 
-msgid "Latest Modification Date:"
-msgstr "ວັນທີປັບປ່ຽນລ້າສຸດ:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "ແກ້ໄຂ"
 
 msgid "Model:"
 msgstr "ແບບ:"
@@ -606,7 +676,7 @@ msgid "Record saved."
 msgstr "ແຖວຂໍ້ມູນບັນທຶກແລ້ວ"
 
 msgid " of "
-msgstr "ຂອງ"
+msgstr " ຂອງ "
 
 msgid ""
 "This record has been modified\n"
@@ -627,12 +697,6 @@ msgstr "ລາຍງານ..."
 
 msgid "Open report"
 msgstr "ໄຂບົດລາຍງານ"
-
-msgid "E-Mail"
-msgstr "ອີ-ເມວລ໌"
-
-msgid "E-Mail report"
-msgstr "ລາຍງານທາງອີເມວລ໌"
 
 msgid "Print"
 msgstr "ພິມອອກ"
@@ -661,9 +725,6 @@ msgstr "ຂີດຈຳກັດ:"
 #, python-format
 msgid "Notes (%s)"
 msgstr "ບັນທຶກ (%s)"
-
-msgid "Preferences"
-msgstr "ການຕັ້ງຄ່າ"
 
 msgid "Edit User Preferences"
 msgstr "ແກ້ໄຂການຕັ້ງຄ່າຜູ້ໃຊ້ງານ"
@@ -754,11 +815,15 @@ msgstr "_ທີ່ກ່ຽວພັນ..."
 msgid "_Report..."
 msgstr "_ລາຍງານ..."
 
+msgid "_Print..."
+msgstr "_ພິມອອກ..."
+
 msgid "_E-Mail..."
 msgstr "_ອີ-ແມວລ໌.."
 
-msgid "_Print..."
-msgstr "_ພິມອອກ..."
+#, fuzzy
+msgid "Send an e-mail using the record"
+msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
 
 msgid "_Export Data..."
 msgstr "_ສົ່ງອອກຂໍ້ມູນ..."
@@ -812,6 +877,10 @@ msgstr ""
 msgid "_Save Export"
 msgstr "_ບັນທຶກການສົ່ງອອກ"
 
+#, fuzzy
+msgid "_URL Export"
+msgstr "_ບັນທຶກການສົ່ງອອກ"
+
 msgid "_Delete Export"
 msgstr "_ລຶບການສົ່ງອອກ"
 
@@ -823,6 +892,17 @@ msgstr "ຊື່"
 
 msgid "Open"
 msgstr "ໄຂ"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "ແກ້ໄຂ ແຖວຂໍ້ມູນ ທີ່ເລືອກ <F2>"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "ແກ້ໄຂ ແຖວຂໍ້ມູນ ທີ່ເລືອກ <F2>"
+
+msgid "Ignore search limit"
+msgstr ""
 
 #, fuzzy
 msgid "Add field names"
@@ -847,15 +927,15 @@ msgstr "ຊື່ຂອງການສົ່ງອອກນີ້ແມ່ນຫ
 msgid "Override '%s' definition?"
 msgstr "ຂຽນທັບ ຄຳອະທິບາຍ '%s' ນີ້ບໍ່?"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record saved."
 msgstr "ແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records saved."
 msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
@@ -879,12 +959,6 @@ msgstr "ສ້າງໃໝ່"
 
 msgid "Switch"
 msgstr "ສະຫຼັບ"
-
-msgid "Previous"
-msgstr "ກ່ອນໜ້າ"
-
-msgid "Next"
-msgstr "ຕໍ່ໄປ"
 
 msgid "Add"
 msgstr "ເພີ່ມ"
@@ -927,11 +1001,11 @@ msgstr "ຜິດພາດໃນການໄຂ ຟາຍລ໌ CSV"
 msgid "Error processing the file at field %s."
 msgstr "ປະມວນຜົນ ຟາຍລ໌ ຜິດພາດ ໃນຊ່ອງຂໍ້ມູນ %s."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record imported."
 msgstr "ແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records imported."
 msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
 
@@ -942,45 +1016,48 @@ msgstr "ຊອກຫາ"
 msgid "Search %s"
 msgstr "ຊອກຫາ %s"
 
+msgid "Wizard"
+msgstr "ໂຕນໍາພາສ້າງ"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr ""
 
-msgid "Wizard"
-msgstr "ໂຕນໍາພາສ້າງ"
-
 msgid "ID"
 msgstr "ເລກລໍາດັບ"
 
-msgid "Creation User"
-msgstr "ຜູ້ສ້າງ"
+msgid "Create by"
+msgstr ""
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "ວັນທີສ້າງ"
 
-msgid "Modification User"
-msgstr "ຜູ້ປັບປ່ຽນ"
+#, fuzzy
+msgid "Edited by"
+msgstr "ແກ້ໄຂ"
 
-msgid "Modification Date"
-msgstr "ວັນທີປັບປ່ຽນ"
+#, fuzzy
+msgid "Edited at"
+msgstr "ແກ້ໄຂ"
 
-#, python-format, python-format, fuzzy, python-format
+#, fuzzy, python-format
 msgid "Unable to get view tree state for %s"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້ %s"
 
 msgid "Unable to set view tree state"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້"
 
-#, python-format
-msgid "\"%s\" is not valid according to its domain"
+#, fuzzy, python-format
+msgid "\"%s\" is not valid according to its domain."
 msgstr "\"%s\" ບໍ່ຖືກຕ້ອງ ກັບ ໂດເມນຂອງມັນ"
 
-#, python-format
-msgid "\"%s\" is required"
+#, fuzzy, python-format
+msgid "\"%s\" is required."
 msgstr "ຕ້ອງໃຫ້ມີ \"%s\""
 
-#, python-format
-msgid "The values of \"%s\" are not valid"
+#, fuzzy, python-format
+msgid "The values of \"%s\" are not valid."
 msgstr "ຄ່າຂອງ \"%s\" ນີ້ ບໍ່ຖືກຕ້ອງ"
 
 msgid "Pre-validation"
@@ -1116,33 +1193,6 @@ msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
-
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
-msgstr "ເລືອກສີ"
 
 msgid "Choose a language"
 msgstr ""

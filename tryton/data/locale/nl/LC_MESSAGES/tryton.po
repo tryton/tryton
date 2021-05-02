@@ -9,66 +9,61 @@ msgid "specify alternate config file"
 msgstr "specificeer een vervangend configuratiebestand"
 
 msgid "development mode"
-msgstr ""
+msgstr "Ontwikkelingsmodus"
 
 msgid "logging everything at INFO level"
 msgstr "logboek bijhouden op INFO niveau"
 
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
-msgstr ""
+msgstr "specificeer het log niveau: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the login user"
 msgstr "specificeer de inlog gebruiker"
 
-#, fuzzy
 msgid "specify the server hostname:port"
-msgstr "Stel de servernaam in"
+msgstr "servernaam : poort"
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "Unable to write config file %s."
-msgstr "Kan configuratiebestand %s niet opslaan! "
+msgstr "Kan configuratiebestand %s niet opslaan."
 
 #, python-format
 msgid "Unable to set locale %s"
 msgstr "Kan omgeving %s niet instellen"
 
-#, fuzzy
 msgid ", "
 msgstr ", "
 
-#, fuzzy
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 #, python-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 msgid "Select your action"
-msgstr "Selecteer je handeling."
+msgstr "Selecteer je handeling"
 
-#, fuzzy
 msgid "No action defined."
-msgstr "Geen handeling gedefinieerd!"
+msgstr "Geen handeling gedefinieerd."
 
 msgid "By: "
-msgstr ""
+msgstr "Door: "
 
 msgid "Selection"
 msgstr "Selectie"
 
-#, fuzzy
 msgid "Cancel"
-msgstr " _Annuleren"
+msgstr "Annuleren"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Your selection:"
 msgstr "Uw selectie:"
 
 msgid "Select"
-msgstr ""
+msgstr "Selecteer"
 
 msgid "Save"
 msgstr "Opslaan"
@@ -76,148 +71,173 @@ msgstr "Opslaan"
 msgid "Save As..."
 msgstr "Opslaan als..."
 
-msgid "Always ignore this warning."
-msgstr "Altijd deze waarschuwing negeren."
-
 msgid "Do you want to proceed?"
-msgstr ""
+msgstr "Doorgaan?"
+
+msgid "Always ignore this warning."
+msgstr "Deze waarschuwing altijd negeren."
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "Concurrency Exception"
-msgstr "Simultaan gebruik"
+msgstr "Simultaan gebruik (error)"
 
 msgid "This record has been modified while you were editing it."
-msgstr ""
+msgstr "Dit veld werd gewijzigd terwijl u het aan het bewerken was."
 
 msgid "Cancel saving"
-msgstr ""
+msgstr "Opslaan afbreken"
 
 msgid "Compare"
-msgstr "Vergelijk"
+msgstr "Vergelijken"
 
 msgid "See the modified version"
-msgstr ""
+msgstr "Toon de gewijzigde versie"
 
 msgid "Write Anyway"
 msgstr "Overschrijven"
 
 msgid "Save your current version"
-msgstr ""
+msgstr "Huidige versie opslaan"
+
+#, python-format
+msgid "Compare: %s"
+msgstr "Vergelijk: %s"
 
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
-#, fuzzy
 msgid "Application Error"
-msgstr "Programmafout"
+msgstr "Applicatiefout"
 
 msgid "Report Bug"
 msgstr "Programmafout melden"
 
 #, python-format
 msgid "Check URL: %s"
-msgstr ""
+msgstr "controle van de URL: %s"
 
-msgid "Unable to check for new version"
-msgstr ""
+msgid "Unable to check for new version."
+msgstr "Kon niet controleren op nieuwe versie."
 
 msgid "A new version is available!"
-msgstr ""
+msgstr "Een nieuwe versie is beschikbaar!"
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
-#, fuzzy
+msgid "Too many requests. Try again later."
+msgstr "Te veel verzoeken. Probeer het later nog eens."
+
 msgid "..."
 msgstr "..."
 
 msgid "<i>Search...</i>"
-msgstr ""
+msgstr "<i>Zoek...</i>"
 
 msgid "<i>Create...</i>"
-msgstr ""
+msgstr "<i>Maak...</i>"
 
 #, python-format
 msgid "Unable to search for completion of %s"
-msgstr ""
+msgstr "Kon niet zoeken naar voltooiing van %s"
 
-#, fuzzy
 msgid "Value"
-msgstr "Niet waar"
+msgstr "Waarde"
 
 msgid "Displayed value"
-msgstr ""
+msgstr "Weergegeven waarde"
 
-#, fuzzy
 msgid "Format"
-msgstr "_Normaal"
+msgstr "Formaat"
 
 msgid "Display format"
-msgstr ""
+msgstr "Weergaveformaat"
 
-#, fuzzy
 msgid "Open the calendar"
 msgstr "Open de kalender"
 
 msgid "Date Format"
-msgstr ""
+msgstr "Datumnotatie"
 
 msgid "Displayed date format"
-msgstr ""
+msgstr "Weergegeven datumformaat"
 
 msgid "y"
-msgstr ""
+msgstr "J"
 
 msgid "True"
 msgstr "Waar"
 
 msgid "t"
-msgstr ""
+msgstr "w (t)"
 
 msgid "False"
 msgstr "Niet waar"
 
 msgid "Digits"
-msgstr ""
+msgstr "cijfers"
 
 msgid "The number of decimal"
-msgstr ""
+msgstr "Aantal decimalen"
 
-#, fuzzy
+msgid "Template"
+msgstr "Sjabloon"
+
 msgid "Edit..."
-msgstr "Afsluiten"
+msgstr "Bewerk..."
 
-#, fuzzy
 msgid "Attachments..."
-msgstr "Bijlage:"
+msgstr "Bijlagen..."
 
 msgid "Notes..."
-msgstr ""
+msgstr "Notities..."
 
-#, fuzzy
 msgid "Actions..."
-msgstr "_Acties.."
+msgstr "Acties ..."
 
-#, fuzzy
 msgid "Relate..."
-msgstr "Verwijderen... "
+msgstr "Relatie..."
 
-#, fuzzy
 msgid "Report..."
-msgstr "_Importeer gegevens... "
+msgstr "Verslag..."
 
-#, fuzzy
-msgid "E-Mail..."
-msgstr "E-mail"
-
-#, fuzzy
 msgid "Print..."
-msgstr "Afdrukken"
+msgstr "Afdrukken..."
+
+msgid "E-Mail..."
+msgstr "E-mail..."
+
+msgid "Bold"
+msgstr "Vet"
+
+msgid "Italic"
+msgstr "Cursief"
+
+msgid "Underline"
+msgstr "Onderlijnen"
+
+msgid "Align Left"
+msgstr "Links uitlijnen"
+
+msgid "Align Center"
+msgstr "Centreren"
+
+msgid "Align Right"
+msgstr "Rechts uitlijnen"
+
+msgid "Justify"
+msgstr "Rechtvaardigen"
+
+msgid "Foreground Color"
+msgstr "Voorgrondkleur"
+
+msgid "Select a color"
+msgstr "Selecteer een kleur"
 
 msgid "Y"
 msgstr "J"
@@ -232,94 +252,73 @@ msgid "d"
 msgstr "d"
 
 msgid "h"
-msgstr "u"
+msgstr "h"
 
 msgid "m"
 msgstr "m"
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
-#, fuzzy
 msgid "Preferences..."
-msgstr "_Voorkeuren..."
+msgstr "Voorkeuren..."
 
-#, fuzzy
 msgid "Toolbar"
-msgstr "_Werkbalk"
+msgstr "Werkbalk"
 
-#, fuzzy
 msgid "Default"
-msgstr "_Standaard"
+msgstr "Standaard"
 
-#, fuzzy
 msgid "Text and Icons"
-msgstr "_Tekst en pictogrammen"
+msgstr "Tekst en pictogrammen"
 
-#, fuzzy
 msgid "Text"
-msgstr "_Tekst"
+msgstr "Tekst"
 
-#, fuzzy
 msgid "Icons"
-msgstr "Pictogrammen..."
+msgstr "Pictogrammen"
 
-#, fuzzy
 msgid "Form"
 msgstr "Formulier"
 
-msgid "Save Width/Height"
-msgstr "Bewaar breedte/hoogte"
+msgid "Save Column Width"
+msgstr "Kolombreedte opslaan"
 
 msgid "Save Tree State"
-msgstr ""
-
-msgid "Fast Tabbing"
-msgstr ""
+msgstr "Boomstatus opslaan"
 
 msgid "Spell Checking"
 msgstr "Spellingscontrole uitvoeren"
 
 msgid "PDA Mode"
-msgstr ""
+msgstr "PDA-modus"
 
 msgid "Search Limit..."
 msgstr "Zoek limiet..."
 
-#, fuzzy
-msgid "Email..."
-msgstr "E-mail"
-
 msgid "Check Version"
-msgstr ""
+msgstr "Controleer de versie"
 
-#, fuzzy
 msgid "Options"
-msgstr "_Opties"
+msgstr "Opties"
 
-#, fuzzy
 msgid "Keyboard Shortcuts..."
-msgstr "Sneltoetsen"
+msgstr "Sneltoetsen..."
 
-#, fuzzy
 msgid "About..."
-msgstr "I_nfo..."
+msgstr "Betreft..."
 
-#, fuzzy
 msgid "Help"
-msgstr "_Help"
-
-msgid "Quit"
-msgstr ""
+msgstr "Help"
 
 msgid "No result found."
-msgstr ""
+msgstr "Geen resultaat gevonden."
 
 msgid "Favorites"
-msgstr ""
+msgstr "Favorieten"
 
 msgid "Manage..."
-msgstr ""
+msgstr "Beheren..."
 
 msgid "Action"
 msgstr "Actie"
@@ -328,34 +327,41 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
+"De volgende actie vereist het sluiten van alle tabbladen.\n"
+"Verder gaan?"
 
 msgid "Application Shortcuts"
-msgstr ""
+msgstr "Applicatiesnelkoppelingen"
 
 msgid "Global"
-msgstr ""
+msgstr "Globaal"
+
+msgid "Preferences"
+msgstr "Voorkeuren"
 
 msgid "Search menu"
-msgstr ""
+msgstr "Zoekmenu"
 
 msgid "Toggle menu"
-msgstr ""
+msgstr "Menu wisselen"
 
-#, fuzzy
 msgid "Previous tab"
-msgstr "V_orige"
+msgstr "Vorig tabblad"
 
 msgid "Next tab"
-msgstr ""
+msgstr "Volgende tabblad"
 
 msgid "Shortcuts"
-msgstr ""
+msgstr "shortcuts"
+
+msgid "Quit"
+msgstr "Stop"
 
 msgid "Edition Shortcuts"
-msgstr ""
+msgstr "Bewerk snelkoppelingen"
 
 msgid "Text Entries"
-msgstr ""
+msgstr "Tekstinvoer"
 
 msgid "Cut selected text"
 msgstr "Knip geselecteerde tekst"
@@ -367,13 +373,13 @@ msgid "Paste copied text"
 msgstr "Plak geselecteerde tekst"
 
 msgid "Next entry"
-msgstr ""
+msgstr "Volgend veld"
 
 msgid "Previous entry"
-msgstr ""
+msgstr "Vorig veld"
 
 msgid "Relation Entries"
-msgstr ""
+msgstr "Relatie-invoer"
 
 msgid "Create new relation"
 msgstr "Nieuwe relatie aanmaken"
@@ -382,146 +388,140 @@ msgid "Open/Search relation"
 msgstr "Zoek / open relatie"
 
 msgid "List Entries"
-msgstr ""
+msgstr "Lijst invoer"
 
 msgid "Switch view"
-msgstr "Wijzig beeld"
+msgstr "Wissel van weergave"
 
 msgid "Create/Select new line"
-msgstr ""
+msgstr "Maak/Selecteer nieuwe lijn"
 
-#, fuzzy
 msgid "Open relation"
-msgstr "Zoek / open relatie"
+msgstr "Open relatie"
 
 msgid "Mark line for deletion/removal"
-msgstr ""
+msgstr "Lijn markeren om wissen / verwijderen (delete/removal)"
 
 msgid "Mark line for removal"
-msgstr ""
+msgstr "Lijn voor verwijdering markeren"
 
 msgid "Unmark line for deletion"
-msgstr ""
+msgstr "Annuleer markering voor verwijdering"
 
 msgid "List/Tree Shortcuts"
-msgstr ""
+msgstr "Lijst- / boomsnelkoppelingen"
 
 msgid "Move Cursor"
-msgstr ""
+msgstr "Beweeg cursor"
 
 msgid "Move right"
-msgstr ""
+msgstr "Naar rechts verplaatsen"
 
 msgid "Move left"
-msgstr ""
+msgstr "Naar links verplaatsen"
 
 msgid "Move up"
-msgstr ""
+msgstr "Naar boven verplaatsen"
 
 msgid "Move down"
-msgstr ""
+msgstr "Naar beneden verplaatsen"
 
 msgid "Move up of one page"
-msgstr ""
+msgstr "Verplaats één pagina omhoog"
 
 msgid "Move down of one page"
-msgstr ""
+msgstr "Verplaats één pagina omlaag"
 
 msgid "Move to top"
-msgstr ""
+msgstr "Verplaatsen naar begin"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Verplaatsen naar einde"
 
 msgid "Move to parent"
-msgstr ""
+msgstr "Verplaats naar bovenliggend niveau"
 
 msgid "Select all"
-msgstr ""
+msgstr "Alles selecteren"
 
 msgid "Unselect all"
-msgstr ""
+msgstr "Alles deselecteren"
 
 msgid "Select parent"
-msgstr ""
+msgstr "Selecteer bovenliggend niveau (parent)"
 
 msgid "Select/Activate current row"
-msgstr ""
+msgstr "Selecteer/Activeer huidige rij"
 
 msgid "Toggle selection"
-msgstr ""
+msgstr "Selectie wisselen"
 
 msgid "Expand/Collapse"
-msgstr ""
+msgstr "uitvouwen/ opvouwen"
 
 msgid "Expand row"
-msgstr ""
+msgstr "Rij uitvouwen"
 
 msgid "Collapse row"
-msgstr ""
+msgstr "rijen samenvouwen"
 
 msgid "Toggle row"
-msgstr ""
+msgstr "Wissel rij"
 
 msgid "Collapse all rows"
-msgstr ""
+msgstr "Alle rijen samenvouwen"
 
 msgid "Expand all rows"
-msgstr ""
+msgstr "Vouw alle rijen uit"
 
 msgid "Close Tab"
 msgstr "Tabblad sluiten"
 
 msgid "modularity, scalability and security"
-msgstr ""
+msgstr "modulariteit, schaalbaarheid en veiligheid"
 
 msgid "translator-credits"
-msgstr ""
+msgstr "Bert Defoor"
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "Attachments (%s)"
-msgstr "Bijlage (%s)"
+msgstr "Bijlagen (%s)"
 
 msgid "Profile Editor"
-msgstr ""
+msgstr "Profiel-editor"
 
 msgid "Profile"
-msgstr ""
+msgstr "Profiel"
 
 msgid "Add new profile"
-msgstr ""
+msgstr "Nieuw profiel toevoegen"
 
 msgid "Remove selected profile"
-msgstr ""
+msgstr "Verwijder het geselecteerde profiel"
 
-#, fuzzy
 msgid "Host:"
-msgstr "Poort:"
+msgstr "Host:"
 
 msgid "Database:"
 msgstr "Database:"
 
-#, fuzzy
 msgid "Fetching databases list"
-msgstr "Maak een nieuwe database:"
+msgstr "Lijst met databases ophalen"
 
-#, fuzzy
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#, fuzzy
-msgid "Incompatible version of the server"
-msgstr "Deze versie is onverenigbaar met de server! "
+msgid "Incompatible version of the server."
+msgstr "Deze versie is onverenigbaar met de server."
 
-#, fuzzy
-msgid "Could not connect to the server"
-msgstr "Geen verbinding met de server!"
+msgid "Could not connect to the server."
+msgstr "Geen verbinding met de server."
 
 msgid "Login"
 msgstr "Inlognaam"
 
 msgid "_Cancel"
-msgstr " _Annuleren"
+msgstr "_Annuleren"
 
 msgid "Cancel connection to the Tryton server"
 msgstr "Verbreek verbinding met Tryton server"
@@ -533,163 +533,168 @@ msgid "Connect the Tryton server"
 msgstr "Verbind met Tryton server"
 
 msgid "Profile:"
-msgstr ""
+msgstr "Profiel:"
 
 msgid "Host / Database information"
-msgstr ""
+msgstr "Host- / database-informatie"
 
 msgid "User name:"
 msgstr "Gebruikersnaam:"
 
-msgid "Email"
-msgstr "E-mail"
+msgid "Unable to complete email entry"
+msgstr "E-mailinvoer kan niet worden voltooid"
 
-msgid "Email Program Settings"
-msgstr "E-mail instellingen "
-
-msgid "Command Line:"
-msgstr "Opdrachtregel:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Legenda van beschikbare sjablonen: "
+#, python-format
+msgid "E-mail %s"
+msgstr "E-mail %s"
 
 msgid "To:"
 msgstr "Aan:"
 
-msgid "CC:"
-msgstr "CC:"
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
 
 msgid "Subject:"
 msgstr "Onderwerp:"
 
-msgid "Body:"
-msgstr "Bericht:"
+msgid "Body"
+msgstr "Bericht"
 
-msgid "Attachment:"
-msgstr "Bijlage:"
+msgid "Reports"
+msgstr "Rapporten"
 
-msgid "Add..."
+msgid "Attachments"
+msgstr "Bijlagen"
+
+msgid "Files"
 msgstr ""
 
-#, python-format, fuzzy
+msgid "Send"
+msgstr "Sturen"
+
+#, fuzzy
+msgid "Select File"
+msgstr "Alles selecteren"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "Verwijder <Del>"
+
+msgid "Add..."
+msgstr "Toevoegen..."
+
+#, fuzzy
+msgid "Preview"
+msgstr "Vorige"
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Next"
+msgstr "Volgende"
+
+#, python-format
 msgid "Attachment (%s)"
 msgstr "Bijlage (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Opmerking (%d/%d)"
 
-#, fuzzy
 msgid "You have to select one record."
-msgstr "Je moet één item selecteren!"
+msgstr "U moet één record selecteren."
 
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Aangemaakt door:"
 
-msgid "Creation Date:"
-msgstr "Aanmaakdatum"
+msgid "Created at:"
+msgstr "Aanmaakdatum:"
 
-msgid "Latest Modification by:"
-msgstr "Laatste wijziging door:"
+msgid "Edited by:"
+msgstr "Aangepast door:"
 
-msgid "Latest Modification Date:"
-msgstr "Laatste wijzigingsdatum:"
+msgid "Edited at:"
+msgstr "Bewerkt op:"
 
 msgid "Model:"
 msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
-msgstr "Weet je zeker dat je dit item wilt verwijderen?"
+msgstr "Weet je zeker dat je dit record wilt verwijderen?"
 
 msgid "Are you sure to remove those records?"
-msgstr "Weet je zeker dat je deze items wilt verwijderen?"
+msgstr "Weet je zeker dat je deze records wilt verwijderen?"
 
-#, fuzzy
 msgid "Records not removed."
-msgstr "Items niet verwijderd!"
+msgstr "Records niet verwijderd."
 
-#, fuzzy
 msgid "Records removed."
-msgstr "Items verwijderd!"
+msgstr "Records verwijderd."
 
-#, fuzzy
 msgid "Working now on the duplicated record(s)."
-msgstr "Je werkt nu met het gekopieerde item!"
+msgstr "Nu aan het werk op het/de gecopieërde record(s)."
 
-#, fuzzy
 msgid "Record saved."
-msgstr "Item opgeslagen!"
+msgstr "Record opgeslagen."
 
 msgid " of "
 msgstr " van "
 
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Item is aangepast.\n"
+"Dit veld is aangepast.\n"
 "Wil je de wijzigingen opslaan?"
 
 msgid "Launch action"
-msgstr ""
+msgstr "Start actie"
 
-#, fuzzy
 msgid "Relate"
-msgstr "Aan_maken"
+msgstr "Relatie"
 
-#, fuzzy
 msgid "Open related records"
-msgstr "Item openen"
+msgstr "Open gerelateerde records"
 
-#, fuzzy
 msgid "Report"
-msgstr "Rapporten"
+msgstr "Verslag"
 
-#, fuzzy
 msgid "Open report"
-msgstr "Item openen"
-
-#, fuzzy
-msgid "E-Mail"
-msgstr "E-mail"
-
-msgid "E-Mail report"
-msgstr ""
+msgstr "Open rapport"
 
 msgid "Print"
 msgstr "Afdrukken"
 
 msgid "Print report"
-msgstr ""
+msgstr "Rapport afdrukken"
 
 msgid "_Copy URL"
-msgstr ""
+msgstr "_Kopieer URL"
 
 msgid "Copy URL into clipboard"
-msgstr ""
+msgstr "Kopieer de URL naar het klembord"
 
 msgid "Unknown"
 msgstr "Onbekend"
 
 msgid "Limit"
-msgstr "Limiet:"
+msgstr "Limiet"
 
 msgid "Search Limit Settings"
 msgstr "Zoek limiet instellen"
 
 msgid "Limit:"
-msgstr " Limiet:"
+msgstr "Limiet:"
 
 #, python-format
 msgid "Notes (%s)"
-msgstr ""
-
-msgid "Preferences"
-msgstr "Voorkeuren"
+msgstr "Notities (%s)"
 
 msgid "Edit User Preferences"
 msgstr "Voorkeuren gebruiker aanpassen"
@@ -697,111 +702,104 @@ msgstr "Voorkeuren gebruiker aanpassen"
 msgid "Preference"
 msgstr "Voorkeur"
 
-#, fuzzy
 msgid "Revision"
-msgstr "Vorige"
+msgstr "Herziening"
 
-#, fuzzy
 msgid "Select a revision"
-msgstr "Selectie"
+msgstr "Selecteer een revisie"
 
-#, fuzzy
 msgid "Revision:"
-msgstr "Vorige"
+msgstr "Revisie :"
 
 msgid "_Switch View"
 msgstr "Wijzig beeld"
 
-#, fuzzy
 msgid "Switch View"
-msgstr "Wijzig beeld"
+msgstr "Wissel van weergave"
 
 msgid "_Previous"
 msgstr "V_orige"
 
 msgid "Previous Record"
-msgstr "Vorige item"
+msgstr "Vorig record"
 
 msgid "_Next"
 msgstr "_Volgende"
 
 msgid "Next Record"
-msgstr "Volgende item"
+msgstr "Volgende record"
 
-#, fuzzy
 msgid "_Search"
-msgstr "Zoeken"
+msgstr "_Zoeken"
 
 msgid "_New"
 msgstr "_Nieuw"
 
 msgid "Create a new record"
-msgstr "Maak een nieuw item"
+msgstr "Maak een nieuw record"
 
 msgid "_Save"
 msgstr "Op_slaan"
 
 msgid "Save this record"
-msgstr "Bewaar dit item"
+msgstr "Bewaar deze record"
 
 msgid "_Reload/Undo"
 msgstr "_Ongedaan maken"
 
-#, fuzzy
 msgid "Reload/Undo"
-msgstr "_Ongedaan maken"
+msgstr "Herladen/Annuleren"
 
 msgid "_Duplicate"
 msgstr "_Dupliceren"
 
 msgid "_Delete..."
-msgstr "Verwijderen... "
+msgstr "_Verwijderen..."
 
 msgid "View _Logs..."
-msgstr "Bekijk logregister"
+msgstr "Bekijk logregister..."
 
 msgid "Show revisions..."
-msgstr ""
+msgstr "Herzieningen tonen ..."
 
-#, fuzzy
 msgid "A_ttachments..."
-msgstr "Bijlage:"
+msgstr "_Bijlage..."
 
 msgid "Add an attachment to the record"
-msgstr "Voeg een bijlage aan dit item toe"
+msgstr "Voeg een bijlage toe aan het record"
 
 msgid "_Notes..."
-msgstr ""
+msgstr "_Notas ..."
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Voeg een nota toe aan het veld"
 
 msgid "_Actions..."
 msgstr "_Acties.."
 
-#, fuzzy
 msgid "_Relate..."
-msgstr "Verwijderen... "
+msgstr "_Relatie...."
 
-#, fuzzy
 msgid "_Report..."
-msgstr "_Importeer gegevens... "
-
-#, fuzzy
-msgid "_E-Mail..."
-msgstr "E-mail"
+msgstr "_Verslag..."
 
 msgid "_Print..."
-msgstr "Afdrukken"
+msgstr "_Afdrukken..."
+
+msgid "_E-Mail..."
+msgstr "_E-mail..."
+
+msgid "Send an e-mail using the record"
+msgstr "Stuur een e-mail met behulp van het record"
 
 msgid "_Export Data..."
-msgstr "_Exporteer gegevens... "
+msgstr "_Exporteer gegevens..."
 
 msgid "_Import Data..."
-msgstr "_Importeer gegevens... "
+msgstr "_Importeer gegevens..."
 
 msgid "Copy _URL..."
-msgstr ""
+msgstr "Kopieer _URL..."
 
 msgid "_Close Tab"
 msgstr "Tabblad sluiten"
@@ -815,42 +813,42 @@ msgstr "_Toevoegen"
 msgid "_Remove"
 msgstr "_Verwijderen"
 
-#, fuzzy
 msgid "_Clear"
-msgstr "Wissen"
+msgstr "_Wissen"
 
 msgid "<b>Fields selected</b>"
-msgstr ""
+msgstr "<b>Geselecteerde velden</b>"
 
 msgid "CSV Parameters"
 msgstr "CSV parameters"
 
 msgid "Delimiter:"
-msgstr ""
+msgstr "scheidingsteken:"
 
 msgid "Quote char:"
-msgstr ""
+msgstr "aanhalingstekens :"
 
 msgid "Encoding:"
 msgstr "Codering:"
 
 msgid "Use locale format"
-msgstr ""
+msgstr "Gebruik lokaal formaat"
 
 msgid "Field name"
 msgstr "Veldnaam"
 
 #, python-format
 msgid "CSV Export: %s"
-msgstr ""
+msgstr "Exporteer CSV: %s"
 
-#, fuzzy
 msgid "_Save Export"
-msgstr "Exportgegevens opslaan"
+msgstr "_Exportgegevens opslaan"
 
-#, fuzzy
+msgid "_URL Export"
+msgstr "_URL exporteren"
+
 msgid "_Delete Export"
-msgstr "Exportgegevens verwijderen"
+msgstr "_Exportgegevens verwijderen"
 
 msgid "<b>Predefined exports</b>"
 msgstr "<b>Voorgedefinieerde exportinstellingen</b>"
@@ -859,46 +857,54 @@ msgid "Name"
 msgstr "Naam"
 
 msgid "Open"
-msgstr "Open"
+msgstr "Openen"
 
-#, fuzzy
+msgid "Listed Records"
+msgstr "Vermelde records"
+
+msgid "Selected Records"
+msgstr "Geselecteerde records"
+
+msgid "Ignore search limit"
+msgstr "Zoeklimiet negeren"
+
 msgid "Add field names"
 msgstr "Voeg veldnamen toe"
 
 #, python-format
 msgid "%s (string)"
-msgstr ""
+msgstr "%s (string)"
 
 #, python-format
 msgid "%s (model name)"
-msgstr ""
+msgstr "%s (modelnaam)"
 
 #, python-format
 msgid "%s (record name)"
-msgstr ""
+msgstr "%s (recordnaam)"
 
 msgid "What is the name of this export?"
 msgstr "Wat is de naam voor deze export?"
 
 #, python-format
 msgid "Override '%s' definition?"
-msgstr ""
+msgstr "Vervang '%s' definitie?"
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "%d record saved."
-msgstr "%d item opgeslagen!"
+msgstr "%d item opgeslagen."
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "%d records saved."
-msgstr "%d items opgeslagen!"
+msgstr "%d items opgeslagen."
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
 "%s"
 msgstr ""
-"Handeling mislukt!\n"
+"Handeling mislukt.\n"
 "Foutmelding:\n"
 "%s"
 
@@ -912,42 +918,32 @@ msgid "Delete"
 msgstr "Verwijderen"
 
 msgid "New"
-msgstr "_Nieuw"
+msgstr "Nieuw"
 
 msgid "Switch"
 msgstr "Omschakelen"
-
-msgid "Previous"
-msgstr "Vorige"
-
-msgid "Next"
-msgstr "Volgende"
 
 msgid "Add"
 msgstr "Toevoegen"
 
 msgid "Remove <Del>"
-msgstr ""
+msgstr "Verwijder <Del>"
 
-#, fuzzy
 msgid "Create a new record <F3>"
-msgstr "Maak een nieuw item"
+msgstr "Maak een nieuw record <F3>"
 
-#, fuzzy
 msgid "Delete selected record <Del>"
-msgstr "Geselecteerd item verwijderen"
+msgstr "Geselecteerde record verwijderen <Del>"
 
-#, fuzzy
 msgid "Undelete selected record <Ins>"
-msgstr "Geselecteerd item verwijderen"
+msgstr "Verwijderen van geselecteerde record <Ins> ongedaan maken"
 
 #, python-format
 msgid "CSV Import: %s"
-msgstr ""
+msgstr "CSV-Import: %s"
 
-#, fuzzy
 msgid "_Auto-Detect"
-msgstr "Automatisch"
+msgstr "_Automatische detectie"
 
 msgid "File to Import:"
 msgstr "Bestand om te importeren:"
@@ -958,81 +954,74 @@ msgstr "Openen..."
 msgid "Lines to Skip:"
 msgstr "Regels overslaan:"
 
-#, fuzzy
 msgid "You must select an import file first."
-msgstr "U moet eerst een import bestand selecteren!"
+msgstr "U moet eerst een importbestand selecteren."
 
 msgid "Error opening CSV file"
 msgstr "Fout bij openen CSV-bestand"
 
-#, python-format, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "Error processing the file at field %s."
-msgstr "Fout bij inlezen van bestand bij veld%s"
+msgstr "Fout bij verwerken van het bestand op veld %s."
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "%d record imported."
-msgstr "%d item geïmporteerd!"
+msgstr "%d record geïmporteerd."
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "%d records imported."
-msgstr "%d items geïmporteerd!"
+msgstr "%d record geïmporteerd."
 
 msgid "Search"
 msgstr "Zoeken"
 
 #, python-format
 msgid "Search %s"
-msgstr ""
-
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
+msgstr "Zoek %s"
 
 msgid "Wizard"
 msgstr "Assistent"
 
-#, fuzzy
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "Kon de wizard %s niet verwijderen"
+
 msgid "ID"
-msgstr " d"
+msgstr "ID"
 
-#, fuzzy
-msgid "Creation User"
-msgstr "Aangemaakt door:"
+msgid "Create by"
+msgstr "Gemaakt door"
 
-#, fuzzy
-msgid "Creation Date"
+msgid "Created at"
 msgstr "Aanmaakdatum"
 
-#, fuzzy
-msgid "Modification User"
-msgstr "Laatste wijzigingsdatum:"
+msgid "Edited by"
+msgstr "Bewerk door"
 
-#, fuzzy
-msgid "Modification Date"
-msgstr "Laatste wijzigingsdatum:"
+msgid "Edited at"
+msgstr "Bewerkt op"
 
-#, python-format, python-format, fuzzy
+#, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Kan omgeving %s niet instellen"
+msgstr "Kan view tree-status voor %s niet krijgen"
 
-#, fuzzy
 msgid "Unable to set view tree state"
-msgstr "Kan omgeving %s niet instellen"
+msgstr "Kan weergave boomstructuur niet instellen"
 
 #, python-format
-msgid "\"%s\" is not valid according to its domain"
-msgstr ""
+msgid "\"%s\" is not valid according to its domain."
+msgstr "\"%s\" is niet geldig volgens zijn domein."
 
 #, python-format
-msgid "\"%s\" is required"
-msgstr ""
+msgid "\"%s\" is required."
+msgstr "\"%s\" is vereist."
 
 #, python-format
-msgid "The values of \"%s\" are not valid"
-msgstr ""
+msgid "The values of \"%s\" are not valid."
+msgstr "De waarden van \"%s\" zijn niet geldig."
 
 msgid "Pre-validation"
-msgstr ""
+msgstr "Pre-validatie"
 
 msgid ":"
 msgstr ":"
@@ -1052,75 +1041,71 @@ msgstr "PNG afbeelding (*.png)"
 msgid "Save As"
 msgstr "Opslaan als"
 
-#, fuzzy
 msgid "Image size too large."
-msgstr "Afbeelding te groot!"
+msgstr "Afbeelding te groot."
 
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 msgid ".."
-msgstr ""
+msgstr ".."
 
 msgid "Open filters"
-msgstr ""
+msgstr "Open filters"
 
 msgid "Show bookmarks of filters"
-msgstr ""
+msgstr "Bladwijzers van filters weergeven"
 
 msgid "Remove this bookmark"
-msgstr ""
+msgstr "Verwijder deze bladwijzer"
 
 msgid "Bookmark this filter"
-msgstr ""
+msgstr "Maak een bladwijzer van deze filter"
 
 msgid "Show active records"
-msgstr ""
+msgstr "Toon actieve records"
 
 msgid "Show inactive records"
-msgstr ""
+msgstr "Toon niet actieve records"
 
 msgid "Bookmark Name:"
-msgstr ""
+msgstr "Bladwijzernaam:"
 
 msgid "Find"
-msgstr "Vind"
+msgstr "Zoeken"
 
-#, fuzzy
 msgid "Today"
-msgstr "Bericht:"
+msgstr "Vandaag"
 
 msgid "go back"
-msgstr ""
+msgstr "ga terug"
 
 msgid "go forward"
-msgstr ""
+msgstr "ga vooruit"
 
 msgid "previous year"
-msgstr ""
+msgstr "vorig jaar"
 
 msgid "next year"
-msgstr ""
+msgstr "volgend jaar"
 
 msgid "Day View"
-msgstr ""
+msgstr "Dagweergave"
 
-#, fuzzy
 msgid "Week View"
-msgstr "Wijzig beeld"
+msgstr "Weekoverzicht"
 
-#, fuzzy
 msgid "Month View"
-msgstr "Wijzig beeld"
+msgstr "Maandweergave"
 
 msgid "Week"
-msgstr ""
+msgstr "Week"
 
 msgid "Select..."
-msgstr ""
+msgstr "Selecteer ..."
 
 msgid "Clear"
 msgstr "Wissen"
@@ -1129,96 +1114,60 @@ msgid "All files"
 msgstr "Alle bestanden"
 
 msgid "Show plain text"
-msgstr ""
+msgstr "Laat platte tekst zien"
 
 msgid "Add value"
-msgstr ""
+msgstr "Waarde toevoegen"
 
 #, python-format
 msgid "Remove \"%s\""
-msgstr ""
+msgstr "Verwijder \"%s\""
 
 msgid "Images"
 msgstr "Afbeeldingen"
 
-#, fuzzy
 msgid "Add existing record"
-msgstr "Bewaar dit item"
+msgstr "Bestaand record toevoegen"
 
-#, fuzzy
 msgid "Remove selected record"
 msgstr "Geselecteerd item verwijderen"
 
-#, fuzzy
 msgid "Open the record <F2>"
-msgstr "Item openen"
+msgstr "Open het record <F2>"
 
 msgid "Clear the field <Del>"
-msgstr ""
+msgstr "Wis het veld <Del>"
 
-#, fuzzy
 msgid "Search a record <F2>"
-msgstr "Item zoeken"
+msgstr "Zoek een record <F2>"
 
-#, fuzzy
 msgid "Edit selected record"
-msgstr "Geselecteerd item aanpassen"
+msgstr "Bewerk geselecteerde record"
 
-#, fuzzy
 msgid "Delete selected record"
-msgstr "Geselecteerd item verwijderen"
+msgstr "Geselecteerde record verwijderen"
 
 #, python-format
 msgid "%s%%"
-msgstr ""
-
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
-msgstr ""
+msgstr "%s%%"
 
 msgid "Choose a language"
-msgstr ""
+msgstr "Kies een taal"
 
-#, fuzzy
 msgid "Translation"
-msgstr "Voeg vertaling toe"
+msgstr "Vertaling"
 
 msgid "Edit"
-msgstr ""
+msgstr "Bewerk"
 
 msgid "Fuzzy"
-msgstr ""
+msgstr "Flauwe"
 
-#, fuzzy
 msgid "You need to save the record before adding translations."
-msgstr "Gegevens eerst opslaan voordat u een vertaling toevoegt! "
+msgstr "U moet de record opslaan voordat u vertalingen toevoegt."
 
-#, fuzzy
 msgid "No other language available."
-msgstr "Geen andere taal beschikbaar!"
+msgstr "Geen andere taal beschikbaar."
 
 msgid "Translate view"
 msgstr "Vertaal aanzicht"

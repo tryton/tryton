@@ -28,7 +28,7 @@ msgstr "Indica el usuario"
 msgid "specify the server hostname:port"
 msgstr "Indica el nombre:puerto del servidor"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to write config file %s."
 msgstr "No se ha podido escribir el archivo de configuración %s."
 
@@ -39,8 +39,8 @@ msgstr "No se ha podido establecer el idioma %s"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 #, python-format
 msgid "%s (%s)"
@@ -76,11 +76,11 @@ msgstr "Guardar"
 msgid "Save As..."
 msgstr "Guardar como..."
 
-msgid "Always ignore this warning."
-msgstr "Ignorar siempre esta advertencia."
-
 msgid "Do you want to proceed?"
 msgstr "¿Desea continuar?"
+
+msgid "Always ignore this warning."
+msgstr "Ignorar siempre esta advertencia."
 
 msgid "No"
 msgstr "No"
@@ -109,11 +109,15 @@ msgstr "Guardar de todas formas"
 msgid "Save your current version"
 msgstr "Guardar vuestros cambios"
 
+#, python-format
+msgid "Compare: %s"
+msgstr "Comparar: %s"
+
 msgid "Close"
 msgstr "Cerrar"
 
 msgid "Application Error"
-msgstr "Error de aplicación."
+msgstr "Error de aplicación"
 
 msgid "Report Bug"
 msgstr "Informar del error"
@@ -122,7 +126,7 @@ msgstr "Informar del error"
 msgid "Check URL: %s"
 msgstr "URL de comprobación: %s"
 
-msgid "Unable to check for new version"
+msgid "Unable to check for new version."
 msgstr "No se ha podido comprobar si existe una nueva versión."
 
 msgid "A new version is available!"
@@ -130,6 +134,9 @@ msgstr "Esta disponible una nueva versión!"
 
 msgid "Download"
 msgstr "Descargar"
+
+msgid "Too many requests. Try again later."
+msgstr "Demasiadas peticiones. Inténtelo de nuevo más tarde."
 
 msgid "..."
 msgstr "..."
@@ -183,6 +190,9 @@ msgstr "Dígitos"
 msgid "The number of decimal"
 msgstr "El numero de decimales"
 
+msgid "Template"
+msgstr "Plantilla"
+
 msgid "Edit..."
 msgstr "Editar..."
 
@@ -201,11 +211,38 @@ msgstr "Relacionado..."
 msgid "Report..."
 msgstr "Informe..."
 
+msgid "Print..."
+msgstr "Imprimir..."
+
 msgid "E-Mail..."
 msgstr "Correo electrónico..."
 
-msgid "Print..."
-msgstr "Imprimir..."
+msgid "Bold"
+msgstr "Negrita"
+
+msgid "Italic"
+msgstr "Cursiva"
+
+msgid "Underline"
+msgstr "Subrayado"
+
+msgid "Align Left"
+msgstr "Alinear a la izquierda"
+
+msgid "Align Center"
+msgstr "Alinear en el centro"
+
+msgid "Align Right"
+msgstr "Alinear a la derecha"
+
+msgid "Justify"
+msgstr "Justificar"
+
+msgid "Foreground Color"
+msgstr "Color de fondo"
+
+msgid "Select a color"
+msgstr "Seleccione un color"
 
 msgid "Y"
 msgstr "A"
@@ -249,14 +286,11 @@ msgstr "Iconos"
 msgid "Form"
 msgstr "Formulario"
 
-msgid "Save Width/Height"
-msgstr "Guardar ancho/alto"
+msgid "Save Column Width"
+msgstr "Guardar ancho de columna"
 
 msgid "Save Tree State"
 msgstr "Guardar estado de expansión del árbol"
-
-msgid "Fast Tabbing"
-msgstr "Tabulación rápida"
 
 msgid "Spell Checking"
 msgstr "Corrección ortográfica"
@@ -266,9 +300,6 @@ msgstr "Modo PDA"
 
 msgid "Search Limit..."
 msgstr "_Límite de búsqueda..."
-
-msgid "Email..."
-msgstr "Correo electrónico..."
 
 msgid "Check Version"
 msgstr "Comprobar versión"
@@ -285,9 +316,6 @@ msgstr "Acerca de..."
 msgid "Help"
 msgstr "Ayuda"
 
-msgid "Quit"
-msgstr "Salir"
-
 msgid "No result found."
 msgstr "No se han encontrado resultados."
 
@@ -298,7 +326,7 @@ msgid "Manage..."
 msgstr "Gestionar..."
 
 msgid "Action"
-msgstr "Acción"
+msgstr "Acción"
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -312,6 +340,9 @@ msgstr "Atajos de la aplicación"
 
 msgid "Global"
 msgstr "Global"
+
+msgid "Preferences"
+msgstr "Preferencias"
 
 msgid "Search menu"
 msgstr "Menú de búsqueda"
@@ -327,6 +358,9 @@ msgstr "Pestaña siguiente"
 
 msgid "Shortcuts"
 msgstr "Atajos"
+
+msgid "Quit"
+msgstr "Salir"
 
 msgid "Edition Shortcuts"
 msgstr "Atajos de edición"
@@ -446,15 +480,15 @@ msgid "Expand all rows"
 msgstr "Expandir todas las filas"
 
 msgid "Close Tab"
-msgstr "Cerrar pestaña"
+msgstr "Cerrar pestaña"
 
 msgid "modularity, scalability and security"
 msgstr "modularidad, escalabilidad y seguridad"
 
 msgid "translator-credits"
-msgstr "Créditos de traducción"
+msgstr "Sergi Almacellas Abellana"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Attachments (%s)"
 msgstr "Adjuntos (%s)"
 
@@ -482,14 +516,14 @@ msgstr "Recuperando lista de bases de datos"
 msgid "Username:"
 msgstr "Nombre de usuario:"
 
-msgid "Incompatible version of the server"
-msgstr "El cliente no es compatible con la versión del servidor"
+msgid "Incompatible version of the server."
+msgstr "El cliente no es compatible con la versión del servidor."
 
-msgid "Could not connect to the server"
-msgstr "No se ha podido conectar con el servidor"
+msgid "Could not connect to the server."
+msgstr "No se ha podido conectar con el servidor."
 
 msgid "Login"
-msgstr "Usuario"
+msgstr "Acceder"
 
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -512,35 +546,57 @@ msgstr "Información del Servidor / Base de datos"
 msgid "User name:"
 msgstr "Nombre de usuario:"
 
-msgid "Email"
-msgstr "Correo electrónico"
+msgid "Unable to complete email entry"
+msgstr "No se ha podido completar la entrada de correo electrónico"
 
-msgid "Email Program Settings"
-msgstr "Configuración del programa de correo electrónico"
-
-msgid "Command Line:"
-msgstr "Línea de comando:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Leyenda de palabras clave disponibles:"
+#, python-format
+msgid "E-mail %s"
+msgstr "Correo electrónico %s"
 
 msgid "To:"
-msgstr "Para:"
+msgstr "A:"
 
-msgid "CC:"
-msgstr "CC:"
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "CCo:"
 
 msgid "Subject:"
 msgstr "Asunto:"
 
-msgid "Body:"
-msgstr "Mensaje:"
+msgid "Body"
+msgstr "Mensaje"
 
-msgid "Attachment:"
-msgstr "Adjunto:"
+msgid "Reports"
+msgstr "Informes"
+
+msgid "Attachments"
+msgstr "Adjuntos"
+
+msgid "Files"
+msgstr "Archivos"
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "Select File"
+msgstr "Seleccionar un archivo"
+
+msgid "Remove File"
+msgstr "Eliminar archivo"
 
 msgid "Add..."
 msgstr "Añadir..."
+
+msgid "Preview"
+msgstr "Previsualizar"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
 
 #, python-format
 msgid "Attachment (%s)"
@@ -556,17 +612,17 @@ msgstr "Debe elegir un registro."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Creado por:"
 
-msgid "Creation Date:"
-msgstr "Fecha creación:"
+msgid "Created at:"
+msgstr "Creado el:"
 
-msgid "Latest Modification by:"
-msgstr "Última modificación por:"
+msgid "Edited by:"
+msgstr "Editado por:"
 
-msgid "Latest Modification Date:"
-msgstr "Última fecha de modificación:"
+msgid "Edited at:"
+msgstr "Editado el:"
 
 msgid "Model:"
 msgstr "Modelo:"
@@ -584,7 +640,7 @@ msgid "Records removed."
 msgstr "Registros eliminados."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Ahora está trabajando en el registro duplicado."
+msgstr "Ahora está trabajando en el/los registro(s) duplicado(s)."
 
 msgid "Record saved."
 msgstr "Registro guardado."
@@ -603,7 +659,7 @@ msgid "Launch action"
 msgstr "Ejecutar acción"
 
 msgid "Relate"
-msgstr "_Relacionado"
+msgstr "Relacionado"
 
 msgid "Open related records"
 msgstr "Abrir registros relacionados"
@@ -613,12 +669,6 @@ msgstr "Informes"
 
 msgid "Open report"
 msgstr "Abrir informe"
-
-msgid "E-Mail"
-msgstr "Email"
-
-msgid "E-Mail report"
-msgstr "Informe por email"
 
 msgid "Print"
 msgstr "Imprimir"
@@ -648,9 +698,6 @@ msgstr "Límite:"
 msgid "Notes (%s)"
 msgstr "Notas (%s)"
 
-msgid "Preferences"
-msgstr "Preferencias"
-
 msgid "Edit User Preferences"
 msgstr "Editar preferencias de usuario"
 
@@ -658,7 +705,7 @@ msgid "Preference"
 msgstr "Preferencias"
 
 msgid "Revision"
-msgstr "Versión"
+msgstr "Revisión"
 
 msgid "Select a revision"
 msgstr "Seleccionar una versión"
@@ -715,7 +762,7 @@ msgid "View _Logs..."
 msgstr "Ver _registro..."
 
 msgid "Show revisions..."
-msgstr "Mostrar versiones..."
+msgstr "Mostrar revisiones..."
 
 msgid "A_ttachments..."
 msgstr "Adjun_tos..."
@@ -738,11 +785,14 @@ msgstr "_Relacionado..."
 msgid "_Report..."
 msgstr "_Informes..."
 
+msgid "_Print..."
+msgstr "Im_primir..."
+
 msgid "_E-Mail..."
 msgstr "_Correo electrónico..."
 
-msgid "_Print..."
-msgstr "Im_primir..."
+msgid "Send an e-mail using the record"
+msgstr "Enviar un correo electrónico usando el registro"
 
 msgid "_Export Data..."
 msgstr "_Exportar datos..."
@@ -775,7 +825,7 @@ msgid "CSV Parameters"
 msgstr "Parámetros CSV"
 
 msgid "Delimiter:"
-msgstr "Separador de campo:"
+msgstr "Separador:"
 
 msgid "Quote char:"
 msgstr "Delimitador de texto:"
@@ -796,6 +846,9 @@ msgstr "Exportación CSV: %s"
 msgid "_Save Export"
 msgstr "_Guardar exportación"
 
+msgid "_URL Export"
+msgstr "_URL Exportación"
+
 msgid "_Delete Export"
 msgstr "_Eliminar exportación"
 
@@ -807,6 +860,15 @@ msgstr "Nombre"
 
 msgid "Open"
 msgstr "Abrir"
+
+msgid "Listed Records"
+msgstr "Registros listados"
+
+msgid "Selected Records"
+msgstr "Registros seleccionados"
+
+msgid "Ignore search limit"
+msgstr "Ignorar límite de búsqueda"
 
 msgid "Add field names"
 msgstr "Añadir nombres de campo"
@@ -830,15 +892,15 @@ msgstr "¿Cuál es el nombre de esta exportación?"
 msgid "Override '%s' definition?"
 msgstr "Sobrescribir la definición de '%s'?"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record saved."
 msgstr "Se ha guardado %d registro."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records saved."
 msgstr "Se han guardado %d registros."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
@@ -861,16 +923,10 @@ msgid "New"
 msgstr "Nuevo"
 
 msgid "Switch"
-msgstr "Cambiar vista"
-
-msgid "Previous"
-msgstr "Anterior"
-
-msgid "Next"
-msgstr "Siguiente"
+msgstr "Cambiar"
 
 msgid "Add"
-msgstr "Añadir"
+msgstr "Añadir"
 
 msgid "Remove <Del>"
 msgstr "Eliminar <Supr>"
@@ -910,11 +966,11 @@ msgstr "Error al abrir el archivo CSV"
 msgid "Error processing the file at field %s."
 msgstr "Se ha producido un error al procesar el archivo en el campo %s."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record imported."
 msgstr "Se ha importado %d registro."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records imported."
 msgstr "Se han importado %d registros."
 
@@ -925,29 +981,29 @@ msgstr "Buscar"
 msgid "Search %s"
 msgstr "Buscar %s"
 
+msgid "Wizard"
+msgstr "Asistente"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "No se ha podido eliminar el asistente %s"
 
-msgid "Wizard"
-msgstr "Asistente"
-
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Creado por:"
+msgid "Create by"
+msgstr "Creado por"
 
-msgid "Creation Date"
-msgstr "Fecha creación:"
+msgid "Created at"
+msgstr "Creado el"
 
-msgid "Modification User"
-msgstr "Última modificación por:"
+msgid "Edited by"
+msgstr "Editado por"
 
-msgid "Modification Date"
-msgstr "Última fecha de modificación:"
+msgid "Edited at"
+msgstr "Editado el"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
 msgstr "No se ha podido obtener el estado de expansión del árbol de %s"
 
@@ -955,15 +1011,15 @@ msgid "Unable to set view tree state"
 msgstr "No se ha podido establecer el estado de expansión del árbol"
 
 #, python-format
-msgid "\"%s\" is not valid according to its domain"
+msgid "\"%s\" is not valid according to its domain."
 msgstr "\"%s\" no es válido según su dominio."
 
 #, python-format
-msgid "\"%s\" is required"
+msgid "\"%s\" is required."
 msgstr "\"%s\" es obligatorio."
 
 #, python-format
-msgid "The values of \"%s\" are not valid"
+msgid "The values of \"%s\" are not valid."
 msgstr "Los valores de \"%s\" no son válidos."
 
 msgid "Pre-validation"
@@ -1024,7 +1080,7 @@ msgid "Find"
 msgstr "Buscar"
 
 msgid "Today"
-msgstr "Hoy:"
+msgstr "Hoy"
 
 msgid "go back"
 msgstr "retroceder"
@@ -1097,35 +1153,8 @@ msgstr "Eliminar registro seleccionado"
 msgid "%s%%"
 msgstr "%s%%"
 
-msgid "Bold"
-msgstr "Negrita"
-
-msgid "Italic"
-msgstr "Cursiva"
-
-msgid "Underline"
-msgstr "Subrayado"
-
-msgid "Align Left"
-msgstr "Alinear a la izquierda"
-
-msgid "Align Center"
-msgstr "Alinear en el centro"
-
-msgid "Align Right"
-msgstr "Alinear a la derecha"
-
-msgid "Justify"
-msgstr "Justificar"
-
-msgid "Foreground Color"
-msgstr "Color de fondo"
-
-msgid "Select a color"
-msgstr "Seleccione un color"
-
 msgid "Choose a language"
-msgstr "Seleccionar un idioma"
+msgstr "Escoja un lenguaje"
 
 msgid "Translation"
 msgstr "Traducción"
@@ -1134,7 +1163,7 @@ msgid "Edit"
 msgstr "Editar"
 
 msgid "Fuzzy"
-msgstr "Confuso"
+msgstr "Dudoso"
 
 msgid "You need to save the record before adding translations."
 msgstr "Debe guardar el registro antes de añadir traducciones."

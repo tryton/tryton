@@ -1,0 +1,1167 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "specificare alt fisier de configurare"
+
+msgid "development mode"
+msgstr "mod de dezvoltare"
+
+msgid "logging everything at INFO level"
+msgstr "logare totul la nivel INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "specificați nivelul jurnalului: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "specificati utilizatorul"
+
+msgid "specify the server hostname:port"
+msgstr "specificați numele gazdă server: port"
+
+#, python-format
+msgid "Unable to write config file %s."
+msgstr "Imposibil de scris fișierul de configurare %s."
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Imposibil de setat regiunea locală %s"
+
+msgid ", "
+msgstr ", "
+
+msgid ",..."
+msgstr ",..."
+
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+msgid "Select your action"
+msgstr "Selectați acțiunea"
+
+msgid "No action defined."
+msgstr "Nicio acțiune definită."
+
+msgid "By: "
+msgstr "De: "
+
+msgid "Selection"
+msgstr "Selecţie"
+
+msgid "Cancel"
+msgstr "Anulare"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Your selection:"
+msgstr "Selecția dvs.:"
+
+msgid "Select"
+msgstr "Selectați"
+
+msgid "Save"
+msgstr "Salvare"
+
+msgid "Save As..."
+msgstr "Salvare că..."
+
+msgid "Do you want to proceed?"
+msgstr "Doriți să continuați?"
+
+msgid "Always ignore this warning."
+msgstr "Ignorați întotdeauna acest avertisment."
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "Concurrency Exception"
+msgstr "Excepție de concurgență"
+
+msgid "This record has been modified while you were editing it."
+msgstr "Această înregistrare a fost modificată în timp ce o editați."
+
+msgid "Cancel saving"
+msgstr "Anulați salvarea"
+
+msgid "Compare"
+msgstr "Comparaţie"
+
+msgid "See the modified version"
+msgstr "Visualizare a versiunii modificate"
+
+msgid "Write Anyway"
+msgstr "Scrie oricum"
+
+msgid "Save your current version"
+msgstr "Salvați versiunea curentă"
+
+#, python-format
+msgid "Compare: %s"
+msgstr "Comparați: %s"
+
+msgid "Close"
+msgstr "Închidere"
+
+msgid "Application Error"
+msgstr "Eroare de aplicație"
+
+msgid "Report Bug"
+msgstr "Raporteati eroare"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr "Verificați adresa URL: %s"
+
+msgid "Unable to check for new version."
+msgstr "Nu se poate verifica dacă există o versiune nouă."
+
+msgid "A new version is available!"
+msgstr "O nouă versiune este disponibilă!"
+
+msgid "Download"
+msgstr "Descarca"
+
+msgid "Too many requests. Try again later."
+msgstr "Prea multe cereri. Încercați mai târziu."
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>Căutare...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Creare...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "Imposibil de căutat pentru finalizarea %s"
+
+msgid "Value"
+msgstr "Valoare"
+
+msgid "Displayed value"
+msgstr "Valoarea afișată"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Display format"
+msgstr "Formatul afisare"
+
+msgid "Open the calendar"
+msgstr "Deschidere calendar"
+
+msgid "Date Format"
+msgstr "Formatul datei"
+
+msgid "Displayed date format"
+msgstr "Formatul datei afișat"
+
+msgid "y"
+msgstr "y"
+
+msgid "True"
+msgstr "Adevărat"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "Fals"
+
+msgid "Digits"
+msgstr "Cifre"
+
+msgid "The number of decimal"
+msgstr "Zecimale"
+
+msgid "Template"
+msgstr "Șablon"
+
+msgid "Edit..."
+msgstr "Editare..."
+
+msgid "Attachments..."
+msgstr "Atașamente..."
+
+msgid "Notes..."
+msgstr "Note..."
+
+msgid "Actions..."
+msgstr "Acțiuni..."
+
+msgid "Relate..."
+msgstr "Relata..."
+
+msgid "Report..."
+msgstr "Raportare..."
+
+msgid "Print..."
+msgstr "Imprimare..."
+
+msgid "E-Mail..."
+msgstr "E-Mail..."
+
+msgid "Bold"
+msgstr "Text ingroșat"
+
+msgid "Italic"
+msgstr "Cursiv"
+
+msgid "Underline"
+msgstr "Subliniere"
+
+msgid "Align Left"
+msgstr "Aliniere stânga"
+
+msgid "Align Center"
+msgstr "Aliniere centru"
+
+msgid "Align Right"
+msgstr "Aliniere dreapta"
+
+msgid "Justify"
+msgstr "Margini"
+
+msgid "Foreground Color"
+msgstr "Culoare prim plan"
+
+msgid "Select a color"
+msgstr "Selectare culoare"
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "Preferences..."
+msgstr "Preferințe ..."
+
+msgid "Toolbar"
+msgstr "Bara de instrumente"
+
+msgid "Default"
+msgstr "Implicit"
+
+msgid "Text and Icons"
+msgstr "Text și icoane"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Icons"
+msgstr "Pictograme"
+
+msgid "Form"
+msgstr "Formular"
+
+msgid "Save Column Width"
+msgstr "Salvați lățimea coloanei"
+
+msgid "Save Tree State"
+msgstr "Salvare stare arbore"
+
+msgid "Spell Checking"
+msgstr "Verificare ortografia"
+
+msgid "PDA Mode"
+msgstr "Modul PDA"
+
+msgid "Search Limit..."
+msgstr "Limita de căutare ..."
+
+msgid "Check Version"
+msgstr "Verificare versiune"
+
+msgid "Options"
+msgstr "Opțiuni"
+
+msgid "Keyboard Shortcuts..."
+msgstr "Comenzi rapide..."
+
+msgid "About..."
+msgstr "Despre..."
+
+msgid "Help"
+msgstr "Ajutor"
+
+msgid "No result found."
+msgstr "Niciun rezultat găsit."
+
+msgid "Favorites"
+msgstr "Favorite"
+
+msgid "Manage..."
+msgstr "Gestionare..."
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Următoarea acțiune necesită închiderea tuturor filelor.\n"
+"Doriți să continuați?"
+
+msgid "Application Shortcuts"
+msgstr "Comenzi rapide pentru aplicații"
+
+msgid "Global"
+msgstr "Global"
+
+msgid "Preferences"
+msgstr "Preferințe"
+
+msgid "Search menu"
+msgstr "Meniu Căutare"
+
+msgid "Toggle menu"
+msgstr "Meniu Comutare"
+
+msgid "Previous tab"
+msgstr "Fila anterioară"
+
+msgid "Next tab"
+msgstr "Fila următoare"
+
+msgid "Shortcuts"
+msgstr "Scurtaturi"
+
+msgid "Quit"
+msgstr "Inchidere"
+
+msgid "Edition Shortcuts"
+msgstr "Comenzi rapide de ediție"
+
+msgid "Text Entries"
+msgstr "Inregistrari text"
+
+msgid "Cut selected text"
+msgstr "Tăiere text selectat"
+
+msgid "Copy selected text"
+msgstr "Copiere text selectat"
+
+msgid "Paste copied text"
+msgstr "Inserare text copiat"
+
+msgid "Next entry"
+msgstr "Următoarea inregistrare"
+
+msgid "Previous entry"
+msgstr "Inregistrare anterioară"
+
+msgid "Relation Entries"
+msgstr "Inregistrare relații"
+
+msgid "Create new relation"
+msgstr "Creare relație noua"
+
+msgid "Open/Search relation"
+msgstr "Deschidere/Căutare relație"
+
+msgid "List Entries"
+msgstr "Lista inregistrari"
+
+msgid "Switch view"
+msgstr "Comutare vedere"
+
+msgid "Create/Select new line"
+msgstr "Creare/Selectie rând nou"
+
+msgid "Open relation"
+msgstr "Deschidere relație"
+
+msgid "Mark line for deletion/removal"
+msgstr "Selectare rând pentru ștergere/eliminare"
+
+msgid "Mark line for removal"
+msgstr "Selectare linia pentru eliminare"
+
+msgid "Unmark line for deletion"
+msgstr "Deselectare rând pentru ștergere"
+
+msgid "List/Tree Shortcuts"
+msgstr "Scurtaturi Listă/Arbore"
+
+msgid "Move Cursor"
+msgstr "Mutare cursor"
+
+msgid "Move right"
+msgstr "Mutare dreapta"
+
+msgid "Move left"
+msgstr "Mutre la stânga"
+
+msgid "Move up"
+msgstr "Mutare în sus"
+
+msgid "Move down"
+msgstr "Mutre în jos"
+
+msgid "Move up of one page"
+msgstr "Mutare sus o pagina"
+
+msgid "Move down of one page"
+msgstr "Mutare jos o pagina"
+
+msgid "Move to top"
+msgstr "Mută în varf"
+
+msgid "Move to bottom"
+msgstr "Mutați-vă cel mai jos"
+
+msgid "Move to parent"
+msgstr "Mutare la parinte"
+
+msgid "Select all"
+msgstr "Selectare tot"
+
+msgid "Unselect all"
+msgstr "Deselectare tot"
+
+msgid "Select parent"
+msgstr "Selectare parinte"
+
+msgid "Select/Activate current row"
+msgstr "Selectare/Activare rândul curent"
+
+msgid "Toggle selection"
+msgstr "Comutare selecția"
+
+msgid "Expand/Collapse"
+msgstr "Expansiune/Reducere"
+
+msgid "Expand row"
+msgstr "Extindere rându"
+
+msgid "Collapse row"
+msgstr "Reducere rând"
+
+msgid "Toggle row"
+msgstr "Comutare rând"
+
+msgid "Collapse all rows"
+msgstr "Reducere toate rândurile"
+
+msgid "Expand all rows"
+msgstr "Extindeți toate rândurile"
+
+msgid "Close Tab"
+msgstr "Închidere fila"
+
+msgid "modularity, scalability and security"
+msgstr "modularitate, scalabilitate și securitate"
+
+msgid "translator-credits"
+msgstr "Dimitrios Moustos"
+
+#, python-format
+msgid "Attachments (%s)"
+msgstr "Atașamente (%s)"
+
+msgid "Profile Editor"
+msgstr "Editor de profil"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Add new profile"
+msgstr "Adăugare profil nou"
+
+msgid "Remove selected profile"
+msgstr "Ștergere profil selectat"
+
+msgid "Host:"
+msgstr "Gazdă:"
+
+msgid "Database:"
+msgstr "Bază de date:"
+
+msgid "Fetching databases list"
+msgstr "Obținerea listei de baze de date"
+
+msgid "Username:"
+msgstr "Utilizator:"
+
+msgid "Incompatible version of the server."
+msgstr "Versiunea incompatibilă a serverului."
+
+msgid "Could not connect to the server."
+msgstr "Nu s-a putut conecta la server."
+
+msgid "Login"
+msgstr "Autentificare"
+
+msgid "_Cancel"
+msgstr "_Anulare"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Intrerupere al conexiunii la serverul Tryton"
+
+msgid "C_onnect"
+msgstr "C_onectare"
+
+msgid "Connect the Tryton server"
+msgstr "Conectați serverul Tryton"
+
+msgid "Profile:"
+msgstr "Profil:"
+
+msgid "Host / Database information"
+msgstr "Informații despre gazdă / bază de date"
+
+msgid "User name:"
+msgstr "Utilizator:"
+
+msgid "Unable to complete email entry"
+msgstr "Nu se poate finaliza introducerea e-mailului"
+
+#, python-format
+msgid "E-mail %s"
+msgstr "E-mail %s"
+
+msgid "To:"
+msgstr "Destinatar:"
+
+msgid "Cc:"
+msgstr "CC:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
+
+msgid "Subject:"
+msgstr "Subiect:"
+
+msgid "Body"
+msgstr "Corp"
+
+msgid "Reports"
+msgstr "Raport"
+
+msgid "Attachments"
+msgstr "Atașamente"
+
+msgid "Files"
+msgstr "Fişiere"
+
+msgid "Send"
+msgstr "Trimite"
+
+msgid "Select File"
+msgstr "Selectare Fişier"
+
+msgid "Remove File"
+msgstr "Eliminare Fişier"
+
+msgid "Add..."
+msgstr "Adăuga..."
+
+msgid "Preview"
+msgstr "Previzualizare"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Următor"
+
+#, python-format
+msgid "Attachment (%s)"
+msgstr "Atachment (%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr "Notă (%d/%d)"
+
+msgid "You have to select one record."
+msgstr "Trebuie selectaa o singura înregistrare."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creat de:"
+
+msgid "Created at:"
+msgstr "Creat la:"
+
+msgid "Edited by:"
+msgstr "Editat de:"
+
+msgid "Edited at:"
+msgstr "Editat la:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Sigur eliminați această înregistrare?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Sigur eliminați această înregistrare?"
+
+msgid "Records not removed."
+msgstr "Înregistrările nu au fost eliminate."
+
+msgid "Records removed."
+msgstr "Înregistrările au fost eliminate."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Lucrează acum la înregistrările duplicate."
+
+msgid "Record saved."
+msgstr "Înregistrare salvată."
+
+msgid " of "
+msgstr " de "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Această înregistrare a fost modificată\n"
+"vrei sa o salvezi?"
+
+msgid "Launch action"
+msgstr "Lansare acțiune"
+
+msgid "Relate"
+msgstr "Relata"
+
+msgid "Open related records"
+msgstr "Deschidere înregistrări conexe"
+
+msgid "Report"
+msgstr "Raport"
+
+msgid "Open report"
+msgstr "Deschidere Raport"
+
+msgid "Print"
+msgstr "Tiparire"
+
+msgid "Print report"
+msgstr "Tipărire raport"
+
+msgid "_Copy URL"
+msgstr "_Copiere URL"
+
+msgid "Copy URL into clipboard"
+msgstr "Copiați URL-ul în clipboard"
+
+msgid "Unknown"
+msgstr "Necunoscut"
+
+msgid "Limit"
+msgstr "Limită"
+
+msgid "Search Limit Settings"
+msgstr "Setări limită de căutare"
+
+msgid "Limit:"
+msgstr "Limită:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr "Note (%s)"
+
+msgid "Edit User Preferences"
+msgstr "Editare Preferințe utilizator"
+
+msgid "Preference"
+msgstr "Preferințe"
+
+msgid "Revision"
+msgstr "Revizuire"
+
+msgid "Select a revision"
+msgstr "Selectare o revizie"
+
+msgid "Revision:"
+msgstr "Revizuire:"
+
+msgid "_Switch View"
+msgstr "_Comutare vedere"
+
+msgid "Switch View"
+msgstr "Comutare vedere"
+
+msgid "_Previous"
+msgstr "_Anterior"
+
+msgid "Previous Record"
+msgstr "Înregistrare anterioară"
+
+msgid "_Next"
+msgstr "Următor"
+
+msgid "Next Record"
+msgstr "Următoarea înregistrare"
+
+msgid "_Search"
+msgstr "_Căutare"
+
+msgid "_New"
+msgstr "_Nou"
+
+msgid "Create a new record"
+msgstr "Creați o înregistrare nouă"
+
+msgid "_Save"
+msgstr "_Salvare"
+
+msgid "Save this record"
+msgstr "Salvare înregistrare"
+
+msgid "_Reload/Undo"
+msgstr "_Reincarcare/Desfacere"
+
+msgid "Reload/Undo"
+msgstr "Reincarcare/Desfacere"
+
+msgid "_Duplicate"
+msgstr "_Duplicat"
+
+msgid "_Delete..."
+msgstr "_Ștergere..."
+
+msgid "View _Logs..."
+msgstr "Vizualizare_jurnalele ..."
+
+msgid "Show revisions..."
+msgstr "Afișați revizii..."
+
+msgid "A_ttachments..."
+msgstr "A_tasamente..."
+
+msgid "Add an attachment to the record"
+msgstr "Adăugați un atașament la înregistrare"
+
+msgid "_Notes..."
+msgstr "Note..."
+
+msgid "Add a note to the record"
+msgstr "Adăugați o notă la înregistrare"
+
+msgid "_Actions..."
+msgstr "_Acțiuni..."
+
+msgid "_Relate..."
+msgstr "_Relata..."
+
+msgid "_Report..."
+msgstr "_Raportare..."
+
+msgid "_Print..."
+msgstr "_Imprimare..."
+
+msgid "_E-Mail..."
+msgstr "_E-mail..."
+
+msgid "Send an e-mail using the record"
+msgstr "Trimiteți un e-mail folosind înregistrarea"
+
+msgid "_Export Data..."
+msgstr "_Export de date..."
+
+msgid "_Import Data..."
+msgstr "_Import de date..."
+
+msgid "Copy _URL..."
+msgstr "Copiază _URL ..."
+
+msgid "_Close Tab"
+msgstr "_Închideți fila"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Toate câmpurile</b>"
+
+msgid "_Add"
+msgstr "_Adăuga"
+
+msgid "_Remove"
+msgstr "_Elimina"
+
+msgid "_Clear"
+msgstr "_Clar"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>Câmpurile selectate</b>"
+
+msgid "CSV Parameters"
+msgstr "Parametri CSV"
+
+msgid "Delimiter:"
+msgstr "Delimitator:"
+
+msgid "Quote char:"
+msgstr "Caracter de cotatie:"
+
+msgid "Encoding:"
+msgstr "Codifiere:"
+
+msgid "Use locale format"
+msgstr "Utilizați formatul local"
+
+msgid "Field name"
+msgstr "Denumire Câmp"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr "Export CSV: %s"
+
+msgid "_Save Export"
+msgstr "_Salvare Export"
+
+msgid "_URL Export"
+msgstr "_URL Export"
+
+msgid "_Delete Export"
+msgstr "_Ștergere Export"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Exporturi predefinite</b>"
+
+msgid "Name"
+msgstr "Denumire"
+
+msgid "Open"
+msgstr "Deschidere"
+
+msgid "Listed Records"
+msgstr "Înregistrări enumerate"
+
+msgid "Selected Records"
+msgstr "Înregistrări selectate"
+
+msgid "Ignore search limit"
+msgstr "Ignorați limita de căutare"
+
+msgid "Add field names"
+msgstr "Adăugare denumire de câmp"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (model name)"
+
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (denmire inregistrare)"
+
+msgid "What is the name of this export?"
+msgstr "Care este numele acestui export?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Trecere peste definiția '%s'?"
+
+#, python-format
+msgid "%d record saved."
+msgstr "inregistrare %d salvata."
+
+#, python-format
+msgid "%d records saved."
+msgstr "inregistrari %d salvate."
+
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Operația a eșuat.\n"
+"Mesaj de eroare:\n"
+"%s"
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Link"
+msgstr "Legătură"
+
+msgid "Delete"
+msgstr "Ștergere"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Switch"
+msgstr "Schimba"
+
+msgid "Add"
+msgstr "Adăuga"
+
+msgid "Remove <Del>"
+msgstr "Eliminare <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "Creați o nouă înregistrare <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Ștergeți înregistrarea selectată <Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Anulare stergere pentru înregistrarea selectată <Ins>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr "Import CSV: %s"
+
+msgid "_Auto-Detect"
+msgstr "_Auto detectare"
+
+msgid "File to Import:"
+msgstr "Fișier de importat:"
+
+msgid "Open..."
+msgstr "Deschidere..."
+
+msgid "Lines to Skip:"
+msgstr "Rânduri de sarit:"
+
+msgid "You must select an import file first."
+msgstr "Mai întâi trebuie să selectați un fișier de import."
+
+msgid "Error opening CSV file"
+msgstr "Eroare la deschiderea fișierului CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Eroare la procesarea fișierului în câmpul %s."
+
+#, python-format
+msgid "%d record imported."
+msgstr "înregistrare %d importată."
+
+#, python-format
+msgid "%d records imported."
+msgstr "înregistrări %d importate."
+
+msgid "Search"
+msgstr "Căutare"
+
+#, python-format
+msgid "Search %s"
+msgstr "Căutare %s"
+
+msgid "Wizard"
+msgstr "Asistent"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "Imposibil de șters asistent de configurare %s"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create by"
+msgstr "Creat de"
+
+msgid "Created at"
+msgstr "Creat la"
+
+msgid "Edited by"
+msgstr "Editat de"
+
+msgid "Edited at"
+msgstr "Editat la"
+
+#, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "Nu se poate obține starea arborelui de vizualizare pentru %s"
+
+msgid "Unable to set view tree state"
+msgstr "Imposibil de setat starea arborelui de vizualizare"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain."
+msgstr "\"%s\" nu este valid conform domeniului său."
+
+#, python-format
+msgid "\"%s\" is required."
+msgstr "\"%s\" este obligatoriu."
+
+#, python-format
+msgid "The values of \"%s\" are not valid."
+msgstr "Valorile lui \"%s\" nu sunt valide."
+
+msgid "Pre-validation"
+msgstr "Pre-validare"
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Marimea imaginii"
+
+msgid "Width:"
+msgstr "Lăţime:"
+
+msgid "Height:"
+msgstr "Înălţime:"
+
+msgid "PNG image (*.png)"
+msgstr "Imagine PNG (* .png)"
+
+msgid "Save As"
+msgstr "Salvează ca"
+
+msgid "Image size too large."
+msgstr "Dimensiunea imaginii este prea mare."
+
+msgid "Copy"
+msgstr "Copiere"
+
+msgid "Paste"
+msgstr "Lipire"
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr "Deschide filtre"
+
+msgid "Show bookmarks of filters"
+msgstr "Afișați marcajele filtrelor"
+
+msgid "Remove this bookmark"
+msgstr "Eliminare marcaj"
+
+msgid "Bookmark this filter"
+msgstr "Marcare filtru"
+
+msgid "Show active records"
+msgstr "Afișează înregistrări active"
+
+msgid "Show inactive records"
+msgstr "Afișează înregistrări active"
+
+msgid "Bookmark Name:"
+msgstr "Denumire marcaj:"
+
+msgid "Find"
+msgstr "Căutare"
+
+msgid "Today"
+msgstr "Astăzi"
+
+msgid "go back"
+msgstr "întoarcre"
+
+msgid "go forward"
+msgstr "mergi inainte"
+
+msgid "previous year"
+msgstr "anul precedent"
+
+msgid "next year"
+msgstr "anul urmator"
+
+msgid "Day View"
+msgstr "Visualizare zi"
+
+msgid "Week View"
+msgstr "Visualizare saptamana"
+
+msgid "Month View"
+msgstr "Vizualizare lunară"
+
+msgid "Week"
+msgstr "Săptămână"
+
+msgid "Select..."
+msgstr "Selectare..."
+
+msgid "Clear"
+msgstr "Golire"
+
+msgid "All files"
+msgstr "Toate fișierele"
+
+msgid "Show plain text"
+msgstr "Afișare text simplu"
+
+msgid "Add value"
+msgstr "Adaugă valoare"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Eliminare \"%s\""
+
+msgid "Images"
+msgstr "Imagini"
+
+msgid "Add existing record"
+msgstr "Adăugare înregistrare existentă"
+
+msgid "Remove selected record"
+msgstr "Eliminare înregistrare selectată"
+
+msgid "Open the record <F2>"
+msgstr "Deschidere înregistrare <F2>"
+
+msgid "Clear the field <Del>"
+msgstr "Golire a câmpului <Del>"
+
+msgid "Search a record <F2>"
+msgstr "Căutați o înregistrare <F2>"
+
+msgid "Edit selected record"
+msgstr "Editeare înregistrare selectată"
+
+msgid "Delete selected record"
+msgstr "Ștergere înregistrare selectată"
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Choose a language"
+msgstr "Alegere limbă"
+
+msgid "Translation"
+msgstr "Traducere"
+
+msgid "Edit"
+msgstr "Editare"
+
+msgid "Fuzzy"
+msgstr "Cautare aproximativa"
+
+msgid "You need to save the record before adding translations."
+msgstr "Trebuie să salvați înregistrarea înainte de a adăuga traduceri."
+
+msgid "No other language available."
+msgstr "Nu există altă limbă disponibilă."
+
+msgid "Translate view"
+msgstr "Traducere vedere"

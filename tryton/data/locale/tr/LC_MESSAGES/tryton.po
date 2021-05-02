@@ -6,13 +6,13 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgid "specify alternate config file"
-msgstr "Alternative config dosyasını belirle "
+msgstr "Alternative config dosyasını belirle"
 
 msgid "development mode"
 msgstr "Geliştirme Modu"
 
 msgid "logging everything at INFO level"
-msgstr "Tamamına INFO seviyesinde giriş "
+msgstr "Tamamına INFO seviyesinde giriş"
 
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "Log seviyesini belirle: DEBUG, INFO, WARNING, ERROR, CRITICAL"
@@ -34,8 +34,8 @@ msgstr "Lokal %s ayarlanamadı"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ""
 
 #, python-format
 msgid "%s (%s)"
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Save As..."
 msgstr "Save As..."
 
-msgid "Always ignore this warning."
-msgstr "Bu uyarıyı daima ihmal et."
-
 msgid "Do you want to proceed?"
 msgstr "İlerlemek istiyor musunuz?"
+
+msgid "Always ignore this warning."
+msgstr "Bu uyarıyı daima ihmal et."
 
 msgid "No"
 msgstr ""
@@ -105,6 +105,10 @@ msgstr "Tüm Durumlarda Yaz"
 msgid "Save your current version"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "Compare: %s"
+msgstr "Karşılaştır"
+
 msgid "Close"
 msgstr ""
 
@@ -119,13 +123,16 @@ msgstr "Hatayı Raporla"
 msgid "Check URL: %s"
 msgstr ""
 
-msgid "Unable to check for new version"
+msgid "Unable to check for new version."
 msgstr ""
 
 msgid "A new version is available!"
 msgstr ""
 
 msgid "Download"
+msgstr ""
+
+msgid "Too many requests. Try again later."
 msgstr ""
 
 msgid "..."
@@ -180,6 +187,9 @@ msgstr ""
 msgid "The number of decimal"
 msgstr ""
 
+msgid "Template"
+msgstr ""
+
 msgid "Edit..."
 msgstr ""
 
@@ -198,10 +208,37 @@ msgstr ""
 msgid "Report..."
 msgstr ""
 
+msgid "Print..."
+msgstr ""
+
 msgid "E-Mail..."
 msgstr ""
 
-msgid "Print..."
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
 msgstr ""
 
 msgid "Y"
@@ -246,13 +283,10 @@ msgstr ""
 msgid "Form"
 msgstr ""
 
-msgid "Save Width/Height"
+msgid "Save Column Width"
 msgstr ""
 
 msgid "Save Tree State"
-msgstr ""
-
-msgid "Fast Tabbing"
 msgstr ""
 
 msgid "Spell Checking"
@@ -262,9 +296,6 @@ msgid "PDA Mode"
 msgstr ""
 
 msgid "Search Limit..."
-msgstr ""
-
-msgid "Email..."
 msgstr ""
 
 msgid "Check Version"
@@ -280,9 +311,6 @@ msgid "About..."
 msgstr ""
 
 msgid "Help"
-msgstr ""
-
-msgid "Quit"
 msgstr ""
 
 msgid "No result found."
@@ -308,6 +336,9 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
+msgid "Preferences"
+msgstr ""
+
 msgid "Search menu"
 msgstr ""
 
@@ -321,6 +352,9 @@ msgid "Next tab"
 msgstr ""
 
 msgid "Shortcuts"
+msgstr ""
+
+msgid "Quit"
 msgstr ""
 
 msgid "Edition Shortcuts"
@@ -477,10 +511,10 @@ msgstr ""
 msgid "Username:"
 msgstr ""
 
-msgid "Incompatible version of the server"
+msgid "Incompatible version of the server."
 msgstr ""
 
-msgid "Could not connect to the server"
+msgid "Could not connect to the server."
 msgstr ""
 
 msgid "Login"
@@ -507,34 +541,59 @@ msgstr ""
 msgid "User name:"
 msgstr ""
 
-msgid "Email"
-msgstr ""
+#, fuzzy
+msgid "Unable to complete email entry"
+msgstr "Lokal %s ayarlanamadı"
 
-msgid "Email Program Settings"
-msgstr ""
-
-msgid "Command Line:"
-msgstr ""
-
-msgid "Legend of Available Placeholders:"
+#, python-format
+msgid "E-mail %s"
 msgstr ""
 
 msgid "To:"
 msgstr ""
 
-msgid "CC:"
+msgid "Cc:"
+msgstr ""
+
+msgid "Bcc:"
 msgstr ""
 
 msgid "Subject:"
 msgstr ""
 
-msgid "Body:"
+msgid "Body"
 msgstr ""
 
-msgid "Attachment:"
+#, fuzzy
+msgid "Reports"
+msgstr "Hatayı Raporla"
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Select File"
+msgstr "Seçim"
+
+msgid "Remove File"
 msgstr ""
 
 msgid "Add..."
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Next"
 msgstr ""
 
 #, python-format
@@ -551,16 +610,16 @@ msgstr ""
 msgid "ID:"
 msgstr ""
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr ""
 
-msgid "Creation Date:"
+msgid "Created at:"
 msgstr ""
 
-msgid "Latest Modification by:"
+msgid "Edited by:"
 msgstr ""
 
-msgid "Latest Modification Date:"
+msgid "Edited at:"
 msgstr ""
 
 msgid "Model:"
@@ -607,12 +666,6 @@ msgstr ""
 msgid "Open report"
 msgstr ""
 
-msgid "E-Mail"
-msgstr ""
-
-msgid "E-Mail report"
-msgstr ""
-
 msgid "Print"
 msgstr ""
 
@@ -639,9 +692,6 @@ msgstr ""
 
 #, python-format
 msgid "Notes (%s)"
-msgstr ""
-
-msgid "Preferences"
 msgstr ""
 
 msgid "Edit User Preferences"
@@ -731,10 +781,13 @@ msgstr ""
 msgid "_Report..."
 msgstr ""
 
+msgid "_Print..."
+msgstr ""
+
 msgid "_E-Mail..."
 msgstr ""
 
-msgid "_Print..."
+msgid "Send an e-mail using the record"
 msgstr ""
 
 msgid "_Export Data..."
@@ -789,6 +842,9 @@ msgstr ""
 msgid "_Save Export"
 msgstr ""
 
+msgid "_URL Export"
+msgstr ""
+
 msgid "_Delete Export"
 msgstr ""
 
@@ -799,6 +855,15 @@ msgid "Name"
 msgstr ""
 
 msgid "Open"
+msgstr ""
+
+msgid "Listed Records"
+msgstr ""
+
+msgid "Selected Records"
+msgstr ""
+
+msgid "Ignore search limit"
 msgstr ""
 
 msgid "Add field names"
@@ -851,12 +916,6 @@ msgid "New"
 msgstr ""
 
 msgid "Switch"
-msgstr ""
-
-msgid "Previous"
-msgstr ""
-
-msgid "Next"
 msgstr ""
 
 msgid "Add"
@@ -915,26 +974,26 @@ msgstr ""
 msgid "Search %s"
 msgstr ""
 
-#, python-format
-msgid "Unable to delete wizard %s"
+msgid "Wizard"
 msgstr ""
 
-msgid "Wizard"
+#, python-format
+msgid "Unable to delete wizard %s"
 msgstr ""
 
 msgid "ID"
 msgstr ""
 
-msgid "Creation User"
+msgid "Create by"
 msgstr ""
 
-msgid "Creation Date"
+msgid "Created at"
 msgstr ""
 
-msgid "Modification User"
+msgid "Edited by"
 msgstr ""
 
-msgid "Modification Date"
+msgid "Edited at"
 msgstr ""
 
 #, python-format
@@ -945,15 +1004,15 @@ msgid "Unable to set view tree state"
 msgstr ""
 
 #, python-format
-msgid "\"%s\" is not valid according to its domain"
+msgid "\"%s\" is not valid according to its domain."
 msgstr ""
 
 #, python-format
-msgid "\"%s\" is required"
+msgid "\"%s\" is required."
 msgstr ""
 
 #, python-format
-msgid "The values of \"%s\" are not valid"
+msgid "The values of \"%s\" are not valid."
 msgstr ""
 
 msgid "Pre-validation"
@@ -1085,33 +1144,6 @@ msgstr ""
 
 #, python-format
 msgid "%s%%"
-msgstr ""
-
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
 msgstr ""
 
 msgid "Choose a language"

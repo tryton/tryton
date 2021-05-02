@@ -24,9 +24,9 @@ msgstr "Indica l'usuari"
 msgid "specify the server hostname:port"
 msgstr "Indica el nom:port del servidor"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to write config file %s."
-msgstr "No s'ha pogut escriure el fitxer configuració %s"
+msgstr "No s'ha pogut escriure el fitxer configuració %s."
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -35,8 +35,8 @@ msgstr "No s'ha pogut establir l'idioma %s"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 #, python-format
 msgid "%s (%s)"
@@ -72,11 +72,11 @@ msgstr "Desa"
 msgid "Save As..."
 msgstr "Desa com..."
 
-msgid "Always ignore this warning."
-msgstr "Ignora sempre aquest advertiment."
-
 msgid "Do you want to proceed?"
 msgstr "Voleu continuar?"
+
+msgid "Always ignore this warning."
+msgstr "Ignora sempre aquest advertiment."
 
 msgid "No"
 msgstr "No"
@@ -105,6 +105,10 @@ msgstr "Desa de totes formes"
 msgid "Save your current version"
 msgstr "Deseu els vostres canvis"
 
+#, python-format
+msgid "Compare: %s"
+msgstr "Compara: %s"
+
 msgid "Close"
 msgstr "Tanca"
 
@@ -118,7 +122,7 @@ msgstr "Informa de l'error"
 msgid "Check URL: %s"
 msgstr "URL de comprovació: %s"
 
-msgid "Unable to check for new version"
+msgid "Unable to check for new version."
 msgstr "No s'ha pogut comprovar si existeix una nova versió."
 
 msgid "A new version is available!"
@@ -126,6 +130,9 @@ msgstr "Hi ha una nova versió disponible!"
 
 msgid "Download"
 msgstr "Baixa"
+
+msgid "Too many requests. Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
 
 msgid "..."
 msgstr "..."
@@ -179,6 +186,9 @@ msgstr "Dígits"
 msgid "The number of decimal"
 msgstr "El número de decimals"
 
+msgid "Template"
+msgstr "Plantilla"
+
 msgid "Edit..."
 msgstr "Edita..."
 
@@ -197,11 +207,38 @@ msgstr "Relacionat..."
 msgid "Report..."
 msgstr "Informe..."
 
+msgid "Print..."
+msgstr "Imprimeix..."
+
 msgid "E-Mail..."
 msgstr "Correu electrònic..."
 
-msgid "Print..."
-msgstr "Imprimeix..."
+msgid "Bold"
+msgstr "Negreta"
+
+msgid "Italic"
+msgstr "Cursiva"
+
+msgid "Underline"
+msgstr "Subratllat"
+
+msgid "Align Left"
+msgstr "Alinear a l'esquerra"
+
+msgid "Align Center"
+msgstr "Alinear al centre"
+
+msgid "Align Right"
+msgstr "Alinear a la dreta"
+
+msgid "Justify"
+msgstr "Justificar"
+
+msgid "Foreground Color"
+msgstr "Color de fons"
+
+msgid "Select a color"
+msgstr "Seleccioneu un color"
 
 msgid "Y"
 msgstr "A"
@@ -245,14 +282,11 @@ msgstr "Icones"
 msgid "Form"
 msgstr "Formulari"
 
-msgid "Save Width/Height"
-msgstr "Desa ample/alt"
+msgid "Save Column Width"
+msgstr "Guarda l'ample de la columna"
 
 msgid "Save Tree State"
 msgstr "Desa l'estat de l'arbre"
-
-msgid "Fast Tabbing"
-msgstr "Tabulació ràpida"
 
 msgid "Spell Checking"
 msgstr "Correcció ortogràfica"
@@ -262,9 +296,6 @@ msgstr "Mode PDA"
 
 msgid "Search Limit..."
 msgstr "_Límit de cerca..."
-
-msgid "Email..."
-msgstr "Correu electrònic..."
 
 msgid "Check Version"
 msgstr "Comprova versió"
@@ -280,9 +311,6 @@ msgstr "Quant a..."
 
 msgid "Help"
 msgstr "Ajuda"
-
-msgid "Quit"
-msgstr "Sortir"
 
 msgid "No result found."
 msgstr "No s'han trobat resultats."
@@ -309,6 +337,9 @@ msgstr "Dreceres de l'aplicació"
 msgid "Global"
 msgstr "Global"
 
+msgid "Preferences"
+msgstr "Preferències"
+
 msgid "Search menu"
 msgstr "Menú de cerca"
 
@@ -323,6 +354,9 @@ msgstr "Pestanya següent"
 
 msgid "Shortcuts"
 msgstr "Dreceres"
+
+msgid "Quit"
+msgstr "Sortir"
 
 msgid "Edition Shortcuts"
 msgstr "Accessos directes a l'edició"
@@ -448,9 +482,9 @@ msgid "modularity, scalability and security"
 msgstr "modularitat, escalabilitat i seguretat"
 
 msgid "translator-credits"
-msgstr "Crèdits de traducció"
+msgstr "Sergi Almacellas Abellana"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Attachments (%s)"
 msgstr "Adjunts (%s)"
 
@@ -478,14 +512,14 @@ msgstr "Recuperant llista de bases de dades"
 msgid "Username:"
 msgstr "Nom d'usuari:"
 
-msgid "Incompatible version of the server"
-msgstr "El client no és compatible amb la versió del servidor"
+msgid "Incompatible version of the server."
+msgstr "El client no és compatible amb la versió del servidor."
 
-msgid "Could not connect to the server"
+msgid "Could not connect to the server."
 msgstr "No s'ha pogut connectar amb el servidor."
 
 msgid "Login"
-msgstr "Usuari"
+msgstr "Accedeix"
 
 msgid "_Cancel"
 msgstr "_Cancel·la"
@@ -508,35 +542,57 @@ msgstr "Informació del Servidor / Base de dades"
 msgid "User name:"
 msgstr "Nom d'usuari:"
 
-msgid "Email"
-msgstr "Correu electrònic"
+msgid "Unable to complete email entry"
+msgstr "No s'ha pogut completar l'entrada del correu electrònic"
 
-msgid "Email Program Settings"
-msgstr "Configuració del programa de correu electrònic"
-
-msgid "Command Line:"
-msgstr "Línia de comandes:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Llegenda de paraules clau disponibles:"
+#, python-format
+msgid "E-mail %s"
+msgstr "Correu electrònic %s"
 
 msgid "To:"
 msgstr "A:"
 
-msgid "CC:"
-msgstr "CC:"
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Cco:"
 
 msgid "Subject:"
 msgstr "Assumpte:"
 
-msgid "Body:"
-msgstr "Missatge:"
+msgid "Body"
+msgstr "Missatge"
 
-msgid "Attachment:"
-msgstr "Adjunt:"
+msgid "Reports"
+msgstr "Informes"
+
+msgid "Attachments"
+msgstr "Adjunts"
+
+msgid "Files"
+msgstr "Fitxers"
+
+msgid "Send"
+msgstr "Envia"
+
+msgid "Select File"
+msgstr "Selecciona un fitxer"
+
+msgid "Remove File"
+msgstr "Elimina fitxer"
 
 msgid "Add..."
 msgstr "Afegeix..."
+
+msgid "Preview"
+msgstr "Previsualitza"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Següent"
 
 #, python-format
 msgid "Attachment (%s)"
@@ -547,22 +603,22 @@ msgid "Note (%d/%d)"
 msgstr "Nota (%d/%d)"
 
 msgid "You have to select one record."
-msgstr "Heu de triar un registre."
+msgstr "Ha de seleccionar un registre."
 
 msgid "ID:"
 msgstr "Identificador:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Creat per:"
 
-msgid "Creation Date:"
-msgstr "Data creació:"
+msgid "Created at:"
+msgstr "Creat el:"
 
-msgid "Latest Modification by:"
-msgstr "Última modificació per:"
+msgid "Edited by:"
+msgstr "Editat per:"
 
-msgid "Latest Modification Date:"
-msgstr "Última data de modificació:"
+msgid "Edited at:"
+msgstr "Editat el:"
 
 msgid "Model:"
 msgstr "Model:"
@@ -580,7 +636,7 @@ msgid "Records removed."
 msgstr "Registres eliminats."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Ara esteu treballant en el registre duplicat."
+msgstr "Està treballant amb un registre(s) duplicat."
 
 msgid "Record saved."
 msgstr "Registre desat."
@@ -599,7 +655,7 @@ msgid "Launch action"
 msgstr "Executa acció"
 
 msgid "Relate"
-msgstr "_Relacionat"
+msgstr "Relacionat"
 
 msgid "Open related records"
 msgstr "Obre registres relacionats"
@@ -609,12 +665,6 @@ msgstr "Informes"
 
 msgid "Open report"
 msgstr "Obre informe"
-
-msgid "E-Mail"
-msgstr "Correu electrònic"
-
-msgid "E-Mail report"
-msgstr "Informe per email"
 
 msgid "Print"
 msgstr "Imprimeix"
@@ -643,9 +693,6 @@ msgstr "Límit:"
 #, python-format
 msgid "Notes (%s)"
 msgstr "Notes (%s)"
-
-msgid "Preferences"
-msgstr "Preferències"
 
 msgid "Edit User Preferences"
 msgstr "Edita preferències d'usuari"
@@ -734,11 +781,14 @@ msgstr "_Relacionat..."
 msgid "_Report..."
 msgstr "_Informes..."
 
+msgid "_Print..."
+msgstr "Im_primeix..."
+
 msgid "_E-Mail..."
 msgstr "_Correu electrònic..."
 
-msgid "_Print..."
-msgstr "Im_primeix..."
+msgid "Send an e-mail using the record"
+msgstr "Envia un correu electrònic utilitzant el registre"
 
 msgid "_Export Data..."
 msgstr "_Exporta dades..."
@@ -792,6 +842,9 @@ msgstr "Exportació CSV: %s"
 msgid "_Save Export"
 msgstr "_Desa exportació"
 
+msgid "_URL Export"
+msgstr "_URL exportació"
+
 msgid "_Delete Export"
 msgstr "_Elimina exportació"
 
@@ -803,6 +856,15 @@ msgstr "Nom"
 
 msgid "Open"
 msgstr "Obre"
+
+msgid "Listed Records"
+msgstr "Registres llistats"
+
+msgid "Selected Records"
+msgstr "Registres seleccionats"
+
+msgid "Ignore search limit"
+msgstr "Ignora límit de cerca"
 
 msgid "Add field names"
 msgstr "Afegeix noms de camp"
@@ -826,15 +888,15 @@ msgstr "Quin és el nom d'aquesta exportació?"
 msgid "Override '%s' definition?"
 msgstr "Voleu sobreescriure la definició de '%s'?"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record saved."
 msgstr "S'ha desat %d registre."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records saved."
 msgstr "S'han desat %d registres."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
@@ -859,12 +921,6 @@ msgstr "Nou"
 msgid "Switch"
 msgstr "Canvia la vista"
 
-msgid "Previous"
-msgstr "Anterior"
-
-msgid "Next"
-msgstr "Següent"
-
 msgid "Add"
 msgstr "Afegeix"
 
@@ -885,7 +941,7 @@ msgid "CSV Import: %s"
 msgstr "Importació CSV: %s"
 
 msgid "_Auto-Detect"
-msgstr "Detecta _automàticament "
+msgstr "Detecta _automàticament"
 
 msgid "File to Import:"
 msgstr "Fitxer a importar:"
@@ -906,11 +962,11 @@ msgstr "Error a l'obrir el fitxer CSV"
 msgid "Error processing the file at field %s."
 msgstr "S'ha produït un error en processar el fitxer en el camp %s."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record imported."
 msgstr "S'ha importat %d registre."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records imported."
 msgstr "S'han importat %d registres."
 
@@ -921,29 +977,29 @@ msgstr "Cerca"
 msgid "Search %s"
 msgstr "Cerca %s"
 
+msgid "Wizard"
+msgstr "Assistent"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "No s'ha pogut eliminar l'assistent %s"
 
-msgid "Wizard"
-msgstr "Assistent"
-
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
+msgid "Create by"
 msgstr "Creat per"
 
-msgid "Creation Date"
-msgstr "Data de creació"
+msgid "Created at"
+msgstr "Creat el"
 
-msgid "Modification User"
-msgstr "Modificat per"
+msgid "Edited by"
+msgstr "Editat per"
 
-msgid "Modification Date"
-msgstr "Data de modificació"
+msgid "Edited at"
+msgstr "Editat el"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
 msgstr "No s'ha pogut obtenir l'estat de la vista d'arbre de %s"
 
@@ -951,15 +1007,15 @@ msgid "Unable to set view tree state"
 msgstr "No s'ha pogut desar l'estat de la vista d'arbre"
 
 #, python-format
-msgid "\"%s\" is not valid according to its domain"
+msgid "\"%s\" is not valid according to its domain."
 msgstr "\"%s\" no és vàlid segons el seu domini."
 
 #, python-format
-msgid "\"%s\" is required"
+msgid "\"%s\" is required."
 msgstr "\"%s\" és obligatori."
 
 #, python-format
-msgid "The values of \"%s\" are not valid"
+msgid "The values of \"%s\" are not valid."
 msgstr "Els valors de \"%s\" no són vàlids."
 
 msgid "Pre-validation"
@@ -1093,35 +1149,8 @@ msgstr "Elimina el registre seleccionat"
 msgid "%s%%"
 msgstr "%s%%"
 
-msgid "Bold"
-msgstr "Negreta"
-
-msgid "Italic"
-msgstr "Cursiva"
-
-msgid "Underline"
-msgstr "Subratllat"
-
-msgid "Align Left"
-msgstr "Alinear a l'esquerra"
-
-msgid "Align Center"
-msgstr "Alinear al centre"
-
-msgid "Align Right"
-msgstr "Alinear a la dreta"
-
-msgid "Justify"
-msgstr "Justificar"
-
-msgid "Foreground Color"
-msgstr "Color de fons"
-
-msgid "Select a color"
-msgstr "Seleccioneu un color"
-
 msgid "Choose a language"
-msgstr "Tria un idioma"
+msgstr "Escull un idioma"
 
 msgid "Translation"
 msgstr "Traducció"

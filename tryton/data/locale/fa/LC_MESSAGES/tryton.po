@@ -34,8 +34,8 @@ msgstr "قادر به تنظیم محلی: \"%s\" نیست"
 msgid ", "
 msgstr "، "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ""
 
 #, python-format
 msgid "%s (%s)"
@@ -71,11 +71,11 @@ msgstr "ذخیره"
 msgid "Save As..."
 msgstr "ذخیره با نام..."
 
-msgid "Always ignore this warning."
-msgstr "همیشه این هشدار را نادیده بگیر."
-
 msgid "Do you want to proceed?"
 msgstr "آیا می خواهید پردازش شود؟"
+
+msgid "Always ignore this warning."
+msgstr "همیشه این هشدار را نادیده بگیر."
 
 msgid "No"
 msgstr "خیر"
@@ -104,6 +104,10 @@ msgstr "نوشتن بهرحال"
 msgid "Save your current version"
 msgstr "نسخه فعلی خود را ذخیره کنید"
 
+#, fuzzy, python-format
+msgid "Compare: %s"
+msgstr "مقایسه"
+
 msgid "Close"
 msgstr "بستن"
 
@@ -115,9 +119,10 @@ msgstr "گزارش اشکال(باگ)"
 
 #, python-format
 msgid "Check URL: %s"
-msgstr "بررسی URL :  %s"
+msgstr "بررسی URL : %s"
 
-msgid "Unable to check for new version"
+#, fuzzy
+msgid "Unable to check for new version."
 msgstr "قادر به بررسی نسخه جدید نیست"
 
 msgid "A new version is available!"
@@ -125,6 +130,9 @@ msgstr "نسخه جدید در دسترس می باشد!"
 
 msgid "Download"
 msgstr "دانلود"
+
+msgid "Too many requests. Try again later."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -178,6 +186,10 @@ msgstr ""
 msgid "The number of decimal"
 msgstr ""
 
+#, fuzzy
+msgid "Template"
+msgstr "مرتبط"
+
 msgid "Edit..."
 msgstr "ویرایش..."
 
@@ -196,11 +208,38 @@ msgstr "مرتبط..."
 msgid "Report..."
 msgstr "گزارش..."
 
+msgid "Print..."
+msgstr "چاپ..."
+
 msgid "E-Mail..."
 msgstr "ایمیل..."
 
-msgid "Print..."
-msgstr "چاپ..."
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr "انتخاب یک رنگ"
 
 msgid "Y"
 msgstr "Y"
@@ -244,14 +283,11 @@ msgstr "آیکون ها"
 msgid "Form"
 msgstr "فرم"
 
-msgid "Save Width/Height"
-msgstr "ذخیره عرض/ارتفاع"
+msgid "Save Column Width"
+msgstr ""
 
 msgid "Save Tree State"
 msgstr "ذخیره حالت درختی"
-
-msgid "Fast Tabbing"
-msgstr "برگه کردن سریع"
 
 msgid "Spell Checking"
 msgstr "غلط ‌یاب املایی"
@@ -261,9 +297,6 @@ msgstr "حالت PDA"
 
 msgid "Search Limit..."
 msgstr "جستجو محدود..."
-
-msgid "Email..."
-msgstr "ایمیل..."
 
 msgid "Check Version"
 msgstr "بررسی نسخه"
@@ -279,9 +312,6 @@ msgstr "درباره..."
 
 msgid "Help"
 msgstr "راهنما"
-
-msgid "Quit"
-msgstr "خروج"
 
 msgid "No result found."
 msgstr "نتیجه ای پیدا نشد."
@@ -308,6 +338,9 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
+msgid "Preferences"
+msgstr "ظاهر برنامه"
+
 msgid "Search menu"
 msgstr ""
 
@@ -324,6 +357,9 @@ msgstr "_برگه بعدی"
 
 msgid "Shortcuts"
 msgstr ""
+
+msgid "Quit"
+msgstr "خروج"
 
 msgid "Edition Shortcuts"
 msgstr ""
@@ -482,10 +518,12 @@ msgstr "وارد کردن فهرست های پایگاه داده"
 msgid "Username:"
 msgstr "نام کاربری:"
 
-msgid "Incompatible version of the server"
+#, fuzzy
+msgid "Incompatible version of the server."
 msgstr "نسخه ناسازگار سرور"
 
-msgid "Could not connect to the server"
+#, fuzzy
+msgid "Could not connect to the server."
 msgstr "نمی تواند به سرور متصل شود"
 
 msgid "Login"
@@ -512,37 +550,67 @@ msgstr "اطلاعات میزبان / پایگاه داده"
 msgid "User name:"
 msgstr "نام کاربر:"
 
-msgid "Email"
+#, fuzzy
+msgid "Unable to complete email entry"
+msgstr "قادر به حذف دستیار \"%s\" نیست"
+
+#, fuzzy, python-format
+msgid "E-mail %s"
 msgstr "ایمیل"
-
-msgid "Email Program Settings"
-msgstr "تنظیمات برنامه ایمیل"
-
-msgid "Command Line:"
-msgstr "خط فرمان:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "مشروح متغیرهای موجود:"
 
 msgid "To:"
 msgstr "به:"
 
-msgid "CC:"
+#, fuzzy
+msgid "Cc:"
 msgstr "CC:"
+
+msgid "Bcc:"
+msgstr ""
 
 msgid "Subject:"
 msgstr "موضوع :"
 
-msgid "Body:"
+#, fuzzy
+msgid "Body"
 msgstr "بدنه:"
 
-msgid "Attachment:"
+#, fuzzy
+msgid "Reports"
+msgstr "گزارش"
+
+#, fuzzy
+msgid "Attachments"
 msgstr "پیوست:"
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Select File"
+msgstr "انتخاب همه"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "حذف <Del>"
 
 msgid "Add..."
 msgstr "افزودن..."
 
-#, python-format, fuzzy, python-format
+#, fuzzy
+msgid "Preview"
+msgstr "قبلی"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Next"
+msgstr "بعدی"
+
+#, fuzzy, python-format
 msgid "Attachment (%s)"
 msgstr "پیوستها (%s)"
 
@@ -556,17 +624,21 @@ msgstr "شما باید یک پرونده را انتخاب کنید."
 msgid "ID:"
 msgstr "شناسه:"
 
-msgid "Creation User:"
-msgstr "ایجاد کاربر:"
+#, fuzzy
+msgid "Created by:"
+msgstr "تاریخ ایجاد"
 
-msgid "Creation Date:"
-msgstr "تاريخ ايجاد:"
+#, fuzzy
+msgid "Created at:"
+msgstr "تاریخ ایجاد"
 
-msgid "Latest Modification by:"
-msgstr "آخرین تغییرات بوسیله:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "ویرایش"
 
-msgid "Latest Modification Date:"
-msgstr "تاریخ آخرین تغییرات:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "ویرایش"
 
 msgid "Model:"
 msgstr "مدل:"
@@ -614,12 +686,6 @@ msgstr "گزارش"
 msgid "Open report"
 msgstr "باز کردن گزارش"
 
-msgid "E-Mail"
-msgstr "ایمیل"
-
-msgid "E-Mail report"
-msgstr "گزارش ایمیل"
-
 msgid "Print"
 msgstr "چاپ"
 
@@ -647,9 +713,6 @@ msgstr "محدودیت:"
 #, python-format
 msgid "Notes (%s)"
 msgstr "یادداشت ها(%s)"
-
-msgid "Preferences"
-msgstr "ظاهر برنامه"
 
 msgid "Edit User Preferences"
 msgstr "ویرایش ظاهر برنامه کاربر"
@@ -738,11 +801,15 @@ msgstr "_مرتبط..."
 msgid "_Report..."
 msgstr "_گزارش..."
 
+msgid "_Print..."
+msgstr "_چاپ..."
+
 msgid "_E-Mail..."
 msgstr "_ایمیل..."
 
-msgid "_Print..."
-msgstr "_چاپ..."
+#, fuzzy
+msgid "Send an e-mail using the record"
+msgstr "یک یادداشت به پرونده اضافه کنید"
 
 msgid "_Export Data..."
 msgstr "_صادرات داده ها..."
@@ -796,6 +863,10 @@ msgstr "صادرکردن(CSV) : %s"
 msgid "_Save Export"
 msgstr "_ذخیره استخراج"
 
+#, fuzzy
+msgid "_URL Export"
+msgstr "_ذخیره استخراج"
+
 msgid "_Delete Export"
 msgstr "_حذف استخراج"
 
@@ -807,6 +878,17 @@ msgstr "نام"
 
 msgid "Open"
 msgstr "باز کردن"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "ویرایش پرونده انتخابی <F2>"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "ویرایش پرونده انتخابی <F2>"
+
+msgid "Ignore search limit"
+msgstr ""
 
 #, fuzzy
 msgid "Add field names"
@@ -864,12 +946,6 @@ msgstr "جدید"
 msgid "Switch"
 msgstr "تعویض"
 
-msgid "Previous"
-msgstr "قبلی"
-
-msgid "Next"
-msgstr "بعدی"
-
 msgid "Add"
 msgstr "افزودن"
 
@@ -926,27 +1002,30 @@ msgstr "جستجو"
 msgid "Search %s"
 msgstr "جستجو %s"
 
+msgid "Wizard"
+msgstr "دستیار"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "قادر به حذف دستیار \"%s\" نیست"
 
-msgid "Wizard"
-msgstr "دستیار"
-
 msgid "ID"
 msgstr "شناسه"
 
-msgid "Creation User"
-msgstr "ایجاد کاربر"
+msgid "Create by"
+msgstr ""
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "تاریخ ایجاد"
 
-msgid "Modification User"
-msgstr "کاربر اصلاح کننده"
+#, fuzzy
+msgid "Edited by"
+msgstr "ویرایش"
 
-msgid "Modification Date"
-msgstr "تاریخ اصلاح"
+#, fuzzy
+msgid "Edited at"
+msgstr "ویرایش"
 
 #, python-format
 msgid "Unable to get view tree state for %s"
@@ -955,16 +1034,16 @@ msgstr "قادربه دریافت حالت نمایش درختی نیست برا
 msgid "Unable to set view tree state"
 msgstr "قادر به تنظیم حالت نمایش درختی نیست"
 
-#, python-format
-msgid "\"%s\" is not valid according to its domain"
+#, fuzzy, python-format
+msgid "\"%s\" is not valid according to its domain."
 msgstr "با توجه به دامنه : \"%s\" معتبر نیست"
 
-#, python-format
-msgid "\"%s\" is required"
+#, fuzzy, python-format
+msgid "\"%s\" is required."
 msgstr "\"%s\" مورد نیاز است"
 
-#, python-format
-msgid "The values of \"%s\" are not valid"
+#, fuzzy, python-format
+msgid "The values of \"%s\" are not valid."
 msgstr "مقادیر \"%s\" معتبر نیستند"
 
 msgid "Pre-validation"
@@ -1099,33 +1178,6 @@ msgstr "حذف پرونده انتخابی"
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
-
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
-msgstr "انتخاب یک رنگ"
 
 msgid "Choose a language"
 msgstr ""

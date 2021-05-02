@@ -23,9 +23,9 @@ msgstr "podaj login użytkownika"
 msgid "specify the server hostname:port"
 msgstr "podaj nazwę:port serwera"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to write config file %s."
-msgstr "Nie można zapisać pliku konfiguracyjnego %s!"
+msgstr "Nie można zapisać pliku konfiguracyjnego %s."
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -34,8 +34,8 @@ msgstr "Nie można ustawić lokalizacji %s"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 #, python-format
 msgid "%s (%s)"
@@ -71,11 +71,11 @@ msgstr "Zapisz"
 msgid "Save As..."
 msgstr "Zapisz jako..."
 
-msgid "Always ignore this warning."
-msgstr "Zawsze ignoruj takie ostrzeżenie."
-
 msgid "Do you want to proceed?"
 msgstr "Czy chcesz kontynuować?"
+
+msgid "Always ignore this warning."
+msgstr "Zawsze ignoruj takie ostrzeżenie."
 
 msgid "No"
 msgstr "Nie"
@@ -104,6 +104,10 @@ msgstr "Zapisz"
 msgid "Save your current version"
 msgstr "Zapisz swoją bieżącą wersję"
 
+#, python-format
+msgid "Compare: %s"
+msgstr "Porównaj: %s"
+
 msgid "Close"
 msgstr "Zamknij"
 
@@ -117,14 +121,17 @@ msgstr "Zgłoś błąd"
 msgid "Check URL: %s"
 msgstr "Sprawdź URL: %s"
 
-msgid "Unable to check for new version"
-msgstr "Nie można sprawdzić dostępności nowej wersji"
+msgid "Unable to check for new version."
+msgstr "Nie można sprawdzić dostępności nowej wersji."
 
 msgid "A new version is available!"
 msgstr "Nowa wersja jest dostępna!"
 
 msgid "Download"
 msgstr "Pobierz"
+
+msgid "Too many requests. Try again later."
+msgstr "Za dużo połączeń. Spróbuj później."
 
 msgid "..."
 msgstr "..."
@@ -173,10 +180,13 @@ msgid "False"
 msgstr "Nie"
 
 msgid "Digits"
-msgstr ""
+msgstr "Cyfry"
 
 msgid "The number of decimal"
-msgstr ""
+msgstr "Liczba miejsc dziesiętnych"
+
+msgid "Template"
+msgstr "Szablon"
 
 msgid "Edit..."
 msgstr "Edycja..."
@@ -196,11 +206,38 @@ msgstr "Otwórz..."
 msgid "Report..."
 msgstr "Utwórz raport..."
 
-msgid "E-Mail..."
-msgstr "Wyślij e-mail..."
-
 msgid "Print..."
 msgstr "Wydrukuj..."
+
+msgid "E-Mail..."
+msgstr "E-mail..."
+
+msgid "Bold"
+msgstr "Pogrubiony"
+
+msgid "Italic"
+msgstr "Kursywa"
+
+msgid "Underline"
+msgstr "Podkreślenie"
+
+msgid "Align Left"
+msgstr "Wyrównanie do lewej"
+
+msgid "Align Center"
+msgstr "Wyrównanie do środka"
+
+msgid "Align Right"
+msgstr "Wyrównanie do prawej"
+
+msgid "Justify"
+msgstr "Wyjustowanie"
+
+msgid "Foreground Color"
+msgstr "Kolor czcionki"
+
+msgid "Select a color"
+msgstr "Wybierz kolor"
 
 msgid "Y"
 msgstr "R"
@@ -244,14 +281,11 @@ msgstr "Ikony"
 msgid "Form"
 msgstr "Formularz"
 
-msgid "Save Width/Height"
-msgstr "Zapamiętaj szerokość/wysokość"
+msgid "Save Column Width"
+msgstr "Zapisz szerokość kolumny"
 
 msgid "Save Tree State"
 msgstr "Zapamiętaj stan drzewa"
-
-msgid "Fast Tabbing"
-msgstr "Szybki tabulator"
 
 msgid "Spell Checking"
 msgstr "Sprawdzanie pisowni"
@@ -261,9 +295,6 @@ msgstr "Tryb PDA"
 
 msgid "Search Limit..."
 msgstr "Ograniczenie wyszukiwania..."
-
-msgid "Email..."
-msgstr "E-mail..."
 
 msgid "Check Version"
 msgstr "Sprawdź wersję"
@@ -279,9 +310,6 @@ msgstr "O programie..."
 
 msgid "Help"
 msgstr "Pomoc"
-
-msgid "Quit"
-msgstr "Zakończ"
 
 msgid "No result found."
 msgstr "Nie znaleziono wyniku."
@@ -303,33 +331,37 @@ msgstr ""
 "Czy chcesz kontynuować?"
 
 msgid "Application Shortcuts"
-msgstr ""
+msgstr "Skróty aplikacji"
 
 msgid "Global"
-msgstr ""
+msgstr "Globalne"
+
+msgid "Preferences"
+msgstr "Preferencje"
 
 msgid "Search menu"
-msgstr ""
+msgstr "Menu wyszukiwania"
 
 msgid "Toggle menu"
-msgstr ""
+msgstr "Menu boczne"
 
-#, fuzzy
 msgid "Previous tab"
 msgstr "Poprzednia karta"
 
-#, fuzzy
 msgid "Next tab"
 msgstr "Następna karta"
 
 msgid "Shortcuts"
-msgstr ""
+msgstr "Skróty"
+
+msgid "Quit"
+msgstr "Zakończ"
 
 msgid "Edition Shortcuts"
-msgstr ""
+msgstr "Skróty edycji"
 
 msgid "Text Entries"
-msgstr ""
+msgstr "Wpisy tekstowe"
 
 msgid "Cut selected text"
 msgstr "Wytnij zaznaczony tekst"
@@ -341,13 +373,13 @@ msgid "Paste copied text"
 msgstr "Wklej zaznaczony tekst"
 
 msgid "Next entry"
-msgstr ""
+msgstr "Następny wpis"
 
 msgid "Previous entry"
-msgstr ""
+msgstr "Poprzedni wpis"
 
 msgid "Relation Entries"
-msgstr ""
+msgstr "Powiązane wpisy"
 
 msgid "Create new relation"
 msgstr "Utwórz nowe odniesienie"
@@ -356,37 +388,35 @@ msgid "Open/Search relation"
 msgstr "Otwórz/Szukaj odniesienie"
 
 msgid "List Entries"
-msgstr ""
+msgstr "Lista wpisów"
 
 msgid "Switch view"
 msgstr "Przełącz widok"
 
 msgid "Create/Select new line"
-msgstr ""
+msgstr "Utwórz/Wybierz nowy wiersz"
 
 msgid "Open relation"
 msgstr "Utwórz odnośnik"
 
 msgid "Mark line for deletion/removal"
-msgstr ""
+msgstr "Zaznacz wiersz do usunięcia"
 
 msgid "Mark line for removal"
-msgstr ""
+msgstr "Zaznacz wiersz do usunięcia"
 
 msgid "Unmark line for deletion"
 msgstr "Odznacz wiersz do usunięcia"
 
 msgid "List/Tree Shortcuts"
-msgstr ""
+msgstr "Skróty listy/drzewa"
 
 msgid "Move Cursor"
 msgstr "Przesuń kursor"
 
-#, fuzzy
 msgid "Move right"
 msgstr "Przesuń w prawo"
 
-#, fuzzy
 msgid "Move left"
 msgstr "Przesuń w lewo"
 
@@ -448,7 +478,7 @@ msgid "Close Tab"
 msgstr "Zamknij kartę"
 
 msgid "modularity, scalability and security"
-msgstr "modułowość, skalowalność i bezpieczeństwo"
+msgstr "modułowy, skalowalny i bezpieczny"
 
 msgid "translator-credits"
 msgstr "Wojciech Warczakowski"
@@ -481,11 +511,11 @@ msgstr "Pobieranie listy baz danych"
 msgid "Username:"
 msgstr "Użytkownik:"
 
-msgid "Incompatible version of the server"
-msgstr "Niewłaściwa wersja serwera"
+msgid "Incompatible version of the server."
+msgstr "Niewłaściwa wersja serwera."
 
-msgid "Could not connect to the server"
-msgstr "Nie można połączyć się z serwerem"
+msgid "Could not connect to the server."
+msgstr "Nie można połączyć się z serwerem."
 
 msgid "Login"
 msgstr "Login"
@@ -511,43 +541,68 @@ msgstr "Informacje o hoście / bazie danych"
 msgid "User name:"
 msgstr "Użytkownik:"
 
-msgid "Email"
-msgstr "E-mail"
+msgid "Unable to complete email entry"
+msgstr "Brak możliwości ukończenia edycji e-maila"
 
-msgid "Email Program Settings"
-msgstr "Ustawienia czytnika poczty"
-
-msgid "Command Line:"
-msgstr "Linia poleceń:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Lista dostępnych symboli zastępczych:"
+#, python-format
+msgid "E-mail %s"
+msgstr "E-mail %s"
 
 msgid "To:"
 msgstr "Do:"
 
-msgid "CC:"
+msgid "Cc:"
 msgstr "DW:"
+
+msgid "Bcc:"
+msgstr "UDW:"
 
 msgid "Subject:"
 msgstr "Temat:"
 
-msgid "Body:"
-msgstr "Treść:"
+msgid "Body"
+msgstr "Treść"
 
-msgid "Attachment:"
-msgstr "Załącznik:"
+msgid "Reports"
+msgstr "Raporty"
+
+msgid "Attachments"
+msgstr "Załączniki"
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr "Wyślij"
+
+#, fuzzy
+msgid "Select File"
+msgstr "Zaznacz wszystko"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "Usuń <Del>"
 
 msgid "Add..."
 msgstr "Dodaj..."
 
-#, python-format, fuzzy, python-format
+#, fuzzy
+msgid "Preview"
+msgstr "Poprzedni"
+
+msgid "Previous"
+msgstr "Poprzedni"
+
+msgid "Next"
+msgstr "Następny"
+
+#, python-format
 msgid "Attachment (%s)"
-msgstr "Załączniki (%s)"
+msgstr "Załącznik (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Notatka (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Musisz wybrać jeden rekord."
@@ -555,17 +610,17 @@ msgstr "Musisz wybrać jeden rekord."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Utworzył:"
 
-msgid "Creation Date:"
+msgid "Created at:"
 msgstr "Data utworzenia:"
 
-msgid "Latest Modification by:"
-msgstr "Autor ostatniej modyfikacji:"
+msgid "Edited by:"
+msgstr "Zmodyfikował:"
 
-msgid "Latest Modification Date:"
-msgstr "Data ostatniej modyfikacji:"
+msgid "Edited at:"
+msgstr "Data modyfikacji:"
 
 msgid "Model:"
 msgstr "Model:"
@@ -602,7 +657,7 @@ msgid "Launch action"
 msgstr "Uruchom akcję"
 
 msgid "Relate"
-msgstr "Otwórz"
+msgstr "Odnośnik"
 
 msgid "Open related records"
 msgstr "Otwórz powiązane rekordy"
@@ -612,12 +667,6 @@ msgstr "Raport"
 
 msgid "Open report"
 msgstr "Otwórz raport"
-
-msgid "E-Mail"
-msgstr "E-mail"
-
-msgid "E-Mail report"
-msgstr "Wyślij raport"
 
 msgid "Print"
 msgstr "Wydruk"
@@ -646,9 +695,6 @@ msgstr "Limit:"
 #, python-format
 msgid "Notes (%s)"
 msgstr "Notatki (%s)"
-
-msgid "Preferences"
-msgstr "Preferencje"
 
 msgid "Edit User Preferences"
 msgstr "Edytuj preferencje użytkownika"
@@ -737,11 +783,14 @@ msgstr "Odnośnik..."
 msgid "_Report..."
 msgstr "Raport..."
 
+msgid "_Print..."
+msgstr "Wydruk..."
+
 msgid "_E-Mail..."
 msgstr "E-mail..."
 
-msgid "_Print..."
-msgstr "Wydruk..."
+msgid "Send an e-mail using the record"
+msgstr "Wyślij e-mail używając rekordu"
 
 msgid "_Export Data..."
 msgstr "Eksportuj dane..."
@@ -777,13 +826,13 @@ msgid "Delimiter:"
 msgstr "Separator:"
 
 msgid "Quote char:"
-msgstr "Znak cudzysłowa:"
+msgstr "Znak cudzysłowu:"
 
 msgid "Encoding:"
 msgstr "Kodowanie:"
 
 msgid "Use locale format"
-msgstr ""
+msgstr "Użyj formatu lokalnego"
 
 msgid "Field name"
 msgstr "Nazwa pola"
@@ -794,6 +843,9 @@ msgstr "Eksport do CSV: %s"
 
 msgid "_Save Export"
 msgstr "Zapisz eksport"
+
+msgid "_URL Export"
+msgstr "Eksport URL"
 
 msgid "_Delete Export"
 msgstr "Usuń eksport"
@@ -807,7 +859,15 @@ msgstr "Nazwa"
 msgid "Open"
 msgstr "Otwórz"
 
-#, fuzzy
+msgid "Listed Records"
+msgstr "Wymienione rekordy"
+
+msgid "Selected Records"
+msgstr "Wybrane rekordy"
+
+msgid "Ignore search limit"
+msgstr "Ignoruj limit wyszukiwań"
+
 msgid "Add field names"
 msgstr "Dodaj nazwy pól"
 
@@ -863,12 +923,6 @@ msgstr "Nowy"
 msgid "Switch"
 msgstr "Przełącz"
 
-msgid "Previous"
-msgstr "Poprzedni"
-
-msgid "Next"
-msgstr "Następny"
-
 msgid "Add"
 msgstr "Dodaj"
 
@@ -901,7 +955,7 @@ msgid "Lines to Skip:"
 msgstr "Wiersze do ominięcia:"
 
 msgid "You must select an import file first."
-msgstr "Najpierw wybierz plik do zaimportowania."
+msgstr "Wybierz plik do zaimportowania."
 
 msgid "Error opening CSV file"
 msgstr "Błąd otwarcia pliku CSV"
@@ -925,29 +979,29 @@ msgstr "Szukaj"
 msgid "Search %s"
 msgstr "Szukaj %s"
 
+msgid "Wizard"
+msgstr "Kreator"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "Brak możliwości usunięcia kreatora %s"
 
-msgid "Wizard"
-msgstr "Kreator"
-
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
+msgid "Create by"
 msgstr "Utworzył"
 
-msgid "Creation Date"
+msgid "Created at"
 msgstr "Data utworzenia"
 
-msgid "Modification User"
+msgid "Edited by"
 msgstr "Zmodyfikował"
 
-msgid "Modification Date"
+msgid "Edited at"
 msgstr "Data modyfikacji"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
 msgstr "Brak możliwości uzyskania stanu widoku drzewa dla %s"
 
@@ -955,16 +1009,16 @@ msgid "Unable to set view tree state"
 msgstr "Brak możliwości ustawienia stanu widoku drzewa"
 
 #, python-format
-msgid "\"%s\" is not valid according to its domain"
-msgstr "\"%s\" jest nieprawidłowy pod względem swojej domeny"
+msgid "\"%s\" is not valid according to its domain."
+msgstr "\"%s\" jest nieprawidłowy pod względem swojej domeny."
 
 #, python-format
-msgid "\"%s\" is required"
-msgstr "\"%s\" jest wymagany"
+msgid "\"%s\" is required."
+msgstr "\"%s\" jest wymagany."
 
 #, python-format
-msgid "The values of \"%s\" are not valid"
-msgstr "Wartości \"%s\" nie są prawidłowe"
+msgid "The values of \"%s\" are not valid."
+msgstr "Wartości \"%s\" nie są prawidłowe."
 
 msgid "Pre-validation"
 msgstr "Wstępna walidacja"
@@ -991,10 +1045,10 @@ msgid "Image size too large."
 msgstr "Za duży rozmiar obrazka."
 
 msgid "Copy"
-msgstr ""
+msgstr "Kopiuj"
 
 msgid "Paste"
-msgstr ""
+msgstr "Wklej"
 
 msgid ".."
 msgstr ".."
@@ -1018,7 +1072,7 @@ msgid "Show inactive records"
 msgstr "Pokaż nieaktywne rekordy"
 
 msgid "Bookmark Name:"
-msgstr "Dodaj do zakładek nazwę:"
+msgstr "Dodaj nazwę zakładek:"
 
 msgid "Find"
 msgstr "Znajdź"
@@ -1039,7 +1093,7 @@ msgid "next year"
 msgstr "następny rok"
 
 msgid "Day View"
-msgstr ""
+msgstr "Widok dnia"
 
 msgid "Week View"
 msgstr "Widok tygodnia"
@@ -1087,11 +1141,9 @@ msgstr "Wyczyść pole <Del>"
 msgid "Search a record <F2>"
 msgstr "Szukaj rekord <F2>"
 
-#, fuzzy
 msgid "Edit selected record"
-msgstr "Edytuj wybrany rekord <F2>"
+msgstr "Edytuj wybrany rekord"
 
-#, fuzzy
 msgid "Delete selected record"
 msgstr "Usuń wybrany rekord"
 
@@ -1099,35 +1151,8 @@ msgstr "Usuń wybrany rekord"
 msgid "%s%%"
 msgstr "%s%%"
 
-msgid "Bold"
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Align Left"
-msgstr ""
-
-msgid "Align Center"
-msgstr ""
-
-msgid "Align Right"
-msgstr ""
-
-msgid "Justify"
-msgstr ""
-
-msgid "Foreground Color"
-msgstr ""
-
-msgid "Select a color"
-msgstr "Wybierz kolor"
-
 msgid "Choose a language"
-msgstr ""
+msgstr "Wybierz język"
 
 msgid "Translation"
 msgstr "Tłumaczenie"

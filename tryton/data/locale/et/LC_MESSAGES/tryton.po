@@ -34,8 +34,8 @@ msgstr "Ei saa seadistada lokaati %s"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ""
 
 #, python-format
 msgid "%s (%s)"
@@ -71,11 +71,11 @@ msgstr "Salvesta"
 msgid "Save As..."
 msgstr "Salvesta nimega..."
 
-msgid "Always ignore this warning."
-msgstr "Eira alati seda hoiatust."
-
 msgid "Do you want to proceed?"
 msgstr "Kas soovid jätkata?"
+
+msgid "Always ignore this warning."
+msgstr "Eira alati seda hoiatust."
 
 msgid "No"
 msgstr "Ei"
@@ -104,6 +104,10 @@ msgstr "Kirjuta ikkagi"
 msgid "Save your current version"
 msgstr "Salvesta praegune versioon"
 
+#, fuzzy, python-format
+msgid "Compare: %s"
+msgstr "Võrdle"
+
 msgid "Close"
 msgstr "Sulge"
 
@@ -117,7 +121,8 @@ msgstr "Teatvita veast"
 msgid "Check URL: %s"
 msgstr "Kontrolli URLi: %s"
 
-msgid "Unable to check for new version"
+#, fuzzy
+msgid "Unable to check for new version."
 msgstr "Ei saa kontrollida uut versiooni"
 
 msgid "A new version is available!"
@@ -125,6 +130,9 @@ msgstr "Uus versioon on saadaval!"
 
 msgid "Download"
 msgstr "Allalaadimine"
+
+msgid "Too many requests. Try again later."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -178,6 +186,10 @@ msgstr ""
 msgid "The number of decimal"
 msgstr ""
 
+#, fuzzy
+msgid "Template"
+msgstr "Seo"
+
 msgid "Edit..."
 msgstr "Muuda..."
 
@@ -196,11 +208,38 @@ msgstr "Seosta..."
 msgid "Report..."
 msgstr "Aruanne..."
 
+msgid "Print..."
+msgstr "Prindi..."
+
 msgid "E-Mail..."
 msgstr "E-kiri..."
 
-msgid "Print..."
-msgstr "Prindi..."
+msgid "Bold"
+msgstr "Paks"
+
+msgid "Italic"
+msgstr "Kursiiv"
+
+msgid "Underline"
+msgstr "Allajoonitud"
+
+msgid "Align Left"
+msgstr "Joonda vasakule"
+
+msgid "Align Center"
+msgstr "Joonda keskele"
+
+msgid "Align Right"
+msgstr "Joonda paremale"
+
+msgid "Justify"
+msgstr "Ühtlusta"
+
+msgid "Foreground Color"
+msgstr "Esiplaani värv"
+
+msgid "Select a color"
+msgstr "Vali värv"
 
 msgid "Y"
 msgstr "A"
@@ -244,14 +283,11 @@ msgstr "Ikoonid"
 msgid "Form"
 msgstr "Vorm"
 
-msgid "Save Width/Height"
-msgstr "Salvesta kõrgus/laius"
+msgid "Save Column Width"
+msgstr ""
 
 msgid "Save Tree State"
 msgstr "Salvesta puu olek"
-
-msgid "Fast Tabbing"
-msgstr ""
 
 msgid "Spell Checking"
 msgstr "Õigekirja kontroll"
@@ -261,9 +297,6 @@ msgstr "PDA reziim"
 
 msgid "Search Limit..."
 msgstr "Otsingupiirang..."
-
-msgid "Email..."
-msgstr "E-kiri..."
 
 msgid "Check Version"
 msgstr "Kontrolli versiooni"
@@ -279,9 +312,6 @@ msgstr ""
 
 msgid "Help"
 msgstr "Abi"
-
-msgid "Quit"
-msgstr "Välju"
 
 msgid "No result found."
 msgstr "Tulemusi ei leitud."
@@ -308,6 +338,9 @@ msgstr "Rakenduse otseteed"
 msgid "Global"
 msgstr "Globaalne"
 
+msgid "Preferences"
+msgstr "Eelistused"
+
 msgid "Search menu"
 msgstr ""
 
@@ -322,6 +355,9 @@ msgstr "Järgmine vaheleht"
 
 msgid "Shortcuts"
 msgstr "Otseteed"
+
+msgid "Quit"
+msgstr "Välju"
 
 msgid "Edition Shortcuts"
 msgstr ""
@@ -452,7 +488,7 @@ msgstr ""
 
 #, python-format
 msgid "Attachments (%s)"
-msgstr "Manus (%s)"
+msgstr "Manused (%s)"
 
 msgid "Profile Editor"
 msgstr "Profiili muutmine"
@@ -478,10 +514,11 @@ msgstr ""
 msgid "Username:"
 msgstr "Kasutajanimi:"
 
-msgid "Incompatible version of the server"
+msgid "Incompatible version of the server."
 msgstr ""
 
-msgid "Could not connect to the server"
+#, fuzzy
+msgid "Could not connect to the server."
 msgstr "Ei saanud serveriga ühendust"
 
 msgid "Login"
@@ -508,35 +545,65 @@ msgstr "Serveri / andmebaasi info"
 msgid "User name:"
 msgstr "Kasutaja nimi:"
 
-msgid "Email"
+#, fuzzy
+msgid "Unable to complete email entry"
+msgstr "Ei saa kustutada nõustajat %s"
+
+#, fuzzy, python-format
+msgid "E-mail %s"
 msgstr "E-kiri"
-
-msgid "Email Program Settings"
-msgstr "E-kirja seadistus"
-
-msgid "Command Line:"
-msgstr "Käsurida:"
-
-msgid "Legend of Available Placeholders:"
-msgstr ""
 
 msgid "To:"
 msgstr "Saaja:"
 
-msgid "CC:"
+#, fuzzy
+msgid "Cc:"
 msgstr "CC:"
+
+msgid "Bcc:"
+msgstr ""
 
 msgid "Subject:"
 msgstr "Pealkiri:"
 
-msgid "Body:"
+#, fuzzy
+msgid "Body"
 msgstr "Sisu:"
 
-msgid "Attachment:"
+#, fuzzy
+msgid "Reports"
+msgstr "Aruanne"
+
+#, fuzzy
+msgid "Attachments"
 msgstr "Manus:"
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Select File"
+msgstr "Vali kõik"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "Eemalda <Del>"
 
 msgid "Add..."
 msgstr "Lisa..."
+
+#, fuzzy
+msgid "Preview"
+msgstr "Eelmine"
+
+msgid "Previous"
+msgstr "Eelmine"
+
+msgid "Next"
+msgstr "Edasi"
 
 #, python-format
 msgid "Attachment (%s)"
@@ -552,17 +619,21 @@ msgstr "Pead valima vähemasti ühe rea."
 msgid "ID:"
 msgstr "ID"
 
-msgid "Creation User:"
-msgstr "Looja:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Loomise kuupäev"
 
-msgid "Creation Date:"
-msgstr "Luumise kuupäev:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Loomise kuupäev"
 
-msgid "Latest Modification by:"
-msgstr "Muutja:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Muuda"
 
-msgid "Latest Modification Date:"
-msgstr "Muutmise kuupäev:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Muuda"
 
 msgid "Model:"
 msgstr "Mudel:"
@@ -610,12 +681,6 @@ msgstr "Aruanne"
 msgid "Open report"
 msgstr "Ava aruanne"
 
-msgid "E-Mail"
-msgstr "E-kiri"
-
-msgid "E-Mail report"
-msgstr "E-mail aruanne"
-
 msgid "Print"
 msgstr "Prindi"
 
@@ -643,9 +708,6 @@ msgstr "Limiit"
 #, python-format
 msgid "Notes (%s)"
 msgstr "Märkused (%s)"
-
-msgid "Preferences"
-msgstr "Eelistused"
 
 msgid "Edit User Preferences"
 msgstr "Muuda kasutaja eelistusi"
@@ -734,11 +796,15 @@ msgstr "_Seosta..."
 msgid "_Report..."
 msgstr "_Aruanne..."
 
+msgid "_Print..."
+msgstr "_Prindi..."
+
 msgid "_E-Mail..."
 msgstr "_E-kiri..."
 
-msgid "_Print..."
-msgstr "_Prindi..."
+#, fuzzy
+msgid "Send an e-mail using the record"
+msgstr "Lisa kirjele manus"
 
 msgid "_Export Data..."
 msgstr "_Ekspordi andmed..."
@@ -792,6 +858,10 @@ msgstr "CSV eksport: %s"
 msgid "_Save Export"
 msgstr "_Salvesta eksport"
 
+#, fuzzy
+msgid "_URL Export"
+msgstr "_Salvesta eksport"
+
 msgid "_Delete Export"
 msgstr "_Kustuta eksport"
 
@@ -803,6 +873,17 @@ msgstr "Nimi"
 
 msgid "Open"
 msgstr "Ava"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "Muuda valitud kirjet"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "Muuda valitud kirjet"
+
+msgid "Ignore search limit"
+msgstr ""
 
 msgid "Add field names"
 msgstr "Lisa välja nimed"
@@ -858,12 +939,6 @@ msgstr "Uus"
 
 msgid "Switch"
 msgstr "Vaheta"
-
-msgid "Previous"
-msgstr "Eelmine"
-
-msgid "Next"
-msgstr "Edasi"
 
 msgid "Add"
 msgstr "Lisa"
@@ -921,27 +996,30 @@ msgstr "Otsi"
 msgid "Search %s"
 msgstr "Otsi %s"
 
+msgid "Wizard"
+msgstr "Nõustaja"
+
 #, python-format
 msgid "Unable to delete wizard %s"
 msgstr "Ei saa kustutada nõustajat %s"
 
-msgid "Wizard"
-msgstr "Nõustaja"
-
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Looja"
+msgid "Create by"
+msgstr ""
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "Loomise kuupäev"
 
-msgid "Modification User"
-msgstr "Muutja"
+#, fuzzy
+msgid "Edited by"
+msgstr "Muuda"
 
-msgid "Modification Date"
-msgstr "Muutmise kuupäev"
+#, fuzzy
+msgid "Edited at"
+msgstr "Muuda"
 
 #, python-format
 msgid "Unable to get view tree state for %s"
@@ -950,16 +1028,16 @@ msgstr ""
 msgid "Unable to set view tree state"
 msgstr ""
 
-#, python-format
-msgid "\"%s\" is not valid according to its domain"
+#, fuzzy, python-format
+msgid "\"%s\" is not valid according to its domain."
 msgstr "\"%s\" ei ole selle domeeni jaoks lubatud"
 
-#, python-format
-msgid "\"%s\" is required"
+#, fuzzy, python-format
+msgid "\"%s\" is required."
 msgstr "\"%s\" on nõutud"
 
-#, python-format
-msgid "The values of \"%s\" are not valid"
+#, fuzzy, python-format
+msgid "The values of \"%s\" are not valid."
 msgstr "\"%s\" väärtused ei ole lubatud"
 
 msgid "Pre-validation"
@@ -1092,33 +1170,6 @@ msgstr "Kustuta valitud kirje"
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
-
-msgid "Bold"
-msgstr "Paks"
-
-msgid "Italic"
-msgstr "Kursiiv"
-
-msgid "Underline"
-msgstr "Allajoonitud"
-
-msgid "Align Left"
-msgstr "Joonda vasakule"
-
-msgid "Align Center"
-msgstr "Joonda keskele"
-
-msgid "Align Right"
-msgstr "Joonda paremale"
-
-msgid "Justify"
-msgstr "Ühtlusta"
-
-msgid "Foreground Color"
-msgstr "Esiplaani värv"
-
-msgid "Select a color"
-msgstr "Vali värv"
 
 msgid "Choose a language"
 msgstr "Vali keel"
