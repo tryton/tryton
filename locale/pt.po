@@ -97,11 +97,11 @@ msgstr "Bancos"
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr "O número IBAN  \"%(number)s\" não é válido."
+msgstr "O número IBAN \"%(number)s\" não é válido."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
-msgstr "O número IBAN  \"%(number)s\" não é válido."
+msgstr "O número IBAN \"%(number)s\" não é válido."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
