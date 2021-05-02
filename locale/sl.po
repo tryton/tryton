@@ -6,13 +6,67 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Dostavna služba"
 
+#, fuzzy
+msgctxt "field:stock.package,height:"
+msgid "Height"
+msgstr "Višina"
+
+#, fuzzy
+msgctxt "field:stock.package,height_digits:"
+msgid "Height Digits"
+msgstr "Decimalke za višino"
+
+#, fuzzy
+msgctxt "field:stock.package,height_uom:"
+msgid "Height Unit"
+msgstr "Enota višine"
+
+#, fuzzy
+msgctxt "field:stock.package,length:"
+msgid "Length"
+msgstr "Dolžina"
+
+#, fuzzy
+msgctxt "field:stock.package,length_digits:"
+msgid "Length Digits"
+msgstr "Decimalke za dolžino"
+
+#, fuzzy
+msgctxt "field:stock.package,length_uom:"
+msgid "Length Unit"
+msgstr "Enota dolžine"
+
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
+msgstr "Nalepka pošiljke"
+
+#, fuzzy
+msgctxt "field:stock.package,shipping_label_id:"
+msgid "Shipping Label ID"
 msgstr "Nalepka pošiljke"
 
 msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Sklic paketne dostave"
+
+msgctxt "field:stock.package,shipping_tracking_url:"
+msgid "Shipping Tracking URL"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,width:"
+msgid "Width"
+msgstr "Širina"
+
+#, fuzzy
+msgctxt "field:stock.package,width_digits:"
+msgid "Width Digits"
+msgstr "Decimalke za širino"
+
+#, fuzzy
+msgctxt "field:stock.package,width_uom:"
+msgid "Width Unit"
+msgstr "Enota širine"
 
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
@@ -50,6 +104,15 @@ msgctxt "field:stock.package.type,width_uom:"
 msgid "Width Unit"
 msgstr "Enota širine"
 
+msgctxt "field:stock.shipment.in.return,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,shipping_description:"
+msgid "Shipping Description"
+msgstr "Opis pošiljke"
+
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
 msgstr "Opis pošiljke"
@@ -68,15 +131,12 @@ msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
 msgstr "Za dostavo \"%(shipment)s\" še ni izbran špediter."
 
-msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Create Shipping for Packages"
 
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
-msgid "Shipping"
-msgstr "Shipping"
-
-msgctxt "view:stock.package.type:"
-msgid "Dimensions"
-msgstr "Dimenzije"
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
