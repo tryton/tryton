@@ -95,7 +95,7 @@ msgid "Amendments"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
-msgid "Purchase Amendments"
+msgid "Amendments"
 msgstr ""
 
 msgctxt ""
@@ -130,7 +130,7 @@ msgid "Validate"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
-msgid "Purchase Amendments"
+msgid "Amendments"
 msgstr ""
 
 msgctxt "model:purchase.amendment,name:"

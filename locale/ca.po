@@ -95,8 +95,8 @@ msgid "Amendments"
 msgstr "Correccions"
 
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
-msgid "Purchase Amendments"
-msgstr "Correccions de compra"
+msgid "Amendments"
+msgstr "Correccions"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_all"
@@ -132,8 +132,8 @@ msgid "Validate"
 msgstr "Valida"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
-msgid "Purchase Amendments"
-msgstr "Correccions de compra"
+msgid "Amendments"
+msgstr "Correccions"
 
 msgctxt "model:purchase.amendment,name:"
 msgid "Purchase Amendment"
