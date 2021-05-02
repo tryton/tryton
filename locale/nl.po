@@ -98,9 +98,10 @@ msgctxt "field:sale.sale,amendments:"
 msgid "Amendments"
 msgstr "wijzigingen"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_amendment_form"
-msgid "Sale Amendments"
-msgstr "Verkoopwijzigingen"
+msgid "Amendments"
+msgstr "wijzigingen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_all"
@@ -135,9 +136,10 @@ msgctxt ""
 msgid "Validate"
 msgstr "bevestigen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
-msgid "Sale Amendments"
-msgstr "Verkoopwijzigingen"
+msgid "Amendments"
+msgstr "wijzigingen"
 
 msgctxt "model:res.group,name:group_sale_amendment"
 msgid "Sale Amendment"

@@ -99,8 +99,8 @@ msgid "Amendments"
 msgstr "Correcciones"
 
 msgctxt "model:ir.action,name:act_sale_amendment_form"
-msgid "Sale Amendments"
-msgstr "Correciones de venta"
+msgid "Amendments"
+msgstr "Correcciones"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_all"
@@ -136,8 +136,8 @@ msgid "Validate"
 msgstr "Validar"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
-msgid "Sale Amendments"
-msgstr "Correciones de venta"
+msgid "Amendments"
+msgstr "Correcciones"
 
 msgctxt "model:res.group,name:group_sale_amendment"
 msgid "Sale Amendment"
