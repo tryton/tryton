@@ -355,9 +355,21 @@ msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
 msgstr "Komisjonitasud"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_plan_form"
-msgid "Commission Plans"
-msgstr "Komisjonitasu plaan"
+msgid "Plans"
+msgstr "Plaan"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_commission_form_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_commission_form_domain_to_invoice"
+msgid "To Invoice"
+msgstr "Arve"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
@@ -374,6 +386,14 @@ msgstr ""
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
 msgstr "Arve"
+
+msgctxt "model:ir.rule.group,name:rule_group_agent_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_agent_selection_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -395,9 +415,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Seadistus"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
-msgid "Commission Plans"
-msgstr "Komisjonitasu plaanid"
+msgid "Plans"
+msgstr "Plaan"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"

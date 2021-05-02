@@ -347,8 +347,18 @@ msgid "Commissions"
 msgstr "Comissions"
 
 msgctxt "model:ir.action,name:act_plan_form"
-msgid "Commission Plans"
-msgstr "Plans de comissió"
+msgid "Plans"
+msgstr "Plans"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_commission_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_commission_form_domain_to_invoice"
+msgid "To Invoice"
+msgstr "A facturar"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
@@ -369,6 +379,14 @@ msgstr ""
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
 msgstr "Factura"
+
+msgctxt "model:ir.rule.group,name:rule_group_agent_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_agent_selection_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -391,8 +409,8 @@ msgid "Configuration"
 msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
-msgid "Commission Plans"
-msgstr "Plans de comissió"
+msgid "Plans"
+msgstr "Plans"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
