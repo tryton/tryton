@@ -117,6 +117,134 @@ msgstr "Usuário"
 msgid "Database"
 msgstr "Banco de dados"
 
+msgid "Your selection:"
+msgstr "Sua seleção:"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "A"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "s"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Por: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "a"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "True"
+msgstr "Verdadeiro"
+
+msgid "t"
+msgstr "v"
+
+msgid "False"
+msgstr "Falso"
+
+msgid "Message: "
+msgstr "Mensagem: "
+
+msgid "Warning: "
+msgstr "Alerta: "
+
+msgid "Always ignore this warning."
+msgstr "Sempre ignorar este alerta."
+
+msgid "Do you want to proceed?"
+msgstr "Você deseja continuar?"
+
+msgid "No"
+msgstr "Não"
+
+msgid "Confirmation: "
+msgstr "Confirmação: "
+
+msgid "Concurrency Exception"
+msgstr "Exceção de concorrência"
+
+msgid "Write Concurrency Warning: "
+msgstr "Alerta de edição concorrente: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Este registro foi modificado enquanto você o editava."
+
+msgid "Choose:"
+msgstr "Escolha:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Cancelar\" para cancelar a gravação;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Comparar\" para ver a versão modificada;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Forçar Escrita\" para gravar sua versão atual."
+
+msgid "Compare"
+msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
+
+#, fuzzy
+msgid "Compare: %1"
+msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
+
+msgid "Write Anyway"
+msgstr "Forçar Escrita"
+
+msgid "Application Error"
+msgstr "Erro no Sistema"
+
+msgid "Report Bug"
+msgstr "Relatar erro"
+
+#, fuzzy
+msgid "Processing"
+msgstr "Processando..."
+
+msgid "Search..."
+msgstr "Buscar..."
+
+msgid "Create..."
+msgstr "Criar..."
+
+msgid "Download"
+msgstr "Baixar"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "Fonte"
+
+msgid "Size"
+msgstr "Tamanho"
+
 msgid "Switch view"
 msgstr "Alternar a visão"
 
@@ -230,6 +358,10 @@ msgid "Add..."
 msgstr "Adicionar..."
 
 #, fuzzy
+msgid "Preview"
+msgstr "Anterior"
+
+#, fuzzy
 msgid "Template"
 msgstr "Relacionar"
 
@@ -266,12 +398,6 @@ msgstr "Mostrar registros ativos"
 
 msgid "Show inactive records"
 msgstr "Mostrar registros inativos"
-
-msgid "True"
-msgstr "Verdadeiro"
-
-msgid "False"
-msgstr "Falso"
 
 msgid "Find"
 msgstr "Localizar"
@@ -323,12 +449,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "Traduzir"
-
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Edit"
 msgstr "Editar"
@@ -410,9 +530,6 @@ msgstr "Semana"
 msgid "Day"
 msgstr ""
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ""
 
@@ -424,119 +541,6 @@ msgstr "Selecione sua ação"
 
 msgid "No action defined."
 msgstr "Nenhuma ação definida."
-
-msgid "Your selection:"
-msgstr "Sua seleção:"
-
-msgid "Y"
-msgstr "A"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "s"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "h"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "Por: "
-
-msgid "y"
-msgstr "a"
-
-msgid "Yes"
-msgstr "Sim"
-
-msgid "t"
-msgstr "v"
-
-msgid "Message: "
-msgstr "Mensagem: "
-
-msgid "Warning: "
-msgstr "Alerta: "
-
-msgid "Always ignore this warning."
-msgstr "Sempre ignorar este alerta."
-
-msgid "Do you want to proceed?"
-msgstr "Você deseja continuar?"
-
-msgid "No"
-msgstr "Não"
-
-msgid "Confirmation: "
-msgstr "Confirmação: "
-
-msgid "Concurrency Exception"
-msgstr "Exceção de concorrência"
-
-msgid "Write Concurrency Warning: "
-msgstr "Alerta de edição concorrente: "
-
-msgid "This record has been modified while you were editing it."
-msgstr "Este registro foi modificado enquanto você o editava."
-
-msgid "Choose:"
-msgstr "Escolha:"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"Cancelar\" para cancelar a gravação;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"Comparar\" para ver a versão modificada;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"Forçar Escrita\" para gravar sua versão atual."
-
-msgid "Compare"
-msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
-
-#, fuzzy
-msgid "Compare: %1"
-msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
-
-msgid "Write Anyway"
-msgstr "Forçar Escrita"
-
-msgid "Application Error"
-msgstr "Erro no Sistema"
-
-msgid "Report Bug"
-msgstr "Relatar erro"
-
-#, fuzzy
-msgid "Processing"
-msgstr "Processando..."
-
-msgid "Search..."
-msgstr "Buscar..."
-
-msgid "Create..."
-msgstr "Criar..."
-
-msgid "Download"
-msgstr "Baixar"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "Fonte"
-
-msgid "Size"
-msgstr "Tamanho"
 
 msgid "Attachments (%1)"
 msgstr "Anexo (%1)"
@@ -673,12 +677,15 @@ msgstr "Relatar erro"
 msgid "Attachments"
 msgstr "Anexo"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
 #, fuzzy
-msgid "Remove attachment"
-msgstr "Anexo"
+msgid "Remove File"
+msgstr "Remover"
 
 msgid "Wizard"
 msgstr "Assistente"

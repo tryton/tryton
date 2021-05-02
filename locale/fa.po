@@ -114,6 +114,134 @@ msgstr "نام کاربری"
 msgid "Database"
 msgstr "پایگاه داده"
 
+msgid "Your selection:"
+msgstr "انتخاب شما :"
+
+msgid "Cancel"
+msgstr "انصراف"
+
+msgid "OK"
+msgstr "قبول"
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "توسط : "
+
+msgid ", "
+msgstr "، "
+
+msgid "y"
+msgstr "y"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "True"
+msgstr "درست"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "غلط"
+
+msgid "Message: "
+msgstr "پیام : "
+
+msgid "Warning: "
+msgstr "هشدار: "
+
+msgid "Always ignore this warning."
+msgstr "همیشه این هشدار را نادیده بگیرید."
+
+msgid "Do you want to proceed?"
+msgstr "آیا می خواهید پردازش شود؟"
+
+msgid "No"
+msgstr "خیر"
+
+msgid "Confirmation: "
+msgstr "تأییدیه : "
+
+msgid "Concurrency Exception"
+msgstr "همزمانی استثنا"
+
+msgid "Write Concurrency Warning: "
+msgstr "نوشتن همزمانی هشدار: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "این پرونده در حالی که شما در حال ویرایش آن بودید، اصلاح شد."
+
+msgid "Choose:"
+msgstr "انتخاب :"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"لغو\" برای انصراف ذخیره کردن ؛"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"مقایسه\" برای دیدن نسخه اصلاح شده ؛"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"نوشتن بهرحال\" برای ذخیره نسخه فعلی خود."
+
+msgid "Compare"
+msgstr "مقایسه"
+
+#, fuzzy
+msgid "Compare: %1"
+msgstr "مقایسه"
+
+msgid "Write Anyway"
+msgstr "نوشتن بهرحال"
+
+msgid "Application Error"
+msgstr "خطای برنامه"
+
+msgid "Report Bug"
+msgstr "گزارش باگ"
+
+#, fuzzy
+msgid "Processing"
+msgstr "در حال پردازش..."
+
+msgid "Search..."
+msgstr "جستجو..."
+
+msgid "Create..."
+msgstr "ایجاد..."
+
+msgid "Download"
+msgstr "دانلود"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "فونت"
+
+msgid "Size"
+msgstr "اندازه"
+
 msgid "Switch view"
 msgstr "تعویض نمایه"
 
@@ -227,6 +355,10 @@ msgid "Add..."
 msgstr "افزودن..."
 
 #, fuzzy
+msgid "Preview"
+msgstr "قبلی"
+
+#, fuzzy
 msgid "Template"
 msgstr "مربوط"
 
@@ -263,12 +395,6 @@ msgstr "نمایش پرونده های فعال"
 
 msgid "Show inactive records"
 msgstr "نمایش پرونده های غیرفعال"
-
-msgid "True"
-msgstr "درست"
-
-msgid "False"
-msgstr "غلط"
 
 msgid "Find"
 msgstr "یافتن"
@@ -320,12 +446,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "ترجمه"
-
-msgid "Cancel"
-msgstr "انصراف"
-
-msgid "OK"
-msgstr "قبول"
 
 msgid "Edit"
 msgstr "ویرایش"
@@ -407,9 +527,6 @@ msgstr "هفته"
 msgid "Day"
 msgstr ""
 
-msgid ", "
-msgstr "، "
-
 msgid ",..."
 msgstr ""
 
@@ -421,119 +538,6 @@ msgstr "انتخاب اقدام شما"
 
 msgid "No action defined."
 msgstr "اقدامی تعریف نشده."
-
-msgid "Your selection:"
-msgstr "انتخاب شما :"
-
-msgid "Y"
-msgstr "Y"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "w"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "h"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "توسط : "
-
-msgid "y"
-msgstr "y"
-
-msgid "Yes"
-msgstr "بله"
-
-msgid "t"
-msgstr "t"
-
-msgid "Message: "
-msgstr "پیام : "
-
-msgid "Warning: "
-msgstr "هشدار: "
-
-msgid "Always ignore this warning."
-msgstr "همیشه این هشدار را نادیده بگیرید."
-
-msgid "Do you want to proceed?"
-msgstr "آیا می خواهید پردازش شود؟"
-
-msgid "No"
-msgstr "خیر"
-
-msgid "Confirmation: "
-msgstr "تأییدیه : "
-
-msgid "Concurrency Exception"
-msgstr "همزمانی استثنا"
-
-msgid "Write Concurrency Warning: "
-msgstr "نوشتن همزمانی هشدار: "
-
-msgid "This record has been modified while you were editing it."
-msgstr "این پرونده در حالی که شما در حال ویرایش آن بودید، اصلاح شد."
-
-msgid "Choose:"
-msgstr "انتخاب :"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"لغو\" برای انصراف ذخیره کردن ؛"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"مقایسه\" برای دیدن نسخه اصلاح شده ؛"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"نوشتن بهرحال\" برای ذخیره نسخه فعلی خود."
-
-msgid "Compare"
-msgstr "مقایسه"
-
-#, fuzzy
-msgid "Compare: %1"
-msgstr "مقایسه"
-
-msgid "Write Anyway"
-msgstr "نوشتن بهرحال"
-
-msgid "Application Error"
-msgstr "خطای برنامه"
-
-msgid "Report Bug"
-msgstr "گزارش باگ"
-
-#, fuzzy
-msgid "Processing"
-msgstr "در حال پردازش..."
-
-msgid "Search..."
-msgstr "جستجو..."
-
-msgid "Create..."
-msgstr "ایجاد..."
-
-msgid "Download"
-msgstr "دانلود"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "فونت"
-
-msgid "Size"
-msgstr "اندازه"
 
 msgid "Attachments (%1)"
 msgstr "پیوست ها(1%)"
@@ -670,12 +674,15 @@ msgstr "گزارش باگ"
 msgid "Attachments"
 msgstr "پیوست"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
 #, fuzzy
-msgid "Remove attachment"
-msgstr "پیوست"
+msgid "Remove File"
+msgstr "حذف"
 
 msgid "Wizard"
 msgstr "دستیار نصب"

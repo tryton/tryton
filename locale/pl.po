@@ -115,6 +115,132 @@ msgstr "Nazwa użytkownika"
 msgid "Database"
 msgstr "Baza danych"
 
+msgid "Your selection:"
+msgstr "Twoje zaznaczenie:"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "R"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "t"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "g"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Przez: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "t"
+
+msgid "Yes"
+msgstr "Tak"
+
+msgid "True"
+msgstr "Tak"
+
+msgid "t"
+msgstr "p"
+
+msgid "False"
+msgstr "Nie"
+
+msgid "Message: "
+msgstr "Wiadomość: "
+
+msgid "Warning: "
+msgstr "Ostrzeżenie: "
+
+msgid "Always ignore this warning."
+msgstr "Zawsze ignoruj takie ostrzeżenie."
+
+msgid "Do you want to proceed?"
+msgstr "Czy chcesz kontynuować?"
+
+msgid "No"
+msgstr "Nie"
+
+msgid "Confirmation: "
+msgstr "Potwierdzenie: "
+
+msgid "Concurrency Exception"
+msgstr "Wyjątek równoczesnego zapisu danych"
+
+msgid "Write Concurrency Warning: "
+msgstr "Ostrzeżenie o równoczesnym zapisie danych: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Ten rekord został zmodyfikowany w trakcie twojej edycji."
+
+msgid "Choose:"
+msgstr "Wybierz:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Anuluj\" jeśli chcesz anulować zapis danych;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Porównaj\" jeśli chcesz zobaczyć zmienioną wersję danych;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Zapisz\" jeśli chcesz zapisać aktualną wersję danych."
+
+msgid "Compare"
+msgstr "Porównaj"
+
+msgid "Compare: %1"
+msgstr "Porównaj: %1"
+
+msgid "Write Anyway"
+msgstr "Zapisz"
+
+msgid "Application Error"
+msgstr "Błąd aplikacji"
+
+msgid "Report Bug"
+msgstr "Zgłoś błąd"
+
+msgid "Processing"
+msgstr "Przetwarzanie"
+
+msgid "Search..."
+msgstr "Szukaj..."
+
+msgid "Create..."
+msgstr "Utwórz..."
+
+msgid "Download"
+msgstr "Pobierz"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "Czcionka"
+
+msgid "Size"
+msgstr "Rozmiar"
+
 msgid "Switch view"
 msgstr "Przełącz widok"
 
@@ -222,6 +348,10 @@ msgstr "Model: "
 msgid "Add..."
 msgstr "Dodaj..."
 
+#, fuzzy
+msgid "Preview"
+msgstr "Poprzedni"
+
 msgid "Template"
 msgstr "Szablon"
 
@@ -257,12 +387,6 @@ msgstr "Pokaż aktywne rekordy"
 
 msgid "Show inactive records"
 msgstr "Pokaż nieaktywne rekordy"
-
-msgid "True"
-msgstr "Tak"
-
-msgid "False"
-msgstr "Nie"
 
 msgid "Find"
 msgstr "Znajdź"
@@ -308,12 +432,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "Przetłumacz"
-
-msgid "Cancel"
-msgstr "Anuluj"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Edit"
 msgstr "Edycja"
@@ -393,9 +511,6 @@ msgstr "Tydzień"
 msgid "Day"
 msgstr "Dzień"
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ",..."
 
@@ -407,117 +522,6 @@ msgstr "Wybierz akcję"
 
 msgid "No action defined."
 msgstr "Brak zdefiniowanej akcji."
-
-msgid "Your selection:"
-msgstr "Twoje zaznaczenie:"
-
-msgid "Y"
-msgstr "R"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "t"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "g"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "Przez: "
-
-msgid "y"
-msgstr "t"
-
-msgid "Yes"
-msgstr "Tak"
-
-msgid "t"
-msgstr "p"
-
-msgid "Message: "
-msgstr "Wiadomość: "
-
-msgid "Warning: "
-msgstr "Ostrzeżenie: "
-
-msgid "Always ignore this warning."
-msgstr "Zawsze ignoruj takie ostrzeżenie."
-
-msgid "Do you want to proceed?"
-msgstr "Czy chcesz kontynuować?"
-
-msgid "No"
-msgstr "Nie"
-
-msgid "Confirmation: "
-msgstr "Potwierdzenie: "
-
-msgid "Concurrency Exception"
-msgstr "Wyjątek równoczesnego zapisu danych"
-
-msgid "Write Concurrency Warning: "
-msgstr "Ostrzeżenie o równoczesnym zapisie danych: "
-
-msgid "This record has been modified while you were editing it."
-msgstr "Ten rekord został zmodyfikowany w trakcie twojej edycji."
-
-msgid "Choose:"
-msgstr "Wybierz:"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"Anuluj\" jeśli chcesz anulować zapis danych;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"Porównaj\" jeśli chcesz zobaczyć zmienioną wersję danych;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"Zapisz\" jeśli chcesz zapisać aktualną wersję danych."
-
-msgid "Compare"
-msgstr "Porównaj"
-
-msgid "Compare: %1"
-msgstr "Porównaj: %1"
-
-msgid "Write Anyway"
-msgstr "Zapisz"
-
-msgid "Application Error"
-msgstr "Błąd aplikacji"
-
-msgid "Report Bug"
-msgstr "Zgłoś błąd"
-
-msgid "Processing"
-msgstr "Przetwarzanie"
-
-msgid "Search..."
-msgstr "Szukaj..."
-
-msgid "Create..."
-msgstr "Utwórz..."
-
-msgid "Download"
-msgstr "Pobierz"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "Czcionka"
-
-msgid "Size"
-msgstr "Rozmiar"
 
 msgid "Attachments (%1)"
 msgstr "Załączniki (%1)"
@@ -645,11 +649,15 @@ msgstr "Raporty"
 msgid "Attachments"
 msgstr "Załączniki"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr "Wyślij"
 
-msgid "Remove attachment"
-msgstr "Usuń załącznik"
+#, fuzzy
+msgid "Remove File"
+msgstr "Usuń"
 
 msgid "Wizard"
 msgstr "Kreator"

@@ -50,7 +50,7 @@ msgid "Close Tab"
 msgstr "关闭标签"
 
 msgid "Attachment"
-msgstr "附件文档"
+msgstr "附件"
 
 msgid "Note"
 msgstr "备注"
@@ -62,7 +62,7 @@ msgid "Print"
 msgstr "打印"
 
 msgid "E-Mail"
-msgstr ""
+msgstr "电子邮件"
 
 msgid "Previous tab"
 msgstr "上一标签(_P)"
@@ -89,10 +89,10 @@ msgid "Tab shortcuts"
 msgstr "标签快捷方式"
 
 msgid "Unable to reach the server."
-msgstr "无法连接到服务器."
+msgstr "无法连接服务器."
 
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "请求太多，请稍后重试."
 
 msgid "Login"
 msgstr "登录"
@@ -103,20 +103,146 @@ msgstr "用户名"
 msgid "Database"
 msgstr "数据库"
 
+msgid "Your selection:"
+msgstr "已选择:"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "OK"
+msgstr "确定"
+
+msgid "Y"
+msgstr "年"
+
+msgid "M"
+msgstr "月"
+
+msgid "w"
+msgstr "星期"
+
+msgid "d"
+msgstr "日"
+
+msgid "h"
+msgstr "时"
+
+msgid "m"
+msgstr "分"
+
+msgid "s"
+msgstr "秒"
+
+msgid "By: "
+msgstr "By: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "y"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "True"
+msgstr "True"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "False"
+
+msgid "Message: "
+msgstr "信息: "
+
+msgid "Warning: "
+msgstr "警告: "
+
+msgid "Always ignore this warning."
+msgstr "下次不再提示."
+
+msgid "Do you want to proceed?"
+msgstr "继续此项操作 ?"
+
+msgid "No"
+msgstr "否"
+
+msgid "Confirmation: "
+msgstr "确认: "
+
+msgid "Concurrency Exception"
+msgstr "并行操作异常"
+
+msgid "Write Concurrency Warning: "
+msgstr "同步操作警告: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "在你编辑的时候，这条记录已经被更改."
+
+msgid "Choose:"
+msgstr "选择："
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"取消\" 不保存;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"对比\" 查看变更的数据;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"覆写\" 保存当前数据."
+
+msgid "Compare"
+msgstr "比较"
+
+msgid "Compare: %1"
+msgstr "比较: %1"
+
+msgid "Write Anyway"
+msgstr "覆写"
+
+msgid "Application Error"
+msgstr "程序错误"
+
+msgid "Report Bug"
+msgstr "报告Bug"
+
+msgid "Processing"
+msgstr "正在处理"
+
+msgid "Search..."
+msgstr "查找..."
+
+msgid "Create..."
+msgstr "新建..."
+
+msgid "Download"
+msgstr "下载"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "字体"
+
+msgid "Size"
+msgstr "大小"
+
 msgid "Switch view"
 msgstr "切换视图"
 
 msgid "Previous Record"
-msgstr "前一项"
+msgstr "前一条记录"
 
 msgid "Next Record"
-msgstr "后一项"
+msgstr "后一条记录"
 
 msgid "Create a new record"
-msgstr "新建项目"
+msgstr "新建记录"
 
 msgid "Save this record"
-msgstr "保存项目"
+msgstr "保存当前记录"
 
 msgid "Reload"
 msgstr "重载"
@@ -125,20 +251,19 @@ msgid "View Logs..."
 msgstr "查看日志..."
 
 msgid "Show revisions..."
-msgstr "显示版本..."
+msgstr "显示修订版本..."
 
 msgid "Add an attachment to the record"
-msgstr "给当前项添加附件"
+msgstr "为当前记录添加附件"
 
 msgid "Add a note to the record"
-msgstr "给当前项添加注释"
+msgstr "为当前记录添加注释"
 
 msgid "E-Mail..."
-msgstr ""
+msgstr "用电子邮件发送..."
 
-#, fuzzy
 msgid "Send an e-mail using the record"
-msgstr "给当前项添加注释"
+msgstr "使用当前记录发送电子邮件"
 
 msgid "Export"
 msgstr "导出"
@@ -150,40 +275,42 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"该操作需要关闭打开的项目\n"
+"该操作需要关闭所有标签.\n"
 "是否继续？"
 
 msgid "Launch action"
 msgstr "执行操作"
 
 msgid "Open related records"
-msgstr "打开关联项目"
+msgstr "打开关联记录"
 
 msgid "Print report"
-msgstr "打印报表"
+msgstr "打印报告"
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
-msgstr "记录有改动, 是否保存？"
+msgstr ""
+"记录有改动\n"
+"是否保存？"
 
 msgid "Record saved."
-msgstr "保存成功."
+msgstr "记录保存成功."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "当前处理的是项目的副本."
+msgstr "正在处理重复记录."
 
 msgid "Are you sure to remove this record?"
-msgstr "确定要删除此项吗？"
+msgstr "确定要删除这条记录吗？"
 
 msgid "Are you sure to remove those records?"
-msgstr "确定要删除这些项目？"
+msgstr "确定要删除这些记录？"
 
 msgid "Records removed."
 msgstr "记录已成功删除."
 
 msgid "Records not removed."
-msgstr "所选项目未删除成功."
+msgstr "所选记录未删除成功."
 
 msgid "You have to select one record."
 msgstr "需要选择一条记录."
@@ -198,10 +325,10 @@ msgid "Created at:"
 msgstr "创建日期:"
 
 msgid "Edited by:"
-msgstr "编辑人:"
+msgstr "编辑者:"
 
 msgid "Edited at:"
-msgstr "编辑于："
+msgstr "编辑于:"
 
 msgid "Model: "
 msgstr "模型: "
@@ -210,8 +337,11 @@ msgid "Add..."
 msgstr "添加..."
 
 #, fuzzy
+msgid "Preview"
+msgstr "向前"
+
 msgid "Template"
-msgstr "关联"
+msgstr "模板"
 
 msgid "Attachment (%1)"
 msgstr "附件(%1)"
@@ -235,7 +365,7 @@ msgid "Remove this bookmark"
 msgstr "移除书签"
 
 msgid "Bookmark this filter"
-msgstr "收藏筛选器"
+msgstr "收藏当前筛选器"
 
 msgid "Bookmark Name:"
 msgstr "书签名称:"
@@ -245,12 +375,6 @@ msgstr "显示已启用记录"
 
 msgid "Show inactive records"
 msgstr "显示未启用记录"
-
-msgid "True"
-msgstr "True"
-
-msgid "False"
-msgstr "False"
 
 msgid "Find"
 msgstr "查找"
@@ -297,12 +421,6 @@ msgstr ":"
 msgid "Translate"
 msgstr "翻译"
 
-msgid "Cancel"
-msgstr "取消"
-
-msgid "OK"
-msgstr "确定"
-
 msgid "Edit"
 msgstr "编辑"
 
@@ -310,7 +428,7 @@ msgid "Fuzzy"
 msgstr "模糊"
 
 msgid "You need to save the record before adding translations."
-msgstr "请先保存已翻译条目，再增加新翻译 ."
+msgstr "请先保存已翻译条目，然后再增加新翻译 ."
 
 msgid "No other language available."
 msgstr "没有其他可翻译语言."
@@ -381,11 +499,8 @@ msgstr "周"
 msgid "Day"
 msgstr "天"
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
-msgstr ""
+msgstr ",..."
 
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -395,119 +510,6 @@ msgstr "选择一项操作"
 
 msgid "No action defined."
 msgstr "没有定义任何操作 ."
-
-msgid "Your selection:"
-msgstr "已选择:"
-
-msgid "Y"
-msgstr "年"
-
-msgid "M"
-msgstr "月"
-
-msgid "w"
-msgstr "星期"
-
-msgid "d"
-msgstr "日"
-
-msgid "h"
-msgstr "时"
-
-msgid "m"
-msgstr "分"
-
-msgid "s"
-msgstr "秒"
-
-msgid "By: "
-msgstr "By: "
-
-msgid "y"
-msgstr "y"
-
-msgid "Yes"
-msgstr "是"
-
-msgid "t"
-msgstr "t"
-
-msgid "Message: "
-msgstr "信息: "
-
-msgid "Warning: "
-msgstr "警告: "
-
-msgid "Always ignore this warning."
-msgstr "下次不再提示."
-
-msgid "Do you want to proceed?"
-msgstr "继续此项操作 ?"
-
-msgid "No"
-msgstr "否"
-
-msgid "Confirmation: "
-msgstr "确认: "
-
-msgid "Concurrency Exception"
-msgstr "并行操作异常"
-
-msgid "Write Concurrency Warning: "
-msgstr "同步操作警告: "
-
-msgid "This record has been modified while you were editing it."
-msgstr "在你编辑的时候，这条记录已经被更改."
-
-msgid "Choose:"
-msgstr "选择："
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"取消\" 不保存;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"对比\" 查看变更的数据;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"覆写\" 保存当前数据."
-
-msgid "Compare"
-msgstr "对比"
-
-#, fuzzy
-msgid "Compare: %1"
-msgstr "对比"
-
-msgid "Write Anyway"
-msgstr "覆写"
-
-msgid "Application Error"
-msgstr "程序错误"
-
-msgid "Report Bug"
-msgstr "报告Bug"
-
-#, fuzzy
-msgid "Processing"
-msgstr "处理中..."
-
-msgid "Search..."
-msgstr "查找..."
-
-msgid "Create..."
-msgstr "新建..."
-
-msgid "Download"
-msgstr "下载"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "字体"
-
-msgid "Size"
-msgstr "大小"
 
 msgid "Attachments (%1)"
 msgstr "附件(%1)"
@@ -519,7 +521,7 @@ msgid "Search %1"
 msgstr "搜索 %1"
 
 msgid "Revision"
-msgstr "版本"
+msgstr "修订版本"
 
 msgid "All Fields"
 msgstr "所有字段"
@@ -572,9 +574,8 @@ msgstr "CSV导出：%s"
 msgid "Save Export"
 msgstr "保存导出"
 
-#, fuzzy
 msgid "URL Export"
-msgstr "导出"
+msgstr "URL 导出"
 
 msgid "Delete Export"
 msgstr "删除导出"
@@ -582,23 +583,20 @@ msgstr "删除导出"
 msgid "Predefined Exports"
 msgstr "预定义导出"
 
-#, fuzzy
 msgid "Selected Records"
-msgstr "后一项"
+msgstr "已选记录"
 
-#, fuzzy
 msgid "Listed Records"
-msgstr "后一项"
+msgstr "已列出记录"
 
-#, fuzzy
 msgid "Export:"
-msgstr "导出"
+msgstr "导出:"
 
 msgid "Ignore search limit"
-msgstr ""
+msgstr "忽略搜索限制"
 
 msgid "Use locale format"
-msgstr "使用地区格式"
+msgstr "使用 locale 格式"
 
 msgid "Add Field Names"
 msgstr "添加字段名称"
@@ -613,41 +611,41 @@ msgid "%1 (record name)"
 msgstr "%1 (记录名称)"
 
 msgid "What is the name of this export?"
-msgstr "导出文件的文件名是?"
+msgstr "导出设置的名称是?"
 
 msgid "Override %1 definition?"
 msgstr "覆盖 %1 的定义?"
 
 msgid "E-mail %1"
-msgstr ""
+msgstr "电子邮件 %1"
 
-#, fuzzy
 msgid "To:"
-msgstr "至"
+msgstr "收件人:"
 
 msgid "Cc:"
-msgstr ""
+msgstr "抄送:"
 
 msgid "Bcc:"
-msgstr ""
+msgstr "私下抄送:"
 
 msgid "Subject:"
-msgstr ""
+msgstr "主题:"
 
-#, fuzzy
 msgid "Reports"
-msgstr "报告Bug"
+msgstr "报告(_R)"
 
-#, fuzzy
 msgid "Attachments"
-msgstr "附件文档"
+msgstr "附件"
+
+msgid "Files"
+msgstr ""
 
 msgid "Send"
-msgstr ""
+msgstr "发送"
 
 #, fuzzy
-msgid "Remove attachment"
-msgstr "附件文档"
+msgid "Remove File"
+msgstr "删除"
 
 msgid "Wizard"
 msgstr "向导"

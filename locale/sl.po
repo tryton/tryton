@@ -103,6 +103,134 @@ msgstr "Uporabniško ime"
 msgid "Database"
 msgstr "Podatkovna baza"
 
+msgid "Your selection:"
+msgstr "Vaša izbira:"
+
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgid "OK"
+msgstr "V redu"
+
+msgid "Y"
+msgstr "l"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "t"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Od: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "d"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "True"
+msgstr "Da"
+
+msgid "t"
+msgstr "d"
+
+msgid "False"
+msgstr "Ne"
+
+msgid "Message: "
+msgstr "Sporočilo: "
+
+msgid "Warning: "
+msgstr "Opozorilo: "
+
+msgid "Always ignore this warning."
+msgstr "Vedno prezri to opozorilo."
+
+msgid "Do you want to proceed?"
+msgstr "Ali želiš nadaljevati?"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Confirmation: "
+msgstr "Potrditev: "
+
+msgid "Concurrency Exception"
+msgstr "Napaka sočasnega izvajanja"
+
+msgid "Write Concurrency Warning: "
+msgstr "Opozorilo sočasnega zapisovanja: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Ta zapis je bil spremenjen v času vašega popravljanja."
+
+msgid "Choose:"
+msgstr "Izberi:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Prekliči\" - prekliči spremembe;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Primerjaj\" - primerjaj z drugo različico;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Vseeno shrani\" - shrani trenutno različico."
+
+msgid "Compare"
+msgstr "Primerjaj"
+
+#, fuzzy
+msgid "Compare: %1"
+msgstr "Primerjaj"
+
+msgid "Write Anyway"
+msgstr "Vseeno shrani"
+
+msgid "Application Error"
+msgstr "Programska napaka"
+
+msgid "Report Bug"
+msgstr "Prijavi programsko napako"
+
+#, fuzzy
+msgid "Processing"
+msgstr "Obdelava ..."
+
+msgid "Search..."
+msgstr "Išči ..."
+
+msgid "Create..."
+msgstr "Izdelaj ..."
+
+msgid "Download"
+msgstr "Prenesi"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "Pisava"
+
+msgid "Size"
+msgstr "Velikost"
+
 msgid "Switch view"
 msgstr "Preklopi pogled"
 
@@ -216,6 +344,10 @@ msgid "Add..."
 msgstr ""
 
 #, fuzzy
+msgid "Preview"
+msgstr "Prejšnji"
+
+#, fuzzy
 msgid "Template"
 msgstr "Veza"
 
@@ -252,12 +384,6 @@ msgstr ""
 
 msgid "Show inactive records"
 msgstr ""
-
-msgid "True"
-msgstr "Da"
-
-msgid "False"
-msgstr "Ne"
 
 msgid "Find"
 msgstr "Najdi"
@@ -309,12 +435,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "Prevod"
-
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgid "OK"
-msgstr "V redu"
 
 msgid "Edit"
 msgstr "Uredi"
@@ -394,9 +514,6 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ""
 
@@ -408,119 +525,6 @@ msgstr "Izberi ukrep"
 
 msgid "No action defined."
 msgstr "Nobenega ukrepa še ni določenega."
-
-msgid "Your selection:"
-msgstr "Vaša izbira:"
-
-msgid "Y"
-msgstr "l"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "t"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "h"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "Od: "
-
-msgid "y"
-msgstr "d"
-
-msgid "Yes"
-msgstr "Da"
-
-msgid "t"
-msgstr "d"
-
-msgid "Message: "
-msgstr "Sporočilo: "
-
-msgid "Warning: "
-msgstr "Opozorilo: "
-
-msgid "Always ignore this warning."
-msgstr "Vedno prezri to opozorilo."
-
-msgid "Do you want to proceed?"
-msgstr "Ali želiš nadaljevati?"
-
-msgid "No"
-msgstr "Ne"
-
-msgid "Confirmation: "
-msgstr "Potrditev: "
-
-msgid "Concurrency Exception"
-msgstr "Napaka sočasnega izvajanja"
-
-msgid "Write Concurrency Warning: "
-msgstr "Opozorilo sočasnega zapisovanja: "
-
-msgid "This record has been modified while you were editing it."
-msgstr "Ta zapis je bil spremenjen v času vašega popravljanja."
-
-msgid "Choose:"
-msgstr "Izberi:"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"Prekliči\" - prekliči spremembe;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"Primerjaj\" - primerjaj z drugo različico;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"Vseeno shrani\" - shrani trenutno različico."
-
-msgid "Compare"
-msgstr "Primerjaj"
-
-#, fuzzy
-msgid "Compare: %1"
-msgstr "Primerjaj"
-
-msgid "Write Anyway"
-msgstr "Vseeno shrani"
-
-msgid "Application Error"
-msgstr "Programska napaka"
-
-msgid "Report Bug"
-msgstr "Prijavi programsko napako"
-
-#, fuzzy
-msgid "Processing"
-msgstr "Obdelava ..."
-
-msgid "Search..."
-msgstr "Išči ..."
-
-msgid "Create..."
-msgstr "Izdelaj ..."
-
-msgid "Download"
-msgstr "Prenesi"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "Pisava"
-
-msgid "Size"
-msgstr "Velikost"
 
 msgid "Attachments (%1)"
 msgstr "Priponke (%1)"
@@ -656,12 +660,15 @@ msgstr "Prijavi programsko napako"
 msgid "Attachments"
 msgstr "Priponka"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
 #, fuzzy
-msgid "Remove attachment"
-msgstr "Priponka"
+msgid "Remove File"
+msgstr "Odstrani"
 
 msgid "Wizard"
 msgstr "Čarovnik"

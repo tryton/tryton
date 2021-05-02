@@ -101,6 +101,132 @@ msgstr "Gebruikersnaam"
 msgid "Database"
 msgstr "Database"
 
+msgid "Your selection:"
+msgstr "Uw selectie:"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "J"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Door: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "J"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "True"
+msgstr "Waar"
+
+msgid "t"
+msgstr "w (t)"
+
+msgid "False"
+msgstr "Niet waar"
+
+msgid "Message: "
+msgstr "Bericht: "
+
+msgid "Warning: "
+msgstr "Waarschuwing: "
+
+msgid "Always ignore this warning."
+msgstr "Deze waarschuwing altijd negeren."
+
+msgid "Do you want to proceed?"
+msgstr "Doorgaan?"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "Confirmation: "
+msgstr "Bevestiging: "
+
+msgid "Concurrency Exception"
+msgstr "Simultaan gebruik (error)"
+
+msgid "Write Concurrency Warning: "
+msgstr "Aandacht, schrijftoegang concurrenten (Write Concurrency) : "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Dit veld werd gewijzigd terwijl u het aan het bewerken was."
+
+msgid "Choose:"
+msgstr "Kiezen:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Annuleren\" om het opslaan te annuleren;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Vergelijken\" om de gewijzigde versie te zien;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Overschrijven\" om de huidige versie te bewaren."
+
+msgid "Compare"
+msgstr "Vergelijken"
+
+msgid "Compare: %1"
+msgstr "Vergelijk:% 1"
+
+msgid "Write Anyway"
+msgstr "Overschrijven"
+
+msgid "Application Error"
+msgstr "Applicatiefout"
+
+msgid "Report Bug"
+msgstr "Programmafout melden"
+
+msgid "Processing"
+msgstr "Verwerking"
+
+msgid "Search..."
+msgstr "Zoeken..."
+
+msgid "Create..."
+msgstr "Maak ..."
+
+msgid "Download"
+msgstr "Download"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "lettertype"
+
+msgid "Size"
+msgstr "Grootte"
+
 msgid "Switch view"
 msgstr "Wissel van weergave"
 
@@ -208,6 +334,10 @@ msgstr "Model: "
 msgid "Add..."
 msgstr "Toevoegen..."
 
+#, fuzzy
+msgid "Preview"
+msgstr "Vorige"
+
 msgid "Template"
 msgstr "Sjabloon"
 
@@ -243,12 +373,6 @@ msgstr "Toon actieve records"
 
 msgid "Show inactive records"
 msgstr "Toon niet actieve records"
-
-msgid "True"
-msgstr "Waar"
-
-msgid "False"
-msgstr "Niet waar"
 
 msgid "Find"
 msgstr "Zoeken"
@@ -294,12 +418,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "Vertalen"
-
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Edit"
 msgstr "Bewerk"
@@ -379,9 +497,6 @@ msgstr "Week"
 msgid "Day"
 msgstr "Dag"
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ",..."
 
@@ -393,117 +508,6 @@ msgstr "Selecteer je handeling"
 
 msgid "No action defined."
 msgstr "Geen handeling gedefinieerd."
-
-msgid "Your selection:"
-msgstr "Uw selectie:"
-
-msgid "Y"
-msgstr "J"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "w"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "h"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "Door: "
-
-msgid "y"
-msgstr "J"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "t"
-msgstr "w (t)"
-
-msgid "Message: "
-msgstr "Bericht: "
-
-msgid "Warning: "
-msgstr "Waarschuwing: "
-
-msgid "Always ignore this warning."
-msgstr "Deze waarschuwing altijd negeren."
-
-msgid "Do you want to proceed?"
-msgstr "Doorgaan?"
-
-msgid "No"
-msgstr "Nee"
-
-msgid "Confirmation: "
-msgstr "Bevestiging: "
-
-msgid "Concurrency Exception"
-msgstr "Simultaan gebruik (error)"
-
-msgid "Write Concurrency Warning: "
-msgstr "Aandacht, schrijftoegang concurrenten (Write Concurrency) : "
-
-msgid "This record has been modified while you were editing it."
-msgstr "Dit veld werd gewijzigd terwijl u het aan het bewerken was."
-
-msgid "Choose:"
-msgstr "Kiezen:"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"Annuleren\" om het opslaan te annuleren;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"Vergelijken\" om de gewijzigde versie te zien;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"Overschrijven\" om de huidige versie te bewaren."
-
-msgid "Compare"
-msgstr "Vergelijken"
-
-msgid "Compare: %1"
-msgstr "Vergelijk:% 1"
-
-msgid "Write Anyway"
-msgstr "Overschrijven"
-
-msgid "Application Error"
-msgstr "Applicatiefout"
-
-msgid "Report Bug"
-msgstr "Programmafout melden"
-
-msgid "Processing"
-msgstr "Verwerking"
-
-msgid "Search..."
-msgstr "Zoeken..."
-
-msgid "Create..."
-msgstr "Maak ..."
-
-msgid "Download"
-msgstr "Download"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "lettertype"
-
-msgid "Size"
-msgstr "Grootte"
 
 msgid "Attachments (%1)"
 msgstr "Bijlagen (%1)"
@@ -631,11 +635,15 @@ msgstr "Rapporten"
 msgid "Attachments"
 msgstr "Bijlagen"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr "Sturen"
 
-msgid "Remove attachment"
-msgstr "Bijlage verwijderen"
+#, fuzzy
+msgid "Remove File"
+msgstr "Verwijderen"
 
 msgid "Wizard"
 msgstr "Assistent"

@@ -107,6 +107,134 @@ msgstr "Kasutaja nimi"
 msgid "Database"
 msgstr "Andmebaas"
 
+msgid "Your selection:"
+msgstr "Valik:"
+
+msgid "Cancel"
+msgstr "Tühista"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "A"
+
+msgid "M"
+msgstr "K"
+
+msgid "w"
+msgstr "n"
+
+msgid "d"
+msgstr "p"
+
+msgid "h"
+msgstr "t"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr ""
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr ""
+
+msgid "Yes"
+msgstr "Jah"
+
+msgid "True"
+msgstr "Tõene"
+
+msgid "t"
+msgstr ""
+
+msgid "False"
+msgstr "Väär"
+
+msgid "Message: "
+msgstr "Teade: "
+
+msgid "Warning: "
+msgstr "Hoiatus: "
+
+msgid "Always ignore this warning."
+msgstr "Eira alati seda hoiatust."
+
+msgid "Do you want to proceed?"
+msgstr "Kas soovid jätkata?"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "Confirmation: "
+msgstr "Kinnitus: "
+
+msgid "Concurrency Exception"
+msgstr ""
+
+msgid "Write Concurrency Warning: "
+msgstr ""
+
+msgid "This record has been modified while you were editing it."
+msgstr "Kirje on muutunud viimasest salvestamisest alates."
+
+msgid "Choose:"
+msgstr "Vali:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Tühista\", et katkestada salvestamine;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Võrdle\", et vaadata muudetud versiooni;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Salvesta ikkagi\", et salvestada viimased muudatused."
+
+msgid "Compare"
+msgstr "Võrdle"
+
+#, fuzzy
+msgid "Compare: %1"
+msgstr "Võrdle"
+
+msgid "Write Anyway"
+msgstr "Salvesta ikkagi"
+
+msgid "Application Error"
+msgstr "Rakenduse viga"
+
+msgid "Report Bug"
+msgstr "Vearaport"
+
+#, fuzzy
+msgid "Processing"
+msgstr "Töötlemine..."
+
+msgid "Search..."
+msgstr "Otsi..."
+
+msgid "Create..."
+msgstr "Loo..."
+
+msgid "Download"
+msgstr "Allalaadimine"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr "Šrift"
+
+msgid "Size"
+msgstr "Suurus"
+
 msgid "Switch view"
 msgstr "Vaheta vaadet"
 
@@ -220,6 +348,10 @@ msgid "Add..."
 msgstr "Lisa..."
 
 #, fuzzy
+msgid "Preview"
+msgstr "Eelmine"
+
+#, fuzzy
 msgid "Template"
 msgstr "Seosta"
 
@@ -255,12 +387,6 @@ msgstr "Näita aktiivseid kirjeid"
 
 msgid "Show inactive records"
 msgstr "Näita mitteaktiivseid kirjeid"
-
-msgid "True"
-msgstr "Tõene"
-
-msgid "False"
-msgstr "Väär"
 
 msgid "Find"
 msgstr "Leia"
@@ -312,12 +438,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr "Tõlgi"
-
-msgid "Cancel"
-msgstr "Tühista"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Edit"
 msgstr "Muuda"
@@ -397,9 +517,6 @@ msgstr "Nädal"
 msgid "Day"
 msgstr "Päev"
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ""
 
@@ -411,119 +528,6 @@ msgstr "Vali toiming"
 
 msgid "No action defined."
 msgstr "Toiming kirjeldamata."
-
-msgid "Your selection:"
-msgstr "Valik:"
-
-msgid "Y"
-msgstr "A"
-
-msgid "M"
-msgstr "K"
-
-msgid "w"
-msgstr "n"
-
-msgid "d"
-msgstr "p"
-
-msgid "h"
-msgstr "t"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr ""
-
-msgid "y"
-msgstr ""
-
-msgid "Yes"
-msgstr "Jah"
-
-msgid "t"
-msgstr ""
-
-msgid "Message: "
-msgstr "Teade: "
-
-msgid "Warning: "
-msgstr "Hoiatus: "
-
-msgid "Always ignore this warning."
-msgstr "Eira alati seda hoiatust."
-
-msgid "Do you want to proceed?"
-msgstr "Kas soovid jätkata?"
-
-msgid "No"
-msgstr "Ei"
-
-msgid "Confirmation: "
-msgstr "Kinnitus: "
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
-msgstr ""
-
-msgid "This record has been modified while you were editing it."
-msgstr "Kirje on muutunud viimasest salvestamisest alates."
-
-msgid "Choose:"
-msgstr "Vali:"
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr "\"Tühista\", et katkestada salvestamine;"
-
-msgid "\"Compare\" to see the modified version;"
-msgstr "\"Võrdle\", et vaadata muudetud versiooni;"
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr "\"Salvesta ikkagi\", et salvestada viimased muudatused."
-
-msgid "Compare"
-msgstr "Võrdle"
-
-#, fuzzy
-msgid "Compare: %1"
-msgstr "Võrdle"
-
-msgid "Write Anyway"
-msgstr "Salvesta ikkagi"
-
-msgid "Application Error"
-msgstr "Rakenduse viga"
-
-msgid "Report Bug"
-msgstr "Vearaport"
-
-#, fuzzy
-msgid "Processing"
-msgstr "Töötlemine..."
-
-msgid "Search..."
-msgstr "Otsi..."
-
-msgid "Create..."
-msgstr "Loo..."
-
-msgid "Download"
-msgstr "Allalaadimine"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr "Šrift"
-
-msgid "Size"
-msgstr "Suurus"
 
 msgid "Attachments (%1)"
 msgstr "Manused (%1)"
@@ -660,12 +664,15 @@ msgstr "Vearaport"
 msgid "Attachments"
 msgstr "Manus"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
 #, fuzzy
-msgid "Remove attachment"
-msgstr "Manus"
+msgid "Remove File"
+msgstr "Eemalda"
 
 msgid "Wizard"
 msgstr "Nõustaja"

@@ -101,6 +101,132 @@ msgstr ""
 msgid "Database"
 msgstr ""
 
+msgid "Your selection:"
+msgstr "Pilihan anda:"
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Oleh: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "y"
+
+msgid "Yes"
+msgstr "Ya"
+
+msgid "True"
+msgstr "Benar"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "Salah"
+
+msgid "Message: "
+msgstr "Pesan: "
+
+msgid "Warning: "
+msgstr ""
+
+msgid "Always ignore this warning."
+msgstr "Selalu abaikan peringatan ini."
+
+msgid "Do you want to proceed?"
+msgstr "Apakah Anda ingin melanjutkan?"
+
+msgid "No"
+msgstr "Tidak"
+
+msgid "Confirmation: "
+msgstr ""
+
+msgid "Concurrency Exception"
+msgstr ""
+
+msgid "Write Concurrency Warning: "
+msgstr ""
+
+msgid "This record has been modified while you were editing it."
+msgstr "Rekaman ini telah diubah selagi anda menyuntingnya."
+
+msgid "Choose:"
+msgstr ""
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr ""
+
+msgid "\"Compare\" to see the modified version;"
+msgstr ""
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr ""
+
+msgid "Compare"
+msgstr "Bandingkan"
+
+msgid "Compare: %1"
+msgstr "Bandingkan: %1"
+
+msgid "Write Anyway"
+msgstr "Tetap Menulis"
+
+msgid "Application Error"
+msgstr ""
+
+msgid "Report Bug"
+msgstr "Melaporkan Kesalahan"
+
+msgid "Processing"
+msgstr ""
+
+msgid "Search..."
+msgstr ""
+
+msgid "Create..."
+msgstr ""
+
+msgid "Download"
+msgstr "Unduh"
+
+msgid "..."
+msgstr "..."
+
+msgid "Font"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
 msgid "Switch view"
 msgstr ""
 
@@ -206,6 +332,10 @@ msgstr ""
 msgid "Add..."
 msgstr ""
 
+#, fuzzy
+msgid "Preview"
+msgstr "Sebelumnya"
+
 msgid "Template"
 msgstr "Templat"
 
@@ -241,12 +371,6 @@ msgstr ""
 
 msgid "Show inactive records"
 msgstr ""
-
-msgid "True"
-msgstr "Benar"
-
-msgid "False"
-msgstr "Salah"
 
 msgid "Find"
 msgstr ""
@@ -292,12 +416,6 @@ msgstr ":"
 
 msgid "Translate"
 msgstr ""
-
-msgid "Cancel"
-msgstr "Batal"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Edit"
 msgstr "Sunting"
@@ -377,9 +495,6 @@ msgstr "Pekan"
 msgid "Day"
 msgstr "Hari"
 
-msgid ", "
-msgstr ", "
-
 msgid ",..."
 msgstr ",..."
 
@@ -391,117 +506,6 @@ msgstr "Pilih tindakan Anda"
 
 msgid "No action defined."
 msgstr "Tidak ada tindakan yang ditentukan."
-
-msgid "Your selection:"
-msgstr "Pilihan anda:"
-
-msgid "Y"
-msgstr "Y"
-
-msgid "M"
-msgstr "M"
-
-msgid "w"
-msgstr "w"
-
-msgid "d"
-msgstr "d"
-
-msgid "h"
-msgstr "h"
-
-msgid "m"
-msgstr "m"
-
-msgid "s"
-msgstr "s"
-
-msgid "By: "
-msgstr "Oleh: "
-
-msgid "y"
-msgstr "y"
-
-msgid "Yes"
-msgstr "Ya"
-
-msgid "t"
-msgstr "t"
-
-msgid "Message: "
-msgstr "Pesan: "
-
-msgid "Warning: "
-msgstr ""
-
-msgid "Always ignore this warning."
-msgstr "Selalu abaikan peringatan ini."
-
-msgid "Do you want to proceed?"
-msgstr "Apakah Anda ingin melanjutkan?"
-
-msgid "No"
-msgstr "Tidak"
-
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
-msgstr ""
-
-msgid "This record has been modified while you were editing it."
-msgstr "Rekaman ini telah diubah selagi anda menyuntingnya."
-
-msgid "Choose:"
-msgstr ""
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr ""
-
-msgid "\"Compare\" to see the modified version;"
-msgstr ""
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr ""
-
-msgid "Compare"
-msgstr "Bandingkan"
-
-msgid "Compare: %1"
-msgstr "Bandingkan: %1"
-
-msgid "Write Anyway"
-msgstr "Tetap Menulis"
-
-msgid "Application Error"
-msgstr ""
-
-msgid "Report Bug"
-msgstr "Melaporkan Kesalahan"
-
-msgid "Processing"
-msgstr ""
-
-msgid "Search..."
-msgstr ""
-
-msgid "Create..."
-msgstr ""
-
-msgid "Download"
-msgstr "Unduh"
-
-msgid "..."
-msgstr "..."
-
-msgid "Font"
-msgstr ""
-
-msgid "Size"
-msgstr ""
 
 msgid "Attachments (%1)"
 msgstr ""
@@ -631,12 +635,15 @@ msgstr "Melaporkan Kesalahan"
 msgid "Attachments"
 msgstr "Lampiran"
 
-msgid "Send"
+msgid "Files"
 msgstr ""
 
+msgid "Send"
+msgstr "Kirim"
+
 #, fuzzy
-msgid "Remove attachment"
-msgstr "Lampiran"
+msgid "Remove File"
+msgstr "Hapus"
 
 msgid "Wizard"
 msgstr "Wisaya"

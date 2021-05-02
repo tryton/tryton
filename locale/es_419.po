@@ -113,6 +113,132 @@ msgstr ""
 msgid "Database"
 msgstr ""
 
+msgid "Your selection:"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Y"
+msgstr ""
+
+msgid "M"
+msgstr ""
+
+msgid "w"
+msgstr ""
+
+msgid "d"
+msgstr ""
+
+msgid "h"
+msgstr ""
+
+msgid "m"
+msgstr ""
+
+msgid "s"
+msgstr ""
+
+msgid "By: "
+msgstr ""
+
+msgid ", "
+msgstr ""
+
+msgid "y"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "True"
+msgstr ""
+
+msgid "t"
+msgstr ""
+
+msgid "False"
+msgstr ""
+
+msgid "Message: "
+msgstr ""
+
+msgid "Warning: "
+msgstr ""
+
+msgid "Always ignore this warning."
+msgstr ""
+
+msgid "Do you want to proceed?"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Confirmation: "
+msgstr ""
+
+msgid "Concurrency Exception"
+msgstr ""
+
+msgid "Write Concurrency Warning: "
+msgstr ""
+
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+msgid "Choose:"
+msgstr ""
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr ""
+
+msgid "\"Compare\" to see the modified version;"
+msgstr ""
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr ""
+
+msgid "Compare"
+msgstr ""
+
+msgid "Compare: %1"
+msgstr ""
+
+msgid "Write Anyway"
+msgstr ""
+
+msgid "Application Error"
+msgstr ""
+
+msgid "Report Bug"
+msgstr ""
+
+msgid "Processing"
+msgstr ""
+
+msgid "Search..."
+msgstr ""
+
+msgid "Create..."
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "..."
+msgstr ""
+
+msgid "Font"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
 msgid "Switch view"
 msgstr ""
 
@@ -220,6 +346,9 @@ msgstr ""
 msgid "Add..."
 msgstr ""
 
+msgid "Preview"
+msgstr ""
+
 msgid "Template"
 msgstr ""
 
@@ -255,12 +384,6 @@ msgid "Show active records"
 msgstr ""
 
 msgid "Show inactive records"
-msgstr ""
-
-msgid "True"
-msgstr ""
-
-msgid "False"
 msgstr ""
 
 msgid "Find"
@@ -309,12 +432,6 @@ msgid ":"
 msgstr ""
 
 msgid "Translate"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "OK"
 msgstr ""
 
 msgid "Edit"
@@ -397,9 +514,6 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-msgid ", "
-msgstr ""
-
 msgid ",..."
 msgstr ""
 
@@ -410,117 +524,6 @@ msgid "Select your action"
 msgstr ""
 
 msgid "No action defined."
-msgstr ""
-
-msgid "Your selection:"
-msgstr ""
-
-msgid "Y"
-msgstr ""
-
-msgid "M"
-msgstr ""
-
-msgid "w"
-msgstr ""
-
-msgid "d"
-msgstr ""
-
-msgid "h"
-msgstr ""
-
-msgid "m"
-msgstr ""
-
-msgid "s"
-msgstr ""
-
-msgid "By: "
-msgstr ""
-
-msgid "y"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "t"
-msgstr ""
-
-msgid "Message: "
-msgstr ""
-
-msgid "Warning: "
-msgstr ""
-
-msgid "Always ignore this warning."
-msgstr ""
-
-msgid "Do you want to proceed?"
-msgstr ""
-
-msgid "No"
-msgstr ""
-
-msgid "Confirmation: "
-msgstr ""
-
-msgid "Concurrency Exception"
-msgstr ""
-
-msgid "Write Concurrency Warning: "
-msgstr ""
-
-msgid "This record has been modified while you were editing it."
-msgstr ""
-
-msgid "Choose:"
-msgstr ""
-
-msgid "\"Cancel\" to cancel saving;"
-msgstr ""
-
-msgid "\"Compare\" to see the modified version;"
-msgstr ""
-
-msgid "\"Write Anyway\" to save your current version."
-msgstr ""
-
-msgid "Compare"
-msgstr ""
-
-msgid "Compare: %1"
-msgstr ""
-
-msgid "Write Anyway"
-msgstr ""
-
-msgid "Application Error"
-msgstr ""
-
-msgid "Report Bug"
-msgstr ""
-
-msgid "Processing"
-msgstr ""
-
-msgid "Search..."
-msgstr ""
-
-msgid "Create..."
-msgstr ""
-
-msgid "Download"
-msgstr ""
-
-msgid "..."
-msgstr ""
-
-msgid "Font"
-msgstr ""
-
-msgid "Size"
 msgstr ""
 
 msgid "Attachments (%1)"
@@ -650,10 +653,13 @@ msgstr ""
 msgid "Attachments"
 msgstr "Adjuntos (%1)"
 
+msgid "Files"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
-msgid "Remove attachment"
+msgid "Remove File"
 msgstr ""
 
 msgid "Wizard"
