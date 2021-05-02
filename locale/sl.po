@@ -155,8 +155,8 @@ msgctxt "model:ir.message,text:msg_order_point_unique"
 msgid "Only one order point is allowed for each product-location pair."
 msgstr "Dovoljena je samo ena točka naročanja za vsak par izdelek - lokacija."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy

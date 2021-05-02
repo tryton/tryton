@@ -145,9 +145,9 @@ msgstr ""
 "Une seule règle d'approvisionnement est autorisée par paire produit-"
 "emplacement."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
-msgstr "Utilisateur dans la société"
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"

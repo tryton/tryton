@@ -56,7 +56,7 @@ msgstr "Ubicació interna"
 
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
-msgstr "Quantitat destí"
+msgstr "Quantitat desitjada"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
@@ -145,9 +145,9 @@ msgstr ""
 "Només es permet una regla de proveïment per cada combinació de producte-"
 "ubicació."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
-msgstr "Usuari a l'empresa"
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"

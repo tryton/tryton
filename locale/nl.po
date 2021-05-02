@@ -143,8 +143,9 @@ msgctxt "model:ir.message,text:msg_order_point_unique"
 msgid "Only one order point is allowed for each product-location pair."
 msgstr "Per product-locatiepaar is slechts één bestelpunt toegestaan."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"

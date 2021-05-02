@@ -117,11 +117,11 @@ msgstr "Einkauf"
 
 msgctxt "model:ir.message,text:msg_late_customer_moves"
 msgid "There are some customer moves that are late."
-msgstr "Einige Lieferungen an den Kunden sind verspätet."
+msgstr "Einige Lagerbewegungen zu Kunden sind verspätet."
 
 msgctxt "model:ir.message,text:msg_late_supplier_moves"
 msgid "There are some supplier moves that are late."
-msgstr "Einige Lieferungen von Lieferanten sind verspätet."
+msgstr "Einige Lagerbewegungen von Lieferanten sind verspätet."
 
 msgctxt ""
 "model:ir.message,text:msg_order_point_concurrent_overflowing_location_internal"
@@ -147,8 +147,8 @@ msgstr ""
 "Es ist nur ein Bestellpunkt für jede Paarung aus Artikel und Lagerort "
 "erlaubt."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"

@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Companie"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produs"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr "Ubicación del almacenamiento"
+msgstr ""
 
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
@@ -72,7 +72,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr "Ubicación de la bodega"
+msgstr ""
 
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
@@ -103,11 +103,10 @@ msgctxt ""
 msgid "All"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Interna"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
@@ -170,7 +169,7 @@ msgstr ""
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
-msgstr "Interna"
+msgstr ""
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"

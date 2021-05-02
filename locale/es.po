@@ -146,9 +146,9 @@ msgstr ""
 "Sólo se permite una regla de abastecimiento por cada combinación de "
 "producto-ubicación."
 
-msgctxt "model:ir.rule.group,name:rule_group_order_point"
-msgid "User in company"
-msgstr "Usuario en la empresa"
+msgctxt "model:ir.rule.group,name:rule_group_order_point_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
