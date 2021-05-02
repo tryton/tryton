@@ -22,9 +22,24 @@ msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
 msgstr "Koszt waluty"
 
-msgctxt "field:stock.shipment.in,cost_currency_digits:"
-msgid "Cost Currency Digits"
-msgstr "Cyfry kosztu waluty"
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Koszt waluty"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_edit:"
+msgid "Edit Cost"
+msgstr "Koszt"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_used:"
+msgid "Cost"
+msgstr "Koszt"
+
+msgctxt "help:stock.shipment.in,cost_edit:"
+msgid "Check to edit the cost."
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"

@@ -22,9 +22,21 @@ msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
 msgstr "Moneda cost"
 
-msgctxt "field:stock.shipment.in,cost_currency_digits:"
-msgid "Cost Currency Digits"
-msgstr "Decimals de la moneda de cost"
+msgctxt "field:stock.shipment.in,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Moneda cost"
+
+msgctxt "field:stock.shipment.in,cost_edit:"
+msgid "Edit Cost"
+msgstr "Edita cost"
+
+msgctxt "field:stock.shipment.in,cost_used:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "help:stock.shipment.in,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Marca per editar el cost."
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"

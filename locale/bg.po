@@ -22,9 +22,24 @@ msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
 msgstr "Валута при разход"
 
-msgctxt "field:stock.shipment.in,cost_currency_digits:"
-msgid "Cost Currency Digits"
-msgstr "Цифри на валута за разход"
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Валута при разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_edit:"
+msgid "Edit Cost"
+msgstr "Разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_used:"
+msgid "Cost"
+msgstr "Разход"
+
+msgctxt "help:stock.shipment.in,cost_edit:"
+msgid "Check to edit the cost."
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"

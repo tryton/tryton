@@ -22,9 +22,22 @@ msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
 msgstr "Savikainos valiuta"
 
-msgctxt "field:stock.shipment.in,cost_currency_digits:"
-msgid "Cost Currency Digits"
-msgstr "Savikainos valiutos skaitmenų skaičius"
+#, fuzzy
+msgctxt "field:stock.shipment.in,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Savikainos valiuta"
+
+msgctxt "field:stock.shipment.in,cost_edit:"
+msgid "Edit Cost"
+msgstr ""
+
+msgctxt "field:stock.shipment.in,cost_used:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "help:stock.shipment.in,cost_edit:"
+msgid "Check to edit the cost."
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
