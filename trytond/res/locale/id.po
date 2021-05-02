@@ -88,14 +88,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr ""
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr ""
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr ""
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr ""
@@ -136,6 +128,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Nama"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr ""
@@ -150,6 +146,10 @@ msgstr "Tindakan"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
+msgstr ""
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
 msgstr ""
 
 msgctxt "field:res.user,email:"
@@ -248,6 +248,19 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Pengguna"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Login"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Alamat IP"
@@ -282,6 +295,10 @@ msgstr ""
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
+msgstr ""
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
 msgstr ""
 
 msgctxt "help:res.user,actions:"
@@ -516,6 +533,10 @@ msgstr "Aplikasi Pengguna"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
+msgstr ""
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
 msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"

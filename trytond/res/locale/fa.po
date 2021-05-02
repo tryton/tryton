@@ -92,14 +92,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "گروه قوانین"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "گروه های کاربر"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "گروه های کاربر"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "گروه های کاربر"
@@ -140,6 +132,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "نام"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "قوانین"
@@ -155,6 +151,10 @@ msgstr "اقدامات"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "برنامه های کاربردی"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -252,6 +252,19 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "کاربر"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "آدرس آی پی"
@@ -288,6 +301,10 @@ msgstr ""
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "گروه ها مجاز به ویرایش توالی این نوع هستند"
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:res.user,actions:"
@@ -528,6 +545,10 @@ msgstr "کاربر برنامه"
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "پیکربندی اولیه کاربر"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

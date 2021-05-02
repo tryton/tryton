@@ -82,14 +82,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "Grupo de reglas"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "Grupos de usuarios"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "Grupos de usuarios"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "Grupos de usuarios"
@@ -130,6 +122,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr "Padre"
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "Reglas"
@@ -145,6 +141,10 @@ msgstr "Acciones"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Aplicaciones"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr "URL de la insignia del avatar"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -242,6 +242,18 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Usuario"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr "Galleta"
+
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Nombre de usuario"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr "Galleta del dispositivo"
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Dirección IP"
@@ -277,6 +289,10 @@ msgstr "Los grupos de usuarios que pueden modificar la exportación."
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "Los grupos que pueden editar las secuencias de este tipo."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr "El grupo del qué heredar los permisos de acceso."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -515,6 +531,10 @@ msgstr "Aplicación de usuario"
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Configuración inicial usuario"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr "Dispositivo del usuario"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

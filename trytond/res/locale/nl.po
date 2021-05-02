@@ -82,14 +82,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "Regelgroep"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "gebruikersgroepen"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "gebruikersgroepen"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "gebruikersgroepen"
@@ -130,6 +122,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Naam"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "Regels"
@@ -145,6 +141,10 @@ msgstr "Acties"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "toepassingen"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -242,6 +242,19 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Gebruiker"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Inlognaam"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "IP Adres"
@@ -277,6 +290,10 @@ msgstr "De gebruikersgroepen die de export kunnen wijzigen."
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "Groepen mogen de reeksen (sequences) van dit type bewerken."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -516,6 +533,10 @@ msgstr "Gebruikerstoepassing"
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Gebruiker configuratie init"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

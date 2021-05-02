@@ -92,14 +92,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "Skupina pravila"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "Uporabniške skupine"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "Uporabniške skupine"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "Uporabniške skupine"
@@ -140,6 +132,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Naziv"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "Pravila"
@@ -155,6 +151,10 @@ msgstr "Ukrepi"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Aplikacije"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -253,6 +253,19 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Uporabnik"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Prijava"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr ""
@@ -289,6 +302,10 @@ msgstr ""
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "Skupine, ki omogočajo urejanje ta oštevilčenja"
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:res.user,actions:"
@@ -539,6 +556,10 @@ msgstr "Uporabniška aplikacija"
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Začetna nastavitev uporabnika"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

@@ -90,14 +90,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "Taisyklė grupei"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "Naudotojo grupės"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "Naudotojo grupės"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "Naudotojo grupės"
@@ -138,6 +130,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Pavadinimas"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "Taisyklės"
@@ -154,6 +150,10 @@ msgstr "Veiksmai"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Programos"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -252,6 +252,19 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Naudotojas"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Registracijos vardas"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "IP adresas"
@@ -287,6 +300,10 @@ msgstr "Naudotojo grupės galinčios keisti eksportavimą."
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "Grupės galinčios keisti šio tipo numeruotes."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -523,6 +540,10 @@ msgstr "Naudotojo taikomoji programa"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
+msgstr ""
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
 msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"

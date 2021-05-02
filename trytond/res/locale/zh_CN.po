@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -15,27 +14,22 @@ msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "用户组"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,groups:"
 msgid "Groups"
 msgstr "用户组"
 
-#, fuzzy
 msgctxt "field:ir.action.keyword,groups:"
 msgid "Groups"
 msgstr "用户组"
 
-#, fuzzy
 msgctxt "field:ir.action.report,groups:"
 msgid "Groups"
 msgstr "用户组"
 
-#, fuzzy
 msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
 msgstr "用户组"
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -88,14 +82,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "规则组"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "用户组"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "用户组"
@@ -122,19 +108,23 @@ msgstr "按钮"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
-msgstr "数据权限"
+msgstr "字段访问权限"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
-msgstr "菜单权限"
+msgstr "菜单访问权限"
 
 msgctxt "field:res.group,model_access:"
 msgid "Access Model"
-msgstr "模型权限"
+msgstr "模型访问权限"
 
 msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "名称"
+
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -152,6 +142,10 @@ msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "应用"
 
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
+
 msgctxt "field:res.user,email:"
 msgid "Email"
 msgstr "电子邮件"
@@ -166,7 +160,7 @@ msgstr "语言"
 
 msgctxt "field:res.user,language_direction:"
 msgid "Language Direction"
-msgstr "语言方向"
+msgstr "语言书写方向"
 
 msgctxt "field:res.user,login:"
 msgid "Login"
@@ -198,19 +192,19 @@ msgstr "重置密码过期"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
-msgstr "PYSON 菜单"
+msgstr "PySON 菜单"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
-msgstr "进程"
+msgstr "会话"
 
 msgctxt "field:res.user,signature:"
 msgid "Signature"
-msgstr "印签"
+msgstr "签名"
 
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
-msgstr "状态烂"
+msgstr "状态栏"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
@@ -238,7 +232,7 @@ msgstr "应用"
 
 msgctxt "field:res.user.application,key:"
 msgid "Key"
-msgstr ""
+msgstr "密钥"
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
@@ -247,6 +241,19 @@ msgstr "状态"
 msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "用户"
+
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "登录"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
@@ -284,9 +291,13 @@ msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "允许编辑此类型序列的用户组."
 
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
+
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
-msgstr "用户登录自动运行的操作."
+msgstr "用户登录后自动运行的操作."
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
@@ -302,11 +313,11 @@ msgstr "用户"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "重置密码"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
-msgstr "操作-用户组"
+msgstr "操作 - 组"
 
 msgctxt "model:ir.export-res.group,name:"
 msgid "Export Group"
@@ -344,11 +355,11 @@ msgctxt "model:ir.message,text:msg_user_delete_forbidden"
 msgid ""
 "For logging purposes users cannot be deleted, instead they should be "
 "deactivated."
-msgstr "由于日志记录的原因，用户不能删除，应该停用."
+msgstr "由于日志记录的原因，用户不能删除，只能停用."
 
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
-msgstr ""
+msgstr "%(login)s 的密码"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -364,11 +375,11 @@ msgstr "验证"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "重置密码"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "模型按钮-用户组"
+msgstr "模型按钮 - 组"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
@@ -440,7 +451,7 @@ msgstr "自己的会话"
 
 msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
 msgid "Own favorite"
-msgstr "自己的喜爱"
+msgstr "自己的爱好"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
@@ -462,18 +473,17 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr "任意的视图搜索"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
 msgid "Common view search"
-msgstr "自己的视图搜索"
+msgstr "公共的视图搜索"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr "规则组 - 用户组"
+msgstr "规则组 - 组"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "序列类别 - 用户组"
+msgstr "序列类别 - 组"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -489,7 +499,7 @@ msgstr "用户"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
-msgstr "菜单 - 用户组"
+msgstr "UI 菜单 - 组"
 
 msgctxt "model:res.group,name:"
 msgid "Group"
@@ -509,7 +519,7 @@ msgstr "用户 - 操作"
 
 msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
-msgstr "用户 - 用户组"
+msgstr "用户 - 组"
 
 msgctxt "model:res.user.application,name:"
 msgid "User Application"
@@ -517,7 +527,11 @@ msgstr "用户应用"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "用户init配置"
+msgstr "用户初始化配置"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -539,11 +553,15 @@ msgid ""
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
 "                [8:%(host)s/#%(database)s]"
 msgstr ""
+"你的账户 [1:%(login)s] 的密码已经重置.[2:]\n"
+"                你必须使用用户偏好功能设置一个新的密码.[3:]\n"
+"                你可以使用临时密码 [4:%(password)s] 连接到[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire at [1:%(datetime)s UTC]."
-msgstr "密码过期时间是"
+msgstr "密码将在 [1:%(datetime)s UTC] 过期."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
@@ -559,7 +577,7 @@ msgstr "已确认"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "操作权限"
+msgstr "访问权限"
 
 msgctxt "view:res.group:"
 msgid "Members"
@@ -575,7 +593,7 @@ msgstr "现在可以给系统添加用户了."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "操作权限"
+msgstr "访问权限"
 
 msgctxt "view:res.user:"
 msgid "Actions"
@@ -583,7 +601,7 @@ msgstr "动作"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "用户组"
+msgstr "组成员"
 
 msgctxt "view:res.user:"
 msgid "Preferences"
@@ -591,7 +609,7 @@ msgstr "偏好"
 
 msgctxt "view:res.user:"
 msgid "User"
-msgstr "基本信息"
+msgstr "用户"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"
@@ -607,4 +625,4 @@ msgstr "添加"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "完成"
+msgstr "结束"

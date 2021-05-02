@@ -14,6 +14,11 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "نام"
 
+#, fuzzy
+msgctxt "field:ir.action,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
+
 msgctxt "field:ir.action,type:"
 msgid "Type"
 msgstr "نوع"
@@ -89,6 +94,11 @@ msgstr "دستور PySON"
 msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
 msgstr "معیار جستجوی PySON"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -182,6 +192,11 @@ msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "نام"
 
+#, fuzzy
+msgctxt "field:ir.action.report,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
+
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
 msgstr "مسیر"
@@ -242,6 +257,11 @@ msgctxt "field:ir.action.url,name:"
 msgid "Name"
 msgstr "نام"
 
+#, fuzzy
+msgctxt "field:ir.action.url,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
+
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
 msgstr "نوع"
@@ -273,6 +293,11 @@ msgstr "مدل"
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
 msgstr "نام"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,records:"
+msgid "Records"
+msgstr "شناسه رکورد"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -342,6 +367,64 @@ msgstr "خلاصه"
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
 msgstr "نوع"
+
+#, fuzzy
+msgctxt "field:ir.avatar,cache:"
+msgid "Cache"
+msgstr "کش"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "منبع"
+
+msgctxt "field:ir.avatar,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar,image_id:"
+msgid "Image ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_modification:"
+msgid "Last Modification"
+msgstr "آخرین به روز رسانی"
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_user:"
+msgid "Last User"
+msgstr "آخرین کاربر"
+
+#, fuzzy
+msgctxt "field:ir.avatar,resource:"
+msgid "Resource"
+msgstr "منبع"
+
+msgctxt "field:ir.avatar,uuid:"
+msgid "UUID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,avatar:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image_id:"
+msgid "Image ID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,size:"
+msgid "Size"
+msgstr ""
 
 msgctxt "field:ir.cache,name:"
 msgid "Name"
@@ -621,6 +704,10 @@ msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
 msgstr "کد مرجع"
 
+msgctxt "field:ir.lang,pg_text_search:"
+msgid "PostgreSQL Text Search Configuration"
+msgstr ""
+
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
 msgstr ""
@@ -801,6 +888,11 @@ msgstr "خارج از همگام سازی"
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
 msgstr "مقادیر"
+
+#, fuzzy
+msgctxt "field:ir.model.field,access:"
+msgid "Access"
+msgstr "دسترسی"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1035,10 +1127,6 @@ msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "آزمایشات"
 
-msgctxt "field:ir.sequence,code:"
-msgid "Sequence Code"
-msgstr "کد توالی"
-
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
 msgstr "آخرین برچسب زمان"
@@ -1067,6 +1155,11 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "پیشوند"
 
+#, fuzzy
+msgctxt "field:ir.sequence,sequence_type:"
+msgid "Sequence Type"
+msgstr "انواع ادامه"
+
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
 msgstr "پسوند"
@@ -1082,10 +1175,6 @@ msgstr "دوران برچسب زمانی"
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
 msgstr "نوع"
-
-msgctxt "field:ir.sequence.strict,code:"
-msgid "Sequence Code"
-msgstr "کد توالی"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
@@ -1115,6 +1204,11 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "پیشوند"
 
+#, fuzzy
+msgctxt "field:ir.sequence.strict,sequence_type:"
+msgid "Sequence Type"
+msgstr "انواع ادامه"
+
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
 msgstr "پسوند"
@@ -1130,10 +1224,6 @@ msgstr "دوران برچسب زمانی"
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
 msgstr "نوع"
-
-msgctxt "field:ir.sequence.type,code:"
-msgid "Sequence Code"
-msgstr "کد توالی"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
@@ -1423,6 +1513,10 @@ msgctxt "field:ir.ui.view_tree_width,width:"
 msgid "Width"
 msgstr "عرض"
 
+msgctxt "help:ir.action,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh."
@@ -1432,6 +1526,10 @@ msgstr "بخشی از دامنه که در هر تازه سازی باید ار�
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view."
 msgstr "محدودیت پیش فرض برای لیست نمایش"
+
+msgctxt "help:ir.action.act_window,records:"
+msgid "The records on which the action runs."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.action.act_window,search_value:"
@@ -1447,6 +1545,10 @@ msgstr ""
 "برای همان قالب، خالی بگذارید،اسناد LibreOffice را برای فرمت سازگار مشاهده "
 "کنید"
 
+msgctxt "help:ir.action.report,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "اگر قالب تنها برای یک پرونده کار می کند، تیک بزنید ."
@@ -1454,6 +1556,14 @@ msgstr "اگر قالب تنها برای یک پرونده کار می کند،
 msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
 msgstr "برای غیرفعال کردن ترجمه های این گزارش، علامت را بردارید."
+
+msgctxt "help:ir.action.url,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
+msgctxt "help:ir.action.wizard,records:"
+msgid "The records on which the action runs."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.action.wizard,window:"
@@ -1536,6 +1646,12 @@ msgstr "شناسه پرونده در پایگاه داده."
 msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
 msgstr "شناسه پرونده در سیستم فایل شناخته شده است."
+
+msgctxt "help:ir.model.field,access:"
+msgid ""
+"If checked, the access right on the model of the field is also tested "
+"against the relation of the field."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.model.field,module:"
@@ -1649,9 +1765,10 @@ msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
 msgstr "تنظیم گزینه های دستیار"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
-msgid "Scheduled Actions"
-msgstr "اقدامات برنامه ریزی شده"
+msgid "Actions"
+msgstr "اقدامات"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
@@ -1660,7 +1777,7 @@ msgstr "ایمیل"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mails"
+msgid "E-mail Archives"
 msgstr "ایمیل"
 
 msgctxt "model:ir.action,name:act_email_template_form"
@@ -1764,9 +1881,10 @@ msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
 msgstr "دنباله های سخت"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
-msgid "Sequence Types"
-msgstr "انواع ادامه"
+msgid "Types"
+msgstr "نوع"
 
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
@@ -1883,6 +2001,14 @@ msgstr "اجرای دستیار"
 msgctxt "model:ir.attachment,name:"
 msgid "Attachment"
 msgstr "پیوست"
+
+msgctxt "model:ir.avatar,name:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.avatar.cache,name:"
+msgid "Avatar Cache"
+msgstr ""
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
@@ -2251,6 +2377,27 @@ msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
 msgstr "پیوست ها"
 
+msgctxt "model:ir.message,text:msg_avatar"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_resource_unique"
+msgid "Only one avatar is allowed per resource."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_avatar_size_unique"
+msgid "The size of an avatar must be unique."
+msgstr "نام مدل باید منحصر به فرد باشد!"
+
+msgctxt "model:ir.message,text:msg_avatar_url"
+msgid "Avatar URL"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatars"
+msgid "Avatars"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr "این پرونده بخشی از پیکره بندی پایه میباشد."
@@ -2318,12 +2465,31 @@ msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
 msgstr "کمک"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
+msgid "Help Selection"
+msgstr "انتخاب"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
+msgid "The key followed by the help text separated by a \":\", one per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
+msgid "Help Selection JSON"
+msgstr "انتخاب"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "دامنه نامعتبر در طرح \"%(schema)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
+msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "دامنه نامعتبر در طرح \"%(schema)s\"."
 
 #, fuzzy
@@ -2428,6 +2594,13 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
+"some invalid chars \"%(chars)s\"."
+msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
+
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2448,12 +2621,14 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "شناسه باید مثبت باشد."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
-msgid "The default language must be translatable."
+msgid "The default language \"%(language)s\" must be translatable."
 msgstr "زبان پیش فرض باید قابل ترجمه باشد."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_language_delete_default"
-msgid "The default language can not be deleted."
+msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "زبان پیش فرض قابل حذف نیست."
 
 msgctxt "model:ir.message,text:msg_language_invalid_date"
@@ -2514,7 +2689,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr "خطای نحو برای مرجع :\"%(value)r\"  در \"%(field)s\"."
+msgstr "خطای نحو برای مرجع :\"%(value)r\" در \"%(field)s\"."
 
 msgctxt "model:ir.message,text:msg_relation_not_found"
 msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
@@ -2551,6 +2726,12 @@ msgstr "مقدار : \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" یک
 msgctxt "model:ir.message,text:msg_sequence"
 msgid "Sequence"
 msgstr "ادامه"
+
+msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
+msgid ""
+"You cannot change the sequence type of a sequence instead create a new "
+"sequence."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
@@ -2909,9 +3090,10 @@ msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
 msgstr "گزینه های دستیارپیکره بندی"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
-msgid "Scheduled Actions"
-msgstr "اقدامات برنامه ریزی شده"
+msgid "Actions"
+msgstr "اقدامات"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
@@ -2930,9 +3112,10 @@ msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
 msgstr "آیکون ها"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
-msgid "Sequence Types"
-msgstr "انواع ادامه"
+msgid "Types"
+msgstr "نوع"
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
@@ -2946,9 +3129,10 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "منو"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Messages"
-msgstr "پیام ها"
+msgid "Message"
+msgstr "پیام"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
@@ -3082,6 +3266,24 @@ msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "عرض نمایش درختی"
 
+msgctxt "selection:ir.action,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
+
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
 msgstr "فرم اقدام"
@@ -3101,6 +3303,33 @@ msgstr "باز کردن درخت"
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Print form"
 msgstr "چاپ فرم"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.report,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.url,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Selected"
+msgstr "گره های انتخاب شده"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3298,6 +3527,10 @@ msgstr "عمومی"
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr "عمومی"
+
+msgctxt "view:ir.attachment:"
+msgid "Document"
+msgstr ""
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"

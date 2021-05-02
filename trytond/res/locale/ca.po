@@ -82,14 +82,6 @@ msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
 msgstr "Regla grup"
 
-msgctxt "field:ir.sequence,groups:"
-msgid "User Groups"
-msgstr "Grups d'usuaris"
-
-msgctxt "field:ir.sequence.strict,groups:"
-msgid "User Groups"
-msgstr "Grups d'usuaris"
-
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
 msgstr "Grups d'usuaris"
@@ -130,6 +122,10 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr "Pare"
+
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr "Regles"
@@ -145,6 +141,10 @@ msgstr "Accions"
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Aplicacions"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr "URL de la insígnia d’avatar"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -242,6 +242,18 @@ msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Usuari"
 
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr "Galeta"
+
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Nom usuari"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr "Galeta del dispositiu"
+
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Adreça IP"
@@ -277,6 +289,10 @@ msgstr "Els grups d'usuari que poden modificar l'exportació."
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
 msgstr "Els grups que poden editar les seqüències d'aquest tipus."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr "El grup del que heredar els permisos d'accés."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -514,6 +530,10 @@ msgstr "Aplicació d'usuari"
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Configuració inicial usuari"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr "Dispositiu d'usuari"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

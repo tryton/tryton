@@ -14,6 +14,11 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
+msgctxt "field:ir.action,records:"
+msgid "Records"
+msgstr "ID do registro"
+
 msgctxt "field:ir.action,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -89,6 +94,11 @@ msgstr "Ordenação PySON"
 msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
 msgstr "Critério de busca PySON"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,records:"
+msgid "Records"
+msgstr "ID do registro"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -182,6 +192,11 @@ msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
+msgctxt "field:ir.action.report,records:"
+msgid "Records"
+msgstr "ID do registro"
+
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
 msgstr "Caminho"
@@ -242,6 +257,11 @@ msgctxt "field:ir.action.url,name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
+msgctxt "field:ir.action.url,records:"
+msgid "Records"
+msgstr "ID do registro"
+
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -273,6 +293,11 @@ msgstr "Modelo"
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
 msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,records:"
+msgid "Records"
+msgstr "ID do registro"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -342,6 +367,64 @@ msgstr "Sumário"
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
 msgstr "Tipo"
+
+#, fuzzy
+msgctxt "field:ir.avatar,cache:"
+msgid "Cache"
+msgstr "Cache"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Recurso"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Recurso"
+
+msgctxt "field:ir.avatar,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar,image_id:"
+msgid "Image ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_modification:"
+msgid "Last Modification"
+msgstr "Última modificação"
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_user:"
+msgid "Last User"
+msgstr "Último usuário"
+
+#, fuzzy
+msgctxt "field:ir.avatar,resource:"
+msgid "Resource"
+msgstr "Recurso"
+
+msgctxt "field:ir.avatar,uuid:"
+msgid "UUID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,avatar:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image_id:"
+msgid "Image ID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,size:"
+msgid "Size"
+msgstr ""
 
 msgctxt "field:ir.cache,name:"
 msgid "Name"
@@ -619,6 +702,10 @@ msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
 msgstr "Código Pai"
 
+msgctxt "field:ir.lang,pg_text_search:"
+msgid "PostgreSQL Text Search Configuration"
+msgstr ""
+
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
 msgstr "PM"
@@ -799,6 +886,11 @@ msgstr "Fora de Sincronia"
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
 msgstr "Valores"
+
+#, fuzzy
+msgctxt "field:ir.model.field,access:"
+msgid "Access"
+msgstr "Acesso"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1033,10 +1125,6 @@ msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "Testes"
 
-msgctxt "field:ir.sequence,code:"
-msgid "Sequence Code"
-msgstr "Código da sequência"
-
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
 msgstr "Última Timestamp"
@@ -1065,6 +1153,11 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Prefixo"
 
+#, fuzzy
+msgctxt "field:ir.sequence,sequence_type:"
+msgid "Sequence Type"
+msgstr "Tipos de Sequência"
+
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
 msgstr "Sufixo"
@@ -1080,10 +1173,6 @@ msgstr "Arredondamento da Timestamp"
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:ir.sequence.strict,code:"
-msgid "Sequence Code"
-msgstr "Código da sequência"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
@@ -1113,6 +1202,11 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Prefixo"
 
+#, fuzzy
+msgctxt "field:ir.sequence.strict,sequence_type:"
+msgid "Sequence Type"
+msgstr "Tipos de Sequência"
+
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
 msgstr "Sufixo"
@@ -1128,10 +1222,6 @@ msgstr "Arredondamento do Timestamp"
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:ir.sequence.type,code:"
-msgid "Sequence Code"
-msgstr "Código da sequência"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
@@ -1421,6 +1511,10 @@ msgctxt "field:ir.ui.view_tree_width,width:"
 msgid "Width"
 msgstr "Largura"
 
+msgctxt "help:ir.action,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh."
@@ -1430,6 +1524,10 @@ msgstr "Parte do domínio que será avaliado em cada atualização"
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view."
 msgstr "Limit padrão para a listagem"
+
+msgctxt "help:ir.action.act_window,records:"
+msgid "The records on which the action runs."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.action.act_window,search_value:"
@@ -1445,6 +1543,10 @@ msgstr ""
 "Deixe vazio para o mesmo do modelo. Veja a documentação do LibreOffice para "
 "formatos compatíveis."
 
+msgctxt "help:ir.action.report,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "Marque se o modelo funcionar para apenas um registro."
@@ -1452,6 +1554,14 @@ msgstr "Marque se o modelo funcionar para apenas um registro."
 msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
 msgstr "Desmarque para desabilitar traduções para este relatório."
+
+msgctxt "help:ir.action.url,records:"
+msgid "The records on which the action runs."
+msgstr ""
+
+msgctxt "help:ir.action.wizard,records:"
+msgid "The records on which the action runs."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.action.wizard,window:"
@@ -1535,6 +1645,12 @@ msgstr "O id do registro no banco de dados."
 msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
 msgstr "O id do registro como conhecido pelo sistema de arquivos."
+
+msgctxt "help:ir.model.field,access:"
+msgid ""
+"If checked, the access right on the model of the field is also tested "
+"against the relation of the field."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.model.field,module:"
@@ -1649,9 +1765,10 @@ msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
 msgstr "Itens do Assistente de Configuração"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
-msgid "Scheduled Actions"
-msgstr "Ações Agendadas"
+msgid "Actions"
+msgstr "Ações"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
@@ -1660,7 +1777,7 @@ msgstr "Email"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_email_form_relate"
-msgid "E-mails"
+msgid "E-mail Archives"
 msgstr "Email"
 
 msgctxt "model:ir.action,name:act_email_template_form"
@@ -1764,9 +1881,10 @@ msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
 msgstr "Sequências Estritas"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
-msgid "Sequence Types"
-msgstr "Tipos de Sequência"
+msgid "Types"
+msgstr "Tipo"
 
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
@@ -1883,6 +2001,14 @@ msgstr "Assistente de ação"
 msgctxt "model:ir.attachment,name:"
 msgid "Attachment"
 msgstr "Anexo"
+
+msgctxt "model:ir.avatar,name:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.avatar.cache,name:"
+msgid "Avatar Cache"
+msgstr ""
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
@@ -2198,7 +2324,7 @@ msgstr "ID"
 
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
-msgstr "Executar o botāo \"%(button)s no  \"%(model)s\" não é permitido."
+msgstr "Executar o botāo \"%(button)s no \"%(model)s\" não é permitido."
 
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -2250,6 +2376,26 @@ msgstr "Desmarque para não usar futuramente."
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
 msgstr "Anexos"
+
+msgctxt "model:ir.message,text:msg_avatar"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_resource_unique"
+msgid "Only one avatar is allowed per resource."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_size_unique"
+msgid "The size of an avatar must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_url"
+msgid "Avatar URL"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatars"
+msgid "Avatars"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
@@ -2318,12 +2464,31 @@ msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
 msgstr "Ajuda"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
+msgid "Help Selection"
+msgstr "Seleção"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
+msgid "The key followed by the help text separated by a \":\", one per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
+msgid "Help Selection JSON"
+msgstr "Seleção"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Domínio inválido no schema \"%(schema)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
+msgid "Invalid help selection in schema \"%(schema)s\"."
 msgstr "Domínio inválido no schema \"%(schema)s\"."
 
 #, fuzzy
@@ -2382,7 +2547,7 @@ msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
 "\"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
-"O número de dígitos no valor \"%(value)s\"  para o campo \"%(field)s\" no "
+"O número de dígitos no valor \"%(value)s\" para o campo \"%(field)s\" no "
 "\"%(model)s\" excede o limite de \"%(digits)i\"."
 
 msgctxt "model:ir.message,text:msg_domain_validation_record"
@@ -2430,6 +2595,15 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "Contexto \"%(context)s\" inválido para a ação \"%(action)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
+"some invalid chars \"%(chars)s\"."
+msgstr ""
+"O formato de hora \"%(value)s\" para o campo \"%(field)s\" em \"%(model)s\" "
+"não é valido."
+
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
@@ -2450,12 +2624,14 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID deve ser positivo."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
-msgid "The default language must be translatable."
+msgid "The default language \"%(language)s\" must be translatable."
 msgstr "O idioma padrão deve ser traduzível."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_language_delete_default"
-msgid "The default language can not be deleted."
+msgid "The default language \"%(language)s\" can not be deleted."
 msgstr "O idioma padrão não pode ser apagado."
 
 msgctxt "model:ir.message,text:msg_language_invalid_date"
@@ -2559,6 +2735,12 @@ msgctxt "model:ir.message,text:msg_sequence"
 msgid "Sequence"
 msgstr "Sequência"
 
+msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
+msgid ""
+"You cannot change the sequence type of a sequence instead create a new "
+"sequence."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "Prefixo \"%(prefix)s\" inválido na sequência \"%(sequence)s\"."
@@ -2627,7 +2809,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
 msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
-msgstr "Relações demais encontradas:  \"%(value)r\" em \"%(model)s\"."
+msgstr "Relações demais encontradas: \"%(value)r\" em \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -2921,9 +3103,10 @@ msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
 msgstr "Itens do Assistente de Configuração"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
-msgid "Scheduled Actions"
-msgstr "Ações Agendadas"
+msgid "Actions"
+msgstr "Ações"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
@@ -2942,9 +3125,10 @@ msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
 msgstr "Ícones"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
-msgid "Sequence Types"
-msgstr "Tipos de Sequência"
+msgid "Types"
+msgstr "Tipo"
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
@@ -2958,9 +3142,10 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
-msgid "Messages"
-msgstr "Mensagens"
+msgid "Message"
+msgstr "Mensagem"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
@@ -3094,6 +3279,24 @@ msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
 msgstr "Largura da tela de busca"
 
+msgctxt "selection:ir.action,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action,records:"
+msgid "Selected"
+msgstr "Nodos selecionados"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Selected"
+msgstr "Nodos selecionados"
+
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
 msgstr "Formulário de ação"
@@ -3113,6 +3316,33 @@ msgstr "Abrir listagem"
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Print form"
 msgstr "Imprimir formulário"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.report,records:"
+msgid "Selected"
+msgstr "Nodos selecionados"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.url,records:"
+msgid "Selected"
+msgstr "Nodos selecionados"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Selected"
+msgstr "Nodos selecionados"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
@@ -3310,6 +3540,10 @@ msgstr "Geral"
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr "Assistente"
+
+msgctxt "view:ir.attachment:"
+msgid "Document"
+msgstr ""
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
