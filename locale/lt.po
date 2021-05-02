@@ -72,8 +72,9 @@ msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Vežėjai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_carrier_selection_form"
-msgid "Carrier Selection"
+msgid "Selection"
 msgstr "Vežėjo pasirinkimas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
@@ -84,9 +85,14 @@ msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Vežėjai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
-msgid "Carrier Selection"
+msgid "Selection"
 msgstr "Vežėjo pasirinkimas"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr ""
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"

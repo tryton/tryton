@@ -75,7 +75,7 @@ msgid "Carriers"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
-msgid "Carrier Selection"
+msgid "Selection"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
@@ -87,7 +87,11 @@ msgid "Carriers"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
-msgid "Carrier Selection"
+msgid "Selection"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
 msgstr ""
 
 msgctxt "model:res.group,name:group_carrier_admin"

@@ -76,8 +76,9 @@ msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Vedajad"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_carrier_selection_form"
-msgid "Carrier Selection"
+msgid "Selection"
 msgstr "Vedaja valik"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
@@ -88,9 +89,14 @@ msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Vedajad"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
-msgid "Carrier Selection"
+msgid "Selection"
 msgstr "Vedaja valik"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr ""
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"

@@ -75,8 +75,8 @@ msgid "Carriers"
 msgstr "Versanddienstleister"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
-msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgid "Selection"
+msgstr "Auswahl"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -87,8 +87,12 @@ msgid "Carriers"
 msgstr "Versanddienstleister"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
-msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgid "Selection"
+msgstr "Auswahl"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
