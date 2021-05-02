@@ -4,14 +4,12 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Egyenlegkülönbség"
 
-#, fuzzy
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -20,51 +18,46 @@ msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Dátum"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr ""
+msgstr "Záró egyenleg"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Számlakivonat napló"
 
-#, fuzzy
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr "Sor"
+msgstr "Sorok"
 
-#, fuzzy
 msgctxt "field:account.statement,name:"
 msgid "Name"
 msgstr "Név"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Sorok száma"
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
-msgstr ""
+msgstr "Forrásfájl"
 
 msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr "Origins"
+msgstr "Forrásadatok"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Nyitó egyenleg"
 
-#, fuzzy
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Állapot"
@@ -76,76 +69,68 @@ msgstr "Reconcile"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Sorok összege"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
-msgstr ""
+msgstr "Fájl"
 
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
-msgstr ""
+msgstr "Formátum"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
-msgstr "Számla"
+msgstr "Könyvviteli számla"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Bankszámlaszám"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Pénzügyi napló"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Név"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
-msgstr ""
+msgstr "Ellenőrzés módja"
 
-#, fuzzy
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr "Számla"
+msgstr "Könyvviteli számla"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
-#, fuzzy
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -155,43 +140,37 @@ msgctxt "field:account.statement.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "Pénznem"
 
-#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Dátum"
 
-#, fuzzy
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Megjegyzés"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Kereskedelmi számla"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
-msgstr ""
+msgstr "Bizonylat"
 
-#, fuzzy
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Szám"
 
-#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr "Origins"
+msgstr "Eredet"
 
-#, fuzzy
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
-#, fuzzy
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
@@ -199,9 +178,8 @@ msgstr ""
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -210,50 +188,42 @@ msgctxt "field:account.statement.line.group,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Dátum"
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Számlakivonat napló"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr "Lépések"
+msgstr "Bizonylat"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
 msgstr "Szám"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
-msgstr "Számla"
+msgstr "Könyvviteli számla"
 
 msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -263,43 +233,37 @@ msgctxt "field:account.statement.origin,currency_digits:"
 msgid "Currency Digits"
 msgstr "Pénznem"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
 msgstr "Dátum"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Megjegyzés"
 
 msgctxt "field:account.statement.origin,information:"
 msgid "Information"
-msgstr ""
+msgstr "Információk"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,lines:"
 msgid "Lines"
-msgstr "Sor"
+msgstr "Sorok"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,number:"
 msgid "Number"
 msgstr "Szám"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
-msgstr ""
+msgstr "Fennmaradó összeg"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,statement_id:"
@@ -340,21 +304,20 @@ msgid "Statement Origin Information"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
-msgid "Statement Line Groups"
-msgstr "Statement Line Groups"
+msgid "Line Groups"
+msgstr "Csoportosított számlakivonat sorok"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr "Line Groups"
+msgstr "Csoportosított számlakivonat sorok"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr "Move Lines"
+msgstr "Könyvelési tételek"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr "Raktár mozgás"
+msgstr "Bizonylatok"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Statements"
@@ -362,52 +325,50 @@ msgstr "Reconcile Statements"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Bankszámlakivonatok"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Számlakivonat naplók"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Számlakivonat sorok"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Számlakivonat sorok"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr "Origins"
+msgstr "Forrásadatok"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Bankszámlakivonat beolvasása"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr "összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "lekönyvelt"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
-msgstr "Validated"
+msgstr "jóváhagyott"
 
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
@@ -434,6 +395,12 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
+msgid ""
+"The validation of the statements will remove already paid or cancelled "
+"invoices from the statements' lines."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
@@ -470,192 +437,164 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:statement_post_button"
 msgid "Are you sure you want to post the statement?"
-msgstr ""
+msgstr "Biztos, hogy rögzíteni akarja a bankszámlakivonatot?"
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Érvénytelenítés"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Rögzítés"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr "Reconcile"
+msgstr "Egyeztetés"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Jóváhagyás"
 
-msgctxt "model:ir.rule.group,name:rule_group_line_group"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_statement"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_line"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
-msgid "Statement Line Groups"
-msgstr "Statement Line Groups"
+msgid "Line Groups"
+msgstr "Csoportosított számlakivonat sorok"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Bankszámlakivonatok"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Bankszámlakivonatok"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Bankszámlakivonat beolvasása"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Számlakivonat naplók"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Statements"
+msgstr "Bankszámlakivonatok"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "#"
 msgstr "#"
 
 msgctxt "report:account.statement:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Cancelled"
-msgstr "Mégse"
+msgstr "érvénytelen"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Dátum"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Dátum:"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Leírás"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Számlakivonat napló:"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Szám"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Ügyfél"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
 msgctxt "report:account.statement:"
 msgid "Total"
-msgstr ""
+msgstr "Összesen"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Statement"
-msgstr "Statement"
+msgstr "Bankszámlakivonat"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Cancelled"
-msgstr "Mégse"
+msgstr "érvénytelen"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "vázlat"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr "lekönyvelt"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
-msgstr "Validate"
+msgstr "jóváhagyott"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
-msgstr ""
+msgstr "sorok összege alapján"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Balance"
-msgstr ""
+msgstr "záróegyenleg alapján"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "sorok száma alapján"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
 msgctxt "view:account.statement.origin:"
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr ""
+msgstr "Egyéb info"
 
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Statement Lines"
+msgstr "Számlakivonat sorok"
 
-#, fuzzy
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
 msgstr "Mégse"
 
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
-msgstr ""
+msgstr "Beolvasás"

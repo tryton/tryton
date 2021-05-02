@@ -308,8 +308,8 @@ msgstr "Informação da Origem do Extrato"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
-msgid "Statement Line Groups"
-msgstr "Statement Line Groups"
+msgid "Line Groups"
+msgstr "Line Groups"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_line_groups_form"
@@ -337,8 +337,8 @@ msgstr "Statements"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Diário"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -416,6 +416,12 @@ msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
+msgid ""
+"The validation of the statements will remove already paid or cancelled "
+"invoices from the statements' lines."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
 "The validation of the statements will remove paid invoices from other "
@@ -472,30 +478,18 @@ msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
 msgstr "Validate"
 
-msgctxt "model:ir.rule.group,name:rule_group_line_group"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_statement"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_line"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
-msgid "Statement Line Groups"
-msgstr "Statement Line Groups"
+msgid "Line Groups"
+msgstr "Line Groups"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
@@ -514,8 +508,8 @@ msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Diário"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"

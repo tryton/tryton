@@ -304,7 +304,7 @@ msgid "Statement Origin Information"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
-msgid "Statement Line Groups"
+msgid "Line Groups"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_groups_form"
@@ -331,8 +331,8 @@ msgstr "Estado de cuenta"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Libro diario de estado de cuenta"
+msgid "Journals"
+msgstr "Libro diario"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -403,6 +403,12 @@ msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
+msgid ""
+"The validation of the statements will remove already paid or cancelled "
+"invoices from the statements' lines."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
 msgid ""
 "The validation of the statements will remove paid invoices from other "
@@ -460,28 +466,16 @@ msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_line_group"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_statement"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_line"
-msgid "User in company"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
-msgid "User in statement's company"
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
-msgid "Statement Line Groups"
+msgid "Line Groups"
 msgstr ""
 
 #, fuzzy
@@ -500,8 +494,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Libro diario de estado de cuenta"
+msgid "Journals"
+msgstr "Libro diario"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
