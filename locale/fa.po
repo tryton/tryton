@@ -22,8 +22,24 @@ msgctxt "field:stock.lot,unit_digits:"
 msgid "Unit Digits"
 msgstr "ارقام واحد"
 
+#, fuzzy
 msgctxt "field:stock.lot,unit_quantity:"
-msgid "Quantity"
+msgid "Unit Quantity"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,product_default_uom_category:"
+msgid "Default Product UoM Category"
+msgstr "دسته بندی واحد اندازه گیری محصول پیشفرض"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
+msgid "Unit Quantity"
 msgstr "مقدار"
 
 msgctxt "help:product.product,lot_unit:"
@@ -39,6 +55,16 @@ msgid "The biggest unit for the lot."
 msgstr "بزرگترین واحد برای قطعه"
 
 msgctxt "help:stock.lot,unit_quantity:"
+msgid "The maximal quantity for the lot."
+msgstr "حداکثر مقدار برای قطعه."
+
+#, fuzzy
+msgctxt "help:stock.move.add.lots.start.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "بزرگترین واحد برای قطعه"
+
+#, fuzzy
+msgctxt "help:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
 msgstr "حداکثر مقدار برای قطعه."
 

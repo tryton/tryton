@@ -22,8 +22,24 @@ msgctxt "field:stock.lot,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalen eenheid"
 
+#, fuzzy
 msgctxt "field:stock.lot,unit_quantity:"
-msgid "Quantity"
+msgid "Unit Quantity"
+msgstr "Hoeveelheid"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,product_default_uom_category:"
+msgid "Default Product UoM Category"
+msgstr "product eenheidsmaat categorie"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
+msgid "Unit Quantity"
 msgstr "Hoeveelheid"
 
 msgctxt "help:product.product,lot_unit:"
@@ -39,6 +55,16 @@ msgid "The biggest unit for the lot."
 msgstr "De grootste eenheid voor het lot."
 
 msgctxt "help:stock.lot,unit_quantity:"
+msgid "The maximal quantity for the lot."
+msgstr "De maximale hoeveelheid voor het lot."
+
+#, fuzzy
+msgctxt "help:stock.move.add.lots.start.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "De grootste eenheid voor het lot."
+
+#, fuzzy
+msgctxt "help:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
 msgstr "De maximale hoeveelheid voor het lot."
 
