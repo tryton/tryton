@@ -4,44 +4,44 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Levél nyomtatása"
+msgstr "Tipărire pe Scrisoare"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Fizetési felszólítás"
+msgstr "Scrisoare Dunning"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Összeg"
+msgstr "Suma"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "Data"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Dátum:"
+msgstr "Data:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Megjegyzés"
+msgstr "Descriere"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Esedékesség"
+msgstr "Data scadentă"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr "Kamat:"
+msgstr "Tarife:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Beérkezett fizetések"
+msgstr "Încasări Primite În Aşteptare"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Hivatkozás"
+msgstr "Referinţă"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Fizetési felszólítás"
+msgstr "Notificare"

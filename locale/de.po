@@ -40,7 +40,7 @@ msgstr "Nicht zugeordnete erhaltene Zahlungen"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Belegnummer"
+msgstr "Referenz"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
