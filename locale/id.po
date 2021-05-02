@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice.line,correction:"
+msgid "Correction"
+msgstr ""
+
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
 msgstr ""
@@ -21,6 +25,10 @@ msgstr "Baris Faktur"
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
 msgstr "Jenis Faktur"
+
+msgctxt "help:account.invoice.line,correction:"
+msgid "Check to correct price of already posted invoice."
+msgstr ""
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"

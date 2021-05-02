@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice.line,correction:"
+msgid "Correction"
+msgstr "Korrektur"
+
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
 msgstr "Lagerbewegungen"
@@ -21,6 +25,12 @@ msgstr "Rechnungspositionen"
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
 msgstr "Rechnungstypen"
+
+msgctxt "help:account.invoice.line,correction:"
+msgid "Check to correct price of already posted invoice."
+msgstr ""
+"Aktivieren um den Preis von bereits festgeschriebenen Rechnungen zu "
+"korrigieren."
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
