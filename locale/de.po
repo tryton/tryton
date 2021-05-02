@@ -2,6 +2,19 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Standard Zahlungsbedingung Verkauf"
+
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Standard Zahlungsbedingung Verkauf"
+
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
 msgstr "Nummernkreis Rechnung"
@@ -16,7 +29,7 @@ msgstr "Geschäftsjahr"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Nummernkreis Lieferantengutschriften"
+msgstr "Nummernkreis Lieferanten-Stornorechnungen"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
@@ -24,7 +37,7 @@ msgstr "Nummernkreis Lieferantenrechnungen"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Nummernkreis Kundengutschriften"
+msgstr "Nummernkreis Kunden-Stornorechnungen"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
@@ -120,7 +133,7 @@ msgstr "Zahlbare Positionen"
 
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr "Buchung"
+msgstr "Buchungssatz"
 
 msgctxt "field:account.invoice,number:"
 msgid "Number"
@@ -150,6 +163,10 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "Zahlungsbedingung"
 
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "Bezugsdatum Zahlungsbedingung"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Abgestimmt"
@@ -160,7 +177,7 @@ msgstr "Zahlungspositionen"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr "Belegnummer"
+msgstr "Referenz"
 
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
@@ -294,6 +311,10 @@ msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr "Kurzbeschreibung"
+
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Steuern"
@@ -301,6 +322,10 @@ msgstr "Steuern"
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
 msgstr "Besteuerungszeitpunkt"
+
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
+msgstr "Abzugsfähiger Steueranteil"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
@@ -602,6 +627,10 @@ msgctxt "field:company.company,cancel_invoice_out:"
 msgid "Cancel Customer Invoice"
 msgstr "Kundenrechnung annullieren zulassen"
 
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr "Vorsteuer als Aufwand verbuchen"
+
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr "Rechnung"
@@ -634,6 +663,14 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Zahlungsbedingung Lieferant"
 
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+"Das Datum auf dessen Basis die Zahlungsbedingungen berechnet werden.\n"
+"Leer lassen, um das Rechnungsdatum zu verwenden."
+
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Bei Aktivierung werden die ausgewählte(n) Rechnung(en) annulliert."
@@ -651,6 +688,14 @@ msgid "Allow cancelling move of customer invoice."
 msgstr ""
 "Aktivieren, wenn das Annullieren von Kundenrechnungen möglich sein soll."
 
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr "Aktivieren um Vorsteuer als Aufwand zu verbuchen."
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr "Buchhaltung Einstellungen Standardzahlungsbedingung"
+
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
 msgstr "Nummernkreis Rechnung"
@@ -665,7 +710,7 @@ msgstr "Rechnung - Zahlungsposition"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
-msgstr "Gutschrift erstellen"
+msgstr "Stornorechnung erstellen"
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
@@ -729,7 +774,7 @@ msgstr "Kundenrechnungen"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr "Zahlungsweisen"
+msgstr "Zahlungsarten"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -737,7 +782,7 @@ msgstr "Zahlungsbedingungen"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Gutschrift erstellen"
+msgstr "Stornorechnung erstellen"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -784,6 +829,12 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
 msgstr "Geprüft"
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+"Um die Buchungszeiträume schließen zu können, müssen zuerst die Rechnungen "
+"\"%(invoices)s\" festgeschrieben werden."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
@@ -891,6 +942,12 @@ msgstr ""
 "Die Summe der Zahlungspositionen der Rechnung \"%(invoice)s\" darf nicht "
 "höher als der Rechnungsbetrag sein."
 
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+"Die Rechnung \"%(invoice)s\" produziert ein Zahlungsdatum \"%(date)s\" in "
+"der Vergangenheit."
+
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
@@ -976,20 +1033,28 @@ msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
 msgstr "Festschreiben"
 
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr "Ausführen"
+
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
 msgstr "Prüfen"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
@@ -1010,7 +1075,7 @@ msgstr "Rechnungen"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr "Zahlungsweisen"
+msgstr "Zahlungsarten"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
@@ -1078,7 +1143,7 @@ msgstr "Menge"
 
 msgctxt "report:account.invoice:"
 msgid "Reference"
-msgstr "Belegnummer"
+msgstr "Referenz"
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
@@ -1185,6 +1250,10 @@ msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Wollen Sie diese Rechnung(en) wirklich stornieren?"
 
 msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice.line:"
 msgid "General"
 msgstr "Allgemein"
 
@@ -1234,7 +1303,7 @@ msgstr "Zahlungsbedingungen"
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Gutschrift erstellen"
+msgstr "Stornorechnung erstellen"
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"

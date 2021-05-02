@@ -2,6 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Plačilni rok kupca"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Plačilni rok kupca"
+
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
 msgstr "Štetja računov"
@@ -149,6 +165,11 @@ msgstr "Postavke plačila"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
+msgstr "Plačilni rok"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
 msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice,reconciled:"
@@ -299,6 +320,10 @@ msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Davki"
@@ -306,6 +331,11 @@ msgstr "Davki"
 #, fuzzy
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
+msgstr "Davki"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
 msgstr "Davki"
 
 msgctxt "field:account.invoice.line,type:"
@@ -616,6 +646,10 @@ msgctxt "field:company.company,cancel_invoice_out:"
 msgid "Cancel Customer Invoice"
 msgstr "Customer Invoices"
 
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr "Račun"
@@ -649,6 +683,12 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Plačilni rok dobavitelja"
 
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
@@ -662,6 +702,14 @@ msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
+msgstr ""
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
 msgstr ""
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
@@ -815,6 +863,10 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validated"
 
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
@@ -899,6 +951,10 @@ msgid ""
 "invoice amount."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
@@ -976,20 +1032,28 @@ msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
 msgstr "Post"
 
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
 msgstr "Validate"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -1193,6 +1257,11 @@ msgstr "Preostanek"
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Ali res želite izvesti dobropis teh računov?"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:account.invoice.line:"
 msgid "General"

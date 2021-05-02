@@ -2,125 +2,122 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "Ketentuan Pembayaran Pelanggan"
+msgstr "Termen de Plată Implicit Client"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_payment_term,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "Ketentuan Pembayaran Pelanggan"
+msgstr "Termen de Plată Implicit Client"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
-msgstr "Urutan Faktur"
+msgstr "Secvenţa Factura"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Tahun Fiskal"
+msgstr "An Fiscal"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Urutan Nota Kredit Pemasok"
+msgstr "Secvenţa Storno Furnizor"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr "Urutan Faktur Pemasok"
+msgstr "Secvenţa Factura Furnizor"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Urutan Nota Kredit Pelanggan"
+msgstr "Secvenţa Storno Client"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Urutan Faktur Pelanggan"
+msgstr "Secvenţa Factura Client"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Perioadă"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr "Akun"
+msgstr "Cont"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
-msgstr "Tanggal Akuntansi"
+msgstr "Data Contabilitate"
 
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
-msgstr "Izinkan Batalkan Faktur"
+msgstr "Permis Anulare Factura"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
-msgstr "Jumlah yang harus dibayar"
+msgstr "Sumă de Plătit"
 
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
-msgstr "Jumlah yang Dibayar Hari Ini"
+msgstr "Sumă de Plătit Astăzi"
 
 msgctxt "field:account.invoice,cancel_move:"
 msgid "Cancel Move"
-msgstr "Batalkan Perpindahan"
+msgstr "Anulare Mişcare"
 
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr "Cometariu"
 
 msgctxt "field:account.invoice,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
-msgstr "Pihak Perusahaan"
+msgstr "Partea Companiei"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "Tanggal Mata Uang"
+msgstr "Data Valută"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "Digit Mata Uang"
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
-msgstr "Alamat Faktur"
+msgstr "Adresa de facturare"
 
 msgctxt "field:account.invoice,invoice_date:"
 msgid "Invoice Date"
-msgstr "Tanggal Faktur"
+msgstr "Data Factura"
 
 msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
-msgstr "Laporan Faktur"
+msgstr "Raport Factura"
 
 msgctxt "field:account.invoice,invoice_report_cache_id:"
 msgid "Invoice Report ID"
-msgstr "ID Laporan Faktur"
+msgstr "Raport Factura ID"
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
-msgstr "Format Laporan Faktur"
+msgstr "Format Raport Factura"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -128,80 +125,79 @@ msgstr "Jurnal"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr "Rânduri"
 
 msgctxt "field:account.invoice,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr "Baris yang Harus Dibayar"
+msgstr "Rânduri de Plata"
 
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr "Perpindahan"
+msgstr "Mișcare"
 
 msgctxt "field:account.invoice,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr "Număr"
 
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr "Asal"
+msgstr "Origine"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr "Parte"
 
 msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
-msgstr ""
+msgstr "Limba Părții"
 
 msgctxt "field:account.invoice,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr ""
+msgstr "Identificator Fiscal al Părţii"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
-msgstr "Baris Pembayaran"
+msgstr "Rânduri Plata"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
-#, fuzzy
 msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
-msgstr "Masa Pembayaran"
+msgstr "Data Termen de Plata"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
-msgstr ""
+msgstr "Reconciliat"
 
 msgctxt "field:account.invoice,reconciliation_lines:"
 msgid "Payment Lines"
-msgstr "Baris Pembayaran"
+msgstr "Rânduri Plata"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr "Referensi"
+msgstr "Referinţă"
 
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
-msgstr "Urutan"
+msgstr "Secvenţă"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Stare"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
-msgstr "Pajak"
+msgstr "Impozit"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
-msgstr "Nomor Pokok Wajib Pajak (NPWP)"
+msgstr "Identificator fiscal"
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
-msgstr ""
+msgstr "Rânduri Impozit"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
@@ -209,251 +205,251 @@ msgstr "Total"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
-msgstr "Jenis"
+msgstr "Tip"
 
 msgctxt "field:account.invoice,type_name:"
 msgid "Type"
-msgstr "Jenis"
+msgstr "Tip"
 
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
-msgstr ""
+msgstr "Neimpozitat"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura fiscala"
 
 msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Cont Facturare"
 
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
-msgstr ""
+msgstr "Parte Facturata"
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
-msgstr ""
+msgstr "Rând Plata"
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
-msgstr "Tanggal Faktur"
+msgstr "Data Factura"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
-msgstr ""
+msgstr "Cu Restituire"
 
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
-msgstr ""
+msgstr "Cu Restituire Permisă"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr "Akun"
+msgstr "Cont"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
-msgstr "Status Faktur"
+msgstr "Stare Factura"
 
 msgctxt "field:account.invoice.line,invoice_taxes:"
 msgid "Invoice Taxes"
-msgstr ""
+msgstr "Facturare Impozit"
 
 msgctxt "field:account.invoice.line,invoice_type:"
 msgid "Invoice Type"
-msgstr ""
+msgstr "Tip Factura"
 
 msgctxt "field:account.invoice.line,note:"
 msgid "Note"
-msgstr "Catatan"
+msgstr "Nota"
 
 msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
-msgstr "Asal"
+msgstr "Origine"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr "Parte"
 
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
-msgstr ""
+msgstr "Limba Părții"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Categorie UM Produs"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "field:account.invoice.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Rezumat"
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Impozite"
 
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
-msgstr ""
+msgstr "Data Impozite"
 
 msgctxt "field:account.invoice.line,taxes_deductible_rate:"
 msgid "Taxes Deductible Rate"
-msgstr ""
+msgstr "Rata Impozite Deductibile"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
-msgstr "Jenis"
+msgstr "Tip"
 
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unitate"
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Zecimale Unitate"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
-msgstr "Baris Faktur"
+msgstr "Rând Factura"
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
-msgstr "Pajak"
+msgstr "Impozit"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
-msgstr ""
+msgstr "Sumă Plata"
 
 msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
-msgstr ""
+msgstr "Sumă Prescriere"
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr ""
+msgstr "Plata Valută"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr ""
+msgstr "Plata Valută Zecimale"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr ""
+msgstr "Prescriere Valută Zecilame"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
-msgstr ""
+msgstr "Prescriere Valută"
 
 msgctxt "field:account.invoice.pay.ask,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr "Data"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr "Rânduri"
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr ""
+msgstr "Rânduri de Plata"
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr "Baris Pembayaran"
+msgstr "Rânduri Plata"
 
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
-msgstr "Jenis"
+msgstr "Tip"
 
 msgctxt "field:account.invoice.pay.ask,writeoff:"
 msgid "Write Off"
-msgstr ""
+msgstr "Prescriere"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.pay.start,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr "Data"
 
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Cont Facturare"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
-msgstr "Metode pembayaran"
+msgstr "Metodă Plata"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
-msgstr "Akun Kredit"
+msgstr "Cont Credit"
 
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
-msgstr "Akun Debit"
+msgstr "Cont Debit"
 
 msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
@@ -461,387 +457,387 @@ msgstr "Jurnal"
 
 msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr "Denumire"
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr "Rânduri"
 
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr "Denumire"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Valută"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
-msgstr ""
+msgstr "Divizor"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Raport"
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
-msgstr ""
+msgstr "Diferenţa"
 
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
-msgstr "Jenis"
+msgstr "Tip"
 
 msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Ziua din Lună"
 
 msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
-msgstr ""
+msgstr "Număr de Zile"
 
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr "Baris Masa Pembayaran"
+msgstr "Rând Termen de Plata"
 
 msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
-msgstr "Bulan"
+msgstr "Lună"
 
 msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
-msgstr ""
+msgstr "Număr de Luni"
 
 msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Ziua săptămânii"
 
 msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
-msgstr ""
+msgstr "Număr de Săptămâni"
 
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Valută"
 
 msgctxt "field:account.invoice.payment_term.test,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr "Data"
 
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Valută"
 
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr "Data"
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr "Akun"
+msgstr "Cont"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
-msgstr ""
+msgstr "Baza"
 
-#, fuzzy
 msgctxt "field:account.invoice.tax,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Valută"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
-msgstr "Status Faktur"
+msgstr "Stare Factura"
 
 msgctxt "field:account.invoice.tax,legal_notice:"
 msgid "Legal Notice"
-msgstr ""
+msgstr "Adresă Oficială"
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr "Nomor Urut"
+msgstr "Număr Secvenţa"
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
-msgstr "Pajak"
+msgstr "Impozit"
 
 msgctxt "field:account.move.line,invoice_payment:"
 msgid "Invoice Payment"
-msgstr ""
+msgstr "Plata Factura"
 
 msgctxt "field:account.move.line,invoice_payments:"
 msgid "Invoice Payments"
-msgstr ""
+msgstr "Plata Facturi"
 
 msgctxt "field:company.company,cancel_invoice_out:"
 msgid "Cancel Customer Invoice"
-msgstr "Batalkan Faktur Pelanggan"
+msgstr "Anulare Factura Client"
 
 msgctxt "field:company.company,purchase_taxes_expense:"
 msgid "Purchase Taxes as Expense"
-msgstr ""
+msgstr "Impozite Achiziţie că Cheltuiala"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "field:party.contact_mechanism,invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Ketentuan Pembayaran Pelanggan"
+msgstr "Termen de Plata Client"
 
 msgctxt "field:party.party,payment_terms:"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Termene de Plata"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Ketentuan Pembayaran Pemasok"
+msgstr "Termen de Plata Furnizor"
 
 msgctxt "field:party.party.payment_term,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Ketentuan Pembayaran Pelanggan"
+msgstr "Termen de Plata Client"
 
 msgctxt "field:party.party.payment_term,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr "Parte"
 
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Ketentuan Pembayaran Pemasok"
+msgstr "Termen de Plata Furnizor"
 
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
 "Leave empty to use the invoice date."
 msgstr ""
+"Data de la care se clauzulează termenul de plata.\n"
+"Se lasă necompletat pentru a folosi data facturii."
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
-msgstr ""
+msgstr "Daca este adevărat, factura curenta va fi anulata."
 
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
 "Leave empty for the accounting date."
 msgstr ""
+"Data la care se vor calcula impozitele.\n"
+"Se lasă necompletat pentru data de contabilitate."
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
-msgstr ""
+msgstr "Permite anulare mişcare la factura de client."
 
 msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
-msgstr ""
+msgstr "Bifaţi pentru a contabiliza impozitele de achiziţie ca o cheltuiala."
 
 msgctxt "model:account.configuration.default_payment_term,name:"
 msgid "Account Configuration Default Payment Term"
-msgstr ""
+msgstr "Configurare Cont Termen de Plata Implicit"
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
-msgstr "Urutan Faktur"
+msgstr "Secvenţa Factura"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr "Faktur - Baris Pembayaran"
+msgstr "Factura - Rând Plata"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
-msgstr "Faktur Kredit"
+msgstr "Factura Storno"
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
-msgstr "Baris Faktur"
+msgstr "Rând Factura"
 
 msgctxt "model:account.invoice.line-account.tax,name:"
 msgid "Invoice Line - Tax"
-msgstr "Baris Faktur - Pajak"
+msgstr "Rând Factura - Impozit"
 
 msgctxt "model:account.invoice.pay.ask,name:"
 msgid "Pay Invoice"
-msgstr ""
+msgstr "Plata Factura"
 
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
-msgstr ""
+msgstr "Plata Factura"
 
 msgctxt "model:account.invoice.payment.method,name:"
 msgid "Payment Method"
-msgstr "Metode pembayaran"
+msgstr "Metodă Plata"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr "Baris Masa Pembayaran"
+msgstr "Rând Termen de Plata"
 
 msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
-msgstr ""
+msgstr "Rând Termen de Plata Delta Relativ"
 
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Proba Termen de Plata"
 
 msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Proba Termen de Plata"
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
-msgstr ""
+msgstr "Impozit Factura"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Facturi"
 
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Facturi"
 
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Faktur Pemasok"
+msgstr "Facturi Furnizor"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Faktur Pelanggan"
+msgstr "Facturi Client"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "Metode Plata Factura"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Termene de Plata"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Kredit"
+msgstr "Credit"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr ""
+msgstr "Plata Factura"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Proba Termen de Plata"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr "Draft"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr ""
+msgstr "Postat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr "Draft"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr ""
+msgstr "Postat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
-msgstr ""
+msgstr "Pentru a închide perioadele trebuie postate facturile \"%(invoices)s\"."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
 "company \"%(company)s\"."
 msgstr ""
-"Anda tidak dapat menghapus pihak \"%(party)s\" selagi mereka memiliki faktur"
-" yang tertunda dengan perusahaan \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
@@ -852,16 +848,14 @@ msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
 "company setup does not allow it."
 msgstr ""
-"Anda tidak dapat membatalkan faktur \"%(invoice)s\" karena dibukukan dan "
-"pengaturan perusahaan tidak mengizinkannya."
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
-msgstr "Untuk menghapus faktur \"%(invoice)s\" anda harus membatalkannya."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
-msgstr "Anda tidak dapat menghapus faktur \"%(invoice)s\" karena memiliki nomor."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_line_create"
 msgid ""
@@ -880,6 +874,8 @@ msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
 "cancelled."
 msgstr ""
+"Factura \"%(invoice)s\" nu se poate modifica pentru ca este postata, plătita"
+" sau anulata."
 
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
@@ -902,11 +898,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
-msgstr ""
+msgstr "Un rând de plata poate fi legat de o singura factura."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
+"Nu se poate adăuga / elimina rânduri de plată pe factura plătită "
+"\"%(invoice)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
@@ -960,99 +958,95 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
-msgstr "Anda yakin ingin membatalkan faktur?"
+msgstr "Sigur doriți să anulați facturile?"
 
 msgctxt "model:ir.model.button,confirm:invoice_post_button"
 msgid "Are you sure you want to post the invoices?"
-msgstr "Anda yakin ingin membukukan faktur?"
+msgstr "Sigur doriți să postați facturile?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
-msgstr "Batalkan faktur"
+msgstr "Anulare Factura"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr ""
+msgstr "Cunoscut și sub denumirea Pro Forma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Batal"
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Bayar"
+msgstr "Plata"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
-msgstr "Bukukan"
+msgstr "Postare"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Proces"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr ""
+msgstr "Validare"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr ""
+msgstr "Facturi Furnizor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Facturi Client"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Facturi"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "Metode Plata Factura"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Termene de Plata"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Proba Termen de Plata"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Termene de Plata"
 
 msgctxt "model:party.party.payment_term,name:"
 msgid "Party Payment Term"
-msgstr ""
+msgstr "Termen de Plata Parte"
 
 msgctxt "report:account.invoice:"
 msgid ":"
@@ -1060,71 +1054,71 @@ msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "report:account.invoice:"
 msgid "Base"
-msgstr ""
+msgstr "Baza"
 
 msgctxt "report:account.invoice:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr "Data"
 
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr "Tanggal:"
+msgstr "Data:"
 
 msgctxt "report:account.invoice:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "report:account.invoice:"
 msgid "Description:"
-msgstr "Deskripsi:"
+msgstr "Descriere:"
 
 msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
-msgstr ""
+msgstr "Draft Factura"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
-msgstr "Faktur N°:"
+msgstr "Factura N°:"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
-msgstr ""
+msgstr "Factura Pro Forma"
 
 msgctxt "report:account.invoice:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:account.invoice:"
 msgid "Reference"
-msgstr "Referensi"
+msgstr "Referinţă"
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
-msgstr "Faktur Pemasok N°:"
+msgstr "Factura Furnizor N°:"
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
-msgstr "Pajak"
+msgstr "Impozit"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes"
-msgstr ""
+msgstr "Impozite"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes:"
-msgstr ""
+msgstr "Impozite:"
 
 msgctxt "report:account.invoice:"
 msgid "Total (excl. taxes):"
-msgstr "Total (di luar pajak):"
+msgstr "Total (fără impozite):"
 
 msgctxt "report:account.invoice:"
 msgid "Total:"
@@ -1132,96 +1126,95 @@ msgstr "Total:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Preț unitar"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr "Draft"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Paid"
-msgstr ""
+msgstr "Plătit"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Posted"
-msgstr ""
+msgstr "Postat"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validat"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
-msgstr "Pemasok"
+msgstr "Furnizor"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr "Cometariu"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Rând"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Subtotal"
-msgstr ""
+msgstr "Subtotal"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
-msgstr ""
+msgstr "Titlu"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Overpayment"
-msgstr "Kelebihan Pembayaran"
+msgstr "Excedent"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
-msgstr ""
+msgstr "Plata Parţiala"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
-msgstr ""
+msgstr "Prescriere"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr ""
+msgstr "Fix"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
-msgstr ""
+msgstr "Procentaj Rămas"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Total"
-msgstr ""
+msgstr "Procentaj din Total"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr ""
+msgstr "Rămas"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit these/this invoice(s)?"
-msgstr "Apakah anda yakin akan mengkreditkan faktur ini?"
+msgstr "Sunteți sigur că creditați aceste facturi?"
 
-#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.invoice.line:"
 msgid "General"
-msgstr "Umum"
+msgstr "General"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Notițe"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
@@ -1229,27 +1222,27 @@ msgstr "%"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
-msgstr "Info Lain"
+msgstr "Alte Informaţii"
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
-msgstr "Pembayaran"
+msgstr "Plată"
 
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr "NPWP:"
+msgstr "Identificator Fiscal:"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Sumă Valută Secundara"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Kredit"
+msgstr "Credit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
@@ -1257,23 +1250,23 @@ msgstr "Debit"
 
 msgctxt "view:company.company:"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr "Factura"
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Termene de Plata"
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Kredit"
+msgstr "Credit"
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "OK"
@@ -1285,8 +1278,8 @@ msgstr "OK"
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr "Tutup"
+msgstr "Închidere"

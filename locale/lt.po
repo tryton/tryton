@@ -2,6 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
 msgstr "Sąskaitų faktūrų numeruotės"
@@ -151,6 +167,11 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "Mokėjimo sąlygos"
 
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "Mokėjimo sąlygos"
+
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Sudengta"
@@ -297,6 +318,10 @@ msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
 msgstr "Kiekis"
 
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Mokesčiai"
@@ -304,6 +329,11 @@ msgstr "Mokesčiai"
 #, fuzzy
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
+msgstr "Mokesčiai"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
 msgstr "Mokesčiai"
 
 msgctxt "field:account.invoice.line,type:"
@@ -608,6 +638,10 @@ msgctxt "field:company.company,cancel_invoice_out:"
 msgid "Cancel Customer Invoice"
 msgstr "Anuliuoti sąskaitą pirkėjui"
 
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr "Sąskaita faktūra"
@@ -640,9 +674,15 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Tiekėjo mokėjimo sąlygos"
 
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
-msgstr "Jei teisinga,  ši sąskaita faktūra bus anuliuota."
+msgstr "Jei teisinga, ši sąskaita faktūra bus anuliuota."
 
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
@@ -653,6 +693,14 @@ msgstr ""
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
 msgstr "Leisti sąskaitų faktūrų pirkėjams anuliavimą."
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr ""
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
@@ -789,6 +837,10 @@ msgctxt ""
 msgid "Validated"
 msgstr "Patvirtinta"
 
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
@@ -864,6 +916,10 @@ msgid ""
 "invoice amount."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
@@ -936,20 +992,32 @@ msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
 msgstr "Įtraukti į apskaitą"
 
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
 msgstr "Patvirtinti"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
-msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
@@ -1145,6 +1213,11 @@ msgstr "Likutis"
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Ar tikrai norite anuliuoti šią sąskaitą faktūrą?"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:account.invoice.line:"
 msgid "General"
