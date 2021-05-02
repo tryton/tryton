@@ -119,11 +119,11 @@ msgid "Attendances"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_period_list"
-msgid "Attendance Periods"
+msgid "Periods"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_sheet"
-msgid "Attendance Sheet"
+msgid "Sheets"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
@@ -146,11 +146,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr ""
+msgstr "结账"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "草案"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
@@ -158,6 +158,14 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
 msgid "Any attendance"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
@@ -168,6 +176,10 @@ msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
 msgid "Any attendance sheet"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_sheet_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
 msgid "Own attendance sheet line"
 msgstr ""
@@ -176,24 +188,28 @@ msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
 msgid "Any attendance sheet line"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_attendance"
 msgid "Attendances"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_main_attendance"
 msgid "Attendance"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
-msgid "Attendance Periods"
+msgid "Periods"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
-msgid "Attendance Sheet"
+msgid "Sheets"
 msgstr ""
 
 msgctxt "model:res.group,name:group_attendance_admin"

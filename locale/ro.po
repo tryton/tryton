@@ -4,51 +4,51 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:attendance.line,at:"
 msgid "At"
-msgstr "A"
+msgstr ""
 
 msgctxt "field:attendance.line,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:attendance.line,date:"
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 msgctxt "field:attendance.line,employee:"
 msgid "Employee"
-msgstr "Dipendente"
+msgstr ""
 
 msgctxt "field:attendance.line,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:attendance.period,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:attendance.period,ends_at:"
 msgid "Ends at"
-msgstr "Finisce alle"
+msgstr ""
 
 msgctxt "field:attendance.period,state:"
 msgid "State"
-msgstr "Stato"
+msgstr ""
 
 msgctxt "field:attendance.sheet,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:attendance.sheet,date:"
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 msgctxt "field:attendance.sheet,duration:"
 msgid "Duration"
-msgstr "Durata"
+msgstr ""
 
 msgctxt "field:attendance.sheet,employee:"
 msgid "Employee"
-msgstr "Dipendente"
+msgstr ""
 
 msgctxt "field:attendance.sheet,lines:"
 msgid "Lines"
@@ -60,31 +60,31 @@ msgstr ""
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,date:"
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,duration:"
 msgid "Duration"
-msgstr "Durata"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,employee:"
 msgid "Employee"
-msgstr "Dipendente"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,from_:"
 msgid "From"
-msgstr "Da"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,sheet:"
 msgid "Sheet"
-msgstr "Foglio"
+msgstr ""
 
 msgctxt "field:attendance.sheet.line,to:"
 msgid "To"
-msgstr "A"
+msgstr ""
 
 msgctxt "help:attendance.line,company:"
 msgid "The company which the employee attended."
@@ -108,7 +108,7 @@ msgstr ""
 
 msgctxt "model:attendance.sheet,name:"
 msgid "Attendance Sheet"
-msgstr "Foglio presenze"
+msgstr ""
 
 msgctxt "model:attendance.sheet.line,name:"
 msgid "Attendance SheetLine"
@@ -116,16 +116,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_attendance"
 msgid "Attendances"
-msgstr "Presenze"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Perioade"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
-msgstr "Foglio"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
@@ -147,11 +146,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Chiudi"
+msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr "Bozza"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
@@ -167,7 +166,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
@@ -199,7 +198,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configurazione"
+msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_main_attendance"
 msgid "Attendance"
@@ -209,10 +208,9 @@ msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"
-msgstr "Foglio"
+msgstr ""
 
 msgctxt "model:res.group,name:group_attendance_admin"
 msgid "Attendance Administration"
@@ -232,11 +230,11 @@ msgstr ""
 
 msgctxt "selection:attendance.period,state:"
 msgid "Draft"
-msgstr "Bozza"
+msgstr ""
 
 msgctxt "view:attendance.line:"
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 msgctxt "view:attendance.line:"
 msgid "Time"
