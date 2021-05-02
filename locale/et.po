@@ -76,6 +76,11 @@ msgctxt "field:production,outputs:"
 msgid "Outputs"
 msgstr "Väljundid"
 
+#, fuzzy
+msgctxt "field:production,partially_assigned:"
+msgid "Partially Assigned"
+msgstr "Omistatud"
+
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
 msgstr "Planeeritud kuuüäev"
@@ -311,9 +316,10 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Tootmised"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
-msgid "Production Configuration"
-msgstr "Tootmise seadistus"
+msgid "Configuration"
+msgstr "Seadistus"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
@@ -346,6 +352,12 @@ msgstr "Kõik"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
+msgstr "Omistatud"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_available"
+msgid "Partially Assigned"
 msgstr "Omistatud"
 
 msgctxt ""
@@ -408,8 +420,9 @@ msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
 msgstr "Oota"
 
-msgctxt "model:ir.rule.group,name:rule_group_production"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.sequence,name:sequence_production"
@@ -436,9 +449,10 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Tootmised"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
-msgid "Production Configuration"
-msgstr "Tootmise seadistus"
+msgid "Configuration"
+msgstr "Seadistus"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
@@ -499,6 +513,11 @@ msgstr "Tootmine administreerimine"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Tootmine"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Assign Productions"
+msgstr "Tootmise omistamine"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

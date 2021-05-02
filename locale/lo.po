@@ -79,6 +79,11 @@ msgctxt "field:production,outputs:"
 msgid "Outputs"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:production,partially_assigned:"
+msgid "Partially Assigned"
+msgstr "Assigned"
+
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
 msgstr ""
@@ -342,9 +347,10 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
-msgid "Production Configuration"
-msgstr "Production Configuration"
+msgid "Configuration"
+msgstr "ການຕັ້ງຄ່າ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_production_list"
@@ -380,6 +386,12 @@ msgstr "ທັງໝົດ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
+msgstr "Assigned"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_available"
+msgid "Partially Assigned"
 msgstr "Assigned"
 
 #, fuzzy
@@ -444,8 +456,8 @@ msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-msgctxt "model:ir.rule.group,name:rule_group_production"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -477,9 +489,10 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
-msgid "Production Configuration"
-msgstr "Production Configuration"
+msgid "Configuration"
+msgstr "ການຕັ້ງຄ່າ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_list"
@@ -546,6 +559,11 @@ msgstr "Production Administration"
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Assign Productions"
+msgstr "Assign Production"
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
