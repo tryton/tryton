@@ -416,23 +416,25 @@ class Group(SignalEvent, list):
     def remove(self, record, remove=False, modified=True, signal=True,
             force_remove=False):
         idx = self.index(record)
-        if self[idx].id >= 0:
+        if record.id >= 0:
             if remove:
-                if self[idx] in self.record_deleted:
-                    self.record_deleted.remove(self[idx])
-                self.record_removed.append(self[idx])
+                if record in self.record_deleted:
+                    self.record_deleted.remove(record)
+                if record not in self.record_removed:
+                    self.record_removed.append(record)
             else:
-                if self[idx] in self.record_removed:
-                    self.record_removed.remove(self[idx])
-                self.record_deleted.append(self[idx])
+                if record in self.record_removed:
+                    self.record_removed.remove(record)
+                if record not in self.record_deleted:
+                    self.record_deleted.append(record)
         if record.parent:
             record.parent.modified_fields.setdefault('id')
             record.parent.signal('record-modified')
         if modified:
             record.modified_fields.setdefault('id')
             record.signal('record-modified')
-        if self[idx].id < 0 or force_remove:
-            self._remove(self[idx])
+        if record.id < 0 or force_remove:
+            self._remove(record)
 
         if len(self):
             self.current_idx = min(idx, len(self) - 1)
