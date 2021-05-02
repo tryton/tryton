@@ -69,6 +69,11 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Tributos do Fornecedor"
 
+#, fuzzy
+msgctxt "field:product.category,supplier_taxes_deductible_rate:"
+msgid "Supplier Taxes Deductible Rate"
+msgstr "Tributos do Fornecedor Utilizados"
+
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
 msgstr "Tributos do Fornecedor Utilizados"
@@ -158,16 +163,8 @@ msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
-msgid "User in company"
-msgstr ""
-
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
-msgid "User in company"
 msgstr ""
 
 msgctxt "model:product.category-customer-account.tax,name:"

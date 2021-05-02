@@ -68,6 +68,10 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Steuern Lieferant"
 
+msgctxt "field:product.category,supplier_taxes_deductible_rate:"
+msgid "Supplier Taxes Deductible Rate"
+msgstr "Anteil Abzugsfähige Vorsteuer"
+
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
 msgstr "Für Lieferanten verwendete Steuern"
@@ -158,17 +162,9 @@ msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
 msgstr "Beliebige Buchhaltungskategorie"
 
-msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
-msgid "User in company"
-msgstr "Benutzer im Unternehmen"
-
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "Keine Buchhaltungskategorie"
-
-msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
-msgid "User in company"
-msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"

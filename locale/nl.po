@@ -68,6 +68,10 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Belastingen inkoop"
 
+msgctxt "field:product.category,supplier_taxes_deductible_rate:"
+msgid "Supplier Taxes Deductible Rate"
+msgstr "Aftrekbaar tarief voor leveranciersbelastingen"
+
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
 msgstr "Leveranciersbelastingen gebruikt"
@@ -162,17 +166,9 @@ msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
 msgstr "om het even welke categorie"
 
-msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
-
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "Geen boekhoudcategorie"
-
-msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
-msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
