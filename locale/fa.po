@@ -69,6 +69,11 @@ msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
+#, fuzzy
+msgctxt "field:account.payment,approved_by:"
+msgid "Approved by"
+msgstr "تایید شده"
+
 msgctxt "field:account.payment,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -88,6 +93,11 @@ msgstr "تاریخ"
 msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.payment,failed_by:"
+msgid "Failure Noted by"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
@@ -121,6 +131,11 @@ msgstr "روش پردازش"
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "وضعیت"
+
+#, fuzzy
+msgctxt "field:account.payment,succeeded_by:"
+msgid "Success Noted by"
+msgstr "Succeed"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
@@ -290,13 +305,15 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr "پرداخت ها"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Payment Groups"
-msgstr "گروه های پرداخت"
+msgid "Groups"
+msgstr "گروه"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "روزنامه های پرداخت"
+msgid "Journals"
+msgstr "روزنامه ها"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -345,7 +362,7 @@ msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
 "company \"%(company)s\"."
 msgstr ""
-"شما نمیتوانید نهاد/سازمان : \"%(party)s\"  را حذف کنید در حالی که آنها در "
+"شما نمیتوانید نهاد/سازمان : \"%(party)s\" را حذف کنید در حالی که آنها در "
 "انتظار پرداخت با شرکت: \"%(company)s\" هستند."
 
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
@@ -396,16 +413,16 @@ msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_group"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_group_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
@@ -428,13 +445,15 @@ msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
 msgstr "پرداخت ها"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Payment Groups"
-msgstr "گروه های پرداخت"
+msgid "Groups"
+msgstr "گروه"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "روزنامه های پرداخت"
+msgid "Journals"
+msgstr "روزنامه ها"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

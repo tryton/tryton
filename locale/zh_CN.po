@@ -70,6 +70,11 @@ msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.payment,approved_by:"
+msgid "Approved by"
+msgstr "Approved"
+
 msgctxt "field:account.payment,company:"
 msgid "Company"
 msgstr ""
@@ -91,6 +96,11 @@ msgstr "日期格式"
 msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.payment,failed_by:"
+msgid "Failure Noted by"
+msgstr "添加用户"
 
 #, fuzzy
 msgctxt "field:account.payment,group:"
@@ -126,6 +136,11 @@ msgstr "Process Payments"
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "状态"
+
+#, fuzzy
+msgctxt "field:account.payment,succeeded_by:"
+msgid "Success Noted by"
+msgstr "Succeed"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
@@ -301,12 +316,14 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr "Payments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Payment Groups"
-msgstr "Payment Groups"
+msgid "Groups"
+msgstr "用户组"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
+msgid "Journals"
 msgstr "Payment Journals"
 
 msgctxt "model:ir.action,name:act_process_payments"
@@ -406,16 +423,16 @@ msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_group"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_group_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
@@ -438,12 +455,14 @@ msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
 msgstr "Payments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Payment Groups"
-msgstr "Payment Groups"
+msgid "Groups"
+msgstr "用户组"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
+msgid "Journals"
 msgstr "Payment Journals"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"

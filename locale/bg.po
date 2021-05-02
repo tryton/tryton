@@ -78,6 +78,11 @@ msgid "Amount"
 msgstr "Сума"
 
 #, fuzzy
+msgctxt "field:account.payment,approved_by:"
+msgid "Approved by"
+msgstr "Approved"
+
+#, fuzzy
 msgctxt "field:account.payment,company:"
 msgid "Company"
 msgstr "Фирма"
@@ -101,6 +106,11 @@ msgstr "Дата"
 msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.payment,failed_by:"
+msgid "Failure Noted by"
+msgstr "Създадено от"
 
 #, fuzzy
 msgctxt "field:account.payment,group:"
@@ -140,6 +150,11 @@ msgstr "Process Payments"
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Щат"
+
+#, fuzzy
+msgctxt "field:account.payment,succeeded_by:"
+msgid "Success Noted by"
+msgstr "Succeed"
 
 #, fuzzy
 msgctxt "field:account.payment.group,company:"
@@ -328,13 +343,15 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Payment Groups"
-msgstr "Payment Groups"
+msgid "Groups"
+msgstr "Група"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "Дневник"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -436,16 +453,16 @@ msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_group"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_group_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
@@ -471,13 +488,15 @@ msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
 msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Payment Groups"
-msgstr "Payment Groups"
+msgid "Groups"
+msgstr "Група"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "Дневник"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"

@@ -68,6 +68,11 @@ msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr "Suma"
 
+#, fuzzy
+msgctxt "field:account.payment,approved_by:"
+msgid "Approved by"
+msgstr "Patvirtinta"
+
 msgctxt "field:account.payment,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -87,6 +92,11 @@ msgstr "Data"
 msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "Aprašymas"
+
+#, fuzzy
+msgctxt "field:account.payment,failed_by:"
+msgid "Failure Noted by"
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
@@ -120,6 +130,11 @@ msgstr "Vykdymo būdas"
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Būsena"
+
+#, fuzzy
+msgctxt "field:account.payment,succeeded_by:"
+msgid "Success Noted by"
+msgstr "Sėkmingai"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
@@ -290,13 +305,15 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr "Payments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
-msgid "Payment Groups"
-msgstr "Mokėjimų grupės"
+msgid "Groups"
+msgstr "Grupė"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Mokėjimų žurnalai"
+msgid "Journals"
+msgstr "Žurnalai"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -392,16 +409,19 @@ msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Sėkmingai"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_group"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_group_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
-msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
@@ -424,13 +444,15 @@ msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
 msgstr "Mokėjimai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
-msgid "Payment Groups"
-msgstr "Mokėjimų grupės"
+msgid "Groups"
+msgstr "Grupė"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Mokėjimų žurnalai"
+msgid "Journals"
+msgstr "Žurnalai"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
