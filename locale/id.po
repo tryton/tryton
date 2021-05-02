@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.party,distance:"
-msgid "Distance"
-msgstr ""
-
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr ""
@@ -55,7 +51,7 @@ msgid "Create automatically the reverse relation."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_all"
-msgid "Party Relations"
+msgid "Relations"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_type"
@@ -63,7 +59,7 @@ msgid "Relation Types"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
-msgid "Party Relations"
+msgid "Relations"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"

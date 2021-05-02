@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.party,distance:"
-msgid "Distance"
-msgstr ""
-
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr "Razmerja"
@@ -56,8 +52,8 @@ msgstr "Samodejno izdelava obratnega razmerja."
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
-msgid "Party Relations"
-msgstr "Party Relations"
+msgid "Relations"
+msgstr "Razmerja"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_relation_type"
@@ -66,8 +62,8 @@ msgstr "Relation Types"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
-msgid "Party Relations"
-msgstr "Party Relations"
+msgid "Relations"
+msgstr "Razmerja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_type"

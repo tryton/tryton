@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.party,distance:"
-msgid "Distance"
-msgstr ""
-
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr "Sąryšis"
@@ -54,17 +50,19 @@ msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
 msgstr "Automatiškai sukurti atvirkštinį sąryšį."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
-msgid "Party Relations"
-msgstr "Kontrahentų ryšiai"
+msgid "Relations"
+msgstr "Sąryšis"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
 msgstr "Sąryšių tipai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
-msgid "Party Relations"
-msgstr "Kontrahento ryšiai"
+msgid "Relations"
+msgstr "Sąryšis"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
