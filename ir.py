@@ -72,8 +72,9 @@ class Rule(metaclass=PoolMeta):
         Employee = pool.get('company.employee')
         context = super()._get_context()
         # Use root to avoid infinite loop when accessing user attributes
+        user_id = Transaction().user
         with Transaction().set_user(0):
-            user = User(Transaction().user)
+            user = User(user_id)
         if user.employee:
             with Transaction().set_context(
                     _check_access=False, _datetime=None):
