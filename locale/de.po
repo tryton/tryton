@@ -18,6 +18,10 @@ msgctxt "field:product.category,parent:"
 msgid "Parent"
 msgstr "Übergeordnet (Kategorie)"
 
+msgctxt "field:product.category,templates:"
+msgid "Products"
+msgstr "Artikel"
+
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr "Standardbestandsbewertungsmethode"
@@ -97,7 +101,7 @@ msgstr "Artikelnummer"
 
 msgctxt "field:product.product,code_readonly:"
 msgid "Code Readonly"
-msgstr "Code (nur lesbar)"
+msgstr "Artikelnummer ist nur lesbar"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
@@ -131,6 +135,10 @@ msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Standardmaßeinheit Kategorie"
 
+msgctxt "field:product.product,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Nachkommastellen Standardmaßeinheit"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Beschreibung"
@@ -149,7 +157,7 @@ msgstr "Listenpreis"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr "Listenpreis"
+msgstr "Listenpreise"
 
 msgctxt "field:product.product,name:"
 msgid "Name"
@@ -157,11 +165,11 @@ msgstr "Name"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
-msgstr "Code Präfix"
+msgstr "Artikelnummer Präfix"
 
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
-msgstr "Code Suffix"
+msgstr "Artikelnummer Suffix"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -181,11 +189,11 @@ msgstr "Artikelkategorien"
 
 msgctxt "field:product.template,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "Artikelnummer"
 
 msgctxt "field:product.template,code_readonly:"
 msgid "Code Readonly"
-msgstr "Code ist nur lesbar"
+msgstr "Artikelnummer ist nur lesbar"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
@@ -211,13 +219,17 @@ msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Standardkategorie Maßeinheit"
 
+msgctxt "field:product.template,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Nachkommastellen Standardmaßeinheit"
+
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "Listenpreis"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr "Listenpreis"
+msgstr "Listenpreise"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -416,7 +428,7 @@ msgid ""
 "The category that contains the unit of measure.\n"
 "Conversions between different units of measure can be done if they are in the same category."
 msgstr ""
-"Die Größenart die die Maßeinheit beinhaltet.\n"
+"Die Maßeinheit gehört zu dieser Größenart.\n"
 "Nur innerhalb einer Größenart kann zwischen verschiedenen Maßeinheiten umgerechnet werden."
 
 msgctxt "help:product.uom,digits:"
@@ -451,13 +463,17 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Kategorien"
 
+msgctxt "model:ir.action,name:act_category_product"
+msgid "Add products"
+msgstr "Artikel hinzufügen"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Kategorien"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
-msgid "Product Configuration"
-msgstr "Einstellungen Artikel"
+msgid "Configuration"
+msgstr "Einstellungen"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
@@ -476,8 +492,8 @@ msgid "Products"
 msgstr "Artikel"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
-msgid "Categories of Unit of Measure"
-msgstr "Größenarten von Maßeinheiten"
+msgid "Categories"
+msgstr "Kategorien"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
@@ -491,7 +507,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
-msgstr "Der Code eines aktiven Artikels muss eindeutig sein."
+msgstr "Die Artikelnummer eines aktiven Artikels muss eindeutig sein."
 
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
@@ -522,6 +538,10 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Faktor und Kehrwert können nicht beide Null sein."
 
+msgctxt "model:ir.model.button,string:category_add_products_button"
+msgid "Add products"
+msgstr "Artikel hinzufügen"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr "Variante"
@@ -551,8 +571,12 @@ msgid "Variants"
 msgstr "Varianten"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
-msgid "Product Configuration"
-msgstr "Einstellungen Artikel"
+msgid "Configuration"
+msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"

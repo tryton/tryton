@@ -9,7 +9,7 @@ msgstr "Cikk változat"
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "Alárendelt (kategória)"
+msgstr "Alkategóriák"
 
 msgctxt "field:product.category,name:"
 msgid "Name"
@@ -17,92 +17,84 @@ msgstr "Név"
 
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr "Fölérendelt (kategória)"
+msgstr "Fölérendelt"
+
+msgctxt "field:product.category,templates:"
+msgid "Products"
+msgstr "Termékek"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Alapértelmezett költségár számítási mód"
 
-#, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
 msgid "Variant Sequence"
-msgstr "Cikk sablon"
+msgstr "Változatok sorszámozása"
 
-#, fuzzy
 msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
-msgstr "Cikk sablon"
+msgstr "Termék sorszámozása"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Alapértelmezett költségár számítási mód"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Beszerzési ár"
+msgstr "Költségár"
 
-#, fuzzy
 msgctxt "field:product.cost_price,product:"
 msgid "Product"
-msgstr "Cikk"
+msgstr "Termék"
 
 msgctxt "field:product.cost_price_method,company:"
 msgid "Company"
-msgstr ""
+msgstr "Cég"
 
 msgctxt "field:product.cost_price_method,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "Költségár számítás módja"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
-msgstr "Űrlap adószámlához"
+msgstr "Sablon"
 
-#, fuzzy
 msgctxt "field:product.identifier,code:"
 msgid "Code"
-msgstr "Cikkszám"
+msgstr "Kód"
 
-#, fuzzy
 msgctxt "field:product.identifier,product:"
 msgid "Product"
-msgstr "Cikk"
+msgstr "Termék"
 
-#, fuzzy
 msgctxt "field:product.identifier,type:"
 msgid "Type"
 msgstr "Típus"
 
 msgctxt "field:product.list_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "Cég"
 
-#, fuzzy
 msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
-msgstr "Árlista szerinti ár"
+msgstr "Listaár"
 
-#, fuzzy
 msgctxt "field:product.list_price,template:"
 msgid "Template"
-msgstr "Űrlap adószámlához"
+msgstr "Sablon"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
-msgstr "Cikk kategória"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "field:product.product,categories_all:"
 msgid "Categories"
-msgstr "Cikk kategória"
+msgstr "Kategóriák"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
@@ -110,21 +102,19 @@ msgstr "Cikkszám"
 
 msgctxt "field:product.product,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Szám csak olvasható"
 
-#, fuzzy
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr "Felhasznált anyag"
+msgstr "Fogyóeszköz"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr "Beszerzési ár"
+msgstr "Költségár"
 
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "Költségár számítás módja"
 
 msgctxt "field:product.product,cost_price_methods:"
 msgid "Cost Price Methods"
@@ -132,7 +122,7 @@ msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Beszerzési ár"
+msgstr "Költségár"
 
 #, fuzzy
 msgctxt "field:product.product,cost_prices:"
@@ -143,34 +133,34 @@ msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
 msgstr "Alapegység"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Alapértelmezett kategória mértékegysége"
+msgstr "Alapértelmezett ME kategória"
+
+msgctxt "field:product.product,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr ""
 
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr "Jellemzés"
+msgstr "Leírás"
 
 msgctxt "field:product.product,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "Azonosítók"
 
-#, fuzzy
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
-msgstr "Árlista szerinti ár"
+msgstr "Listaár"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr "Árlista szerinti ár"
+msgstr "Listaár"
 
-#, fuzzy
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr "Árlista szerinti ár"
+msgstr "Listaárak"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Név"
@@ -185,42 +175,39 @@ msgstr ""
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Cikk sablon"
+msgstr "Terméksablon"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
 msgstr "Típus"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
-msgstr "Cikk kategória"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "field:product.template,categories_all:"
 msgid "Categories"
-msgstr "Cikk kategória"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Cikkszám"
 
 msgctxt "field:product.template,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Szám csak olvasható"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr "Felhasznált anyag"
+msgstr "Fogyóeszköz"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Beszerzési ár"
+msgstr "Költségár"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "Költségár számítás módja"
 
 msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
@@ -228,20 +215,23 @@ msgstr ""
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "Alapértelmezett egység"
+msgstr "Alap ME"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Alapértelmezett kategória mértékegysége"
+msgstr "Alapértelmezett ME kategória"
+
+msgctxt "field:product.template,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr ""
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr "Árlista szerinti ár"
+msgstr "Listaár"
 
-#, fuzzy
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr "Árlista szerinti ár"
+msgstr "Listaárak"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -249,31 +239,27 @@ msgstr "Név"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Változat"
+msgstr "Változatok"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
 msgstr "Típus"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
-msgstr "Cikk kategória"
+msgstr "Kategória"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr "Űrlap adószámlához"
+msgstr "Sablon"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,category:"
 msgid "Category"
-msgstr "Cikk kategória"
+msgstr "Kategória"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,template:"
 msgid "Template"
-msgstr "Űrlap adószámlához"
+msgstr "Sablon"
 
 msgctxt "field:product.uom,category:"
 msgid "Category"
@@ -285,7 +271,7 @@ msgstr "Tizedes vessző utáni számjegyek"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr "Faktor"
+msgstr "Szorzó"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
@@ -293,7 +279,7 @@ msgstr "Név"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr "Mérték"
+msgstr "Érték"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -307,18 +293,17 @@ msgctxt "field:product.uom.category,name:"
 msgid "Name"
 msgstr "Név"
 
-#, fuzzy
 msgctxt "field:product.uom.category,uoms:"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "Mértékegységek"
 
 msgctxt "help:product.category,childs:"
 msgid "Used to add structure below the category."
-msgstr ""
+msgstr "Itt egyből megadhatja az alkategóriákat."
 
 msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
-msgstr ""
+msgstr "Itt megadhatja vagy létrehozhatja a főkategóriát."
 
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
@@ -346,6 +331,8 @@ msgid ""
 "The categories that the product is in.\n"
 "Used to group similar products together."
 msgstr ""
+"A termék kategóriái.\n"
+"Hasonló termékek csoportosítására szolgálnak."
 
 msgctxt "help:product.product,code:"
 msgid "A unique identifier for the variant."
@@ -354,73 +341,87 @@ msgstr ""
 msgctxt "help:product.product,consumable:"
 msgid "Check to allow stock moves to be assigned regardless of stock level."
 msgstr ""
+"Jelölje be, hogy a készletmozgásokat a készletszinttől függetlenül "
+"rendelkezésre lehessen állítani."
 
 msgctxt "help:product.product,cost_price:"
 msgid ""
 "The amount it costs to purchase or make the variant, or carry out the "
 "service."
 msgstr ""
+"Az a pénzösszeg, amennyibe a változat beszerzése, gyártása vagy a "
+"szolgáltatás igénybe vétele kerül."
 
 msgctxt "help:product.product,cost_price_method:"
 msgid "The method used to calculate the cost price."
-msgstr ""
+msgstr "A költségár számításának módja."
 
 msgctxt "help:product.product,default_uom:"
 msgid ""
 "The standard unit of measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
+"A termék alapértelmezett mértékegysége.\n"
+"A készletet ebben a mértékegységben vezeti a rendszer."
 
 msgctxt "help:product.product,identifiers:"
 msgid "Other identifiers associated with the variant."
-msgstr ""
+msgstr "A termékváltozat további azonosítói."
 
 msgctxt "help:product.product,list_price:"
 msgid "The standard price the product is sold at."
-msgstr ""
+msgstr "A termék értékesítésekor használt alapár."
 
 msgctxt "help:product.product,suffix_code:"
 msgid "The unique identifier for the product (aka SKU)."
-msgstr ""
+msgstr "A terméknek a cégen belüli egyedi azonosítója (cikkszám)."
 
 msgctxt "help:product.product,template:"
 msgid ""
 "The product that defines the common properties inherited by the variant."
 msgstr ""
+"Az a termék, amely meghatározza a változatok által örökölt közös "
+"tulajdonságokat."
 
 msgctxt "help:product.template,categories:"
 msgid ""
 "The categories that the product is in.\n"
 "Used to group similar products together."
 msgstr ""
+"A termék kategóriái.\n"
+"Hasonló termékek csoportosítására szolgálnak."
 
 msgctxt "help:product.template,consumable:"
 msgid "Check to allow stock moves to be assigned regardless of stock level."
 msgstr ""
+"Jelölje be, hogy a készletmozgásokat a készletszinttől függetlenül "
+"rendelkezésre lehessen állítani."
 
 msgctxt "help:product.template,cost_price:"
 msgid ""
 "The amount it costs to purchase or make the product, or carry out the "
 "service."
-msgstr ""
+msgstr "Ennyibe kerül a terméket beszerezni vagy a szolgáltatást nyújtani."
 
 msgctxt "help:product.template,cost_price_method:"
 msgid "The method used to calculate the cost price."
-msgstr ""
+msgstr "A költségár számításának módja."
 
 msgctxt "help:product.template,default_uom:"
 msgid ""
 "The standard unit of measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
+"A termék alapértelmezett mértékegysége.\n"
+"A készletet ebben a mértékegységben vezeti a rendszer."
 
 msgctxt "help:product.template,list_price:"
 msgid "The standard price the product is sold at."
-msgstr ""
+msgstr "A termék értékesítésekor használt alapár."
 
 msgctxt "help:product.template,products:"
 msgid "The different variants the product comes in."
-msgstr ""
+msgstr "A termék változatai."
 
 msgctxt "help:product.uom,category:"
 msgid ""
@@ -430,7 +431,7 @@ msgstr ""
 
 msgctxt "help:product.uom,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr ""
+msgstr "A tizedesvessző után ennyi számjegyet jelenít meg a rendszer."
 
 #, fuzzy
 msgctxt "help:product.uom,factor:"
@@ -459,49 +460,45 @@ msgctxt "help:product.uom,symbol:"
 msgid "The symbol that represents the unit of measure."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategóriák"
 
-#, fuzzy
+msgctxt "model:ir.action,name:act_category_product"
+msgid "Add products"
+msgstr "Termékek hozzáadása"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategóriák"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
-msgid "Product Configuration"
-msgstr "Product Configuration"
+msgid "Configuration"
+msgstr "Beállítások"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Változatok"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "Változás"
+msgstr "Változatok"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Product by Category"
+msgstr "Termékek kategóriánként"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Products"
+msgstr "Termékek"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
-msgid "Categories of Unit of Measure"
-msgstr "Categories of Unit of Measure"
+msgid "Categories"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "Mértékegységek"
 
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
@@ -537,63 +534,61 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr ""
 
-#, fuzzy
+msgctxt "model:ir.model.button,string:category_add_products_button"
+msgid "Add products"
+msgstr "Termékek hozzáadása"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr "Változat"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
-msgstr "Cikk"
+msgstr "Termék"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Beállítások"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Product"
+msgstr "Termék"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Változatok"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
-msgid "Product Configuration"
-msgstr "Product Configuration"
+msgid "Configuration"
+msgstr "Beállítások"
 
-#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Jelentések"
+
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Products"
+msgstr "Termékek"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategóriák"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "Mértékegységek"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Cikk kategória"
+msgstr "Termék kategória"
 
 #, fuzzy
 msgctxt "model:product.configuration,name:"
@@ -627,7 +622,7 @@ msgstr "Cikk változat"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Cikk javaslat"
+msgstr "Terméksablon"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
@@ -637,163 +632,133 @@ msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:product.uom,name:"
 msgid "Unit of Measure"
 msgstr "Mértékegység"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Are"
+msgstr "Ár"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Carat"
+msgstr "Karát"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centimeter"
+msgstr "Centiméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Cubic centimeter"
+msgstr "Köbcentiméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Cubic foot"
+msgstr "Köbláb"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Cubic inch"
+msgstr "Köbhüvelyk"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Cubic meter"
+msgstr "Köbméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Day"
+msgstr "Nap"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Foot"
+msgstr "Láb"
 
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
 msgstr "Gallon"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Gram"
+msgstr "Gramm"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "Hectare"
+msgstr "Hektár"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Hour"
+msgstr "Óra"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Inch"
+msgstr "Hüvelyk"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Kilogram"
+msgstr "Kilogramm"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Kilometer"
+msgstr "Kilométer"
 
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
 msgstr "Liter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Meter"
+msgstr "Méter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Mile"
+msgstr "Mérföld"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Millimeter"
+msgstr "Milliméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minute"
+msgstr "Perc"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Ounce"
+msgstr "Uncia"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Pound"
+msgstr "Font"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Second"
+msgstr "Másodperc"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Square centimeter"
+msgstr "Négyzetcentiméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Square foot"
+msgstr "Négyzetláb"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Square inch"
+msgstr "Négyzethüvelyk"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Square meter"
+msgstr "Négyzetméter"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Square yard"
+msgstr "Négyzetyard"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Unit"
+msgstr "Darab"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Work Day"
+msgstr "Munkanap"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
@@ -829,7 +794,7 @@ msgstr "m³"
 
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
-msgstr "d"
+msgstr "t"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -849,7 +814,7 @@ msgstr "ha"
 
 msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
-msgstr "h"
+msgstr "ó"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
@@ -915,10 +880,9 @@ msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
 msgstr "yd²"
 
-#, fuzzy
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "u"
+msgstr "db"
 
 #, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
@@ -934,35 +898,29 @@ msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
 msgstr "Mértékegység"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Length"
+msgstr "Hossz"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Surface"
+msgstr "Terület"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Time"
+msgstr "Időpont"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Units"
+msgstr "Egységek"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Volume"
+msgstr "Térfogat"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Weight"
+msgstr "Súly"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_product_admin"
@@ -971,7 +929,7 @@ msgstr "Product Administration"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
-msgstr ""
+msgstr "Globális Kereskedelmi Áruazonosító Szám (GTIN)"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Securities Identification Number"
@@ -983,7 +941,7 @@ msgstr ""
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Book Number"
-msgstr ""
+msgstr "Nemzetközi Szabványos Könyvazonosító (ISBN)"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Identifier for Libraries"
@@ -991,25 +949,23 @@ msgstr ""
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
-msgstr ""
+msgstr "Nemzetközi Szabványos Kottaazonosító (ISMN)"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Átlag"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
-msgstr "Rögzített"
+msgstr "Fix"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Eszköz"
+msgstr "Eszközök"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr "Árú"
+msgstr "Áru"
 
 msgctxt "selection:product.product,type:"
 msgid "Service"
@@ -1021,15 +977,15 @@ msgstr "Átlag"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
-msgstr "Rögzített"
+msgstr "Fix"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Eszköz"
+msgstr "Eszközök"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Árú"
+msgstr "Áru"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
@@ -1037,13 +993,12 @@ msgstr "Szolgáltatás"
 
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr "Alárendelt (kategória)"
+msgstr "Alkategóriák"
 
-#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Sequences"
-msgstr "Cikk sablon"
+msgstr "Sorszámozások"
 
 msgctxt "view:product.template:"
 msgid "General"
-msgstr ""
+msgstr "Általános"

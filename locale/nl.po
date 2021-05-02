@@ -18,6 +18,10 @@ msgctxt "field:product.category,parent:"
 msgid "Parent"
 msgstr "Bovenliggend niveau"
 
+msgctxt "field:product.category,templates:"
+msgid "Products"
+msgstr "Producten"
+
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr "Standaard kostenmethode"
@@ -131,6 +135,10 @@ msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Standaard maateenheid-categorie"
 
+msgctxt "field:product.product,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "standaard maateenheid decimalen"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -210,6 +218,10 @@ msgstr "Standaard ME"
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Standaard maateenheid-categorie"
+
+msgctxt "field:product.template,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "standaard maateenheid decimalen"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -451,13 +463,18 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorieën"
 
+msgctxt "model:ir.action,name:act_category_product"
+msgid "Add products"
+msgstr "Producten toevoegen"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorieën"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
-msgid "Product Configuration"
-msgstr "Product configuratie"
+msgid "Configuration"
+msgstr "Instellingen"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
@@ -475,9 +492,10 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Producten"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
-msgid "Categories of Unit of Measure"
-msgstr "Maateeheidcategorieën"
+msgid "Categories"
+msgstr "Categorieën"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
@@ -519,6 +537,10 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "De waarde en factor kunnen niet beiden gelijk zijn aan nul."
 
+msgctxt "model:ir.model.button,string:category_add_products_button"
+msgid "Add products"
+msgstr "Producten toevoegen"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr "Variant"
@@ -547,9 +569,14 @@ msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "varianten"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
-msgid "Product Configuration"
-msgstr "Product configuratie"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapporten"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"

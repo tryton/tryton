@@ -18,6 +18,11 @@ msgctxt "field:product.category,parent:"
 msgid "Parent"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.category,templates:"
+msgid "Products"
+msgstr "Configuración de producto"
+
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr "Método de costo por defecto"
@@ -139,6 +144,10 @@ msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Categoría de UdM por defecto"
 
+msgctxt "field:product.product,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr ""
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr ""
@@ -223,6 +232,10 @@ msgstr ""
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Categoría de UdM por defecto"
+
+msgctxt "field:product.template,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.template,list_price:"
@@ -445,13 +458,18 @@ msgid "Categories"
 msgstr "Categorías"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_category_product"
+msgid "Add products"
+msgstr "Configuración de producto"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
-msgid "Product Configuration"
+msgid "Configuration"
 msgstr "Configuración de producto"
 
 #, fuzzy
@@ -472,9 +490,10 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
-msgid "Categories of Unit of Measure"
-msgstr ""
+msgid "Categories"
+msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
@@ -515,6 +534,11 @@ msgid "Rate and factor can not be both equal to zero."
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.model.button,string:category_add_products_button"
+msgid "Add products"
+msgstr "Configuración de producto"
+
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr "Variantes"
@@ -549,8 +573,12 @@ msgstr "Variantes"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
-msgid "Product Configuration"
+msgid "Configuration"
 msgstr "Configuración de producto"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
