@@ -389,6 +389,12 @@ msgctxt ""
 msgid "Won"
 msgstr "Gewonnen"
 
+msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
+msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
+msgstr ""
+"U kunt de oorsprong van de verkoopkans van de verkoop \"%(sale)s\" niet "
+"wijzigen."
+
 msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr "Om opportunity \"%(opportunity)s\" te verwijderen, moet u deze annuleren."
@@ -413,20 +419,25 @@ msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
 msgstr "Omzeten naar opportuniteit"
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity"
-msgid "User in company of opportunity"
-msgstr "Gebruiker in bedrijf van gelegenheid"
-
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
-msgid "User in company"
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_opportunity_employee_monthly_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly_companies"
+msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"

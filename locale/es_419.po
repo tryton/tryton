@@ -395,6 +395,10 @@ msgctxt ""
 msgid "Won"
 msgstr "Ganada"
 
+msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
+msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr ""
@@ -420,20 +424,21 @@ msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity"
-msgid "User in company of opportunity"
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
-msgid "User in company"
+msgctxt ""
+"model:ir.rule.group,name:rule_group_opportunity_employee_monthly_companies"
+msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy

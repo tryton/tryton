@@ -12,19 +12,19 @@ msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
-msgstr "Alamat"
+msgstr "Adresa"
 
 msgctxt "field:sale.opportunity,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:sale.opportunity,comment:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr "Cometariu"
 
 msgctxt "field:sale.opportunity,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:sale.opportunity,contact:"
 msgid "Contact"
@@ -34,66 +34,65 @@ msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.opportunity,converted_by:"
 msgid "Converted By"
-msgstr "Dibuat oleh"
+msgstr ""
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr "Descriere"
 
 msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr ""
 
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
-msgstr "Tanggal Akhir"
+msgstr ""
 
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr "Rânduri"
 
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
-msgstr "Alasan kerugian"
+msgstr ""
 
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr "Parte"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr "Masa Pembayaran"
+msgstr "Termen de plata"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
-msgstr "Referensi"
+msgstr "Referinţă"
 
 msgctxt "field:sale.opportunity,sales:"
 msgid "Sales"
-msgstr ""
+msgstr "Vânzări"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
-msgstr "Tanggal Awal"
+msgstr ""
 
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
@@ -105,7 +104,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr "Produs"
 
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
@@ -121,11 +120,11 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:sale.opportunity_employee,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
@@ -145,23 +144,23 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Angajat"
 
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Pierdut"
 
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr "Număr"
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -181,19 +180,19 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
-msgstr "Tanggal Akhir"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Tanggal Awal"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:sale.opportunity_employee_monthly,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
@@ -213,27 +212,27 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Angajat"
 
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Pierdut"
 
 msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
-msgstr "Bulan"
+msgstr "Lună"
 
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr "Număr"
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -253,15 +252,15 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
-msgstr "Tahun"
+msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr "Suma"
 
 msgctxt "field:sale.opportunity_monthly,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr "Companie"
 
 msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
@@ -281,23 +280,23 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Zecimale valută"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Pierdut"
 
 msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
-msgstr "Bulan"
+msgstr "Lună"
 
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr "Număr"
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -317,7 +316,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
-msgstr "Tahun"
+msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,year_month:"
 msgid "Year-Month"
@@ -400,7 +399,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_convert_button"
 msgid "Convert to Sale"
@@ -418,26 +417,22 @@ msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_opportunity_employee_monthly_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -517,7 +512,7 @@ msgstr ""
 
 msgctxt "view:sale.opportunity:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
@@ -525,12 +520,12 @@ msgstr ""
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:sale.opportunity_employee_monthly:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
-msgstr "%"
+msgstr ""
