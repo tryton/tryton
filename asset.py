@@ -593,7 +593,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         Line.save(lines)
         Move.post(moves)
 
-    def get_closing_move(self, account):
+    def get_closing_move(self, account, date=None):
         """
         Returns closing move values.
         """
@@ -603,7 +603,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
 
-        date = Date.today()
+        if date is None:
+            date = Date.today()
         period_id = Period.find(self.company.id, date)
         if self.supplier_invoice_line:
             account_asset = self.supplier_invoice_line.account.current()
@@ -666,7 +667,7 @@ class Asset(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('closed')
-    def close(cls, assets, account=None):
+    def close(cls, assets, account=None, date=None):
         """
         Close the assets.
         If account is provided, it will be used instead of the expense account.
@@ -676,7 +677,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls.clear_lines(assets)
         moves = []
         for asset in assets:
-            moves.append(asset.get_closing_move(account))
+            moves.append(asset.get_closing_move(account, date=date))
         Move.save(moves)
         for move, asset in zip(moves, assets):
             asset.move = move
@@ -1017,7 +1018,9 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def start_fixed_value(self):
-                if (self.start_date < self.asset.start_date
+                if self.asset.end_date < self.start_date:
+                    return self.asset.value
+                elif (self.start_date < self.asset.start_date
                         or not self.asset_lines):
                     return 0
                 value = self.asset_lines[0].acquired_value
@@ -1044,7 +1047,7 @@ class AssetDepreciationTable(CompanyReport):
             @cached_property
             def end_fixed_value(self):
                 if not self.asset_lines:
-                    return 0
+                    return self.start_fixed_value
                 value = self.asset_lines[-1].acquired_value
                 date = self.asset_lines[-1].date
                 for line in self.update_lines:
@@ -1055,7 +1058,10 @@ class AssetDepreciationTable(CompanyReport):
             @cached_property
             def start_value(self):
                 if not self.asset_lines:
-                    return self.asset.value
+                    if self.asset.start_date > self.end_date:
+                        return self.asset.value
+                    else:
+                        return 0
                 return (self.asset_lines[0].actual_value
                     + self.asset_lines[0].depreciation)
 
@@ -1072,7 +1078,7 @@ class AssetDepreciationTable(CompanyReport):
             @cached_property
             def end_value(self):
                 if not self.asset_lines:
-                    return self.asset.value
+                    return self.start_value
                 return self.asset_lines[-1].actual_value
 
             @cached_property
@@ -1130,8 +1136,14 @@ class PrintDepreciationTable(Wizard):
         Asset = pool.get('account.asset')
         with Transaction().set_context(_check_access=True):
             assets = Asset.search([
-                    ('start_date', '<', self.start.end_date),
-                    ('end_date', '>', self.start.start_date),
+                    ['OR',
+                        ('purchase_date', '<=', self.start.end_date),
+                        ('start_date', '<=', self.start.end_date),
+                        ],
+                    ['OR',
+                        ('move', '=', None),
+                        ('move.date', '>=', self.start.start_date),
+                        ],
                     ('state', '!=', 'draft'),
                     ])
         if not assets:

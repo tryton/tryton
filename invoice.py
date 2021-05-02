@@ -78,5 +78,6 @@ class InvoiceLine(metaclass=PoolMeta):
     def get_move_lines(self):
         Asset = Pool().get('account.asset')
         if self.asset:
-            Asset.close([self.asset], account=self.account)
+            date = self.invoice.accounting_date or self.invoice.invoice_date
+            Asset.close([self.asset], account=self.account, date=date)
         return super(InvoiceLine, self).get_move_lines()
