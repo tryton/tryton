@@ -10,6 +10,21 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Pardavimai"
 
+#, fuzzy
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Tiekimo laikas"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Tiekimo laikas"
+
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Tiekimo laikas"
@@ -198,6 +213,10 @@ msgstr "Pardavimo būsena"
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
 msgstr "Išsiuntimo data"
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -535,9 +554,10 @@ msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
 msgstr "Viso su PVM"
 
+#, fuzzy
 msgctxt "field:sale.sale,total_amount_cache:"
-msgid "Total Tax"
-msgstr "Išsaugota bendra suma su PVM"
+msgid "Total Cache"
+msgstr "Išsaugota PVM vertė"
 
 msgctxt "field:sale.sale,untaxed_amount:"
 msgid "Untaxed"
@@ -575,6 +595,24 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Išimtinė būsena"
 
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
 "The grace period during which confirmed sale can still be reset to draft.\n"
@@ -601,8 +639,8 @@ msgstr "Su pardavimais susieti kontrahentai"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product"
-msgid "Salable Products"
-msgstr "Pardavimai pagal prekę"
+msgid "Products"
+msgstr "Prekė"
 
 msgctxt "model:ir.action,name:act_reporting_category"
 msgid "Sales per Category"
@@ -648,9 +686,10 @@ msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Grąžinimai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_configuration_form"
-msgid "Sales Configuration"
-msgstr "Pardavimų nuostatos"
+msgid "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
@@ -869,8 +908,59 @@ msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
 msgstr "Pasiūlymas"
 
-msgctxt "model:ir.rule.group,name:rule_group_sale"
-msgid "User in company"
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_category_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_category_time_series_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.sequence,name:sequence_sale"
@@ -885,14 +975,15 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Nuostatos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer"
-msgid "Parties associated to Sales"
+msgid "Associated to Sales"
 msgstr "Su pardavimais susieti kontrahentai"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
-msgid "Salable Products"
-msgstr "Pardavimai pagal prekę"
+msgid "Products"
+msgstr "Prekė"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -906,13 +997,18 @@ msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
 msgstr "Pardavimai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
-msgid "Sales Configuration"
-msgstr "Pardavimų nuostatos"
+msgid "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Pardavimai"
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:product.sale.context,name:"

@@ -10,6 +10,19 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Sprzedaż"
 
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr ""
+
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr ""
@@ -198,6 +211,10 @@ msgstr "Stan sprzedaży"
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
 msgstr "Data wysyłki"
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr ""
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -547,8 +564,9 @@ msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
 msgstr "Razem"
 
+#, fuzzy
 msgctxt "field:sale.sale,total_amount_cache:"
-msgid "Total Tax"
+msgid "Total Cache"
 msgstr "Podatek razem"
 
 msgctxt "field:sale.sale,untaxed_amount:"
@@ -587,6 +605,24 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr ""
 
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
 "The grace period during which confirmed sale can still be reset to draft.\n"
@@ -613,8 +649,8 @@ msgstr "Parties associated to Sales"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product"
-msgid "Salable Products"
-msgstr "Sales per Product"
+msgid "Products"
+msgstr "Produkt"
 
 msgctxt "model:ir.action,name:act_reporting_category"
 msgid "Sales per Category"
@@ -663,8 +699,8 @@ msgstr "Returns"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_configuration_form"
-msgid "Sales Configuration"
-msgstr "Sales Configuration"
+msgid "Configuration"
+msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_form"
@@ -892,8 +928,49 @@ msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_sale"
-msgid "User in company"
+msgctxt "model:ir.rule.group,name:rule_group_reporting_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
 msgstr ""
 
 #, fuzzy
@@ -912,13 +989,13 @@ msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer"
-msgid "Parties associated to Sales"
+msgid "Associated to Sales"
 msgstr "Parties associated to Sales"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
-msgid "Salable Products"
-msgstr "Sales per Product"
+msgid "Products"
+msgstr "Produkt"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -935,13 +1012,17 @@ msgstr "Sales"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
-msgid "Sales Configuration"
-msgstr "Sales Configuration"
+msgid "Configuration"
+msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Sales"
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr ""
 
 msgctxt "model:product.sale.context,name:"
 msgid "Product Sale Context"
