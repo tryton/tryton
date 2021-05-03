@@ -1,3 +1,5 @@
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
 * Allow shipments to be automatically assigned
 * Rename inventory count quantity_added to quantity
 * Add document source on move of product quantities by warehouse
