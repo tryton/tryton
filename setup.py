@@ -9,12 +9,12 @@ from configparser import ConfigParser
 from setuptools import setup, find_packages
 
 
-def read(fname, slice=None):
+def read(fname):
     content = io.open(
         os.path.join(os.path.dirname(__file__), fname),
         'r', encoding='utf-8').read()
-    if slice:
-        content = '\n'.join(content.splitlines()[slice])
+    content = re.sub(
+        r'(?m)^\.\. toctree::\r?\n((^$|^\s.*$)\r?\n)*', '', content)
     return content
 
 
