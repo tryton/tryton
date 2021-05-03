@@ -1,3 +1,5 @@
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
 * Allow using debt accounts on supplier invoices
 * Add deductible rate of taxes to supplier invoice
 * Add method to post invoices by batch
