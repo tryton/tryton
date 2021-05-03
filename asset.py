@@ -41,8 +41,8 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
         self.set_analytic_lines(move, self.product.account_expense_used)
         return move
 
-    def get_closing_move(self, account):
-        move = super(Asset, self).get_closing_move(account)
+    def get_closing_move(self, account, date=None):
+        move = super().get_closing_move(account, date=date)
         self.set_analytic_lines(
             move, account or self.product.account_revenue_used)
         return move
