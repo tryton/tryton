@@ -1,3 +1,5 @@
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
 * Allow column sql types to be tested from the table handler
 * Add support for database connection parameters to configuration URI
 * Use immutable datastructures for Dict and MultiSelection fields
