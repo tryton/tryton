@@ -1,3 +1,5 @@
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
 * Add summary to request line
 * Add relate from request to purchase and from purchase to request
 
