@@ -1,3 +1,5 @@
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
 * Use appropriate types for email and url widgets
 * Add completion on xxx2Many and Dict
 * Add attachment preview
