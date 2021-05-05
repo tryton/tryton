@@ -7,6 +7,7 @@ from psycopg2.extensions import (register_adapter, new_type, register_type,
     Binary)
 
 from trytond.backend.postgresql.database import Database as PGDatabase
+from trytond.config import parse_uri
 
 from trytond_gis import _GeoJSON
 
@@ -29,6 +30,13 @@ class Database(PGDatabase):
         with database.get_connection() as db_connection:
             cursor = db_connection.cursor()
             cursor.execute("CREATE EXTENSION postgis")
+
+    @classmethod
+    def _connection_params(cls, name):
+        params = super()._connection_params(name)
+        uri = parse_uri(params['dsn'])
+        params['dsn'] = uri._replace(scheme='postgresql').geturl()
+        return params
 
     def get_connection(self, autocommit=False, readonly=False):
         conn = super(Database, self).get_connection(autocommit, readonly)
