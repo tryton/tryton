@@ -701,6 +701,8 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             localize_domain(domain, 'x', True), [['b.c', '=', 1, 'z']])
 
+    @unittest.skipIf(
+        sys.version_info < (3, 6), "comparison relies on dict insertion order")
     def test_prepare_reference_domain(self):
         domain = [['x', 'like', 'A%']]
         self.assertEqual(
