@@ -2,6 +2,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import glob
 import os
 import re
 import ssl
@@ -51,7 +52,7 @@ required_gi_namespaces = [
     'Gdk-3.0',
     'GdkPixbuf-2.0',
     'Gio-2.0',
-    'GooCanvas-2.0',
+    'GooCanvas-[2-3].0',
     'Gtk-3.0',
     'HarfBuzz-0.0',
     'Pango-1.0',
@@ -77,7 +78,10 @@ required_libs = set()
 temp = tempfile.mkdtemp()
 for ns in required_gi_namespaces:
     gir_name = '%s.gir' % ns
-    gir_file = os.path.join(sys.prefix, 'share', 'gir-1.0', gir_name)
+    gir_file = glob.glob(
+        os.path.join(sys.prefix, 'share', 'gir-1.0', gir_name))[0]
+    gir_name = os.path.basename(gir_file)
+    ns = os.path.splitext(gir_name)[0]
     gir_tmp = os.path.join(temp, gir_name)
     with open(gir_file, 'r', encoding='utf-8') as src:
         with open(gir_tmp, 'w', encoding='utf-8') as dst:
