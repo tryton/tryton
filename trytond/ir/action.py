@@ -129,7 +129,9 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         actions = Action.read(action_ids, columns)
         if type_ == 'ir.action.act_window':
             for values in actions:
-                if issubclass(pool.get(values['res_model']), ModelSingleton):
+                if (values['res_model']
+                        and issubclass(
+                            pool.get(values['res_model']), ModelSingleton)):
                     values['res_id'] = 1
         return actions
 
