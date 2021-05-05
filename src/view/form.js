@@ -1703,11 +1703,8 @@ function eval_pyson(value){
             if (record) {
                 var digits = field.digits(record, this.factor);
                 if (digits) {
-                    step = digits[1];
+                    step = Math.pow(10, -digits[1]).toFixed(digits[1]);
                 }
-            }
-            if (step !== 'any') {
-                step = Math.pow(10, -step);
             }
             this.input.attr('step', step);
             Sao.View.Form.Float._super.display.call(this, record, field);
