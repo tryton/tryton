@@ -8,7 +8,7 @@ import doctest
 import proteus
 import proteus.config
 
-os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite:///:memory:')
+os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite:///')
 os.environ.setdefault('DB_NAME', ':memory:')
 from trytond.tests.test_tryton import (  # noqa: E402
     doctest_setup, doctest_teardown)
