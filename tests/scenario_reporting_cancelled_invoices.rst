@@ -116,8 +116,9 @@ VAT List is empty::
 
     >>> with config.set_context(context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    0
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount == Decimal(0)
+    True
 
 Create another invoice::
 
@@ -132,8 +133,9 @@ Create another invoice::
     >>> invoice.click('post')
     >>> with config.set_context(context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    1
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount == Decimal('242.0')
+    True
 
 Cancel the invoice and check VAT List is empty::
 
@@ -142,5 +144,6 @@ Cancel the invoice and check VAT List is empty::
     'cancel'
     >>> with config.set_context(context):
     ...     vat_list_records = VatList.find([])
-    >>> len(vat_list_records)
-    0
+    >>> vat_list_record, = vat_list_records
+    >>> vat_list_record.amount == Decimal(0)
+    True
