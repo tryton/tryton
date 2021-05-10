@@ -7,7 +7,7 @@ from sql import Null
 
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
     sequence_ordered
-from trytond.pyson import If, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
