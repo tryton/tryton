@@ -1050,9 +1050,11 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
                 'invisible': ((Eval('type') != 'line')
-                    | Eval('delivery_date_edit', False)),
+                    | (Eval('delivery_date_edit', False)
+                        & ~Eval('purchase_state').in_(
+                            ['processing', 'done', 'cancelled']))),
                 },
-            depends=['type', 'delivery_date_edit']),
+            depends=['type', 'delivery_date_edit', 'purchase_state']),
         'on_change_with_delivery_date')
     delivery_date_edit = fields.Boolean(
         "Edit Delivery Date",
@@ -1067,7 +1069,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         "Delivery Date",
         states={
             'invisible': ((Eval('type') != 'line')
-                | ~Eval('delivery_date_edit', False)),
+                | ~Eval('delivery_date_edit', False)
+                | Eval('purchase_state').in_(
+                    ['processing', 'done', 'cancelled'])),
             'readonly': Eval('purchase_state').in_([
                     'processing', 'done', 'cancel']),
             },
