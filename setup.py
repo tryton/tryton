@@ -96,7 +96,7 @@ setup(name=name,
         ),
     package_data={
         'trytond.modules.sale_gift_card': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt', '*.html',
                 'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
