@@ -48,6 +48,7 @@ class Statement(metaclass=PoolMeta):
                 keywords = rule.match(origin)
                 if keywords:
                     yield from rule.apply(origin, keywords)
+                    break
 
 
 class StatementRule(sequence_ordered(), ModelSQL, ModelView):
