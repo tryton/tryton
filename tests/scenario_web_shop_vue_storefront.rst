@@ -5,7 +5,7 @@ Web Shop Vue Storefront Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from unittest.mock import MagicMock, ANY
+    >>> from unittest.mock import MagicMock, ANY, patch
 
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
@@ -21,7 +21,8 @@ Patch elasticsearch::
 
     >>> from trytond.modules.web_shop_vue_storefront import web
     >>> es = MagicMock()
-    >>> web.VSFElasticsearch = MagicMock(return_value=es)
+    >>> _ = patch.object(
+    ...     web, 'VSFElasticsearch', return_value=es).start()
 
 Install web_shop_vue_storefront::
 
