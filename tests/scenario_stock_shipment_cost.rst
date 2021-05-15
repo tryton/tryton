@@ -15,9 +15,11 @@ Imports::
 
 Patch _get_shipment_cost::
 
-    >>> from unittest.mock import Mock
+    >>> from unittest.mock import patch
     >>> from trytond.modules.stock_shipment_cost.stock import ShipmentCostMixin
-    >>> ShipmentCostMixin._get_shipment_cost = Mock(return_value=Decimal('5'))
+    >>> mock = patch.object(
+    ...     ShipmentCostMixin, '_get_shipment_cost',
+    ...     return_value=Decimal('5')).start()
 
 Activate modules::
 
