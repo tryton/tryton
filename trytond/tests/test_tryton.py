@@ -9,6 +9,7 @@ import subprocess
 import sys
 import time
 import unittest
+import unittest.mock
 from configparser import ConfigParser
 from functools import reduce
 from functools import wraps
