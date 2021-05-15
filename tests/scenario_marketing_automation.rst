@@ -12,9 +12,10 @@ Imports::
 
 Patch sendmail_transactional::
 
-    >>> from unittest.mock import MagicMock
+    >>> from unittest.mock import patch
     >>> from trytond.modules.marketing_automation import marketing_automation
-    >>> marketing_automation.sendmail_transactional = smtp_calls = MagicMock()
+    >>> smtp_calls = patch.object(
+    ...     marketing_automation, 'sendmail_transactional').start()
 
 Install marketing_automation::
 
