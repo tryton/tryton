@@ -818,6 +818,7 @@ def doctest_setup(test):
 
 
 def doctest_teardown(test):
+    unittest.mock.patch.stopall()
     return drop_db()
 
 
