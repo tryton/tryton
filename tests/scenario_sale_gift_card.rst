@@ -15,9 +15,10 @@ Imports::
 
 Patch sendmail_transactional::
 
-    >>> from unittest.mock import MagicMock
+    >>> from unittest.mock import patch
     >>> from trytond.modules.sale_gift_card import sale
-    >>> sale.sendmail_transactional = smtp_calls = MagicMock()
+    >>> smtp_calls = patch.object(
+    ...     sale, 'sendmail_transactional').start()
 
 Activate modules::
 
