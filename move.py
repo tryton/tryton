@@ -172,16 +172,10 @@ class Move(Workflow, ModelSQL, ModelView):
     _order_name = 'product'
     product = fields.Many2One("product.product", "Product", required=True,
         select=True, states=STATES,
-        domain=[
-            If(Bool(Eval('product_uom_category'))
-                & ~Eval('state').in_(['done', 'cancelled']),
-                ('default_uom_category', '=', Eval('product_uom_category')),
-                ())
-            ],
         context={
             'company': Eval('company', -1),
             },
-        depends=DEPENDS + ['product_uom_category', 'company'],
+        depends=DEPENDS + ['company'],
         help="The product that the move is associated with.")
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
@@ -305,9 +299,13 @@ class Move(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Move, cls).__setup__()
         cls.product.domain = [
-            cls.product.domain,
+            If(Bool(Eval('product_uom_category'))
+                & ~Eval('state').in_(['done', 'cancelled']),
+                ('default_uom_category', '=', Eval('product_uom_category')),
+                ()),
             ('type', 'in', cls.get_product_types()),
             ]
+        cls.product.depends += ['product_uom_category']
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned
