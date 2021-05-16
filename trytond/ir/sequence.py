@@ -29,6 +29,10 @@ class LastTimestampError(ValidationError):
     pass
 
 
+class SQLSequenceError(ValidationError):
+    pass
+
+
 class SequenceType(ModelSQL, ModelView):
     "Sequence type"
     __name__ = 'ir.sequence.type'
@@ -265,9 +269,16 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             return
         if number_next is None:
             number_next = self.number_next
-        if sql_sequence:
-            transaction.database.sequence_create(transaction.connection,
-                self._sql_sequence_name, self.number_increment, number_next)
+        try:
+            transaction.database.sequence_create(
+                transaction.connection, self._sql_sequence_name,
+                self.number_increment, number_next)
+        except Exception as exception:
+            raise SQLSequenceError(
+                gettext('ir.msg_sequence_invalid_number_increment_next',
+                    number_increment=self.number_increment,
+                    number_next=number_next,
+                    exception=exception)) from exception
 
     def update_sql_sequence(self, number_next=None):
         'Update the SQL sequence'
@@ -284,8 +295,16 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             return
         if number_next is None:
             number_next = self.number_next
-        transaction.database.sequence_update(transaction.connection,
-            self._sql_sequence_name, self.number_increment, number_next)
+        try:
+            transaction.database.sequence_update(
+                transaction.connection, self._sql_sequence_name,
+                self.number_increment, number_next)
+        except Exception as exception:
+            raise SQLSequenceError(
+                gettext('ir.msg_sequence_invalid_number_increment_next',
+                    number_increment=self.number_increment,
+                    number_next=number_next,
+                    exception=exception)) from exception
 
     def delete_sql_sequence(self):
         'Delete the SQL sequence'
