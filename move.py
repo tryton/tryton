@@ -1768,7 +1768,11 @@ class Reconcile(Wizard):
                 ('party', '=',
                     self.show.party.id if self.show.party else None),
                 ('reconciliation', '=', None),
-                ])
+                ],
+            order=[])
+
+    def _line_sort_key(self, line):
+        return [line.maturity_date or line.date]
 
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
@@ -1784,7 +1788,8 @@ class Reconcile(Wizard):
         chunk = config.getint('account', 'reconciliation_chunk', default=10)
         # Combination is exponential so it must be limited to small number
         default = []
-        for lines in grouped_slice(self._all_lines(), chunk):
+        for lines in grouped_slice(
+                sorted(self._all_lines(), key=self._line_sort_key), chunk):
             lines = list(lines)
             best = None
             for n in range(len(lines), 1, -1):
