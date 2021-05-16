@@ -5,7 +5,7 @@ from itertools import tee, zip_longest
 
 from sql import Null, Literal, With
 from sql.aggregate import Sum, Min, Max
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import CurrentTimestamp, DateTrunc, Power, Ceil, Log, Round
 
 try:
@@ -157,7 +157,8 @@ class Abstract(ModelSQL, ModelView):
     def _column_cost(cls, tables, withs, sign):
         move = tables['move']
         return Sum(
-            sign * cls.cost.sql_cast(move.internal_quantity) * move.cost_price)
+            sign * cls.cost.sql_cast(move.internal_quantity)
+            * Coalesce(move.cost_price, 0))
 
     @classmethod
     def _column_revenue(cls, tables, withs, sign):
@@ -165,8 +166,9 @@ class Abstract(ModelSQL, ModelView):
         currency = withs['currency_rate']
         currency_company = withs['currency_rate_company']
         return Sum(
-            sign * cls.revenue.sql_cast(move.quantity) * move.unit_price
-            * currency_company.rate / currency.rate)
+            sign * cls.revenue.sql_cast(move.quantity)
+            * Coalesce(move.unit_price, 0)
+            * Coalesce(currency_company.rate / currency.rate, 0))
 
     @classmethod
     def _group_by(cls, tables, withs):
