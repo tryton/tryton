@@ -264,6 +264,14 @@ def least(*args):
         return None
 
 
+def bool_and(*args):
+    return all(args)
+
+
+def bool_or(*args):
+    return any(args)
+
+
 def cbrt(value):
     return math.pow(value, 1 / 3)
 
@@ -354,6 +362,8 @@ class Database(DatabaseInterface):
         self._conn.create_function('now', 0, now)
         self._conn.create_function('greatest', -1, greatest)
         self._conn.create_function('least', -1, least)
+        self._conn.create_function('bool_and', -1, bool_and)
+        self._conn.create_function('bool_or', -1, bool_or)
 
         # Mathematical functions
         self._conn.create_function('cbrt', 1, cbrt)
