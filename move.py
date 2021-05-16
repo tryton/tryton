@@ -1955,9 +1955,11 @@ class GroupLines(Wizard):
 
         if not date:
             date = Date.today()
-        period = Period.find(grouping['company'].id, date=date)
+        company = grouping['company']
+        period = Period.find(company.id, date=date)
 
         move = Move()
+        move.company = company
         move.date = date
         move.period = period
         move.journal = journal
