@@ -97,10 +97,7 @@ class Invoice(metaclass=PoolMeta):
                 if line.type != 'line':
                     continue
                 if line.account.type.deposit:
-                    if ((invoice.type.endswith('invoice')
-                            and line.amount < 0)
-                            or (invoice.type.endswith('credit_note')
-                                and line.amount > 0)):
+                    if line.amount < 0:
                         sign = 1 if invoice.type.startswith('in') else -1
                         to_check.add((invoice.party, line.account, sign))
 
