@@ -1628,14 +1628,14 @@ function eval_pyson(value){
                 }
             }.bind(this));
             if (this.input[0].type == this._input) {
-                var icon = jQuery('<div/>', {
+                this.icon = jQuery('<div/>', {
                     'class': 'icon-input icon-secondary',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
                 }).appendTo(group);
-                this.input.appendTo(icon);
+                this.input.appendTo(this.icon);
                 Sao.common.ICONFACTORY.get_icon_img('tryton-date')
-                    .appendTo(icon);
+                    .appendTo(this.icon);
             }
             this.date.css('max-width', this._width);
             this.date.change(this.focus_out.bind(this));
@@ -1701,8 +1701,14 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Date._super.set_readonly.call(this, readonly);
-            this.date.find('button').prop('disabled', readonly);
-            this.date.find('input').prop('readonly', readonly);
+            this.el.find('input').prop('readonly', readonly);
+            if (this.icon){
+                if (readonly) {
+                    this.icon.hide();
+                } else {
+                    this.icon.show();
+                }
+            }
         }
     });
 
