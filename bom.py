@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
 from trytond.wizard import Wizard, StateView, Button
 from trytond.pyson import Eval
 from trytond.pool import Pool
@@ -21,13 +21,15 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
         Compute factor for an output product
         '''
         Uom = Pool().get('product.uom')
+        output_quantity = 0
         for output in self.outputs:
             if output.product == product:
-                if not output.quantity:
-                    return 0.0
-                quantity = Uom.compute_qty(uom, quantity,
-                    output.uom, round=False)
-                return quantity / output.quantity
+                output_quantity += Uom.compute_qty(
+                    output.uom, output.quantity, uom, round=False)
+        if output_quantity:
+            return quantity / output_quantity
+        else:
+            return 0
 
     @classmethod
     def copy(cls, records, default=None):
@@ -67,11 +69,14 @@ class BOMInput(ModelSQL, ModelView):
         super(BOMInput, cls).__setup__()
         cls.product.domain = [('type', 'in', cls.get_product_types())]
         cls.__access__.add('bom')
-        t = cls.__table__()
-        cls._sql_constraints = [
-            ('product_bom_uniq', Unique(t, t.product, t.bom),
-                'production.msg_product_bom_unique'),
-            ]
+
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 6.0: remove unique constraint
+        table_h.drop_constraint('product_bom_uniq')
 
     @classmethod
     def get_product_types(cls):

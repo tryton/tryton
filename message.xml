@@ -6,8 +6,5 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_recursive_bom">
             <field name="text">You cannot create a recursive BOM for product "%(product)s".</field>
         </record>
-        <record model="ir.message" id="msg_product_bom_unique">
-            <field name="text">Products can only appear once on each BOM.</field>
-        </record>
     </data>
 </tryton>
