@@ -451,6 +451,33 @@
         return Sao.TimeDelta(null, seconds);
     };
 
+    Sao.common.btoa = function(value) {
+        var strings = [], chunksize = 0xffff;
+        // JavaScript Core has hard-coded argument limit of 65536
+        // String.fromCharCode can not be called with too many
+        // arguments
+        for (var j = 0; j * chunksize < value.length; j++) {
+            strings.push(String.fromCharCode.apply(
+                null, value.subarray(
+                    j * chunksize, (j + 1) * chunksize)));
+        }
+        return btoa(strings.join(''));
+    };
+
+    Sao.common.atob = function(value) {
+       // javascript's atob does not understand linefeed
+       // characters
+       var byte_string = atob(value.base64.replace(/\s/g, ''));
+       // javascript decodes base64 string as a "DOMString", we
+       // need to convert it to an array of bytes
+       var array_buffer = new ArrayBuffer(byte_string.length);
+       var uint_array = new Uint8Array(array_buffer);
+       for (var j=0; j < byte_string.length; j++) {
+           uint_array[j] = byte_string.charCodeAt(j);
+       }
+       return uint_array;
+    };
+
     Sao.common.ModelAccess = Sao.class_(Object, {
         init: function() {
             this.batchnum = 100;

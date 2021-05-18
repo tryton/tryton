@@ -2063,6 +2063,9 @@
             if ((i === 0) && indent && (typeof(val) == 'string')) {
                 val = '  '.repeat(indent) + val;
             }
+            if (val instanceof Uint8Array) {
+                val = Sao.common.btoa(val);
+            }
             row.push(val);
         });
         return row;

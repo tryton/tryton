@@ -195,17 +195,7 @@
                        value = Sao.TimeDelta(null, value.seconds);
                        break;
                    case 'bytes':
-                       // javascript's atob does not understand linefeed
-                       // characters
-                       var byte_string = atob(value.base64.replace(/\s/g, ''));
-                       // javascript decodes base64 string as a "DOMString", we
-                       // need to convert it to an array of bytes
-                       var array_buffer = new ArrayBuffer(byte_string.length);
-                       var uint_array = new Uint8Array(array_buffer);
-                       for (var j=0; j < byte_string.length; j++) {
-                           uint_array[j] = byte_string.charCodeAt(j);
-                       }
-                       value = uint_array;
+                       value = Sao.common.atob(value);
                        break;
                    case 'Decimal':
                        value = new Sao.Decimal(value.decimal);
@@ -272,18 +262,9 @@
                     'decimal': value.toString()
                 };
             } else if (value instanceof Uint8Array) {
-                var strings = [], chunksize = 0xffff;
-                // JavaScript Core has hard-coded argument limit of 65536
-                // String.fromCharCode can not be called with too many
-                // arguments
-                for (var j = 0; j * chunksize < value.length; j++) {
-                    strings.push(String.fromCharCode.apply(
-                                null, value.subarray(
-                                    j * chunksize, (j + 1) * chunksize)));
-                }
                 value = {
                     '__class__': 'bytes',
-                    'base64': btoa(strings.join(''))
+                    'base64': Sao.common.btoa(value),
                 };
             } else {
                 value = jQuery.extend({}, value);
