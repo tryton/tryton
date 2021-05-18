@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import base64
 import csv
 import gettext
 import locale
@@ -208,6 +209,8 @@ class WinImport(WinCSV):
                         val = Decimal(locale.delocalize(val))
                     elif type_ in ['date', 'datetime']:
                         val = date_parse(val, common.date_format())
+                    elif type_ == 'binary':
+                        val = base64.b64decode(val)
                 row.append(val)
             data.append(row)
         try:

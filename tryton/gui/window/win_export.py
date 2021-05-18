@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import base64
 import csv
 import datetime
 import os
@@ -426,6 +427,8 @@ class WinExport(WinCSV):
                 val = int(val)
             if i == 0 and indent and isinstance(val, str):
                 val = '  ' * indent + val
+            if isinstance(val, bytes):
+                val = base64.b64encode(val).decode('utf-8')
             row.append(val)
         return row
 
