@@ -132,6 +132,12 @@
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="asset_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'account.asset')]"/>
+        </record>
+
         <record model="ir.model.button" id="asset_close_button">
             <field name="name">close</field>
             <field name="string">Close</field>

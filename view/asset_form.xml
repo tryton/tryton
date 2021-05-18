@@ -49,6 +49,7 @@
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="4" id="buttons">
+        <button name="draft" icon="tryton-back"/>
         <button name="clear_lines" icon="tryton-clear"/>
         <button name="create_lines" icon="tryton-launch"/>
         <button name="update" icon="tryton-create"/>

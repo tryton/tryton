@@ -1,3 +1,6 @@
+* Allow resetting running assets without moves to draft
+* Allow refreshing pending asset lines
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 

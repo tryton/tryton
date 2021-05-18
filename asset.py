@@ -222,8 +222,14 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'running'),
                 ('running', 'closed'),
+                ('running', 'draft'),
                 ))
         cls._buttons.update({
+                'draft': {
+                    'invisible': (Eval('lines', [])
+                        | (Eval('state') != 'running')),
+                    'depends': ['state'],
+                    },
                 'run': {
                     'invisible': Eval('state') != 'draft',
                     'depends': ['state'],
@@ -233,13 +239,12 @@ class Asset(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'create_lines': {
-                    'invisible': (Eval('lines', [])
-                        | (Eval('state') != 'draft')),
+                    'invisible': ~Eval('state').in_(['draft', 'running']),
                     'depends': ['state'],
                     },
                 'clear_lines': {
                     'invisible': (~Eval('lines', [0])
-                        | (Eval('state') != 'draft')),
+                        | ~Eval('state').in_(['draft', 'running'])),
                     'depends': ['state'],
                     },
                 'update': {
@@ -407,7 +412,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         # dateutil >= 2.0 has replace __nonzero__ by __bool__ which doesn't
         # work in Python < 3
         if delta == relativedelta.relativedelta():
-            return [self.end_date]
+            if not self.lines:
+                return [self.end_date]
+            else:
+                return []
         if self.frequency == 'monthly':
             rule = rrule.rrule(rrule.MONTHLY, dtstart=self.start_date,
                 bymonthday=int(config.get_multivalue(
@@ -510,7 +518,6 @@ class Asset(Workflow, ModelSQL, ModelView):
     def create_lines(cls, assets):
         pool = Pool()
         Line = pool.get('account.asset.line')
-        cls.clear_lines(assets)
 
         lines = []
         for asset in assets:
@@ -576,6 +583,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.asset.line')
+
+        cls.create_lines(assets)
 
         moves = []
         lines = []
@@ -656,6 +665,16 @@ class Asset(Workflow, ModelSQL, ModelView):
             asset.number = config.get_multivalue(
                 'asset_sequence', company=asset.company.id).get()
         cls.save(assets)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, assets):
+        for asset in assets:
+            if asset.lines:
+                raise AccessError(
+                    gettext('account_asset.msg_draft_lines',
+                        asset=asset.rec_name))
 
     @classmethod
     @ModelView.button
@@ -933,6 +952,7 @@ class UpdateAsset(Wizard):
                 'residual_value': self.start.residual_value,
                 'end_date': self.start.end_date,
                 })
+        self.model.clear_lines([self.record])
         self.model.create_lines([self.record])
         return 'end'
 
