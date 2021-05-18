@@ -28,6 +28,11 @@ this repository contains the full copyright notices and license terms. -->
             name="Commission"
             sequence="100"
             id="menu_commission"/>
+        <record model="ir.ui.menu-res.group" id="menu_commission_group_commission">
+            <field name="menu" ref="menu_commission"/>
+            <field name="group" ref="group_commission"/>
+        </record>
+
         <menuitem
             name="Configuration"
             parent="menu_commission"
@@ -212,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_plan">
             <field name="model" search="[('model', '=', 'commission.plan')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -306,7 +311,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_commission">
             <field name="model" search="[('model', '=', 'commission')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -347,10 +352,5 @@ this repository contains the full copyright notices and license terms. -->
             action="act_commission_create_invoice"
             sequence="90"
             id="menu_commission_create_invoice"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_commission_create_invoice_group_commission">
-            <field name="menu" ref="menu_commission_create_invoice"/>
-            <field name="group" ref="group_commission"/>
-        </record>
     </data>
 </tryton>
