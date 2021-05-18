@@ -242,7 +242,8 @@
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif_circulant"/>
             <field name="statement">balance</field>
-            <field name="assets" eval="True"/>
+            <field name="assets" eval="False"/>
+            <field name="deposit" depends="account_deposit" eval="True"/>
         </record>
         <record model="account.account.type.template" id="creances">
             <field name="name">Créances d'exploitation</field>
