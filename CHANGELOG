@@ -1,3 +1,4 @@
+* Support base64 encoded data in ModelStorage.import_data
 * Add BOOL_AND and BOOL_OR to SQLite backend
 
 Version 6.0.0 - 2021-05-03

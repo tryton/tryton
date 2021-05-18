@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import base64
 import datetime
 import time
 import csv
@@ -929,6 +930,9 @@ class ModelStorage(Model):
                         res = get_one2one(this_field_def['relation'], value)
                     elif field_type == 'reference':
                         res = get_reference(value, '/'.join(field))
+                    elif (field_type == 'binary'
+                            and not isinstance(value, bytes)):
+                        res = base64.b64decode(value)
                     else:
                         res = value or None
                     row[field[-1]] = res

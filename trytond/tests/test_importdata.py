@@ -564,6 +564,26 @@ class ImportDataTestCase(unittest.TestCase):
         transaction.rollback()
 
     @with_transaction()
+    def test_binary_bytes(self):
+        "Test binary bytes"
+        pool = Pool()
+        Binary = pool.get('test.import_data.binary')
+
+        self.assertEqual(Binary.import_data(['data'], [[b'data']]), 1)
+        record, = Binary.search([])
+        self.assertEqual(record.data, b'data')
+
+    @with_transaction()
+    def test_binary_base64(self):
+        "Test binary base64"
+        pool = Pool()
+        Binary = pool.get('test.import_data.binary')
+
+        self.assertEqual(Binary.import_data(['data'], [['ZGF0YQ==']]), 1)
+        record, = Binary.search([])
+        self.assertEqual(record.data, b'data')
+
+    @with_transaction()
     def test_update_id(self):
         "Test update with ID"
         pool = Pool()

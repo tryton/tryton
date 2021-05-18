@@ -135,6 +135,12 @@ class ImportDataOne2ManyTarget(ModelSQL):
     one2many = fields.Many2One('test.import_data.one2many', 'One2Many')
 
 
+class ImportDataBinary(ModelSQL):
+    "Import Data Binary"
+    __name__ = 'test.import_data.binary'
+    data = fields.Binary("Data")
+
+
 class ImportDataReferenceSelection(ModelSQL):
     "Import Data Reference Selection"
     __name__ = 'test.import_data.reference.selection'
@@ -180,5 +186,6 @@ def register(module):
         ImportDataOne2ManyTarget,
         ImportDataReferenceSelection,
         ImportDataReference,
+        ImportDataBinary,
         ImportDataUpdate,
         module=module, type_='model')
