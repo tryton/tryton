@@ -549,7 +549,7 @@ msgstr "Impossibile impostare la localizzazione %s"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "Email"
+msgstr "Email %s"
 
 msgid "To:"
 msgstr "a:"
