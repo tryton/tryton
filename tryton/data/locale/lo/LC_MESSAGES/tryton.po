@@ -109,7 +109,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "ສົມທຽບ"
+msgstr "ສົມທຽບ: %s"
 
 msgid "Close"
 msgstr ""
@@ -570,7 +570,7 @@ msgstr "ບໍ່ສາມາດຕັ້ງຄ່າ ທ້ອງຖິ່ນ %
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "ອີເມວລ໌"
+msgstr "ອີເມວລ໌ %s"
 
 msgid "To:"
 msgstr "ເຖິງ:"

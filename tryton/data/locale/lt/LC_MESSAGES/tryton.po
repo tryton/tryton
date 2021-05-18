@@ -106,7 +106,7 @@ msgstr "Išsaugoti dabartinę jūsų versiją"
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Palyginti"
+msgstr "Palyginti: %s"
 
 msgid "Close"
 msgstr "Užverti"
@@ -553,7 +553,7 @@ msgstr "Negalima ištrinti %s vedlio"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "El. paštas"
+msgstr "El. paštas %s"
 
 msgid "To:"
 msgstr "Kam:"

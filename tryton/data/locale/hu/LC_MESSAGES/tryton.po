@@ -109,7 +109,7 @@ msgstr "Írja felül a másikét az Ön verziójával"
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Összehasonlítás"
+msgstr "Összehasonlítás: %s"
 
 msgid "Close"
 msgstr "Bezárás"
@@ -550,7 +550,7 @@ msgstr "Nem lehet beállítani a csoportot: %s"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "E-mail"
+msgstr "E-mail %s"
 
 msgid "To:"
 msgstr "Címzett:"

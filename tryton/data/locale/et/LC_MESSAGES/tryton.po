@@ -106,7 +106,7 @@ msgstr "Salvesta praegune versioon"
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Võrdle"
+msgstr "Võrdle: %s"
 
 msgid "Close"
 msgstr "Sulge"
@@ -551,7 +551,7 @@ msgstr "Ei saa kustutada nõustajat %s"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "E-kiri"
+msgstr "E-kiri %s"
 
 msgid "To:"
 msgstr "Saaja:"

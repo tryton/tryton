@@ -107,7 +107,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Karşılaştır"
+msgstr "Karşılaştır: %s"
 
 msgid "Close"
 msgstr ""

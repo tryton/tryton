@@ -111,7 +111,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Сравнить"
+msgstr "Сравнить: %s"
 
 msgid "Close"
 msgstr ""
@@ -577,7 +577,7 @@ msgstr "Не удается установить локализацию %s"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "Эл.почта"
+msgstr "Эл.почта %s"
 
 msgid "To:"
 msgstr "Кому:"

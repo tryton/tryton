@@ -108,7 +108,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "Primerjaj"
+msgstr "Primerjaj: %s"
 
 msgid "Close"
 msgstr ""
@@ -569,7 +569,7 @@ msgstr "Ni možno nastaviti krajevnih nastavitev %s"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "Epošta"
+msgstr "Epošta %s"
 
 msgid "To:"
 msgstr "Za:"
