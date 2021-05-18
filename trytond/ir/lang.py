@@ -10,7 +10,8 @@ from sql import Table
 from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, Check, Unique)
 from trytond.modules import create_graph, load_translations
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -85,6 +86,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
         table = cls.__table__()
         cls._sql_constraints += [
+            ('code_unique', Unique(table, table.code),
+                'ir.msg_language_code_unique'),
             ('check_decimal_point_thousands_sep',
                 Check(table, table.decimal_point != table.thousands_sep),
                 'decimal_point and thousands_sep must be different!'),

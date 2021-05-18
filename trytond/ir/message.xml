@@ -369,5 +369,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_avatar_url">
             <field name="text">Avatar URL</field>
         </record>
+        <record model="ir.message" id="msg_language_code_unique">
+            <field name="text">The code on language must be unique.</field>
+        </record>
     </data>
 </tryton>
