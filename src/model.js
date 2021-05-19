@@ -2770,10 +2770,6 @@
             var batchlen = Math.min(10, Sao.config.limit);
 
             keys = jQuery.extend([], keys);
-            var get_keys = function(key_ids) {
-                return this.schema_model.execute('get_keys',
-                        [key_ids], context).then(update_keys);
-            }.bind(this);
             var update_keys = function(values) {
                 for (var i = 0, len = values.length; i < len; i++) {
                     var k = values[i];
@@ -2784,10 +2780,11 @@
             var prms = [];
             while (keys.length > 0) {
                 var sub_keys = keys.splice(0, batchlen);
-                prms.push(this.schema_model.execute('search',
+                prms.push(this.schema_model.execute('search_get_keys',
                             [[['name', 'in', sub_keys], domain],
-                            0, Sao.config.limit, null], context)
-                        .then(get_keys));
+                                Sao.config.limit],
+                            context)
+                        .then(update_keys));
             }
             return jQuery.when.apply(jQuery, prms);
         },
