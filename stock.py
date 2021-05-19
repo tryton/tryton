@@ -5,6 +5,7 @@ from decimal import Decimal
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits, round_price
 
@@ -28,13 +29,75 @@ class Move(metaclass=PoolMeta):
 class ShipmentCostMixin:
     __slots__ = ()
 
+    carrier = fields.Many2One('carrier', 'Carrier', states={
+            'readonly': Eval('state').in_(['done', 'cancelled']),
+            },
+        depends=['state'])
+
+    cost_used = fields.Function(fields.Numeric(
+            "Cost", digits=price_digits,
+            states={
+                'invisible': Eval('cost_edit', False),
+                },
+            depends=['cost_edit']),
+        'on_change_with_cost_used')
+    cost = fields.Numeric(
+        "Cost", digits=price_digits,
+        states={
+            'invisible': ~Eval('cost_edit', False),
+            'readonly': Eval('state').in_(['done', 'cancelled']),
+            },
+        depends=['state'])
+    cost_edit = fields.Boolean(
+        "Edit Cost",
+        states={
+            'readonly': Eval('state').in_(['done', 'cancelled']),
+            },
+        depends=['state'],
+        help="Check to edit the cost.")
+
+    def _get_carrier_context(self):
+        return {}
+
+    def get_carrier_context(self):
+        return self._get_carrier_context()
+
+    @fields.depends('carrier', 'company', methods=['_get_carrier_context'])
+    def _compute_costs(self):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        costs = {
+            'cost': None,
+            }
+        if self.carrier:
+            with Transaction().set_context(self._get_carrier_context()):
+                cost, currency_id = self.carrier.get_purchase_price()
+            if cost is not None:
+                cost = Currency.compute(
+                    Currency(currency_id), cost, self.company.currency,
+                    round=False)
+                costs['cost'] = round_price(cost)
+        return costs
+
+    @fields.depends('cost', 'state', 'cost_edit', methods=['_compute_costs'])
+    def on_change_with_cost_used(self, name=None):
+        cost = self.cost
+        if not self.cost_edit and self.state not in {'cancelled', 'done'}:
+            cost = self._compute_costs()['cost']
+        return cost
+
+    @fields.depends('cost_edit', 'cost_used')
+    def on_change_cost_edit(self):
+        if self.cost_edit:
+            self.cost = self.cost_used
+
     @property
     def shipment_cost_moves(self):
         raise NotImplementedError
 
     def _get_shipment_cost(self):
         "Return the cost for the shipment in the company currency"
-        return Decimal(0)
+        return self.cost_used or Decimal(0)
 
     @classmethod
     def set_shipment_cost(cls, shipments):
@@ -82,6 +145,9 @@ class ShipmentCostMixin:
     @ModelView.button
     @Workflow.transition('done')
     def done(cls, shipments):
+        for shipment in shipments:
+            shipment.cost = shipment.cost_used
+        cls.save(shipments)
         super().done(shipments)
         cls.set_shipment_cost(shipments)
 
