@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
+from sql import Literal
 from sql.conditionals import Coalesce
 
 from trytond.model import Model, fields
@@ -66,8 +67,7 @@ class PeriodMixin(Model):
 
 class ActivePeriodMixin(PeriodMixin):
 
-    active = fields.Function(
-        fields.Boolean("Active"), 'get_active', searcher='search_active')
+    active = fields.Function(fields.Boolean("Active"), 'get_active')
 
     @classmethod
     def _active_dates(cls):
@@ -119,8 +119,8 @@ class ActivePeriodMixin(PeriodMixin):
             or (from_date <= start_date and end_date <= to_date))
 
     @classmethod
-    def search_active(cls, name, domain):
-        table = cls.__table__()
+    def domain_active(cls, domain, tables):
+        table, _ = tables[None]
         _, operator, value = domain
 
         if operator in {'=', '!='}:
@@ -134,16 +134,14 @@ class ActivePeriodMixin(PeriodMixin):
             elif False in value and True not in value:
                 operator = 'not in'
             else:
-                return []
+                return Literal(True)
         else:
-            return []
+            return Literal(True)
 
         from_date, to_date = cls._active_dates()
         start_date = Coalesce(table.start_date, datetime.date.min)
         end_date = Coalesce(table.end_date, datetime.date.max)
 
-        query = table.select(table.id,
-            where=((start_date <= to_date) & (end_date >= to_date))
+        return (((start_date <= to_date) & (end_date >= to_date))
             | ((start_date <= from_date) & (end_date >= from_date))
             | ((start_date >= from_date) & (end_date <= to_date)))
-        return [('id', operator, query)]
