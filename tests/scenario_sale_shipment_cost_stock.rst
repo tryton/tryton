@@ -17,7 +17,6 @@ Activate modules::
     >>> config = activate_modules([
     ...         'sale_shipment_cost',
     ...         'sale',
-    ...         'stock_shipment_cost',
     ...         ])
 
     >>> Carrier = Model.get('carrier')

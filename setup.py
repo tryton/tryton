@@ -65,7 +65,6 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
-    get_require_version('trytond_stock_shipment_cost'),
     ]
 for dep in ['account', 'party', 'stock', 'sale_promotion']:
     tests_require.append(get_require_version('trytond_%s' % dep))

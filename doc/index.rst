@@ -15,9 +15,3 @@ Two new fields are added to *Sale* and *Sale Configuration*:
 
 At the quotation if a carrier is selected a new line is appended with the
 shipment cost but the added line can be modified when going back to draft.
-
-Three new fields are added to *Customer Shipment*:
-
-- *Carrier*: The carrier used for the shipment.
-- *Cost*: The cost of the shipment.
-- *Cost Currency*: The currency of the cost.
