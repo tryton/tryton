@@ -15,7 +15,8 @@ from trytond.modules.currency.tests import create_currency
 class CarrierPercentageTestCase(ModuleTestCase):
     'Test CarrierPercentage module'
     module = 'carrier_percentage'
-    extras = ['purchase_shipment_cost', 'sale_shipment_cost']
+    extras = [
+        'purchase_shipment_cost', 'sale_shipment_cost', 'stock_shipment_cost']
 
     @with_transaction()
     def test_compute_percentage(self):
