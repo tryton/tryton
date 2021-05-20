@@ -128,6 +128,9 @@ def run_task(pool, task_id):
             time.sleep(0.02 * retry)
         try:
             with Transaction().start(pool.database_name, 0) as transaction:
+                if not transaction.database.has_channel():
+                    logger.critical('%s failed', name, exc_info=True)
+                    return
                 task = Queue(task_id)
                 scheduled_at = dt.datetime.now()
                 scheduled_at += dt.timedelta(
