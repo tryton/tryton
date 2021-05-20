@@ -73,8 +73,9 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         pool = Pool()
         Identifier = pool.get('party.identifier')
         if self.identifier_types:
+            identifier_types = [None, ''] + list(self.identifier_types)
             identifiers = Identifier.search([
-                    ('type', 'not in', [None, ''] + self.identifier_types),
+                    ('type', 'not in', identifier_types),
                     ], limit=1, order=[])
             if identifiers:
                 identifier, = identifiers
