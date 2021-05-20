@@ -1969,10 +1969,14 @@ class GroupLines(Wizard):
     def _group_lines(self, lines, date=None):
         move, balance_line = self.group_lines(lines, self.start.journal, date)
         move.description = self.start.description
+        move.save()
         return move, balance_line
 
     @classmethod
     def group_lines(cls, lines, journal, date=None):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
         grouping = cls.grouping(lines)
 
         move, balance_line = cls.get_move(lines, grouping, journal, date)
