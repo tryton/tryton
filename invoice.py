@@ -2648,10 +2648,13 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             with Transaction().set_context(date=self.invoice.currency_date):
                 amount = Currency.compute(self.invoice.currency, self.amount,
                     self.invoice.company.currency)
+                base = Currency.compute(self.invoice.currency, self.base,
+                    self.invoice.company.currency)
             line.amount_second_currency = self.amount
             line.second_currency = self.invoice.currency
         else:
             amount = self.amount
+            base = self.base
             line.amount_second_currency = None
             line.second_currency = None
         if amount >= 0:
@@ -2673,11 +2676,19 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             line.party = self.invoice.party
         line.origin = self
         if self.tax:
+            tax_lines = []
             tax_line = TaxLine()
             tax_line.amount = amount
             tax_line.type = 'tax'
             tax_line.tax = self.tax
-            line.tax_lines = [tax_line]
+            tax_lines.append(tax_line)
+            if self.manual:
+                tax_line = TaxLine()
+                tax_line.amount = base
+                tax_line.type = 'base'
+                tax_line.tax = self.tax
+                tax_lines.append(tax_line)
+            line.tax_lines = tax_lines
         return [line]
 
     def _credit(self):

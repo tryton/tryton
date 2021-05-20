@@ -1,3 +1,5 @@
+* Create base tax line for manual taxes
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Allow using debt accounts on supplier invoices
