@@ -130,6 +130,8 @@ Group lines::
     Decimal('50')
     >>> delegate_to.maturity_date == period.start_date + dt.timedelta(days=2)
     True
+    >>> delegate_to.move_description
+    'Group lines'
 
 Cancelling the delegation move::
 
