@@ -65,7 +65,7 @@ class Sale(metaclass=PoolMeta):
         web_shops = WebShop.search([])
         guests = {s.guest_party for s in web_shops}
         for sale in sales:
-            if (sale.state not in {'draft', 'cancel'}
+            if (sale.state not in {'draft', 'cancelled'}
                     and sale.party in guests):
                 raise SaleValidationError(
                     gettext('web_shop.msg_sale_invalid_party',
