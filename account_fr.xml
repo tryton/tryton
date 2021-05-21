@@ -7030,7 +7030,7 @@
             <field name="name">Cotisations à l'URSSAF</field>
             <field name="code">6451</field>
             <field name="type" ref="charges_sociales"/>
-            <field name="closed" eval="True"/>
+            <field name="closed" eval="False"/>
             <field name="parent" ref="645"/>
         </record>
         <record model="account.account.template" id="6452">
