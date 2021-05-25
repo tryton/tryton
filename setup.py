@@ -72,7 +72,7 @@ if minor_version % 2:
 
 setup(name=name,
     version=version,
-    description='UPS connector for the Tryton application plateform',
+    description='UPS connector for the Tryton application platform',
     long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
