@@ -21,7 +21,8 @@ Imports::
 
 Activate modules::
 
-    >>> config = activate_modules(['stock_package_shipping_dpd', 'sale'])
+    >>> config = activate_modules(
+    ...     ['stock_package_shipping_dpd', 'sale', 'sale_shipment_cost'])
 
 Create company::
 
