@@ -367,6 +367,7 @@ class Commission(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Commission, cls).__setup__()
+        cls.__access__.add('agent')
         cls._buttons.update({
                 'invoice': {
                     'invisible': Bool(Eval('invoice_line')),
