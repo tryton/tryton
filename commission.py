@@ -182,6 +182,7 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('agent')
         cls._order.insert(0, ('party', 'ASC NULLS LAST'))
         cls._order.insert(1, ('employee', 'ASC NULLS LAST'))
 

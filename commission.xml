@@ -152,35 +152,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_agent_selections"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_agent_selection_companies">
-            <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'commission.agent.selection')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_agent_selection_companies">
-            <field name="domain"
-                eval="[('company', 'in', Eval('companies', []))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_agent_selection_companies"/>
-        </record>
-
-        <record model="ir.model.access" id="access_agent_selection">
-            <field name="model" search="[('model', '=', 'commission.agent.selection')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_agent_selection_commission_admin">
-            <field name="model" search="[('model', '=', 'commission.agent.selection')]"/>
-            <field name="group" ref="group_commission_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="plan_view_form">
             <field name="model">commission.plan</field>
             <field name="type">form</field>
