@@ -108,12 +108,13 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             ('landed_cost', '=', None),
             ],
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('invoice.state', 'in', ['posted', 'paid']),
             ('invoice.type', '=', 'in'),
             ('product.template.landed_cost', '=', True),
             ('type', '=', 'line'),
             ],
-        depends=['state'])
+        depends=['state', 'company'])
     allocation_method = fields.Selection([
             ('value', 'By Value'),
             ], 'Allocation Method', required=True,
