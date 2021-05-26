@@ -172,6 +172,9 @@ class Date(Gtk.Entry):
         self.grab_focus()
         self.emit('date-changed')
 
+    def cal_popup_is_visible(self):
+        return self.__cal_popup.is_visible()
+
     def focus_out(self, entry, event):
         previous_date = self.__date
         self.parse()
@@ -266,6 +269,8 @@ class CellRendererDate(Gtk.CellRendererText):
         # TODO emit edited
 
     def __focus_out_event(self, entry, event):
+        if entry.cal_popup_is_visible():
+            return True
         entry.props.editing_canceled = True
         entry.editing_done()
         entry.remove_widget()
