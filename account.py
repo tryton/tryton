@@ -419,28 +419,31 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
 class LandedCost_Shipment(ModelSQL):
     'Landed Cost - Shipment'
     __name__ = 'account.landed_cost-stock.shipment.in'
-    landed_cost = fields.Many2One('account.landed_cost', 'Landed Cost',
-        required=True, select=True)
-    shipment = fields.Many2One('stock.shipment.in', 'Shipment',
-        required=True)
+    landed_cost = fields.Many2One(
+        'account.landed_cost', 'Landed Cost',
+        required=True, select=True, ondelete='CASCADE')
+    shipment = fields.Many2One(
+        'stock.shipment.in', 'Shipment', required=True, ondelete='CASCADE')
 
 
 class LandedCost_ProductCategory(ModelSQL):
     "Landed Cost - Product Category"
     __name__ = 'account.landed_cost-product.category'
     landed_cost = fields.Many2One(
-        'account.landed_cost', 'Landed Cost', required=True, select=True)
+        'account.landed_cost', 'Landed Cost',
+        required=True, select=True, ondelete='CASCADE')
     category = fields.Many2One(
-        'product.category', "Category", required=True)
+        'product.category', "Category", required=True, ondelete='CASCADE')
 
 
 class LandedCost_Product(ModelSQL):
     "Landed Cost - Product"
     __name__ = 'account.landed_cost-product.product'
     landed_cost = fields.Many2One(
-        'account.landed_cost', "Landed Cost", required=True, select=True)
+        'account.landed_cost', "Landed Cost",
+        required=True, select=True, ondelete='CASCADE')
     product = fields.Many2One(
-        'product.product', "Product", required=True)
+        'product.product', "Product", required=True, ondelete='CASCADE')
 
 
 class InvoiceLine(metaclass=PoolMeta):
