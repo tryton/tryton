@@ -113,7 +113,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         domain=[
             ('invoice.state', 'in', ['posted', 'paid']),
             ('invoice.type', '=', 'in'),
-            ('product.template.landed_cost', '=', True),
+            ('product.landed_cost', '=', True),
             ('type', '=', 'line'),
             ],
         depends=['state'])
