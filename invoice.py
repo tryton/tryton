@@ -2022,7 +2022,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 * (self.unit_price or Decimal('0.0')))
             invoice_type = (
                 self.invoice.type if self.invoice else self.invoice_type)
-            if invoice_type == 'in' and self.taxes_deductible_rate != 1:
+            if (invoice_type == 'in'
+                    and self.taxes_deductible_rate is not None
+                    and self.taxes_deductible_rate != 1):
                 with Transaction().set_context(_deductible_rate=1):
                     tax_amount = sum(
                         t['amount'] for t in self._get_taxes().values())
@@ -2075,6 +2077,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 deductible_rate = context['_deductible_rate']
             else:
                 deductible_rate = getattr(self, 'taxes_deductible_rate', 1)
+            if deductible_rate is None:
+                deductible_rate = 1
             if not deductible_rate:
                 return []
         else:
