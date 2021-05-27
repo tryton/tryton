@@ -8,6 +8,7 @@ import locale
 import decimal
 import gettext
 from decimal import Decimal
+from gi.repository import Gtk
 
 from .widget import Widget
 from tryton.gui.window.win_search import WinSearch
