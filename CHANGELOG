@@ -1,3 +1,4 @@
+* Add support for werkzeug 2.0
 * Combine search and get_keys in DictSchemaMixin
 * Make language code unique
 * Support base64 encoded data in ModelStorage.import_data
