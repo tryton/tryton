@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from collections import defaultdict
+from itertools import groupby
 
 from sql import Literal
 
@@ -268,8 +269,11 @@ class MoveLine(ModelSQL, ModelView):
 
         roots = AnalyticAccount.search([
                 ('parent', '=', None),
-                ])
-        roots = set(roots)
+                ],
+            order=[('company', 'ASC')])
+        company2roots = {
+            company: set(roots)
+            for company, roots in groupby(roots, key=lambda r: r.company)}
 
         for line in lines:
             if line.account.type not in income_types:
@@ -282,6 +286,7 @@ class MoveLine(ModelSQL, ModelView):
             for analytic_line in line.analytic_lines:
                 amount = analytic_line.debit - analytic_line.credit
                 amounts[analytic_line.account.root] += amount
+            roots = company2roots[line.move.company]
             if not roots <= set(amounts.keys()):
                 line.analytic_state = 'draft'
                 continue
