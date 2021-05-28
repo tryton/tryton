@@ -145,7 +145,7 @@ class Group(ModelSQL, ModelView):
         payment = Payment.__table__()
 
         # initialize result and columns
-        result = defaultdict(defaultdict)
+        result = defaultdict(lambda: defaultdict(lambda: None))
         columns = [
             payment.group.as_('group_id'),
             Count(payment.group).as_('payment_count'),
