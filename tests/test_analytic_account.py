@@ -136,9 +136,7 @@ class AnalyticAccountTestCase(CompanyTestMixin, ModuleTestCase):
                     (Decimal(30), Decimal(100)))
                 self.assertEqual(analytic_account.balance, Decimal(70))
 
-    @with_transaction()
-    def test_move_line_state(self):
-        "Test move line state"
+    def _test_analytic_line_state(self):
         pool = Pool()
         Party = pool.get('party.party')
         AnalyticAccount = pool.get('analytic_account.account')
@@ -212,6 +210,31 @@ class AnalyticAccountTestCase(CompanyTestMixin, ModuleTestCase):
             expense_line.save()
 
             self.assertEqual(expense_line.analytic_state, 'valid')
+
+    @with_transaction()
+    def test_move_line_state(self):
+        "Test move line state"
+        self._test_analytic_line_state()
+
+    @with_transaction()
+    def test_move_line_state_roots_several_companies(self):
+        "Test move line state with roots from several companies"
+        pool = Pool()
+        Account = pool.get('analytic_account.account')
+
+        extra_company = create_company()
+        with set_company(extra_company):
+            root, = Account.create([{
+                        'type': 'root',
+                        'name': 'Root',
+                        }])
+            analytic_account, = Account.create([{
+                        'type': 'normal',
+                        'name': 'Analytic Account',
+                        'parent': root.id,
+                        'root': root.id,
+                        }])
+        self._test_analytic_line_state()
 
     @with_transaction()
     def test_account_distribute(self):
