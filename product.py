@@ -40,13 +40,13 @@ class Product(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('producible')
             },
-        depends=['type'])
+        depends=['producible'])
     lead_times = fields.One2Many('production.lead_time',
         'product', 'Lead Times', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': ~Eval('producible'),
             },
-        depends=['type'])
+        depends=['producible'])
 
     @classmethod
     def validate(cls, products):
