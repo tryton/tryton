@@ -142,13 +142,13 @@ class CreateShippingUPS(Wizard):
                 try:
                     req = requests.post(api_url, json=shipment_request)
                 except ssl.SSLError as e:
-                    error_message = e.message
+                    error_message = e.reason
                     nb_tries += 1
                     continue
                 req.raise_for_status()
                 response = req.json()
         except requests.HTTPError as e:
-            error_message = e.message
+            error_message = e.args[0]
 
         if error_message:
             raise UPSError(
