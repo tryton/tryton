@@ -1328,6 +1328,8 @@ def _convert_action(action, data=None, context=None, config=None):
         with config.reset_context(), config.set_context(action_ctx):
             if res_id is None:
                 return Model_.find(domain)
+            elif isinstance(res_id, int):
+                return [Model_(res_id)]
             else:
                 return [Model_(id_) for id_ in res_id]
     elif action['type'] == 'ir.action.wizard':
