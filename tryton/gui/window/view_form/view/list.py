@@ -302,6 +302,7 @@ class TreeXMLViewParser(XMLViewParser):
 
         for affix in node.childNodes:
             affix_attrs = node_attributes(affix)
+            affix_attrs['visual'] = attributes.get('visual')
             if 'name' not in affix_attrs:
                 affix_attrs['name'] = attributes['name']
             if affix.tagName == 'prefix':
