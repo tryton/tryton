@@ -342,8 +342,7 @@ class CreateMove(Wizard):
 
     def do_open_(self, action):
         move = self.create_move()
-        action['res_id'] = [move.id]
-        return action, {}
+        return action, {'res_id': move.id}
 
     def end(self):
         if self.model and self.model.__name__ == 'account.move.line':

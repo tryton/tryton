@@ -460,11 +460,9 @@ class BalanceNonDeferral(Wizard):
         return move
 
     def do_balance(self, action):
-        self.create_move()
-        action['pyson_domain'] = PYSONEncoder().encode([
-                ('move.origin', '=', str(self.start.fiscalyear)),
-                ])
-        return action, {}
+        move = self.create_move()
+        action['views'].reverse()
+        return action, {'res_id': move.id}
 
 
 class CreatePeriodsStart(ModelView):
@@ -635,6 +633,5 @@ class RenewFiscalYear(Wizard):
 
     def do_create_(self, action):
         fiscalyear = self.create_fiscalyear()
-        action['res_id'] = [fiscalyear.id]
         action['views'].reverse()
-        return action, {}
+        return action, {'res_id': fiscalyear.id}

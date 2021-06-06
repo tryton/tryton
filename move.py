@@ -1963,8 +1963,7 @@ class GroupLines(Wizard):
 
     def do_group(self, action):
         move, balance_line = self._group_lines(self.records)
-        action['res_id'] = [move.id]
-        return action, {}
+        return action, {'res_id': move.id}
 
     def _group_lines(self, lines, date=None):
         move, balance_line = self.group_lines(lines, self.start.journal, date)
