@@ -56,7 +56,7 @@ class ConfigManager(object):
             'client.check_version': True,
             'client.bus_timeout': 10 * 60,
             'icon.colors': '#3465a4,#555753,#cc0000',
-            'tree.colors': '#777,#dff0d8,#fcf8e3,#f2dede',
+            'tree.colors': '#777,#198754,#ffc107,#dc3545',
             'calendar.colors': '#fff,#3465a4',
             'graph.color': '#3465a4',
             'image.max_size': 10 ** 6,
