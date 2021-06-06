@@ -43,6 +43,13 @@ def freeze(o):
         return o
 
 
+def unfreeze(o):
+    if isinstance(o, frozenset):
+        return dict((x, unfreeze(y)) for x, y in o)
+    else:
+        return o
+
+
 class BaseCache(object):
     _instances = {}
 
