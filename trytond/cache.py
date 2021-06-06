@@ -44,6 +44,13 @@ def freeze(o):
         return o
 
 
+def unfreeze(o):
+    if isinstance(o, frozenset):
+        return dict((x, unfreeze(y)) for x, y in o)
+    else:
+        return o
+
+
 def _get_modules(cursor):
     ir_module = Table('ir_module')
     cursor.execute(*ir_module.select(
