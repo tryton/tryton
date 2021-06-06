@@ -15,7 +15,7 @@ from sql.operators import Concat
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval, Bool, If, Id, PYSONEncoder
+from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateAction
@@ -698,8 +698,4 @@ class OpenInvoice(Wizard):
             if work.invoiced_progress:
                 for progress in work.invoiced_progress:
                     invoice_ids.add(progress.invoice_line.invoice.id)
-        encoder = PYSONEncoder()
-        action['pyson_domain'] = encoder.encode(
-            [('id', 'in', list(invoice_ids))])
-        action['pyson_search_value'] = encoder.encode([])
-        return action, {}
+        return action, {'res_id': list(invoice_ids)}
