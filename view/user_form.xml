@@ -11,6 +11,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <label name="employee"/>
         <field name="employee" widget="selection"/>
+        <newline/>
+
         <field name="companies" colspan="2"/>
         <field name="employees" colspan="2"/>
     </xpath>
