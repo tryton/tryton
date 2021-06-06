@@ -389,6 +389,57 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(cm.exception.domain[1], 'value')
 
     @with_transaction()
+    def test_relation_domain_context(self):
+        "Test valid relation with context"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{}])
+
+        record, = Model.create(
+            [{'relation_context': target.id, 'relation_valid': True}])
+
+    @with_transaction()
+    def test_relation_domain_context_invalid(self):
+        "Test invalid relation with context"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{}])
+
+        with self.assertRaises(DomainValidationError):
+            record, = Model.create(
+                [{'relation_context': target.id, 'relation_valid': False}])
+
+    @with_transaction()
+    def test_relation_pyson_domain_context(self):
+        "Test valid relation with PYSON and context"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{}])
+
+        record, = Model.create(
+            [{'relation_pyson_context': target.id, 'relation_valid': True}])
+
+    @with_transaction()
+    def test_relation_pyson_domain_context_invalid(self):
+        "Test invalid relation with PYSON and context"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{}])
+
+        with self.assertRaises(DomainValidationError):
+            record, = Model.create([{
+                        'relation_pyson_context': target.id,
+                        'relation_valid': False}])
+
+    @with_transaction()
     def test_relation2_domain_invalid(self):
         "Test invalid relation domain with 2 level"
         pool = Pool()

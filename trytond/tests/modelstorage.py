@@ -78,12 +78,43 @@ class ModelStorageRelationDomain(ModelSQL):
                 ('value', '!=', 'valid')),
             ],
         depends=['relation_valid'])
+    relation_context = fields.Many2One(
+        'test.modelstorage.relation_domain.target', "Value",
+        domain=[
+            ('valid', '=', True),
+            ],
+        context={
+            'valid': Eval('relation_valid', True),
+            })
+    relation_pyson_context = fields.Many2One(
+        'test.modelstorage.relation_domain.target', "Value",
+        domain=[
+            If(Eval('relation_valid', True),
+                ('valid', '=', True),
+                ('valid', '=', None)),
+            ],
+        context={
+            'valid': Eval('relation_valid', True),
+            },
+        depends=['relation_valid'])
 
 
 class ModelStorageRelationDomainTarget(ModelSQL):
     "Target of Model stored containing a relation field with a domain"
     __name__ = 'test.modelstorage.relation_domain.target'
     value = fields.Char("Value")
+    valid = fields.Function(
+        fields.Boolean("Valid"), 'get_valid', searcher='search_valid')
+
+    def get_valid(self, name):
+        return Transaction().context.get('valid')
+
+    @classmethod
+    def search_valid(cls, name, domain):
+        if Transaction().context.get('valid') == domain[2]:
+            return []
+        else:
+            return [('id', '=', -1)]
 
 
 class ModelStorageRelationDomain2(ModelSQL):

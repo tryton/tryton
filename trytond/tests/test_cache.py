@@ -5,7 +5,8 @@ import time
 import unittest
 
 from trytond import backend, cache as cache_mod
-from trytond.cache import freeze, MemoryCache, LRUDict, LRUDictTransaction
+from trytond.cache import (
+    freeze, unfreeze, MemoryCache, LRUDict, LRUDictTransaction)
 from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.tests.test_tryton import DB_NAME, USER
 from trytond.transaction import Transaction
@@ -39,6 +40,28 @@ class CacheTestCase(unittest.TestCase):
                                             ('list', (1, 2, 3)),
                                             ('string', 'test'),
                                             ]))]))]))
+
+    def testUnfreeze(self):
+        "Test unfreeze"
+        for value, result in [
+                (freeze([1, 2, 3]), (1, 2, 3)),
+                (freeze({'dict': {
+                                'inner dict': {
+                                    'list': [1, 2, 3],
+                                    'string': 'test',
+                                    },
+                                },
+                            }),
+                    {'dict': {
+                            'inner dict': {
+                                'list': (1, 2, 3),
+                                'string': 'test',
+                                },
+                            },
+                        }),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(unfreeze(value), result)
 
 
 class MemoryCacheTestCase(unittest.TestCase):
