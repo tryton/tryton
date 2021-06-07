@@ -260,13 +260,17 @@
                 }.bind(this));
             };
             this.menu_def().forEach(add_button.bind(this));
-            this.status_label = jQuery('<span/>', {
-                'class': 'badge',
-            }).appendTo(jQuery('<div/>', {
-                'class': 'navbar-text hidden-xs',
-            }).insertAfter(this.buttons.previous));
-            this.buttons.previous.addClass('hidden-xs');
-            this.buttons.next.addClass('hidden-xs');
+            if (this.buttons.previous) {
+                this.status_label = jQuery('<span/>', {
+                    'class': 'badge',
+                }).appendTo(jQuery('<div/>', {
+                    'class': 'navbar-text hidden-xs',
+                }).insertAfter(this.buttons.previous));
+                this.buttons.previous.addClass('hidden-xs');
+            }
+            if (this.buttons.next) {
+                this.buttons.next.addClass('hidden-xs');
+            }
             toolbar.find('.btn-toolbar > .btn-group').last()
                 .addClass( 'hidden-xs')
                 .find('.dropdown')
