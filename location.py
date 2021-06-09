@@ -64,10 +64,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     type_string = type.translated('type')
     parent = fields.Many2One("stock.location", "Parent", select=True,
         left="left", right="right",
-        states={
-            'invisible': Eval('type') == 'warehouse',
-            },
-        depends=['type'],
         help="Used to add structure above the location.")
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
@@ -221,7 +217,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             'lost_found': ['lost_found'],
             'view': ['warehouse', 'view', 'storage'],
             'storage': ['warehouse', 'view', 'storage'],
-            'warehouse': [''],
+            'warehouse': ['view'],
             }
 
     @classmethod

@@ -1,3 +1,5 @@
+* Allow view location as parent of warehouse
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Allow shipments to be automatically assigned
