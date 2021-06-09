@@ -121,10 +121,10 @@ class InvoiceLine(metaclass=PoolMeta):
         if (SaleLine
                 and isinstance(self.origin, SaleLine)
                 and self.origin.id >= 0):
-            warehouse_address = self.origin.warehouse.address
-            if warehouse_address:
-                from_country = warehouse_address.country
-                from_subdivision = warehouse_address.subdivision
+            warehouse = self.origin.warehouse
+            if warehouse and warehouse.address:
+                from_country = warehouse.address.country
+                from_subdivision = warehouse.address.subdivision
             shipment_address = self.origin.sale.shipment_address
             to_country = shipment_address.country
             to_subdivision = shipment_address.subdivision
@@ -134,10 +134,10 @@ class InvoiceLine(metaclass=PoolMeta):
             invoice_address = self.origin.purchase.invoice_address
             from_country = invoice_address.country
             from_subdivision = invoice_address.subdivision
-            warehouse_address = self.origin.purchase.warehouse.address
-            if warehouse_address:
-                to_country = warehouse_address.country
-                to_subdivision = warehouse_address.subdivision
+            warehouse = self.origin.purchase.warehouse
+            if warehouse and warehouse.address:
+                to_country = warehouse.address.country
+                to_subdivision = warehouse.address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
         pattern['from_subdivision'] = (
