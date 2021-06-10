@@ -84,9 +84,17 @@ function eval_pyson(value){
 
             if (this._mnemonics[name] && widget.labelled) {
                 var label = this._mnemonics[name];
+                var accesskey = Sao.common.accesskey(label.label_el.text());
                 label.label_el.uniqueId();
                 widget.labelled.uniqueId();
                 widget.labelled.attr('aria-labelledby', label.el.attr('id'));
+                widget.labelled.attr('accesskey', accesskey);
+                if (~['INPUT', 'SELECT'].indexOf(
+                    widget.labelled.get(0).tagName)) {
+                    jQuery('<span/>', {
+                        'data-accesskey': accesskey,
+                    }).insertAfter(widget.labelled);
+                }
                 label.label_el.attr('for', widget.labelled.attr('id'));
             }
         },
@@ -1025,6 +1033,7 @@ function eval_pyson(value){
         },
         set_label: function(name, domains, counter) {
             this.label.text(name);
+            this.el.attr('accesskey', Sao.common.accesskey(name));
             if (domains.length) {
                 domains.map(function(d, i) {
                     var name = d[0];
@@ -4245,7 +4254,7 @@ function eval_pyson(value){
         init: function(view, attributes) {
             Sao.View.Form.URL._super.init.call(this, view, attributes);
             this.input.attr('type', 'url');
-            this.button = jQuery('<a/>', {
+            this.button = this.labelled = jQuery('<a/>', {
                 'class': 'btn btn-default',
                 'target': '_blank',
                 'rel': 'noreferrer noopener',

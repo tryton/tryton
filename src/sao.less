@@ -188,6 +188,46 @@ html[theme="default"] {
 .table-row-variant(warning; @state-warning-bg);
 .table-row-variant(danger; @state-danger-bg);
 
+html.accesskey {
+
+    *[accesskey]+span[data-accesskey]:after,
+    *[accesskey]:after {
+        background-color: @brand-info;
+        color: #fff;
+        font-size: x-small;
+        padding: 0 2px;
+        position: absolute;
+        text-transform: uppercase;
+        margin: 0 -1em;
+        z-index: 5;
+    }
+
+    input[accesskey][type="checkbox"]:after {
+        background-color: initial;
+    }
+
+    *[accesskey]+span[data-accesskey] {
+        float: right;
+        position: relative;
+
+        &:after {
+            content: attr(data-accesskey);
+        }
+    }
+
+    *[accesskey]:after {
+        content: attr(accesskey);
+    }
+
+    input[accesskey][type="checkbox"],
+    input[accesskey][type="checkbox"],
+    select[accesskey] {
+        &+span[data-accesskey] {
+            bottom: 1em;
+        }
+    }
+}
+
 .tab-form, .tab-board {
     nav.toolbar {
         position: -webkit-sticky;

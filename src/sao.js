@@ -1076,6 +1076,12 @@ var Sao = {};
                 callback: function() {
                     shortcuts_dialog();
                 },
+            }, {
+                shortcut: 'ctrl+f1',
+                label: Sao.i18n.gettext('Show/Hide access keys'),
+                callback: function() {
+                    jQuery('html').toggleClass('accesskey');
+                },
             },
         ];
     }
