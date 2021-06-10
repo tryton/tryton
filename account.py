@@ -2661,14 +2661,18 @@ class CreateChartProperties(ModelView):
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
             domain=[
+                ('closed', '!=', True),
                 ('type.receivable', '=', True),
+                ('party_required', '=', True),
                 ('company', '=', Eval('company')),
             ],
             depends=['company'])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
             domain=[
+                ('closed', '!=', True),
                 ('type.payable', '=', True),
+                ('party_required', '=', True),
                 ('company', '=', Eval('company')),
             ],
             depends=['company'])
