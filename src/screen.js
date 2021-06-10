@@ -1251,8 +1251,8 @@
             if (set_cursor === undefined) {
                 set_cursor = true;
             }
-            this.tree_states_done = [];
             this.group.load(ids, modified);
+            this.current_view.reset();
             if (ids.length && this.current_view.view_type != 'calendar') {
                 this.current_record = this.group.get(ids[0]);
             } else {
@@ -1365,6 +1365,7 @@
         clear: function() {
             this.current_record = null;
             this.group.clear();
+            this.tree_states_done = [];
             this.views.map(function(view) {
                 view.reset();
             });
