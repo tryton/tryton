@@ -86,8 +86,9 @@ class ShipmentAssignMixin(ShipmentMixin):
         cls.assign_try(shipments)
 
     def get_partially_assigned(self, name):
-        return any(m.state == 'assigned' for m in self.assign_moves
-            if m.assignation_required)
+        return (self.state != 'assigned'
+            and any(m.state == 'assigned' for m in self.assign_moves
+                if m.assignation_required))
 
     @classmethod
     def search_partially_assigned(cls, name, clause):
@@ -109,6 +110,7 @@ class ShipmentAssignMixin(ShipmentMixin):
                         ('state', '=', 'assigned'),
                         ('assignation_required', '=', True),
                         ]),
+                ('state', '!=', 'assigned'),
                 ]
         else:
             return []
