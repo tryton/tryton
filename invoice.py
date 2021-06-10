@@ -162,9 +162,9 @@ class InvoiceLine(metaclass=PoolMeta):
             if not plan:
                 continue
             with Transaction().set_context(date=self.invoice.currency_date):
-                amount = Currency.compute(self.invoice.currency,
+                base_amount = Currency.compute(self.invoice.currency,
                     self.amount, agent.currency, round=False)
-            amount = self._get_commission_amount(amount, plan)
+            amount = self._get_commission_amount(base_amount, plan)
             if amount:
                 amount = round_price(amount)
             if not amount:
@@ -179,6 +179,7 @@ class InvoiceLine(metaclass=PoolMeta):
                 commission.date = self.invoice.reconciled or today
             commission.agent = agent
             commission.product = plan.commission_product
+            commission.base_amount = base_amount
             commission.amount = amount
             commissions.append(commission)
         return commissions

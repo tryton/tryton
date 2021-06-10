@@ -57,7 +57,7 @@ else:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = ['simpleeval', 'python-sql']
+requires = ['simpleeval', 'python-sql', 'python-dateutil']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
@@ -139,6 +139,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.6',
     install_requires=requires,
+    extras_require={
+        'sparklines': ['pygal'],
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""

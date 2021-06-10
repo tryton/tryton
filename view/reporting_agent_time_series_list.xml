@@ -2,11 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="type_"/>
-    <field name="agent" expand="1"/>
     <field name="date"/>
+    <field name="number"/>
     <field name="base_amount" symbol="currency"/>
     <field name="amount" symbol="currency"/>
-    <field name="invoice_state"/>
-    <button name="invoice" tree_invisible="1"/>
 </tree>

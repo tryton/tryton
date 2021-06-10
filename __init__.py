@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from . import account
 from . import commission
+from . import commission_reporting
 from . import invoice
 from . import sale
 from . import product
@@ -19,6 +20,9 @@ def register():
         commission.AgentSelection,
         commission.Commission,
         commission.CreateInvoiceAsk,
+        commission_reporting.Agent,
+        commission_reporting.AgentTimeseries,
+        commission_reporting.Context,
         invoice.Invoice,
         invoice.InvoiceLine,
         invoice.CreditInvoiceStart,

@@ -22,6 +22,9 @@ Activate modules::
 
     >>> config = activate_modules('commission')
 
+    >>> ReportingAgent = Model.get('commission.reporting.agent')
+    >>> ReportingAgentTimeseries = Model.get('commission.reporting.agent.time_series')
+
 Create company::
 
     >>> _ = create_company()
@@ -151,6 +154,8 @@ Post invoice::
     >>> line, = invoice.lines
     >>> len(line.commissions)
     2
+    >>> [c.base_amount for c in line.commissions]
+    [Decimal('100.00'), Decimal('100.00')]
     >>> [c.amount for c in line.commissions]
     [Decimal('10.0000'), Decimal('10.0000')]
     >>> [c.invoice_state for c in line.commissions]
@@ -222,3 +227,25 @@ Credit invoice::
     >>> credit_note, = credit.actions[0]
     >>> credit_note.agent == agent
     True
+
+Check commission reporting per agent::
+
+    >>> with config.set_context(type='out'):
+    ...     reporting_agent, = ReportingAgent.find([])
+    ...     reporting_agent_timeseries, = ReportingAgentTimeseries.find([])
+
+    >>> reporting_agent.base_amount == Decimal('100.00')
+    True
+    >>> reporting_agent.amount == Decimal('10.0000')
+    True
+    >>> reporting_agent.number
+    1
+
+    >>> reporting_agent_timeseries.date == tomorrow
+    True
+    >>> reporting_agent_timeseries.base_amount == Decimal('100.00')
+    True
+    >>> reporting_agent_timeseries.amount == Decimal('10.00')
+    True
+    >>> reporting_agent_timeseries.number
+    1
