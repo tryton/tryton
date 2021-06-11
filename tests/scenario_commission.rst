@@ -230,7 +230,7 @@ Credit invoice::
 
 Check commission reporting per agent::
 
-    >>> with config.set_context(type='out'):
+    >>> with config.set_context(type='out', period='day'):
     ...     reporting_agent, = ReportingAgent.find([])
     ...     reporting_agent_timeseries, = ReportingAgentTimeseries.find([])
 
