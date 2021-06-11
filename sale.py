@@ -12,8 +12,9 @@ def process_opportunity(func):
         pool = Pool()
         Opportunity = pool.get('sale.opportunity')
         with Transaction().set_context(_check_access=False):
-            opportunities = [s.origin for s in cls.browse(sales)
-                if isinstance(s.origin, Opportunity)]
+            opportunities = Opportunity.browse(
+                set(s.origin for s in cls.browse(sales)
+                    if isinstance(s.origin, Opportunity)))
         func(cls, sales)
         with Transaction().set_context(_check_access=False):
             Opportunity.process(opportunities)
