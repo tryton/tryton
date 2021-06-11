@@ -151,7 +151,7 @@ class MovePurchase(metaclass=PoolMeta):
         PurchaseLineComponent = pool.get('purchase.line.component')
         name = super().origin_name
         if isinstance(self.origin, PurchaseLineComponent):
-            name = self.origin.line.sale.rec_name
+            name = self.origin.line.purchase.rec_name
         return name
 
     def _compute_unit_price(self, unit_price):
