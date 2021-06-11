@@ -2090,7 +2090,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.rule.line.template" id="fptt_extra_purchase_service">
-            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="rule" ref="fp_extra_purchase"/>
             <field name="tax" ref="iva_sop_importacion_servicios"/>
             <field name="group" ref="tax_group_purchase_service"/>
         </record>
