@@ -132,6 +132,22 @@ class MovePurchase(metaclass=PoolMeta):
             ('origin.line.' + clause[0],) + tuple(clause[1:3])
             + ('purchase.line.component',) + tuple(clause[3:])]
 
+    def get_supplier(self, name):
+        pool = Pool()
+        PurchaseLineComponent = pool.get('purchase.line.component')
+        supplier = super().get_supplier(name)
+        if isinstance(self.origin, PurchaseLineComponent):
+            supplier = self.origin.line.purchase.party.id
+        return supplier
+
+    @classmethod
+    def search_supplier(cls, name, clause):
+        return ['OR',
+            super().search_supplier(name, clause),
+            ('origin.line.purchase.party' + clause[0].lstrip(name),)
+            + tuple(clause[1:3]) + ('purchase.line.component',)
+            + tuple(clause[3:])]
+
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):
         pool = Pool()
