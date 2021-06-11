@@ -203,6 +203,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             childs_domain.append(If(Eval('type') == type_,
                     ('type', 'in', childs_mapping[type_]), ()))
         cls.parent.domain = parent_domain
+        cls.parent.depends.append('type')
         cls.childs.domain = childs_domain
         cls.childs.depends.extend(['flat_childs', 'type'])
 
