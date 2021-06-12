@@ -433,6 +433,8 @@ class Cron(ModelSQL, ModelView):
             if currency.code not in values:
                 continue
             value = values[currency.code]
+            if not isinstance(value, Decimal):
+                value = Decimal(value)
             rate = get_rate(currency)
             rate.rate = value.quantize(exp, rounding=rounding)
             yield rate
