@@ -1,3 +1,4 @@
+* Add option to trytond-console to start a readonly transaction
 * Add support for werkzeug 2.0
 * Combine search and get_keys in DictSchemaMixin
 * Make language code unique

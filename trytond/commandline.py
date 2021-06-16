@@ -113,6 +113,8 @@ def get_parser_console():
         required=True, metavar='DATABASE', help="specify the database name")
     parser.add_argument("--histsize", dest="histsize", type=int, default=500,
         help="The number of commands to remember in the command history")
+    parser.add_argument("--readonly", dest="readonly", action='store_true',
+        help="Start a readonly transaction")
     parser.epilog = "To store changes, `transaction.commit()` must be called."
     return parser
 

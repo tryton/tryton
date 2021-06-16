@@ -45,7 +45,8 @@ def run(options):
     with Transaction().start(db_name, 0, readonly=True):
         pool.init()
 
-    with Transaction().start(db_name, 0) as transaction:
+    with Transaction().start(
+            db_name, 0, readonly=options.readonly) as transaction:
         local = {
             'pool': pool,
             'transaction': transaction,
