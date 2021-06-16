@@ -233,7 +233,12 @@ class SQLiteTrim(Trim):
 
     @property
     def params(self):
-        return [self.string, self.characters]
+        if isinstance(self.string, str):
+            params = [self.string]
+        else:
+            params = list(self.string.params)
+        params.append(self.characters)
+        return params
 
 
 def sign(value):
