@@ -5,7 +5,7 @@ import math
 import unittest
 
 from sql import Select
-from sql import functions
+from sql import functions, Literal
 from sql.functions import CurrentTimestamp, ToChar
 
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -127,6 +127,7 @@ class BackendTestCase(unittest.TestCase):
             # (functions.Substring('Thomas', '...$'), 'mas'),
             # (functions.Substring('Thomas', '%#"o_a#"_', '#'), 'oma'),
             (functions.Trim('yxTomxx', 'BOTH', 'xyz'), 'Tom'),
+            (functions.Trim(Literal('yxTomxxx'), 'BOTH', 'xyz'), "Tom"),
             (functions.Upper('tom'), 'TOM'),
             ]
         for func, result in tests:
