@@ -194,10 +194,12 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             return self.get_multivalue(name[:-5], **pattern)
 
     def get_taxes(self, name):
+        company = Transaction().context.get('company')
         if self.taxes_parent:
             return [x.id for x in getattr(self.parent, name)]
         else:
-            return [x.id for x in getattr(self, name[:-5])]
+            return [x.id for x in getattr(self, name[:-5])
+                if x.company.id == company]
 
     @fields.depends('parent', '_parent_parent.accounting', 'accounting')
     def on_change_with_accounting(self):
