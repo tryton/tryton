@@ -45,6 +45,10 @@ to listen on.
 
 Default ``localhost:8000``
 
+.. note::
+   To listen on all IPv4 interfaces use the value ``0.0.0.0:8000`` and for all
+   IPv6 interfaces use ``[::]:8000``.
+
 hostname
 ~~~~~~~~
 
