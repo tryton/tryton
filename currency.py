@@ -381,7 +381,8 @@ class Cron(ModelSQL, ModelView):
                 yield from self._rates(date)
             except CronFetchError:
                 logger.warning("Could not fetch rates temporary")
-                break
+                if date >= datetime.date.today():
+                    break
             except Exception:
                 logger.error("Fail to fetch rates", exc_info=True)
                 break
