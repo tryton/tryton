@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
 from collections import defaultdict
 from itertools import groupby
 
@@ -71,9 +70,8 @@ class Period(metaclass=PoolMeta):
                             ],
                         ])
                 if move_lines:
-                    warning_name = (
-                        'period_close_line_payment.%s' % hashlib.md5(
-                            str(move_lines).encode('utf-8')).hexdigest())
+                    warning_name = Warning.format(
+                        'period_close_line_payment', move_lines)
                     if Warning.check(warning_name):
                         raise ClosePeriodWarning(warning_name,
                             gettext('account_tax_cash'
