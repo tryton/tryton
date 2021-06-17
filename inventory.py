@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
-
 from sql import Null
 
 from trytond.i18n import gettext
@@ -166,9 +164,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             names = ', '.join(i.rec_name for i in future_inventories[:5])
             if len(future_inventories) > 5:
                 names + '...'
-            warning_name = (
-                '%s.date_future' % hashlib.md5(
-                    str(future_inventories).encode('utf-8')).hexdigest())
+            warning_name = Warning.format('date_future', future_inventories)
             if Warning.check(warning_name):
                 raise InventoryFutureWarning(warning_name,
                     gettext('stock.msg_inventory_date_in_the_future',

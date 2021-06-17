@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import hashlib
 import operator
 from decimal import Decimal
 from collections import OrderedDict, defaultdict
@@ -710,9 +709,8 @@ class Move(Workflow, ModelSQL, ModelView):
             names = ', '.join(m.rec_name for m in future_moves[:5])
             if len(future_moves) > 5:
                 names += '...'
-            warning_name = (
-                    '%s.effective_date_future' % hashlib.md5(
-                        str(future_moves).encode('utf-8')).hexdigest())
+            warning_name = Warning.format(
+                'effective_date_future', future_moves)
             if Warning.check(warning_name):
                 raise MoveFutureWarning(warning_name,
                     gettext('stock.msg_move_effective_date_in_the_future',
@@ -875,8 +873,7 @@ class Move(Workflow, ModelSQL, ModelView):
             names = ', '.join(m.rec_name for m in moves[:5])
             if len(moves) > 5:
                 names += '...'
-            warning_name = '%s.done' % hashlib.md5(
-                str(moves).encode('utf-8')).hexdigest()
+            warning_name = Warning.format('done', moves)
             if Warning.check(warning_name):
                 raise MoveOriginWarning(warning_name,
                     gettext('stock.msg_move_no_origin',
