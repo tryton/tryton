@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
 from decimal import Decimal
 
 from sql import Null
@@ -268,9 +267,8 @@ class PayLine(Wizard):
                         continue
                     lines = [l for l in types[kind]['lines']
                         if l.party == party]
-                    warning_name = '%s:%s:%s' % (
-                        reverse[kind], party,
-                        hashlib.md5(str(lines).encode('utf-8')).hexdigest())
+                    warning_name = Warning.format(
+                        '%s:%s' % (reverse[kind], party), lines)
                     if Warning.check(warning_name):
                         names = ', '.join(l.rec_name for l in lines[:5])
                         if len(lines) > 5:
