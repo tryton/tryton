@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
 from itertools import groupby
 
 from trytond.i18n import gettext
@@ -234,8 +233,7 @@ class Production(metaclass=PoolMeta):
             names = ', '.join(p.rec_name for p in productions[:5])
             if len(pendings) > 5:
                 names += '...'
-            warning_name = '%s.pending_purchase.done' % hashlib.md5(
-                str(pendings).encode('utf-8')).hexdigest()
+            warning_name = Warning.format('pending_purchase.done', pendings)
             if Warning.check(warning_name):
                 raise PurchaseWarning(
                     warning_name,
