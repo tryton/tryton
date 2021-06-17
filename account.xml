@@ -65,6 +65,12 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_rule_companies"/>
         </record>
+        <record model="ir.rule" id="rule_rule_no_company">
+            <field name="domain"
+                eval="[('company', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_rule_companies"/>
+        </record>
 
         <record model="ir.model.access" id="access_rule">
             <field name="model" search="[('model', '=', 'account.statement.rule')]"/>
