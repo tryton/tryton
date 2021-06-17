@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-import hashlib
 from itertools import groupby, combinations, chain, islice
 from operator import itemgetter
 from collections import defaultdict
@@ -1922,8 +1921,7 @@ class CancelMoves(Wizard):
                 islice(moves_w_delegation.keys(), None, 5))
             if len(moves_w_delegation) > 5:
                 names += '...'
-            key = '%s.cancel_delegated' % hashlib.md5(
-                str(list(moves_w_delegation)).encode('utf8')).hexdigest()
+            key = Warning.format('cancel_delegated', moves_w_delegation)
             if Warning.check(key):
                 raise CancelDelegatedWarning(
                     key, gettext(
