@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
 from decimal import Decimal
 from collections import namedtuple, defaultdict
 from itertools import groupby
@@ -504,9 +503,9 @@ class Statement(Workflow, ModelSQL, ModelView):
                 if l.invoice and l.invoice.state in {'cancelled', 'paid'})
 
         if paid_cancelled_invoice_lines:
-            warning_key = ('%s.statement_paid_cancelled_invoice_lines' %
-                    hashlib.md5(str(paid_cancelled_invoice_lines).encode(
-                        'utf-8')).hexdigest())
+            warning_key = Warning.format(
+                'statement_paid_cancelled_invoice_lines',
+                paid_cancelled_invoice_lines)
             if Warning.check(warning_key):
                 raise StatementValidateWarning(warning_key,
                     gettext('account_statement'
