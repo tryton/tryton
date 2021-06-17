@@ -1012,6 +1012,11 @@ class Warning_(ModelSQL, ModelView):
     always = fields.Boolean('Always')
 
     @classmethod
+    def format(cls, name, records):
+        return '%s.%s' % (
+            hashlib.md5(str(records).encode('utf-8')).hexdigest(), name)
+
+    @classmethod
     def check(cls, warning_name):
         transaction = Transaction()
         user = transaction.user
