@@ -10,14 +10,14 @@ this repository contains the full copyright notices and license terms. -->
     </data>
     <data grouped="1">
         <record model="account.account.type.template" id="es_balance">
-            <field name="name" chart="normal">BALANCE NORMAL (PGCE 2008)</field>
-            <field name="name" chart="pyme">BALANCE ABREVIADO (PGCE 2008)</field>
+            <field name="name" chart="normal">Balance normal</field>
+            <field name="name" chart="pyme">Balance abreviado</field>
             <field name="parent" ref="es"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_eiyg" chart="normal">
-            <field name="name">ESTADO DE INGRESOS Y GASTOS RECONOCIDOS NORMAL (PGCE 2008)</field>
+            <field name="name">Estado de ingresos y gastos reconocidos normal</field>
             <field name="parent" ref="es"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
@@ -25,71 +25,71 @@ this repository contains the full copyright notices and license terms. -->
     </data>
     <data grouped="1">
         <record model="account.account.type.template" id="es_balance_total_activo">
-            <field name="name">TOTAL ACTIVO (A + B)</field>
+            <field name="name">Total activo</field>
             <field name="parent" ref="es_balance"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_total_patrimonio_pasivo">
-            <field name="name">TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)</field>
+            <field name="name">Total patrimonio neto y pasivo</field>
             <field name="parent" ref="es_balance"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_eig_total_ingressos_gastos" chart="normal">
-            <field name="name">TOTAL DE INGRESOS Y GASTOS RECONOCIDOS (A + B + C)</field>
+            <field name="name">Total de ingresos y gastos reconocidos</field>
             <field name="parent" ref="es_eiyg"/>
             <field name="statement">income</field>
         </record>
     </data>
     <data grouped="1">
         <record model="account.account.type.template" id="es_balance_activo_no_corriente">
-            <field name="name">A) ACTIVO NO CORRIENTE</field>
+            <field name="name">A) Activo no corriente</field>
             <field name="parent" ref="es_balance_total_activo"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_activo_corriente">
-            <field name="name">B) ACTIVO CORRIENTE</field>
+            <field name="name">B) Activo corriente</field>
             <field name="parent" ref="es_balance_total_activo"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_patrimonio_neto">
-            <field name="name">A) PATRIMONIO NETO</field>
+            <field name="name">A) Patrimonio neto</field>
             <field name="parent" ref="es_balance_total_patrimonio_pasivo"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pasivo_no_corriente">
-            <field name="name">B) PASIVO NO CORRIENTE</field>
+            <field name="name">B) Pasivo no corriente</field>
             <field name="parent" ref="es_balance_total_patrimonio_pasivo"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pasivo_corriente">
-            <field name="name">C) PASIVO CORRIENTE</field>
+            <field name="name">C) Pasivo corriente</field>
             <field name="parent" ref="es_balance_total_patrimonio_pasivo"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_eiyg_resultado_perdidas_ganancias" chart="normal">
-            <field name="name">A) RESULTADO DE LA CUENTA DE PÉRDIDAS Y GANANCIAS</field>
+            <field name="name">A) Resultado de la cuenta de pérdidas y ganancias</field>
             <field name="parent" ref="es_eig_total_ingressos_gastos"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_eiyg_total_ingresos_y_gastos" chart="normal">
-            <field name="name">B) Total ingresos y gastos imputados directamente en el patrimonio neto (I + II + III + IV + V + VI + VII)</field>
+            <field name="name">B) Total ingresos y gastos imputados directamente en el patrimonio neto</field>
             <field name="parent" ref="es_eig_total_ingressos_gastos"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_eiyg_transferencias" chart="normal">
-            <field name="name">C) Total transferencias a la cuenta de pérdidas y ganancias (VIII + IX + X + XI + XII + XIII)</field>
+            <field name="name">C) Total transferencias a la cuenta de pérdidas y ganancias</field>
             <field name="parent" ref="es_eig_total_ingressos_gastos"/>
             <field name="sequence" eval="59300"/>
             <field name="statement">income</field>
@@ -1049,13 +1049,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_operaciones_continuadas" chart="normal">
-            <field name="name">A) OPERACIONES CONTINUADAS</field>
+            <field name="name">A) Operaciones continuadas</field>
             <field name="parent" ref="es_balance_resultado_del_ejercicio"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_operaciones_interrumpidas" chart="normal">
-            <field name="name">B) OPERACIONES INTERRUMPIDAS</field>
+            <field name="name">B) Operaciones interrumpidas</field>
             <field name="parent" ref="es_balance_resultado_del_ejercicio"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -1067,7 +1067,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_resultado_antes_de_impuestos" chart="pyme">
-            <field name="name">C) RESULTADO ANTES DE IMPUESTOS (A + B)</field>
+            <field name="name">C) Resultado antes de impuestos</field>
             <field name="parent" ref="es_balance_resultado_del_ejercicio"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -1075,7 +1075,7 @@ this repository contains the full copyright notices and license terms. -->
     </data>
     <data grouped="1">
         <record model="account.account.type.template" id="es_balance_pyg_resultado_operaciones_continuadas" chart="normal">
-            <field name="name">A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3 + 19)</field>
+            <field name="name">A.4) Resultado del ejercicio procedente de operaciones continuadas</field>
             <field name="parent" ref="es_balance_pyg_operaciones_continuadas"/>
             <field name="statement">income</field>
         </record>
@@ -1086,13 +1086,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_resultado_explotacion" chart="pyme">
-            <field name="name">A) RESULTADO DE EXPLOTACIÓN (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12)</field>
+            <field name="name">A) Resultado de explotación</field>
             <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_resultado_financiero" chart="pyme">
-            <field name="name">B) RESULTADO FINANCIERO (13 + 14 + 15 + 16 + 17)</field>
+            <field name="name">B) Resultado financiero</field>
             <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -1107,7 +1107,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="expense" eval="True"/>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_resultado_antes_de_impuestos" chart="normal">
-            <field name="name">A.3) RESULTADO ANTES DE IMPUESTOS (A.1 + A.2)</field>
+            <field name="name">A.3) Resultado antes de impuestos</field>
             <field name="parent" ref="es_balance_pyg_resultado_operaciones_continuadas"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
@@ -1115,13 +1115,13 @@ this repository contains the full copyright notices and license terms. -->
     </data>
     <data grouped="1">
         <record model="account.account.type.template" id="es_balance_pyg_resultado_explotacion" chart="normal">
-            <field name="name">A.1)  RESULTADO DE EXPLOTACIÓN (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13)</field>
+            <field name="name">A.1) Resultado de explotación</field>
             <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
         <record model="account.account.type.template" id="es_balance_pyg_resultado_financiero" chart="normal">
-            <field name="name">A.2) RESULTADO FINANCIERO (14 + 15 + 16 + 17 + 18)</field>
+            <field name="name">A.2) Resultado financiero</field>
             <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
