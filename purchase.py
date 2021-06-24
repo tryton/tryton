@@ -5,7 +5,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, ModelView, fields
 
 from trytond.modules.product import round_price
-from trytond.modules.purchase.exceptions import PartyLocationError
 
 from .product import ComponentMixin
 from .common import order_mixin, order_line_mixin, order_line_component_mixin
@@ -65,6 +64,7 @@ class LineComponent(
     __name__ = 'purchase.line.component'
 
     def get_move(self, move_type):
+        from trytond.modules.purchase.exceptions import PartyLocationError
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
