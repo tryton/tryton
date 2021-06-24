@@ -376,7 +376,7 @@ class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
     __name__ = 'sale.reporting.product.time_series'
 
 
-class CategoryMixin(object):
+class ProductCategoryMixin(object):
     __slots__ = ()
     category = fields.Many2One(
         'product.category', "Category",
@@ -390,7 +390,7 @@ class CategoryMixin(object):
         pool = Pool()
         Product = pool.get('product.product')
         TemplateCategory = pool.get('product.template-product.category.all')
-        from_item, tables, withs = super(CategoryMixin, cls)._joins()
+        from_item, tables, withs = super()._joins()
         if 'line.product' not in tables:
             product = Product.__table__()
             tables['line.product'] = product
@@ -409,7 +409,7 @@ class CategoryMixin(object):
     @classmethod
     def _columns(cls, tables, withs):
         template_category = tables['line.product.template_category']
-        return super(CategoryMixin, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             template_category.category.as_('category')]
 
     @classmethod
@@ -428,13 +428,12 @@ class CategoryMixin(object):
     @classmethod
     def _group_by(cls, tables, withs):
         template_category = tables['line.product.template_category']
-        return super(CategoryMixin, cls)._group_by(tables, withs) + [
-            template_category.category]
+        return super()._group_by(tables, withs) + [template_category.category]
 
     @classmethod
     def _where(cls, tables, withs):
         template_category = tables['line.product.template_category']
-        where = super(CategoryMixin, cls)._where(tables, withs)
+        where = super()._where(tables, withs)
         where &= template_category.category != Null
         return where
 
@@ -442,12 +441,13 @@ class CategoryMixin(object):
         return self.category.rec_name if self.category else None
 
 
-class Category(CategoryMixin, Abstract, ModelView):
-    "Sale Reporting per Category"
-    __name__ = 'sale.reporting.category'
+class ProductCategory(ProductCategoryMixin, Abstract, ModelView):
+    "Sale Reporting per Product Category"
+    __name__ = 'sale.reporting.product.category'
 
     time_series = fields.One2Many(
-        'sale.reporting.category.time_series', 'category', "Time Series")
+        'sale.reporting.product.category.time_series', 'category',
+        "Time Series")
 
     @classmethod
     def __setup__(cls):
@@ -460,19 +460,20 @@ class Category(CategoryMixin, Abstract, ModelView):
         return template_category.category
 
 
-class CategoryTimeseries(CategoryMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Category"
-    __name__ = 'sale.reporting.category.time_series'
+class ProductCategoryTimeseries(
+        ProductCategoryMixin, AbstractTimeseries, ModelView):
+    "Sale Reporting per Product Category"
+    __name__ = 'sale.reporting.product.category.time_series'
 
 
-class CategoryTree(ModelSQL, ModelView):
-    "Sale Reporting per Category"
-    __name__ = 'sale.reporting.category.tree'
+class ProductCategoryTree(ModelSQL, ModelView):
+    "Sale Reporting per Product Category"
+    __name__ = 'sale.reporting.product.category.tree'
 
     name = fields.Function(fields.Char("Name"), 'get_name')
-    parent = fields.Many2One('sale.reporting.category.tree', "Parent")
+    parent = fields.Many2One('sale.reporting.product.category.tree', "Parent")
     children = fields.One2Many(
-        'sale.reporting.category.tree', 'parent', "Children")
+        'sale.reporting.product.category.tree', 'parent', "Children")
     revenue = fields.Function(
         fields.Numeric("Revenue", digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_total')
@@ -517,9 +518,9 @@ class CategoryTree(ModelSQL, ModelView):
     @classmethod
     def get_total(cls, categories, names):
         pool = Pool()
-        ReportingCategory = pool.get('sale.reporting.category')
+        ReportingProductCategory = pool.get('sale.reporting.product.category')
         table = cls.__table__()
-        reporting_category = ReportingCategory.__table__()
+        reporting_product_category = ReportingProductCategory.__table__()
         cursor = Transaction().connection.cursor()
 
         categories = cls.search([
@@ -527,24 +528,26 @@ class CategoryTree(ModelSQL, ModelView):
                 ])
         ids = [c.id for c in categories]
         parents = {}
-        reporting_categories = []
+        reporting_product_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.select(table.id, table.parent, where=where))
             parents.update(cursor)
 
-            where = reduce_ids(reporting_category.id, sub_ids)
+            where = reduce_ids(reporting_product_category.id, sub_ids)
             cursor.execute(
-                *reporting_category.select(reporting_category.id, where=where))
-            reporting_categories.extend(r for r, in cursor)
+                *reporting_product_category.select(
+                    reporting_product_category.id, where=where))
+            reporting_product_categories.extend(r for r, in cursor)
 
         result = {}
-        reporting_categories = ReportingCategory.browse(reporting_categories)
+        reporting_product_categories = ReportingProductCategory.browse(
+            reporting_product_categories)
         for name in names:
             values = dict.fromkeys(ids, 0)
             values.update(
-                (c.id, getattr(c, name)) for c in reporting_categories)
+                (c.id, getattr(c, name)) for c in reporting_product_categories)
             result[name] = cls._sum_tree(categories, values, parents)
         return result
 

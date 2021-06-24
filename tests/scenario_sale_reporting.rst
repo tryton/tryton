@@ -183,15 +183,16 @@ Check sale reporting per product::
     ...     (product1.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
 
-Check sale reporting per categories::
+Check sale reporting per product categories::
 
-    >>> Category = Model.get('sale.reporting.category')
-    >>> CategoryTimeseries = Model.get('sale.reporting.category.time_series')
-    >>> CategoryTree = Model.get('sale.reporting.category.tree')
+    >>> ProductCategory = Model.get('sale.reporting.product.category')
+    >>> ProductCategoryTimeseries = Model.get(
+    ...     'sale.reporting.product.category.time_series')
+    >>> ProductCategoryTree = Model.get('sale.reporting.product.category.tree')
     >>> with config.set_context(context=context):
-    ...     reports = Category.find([])
-    ...     time_series = CategoryTimeseries.find([])
-    ...     tree = CategoryTree.find([])
+    ...     reports = ProductCategory.find([])
+    ...     time_series = ProductCategoryTimeseries.find([])
+    ...     tree = ProductCategoryTree.find([])
     >>> len(reports)
     4
     >>> with config.set_context(context=context):

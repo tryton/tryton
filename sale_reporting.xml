@@ -197,6 +197,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sales per Product</field>
             <field name="res_model">sale.reporting.product</field>
             <field name="context_model">sale.reporting.context</field>
+            <field
+                name="domain"
+                eval="If(Eval('active_model') == 'sale.reporting.product.category.tree', [('product', 'where', [('categories_all', 'child_of', Eval('active_ids', []), 'parent')])], [])"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_product_view1">
             <field name="sequence" eval="10"/>
@@ -216,6 +220,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword" id="act_reporting_product_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="action" ref="act_reporting_product"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_product_keyword2">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.product.category.tree,-1</field>
             <field name="action" ref="act_reporting_product"/>
         </record>
 
@@ -323,79 +332,79 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <!-- Category -->
+        <!-- Product Category -->
 
-        <record model="ir.ui.view" id="reporting_category_view_tree">
-            <field name="model">sale.reporting.category.tree</field>
+        <record model="ir.ui.view" id="reporting_product_category_view_tree">
+            <field name="model">sale.reporting.product.category.tree</field>
             <field name="type">tree</field>
             <field name="field_childs">children</field>
-            <field name="name">sale_reporting_category_tree</field>
+            <field name="name">sale_reporting_product_category_tree</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_reporting_category_tree">
-            <field name="name">Sales per Category</field>
-            <field name="res_model">sale.reporting.category.tree</field>
+        <record model="ir.action.act_window" id="act_reporting_product_category_tree">
+            <field name="name">Sales per Product Category</field>
+            <field name="res_model">sale.reporting.product.category.tree</field>
             <field name="context_model">sale.reporting.context</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_category_tree_view1">
+        <record model="ir.action.act_window.view" id="act_reporting_product_category_tree_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="reporting_category_view_tree"/>
-            <field name="act_window" ref="act_reporting_category_tree"/>
+            <field name="view" ref="reporting_product_category_view_tree"/>
+            <field name="act_window" ref="act_reporting_product_category_tree"/>
         </record>
-        <record model="ir.action.keyword" id="act_reporting_category_tree_keyword1">
+        <record model="ir.action.keyword" id="act_reporting_product_category_tree_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
-            <field name="action" ref="act_reporting_category_tree"/>
+            <field name="action" ref="act_reporting_product_category_tree"/>
         </record>
 
-        <record model="ir.ui.view" id="reporting_category_view_list">
-            <field name="model">sale.reporting.category</field>
+        <record model="ir.ui.view" id="reporting_product_category_view_list">
+            <field name="model">sale.reporting.product.category</field>
             <field name="type">tree</field>
-            <field name="name">sale_reporting_category_list</field>
+            <field name="name">sale_reporting_product_category_list</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_reporting_category">
-            <field name="name">Sales per Category</field>
-            <field name="res_model">sale.reporting.category</field>
+        <record model="ir.action.act_window" id="act_reporting_product_category">
+            <field name="name">Sales per Product Category</field>
+            <field name="res_model">sale.reporting.product.category</field>
             <field name="context_model">sale.reporting.context</field>
             <field
                 name="domain"
                 eval="[('category', 'child_of', Eval('active_ids', []), 'parent')]"
                 pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_category_view1">
+        <record model="ir.action.act_window.view" id="act_reporting_product_category_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="reporting_category_view_list"/>
-            <field name="act_window" ref="act_reporting_category"/>
+            <field name="view" ref="reporting_product_category_view_list"/>
+            <field name="act_window" ref="act_reporting_product_category"/>
         </record>
-        <record model="ir.action.keyword" id="act_reporting_category_keyword1">
+        <record model="ir.action.keyword" id="act_reporting_product_category_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">sale.reporting.category.tree,-1</field>
-            <field name="action" ref="act_reporting_category"/>
+            <field name="model">sale.reporting.product.category.tree,-1</field>
+            <field name="action" ref="act_reporting_product_category"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_reporting_category_companies">
+        <record model="ir.rule.group" id="rule_group_reporting_product_category_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.category')]"/>
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_reporting_category_companies">
+        <record model="ir.rule" id="rule_reporting_product_category_companies">
             <field name="domain"
                 eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_reporting_category_companies"/>
+            <field name="rule_group" ref="rule_group_reporting_product_category_companies"/>
         </record>
 
-        <record model="ir.model.access" id="access_reporting_category">
-            <field name="model" search="[('model', '=', 'sale.reporting.category')]"/>
+        <record model="ir.model.access" id="access_reporting_product_category">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_reporting_category_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.category')]"/>
+        <record model="ir.model.access" id="access_reporting_product_category_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category')]"/>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -403,27 +412,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.ui.view" id="reporting_category_time_series_view_list">
-            <field name="model">sale.reporting.category.time_series</field>
+        <record model="ir.ui.view" id="reporting_product_category_time_series_view_list">
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="type">tree</field>
-            <field name="name">sale_reporting_category_time_series_list</field>
+            <field name="name">sale_reporting_product_category_time_series_list</field>
         </record>
 
-        <record model="ir.ui.view" id="reporting_category_time_series_view_graph_revenue">
-            <field name="model">sale.reporting.category.time_series</field>
+        <record model="ir.ui.view" id="reporting_product_category_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="type">graph</field>
-            <field name="name">sale_reporting_category_time_series_graph_revenue</field>
+            <field name="name">sale_reporting_product_category_time_series_graph_revenue</field>
         </record>
 
-        <record model="ir.ui.view" id="reporting_category_time_series_view_graph_number">
-            <field name="model">sale.reporting.category.time_series</field>
+        <record model="ir.ui.view" id="reporting_product_category_time_series_view_graph_number">
+            <field name="model">sale.reporting.product.category.time_series</field>
             <field name="type">graph</field>
-            <field name="name">sale_reporting_category_time_series_graph_number</field>
+            <field name="name">sale_reporting_product_category_time_series_graph_number</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_reporting_category_time_series">
-            <field name="name">Sales per Category</field>
-            <field name="res_model">sale.reporting.category.time_series</field>
+        <record model="ir.action.act_window" id="act_reporting_product_category_time_series">
+            <field name="name">Sales per Product Category</field>
+            <field name="res_model">sale.reporting.product.category.time_series</field>
             <field name="context_model">sale.reporting.context</field>
             <field
                 name="domain"
@@ -431,48 +440,48 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view1">
+        <record model="ir.action.act_window.view" id="act_reporting_product_category_time_series_list_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="reporting_category_time_series_view_list"/>
-            <field name="act_window" ref="act_reporting_category_time_series"/>
+            <field name="view" ref="reporting_product_category_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_product_category_time_series"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view2">
+        <record model="ir.action.act_window.view" id="act_reporting_product_category_time_series_list_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="reporting_category_time_series_view_graph_revenue"/>
-            <field name="act_window" ref="act_reporting_category_time_series"/>
+            <field name="view" ref="reporting_product_category_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_product_category_time_series"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view3">
+        <record model="ir.action.act_window.view" id="act_reporting_product_category_time_series_list_view3">
             <field name="sequence" eval="30"/>
-            <field name="view" ref="reporting_category_time_series_view_graph_number"/>
-            <field name="act_window" ref="act_reporting_category_time_series"/>
+            <field name="view" ref="reporting_product_category_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_product_category_time_series"/>
         </record>
-        <record model="ir.action.keyword" id="act_reporting_category_time_series_list_keyword1">
+        <record model="ir.action.keyword" id="act_reporting_product_category_time_series_list_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">sale.reporting.category,-1</field>
-            <field name="action" ref="act_reporting_category_time_series"/>
+            <field name="model">sale.reporting.product.category,-1</field>
+            <field name="action" ref="act_reporting_product_category_time_series"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_reporting_category_time_series_companies">
+        <record model="ir.rule.group" id="rule_group_reporting_product_category_time_series_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.category.time_series')]"/>
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_reporting_category_time_series_companies">
+        <record model="ir.rule" id="rule_reporting_product_category_time_series_companies">
             <field name="domain"
                 eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_reporting_category_time_series_companies"/>
+            <field name="rule_group" ref="rule_group_reporting_product_category_time_series_companies"/>
         </record>
 
-        <record model="ir.model.access" id="access_reporting_category_time_series">
-            <field name="model" search="[('model', '=', 'sale.reporting.category.time_series')]"/>
+        <record model="ir.model.access" id="access_reporting_product_category_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_reporting_category_time_series_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.category.time_series')]"/>
+        <record model="ir.model.access" id="access_reporting_product_category_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.category.time_series')]"/>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
