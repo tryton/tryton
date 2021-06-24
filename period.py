@@ -58,7 +58,7 @@ class Period(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls.__access__.add('fiscalyear')
-        cls._order.insert(0, ('start_date', 'ASC'))
+        cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
                 ('open', 'close'),
                 ('close', 'locked'),

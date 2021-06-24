@@ -37,6 +37,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ],
+        order=[('start_date', 'ASC'), ('id', 'ASC')],
         depends=DEPENDS + ['company'])
     state = fields.Selection([
             ('open', 'Open'),
@@ -58,7 +59,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(FiscalYear, cls).__setup__()
-        cls._order.insert(0, ('start_date', 'ASC'))
+        cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
                 ('open', 'close'),
                 ('close', 'locked'),

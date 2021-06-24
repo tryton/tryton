@@ -74,6 +74,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.period</field>
             <field name="search_value"
                 eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="order" eval="[('start_date', 'ASC'), ('id', 'ASC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_period_form_close_view1">
