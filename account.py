@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Null
 from sql.conditionals import Greatest
 from sql.functions import CurrentTimestamp
 
@@ -57,8 +58,9 @@ class Invoice(metaclass=PoolMeta):
         payment_term = PaymentTerm.__table__()
         cursor = Transaction().connection.cursor()
 
-        datetimes = {}
-        for ids in grouped_slice([i.id for i in invoices]):
+        invoice_ids = [i.id for i in invoices]
+        datetimes = dict.fromkeys(invoice_ids)
+        for ids in grouped_slice(invoice_ids):
             cursor.execute(*table
                 .join(party, condition=table.party == party.id)
                 .join(address, condition=table.invoice_address == address.id)
@@ -67,7 +69,8 @@ class Invoice(metaclass=PoolMeta):
                 .select(table.id,
                     Greatest(table.numbered_at, party.create_date,
                         address.create_date, payment_term.create_date),
-                    where=reduce_ids(table.id, ids)))
+                    where=reduce_ids(table.id, ids)
+                    & (table.numbered_at != Null)))
             datetimes.update(cursor)
         return datetimes
 
