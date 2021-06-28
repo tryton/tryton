@@ -3,13 +3,13 @@
 from sql import Table
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.pyson import Eval
 
 
-class Journal(ModelSQL, ModelView):
+class Journal(DeactivableMixin, ModelSQL, ModelView):
     'Statement Journal'
     __name__ = 'account.statement.journal'
     name = fields.Char('Name', required=True)
