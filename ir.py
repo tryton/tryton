@@ -79,7 +79,7 @@ class EmailTemplate(metaclass=PoolMeta):
         if isinstance(record, Party):
             usage = Transaction().context.get('usage')
             contact = record.contact_mechanism_get('email', usage=usage)
-            if contact.language:
+            if contact and contact.language:
                 language = contact.language
             elif record.lang:
                 language = record.lang
