@@ -34,6 +34,7 @@
 
             this.context = context;
             this.actions = [];
+            this.containers = [];
             this.state_widgets = [];
             this.el = jQuery('<div/>', {
                 'class': 'board'
