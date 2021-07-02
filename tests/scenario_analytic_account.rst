@@ -179,10 +179,7 @@ Balance non-deferral accounts::
     >>> balance_non_deferral.form.credit_account = account_pl
     >>> balance_non_deferral.form.debit_account = account_pl
     >>> balance_non_deferral.execute('balance')
-    >>> move, = Move.find([
-    ...     ('state', '=', 'draft'),
-    ...     ('journal', '=', journal_closing.id),
-    ...     ])
+    >>> move, = balance_non_deferral.actions[0]
     >>> move.click('post')
     >>> [l for l in move.lines if l.analytic_lines]
     []
