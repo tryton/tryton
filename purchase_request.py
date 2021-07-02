@@ -135,7 +135,8 @@ class PurchaseRequest(metaclass=PoolMeta):
                 ('purchase_line', '=', None),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
-        reqs = [r for r in reqs if r.product in products]
+        reqs = [r for r in reqs
+            if r.product in products and r.warehouse in warehouses]
         cls.delete(reqs)
         new_requests = cls.compare_requests(new_requests)
 
