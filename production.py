@@ -49,6 +49,8 @@ class Production(metaclass=PoolMeta):
             reqs = cls.search([
                     ('state', '=', 'request'),
                     ])
+            if warehouses:
+                reqs = [r for r in reqs if r.warehouse in warehouses]
             cls.delete(reqs)
 
         if warehouses is None:
