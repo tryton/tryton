@@ -655,7 +655,7 @@
             var inversion = new Sao.common.DomainInversion();
             domain = inversion.simplify(domain);
             var decoder = new Sao.PYSON.Decoder(this.screen.context);
-            var min_width = 0;
+            var min_width = [];
             this.columns.forEach(function(column) {
                 visible_columns += 1;
                 var name = column.attributes.name;
@@ -700,6 +700,7 @@
                     var width, c_width;
                     if (column.width) {
                         width = c_width = column.width;
+                        min_width.push(width + 'px');
                     } else {
                         width = {
                             'integer': 6,
@@ -720,15 +721,14 @@
                             factor += parseInt(column.attributes.expand, 10);
                         }
                         c_width = width * 100 * factor  + '%';
-                        width *= 10;
+                        min_width.push(width + 'em');
                     }
                     column.col.css('width', c_width);
-                    min_width += width;
                     column.col.show();
                 }
             }.bind(this));
-            this.table.css('min-width', min_width + 'px');
-            this.scrollbar.css('min-width', min_width + 'px');
+            this.table.css('min-width', 'calc(' + min_width.join(' + ') + ')');
+            this.scrollbar.css('min-width', this.table.css('min-width'));
             this.tbody.find('tr.more-row > td').attr(
                 'colspan', visible_columns);
 
