@@ -703,11 +703,10 @@
                         min_width.push(width + 'px');
                     } else {
                         width = {
-                            'integer': 6,
-                            'biginteger': 6,
-                            'float': 8,
-                            'numeric': 8,
+                            'integer': 8,
+                            'biginteger': 8,
                             'selection': 9,
+                            'reference': 20,
                             'one2many': 5,
                             'many2many': 5,
                             'boolean': 3,
