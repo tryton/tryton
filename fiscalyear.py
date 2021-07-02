@@ -391,7 +391,7 @@ class BalanceNonDeferral(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('OK', 'balance', 'tryton-ok', default=True),
             ])
-    balance = StateAction('account.act_move_line_form')
+    balance = StateAction('account.act_move_form')
 
     def get_move_line(self, account):
         pool = Pool()
