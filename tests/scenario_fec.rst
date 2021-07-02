@@ -183,8 +183,8 @@ Balance non-deferral::
     ...         ('code', '=', '129'),
     ...         ])
     >>> balance_non_deferral.execute('balance')
-    >>> move_line = balance_non_deferral.actions[0][0]
-    >>> move_line.move.click('post')
+    >>> move, = balance_non_deferral.actions[0]
+    >>> move.click('post')
 
 Generate FEC::
 
