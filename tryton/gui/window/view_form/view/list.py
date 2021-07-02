@@ -391,19 +391,13 @@ class TreeXMLViewParser(XMLViewParser):
 
     def _set_column_width(self, column, attributes):
         default_width = {
-            'integer': 60,
-            'biginteger': 60,
-            'float': 80,
-            'numeric': 80,
-            'timedelta': 100,
-            'date': 100,
-            'datetime': 100,
-            'time': 100,
+            'integer': 80,
+            'biginteger': 80,
             'selection': 90,
-            'char': 100,
+            'reference': 200,
             'one2many': 50,
             'many2many': 50,
-            'boolean': 20,
+            'boolean': 30,
             'binary': 200,
             }
 
