@@ -88,6 +88,8 @@ TIMEDELTA_DEFAULT_CONVERTER['w'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 7
 TIMEDELTA_DEFAULT_CONVERTER['M'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 30
 TIMEDELTA_DEFAULT_CONVERTER['Y'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 365
 
+REPORT_NAME_MAX_LENGTH = 200
+
 
 class TranslateFactory:
 
@@ -153,9 +155,20 @@ class Report(URLMixin, PoolBase):
             action_report = ActionReport(action_id)
 
         def report_name(records):
-            name = '-'.join(r.rec_name for r in records[:5])
-            if len(records) > 5:
-                name += '__' + str(len(records[5:]))
+            names = []
+            name_length = 0
+            record_count = len(records)
+            max_length = REPORT_NAME_MAX_LENGTH - len(str(record_count)) - 2
+            for record in records[:5]:
+                record_name = record.rec_name
+                name_length += len(record_name) + 1
+                if name_length > max_length:
+                    break
+                names.append(record_name)
+
+            name = '-'.join(names)
+            if len(records) > len(names):
+                name += '__' + str(record_count - len(names))
             return name
 
         records = []
