@@ -286,7 +286,7 @@ class MoveLine(ModelSQL, ModelView):
             for analytic_line in line.analytic_lines:
                 amount = analytic_line.debit - analytic_line.credit
                 amounts[analytic_line.account.root] += amount
-            roots = company2roots[line.move.company]
+            roots = company2roots.get(line.move.company, set())
             if not roots <= set(amounts.keys()):
                 line.analytic_state = 'draft'
                 continue
