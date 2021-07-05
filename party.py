@@ -6,7 +6,7 @@ from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
-from .company import CompanyReport
+from trytond.report import Report
 from .model import CompanyMultiValueMixin, CompanyValueMixin
 
 
@@ -127,7 +127,7 @@ class ContactMechanismLanguage(CompanyValueMixin, metaclass=PoolMeta):
             cls.contact_mechanism.depends.append('company')
 
 
-class LetterReport(CompanyReport):
+class LetterReport(Report):
     __name__ = 'party.letter'
 
     @classmethod
