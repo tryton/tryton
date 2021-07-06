@@ -114,7 +114,8 @@ class CarrierSelection(
                 carriers = Carrier.search([])
         else:
             for selection in selections:
-                if selection.match(pattern):
+                if (selection.match(pattern)
+                        and selection.carrier not in carriers):
                     carriers.append(selection.carrier)
 
         cls._get_carriers_cache.set(key, list(map(int, carriers)))
