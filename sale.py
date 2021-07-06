@@ -41,6 +41,19 @@ class Sale(metaclass=PoolMeta):
                 'sale_price_list',
                 company=self.company.id if self.company else None)
 
+    @fields.depends('party')
+    def on_change_company(self):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        super().on_change_company()
+        if self.party and self.party.sale_price_list:
+            self.price_list = self.party.sale_price_list
+        else:
+            config = Configuration(1)
+            self.price_list = config.get_multivalue(
+                'sale_price_list',
+                company=self.company.id if self.company else None)
+
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
