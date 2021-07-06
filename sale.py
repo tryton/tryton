@@ -22,9 +22,11 @@ class Sale(metaclass=PoolMeta):
         cls.party.states['readonly'] = (cls.party.states['readonly']
             | Eval('lines', [0]))
         cls.lines.states['readonly'] = (cls.lines.states['readonly']
-            | ~Eval('party'))
+            | ~Eval('party') | ~Eval('company'))
         if 'party' not in cls.lines.depends:
             cls.lines.depends.append('party')
+        if 'company' not in cls.lines.depends:
+            cls.lines.depends.append('company')
 
     @fields.depends('company')
     def on_change_party(self):
