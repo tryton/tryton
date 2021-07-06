@@ -85,7 +85,7 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
                 2 ** math.ceil(math.log2(size)),
                 10 * math.ceil(size / 10) if size <= 100
                 else 50 * math.ceil(size / 50)))
-        if not (0 < size < 2048):
+        if not (0 < size <= 2048):
             raise ValueError("Invalid size")
         for avatar in self.cache:
             if avatar.size == size:
@@ -155,7 +155,7 @@ class AvatarCache(ImageMixin, ModelSQL):
         "Size", required=True,
         domain=[
             ('size', '>', 0),
-            ('size', '<', 2048),
+            ('size', '<=', 2048),
             ])
 
     @classmethod
