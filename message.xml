@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot modify invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
         </record>
         <record model="ir.message" id="msg_invoice_same_account_line">
-            <field name="text">You cannot use the same account "%(account)s" on invoice "%(invoice)s" and on line "%(lines)s".</field>
+            <field name="text">You cannot use the same account "%(account)s" on invoice "%(invoice)s" and on line "%(line)s".</field>
         </record>
         <record model="ir.message" id="msg_invoice_delete_cancel">
             <field name="text">To delete invoice "%(invoice)s" you must cancel it.</field>
