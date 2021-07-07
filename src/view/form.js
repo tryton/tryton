@@ -1656,7 +1656,7 @@ function eval_pyson(value){
                 }
             }.bind(this));
             mousetrap.bind('=', function(e, combo) {
-                if (!this.date.find('input').prop('readonly')) {
+                if (!this.date.prop('readonly')) {
                     e.preventDefault();
                     this.date.val(this._format(this.get_format(), moment()));
                 }
@@ -1664,7 +1664,7 @@ function eval_pyson(value){
 
             Sao.common.DATE_OPERATORS.forEach(function(operator) {
                 mousetrap.bind(operator[0], function(e, combo) {
-                    if (this.date.find('input').prop('readonly')) {
+                    if (this.date.prop('readonly')) {
                         return;
                     }
                     e.preventDefault();
