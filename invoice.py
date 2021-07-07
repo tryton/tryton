@@ -2214,7 +2214,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                     gettext('account_invoice.msg_invoice_same_account_line',
                         account=self.account.rec_name,
                         invoice=self.invoice.rec_name,
-                        line=self.rec_name))
+                        lines=self.rec_name))
 
     def _compute_taxes(self):
         pool = Pool()
