@@ -728,7 +728,7 @@
             _format: Sao.common.format_time,
             _parse: Sao.common.parse_time,
             build_entry: function(placeholder, el) {
-                entry = Sao.ScreenContainer.Time._super.call(
+                var entry = Sao.ScreenContainer.Times._super.build_entry.call(
                     this, placeholder, el);
                 if (~navigator.userAgent.indexOf("Firefox")) {
                     // time input on Firefox does not have a pop-up
