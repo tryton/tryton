@@ -1,3 +1,5 @@
+* Allow only fixed cost price as method for service
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Deactivate variants when product is deactivated

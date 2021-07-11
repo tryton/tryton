@@ -14,7 +14,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, sequence_ordered,
     Exclude, fields)
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
@@ -128,6 +128,16 @@ class Template(
     def __setup__(cls):
         super().__setup__()
         cls._order.insert(0, ('rec_name', 'ASC'))
+
+        types_cost_method = cls._cost_price_method_domain_per_type()
+        cls.cost_price_method.domain = [
+            Get(types_cost_method, Eval('type'), []),
+            ]
+        cls.cost_price_method.depends = ['type']
+
+    @classmethod
+    def _cost_price_method_domain_per_type(cls):
+        return {'service': [('cost_price_method', '=', 'fixed')]}
 
     @classmethod
     def multivalue_model(cls, field):
