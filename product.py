@@ -21,6 +21,12 @@ class Template(metaclass=PoolMeta):
         super().__setup__()
         cls.type.selection.append(('kit', "Kit"))
 
+    @classmethod
+    def _cost_price_method_domain_per_type(cls):
+        types_cost_method = super()._cost_price_method_domain_per_type()
+        types_cost_method['kit'] = [('cost_price_method', '=', 'fixed')]
+        return types_cost_method
+
     @fields.depends('type', 'cost_price_method')
     def on_change_type(self):
         super().on_change_type()
