@@ -736,6 +736,11 @@
                 "decode(In('foo', {foo: 'bar'}))");
 
         eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.In(new Sao.PYSON.Eval('test', 'foo'), {foo: 'bar'}));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+                "decode(In(Eval('test', 'foo'), {foo: 'bar'}))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
             new Sao.PYSON.In('1', {1: 'bar'}));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
                 "decode(In('1', {1: 'bar'}))");
@@ -744,6 +749,11 @@
             new Sao.PYSON.In('test', {foo: 'bar'}));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 "decode(In('test', {foo: 'bar'}))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.In(new Sao.PYSON.Eval('foo', 'test'), {foo: 'bar'}));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+                "decode(In(Eval('foo', 'test'), {foo: 'bar'}))");
 
         eval_ = new Sao.PYSON.Encoder().encode(
             new Sao.PYSON.In('foo', ['foo']));
