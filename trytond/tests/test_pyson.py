@@ -461,10 +461,18 @@ class PYSONTestCase(unittest.TestCase):
         eval = pyson.PYSONEncoder().encode(pyson.In('foo', {'foo': 'bar'}))
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
+        eval = pyson.PYSONEncoder().encode(pyson.In(
+            pyson.Eval('test', 'foo'), {'foo': 'bar'}))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
         eval = pyson.PYSONEncoder().encode(pyson.In('1', {1: 'bar'}))
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.In('test', {'foo': 'bar'}))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.In(
+            pyson.Eval('foo', 'test'), {'foo': 'bar'}))
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.In('1', {2: 'bar'}))
