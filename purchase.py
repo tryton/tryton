@@ -1391,7 +1391,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
-            return self.purchase.party.supplier_location.id
+            if self.purchase.party.supplier_location:
+                return self.purchase.party.supplier_location.id
         elif self.purchase.return_from_location:
             return self.purchase.return_from_location.id
 
@@ -1399,7 +1400,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if (self.quantity or 0) >= 0:
             if self.purchase.warehouse:
                 return self.purchase.warehouse.input_location.id
-        else:
+        elif self.purchase.party.supplier_location:
             return self.purchase.party.supplier_location.id
 
     @fields.depends('product_supplier', 'quantity', 'moves', 'purchase',
