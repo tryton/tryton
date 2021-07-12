@@ -1069,7 +1069,7 @@ function eval_pyson(value){
         init: function(attributes) {
             Sao.View.Form.Image_._super.init.call(this, attributes);
             this.el = jQuery('<div/>', {
-                'class_': this.class_
+                'class': this.class_
             });
             this.img = jQuery('<img/>', {
                 'class': 'center-block',
