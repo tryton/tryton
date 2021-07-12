@@ -19,7 +19,7 @@ def create_fiscalyear(company=None, today=None, config=None):
     SequenceType = Model.get('ir.sequence.type', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     if not today:
         today = datetime.date.today()
@@ -44,10 +44,10 @@ def create_chart(
         company=None, chart='account.account_template_root_en', config=None):
     "Create chart of accounts"
     AccountTemplate = Model.get('account.account.template', config=config)
-    ModelData = Model.get('ir.model.data')
+    ModelData = Model.get('ir.model.data', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     module, xml_id = chart.split('.')
     data, = ModelData.find([
@@ -57,7 +57,7 @@ def create_chart(
 
     account_template = AccountTemplate(data.db_id)
 
-    create_chart = Wizard('account.create_chart')
+    create_chart = Wizard('account.create_chart', config=config)
     create_chart.execute('account')
     create_chart.form.account_template = account_template
     create_chart.form.company = company
@@ -78,7 +78,7 @@ def get_accounts(company=None, config=None):
     Account = Model.get('account.account', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     accounts = {}
     for type in ['receivable', 'payable', 'revenue', 'expense']:
@@ -111,9 +111,9 @@ def create_tax(rate, company=None, config=None):
     Tax = Model.get('account.tax', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
-    accounts = get_accounts(company)
+    accounts = get_accounts(company, config=config)
 
     tax = Tax()
     tax.name = 'Tax %s' % rate
