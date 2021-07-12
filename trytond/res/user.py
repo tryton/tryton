@@ -36,6 +36,10 @@ try:
     import bcrypt
 except ImportError:
     bcrypt = None
+try:
+    import argon2
+except ImportError:
+    argon2 = None
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -66,6 +70,9 @@ else:
     schemes = ['pbkdf2_sha512']
     if bcrypt:
         schemes.insert(0, 'bcrypt')
+    schemes.insert(0, 'scrypt')
+    if argon2:
+        schemes.insert(0, 'argon2')
     CRYPT_CONTEXT = CryptContext(schemes=schemes)
 
 

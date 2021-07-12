@@ -442,7 +442,8 @@ passlib
 
 The path to the `INI file to load as CryptContext
 <https://passlib.readthedocs.io/en/stable/narr/context-tutorial.html#loading-saving-a-cryptcontext>`_.
-If not path is set, Tryton will use the schemes ``bcrypt`` or ``pbkdf2_sha512``.
+If no path is set, Tryton will use the schemes ``argon2``, ``scrypt``,
+``bcrypt`` or ``pbkdf2_sha512``.
 
 Default: ``None``
 
