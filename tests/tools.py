@@ -15,7 +15,7 @@ def add_deferred_accounts(accounts, company=None, config=None):
     Configuration = Model.get('account.configuration', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     asset_type, = AccountType.find([
             ('statement', '=', 'balance'),
