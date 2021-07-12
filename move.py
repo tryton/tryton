@@ -251,7 +251,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         actions = iter(args)
-        all_moves = []
+        all_moves = set()
         args = []
         for moves, values in zip(actions, actions):
             keys = list(values.keys())
@@ -261,9 +261,10 @@ class Move(ModelSQL, ModelView):
             if len(keys):
                 cls.check_modify(moves)
             args.extend((moves, values))
-            all_moves.extend(moves)
+            all_moves.update(moves)
         super(Move, cls).write(*args)
-        cls.validate_move(all_moves)
+        if not Transaction().context.get('_skip_validate_move', False):
+            cls.validate_move(cls.browse(all_moves))
 
     @classmethod
     def create(cls, vlist):
@@ -951,9 +952,12 @@ class Line(ModelSQL, ModelView):
         if not value:
             return
         Move = Pool().get('account.move')
-        Move.write([line.move for line in lines], {
-                name: value,
-                })
+        moves = {line.move for line in lines}
+        moves = Move.browse(moves)
+        with Transaction().set_context(_skip_validate_move=True):
+            Move.write(moves, {
+                    name: value,
+                    })
 
     @classmethod
     def search_move_field(cls, name, clause):
