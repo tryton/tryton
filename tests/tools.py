@@ -28,7 +28,7 @@ def set_fiscalyear_invoice_sequences(fiscalyear, config=None):
 
 def create_payment_term(config=None):
     "Create a direct payment term"
-    PaymentTerm = Model.get('account.invoice.payment_term')
+    PaymentTerm = Model.get('account.invoice.payment_term', config=config)
 
     payment_term = PaymentTerm(name='Direct')
     payment_term.lines.new(type='remainder')
