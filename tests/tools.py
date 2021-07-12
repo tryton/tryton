@@ -10,7 +10,7 @@ def add_cogs_accounts(accounts, company=None, config=None):
     Account = Model.get('account.account', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     accounts['cogs'], = Account.find([
             ('type.expense', '=', True),
