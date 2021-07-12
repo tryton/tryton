@@ -62,7 +62,8 @@ def TypeMixin(template=False):
         receivable = fields.Boolean(
             "Receivable",
             domain=[
-                If(Eval('statement') != 'balance',
+                If((Eval('statement') != 'balance')
+                    | ~Eval('assets', True),
                     ('receivable', '=', False), ()),
                 ],
             states={
@@ -84,7 +85,8 @@ def TypeMixin(template=False):
         payable = fields.Boolean(
             "Payable",
             domain=[
-                If(Eval('statement') != 'balance',
+                If((Eval('statement') != 'balance')
+                    | Eval('assets', False),
                     ('payable', '=', False), ()),
                 ],
             states={
@@ -96,7 +98,8 @@ def TypeMixin(template=False):
         debt = fields.Boolean(
             "Debt",
             domain=[
-                If(Eval('statement') != 'balance',
+                If((Eval('statement') != 'balance')
+                    | Eval('assets', False),
                     ('debt', '=', False), ()),
                 ],
             states={
