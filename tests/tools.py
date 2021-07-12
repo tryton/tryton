@@ -13,7 +13,7 @@ def create_company(party=None, currency=None, config=None):
     Party = Model.get('party.party', config=config)
     User = Model.get('res.user', config=config)
 
-    company_config = Wizard('company.company.config')
+    company_config = Wizard('company.company.config', config=config)
     company_config.execute('company')
     company = company_config.form
     if not party:
@@ -21,7 +21,7 @@ def create_company(party=None, currency=None, config=None):
         party.save()
     company.party = party
     if not currency:
-        currency = get_currency()
+        currency = get_currency(config=config)
     company.currency = currency
     company_config.execute('add')
 
