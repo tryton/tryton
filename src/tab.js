@@ -317,7 +317,7 @@
         },
         set_name: function(name) {
             this.name = name;
-            this.name_el.text(Sao.common.ellipsize(name, 20));
+            this.name_el.text(Sao.common.ellipsize(name.split(' / ').pop(), 20));
             this.name_el.attr('title', name);
         },
         get_url: function() {
@@ -396,7 +396,7 @@
             'data-toggle': 'tab',
             'href': '#' + tab.id
         }).on('show.bs.tab', function() {
-            Sao.set_url(tab.get_url(), tab.name);
+            Sao.set_url(tab.get_url(), tab.name.split(' / ').pop());
         })
         .append(jQuery('<button/>', {
             'class': 'close'
@@ -475,7 +475,7 @@
             screen.message_callback = this.record_message.bind(this);
             screen.switch_callback = function() {
                 if (this === Sao.Tab.tabs.get_current()) {
-                    Sao.set_url(this.get_url(), this.name);
+                    Sao.set_url(this.get_url(), this.name.split(' / ').pop());
                 }
             }.bind(this);
 
