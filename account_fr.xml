@@ -265,7 +265,7 @@
             <field name="sequence" eval="20"/>
             <field name="parent" ref="creances"/>
             <field name="statement">balance</field>
-            <field name="assets" eval="True"/>
+            <field name="assets" eval="False"/>
             <field name="receivable" eval="False"/>
             <field name="payable" eval="True"/>
         </record>
