@@ -835,7 +835,7 @@ class Main(Gtk.Application):
                 expand=False, fill=False, padding=0)
         name = page.name
         label = Gtk.Label(
-            label=common.ellipsize(name, 20),
+            label=common.ellipsize(name.split(' / ')[-1], 20),
             halign=Gtk.Align.START)
         self.tooltips.set_tip(label, page.name)
         self.tooltips.enable()
