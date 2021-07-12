@@ -321,6 +321,199 @@ class CustomerTimeseries(CustomerMixin, AbstractTimeseries, ModelView):
     __name__ = 'sale.reporting.customer.time_series'
 
 
+class CustomerCategoryMixin:
+    __slots__ = ()
+    category = fields.Many2One('party.category', "Category")
+
+    @classmethod
+    def _joins(cls):
+        pool = Pool()
+        PartyCategory = pool.get('party.party-party.category')
+        from_item, tables, withs = super()._joins()
+        if 'line.sale.party.party_category' not in tables:
+            party_category = PartyCategory.__table__()
+            tables['line.sale.party.party_category'] = party_category
+            sale = tables['line.sale']
+            from_item = (from_item
+                .join(party_category,
+                    condition=sale.party == party_category.party))
+        return from_item, tables, withs
+
+    @classmethod
+    def _columns(cls, tables, withs):
+        party_category = tables['line.sale.party.party_category']
+        return super()._columns(tables, withs) + [
+            party_category.category.as_('category')]
+
+    @classmethod
+    def _column_id(cls, tables, withs):
+        pool = Pool()
+        Category = pool.get('party.category')
+        category = Category.__table__()
+        line = tables['line']
+        party_category = tables['line.sale.party.party_category']
+        # Get a stable number of categories over time
+        # by using a number one order bigger.
+        nb_category = category.select(
+            Power(10, (Ceil(Log(Max(category.id))) + Literal(1))))
+        return Min(line.id * nb_category + party_category.id)
+
+    @classmethod
+    def _group_by(cls, tables, withs):
+        party_category = tables['line.sale.party.party_category']
+        return super()._group_by(tables, withs) + [party_category.category]
+
+    @classmethod
+    def _where(cls, tables, withs):
+        party_category = tables['line.sale.party.party_category']
+        where = super()._where(tables, withs)
+        where &= party_category.category != Null
+        return where
+
+    def get_rec_name(self, name):
+        return self.category.rec_name if self.category else None
+
+
+class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
+    "Sale Reporting per Customer Category"
+    __name__ = 'sale.reporting.customer.category'
+
+    time_series = fields.One2Many(
+        'sale.reporting.customer.category.time_series', 'category',
+        "Time Series")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('category', 'ASC'))
+
+    @classmethod
+    def _column_id(cls, tables, withs):
+        party_category = tables['line.sale.party.party_category']
+        return party_category.category
+
+
+class CustomerCategoryTimeseries(
+        CustomerCategoryMixin, AbstractTimeseries, ModelView):
+    "Sale Reporting per Customer Category"
+    __name__ = 'sale.reporting.customer.category.time_series'
+
+
+class CustomerCategoryTree(ModelSQL, ModelView):
+    "Sale Reporting per Customer Category"
+    __name__ = 'sale.reporting.customer.category.tree'
+
+    name = fields.Function(fields.Char("Name"), 'get_name')
+    parent = fields.Many2One('sale.reporting.customer.category.tree', "Parent")
+    children = fields.One2Many(
+        'sale.reporting.customer.category.tree', 'parent', "Children")
+    revenue = fields.Function(
+        fields.Numeric("Revenue", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_total')
+
+    currency_digits = fields.Function(
+        fields.Integer("Currency Digits"), 'get_currency_digits')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Category = pool.get('party.category')
+        return Category.__table__()
+
+    @classmethod
+    def get_name(cls, categories, name):
+        pool = Pool()
+        Category = pool.get('party.category')
+        categories = Category.browse(categories)
+        return {c.id: c.name for c in categories}
+
+    @classmethod
+    def order_name(cls, tables):
+        pool = Pool()
+        Category = pool.get('party.category')
+        table, _ = tables[None]
+        if 'category' not in tables:
+            category = Category.__table__()
+            tables['category'] = {
+                None: (category, table.id == category.id),
+                }
+        return Category.name.convert_order(
+                'name', tables['category'], Category)
+
+    def time_series_all(self):
+        return []
+
+    @classmethod
+    def get_total(cls, categories, names):
+        pool = Pool()
+        ReportingCustomerCategory = pool.get(
+            'sale.reporting.customer.category')
+        table = cls.__table__()
+        reporting_product_category = ReportingCustomerCategory.__table__()
+        cursor = Transaction().connection.cursor()
+
+        categories = cls.search([
+                ('parent', 'child_of', [c.id for c in categories]),
+                ])
+        ids = [c.id for c in categories]
+        parents = {}
+        reporting_customer_categories = []
+        for sub_ids in grouped_slice(ids):
+            sub_ids = list(sub_ids)
+            where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.select(table.id, table.parent, where=where))
+            parents.update(cursor)
+
+            where = reduce_ids(reporting_product_category.id, sub_ids)
+            cursor.execute(
+                *reporting_product_category.select(
+                    reporting_product_category.id, where=where))
+            reporting_customer_categories.extend(r for r, in cursor)
+
+        result = {}
+        reporting_product_categories = ReportingCustomerCategory.browse(
+            reporting_customer_categories)
+        for name in names:
+            values = dict.fromkeys(ids, 0)
+            values.update(
+                (c.id, getattr(c, name)) for c in reporting_product_categories)
+            result[name] = cls._sum_tree(categories, values, parents)
+        return result
+
+    @classmethod
+    def _sum_tree(cls, categories, values, parents):
+        result = values.copy()
+        categories = set((c.id for c in categories))
+        leafs = categories - set(parents.values())
+        while leafs:
+            for category in leafs:
+                categories.remove(category)
+                parent = parents.get(category)
+                if parent in result:
+                    result[parent] += result[category]
+            next_leafs = set(categories)
+            for category in categories:
+                parent = parents.get(category)
+                if not parent:
+                    continue
+                if parent in next_leafs and parent in categories:
+                    next_leafs.remove(parent)
+            leafs = next_leafs
+        return result
+
+    def get_currency_digits(self, name):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = Transaction().context.get('company')
+        if company:
+            return Company(company).currency.digits
+
+
 class ProductMixin(object):
     __slots__ = ()
     product = fields.Many2One(

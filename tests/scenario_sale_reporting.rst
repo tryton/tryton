@@ -51,15 +51,30 @@ Create countries::
     ...     name="New York", code="US-NY", type='state', country=country_us)
     >>> new_york.save()
 
+Create party categories::
+
+    >>> PartyCategory = Model.get('party.category')
+    >>> party_category_root1 = PartyCategory(name="Root1")
+    >>> party_category_root1.save()
+    >>> party_category_child1 = PartyCategory(name="Child1", parent=party_category_root1)
+    >>> party_category_child1.save()
+    >>> party_category_child2 = PartyCategory(name="Child2", parent=party_category_root1)
+    >>> party_category_child2.save()
+    >>> party_category_root2 = PartyCategory(name="Root2")
+    >>> party_category_root2.save()
+
 Create parties::
 
     >>> Party = Model.get('party.party')
     >>> customer1 = Party(name='Customer1')
+    >>> customer1.categories.append(PartyCategory(party_category_child1.id))
+    >>> customer1.categories.append(PartyCategory(party_category_root2.id))
     >>> address, = customer1.addresses
     >>> address.country = country_us
     >>> address.subdivision = california
     >>> customer1.save()
     >>> customer2 = Party(name='Customer2')
+    >>> customer2.categories.append(PartyCategory(party_category_child2.id))
     >>> address, = customer2.addresses
     >>> address.country = country_us
     >>> address.subdivision = new_york
@@ -157,6 +172,43 @@ Check sale reporting per customer::
     ...         for r in time_series) == sorted(
     ...     [(customer1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
     ...     (customer2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
+    True
+
+Check sale reporting per customer categories::
+
+    >>> CustomerCategory = Model.get('sale.reporting.customer.category')
+    >>> CustomerCategoryTimeseries = Model.get(
+    ...     'sale.reporting.customer.category.time_series')
+    >>> CustomerCategoryTree = Model.get('sale.reporting.customer.category.tree')
+    >>> with config.set_context(context=context):
+    ...     reports = CustomerCategory.find([])
+    ...     time_series = CustomerCategoryTimeseries.find([])
+    ...     tree = CustomerCategoryTree.find([])
+    >>> len(reports)
+    3
+    >>> with config.set_context(context=context):
+    ...     sorted((r.category.id, r.number, r.revenue) for r in reports) == \
+    ...     sorted([(party_category_child1.id, 1, Decimal('30')),
+    ...         (party_category_root2.id, 1, Decimal('30')),
+    ...         (party_category_child2.id, 1, Decimal('10'))])
+    True
+    >>> len(time_series)
+    3
+    >>> with config.set_context(context=context):
+    ...     sorted((r.category.id, r.date, r.number, r.revenue)
+    ...         for r in time_series) == sorted(
+    ...     [(party_category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (party_category_root2.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (party_category_child2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
+    True
+    >>> len(tree)
+    4
+    >>> with config.set_context(context=context):
+    ...     sorted((r.name, r.revenue) for r in tree) == sorted([
+    ...         ('Root1', Decimal('40')),
+    ...         ('Child1', Decimal('30')),
+    ...         ('Child2', Decimal('10')),
+    ...         ('Root2', Decimal('30'))])
     True
 
 Check sale reporting per product::
