@@ -325,7 +325,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('supplier')
     def on_change_with_supplier_location(self, name=None):
-        if self.supplier:
+        if self.supplier and self.supplier.supplier_location:
             return self.supplier.supplier_location.id
 
     @classmethod
