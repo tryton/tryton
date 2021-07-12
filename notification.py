@@ -229,43 +229,10 @@ class Email(ModelSQL, ModelView):
             or config.get('email', 'from'))
         logs = []
         for record in records:
-            languagues = set()
-            to = []
-            if self.recipients:
-                recipients = getattr(record, self.recipients.name, None)
-                if recipients:
-                    languagues.update(self._get_languages(recipients))
-                    to = self._get_addresses(recipients)
-            if not to and self.fallback_recipients:
-                languagues.update(
-                    self._get_languages(self.fallback_recipients))
-                to = self._get_addresses(self.fallback_recipients)
-
-            cc = []
-            if self.recipients_secondary:
-                recipients_secondary = getattr(
-                    record, self.recipients_secondary.name, None)
-                if recipients_secondary:
-                    languagues.update(
-                        self._get_languages(recipients_secondary))
-                    cc = self._get_addresses(recipients_secondary)
-            if not cc and self.fallback_recipients_secondary:
-                languagues.update(
-                    self._get_languages(self.fallback_recipients_secondary))
-                cc = self._get_addresses(self.fallback_recipients_secondary)
-
-            bcc = []
-            if self.recipients_hidden:
-                recipients_hidden = getattr(
-                    record, self.recipients_hidden.name, None)
-                if recipients_hidden:
-                    languagues.update(self._get_languages(recipients_hidden))
-                    bcc = self._get_addresses(recipients_hidden)
-            if not bcc and self.fallback_recipients_hidden:
-                languagues.update(
-                    self._get_languages(self.fallback_recipients_hidden))
-                bcc = self._get_addresses(self.fallback_recipients_hidden)
-
+            to, to_languages = self._get_to(record)
+            cc, cc_languages = self._get_cc(record)
+            bcc, bcc_languages = self._get_bcc(record)
+            languagues = to_languages | cc_languages | bcc_languages
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
                 msg = self.get_email(record, from_, to, cc, bcc, languagues)
@@ -275,6 +242,51 @@ class Email(ModelSQL, ModelView):
                         record, trigger, msg, bcc=', '.join(bcc)))
         if logs:
             Log.create(logs)
+
+    def _get_to(self, record):
+        to = []
+        languagues = set()
+        if self.recipients:
+            recipients = getattr(record, self.recipients.name, None)
+            if recipients:
+                languagues.update(self._get_languages(recipients))
+                to = self._get_addresses(recipients)
+        if not to and self.fallback_recipients:
+            languagues.update(
+                self._get_languages(self.fallback_recipients))
+            to = self._get_addresses(self.fallback_recipients)
+        return to, languagues
+
+    def _get_cc(self, record):
+        cc = []
+        languagues = set()
+        if self.recipients_secondary:
+            recipients_secondary = getattr(
+                record, self.recipients_secondary.name, None)
+            if recipients_secondary:
+                languagues.update(
+                    self._get_languages(recipients_secondary))
+                cc = self._get_addresses(recipients_secondary)
+        if not cc and self.fallback_recipients_secondary:
+            languagues.update(
+                self._get_languages(self.fallback_recipients_secondary))
+            cc = self._get_addresses(self.fallback_recipients_secondary)
+        return cc, languagues
+
+    def _get_bcc(self, record):
+        bcc = []
+        languagues = set()
+        if self.recipients_hidden:
+            recipients_hidden = getattr(
+                record, self.recipients_hidden.name, None)
+            if recipients_hidden:
+                languagues.update(self._get_languages(recipients_hidden))
+                bcc = self._get_addresses(recipients_hidden)
+        if not bcc and self.fallback_recipients_hidden:
+            languagues.update(
+                self._get_languages(self.fallback_recipients_hidden))
+            bcc = self._get_addresses(self.fallback_recipients_hidden)
+        return bcc, languagues
 
     @classmethod
     def validate(cls, notifications):
