@@ -10,10 +10,10 @@ __all__ = ['create_chart', 'get_accounts']
 def create_chart(company=None, config=None):
     "Create chart of accounts"
     AccountTemplate = Model.get('account.account.template', config=config)
-    ModelData = Model.get('ir.model.data')
+    ModelData = Model.get('ir.model.data', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
     data, = ModelData.find([
             ('module', '=', 'account_fr'),
             ('fs_id', '=', 'root'),
@@ -21,7 +21,7 @@ def create_chart(company=None, config=None):
 
     account_template = AccountTemplate(data.db_id)
 
-    create_chart = Wizard('account.create_chart')
+    create_chart = Wizard('account.create_chart', config=config)
     create_chart.execute('account')
     create_chart.form.account_template = account_template
     create_chart.form.company = company
@@ -40,7 +40,7 @@ def get_accounts(company=None, config=None):
     Account = Model.get('account.account', config=config)
 
     if not company:
-        company = get_company()
+        company = get_company(config=config)
 
     accounts = {}
     accounts['receivable'], = Account.find([
