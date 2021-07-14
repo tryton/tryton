@@ -298,12 +298,29 @@ class Period(Workflow, ModelSQL, ModelView):
         pool = Pool()
         JournalPeriod = pool.get('account.journal.period')
         Move = pool.get('account.move')
+        Account = pool.get('account.account')
         transaction = Transaction()
         database = transaction.database
         connection = transaction.connection
 
         # Lock period to be sure no new period will be created in between.
         database.lock(connection, JournalPeriod._table)
+
+        for period in periods:
+            with transaction.set_context(
+                    fiscalyear=period.fiscalyear.id, date=period.end_date,
+                    cumulate=True, journal=None):
+                for account in Account.search([
+                            ('company', '=', period.company.id),
+                            ('end_date', '>=', period.start_date),
+                            ('end_date', '<=', period.end_date),
+                            ]):
+                    if account.balance:
+                        raise ClosePeriodError(
+                            gettext('account.'
+                                'msg_close_period_inactive_accounts',
+                                account=account.rec_name,
+                                period=period.rec_name))
 
         unposted_moves = Move.search([
                 ('period', 'in', [p.id for p in periods]),

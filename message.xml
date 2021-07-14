@@ -196,5 +196,8 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_company_change_currency">
             <field name="text">You cannot change the currency of a company which is associated with account moves.</field>
         </record>
+        <record model="ir.message" id="msg_close_period_inactive_accounts">
+            <field name="text">To close period "%(period)s", you must balance the inactive account "%(account)s".</field>
+        </record>
     </data>
 </tryton>
