@@ -240,6 +240,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_pasivo_no_corriente_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="unearned_revenue" depends="sale_advance_payment" eval="True"/>
         </record>
         <record id="es_balance_deuda_caracteristicas_especiales_largo_plazo_normal" model="account.account.type.template">
             <field name="name">VI. Deuda con características especiales a largo plazo</field>
@@ -282,6 +283,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_pasivo_corriente_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="unearned_revenue" depends="sale_advance_payment" eval="True"/>
         </record>
         <record id="es_balance_deuda_caracteristicas_especiales_corto_plazo_normal" model="account.account.type.template">
             <field name="name">VII. Deuda con características especiales a corto plazo</field>
