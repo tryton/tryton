@@ -637,7 +637,7 @@
                                     'model_context': model_context,
                                     'id': id,
                                     'ids': ids,
-                                    'paths': screen.selected_paths(),
+                                    'paths': screen.selected_paths,
                                 });
                             })
                             .appendTo(menu);
