@@ -191,7 +191,10 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         if self.account_parent:
             return self.parent.get_account(name, **pattern)
         else:
-            return self.get_multivalue(name[:-5], **pattern)
+            transaction = Transaction()
+            with transaction.reset_context(), \
+                    transaction.set_context(self._context):
+                return self.get_multivalue(name[:-5], **pattern)
 
     def get_taxes(self, name):
         company = Transaction().context.get('company')
