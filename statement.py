@@ -1198,6 +1198,7 @@ class ImportStatement(Wizard):
         for statement in statements:
             statement.origin_file = fields.Binary.cast(self.start.file_)
         Statement.save(statements)
+        self.start.file_ = None
 
         data = {'res_id': list(map(int, statements))}
         if len(statements) == 1:
