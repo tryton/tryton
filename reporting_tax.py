@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import unicodedata
-from io import StringIO
+from io import BytesIO, TextIOWrapper
 
 from collections import defaultdict
 from dateutil.relativedelta import relativedelta
@@ -934,16 +934,14 @@ class VATBookReport(Report):
 
     @classmethod
     def render_csv(cls, report, report_context):
-        vat_book = StringIO()
+        vat_book = BytesIO()
         writer = csv.writer(
-            vat_book, delimiter=';', doublequote=False, escapechar='\\',
+            TextIOWrapper(vat_book, encoding='utf-8', write_through=True),
+            delimiter=';', doublequote=False, escapechar='\\',
             quoting=csv.QUOTE_NONE)
         for record in report_context['records']:
             writer.writerow(cls.get_row(record, report_context))
-        value = vat_book.getvalue()
-        if not isinstance(value, bytes):
-            value = value.encode('utf-8')
-        return value
+        return vat_book.getvalue()
 
     @classmethod
     def get_row(cls, record, report_context):
