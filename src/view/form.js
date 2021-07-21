@@ -4242,10 +4242,11 @@ function eval_pyson(value){
 
     Sao.View.Form.URL = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-url',
+        _type: 'url',
         init: function(view, attributes) {
             Sao.View.Form.URL._super.init.call(this, view, attributes);
-            this.input.attr('type', 'url');
-            this.button = jQuery('<a/>', {
+            this.input.attr('type', this._type);
+            this.button = this.labelled = jQuery('<a/>', {
                 'class': 'btn btn-default',
                 'target': '_blank',
                 'rel': 'noreferrer noopener',
@@ -4295,15 +4296,20 @@ function eval_pyson(value){
                 this.button.removeClass('btn-link');
                 this.button.addClass('btn-default');
             }
-        }
+        },
+        set_invisible: function(invisible) {
+            Sao.View.Form.URL._super.set_invisible.call(this, invisible);
+            if (invisible) {
+                this.input.attr('type', '');
+            } else {
+                this.input.attr('type', this._type);
+            }
+        },
     });
 
     Sao.View.Form.Email = Sao.class_(Sao.View.Form.URL, {
         class_: 'form-email',
-        init: function(view, attributes) {
-            Sao.View.Form.Email._super.init.call(this, view, attributes);
-            this.input.attr('type', 'email');
-        },
+        _type: 'email',
         set_url: function(value) {
             Sao.View.Form.Email._super.set_url.call(this, 'mailto:' + value);
         }
