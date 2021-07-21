@@ -221,6 +221,8 @@ class CreateDPDShipping(Wizard):
                 phone = mechanism.value
             if mechanism.type == 'email' and not email:
                 email = mechanism.value
+            if phone and email:
+                break
         if phone:
             shipping_party['phone'] = phone[:30]
         if email:
