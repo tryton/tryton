@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from io import StringIO
+from io import BytesIO, TextIOWrapper
 
 from stdnum.es.ccc import calc_check_digits, to_iban
 from csb43 import csb43
@@ -25,10 +25,8 @@ class ImportStatement(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
 
     def parse_aeb43(self, encoding='iso-8859-1'):
-        file_ = self.start.file_
-        if not isinstance(file_, str):
-            file_ = file_.decode(encoding)
-        aeb43 = csb43.File(StringIO(file_), strict=False)
+        file_ = TextIOWrapper(BytesIO(self.start.file_), encoding=encoding)
+        aeb43 = csb43.File(file_, strict=False)
 
         for account in aeb43.accounts:
             statement = self.aeb43_statement(account)
