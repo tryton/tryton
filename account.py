@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from io import StringIO
+from io import BytesIO, TextIOWrapper
 
 from coda import CODA
 
@@ -23,10 +23,7 @@ class StatementImport(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
 
     def parse_coda(self, encoding='windows-1252'):
-        file_ = self.start.file_
-        if not isinstance(file_, str):
-            file_ = file_.decode(encoding)
-        file_ = StringIO(file_)
+        file_ = TextIOWrapper(BytesIO(self.start.file_), encoding=encoding)
         coda = CODA(file_)
         for coda_statement in coda.statements:
             statement = self.coda_statement(coda_statement)
