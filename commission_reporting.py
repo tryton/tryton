@@ -9,6 +9,7 @@ except ImportError:
     pygal = None
 from sql import Literal, Null
 from sql.aggregate import Min, Sum, Count
+from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, DateTrunc
 
 from trytond.model import ModelSQL, ModelView, fields
@@ -82,7 +83,7 @@ class Agent(ModelView, ModelSQL):
             cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             commission.agent.as_('agent'),
             Count(commission.id, distinct=True).as_('number'),
-            Sum(commission.base_amount).as_('base_amount'),
+            Sum(Coalesce(commission.base_amount, 0)).as_('base_amount'),
             Sum(commission.amount).as_('amount'),
             ]
 
