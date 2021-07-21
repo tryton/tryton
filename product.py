@@ -4,6 +4,7 @@ from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 from .exceptions import GiftCardValidationError
 
@@ -44,7 +45,10 @@ class Template(metaclass=PoolMeta):
         pool = Pool()
         Config = pool.get('account.configuration')
         if self.gift_card:
-            config = Config(1)
+            transaction = Transaction()
+            with transaction.reset_context(), \
+                    transaction.set_context(self._context):
+                config = Config(1)
             return config.gift_card_account_expense
         return super().account_expense_used
 
@@ -53,7 +57,10 @@ class Template(metaclass=PoolMeta):
         pool = Pool()
         Config = pool.get('account.configuration')
         if self.gift_card:
-            config = Config(1)
+            transaction = Transaction()
+            with transaction.reset_context(), \
+                    transaction.set_context(self._context):
+                config = Config(1)
             return config.gift_card_account_revenue
         return super().account_revenue_used
 
