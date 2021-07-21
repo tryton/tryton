@@ -12,7 +12,7 @@ except ImportError:
 import zipfile
 
 from argparse import ArgumentParser
-from io import BytesIO, StringIO
+from io import BytesIO, TextIOWrapper
 
 try:
     from progressbar import ProgressBar, Bar, ETA, SimpleProgress
@@ -76,7 +76,7 @@ def import_(data):
             widgets=[SimpleProgress(), Bar(), ETA()])
     else:
         pbar = iter
-    f = StringIO(data.decode('utf-8'))
+    f = TextIOWrapper(BytesIO(data), encoding='utf-8')
     codes = []
     for row in pbar(list(csv.DictReader(
                     f, fieldnames=_fieldnames, delimiter='\t'))):
