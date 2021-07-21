@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import csv
-from io import StringIO
+from io import BytesIO, TextIOWrapper
 
 from sql import Table
 from sql.aggregate import Sum
@@ -97,8 +97,9 @@ class FrFEC(Wizard):
             ])
 
     def transition_generate(self):
-        fec = StringIO()
-        writer = self.get_writer(fec)
+        fec = BytesIO()
+        writer = self.get_writer(
+            TextIOWrapper(fec, encoding='utf-8', write_through=True))
         writer.writerow(self.get_header())
         format_date = self.get_format_date()
         format_number = self.get_format_number()
@@ -112,10 +113,7 @@ class FrFEC(Wizard):
         for line in self.get_lines():
             row = self.get_row(line, format_date, format_number)
             writer.writerow(map(convert, row))
-        value = fec.getvalue()
-        if not isinstance(value, bytes):
-            value = value.encode('utf-8')
-        self.result.file = self.result.__class__.file.cast(value)
+        self.result.file = self.result.__class__.file.cast(fec.getvalue())
         return 'result'
 
     def default_result(self, fields):
