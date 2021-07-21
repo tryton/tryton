@@ -3053,6 +3053,10 @@ class PayInvoice(Wizard):
                         amount_to_pay=lang.currency(
                             invoice.amount_to_pay, invoice.currency)))
             else:
+                if not invoice.amount_to_pay:
+                    raise PayInvoiceError(
+                        gettext('account_invoice.msg_invoice_overpay_paid',
+                            invoice=invoice.rec_name))
                 overpayment = amount_invoice - invoice.amount_to_pay
 
         lines = []

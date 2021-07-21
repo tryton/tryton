@@ -63,6 +63,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_pay_amount_greater_amount_to_pay">
             <field name="text">You cannot add a partial payment on invoice "%(invoice)s" with an amount greater than the amount to pay "%(amount_to_pay)s".</field>
         </record>
+        <record model="ir.message" id="msg_invoice_overpay_paid">
+            <field name="text">You cannot overpay invoice "%(invoice)s" because there is no more left to pay.</field>
+        </record>
         <record model="ir.message" id="msg_invoice_payment_line_unique">
             <field name="text">A payment line can be linked to only one invoice.</field>
         </record>
