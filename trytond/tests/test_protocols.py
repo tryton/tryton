@@ -6,6 +6,7 @@ import json
 import datetime
 from decimal import Decimal
 
+from trytond.model.fields.dict import ImmutableDict
 from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder, JSONRequest
 from trytond.protocols.xmlrpc import client, XMLRequest
 
@@ -48,6 +49,10 @@ class JSONTestCase(unittest.TestCase):
     def test_decimal(self):
         'Test Decimal'
         self.dumps_loads(Decimal('3.141592653589793'))
+
+    def test_immutable_dict(self):
+        "Test ImmutableDict"
+        self.dumps_loads(ImmutableDict(foo='bar'))
 
 
 class XMLTestCase(unittest.TestCase):
@@ -94,6 +99,10 @@ class XMLTestCase(unittest.TestCase):
     def test_time(self):
         'Test time'
         self.dumps_loads(datetime.datetime.now().time())
+
+    def test_immutable_dict(self):
+        "Test ImmutableDict"
+        self.dumps_loads(ImmutableDict(foo='bar'))
 
     def test_none(self):
         'Test None'
