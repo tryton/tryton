@@ -139,10 +139,13 @@ Forbid direct move between warehouses::
     >>> move.quantity = 1
     >>> move.from_location = warehouse1.storage_location
     >>> move.to_location = warehouse2.storage_location
-    >>> move.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> move.save()
+    >>> move.click('do')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     MoveValidationError: ...
 
     >>> move.to_location = transit
-    >>> move.save()
+    >>> move.click('do')
+    >>> move.state
+    'done'
