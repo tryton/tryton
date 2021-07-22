@@ -473,7 +473,7 @@ class OpenProductQuantitiesByWarehouse(Wizard):
         Date = pool.get('ir.date')
         today = Date.today()
         value = [('date', '>=', today)]
-        if (hasattr(self.record, 'planned_date')
+        if (getattr(self.record, 'planned_date', None)
                 and self.record.planned_date >= today):
             value.append(('date', '<=', self.record.planned_date))
         return value
