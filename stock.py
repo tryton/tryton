@@ -51,6 +51,8 @@ class Move(metaclass=PoolMeta):
         config = Configuration(1)
         transit_locations = {}
         for move in moves:
+            if move.state in {'staging', 'draft'}:
+                continue
             company = move.company
             if company not in transit_locations:
                 transit_location = config.get_multivalue(
