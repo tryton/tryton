@@ -119,6 +119,9 @@ Accounting
 `Stock Landed Cost Weight </projects/modules-account-stock-landed-cost-weight/en/latest>`_
     Allocates landed cost based on weight.
 
+`Stock Shipment Cost </projects/modules-account-stock-shipment-cost/en/latest>`_
+    Allocates shipment cost.
+
 `Tax Cash </projects/modules-account-tax-cash/en/latest>`_
     Reports tax on cash basis.
 
