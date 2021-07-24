@@ -7,7 +7,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.pyson import Eval, PYSONEncoder, Id
+from trytond.pyson import Eval, Id
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.wizard import (
