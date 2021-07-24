@@ -1584,7 +1584,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
