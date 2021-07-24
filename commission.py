@@ -14,7 +14,7 @@ from sql.aggregate import Sum
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
-from trytond.pyson import Eval, Bool, If, Id, PYSONEncoder
+from trytond.pyson import Eval, Bool, If, Id
 from trytond.tools import decistmt, grouped_slice, reduce_ids
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateAction, Button
