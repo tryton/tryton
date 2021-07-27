@@ -300,6 +300,22 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             ]
 
     @classmethod
+    def _domain_in_moves_cost(cls):
+        "Return the domain for incoming moves in cost computation"
+        return [
+            ('to_location.type', '=', 'storage'),
+            ('from_location.type', '!=', 'storage'),
+            ]
+
+    @classmethod
+    def _domain_out_moves_cost(cls):
+        "Return the domain for outgoing moves in cost computation"
+        return [
+            ('from_location.type', '=', 'storage'),
+            ('to_location.type', '!=', 'storage'),
+            ]
+
+    @classmethod
     def _domain_storage_quantity(cls):
         "Returns the domain for locations to use in cost computation"
         return [('type', '=', 'storage')]
@@ -329,19 +345,21 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             ('product', '=', self.id),
             self._domain_moves_cost(),
             ['OR',
-                [
-                    ('to_location.type', '=', 'storage'),
-                    ('from_location.type', '!=', 'storage'),
-                    ], [
-                    ('from_location.type', '=', 'storage'),
-                    ('to_location.type', '!=', 'storage'),
-                    ],
-                ],
+                self._domain_in_moves_cost(),
+                self._domain_out_moves_cost(),
+                ]
             ]
         if start:
             domain.append(('effective_date', '>=', start))
         moves = Move.search(
                 domain, order=[('effective_date', 'ASC'), ('id', 'ASC')])
+
+        _in_moves = Move.search([
+                ('product', '=', self.id),
+                self._domain_moves_cost(),
+                self._domain_in_moves_cost(),
+                ], order=[])
+        _in_moves = set(m.id for m in _in_moves)
 
         revisions = Revision.get_for_product(self)
 
@@ -350,8 +368,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         if start:
             domain.remove(('effective_date', '>=', start))
             domain.append(('effective_date', '<', start))
-            domain.append(
-                ('from_location.type', 'in', ['supplier', 'production']))
+            domain.append(self._domain_in_moves_cost())
             prev_moves = Move.search(
                 domain,
                 order=[('effective_date', 'DESC'), ('id', 'DESC')],
@@ -362,6 +379,12 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                 quantity = self._get_storage_quantity(
                     date=start - datetime.timedelta(days=1))
                 quantity = Decimal(str(quantity))
+
+        def in_move(move):
+            return move.id in _in_moves
+
+        def out_move(move):
+            return not in_move(move)
 
         current_moves = []
         current_cost_price = cost_price
@@ -380,10 +403,9 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                 revisions, cost_price, move.effective_date)
             qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
-            if move.from_location.type == 'storage':
+            if out_move(move):
                 qty *= -1
-            if (move.from_location.type in ['supplier', 'production']
-                    or move.to_location.type == 'supplier'):
+            if in_move(move):
                 with Transaction().set_context(date=move.effective_date):
                     unit_price = Currency.compute(
                         move.currency, move.unit_price,
