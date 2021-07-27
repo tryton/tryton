@@ -17,18 +17,15 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
         AccountMoveLine = pool.get('account.move.line')
-        Currency = pool.get('currency.currency')
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 
         move_line = AccountMoveLine()
         if ((
                     type_.endswith('supplier')
-                    or type_ == 'in_production')
+                    or type_ in {'in_production', 'in_warehouse'})
                 and self.product.cost_price_method != 'fixed'):
-            with Transaction().set_context(date=self.effective_date):
-                unit_price = Currency.compute(self.currency, self.unit_price,
-                    self.company.currency, round=False)
+            unit_price = self.unit_price_company
         else:
             unit_price = Uom.compute_price(self.product.default_uom,
                 self.cost_price, self.uom)
