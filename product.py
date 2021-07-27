@@ -337,7 +337,6 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     def recompute_cost_price_average(self, start=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
         Revision = pool.get('product.cost_price.revision')
 
@@ -406,12 +405,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             if out_move(move):
                 qty *= -1
             if in_move(move):
-                with Transaction().set_context(date=move.effective_date):
-                    unit_price = Currency.compute(
-                        move.currency, move.unit_price,
-                        move.company.currency, round=False)
-                unit_price = Uom.compute_price(
-                    move.uom, unit_price, self.default_uom)
+                unit_price = move.get_cost_price(product_cost_price=cost_price)
                 if quantity + qty > 0 and quantity >= 0:
                     cost_price = (
                         (cost_price * quantity) + (unit_price * qty)
