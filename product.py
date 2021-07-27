@@ -88,6 +88,62 @@ class Product(metaclass=PoolMeta):
         return domain
 
     @classmethod
+    def _domain_in_moves_cost(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        context = Transaction().context
+        domain = super()._domain_in_moves_cost()
+        if context.get('company'):
+            company = Company(context['company'])
+            if company.cost_price_warehouse:
+                warehouse = context.get('warehouse')
+                domain = ['OR',
+                    domain,
+                    [
+                        ('from_location.type', '=', 'storage'),
+                        ('to_location.type', '=', 'storage'),
+                        ('from_location', 'not child_of', warehouse, 'parent'),
+                        ['OR',
+                            ('from_location.cost_warehouse', '!=', warehouse),
+                            ('from_location.cost_warehouse', '=', None),
+                            ],
+                        ['OR',
+                            ('to_location', 'child_of', warehouse, 'parent'),
+                            ('to_location.cost_warehouse', '=', warehouse),
+                            ],
+                        ]
+                    ]
+        return domain
+
+    @classmethod
+    def _domain_out_moves_cost(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        context = Transaction().context
+        domain = super()._domain_out_moves_cost()
+        if context.get('company'):
+            company = Company(context['company'])
+            if company.cost_price_warehouse:
+                warehouse = context.get('warehouse')
+                domain = ['OR',
+                    domain,
+                    [
+                        ('from_location.type', '=', 'storage'),
+                        ('to_location.type', '=', 'storage'),
+                        ('to_location', 'not child_of', warehouse, 'parent'),
+                        ['OR',
+                            ('to_location.cost_warehouse', '!=', warehouse),
+                            ('to_location.cost_warehouse', '=', None),
+                            ],
+                        ['OR',
+                            ('from_location', 'child_of', warehouse, 'parent'),
+                            ('from_location.cost_warehouse', '=', warehouse),
+                            ],
+                        ]
+                    ]
+        return domain
+
+    @classmethod
     def _domain_storage_quantity(cls):
         pool = Pool()
         Company = pool.get('company.company')

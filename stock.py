@@ -1,12 +1,39 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
+from trytond.modules.product import round_price
 from trytond.modules.stock.exceptions import MoveValidationError
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'stock.configuration'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.shipment_internal_transit.domain = [
+            cls.shipment_internal_transit.domain,
+            ('cost_warehouse', '=', None),
+            ]
+
+
+class ConfigurationLocation(metaclass=PoolMeta):
+    __name__ = 'stock.configuration.location'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.shipment_internal_transit.domain = [
+            cls.shipment_internal_transit.domain,
+            ('cost_warehouse', '=', None),
+            ]
 
 
 class Location(metaclass=PoolMeta):
@@ -43,6 +70,52 @@ class Move(metaclass=PoolMeta):
     def cost_warehouse(self):
         return self.from_cost_warehouse or self.to_cost_warehouse
 
+    @fields.depends('company', 'from_location', 'to_location')
+    def on_change_with_cost_price_required(self, name=None):
+        required = super().on_change_with_cost_price_required(name=name)
+        if (self.company and self.company.cost_price_warehouse
+                and self.from_location and self.to_location
+                and self.from_cost_warehouse != self.to_cost_warehouse):
+            required = True
+        return required
+
+    @classmethod
+    def get_unit_price_company(cls, moves, name):
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+        Uom = pool.get('product.uom')
+        prices = super().get_unit_price_company(moves, name)
+        for move in moves:
+            if (move.company.cost_price_warehouse
+                    and move.from_cost_warehouse != move.to_cost_warehouse
+                    and move.to_cost_warehouse
+                    and isinstance(move.shipment, ShipmentInternal)):
+                cost = total_qty = 0
+                for outgoing_move in move.shipment.outgoing_moves:
+                    if outgoing_move.product == move.product:
+                        qty = Uom.compute_qty(
+                            outgoing_move.uom, outgoing_move.quantity,
+                            move.product.default_uom)
+                        qty = Decimal(str(qty))
+                        cost += qty * outgoing_move.cost_price
+                        total_qty += qty
+                if cost and total_qty:
+                    cost_price = round_price(cost / total_qty)
+                    prices[move.id] = cost_price
+        return prices
+
+    def get_cost_price(self, product_cost_price=None):
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+        cost_price = super().get_cost_price(
+            product_cost_price=product_cost_price)
+        if (self.company.cost_price_warehouse
+                and self.from_cost_warehouse != self.to_cost_warehouse
+                and self.to_cost_warehouse
+                and isinstance(self.shipment, ShipmentInternal)):
+            cost_price = self.unit_price_company
+        return cost_price
+
     @classmethod
     def validate(cls, moves):
         pool = Pool()
@@ -71,6 +144,19 @@ class Move(metaclass=PoolMeta):
                             '.msg_move_storage_location_same_warehouse',
                             from_=move.from_location.rec_name,
                             to=move.to_location.rec_name))
+
+    def _do(self):
+        cost_price = super()._do()
+        if (self.company.cost_price_warehouse
+                and self.from_location.type == 'storage'
+                and self.to_location.type == 'storage'
+                and self.from_cost_warehouse != self.to_cost_warehouse):
+            if self.from_cost_warehouse:
+                cost_price = self._compute_product_cost_price('out')
+            elif self.to_cost_warehouse:
+                cost_price = self._compute_product_cost_price(
+                    'in', self.unit_price_company)
+        return cost_price
 
     @property
     def _cost_price_pattern(self):
@@ -111,6 +197,18 @@ class Move(metaclass=PoolMeta):
         warehouse = self.cost_warehouse.id if self.cost_warehouse else None
         with Transaction().set_context(warehouse=warehouse):
             return super().get_fifo_move(quantity=quantity, date=date)
+
+    def _get_account_stock_move_type(self):
+        type_ = super()._get_account_stock_move_type()
+        if (self.company.cost_price_warehouse
+                and self.from_location.type == 'storage'
+                and self.to_location.type == 'storage'
+                and self.from_cost_warehouse != self.to_cost_warehouse):
+            if self.from_cost_warehouse and not self.to_cost_warehouse:
+                type_ = 'out_warehouse'
+            elif not self.from_cost_warehouse and self.to_cost_warehouse:
+                type_ = 'in_warehouse'
+        return type_
 
 
 class ShipmentInternal(metaclass=PoolMeta):

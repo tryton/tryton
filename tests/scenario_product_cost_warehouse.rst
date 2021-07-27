@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
-Activate product_cost_warehouse::
+Activate modules::
 
     >>> config = activate_modules('product_cost_warehouse')
 
@@ -149,3 +149,58 @@ Forbid direct move between warehouses::
     >>> move.click('do')
     >>> move.state
     'done'
+
+Transfer 1 product between warehouses::
+
+    >>> ShipmentInternal = Model.get('stock.shipment.internal')
+    >>> shipment = ShipmentInternal()
+    >>> shipment.from_location = warehouse1.storage_location
+    >>> shipment.to_location = warehouse2.storage_location
+    >>> move = shipment.moves.new()
+    >>> move.from_location = shipment.from_location
+    >>> move.to_location = shipment.to_location
+    >>> move.product = product
+    >>> move.quantity = 1
+    >>> shipment.click('wait')
+    >>> shipment.state
+    'waiting'
+    >>> shipment.click('assign_force')
+    >>> shipment.state
+    'assigned'
+
+    >>> shipment.click('ship')
+    >>> shipment.state
+    'shipped'
+    >>> move, = shipment.outgoing_moves
+    >>> move.state
+    'done'
+    >>> move.cost_price
+    Decimal('90.0000')
+
+    >>> shipment.click('done')
+    >>> shipment.state
+    'done'
+    >>> move, = shipment.incoming_moves
+    >>> move.state
+    'done'
+    >>> move.cost_price
+    Decimal('85.0000')
+
+Recompute cost price for both warehouses::
+
+    >>> for warehouse in [warehouse1, warehouse2]:
+    ...     with config.set_context(warehouse=warehouse.id):
+    ...         recompute = Wizard('product.recompute_cost_price', [product])
+    ...         recompute.execute('recompute')
+
+Check cost prices::
+
+    >>> with config.set_context(warehouse=warehouse1.id):
+    ...     product = Product(product.id)
+    >>> product.cost_price
+    Decimal('90.0000')
+
+    >>> with config.set_context(warehouse=warehouse2.id):
+    ...     product = Product(product.id)
+    >>> product.cost_price
+    Decimal('85.0000')
