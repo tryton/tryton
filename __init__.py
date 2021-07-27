@@ -20,6 +20,8 @@ def register():
         product.Product,
         product.CostPrice,
         product.CostPriceRevision,
+        stock.Configuration,
+        stock.ConfigurationLocation,
         stock.Location,
         stock.Move,
         stock.ShipmentInternal,

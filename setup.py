@@ -70,6 +70,7 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_product_cost_fifo'),
     get_require_version('trytond_product_cost_history'),
+    get_require_version('trytond_account_stock_continental'),
     ]
 dependency_links = []
 if minor_version % 2:
