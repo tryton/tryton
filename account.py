@@ -31,6 +31,9 @@ class InvoiceLineStockMove(ModelSQL):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
+
+    warehouse = fields.Function(fields.Many2One(
+            'stock.location', "Warehouse"), 'get_warehouse')
     stock_moves = fields.Many2Many(
         'account.invoice.line-stock.move', 'invoice_line', 'stock_move',
         "Stock Moves",
@@ -71,6 +74,17 @@ class InvoiceLine(metaclass=PoolMeta):
     @classmethod
     def default_correction(cls):
         return False
+
+    def get_warehouse(self, name):
+        if (self.invoice_type == 'out'
+                or (self.invoice and self.invoice.type) == 'out'):
+            warehouses = set(filter(None, [
+                        m.from_location.warehouse for m in self.stock_moves]))
+        else:
+            warehouses = set(filter(None, [
+                        m.to_location.warehouse for m in self.stock_moves]))
+        if warehouses:
+            return list(warehouses)[0].id
 
     @property
     def moved_quantity(self):
