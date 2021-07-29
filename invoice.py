@@ -116,6 +116,16 @@ class Line(metaclass=PoolMeta):
             category = self.origin.unit.category.id
         return category
 
+    def get_warehouse(self, name):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        warehouse = super().get_warehouse(name)
+        if (not warehouse
+                and isinstance(self.origin, SaleLine)
+                and self.origin.warehouse):
+            warehouse = self.origin.warehouse.id
+        return warehouse
+
     @property
     def origin_name(self):
         pool = Pool()
