@@ -68,6 +68,7 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
+    get_require_version('trytond_account_invoice_stock'),
     get_require_version('trytond_product_cost_fifo'),
     get_require_version('trytond_product_cost_history'),
     get_require_version('trytond_account_stock_continental'),

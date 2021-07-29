@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import ir
 from . import company
 from . import product
+from . import account
 from . import stock
 
 __all__ = ['register']
@@ -26,6 +27,10 @@ def register():
         stock.Move,
         stock.ShipmentInternal,
         module='product_cost_warehouse', type_='model')
+    Pool.register(
+        account.InvoiceLine,
+        module='product_cost_warehouse', type_='model',
+        depends=['account_invoice_stock'])
     Pool.register(
         product.ProductCostHistory,
         module='product_cost_warehouse', type_='model',
