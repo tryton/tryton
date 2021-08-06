@@ -1484,6 +1484,7 @@
             case 'numeric':
                 return Sao.field.Numeric;
             case 'integer':
+            case 'biginteger':
                 return Sao.field.Integer;
             case 'boolean':
                 return Sao.field.Boolean;
