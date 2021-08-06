@@ -622,6 +622,18 @@ class Move(Workflow, ModelSQL, ModelView):
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
+    @property
+    def from_warehouse(self):
+        return self.from_location.warehouse
+
+    @property
+    def to_warehouse(self):
+        return self.to_location.warehouse
+
+    @property
+    def warehouse(self):
+        return self.from_warehouse or self.to_warehouse
+
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
