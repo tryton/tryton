@@ -123,3 +123,39 @@ Now changing the order.
     >>> party.save()
     >>> party.addresses == reversed_addresses
     True
+
+Setting context
+~~~~~~~~~~~~~~~
+
+Make French translatable:
+
+    >>> Language = Model.get('ir.lang')
+    >>> french, = Language.find([('code', '=', 'fr')])
+    >>> french.translatable = True
+    >>> french.save()
+
+Create a category in English:
+
+    >>> Category = Model.get('party.category')
+    >>> with config.set_context(language='en'):
+    ...     category = Category(name="Category")
+    ...     category.save()
+
+Translate in French:
+
+    >>> with config.set_context(language='fr'):
+    ...     category_fr = Category(category.id)
+    ...     category_fr.name = "Categorie"
+    ...     category_fr.save()
+
+Read in English:
+
+    >>> category.reload()
+    >>> category.name
+    'Category'
+
+Read in French:
+
+    >>> category_fr.reload()
+    >>> category_fr.name
+    'Categorie'
