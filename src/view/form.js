@@ -1897,7 +1897,7 @@ function eval_pyson(value){
             return value;
         },
         get width() {
-            return 8;
+            return this.attributes.width || 8;
         },
         display: function() {
             var set_symbol = function(el, text) {
@@ -1965,7 +1965,7 @@ function eval_pyson(value){
                     return acc + cur;
                 });
             } else {
-                return 18;
+                return this.attributes.width || 18;
             }
         },
         display: function() {
