@@ -503,15 +503,27 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 res[field] = getattr(user, field)
 
         if user.language:
-            date = user.language.date
+            language = user.language
+            date = language.date
             for i, j in [('%a', ''), ('%A', ''), ('%b', '%m'), ('%B', '%m'),
                     ('%j', ''), ('%U', ''), ('%w', ''), ('%W', '')]:
                 date = date.replace(i, j)
             res['locale'] = {
                 'date': date,
-                'grouping': literal_eval(user.language.grouping),
-                'decimal_point': user.language.decimal_point,
-                'thousands_sep': user.language.thousands_sep,
+                'grouping': literal_eval(language.grouping),
+                'decimal_point': language.decimal_point,
+                'thousands_sep': language.thousands_sep,
+                'mon_grouping': literal_eval(language.mon_grouping),
+                'mon_decimal_point': language.mon_decimal_point,
+                'mon_thousands_sep': language.mon_thousands_sep,
+                'p_sign_posn': language.p_sign_posn,
+                'n_sign_posn': language.n_sign_posn,
+                'positive_sign': language.positive_sign,
+                'negative_sign': language.negative_sign,
+                'p_cs_precedes': language.p_cs_precedes,
+                'n_cs_precedes': language.n_cs_precedes,
+                'p_sep_by_space': language.p_sep_by_space,
+                'n_sep_by_space': language.n_sep_by_space,
             }
         return res
 
