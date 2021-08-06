@@ -1397,7 +1397,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('sale', '_parent_sale.currency')
     def on_change_with_currency(self, name=None):
-        if self.sale:
+        if self.sale and self.sale.currency:
             return self.sale.currency.id
 
     @property
