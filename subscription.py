@@ -406,8 +406,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
         all_invoice_lines = []
         for subscription, invoice in invoices.items():
             invoice_lines, _ = lines[subscription]
-            for line in invoice_lines:
-                line.invoice = invoice
             all_invoice_lines.extend(invoice_lines)
         InvoiceLine.save(all_invoice_lines)
 
@@ -928,32 +926,17 @@ class LineConsumption(ModelSQL, ModelView):
                 consumptions, key=cls._group_invoice_key):
             sub_consumptions = list(sub_consumptions)
             line = InvoiceLine(**dict(key))
-            line.invoice_type = 'out'
+            line.invoice = invoice
+            line.on_change_invoice()
             line.type = 'line'
             line.quantity = sum(c.quantity for c in sub_consumptions)
+            line.on_change_product()
 
-            line.account = line.product.account_revenue_used
             if not line.account:
                 raise InvoiceError(
                     gettext('sale_subscription'
                         '.msg_consumption_invoice_missing_account_revenue',
                         product=line.product.rec_name))
-
-            taxes = []
-            pattern = line._get_tax_rule_pattern()
-            party = invoice.party
-            for tax in line.product.customer_taxes_used:
-                if party.customer_tax_rule:
-                    tax_ids = party.customer_tax_rule.apply(tax, pattern)
-                    if tax_ids:
-                        taxes.extend(tax_ids)
-                    continue
-                taxes.append(tax.id)
-            if party.customer_tax_rule:
-                tax_ids = party.customer_tax_rule.apply(None, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-            line.taxes = taxes
 
             lines.append(line)
             grouped_consumptions.append(sub_consumptions)
