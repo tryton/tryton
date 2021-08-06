@@ -7,8 +7,9 @@ import os
 import sys
 try:
     from urllib.request import urlopen
+    from urllib.error import HTTPError
 except ImportError:
-    from urllib2 import urlopen
+    from urllib2 import urlopen, HTTPError
 import zipfile
 
 from argparse import ArgumentParser
@@ -37,7 +38,10 @@ def clean(code):
 def fetch(code):
     sys.stderr.write('Fetching')
     url = 'https://download.geonames.org/export/zip/%s.zip' % code
-    responce = urlopen(url)
+    try:
+        responce = urlopen(url)
+    except HTTPError as e:
+        sys.exit("\nError downloading %s: %s" % (code, e.reason))
     data = responce.read()
     with zipfile.ZipFile(BytesIO(data)) as zf:
         data = zf.read('%s.txt' % code)
@@ -54,7 +58,10 @@ def import_(data):
     def get_country(code):
         country = countries.get(code)
         if not country:
-            country, = Country.find([('code', '=', code)])
+            try:
+                country, = Country.find([('code', '=', code)])
+            except ValueError:
+                sys.exit("Error missing country with code %s" % code)
             countries[code] = country
         return country
     countries = {}
