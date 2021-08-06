@@ -106,18 +106,11 @@ class ShipmentOut(metaclass=PoolMeta):
 
         if not self.cost_sale_used:
             return
-        invoice_line = InvoiceLine()
         product = self.carrier.carrier_product
+
+        invoice_line = InvoiceLine(invoice=invoice)
+        invoice_line.on_change_invoice()
         invoice_line.type = 'line'
-        invoice_line.product = product
-
-        party = invoice.party
-        party_context = {}
-        if party.lang:
-            party_context['language'] = party.lang.code
-        with Transaction().set_context(party_context):
-            invoice_line.description = Product(product.id).rec_name
-
         invoice_line.quantity = 1  # XXX
         invoice_line.unit = product.sale_uom.id
         cost = self.cost_sale_used
@@ -127,25 +120,9 @@ class ShipmentOut(metaclass=PoolMeta):
                     self.cost_sale_currency_used, cost,
                     invoice.currency, round=False)
         invoice_line.unit_price = round_price(cost)
-        invoice_line.currency = invoice.currency
-        invoice_line.company = invoice.company
+        invoice_line.product = product
+        invoice_line.on_change_product()
 
-        taxes = []
-        pattern = self._get_cost_tax_rule_pattern()
-        for tax in product.customer_taxes_used:
-            if party.customer_tax_rule:
-                tax_ids = party.customer_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-                continue
-            taxes.append(tax.id)
-        if party.customer_tax_rule:
-            tax_ids = party.customer_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.extend(tax_ids)
-        invoice_line.taxes = taxes
-
-        invoice_line.account = product.account_revenue_used
         if not invoice_line.account:
             raise InvoiceShipmentCostError(
                 gettext('sale_shipment_cost'
