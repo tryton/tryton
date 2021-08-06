@@ -53,7 +53,7 @@ class Integer(Widget):
 
     @property
     def width(self):
-        return 8
+        return self.attrs.get('width', 8)
 
     def display(self):
         def set_symbol(entry, text):

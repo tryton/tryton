@@ -17,7 +17,7 @@ class Float(Integer):
         if digits:
             return sum(digits)
         else:
-            return 18
+            return self.attrs.get('width', 18)
 
     def display(self):
         digits = self.digits
