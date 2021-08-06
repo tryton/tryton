@@ -4130,7 +4130,9 @@ function eval_pyson(value){
             this.height = parseInt(attributes.height || 100, 10);
             this.width = parseInt(attributes.width || 300, 10);
 
-            this.el = jQuery('<div/>');
+            this.el = jQuery('<div/>', {
+                'class': this.class_ + ' thumbnail',
+            });
             this.image = jQuery('<img/>', {
                 'class': 'center-block'
             }).appendTo(this.el);
@@ -4142,7 +4144,7 @@ function eval_pyson(value){
             var group = this.toolbar('btn-group');
             if (!attributes.readonly) {
                 jQuery('<div/>', {
-                    'class': 'text-center'
+                    'class': 'text-center caption',
                 }).append(group).appendTo(this.el);
             }
         },
