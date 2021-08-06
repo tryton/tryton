@@ -268,7 +268,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot change the sequence type of a sequence instead create a new sequence.</field>
         </record>
         <record model="ir.message" id="msg_sequence_invalid_number_increment_next">
-            <field name="text">Invalid "Increment Number" (%s) or "Next Number" (%s) with exception "%(exception)s".</field>
+            <field name="text">Invalid "Increment Number" (%(number_increment)s) or "Next Number" (%(number_next)s) with exception "%(exception)s".</field>
         </record>
 
         <record model="ir.message" id="msg_language_invalid_grouping">
