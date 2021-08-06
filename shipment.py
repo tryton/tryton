@@ -63,13 +63,16 @@ class ShipmentInternal(ModelSQL, ModelView):
                     ('type', 'in', ['goods', 'assets']),
                     ], order=[('id', 'ASC')])
             product_ids = [p.id for p in products]
+            grouping_filter = None
         else:
             product_ids = list(id2product.keys())
             product_ids.sort()
+            grouping_filter = (product_ids,)
 
         with Transaction().set_context(forecast=True, stock_date_end=today):
             pbl = Product.products_by_location(
-                location_ids, with_childs=True, grouping_filter=(product_ids,))
+                location_ids, with_childs=True,
+                grouping_filter=grouping_filter)
 
         shipments = []
         date = today
