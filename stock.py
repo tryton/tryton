@@ -365,7 +365,8 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
             root_package = line.package_path[0]
         except IndexError:
             root_package = None
-        return super()._group_parcel_key(lines, line) + (root_package,)
+        return super()._group_parcel_key(lines, line) + (
+            ('root_package', root_package),)
 
     @fields.depends('carrier')
     def _parcel_weight(self, parcel):
