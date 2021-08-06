@@ -57,18 +57,12 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @property
-    def from_cost_warehouse(self):
-        return (self.from_location.warehouse
-            or self.from_location.cost_warehouse)
+    def from_warehouse(self):
+        return super().from_warehouse or self.from_location.cost_warehouse
 
     @property
-    def to_cost_warehouse(self):
-        return (self.to_location.warehouse
-            or self.to_location.cost_warehouse)
-
-    @property
-    def cost_warehouse(self):
-        return self.from_cost_warehouse or self.to_cost_warehouse
+    def to_warehouse(self):
+        return super().to_warehouse or self.to_location.cost_warehouse
 
     @fields.depends('company', 'from_location', 'to_location')
     def on_change_with_cost_price_required(self, name=None):
@@ -138,7 +132,7 @@ class Move(metaclass=PoolMeta):
                     and move.from_location != transit_location
                     and move.to_location.type == 'storage'
                     and move.to_location != transit_location):
-                if move.from_cost_warehouse != move.to_cost_warehouse:
+                if move.from_warehouse != move.to_warehouse:
                     raise MoveValidationError(gettext(
                             'product_cost_warehouse'
                             '.msg_move_storage_location_same_warehouse',
@@ -163,14 +157,14 @@ class Move(metaclass=PoolMeta):
         pattern = super()._cost_price_pattern
         if self.company.cost_price_warehouse:
             pattern['warehouse'] = (
-                self.cost_warehouse.id if self.cost_warehouse else None)
+                self.warehouse.id if self.warehouse else None)
         return pattern
 
     def _cost_price_key(self):
         key = super()._cost_price_key()
         if self.company.cost_price_warehouse:
             key += (('warehouse',
-                    (self.cost_warehouse.id if self.cost_warehouse else None)),
+                    (self.warehouse.id if self.warehouse else None)),
                 )
         return key
 
@@ -180,7 +174,7 @@ class Move(metaclass=PoolMeta):
         Location = pool.get('stock.location')
         context = super()._cost_price_context(moves)
         if moves[0].company.cost_price_warehouse:
-            warehouse = moves[0].cost_warehouse
+            warehouse = moves[0].warehouse
             locations = Location.search([
                     ('type', '=', 'storage'),
                     ['OR',
@@ -194,7 +188,7 @@ class Move(metaclass=PoolMeta):
         return context
 
     def get_fifo_move(self, quantity=0.0, date=None):
-        warehouse = self.cost_warehouse.id if self.cost_warehouse else None
+        warehouse = self.warehouse.id if self.warehouse else None
         with Transaction().set_context(warehouse=warehouse):
             return super().get_fifo_move(quantity=quantity, date=date)
 
