@@ -535,54 +535,30 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         "Return a invoice line for the lines"
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        AccountConfiguration = pool.get('account.configuration')
-        account_config = AccountConfiguration(1)
 
         quantity = sum(l['quantity'] for l in lines)
         product = key['product']
 
-        invoice_line = InvoiceLine()
+        invoice_line = InvoiceLine(invoice=invoice)
+        invoice_line.on_change_invoice()
         invoice_line.type = 'line'
         invoice_line.description = key['description']
-        if product:
-            invoice_line.account = product.account_revenue_used
-            if not invoice_line.account:
+        invoice_line.unit_price = key['unit_price']
+        invoice_line.quantity = quantity
+        invoice_line.unit = key['unit']
+        invoice_line.product = product
+        invoice_line.on_change_product()
+        if not invoice_line.account:
+            if invoice_line.product:
                 raise InvoicingError(
                     gettext(
                         'project_invoice.msg_product_missing_account_revenue',
                         work=self.rec_name,
-                        product=product.rec_name))
-        else:
-            invoice_line.account = account_config.get_multivalue(
-                'default_category_account_revenue', company=invoice.company.id)
-            if not invoice_line.account:
+                        product=invoice_line.product.rec_name))
+            else:
                 raise InvoicingError(
                     gettext('project_invoice.msg_missing_account_revenue',
                         work=self.rec_name))
-        invoice_line.product = product
-        invoice_line.unit_price = key['unit_price']
-        invoice_line.quantity = quantity
-        invoice_line.unit = key['unit']
-        invoice_line.currency = invoice.currency
-        invoice_line.company = invoice.company
-
-        taxes = []
-        pattern = invoice_line._get_tax_rule_pattern()
-        party = invoice.party
-        original_taxes = (
-            product.customer_taxes_used if product else invoice.account.taxes)
-        for tax in original_taxes:
-            if party.customer_tax_rule:
-                tax_ids = party.customer_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-                continue
-            taxes.append(tax.id)
-        if party.customer_tax_rule:
-            tax_ids = party.customer_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.extend(tax_ids)
-        invoice_line.taxes = taxes
         return invoice_line
 
     def _test_group_invoice(self):
