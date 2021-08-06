@@ -1247,7 +1247,7 @@ class Wizard(object):
             for action in result.get('actions', []):
                 proteus_action = _convert_action(*action,
                     context=self._context)
-                if proteus_action:
+                if proteus_action is not None:
                     self.actions.append(proteus_action)
 
             if 'view' in result:
