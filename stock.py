@@ -100,7 +100,6 @@ class ShipmentOut(metaclass=PoolMeta):
 
     def get_cost_invoice_line(self, invoice):
         pool = Pool()
-        Product = pool.get('product.product')
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
 
