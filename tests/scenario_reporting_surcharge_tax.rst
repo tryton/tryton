@@ -95,6 +95,14 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('63.10')
+    >>> invoice, = invoice.duplicate()
+    >>> invoice.invoice_date = fiscalyear.start_date
+    >>> line, = invoice.lines
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('0.03')
+    >>> invoice.click('post')
+    >>> invoice.total_amount
+    Decimal('0.04')
 
 Generate VAT Book::
 
@@ -109,15 +117,15 @@ Generate VAT Book::
     ...     report = Report('account.reporting.aeat.vat_book')
     ...     extension, content, _, name = report.execute(records)
     >>> len(records)
-    2
-    >>> tax_record, = [r for r in records if not r.surcharge_tax]
+    3
+    >>> tax_record = [r for r in records if not r.surcharge_tax][0]
     >>> tax_record.party == party
     True
     >>> tax_record.base_amount == Decimal('100.00')
     True
     >>> tax_record.tax_amount == Decimal('21.00')
     True
-    >>> surcharge_tax_record, = [r for r in records if r.surcharge_tax]
+    >>> surcharge_tax_record = [r for r in records if r.surcharge_tax][0]
     >>> surcharge_tax_record.party == surcharge_party
     True
     >>> surcharge_tax_record.base_amount == Decimal('50.00')
