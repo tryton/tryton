@@ -85,7 +85,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         cls._order.insert(0, ('create_date', 'DESC'))
         cls.__rpc__.update({
                 'send': RPC(readonly=False, result=int),
-                'complete': RPC(),
+                'complete': RPC(check_access=False),
                 })
         del cls.__rpc__['create']
 
