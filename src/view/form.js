@@ -4164,7 +4164,7 @@ function eval_pyson(value){
                 value = record.field_get_client(this.field_name);
             }
             if (value) {
-                if (value > Sao.common.BIG_IMAGE_SIZE) {
+                if (value > Sao.config.image_max_size) {
                     value = jQuery.when(null);
                 } else {
                     value = record.model.fields[this.field_name]

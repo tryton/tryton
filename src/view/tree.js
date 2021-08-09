@@ -2526,7 +2526,7 @@
 
                 var value = this.field.get_client(record);
                 if (value) {
-                    if (value > Sao.common.BIG_IMAGE_SIZE) {
+                    if (value > Sao.config.image_max_size) {
                         set_src(null);
                     } else {
                         this.field.get_data(record).done(set_src);
