@@ -780,7 +780,10 @@ class ESVATBook(ModelSQL, ModelView):
     surcharge_tax = fields.Many2One('account.tax', "Surcharge Tax")
     surcharge_tax_amount = fields.Numeric("Surcharge Tax Amount",
         digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+        states={
+            'invisible': ~(Eval('surcharge_tax', None)),
+            },
+        depends=['currency_digits', 'surcharge_tax'])
     currency_digits = fields.Function(fields.Integer("Currency Digits"),
         'get_currency_digits')
 
@@ -874,9 +877,9 @@ class ESVATBook(ModelSQL, ModelView):
                 Min(tax.id,
                     filter_=(tax.es_reported_with != Null)).as_(
                     'surcharge_tax'),
-                Sum(tax_line.amount,
-                    filter_=((tax_line.type == 'tax')
-                        & (tax.es_reported_with != Null))).as_(
+                Coalesce(Sum(tax_line.amount,
+                        filter_=((tax_line.type == 'tax')
+                            & (tax.es_reported_with != Null))), 0).as_(
                     'surcharge_tax_amount'),
                 where=where,
                 group_by=[
