@@ -659,7 +659,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('subscription', '_parent_subscription.currency')
     def on_change_with_currency(self, name=None):
-        if self.subscription:
+        if self.subscription and self.subscription.currency:
             return self.subscription.currency.id
 
     @fields.depends('service')
