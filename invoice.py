@@ -1246,6 +1246,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('payment_lines', None)
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
+        default.setdefault('payment_term_date', None)
         default.setdefault('lines_to_pay', None)
         return super(Invoice, cls).copy(invoices, default=default)
 
