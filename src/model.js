@@ -2165,11 +2165,16 @@
                 }
             }
             if (mode == 'list ids') {
+                var records_to_remove = [];
                 for (var i = 0, len = group.length; i < len; i++) {
                     var old_record = group[i];
                     if (!~value.indexOf(old_record.id)) {
-                        group.remove(old_record, true, true, false, false);
+                        records_to_remove.push(old_record);
                     }
+                }
+                for (i = 0, len = records_to_remove.length; i < len; i++) {
+                    var record_to_remove = records_to_remove[i];
+                    group.remove(record_to_remove, true, true, false, false);
                 }
                 group.load(value, modified || default_);
             } else {
