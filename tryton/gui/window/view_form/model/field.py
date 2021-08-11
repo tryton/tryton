@@ -637,9 +637,9 @@ class O2MField(Field):
                 group.load_fields(fields)
 
         if mode == 'list ids':
-            for old_record in group:
-                if old_record.id not in value:
-                    group.remove(old_record, remove=True, signal=False)
+            records_to_remove = [r for r in group if r.id not in value]
+            for record_to_remove in records_to_remove:
+                group.remove(record_to_remove, remove=True, signal=False)
             group.load(value, modified=modified or default)
         else:
             for vals in value:
