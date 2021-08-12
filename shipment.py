@@ -973,6 +973,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('waiting', 'assigned'),
                 ('waiting', 'picked'),
                 ('assigned', 'picked'),
+                ('waiting', 'packed'),
                 ('picked', 'packed'),
                 ('packed', 'done'),
                 ('assigned', 'waiting'),
@@ -1010,16 +1011,20 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'pick': {
-                    'invisible': If(Eval('warehouse_storage')
-                        == Eval('warehouse_output'),
-                        ~Eval('state').in_(['assigned', 'waiting']),
+                    'invisible': If(
+                        Eval('warehouse_storage') == Eval('warehouse_output'),
+                        True,
                         Eval('state') != 'assigned'),
-                    'depends': ['state', 'warehouse_storage',
-                        'warehouse_output'],
+                    'depends': [
+                        'state', 'warehouse_storage', 'warehouse_output'],
                     },
                 'pack': {
-                    'invisible': Eval('state') != 'picked',
-                    'depends': ['state'],
+                    'invisible': If(
+                        Eval('warehouse_storage') == Eval('warehouse_output'),
+                        Eval('state') != 'waiting',
+                        Eval('state') != 'picked'),
+                    'depends': [
+                        'state', 'warehouse_storage', 'warehouse_output'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'packed',
