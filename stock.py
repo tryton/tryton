@@ -285,11 +285,15 @@ class CreateShippingUPS(Wizard):
         kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
         lb = UoM(ModelData.get_id('product', 'uom_pound'))
 
-        return {
+        pkg = {
             'Packaging': {
                 'Code': package.type.ups_code,
                 },
-            'Dimensions': {
+            }
+        if (package.type.length is not None
+                and package.type.width is not None
+                and package.type.height is not None):
+            pkg['Dimensions'] = {
                 'UnitOfMeasurement': {
                     'Code': 'CM' if use_metric else 'IN',
                     },
@@ -299,15 +303,16 @@ class CreateShippingUPS(Wizard):
                         package.type.width, cm if use_metric else inch)),
                 'Height': '%i' % round(UoM.compute_qty(package.type.height_uom,
                         package.type.height, cm if use_metric else inch)),
-                },
-            'PackageWeight': {
+                }
+        if package.total_weight is not None:
+            pkg['PackageWeight'] = {
                 'UnitOfMeasurement': {
                     'Code': 'KGS' if use_metric else 'LBS',
                     },
                 'Weight': str(UoM.compute_qty(kg, package.total_weight,
                         kg if use_metric else lb)),
-                },
-            }
+                }
+        return pkg
 
     def get_request(self, shipment, packages, credential):
         warehouse_address = shipment.warehouse.address
