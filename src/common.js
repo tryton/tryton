@@ -1186,8 +1186,7 @@
                     name = name.slice(0, -9);
                 }
                 if (!(name in this.fields)) {
-                    escaped = value.replace('%%', '__');
-                    if (escaped.startsWith('%') && escaped.endsWith('%')) {
+                    if (this.is_full_text(value)) {
                         value = value.slice(1, -1);
                     }
                     return this.quote(value);
@@ -1198,16 +1197,15 @@
                     target = clause[3];
                 }
                 if (operator.contains('ilike')) {
-                    escaped = value.replace('%%', '__');
-                    if (escaped.startsWith('%') && escaped.endsWith('%')) {
+                    if (this.is_full_text(value)) {
                         value = value.slice(1, -1);
-                    } else if (!escaped.contains('%')) {
+                    } else if (!this.is_like(value)) {
                         if (operator == 'ilike') {
                             operator = '=';
                         } else {
                             operator = '!';
                         }
-                        value = value.replace('%%', '%');
+                        value = this.unescape(value);
                     }
                 }
                 var def_operator = this.default_operator(field);
@@ -1842,6 +1840,36 @@
             } else {
                 return '%' + value + '%';
             }
+        },
+        is_full_text: function(value, escape) {
+            escape = escape || '\\';
+            var escaped = value;
+            while (escaped.charAt(0) == '%') {
+                escaped = escaped.substring(1);
+            }
+            while (escaped.charAt(escaped.length - 1) == '%') {
+                escaped = escaped.substring(0, escaped.length - 1);
+            }
+            escaped = escaped
+                .replace(escape + '%', '')
+                .replace(escape + '_', '');
+            if (escaped.contains('%') || escaped.contains('_')) {
+                return false;
+            }
+            return value.startsWith('%') && value.endsWith('%');
+        },
+        is_like: function(value, escape) {
+            escape = escape || '\\';
+            var escaped = value
+                .replace(escape + '%', '')
+                .replace(escape + '_', '');
+            return escaped.contains('%') || escaped.contains('_');
+        },
+        unescape: function(value, escape) {
+            escape = escape || '\\';
+            return value
+                .replace(escape + '%', '%')
+                .replace(escape + '_', '_');
         },
         quote: function(value) {
             if (typeof value != 'string') {
