@@ -586,11 +586,7 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
         activate_module('tests')
         super().setUpClass()
 
-    @with_transaction()
-    def test_search(self):
-        "Test search"
-        pool = Pool()
-        Model = pool.get('test.char')
+    def _test_search(self, Model):
         record1, record2 = Model.create([{
                     'char': "word",
                     }, {
@@ -602,10 +598,18 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
                     ]), [record1])
 
     @with_transaction()
-    def test_order(self):
-        "Test order"
+    def test_search(self):
+        "Test search"
         pool = Pool()
-        Model = pool.get('test.char')
+        self._test_search(pool.get('test.char'))
+
+    @with_transaction()
+    def test_search_translated(self):
+        "Test search translated"
+        pool = Pool()
+        self._test_search(pool.get('test.char_translate'))
+
+    def _test_order(self, Model):
         record1, record2 = Model.create([{
                     'char': "word",
                     }, {
@@ -617,6 +621,18 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
             self.assertListEqual(Model.search([
                         ], order=[('char', 'DESC')]),
                 [record2, record1])
+
+    @with_transaction()
+    def test_order(self):
+        "Test order"
+        pool = Pool()
+        self._test_order(pool.get('test.char'))
+
+    @with_transaction()
+    def test_order_translated(self):
+        "Test order translated"
+        pool = Pool()
+        self._test_order(pool.get('test.char_translate'))
 
 
 def suite():

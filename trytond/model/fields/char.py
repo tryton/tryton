@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
+from sql.conditionals import Coalesce, NullIf
 from sql.operators import Not
 
 from trytond.rpc import RPC
@@ -91,6 +92,7 @@ class Char(FieldTranslate):
                 language = transaction.language
                 model, join, column = self._get_translation_column(
                     Model, name)
+                column = Coalesce(NullIf(column, ''), self.sql_column(model))
             else:
                 language = None
                 column = self.sql_column(table)
@@ -106,6 +108,9 @@ class Char(FieldTranslate):
                     database.similarity(column, sim_value) >= threshold)
                 if operator.startswith('not'):
                     expression = Not(expression)
+                if self.translate:
+                    expression = table.id.in_(
+                        join.select(model.id, where=expression))
 
             key = '%s.%s.search_full_text' % (Model.__name__, name)
             if ((self.search_full_text or context.get(key))
