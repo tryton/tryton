@@ -109,6 +109,23 @@ def likify(value, escape='\\'):
         return '%' + value + '%'
 
 
+def is_full_text(value, escape='\\'):
+    escaped = value.strip('%')
+    escaped = escaped.replace(escape + '%', '').replace(escape + '_', '')
+    if '%' in escaped or '_' in escaped:
+        return False
+    return value.startswith('%') and value.endswith('%')
+
+
+def is_like(value, escape='\\'):
+    escaped = value.replace(escape + '%', '').replace(escape + '_', '')
+    return '%' in escaped or '_' in escaped
+
+
+def unescape(value, escape='\\'):
+    return value.replace(escape + '%', '%').replace(escape + '_', '_')
+
+
 def quote(value):
     "Quote string if needed"
     if not isinstance(value, str):
@@ -594,8 +611,7 @@ class DomainParser(object):
             if name.endswith('.rec_name'):
                 name = name[:-9]
             if name not in self.fields:
-                escaped = value.replace('%%', '__')
-                if escaped.startswith('%') and escaped.endswith('%'):
+                if is_full_text(value):
                     value = value[1:-1]
                 return quote(value)
             field = self.fields[name]
@@ -606,15 +622,14 @@ class DomainParser(object):
                 target = None
 
             if 'ilike' in operator:
-                escaped = value.replace('%%', '__')
-                if escaped.startswith('%') and escaped.endswith('%'):
+                if is_full_text(value):
                     value = value[1:-1]
-                elif '%' not in escaped:
+                elif not is_like(value):
                     if operator == 'ilike':
                         operator = '='
                     else:
                         operator = '!'
-                    value = value.replace('%%', '%')
+                    value = unescape(value)
             def_operator = default_operator(field)
             if def_operator == operator.strip():
                 operator = ''

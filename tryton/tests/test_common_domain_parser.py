@@ -674,7 +674,7 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(dom.string([('name', 'ilike', 'Doe')]), 'Name: =Doe')
         self.assertEqual(dom.string([('name', 'ilike', 'Doe%')]), 'Name: Doe%')
         self.assertEqual(
-            dom.string([('name', 'ilike', 'Doe%%')]), 'Name: =Doe%')
+            dom.string([('name', 'ilike', 'Doe\\%')]), 'Name: =Doe%')
         self.assertEqual(
             dom.string([('name', 'not ilike', '%Doe%')]), 'Name: !Doe')
         self.assertEqual(
