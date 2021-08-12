@@ -7,7 +7,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool, Id
+from trytond.pyson import Eval, Bool, Id, If
 from trytond.report import Report
 from trytond.transaction import Transaction
 
@@ -296,9 +296,6 @@ class PackageMixin(object):
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        states={
-            'readonly': Eval('state') != 'picked',
-            },
         depends=['company'])
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
@@ -306,9 +303,6 @@ class PackageMixin(object):
                 ('company', '=', Eval('company', -1)),
                 ('parent', '=', None),
                 ],
-            states={
-                'readonly': Eval('state') != 'picked',
-                },
             depends=['company']),
         'get_root_packages', setter='set_root_packages')
 
@@ -341,6 +335,18 @@ class PackageMixin(object):
 
 class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        packages_readonly = If(
+            Eval('warehouse_storage') == Eval('warehouse_output'),
+            Eval('state') != 'waiting',
+            Eval('state') != 'picked')
+        packages_depends = ['warehouse_storage', 'warehouse_output', 'state']
+        for field in [cls.packages, cls.root_packages]:
+            field.states['readonly'] = packages_readonly
+            field.depends.extend(packages_depends)
 
     @classmethod
     @ModelView.button
@@ -386,6 +392,15 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
 
 class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        packages_readonly = ~Eval('state').in_(['waiting', 'assigned'])
+        packages_depends = ['state']
+        for field in [cls.packages, cls.root_packages]:
+            field.states['readonly'] = packages_readonly
+            field.depends.extend(packages_depends)
 
     @classmethod
     @ModelView.button
