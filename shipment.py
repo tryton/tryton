@@ -1333,6 +1333,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
+        for shipment in shipments:
+            for move in shipment.inventory_moves:
+                if move.state != 'done':
+                    raise AccessError(
+                        gettext('stock.msg_shipment_pack_inventory_done',
+                            shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.outgoing_moves
             if not m.quantity])
         Move.assign([m for s in shipments for m in s.outgoing_moves])

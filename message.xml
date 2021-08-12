@@ -32,6 +32,9 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_period_close_assigned_move">
             <field name="text">You cannot close periods with assigned moves in it.</field>
         </record>
+        <record model="ir.message" id="msg_shipment_pack_inventory_done">
+            <field name="text">To pack shipment "%(shipment)s" you must do the inventory moves.</field>
+        </record>
         <record model="ir.message" id="msg_shipment_delete_cancel">
             <field name="text">To delete shipment "%(shipment)s" you must cancel it.</field>
         </record>
