@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import getaddresses
 
+from sql import Null
 from sql.operators import Concat
 from genshi.template import TextTemplate
 
@@ -383,7 +384,8 @@ class EmailLog(ResourceAccessMixin, ModelSQL, ModelView):
                 where=trigger.id == table.trigger))
         cursor.execute(*table.update(
                 [table.notification, table.resource],
-                [notification, resource]))
+                [notification, resource],
+                where=table.trigger != Null))
         table_h.not_null_action('trigger', 'remove')
 
     def get_date(self, name):
