@@ -422,6 +422,12 @@
             id: tab.id
         }).append(tab.el)
         .appendTo(tabcontent);
+        tab_link.on('hide.bs.tab', function(evt) {
+            jQuery(evt.target).data('scrollTop', tabs.scrollTop());
+        });
+        tab_link.on('shown.bs.tab', function(evt) {
+            tabs.scrollTop(jQuery(evt.target).data('scrollTop') || 0);
+        });
         tab_link.tab('show');
         tabs.trigger('ready');
     };
