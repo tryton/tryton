@@ -718,7 +718,7 @@ class Database(DatabaseInterface):
                     'SELECT CASE WHEN NOT is_called THEN last_value '
                     'ELSE last_value + increment_by '
                     'END '
-                    'FROM {}').format(sequence=Identifier(name)))
+                    'FROM {}').format(Identifier(name)))
         return cursor.fetchone()[0]
 
     def has_channel(self):
