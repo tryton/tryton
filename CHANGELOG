@@ -1,3 +1,5 @@
+* Add at, ua and vn party identifiers
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Add language to contact mechanism

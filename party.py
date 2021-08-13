@@ -123,17 +123,18 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     @classmethod
     def tax_identifier_types(cls):
         return [
-            'ad_nrt', 'al_nipt', 'ar_cuit', 'be_vat', 'bg_vat', 'by_unp',
-            'ch_vat', 'cl_rut', 'cn_uscc', 'co_rut', 'cr_cpj', 'cz_dic',
-            'de_vat', 'dk_cvr', 'do_rnc', 'ec_ruc', 'ee_kmkr', 'es_nif',
-            'eu_vat', 'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat', 'gt_nit',
-            'hu_anum', 'id_npwp', 'ie_vat', 'il_hp', 'is_vsk', 'it_iva',
-            'jp_cn', 'kr_brn', 'lt_pvm', 'lu_tva', 'lv_pvn', 'mc_tva',
-            'md_idno', 'mt_vat', 'mx_rfc', 'nl_btw', 'no_mva', 'nz_ird',
-            'pe_ruc', 'pl_nip', 'pt_nif', 'py_ruc', 'ro_cf', 'rs_pib',
-            'ru_inn', 'se_vat', 'si_ddv', 'sk_dph', 'sm_coe', 'us_atin',
-            'us_ein', 'us_itin', 'us_ptin', 'us_ssn', 'us_tin', 'uy_ruc',
-            've_rif', 'za_tin']
+            'ad_nrt', 'al_nipt', 'ar_cuit', 'at_uid', 'be_vat', 'bg_vat',
+            'by_unp', 'ch_vat', 'cl_rut', 'cn_uscc', 'co_rut', 'cr_cpj',
+            'cz_dic', 'de_vat', 'dk_cvr', 'do_rnc', 'ec_ruc', 'ee_kmkr',
+            'es_nif', 'eu_vat', 'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat',
+            'gt_nit', 'hu_anum', 'id_npwp', 'ie_vat', 'il_hp', 'is_vsk',
+            'it_iva', 'jp_cn', 'kr_brn', 'lt_pvm', 'lu_tva', 'lv_pvn',
+            'mc_tva', 'md_idno', 'mt_vat', 'mx_rfc', 'nl_btw', 'no_mva',
+            'nz_ird', 'pe_ruc', 'pl_nip', 'pt_nif', 'py_ruc', 'ro_cf',
+            'rs_pib', 'ru_inn', 'se_vat', 'si_ddv', 'sk_dph', 'sm_coe',
+            'ua_edrpou', 'ua_rntrc', 'us_atin', 'us_ein', 'us_itin',
+            'us_ptin', 'us_ssn', 'us_tin', 'uy_ruc', 've_rif', 'vn_mst',
+            'za_tin']
 
     def get_tax_identifier(self, name):
         types = self.tax_identifier_types()
@@ -366,6 +367,7 @@ IDENTIFIER_TYPES = [
     ('ar_dni', "Argentinian National Identity Number"),
     ('at_businessid', "Austrian Company Register"),
     ('at_tin', "Austrian Tax Identification"),
+    ('at_uid', "Austrian Umsatzsteuer-Identifikationsnummer"),
     ('at_vnr', "Austrian Social Security Number"),
     ('au_abn', "Australian Business Number"),
     ('au_acn', "Australian Company Number"),
@@ -487,6 +489,8 @@ IDENTIFIER_TYPES = [
     ('sk_rc', "Slovak Birth Number"),
     ('sm_coe', "San Marino National Tax Number"),
     ('tr_tckimlik', "Turkish Personal Identification Number"),
+    ('ua_edrpou', "Ukrainian Identifier for Enterprises and Organizations"),
+    ('ua_rntrc', "Ukrainian Individual Taxpayer Registration Number"),
     ('us_atin', "U.S. Adoption Taxpayer Identification Number"),
     ('us_ein', "U.S. Employer Identification Number"),
     ('us_itin', "U.S. Individual Taxpayer Identification Number"),
@@ -495,6 +499,7 @@ IDENTIFIER_TYPES = [
     ('us_tin', "U.S. Taxpayer Identification Number"),
     ('uy_ruc', "Uruguay Tax Number"),
     ('ve_rif', "Venezuelan VAT Number"),
+    ('vn_mst', "Vietnam Tax Number"),
     ('za_idnr', "South African Identity Document Number"),
     ('za_tin', "South African Tax Identification Number"),
     ]
