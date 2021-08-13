@@ -1632,7 +1632,7 @@ function eval_pyson(value){
                 if (value) {
                     value = this._parse(this._input_format, value);
                     value = this._format(this.get_format(), value);
-                    this.date.val(value);
+                    this.date.val(value).change();
                     this.date.focus();
                 }
             }.bind(this));
@@ -5006,7 +5006,7 @@ function eval_pyson(value){
                 if (value) {
                     value = this._parse(this._input_format, value);
                     value = this._format(this.format, value);
-                    this.input.val(value);
+                    this.input.val(value).change();
                     this.input.focus();
                 }
             }.bind(this));
