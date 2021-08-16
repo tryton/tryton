@@ -363,10 +363,8 @@ class ModelSQL(ModelStorage):
             field = cls._fields[field_name]
             if isinstance(field, fields.Many2One) and values.get(field_name):
                 Model = pool.get(field.model_name)
-                create_records = transaction.create_records.get(
-                    field.model_name, set())
-                delete_records = transaction.delete_records.get(
-                    field.model_name, set())
+                create_records = transaction.create_records[field.model_name]
+                delete_records = transaction.delete_records[field.model_name]
                 target_records = Model.search([
                         ('id', '=', field.sql_format(values[field_name])),
                         ], order=[])
@@ -635,8 +633,7 @@ class ModelSQL(ModelStorage):
                         exception, values, transaction=transaction)
                 raise
 
-        transaction.create_records.setdefault(cls.__name__,
-            set()).update(new_ids)
+        transaction.create_records[cls.__name__].update(new_ids)
 
         translation_values = {}
         fields_to_set = {}
@@ -1066,11 +1063,14 @@ class ModelSQL(ModelStorage):
 
         table = cls.__table__()
 
-        if transaction.delete and transaction.delete.get(cls.__name__):
+        if cls.__name__ in transaction.delete_records:
             ids = ids[:]
-            for del_id in transaction.delete[cls.__name__]:
-                for i in range(ids.count(del_id)):
-                    ids.remove(del_id)
+            for del_id in transaction.delete_records[cls.__name__]:
+                while ids:
+                    try:
+                        ids.remove(del_id)
+                    except ValueError:
+                        break
 
         cls.__check_timestamp(ids)
         cls.__check_domain_rule(ids, 'delete')
@@ -1109,7 +1109,7 @@ class ModelSQL(ModelStorage):
                     else:
                         foreign_keys_tocheck.append((model, field_name))
 
-        transaction.delete.setdefault(cls.__name__, set()).update(ids)
+        transaction.delete_records[cls.__name__].update(ids)
         cls.trigger_delete(records)
 
         def get_related_records(Model, field_name, sub_ids):
@@ -1129,9 +1129,6 @@ class ModelSQL(ModelStorage):
                 grouped_slice(ids), grouped_slice(records)):
             sub_ids = list(sub_ids)
             red_sql = reduce_ids(table.id, sub_ids)
-
-            transaction.delete_records.setdefault(cls.__name__,
-                set()).update(sub_ids)
 
             for Model, field_name in foreign_keys_toupdate:
                 if (not hasattr(Model, 'search')
@@ -1345,8 +1342,7 @@ class ModelSQL(ModelStorage):
         cache = transaction.get_cache()
         if cls.__name__ not in cache:
             cache[cls.__name__] = LRUDict(cache_size(), cls._record)
-        delete_records = transaction.delete_records.setdefault(cls.__name__,
-            set())
+        delete_records = transaction.delete_records[cls.__name__]
 
         def filter_history(rows):
             if not (cls._history and transaction.context.get('_datetime')):

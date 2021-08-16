@@ -33,8 +33,6 @@ commited.
 
 .. attribute:: Transaction.delete_records
 
-.. attribute:: Transaction.delete
-
 .. attribute:: Transaction.trigger_records
 
 .. attribute:: Transaction.timestamp
