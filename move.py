@@ -270,16 +270,24 @@ class Move(ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Journal = pool.get('account.journal')
+        context = Transaction().context
 
+        journals = {}
+        default_company = cls.default_company()
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if not vals.get('number'):
-                journal_id = (vals.get('journal')
-                        or Transaction().context.get('journal'))
+                journal_id = vals.get('journal', context.get('journal'))
+                company_id = vals.get('company', default_company)
                 if journal_id:
-                    journal = Journal(journal_id)
-                    if journal.sequence:
-                        vals['number'] = journal.sequence.get()
+                    if journal_id not in journals:
+                        journal = journals[journal_id] = Journal(journal_id)
+                    else:
+                        journal = journals[journal_id]
+                    sequence = journal.get_multivalue(
+                        'sequence', company=company_id)
+                    if sequence:
+                        vals['number'] = sequence.get()
 
         moves = super(Move, cls).create(vlist)
         cls.validate_move(moves)
