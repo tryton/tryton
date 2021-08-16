@@ -604,6 +604,7 @@ class Action(ModelSQL, ModelView):
             with Transaction().set_context(_account_invoice_correction=True):
                 credit_note, = Invoice.copy([invoice], default={
                         'lines': [],
+                        'taxes': [],
                         })
                 # Copy each line one by one to get negative and positive lines
                 # following each other
