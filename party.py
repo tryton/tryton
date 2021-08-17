@@ -497,6 +497,8 @@ TAX_IDENTIFIER_TYPES = [
     'al_nipt',
     'ar_cuit',
     'at_uid',
+    'au_abn',
+    'au_acn',
     'be_vat',
     'bg_vat',
     'by_unp',
