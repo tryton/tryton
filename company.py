@@ -52,7 +52,8 @@ class Employee(ModelSQL, ModelView):
     __name__ = 'company.employee'
     party = fields.Many2One('party.party', 'Party', required=True,
         context={
-            'company': Eval('company', -1),
+            'company': If(
+                Eval('company', -1) >= 0, Eval('company', None), None),
             },
         depends=['company'],
         help="The party which represents the employee.")
