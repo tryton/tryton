@@ -10,6 +10,7 @@ __all__ = ['register']
 def register():
     Pool.register(
         account.Statement,
+        account.StatementOrigin,
         account.StatementRule,
         account.StatementRuleInformation,
         account.StatementRuleLine,

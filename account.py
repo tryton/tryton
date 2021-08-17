@@ -47,8 +47,17 @@ class Statement(metaclass=PoolMeta):
             for rule in rules:
                 keywords = rule.match(origin)
                 if keywords:
+                    origin.keywords = keywords
                     yield from rule.apply(origin, keywords)
                     break
+        self.origins = self.origins
+        self.save()
+
+
+class StatementOrigin(metaclass=PoolMeta):
+    __name__ = 'account.statement.origin'
+
+    keywords = fields.Dict(None, "KeyWords")
 
 
 class StatementRule(sequence_ordered(), ModelSQL, ModelView):
@@ -369,6 +378,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
     def _get_party(self, origin, keywords):
         pool = Pool()
         Party = pool.get('party.party')
+        Line = pool.get('account.statement.line')
         try:
             AccountNumber = pool.get('bank.account.number')
         except KeyError:
@@ -386,11 +396,32 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                     number, = numbers
                     if number.account.owners:
                         party = number.account.owners[0]
+                if not number:
+                    lines = Line.search([
+                            ('statement.state', 'in', ['validated', 'posted']),
+                            ('origin.keywords.bank_account', '=',
+                                keywords['bank_account']),
+                            ('party', '!=', None),
+                            ],
+                        order=[('date', 'DESC')], limit=1)
+                    if lines:
+                        line, = lines
+                        party = line.party
             elif keywords.get('party'):
                 parties = Party.search(
                     [('rec_name', 'ilike', keywords['party'])])
                 if len(parties) == 1:
                     party, = parties
+                if not party:
+                    lines = Line.search([
+                            ('statement.state', 'in', ['validated', 'posted']),
+                            ('origin.keywords.party', '=', keywords['party']),
+                            ('party', '!=', None),
+                            ],
+                        order=[('date', 'DESC')], limit=1)
+                    if lines:
+                        line, = lines
+                        party = line.party
         return party
 
     def _get_invoice(self, origin, keywords):
