@@ -3940,8 +3940,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cuenta corriente con socios y administradores</field>
             <field name="parent" ref="pgc_55_pyme"/>
             <field name="code">551</field>
-            <field name="type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
-            <field name="debit_type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="debit_type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
             
             
         </record>
@@ -3949,24 +3949,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cuenta corriente con empresas del grupo</field>
             <field name="parent" ref="pgc_552_pyme"/>
             <field name="code">5523</field>
-            <field name="type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
+            <field name="type" ref="es_balance_deudas_empresas_grupo_corto_plazo_pyme"/>
+            <field name="debit_type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
             
-            <field name="debit_type" ref="es_balance_deudas_empresas_grupo_corto_plazo_pyme"/>
         </record>
         <record id="pgc_5524_pyme" model="account.account.template">
             <field name="name">Cuenta corriente con empresas asociadas</field>
             <field name="parent" ref="pgc_552_pyme"/>
             <field name="code">5524</field>
-            <field name="type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
+            <field name="type" ref="es_balance_deudas_empresas_grupo_corto_plazo_pyme"/>
+            <field name="debit_type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
             
-            <field name="debit_type" ref="es_balance_deudas_empresas_grupo_corto_plazo_pyme"/>
         </record>
         <record id="pgc_5525_pyme" model="account.account.template">
             <field name="name">Cuenta corriente con otras partes vinculadas</field>
             <field name="parent" ref="pgc_552_pyme"/>
             <field name="code">5525</field>
-            <field name="type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
-            <field name="debit_type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="debit_type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
             
             
         </record>
@@ -3978,8 +3978,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cuenta corriente con uniones temporales de empresas y comunidades de bienes</field>
             <field name="parent" ref="pgc_55_pyme"/>
             <field name="code">554</field>
-            <field name="type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
-            <field name="debit_type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="type" ref="es_balance_otras_deudas_corto_plazo_pyme"/>
+            <field name="debit_type" ref="es_balance_inversiones_finanzieras_corto_plazo_pyme"/>
             
             
         </record>

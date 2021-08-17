@@ -4916,24 +4916,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">551</field>
             
             
-            <field name="type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
-            <field name="debit_type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="debit_type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
         </record>
         <record id="pgc_5523_normal" model="account.account.template">
             <field name="name">Cuenta corriente con empresas del grupo</field>
             <field name="parent" ref="pgc_552_normal"/>
             <field name="code">5523</field>
+            <field name="type" ref="es_balance_deudas_empresas_grupo_corto_plazo_normal"/>
             
-            <field name="type" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
-            <field name="debit_type" ref="es_balance_deudas_empresas_grupo_corto_plazo_normal"/>
+            <field name="debit_type" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
         </record>
         <record id="pgc_5524_normal" model="account.account.template">
             <field name="name">Cuenta corriente con empresas asociadas</field>
             <field name="parent" ref="pgc_552_normal"/>
             <field name="code">5524</field>
+            <field name="type" ref="es_balance_deudas_empresas_grupo_corto_plazo_normal"/>
             
-            <field name="type" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
-            <field name="debit_type" ref="es_balance_deudas_empresas_grupo_corto_plazo_normal"/>
+            <field name="debit_type" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
         </record>
         <record id="pgc_5525_normal" model="account.account.template">
             <field name="name">Cuenta corriente con otras partes vinculadas</field>
@@ -4941,8 +4941,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">5525</field>
             
             
-            <field name="type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
-            <field name="debit_type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="debit_type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
         </record>
         <record id="pgc_5530_normal" model="account.account.template">
             <field name="name">Socios de sociedad disuelta</field>
@@ -4974,8 +4974,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">554</field>
             
             
-            <field name="type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
-            <field name="debit_type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="type" ref="es_balance_otros_pasivos_financieros_deudas_corto_plazo_normal"/>
+            <field name="debit_type" ref="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal"/>
         </record>
         <record id="pgc_555_normal" model="account.account.template">
             <field name="name">Partidas pendientes de aplicación</field>
