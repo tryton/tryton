@@ -789,6 +789,8 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
                 ('res_id', '=', record.id),
                 ])
         Translation.copy([translation], default={'value': "Baz"})
+        # clear transaction cache which may be filled by validation
+        other._cache.clear()
 
         self.assertEqual(record.name, "Foo")
         self.assertEqual(other.name, "Baz")
