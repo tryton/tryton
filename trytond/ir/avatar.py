@@ -185,10 +185,13 @@ def generate(size, string):
             b = random.randint(0, 255)
         return r, v, b
 
+    try:
+        font = ImageFont.truetype(FONT, size=int(0.65 * size))
+    except ImportError:
+        return
     white = (255, 255, 255)
     image = Image.new('RGB', (size, size), background_color(string))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(FONT, size=int(0.65 * size))
     letter = string[0].upper() if string else ''
     draw.text(
         (size / 2, size / 2), letter, fill=white, font=font, anchor='mm')
