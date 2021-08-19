@@ -2421,10 +2421,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(**context):
             tax = Tax(self.tax.id)
         self.description = tax.description
-        if self.base >= 0:
-            self.account = tax.invoice_account
-        else:
-            self.account = tax.credit_note_account
+        if self.base is not None:
+            if self.base >= 0:
+                self.account = tax.invoice_account
+            else:
+                self.account = tax.credit_note_account
 
     @fields.depends('tax', 'base', 'amount', 'manual', 'invoice',
         '_parent_invoice.currency')
