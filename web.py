@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
+from trytond.pyson import Eval
 
 
 class Shop(metaclass=PoolMeta):
@@ -11,7 +12,9 @@ class Shop(metaclass=PoolMeta):
         'account.payment.journal', "Stripe Journal",
         domain=[
             ('stripe_account', '!=', None),
-            ])
+            ('currency', '=', Eval('currency', -1)),
+            ],
+        depends=['currency'])
 
     def vsf_order_create(self, data, sale, user):
         pool = Pool()
