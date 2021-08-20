@@ -87,3 +87,7 @@ class CancelDelegatedWarning(UserWarning):
 
 class GroupLineError(UserError):
     pass
+
+
+class SplitLineError(UserError):
+    pass

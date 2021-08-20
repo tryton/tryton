@@ -5,6 +5,7 @@ from itertools import groupby, combinations, chain, islice
 from operator import itemgetter
 from collections import defaultdict
 
+from dateutil.relativedelta import relativedelta
 from sql import Null, Literal
 from sql.aggregate import Sum, Max
 from sql.functions import CharLength
@@ -26,7 +27,7 @@ from trytond.config import config
 
 from .exceptions import (PostError, MoveDatesError, CancelWarning,
     ReconciliationError, DeleteDelegatedWarning, GroupLineError,
-    CancelDelegatedWarning)
+    SplitLineError, CancelDelegatedWarning)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -2140,6 +2141,329 @@ class GroupLinesStart(ModelView):
 
     journal = fields.Many2One('account.journal', "Journal", required=True)
     description = fields.Char("Description")
+
+
+class SplitLines(Wizard):
+    "Split Lines"
+    __name__ = 'account.move.line.split'
+    start = StateView('account.move.line.split.start',
+        'account.move_line_split_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Preview", 'preview', 'tryton-ok',
+                validate=False, default=True),
+            ])
+    preview = StateView('account.move.line.split.preview',
+        'account.move_line_split_preview_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Split", 'split', 'tryton-ok', default=True),
+            ])
+    split = StateAction('account.act_move_form_splitting')
+
+    def get_origin(self):
+        try:
+            origin, = {r.move.origin for r in self.records}
+        except ValueError:
+            raise SplitLineError(
+                gettext('account.msg_split_line_same_origins'))
+        return origin
+
+    @classmethod
+    def get_currency(cls, lines):
+        try:
+            currency, = {l.amount_currency for l in lines}
+        except ValueError:
+            raise SplitLineError(
+                gettext('account.msg_split_line_same_currency'))
+        return currency
+
+    @classmethod
+    def get_account(cls, lines):
+        try:
+            account, = {l.account for l in lines}
+        except ValueError:
+            raise SplitLineError(
+                gettext('account.msg_split_line_same_account'))
+        return account
+
+    @classmethod
+    def get_party(cls, lines):
+        try:
+            party, = {l.party for l in lines}
+        except ValueError:
+            raise SplitLineError(
+                gettext('account.msg_split_line_same_party'))
+        return party
+
+    @classmethod
+    def get_total_amount(cls, lines):
+        return sum(l.amount for l in lines)
+
+    @classmethod
+    def get_balance(cls, lines):
+        return sum(l.debit - l.credit for l in lines)
+
+    def default_start(self, fields):
+        values = {}
+        self.get_origin()
+        self.get_account(self.records)
+        currency = self.get_currency(self.records)
+        values['currency'] = currency.id
+        values['currency_digits'] = currency.digits
+        values['total_amount'] = self.get_total_amount(self.records)
+        return values
+
+    def default_preview(self, fields):
+        values = {}
+        currency = self.get_currency(self.records)
+        try:
+            journal, = {r.move.journal for r in self.records}
+            values['journal'] = journal.id
+        except ValueError:
+            pass
+        values['currency'] = currency.id
+        if (self.start.start_date
+                and self.start.interval
+                and self.start.currency):
+            remaining = self.start.total_amount
+            date = self.start.start_date
+            values['terms'] = terms = []
+            if self.start.amount:
+                interval = self.start.interval
+                while abs(remaining - self.start.amount) > 0:
+                    terms.append({
+                            'date': date,
+                            'amount': self.start.amount,
+                            'currency': currency.id,
+                            })
+                    date = (
+                        self.start.start_date + relativedelta(months=interval))
+                    interval += 1
+                    remaining -= self.start.amount
+                if remaining:
+                    terms.append({
+                            'date': date,
+                            'amount': remaining,
+                            })
+            elif self.start.number:
+                amount = self.start.currency.round(
+                    self.start.total_amount / self.start.number)
+                for i in range(self.start.number):
+                    terms.append({
+                            'date': date + relativedelta(months=i),
+                            'amount': amount,
+                            'currency': currency.id,
+                            })
+                    remaining -= amount
+                if remaining:
+                    terms[-1]['amount'] += remaining
+        return values
+
+    def do_split(self, action):
+        move, balance_line = self.split_lines(
+            self.records, self.preview.journal, self.preview.terms)
+        move.origin = self.get_origin()
+        move.description = self.preview.description
+        move.save()
+        action['res_id'] = [move.id]
+        return action, {}
+
+    @classmethod
+    def _line_values(cls, lines):
+        account = cls.get_account(lines)
+        currency = cls.get_currency(lines)
+        if currency == account.currency:
+            currency = None
+        return {
+            'account': account,
+            'second_currency': currency,
+            'party': cls.get_party(lines),
+            }
+
+    @classmethod
+    def split_lines(cls, lines, journal, terms):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Line = pool.get('account.move.line')
+
+        total_amount = cls.get_total_amount(lines)
+        amount = sum(t.amount for t in terms)
+        if amount != total_amount:
+            lang = Lang.get()
+            currency = cls.get_currency(lines)
+            raise SplitLineError(
+                gettext('account.msg_split_line_wrong_amount',
+                    total_amount=lang.currency(total_amount, currency),
+                    amount=lang.currency(amount, currency)))
+
+        balance = cls.get_balance(lines)
+        line_values = cls._line_values(lines)
+        account = line_values['account']
+        move, balance_line = cls.get_split_move(
+            amount, balance, journal, terms, **line_values)
+        move.save()
+        balance_line.move = move
+        balance_line.save()
+
+        if account.reconcile:
+            Line.reconcile(lines + [balance_line])
+        return move, balance_line
+
+    @classmethod
+    def get_split_move(
+            cls, amount, balance, journal, terms, account, date=None,
+            **line_values):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        if not date:
+            date = Date.today()
+        company = account.company
+        period = Period.find(company.id, date=date)
+
+        move = Move()
+        move.company = company
+        move.date = date
+        move.period = period
+        move.journal = journal
+
+        balance_line = Line(account=account, **line_values)
+        if balance >= 0:
+            balance_line.debit, balance_line.credit = 0, balance
+        else:
+            balance_line.debit, balance_line.credit = -balance, 0
+        if balance_line.second_currency:
+            balance_line.amount_second_currency = -amount
+
+        remaining_balance = balance
+        remaining_amount = amount
+        lines = []
+        for term in terms:
+            line = Line(account=account, **line_values)
+            line.maturity_date = term.date
+            factor = term.amount / amount
+            line_amount = account.currency.round(balance * factor)
+            if balance >= 0:
+                line.debit, line.credit = line_amount, 0
+            else:
+                line.debit, line.credit = 0, -line_amount
+            remaining_balance -= line_amount
+            if line.second_currency:
+                line_amount_second_currency = line.second_currency.round(
+                    amount * factor)
+                line.amount_second_currency = line_amount_second_currency
+                remaining_amount -= line_amount_second_currency
+            lines.append(line)
+        if remaining_balance:
+            if line.debit:
+                line.debit += remaining_balance
+            else:
+                line.credit += remaining_balance
+        if remaining_amount and line.second_currency:
+            line.amount_second_currency += remaining_amount
+        move.lines = lines
+        return move, balance_line
+
+
+class SplitLinesStart(ModelView):
+    "Split Lines"
+    __name__ = 'account.move.line.split.start'
+    start_date = fields.Date("Start Date", required=True)
+    frequency = fields.Selection([
+            ('monthly', "Monthly"),
+            ('quarterly', "Quarterly"),
+            ('other', "Other"),
+            ], "Frequency", sort=False, required=True)
+    interval = fields.Integer(
+        "Interval", required=True,
+        states={
+            'invisible': Eval('frequency') != 'other',
+            },
+        depends=['frequency'],
+        help="The length of each period, in months.")
+    amount = fields.Numeric(
+        "Amount", digits=(16, Eval('currency_digits', 2)),
+        states={
+            'required': ~Eval('number'),
+            'invisible': Bool(Eval('number')),
+            },
+        domain=[If(Eval('amount'),
+                If(Eval('total_amount', 0) > 0,
+                    [
+                        ('amount', '<=', Eval('total_amount', 0)),
+                        ('amount', '>', 0),
+                        ],
+                    [
+                        ('amount', '>=', Eval('total_amount', 0)),
+                        ('amount', '<', 0),
+                        ]),
+                [])],
+        depends=['currency_digits', 'number', 'total_amount'])
+    number = fields.Integer(
+        "Number",
+        domain=[
+            ('number', '>', 0),
+            ],
+        states={
+            'required': ~Eval('amount'),
+            'invisible': Bool(Eval('amount')),
+            },
+        depends=['amount'])
+
+    total_amount = fields.Numeric("Total Amount", readonly=True)
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
+    currency_digits = fields.Integer("Currency Digits", readonly=True)
+
+    @classmethod
+    def default_frequency(cls):
+        return 'monthly'
+
+    @classmethod
+    def frequency_intervals(cls):
+        return {
+            'monthly': 1,
+            'quarterly': 3,
+            'other': None,
+            }
+
+    @fields.depends('frequency', 'interval')
+    def on_change_frequency(self):
+        if self.frequency:
+            self.interval = self.frequency_intervals()[self.frequency]
+
+
+class SplitLinesPreview(ModelView):
+    "Split Lines"
+    __name__ = 'account.move.line.split.preview'
+    journal = fields.Many2One('account.journal', "Journal", required=True)
+    description = fields.Char("Description")
+    terms = fields.One2Many(
+        'account.move.line.split.term', None, "Terms",
+        domain=[
+            ('currency', '=', Eval('currency', -1)),
+            ],
+        depends=['currency'])
+    currency = fields.Many2One('currency.currency', "Currency", readonly=True)
+
+
+class SplitLinesTerm(ModelView):
+    "Split Lines"
+    __name__ = 'account.move.line.split.term'
+    date = fields.Date("Date", required=True)
+    amount = fields.Numeric(
+        "Amount", digits=(16, Eval('currency_digits', 2)), required=True,
+        depends=['currency_digits'])
+    currency = fields.Many2One('currency.currency', "Currency", required=True)
+    currency_digits = fields.Function(
+        fields.Integer("Currency Digits", readonly=True),
+        'on_change_with_currency_digits')
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
 
 
 class GeneralJournal(Report):

@@ -442,6 +442,55 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_line_group_start_form</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_move_form_grouping">
+            <field name="name">Grouped Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_grouping_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_grouping"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_split_lines_wizard">
+            <field name="name">Split Lines</field>
+            <field name="wiz_name">account.move.line.split</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_split_lines_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_split_lines_wizard"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_split_start_view_form">
+            <field name="model">account.move.line.split.start</field>
+            <field name="type">form</field>
+            <field name="name">move_line_split_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_split_preview_view_form">
+            <field name="model">account.move.line.split.preview</field>
+            <field name="type">form</field>
+            <field name="name">move_line_split_preview_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_split_term_view_list">
+            <field name="model">account.move.line.split.term</field>
+            <field name="type">tree</field>
+            <field name="name">move_line_split_term_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_form_splitting">
+            <field name="name">Split Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_splitting_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_splitting"/>
+        </record>
+
         <record model="ir.action.report" id="report_general_journal">
             <field name="name">General Journal</field>
             <field name="model">account.move</field>
@@ -452,16 +501,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_print</field>
             <field name="model">account.move,-1</field>
             <field name="action" ref="report_general_journal"/>
-        </record>
-
-        <record model="ir.action.act_window" id="act_move_form_grouping">
-            <field name="name">Grouped Account Move</field>
-            <field name="res_model">account.move</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_move_form_grouping_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="move_view_form"/>
-            <field name="act_window" ref="act_move_form_grouping"/>
         </record>
     </data>
 </tryton>

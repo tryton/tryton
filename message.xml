@@ -190,6 +190,21 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_group_line_maximum_account">
             <field name="text">You cannot group lines from more than 2 different accounts.</field>
         </record>
+        <record model="ir.message" id="msg_split_line_same_origins">
+            <field name="text">You cannot split lines with different origins.</field>
+        </record>
+        <record model="ir.message" id="msg_split_line_same_currency">
+            <field name="text">You cannot split lines with different currencies.</field>
+        </record>
+        <record model="ir.message" id="msg_split_line_same_account">
+            <field name="text">You cannot split lines with different accounts.</field>
+        </record>
+        <record model="ir.message" id="msg_split_line_same_party">
+            <field name="text">You cannot split lines with different parties.</field>
+        </record>
+        <record model="ir.message" id="msg_split_line_wrong_amount">
+            <field name="text">To split the lines you must change the terms to have a total amount of %(total_amount)s instead of %(amount)s.</field>
+        </record>
         <record model="ir.message" id="msg_cancel_line_delegated">
             <field name="text">The moves "%(moves)s" contain grouped lines, cancelling them will ungroup the lines.</field>
         </record>
