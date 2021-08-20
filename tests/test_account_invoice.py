@@ -311,6 +311,11 @@ def suite():
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
+            'scenario_invoice_split_lines.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
             'scenario_renew_fiscalyear.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,

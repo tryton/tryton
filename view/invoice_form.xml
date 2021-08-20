@@ -62,6 +62,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="move"/>
             <label name="cancel_move"/>
             <field name="cancel_move"/>
+            <field name="additional_moves" colspan="4"/>
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>
@@ -74,6 +75,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="amount_to_pay"/>
             <field name="amount_to_pay" symbol="currency"/>
             <field name="lines_to_pay" colspan="4" view_ids="account_invoice.move_line_view_list_to_pay"/>
+            <button name="reschedule_lines_to_pay" colspan="4"/>
             <field name="payment_lines" colspan="4"
                 view_ids="account_invoice.move_line_view_list_payment"/>
             <field name="reconciliation_lines" colspan="4" view_ids="account_invoice.move_line_view_list_payment"/>

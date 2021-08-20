@@ -102,6 +102,15 @@ credited with a refund.
 When this is done the credit note is automatically posted and the invoice is
 cancelled.
 
+.. _wizard-account.invoice.lines_to_pay.reschedule:
+
+Reschedule Lines to Pay
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The *Reschedule Lines to Pay* wizard allows to modify the payment terms of the
+remaining lines to pay using the `Split Lines <wizard-account.move.line.split>`
+wizard.
+
 Reports
 -------
 

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from collections import defaultdict, namedtuple
-from itertools import combinations
+from itertools import combinations, chain
 
 from sql import Null
 from sql.aggregate import Sum
@@ -144,6 +144,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
+    additional_moves = fields.Many2Many(
+        'account.invoice-additional-account.move', 'invoice', 'move',
+        "Additional Moves", readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        states={
+            'invisible': ~Eval('additional_moves'),
+            },
+        depends=['company'])
     cancel_move = fields.Many2One('account.move', 'Cancel Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -259,7 +269,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude = {
             'state', 'payment_lines', 'move', 'cancel_move',
-            'invoice_report_cache', 'invoice_report_format', 'lines'}
+            'additional_moves', 'invoice_report_cache',
+            'invoice_report_format', 'lines'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -324,6 +335,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'pay': {
                     'invisible': Eval('state') != 'posted',
                     'depends': ['state'],
+                    },
+                'reschedule_lines_to_pay': {
+                    'invisible': (
+                        ~Eval('lines_to_pay') | Eval('reconciled', False)),
+                    'depends': ['lines_to_pay', 'reconciled'],
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(
@@ -696,19 +712,38 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def get_lines_to_pay(cls, invoices, name):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        AdditionalMove = pool.get('account.invoice-additional-account.move')
         line = MoveLine.__table__()
         invoice = cls.__table__()
+        additional_move = AdditionalMove.__table__()
         cursor = Transaction().connection.cursor()
 
         lines = defaultdict(list)
         for sub_ids in grouped_slice(invoices):
             red_sql = reduce_ids(invoice.id, sub_ids)
-            cursor.execute(*invoice.join(line,
-                condition=((invoice.move == line.move)
-                    & (invoice.account == line.account))).select(
-                        invoice.id, line.id,
-                        where=red_sql,
-                        order_by=(invoice.id, line.maturity_date.nulls_last)))
+            query = (invoice
+                .join(line,
+                    condition=((invoice.move == line.move)
+                        & (invoice.account == line.account)))
+                .select(
+                    invoice.id.as_('invoice'),
+                    line.id.as_('line'),
+                    line.maturity_date.as_('maturity_date'),
+                    where=red_sql))
+            query |= (invoice
+                .join(additional_move,
+                    condition=additional_move.invoice == invoice.id)
+                .join(line,
+                    condition=((additional_move.move == line.move)
+                        & (invoice.account == line.account)))
+                .select(
+                    invoice.id.as_('invoice'),
+                    line.id.as_('line'),
+                    line.maturity_date.as_('maturity_date'),
+                    where=red_sql))
+            cursor.execute(*query.select(
+                    query.invoice, query.line,
+                    order_by=query.maturity_date.nulls_last))
             for invoice_id, line_id in cursor:
                 lines[invoice_id].append(line_id)
         return lines
@@ -717,11 +752,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.state != 'paid':
             return
         lines = set()
-        for line in self.move.lines:
-            if line.account == self.account and line.reconciliation:
-                for line in line.reconciliation.lines:
-                    if line not in self.move.lines:
-                        lines.add(line)
+        for move in chain([self.move], self.additional_moves):
+            for line in move.lines:
+                if line.account == self.account and line.reconciliation:
+                    for line in line.reconciliation.lines:
+                        if line not in self.lines_to_pay:
+                            lines.add(line)
         return [l.id for l in sorted(lines, key=lambda l: l.date)]
 
     @classmethod
@@ -1239,6 +1275,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('number', None)
         default.setdefault('sequence')
         default.setdefault('move', None)
+        default.setdefault('additional_moves', None)
         default.setdefault('cancel_move', None)
         default.setdefault('invoice_report_cache', None)
         default.setdefault('invoice_report_cache_id', None)
@@ -1465,6 +1502,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for invoice in invoices:
             if invoice.move:
                 moves.append(invoice.move)
+            if invoice.additional_moves:
+                moves.extend(invoice.additional_moves)
         if moves:
             Move.delete(moves)
 
@@ -1540,6 +1579,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pass
 
     @classmethod
+    @ModelView.button_action(
+        'account_invoice.act_reschedule_lines_to_pay_wizard')
+    def reschedule_lines_to_pay(cls, invoices):
+        pass
+
+    @classmethod
     @ModelView.button
     def process(cls, invoices):
         paid = []
@@ -1575,6 +1620,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if invoice.move or invoice.number:
                 if invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
+                    delete_moves.extend(invoice.additional_moves)
                 elif not invoice.cancel_move:
                     if (invoice.type == 'out'
                             and not invoice.company.cancel_invoice_out):
@@ -1583,8 +1629,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                                 '.msg_invoice_customer_cancel_move',
                                 invoice=invoice.rec_name))
                     invoice.cancel_move = invoice.move.cancel()
+                    additional_cancel_moves = [
+                        m.cancel() for m in invoice.additional_moves]
+                    invoice.additional_moves += tuple(additional_cancel_moves)
                     to_save.append(invoice)
                     cancel_moves.append(invoice.cancel_move)
+                    cancel_moves.extend(additional_cancel_moves)
         if cancel_moves:
             Move.save(cancel_moves)
         cls.save(to_save)
@@ -1601,9 +1651,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if not invoice.move or not invoice.cancel_move:
                 continue
             to_reconcile = []
-            for line in invoice.move.lines + invoice.cancel_move.lines:
-                if line.account == invoice.account:
-                    to_reconcile.append(line)
+            for move in chain(
+                    [invoice.move, invoice.cancel_move],
+                    invoice.additional_moves):
+                for line in move.lines:
+                    if (not line.reconciliation
+                            and line.account == invoice.account):
+                        to_reconcile.append(line)
             Line.reconcile(to_reconcile)
 
         cls._clean_payments(invoices)
@@ -1624,6 +1678,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         })
         if to_write:
             cls.write(*to_write)
+
+
+class InvoiceAdditionalMove(ModelSQL):
+    "Invoice Additional Move"
+    __name__ = 'account.invoice-additional-account.move'
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='CASCADE',
+        select=True, required=True)
+    move = fields.Many2One(
+        'account.move', "Additional Move", ondelete='CASCADE')
 
 
 class InvoicePaymentLine(ModelSQL):
@@ -3141,3 +3205,17 @@ class CreditInvoice(Wizard):
         if len(credit_invoices) == 1:
             action['views'].reverse()
         return action, data
+
+
+class RescheduleLinesToPay(Wizard):
+    "Reschedule Lines to Pay"
+    __name__ = 'account.invoice.lines_to_pay.reschedule'
+    start = StateAction('account.act_split_lines_wizard')
+
+    def do_start(self, action):
+        return action, {
+            'ids': [
+                l.id for l in self.record.lines_to_pay
+                if not l.reconciliation],
+            'model': 'account.move.line',
+            }

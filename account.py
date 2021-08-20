@@ -311,8 +311,10 @@ def _invoices_to_process(reconciliations):
 
     invoices = set()
     for sub_ids in grouped_slice(move_ids):
-        invoices.update(Invoice.search([
-                    ('move', 'in', list(sub_ids)),
+        sub_ids = list(sub_ids)
+        invoices.update(Invoice.search(['OR',
+                    ('move', 'in', sub_ids),
+                    ('additional_moves', 'in', sub_ids),
                     ]))
     if others:
         invoices.update(_invoices_to_process(Reconciliation.browse(others)))
@@ -404,3 +406,23 @@ class RenewFiscalYear(metaclass=PoolMeta):
         if to_write:
             InvoiceSequence.write(*to_write)
         return fiscalyear
+
+
+class SplitLines(metaclass=PoolMeta):
+    __name__ = 'account.move.line.split'
+
+    @classmethod
+    def split_lines(cls, lines, journal, terms):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        move, balance_line = super().split_lines(lines, journal, terms)
+
+        move_ids = list({l.move.id for l in lines})
+        invoices = Invoice.search(['OR',
+                ('move', 'in', move_ids),
+                ('additional_moves', 'in', move_ids),
+                ])
+        Invoice.write(invoices, {
+                'additional_moves': [('add', [move.id])],
+                })
+        return move, balance_line

@@ -17,6 +17,7 @@ def register():
         payment_term.TestPaymentTermView,
         payment_term.TestPaymentTermViewResult,
         invoice.Invoice,
+        invoice.InvoiceAdditionalMove,
         invoice.InvoicePaymentLine,
         invoice.InvoiceLine,
         invoice.InvoiceLineTax,
@@ -45,9 +46,11 @@ def register():
         payment_term.TestPaymentTerm,
         invoice.PayInvoice,
         invoice.CreditInvoice,
+        invoice.RescheduleLinesToPay,
         party.Replace,
         party.Erase,
         account.RenewFiscalYear,
+        account.SplitLines,
         module='account_invoice', type_='wizard')
     Pool.register(
         invoice.InvoiceReport,
