@@ -23,4 +23,5 @@ def register():
     Pool.register(
         dunning.CreateDunning,
         dunning.ProcessDunning,
+        dunning.RescheduleDunning,
         module='account_dunning', type_='wizard')

@@ -10,6 +10,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="procedure"/>
     <label name="level"/>
     <field name="level"/>
+    <label name="amount"/>
+    <group id="amounts" col="-1">
+        <field name="amount" symbol="currency"/>
+        <field name="amount_second_currency" symbol="amount_second_currency"/>
+    </group>
+    <button name="reschedule" colspan="2"/>
     <label name="blocked"/>
     <field name="blocked"/>
     <label name="state"/>

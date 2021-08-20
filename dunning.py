@@ -117,6 +117,8 @@ class Dunning(ModelSQL, ModelView):
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
         'get_amount')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_line_field')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_line_field')
     maturity_date = fields.Function(fields.Date('Maturity Date'),
@@ -124,7 +126,11 @@ class Dunning(ModelSQL, ModelView):
     amount_second_currency = fields.Function(fields.Numeric(
             'Amount Second Currency',
             digits=(16, Eval('second_currency_digits', 2)),
-            depends=['second_currency_digits']), 'get_amount_second_currency')
+            states={
+                'invisible': Eval('currency') == Eval('second_currency'),
+                },
+            depends=['second_currency_digits', 'currency', 'second_currency']),
+        'get_amount_second_currency')
     second_currency = fields.Function(fields.Many2One('currency.currency',
             'Second Currency'), 'get_second_currency')
     second_currency_digits = fields.Function(fields.Integer(
@@ -139,6 +145,12 @@ class Dunning(ModelSQL, ModelView):
                 'account_dunning.msg_dunning_line_unique'),
             ]
         cls._active_field = 'active'
+        cls._buttons.update({
+                'reschedule': {
+                    'invisible': ~Eval('active', True),
+                    'depends': ['active'],
+                    },
+                })
 
     @classmethod
     def __register__(cls, module):
@@ -296,6 +308,11 @@ class Dunning(ModelSQL, ModelView):
                 'state': 'waiting',
                 })
 
+    @classmethod
+    @ModelView.button_action('account_dunning.act_reschedule_dunning_wizard')
+    def reschedule(cls, dunnings):
+        pass
+
 
 class CreateDunningStart(ModelView):
     'Create Account Dunning'
@@ -360,3 +377,15 @@ class ProcessDunning(Wizard):
     def transition_process(self):
         self.model.process(self.records)
         return self.next_state('process')
+
+
+class RescheduleDunning(Wizard):
+    "Reschedule Account Dunning"
+    __name__ = 'account.dunning.reschedule'
+    start = StateAction('account.act_split_lines_wizard')
+
+    def do_start(self, action):
+        return action, {
+            'ids': [self.record.line.id],
+            'model': 'account.move.line',
+            }
