@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="invoice_line" expand="1"/>
     <field name="start_date"/>
     <field name="end_date"/>
-    <field name="amount" symbol="currency"/>
+    <field name="amount"/>
     <field name="state"/>
     <button name="run"/>
 </tree>

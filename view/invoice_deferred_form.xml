@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="journal"/>
     <field name="journal"/>
     <label name="amount"/>
-    <field name="amount" symbol="currency"/>
+    <field name="amount"/>
 
     <label name="start_date"/>
     <field name="start_date"/>

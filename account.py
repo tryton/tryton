@@ -9,6 +9,8 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
@@ -89,9 +91,9 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ('invoice.company', '=', Eval('company', -1)),
             ],
         states=_states, depends=_depends + ['type', 'company'])
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)), required=True,
-        states=_states, depends=_depends + ['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True,
+        states=_states, depends=_depends)
     start_date = fields.Date(
         "Start Date", required=True,
         domain=[
@@ -117,8 +119,6 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
 
     del _states, _depends
 
@@ -188,11 +188,6 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.company:
             return self.company.currency.id
-
-    @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
-        if self.company:
-            return self.company.currency.digits
 
     @classmethod
     @ModelView.button
