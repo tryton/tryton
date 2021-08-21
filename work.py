@@ -12,6 +12,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 
@@ -25,17 +26,16 @@ class Work(metaclass=PoolMeta):
             'company': Eval('company', -1),
             },
         depends=['company'])
-    list_price = fields.Numeric('List Price', digits=price_digits)
-    revenue = fields.Function(fields.Numeric('Revenue',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
-    cost = fields.Function(fields.Numeric('Cost',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
+    list_price = Monetary(
+        "List Price", currency='currency', digits=price_digits)
+    revenue = fields.Function(Monetary(
+            "Revenue", currency='currency', digits='currency'),
+        'get_total')
+    cost = fields.Function(Monetary(
+            "Cost", currency='currency', digits='currency'),
+        'get_total')
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -174,21 +174,6 @@ class Work(metaclass=PoolMeta):
     def on_change_with_currency(self, name=None):
         if self.company:
             return self.company.currency.id
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
-
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.digits
-        return 2
 
     @fields.depends('product', 'company')
     def on_change_product(self):
