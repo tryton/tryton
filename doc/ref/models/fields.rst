@@ -383,6 +383,8 @@ instance.
     Integers can be replaced by a :class:`~trytond.pyson.PYSON` statement.
     If digits is None or any values of the tuple is ``None``, no validation on
     the numbers will be done.
+    The tuple can be replaced by a string containing the name of a
+    :class:`Many2One` pointing to a :class:`DigitsMixin`.
 
 Numeric
 -------

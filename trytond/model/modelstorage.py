@@ -1268,7 +1268,7 @@ class ModelStorage(Model):
                                 gettext('ir.msg_size_validation_record',
                                     **error_args))
 
-                def digits_test(value, digits, field_name):
+                def digits_test(record, digits, field_name):
                     def raise_error(value):
                         error_args = cls.__names__(field_name)
                         error_args['digits'] = digits[1]
@@ -1276,6 +1276,14 @@ class ModelStorage(Model):
                         raise DigitsValidationError(
                             gettext('ir.msg_digits_validation_record',
                                 **error_args))
+
+                    value = getattr(record, field_name)
+                    if isinstance(digits, str):
+                        digit_record = getattr(record, digits)
+                        if digit_record:
+                            digits = digit_record.get_digits()
+                        else:
+                            digits = None
                     if (value is None
                             or not digits
                             or any(d is None for d in digits)):
@@ -1294,12 +1302,10 @@ class ModelStorage(Model):
                         for record in records:
                             digits = _record_eval_pyson(
                                 record, pyson_digits, encoded=True)
-                            digits_test(getattr(record, field_name), digits,
-                                field_name)
+                            digits_test(record, digits, field_name)
                     else:
                         for record in records:
-                            digits_test(getattr(record, field_name),
-                                field.digits, field_name)
+                            digits_test(record, field.digits, field_name)
 
                 if hasattr(field, 'forbidden_chars'):
                     for record in records:

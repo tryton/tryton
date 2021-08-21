@@ -802,6 +802,21 @@ Instance methods:
     (1) the value. If no symbol parameter is supplied then the mixin uses the
     value of attribute named ``symbol``.
 
+===========
+DigitsMixin
+===========
+
+.. class:: DigitsMixin
+
+A mixin_ to manage the digits of :attr:`Float.digits` and
+:attr:`Numeric.digits` from a :class:`Model`.
+
+Instance methods:
+
+.. method:: DigitsMixin.get_digits()
+
+   Return a tuple of two integers to use a ``digits`` attribute.
+
 ================
 sequence_ordered
 ================

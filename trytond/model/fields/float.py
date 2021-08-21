@@ -6,13 +6,15 @@ from .field import Field
 
 def digits_validate(value):
     if value:
-        assert isinstance(value, tuple), 'digits must be a tuple'
-        for i in value:
-            assert isinstance(i, (int, PYSON)), \
-                'digits must be tuple of integers or PYSON'
-            if isinstance(i, PYSON):
-                assert i.types().issubset(set([int, int])), \
-                    'PYSON digits must return an integer'
+        assert isinstance(value, (tuple, str)), \
+                'digits must be a tuple or a string'
+        if isinstance(value, tuple):
+            for i in value:
+                assert isinstance(i, (int, PYSON)), \
+                    'digits must be tuple of integers or PYSON'
+                if isinstance(i, PYSON):
+                    assert i.types().issubset(set([int, int])), \
+                        'PYSON digits must return an integer'
 
 
 class Float(Field):
@@ -31,6 +33,12 @@ class Float(Field):
         :param digits: a list of two integers defining the total
             of digits and the number of decimals of the float.
         '''
+        if isinstance(digits, str):
+            if depends is None:
+                depends = [digits]
+            elif digits not in depends:
+                depends = depends.copy()
+                depends.append(digits)
         super(Float, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,

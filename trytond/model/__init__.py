@@ -10,6 +10,7 @@ from .dictschema import DictSchemaMixin
 from .match import MatchMixin
 from .union import UnionMixin
 from .symbol import SymbolMixin
+from .digits import DigitsMixin
 from .multivalue import MultiValueMixin, ValueMixin
 from .descriptors import dualmethod
 from .order import sequence_ordered
@@ -20,6 +21,6 @@ from .avatar import avatar_mixin
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
-    'MultiValueMixin', 'ValueMixin', 'SymbolMixin',
+    'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
     'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree',
     'avatar_mixin']

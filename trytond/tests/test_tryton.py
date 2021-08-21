@@ -338,7 +338,10 @@ class ModuleTestCase(unittest.TestCase):
                 fields = set()
                 fields |= get_eval_fields(field.domain)
                 if hasattr(field, 'digits'):
-                    fields |= get_eval_fields(field.digits)
+                    if isinstance(field.digits, str):
+                        fields.add(field.digits)
+                    else:
+                        fields |= get_eval_fields(field.digits)
                 if hasattr(field, 'add_remove'):
                     fields |= get_eval_fields(field.add_remove)
                 if hasattr(field, 'size'):
