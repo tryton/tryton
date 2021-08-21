@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sequence"/>
     <field name="sequence"/>
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
     <label name="ratio"/>

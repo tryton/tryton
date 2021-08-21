@@ -5,13 +5,13 @@ this repository contains the full copyright notices and license terms. -->
     <label name="type"/>
     <field name="type" colspan="3"/>
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
     <label name="amount_writeoff"/>
     <field name="amount_writeoff"/>
     <label name="currency_writeoff"/>
-    <field name="currency_writeoff"/>
+    <field name="currency_writeoff" symbol=""/>
     <label name="writeoff"/>
     <field name="writeoff" widget="selection"/>
     <field name="lines" colspan="4"

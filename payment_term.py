@@ -15,6 +15,8 @@ from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, Button
 from trytond.config import config
 
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import PaymentTermValidationError, PaymentTermComputeError
 
 
@@ -105,18 +107,18 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
             }, depends=['type'])
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency',
         states={
             'invisible': Eval('type') != 'fixed',
             'required': Eval('type') == 'fixed',
-            }, depends=['type', 'currency_digits'])
+            },
+        depends=['type'])
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('type') != 'fixed',
             'required': Eval('type') == 'fixed',
             }, depends=['type'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     relativedeltas = fields.One2Many(
         'account.invoice.payment_term.line.delta', 'line', 'Deltas')
 
@@ -138,10 +140,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
                     columns=[sql_table.ratio],
                     values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
-
-    @staticmethod
-    def default_currency_digits():
-        return 2
 
     @staticmethod
     def default_type():
@@ -177,12 +175,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         else:
             self.ratio = self.round(1 / self.divisor,
                 self.__class__.ratio.digits[1])
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     def get_date(self, date):
         for relativedelta_ in self.relativedeltas:
@@ -367,10 +359,9 @@ class TestPaymentTermView(ModelView):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True)
     date = fields.Date('Date')
-    amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    currency_digits = fields.Integer('Currency Digits')
     result = fields.One2Many('account.invoice.payment_term.test.result',
         None, 'Result', readonly=True)
 
@@ -381,12 +372,6 @@ class TestPaymentTermView(ModelView):
         company = Transaction().context.get('company')
         if company:
             return Company(company).currency.id
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     @fields.depends('payment_term', 'date', 'amount', 'currency', 'result')
     def on_change_with_result(self):
@@ -399,8 +384,7 @@ class TestPaymentTermView(ModelView):
                 result.append(Result(
                         date=date,
                         amount=amount,
-                        currency=self.currency,
-                        currency_digits=self.currency.digits))
+                        currency=self.currency))
         self.result = result
         return self._changed_values.get('result', [])
 
@@ -409,7 +393,6 @@ class TestPaymentTermViewResult(ModelView):
     'Test Payment Term'
     __name__ = 'account.invoice.payment_term.test.result'
     date = fields.Date('Date', readonly=True)
-    amount = fields.Numeric('Amount', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', readonly=True)
     currency = fields.Many2One('currency.currency', "Currency")
-    currency_digits = fields.Integer('Currency Digits')

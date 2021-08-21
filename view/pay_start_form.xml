@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
     <label name="description"/>
@@ -12,5 +12,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="payment_method" widget="selection"/>
     <label name="date"/>
     <field name="date"/>
-    <field name="currency_digits" colspan="4" invisible="1"/>
 </form>

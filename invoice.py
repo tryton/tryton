@@ -25,6 +25,7 @@ from trytond.rpc import RPC
 from trytond.config import config
 
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 
 from .exceptions import (
@@ -129,8 +130,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 | (Eval('lines', [0]) & Eval('currency'))),
             },
         depends=_depends)
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
     journal = fields.Many2One(
@@ -203,15 +202,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         states=_states, depends=_depends)
     comment = fields.Text('Comment', states=_states, depends=_depends)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    untaxed_amount = fields.Function(fields.Numeric('Untaxed',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    untaxed_amount = fields.Function(Monetary(
+            "Untaxed", currency='currency', digits='currency'),
         'get_amount', searcher='search_untaxed_amount')
-    tax_amount = fields.Function(fields.Numeric('Tax', digits=(16,
-                Eval('currency_digits', 2)), depends=['currency_digits']),
+    tax_amount = fields.Function(Monetary(
+            "Tax", currency='currency', digits='currency'),
         'get_amount', searcher='search_tax_amount')
-    total_amount = fields.Function(fields.Numeric('Total', digits=(16,
-                Eval('currency_digits', 2)), depends=['currency_digits']),
+    total_amount = fields.Function(Monetary(
+            "Total", currency='currency', digits='currency'),
         'get_amount', searcher='search_total_amount')
     reconciled = fields.Function(fields.Date('Reconciled',
             states={
@@ -249,12 +247,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'invisible': Eval('state') != 'paid',
                 }),
         'get_reconciliation_lines')
-    amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount_to_pay')
-    amount_to_pay = fields.Function(fields.Numeric('Amount to Pay',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount_to_pay')
+    amount_to_pay_today = fields.Function(Monetary(
+            "Amount to Pay Today", currency='currency', digits='currency'),
+        'get_amount_to_pay')
+    amount_to_pay = fields.Function(Monetary(
+            "Amount to Pay", currency='currency', digits='currency'),
+        'get_amount_to_pay')
     invoice_report_cache = fields.Binary('Invoice Report', readonly=True,
         file_id=file_id, store_prefix=store_prefix)
     invoice_report_cache_id = fields.Char('Invoice Report ID', readonly=True)
@@ -438,14 +436,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             return company.currency.id
 
     @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        if Transaction().context.get('company'):
-            company = Company(Transaction().context['company'])
-            return company.currency.digits
-        return 2
-
-    @staticmethod
     def default_company():
         return Transaction().context.get('company')
 
@@ -501,12 +491,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 self.payment_term = self.party.customer_payment_term
             elif self.type == 'in':
                 self.payment_term = self.party.supplier_payment_term
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     @fields.depends('invoice_date')
     def on_change_with_currency_date(self, name=None):
@@ -1778,8 +1762,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states=_states, depends=_depends)
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
         states=_states, depends=_depends)
@@ -1845,20 +1827,20 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 Eval('_parent_invoice', {}).get('invoice_date')),
             },
         depends=['type', 'invoice_type', 'company'] + _depends)
-    unit_price = fields.Numeric('Unit Price', digits=price_digits,
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': _states['readonly'],
             },
         depends=['type'] + _depends)
-    amount = fields.Function(fields.Numeric('Amount',
-            digits=(16, Eval('_parent_invoice', {}).get('currency_digits',
-                    Eval('currency_digits', 2))),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
-            depends=['type', 'currency_digits']), 'get_amount')
+            depends=['type']), 'get_amount')
     description = fields.Text('Description', size=None,
         states=_states, depends=_depends)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
@@ -2012,14 +1994,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return company.currency.id
 
     @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        if Transaction().context.get('company'):
-            company = Company(Transaction().context['company'])
-            return company.currency.digits
-        return 2
-
-    @staticmethod
     def default_unit_digits():
         return 2
 
@@ -2066,12 +2040,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
-        return 2
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
         return 2
 
     @fields.depends(
@@ -2543,11 +2511,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
         states=_states, depends=_depends)
-    base = fields.Numeric('Base', required=True,
-        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
+    base = Monetary(
+        "Base", currency='currency', digits='currency', required=True,
         states=_states, depends=_depends)
-    amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True,
         states=_states,
         depends=['tax', 'base', 'manual'] + _depends)
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -2869,10 +2837,9 @@ class InvoiceReport(Report):
 class PayInvoiceStart(ModelView):
     'Pay Invoice'
     __name__ = 'account.invoice.pay.start'
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'], required=True)
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    currency_digits = fields.Integer('Currency Digits', readonly=True)
     description = fields.Char('Description', size=None)
     company = fields.Many2One('company.company', "Company", readonly=True)
     invoice_account = fields.Many2One(
@@ -2891,16 +2858,6 @@ class PayInvoiceStart(ModelView):
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
-
-    @staticmethod
-    def default_currency_digits():
-        return 2
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
 
 class PayInvoiceAsk(ModelView):
@@ -2921,23 +2878,23 @@ class PayInvoiceAsk(ModelView):
             'required': Eval('type') == 'writeoff',
             },
         depends=['company', 'type'])
-    amount = fields.Numeric('Payment Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            readonly=True, depends=['currency_digits'])
+    amount = Monetary(
+        "Payment Amount",
+        currency='currency', digits='currency', readonly=True)
     currency = fields.Many2One('currency.currency', 'Payment Currency',
             readonly=True)
-    currency_digits = fields.Integer('Payment Currency Digits', readonly=True)
-    amount_writeoff = fields.Numeric('Write-Off Amount',
-        digits=(16, Eval('currency_digits_writeoff', 2)), readonly=True,
-        depends=['currency_digits_writeoff', 'type'], states={
+    amount_writeoff = Monetary(
+        "Write-Off Amount",
+        currency='currency_writeoff', digits='currency_writeoff',
+        readonly=True,
+        states={
             'invisible': Eval('type') != 'writeoff',
-            })
+            },
+        depends=['type'])
     currency_writeoff = fields.Many2One('currency.currency',
         'Write-Off Currency', readonly=True, states={
             'invisible': Eval('type') != 'writeoff',
             }, depends=['type'])
-    currency_digits_writeoff = fields.Integer('Write-Off Currency Digits',
-            required=True, readonly=True)
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
             'Lines to Pay', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
@@ -3018,7 +2975,6 @@ class PayInvoice(Wizard):
         invoice = self.record
         default['company'] = invoice.company.id
         default['currency'] = invoice.currency.id
-        default['currency_digits'] = invoice.currency.digits
         default['amount'] = (invoice.amount_to_pay_today
             or invoice.amount_to_pay)
         default['invoice_account'] = invoice.account.id
@@ -3053,7 +3009,6 @@ class PayInvoice(Wizard):
         default['amount'] = self.start.amount
         default['date'] = self.start.date
         default['currency'] = self.start.currency.id
-        default['currency_digits'] = self.start.currency_digits
         default['company'] = invoice.company.id
 
         with Transaction().set_context(date=self.start.date):
@@ -3076,7 +3031,6 @@ class PayInvoice(Wizard):
                 if not x.reconciliation]
 
         default['currency_writeoff'] = invoice.company.currency.id
-        default['currency_digits_writeoff'] = invoice.company.currency.digits
         default['invoice'] = invoice.id
 
         if (amount_invoice > invoice.amount_to_pay

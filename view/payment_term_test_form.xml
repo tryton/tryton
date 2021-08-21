@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="date"/>
     <field name="date"/>
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
     <field name="result" mode="tree" colspan="4"/>

@@ -40,11 +40,11 @@ this repository contains the full copyright notices and license terms. -->
                     </group>
                     <group col="2" colspan="2" id="amount" yfill="1">
                         <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
-                        <field name="untaxed_amount" xalign="1.0" xexpand="0" symbol="currency"/>
+                        <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
                         <label name="tax_amount" xalign="1.0" xexpand="1"/>
-                        <field name="tax_amount" xalign="1.0" xexpand="0" symbol="currency"/>
+                        <field name="tax_amount" xalign="1.0" xexpand="0"/>
                         <label name="total_amount" xalign="1.0" xexpand="1"/>
-                        <field name="total_amount" xalign="1.0" xexpand="0" symbol="currency"/>
+                        <field name="total_amount" xalign="1.0" xexpand="0"/>
                     </group>
                 </group>
             </group>
@@ -71,9 +71,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="payment_term_date"/>
             <newline/>
             <label name="amount_to_pay_today"/>
-            <field name="amount_to_pay_today" symbol="currency"/>
+            <field name="amount_to_pay_today"/>
             <label name="amount_to_pay"/>
-            <field name="amount_to_pay" symbol="currency"/>
+            <field name="amount_to_pay"/>
             <field name="lines_to_pay" colspan="4" view_ids="account_invoice.move_line_view_list_to_pay"/>
             <button name="reschedule_lines_to_pay" colspan="4"/>
             <field name="payment_lines" colspan="4"
