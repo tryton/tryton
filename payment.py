@@ -19,6 +19,8 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import OverpayWarning
 
 KINDS = [
@@ -75,22 +77,19 @@ class Group(ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
     payment_count = fields.Function(fields.Integer(
             "Payment Count",
             help="The number of payments in the group."),
         'get_payment_aggregated')
-    payment_amount = fields.Function(fields.Numeric(
-            "Payment Total Amount",
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'],
+    payment_amount = fields.Function(Monetary(
+            "Payment Total Amount", currency='currency', digits='currency',
             help="The sum of all payment amounts."),
         'get_payment_aggregated')
-    payment_amount_succeeded = fields.Function(fields.Numeric(
-            "Payment Succeeded",
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'],
+    payment_amount_succeeded = fields.Function(Monetary(
+            "Payment Succeeded", currency='currency', digits='currency',
             help="The sum of the amounts of the successful payments."),
         'get_payment_aggregated')
     payment_complete = fields.Function(fields.Boolean(
@@ -225,9 +224,9 @@ class Group(ModelSQL, ModelView):
             return []
 
     @fields.depends('journal')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.journal:
-            return self.journal.currency.digits
+            return self.journal.currency.id
 
 
 _STATES = {
@@ -250,8 +249,6 @@ class Payment(Workflow, ModelSQL, ModelView):
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'on_change_with_currency',
         searcher='search_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     kind = fields.Selection(KINDS, 'Kind', required=True,
         states=_STATES, depends=_DEPENDS)
     party = fields.Many2One(
@@ -261,9 +258,9 @@ class Payment(Workflow, ModelSQL, ModelView):
             },
         depends=_DEPENDS + ['company'])
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS)
-    amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('currency_digits', 2)), states=_STATES,
-        depends=_DEPENDS + ['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True,
+        states=_STATES, depends=_DEPENDS)
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
         domain=[
             ('move.company', '=', Eval('company', -1)),
@@ -393,12 +390,6 @@ class Payment(Workflow, ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.journal:
             return self.journal.currency.id
-
-    @fields.depends('journal')
-    def on_change_with_currency_digits(self, name=None):
-        if self.journal:
-            return self.journal.currency.digits
-        return 2
 
     @classmethod
     def search_currency(cls, name, clause):

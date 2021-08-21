@@ -11,12 +11,13 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval, If, Bool, Id
+from trytond.pyson import Eval, Id
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
 from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.currency.fields import Monetary
 
 from .exceptions import BlockedWarning, GroupWarning
 from .payment import KINDS
@@ -24,17 +25,14 @@ from .payment import KINDS
 
 class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
-    payment_amount = fields.Function(fields.Numeric('Payment Amount',
-            digits=(16,
-                If(Bool(Eval('second_currency_digits')),
-                    Eval('second_currency_digits', 2),
-                    Eval('currency_digits', 2))),
+    payment_amount = fields.Function(Monetary(
+            "Payment Amount",
+            currency='payment_currency', digits='payment_currency',
             states={
                 'invisible': ~Eval('payment_kind'),
                 },
-            depends=['payment_kind', 'second_currency_digits',
-                'currency_digits']), 'get_payment_amount',
-        searcher='search_payment_amount')
+            depends=['payment_kind']),
+        'get_payment_amount', searcher='search_payment_amount')
     payment_currency = fields.Function(fields.Many2One(
             'currency.currency', "Payment Currency"),
         'get_payment_currency')

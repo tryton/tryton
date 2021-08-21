@@ -12,8 +12,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="line" view_ids="account_payment.move_line_view_list"/>
     <label name="amount"/>
     <field name="amount"/>
-    <label name="currency"/>
-    <field name="currency"/>
     <label name="date"/>
     <field name="date"/>
     <notebook colspan="4">
