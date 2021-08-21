@@ -43,3 +43,20 @@ if not hasattr(locale, 'localize'):
                 formatted = locale._strip_padding(formatted, seps)
         return formatted
     setattr(locale, 'localize', localize)
+
+
+def delocalize(string, monetary=False):
+    conv = locale.localeconv()
+
+    # First, get rid of the grouping
+    ts = conv[monetary and 'mon_thousands_sep' or 'thousands_sep']
+    if ts:
+        string = string.replace(ts, '')
+    # next, replace the decimal point with a dot
+    dd = conv[monetary and 'mon_decimal_point' or 'decimal_point']
+    if dd:
+        string = string.replace(dd, '.')
+    return string
+
+
+setattr(locale, 'delocalize', delocalize)

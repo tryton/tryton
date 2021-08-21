@@ -13,7 +13,8 @@ class Integer(Widget):
     def __init__(self, view, attrs):
         super(Integer, self).__init__(view, attrs)
         self.widget = Gtk.HBox()
-        self.entry = self.mnemonic_widget = NumberEntry()
+        self.entry = self.mnemonic_widget = NumberEntry(
+            monetary=attrs.get('monetary', False))
         self.entry.props.activates_default = True
         self.entry.connect('activate', self.sig_activate)
         self.entry.connect('focus-out-event', lambda *a: self._focus_out())

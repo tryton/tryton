@@ -16,6 +16,8 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
     __digits = None
 
     def __init__(self, *args, **kwargs):
+        self.monetary = kwargs.pop('monetary', False)
+        self.convert = kwargs.pop('convert', float)
         super().__init__(*args, **kwargs)
         self.set_alignment(1.0)
         self.connect('key-press-event', self.__class__.__key_press_event)
@@ -34,14 +36,20 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         text = self.get_text()
         if text:
             try:
-                return locale.atof(text)
+                return self.convert(locale.delocalize(text, self.monetary))
             except ValueError:
                 pass
         return None
 
     @property
     def __decimal_point(self):
-        return locale.localeconv()['decimal_point']
+        return locale.localeconv()[
+            self.monetary and 'mon_decimal_point' or 'decimal_point']
+
+    @property
+    def __thousands_sep(self):
+        return locale.localeconv()[
+            self.monetary and 'mon_thousands_sep' or 'thousands_sep']
 
     # XXX: Override vfunc because position is inout
     # https://gitlab.gnome.org/GNOME/pygobject/issues/12
@@ -50,9 +58,9 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         text = self.get_buffer().get_text()
         text = text[:position] + new_text + text[position:]
         value = None
-        if text not in ['-', self.__decimal_point]:
+        if text not in ['-', self.__decimal_point, self.__thousands_sep]:
             try:
-                value = locale.atof(text)
+                value = self.convert(locale.delocalize(text, self.monetary))
             except ValueError:
                 return position
         if (value and self.__digits is not None

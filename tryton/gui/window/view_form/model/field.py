@@ -396,7 +396,8 @@ class FloatField(Field):
 
     def convert(self, value):
         try:
-            return locale.atof(value)
+            return float(locale.delocalize(
+                    value, self.attrs.get('monetary', False)))
         except ValueError:
             return self._default
 
@@ -423,7 +424,8 @@ class FloatField(Field):
                 p = int(digits[1])
             else:
                 p = -int(d.as_tuple().exponent)
-            return locale.localize('{0:.{1}f}'.format(d, p), True)
+            monetary = self.attrs.get('monetary', False)
+            return locale.localize('{0:.{1}f}'.format(d, p), True, monetary)
         else:
             return ''
 
@@ -432,7 +434,8 @@ class NumericField(FloatField):
 
     def convert(self, value):
         try:
-            return Decimal(locale.delocalize(value))
+            return Decimal(locale.delocalize(
+                    value, self.attrs.get('monetary', False)))
         except decimal.InvalidOperation:
             return self._default
 
@@ -449,7 +452,8 @@ class IntegerField(FloatField):
 
     def convert(self, value):
         try:
-            return locale.atoi(value)
+            return int(locale.delocalize(
+                    value, self.attrs.get('monetary', False)))
         except ValueError:
             return self._default
 
