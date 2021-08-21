@@ -9,11 +9,11 @@
     <label name="supplier_invoice_line"/>
     <field name="supplier_invoice_line"/>
     <label name="value"/>
-    <field name="value" symbol="currency"/>
+    <field name="value"/>
     <label name="depreciated_amount"/>
-    <field name="depreciated_amount" symbol="currency"/>
+    <field name="depreciated_amount"/>
     <label name="residual_value"/>
-    <field name="residual_value" symbol="currency"/>
+    <field name="residual_value"/>
     <label name="purchase_date"/>
     <field name="purchase_date"/>
     <label name="start_date"/>

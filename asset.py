@@ -18,6 +18,7 @@ from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
     Button)
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
+from trytond.modules.currency.fields import Monetary
 
 from .exceptions import PrintDepreciationTableError
 
@@ -98,8 +99,6 @@ class Asset(Workflow, ModelSQL, ModelView):
         required=True)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -116,41 +115,39 @@ class Asset(Workflow, ModelSQL, ModelView):
         depends=['state'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
-    value = fields.Numeric('Value',
-        digits=(16, Eval('currency_digits', 2)),
+    value = Monetary(
+        "Value", currency='currency', digits='currency',
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['currency_digits', 'state'],
+        depends=['state'],
         required=True,
         help="The value of the asset when purchased.")
-    depreciated_amount = fields.Numeric("Depreciated Amount",
-        digits=(16, Eval('currency_digits', 2)),
+    depreciated_amount = Monetary(
+        "Depreciated Amount", currency='currency', digits='currency',
         domain=[
             ('depreciated_amount', '<=', Eval('value')),
             ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['currency_digits', 'value', 'state'],
+        depends=['value', 'state'],
         required=True,
         help="The amount already depreciated at the start date.")
-    depreciating_value = fields.Function(fields.Numeric(
-            "Depreciating Value",
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'],
+    depreciating_value = fields.Function(Monetary(
+            "Depreciating Value", currency='currency', digits='currency',
             help="The value of the asset at the start date."),
         'on_change_with_depreciating_value')
-    residual_value = fields.Numeric('Residual Value',
+    residual_value = Monetary(
+        "Residual Value", currency='currency', digits='currency',
+        required=True,
         domain=[
             ('residual_value', '<=', Eval('depreciating_value')),
             ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['currency_digits', 'depreciating_value', 'state'],
-        required=True,
-        digits=(16, Eval('currency_digits', 2)))
+        depends=['depreciating_value', 'state'])
     purchase_date = fields.Date('Purchase Date', states={
             'readonly': (Bool(Eval('supplier_invoice_line', 1))
                 | Eval('lines', [0])
@@ -318,12 +315,6 @@ class Asset(Workflow, ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.company:
             return self.company.currency.id
-
-    @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
-        if self.company:
-            return self.company.currency.digits
-        return 2
 
     @fields.depends('supplier_invoice_line', 'unit')
     def on_change_supplier_invoice_line(self):
@@ -742,23 +733,23 @@ class AssetLine(ModelSQL, ModelView):
     asset = fields.Many2One('account.asset', 'Asset', required=True,
         ondelete='CASCADE', readonly=True)
     date = fields.Date('Date', readonly=True)
-    depreciation = fields.Numeric('Depreciation',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'],
+    depreciation = Monetary(
+        "Depreciation", currency='currency', digits='currency',
         required=True, readonly=True)
-    acquired_value = fields.Numeric('Acquired Value', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
-    depreciable_basis = fields.Numeric('Depreciable Basis', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
-    actual_value = fields.Numeric('Actual Value', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
-    accumulated_depreciation = fields.Numeric(
-        'Accumulated Depreciation', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    acquired_value = Monetary(
+        "Acquired Value", currency='currency', digits='currency',
+        readonly=True)
+    depreciable_basis = Monetary(
+        "Depreciable Basis", currency='currency', digits='currency',
+        readonly=True)
+    actual_value = Monetary(
+        "Actual Value", currency='currency', digits='currency', readonly=True)
+    accumulated_depreciation = Monetary(
+        "Accumulated Depreciation", currency='currency', digits='currency',
+        readonly=True)
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -770,11 +761,6 @@ class AssetLine(ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.asset:
             return self.asset.currency.id
-
-    @fields.depends('asset', '_parent_asset.currency_digits')
-    def on_change_with_currency_digits(self, name=None):
-        if self.asset:
-            return self.asset.currency_digits
 
 
 class AssetUpdateMove(ModelSQL):
