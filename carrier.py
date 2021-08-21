@@ -4,8 +4,10 @@ from decimal import Decimal
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, Bool, Id
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
+
+from trytond.modules.currency.fields import Monetary
 
 
 class Carrier(metaclass=PoolMeta):
@@ -29,9 +31,6 @@ class Carrier(metaclass=PoolMeta):
             },
         depends=['carrier_cost_method', 'weight_price_list'],
         help="The currency of the price.")
-    weight_currency_digits = fields.Function(fields.Integer(
-            'Weight Currency Digits'),
-        'on_change_with_weight_currency_digits')
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',
         'Price List',
         states={
@@ -52,24 +51,10 @@ class Carrier(metaclass=PoolMeta):
     def default_weight_uom_digits():
         return 2
 
-    @staticmethod
-    def default_weight_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            return Company(company).currency.digits
-        return 2
-
     @fields.depends('weight_uom')
     def on_change_with_weight_uom_digits(self, name=None):
         if self.weight_uom:
             return self.weight_uom.digits
-        return 2
-
-    @fields.depends('weight_currency')
-    def on_change_with_weight_currency_digits(self, name=None):
-        if self.weight_currency:
-            return self.weight_currency.digits
         return 2
 
     def compute_weight_price(self, weight):
@@ -106,12 +91,20 @@ class WeightPriceList(ModelSQL, ModelView):
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
         help="The lower limit for the price.")
-    price = fields.Numeric('Price',
-        digits=(16, Eval('_parent_carrier', {}).get(
-                'weight_currency_digits', 2)),
+    price = Monetary(
+        "Price", currency='currency', digits='currency',
         help="The price of the carrier service.")
+
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @classmethod
     def __setup__(cls):
         super(WeightPriceList, cls).__setup__()
         cls._order.insert(0, ('weight', 'ASC'))
+
+    @fields.depends('carrier', '_parent_carrier.weight_currency')
+    def on_change_with_currency(self, name=None):
+        if self.carrier and self.carrier.weight_currency:
+            return self.carrier.weight_currency.id
