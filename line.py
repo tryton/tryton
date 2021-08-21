@@ -12,16 +12,19 @@ from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Line(ModelSQL, ModelView):
     'Analytic Line'
     __name__ = 'analytic_account.line'
-    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-        required=True, depends=['currency_digits'])
-    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-        required=True, depends=['currency_digits'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
+    debit = Monetary(
+        "Debit", currency='currency', digits='currency', required=True)
+    credit = Monetary(
+        "Credit", currency='currency', digits='currency', required=True)
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_company')
     account = fields.Many2One('analytic_account.account', 'Account',
@@ -74,10 +77,9 @@ class Line(ModelSQL, ModelView):
         return Decimal(0)
 
     @fields.depends('move_line', '_parent_move_line.account')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.move_line and self.move_line.account:
-            return self.move_line.account.company.currency.digits
-        return 2
+            return self.move_line.account.company.currency.id
 
     @fields.depends('move_line', '_parent_move_line.account')
     def on_change_with_company(self, name=None):

@@ -7,5 +7,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="debit"/>
     <field name="credit"/>
     <field name="balance"/>
-    <field name="currency"/>
 </tree>

@@ -17,6 +17,8 @@ from trytond.transaction import Transaction
 from trytond.tools import lstrip_wildcard
 from trytond.pool import Pool
 
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import AccountValidationError
 
 
@@ -31,8 +33,6 @@ class Account(
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     type = fields.Selection([
         ('root', 'Root'),
         ('view', 'View'),
@@ -68,14 +68,14 @@ class Account(
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    balance = fields.Function(fields.Numeric('Balance',
-        digits=(16, Eval('currency_digits', 1)), depends=['currency_digits']),
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
         'get_balance')
-    credit = fields.Function(fields.Numeric('Credit',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    credit = fields.Function(Monetary(
+            "Credit", currency='currency', digits='currency'),
         'get_credit_debit')
-    debit = fields.Function(fields.Numeric('Debit',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    debit = fields.Function(Monetary(
+            "Debit", currency='currency', digits='currency'),
         'get_credit_debit')
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -143,12 +143,6 @@ class Account(
         if self.company:
             return self.company.currency.id
 
-    @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
-        if self.company:
-            return self.company.currency.digits
-        return 2
-
     @fields.depends('parent', 'type',
         '_parent_parent.id', '_parent_parent.root', '_parent_parent.type')
     def on_change_parent(self):
@@ -207,8 +201,7 @@ class Account(
                     ])
             for child in childs:
                 balance += account_sum[child.id]
-            exp = Decimal(str(10.0 ** -account.currency_digits))
-            balances[account.id] = balance.quantize(exp)
+            balances[account.id] = account.currency.round(balance)
         return balances
 
     @classmethod
@@ -256,9 +249,8 @@ class Account(
                 result[name][account_id] += value
         for account in accounts:
             for name in names:
-                exp = Decimal(str(10.0 ** -account.currency_digits))
-                result[name][account.id] = (
-                    result[name][account.id].quantize(exp))
+                result[name][account.id] = account.currency.round(
+                    result[name][account.id])
         return result
 
     def get_rec_name(self, name):
