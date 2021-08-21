@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="pattern" colspan="6"/>
 
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
     <group id="amount" col="-1" colspan="2">

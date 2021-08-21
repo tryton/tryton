@@ -13,6 +13,7 @@ from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.tools import decistmt
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from .exceptions import FormulaError
 
@@ -113,17 +114,13 @@ class Promotion(
             ],
         depends=['company'])
 
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    amount = Monetary("Amount", currency='currency', digits='currency')
     currency = fields.Many2One(
         'currency.currency', "Currency",
         states={
             'required': Bool(Eval('amount', 0)),
             },
         depends=['amount'])
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
     untaxed_amount = fields.Boolean(
         "Untaxed Amount",
         states={
@@ -170,11 +167,6 @@ class Promotion(
         if self.unit:
             return self.unit.digits
         return 2
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
 
     @classmethod
     def validate(cls, promotions):
