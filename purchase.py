@@ -16,6 +16,7 @@ from trytond.tools import grouped_slice, firstline
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 
@@ -127,15 +128,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                 | (Eval('lines', [0]) & Eval('currency'))),
             },
         depends=_depends)
-    currency_digits = fields.Function(
-        fields.Integer('Currency Digits'), 'on_change_with_currency_digits')
     total_amount = fields.Function(
-        fields.Numeric('Total', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+        Monetary("Total", currency='currency', digits='currency'),
         'get_amount')
-    total_amount_cache = fields.Numeric(
-        'Total Cache', digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    total_amount_cache = Monetary(
+        "Total Cache", currency='currency', digits='currency')
     lines = fields.One2Many(
         'purchase.requisition.line', 'requisition', 'Lines',
         states=_states, depends=_depends)
@@ -247,21 +244,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         company = Transaction().context.get('company')
         if company:
             return Company(company).currency.id
-
-    @classmethod
-    def default_currency_digits(cls):
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.digits
-        return 2
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     @fields.depends('lines', 'currency')
     def on_change_with_total_amount(self):
@@ -476,15 +458,14 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         depends=['product'] + _depends)
     unit_digits = fields.Function(
         fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
-    unit_price = fields.Numeric(
-        'Unit Price', digits=price_digits, states=_states, depends=_depends)
+    unit_price = Monetary(
+        'Unit Price', currency='currency', digits=price_digits,
+        states=_states, depends=_depends)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    amount = fields.Function(
-        fields.Numeric('Amount',
-            digits=(
-                16, Eval('_parent_requisition', {}).get('currency_digits', 2)),
-            depends=_depends), 'on_change_with_amount')
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
+        'on_change_with_amount')
     purchase_requests = fields.One2Many(
         'purchase.request', 'origin', 'Purchase Request', readonly=True)
     purchase_requisition_state = fields.Function(fields.Selection(
