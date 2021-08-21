@@ -1,3 +1,4 @@
+* Support monetary and symbol field attributes
 * Support digits from relation field
 * Add accesskey to widgets and buttons
 * Support Binary field in CSV import/export
