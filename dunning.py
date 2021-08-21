@@ -13,6 +13,8 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.pool import Pool
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Procedure(ModelSQL, ModelView):
     'Account Dunning Procedure'
@@ -113,28 +115,23 @@ class Dunning(ModelSQL, ModelView):
                 },
             depends=['company']),
         'get_line_field', searcher='search_line_field')
-    amount = fields.Function(fields.Numeric('Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
         'get_amount')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_line_field')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_line_field')
     maturity_date = fields.Function(fields.Date('Maturity Date'),
         'get_line_field', searcher='search_line_field')
-    amount_second_currency = fields.Function(fields.Numeric(
+    amount_second_currency = fields.Function(Monetary(
             'Amount Second Currency',
-            digits=(16, Eval('second_currency_digits', 2)),
+            currency='second_currency', digits='second_currency',
             states={
                 'invisible': Eval('currency') == Eval('second_currency'),
                 },
-            depends=['second_currency_digits', 'currency', 'second_currency']),
+            depends=['currency', 'second_currency']),
         'get_amount_second_currency')
     second_currency = fields.Function(fields.Many2One('currency.currency',
             'Second Currency'), 'get_second_currency')
-    second_currency_digits = fields.Function(fields.Integer(
-            'Second Currency Digits'), 'get_second_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -200,12 +197,6 @@ class Dunning(ModelSQL, ModelView):
             return self.line.second_currency.id
         else:
             return self.line.account.company.currency.id
-
-    def get_second_currency_digits(self, name):
-        if self.line.second_currency:
-            return self.line.second_currency.digits
-        else:
-            return self.line.account.company.currency.digits
 
     @classmethod
     def search_active(cls, name, clause):

@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="line" expand="1"/>
     <field name="party" expand="2"/>
-    <field name="amount" symbol="currency"/>
-    <field name="amount_second_currency" symbol="second_currency"/>
+    <field name="amount"/>
+    <field name="amount_second_currency"/>
     <field name="maturity_date"/>
     <field name="level" expand="1"/>
     <field name="blocked"/>
