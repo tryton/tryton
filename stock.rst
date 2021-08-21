@@ -44,6 +44,9 @@ Stock
 `Package Shipping DPD </projects/modules-stock-package-shipping-dpd/en/latest>`_
     Connects with DPD shipping service.
 
+`Package Shipping Sendcloud </projects/modules-stock-package-shipping-sendcloud/en/latest>`_
+    Connects to the Sendcloud shipping service.
+
 `Package Shipping UPS </projects/modules-stock-package-shipping-ups/en/latest>`_
     Connects with UPS shipping service.
 
