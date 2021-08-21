@@ -12,5 +12,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="second_period_amount"/>
     <field name="third_period_amount"/>
     <field name="fourth_period_amount"/>
-    <field name="currency"/>
 </tree>

@@ -25,6 +25,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
     Button
 from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
+from trytond.modules.currency.fields import Monetary
 
 from .exceptions import PrintError
 
@@ -380,27 +381,16 @@ class ESVATList(ModelSQL, ModelView):
     province_code = fields.Function(fields.Char("Province Code"),
         'get_province_code', searcher='search_province_code')
     code = fields.Char("Code")
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    first_period_amount = fields.Numeric(
-        "First Period Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    second_period_amount = fields.Numeric(
-        "Second Period Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    third_period_amount = fields.Numeric(
-        "Third Period Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    fourth_period_amount = fields.Numeric(
-        "Fourth Period Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    amount = Monetary("Amount", currency='currency', digits='currency')
+    first_period_amount = Monetary(
+        "First Period Amount", currency='currency', digits='currency')
+    second_period_amount = Monetary(
+        "Second Period Amount", currency='currency', digits='currency')
+    third_period_amount = Monetary(
+        "Third Period Amount", currency='currency', digits='currency')
+    fourth_period_amount = Monetary(
+        "Fourth Period Amount", currency='currency', digits='currency')
     currency = fields.Many2One('currency.currency', "Currency")
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
-
-    def get_currency_digits(self, name):
-        return self.currency.digits
 
     @classmethod
     def get_province_code(cls, records, name):
@@ -771,21 +761,21 @@ class ESVATBook(ModelSQL, ModelView):
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier")
     tax = fields.Many2One('account.tax', "Tax")
-    base_amount = fields.Numeric("Base Amount",
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    tax_amount = fields.Numeric("Tax Amount",
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    base_amount = Monetary(
+        "Base Amount", currency='currency', digits='currency')
+    tax_amount = Monetary(
+        "Tax Amount", currency='currency', digits='currency')
     surcharge_tax = fields.Many2One('account.tax', "Surcharge Tax")
-    surcharge_tax_amount = fields.Numeric("Surcharge Tax Amount",
-        digits=(16, Eval('currency_digits', 2)),
+    surcharge_tax_amount = Monetary(
+        "Surcharge Tax Amount", currency='currency', digits='currency',
         states={
             'invisible': ~(Eval('surcharge_tax', None)),
             },
-        depends=['currency_digits', 'surcharge_tax'])
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'get_currency_digits')
+        depends=['surcharge_tax'])
+
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'get_currency')
 
     @classmethod
     def included_tax_groups(cls):
@@ -891,8 +881,8 @@ class ESVATBook(ModelSQL, ModelView):
                     ]))
         return query
 
-    def get_currency_digits(self, name):
-        return self.invoice.company.currency.digits
+    def get_currency(self, name):
+        return self.invoice.company.currency.id
 
 
 class VATBookReport(Report):
