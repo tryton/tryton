@@ -5,6 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number" expand="2"/>
     <field name="product"/>
     <field name="value" expand="1"/>
-    <field name="currency"/>
     <field name="company"/>
 </tree>

@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
 
     <label name="value"/>
-    <field name="value"/>
+    <field name="value" symbol=""/>
     <label name="currency"/>
     <field name="currency"/>
 

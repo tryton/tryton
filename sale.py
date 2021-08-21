@@ -14,6 +14,7 @@ from trytond.sendmail import sendmail_transactional
 from trytond.transaction import Transaction
 
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.currency.fields import Monetary
 
 
 class Configuration(metaclass=PoolMeta):
@@ -73,9 +74,9 @@ class GiftCard(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         states=_states, depends=_depends + ['company'])
-    value = fields.Numeric(
-        "Value", digits=(16, Eval('currency_digits', 2)), required=True,
-        states=_states, depends=_depends + ['currency_digits'])
+    value = Monetary(
+        "Value", currency='currency', digits='currency', required=True,
+        states=_states, depends=_depends)
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states=_states, depends=_depends)
@@ -84,9 +85,6 @@ class GiftCard(ModelSQL, ModelView):
         "Origin", selection='get_origin', select=True, readonly=True)
     spent_on = fields.Reference(
         "Spent On", selection='get_spent_on', select=True, readonly=True)
-
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
 
     del _states
     del _depends
@@ -106,11 +104,6 @@ class GiftCard(ModelSQL, ModelView):
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
 
     @classmethod
     def _get_origin(cls):
