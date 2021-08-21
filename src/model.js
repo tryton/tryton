@@ -1888,6 +1888,22 @@
                 factor = 1;
             }
             var digits = record.expr_eval(this.description.digits);
+            if (typeof(digits) == 'string') {
+                if (!(digits in record.model.fields)) {
+                    return;
+                }
+                var digits_field = record.model.fields[digits];
+                var digits_name = digits_field.description.relation;
+                var digits_id = digits_field.get(record);
+                if (digits_name && (digits_id !== null) && (digits_id >= 0)) {
+                    digits = Sao.rpc({
+                        'method': 'model.' + digits_name + '.get_digits',
+                        'params': [digits_id, {}],
+                    }, record.model.session, false);
+                } else {
+                    return;
+                }
+            }
             if (!digits || !digits.every(function(e) {
                 return e !== null;
             })) {
