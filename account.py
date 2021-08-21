@@ -9,6 +9,8 @@ from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
@@ -43,15 +45,9 @@ class ECSalesList(ModelSQL, ModelView):
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier")
     code = fields.Char("Code")
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency')
     currency = fields.Many2One('currency.currency', "Currency")
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
-
-    def get_currency_digits(self, name):
-        return self.currency.digits
 
     @classmethod
     def table_query(cls):

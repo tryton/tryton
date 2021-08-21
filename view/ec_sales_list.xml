@@ -6,5 +6,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party_tax_identifier" expand="1"/>
     <field name="code"/>
     <field name="amount"/>
-    <field name="currency"/>
 </tree>
