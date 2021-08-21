@@ -13,6 +13,7 @@ from trytond.tools import decistmt
 from trytond.transaction import Transaction
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.modules.currency.fields import Monetary
 
 from .exceptions import FormulaError
 
@@ -157,9 +158,8 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         depends=['sale_state'])
     description = fields.Char(
         "Description", required=True, states=_states, depends=_depends)
-    amount = fields.Numeric(
-        "Amount",
-        digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency',
         states=_states, depends=_depends)
     account = fields.Many2One(
         'account.account', "Account", required=True,
@@ -184,6 +184,9 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
             'get_sale_states', "Sale State"), 'on_change_with_sale_state')
     sale_company = fields.Function(fields.Many2One(
             'company.company', "Company"), 'on_change_with_sale_company')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     del _states
     del _depends
@@ -208,6 +211,11 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
     def on_change_with_sale_company(self, name=None):
         if self.sale and self.sale.company:
             return self.sale.company.id
+
+    @fields.depends('sale', '_parent_sale.currency')
+    def on_change_with_currency(self, name=None):
+        if self.sale and self.sale.currency:
+            return self.sale.currency.id
 
     @classmethod
     def copy(cls, conditions, default=None):
