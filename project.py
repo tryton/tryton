@@ -21,6 +21,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateAction
 from trytond.tools import reduce_ids, grouped_slice
 
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import InvoicingError
 
 
@@ -354,19 +356,19 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         'on_change_with_invoice_method')
     quantity_to_invoice = fields.Function(
         fields.Float("Quantity to Invoice"), '_get_invoice_values')
-    amount_to_invoice = fields.Function(fields.Numeric("Amount to Invoice",
-            digits=(16, Eval('currency_digits', 2)),
+    amount_to_invoice = fields.Function(Monetary(
+            "Amount to Invoice", currency='currency', digits='currency',
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
-            depends=['currency_digits', 'invoice_method']),
+            depends=['invoice_method']),
         'get_total')
-    invoiced_amount = fields.Function(fields.Numeric('Invoiced Amount',
-            digits=(16, Eval('currency_digits', 2)),
+    invoiced_amount = fields.Function(Monetary(
+            "Invoiced Amount", currency='currency', digits='currency',
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
-            depends=['currency_digits', 'invoice_method']),
+            depends=['invoice_method']),
         'get_total')
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         readonly=True)
