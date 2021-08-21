@@ -20,6 +20,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from .exceptions import InvalidRecurrence, InvoiceError
 
@@ -515,8 +516,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         fields.Many2One('product.uom.category', "Service Unit Category"),
         'on_change_with_service_unit_category')
 
-    unit_price = fields.Numeric(
-        "Unit Price", digits=price_digits,
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits,
         states={
             'readonly': Eval('subscription_state') != 'draft',
             },
