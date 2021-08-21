@@ -14,6 +14,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import lstrip_wildcard
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 
 from .exceptions import PurchaseUOMWarning
@@ -454,8 +455,8 @@ class ProductSupplierPrice(
         required=True,
         domain=[('quantity', '>=', 0)],
         help='Minimal quantity.')
-    unit_price = fields.Numeric('Unit Price', required=True,
-        digits=price_digits)
+    unit_price = Monetary(
+        "Unit Price", currency='currency', required=True, digits=price_digits)
 
     uom = fields.Function(fields.Many2One('product.uom', 'UOM',
         help="The unit in which the quantity is specified."),

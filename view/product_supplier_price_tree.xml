@@ -4,5 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="product_supplier" expand="1"/>
     <field name="quantity" symbol="uom"/>
-    <field name="unit_price" symbol="currency"/>
+    <field name="unit_price"/>
 </tree>

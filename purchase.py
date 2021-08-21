@@ -27,6 +27,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 from .exceptions import PurchaseQuotationError, PartyLocationError
@@ -152,29 +153,24 @@ class Purchase(
                 | (Eval('lines', [0]) & Eval('currency'))),
             },
         depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
         states=_states, depends=_depends)
     comment = fields.Text('Comment')
-    untaxed_amount = fields.Function(fields.Numeric('Untaxed',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    untaxed_amount_cache = fields.Numeric('Untaxed Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    tax_amount = fields.Function(fields.Numeric('Tax',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    tax_amount_cache = fields.Numeric('Tax Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    total_amount = fields.Function(fields.Numeric('Total',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    total_amount_cache = fields.Numeric('Total Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    untaxed_amount = fields.Function(Monetary(
+            "Untaxed", currency='currency', digits='currency'),
+        'get_amount')
+    untaxed_amount_cache = Monetary(
+        "Untaxed Cache", currency='currency', digits='currency')
+    tax_amount = fields.Function(Monetary(
+            "Tax", currency='currency', digits='currency'),
+        'get_amount')
+    tax_amount_cache = Monetary(
+        "Tax Cache", currency='currency', digits='currency')
+    total_amount = fields.Function(Monetary(
+            "Total", currency='currency', digits='currency'),
+        'get_amount')
+    total_amount_cache = Monetary(
+        "Total Cache", currency='currency', digits='currency')
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'Based On Order'),
@@ -397,15 +393,6 @@ class Purchase(
             company = Company(company)
             return company.currency.id
 
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.digits
-        return 2
-
     @classmethod
     def default_invoice_method(cls, **pattern):
         Configuration = Pool().get('purchase.configuration')
@@ -430,7 +417,6 @@ class Purchase(
         self.invoice_method = self.default_invoice_method()
         if not self.lines:
             self.currency = self.default_currency()
-            self.currency_digits = self.default_currency_digits()
         if self.party:
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
@@ -459,7 +445,6 @@ class Purchase(
                 row = cursor.fetchone()
                 if row:
                     self.currency, self.payment_term, self.invoice_method = row
-                    self.currency_digits = self.currency.digits
 
             if self.party.supplier_payment_term:
                 self.payment_term = self.party.supplier_payment_term
@@ -471,12 +456,6 @@ class Purchase(
                 type='invoice')
         elif self.party:
             self.invoice_address = self.party.address_get(type='invoice')
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
@@ -1115,15 +1094,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    unit_price = fields.Numeric('Unit Price', digits=price_digits,
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('purchase_state') != 'draft',
             }, depends=['type', 'purchase_state'])
-    amount = fields.Function(fields.Numeric('Amount',
-            digits=(16,
-                Eval('_parent_purchase', {}).get('currency_digits', 2)),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
