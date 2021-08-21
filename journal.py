@@ -16,6 +16,7 @@ from trytond.tools import reduce_ids, grouped_slice, lstrip_wildcard
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.modules.currency.fields import Monetary
 
 STATES = {
     'readonly': Eval('state') == 'close',
@@ -50,17 +51,18 @@ class Journal(
                 }))
     sequences = fields.One2Many(
         'account.journal.sequence', 'journal', "Sequences")
-    debit = fields.Function(fields.Numeric('Debit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_debit_credit_balance')
-    credit = fields.Function(fields.Numeric('Credit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_debit_credit_balance')
-    balance = fields.Function(fields.Numeric('Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_debit_credit_balance')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
+    debit = fields.Function(Monetary(
+            "Debit", currency='currency', digits='currency'),
+        'get_debit_credit_balance')
+    credit = fields.Function(Monetary(
+            "Credit", currency='currency', digits='currency'),
+        'get_debit_credit_balance')
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
+        'get_debit_credit_balance')
+
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
 
     @classmethod
     def __setup__(cls):
@@ -86,16 +88,16 @@ class Journal(
             ]
 
     @classmethod
-    def get_currency_digits(cls, journals, name):
+    def get_currency(cls, journals, name):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
         if company_id:
             company = Company(company_id)
-            digits = company.currency.digits
+            currency_id = company.currency.id
         else:
-            digits = 2
-        return dict.fromkeys([j.id for j in journals], digits)
+            currency_id = None
+        return dict.fromkeys([j.id for j in journals], currency_id)
 
     @classmethod
     def get_debit_credit_balance(cls, journals, names):

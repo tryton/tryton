@@ -21,6 +21,8 @@ from trytond.transaction import Transaction
 from trytond.tools import cursor_dict, lstrip_wildcard
 from trytond.pool import Pool
 
+from trytond.modules.currency.fields import Monetary
+
 from .common import PeriodMixin, ActivePeriodMixin
 
 KINDS = [
@@ -137,11 +139,8 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
     childs = fields.One2Many('account.tax.code', 'parent', 'Children')
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
-    amount = fields.Function(fields.Numeric(
-            "Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
         'get_amount')
     template = fields.Many2One('account.tax.code.template', 'Template')
     template_override = fields.Boolean('Override Template',
@@ -176,12 +175,6 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         if self.company:
             return self.company.currency.id
 
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
-
     @classmethod
     def get_amount(cls, codes, name):
         result = {}
@@ -191,9 +184,8 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
         for code in childs:
-            exp = Decimal(str(10.0 ** -code.currency_digits))
-            result[code.id] = sum(
-                (l.value for l in code.lines), Decimal(0)).quantize(exp)
+            result[code.id] = code.currency.round(
+                sum((l.value for l in code.lines), Decimal(0)))
             parents[code.id] = code.parent.id if code.parent else None
 
         ids = set(map(int, childs))
@@ -760,25 +752,22 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             },
         depends=['template'])
 
-    invoice_base_amount = fields.Function(fields.Numeric(
-            "Invoice Base Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    invoice_base_amount = fields.Function(Monetary(
+            "Invoice Base Amount", currency='currency', digits='currency'),
         'get_amount')
-    invoice_tax_amount = fields.Function(fields.Numeric(
-            "Invoice Tax Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    invoice_tax_amount = fields.Function(Monetary(
+            "Invoice Tax Amount", currency='currency', digits='currency'),
         'get_amount')
-    credit_base_amount = fields.Function(fields.Numeric(
-            "Credit Base Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    credit_base_amount = fields.Function(Monetary(
+            "Credit Base Amount", currency='currency', digits='currency'),
         'get_amount')
-    credit_tax_amount = fields.Function(fields.Numeric(
-            "Credit Tax Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    credit_tax_amount = fields.Function(Monetary(
+            "Credit Tax Amount", currency='currency', digits='currency'),
         'get_amount')
 
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     del _states
 
@@ -897,10 +886,9 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         return [('move_line.move.period', 'in', periods)]
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
-        return 2
+            return self.company.currency.id
 
     @classmethod
     def copy(cls, taxes, default=None):
@@ -1199,10 +1187,11 @@ class TaxableMixin(object):
 class TaxLine(ModelSQL, ModelView):
     'Tax Line'
     __name__ = 'account.tax.line'
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        required=True, depends=['currency_digits'])
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True)
     type = fields.Selection([
             ('tax', "Tax"),
             ('base', "Base"),
@@ -1264,11 +1253,10 @@ class TaxLine(ModelSQL, ModelView):
                         & (table.code.in_(
                                 [invoice_base_code, credit_note_base_code]))))
 
-    @fields.depends('move_line', '_parent_move_line.currency_digits')
-    def on_change_with_currency_digits(self, name=None):
-        if self.move_line:
-            return self.move_line.currency_digits
-        return 2
+    @fields.depends('move_line', '_parent_move_line.currency')
+    def on_change_with_currency(self, name=None):
+        if self.move_line and self.move_line.currency:
+            return self.move_line.currency.id
 
     @fields.depends('_parent_move_line.account', 'move_line')
     def on_change_with_company(self, name=None):

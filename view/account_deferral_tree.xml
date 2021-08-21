@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="account"/>
     <field name="fiscalyear"/>
-    <field name="debit" symbol="currency"/>
-    <field name="credit" symbol="currency"/>
-    <field name="amount_second_currency" symbol="second_currency"/>
+    <field name="debit"/>
+    <field name="credit"/>
+    <field name="amount_second_currency"/>
 </tree>

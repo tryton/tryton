@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     </group>
 
     <label name="amount"/>
-    <field name="amount" symbol="currency"/>
+    <field name="amount"/>
 
     <label name="number"/>
     <field name="number"/>

@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="origin"/>
     <field name="reconciliation"/>
     <field name="state"/>
-    <field name="debit" sum="Debit" symbol="currency"/>
-    <field name="credit" sum="Credit" symbol="currency"/>
-    <field name="balance" symbol="currency"/>
+    <field name="debit" sum="Debit"/>
+    <field name="credit" sum="Credit"/>
+    <field name="balance"/>
 </tree>

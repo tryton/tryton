@@ -25,6 +25,8 @@ from trytond.rpc import RPC
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.config import config
 
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import (PostError, MoveDatesError, CancelWarning,
     ReconciliationError, DeleteDelegatedWarning, GroupLineError,
     SplitLineError, CancelDelegatedWarning)
@@ -612,14 +614,14 @@ class Line(ModelSQL, ModelView):
         }
     _depends = ['move_state']
 
-    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-        required=True, states=_states,
-        depends=['currency_digits', 'credit', 'tax_lines', 'journal']
-        + _depends)
-    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-        required=True, states=_states,
-        depends=['currency_digits', 'debit', 'tax_lines', 'journal']
-        + _depends)
+    debit = Monetary(
+        "Debit", currency='currency', digits='currency', required=True,
+        states=_states,
+        depends=['credit', 'tax_lines', 'journal'] + _depends)
+    credit = Monetary(
+        "Credit", currency='currency', digits='currency', required=True,
+        states=_states,
+        depends=['debit', 'tax_lines', 'journal'] + _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -677,14 +679,15 @@ class Line(ModelSQL, ModelView):
             states=_states, depends=_depends),
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
-    amount_second_currency = fields.Numeric('Amount Second Currency',
-        digits=(16, Eval('second_currency_digits', 2)),
-        help='The amount expressed in a second currency.',
+    amount_second_currency = Monetary(
+        "Amount Second Currency",
+        currency='second_currency', digits='second_currency',
         states={
             'required': Bool(Eval('second_currency')),
             'readonly': _states['readonly'],
             },
-        depends=['second_currency_digits', 'second_currency'] + _depends)
+        depends=['second_currency'] + _depends,
+        help='The amount expressed in a second currency.')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency.',
         domain=[
@@ -732,18 +735,11 @@ class Line(ModelSQL, ModelView):
         'on_change_with_move_state', searcher='search_move_field')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'on_change_with_currency_digits')
-    second_currency_digits = fields.Function(fields.Integer(
-        'Second Currency Digits'), 'on_change_with_second_currency_digits')
-    amount = fields.Function(fields.Numeric('Amount',
-            digits=(16, Eval('amount_currency_digits', 2)),
-            depends=['amount_currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", currency='amount_currency', digits='amount_currency'),
         'get_amount')
     amount_currency = fields.Function(fields.Many2One('currency.currency',
             'Amount Currency'), 'get_amount_currency')
-    amount_currency_digits = fields.Function(fields.Integer(
-            'Amount Currency Digits'), 'get_amount_currency')
 
     del _states, _depends
 
@@ -847,10 +843,6 @@ class Line(ModelSQL, ModelView):
         return 'draft'
 
     @staticmethod
-    def default_currency_digits():
-        return 2
-
-    @staticmethod
     def default_debit():
         return Decimal(0)
 
@@ -862,20 +854,6 @@ class Line(ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.account:
             return self.account.currency.id
-
-    @fields.depends('account')
-    def on_change_with_currency_digits(self, name=None):
-        if self.account:
-            return self.account.currency_digits
-        else:
-            return 2
-
-    @fields.depends('second_currency')
-    def on_change_with_second_currency_digits(self, name=None):
-        if self.second_currency:
-            return self.second_currency.digits
-        else:
-            return 2
 
     @classmethod
     def _get_origin(cls):
@@ -919,11 +897,8 @@ class Line(ModelSQL, ModelView):
     @fields.depends('account')
     def on_change_account(self):
         if self.account:
-            self.currency_digits = self.account.currency_digits
             if self.account.second_currency:
                 self.second_currency = self.account.second_currency
-                self.second_currency_digits = (
-                    self.on_change_with_second_currency_digits())
             if not self.account.party_required:
                 self.party = None
 
@@ -1020,10 +995,7 @@ class Line(ModelSQL, ModelView):
             currency = self.second_currency
         else:
             currency = self.account.currency
-        if name == 'amount_currency':
-            return currency.id
-        elif name == 'amount_currency_digits':
-            return currency.digits
+        return currency.id
 
     def get_rec_name(self, name):
         if self.debit > self.credit:
@@ -1555,10 +1527,11 @@ class ReconcileLinesWriteOff(ModelView):
             ],
         depends=['company'])
     date = fields.Date('Date', required=True)
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        readonly=True, depends=['currency_digits'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', readonly=True)
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
     description = fields.Char('Description')
 
     @staticmethod
@@ -1567,9 +1540,9 @@ class ReconcileLinesWriteOff(ModelView):
         return Date.today()
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency.id
 
 
 class ReconcileLines(Wizard):
@@ -1765,7 +1738,7 @@ class Reconcile(Wizard):
         defaults['company'] = self.show.account.company.id
         defaults['parties'] = [p.id for p in self.show.parties]
         defaults['party'] = self.show.party.id if self.show.party else None
-        defaults['currency_digits'] = self.show.account.company.currency.digits
+        defaults['currency'] = self.show.account.company.currency.id
         defaults['lines'] = self._default_lines()
         defaults['write_off_amount'] = Decimal(0)
         defaults['date'] = Date.today()
@@ -1868,13 +1841,13 @@ class ReconcileShow(ModelView):
         }
     _write_off_depends = ['write_off_amount']
 
-    write_off_amount = fields.Function(fields.Numeric('Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            states=_write_off_states,
-            depends=_write_off_depends + ['currency_digits']),
+    write_off_amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency',
+            states=_write_off_states, depends=_write_off_depends),
         'on_change_with_write_off_amount')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
     write_off = fields.Many2One(
         'account.move.reconcile.write_off', "Write Off",
         domain=[
@@ -1888,17 +1861,17 @@ class ReconcileShow(ModelView):
             'invisible': _write_off_states['invisible'],
             }, depends=_write_off_depends)
 
-    @fields.depends('lines', 'currency_digits')
+    @fields.depends('lines', 'currency')
     def on_change_with_write_off_amount(self, name=None):
-        digits = self.currency_digits or 0
-        exp = Decimal(str(10.0 ** -digits))
         amount = sum(((l.debit - l.credit) for l in self.lines), Decimal(0))
-        return amount.quantize(exp)
+        if self.currency:
+            amount = self.currency.round(amount)
+        return amount
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency.id
 
 
 class CancelMoves(Wizard):
@@ -2208,7 +2181,6 @@ class SplitLines(Wizard):
         self.get_account(self.records)
         currency = self.get_currency(self.records)
         values['currency'] = currency.id
-        values['currency_digits'] = currency.digits
         values['total_amount'] = self.get_total_amount(self.records)
         return values
 
@@ -2383,8 +2355,8 @@ class SplitLinesStart(ModelView):
             },
         depends=['frequency'],
         help="The length of each period, in months.")
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency',
         states={
             'required': ~Eval('number'),
             'invisible': Bool(Eval('number')),
@@ -2400,7 +2372,7 @@ class SplitLinesStart(ModelView):
                         ('amount', '<', 0),
                         ]),
                 [])],
-        depends=['currency_digits', 'number', 'total_amount'])
+        depends=['number', 'total_amount'])
     number = fields.Integer(
         "Number",
         domain=[
@@ -2414,7 +2386,6 @@ class SplitLinesStart(ModelView):
 
     total_amount = fields.Numeric("Total Amount", readonly=True)
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)
-    currency_digits = fields.Integer("Currency Digits", readonly=True)
 
     @classmethod
     def default_frequency(cls):
@@ -2452,18 +2423,9 @@ class SplitLinesTerm(ModelView):
     "Split Lines"
     __name__ = 'account.move.line.split.term'
     date = fields.Date("Date", required=True)
-    amount = fields.Numeric(
-        "Amount", digits=(16, Eval('currency_digits', 2)), required=True,
-        depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', "Currency", required=True)
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits", readonly=True),
-        'on_change_with_currency_digits')
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
 
 
 class GeneralJournal(Report):

@@ -17,9 +17,9 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
 
     <label name="debit"/>
-    <field name="debit" symbol="currency"/>
+    <field name="debit"/>
     <label name="credit"/>
-    <field name="credit" symbol="currency"/>
+    <field name="credit"/>
     <label name="move_origin"/>
     <field name="move_origin"/>
     <label name="origin"/>

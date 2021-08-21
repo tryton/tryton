@@ -24,6 +24,8 @@ from trytond.pyson import Eval, If, PYSONEncoder, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.modules.currency.fields import Monetary
+
 from .common import PeriodMixin, ActivePeriodMixin
 from .exceptions import SecondCurrencyError, ChartWarning
 
@@ -251,13 +253,11 @@ class Type(
         depends=['company'])
     currency = fields.Function(fields.Many2One(
         'currency.currency', 'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount = fields.Function(fields.Numeric('Amount',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
         'get_amount')
-    amount_cmp = fields.Function(fields.Numeric('Amount',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    amount_cmp = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
         'get_amount_cmp')
 
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -288,9 +288,6 @@ class Type(
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
     @classmethod
     def get_amount(cls, types, name):
@@ -337,8 +334,7 @@ class Type(
                     ])
             for child in childs:
                 res[type_.id] += type_sum[child.id]
-            exp = Decimal(str(10.0 ** -type_.currency_digits))
-            res[type_.id] = res[type_.id].quantize(exp)
+            res[type_.id] = type_.currency.round(res[type_.id])
             if type_.statement == 'balance' and type_.assets:
                 res[type_.id] = - res[type_.id]
         return res
@@ -781,8 +777,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ondelete="RESTRICT")
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
     second_currency = fields.Many2One('currency.currency',
         'Secondary Currency', help='Force all moves for this account \n'
         'to have this secondary currency.', ondelete="RESTRICT",
@@ -794,8 +788,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             'invisible': ~Eval('deferral', False),
             },
         depends=['currency', 'deferral'])
-    second_currency_digits = fields.Function(fields.Integer(
-            "Second Currency Digits"), 'get_second_currency_digits')
     type = fields.Many2One(
         'account.account.type', "Type", ondelete='RESTRICT',
         states={
@@ -823,22 +815,22 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many(
         'account.account', 'parent', 'Children')
-    balance = fields.Function(fields.Numeric('Balance',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
         'get_balance')
-    credit = fields.Function(fields.Numeric('Credit',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    credit = fields.Function(Monetary(
+            "Credit", currency='currency', digits='currency'),
         'get_credit_debit')
-    debit = fields.Function(fields.Numeric('Debit',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+    debit = fields.Function(Monetary(
+            "Debit", currency='currency', digits='currency'),
         'get_credit_debit')
-    amount_second_currency = fields.Function(fields.Numeric(
+    amount_second_currency = fields.Function(Monetary(
             "Amount Second Currency",
-            digits=(16, Eval('second_currency_digits', 2)),
+            currency='second_currency', digits='second_currency',
             states={
                 'invisible': ~Eval('second_currency'),
                 },
-            depends=['second_currency_digits', 'second_currency']),
+            depends=['second_currency']),
         'get_credit_debit')
     note = fields.Text('Note')
     deferrals = fields.One2Many(
@@ -917,15 +909,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
     def get_currency(self, name):
         return self.company.currency.id
 
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
-    def get_second_currency_digits(self, name):
-        if self.second_currency:
-            return self.second_currency.digits
-        else:
-            return 2
-
     @classmethod
     def get_balance(cls, accounts, name):
         pool = Pool()
@@ -956,8 +939,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             # SQLite uses float for SUM
             if not isinstance(balances[account.id], Decimal):
                 balances[account.id] = Decimal(str(balances[account.id]))
-            exp = Decimal(str(10.0 ** -account.currency_digits))
-            balances[account.id] = balances[account.id].quantize(exp)
+            balances[account.id] = account.currency.round(balances[account.id])
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
 
@@ -1008,12 +990,13 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                         result[name][account_id] = row[i]
         for account in accounts:
             for name in names:
-                if name == 'amount_second_currency':
-                    exp = Decimal(str(10.0 ** -account.second_currency_digits))
+                if (name == 'amount_second_currency'
+                        and account.second_currency):
+                    currency = account.second_currency
                 else:
-                    exp = Decimal(str(10.0 ** -account.currency_digits))
-                result[name][account.id] = (
-                    result[name][account.id].quantize(exp))
+                    currency = account.currency
+                result[name][account.id] = currency.round(
+                    result[name][account.id])
 
         cumulate_names = []
         if Transaction().context.get('cumulate'):
@@ -1289,33 +1272,28 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
     debit_type = fields.Many2One('account.account.type', "Debit Type")
     closed = fields.Boolean("Closed")
 
-    balance = fields.Function(fields.Numeric(
-            "Balance", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
         'get_balance')
-    credit = fields.Function(fields.Numeric(
-            "Credit", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    credit = fields.Function(Monetary(
+            "Credit", currency='currency', digits='currency'),
         'get_credit_debit')
-    debit = fields.Function(fields.Numeric(
-            "Debit", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    debit = fields.Function(Monetary(
+            "Debit", currency='currency', digits='currency'),
         'get_credit_debit')
-    amount_second_currency = fields.Function(fields.Numeric(
+    amount_second_currency = fields.Function(Monetary(
             "Amount Second Currency",
-            digits=(16, Eval('second_currency_digits', 2)),
+            currency='second_currency', digits='second_currency',
             states={
                 'invisible': ~Eval('second_currency'),
                 },
-            depends=['second_currency_digits', 'second_currency']),
+            depends=['second_currency']),
         'get_credit_debit')
     second_currency = fields.Many2One(
         'currency.currency', "Secondary Currency")
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
-    second_currency_digits = fields.Function(fields.Integer(
-            "Second Currency Digits"), 'get_second_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
 
     @classmethod
     def table_query(cls):
@@ -1391,8 +1369,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             # SQLite uses float for SUM
             if not isinstance(balances[record.id], Decimal):
                 balances[record.id] = Decimal(str(balances[record.id]))
-            exp = Decimal(str(10.0 ** -record.currency_digits))
-            balances[record.id] = balances[record.id].quantize(exp)
+            balances[record.id] = record.currency.round(balances[record.id])
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
 
@@ -1450,12 +1427,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                             result[name][id_] = row[i]
         for record in records:
             for name in names:
-                if name == 'amount_second_currency':
-                    exp = Decimal(str(10.0 ** -record.second_currency_digits))
+                if name == 'amount_second_currency' and record.second_currency:
+                    currency = record.second_currency
                 else:
-                    exp = Decimal(str(10.0 ** -record.currency_digits))
-                result[name][record.id] = (
-                    result[name][record.id].quantize(exp))
+                    currency = record.currency
+                result[name][record.id] = currency.round(
+                    result[name][record.id])
 
         cumulate_names = []
         if Transaction().context.get('cumulate'):
@@ -1470,11 +1447,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         else:
             return result
 
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
-    def get_second_currency_digits(self, name):
-        return self.account.second_currency_digits
+    def get_currency(self, name):
+        return self.company.currency.id
 
 
 class AccountDeferral(ModelSQL, ModelView):
@@ -1488,28 +1462,24 @@ class AccountDeferral(ModelSQL, ModelView):
             select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, select=True)
-    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-        required=True, depends=['currency_digits'])
-    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-        required=True, depends=['currency_digits'])
-    balance = fields.Function(fields.Numeric('Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_balance')
+    debit = Monetary(
+        "Debit", currency='currency', digits='currency', required=True)
+    credit = Monetary(
+        "Credit", currency='currency', digits='currency', required=True)
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
+        'get_balance')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount_second_currency = fields.Numeric(
+    amount_second_currency = Monetary(
         "Amount Second Currency",
-        digits=(16, Eval('second_currency_digits', 2)),
+        currency='second_currency', digits='second_currency', required=True,
         states={
             'invisible': ~Eval('second_currency'),
             },
-        required=True, depends=['second_currency_digits', 'second_currency'])
+        depends=['second_currency'])
     second_currency = fields.Function(fields.Many2One(
             'currency.currency', "Second Currency"), 'get_second_currency')
-    second_currency_digits = fields.Function(fields.Integer(
-            "Second Currency Digits"), 'get_second_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -1530,15 +1500,9 @@ class AccountDeferral(ModelSQL, ModelView):
     def get_currency(self, name):
         return self.account.currency.id
 
-    def get_currency_digits(self, name):
-        return self.account.currency_digits
-
     def get_second_currency(self, name):
         if self.account.second_currency:
             return self.account.second_currency.id
-
-    def get_second_currency_digits(self, name):
-        return self.account.second_currency_digits
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.account.rec_name, self.fiscalyear.rec_name)
@@ -1611,42 +1575,32 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     account = fields.Many2One('account.account', "Account")
     company = fields.Many2One('company.company', 'Company')
-    start_debit = fields.Function(fields.Numeric('Start Debit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    start_debit = fields.Function(Monetary(
+            "Start Debit", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
-    debit = fields.Function(fields.Numeric('Debit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    debit = fields.Function(Monetary(
+            "Debit", currency='currency', digits='currency'),
         'get_debit_credit', searcher='search_debit_credit')
-    end_debit = fields.Function(fields.Numeric('End Debit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    end_debit = fields.Function(Monetary(
+            "End Debit", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
-    start_credit = fields.Function(fields.Numeric('Start Credit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    start_credit = fields.Function(Monetary(
+            "Start Credit", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
-    credit = fields.Function(fields.Numeric('Credit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    credit = fields.Function(Monetary(
+            "Credit", currency='currency', digits='currency'),
         'get_debit_credit', searcher='search_debit_credit')
-    end_credit = fields.Function(fields.Numeric('End Credit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    end_credit = fields.Function(Monetary(
+            "End Credit", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
-    start_balance = fields.Function(fields.Numeric('Start Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    start_balance = fields.Function(Monetary(
+            "Start Balance", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
-    end_balance = fields.Function(fields.Numeric('End Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    end_balance = fields.Function(Monetary(
+            "End Balance", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
     currency = fields.Function(fields.Many2One(
         'currency.currency', 'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -1809,9 +1763,6 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
     def get_rec_name(self, name):
         return self.account.rec_name
@@ -2001,19 +1952,14 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             'account.general_ledger.account.party', "Account Party"),
         'get_account_party')
     company = fields.Many2One('company.company', 'Company')
-    debit = fields.Numeric('Debit',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    credit = fields.Numeric('Credit',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    internal_balance = fields.Numeric("Internal Balance",
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    balance = fields.Function(
-        fields.Numeric("Balance",
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    debit = Monetary(
+        "Debit", currency='currency', digits='currency')
+    credit = Monetary(
+        "Credit", currency='currency', digits='currency')
+    internal_balance = Monetary(
+        "Internal Balance", currency='currency', digits='currency')
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency'),
         'get_balance')
     origin = fields.Reference('Origin', selection='get_origin')
     description = fields.Char('Description')
@@ -2027,8 +1973,6 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     state_string = state.translated('state')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -2087,9 +2031,6 @@ class GeneralLedgerLine(ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
     @classmethod
     def get_origin(cls):
@@ -2474,25 +2415,18 @@ class AgedBalance(ModelSQL, ModelView):
             },
         depends=['company'])
     company = fields.Many2One('company.company', 'Company')
-    term0 = fields.Numeric('Now',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    term1 = fields.Numeric('First Term',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    term2 = fields.Numeric('Second Term',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    term3 = fields.Numeric('Third Term',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    balance = fields.Numeric('Balance',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    term0 = Monetary(
+        "Now", currency='currency', digits='currency')
+    term1 = Monetary(
+        "First Term", currency='currency', digits='currency')
+    term2 = Monetary(
+        "Second Term", currency='currency', digits='currency')
+    term3 = Monetary(
+        "Third Term", currency='currency', digits='currency')
+    balance = Monetary(
+        "Balance", currency='currency', digits='currency')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -2605,9 +2539,6 @@ class AgedBalance(ModelSQL, ModelView):
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
 
 class AgedBalanceReport(Report):
