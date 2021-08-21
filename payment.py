@@ -27,6 +27,7 @@ from trytond.wizard import (
 
 from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
+from trytond.modules.currency.fields import Monetary
 
 logger = logging.getLogger(__name__)
 stripe.max_network_retries = config.getint(
@@ -403,17 +404,16 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
             return self.journal.stripe_account.id
 
     def get_stripe_amount(self, name):
-        return int(self.amount * 10 ** self.currency_digits)
+        return int(self.amount * 10 ** self.currency.digits)
 
     @classmethod
     def set_stripe_amount(cls, payments, name, value):
-        keyfunc = attrgetter('currency_digits')
+        keyfunc = attrgetter('currency')
         payments = sorted(payments, key=keyfunc)
         value = Decimal(value)
-        for digits, payments in groupby(payments, keyfunc):
-            digits = Decimal(digits)
+        for currency, payments in groupby(payments, keyfunc):
             cls.write(list(payments), {
-                    'amount': value * 10 ** -digits,
+                    'amount': value * 10 ** -Decimal(currency.digits),
                     })
 
     @classmethod
@@ -754,12 +754,12 @@ class Refund(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    amount = fields.Numeric(
-        "Amount", required=True, digits=(16, Eval('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['currency_digits', 'state'])
+        depends=['state'])
     stripe_amount = fields.Function(
         fields.Integer("Stripe Amount"), 'get_stripe_amount')
     reason = fields.Selection([
@@ -796,8 +796,9 @@ class Refund(Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('stripe_error_param'),
             })
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
+    currency = fields.Function(
+        fields.Many2One('currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @classmethod
     def __setup__(cls):
@@ -824,16 +825,16 @@ class Refund(Workflow, ModelSQL, ModelView):
                 })
 
     def get_stripe_amount(self, name):
-        return int(self.amount * 10 ** self.currency_digits)
+        return int(self.amount * 10 ** self.currency.digits)
 
     @classmethod
     def default_stripe_idempotency_key(cls):
         return uuid.uuid4().hex
 
-    @fields.depends('payment', '_parent_payment.currency_digits')
-    def on_change_with_currency_digits(self, name=None):
-        if self.payment:
-            return self.payment.currency_digits
+    @fields.depends('payment', '_parent_payment.currency')
+    def on_change_with_currency(self, name=None):
+        if self.payment and self.payment.currency:
+            return self.payment.currency.id
 
     @classmethod
     def default_state(cls):
