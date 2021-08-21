@@ -19,6 +19,7 @@ from trytond.pool import Pool
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.modules.company.model import employee_field, set_employee
+from trytond.modules.currency.fields import Monetary
 
 
 class SaleOpportunity(
@@ -74,12 +75,12 @@ class SaleOpportunity(
                 Get(Eval('context', {}), 'company', 0)),
             ],
         depends=_depends_stop)
-    currency = fields.Function(fields.Many2One('currency.currency',
-        'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        states=_states_stop, depends=_depends_stop + ['currency_digits'],
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency',
+        states=_states_stop, depends=_depends_stop,
         help='Estimated revenue amount.')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
@@ -294,17 +295,10 @@ class SaleOpportunity(
         default.setdefault('converted_by')
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
-    def get_currency(self, name):
-        return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
     @fields.depends('company')
-    def on_change_company(self):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            self.currency = self.company.currency
-            self.currency_digits = self.company.currency.digits
+            return self.company.currency.id
 
     @fields.depends('party')
     def on_change_party(self):
@@ -588,18 +582,12 @@ class SaleOpportunityReportMixin:
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    converted_amount = fields.Numeric('Converted Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+    amount = Monetary("Amount", currency='currency', digits='currency')
+    converted_amount = Monetary(
+        "Converted Amount", currency='currency', digits='currency')
     conversion_amount_rate = fields.Function(fields.Float(
         'Conversion Amount Rate', digits=(1, 4)), 'get_conversion_amount_rate')
-    won_amount = fields.Numeric('Won Amount',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    won_amount = Monetary("Won Amount", currency='currency', digits='currency')
     winning_amount_rate = fields.Function(fields.Float(
             'Winning Amount Rate', digits=(1, 4)), 'get_winning_amount_rate')
 
@@ -631,9 +619,6 @@ class SaleOpportunityReportMixin:
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
     def get_conversion_amount_rate(self, name):
         if self.amount:
