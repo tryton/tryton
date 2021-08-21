@@ -4,6 +4,7 @@ from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 
@@ -31,8 +32,8 @@ class Move(metaclass=PoolMeta):
             },
         depends=['product_secondary_uom_category', 'state'])
     secondary_unit_price = fields.Function(
-        fields.Numeric(
-            "Secondary Unit Price", digits=price_digits,
+        Monetary(
+            "Secondary Unit Price", currency='currency', digits=price_digits,
             states={
                 'invisible': (~Eval('unit_price_required')
                     | ~Eval('secondary_unit')),
