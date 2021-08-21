@@ -13,6 +13,8 @@ from trytond.pyson import If, Eval
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'
@@ -75,26 +77,24 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
                 ()),
             ],
         depends=['company'])
-    amount_low = fields.Numeric(
-        "Amount Low",
-        digits=(16, Eval('currency_digits', 2)),
+    amount_low = Monetary(
+        "Amount Low", currency='currency', digits='currency',
         domain=[If(Eval('amount_high'),
                 ['OR',
                     ('amount_low', '=', None),
                     ('amount_low', '<=', Eval('amount_high')),
                     ],
                 [])],
-        depends=['currency_digits', 'amount_high'])
-    amount_high = fields.Numeric(
-        "Amount High",
-        digits=(16, Eval('currency_digits', 2)),
+        depends=['amount_high'])
+    amount_high = Monetary(
+        "Amount High", currency='currency', digits='currency',
         domain=[If(Eval('amount_low'),
                 ['OR',
                     ('amount_high', '=', None),
                     ('amount_high', '>=', Eval('amount_low')),
                     ],
                 [])],
-        depends=['currency_digits', 'amount_low'])
+        depends=['amount_low'])
     description = fields.Char("Description",
         help="The regular expression the description is searched with.\n"
         "It may define the groups named:\n"
@@ -105,15 +105,14 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
     lines = fields.One2Many(
         'account.statement.rule.line', 'rule', "Lines")
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @fields.depends('journal')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.journal:
-            return self.journal.currency.digits
-        return None
+            return self.journal.currency.id
 
     def match(self, origin):
         keywords = {}
