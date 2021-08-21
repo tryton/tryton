@@ -1,3 +1,6 @@
+* Add monetary field
+* Provide digits from currency
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Add parameter rate_decimal

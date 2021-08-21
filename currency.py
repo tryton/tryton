@@ -18,7 +18,8 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check, SymbolMixin)
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check, SymbolMixin,
+    DigitsMixin)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -30,7 +31,8 @@ from .ir import rate_decimal
 logger = logging.getLogger(__name__)
 
 
-class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
+class Currency(
+        SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
     'Currency'
     __name__ = 'currency.currency'
     name = fields.Char('Name', required=True, translate=True,

@@ -14,3 +14,4 @@ different currencies.
    usage
    configuration
    design
+   reference
