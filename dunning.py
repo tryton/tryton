@@ -7,6 +7,8 @@ from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Fee(DeactivableMixin, ModelSQL, ModelView):
     'Account Dunning Fee'
@@ -86,13 +88,10 @@ class FeeDunningLevel(ModelSQL, ModelView):
     dunning = fields.Many2One(
         'account.dunning', 'Dunning', required=True, select=True)
     level = fields.Many2One('account.dunning.level', 'Level', required=True)
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency')
     currency = fields.Many2One('currency.currency', 'Currency')
     moves = fields.One2Many('account.move', 'origin', 'Moves', readonly=True)
-
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -102,12 +101,6 @@ class FeeDunningLevel(ModelSQL, ModelView):
             ('dunning_level_unique', Unique(t, t.dunning, t.level),
                 'account_dunning_fee.msg_fee_dunning_level_unique'),
             ]
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     def get_rec_name(self, name):
         return '%s @ %s' % (self.dunning.rec_name, self.level.rec_name)

@@ -8,7 +8,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="level"/>
     <label name="amount"/>
     <group col="2" id="amount_currency">
-        <field name="amount"/>
+        <field name="amount" symbol=""/>
         <field name="currency"/>
     </group>
     <field name="moves" colspan="4"/>
