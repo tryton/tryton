@@ -350,6 +350,23 @@ class FloatField(Field):
 
     def digits(self, record, factor=1):
         digits = record.expr_eval(self.attrs.get('digits'))
+        if isinstance(digits, str):
+            if digits not in record.group.fields:
+                return
+            digits_field = record.group.fields[digits]
+            digits_name = digits_field.attrs.get('relation')
+            digits_id = digits_field.get(record)
+            if digits_name and digits_id is not None and digits_id >= 0:
+                try:
+                    digits = RPCExecute(
+                        'model', digits_name, 'get_digits', digits_id)
+                except RPCException:
+                    logger.warn(
+                        "Fail to fetch digits for %s,%s",
+                        digits_name, digits_id)
+                    return
+            else:
+                return
         if not digits or any(d is None for d in digits):
             return
         shift = int(round(math.log(abs(factor), 10)))
