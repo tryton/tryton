@@ -12,6 +12,8 @@ from trytond.model import (
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -92,11 +94,11 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    sale_amount = fields.Numeric('Sale Amount',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
+    sale_amount = Monetary(
+        "Sale Amount", currency='currency', digits='currency')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
     lines = fields.One2Many('sale.extra.line', 'extra', 'Lines')
 
     @classmethod
@@ -129,10 +131,9 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
         return Transaction().context.get('company')
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
-        return 2
+            return self.company.currency.id
 
     @classmethod
     def _extras_domain(cls, sale):
@@ -198,8 +199,8 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     extra = fields.Many2One('sale.extra', 'Extra', required=True,
         ondelete='CASCADE')
-    sale_amount = fields.Numeric('Sale Amount',
-        digits=(16, Eval('_parent_extra', {}).get('currency_digits', 2)))
+    sale_amount = Monetary(
+        "Sale Amount", currency='currency', digits='currency')
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[('salable', '=', True)])
     product_uom_category = fields.Function(
@@ -216,6 +217,9 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     free = fields.Boolean('Free')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @classmethod
     def __setup__(cls):
@@ -242,6 +246,11 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def default_free():
         return False
+
+    @fields.depends('extra', '_parent_extra.currency')
+    def on_change_with_currency(self, name=None):
+        if self.extra and self.extra.currency:
+            return self.extra.currency.id
 
     def get_pattern(self, sale):
         return {}
