@@ -9,19 +9,18 @@ from sql.conditionals import Coalesce
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
-from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
 
 from trytond.modules.party.exceptions import EraseError
+from trytond.modules.currency.fields import Monetary
 
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
-    deposit = fields.Function(fields.Numeric('Deposit',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    deposit = fields.Function(Monetary(
+            "Deposit", currency='currency', digits='currency'),
         'get_deposit', searcher='search_deposit')
 
     @classmethod
