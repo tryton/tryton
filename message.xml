@@ -116,8 +116,8 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_stock_reporting_margin_trend">
             <field name="text">Margin Trend</field>
         </record>
-        <record model="ir.message" id="msg_stock_reporting_currency_digits">
-            <field name="text">Currency Digits</field>
+        <record model="ir.message" id="msg_stock_reporting_currency">
+            <field name="text">Currency</field>
         </record>
     </data>
 </tryton>

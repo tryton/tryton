@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
-    <field name="cost" symbol="currency"/>
-    <field name="revenue" symbol="currency"/>
-    <field name="profit" symbol="currency"/>
+    <field name="cost"/>
+    <field name="revenue"/>
+    <field name="profit"/>
     <field name="margin" factor="100">
         <suffix string="%" name="margin"/>
     </field>

@@ -21,6 +21,8 @@ from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 def pairwise(iterable):
     a, b = tee(iterable)
@@ -32,33 +34,29 @@ class Abstract(ModelSQL, ModelView):
 
     company = fields.Many2One(
         'company.company', lazy_gettext('stock.msg_stock_reporting_company'))
-    cost = fields.Numeric(
+    cost = Monetary(
         lazy_gettext('stock.msg_stock_reporting_cost'),
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    revenue = fields.Numeric(
+        currency='currency', digits='currency')
+    revenue = Monetary(
         lazy_gettext('stock.msg_stock_reporting_revenue'),
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    profit = fields.Numeric(
+        currency='currency', digits='currency')
+    profit = Monetary(
         lazy_gettext('stock.msg_stock_reporting_profit'),
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+        currency='currency', digits='currency')
     margin = fields.Numeric(
         lazy_gettext('stock.msg_stock_reporting_margin'),
         digits=(14, 4),
         states={
             'invisible': ~Eval('margin'),
-            },
-        depends=['currency_digits'])
+            })
     margin_trend = fields.Function(fields.Char(
             lazy_gettext('stock.msg_stock_reporting_margin_trend')),
         'get_trend')
     time_series = None
 
-    currency = fields.Many2One('currency.currency', "Currency")
-    currency_digits = fields.Integer(
-        lazy_gettext('stock.msg_stock_reporting_currency_digits'))
+    currency = fields.Many2One(
+        'currency.currency',
+        lazy_gettext('stock.msg_stock_reporting_currency'))
 
     @classmethod
     def table_query(cls):
@@ -145,7 +143,6 @@ class Abstract(ModelSQL, ModelView):
             cls.margin.sql_cast(
                 Round(margin, cls.margin.digits[1])).as_('margin'),
             currency.id.as_('currency'),
-            currency.digits.as_('currency_digits'),
             ]
 
     @classmethod
@@ -502,27 +499,27 @@ class CategoryTree(ModelSQL, ModelView):
     parent = fields.Many2One('stock.reporting.margin.category.tree', "Parent")
     children = fields.One2Many(
         'stock.reporting.margin.category.tree', 'parent', "Children")
-    cost = fields.Function(fields.Numeric(
+    cost = fields.Function(Monetary(
             lazy_gettext('stock.msg_stock_reporting_cost'),
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
-    revenue = fields.Function(fields.Numeric(
+            currency='currency', digits='currency'),
+        'get_total')
+    revenue = fields.Function(Monetary(
             lazy_gettext('stock.msg_stock_reporting_revenue'),
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
-    profit = fields.Function(fields.Numeric(
+            currency='currency', digits='currency'),
+        'get_total')
+    profit = fields.Function(Monetary(
             lazy_gettext('stock.msg_stock_reporting_profit'),
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
-    margin = fields.Function(fields.Numeric(
+            currency='currency', digits='currency'),
+        'get_total')
+    margin = fields.Function(Monetary(
             lazy_gettext('stock.msg_stock_reporting_margin'),
-            digits=(14, 4),
-            depends=['currency_digits']),
+            digits=(14, 4)),
         'get_margin')
 
-    currency_digits = fields.Function(fields.Integer(
-            lazy_gettext('stock.msg_stock_reporting_currency_digits')),
-        'get_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency',
+            lazy_gettext('stock.msg_stock_reporting_currency')),
+        'get_currency')
 
     @classmethod
     def __setup__(cls):
@@ -619,12 +616,12 @@ class CategoryTree(ModelSQL, ModelView):
             return (self.profit / self.revenue).quantize(
                 Decimal(1) / 10 ** digits[1])
 
-    def get_currency_digits(self, name):
+    def get_currency(self, name):
         pool = Pool()
         Company = pool.get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return Company(company).currency.digits
+            return Company(company).currency.id
 
     @classmethod
     def view_attributes(cls):
