@@ -6,14 +6,15 @@ from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
-    base_price = fields.Numeric(
-        "Base Price", digits=price_digits,
+    base_price = Monetary(
+        "Base Price", currency='currency', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
@@ -28,8 +29,8 @@ class Line(metaclass=PoolMeta):
                 },
             depends=['type', 'sale_state']),
         'on_change_with_discount_rate', setter='set_discount_rate')
-    discount_amount = fields.Function(fields.Numeric(
-            "Discount Amount", digits=price_digits,
+    discount_amount = fields.Function(Monetary(
+            "Discount Amount", currency='currency', digits=price_digits,
             states={
                 'invisible': Eval('type') != 'line',
                 'readonly': Eval('sale_state') != 'draft',
