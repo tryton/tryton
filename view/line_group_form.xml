@@ -12,8 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <label name="amount"/>
     <field name="amount"/>
-    <label name="currency"/>
-    <field name="currency"/>
+    <newline/>
+
     <label name="party"/>
     <field name="party"/>
     <label name="move"/>

@@ -19,6 +19,7 @@ from trytond.pool import Pool
 from trytond.rpc import RPC
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.modules.company import CompanyReport
+from trytond.modules.currency.fields import Monetary
 
 from .exceptions import (
     StatementValidateError, StatementValidateWarning, StatementPostError)
@@ -85,24 +86,20 @@ class Statement(Workflow, ModelSQL, ModelView):
         depends=['state', 'company'])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     date = fields.Date('Date', required=True, select=True)
-    start_balance = fields.Numeric('Start Balance',
-        digits=(16, Eval('currency_digits', 2)),
-        states=_balance_states, depends=_balance_depends + ['currency_digits'])
-    end_balance = fields.Numeric('End Balance',
-        digits=(16, Eval('currency_digits', 2)),
-        states=_balance_states, depends=_balance_depends + ['currency_digits'])
-    balance = fields.Function(
-        fields.Numeric('Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            states=_balance_states,
-            depends=_balance_depends + ['currency_digits']),
+    start_balance = Monetary(
+        "Start Balance", currency='currency', digits='currency',
+        states=_balance_states, depends=_balance_depends)
+    end_balance = Monetary(
+        "End Balance", currency='currency', digits='currency',
+        states=_balance_states, depends=_balance_depends)
+    balance = fields.Function(Monetary(
+            "Balance", currency='currency', digits='currency',
+            states=_balance_states, depends=_balance_depends),
         'on_change_with_balance')
-    total_amount = fields.Numeric('Total Amount',
-        digits=(16, Eval('currency_digits', 2)),
-        states=_amount_states, depends=_amount_depends + ['currency_digits'])
+    total_amount = Monetary(
+        "Total Amount", currency='currency', digits='currency',
+        states=_amount_states, depends=_amount_depends)
     number_of_lines = fields.Integer('Number of Lines',
         states=_number_states, depends=_number_depends)
     lines = fields.One2Many('account.statement.line', 'statement',
@@ -210,14 +207,6 @@ class Statement(Workflow, ModelSQL, ModelView):
         Date = Pool().get('ir.date')
         return Date.today()
 
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        if Transaction().context.get('company'):
-            company = Company(Transaction().context['company'])
-            return company.currency.digits
-        return 2
-
     @fields.depends('journal', 'state', 'lines')
     def on_change_journal(self):
         if not self.journal:
@@ -239,12 +228,6 @@ class Statement(Workflow, ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.journal:
             return self.journal.currency.id
-
-    @fields.depends('journal')
-    def on_change_with_currency_digits(self, name=None):
-        if self.journal:
-            return self.journal.currency.digits
-        return 2
 
     def get_end_balance(self, name):
         end_balance = self.start_balance
@@ -684,14 +667,11 @@ def origin_mixin(_states, _depends):
         number = fields.Char("Number")
         date = fields.Date(
             "Date", required=True, states=_states, depends=_depends)
-        amount = fields.Numeric(
-            "Amount", required=True,
-            digits=(16, Eval('currency_digits', 2)),
-            states=_states, depends=_depends + ['currency_digits'])
+        amount = Monetary(
+            "Amount", currency='currency', digits='currency', required=True,
+            states=_states, depends=_depends)
         currency = fields.Function(fields.Many2One(
                 'currency.currency', "Currency"), 'on_change_with_currency')
-        currency_digits = fields.Function(fields.Integer(
-                "Currency Digits"), 'on_change_with_currency_digits')
         party = fields.Many2One(
             'party.party', "Party", states=_states,
             context={
@@ -741,11 +721,6 @@ def origin_mixin(_states, _depends):
         def on_change_with_currency(self, name=None):
             if self.statement and self.statement.journal:
                 return self.statement.journal.currency.id
-
-        @fields.depends('statement', '_parent_statement.journal')
-        def on_change_with_currency_digits(self, name=None):
-            if self.statement and self.statement.journal:
-                return self.statement.journal.currency.digits
 
     return Mixin
 
@@ -1021,13 +996,10 @@ class LineGroup(ModelSQL, ModelView):
             'Journal'), 'get_journal', searcher='search_journal')
     number = fields.Char('Number')
     date = fields.Date('Date')
-    amount = fields.Numeric('Amount',
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency')
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
     party = fields.Many2One('party.party', 'Party')
     move = fields.Many2One('account.move', 'Move')
 
@@ -1082,9 +1054,6 @@ class LineGroup(ModelSQL, ModelView):
     def get_currency(self, name):
         return self.statement.journal.currency.id
 
-    def get_currency_digits(self, name):
-        return self.statement.journal.currency.digits
-
 
 _states = {
     'readonly': (Eval('statement_state') != 'draft') | Eval('lines', []),
@@ -1110,10 +1079,8 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
         depends=['statement', 'date', 'statement_id'])
     statement_id = fields.Function(
         fields.Integer("Statement ID"), 'on_change_with_statement_id')
-    pending_amount = fields.Function(
-        fields.Numeric("Pending Amount",
-            digits=(16, Eval('_parent_statement', {})
-                .get('currency_digits', 2))),
+    pending_amount = fields.Function(Monetary(
+            "Pending Amount", currency='currency', digits='currency'),
         'on_change_with_pending_amount', searcher='search_pending_amount')
     information = fields.Dict(
         'account.statement.origin.information', "Information", readonly=True)

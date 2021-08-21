@@ -10,14 +10,14 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <label name="start_balance"/>
     <group id="balances" col="-1">
-        <field name="start_balance" symbol="currency"/>
+        <field name="start_balance"/>
         <label name="balance"/>
-        <field name="balance" symbol="currency"/>
+        <field name="balance"/>
     </group>
     <label name="end_balance"/>
-    <field name="end_balance" symbol="currency"/>
+    <field name="end_balance"/>
     <label name="total_amount"/>
-    <field name="total_amount" symbol="currency"/>
+    <field name="total_amount"/>
     <newline/>
     <label name="number_of_lines"/>
     <field name="number_of_lines"/>
