@@ -10,6 +10,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
+
 
 class AccountTemplate(metaclass=PoolMeta):
     __name__ = 'account.account.template'
@@ -43,18 +45,9 @@ class BEVATCustomer(ModelSQL, ModelView):
         'party.identifier', "Company Tax Identifier")
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier")
-    turnover = fields.Numeric(
-        "Turnover", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    vat = fields.Numeric(
-        "VAT", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    turnover = Monetary("Turnover", currency='currency', digits='currency')
+    vat = Monetary("VAT", currency='currency', digits='currency')
     currency = fields.Many2One('currency.currency', "Currency")
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
-
-    def get_currency_digits(self, name):
-        return self.currency.digits
 
     @classmethod
     def tax_groups(cls):
