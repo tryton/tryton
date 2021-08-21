@@ -4,6 +4,7 @@ from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 
@@ -37,9 +38,8 @@ class Line(metaclass=PoolMeta):
             },
         depends=['product_secondary_uom_category', 'type',
             'secondary_uom_factor', 'secondary_uom_rate', 'sale_state'])
-    secondary_unit_price = fields.Function(
-        fields.Numeric(
-            "Secondary Unit Price", digits=price_digits,
+    secondary_unit_price = fields.Function(Monetary(
+            "Secondary Unit Price", currency='currency', digits=price_digits,
             states={
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),

@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='unit_price']" position="after">
         <field name="secondary_quantity" symbol="secondary_unit"/>
-        <field name="secondary_unit_price" symbol="currency"/>
+        <field name="secondary_unit_price"/>
     </xpath>
 </data>
