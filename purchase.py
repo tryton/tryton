@@ -15,6 +15,8 @@ from trytond.tools import sortable_values
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
+from trytond.modules.currency.fields import Monetary
+
 from .exceptions import PreviousQuotation
 
 
@@ -289,14 +291,13 @@ class QuotationLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    unit_price = fields.Numeric('Unit Price', digits=price_digits)
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits)
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': Bool(Eval('unit_price')),
             },
         depends=['unit_price'])
-    currency_digits = fields.Function(
-        fields.Integer('Currency Digits'), 'on_change_with_currency_digits')
     request = fields.Many2One('purchase.request', 'Request',
         ondelete='CASCADE', select=True, required=True,
         domain=[
@@ -363,12 +364,6 @@ class QuotationLine(ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return None
 
     @classmethod
     def get_quotation_state(cls):
