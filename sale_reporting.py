@@ -21,6 +21,8 @@ from trytond.pyson import Eval, If
 from trytond.wizard import Wizard, StateTransition, StateAction
 from trytond.i18n import lazy_gettext
 
+from trytond.modules.currency.fields import Monetary
+
 
 def pairwise(iterable):
     a, b = tee(iterable)
@@ -34,10 +36,9 @@ class Abstract(ModelSQL):
         'company.company', lazy_gettext("sale.msg_sale_reporting_company"))
     number = fields.Integer(lazy_gettext("sale.msg_sale_reporting_number"),
         help=lazy_gettext("sale.msg_sale_reporting_number_help"))
-    revenue = fields.Numeric(
+    revenue = Monetary(
         lazy_gettext("sale.msg_sale_reporting_revenue"),
-        digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+        digits='currency', currency='currency')
     revenue_trend = fields.Function(
         fields.Char(lazy_gettext("sale.msg_sale_reporting_revenue_trend")),
         'get_trend')
@@ -47,10 +48,6 @@ class Abstract(ModelSQL):
             'currency.currency',
             lazy_gettext("sale.msg_sale_reporting_currency")),
         'get_currency')
-    currency_digits = fields.Function(
-        fields.Integer(
-            lazy_gettext("sale.msg_sale_reporting_currency_digits")),
-        'get_currency_digits')
 
     @classmethod
     def table_query(cls):
@@ -179,9 +176,6 @@ class Abstract(ModelSQL):
 
     def get_currency(self, name):
         return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
 
 
 class AbstractTimeseries(Abstract):
@@ -407,12 +401,11 @@ class CustomerCategoryTree(ModelSQL, ModelView):
     parent = fields.Many2One('sale.reporting.customer.category.tree', "Parent")
     children = fields.One2Many(
         'sale.reporting.customer.category.tree', 'parent', "Children")
-    revenue = fields.Function(
-        fields.Numeric("Revenue", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
+    revenue = fields.Function(Monetary(
+            "Revenue", digits='currency', currency='currency'), 'get_total')
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
 
     @classmethod
     def __setup__(cls):
@@ -506,12 +499,12 @@ class CustomerCategoryTree(ModelSQL, ModelView):
             leafs = next_leafs
         return result
 
-    def get_currency_digits(self, name):
+    def get_currency(self, name):
         pool = Pool()
         Company = pool.get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return Company(company).currency.digits
+            return Company(company).currency.id
 
 
 class ProductMixin(object):
@@ -667,12 +660,11 @@ class ProductCategoryTree(ModelSQL, ModelView):
     parent = fields.Many2One('sale.reporting.product.category.tree', "Parent")
     children = fields.One2Many(
         'sale.reporting.product.category.tree', 'parent', "Children")
-    revenue = fields.Function(
-        fields.Numeric("Revenue", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total')
+    revenue = fields.Function(Monetary(
+            "Revenue", digits='currency'), 'get_total')
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
 
     @classmethod
     def __setup__(cls):
@@ -765,12 +757,12 @@ class ProductCategoryTree(ModelSQL, ModelView):
             leafs = next_leafs
         return result
 
-    def get_currency_digits(self, name):
+    def get_currency(self, name):
         pool = Pool()
         Company = pool.get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return Company(company).currency.digits
+            return Company(company).currency.id
 
 
 class CountryMixin(object):

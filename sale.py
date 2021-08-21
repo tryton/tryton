@@ -23,6 +23,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 from .exceptions import (
@@ -171,34 +172,23 @@ class Sale(
                 | (Eval('lines', [0]) & Eval('currency', 0))),
             },
         depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     lines = fields.One2Many('sale.line', 'sale', 'Lines', states={
             'readonly': Eval('state') != 'draft',
             },
         depends=['party', 'state'])
     comment = fields.Text('Comment')
-    untaxed_amount = fields.Function(fields.Numeric('Untaxed',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    untaxed_amount_cache = fields.Numeric('Untaxed Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        readonly=True,
-        depends=['currency_digits'])
-    tax_amount = fields.Function(fields.Numeric('Tax',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    tax_amount_cache = fields.Numeric('Tax Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        readonly=True,
-        depends=['currency_digits'])
-    total_amount = fields.Function(fields.Numeric('Total',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_amount')
-    total_amount_cache = fields.Numeric('Total Cache',
-        digits=(16, Eval('currency_digits', 2)),
-        readonly=True,
-        depends=['currency_digits'])
+    untaxed_amount = fields.Function(Monetary(
+            "Untaxed", digits='currency', currency='currency'), 'get_amount')
+    untaxed_amount_cache = fields.Numeric(
+        "Untaxed Cache", digits='currency', readonly=True)
+    tax_amount = fields.Function(Monetary(
+            "Tax", digits='currency', currency='currency'), 'get_amount')
+    tax_amount_cache = fields.Numeric(
+        "Tax Cache", digits='currency', readonly=True)
+    total_amount = fields.Function(Monetary(
+            "Total", digits='currency', currency='currency'), 'get_amount')
+    total_amount_cache = fields.Numeric(
+        "Total Cache", digits='currency', readonly=True)
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
@@ -410,14 +400,6 @@ class Sale(
         if company:
             return Company(company).currency.id
 
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            return Company(company).currency.digits
-        return 2
-
     @classmethod
     def default_invoice_method(cls, **pattern):
         Config = Pool().get('sale.configuration')
@@ -468,12 +450,6 @@ class Sale(
                 type='delivery')
         elif self.party:
             self.shipment_address = self.party.address_get(type='delivery')
-
-    @fields.depends('currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
-        return 2
 
     @fields.depends('party', 'company')
     def _get_tax_context(self):
@@ -1126,14 +1102,15 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    unit_price = fields.Numeric('Unit Price', digits=price_digits,
+    unit_price = Monetary(
+        "Unit Price", digits=price_digits, currency='currency',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('sale_state') != 'draft'
             }, depends=['type', 'sale_state'])
-    amount = fields.Function(fields.Numeric('Amount',
-            digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)),
+    amount = fields.Function(Monetary(
+            "Amount", digits='currency', currency='currency',
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },

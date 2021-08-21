@@ -7,6 +7,7 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 
 
@@ -102,7 +103,7 @@ class Template(metaclass=PoolMeta):
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
-    sale_price_uom = fields.Function(fields.Numeric(
+    sale_price_uom = fields.Function(Monetary(
             "Sale Price", digits=price_digits), 'get_sale_price_uom')
 
     @classmethod
