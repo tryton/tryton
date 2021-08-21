@@ -12,9 +12,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product"/>
 
     <label name="base_amount"/>
-    <field name="base_amount" symbol="currency"/>
+    <field name="base_amount"/>
     <label name="amount"/>
-    <field name="amount" symbol="currency"/>
+    <field name="amount"/>
 
     <label name="origin"/>
     <field name="origin"/>

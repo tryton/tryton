@@ -20,6 +20,7 @@ from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 
 from .exceptions import FormulaError
@@ -344,17 +345,16 @@ class Commission(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True,
         states=_readonly_states, depends=_readonly_depends,
         help="The product that is used on the invoice line.")
-    base_amount = fields.Numeric(
-        "Base Amount", digits=(16, Eval('currency_digits', 2)),
+    base_amount = Monetary(
+        "Base Amount", currency='currency', digits='currency',
         states=_readonly_states,
-        depends=_readonly_depends + ['currency_digits'])
-    amount = fields.Numeric('Amount', required=True, digits=price_digits,
+        depends=_readonly_depends)
+    amount = Monetary(
+        "Amount", currency='currency', required=True, digits=price_digits,
         domain=[('amount', '!=', 0)],
         states=_readonly_states, depends=_readonly_depends)
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer(
-            "Currency Digits"), 'on_change_with_currency_digits')
     type_ = fields.Function(fields.Selection([
                 ('in', 'Incoming'),
                 ('out', 'Outgoing'),
@@ -399,11 +399,6 @@ class Commission(ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.agent:
             return self.agent.currency.id
-
-    @fields.depends('agent')
-    def on_change_with_currency_digits(self, name=None):
-        if self.agent:
-            return self.agent.currency.digits
 
     @fields.depends('agent')
     def on_change_with_type_(self, name=None):

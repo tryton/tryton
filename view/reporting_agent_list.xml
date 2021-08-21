@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree keyword_open="1">
     <field name="agent" expand="1"/>
     <field name="number"/>
-    <field name="base_amount" symbol="currency"/>
+    <field name="base_amount"/>
     <field name="base_amount_trend" expand="1"/>
-    <field name="amount" symbol="currency"/>
+    <field name="amount"/>
 </tree>

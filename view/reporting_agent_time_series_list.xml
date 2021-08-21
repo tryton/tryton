@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
     <field name="number"/>
-    <field name="base_amount" symbol="currency"/>
-    <field name="amount" symbol="currency"/>
+    <field name="base_amount"/>
+    <field name="amount"/>
 </tree>

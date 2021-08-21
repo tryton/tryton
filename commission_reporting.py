@@ -17,6 +17,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 
 
@@ -33,20 +34,17 @@ class Agent(ModelView, ModelSQL):
     agent = fields.Many2One('commission.agent', 'Agent')
     number = fields.Integer("Number")
 
-    base_amount = fields.Numeric(
-        "Base Amount", digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+    base_amount = Monetary(
+        "Base Amount", currency='currency', digits='currency')
     base_amount_trend = fields.Function(
         fields.Char("Base Amount Trend"), 'get_trend')
-    amount = fields.Numeric("Amount", digits=price_digits)
+    amount = Monetary("Amount", currency='currency', digits=price_digits)
 
     time_series = fields.One2Many(
         'commission.reporting.agent.time_series', 'agent', "Time Series")
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
-    currency_digits = fields.Function(fields.Integer(
-            "Currency Digits"), 'get_currency_digits')
 
     @classmethod
     def table_query(cls):
@@ -151,9 +149,6 @@ class Agent(ModelView, ModelSQL):
 
     def get_currency(self, name):
         return self.agent.currency.id
-
-    def get_currency_digits(self, name):
-        return self.agent.currency.digits
 
 
 class AgentTimeseries(Agent):
