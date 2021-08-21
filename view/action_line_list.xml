@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="line"/>
     <field name="action"/>
     <field name="quantity" symbol="unit"/>
-    <field name="unit_price" symbol="currency"/>
-    <field name="amount" symbol="currency"/>
+    <field name="unit_price"/>
+    <field name="amount"/>
 </tree>

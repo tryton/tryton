@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="complaint" expand="1"/>
     <field name="action" expand="1"/>
-    <field name="amount" symbol="currency" sum="Amount"/>
+    <field name="amount" sum="Amount"/>
     <field name="result"/>
 </tree>

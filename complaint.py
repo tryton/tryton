@@ -12,6 +12,7 @@ from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 
 
@@ -400,19 +401,17 @@ class Action(ModelSQL, ModelView):
         'on_change_with_unit')
     unit_digits = fields.Function(
         fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
-    unit_price = fields.Numeric('Unit Price', digits=price_digits,
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits,
         states=_line_states, depends=_line_depends,
         help='Leave empty for the same price.')
 
-    amount = fields.Function(fields.Numeric(
-            "Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", 'currency', digits='currency'),
         'on_change_with_amount')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
 
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
@@ -487,16 +486,6 @@ class Action(ModelSQL, ModelView):
                     'sale.sale', 'sale.line',
                     'account.invoice', 'account.invoice.line'}):
             return self.complaint.origin.currency.id
-
-    @fields.depends(
-        'complaint',
-        '_parent_complaint.origin_model', '_parent_complaint.origin')
-    def on_change_with_currency_digits(self, name=None):
-        if (self.complaint
-                and self.complaint.origin_model in {
-                    'sale.sale', 'sale.line',
-                    'account.invoice', 'account.invoice.line'}):
-            return self.complaint.origin.currency.digits
 
     @classmethod
     def get_complaint_states(cls):
@@ -658,19 +647,17 @@ class _Action_Line:
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
     unit_digits = fields.Function(
         fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
-    unit_price = fields.Numeric(
-        "Unit Price", digits=price_digits, states=_states, depends=_depends,
+    unit_price = Monetary(
+        "Unit Price", currency='currency', digits=price_digits,
+        states=_states, depends=_depends,
         help='Leave empty for the same price.')
 
-    amount = fields.Function(fields.Numeric(
-            "Amount", digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
+    amount = fields.Function(Monetary(
+            "Amount", currency='currency', digits='currency'),
         'on_change_with_amount')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer("Currency Digits"),
-        'on_change_with_currency_digits')
 
     complaint_state = fields.Function(
         fields.Selection('get_complaint_states', "Complaint State"),
@@ -709,11 +696,6 @@ class _Action_Line:
     def on_change_with_currency(self, name=None):
         if self.action and self.action.currency:
             return self.action.currency.id
-
-    @fields.depends('action', '_parent_action.currency')
-    def on_change_with_currency_digits(self, name=None):
-        if self.action and self.action.currency:
-            return self.action.currency.digits
 
     @classmethod
     def get_complaint_states(cls):

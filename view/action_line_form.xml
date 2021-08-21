@@ -11,6 +11,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="quantity"/>
     <field name="quantity" symbol="unit"/>
     <label name="unit_price"/>
-    <field name="unit_price" symbol="currency"/>
-    <field name="amount" symbol="currency"/>
+    <field name="unit_price"/>
+    <field name="amount"/>
 </form>
