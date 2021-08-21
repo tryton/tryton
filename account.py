@@ -23,6 +23,7 @@ from trytond.wizard import (
 
 from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
+from trytond.modules.currency.fields import Monetary
 
 logger = logging.getLogger(__name__)
 
@@ -586,12 +587,12 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    amount = fields.Numeric(
-        "Amount", required=True, digits=(16, Eval('currency_digits', 2)),
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['currency_digits', 'state'])
+        depends=['state'])
 
     state = fields.Selection([
             ('draft', "Draft"),
@@ -610,8 +611,9 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('braintree_error_message'),
             })
 
-    currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
 
     @classmethod
     def __setup__(cls):
@@ -641,10 +643,10 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     def default_state(cls):
         return 'draft'
 
-    @fields.depends('payment', '_parent_payment.currency_digits')
-    def on_change_with_currency_digits(self, name=None):
-        if self.payment:
-            return self.payment.currency_digits
+    @fields.depends('payment', '_parent_payment.currency')
+    def on_change_with_currency(self, name=None):
+        if self.payment and self.payment.currency:
+            return self.payment.currency.id
 
     @classmethod
     def copy(cls, refunds, default=None):
