@@ -44,6 +44,7 @@ def search_shipments_returns(model_name):
                 else:
                     target = 'id'
                 return ['OR',
+                    domain,
                     ('lines.components.moves.shipment.' + target,)
                     + tuple(clause[1:3]) + (model_name,)]
         return wrapper
