@@ -368,11 +368,8 @@ class Fs2bdAccessor:
         for model in models:
             if model.id in self.browserecord[module][model_name]:
                 for cache in Transaction().cache.values():
-                    for cache in (
-                            cache, cache.get('_language_cache', {}).values()):
-                        if (model_name in cache
-                                and model.id in cache[model_name]):
-                            del cache[model_name][model.id]
+                    if model_name in cache:
+                        cache[model_name].pop(model.id, None)
             self.browserecord[module][model_name][model.id] = model
 
     def fetch_new_module(self, module):

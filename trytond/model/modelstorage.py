@@ -303,13 +303,11 @@ class ModelStorage(Model):
             record._local_cache.pop(record.id, None)
 
         # Clean transaction cache
-        for cache in list(Transaction().cache.values()):
-            for cache in (cache, list(
-                        cache.get('_language_cache', {}).values())):
-                if cls.__name__ in cache:
-                    for record in records:
-                        if record.id in cache[cls.__name__]:
-                            del cache[cls.__name__][record.id]
+        for cache in Transaction().cache.values():
+            if cls.__name__ in cache:
+                cache_cls = cache[cls.__name__]
+                for record in records:
+                    cache_cls.pop(record.id, None)
 
     @classmethod
     @without_check_access
