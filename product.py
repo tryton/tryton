@@ -589,7 +589,10 @@ class Product(
 
     @property
     def list_price_used(self):
-        return self.template.get_multivalue('list_price')
+        transaction = Transaction()
+        with transaction.reset_context(), \
+                transaction.set_context(self._context):
+            return self.template.get_multivalue('list_price')
 
     @classmethod
     def sync_code(cls, products):
