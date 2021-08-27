@@ -89,9 +89,6 @@ class Move(metaclass=PoolMeta):
             assert move.quantity >= move.fifo_quantity - move.uom.rounding
             move.fifo_quantity = min(move.fifo_quantity, move.quantity)
             to_save.append(move)
-        if to_save:
-            # TODO save in do method when product change
-            self.__class__.save(to_save)
 
         if consumed_qty:
             cost_price = cost_price / Decimal(str(consumed_qty))
@@ -107,10 +104,10 @@ class Move(metaclass=PoolMeta):
             cost_price = round_price(cost_price)
         else:
             cost_price = average_cost_price
-        return cost_price, average_cost_price
+        return cost_price, average_cost_price, to_save
 
     def _do(self):
-        cost_price = super(Move, self)._do()
+        cost_price, to_save = super(Move, self)._do()
         if (self.from_location.type != 'storage'
                 and self.to_location.type == 'storage'
                 and self.product.cost_price_method == 'fifo'):
@@ -122,11 +119,12 @@ class Move(metaclass=PoolMeta):
         elif (self.from_location.type == 'storage'
                 and self.to_location.type != 'storage'
                 and self.product.cost_price_method == 'fifo'):
-            fifo_cost_price, cost_price = (
+            fifo_cost_price, cost_price, moves = (
                 self._update_fifo_out_product_cost_price())
             if self.cost_price_required and self.cost_price is None:
                 self.cost_price = fifo_cost_price
-        return cost_price
+            to_save.extend(moves)
+        return cost_price, to_save
 
     @classmethod
     @ModelView.button
