@@ -540,7 +540,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ('closed', '!=', True),
             ],
         states={
-            'invisible': Eval('type') == 'none',
             'required': Eval('type') != 'none',
             },
         depends=['type'])
@@ -551,7 +550,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ('closed', '!=', True),
             ],
         states={
-            'invisible': Eval('type') == 'none',
             'required': Eval('type') != 'none',
             },
         depends=['type'])
@@ -724,8 +722,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ],
         states={
             'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            'required': (Eval('type') != 'none') & Eval('company'),
+            'required': Eval('type') != 'none',
             },
         depends=['company', 'type'])
     credit_note_account = fields.Many2One('account.account',
@@ -737,8 +734,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ],
         states={
             'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            'required': (Eval('type') != 'none') & Eval('company'),
+            'required': Eval('type') != 'none',
             },
         depends=['company', 'type'])
     legal_notice = fields.Text("Legal Notice", translate=True,
