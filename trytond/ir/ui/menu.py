@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from itertools import groupby
 
 from trytond.model import (
@@ -164,19 +165,21 @@ class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
         action_keywords.sort(key=action_type)
         for type, action_keywords in groupby(action_keywords, key=action_type):
             action_keywords = list(action_keywords)
+            action2keywords = defaultdict(list)
             for action_keyword in action_keywords:
                 model = action_keyword.model
                 actions[model.id] = '%s,-1' % type
+                action2keywords[action_keyword.action.id].append(
+                    action_keyword)
 
             Action = pool.get(type)
-            action2keyword = {k.action.id: k for k in action_keywords}
             with Transaction().set_context(active_test=False):
                 factions = Action.search([
-                        ('action', 'in', list(action2keyword.keys())),
+                        ('action', 'in', list(action2keywords.keys())),
                         ])
             for action in factions:
-                model = action2keyword[action.id].model
-                actions[model.id] = str(action)
+                for action_keyword in action2keywords[action.id]:
+                    actions[action_keyword.model.id] = str(action)
         return actions
 
     @classmethod
