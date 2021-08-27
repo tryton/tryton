@@ -187,10 +187,11 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
 
         prices, taxes = {}, {}
         for tax_ids, products in taxes2products.items():
-            products = Product.browse(products)
+            with Transaction().set_context(**self.get_context()):
+                products = Product.browse(products)
+                taxes_ = Tax.browse(tax_ids)
             with Transaction().set_context(taxes=tax_ids):
                 prices.update(Product.get_sale_price(products))
-            taxes_ = Tax.browse(tax_ids)
             for product in products:
                 taxes[product.id] = sum(
                     t['amount']
