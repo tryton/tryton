@@ -85,7 +85,10 @@ class Sale(metaclass=PoolMeta):
         states={
             'readonly': Eval('state') != 'draft',
         },
-        depends=['state', 'available_carriers'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'available_carriers', 'company'])
     available_carriers = fields.Function(
         fields.Many2Many('carrier', None, None, 'Available Carriers'),
         'on_change_with_available_carriers')
