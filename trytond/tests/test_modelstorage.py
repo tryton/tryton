@@ -5,7 +5,7 @@ import unittest
 
 from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
-    RequiredValidationError, DomainValidationError)
+    RequiredValidationError, DomainValidationError, AccessError)
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -72,6 +72,21 @@ class ModelStorageTestCase(unittest.TestCase):
 
         count = ModelStorage.search_count([('name', '=', 'Test 5')])
         self.assertEqual(count, 1)
+
+    @with_transaction()
+    def test_browse_deleted(self):
+        "Test access record from browse list with deleted record"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+        records = ModelStorage.create(
+            [{'name': 'Test %s' % i} for i in range(2)])
+
+        ModelStorage.delete(records[1:])
+        ModelStorage.write(records[:1], {})  # clean cache
+
+        records[0].name
+        with self.assertRaises(AccessError):
+            records[1].name
 
     @with_transaction()
     def test_browse_context(self):

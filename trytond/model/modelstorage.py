@@ -298,6 +298,10 @@ class ModelStorage(Model):
         # Increase transaction counter
         Transaction().counter += 1
 
+        # Clean local cache
+        for record in records:
+            record._local_cache.pop(record.id, None)
+
         # Clean transaction cache
         for cache in list(Transaction().cache.values()):
             for cache in (cache, list(
@@ -1555,9 +1559,13 @@ class ModelStorage(Model):
                         context_field = self._fields.get(context_field_name)
                         ffields[context_field_name] = context_field
 
+        delete_records = self._transaction.delete_records.get(
+            self.__name__, set())
+
         def filter_(id_):
             return (id_ == self.id  # Ensure the value is read
-                or ((
+                or (id_ not in delete_records
+                    and (
                         id_ not in self._cache
                         or name not in self._cache[id_])
                     and (id_ not in self._local_cache
