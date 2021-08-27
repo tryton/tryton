@@ -140,7 +140,7 @@ class Move(metaclass=PoolMeta):
                             to=move.to_location.rec_name))
 
     def _do(self):
-        cost_price = super()._do()
+        cost_price, to_save = super()._do()
         if (self.company.cost_price_warehouse
                 and self.from_location.type == 'storage'
                 and self.to_location.type == 'storage'
@@ -150,7 +150,7 @@ class Move(metaclass=PoolMeta):
             elif self.to_warehouse:
                 cost_price = self._compute_product_cost_price(
                     'in', self.unit_price_company)
-        return cost_price
+        return cost_price, to_save
 
     @property
     def _cost_price_pattern(self):
