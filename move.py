@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
 import datetime
 import operator
 from decimal import Decimal
@@ -685,22 +686,27 @@ class Move(Workflow, ModelSQL, ModelView):
             with Transaction().set_context(context):
                 grouped_moves = cls.browse(grouped_moves)
                 for move in grouped_moves:
-                    if move.product in products:
-                        # The average computation of product cost price
-                        # requires each previous move of the same product to be
-                        # saved
-                        cls.save(to_save)
-                        set_cost_values(cost_values)
-                        del to_save[:]
-                        del cost_values[:]
-                        products.clear()
-
                     move.set_effective_date()
-                    cost_price = move._do()
+                    previous_values = copy.copy(move._values)
+                    cost_price, extra_to_save = move._do()
                     if cost_price is not None:
+                        if move.product in products:
+                            # The average computation of product cost price
+                            # requires each previous move of the same product
+                            # to be saved
+                            cls.save(to_save)
+                            set_cost_values(cost_values)
+                            del to_save[:]
+                            del cost_values[:]
+                            products.clear()
+                            # Recompute with unmodified move but including new
+                            # saved moves
+                            move._values = previous_values
+                            cost_price, extra_to_save = move._do()
                         cost_values.append(
                             (move.product, cost_price,
                                 move._cost_price_pattern))
+                    to_save.extend(extra_to_save)
                     if move.cost_price_required and move.cost_price is None:
                         if cost_price is None:
                             cost_price = move.product.get_multivalue(
@@ -769,14 +775,16 @@ class Move(Workflow, ModelSQL, ModelView):
         return context
 
     def _do(self):
+        "Return cost_price and a list of moves to save"
         if (self.from_location.type in ('supplier', 'production')
                 and self.to_location.type == 'storage'
                 and self.product.cost_price_method == 'average'):
-            return self._compute_product_cost_price('in')
+            return self._compute_product_cost_price('in'), []
         elif (self.to_location.type == 'supplier'
                 and self.from_location.type == 'storage'
                 and self.product.cost_price_method == 'average'):
-            return self._compute_product_cost_price('out')
+            return self._compute_product_cost_price('out'), []
+        return None, []
 
     @classmethod
     @ModelView.button
