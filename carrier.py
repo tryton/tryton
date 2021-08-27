@@ -44,18 +44,24 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
 
     def get_sale_price(self):
         'Compute carrier sale price with currency'
-        User = Pool().get('res.user')
+        pool = Pool()
+        Company = pool.get('company.company')
         if self.carrier_cost_method == 'product':
-            user = User(Transaction().user)
-            return self.carrier_product.list_price, user.company.currency.id
+            list_price = self.carrier_product.list_price_used
+            if list_price is not None:
+                company = Company(self.carrier_product._context['company'])
+                return list_price, company.currency.id
         return 0, None
 
     def get_purchase_price(self):
         'Compute carrier purchase price with currency'
-        User = Pool().get('res.user')
+        pool = Pool()
+        Company = pool.get('company.company')
         if self.carrier_cost_method == 'product':
-            user = User(Transaction().user)
-            return self.carrier_product.cost_price, user.company.currency.id
+            cost_price = self.carrier_product.cost_price
+            if cost_price is not None:
+                company = Company(self.carrier_product._context['company'])
+                return cost_price, company.currency.id
         return 0, None
 
     @classmethod
