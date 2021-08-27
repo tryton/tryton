@@ -166,7 +166,8 @@ class SaleShipmentCost(metaclass=PoolMeta):
                     raise BadRequest()
             else:
                 carrier = None
-            self.carrier = carrier
+            # Use id to get proper context
+            self.carrier = carrier.id if carrier else None
 
 
 class Line(TaxableMixin, metaclass=PoolMeta):
