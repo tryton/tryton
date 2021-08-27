@@ -2602,6 +2602,14 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             else:
                 self.account = tax.credit_note_account
 
+    @fields.depends('base', 'tax')
+    def on_change_base(self):
+        if self.base is not None and self.tax:
+            if self.base >= 0:
+                self.account = self.tax.invoice_account
+            else:
+                self.account = self.tax.credit_note_account
+
     @fields.depends('tax', 'base', 'amount', 'manual', 'invoice',
         '_parent_invoice.currency')
     def on_change_with_amount(self):
