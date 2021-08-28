@@ -14,6 +14,9 @@ Accounting
 `Belgian </projects/modules-account-be/en/latest>`_
     Belgian accounting.
 
+`Budget </projects/modules-account-budget/en/latest>`_
+    Budgets for accounts.
+
 `Cash Rounding </projects/modules-account-cash-rounding/en/latest>`_
     Round cash amounts.
 
