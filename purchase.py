@@ -1011,20 +1011,20 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('purchase_state') != 'draft',
             },
         depends=['purchase_state'])
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    quantity = fields.Float(
+        "Quantity", digits='unit',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('purchase_state') != 'draft',
             },
-        depends=['unit_digits', 'type', 'purchase_state'])
+        depends=['type', 'purchase_state'])
     actual_quantity = fields.Float(
-        "Actual Quantity", digits=(16, Eval('unit_digits', 2)), readonly=True,
+        "Actual Quantity", digits='unit', readonly=True,
         states={
             'invisible': Eval('type') != 'line',
             },
-        depends=['unit_digits', 'type'])
+        depends=['type'])
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
         states={
@@ -1038,8 +1038,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         depends=['product', 'type', 'product_uom_category', 'purchase_state'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
@@ -1233,12 +1231,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 return True
         return False
 
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
-
     def _get_tax_rule_pattern(self):
         '''
         Get tax rule pattern
@@ -1296,7 +1288,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         category = self.product.purchase_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.purchase_uom
-            self.unit_digits = self.product.purchase_uom.digits
 
         product_suppliers = list(self.product.product_suppliers_used(
                 **self._get_product_supplier_pattern()))
