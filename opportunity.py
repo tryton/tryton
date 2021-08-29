@@ -492,13 +492,11 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_opportunity_state')
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[('salable', '=', True)], states=_states, depends=_depends)
-    quantity = fields.Float('Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)),
-        states=_states, depends=['unit_digits'] + _depends)
+    quantity = fields.Float(
+        "Quantity", digits='unit', required=True,
+        states=_states, depends=_depends)
     unit = fields.Many2One('product.uom', 'Unit', required=True,
         states=_states, depends=_depends)
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
 
     del _states, _depends
 
@@ -518,12 +516,6 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         if self.opportunity:
             return self.opportunity.state
 
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
-
     @fields.depends('product', 'unit')
     def on_change_product(self):
         if not self.product:
@@ -532,7 +524,6 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         category = self.product.sale_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
-            self.unit_digits = self.product.sale_uom.digits
 
     def get_sale_line(self, sale):
         '''
