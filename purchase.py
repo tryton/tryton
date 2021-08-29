@@ -272,9 +272,7 @@ class QuotationLine(ModelSQL, ModelView):
             'required': ~Eval('product')
             },
         depends=['product'])
-    quantity = fields.Float(
-        'Quantity', digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
+    quantity = fields.Float("Quantity", digits='unit', required=True)
     unit = fields.Many2One(
         'product.uom', 'Unit', ondelete='RESTRICT',
         states={
@@ -286,8 +284,6 @@ class QuotationLine(ModelSQL, ModelView):
                 ('category', '!=', -1)),
         ],
         depends=['product', 'product_uom_category'])
-    unit_digits = fields.Function(
-        fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -353,12 +349,6 @@ class QuotationLine(ModelSQL, ModelView):
             if self.request.company:
                 self.currency = self.request.company.currency
             self.supply_date = self.request.supply_date or datetime.date.max
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return None
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
