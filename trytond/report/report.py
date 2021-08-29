@@ -12,6 +12,8 @@ import time
 import warnings
 import zipfile
 import operator
+
+from decimal import Decimal
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from io import BytesIO
@@ -439,12 +441,17 @@ class Report(URLMixin, PoolBase):
         return lang.currency(value, currency, symbol, grouping, digits=digits)
 
     @classmethod
-    def format_number(cls, value, lang, digits=2, grouping=True,
-            monetary=None):
+    def format_number(
+            cls, value, lang, digits=None, grouping=True, monetary=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
+        if digits is None:
+            d = value
+            if not isinstance(d, Decimal):
+                d = Decimal(repr(value))
+            digits = -int(d.as_tuple().exponent)
         return lang.format('%.' + str(digits) + 'f', value,
             grouping=grouping, monetary=monetary)
 

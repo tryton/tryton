@@ -1,3 +1,4 @@
+* Support empty digits in format_number of Report
 * Add digits mixin
 * Use argon2 or scrypt to hash password by default
 * Allow PYSON Expression as key for PYSON In with dict object
