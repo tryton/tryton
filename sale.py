@@ -128,15 +128,12 @@ class Promotion(
             },
         depends=['amount'])
 
-    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    quantity = fields.Float('Quantity', digits='unit')
     unit = fields.Many2One('product.uom', 'Unit',
         states={
             'required': Bool(Eval('quantity', 0)),
             },
         depends=['quantity'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     products = fields.Many2Many(
         'sale.promotion-product.product', 'promotion', 'product', "Products",
         context={
@@ -161,12 +158,6 @@ class Promotion(
     @classmethod
     def default_untaxed_amount(cls):
         return False
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     @classmethod
     def validate(cls, promotions):
