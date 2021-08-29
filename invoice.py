@@ -1774,14 +1774,14 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'invisible': Bool(Eval('context', {}).get('standalone')),
             'readonly': _states['readonly'],
             }, depends=_depends)
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    quantity = fields.Float(
+        "Quantity", digits='unit',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': _states['readonly'],
             },
-        depends=['type', 'unit_digits'] + _depends)
+        depends=['type'] + _depends)
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
@@ -1794,8 +1794,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 ('category', '!=', -1)),
             ],
         depends=['product', 'type', 'product_uom_category'] + _depends)
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
@@ -1994,10 +1992,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return company.currency.id
 
     @staticmethod
-    def default_unit_digits():
-        return 2
-
-    @staticmethod
     def default_company():
         return Transaction().context.get('company')
 
@@ -2035,12 +2029,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     @fields.depends(
         'type', 'quantity', 'unit_price', 'taxes_deductible_rate', 'invoice',
@@ -2232,7 +2220,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         category = self.product.default_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.default_uom.id
-            self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
