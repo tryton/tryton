@@ -447,8 +447,8 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     description = fields.Text("Description", states=_states, depends=_depends)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     quantity = fields.Float(
-        'Quantity', digits=(16, Eval('unit_digits', 2)), required=True,
-        states=_states, depends=['unit_digits'] + _depends)
+        "Quantity", digits='unit', required=True,
+        states=_states, depends=_depends)
     unit = fields.Many2One(
         'product.uom', 'Unit', ondelete='RESTRICT',
         states={
@@ -456,8 +456,6 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             'readonly': _states['readonly'],
             },
         depends=['product'] + _depends)
-    unit_digits = fields.Function(
-        fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
     unit_price = Monetary(
         'Unit Price', currency='currency', digits=price_digits,
         states=_states, depends=_depends)
@@ -519,7 +517,6 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         category = self.product.purchase_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.purchase_uom
-            self.unit_digits = self.product.purchase_uom.digits
 
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
@@ -534,12 +531,6 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         if self.requisition.currency:
             amount = self.requisition.currency.round(amount)
         return amount
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     def get_rec_name(self, name):
         pool = Pool()
