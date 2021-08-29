@@ -492,13 +492,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         depends=['subscription_state'])
 
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Quantity", digits='unit',
         states={
             'readonly': Eval('subscription_state') != 'draft',
             'required': Bool(Eval('consumption_recurrence')),
             },
-        depends=[
-            'unit_digits', 'subscription_state', 'consumption_recurrence'])
+        depends=['subscription_state', 'consumption_recurrence'])
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
         states={
@@ -510,8 +509,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         depends=['subscription_state', 'service_unit_category'])
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
     service_unit_category = fields.Function(
         fields.Many2One('product.uom.category', "Service Unit Category"),
         'on_change_with_service_unit_category')
@@ -652,12 +649,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def default_quantity(cls):
         return 1
 
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
-
     @fields.depends('subscription', '_parent_subscription.currency')
     def on_change_with_currency(self, name=None):
         if self.subscription and self.subscription.currency:
@@ -691,7 +682,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         category = product.sale_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = product.sale_uom
-            self.unit_digits = product.sale_uom.digits
 
         with Transaction().set_context(self._get_context_sale_price()):
             self.unit_price = Product.get_sale_price(
@@ -863,11 +853,9 @@ class LineConsumption(ModelSQL, ModelView):
     line = fields.Many2One(
         'sale.subscription.line', "Line", required=True, select=True,
         ondelete='RESTRICT')
-    quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+    quantity = fields.Float("Quantity", digits='unit', required=True)
+    unit = fields.Function(fields.Many2One(
+            'product.uom', "Unit"), 'on_change_with_unit')
     date = fields.Date("Date", required=True)
     invoice_line = fields.Many2One(
         'account.invoice.line', "Invoice Line", readonly=True)
@@ -879,10 +867,9 @@ class LineConsumption(ModelSQL, ModelView):
         cls._order.insert(0, ('date', 'DESC'))
 
     @fields.depends('line')
-    def on_change_with_unit_digits(self, name=None):
+    def on_change_with_unit(self, name=None):
         if self.line and self.line.unit:
-            return self.line.unit.digits
-        return 2
+            return self.line.unit.id
 
     @classmethod
     def copy(cls, consumptions, default=None):
