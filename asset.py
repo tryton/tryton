@@ -99,22 +99,20 @@ class Asset(Workflow, ModelSQL, ModelView):
         required=True)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    quantity = fields.Float(
+        "Quantity", digits='unit',
         states={
             'readonly': (Bool(Eval('supplier_invoice_line', 1))
                 | Eval('lines', [0])
                 | (Eval('state') != 'draft')),
             },
-        depends=['state', 'unit_digits'])
+        depends=['state'])
     unit = fields.Many2One('product.uom', 'Unit',
         states={
             'readonly': (Bool(Eval('product'))
                 | (Eval('state') != 'draft')),
             },
         depends=['state'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     value = Monetary(
         "Value", currency='currency', digits='currency',
         states={
@@ -357,12 +355,6 @@ class Asset(Workflow, ModelSQL, ModelView):
         if not self.product:
             return None
         return self.product.default_uom.id
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if not self.unit:
-            return 2
-        return self.unit.digits
 
     @fields.depends('end_date', 'product', 'start_date')
     def on_change_with_end_date(self):
