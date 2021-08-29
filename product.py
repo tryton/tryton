@@ -96,10 +96,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
     product_unit_category = fields.Function(
         fields.Many2One('product.uom.category', "Product Unit Category"),
         'on_change_with_product_unit_category')
-    quantity = fields.Float(
-        "Quantity", required=True,
-        digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    quantity = fields.Float("Quantity", digits='unit', required=True)
     unit = fields.Many2One('product.uom', "Unit", required=True,
         domain=[
             If(Bool(Eval('product_unit_category')),
@@ -107,8 +104,6 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
                 ('category', '!=', -1)),
             ],
         depends=['product', 'product_unit_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     fixed = fields.Boolean("Fixed",
         help="Check to make the quantity of the component independent "
         "of the kit quantity.")
@@ -140,11 +135,6 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
     def on_change_with_product_unit_category(self, name=None):
         if self.product:
             return self.product.default_uom.category.id
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
 
     def get_line(self, Line, quantity, unit, **values):
         pool = Pool()
