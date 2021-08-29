@@ -392,15 +392,13 @@ class Action(ModelSQL, ModelView):
         depends=_depends,
         help='Leave empty for all lines.')
 
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
-        states=_line_states, depends=_line_depends + ['unit_digits'],
+    quantity = fields.Float(
+        "Quantity", digits='unit',
+        states=_line_states, depends=_line_depends,
         help='Leave empty for the same quantity.')
     unit = fields.Function(fields.Many2One('product.uom', 'Unit',
             states=_line_states, depends=_line_depends),
         'on_change_with_unit')
-    unit_digits = fields.Function(
-        fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
         states=_line_states, depends=_line_depends,
@@ -431,14 +429,6 @@ class Action(ModelSQL, ModelView):
                 and self.complaint.origin_model in {
                     'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.id
-
-    @fields.depends('complaint',
-        '_parent_complaint.origin_model', '_parent_complaint.origin')
-    def on_change_with_unit_digits(self, name=None):
-        if (self.complaint
-                and self.complaint.origin_model in {
-                    'sale.line', 'account.invoice.line'}):
-            return self.complaint.origin.unit.digits
 
     @fields.depends(
         'quantity', 'unit_price', 'currency', 'sale_lines', 'invoice_lines',
@@ -639,14 +629,9 @@ class _Action_Line:
     action = fields.Many2One('sale.complaint.action', 'Action',
         ondelete='CASCADE', select=True, required=True)
     quantity = fields.Float(
-        "Quantity",
-        digits=(16, Eval('unit_digits', 2)),
-        states=_states,
-        depends=_depends + ['unit_digits'])
+        "Quantity", digits='unit', states=_states, depends=_depends)
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
         states=_states, depends=_depends,
@@ -672,9 +657,6 @@ class _Action_Line:
         cls.__access__.add('action')
 
     def on_change_with_unit(self, name=None):
-        raise NotImplementedError
-
-    def on_change_with_unit_digits(self, name=None):
         raise NotImplementedError
 
     @fields.depends('currency', methods=['get_quantity', 'get_unit_price'])
@@ -734,11 +716,6 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
         if self.line:
             return self.line.unit.id
 
-    @fields.depends('line')
-    def on_change_with_unit_digits(self, name=None):
-        if self.line:
-            return self.line.unit.digits
-
     @fields.depends('quantity', 'line')
     def get_quantity(self):
         if self.quantity is not None:
@@ -771,11 +748,6 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
     def on_change_with_unit(self, name=None):
         if self.line:
             return self.line.unit.id
-
-    @fields.depends('line')
-    def on_change_with_unit_digits(self, name=None):
-        if self.line:
-            return self.line.unit.digits
 
     @fields.depends('quantity', 'line')
     def get_quantity(self):
