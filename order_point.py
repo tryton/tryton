@@ -71,8 +71,8 @@ class OrderPoint(ModelSQL, ModelView):
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
         'Type', select=True, required=True)
-    min_quantity = fields.Float('Minimal Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    min_quantity = fields.Float(
+        "Minimal Quantity", digits='unit',
         states={
             # required for purchase and production types
             'required': Eval('type') != 'internal',
@@ -81,9 +81,9 @@ class OrderPoint(ModelSQL, ModelView):
             ('min_quantity', '=', None),
             ('min_quantity', '<=', Eval('target_quantity', 0)),
             ],
-        depends=['unit_digits', 'target_quantity', 'type'])
-    target_quantity = fields.Float('Target Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)),
+        depends=['target_quantity', 'type'])
+    target_quantity = fields.Float(
+        "Target Quantity", digits='unit', required=True,
         domain=[
             ['OR',
                 ('min_quantity', '=', None),
@@ -94,9 +94,9 @@ class OrderPoint(ModelSQL, ModelView):
                 ('target_quantity', '<=', Eval('max_quantity', 0)),
                 ],
             ],
-        depends=['unit_digits', 'min_quantity', 'max_quantity'])
-    max_quantity = fields.Float('Maximal Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+        depends=['min_quantity', 'max_quantity'])
+    max_quantity = fields.Float(
+        "Maximal Quantity", digits='unit',
         states={
             'invisible': Eval('type') != 'internal',
             },
@@ -104,15 +104,13 @@ class OrderPoint(ModelSQL, ModelView):
             ('max_quantity', '=', None),
             ('max_quantity', '>=', Eval('target_quantity', 0)),
             ],
-        depends=['unit_digits', 'type', 'target_quantity'])
+        depends=['type', 'target_quantity'])
     company = fields.Many2One('company.company', 'Company', required=True,
             domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
                     Eval('context', {}).get('company', -1)),
             ])
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-            'get_unit_digits')
 
     @classmethod
     def __register__(cls, module_name):
@@ -141,16 +139,11 @@ class OrderPoint(ModelSQL, ModelView):
     @fields.depends('product', '_parent_product.default_uom')
     def on_change_product(self):
         self.unit = None
-        self.unit_digits = 2
         if self.product:
             self.unit = self.product.default_uom
-            self.unit_digits = self.product.default_uom.digits
 
     def get_unit(self, name):
         return self.product.default_uom.id
-
-    def get_unit_digits(self, name):
-        return self.product.default_uom.digits
 
     @classmethod
     def validate(cls, orderpoints):
