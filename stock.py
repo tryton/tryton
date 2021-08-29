@@ -148,8 +148,6 @@ class ShipmentAssignManual(Wizard):
             defaults['move'] = self.show.move.id
         if 'unit' in fields:
             defaults['unit'] = self.show.move.uom.id
-        if 'unit_digits' in fields:
-            defaults['unit_digits'] = self.show.move.unit_digits
         if 'move_quantity' in fields:
             defaults['move_quantity'] = self.show.move.quantity
         return defaults
@@ -173,7 +171,7 @@ class ShipmentAssignManualShow(ModelView):
         'stock.move', None, None, "Skipped", readonly=True)
     move = fields.Many2One('stock.move', "Move", readonly=True)
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Quantity", digits='unit',
         domain=['OR',
             ('quantity', '=', None),
             [
@@ -181,11 +179,10 @@ class ShipmentAssignManualShow(ModelView):
                 ('quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['unit_digits', 'move_quantity'],
+        depends=['move_quantity'],
         help="The maximum quantity to assign from the place.\n"
         "Leave empty for the full quantity of the move.")
     unit = fields.Many2One('product.uom', "Unit", readonly=True)
-    unit_digits = fields.Integer("Unit Digits", readonly=True)
     move_quantity = fields.Float("Move Quantity", readonly=True)
     place = fields.Selection('get_places', "Place", required=True, sort=False)
     place_string = place.translated('place')
@@ -353,7 +350,7 @@ class ShipmentAssignedMove(ModelView):
 
     move = fields.Many2One('stock.move', "Move", required=True)
     unassigned_quantity = fields.Float(
-        "Unassigned Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Unassigned Quantity", digits='unit',
         domain=['OR',
             ('unassigned_quantity', '=', None),
             [
@@ -361,10 +358,10 @@ class ShipmentAssignedMove(ModelView):
                 ('unassigned_quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['unit_digits', 'move_quantity'],
+        depends=['move_quantity'],
         help="The quantity to unassign")
     assigned_quantity = fields.Float(
-        "Assigned Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Assigned Quantity", digits='unit',
         domain=['OR',
             ('assigned_quantity', '=', None),
             [
@@ -372,12 +369,10 @@ class ShipmentAssignedMove(ModelView):
                 ('assigned_quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['unit_digits', 'move_quantity'],
+        depends=['move_quantity'],
         help="The quantity left assigned")
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
     move_quantity = fields.Function(
         fields.Float("Move Quantity"), 'on_change_with_move_quantity')
 
@@ -407,11 +402,6 @@ class ShipmentAssignedMove(ModelView):
     def on_change_with_unit(self, name=None):
         if self.move:
             return self.move.uom.id
-
-    @fields.depends('move')
-    def on_change_with_unit_digits(self, name=None):
-        if self.move:
-            return self.move.uom.digits
 
     @fields.depends('move')
     def on_change_with_move_quantity(self, name=None):
