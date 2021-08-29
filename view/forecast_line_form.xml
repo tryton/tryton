@@ -16,5 +16,4 @@ this repository contains the full copyright notices and license terms. -->
     <label name="quantity_executed"/>
     <field name="quantity_executed"/>
     <field name="moves" colspan="4"/>
-    <field name="unit_digits" invisible="1" colspan="4"/>
 </form>

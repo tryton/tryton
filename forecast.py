@@ -279,16 +279,14 @@ class ForecastLine(ModelSQL, ModelView):
             ],
         states=_states,
         depends=['product', 'product_uom_category'] + _depends)
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-            'get_unit_digits')
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
+        "Quantity", digits='uom', required=True,
         domain=[('quantity', '>=', 0)],
-        states=_states, depends=['unit_digits'] + _depends)
+        states=_states, depends=_depends)
     minimal_quantity = fields.Float(
-        "Minimal Qty", digits=(16, Eval('unit_digits', 2)), required=True,
+        "Minimal Qty", digits='uom', required=True,
         domain=[('minimal_quantity', '<=', Eval('quantity'))],
-        states=_states, depends=['unit_digits', 'quantity'] + _depends)
+        states=_states, depends=['quantity'] + _depends)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
         'line', 'move', 'Moves', readonly=True)
     forecast = fields.Many2One(
@@ -301,9 +299,8 @@ class ForecastLine(ModelSQL, ModelView):
     forecast_state = fields.Function(
         fields.Selection('get_forecast_states', 'Forecast State'),
         'on_change_with_forecast_state')
-    quantity_executed = fields.Function(fields.Float('Quantity Executed',
-            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits']),
-        'get_quantity_executed')
+    quantity_executed = fields.Function(fields.Float(
+            "Quantity Executed", digits='uom'), 'get_quantity_executed')
 
     del _states, _depends
 
@@ -328,33 +325,18 @@ class ForecastLine(ModelSQL, ModelView):
         table_h.drop_constraint('check_line_minimal_qty')
 
     @staticmethod
-    def default_unit_digits():
-        return 2
-
-    @staticmethod
     def default_minimal_quantity():
         return 1.0
 
     @fields.depends('product')
     def on_change_product(self):
-        self.unit_digits = 2
         if self.product:
             self.uom = self.product.default_uom
-            self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
-
-    @fields.depends('uom')
-    def on_change_uom(self):
-        self.unit_digits = 2
-        if self.uom:
-            self.unit_digits = self.uom.digits
-
-    def get_unit_digits(self, name):
-        return self.product.default_uom.digits
 
     @classmethod
     def get_forecast_states(cls):
