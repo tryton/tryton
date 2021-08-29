@@ -278,14 +278,13 @@ class AmendmentLine(ModelSQL, ModelView):
             },
         depends=['action', 'state', 'product_uom_category'])
     quantity = fields.Float(
-        "Quantity",
-        digits=(16, Eval('unit_digits', 2)),
+        "Quantity", digits='unit',
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
             'required': Eval('action') == 'line',
             },
-        depends=['unit_digits', 'action'])
+        depends=['action'])
     unit = fields.Many2One(
         'product.uom', "Unit", ondelete='RESTRICT',
         domain=[
@@ -315,9 +314,6 @@ class AmendmentLine(ModelSQL, ModelView):
             },
         depends=['state', 'action'])
 
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"),
-        'on_change_with_unit_digits')
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', "Product UoM Category"),
         'on_change_with_product_uom_category')
@@ -406,11 +402,6 @@ class AmendmentLine(ModelSQL, ModelView):
                 type='delivery')
         elif self.party:
             self.shipment_address = self.party.address_get(type='delivery')
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
 
     @fields.depends('line')
     def on_change_with_product_uom_category(self, name=None):
