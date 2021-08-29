@@ -11,15 +11,14 @@ from trytond.modules.product import price_digits, round_price
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
-    secondary_quantity = fields.Function(
-        fields.Float("Secondary Quantity",
-            digits=(16, Eval('secondary_unit_digits', 2)),
+    secondary_quantity = fields.Function(fields.Float(
+            "Secondary Quantity", digits='secondary_unit',
             states={
                 'invisible': ~Eval('secondary_unit'),
                 'readonly': Eval('state').in_(
                     ['cancelled', 'assigned', 'done']),
                 },
-            depends=['secondary_unit_digits', 'secondary_unit', 'state']),
+            depends=['secondary_unit', 'state']),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -42,9 +41,6 @@ class Move(metaclass=PoolMeta):
             depends=['unit_price_required', 'secondary_unit', 'state']),
         'on_change_with_secondary_unit_price', setter='set_secondary')
 
-    secondary_unit_digits = fields.Function(
-        fields.Integer("Secondary Unit Digits"),
-        'on_change_with_secondary_unit_digits')
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
             'product.uom.category', "Product Secondary UOM Category"),
@@ -104,11 +100,6 @@ class Move(metaclass=PoolMeta):
     def on_change_secondary_unit(self):
         self.on_change_secondary_quantity()
         self.on_change_secondary_unit_price()
-
-    @fields.depends('secondary_unit')
-    def on_change_with_secondary_unit_digits(self, name=None):
-        if self.secondary_unit:
-            return self.secondary_unit.digits
 
     def get_product_secondary_uom_category(self, name):
         category = None
