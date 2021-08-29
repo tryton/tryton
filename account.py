@@ -11,16 +11,14 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     secondary_quantity = fields.Function(
-        fields.Float("Secondary Quantity",
-            digits=(16, Eval('secondary_unit_digits', 2)),
+        fields.Float(
+            "Secondary Quantity", digits='secondary_unit',
             states={
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('invoice_state') != 'draft',
                 },
-            depends=[
-                'secondary_unit_digits', 'type', 'secondary_unit',
-                'invoice_state']),
+            depends=['type', 'secondary_unit', 'invoice_state']),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -44,9 +42,6 @@ class InvoiceLine(metaclass=PoolMeta):
             depends=['type', 'secondary_unit', 'invoice_state']),
         'on_change_with_secondary_unit_price', setter='set_secondary')
 
-    secondary_unit_digits = fields.Function(
-        fields.Integer("Secondary Unit Digits"),
-        'on_change_with_secondary_unit_digits')
     product_secondary_uom_category = fields.Function(
         fields.Many2One(
             'product.uom.category', "Product Secondary UOM Category"),
@@ -112,11 +107,6 @@ class InvoiceLine(metaclass=PoolMeta):
     def on_change_secondary_unit(self):
         self.on_change_secondary_quantity()
         self.on_change_secondary_unit_price()
-
-    @fields.depends('secondary_unit')
-    def on_change_with_secondary_unit_digits(self, name=None):
-        if self.secondary_unit:
-            return self.secondary_unit.digits
 
     def get_product_secondary_uom_category(self, name):
         return None
