@@ -192,11 +192,9 @@ class Move(Workflow, ModelSQL, ModelView):
             ],
         depends=['state', 'unit_price', 'product_uom_category'],
         help="The unit in which the quantity is specified.")
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
-    quantity = fields.Float("Quantity", required=True,
-        digits=(16, Eval('unit_digits', 2)), states=STATES,
-        depends=['state', 'unit_digits'],
+    quantity = fields.Float(
+        "Quantity", digits='uom', required=True,
+        states=STATES, depends=DEPENDS,
         help="The amount of stock moved.")
     internal_quantity = fields.Float('Internal Quantity', readonly=True,
         required=True)
@@ -408,23 +406,12 @@ class Move(Workflow, ModelSQL, ModelView):
             company = Company(company)
             return company.currency.id
 
-    @staticmethod
-    def default_unit_digits():
-        return 2
-
-    @fields.depends('uom')
-    def on_change_with_unit_digits(self, name=None):
-        if self.uom:
-            return self.uom.digits
-        return 2
-
     @fields.depends('product', 'uom')
     def on_change_product(self):
         if self.product:
             if (not self.uom
                     or self.uom.category != self.product.default_uom.category):
                 self.uom = self.product.default_uom
-                self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):

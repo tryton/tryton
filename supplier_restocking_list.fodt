@@ -460,7 +460,7 @@
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;move.product.rec_name&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D4" office:value-type="string">
-      <text:p text:style-name="P11"><text:placeholder text:placeholder-type="text">&lt;format_number(move.quantity, user.language, digits=move.unit_digits)&gt;</text:placeholder> <text:placeholder text:placeholder-type="text">&lt;move.uom.symbol&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P11"><text:placeholder text:placeholder-type="text">&lt;format_number(move.quantity, user.language, digits=move.uom.digits)&gt;</text:placeholder> <text:placeholder text:placeholder-type="text">&lt;move.uom.symbol&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>

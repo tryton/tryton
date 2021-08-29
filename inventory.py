@@ -328,18 +328,14 @@ class InventoryLine(ModelSQL, ModelView):
             ], states=_states, depends=_depends)
     uom = fields.Function(fields.Many2One('product.uom', 'UOM',
         help="The unit in which the quantity is specified."), 'get_uom')
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-            'get_unit_digits')
-    expected_quantity = fields.Float('Expected Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)), readonly=True,
+    expected_quantity = fields.Float(
+        "Expected Quantity", digits='uom', required=True, readonly=True,
         states={
             'invisible': Eval('id', -1) < 0,
         },
-        depends=['unit_digits'],
         help="The quantity the system calculated should be in the location.")
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
-        states=_states, depends=['unit_digits'] + _depends,
+    quantity = fields.Float(
+        "Quantity", digits='uom', states=_states, depends=_depends,
         help="The actual quantity found in the location.")
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
@@ -402,19 +398,13 @@ class InventoryLine(ModelSQL, ModelView):
         table.not_null_action('quantity', action='remove')
 
     @staticmethod
-    def default_unit_digits():
-        return 2
-
-    @staticmethod
     def default_expected_quantity():
         return 0.
 
     @fields.depends('product')
     def on_change_product(self):
-        self.unit_digits = 2
         if self.product:
             self.uom = self.product.default_uom
-            self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('inventory', '_parent_inventory.location')
     def on_change_with_inventory_location(self, name=None):
@@ -456,9 +446,6 @@ class InventoryLine(ModelSQL, ModelView):
 
     def get_uom(self, name):
         return self.product.default_uom.id
-
-    def get_unit_digits(self, name):
-        return self.product.default_uom.digits
 
     @property
     def unique_key(self):
@@ -594,7 +581,6 @@ class Count(Wizard):
         values['line'] = line.id
         values['product'] = line.product.id
         values['uom'] = line.uom.id
-        values['unit_digits'] = line.unit_digits
         if line.uom.rounding == 1:
             values['quantity'] = 1
         return values
@@ -674,16 +660,12 @@ class CountQuantity(ModelView):
     uom = fields.Many2One('product.uom', "UOM", readonly=True,
         help="The unit in which the quantities are specified.")
     total_quantity = fields.Float(
-        "Total Quantity", digits=(16, Eval('unit_digits', 2)),
-        readonly=True, depends=['unit_digits'],
+        "Total Quantity", digits='uom', readonly=True,
         help="The total amount of the line counted so far.")
 
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'],
+        "Quantity", digits='uom', required=True,
         help="The quantity to add to the existing count.")
-
-    unit_digits = fields.Integer("Unit Digits", readonly=True)
 
     @fields.depends('quantity', 'line')
     def on_change_quantity(self):

@@ -344,11 +344,8 @@ class ProductMixin:
         depends=['company'])
     internal_quantity = fields.Float("Internal Quantity")
     quantity = fields.Function(fields.Float(
-            "Quantity", digits=(16, Eval('unit_digits', 2)),
-            depends=['unit_digits']), 'get_quantity')
+            "Quantity", digits='unit'), 'get_quantity')
     unit = fields.Function(fields.Many2One('product.uom', "Unit"), 'get_unit')
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'get_unit_digits')
 
     @classmethod
     def _columns(cls, tables, withs):
@@ -378,9 +375,6 @@ class ProductMixin:
 
     def get_unit(self, name):
         return self.product.default_uom.id
-
-    def get_unit_digits(self, name):
-        return self.product.default_uom.digits
 
 
 class Product(ProductMixin, Abstract, ModelView):
