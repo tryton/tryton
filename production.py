@@ -110,16 +110,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('product'),
             },
         depends=['uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    quantity = fields.Float(
+        "Quantity", digits='uom',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('bom')),
             'invisible': ~Eval('product'),
-            },
-        depends=['unit_digits'])
+            })
     cost = fields.Function(fields.Numeric('Cost', digits=price_digits,
             readonly=True), 'get_cost')
     inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
@@ -418,23 +415,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             category = self.product.default_uom.category
             if not self.uom or self.uom.category != category:
                 self.uom = self.product.default_uom
-                self.unit_digits = self.product.default_uom.digits
         else:
             self.bom = None
             self.uom = None
-            self.unit_digits = 2
         self.explode_bom()
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom.category.id
-
-    @fields.depends('uom')
-    def on_change_with_unit_digits(self, name=None):
-        if self.uom:
-            return self.uom.digits
-        return 2
 
     @fields.depends(methods=['explode_bom'])
     def on_change_bom(self):

@@ -54,15 +54,11 @@ class BOMInput(ModelSQL, ModelView):
         domain=[
             ('category', '=', Eval('uom_category')),
         ], depends=['uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
-    quantity = fields.Float('Quantity', required=True,
+    quantity = fields.Float('Quantity', digits='uom', required=True,
         domain=['OR',
             ('quantity', '>=', 0),
             ('quantity', '=', None),
-            ],
-        digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -88,7 +84,6 @@ class BOMInput(ModelSQL, ModelView):
             category = self.product.default_uom.category
             if not self.uom or self.uom.category != category:
                 self.uom = self.product.default_uom
-                self.unit_digits = self.product.default_uom.digits
         else:
             self.uom = None
 
@@ -96,12 +91,6 @@ class BOMInput(ModelSQL, ModelView):
     def on_change_with_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom.category.id
-
-    @fields.depends('uom')
-    def on_change_with_unit_digits(self, name=None):
-        if self.uom:
-            return self.uom.digits
-        return 2
 
     def get_rec_name(self, name):
         return self.product.rec_name
@@ -149,10 +138,8 @@ class BOMTree(ModelView):
     __name__ = 'production.bom.tree'
 
     product = fields.Many2One('product.product', 'Product')
-    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    quantity = fields.Float('Quantity', digits='uom')
     uom = fields.Many2One('product.uom', 'Uom')
-    unit_digits = fields.Integer('Unit Digits')
     childs = fields.One2Many('production.bom.tree', None, 'Childs')
 
     @classmethod
@@ -175,7 +162,6 @@ class BOMTree(ModelView):
                 'quantity': quantity,
                 'uom': input_.uom.id,
                 'uom.rec_name': input_.uom.rec_name,
-                'unit_digits': input_.uom.digits,
                 'childs': childs,
             }
             result.append(values)
@@ -186,13 +172,11 @@ class OpenBOMTreeStart(ModelView):
     'Open BOM Tree'
     __name__ = 'production.bom.tree.open.start'
 
-    quantity = fields.Float('Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
+    quantity = fields.Float('Quantity', digits='uom', required=True)
     uom = fields.Many2One('product.uom', 'Unit', required=True,
         domain=[
             ('category', '=', Eval('category')),
         ], depends=['category'])
-    unit_digits = fields.Integer('Unit Digits', readonly=True)
     category = fields.Many2One('product.uom.category', 'Category',
         readonly=True)
     bom = fields.Many2One('product.product-production.bom',
@@ -200,12 +184,6 @@ class OpenBOMTreeStart(ModelView):
             ('product', '=', Eval('product')),
         ], depends=['product'])
     product = fields.Many2One('product.product', 'Product', readonly=True)
-
-    @fields.depends('uom')
-    def on_change_with_unit_digits(self):
-        if self.uom:
-            return self.uom.digits
-        return 2
 
 
 class OpenBOMTreeTree(ModelView):
@@ -227,7 +205,6 @@ class OpenBOMTreeTree(ModelView):
                 'quantity': quantity,
                 'uom': uom.id,
                 'uom.rec_name': uom.rec_name,
-                'unit_digits': uom.digits,
                 'childs': childs,
                 }]
         return {
@@ -256,10 +233,8 @@ class OpenBOMTree(Wizard):
         defaults['category'] = product.default_uom.category.id
         if getattr(self.start, 'uom', None):
             defaults['uom'] = self.start.uom.id
-            defaults['unit_digits'] = self.start.unit_digits
         else:
             defaults['uom'] = product.default_uom.id
-            defaults['unit_digits'] = product.default_uom.digits
         defaults['product'] = product.id
         if getattr(self.start, 'bom', None):
             defaults['bom'] = self.start.bom.id
