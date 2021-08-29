@@ -26,3 +26,6 @@ def register():
         web.Shop_Attribute,
         product.Attribute,
         module='web_shop', type_='model', depends=['product_attribute'])
+    Pool.register(
+        product.Image,
+        module='web_shop', type_='model', depends=['product_image'])

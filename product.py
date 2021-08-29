@@ -32,3 +32,9 @@ class Attribute(metaclass=PoolMeta):
     web_shops = fields.Many2Many(
         'web.shop-product.attribute', 'attribute', 'shop', "Web Shops",
         help="The list of web shops on which the attribute is published.")
+
+
+class Image(metaclass=PoolMeta):
+    __name__ = 'product.image'
+
+    web_shop = fields.Boolean("Web Shop")

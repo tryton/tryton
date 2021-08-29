@@ -13,7 +13,7 @@ from trytond.modules.company.tests import CompanyTestMixin
 class WebShopTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Web Shop module'
     module = 'web_shop'
-    extras = ['product_attribute']
+    extras = ['product_attribute', 'product_image']
 
 
 def suite():
