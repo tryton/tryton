@@ -206,16 +206,12 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product UoM Category'),
         'on_change_with_product_uom_category')
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
+    quantity = fields.Float("Quantity", digits='unit', required=True)
     unit = fields.Many2One('product.uom', 'Unit', required=True,
         domain=[
             ('category', '=', Eval('product_uom_category', -1)),
             ],
         depends=['product_uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     free = fields.Boolean('Free')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
@@ -231,12 +227,6 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     @fields.depends('product')
     def on_change_product(self):
