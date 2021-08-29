@@ -20,20 +20,18 @@ class LotUnitMixin:
         depends=['product_default_uom_category'],
         help="The biggest unit for the lot.")
     unit_quantity = fields.Float(
-        "Unit Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Unit Quantity", digits='unit',
         states={
             'required': Bool(Eval('unit')),
             'invisible': ~Eval('unit'),
             },
-        depends=['unit', 'unit_digits'],
+        depends=['unit'],
         help="The maximal quantity for the lot.")
 
     product_default_uom_category = fields.Function(
         fields.Many2One(
             'product.uom.category', "Default Product UoM Category"),
         'on_change_with_product_default_uom_category')
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
 
     @fields.depends('product', methods=['on_change_unit'])
     def on_change_product(self):
@@ -55,11 +53,6 @@ class LotUnitMixin:
         if self.product:
             category = self.product.default_uom_category
             return category.id if category else None
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
 
 
 class Lot(LotUnitMixin, metaclass=PoolMeta):
