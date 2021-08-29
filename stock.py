@@ -368,16 +368,10 @@ class MoveAddLotsStart(ModelView):
     __name__ = 'stock.move.add.lots.start'
 
     product = fields.Many2One('product.product', "Product", readonly=True)
-    quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)), readonly=True,
-        depends=['unit_digits'])
+    quantity = fields.Float("Quantity", digits='unit', readonly=True)
     unit = fields.Many2One('product.uom', "Unit", readonly=True)
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
     quantity_remaining = fields.Function(
-        fields.Float(
-            "Quantity Remaining", digits=(16, Eval('unit_digits', 2)),
-            depends=['unit_digits']),
+        fields.Float("Quantity Remaining", digits='unit'),
         'on_change_with_quantity_remaining')
 
     lots = fields.One2Many(
@@ -410,11 +404,6 @@ class MoveAddLotsStart(ModelView):
                 },
             )
 
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-
     @fields.depends('quantity', 'lots', 'unit')
     def on_change_with_quantity_remaining(self, name=None):
         if self.quantity is not None:
@@ -445,11 +434,9 @@ class MoveAddLotsStartLot(ModelView, LotMixin):
     __name__ = 'stock.move.add.lots.start.lot'
 
     parent = fields.Many2One('stock.move.add.lots.start', "Parent")
-    quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+    quantity = fields.Float("Quantity", digits='unit', required=True)
+    unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
 
     @fields.depends(
         'parent', '_parent_parent.quantity_remaining')
@@ -458,10 +445,10 @@ class MoveAddLotsStartLot(ModelView, LotMixin):
                 and self.parent.quantity_remaining is not None):
             self.quantity = self.parent.quantity_remaining
 
-    @fields.depends('parent', '_parent_parent.unit_digits')
-    def on_change_with_unit_digits(self, name=None):
-        if self.parent:
-            return self.parent.unit_digits
+    @fields.depends('parent', '_parent_parent.unit')
+    def on_change_with_unit(self, name=None):
+        if self.parent and self.parent.unit:
+            return self.parent.unit.id
 
     @fields.depends('number', 'product', methods=['_set_lot_values'])
     def on_change_number(self):
