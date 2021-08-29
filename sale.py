@@ -1044,20 +1044,20 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('sale_state') != 'draft',
             },
         depends=['sale_state'])
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
+    quantity = fields.Float(
+        "Quantity", digits='unit',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('sale_state') != 'draft',
             },
-        depends=['type', 'unit_digits', 'sale_state'])
+        depends=['type', 'sale_state'])
     actual_quantity = fields.Float(
-        "Actual Quantity", digits=(16, Eval('unit_digits', 2)), readonly=True,
+        "Actual Quantity", digits='unit', readonly=True,
         states={
             'invisible': Eval('type') != 'line',
             },
-        depends=['unit_digits', 'type'])
+        depends=['type'])
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
             states={
                 'required': Bool(Eval('product')),
@@ -1070,8 +1070,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         depends=['product', 'type', 'product_uom_category', 'sale_state'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
@@ -1183,16 +1181,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def default_type():
         return 'line'
 
-    @staticmethod
-    def default_unit_digits():
-        return 2
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
-
     @property
     def _move_remaining_quantity(self):
         "Compute the remaining quantity to ship"
@@ -1287,7 +1275,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         category = self.product.sale_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
-            self.unit_digits = self.product.sale_uom.digits
 
         self.unit_price = self.compute_unit_price()
 
