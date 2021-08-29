@@ -24,10 +24,10 @@ class _ProductEntityMixin:
 
     @property
     def vsf_image(self):
-        if self.vsf_sku:
-            return '/product/%(sku)s.jpg' % {
-                'sku': slugify(self.vsf_sku.lower()),
-                }
+        try:
+            return self.get_image_url(_external=True, web_shop=1)
+        except AttributeError:
+            pass
 
     @property
     def vsf_type_id(self):

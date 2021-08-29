@@ -4,6 +4,7 @@ Web Shop Vue Storefront Scenario
 
 Imports::
 
+    >>> import base64
     >>> from decimal import Decimal
     >>> from unittest.mock import MagicMock, ANY, patch
 
@@ -17,6 +18,14 @@ Imports::
     >>> from trytond.modules.web_shop_vue_storefront.tests.tools import (
     ...     AnyDictWith)
 
+    >>> pixel = base64.decodebytes(
+    ...     b'/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEP'
+    ...     b'ERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAALCAABAAEBAREA/8QAHwAAAQUBAQEB'
+    ...     b'AQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1Fh'
+    ...     b'ByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZ'
+    ...     b'WmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG'
+    ...     b'x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APsuv//Z')
+
 Patch elasticsearch::
 
     >>> from trytond.modules.web_shop_vue_storefront import web
@@ -27,7 +36,7 @@ Patch elasticsearch::
 Install web_shop_vue_storefront::
 
     >>> config = activate_modules(
-    ...     ['web_shop_vue_storefront', 'product_attribute'])
+    ...     ['web_shop_vue_storefront', 'product_attribute', 'product_image'])
 
 Create company::
 
@@ -98,6 +107,9 @@ Create products::
     >>> template.save()
     >>> product1, = template.products
     >>> product1.suffix_code = 'PROD1'
+    >>> image = product1.images.new()
+    >>> image.template = template
+    >>> image.image = pixel
     >>> product1.save()
 
     >>> template = ProductTemplate()
@@ -121,6 +133,8 @@ Create products::
     >>> configurable.list_price = Decimal(50)
     >>> configurable.attribute_set = attribute_set
     >>> configurable.account_category = account_category
+    >>> image = configurable.images.new()
+    >>> image.image = pixel
     >>> configurable1, = configurable.products
     >>> configurable1.suffix_code = "1"
     >>> configurable1.attributes = {
@@ -188,7 +202,7 @@ Run VSF update::
     ...     id=product1.vsf_identifier.id, index='vue_storefront_catalog',
     ...     doc_type='product', body=AnyDictWith({
     ...         'name': "Product 1",
-    ...         'image': '/product/prod1.jpg',
+    ...         'image': ANY,
     ...         'sku': 'PROD1',
     ...         'url_key': 'product-1',
     ...         'type_id': 'simple',
@@ -207,7 +221,7 @@ Run VSF update::
     ...     id=configurable.vsf_identifier.id, index='vue_storefront_catalog',
     ...     doc_type='product', body=AnyDictWith({
     ...         'name': "Configurable",
-    ...         'image': '/product/conf.jpg',
+    ...         'image': ANY,
     ...         'sku': 'CONF',
     ...         'url_key': 'configurable',
     ...         'type_id': 'configurable',

@@ -49,6 +49,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
     module = 'web_shop_vue_storefront'
     extras = [
         'product_attribute',
+        'product_image',
         'sale_promotion_coupon',
         'sale_shipment_cost',
         'carrier',
