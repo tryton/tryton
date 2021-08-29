@@ -78,23 +78,14 @@ class SplitMoveStart(ModelView):
     'Split Move'
     __name__ = 'stock.move.split.start'
     count = fields.Integer('Counts', help='The limit number of moves.')
-    quantity = fields.Float('Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    quantity = fields.Float("Quantity", digits='uom', required=True)
     uom = fields.Many2One('product.uom', 'Uom', required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
             ],
         depends=['uom_category'])
-    unit_digits = fields.Integer('Unit Digits', readonly=True)
     uom_category = fields.Many2One('product.uom.category', 'Uom Category',
         readonly=True)
-
-    @fields.depends('uom')
-    def on_change_with_unit_digits(self):
-        if self.uom:
-            return self.uom.digits
-        return 2
 
 
 class SplitMove(Wizard):
@@ -110,7 +101,6 @@ class SplitMove(Wizard):
     def default_start(self, fields):
         return {
             'uom': self.record.uom.id,
-            'unit_digits': self.record.unit_digits,
             'uom_category': self.record.uom.category.id,
             }
 
