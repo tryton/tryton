@@ -38,5 +38,8 @@ Product
 `Price List Parent </projects/modules-product-price-list-parent/en/latest>`_
     Adds price list cascading.
 
+`Image </projects/modules-product-image/en/latest>`_
+    Adds images.
+
 `Kit </projects/modules-product-kit/en/latest>`_
     Add support for product kits.
