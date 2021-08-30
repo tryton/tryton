@@ -429,6 +429,9 @@ class Product(
     def get_template(self, name):
         value = getattr(self.template, name)
         if isinstance(value, Model):
+            field = getattr(self.__class__, name)
+            if field._type == 'reference':
+                return str(value)
             return value.id
         elif (isinstance(value, (list, tuple))
                 and value and isinstance(value[0], Model)):
