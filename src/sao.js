@@ -262,15 +262,20 @@ var Sao = {};
         }
         datetime.isDateTime = true;
         datetime.local();
+        datetime.todate = function() {
+            return Sao.Date(this.year(), this.month(), this.date());
+        };
+        datetime.totime = function() {
+            return Sao.Time(
+                this.hour(), this.minute(), this.second(), this.millisecond());
+        };
         return datetime;
     };
 
     Sao.DateTime.combine = function(date, time) {
-        var datetime = date.clone();
-        datetime.set({hour: time.hour(), minute: time.minute(),
-            second: time.second(), millisecond: time.millisecond()});
-        datetime.isDateTime = true;
-        return datetime;
+        return Sao.DateTime(
+            date.year(), date.month(), date.date(),
+            time.hour(), time.minute(), time.second(), time.millisecond());
     };
 
     Sao.DateTime.min = moment(new Date(-100000000 * 86400000)).local();
