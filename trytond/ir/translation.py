@@ -177,7 +177,7 @@ class Translation(ModelSQL, ModelView):
                     trans_help[trans['name']] = trans
                 elif trans['type'] == 'selection':
                     trans_selection.setdefault(trans['name'], {})
-                    trans_selection[trans['name']][trans['src']] = trans
+                    trans_selection[trans['name']][trans['src']] = trans or ''
 
         def update_insert_field(field, trans_name):
             string_md5 = cls.get_src_md5(field.string)
@@ -219,7 +219,7 @@ class Translation(ModelSQL, ModelView):
         def insert_selection(field, trans_name):
             for (_, val) in field.selection:
                 if (trans_name not in trans_selection
-                        or val not in trans_selection[trans_name]):
+                        or (val or '') not in trans_selection[trans_name]):
                     val_md5 = cls.get_src_md5(val)
                     cursor.execute(*ir_translation.insert(
                             [ir_translation.name, ir_translation.lang,
