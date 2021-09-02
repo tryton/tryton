@@ -483,7 +483,8 @@ class Main(Gtk.Application):
             barstyle = Gtk.ToolbarStyle.ICONS
         for page_idx in range(self.notebook.get_n_pages()):
             page = self.get_page(page_idx)
-            page.toolbar.set_style(barstyle)
+            if page.toolbar:
+                page.toolbar.set_style(barstyle)
 
     def edit_limit(self):
         from tryton.gui.window.limit import Limit
