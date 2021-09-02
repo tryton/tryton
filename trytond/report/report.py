@@ -163,7 +163,10 @@ class Report(URLMixin, PoolBase):
         if model:
             records = cls._get_records(ids, model, data)
 
-        if action_report.single:
+        if not records:
+            groups = [[]]
+            headers = [{}]
+        elif action_report.single:
             groups = [[r] for r in records]
             headers = [dict(cls.header_key(r)) for r in records]
         else:
