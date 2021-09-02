@@ -148,5 +148,5 @@ class CompanyReport(Report):
     @classmethod
     def get_context(cls, records, header, data):
         context = super().get_context(records, header, data)
-        context['company'] = header['company']
+        context['company'] = header.get('company')
         return context
