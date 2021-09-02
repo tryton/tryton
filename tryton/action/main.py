@@ -176,7 +176,7 @@ class Action(object):
 
         keyact = {}
         for action in actions:
-            keyact[action['name'].replace('_', '')] = action
+            keyact[action['name'].split(' / ')[-1]] = action
 
         res = selection(_('Select your action'), keyact, alwaysask=alwaysask)
         if res:
