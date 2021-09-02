@@ -161,7 +161,7 @@
             var keyact = {};
             for (var i in actions) {
                 var action = actions[i];
-                keyact[action.name.replace(/_/g, '')] = action;
+                keyact[action.name.split(' / ').pop()] = action;
             }
             var prm = Sao.common.selection(
                     Sao.i18n.gettext('Select your action'),
