@@ -554,7 +554,7 @@
    <text:p text:style-name="P28">Reminder Notice</text:p>
    <text:p text:style-name="P12"><text:span text:style-name="T1">Date: </text:span><text:span text:style-name="T1"><text:placeholder text:placeholder-type="text">&lt;format_date(today, party.lang)&gt;</text:placeholder></text:span></text:p>
    <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;letter.fees&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P11"><text:span text:style-name="T2">Fees: </text:span><text:placeholder text:placeholder-type="text">&lt;&apos;, &apos;.join(format_currency(amount, party.lang, cur) for cur, amount in letter.fees.iteritems())&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P11"><text:span text:style-name="T2">Fees: </text:span><text:placeholder text:placeholder-type="text">&lt;&apos;, &apos;.join(format_currency(amount, party.lang, cur) for cur, amount in letter.fees.items())&gt;</text:placeholder></text:p>
    <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
    <table:table table:name="Dunnings" table:style-name="Dunnings">
     <table:table-column table:style-name="Dunnings.A" table:number-columns-repeated="5"/>
