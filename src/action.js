@@ -46,7 +46,11 @@
                 if (data.ids.length > ids.length) {
                     name_suffix += Sao.i18n.gettext(',...');
                 }
-                return Sao.i18n.gettext('%1 (%2)', name, name_suffix);
+                if (name_suffix) {
+                    return Sao.i18n.gettext('%1 (%2)', name, name_suffix);
+                } else {
+                    return name;
+                }
             });
         }
         data.action_id = action.id;
