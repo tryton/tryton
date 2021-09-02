@@ -129,8 +129,10 @@ class Group(SignalEvent, list):
         # Use reversed order to minimize the cursor reposition as the cursor
         # has more chances to be on top of the list.
         for record in reversed(self[:]):
-            self.signal('group-list-changed', ('record-removed', record))
+            # Destroy record before propagating the signal to recursively
+            # destroy also the underlying records
             record.destroy()
+            self.signal('group-list-changed', ('record-removed', record))
             self.pop()
         self.__id2record = {}
         self.record_removed, self.record_deleted = [], []
