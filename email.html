@@ -15,7 +15,7 @@
         <p>Date: ${format_date(today, data.language)}</p>
         <p py:if="letter.fees">Fees:
         ${', '.join(format_currency(amount, data['language'], cur)
-        for cur, amount in letter.fees.iteritems())}
+        for cur, amount in letter.fees.items())}
         </p>
         <table style="width: 100%;">
             <thead>
