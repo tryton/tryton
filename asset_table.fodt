@@ -495,7 +495,7 @@
      <table:table-column table:style-name="Table3.A" table:number-columns-repeated="3"/>
      <table:table-row>
       <table:table-cell table:style-name="Table3.A1" office:value-type="string">
-       <text:p text:style-name="Header">Company: <text:placeholder text:placeholder-type="text">&lt;company.rec_name&gt;</text:placeholder> </text:p>
+       <text:p text:style-name="Header">Company: <text:placeholder text:placeholder-type="text">&lt;company.rec_name if company else ''&gt;</text:placeholder> </text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table3.A1" office:value-type="string">
        <text:p text:style-name="P1">Amortization Table</text:p>
