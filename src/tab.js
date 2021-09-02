@@ -512,7 +512,7 @@
                 ['print', 'tryton-print',
                      Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
-                    var button = jQuery('<div/>', {
+                    var dropdown = jQuery('<div/>', {
                         'class': 'btn-group dropdown',
                         'role': 'group'
                     })
@@ -538,8 +538,9 @@
                         'aria-labelledby': menu_action[0]
                     }))
                     .insertBefore(toolbar.find('button#email'));
+                    var button = dropdown.find('button');
                     buttons[menu_action[0]] = button;
-                    var dropdown = button
+                    dropdown
                         .on('show.bs.dropdown', function() {
                             jQuery(this).parents('.btn-group').removeClass(
                                     'hidden-xs');
@@ -547,7 +548,7 @@
                             jQuery(this).parents('.btn-group').addClass(
                                     'hidden-xs');
                         });
-                    var menu = button.find('.dropdown-menu');
+                    var menu = dropdown.find('.dropdown-menu');
                     button.click(function() {
                         menu.find([
                             '.' + menu_action[0] + '_button',
@@ -670,12 +671,18 @@
                         .appendTo(menu);
                     }.bind(this));
 
+                    if (menu_action[0] != 'action') {
+                        button._can_be_sensitive = Boolean(
+                            menu.children().length);
+                    }
+
                     if (menu_action[0] == 'print') {
                         if (toolbars.exports.length && toolbars.print.length) {
                             menu.append(jQuery('<li/>', {
                                 'role': 'separator',
                                 'class': 'divider',
                             }));
+                            button._can_be_sensitive = true;
                         }
                         toolbars.exports.forEach(function(export_) {
                             var item = jQuery('<li/>', {
@@ -1242,7 +1249,8 @@
                 resources = {};
             }
             var record_id = this.screen.get_id();
-            var disabled = record_id < 0 || record_id === null;
+            var disabled = (
+                record_id < 0 || record_id === null || record_id === undefined);
 
             var update = function(name, title, text, color) {
                 var button = this.buttons[name];
@@ -1298,13 +1306,25 @@
                 if (data[0] !== 0) {
                     name = data[0];
                 }
-                var buttons = ['print', 'relate', 'attach'];
+                var buttons = ['print', 'relate', 'email', 'save', 'attach'];
                 buttons.forEach(function(button_id){
                     var button = this.buttons[button_id];
-                    if (button) {
-                        var disabled = button.is(':disabled');
-                        button.prop('disabled', disabled || data[0] === 0);
+                    var can_be_sensitive = button._can_be_sensitive;
+                    if (can_be_sensitive === undefined) {
+                        can_be_sensitive = true;
                     }
+                    if ((button_id == 'print') ||
+                        (button_id == 'relate') ||
+                        (button_id == 'email')) {
+                        can_be_sensitive |= this.screen.get_buttons().some(
+                            function(button) {
+                                var keyword = button.attributes.keyword || 'action';
+                                return keyword == button_id;
+                            });
+                    } else if (button_id == 'save') {
+                        can_be_sensitive &= !this.screen.readonly;
+                    }
+                    button.prop('disabled', !(data[0] && can_be_sensitive));
                 }.bind(this));
                 this.buttons.switch_.prop('disabled',
                     this.attributes.view_ids > 1);
@@ -1325,17 +1345,17 @@
         },
         action: function() {
             window.setTimeout(function() {
-                this.buttons.action.find('button').click();
+                this.buttons.action.click();
             }.bind(this));
         },
         relate: function() {
             window.setTimeout(function() {
-                this.buttons.relate.find('button').click();
+                this.buttons.relate.click();
             }.bind(this));
         },
         print: function() {
             window.setTimeout(function() {
-                this.buttons.print.find('button').click();
+                this.buttons.print.click();
             }.bind(this));
         },
         export: function(){
