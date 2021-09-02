@@ -13,7 +13,7 @@ def digits_validate(value):
                 assert isinstance(i, (int, PYSON)), \
                     'digits must be tuple of integers or PYSON'
                 if isinstance(i, PYSON):
-                    assert i.types().issubset(set([int, int])), \
+                    assert i.types() == {int}, \
                         'PYSON digits must return an integer'
 
 

@@ -54,7 +54,7 @@ class Reference(SelectionMixin, Field):
             warnings.warn('selection_change_with argument is deprecated, '
                 'use the depends decorator',
                 DeprecationWarning, stacklevel=2)
-            self.selection_change_with |= set(selection_change_with)
+            self.selection_change_with.update(selection_change_with)
         self.sort = sort
         self.translate_selection = translate
         self.help_selection = help_selection

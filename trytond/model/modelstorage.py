@@ -166,7 +166,7 @@ class ModelStorage(Model):
 
         ModelAccess.check(cls.__name__, 'create')
 
-        all_fields = list(set(chain(*(iter(v.keys()) for v in vlist))))
+        all_fields = list(set().union(*vlist))
         ModelFieldAccess.check(cls.__name__, all_fields, 'write')
 
         # Increase transaction counter

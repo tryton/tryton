@@ -38,7 +38,7 @@ def domain_validate(value):
                                 and arg[1] in OPERATORS)
                         or (
                                 isinstance(arg[1], PYSON)
-                                and arg[1].types() == set([str]))))):
+                                and arg[1].types() == {str})))):
                 pass
             elif isinstance(arg, list):
                 if not test_domain(arg):
@@ -57,7 +57,7 @@ def states_validate(value):
         assert isinstance(value[state], (bool, PYSON)), \
             'values of states must be PYSON'
         if hasattr(value[state], 'types'):
-            assert value[state].types() == set([bool]), \
+            assert value[state].types() == {bool}, \
                 'values of states must return boolean'
 
 
@@ -73,7 +73,7 @@ def size_validate(value):
     if value is not None:
         assert isinstance(value, (int, PYSON)), 'size must be PYSON'
         if hasattr(value, 'types'):
-            assert value.types() == set([int]), \
+            assert value.types() == {int}, \
                 'size must return integer'
 
 
@@ -81,7 +81,7 @@ def search_order_validate(value):
     if value is not None:
         assert isinstance(value, (list, PYSON)), 'search_order must be PYSON'
         if hasattr(value, 'types'):
-            assert value.types() == set([list]), 'search_order must be PYSON'
+            assert value.types() == {list}, 'search_order must be PYSON'
 
 
 def _set_value(record, field):
@@ -108,12 +108,12 @@ def depends(*fields, **kwargs):
 
     def decorator(func):
         depends = getattr(func, 'depends', set())
-        depends |= set(fields)
+        depends.update(fields)
         setattr(func, 'depends', depends)
 
         if methods:
             depend_methods = getattr(func, 'depend_methods', set())
-            depend_methods |= set(methods)
+            depend_methods.update(methods)
             setattr(func, 'depend_methods', depend_methods)
 
         @wraps(func)
@@ -267,13 +267,13 @@ class Field(object):
             warnings.warn('on_change argument is deprecated, '
                 'use the depends decorator',
                 DeprecationWarning, stacklevel=3)
-            self.on_change |= set(on_change)
+            self.on_change.update(on_change)
         self.on_change_with = set()
         if on_change_with:
             warnings.warn('on_change_with argument is deprecated, '
                 'use the depends decorator',
                 DeprecationWarning, stacklevel=3)
-            self.on_change_with |= set(on_change_with)
+            self.on_change_with.update(on_change_with)
         self.__depends = None
         self.depends = depends or []
         self.__context = None

@@ -570,7 +570,7 @@ class ModelSQL(ModelStorage):
                     'write_uid', 'write_date', 'id'):
                 if key in values:
                     del values[key]
-            modified_fields |= set(values.keys())
+            modified_fields |= values.keys()
 
             # Get default values
             values_schema = tuple(sorted(values))
@@ -710,7 +710,7 @@ class ModelSQL(ModelStorage):
                 extra_fields.update(fields.get_eval_fields(field.context))
         extra_fields.discard('id')
         all_fields = (
-            set(fields_names) | set(fields_related.keys()) | extra_fields)
+            set(fields_names) | fields_related.keys() | extra_fields)
 
         result = []
         table = cls.__table__()
@@ -906,7 +906,7 @@ class ModelSQL(ModelStorage):
                         row[key] = None
 
         to_del = set()
-        for fname in set(fields_related.keys()) | extra_fields:
+        for fname in fields_related.keys() | extra_fields:
             if fname not in fields_names:
                 to_del.add(fname)
             if fname not in cls._fields:
@@ -1029,12 +1029,12 @@ class ModelSQL(ModelStorage):
                 if hasattr(field, 'set'):
                     fields_to_set.setdefault(fname, []).extend((ids, value))
 
-            mptt_fields = cls._mptt_fields & set(values)
+            mptt_fields = cls._mptt_fields & values.keys()
             if mptt_fields:
                 cls._update_mptt(
                     list(sorted(mptt_fields)), repeat(ids, len(mptt_fields)),
                     values)
-            all_field_names |= set(values)
+            all_field_names |= values.keys()
 
         for fname in sorted(fields_to_set, key=cls.index_set_field):
             fargs = fields_to_set[fname]
