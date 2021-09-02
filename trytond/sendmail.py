@@ -15,12 +15,13 @@ logger = logging.getLogger(__name__)
 
 
 def sendmail_transactional(
-        from_addr, to_addrs, msg, transaction=None, datamanager=None):
+        from_addr, to_addrs, msg, transaction=None, datamanager=None,
+        strict=False):
     if transaction is None:
         transaction = Transaction()
     assert isinstance(transaction, Transaction), transaction
     if datamanager is None:
-        datamanager = SMTPDataManager()
+        datamanager = SMTPDataManager(strict=strict)
     datamanager = transaction.join(datamanager)
     datamanager.put(from_addr, to_addrs, msg)
 

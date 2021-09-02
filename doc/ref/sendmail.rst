@@ -5,7 +5,7 @@
 Sendmail
 ========
 
-.. method:: sendmail_transactional(from_addr, to_addrs, msg[, transaction[, datamanager]])
+.. method:: sendmail_transactional(from_addr, to_addrs, msg[, transaction[, datamanager[, strict]]])
 
 Send email message only if the current transaction is successfully committed.
 The required arguments are an `RFC 822`_ from-address string, a list of `RFC
@@ -14,16 +14,19 @@ address), and an email message.
 The caller may pass a :class:`Transaction` instance to join otherwise the
 current one will be joined. A specific data manager can be specified otherwise
 the default :class:`SMTPDataManager` will be used for sending email.
+The strict value is passed to instantiate the default :class:`SMTPDataManager`.
 
 .. warning::
 
     An SMTP failure will be only logged without raising any exception.
 
-.. method:: sendmail(from_addr, to_addrs, msg[, server])
+.. method:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
 
 Send email message like :meth:`sendmail_transactional` but directly without
 caring about the transaction.
 The caller may pass a server instance from `smtplib`_.
+If strict is ``True``, an exception is raised if it is not possible to connect
+to the server.
 
 .. method:: get_smtp_server([uri[, strict]])
 
