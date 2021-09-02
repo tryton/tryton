@@ -16,6 +16,16 @@ from .exceptions import BadRequest
 from .web import split_name, join_name
 
 
+def remove_forbidden_chars(value):
+    from trytond.model.fields import Char
+    if value is None:
+        return value
+    for c in Char.forbidden_chars:
+        if c in value:
+            value = value.replace(c, ' ')
+    return value.strip()
+
+
 class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
@@ -62,12 +72,13 @@ class Address(metaclass=PoolMeta):
         Subdivision = pool.get('country.subdivision')
         ContactMechanism = pool.get('party.contact_mechanism')
 
-        name = join_name(data['firstname'], data['lastname'])
+        name = remove_forbidden_chars(
+            join_name(data['firstname'], data['lastname']))
         party = for_party or self.party
         if name != party.name:
             self.party_name = name
         self.street = '\n'.join(map(str, data['street']))
-        self.city = data['city']
+        self.city = remove_forbidden_chars(data['city'])
         if data['country_id']:
             try:
                 self.country, = Country.search([
@@ -90,7 +101,7 @@ class Address(metaclass=PoolMeta):
                 self.subdivision, = subdivisions
 
         if data.get('telephone'):
-            value = data['telephone']
+            value = remove_forbidden_chars(data['telephone'])
             if phonenumbers:
                 try:
                     phonenumber = phonenumbers.parse(
