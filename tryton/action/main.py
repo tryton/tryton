@@ -85,7 +85,10 @@ class Action(object):
             name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
             if len(data['ids']) > len(ids):
                 name_suffix += _(',...')
-            return _('%s (%s)') % (name, name_suffix)
+            if name_suffix:
+                return _('%s (%s)') % (name, name_suffix)
+            else:
+                return name
 
         data['action_id'] = action['id']
         if action['type'] == 'ir.action.act_window':
