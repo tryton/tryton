@@ -6,6 +6,8 @@ from gi.repository import Gtk
 
 class InfoBar(object):
 
+    toolbar = None
+
     def create_info_bar(self):
         self.info_label = Gtk.Label()
 
