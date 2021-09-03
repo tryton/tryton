@@ -59,7 +59,7 @@ class Statement(metaclass=PoolMeta):
 class StatementOrigin(metaclass=PoolMeta):
     __name__ = 'account.statement.origin'
 
-    keywords = fields.Dict(None, "KeyWords")
+    keywords = fields.Dict(None, "Keywords")
 
 
 class StatementRule(sequence_ordered(), ModelSQL, ModelView):
