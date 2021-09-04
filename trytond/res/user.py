@@ -468,6 +468,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         Action = pool.get('ir.action')
         Config = pool.get('ir.configuration')
         ConfigItem = pool.get('ir.module.config_wizard.item')
+        Lang = pool.get('ir.lang')
 
         res = {}
         if context_only:
@@ -504,6 +505,12 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
         if user.language:
             language = user.language
+        else:
+            try:
+                language = Lang.get(Config.get_language())
+            except ValueError:
+                language = None
+        if language:
             date = language.date
             for i, j in [('%a', ''), ('%A', ''), ('%b', '%m'), ('%B', '%m'),
                     ('%j', ''), ('%U', ''), ('%w', ''), ('%W', '')]:
