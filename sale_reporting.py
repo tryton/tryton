@@ -267,6 +267,28 @@ class Context(ModelView):
         return Transaction().context.get('warehouse')
 
 
+class Main(Abstract, ModelView):
+    "Sale Reporting"
+    __name__ = 'sale.reporting.main'
+
+    time_series = fields.Function(fields.One2Many(
+            'sale.reporting.main.time_series', None, "Time Series"),
+        'get_time_series')
+
+    def get_rec_name(self, name):
+        return ''
+
+    def get_time_series(self, name):
+        pool = Pool()
+        Timeseries = pool.get('sale.reporting.main.time_series')
+        return [t.id for t in Timeseries.search([])]
+
+
+class MainTimeseries(AbstractTimeseries, ModelView):
+    "Sale Reporting"
+    __name__ = 'sale.reporting.main.time_series'
+
+
 class CustomerMixin(object):
     __slots__ = ()
     customer = fields.Many2One(

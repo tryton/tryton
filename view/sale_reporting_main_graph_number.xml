@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <graph>
     <x>
-        <field name="date"/>
+        <field name="id"/>
     </x>
     <y>
-        <field name="revenue"/>
+        <field name="number"/>
     </y>
 </graph>

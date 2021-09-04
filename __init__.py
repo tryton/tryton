@@ -35,6 +35,8 @@ def register():
         configuration.ConfigurationSequence,
         configuration.ConfigurationSaleMethod,
         sale_reporting.Context,
+        sale_reporting.Main,
+        sale_reporting.MainTimeseries,
         sale_reporting.Customer,
         sale_reporting.CustomerTimeseries,
         sale_reporting.CustomerCategory,
