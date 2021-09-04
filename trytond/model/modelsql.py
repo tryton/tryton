@@ -635,6 +635,11 @@ class ModelSQL(ModelStorage):
 
         transaction.create_records[cls.__name__].update(new_ids)
 
+        # Update mptt before fields_to_set which could create children
+        if cls._mptt_fields:
+            field_names = list(sorted(cls._mptt_fields))
+            cls._update_mptt(field_names, repeat(new_ids, len(field_names)))
+
         translation_values = {}
         fields_to_set = {}
         for values, new_id in zip(vlist, new_ids):
@@ -665,10 +670,6 @@ class ModelSQL(ModelStorage):
             field.set(cls, fname, *fargs)
 
         cls._insert_history(new_ids)
-
-        if cls._mptt_fields:
-            field_names = list(sorted(cls._mptt_fields))
-            cls._update_mptt(field_names, repeat(new_ids, len(field_names)))
 
         cls.__check_domain_rule(new_ids, 'create')
         records = cls.browse(new_ids)
@@ -1463,7 +1464,6 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def _update_mptt(cls, field_names, list_ids, values=None):
-        cursor = Transaction().connection.cursor()
         for field_name, ids in zip(field_names, list_ids):
             field = cls._fields[field_name]
             if (values is not None
@@ -1472,20 +1472,7 @@ class ModelSQL(ModelStorage):
                     'You can not update fields: "%s", "%s"' %
                     (field.left, field.right))
 
-            # Nested creation require a rebuild
-            # because initial values are 0
-            # and thus _update_tree can not find the children
-            table = cls.__table__()
-            parent = cls.__table__()
-            cursor.execute(*table.join(parent,
-                    condition=Column(table, field_name) == parent.id
-                    ).select(table.id,
-                    where=(Column(parent, field.left) == 0)
-                    & (Column(parent, field.right) == 0),
-                    limit=1))
-            nested_create = cursor.fetchone()
-
-            if not nested_create and len(ids) < 2:
+            if len(ids) < 2:
                 for id_ in ids:
                     cls._update_tree(id_, field_name,
                         field.left, field.right)
