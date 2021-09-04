@@ -165,8 +165,8 @@ class Move(metaclass=PoolMeta):
                 and self.origin.quantity < 0
                 and self.from_location.type != 'storage'
                 and self.to_location.type == 'storage'
-                and isinstance(self.origin.origin, Sale)):
-            sale = self.origin.origin
+                and isinstance(self.origin.sale.origin, Sale)):
+            sale = self.origin.sale.origin
             cost = Decimal(0)
             qty = Decimal(0)
             for move in sale.moves:
