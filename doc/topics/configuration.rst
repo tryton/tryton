@@ -251,6 +251,21 @@ channels if the back-end supports them.
 
 Default: ``300``
 
+count_timeout
+~~~~~~~~~~~~~
+
+The cache timeout duration in seconds of the estimation of records.
+
+Default: ``86400`` (1 day)
+
+count_clear
+~~~~~~~~~~~
+
+The number of operations after which the counting estimation of records is
+cleared.
+
+Default: ``1000``
+
 queue
 -----
 

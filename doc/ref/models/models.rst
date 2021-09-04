@@ -348,6 +348,10 @@ Class methods:
     Yield tuples (record, name, icon) for records matching text.
     It is used for the global search.
 
+.. classmethod:: ModelStorage.count()
+
+    Return an estimation of the number of records stored.
+
 .. classmethod:: ModelStorage.browse(ids)
 
     Return a list of record instance for the ``ids``.
