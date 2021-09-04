@@ -1472,7 +1472,7 @@ class ModelSQL(ModelStorage):
                     'You can not update fields: "%s", "%s"' %
                     (field.left, field.right))
 
-            if len(ids) < 2:
+            if len(ids) < max(cls.count() / 4, 4):
                 for id_ in ids:
                     cls._update_tree(id_, field_name,
                         field.left, field.right)
