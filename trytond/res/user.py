@@ -1032,8 +1032,8 @@ class Warning_(ModelSQL, ModelView):
 
     @classmethod
     def format(cls, name, records):
-        return '%s.%s' % (
-            hashlib.md5(str(records).encode('utf-8')).hexdigest(), name)
+        key = '|'.join(map(str, records)).encode('utf-8')
+        return '%s.%s' % (hashlib.md5(key).hexdigest(), name)
 
     @classmethod
     def check(cls, warning_name):
