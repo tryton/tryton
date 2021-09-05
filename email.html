@@ -35,16 +35,16 @@
                     <td headers="reference">
                         ${dunning.line.origin.rec_name if dunning.line and dunning.line.origin else ''}
                     </td>
-                    <td headers="date">
+                    <td headers="date" style="text-align: end;">
                         ${format_date(
                         dunning.line.date, data['language']) if dunning.line else ''}
                     </td>
-                    <td headers="amount">
+                    <td headers="amount" style="text-align: end;">
                         ${format_currency(
                         dunning.amount_second_currency, data['language'],
                         dunning.second_currency) if dunning.amount_second_currency else ''}
                     </td>
-                    <td headers="due-date">
+                    <td headers="due-date" style="text-align: end;">
                         ${format_date(
                         dunning.maturity_date, data['language']) if dunning.maturity_date else ''}
                     </td>
@@ -60,10 +60,10 @@
             <tbody>
                 <tr py:for="payment in letter.payments">
                     <td colspan="2"></td>
-                    <td headers="date payments">
+                    <td headers="date payments" style="text-align: end;">
                         ${format_date(payment.date, data['language'])}
                     </td>
-                    <td headers="amount payments">
+                    <td headers="amount payments" style="text-align: end;">
                         ${format_currency(
                         get_payment_amount(payment), data['language'],
                         get_payment_currency(payment))}
