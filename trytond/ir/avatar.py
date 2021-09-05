@@ -110,13 +110,13 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         img = Image.open(io.BytesIO(image))
         width, height = img.size
         size = min(width, height)
-        img.crop((
+        img = img.crop((
                 (width - size) // 2,
                 (height - size) // 2,
                 (width + size) // 2,
                 (height + size) // 2))
         if size > 2048:
-            img.resize((2048, 2048))
+            img = img.resize((2048, 2048))
         img.save(data, format='jpeg', optimize=True, **_params)
         return data.getvalue()
 
