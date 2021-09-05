@@ -223,7 +223,7 @@ class Screen(SignalEvent):
         # Add common fields
         for name, string, type_ in (
                 ('id', _('ID'), 'integer'),
-                ('create_uid', _('Create by'), 'many2one'),
+                ('create_uid', _('Created by'), 'many2one'),
                 ('create_date', _('Created at'), 'datetime'),
                 ('write_uid', _('Edited by'), 'many2one'),
                 ('write_date', _('Edited at'), 'datetime'),
