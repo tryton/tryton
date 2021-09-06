@@ -26,6 +26,11 @@ def suite():
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
+            'scenario_product_kit_copy.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
             'scenario_product_kit_sale.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,
