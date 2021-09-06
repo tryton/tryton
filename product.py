@@ -33,6 +33,32 @@ class Template(metaclass=PoolMeta):
         if self.type == 'kit':
             self.cost_price_method = 'fixed'
 
+    @classmethod
+    def copy(cls, templates, default=None):
+        pool = Pool()
+        Component = pool.get('product.component')
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+
+        copy_components = 'components' not in default
+        default.setdefault('components', None)
+        new_templates = super().copy(templates, default)
+        if copy_components:
+            old2new = {}
+            to_copy = []
+            for template, new_template in zip(templates, new_templates):
+                to_copy.extend(
+                    c for c in template.components if not c.product)
+                old2new[template.id] = new_template.id
+            if to_copy:
+                Component.copy(to_copy, {
+                        'parent_template': (lambda d:
+                            old2new[d['parent_template']]),
+                        })
+        return new_templates
+
 
 class Product(metaclass=PoolMeta):
     __name__ = "product.product"
@@ -77,6 +103,37 @@ class Product(metaclass=PoolMeta):
                 qties.append(component_qty)
             quantities[kit.id] = kit.default_uom.floor(min(qties, default=0))
         return quantities
+
+    @classmethod
+    def copy(cls, products, default=None):
+        pool = Pool()
+        Component = pool.get('product.component')
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+
+        copy_components = 'components' not in default
+        if 'template' in default:
+            default.setdefault('components', None)
+        new_products = super().copy(products, default)
+        if 'template' in default and copy_components:
+            template2new = {}
+            product2new = {}
+            to_copy = []
+            for product, new_product in zip(products, new_products):
+                if product.components:
+                    to_copy.extend(product.components)
+                    template2new[product.template.id] = new_product.template.id
+                    product2new[product.id] = new_product.id
+            if to_copy:
+                Component.copy(to_copy, {
+                        'parent_product': (lambda d:
+                            product2new[d['parent_product']]),
+                        'parent_template': (lambda d:
+                            template2new[d['parent_template']]),
+                        })
+        return new_products
 
 
 class ComponentMixin(sequence_ordered(), ModelStorage):
