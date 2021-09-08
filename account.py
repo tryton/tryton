@@ -232,7 +232,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             parties = shipment_cost.parties
             all_shipments = shipment_cost.all_shipments
             if not all_shipments:
-                key = Warning.format('post no shipment', shipment_cost)
+                key = Warning.format('post no shipment', [shipment_cost])
                 if Warning.check(key):
                     raise NoShipmentWarning(
                         key,
@@ -245,7 +245,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                         continue
                     if other.parties & parties:
                         key = Warning.format(
-                            'post same parties', shipment_cost)
+                            'post same parties', [shipment_cost])
                         if Warning.check(key):
                             raise SamePartiesWarning(
                                 key,
