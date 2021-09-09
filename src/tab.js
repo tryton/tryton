@@ -500,7 +500,6 @@
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
             var screen = this.screen;
-            var buttons = this.buttons;
             var prm = screen.model.execute('view_toolbar_get', [],
                 screen.context);
             prm.done(function(toolbars) {
@@ -539,7 +538,7 @@
                     }))
                     .insertBefore(toolbar.find('button#email'));
                     var button = dropdown.find('button');
-                    buttons[menu_action[0]] = button;
+                    this.buttons[menu_action[0]] = button;
                     dropdown
                         .on('show.bs.dropdown', function() {
                             jQuery(this).parents('.btn-group').removeClass(
