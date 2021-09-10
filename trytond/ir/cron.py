@@ -162,8 +162,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     try:
                         with processing(name):
                             cron.run_once()
-                            cron.next_call = cron.compute_next_call(now)
-                            cron.save()
                             transaction.commit()
                     except Exception as e:
                         transaction.rollback()
@@ -171,6 +169,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                                 and count):
                             continue
                         logger.error('%s failed', name, exc_info=True)
+                    cron.next_call = cron.compute_next_call(now)
+                    cron.save()
+                    transaction.commit()
                     break
         while transaction.tasks:
             task_id = transaction.tasks.pop()
