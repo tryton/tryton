@@ -269,9 +269,10 @@ Char
 A single line string field.
 
 Search by similarity is used for the ``ilike`` operator and
-:meth:`~trytond.tools.is_full_text` value if the backend supports it.
+:meth:`~trytond.tools.is_full_text` value if the backend supports it and a
+threshold is set.
 The similarity threshold is defined for the context key ``<model name>.<field
-name>.search_similarity`` (default value is ``0.3``).
+name>.search_similarity`` or ``search_similarity``.
 
 The field is ordered using the similarity with the context value from the key
 ``<model name>.<field name>.order`` if it is set.
