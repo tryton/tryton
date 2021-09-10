@@ -19,9 +19,11 @@ config.update_etc(options.configfile)
 commandline.config_log(options)
 
 # Import after application is configured
+from trytond.pool import Pool
 import trytond.cron as cron
 
 with commandline.pidfile(options):
+    Pool.start()
     while True:
         cron.run(options)
         time.sleep(60)
