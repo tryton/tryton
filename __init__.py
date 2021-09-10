@@ -19,5 +19,8 @@ def register():
         account.ConfigurationSepaMandateSequence,
         module='account_payment_sepa', type_='model')
     Pool.register(
+        party.Replace,
+        module='account_payment_sepa', type_='wizard')
+    Pool.register(
         payment.MandateReport,
         module='account_payment_sepa', type_='report')

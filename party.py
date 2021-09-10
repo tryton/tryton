@@ -108,3 +108,13 @@ class PartyIdentifier(metaclass=PoolMeta):
         elif self.type == 'es_nif':
             identifier['Id'] += self.sepa_es_suffix or '000'
         return identifier
+
+
+class Replace(metaclass=PoolMeta):
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super().fields_to_replace() + [
+            ('account.payment.sepa.mandate', 'party'),
+            ]
