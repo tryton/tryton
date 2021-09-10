@@ -18,7 +18,9 @@ config.update_etc(options.configfile)
 commandline.config_log(options)
 
 # Import after application is configured
+from trytond.pool import Pool
 import trytond.worker as worker
 
 with commandline.pidfile(options):
+    Pool.start()
     worker.work(options)
