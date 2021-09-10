@@ -760,7 +760,13 @@
             );
         },
         _close_allowed: function() {
-            return this.modified_save();
+            return this.modified_save().then(null, function(result) {
+                if (result) {
+                    return jQuery.Deferred().resolve();
+                } else {
+                    return jQuery.Deferred().reject();
+                }
+            });
         },
         modified_save: function() {
             this.screen.save_tree_state();
@@ -776,13 +782,14 @@
                             case 'ko':
                                 var record_id = this.screen.current_record.id;
                                 return this.reload(false).then(function() {
-                                    if (this.screen.current_record) {
+                                    if (record_id < 0) {
+                                        return jQuery.Deferred().reject(true);
+                                    }
+                                    else if (this.screen.current_record) {
                                         if (record_id !=
                                             this.screen.current_record.id) {
                                             return jQuery.Deferred().reject();
                                         }
-                                    } else if (record_id < 0) {
-                                        return jQuery.Deferred().resolve();
                                     }
                                 }.bind(this));
                             default:
