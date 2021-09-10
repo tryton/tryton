@@ -98,10 +98,10 @@ class Char(FieldTranslate):
                 column = self.sql_column(table)
             column = self._domain_column(operator, column)
 
-            if database.has_similarity() and is_full_text(value):
-                threshold = context.get(
-                    '%s.%s.search_similarity' % (Model.__name__, name),
-                    context.get('search_similarity', 0.3))
+            threshold = context.get(
+                '%s.%s.search_similarity' % (Model.__name__, name),
+                context.get('search_similarity'))
+            if database.has_similarity() and is_full_text(value) and threshold:
                 sim_value = unescape_wildcard(value)
                 sim_value = self._domain_value(operator, sim_value)
                 expression = (
