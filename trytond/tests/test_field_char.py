@@ -593,9 +593,10 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
                     'char': "Foo",
                     }])
 
-        self.assertListEqual(Model.search([
-                    ('char', 'ilike', 'two words'),
-                    ]), [record1])
+        with Transaction().set_context(search_similarity=0.3):
+            self.assertListEqual(Model.search([
+                        ('char', 'ilike', 'two words'),
+                        ]), [record1])
 
     @with_transaction()
     def test_search(self):
