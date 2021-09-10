@@ -555,17 +555,18 @@ class Form(SignalEvent, TabContent):
             if value == 'ko':
                 record_id = self.screen.current_record.id
                 if self.sig_reload(test_modified=False):
-                    if self.screen.current_record:
+                    if record_id < 0:
+                        return None
+                    elif self.screen.current_record:
                         return record_id == self.screen.current_record.id
-                    elif record_id < 0:
-                        return True
             return False
         return True
 
     def sig_close(self, widget=None):
         for dialog in reversed(self.dialogs[:]):
             dialog.destroy()
-        return self.modified_save()
+        modified_save = self.modified_save()
+        return True if modified_save is None else modified_save
 
     def _action(self, action, atype):
         if not self.modified_save():
