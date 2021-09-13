@@ -144,21 +144,22 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product._get_sale_unit_price(
-                quantity=quantity)
-            if uom and product.default_uom.category == uom.category:
-                prices[product.id] = Uom.compute_price(
-                    product.default_uom, prices[product.id], uom)
-            else:
-                prices[product.id] = Uom.compute_price(
-                    product.default_uom, prices[product.id], product.sale_uom)
-            if currency and user.company:
+            unit_price = product._get_sale_unit_price(quantity=quantity)
+            if unit_price is not None:
+                if uom and product.default_uom.category == uom.category:
+                    unit_price = Uom.compute_price(
+                        product.default_uom, unit_price, uom)
+                else:
+                    unit_price = Uom.compute_price(
+                        product.default_uom, unit_price, product.sale_uom)
+            if currency and user.company and unit_price is not None:
                 if user.company.currency != currency:
                     date = Transaction().context.get('sale_date') or today
                     with Transaction().set_context(date=date):
-                        prices[product.id] = Currency.compute(
-                            user.company.currency, prices[product.id],
+                        unit_price = Currency.compute(
+                            user.company.currency, unit_price,
                             currency, round=False)
+            prices[product.id] = unit_price
         return prices
 
     @property
