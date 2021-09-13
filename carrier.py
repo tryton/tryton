@@ -51,7 +51,7 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
             if list_price is not None:
                 company = Company(self.carrier_product._context['company'])
                 return list_price, company.currency.id
-        return 0, None
+        return None, None
 
     def get_purchase_price(self):
         'Compute carrier purchase price with currency'
@@ -62,7 +62,7 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
             if cost_price is not None:
                 company = Company(self.carrier_product._context['company'])
                 return cost_price, company.currency.id
-        return 0, None
+        return None, None
 
     @classmethod
     def create(cls, *args, **kwargs):
