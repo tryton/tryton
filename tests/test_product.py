@@ -12,6 +12,8 @@ from trytond.pool import Pool
 
 from trytond.modules.company.tests import CompanyTestMixin
 
+from ..product import round_price
+
 
 class ProductTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product module'
@@ -445,6 +447,15 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(Product.search(
                 [('name', 'like', '%')], order=[('type', 'DESC')]),
                 [product2, product1])
+
+    def test_round_price(self):
+        for value, result in [
+                (Decimal('1'), Decimal('1.0000')),
+                (Decimal('1.12345'), Decimal('1.1234')),
+                (1, Decimal('1')),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(round_price(value), result)
 
 
 def suite():

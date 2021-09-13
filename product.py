@@ -44,6 +44,8 @@ price_digits = (16, price_decimal)
 
 def round_price(value, rounding=None):
     "Round price using the price digits"
+    if isinstance(value, int):
+        return Decimal(value)
     return value.quantize(
         Decimal(1) / 10 ** price_digits[1], rounding=rounding)
 
