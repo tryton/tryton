@@ -686,7 +686,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(self._get_context_sale_price()):
             self.unit_price = Product.get_sale_price(
                 [product], self.quantity or 0)[product.id]
-            if self.unit_price:
+            if self.unit_price is not None:
                 self.unit_price = round_price(self.unit_price)
 
         self.consumption_recurrence = self.service.consumption_recurrence
