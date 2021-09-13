@@ -74,7 +74,7 @@ class Template(
         help="Check to allow stock moves to be assigned "
         "regardless of stock level.")
     list_price = fields.MultiValue(fields.Numeric(
-            "List Price", required=True, digits=price_digits,
+            "List Price", digits=price_digits,
             help="The standard price the product is sold at."))
     list_prices = fields.One2Many(
         'product.list_price', 'template', "List Prices")
