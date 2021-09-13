@@ -235,6 +235,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
         </record>
+        <record model="ir.model.access" id="access_attendance_sheet_line">
+            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
         <record model="ir.rule.group-res.group" id="rule_group_sheet_line_admin_group_employee_admin">
             <field name="rule_group" ref="rule_group_sheet_line_admin"/>
             <field name="group" ref="group_attendance_admin"/>
@@ -302,6 +310,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule.group-res.group" id="rule_group_sheet_admin_group_employee_admin">
             <field name="rule_group" ref="rule_group_sheet_admin"/>
             <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_attendance_sheet">
+            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
 
         <menuitem
