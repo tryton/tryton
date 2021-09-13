@@ -524,11 +524,12 @@ class Commission(ModelSQL, ModelView):
 
         invoice_line = InvoiceLine()
         invoice_line.invoice = invoice
-        invoice_line.type = 'line'
-        invoice_line.product = product
-        invoice_line.quantity = 1
-        invoice_line.company = invoice.company
         invoice_line.currency = invoice.currency
+        invoice_line.company = invoice.company
+        invoice_line.type = 'line'
+        # Use product.id to instantiate it with the correct context
+        invoice_line.product = product.id
+        invoice_line.quantity = 1
 
         invoice_line.on_change_product()
 
