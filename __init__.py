@@ -2,6 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 from . import price_list
+from .price_list import Null
+
+__all__ = ['register', 'Null']
 
 
 def register():

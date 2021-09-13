@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from functools import total_ordering
 
 from simpleeval import simple_eval
 
@@ -12,6 +13,29 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from .exceptions import FormulaError
+
+
+@total_ordering
+class Null:
+    def __eq__(self, other):
+        if isinstance(other, Null) or other is None:
+            return True
+        return False
+
+    def __lt__(self, other):
+        return 0 < other
+
+
+def _return_self(self, *args, **kwargs):
+    return self
+
+
+_OPERATORS = (
+    'add sub mul matmul truediv floordiv mod divmod pow lshift rshift and xor '
+    'or'.split())
+for op in _OPERATORS:
+    setattr(Null, '__%s__' % op, _return_self)
+    setattr(Null, '__r%s__' % op, _return_self)
 
 
 class PriceList(DeactivableMixin, ModelSQL, ModelView):
@@ -57,9 +81,9 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             list_price = unit_price
         return {
             'names': {
-                'unit_price': unit_price,
-                'cost_price': cost_price,
-                'list_price': list_price,
+                'unit_price': unit_price if unit_price is not None else Null(),
+                'cost_price': cost_price if unit_price is not None else Null(),
+                'list_price': list_price if unit_price is not None else Null(),
                 },
             }
 
@@ -93,7 +117,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             party, product, unit_price, quantity, uom, pattern=pattern)
         for line in self.lines:
             if line.match(pattern):
-                return line.get_unit_price(**context)
+                unit_price = line.get_unit_price(**context)
+                if isinstance(unit_price, Null):
+                    unit_price = None
+                break
         return unit_price
 
 

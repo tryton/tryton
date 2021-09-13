@@ -212,6 +212,27 @@ class ProductPriceListTestCase(CompanyTestMixin, ModuleTestCase):
                 price_list.compute(None, product, Decimal(0), 1, unit),
                 Decimal(8))
 
+    @with_transaction()
+    def test_price_list_with_none(self):
+        "Test price list without price"
+        pool = Pool()
+        PriceList = pool.get('product.price_list')
+        Uom = pool.get('product.uom')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+
+        company = create_company()
+        with set_company(company):
+            price_list, = PriceList.create([{
+                        'name': "Price List",
+                        'lines': [('create', [{
+                                        'formula': 'list_price * 0.8',
+                                        }])],
+                        }])
+            self.assertEqual(
+                price_list.compute(None, None, None, 1, unit),
+                None)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
