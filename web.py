@@ -215,9 +215,12 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             with Transaction().set_context(taxes=tax_ids):
                 prices.update(Product.get_sale_price(products))
             for product in products:
-                taxes[product.id] = sum(
-                    t['amount']
-                    for t in Tax.compute(taxes_, prices[product.id], 1))
+                price = prices[product.id]
+                if price is not None:
+                    taxes[product.id] = sum(
+                        t['amount'] for t in Tax.compute(taxes_, price, 1))
+                else:
+                    taxes[product.id] = None
 
         return all_products, prices, taxes
 
