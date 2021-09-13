@@ -15,6 +15,7 @@ from trytond.tools import decistmt
 
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.modules.product_price_list import Null
 from .exceptions import FormulaError
 
 
@@ -278,7 +279,7 @@ class Promotion(
                 continue
             context = self.get_context_formula(line)
             new_price = self.get_unit_price(**context)
-            if line.unit_price >= new_price:
+            if new_price is not None and line.unit_price >= new_price:
                 line.unit_price = round_price(new_price)
                 line.promotion = self
                 applied = True
@@ -297,7 +298,7 @@ class Promotion(
             unit_price = Decimal(0)
         return {
             'names': {
-                'unit_price': unit_price,
+                'unit_price': unit_price if unit_price is not None else Null(),
                 },
             }
 
