@@ -68,8 +68,9 @@ class ShipmentIn(metaclass=PoolMeta):
         if self.carrier:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_purchase_price()
-            costs['cost'] = round_price(cost)
-            costs['cost_currency'] = currency_id
+            if cost is not None:
+                costs['cost'] = round_price(cost)
+                costs['cost_currency'] = currency_id
         return costs
 
     @fields.depends(
