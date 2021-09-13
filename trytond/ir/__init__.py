@@ -24,6 +24,7 @@ from . import calendar_
 from . import message
 from . import email_
 from . import routes
+from . import error
 
 __all__ = ['register', 'routes']
 
@@ -102,6 +103,7 @@ def register():
         email_.EmailAddress,
         email_.EmailTemplate,
         email_.EmailTemplate_Report,
+        error.Error,
         module='ir', type_='model')
     Pool.register(
         translation.TranslationSet,

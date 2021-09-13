@@ -12,6 +12,7 @@ from sql import Flavor
 
 from trytond import backend
 from trytond.config import config
+from trytond.exceptions import UserError, UserWarning
 from trytond.pool import Pool
 from trytond.status import processing
 from trytond.transaction import Transaction
@@ -99,6 +100,7 @@ def run_task(pool, task_id):
     if not isinstance(pool, Pool):
         pool = Pool(pool)
     Queue = pool.get('ir.queue')
+    Error = pool.get('ir.error')
     name = '<Task %s@%s>' % (task_id, pool.database_name)
     logger.info('%s started', name)
     retry = config.getint('database', 'retry')
@@ -121,6 +123,9 @@ def run_task(pool, task_id):
                         transaction.rollback()
                         continue
                     raise
+                except (UserError, UserWarning) as e:
+                    Error.log(task, e)
+                    raise
         logger.info('%s done', name)
     except backend.DatabaseOperationalError:
         logger.info('%s failed, retrying', name, exc_info=True)
@@ -139,5 +144,7 @@ def run_task(pool, task_id):
         except Exception:
             logger.critical(
                 'rescheduling %s failed', name, exc_info=True)
+    except (UserError, UserWarning):
+        logger.info('%s failed', name)
     except Exception:
         logger.critical('%s failed', name, exc_info=True)

@@ -7,6 +7,7 @@ import logging
 
 from trytond import backend
 from trytond.config import config
+from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, dualmethod)
 from trytond.pool import Pool
@@ -69,6 +70,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     method = fields.Selection([
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
             ('ir.queue|clean', "Clean Task Queue"),
+            ('ir.error|clean', "Clean Errors"),
             ], "Method", required=True)
 
     @classmethod
@@ -147,6 +149,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         now = datetime.datetime.now()
         retry = config.getint('database', 'retry')
         with transaction.start(db_name, 0, context={'_skip_warnings': True}):
+            pool = Pool()
+            Error = pool.get('ir.error')
             transaction.database.lock(transaction.connection, cls._table)
             crons = cls.search(['OR',
                     ('next_call', '<=', now),
@@ -168,7 +172,11 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         if (isinstance(e, backend.DatabaseOperationalError)
                                 and count):
                             continue
-                        logger.error('%s failed', name, exc_info=True)
+                        if isinstance(e, (UserError, UserWarning)):
+                            Error.log(cron, e)
+                            logger.info('%s failed', name)
+                        else:
+                            logger.critical('%s failed', name, exc_info=True)
                     cron.next_call = cron.compute_next_call(now)
                     cron.save()
                     transaction.commit()

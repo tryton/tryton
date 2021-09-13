@@ -284,6 +284,16 @@ The number of days after which processed tasks are removed.
 
 Default: ``30``
 
+error
+-----
+
+clean_days
+~~~~~~~~~~
+
+The number of days after which reported errors are removed.
+
+Default: ``90``
+
 table
 -----
 

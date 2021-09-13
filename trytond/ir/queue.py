@@ -222,6 +222,7 @@ class _Method(object):
             scheduled_at = now + scheduled_at
         expected_at = context.pop('queue_expected_at', None)
         context.pop('_check_access', None)
+        context.pop('language', None)
         if expected_at is not None:
             expected_at = now + expected_at
         try:
