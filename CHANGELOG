@@ -1,3 +1,4 @@
+* Add remove_forbidden_chars in tools
 * Manage errors during non-interactive operations
 * Add estimation count to ModelStorage
 * Support empty digits in format_number of Report

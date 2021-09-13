@@ -13,7 +13,8 @@ import sql.operators
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
     strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard, unescape_wildcard, is_full_text, firstline)
+    escape_wildcard, unescape_wildcard, is_full_text, firstline,
+    remove_forbidden_chars)
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
@@ -847,6 +848,17 @@ class DomainInversionTestCase(unittest.TestCase):
                 ]:
             with self.subTest(text=text, result=result):
                 self.assertEqual(firstline(text), result)
+
+    def test_remove_forbidden_chars(self):
+        "Test remove_forbidden_chars"
+        for string, result in [
+                ("", ""),
+                (None, None),
+                ("\ttest", "test"),
+                (" test ", "test"),
+                ]:
+            with self.subTest(string=string):
+                self.assertEqual(remove_forbidden_chars(string), result)
 
 
 def suite():

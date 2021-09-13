@@ -26,3 +26,8 @@ Return an SQL expression that pairs SQL integers x and y.
 .. method:: firstline(text)
 
 Return first non-empty line of a text field.
+
+.. method:: remove_forbidden_chars(value)
+
+Return a copy of the string with forbidden char from
+:class:`~trytond.models.fields.Char` replaced by space.

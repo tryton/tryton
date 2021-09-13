@@ -272,3 +272,13 @@ def firstline(text):
         return next((x for x in text.splitlines() if x.strip()))
     except StopIteration:
         return ''
+
+
+def remove_forbidden_chars(value):
+    from trytond.model.fields import Char
+    if value is None:
+        return value
+    for c in Char.forbidden_chars:
+        if c in value:
+            value = value.replace(c, ' ')
+    return value.strip()
