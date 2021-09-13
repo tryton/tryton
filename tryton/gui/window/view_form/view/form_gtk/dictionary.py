@@ -112,17 +112,15 @@ class DictSelectionEntry(DictEntry):
         selection_shortcuts(widget)
 
         # setting completion and selection
-        model = Gtk.ListStore(GObject.TYPE_STRING)
-        model.append(('',))
-        self._selection = {'': None}
+        model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_PYOBJECT)
+        model.append(('', ""))
         width = 10
         selection = self.definition['selection']
         if self.definition.get('sort', True):
             selection.sort(key=operator.itemgetter(1))
         for value, name in selection:
             name = str(name)
-            self._selection[name] = value
-            model.append((name,))
+            model.append((name, value))
             width = max(width, len(name))
         widget.set_model(model)
         widget.set_entry_text_column(0)
@@ -132,29 +130,36 @@ class DictSelectionEntry(DictEntry):
         completion.set_model(model)
         child.set_completion(completion)
         completion.set_text_column(0)
+        completion.connect('match-selected', self.match_selected)
         return widget
 
+    def match_selected(self, completion, model, iter_):
+        value, = model.get(iter_, 1)
+        model = self.widget.get_model()
+        for i, selection in enumerate(model):
+            if selection[1] == value:
+                GLib.idle_add(self.widget.set_active, i)
+                break
+
     def get_value(self):
-        child = self.widget.get_child()
-        if not child:  # widget is destroyed
-            return
-        text = child.get_text()
-        value = None
-        if text:
-            for txt, val in list(self._selection.items()):
-                if not val:
-                    continue
-                if txt[:len(text)].lower() == text.lower():
-                    value = val
-                    if len(txt) == len(text):
-                        break
-        return value
+        active = self.widget.get_active()
+        if active < 0:
+            return None
+        else:
+            model = self.widget.get_model()
+            return model[active][1]
 
     def set_value(self, value):
-        values = dict(self.definition['selection'])
-        child = self.widget.get_child()
-        child.set_text(values.get(value, ''))
-        reset_position(child)
+        active = -1
+        model = self.widget.get_model()
+        for i, selection in enumerate(model):
+            if selection[1] == value:
+                active = i
+                break
+        self.widget.set_active(active)
+        if active == -1:
+            # When setting no item GTK doesn't clear the entry
+            self.widget.get_child().set_text('')
 
     def set_readonly(self, readonly):
         self.widget.set_sensitive(not readonly)
