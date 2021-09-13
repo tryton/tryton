@@ -118,19 +118,21 @@ class SaleShipmentCost(metaclass=PoolMeta):
         item = super().get_vsf()
         if self.carrier:
             cost = self.compute_shipment_cost()
-            cost_line = self.get_shipment_cost_line(cost)
-            taxes = Tax.compute(cost_line.taxes, cost, 1)
-            cost += sum(t['amount'] for t in taxes)
-            cost = float(self.currency.round(cost))
-            item['grand_total'] += cost
-            item['total_segments'].insert(1, {
-                    'code': 'shipping',
-                    'title': gettext('web_shop_vue_storefront.msg_shipping'),
-                    'value': cost,
-                    })
-            for segment in item['total_segments']:
-                if segment['code'] == 'grand_total':
-                    segment['value'] += cost
+            if cost is not None:
+                cost_line = self.get_shipment_cost_line(cost)
+                taxes = Tax.compute(cost_line.taxes, cost, 1)
+                cost += sum(t['amount'] for t in taxes)
+                cost = float(self.currency.round(cost))
+                item['grand_total'] += cost
+                item['total_segments'].insert(1, {
+                        'code': 'shipping',
+                        'title': gettext(
+                            'web_shop_vue_storefront.msg_shipping'),
+                        'value': cost,
+                        })
+                for segment in item['total_segments']:
+                    if segment['code'] == 'grand_total':
+                        segment['value'] += cost
         return item
 
     def set_vsf_shipping_methods(self, data):

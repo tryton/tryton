@@ -164,7 +164,8 @@ class Shop(metaclass=PoolMeta):
             for template in templates:
                 template_products = template.get_vsf_products(shop)
                 price, tax = min(
-                    (prices[p.id], taxes[p.id]) for p in template_products)
+                    (prices[p.id], taxes[p.id]) for p in template_products
+                    if prices[p.id] is not None and taxes[p.id] is not None)
                 entity = template.get_vsf_entity(shop, price=price, tax=tax)
                 entity['configurable_children'] = [
                     product.get_vsf_entity(

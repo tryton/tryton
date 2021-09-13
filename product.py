@@ -61,9 +61,11 @@ class _ProductEntityMixin:
             'url_path': '%s/%s' % (
                 self.vsf_identifier.id, slugify(self.name.lower())),
             'type_id': self.vsf_type_id,
-            'price': float(price),
-            'price_tax': float(tax),
-            'price_incl_tax': float(price + tax),
+            'price': float(price) if price is not None else None,
+            'price_tax': float(tax) if tax is not None else None,
+            'price_incl_tax': (
+                float(price + tax)
+                if price is not None and tax is not None else None),
             'status': status,
             'visibility': 4,
             'category_ids': [c.vsf_identifier.id for c in categories],
