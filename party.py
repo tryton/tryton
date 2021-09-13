@@ -11,6 +11,7 @@ from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
+from trytond.tools import remove_forbidden_chars
 
 from .exceptions import BadRequest
 from .web import split_name, join_name
