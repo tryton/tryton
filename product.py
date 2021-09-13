@@ -711,7 +711,7 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
             },
         depends=['company'])
     cost_price = fields.Numeric(
-        "Cost Price", digits=price_digits)
+        "Cost Price", required=True, digits=price_digits)
 
     @classmethod
     def __register__(cls, module_name):
