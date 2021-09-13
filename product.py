@@ -185,8 +185,7 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product._get_purchase_unit_price(
-                quantity=quantity)
+            unit_price = product._get_purchase_unit_price(quantity=quantity)
             default_uom = product.default_uom
             default_currency = (user.company.currency if user.company
                 else None)
@@ -204,16 +203,18 @@ class Product(metaclass=PoolMeta):
                 pattern = ProductSupplierPrice.get_pattern()
                 for price in product_supplier.prices:
                     if price.match(quantity, product_uom, pattern):
-                        prices[product.id] = price.unit_price
+                        unit_price = price.unit_price
                         default_uom = product_supplier.uom
                         default_currency = product_supplier.currency
-            prices[product.id] = Uom.compute_price(
-                default_uom, prices[product.id], product_uom)
-            if currency and default_currency:
+            if unit_price is not None:
+                unit_price = Uom.compute_price(
+                    default_uom, unit_price, product_uom)
+            if currency and default_currency and unit_price is not None:
                 date = context.get('purchase_date') or today
                 with Transaction().set_context(date=date):
-                    prices[product.id] = Currency.compute(default_currency,
-                        prices[product.id], currency, round=False)
+                    unit_price = Currency.compute(
+                        default_currency, unit_price, currency, round=False)
+            prices[product.id] = unit_price
         return prices
 
     @classmethod

@@ -1331,7 +1331,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         with Transaction().set_context(self._get_context_purchase_price()):
             unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
-            if unit_price:
+            if unit_price is not None:
                 unit_price = round_price(unit_price)
             return unit_price
 
