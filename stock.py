@@ -210,7 +210,8 @@ class Move(metaclass=PoolMeta):
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_purchase_price(
                 [line.product], line.quantity)[line.product.id]
-            line.unit_price = round_price(line.unit_price)
+            if line.unit_price is not None:
+                line.unit_price = round_price(line.unit_price)
         return line
 
     def _get_customer_invoice_line_consignment(self):
@@ -254,7 +255,8 @@ class Move(metaclass=PoolMeta):
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_sale_price(
                 [line.product], line.quantity)[line.product.id]
-            line.unit_price = round_price(line.unit_price)
+            if line.unit_price is not None:
+                line.unit_price = round_price(line.unit_price)
         return line
 
     @classmethod
