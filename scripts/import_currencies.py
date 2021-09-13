@@ -38,11 +38,8 @@ def _get_language_codes():
 
 
 def _remove_forbidden_chars(name):
-    from trytond.model.fields import Char
-    for c in Char.forbidden_chars:
-        if c in name:
-            name.replace(c, ' ')
-    return name.strip()
+    from trytond.tools import remove_forbidden_chars
+    return remove_forbidden_chars(name)
 
 
 def get_currencies():
