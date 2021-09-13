@@ -221,11 +221,13 @@ class Sale(metaclass=PoolMeta):
         if self.carrier and stockable:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
-            today = Date.today()
-            date = self.sale_date or today
-            with Transaction().set_context(date=date):
-                return Currency.compute(
-                    Currency(currency_id), cost, self.currency, round=False)
+            if cost is not None:
+                today = Date.today()
+                date = self.sale_date or today
+                with Transaction().set_context(date=date):
+                    return Currency.compute(
+                        Currency(currency_id),
+                        cost, self.currency, round=False)
 
     def set_shipment_cost(self):
         cost = None
