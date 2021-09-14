@@ -10,7 +10,7 @@ For each verbose flag set, the log level decreases.
 Logs can be configured using a `configparser-format`_ file. The filename can
 be specified using trytond ``logconf`` parameter.
 
-.. _`configparser-format`: https://docs.python.org/2/library/logging.config.html#configuration-file-format
+.. _`configparser-format`: https://docs.python.org/library/logging.config.html#configuration-file-format
 
 Example
 =======
