@@ -1,3 +1,4 @@
+* Use UNION for 'Or'-ed domain with subqueries
 * Add remove_forbidden_chars in tools
 * Manage errors during non-interactive operations
 * Add estimation count to ModelStorage
