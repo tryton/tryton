@@ -16,7 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = dt.date.today()
-    >>> next_year = today + relativedelta(years=1)
+    >>> past_year = today - relativedelta(years=1)
 
 Activate modules::
 
@@ -30,10 +30,10 @@ Create company::
 Create fiscal years::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today))
+    ...     create_fiscalyear(company, today=past_year))
     >>> fiscalyear.click('create_period')
     >>> next_fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=next_year))
+    ...     create_fiscalyear(company, today=today))
     >>> next_fiscalyear.click('create_period')
 
 Create chart of accounts::

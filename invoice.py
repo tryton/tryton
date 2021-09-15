@@ -30,7 +30,8 @@ from trytond.modules.product import price_digits
 
 from .exceptions import (
     InvoiceTaxValidationError, InvoiceNumberError, InvoiceValidationError,
-    InvoiceLineValidationError, PayInvoiceError, InvoicePaymentTermDateWarning)
+    InvoiceLineValidationError, PayInvoiceError, InvoicePaymentTermDateWarning,
+    InvoiceFutureWarning)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
@@ -1528,6 +1529,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button
     @Workflow.transition('posted')
     def post(cls, invoices):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
+        today = Date.today()
+        future_invoices = [
+            i for i in invoices
+            if i.type == 'out' and i.invoice_date and i.invoice_date > today]
+        if future_invoices:
+            names = ', '.join(m.rec_name for m in future_invoices[:5])
+            if len(future_invoices) > 5:
+                names += '...'
+            warning_key = Warning.format(
+                'invoice_date_future', future_invoices)
+            if Warning.check(warning_key):
+                raise InvoiceFutureWarning(warning_key,
+                    gettext('account_invoice.msg_invoice_date_future',
+                        invoices=names))
         cls._post(invoices)
 
     @classmethod

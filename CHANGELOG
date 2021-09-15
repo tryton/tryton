@@ -1,3 +1,4 @@
+* Add warning to prevent posting invoices in the future
 * Add wizard to reschedule lines to pay of invoices
 * Create base tax line for manual taxes
 

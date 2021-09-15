@@ -35,3 +35,7 @@ class PayInvoiceError(UserError):
 
 class InvoicePaymentTermDateWarning(UserWarning):
     pass
+
+
+class InvoiceFutureWarning(UserWarning):
+    pass

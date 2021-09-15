@@ -75,6 +75,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_close_period_non_posted_invoices">
             <field name="text">To close the periods you must post the invoices "%(invoices)s".</field>
         </record>
+        <record model="ir.message" id="msg_invoice_date_future">
+            <field name="text">The invoices "%(invoices)s" have an invoice date in the future.</field>
+        </record>
     </data>
 </tryton>
 
