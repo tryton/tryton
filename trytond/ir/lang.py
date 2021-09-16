@@ -554,7 +554,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
 
 class LangConfigStart(ModelView):
-    'Language Configuration Start'
+    "Configure languages"
     __name__ = 'ir.lang.config.start'
 
     languages = fields.Many2Many('ir.lang', None, None, "Languages")
