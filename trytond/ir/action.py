@@ -276,6 +276,7 @@ class ActionKeyword(ModelSQL, ModelView):
             if menu.parent:
                 for value in keywords:
                     if value['type'] == 'ir.action.act_window':
+                        value['name'] = menu.name
                         parent = menu.parent
                         if parent.name == value['name']:
                             parent = parent.parent
