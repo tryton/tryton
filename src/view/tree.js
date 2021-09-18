@@ -202,13 +202,30 @@
                 this.table.append(this.tfoot);
             }
 
-            this.columns.forEach(function(column) {
+            this.columns.forEach(function(column, i) {
                 col = jQuery('<col/>', {
                     'class': column.attributes.widget,
                 }).appendTo(this.colgroup);
                 th = jQuery('<th/>', {
                     'class': column.attributes.widget,
                 });
+                if ((i === 0) && this.children_field) {
+                    this.expander = jQuery('<img/>', {
+                        'tabindex': 0,
+                        'class': 'icon',
+                    });
+                    this.update_expander('more');
+                    this.expander.on('click keypress',
+                        Sao.common.click_press(this.unfold.bind(this)));
+                    Sao.common.ICONFACTORY.get_icon_url(
+                        'tryton-unfold-' + this.expander.action)
+                        .then(function(url) {
+                            this.expander.attr('src', url);
+                        }.bind(this));
+                    th.append(jQuery('<span>', {
+                        'class': 'expander',
+                    }).append(this.expander));
+                }
                 var label = jQuery('<label/>')
                     .text(column.attributes.string)
                     .attr('title', column.attributes.string);
@@ -263,6 +280,49 @@
         get editable() {
             return (parseInt(this.attributes.editable || 0, 10) &&
                 !this.screen.attributes.readonly);
+        },
+        unfold: function() {
+            if (!this.expander) {
+                return;
+            }
+            var action, unfold;
+            if (this.expander.action == 'more') {
+                unfold = function(row) {
+                    if (row.is_selected() && !row.is_expanded()) {
+                        row.expand_row();
+                    }
+                    row.rows.forEach(unfold);
+                };
+                action = 'less';
+            } else {
+                unfold = function(row) {
+                    if (row.is_selected() && row.is_expanded()) {
+                        row.collapse_row();
+                    }
+                    row.rows.forEach(unfold);
+                };
+                action = 'more';
+            }
+            this.rows.forEach(unfold);
+            this.update_expander(action);
+        },
+        update_expander: function(action) {
+            if (!this.expander) {
+                return;
+            }
+            if (action) {
+                this.expander.action = action;
+            }
+            Sao.common.ICONFACTORY.get_icon_url(
+                'tryton-unfold-' + this.expander.action)
+                .then(function(url) {
+                    this.expander.attr('src', url);
+                }.bind(this));
+            if (jQuery.isEmptyObject(this.selected_records)) {
+                this.expander.css('visibility', 'hidden');
+            } else {
+                this.expander.css('visibility', 'visible');
+            }
         },
         sort_model: function(e){
             var column = e.data;
@@ -807,7 +867,9 @@
                     add_row.bind(this));
         },
         redraw: function(selected, expanded) {
-            return redraw_async(this.rows, selected, expanded);
+            return redraw_async(this.rows, selected, expanded).then(function() {
+                this.update_selection();
+            }.bind(this));
         },
         switch_: function(path) {
             this.screen.row_activate();
@@ -1019,6 +1081,7 @@
             } else {
                 this.select_changed(null);
             }
+            this.update_expander(value? 'more' : null);
             this.update_sum();
         },
         update_selection: function() {
@@ -1036,6 +1099,7 @@
                 // Set checked to go first unchecked after first click
                 this.selection.prop('checked', true);
             }
+            this.update_expander();
         },
         get_selected_paths: function() {
             var selected_paths = [];
@@ -1511,20 +1575,26 @@
         },
         toggle_row: function() {
             if (this.is_expanded()) {
-                this.update_expander(false);
-                this.tree.expanded.delete(this);
-                this.collapse_children();
+                this.collapse_row();
             } else {
-                if (this.tree.n_children(this) > Sao.config.limit) {
-                    this.tree.record = this.record;
-                    this.tree.screen.switch_view('form');
-                } else {
-                    this.update_expander(true);
-                    this.tree.expanded.add(this);
-                    this.expand_children();
-                }
+                this.expand_row();
             }
             return false;
+        },
+        expand_row: function() {
+            if (this.tree.n_children(this) > Sao.config.limit) {
+                this.tree.record = this.record;
+                this.tree.screen.switch_view('form');
+            } else {
+                this.update_expander(true);
+                this.tree.expanded.add(this);
+                this.expand_children();
+            }
+        },
+        collapse_row: function() {
+            this.update_expander(false);
+            this.tree.expanded.delete(this);
+            this.collapse_children();
         },
         update_expander: function(expanded) {
             var icon;
@@ -1564,6 +1634,7 @@
                     }).map(function(row) {
                         return row.el;
                     }));
+                    this.tree.update_selection();
                 }.bind(this));
             }.bind(this));
         },
@@ -1638,6 +1709,11 @@
             this.set_selection(is_selected);
             if (is_selected) {
                 this.tree.select_changed(this.record);
+                if (this.is_expanded()) {
+                    this.tree.update_expander('less');
+                } else if (this.expander.css('visibility') == 'visible') {
+                    this.tree.update_expander('more');
+                }
             } else {
                 this.tree.select_changed(
                         this.tree.selected_records[0] || null);

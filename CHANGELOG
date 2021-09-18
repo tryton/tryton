@@ -1,3 +1,4 @@
+* Add expander on tree to fold or unfold selected rows
 * Support monetary and symbol field attributes
 * Support digits from relation field
 * Add accesskey to widgets and buttons
