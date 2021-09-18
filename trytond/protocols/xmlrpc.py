@@ -56,6 +56,16 @@ def dump_timedelta(self, value, write):
         }
     self.dump_struct(value, write)
 
+
+def dump_long(self, value, write):
+    try:
+        self.dump_long(value, write)
+    except OverflowError:
+        write('<value><biginteger>')
+        write(str(int(value)))
+        write('</biginteger></value>\n')
+
+
 client.Marshaller.dispatch[Decimal] = dump_decimal
 client.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: write("<value><nil/></value>")
@@ -64,6 +74,7 @@ client.Marshaller.dispatch[datetime.time] = dump_time
 client.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
 if bytes == str:
     client.Marshaller.dispatch[bytearray] = dump_bytes
+client.Marshaller.dispatch[int] = dump_long
 
 
 def dump_struct(self, value, write, escape=client.escape):
