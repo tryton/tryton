@@ -46,6 +46,8 @@ Create an attendance record for the employee::
 
     >>> attendance.date == now.date()
     True
+    >>> bool(attendance.rec_name)
+    True
 
 When creating a new attendance the type is automatically set::
 
@@ -64,6 +66,9 @@ Close the period::
     >>> period.click('close')
     >>> period.state
     'closed'
+
+    >>> bool(period.rec_name)
+    True
 
 You can't create attendances in closed periods::
 
