@@ -515,12 +515,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move.save(to_save)
         cls._set_move_planned_date(productions)
 
-    @property
-    def _list_price_context(self):
-        return {
-            'company': self.company.id,
-            }
-
     @classmethod
     def set_cost_from_moves(cls):
         pool = Pool()
@@ -580,8 +574,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
             for output in outputs:
                 product = output.product
-                with Transaction().set_context(production._list_price_context):
-                    list_price = product.list_price_used
+                list_price = product.list_price_used
                 product_price = (Decimal(str(output.quantity))
                     * Uom.compute_price(
                         product.default_uom, list_price, output.uom))
