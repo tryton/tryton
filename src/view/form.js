@@ -4390,6 +4390,15 @@ function eval_pyson(value){
             Sao.View.Form.HTML._super.display.call(this);
             this.button.attr('href', this.uri());
         },
+        set_readonly: function(readonly) {
+            Sao.View.Form.HTML._super.set_readonly.call(this, readonly);
+            this.el.find('button').prop('disabled', readonly);
+            if (readonly) {
+                this.el.find('a').hide();
+            } else {
+                this.el.find('a').show();
+            }
+        },
         translate_dialog: function(languages) {
             var options = {};
             languages.forEach(function(language) {
