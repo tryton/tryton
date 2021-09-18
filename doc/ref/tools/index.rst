@@ -11,3 +11,4 @@ Tools API reference.
 
     misc
     singleton
+    immutabledict

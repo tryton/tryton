@@ -6,7 +6,7 @@ import json
 import datetime
 from decimal import Decimal
 
-from trytond.model.fields.dict import ImmutableDict
+from trytond.tools.immutabledict import ImmutableDict
 from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder, JSONRequest
 from trytond.protocols.xmlrpc import client, XMLRequest
 

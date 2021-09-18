@@ -7,6 +7,7 @@ from threading import local
 from sql import Flavor
 
 from trytond.config import config
+from trytond.tools.immutabledict import ImmutableDict
 
 _cache_model = config.getint('cache', 'model')
 logger = logging.getLogger(__name__)
@@ -111,7 +112,7 @@ class Transaction(object):
         self.database = database
         self.readonly = readonly
         self.close = close
-        self.context = context or {}
+        self.context = ImmutableDict(context or {})
         self.create_records = defaultdict(set)
         self.delete_records = defaultdict(set)
         self.trigger_records = defaultdict(set)
@@ -174,15 +175,16 @@ class Transaction(object):
         if context is None:
             context = {}
         manager = _AttributeManager(context=self.context)
-        self.context = self.context.copy()
-        self.context.update(context)
+        ctx = self.context.copy()
+        ctx.update(context)
         if kwargs:
-            self.context.update(kwargs)
+            ctx.update(kwargs)
+        self.context = ImmutableDict(ctx)
         return manager
 
     def reset_context(self):
         manager = _AttributeManager(context=self.context)
-        self.context = {}
+        self.context = ImmutableDict()
         return manager
 
     def set_user(self, user, set_context=False):
@@ -190,12 +192,13 @@ class Transaction(object):
             raise ValueError('set_context only allowed for root')
         manager = _AttributeManager(user=self.user,
                 context=self.context)
-        self.context = self.context.copy()
+        ctx = self.context.copy()
         if set_context:
             if user != self.user:
-                self.context['user'] = self.user
+                ctx['user'] = self.user
         else:
-            self.context.pop('user', None)
+            ctx.pop('user', None)
+        self.context = ImmutableDict(ctx)
         self.user = user
         return manager
 

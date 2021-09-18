@@ -20,6 +20,7 @@ from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
     eval_domain, localize_domain,
     prepare_reference_domain, extract_reference_models)
+from trytond.tools.immutabledict import ImmutableDict
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -309,6 +310,66 @@ class LazyStringTestCase(unittest.TestCase):
         s = 'bar' + s
 
         self.assertEqual(s, 'barfoo')
+
+
+class ImmutableDictTestCase(unittest.TestCase):
+    "Test ImmutableDict"
+
+    def test_setitem(self):
+        "__setitem__ not allowed"
+        d = ImmutableDict()
+
+        with self.assertRaises(TypeError):
+            d['foo'] = 'bar'
+
+    def test_delitem(self):
+        "__delitem__ not allowed"
+        d = ImmutableDict(foo='bar')
+
+        with self.assertRaises(TypeError):
+            del d['foo']
+
+    def test_ior(self):
+        "__ior__ not allowed"
+        d = ImmutableDict()
+
+        with self.assertRaises(TypeError):
+            d |= {'foo': 'bar'}
+
+    def test_clear(self):
+        "clear not allowed"
+        d = ImmutableDict(foo='bar')
+
+        with self.assertRaises(TypeError):
+            d.clear()
+
+    def test_pop(self):
+        "pop not allowed"
+        d = ImmutableDict(foo='bar')
+
+        with self.assertRaises(TypeError):
+            d.pop('foo')
+
+    def test_popitem(self):
+        "popitem not allowed"
+        d = ImmutableDict(foo='bar')
+
+        with self.assertRaises(TypeError):
+            d.popitem('foo')
+
+    def test_setdefault(self):
+        "setdefault not allowed"
+        d = ImmutableDict()
+
+        with self.assertRaises(TypeError):
+            d.setdefault('foo', 'bar')
+
+    def test_update(self):
+        "update not allowed"
+        d = ImmutableDict()
+
+        with self.assertRaises(TypeError):
+            d.update({'foo': 'bar'})
 
 
 class DomainInversionTestCase(unittest.TestCase):
@@ -866,6 +927,7 @@ def suite():
     suite = unittest.TestSuite()
     for testcase in [ToolsTestCase,
             StringPartitionedTestCase,
+            ImmutableDictTestCase,
             DomainInversionTestCase]:
         suite.addTests(func(testcase))
     suite.addTest(doctest.DocTestSuite(decimal_))

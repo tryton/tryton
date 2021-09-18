@@ -9,31 +9,13 @@ from trytond import backend
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.tools import grouped_slice
+from trytond.tools.immutabledict import ImmutableDict
 from trytond.transaction import Transaction
 from .field import Field, SQL_OPERATORS
 
 # Use canonical form
 dumps = partial(
     json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
-
-
-class ImmutableDict(dict):
-
-    __slots__ = ()
-
-    def _not_allowed(cls, *args, **kwargs):
-        raise TypeError("Operation not allowed on ImmutableDict")
-
-    __setitem__ = _not_allowed
-    __delitem__ = _not_allowed
-    __ior__ = _not_allowed
-    clear = _not_allowed
-    pop = _not_allowed
-    popitem = _not_allowed
-    setdefault = _not_allowed
-    update = _not_allowed
-
-    del _not_allowed
 
 
 class Dict(Field):
