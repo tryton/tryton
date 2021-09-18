@@ -2750,8 +2750,12 @@ class CreateChart(Wizard):
 class UpdateChartStart(ModelView):
     'Update Chart'
     __name__ = 'account.update_chart.start'
-    account = fields.Many2One('account.account', 'Root Account',
-            required=True, domain=[('parent', '=', None)])
+    account = fields.Many2One(
+        'account.account', "Root Account", required=True,
+        domain=[
+            ('parent', '=', None),
+            ('template', '!=', None),
+            ])
 
 
 class UpdateChartSucceed(ModelView):
@@ -2781,6 +2785,7 @@ class UpdateChart(Wizard):
         with Transaction().set_context(_check_access=True):
             charts = Account.search([
                     ('parent', '=', None),
+                    ('template', '!=', None),
                     ], limit=2)
         if len(charts) == 1:
             defaults['account'] = charts[0].id
