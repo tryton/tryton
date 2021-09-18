@@ -87,7 +87,10 @@ class Line(ModelSQL, ModelView):
         return at.date()
 
     def get_rec_name(self, name):
-        return '%s@%s' % (self.employee.rec_name, self.at)
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return '%s@%s' % (self.employee.rec_name, lang.strftime(self.at))
 
     @classmethod
     def create(cls, vlist):
@@ -200,7 +203,10 @@ class Period(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     def get_rec_name(self, name):
-        return str(self.date)
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return lang.strftime(self.ends_at)
 
     @classmethod
     def get_last_period_date(cls, company):
