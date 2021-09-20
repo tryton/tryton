@@ -1652,7 +1652,7 @@
             this.title.text(this.name_el.text());
             this.content.remove();
             this.content = wizard.form;
-            this.el.append(wizard.form);
+            this.main.css('padding-top', 0).append(wizard.form);
         },
         create_toolbar: function() {
             return jQuery('<span/>');
