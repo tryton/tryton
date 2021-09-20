@@ -216,7 +216,7 @@ class Context(ModelView):
             ], "Period", required=True)
     invoiced = fields.Boolean(
         "Invoiced",
-        help="Only included invoiced commissions.")
+        help="Only include invoiced commissions.")
 
     @classmethod
     def default_type(cls):
