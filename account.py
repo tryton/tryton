@@ -1819,14 +1819,14 @@ class GeneralLedgerAccountContext(ModelView):
             ],
         depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help="Only included posted moves.")
+    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
     journal = fields.Many2One(
         'account.journal', "Journal",
         context={
             'company': Eval('company', -1),
             },
         depends=['company'],
-        help="Only included moves from the journal.")
+        help="Only include moves from the journal.")
 
     @classmethod
     def default_fiscalyear(cls):
