@@ -1709,10 +1709,12 @@
             this.set_selection(is_selected);
             if (is_selected) {
                 this.tree.select_changed(this.record);
-                if (this.is_expanded()) {
-                    this.tree.update_expander('less');
-                } else if (this.expander.css('visibility') == 'visible') {
-                    this.tree.update_expander('more');
+                if (this.expander) {
+                    if (this.is_expanded()) {
+                        this.tree.update_expander('less');
+                    } else if (this.expander.css('visibility') == 'visible') {
+                        this.tree.update_expander('more');
+                    }
                 }
             } else {
                 this.tree.select_changed(
