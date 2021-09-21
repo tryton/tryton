@@ -4778,7 +4778,6 @@ function eval_pyson(value){
     });
 
     Sao.View.Form.Dict.Entry = Sao.class_(Object, {
-        class_: 'dict-char',
         init: function(name, parent_widget) {
             this.name = name;
             this.definition = parent_widget.field.keys[name];
@@ -4825,6 +4824,14 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             this._readonly = readonly;
             this.input.prop('readonly', readonly);
+        }
+    });
+
+    Sao.View.Form.Dict.Char = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-char',
+        modified: function(value) {
+            return (JSON.stringify(this.get_value()) !=
+                JSON.stringify(value[this.name] || ""));
         }
     });
 
