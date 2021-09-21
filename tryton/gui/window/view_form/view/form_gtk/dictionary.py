@@ -65,6 +65,12 @@ class DictEntry(object):
         self.widget.set_editable(not readonly)
 
 
+class DictCharEntry(DictEntry):
+
+    def modified(self, value):
+        return self.get_value() != (value.get(self.name, '') or '')
+
+
 class DictBooleanEntry(DictEntry):
 
     def create_widget(self):
@@ -365,7 +371,7 @@ class DictDateEntry(DictEntry):
 
 
 DICT_ENTRIES = {
-    'char': DictEntry,
+    'char': DictCharEntry,
     'boolean': DictBooleanEntry,
     'selection': DictSelectionEntry,
     'multiselection': DictMultiSelectionEntry,
