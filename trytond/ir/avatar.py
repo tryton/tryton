@@ -32,6 +32,7 @@ FONT = os.path.join(os.path.dirname(__file__), 'fonts', 'karla.ttf')
 
 
 class ImageMixin:
+    __slots__ = ()
     image = fields.Binary(
         "Image", file_id=file_id, store_prefix=store_prefix)
     image_id = fields.Char("Image ID", readonly=True)

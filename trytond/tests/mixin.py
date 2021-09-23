@@ -6,19 +6,19 @@ from trytond.report import Report
 
 
 class TestMixin:
-    pass
+    __slots__ = ()
 
 
 class TestSecondMixin:
-    pass
+    __slots__ = ()
 
 
 class NotMixin:
-    pass
+    __slots__ = ()
 
 
 class ReportMixin:
-    pass
+    __slots__ = ()
 
 
 class DeactivableModelView(DeactivableMixin, ModelView):

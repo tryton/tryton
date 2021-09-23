@@ -745,6 +745,22 @@ class ModuleTestCase(unittest.TestCase):
                 "classes of '%s'." % mname)
 
     @with_transaction()
+    def test_pool_slots(self):
+        "Test pool object has __slots__"
+        for type_ in ['model', 'wizard', 'report']:
+            for name, cls in Pool().iterobject(type_):
+                if not isregisteredby(cls, self.module):
+                    continue
+                if getattr(cls, '__no_slots__', None):
+                    continue
+                for kls in cls.__mro__:
+                    if kls is object:
+                        continue
+                    self.assertTrue(hasattr(kls, '__slots__'),
+                        msg="The %s of %s '%s' has no __slots__"
+                        % (kls, type_, name))
+
+    @with_transaction()
     def test_buttons_registered(self):
         'Test all buttons are registered in ir.model.button'
         pool = Pool()
