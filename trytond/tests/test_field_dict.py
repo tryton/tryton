@@ -150,7 +150,7 @@ class FieldDictTestCase(unittest.TestCase):
                     'dico': {'countries': ['fr', 'be']},
                     }])
 
-        self.assertDictEqual(dict_.dico, {'countries': ['be', 'fr']})
+        self.assertDictEqual(dict_.dico, {'countries': ('be', 'fr')})
 
     @with_transaction()
     def test_invalid_selection_schema(self):

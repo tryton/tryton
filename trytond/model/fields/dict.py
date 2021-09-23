@@ -42,6 +42,9 @@ class Dict(Field):
                 # If stored as JSON conversion is done on backend
                 if isinstance(data, str):
                     data = json.loads(data, object_hook=JSONDecoder())
+                for key, val in data.items():
+                    if isinstance(val, list):
+                        data[key] = tuple(val)
                 dicts[value['id']] = ImmutableDict(data)
         return dicts
 
