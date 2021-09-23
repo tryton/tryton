@@ -89,6 +89,7 @@ class PaymentGroup(metaclass=PoolMeta):
 
 
 class CheckoutMixin:
+    __slots__ = ()
     braintree_checkout_id = fields.Char("Braintree Checkout ID", readonly=True)
     braintree_client_token = fields.Char(
         "Braintree Client Token", readonly=True)
