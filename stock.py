@@ -11,7 +11,7 @@ from .exceptions import LotUnitQuantityError
 
 
 class LotUnitMixin:
-
+    __slots__ = ()
     unit = fields.Many2One(
         'product.uom', "Unit",
         domain=[
