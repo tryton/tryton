@@ -21,6 +21,7 @@ from trytond.modules.company.model import employee_field, set_employee
 
 
 class ShipmentMixin:
+    __slots__ = ()
 
     @classmethod
     def view_attributes(cls):
@@ -30,6 +31,7 @@ class ShipmentMixin:
 
 
 class ShipmentAssignMixin(ShipmentMixin):
+    __slots__ = ()
     _assign_moves_field = None
 
     partially_assigned = fields.Function(
