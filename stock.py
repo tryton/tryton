@@ -175,7 +175,7 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
 
 
 class ShippingMixin:
-
+    __slots__ = ()
     shipping_description = fields.Char('Shipping Description',
         states={
             'readonly': Eval('state').in_(['done', 'packed'])
