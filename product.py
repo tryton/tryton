@@ -27,6 +27,7 @@ URL_EXTERNAL_BASE = config.get('product', 'image_base', default=http_host())
 
 
 class ImageURLMixin:
+    __slots__ = ()
     __image_url__ = None
     images = None
     image_url = fields.Function(fields.Char("Image URL"), '_get_image_url')
@@ -97,6 +98,7 @@ class Product(ImageURLMixin, metaclass=PoolMeta):
 
 
 class ImageMixin:
+    __slots__ = ()
     image = fields.Binary(
         "Image", file_id=file_id, store_prefix=store_prefix, required=True)
     image_id = fields.Char("Image ID", readonly=True)
