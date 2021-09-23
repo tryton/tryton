@@ -62,6 +62,7 @@ class Package(metaclass=PoolMeta):
 
 
 class ShippingDPDMixin:
+    __slots__ = ()
 
     def validate_packing_dpd(self):
         warehouse = self.shipping_warehouse
