@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <record model="ir.message" id="msg_password_length">
-            <field name="text">The password is too short.</field>
+            <field name="text">The password must have at least %(length)i characters.</field>
         </record>
         <record model="ir.message" id="msg_password_forbidden">
             <field name="text">The password is forbidden.</field>
