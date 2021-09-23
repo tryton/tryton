@@ -3,7 +3,7 @@
 from collections import defaultdict
 import datetime
 
-from sql import Null
+from sql import Null, Literal
 
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
     sequence_ordered
@@ -99,6 +99,21 @@ class Dunning(ModelSQL, ModelView):
             ('procedure', '=', Eval('procedure', -1)),
             ],
         states=_STATES, depends=_DEPENDS + ['procedure'])
+    date = fields.Date(
+        "Date", readonly=True,
+        states={
+            'invisible': Eval('state') == 'draft',
+            },
+        depends=['state'],
+        help="When the dunning reached the level.")
+    age = fields.Function(fields.TimeDelta(
+            "Age",
+            states={
+                'invisible': Eval('state') == 'draft',
+            },
+            depends=['state'],
+            help="How long the dunning has been at the level."),
+        'get_age')
     blocked = fields.Boolean('Blocked',
         help="Check to block further levels of the procedure.")
     state = fields.Selection([
@@ -167,6 +182,19 @@ class Dunning(ModelSQL, ModelView):
     @staticmethod
     def default_state():
         return 'draft'
+
+    def get_age(self, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if self.date:
+            return Date.today() - self.date
+
+    @classmethod
+    def order_age(cls, tables):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        table, _ = tables[None]
+        return [Literal(Date.today()) - table.date]
 
     def get_active(self, name):
         return not self.line.reconciliation
@@ -262,10 +290,12 @@ class Dunning(ModelSQL, ModelView):
                 to_write.extend((dunnings, {
                             'level': level.id,
                             'state': 'draft',
+                            'date': None,
                             }))
             else:
                 to_write.extend((dunnings, {
                             'state': 'final',
+                            'date': Date.today(),
                             }))
         if to_write:
             cls.write(*to_write)
@@ -294,9 +324,12 @@ class Dunning(ModelSQL, ModelView):
 
     @classmethod
     def process(cls, dunnings):
+        pool = Pool()
+        Date = pool.get('ir.date')
         cls.write([d for d in dunnings
                 if not d.blocked and d.state == 'draft'], {
                 'state': 'waiting',
+                'date': Date.today(),
                 })
 
     @classmethod

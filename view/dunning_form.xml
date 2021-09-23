@@ -10,6 +10,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="procedure"/>
     <label name="level"/>
     <field name="level"/>
+
+    <label name="date"/>
+    <field name="date"/>
+    <label name="age"/>
+    <field name="age"/>
+
     <label name="amount"/>
     <group id="amounts" col="-1">
         <field name="amount"/>

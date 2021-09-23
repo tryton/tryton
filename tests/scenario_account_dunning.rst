@@ -186,6 +186,7 @@ Create dunnings on 30 days with draft dunning::
     True
     >>> dunning.state
     'draft'
+    >>> dunning.date
     >>> dunning.line == dunning_line
     True
 
@@ -197,6 +198,8 @@ Process dunning::
     >>> dunning.reload()
     >>> dunning.state
     'waiting'
+    >>> dunning.date == today
+    True
 
 Create dunnings on 30 days with blocked dunning::
 
@@ -231,6 +234,7 @@ Create dunnings on 30 days::
     True
     >>> dunning.state
     'draft'
+    >>> dunning.date
     >>> dunning.line == dunning_line
     True
 

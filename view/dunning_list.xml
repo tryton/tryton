@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount_second_currency"/>
     <field name="maturity_date"/>
     <field name="level" expand="1"/>
+    <field name="age"/>
+    <field name="date" tree_invisible="1"/>
     <field name="blocked"/>
     <field name="state"/>
 </tree>
