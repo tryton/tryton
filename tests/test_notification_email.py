@@ -109,8 +109,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
                 datamanager=ANY)
             _, _, msg = sendmail.call_args[0]
             self.assertEqual(msg['From'], FROM)
-            self.assertEqual(
-                msg['Subject'], 'Notification Email-Michael Scott')
+            self.assertEqual(msg['Subject'], 'Notification Email')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
             self.assertEqual(msg['Auto-Submitted'], 'auto-generated')
             self.assertEqual(msg.get_content_type(), 'multipart/alternative')
@@ -157,8 +156,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['From'], FROM)
-        self.assertEqual(
-            msg['Subject'], 'Notification Email-Michael Scott')
+        self.assertEqual(msg['Subject'], 'Notification Email')
         self.assertEqual(msg['To'], 'Administrator <user@example.com>')
         self.assertEqual(msg.get_content_type(), 'multipart/mixed')
         self.assertEqual(
