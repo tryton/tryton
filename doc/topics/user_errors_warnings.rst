@@ -42,7 +42,8 @@ A warning displays a confirmation message with optionally a description to the
 user. The user can decide to continue so the request is processed again without
 stopping at the warning. Otherwise the user can cancel its request.
 The warning instance is identified by a name which allows to skip it the next
-time it is checked, that's why they often contain data like the id of a record.
+time it is checked, that's why they often build using the ``format`` method
+which uses record instances to generate a unique name based on ids.
 
 Example:
 
@@ -60,7 +61,7 @@ Example:
 
         def process(self):
             Warning = Pool().get('res.user.warning')
-            warning_name = 'mywarning,%s' % self
+            warning_name = Warning.format('mywarning', [self])
             if Warning.check(warning_name):
                 raise UserWarning(warning_name, "Process cannot be canceled.")
 
