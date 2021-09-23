@@ -618,7 +618,7 @@ class Action(ModelSQL, ModelView):
 
 
 class _Action_Line:
-
+    __slots__ = ()
     _states = {
         'readonly': (
             (Eval('complaint_state') != 'draft')
