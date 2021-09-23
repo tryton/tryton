@@ -140,11 +140,12 @@ class Report(URLMixin, PoolBase):
             report type,
             data,
             a boolean to direct print,
-            the report name
+            the report name (with or without the record names)
         '''
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
         cls.check_access()
+        context = Transaction().context
 
         action_id = data.get('action_id')
         if action_id is None:
@@ -212,8 +213,11 @@ class Report(URLMixin, PoolBase):
                 groups[0], headers[0], data, action_report)
         if not isinstance(content, str):
             content = bytearray(content) if bytes == str else bytes(content)
-        filename = '-'.join(
-            filter(None, [action_report.name, report_name(records)]))
+        if context.get('with_rec_name', True):
+            filename = '-'.join(
+                filter(None, [action_report.name, report_name(records)]))
+        else:
+            filename = action_report.name
         return (oext, content, action_report.direct_print, filename)
 
     @classmethod
@@ -478,7 +482,8 @@ def get_email(report, record, languages):
     msg = MIMEMultipart('alternative')
     msg.add_header('Content-Language', ', '.join(l.code for l in languages))
     for language in languages:
-        with Transaction().set_context(language=language.code):
+        with Transaction().set_context(
+                language=language.code, with_rec_name=False):
             ext, content, _, title = Report_.execute(
                 [record.id], {
                     'action_id': report_id,

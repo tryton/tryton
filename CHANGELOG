@@ -1,3 +1,4 @@
+* Do not set record name on title of report get_email
 * Add node to id of status
 * Use ImmutableDict for Transaction context
 * Use UNION for 'Or'-ed domain with subqueries
