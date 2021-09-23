@@ -27,6 +27,7 @@ from .exceptions import InvoicingError
 
 
 class Effort:
+    __slots__ = ()
 
     @classmethod
     def __setup__(cls):
@@ -91,7 +92,7 @@ class Effort:
 
 
 class Progress:
-
+    __slots__ = ()
     invoiced_progress = fields.One2Many('project.work.invoiced_progress',
         'work', 'Invoiced Progress', readonly=True)
 
@@ -208,7 +209,7 @@ class Progress:
 
 
 class Timesheet:
-
+    __slots__ = ()
     project_invoice_timesheet_up_to = fields.Date(
         "Invoice up to",
         states={
