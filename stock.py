@@ -25,6 +25,8 @@ SERVER_URLS = {
     'production': 'https://onlinetools.ups.com/json/Ship',
     }
 TRACKING_URL = 'https://www.ups.com/track'
+TIMEOUT = config.getfloat(
+    'stock_package_shipping_ups', 'requests_timeout', default=300)
 
 
 class PackageType(metaclass=PoolMeta):
@@ -182,7 +184,8 @@ class CreateShippingUPS(Wizard):
         try:
             while nb_tries < 5 and response is None:
                 try:
-                    req = requests.post(api_url, json=shipment_request)
+                    req = requests.post(
+                        api_url, json=shipment_request, timeout=TIMEOUT)
                 except ssl.SSLError as e:
                     error_message = e.reason
                     nb_tries += 1
