@@ -51,7 +51,7 @@ def check_no_move(func):
 
 
 class LotMixin:
-
+    __slots__ = ()
     number = fields.Char(
         "Number", required=True, select=True,
         states={
