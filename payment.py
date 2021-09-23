@@ -78,6 +78,7 @@ class Group(metaclass=PoolMeta):
 
 
 class CheckoutMixin:
+    __slots__ = ()
     stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
 
     @classmethod
