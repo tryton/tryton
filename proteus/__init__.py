@@ -959,12 +959,6 @@ class Model(object):
         fields.append('_timestamp')
         self._values.update(
             self._proxy.read([self.id], fields, self._context)[0])
-        for field in fields:
-            if (field in self._fields
-                    and self._fields[field]['type'] == 'float'
-                    and isinstance(self._values[field], Decimal)):
-                # XML-RPC return Decimal for double
-                self._values[field] = float(self._values[field])
 
     def _default_get(self):
         'Set default values'
