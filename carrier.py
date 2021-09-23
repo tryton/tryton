@@ -20,6 +20,8 @@ from trytond.pyson import Eval
 from .exceptions import SendcloudError
 
 SENDCLOUD_API_URL = 'https://panel.sendcloud.sc/api/v2/'
+TIMEOUT = config.getfloat(
+    'stock_package_shipping_sendcloud', 'requests_timeout', default=300)
 
 
 def sendcloud_api(func):
@@ -90,7 +92,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             return addresses
         response = requests.get(
             SENDCLOUD_API_URL + 'user/addresses/sender',
-            auth=self.auth)
+            auth=self.auth, timeout=TIMEOUT)
         response.raise_for_status()
         addresses = response.json()['sender_addresses']
         self._addresses_sender_cache.set(self.id, addresses)
@@ -124,7 +126,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             params['is_return'] = is_return
         response = requests.get(
             SENDCLOUD_API_URL + 'shipping_methods', params=params,
-            auth=self.auth)
+            auth=self.auth, timeout=TIMEOUT)
         response.raise_for_status()
         methods = response.json()['shipping_methods']
         self._shiping_methods_cache.set(key, methods)
@@ -149,7 +151,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def get_parcel(self, id):
         response = requests.get(
             SENDCLOUD_API_URL + 'parcels/%s' % id,
-            auth=self.auth)
+            auth=self.auth, timeout=TIMEOUT)
         response.raise_for_status()
         return response.json()['parcel']
 
@@ -157,7 +159,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def create_parcels(self, parcels):
         response = requests.post(
             SENDCLOUD_API_URL + 'parcels', json={'parcels': parcels},
-            auth=self.auth)
+            auth=self.auth, timeout=TIMEOUT)
         if response.status_code == 400:
             msg = response.json()['error']['message']
             raise requests.HTTPError(msg, response=response)
@@ -166,7 +168,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @sendcloud_api
     def get_label(self, url):
-        response = requests.get(url, auth=self.auth)
+        response = requests.get(url, auth=self.auth, timeout=TIMEOUT)
         response.raise_for_status()
         return response.content
 
