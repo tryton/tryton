@@ -29,6 +29,7 @@ EDOC2SYNTAX = {
 EDOC2FILENAME = {
     'edocument.uncefact.invoice': 'UNCEFACT-%s.xml',
     }
+TIMEOUT = config.getfloat('account_fr_chorus', 'requests_timeout', default=300)
 logger = logging.getLogger(__name__)
 
 
@@ -97,7 +98,8 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
         url = '/'.join((BASE_URL, config.chorus_service, path))
         auth = (config.chorus_login, config.chorus_password)
         resp = requests.post(
-            url, json=payload, cert=CERT, verify=True, auth=auth)
+            url, json=payload, cert=CERT, verify=True, auth=auth,
+            timeout=TIMEOUT)
         resp.raise_for_status()
         return resp.json()
 
