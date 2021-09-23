@@ -98,6 +98,7 @@ class Package(metaclass=PoolMeta):
 
 
 class ShippingUPSMixin:
+    __slots__ = ()
 
     def validate_packing_ups(self):
         warehouse = self.shipping_warehouse
