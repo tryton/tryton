@@ -46,7 +46,7 @@ class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
 
 
 class LotSledMixin:
-
+    __slots__ = ()
     shelf_life_expiration_date = fields.Date('Shelf Life Expiration Date',
         states={
             'required': (
