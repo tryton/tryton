@@ -199,7 +199,8 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
             records = cls.search(['OR',
                     ('number', '=', None),
                     ('number', '=', ''),
-                    ('company', '=', transaction.context.get('company')),
+                    ('invoice.company', '=',
+                        transaction.context.get('company')),
                     ])
 
         for record in records:
