@@ -1,3 +1,5 @@
+* Use bigdecimal tag for XML-RPC
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Add support for Python 3.9

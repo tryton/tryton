@@ -15,10 +15,9 @@ __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 
 
 def dump_decimal(self, value, write):
-    value = {'__class__': 'Decimal',
-        'decimal': str(value),
-        }
-    self.dump_struct(value, write)
+    write('<value><bigdecimal>')
+    write(str(Decimal(value)))
+    write('</bigdecimal></value>')
 
 
 def dump_date(self, value, write):
