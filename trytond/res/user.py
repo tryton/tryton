@@ -285,9 +285,9 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         length = config.getint('password', 'length', default=0)
         if length > 0:
             if len(password_b) < length:
-                raise PasswordError(gettext('res.msg_password_length', {
-                            'length': length,
-                            }))
+                raise PasswordError(gettext('res.msg_password_length',
+                        length=length,
+                        ))
         path = config.get('password', 'forbidden', default=None)
         if path:
             with open(path, 'r') as f:
