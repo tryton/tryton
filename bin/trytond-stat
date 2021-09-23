@@ -39,9 +39,12 @@ def main(stdscr):
         def expired(process):
             return process['expire'] > now
 
-        def format_status(since, pid, request):
+        def format_status(since, id_, request):
             since = str(dt.timedelta(seconds=int(since)))
-            return f"{pid:>5} {since:>18} {request}"
+            pid, node = id_.split('@', 1)
+            if len(node) > 12:
+                node = node[:5] + '…' + node[:6]
+            return f"{pid:>5} {node:<12} {since:>18} {request}"
         status_pad.clear()
         status = [format_status(*i) for i in sorted(
                 ((msg['since'], p['id'], msg['request'])
@@ -54,8 +57,9 @@ def main(stdscr):
         for i, line in enumerate(status, 1):
             status_pad.addnstr(i, 0, line.ljust(pcol), pcol)
         status_pad.addnstr(
-            0, 0, "{pid:>5} {since:>18} {request} ({n})".format(
+            0, 0, "{pid:>5} {node:^12} {since:>18} {request} ({n})".format(
                 pid="pid",
+                node="node",
                 since="TIME" + ('↑' if reverse else '↓'),
                 request="request",
                 n=len(status),

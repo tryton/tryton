@@ -3,6 +3,7 @@
 import json
 import logging
 import os
+import platform
 import socket
 import threading
 import time
@@ -41,7 +42,7 @@ def log():
                 'request': str(process.request),
                 })
     return {
-        'id': os.getpid(),
+        'id': '%s@%s' % (os.getpid(), platform.node()),
         'status': msg,
         'caches': list(Cache.stats()),
         }
