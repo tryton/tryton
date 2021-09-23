@@ -1,3 +1,4 @@
+* Support session with XML-RPC
 * Use bigdecimal tag for XML-RPC
 
 Version 6.0.0 - 2021-05-03

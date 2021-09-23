@@ -4,12 +4,14 @@
 Configuration functions for the proteus package for Tryton.
 """
 
+import base64
 import datetime
 import os
 import threading
 import urllib.parse
 import xmlrpc.client
 from decimal import Decimal
+from contextlib import contextmanager
 
 __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 
@@ -367,6 +369,31 @@ def set_xmlrpc(url, **kwargs):
     '''
     _CONFIG.current = XmlrpcConfig(url, **kwargs)
     return _CONFIG.current
+
+
+@contextmanager
+def set_xmlrpc_session(
+        url, username, password=None, parameters=None, **kwargs):
+    """
+    Set XML-RPC as backend using session.
+    """
+    if parameters is None:
+        parameters = {}
+    else:
+        parameters = parameters.copy()
+    if password:
+        parameters['password'] = password
+    server = xmlrpc.client.ServerProxy(
+        url, allow_none=True, use_builtin_types=True, **kwargs)
+    session = server.common.db.login(username, parameters)
+    session = ':'.join(map(str, [username] + session))
+    auth = base64.encodebytes(session.encode('utf-8')).decode('ascii')
+    auth = ''.join(auth.split())  # get rid of whitespace
+    kwargs.setdefault('headers', []).append(
+        ('Authorization', 'Session ' + auth))
+    config = set_xmlrpc(url, **kwargs)
+    yield config
+    config.server.common.db.logout()
 
 
 def get_config():

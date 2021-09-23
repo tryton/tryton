@@ -16,6 +16,10 @@ Configuration to connect to a sqlite memory database using trytond as module.
 
     >>> config = config.set_trytond('sqlite:///:memory:')
 
+There is also the `config.set_xmlrpc` method which can be used to connect using
+a URL, and the `config.set_xmlrpc_session` method (when used as a context
+manager) which connects for a session.
+
 Activating a module
 ~~~~~~~~~~~~~~~~~~~
 
