@@ -24,7 +24,7 @@ from .exceptions import BudgetValidationError
 
 
 class AmountMixin:
-
+    __slots__ = ()
     actual_amount = fields.Function(
         Monetary(
             "Actual Amount", currency='currency', digits='currency',
@@ -88,7 +88,7 @@ class AmountMixin:
 
 
 class BudgetMixin:
-
+    __slots__ = ()
     name = fields.Char("Name", required=True)
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
@@ -116,7 +116,7 @@ class BudgetMixin:
 class BudgetLineMixin(
         tree(name='current_name', separator='\\'), sequence_ordered(),
         AmountMixin):
-
+    __slots__ = ()
     budget = None
     name = fields.Char(
         "Name",
@@ -719,6 +719,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
 
 
 class CopyBudgetMixin:
+    __slots__ = ()
 
     def default_start(self, field_names):
         return {
@@ -744,7 +745,7 @@ class CopyBudgetMixin:
 
 
 class CopyBudgetStartMixin:
-
+    __slots__ = ()
     name = fields.Char("Name", required=True)
     factor = fields.Numeric(
         "Factor",
