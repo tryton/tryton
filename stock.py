@@ -38,6 +38,7 @@ class Package(metaclass=PoolMeta):
 
 
 class ShippingSendcloudMixin:
+    __slots__ = ()
 
     def get_sendcloud_credential(self):
         pool = Pool()
