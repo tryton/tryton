@@ -543,7 +543,7 @@ class ShopVSFIdentifier(ModelSQL):
 
 
 class ShopVSFIdentifierMixin:
-
+    __slots__ = ()
     vsf_identifier = fields.Many2One(
         'web.shop.vsf_identifier',
         lazy_gettext('web_shop_vue_storefront.msg_vsf_identifier'),

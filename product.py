@@ -11,7 +11,7 @@ from .web import ShopVSFIdentifierMixin
 
 
 class _ProductEntityMixin:
-
+    __slots__ = ()
     vsf_sku = fields.Function(
         fields.Char("SKU"), 'get_vsf_sku', searcher='search_vsf_sku')
 
