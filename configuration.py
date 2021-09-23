@@ -13,6 +13,8 @@ SERVER_URLS = {
 
 LOGIN_SERVICE = 'LoginService/V2_0?wsdl'
 SHIPMENT_SERVICE = 'ShipmentService/V3_2?wsdl'
+TIMEOUT = config.get(
+    'stock_package_shipping_dpd', 'requests_timeout', default=300)
 
 
 def get_client(server, service):
@@ -22,6 +24,6 @@ def get_client(server, service):
     # Disable the cache for testing because zeep's bug
     # https://github.com/mvantellingen/python-zeep/issues/48
     # which makes testing environments fail
-    transport = (Transport(cache=None)
+    transport = (Transport(cache=None, operation_timeout=TIMEOUT)
         if url.startswith(SERVER_URLS['testing']) else None)
     return Client(url, transport=transport)
