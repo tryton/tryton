@@ -55,7 +55,7 @@ class Product(metaclass=PoolMeta):
                 pattern.setdefault('warehouse', context.get('warehouse'))
         return super().get_multivalue(name, **pattern)
 
-    def set_multivalue(self, name, value, **pattern):
+    def set_multivalue(self, name, value, save=True, **pattern):
         pool = Pool()
         Company = pool.get('company.company')
         context = Transaction().context
@@ -64,7 +64,7 @@ class Product(metaclass=PoolMeta):
             company = Company(context['company'])
             if company.cost_price_warehouse:
                 pattern.setdefault('warehouse', context.get('warehouse'))
-        return super().set_multivalue(name, value, **pattern)
+        return super().set_multivalue(name, value, save=save, **pattern)
 
     @classmethod
     def _domain_moves_cost(cls):
