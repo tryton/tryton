@@ -14,6 +14,7 @@ from trytond.wizard import Wizard, StateTransition, StateView, Button
 
 class ShipmentUnassignMixin:
     '''Mixin to unassign quantity from assigned shipment moves'''
+    __slots__ = ()
 
     @dualmethod
     def unassign(cls, shipments, moves, quantities):
