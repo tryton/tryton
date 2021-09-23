@@ -1,3 +1,4 @@
+* Use bigdecimal tag for XML-RPC
 * Use tuple in Dict value instead of list
 * Do not set record name on title of report get_email
 * Add node to id of status

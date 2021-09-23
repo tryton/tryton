@@ -101,6 +101,24 @@ class XMLTestCase(DumpsLoadsMixin, unittest.TestCase):
         result, = result
         self.assertEqual(value, result)
 
+    def test_decimal_class_load(self):
+        "Test load Decimal as __class__"
+        s = """<params><param><value>
+            <struct>
+                <member>
+                    <name>__class__</name>
+                    <value><string>Decimal</string></value>
+                </member>
+                <member>
+                    <name>decimal</name>
+                    <value><string>3.141592653589793</string></value>
+                </member>
+            </struct>
+            </value></param></params>"""
+        result, _ = client.loads(s)
+        result, = result
+        self.assertEqual(result, Decimal('3.141592653589793'))
+
 
 def suite():
     suite_ = unittest.TestSuite()
