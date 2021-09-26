@@ -10,5 +10,6 @@ Tools API reference.
     :maxdepth: 1
 
     misc
+    email
     singleton
     immutabledict

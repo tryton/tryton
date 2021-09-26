@@ -28,6 +28,7 @@ from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import escape_wildcard
 from trytond.tools.string_ import StringMatcher
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 
 from .resource import ResourceAccessMixin
@@ -164,14 +165,8 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                 msg.attach(attachment)
         else:
             msg = content
-        msg['From'] = from_ = config.get('email', 'from')
-        if user.email:
-            if user.name:
-                user_email = formataddr((user.name, user.email))
-            else:
-                user_email = user.email
-            msg['Behalf-Of'] = user_email
-            msg['Reply-To'] = user_email
+        from_ = config.get('email', 'from')
+        set_from_header(msg, from_, user.email or from_)
         msg['To'] = ', '.join(formataddr(a) for a in getaddresses([to]))
         msg['Cc'] = ', '.join(formataddr(a) for a in getaddresses([cc]))
         msg['Subject'] = Header(subject, 'utf-8')
