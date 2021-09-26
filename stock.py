@@ -110,10 +110,7 @@ class ShippingUPSMixin:
                     warehouse=warehouse.rec_name))
         if warehouse.address.country != self.delivery_address.country:
             for party in {self.shipping_to, self.company.party}:
-                for mechanism in party.contact_mechanisms:
-                    if mechanism.type in ('phone', 'mobile'):
-                        break
-                else:
+                if not party.contact_mechanism_get({'phone', 'mobile'}):
                     raise PackingValidationError(
                         gettext('stock_package_shipping_ups'
                             '.msg_phone_required',
@@ -280,15 +277,10 @@ class CreateShippingUPS(Wizard):
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
-
-        phone = ''
-        for mechanism in party.contact_mechanisms:
-            if mechanism.type in {'phone', 'mobile'}:
-                phone = mechanism.value
-                break
+        phone = party.contact_mechanism_get({'phone', 'mobile'})
         if phone:
             shipping_party['Phone'] = {
-                'Number': re.sub('[() .-]', '', phone)[:15]
+                'Number': re.sub('[() .-]', '', phone.value)[:15]
                 }
 
         return shipping_party
