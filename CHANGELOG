@@ -1,3 +1,4 @@
+* Support grouping attribute
 * Support monetary and symbol field attributes
 * Support digits from relation field
 * Allow PYSON Expression as key for PYSON In with dict object

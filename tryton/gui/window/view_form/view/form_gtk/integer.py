@@ -26,6 +26,7 @@ class Integer(Widget):
                 self.symbol_start, expand=False, fill=False, padding=1)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
         self.factor = float(attrs.get('factor', 1))
+        self.grouping = bool(int(attrs.get('grouping', 1)))
         if self.symbol:
             self.symbol_end = Gtk.Entry(editable=False)
             self.widget.pack_start(
@@ -49,7 +50,8 @@ class Integer(Widget):
         if not self.field:
             value = ''
         else:
-            value = self.field.get_client(self.record, factor=self.factor)
+            value = self.field.get_client(
+                self.record, factor=self.factor, grouping=self.grouping)
         return value
 
     @property

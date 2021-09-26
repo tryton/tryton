@@ -371,6 +371,7 @@ class Int(GenericText):
         super(Int, self).__init__(view, attrs, renderer=renderer)
         self.factor = float(attrs.get('factor', 1))
         self.symbol = attrs.get('symbol')
+        self.grouping = bool(int(attrs.get('grouping', 1)))
         if self.symbol:
             self.renderer_prefix = Symbol(view, attrs, 0)
             self.renderer_suffix = Symbol(view, attrs, 1)
@@ -391,7 +392,7 @@ class Int(GenericText):
         if not record:
             return ''
         return record[self.attrs['name']].get_client(
-            record, factor=self.factor)
+            record, factor=self.factor, grouping=self.grouping)
 
     def value_from_text(self, record, text, callback=None):
         field = record[self.attrs['name']]

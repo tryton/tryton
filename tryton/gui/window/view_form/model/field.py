@@ -413,7 +413,7 @@ class FloatField(Field):
         super(FloatField, self).set_client(record, value,
             force_change=force_change)
 
-    def get_client(self, record, factor=1):
+    def get_client(self, record, factor=1, grouping=True):
         value = record.value.get(self.name)
         if value is not None:
             digits = self.digits(record, factor=factor)
@@ -422,10 +422,13 @@ class FloatField(Field):
                 d = Decimal(repr(d))
             if digits:
                 p = int(digits[1])
+            elif d == d.to_integral_value():
+                p = 0
             else:
                 p = -int(d.as_tuple().exponent)
             monetary = self.attrs.get('monetary', False)
-            return locale.localize('{0:.{1}f}'.format(d, p), True, monetary)
+            return locale.localize(
+                '{0:.{1}f}'.format(d, p), grouping, monetary)
         else:
             return ''
 
@@ -443,9 +446,9 @@ class NumericField(FloatField):
         return super(NumericField, self).set_client(record, value,
             force_change=force_change, factor=Decimal(str(factor)))
 
-    def get_client(self, record, factor=1):
+    def get_client(self, record, factor=1, grouping=True):
         return super(NumericField, self).get_client(record,
-            factor=Decimal(str(factor)))
+            factor=Decimal(str(factor)), grouping=grouping)
 
 
 class IntegerField(FloatField):
@@ -461,8 +464,9 @@ class IntegerField(FloatField):
         return super(IntegerField, self).set_client(record, value,
             force_change=force_change, factor=int(factor))
 
-    def get_client(self, record, factor=1):
-        return super(IntegerField, self).get_client(record, factor=int(factor))
+    def get_client(self, record, factor=1, grouping=True):
+        return super(IntegerField, self).get_client(
+            record, factor=int(factor), grouping=grouping)
 
 
 class BooleanField(Field):
