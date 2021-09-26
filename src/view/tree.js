@@ -2267,12 +2267,14 @@
         init: function(model, attributes) {
             Sao.View.Tree.IntegerColumn._super.init.call(this, model, attributes);
             this.factor = Number(attributes.factor || 1);
+            this.grouping = Boolean(Number(attributes.grouping || 1));
         },
         get_cell: function() {
             return Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
         },
         update_text: function(cell, record) {
-            var value = this.field.get_client(record, this.factor);
+            var value = this.field.get_client(
+                record, this.factor, this.grouping);
             cell.text(value).attr('title', value);
         }
     });

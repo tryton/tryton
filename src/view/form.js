@@ -1877,6 +1877,7 @@ function eval_pyson(value){
             }
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
+            this.grouping = Boolean(Number(attributes.grouping || 1));
         },
         get modified() {
             if (this.record && this.field) {
@@ -1933,7 +1934,7 @@ function eval_pyson(value){
                 this.el.css('width', this.width + 'ch');
             }
             if (field) {
-                value = field.get_client(record, this.factor);
+                value = field.get_client(record, this.factor, this.grouping);
             }
             if (field && this.attributes.symbol) {
                 var result = field.get_symbol(record, this.attributes.symbol);

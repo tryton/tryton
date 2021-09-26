@@ -1974,13 +1974,18 @@
             Sao.field.Float._super.set_client.call(this, record, value,
                 force_change);
         },
-        get_client: function(record, factor) {
+        get_client: function(record, factor, grouping) {
             if (factor === undefined) {
                 factor = 1;
             }
+            if (grouping === undefined) {
+                grouping = true;
+            }
             var value = this.get(record);
             if (value !== null) {
-                var options = {};
+                var options = {
+                    useGrouping: grouping,
+                };
                 var digits = this.digits(record, factor);
                 if (digits) {
                     options.minimumFractionDigits = digits[1];
