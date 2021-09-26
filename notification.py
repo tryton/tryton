@@ -19,6 +19,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from .exceptions import TemplateError
 
@@ -171,13 +172,14 @@ class Email(ModelSQL, ModelView):
         with Transaction().set_context(usage=self.contact_mechanism):
             return EmailTemplate.get_languages(value)
 
-    def get_email(self, record, from_, to, cc, bcc, languages):
+    def get_email(self, record, sender, to, cc, bcc, languages):
         pool = Pool()
         Attachment = pool.get('notification.email.attachment')
 
         # TODO order languages to get default as last one for title
         content, title = get_email(self.content, record, languages)
         language = list(languages)[-1]
+        from_ = sender
         with Transaction().set_context(language=language.code):
             notification = self.__class__(self.id)
             if notification.from_:
@@ -195,7 +197,7 @@ class Email(ModelSQL, ModelView):
         else:
             msg = content
 
-        msg['From'] = from_
+        set_from_header(msg, sender, from_)
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
         msg['Subject'] = Header(title, 'utf-8')
