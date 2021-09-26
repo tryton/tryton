@@ -11,6 +11,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, Id
 from trytond.report import Report, get_email
 from trytond.sendmail import sendmail_transactional
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 
 from trytond.modules.company.model import CompanyValueMixin
@@ -181,8 +182,7 @@ class GiftCard(ModelSQL, ModelView):
     def send(cls, gift_cards, from_=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        if from_ is None:
-            from_ = config.get('email', 'from')
+        from_cfg = config.get('email', 'from')
         for gift_card in gift_cards:
             email = gift_card._email
             languages = gift_card._languages
@@ -190,10 +190,10 @@ class GiftCard(ModelSQL, ModelView):
                 languages.append(Lang.get())
             msg, title = get_email(
                 'sale.gift_card.email', gift_card, languages)
-            msg['From'] = from_
+            set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = email
             msg['Subject'] = Header(title, 'utf-8')
-            sendmail_transactional(from_, [email], msg, strict=True)
+            sendmail_transactional(from_cfg, [email], msg, strict=True)
 
 
 class GiftCardEmail(Report):
