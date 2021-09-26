@@ -9,8 +9,14 @@ from sql import Flavor
 from trytond.config import config
 from trytond.tools.immutabledict import ImmutableDict
 
+_cache_transaction = config.getint('cache', 'transaction')
 _cache_model = config.getint('cache', 'model')
+_cache_record = config.getint('cache', 'record')
 logger = logging.getLogger(__name__)
+
+
+def record_cache_size(transaction):
+    return transaction.context.get('_record_cache_size', _cache_record)
 
 
 class _AttributeManager(object):
@@ -59,10 +65,19 @@ class Transaction(object):
     started_at = None
 
     def __new__(cls, new=False):
+        from trytond.pool import Pool
+        from trytond.cache import LRUDict
         transactions = cls._local.transactions
         if new or not transactions:
             instance = super(Transaction, cls).__new__(cls)
-            instance.cache = {}
+            instance.cache = LRUDict(
+                _cache_transaction,
+                lambda: LRUDict(
+                    _cache_model,
+                    lambda name: LRUDict(
+                        record_cache_size(instance),
+                        Pool().get(name)._record),
+                    default_factory_with_key=True))
             instance._atexit = []
             transactions.append(instance)
         else:
@@ -81,11 +96,10 @@ class Transaction(object):
         return self._local.tasks
 
     def get_cache(self):
-        from trytond.cache import LRUDict
         keys = tuple(((key, self.context[key])
                 for key in sorted(self.cache_keys)
                 if key in self.context))
-        return self.cache.setdefault((self.user, keys), LRUDict(_cache_model))
+        return self.cache[(self.user, keys)]
 
     def start(self, database_name, user, readonly=False, context=None,
             close=False, autocommit=False):

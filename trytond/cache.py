@@ -393,14 +393,19 @@ class LRUDict(OrderedDict):
     If size limit is reached, it will remove the first added items.
     The default_factory provides the same behavior as in standard
     collections.defaultdict.
+    If default_factory_with_key is set, the default_factory is called with the
+    missing key.
     """
     __slots__ = ('size_limit',)
 
-    def __init__(self, size_limit, default_factory=None, *args, **kwargs):
+    def __init__(self, size_limit,
+            default_factory=None, default_factory_with_key=False,
+            *args, **kwargs):
         assert size_limit > 0
         self.size_limit = size_limit
         super(LRUDict, self).__init__(*args, **kwargs)
         self.default_factory = default_factory
+        self.default_factory_with_key = default_factory_with_key
         self._check_size_limit()
 
     def __setitem__(self, key, value):
@@ -410,7 +415,11 @@ class LRUDict(OrderedDict):
     def __missing__(self, key):
         if self.default_factory is None:
             raise KeyError(key)
-        self[key] = value = self.default_factory()
+        if self.default_factory_with_key:
+            value = self.default_factory(key)
+        else:
+            value = self.default_factory()
+        self[key] = value
         return value
 
     def update(self, *args, **kwargs):

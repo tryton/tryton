@@ -23,19 +23,24 @@ from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
 from trytond.i18n import gettext, lazy_gettext
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, record_cache_size
 from trytond.pool import Pool
-from trytond.cache import Cache, LRUDict, LRUDictTransaction, freeze, unfreeze
+from trytond.cache import Cache, LRUDictTransaction, freeze, unfreeze
 from trytond.rpc import RPC
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
-_cache_record = config.getint('cache', 'record')
 _cache_field = config.getint('cache', 'field')
 _cache_count_timeout = config.getint(
     'cache', 'count_timeout', default=60 * 60 * 24)
 _cache_count_clear = config.getint(
     'cache', 'count_clear', default=1000)
+
+
+def local_cache(Model, transaction=None):
+    if transaction is None:
+        transaction = Transaction()
+    return LRUDictTransaction(record_cache_size(transaction), Model._record)
 
 
 class AccessError(UserError):
@@ -84,10 +89,6 @@ def without_check_access(func):
         with Transaction().set_context(_check_access=False):
             return func(*args, **kwargs)
     return wrapper
-
-
-def cache_size():
-    return Transaction().context.get('_record_cache_size', _cache_record)
 
 
 def is_leaf(expression):
@@ -644,10 +645,10 @@ class ModelStorage(Model):
         '''
         transaction = Transaction()
         ids = list(map(int, ids))
-        local_cache = LRUDictTransaction(cache_size(), cls._record)
+        _local_cache = local_cache(cls, transaction)
         transaction_cache = transaction.get_cache()
         return [cls(x, _ids=ids,
-                _local_cache=local_cache,
+                _local_cache=_local_cache,
                 _transaction_cache=transaction_cache,
                 _transaction=transaction) for x in ids]
 
@@ -1482,16 +1483,13 @@ class ModelStorage(Model):
             assert isinstance(_local_cache, LRUDictTransaction)
             self._local_cache = _local_cache
         else:
-            self._local_cache = LRUDictTransaction(cache_size(), self._record)
+            self._local_cache = local_cache(self.__class__, transaction)
 
         super(ModelStorage, self).__init__(id, **kwargs)
 
     @property
     def _cache(self):
-        cache = self._transaction_cache
-        if self.__name__ not in cache:
-            cache[self.__name__] = LRUDict(cache_size(), self._record)
-        return cache[self.__name__]
+        return self._transaction_cache[self.__name__]
 
     def __getattr__(self, name):
         try:
@@ -1645,8 +1643,9 @@ class ModelStorage(Model):
             with transaction.set_context(**ctx):
                 kwargs = {}
                 key = (Model, freeze(ctx))
-                kwargs['_local_cache'] = model2cache.setdefault(key,
-                    LRUDictTransaction(cache_size(), Model._record))
+                if key not in model2cache:
+                    model2cache[key] = local_cache(Model, transaction)
+                kwargs['_local_cache'] = model2cache[key]
                 kwargs['_ids'] = ids = model2ids.setdefault(key, [])
                 kwargs['_transaction_cache'] = transaction.get_cache()
                 kwargs['_transaction'] = transaction

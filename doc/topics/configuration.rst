@@ -219,6 +219,13 @@ cache
 
 Defines size of various cache.
 
+transaction
+~~~~~~~~~~~
+
+The number of contextual caches kept per transaction.
+
+Default: ``10``
+
 model
 ~~~~~
 

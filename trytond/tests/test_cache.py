@@ -241,6 +241,12 @@ class LRUDictTestCase(unittest.TestCase):
         lru_dict['bar'].append('bar')
         self.assertEqual(lru_dict, {'bar': ['bar']})
 
+    def test_default_factory_with_key(self):
+        lru_dict = LRUDict(
+            1, default_factory=lambda k: k, default_factory_with_key=True)
+
+        self.assertEqual(lru_dict['foo'], 'foo')
+
 
 class LRUDictTransactionTestCase(unittest.TestCase):
     "Test LRUDictTransaction"

@@ -17,15 +17,15 @@ from trytond.model import ModelStorage, ModelView
 from trytond.model import fields
 from trytond import backend
 from trytond.tools import reduce_ids, grouped_slice, cursor_dict
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, record_cache_size
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder, PYSONDecoder
-from trytond.cache import LRUDict, freeze
+from trytond.cache import freeze
 from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
 from trytond.config import config
 
-from .modelstorage import (cache_size, is_leaf,
+from .modelstorage import (is_leaf,
     ValidationError, RequiredValidationError, AccessError)
 from .descriptors import dualmethod
 
@@ -673,7 +673,8 @@ class ModelSQL(ModelStorage):
 
         cls.__check_domain_rule(new_ids, 'create')
         records = cls.browse(new_ids)
-        for sub_records in grouped_slice(records, cache_size()):
+        for sub_records in grouped_slice(
+                records, record_cache_size(transaction)):
             cls._validate(sub_records)
 
         cls.trigger_create(records)
@@ -818,8 +819,7 @@ class ModelSQL(ModelStorage):
             if f in cls._fields and hasattr(cls._fields[f], 'get')]
 
         if getter_fields and cachable_fields:
-            cache = transaction.get_cache().setdefault(
-                cls.__name__, LRUDict(cache_size(), cls._record))
+            cache = transaction.get_cache()[cls.__name__]
             for row in result:
                 for fname in cachable_fields:
                     cache[row['id']][fname] = row[fname]
@@ -859,7 +859,8 @@ class ModelSQL(ModelStorage):
                         date_result = date_results[fname]
                         row[fname] = date_result[row['id']]
             else:
-                for sub_results in grouped_slice(result, cache_size()):
+                for sub_results in grouped_slice(
+                        result, record_cache_size(transaction)):
                     sub_results = list(sub_results)
                     sub_ids = [r['id'] for r in sub_results]
                     getter_results = field.get(
@@ -1045,7 +1046,8 @@ class ModelSQL(ModelStorage):
         cls._insert_history(all_ids)
 
         cls.__check_domain_rule(all_ids, 'write')
-        for sub_records in grouped_slice(all_records, cache_size()):
+        for sub_records in grouped_slice(
+                all_records, record_cache_size(transaction)):
             cls._validate(sub_records, field_names=all_field_names)
 
         cls.trigger_write(trigger_eligibles)
@@ -1383,8 +1385,6 @@ class ModelSQL(ModelStorage):
 
         rows = list(cursor_dict(cursor, transaction.database.IN_MAX))
         cache = transaction.get_cache()
-        if cls.__name__ not in cache:
-            cache[cls.__name__] = LRUDict(cache_size(), cls._record)
         delete_records = transaction.delete_records[cls.__name__]
 
         def filter_history(rows):

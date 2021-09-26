@@ -11,7 +11,6 @@ from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
 from trytond import backend
-from trytond.cache import LRUDictTransaction
 from trytond.const import OPERATORS
 from trytond.pool import Pool
 from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
@@ -145,12 +144,11 @@ def get_eval_fields(value):
 
 
 def instanciate_values(Target, value, **extra):
-    from ..modelstorage import ModelStorage, cache_size
+    from ..modelstorage import ModelStorage, local_cache
     kwargs = {}
     ids = []
     if issubclass(Target, ModelStorage):
-        kwargs['_local_cache'] = LRUDictTransaction(
-            cache_size(), Target._record)
+        kwargs['_local_cache'] = local_cache(Target)
         kwargs['_ids'] = ids
 
     def instance(data):
