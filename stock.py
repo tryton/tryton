@@ -216,18 +216,12 @@ class CreateDPDShipping(Wizard):
         if party.full_name != address.party_full_name:
             shipping_party['name2'] = party.full_name[:35]
 
-        phone = email = ''
-        for mechanism in party.contact_mechanisms:
-            if mechanism.type in {'phone', 'mobile'} and not phone:
-                phone = mechanism.value
-            if mechanism.type == 'email' and not email:
-                email = mechanism.value
-            if phone and email:
-                break
+        phone = party.contact_mechanism_get({'phone', 'mobile'})
         if phone:
-            shipping_party['phone'] = phone[:30]
+            shipping_party['phone'] = phone.value[:30]
+        email = party.contact_mechanism_get('email')
         if email:
-            shipping_party['email'] = email[:50]
+            shipping_party['email'] = email.value[:50]
 
         return shipping_party
 
