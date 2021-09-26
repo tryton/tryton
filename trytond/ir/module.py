@@ -492,11 +492,21 @@ class ModuleConfigWizard(Wizard):
     def transition_action(self):
         pool = Pool()
         Item = pool.get('ir.module.config_wizard.item')
+        ModelData = pool.get('ir.model.data')
         items = Item.search([
                 ('state', '=', 'open'),
                 ])
         if items:
             return 'other'
+        items = Item.search([
+                ('state', '=', 'done'),
+                ], order=[('write_date', 'DESC')], limit=1)
+        if items:
+            item, = items
+            # module item will re-launch the config wizard
+            # so do not display the done message.
+            if item.id == ModelData.get_id('ir', 'config_wizard_item_module'):
+                return 'end'
         return 'done'
 
     def end(self):
@@ -526,8 +536,9 @@ class ModuleActivateUpgrade(Wizard):
     upgrade = StateTransition()
     done = StateView('ir.module.activate_upgrade.done',
         'ir.module_activate_upgrade_done_view_form', [
-            Button('OK', 'config', 'tryton-ok', default=True),
+            Button("OK", 'next_', 'tryton-ok', default=True),
             ])
+    next_ = StateTransition()
     config = StateAction('ir.act_module_config_wizard')
 
     @classmethod
@@ -573,13 +584,46 @@ class ModuleActivateUpgrade(Wizard):
             Cache.refresh_pool(transaction)
         return 'done'
 
+    def transition_next_(self):
+        pool = Pool()
+        Item = pool.get('ir.module.config_wizard.item')
+        items = Item.search([
+            ('state', '=', 'open'),
+            ], limit=1)
+        if items:
+            return 'config'
+        else:
+            return 'end'
+
 
 class ModuleConfig(Wizard):
     'Configure Modules'
     __name__ = 'ir.module.config'
 
-    start = StateAction('ir.act_module_form')
+    start = StateView('ir.module.config.start',
+        'ir.module_config_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Activate", 'activate', 'tryton-ok', default=True),
+            ])
+    activate = StateAction('ir.act_module_activate_upgrade')
 
-    @staticmethod
-    def transition_start():
+    def do_activate(self, action):
+        pool = Pool()
+        Module = pool.get('ir.module')
+        Module.activate(list(self.start.modules))
+        return action, {}
+
+    @classmethod
+    def transition_activate(cls):
         return 'end'
+
+
+class ModuleConfigStart(ModelView):
+    "Configure Modules"
+    __name__ = 'ir.module.config.start'
+
+    modules = fields.Many2Many(
+        'ir.module', None, None, "Modules",
+        domain=[
+            ('state', '=', 'not activated'),
+            ])

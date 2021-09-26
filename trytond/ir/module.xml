@@ -167,6 +167,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_module_config">
             <field name="name">Configure Modules</field>
             <field name="wiz_name">ir.module.config</field>
+            <field name="window" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="module_config_start_view_form">
+            <field name="model">ir.module.config.start</field>
+            <field name="type">form</field>
+            <field name="name">module_config_start_form</field>
         </record>
 
         <record model="ir.module.config_wizard.item"

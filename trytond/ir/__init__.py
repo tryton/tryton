@@ -89,6 +89,7 @@ def register():
         module.ModuleConfigWizardDone,
         module.ModuleActivateUpgradeStart,
         module.ModuleActivateUpgradeDone,
+        module.ModuleConfigStart,
         cache.Cache,
         date.Date,
         trigger.Trigger,

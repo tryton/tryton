@@ -1,3 +1,4 @@
+* Activate and upgrade modules from configuration wizard
 * Add set_from_header in email tools
 * Add grouping attribute to numeric widgets
 * Ensure with a test that objects in the Pool have __slots__
