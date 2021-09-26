@@ -32,6 +32,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.transaction import Transaction
+from trytond.tools.email_ import set_from_header
 from trytond.sendmail import sendmail_transactional
 
 from trytond.ir.session import token_hex
@@ -44,7 +45,7 @@ def _send_email(from_, users, email_func):
     from_cfg = config.get('email', 'from')
     for user in users:
         msg, title = email_func(user)
-        msg['From'] = from_ or from_cfg
+        set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = user.email
         msg['Subject'] = Header(title, 'utf-8')
         sendmail_transactional(from_cfg, [user.email], msg)
