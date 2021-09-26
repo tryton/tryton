@@ -144,14 +144,8 @@ class CreateShippingSendcloud(Wizard):
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
         party = shipment.shipping_to
         address = shipment.shipping_to_address
-        phone = email = None
-        for mechanism in party.contact_mechanisms:
-            if mechanism.type in {'phone', 'mobile'} and not phone:
-                phone = mechanism.value
-            if mechanism.type == 'email' and not email:
-                email = mechanism.value
-            if phone and email:
-                break
+        phone = party.contact_mechanism_get({'phone', 'mobile'})
+        email = party.contact_mechanism_get('email')
         street_lines = (address.street or '').splitlines()
         parcel = {
             'name': address.party_full_name,
@@ -166,8 +160,8 @@ class CreateShippingSendcloud(Wizard):
             'country_state': (
                 address.subdivision.code.split('-', 1)[1]
                 if address.subdivision else None),
-            'telephone': phone,
-            'email': email,
+            'telephone': phone.value if phone else None,
+            'email': email.value if email else None,
             'sender_address': credential.get_sender_address(shipment),
             'external_reference': '/'.join([shipment.number, package.code]),
             'quantity': 1,
