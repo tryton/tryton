@@ -28,6 +28,7 @@ from trytond.report import Report
 from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import grouped_slice
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wizard import Wizard, StateView, StateTransition, Button
@@ -274,7 +275,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             from_cfg = (config.get('marketing', 'email_from')
                 or config.get('email', 'from'))
             msg, title = record.get_email_subscribe()
-            msg['From'] = from_ or from_cfg
+            set_from_header(msg, from_cfg, from_ or from_cfg)
             msg['To'] = record.email
             msg['Subject'] = Header(title, 'utf-8')
             sendmail_transactional(from_cfg, [record.email], msg)
@@ -299,7 +300,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
                 from_cfg = (config.get('marketing', 'email_from')
                     or config.get('email', 'from'))
                 msg, title = record.get_email_unsubscribe()
-                msg['From'] = from_ or from_cfg
+                set_from_header(msg, from_cfg, from_ or from_cfg)
                 msg['To'] = record.email
                 msg['Subject'] = Header(title, 'utf-8')
                 sendmail_transactional(from_cfg, [record.email], msg)
@@ -463,7 +464,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 to = _formataddr(name, email.email)
 
                 msg = MIMEMultipart('alternative')
-                msg['From'] = message.from_ or from_cfg
+                set_from_header(msg, from_cfg, message.from_ or from_cfg)
                 msg['To'] = to
                 msg['Subject'] = Header(message.title, 'utf-8')
                 if html2text:
