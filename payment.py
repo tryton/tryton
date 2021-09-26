@@ -20,6 +20,7 @@ from trytond.pyson import Eval, Bool
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wizard import (
@@ -499,7 +500,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         languages = [self.party.lang or Language.get()]
         msg, title = get_email(
             'account.payment.stripe.email_checkout', self, languages)
-        msg['From'] = from_ or from_cfg
+        set_from_header(msg, from_cfg, from_ or from_cfg)
         msg['To'] = ','.join(emails)
         msg['Subject'] = Header(title, 'utf-8')
         sendmail_transactional(from_cfg, emails, msg)
