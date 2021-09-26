@@ -9,6 +9,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
 
@@ -144,15 +145,16 @@ class Dunning(metaclass=PoolMeta):
                     from_, to_addrs, msg, datamanager=datamanager)
             return self._email_log(msg)
 
-    def _email(self, from_, to, cc, bcc, languages):
+    def _email(self, sender, to, cc, bcc, languages):
         # TODO order languages to get default as last one for title
         msg, title = get_email(self.level.email_template, self, languages)
         language = list(languages)[-1]
+        from_ = sender
         with Transaction().set_context(language=language.code):
             dunning = self.__class__(self.id)
             if dunning.level.email_from:
                 from_ = dunning.level.email_from
-        msg['From'] = from_
+        set_from_header(msg, sender, from_)
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
         msg['Bcc'] = ', '.join(bcc)
