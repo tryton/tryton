@@ -66,6 +66,7 @@ attlist.field &= attribute filename { text }?
 attlist.field &= attribute help_field { text }?
 attlist.field &= attribute view_ids { text }?
 attlist.field &= attribute symbol { text }?
+attlist.field &= [a:defaultValue = "1"] attribute grouping { "0" | "1" }?
 prefix = element prefix { attlist.affix, empty }
 suffix = element suffix { attlist.affix, empty }
 attlist.affix &= attribute string { text }?

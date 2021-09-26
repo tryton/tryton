@@ -167,6 +167,12 @@ List of attributes shared by many form elements:
     * ``symbol``: Only on numerical fields, the name of field which provides
       the symbol to display.
 
+    .. _common-attributes-grouping:
+
+    * ``grouping``: A boolean only on numerical fields to specify if the client
+      must use grouping separators to display on the widget. The default value
+      is True.
+
     .. _common-attributes-help_field:
 
     * ``help_field``: The name of Dict field mapping the Selection value with

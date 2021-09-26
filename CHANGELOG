@@ -1,3 +1,4 @@
+* Add grouping attribute to numeric widgets
 * Ensure with a test that objects in the Pool have __slots__
 * Use bigdecimal tag for XML-RPC
 * Use tuple in Dict value instead of list

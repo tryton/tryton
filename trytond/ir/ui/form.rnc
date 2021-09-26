@@ -110,6 +110,7 @@ attlist.field &= attribute help_field { text }?
 attlist.field &=
   [a:defaultValue = "0"] attribute toolbar { "0" | "1" }?
 attlist.field &= attribute symbol { text }?
+attlist.field &= [a:defaultValue = "1"] attribute grouping { "0" | "1" }?
 image = element image { attlist.image, empty }
 attlist.image &= attribute name { text }
 attlist.image &= [a:defaultValue = "icon"] attribute type { "icon" | "url" }?
