@@ -31,6 +31,7 @@ from trytond.pyson import PYSONDecoder, Eval, If
 from trytond.report import Report
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
@@ -599,7 +600,7 @@ class Activity(ModelSQL, ModelView):
         from_ = (config.get('marketing', 'email_from')
             or config.get('email', 'from'))
         msg = MIMEMultipart('alternative')
-        msg['From'] = translated.email_from or from_
+        set_from_header(msg, from_, translated.email_from or from_)
         msg['To'] = to
         msg['Subject'] = Header(title, 'utf-8')
         if html2text:
