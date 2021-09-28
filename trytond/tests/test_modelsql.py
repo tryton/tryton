@@ -541,6 +541,97 @@ class ModelSQLTestCase(unittest.TestCase):
                 with self.assertRaises(backend.DatabaseOperationalError):
                     record.lock()
 
+    @with_transaction()
+    def test_search_or_to_union(self):
+        """
+        Test searching for 'OR'-ed domain
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        Model.create([{
+                    'name': 'A',
+                    }, {
+                    'name': 'B',
+                    }, {
+                    'name': 'C',
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        with patch('trytond.model.modelsql.split_subquery_domain') as no_split:
+            # Mocking in order not to trigger the split
+            no_split.side_effect = lambda d: (d, [])
+            result_without_split = Model.search(domain)
+        self.assertEqual(
+            Model.search(domain),
+            result_without_split)
+
+    def test_split_subquery_domain_empty(self):
+        """
+        Test the split of domains in local and relation parts (empty domain)
+        """
+        local, related = split_subquery_domain([])
+        self.assertEqual(local, [])
+        self.assertEqual(related, [])
+
+    def test_split_subquery_domain_simple(self):
+        """
+        Test the split of domains in local and relation parts (simple domain)
+        """
+        local, related = split_subquery_domain([('a', '=', 1)])
+        self.assertEqual(local, [('a', '=', 1)])
+        self.assertEqual(related, [])
+
+    def test_split_subquery_domain_dotter(self):
+        """
+        Test the split of domains in local and relation parts (dotted domain)
+        """
+        local, related = split_subquery_domain([('a.b', '=', 1)])
+        self.assertEqual(local, [])
+        self.assertEqual(related, [('a.b', '=', 1)])
+
+    def test_split_subquery_domain_mixed(self):
+        """
+        Test the split of domains in local and relation parts (mixed domains)
+        """
+        local, related = split_subquery_domain(
+            [('a', '=', 1), ('b.c', '=', 2)])
+        self.assertEqual(local, [('a', '=', 1)])
+        self.assertEqual(related, [('b.c', '=', 2)])
+
+    def test_split_subquery_domain_operator(self):
+        """
+        Test the split of domains in local and relation parts (with operator)
+        """
+        local, related = split_subquery_domain(
+            ['OR', ('a', '=', 1), ('b.c', '=', 2)])
+        self.assertEqual(local, [('a', '=', 1)])
+        self.assertEqual(related, [('b.c', '=', 2)])
+
+    def test_split_subquery_domain_nested(self):
+        """
+        Test the split of domains in local and relation parts (nested domains)
+        """
+        local, related = split_subquery_domain(
+            [
+                ['AND', ('a', '=', 1), ('b', '=', 2)],
+                ['AND',
+                    ('b', '=', 2),
+                    ['OR', ('c', '=', 3), ('d.e', '=', 4)]]])
+        self.assertEqual(local, [['AND', ('a', '=', 1), ('b', '=', 2)]])
+        self.assertEqual(related, [
+                ['AND',
+                    ('b', '=', 2),
+                    ['OR', ('c', '=', 3), ('d.e', '=', 4)]]
+                ])
+
 
 class TranslationTestCase(unittest.TestCase):
     default_language = 'fr'
@@ -892,97 +983,6 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         self.assertIn(record.id, cache)
         self.assertEqual(cache[record.id]['name'], "Foo")
         self.assertNotIn('_timestamp', cache[record.id])
-
-    @with_transaction()
-    def test_search_or_to_union(self):
-        """
-        Test searching for 'OR'-ed domain
-        """
-        pool = Pool()
-        Model = pool.get('test.modelsql.read')
-
-        Model.create([{
-                    'name': 'A',
-                    }, {
-                    'name': 'B',
-                    }, {
-                    'name': 'C',
-                    'targets': [('create', [{
-                                    'name': 'C.A',
-                                    }]),
-                        ],
-                    }])
-
-        domain = ['OR',
-            ('name', 'ilike', '%A%'),
-            ('targets.name', 'ilike', '%A'),
-            ]
-        with patch('trytond.model.modelsql.split_subquery_domain') as no_split:
-            # Mocking in order not to trigger the split
-            no_split.side_effect = lambda d: (d, [])
-            result_without_split = Model.search(domain)
-        self.assertEqual(
-            Model.search(domain),
-            result_without_split)
-
-    def test_split_subquery_domain_empty(self):
-        """
-        Test the split of domains in local and relation parts (empty domain)
-        """
-        local, related = split_subquery_domain([])
-        self.assertEqual(local, [])
-        self.assertEqual(related, [])
-
-    def test_split_subquery_domain_simple(self):
-        """
-        Test the split of domains in local and relation parts (simple domain)
-        """
-        local, related = split_subquery_domain([('a', '=', 1)])
-        self.assertEqual(local, [('a', '=', 1)])
-        self.assertEqual(related, [])
-
-    def test_split_subquery_domain_dotter(self):
-        """
-        Test the split of domains in local and relation parts (dotted domain)
-        """
-        local, related = split_subquery_domain([('a.b', '=', 1)])
-        self.assertEqual(local, [])
-        self.assertEqual(related, [('a.b', '=', 1)])
-
-    def test_split_subquery_domain_mixed(self):
-        """
-        Test the split of domains in local and relation parts (mixed domains)
-        """
-        local, related = split_subquery_domain(
-            [('a', '=', 1), ('b.c', '=', 2)])
-        self.assertEqual(local, [('a', '=', 1)])
-        self.assertEqual(related, [('b.c', '=', 2)])
-
-    def test_split_subquery_domain_operator(self):
-        """
-        Test the split of domains in local and relation parts (with operator)
-        """
-        local, related = split_subquery_domain(
-            ['OR', ('a', '=', 1), ('b.c', '=', 2)])
-        self.assertEqual(local, [('a', '=', 1)])
-        self.assertEqual(related, [('b.c', '=', 2)])
-
-    def test_split_subquery_domain_nested(self):
-        """
-        Test the split of domains in local and relation parts (nested domains)
-        """
-        local, related = split_subquery_domain(
-            [
-                ['AND', ('a', '=', 1), ('b', '=', 2)],
-                ['AND',
-                    ('b', '=', 2),
-                    ['OR', ('c', '=', 3), ('d.e', '=', 4)]]])
-        self.assertEqual(local, [['AND', ('a', '=', 1), ('b', '=', 2)]])
-        self.assertEqual(related, [
-                ['AND',
-                    ('b', '=', 2),
-                    ['OR', ('c', '=', 3), ('d.e', '=', 4)]]
-                ])
 
 
 def suite():
