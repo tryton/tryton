@@ -1264,17 +1264,21 @@ class ModelSQL(ModelStorage):
         Rule = pool.get('ir.rule')
 
         rule_domain = Rule.domain_get(cls.__name__, mode='read')
+        joined_domains = None
         if domain and domain[0] == 'OR':
             local_domains, subquery_domains = split_subquery_domain(domain)
-        else:
-            local_domains, subquery_domains = None, None
+            if subquery_domains:
+                joined_domains = subquery_domains
+                if local_domains:
+                    local_domains.insert(0, 'OR')
+                    joined_domains.append(local_domains)
 
         # In case the search uses subqueries it's more efficient to use a UNION
         # of queries than using clauses with some JOIN because databases can
         # used indexes
-        if subquery_domains:
+        if joined_domains is not None:
             union_tables = []
-            for sub_domain in [['OR'] + local_domains] + subquery_domains:
+            for sub_domain in joined_domains:
                 tables, expression = cls.search_domain(sub_domain)
                 if rule_domain:
                     tables, domain_exp = cls.search_domain(
