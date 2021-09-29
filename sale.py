@@ -311,7 +311,6 @@ class Sale(metaclass=PoolMeta):
             for shipment in shipments:
                 if (shipment.state == 'done'
                         and shipment.carrier
-                        and shipment.cost
                         and not shipment.cost_invoice_line):
                     invoice_line = shipment.get_cost_invoice_line(invoice)
                     if not invoice_line:
