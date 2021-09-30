@@ -18,6 +18,7 @@ Imports::
     >>> from trytond.modules.sale_advance_payment.tests.tools import \
     ...     create_advance_payment_term
     >>> today = datetime.date.today()
+    >>> next_week = today + relativedelta(days=7)
 
 Activate sale_advance_payment::
 
@@ -181,7 +182,9 @@ The advance payment invoice has been created::
     True
     >>> invoice.total_amount
     Decimal('10.00')
-
+    >>> invoice.invoice_date == next_week
+    True
+    >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> sale.reload()
     >>> len(sale.invoices)
@@ -208,7 +211,7 @@ Let's pay the advance payment invoice::
     Decimal('90.00')
     >>> len(invoice.lines)
     2
-    >>> il1, il2 = sorted([il for il in invoice.lines], 
+    >>> il1, il2 = sorted([il for il in invoice.lines],
     ...     key=lambda il: 1 if il.product else 0)
     >>> il1.account == advance_payment_account
     True
@@ -265,6 +268,9 @@ Let's try to pack it::
 Let's pay the advance payment invoice::
 
     >>> invoice, = sale.advance_payment_invoices
+    >>> invoice.invoice_date == next_week
+    True
+    >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
     >>> pay.form.payment_method = payment_method
@@ -322,6 +328,9 @@ There is no purchase request created yet::
 The advance payment invoice has been created, now pay it::
 
     >>> invoice, = sale.advance_payment_invoices
+    >>> invoice.invoice_date == next_week
+    True
+    >>> invoice.invoice_date = None
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
     >>> pay.form.payment_method = payment_method
@@ -407,7 +416,9 @@ it::
     >>> _, inv_recreated = sale.advance_payment_invoices
     >>> inv_recreated.total_amount
     Decimal('10.00')
-
+    >>> inv_recreated.invoice_date == next_week
+    True
+    >>> inv_recreated.invoice_date = None
     >>> inv_recreated.click('post')
     >>> pay = Wizard('account.invoice.pay', [inv_recreated])
     >>> pay.form.payment_method = payment_method
