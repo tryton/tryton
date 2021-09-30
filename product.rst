@@ -41,5 +41,8 @@ Product
 `Image </projects/modules-product-image/en/latest>`_
     Adds images.
 
+`Image Attribute </projects/modules-product-image-attribute/en/latest>`_
+    Adds attributes to product images.
+
 `Kit </projects/modules-product-kit/en/latest>`_
     Add support for product kits.
