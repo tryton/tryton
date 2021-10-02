@@ -33,9 +33,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_credential_form"
             sequence="20"
             id="menu_credential_form"/>
-        <record model="ir.ui.menu" id="carrier.menu_configuration">
-            <field name="active" eval="True"/>
-        </record>
 
         <record model="ir.model.access" id="access_credential">
             <field name="model" search="[('model', '=', 'carrier.credential.sendcloud')]"/>
