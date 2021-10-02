@@ -22,11 +22,12 @@ class Move(metaclass=PoolMeta):
                 with Transaction().set_context(date=self.effective_date):
                     amount += Currency.compute(
                         line.invoice.currency, line.amount, self.currency)
-                quantity = UoM.compute_qty(
-                    line.unit, line.quantity, self.uom)
+                quantity += UoM.compute_qty(
+                    line.unit, line.quantity, self.origin.line.unit)
         amount *= self.origin.price_ratio
         if quantity:
             unit_price = round_price(amount / Decimal(str(quantity)))
+        unit_price = UoM.compute_price(self.origin.unit, unit_price, self.uom)
         return unit_price
 
 
