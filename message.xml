@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot erase party "%(party)s" while they have pending purchases with company "%(company)s".</field>
         </record>
         <record model="ir.message" id="msg_warehouse_required_for_quotation">
-            <field name="text">To get a quote for the purchase "%(purchase)s" of goods or assets, you must enter a warehouse.</field>
+            <field name="text">To get a quote for the purchase "%(purchase)s" you must enter a warehouse.</field>
         </record>
         <record model="ir.message" id="msg_purchase_delete_cancel">
             <field name="text">To delete purchase "%(purchase)s" you must cancel it.</field>

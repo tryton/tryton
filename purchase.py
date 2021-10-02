@@ -723,7 +723,7 @@ class Purchase(
         for line in self.lines:
             if (not line.to_location
                     and line.product
-                    and line.product.type in ('goods', 'assets')):
+                    and line.product.type in line.get_move_product_types()):
                 raise PurchaseQuotationError(
                     gettext('purchase.msg_warehouse_required_for_quotation',
                         purchase=self.rec_name))
@@ -1177,6 +1177,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
+
+    @classmethod
+    def get_move_product_types(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_product_types()
 
     @classmethod
     def __setup__(cls):
