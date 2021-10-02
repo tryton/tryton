@@ -20,6 +20,36 @@ OPENING_NAME = config.get(
 OPENING_NUMBER = config.get('account_fr', 'fec_opening_number', default="0")
 
 
+class AccountTemplate(metaclass=PoolMeta):
+    __name__ = 'account.account.template'
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        model_data = Table('ir_model_data')
+
+        # Migration from 6.0: rename ids
+        if module_name == 'account_fr':
+            for old_id, new_id in (
+                    ('fr_pcg_pay', '4011'),
+                    ('fr_pcg_recv', '4111'),
+                    ('fr_pcg_cash', '512'),
+                    ('fr_pcg_expense', '607'),
+                    ):
+                cursor.execute(*model_data.select(model_data.id,
+                        where=(model_data.fs_id == new_id)
+                        & (model_data.module == module_name)))
+                if cursor.fetchone():
+                    continue
+                cursor.execute(*model_data.update(
+                        columns=[model_data.fs_id],
+                        values=[new_id],
+                        where=(model_data.fs_id == old_id)
+                        & (model_data.module == module_name)))
+
+        super().__register__(module_name)
+
+
 class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
@@ -54,6 +84,22 @@ class TaxTemplate(metaclass=PoolMeta):
                         & (model_data.module == module_name)))
 
         super(TaxTemplate, cls).__register__(module_name)
+
+
+class CreateChart(metaclass=PoolMeta):
+    __name__ = 'account.create_chart'
+
+    def default_properties(self, fields):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        defaults = super().default_properties(fields)
+        template_id = ModelData.get_id('account_fr.root')
+        if self.account.account_template.id == template_id:
+            defaults['account_receivable'] = self.get_account(
+                'account_fr.4111')
+            defaults['account_payable'] = self.get_account(
+                'account_fr.4011')
+        return defaults
 
 
 class TaxRuleTemplate(metaclass=PoolMeta):

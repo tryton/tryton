@@ -4,12 +4,21 @@ import doctest
 import unittest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_teardown, doctest_checker)
+    ModuleTestCase, doctest_teardown, doctest_checker, with_transaction)
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart
 
 
 class AccountFRTestCase(ModuleTestCase):
     'Test Account FR module'
     module = 'account_fr'
+
+    @with_transaction()
+    def test_create_chart(self):
+        company = create_company()
+        with set_company(company):
+            create_chart(company, chart=self.module + '.root')
 
 
 def suite():

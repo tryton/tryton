@@ -7,11 +7,13 @@ from . import account
 
 def register():
     Pool.register(
+        account.AccountTemplate,
         account.TaxTemplate,
         account.TaxRuleTemplate,
         account.FrFECStart,
         account.FrFECResult,
         module='account_fr', type_='model')
     Pool.register(
+        account.CreateChart,
         account.FrFEC,
         module='account_fr', type_='wizard')

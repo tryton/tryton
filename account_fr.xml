@@ -4688,7 +4688,7 @@
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="400"/>
         </record>
-        <record model="account.account.template" id="fr_pcg_pay">
+        <record model="account.account.template" id="4011">
             <field name="name">Fournisseurs - Achats de biens et prestations de services</field>
             <field name="code">4011</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
@@ -4852,7 +4852,7 @@
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="410"/>
         </record>
-        <record model="account.account.template" id="fr_pcg_recv">
+        <record model="account.account.template" id="4111">
             <field name="name">Clients - Ventes de biens ou de prestations de services</field>
             <field name="code">4111</field>
             <field name="type" ref="creances_clients"/>
@@ -5881,7 +5881,7 @@
             <field name="type" ref="disponibilites"/>
             <field name="parent" ref="511"/>
         </record>
-        <record model="account.account.template" id="fr_pcg_cash">
+        <record model="account.account.template" id="512">
             <field name="name">Banques</field>
             <field name="code">512</field>
             <field name="type" ref="emprunts_dettes_etablissements_credit"/>
@@ -5894,14 +5894,14 @@
             <field name="code">5121</field>
             <field name="type" ref="emprunts_dettes_etablissements_credit"/>
             <field name="debit_type" ref="disponibilites"/>
-            <field name="parent" ref="fr_pcg_cash"/>
+            <field name="parent" ref="512"/>
         </record>
         <record model="account.account.template" id="5124">
             <field name="name">Comptes en devises</field>
             <field name="code">5124</field>
             <field name="type" ref="emprunts_dettes_etablissements_credit"/>
             <field name="debit_type" ref="disponibilites"/>
-            <field name="parent" ref="fr_pcg_cash"/>
+            <field name="parent" ref="512"/>
         </record>
         <record model="account.account.template" id="514">
             <field name="name">Chèques postaux</field>
@@ -6257,7 +6257,7 @@
             <field name="type" ref="autres_achats"/>
             <field name="parent" ref="606"/>
         </record>
-        <record model="account.account.template" id="fr_pcg_expense">
+        <record model="account.account.template" id="607">
             <field name="name">Achats de marchandises</field>
             <field name="code">607</field>
             <field name="type" ref="achat_marchandises"/>
@@ -6268,13 +6268,13 @@
             <field name="name">Marchandise (ou groupe) A</field>
             <field name="code">6071</field>
             <field name="type" ref="achat_marchandises"/>
-            <field name="parent" ref="fr_pcg_expense"/>
+            <field name="parent" ref="607"/>
         </record>
         <record model="account.account.template" id="6072">
             <field name="name">Marchandise (ou groupe) B</field>
             <field name="code">6072</field>
             <field name="type" ref="achat_marchandises"/>
-            <field name="parent" ref="fr_pcg_expense"/>
+            <field name="parent" ref="607"/>
         </record>
         <record model="account.account.template" id="608">
             <field name="name">Frais accessoires incorporés aux achats</field>
