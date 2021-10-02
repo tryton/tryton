@@ -164,11 +164,11 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     if count != retry:
                         time.sleep(0.02 * (retry - count))
                     try:
-                        with processing(name):
+                        with processing(name), \
+                                transaction.new_transaction() as cron_trans:
                             cron.run_once()
-                            transaction.commit()
+                            cron_trans.commit()
                     except Exception as e:
-                        transaction.rollback()
                         if (isinstance(e, backend.DatabaseOperationalError)
                                 and count):
                             continue
@@ -179,7 +179,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                             logger.critical('%s failed', name, exc_info=True)
                     cron.next_call = cron.compute_next_call(now)
                     cron.save()
-                    transaction.commit()
                     break
         while transaction.tasks:
             task_id = transaction.tasks.pop()
