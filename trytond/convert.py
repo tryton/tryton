@@ -48,7 +48,11 @@ class MenuitemTagHandler:
 
         values = {}
 
-        self.xml_id = attributes['id']
+        try:
+            self.xml_id = attributes['id']
+        except KeyError:
+            self.xml_id = None
+            raise
 
         for attr in ('name', 'sequence', 'parent', 'action', 'groups'):
             if attr in attributes:
@@ -182,11 +186,14 @@ class RecordTagHandler:
 
         # Manage the top level tag
         if name == "record":
-            self.model = self.mh.pool.get(attributes["model"])
-            assert self.model, ("The model %s does not exist !"
-                % (attributes["model"],))
+            try:
+                self.xml_id = attributes["id"]
+            except KeyError:
+                self.xml_id = None
+                raise
 
-            self.xml_id = attributes["id"]
+            self.model = self.mh.pool.get(attributes["model"])
+
             self.update = bool(int(attributes.get('update', '0')))
 
             # create/update a dict containing fields values
@@ -300,9 +307,7 @@ class RecordTagHandler:
             raise Exception("Unexpected closing tag '%s'" % (name,))
 
     def current_state(self):
-        return "In tag record model %s with id %s.%s." % \
-               (self.model and self.model.__name__ or "?",
-                   self.mh.module, self.xml_id)
+        return "Tag record with id %s.%s." % (self.mh.module, self.xml_id)
 
 
 # Custom exception:
@@ -454,7 +459,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         try:
             self.sax_parser.parse(source)
         except Exception as e:
-            raise Exception("Error " + self.current_state()) from e
+            raise Exception("Error in " + self.current_state()) from e
         return self.to_delete
 
     def startElement(self, name, attributes):
@@ -515,7 +520,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         if self.taghandler:
             return self.taghandler.current_state()
         else:
-            return ''
+            return '?'
 
     def get_id(self, xml_id):
 
