@@ -248,6 +248,13 @@ Post invoice::
     >>> invoice.state
     'posted'
 
+Check unit price of moves::
+
+    >>> shipment.reload()
+    >>> invoice.reload()
+    >>> sorted([m.unit_price for m in shipment.incoming_moves])
+    [Decimal('5.0000'), Decimal('5.0000'), Decimal('7.0909'), Decimal('18.9091')]
+
 Check backorder moves::
 
     >>> len(purchase.moves)
