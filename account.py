@@ -37,6 +37,27 @@ class AccountTemplate(metaclass=PoolMeta):
         super(AccountTemplate, cls).__register__(module_name)
 
 
+class CreateChart(metaclass=PoolMeta):
+    __name__ = 'account.create_chart'
+
+    def default_properties(self, fields):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        defaults = super().default_properties(fields)
+        for lang in ['fr', 'nl']:
+            try:
+                template_id = ModelData.get_id('account_be.root_' + lang)
+            except KeyError:
+                continue
+            if self.account.account_template.id == template_id:
+                defaults['account_receivable'] = self.get_account(
+                    'account_be.400_' + lang)
+                defaults['account_payable'] = self.get_account(
+                    'account_be.440_' + lang)
+                break
+        return defaults
+
+
 class BEVATCustomer(ModelSQL, ModelView):
     "Belgium VAT Customer"
     __name__ = 'account.be.vat_customer'

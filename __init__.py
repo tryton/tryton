@@ -11,3 +11,6 @@ def register():
         account.BEVATCustomer,
         account.BEVATCustomerContext,
         module='account_be', type_='model')
+    Pool.register(
+        account.CreateChart,
+        module='account_be', type_='wizard')
