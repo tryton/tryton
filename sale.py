@@ -53,6 +53,12 @@ class Line(order_line_mixin('sale'), metaclass=PoolMeta):
         values['sale'] = self.sale
         return super().get_component_order_line(component, **values)
 
+    @classmethod
+    def get_move_product_types(cls):
+        types = super().get_move_product_types()
+        types.append('kit')
+        return types
+
 
 class LineComponent(
         order_line_component_mixin('sale'), ComponentMixin,
