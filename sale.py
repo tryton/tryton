@@ -741,7 +741,7 @@ class Sale(
                 location = line.to_location
             if ((not location or not line.warehouse)
                     and line.product
-                    and line.product.type in ('goods', 'assets')):
+                    and line.product.type in line.get_move_product_types()):
                 raise SaleQuotationError(
                     gettext('sale.msg_sale_warehouse_required_for_quotation',
                         sale=self.rec_name))
@@ -1163,6 +1163,12 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
+
+    @classmethod
+    def get_move_product_types(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_product_types()
 
     @classmethod
     def __setup__(cls):
