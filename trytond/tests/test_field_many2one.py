@@ -176,297 +176,6 @@ class FieldMany2OneTestCase(unittest.TestCase):
         "Test search by many2one subquery"
         self._test_search_join('subquery')
 
-    def create_tree(self, Many2One):
-        self.root1, self.root2 = Many2One.create([{}, {}])
-        self.first1, self.first2, self.first3, self.first4 = Many2One.create([
-                {'many2one': self.root1},
-                {'many2one': self.root1},
-                {'many2one': self.root2},
-                {'many2one': self.root2},
-                ])
-        self.second1, self.second2, self.second3, self.second4 = (
-            Many2One.create([
-                {'many2one': self.first1},
-                {'many2one': self.first1},
-                {'many2one': self.first2},
-                {'many2one': self.first2},
-                ]))
-
-    @with_transaction()
-    def _test_search_child_of_root1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'child_of', [self.root1.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root1,
-                    self.first1, self.first2,
-                    self.second1, self.second2, self.second3, self.second4]))
-
-    def test_search_tree_child_of_root1(self):
-        "Test search many2one tree child of root1"
-        self._test_search_child_of_root1('test.many2one_tree')
-
-    def test_search_mptt_child_of_root1(self):
-        "Test search many2one mptt child of root1"
-        self._test_search_child_of_root1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_child_of_root1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not child_of', [self.root1.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root2, self.first3, self.first4]))
-
-    def test_search_tree_not_child_of_root1(self):
-        "Test search many2one tree not child of root1"
-        self._test_search_not_child_of_root1('test.many2one_tree')
-
-    def test_search_mptt_not_child_of_root1(self):
-        "Test search many2one mptt not child of root1"
-        self._test_search_not_child_of_root1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_child_of_second1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'child_of', [self.second1.id]),
-                ])
-
-        self.assertListEqual(result, [self.second1])
-
-    def test_search_tree_child_of_second1(self):
-        "Test search many2one tree child of second1"
-        self._test_search_child_of_second1('test.many2one_tree')
-
-    def test_search_mptt_child_of_second1(self):
-        "Test search many2one mptt child of second1"
-        self._test_search_child_of_second1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_child_of_second1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not child_of', [self.second1.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root1, self.root2,
-                    self.first1, self.first2, self.first3, self.first4,
-                    self.second2, self.second3, self.second4]))
-
-    def test_search_tree_not_child_of_second1(self):
-        "Test search many2one tree not child of second1"
-        self._test_search_not_child_of_second1('test.many2one_tree')
-
-    def test_search_mptt_not_child_of_second1(self):
-        "Test search many2one mptt not child of second1"
-        self._test_search_not_child_of_second1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_child_of_empty(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'child_of', []),
-                ])
-
-        self.assertListEqual(result, [])
-
-    def test_search_tree_child_of_empty(self):
-        "Test search many2one tree child of empty"
-        self._test_search_child_of_empty('test.many2one_tree')
-
-    def test_search_mptt_child_of_empty(self):
-        "Test search many2one mptt child of empty"
-        self._test_search_child_of_empty('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_child_of_empty(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not child_of', []),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root1, self.root2,
-                    self.first1, self.first2, self.first3, self.first4,
-                    self.second1, self.second2, self.second3, self.second4]))
-
-    def test_search_tree_not_child_of_empty(self):
-        "Test search many2one tree not child of empty"
-        self._test_search_not_child_of_empty('test.many2one_tree')
-
-    def test_search_mptt_not_child_of_empty(self):
-        "Test search many2one mptt not child of empty"
-        self._test_search_not_child_of_empty('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_child_of_none(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'child_of', [None]),
-                ])
-
-        self.assertListEqual(result, [])
-
-    def test_search_tree_child_of_none(self):
-        "Test search many2one tree child of None"
-        self._test_search_child_of_none('test.many2one_tree')
-
-    def test_search_mptt_child_of_none(self):
-        "Test search many2one mptt child of None"
-        self._test_search_child_of_none('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_parent_of_root1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'parent_of', [self.root1.id]),
-                ])
-
-        self.assertListEqual(result, [self.root1])
-
-    def test_search_tree_parent_of_root1(self):
-        "Test search many2one tree parent of root1"
-        self._test_search_parent_of_root1('test.many2one_tree')
-
-    def test_search_mptt_parent_of_root1(self):
-        "Test search many2one mptt parent of root1"
-        self._test_search_parent_of_root1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_parent_of_root1(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not parent_of', [self.root1.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root2,
-                    self.first1, self.first2, self.first3, self.first4,
-                    self.second1, self.second2, self.second3, self.second4]))
-
-    def test_search_tree_not_parent_of_root1(self):
-        "Test search many2one tree not parent of root1"
-        self._test_search_not_parent_of_root1('test.many2one_tree')
-
-    def test_search_mptt_not_parent_of_root1(self):
-        "Test search many2one mptt not parent of root1"
-        self._test_search_not_parent_of_root1('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_parent_of_second4(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'parent_of', [self.second4.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root1, self.first2, self.second4]))
-
-    def test_search_tree_parent_of_second4(self):
-        "Test search many2one tree parent of second4"
-        self._test_search_parent_of_second4('test.many2one_tree')
-
-    def test_search_mptt_parent_of_second4(self):
-        "Test search many2one mptt parent of second4"
-        self._test_search_parent_of_second4('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_parent_of_second4(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not parent_of', [self.second4.id]),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root2,
-                    self.first1, self.first3, self.first4,
-                    self.second1, self.second2, self.second3]))
-
-    def test_search_tree_not_parent_of_second4(self):
-        "Test search many2one tree not parent of second4"
-        self._test_search_not_parent_of_second4('test.many2one_tree')
-
-    def test_search_mptt_not_parent_of_second4(self):
-        "Test search many2one mptt not parent of second4"
-        self._test_search_not_parent_of_second4('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_parent_of_empty(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'parent_of', []),
-                ])
-
-        self.assertListEqual(result, [])
-
-    def test_search_tree_parent_of_empty(self):
-        "Test search many2one tree parent of empty"
-        self._test_search_parent_of_empty('test.many2one_tree')
-
-    def test_search_mptt_parent_of_empty(self):
-        "Test search many2one mptt parent of empty"
-        self._test_search_parent_of_empty('test.many2one_mptt')
-
-    @with_transaction()
-    def _test_search_not_parent_of_empty(self, model_name):
-        Many2One = Pool().get(model_name)
-        self.create_tree(Many2One)
-
-        result = Many2One.search([
-                ('many2one', 'not parent_of', []),
-                ])
-
-        self.assertListEqual(
-            sorted(result),
-            sorted([self.root1, self.root2,
-                    self.first1, self.first2, self.first3, self.first4,
-                    self.second1, self.second2, self.second3, self.second4]))
-
-    def test_search_tree_not_parent_of_empty(self):
-        "Test search many2one tree not parent of empty"
-        self._test_search_not_parent_of_empty('test.many2one_tree')
-
-    def test_search_mptt_not_parent_of_empty(self):
-        "Test search many2one mptt not parent of empty"
-        self._test_search_not_parent_of_empty('test.many2one_mptt')
-
     @with_transaction()
     def test_context_attribute(self):
         "Test context on many2one attribute"
@@ -509,5 +218,226 @@ class FieldMany2OneTestCase(unittest.TestCase):
         self.assertEqual(record.target.context, 'foo')
 
 
+class FieldMany2OneTreeTestCase(unittest.TestCase):
+    "Test Field Many2One Tree"
+    model_name = 'test.many2one_tree'
+
+    def create_tree(self, Many2One):
+        self.root1, self.root2 = Many2One.create([{}, {}])
+        self.first1, self.first2, self.first3, self.first4 = Many2One.create([
+                {'many2one': self.root1},
+                {'many2one': self.root1},
+                {'many2one': self.root2},
+                {'many2one': self.root2},
+                ])
+        self.second1, self.second2, self.second3, self.second4 = (
+            Many2One.create([
+                {'many2one': self.first1},
+                {'many2one': self.first1},
+                {'many2one': self.first2},
+                {'many2one': self.first2},
+                ]))
+
+    @with_transaction()
+    def test_search_child_of_root1(self):
+        "Test search many2one child of root1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of', [self.root1.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1,
+                    self.first1, self.first2,
+                    self.second1, self.second2, self.second3, self.second4]))
+
+    @with_transaction()
+    def test_search_not_child_of_root1(self):
+        "Test search many2one not child of root1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not child_of', [self.root1.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2, self.first3, self.first4]))
+
+    @with_transaction()
+    def test_search_child_of_second1(self):
+        "Test search many2one child of second1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of', [self.second1.id]),
+                ])
+
+        self.assertListEqual(result, [self.second1])
+
+    @with_transaction()
+    def test_search_not_child_of_second1(self):
+        "Test search many2one not child of second1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not child_of', [self.second1.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second2, self.second3, self.second4]))
+
+    @with_transaction()
+    def test_search_child_of_empty(self):
+        "Test search many2one child of empty"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of', []),
+                ])
+
+        self.assertListEqual(result, [])
+
+    @with_transaction()
+    def test_search_not_child_of_empty(self):
+        "Test search many2one not child of empty"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not child_of', []),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
+
+    @with_transaction()
+    def test_search_child_of_none(self):
+        "Test search many2one child of None"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of', [None]),
+                ])
+
+        self.assertListEqual(result, [])
+
+    @with_transaction()
+    def test_search_parent_of_root1(self):
+        "Test search many2one parent of root1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'parent_of', [self.root1.id]),
+                ])
+
+        self.assertListEqual(result, [self.root1])
+
+    @with_transaction()
+    def test_search_not_parent_of_root1(self):
+        "Test search many2one not parent of root1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not parent_of', [self.root1.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
+
+    @with_transaction()
+    def test_search_parent_of_second4(self):
+        "Test search many2one parent of second4"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'parent_of', [self.second4.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.first2, self.second4]))
+
+    @with_transaction()
+    def test_search_not_parent_of_second4(self):
+        "Test search many2one not parent of second4"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not parent_of', [self.second4.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first1, self.first3, self.first4,
+                    self.second1, self.second2, self.second3]))
+
+    @with_transaction()
+    def test_search_parent_of_empty(self):
+        "Test search many2one parent of empty"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'parent_of', []),
+                ])
+
+        self.assertListEqual(result, [])
+
+    @with_transaction()
+    def test_search_not_parent_of_empty(self):
+        "Test search many2one not parent of empty"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'not parent_of', []),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
+
+
+class FieldMany2OneMPTTTestCase(FieldMany2OneTreeTestCase):
+    "Test Field Many2One MPTT"
+    model_name = 'test.many2one_mptt'
+
+
+class FieldMany2OnePathTestCase(FieldMany2OneTreeTestCase):
+    "Test Field Many2One Path"
+    model_name = 'test.many2one_path'
+
+
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldMany2OneTestCase)
+    suite_ = unittest.TestSuite()
+    loader = unittest.TestLoader()
+    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneTreeTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneMPTTTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OnePathTestCase))
+    return suite_

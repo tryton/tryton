@@ -65,6 +65,13 @@ class Many2OneMPTT(ModelSQL):
         return 0
 
 
+class Many2OnePath(ModelSQL):
+    "Many2One Path"
+    __name__ = 'test.many2one_path'
+    many2one = fields.Many2One('test.many2one_path', 'many2one', path='path')
+    path = fields.Char("Path")
+
+
 class Many2OneContext(ModelSQL):
     "Many2One Context"
     __name__ = 'test.many2one_context'
@@ -92,6 +99,7 @@ def register(module):
         Many2OneTargetStorage,
         Many2OneTree,
         Many2OneMPTT,
+        Many2OnePath,
         Many2OneContext,
         Many2OneTargetContext,
         module=module, type_='model')

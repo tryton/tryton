@@ -6,10 +6,10 @@ from collections import OrderedDict, defaultdict
 from functools import wraps
 
 from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
-    NullsFirst, NullsLast, For, Union)
-from sql.functions import CurrentTimestamp, Extract
+    NullsFirst, NullsLast, For, Union, With)
+from sql.functions import CurrentTimestamp, Extract, Substring
 from sql.conditionals import Coalesce
-from sql.operators import Or, And, Operator, Equal
+from sql.operators import Or, And, Operator, Equal, Concat
 from sql.aggregate import Count, Max
 
 from trytond.i18n import gettext
@@ -289,19 +289,32 @@ class ModelSQL(ModelStorage):
                 field_name, action=required and 'add' or 'remove')
 
         for field_name, field in cls._fields.items():
-            if isinstance(field, fields.Many2One) \
-                    and field.model_name == cls.__name__ \
-                    and field.left and field.right:
-                left_default = cls._defaults.get(field.left, lambda: None)()
-                right_default = cls._defaults.get(field.right, lambda: None)()
-                cursor.execute(*sql_table.select(sql_table.id,
-                        where=(Column(sql_table, field.left) == left_default)
-                        | (Column(sql_table, field.left) == Null)
-                        | (Column(sql_table, field.right) == right_default)
-                        | (Column(sql_table, field.right) == Null),
-                        limit=1))
-                if cursor.fetchone():
-                    cls._rebuild_tree(field_name, None, 0)
+            if (isinstance(field, fields.Many2One)
+                    and field.model_name == cls.__name__):
+                if field.path:
+                    default_path = cls._defaults.get(
+                        field.path, lambda: None)()
+                    cursor.execute(*sql_table.select(sql_table.id,
+                            where=(
+                                Column(sql_table, field.path) == default_path)
+                            | (Column(sql_table, field.path) == Null),
+                            limit=1))
+                    if cursor.fetchone():
+                        cls._rebuild_path(field_name)
+                if field.left and field.right:
+                    left_default = cls._defaults.get(
+                        field.left, lambda: None)()
+                    right_default = cls._defaults.get(
+                        field.right, lambda: None)()
+                    cursor.execute(*sql_table.select(sql_table.id,
+                            where=(
+                                Column(sql_table, field.left) == left_default)
+                            | (Column(sql_table, field.left) == Null)
+                            | (Column(sql_table, field.right) == right_default)
+                            | (Column(sql_table, field.right) == Null),
+                            limit=1))
+                    if cursor.fetchone():
+                        cls._rebuild_tree(field_name, None, 0)
 
         for ident, constraint, _ in cls._sql_constraints:
             table.add_constraint(ident, constraint)
@@ -635,6 +648,10 @@ class ModelSQL(ModelStorage):
 
         transaction.create_records[cls.__name__].update(new_ids)
 
+        # Update path before fields_to_set which could create children
+        if cls._path_fields:
+            field_names = list(sorted(cls._path_fields))
+            cls._set_path(field_names, repeat(new_ids, len(field_names)))
         # Update mptt before fields_to_set which could create children
         if cls._mptt_fields:
             field_names = list(sorted(cls._mptt_fields))
@@ -1030,6 +1047,11 @@ class ModelSQL(ModelStorage):
                         transaction.language, ids, [value] * len(ids))
                 if hasattr(field, 'set'):
                     fields_to_set.setdefault(fname, []).extend((ids, value))
+
+            path_fields = cls._path_fields & values.keys()
+            if path_fields:
+                cls._update_path(
+                    list(sorted(path_fields)), repeat(ids, len(path_fields)))
 
             mptt_fields = cls._mptt_fields & values.keys()
             if mptt_fields:
@@ -1503,6 +1525,76 @@ class ModelSQL(ModelStorage):
             expression &= (Coalesce(table.write_date, table.create_date)
                 <= transaction.context['_datetime'])
         return tables, expression
+
+    @classmethod
+    def _rebuild_path(cls, field_name):
+        "Rebuild path for the tree."
+        cursor = Transaction().connection.cursor()
+        field = cls._fields[field_name]
+        table = cls.__table__()
+        tree = With('id', 'path', recursive=True)
+        tree.query = table.select(
+            table.id, Concat(table.id, '/'),
+            where=Column(table, field_name) == Null)
+        tree.query |= (table
+            .join(tree,
+                condition=Column(table, field_name) == tree.id)
+            .select(table.id, Concat(Concat(tree.path, table.id), '/')))
+        query = table.update(
+            [Column(table, field.path)],
+            [tree.path],
+            from_=[tree], where=table.id == tree.id,
+            with_=[tree])
+        cursor.execute(*query)
+
+    @classmethod
+    def _set_path(cls, field_names, list_ids):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        parent = cls.__table__()
+        for field_name, ids in zip(field_names, list_ids):
+            field = cls._fields[field_name]
+            parent_column = Column(table, field_name)
+            path_column = Column(table, field.path)
+            query = table.update(
+                [path_column],
+                [Concat(Concat(Coalesce(
+                                parent.select(parent.path,
+                                    where=parent.id == parent_column),
+                                ''), table.id), '/')])
+            for sub_ids in grouped_slice(ids):
+                query.where = reduce_ids(table.id, sub_ids)
+                cursor.execute(*query)
+
+    @classmethod
+    def _update_path(cls, field_names, list_ids):
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
+        table = cls.__table__()
+        parent = cls.__table__()
+        for field_name, ids in zip(field_names, list_ids):
+            field = cls._fields[field_name]
+            parent_column = Column(table, field_name)
+            parent_path_column = Column(parent, field.path)
+            path_column = Column(table, field.path)
+            query = (table
+                .join(parent, 'LEFT',
+                    condition=parent_column == parent.id)
+                .select(path_column,
+                    Concat(Concat(
+                            Coalesce(parent_path_column, ''), table.id), '/')))
+            for sub_ids in grouped_slice(ids):
+                query.where = reduce_ids(table.id, sub_ids)
+                cursor.execute(*query)
+                for old_path, new_path in cursor:
+                    if old_path == new_path:
+                        continue
+                    update.execute(*table.update(
+                            [path_column],
+                            [Concat(new_path,
+                                    Substring(table.path, len(old_path) + 1))],
+                            where=table.path.like(old_path + '%')))
 
     @classmethod
     def _update_mptt(cls, field_names, list_ids, values=None):

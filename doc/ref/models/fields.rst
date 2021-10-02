@@ -647,7 +647,7 @@ Instance methods:
 Many2One
 --------
 
-.. class:: Many2One(model_name, string[, left[, right[, ondelete[, datetime_field[, target_search[, search_order[, search_context[, \**options]]]]]]])
+.. class:: Many2One(model_name, string[, left[, right[, path[, ondelete[, datetime_field[, target_search[, search_order[, search_context[, \**options]]]]]]]]])
 
 A many-to-one relation field.
 
@@ -673,6 +673,21 @@ A many-to-one relation field.
 .. attribute:: Many2One.right
 
     The name of the field that stores the right value. See :attr:`left`.
+
+.. attribute:: Many2One.path
+
+    The name of the :class:`Char` field that stores the path.
+    It only works if the :attr:`model_name` is the same as the model.
+
+.. note:: The path is used to optimize searches using the ``child_of`` or
+    ``parent_of`` operators.
+
+.. warning::
+
+   The paths in the tree will be rebuilt during the database update if any of
+   the records are found to have a path field equal to the default, or
+   ``NULL``.
+
 
 .. attribute:: Many2One.ondelete
 

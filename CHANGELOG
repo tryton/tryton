@@ -1,3 +1,4 @@
+* Add stored path as alternative to MPTT
 * Activate and upgrade modules from configuration wizard
 * Add set_from_header in email tools
 * Add grouping attribute to numeric widgets

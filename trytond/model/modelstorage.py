@@ -147,11 +147,14 @@ class ModelStorage(Model):
         super().__post_setup__()
 
         cls._mptt_fields = set()
+        cls._path_fields = set()
         for name, field in cls._fields.items():
             if (isinstance(field, fields.Many2One)
-                    and field.model_name == cls.__name__
-                    and field.left and field.right):
-                cls._mptt_fields.add(name)
+                    and field.model_name == cls.__name__):
+                if field.path:
+                    cls._path_fields.add(name)
+                if field.left and field.right:
+                    cls._mptt_fields.add(name)
 
     @staticmethod
     def default_create_uid():

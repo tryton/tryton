@@ -21,7 +21,7 @@ class Many2One(Field):
     _sql_type = 'INTEGER'
     _py_type = int
 
-    def __init__(self, model_name, string='', left=None, right=None,
+    def __init__(self, model_name, string='', left=None, right=None, path=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
             search_order=None, search_context=None, help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -33,6 +33,7 @@ class Many2One(Field):
             Modified Preorder Tree Traversal.
             See http://en.wikipedia.org/wiki/Tree_traversal
         :param right: The name of the field to store the right value. See left
+        :param path: The name of the field used to store the path.
         :param ondelete: Define the behavior of the record when the target
             record is deleted. (``CASCADE``, ``RESTRICT``, ``SET NULL``)
             ``SET NULL`` will be changed into ``RESTRICT`` if required is set.
@@ -58,6 +59,7 @@ class Many2One(Field):
         self.model_name = model_name
         self.left = left
         self.right = right
+        self.path = path
         self.datetime_field = datetime_field
         assert target_search in ['subquery', 'join']
         self.target_search = target_search
@@ -114,6 +116,27 @@ class Many2One(Field):
     def sql_format(self, value):
         assert value is not False
         return super().sql_format(value)
+
+    def convert_domain_path(self, domain, tables):
+        cursor = Transaction().connection.cursor()
+        table, _ = tables[None]
+        name, operator, ids = domain
+        red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
+        Target = self.get_target()
+        path_column = getattr(Target, self.path).sql_column(table)
+        cursor.execute(*table.select(path_column, where=red_sql))
+        if operator.endswith('child_of'):
+            where = Or()
+            for path, in cursor:
+                where.append(path_column.like(path + '%'))
+        else:
+            ids = [int(x) for path, in cursor for x in path.split('/')[:-1]]
+            where = reduce_ids(table.id, ids)
+        if not where:
+            where = Literal(False)
+        if operator.startswith('not'):
+            return ~where
+        return where
 
     def convert_domain_mptt(self, domain, tables):
         cursor = Transaction().connection.cursor()
@@ -202,6 +225,9 @@ class Many2One(Field):
                     return expression
                 elif self.left and self.right:
                     return self.convert_domain_mptt(
+                        (name, operator, ids), tables)
+                elif self.path:
+                    return self.convert_domain_path(
                         (name, operator, ids), tables)
                 else:
                     return self.convert_domain_tree(

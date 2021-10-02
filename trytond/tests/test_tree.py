@@ -8,6 +8,151 @@ from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
 
+class TreeTestCaseMixin:
+    model_name = None
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    def create(self):
+        pool = Pool()
+        Model = pool.get(self.model_name)
+
+        new_records = [None, None, None]
+        for j in range(3):
+            parent_records = new_records
+            new_records = []
+            k = 0
+            to_create = []
+            for parent_record in parent_records:
+                to_create.extend([{
+                            'name': 'Test %d %d %d' % (j, k, i),
+                            'parent': (parent_record.id
+                                if parent_record else None),
+                            } for i in range(3)])
+                k += 1
+            new_records = Model.create(to_create)
+
+    def check_tree(self):
+        raise NotImplementedError
+
+    def change_parent(self, parent=None, restore=False):
+        pool = Pool()
+        Model = pool.get(self.model_name)
+
+        records = Model.search([
+                ('parent', '=', parent),
+                ])
+        if not records:
+            return
+        for record in records[::2]:
+            for record2 in records[1::2]:
+                record.parent = record2
+                record.save()
+                if restore:
+                    record.parent = parent
+                    record.save()
+        for record in records:
+            self.change_parent(record, restore=restore)
+
+    @with_transaction()
+    def test_create(self):
+        "Test create tree"
+        self.create()
+        self.check_tree()
+
+    @with_transaction()
+    def test_reparent(self):
+        "Test re-parent"
+        self.create()
+        self.change_parent(restore=True)
+        self.check_tree()
+
+    @with_transaction()
+    def test_move(self):
+        "Test move"
+        self.create()
+        self.change_parent()
+        self.check_tree()
+
+    @with_transaction()
+    def test_active(self):
+        "Test active"
+        pool = Pool()
+        Model = pool.get(self.model_name)
+
+        self.create()
+
+        records = Model.search([])
+        for record in records:
+            if record.id % 2:
+                record.active = False
+                record.save()
+        self.check_tree()
+        self.change_parent()
+        self.check_tree()
+
+        records = Model.search([])
+        Model.write(records, {
+                'active': True,
+                })
+        Model.write(records[::2], {
+                'active': False
+                })
+        self.check_tree()
+
+        records = Model.search([])
+        Model.write(records, {
+                'active': True,
+                })
+        Model.write(records[:len(records) // 2], {
+                'active': False
+                })
+        self.check_tree()
+
+        records = Model.search([])
+        Model.write(records, {
+                'active': False
+                })
+        self.change_parent()
+        self.check_tree()
+
+    @with_transaction()
+    def test_delete(self):
+        "Test delete"
+        pool = Pool()
+        Model = pool.get(self.model_name)
+
+        self.create()
+
+        records = Model.search([])
+        for record in records:
+            if record.id % 2:
+                Model.delete([record])
+        self.check_tree()
+
+        records = Model.search([])
+        Model.delete(records[:len(records) // 2])
+        self.check_tree()
+
+        records = Model.search([])
+        Model.delete(records)
+        self.check_tree()
+
+    def rebuild(self):
+        raise NotImplementedError
+
+    @with_transaction()
+    def test_rebuild(self):
+        "Test rebuild"
+        self.create()
+
+        self.rebuild()
+
+        self.check_tree()
+
+
 class TreeMixinTestCase(unittest.TestCase):
     "Test TreeMixin"
 
