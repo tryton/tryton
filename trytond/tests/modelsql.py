@@ -3,7 +3,8 @@
 from sql import Literal
 from sql.operators import Equal
 
-from trytond.model import ModelSQL, fields, Check, Unique, Exclude
+from trytond.model import (
+    ModelSQL, fields, Check, Unique, Exclude, DeactivableMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 
@@ -80,6 +81,23 @@ class ModelSQLSearch(ModelSQL):
     "ModelSQL Search"
     __name__ = 'test.modelsql.search'
     name = fields.Char("Name")
+
+
+class ModelSQLForeignKey(DeactivableMixin, ModelSQL):
+    "ModelSQL Foreign Key"
+    __name__ = 'test.modelsql.fk'
+
+    target_cascade = fields.Many2One(
+        'test.modelsql.fk.target', "Target", ondelete='CASCADE')
+    target_null = fields.Many2One(
+        'test.modelsql.fk.target', "Target", ondelete='SET NULL')
+    target_restrict = fields.Many2One(
+        'test.modelsql.fk.target', "Target", ondelete='RESTRICT')
+
+
+class ModelSQLForeignKeyTarget(ModelSQL):
+    "ModelSQL Foreign Key Target"
+    __name__ = 'test.modelsql.fk.target'
 
 
 class NullOrder(ModelSQL):
@@ -160,6 +178,8 @@ def register(module):
         ModelSQLOne2Many,
         ModelSQLOne2ManyTarget,
         ModelSQLSearch,
+        ModelSQLForeignKey,
+        ModelSQLForeignKeyTarget,
         NullOrder,
         ModelTranslation,
         ModelCheck,

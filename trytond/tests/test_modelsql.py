@@ -10,7 +10,7 @@ from unittest.mock import patch, call
 from trytond import backend
 from trytond.exceptions import ConcurrencyException
 from trytond.model.exceptions import (
-    RequiredValidationError, SQLConstraintError)
+    RequiredValidationError, SQLConstraintError, ForeignKeyError)
 from trytond.model.modelsql import split_subquery_domain
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -381,6 +381,95 @@ class ModelSQLTestCase(unittest.TestCase):
         err = cm.exception
         self.assertIn(TargetModel.name.string, err.message)
         self.assertIn(TargetModel.__doc__, err.message)
+
+    @with_transaction()
+    def test_foreign_key_cascade(self):
+        "Test Foreign key on delete cascade"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk')
+        Target = pool.get('test.modelsql.fk.target')
+
+        target = Target()
+        target.save()
+        record = Model(target_cascade=target)
+        record.save()
+
+        Target.delete([target])
+
+        self.assertFalse(Model.search([]))
+
+    @with_transaction()
+    def test_foreign_key_null(self):
+        "Test Foreign key on delete set null"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk')
+        Target = pool.get('test.modelsql.fk.target')
+
+        target = Target()
+        target.save()
+        record = Model(target_null=target)
+        record.save()
+
+        Target.delete([target])
+
+        self.assertFalse(record.target_null)
+
+    @with_transaction()
+    def test_foreign_key_null_required(self):
+        "Test Foreign key on delete set null required"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk')
+        Target = pool.get('test.modelsql.fk.target')
+
+        Model.target_null.required = True
+        self.addCleanup(setattr, Model.target_null, 'required', False)
+
+        target = Target()
+        target.save()
+        record = Model(target_null=target)
+        record.save()
+
+        with self.assertRaises(ForeignKeyError) as cm:
+            Target.delete([target])
+        err = cm.exception
+        self.assertIn(Model.target_null.string, err.message)
+        self.assertIn(Model.__doc__, err.message)
+
+    @with_transaction()
+    def test_foreign_key_restrict(self):
+        "Test Foreign key on delete restrict"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk')
+        Target = pool.get('test.modelsql.fk.target')
+
+        target = Target()
+        target.save()
+        record = Model(target_restrict=target)
+        record.save()
+
+        with self.assertRaises(ForeignKeyError) as cm:
+            Target.delete([target])
+        err = cm.exception
+        self.assertIn(Model.target_restrict.string, err.message)
+        self.assertIn(Model.__doc__, err.message)
+
+    @with_transaction()
+    def test_foreign_key_restrict_inactive(self):
+        "Test inactive Foreign key on delete restrict"
+        pool = Pool()
+        Model = pool.get('test.modelsql.fk')
+        Target = pool.get('test.modelsql.fk.target')
+
+        target = Target()
+        target.save()
+        record = Model(target_restrict=target, active=False)
+        record.save()
+
+        with self.assertRaises(ForeignKeyError) as cm:
+            Target.delete([target])
+        err = cm.exception
+        self.assertIn(Model.target_restrict.string, err.message)
+        self.assertIn(Model.__doc__, err.message)
 
     @with_transaction()
     def test_null_ordering(self):
