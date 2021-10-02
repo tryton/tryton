@@ -187,14 +187,13 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                 }),
         'get_total')
     comment = fields.Text('Comment')
-    parent = fields.Many2One('project.work', 'Parent',
-        left='left', right='right', ondelete='RESTRICT',
+    parent = fields.Many2One(
+        'project.work', 'Parent', path='path', ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
+    path = fields.Char("Path", select=True)
     children = fields.One2Many('project.work', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -218,14 +217,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         pool = Pool()
         WorkStatus = pool.get('project.work.status')
         return WorkStatus.get_default_status(cls.default_type())
-
-    @classmethod
-    def default_left(cls):
-        return 0
-
-    @classmethod
-    def default_right(cls):
-        return 0
 
     @classmethod
     def __register__(cls, module_name):
@@ -309,6 +300,10 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
         # Migration from 5.4: replace state by status
         table_project_work.not_null_action('state', action='remove')
+
+        # Migration from 6.0: remove left and right
+        table_project_work.drop_column('left')
+        table_project_work.drop_column('right')
 
     @fields.depends('type', 'status')
     def on_change_type(self):
