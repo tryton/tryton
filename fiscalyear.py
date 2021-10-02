@@ -79,7 +79,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'close',
                     'depends': ['state'],
                     },
-                'lock': {
+                'lock_': {
                     'invisible': Eval('state') != 'close',
                     'depends': ['state'],
                     },
@@ -328,13 +328,13 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('locked')
-    def lock(cls, fiscalyears):
+    def lock_(cls, fiscalyears):
         pool = Pool()
         Period = pool.get('account.period')
         periods = Period.search([
                 ('fiscalyear', 'in', [f.id for f in fiscalyears]),
                 ])
-        Period.lock(periods)
+        Period.lock_(periods)
 
 
 class BalanceNonDeferralStart(ModelView):

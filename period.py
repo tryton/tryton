@@ -73,7 +73,7 @@ class Period(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'close',
                     'depends': ['state'],
                     },
-                'lock': {
+                'lock_': {
                     'invisible': Eval('state') != 'close',
                     'depends': ['state'],
                     },
@@ -347,7 +347,7 @@ class Period(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('locked')
-    def lock(cls, periods):
+    def lock_(cls, periods):
         pass
 
     @property

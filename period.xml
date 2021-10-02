@@ -63,7 +63,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_account_admin"/>
         </record>
         <record model="ir.model.button" id="period_lock_button">
-            <field name="name">lock</field>
+            <field name="name">lock_</field>
             <field name="string">Lock</field>
             <field name="confirm">Are you sure you want to lock the period?</field>
             <field name="model" search="[('model', '=', 'account.period')]"/>

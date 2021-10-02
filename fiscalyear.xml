@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
         </record>
         <record model="ir.model.button" id="fiscalyear_lock_button">
-            <field name="name">lock</field>
+            <field name="name">lock_</field>
             <field name="string">Lock</field>
             <field name="confirm">Are you sure you want to lock the fiscal year?</field>
             <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>

@@ -6,6 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company" expand="1"/>
     <button name="reopen"/>
     <button name="close"/>
-    <button name="lock"/>
+    <button name="lock_"/>
     <field name="state" tree_invisible="1"/>
 </tree>
