@@ -513,21 +513,20 @@
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
             var screen = this.screen;
-            var prm = screen.model.execute('view_toolbar_get', [],
-                screen.context);
-            prm.done(function(toolbars) {
-                [
+            var toolbars = screen.model.execute(
+                'view_toolbar_get', [], screen.context, false);
+            [
                 ['action', 'tryton-launch',
                     Sao.i18n.gettext('Launch action')],
                 ['relate', 'tryton-link',
-                     Sao.i18n.gettext('Open related records')],
+                    Sao.i18n.gettext('Open related records')],
                 ['print', 'tryton-print',
-                     Sao.i18n.gettext('Print report')]
-                ].forEach(function(menu_action) {
-                    var dropdown = jQuery('<div/>', {
-                        'class': 'btn-group dropdown',
-                        'role': 'group'
-                    })
+                    Sao.i18n.gettext('Print report')]
+            ].forEach(function(menu_action) {
+                var dropdown = jQuery('<div/>', {
+                    'class': 'btn-group dropdown',
+                    'role': 'group'
+                })
                     .append(jQuery('<button/>', {
                         'type': 'button',
                         'class': 'btn btn-default navbar-btn dropdown-toggle',
@@ -550,39 +549,39 @@
                         'aria-labelledby': menu_action[0]
                     }))
                     .insertBefore(toolbar.find('button#email'));
-                    var button = dropdown.find('button');
-                    this.buttons[menu_action[0]] = button;
-                    dropdown
-                        .on('show.bs.dropdown', function() {
-                            jQuery(this).parents('.btn-group').removeClass(
-                                    'hidden-xs');
-                        }).on('hide.bs.dropdown', function() {
-                            jQuery(this).parents('.btn-group').addClass(
-                                    'hidden-xs');
+                var button = dropdown.find('button');
+                this.buttons[menu_action[0]] = button;
+                dropdown
+                    .on('show.bs.dropdown', function() {
+                        jQuery(this).parents('.btn-group').removeClass(
+                            'hidden-xs');
+                    }).on('hide.bs.dropdown', function() {
+                        jQuery(this).parents('.btn-group').addClass(
+                            'hidden-xs');
+                    });
+                var menu = dropdown.find('.dropdown-menu');
+                button.click(function() {
+                    menu.find([
+                        '.' + menu_action[0] + '_button',
+                        '.divider-button',
+                        '.' + menu_action[0] + '_plugin',
+                        '.divider-plugin'].join(',')).remove();
+                    var buttons = screen.get_buttons().filter(
+                        function(button) {
+                            return menu_action[0] == (
+                                button.attributes.keyword || 'action');
                         });
-                    var menu = dropdown.find('.dropdown-menu');
-                    button.click(function() {
-                        menu.find([
-                            '.' + menu_action[0] + '_button',
-                            '.divider-button',
-                            '.' + menu_action[0] + '_plugin',
-                            '.divider-plugin'].join(',')).remove();
-                        var buttons = screen.get_buttons().filter(
-                            function(button) {
-                                return menu_action[0] == (
-                                    button.attributes.keyword || 'action');
-                            });
-                        if (buttons.length) {
-                            menu.append(jQuery('<li/>', {
-                                'role': 'separator',
-                                'class': 'divider divider-button',
-                            }));
-                        }
-                        buttons.forEach(function(button) {
-                            var item = jQuery('<li/>', {
-                                'role': 'presentation',
-                                'class': menu_action[0] + '_button'
-                            })
+                    if (buttons.length) {
+                        menu.append(jQuery('<li/>', {
+                            'role': 'separator',
+                            'class': 'divider divider-button',
+                        }));
+                    }
+                    buttons.forEach(function(button) {
+                        var item = jQuery('<li/>', {
+                            'role': 'presentation',
+                            'class': menu_action[0] + '_button'
+                        })
                             .append(
                                 jQuery('<a/>', {
                                     'role': 'menuitem',
@@ -594,40 +593,40 @@
                                 evt.preventDefault();
                                 screen.button(button.attributes);
                             })
-                        .appendTo(menu);
-                        });
+                            .appendTo(menu);
+                    });
 
-                        var kw_plugins = [];
-                        Sao.Plugins.forEach(function(plugin) {
-                            plugin.get_plugins(screen.model.name).forEach(
-                                function(spec) {
-                                    var name = spec[0],
-                                        func = spec[1],
-                                        keyword = spec[2] || 'action';
-                                    if (keyword != menu_action[0]) {
-                                        return;
-                                    }
-                                    kw_plugins.push([name, func]);
-                                });
-                        });
-                        if (kw_plugins.length) {
-                            menu.append(jQuery('<li/>', {
-                                'role': 'separator',
-                                'class': 'divider divider-plugin',
-                            }));
-                        }
-                        kw_plugins.forEach(function(plugin) {
-                            var name = plugin[0],
-                                func = plugin[1];
-                            jQuery('<li/>', {
-                                'role': 'presentation',
-                                'class': menu_action[0] + '_plugin',
-                            }).append(
-                                jQuery('<a/>', {
-                                    'role': 'menuitem',
-                                    'href': '#',
-                                    'tabindex': -1,
-                                }).text(name))
+                    var kw_plugins = [];
+                    Sao.Plugins.forEach(function(plugin) {
+                        plugin.get_plugins(screen.model.name).forEach(
+                            function(spec) {
+                                var name = spec[0],
+                                    func = spec[1],
+                                    keyword = spec[2] || 'action';
+                                if (keyword != menu_action[0]) {
+                                    return;
+                                }
+                                kw_plugins.push([name, func]);
+                            });
+                    });
+                    if (kw_plugins.length) {
+                        menu.append(jQuery('<li/>', {
+                            'role': 'separator',
+                            'class': 'divider divider-plugin',
+                        }));
+                    }
+                    kw_plugins.forEach(function(plugin) {
+                        var name = plugin[0],
+                            func = plugin[1];
+                        jQuery('<li/>', {
+                            'role': 'presentation',
+                            'class': menu_action[0] + '_plugin',
+                        }).append(
+                            jQuery('<a/>', {
+                                'role': 'menuitem',
+                                'href': '#',
+                                'tabindex': -1,
+                            }).text(name))
                             .click(function(evt) {
                                 evt.preventDefault();
                                 var ids = screen.current_view.selected_records
@@ -647,13 +646,13 @@
                                 });
                             })
                             .appendTo(menu);
-                        });
                     });
+                });
 
-                    toolbars[menu_action[0]].forEach(function(action) {
-                        var item = jQuery('<li/>', {
-                            'role': 'presentation'
-                        })
+                toolbars[menu_action[0]].forEach(function(action) {
+                    var item = jQuery('<li/>', {
+                        'role': 'presentation'
+                    })
                         .append(jQuery('<a/>', {
                             'role': 'menuitem',
                             'href': '#',
@@ -692,25 +691,25 @@
                             });
                         }.bind(this))
                         .appendTo(menu);
-                    }.bind(this));
+                }.bind(this));
 
-                    if (menu_action[0] != 'action') {
-                        button._can_be_sensitive = Boolean(
-                            menu.children().length);
+                if (menu_action[0] != 'action') {
+                    button._can_be_sensitive = Boolean(
+                        menu.children().length);
+                }
+
+                if (menu_action[0] == 'print') {
+                    if (toolbars.exports.length && toolbars.print.length) {
+                        menu.append(jQuery('<li/>', {
+                            'role': 'separator',
+                            'class': 'divider',
+                        }));
+                        button._can_be_sensitive = true;
                     }
-
-                    if (menu_action[0] == 'print') {
-                        if (toolbars.exports.length && toolbars.print.length) {
-                            menu.append(jQuery('<li/>', {
-                                'role': 'separator',
-                                'class': 'divider',
-                            }));
-                            button._can_be_sensitive = true;
-                        }
-                        toolbars.exports.forEach(function(export_) {
-                            var item = jQuery('<li/>', {
-                                'role': 'presentation',
-                            })
+                    toolbars.exports.forEach(function(export_) {
+                        var item = jQuery('<li/>', {
+                            'role': 'presentation',
+                        })
                             .append(jQuery('<a/>', {
                                 'role': 'menuitem',
                                 'href': '#',
@@ -721,9 +720,8 @@
                                 this.do_export(export_);
                             }.bind(this))
                             .appendTo(menu);
-                        }.bind(this));
-                    }
-                }.bind(this));
+                    }.bind(this));
+                }
             }.bind(this));
             this.buttons.attach
                 .on('dragover', false)
