@@ -297,21 +297,31 @@ class ShipmentAssignManualShow(ModelView):
             self.move.save()
             Move.copy([self.move], {'quantity': remainder})
         key = json.loads(self.place)
-        self._apply(key, grouping)
+        values = self._apply(key, grouping)
         quantity = self.move.quantity
         Move.assign_try([self.move], with_childs=False, grouping=grouping)
-        if self.move.state != 'assigned' and self.move.quantity == quantity:
-            raise UserError(gettext(
-                    'stock_assign_manual.msg_assign_failed',
-                    move=self.move.rec_name,
-                    place=self.place_string))
+        if self.move.state != 'assigned':
+            # Restore initial values as assign_try may have saved the move
+            for field, value in values.items():
+                setattr(self.move, field, value)
+            self.move.save()
+            if self.move.quantity == quantity:
+                raise UserError(gettext(
+                        'stock_assign_manual.msg_assign_failed',
+                        move=self.move.rec_name,
+                        place=self.place_string))
 
     def _apply(self, key, grouping):
+        """Update the move according to the key
+        and return a dictionary with the initial values."""
+        values = {'from_location': self.move.from_location.id}
         location_id = key[0]
         self.move.from_location = location_id
         for field, value in zip(grouping, key[1:]):
             if value is not None and '.' not in field:
+                values[field] = getattr(self.move, field)
                 setattr(self.move, field, value)
+        return values
 
 
 class ShipmentUnassignManual(Wizard):
