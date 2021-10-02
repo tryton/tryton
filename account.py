@@ -143,6 +143,27 @@ class Tax(metaclass=PoolMeta):
             cls.write(*to_write)
 
 
+class CreateChart(metaclass=PoolMeta):
+    __name__ = 'account.create_chart'
+
+    def default_properties(self, fields):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        defaults = super().default_properties(fields)
+        for type_ in ['normal', 'pyme']:
+            try:
+                template_id = ModelData.get_id('account_es.pgc_0_' + type_)
+            except KeyError:
+                continue
+            if self.account.account_template.id == template_id:
+                defaults['account_receivable'] = self.get_account(
+                    'account_es.pgc_4300_' + type_)
+                defaults['account_payable'] = self.get_account(
+                    'account_es.pgc_4000_' + type_)
+                break
+        return defaults
+
+
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 

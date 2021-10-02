@@ -33,6 +33,7 @@ def register():
         reporting_tax.VATBookReport,
         module='account_es', type_='report')
     Pool.register(
+        account.CreateChart,
         reporting_tax.PrintAEAT,
         module='account_es', type_='wizard')
     Pool.register(
