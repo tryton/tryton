@@ -1142,7 +1142,8 @@ class ModelSQL(ModelStorage):
                     Model.delete(records)
 
             for Model, field_name in foreign_keys_tocheck:
-                with Transaction().set_context(_check_access=False):
+                with Transaction().set_context(
+                        _check_access=False, active_test=False):
                     if Model.search([
                                 (field_name, 'in', sub_ids),
                                 ], order=[]):
