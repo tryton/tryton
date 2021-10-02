@@ -2711,6 +2711,17 @@ class CreateChart(Wizard):
                 template2rule_line=template2rule_line)
         return 'properties'
 
+    def get_account(self, template_id):
+        pool = Pool()
+        Account = pool.get('account.account')
+        ModelData = pool.get('ir.model.data')
+        template_id = ModelData.get_id(template_id)
+        account, = Account.search([
+                ('template', '=', template_id),
+                ('company', '=', self.account.company.id),
+                ], limit=1)
+        return account.id
+
     def default_properties(self, fields):
         pool = Pool()
         Account = pool.get('account.account')

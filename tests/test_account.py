@@ -68,19 +68,26 @@ def create_chart(company, tax=False, chart='account.account_template_root_en'):
     create_chart.account.account_template = template
     create_chart.account.company = company
     create_chart.transition_create_account()
-    receivable, = Account.search([
-            ('type.receivable', '=', True),
-            ('party_required', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    payable, = Account.search([
-            ('type.payable', '=', True),
-            ('party_required', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    create_chart.properties.company = company
-    create_chart.properties.account_receivable = receivable
-    create_chart.properties.account_payable = payable
+    properties_state = create_chart.states['properties']
+    for name, value in properties_state.get_defaults(
+            create_chart, 'properties',
+            list(create_chart.properties._fields.keys())).items():
+        if name in create_chart.properties._fields:
+            setattr(create_chart.properties, name, value)
+    if not create_chart.properties.account_receivable:
+        receivable, = Account.search([
+                ('type.receivable', '=', True),
+                ('party_required', '=', True),
+                ('company', '=', company.id),
+                ], limit=1)
+        create_chart.properties.account_receivable = receivable
+    if not create_chart.properties.account_payable:
+        payable, = Account.search([
+                ('type.payable', '=', True),
+                ('party_required', '=', True),
+                ('company', '=', company.id),
+                ], limit=1)
+        create_chart.properties.account_payable = payable
     create_chart.transition_create_properties()
 
 
