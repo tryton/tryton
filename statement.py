@@ -759,8 +759,8 @@ class Line(
             'invisible': ~Bool(Eval('origin')),
             },
         domain=[
-            ('statement', '=', Eval('statement')),
-            ('date', '=', Eval('date')),
+            ('statement', '=', Eval('statement', -1)),
+            ('date', '=', Eval('date', None)),
             ],
         depends=['statement', 'date'])
 
@@ -1073,8 +1073,8 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
                 | ~Eval('statement_state').in_(['draft', 'validated'])),
             },
         domain=[
-            ('statement', '=', Eval('statement')),
-            ('date', '=', Eval('date')),
+            ('statement', '=', Eval('statement', -1)),
+            ('date', '=', Eval('date', None)),
             ],
         depends=['statement', 'date', 'statement_id'])
     statement_id = fields.Function(
