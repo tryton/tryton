@@ -54,7 +54,9 @@ class ConfigurationSequence(metaclass=PoolMeta):
         'ir.sequence', "Drop Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.drop'),
+            ('sequence_type', '=',
+                Id('sale_supply_drop_shipment',
+                    'sequence_type_shipment_drop')),
             ],
         depends=['company'])
 
