@@ -42,11 +42,11 @@ class Line(ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ['OR',
                 ('start_date', '=', None),
-                ('start_date', '<=', Eval('date')),
+                ('start_date', '<=', Eval('date', None)),
                 ],
             ['OR',
                 ('end_date', '=', None),
-                ('end_date', '>=', Eval('date')),
+                ('end_date', '>=', Eval('date', None)),
                 ],
             ],
         depends=['company', 'date'])
