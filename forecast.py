@@ -178,7 +178,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
             return
         transaction = Transaction()
         connection = transaction.connection
-        transaction.database.lock(connection, self._table)
+        self.__class__.lock()
         forcast = self.__table__()
         cursor = connection.cursor()
         cursor.execute(*forcast.select(forcast.id,
