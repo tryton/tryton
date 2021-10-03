@@ -127,7 +127,7 @@ class SubscriptionLine(metaclass=PoolMeta):
         connection = transaction.connection
         cursor = connection.cursor()
 
-        transaction.database.lock(connection, cls._table)
+        cls.lock()
 
         line = cls.__table__()
         other = cls.__table__()
