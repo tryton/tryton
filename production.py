@@ -122,8 +122,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
         domain=[
             ('shipment', '=', None),
-            ('from_location', 'child_of', [Eval('warehouse')], 'parent'),
-            ('to_location', '=', Eval('location')),
+            ('from_location', 'child_of', [Eval('warehouse', -1)], 'parent'),
+            ('to_location', '=', Eval('location', -1)),
             ('company', '=', Eval('company', -1)),
             ],
         states={
@@ -134,10 +134,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
         domain=[
             ('shipment', '=', None),
-            ('from_location', '=', Eval('location')),
+            ('from_location', '=', Eval('location', -1)),
             ['OR',
-                ('to_location', 'child_of', [Eval('warehouse')], 'parent'),
-                ('to_location.waste_warehouses', '=', Eval('warehouse')),
+                ('to_location', 'child_of', [Eval('warehouse', -1)], 'parent'),
+                ('to_location.waste_warehouses', '=', Eval('warehouse', -1)),
                 ],
             ('company', '=', Eval('company', -1)),
             ],

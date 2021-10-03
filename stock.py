@@ -23,7 +23,7 @@ class Location(metaclass=PoolMeta):
             },
         domain=[
             ('type', '=', 'storage'),
-            ('parent', 'child_of', [Eval('id')]),
+            ('parent', 'child_of', [Eval('id', -1)]),
             ],
         depends=['type', 'id'],
         help="Where the production components are picked from.\n"
@@ -35,7 +35,7 @@ class Location(metaclass=PoolMeta):
             },
         domain=[
             ('type', '=', 'storage'),
-            ('parent', 'child_of', [Eval('id')]),
+            ('parent', 'child_of', [Eval('id', -1)]),
             ],
         depends=['type', 'id'],
         help="Where the produced goods are stored.\n"
