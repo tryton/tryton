@@ -1809,6 +1809,7 @@ class ModelStorage(Model):
             user = first._user
             context = first._context
             for record in records:
+                assert isinstance(record, cls), (record, cls)
                 if (record._transaction != transaction
                         or user != record._user
                         or context != record._context):
