@@ -476,7 +476,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True)
     payments = fields.One2Many('account.payment', 'sepa_mandate', 'Payments')
     has_payments = fields.Function(fields.Boolean('Has Payments'),
-        'has_payments')
+        'get_has_payments')
 
     @classmethod
     def __setup__(cls):
@@ -638,10 +638,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             return 'RCUR'
 
     @classmethod
-    def has_payments(cls, mandates, name):
+    def get_has_payments(cls, mandates, name):
         pool = Pool()
         Payment = pool.get('account.payment')
-        payment = Payment.__table__
+        payment = Payment.__table__()
         cursor = Transaction().connection.cursor()
 
         has_payments = dict.fromkeys([m.id for m in mandates], False)
@@ -652,7 +652,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
                     group_by=payment.sepa_mandate))
             has_payments.update(cursor.fetchall())
 
-        return {'has_payments': has_payments}
+        return has_payments
 
     @classmethod
     @ModelView.button
