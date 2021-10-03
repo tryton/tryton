@@ -292,7 +292,8 @@ class ShipmentAssignManualShow(ModelView):
             remainder = self.move.uom.round(self.move.quantity - quantity)
             self.move.quantity = quantity
             self.move.save()
-            Move.copy([self.move], {'quantity': remainder})
+            if remainder:
+                Move.copy([self.move], {'quantity': remainder})
         key = json.loads(self.place)
         values = self._apply(key, grouping)
         quantity = self.move.quantity
