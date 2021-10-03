@@ -83,7 +83,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', '=', 'storage'),
             ['OR',
-                ('parent', 'child_of', [Eval('id')]),
+                ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None),
                 ],
             ],
@@ -97,7 +97,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', '=', 'storage'),
             ['OR',
-                ('parent', 'child_of', [Eval('id')]),
+                ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None)]],
         depends=['type', 'id'],
         help="Where outgoing stock is sent from.")
@@ -109,7 +109,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', 'in', ['storage', 'view']),
             ['OR',
-                ('parent', 'child_of', [Eval('id')]),
+                ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None)]],
         depends=['type', 'id'],
         help="The top level location where stock is stored.")
