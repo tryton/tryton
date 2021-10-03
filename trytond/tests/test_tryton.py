@@ -24,14 +24,15 @@ from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import Workflow, ModelSQL, ModelSingleton, ModelView, fields
+from trytond.model import (
+    Workflow, ModelSQL, ModelStorage, ModelSingleton, ModelView, fields)
 from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method, file_open
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.config import config, parse_uri
 from trytond.wizard import StateView, StateAction
-from trytond.pyson import PYSONDecoder
+from trytond.pyson import PYSONDecoder, PYSONEncoder
 
 __all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
@@ -515,6 +516,27 @@ class ModuleTestCase(unittest.TestCase):
                 self.assertTrue(
                     Target,
                     msg='Missing target for "%s"."%s"' % (mname, fname))
+
+    @with_transaction()
+    def test_field_relation_domain(self):
+        "Test domain of relation fields"
+        pool = Pool()
+        for mname, model in pool.iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            for fname, field in model._fields.items():
+                if not field.domain:
+                    continue
+                if hasattr(field, 'get_target'):
+                    Target = field.get_target()
+                else:
+                    continue
+                if not issubclass(Target, ModelStorage):
+                    continue
+                with self.subTest(model=mname, field=fname):
+                    domain = PYSONDecoder({}).decode(
+                        PYSONEncoder().encode(field.domain))
+                    Target.search(domain, limit=1)
 
     @with_transaction()
     def test_menu_action(self):
