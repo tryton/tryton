@@ -765,11 +765,9 @@ class Sale(
     @classmethod
     def set_sale_date(cls, sales):
         Date = Pool().get('ir.date')
-        for sale in sales:
-            if not sale.sale_date:
-                cls.write([sale], {
-                        'sale_date': Date.today(),
-                        })
+        cls.write([s for s in sales if not s.sale_date], {
+                'sale_date': Date.today(),
+                })
 
     @classmethod
     def store_cache(cls, sales):
