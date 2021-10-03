@@ -113,7 +113,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     def check_dates(self):
         transaction = Transaction()
         connection = transaction.connection
-        transaction.database.lock(connection, self._table)
+        self.__class__.lock()
         cursor = connection.cursor()
         table = self.__table__()
         cursor.execute(*table.select(table.id,

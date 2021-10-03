@@ -116,7 +116,7 @@ class Period(Workflow, ModelSQL, ModelView):
             return True
         transaction = Transaction()
         connection = transaction.connection
-        transaction.database.lock(connection, self._table)
+        self.__class__.lock()
         table = self.__table__()
         cursor = connection.cursor()
         cursor.execute(*table.select(table.id,
@@ -300,11 +300,9 @@ class Period(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         Account = pool.get('account.account')
         transaction = Transaction()
-        database = transaction.database
-        connection = transaction.connection
 
         # Lock period to be sure no new period will be created in between.
-        database.lock(connection, JournalPeriod._table)
+        JournalPeriod.lock()
 
         for period in periods:
             with transaction.set_context(
