@@ -80,6 +80,14 @@ function eval_pyson(value){
                 widget.el.css('min-width', attributes.width + 'px');
             }
 
+            if (attributes.xalign === undefined) {
+                attributes.xalign = 0.5;
+            }
+
+            if (attributes.yalign === undefined) {
+                attributes.yalign = 0.5;
+            }
+
             this.container.add(widget, attributes);
 
             if (this._mnemonics[name] && widget.labelled) {
@@ -122,6 +130,18 @@ function eval_pyson(value){
             }
             var text = attributes.string;
             var separator = new Sao.View.Form.Separator(text, attributes);
+            if (text) {
+                var xalign = attributes.xalign;
+                if (xalign === undefined) {
+                    xalign = 0;
+                }
+                if (xalign == 0.5) {
+                    xalign = 'center';
+                } else {
+                    xalign = xalign <= 0.5? 'start' : 'end';
+                }
+                separator.label.css('text-align', xalign);
+            }
             this.view.state_widgets.push(separator);
             this.container.add(separator, attributes);
             if (name) {
@@ -139,6 +159,9 @@ function eval_pyson(value){
             }
             if (attributes.xalign === undefined) {
                 attributes.xalign = 1.0;
+            }
+            if (attributes.yalign === undefined) {
+                attributes.yalign = 0.5;
             }
             var label = new Sao.View.Form.Label(attributes.string, attributes);
             this.view.state_widgets.push(label);
@@ -520,23 +543,15 @@ function eval_pyson(value){
             if (attributes.yexpand) {
                 cell.css('height', '100%');
             }
-            if (attributes.yfill) {
-                cell.css('vertical-align', 'top');
-            }
 
             if (attributes.xalign !== undefined) {
-                // TODO replace by start/end when supported
-                var align;
-                if (attributes.xalign != 0.5) {
-                    if (Sao.i18n.rtl) {
-                        align = attributes.xalign >= 0.5? 'left': 'right';
-                    } else {
-                        align = attributes.xalign >= 0.5? 'right': 'left';
-                    }
-                } else if (!xexpand) {
-                    align = 'center';
+                var xalign;
+                if (attributes.xalign == 0.5) {
+                    xalign = 'center';
+                } else {
+                    xalign = attributes.xalign <= 0.5? 'start': 'end';
                 }
-                cell.css('text-align', align);
+                cell.css('text-align', xalign);
             }
             if (xexpand) {
                 cell.addClass('xexpand');
@@ -547,6 +562,16 @@ function eval_pyson(value){
                 if (xexpand) {
                     el.css('width', '100%');
                 }
+            }
+
+            if (attributes.yalign !== undefined) {
+                var yalign;
+                if (attributes.yalign == 0.5) {
+                    yalign = 'middle';
+                } else {
+                    yalign = attributes.yalign <= 0.5? 'top': 'bottom';
+                }
+                cell.css('vertical-align', yalign);
             }
 
             if (attributes.help) {
