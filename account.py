@@ -191,9 +191,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         pool = Pool()
         Credential = pool.get('account.credential.chorus')
         transaction = Transaction()
-        database = transaction.database
-        connection = transaction.connection
-        database.lock(connection, cls._table)
+        cls.lock()
 
         if not records:
             records = cls.search(['OR',
