@@ -20,15 +20,15 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
     predecessors = fields.Many2Many('project.predecessor_successor',
         'successor', 'predecessor', 'Predecessors',
         domain=[
-            ('parent', '=', Eval('parent')),
-            ('id', '!=', Eval('id')),
+            ('parent', '=', Eval('parent', -1)),
+            ('id', '!=', Eval('id', -1)),
             ],
         depends=['parent', 'id'])
     successors = fields.Many2Many('project.predecessor_successor',
         'predecessor', 'successor', 'Successors',
         domain=[
-            ('parent', '=', Eval('parent')),
-            ('id', '!=', Eval('id')),
+            ('parent', '=', Eval('parent', -1)),
+            ('id', '!=', Eval('id', -1)),
             ],
         depends=['parent', 'id'])
     leveling_delay = fields.Float("Leveling Delay", required=True)
