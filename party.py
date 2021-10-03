@@ -80,7 +80,7 @@ class Party(metaclass=PoolMeta):
 
         for model in self._credit_limit_to_lock():
             Model = pool.get(model)
-            Transaction().database.lock(Transaction().connection, Model._table)
+            Model.lock()
         if self.credit_limit_amount < self.credit_amount + amount:
             company = Company(Transaction().context.get('company'))
             lang = Lang.get()
