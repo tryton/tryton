@@ -383,18 +383,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 except TypeError:
                     raise MissingError(gettext('ir.msg_sequence_missing'))
                 if _lock:
-                    transaction = Transaction()
-                    database = transaction.database
-                    connection = transaction.connection
-                    if not database.has_select_for():
-                        database.lock(connection, cls._table)
-                    else:
-                        table = cls.__table__()
-                        query = table.select(Literal(1),
-                            where=table.id == sequence.id,
-                            for_=For('UPDATE', nowait=True))
-                        cursor = connection.cursor()
-                        cursor.execute(*query)
+                    self.lock()
                 date = Transaction().context.get('date')
                 return '%s%s%s' % (
                     cls._process(sequence.prefix, date=date),

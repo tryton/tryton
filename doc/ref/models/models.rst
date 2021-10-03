@@ -521,9 +521,9 @@ Class methods:
 
 Dual methods:
 
-.. classmethod:: ModelSQL.lock(records)
+.. classmethod:: ModelSQL.lock([records])
 
-    Take a lock for update on the records.
+    Take a lock for update on the records or take a lock on the whole table.
 
 Constraint
 ==========

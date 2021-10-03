@@ -614,8 +614,8 @@ class ModelSQLTestCase(unittest.TestCase):
     @unittest.skipIf(backend.name == 'sqlite',
         'SQLite does not have lock at table level but on file')
     @with_transaction()
-    def test_lock(self):
-        "Test lock"
+    def test_record_lock(self):
+        "Test record lock"
         pool = Pool()
         Model = pool.get('test.modelsql.lock')
         transaction = Transaction()
@@ -629,6 +629,21 @@ class ModelSQLTestCase(unittest.TestCase):
                 record = Model(record_id)
                 with self.assertRaises(backend.DatabaseOperationalError):
                     record.lock()
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        'SQLite does not have lock at table level but on file')
+    @with_transaction()
+    def test_table_lock(self):
+        "Test table lock"
+        pool = Pool()
+        Model = pool.get('test.modelsql.lock')
+        transaction = Transaction()
+
+        with transaction.new_transaction():
+            Model.lock()
+            with transaction.new_transaction():
+                with self.assertRaises(backend.DatabaseOperationalError):
+                    Model.lock()
 
     @with_transaction()
     def test_search_or_to_union(self):

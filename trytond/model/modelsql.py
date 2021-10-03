@@ -1748,13 +1748,13 @@ class ModelSQL(ModelStorage):
                         raise SQLConstraintError(gettext(error))
 
     @dualmethod
-    def lock(cls, records):
+    def lock(cls, records=None):
         transaction = Transaction()
         database = transaction.database
         connection = transaction.connection
         table = cls.__table__()
 
-        if database.has_select_for():
+        if records is not None and database.has_select_for():
             for sub_records in grouped_slice(records):
                 where = reduce_ids(table.id, sub_records)
                 query = table.select(

@@ -151,7 +151,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         with transaction.start(db_name, 0, context={'_skip_warnings': True}):
             pool = Pool()
             Error = pool.get('ir.error')
-            transaction.database.lock(transaction.connection, cls._table)
+            cls.lock()
             crons = cls.search(['OR',
                     ('next_call', '<=', now),
                     ('next_call', '=', None),
