@@ -19,7 +19,8 @@ class Configuration(metaclass=PoolMeta):
     package_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Package Sequence", required=True,
             domain=[
-                ('company', 'in', [Eval('context', {}).get('company'), None]),
+                ('company', 'in', [
+                        Eval('context', {}).get('company', -1), None]),
                 ('sequence_type', '=',
                     Id('stock_package', 'sequence_type_package')),
                 ]))
