@@ -267,11 +267,11 @@ class ShipmentAssignManualShow(ModelView):
             move_key = get_key(self.move, key[0])
             if qty > 0 and match(key, move_key):
                 uom = self.move.product.default_uom
-                quantity = lang.format('%.*f', (uom.digits, pbl[key]))
-                name = '%(name)s (%(quantity)s%(unit)s)' % {
+                quantity = lang.format_number_symbol(
+                    pbl[key], uom, digits=uom.digits)
+                name = '%(name)s (%(quantity)s)' % {
                     'name': get_name(key),
-                    'quantity': quantity,
-                    'unit': uom.symbol,
+                    'quantity': quantity
                     }
                 places.append((json.dumps(key), name))
         return places
@@ -286,8 +286,8 @@ class ShipmentAssignManualShow(ModelView):
                 uom = self.move.product.default_uom
                 raise ValidationError(gettext(
                         'stock_assign_manual.msg_invalid_quantity',
-                        quantity=lang.format(
-                            '%.*f', (uom.digits, self.move.quantity))))
+                        quantity=lang.format_number(
+                            self.move_quantity, uom.digits)))
             quantity = self.move.uom.round(self.quantity)
             remainder = self.move.uom.round(self.move.quantity - quantity)
             self.move.quantity = quantity
