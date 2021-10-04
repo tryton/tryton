@@ -475,7 +475,7 @@
       <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;move.product.rec_name&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B3" office:value-type="string">
-      <text:p text:style-name="P12"><text:placeholder text:placeholder-type="text">&lt;format_number(move.quantity, shipment.delivery_address.party.lang, digits=move.uom.digits)&gt;</text:placeholder><text:s/><text:placeholder text:placeholder-type="text">&lt;move.uom.symbol&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P12"><text:placeholder text:placeholder-type="text">&lt;format_number_symbol(move.quantity, shipment.delivery_address.party.lang, move.uom, digits=move.uom.digits)&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>

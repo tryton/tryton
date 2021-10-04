@@ -551,9 +551,9 @@ class Move(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-        return (lang.format(
-                '%.*f', (self.uom.digits, self.quantity))
-            + '%s %s' % (self.uom.symbol, self.product.rec_name))
+        return (lang.format_number_symbol(
+                self.quantity, self.uom, digits=self.uom.digits)
+            + ' %s' % self.product.rec_name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
