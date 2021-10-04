@@ -338,9 +338,8 @@ class MoveAddLots(Wizard):
             lot_quantity = self.record.quantity - quantity_remaining
             raise ValidationError(gettext(
                     'stock_lot.msg_move_add_lot_quantity',
-                    lot_quantity=lang.format('%.*f', (digits, lot_quantity)),
-                    move_quantity=lang.format(
-                        '%.*f', (digits, move_quantity))))
+                    lot_quantity=lang.format_number(lot_quantity, digits),
+                    move_quantity=lang.format_number(move_quantity, digits)))
         lots = []
         for line in self.start.lots:
             lot = line.get_lot(self.record)
