@@ -186,8 +186,20 @@
             <field name="name">asset_create_moves_start_form</field>
         </record>
 
-        <record model="ir.ui.view" id="asset_update_start_view_form">
-            <field name="model">account.asset.update.start</field>
+        <record model="ir.ui.view" id="revision_view_form">
+            <field name="model">account.asset.revision</field>
+            <field name="type">form</field>
+            <field name="name">revision_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="revision_view_tree">
+            <field name="model">account.asset.revision</field>
+            <field name="type">tree</field>
+            <field name="name">revision_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="asset_revision_view_form">
+            <field name="model">account.asset.revision</field>
             <field name="type">form</field>
             <field name="name">asset_update_start_form</field>
         </record>

@@ -14,7 +14,7 @@ def register():
         asset.AssetLine,
         asset.AssetUpdateMove,
         asset.CreateMovesStart,
-        asset.UpdateAssetStart,
+        asset.AssetRevision,
         asset.UpdateAssetShowDepreciation,
         asset.PrintDepreciationTableStart,
         product.Category,

@@ -170,7 +170,7 @@ Create Moves for 3 months::
 Update the asset::
 
     >>> update = Wizard('account.asset.update', [asset])
-    >>> update.form.value = Decimal('1100')
+    >>> update.form.value = Decimal('1100.00')
     >>> update.execute('update_asset')
     >>> update.form.amount
     Decimal('100.00')
@@ -192,7 +192,10 @@ Update the asset::
     >>> update.execute('create_move')
     >>> asset.reload()
     >>> asset.value
-    Decimal('1100')
+    Decimal('1100.00')
+    >>> revision, = asset.revisions
+    >>> revision.value
+    Decimal('1100.00')
     >>> [l.depreciation for l in asset.lines[:3]]
     [Decimal('37.50'), Decimal('37.50'), Decimal('37.50')]
     >>> [l.depreciation for l in asset.lines[3:-1]] == [Decimal('42.26')] * 20

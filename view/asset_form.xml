@@ -45,6 +45,9 @@
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>
+        <page name="revisions">
+            <field name="revisions" colspan="4"/>
+        </page>
     </notebook>
     <label name="state"/>
     <field name="state"/>

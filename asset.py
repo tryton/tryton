@@ -205,6 +205,8 @@ class Asset(Workflow, ModelSQL, ModelView):
             },
         depends=['company'])
     comment = fields.Text('Comment')
+    revisions = fields.One2Many(
+        'account.asset.revision', 'asset', "Revisions", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -795,14 +797,6 @@ class CreateMoves(Wizard):
         return 'end'
 
 
-class UpdateAssetStart(ModelView):
-    'Update Asset Start'
-    __name__ = 'account.asset.update.start'
-    value = fields.Numeric('Asset Value', required=True)
-    residual_value = fields.Numeric('Residual Value', required=True)
-    end_date = fields.Date('End Date', required=True)
-
-
 class UpdateAssetShowDepreciation(ModelView):
     'Update Asset Show Depreciation'
     __name__ = 'account.asset.update.show_depreciation'
@@ -827,8 +821,8 @@ class UpdateAssetShowDepreciation(ModelView):
 class UpdateAsset(Wizard):
     'Update Asset'
     __name__ = 'account.asset.update'
-    start = StateView('account.asset.update.start',
-        'account_asset.asset_update_start_view_form', [
+    start = StateView('account.asset.revision',
+        'account_asset.asset_revision_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('OK', 'update_asset', 'tryton-ok', True),
             ])
@@ -846,6 +840,7 @@ class UpdateAsset(Wizard):
             'value': self.record.value,
             'residual_value': self.record.residual_value,
             'end_date': self.record.end_date,
+            'asset': self.record.id,
             }
 
     def transition_update_asset(self):
@@ -932,7 +927,59 @@ class UpdateAsset(Wizard):
                 })
         self.model.clear_lines([self.record])
         self.model.create_lines([self.record])
+        self.start.asset = self.record
+        self.start.save()
         return 'end'
+
+
+class AssetRevision(ModelSQL, ModelView):
+    "Asset Revision"
+    __name__ = 'account.asset.revision'
+    currency = fields.Function(
+        fields.Many2One('currency.currency', "Currency"),
+        'on_change_with_currency')
+    value = Monetary(
+        "Asset Value", currency='currency', digits='currency',
+        required=True)
+    residual_value = Monetary(
+        "Residual Value", currency='currency', digits='currency',
+        required=True)
+    end_date = fields.Date("End Date", required=True)
+    origin = fields.Reference("Origin", selection='get_origins', select=True)
+    description = fields.Char("Description")
+    asset = fields.Many2One(
+        'account.asset', "Asset", select=True, required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('asset')
+
+    @fields.depends('asset', '_parent_asset.currency')
+    def on_change_with_currency(self, name=None):
+        if self.asset and self.asset.currency:
+            return self.asset.currency.id
+
+    @fields.depends('origin', 'value', 'asset', '_parent_asset.value')
+    def on_change_origin(self, name=None):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        if isinstance(self.origin, InvoiceLine) and self.origin.id >= 0:
+            self.value = self.asset.value + self.origin.amount
+
+    @staticmethod
+    def _get_origin():
+        "Return list of Model names for origin Reference"
+        return ['account.invoice.line']
+
+    @classmethod
+    def get_origins(cls):
+        pool = Pool()
+        IrModel = pool.get('ir.model')
+
+        get_name = IrModel.get_name
+        models = cls._get_origin()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
 
 class AssetDepreciationTable(CompanyReport):
