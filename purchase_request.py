@@ -187,9 +187,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         if self.product:
             lang = Lang.get()
-            rec_name = (lang.format(
-                    '%.*f', (self.uom.digits, self.quantity))
-                + '%s %s' % (self.uom.symbol, self.product.name))
+            rec_name = (lang.format_number_symbol(
+                    self.quantity, self.uom, digits=self.uom.digits)
+                + ' %s' % self.product.name)
         elif self.description:
             rec_name = self.description.splitlines()[0]
         else:
