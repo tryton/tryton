@@ -210,10 +210,9 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-        return (lang.format(
-                '%.*f', (self.unit.digits, self.quantity))
-            + '%s %s' % (
-                self.unit.symbol, self.product.rec_name))
+        return (lang.format_number_symbol(
+                self.quantity, self.unit, digits=self.unit.digits)
+            + ' %s' % self.product.rec_name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
