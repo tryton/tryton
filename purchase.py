@@ -1698,11 +1698,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         if self.product:
             lang = Lang.get()
-            return (lang.format(
-                    '%.*f', (self.unit.digits, self.quantity or 0))
-                + '%s %s @ %s' % (
-                    self.unit.symbol, self.product.rec_name,
-                    self.purchase.rec_name))
+            return (lang.format_number_symbol(
+                    self.quantity or 0, self.unit, digits=self.unit.digits)
+                + ' %s @ %s' % (self.product.rec_name, self.purchase.rec_name))
         else:
             return self.purchase.rec_name
 
