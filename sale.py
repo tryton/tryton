@@ -1661,11 +1661,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         if self.product:
             lang = Lang.get()
-            return (lang.format(
-                    '%.*f', (self.unit.digits, self.quantity or 0))
-                + '%s %s @ %s' % (
-                    self.unit.symbol, self.product.rec_name,
-                    self.sale.rec_name))
+            return (lang.format_number_symbol(
+                    self.quantity or 0, self.unit, digits=self.unit.digits)
+                + ' %s @ %s' % (self.product.rec_name, self.sale.rec_name))
         else:
             return self.sale.rec_name
 
