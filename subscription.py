@@ -722,11 +722,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-        return (lang.format(
-                '%.*f', (self.unit.digits, self.quantity or 0))
-            + '%s %s @ %s' % (
-                self.unit.symbol, self.service.rec_name,
-                self.subscription.rec_name))
+        return (lang.format_number_symbol(
+                self.quantity or 0, self.unit, digits=self.unit.digits)
+            + ' %s @ %s' % (self.service.rec_name, self.subscription.rec_name))
 
     @classmethod
     def search_rec_name(cls, name, clause):
