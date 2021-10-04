@@ -13,7 +13,6 @@ import warnings
 import zipfile
 import operator
 
-from decimal import Decimal
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from io import BytesIO
@@ -288,6 +287,7 @@ class Report(URLMixin, PoolBase):
         report_context['format_timedelta'] = cls.format_timedelta
         report_context['format_currency'] = cls.format_currency
         report_context['format_number'] = cls.format_number
+        report_context['format_number_symbol'] = cls.format_number_symbol
         report_context['datetime'] = datetime
 
         def set_lang(language=None):
@@ -445,7 +445,8 @@ class Report(URLMixin, PoolBase):
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
-        return lang.currency(value, currency, symbol, grouping, digits=digits)
+        return lang.currency(
+            value, currency, symbol=symbol, grouping=grouping, digits=digits)
 
     @classmethod
     def format_number(
@@ -454,13 +455,18 @@ class Report(URLMixin, PoolBase):
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
-        if digits is None:
-            d = value
-            if not isinstance(d, Decimal):
-                d = Decimal(repr(value))
-            digits = -int(d.as_tuple().exponent)
-        return lang.format('%.' + str(digits) + 'f', value,
-            grouping=grouping, monetary=monetary)
+        return lang.format_number(
+            value, digits=digits, grouping=grouping, monetary=monetary)
+
+    @classmethod
+    def format_number_symbol(
+            cls, value, lang, symbol, digits=None, grouping=True):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if lang is None:
+            lang = Lang.get()
+        return lang.format_number_symbol(
+            value, symbol, digits=digits, grouping=grouping)
 
 
 def get_email(report, record, languages):

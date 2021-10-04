@@ -170,6 +170,40 @@ class IrTestCase(ModuleTestCase):
             self.assertEqual(lang.strftime(date, format_), result)
 
     @with_transaction()
+    def test_lang_format_number(self):
+        "Test Lang.format_number"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        test_data = [
+            (Decimal('10.50'), False, None, '10.50'),
+            (Decimal('10.50'), False, 4, '10.5000'),
+            (Decimal('1000.50'), True, 4, '1,000.5000'),
+            ]
+        for value, grouping, digits, result in test_data:
+            self.assertEqual(
+                lang.format_number(value, digits, grouping), result)
+
+    @with_transaction()
+    def test_lang_format_number_symbol(self):
+        "Test Lang.format_number_symbol"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        unit = Mock()
+        unit.symbol = 'Kg'
+        unit.get_symbol = Mock()
+        unit.get_symbol.return_value = 'Kg', 1
+        test_data = [
+            (Decimal('10.50'), False, None, '10.50Kg'),
+            (Decimal('1000.50'), True, 4, '1,000.5000Kg'),
+            ]
+        for value, grouping, digits, result in test_data:
+            self.assertEqual(
+                lang.format_number_symbol(value, unit, digits, grouping),
+                result)
+
+    @with_transaction()
     def test_model_data_get_id(self):
         "Test ModelData.get_id"
         pool = Pool()

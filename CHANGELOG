@@ -1,3 +1,5 @@
+* Add methods to format number and symbol on Lang
+* Add format number with symbol on Report
 * Allow locking tables by calling ModelSQL.lock without records
 * Add test on domain of relation fields
 * Add stored path as alternative to MPTT
