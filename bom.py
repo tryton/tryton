@@ -132,6 +132,20 @@ class BOMOutput(BOMInput):
         # Validate that output_products domain on bom is still valid
         ProductBOM._validate(bom_products, ['bom'])
 
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        ProductBOM = pool.get('product.product-production.bom')
+        actions = iter(args)
+        bom_products = []
+        for outputs, values in zip(actions, actions):
+            if 'product' in values:
+                bom_products.extend(
+                    [b for o in outputs for b in o.product.boms])
+        super().write(*args)
+        # Validate that output_products domain on bom is still valid
+        ProductBOM._validate(bom_products, ['bom'])
+
 
 class BOMTree(ModelView):
     'BOM Tree'
