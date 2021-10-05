@@ -33,6 +33,7 @@ class Package(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('sendcloud_shipping_id')
         default.setdefault('sendcloud_shipping_tracking_url')
         return super().copy(packages, default=default)
 
