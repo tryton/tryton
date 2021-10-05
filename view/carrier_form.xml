@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='carrier_cost_method']" position="after">
+    <xpath expr="/form/field[@name='shipping_service']" position="after">
         <separator string="DPD" colspan="4" id="dpd"/>
         <label name="dpd_product"/>
         <field name="dpd_product"/>
