@@ -262,3 +262,11 @@ class Carrier(metaclass=PoolMeta):
     @classmethod
     def default_sendcloud_format(cls):
         return 'label'
+
+    @classmethod
+    def view_attributes(cls):
+        return super(Carrier, cls).view_attributes() + [
+            ("/form/separator[@id='sendcloud']", 'states', {
+                    'invisible': Eval('shipping_service') != 'sendcloud',
+                    }),
+            ]
