@@ -445,6 +445,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
             currency=self.currency,
             account=party.account_receivable_used,
             )
+        invoice.invoice_date = self.next_invoice_date
         invoice.on_change_type()
         invoice.payment_term = self.payment_term
         return invoice

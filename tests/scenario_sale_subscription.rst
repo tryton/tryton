@@ -151,6 +151,8 @@ Create subscription invoice::
     >>> create_invoice.execute('create_')
 
     >>> invoice, = Invoice.find([])
+    >>> invoice.invoice_date
+    datetime.date(2016, 2, 1)
     >>> line, = invoice.lines
     >>> line.quantity
     310.0
