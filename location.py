@@ -788,6 +788,13 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
                 columns.append(column.as_(fname))
         return product.select(*columns)
 
+    def get_rec_name(self, name):
+        return self.product.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product.rec_name',) + tuple(clause[1:])]
+
     def get_product(self, name):
         value = getattr(self.product, name)
         if isinstance(value, Model):
