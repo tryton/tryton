@@ -203,6 +203,13 @@ class LotsByLocations(ModelSQL, ModelView):
                 columns.append(column.as_(fname))
         return lot.select(*columns)
 
+    def get_rec_name(self, name):
+        return self.lot.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('lot.rec_name',) + tuple(clause[1:])]
+
     def get_lot(self, name):
         value = getattr(self.lot, name)
         if isinstance(value, Model):
