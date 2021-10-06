@@ -678,6 +678,173 @@ class ModelSQLTestCase(unittest.TestCase):
             result_without_split)
 
     @with_transaction()
+    def test_search_or_to_union_order_eager_field(self):
+        """
+        Searching for 'OR'-ed domain mixed with ordering on an eager field
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+        Target = pool.get('test.modelsql.read.target')
+
+        target_a, target_b, target_c = Target.create([
+                {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
+                ])
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    'target': target_a,
+                    }, {
+                    'name': 'B',
+                    'target': target_b,
+                    }, {
+                    'name': 'C',
+                    'target': target_c,
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        self.assertEqual(
+            Model.search(domain, order=[('name', 'ASC')]),
+            [model_a, model_c])
+        self.assertEqual(
+            Model.search(domain, order=[('name', 'DESC')]),
+            [model_c, model_a])
+        self.assertIn(
+            'UNION',
+            str(Model.search(domain, order=[('name', 'ASC')], query=True)))
+
+    @with_transaction()
+    def test_search_or_to_union_order_lazy_field(self):
+        """
+        Searching for 'OR'-ed domain mixed with ordering on a lazy field
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+        Target = pool.get('test.modelsql.read.target')
+
+        target_a, target_b, target_c = Target.create([
+                {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
+                ])
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    'reference': str(target_a),
+                    }, {
+                    'name': 'B',
+                    'reference': str(target_b),
+                    }, {
+                    'name': 'C',
+                    'reference': str(target_c),
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        self.assertEqual(
+            Model.search(domain, order=[('reference', 'ASC')]),
+            [model_a, model_c])
+        self.assertEqual(
+            Model.search(domain, order=[('reference', 'DESC')]),
+            [model_c, model_a])
+        self.assertIn(
+            'UNION', str(Model.search(
+                    domain, order=[('reference', 'ASC')], query=True)))
+
+    @with_transaction()
+    def test_search_or_to_union_order_dotted_notation(self):
+        """
+        Searching for 'OR'-ed domain mixed with ordering on dotted field
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+        Target = pool.get('test.modelsql.read.target')
+
+        target_a, target_b, target_c = Target.create([
+                {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
+                ])
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    'target': target_a,
+                    }, {
+                    'name': 'B',
+                    'target': target_b,
+                    }, {
+                    'name': 'C',
+                    'target': target_c,
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        self.assertEqual(
+            Model.search(domain, order=[('target.name', 'ASC')]),
+            [model_a, model_c])
+        self.assertEqual(
+            Model.search(domain, order=[('target.name', 'DESC')]),
+            [model_c, model_a])
+        self.assertNotIn(
+            'UNION', str(Model.search(
+                    domain, order=[('target.name', 'ASC')], query=True)))
+
+    @with_transaction()
+    def test_search_or_to_union_order_function(self):
+        """
+        Searching for 'OR'-ed domain mixed with ordering on a function
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union')
+        Target = pool.get('test.modelsql.read.target')
+
+        target_a, target_b, target_c = Target.create([
+                {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
+                ])
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    'target': target_a,
+                    'integer': 0,
+                    }, {
+                    'name': 'B',
+                    'target': target_b,
+                    'integer': 1,
+                    }, {
+                    'name': 'C',
+                    'target': target_c,
+                    'integer': 2,
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        self.assertEqual(
+            Model.search(domain, order=[('integer', 'ASC')]),
+            [model_a, model_c])
+        self.assertEqual(
+            Model.search(domain, order=[('integer', 'DESC')]),
+            [model_c, model_a])
+        self.assertNotIn(
+            'UNION', str(Model.search(
+                    domain, order=[('integer', 'ASC')], query=True)))
+
+    @with_transaction()
     def test_search_or_to_union_no_local_clauses(self):
         """
         Test searching for 'OR'-ed domain without local clauses
