@@ -65,7 +65,7 @@ Create invoices::
     >>> supplier_tax, = Tax.find([
     ...     ('company', '=', company.id),
     ...     ('group.kind', '=', 'purchase'),
-    ...     ('name', '=', 'IVA Intracomunitario (bienes)'),
+    ...     ('name', '=', 'IVA Intracomunitario 21% (bienes)'),
     ...     ])
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
