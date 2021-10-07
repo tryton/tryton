@@ -53,7 +53,8 @@ class AccountProductTestCase(CompanyTestMixin, ModuleTestCase):
 
             # with account on category
             category = ProductCategory(
-                name='Category', accounting=True)
+                name='Category', accounting=True,
+                account_expense=None)
             category.save()
             template.account_category = category
             template.save()
