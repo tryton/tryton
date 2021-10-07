@@ -251,7 +251,6 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
 
         invoice_line = InvoiceLine()
         invoice_line.invoice = invoice
-        invoice_line.company = invoice.company
         invoice_line.type = 'line'
         invoice_line.quantity = 1
         invoice_line.account = self.account
@@ -259,6 +258,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         invoice_line.description = self.description
         invoice_line.origin = self
         invoice_line.company = self.sale.company
+        invoice_line.currency = self.sale.currency
         # Set taxes
         invoice_line.on_change_account()
         return [invoice_line]
