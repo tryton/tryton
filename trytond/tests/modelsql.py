@@ -87,16 +87,28 @@ class ModelSQLSearchOR2Union(ModelSQL):
     "ModelSQL Search OR to UNION optimization"
     __name__ = 'test.modelsql.search.or2union'
     name = fields.Char("Name")
-    target = fields.Many2One('test.modelsql.read.target', "Target")
-    targets = fields.One2Many('test.modelsql.read.target', 'parent', "Targets")
+    target = fields.Many2One('test.modelsql.search.or2union.target', "Target")
+    targets = fields.One2Many(
+        'test.modelsql.search.or2union.target', 'parent', "Targets")
     reference = fields.Reference(
-        "Reference", [(None, ""), ('test.modelsql.read.target', "Target")])
+        "Reference",
+        [
+            (None, ""),
+            ('test.modelsql.search.or2union.target', "Target"),
+            ])
     integer = fields.Integer("Integer")
 
     @classmethod
     def order_integer(cls, tables):
         table, _ = tables[None]
         return [table.integer + 1]
+
+
+class ModelSQLSearchOR2UnionTarget(ModelSQL):
+    "ModelSQL Target to test read"
+    __name__ = 'test.modelsql.search.or2union.target'
+    name = fields.Char("Name")
+    parent = fields.Many2One('test.modelsql.search.or2union', "Parent")
 
 
 class ModelSQLForeignKey(DeactivableMixin, ModelSQL):
@@ -195,6 +207,7 @@ def register(module):
         ModelSQLOne2ManyTarget,
         ModelSQLSearch,
         ModelSQLSearchOR2Union,
+        ModelSQLSearchOR2UnionTarget,
         ModelSQLForeignKey,
         ModelSQLForeignKeyTarget,
         NullOrder,

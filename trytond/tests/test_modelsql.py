@@ -651,7 +651,7 @@ class ModelSQLTestCase(unittest.TestCase):
         Test searching for 'OR'-ed domain
         """
         pool = Pool()
-        Model = pool.get('test.modelsql.read')
+        Model = pool.get('test.modelsql.search.or2union')
 
         Model.create([{
                     'name': 'A',
@@ -673,9 +673,12 @@ class ModelSQLTestCase(unittest.TestCase):
             # Mocking in order not to trigger the split
             no_split.side_effect = lambda d: (d, [])
             result_without_split = Model.search(domain)
+            query_without_split = Model.search(domain, query=True)
         self.assertEqual(
             Model.search(domain),
             result_without_split)
+        self.assertIn('UNION', str(Model.search(domain, query=True)))
+        self.assertNotIn('UNION', str(query_without_split))
 
     @with_transaction()
     def test_search_or_to_union_order_eager_field(self):
@@ -684,7 +687,7 @@ class ModelSQLTestCase(unittest.TestCase):
         """
         pool = Pool()
         Model = pool.get('test.modelsql.search.or2union')
-        Target = pool.get('test.modelsql.read.target')
+        Target = pool.get('test.modelsql.search.or2union.target')
 
         target_a, target_b, target_c = Target.create([
                 {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
@@ -725,7 +728,7 @@ class ModelSQLTestCase(unittest.TestCase):
         """
         pool = Pool()
         Model = pool.get('test.modelsql.search.or2union')
-        Target = pool.get('test.modelsql.read.target')
+        Target = pool.get('test.modelsql.search.or2union.target')
 
         target_a, target_b, target_c = Target.create([
                 {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
@@ -766,7 +769,7 @@ class ModelSQLTestCase(unittest.TestCase):
         """
         pool = Pool()
         Model = pool.get('test.modelsql.search.or2union')
-        Target = pool.get('test.modelsql.read.target')
+        Target = pool.get('test.modelsql.search.or2union.target')
 
         target_a, target_b, target_c = Target.create([
                 {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
@@ -807,7 +810,7 @@ class ModelSQLTestCase(unittest.TestCase):
         """
         pool = Pool()
         Model = pool.get('test.modelsql.search.or2union')
-        Target = pool.get('test.modelsql.read.target')
+        Target = pool.get('test.modelsql.search.or2union.target')
 
         target_a, target_b, target_c = Target.create([
                 {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
@@ -850,7 +853,7 @@ class ModelSQLTestCase(unittest.TestCase):
         Test searching for 'OR'-ed domain without local clauses
         """
         pool = Pool()
-        Model = pool.get('test.modelsql.read')
+        Model = pool.get('test.modelsql.search.or2union')
 
         Model.create([{
                     'name': 'A',
@@ -866,14 +869,18 @@ class ModelSQLTestCase(unittest.TestCase):
 
         domain = ['OR',
             ('targets.name', 'ilike', '%A'),
+            ('targets.name', 'ilike', '%B'),
             ]
         with patch('trytond.model.modelsql.split_subquery_domain') as no_split:
             # Mocking in order not to trigger the split
             no_split.side_effect = lambda d: (d, [])
             result_without_split = Model.search(domain)
+            query_without_split = Model.search(domain, query=True)
         self.assertEqual(
             Model.search(domain),
             result_without_split)
+        self.assertIn('UNION', str(Model.search(domain, query=True)))
+        self.assertNotIn('UNION', str(query_without_split))
 
     def test_split_subquery_domain_empty(self):
         """
