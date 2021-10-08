@@ -40,7 +40,6 @@ class CarrierWeightTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Carrier',
                     'default_uom': uom.id,
                     'type': 'service',
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
