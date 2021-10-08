@@ -21,7 +21,6 @@ Create product::
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'service'
-    >>> template.list_price = Decimal('40')
     >>> template.save()
     >>> product, = template.products
 

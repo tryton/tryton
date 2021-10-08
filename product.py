@@ -75,6 +75,9 @@ class Template(
         "regardless of stock level.")
     list_price = fields.MultiValue(fields.Numeric(
             "List Price", digits=price_digits,
+            states={
+                'readonly': ~Eval('context', {}).get('company'),
+                },
             help="The standard price the product is sold at."))
     list_prices = fields.One2Many(
         'product.list_price', 'template', "List Prices")
@@ -360,7 +363,10 @@ class Product(
         'product.identifier', 'product', "Identifiers",
         help="Other identifiers associated with the variant.")
     cost_price = fields.MultiValue(fields.Numeric(
-            "Cost Price", required=True, digits=price_digits,
+            "Cost Price", digits=price_digits,
+            states={
+                'readonly': ~Eval('context', {}).get('company'),
+                },
             help="The amount it costs to purchase or make the variant, "
             "or carry out the service."))
     cost_prices = fields.One2Many(
@@ -478,9 +484,18 @@ class Product(
             return pool.get('product.cost_price')
         return super(Product, cls).multivalue_model(field)
 
+    def set_multivalue(self, name, value, save=True, **pattern):
+        context = Transaction().context
+        if name in {'cost_price', 'list_price'} and not value:
+            if not pattern.get('company', context.get('company')):
+                return []
+        return super().set_multivalue(name, value, save=save, **pattern)
+
     @classmethod
     def default_cost_price(cls, **pattern):
-        return Decimal(0)
+        context = Transaction().context
+        if pattern.get('company', context.get('company')):
+            return Decimal(0)
 
     @classmethod
     def search_template(cls, name, clause):
@@ -623,6 +638,11 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
     list_price = fields.Numeric("List Price", digits=price_digits)
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.company.required = True
+
+    @classmethod
     def __register__(cls, module_name):
         exist = backend.TableHandler.table_exist(cls._table)
 
@@ -712,6 +732,11 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
         depends=['company'])
     cost_price = fields.Numeric(
         "Cost Price", required=True, digits=price_digits)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.company.required = True
 
     @classmethod
     def __register__(cls, module_name):

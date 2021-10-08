@@ -279,7 +279,6 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         pt1, pt2 = Template.create([{
                     'name': 'P1',
                     'type': 'goods',
-                    'list_price': Decimal(20),
                     'default_uom': kilogram.id,
                     'products': [('create', [{
                                     'code': '1',
@@ -287,7 +286,6 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
                     }, {
                     'name': 'P2',
                     'type': 'goods',
-                    'list_price': Decimal(20),
                     'default_uom': millimeter.id,
                     'products': [('create', [{
                                     'code': '2',
@@ -318,7 +316,6 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
             'name': 'Some product-1',
             'categories': [('add', [category1.id])],
             'type': 'goods',
-            'list_price': Decimal('10'),
             'default_uom': uom.id,
             'products': [('create', [{}])],
             }
@@ -326,7 +323,6 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
             'name': 'Some product-2',
             'categories': [('add', [category2.id])],
             'type': 'goods',
-            'list_price': Decimal('10'),
             'default_uom': uom.id,
             'products': [('create', [{}])],
             }
@@ -397,14 +393,12 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         values1 = {
             'name': 'Product A',
             'type': 'assets',
-            'list_price': Decimal('10'),
             'default_uom': uom.id,
             'products': [('create', [{'suffix_code': 'AA'}])],
             }
         values2 = {
             'name': 'Product B',
             'type': 'goods',
-            'list_price': Decimal('10'),
             'default_uom': uom.id,
             'products': [('create', [{'suffix_code': 'BB'}])],
             }

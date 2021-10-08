@@ -7,10 +7,15 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.modules.company.tests.tools import create_company
 
 Activate modules::
 
     >>> config = activate_modules('product')
+
+Create company::
+
+    >>> _ = create_company()
 
 Create a template::
 

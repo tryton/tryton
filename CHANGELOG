@@ -1,3 +1,4 @@
+* Prevent editing list and cost prices without a company
 * Make list price not required on product
 * Provide digits from unit of measure
 * Allow only fixed cost price as method for service
