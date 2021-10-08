@@ -6,6 +6,7 @@ from collections import defaultdict
 from functools import partial
 
 from sql import Null
+from genshi.template.text import TextTemplate
 
 from trytond.cache import Cache, MemoryCache
 from trytond.config import config
@@ -549,6 +550,10 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ], translate=False,
         string='Extension', help='Leave empty for the same as template, '
         'see LibreOffice documentation for compatible format.')
+    record_name = fields.Char(
+        "Record Name", translate=True,
+        help="A Genshi expression to compute the name using 'record'.\n"
+        "Leave empty for the default name.",)
     module = fields.Char('Module', readonly=True, select=True)
     _template_cache = MemoryCache('ir.action.report.template', context=False)
 
@@ -694,6 +699,23 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     def set_template_cached(self, template):
         self._template_cache.set(self.id, template)
+
+    @classmethod
+    def validate(cls, reports):
+        super().validate(reports)
+        for report in reports:
+            report.check_record_name()
+
+    def check_record_name(self):
+        if not self.record_name:
+            return
+        try:
+            TextTemplate(self.record_name)
+        except Exception as exception:
+            raise ValidationError(
+                gettext('ir.msg_report_invalid_record_name',
+                    report=self.rec_name,
+                    exception=exception)) from exception
 
 
 class ActionActWindow(ActionMixin, ModelSQL, ModelView):

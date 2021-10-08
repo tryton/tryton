@@ -29,6 +29,7 @@ except ImportError:
     weasyprint = None
 
 from genshi.filters import Translator
+from genshi.template.text import TextTemplate
 
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
@@ -161,8 +162,15 @@ class Report(URLMixin, PoolBase):
             name_length = 0
             record_count = len(records)
             max_length = REPORT_NAME_MAX_LENGTH - len(str(record_count)) - 2
+            if action_report.record_name:
+                template = TextTemplate(action_report.record_name)
+            else:
+                template = None
             for record in records[:5]:
-                record_name = record.rec_name
+                if template:
+                    record_name = template.generate(record=record).render()
+                else:
+                    record_name = record.rec_name
                 name_length += len(record_name) + 1
                 if name_length > max_length:
                     break

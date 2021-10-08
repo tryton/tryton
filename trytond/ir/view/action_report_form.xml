@@ -22,7 +22,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name"/>
             <label name="icon"/>
             <field name="icon"/>
-            <newline/>
+            <label name="record_name"/>
+            <field name="record_name"/>
             <label name="report_content"/>
             <group col="-1" id="report_content">
                 <field name="report_content" xexpand="0"/>

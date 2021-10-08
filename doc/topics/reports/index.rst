@@ -56,6 +56,9 @@ When defining an ``ir.action.report`` the following attributes are available:
       report is called with more than one record, a zip file containing all the
       reports will be generated.
 
+    * ``record_name``: A Genshi Expression to compute the filename for each
+      record.
+
 
 Report Usage
 ============
