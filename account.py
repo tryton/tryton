@@ -228,7 +228,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         filename = EDOC2FILENAME[self.syntax] % self.invoice.number
         filename = filename.replace('/', '-')
         return {
-            'fichierFlux': base64.b64encode(data),
+            'fichierFlux': base64.b64encode(data).decode('ascii'),
             'nomFichier': filename,
             'syntaxeFlux': EDOC2SYNTAX[self.syntax],
             'avecSignature': False,
