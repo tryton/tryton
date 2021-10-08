@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import defaultdict
 from itertools import chain
 from decimal import Decimal
 
@@ -582,16 +583,6 @@ class Purchase(
                 return 'waiting'
         return 'none'
 
-    def set_invoice_state(self):
-        '''
-        Set the invoice state.
-        '''
-        state = self.get_invoice_state()
-        if self.invoice_state != state:
-            self.write([self], {
-                    'invoice_state': state,
-                    })
-
     get_shipments = get_shipments_returns('stock.shipment.in')
     get_shipment_returns = get_shipments_returns('stock.shipment.in.return')
 
@@ -611,16 +602,6 @@ class Purchase(
             else:
                 return 'waiting'
         return 'none'
-
-    def set_shipment_state(self):
-        '''
-        Set the shipment state.
-        '''
-        state = self.get_shipment_state()
-        if self.shipment_state != state:
-            self.write([self], {
-                    'shipment_state': state,
-                    })
 
     @classmethod
     def _get_origin(cls):
@@ -804,10 +785,6 @@ class Purchase(
         if getattr(invoice, 'lines', None):
             invoice_lines = list(invoice.lines) + invoice_lines
         invoice.lines = invoice_lines
-        invoice.save()
-
-        invoice.update_taxes()
-        self.copy_resources_to(invoice)
         return invoice
 
     def create_move(self, move_type):
@@ -845,12 +822,8 @@ class Purchase(
         '''
         Create return shipment and return the shipment id
         '''
-        ShipmentInReturn = Pool().get('stock.shipment.in.return')
         return_shipment = self._get_return_shipment()
         return_shipment.moves = return_moves
-        return_shipment.save()
-        self.copy_resources_to(return_shipment)
-        ShipmentInReturn.wait([return_shipment])
         return return_shipment
 
     def is_done(self):
@@ -932,26 +905,79 @@ class Purchase(
     @classmethod
     @ModelView.button
     def process(cls, purchases):
+        states = {'confirmed', 'processing', 'done'}
+        purchases = [p for p in purchases if p.state in states]
+        cls.lock(purchases)
+        cls._process_invoice(purchases)
+        cls._process_shipment(purchases)
+        cls._process_invoice_shipment_states(purchases)
+        cls._process_state(purchases)
+
+    @classmethod
+    def _process_invoice(cls, purchases):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+
+        invoices = {}
+        for purchase in purchases:
+            invoice = purchase.create_invoice()
+            if invoice:
+                invoices[purchase] = invoice
+
+        Invoice.save(invoices.values())
+        Invoice.update_taxes(invoices.values())
+        for purchase, invoice in invoices.items():
+            purchase.copy_resources_to(invoice)
+
+    @classmethod
+    def _process_shipment(cls, purchases):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        ShipmentInReturn = pool.get('stock.shipment.in.return')
+
+        moves, shipments_return = [], {}
+        for purchase in purchases:
+            moves.extend(purchase.create_move('in'))
+            return_moves = purchase.create_move('return')
+            if return_moves:
+                shipments_return[purchase] = purchase.create_return_shipment(
+                    return_moves)
+
+        Move.save(moves)
+
+        ShipmentInReturn.save(shipments_return.values())
+        ShipmentInReturn.wait(shipments_return.values())
+        for purchase, shipment in shipments_return.items():
+            purchase.copy_resources_to(shipment)
+
+    @classmethod
+    def _process_invoice_shipment_states(cls, purchases):
         pool = Pool()
         Line = pool.get('purchase.line')
         lines = []
-        process, done = [], []
-        cls.lock(purchases)
+        invoice_states, shipment_states = defaultdict(list), defaultdict(list)
         for purchase in purchases:
-            if purchase.state not in {'confirmed', 'processing', 'done'}:
-                continue
-            purchase.create_invoice()
-            purchase.set_invoice_state()
-            purchase.create_move('in')
-            return_moves = purchase.create_move('return')
-            if return_moves:
-                purchase.create_return_shipment(return_moves)
-            purchase.set_shipment_state()
+            invoice_state = purchase.get_invoice_state()
+            if purchase.invoice_state != invoice_state:
+                invoice_states[invoice_state].append(purchase)
+            shipment_state = purchase.get_shipment_state()
+            if purchase.shipment_state != shipment_state:
+                shipment_states[shipment_state].append(purchase)
 
             for line in purchase.lines:
                 line.set_actual_quantity()
                 lines.append(line)
 
+        for invoice_state, purchases in invoice_states.items():
+            cls.write(purchases, {'invoice_state': invoice_state})
+        for shipment_state, purchases in shipment_states.items():
+            cls.write(purchases, {'shipment_state': shipment_state})
+        Line.save(lines)
+
+    @classmethod
+    def _process_state(cls, purchases):
+        process, done = [], []
+        for purchase in purchases:
             if purchase.is_done():
                 if purchase.state != 'done':
                     if purchase.state == 'confirmed':
@@ -959,7 +985,6 @@ class Purchase(
                     done.append(purchase)
             elif purchase.state != 'processing':
                 process.append(purchase)
-        Line.save(lines)
         if process:
             cls.proceed(process)
         if done:
