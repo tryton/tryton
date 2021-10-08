@@ -82,21 +82,22 @@ class Sale(metaclass=PoolMeta):
     get_drop_shipments = get_shipments_returns('stock.shipment.drop')
     search_drop_shipments = search_shipments_returns('stock.shipment.drop')
 
-    def create_shipment(self, shipment_type):
-        shipments = super(Sale, self).create_shipment(shipment_type)
-        if shipment_type == 'out':
-            with Transaction().set_context(_drop_shipment=True):
-                self.create_drop_shipment_moves()
-        return shipments
-
-    def create_drop_shipment_moves(self):
+    @classmethod
+    def _process_shipment(cls, sales):
         pool = Pool()
         Move = pool.get('stock.move')
+        super()._process_shipment(sales)
+        moves = []
+        with Transaction().set_context(_drop_shipment=True):
+            for sale in sales:
+                moves.extend(sale.create_drop_shipment_moves())
+        Move.save(moves)
 
+    def create_drop_shipment_moves(self):
         moves = []
         for line in self.lines:
             moves += line.get_drop_moves()
-        Move.save(moves)
+        return moves
 
 
 class Line(metaclass=PoolMeta):

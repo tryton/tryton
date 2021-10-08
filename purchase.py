@@ -147,18 +147,22 @@ class Purchase(metaclass=PoolMeta):
                     'purchase': self.rec_name,
                     })
 
-    def create_move(self, move_type):
+    @classmethod
+    def _process_shipment(cls, purchases):
         pool = Pool()
         DropShipment = pool.get('stock.shipment.drop')
 
-        moves = super(Purchase, self).create_move(move_type)
-        if moves and self.customer and move_type == 'in':
-            drop_shipment = self.create_drop_shipment()
-            drop_shipment.supplier_moves = moves
-            drop_shipment.save()
-            DropShipment.wait([drop_shipment])
-
-        return moves
+        drop_shipments = []
+        for purchase in purchases:
+            if purchase.customer:
+                moves = purchase.create_move('in')
+                if moves:
+                    drop_shipment = purchase.create_drop_shipment()
+                    drop_shipment.supplier_moves = moves
+                    drop_shipments.append(drop_shipment)
+        DropShipment.save(drop_shipments)
+        DropShipment.wait(drop_shipments)
+        super()._process_shipment(purchases)
 
     def create_drop_shipment(self):
         pool = Pool()
