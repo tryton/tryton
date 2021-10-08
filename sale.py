@@ -17,22 +17,35 @@ class Sale(metaclass=PoolMeta):
                 return False
         return done
 
-    def create_shipment(self, shipment_type):
-        if shipment_type == 'out':
+    @classmethod
+    def _process_shipment(cls, sales):
+        pool = Pool()
+        Line = pool.get('sale.line')
+        Move = pool.get('stock.move')
+        PurchaseRequest = pool.get('purchase.request')
+        ShipmentOut = pool.get('stock.shipment.out')
+
+        requests, lines = [], []
+        moves_to_draft, shipments_to_wait = [], []
+        for sale in sales:
             # purchase requests must be created before shipments to get
             # information about requests during the shipments creation
             # like the supplier
-            self.create_purchase_requests()
-            self.create_move_from_supply()
-        shipments = super(Sale, self).create_shipment(shipment_type)
-        return shipments
+            reqs, lns = sale.create_purchase_requests()
+            requests.extend(reqs)
+            lines.extend(lns)
+
+            moves, shipments = sale.create_move_from_supply()
+            moves_to_draft.extend(moves)
+            shipments_to_wait.extend(shipments)
+        PurchaseRequest.save(requests)
+        Line.save(lines)
+        Move.draft(moves_to_draft)
+        ShipmentOut.wait(shipments_to_wait)
+        super()._process_shipment(sales)
 
     def create_purchase_requests(self):
-        pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-        Line = pool.get('sale.line')
-        requests = []
-        lines = []
+        requests, lines = [], []
         for line in self.lines:
             request = line.get_purchase_request()
             if not request:
@@ -41,25 +54,21 @@ class Sale(metaclass=PoolMeta):
             assert not line.purchase_request
             line.purchase_request = request
             lines.append(line)
-        PurchaseRequest.save(requests)
-        Line.save(lines)
+        return requests, lines
 
     def create_move_from_supply(self):
         'Set to draft move linked to supply'
         pool = Pool()
-        Move = pool.get('stock.move')
         ShipmentOut = pool.get('stock.shipment.out')
-
         moves = []
         for line in self.lines:
             if line.supply_state in {'supplied', 'cancelled'}:
                 for move in line.moves:
                     if move.state == 'staging':
                         moves.append(move)
-        Move.draft(moves)
         shipments = {m.shipment for m in moves
             if isinstance(m.shipment, ShipmentOut)}
-        ShipmentOut.wait(shipments)
+        return moves, shipments
 
 
 class Line(metaclass=PoolMeta):
