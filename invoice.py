@@ -492,6 +492,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 self.payment_term = self.party.customer_payment_term
             elif self.type == 'in':
                 self.payment_term = self.party.supplier_payment_term
+        else:
+            self.payment_term = None
 
     @fields.depends('invoice_date')
     def on_change_with_currency_date(self, name=None):
