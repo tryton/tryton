@@ -16,37 +16,52 @@ class ShipmentOut(metaclass=PoolMeta):
     cost_sale_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Sale Currency",
             states={
-                'invisible': Eval('cost_edit', False),
+                'invisible': (
+                    Eval('cost_edit', False)
+                    | (Eval('cost_method') != 'shipment')),
                 },
-            depends=['cost_edit']),
+            depends=['cost_edit', 'cost_method']),
         'on_change_with_cost_sale_currency_used')
     cost_sale_currency = fields.Many2One(
         'currency.currency', "Cost Sale Currency",
         states={
-            'invisible': ~Eval('cost_edit', False),
+            'invisible': (
+                ~Eval('cost_edit', False)
+                | (Eval('cost_method') != 'shipment')),
             'required': Bool(Eval('cost_sale')),
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            }, depends=['cost_sale', 'state'])
+            },
+        depends=['cost_method', 'cost_sale', 'state'])
     cost_sale_used = fields.Function(fields.Numeric(
             "Cost Sale", digits=price_digits,
             states={
-                'invisible': Eval('cost_edit', False),
+                'invisible': (
+                    Eval('cost_edit', False)
+                    | (Eval('cost_method') != 'shipment')),
                 },
-            depends=['cost_edit']),
+            depends=['cost_edit', 'cost_method']),
         'on_change_with_cost_sale_used')
     cost_sale = fields.Numeric(
         "Cost Sale", digits=price_digits,
         states={
-            'invisible': ~Eval('cost_edit', False),
+            'invisible': (
+                ~Eval('cost_edit', False)
+                | (Eval('cost_method') != 'shipment')),
             'readonly': ~Eval('state').in_(['done', 'cancelled']),
-            }, depends=['state'])
+            },
+        depends=['cost_method', 'state'])
 
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
+    cost_method = fields.Selection(
+        'get_cost_methods', 'Cost Method', readonly=True)
 
     @classmethod
     def __register__(cls, module):
         table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
         # Migration from 5.8: rename cost into cost_sale
         if (table_h.column_exist('cost')
                 and not table_h.column_exist('cost_sale')):
@@ -54,7 +69,16 @@ class ShipmentOut(metaclass=PoolMeta):
         if (table_h.column_exist('cost_currency')
                 and not table_h.column_exist('cost_sale_currency')):
             table_h.column_rename('cost_currency', 'cost_sale_currency')
+
+        cost_method_exists = table_h.column_exist('cost_method')
+
         super().__register__(module)
+
+        # Migration from 6.0: fill new cost_method field
+        if not cost_method_exists:
+            cursor.execute(*table.update(
+                    columns=[table.cost_method],
+                    values=['shipment']))
 
     @fields.depends('carrier', 'company', methods=['_get_carrier_context'])
     def _compute_costs(self):
@@ -63,7 +87,7 @@ class ShipmentOut(metaclass=PoolMeta):
                 'cost_sale': None,
                 'cost_sale_currency': None,
                 })
-        if self.carrier:
+        if self.carrier and self.cost_method == 'shipment':
             with Transaction().set_context(self._get_carrier_context()):
                 cost_sale, sale_currency_id = self.carrier.get_sale_price()
             if cost_sale is not None:
@@ -93,6 +117,13 @@ class ShipmentOut(metaclass=PoolMeta):
         if self.cost_edit:
             self.cost_sale = self.cost_sale_used
             self.cost_sale_currency = self.cost_sale_currency_used
+
+    @classmethod
+    def get_cost_methods(cls):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        fieldname = 'shipment_cost_method'
+        return Sale.fields_get([fieldname])[fieldname]['selection']
 
     def _get_cost_tax_rule_pattern(self):
         'Get tax rule pattern for invoice line'

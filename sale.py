@@ -281,12 +281,24 @@ class Sale(metaclass=PoolMeta):
         return cost_line
 
     @property
+    def _shipment_grouping_fields(self):
+        return super()._shipment_grouping_fields + ('cost_method',)
+
+    @property
     def shipment_cost_amount(self):
         cost = Decimal(0)
         for line in self.lines:
             if line.type == 'line' and line.shipment_cost is not None:
                 cost += line.amount
         return cost
+
+    def _get_shipment_sale(self, Shipment, key):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        shipment = super()._get_shipment_sale(Shipment, key)
+        if isinstance(shipment, ShipmentOut):
+            shipment.cost_method = self.shipment_cost_method
+        return shipment
 
     def create_shipment(self, shipment_type):
         shipments = super().create_shipment(shipment_type)

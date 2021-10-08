@@ -1,3 +1,5 @@
+* Add cost method to shipment
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Allow to add a sale shipment line with cost 0

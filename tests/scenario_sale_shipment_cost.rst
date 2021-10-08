@@ -139,6 +139,8 @@ Send products::
 
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
+    >>> shipment.cost_method
+    'shipment'
     >>> shipment.carrier == carrier
     True
     >>> shipment.cost_used
@@ -317,7 +319,6 @@ Send products::
     >>> shipment.cost_used
     Decimal('2.0000')
     >>> shipment.cost_sale_used
-    Decimal('3.0000')
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
