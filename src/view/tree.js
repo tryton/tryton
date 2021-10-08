@@ -1674,6 +1674,7 @@
                 params.res_id = this.field.get(record);
                 params.mode = ['form'];
                 params.name = this.attributes.string;
+                params.context = this.field.get_context(record);
                 Sao.Tab.create(params);
             }.bind(this));
         }
