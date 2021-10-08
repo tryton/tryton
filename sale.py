@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
@@ -567,16 +568,6 @@ class Sale(
                 return 'waiting'
         return 'none'
 
-    def set_invoice_state(self):
-        '''
-        Set the invoice state.
-        '''
-        state = self.get_invoice_state()
-        if self.invoice_state != state:
-            self.write([self], {
-                    'invoice_state': state,
-                    })
-
     get_shipments = get_shipments_returns('stock.shipment.out')
     get_shipment_returns = get_shipments_returns('stock.shipment.out.return')
 
@@ -596,16 +587,6 @@ class Sale(
             else:
                 return 'waiting'
         return 'none'
-
-    def set_shipment_state(self):
-        '''
-        Set the shipment state.
-        '''
-        state = self.get_shipment_state()
-        if self.shipment_state != state:
-            self.write([self], {
-                    'shipment_state': state,
-                    })
 
     @classmethod
     def _get_origin(cls):
@@ -881,8 +862,6 @@ class Sale(
             shipment.save()
             self.copy_resources_to(shipment)
             shipments.append(shipment)
-        if shipment_type == 'out':
-            Shipment.wait(shipments)
         return shipments
 
     def is_done(self):
@@ -964,25 +943,86 @@ class Sale(
     @classmethod
     @ModelView.button
     def process(cls, sales):
+        states = {'confirmed', 'processing', 'done'}
+        sales = [s for s in sales if s.state in states]
+        cls.lock(sales)
+        cls._process_invoice(sales)
+        cls._process_shipment(sales)
+        cls._process_invoice_shipment_states(sales)
+        cls._process_state(sales)
+
+    @classmethod
+    def _process_invoice(cls, sales):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+
+        invoices = {}
+        for sale in sales:
+            invoice = sale.create_invoice()
+            if invoice:
+                invoices[sale] = invoice
+
+        Invoice.save(invoices.values())
+        Invoice.update_taxes(invoices.values())
+        for sale, invoice in invoices.items():
+            sale.copy_resources_to(invoice)
+
+    @classmethod
+    def _process_shipment(cls, sales):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        ShipmentOutReturn = pool.get('stock.shipment.out.return')
+
+        shipments_out, shipments_return = {}, {}
+        for sale in sales:
+            shipments = sale.create_shipment('out')
+            if shipments:
+                shipments_out[sale] = shipments
+            shipments = sale.create_shipment('return')
+            if shipments:
+                shipments_return[sale] = shipments
+
+        shipments = sum((v for v in shipments_out.values()), [])
+        ShipmentOut.save(shipments)
+        ShipmentOut.wait(shipments)
+        for sale, shipments in shipments_out.items():
+            for shipment in shipments:
+                sale.copy_resources_to(shipment)
+
+        shipments = sum((v for v in shipments_return.values()), [])
+        ShipmentOutReturn.save(shipments)
+        for sale, shipments in shipments_return.items():
+            for shipment in shipments:
+                sale.copy_resources_to(shipment)
+
+    @classmethod
+    def _process_invoice_shipment_states(cls, sales):
         pool = Pool()
         Line = pool.get('sale.line')
         lines = []
-        done = []
-        process = []
-        cls.lock(sales)
+        invoice_states, shipment_states = defaultdict(list), defaultdict(list)
         for sale in sales:
-            if sale.state not in ('confirmed', 'processing', 'done'):
-                continue
-            sale.create_invoice()
-            sale.set_invoice_state()
-            sale.create_shipment('out')
-            sale.create_shipment('return')
-            sale.set_shipment_state()
+            invoice_state = sale.get_invoice_state()
+            if sale.invoice_state != invoice_state:
+                invoice_states[invoice_state].append(sale)
+            shipment_state = sale.get_shipment_state()
+            if sale.shipment_state != shipment_state:
+                shipment_states[shipment_state].append(sale)
 
             for line in sale.lines:
                 line.set_actual_quantity()
                 lines.append(line)
 
+        for invoice_state, sales in invoice_states.items():
+            cls.write(sales, {'invoice_state': invoice_state})
+        for shipment_state, sales in shipment_states.items():
+            cls.write(sales, {'shipment_state': shipment_state})
+        Line.save(lines)
+
+    @classmethod
+    def _process_state(cls, sales):
+        done, process = [], []
+        for sale in sales:
             if sale.is_done():
                 if sale.state != 'done':
                     if sale.state == 'confirmed':
@@ -990,7 +1030,6 @@ class Sale(
                     done.append(sale)
             elif sale.state != 'processing':
                 process.append(sale)
-        Line.save(lines)
         if process:
             cls.proceed(process)
         if done:
