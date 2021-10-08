@@ -4,8 +4,12 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="party"/>
     <field name="party"/>
-    <label name="sequence"/>
-    <field name="sequence"/>
+    <group colspan="2" col="-1" id="checkboxes">
+        <label name="active"/>
+        <field name="active"/>
+        <label name="sequence"/>
+        <field name="sequence"/>
+    </group>
     <label name="type"/>
     <field name="type"/>
     <label name="code"/>

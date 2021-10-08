@@ -15,14 +15,22 @@ Create a party::
 
     >>> Party = Model.get('party.party')
     >>> party1 = Party(name='Pam')
+    >>> identifier1 = party1.identifiers.new()
+    >>> identifier1.type = 'eu_vat'
+    >>> identifier1.code = 'BE0897290877'
     >>> party1.save()
     >>> address1, = party1.addresses
+    >>> identifier1, = party1.identifiers
 
 Create a second party similar party::
 
     >>> party2 = Party(name='Pam')
+    >>> identifier2 = party2.identifiers.new()
+    >>> identifier2.type = 'eu_vat'
+    >>> identifier2.code = 'BE0897290877'
     >>> party2.save()
     >>> address2, = party2.addresses
+    >>> identifier2, = party2.identifiers
 
 Replace the second by the first party::
 
@@ -34,6 +42,12 @@ Replace the second by the first party::
 
     >>> party2.reload()
     >>> bool(party2.active)
+    False
+
+    >>> identifier2.reload()
+    >>> identifier2.party == party1
+    True
+    >>> bool(identifier2.active)
     False
 
     >>> address2.reload()

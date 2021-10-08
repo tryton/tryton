@@ -564,7 +564,7 @@ TAX_IDENTIFIER_TYPES = [
     ]
 
 
-class Identifier(sequence_ordered(), ModelSQL, ModelView):
+class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     'Party Identifier'
     __name__ = 'party.identifier'
     _rec_name = 'code'
@@ -754,6 +754,7 @@ class Replace(Wizard):
         pool = Pool()
         Address = pool.get('party.address')
         ContactMechanism = pool.get('party.contact_mechanism')
+        Identifier = pool.get('party.identifier')
         transaction = Transaction()
 
         self.check_similarity()
@@ -764,6 +765,9 @@ class Replace(Wizard):
                 'active': False,
                 })
         ContactMechanism.write(list(source.contact_mechanisms), {
+                'active': False,
+                })
+        Identifier.write(list(source.identifiers), {
                 'active': False,
                 })
         source.replaced_by = destination
@@ -801,6 +805,7 @@ class Replace(Wizard):
         return [
             ('party.address', 'party'),
             ('party.contact_mechanism', 'party'),
+            ('party.identifier', 'party'),
             ]
 
 
