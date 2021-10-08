@@ -26,7 +26,6 @@ class Purchase(order_mixin('purchase'), metaclass=PoolMeta):
                     move = component.get_move(move_type)
                     if move:
                         moves.append(move)
-        Move.save(moves)
         return moves
 
     @get_shipments_returns('stock.shipment.in')
