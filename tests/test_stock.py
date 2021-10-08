@@ -41,7 +41,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': 'Test Move.internal_quantity',
                     'type': 'goods',
-                    'list_price': Decimal(1),
                     'default_uom': kg.id,
                     }])
         product, = Product.create([{
@@ -97,7 +96,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': 'Test products_by_location',
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': kg.id,
                     }])
         product, = Product.create([{
@@ -383,7 +381,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': 'Test products_by_location',
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{
@@ -488,7 +485,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': "Product",
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{
@@ -600,7 +596,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': "Product",
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{
@@ -689,7 +684,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': 'Template',
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product1, product2 = Product.create([{
@@ -761,7 +755,6 @@ class StockTestCase(
                     'name': 'Test period',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -942,7 +935,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': 'Test Move.check_origin',
                     'type': 'goods',
-                    'list_price': Decimal(1),
                     'default_uom': uom.id,
                     }])
         product, = Product.create([{
@@ -992,7 +984,6 @@ class StockTestCase(
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
@@ -1057,7 +1048,6 @@ class StockTestCase(
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
@@ -1113,7 +1103,6 @@ class StockTestCase(
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
@@ -1166,7 +1155,6 @@ class StockTestCase(
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
@@ -1241,7 +1229,6 @@ class StockTestCase(
         template = Template(
             name='Test Move.assign_try',
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
@@ -1312,7 +1299,6 @@ class StockTestCase(
         template = Template(
             name="Product",
             type='goods',
-            list_price=Decimal(1),
             default_uom=unit,
             )
         template.save()
@@ -1332,7 +1318,7 @@ class StockTestCase(
                         'to_location': storage.id,
                         'planned_date': today,
                         'company': company.id,
-                        'unit_price': product.cost_price,
+                        'unit_price': Decimal('1'),
                         'currency': company.currency.id,
                         }])
             move_customer, = Move.create([{
@@ -1343,7 +1329,7 @@ class StockTestCase(
                         'to_location': customer.id,
                         'planned_date': today + relativedelta(days=1),
                         'company': company.id,
-                        'unit_price': product.list_price,
+                        'unit_price': Decimal('1'),
                         'currency': company.currency.id,
                         }])
 
@@ -1427,7 +1413,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': "Product",
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{'template': template.id}])
@@ -1467,7 +1452,6 @@ class StockTestCase(
         template, = Template.create([{
                     'name': "Product",
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{'template': template.id}])
