@@ -547,7 +547,11 @@ function eval_pyson(value){
             if (attributes.xalign !== undefined) {
                 var xalign;
                 if (attributes.xalign == 0.5) {
-                    xalign = 'center';
+                    if (xexpand) {
+                        xalign = 'start';
+                    } else {
+                        xalign = 'center';
+                    }
                 } else {
                     xalign = attributes.xalign <= 0.5? 'start': 'end';
                 }
