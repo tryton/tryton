@@ -449,6 +449,8 @@ class Purchase(
 
             if self.party.supplier_payment_term:
                 self.payment_term = self.party.supplier_payment_term
+        else:
+            self.payment_term = None
 
     @fields.depends('party', 'invoice_party')
     def on_change_invoice_party(self):
