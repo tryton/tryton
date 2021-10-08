@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from . import ir
+from . import res
 from . import company
 from . import product
 from . import account
@@ -15,6 +16,7 @@ def register():
     Pool.register(
         ir.Cron,
         ir.CronWarehouse,
+        res.User,
         company.Company,
         product.Configuration,
         product.ConfigurationCostPriceWarehouse,

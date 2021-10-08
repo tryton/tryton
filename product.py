@@ -36,6 +36,17 @@ class ConfigurationCostPriceWarehouse(ModelSQL, CompanyValueMixin):
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        readonly = (
+            Eval('context', {}).get('cost_price_warehouse', False)
+            & ~Eval('context', {}).get('warehouse'))
+        if cls.cost_price.states['readonly']:
+            cls.cost_price.states['readonly'] |= readonly
+        else:
+            cls.cost_price.states['readonly'] = readonly
+
     def multivalue_records(self, field):
         Value = self.multivalue_model(field)
         records = super().multivalue_records(field)
@@ -64,6 +75,8 @@ class Product(metaclass=PoolMeta):
             company = Company(context['company'])
             if company.cost_price_warehouse:
                 pattern.setdefault('warehouse', context.get('warehouse'))
+            if not value and not pattern.get('warehouse'):
+                return []
         return super().set_multivalue(name, value, save=save, **pattern)
 
     @classmethod
@@ -161,6 +174,15 @@ class Product(metaclass=PoolMeta):
                         ],
                     ]
         return domain
+
+    @classmethod
+    def default_cost_price(cls, **pattern):
+        context = Transaction().context
+        default = super().default_cost_price()
+        if (context.get('cost_price_warehouse')
+                and not pattern.get('warehouse', context.get('warehouse'))):
+            default = None
+        return default
 
 
 class CostPrice(metaclass=PoolMeta):
