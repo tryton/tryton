@@ -436,6 +436,7 @@ class Commission(ModelSQL, ModelView):
     def invoice(cls, commissions):
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        InvoiceLine = pool.get('account.invoice.line')
 
         def invoice_key(c):
             return c._group_to_invoice_key()
@@ -444,12 +445,12 @@ class Commission(ModelSQL, ModelView):
             return c._group_to_invoice_line_key()
         commissions.sort(key=invoice_key)
         invoices = []
-        to_write = []
+        invoice_lines = []
+        to_save = []
         for key, commissions in groupby(commissions, key=invoice_key):
             commissions = list(commissions)
             key = dict(key)
             invoice = cls._get_invoice(key)
-            invoice.save()
             invoices.append(invoice)
 
             commissions.sort(key=line_key)
@@ -457,13 +458,14 @@ class Commission(ModelSQL, ModelView):
                 commissions = [c for c in commissions if not c.invoice_line]
                 key = dict(key)
                 invoice_line = cls._get_invoice_line(key, invoice, commissions)
-                invoice_line.save()
-                to_write.extend([commissions, {
-                            'invoice_line': invoice_line.id,
-                            }])
-        if to_write:
-            cls.write(*to_write)
+                invoice_lines.append(invoice_line)
+                for commission in commissions:
+                    commission.invoice_line = invoice_line
+                    to_save.append(commission)
+        Invoice.save(invoices)
+        InvoiceLine.save(invoice_lines)
         Invoice.update_taxes(invoices)
+        cls.save(to_save)
 
     def _group_to_invoice_key(self):
         direction = {
