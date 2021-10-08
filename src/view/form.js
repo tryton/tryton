@@ -140,7 +140,7 @@ function eval_pyson(value){
                 } else {
                     xalign = xalign <= 0.5? 'start' : 'end';
                 }
-                separator.label.css('text-align', xalign);
+                separator.label_el.css('text-align', xalign);
             }
             this.view.state_widgets.push(separator);
             this.container.add(separator, attributes);
