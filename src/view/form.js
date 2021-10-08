@@ -2484,6 +2484,7 @@ function eval_pyson(value){
                     params.res_id = m2o_id;
                     params.mode = ['form'];
                     params.name = this.attributes.string;
+                    params.context = this.field.get_context(this.record);
                     Sao.Tab.create(params);
                     return;
                 }
