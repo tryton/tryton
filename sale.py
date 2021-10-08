@@ -9,14 +9,19 @@ from trytond.pool import PoolMeta, Pool
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
-    def create_shipment(self, shipment_type):
-        if shipment_type == 'out':
-            self.create_productions()
-        return super().create_shipment(shipment_type)
-
-    def create_productions(self):
+    @classmethod
+    def _process_shipment(cls, sales):
         pool = Pool()
         Production = pool.get('production')
+
+        productions = []
+        for sale in sales:
+            productions.extend(sale.create_productions())
+        Production.save(productions)
+        Production.set_moves(productions)
+        super()._process_shipment(sales)
+
+    def create_productions(self):
         productions = []
         for line in self.lines:
             production = line.get_production()
@@ -26,8 +31,7 @@ class Sale(metaclass=PoolMeta):
                 production.on_change_with_planned_start_date())
             productions.append(production)
             assert not line.productions
-        Production.save(productions)
-        Production.set_moves(productions)
+        return productions
 
 
 class Line(metaclass=PoolMeta):
