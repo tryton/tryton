@@ -560,6 +560,9 @@ class CreateInvoice(Wizard):
             domain.append(('agent.type_', '=', 'principal'))
         elif self.ask.type_ == 'out':
             domain.append(('agent.type_', '=', 'agent'))
+        if self.ask.agents:
+            agents = [agent.id for agent in self.ask.agents]
+            domain.append(('agent', 'in', agents))
         return domain
 
     def do_create_(self, action):
@@ -597,6 +600,17 @@ class CreateInvoiceAsk(ModelView):
             ('both', 'Both'),
             ], 'Type',
         help="Limit to commissions of this type.")
+    agents = fields.Many2Many(
+        'commission.agent', None, None, "Agents",
+        domain=[
+            If(Eval('type_') == 'in',
+                ('type_', '=', 'principal'), ()),
+            If(Eval('type_') == 'out',
+                ('type_', '=', 'agent'), ()),
+        ],
+        depends=['type_'],
+        help="Limit to commissions for these agents.\n"
+        "If empty all agents of the selected type are used.")
 
     @staticmethod
     def default_type_():
