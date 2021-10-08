@@ -289,14 +289,10 @@ class Sale(metaclass=PoolMeta):
         return cost
 
     def create_shipment(self, shipment_type):
-        pool = Pool()
-        Shipment = pool.get('stock.shipment.out')
-
-        shipments = super(Sale, self).create_shipment(shipment_type)
+        shipments = super().create_shipment(shipment_type)
         if shipment_type == 'out' and shipments and self.carrier:
             for shipment in shipments:
                 shipment.carrier = self.carrier
-        Shipment.save(shipments)
         return shipments
 
     def create_invoice(self):
@@ -304,7 +300,7 @@ class Sale(metaclass=PoolMeta):
         InvoiceLine = pool.get('account.invoice.line')
         Shipment = pool.get('stock.shipment.out')
 
-        invoice = super(Sale, self).create_invoice()
+        invoice = super().create_invoice()
         if invoice and self.shipment_cost_method == 'shipment':
             invoice_lines = []
             # Copy shipments to avoid losing changes as the cache is cleared
@@ -322,7 +318,6 @@ class Sale(metaclass=PoolMeta):
                     shipment.cost_invoice_line = invoice_line
             InvoiceLine.save(invoice_lines)
             Shipment.save(shipments)
-            invoice.update_taxes()
         return invoice
 
 
