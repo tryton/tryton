@@ -282,7 +282,7 @@ class Sale(metaclass=PoolMeta):
 
     @property
     def _shipment_grouping_fields(self):
-        return super()._shipment_grouping_fields + ('cost_method',)
+        return super()._shipment_grouping_fields + ('cost_method', 'carrier')
 
     @property
     def shipment_cost_amount(self):
@@ -298,14 +298,8 @@ class Sale(metaclass=PoolMeta):
         shipment = super()._get_shipment_sale(Shipment, key)
         if isinstance(shipment, ShipmentOut):
             shipment.cost_method = self.shipment_cost_method
+            shipment.carrier = self.carrier
         return shipment
-
-    def create_shipment(self, shipment_type):
-        shipments = super().create_shipment(shipment_type)
-        if shipment_type == 'out' and shipments and self.carrier:
-            for shipment in shipments:
-                shipment.carrier = self.carrier
-        return shipments
 
     def create_invoice(self):
         pool = Pool()
