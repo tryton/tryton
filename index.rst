@@ -80,8 +80,8 @@ Referential
 `Country </projects/modules-country/en/latest>`_
     ISO 3166 list of countries and subdivisions.
 
-`Currency </projects/modules-currency/en/latest>`_
-    ISO 4217 list of currencies.
+:ref:`Currency <index-currency>`
+    Manage currencies
 
 `Customs </projects/modules-customs/en/latest>`_
     Defines customs duty per tariff code.
