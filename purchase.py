@@ -545,9 +545,12 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             return self.requisition.rec_name
 
     def _get_purchase_request_product_supplier_pattern(self):
-        return {
+        pattern = {
             'company': self.requisition.company.id,
             }
+        if self.supplier:
+            pattern['party'] = self.supplier.id
+        return pattern
 
     def compute_request(self):
         """
@@ -562,15 +565,18 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         supply_date = self.requisition.supply_date
-        purchase_date = supply_date
+        supplier = None
+        purchase_date = None
 
-        if not self.supplier and self.product:
+        if self.product:
             supplier, purchase_date = Request.find_best_supplier(
                 self.product, supply_date,
                 **self._get_purchase_request_product_supplier_pattern())
-        else:
-            supplier = self.supplier
-            # TODO compute purchase_date for product_supplier
+        elif self.supplier:
+            lead_time = self.supplier.get_multivalue(
+                'supplier_lead_time', company=self.requisition.company.id)
+            if lead_time is not None:
+                purchase_date = supply_date - lead_time
 
         uom = self.unit
         quantity = self.quantity
@@ -583,7 +589,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         return Request(
             product=self.product,
             description=self.description,
-            party=supplier,
+            party=supplier or self.supplier,
             quantity=quantity,
             uom=uom,
             computed_quantity=self.quantity,
