@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, DictSchemaMixin, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
@@ -51,3 +52,27 @@ class Product(metaclass=PoolMeta):
             },
         depends=['attribute_set'],
         help="Add attributes to the variant.")
+    attributes_name = fields.Function(fields.Char(
+            "Attributes Name",
+            states={
+                'invisible': ~Eval('attribute_set'),
+                },
+            depends=['attribute_set']),
+        'on_change_with_attributes_name')
+
+    @fields.depends('attribute_set', 'attributes')
+    def on_change_with_attributes_name(self, name=None):
+        if not self.attribute_set or not self.attributes:
+            return
+
+        def key(attribute):
+            return getattr(attribute, 'sequence', attribute.name)
+
+        values = []
+        for attribute in sorted(self.attribute_set.attributes, key=key):
+            if attribute.name in self.attributes:
+                value = self.attributes[attribute.name]
+                values.append(gettext('product_attribute.msg_label_value',
+                        label=attribute.string,
+                        value=attribute.format(value)))
+        return " | ".join(filter(None, values))
