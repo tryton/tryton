@@ -12,6 +12,7 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from .field import (Field, size_validate, instanciate_values, domain_validate,
     search_order_validate, context_validate, instantiate_context)
+from .function import Function
 
 
 class One2Many(Field):
@@ -126,6 +127,13 @@ class One2Many(Field):
         for i in ids:
             res[i] = []
 
+        if (not isinstance(field, Function)
+                or hasattr(Target, 'order_' + self.field)):
+            order = [(self.field, None)]
+        else:
+            order = []
+        if self.order:
+            order += self.order
         targets = []
         for sub_ids in grouped_slice(ids):
             if field._type == 'reference':
@@ -135,8 +143,8 @@ class One2Many(Field):
                 clause = [(self.field, 'in', list(sub_ids))]
             if self.filter:
                 clause.append(self.filter)
-            targets.append(Target.search(clause, order=self.order))
-        targets = list(chain(*targets))
+            targets.append(Target.search(clause, order=order))
+        targets = Target.browse(list(chain(*targets)))
 
         for target in targets:
             origin_id = getattr(target, self.field).id

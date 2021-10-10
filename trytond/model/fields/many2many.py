@@ -13,6 +13,7 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from .field import (Field, size_validate, instanciate_values, domain_validate,
     search_order_validate, context_validate, instantiate_context)
+from .function import Function
 
 
 class Many2Many(Field):
@@ -121,13 +122,18 @@ class Many2Many(Field):
         for i in ids:
             res[i] = []
 
-        if self.order is None:
-            order = [(self.target, 'ASC')]
-        else:
-            order = self.order
-
         Relation = self.get_relation()
         origin_field = Relation._fields[self.origin]
+
+        if (not isinstance(origin_field, Function)
+                or hasattr(Relation, 'order_' + self.field)):
+            order = [(self.origin, None)]
+        else:
+            order = []
+        if self.order is None:
+            order += [(self.target, None)]
+        else:
+            order += self.order
 
         relations = []
         for sub_ids in grouped_slice(ids):
@@ -140,7 +146,7 @@ class Many2Many(Field):
             if self.filter:
                 clause.append((self.target, 'where', self.filter))
             relations.append(Relation.search(clause, order=order))
-        relations = list(chain(*relations))
+        relations = Relation.browse(list(chain(*relations)))
 
         for relation in relations:
             origin_id = getattr(relation, self.origin).id
