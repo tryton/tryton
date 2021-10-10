@@ -1,3 +1,4 @@
+* Allow setting a single contact mechanism at party creation
 * Make identifiers deactivatable
 * Replace party on identifier when replacing parties
 * Add au_abn and au_acn as tax identifiers

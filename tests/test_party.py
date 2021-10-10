@@ -13,6 +13,7 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 from trytond.exceptions import UserError
+from trytond.model.exceptions import AccessError
 from trytond.transaction import Transaction
 
 from ..party import IDENTIFIER_TYPES
@@ -298,6 +299,30 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
 
         # Test acceptance of a non-phone value when type is non-phone
         mechanism = create('email', 'name@example.com')
+
+    @with_transaction()
+    def test_set_contact_mechanism(self):
+        "Test set_contact_mechanism"
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        party = Party(email='test@example.com')
+        party.save()
+
+        self.assertEqual(party.email, 'test@example.com')
+
+    @with_transaction()
+    def test_set_contact_mechanism_with_value(self):
+        "Test set_contact_mechanism"
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        party = Party(email='foo@example.com')
+        party.save()
+
+        party.email = 'bar@example.com'
+        with self.assertRaises(AccessError):
+            party.save()
 
     @with_transaction()
     def test_contact_mechanism_get_no_usage(self):

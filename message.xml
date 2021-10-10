@@ -6,6 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_party_code_unique">
             <field name="text">The code on party must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_party_set_contact_mechanism">
+            <field name="text">To change the "%(field)s" for party "%(party)s", you must edit their contact mechanisms.</field>
+        </record>
         <record model="ir.message" id="msg_contact_mechanism_change_party">
             <field name="text">You cannot change the party of contact mechanism "%(contact)s".</field>
         </record>

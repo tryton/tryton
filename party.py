@@ -9,6 +9,7 @@ from sql.functions import CharLength, Substring, Position
 from trytond.i18n import gettext
 from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
     DeactivableMixin, fields, Unique, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -19,10 +20,16 @@ from trytond.tools import lstrip_wildcard
 from .exceptions import (
     InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
 
+from .contact_mechanism import _PHONE_TYPES
+
 
 class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     "Party"
     __name__ = 'party.party'
+
+    _contact_mechanism_states = {
+        'readonly': Eval('id', -1) >= 0,
+        }
 
     name = fields.Char(
         "Name", select=True,
@@ -59,12 +66,24 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
             },
         help="The party replacing this one.")
     full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
-    phone = fields.Function(fields.Char('Phone'), 'get_mechanism')
-    mobile = fields.Function(fields.Char('Mobile'), 'get_mechanism')
-    fax = fields.Function(fields.Char('Fax'), 'get_mechanism')
-    email = fields.Function(fields.Char('E-Mail'), 'get_mechanism')
-    website = fields.Function(fields.Char('Website'), 'get_mechanism')
+    phone = fields.Function(
+        fields.Char("Phone", states=_contact_mechanism_states),
+        'get_contact_mechanism', setter='set_contact_mechanism')
+    mobile = fields.Function(
+        fields.Char("Mobile", states=_contact_mechanism_states),
+        'get_contact_mechanism', setter='set_contact_mechanism')
+    fax = fields.Function(
+        fields.Char("Fax", states=_contact_mechanism_states),
+        'get_contact_mechanism', setter='set_contact_mechanism')
+    email = fields.Function(
+        fields.Char("E-Mail", states=_contact_mechanism_states),
+        'get_contact_mechanism', setter='set_contact_mechanism')
+    website = fields.Function(
+        fields.Char("Website", states=_contact_mechanism_states),
+        'get_contact_mechanism', setter='set_contact_mechanism')
     distance = fields.Function(fields.Integer('Distance'), 'get_distance')
+
+    del _contact_mechanism_states
 
     @classmethod
     def __setup__(cls):
@@ -155,11 +174,30 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     def get_full_name(self, name):
         return self.name
 
-    def get_mechanism(self, name):
+    def get_contact_mechanism(self, name):
         for mechanism in self.contact_mechanisms:
             if mechanism.type == name:
                 return mechanism.value
         return ''
+
+    @classmethod
+    def set_contact_mechanism(cls, parties, name, value):
+        pool = Pool()
+        ContactMechanism = pool.get('party.contact_mechanism')
+        contact_mechanisms = []
+        for party in parties:
+            if getattr(party, name):
+                type_string = cls.fields_get([name])[name]['string']
+                raise AccessError(gettext(
+                        'party.msg_party_set_contact_mechanism',
+                        party=party.rec_name,
+                        field=type_string))
+            if value:
+                contact_mechanisms.append(ContactMechanism(
+                        party=party,
+                        type=name,
+                        value=value))
+        ContactMechanism.save(contact_mechanisms)
 
     @classmethod
     def _distance_query(cls, usages=None, party=None, depth=None):
@@ -209,6 +247,14 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         else:
             query, _ = tables[key][None]
         return [query.distance]
+
+    @classmethod
+    def index_set_field(cls, name):
+        index = super().index_set_field(name)
+        if name in _PHONE_TYPES:
+            # Phone validation may need the address country
+            index = cls.index_set_field('addresses') + 1
+        return index
 
     @classmethod
     def _new_code(cls, **pattern):
