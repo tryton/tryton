@@ -18,5 +18,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_party_no_id">
             <field name="text">The party "%(party)s" is missing a "%(type)s" identifier.</field>
         </record>
+        <record model="ir.message" id="msg_mandate_title">
+            <field name="text">SEPA $(scheme)s Direct Debit MANDATE</field>
+        </record>
+        <record model="ir.message" id="msg_mandate_authorisation_statement">
+            <field name="text">By signing this mandate form, you authorise (A) %(creditor)s to send instructions to your bank to debit your account and (B) your bank to debit your account in accordance with the instructions from %(creditor)s.</field>
+        </record>
     </data>
 </tryton>

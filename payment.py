@@ -737,6 +737,12 @@ class Mandate(Workflow, ModelSQL, ModelView):
 class MandateReport(CompanyReport):
     __name__ = 'account.payment.sepa.mandate'
 
+    @classmethod
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
+        context['gettext'] = gettext
+        return context
+
 
 class Message(Workflow, ModelSQL, ModelView):
     'SEPA Message'
