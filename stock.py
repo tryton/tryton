@@ -47,7 +47,7 @@ class ShipmentOut(metaclass=PoolMeta):
             'invisible': (
                 ~Eval('cost_edit', False)
                 | (Eval('cost_method') != 'shipment')),
-            'readonly': ~Eval('state').in_(['done', 'cancelled']),
+            'readonly': Eval('state').in_(['done', 'cancelled']),
             },
         depends=['cost_method', 'state'])
 
