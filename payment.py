@@ -9,7 +9,7 @@ from io import BytesIO
 import genshi
 import genshi.template
 from lxml import etree
-from sql import Literal
+from sql import Literal, Null
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -207,20 +207,28 @@ class Group(metaclass=PoolMeta):
     def process_sepa(self):
         pool = Pool()
         Payment = pool.get('account.payment')
+        Mandate = pool.get('account.payment.sepa.mandate')
         if self.kind == 'receivable':
-            mandates = Payment.get_sepa_mandates(self.payments)
-            for payment, mandate in zip(self.payments, mandates):
+            payments = list(self.payments)
+            mandates = Payment.get_sepa_mandates(payments)
+            Mandate.lock(mandates)
+            sequence_types = {}
+            for payment, mandate in zip(payments, mandates):
                 if not mandate:
                     raise ProcessError(
                         gettext('account_payment_sepa'
                             '.msg_payment_process_no_mandate',
                             payment=payment.rec_name))
-                # Write one by one because mandate.sequence_type must be
-                # recomputed each time
-                Payment.write([payment], {
-                        'sepa_mandate': mandate,
-                        'sepa_mandate_sequence_type': mandate.sequence_type,
-                        })
+                sequence_type = sequence_types.get(mandate)
+                if not sequence_type:
+                    sequence_type = mandate.sequence_type
+                    if sequence_type == 'FRST':
+                        sequence_types[mandate] = 'RCUR'
+                    else:
+                        sequence_types[mandate] = sequence_type
+                payment.sepa_mandate = mandate
+                payment.sepa_mandate_sequence_type = sequence_type
+            Payment.save(payments)
         else:
             for payment in self.payments:
                 if not payment.sepa_bank_account_number:
@@ -483,6 +491,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
     payments = fields.One2Many('account.payment', 'sepa_mandate', 'Payments')
     has_payments = fields.Function(fields.Boolean('Has Payments'),
         'get_has_payments')
+    is_first_payment = fields.Function(
+        fields.Boolean("Is First Payment"), 'get_is_first_payment')
 
     @classmethod
     def __setup__(cls):
@@ -641,9 +651,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def sequence_type(self):
         if self.type == 'one-off':
             return 'OOFF'
-        elif not self.sequence_type_rcur and (not self.payments
-                or all(not p.sepa_mandate_sequence_type for p in self.payments)
-                or all(p.rejected for p in self.payments)):
+        elif not self.sequence_type_rcur and self.is_first_payment:
             return 'FRST'
         # TODO manage FNAL
         else:
@@ -665,6 +673,30 @@ class Mandate(Workflow, ModelSQL, ModelView):
             has_payments.update(cursor)
 
         return has_payments
+
+    @classmethod
+    def get_is_first_payment(cls, mandates, name):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payment = Payment.__table__()
+        cursor = Transaction().connection.cursor()
+
+        is_first = dict.fromkeys([m.id for m in mandates], True)
+        for sub_ids in grouped_slice(mandates):
+            red_sql = reduce_ids(payment.sepa_mandate, sub_ids)
+            cursor.execute(*payment.select(
+                    payment.sepa_mandate, Literal(False),
+                    where=red_sql
+                    & (payment.sepa_mandate_sequence_type != Null)
+                    & ~(  # Same as property rejected
+                        (payment.state == 'failed')
+                        & ((payment.sepa_return_reason_code != Null)
+                            | (payment.sepa_return_reason_code != ''))
+                        & (payment.sepa_return_reason_information
+                            == '/RTYP/RJCT')),
+                    group_by=payment.sepa_mandate))
+            is_first.update(cursor)
+        return is_first
 
     @classmethod
     @ModelView.button
