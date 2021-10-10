@@ -737,6 +737,10 @@ Instance methods:
 
     Getter for the :attr:`selection_json`.
 
+.. method:: DictSchemaMixin.format(value[, lang])
+
+   Format the value using the key definition and the language.
+
 ==========
 MatchMixin
 ==========

@@ -211,3 +211,29 @@ class DictSchemaMixin(object):
     def delete(cls, records):
         super().delete(records)
         cls._relation_fields_cache.clear()
+
+    def format(self, value, lang=None):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if lang is None:
+            lang = Lang.get()
+        if value is None:
+            return ''
+        if self.type_ == 'boolean':
+            if value:
+                return gettext('ir.msg_dict_yes')
+            else:
+                return gettext('ir.msg_dict_no')
+        elif self.type_ == 'integer':
+            return lang.format('%i', value)
+        elif self.type_ in {'float', 'numeric'}:
+            return lang.format('%.*f', (self.digits, value))
+        elif self.type_ in {'date', 'datetime'}:
+            return lang.strftime(value)
+        elif self.type_ in {'selection', 'multiselection'}:
+            values = dict(json.loads(self.selection_json))
+            if self.type_ == 'selection':
+                return values.get(value, '')
+            else:
+                return "; ".join(values.get(v, '') for v in value)
+        return value

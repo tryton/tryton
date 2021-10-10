@@ -124,6 +124,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_help_selection_json">
             <field name="text">Help Selection JSON</field>
         </record>
+        <record model="ir.message" id="msg_dict_yes">
+            <field name="text">Yes</field>
+        </record>
+        <record model="ir.message" id="msg_dict_no">
+            <field name="text">No</field>
+        </record>
         <record model="ir.message" id="msg_sequence">
             <field name="text">Sequence</field>
         </record>
