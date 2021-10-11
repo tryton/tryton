@@ -11,3 +11,7 @@ class Carrier(metaclass=PoolMeta):
     shipping_service = fields.Selection([
             (None, ''),
             ], 'Shipping Service')
+
+    @property
+    def shipping_label_mimetype(self):
+        return 'application/octet-stream'

@@ -17,4 +17,8 @@ def register():
         module='stock_package_shipping', type_='model')
     Pool.register(
         stock.CreateShipping,
+        stock.PrintShippingLabel,
         module='stock_package_shipping', type_='wizard')
+    Pool.register(
+        stock.ShippingLabel,
+        module='stock_package_shipping', type_='report')

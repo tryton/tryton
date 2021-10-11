@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import mimetypes
+
 from sql import Column
 
 from trytond.config import config
@@ -8,8 +10,9 @@ from trytond.model import Workflow, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, Id
+from trytond.report import Report
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateTransition
+from trytond.wizard import Wizard, StateTransition, StateAction
 
 from .exceptions import PackWarning
 
@@ -104,6 +107,8 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
         "Shipping Label", readonly=True,
         file_id=file_id, store_prefix=store_prefix)
     shipping_label_id = fields.Char("Shipping Label ID", readonly=True)
+    shipping_label_mimetype = fields.Char(
+        "Shipping Label MIME Type", readonly=True)
     shipping_tracking_url = fields.Function(
         fields.Char(
             "Shipping Tracking URL",
@@ -114,6 +119,15 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
 
     def get_shipping_tracking_url(self, name):
         return
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update(
+            print_shipping_label={
+                'invisible': ~Eval('shipping_label'),
+                'depends': ['shipping_label'],
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -172,6 +186,11 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
         default.setdefault('shipping_reference', None)
         default.setdefault('shipping_label', None)
         return super(Package, cls).copy(packages, default=default)
+
+    @classmethod
+    @ModelView.button_action('stock_package_shipping.report_shipping_label')
+    def print_shipping_label(cls, packages):
+        pass
 
 
 class ShippingMixin:
@@ -343,3 +362,39 @@ class CreateShipping(Wizard):
         method_name = 'validate_packing_%s' % shipping_service
         getattr(self.record, method_name)()
         return 'end'
+
+
+class ShippingLabel(Report):
+    __name__ = 'stock.package.shipping_label'
+
+    @classmethod
+    def render(cls, report, report_context):
+        package = report_context['record']
+        if not package:
+            return '.bin', b''
+        extension = mimetypes.guess_extension(
+            package.shipping_label_mimetype or 'application/octet-stream')
+        # Return with extension so convert has it
+        return extension, package.shipping_label or b''
+
+    @classmethod
+    def convert(cls, report, data, **kwargs):
+        return data
+
+
+class PrintShippingLabel(Wizard):
+    "Print Shipping Label"
+    __name__ = 'stock.shipment.print_shipping_label'
+    start_state = 'print_'
+    print_ = StateAction('stock_package_shipping.report_shipping_label')
+
+    def do_print_(self, action):
+        package_ids = []
+        labels = set()
+        for shipment in self.records:
+            for package in shipment.packages:
+                if (package.shipping_label
+                        and package.shipping_label not in labels):
+                    package_ids.append(package.id)
+                    labels.add(package.shipping_label)
+        return action, {'ids': package_ids}
