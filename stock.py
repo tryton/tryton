@@ -258,12 +258,10 @@ class ShipmentAssignManualShow(ModelView):
         # Try first to pick from source location
         locations.remove(self.move.from_location)
         locations.insert(0, self.move.from_location)
-        index = {l.id: i for i, l in enumerate(locations)}
         places = [(None, '')]
-        pbl_items = pbl.items()
-        pbl_items = filter(lambda x: x[0][0] in index, pbl_items)
-        pbl_items = sorted(pbl_items, key=lambda x: index[x[0][0]])
-        for key, qty in pbl_items:
+        quantities = self.move.sort_quantities(
+            pbl.items(), locations, grouping)
+        for key, qty in quantities:
             move_key = get_key(self.move, key[0])
             if qty > 0 and match(key, move_key):
                 uom = self.move.product.default_uom
