@@ -103,3 +103,11 @@ class Carrier(metaclass=PoolMeta):
                     'invisible': Eval('shipping_service') != 'ups',
                     }),
             ]
+
+    @property
+    def shipping_label_mimetype(self):
+        mimetype = super().shipping_label_mimetype
+        if self.shipping_service == 'ups':
+            if self.ups_label_image_format == 'GIF':
+                mimetype = 'image/gif'
+        return mimetype

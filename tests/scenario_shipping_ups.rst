@@ -223,6 +223,8 @@ Create the packs and ship the shipment::
     >>> pack, = shipment.root_packages
     >>> pack.shipping_label is not None
     True
+    >>> pack.shipping_label_mimetype
+    'image/gif'
     >>> pack.shipping_reference is not None
     True
     >>> pack.shipping_tracking_url.startswith('https://www.ups.com/track?')

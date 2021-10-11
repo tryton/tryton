@@ -173,6 +173,7 @@ class CreateShippingUPS(Wizard):
                     shipment=shipment.rec_name))
 
         credential = self.get_credential(shipment)
+        carrier = shipment.carrier
         packages = shipment.root_packages
         shipment_request = self.get_request(shipment, packages, credential)
         api_url = config.get('stock_package_shipping_ups', credential.server,
@@ -227,6 +228,8 @@ class CreateShippingUPS(Wizard):
                     ups_pkg['ShippingLabel']['GraphicImage']))
             tryton_pkg.shipping_reference = ups_pkg['TrackingNumber']
             tryton_pkg.shipping_label = label
+            tryton_pkg.shipping_label_mimetype = (
+                carrier.shipping_label_mimetype)
         Package.save(packages)
         shipment.save()
 
