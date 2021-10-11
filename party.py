@@ -3,6 +3,8 @@
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 
+from .common import StripeCustomerMethodMixin
+
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
@@ -27,6 +29,19 @@ class Party(metaclass=PoolMeta):
                 to_update.append(customer)
         if to_update:
             Customer.__queue__.stripe_update(to_update)
+
+
+class PartyReceptionDirectDebit(
+        StripeCustomerMethodMixin, metaclass=PoolMeta):
+    __name__ = 'party.party.reception_direct_debit'
+
+    def _get_payment(self, line, date, amount):
+        payment = super()._get_payment(line, date, amount)
+        self.stripe_customer = self.stripe_customer
+        self.stripe_customer_source = self.stripe_customer_source
+        self.stripe_customer_payment_method = (
+            self.stripe_customer_payment_method)
+        return payment
 
 
 class Replace(metaclass=PoolMeta):

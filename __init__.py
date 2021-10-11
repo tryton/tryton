@@ -21,6 +21,7 @@ def register():
         payment.Payment,
         payment.CustomerSourceDetachAsk,
         party.Party,
+        party.PartyReceptionDirectDebit,
         ir.Cron,
         module='account_payment_stripe', type_='model')
     Pool.register(

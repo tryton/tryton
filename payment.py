@@ -16,7 +16,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields, dualmethod)
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
@@ -29,6 +29,8 @@ from trytond.wizard import (
 from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
 from trytond.modules.currency.fields import Monetary
+
+from .common import StripeCustomerMethodMixin
 
 logger = logging.getLogger(__name__)
 stripe.max_network_retries = config.getint(
@@ -118,7 +120,7 @@ class CheckoutMixin:
             }
 
 
-class Payment(CheckoutMixin, metaclass=PoolMeta):
+class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     stripe_checkout_needed = fields.Function(
@@ -192,76 +194,6 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         states={
             'invisible': ~Eval('stripe_dispute_status'),
             })
-    stripe_customer = fields.Many2One(
-        'account.payment.stripe.customer', "Stripe Customer",
-        domain=[
-            ('party', '=', Eval('party', -1)),
-            ('stripe_account', '=', Eval('stripe_account', -1)),
-            ],
-        states={
-            'invisible': Eval('process_method') != 'stripe',
-            'required': Bool(Eval('stripe_customer_source')),
-            'readonly': (~Eval('state').in_(['draft', 'approved'])
-                | Eval('stripe_token') | Eval('stripe_payment_intent_id')),
-            },
-        depends=['party', 'stripe_account', 'process_method',
-            'stripe_customer_source', 'stripe_token',
-            'stripe_payment_intent_id', 'state'])
-    stripe_customer_source = fields.Char(
-        "Stripe Customer Source",
-        states={
-            'invisible': ((Eval('process_method') != 'stripe')
-                | Eval('stripe_token')
-                | Eval('stripe_payment_intent_id')
-                | ~Eval('stripe_customer')),
-            'readonly': ~Eval('state').in_(['draft', 'approved']),
-            },
-        depends=['process_method', 'stripe_token', 'stripe_payment_intent_id',
-            'stripe_customer', 'state'])
-    # Use Function field with selection to avoid to query Stripe
-    # to validate the value
-    stripe_customer_source_selection = fields.Function(fields.Selection(
-            'get_stripe_customer_sources', "Stripe Customer Source",
-            states={
-                'invisible': ((Eval('process_method') != 'stripe')
-                    | Eval('stripe_token')
-                    | Eval('stripe_payment_intent_id')
-                    | ~Eval('stripe_customer')),
-                'readonly': ~Eval('state').in_(['draft', 'approved']),
-                },
-            depends=[
-                'process_method', 'stripe_token', 'stripe_customer', 'state']),
-        'get_stripe_customer_source', setter='set_stripe_customer_source')
-    stripe_customer_payment_method = fields.Char(
-        "Stripe Payment Method",
-        states={
-            'invisible': ((Eval('process_method') != 'stripe')
-                | Eval('stripe_token')
-                | ~Eval('stripe_customer')),
-            'readonly': (~Eval('state').in_(['draft', 'approved'])
-                | Eval('stripe_payment_intent_id')),
-            },
-        depends=['process_method', 'stripe_token', 'stripe_customer', 'state'])
-    # Use Function field with selection to avoid to query Stripe
-    # to validate the value
-    stripe_customer_payment_method_selection = fields.Function(
-        fields.Selection(
-            'get_stripe_customer_payment_methods',
-            "Stripe Customer Payment Method",
-            states={
-                'invisible': ((Eval('process_method') != 'stripe')
-                    | Eval('stripe_token')
-                    | ~Eval('stripe_customer')),
-                'readonly': (~Eval('state').in_(['draft', 'approved'])
-                    | Eval('stripe_payment_intent_id')),
-                },
-            depends=[
-                'process_method', 'stripe_token', 'stripe_customer', 'state']),
-        'get_stripe_customer_payment_method',
-        setter='set_stripe_customer_payment_method')
-    stripe_account = fields.Function(fields.Many2One(
-            'account.payment.stripe.account', "Stripe Account"),
-        'on_change_with_stripe_account')
     stripe_amount = fields.Function(
         fields.Integer("Stripe Amount"),
         'get_stripe_amount', setter='set_stripe_amount')
@@ -278,6 +210,44 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
+
+        cls.stripe_customer.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved'])
+            | Eval('stripe_token')
+            | Eval('stripe_payment_intent_id'))
+        cls.stripe_customer.depends.extend(
+            ['state', 'stripe_token', 'stripe_payment_intent_id'])
+
+        cls.stripe_customer_source.states['invisible'] |= (
+            Eval('stripe_token') | Eval('stripe_payment_intent_id'))
+        cls.stripe_customer_source.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved']))
+        cls.stripe_customer_source.depends.extend(
+            ['stripe_token', 'stripe_payment_intent_id', 'state'])
+
+        cls.stripe_customer_source_selection.states['invisible'] |= (
+            Eval('stripe_token') | Eval('stripe_payment_intent_id'))
+        cls.stripe_customer_source_selection.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved']))
+        cls.stripe_customer_source_selection.depends.extend(
+            ['stripe_token', 'stripe_payment_intent_id', 'state'])
+
+        cls.stripe_customer_payment_method.states['invisible'] |= (
+            Eval('stripe_token'))
+        cls.stripe_customer_payment_method.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved'])
+            | Eval('stripe_payment_intent_id'))
+        cls.stripe_customer_payment_method.depends.extend(
+            ['stripe_token', 'state', 'stripe_payment_intent_id'])
+
+        cls.stripe_customer_payment_method_selection.states['invisible'] |= (
+            Eval('stripe_token'))
+        cls.stripe_customer_payment_method_selection.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved'])
+            | Eval('stripe_payment_intent_id'))
+        cls.stripe_customer_payment_method_selection.depends.extend(
+            ['stripe_token', 'state', 'stripe_payment_intent_id'])
+
         cls.amount.states['readonly'] &= ~Eval('stripe_capture_needed')
         cls.amount.depends.append('stripe_capture_needed')
         cls.stripe_amount.states.update(cls.amount.states)
@@ -330,63 +300,6 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def default_stripe_idempotency_key(cls):
         return uuid.uuid4().hex
 
-    @fields.depends('party')
-    def on_change_party(self):
-        super(Payment, self).on_change_party()
-        self.stripe_customer = None
-        self.stripe_customer_source = None
-        self.stripe_customer_source_selection = None
-
-    @fields.depends('stripe_customer', 'stripe_customer_source')
-    def get_stripe_customer_sources(self):
-        sources = [('', '')]
-        if self.stripe_customer:
-            sources.extend(self.stripe_customer.sources())
-        if (self.stripe_customer_source
-                and self.stripe_customer_source not in dict(sources)):
-            sources.append(
-                (self.stripe_customer_source, self.stripe_customer_source))
-        return sources
-
-    @fields.depends(
-        'stripe_customer_source_selection',
-        'stripe_customer_source')
-    def on_change_stripe_customer_source_selection(self):
-        self.stripe_customer_source = self.stripe_customer_source_selection
-
-    def get_stripe_customer_source(self, name):
-        return self.stripe_customer_source
-
-    @classmethod
-    def set_stripe_customer_source(cls, payments, name, value):
-        pass
-
-    @fields.depends('stripe_customer', 'stripe_customer_payment_method')
-    def get_stripe_customer_payment_methods(self):
-        methods = [('', '')]
-        if self.stripe_customer:
-            methods.extend(self.stripe_customer.payment_methods())
-        if (self.stripe_customer_payment_method
-                and self.stripe_customer_payment_method not in dict(methods)):
-            methods.append(
-                (self.stripe_customer_payment_method,
-                    self.stripe_customer_payment_method))
-        return methods
-
-    @fields.depends(
-        'stripe_customer_payment_method_selection',
-        'stripe_customer_payment_method')
-    def on_change_stripe_customer_payment_method_selection(self):
-        self.stripe_customer_payment_method = (
-            self.stripe_customer_payment_method_selection)
-
-    def get_stripe_customer_payment_method(self, name):
-        return self.stripe_customer_payment_method
-
-    @classmethod
-    def set_stripe_customer_payment_method(cls, payments, name, value):
-        pass
-
     @fields.depends('process_method',
         'stripe_token', 'stripe_payment_intent_id',
         'stripe_customer_source', 'stripe_customer_source_selection',
@@ -405,11 +318,6 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
                 or self.stripe_payment_intent_id)
             and not self.stripe_capture
             and not self.stripe_captured)
-
-    @fields.depends('journal')
-    def on_change_with_stripe_account(self, name=None):
-        if self.journal and self.journal.process_method == 'stripe':
-            return self.journal.stripe_account.id
 
     def get_stripe_amount(self, name):
         return int(self.amount * 10 ** self.currency.digits)
