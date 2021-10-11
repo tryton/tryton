@@ -14,6 +14,7 @@ def register():
         payment.Payment,
         payment.Message,
         party.Party,
+        party.PartyReceptionDirectDebit,
         party.PartyIdentifier,
         account.Configuration,
         account.ConfigurationSepaMandateSequence,

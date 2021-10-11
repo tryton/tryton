@@ -72,6 +72,26 @@ class Party(metaclass=PoolMeta):
                     type=type))
 
 
+class PartyReceptionDirectDebit(metaclass=PoolMeta):
+    __name__ = 'party.party.reception_direct_debit'
+
+    sepa_mandate = fields.Many2One(
+        'account.payment.sepa.mandate', "Mandate", ondelete='CASCADE',
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ],
+        states={
+            'invisible': Eval('process_method') != 'sepa',
+            'readonly': ~Eval('party') | (Eval('party', -1) < 0),
+            },
+        depends=['party', 'process_method'])
+
+    def _get_payment(self, line, date, amount):
+        payment = super()._get_payment(line, date, amount)
+        payment.sepa_mandate = self.sepa_mandate
+        return payment
+
+
 class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
 

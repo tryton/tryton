@@ -32,5 +32,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.party,-1</field>
             <field name="action" ref="act_mandate_form2"/>
         </record>
+
+        <record model="ir.ui.view" id="party_reception_direct_debit_view_form">
+            <field name="model">party.party.reception_direct_debit</field>
+            <field name="inherit" ref="account_payment.party_reception_direct_debit_view_form"/>
+            <field name="name">party_reception_direct_debit_form</field>
+        </record>
     </data>
 </tryton>
