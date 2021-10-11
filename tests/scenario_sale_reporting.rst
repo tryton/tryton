@@ -105,6 +105,8 @@ Create products::
     >>> product1, = template1.products
 
     >>> template2, = template1.duplicate(default={'name': "Product2"})
+    >>> template2.account_category = account_category
+    >>> template2.save()
     >>> product2, = template2.products
 
     >>> category_root1 = Category(name="Root1")
