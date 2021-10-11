@@ -13,6 +13,10 @@ from . import party
 from . import period
 from . import tax
 
+from .move import MoveLineMixin
+
+__all__ = ['register', 'MoveLineMixin']
+
 
 def register():
     Pool.register(

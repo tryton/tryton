@@ -21,8 +21,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="origin" colspan="3"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
-    <field name="lines" colspan="4"
-        view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
+    <notebook>
+        <page name="lines">
+            <field name="lines" colspan="4"
+                view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
+        </page>
+    </notebook>
     <label name="state"/>
     <field name="state"/>
     <button name="post" icon="tryton-ok" colspan="2"/>

@@ -605,7 +605,96 @@ class Reconciliation(ModelSQL, ModelView):
                         credit=credit))
 
 
-class Line(ModelSQL, ModelView):
+class MoveLineMixin:
+    __slots__ = ()
+
+    @classmethod
+    def get_move_origin(cls):
+        Move = Pool().get('account.move')
+        return Move.get_origin()
+
+    @classmethod
+    def get_move_states(cls):
+        pool = Pool()
+        Move = pool.get('account.move')
+        return Move.fields_get(['state'])['state']['selection']
+
+    def get_move_field(self, name):
+        field = getattr(self.__class__, name)
+        if name.startswith('move_'):
+            name = name[5:]
+        value = getattr(self.move, name)
+        if isinstance(value, ModelSQL):
+            if field._type == 'reference':
+                return str(value)
+            return value.id
+        return value
+
+    @classmethod
+    def set_move_field(cls, lines, name, value):
+        pool = Pool()
+        Move = pool.get('account.move')
+        if name.startswith('move_'):
+            name = name[5:]
+        if not value:
+            return
+        moves = {line.move for line in lines}
+        moves = Move.browse(moves)
+        with Transaction().set_context(_skip_validate_move=True):
+            Move.write(moves, {
+                    name: value,
+                    })
+
+    @classmethod
+    def search_move_field(cls, name, clause):
+        nested = clause[0].lstrip(name)
+        if name.startswith('move_'):
+            name = name[5:]
+        return [('move.' + name + nested,) + tuple(clause[1:])]
+
+    @staticmethod
+    def _order_move_field(name):
+        def order_field(cls, tables):
+            pool = Pool()
+            Move = pool.get('account.move')
+            field = Move._fields[name]
+            table, _ = tables[None]
+            move_tables = tables.get('move')
+            if move_tables is None:
+                move = Move.__table__()
+                move_tables = {
+                    None: (move, move.id == table.move),
+                    }
+                tables['move'] = move_tables
+            return field.convert_order(name, move_tables, Move)
+        return classmethod(order_field)
+
+    def get_amount(self, name):
+        sign = -1 if self.account.type.statement == 'income' else 1
+        if self.amount_second_currency is not None:
+            return self.amount_second_currency * sign
+        else:
+            return (self.debit - self.credit) * sign
+
+    def get_amount_currency(self, name):
+        if self.second_currency:
+            currency = self.second_currency
+        else:
+            currency = self.account.currency
+        return currency.id
+
+    def get_rec_name(self, name):
+        if self.debit > self.credit:
+            return self.account.rec_name
+        else:
+            return '(%s)' % self.account.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('account.rec_name',) + tuple(clause[1:])]
+
+
+class Line(MoveLineMixin, ModelSQL, ModelView):
     'Account Move Line'
     __name__ = 'account.move.line'
 
@@ -867,11 +956,6 @@ class Line(ModelSQL, ModelView):
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
-    @classmethod
-    def get_move_origin(cls):
-        Move = Pool().get('account.move')
-        return Move.get_origin()
-
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_debit(self):
         if self.debit:
@@ -913,99 +997,22 @@ class Line(ModelSQL, ModelView):
             return self.account.party_required
         return False
 
-    def get_move_field(self, name):
-        field = getattr(self.__class__, name)
-        if name.startswith('move_'):
-            name = name[5:]
-        value = getattr(self.move, name)
-        if isinstance(value, ModelSQL):
-            if field._type == 'reference':
-                return str(value)
-            return value.id
-        return value
-
     @fields.depends('move', '_parent_move.date')
     def on_change_with_date(self, name=None):
         if self.move:
             return self.move.date
-
-    @classmethod
-    def set_move_field(cls, lines, name, value):
-        if name.startswith('move_'):
-            name = name[5:]
-        if not value:
-            return
-        Move = Pool().get('account.move')
-        moves = {line.move for line in lines}
-        moves = Move.browse(moves)
-        with Transaction().set_context(_skip_validate_move=True):
-            Move.write(moves, {
-                    name: value,
-                    })
-
-    @classmethod
-    def search_move_field(cls, name, clause):
-        nested = clause[0].lstrip(name)
-        if name.startswith('move_'):
-            name = name[5:]
-        return [('move.' + name + nested,) + tuple(clause[1:])]
-
-    @classmethod
-    def get_move_states(cls):
-        pool = Pool()
-        Move = pool.get('account.move')
-        return Move.fields_get(['state'])['state']['selection']
 
     @fields.depends('move', '_parent_move.state')
     def on_change_with_move_state(self, name=None):
         if self.move:
             return self.move.state
 
-    def _order_move_field(name):
-        def order_field(tables):
-            pool = Pool()
-            Move = pool.get('account.move')
-            field = Move._fields[name]
-            table, _ = tables[None]
-            move_tables = tables.get('move')
-            if move_tables is None:
-                move = Move.__table__()
-                move_tables = {
-                    None: (move, move.id == table.move),
-                    }
-                tables['move'] = move_tables
-            return field.convert_order(name, move_tables, Move)
-        return staticmethod(order_field)
-    order_journal = _order_move_field('journal')
-    order_period = _order_move_field('period')
-    order_company = _order_move_field('company')
-    order_date = _order_move_field('date')
-    order_move_origin = _order_move_field('origin')
-    order_move_state = _order_move_field('state')
-
-    def get_amount(self, name):
-        sign = -1 if self.account.type.statement == 'income' else 1
-        if self.amount_second_currency is not None:
-            return self.amount_second_currency * sign
-        else:
-            return (self.debit - self.credit) * sign
-
-    def get_amount_currency(self, name):
-        if self.second_currency:
-            currency = self.second_currency
-        else:
-            currency = self.account.currency
-        return currency.id
-
-    def get_rec_name(self, name):
-        if self.debit > self.credit:
-            return self.account.rec_name
-        else:
-            return '(%s)' % self.account.rec_name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        return [('account.rec_name',) + tuple(clause[1:])]
+    order_journal = MoveLineMixin._order_move_field('journal')
+    order_period = MoveLineMixin._order_move_field('period')
+    order_company = MoveLineMixin._order_move_field('company')
+    order_date = MoveLineMixin._order_move_field('date')
+    order_move_origin = MoveLineMixin._order_move_field('origin')
+    order_move_state = MoveLineMixin._order_move_field('state')
 
     @classmethod
     def query_get(cls, table):
