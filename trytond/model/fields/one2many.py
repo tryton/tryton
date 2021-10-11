@@ -134,6 +134,8 @@ class One2Many(Field):
             order = []
         if self.order:
             order += self.order
+        elif Target._order:
+            order += Target._order
         targets = []
         for sub_ids in grouped_slice(ids):
             if field._type == 'reference':
