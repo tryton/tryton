@@ -74,6 +74,9 @@ Accounting
 `Invoice Stock </projects/modules-account-invoice-stock/en/latest>`_
     Links invoice lines and stock moves.
 
+`Move Line Grouping </projects/modules-account-move-line-grouping/en/latest>`_
+    Show move line grouped.
+
 `Payment </projects/modules-account-payment/en/latest>`_
     Manages payments.
 
