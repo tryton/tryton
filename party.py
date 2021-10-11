@@ -3,6 +3,7 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.tools import lstrip_wildcard
+from trytond.transaction import Transaction
 
 
 class Party(metaclass=PoolMeta):
@@ -25,6 +26,18 @@ class Party(metaclass=PoolMeta):
             ('bank_accounts.numbers.rec_name',
                 clause[1], code_value) + tuple(clause[3:]),
             ]
+
+    @classmethod
+    def copy(cls, parties, default=None):
+        context = Transaction().context
+        default = default.copy() if default else {}
+        if context.get('_check_access'):
+            default.setdefault(
+                'bank_accounts',
+                cls.default_get(
+                    ['bank_accounts'],
+                    with_rec_name=False).get('bank_accounts'))
+        return super().copy(parties, default=default)
 
 
 class Replace(metaclass=PoolMeta):
