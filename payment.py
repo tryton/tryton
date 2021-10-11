@@ -59,6 +59,12 @@ class Journal(metaclass=PoolMeta):
 class Group(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons['succeed']['invisible'] |= (
+            Eval('process_method') == 'stripe')
+
     def process_stripe(self):
         pool = Pool()
         Payment = pool.get('account.payment')
