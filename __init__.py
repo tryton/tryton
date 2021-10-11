@@ -21,6 +21,7 @@ def register():
         account.PaymentBraintreeCustomer,
         account.PaymentBraintreeCustomerPaymentMethodDeleteAsk,
         party.Party,
+        party.PartyReceptionDirectDebit,
         module='account_payment_braintree', type_='model')
     Pool.register(
         account.PaymentBraintreeCustomerPaymentMethodDelete,

@@ -3,6 +3,8 @@
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 
+from .common import BraintreeCustomerMethodMixin
+
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
@@ -27,6 +29,17 @@ class Party(metaclass=PoolMeta):
                 to_update.append(customer)
         if to_update:
             Customer.__queue__.braintree_update(to_update)
+
+
+class PartyReceptionDirectDebit(
+        BraintreeCustomerMethodMixin, metaclass=PoolMeta):
+    __name__ = 'party.party.reception_direct_debit'
+
+    def _get_payment(self, line, date, amount):
+        payment = super()._get_payment(line, date, amount)
+        payment.braintree_customer = self.braintree_customer
+        payment.braintree_customer_method = self.braintree_customer_method
+        return payment
 
 
 class Replace(metaclass=PoolMeta):

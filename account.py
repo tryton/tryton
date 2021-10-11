@@ -25,6 +25,8 @@ from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
 from trytond.modules.currency.fields import Monetary
 
+from .common import BraintreeCustomerMethodMixin
+
 logger = logging.getLogger(__name__)
 
 SUCCEEDED_STATUSES = {braintree.Transaction.Status.Settled}
@@ -149,56 +151,8 @@ class CheckoutMixin:
         self.save()
 
 
-class Payment(CheckoutMixin, metaclass=PoolMeta):
+class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     __name__ = 'account.payment'
-
-    braintree_account = fields.Function(fields.Many2One(
-            'account.payment.braintree.account', "Braintree Account"),
-        'on_change_with_braintree_account')
-
-    braintree_customer = fields.Many2One(
-        'account.payment.braintree.customer', "Braintree Customer",
-        domain=[
-            ('party', '=', Eval('party', -1)),
-            ('braintree_account', '=', Eval('braintree_account', -1)),
-            ],
-        states={
-            'invisible': Eval('process_method') != 'braintree',
-            'readonly': (~Eval('state').in_(['draft', 'approved'])
-                | Eval('braintree_nonce')),
-            },
-        depends=['party', 'braintree_account', 'process_method',
-            'braintree_nonce', 'state'])
-    braintree_customer_method = fields.Char(
-        "Braintree Customer Method",
-        states={
-            'invisible': ((Eval('process_method') != 'braintree')
-                | Eval('braintree_nonce')
-                | ~Eval('braintree_customer')),
-            'readonly': ~Eval('state').in_(['draft', 'approved']),
-            },
-        depends=[
-            'process_method',
-            'braintree_nonce',
-            'braintree_customer',
-            'state'])
-    # Use Function field with selection
-    # to avoid querying Braintree on validation
-    braintree_customer_method_selection = fields.Function(fields.Selection(
-            'get_braintree_customer_methods', "Braintree Customer Method",
-            states={
-                'invisible': ((Eval('process_method') != 'braintree')
-                    | Eval('braintree_nonce')
-                    | ~Eval('braintree_customer')),
-                'readonly': ~Eval('state').in_(['draft', 'approved']),
-                },
-            depends=[
-                'process_method',
-                'braintree_nonce',
-                'braintree_customer',
-                'state']),
-        'get_braintree_customer_method',
-        setter='set_braintree_customer_method')
 
     braintree_transaction_id = fields.Char(
         "Braintree Transaction ID", readonly=True,
@@ -250,6 +204,26 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         super().__setup__()
         cls.amount.states['readonly'] &= ~Eval('braintree_settlement_needed')
         cls.amount.depends.append('braintree_settlement_needed')
+
+        cls.braintree_customer.states['readonly'] = (
+                ~Eval('state').in_(['draft', 'approved'])
+                | Eval('braintree_nonce'))
+        cls.braintree_customer.depends.extend(['state', 'braintree_nonce'])
+
+        cls.braintree_customer_method.states['invisible'] |= (
+            Eval('braintree_nonce'))
+        cls.braintree_customer_method.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved']))
+        cls.braintree_customer_method.depends.extend(
+            ['braintree_nonce', 'state'])
+
+        cls.braintree_customer_method_selection.states['invisible'] |= (
+            Eval('braintree_nonce'))
+        cls.braintree_customer_method_selection.states['readonly'] = (
+            ~Eval('state').in_(['draft', 'approved']))
+        cls.braintree_customer_method_selection.depends.extend(
+            ['braintree_nonce', 'state'])
+
         cls._buttons.update({
                 'braintree_checkout': {
                     'invisible': (~Eval('state', 'draft').in_(
@@ -274,40 +248,6 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
                     'depends': ['braintree_transaction_id'],
                     },
                 })
-
-    @fields.depends('journal')
-    def on_change_with_braintree_account(self, name=None):
-        if self.journal and self.journal.process_method == 'braintree':
-            return self.journal.braintree_account.id
-
-    def on_change_party(self):
-        super().on_change_party()
-        self.braintree_customer = None
-
-    @fields.depends('braintree_customer', 'braintree_customer_method')
-    def get_braintree_customer_methods(self):
-        methods = [('', '')]
-        if self.braintree_customer:
-            methods.extend(self.braintree_customer.payment_methods())
-        if (self.braintree_customer_method
-                and self.braintree_customer_method not in dict(methods)):
-            methods.append((
-                    self.braintree_customer_method,
-                    self.braintree_customer_method))
-        return methods
-
-    @fields.depends(
-        'braintree_customer_method_selection', 'braintree_customer_method')
-    def on_change_braintree_customer_method_selection(self):
-        self.braintree_customer_method = (
-            self.braintree_customer_method_selection)
-
-    def get_braintree_customer_method(self, name):
-        return self.braintree_customer_method
-
-    @classmethod
-    def set_braintree_customer_method(cls, payments, name, value):
-        pass
 
     @classmethod
     def default_braintree_settle_payment(cls):
