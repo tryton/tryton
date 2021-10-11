@@ -88,6 +88,8 @@ Create products::
     >>> template_average, = template.duplicate({
     ...         'cost_price_method': 'average',
     ...         })
+    >>> template_average.account_category = account_category
+    >>> template_average.save()
     >>> product_average, = template_average.products
 
     >>> carrier_template = ProductTemplate()
