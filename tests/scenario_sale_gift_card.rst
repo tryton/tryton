@@ -6,7 +6,7 @@ Imports::
 
     >>> import re
     >>> from decimal import Decimal
-    >>> from proteus import Model
+    >>> from proteus import Model, Report
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
@@ -144,6 +144,12 @@ Check gift cards::
     ['customer@example.com']
     >>> msg = msg.get_payload(0).get_payload(decode=True).decode('utf-8')
     >>> card.number in msg
+    True
+
+Print gift cards::
+
+    >>> gift_card_report = Report('sale.gift_card')
+    >>> bool(gift_card_report.execute([sale]))
     True
 
 Check invoice::

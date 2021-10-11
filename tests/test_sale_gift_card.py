@@ -16,6 +16,7 @@ from trytond.modules.company.tests import CompanyTestMixin
 class SaleGiftCardTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Sale Gift Card module'
     module = 'sale_gift_card'
+    extras = ['sale_point']
 
 
 def suite():
@@ -29,6 +30,11 @@ def suite():
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
             'scenario_sale_gift_card_goods.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_sale_point_gift_card.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))

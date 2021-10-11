@@ -29,5 +29,15 @@ def register():
     Pool.register(
         module='sale_gift_card', type_='wizard')
     Pool.register(
+        sale.GiftCardReport,
         sale.GiftCardEmail,
         module='sale_gift_card', type_='report')
+    Pool.register(
+        sale.GiftCard_POS,
+        sale.POSSale,
+        sale.POSSaleLine,
+        sale.POSPayGiftCard,
+        module='sale_gift_card', type_='model', depends=['sale_point'])
+    Pool.register(
+        sale.POSPay,
+        module='sale_gift_card', type_='wizard', depends=['sale_point'])

@@ -13,6 +13,7 @@ from trytond.report import Report, get_email
 from trytond.sendmail import sendmail_transactional
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
+from trytond.wizard import StateView, StateTransition, Button
 
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
@@ -185,6 +186,8 @@ class GiftCard(ModelSQL, ModelView):
         from_cfg = config.get('email', 'from')
         for gift_card in gift_cards:
             email = gift_card._email
+            if not email:
+                continue
             languages = gift_card._languages
             if not languages:
                 languages.append(Lang.get())
@@ -196,8 +199,61 @@ class GiftCard(ModelSQL, ModelView):
             sendmail_transactional(from_cfg, [email], msg, strict=True)
 
 
+class GiftCardReport(Report):
+    __name__ = 'sale.gift_card'
+
+    @classmethod
+    def _get_records(cls, ids, model, data):
+        pool = Pool()
+        if model in {'sale.sale', 'sale.point.sale'}:
+            Sale = pool.get(model)
+            sales = Sale.browse(ids)
+            ids = [
+                g.id for s in sales
+                for line in s.lines
+                for g in line.gift_cards]
+            model = 'sale.gift_card'
+        return super()._get_records(ids, model, data)
+
+
 class GiftCardEmail(Report):
     __name__ = 'sale.gift_card.email'
+
+
+class GiftCard_POS(metaclass=PoolMeta):
+    __name__ = 'sale.gift_card'
+
+    @classmethod
+    def _get_origin(cls):
+        return super()._get_origin() + ['sale.point.sale.line']
+
+    @fields.depends('origin')
+    def on_change_origin(self):
+        pool = Pool()
+        POSLine = pool.get('sale.point.sale.line')
+        UOM = pool.get('product.uom')
+        if isinstance(self.origin, POSLine):
+            line = self.origin
+            self.company = line.sale.company
+            self.product = line.product
+            if line.unit and line.unit_price and line.product:
+                self.value = UOM.compute_price(
+                    line.unit, line.unit_price, line.product.default_uom)
+                self.currency = line.sale.currency
+        super().on_change_origin()
+
+    @classmethod
+    def _get_spent_on(cls):
+        return super()._get_spent_on() + ['sale.point.sale']
+
+    @property
+    def _email(self):
+        pool = Pool()
+        POSLine = pool.get('sale.point.sale.line')
+        email = super()._email
+        if isinstance(self.origin, POSLine):
+            email = self.origin.gift_card_email
+        return email
 
 
 class Sale(metaclass=PoolMeta):
@@ -270,8 +326,75 @@ class Sale(metaclass=PoolMeta):
         super().process(sales)
 
 
-class Line(metaclass=PoolMeta):
-    __name__ = 'sale.line'
+class POSSale(metaclass=PoolMeta):
+    __name__ = 'sale.point.sale'
+
+    gift_cards = fields.One2Many(
+        'sale.gift_card', 'spent_on', "Gift Cards",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('currency', '=', Eval('currency', -1)),
+            ],
+        add_remove=[
+            ('spent_on', '=', None),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state', 'company', 'currency'])
+
+    @fields.depends('state', 'gift_cards')
+    def on_change_with_total(self, name=None):
+        total = super().on_change_with_total(name=name)
+        if self.state == 'open':
+            total -= sum(c.value for c in self.gift_cards)
+        return total
+
+    @classmethod
+    @Workflow.transition('done')
+    def do(cls, sales):
+        for sale in sales:
+            sale.add_return_gift_cards()
+        cls.save(sales)
+        super().do(sales)
+        pool = Pool()
+        GiftCard = pool.get('sale.gift_card')
+        cls.lock(sales)
+        gift_cards = []
+        for sale in sales:
+            for line in sale.lines:
+                cards = line.get_gift_cards()
+                if cards:
+                    gift_cards.extend(cards)
+        GiftCard.save(gift_cards)
+        GiftCard.send(gift_cards)
+
+    # TODO: print gift cards
+
+    def add_return_gift_cards(self):
+        lines = list(self.lines)
+        for line in self.lines:
+            if line.is_gift_card and line.quantity < 0:
+                lines.remove(line)
+        for gift_card in self.gift_cards:
+            lines.append(self.get_return_gift_card_line(gift_card))
+        self.lines = lines
+
+    def get_return_gift_card_line(self, gift_card):
+        pool = Pool()
+        Line = pool.get('sale.point.sale.line')
+        return Line(
+            sale=self,
+            product=gift_card.product,
+            quantity=-1,
+            unit=gift_card.product.default_uom,
+            unit_list_price=gift_card.value,
+            unit_gross_price=gift_card.value,
+            )
+
+
+class _LineMixin:
+    __slots__ = ()
 
     gift_cards = fields.One2Many(
         'sale.gift_card', 'origin', "Gift Cards", readonly=True,
@@ -339,3 +462,97 @@ class Line(metaclass=PoolMeta):
             card.origin = self
             cards.append(card)
         return cards
+
+
+class Line(_LineMixin, metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+
+class POSSaleLine(_LineMixin, metaclass=PoolMeta):
+    __name__ = 'sale.point.sale.line'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        # Prevent selling goods gift card as POS does not manage shipment
+        cls.product.domain = [
+            cls.product.domain,
+            ['OR',
+                ('gift_card', '!=', True),
+                ('type', '=', 'service'),
+                ],
+            ]
+
+
+class POSPay(metaclass=PoolMeta):
+    __name__ = 'sale.point.sale.pay'
+
+    gift_card = StateView(
+        'sale.point.sale.pay.gift_card',
+        'sale_gift_card.sale_point_sale_pay_gift_card_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Add", 'add_gift_card', 'tryton-ok', default=True),
+            ])
+    add_gift_card = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.payment.buttons.insert(-1, Button(
+                "Gift Card", 'gift_card',
+                states={
+                    'invisible': Eval('amount', 0) >= 0,
+                    },
+                validate=False))
+
+    def default_gift_card(self, fields):
+        return {
+            'sale': self.record.id,
+            'amount': -self.record.amount_to_pay,
+            }
+
+    def transition_add_gift_card(self):
+        self._add_gift_card().save()
+        if self.record.amount_to_pay:
+            return 'payment'
+        else:
+            self.model.process([self.record])
+            return 'end'
+
+    def _add_gift_card(self):
+        pool = Pool()
+        Line = pool.get('sale.point.sale.line')
+        return Line(
+            sale=self.record,
+            product=self.gift_card.product,
+            quantity=1,
+            unit=self.gift_card.product.default_uom,
+            unit_list_price=self.gift_card.amount,
+            unit_gross_price=self.gift_card.amount,
+            gift_card_email=self.gift_card.email,
+            )
+
+
+class POSPayGiftCard(ModelView):
+    "POS Pay - Gift Card"
+    __name__ = 'sale.point.sale.pay.gift_card'
+
+    sale = fields.Many2One('sale.point.sale', "Sale")
+    product = fields.Many2One(
+        'product.product', "Product", required=True,
+        domain=[
+            ('salable', '=', True),
+            ('gift_card', '=', True),
+            ])
+    amount = Monetary(
+        "Amount", currency='currency', digits='currency', required=True)
+    email = fields.Char("Email")
+
+    currency = fields.Function(
+        fields.Many2One('currency.currency', "Currency"),
+        'on_change_with_currency')
+
+    @fields.depends('sale')
+    def on_change_with_currency(self, name=None):
+        if self.sale and self.sale.company:
+            return self.sale.company.currency.id
