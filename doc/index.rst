@@ -24,6 +24,9 @@ A payment can be created from an payable or receivable *Account Move Line*
 using the `Pay Lines` action. The amount is computed from the debit/credit
 deducing existing payments for this line.
 
+Direct debit payments can be created from the wizard `Create Direct Debit` for
+all the parties that are configured with at least one *Direct Debits* record.
+
 The payment can be in one of this states:
 
 * Draft

@@ -13,18 +13,21 @@ def register():
         payment.Payment,
         account.MoveLine,
         payment.ProcessPaymentStart,
+        account.CreateDirectDebitStart,
         account.PayLineStart,
         account.PayLineAskJournal,
         account.Configuration,
         account.ConfigurationPaymentGroupSequence,
         party.Party,
         party.PartyPaymentDirectDebit,
+        party.PartyReceptionDirectDebit,
         module='account_payment', type_='model')
     Pool.register(
         account.Invoice,
         module='account_payment', type_='model', depends=['account_invoice'])
     Pool.register(
         payment.ProcessPayment,
+        account.CreateDirectDebit,
         account.PayLine,
         party.Replace,
         party.Erase,

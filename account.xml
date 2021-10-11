@@ -73,6 +73,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_create_direct_debit">
+            <field name="name">Create Direct Debit</field>
+            <field name="wiz_name">account.move.line.create_direct_debit</field>
+        </record>
+        <menuitem
+            parent="menu_payments"
+            action="wizard_create_direct_debit"
+            sequence="40"
+            id="menu_create_direct_debit"/>
+
+        <record model="ir.action-res.group" id="wizard_create_direct_debit-group_payment">
+            <field name="action" ref="wizard_create_direct_debit"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_create_direct_debit_view_form">
+            <field name="model">account.move.line.create_direct_debit.start</field>
+            <field name="type">form</field>
+            <field name="name">move_line_create_direct_debit_form</field>
+        </record>
+
         <record model="ir.ui.view" id="move_line_pay_start_view_form">
             <field name="model">account.move.line.pay.start</field>
             <field name="type">form</field>

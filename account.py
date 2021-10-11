@@ -185,6 +185,80 @@ class MoveLine(metaclass=PoolMeta):
                 'payment_blocked': False,
                 })
 
+    @classmethod
+    def _pay_direct_debit_domain(cls, date):
+        return [
+            ['OR',
+                ('account.type.receivable', '=', True),
+                ('account.type.payable', '=', True),
+                ],
+            ('party', '!=', None),
+            ('reconciliation', '=', None),
+            ('payment_amount', '!=', 0),
+            ('move_state', '=', 'posted'),
+            ['OR',
+                ('debit', '>', 0),
+                ('credit', '<', 0),
+                ],
+            ('maturity_date', '<=', date),
+            ]
+
+    @classmethod
+    def pay_direct_debit(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Payment = pool.get('account.payment')
+        Reception = pool.get('party.party.reception_direct_debit')
+        if date is None:
+            date = Date.today()
+        with Transaction().set_context(_check_access=True):
+            lines = cls.search(cls._pay_direct_debit_domain(date))
+
+        payments = []
+        for line in lines:
+            if not line.payment_amount:
+                # SQLite fails to search for payment_amount != 0
+                continue
+            pattern = Reception.get_pattern(line)
+            for reception in line.party.reception_direct_debits:
+                if reception.match(pattern):
+                    payments.extend(reception.get_payments(line))
+        Payment.save(payments)
+        return payments
+
+
+class CreateDirectDebit(Wizard):
+    "Create Direct Debit"
+    __name__ = 'account.move.line.create_direct_debit'
+
+    start = StateView('account.move.line.create_direct_debit.start',
+        'account_payment.move_line_create_direct_debit_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Create", 'create_', 'tryton-ok', default=True),
+            ])
+    create_ = StateAction('account_payment.act_payment_form')
+
+    def do_create_(self, action):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        payments = Line.pay_direct_debit(date=self.start.date)
+        return action, {
+            'res_id': [p.id for p in payments],
+            }
+
+
+class CreateDirectDebitStart(ModelView):
+    "Create Direct Debit"
+    __name__ = 'account.move.line.create_direct_debit.start'
+
+    date = fields.Date(
+        "Date", required=True,
+        help="Create direct debit for lines due up to this date.")
+
+    @classmethod
+    def default_date(cls):
+        return Pool().get('ir.date').today()
+
 
 class PayLineStart(ModelView):
     "Pay Line"
