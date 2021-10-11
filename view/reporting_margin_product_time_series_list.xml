@@ -1,13 +1,8 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<tree>
-    <field name="date"/>
-    <field name="quantity" symbol="unit"/>
-    <field name="cost"/>
-    <field name="revenue"/>
-    <field name="profit"/>
-    <field name="margin" factor="100">
-        <suffix string="%" name="margin"/>
-    </field>
-</tree>
+<data>
+    <xpath expr="//field[@name='cost']" position="before">
+        <field name="quantity" symbol="unit"/>
+    </xpath>
+</data>

@@ -58,6 +58,8 @@ def register():
         ir.Cron,
         res.User,
         stock_reporting_margin.Context,
+        stock_reporting_margin.Main,
+        stock_reporting_margin.MainTimeseries,
         stock_reporting_margin.Product,
         stock_reporting_margin.ProductTimeseries,
         stock_reporting_margin.Category,

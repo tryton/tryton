@@ -333,6 +333,28 @@ class Context(ModelView):
         return Transaction().context.get('include_lost', False)
 
 
+class Main(Abstract, ModelView):
+    "Stock Reporting Margin"
+    __name__ = 'stock.reporting.margin.main'
+
+    time_series = fields.Function(fields.One2Many(
+            'stock.reporting.margin.main.time_series', None, "Time Series"),
+        'get_time_series')
+
+    def get_rec_name(self, name):
+        return ''
+
+    def get_time_series(self, name):
+        pool = Pool()
+        Timeseries = pool.get('stock.reporting.margin.main.time_series')
+        return [t.id for t in Timeseries.search([])]
+
+
+class MainTimeseries(AbstractTimeseries, ModelView):
+    "Stock Reporting Margin"
+    __name__ = 'stock.reporting.margin.main.time_series'
+
+
 class ProductMixin:
     __slots__ = ()
 

@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<graph>
+<graph type="line">
     <x>
-        <field name="date"/>
+        <field name="id"/>
     </x>
     <y>
-        <field name="cost"/>
-        <field name="revenue"/>
+        <field name="margin" empty="0"/>
     </y>
 </graph>

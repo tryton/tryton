@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<tree keyword_open="1">
-    <field name="category" expand="1"/>
-    <field name="cost"/>
-    <field name="revenue"/>
-    <field name="profit"/>
-    <field name="margin" factor="100">
-        <suffix string="%" name="margin"/>
-    </field>
-    <field name="margin_trend" expand="1"/>
-</tree>
+<data>
+    <xpath expr="//field[@name='cost']" position="before">
+        <field name="category" expand="1"/>
+    </xpath>
+    <xpath expr="//field[@name='cost']" position="replace">
+        <field name="cost"/>
+    </xpath>
+    <xpath expr="//field[@name='revenue']" position="replace">
+        <field name="revenue"/>
+    </xpath>
+</data>
