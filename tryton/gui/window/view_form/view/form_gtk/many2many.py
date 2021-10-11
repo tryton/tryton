@@ -52,8 +52,8 @@ class Many2Many(Widget):
 
         if int(self.attrs.get('completion', 1)):
             self.wid_completion = get_completion(
-                create=self.attrs.get('create', True)
-                and common.MODELACCESS[self.attrs['relation']]['create'])
+                search=self.read_access,
+                create=self.create_access)
             self.wid_completion.connect('match-selected',
                 self._completion_match_selected)
             self.wid_completion.connect('action-activated',
@@ -135,6 +135,21 @@ class Many2Many(Widget):
         self.wid_text.disconnect_by_func(self._focus_out)
         self.screen.destroy()
 
+    def get_access(self, type_):
+        model = self.attrs['relation']
+        if model:
+            return common.MODELACCESS[model][type_]
+        else:
+            return True
+
+    @property
+    def read_access(self):
+        return self.get_access('read')
+
+    @property
+    def create_access(self):
+        return int(self.attrs.get('create', 1)) and self.get_access('create')
+
     def _sig_add(self, *args):
         if not self.focus_out:
             return
@@ -160,7 +175,7 @@ class Many2Many(Widget):
             context=context, domain=domain, order=order,
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
-            new=self.attrs.get('create', True),
+            new=self.create_access,
             title=self.attrs.get('string'))
         win.screen.search_filter(quote(value))
         if len(win.screen.group) == 1:

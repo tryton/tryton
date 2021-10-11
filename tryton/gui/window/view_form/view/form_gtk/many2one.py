@@ -74,7 +74,7 @@ class Many2One(Widget):
 
     @property
     def create_access(self):
-        return self.attrs.get('create', True) and self.get_access('create')
+        return int(self.attrs.get('create', 1)) and self.get_access('create')
 
     @property
     def modified(self):
@@ -163,8 +163,7 @@ class Many2One(Widget):
             breadcrumb=breadcrumb)
 
     def sig_new(self, *args):
-        model = self.get_model()
-        if not model or not common.MODELACCESS[model]['create']:
+        if not self.create_access:
             return
         self.focus_out = False
         screen = self.get_screen(search=True)

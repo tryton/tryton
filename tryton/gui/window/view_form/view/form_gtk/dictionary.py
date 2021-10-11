@@ -517,7 +517,7 @@ class DictWidget(Widget):
     def _set_button_sensitive(self):
         self.but_add.set_sensitive(bool(
                 not self._readonly
-                and self.attrs.get('create', True)))
+                and int(self.attrs.get('create', 1))))
         for button in self.buttons.values():
             button.set_sensitive(bool(
                     not self._readonly

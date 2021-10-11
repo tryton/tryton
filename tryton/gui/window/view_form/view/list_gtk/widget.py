@@ -835,7 +835,8 @@ class M2O(GenericText):
 
         access = common.MODELACCESS[model]
         if (create
-                and not (self.attrs.get('create', True) and access['create'])):
+                and not (int(self.attrs.get('create', 1))
+                    and access['create'])):
             return
         elif not access['read']:
             return
@@ -877,7 +878,7 @@ class M2O(GenericText):
         context = field.get_search_context(record)
         order = field.get_search_order(record)
         access = common.MODELACCESS[model]
-        create_access = self.attrs.get('create', True) and access['create']
+        create_access = int(self.attrs.get('create', 1)) and access['create']
 
         def search_callback(found):
             value = None
@@ -903,7 +904,7 @@ class M2O(GenericText):
         access = common.MODELACCESS[model]
         completion = get_completion(
             search=access['read'],
-            create=self.attrs.get('create', True) and access['create'])
+            create=int(self.attrs.get('create', 1)) and access['create'])
         completion.connect('match-selected', self._completion_match_selected,
             record, field, model)
         completion.connect('action-activated',

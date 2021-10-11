@@ -85,10 +85,9 @@ class One2Many(Widget):
             hbox.pack_start(self.wid_text, expand=True, fill=True, padding=0)
 
             if int(self.attrs.get('completion', 1)):
-                access = common.MODELACCESS[attrs['relation']]
                 self.wid_completion = get_completion(
-                    search=access['read'] and access['write'],
-                    create=attrs.get('create', True) and access['create'])
+                    search=self.read_access,
+                    create=self.create_access)
                 self.wid_completion.connect('match-selected',
                     self._completion_match_selected)
                 self.wid_completion.connect('action-activated',
@@ -183,6 +182,29 @@ class One2Many(Widget):
 
         but_switch.props.sensitive = self.screen.number_of_views > 1
 
+    def get_access(self, type_):
+        model = self.attrs['relation']
+        if model:
+            return common.MODELACCESS[model][type_]
+        else:
+            return True
+
+    @property
+    def read_access(self):
+        return self.get_access('read')
+
+    @property
+    def create_access(self):
+        return int(self.attrs.get('create', 1)) and self.get_access('create')
+
+    @property
+    def write_access(self):
+        return self.get_access('write')
+
+    @property
+    def delete_access(self):
+        return int(self.attrs.get('delete', 1)) and self.get_access('delete')
+
     def on_keypress(self, widget, event):
         if ((event.keyval == Gdk.KEY_F3)
                 and self.but_new.get_property('sensitive')):
@@ -259,7 +281,6 @@ class One2Many(Widget):
             self.title, self._readonly, self._required)
 
     def _set_button_sensitive(self):
-        access = common.MODELACCESS[self.screen.model_name]
         if self.record and self.field:
             field_size = self.record.expr_eval(self.attrs.get('size'))
             o2m_size = len(self.field.get_eval(self.record))
@@ -277,22 +298,20 @@ class One2Many(Widget):
 
         self.but_new.set_sensitive(bool(
                 not self._readonly
-                and self.attrs.get('create', True)
-                and not size_limit
-                and access['create']))
+                and self.create_access
+                and not size_limit))
         self.but_del.set_sensitive(bool(
                 not self._readonly
-                and self.attrs.get('delete', True)
+                and self.delete_access
                 and deletable
-                and self._position
-                and access['delete']))
+                and self._position))
         self.but_undel.set_sensitive(bool(
                 not self._readonly
                 and not size_limit
                 and self._position))
         self.but_open.set_sensitive(bool(
                 self._position
-                and access['read']))
+                and self.read_access))
         self.but_next.set_sensitive(bool(
                 self._position
                 and not last))
@@ -303,13 +322,13 @@ class One2Many(Widget):
             self.but_add.set_sensitive(bool(
                     not self._readonly
                     and not size_limit
-                    and access['write']
-                    and access['read']))
+                    and self.write_access
+                    and self.read_access))
             self.but_remove.set_sensitive(bool(
                     not self._readonly
                     and self._position
-                    and access['write']
-                    and access['read']))
+                    and self.write_access
+                    and self.read_access))
             self.wid_text.set_sensitive(self.but_add.get_sensitive())
             self.wid_text.set_editable(self.but_add.get_sensitive())
 
@@ -333,7 +352,7 @@ class One2Many(Widget):
                     return sequence
 
     def _sig_new(self, *args):
-        if not common.MODELACCESS[self.screen.model_name]['create']:
+        if not self.create_access:
             return
         if not self._validate():
             return
@@ -434,14 +453,13 @@ class One2Many(Widget):
         self.screen.display_prev()
 
     def _sig_remove(self, widget, remove=False):
-        access = common.MODELACCESS[self.screen.model_name]
         writable = not self.screen.readonly
         deletable = self.screen.deletable
         if remove:
-            if not access['write'] or not writable or not access['read']:
+            if not self.write_access or not writable or not self.read_access:
                 return
         else:
-            if not access['delete'] or not deletable:
+            if not self.delete_access or not deletable:
                 return
         self.screen.remove(remove=remove)
 
@@ -451,8 +469,7 @@ class One2Many(Widget):
     def _sig_add(self, *args):
         if not self.focus_out:
             return
-        access = common.MODELACCESS[self.screen.model_name]
-        if not access['write'] or not access['read']:
+        if not self.write_access or not self.read_access:
             return
         self.view.set_value()
         domain = self.field.domain_get(self.record)
