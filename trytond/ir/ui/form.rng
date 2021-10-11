@@ -382,6 +382,28 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">create</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">delete</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
       <attribute a:defaultValue="left_to_right">
         <name ns="">orientation</name>
         <choice>

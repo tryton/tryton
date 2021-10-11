@@ -91,6 +91,10 @@ attlist.field &= attribute product { text }?
 attlist.field &=
   [ a:defaultValue = "0" ] attribute invisible { "0" | "1" }?
 attlist.field &=
+  [ a:defaultValue = "1" ] attribute create { "0" | "1" }?
+attlist.field &=
+  [ a:defaultValue = "1" ] attribute delete { "0" | "1" }?
+attlist.field &=
   [ a:defaultValue = "left_to_right" ] attribute orientation {
     "left_to_right"
     | "right_to_left"

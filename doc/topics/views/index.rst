@@ -154,6 +154,14 @@ List of attributes shared by many form elements:
       :class:`trytond.model.fields.One2Many` to specifiy if the client must
       auto-complete the field. The default value is True.
 
+    .. _common-attributes-create:
+
+    * ``create``: A boolean to specify if the user can create targets from the
+      widget. The default value is ``True``.
+
+    * ``delete``: A boolean to specify if the user can delete targets from the
+      widget. The default value is ``True``.
+
     .. _common-attributes-factor:
 
     * ``factor``: A factor to apply on fields
