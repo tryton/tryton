@@ -8,7 +8,6 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool, Id, If
-from trytond.report import Report
 from trytond.transaction import Transaction
 
 from .exceptions import PackageError
@@ -413,8 +412,3 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     @property
     def packages_moves(self):
         return (m for m in self.moves if m.state != 'cancelled')
-
-
-class PackageLabel(Report):
-    'Package Label'
-    __name__ = 'stock.package.label'
