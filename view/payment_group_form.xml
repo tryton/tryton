@@ -19,4 +19,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="payment_amount_succeeded"/>
     <label name="payment_complete" string="Complete"/>
     <field name="payment_complete"/>
+
+    <button name="succeed" colspan="4"/>
 </form>

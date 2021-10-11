@@ -120,7 +120,8 @@ Check the properties of the payment group::
 
 Success the payment and recheck the payment group::
 
-    >>> payment.click('succeed')
+    >>> group.click('succeed')
+    >>> payment.reload()
     >>> payment.succeeded_by == employee
     True
     >>> payment.state

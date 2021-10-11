@@ -171,6 +171,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="payment_group_succeed_button">
+            <field name="name">succeed</field>
+            <field name="string">Succeed</field>
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_group_succeed_button_group_payment">
+            <field name="button" ref="payment_group_succeed_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
         <record model="ir.sequence.type"
             id="sequence_type_account_payment_group">
             <field name="name">Account Payment Group</field>

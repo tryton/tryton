@@ -75,8 +75,9 @@ class Group(ModelSQL, ModelView):
         'account.payment', 'group', 'Payments', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
+            ('journal', '=', Eval('journal', -1)),
             ],
-        depends=['company'])
+        depends=['company', 'journal'])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
@@ -97,6 +98,20 @@ class Group(ModelSQL, ModelView):
             help="All the payments in the group are complete."),
         'get_payment_aggregated', searcher='search_complete')
 
+    process_method = fields.Function(
+        fields.Selection('get_process_methods', "Process Method"),
+        'on_change_with_process_method', searcher='search_process_method')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update(
+            succeed={
+                'invisible': Eval('payment_complete', False),
+                'depends': ['payment_complete', 'process_method'],
+                },
+            )
+
     @classmethod
     def __register__(cls, module_name):
         table_h = cls.__table_handler__(module_name)
@@ -109,6 +124,22 @@ class Group(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @classmethod
+    def get_process_methods(cls):
+        pool = Pool()
+        Journal = pool.get('account.payment.journal')
+        field_name = 'process_method'
+        return Journal.fields_get([field_name])[field_name]['selection']
+
+    @fields.depends('journal')
+    def on_change_with_process_method(self, name=None):
+        if self.journal:
+            return self.journal.process_method
+
+    @classmethod
+    def search_process_method(cls, name, clause):
+        return [('journal.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vlist):
@@ -133,6 +164,14 @@ class Group(ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('payments', None)
         return super(Group, cls).copy(groups, default=default)
+
+    @classmethod
+    @ModelView.button
+    def succeed(cls, groups):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payments = sum((g.payments for g in groups), ())
+        Payment.succeed(payments)
 
     @classmethod
     def _get_complete_states(cls):
