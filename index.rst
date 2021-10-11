@@ -56,6 +56,9 @@ Operational
 :ref:`Sale <index-sale>`
     Follows sale orders.
 
+:ref:`Sale Point <index-sale-point>`
+    Point of Sales.
+
 :ref:`Sale Subscription <index-sale_subscription>`
     Subscribes to recurring service.
 
