@@ -385,7 +385,7 @@ class QuantityIssueGenerate(Wizard):
     def transition_generate(self):
         pool = Pool()
         QuantityIssue = pool.get('stock.quantity.issue')
-        QuantityIssue.generate_issues(warehouses=self.start.warehouses)
+        QuantityIssue.generate_issues(warehouses=self.start.warehouses or None)
         return 'end'
 
 
@@ -396,7 +396,8 @@ class QuantityIssueGenerateStart(ModelView):
         'stock.location', None, None, "Warehouses",
         domain=[
             ('type', '=', 'warehouse'),
-            ])
+            ],
+        help="If empty all warehouses are used.")
 
     @classmethod
     def default_warehouses(cls):
