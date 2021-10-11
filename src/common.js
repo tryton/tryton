@@ -3678,17 +3678,21 @@
     });
 
     Sao.common.get_completion = function(el, source,
-            match_selected, action_activated) {
+            match_selected, action_activated, search, create) {
         var format = function(content) {
             return content.rec_name;
         };
         var completion = new Sao.common.InputCompletion(
                 el, source, match_selected, format);
         if (action_activated) {
-            completion.set_actions([
-                ['search', Sao.i18n.gettext('Search...')],
-                ['create', Sao.i18n.gettext('Create...')]],
-                action_activated);
+            var actions = [];
+            if (search || search == undefined) {
+                actions.push(['search', Sao.i18n.gettext('Search...')]);
+            }
+            if (create || create == undefined) {
+                actions.push(['create', Sao.i18n.gettext('Create...')]);
+            }
+            completion.set_actions(actions, action_activated);
         }
     };
 
