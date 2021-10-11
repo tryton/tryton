@@ -886,6 +886,15 @@ class Move(Workflow, ModelSQL, ModelView):
                     gettext('stock.msg_move_no_origin',
                         moves=names))
 
+    def sort_quantities(self, quantities, locations, grouping):
+        """
+        Return the quantities ordered by pick preference which is the locations
+        order by default.
+        """
+        locations = {l.id: i for i, l in enumerate(locations)}
+        quantities = filter(lambda x: x[0][0] in locations, quantities)
+        return sorted(quantities, key=lambda x: locations[x[0][0]])
+
     def pick_product(self, quantities):
         """
         Pick the product across the keys. Naive (fast) implementation.
@@ -1011,12 +1020,8 @@ class Move(Workflow, ModelSQL, ModelView):
             except ValueError:
                 # from_location may be a view
                 pass
-            index = {l.id: i for i, l in enumerate(childs)}
             location_qties = []
-            pbl_items = pbl.items()
-            pbl_items = filter(lambda x: x[0][0] in index, pbl_items)
-            pbl_items = sorted(pbl_items, key=lambda x: index[x[0][0]])
-            for key, qty in pbl_items:
+            for key, qty in pbl.items():
                 move_key = get_key(move, key[0])
                 if match(key, move_key):
                     qty = Uom.compute_qty(
@@ -1024,6 +1029,8 @@ class Move(Workflow, ModelSQL, ModelView):
                         round=False)
                     location_qties.append((key, qty))
 
+            location_qties = move.sort_quantities(
+                location_qties, childs, grouping)
             to_pick = move.pick_product(location_qties)
 
             picked_qties = 0.0
