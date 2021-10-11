@@ -37,7 +37,13 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
     earliest_date = fields.Function(
         fields.Date("Earliest Date"), 'get_earliest_date')
     earliest_percentage = fields.Function(
-        fields.Float("Earliest Percentage"), 'get_earliest_percentage')
+        fields.Float(
+            "Earliest Percentage",
+            states={
+                'invisible': ~Eval('earliest_date'),
+                },
+            depends=['earliest_date']),
+        'get_earliest_percentage')
     warehouse = fields.Function(
         fields.Many2One('stock.location', "Warehouse"),
         'on_change_with_warehouse')
