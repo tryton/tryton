@@ -68,6 +68,12 @@ class PaymentJournal(metaclass=PoolMeta):
 class PaymentGroup(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons['succeed']['invisible'] |= (
+            Eval('process_method') == 'braintree')
+
     def process_braintree(self):
         pool = Pool()
         Payment = pool.get('account.payment')
