@@ -47,6 +47,7 @@ Create customer::
 
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
+    >>> customer.sale_shipment_cost_method = 'shipment'
     >>> customer.save()
 
 Create account category::
@@ -116,7 +117,8 @@ Sale products with cost on shipment::
     >>> sale.carrier = carrier
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'shipment'
-    >>> sale.shipment_cost_method = 'shipment'
+    >>> sale.shipment_cost_method
+    'shipment'
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 5.0

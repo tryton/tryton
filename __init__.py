@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
+
+from . import party
 from . import account
 from . import sale
 from . import stock
@@ -9,6 +11,8 @@ from . import stock
 
 def register():
     Pool.register(
+        party.Party,
+        party.PartySaleMethod,
         account.InvoiceLine,
         sale.Configuration,
         sale.ConfigurationSaleMethod,

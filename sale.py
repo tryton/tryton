@@ -153,6 +153,10 @@ class Sale(metaclass=PoolMeta):
             self.carrier = self.available_carriers[0]
         elif not self.available_carriers:
             self.carrier = None
+        if self.party and self.party.sale_shipment_cost_method:
+            self.shipment_cost_method = self.party.sale_shipment_cost_method
+        else:
+            self.shipment_cost_method = self.default_shipment_cost_method()
 
     @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_shipment_party(self):
