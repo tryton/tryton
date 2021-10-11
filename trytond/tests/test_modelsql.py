@@ -882,6 +882,40 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertIn('UNION', str(Model.search(domain, query=True)))
         self.assertNotIn('UNION', str(query_without_split))
 
+    @with_transaction()
+    def test_search_or_to_union_class_order(self):
+        """
+        Test searching for 'OR'-ed domain when the class defines _order
+        """
+        pool = Pool()
+        Model = pool.get('test.modelsql.search.or2union.class_order')
+        Target = pool.get('test.modelsql.search.or2union.class_order.target')
+
+        target_a, target_b, target_c = Target.create([
+                {'name': 'A'}, {'name': 'B'}, {'name': 'C'},
+                ])
+        model_a, model_b, model_c = Model.create([{
+                    'name': 'A',
+                    'reference': str(target_a),
+                    }, {
+                    'name': 'B',
+                    'reference': str(target_b),
+                    }, {
+                    'name': 'C',
+                    'reference': str(target_c),
+                    'targets': [('create', [{
+                                    'name': 'C.A',
+                                    }]),
+                        ],
+                    }])
+
+        domain = ['OR',
+            ('name', 'ilike', '%A%'),
+            ('targets.name', 'ilike', '%A'),
+            ]
+        self.assertEqual(Model.search(domain), [model_c, model_a])
+        self.assertIn('UNION', str(Model.search(domain, query=True)))
+
     def test_split_subquery_domain_empty(self):
         """
         Test the split of domains in local and relation parts (empty domain)

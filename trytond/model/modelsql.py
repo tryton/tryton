@@ -1399,8 +1399,6 @@ class ModelSQL(ModelStorage):
             'NULLS LAST': NullsLast,
             None: lambda _: _
             }
-        if order is None or order is False:
-            order = cls._order
         for oexpr, otype in order:
             fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]
@@ -1428,6 +1426,8 @@ class ModelSQL(ModelStorage):
         super(ModelSQL, cls).search(
             domain, offset=offset, limit=limit, order=order, count=count)
 
+        if order is None or order is False:
+            order = cls._order
         tables, expression = cls.__search_query(domain, count, query, order)
 
         main_table, _ = tables[None]
