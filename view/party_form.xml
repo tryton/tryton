@@ -7,6 +7,10 @@ this repository contains the full copyright notices and license terms. -->
     </xpath>
     <xpath expr="/form/notebook" position="inside">
         <page id="sale" string="Sale">
+            <label name="sale_invoice_method"/>
+            <field name="sale_invoice_method"/>
+            <label name="sale_shipment_method"/>
+            <field name="sale_shipment_method"/>
         </page>
     </xpath>
 </data>

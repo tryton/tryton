@@ -433,8 +433,16 @@ class Sale(
                 self.invoice_address = self.party.address_get(type='invoice')
             if not self.shipment_party:
                 self.shipment_address = self.party.address_get(type='delivery')
+                if self.party.sale_shipment_method:
+                    self.shipment_method = self.party.sale_shipment_method
+                else:
+                    self.shipment_method = self.default_shipment_method()
             if self.party.customer_payment_term:
                 self.payment_term = self.party.customer_payment_term
+            if self.party.sale_invoice_method:
+                self.invoice_method = self.party.sale_invoice_method
+            else:
+                self.invoice_method = self.default_invoice_method()
 
     @fields.depends('party', 'invoice_party')
     def on_change_invoice_party(self):
@@ -451,6 +459,8 @@ class Sale(
                 type='delivery')
         elif self.party:
             self.shipment_address = self.party.address_get(type='delivery')
+            if self.party.sale_shipment_method:
+                self.shipment_method = self.party.sale_shipment_method
 
     @fields.depends('party', 'company')
     def _get_tax_context(self):

@@ -22,5 +22,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_sale_form2"/>
             <field name="group" ref="group_sale"/>
         </record>
+
+        <record model="ir.model.field.access" id="access_party_sale_invoice_method">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_sale_invoice_method_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_sale_shipment_method">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_sale_shipment_method_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
     </data>
 </tryton>

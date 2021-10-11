@@ -21,6 +21,8 @@ def register():
         sale.SaleLineTax,
         sale.SaleLineIgnoredMove,
         sale.SaleLineRecreatedMove,
+        party.Party,
+        party.PartySaleMethod,
         product.Configuration,
         product.DefaultLeadTime,
         product.Template,
