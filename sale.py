@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow, fields
+from trytond.model import ModelView, Workflow, Unique, fields
 from trytond.transaction import Transaction
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
@@ -205,6 +205,12 @@ class Sale(metaclass=PoolMeta):
                         carrier=sale.carrier.rec_name))
         super(Sale, cls).confirm(sales)
 
+    @classmethod
+    @ModelView.button
+    def process(cls, sales):
+        with Transaction().set_context(_shipment_cost_invoiced=set()):
+            super().process(sales)
+
     def _get_carrier_context(self):
         return {}
 
@@ -301,47 +307,59 @@ class Sale(metaclass=PoolMeta):
             shipment.carrier = self.carrier
         return shipment
 
-    def create_invoice(self):
-        pool = Pool()
-        InvoiceLine = pool.get('account.invoice.line')
-        Shipment = pool.get('stock.shipment.out')
-
-        invoice = super().create_invoice()
-        if invoice and self.shipment_cost_method == 'shipment':
-            invoice_lines = []
-            # Copy shipments to avoid losing changes as the cache is cleared
-            # after invoice line save because shipment is a Function field
-            shipments = list(self.shipments)
-            for shipment in shipments:
-                if (shipment.state == 'done'
-                        and shipment.carrier
-                        and not shipment.cost_invoice_line):
-                    invoice_line = shipment.get_cost_invoice_line(invoice)
-                    if not invoice_line:
-                        continue
-                    invoice_line.invoice = invoice
-                    invoice_lines.append(invoice_line)
-                    shipment.cost_invoice_line = invoice_line
-            InvoiceLine.save(invoice_lines)
-            Shipment.save(shipments)
-        return invoice
-
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
     shipment_cost = fields.Numeric('Shipment Cost', digits=price_digits)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('sale_shipment_cost_unique',
+                Unique(t, t.sale, t.shipment_cost),
+                'sale_shipment_cost.msg_sale_shipment_cost_unique'),
+            ]
+
+    def get_invoice_line(self):
+        context = Transaction().context
+        shipment_cost_invoiced = context.get('_shipment_cost_invoiced')
+        lines = super().get_invoice_line()
+        if (self.sale.shipment_cost_method == 'shipment'
+                and self.shipment_cost
+                and shipment_cost_invoiced is not None):
+            for shipment in self.sale.shipments:
+                if (shipment.state == 'done'
+                        and shipment.carrier
+                        and not shipment.cost_invoice_line
+                        and shipment.id not in shipment_cost_invoiced):
+                    invoice_line = shipment.get_cost_invoice_line(
+                        self.sale._get_invoice_sale())
+                    if invoice_line:
+                        invoice_line.origin = self
+                        lines.append(invoice_line)
+                        shipment_cost_invoiced.add(shipment.id)
+        return lines
+
     def _get_invoice_line_quantity(self):
         quantity = super()._get_invoice_line_quantity()
         if self.shipment_cost:
             if self.sale.shipment_cost_method == 'shipment':
-                return 0
+                quantity = 0
             elif (self.sale.shipment_cost_method == 'order'
                     and self.sale.invoice_method == 'shipment'):
                 shipments = self.sale.shipments
                 if (not shipments
                         or all(s.state != 'done' for s in shipments)):
-                    return 0
+                    quantity = 0
+        return quantity
+
+    def _get_invoiced_quantity(self):
+        quantity = super()._get_invoiced_quantity()
+        if self.shipment_cost:
+            if self.sale.shipment_cost_method == 'shipment':
+                quantity = 0
         return quantity
 
 

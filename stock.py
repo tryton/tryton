@@ -152,6 +152,7 @@ class ShipmentOut(metaclass=PoolMeta):
         invoice_line.unit_price = round_price(cost)
         invoice_line.product = product
         invoice_line.on_change_product()
+        invoice_line.cost_shipments = [self]
 
         if not invoice_line.account:
             raise InvoiceShipmentCostError(

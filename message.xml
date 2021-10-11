@@ -6,6 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_invalid_carrier">
             <field name="text">To confirm sale "%(sale)s" you must change the carrier "%(carrier)s".</field>
         </record>
+        <record model="ir.message" id="msg_sale_shipment_cost_unique">
+            <field name="text">A sale can have only one shipment cost line.</field>
+        </record>
         <record model="ir.message" id="msg_shipment_cost_invoice_missing_account_revenue">
             <field name="text">To invoice shipment cost of "%(shipment)s", you must define an account revenue for product "%(product)s".</field>
         </record>
