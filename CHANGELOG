@@ -1,3 +1,4 @@
+* Use global cache for Function fields in readonly transactions
 * Add format method to DictSchemaMixin
 * Allow modify record name on the reports
 * Add methods to format number and symbol on Lang

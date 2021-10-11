@@ -1515,7 +1515,10 @@ class ModelStorage(Model):
             raise AttributeError('"%s" has no attribute "%s"' % (self, name))
 
         try:
-            if field._type not in ('many2one', 'reference'):
+            if field._type not in (
+                    'many2one', 'reference',
+                    'one2many', 'many2many', 'one2one',
+                    ):
                 # fill local cache for quicker access later
                 value \
                         = self._local_cache[self.id][name] \
@@ -1667,7 +1670,7 @@ class ModelStorage(Model):
                 self._transaction.set_user(self._user), \
                 self._transaction.reset_context(), \
                 self._transaction.set_context(
-                    self._context, _check_access=False):
+                    self._context, _check_access=False) as transaction:
             if (self.id in self._cache and name in self._cache[self.id]
                     and not require_context_field):
                 # Use values from cache
@@ -1684,7 +1687,9 @@ class ModelStorage(Model):
                 read_data = self.read(list(index.keys()), list(ffields.keys()))
                 read_data.sort(key=lambda r: index[r['id']])
             # create browse records for 'remote' models
-            no_local_cache = {'one2one', 'one2many', 'many2many', 'binary'}
+            no_local_cache = {'binary'}
+            if not transaction.readonly:
+                no_local_cache |= {'one2one', 'one2many', 'many2many'}
             for data in read_data:
                 id_ = data['id']
                 to_delete = set()
@@ -1705,7 +1710,8 @@ class ModelStorage(Model):
                     if (field._type in no_local_cache
                             or field.context
                             or getattr(field, 'datetime_field', None)
-                            or isinstance(field, fields.Function)):
+                            or (isinstance(field, fields.Function)
+                                and not transaction.readonly)):
                         to_delete.add(fname)
                 self._cache[id_]._update(
                     **{k: v for k, v in data.items() if k not in to_delete})
