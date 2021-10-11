@@ -107,3 +107,10 @@ class Carrier(metaclass=PoolMeta):
                     'invisible': Eval('shipping_service') != 'dpd',
                     }),
             ]
+
+    @property
+    def shipping_label_mimetype(self):
+        mimetype = super().shipping_label_mimetype
+        if self.shipping_service == 'dpd':
+            mimetype = 'application/pdf'
+        return mimetype

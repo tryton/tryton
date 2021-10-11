@@ -124,6 +124,7 @@ class CreateDPDShipping(Wizard):
         if not credential.depot or not credential.token:
             credential.update_token()
 
+        carrier = shipment.carrier
         shipping_client = get_client(credential.server, SHIPMENT_SERVICE)
         print_options = self.get_print_options(shipment)
         packages = shipment.root_packages
@@ -178,6 +179,8 @@ class CreateDPDShipping(Wizard):
         parcels = response.parcelInformation
         for package, label, parcel in zip_longest(packages, labels, parcels):
             package.shipping_label = fields.Binary.cast(label.getvalue())
+            package.shipping_label_mimetype = (
+                carrier.shipping_label_mimetype)
             package.shipping_reference = parcel.parcelLabelNumber
         Package.save(packages)
         shipment.save()
