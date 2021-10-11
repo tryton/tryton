@@ -44,7 +44,7 @@ Stock
 `Package Shipping DPD </projects/modules-stock-package-shipping-dpd/en/latest>`_
     Connects with DPD shipping service.
 
-`Package Shipping MyGLS </projects/modules-stock-package-shipping-mugls/en/latest>`_
+`Package Shipping MyGLS </projects/modules-stock-package-shipping-mygls/en/latest>`_
     Connects with MyGLS shipping service.
 
 `Package Shipping Sendcloud </projects/modules-stock-package-shipping-sendcloud/en/latest>`_
