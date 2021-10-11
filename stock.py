@@ -385,7 +385,7 @@ class QuantityEarlyPlanGenerate(Wizard):
         pool = Pool()
         QuantityEarlyPlan = pool.get('stock.quantity.early_plan')
         QuantityEarlyPlan.generate_plans(
-            warehouses=self.start.warehouses)
+            warehouses=self.start.warehouses or None)
         return 'end'
 
 
@@ -396,7 +396,8 @@ class QuantityEarlyPlanGenerateStart(ModelView):
         'stock.location', None, None, "Warehouses",
         domain=[
             ('type', '=', 'warehouse'),
-            ])
+            ],
+        help="If empty all warehouses are used.")
 
     @classmethod
     def default_warehouses(cls):
