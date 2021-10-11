@@ -399,6 +399,18 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
     def supplier_taxes_deductible_rate_used(self):
         return self.get_taxes('supplier_taxes_deductible_rate_used')
 
+    @classmethod
+    def copy(cls, templates, default=None):
+        context = Transaction().context
+        default = default.copy() if default else {}
+        if context.get('_check_access'):
+            default.setdefault(
+                'account_category',
+                cls.default_get(
+                    ['account_category'],
+                    with_rec_name=False).get('account_category'))
+        return super().copy(templates, default=default)
+
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

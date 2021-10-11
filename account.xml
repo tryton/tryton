@@ -3,6 +3,15 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="res.group" id="group_account_product_admin">
+            <field name="name">Account Product Administration</field>
+            <field name="parent" ref="product.group_product_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_account_product_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_account_product_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="create_chart_properties_view_form">
             <field name="model">account.create_chart.properties</field>
             <field name="inherit"
