@@ -106,6 +106,7 @@ class CreateShippingSendcloud(Wizard):
                     shipment=shipment.rec_name))
 
         credential = shipment.get_sendcloud_credential()
+        carrier = shipment.carrier
         packages = shipment.root_packages
 
         parcels = []
@@ -126,6 +127,7 @@ class CreateShippingSendcloud(Wizard):
                     label_url = label_url[index]
             package.sendcloud_shipping_id = parcel['id']
             package.shipping_label = credential.get_label(label_url)
+            package.shipping_label_mimetype = carrier.shipping_label_mimetype
             package.shipping_reference = parcel['tracking_number']
             package.sendcloud_shipping_tracking_url = parcel['tracking_url']
             if not shipment.reference:

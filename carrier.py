@@ -270,3 +270,10 @@ class Carrier(metaclass=PoolMeta):
                     'invisible': Eval('shipping_service') != 'sendcloud',
                     }),
             ]
+
+    @property
+    def shipping_label_mimetype(self):
+        mimetype = super().shipping_label_mimetype
+        if self.shipping_service == 'sendcloud':
+            mimetype = 'application/pdf'
+        return mimetype

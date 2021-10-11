@@ -219,6 +219,8 @@ Create the packages and ship the shipment::
     True
     >>> pack.shipping_label is not None
     True
+    >>> pack.shipping_label_mimetype
+    'application/pdf'
     >>> pack.shipping_reference is not None
     True
     >>> pack.shipping_tracking_url.startswith('http')
