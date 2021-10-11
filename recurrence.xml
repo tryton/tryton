@@ -64,5 +64,32 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">recurrence_rule_list</field>
         </record>
+
+        <record model="ir.action.wizard" id="wizard_recurrence_test">
+            <field name="name">Test Recurrence Rule</field>
+            <field name="wiz_name">sale.subscription.recurrence.rule.set.test</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_recurrence_test_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">sale.subscription.recurrence.rule.set,-1</field>
+            <field name="action" ref="wizard_recurrence_test"/>
+        </record>
+        <menuitem
+            parent="menu_configuration"
+            action="wizard_recurrence_test"
+            sequence="90"
+            id="menu_recurrence_test"/>
+
+        <record model="ir.ui.view" id="recurrence_rule_set_test_view_form">
+            <field name="model">sale.subscription.recurrence.rule.set.test</field>
+            <field name="type">form</field>
+            <field name="name">recurrence_rule_set_test_form</field>
+        </record>
+        <record model="ir.ui.view" id="recurrence_rule_set_test_result_view_list">
+            <field name="model">sale.subscription.recurrence.rule.set.test.result</field>
+            <field name="type">tree</field>
+            <field name="name">recurrence_rule_set_test_result_list</field>
+        </record>
     </data>
 </tryton>

@@ -17,6 +17,8 @@ def register():
         configuration.ConfigurationSequence,
         recurrence.RecurrenceRuleSet,
         recurrence.RecurrenceRule,
+        recurrence.TestRecurrenceRuleSetView,
+        recurrence.TestRecurrenceRuleSetViewResult,
         service.Service,
         subscription.Subscription,
         subscription.Line,
@@ -29,6 +31,7 @@ def register():
     Pool.register(
         subscription.CreateLineConsumption,
         subscription.CreateSubscriptionInvoice,
+        recurrence.TestRecurrenceRuleSet,
         party.Replace,
         party.Erase,
         module='sale_subscription', type_='wizard')

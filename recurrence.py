@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 from dateutil.rrule import rrule, rruleset
@@ -8,6 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond.wizard import Wizard, StateView, Button
 
 from .exceptions import RecurrenceRuleValidationError
 
@@ -229,3 +231,58 @@ class RecurrenceRule(ModelSQL, ModelView):
                     recurrence_rule=self.rec_name,
                     exception=exception,
                     **self.__names__(name))) from exception
+
+
+class TestRecurrenceRuleSet(Wizard):
+    "Test Subscription Recurrence Rule Set"
+    __name__ = 'sale.subscription.recurrence.rule.set.test'
+    start_state = 'test'
+    test = StateView(
+        'sale.subscription.recurrence.rule.set.test',
+        'sale_subscription.recurrence_rule_set_test_view_form',
+        [Button("Close", 'end', 'tryton-close', default=True)])
+
+    def default_test(self, fields):
+        default = {}
+        if(self.model and self.model.__name__
+                == 'sale.subscription.recurrence.rule.set'):
+            if self.record:
+                default['recurrence'] = self.record.id
+        return default
+
+
+class TestRecurrenceRuleSetView(ModelView):
+    "Test Subscription Recurrence Rule Set"
+    __name__ = 'sale.subscription.recurrence.rule.set.test'
+    recurrence = fields.Many2One(
+        'sale.subscription.recurrence.rule.set',
+        "Subscription Recurrence", required=True)
+    start_date = fields.Date("Start Date", required=True)
+    count = fields.Integer("Count", required=True,
+        help="Used to determine how many occurences to compute.")
+    result = fields.One2Many(
+        'sale.subscription.recurrence.rule.set.test.result',
+        None, "Result", readonly=True)
+
+    @classmethod
+    def default_start_date(cls):
+        return Pool().get('ir.date').today()
+
+    @fields.depends('recurrence', 'start_date', 'count', 'result')
+    def on_change_with_result(self):
+        pool = Pool()
+        Result = pool.get('sale.subscription.recurrence.rule.set.test.result')
+        result = []
+        if self.recurrence and self.start_date and self.count:
+            rruleset = self.recurrence.rruleset(self.start_date)
+            datetime = dt.datetime.combine(self.start_date, dt.time())
+            for date in rruleset.xafter(datetime, self.count, inc=True):
+                result.append(Result(date=date.date()))
+        self.result = result
+        return self._changed_values.get('result', [])
+
+
+class TestRecurrenceRuleSetViewResult(ModelView):
+    "Test Subscription Recurrence Rule Set Result"
+    __name__ = 'sale.subscription.recurrence.rule.set.test.result'
+    date = fields.Date("Date", readonly=True)
