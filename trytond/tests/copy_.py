@@ -101,6 +101,16 @@ class CopyBinary(ModelSQL):
     file_id = fields.Char("Binary ID")
 
 
+class CopyAccess(ModelSQL):
+    "Copy with Access"
+    __name__ = 'test.copy.access'
+    name = fields.Char("Name")
+
+    @classmethod
+    def default_name(cls):
+        return "Default"
+
+
 class CopyTranslate(ModelSQL):
     "Copy Translate"
     __name__ = 'test.copy.translate'
@@ -121,5 +131,6 @@ def register(module):
         CopyMany2ManyReferenceTarget,
         CopyMany2ManyReferenceRelation,
         CopyBinary,
+        CopyAccess,
         CopyTranslate,
         module=module, type_='model')

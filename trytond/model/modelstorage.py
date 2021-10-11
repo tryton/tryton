@@ -370,7 +370,7 @@ class ModelStorage(Model):
                 for name, value in default.items()
                 if name.startswith(prefix)}
 
-        def convert_data(field_defs, origin):
+        def convert_data(field_defs, origin, default_values):
             data = origin.copy()
             for field_name in field_defs:
                 ftype = field_defs[field_name]['type']
@@ -383,13 +383,16 @@ class ModelStorage(Model):
                         'write_uid',
                         ):
                     del data[field_name]
+                    continue
 
                 if field_name in default:
                     if callable(default[field_name]):
                         data[field_name] = default[field_name](origin)
                     else:
                         data[field_name] = default[field_name]
-                if (isinstance(field, fields.Function)
+                if data[field_name] == default_values.get(field_name):
+                    del data[field_name]
+                elif (isinstance(field, fields.Function)
                         and not isinstance(field, fields.MultiValue)):
                     del data[field_name]
                 elif ftype in ('many2one', 'one2one'):
@@ -433,9 +436,10 @@ class ModelStorage(Model):
         ids = list(map(int, records))
         values = {d['id']: d for d in cls.read(ids, fields_names=fields_names)}
         field_defs = cls.fields_get(fields_names=fields_names)
+        default_values = cls.default_get(fields_names, with_rec_name=False)
         to_create = []
         for id_ in ids:
-            data = convert_data(field_defs, values[id_])
+            data = convert_data(field_defs, values[id_], default_values)
             to_create.append(data)
         new_records = cls.create(to_create)
 
@@ -459,12 +463,15 @@ class ModelStorage(Model):
                     # should be the same.
                     with Transaction().set_context(language=lang.code,
                             fuzzy_translation=False):
+                        default_values = cls.default_get(
+                            fields_names, with_rec_name=False)
                         values = cls.read(ids, fields_names=fields_names)
                         to_write = []
                         for data in values:
                             to_write.append(id2new_records[data['id']])
                             to_write.append(
-                                convert_data(fields_translate, data))
+                                convert_data(
+                                    fields_translate, data, default_values))
                         cls.write(*to_write)
         return new_records
 

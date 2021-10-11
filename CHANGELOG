@@ -1,3 +1,4 @@
+* Skip default values when copying records
 * Use global cache for Function fields in readonly transactions
 * Add format method to DictSchemaMixin
 * Allow modify record name on the reports
