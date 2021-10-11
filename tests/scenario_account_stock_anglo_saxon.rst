@@ -48,7 +48,7 @@ Create the required users::
     >>> product_user = User()
     >>> product_user.name = 'Product User'
     >>> product_user.login = 'product_user'
-    >>> product_group, = Group.find([('name', '=', 'Product Administration')])
+    >>> product_group, = Group.find([('name', '=', 'Account Product Administration')])
     >>> product_user.groups.append(product_group)
     >>> product_user.save()
 
@@ -128,6 +128,8 @@ Create product::
     >>> template.save()
     >>> product, = template.products
     >>> template_average, = template.duplicate({'cost_price_method': 'average'})
+    >>> template_average.account_category = account_category
+    >>> template_average.save()
     >>> product_average, = template_average.products
 
 Create payment term::
