@@ -95,6 +95,9 @@ Accounting
 `Product </projects/modules-account-product/en/latest>`_
     Adds accounting on product and category.
 
+`Rule </products/modules-account-rule/en/latest>`_
+    Applies rules on accounts.
+
 `Statement </projects/modules-account-statement/en/latest>`_
     Books bank statement, cash day book etc.
 
