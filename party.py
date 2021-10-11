@@ -270,6 +270,20 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                 'visual', If(Eval('payable_today', 0) < 0, 'warning', '')),
             ]
 
+    @classmethod
+    def copy(cls, parties, default=None):
+        context = Transaction().context
+        default = default.copy() if default else {}
+        if context.get('_check_access'):
+            fields = [
+                'accounts',
+                'account_payable', 'account_receivable',
+                'customer_tax_rule', 'supplier_tax_rule']
+            default_values = cls.default_get(fields, with_rec_name=False)
+            for fname in fields:
+                default.setdefault(fname, default_values.get(fname))
+        return super().copy(parties, default=default)
+
 
 class PartyAccount(ModelSQL, CompanyValueMixin):
     "Party Account"
