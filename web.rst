@@ -8,6 +8,9 @@ Web
 `Shop </projects/modules-web-shop/en/latest>`_
     Fundamentals to sale online.
 
+`Shop Shopify </projects/modules-web-shop-shopify/en/latest>`_
+    Integration with Shopify.
+
 `Shop Vue Storefront </projects/modules-web-shop-vue-storefront/en/latest>`_
     Integration with Vue Storefront.
 
