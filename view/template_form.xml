@@ -6,7 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Customs" id="customs">
             <label name="customs_category"/>
             <field name="customs_category"/>
-            <newline/>
+            <label name="country_of_origin"/>
+            <field name="country_of_origin"/>
+
             <label name="tariff_codes_category"/>
             <field name="tariff_codes_category"/>
             <field name="tariff_codes" colspan="4"

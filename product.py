@@ -55,13 +55,19 @@ class Category(metaclass=PoolMeta):
             return self.parent.customs
         return self.customs
 
-    def get_tariff_code(self, pattern):
+    def get_tariff_codes(self, pattern):
         if not self.tariff_codes_parent:
             for link in self.tariff_codes:
                 if link.tariff_code.match(pattern):
-                    return link.tariff_code
+                    yield link.tariff_code
         else:
-            return self.parent.get_tariff_code(pattern)
+            yield from self.parent.get_tariff_codes(pattern)
+
+    def get_tariff_code(self, pattern):
+        try:
+            return next(self.get_tariff_codes(pattern))
+        except StopIteration:
+            pass
 
     @classmethod
     def view_attributes(cls):
@@ -105,6 +111,12 @@ class Template(metaclass=PoolMeta):
                 | Eval('tariff_codes_category', False)),
             },
         depends=['type', 'tariff_codes_category'])
+    country_of_origin = fields.Many2One(
+        'country.country', "Country",
+        states={
+            'invisible': Eval('type') == 'service',
+            },
+        depends=['type'])
 
     @classmethod
     def __register__(cls, module_name):
@@ -131,13 +143,19 @@ class Template(metaclass=PoolMeta):
     def default_tariff_codes_category(cls):
         return False
 
-    def get_tariff_code(self, pattern):
+    def get_tariff_codes(self, pattern):
         if not self.tariff_codes_category:
             for link in self.tariff_codes:
                 if link.tariff_code.match(pattern):
-                    return link.tariff_code
+                    yield link.tariff_code
         else:
-            return self.customs_category.get_tariff_code(pattern)
+            yield from self.customs_category.get_tariff_codes(pattern)
+
+    def get_tariff_code(self, pattern):
+        try:
+            return next(self.get_tariff_codes(pattern))
+        except StopIteration:
+            pass
 
     @classmethod
     def view_attributes(cls):
@@ -182,3 +200,9 @@ class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
+
+    def get_tariff_codes(self, pattern):
+        yield from self.template.get_tariff_codes(pattern)
+
+    def get_tariff_code(self, pattern):
+        return self.template.get_tariff_code(pattern)
