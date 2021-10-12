@@ -68,7 +68,7 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
-    get_require_version('sale_point'),
+    get_require_version('trytond_sale_point'),
     ]
 dependency_links = []
 if minor_version % 2:
