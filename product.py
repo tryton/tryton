@@ -36,6 +36,11 @@ class PurchaseSecondaryMixin:
         depends=['purchase_secondary_uom'],
         help="The coefficient for the formula:\n"
         "coefficient (purchase unit) = 1 (secondary unit)")
+    purchase_secondary_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Purchase Secondary UOM Category"),
+        'on_change_with_purchase_secondary_uom_category',
+        searcher='search_purchase_secondary_uom_category')
 
     @fields.depends('purchase_secondary_uom_factor')
     def on_change_purchase_secondary_uom_factor(self):
@@ -54,6 +59,16 @@ class PurchaseSecondaryMixin:
             self.purchase_secondary_uom_factor = round(
                 1. / self.purchase_secondary_uom_rate,
                 uom_conversion_digits[1])
+
+    @fields.depends('purchase_secondary_uom')
+    def on_change_with_purchase_secondary_uom_category(self, name=None):
+        if self.purchase_secondary_uom:
+            return self.purchase_secondary_uom.category.id
+
+    @classmethod
+    def search_purchase_secondary_uom_category(cls, name, clause):
+        return [('purchase_secondary_uom.category' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
 
     @property
     def purchase_secondary_uom_normal_rate(self):
