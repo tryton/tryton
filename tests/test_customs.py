@@ -194,7 +194,6 @@ class CustomsTestCase(ModuleTestCase):
 
         template = Template(name='Test',
             default_uom=unit,
-            list_price=Decimal(0),
             tariff_codes=[
                 Product_TariffCode(tariff_code=tariff),
                 ])
