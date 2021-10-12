@@ -158,8 +158,6 @@ class Sale(
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            'required': ~Eval('state').in_(
-                ['draft', 'quotation', 'cancelled']),
             },
         depends=['party', 'shipment_party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
@@ -720,12 +718,13 @@ class Sale(
             raise SaleQuotationError(
                 gettext('sale.msg_sale_invoice_address_required_for_quotation',
                     sale=self.rec_name))
-        if not self.shipment_address:
-            raise SaleQuotationError(
-                gettext('sale'
-                    '.msg_sale_shipment_address_required_for_quotation',
-                    sale=self.rec_name))
         for line in self.lines:
+            if (line.product and line.product.type != 'service'
+                    and not self.shipment_address):
+                raise SaleQuotationError(
+                    gettext('sale'
+                        '.msg_sale_shipment_address_required_for_quotation',
+                        sale=self.rec_name))
             if (line.quantity or 0) >= 0:
                 location = line.from_location
             else:
