@@ -1,3 +1,4 @@
+* Support replacing party on reference field
 * Allow setting a single contact mechanism at party creation
 * Make identifiers deactivatable
 * Replace party on identifier when replacing parties

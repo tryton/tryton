@@ -823,9 +823,16 @@ class Replace(Wizard):
         cursor = transaction.connection.cursor()
         for model_name, field_name in self.fields_to_replace():
             Model = pool.get(model_name)
+            field = getattr(Model, field_name)
             table = Model.__table__()
             column = Column(table, field_name)
-            where = column == source.id
+            if field._type == 'reference':
+                source_value = str(source)
+                destination_value = str(destination)
+            else:
+                source_value = source.id
+                destination_value = destination.id
+            where = column == source_value
 
             if transaction.database.has_returning():
                 returning = [table.id]
@@ -836,7 +843,7 @@ class Replace(Wizard):
 
             cursor.execute(*table.update(
                     [column],
-                    [destination.id],
+                    [destination_value],
                     where=where,
                     returning=returning))
 
