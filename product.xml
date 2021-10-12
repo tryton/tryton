@@ -3,6 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="image_view_list">
+            <field name="model">product.image</field>
+            <field name="inherit" ref="product_image.image_view_list"/>
+            <field name="name">image_list</field>
+        </record>
+
         <record model="ir.ui.view" id="image_view_form">
             <field name="model">product.image</field>
             <field name="inherit" ref="product_image.image_view_form"/>
