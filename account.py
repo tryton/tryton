@@ -932,7 +932,7 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                         values[name][account.id] += getattr(deferral, name)
         else:
             with Transaction().set_context(fiscalyear=fiscalyear.id,
-                    date=None, periods=None):
+                    date=None, periods=None, from_date=None, to_date=None):
                 previous_result = func(accounts, names)
             for name in names:
                 vals = values[name]
@@ -1384,8 +1384,16 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         pool = Pool()
         Account = pool.get('account.account')
 
-        period_ids = cls.get_period_ids(name)
-        from_date, to_date = cls.get_dates(name)
+        period_ids, from_date, to_date = None, None, None
+        context_keys = Transaction().context.keys()
+        if context_keys & {'start_period', 'end_period'}:
+            period_ids = cls.get_period_ids(name)
+        elif context_keys & {'from_date', 'end_date'}:
+            from_date, to_date = cls.get_dates(name)
+        else:
+            if name.startswith('start_'):
+                period_ids = []
+
         with Transaction().set_context(
                 periods=period_ids,
                 from_date=from_date, to_date=to_date):
@@ -1485,27 +1493,42 @@ class GeneralLedgerAccountContext(ModelView):
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '<=', (Eval('end_period'), 'start_date')),
-            ], depends=['fiscalyear', 'end_period'])
+            ],
+        states={
+            'invisible': Eval('from_date', False) | Eval('to_date', False),
+            },
+        depends=['fiscalyear', 'end_period', 'from_date', 'to_date'])
     end_period = fields.Many2One('account.period', 'End Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '>=', (Eval('start_period'), 'start_date'))
             ],
-        depends=['fiscalyear', 'start_period'])
+        states={
+            'invisible': Eval('from_date', False) | Eval('to_date', False),
+            },
+        depends=['fiscalyear', 'start_period', 'from_date', 'to_date'])
     from_date = fields.Date("From Date",
         domain=[
             If(Eval('to_date') & Eval('from_date'),
                 ('from_date', '<=', Eval('to_date')),
                 ()),
             ],
-        depends=['to_date'])
+        states={
+            'invisible': (Eval('start_period', 'False')
+                | Eval('end_period', False)),
+            },
+        depends=['to_date', 'start_period', 'end_period'])
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('to_date', '>=', Eval('from_date')),
                 ()),
             ],
-        depends=['from_date'])
+        states={
+            'invisible': (Eval('start_period', 'False')
+                | Eval('end_period', False)),
+            },
+        depends=['from_date', 'start_period', 'end_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
@@ -1550,6 +1573,18 @@ class GeneralLedgerAccountContext(ModelView):
         if (self.end_period
                 and self.end_period.fiscalyear != self.fiscalyear):
             self.end_period = None
+
+    def on_change_start_period(self):
+        self.from_date = self.to_date = None
+
+    def on_change_end_period(self):
+        self.from_date = self.to_date = None
+
+    def on_change_from_date(self):
+        self.start_period = self.end_period = None
+
+    def on_change_to_date(self):
+        self.start_period = self.end_period = None
 
 
 class GeneralLedgerLine(ModelSQL, ModelView):
