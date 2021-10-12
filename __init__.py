@@ -17,6 +17,7 @@ def register():
         web.Shop_Product,
         web.Shop_ProductCategory,
         web.User,
+        product.Template,
         product.Product,
         product.Category,
         sale.Sale,
