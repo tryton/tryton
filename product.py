@@ -582,9 +582,9 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
     @property
     def shopify_name(self):
         if self.product:
-            return self.product.rec_name
+            return self.product.name
         else:
-            return self.template.rec_name
+            return self.template.name
 
 
 class Image_Attribute(metaclass=PoolMeta):
