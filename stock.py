@@ -123,7 +123,9 @@ class Inventory(metaclass=PoolMeta):
     def confirm(cls, inventories):
         for inventory in inventories:
             for line in inventory.lines:
-                if (line.lot and line.lot.unit
+                if (line.quantity is not None
+                        and line.lot
+                        and line.lot.unit
                         and line.quantity > line.lot.unit_quantity):
                     raise LotUnitQuantityError(
                         gettext('stock_lot_unit.msg_lot_unit_quantity_greater',
