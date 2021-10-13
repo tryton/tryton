@@ -389,7 +389,7 @@ class EmailLog(ResourceAccessMixin, ModelSQL, ModelView):
         cursor.execute(*table.update(
                 [table.notification, table.resource],
                 [notification, resource],
-                where=table.trigger != Null))
+                where=(table.trigger != Null) & (table.resource == Null)))
         table_h.not_null_action('trigger', 'remove')
 
     def get_date(self, name):
