@@ -121,7 +121,9 @@ class Inventory(metaclass=PoolMeta):
         Move = pool.get('stock.move')
         for inventory in inventories:
             for line in inventory.lines:
-                if (line.lot and line.lot.unit
+                if (line.quantity is not None
+                        and line.lot
+                        and line.lot.unit
                         and line.quantity > line.lot.unit_quantity):
                     Move.raise_user_error('lot_unit_quantity_greater', {
                             'lot': line.lot.rec_name,
