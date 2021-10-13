@@ -1,3 +1,4 @@
+* Show warning when output product's list price is empty
 * Remove unique product constraint on BOM
 
 Version 6.0.0 - 2021-05-03

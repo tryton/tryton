@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_recursive_bom">
             <field name="text">You cannot create a recursive BOM for product "%(product)s".</field>
         </record>
+        <record model="ir.message" id="msg_missing_product_list_price">
+            <field name="text">The product "%(product)s" on production "%(production)s" does not have any list price defined.</field>
+        </record>
     </data>
 </tryton>

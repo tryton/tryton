@@ -8,6 +8,7 @@ from itertools import chain
 from sql import Null
 from sql.conditionals import Coalesce
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields, dualmethod
 from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
@@ -16,6 +17,9 @@ from trytond.transaction import Transaction
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock.shipment import ShipmentAssignMixin
+
+from .exceptions import CostWarning
+
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']
@@ -536,6 +540,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
+        Warning = pool.get('res.user.warning')
 
         moves = []
         for production in productions:
@@ -575,6 +580,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             for output in outputs:
                 product = output.product
                 list_price = product.list_price_used
+                if list_price is None:
+                    warning_name = Warning.format(
+                        'production_missing_list_price', [product])
+                    if Warning.check(warning_name):
+                        raise CostWarning(warning_name,
+                            gettext(
+                                'production.msg_missing_product_list_price',
+                                product=product.rec_name,
+                                production=production.rec_name))
                 product_price = (Decimal(str(output.quantity))
                     * Uom.compute_price(
                         product.default_uom, list_price, output.uom))
