@@ -574,12 +574,13 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
         if product_image is None:
             product_image = shopify.Image()
             product_image.attach_image(
-                self.image, filename=slugify(self.shopify_filename))
+                self.image, filename=slugify(self.shopify_name))
         product_image.product_id = self.template.get_shopify_identifier(shop)
+        product_image.alt = self.shopify_name
         return product_image
 
     @property
-    def shopify_filename(self):
+    def shopify_name(self):
         if self.product:
             return self.product.rec_name
         else:
@@ -590,12 +591,12 @@ class Image_Attribute(metaclass=PoolMeta):
     __name__ = 'product.image'
 
     @property
-    def shopify_filename(self):
+    def shopify_name(self):
         name = super().shopify_filename
         if self.product:
             attributes_name = self.product.attributes_name
         else:
             attributes_name = self.attributes_name
         if attributes_name:
-            name += '-' + attributes_name
+            name += ' ' + attributes_name
         return name
