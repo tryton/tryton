@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from trytond.modules.company.model import CompanyValueMixin
 
 
@@ -37,11 +35,9 @@ class Template(metaclass=PoolMeta):
         Tax = pool.get('account.tax')
         if self.gross_price is None or not self.account_category:
             return
-        self.list_price = Tax.reverse_compute(
-            self.gross_price,
-            self.customer_taxes_used).quantize(
-                Decimal(1)
-                / 10 ** self.__class__.list_price.digits[1])
+        self.list_price = round_price(Tax.reverse_compute(
+                self.gross_price,
+                self.customer_taxes_used))
 
 
 class Product(metaclass=PoolMeta):

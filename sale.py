@@ -13,7 +13,7 @@ from trytond.model import (DeactivableMixin, Exclude, ModelSQL, ModelView,
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools import grouped_slice, reduce_ids
@@ -536,11 +536,9 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             if (self.sale.point.tax_included
                     and self.product.gross_price is not None):
                 self.unit_gross_price = self.product.gross_price
-                self.unit_list_price = Tax.reverse_compute(
-                    self.unit_gross_price, self.taxes,
-                    date=self.sale.date).quantize(
-                        Decimal(1)
-                        / 10 ** self.__class__.unit_list_price.digits[1])
+                self.unit_list_price = round_price(Tax.reverse_compute(
+                        self.unit_gross_price, self.taxes,
+                        date=self.sale.date))
             else:
                 self.unit_list_price = self.product.list_price
                 taxes = Tax.compute(
