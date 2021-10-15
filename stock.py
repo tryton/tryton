@@ -247,7 +247,8 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                 ('company', '=', company.id),
                 ('state', '=', 'open'),
                 ])
-        opens = [p for p in opens if p.warehouse in warehouses]
+        opens = [
+            p for p in opens if p.warehouse in warehouses or not p.warehouse]
         cls.delete(opens)
 
         plans = {}
