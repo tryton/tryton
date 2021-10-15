@@ -552,7 +552,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             from_ = move.join(product, condition=move.product == product.id)
             product_clause = product.template.in_(product_template or [-1])
             product_column = Concat('product.template,', product.template)
-            products = ['product.template,%s' % i for i in product_template]
+            products = [('product.template', i) for i in product_template]
         else:
             product = context.get('product', -1)
             if product is None:
@@ -561,7 +561,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 product = [product]
             product_clause = move.product.in_(product or [-1])
             product_column = Concat('product.product,', move.product)
-            products = ['product.product,%s' % i for i in product]
+            products = [('product.product', i) for i in product]
 
         if 'warehouse' in context:
             warehouse = Location(context.get('warehouse'))
@@ -576,7 +576,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     ], query=True, order=[]))
         date_column = Coalesce(move.effective_date, move.planned_date)
         query = (from_.select(
-                (Max(move.id) + len(products)).as_('id'),
+                Max(move.id * 3).as_('id'),
                 Literal(0).as_('create_uid'),
                 CurrentTimestamp().as_('create_date'),
                 Literal(None).as_('write_uid'),
@@ -598,14 +598,15 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     | (date_column >= today)),
                 group_by=(date_column, product_column, move.company),
                 with_=warehouse))
-        for i, product in enumerate(products):
+        for model, id_ in products:
+            gap = ['product.template', 'product.product'].index(model) + 1
             query |= Select([
-                    Literal(i).as_('id'),
+                    Literal(id_ * 3 + gap).as_('id'),
                     Literal(0).as_('create_uid'),
                     CurrentTimestamp().as_('create_date'),
                     Literal(None).as_('write_uid'),
                     Literal(None).as_('write_date'),
-                    Literal(product).as_('product'),
+                    Literal('%s,%s' % (model, id_)).as_('product'),
                     Literal(today).as_('date'),
                     Literal(context.get('company', -1)).as_('company'),
                     ])
