@@ -217,7 +217,8 @@ class QuantityIssue(
                 ('company', '=', company.id),
                 ('state', '=', 'open'),
                 ])
-        opens = [i for i in opens if i.warehouse in warehouses]
+        opens = [
+            i for i in opens if i.warehouse in warehouses or not i.warehouse]
         cls.delete(opens)
 
         issues = {}
