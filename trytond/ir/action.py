@@ -274,10 +274,11 @@ class ActionKeyword(ModelSQL, ModelView):
                 keywords.append(value)
         if keyword == 'tree_open' and model == Menu.__name__:
             menu = Menu(model_id)
-            if menu.parent:
-                for value in keywords:
-                    if value['type'] == 'ir.action.act_window':
+            for value in keywords:
+                if value['type'] == 'ir.action.act_window':
+                    if len(keywords) == 1:
                         value['name'] = menu.name
+                    if menu.parent:
                         parent = menu.parent
                         if parent.name == value['name']:
                             parent = parent.parent
