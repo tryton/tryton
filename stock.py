@@ -345,7 +345,7 @@ class QuantityEarlyPlanProduction(metaclass=PoolMeta):
     def get_moves(self, name):
         pool = Pool()
         Production = pool.get('production')
-        moves = super().get_moves()
+        moves = super().get_moves(name)
         if isinstance(self.origin, Production):
             for move in self.origin.inputs + self.origin.outputs:
                 moves.extend([p.id for p in move.quantity_early_plans])
