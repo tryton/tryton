@@ -120,7 +120,7 @@ class Party(metaclass=PoolMeta):
                     where=where,
                     for_=For('UPDATE', nowait=True)))
         else:
-            transaction.database.lock(transaction.connection, MoveLine._table)
+            MoveLine.lock()
         cursor.execute(*line.select(
                 Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
                 where=where))
