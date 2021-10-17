@@ -15,9 +15,8 @@ class Template(metaclass=PoolMeta):
             "Gross Price", digits=price_digits,
             states={
                 'invisible': ~Eval('salable', False),
-                'readonly': ~Eval('active', True),
                 },
-            depends=['salable', 'active'],
+            depends=['salable'],
             help="The price with default tax included."))
     gross_prices = fields.One2Many(
         'product.gross_price', 'template', "Gross Prices")
