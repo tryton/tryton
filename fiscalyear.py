@@ -269,12 +269,9 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         Account = pool.get('account.account')
         Deferral = pool.get('account.account.deferral')
-        transaction = Transaction()
-        database = transaction.database
-        connection = transaction.connection
 
         # Lock period to be sure no new period will be created in between.
-        database.lock(connection, Period._table)
+        Period.lock()
 
         deferrals = []
         for fiscalyear in fiscalyears:
