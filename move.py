@@ -1111,7 +1111,7 @@ class Move(Workflow, ModelSQL, ModelView):
                                 datetime.date.max) > period.date
                         cursor.execute(*query)
         else:
-            database.lock(connection, cls._table)
+            cls.lock()
 
     @classmethod
     def compute_quantities_query(cls, location_ids, with_childs=False,
