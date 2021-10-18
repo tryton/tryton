@@ -3526,7 +3526,6 @@
             } else {
                 el.wrap('<div class="dropdown"/>');
                 this.dropdown = el.parent();
-                this.dropdown.css('display', 'table');
             }
             this.input = el.find('input').add(el.filter('input')).first();
             this.input.attr('autocomplete', 'off');
