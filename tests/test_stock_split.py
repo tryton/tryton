@@ -32,7 +32,6 @@ class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test Split',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
