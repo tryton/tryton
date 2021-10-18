@@ -99,13 +99,11 @@ class DictSelectionEntry(DictEntry):
         # customizing entry
         child = widget.get_child()
         child.props.activates_default = True
-        child.connect('changed', self.parent_widget.send_modified)
+        child.connect('changed', self._changed)
         child.connect('focus-out-event',
             lambda w, e: self.parent_widget._focus_out())
         child.connect('activate',
             lambda w: self.parent_widget._focus_out())
-        widget.connect('notify::active',
-            lambda w, e: self.parent_widget._focus_out())
         widget.connect(
             'scroll-event',
             lambda c, e: c.stop_emission_by_name('scroll-event'))
@@ -156,10 +154,18 @@ class DictSelectionEntry(DictEntry):
             if selection[1] == value:
                 active = i
                 break
-        self.widget.set_active(active)
-        if active == -1:
-            # When setting no item GTK doesn't clear the entry
-            self.widget.get_child().set_text('')
+        child = self.widget.get_child()
+        child.handler_block_by_func(self._changed)
+        try:
+            self.widget.set_active(active)
+            if active == -1:
+                # When setting no item GTK doesn't clear the entry
+                child.set_text('')
+        finally:
+            child.handler_unblock_by_func(self._changed)
+
+    def _changed(self, selection):
+        GLib.idle_add(self.parent_widget._focus_out)
 
     def set_readonly(self, readonly):
         self.widget.set_sensitive(not readonly)
