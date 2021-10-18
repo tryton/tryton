@@ -90,7 +90,7 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
 
     def get_size(self, name):
         with Transaction().set_context({
-                    '%s.%s' % (self.__name__, name): 'size',
+                    '%s.%s' % (self.__name__, name[:-len('_size')]): 'size',
                     }):
             record = self.__class__(self.id)
             return record.data
