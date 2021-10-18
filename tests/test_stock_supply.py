@@ -90,7 +90,6 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
         template, = Template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -133,7 +132,6 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
                     'type': 'goods',
                     'default_uom': unit.id,
                     'purchase_uom': unit.id,
-                    'list_price': Decimal(0),
                     'purchasable': True,
                     }])
         product, = Product.create([{
