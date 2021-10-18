@@ -452,7 +452,7 @@
         var values = [value.s1, value.s2];
         for (var i=0; i < 2; i++) {
             if (values[i] instanceof moment) {
-                values[i] = values[i].unix();
+                values[i] = values[i].valueOf();
             }
             else {
                 values[i] = Number(values[i]);
@@ -759,10 +759,10 @@
     Sao.PYSON.Date.eval_ = function(value, context) {
         var date = value.start;
         if (date && date.isDateTime) {
-            date = Sao.Date(date.year(), date.month(), date.date(), true);
+            date = Sao.Date(date.year(), date.month(), date.date());
         }
         if (!date || !date.isDate) {
-            date = Sao.Date(undefined, undefined, undefined, true);
+            date = Sao.Date();
         }
         if (value.y) date.year(value.y);
         if (value.M) date.month(value.M - 1);
