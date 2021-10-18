@@ -140,6 +140,9 @@ module.exports = function(grunt) {
                 args: [
                     '--no-sandbox',
                 ],
+                env: {
+                    TZ: 'UTC',
+                },
             },
         },
         all: ['tests/*.html']
