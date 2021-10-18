@@ -27,7 +27,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     move = fields.Many2One('account.move', "Move", readonly=True)
     account = fields.Many2One('account.account', "Account", readonly=True)
     party = fields.Many2One(
-        'party.party', "Party, readonly=True",
+        'party.party', "Party", readonly=True,
         context={
             'company': Eval('company', -1),
             },
