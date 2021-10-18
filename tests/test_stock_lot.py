@@ -37,7 +37,6 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
         template, = Template.create([{
                     'name': 'Test products_by_location',
                     'type': 'goods',
-                    'list_price': Decimal(0),
                     'default_uom': kg.id,
                     }])
         product, = Product.create([{
@@ -133,7 +132,6 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test period',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -236,7 +234,6 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
         template = Template(
             name="Product",
             type='goods',
-            list_price=Decimal(1),
             default_uom=uom,
             )
         template.save()
