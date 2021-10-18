@@ -48,7 +48,6 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test create_moves',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal('1'),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -128,7 +127,6 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test create_moves',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal('1'),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -207,7 +205,6 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test create_moves',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal('1'),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -258,7 +255,6 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
                     'name': 'Test complete',
                     'type': 'goods',
                     'default_uom': unit.id,
-                    'list_price': Decimal('1'),
                     }])
         product, = Product.create([{
                     'template': template.id,
