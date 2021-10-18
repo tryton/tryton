@@ -118,7 +118,6 @@ class StockSupplyDayTestCase(CompanyTestMixin, ModuleTestCase):
         template, = Template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
-                    'list_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
