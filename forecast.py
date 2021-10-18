@@ -440,7 +440,7 @@ class ForecastLine(ModelSQL, ModelView):
         distribution = self.distribute(delta, nb_packet)
         unit_price = None
         if self.forecast.destination.type == 'customer':
-            unit_price = self.product.list_price
+            unit_price = self.product.list_price or 0
             unit_price = Uom.compute_price(self.product.default_uom,
                 unit_price, self.uom)
 
