@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">A session can be used as previous only once.</field>
         </record>
         <record model="ir.message" id="msg_cash_session_wrong_end_amount">
-            <field name="text">To close session "%(session)s" you must change end amount to have %(amount)s instead of %(end_amount)s</field>
+            <field name="text">To close session "%(session)s" you must change end amount to have %(amount)s instead of %(end_amount)s.</field>
         </record>
         <record model="ir.message" id="msg_cash_session_delete_open">
             <field name="text">To delete session "%(session)s" you must re-open it.</field>
