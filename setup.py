@@ -138,6 +138,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.6',
     install_requires=requires,
+    extras_require={
+        'timezone': ['pytz'],
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""

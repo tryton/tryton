@@ -4,6 +4,10 @@ from sql import Column, Literal, Window
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, LastValue
+try:
+    import pytz
+except ImportError:
+    pytz = None
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
@@ -29,12 +33,23 @@ class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     def get_multivalue(self, name, **pattern):
+        pool = Pool()
+        Company = pool.get('company.company')
         context = Transaction().context
         if (name == 'cost_price'
                 and context.get('_datetime')
                 and self.type in ['goods', 'assets']):
-            cost_price = self.get_cost_price_at(
-                context['_datetime'].date(), **pattern)
+            datetime = context['_datetime']
+            company = pattern.get(
+                'company', Transaction().context.get('company'))
+            if pytz and company:
+                company = Company(company)
+                if company.timezone:
+                    timezone = pytz.timezone(company.timezone)
+                    datetime = (
+                        pytz.utc.localize(datetime, is_dst=None)
+                        .astimezone(timezone))
+            cost_price = self.get_cost_price_at(datetime.date(), **pattern)
             if cost_price is not None:
                 return cost_price
         return super().get_multivalue(name, **pattern)
@@ -78,11 +93,14 @@ class ProductCostHistory(ModelSQL, ModelView):
         Product = pool.get('product.product')
         Template = pool.get('product.template')
         CostPrice = pool.get('product.cost_price')
+        User = pool.get('res.user')
         move = Move.__table__()
         product = Product.__table__()
         template = Template.__table__()
         history = CostPrice.__table_history__()
-        database = Transaction().database
+        transaction = Transaction()
+        database = transaction.database
+        user = User(transaction.user)
 
         tables, clause = Move.search_domain([
                 ('state', '=', 'done'),
@@ -119,8 +137,12 @@ class ProductCostHistory(ModelSQL, ModelView):
             Max(move_history.cost_price).as_('cost_price'),
             group_by=[move_history.date, move_history.product])
 
+        if user.company:
+            timezone = user.company.timezone
+        else:
+            timezone = None
         price_datetime = Coalesce(history.write_date, history.create_date)
-        price_date = cls.date.sql_cast(price_datetime)
+        price_date = cls.date.sql_cast(price_datetime, timezone=timezone)
         if database.has_window_functions():
             window = Window(
                 [price_date, history.product],
@@ -138,7 +160,7 @@ class ProductCostHistory(ModelSQL, ModelView):
                 history.product.as_('product'),
                 cost_price.as_('cost_price'),
                 where=~template.type.in_(['goods', 'assets'])
-                & cls._non_moves_clause(history)))
+                & cls._non_moves_clause(history, user)))
 
         query |= price_history.select(
             Max(price_history.id).as_('id'),
@@ -153,8 +175,9 @@ class ProductCostHistory(ModelSQL, ModelView):
         return query
 
     @classmethod
-    def _non_moves_clause(cls, history_table):
-        return history_table.company == Transaction().context.get('company')
+    def _non_moves_clause(cls, history_table, user):
+        company_id = user.company.id if user.company else None
+        return history_table.company == company_id
 
     def get_rec_name(self, name):
         return str(self.date)
