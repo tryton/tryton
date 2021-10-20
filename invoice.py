@@ -79,11 +79,13 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Commission = pool.get('commission')
 
+        invoices_to_revert_commission = [x for x in invoices if not x.move]
+
         super(Invoice, cls).cancel(invoices)
 
         to_delete = []
         to_save = []
-        for sub_invoices in grouped_slice(invoices):
+        for sub_invoices in grouped_slice(invoices_to_revert_commission):
             ids = [i.id for i in sub_invoices]
             to_delete += Commission.search([
                     ('invoice_line', '=', None),
