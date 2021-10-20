@@ -444,7 +444,7 @@ class WinExport(WinCSV):
             return True
 
     def export_keypress(self, treeview, event):
-        if event.keyval not in [Gdk.KEY_Return, Gdk.KEY_.space]:
+        if event.keyval not in [Gdk.KEY_Return, Gdk.KEY_space]:
             return
         model, selected = treeview.get_selection().get_selected()
         if not selected:
