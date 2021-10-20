@@ -97,6 +97,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         if database.has_window_functions():
             window = Window(
                 [move.effective_date, move.product],
+                frame='ROWS', start=None, end=None,
                 order_by=[move.write_date.asc, move.id.asc])
             cost_price = LastValue(move.cost_price, window=window)
         else:
@@ -124,6 +125,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         if database.has_window_functions():
             window = Window(
                 [price_date, history.product],
+                frame='ROWS', start=None, end=None,
                 order_by=[price_datetime.asc])
             cost_price = LastValue(history.cost_price, window=window)
         else:
