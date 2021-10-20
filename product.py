@@ -862,8 +862,8 @@ class ModifyCostPrice(Wizard):
         revisions = []
         costs = defaultdict(list)
         if self.model.__name__ == 'product.product':
-            products = records = list(self.records)
-            for product in products:
+            records = list(self.records)
+            for product in list(records):
                 revision = self.get_revision(Revision)
                 revision.product = product
                 revision.template = product.template
@@ -876,8 +876,8 @@ class ModifyCostPrice(Wizard):
                     costs[cost].append(product)
                     records.remove(product)
         elif self.model.__name__ == 'product.template':
-            templates = records = list(self.records)
-            for template in templates:
+            records = list(self.records)
+            for template in list(records):
                 revision = self.get_revision(Revision)
                 revision.template = template
                 revisions.append(revision)
