@@ -193,8 +193,9 @@
                 this.tab_domain.forEach(function(tab_domain, i) {
                     var name = tab_domain[0];
                     var counter = jQuery('<span/>', {
-                        'class': 'badge'
-                    });
+                        'class': 'badge badge-empty'
+                    }).html('&nbsp;');
+                    counter.css('visibility', 'hidden');
                     var page = jQuery('<li/>', {
                         role: 'presentation',
                         id: 'nav-' + i
@@ -372,7 +373,8 @@
             var counter = this.tab_counter[idx];
             if (count === null) {
                 counter.attr('title', '');
-                counter.text('');
+                counter.html('&nbsp;');
+                counter.css('visibility', 'hidden');
             } else {
                 counter.attr('title', count);
                 var text = count;
@@ -380,6 +382,7 @@
                     text = '99+';
                 }
                 counter.text(text);
+                counter.css('visibility', 'visible');
             }
         },
         do_search: function() {
