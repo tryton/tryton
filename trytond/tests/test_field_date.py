@@ -3,11 +3,14 @@
 import datetime
 import unittest
 
+from sql import Literal, Select
 from sql.functions import CurrentDate
 
+from trytond import backend
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 today = datetime.date(2009, 1, 1)
 tomorrow = today + datetime.timedelta(1)
@@ -441,6 +444,22 @@ class FieldDateTestCase(unittest.TestCase):
             Date.write([date], {
                     'date': datetime.datetime(2009, 1, 1, 12, 0),
                     })
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not support timezone others than utc and localtime")
+    @with_transaction()
+    def test_sql_cast_timezone(self):
+        "Cast datetime to date with timezone"
+        Date = Pool().get('test.date')
+        expression = Date.date.sql_cast(
+            Literal(datetime.datetime(2021, 10, 14, 22, 00)),
+            timezone='Europe/Brussels')
+        cursor = Transaction().connection.cursor()
+
+        cursor.execute(*Select([expression]))
+        result, = cursor.fetchone()
+
+        self.assertEqual(result, datetime.date(2021, 10, 15))
 
 
 def suite():

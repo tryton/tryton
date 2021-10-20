@@ -408,6 +408,13 @@ Date
 
 A date, represented in Python by a ``datetime.date`` instance.
 
+Instance methods:
+
+.. method:: Field.sql_cast(expression[, timezone])
+
+   Return the SQL expression cast as date.
+   If timezone is set the expression is first converted to this timezone.
+
 DateTime
 --------
 

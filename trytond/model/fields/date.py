@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql.functions import Function
+from sql.functions import Function, AtTimeZone
 
 from trytond import backend
 from trytond.pyson import PYSONEncoder
@@ -41,9 +41,12 @@ class Date(Field):
                 raise ValueError("Date field can not have time")
         return super().sql_format(value)
 
-    def sql_cast(self, expression):
+    def sql_cast(self, expression, timezone=None):
         if backend.name == 'sqlite':
             return SQLite_Date(expression)
+        if timezone:
+            expression = AtTimeZone(expression, 'utc')
+            expression = AtTimeZone(expression, timezone)
         return super(Date, self).sql_cast(expression)
 
 
