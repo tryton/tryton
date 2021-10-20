@@ -2026,7 +2026,7 @@
             } else if (action == 'previous') {
                 this.display_previous();
             } else if (action == 'close') {
-                Sao.Tab.close_current();
+                Sao.Tab.tabs.close_current();
             } else if (action.startsWith('switch')) {
                 this.switch_view.apply(this, action.split(' ', 3).slice(1));
             } else if (action == 'reload') {
