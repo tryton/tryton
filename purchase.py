@@ -11,7 +11,7 @@ from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
-    sequence_ordered
+    sequence_ordered, Unique
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
@@ -1780,6 +1780,15 @@ class LineTax(ModelSQL):
             domain=[('type', '=', 'line')])
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             select=True, required=True, domain=[('parent', '=', None)])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('line_tax_unique', Unique(t, t.line, t.tax),
+                'purchase.msg_purchase_line_tax_unique'),
+            ]
 
 
 class LineIgnoredMove(ModelSQL):
