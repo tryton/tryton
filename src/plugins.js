@@ -15,8 +15,8 @@
         });
     };
     Translate.get_plugins = function(model) {
-        var access = Sao.common.MODELACCESS.get(model);
-        if (access.create && access.write) {
+        var access = Sao.common.MODELACCESS.get('ir.translation');
+        if (access.read && access.write) {
             return [
                 [Sao.i18n.gettext('Translate view'), Translate.translate_view],
             ];
