@@ -63,5 +63,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_reporting_currency_digits">
             <field name="text">Currency Digits</field>
         </record>
+        <record model="ir.message" id="msg_sale_line_tax_unique">
+            <field name="text">A tax can be added only once to a sale line.</field>
+        </record>
     </data>
 </tryton>
