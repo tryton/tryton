@@ -2488,6 +2488,15 @@ class InvoiceLineTax(ModelSQL):
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('line_tax_unique', Unique(t, t.line, t.tax),
+                'account_invoice.msg_invoice_line_tax_unique'),
+            ]
+
 
 class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     'Invoice Tax'
