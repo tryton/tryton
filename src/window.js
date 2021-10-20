@@ -62,7 +62,8 @@
             }).append(jQuery('<button/>', {
                 'type': 'button',
                 'class': 'close stretched-link',
-                'aria-label': Sao.i18n.gettext('Close')
+                'aria-label': Sao.i18n.gettext("Close"),
+                'title': Sao.i18n.gettext("Close"),
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
             }).append('&times;')).click(function() {
@@ -176,7 +177,8 @@
 
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-link',
-                    'type': 'button'
+                    'type': 'button',
+                    'title': button_text,
                 }).text(button_text).click(function() {
                     this.response('RESPONSE_CANCEL');
                 }.bind(this)));
@@ -185,7 +187,8 @@
             if (kwargs.new_ && this.many) {
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-default',
-                    'type': 'button'
+                    'type': 'button',
+                    'title': Sao.i18n.gettext("New"),
                 }).text(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)));
@@ -194,12 +197,14 @@
             if (this.save_current) {
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
-                    'type': 'submit'
+                    'type': 'submit',
+                    'title': Sao.i18n.gettext("Save"),
                 }).text(Sao.i18n.gettext('Save')));
             } else {
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
-                    'type': 'submit'
+                    'type': 'submit',
+                    'title': Sao.i18n.gettext("OK"),
                 }).text(Sao.i18n.gettext('OK')));
             }
             dialog.content.submit(function(e) {
@@ -239,7 +244,8 @@
                 this.but_switch = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Switch')
+                    'aria-label': Sao.i18n.gettext("Switch"),
+                    'title': Sao.i18n.gettext("Switch"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
                 ).appendTo(buttons);
                 this.but_switch.click(
@@ -248,7 +254,8 @@
                 this.but_previous = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Previous')
+                    'aria-label': Sao.i18n.gettext("Previous"),
+                    'title': Sao.i18n.gettext("Previous"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
                 ).appendTo(buttons);
                 this.but_previous.click(
@@ -263,7 +270,8 @@
                 this.but_next = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Next')
+                    'aria-label': Sao.i18n.gettext("Next"),
+                    'title': Sao.i18n.gettext("Next"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
                 ).appendTo(buttons);
                 this.but_next.click(disable_during(this.next.bind(this)));
@@ -274,7 +282,8 @@
                     this.but_add = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
-                        'aria-label': Sao.i18n.gettext('Add')
+                        'aria-label': Sao.i18n.gettext("Add"),
+                        'title': Sao.i18n.gettext("Add"),
                     }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
                     ).appendTo(buttons);
                     this.but_add.click(disable_during(this.add.bind(this)));
@@ -283,7 +292,8 @@
                     this.but_remove = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
-                        'aria-label': Sao.i18n.gettext('Remove')
+                        'aria-label': Sao.i18n.gettext("Remove"),
+                        'title': Sao.i18n.gettext("Remove"),
                     }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
                     ).appendTo(buttons);
                     this.but_remove.click(
@@ -294,7 +304,8 @@
                 this.but_new = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('New')
+                    'aria-label': Sao.i18n.gettext("New"),
+                    'title': Sao.i18n.gettext("New"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
                 ).appendTo(buttons);
                 this.but_new.click(disable_during(this.new_.bind(this)));
@@ -303,7 +314,8 @@
                 this.but_del = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Delete')
+                    'aria-label': Sao.i18n.gettext("Delete"),
+                    'title': Sao.i18n.gettext("Delete"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
                 ).appendTo(buttons);
                 this.but_del.click(disable_during(this.delete_.bind(this)));
@@ -312,7 +324,8 @@
                 this.but_undel = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Undelete')
+                    'aria-label': Sao.i18n.gettext("Undelete"),
+                    'title': Sao.i18n.gettext("Undelete"),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-undo')
                 ).appendTo(buttons);
                 this.but_undel.click(disable_during(this.undelete.bind(this)));
@@ -700,27 +713,31 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Find"),
             }).text(Sao.i18n.gettext('Find')).click(function() {
                 this.response('RESPONSE_APPLY');
             }.bind(this)).appendTo(dialog.footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 jQuery('<button/>', {
                     'class': 'btn btn-default',
-                    'type': 'button'
+                    'type': 'button',
+                    'title': Sao.i18n.gettext("New"),
                 }).text(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)).appendTo(dialog.footer);
             }
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
-                'type': 'submit'
+                'type': 'submit',
+                'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -822,13 +839,15 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
-                'type': 'submit'
+                'type': 'submit',
+                'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -902,13 +921,15 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
-                'type': 'submit'
+                'type': 'submit',
+                'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -969,14 +990,16 @@
             this.fields_model = {};
             jQuery('<button/>', {
                 'class': 'btn btn-link',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(Sao.i18n.gettext('Cancel')).click(function(){
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
-                'type': 'submit'
+                'type': 'submit',
+                'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).click(function(e){
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -1011,7 +1034,8 @@
 
             var button_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Add"),
             }).text(' ' + Sao.i18n.gettext('Add')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-add')
             ).click(function(){
@@ -1023,7 +1047,8 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Remove"),
             }).text(' ' + Sao.i18n.gettext('Remove')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
             ).click(function(){
@@ -1034,7 +1059,8 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Clear"),
             }).text(' ' + Sao.i18n.gettext('Clear')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
             ).click(function(){
@@ -1164,7 +1190,8 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Auto-Detect"),
             }).text(' ' + Sao.i18n.gettext('Auto-Detect')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-search')
             ).click(function(){
@@ -1497,7 +1524,8 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Save Export"),
             }).text(' ' + Sao.i18n.gettext('Save Export')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-save')
             ).click(function(){
@@ -1509,6 +1537,7 @@
                 'class': 'btn btn-default btn-block',
                 'target': '_blank',
                 'rel': 'noreferrer noopener',
+                'title': Sao.i18n.gettext("URL Export"),
             }).text(' ' + Sao.i18n.gettext("URL Export")).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-public')
             )
@@ -1517,7 +1546,8 @@
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Delete Export"),
             }).text(' ' + Sao.i18n.gettext('Delete Export')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
             ).click(function(){
@@ -2214,6 +2244,7 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(' ' + Sao.i18n.gettext('Cancel')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-cancel')
             ).click(function() {
@@ -2223,6 +2254,7 @@
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
+                'title': Sao.i18n.gettext("Send"),
             }).text(' ' + Sao.i18n.gettext('Send')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-send')
             ).appendTo(this.dialog.footer);

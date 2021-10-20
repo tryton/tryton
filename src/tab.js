@@ -192,7 +192,8 @@
             })).append(jQuery('<button/>', {
                 'type': 'button',
                 'class': 'close visible-xs',
-                'aria-label': Sao.i18n.gettext('Close')
+                'aria-label': Sao.i18n.gettext("Close"),
+                'title': Sao.i18n.gettext("Close"),
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
             }).append('&times;')).click(function() {
@@ -399,12 +400,12 @@
             Sao.set_url(tab.get_url(), tab.name.split(' / ').pop());
         })
         .append(jQuery('<button/>', {
-            'class': 'close'
+            'class': 'close',
+            'aria-label': Sao.i18n.gettext("Close"),
+            'title': Sao.i18n.gettext("Close"),
         }).append(jQuery('<span/>', {
             'aria-hidden': true
-        }).append('&times;')).append(jQuery('<span/>', {
-            'class': 'sr-only'
-        }).text(Sao.i18n.gettext('Close'))).click(function(evt) {
+        }).append('&times;')).click(function(evt) {
             evt.preventDefault();
             tab.close();
         }))

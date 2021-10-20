@@ -29,7 +29,8 @@
             this.el.append(this.filter_box);
             this.filter_button = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'title': Sao.i18n.gettext("Filters"),
             }).text(Sao.i18n.gettext('Filters'));
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
@@ -558,7 +559,8 @@
 
                 jQuery('<button/>', {
                     'class': 'btn btn-primary',
-                    type: 'submit'
+                    type: 'submit',
+                    'title': Sao.i18n.gettext("Find"),
                 }).text(Sao.i18n.gettext('Find'))
                 .click(search).appendTo(dialog.footer);
             }

@@ -996,6 +996,7 @@ function eval_pyson(value){
                 'params': [this.action_id, context],
             }, Sao.Session.current_session, false);
             this.label.text(action.name);
+            this.el.attr('title', action.name);
 
             var decoder = new Sao.PYSON.Decoder(pyson_ctx);
             var domain = decoder.decode(action.pyson_domain);
@@ -1282,13 +1283,15 @@ function eval_pyson(value){
             this.read(widget, dialog);
             jQuery('<button/>', {
                 'class': 'btn btn-link',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("Cancel"),
             }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.close(dialog);
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
-                'type': 'button'
+                'type': 'button',
+                'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).click(this.write
                     .bind(this, widget, dialog))
                     .appendTo(dialog.footer);
@@ -1617,8 +1620,10 @@ function eval_pyson(value){
         _set_password_label: function() {
             if (this.input.prop('type') == 'password') {
                 this.button.text(Sao.i18n.gettext('Show'));
+                this.button.attr('title', Sao.i18n.gettext("Show"));
             } else {
                 this.button.text(Sao.i18n.gettext('Hide'));
+                this.button.attr('title', Sao.i18n.gettext("Hide"));
             }
         }
     });
@@ -2193,7 +2198,8 @@ function eval_pyson(value){
                 var button  = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm form-control',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Translate')
+                    'aria-label': Sao.i18n.gettext('Translate'),
+                    'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn'
                 }).appendTo(this.el));
@@ -2271,6 +2277,7 @@ function eval_pyson(value){
                     'class': 'btn btn-default btn-sm form-control',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("Translate"),
+                    'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
                 }).appendTo(this.el));
@@ -4114,7 +4121,9 @@ function eval_pyson(value){
 
                 this.but_open = jQuery('<button/>', {
                     'class': 'btn btn-default',
-                    'type': 'button'
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext("Open..."),
+                    'title': Sao.i18n.gettext("Open..."),
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-open')
                 ).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
@@ -4478,6 +4487,7 @@ function eval_pyson(value){
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Translate'),
+                    'title': Sao.i18n.gettext("Translate"),
                 }).appendTo(this.el);
                 button.append(
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
@@ -4618,7 +4628,8 @@ function eval_pyson(value){
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Add')
+                'aria-label': Sao.i18n.gettext("Add"),
+                'title': Sao.i18n.gettext("Add"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
             ).appendTo(jQuery('<div/>', {
                 'class': 'input-group-btn'
@@ -4908,7 +4919,8 @@ function eval_pyson(value){
             this.button = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button',
-                'arial-label': Sao.i18n.gettext('Remove')
+                'arial-label': Sao.i18n.gettext("Remove"),
+                'title': Sao.i18n.gettext("Remove"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
             ).appendTo(jQuery('<div/>', {
                 'class': 'input-group-btn'

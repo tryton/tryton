@@ -205,7 +205,8 @@
         );
         dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary',
-            'type': 'submit'
+            'type': 'submit',
+            'title': Sao.i18n.gettext("Login"),
         }).text(' ' + Sao.i18n.gettext("Login")).appendTo(dialog.footer);
         return dialog;
     };
