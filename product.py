@@ -234,6 +234,8 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
             if image.web_shop:
                 variant.image_id = image.get_shopify_identifier(shop)
                 break
+        else:
+            variant.image_id = None
         return variant
 
     def get_shopify_metafields(self, shop):
@@ -558,8 +560,8 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
         return (
             sum((list(i.template.shopify_identifiers) for i in images), [])
             + sum(
-                (list(i.product.shopify_identifiers)
-                    for i in images if i.product), []))
+                (list(p.shopify_identifiers)
+                    for i in images for p in i.template.products), []))
 
     def get_shopify(self, shop):
         shopify_id = self.get_shopify_identifier(shop)
