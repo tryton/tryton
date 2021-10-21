@@ -65,7 +65,7 @@ Create product user::
     >>> product_admin_user.name = 'Product'
     >>> product_admin_user.login = 'product'
     >>> product_admin_group, = Group.find([
-    ...         ('name', '=', 'Product Administration')
+    ...         ('name', '=', "Account Product Administration")
     ...         ])
     >>> product_admin_user.groups.append(product_admin_group)
     >>> product_admin_user.save()
