@@ -306,6 +306,9 @@ class Shop(metaclass=PoolMeta):
         template.set_shopify_identifier(self)
         for product in template.products:
             product.set_shopify_identifier(self)
+        if hasattr(template, 'images'):
+            for image in template.images:
+                image.set_shopify_identifier(self)
 
     def __shopify_update_images(self, template, shopify_product):
         if not hasattr(template, 'images'):
