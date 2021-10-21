@@ -20,26 +20,21 @@ class Purchase(metaclass=PoolMeta):
     def search_invoice_lines(cls, name, clause):
         return [('lines.' + clause[0],) + tuple(clause[1:])]
 
-    def create_invoice(self):
+    @classmethod
+    def _save_invoice(cls, invoices):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
 
-        invoice = super(Purchase, self).create_invoice()
+        lines = []
+        for invoice in invoices.values():
+            for line in invoice.lines:
+                if line.type == 'line':
+                    line.invoice = None
+                    line.party = invoice.party
+                    lines.append(line)
+        InvoiceLine.save(lines)
 
-        if invoice:
-            lines_to_delete = [l for l in invoice.lines if l.type != 'line']
-            lines = [l for l in invoice.lines if l.type == 'line']
-            InvoiceLine.write(lines, {
-                'invoice': None,
-                'invoice_type': invoice.type,
-                'party': invoice.party.id,
-                })
-            InvoiceLine.delete(lines_to_delete)
-            Invoice.cancel([invoice])
-            Invoice.delete([invoice])
-            return None
-        return invoice
+        super()._save_invoice({})
 
     def get_invoice_state(self):
         state = super(Purchase, self).get_invoice_state()
