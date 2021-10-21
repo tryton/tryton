@@ -3,7 +3,9 @@
 import shopify
 import pyactiveresource
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.tools import grouped_slice, slugify
@@ -270,6 +272,19 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
         return Uom.compute_qty(
             self.default_uom, quantity, self.shopify_uom, round=True,
             factor=self.shopify_uom_factor, rate=self.shopify_uom_rate)
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        for products, values in zip(actions, actions):
+            if 'template' in values:
+                for product in products:
+                    if (product.template.id != values.get('template')
+                            and product.shopify_identifiers):
+                        raise AccessError(gettext(
+                                'web_shop_shopify.msg_product_change_template',
+                                product=product.rec_name))
+        super().write(*args)
 
 
 class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):

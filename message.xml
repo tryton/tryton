@@ -27,6 +27,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_product_shopify_uom_digits">
             <field name="text">To update product "%(product)s" on Shopify, you must use an UOM without digits.</field>
         </record>
+        <record model="ir.message" id="msg_product_change_template">
+            <field name="text">To change the template of product "%(product)s" you must unpublish it from the Shopify web shops.</field>
+        </record>
         <record model="ir.message" id="msg_custom_collection_fail">
             <field name="text">Failed to save custom collection "%(category)s" with error:
 %(error)s</field>
