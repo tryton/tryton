@@ -917,14 +917,18 @@ class Purchase(
 
     @classmethod
     def _process_invoice(cls, purchases):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-
         invoices = {}
         for purchase in purchases:
             invoice = purchase.create_invoice()
             if invoice:
                 invoices[purchase] = invoice
+
+        cls._save_invoice(invoices)
+
+    @classmethod
+    def _save_invoice(cls, invoices):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
 
         Invoice.save(invoices.values())
         Invoice.update_taxes(invoices.values())
