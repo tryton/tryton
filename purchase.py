@@ -64,9 +64,9 @@ class RequestCreatePurchase(metaclass=PoolMeta):
     def _group_purchase_key(cls, requests, request):
         return super()._group_purchase_key(requests, request) + (
             ('incoterm',
-                request.best_quotation_line.incoterm
+                request.best_quotation_line.quotation.incoterm
                 if request.best_quotation_line else None),
             ('incoterm_location',
-                request.best_quotation_line.incoterm_location
+                request.best_quotation_line.quotation.incoterm_location
                 if request.best_quotation_line else None),
             )
