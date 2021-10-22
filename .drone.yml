@@ -14,6 +14,7 @@ pipeline:
             - DB_CACHE=/cache
             - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID SHOPIFY_PASSWORD SHOPIFY_URL
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
+        secrets: [ shopify_password, shopify_url ]
         commands:
             - echo "[extensions]" >> /root/.hgrc
             - echo "hgext.share =" >> /root/.hgrc
