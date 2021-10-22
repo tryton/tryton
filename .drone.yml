@@ -14,6 +14,7 @@ pipeline:
             - DB_CACHE=/cache
             - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID MYGLS_USERNAME MYGLS_PASSWORD MYGLS_CLIENT_NUMBER
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
+        secrets: [ mygls_username, mygls_password, mygls_client_number ]
         commands:
             - echo "[extensions]" >> /root/.hgrc
             - echo "hgext.share =" >> /root/.hgrc
