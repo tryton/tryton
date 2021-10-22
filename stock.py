@@ -540,6 +540,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('shipped')
+    @process_sale('customer_moves')
     @process_purchase('supplier_moves')
     def ship(cls, shipments):
         pool = Pool()

@@ -198,7 +198,10 @@ Receiving only 100 products::
     >>> sale.reload()
     >>> sale.shipments
     []
-    >>> shipment, = sale.drop_shipments
+    >>> len(sale.drop_shipments)
+    2
+    >>> shipment, = [s for s in sale.drop_shipments
+    ...     if s.state == 'shipped']
 
     >>> set_user(stock_user)
     >>> shipment.click('done')
@@ -208,6 +211,8 @@ Receiving only 100 products::
     >>> sale.reload()
     >>> sale.shipments
     []
+    >>> len(sale.drop_shipments)
+    2
 
 The purchase is now waiting for his new drop shipment::
 
@@ -215,6 +220,8 @@ The purchase is now waiting for his new drop shipment::
     >>> purchase.reload()
     >>> purchase.shipment_state
     'waiting'
+    >>> len(purchase.drop_shipments)
+    2
     >>> shipment, = [s for s in purchase.drop_shipments
     ...     if s.state == 'waiting']
     >>> move, = shipment.customer_moves
