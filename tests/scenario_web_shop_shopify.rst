@@ -50,6 +50,7 @@ Activate modules::
     >>> Product = Model.get('product.product')
     >>> ProductAttribute = Model.get('product.attribute')
     >>> ProductAttributeSet = Model.get('product.attribute.set')
+    >>> ProductInventoryItem = Model.get('product.shopify_inventory_item')
     >>> ProductTemplate = Model.get('product.template')
     >>> Sale = Model.get('sale.sale')
     >>> ShopifyIdentifier = Model.get('web.shop.shopify_identifier')
@@ -349,8 +350,12 @@ Run update inventory::
 
 Check inventory item::
 
+    >>> inventory_items = ProductInventoryItem.find([])
+    >>> inventory_item_ids = [i.shopify_identifier
+    ...     for inv in inventory_items for i in inv.shopify_identifiers]
     >>> inventory_levels = location.inventory_levels()
-    >>> sorted(l.available for l in inventory_levels if l.available)
+    >>> sorted(l.available for l in inventory_levels
+    ...     if l.available and l.inventory_item_id in inventory_item_ids)
     [5, 10]
 
 Remove a category, a product and an image::
