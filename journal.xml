@@ -142,7 +142,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
             <field name="domain"
-                eval="[('state', '=', 'open'), ('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                eval="[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
