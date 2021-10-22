@@ -218,8 +218,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
         return inventories
 
     @classmethod
-    def write(cls, inventories, values):
-        super(Inventory, cls).write(inventories, values)
+    def write(cls, *args):
+        super().write(*args)
+        inventories = cls.browse(set(sum(args[::2], [])))
         cls.complete_lines(inventories, fill=False)
 
     @classmethod
