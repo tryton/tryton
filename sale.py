@@ -1748,6 +1748,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         default.setdefault('moves_ignored', None)
         default.setdefault('moves_recreated', None)
         default.setdefault('invoice_lines', None)
+        default.setdefault('actual_quantity')
         return super(SaleLine, cls).copy(lines, default=default)
 
 
