@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To validate shipment "%(shipment)s" you must set a country code to the address of warehouse "%(warehouse)s".</field>
         </record>
         <record model="ir.message" id="msg_shipping_to_address_country_code_required">
-            <field name="text">To validate shipment "%(shipment)s" you must set a country code to the destination address".</field>
+            <field name="text">To validate shipment "%(shipment)s" you must set a country code to the destination address.</field>
         </record>
         <record model="ir.message" id="msg_phone_mobile_required">
             <field name="text">To validate shipment "%(shipment)s" you must add a phone or mobile number to party "%(party)s".</field>
