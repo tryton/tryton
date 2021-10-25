@@ -457,8 +457,8 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             },
         states=_states, depends=_depends + ['company'])
     quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)),
-        required=True, states=_states, depends=['unit_digits'] + _depends)
+        "Quantity", digits='unit', required=True,
+        states=_states, depends=_depends)
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
     unit_list_price = fields.Numeric(
@@ -485,8 +485,6 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             'invisible': ~Eval('moves', []),
             })
 
-    unit_digits = fields.Function(
-        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
     sale_state = fields.Function(fields.Selection(
             'get_sale_states', "Sale State"), 'on_change_with_sale_state')
     company = fields.Function(
@@ -508,12 +506,6 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
         # TODO packaging UOM
         if self.product:
             return self.product.sale_uom.id
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     @classmethod
     def get_sale_states(cls):
