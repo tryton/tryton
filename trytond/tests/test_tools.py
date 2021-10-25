@@ -229,6 +229,48 @@ class ToolsTestCase(unittest.TestCase):
         "Test hyphenate in slugify"
         self.assertEqual(slugify('foo bar', hyphenate='_'), 'foo_bar')
 
+    def test_sortable_values(self):
+        def key(values):
+            return values
+
+        values = [
+            (('a', 1), ('b', None)),
+            (('a', 1), ('b', 3)),
+            (('a', 1), ('b', 2)),
+            ]
+
+        with self.assertRaises(TypeError):
+            sorted(values, key=key)
+        self.assertEqual(
+            sorted(values, key=sortable_values(key)), [
+                (('a', 1), ('b', 2)),
+                (('a', 1), ('b', 3)),
+                (('a', 1), ('b', None)),
+                ])
+
+    def test_firstline(self):
+        "Test firstline"
+        for text, result in [
+                ("", ""),
+                ("first line\nsecond line", "first line"),
+                ("\nsecond line", "second line"),
+                ("\n\nthird line", "third line"),
+                (" \nsecond line", "second line"),
+                ]:
+            with self.subTest(text=text, result=result):
+                self.assertEqual(firstline(text), result)
+
+    def test_remove_forbidden_chars(self):
+        "Test remove_forbidden_chars"
+        for string, result in [
+                ("", ""),
+                (None, None),
+                ("\ttest", "test"),
+                (" test ", "test"),
+                ]:
+            with self.subTest(string=string):
+                self.assertEqual(remove_forbidden_chars(string), result)
+
 
 class StringPartitionedTestCase(unittest.TestCase):
     "Test StringPartitioned"
@@ -878,48 +920,6 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             extract_reference_models(domain, 'x'), {'model_A', 'model_B'})
         self.assertEqual(extract_reference_models(domain, 'y'), set())
-
-    def test_sortable_values(self):
-        def key(values):
-            return values
-
-        values = [
-            (('a', 1), ('b', None)),
-            (('a', 1), ('b', 3)),
-            (('a', 1), ('b', 2)),
-            ]
-
-        with self.assertRaises(TypeError):
-            sorted(values, key=key)
-        self.assertEqual(
-            sorted(values, key=sortable_values(key)), [
-                (('a', 1), ('b', 2)),
-                (('a', 1), ('b', 3)),
-                (('a', 1), ('b', None)),
-                ])
-
-    def test_firstline(self):
-        "Test firstline"
-        for text, result in [
-                ("", ""),
-                ("first line\nsecond line", "first line"),
-                ("\nsecond line", "second line"),
-                ("\n\nthird line", "third line"),
-                (" \nsecond line", "second line"),
-                ]:
-            with self.subTest(text=text, result=result):
-                self.assertEqual(firstline(text), result)
-
-    def test_remove_forbidden_chars(self):
-        "Test remove_forbidden_chars"
-        for string, result in [
-                ("", ""),
-                (None, None),
-                ("\ttest", "test"),
-                (" test ", "test"),
-                ]:
-            with self.subTest(string=string):
-                self.assertEqual(remove_forbidden_chars(string), result)
 
 
 def suite():
