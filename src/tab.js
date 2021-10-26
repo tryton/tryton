@@ -724,7 +724,9 @@
                     JSON.stringify(attributes.context)) &&
                 (compare(
                     this.attributes.search_value || [],
-                    attributes.search_value || []))
+                    attributes.search_value || [])) &&
+                (JSON.stringify(this.screen.attributes.tab_domain) ===
+                    JSON.stringify(attributes.tab_domain))
             );
         },
         _close_allowed: function() {
