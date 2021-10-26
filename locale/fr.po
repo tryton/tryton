@@ -298,7 +298,7 @@ msgstr "Toutes"
 
 msgctxt "selection:res.user,company_filter:"
 msgid "Current"
-msgstr "Devise"
+msgstr "Actuelle"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
