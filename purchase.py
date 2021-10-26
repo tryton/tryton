@@ -1523,6 +1523,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
         invoice_line = InvoiceLine()
         invoice_line.type = self.type
+        invoice_line.currency = self.currency
+        invoice_line.company = self.company
         invoice_line.description = self.description
         invoice_line.note = self.note
         invoice_line.origin = self
@@ -1552,8 +1554,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             invoice_line.taxes_deductible_rate = (
                 self.product.supplier_taxes_deductible_rate_used)
         invoice_line.invoice_type = 'in'
-        invoice_line.currency = self.currency
-        invoice_line.company = self.company
         if self.product:
             invoice_line.account = self.product.account_expense_used
             if not invoice_line.account:
