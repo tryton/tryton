@@ -119,7 +119,9 @@ class Form(SignalEvent, TabContent):
                     attributes.get('mode') or ['tree', 'form']))
             and self.screen.local_context == attributes.get('context')
             and self.attributes.get('search_value') == (
-                attributes.get('search_value')))
+                attributes.get('search_value'))
+            and self.attributes.get('tab_domain') == (
+                attributes.get('tab_domain')))
 
     def __hash__(self):
         return id(self)
