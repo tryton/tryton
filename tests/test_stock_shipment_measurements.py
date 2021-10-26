@@ -45,7 +45,6 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         template, = Template.create([{
                     'name': "Test internal measurements",
                     'type': 'goods',
-                    'list_price': Decimal(1),
                     'default_uom': kg,
                     }])
         product, = Product.create([{
@@ -146,7 +145,6 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
         template, = Template.create([{
                     'name': "Test measurements",
                     'type': 'goods',
-                    'list_price': Decimal(1),
                     'default_uom': kg,
                     'volume': 0.2,
                     'volume_uom': liter,
