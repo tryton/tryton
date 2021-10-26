@@ -515,7 +515,7 @@ class Shop(metaclass=PoolMeta):
             sales = Sale.search([
                     ('web_shop', '=', shop.id),
                     ('shopify_identifier', '!=', None),
-                    ('state', 'in', ['quotation', 'processing']),
+                    ('state', 'in', ['quotation', 'confirmed', 'processing']),
                     ])
             with shop.shopify_session():
                 for sale in sales:
