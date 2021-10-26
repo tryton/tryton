@@ -230,8 +230,6 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
-        ProductQuantitiesByWarehouse = pool.get(
-            'stock.product_quantities_warehouse')
 
         transaction = Transaction()
         today = Date.today()
@@ -271,36 +269,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
 
             for product, moves in groupby(moves, lambda m: m.product):
                 for move in moves:
-                    with transaction.set_context(
-                            product=product.id,
-                            warehouse=warehouse.id,
-                            stock_skip_warehouse=False,
-                            ):
-                        product_quantities = (
-                            ProductQuantitiesByWarehouse.search([
-                                    ('date', '>=', today),
-                                    ('date', '<=', move.planned_date),
-                                    ],
-                                order=[('date', 'DESC')]))
-                        last_product_quantity, = (
-                            ProductQuantitiesByWarehouse.search(
-                                [], order=[('date', 'DESC')], limit=1))
-                    earlier_date = move.planned_date
-                    if product_quantities:
-                        assert product_quantities[0].date == move.planned_date
-                        # The new date must left the same available
-                        # quantity for other moves at the current date
-                        min_quantity = (
-                            product_quantities[0].quantity
-                            + move.internal_quantity)
-                        if last_product_quantity.quantity > 0:
-                            # The remaining quantities can be used
-                            min_quantity -= last_product_quantity.quantity
-                        if min_quantity >= 0:
-                            for product_quantity in product_quantities[1:]:
-                                if product_quantity.quantity < min_quantity:
-                                    break
-                                earlier_date = product_quantity.date
+                    earlier_date = cls._get_earlier_date(move, warehouse)
                     plan = cls._add(move, plans)
                     if earlier_date < move.planned_date:
                         plan.early_date = earlier_date
@@ -318,6 +287,50 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                     and plan.earliest_date == plan.planned_date):
                 to_delete.append(plan)
         cls.delete(to_delete)
+
+    @classmethod
+    def _get_earlier_date(cls, move, warehouse):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        ProductQuantitiesByWarehouse = pool.get(
+            'stock.product_quantities_warehouse')
+        product = move.product
+        today = Date.today()
+
+        if product.consumable:
+            return today
+
+        with Transaction().set_context(
+                product=product.id,
+                warehouse=warehouse.id,
+                stock_skip_warehouse=False,
+                ):
+            product_quantities = (
+                ProductQuantitiesByWarehouse.search([
+                        ('date', '>=', today),
+                        ('date', '<=', move.planned_date),
+                        ],
+                    order=[('date', 'DESC')]))
+            last_product_quantity, = (
+                ProductQuantitiesByWarehouse.search(
+                    [], order=[('date', 'DESC')], limit=1))
+        earlier_date = move.planned_date
+        if product_quantities:
+            assert product_quantities[0].date == move.planned_date
+            # The new date must left the same available
+            # quantity for other moves at the current date
+            min_quantity = (
+                product_quantities[0].quantity
+                + move.internal_quantity)
+            if last_product_quantity.quantity > 0:
+                # The remaining quantities can be used
+                min_quantity -= last_product_quantity.quantity
+            if min_quantity >= 0:
+                for product_quantity in product_quantities[1:]:
+                    if product_quantity.quantity < min_quantity:
+                        break
+                    earlier_date = product_quantity.date
+        return earlier_date
 
     @classmethod
     def _add(cls, origin, plans):
