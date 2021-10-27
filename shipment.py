@@ -160,7 +160,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                 pbl = Product.products_by_location(
                     location_ids,
                     with_childs=True,
-                    grouping_filter=(product_ids,))
+                    grouping_filter=grouping_filter)
             for key, qty in pbl.items():
                 current_qties[key] += qty
 
