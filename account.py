@@ -559,7 +559,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button_action(
-        'account_budget.wizard_create_periods')
+        'account_budget.wizard_budget_line_create_periods')
     def create_periods(cls, lines):
         pass
 
