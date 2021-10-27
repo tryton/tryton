@@ -127,7 +127,8 @@ def get_parser_stat():
 
 def config_log(options):
     if options.logconf:
-        logging.config.fileConfig(options.logconf)
+        logging.config.fileConfig(
+            options.logconf, disable_existing_loggers=False)
         logging.getLogger('server').info('using %s as logging '
             'configuration file', options.logconf)
     else:
