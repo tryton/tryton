@@ -81,11 +81,19 @@ function eval_pyson(value){
             }
 
             if (attributes.xalign === undefined) {
-                attributes.xalign = 0.5;
+                if (attributes.xexpand) {
+                    attributes.xalign = 0;
+                } else {
+                    attributes.xalign = 0.5;
+                }
             }
 
             if (attributes.yalign === undefined) {
-                attributes.yalign = 0.5;
+                if (attributes.yexpand) {
+                    attributes.yalign = 0;
+                } else {
+                    attributes.yalign = 0.5;
+                }
             }
 
             this.container.add(widget, attributes);
