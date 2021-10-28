@@ -75,6 +75,9 @@ function eval_pyson(value){
 
             if (attributes.height !== undefined) {
                 widget.el.css('min-height', attributes.height + 'px');
+                if (widget.el.children().length == 1) {
+                    widget.el.children().css('min-height', 'inherit');
+                }
             }
             if (attributes.width !== undefined) {
                 widget.el.css('min-width', attributes.width + 'px');
