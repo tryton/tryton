@@ -4503,7 +4503,7 @@ function eval_pyson(value){
             // avoid modification because different encoding
             var value = this.get_encoded_value();
             var previous = field.get_client(record);
-            if (previous && Sao.common.compare(
+            if (value && previous && Sao.common.compare(
                 value, this.encoder.encode(this.decoder.decode(previous)))) {
                 value = previous;
             }
