@@ -206,6 +206,9 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         # Set state before create moves to pass assert
         cls.write(deferrals, {'state': 'running'})
         cls.create_moves(deferrals)
+        # defer_amount is called after create_moves to be sure that
+        # create_moves call get_move with the invoice period if needed.
+        cls.defer_amount(deferrals)
 
     @classmethod
     @Workflow.transition('closed')
@@ -223,6 +226,17 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                         '.msg_invoice_deferred_delete_draft',
                         deferral=deferral.rec_name))
         return super().delete(deferrals)
+
+    @classmethod
+    def defer_amount(cls, deferrals):
+        pool = Pool()
+        Move = pool.get('account.move')
+        moves = []
+        for deferral in deferrals:
+            assert deferral.state == 'running'
+            moves.append(deferral.get_move())
+        Move.save(moves)
+        Move.post(moves)
 
     @classmethod
     def create_moves(cls, deferrals):
@@ -281,7 +295,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             l.credit for m in self.moves for l in m.lines
             if m.period != period)
 
-    def get_move(self, period):
+    def get_move(self, period=None):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
@@ -291,18 +305,14 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             company=self.company,
             origin=self,
             journal=self.journal,
-            period=period,
-            date=period.start_date,
             )
         invoice = self.invoice_line.invoice
-        days = (
-            min(period.end_date, self.end_date)
-            - max(period.start_date, self.start_date)).days + 1
-        amount = self.company.currency.round(self.amount_daily * days)
 
-        income = Line(account=self.invoice_line.account.current(move.date))
-        if period == invoice.move.period:
-            amount = self.amount - amount
+        income = Line()
+        if period is None:
+            move.period = invoice.move.period
+            move.date = invoice.move.date
+            amount = self.amount
             if amount >= 0:
                 if invoice.type == 'out':
                     income.debit, income.credit = amount, 0
@@ -314,6 +324,12 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 else:
                     income.debit, income.credit = -amount, 0
         else:
+            move.period = period
+            move.date = period.start_date
+            days = (
+                min(period.end_date, self.end_date)
+                - max(period.start_date, self.start_date)).days + 1
+            amount = self.company.currency.round(self.amount_daily * days)
             if amount >= 0:
                 if invoice.type == 'out':
                     income.debit, income.credit = 0, amount
@@ -324,6 +340,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                     income.debit, income.credit = -amount, 0
                 else:
                     income.debit, income.credit = 0, -amount
+        income.account = self.invoice_line.account.current(move.date)
         if income.account.party_required:
             income.party = invoice.party
 

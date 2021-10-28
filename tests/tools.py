@@ -17,6 +17,7 @@ def add_deferred_accounts(accounts, company=None, config=None):
     if not company:
         company = get_company()
 
+    root, = Account.find([('parent', '=', None)], limit=1)
     asset_type, = AccountType.find([
             ('statement', '=', 'balance'),
             ('name', '=', "Asset"),
@@ -29,11 +30,13 @@ def add_deferred_accounts(accounts, company=None, config=None):
             ], limit=1)
 
     accounts['deferred_revenue'] = Account(
+        parent=root,
         name="Deferred Revenue",
         type=asset_type,
         company=company)
     accounts['deferred_revenue'].save()
     accounts['deferred_expense'] = Account(
+        parent=root,
         name="Deferred Expense",
         type=liability_type,
         company=company)
