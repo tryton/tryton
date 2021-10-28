@@ -104,7 +104,7 @@ Check moves on invoice deferred::
     >>> deferral.state
     'running'
     >>> len(deferral.moves)
-    12
+    13
     >>> accounts['deferred_expense'].reload()
     >>> accounts['deferred_expense'].balance in {Decimal('270'), Decimal('271')}
     True
@@ -125,7 +125,7 @@ Check moves on invoice deferred::
     >>> deferral.state
     'closed'
     >>> len(deferral.moves)
-    17
+    18
     >>> accounts['deferred_expense'].reload()
     >>> accounts['deferred_expense'].balance
     Decimal('0.00')
