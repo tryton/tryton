@@ -88,6 +88,16 @@ class FieldDateTimeTestCase(unittest.TestCase):
         self.assertTrue(datetime.datetime)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        DateTime = Pool().get('test.datetime')
+
+        datetime = DateTime()
+
+        with self.assertRaises(ValueError):
+            datetime.datetime = CurrentTimestamp()
+
+    @with_transaction()
     def test_create_non_datetime(self):
         "Test create datetime with non datetime"
         DateTime = Pool().get('test.datetime')

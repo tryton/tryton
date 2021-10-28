@@ -124,6 +124,16 @@ class FieldBinaryTestCase(unittest.TestCase):
         self.assertEqual(binary.binary, cast(b'foo'))
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Binary = Pool().get('test.binary')
+
+        binary = Binary()
+
+        with self.assertRaises(ValueError):
+            binary.binary = Literal('foo')
+
+    @with_transaction()
     def test_read_size(self):
         "Test read binary size"
         Binary = Pool().get('test.binary')

@@ -71,6 +71,16 @@ class FieldNumericTestCase(unittest.TestCase):
         self.assertEqual(numeric.numeric, Decimal('2.5'))
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Numeric = Pool().get('test.numeric')
+
+        numeric = Numeric()
+
+        with self.assertRaises(ValueError):
+            numeric.numeric = Literal(42)
+
+    @with_transaction()
     def test_create_non_numeric(self):
         "Test create numeric with non numeric"
         Numeric = Pool().get('test.numeric')

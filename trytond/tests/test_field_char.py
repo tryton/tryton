@@ -42,15 +42,6 @@ class CommonTestCaseMixin:
         self.assertEqual(char.char, "é")
 
     @with_transaction()
-    def test_create_with_sql_value(self):
-        "Test create with SQL value"
-        Char = self.Char()
-
-        char, = Char.create([{'char': Literal('Foo')}])
-
-        self.assertEqual(char.char, "Foo")
-
-    @with_transaction()
     def test_search_equals(self):
         "Test search char equals"
         Char = self.Char()
@@ -344,6 +335,25 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         return Pool().get('test.char')
 
     @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create with SQL value"
+        Char = self.Char()
+
+        char, = Char.create([{'char': Literal('Foo')}])
+
+        self.assertEqual(char.char, "Foo")
+
+    @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Char = self.Char()
+
+        char = Char()
+
+        with self.assertRaises(ValueError):
+            char.char = Literal('Foo')
+
+    @with_transaction()
     def test_create_without_default(self):
         "Test create char without default"
         Char = Pool().get('test.char')
@@ -475,6 +485,14 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
 
     def Char(self):
         return Pool().get('test.char_translate')
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test cannot create with SQL value"
+        Char = self.Char()
+
+        with self.assertRaises(ValueError):
+            Char.create([{'char': Literal('Foo')}])
 
     @with_transaction()
     def test_translation_default_language_cache(self):

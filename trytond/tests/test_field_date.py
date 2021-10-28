@@ -88,6 +88,16 @@ class FieldDateTestCase(unittest.TestCase):
         self.assertTrue(date.date)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Date = Pool().get('test.date')
+
+        date = Date()
+
+        with self.assertRaises(ValueError):
+            date.date = CurrentDate()
+
+    @with_transaction()
     def test_create_non_date(self):
         "Test create date with non date"
         Date = Pool().get('test.date')

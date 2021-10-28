@@ -70,6 +70,16 @@ class FieldFloatTestCase(unittest.TestCase):
         self.assertEqual(float_.float, 2.5)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Float = Pool().get('test.float')
+
+        float_ = Float()
+
+        with self.assertRaises(ValueError):
+            float_.float = Literal(42)
+
+    @with_transaction()
     def test_create_non_float(self):
         "Test create float with non float"
         Float = Pool().get('test.float')

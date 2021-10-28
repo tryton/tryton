@@ -343,8 +343,13 @@ class Field(object):
 
     def __set__(self, inst, value):
         assert self.name is not None
+        if isinstance(value, (Query, Expression)):
+            raise ValueError("Can not assign SQL")
         if inst._values is None:
             inst._values = inst._record()
+        if (self._py_type and value is not None
+                and not isinstance(value, self._py_type)):
+            value = self._py_type(value)
         inst._values[self.name] = value
 
     def sql_format(self, value):

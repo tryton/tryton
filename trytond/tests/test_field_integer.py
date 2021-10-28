@@ -59,6 +59,16 @@ class FieldIntegerTestCase(unittest.TestCase):
         self.assertEqual(integer.integer, 5)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Integer = Pool().get('test.integer_default')
+
+        integer = Integer()
+
+        with self.assertRaises(ValueError):
+            integer.integer = Literal(42)
+
+    @with_transaction()
     def test_create_non_integer(self):
         "Test create integer with non integer"
         Integer = Pool().get('test.integer')

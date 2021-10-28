@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Column, With
+from sql import Literal, Column, With, Query, Expression
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -19,7 +19,6 @@ class Many2One(Field):
     '''
     _type = 'many2one'
     _sql_type = 'INTEGER'
-    _py_type = int
 
     def __init__(self, model_name, string='', left=None, right=None, path=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
@@ -115,6 +114,8 @@ class Many2One(Field):
 
     def sql_format(self, value):
         assert value is not False
+        if value and not isinstance(value, (Query, Expression)):
+            value = int(value)
         return super().sql_format(value)
 
     def convert_domain_path(self, domain, tables):

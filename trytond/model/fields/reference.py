@@ -20,7 +20,6 @@ class Reference(SelectionMixin, Field):
     '''
     _type = 'reference'
     _sql_type = 'VARCHAR'
-    _py_type = str
 
     def __init__(self, string='', selection=None, sort=True,
             selection_change_with=None, translate=True, search_order=None,
@@ -159,11 +158,11 @@ class Reference(SelectionMixin, Field):
         super(Reference, self).__set__(inst, value)
 
     def sql_format(self, value):
-        if not isinstance(value, (str, Query, Expression)):
+        if value and not isinstance(value, (str, Query, Expression)):
             try:
                 value = '%s,%s' % tuple(value)
             except TypeError:
-                pass
+                value = str(value)
         return super(Reference, self).sql_format(value)
 
     @with_inactive_records

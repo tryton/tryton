@@ -18,7 +18,7 @@ class MultiSelection(SelectionMixin, Field):
     "Define a multi-selection field."
     _type = 'multiselection'
     _sql_type = 'VARCHAR'
-    _py_type = list
+    _py_type = tuple
 
     def __init__(self, selection, string='', sort=True, translate=True,
             help='', help_selection=None, required=False, readonly=False,
@@ -66,14 +66,9 @@ class MultiSelection(SelectionMixin, Field):
 
     def sql_format(self, value):
         value = super().sql_format(value)
-        if isinstance(value, list):
+        if isinstance(value, (list, tuple)):
             value = dumps(sorted(set(value)))
         return value
-
-    def __set__(self, inst, value):
-        if value:
-            value = tuple(value)
-        super().__set__(inst, value)
 
     def _domain_column(self, operator, column):
         database = Transaction().database

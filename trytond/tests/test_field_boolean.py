@@ -60,6 +60,16 @@ class FieldBooleanTestCase(unittest.TestCase):
         self.assertEqual(boolean.boolean, True)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Boolean = Pool().get('test.boolean')
+
+        boolean = Boolean()
+
+        with self.assertRaises(ValueError):
+            boolean.boolean = Literal(True)
+
+    @with_transaction()
     def test_search_equals_true(self):
         "Test search boolean equals True"
         Boolean = Pool().get('test.boolean')

@@ -86,6 +86,16 @@ class FieldTimeTestCase(unittest.TestCase):
         self.assertTrue(time.time)
 
     @with_transaction()
+    def test_set_sql_value(self):
+        "Test cannot set SQL value"
+        Time = Pool().get('test.time')
+
+        time = Time()
+
+        with self.assertRaises(ValueError):
+            time.time = Time.time.sql_cast(CurrentTimestamp())
+
+    @with_transaction()
     def test_create_non_time(self):
         "Test create time with non time"
         Time = Pool().get('test.time')
