@@ -104,10 +104,11 @@ class ProductCostHistory(ModelSQL, ModelView):
 
         tables, clause = Move.search_domain([
                 ('state', '=', 'done'),
-                Product()._domain_moves_cost(),
-                # Incoming moves
-                ('to_location.type', '=', 'storage'),
-                ('from_location.type', '!=', 'storage'),
+                Product._domain_moves_cost(),
+                ['OR',
+                    Product._domain_in_moves_cost(),
+                    Product._domain_out_moves_cost(),
+                    ],
                 ], tables={
                 None: (move, None),
                 })
