@@ -221,6 +221,12 @@ class MoveLine(metaclass=PoolMeta):
             'account.invoice.line', 'account.invoice.tax']
 
     @classmethod
+    def copy(cls, lines, default=None):
+        default = {} if default is None else default.copy()
+        default.setdefault('invoice_payments', None)
+        return super().copy(lines, default=default)
+
+    @classmethod
     def get_invoice_payment(cls, lines, name):
         pool = Pool()
         InvoicePaymentLine = pool.get('account.invoice-account.move.line')
