@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,product_customers:"
 msgid "Customers"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "field:product.template,product_customers:"
 msgid "Customers"
