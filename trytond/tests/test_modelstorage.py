@@ -362,6 +362,41 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
+    def test_relation_domain_multi(self):
+        "Test relation multi domain"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_multi_domain')
+        Target = pool.get('test.modelstorage.relation_multi_domain.target')
+
+        target, = Target.create([{'test1': True, 'test2': True}])
+
+        record, = Model.create([{'relation': target.id}])
+
+    @with_transaction()
+    def test_relation_domain_multi_invalid(self):
+        "Test invalid relation multi domain"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_multi_domain')
+        Target = pool.get('test.modelstorage.relation_multi_domain.target')
+
+        target1, target2 = Target.create(
+            [{'test1': False, 'test2': True}, {'test1': True, 'test2': False}])
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create([{
+                        'relation': target1.id,
+                        }])
+        self.assertEqual(cm.exception.domain[0], [('test1', '=', True)])
+        self.assertEqual(cm.exception.domain[1].keys(), {'test1'})
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create([{
+                        'relation': target2.id,
+                        }])
+        self.assertEqual(cm.exception.domain[0], [('test2', '=', True)])
+        self.assertEqual(cm.exception.domain[1].keys(), {'test2'})
+
+    @with_transaction()
     def test_relation_pyson_domain(self):
         "Test valid relation with PYSON"
         pool = Pool()

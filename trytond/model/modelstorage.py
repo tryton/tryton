@@ -16,7 +16,7 @@ from trytond.model import Model
 from trytond.model import fields
 from trytond.tools import reduce_domain, is_instance_method, grouped_slice
 from trytond.tools.domain_inversion import (
-    domain_inversion, parse as domain_parse)
+    domain_inversion, eval_domain, parse as domain_parse)
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
@@ -1189,10 +1189,13 @@ class ModelStorage(Model):
                         else:
                             fields.add(field.name)
                         for field_name in sorted(fields):
+                            env = EvalEnvironment(invalid_record, Relation)
                             invalid_domain = domain_inversion(
-                                domain, field_name,
-                                EvalEnvironment(invalid_record, Relation))
+                                domain, field_name, env)
                             if isinstance(invalid_domain, bool):
+                                continue
+                            if (len(fields) > 1  # no need to evaluate
+                                    and eval_domain(invalid_domain, env)):
                                 continue
                             field_def = Relation.fields_get(
                                 [field_name], level=level)
