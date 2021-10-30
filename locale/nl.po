@@ -48,7 +48,7 @@ msgstr "Gebruiker"
 
 msgctxt "field:web.user.authenticate.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Apparaatcookie"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
