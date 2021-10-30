@@ -47,10 +47,6 @@ msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:sale.opportunity,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
@@ -130,11 +126,6 @@ msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Egység"
 
-#, fuzzy
-msgctxt "field:sale.opportunity.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számjegy"
-
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
 msgstr ""
@@ -165,10 +156,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:sale.opportunity_employee,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee,employee:"
@@ -240,10 +227,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
@@ -317,10 +300,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:sale.opportunity_monthly,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,lost:"

@@ -43,10 +43,6 @@ msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Valiuta"
 
-msgctxt "field:sale.opportunity,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
-
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
 msgstr ""
@@ -117,10 +113,6 @@ msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.opportunity.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
 msgstr ""
@@ -149,10 +141,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:sale.opportunity_employee,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
@@ -221,10 +209,6 @@ msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Valiuta"
 
-msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
-
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr ""
@@ -291,10 +275,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:sale.opportunity_monthly,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,lost:"
