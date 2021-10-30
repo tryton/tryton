@@ -24,7 +24,7 @@ msgstr "Artikel"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"

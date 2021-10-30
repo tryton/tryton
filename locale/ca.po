@@ -12,7 +12,7 @@ msgstr "Ubicacions per defecte"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr "Ubicació interna"
+msgstr "Ubicació d'emmagatzematge"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Variant"
