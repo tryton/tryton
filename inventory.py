@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
+
 from sql import Null
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool, If
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateTransition, Button
@@ -257,15 +260,19 @@ class Inventory(Workflow, ModelSQL, ModelView):
             if inventory.state == 'done':
                 continue
             # Compute product quantities
-            if fill:
-                product_ids = None
-            else:
-                product_ids = [l.product.id for l in inventory.lines]
             with Transaction().set_context(stock_date_end=inventory.date):
-                pbl = Product.products_by_location(
-                    [inventory.location.id],
-                    grouping=grouping,
-                    grouping_filter=(product_ids,))
+                if fill:
+                    pbl = Product.products_by_location(
+                        [inventory.location.id],
+                        grouping=grouping)
+                else:
+                    product_ids = [l.product.id for l in inventory.lines]
+                    pbl = defaultdict(int)
+                    for product_ids in grouped_slice(product_ids):
+                        pbl.update(Product.products_by_location(
+                                [inventory.location.id],
+                                grouping=grouping,
+                                grouping_filter=(list(product_ids),)))
 
             # Index some data
             product2type = {}
