@@ -234,10 +234,6 @@ msgctxt "field:purchase.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
 
-msgctxt "field:purchase.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
@@ -347,10 +343,6 @@ msgstr ""
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:purchase.purchase,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:purchase.purchase,delivery_date:"
 msgid "Delivery Date"
@@ -692,6 +684,10 @@ msgid ""
 "\"%(purchase)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
+msgid "A tax can be added only once to a purchase line."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -724,8 +720,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" of goods or assets, you "
-"must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"

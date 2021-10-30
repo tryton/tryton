@@ -227,10 +227,6 @@ msgctxt "field:purchase.line,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:purchase.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
@@ -339,10 +335,6 @@ msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.purchase,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:purchase.purchase,delivery_date:"
 msgid "Delivery Date"
 msgstr "Bezorgdatum"
@@ -393,7 +385,7 @@ msgstr "Nummer"
 
 msgctxt "field:purchase.purchase,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Oorsprong(herkomst)"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -567,16 +559,14 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Relaties geassocieerd met aankopen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
-msgstr "Leverancier"
+msgstr "Leveranciers"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr "prijzen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -698,6 +688,11 @@ msgstr ""
 "Om regel \"%(line)s\" te verwijderen, moet u de aankoop \"%(purchase)s\" "
 "annuleren ,resetten of terugzetten naar consept."
 
+msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
+msgid "A tax can be added only once to a purchase line."
+msgstr ""
+"Een belasting kan slechts één keer worden toegevoegd aan een inkoopregel."
+
 msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
 msgid ""
 "To invoice purchase \"%(purchase)s\" you must configure a default account "
@@ -740,10 +735,9 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" of goods or assets, you "
-"must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
 msgstr ""
-"Om een offerte te krijven voor aankoop \"%(purchase)s\", moet eerst een "
+"Om een offerte te krijgen voor aankoop \"%(purchase)s\", moet eerst een "
 "magazijn ingevoerd worden."
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
@@ -779,12 +773,10 @@ msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
 msgstr "offerte"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
@@ -801,17 +793,14 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Suppliers"
-msgstr "Leverancier"
+msgstr "Leveranciers"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchases"
-msgstr "Inkoop"
+msgstr "Aankopen"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -824,10 +813,9 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapporten"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Associated to Purchases"
-msgstr "Relaties geassocieerd met aankopen"
+msgstr "Geassocieerd met aankopen"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
