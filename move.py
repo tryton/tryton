@@ -2208,20 +2208,22 @@ class SplitLines(Wizard):
             values['terms'] = terms = []
             if self.start.amount:
                 interval = self.start.interval
-                while abs(remaining - self.start.amount) > 0:
+                amount = self.start.amount.copy_sign(remaining)
+                while remaining - amount > 0:
                     terms.append({
                             'date': date,
-                            'amount': self.start.amount,
+                            'amount': amount,
                             'currency': currency.id,
                             })
                     date = (
                         self.start.start_date + relativedelta(months=interval))
-                    interval += 1
-                    remaining -= self.start.amount
+                    interval += self.start.interval
+                    remaining -= amount
                 if remaining:
                     terms.append({
                             'date': date,
                             'amount': remaining,
+                            'currency': currency.id,
                             })
             elif self.start.number:
                 amount = self.start.currency.round(

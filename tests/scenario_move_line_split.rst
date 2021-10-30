@@ -77,7 +77,30 @@ Create Lines to split::
     >>> receivable.balance, receivable.amount_second_currency
     (Decimal('90.00'), Decimal('100.00'))
 
-Split line::
+Split line by amount::
+
+    >>> split = Wizard('account.move.line.split', [line])
+    >>> split.form.total_amount
+    Decimal('100.00')
+    >>> split.form.start_date = period.end_date
+    >>> split.form.frequency = 'other'
+    >>> split.form.interval = 2
+    >>> split.form.amount = Decimal('30.00')
+    >>> split.execute('preview')
+
+    >>> term1, term2, term3, term4 = split.form.terms
+    >>> term1.date == period.end_date
+    True
+    >>> term2.date == period.end_date + relativedelta(months=2)
+    True
+    >>> term3.date == period.end_date + relativedelta(months=4)
+    True
+    >>> term4.date == period.end_date + relativedelta(months=6)
+    True
+    >>> term1.amount, term2.amount, term3.amount, term4.amount
+    (Decimal('30.00'), Decimal('30.00'), Decimal('30.00'), Decimal('10.00'))
+
+Split line by number::
 
     >>> split = Wizard('account.move.line.split', [line])
     >>> split.form.total_amount
