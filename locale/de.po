@@ -60,7 +60,7 @@ msgstr "Minimale Anzahl"
 
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
@@ -78,10 +78,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Menge ausgeführt"
 
-msgctxt "field:stock.forecast.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "Maßeinheit"
@@ -92,7 +88,7 @@ msgstr "Bedarfsprognoseposition"
 
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
@@ -175,7 +171,7 @@ msgstr "Bedarfsprognoseposition"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
-msgstr "Bedarfsprognoseposition - Lagerbewegung"
+msgstr "Bedarfsprognoseposition - Warenbewegung"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"

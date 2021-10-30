@@ -89,11 +89,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.forecast.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "UdM"

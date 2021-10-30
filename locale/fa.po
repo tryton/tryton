@@ -78,10 +78,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "مقدار حساب شده"
 
-msgctxt "field:stock.forecast.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "ارقام واحد"
-
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "واحد اندازی گیری"

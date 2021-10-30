@@ -78,10 +78,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Uitgevoerde hoeveelheid (verbruikt?)"
 
-msgctxt "field:stock.forecast.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "maateenheid"
@@ -145,7 +141,7 @@ msgstr "Concept"
 
 msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"

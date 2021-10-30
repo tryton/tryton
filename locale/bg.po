@@ -79,10 +79,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Изпълнено количество"
 
-msgctxt "field:stock.forecast.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
-
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "Мер. ед."
