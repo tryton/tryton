@@ -10,9 +10,21 @@ msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
 msgstr "Tiendas Web"
 
+msgctxt "field:product.image,web_shop:"
+msgid "Web Shop"
+msgstr "Tienda Web"
+
+msgctxt "field:product.product,web_shop_description:"
+msgid "Web Shop Description"
+msgstr "Descripción tienda web"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Tiendas Web"
+
+msgctxt "field:product.template,web_shop_description:"
+msgid "Web Shop Description"
+msgstr "Descripción tienda web"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
@@ -201,6 +213,10 @@ msgstr "Tienda Web - Producto"
 msgctxt "model:web.shop-stock.location,name:"
 msgid "Web Shop - Warehouse"
 msgstr "Tienda Web - Almacén"
+
+msgctxt "view:product.template:"
+msgid "Edit"
+msgstr "Editar"
 
 msgctxt "view:web.shop:"
 msgid "Products"

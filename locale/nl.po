@@ -10,9 +10,21 @@ msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
 msgstr "Webwinkels"
 
+msgctxt "field:product.image,web_shop:"
+msgid "Web Shop"
+msgstr "Webwinkel"
+
+msgctxt "field:product.product,web_shop_description:"
+msgid "Web Shop Description"
+msgstr "Beschrijving van de webshop"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Webwinkels"
+
+msgctxt "field:product.template,web_shop_description:"
+msgid "Web Shop Description"
+msgstr "Beschrijving van de webshop"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
@@ -178,7 +190,7 @@ msgstr "De naam van de webshop moet uniek zijn."
 
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
@@ -203,6 +215,10 @@ msgstr "Webwinkel - Product"
 msgctxt "model:web.shop-stock.location,name:"
 msgid "Web Shop - Warehouse"
 msgstr "Webwinkel - Magazijn"
+
+msgctxt "view:product.template:"
+msgid "Edit"
+msgstr "Bewerk"
 
 msgctxt "view:web.shop:"
 msgid "Products"
