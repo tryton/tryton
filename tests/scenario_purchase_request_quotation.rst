@@ -185,7 +185,9 @@ Purchase Request state is now 'received'::
 Duplication of the Purchase Request and set the preferred_quotation_line field
 with a quotation not having the minimum price unit::
 
+    >>> set_user(0)
     >>> prequest2, = prequest.duplicate()
+    >>> set_user(purchase_user)
     >>> prequest2.preferred_quotation_line = sorted(
     ...     prequest2.quotation_lines, key=lambda q: q.unit_price)[-1]
     >>> prequest2.preferred_quotation_line.unit_price
