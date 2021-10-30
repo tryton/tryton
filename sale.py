@@ -282,10 +282,13 @@ class Promotion(
                 continue
             context = self.get_context_formula(line)
             new_price = self.get_unit_price(**context)
-            if new_price is not None and line.unit_price >= new_price:
-                line.unit_price = round_price(new_price)
-                line.promotion = self
-                applied = True
+            if new_price is not None:
+                if new_price < 0:
+                    new_price = Decimal(0)
+                if line.unit_price >= new_price:
+                    line.unit_price = round_price(new_price)
+                    line.promotion = self
+                    applied = True
         if applied:
             sale.lines = sale.lines  # Trigger the change
 
