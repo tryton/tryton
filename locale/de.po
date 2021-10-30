@@ -34,10 +34,6 @@ msgctxt "field:product.component,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:product.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:product.product,components:"
 msgid "Components"
 msgstr "Komponenten"
@@ -68,23 +64,23 @@ msgstr "Position"
 
 msgctxt "field:purchase.line.component,move_done:"
 msgid "Moves Done"
-msgstr "Lagerbewegungen Erledigt"
+msgstr "Erledigte Warenbewegungen"
 
 msgctxt "field:purchase.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr "Lagerbewegungen Vorbehalt"
+msgstr "Warenbewegungen mit Vorbehalt"
 
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Ignorierte Lagerbewegungen"
+msgstr "Ignorierte Warenbewegungen"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Neu erstellte Lagerbewegungen"
+msgstr "Neu erstellte Warenbewegungen"
 
 msgctxt "field:purchase.line.component,parent_type:"
 msgid "Parent Type"
@@ -114,17 +110,13 @@ msgctxt "field:purchase.line.component,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:purchase.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:purchase.line.component-ignored-stock.move,component:"
 msgid "Component"
 msgstr "Komponente"
 
 msgctxt "field:purchase.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,component:"
 msgid "Component"
@@ -132,7 +124,7 @@ msgstr "Komponente"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:sale.line,component_children:"
 msgid "Component Children"
@@ -156,23 +148,23 @@ msgstr "Position"
 
 msgctxt "field:sale.line.component,move_done:"
 msgid "Moves Done"
-msgstr "Lagerbewegungen Erledigt"
+msgstr "Erledigte Warenbewegungen"
 
 msgctxt "field:sale.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr "Lagerbewegungen Vorbehalt"
+msgstr "Warenbewegungen mit Vorbehalt"
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Ignorierte Lagerbewegungen"
+msgstr "Ignorierte Warenbewegungen"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Neu erstellte Lagerbewegungen"
+msgstr "Neu erstellte Warenbewegungen"
 
 msgctxt "field:sale.line.component,parent_type:"
 msgid "Parent Type"
@@ -202,17 +194,13 @@ msgctxt "field:sale.line.component,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:sale.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:sale.line.component-ignored-stock.move,component:"
 msgid "Component"
 msgstr "Komponente"
 
 msgctxt "field:sale.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:sale.line.component-recreated-stock.move,component:"
 msgid "Sale Line Component"
@@ -220,7 +208,7 @@ msgstr "Verkaufsposition Komponente"
 
 msgctxt "field:sale.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "help:product.component,fixed:"
 msgid ""
@@ -253,11 +241,11 @@ msgstr "Einkaufsposition Komponente"
 
 msgctxt "model:purchase.line.component-ignored-stock.move,name:"
 msgid "Purchase Line Component - Ignored Move"
-msgstr "Einkausposition Komponete - Ignorierte Lagerbewegung"
+msgstr "Einkausposition Komponete - Ignorierte Warenbewegung"
 
 msgctxt "model:purchase.line.component-recreated-stock.move,name:"
 msgid "Purchase Line Component - Recreated Move"
-msgstr "Einkaufsposition - Wiederhergestellte Lagerbewegung"
+msgstr "Einkaufsposition - Wiederhergestellte Warenbewegung"
 
 msgctxt "model:sale.line.component,name:"
 msgid "Sale Line Component"
@@ -265,11 +253,11 @@ msgstr "Verkaufsposition Komponente"
 
 msgctxt "model:sale.line.component-ignored-stock.move,name:"
 msgid "Sale Line Component - Ignored Move"
-msgstr "Verkaufsposition Komponente - Ignorierte Lagerbewegung"
+msgstr "Verkaufsposition Komponente - Ignorierte Warenbewegung"
 
 msgctxt "model:sale.line.component-recreated-stock.move,name:"
 msgid "Sale Line Component - Recreated Move"
-msgstr "Verkaufsposition - Wiederhergestellte Lagerbewegung"
+msgstr "Verkaufsposition - Wiederhergestellte Warenbewegung"
 
 msgctxt "selection:product.product,type:"
 msgid "Kit"

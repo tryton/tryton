@@ -34,10 +34,6 @@ msgctxt "field:product.component,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:product.component,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:product.product,components:"
 msgid "Components"
 msgstr ""
@@ -112,10 +108,6 @@ msgstr ""
 
 msgctxt "field:purchase.line.component,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:purchase.line.component,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:purchase.line.component-ignored-stock.move,component:"
@@ -200,10 +192,6 @@ msgstr ""
 
 msgctxt "field:sale.line.component,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:sale.line.component,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:sale.line.component-ignored-stock.move,component:"

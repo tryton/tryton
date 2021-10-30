@@ -4,279 +4,273 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.component,fixed:"
 msgid "Fixed"
-msgstr ""
+msgstr "Vast"
 
 msgctxt "field:product.component,parent_product:"
 msgid "Parent Variant"
-msgstr ""
+msgstr "Bovenliggende variant"
 
 msgctxt "field:product.component,parent_template:"
 msgid "Parent Product"
-msgstr ""
+msgstr "Bovenliggend product"
 
 msgctxt "field:product.component,parent_type:"
 msgid "Parent Type"
-msgstr ""
+msgstr "Oudertype"
 
 msgctxt "field:product.component,product:"
 msgid "Product"
-msgstr ""
+msgstr "Product"
 
 msgctxt "field:product.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr ""
+msgstr "Categorie producteenheid"
 
 msgctxt "field:product.component,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Hoeveelheid"
 
 msgctxt "field:product.component,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:product.component,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
+msgstr "Eenheid"
 
 msgctxt "field:product.product,components:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"
 
 msgctxt "field:product.template,components:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"
 
 msgctxt "field:purchase.line,component_children:"
 msgid "Component Children"
-msgstr ""
+msgstr "Onderliggende componenten"
 
 msgctxt "field:purchase.line,component_parent:"
 msgid "Component Parent"
-msgstr ""
+msgstr "bovenliggende componenten"
 
 msgctxt "field:purchase.line,components:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"
 
 msgctxt "field:purchase.line.component,fixed:"
 msgid "Fixed"
-msgstr ""
+msgstr "Vast"
 
 msgctxt "field:purchase.line.component,line:"
 msgid "Line"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "field:purchase.line.component,move_done:"
 msgid "Moves Done"
-msgstr ""
+msgstr "Boekingen klaar"
 
 msgctxt "field:purchase.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr ""
+msgstr "Boekingen uitzondering"
 
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "beweging"
 
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr ""
+msgstr "Genegeerde boekingen"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr ""
+msgstr "Opnieuw aangemaakte boekingen"
 
 msgctxt "field:purchase.line.component,parent_type:"
 msgid "Parent Type"
-msgstr ""
+msgstr "Oudertype"
 
 msgctxt "field:purchase.line.component,price_ratio:"
 msgid "Price Ratio"
-msgstr ""
+msgstr "Prijsverhouding"
 
 msgctxt "field:purchase.line.component,product:"
 msgid "Product"
-msgstr ""
+msgstr "Product"
 
 msgctxt "field:purchase.line.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr ""
+msgstr "Categorie producteenheid"
 
 msgctxt "field:purchase.line.component,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Hoeveelheid"
 
 msgctxt "field:purchase.line.component,quantity_ratio:"
 msgid "Quantity Ratio"
-msgstr ""
+msgstr "Hoeveelheidsverhouding"
 
 msgctxt "field:purchase.line.component,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:purchase.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
+msgstr "Eenheid"
 
 msgctxt "field:purchase.line.component-ignored-stock.move,component:"
 msgid "Component"
-msgstr ""
+msgstr "Component"
 
 msgctxt "field:purchase.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking/beweging"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,component:"
 msgid "Component"
-msgstr ""
+msgstr "Component"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking/beweging"
 
 msgctxt "field:sale.line,component_children:"
 msgid "Component Children"
-msgstr ""
+msgstr "Onderliggende componenten"
 
 msgctxt "field:sale.line,component_parent:"
 msgid "Component Parent"
-msgstr ""
+msgstr "bovenliggende componenten"
 
 msgctxt "field:sale.line,components:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"
 
 msgctxt "field:sale.line.component,fixed:"
 msgid "Fixed"
-msgstr ""
+msgstr "Vast"
 
 msgctxt "field:sale.line.component,line:"
 msgid "Line"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "field:sale.line.component,move_done:"
 msgid "Moves Done"
-msgstr ""
+msgstr "Boekingen klaar"
 
 msgctxt "field:sale.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr ""
+msgstr "Boekingen uitzondering"
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Boekingen/bewegingen"
 
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr ""
+msgstr "Genegeerde boekingen"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr ""
+msgstr "Opnieuw aangemaakte boekingen"
 
 msgctxt "field:sale.line.component,parent_type:"
 msgid "Parent Type"
-msgstr ""
+msgstr "Oudertype"
 
 msgctxt "field:sale.line.component,price_ratio:"
 msgid "Price Ratio"
-msgstr ""
+msgstr "Prijsverhouding"
 
 msgctxt "field:sale.line.component,product:"
 msgid "Product"
-msgstr ""
+msgstr "Product"
 
 msgctxt "field:sale.line.component,product_unit_category:"
 msgid "Product Unit Category"
-msgstr ""
+msgstr "Categorie producteenheid"
 
 msgctxt "field:sale.line.component,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Hoeveelheid"
 
 msgctxt "field:sale.line.component,quantity_ratio:"
 msgid "Quantity Ratio"
-msgstr ""
+msgstr "Hoeveelheidsverhouding"
 
 msgctxt "field:sale.line.component,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:sale.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
+msgstr "Eenheid"
 
 msgctxt "field:sale.line.component-ignored-stock.move,component:"
 msgid "Component"
-msgstr ""
+msgstr "Component"
 
 msgctxt "field:sale.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking/beweging"
 
 msgctxt "field:sale.line.component-recreated-stock.move,component:"
 msgid "Sale Line Component"
-msgstr ""
+msgstr "Verkooplijncomponent"
 
 msgctxt "field:sale.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking/beweging"
 
 msgctxt "help:product.component,fixed:"
 msgid ""
 "Check to make the quantity of the component independent of the kit quantity."
 msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
 
 msgctxt "help:purchase.line.component,fixed:"
 msgid ""
 "Check to make the quantity of the component independent of the kit quantity."
 msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
 
 msgctxt "help:sale.line.component,fixed:"
 msgid ""
 "Check to make the quantity of the component independent of the kit quantity."
 msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
 
 msgctxt "model:product.component,name:"
 msgid "Product Component"
-msgstr ""
+msgstr "Productcomponent"
 
 msgctxt "model:purchase.line.component,name:"
 msgid "Purchase Line Component"
-msgstr ""
+msgstr "Component inkoopregel"
 
 msgctxt "model:purchase.line.component-ignored-stock.move,name:"
 msgid "Purchase Line Component - Ignored Move"
-msgstr ""
+msgstr "Inkoopregelcomponent - Genegeerde verplaatsing"
 
 msgctxt "model:purchase.line.component-recreated-stock.move,name:"
 msgid "Purchase Line Component - Recreated Move"
-msgstr ""
+msgstr "Inkoopregelcomponent - Opnieuw gemaakte verplaatsing"
 
 msgctxt "model:sale.line.component,name:"
 msgid "Sale Line Component"
-msgstr ""
+msgstr "Verkooplijncomponent"
 
 msgctxt "model:sale.line.component-ignored-stock.move,name:"
 msgid "Sale Line Component - Ignored Move"
-msgstr ""
+msgstr "Verkoopregelcomponent - Genegeerde verplaatsing"
 
 msgctxt "model:sale.line.component-recreated-stock.move,name:"
 msgid "Sale Line Component - Recreated Move"
-msgstr ""
+msgstr "Verkoopregelcomponent - Opnieuw gemaakte verplaatsing"
 
 msgctxt "selection:product.product,type:"
 msgid "Kit"
-msgstr ""
+msgstr "Kit"
 
 msgctxt "selection:product.template,type:"
 msgid "Kit"
-msgstr ""
+msgstr "Kit"
 
 msgctxt "view:purchase.line:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"
 
 msgctxt "view:sale.line:"
 msgid "Components"
-msgstr ""
+msgstr "Componenten"

@@ -34,10 +34,6 @@ msgctxt "field:product.component,unit:"
 msgid "Unit"
 msgstr "Unidad"
 
-msgctxt "field:product.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos de la unidad"
-
 msgctxt "field:product.product,components:"
 msgid "Components"
 msgstr "Componentes"
@@ -113,10 +109,6 @@ msgstr "Ratio de la cantidad"
 msgctxt "field:purchase.line.component,unit:"
 msgid "Unit"
 msgstr "Unidad"
-
-msgctxt "field:purchase.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos de la unidad"
 
 msgctxt "field:purchase.line.component-ignored-stock.move,component:"
 msgid "Component"
@@ -201,10 +193,6 @@ msgstr "Ratio de la cantidad"
 msgctxt "field:sale.line.component,unit:"
 msgid "Unit"
 msgstr "Unidad"
-
-msgctxt "field:sale.line.component,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos de la unidad"
 
 msgctxt "field:sale.line.component-ignored-stock.move,component:"
 msgid "Component"
