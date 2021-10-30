@@ -62,7 +62,9 @@ def avatar_mixin(size=64, default=None):
             if not records:
                 return
             for record in records:
-                record.avatar = generate(size, getattr(record, field))
+                avatar = generate(size, getattr(record, field))
+                if avatar:
+                    record.avatar = avatar
             cls.save(records)
 
         if default:
