@@ -32,15 +32,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
@@ -102,10 +98,6 @@ msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr "Tweede valuta"
 
-msgctxt "field:account.account,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "Decimalen van de tweede valuta"
-
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
 msgstr "Startdatum"
@@ -148,15 +140,11 @@ msgstr "Balans"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.account.deferral,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
@@ -169,10 +157,6 @@ msgstr "Boekjaar"
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "Tweede valuta"
-
-msgctxt "field:account.account.deferral,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "Decimalen van de tweede valuta"
 
 msgctxt "field:account.account.party,account:"
 msgid "Account"
@@ -204,11 +188,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.account.party,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
-msgctxt "field:account.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.account.party,debit:"
 msgid "Debit"
@@ -233,10 +217,6 @@ msgstr "Relatie"
 msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
 msgstr "Tweede valuta"
-
-msgctxt "field:account.account.party,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "Decimalen van de tweede valuta"
 
 msgctxt "field:account.account.party,start_date:"
 msgid "Start Date"
@@ -338,10 +318,6 @@ msgctxt "field:account.account.type,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:account.account.type,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:account.account.type,debt:"
 msgid "Debt"
 msgstr "Schuld"
@@ -441,10 +417,6 @@ msgstr "Bedrijf"
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.aged_balance,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
@@ -546,10 +518,9 @@ msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
 msgstr "standaadr belastingregel inkopen"
 
-#, fuzzy
 msgctxt "field:account.configuration,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "afpunting lijnen"
+msgstr "afpuntingsreeks"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -586,10 +557,9 @@ msgctxt "field:account.configuration.sequence,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-#, fuzzy
 msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
-msgstr "afpunting lijnen"
+msgstr "afpuntingsreeks"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
@@ -641,7 +611,7 @@ msgstr "Naam"
 
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr "Perioden"
+msgstr "Periodes"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
@@ -729,15 +699,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.general_ledger.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
@@ -837,15 +803,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.account.party,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.general_ledger.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
@@ -905,15 +867,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.general_ledger.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
@@ -1057,11 +1015,11 @@ msgstr "Code"
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
-msgctxt "field:account.journal,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
@@ -1179,10 +1137,6 @@ msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
 msgstr "Valuta bedrag"
 
-msgctxt "field:account.move.line,amount_currency_digits:"
-msgid "Amount Currency Digits"
-msgstr "Tweede valuta decimalen"
-
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "Bedrag alternatieve valuta"
@@ -1193,15 +1147,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.move.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
@@ -1267,10 +1217,6 @@ msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr "Tweede valuta"
 
-msgctxt "field:account.move.line,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "Tweede valuta decimalen"
-
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
 msgstr "Tweede valuta vereist"
@@ -1290,6 +1236,62 @@ msgstr "Omschrijving"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Dagboek"
+
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr "Voorwaarden"
+
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr "Frequentie"
+
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr "Interval"
+
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "Start Datum"
+
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr "Totaal Bedrag"
+
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "Datum"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
@@ -1359,9 +1361,9 @@ msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1511,9 +1513,9 @@ msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-msgctxt "field:account.reconcile.show,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
@@ -1567,9 +1569,9 @@ msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
 msgstr "Actueel belastingkrediet"
 
-msgctxt "field:account.tax,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
@@ -1654,10 +1656,6 @@ msgstr "Bedrijf"
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.tax.code,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
@@ -1757,7 +1755,7 @@ msgstr "Rekeningsjabloon"
 
 msgctxt "field:account.tax.code.template,childs:"
 msgid "Children"
-msgstr "Onderliggend"
+msgstr "Onderliggende niveaus"
 
 msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
@@ -1807,9 +1805,9 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-msgctxt "field:account.tax.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
@@ -2067,9 +2065,9 @@ msgctxt "field:party.party,accounts:"
 msgid "Accounts"
 msgstr "Rekeningen"
 
-msgctxt "field:party.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
@@ -2221,19 +2219,19 @@ msgid "If checked, new sequences will be created."
 msgstr "Indien aangevinkt, zullen nieuwe reeksen worden aangemaakt."
 
 msgctxt "help:account.general_ledger.account.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr "Alleen boekingen uit dagboek weergeven."
 
 msgctxt "help:account.general_ledger.account.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.general_ledger.line.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr "Alleen boekingen uit dagboek weergeven."
 
 msgctxt "help:account.general_ledger.line.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.income_statement.context,posted:"
@@ -2259,6 +2257,10 @@ msgstr ""
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "De tweede valuta."
+
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
+msgstr "De lengte van elke periode, in maanden."
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2439,10 +2441,9 @@ msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Accountconfiguratie Standaard belastingregel"
 
-#, fuzzy
 msgctxt "model:account.configuration.sequence,name:"
 msgid "Account Configuration Sequence"
-msgstr "Beheer grootboekrekeningen"
+msgstr "Volgorde Rekening configuratie"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
@@ -2547,6 +2548,18 @@ msgstr "Boekingsregel"
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr "Lijnen groeperen"
+
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr "Lijnen splitsen"
+
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr "Lijnen splitsen"
+
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
+msgstr "Lijnen splitsen"
 
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
@@ -2796,6 +2809,10 @@ msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "Gegroepeerde accountverplaatsing"
 
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "Splits Boeking"
+
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "Boeking"
@@ -2864,6 +2881,10 @@ msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Heropen boekjaar"
 
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr "Lijnen splitsen"
+
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Codes"
 msgstr "Codes"
@@ -2908,10 +2929,9 @@ msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
 msgstr "afpunten lijnen terugdraaien"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_account_type_statement"
 msgid "Statement"
-msgstr "Bankafschrift"
+msgstr "Rapport"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
@@ -3012,6 +3032,14 @@ msgid ""
 msgstr ""
 "Om het boekjaar \"%(fiscalyear)s\"af te sluiten, moet je eerst alle "
 "voorgaande boekjaren afsluiten."
+
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
+msgstr ""
+"Om periode \"%(period)s\" af te sluiten, moet u het inactieve account "
+"\"%(account)s\" in evenwicht brengen."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
@@ -3328,6 +3356,30 @@ msgid ""
 msgstr ""
 "Om het fiscale jaar \"%(fiscalyear)s\" te heropenen, moet u alle latere "
 "boekjaren opnieuw openen."
+
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr "U kunt lijnen met verschillende rekeningen niet splitsen."
+
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr "U kunt lijnen met verschillende valuta's niet splitsen."
+
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr "U kunt lijnen met verschillende oorsprongen niet splitsen."
+
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr "U kunt geen lijnen splitsen met verschillende relaties."
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
+msgstr ""
+"Om de lijnen te splitsen, moet u de voorwaarden wijzigen om een totaalbedrag"
+" van %(total_amount)s te krijgen in plaats van %(amount)s."
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
@@ -3679,11 +3731,15 @@ msgstr "relatie rekening"
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Rekeingn"
+msgstr "Rekening"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Rekening beheer"
+
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "Crediteuren"
 
 msgctxt "report:account.account.type.statement:"
 msgid "/"
@@ -3725,7 +3781,6 @@ msgctxt "report:account.account.type.statement:"
 msgid "Print Date:"
 msgstr "Afdrukdatum:"
 
-#, fuzzy
 msgctxt "report:account.account.type.statement:"
 msgid "Statement"
 msgstr "Bankafschrift"
@@ -3804,7 +3859,7 @@ msgstr "Bedrijf:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "report:account.general_ledger:"
 msgid "Date"
@@ -3884,7 +3939,7 @@ msgstr "Bedrijf:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
@@ -3940,7 +3995,7 @@ msgstr "Bedrijf:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "report:account.trial_balance:"
 msgid "Debit"
@@ -4138,9 +4193,21 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr "Geldig"
 
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr "Maandelijks"
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr "Overige"
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr "Per kwartaal"
+
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Debit"
@@ -4212,7 +4279,7 @@ msgstr "-"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Invoice"
@@ -4236,7 +4303,7 @@ msgstr "-"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Invoice"
@@ -4360,7 +4427,7 @@ msgstr "Maanden"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr "Perioden"
+msgstr "Periodes"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
@@ -4368,7 +4435,7 @@ msgstr "Reeksen"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Debit"
@@ -4384,7 +4451,7 @@ msgstr "Beginbalans"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
@@ -4398,13 +4465,21 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "Heropen"
 
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr "Elke"
+
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr "Maanden"
+
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Overige informatie"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
@@ -4514,6 +4589,22 @@ msgstr "Annuleren"
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
 msgstr "Groep"
+
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr "opsplitsen"
+
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
+msgstr "Voorbeeld"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"

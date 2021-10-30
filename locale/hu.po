@@ -38,10 +38,6 @@ msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account,debit:"
 msgid "Debit"
 msgstr "Tartozik"
@@ -102,10 +98,6 @@ msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr "Deviza pénznem"
 
-msgctxt "field:account.account,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
 msgstr "Kezdődátum"
@@ -154,10 +146,6 @@ msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.account.deferral,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
 msgstr "Tartozik"
@@ -169,10 +157,6 @@ msgstr "Üzleti év"
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "Deviza pénznem"
-
-msgctxt "field:account.account.deferral,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
 
 msgctxt "field:account.account.party,account:"
 msgid "Account"
@@ -207,8 +191,8 @@ msgid "Credit"
 msgstr "Követel"
 
 #, fuzzy
-msgctxt "field:account.account.party,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
 msgstr "Pénznem"
 
 msgctxt "field:account.account.party,debit:"
@@ -234,10 +218,6 @@ msgstr "Ügyfél"
 msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
 msgstr "Deviza pénznem"
-
-msgctxt "field:account.account.party,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
 
 msgctxt "field:account.account.party,start_date:"
 msgid "Start Date"
@@ -340,10 +320,6 @@ msgctxt "field:account.account.type,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.account.type,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account.type,debt:"
 msgid "Debt"
 msgstr ""
@@ -443,10 +419,6 @@ msgstr "Cég"
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:account.aged_balance,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
@@ -738,10 +710,6 @@ msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.general_ledger.account,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
 msgstr "Tartozik"
@@ -846,11 +814,6 @@ msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-#, fuzzy
-msgctxt "field:account.general_ledger.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "Pénznem"
-
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
 msgstr "Tartozik"
@@ -915,10 +878,6 @@ msgstr "Követel"
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:account.general_ledger.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
@@ -1065,9 +1024,10 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "Követel"
 
-msgctxt "field:account.journal,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
@@ -1185,10 +1145,6 @@ msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
 msgstr "Összeg a pénznemben"
 
-msgctxt "field:account.move.line,amount_currency_digits:"
-msgid "Amount Currency Digits"
-msgstr ""
-
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "Összeg devizában"
@@ -1205,10 +1161,6 @@ msgstr "Követel"
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:account.move.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
@@ -1274,10 +1226,6 @@ msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr "Deviza pénznem"
 
-msgctxt "field:account.move.line,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
-
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
 msgstr ""
@@ -1297,6 +1245,75 @@ msgstr "Megjegyzés"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Napló"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr "Megjegyzés"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "Napló"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr "Fizetési feltétel"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "Összeg"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr "Lépték"
+
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr "Sorszám"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "Kezdődátum"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr "Összeg"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "Összeg"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "Dátum"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
@@ -1366,9 +1383,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr "Cég"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1519,9 +1537,10 @@ msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "Cég"
 
-msgctxt "field:account.reconcile.show,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
@@ -1575,9 +1594,10 @@ msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
 msgstr ""
 
-msgctxt "field:account.tax,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
@@ -1662,10 +1682,6 @@ msgstr "Cég"
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-msgctxt "field:account.tax.code,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
@@ -1753,7 +1769,7 @@ msgstr "Üzleti év"
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
-msgstr ""
+msgstr "Összesítés"
 
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
@@ -1815,13 +1831,14 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr "Cég"
 
-msgctxt "field:account.tax.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
-msgstr ""
+msgstr "Tétel"
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
@@ -2075,9 +2092,10 @@ msgctxt "field:party.party,accounts:"
 msgid "Accounts"
 msgstr "Számlák"
 
-msgctxt "field:party.party,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
+#, fuzzy
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
@@ -2229,21 +2247,25 @@ msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr "Ha bejelöli, új sorszámozások készülnek, amik 1-ről indulnak."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.account.context,journal:"
-msgid "Only included moves from the journal."
-msgstr ""
+msgid "Only include moves from the journal."
+msgstr "Csak lekönyvelt bizonylatokat vegyen figyelembe."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
-msgid "Only included posted moves."
-msgstr ""
+msgid "Only include posted moves."
+msgstr "Csak lekönyvelt bizonylatokat vegyen figyelembe."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.line.context,journal:"
-msgid "Only included moves from the journal."
-msgstr ""
+msgid "Only include moves from the journal."
+msgstr "Csak lekönyvelt bizonylatokat vegyen figyelembe."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.line.context,posted:"
-msgid "Only included posted moves."
-msgstr ""
+msgid "Only include posted moves."
+msgstr "Csak lekönyvelt bizonylatokat vegyen figyelembe."
 
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
@@ -2268,6 +2290,10 @@ msgstr ""
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "A devizaként használt pénznem."
+
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2301,7 +2327,7 @@ msgstr ""
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr ""
+msgstr "Ha az összes nyitott üzleti évre kéri, hagyja üresen."
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Only include posted moves."
@@ -2337,11 +2363,12 @@ msgstr "A sablonból származó adatok felülírásához jelölje be"
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr ""
+msgstr "Ha az összes nyitott üzleti évre kéri, hagyja üresen."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year."
 msgstr ""
+"Ha az összes nyitott üzleti év összes periódusára kéri, hagyja üresen."
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2562,6 +2589,21 @@ msgstr "Könyvelési tétel"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
+msgstr "Tételek csoportosítása"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr "Tételek csoportosítása"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr "Tételek csoportosítása"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
 msgstr "Tételek csoportosítása"
 
 #, fuzzy
@@ -2826,6 +2868,11 @@ msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "Account Move"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "Bizonylat"
+
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "Bizonylat"
@@ -2893,6 +2940,11 @@ msgstr "Leírási szabályok"
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Üzleti év másolása"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr "Tételek csoportosítása"
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Codes"
@@ -3028,6 +3080,12 @@ msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
@@ -3185,10 +3243,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
 msgstr ""
+"A továbblépés előtt hozzon létre egy üzleti évet a „%(date)s” dátumhoz."
 
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid "To continue, you must create a period for the date \"%(date)s\"."
-msgstr ""
+msgstr "A továbblépés előtt hozzon létre egy periódust a „%(date)s” dátumhoz."
 
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
@@ -3205,10 +3264,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
+"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél kötelezettségek "
+"számláját."
 
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
+"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
 
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
@@ -3243,6 +3305,8 @@ msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr ""
+"Ahhoz, hogy a „%(line)s” tételt le tudja egyeztetni, engedélyeznie kell a "
+"„%(account)s” számlán az egyeztetéseket."
 
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
@@ -3271,11 +3335,39 @@ msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr ""
+"Ahhoz, hogy a tételeket le tudja egyeztetni, a %(debit)s tartozik oldali "
+"összegnek meg kell egyezni a %(credit)s követel oldali összeggel."
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
 "years."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
@@ -3648,6 +3740,11 @@ msgstr "Számla"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Account Administration"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "Account Types"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -4116,6 +4213,21 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr "jóváhagyott"
 
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr "havi"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr "egyéb"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr "negyedéves"
+
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
 msgstr "Követel"
@@ -4220,14 +4332,13 @@ msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Invoice"
 msgstr "számla"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr "Fiscal Years"
+msgstr "üzleti évre"
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
-msgstr ""
+msgstr "periódusokra"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
@@ -4377,6 +4488,15 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "Visszanyitás"
 
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr "Hónap"
+
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "Egyéb info"
@@ -4493,6 +4613,24 @@ msgstr "Mégse"
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
 msgstr "Csoportosítás"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
+msgstr ""
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"

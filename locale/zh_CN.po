@@ -38,10 +38,6 @@ msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.account,debit:"
 msgid "Debit"
 msgstr "借方"
@@ -102,10 +98,6 @@ msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr "第二货币"
 
-msgctxt "field:account.account,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
-
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
 msgstr "启用日期"
@@ -154,10 +146,6 @@ msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.account.deferral,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
 msgstr "借方"
@@ -169,10 +157,6 @@ msgstr "会计年度"
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "第二货币"
-
-msgctxt "field:account.account.deferral,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
 
 msgctxt "field:account.account.party,account:"
 msgid "Account"
@@ -206,9 +190,10 @@ msgctxt "field:account.account.party,credit:"
 msgid "Credit"
 msgstr "贷方"
 
-msgctxt "field:account.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.account.party,debit:"
 msgid "Debit"
@@ -233,10 +218,6 @@ msgstr "参与者"
 msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
 msgstr "第二货币"
-
-msgctxt "field:account.account.party,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
 
 msgctxt "field:account.account.party,start_date:"
 msgid "Start Date"
@@ -338,10 +319,6 @@ msgctxt "field:account.account.type,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.account.type,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.account.type,debt:"
 msgid "Debt"
 msgstr ""
@@ -441,10 +418,6 @@ msgstr "公司"
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.aged_balance,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
@@ -736,10 +709,6 @@ msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.general_ledger.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
 msgstr "借方"
@@ -845,10 +814,6 @@ msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.general_ledger.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
 msgstr "借方"
@@ -913,10 +878,6 @@ msgstr "贷方"
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.general_ledger.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
@@ -1065,9 +1026,10 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "贷方"
 
-msgctxt "field:account.journal,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
@@ -1185,10 +1147,6 @@ msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
 msgstr "货币金额"
 
-msgctxt "field:account.move.line,amount_currency_digits:"
-msgid "Amount Currency Digits"
-msgstr "货币金额有效数字"
-
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr "第二货币金额"
@@ -1205,10 +1163,6 @@ msgstr "贷方"
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.move.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
@@ -1274,10 +1228,6 @@ msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr "第二货币"
 
-msgctxt "field:account.move.line,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
-
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
 msgstr "需要有第二货币"
@@ -1297,6 +1247,76 @@ msgstr "描述"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "日记账"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr "条款"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr "频率"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr "间隔"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "日期"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
@@ -1366,9 +1386,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr "公司"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1519,9 +1540,10 @@ msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr "公司"
 
-msgctxt "field:account.reconcile.show,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
@@ -1575,9 +1597,10 @@ msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
 msgstr "贷方税额"
 
-msgctxt "field:account.tax,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
@@ -1662,10 +1685,6 @@ msgstr "公司"
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.tax.code,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
@@ -1815,9 +1834,10 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr "公司"
 
-msgctxt "field:account.tax.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
@@ -2075,9 +2095,10 @@ msgctxt "field:party.party,accounts:"
 msgid "Accounts"
 msgstr "账户"
 
-msgctxt "field:party.party,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
+#, fuzzy
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
@@ -2229,20 +2250,22 @@ msgstr "如果选中，将创建新序列."
 
 #, fuzzy
 msgctxt "help:account.general_ledger.account.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr "只包括已入账的记账凭证."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr "只包括已入账的记账凭证."
 
 #, fuzzy
 msgctxt "help:account.general_ledger.line.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr "只包括已入账的记账凭证."
 
+#, fuzzy
 msgctxt "help:account.general_ledger.line.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr "只包括已入账的记账凭证."
 
 msgctxt "help:account.income_statement.context,posted:"
@@ -2268,6 +2291,11 @@ msgstr ""
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "第二货币."
+
+#, fuzzy
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
+msgstr "每个分期的长度，以月为单位。"
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2547,6 +2575,21 @@ msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr "明细汇总"
 
+#, fuzzy
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr "明细汇总"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr "明细汇总"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
+msgstr "明细汇总"
+
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
 msgstr "记账凭证明细模板"
@@ -2799,6 +2842,11 @@ msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "汇总记账凭证"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "记账凭证"
+
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "记账凭证"
@@ -2867,6 +2915,11 @@ msgstr "核销方法"
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "更新会计年度"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr "明细汇总"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
@@ -3009,6 +3062,13 @@ msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
 msgstr "要对会计年度 \"%(fiscalyear)s\" 结账, 必须将其之前的所有年度都结账."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
+msgstr "对分期 \"%(period)s\" 进行期末结账之前， 需要将记账凭证 \"%(moves)s\" 登记入账."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
@@ -3260,6 +3320,32 @@ msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
 "years."
 msgstr "要重新开启会计年度 \"%(fiscalyear)s\"，在它之后的会计年度必须全部重新开启."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr "无法将不同参与者的明细汇总."
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
@@ -3639,6 +3725,11 @@ msgstr "账户"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "账户管理"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "账户参与者"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -4106,6 +4197,21 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr "有效"
 
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr "每月"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr "其它"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr "每季度"
+
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
 msgstr "贷方"
@@ -4365,6 +4471,16 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "重新打开"
 
+#, fuzzy
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr "每"
+
+#, fuzzy
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr "月"
+
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr "其它信息"
@@ -4481,6 +4597,24 @@ msgstr "取消"
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
 msgstr "组"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
+msgstr ""
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"

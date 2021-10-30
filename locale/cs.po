@@ -39,10 +39,6 @@ msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account,debit:"
 msgid "Debit"
 msgstr ""
@@ -106,10 +102,6 @@ msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr ""
 
-msgctxt "field:account.account,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
 msgstr ""
@@ -161,10 +153,6 @@ msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:account.account.deferral,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
 msgstr ""
@@ -176,10 +164,6 @@ msgstr "Fiscal Years"
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
-msgstr ""
-
-msgctxt "field:account.account.deferral,second_currency_digits:"
-msgid "Second Currency Digits"
 msgstr ""
 
 #, fuzzy
@@ -218,8 +202,8 @@ msgctxt "field:account.account.party,credit:"
 msgid "Credit"
 msgstr ""
 
-msgctxt "field:account.account.party,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
 msgstr ""
 
 #, fuzzy
@@ -248,10 +232,6 @@ msgstr ""
 
 msgctxt "field:account.account.party,second_currency:"
 msgid "Secondary Currency"
-msgstr ""
-
-msgctxt "field:account.account.party,second_currency_digits:"
-msgid "Second Currency Digits"
 msgstr ""
 
 msgctxt "field:account.account.party,start_date:"
@@ -359,10 +339,6 @@ msgstr ""
 
 msgctxt "field:account.account.type,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.account.type,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:account.account.type,debt:"
@@ -476,10 +452,6 @@ msgstr ""
 
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.aged_balance,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:account.aged_balance,party:"
@@ -780,10 +752,6 @@ msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:account.general_ledger.account,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
 msgstr ""
@@ -894,10 +862,6 @@ msgctxt "field:account.general_ledger.account.party,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:account.general_ledger.account.party,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.general_ledger.account.party,debit:"
 msgid "Debit"
@@ -966,10 +930,6 @@ msgstr ""
 
 msgctxt "field:account.general_ledger.line,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.general_ledger.line,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:account.general_ledger.line,date:"
@@ -1122,8 +1082,8 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr ""
 
-msgctxt "field:account.journal,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.journal,debit:"
@@ -1249,10 +1209,6 @@ msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
 msgstr ""
 
-msgctxt "field:account.move.line,amount_currency_digits:"
-msgid "Amount Currency Digits"
-msgstr ""
-
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr ""
@@ -1267,10 +1223,6 @@ msgstr ""
 
 msgctxt "field:account.move.line,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.move.line,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:account.move.line,date:"
@@ -1339,10 +1291,6 @@ msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr ""
 
-msgctxt "field:account.move.line,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr ""
-
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
 msgstr ""
@@ -1364,6 +1312,67 @@ msgstr ""
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Journals"
+
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "Journals"
+
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "Accounts"
+
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr ""
+
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr ""
+
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "Trial Balance"
+
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "Accounts"
+
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "Aged Balance"
 
 #, fuzzy
 msgctxt "field:account.move.line.template,account:"
@@ -1439,8 +1448,8 @@ msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
@@ -1603,8 +1612,8 @@ msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.reconcile.show,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.reconcile.show,date:"
@@ -1660,8 +1669,8 @@ msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
 msgstr ""
 
-msgctxt "field:account.tax,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.tax,description:"
@@ -1748,10 +1757,6 @@ msgstr ""
 
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.tax.code,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:account.tax.code,description:"
@@ -1910,8 +1915,8 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.tax.line,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.tax.line,move_line:"
@@ -2182,8 +2187,8 @@ msgctxt "field:party.party,accounts:"
 msgid "Accounts"
 msgstr "Accounts"
 
-msgctxt "field:party.party,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:party.party,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:party.party,customer_tax_rule:"
@@ -2331,19 +2336,19 @@ msgid "If checked, new sequences will be created."
 msgstr ""
 
 msgctxt "help:account.general_ledger.account.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr ""
 
 msgctxt "help:account.general_ledger.account.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr ""
 
 msgctxt "help:account.general_ledger.line.context,journal:"
-msgid "Only included moves from the journal."
+msgid "Only include moves from the journal."
 msgstr ""
 
 msgctxt "help:account.general_ledger.line.context,posted:"
-msgid "Only included posted moves."
+msgid "Only include posted moves."
 msgstr ""
 
 msgctxt "help:account.income_statement.context,posted:"
@@ -2366,6 +2371,10 @@ msgstr ""
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
+msgstr ""
+
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
 msgstr ""
 
 msgctxt "help:account.move.line.template,amount:"
@@ -2666,6 +2675,18 @@ msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr ""
 
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr ""
+
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr ""
+
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
@@ -2944,6 +2965,11 @@ msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "Account Move"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "Account Move"
+
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "Account Move"
@@ -3011,6 +3037,10 @@ msgstr ""
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Renew Fiscal Year"
+
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
@@ -3152,6 +3182,12 @@ msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
@@ -3399,6 +3435,28 @@ msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
 "years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
@@ -3767,6 +3825,11 @@ msgstr "Account"
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Account Administration"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "Account Types"
 
 #, fuzzy
 msgctxt "report:account.account.type.statement:"
@@ -4252,6 +4315,18 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr ""
 
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr ""
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr ""
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
 msgstr ""
@@ -4518,6 +4593,14 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "Re-Open"
 
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr ""
+
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr ""
+
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr ""
@@ -4639,6 +4722,24 @@ msgstr ""
 
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "Cancel Moves"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "Cancel Moves"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
 msgstr ""
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
