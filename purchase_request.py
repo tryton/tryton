@@ -316,11 +316,10 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        for vals in vlist:
-            for field_name in ('quantity', 'company'):
-                if vals.get(field_name) is None:
-                    raise AccessError(
-                        gettext('purchase_request.msg_request_no_create'))
+        transaction = Transaction()
+        if transaction.user != 0 and transaction.context.get('_check_access'):
+            raise AccessError(
+                gettext('purchase_request.msg_request_no_create'))
         return super(PurchaseRequest, cls).create(vlist)
 
     @classmethod
