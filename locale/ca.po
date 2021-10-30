@@ -60,10 +60,6 @@ msgctxt "field:sale.gift_card,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:sale.gift_card,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:sale.gift_card,number:"
 msgid "Number"
 msgstr "Número"
@@ -100,6 +96,46 @@ msgctxt "field:sale.line,is_gift_card_service:"
 msgid "Is Gift Card Service"
 msgstr "Es el servei de targetes regal"
 
+msgctxt "field:sale.point.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr "Targetes regal"
+
+msgctxt "field:sale.point.sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr "Correu electrònic de la targeta regal"
+
+msgctxt "field:sale.point.sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr "Targetes regal"
+
+msgctxt "field:sale.point.sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr "És una targeta regal"
+
+msgctxt "field:sale.point.sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr "Es el servei de targetes regal"
+
+msgctxt "field:sale.point.sale.pay.gift_card,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.point.sale.pay.gift_card,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.sale.pay.gift_card,email:"
+msgid "Email"
+msgstr "Correu electrònic"
+
+msgctxt "field:sale.point.sale.pay.gift_card,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.point.sale.pay.gift_card,sale:"
+msgid "Sale"
+msgstr "Venda"
+
 msgctxt "field:sale.sale,gift_cards:"
 msgid "Gift Cards"
 msgstr "Targetes regal"
@@ -116,11 +152,19 @@ msgctxt "help:sale.line,gift_card_email:"
 msgid "Leave empty for the customer email."
 msgstr "Deixeu-ho en blanc per al correu electrònic del client."
 
+msgctxt "help:sale.point.sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr "Deixeu-ho en blanc per al correu electrònic del client."
+
 msgctxt "model:account.configuration.gift_card_account,name:"
 msgid "Account Configuration Gift Card Account"
 msgstr "Configuració de comptes comptables de targetes regal"
 
 msgctxt "model:ir.action,name:act_gift_card_form"
+msgid "Gift Cards"
+msgstr "Targetes regal"
+
+msgctxt "model:ir.action,name:report_gift_card"
 msgid "Gift Cards"
 msgstr "Targetes regal"
 
@@ -183,6 +227,10 @@ msgctxt "model:sale.gift_card,name:"
 msgid "Gift Card"
 msgstr "Targeta regal"
 
+msgctxt "model:sale.point.sale.pay.gift_card,name:"
+msgid "POS Pay - Gift Card"
+msgstr "Pagament TPV - Targeta regal"
+
 msgctxt "report:sale.gift_card.email:"
 msgid "Gift Card"
 msgstr "Targeta regal"
@@ -192,12 +240,12 @@ msgid "Here is your code:"
 msgstr "Aquí teniu el vostre codi:"
 
 msgctxt "report:sale.gift_card.email:"
-msgid "You received a gift card of"
-msgstr "Heu rebut una targeta regal de"
+msgid "You received a gift card of %(value)s for %(company)s."
+msgstr "Heu rebut una targeta regal de %(valor)s de l'empresa %(company)s."
 
-msgctxt "report:sale.gift_card.email:"
-msgid "for"
-msgstr "per"
+msgctxt "report:sale.gift_card:"
+msgid "Value:"
+msgstr "Valor:"
 
 msgctxt "view:account.configuration:"
 msgid "Gift Card"
@@ -206,3 +254,19 @@ msgstr "Targeta regal"
 msgctxt "view:sale.line:"
 msgid "Gift Cards"
 msgstr "Targetes regal"
+
+msgctxt "view:sale.point.sale.line:"
+msgid "Gift Cards"
+msgstr "Targetes regal"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,add_gift_card:"
+msgid "Add"
+msgstr "Afegeix"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,gift_card:"
+msgid "Gift Card"
+msgstr "Targeta regal"

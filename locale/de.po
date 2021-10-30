@@ -60,10 +60,6 @@ msgctxt "field:sale.gift_card,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:sale.gift_card,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:sale.gift_card,number:"
 msgid "Number"
 msgstr "Nummer"
@@ -100,6 +96,46 @@ msgctxt "field:sale.line,is_gift_card_service:"
 msgid "Is Gift Card Service"
 msgstr "Ist Geschenkgutschein Für Dienstleistung"
 
+msgctxt "field:sale.point.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr "Geschenkgutscheine"
+
+msgctxt "field:sale.point.sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr "E-Mail Geschenkgutschein"
+
+msgctxt "field:sale.point.sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr "Geschenkgutscheine"
+
+msgctxt "field:sale.point.sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr "Ist Geschenkgutschein"
+
+msgctxt "field:sale.point.sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr "Ist Geschenkgutschein Für Dienstleistung"
+
+msgctxt "field:sale.point.sale.pay.gift_card,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:sale.point.sale.pay.gift_card,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.sale.pay.gift_card,email:"
+msgid "Email"
+msgstr "E-Mail"
+
+msgctxt "field:sale.point.sale.pay.gift_card,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:sale.point.sale.pay.gift_card,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
 msgctxt "field:sale.sale,gift_cards:"
 msgid "Gift Cards"
 msgstr "Geschenkgutscheine"
@@ -116,11 +152,19 @@ msgctxt "help:sale.line,gift_card_email:"
 msgid "Leave empty for the customer email."
 msgstr "Leer lassen um die E-Mail des Kunden zu verwenden."
 
+msgctxt "help:sale.point.sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr "Leer lassen um die E-Mail des Kunden zu verwenden."
+
 msgctxt "model:account.configuration.gift_card_account,name:"
 msgid "Account Configuration Gift Card Account"
 msgstr "Buchhaltung Einstellungen Konto Geschenkgutschein"
 
 msgctxt "model:ir.action,name:act_gift_card_form"
+msgid "Gift Cards"
+msgstr "Geschenkgutscheine"
+
+msgctxt "model:ir.action,name:report_gift_card"
 msgid "Gift Cards"
 msgstr "Geschenkgutscheine"
 
@@ -152,7 +196,7 @@ msgctxt "model:ir.message,text:msg_gift_card_move_quantity"
 msgid ""
 "To do the move \"%(move)s\", you must use exactly %(quantity)d gift card(s)."
 msgstr ""
-"Um die Lagerbewegung \"%(move)s\" auszuführen müssen genau %(quantity)d "
+"Um die Warenbewegung \"%(move)s\" auszuführen müssen genau %(quantity)d "
 "Geschenkgutschein(e) verwendet werden."
 
 msgctxt "model:ir.message,text:msg_gift_card_number_unique"
@@ -184,6 +228,10 @@ msgctxt "model:sale.gift_card,name:"
 msgid "Gift Card"
 msgstr "Geschenkgutschein"
 
+msgctxt "model:sale.point.sale.pay.gift_card,name:"
+msgid "POS Pay - Gift Card"
+msgstr "Point of Sale Zahlung - Geschenkgutschein"
+
 msgctxt "report:sale.gift_card.email:"
 msgid "Gift Card"
 msgstr "Geschenkgutschein"
@@ -193,12 +241,14 @@ msgid "Here is your code:"
 msgstr "Hier ist Ihr Code:"
 
 msgctxt "report:sale.gift_card.email:"
-msgid "You received a gift card of"
-msgstr "Sie haben einen Geschenkgutschein erhalten von"
+msgid "You received a gift card of %(value)s for %(company)s."
+msgstr ""
+"Sie haben einen Geschenkgutschein in Höhe von %(value)s von %(company)s "
+"erhalten."
 
-msgctxt "report:sale.gift_card.email:"
-msgid "for"
-msgstr "für"
+msgctxt "report:sale.gift_card:"
+msgid "Value:"
+msgstr "Wert:"
 
 msgctxt "view:account.configuration:"
 msgid "Gift Card"
@@ -207,3 +257,19 @@ msgstr "Geschenkgutschein"
 msgctxt "view:sale.line:"
 msgid "Gift Cards"
 msgstr "Geschenkgutscheine"
+
+msgctxt "view:sale.point.sale.line:"
+msgid "Gift Cards"
+msgstr "Geschenkgutscheine"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,add_gift_card:"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,gift_card:"
+msgid "Gift Card"
+msgstr "Geschenkgutschein"

@@ -60,10 +60,6 @@ msgctxt "field:sale.gift_card,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.gift_card,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:sale.gift_card,number:"
 msgid "Number"
 msgstr ""
@@ -100,6 +96,46 @@ msgctxt "field:sale.line,is_gift_card_service:"
 msgid "Is Gift Card Service"
 msgstr ""
 
+msgctxt "field:sale.point.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,email:"
+msgid "Email"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,sale:"
+msgid "Sale"
+msgstr ""
+
 msgctxt "field:sale.sale,gift_cards:"
 msgid "Gift Cards"
 msgstr ""
@@ -116,11 +152,19 @@ msgctxt "help:sale.line,gift_card_email:"
 msgid "Leave empty for the customer email."
 msgstr ""
 
+msgctxt "help:sale.point.sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr ""
+
 msgctxt "model:account.configuration.gift_card_account,name:"
 msgid "Account Configuration Gift Card Account"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_gift_card_form"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_gift_card"
 msgid "Gift Cards"
 msgstr ""
 
@@ -179,6 +223,10 @@ msgctxt "model:sale.gift_card,name:"
 msgid "Gift Card"
 msgstr ""
 
+msgctxt "model:sale.point.sale.pay.gift_card,name:"
+msgid "POS Pay - Gift Card"
+msgstr ""
+
 msgctxt "report:sale.gift_card.email:"
 msgid "Gift Card"
 msgstr ""
@@ -188,11 +236,11 @@ msgid "Here is your code:"
 msgstr ""
 
 msgctxt "report:sale.gift_card.email:"
-msgid "You received a gift card of"
+msgid "You received a gift card of %(value)s for %(company)s."
 msgstr ""
 
-msgctxt "report:sale.gift_card.email:"
-msgid "for"
+msgctxt "report:sale.gift_card:"
+msgid "Value:"
 msgstr ""
 
 msgctxt "view:account.configuration:"
@@ -201,4 +249,20 @@ msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "Gift Cards"
+msgstr ""
+
+msgctxt "view:sale.point.sale.line:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,add_gift_card:"
+msgid "Add"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,gift_card:"
+msgid "Gift Card"
 msgstr ""
