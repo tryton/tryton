@@ -78,10 +78,6 @@ msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:purchase.amendment.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
@@ -94,7 +90,6 @@ msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
 msgstr "wijzigingen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
 msgid "Amendments"
 msgstr "wijzigingen"
@@ -132,7 +127,6 @@ msgctxt ""
 msgid "Validate"
 msgstr "bevestigen"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
 msgstr "wijzigingen"

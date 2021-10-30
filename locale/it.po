@@ -78,10 +78,6 @@ msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
 msgstr "Unità"
 
-msgctxt "field:purchase.amendment.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cifre unità"
-
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
 msgstr "Prezzo Unitario"

@@ -78,17 +78,13 @@ msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:purchase.amendment.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
 
 msgctxt "field:purchase.amendment.line,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
@@ -169,7 +165,7 @@ msgstr "Zahlungsbedingung ändern"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Warehouse"
-msgstr "Warenlager ändern"
+msgstr "Logistikstandort ändern"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Recompute Taxes"

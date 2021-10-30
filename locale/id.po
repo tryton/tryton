@@ -78,17 +78,13 @@ msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:purchase.amendment.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "field:purchase.amendment.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
