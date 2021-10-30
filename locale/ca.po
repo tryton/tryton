@@ -30,6 +30,10 @@ msgctxt "field:sale.advance_payment.condition,completed:"
 msgid "Completed"
 msgstr "Completat"
 
+msgctxt "field:sale.advance_payment.condition,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
 msgstr "Descripció"
