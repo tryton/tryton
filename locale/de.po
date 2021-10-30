@@ -36,7 +36,7 @@ msgstr "Ignoriert von"
 
 msgctxt "field:stock.quantity.early_plan,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "field:stock.quantity.early_plan,origin:"
 msgid "Origin"
@@ -48,7 +48,7 @@ msgstr "Geplantes Datum"
 
 msgctxt "field:stock.quantity.early_plan,processed_by:"
 msgid "Processed by"
-msgstr "Ausgeführt von"
+msgstr "Bearbeitet von"
 
 msgctxt "field:stock.quantity.early_plan,state:"
 msgid "State"
@@ -56,11 +56,15 @@ msgstr "Status"
 
 msgctxt "field:stock.quantity.early_plan,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:stock.quantity.early_plan.generate.start,warehouses:"
 msgid "Warehouses"
-msgstr "Warenlager"
+msgstr "Logistikstandorte"
+
+msgctxt "help:stock.quantity.early_plan.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Leer lassen, um alle Logistikstandorte zu verwenden."
 
 msgctxt "model:ir.action,name:act_quantity_early_plan_form"
 msgid "Quantity Early Planning"

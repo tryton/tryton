@@ -62,6 +62,10 @@ msgctxt "field:stock.quantity.early_plan.generate.start,warehouses:"
 msgid "Warehouses"
 msgstr "Magatzems"
 
+msgctxt "help:stock.quantity.early_plan.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Si es deixa en blanc s'utilitzen tots els magatzems."
+
 msgctxt "model:ir.action,name:act_quantity_early_plan_form"
 msgid "Quantity Early Planning"
 msgstr "Planificació de disponiblitat anticipada"
