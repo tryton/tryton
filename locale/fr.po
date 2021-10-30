@@ -40,7 +40,7 @@ msgstr "ID d'utilisateur"
 
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr "Accréditation de DPD"
+msgstr "Identifiant DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
@@ -48,7 +48,7 @@ msgstr "Créer la livraison DPD pour les emballages"
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "Accréditations de DPD"
+msgstr "Identifiants DPD"
 
 msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
@@ -82,7 +82,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "Accréditations de DPD"
+msgstr "Identifiants DPD"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
@@ -98,7 +98,7 @@ msgstr "Essai"
 
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Information"
-msgstr "Informations d'accréditation"
+msgstr "Informations d'identification"
 
 msgctxt "view:carrier:"
 msgid "DPD"
