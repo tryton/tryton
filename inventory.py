@@ -590,7 +590,7 @@ class Count(Wizard):
         values['product'] = line.product.id
         values['uom'] = line.uom.id
         if line.uom.rounding == 1:
-            values['quantity'] = 1
+            values['quantity'] = 1.
         return values
 
     def get_line_domain(self, inventory):
