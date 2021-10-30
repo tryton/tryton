@@ -74,7 +74,6 @@ msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -103,12 +102,10 @@ msgctxt "field:res.user,employees:"
 msgid "Employees"
 msgstr "Werknemers"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,user:"
 msgid "User"
 msgstr "Gebruiker"

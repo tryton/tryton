@@ -92,7 +92,7 @@ msgstr "Société actuelle"
 
 msgctxt "field:res.user,company_filter:"
 msgid "Company Filter"
-msgstr "Filtre d'entreprise"
+msgstr "Filtre de société"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -184,7 +184,7 @@ msgstr "Restreint l'utilisation de la séquence à la société."
 
 msgctxt "help:res.user,companies:"
 msgid "The companies that the user has access to."
-msgstr "Les entreprises auxquelles l'utilisateur a accès."
+msgstr "Les sociétés auxquelles l'utilisateur a accès."
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
@@ -298,7 +298,7 @@ msgstr "Toutes"
 
 msgctxt "selection:res.user,company_filter:"
 msgid "Current"
-msgstr "Devise"
+msgstr "Actuelle"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."

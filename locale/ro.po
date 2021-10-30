@@ -120,7 +120,7 @@ msgstr "Utilizator"
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr "Modedă Principală al Companiei"
+msgstr "Valută principală al companiei."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."

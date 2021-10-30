@@ -248,7 +248,7 @@ msgstr "Usuario en las empresas"
 
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Empresas"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
