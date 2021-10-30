@@ -24,24 +24,23 @@ msgstr "Code"
 
 msgctxt "field:stock.package,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Boekingen/bewegingen"
 
-#, fuzzy
 msgctxt "field:stock.package,packaging_weight:"
 msgid "Packaging Weight"
-msgstr "Pakket"
+msgstr "Gewicht verpakking"
 
 msgctxt "field:stock.package,packaging_weight_digits:"
 msgid "Packaging Weight Digits"
-msgstr ""
+msgstr "Decimalen verpakkingsgewicht"
 
 msgctxt "field:stock.package,packaging_weight_uom:"
 msgid "Packaging Weight Uom"
-msgstr ""
+msgstr "Gewicht verpakkingseenheid"
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
@@ -63,18 +62,17 @@ msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Naam"
 
-#, fuzzy
 msgctxt "field:stock.package.type,packaging_weight:"
 msgid "Packaging Weight"
-msgstr "Pakket"
+msgstr "Gewicht verpakking"
 
 msgctxt "field:stock.package.type,packaging_weight_digits:"
 msgid "Packaging Weight Digits"
-msgstr ""
+msgstr "Decimalen verpakkingsgewicht"
 
 msgctxt "field:stock.package.type,packaging_weight_uom:"
 msgid "Packaging Weight Uom"
-msgstr ""
+msgstr "Gewicht verpakkingseenheid"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -94,19 +92,15 @@ msgstr "pakketten"
 
 msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
-msgstr ""
+msgstr "Het gewicht van het pakket wanneer het leeg is."
 
 msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
-msgstr ""
+msgstr "Het gewicht van het pakket wanneer het leeg is."
 
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Pakkettypen"
-
-msgctxt "model:ir.action,name:report_package_label"
-msgid "Package Labels"
-msgstr "Pakketetiketten"
 
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
@@ -116,7 +110,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -138,14 +132,6 @@ msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
 msgstr "Type voorraadpakket"
 
-msgctxt "report:stock.package.label:"
-msgid "Package:"
-msgstr "Pakket:"
-
-msgctxt "report:stock.package.label:"
-msgid "Shipment:"
-msgstr "Verzending:"
-
 msgctxt "selection:stock.package,state:"
 msgid "Closed"
 msgstr "Afgesloten"
@@ -156,8 +142,8 @@ msgstr "Open"
 
 msgctxt "view:stock.package.type:"
 msgid "Measurements"
-msgstr ""
+msgstr "Afmetingen"
 
 msgctxt "view:stock.package:"
 msgid "Measurements"
-msgstr ""
+msgstr "Afmetingen"

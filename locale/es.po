@@ -102,10 +102,6 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Tipos de paquete"
 
-msgctxt "model:ir.action,name:report_package_label"
-msgid "Package Labels"
-msgstr "Etiquetas de paquete"
-
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
@@ -135,14 +131,6 @@ msgstr "Paquete"
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
 msgstr "Tipo de paquete"
-
-msgctxt "report:stock.package.label:"
-msgid "Package:"
-msgstr "Paquete:"
-
-msgctxt "report:stock.package.label:"
-msgid "Shipment:"
-msgstr "Albarán:"
 
 msgctxt "selection:stock.package,state:"
 msgid "Closed"

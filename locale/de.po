@@ -28,7 +28,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "field:stock.package,packaging_weight:"
 msgid "Packaging Weight"
@@ -48,7 +48,7 @@ msgstr "Übergeordnet (Paket)"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
-msgstr "Lieferposten"
+msgstr "Lieferungen"
 
 msgctxt "field:stock.package,state:"
 msgid "State"
@@ -102,15 +102,11 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Packstücktypen"
 
-msgctxt "model:ir.action,name:report_package_label"
-msgid "Package Labels"
-msgstr "Paketetiketten"
-
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
-"Damit der Lieferposten \"%(shipment)s\" ausgeführt werden kann, müssen "
-"zuerst alle zugehörigen Lagerbewegungen gepackt werden."
+"Damit die Lieferung \"%(shipment)s\" ausgeführt werden kann, müssen zuerst "
+"alle zugehörigen Warenbewegung gepackt werden."
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
 msgid "User in companies"
@@ -135,14 +131,6 @@ msgstr "Lager Paket"
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
 msgstr "Lager Packstücktyp"
-
-msgctxt "report:stock.package.label:"
-msgid "Package:"
-msgstr "Paket:"
-
-msgctxt "report:stock.package.label:"
-msgid "Shipment:"
-msgstr "Lieferposten:"
 
 msgctxt "selection:stock.package,state:"
 msgid "Closed"

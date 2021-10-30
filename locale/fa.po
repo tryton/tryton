@@ -104,10 +104,6 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "انواع بسته"
 
-msgctxt "model:ir.action,name:report_package_label"
-msgid "Package Labels"
-msgstr "برچسب های بسته"
-
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
@@ -137,14 +133,6 @@ msgstr "بسته کالا"
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
 msgstr "نوع بسته کالا"
-
-msgctxt "report:stock.package.label:"
-msgid "Package:"
-msgstr "بسته :"
-
-msgctxt "report:stock.package.label:"
-msgid "Shipment:"
-msgstr "محموله :"
 
 msgctxt "selection:stock.package,state:"
 msgid "Closed"
