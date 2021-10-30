@@ -163,10 +163,6 @@ msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.subscription.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.subscription.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
@@ -187,8 +183,8 @@ msgctxt "field:sale.subscription.line.consumption,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:sale.subscription.line.consumption,unit_digits:"
-msgid "Unit Digits"
+msgctxt "field:sale.subscription.line.consumption,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
@@ -246,6 +242,28 @@ msgstr ""
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
 msgstr ""
+
+msgctxt "field:sale.subscription.recurrence.rule.set.test,count:"
+msgid "Count"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.subscription.recurrence.rule.set.test,recurrence:"
+msgid "Subscription Recurrence"
+msgstr "Descriere"
+
+msgctxt "field:sale.subscription.recurrence.rule.set.test,result:"
+msgid "Result"
+msgstr ""
+
+msgctxt "field:sale.subscription.recurrence.rule.set.test,start_date:"
+msgid "Start Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.subscription.recurrence.rule.set.test.result,date:"
+msgid "Date"
+msgstr "Data"
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
 msgid "Consumption Delay"
@@ -315,6 +333,10 @@ msgctxt "help:sale.subscription.recurrence.rule.set,name:"
 msgid "The main identifier of the rule set."
 msgstr ""
 
+msgctxt "help:sale.subscription.recurrence.rule.set.test,count:"
+msgid "Used to determine how many occurences to compute."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_create_invoice"
 msgid "Create Subscription Invoices"
 msgstr ""
@@ -355,6 +377,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_subscription_party_relate"
 msgid "Subscriptions"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_recurrence_test"
+msgid "Test Recurrence Rule"
 msgstr ""
 
 msgctxt ""
@@ -461,6 +487,10 @@ msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_recurrence_test"
+msgid "Test Recurrence Rule"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_service_form"
 msgid "Subscription Services"
 msgstr ""
@@ -495,6 +525,14 @@ msgstr ""
 
 msgctxt "model:sale.subscription.recurrence.rule.set,name:"
 msgid "Subscription Recurrence Rule Set"
+msgstr ""
+
+msgctxt "model:sale.subscription.recurrence.rule.set.test,name:"
+msgid "Test Subscription Recurrence Rule Set"
+msgstr ""
+
+msgctxt "model:sale.subscription.recurrence.rule.set.test.result,name:"
+msgid "Test Subscription Recurrence Rule Set Result"
 msgstr ""
 
 msgctxt "model:sale.subscription.service,name:"
@@ -581,3 +619,8 @@ msgstr ""
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
 msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:sale.subscription.recurrence.rule.set.test,test,end:"
+msgid "Close"
+msgstr "Închis"

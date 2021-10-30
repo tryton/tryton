@@ -167,10 +167,6 @@ msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
 msgstr "Enota"
 
-msgctxt "field:sale.subscription.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalke"
-
 msgctxt "field:sale.subscription.line,unit_price:"
 msgid "Unit Price"
 msgstr "Cena enote"
@@ -191,9 +187,10 @@ msgctxt "field:sale.subscription.line.consumption,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:sale.subscription.line.consumption,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalke"
+#, fuzzy
+msgctxt "field:sale.subscription.line.consumption,unit:"
+msgid "Unit"
+msgstr "Enota"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -251,6 +248,29 @@ msgstr "Naziv"
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
 msgstr "Pravila"
+
+msgctxt "field:sale.subscription.recurrence.rule.set.test,count:"
+msgid "Count"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.subscription.recurrence.rule.set.test,recurrence:"
+msgid "Subscription Recurrence"
+msgstr "Pravilo za periodičnost naročnine"
+
+msgctxt "field:sale.subscription.recurrence.rule.set.test,result:"
+msgid "Result"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.subscription.recurrence.rule.set.test,start_date:"
+msgid "Start Date"
+msgstr "Začetek"
+
+#, fuzzy
+msgctxt "field:sale.subscription.recurrence.rule.set.test.result,date:"
+msgid "Date"
+msgstr "Datum"
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
 msgid "Consumption Delay"
@@ -326,6 +346,10 @@ msgctxt "help:sale.subscription.recurrence.rule.set,name:"
 msgid "The main identifier of the rule set."
 msgstr "Glavni identifikator niza pravil."
 
+msgctxt "help:sale.subscription.recurrence.rule.set.test,count:"
+msgid "Used to determine how many occurences to compute."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_create_invoice"
 msgid "Create Subscription Invoices"
@@ -376,6 +400,11 @@ msgstr "Consumptions"
 msgctxt "model:ir.action,name:act_subscription_party_relate"
 msgid "Subscriptions"
 msgstr "Subscriptions"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_recurrence_test"
+msgid "Test Recurrence Rule"
+msgstr "Pravilo za periodičnost naročnine"
 
 #, fuzzy
 msgctxt ""
@@ -491,6 +520,11 @@ msgid "Subscription Recurrence Rule Sets"
 msgstr "Subscription Recurrence Rule Sets"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_recurrence_test"
+msgid "Test Recurrence Rule"
+msgstr "Pravilo za periodičnost naročnine"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_service_form"
 msgid "Subscription Services"
 msgstr "Subscription Services"
@@ -527,6 +561,16 @@ msgstr "Pravilo za periodičnost naročnine"
 msgctxt "model:sale.subscription.recurrence.rule.set,name:"
 msgid "Subscription Recurrence Rule Set"
 msgstr "Niz pravil za periodičnost naročnine"
+
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule.set.test,name:"
+msgid "Test Subscription Recurrence Rule Set"
+msgstr "Niz pravil za periodičnost naročnine"
+
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule.set.test.result,name:"
+msgid "Test Subscription Recurrence Rule Set Result"
+msgstr "Subscription Recurrence Rule Sets"
 
 msgctxt "model:sale.subscription.service,name:"
 msgid "Subscription Service"
@@ -615,3 +659,8 @@ msgstr "Izdelava"
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:sale.subscription.recurrence.rule.set.test,test,end:"
+msgid "Close"
+msgstr "Zaprto"
