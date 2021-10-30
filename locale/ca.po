@@ -18,10 +18,6 @@ msgctxt "field:account.ec_sales_list,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.ec_sales_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.ec_sales_list,party:"
 msgid "Party"
 msgstr "Tercer"
