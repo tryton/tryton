@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.statement.origin,keywords:"
+msgid "Keywords"
+msgstr ""
+
 msgctxt "field:account.statement.rule,amount_high:"
 msgid "Amount High"
 msgstr ""
@@ -14,8 +18,9 @@ msgctxt "field:account.statement.rule,company:"
 msgid "Company"
 msgstr "Azienda"
 
-msgctxt "field:account.statement.rule,currency_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:account.statement.rule,currency:"
+msgid "Currency"
 msgstr "Posizioni Valuta"
 
 msgctxt "field:account.statement.rule,description:"
