@@ -14,10 +14,6 @@ msgctxt "field:account.invoice.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Antrasis vienetas"
 
-msgctxt "field:account.invoice.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Antrojo vieneto skaitmenų po kablelio skaičius"
-
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Antrojo vieneto kaina"

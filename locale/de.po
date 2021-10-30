@@ -14,10 +14,6 @@ msgctxt "field:account.invoice.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Zweitmaßeinheit"
 
-msgctxt "field:account.invoice.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Nachkommastellen Zweitmaßeinheit"
-
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Zweiteinzelpreis"

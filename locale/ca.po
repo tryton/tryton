@@ -14,10 +14,6 @@ msgctxt "field:account.invoice.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Unitat secundaria"
 
-msgctxt "field:account.invoice.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Dígits de la unitat secundaria"
-
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Preu unitari secundari"
