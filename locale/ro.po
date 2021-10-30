@@ -4,16 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr ""
+msgstr "Zile Săptămânii"
 
 msgctxt "field:purchase.product_supplier.day,day:"
 msgid "Day"
-msgstr ""
+msgstr "Ziua"
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr ""
+msgstr "Produs Furnizor Zi"
