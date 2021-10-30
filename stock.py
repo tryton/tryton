@@ -156,7 +156,8 @@ class CreateShippingSendcloud(Wizard):
                 party.full_name if party.full_name != address.party_full_name
                 else None),
             'address': street_lines[0] if street_lines else '',
-            'address_2': street_lines[1] if len(street_lines) > 1 else '',
+            'address_2': (
+                ' '.join(street_lines[1:]) if len(street_lines) > 1 else ''),
             'city': address.city,
             'postal_code': address.postal_code,
             'country': address.country.code if address.country else None,
