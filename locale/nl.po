@@ -101,7 +101,7 @@ msgstr "Boekingen"
 
 msgctxt "field:stock.shipment.drop,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
@@ -129,7 +129,7 @@ msgstr "Wanneer de voorraad daadwerkelijk werd verzonden."
 
 msgctxt "help:stock.shipment.drop,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "De hoofdidentificatie voor de zending."
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
@@ -221,7 +221,6 @@ msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
 msgstr "wachten"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"

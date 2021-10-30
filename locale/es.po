@@ -198,7 +198,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
 msgid "Are you sure you want to complete the shipment?"
-msgstr "Seguro que quieres finalizar el albarán?"
+msgstr "¿Estás seguro que quieres finalizar el albarán?"
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"
