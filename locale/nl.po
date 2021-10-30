@@ -22,24 +22,21 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Provincie"
 
-#, fuzzy
 msgctxt "field:country.postal_code,city:"
 msgid "City"
 msgstr "Stad"
 
-#, fuzzy
 msgctxt "field:country.postal_code,country:"
 msgid "Country"
 msgstr "Land"
 
 msgctxt "field:country.postal_code,postal_code:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Postcode"
 
-#, fuzzy
 msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
-msgstr "Provincie"
+msgstr "subnationale eenheid"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -79,16 +76,15 @@ msgstr "De hoofdidentificatie van het land."
 
 msgctxt "help:country.postal_code,city:"
 msgid "The city associated with the postal code."
-msgstr ""
+msgstr "De stad die bij de postcode hoort."
 
 msgctxt "help:country.postal_code,country:"
 msgid "The country that contains the postal code."
-msgstr ""
+msgstr "Het land dat de postcode bevat."
 
-#, fuzzy
 msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
-msgstr "De provincie waar de postcode is."
+msgstr "De subnationale eenheid waar de postcode is."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -112,7 +108,7 @@ msgstr "Land"
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Postcode"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
@@ -124,7 +120,7 @@ msgstr "landen"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
-msgstr ""
+msgstr "Postcodes"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -432,7 +428,7 @@ msgstr "Parochie"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
-msgstr "Popularates"
+msgstr "Distrikt"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Prefecture"

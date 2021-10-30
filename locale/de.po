@@ -16,11 +16,11 @@ msgstr "Numerischer Code"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr "Name Staat"
+msgstr "Name"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
-msgstr "Subnationale Einheiten"
+msgstr "Regionen"
 
 msgctxt "field:country.postal_code,city:"
 msgid "City"
@@ -36,7 +36,7 @@ msgstr "Postleitzahl"
 
 msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
-msgstr "Subnationale Einheit"
+msgstr "Region"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -52,7 +52,7 @@ msgstr "Name"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "Übergeordnet (Subnationale Einheit)"
+msgstr "Übergeordnet (Region)"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
@@ -80,31 +80,31 @@ msgstr "Die zur Postleitzahl gehörende Stadt."
 
 msgctxt "help:country.postal_code,country:"
 msgid "The country that contains the postal code."
-msgstr "Der Staat zu dem die Postleitzahl gehört."
+msgstr "Das Land zu dem die Postleitzahl gehört."
 
 msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
-msgstr "Die subnationale Einheit zu der die Postleitzahl gehört."
+msgstr "Die Region zu der die Postleitzahl gehört."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
-msgstr "Der ISO-Code der subnationalen Einheit."
+msgstr "Der ISO-Code der Region."
 
 msgctxt "help:country.subdivision,country:"
 msgid "The country where this subdivision is."
-msgstr "Das Land in dem sich die subnationale Einheit befindet."
+msgstr "Das Land in dem sich die Region befindet."
 
 msgctxt "help:country.subdivision,name:"
 msgid "The main identifier of the subdivision."
-msgstr "Das Hauptidentifizierungsmerkmal der subnationalen Einheit."
+msgstr "Das Hauptidentifizierungsmerkmal der Region."
 
 msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
-msgstr "Subnationale Einheiten hinzufügen."
+msgstr "Regionen hinzufügen."
 
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr "Staat"
+msgstr "Land"
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
@@ -112,11 +112,11 @@ msgstr "Postleitzahl"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr "Subnationale Einheit"
+msgstr "Region"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Staaten"
+msgstr "Länder"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
@@ -124,7 +124,7 @@ msgstr "Postleitzahl"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr "Staaten"
+msgstr "Länder"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
@@ -500,7 +500,7 @@ msgstr "Sonderwirtschaftszone"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr "Staat"
+msgstr "Land"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
