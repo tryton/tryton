@@ -148,10 +148,6 @@ msgctxt "field:stock.move.add.lots.start,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:stock.move.add.lots.start,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
 msgid "Has Sequence"
 msgstr ""
@@ -175,8 +171,8 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:stock.move.add.lots.start.lot,unit_digits:"
-msgid "Unit Digits"
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
 msgstr ""
 
 msgctxt "field:stock.period,lot_caches:"

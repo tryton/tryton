@@ -4,30 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.configuration,default_lot_sequence:"
 msgid "Default Lot Sequence"
-msgstr ""
+msgstr "Standaard partijvolgorde"
 
 msgctxt ""
 "field:product.configuration.default_lot_sequence,default_lot_sequence:"
 msgid "Default Lot Sequence"
-msgstr ""
+msgstr "Standaard partijvolgorde"
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "Lot vereist"
 
-#, fuzzy
 msgctxt "field:product.product,lot_sequence:"
 msgid "Lot Sequence"
-msgstr "Lot vereist"
+msgstr "Lot volgorde"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr "Lot vereist"
 
-#, fuzzy
 msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
-msgstr "Lot vereist"
+msgstr "Lot volgorde"
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
@@ -47,7 +45,7 @@ msgstr "Verwachte hoeveelheid"
 
 msgctxt "field:stock.lot,has_sequence:"
 msgid "Has Sequence"
-msgstr ""
+msgstr "Heeft reeks"
 
 msgctxt "field:stock.lot,number:"
 msgid "Number"
@@ -115,64 +113,51 @@ msgstr "Lot"
 
 msgctxt "field:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "Duplicate Lot Number"
-msgstr ""
+msgstr "Dupliceer lotnummer"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,lots:"
 msgid "Lots"
 msgstr "Loten"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,product:"
 msgid "Product"
 msgstr "Product"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,quantity_remaining:"
 msgid "Quantity Remaining"
-msgstr "Hoeveelheid"
+msgstr "Resterende hoeveelheid"
 
 msgctxt "field:stock.move.add.lots.start,unit:"
 msgid "Unit"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.move.add.lots.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "standaard maateenheid decimalen"
+msgstr "Eenheid"
 
 msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
 msgid "Has Sequence"
-msgstr ""
+msgstr "Heeft reeks"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,number:"
 msgid "Number"
 msgstr "Nummer"
 
 msgctxt "field:stock.move.add.lots.start.lot,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,product:"
 msgid "Product"
 msgstr "Product"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
-msgctxt "field:stock.move.add.lots.start.lot,unit_digits:"
-msgid "Unit Digits"
-msgstr "standaard maateenheid decimalen"
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Eenheid"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
@@ -204,7 +189,7 @@ msgstr "Het type locatie waarvoor een lot vereist is."
 
 msgctxt "help:product.product,lot_sequence:"
 msgid "The sequence used to automatically number lots."
-msgstr ""
+msgstr "De volgorde die wordt gebruikt om kavels automatisch te nummeren."
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required."
@@ -212,7 +197,7 @@ msgstr "Het type locatie waarvoor een lot vereist is."
 
 msgctxt "help:product.template,lot_sequence:"
 msgid "The sequence used to automatically number lots."
-msgstr ""
+msgstr "De volgorde die wordt gebruikt om kavels automatisch te nummeren."
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
@@ -236,7 +221,7 @@ msgstr ""
 
 msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "The number of times the lot must be duplicated."
-msgstr ""
+msgstr "Het aantal keren dat het lot moet worden gedupliceerd."
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
@@ -262,10 +247,9 @@ msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr "Boekingen/ bewegingen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
-msgstr "Loten"
+msgstr "Loten toevoegen"
 
 msgctxt "model:ir.message,text:msg_change_product"
 msgid "You cannot change the product of a stock lot which has stock moves."
@@ -282,6 +266,9 @@ msgid ""
 "The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
 "equal to the quantity \"%(move_quantity)s\" of the move."
 msgstr ""
+"De totale hoeveelheid \"%(lot_quantity)s\" van de loten moet kleiner zijn "
+"dan of gelijk zijn aan de hoeveelheid \"%(move_quantity)s\" van de "
+"stockbeweging."
 
 msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
@@ -292,14 +279,12 @@ msgstr ""
 msgctxt ""
 "model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
 msgid "Duplicate Lot"
-msgstr ""
+msgstr "Dupliceer lot"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
 msgid "Add Lots"
-msgstr "Loten"
+msgstr "Loten toevoegen"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
 msgid "Stock Lot"
 msgstr "Stock Lot"
@@ -310,7 +295,7 @@ msgstr "Loten"
 
 msgctxt "model:product.configuration.default_lot_sequence,name:"
 msgid "Product Configuration Default Lot Sequence"
-msgstr ""
+msgstr "Productconfiguratie Standaard partijvolgorde"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
@@ -328,15 +313,13 @@ msgctxt "model:stock.lots_by_warehouse.context,name:"
 msgid "Lot by Warehouse"
 msgstr "Loten per magazijn"
 
-#, fuzzy
 msgctxt "model:stock.move.add.lots.start,name:"
 msgid "Add Lots"
-msgstr "Loten"
+msgstr "Loten toevoegen"
 
-#, fuzzy
 msgctxt "model:stock.move.add.lots.start.lot,name:"
 msgid "Add Lots"
-msgstr "Loten"
+msgstr "Loten toevoegen"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
@@ -392,16 +375,16 @@ msgstr "Loten"
 
 msgctxt "view:stock.move.add.lots.start:"
 msgid "Remaining:"
-msgstr ""
+msgstr "Overig:"
 
 msgctxt "view:stock.move.add.lots.start:"
 msgid "times"
-msgstr ""
+msgstr "keer"
 
 msgctxt "wizard_button:stock.move.add.lots,start,add:"
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 msgctxt "wizard_button:stock.move.add.lots,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleer"

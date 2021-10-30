@@ -141,11 +141,6 @@ msgctxt "field:stock.move.add.lots.start,unit:"
 msgid "Unit"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.move.add.lots.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "默认单位有效数字"
-
 msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
 msgid "Has Sequence"
 msgstr ""
@@ -169,10 +164,9 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr "数量"
 
-#, fuzzy
-msgctxt "field:stock.move.add.lots.start.lot,unit_digits:"
-msgid "Unit Digits"
-msgstr "默认单位有效数字"
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr ""
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
