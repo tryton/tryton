@@ -10,6 +10,41 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Sprzedaż"
 
+#, fuzzy
+msgctxt "field:party.party,sale_invoice_method:"
+msgid "Invoice Method"
+msgstr "Metoda faktury"
+
+#, fuzzy
+msgctxt "field:party.party,sale_methods:"
+msgid "Sale Methods"
+msgstr "Metoda wysyłki sprzedaży"
+
+#, fuzzy
+msgctxt "field:party.party,sale_shipment_method:"
+msgid "Shipment Method"
+msgstr "Metoda wysyłki"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,company:"
+msgid "Company"
+msgstr "Firma"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,party:"
+msgid "Party"
+msgstr "Strona"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Metoda faktury"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Metoda wysyłki sprzedaży"
+
 msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr ""
@@ -232,10 +267,6 @@ msgctxt "field:sale.line,unit:"
 msgid "Unit"
 msgstr "Jednostka"
 
-msgctxt "field:sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
 msgstr "Cena jednostkowa"
@@ -267,44 +298,6 @@ msgstr "Ruch"
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Wiersz sprzedaży"
-
-msgctxt "field:sale.reporting.category,category:"
-msgid "Category"
-msgstr ""
-
-msgctxt "field:sale.reporting.category,time_series:"
-msgid "Time Series"
-msgstr ""
-
-msgctxt "field:sale.reporting.category.time_series,category:"
-msgid "Category"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,date:"
-msgid "Date"
-msgstr "Data:"
-
-msgctxt "field:sale.reporting.category.tree,children:"
-msgid "Children"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry waluty"
-
-msgctxt "field:sale.reporting.category.tree,name:"
-msgid "Name"
-msgstr ""
-
-msgctxt "field:sale.reporting.category.tree,parent:"
-msgid "Parent"
-msgstr ""
-
-msgctxt "field:sale.reporting.category.tree,revenue:"
-msgid "Revenue"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.reporting.context,company:"
@@ -380,12 +373,61 @@ msgid "Time Series"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:sale.reporting.customer.category,category:"
+msgid "Category"
+msgstr "Sales per Category"
+
+msgctxt "field:sale.reporting.customer.category,time_series:"
+msgid "Time Series"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,category:"
+msgid "Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,date:"
+msgid "Date"
+msgstr "Data:"
+
+msgctxt "field:sale.reporting.customer.category.tree,children:"
+msgid "Children"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
+msgctxt "field:sale.reporting.customer.category.tree,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.reporting.customer.category.tree,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:sale.reporting.customer.category.tree,revenue:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "Odbiorcy"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "Data:"
+
+msgctxt "field:sale.reporting.main,time_series:"
+msgid "Time Series"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.main.time_series,date:"
 msgid "Date"
 msgstr "Data:"
 
@@ -396,6 +438,46 @@ msgstr "Produkt"
 
 msgctxt "field:sale.reporting.product,time_series:"
 msgid "Time Series"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,category:"
+msgid "Category"
+msgstr "Sales per Category"
+
+msgctxt "field:sale.reporting.product.category,time_series:"
+msgid "Time Series"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,category:"
+msgid "Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,date:"
+msgid "Date"
+msgstr "Data:"
+
+msgctxt "field:sale.reporting.product.category.tree,children:"
+msgid "Children"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
+msgctxt "field:sale.reporting.product.category.tree,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.reporting.product.category.tree,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:sale.reporting.product.category.tree,revenue:"
+msgid "Revenue"
 msgstr ""
 
 #, fuzzy
@@ -440,10 +522,6 @@ msgstr ""
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
 msgstr "Waluta"
-
-msgctxt "field:sale.sale,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry waluty"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
@@ -605,6 +683,18 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr ""
 
+msgctxt "help:party.party,sale_invoice_method:"
+msgid ""
+"The default sale invoice method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:party.party,sale_shipment_method:"
+msgid ""
+"The default sale shipment method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -652,18 +742,6 @@ msgctxt "model:ir.action,name:act_product"
 msgid "Products"
 msgstr "Produkt"
 
-msgctxt "model:ir.action,name:act_reporting_category"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
-msgctxt "model:ir.action,name:act_reporting_category_time_series"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
-msgctxt "model:ir.action,name:act_reporting_category_tree"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
 msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
 msgid "Sales per Subdivision"
 msgstr "Sales per Subdivision"
@@ -676,13 +754,53 @@ msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
 msgstr "Sales per Customer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
+msgid "Sales per Party Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
 msgctxt "model:ir.action,name:act_reporting_customer_time_series"
 msgid "Sales per Customer"
 msgstr "Sales per Customer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Sales"
+msgstr "Sprzedaż"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Sales"
+msgstr "Sprzedaż"
+
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Sales per Product"
 msgstr "Sales per Product"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_tree"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
 
 msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
@@ -835,6 +953,10 @@ msgid ""
 "\"%(sale)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
+msgid "A tax can be added only once to a sale line."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
 msgstr ""
@@ -928,15 +1050,6 @@ msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_reporting_category_companies"
-msgid "User in companies"
-msgstr ""
-
-msgctxt ""
-"model:ir.rule.group,name:rule_group_reporting_category_time_series_companies"
-msgid "User in companies"
-msgstr ""
-
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
 msgid "User in companies"
@@ -947,12 +1060,41 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
 msgid "User in companies"
 msgstr ""
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
 msgid "User in companies"
 msgstr ""
 
@@ -1020,6 +1162,10 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Sales"
 
+msgctxt "model:party.party.sale_method,name:"
+msgid "Party Sale Method"
+msgstr ""
+
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
 msgstr ""
@@ -1076,18 +1222,6 @@ msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr ""
 
-msgctxt "model:sale.reporting.category,name:"
-msgid "Sale Reporting per Category"
-msgstr ""
-
-msgctxt "model:sale.reporting.category.time_series,name:"
-msgid "Sale Reporting per Category"
-msgstr ""
-
-msgctxt "model:sale.reporting.category.tree,name:"
-msgid "Sale Reporting per Category"
-msgstr ""
-
 msgctxt "model:sale.reporting.context,name:"
 msgid "Sale Reporting Context"
 msgstr ""
@@ -1112,13 +1246,53 @@ msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.time_series,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.tree,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Sales per Category"
+
 msgctxt "model:sale.reporting.customer.time_series,name:"
 msgid "Sale Reporting per Customer"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:sale.reporting.main,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:sale.reporting.main.time_series,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
 msgctxt "model:sale.reporting.product,name:"
 msgid "Sale Reporting per Product"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.time_series,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.tree,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Sales per Category"
 
 msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
@@ -1359,6 +1533,78 @@ msgstr "Notatki"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Podatki"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.main:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Revenue"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Revenue"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.return_sale.start:"

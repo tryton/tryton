@@ -11,6 +11,41 @@ msgid "Sales"
 msgstr "فروش ها"
 
 #, fuzzy
+msgctxt "field:party.party,sale_invoice_method:"
+msgid "Invoice Method"
+msgstr "متد صورتحساب"
+
+#, fuzzy
+msgctxt "field:party.party,sale_methods:"
+msgid "Sale Methods"
+msgstr "متد صورتحساب فروش"
+
+#, fuzzy
+msgctxt "field:party.party,sale_shipment_method:"
+msgid "Shipment Method"
+msgstr "متد حمل ونقل"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "متد صورتحساب فروش"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "متد حمل ونقل فروش"
+
+#, fuzzy
 msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "زمان پیشبرد"
@@ -234,10 +269,6 @@ msgctxt "field:sale.line,unit:"
 msgid "Unit"
 msgstr "واحد"
 
-msgctxt "field:sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "ارقام واحد"
-
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
@@ -269,42 +300,6 @@ msgstr "جابجایی"
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "سطر فروش"
-
-msgctxt "field:sale.reporting.category,category:"
-msgid "Category"
-msgstr "دسته‌بندی‌"
-
-msgctxt "field:sale.reporting.category,time_series:"
-msgid "Time Series"
-msgstr "سری زمانی"
-
-msgctxt "field:sale.reporting.category.time_series,category:"
-msgid "Category"
-msgstr "دسته‌بندی‌"
-
-msgctxt "field:sale.reporting.category.time_series,date:"
-msgid "Date"
-msgstr "تاریخ"
-
-msgctxt "field:sale.reporting.category.tree,children:"
-msgid "Children"
-msgstr "زیر مجموعه"
-
-msgctxt "field:sale.reporting.category.tree,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
-
-msgctxt "field:sale.reporting.category.tree,name:"
-msgid "Name"
-msgstr "نام"
-
-msgctxt "field:sale.reporting.category.tree,parent:"
-msgid "Parent"
-msgstr "منبع"
-
-msgctxt "field:sale.reporting.category.tree,revenue:"
-msgid "Revenue"
-msgstr "درآمد"
 
 msgctxt "field:sale.reporting.context,company:"
 msgid "Company"
@@ -374,11 +369,66 @@ msgctxt "field:sale.reporting.customer,time_series:"
 msgid "Time Series"
 msgstr "سری زمانی"
 
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
 msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "مشتری"
 
 msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.main,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.main.time_series,date:"
 msgid "Date"
 msgstr "تاریخ"
 
@@ -389,6 +439,51 @@ msgstr "محصول"
 msgctxt "field:sale.reporting.product,time_series:"
 msgid "Time Series"
 msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
 
 msgctxt "field:sale.reporting.product.time_series,date:"
 msgid "Date"
@@ -430,10 +525,6 @@ msgstr ""
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
 msgstr "واحد پول"
-
-msgctxt "field:sale.sale,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
@@ -595,6 +686,18 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "حالت اعتراضی"
 
+msgctxt "help:party.party,sale_invoice_method:"
+msgid ""
+"The default sale invoice method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:party.party,sale_shipment_method:"
+msgid ""
+"The default sale shipment method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
@@ -644,18 +747,6 @@ msgctxt "model:ir.action,name:act_product"
 msgid "Products"
 msgstr "محصول"
 
-msgctxt "model:ir.action,name:act_reporting_category"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
-msgctxt "model:ir.action,name:act_reporting_category_time_series"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
-msgctxt "model:ir.action,name:act_reporting_category_tree"
-msgid "Sales per Category"
-msgstr "Sales per Category"
-
 msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
 msgid "Sales per Subdivision"
 msgstr "Sales per Subdivision"
@@ -668,13 +759,53 @@ msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
 msgstr "Sales per Customer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
+msgid "Sales per Party Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
 msgctxt "model:ir.action,name:act_reporting_customer_time_series"
 msgid "Sales per Customer"
 msgstr "Sales per Customer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Sales"
+msgstr "فروش ها"
+
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Sales per Product"
 msgstr "Sales per Product"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_tree"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
 
 msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
@@ -826,6 +957,10 @@ msgstr ""
 "برای حذف سطر:\"%(line)s\" شما باید فروش :\"%(sale)s\"را لغو یا به حالت پیش "
 "نویس بازنشانی کنید."
 
+msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
+msgid "A tax can be added only once to a sale line."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
@@ -934,15 +1069,6 @@ msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
 msgstr "Quote"
 
-msgctxt "model:ir.rule.group,name:rule_group_reporting_category_companies"
-msgid "User in companies"
-msgstr ""
-
-msgctxt ""
-"model:ir.rule.group,name:rule_group_reporting_category_time_series_companies"
-msgid "User in companies"
-msgstr ""
-
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
 msgid "User in companies"
@@ -953,12 +1079,41 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
 msgid "User in companies"
 msgstr ""
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
 msgid "User in companies"
 msgstr ""
 
@@ -1022,6 +1177,11 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "فروش ها"
 
+#, fuzzy
+msgctxt "model:party.party.sale_method,name:"
+msgid "Party Sale Method"
+msgstr "پیکربندی فروش ؛ متد فروش"
+
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
 msgstr ""
@@ -1075,18 +1235,6 @@ msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "جابجایی دوباره انجام شده - سطر فروش"
 
-msgctxt "model:sale.reporting.category,name:"
-msgid "Sale Reporting per Category"
-msgstr "گزارش فروش در هر زیرمجموعه"
-
-msgctxt "model:sale.reporting.category.time_series,name:"
-msgid "Sale Reporting per Category"
-msgstr "گزارش فروش در هر زیرمجموعه"
-
-msgctxt "model:sale.reporting.category.tree,name:"
-msgid "Sale Reporting per Category"
-msgstr "گزارش فروش در هر زیرمجموعه"
-
 msgctxt "model:sale.reporting.context,name:"
 msgid "Sale Reporting Context"
 msgstr "مفاد گزارش فروش"
@@ -1111,13 +1259,53 @@ msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr "گزارش فروش برای هر مشتری"
 
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.time_series,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.tree,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
 msgctxt "model:sale.reporting.customer.time_series,name:"
 msgid "Sale Reporting per Customer"
 msgstr "گزارش فروش برای هر مشتری"
 
+#, fuzzy
+msgctxt "model:sale.reporting.main,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:sale.reporting.main.time_series,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
 msgctxt "model:sale.reporting.product,name:"
 msgid "Sale Reporting per Product"
 msgstr "گزارش فروش در هر محصول"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.time_series,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.tree,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
 
 msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
@@ -1357,6 +1545,86 @@ msgstr "یادداشت ها"
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "مالیات ها"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
 
 #, fuzzy
 msgctxt "view:sale.return_sale.start:"
