@@ -131,7 +131,7 @@ msgstr ""
 
 msgctxt "help:notification.email,from_:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr "Laisser vide pour la valeur définie dans le fichier de configuration."
+msgstr "Laissez vide pour la valeur définie dans le fichier de configuration."
 
 msgctxt "help:notification.email,recipients:"
 msgid "The field that contains the recipient(s)."
