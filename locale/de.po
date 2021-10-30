@@ -305,7 +305,7 @@ msgstr "Stempelsteuer (Imposta di Bollo)"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "State/provincial sales tax"
-msgstr "Bundesstaats-/Provinzumsatzsteuer"
+msgstr "Bundes-/Provinzumsatzsteuer"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Surtax"
