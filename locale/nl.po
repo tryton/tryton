@@ -6,32 +6,26 @@ msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Verzendservice"
 
-#, fuzzy
 msgctxt "field:stock.package,height:"
 msgid "Height"
 msgstr "Hoogte"
 
-#, fuzzy
 msgctxt "field:stock.package,height_digits:"
 msgid "Height Digits"
 msgstr "Hoogte decimalen"
 
-#, fuzzy
 msgctxt "field:stock.package,height_uom:"
 msgid "Height Unit"
 msgstr "Hoogte eenheid"
 
-#, fuzzy
 msgctxt "field:stock.package,length:"
 msgid "Length"
 msgstr "Lengte"
 
-#, fuzzy
 msgctxt "field:stock.package,length_digits:"
 msgid "Length Digits"
-msgstr "lengte decimalen"
+msgstr "Lengte decimalen"
 
-#, fuzzy
 msgctxt "field:stock.package,length_uom:"
 msgid "Length Unit"
 msgstr "Lengte-eenheid"
@@ -40,10 +34,13 @@ msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
 msgstr "verzendlabel"
 
-#, fuzzy
 msgctxt "field:stock.package,shipping_label_id:"
 msgid "Shipping Label ID"
-msgstr "verzendlabel"
+msgstr "Verzendlabel-ID"
+
+msgctxt "field:stock.package,shipping_label_mimetype:"
+msgid "Shipping Label MIME Type"
+msgstr "Verzendlabel MIME-type"
 
 msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
@@ -51,19 +48,16 @@ msgstr "Verzendreferentie"
 
 msgctxt "field:stock.package,shipping_tracking_url:"
 msgid "Shipping Tracking URL"
-msgstr ""
+msgstr "Tracking-URL verzending"
 
-#, fuzzy
 msgctxt "field:stock.package,width:"
 msgid "Width"
 msgstr "Breedte"
 
-#, fuzzy
 msgctxt "field:stock.package,width_digits:"
 msgid "Width Digits"
-msgstr "decimalen breedte"
+msgstr "Decimalen breedte"
 
-#, fuzzy
 msgctxt "field:stock.package,width_uom:"
 msgid "Width Unit"
 msgstr "Breedte eenheid"
@@ -120,6 +114,14 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Maak verzending"
 
+msgctxt "model:ir.action,name:report_shipping_label"
+msgid "Shipping Label"
+msgstr "verzendlabel"
+
+msgctxt "model:ir.action,name:wizard_print_shipping_label"
+msgid "Shipping Labels"
+msgstr "Verzendlabels"
+
 msgctxt "model:ir.message,text:msg_shipment_not_packed"
 msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
 msgstr ""
@@ -129,6 +131,10 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
 msgstr "De zending \"\"%(shipment)s\" heeft geen koerier."
+
+msgctxt "model:ir.model.button,string:package_print_shipping_label_button"
+msgid "Shipping Label"
+msgstr "verzendlabel"
 
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"

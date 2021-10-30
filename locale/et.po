@@ -45,6 +45,11 @@ msgctxt "field:stock.package,shipping_label_id:"
 msgid "Shipping Label ID"
 msgstr "Lähetuse etikett"
 
+#, fuzzy
+msgctxt "field:stock.package,shipping_label_mimetype:"
+msgid "Shipping Label MIME Type"
+msgstr "Lähetuse etikett"
+
 msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Lähetuse viide"
@@ -121,6 +126,16 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Loo lähetus"
 
+#, fuzzy
+msgctxt "model:ir.action,name:report_shipping_label"
+msgid "Shipping Label"
+msgstr "Lähetuse etikett"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_print_shipping_label"
+msgid "Shipping Labels"
+msgstr "Lähetuse etikett"
+
 msgctxt "model:ir.message,text:msg_shipment_not_packed"
 msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
 msgstr "Lähetuse \"%(shipment)s\" etikettide loomiseks tuleb see pakkida."
@@ -128,6 +143,11 @@ msgstr "Lähetuse \"%(shipment)s\" etikettide loomiseks tuleb see pakkida."
 msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
 msgstr "Lähetusel \"%(shipment)s\" ei ole vedajat."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:package_print_shipping_label_button"
+msgid "Shipping Label"
+msgstr "Lähetuse etikett"
 
 #, fuzzy
 msgctxt ""

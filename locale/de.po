@@ -38,6 +38,10 @@ msgctxt "field:stock.package,shipping_label_id:"
 msgid "Shipping Label ID"
 msgstr "ID Versandetikett"
 
+msgctxt "field:stock.package,shipping_label_mimetype:"
+msgid "Shipping Label MIME Type"
+msgstr "MIME-Typ Versandetikett"
+
 msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Versandbeleg"
@@ -110,6 +114,14 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Versand erstellen"
 
+msgctxt "model:ir.action,name:report_shipping_label"
+msgid "Shipping Label"
+msgstr "Versandetikett"
+
+msgctxt "model:ir.action,name:wizard_print_shipping_label"
+msgid "Shipping Labels"
+msgstr "Versandetiketten"
+
 msgctxt "model:ir.message,text:msg_shipment_not_packed"
 msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
 msgstr ""
@@ -118,8 +130,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
-msgstr ""
-"Dem Lieferposten \"%(shipment)s\" ist kein Versanddienstleister zugeordnet."
+msgstr "Der Lieferung \"%(shipment)s\" ist kein Versanddienstleister zugeordnet."
+
+msgctxt "model:ir.model.button,string:package_print_shipping_label_button"
+msgid "Shipping Label"
+msgstr "Versandetikett"
 
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
