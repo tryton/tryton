@@ -1135,11 +1135,11 @@ class Account(ModelSQL, ModelView):
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=refund.payment.company.id):
                 refund = Refund(refund.id)
-                if rf.status == 'pending':
+                if rf['status'] == 'pending':
                     Refund.processing([refund])
-                elif rf.status == 'succeeded':
+                elif rf['status'] == 'succeeded':
                     Refund.succeed([refund])
-                elif rf.status in {'failed', 'canceled'}:
+                elif rf['status'] in {'failed', 'canceled'}:
                     refund.stripe_error_code = rf['failure_reason']
                     Refund.fail([refund])
                 refund.save()
