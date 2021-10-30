@@ -58,6 +58,10 @@ msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "Raamatupidamise kuupäev"
 
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
@@ -94,10 +98,6 @@ msgstr "Valuuta"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Valuuta kuupäev"
-
-msgctxt "field:account.invoice,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -238,6 +238,15 @@ msgid "Payment Line"
 msgstr "Tasumise rida"
 
 #, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
 msgstr "Arve kuupäev"
@@ -265,10 +274,6 @@ msgstr "Ettevõte"
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -344,10 +349,6 @@ msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
 
-msgctxt "field:account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtuse arv"
-
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
@@ -375,14 +376,6 @@ msgstr "Ettevõte"
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
 msgstr "Tasumise valuuta"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr "Tasumise valuuta numbriväärtuse arv"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr "Mahakandmise valuuta numbriväärtuse arv"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -427,10 +420,6 @@ msgstr "Ettevõte"
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:account.invoice.pay.start,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -488,10 +477,6 @@ msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:account.invoice.payment_term.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Jagaja"
@@ -548,10 +533,6 @@ msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:account.invoice.payment_term.test,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
-
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "Kuupäev"
@@ -572,10 +553,6 @@ msgstr "Väärtus"
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
@@ -715,6 +692,11 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "Arve - tasumise rida"
 
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "Arve aadress"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Kreditarve"
@@ -786,6 +768,11 @@ msgstr "Arve tasumise meetodid"
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr "Maksetingimused"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "Tasumisele kuuluvad read"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
@@ -860,6 +847,10 @@ msgid ""
 "company setup does not allow it."
 msgstr "Kliendiarvet \"%(arve)id\" ei saa tühistada, kuna need on postitatud."
 
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "Arve \"%(arve)te\" kustutamiseks tuleb see tühistada."
@@ -884,6 +875,11 @@ msgstr ""
 "Rida\"%(rid)u\" ei saa täiendada, kuna arve \"%(arve)d\" on postitatud, "
 "tasutud või tühistatud."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr "Tasumise rida saab viidata ainult ühele arvele"
+
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
@@ -906,6 +902,13 @@ msgid ""
 " \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
 "for invoice \"%(after_invoice)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr "Arvet \"%(arve)id\" ei saa hüvitada, kuna see on postitamata."
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
@@ -936,10 +939,11 @@ msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(lines)s\"."
+"and on line \"%(line)s\"."
 msgstr ""
 "Arvel \"%(arve)tele\" ja real \"%(rida)del\" ei saa kasutada sama kontot "
 "\"%(konto)sid\""
@@ -1022,6 +1026,10 @@ msgstr "Postita"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"

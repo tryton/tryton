@@ -7,7 +7,6 @@ msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Ketentuan Pembayaran Pelanggan"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_payment_term,company:"
 msgid "Company"
 msgstr "Perusahaan"
@@ -58,6 +57,10 @@ msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "Tanggal Akuntansi"
 
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
 msgstr "Izinkan Batalkan Faktur"
@@ -93,10 +96,6 @@ msgstr "Mata uang"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Tanggal Mata Uang"
-
-msgctxt "field:account.invoice,currency_digits:"
-msgid "Currency Digits"
-msgstr "Digit Mata Uang"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -197,11 +196,11 @@ msgstr "Pajak"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
-msgstr "Nomor Pokok Wajib Pajak (NPWP)"
+msgstr "NPWP"
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
-msgstr ""
+msgstr "Baris Pajak"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
@@ -233,6 +232,15 @@ msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
+msgstr "Baris Pembayaran"
+
+#, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
 msgstr ""
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
@@ -262,10 +270,6 @@ msgstr "Perusahaan"
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "Mata uang"
-
-msgctxt "field:account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -313,15 +317,15 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Besaran"
 
 msgctxt "field:account.invoice.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Ringkasan"
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-pajak"
 
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
@@ -337,15 +341,11 @@ msgstr "Jenis"
 
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
+msgstr "Satuan"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
@@ -369,15 +369,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr ""
+msgstr "Mata Uang Pembayaran"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -422,10 +414,6 @@ msgstr "Perusahaan"
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
 msgstr "Mata uang"
-
-msgctxt "field:account.invoice.pay.start,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -483,10 +471,6 @@ msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:account.invoice.payment_term.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr ""
@@ -543,10 +527,6 @@ msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:account.invoice.payment_term.test,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -557,20 +537,15 @@ msgstr "Masa Pembayaran"
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
-msgstr ""
+msgstr "Hasil"
 
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "Mata uang"
-
-msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
@@ -588,7 +563,6 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.tax,currency:"
 msgid "Currency"
 msgstr "Mata uang"
@@ -709,6 +683,11 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "Faktur - Baris Pembayaran"
 
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "Alamat Faktur"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Faktur Kredit"
@@ -781,6 +760,11 @@ msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "Baris yang Harus Dibayar"
+
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kredit"
@@ -812,7 +796,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr ""
+msgstr "Sahih"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
@@ -855,6 +839,13 @@ msgstr ""
 "Anda tidak dapat membatalkan faktur \"%(invoice)s\" karena dibukukan dan "
 "pengaturan perusahaan tidak mengizinkannya."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "Untuk menghapus faktur \"%(invoice)s\" anda harus membatalkannya."
@@ -873,6 +864,10 @@ msgctxt "model:ir.message,text:msg_invoice_line_modify"
 msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_modify"
@@ -894,6 +889,13 @@ msgid ""
 "for invoice \"%(after_invoice)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr "Anda tidak dapat menghapus faktur \"%(invoice)s\" karena memiliki nomor."
+
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
@@ -907,6 +909,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
+"Anda tidak dapat menambah/menghapus baris pembayaran pada faktur terbayar "
+"\"%(invoice)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
 msgid ""
@@ -917,11 +921,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
 
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(lines)s\"."
+"and on line \"%(line)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
@@ -994,9 +1000,13 @@ msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr ""
+msgstr "Mengesahkan"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
@@ -1024,11 +1034,11 @@ msgstr "Faktur"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr ""
+msgstr "Faktur Pemasok"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Faktur Pelanggan"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1116,7 +1126,7 @@ msgstr "Pajak"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-pajak"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes:"
@@ -1132,7 +1142,7 @@ msgstr "Total:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
@@ -1156,7 +1166,7 @@ msgstr ""
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"

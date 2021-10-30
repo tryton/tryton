@@ -58,6 +58,10 @@ msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "Apskaitos data"
 
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
@@ -94,10 +98,6 @@ msgstr "Valiuta"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Valiutos kurso data"
-
-msgctxt "field:account.invoice,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -238,6 +238,15 @@ msgid "Payment Line"
 msgstr "Mokėjimo eilutė"
 
 #, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
 msgstr "Sąskaitos faktūros data"
@@ -265,10 +274,6 @@ msgstr "Organizacija"
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -344,10 +349,6 @@ msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Mato vienetas"
 
-msgctxt "field:account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Mato vieneto skaitmenų po kablelio skaičius"
-
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "Kaina"
@@ -375,14 +376,6 @@ msgstr "Organizacija"
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
 msgstr "Mokėjimo valiuta"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr "Mokėjimo valiutos skaitmenų po kablelio skaičius"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr "Nurašymo valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -427,10 +420,6 @@ msgstr "Organizacija"
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:account.invoice.pay.start,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -488,10 +477,6 @@ msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
 msgstr "Valiuta"
 
-msgctxt "field:account.invoice.payment_term.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Daliklis"
@@ -548,10 +533,6 @@ msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
 msgstr "Valiuta"
 
-msgctxt "field:account.invoice.payment_term.test,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
-
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "Data"
@@ -572,10 +553,6 @@ msgstr "Suma"
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
@@ -714,6 +691,11 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "Sąskaitos faktūros apmokėjimo eilutė"
 
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "Juridinis adresas"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Kreditinė sąskaita faktūra"
@@ -787,6 +769,11 @@ msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr "Mokėjimo sąlygos"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "Eilutės apmokėjimui"
+
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kreditas"
@@ -857,6 +844,10 @@ msgid ""
 "company setup does not allow it."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr ""
@@ -877,6 +868,10 @@ msgid ""
 "posted, paid or cancelled."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
@@ -894,6 +889,12 @@ msgid ""
 "To number the invoice \"%(invoice)s\", you must set an accounting date after"
 " \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
 "for invoice \"%(after_invoice)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
@@ -923,7 +924,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(lines)s\"."
+"and on line \"%(line)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
@@ -994,6 +995,10 @@ msgstr "Įtraukti į apskaitą"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"

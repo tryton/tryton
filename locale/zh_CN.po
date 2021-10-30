@@ -55,6 +55,10 @@ msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "记账日期"
 
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
 msgstr "允许取消原始凭证"
@@ -90,10 +94,6 @@ msgstr "货币"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "货币日期"
-
-msgctxt "field:account.invoice,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -232,6 +232,15 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "支付明细"
 
+#, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
 msgstr "原始凭证日期"
@@ -259,10 +268,6 @@ msgstr "公司"
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -337,10 +342,6 @@ msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
 msgstr "计量单位"
 
-msgctxt "field:account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "计量单位有效数字"
-
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "单价"
@@ -368,14 +369,6 @@ msgstr "公司"
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
 msgstr "支付货币"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr "支付货币有效数字"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr "核销货币有效数字"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -420,10 +413,6 @@ msgstr "公司"
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.invoice.pay.start,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -481,10 +470,6 @@ msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.invoice.payment_term.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "除数"
@@ -541,10 +526,6 @@ msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "field:account.invoice.payment_term.test,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
-
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "日期"
@@ -564,10 +545,6 @@ msgstr "数额"
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "货币"
-
-msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
-msgid "Currency Digits"
-msgstr "货币有效数字"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
@@ -710,6 +687,11 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "原始凭证 - 付款明细"
 
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "原始凭证地址"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "贷方原始凭证"
@@ -782,6 +764,11 @@ msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr "Payment Terms"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "待支付明细"
+
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
@@ -852,6 +839,10 @@ msgid ""
 "company setup does not allow it."
 msgstr "无法取消客户原始凭证 \"%(invoice)s\"，因为它已过帐并且公司设置不允许。"
 
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr "删除原始凭证 \"%(invoice)s\" 之前必须先取消它。"
@@ -871,6 +862,11 @@ msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
 msgstr "无法更改明细 \"%(line)s\"，因为原始凭证 \"%(invoice)s\" 它已经入账，付款或者取消。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr "一条付款明细只能链接到一张原始凭证。"
 
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
@@ -892,6 +888,13 @@ msgid ""
 msgstr ""
 "若要为发票 \"%(invoice)s\" 编号，必须将会计日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
 "已用于发票 \"%(after_invoice)s\"。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
@@ -917,10 +920,11 @@ msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(lines)s\"."
+"and on line \"%(line)s\"."
 msgstr "不能在原始凭证 \"%(invoice)s\" 和明细 \"%(invoice)s\"上使用相同的帐户 \"%(account)s\" 。"
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
@@ -991,6 +995,10 @@ msgstr "Post"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"

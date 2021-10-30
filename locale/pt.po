@@ -58,6 +58,10 @@ msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "Data de Contabilização"
 
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
@@ -94,10 +98,6 @@ msgstr "Moeda"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Data da Moeda"
-
-msgctxt "field:account.invoice,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -240,6 +240,15 @@ msgid "Payment Line"
 msgstr "Linha de Pagamento"
 
 #, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "Fatura"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
 msgstr "Data da Fatura"
@@ -267,10 +276,6 @@ msgstr "Empresa"
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "Moeda"
-
-msgctxt "field:account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -346,10 +351,6 @@ msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Unidade"
 
-msgctxt "field:account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos da unidade"
-
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "Preço unitário"
@@ -377,14 +378,6 @@ msgstr "Empresa"
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
 msgstr "Moeda do Pagamento"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr "Dígitos Decimais da Moeda do Pagamento"
-
-msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr "Dígitos Decimais da Moeda das Perdas e Lucros"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -431,10 +424,6 @@ msgstr "Empresa"
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
 msgstr "Moeda"
-
-msgctxt "field:account.invoice.pay.start,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -495,10 +484,6 @@ msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-msgctxt "field:account.invoice.payment_term.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Divisor"
@@ -555,10 +540,6 @@ msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-msgctxt "field:account.invoice.payment_term.test,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
-
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "Data"
@@ -579,10 +560,6 @@ msgstr "Montante"
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "Moeda"
-
-msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
@@ -724,6 +701,11 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "Fatura - Linha de Pagamento"
 
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "Endereço para faturamento"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Creditar a Fatura"
@@ -800,6 +782,11 @@ msgstr ""
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr "Payment Terms"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "Linhas a Pagar"
 
 #, fuzzy
 msgctxt "model:ir.action,name:credit"
@@ -886,6 +873,10 @@ msgstr ""
 "Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
 " ela já foi confirmada, paga ou cancelada."
 
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
 msgstr ""
@@ -909,6 +900,10 @@ msgid ""
 "posted, paid or cancelled."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
@@ -930,6 +925,15 @@ msgid ""
 " \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
 "for invoice \"%(after_invoice)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr ""
+"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
+" ela já foi confirmada, paga ou cancelada."
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
@@ -958,7 +962,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
-"and on line \"%(lines)s\"."
+"and on line \"%(line)s\"."
 msgstr ""
 
 #, fuzzy
@@ -1034,6 +1038,10 @@ msgstr "Post"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
