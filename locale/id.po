@@ -34,10 +34,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
 msgstr "Pihak"
@@ -72,8 +68,8 @@ msgid "Base Amount"
 msgstr "Jumlah"
 
 #, fuzzy
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
 msgstr "Mata uang"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
@@ -150,10 +146,6 @@ msgstr ""
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Mata uang"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"

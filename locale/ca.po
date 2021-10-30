@@ -34,10 +34,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
 msgstr "Tercer"
@@ -70,9 +66,9 @@ msgctxt "field:account.reporting.vat_book_es,base_amount:"
 msgid "Base Amount"
 msgstr "Base Imponible"
 
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
@@ -141,10 +137,6 @@ msgstr "Identificador fiscal de l'empresa"
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"
@@ -296,7 +288,7 @@ msgstr "Model 349 AEAT"
 
 msgctxt "model:ir.action,name:report_aeat_vat_book"
 msgid "VAT Book"
-msgstr "Lilbre d'IVA"
+msgstr "Llibre d'IVA"
 
 msgctxt "model:ir.action,name:wizard_print_aeat_report"
 msgid "Print AEAT"

@@ -34,10 +34,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
-
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
 msgstr "Ospaool"
@@ -74,9 +70,9 @@ msgid "Base Amount"
 msgstr "Väärtus"
 
 #, fuzzy
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
@@ -153,10 +149,6 @@ msgstr "Ettevõtte TIN kood"
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"

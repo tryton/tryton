@@ -12,7 +12,7 @@ msgstr "Verzoek om vooruitgang (advancement)"
 
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
-msgstr "Perioden"
+msgstr "Periodes"
 
 msgctxt "field:account.reporting.aeat.start,report:"
 msgid "Report"
@@ -33,10 +33,6 @@ msgstr "Bedrijf Belasting Identifier (Company Tax Identifier)"
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
@@ -70,9 +66,9 @@ msgctxt "field:account.reporting.vat_book_es,base_amount:"
 msgid "Base Amount"
 msgstr "Basis bedrag"
 
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
@@ -86,10 +82,9 @@ msgctxt "field:account.reporting.vat_book_es,party:"
 msgid "Party"
 msgstr "Relatie"
 
-#, fuzzy
 msgctxt "field:account.reporting.vat_book_es,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr "relatie voor belastingidentificatie Party Tax Identifier)"
+msgstr "Belasingidentificatie relatie"
 
 msgctxt "field:account.reporting.vat_book_es,surcharge_tax:"
 msgid "Surcharge Tax"
@@ -142,10 +137,6 @@ msgstr "Bedrijf Belasting Identifier (Company Tax Identifier)"
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"

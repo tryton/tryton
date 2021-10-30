@@ -34,10 +34,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
-
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
 msgstr "Parte"
@@ -73,9 +69,9 @@ msgid "Base Amount"
 msgstr "Suma"
 
 #, fuzzy
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
@@ -150,10 +146,6 @@ msgstr ""
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"

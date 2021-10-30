@@ -8,7 +8,7 @@ msgstr "Código país cuenta bancaria"
 
 msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
 msgid "Request Advancement"
-msgstr "Solicitar adelanto"
+msgstr "Solicitar anticipo"
 
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
@@ -33,10 +33,6 @@ msgstr "Identificador fiscal de la empresa"
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
 
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
@@ -70,9 +66,9 @@ msgctxt "field:account.reporting.vat_book_es,base_amount:"
 msgid "Base Amount"
 msgstr "Base imponible"
 
-msgctxt "field:account.reporting.vat_book_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgctxt "field:account.reporting.vat_book_es,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
@@ -141,10 +137,6 @@ msgstr "Identificador fiscal de la empresa"
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.reporting.vat_list_es,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
 
 msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
 msgid "First Period Amount"
