@@ -515,6 +515,14 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Codul parții trebuie să fie unic."
 
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+"Pentru a schimba \"%(field)s\" pentru parte \"%(party)s\" trebuie editate "
+"mecanismele lor de contact."
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "Serviciul VIES nu este disponibil, încercați din nou mai târziu."
@@ -674,6 +682,10 @@ msgstr "Austria, Cod Numierc Personal (SSN)"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
 msgstr "Austria, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
+msgstr "Austrian Umsatzsteuer-Identifikationsnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
@@ -1144,6 +1156,14 @@ msgid "U.S. Taxpayer Identification Number"
 msgstr "SUA, Număr de Identificare al Contribuabilului"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr "Ucraina, Identificator pentru Întreprinderi şi Organizaţii"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "Ucraina, Cod Contribuabil Individual"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr "Regatul Unit (şi Isle of Man), Număr de TVA"
 
@@ -1158,6 +1178,10 @@ msgstr "Uruguay, Cod Fiscal"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "Venezuela, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "Vietnam Cod Fiscal"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"

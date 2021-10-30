@@ -513,6 +513,13 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "参与者代码不能重复."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr "参与者 \"%(party)s\" 的 %(type)s \"%(code)s\" 设置无效."
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "增值税号验证（VIES）服务不可用，过一段时间再试."
@@ -683,6 +690,11 @@ msgstr "瑞士社会保险号"
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
+msgstr "奥地利税号"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr "奥地利税号"
 
 #, fuzzy
@@ -1269,6 +1281,15 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Taxpayer Identification Number"
 msgstr "美国纳税人识别号"
 
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "美国个人纳税人识别号"
+
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
@@ -1288,6 +1309,11 @@ msgstr "乌拉圭税号"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "委内瑞拉增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "阿根廷税号"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"

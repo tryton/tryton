@@ -12,7 +12,7 @@ msgstr "Stadt"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr "Staat"
+msgstr "Land"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
@@ -40,11 +40,11 @@ msgstr "Anschrift"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Subnationale Einheit"
+msgstr "Region"
 
 msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
-msgstr "Typen Subnationale Einheit"
+msgstr "Regionsarten"
 
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
@@ -64,7 +64,7 @@ msgstr "Ländercode"
 
 msgctxt "field:party.address.subdivision_type,types:"
 msgid "Subdivision Types"
-msgstr "Typen Subnationale Einheit"
+msgstr "Regionsarten"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
@@ -418,7 +418,7 @@ msgstr "Adressformate"
 
 msgctxt "model:ir.action,name:act_address_subdivision_type_form"
 msgid "Address Subdivision Types"
-msgstr "Adresstypen Subnationale Einheit"
+msgstr "Adressen zulässige Regionsarten"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -466,9 +466,7 @@ msgstr "Die Partei von Adresse \"%(address)s\" kann nicht geändert werden."
 
 msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
 msgid "The country code on subdivision type must be unique."
-msgstr ""
-"Der Ländercode für einen Typ Subnationale Einheit kann nur einmal vergeben "
-"werden."
+msgstr "Der Ländercode für eine Regionsart kann nur einmal vergeben werden."
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -526,6 +524,14 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Der Code für eine Partei kann nur einmal vergeben werden."
 
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+"Das Feld \"%(field)s\" für die Partei \"%(party)s\" muss bei den "
+"Kontaktinformationen geändert werden."
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr ""
@@ -550,7 +556,7 @@ msgstr "Adressformate"
 
 msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
 msgid "Address Subdivision Types"
-msgstr "Adresstypen Subnationale Einheit"
+msgstr "Adressen zulässige Regionsarten"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
@@ -590,7 +596,7 @@ msgstr "Adressformat"
 
 msgctxt "model:party.address.subdivision_type,name:"
 msgid "Address Subdivision Type"
-msgstr "Adresstyp Subnationale Einheit"
+msgstr "Adressen zulässige Regionsarten"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -687,6 +693,10 @@ msgstr "Österreichische Sozialversicherungsnummer"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
 msgstr "Österreichische Steueridentifikationsnummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
+msgstr "Österreichische Umsatzsteuer-Identifikationsnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
@@ -1159,6 +1169,14 @@ msgid "U.S. Taxpayer Identification Number"
 msgstr "US-amerikanische Steuernummer (TIN)"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr "Ukrainischer Identifikator für Unternehmen und Organisationen"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "Ukrainische persönliche Steuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr "Britische (und Isle of Man) Umsatzsteuer-Identifikationsnummer (VAT)"
 
@@ -1173,6 +1191,10 @@ msgstr "Uru­gu­a­yische Steuernummer"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "Venezolanische Umsatzsteuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "Vietnamesische Steuernummer"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"

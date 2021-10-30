@@ -356,12 +356,13 @@ msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
 msgstr "Gebruikt om relatiecode te genereren."
 
-#, fuzzy
 msgctxt "help:party.contact_mechanism,language:"
 msgid ""
 "Used to translate communication made using the contact mechanism.\n"
 "Leave empty for the party language."
-msgstr "Wordt gebruikt om communicatie met de relatiejte vertalen."
+msgstr ""
+"Gebruikt om communicatie te vertalen die is gemaakt met behulp van het contactmechanisme.\n"
+"Laat leeg voor de relatie taal."
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
@@ -435,7 +436,6 @@ msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Relaties per categorie"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -500,6 +500,8 @@ msgid ""
 "To remove the identifier type \"%(type)s\" from the configuration, you must "
 "change it on \"%(identifier)s\"."
 msgstr ""
+"Om het identificatietype \"%(type)s\" uit de configuratie te verwijderen, "
+"moet u het wijzigen in \"%(identifier)s\"."
 
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
@@ -516,6 +518,14 @@ msgstr "Het telefoonnummer \"%(phone)s\" voor relatie \"%(party)s\" is niet geld
 msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "De code voor relatie moet uniek zijn."
+
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+"Om het \"%(field)s\" voor party \"%(party)s\" te wijzigen, moet je hun "
+"contactmechanismen bewerken."
 
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
@@ -561,7 +571,6 @@ msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
 msgstr "Relatie"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -606,10 +615,9 @@ msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Contactmogelijkheid"
 
-#, fuzzy
 msgctxt "model:party.contact_mechanism.language,name:"
 msgid "Contact Mechanism Language"
-msgstr "Contactmogelijkheid"
+msgstr "Contact Mechanisme Taal"
 
 msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
@@ -639,659 +647,545 @@ msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Relatie administratie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
 msgstr "Albanees BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Andorra Tax Number"
 msgstr "Andorrees belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Argentinian National Identity Number"
-msgstr "Mauritiaanse nationale identificatiecode"
+msgstr "Argentijnse nationale identificatiecode"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Argentinian Tax Number"
 msgstr "Argentijns belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Business Number"
-msgstr "Australisch bedrijfsnummer(ABN"
+msgstr "Australisch bedrijfsnummer(ABN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Company Number"
 msgstr "Australisch bedrijfsnummer (ACN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Tax File Number"
 msgstr "Australisch belastingdossiernummer (TFN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Company Register"
-msgstr "Oostenrijks bedrijfsregister"
+msgstr "Oostenrijks Handelsregisternummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Social Security Number"
 msgstr "Zwitsers sofi-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
 msgstr "Oostenrijkse belastingidentificatie"
 
-#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
+msgstr "Oostenrijkse Umsatzsteuer-Identifikationsnummer"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Bulgaars BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian Enterprise Number"
 msgstr "Belgisch ondernemingsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
 msgstr "Braziliaanse ondernemings ID (CPNJ)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian National Identifier"
 msgstr "Braziliaans Nationaal ID (CPF)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Bulgarian Number of a Foreigner"
 msgstr "Bulgaars identificatienummer voor buitenlanders (PNF)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Bulgarian Personal Identity Codes"
 msgstr "Bulgaars persoonlijk identificatienummer (EGN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Bulgarian VAT Number"
 msgstr "Bulgaars BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Canadian Business Number"
 msgstr "Canadees ondernemingsnummer (CRA BN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Canadian Social Insurance Number"
 msgstr "Canadees sociaal verzekeringsnummer (SIN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Chilean National Tax Number"
 msgstr "Chileens nationaal belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Chinese Resident Identity Card Number"
 msgstr "Chinees identiteitskaartnummer van resident"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Chinese Unified Social Credit Code"
-msgstr ""
+msgstr "Identificatiecode van het Chinese sociale kredietsysteem"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Colombian Business Tax Number"
 msgstr "Colombiaans bedrijfsbelastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Colombian Identity Code"
 msgstr "Colombiaanse identiteitscode"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Costa Rica Foreigners ID Number"
 msgstr "Costa Ricaans vreemdelingennummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Costa Rica Physical Person ID Number"
 msgstr "Costa Ricaans Persoonlijk ID-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Costa Rica Tax Number"
-msgstr "Mexicaans belastingnummer"
+msgstr "Costa Ricaans belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Croatian Identification Number"
 msgstr "Kroatisch identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Cuban Identity Card Number"
 msgstr "Cubaans identiteitskaartnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Cypriot VAT Number"
 msgstr "Cypriotisch BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Czech National Identifier"
 msgstr "Tsjechisch identiteitskaartnummer (RČ)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Czech VAT Number"
 msgstr "Tsjechisch BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Danish Citizen Number"
 msgstr "Deens burgernummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Danish VAT Number"
 msgstr "Deens BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dominican Republic National Identification Number"
 msgstr "Nummer identiteitskaart Dominicaanse Republiek (Cedula)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dominican Republic Tax"
 msgstr "Belastingnummer Dominicaanse Republiek (RNC)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dutch Citizen Identification Number"
 msgstr "Nederlands burger identificatie nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dutch School Identification Number"
 msgstr "Nederlandse School Identificatie Nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dutch Student Identification Number"
 msgstr "Nederlands student identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Dutch VAT Number"
 msgstr "Nederlands BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Ecuadorian Personal Identity Code"
 msgstr "Ecuadoraanse persoonlijke identiteitscode"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Ecuadorian Tax Identification"
 msgstr "Ecuadoraanse belastingcode (RUC)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "English Unique Pupil Number"
 msgstr "Engels uniek studentnummer (UPN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Estonian Organisation Registration Code"
 msgstr "Estse registratiecode van organisatie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Estonian Personal ID Number"
 msgstr "Estisch Persoonlijk ID-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Estonian VAT Number"
 msgstr "Estlands BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "European VAT Number"
 msgstr "Europees BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Association Identifier"
 msgstr "Finse Vereniging Identifier"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Business Identifier"
 msgstr "Finse bedrijfsidentificatie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Individual Tax Number"
 msgstr "Fins individueel belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Personal Identity Code"
 msgstr "Finse persoonlijke identiteitscode"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Fins BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
 msgstr "Frans persoonlijk identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Tax Identification Number"
 msgstr "Frans belastingidentificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr "Frans BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Company Register Number"
 msgstr "Duits ondernemingsregisternummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Personal Tax Number"
 msgstr "Duits persoonlijk belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German Tax Number"
 msgstr "Duits belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "German VAT Number"
 msgstr "Duits BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Greek Social Security Number"
-msgstr "US Social Security Number (SSN)"
+msgstr "Grieks socialezekerheidsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Greek VAT Number"
 msgstr "Grieks BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Guatemala Tax Number"
 msgstr "Belastingnummer van Guatemala"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Hungarian VAT Number"
 msgstr "Hongaars BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Icelandic Personal and Organisation Identity Code"
 msgstr "IJslands persoon- en organisatie-identificatienummer (Kennitala)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Icelandic VAT Number"
 msgstr "IJslands BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Digital Resident Personal Identity Number"
 msgstr "Indisch digitaal persoonlijk registratienummer (Aadhaar)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Income Tax Identifier"
 msgstr "Indiase inkomstenbelastingidentificatie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indonesian VAT Number"
-msgstr "Estlands BTW-nummer"
+msgstr "Indonesisch BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Irish Personal Number"
 msgstr "Iers persoonlijk nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Irish VAT Number"
 msgstr "Iers BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Company Number"
-msgstr "Australisch bedrijfsnummer (ACN)"
+msgstr "Israëlisch bedrijfsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Identity Number"
-msgstr "Peruviaans identificatienummer"
+msgstr "Israëlisch identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Italian Tax Code for Individuals"
 msgstr "Italiaanse belastingcode (Codice Fiscale)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Italian VAT Number"
 msgstr "Italiaans BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Japanese Corporate Number"
 msgstr "Japans bedrijfsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
-msgstr "Letlands BTW-nummer"
+msgstr "Lets BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"
-msgstr "Iers persoonlijk nummer"
+msgstr "Litouws persoonlijk nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian VAT Number"
 msgstr "Litouws BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Luxembourgian VAT Number"
 msgstr "Luxemburgs BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Malaysian National Registration Identity Card Number"
 msgstr "Maleise ID-kaart (NRIC nr.)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Maltese VAT Number"
 msgstr "Maltees BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Mauritian National Identifier"
 msgstr "Mauritiaanse nationale identificatiecode"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Mexican Tax Number"
 msgstr "Mexicaans belastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moldavian Company Identification Number"
 msgstr "Identificatienummer van het Moldavische bedrijf"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
 msgstr "Monegasque btw-identificatienummer (nr. TVA)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr "Nummer van de belastingdienst van Nieuw-Zeeland"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Norwegian Birth Number, the National Identity Number"
-msgstr "Nummer identiteitskaart Dominicaanse Republiek (Cedula)"
+msgstr "Noors geboortenummer, het nationale identiteitsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Norwegian Organisation Number"
 msgstr "Noors organisatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Norwegian VAT Number"
 msgstr "Noors BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Paraguay Tax Number"
 msgstr "Belastingnummer van Paraguay"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Peruvian Company Tax Number"
 msgstr "Peruviaans vennootschapsbelastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Peruvian Identity Number"
 msgstr "Peruviaans identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Polish National Identification Number"
 msgstr "Pools nationaal identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Polish Register of Economic Units"
 msgstr "Pools register van economische eenheden (REGON)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Polish VAT Number"
 msgstr "Pools BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Portuguese VAT Number"
 msgstr "Portugees BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Romanian Numerical Personal Code"
 msgstr "Roemeense numerieke persoonlijke code"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Romanian ONRC Number"
-msgstr "Roemeense BTW-nummer"
+msgstr "Roemeense ONRC nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Romanian VAT Number"
 msgstr "Roemeense BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr "Russische belastingidentificatie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "SEPA Identifier of the Creditor (AT-02)"
 msgstr "SEPA-identificatie van de crediteur (AT-02)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"
 msgstr "Nationaal belastingnummer San Marino"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Serbian Tax Identification"
 msgstr "Servische belastingidentificatie"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak Birth Number"
-msgstr "Slowaaks geboortegetal (RČ)"
+msgstr "Slowaaks geboortenummer (RČ)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak VAT Number"
 msgstr "Slowaaks BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovenian VAT Number"
 msgstr "Sloveens BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South African Identity Document Number"
 msgstr "Zuid-Afrikaans identiteitsdocumentnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South African Tax Identification Number"
 msgstr "Zuid-Afrikaans belastingidentificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korea Business Registration Number"
-msgstr "Colombiaans bedrijfsbelastingnummer"
+msgstr "Zuid Koreaans bedrijfsbelastingnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
-msgstr "Zuid-Afrikaans belastingidentificatienummer"
+msgstr "Zuid-Koreaans belastingidentificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Company Tax"
 msgstr "Spaans vennootschapsbelastingnummer (CIF)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Foreigner Number"
-msgstr "Spaans vreemdelingennummer"
+msgstr "Spaans vreemdelingennummer (NIE)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Personal Identity Codes"
-msgstr "Spaanse persoonlijke identiteitscodes"
+msgstr "Spaanse persoonlijke identiteitscodes (DNI)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish VAT Number"
-msgstr "Spaans BTW-nummer"
+msgstr "Spaans BTW-nummer (NIF)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swedish Company Number"
 msgstr "Zweeds bedrijfsnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swedish Personal Number"
-msgstr "Iers persoonlijk nummer"
+msgstr "Zweeds persoonlijk nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swedish VAT Number"
 msgstr "Zweeds BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss Business Identifier"
 msgstr "Zwitsers bedrijfsidentificatienummer (UID)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss Social Security Number"
 msgstr "Zwitsers sofi-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss VAT Number"
 msgstr "Zwitsers BTW-nummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Turkish Personal Identification Number"
 msgstr "Turks persoonlijk identificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Adoption Taxpayer Identification Number"
 msgstr "Amerikaanse belastingcode (ATIN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Employer Identification Number"
 msgstr "Amerikaans werkgeversidentificatienummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Individual Taxpayer Identification Number"
 msgstr "Amerikaans identificatienummer individuele belastingbetaler (ITIN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Preparer Tax Identification Number"
 msgstr "Amerikaanse belastingcode (PTIN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Social Security Number"
 msgstr "US Social Security Number (SSN)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Taxpayer Identification Number"
 msgstr "Amerikaans belastingidentificatienummer (TIN)"
 
-#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr "Oekraïens identificatienummer voor ondernemingen en organisaties"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "Oekraïens Individueel Belastingbetaler Registratienummer"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr "BTW-nummer van het Verenigd Koninkrijk (en Isle of Man)"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "UK National Healthcare System (NHS) Patiëntnummer"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Uruguay Tax Number"
 msgstr "Belastingnummer in Uruguay"
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "Venezolaans btw-nummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "Vietnam belastingnummer"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"

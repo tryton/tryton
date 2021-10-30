@@ -88,10 +88,9 @@ msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration,identifier_types:"
 msgid "Identifier Types"
-msgstr "Nomor Pokok Wajib Pajak"
+msgstr ""
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
@@ -122,10 +121,9 @@ msgctxt "field:party.contact_mechanism,language:"
 msgid "Language"
 msgstr "Bahasa"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,languages:"
 msgid "Languages"
-msgstr "Bahasa"
+msgstr "Bahasa-bahasa"
 
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
@@ -195,11 +193,11 @@ msgstr ""
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr "Alamat"
+msgstr "Alamat-alamat"
 
 msgctxt "field:party.party,categories:"
 msgid "Categories"
-msgstr "Kategori"
+msgstr "Kategori-kategori"
 
 msgctxt "field:party.party,code:"
 msgid "Code"
@@ -239,7 +237,7 @@ msgstr "Bahasa"
 
 msgctxt "field:party.party,langs:"
 msgid "Languages"
-msgstr "Bahasa"
+msgstr "Bahasa-bahasa"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
@@ -259,7 +257,7 @@ msgstr "Digantikan Oleh"
 
 msgctxt "field:party.party,tax_identifier:"
 msgid "Tax Identifier"
-msgstr "Nomor Pokok Wajib Pajak"
+msgstr "NPWP"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -410,7 +408,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Alamat"
+msgstr "Alamat-alamat"
 
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
@@ -443,7 +441,7 @@ msgstr "Konfigurasi"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr ""
+msgstr "Para Pihak"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
@@ -513,6 +511,12 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr ""
@@ -527,7 +531,7 @@ msgstr "Pihak"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Alamat"
+msgstr "Alamat-alamat"
 
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
@@ -564,7 +568,7 @@ msgstr "Konfigurasi"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr ""
+msgstr "Para Pihak"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
@@ -592,20 +596,19 @@ msgstr "Konfigurasi Pihak"
 
 msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
-msgstr ""
+msgstr "Bahasa Konfigurasi Pihak"
 
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
-msgstr ""
+msgstr "Urutan Konfigurasi Pihak"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Mekanisme Kontak"
 
-#, fuzzy
 msgctxt "model:party.contact_mechanism.language,name:"
 msgid "Contact Mechanism Language"
-msgstr "Mekanisme Kontak"
+msgstr "Bahasa Mekanisme Kontak"
 
 msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
@@ -673,6 +676,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1034,10 +1041,9 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Romanian VAT Number"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
-msgstr "Nomor Pokok Wajib Pajak"
+msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "SEPA Identifier of the Creditor (AT-02)"
@@ -1148,6 +1154,14 @@ msgid "U.S. Taxpayer Identification Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr ""
 
@@ -1161,6 +1175,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
 msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"

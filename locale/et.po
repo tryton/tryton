@@ -509,6 +509,12 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "Osapoole kood peab olema unikaalne."
 
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr ""
@@ -682,6 +688,11 @@ msgstr "Šveitsi sotsiaalkindlustuse number"
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
+msgstr "Austria KMKR"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr "Austria KMKR"
 
 #, fuzzy
@@ -1267,6 +1278,15 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "U.S. Taxpayer Identification Number"
 msgstr "U.S. maksumaksja tunnusnumber"
 
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "U.S. isikuline maksumaksja tunnusnumber"
+
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
@@ -1286,6 +1306,11 @@ msgstr "Saksamaa maksu number"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "Euroopa KMKR"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "Argentiina KMKR"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"

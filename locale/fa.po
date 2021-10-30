@@ -523,6 +523,13 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "کد نهاد/سازمان باید منحصربفرد یاشد."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr "کد پیش شماره تلفن \"%s\" نهاد/سازمان \"%s\" معتبر نیست."
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "سرویس\"سیستم تبادل اطلاعات\" VIES در دسترس نیست، بعدا دوباره امتحان کنید."
@@ -685,6 +692,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1161,6 +1172,14 @@ msgid "U.S. Taxpayer Identification Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr ""
 
@@ -1174,6 +1193,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
 msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"

@@ -517,6 +517,14 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "El codi del tercer ha de ser únic."
 
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+"Per canviar el \"%(field)s\" del tercer \"%(party)s\", heu d'editar els seus"
+" mètodes de contacte."
+
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "El servei VIES no està disponible, intenteu-ho de nou més tard."
@@ -676,6 +684,10 @@ msgstr "Número seguretat social Austriac"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Tax Identification"
 msgstr "Identificador fiscal Austríac"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
+msgstr "Número d'identificació IVA austríac"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
@@ -1146,6 +1158,14 @@ msgid "U.S. Taxpayer Identification Number"
 msgstr "Identificador del contribuent dels EUA"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr "Identificador ucraïnès per a empreses i organitzacions"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "Número de registre del contribuent individual ucraïnès"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "United Kingdom (and Isle of Man) VAT Number"
 msgstr "Identificador fiscal del Regne Unit"
 
@@ -1160,6 +1180,10 @@ msgstr "Identificador fiscal Uruguay"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Venezuelan VAT Number"
 msgstr "Identificador fiscal Veneçolà"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "Número fiscal vietnamita"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
