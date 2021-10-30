@@ -742,6 +742,7 @@
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits_exceptionnels"/>
             <field name="statement">income</field>
+            <field name="revenue" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exceptionnels_reprises_provisions_depreciations_transferts_charges">
             <field name="name">Reprises sur provisions, dépréciations et transferts de charges</field>
