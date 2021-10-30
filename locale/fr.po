@@ -48,7 +48,7 @@ msgstr "Code UPS"
 
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr "Accréditation UPS"
+msgstr "Identifiant UPS"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
@@ -56,7 +56,7 @@ msgstr "Créer la livraison UPS pour les emballages"
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "Accréditations UPS"
+msgstr "Identifiant UPS"
 
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "Accréditations UPS"
+msgstr "Identifiants UPS"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
@@ -116,7 +116,7 @@ msgstr "Essai"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"
-msgstr "Informations d'accréditation"
+msgstr "Informations d'identification"
 
 msgctxt "view:carrier:"
 msgid "UPS"

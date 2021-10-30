@@ -87,6 +87,8 @@ msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on warehouse "
 "\"%(warehouse)s\"."
 msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie setata o adresa la "
+"depozit \"%(warehouse)s\"."
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
