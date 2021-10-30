@@ -6,10 +6,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr "Decimales de la moneda del peso"
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "Tarifa"
@@ -25,6 +21,10 @@ msgstr "Decimales de la UdM del peso"
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Transportista"
+
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"

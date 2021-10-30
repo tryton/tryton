@@ -7,10 +7,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "Валюты"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr ""
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr ""
@@ -26,6 +22,11 @@ msgstr ""
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "Валюты"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"

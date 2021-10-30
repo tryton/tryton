@@ -6,10 +6,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr "ນໍ້າໜັກເລກເສດສະກຸນເງິນ"
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "ລາຍການລາຄາ"
@@ -25,6 +21,11 @@ msgstr "ເສດຫົວໜ່ວຍນໍ້າໜັກ"
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "ຜູ້ໃຫ້ບໍລິການ"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"

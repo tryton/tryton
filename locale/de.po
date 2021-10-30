@@ -6,10 +6,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr "Nachkommastellen Währung Gewicht"
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "Preisliste"
@@ -25,6 +21,10 @@ msgstr "Nachkommastellen Maßeinheit Gewicht"
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Versanddienstleister"
+
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "Währung"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"

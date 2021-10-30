@@ -6,10 +6,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "واحد پول"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr "ارقام قیمت وزن"
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "لیست قیمت"
@@ -25,6 +21,11 @@ msgstr "ارقام واحد وزن"
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "حمل کننده"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"

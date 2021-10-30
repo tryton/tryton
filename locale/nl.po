@@ -6,10 +6,6 @@ msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:carrier,weight_currency_digits:"
-msgid "Weight Currency Digits"
-msgstr "Gewicht valuta cijfers"
-
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
 msgstr "Prijslijst"
@@ -25,6 +21,10 @@ msgstr "maateenheid gewicht decimalen"
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Transporteur"
+
+msgctxt "field:carrier.weight_price_list,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
