@@ -82,10 +82,6 @@ msgctxt "field:sale.amendment.line,unit:"
 msgid "Unit"
 msgstr "Unité"
 
-msgctxt "field:sale.amendment.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Décimales de l'unité"
-
 msgctxt "field:sale.amendment.line,unit_price:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
