@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:incoterm.incoterm,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 msgctxt "field:incoterm.incoterm,companies:"
 msgid "Companies"

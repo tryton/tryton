@@ -100,7 +100,7 @@ msgstr "Le mode de transport utilisé par le transporteur."
 
 msgctxt "help:company.company,incoterms:"
 msgid "Incoterms available for use by the company."
-msgstr "Incoterms disponibles à l'usage de l'entreprise."
+msgstr "Incoterms disponibles à l'usage de la société."
 
 msgctxt "help:incoterm.incoterm,carrier:"
 msgid "Who contracts the main carriage."
@@ -108,7 +108,7 @@ msgstr "Qui contracte le transport principal."
 
 msgctxt "help:incoterm.incoterm,companies:"
 msgid "The companies that can use the incoterm."
-msgstr "Les entreprises qui peuvent utiliser l'incoterm."
+msgstr "Les sociétés qui peuvent utiliser l'incoterm."
 
 msgctxt "help:incoterm.incoterm,location:"
 msgid "If checked then a location is required."

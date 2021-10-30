@@ -120,7 +120,7 @@ msgstr "De vervoerswijze waarvoor de term beschikbaar is."
 
 msgctxt "help:incoterm.incoterm,risk:"
 msgid "When the risk is transferred relative to the main carriage."
-msgstr ""
+msgstr "Wanneer het risico wordt overgedragen aan de hoofdvervoerder."
 
 msgctxt "help:party.party,purchase_incoterms:"
 msgid ""
@@ -165,10 +165,14 @@ msgstr "Incoterm-locatie vereist"
 msgctxt "model:ir.message,text:msg_purchase_incoterm_required_for_quotation"
 msgid "To get a quote for purchase \"%(purchase)s\" you must enter an incoterm."
 msgstr ""
+"Om een aankoopofferte \"%(purchase)s\" te krijgen, moet u een incoterm "
+"invoeren."
 
 msgctxt "model:ir.message,text:msg_sale_incoterm_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter an incoterm."
 msgstr ""
+"Om een verkoop offerte \"%(sale)s\" te krijgen, moet u een incoterm "
+"invoeren."
 
 msgctxt "model:ir.rule.group,name:rule_group_party_incoterm_companies"
 msgid "User in companies"
