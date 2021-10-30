@@ -141,9 +141,12 @@ class ContactMechanism(
         for country_code in chain(self._phone_country_codes(), [None]):
             try:
                 # Country code is ignored if value has an international prefix
-                return phonenumbers.parse(value, country_code)
+                phonenumber = phonenumbers.parse(value, country_code)
             except NumberParseException:
                 pass
+            else:
+                if phonenumbers.is_valid_number(phonenumber):
+                    return phonenumber
         return None
 
     @fields.depends(methods=['_parse_phonenumber'])
@@ -266,8 +269,7 @@ class ContactMechanism(
     def check_valid_phonenumber(self):
         if not phonenumbers or self.type not in _PHONE_TYPES:
             return
-        phonenumber = self._parse_phonenumber(self.value)
-        if not (phonenumber and phonenumbers.is_valid_number(phonenumber)):
+        if not self._parse_phonenumber(self.value):
             raise InvalidPhoneNumber(
                 gettext('party.msg_invalid_phone_number',
                     phone=self.value, party=self.party.rec_name))
