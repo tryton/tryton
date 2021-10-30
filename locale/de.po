@@ -22,10 +22,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Beschreibung"
@@ -64,7 +60,7 @@ msgstr "Gesamt Cache"
 
 msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
@@ -112,11 +108,7 @@ msgstr "Lieferant"
 
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
-msgstr "Stück"
-
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
+msgstr "Einheit"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
@@ -163,8 +155,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_warehouse_required"
 msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
 msgstr ""
-"Für Bestellanforderung \"%(requisition)s\" muss ein Warenlager angegeben "
-"werden."
+"Für Bestellanforderung \"%(requisition)s\" muss ein Logistikstandort "
+"angegeben werden."
 
 msgctxt "model:ir.model.button,string:requisition_approve_button"
 msgid "Approve"

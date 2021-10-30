@@ -22,10 +22,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -114,10 +110,6 @@ msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
@@ -130,7 +122,6 @@ msgctxt "model:ir.action,name:act_open_purchase_request_form2"
 msgid "Requests"
 msgstr "verzoeken"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "aanvraag tot bestellen"
@@ -189,16 +180,14 @@ msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
 msgstr "wachten"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_requisition_admin"
 msgid "Any requisition"
 msgstr "om het even welke aankoopaanvraag"
 
 msgctxt "model:ir.rule.group,name:rule_group_requisition_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_requisition_employees"
 msgid "Own requisition"
 msgstr "eigen aankoopaanvraag"
@@ -211,7 +200,6 @@ msgctxt "model:ir.sequence.type,name:sequence_type_purchase_requisition"
 msgid "Purchase Requisition"
 msgstr "Aankoopaanvraag"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "aanvraag tot bestellen"

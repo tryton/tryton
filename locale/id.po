@@ -22,10 +22,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -115,13 +111,9 @@ msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"

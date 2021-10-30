@@ -23,10 +23,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "واحد پول"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "شرح"
@@ -117,10 +113,6 @@ msgstr "تامین کننده"
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr "واحد"
-
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "ارقام واحد"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"

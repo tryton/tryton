@@ -23,10 +23,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimalke"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Opis"
@@ -117,10 +113,6 @@ msgstr "Dobavitelj"
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr "Enota"
-
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalke"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"

@@ -23,10 +23,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtus"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Selgitus"
@@ -117,10 +113,6 @@ msgstr "Hankija"
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
-
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtus"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"

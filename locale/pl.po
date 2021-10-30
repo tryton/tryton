@@ -25,10 +25,6 @@ msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Waluta"
 
-msgctxt "field:purchase.requisition,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry waluty"
-
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
 msgstr "Opis"
@@ -121,10 +117,6 @@ msgstr "Dostawca"
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
 msgstr "Jednostka"
-
-msgctxt "field:purchase.requisition.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
