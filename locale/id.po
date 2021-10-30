@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durasi"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
@@ -43,10 +43,6 @@ msgid "Employee"
 msgstr "Pegawai"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
-msgid "Week"
-msgstr "Pekan"
-
-msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Pekan"
 

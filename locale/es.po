@@ -46,10 +46,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Semana"
 
-msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
-msgid "Week"
-msgstr "Semana"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Año"
@@ -124,7 +120,7 @@ msgstr "Trabajo"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr "De la fecha"
+msgstr "Desde la fecha"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"

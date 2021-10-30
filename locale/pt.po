@@ -46,10 +46,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Semana"
 
-msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
-msgid "Week"
-msgstr "Semana"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Ano"

@@ -46,10 +46,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Week"
 
-msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
-msgid "Week"
-msgstr "Week"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Jaar"
@@ -210,10 +206,9 @@ msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr "Voer urenstaat in"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Lines"
-msgstr "Lijnen invoeren"
+msgstr "Lijnen"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
@@ -229,11 +224,11 @@ msgstr "Werken"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
@@ -257,7 +252,6 @@ msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
 msgstr "alle medewerkers uren"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
 msgid "Own employee hours"
 msgstr "Eigen medewerkersuren"
@@ -274,7 +268,6 @@ msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
 msgstr "Gebruiker in bedrijven"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
@@ -299,10 +292,9 @@ msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
 msgstr "Voer urenstaat in"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Lines"
-msgstr "Lijnen invoeren"
+msgstr "Lijnen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"

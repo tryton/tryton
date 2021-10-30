@@ -46,11 +46,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Hét"
 
-#, fuzzy
-msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
-msgid "Week"
-msgstr "Hét"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Év"
