@@ -18,10 +18,6 @@ msgctxt "field:stock.lot,unit:"
 msgid "Unit"
 msgstr "Unitat"
 
-msgctxt "field:stock.lot,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígits de la unitat"
-
 msgctxt "field:stock.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Quantitat unitària"
@@ -29,10 +25,6 @@ msgstr "Quantitat unitària"
 msgctxt "field:stock.move.add.lots.start.lot,product_default_uom_category:"
 msgid "Default Product UoM Category"
 msgstr "Categoria UdM del producte"
-
-msgctxt "field:stock.move.add.lots.start.lot,unit:"
-msgid "Unit"
-msgstr "Unitat"
 
 msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
@@ -53,10 +45,6 @@ msgstr "La major unitat del lot."
 msgctxt "help:stock.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
 msgstr "La quantitat màxima del lot."
-
-msgctxt "help:stock.move.add.lots.start.lot,unit:"
-msgid "The biggest unit for the lot."
-msgstr "La major unitat del lot."
 
 msgctxt "help:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
