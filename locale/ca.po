@@ -2,6 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice.line,cost_shipments:"
+msgid "Cost of Shipments"
+msgstr "Cost dels enviaments"
+
+msgctxt "field:party.party,sale_shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Mètode de cost d'enviament"
+
+msgctxt "field:party.party.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Mètode de cost d'enviament de la venda"
+
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Mètode de cost enviament"
@@ -30,21 +42,13 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr "Mètode de cost enviament"
 
-msgctxt "field:stock.shipment.out,carrier:"
-msgid "Carrier"
-msgstr "Transportista"
-
-msgctxt "field:stock.shipment.out,cost:"
-msgid "Cost"
-msgstr "Cost"
-
-msgctxt "field:stock.shipment.out,cost_edit:"
-msgid "Edit Cost"
-msgstr "Edita cost"
-
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Cost de la línia de factura"
+
+msgctxt "field:stock.shipment.out,cost_method:"
+msgid "Cost Method"
+msgstr "Mètode de cost"
 
 msgctxt "field:stock.shipment.out,cost_sale:"
 msgid "Cost Sale"
@@ -62,19 +66,23 @@ msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Cost de la venda"
 
-msgctxt "field:stock.shipment.out,cost_used:"
-msgid "Cost"
-msgstr "Cost"
-
-msgctxt "help:stock.shipment.out,cost_edit:"
-msgid "Check to edit the cost."
-msgstr "Marcar per editar el cost."
+msgctxt "help:party.party,sale_shipment_cost_method:"
+msgid ""
+"The default shipment cost method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El mètode de cost d'enviament predeterminat per al client.\n"
+"Deixar buit per utilitzar el valor per defecte de la configuració."
 
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
 msgstr ""
 "Per confirmar la venda \"%(sale)s\" heu de canviar el transportista "
 "\"%(carrier)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_shipment_cost_unique"
+msgid "A sale can have only one shipment cost line."
+msgstr "Una venda només pot tenir una línia de cost d’enviament."
 
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"

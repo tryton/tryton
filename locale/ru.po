@@ -2,6 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice.line,cost_shipments:"
+msgid "Cost of Shipments"
+msgstr ""
+
+msgctxt "field:party.party,sale_shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:party.party.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr ""
@@ -30,22 +42,12 @@ msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
 msgstr ""
 
-msgctxt "field:stock.shipment.out,carrier:"
-msgid "Carrier"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.shipment.out,cost:"
-msgid "Cost"
-msgstr "Стоимость"
-
-#, fuzzy
-msgctxt "field:stock.shipment.out,cost_edit:"
-msgid "Edit Cost"
-msgstr "Стоимость"
-
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_method:"
+msgid "Cost Method"
 msgstr ""
 
 #, fuzzy
@@ -67,17 +69,18 @@ msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Стоимость"
 
-#, fuzzy
-msgctxt "field:stock.shipment.out,cost_used:"
-msgid "Cost"
-msgstr "Стоимость"
-
-msgctxt "help:stock.shipment.out,cost_edit:"
-msgid "Check to edit the cost."
+msgctxt "help:party.party,sale_shipment_cost_method:"
+msgid ""
+"The default shipment cost method for the customer.\n"
+"Leave empty to use the default value from the configuration."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
 msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_shipment_cost_unique"
+msgid "A sale can have only one shipment cost line."
 msgstr ""
 
 msgctxt ""
