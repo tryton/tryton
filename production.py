@@ -589,6 +589,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                                 'production.msg_missing_product_list_price',
                                 product=product.rec_name,
                                 production=production.rec_name))
+                    continue
                 product_price = (Decimal(str(output.quantity))
                     * Uom.compute_price(
                         product.default_uom, list_price, output.uom))
