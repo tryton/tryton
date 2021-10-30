@@ -23,7 +23,7 @@ msgid ""
 "The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
 "This may compute a wrong COGS."
 msgstr ""
-"Die Rechnungsposition '%(line)s' steht in Beziehung zu Lagerbewegungen für andere Artikel als \"%(product)s\".\n"
+"Die Rechnungsposition '%(line)s' steht in Beziehung zu Warenbewegungen für andere Artikel als \"%(product)s\".\n"
 "Dies kann zu einer falschen Berechnung der Kosten der verkauften Waren (COGS) führen."
 
 msgctxt "model:ir.message,text:msg_move_quantity_greater"
