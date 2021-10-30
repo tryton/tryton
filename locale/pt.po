@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos decimais da unidade"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Udm"

@@ -10,11 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-#, fuzzy
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr ""

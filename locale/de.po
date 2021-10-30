@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Maßeinheit"

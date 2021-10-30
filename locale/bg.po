@@ -12,11 +12,6 @@ msgid "Quantity"
 msgstr "Количество"
 
 #, fuzzy
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
-
-#, fuzzy
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Мерни единици"

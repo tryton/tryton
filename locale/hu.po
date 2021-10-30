@@ -12,11 +12,6 @@ msgid "Quantity"
 msgstr "Mennyiség"
 
 #, fuzzy
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számjegy"
-
-#, fuzzy
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Egység"

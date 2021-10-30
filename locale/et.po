@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriline arv"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Mõõtühik"

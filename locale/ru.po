@@ -13,11 +13,6 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 #, fuzzy
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
-
-#, fuzzy
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Ед.изм."

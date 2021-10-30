@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Miktar"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Birim Basamakları"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "Ölçü Birimi"

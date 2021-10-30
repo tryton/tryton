@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "maateenheid"
@@ -40,7 +36,7 @@ msgstr "Productie opsplitsen"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
-msgstr "Geannuleerd"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"

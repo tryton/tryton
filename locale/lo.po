@@ -10,10 +10,6 @@ msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-msgctxt "field:production.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
-
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
