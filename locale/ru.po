@@ -48,6 +48,11 @@ msgid "Payments"
 msgstr "Оплата"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "Учет.орг."
@@ -91,11 +96,6 @@ msgstr "Учет.орг."
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "Валюты"
-
-#, fuzzy
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
 
 #, fuzzy
 msgctxt "field:account.payment,date:"
@@ -162,9 +162,9 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "Валюты"
 
 #, fuzzy
 msgctxt "field:account.payment.group,journal:"
@@ -207,6 +207,11 @@ msgid "Payments"
 msgstr "Оплата"
 
 #, fuzzy
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "Process Payments"
+
+#, fuzzy
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "Учет.орг."
@@ -233,6 +238,10 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr ""
 
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
@@ -247,12 +256,41 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "Журнал"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "Process Payments"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr ""
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
+msgstr ""
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
 msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
@@ -281,12 +319,20 @@ msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
 
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr ""
+
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
 
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
+msgstr ""
+
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
 msgstr ""
 
 #, fuzzy
@@ -356,6 +402,10 @@ msgstr "Журнал"
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "Process Payments"
+
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr ""
 
 #, fuzzy
 msgctxt ""
@@ -450,9 +500,19 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "Fail"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
 msgid "User in companies"
@@ -473,6 +533,10 @@ msgstr "Default Account Payment Group"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "Account Payment Group"
+
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
@@ -506,6 +570,10 @@ msgstr "Оплата"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
+msgstr ""
+
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
 msgstr ""
 
 #, fuzzy
@@ -586,6 +654,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Оплата"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr ""
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr ""
@@ -624,6 +696,16 @@ msgstr "Описание"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Другая информация"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"

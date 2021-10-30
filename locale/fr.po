@@ -17,7 +17,7 @@ msgstr "Séquence de groupe de paiements"
 
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Débit direct"
+msgstr "Prélèvement automatique"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -33,7 +33,7 @@ msgstr "Devise du paiement"
 
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Débit direct"
+msgstr "Prélèvement automatique"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
@@ -42,6 +42,10 @@ msgstr "Genre de paiement"
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Paiements"
+
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "Date"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
@@ -78,10 +82,6 @@ msgstr "Société"
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "Devise"
-
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -135,9 +135,9 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -171,6 +171,10 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "Paiements"
 
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "Méthode de traitement"
+
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "Société"
@@ -189,11 +193,15 @@ msgstr "Méthode de traitement"
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Débit direct"
+msgstr "Prélèvement automatique"
 
 msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
-msgstr "Débits directs"
+msgstr "Prélèvements automatiques"
+
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr "Prélèvements automatiques"
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
@@ -205,15 +213,40 @@ msgstr "Tiers"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Débit direct"
+msgstr "Prélèvement automatique"
+
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "Méthode de traitement"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
-msgstr "Cocher si la facture est payée par débit direct."
+msgstr "Cocher si la facture est payée par prélèvement automatique."
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
-msgstr "Cocher si la ligne sera payée par débit direct."
+msgstr "Cocher si la ligne sera payée par prélèvement automatique."
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
+msgstr ""
+"Créez un prélèvement automatique pour les lignes dues jusqu'à cette date."
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -241,15 +274,23 @@ msgstr "Le nombre de paiements dans le groupe."
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr "Cocher si le fournisseur fait du débit direct."
+msgstr "Cocher si le fournisseur prélève automatiquement."
+
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr "Remplir pour débiter automatiquement le client."
 
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr "Cocher si le fournisseur fait du débit direct."
+msgstr "Cocher si le fournisseur prélève automatiquement."
 
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Configuration comptable Séquence de groupe de paiement"
+
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
+msgstr "Créer les prélèvements automatiques"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -307,6 +348,10 @@ msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "Traiter les paiements"
 
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Créer les prélèvements automatiques"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
 msgid "Payable"
@@ -338,7 +383,7 @@ msgstr "Échoués"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
 msgid "Processing"
-msgstr "En traitements"
+msgstr "En traitement"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
@@ -399,9 +444,18 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "Échouer"
 
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "Réussir"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Réussir"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
 msgid "User in companies"
@@ -422,6 +476,10 @@ msgstr "Groupe de paiements comptable par défaut"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "Groupe de paiements comptable"
+
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Créer les prélèvements automatiques"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
@@ -449,7 +507,11 @@ msgstr "Paiements"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
-msgstr "Tiers Paiement débit direct"
+msgstr "Paiement tiers par prélèvement automatique"
+
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
+msgstr "Réception tiers de prélèvements automatiques"
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
@@ -515,6 +577,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Paiement"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr "Créer les prélèvements automatiques pour la date"
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr "Complet"
@@ -546,6 +612,14 @@ msgstr "Description"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Autre information"
+
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"

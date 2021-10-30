@@ -44,6 +44,11 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "ການຊໍາລະເງິນ"
 
+#, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
@@ -81,10 +86,6 @@ msgstr "ສຳນັກງານ/ຫ້ອງການ"
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
-
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະຸກນເງິນ"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -142,9 +143,9 @@ msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
 #, fuzzy
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະຸກນເງິນ"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -182,6 +183,11 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "ການຊໍາລະເງິນ"
 
+#, fuzzy
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "ວິທີດຳເນີນການ"
+
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
@@ -206,6 +212,11 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr "ການຫັກບັນຊີທະນາຄານ"
 
+#, fuzzy
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr "ການຫັກບັນຊີທະນາຄານ"
+
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
@@ -218,6 +229,31 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "ການຫັກບັນຊີທະນາຄານ"
 
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "ວິທີດຳເນີນການ"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr "ໝາຍເອົາຖ້າຫາກວ່າມີການຈ່າຍດ້ວຍການຫັກບັນຊີທະນາຄານ"
@@ -225,6 +261,10 @@ msgstr "ໝາຍເອົາຖ້າຫາກວ່າມີການຈ່າ
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "ໝາຍເອົາຖເາຫາກວ່າລາຍການຈະຈ່າຍດ້ວຍຫັກບັນຊີທະນາຄານ"
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
+msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -252,6 +292,10 @@ msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "ໝາຍເອົາຖ້າຜູ້ສະໜອງຊໍາລະຫັກບັນຊີ"
 
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr ""
+
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "ໝາຍເອົາຖ້າຜູ້ສະໜອງຊໍາລະຫັກບັນຊີ"
@@ -259,6 +303,11 @@ msgstr "ໝາຍເອົາຖ້າຜູ້ສະໜອງຊໍາລະຫ
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "ລຳດັບກຸ່ມການກຳນົດຄ່າບັນຊີຈ່າຍ"
+
+#, fuzzy
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
+msgstr "ການຫັກບັນຊີທະນາຄານ"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -324,6 +373,11 @@ msgstr "ບັນຊີປະຈໍາວັນ"
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "Process Payments"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "ການຫັກບັນຊີທະນາຄານ"
 
 #, fuzzy
 msgctxt ""
@@ -420,9 +474,19 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "Fail"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
 msgid "User in companies"
@@ -445,6 +509,11 @@ msgstr "Default Account Payment Group"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "Account Payment Group"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "ການຫັກບັນຊີທະນາຄານ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
@@ -478,6 +547,11 @@ msgstr "Payments"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
+msgstr "ການຈ່າຍຂອງພາກສ່ວນຜ່ານຫັກບັນຊີທະນາຄານ"
+
+#, fuzzy
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
 msgstr "ການຈ່າຍຂອງພາກສ່ວນຜ່ານຫັກບັນຊີທະນາຄານ"
 
 #, fuzzy
@@ -546,6 +620,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "ການຈ່າຍ"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr ""
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr ""
@@ -581,6 +659,16 @@ msgstr "ຄຳອະທິບາຍ"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "ຂໍ້ມູນອື່ນໆ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"

@@ -44,6 +44,11 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Mokėjimai"
 
+#, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -80,10 +85,6 @@ msgstr "Organizacija"
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "Valiuta"
-
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -141,9 +142,9 @@ msgid "Company"
 msgstr "Organizacija"
 
 #, fuzzy
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -181,6 +182,11 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "Mokėjimai"
 
+#, fuzzy
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "Vykdymo būdas"
+
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -205,6 +211,11 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr "Tiesioginis debetas"
 
+#, fuzzy
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr "Tiesioginis debetas"
+
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -217,6 +228,31 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Tiesioginis debetas"
 
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "Vykdymo būdas"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr "Pažymėkite, jei sąskaita faktūra yra apmokama tiesioginiu debetu."
@@ -224,6 +260,10 @@ msgstr "Pažymėkite, jei sąskaita faktūra yra apmokama tiesioginiu debetu."
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Pažymėkite, jei eilutė bus apmokama tiesioginiu debetu."
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
+msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -253,6 +293,10 @@ msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Pažymėkite, jei tiekėjas teikia tiesioginį debetą."
 
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr ""
+
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Pažymėkite, jei tiekėjas teikia tiesioginį debetą."
@@ -260,6 +304,11 @@ msgstr "Pažymėkite, jei tiekėjas teikia tiesioginį debetą."
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Sąskaitos valdymo mokėjimo grupės numeruotė"
+
+#, fuzzy
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
+msgstr "Tiesioginis debetas"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -318,6 +367,11 @@ msgstr "Žurnalai"
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "Mokėti"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Tiesioginis debetas"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
@@ -405,9 +459,20 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "Nepavyko"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "Sėkmingai"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Sėkmingai"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
@@ -431,6 +496,11 @@ msgstr "Default Account Payment Group"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "Account Payment Group"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Tiesioginis debetas"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
@@ -460,6 +530,10 @@ msgstr "Mokėjimai"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
+msgstr ""
+
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
 msgstr ""
 
 msgctxt "model:res.group,name:group_payment"
@@ -526,6 +600,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Mokėjimas"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr ""
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr ""
@@ -561,6 +639,16 @@ msgstr "Aprašymas"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Kita informacija"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "Sukūrimo data"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"

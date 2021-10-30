@@ -43,6 +43,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "betalingen"
 
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "Datum"
+
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -67,10 +71,9 @@ msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr "Bedrag"
 
-#, fuzzy
 msgctxt "field:account.payment,approved_by:"
 msgid "Approved by"
-msgstr "Goedgekeurd"
+msgstr "Goedgekeurd door"
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
@@ -80,10 +83,6 @@ msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:account.payment,date:"
 msgid "Date"
 msgstr "Datum"
@@ -92,10 +91,9 @@ msgctxt "field:account.payment,description:"
 msgid "Description"
 msgstr "Omschrijving"
 
-#, fuzzy
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
-msgstr "Aangemaakt door"
+msgstr "Mislukking gemeld door"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
@@ -129,18 +127,17 @@ msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Status"
 
-#, fuzzy
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
-msgstr "geslaagd"
+msgstr "Succes opgemerkt door"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -174,6 +171,10 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "betalingen"
 
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "Uitvoeringsmethode"
+
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -198,6 +199,10 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr "Automatische incasso"
 
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr "Automatische incasso"
+
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -210,6 +215,26 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Automatische incasso"
 
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "Relatiie"
+
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "Uitvoeringsmethode"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr "Vink aan als de factuur per automatische incasso wordt betaald."
@@ -217,6 +242,11 @@ msgstr "Vink aan als de factuur per automatische incasso wordt betaald."
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Vink aan als de regel via automatische incasso wordt betaald."
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
+msgstr ""
+"Maak automatische incasso aan voor lijnen die tot deze datum vervallen."
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -246,6 +276,10 @@ msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Controleer of de leverancier een automatische incasso uitvoert."
 
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr "Vul in om de klant automatisch te debiteren."
+
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Controleer of de leverancier een automatische incasso uitvoert."
@@ -253,6 +287,10 @@ msgstr "Controleer of de leverancier een automatische incasso uitvoert."
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Rekeningconfiguratie Betalingsgroepvolgorde"
+
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
+msgstr "Automatische incasso aanmaken"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -309,6 +347,10 @@ msgstr "Dagboeken"
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "Verwerk betalingen"
+
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Automatische incasso aanmaken"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
@@ -404,21 +446,27 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "mislukt"
 
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "geslaagd"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "geslaagd"
 
-#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
+
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_group_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_journal_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
@@ -430,6 +478,10 @@ msgstr "Standaard rekening betalingsgroep"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "Rekeningbetalingsgroep"
+
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "Automatische incasso aanmaken"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
@@ -458,6 +510,10 @@ msgstr "Betalingen"
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
 msgstr "Betaling met automatische incasso"
+
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
+msgstr "Relatie Domiciliëring"
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
@@ -523,6 +579,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Betaling"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr "Maak automatische incasso voor datum"
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr "Voltooien"
@@ -554,6 +614,14 @@ msgstr "Omschrijving"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Overige informatie"
+
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "Aanmaken"
+
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"

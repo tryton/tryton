@@ -44,6 +44,11 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "پرداخت ها"
 
+#, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -81,10 +86,6 @@ msgstr "شرکت"
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
 msgstr "واحد پول"
-
-msgctxt "field:account.payment,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -142,9 +143,9 @@ msgid "Company"
 msgstr "شرکت"
 
 #, fuzzy
-msgctxt "field:account.payment.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
+msgctxt "field:account.payment.group,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -182,6 +183,11 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "پرداخت ها"
 
+#, fuzzy
+msgctxt "field:account.payment.group,process_method:"
+msgid "Process Method"
+msgstr "روش پردازش"
+
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -206,6 +212,11 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr "پرداخت مستقیم"
 
+#, fuzzy
+msgctxt "field:party.party,reception_direct_debits:"
+msgid "Direct Debits"
+msgstr "پرداخت مستقیم"
+
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -218,6 +229,31 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "پرداخت مستقیم"
 
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,process_method:"
+msgid "Process Method"
+msgstr "روش پردازش"
+
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
 msgstr "تیک بزنید اگر صورتحساب با پرداخت مستقیم پرداخت می شود."
@@ -225,6 +261,10 @@ msgstr "تیک بزنید اگر صورتحساب با پرداخت مستقیم
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "تیک بزنید اگر خط با پرداخت مستقیم پرداخت می شود."
+
+msgctxt "help:account.move.line.create_direct_debit.start,date:"
+msgid "Create direct debit for lines due up to this date."
+msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -252,6 +292,10 @@ msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "تیک بزنید اگر تأمین کننده پرداخت مستقیم دارد."
 
+msgctxt "help:party.party,reception_direct_debits:"
+msgid "Fill to debit automatically the customer."
+msgstr ""
+
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "تیک بزنید اگر تأمین کننده پرداخت مستقیم دارد."
@@ -259,6 +303,11 @@ msgstr "تیک بزنید اگر تأمین کننده پرداخت مستقیم
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "پیکربندی حساب توالی گروه پرداخت"
+
+#, fuzzy
+msgctxt "model:account.move.line.create_direct_debit.start,name:"
+msgid "Create Direct Debit"
+msgstr "پرداخت مستقیم"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -318,6 +367,11 @@ msgstr "روزنامه ها"
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
 msgstr "پردازش پرداخت ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "پرداخت مستقیم"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
@@ -409,9 +463,19 @@ msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
 msgstr "Fail"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_group_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_party_reception_direct_debit_companies"
+msgid "User in companies"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_companies"
 msgid "User in companies"
@@ -432,6 +496,11 @@ msgstr "حساب پیش فرض گروه پرداخت"
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
 msgstr "حساب گروه پرداخت"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
+msgid "Create Direct Debit"
+msgstr "پرداخت مستقیم"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
@@ -461,6 +530,11 @@ msgstr "پرداخت ها"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
+msgstr "پرداخت نهاد/سازمان با پرداخت مستقیم"
+
+#, fuzzy
+msgctxt "model:party.party.reception_direct_debit,name:"
+msgid "Party Reception Direct Debit"
 msgstr "پرداخت نهاد/سازمان با پرداخت مستقیم"
 
 msgctxt "model:res.group,name:group_payment"
@@ -527,6 +601,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "پرداخت"
 
+msgctxt "view:account.move.line.create_direct_debit.start:"
+msgid "Create Direct Debit for date"
+msgstr ""
+
 msgctxt "view:account.payment.group:"
 msgid "Complete"
 msgstr ""
@@ -562,6 +640,16 @@ msgstr "شرح"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "سایر اطلاعات"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
+msgid "Create"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.create_direct_debit,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
