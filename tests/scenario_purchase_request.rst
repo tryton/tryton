@@ -215,7 +215,7 @@ Re-create the purchase request::
 
 Create a second purchase request manually::
 
-    >>> set_user(1)  # admin
+    >>> set_user(0)  # root
     >>> pr_id, = PurchaseRequest.create([{
     ...             'product': product.id,
     ...             'quantity': 1,
@@ -255,7 +255,7 @@ Create the purchase with a unique line::
 
 Create a purchase request without product::
 
-    >>> set_user(1)  # admin
+    >>> set_user(0)  # root
     >>> pr_id, = PurchaseRequest.create([{
     ...             'description': "Custom product",
     ...             'quantity': 1,
