@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "help:carrier,percentage:"
 msgid "The percentage applied on the amount to compute the cost."
