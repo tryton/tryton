@@ -66,6 +66,10 @@ msgctxt "field:stock.quantity.issue.product,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "help:stock.quantity.issue.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Si es deixa en blanc s'utilitzen tots els magatzems."
+
 msgctxt "help:stock.quantity.issue.product,forecast_quantity:"
 msgid "The amount of stock expected to be in the warehouse."
 msgstr "La quantitat d’estoc que s’espera que hi hagi al magatzem."

@@ -28,7 +28,7 @@ msgstr "Priorität"
 
 msgctxt "field:stock.quantity.issue,processed_by:"
 msgid "Processed by"
-msgstr "Ausgeführt von"
+msgstr "Bearbeitet von"
 
 msgctxt "field:stock.quantity.issue,products:"
 msgid "Products"
@@ -44,11 +44,11 @@ msgstr "Status"
 
 msgctxt "field:stock.quantity.issue,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:stock.quantity.issue.generate.start,warehouses:"
 msgid "Warehouses"
-msgstr "Warenlager"
+msgstr "Logistikstandorte"
 
 msgctxt "field:stock.quantity.issue.product,best_planned_date:"
 msgid "Best Planned Date"
@@ -66,9 +66,13 @@ msgctxt "field:stock.quantity.issue.product,product:"
 msgid "Product"
 msgstr "Artikel"
 
+msgctxt "help:stock.quantity.issue.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Leer lassen, um alle Logistikstandorte zu verwenden."
+
 msgctxt "help:stock.quantity.issue.product,forecast_quantity:"
 msgid "The amount of stock expected to be in the warehouse."
-msgstr "Der erwartete Lagerbestand für das Warenlager."
+msgstr "Der erwartete Lagerbestand für den Logistikstandort."
 
 msgctxt "model:ir.action,name:act_quantity_issue_form"
 msgid "Quantity Issues"
