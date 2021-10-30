@@ -76,6 +76,9 @@ msgstr ""
 msgid "Show this help"
 msgstr ""
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr ""
 
@@ -224,10 +227,31 @@ msgstr "Atsisiųsti"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
 msgid "Font"
 msgstr ""
 
 msgid "Size"
+msgstr ""
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
 msgstr ""
 
 msgid "Switch view"
@@ -480,6 +504,10 @@ msgstr "Pasirinkti..."
 
 msgid "Clear"
 msgstr "Valyti"
+
+#, fuzzy
+msgid "Open..."
+msgstr "Atvėrimas"
 
 msgid "Choose a language"
 msgstr "Pasirinkti kalbą"

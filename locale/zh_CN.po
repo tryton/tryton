@@ -76,6 +76,9 @@ msgstr "全局查找"
 msgid "Show this help"
 msgstr "显示此帮助"
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
 
@@ -223,11 +226,33 @@ msgstr "下载"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+#, fuzzy
+msgid "Underline"
+msgstr "回滚"
+
 msgid "Font"
 msgstr "字体"
 
 msgid "Size"
 msgstr "大小"
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
+msgstr ""
 
 msgid "Switch view"
 msgstr "切换视图"
@@ -474,6 +499,10 @@ msgstr "选择..."
 
 msgid "Clear"
 msgstr "清除"
+
+#, fuzzy
+msgid "Open..."
+msgstr "打开"
 
 msgid "Choose a language"
 msgstr "选择一种语言"

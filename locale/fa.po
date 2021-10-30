@@ -87,6 +87,9 @@ msgstr "جستجوی سراسری"
 msgid "Show this help"
 msgstr "نمایش این راهنما"
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr "میانبرهای صفحه کلید"
 
@@ -236,11 +239,33 @@ msgstr "دانلود"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+#, fuzzy
+msgid "Underline"
+msgstr "بازگردانی"
+
 msgid "Font"
 msgstr "فونت"
 
 msgid "Size"
 msgstr "اندازه"
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
+msgstr ""
 
 msgid "Switch view"
 msgstr "تعویض نمایه"
@@ -502,6 +527,10 @@ msgstr "انتخاب..."
 
 msgid "Clear"
 msgstr "پاک کردن"
+
+#, fuzzy
+msgid "Open..."
+msgstr "باز"
 
 msgid "Choose a language"
 msgstr ""

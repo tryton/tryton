@@ -80,6 +80,9 @@ msgstr "Üldine otsing"
 msgid "Show this help"
 msgstr "Näita abiinfot"
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr "Kiirklahvid"
 
@@ -229,11 +232,33 @@ msgstr "Allalaadimine"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+#, fuzzy
+msgid "Underline"
+msgstr "Taasta"
+
 msgid "Font"
 msgstr "Šrift"
 
 msgid "Size"
 msgstr "Suurus"
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
+msgstr ""
 
 msgid "Switch view"
 msgstr "Vaheta vaadet"
@@ -492,6 +517,10 @@ msgstr "Vali..."
 
 msgid "Clear"
 msgstr "Tühjenda"
+
+#, fuzzy
+msgid "Open..."
+msgstr "Ava"
 
 msgid "Choose a language"
 msgstr "Vali keel"

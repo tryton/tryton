@@ -76,6 +76,9 @@ msgstr ""
 msgid "Show this help"
 msgstr ""
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr ""
 
@@ -225,11 +228,33 @@ msgstr "Prenesi"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+#, fuzzy
+msgid "Underline"
+msgstr "Povrni"
+
 msgid "Font"
 msgstr "Pisava"
 
 msgid "Size"
 msgstr "Velikost"
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
+msgstr ""
 
 msgid "Switch view"
 msgstr "Preklopi pogled"
@@ -489,6 +514,10 @@ msgstr ""
 
 msgid "Clear"
 msgstr "Počisti"
+
+#, fuzzy
+msgid "Open..."
+msgstr "Odpri"
 
 msgid "Choose a language"
 msgstr ""

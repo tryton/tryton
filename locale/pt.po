@@ -90,6 +90,9 @@ msgstr "Pesquisa global"
 msgid "Show this help"
 msgstr "Mostra esta ajuda"
 
+msgid "Show/Hide access keys"
+msgstr ""
+
 msgid "Keyboard shortcuts"
 msgstr "Teclas de atalho"
 
@@ -239,11 +242,33 @@ msgstr "Baixar"
 msgid "..."
 msgstr "..."
 
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+#, fuzzy
+msgid "Underline"
+msgstr "Recuperar"
+
 msgid "Font"
 msgstr "Fonte"
 
 msgid "Size"
 msgstr "Tamanho"
+
+msgid "Justify Left"
+msgstr ""
+
+msgid "Justify Right"
+msgstr ""
+
+msgid "Justify Center"
+msgstr ""
+
+msgid "Justify Full"
+msgstr ""
 
 msgid "Switch view"
 msgstr "Alternar a visão"
@@ -505,6 +530,10 @@ msgstr "Selecionar..."
 
 msgid "Clear"
 msgstr "Limpar"
+
+#, fuzzy
+msgid "Open..."
+msgstr "Abrir"
 
 msgid "Choose a language"
 msgstr ""
