@@ -14,10 +14,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Data"
@@ -134,10 +130,6 @@ msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Data"
@@ -182,10 +174,6 @@ msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Data"
@@ -225,10 +213,6 @@ msgstr "Empresa"
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"

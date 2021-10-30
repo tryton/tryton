@@ -15,10 +15,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr "Цифри за валута"
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Дата"
@@ -143,11 +139,6 @@ msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-#, fuzzy
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Цифри за валута"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Дата"
@@ -195,11 +186,6 @@ msgstr "Сума"
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Управление на валути"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Цифри за валута"
 
 #, fuzzy
 msgctxt "field:account.statement.line.group,date:"
@@ -250,11 +236,6 @@ msgstr "Фирма"
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "Валута"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
-msgstr "Цифри за валута"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,date:"

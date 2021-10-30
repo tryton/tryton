@@ -15,10 +15,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -136,11 +132,6 @@ msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-#, fuzzy
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Mata uang"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -185,10 +176,6 @@ msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -228,11 +215,6 @@ msgstr "Perusahaan"
 #, fuzzy
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
-msgstr "Mata uang"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
 msgstr "Mata uang"
 
 msgctxt "field:account.statement.origin,date:"

@@ -17,10 +17,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
@@ -144,11 +140,6 @@ msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
-
-#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
@@ -203,11 +194,6 @@ msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
-
-#, fuzzy
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
@@ -256,11 +242,6 @@ msgstr "ຫ້ອງການ/ສຳນັກງານ"
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,date:"

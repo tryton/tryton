@@ -14,10 +14,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -134,10 +130,6 @@ msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -182,10 +174,6 @@ msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
-
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -225,10 +213,6 @@ msgstr "Empresa"
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -448,7 +432,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:statement_post_button"
 msgid "Are you sure you want to post the statement?"
-msgstr "Seguro que quieres contabilizar el extracto?"
+msgstr "¿Estás seguro que quieres contabilizar el extracto?"
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"

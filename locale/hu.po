@@ -14,10 +14,6 @@ msgctxt "field:account.statement,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "Dátum"
@@ -135,11 +131,6 @@ msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-#, fuzzy
-msgctxt "field:account.statement.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Pénznem"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Dátum"
@@ -184,10 +175,6 @@ msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
 msgstr "Pénznem"
 
-msgctxt "field:account.statement.line.group,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Dátum"
@@ -226,11 +213,6 @@ msgstr "Cég"
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
-msgstr "Pénznem"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,currency_digits:"
-msgid "Currency Digits"
 msgstr "Pénznem"
 
 msgctxt "field:account.statement.origin,date:"
@@ -276,7 +258,7 @@ msgstr ""
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
-msgstr ""
+msgstr "Bankszámlakivonat"
 
 msgctxt "model:account.statement.import.start,name:"
 msgid "Statement Import Start"
@@ -289,7 +271,7 @@ msgstr "Statement Journals"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
-msgstr ""
+msgstr "Bankszámlakivonat sor"
 
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
