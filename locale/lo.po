@@ -191,6 +191,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr ""
 
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Product"

@@ -4,29 +4,29 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "Cont Implicit Cheltuiala"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Cont Implicit Venit"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "Cont Implicit Cheltuiala"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Cont Implicit Venit"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "Cont Implicit Cheltuiala"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr ""
+msgstr "Cont Implicit Venit"
 
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
@@ -34,23 +34,23 @@ msgstr "Produs"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr ""
+msgstr "Categorie Produse"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr ""
+msgstr "Cont Cheltuiala"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr ""
+msgstr "Utilizați conturile părintelui"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
+msgstr "Cont Venit"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilitate"
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
@@ -58,27 +58,27 @@ msgstr "Conturi"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
-msgstr ""
+msgstr "Taxe Client"
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr ""
+msgstr "Taxe Client Folosite"
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr ""
+msgstr "Taxe Furnizor"
 
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr ""
+msgstr "Taxe Furnizor Rata Deducere"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr ""
+msgstr "Taxe Furnizor Utilizate"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr ""
+msgstr "Utilizare Contul Parntelui"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
@@ -98,11 +98,11 @@ msgstr "Impozit"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
-msgstr ""
+msgstr "Cont Cheltuiala"
 
 msgctxt "field:product.category.account,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
+msgstr "Cont Venit"
 
 msgctxt "field:product.category.account,category:"
 msgid "Category"
@@ -114,11 +114,11 @@ msgstr "Companie"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Categorie Cont"
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Categorie Cont"
 
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
@@ -130,57 +130,60 @@ msgstr "Șablon"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
-msgstr ""
+msgstr "Utilizare conturi definite la categoria părintelui."
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to convert into accounting category."
-msgstr ""
+msgstr "Bifaţi pentru a converti în categorie de contabilitate."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
-msgstr ""
+msgstr "Taxele de aplicat când se vând produse din aceasta categorie."
 
 msgctxt "help:product.category,supplier_taxes:"
 msgid "The taxes to apply when purchasing products of this category."
-msgstr ""
+msgstr "Taxe de aplicat când se cumpăra produse din aceasta categorie."
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
-msgstr ""
+msgstr "Utilizare taxe definite în categoria părintelui."
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr ""
+msgstr "Câmpul \"%(field)s\" nu este definit pentru \"%(name)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr ""
+msgstr "Nu este definita o categorie de cont pentru produs \"%(name)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr ""
+msgstr "Orice Categorie"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
+msgstr "Nu este categorie de contabilitate"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
-msgstr ""
+msgstr "Categorie - Taxa Client"
 
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
-msgstr ""
+msgstr "Categorie - Taxa Furnizor"
 
 msgctxt "model:product.category.account,name:"
 msgid "Category Account"
-msgstr ""
+msgstr "Categorie Cont"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr ""
+msgstr "Şablon - Categorie Cont"
 
-#, fuzzy
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr "Cont Administrare Produs"
+
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Produs"
@@ -191,7 +194,7 @@ msgstr "Categorie"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilitate"
 
 msgctxt "view:product.category:"
 msgid "Accounts"
@@ -199,8 +202,8 @@ msgstr "Conturi"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
-msgstr ""
+msgstr "Impozite"
 
 msgctxt "view:product.template:"
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilitate"

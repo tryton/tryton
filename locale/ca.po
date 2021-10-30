@@ -180,6 +180,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr "Plantilla - Categoria Comptable"
 
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr "Administració de comptable de productes"
+
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Producte"

@@ -182,6 +182,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr "Modell - Buchungskategorie"
 
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr "Buchhaltung Artikel Einstellungen"
+
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Artikel"

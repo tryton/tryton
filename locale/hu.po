@@ -68,10 +68,9 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Beszerzési adók"
 
-#, fuzzy
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr "Beszerzési adók"
+msgstr "Visszaigényelhető adó aránya"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
@@ -180,6 +179,10 @@ msgstr ""
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
+msgstr ""
+
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
 msgstr ""
 
 msgctxt "view:account.configuration:"

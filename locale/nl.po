@@ -186,6 +186,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr "Sjabloon - Accountcategorie"
 
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr "Account Productbeheer"
+
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Product"
