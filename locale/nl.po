@@ -58,7 +58,6 @@ msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
 msgstr "Cultivars"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Groups"
 msgstr "Groepen"
@@ -75,7 +74,6 @@ msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
 msgstr "Cultivars"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Groups"
 msgstr "Groepen"
