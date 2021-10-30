@@ -8,7 +8,11 @@ msgstr "Korrektur"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
+
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
@@ -16,7 +20,7 @@ msgstr "Rechnungsposition"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
@@ -34,7 +38,7 @@ msgstr ""
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
-msgstr "Rechnungsposition - Lagerbewegung"
+msgstr "Rechnungsposition - Warenbewegung"
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"

@@ -10,6 +10,10 @@ msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
 msgstr "Movimientos de existencias"
 
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
 msgstr "Línea de factura"

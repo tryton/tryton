@@ -11,6 +11,10 @@ msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
 msgstr "Хранилище перемещение товара"
 
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
