@@ -75,10 +75,6 @@ msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.request.quotation.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -119,10 +115,6 @@ msgctxt "field:purchase.request.quotation.line,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:purchase.request.quotation.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:purchase.request.quotation.line,unit_price:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
@@ -159,7 +151,6 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
 msgstr "offertes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
 msgid "Quotations"
 msgstr "offertes"
@@ -191,7 +182,6 @@ msgctxt "model:ir.message,text:msg_previous_quotation"
 msgid "A quotation was already made for request \"%(request)s\"."
 msgstr "Er is al een offerte gemaakt voor aanvraag \"%(request)s\"."
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
@@ -204,7 +194,6 @@ msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
 msgstr "Aankoopaanvraag Offerte"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Quotations"
 msgstr "offertes"

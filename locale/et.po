@@ -75,10 +75,6 @@ msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:purchase.request.quotation.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "valuuta numbriväärtus"
-
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
 msgstr "Kirjeldus"
@@ -119,10 +115,6 @@ msgstr "Tarne kuupäev"
 msgctxt "field:purchase.request.quotation.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
-
-msgctxt "field:purchase.request.quotation.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtuse"
 
 msgctxt "field:purchase.request.quotation.line,unit_price:"
 msgid "Unit Price"
