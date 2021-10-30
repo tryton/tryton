@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Daftar Harga Penjualan"
 
 msgctxt "field:party.party,sale_price_lists:"
 msgid "Sale Price Lists"
