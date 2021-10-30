@@ -14,10 +14,6 @@ msgctxt "field:stock.move,secondary_unit:"
 msgid "Secondary Unit"
 msgstr ""
 
-msgctxt "field:stock.move,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr ""
-
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr ""
