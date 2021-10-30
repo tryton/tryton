@@ -64,8 +64,7 @@ class Party(metaclass=PoolMeta):
             if identifier.type == name:
                 return identifier.sepa_identifier
         else:
-            selection = Identifier.fields_get(['type'])['type']['selection']
-            type = dict(selection).get(name, name)
+            type = dict(Identifier.get_types()).get(name, name)
             raise PartyIdentificationdError(
                 gettext('account_payment_sepa.msg_party_no_id',
                     party=self.rec_name,
