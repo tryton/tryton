@@ -82,24 +82,21 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Koers"
 
-#, fuzzy
 msgctxt "help:currency.cron,currencies:"
 msgid "The currencies to update the rate."
-msgstr "De valuta waarop het tarief van toepassing is."
+msgstr "De valuta's om de koers bij te werken."
 
-#, fuzzy
 msgctxt "help:currency.cron,currency:"
 msgid "The base currency to fetch rate."
-msgstr "De valuta waarop het tarief van toepassing is."
+msgstr "De basisvaluta om de koers op te halen."
 
-#, fuzzy
 msgctxt "help:currency.cron,frequency:"
 msgid "How frequently rates must be updated."
-msgstr "Een wisselkoers moet positief zijn."
+msgstr "Hoe vaak tarieven moeten worden bijgewerkt."
 
 msgctxt "help:currency.cron,source:"
 msgid "The external source for rates."
-msgstr ""
+msgstr "De externe bron voor wisselkoersen."
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
@@ -142,14 +139,13 @@ msgid "The floating exchange rate used to convert the currency."
 msgstr ""
 "De variabele wisselkoers die wordt gebruikt om de valuta om te rekenen."
 
-#, fuzzy
 msgctxt "model:currency.cron,name:"
 msgid "Currency Cron"
-msgstr "Valuta"
+msgstr "Valuta Cron"
 
 msgctxt "model:currency.cron-currency.currency,name:"
 msgid "Currency Cron - Currency"
-msgstr ""
+msgstr "Valuta Cron - Valuta"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -161,7 +157,7 @@ msgstr "Wisselkoers"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Geplande tariefupdates"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -185,7 +181,7 @@ msgstr "uitvoeren"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Geplande tariefupdates"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
@@ -211,10 +207,9 @@ msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
 msgstr "Wekelijks"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
-msgstr "Wisselkoers"
+msgstr "Valutakoersen bijwerken"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
