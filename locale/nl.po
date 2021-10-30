@@ -28,8 +28,8 @@ msgstr "De prijslijst voor nieuwe aankopen."
 
 msgctxt "model:party.party.purchase_price_list,name:"
 msgid "Party Purchase Price List"
-msgstr ""
+msgstr "Relatie Aankoopprijslijst"
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Purchase"
-msgstr ""
+msgstr "Productaankoop"
