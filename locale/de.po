@@ -84,40 +84,40 @@ msgstr "Das Gesamtgewicht der Packungen in kg."
 
 msgctxt "help:stock.package,volume:"
 msgid "The total volume of the record's moves in liter."
-msgstr "Das Gesamtvolumen der Lagerbewegungen des Datensatzes in Liter."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes in Liter."
 
 msgctxt "help:stock.package,weight:"
 msgid "The total weight of the record's moves in kg."
-msgstr "Das Gesamtgewicht der Lagerbewegungen des Datensatzes in Kilogramm."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes in Kilogramm."
 
 msgctxt "help:stock.shipment.in,volume:"
 msgid "The total volume of the record's moves in liter."
-msgstr "Das Gesamtvolumen der Lagerbewegungen des Datensatzes in Liter."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes in Liter."
 
 msgctxt "help:stock.shipment.in,weight:"
 msgid "The total weight of the record's moves in kg."
-msgstr "Das Gesamtgewicht der Lagerbewegungen des Datensatzes in Kilogramm."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes in Kilogramm."
 
 msgctxt "help:stock.shipment.in.return,volume:"
 msgid "The total volume of the record's moves in liter."
-msgstr "Das Gesamtvolumen der Lagerbewegungen des Datensatzes in Liter."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes in Liter."
 
 msgctxt "help:stock.shipment.in.return,weight:"
 msgid "The total weight of the record's moves in kg."
-msgstr "Das Gesamtgewicht der Lagerbewegungen des Datensatzes in Kilogramm."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes in Kilogramm."
 
 msgctxt "help:stock.shipment.out,volume:"
 msgid "The total volume of the record's moves in liter."
-msgstr "Das Gesamtvolumen der Lagerbewegungen des Datensatzes in Liter."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes in Liter."
 
 msgctxt "help:stock.shipment.out,weight:"
 msgid "The total weight of the record's moves in kg."
-msgstr "Das Gesamtgewicht der Lagerbewegungen des Datensatzes in Kilogramm."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes in Kilogramm."
 
 msgctxt "help:stock.shipment.out.return,volume:"
 msgid "The total volume of the record's moves in liter."
-msgstr "Das Gesamtvolumen der Lagerbewegungen des Datensatzes in Liter."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes in Liter."
 
 msgctxt "help:stock.shipment.out.return,weight:"
 msgid "The total weight of the record's moves in kg."
-msgstr "Das Gesamtgewicht der Lagerbewegungen des Datensatzes in Kilogramm."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes in Kilogramm."
