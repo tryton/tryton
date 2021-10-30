@@ -74,10 +74,9 @@ msgctxt "field:production,outputs:"
 msgid "Outputs"
 msgstr "uitgang (output)"
 
-#, fuzzy
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
-msgstr "toegewezen"
+msgstr "Gedeeltelijk toegewezen"
 
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
@@ -106,10 +105,6 @@ msgstr "Uitgevoerd door"
 msgctxt "field:production,state:"
 msgid "State"
 msgstr "Status"
-
-msgctxt "field:production,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
 
 msgctxt "field:production,uom:"
 msgid "Uom"
@@ -151,10 +146,6 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.input,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
 msgstr "meeteenheid"
@@ -174,10 +165,6 @@ msgstr "Product"
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
-
-msgctxt "field:production.bom.output,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
 
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
@@ -199,10 +186,6 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:production.bom.tree,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
 msgstr "maateenheid"
@@ -222,10 +205,6 @@ msgstr "Product"
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
-
-msgctxt "field:production.bom.tree.open.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
 
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
@@ -316,7 +295,6 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Producties"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -353,11 +331,10 @@ msgctxt ""
 msgid "Assigned"
 msgstr "toegewezen"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_available"
 msgid "Partially Assigned"
-msgstr "toegewezen"
+msgstr "Gedeeltelijk toegewezen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
@@ -379,9 +356,13 @@ msgctxt ""
 msgid "Waiting"
 msgstr "In afwachting"
 
-msgctxt "model:ir.message,text:msg_product_bom_unique"
-msgid "Products can only appear once on each BOM."
-msgstr "Producten kunnen slechts eenmaal op elke stuklijst verschijnen."
+msgctxt "model:ir.message,text:msg_missing_product_list_price"
+msgid ""
+"The product \"%(product)s\" on production \"%(production)s\" does not have "
+"any list price defined."
+msgstr ""
+"Voor het product \"%(product)s\" in productie \"%(production)s\" is er geen "
+"catalogusprijs gedefinieerd."
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
@@ -419,7 +400,6 @@ msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
 msgstr "wachten"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_production_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
@@ -448,7 +428,6 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Producties"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -513,7 +492,6 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Productie"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Productions"
 msgstr "Wijs productie toe"

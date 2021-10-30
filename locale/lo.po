@@ -112,10 +112,6 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "ສະຖານະ"
 
-msgctxt "field:production,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
-
 msgctxt "field:production,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
@@ -160,11 +156,6 @@ msgid "Quantity"
 msgstr "ຈຳນວນ"
 
 #, fuzzy
-msgctxt "field:production.bom.input,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
-
-#, fuzzy
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
@@ -188,11 +179,6 @@ msgstr "ຜະລິດຕະພັນ"
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
-
-#, fuzzy
-msgctxt "field:production.bom.output,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
 
 #, fuzzy
 msgctxt "field:production.bom.output,uom:"
@@ -219,11 +205,6 @@ msgid "Quantity"
 msgstr "ຈຳນວນ"
 
 #, fuzzy
-msgctxt "field:production.bom.tree,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
-
-#, fuzzy
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
@@ -247,11 +228,6 @@ msgstr "ຜະລິດຕະພັນ"
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
-
-#, fuzzy
-msgctxt "field:production.bom.tree.open.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,uom:"
@@ -416,8 +392,10 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Waiting"
 
-msgctxt "model:ir.message,text:msg_product_bom_unique"
-msgid "Products can only appear once on each BOM."
+msgctxt "model:ir.message,text:msg_missing_product_list_price"
+msgid ""
+"The product \"%(product)s\" on production \"%(production)s\" does not have "
+"any list price defined."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
