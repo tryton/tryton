@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
@@ -17,27 +17,27 @@ msgstr "Partei"
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr "Die Standard-Gruppierungsmethode der Lieferposten für neue Kunden."
+msgstr "Die Standard-Gruppierungsmethode der Lieferungen für neue Kunden."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr "Die Standard-Gruppierungsmethode der Lieferposten für neue Kunden."
+msgstr "Die Standard-Gruppierungsmethode der Lieferungen für neue Kunden."
 
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
+msgstr "Gruppierungsmethode Lieferungen Verkauf"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
@@ -49,4 +49,4 @@ msgstr "Standard"
 
 msgctxt "view:party.party:"
 msgid "Shipments"
-msgstr "Lieferposten"
+msgstr "Lieferungen"
