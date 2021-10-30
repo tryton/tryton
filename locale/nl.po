@@ -30,6 +30,10 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr "Bedrag"
 
+msgctxt "field:commission,base_amount:"
+msgid "Base Amount"
+msgstr "Basis bedrag"
+
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -110,6 +114,10 @@ msgctxt "field:commission.agent.selection,start_date:"
 msgid "Start Date"
 msgstr "Startdatum"
 
+msgctxt "field:commission.create_invoice.ask,agents:"
+msgid "Agents"
+msgstr "Vertegenwoordigers"
+
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr "Van"
@@ -153,6 +161,82 @@ msgstr "Plan"
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Product"
+
+msgctxt "field:commission.reporting.agent,agent:"
+msgid "Agent"
+msgstr "Vertegenwoordiger"
+
+msgctxt "field:commission.reporting.agent,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:commission.reporting.agent,base_amount:"
+msgid "Base Amount"
+msgstr "Basis bedrag"
+
+msgctxt "field:commission.reporting.agent,base_amount_trend:"
+msgid "Base Amount Trend"
+msgstr "Trend basisbedrag"
+
+msgctxt "field:commission.reporting.agent,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:commission.reporting.agent,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:commission.reporting.agent,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:commission.reporting.agent.time_series,agent:"
+msgid "Agent"
+msgstr "Vertegenwoordiger"
+
+msgctxt "field:commission.reporting.agent.time_series,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:commission.reporting.agent.time_series,base_amount:"
+msgid "Base Amount"
+msgstr "Basis bedrag"
+
+msgctxt "field:commission.reporting.agent.time_series,base_amount_trend:"
+msgid "Base Amount Trend"
+msgstr "Trend basisbedrag"
+
+msgctxt "field:commission.reporting.agent.time_series,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:commission.reporting.agent.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:commission.reporting.agent.time_series,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:commission.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:commission.reporting.context,invoiced:"
+msgid "Invoiced"
+msgstr "Gefactureerd"
+
+msgctxt "field:commission.reporting.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:commission.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:commission.reporting.context,type:"
+msgid "Type"
+msgstr "Type"
 
 msgctxt "field:party.party,agents:"
 msgid "Agents"
@@ -228,6 +312,14 @@ msgctxt "help:commission.agent.selection,start_date:"
 msgid "The first date that the agent will be considered for selection."
 msgstr "De eerste datum waarop de agent in aanmerking komt voor selectie."
 
+msgctxt "help:commission.create_invoice.ask,agents:"
+msgid ""
+"Limit to commissions for these agents.\n"
+"If empty all agents of the selected type are used."
+msgstr ""
+"Beperk je tot commissies voor deze agenten.\n"
+"Indien leeg worden alle agenten van het geselecteerde type gebruikt."
+
 msgctxt "help:commission.create_invoice.ask,from_:"
 msgid "Limit to commissions from this date."
 msgstr "Beperk tot commissies vanaf deze datum."
@@ -276,6 +368,10 @@ msgctxt "help:commission.plan.line,product:"
 msgid "Apply only to the product."
 msgstr "Alleen van toepassing op dit product."
 
+msgctxt "help:commission.reporting.context,invoiced:"
+msgid "Only include invoiced commissions."
+msgstr "Alleen gefactureerde commissies inbegrepen."
+
 msgctxt "help:product.product,principals:"
 msgid "The principals who pay a commission when the product is sold."
 msgstr ""
@@ -322,6 +418,18 @@ msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
 msgstr "Commissie plan lijn"
 
+msgctxt "model:commission.reporting.agent,name:"
+msgid "Commission Reporting per Agent"
+msgstr "Commissierapportage per agent"
+
+msgctxt "model:commission.reporting.agent.time_series,name:"
+msgid "Commission Reporting per Agent"
+msgstr "Commissierapportage per agent"
+
+msgctxt "model:commission.reporting.context,name:"
+msgid "Commission Reporting Context"
+msgstr "Rapportagecontext van de Commissie"
+
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr "Vertegenwoordigers"
@@ -353,6 +461,14 @@ msgstr "commissies"
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Plans"
 msgstr "Plannen"
+
+msgctxt "model:ir.action,name:act_reporting_agent"
+msgid "Commissions per Agent"
+msgstr "Commissies per agent"
+
+msgctxt "model:ir.action,name:act_reporting_agent_time_series"
+msgid "Commissions per Agent"
+msgstr "Commissies per agent"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_commission_form_domain_all"
@@ -388,7 +504,12 @@ msgctxt "model:ir.rule.group,name:rule_group_agent_companies"
 msgid "User in companies"
 msgstr "Gebruiker in bedrijven"
 
-msgctxt "model:ir.rule.group,name:rule_group_agent_selection_companies"
+msgctxt "model:ir.rule.group,name:rule_group_reporting_agent_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_agent_time_series_companies"
 msgid "User in companies"
 msgstr "Gebruiker in bedrijven"
 
@@ -415,6 +536,14 @@ msgstr "Instellingen"
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Plans"
 msgstr "Plannen"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapporten"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
+msgid "Commissions"
+msgstr "Commissies"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
@@ -479,6 +608,26 @@ msgstr "Tegen betaling"
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
 msgstr "Bij het boeken"
+
+msgctxt "selection:commission.reporting.context,period:"
+msgid "Day"
+msgstr "Dag"
+
+msgctxt "selection:commission.reporting.context,period:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "selection:commission.reporting.context,period:"
+msgid "Year"
+msgstr "Jaar"
+
+msgctxt "selection:commission.reporting.context,type:"
+msgid "Incoming"
+msgstr "Inkomend"
+
+msgctxt "selection:commission.reporting.context,type:"
+msgid "Outgoing"
+msgstr "Uitgaande"
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
