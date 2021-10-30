@@ -6,6 +6,10 @@ msgctxt "field:product.product,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "UdM de venta secundaria"
 
+msgctxt "field:product.product,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Categoria UdM de venta secundaria"
+
 msgctxt "field:product.product,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
 msgstr "Factor UdM de venta secundaria"
@@ -17,6 +21,10 @@ msgstr "Rati UdM de venta secundaria"
 msgctxt "field:product.template,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "UdM de venta secundaria"
+
+msgctxt "field:product.template,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Categoria UdM de venta secundaria"
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
@@ -38,10 +46,6 @@ msgctxt "field:sale.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Unitat secundaria"
 
-msgctxt "field:sale.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Dígits de la unitat secundaria"
-
 msgctxt "field:sale.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Preu unitari secundari"
@@ -61,6 +65,10 @@ msgstr "Categoria UdM per defecte"
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "UdM de venta secundaria"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Categoria UdM de venta secundaria"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"

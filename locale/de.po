@@ -6,6 +6,10 @@ msgctxt "field:product.product,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkauf Zweitmaßeinheit"
 
+msgctxt "field:product.product,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkauf Zweitmaßeinheitenkategorie"
+
 msgctxt "field:product.product,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
 msgstr "Verkauf Zweitmaßeinheit Faktor"
@@ -17,6 +21,10 @@ msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
 msgctxt "field:product.template,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkauf Zweitmaßeinheit"
+
+msgctxt "field:product.template,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkauf Zweitmaßeinheitenkategorie"
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
@@ -38,10 +46,6 @@ msgctxt "field:sale.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Zweitmaßeinheit"
 
-msgctxt "field:sale.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Nachkommastellen Zweitmaßeinheit"
-
 msgctxt "field:sale.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Zweiteinzelpreis"
@@ -61,6 +65,10 @@ msgstr "Standardkategorie Maßeinheit"
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkauf Zweitmaßeinheit"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkauf Zweitmaßeinheitenkategorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"

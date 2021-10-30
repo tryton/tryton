@@ -6,6 +6,10 @@ msgctxt "field:product.product,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr ""
 
+msgctxt "field:product.product,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr ""
+
 msgctxt "field:product.product,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
 msgstr ""
@@ -16,6 +20,10 @@ msgstr ""
 
 msgctxt "field:product.template,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
+msgstr ""
+
+msgctxt "field:product.template,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
 msgstr ""
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
@@ -38,10 +46,6 @@ msgctxt "field:sale.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr ""
 
-msgctxt "field:sale.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr ""
@@ -60,6 +64,10 @@ msgstr ""
 
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
+msgstr ""
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
 msgstr ""
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"

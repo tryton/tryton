@@ -6,6 +6,10 @@ msgctxt "field:product.product,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkoop Secundaire maateenheid"
 
+msgctxt "field:product.product,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkoop Secundaire UOM-categorie"
+
 msgctxt "field:product.product,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
 msgstr "secundaire maateenheid factor"
@@ -17,6 +21,10 @@ msgstr "Verkoop Secundair maateenheid-tarief"
 msgctxt "field:product.template,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkoop Secundaire maateenheid"
+
+msgctxt "field:product.template,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkoop secundaire maateenheid factor"
 
 msgctxt "field:product.template,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
@@ -38,10 +46,6 @@ msgctxt "field:sale.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Secundaire eenheid"
 
-msgctxt "field:sale.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "decimalen secondaire eenheid"
-
 msgctxt "field:sale.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "secundaire eenheidsprijs"
@@ -61,6 +65,10 @@ msgstr "Standaard maateenheid-categorie"
 msgctxt "field:sale.product_customer,sale_secondary_uom:"
 msgid "Sale Secondary UOM"
 msgstr "Verkoop Secundaire maateenheid"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_category:"
+msgid "Sale Secondary UOM Category"
+msgstr "Verkoop secundaire maateenheid categorie"
 
 msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
 msgid "Sale Secondary UOM Factor"
