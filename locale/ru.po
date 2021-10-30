@@ -12,11 +12,6 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 #, fuzzy
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Группа цифр"
-
-#, fuzzy
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "Ед.изм."

@@ -10,10 +10,6 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtus"
-
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "Mõõtühik"

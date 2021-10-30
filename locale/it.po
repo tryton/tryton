@@ -10,11 +10,6 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-#, fuzzy
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr ""

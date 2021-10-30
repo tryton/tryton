@@ -10,10 +10,6 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "Einheit"
@@ -24,24 +20,24 @@ msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
-msgstr "Wertebereich Lagerbewegungen (Domain)"
+msgstr "Wertebereich Warenbewegungen (Domain)"
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves."
-msgstr "Maximale Anzahl von Lagerbewegungen."
+msgstr "Maximale Anzahl von Warenbewegungen."
 
 msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
 msgstr ""
-"Die gewählten Lagerbewegungen werden in die neue Lieferung übernommen."
+"Die gewählten Warenbewegungen werden in die neue Lieferung übernommen."
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Lagerbewegung aufteilen"
+msgstr "Warenbewegung aufteilen"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
@@ -65,7 +61,7 @@ msgstr "Aufteilen"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Lagerbewegung Aufteilung"
+msgstr "Warenbewegung Aufteilung"
 
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
@@ -78,7 +74,7 @@ msgstr "Aufteilen"
 msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment:"
 msgstr ""
-"Auswahl der Lagerbewegungen, die in die neue Lieferung übernommen werden "
+"Auswahl der Warenbewegungen, die in die neue Lieferung übernommen werden "
 "sollen:"
 
 msgctxt "wizard_button:stock.move.split,start,end:"

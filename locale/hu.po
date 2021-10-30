@@ -10,10 +10,6 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számhelyek"
-
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "Egység"

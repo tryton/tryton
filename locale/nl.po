@@ -10,10 +10,6 @@ msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:stock.move.split.start,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "maateenheid"
