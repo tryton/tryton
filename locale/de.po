@@ -8,7 +8,7 @@ msgstr "Zuordnungsmethode Versandkosten"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
-msgstr "Einheit Lieferpostenkosten"
+msgstr "Einheit Lieferkosten"
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"

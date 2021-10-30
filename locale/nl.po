@@ -22,24 +22,21 @@ msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
 msgstr "Kostenvaluta"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost_currency_used:"
 msgid "Cost Currency"
 msgstr "Kostenvaluta"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost_edit:"
 msgid "Edit Cost"
-msgstr "Kosten"
+msgstr "Kosten bewerken"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost_used:"
 msgid "Cost"
 msgstr "Kosten"
 
 msgctxt "help:stock.shipment.in,cost_edit:"
 msgid "Check to edit the cost."
-msgstr ""
+msgstr "Vink aan om de kosten te bewerken."
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
