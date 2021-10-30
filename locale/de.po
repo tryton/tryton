@@ -17,7 +17,7 @@ msgstr "Branchen-Code (SIC)"
 
 msgctxt "model:account.statement.origin.information,string:information_type"
 msgid "Type"
-msgstr "Type"
+msgstr "Typ"
 
 msgctxt "model:ir.message,text:msg_import_no_statement"
 msgid "The OFX file is not a statement."
