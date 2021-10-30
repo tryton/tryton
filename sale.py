@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
+from collections import defaultdict
 
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
@@ -95,10 +96,12 @@ class Sale(metaclass=PoolMeta):
             with transaction.set_context(forecast=True,
                     stock_date_start=date,
                     stock_date_end=date):
-                pbl = Product.products_by_location(
-                    [self.warehouse.id],
-                    with_childs=True,
-                    grouping_filter=(product_ids,))
+                pbl = defaultdict(int)
+                for sub_product_ids in grouped_slice(product_ids):
+                    pbl.update(Product.products_by_location(
+                            [self.warehouse.id],
+                            with_childs=True,
+                            grouping_filter=(list(sub_product_ids),)))
             delta = {}
             for key, qty in pbl.items():
                 _, product_id = key
