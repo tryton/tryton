@@ -95,6 +95,10 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr ""
 
+msgctxt "field:product.product,country_of_origin:"
+msgid "Country"
+msgstr ""
+
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
 msgstr ""
@@ -106,6 +110,10 @@ msgstr "Tariff Codes"
 
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
+msgstr ""
+
+msgctxt "field:product.template,country_of_origin:"
+msgid "Country"
 msgstr ""
 
 msgctxt "field:product.template,customs_category:"

@@ -89,10 +89,9 @@ msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
 msgstr "Tariff Codes"
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Külkereskedelmi"
 
 #, fuzzy
 msgctxt "field:product.category,tariff_codes:"
@@ -103,9 +102,14 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.product,country_of_origin:"
+msgid "Country"
+msgstr "Ország"
+
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Külkereskedelmi kategória"
 
 #, fuzzy
 msgctxt "field:product.product,tariff_codes:"
@@ -116,9 +120,14 @@ msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.template,country_of_origin:"
+msgid "Country"
+msgstr "Ország"
+
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Külkereskedelmi kategória"
 
 #, fuzzy
 msgctxt "field:product.template,tariff_codes:"
@@ -174,7 +183,7 @@ msgstr "Import"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Külkereskedelem"
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
@@ -331,12 +340,10 @@ msgctxt "view:customs.tariff.code:"
 msgid "To"
 msgstr "-hoz; -höz"
 
-#, fuzzy
 msgctxt "view:product.category:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Külkereskedelem"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Külkereskedelem"

@@ -90,6 +90,10 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Usar los códigos arancelarios del padre"
 
+msgctxt "field:product.product,country_of_origin:"
+msgid "Country"
+msgstr "País"
+
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
 msgstr "Categoría de aduanas"
@@ -101,6 +105,10 @@ msgstr "Códigos arancelarios"
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usar los códigos arancelarios de la categoría"
+
+msgctxt "field:product.template,country_of_origin:"
+msgid "Country"
+msgstr "País"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"

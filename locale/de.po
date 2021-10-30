@@ -12,7 +12,7 @@ msgstr "Berechnungstyp"
 
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr "Staat"
+msgstr "Land"
 
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
@@ -44,7 +44,7 @@ msgstr "Code"
 
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr "Staat"
+msgstr "Land"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
@@ -90,6 +90,10 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Zolltarifnummern der übergeordneten Kategorie anwenden"
 
+msgctxt "field:product.product,country_of_origin:"
+msgid "Country"
+msgstr "Land"
+
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
 msgstr "Zollkategorie"
@@ -101,6 +105,10 @@ msgstr "Zolltarifnummern"
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Zolltarifnummern der Kategorie anwenden"
+
+msgctxt "field:product.template,country_of_origin:"
+msgid "Country"
+msgstr "Land"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"

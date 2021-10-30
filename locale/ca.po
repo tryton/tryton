@@ -90,6 +90,10 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Usa els codis aranzelaris del pare"
 
+msgctxt "field:product.product,country_of_origin:"
+msgid "Country"
+msgstr "País"
+
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
 msgstr "Categoria de duanes"
@@ -101,6 +105,10 @@ msgstr "Codis aranzelaris"
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usa els codis aranzelaris de la categoria"
+
+msgctxt "field:product.template,country_of_origin:"
+msgid "Country"
+msgstr "País"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
