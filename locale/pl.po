@@ -224,10 +224,6 @@ msgctxt "field:stock.inventory.count.quantity,total_quantity:"
 msgid "Total Quantity"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.quantity,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:stock.inventory.count.quantity,uom:"
 msgid "UOM"
 msgstr "Jm"
@@ -274,10 +270,6 @@ msgstr "Produkt"
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
 msgstr "Ilość"
-
-msgctxt "field:stock.inventory.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -463,10 +455,6 @@ msgctxt "field:stock.move,to_location:"
 msgid "To Location"
 msgstr "Do lokalizacji"
 
-msgctxt "field:stock.move,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
 msgstr "Cena jednostkowa"
@@ -642,11 +630,6 @@ msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.reporting.margin.category,currency:"
-msgid "Currency"
-msgstr "Waluta"
-
 msgctxt "field:stock.reporting.margin.category,time_series:"
 msgid "Time Series"
 msgstr ""
@@ -654,11 +637,6 @@ msgstr ""
 msgctxt "field:stock.reporting.margin.category.time_series,category:"
 msgid "Category"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.reporting.margin.category.time_series,currency:"
-msgid "Currency"
-msgstr "Waluta"
 
 #, fuzzy
 msgctxt "field:stock.reporting.margin.category.time_series,date:"
@@ -704,10 +682,14 @@ msgctxt "field:stock.reporting.margin.context,to_date:"
 msgid "To Date"
 msgstr "Data"
 
+msgctxt "field:stock.reporting.margin.main,time_series:"
+msgid "Time Series"
+msgstr ""
+
 #, fuzzy
-msgctxt "field:stock.reporting.margin.product,currency:"
-msgid "Currency"
-msgstr "Waluta"
+msgctxt "field:stock.reporting.margin.main.time_series,date:"
+msgid "Date"
+msgstr "Data"
 
 #, fuzzy
 msgctxt "field:stock.reporting.margin.product,internal_quantity:"
@@ -733,16 +715,6 @@ msgid "Unit"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.reporting.margin.product,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
-
-#, fuzzy
-msgctxt "field:stock.reporting.margin.product.time_series,currency:"
-msgid "Currency"
-msgstr "Waluta"
-
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,date:"
 msgid "Date"
 msgstr "Data"
@@ -765,11 +737,6 @@ msgstr "Ilość"
 msgctxt "field:stock.reporting.margin.product.time_series,unit:"
 msgid "Unit"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.reporting.margin.product.time_series,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 #, fuzzy
 msgctxt "field:stock.shipment.assign.partial,moves:"
@@ -1773,6 +1740,16 @@ msgctxt "model:ir.action,name:act_reporting_margin_category_tree"
 msgid "Margins per Category"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_margin_main"
+msgid "Margins"
+msgstr "Źródła"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_margin_main_time_series"
+msgid "Margins"
+msgstr "Źródła"
+
 msgctxt "model:ir.action,name:act_reporting_margin_product"
 msgid "Margins per Product"
 msgstr ""
@@ -2201,6 +2178,10 @@ msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
+msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
@@ -2211,8 +2192,8 @@ msgid "Cost"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_stock_reporting_currency_digits"
-msgid "Currency Digits"
+msgctxt "model:ir.message,text:msg_stock_reporting_currency"
+msgid "Currency"
 msgstr "Waluta"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin"
@@ -2451,6 +2432,15 @@ msgstr ""
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_margin_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_margin_main_time_series_companies"
 msgid "User in companies"
 msgstr ""
 
@@ -2783,6 +2773,14 @@ msgstr ""
 
 msgctxt "model:stock.reporting.margin.context,name:"
 msgid "Stock Reporting Margin Context"
+msgstr ""
+
+msgctxt "model:stock.reporting.margin.main,name:"
+msgid "Stock Reporting Margin"
+msgstr ""
+
+msgctxt "model:stock.reporting.margin.main.time_series,name:"
+msgid "Stock Reporting Margin"
 msgstr ""
 
 msgctxt "model:stock.reporting.margin.product,name:"
@@ -3356,20 +3354,40 @@ msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
 msgstr ""
 
+msgctxt "view:stock.reporting.margin.category.time_series:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "view:stock.reporting.margin.category.time_series:"
+msgid "Revenue"
+msgstr ""
+
 msgctxt "view:stock.reporting.margin.category.tree:"
 msgid "%"
 msgstr ""
 
-msgctxt "view:stock.reporting.margin.category:"
+msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "%"
 msgstr ""
 
-msgctxt "view:stock.reporting.margin.product.time_series:"
+msgctxt "view:stock.reporting.margin.main.time_series:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "view:stock.reporting.margin.main.time_series:"
+msgid "Revenue"
+msgstr ""
+
+msgctxt "view:stock.reporting.margin.main:"
 msgid "%"
 msgstr ""
 
-msgctxt "view:stock.reporting.margin.product:"
-msgid "%"
+msgctxt "view:stock.reporting.margin.main:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "view:stock.reporting.margin.main:"
+msgid "Revenue"
 msgstr ""
 
 msgctxt "view:stock.shipment.assign.partial:"
