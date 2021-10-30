@@ -182,9 +182,9 @@ msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Montant"
 
-msgctxt "field:account.payment.stripe.refund,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgctxt "field:account.payment.stripe.refund,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.payment.stripe.refund,payment:"
 msgid "Payment"
@@ -225,6 +225,33 @@ msgstr "ID de remboursement Stripe"
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "Clients Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_account:"
+msgid "Stripe Account"
+msgstr "Compte Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_customer:"
+msgid "Stripe Customer"
+msgstr "Client Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method:"
+msgid "Stripe Payment Method"
+msgstr "Méthode de paiement Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method_selection:"
+msgid "Stripe Customer Payment Method"
+msgstr "Méthode de paiement client Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_customer_source:"
+msgid "Stripe Customer Source"
+msgstr "Source client Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_source_selection:"
+msgid "Stripe Customer Source"
+msgstr "Source client Stripe"
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
 msgid "The URL to be called by Stripe."
@@ -302,7 +329,7 @@ msgstr "Échoués"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
 msgid "Processing"
-msgstr "En traitements"
+msgstr "En traitement"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
@@ -435,7 +462,7 @@ msgstr "Échoué"
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Processing"
-msgstr "En traitements"
+msgstr "En traitement"
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Succeeded"
@@ -512,6 +539,18 @@ msgstr "Stripe"
 msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr "Jeton :"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Customer:"
+msgstr "Client :"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Payment Method:"
+msgstr "Méthode de paiement :"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Source:"
+msgstr "Source :"
 
 msgctxt ""
 "wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"

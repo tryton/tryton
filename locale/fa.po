@@ -189,8 +189,8 @@ msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "حساب"
 
-msgctxt "field:account.payment.stripe.refund,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:account.payment.stripe.refund,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.payment.stripe.refund,payment:"
@@ -238,6 +238,39 @@ msgstr "شناسه وارسی چوب خط"
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "چوب خط مشتریان"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,stripe_account:"
+msgid "Stripe Account"
+msgstr "حساب چوب خط"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,stripe_customer:"
+msgid "Stripe Customer"
+msgstr "چوب خط مشتری"
+
+#, fuzzy
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method:"
+msgid "Stripe Payment Method"
+msgstr "شارژ پرداخت های چوب خط"
+
+#, fuzzy
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method_selection:"
+msgid "Stripe Customer Payment Method"
+msgstr "شناسه چوب خط مشتری"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,stripe_customer_source:"
+msgid "Stripe Customer Source"
+msgstr "منبع چوب خط مشتری"
+
+#, fuzzy
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_source_selection:"
+msgid "Stripe Customer Source"
+msgstr "منبع چوب خط مشتری"
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
 msgid "The URL to be called by Stripe."
@@ -541,6 +574,20 @@ msgstr "چوب خط"
 
 msgctxt "view:account.payment:"
 msgid "Token:"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Customer:"
+msgstr "چوب خط مشتری"
+
+#, fuzzy
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Payment Method:"
+msgstr "شارژ پرداخت های چوب خط"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Source:"
 msgstr ""
 
 msgctxt ""

@@ -182,9 +182,9 @@ msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Importe"
 
-msgctxt "field:account.payment.stripe.refund,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgctxt "field:account.payment.stripe.refund,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:account.payment.stripe.refund,payment:"
 msgid "Payment"
@@ -225,6 +225,33 @@ msgstr "Identificador devolción de Stripe"
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "Clientes Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_account:"
+msgid "Stripe Account"
+msgstr "Cuenta Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_customer:"
+msgid "Stripe Customer"
+msgstr "Cliente Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method:"
+msgid "Stripe Payment Method"
+msgstr "Método de pago Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_payment_method_selection:"
+msgid "Stripe Customer Payment Method"
+msgstr "Método de pago del cliente Stripe"
+
+msgctxt "field:party.party.reception_direct_debit,stripe_customer_source:"
+msgid "Stripe Customer Source"
+msgstr "Origen del cliente Stripe"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,stripe_customer_source_selection:"
+msgid "Stripe Customer Source"
+msgstr "Origen del cliente Stripe"
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
 msgid "The URL to be called by Stripe."
@@ -512,6 +539,18 @@ msgstr "Stripe"
 msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr "Token:"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Customer:"
+msgstr "Cliente:"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Payment Method:"
+msgstr "Método de pago:"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Source:"
+msgstr "Origen:"
 
 msgctxt ""
 "wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
