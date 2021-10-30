@@ -15,6 +15,10 @@ msgctxt "field:account.dunning,active:"
 msgid "Active"
 msgstr "Aktivno"
 
+msgctxt "field:account.dunning,age:"
+msgid "Age"
+msgstr ""
+
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
 msgstr "Znesek"
@@ -31,9 +35,15 @@ msgctxt "field:account.dunning,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:account.dunning,currency_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:account.dunning,currency:"
+msgid "Currency"
 msgstr "Decimalke"
+
+#, fuzzy
+msgctxt "field:account.dunning,date:"
+msgid "Date"
+msgstr "Datum"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
@@ -58,10 +68,6 @@ msgstr "Postopek"
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
 msgstr "Druga valuta"
-
-msgctxt "field:account.dunning,second_currency_digits:"
-msgid "Second Currency Digits"
-msgstr "Decimalke druge valute"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
@@ -116,12 +122,20 @@ msgctxt ""
 msgid "The default dunning procedure for new customers."
 msgstr ""
 
+msgctxt "help:account.dunning,age:"
+msgid "How long the dunning has been at the level."
+msgstr ""
+
 msgctxt "help:account.dunning,blocked:"
 msgid "Check to block further levels of the procedure."
 msgstr ""
 
 msgctxt "help:account.dunning,company:"
 msgid "Make the dunning belong to the company."
+msgstr ""
+
+msgctxt "help:account.dunning,date:"
+msgid "When the dunning reached the level."
 msgstr ""
 
 msgctxt "help:account.dunning,line:"
@@ -180,6 +194,11 @@ msgid "Procedures"
 msgstr "Postopek"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_dunning_wizard"
+msgid "Reschedule Dunning"
+msgstr "Create Dunnings"
+
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
 msgstr "Create Dunnings"
@@ -212,6 +231,10 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
 msgstr "Postavka se lahko na izterjavi uporabi samo enkrat."
+
+msgctxt "model:ir.model.button,string:dunning_reschedule_button"
+msgid "Reschedule"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
 msgid "User in companies"
