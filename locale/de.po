@@ -26,10 +26,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Rechnungsposition Kunde"
@@ -82,6 +78,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr "Restwert"
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr "Historie"
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Abschreibungsbeginn"
@@ -97,10 +97,6 @@ msgstr "Rechnungsposition Lieferant"
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
 msgstr "Einheit"
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -142,10 +138,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Datum"
@@ -170,6 +162,34 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Abschreibungsbeginn"
 
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Anlage"
+
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Abschreibungsende"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr "Herkunft"
+
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr "Restwert"
+
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Wert"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Betrag"
@@ -193,18 +213,6 @@ msgstr "Datum letzter Buchungssatz"
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
 msgstr "Nächstes Abschreibungsdatum"
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Abschreibungsende"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr "Restwert"
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
-msgstr "Anlagenwert"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
@@ -365,13 +373,13 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr "Entwicklung des Anlagevermögens Start"
 
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
+msgstr "Anlagenhistorie"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Aktualisierung Anlage Anzeige Abschreibung"
-
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
-msgstr "Aktualisierung Anlage Start"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
@@ -431,6 +439,12 @@ msgstr ""
 "Anlage \"%(asset)s\" kann nicht gelöscht werden, da sie nicht im "
 "Entwurfsstatus ist."
 
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr ""
+"Anlage \"%(asset)s\" kann nicht auf Entwurf zurückgesetzt werden, da für sie"
+" bereits Abschreibungspositionen erstellt wurden."
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr ""
@@ -476,6 +490,10 @@ msgstr "Abschließen"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Positionen erstellen"
+
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"

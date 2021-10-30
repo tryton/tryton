@@ -26,10 +26,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Verkoopfactuur regel"
@@ -82,6 +78,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr "Restwaarde"
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr "Revisies"
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Start datum"
@@ -97,10 +97,6 @@ msgstr "Leverancier factuurregel"
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
 msgstr "Eenheid"
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -142,10 +138,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Datum"
@@ -170,6 +162,34 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Start datum"
 
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Activa"
+
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr "Oorsprong(herkomst)"
+
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr "Restwaarde"
+
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Activawaarde"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Bedrag"
@@ -193,18 +213,6 @@ msgstr "laatste boekings datum"
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
 msgstr "Volgende afschrijving datum"
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Eind datum"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr "Restwaarde"
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
-msgstr "Activawaarde"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
@@ -362,13 +370,13 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr "Activa afschrijvingstabel Start"
 
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
+msgstr "Activarevisie"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Activa bijwerken toon afschrijvingen ( - Afschijvingsweergave)"
-
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
-msgstr "Start activa bijwerken"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
@@ -428,6 +436,11 @@ msgstr ""
 "U kunt item \"% (asset)s\" niet verwijderen omdat het zich niet in de "
 "\"draft\" -status bevindt."
 
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr ""
+"U kunt het conceptitem \"%(asset)s\" niet resetten omdat het regels heeft."
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "Factuurregel kan slechts eenmaal worden gebruikt voor activa."
@@ -471,6 +484,10 @@ msgstr "Sluiten"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Maak lijnen"
+
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Concept"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"

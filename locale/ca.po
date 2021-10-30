@@ -26,10 +26,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Línia de factura de client"
@@ -82,6 +78,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr "Valor residual"
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr "Revisions"
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
@@ -97,10 +97,6 @@ msgstr "Línia de factura de proveïdor"
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
 msgstr "Unitat"
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígits de la unitat"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -142,10 +138,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Data"
@@ -170,6 +162,34 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
 
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr "Valor residual"
+
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Valor de l'actiu"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Import"
@@ -193,18 +213,6 @@ msgstr "Data últim assentament"
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
 msgstr "Següent data amortització"
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Data final"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr "Valor residual"
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
-msgstr "Valor d'actiu"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
@@ -362,13 +370,13 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr "Taula d'amortització d'actiu - Inici"
 
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
+msgstr "Revisió del actiu"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Actualitza actius - Mostra amortització"
-
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
-msgstr "Actualitza actius - Inici"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
@@ -428,6 +436,10 @@ msgstr ""
 "No es pot eliminar l'actiu \"%(asset)s\" perquè no està en estat "
 "\"esborrany\"."
 
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr "No es pot passar a esborrany l'actiu \"%(asset)s\" perquè té línies."
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "La línia de factura pot ser usada una sola vegada en un actiu."
@@ -471,6 +483,10 @@ msgstr "Tanca"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Crea línies"
+
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"

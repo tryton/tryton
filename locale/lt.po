@@ -27,10 +27,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Valiutos skaitmenų skaičius"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Sąskaitos pirkėjui eilutė"
@@ -85,6 +81,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr ""
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr ""
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
@@ -99,10 +99,6 @@ msgstr "Tiekėjo sąskaitos eilutė"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:account.asset,update_moves:"
@@ -148,11 +144,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Valiutos skaitmenų skaičius"
 
-#, fuzzy
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Data"
@@ -177,6 +168,38 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
 
+#, fuzzy
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Asset"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Pabaigos data"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Asset"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr ""
@@ -200,18 +223,6 @@ msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr ""
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Pabaigos data"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr ""
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
 msgstr ""
 
 msgctxt "field:account.configuration,asset_bymonth:"
@@ -373,12 +384,12 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr ""
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
 msgstr ""
 
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
+msgctxt "model:account.asset.update.show_depreciation,name:"
+msgid "Update Asset Show Depreciation"
 msgstr ""
 
 msgctxt "model:account.configuration.asset_date,name:"
@@ -438,6 +449,10 @@ msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr ""
@@ -478,6 +493,11 @@ msgstr "Close"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Create Lines"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"

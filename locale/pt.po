@@ -27,10 +27,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Dígitos decimais da moeda"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos decimais da moeda"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Linha da Fatura do Cliente"
@@ -85,6 +81,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr "Valor Residual"
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr ""
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Data de início"
@@ -100,10 +100,6 @@ msgstr "Linha da Fatura do Fornecedor"
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
 msgstr "Unidade"
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos decimais da unidade"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -146,11 +142,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Dígitos decimais da moeda"
 
-#, fuzzy
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos decimais da moeda"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Data"
@@ -175,6 +166,40 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Data de início"
 
+#, fuzzy
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Ativo"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Dígitos decimais da moeda"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr "Depreciação"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Data de fim"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr "Valor Residual"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Valor do Ativo"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Montante"
@@ -198,18 +223,6 @@ msgstr "Data do Último Lançamento"
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
 msgstr "Próxima Data de Depreciação"
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Data de fim"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr "Valor Residual"
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
-msgstr "Valor do Ativo"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
@@ -370,13 +383,14 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr "Tabela de Depreciação - Início"
 
+#, fuzzy
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
+msgstr "Linha do Ativo"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Atualiza Ativos - Mostrar Depreciação"
-
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
-msgstr "Atualiza Ativos - Início"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
@@ -435,6 +449,11 @@ msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr "Você não pode apagar o ativo \"%(asset)s\", pois o estado não é \"rascunho\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr "Você não pode apagar o ativo \"%(asset)s\", pois o estado não é \"rascunho\"."
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "A linha da fatura somente pode ser usada uma vez no ativo."
@@ -479,6 +498,11 @@ msgstr "Close"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Create Lines"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Rascunho"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"

@@ -27,10 +27,6 @@ msgctxt "field:account.asset,currency:"
 msgid "Currency"
 msgstr "Valuuta numbrikohtade arv"
 
-msgctxt "field:account.asset,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbrikohtade arv"
-
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Müügiarve rida"
@@ -85,6 +81,10 @@ msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
 msgstr "Jääkväärtus"
 
+msgctxt "field:account.asset,revisions:"
+msgid "Revisions"
+msgstr ""
+
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
@@ -100,10 +100,6 @@ msgstr "Hankija arve rida"
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
 msgstr "Ühik"
-
-msgctxt "field:account.asset,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriline väärtus"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -146,11 +142,6 @@ msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
 msgstr "Valuuta numbrikohtade arv"
 
-#, fuzzy
-msgctxt "field:account.asset.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbrikohtade arv"
-
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
 msgstr "Kuupäev"
@@ -175,6 +166,40 @@ msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
 
+#, fuzzy
+msgctxt "field:account.asset.revision,asset:"
+msgid "Asset"
+msgstr "Põhivara"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,currency:"
+msgid "Currency"
+msgstr "Valuuta numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,description:"
+msgid "Description"
+msgstr "Kulum"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.asset.revision,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.asset.revision,residual_value:"
+msgid "Residual Value"
+msgstr "Jääkväärtus"
+
+#, fuzzy
+msgctxt "field:account.asset.revision,value:"
+msgid "Asset Value"
+msgstr "Vara väärtus"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Väärtus"
@@ -198,18 +223,6 @@ msgstr "Viimane liikumise kuupäev"
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
 msgstr "Järgmine kulumi kuupäev"
-
-msgctxt "field:account.asset.update.start,end_date:"
-msgid "End Date"
-msgstr "Lõppkuupäev"
-
-msgctxt "field:account.asset.update.start,residual_value:"
-msgid "Residual Value"
-msgstr "Jääkväärtus"
-
-msgctxt "field:account.asset.update.start,value:"
-msgid "Asset Value"
-msgstr "Vara väärtus"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
@@ -370,13 +383,14 @@ msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
 msgstr "Vara kulumiarvestuste tabeli algus"
 
+#, fuzzy
+msgctxt "model:account.asset.revision,name:"
+msgid "Asset Revision"
+msgstr "Vara rida"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Uuenda vara näita kulumit"
-
-msgctxt "model:account.asset.update.start,name:"
-msgid "Update Asset Start"
-msgstr "Uuenda vara alusta"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
@@ -437,6 +451,13 @@ msgstr ""
 "Sa ei saa kustutada vara \"%(vara)sid\" kuna see ei ole \"mustandi\" "
 "staatuses."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_asset_draft_lines"
+msgid "You cannot reset to draft asset \"%(asset)s\" because it has lines."
+msgstr ""
+"Sa ei saa kustutada vara \"%(vara)sid\" kuna see ei ole \"mustandi\" "
+"staatuses."
+
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
 msgstr "Arve rida saab vara puhul kasutada ainult üks kord."
@@ -480,6 +501,11 @@ msgstr "Sulge"
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr "Loo read"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:asset_draft_button"
+msgid "Draft"
+msgstr "Mustand"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
