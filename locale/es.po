@@ -6,6 +6,10 @@ msgctxt "field:product.product,purchase_secondary_uom:"
 msgid "Purchase Secondary UOM"
 msgstr "UdM compra secundaria"
 
+msgctxt "field:product.product,purchase_secondary_uom_category:"
+msgid "Purchase Secondary UOM Category"
+msgstr "Categoría UdM de compra secundaria"
+
 msgctxt "field:product.product,purchase_secondary_uom_factor:"
 msgid "Purchase Secondary UOM Factor"
 msgstr "Factor UdM compra secundaria"
@@ -17,6 +21,10 @@ msgstr "Ratio UdM compra secundaria"
 msgctxt "field:product.template,purchase_secondary_uom:"
 msgid "Purchase Secondary UOM"
 msgstr "UdM compra secundaria"
+
+msgctxt "field:product.template,purchase_secondary_uom_category:"
+msgid "Purchase Secondary UOM Category"
+msgstr "Categoría UdM de compra secundaria"
 
 msgctxt "field:product.template,purchase_secondary_uom_factor:"
 msgid "Purchase Secondary UOM Factor"
@@ -38,10 +46,6 @@ msgctxt "field:purchase.line,secondary_unit:"
 msgid "Secondary Unit"
 msgstr "Unidad secundaria"
 
-msgctxt "field:purchase.line,secondary_unit_digits:"
-msgid "Secondary Unit Digits"
-msgstr "Dígitos unidad secundaria"
-
 msgctxt "field:purchase.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Precio unitario secundario"
@@ -61,6 +65,10 @@ msgstr "Categoría por defecto UdM"
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom:"
 msgid "Purchase Secondary UOM"
 msgstr "UdM compra secundaria"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom_category:"
+msgid "Purchase Secondary UOM Category"
+msgstr "Categoría UdM de compra secundaria"
 
 msgctxt "field:purchase.product_supplier,purchase_secondary_uom_factor:"
 msgid "Purchase Secondary UOM Factor"
