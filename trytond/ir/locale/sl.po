@@ -193,6 +193,11 @@ msgid "Name"
 msgstr "Naziv"
 
 #, fuzzy
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
 msgstr "ID zapisa"
@@ -613,6 +618,39 @@ msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
 msgstr "Končnica predloge"
 
+#, fuzzy
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "Opis"
+
+#, fuzzy
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "Sporočilo"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "Izdelal"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "Stanje"
+
+#, fuzzy
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "Povzetek"
+
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Polja"
@@ -991,6 +1029,11 @@ msgstr "Verzija"
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Moduli za posodobitev"
+
+#, fuzzy
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "Modules"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1553,6 +1596,12 @@ msgstr ""
 "Za enako končnico kot v predlogi pustite prazno. Za združljiv format glejte "
 "navodila za unoconv."
 
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
 msgstr ""
@@ -1799,6 +1848,11 @@ msgid "E-mail Templates"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr "Napaka"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Exports"
@@ -2010,6 +2064,21 @@ msgstr "Ukrep za okna"
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Domena okna za ukrepe"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "Odprto"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
+msgstr ""
 
 #, fuzzy
 msgctxt ""
@@ -2262,6 +2331,11 @@ msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr "Napaka"
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Izvoz"
@@ -2364,6 +2438,10 @@ msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
 msgstr ""
 
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -2385,8 +2463,8 @@ msgstr "Chinese Simplified"
 
 #, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
-msgid "Language Configuration Start"
-msgstr "Module Configuration"
+msgid "Configure languages"
+msgstr "Configure Modules"
 
 #, fuzzy
 msgctxt "model:ir.message,name:"
@@ -2510,6 +2588,11 @@ msgid "You are not allowed to delete this record."
 msgstr "You are not allowed to delete this record."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "Zabeležka"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
 msgstr "Počisti"
@@ -2623,6 +2706,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
 msgstr "Tip"
 
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
@@ -2702,6 +2789,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "Model mora biti unikaten."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
@@ -2790,6 +2882,13 @@ msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "Neveljavna definicija epošte na izpisu \"%s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
+
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
@@ -2827,6 +2926,13 @@ msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
+msgstr "Neveljaven kontekst \"%(context)s\" pri ukrepu \"%(action)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
@@ -2968,6 +3074,20 @@ msgid "Run Once"
 msgstr "Run Once"
 
 #, fuzzy
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "Odprto"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr "Access"
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
 msgstr "Čiščenje prevodov"
@@ -3048,6 +3168,11 @@ msgstr "Zaključek aktivacije modula"
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr "Začetek aktivacije modula"
+
+#, fuzzy
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "Configure Modules"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3215,6 +3340,11 @@ msgstr "E-pošta"
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
+msgstr "Napaka"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
@@ -3503,6 +3633,10 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Tedni"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
@@ -3510,6 +3644,28 @@ msgstr "Prevodi uspešno počiščeni!"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "Ukrep"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "Odprto"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
 msgstr ""
 
 msgctxt "selection:ir.lang,direction:"
@@ -3704,8 +3860,12 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr ""
 
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
-msgid "You can now load aditional translations to the system."
+msgid "You can now load additional translations to the system."
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3731,6 +3891,10 @@ msgstr "Ta operacija lahko traja nekaj minut."
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "Sistem bo nadgrajen."
+
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3859,7 +4023,8 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Natisni"
 
-msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "V redu"
 
@@ -3870,6 +4035,16 @@ msgstr "Prekliči"
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Nadgradi"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "Aktivirano"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"

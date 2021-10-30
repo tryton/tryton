@@ -193,6 +193,11 @@ msgid "Name"
 msgstr "نام"
 
 #, fuzzy
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
 msgstr "شناسه رکورد"
@@ -612,6 +617,39 @@ msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
 msgstr "الگوی افزونه ها"
 
+#, fuzzy
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "پیام"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "وضعیت"
+
+#, fuzzy
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "خلاصه"
+
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "فیلدها"
@@ -985,6 +1023,11 @@ msgstr "نسخه"
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "ماژول ها برای بروزرسانی"
+
+#, fuzzy
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "ماژول ها"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1545,6 +1588,12 @@ msgstr ""
 "برای همان قالب، خالی بگذارید،اسناد LibreOffice را برای فرمت سازگار مشاهده "
 "کنید"
 
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
 msgstr ""
@@ -1784,6 +1833,11 @@ msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr "خطا"
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "صادرات"
@@ -1957,6 +2011,21 @@ msgstr "پنجره اقدامات‌ درحال اجرا"
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "دامنه پنجره اقدامات‌ درحال اجرا"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "باز"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -2205,6 +2274,11 @@ msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr "خطا"
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "صادرات"
@@ -2294,6 +2368,10 @@ msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
 msgstr "پرتغالی"
 
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
 msgstr "روسی"
@@ -2312,8 +2390,8 @@ msgstr "چینی Simplified"
 
 #, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
-msgid "Language Configuration Start"
-msgstr "پیکربندی ماژول"
+msgid "Configure languages"
+msgstr "پیکربندی ماژول ها"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2427,6 +2505,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
 msgstr "شما اجازه حذف این پرونده را ندارید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "توجه"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
@@ -2543,6 +2626,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
 msgstr "نوع"
 
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
@@ -2622,6 +2709,11 @@ msgid "ID must be positive."
 msgstr "شناسه باید مثبت باشد."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "مدل باید منحصر به فرد باشد!"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "زبان پیش فرض باید قابل ترجمه باشد."
@@ -2699,6 +2791,13 @@ msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "ایمیل تعریف شده برای گزارش : \"%s\" معتبر نمیباشد."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
+
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
@@ -2732,6 +2831,13 @@ msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
+msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
@@ -2865,6 +2971,20 @@ msgid "Run Once"
 msgstr "Run Once"
 
 #, fuzzy
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "باز"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr "دسترسی"
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
 msgstr "پاک کردن ترجمه"
@@ -2945,6 +3065,11 @@ msgstr "فعال سازی و ارتقاء ماژول انجام شد"
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr "شروع فعال سازی و ارتقاء ماژول"
+
+#, fuzzy
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "پیکربندی ماژول ها"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3103,6 +3228,11 @@ msgstr "ایمیل"
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
+msgstr "خطا"
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
@@ -3359,6 +3489,10 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "هفته ها"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
@@ -3366,6 +3500,28 @@ msgstr "پاک کردن ترجمه ها باموفقیت!"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
 msgstr ""
 
 msgctxt "selection:ir.lang,direction:"
@@ -3560,8 +3716,12 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr ""
 
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
-msgid "You can now load aditional translations to the system."
+msgid "You can now load additional translations to the system."
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3587,6 +3747,10 @@ msgstr "توجه داشته باشید که این عملیات ممکن است 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "سیستم شما به روز رسانی خواهد شد."
+
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3717,7 +3881,8 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "چاپ"
 
-msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "قبول"
 
@@ -3728,6 +3893,16 @@ msgstr "انصراف"
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "شروع ارتقاء"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "فعال شده"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"

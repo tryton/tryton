@@ -193,6 +193,11 @@ msgid "Name"
 msgstr "Nimi"
 
 #, fuzzy
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
 msgstr "Kirje ID"
@@ -608,6 +613,39 @@ msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
 msgstr "Malli laiendus"
 
+#, fuzzy
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+#, fuzzy
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "Sõnum"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "Looja"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "Olek"
+
+#, fuzzy
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "Kokkuvõte"
+
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Väljad"
@@ -981,6 +1019,11 @@ msgstr "Versioon"
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Uuendatavad moodulid"
+
+#, fuzzy
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "Moodulid"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1537,6 +1580,12 @@ msgid ""
 "compatible format."
 msgstr ""
 
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
 msgstr ""
@@ -1756,6 +1805,10 @@ msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Ekspordid"
@@ -1929,6 +1982,21 @@ msgstr "Toimingu aken"
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Toimingu akna domeen"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -2175,6 +2243,10 @@ msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
 msgstr ""
 
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr ""
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Eksport"
@@ -2264,6 +2336,10 @@ msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
 msgstr "Portugali"
 
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
 msgstr "Vene"
@@ -2282,8 +2358,8 @@ msgstr "Lihtsustatud Hiina"
 
 #, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
-msgid "Language Configuration Start"
-msgstr "Mooduli seadistus"
+msgid "Configure languages"
+msgstr "Moodulite seadistus"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2398,6 +2474,11 @@ msgid "You are not allowed to delete this record."
 msgstr "Kirje kustutamine on keelatud"
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "Nov"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
 msgstr "Puhasta"
@@ -2510,6 +2591,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
 msgstr "Tüüp"
 
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
@@ -2587,6 +2672,11 @@ msgstr "Salvestamine nurjus, palun proovi uuesti"
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID peab olema positiivne"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "Vaikimisi keel peab olema tõlgitav."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
@@ -2668,6 +2758,13 @@ msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
+
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
@@ -2700,6 +2797,13 @@ msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
@@ -2834,6 +2938,20 @@ msgid "Run Once"
 msgstr "Käivita üks kord"
 
 #, fuzzy
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "Ava"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr "Ligipääs"
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
 msgstr "Eemalda tõlge"
@@ -2914,6 +3032,11 @@ msgstr "Mooduli aktiveerimise uuendus lõpetatud"
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr "Mooduli aktiveerimise uuendus alustatud"
+
+#, fuzzy
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "Moodulite seadistus"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3071,6 +3194,10 @@ msgstr "E-kiri"
 
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
@@ -3328,6 +3455,10 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Nädalad"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
@@ -3336,6 +3467,28 @@ msgstr "Tõlgete tühistamine õnnestus!"
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Käivita päästikud määratud ajal"
+
+#, fuzzy
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "Toiming"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
+msgstr ""
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
@@ -3529,8 +3682,12 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr ""
 
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
-msgid "You can now load aditional translations to the system."
+msgid "You can now load additional translations to the system."
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3556,6 +3713,10 @@ msgstr "Selle toimingu teostamisele võib kuluda mitu minutit."
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "Süsteem uuendatakse."
+
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3682,7 +3843,8 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Prindi"
 
-msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "OK"
 
@@ -3693,6 +3855,16 @@ msgstr "Tühista"
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Alusta uuendamist"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "Aktiveeritud"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"

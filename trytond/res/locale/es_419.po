@@ -347,7 +347,7 @@ msgid "The password is forbidden."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_password_length"
-msgid "The password is too short."
+msgid "The password must have at least %(length)i characters."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_password_login"
@@ -561,7 +561,7 @@ msgid ""
 "                You must set a new one from the user's preferences.[3:]\n"
 "                You can connect with this temporary password [4:%(password)s] to[5:]\n"
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(host)s/#%(database)s]"
+"                [8:%(http_host)s/#%(database)s]"
 msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"

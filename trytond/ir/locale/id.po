@@ -14,10 +14,9 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:ir.action,records:"
 msgid "Records"
-msgstr "Kata kunci"
+msgstr "Catatan"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -193,9 +192,13 @@ msgid "Name"
 msgstr "Nama"
 
 #, fuzzy
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "Catatan"
+
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
-msgstr "Kata kunci"
+msgstr "Catatan"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -235,7 +238,7 @@ msgstr "Dapat diterjemahkan"
 
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
-msgstr ""
+msgstr "Jenis"
 
 msgctxt "field:ir.action.report,usage:"
 msgid "Usage"
@@ -257,10 +260,9 @@ msgctxt "field:ir.action.url,name:"
 msgid "Name"
 msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:ir.action.url,records:"
 msgid "Records"
-msgstr "Kata kunci"
+msgstr "Catatan"
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -315,10 +317,9 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Nama wisaya"
 
-#, fuzzy
 msgctxt "field:ir.attachment,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Sumber daya"
+msgstr "Salin ke Sumber Daya"
 
 msgctxt "field:ir.attachment,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
@@ -407,7 +408,7 @@ msgstr "Sumber daya"
 
 msgctxt "field:ir.avatar,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:ir.avatar.cache,avatar:"
 msgid "Avatar"
@@ -604,6 +605,39 @@ msgstr "Laporan"
 msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
 msgstr "Templat"
+
+#, fuzzy
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+#, fuzzy
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "Pesan"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "Dibuat oleh"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "Status"
+
+#, fuzzy
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "Ringkasan"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -977,6 +1011,11 @@ msgstr "Versi"
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "Modul"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1531,6 +1570,12 @@ msgid ""
 "compatible format."
 msgstr ""
 
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
 msgstr ""
@@ -1740,6 +1785,10 @@ msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr ""
@@ -1912,6 +1961,20 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "Buka"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
 msgstr ""
 
 msgctxt ""
@@ -2159,6 +2222,10 @@ msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
 msgstr ""
 
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr ""
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr ""
@@ -2221,7 +2288,7 @@ msgstr "Hongaria"
 
 msgctxt "model:ir.lang,name:lang_id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Bahasa Indonesia"
 
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
@@ -2247,6 +2314,11 @@ msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
 msgstr "Portugis"
 
+#, fuzzy
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr "Estonia"
+
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
 msgstr "Rusia"
@@ -2265,8 +2337,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
-msgid "Language Configuration Start"
-msgstr "Konfigurasi"
+msgid "Configure languages"
+msgstr "Bahasa"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2375,6 +2447,11 @@ msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
 msgstr "Anda tidak diizinkan untuk menghapus catatan ini."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "Nov"
+
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
 msgstr ""
@@ -2479,6 +2556,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
@@ -2546,6 +2627,11 @@ msgstr "Gagal menyimpan, coba lagi."
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID harus positif."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "Bahasa default tidak dapat dihapus."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
@@ -2621,6 +2707,12 @@ msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
@@ -2651,6 +2743,12 @@ msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
 msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
@@ -2778,6 +2876,19 @@ msgid "Run Once"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "Buka"
+
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
 msgstr "Terjemahan"
@@ -2858,6 +2969,11 @@ msgstr ""
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "Bahasa"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3016,6 +3132,10 @@ msgstr "Email"
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
 msgstr "Templat E-mail"
+
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
@@ -3273,11 +3393,37 @@ msgid "Weeks"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "Tindakan"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "Buka"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
 msgstr ""
 
 msgctxt "selection:ir.lang,direction:"
@@ -3472,8 +3618,12 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr ""
 
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
-msgid "You can now load aditional translations to the system."
+msgid "You can now load additional translations to the system."
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3498,6 +3648,10 @@ msgstr ""
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
+msgstr ""
+
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
 msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
@@ -3624,7 +3778,8 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Cetak"
 
-msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "OK"
 
@@ -3635,6 +3790,16 @@ msgstr "Batal"
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "Aktif"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "Batal"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"

@@ -124,7 +124,7 @@ msgstr "Naam"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -144,7 +144,7 @@ msgstr "toepassingen"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
-msgstr ""
+msgstr "Avatar-badge-URL"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -244,16 +244,15 @@ msgstr "Gebruiker"
 
 msgctxt "field:res.user.device,cookie:"
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
-#, fuzzy
 msgctxt "field:res.user.device,login:"
 msgid "Login"
 msgstr "Inlognaam"
 
 msgctxt "field:res.user.login.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Apparaatcookie"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
@@ -293,7 +292,7 @@ msgstr "Groepen mogen de reeksen (sequences) van dit type bewerken."
 
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr ""
+msgstr "De groep waarvan de toegangsrechten moet worden overgenomen."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -341,8 +340,8 @@ msgid "The password is forbidden."
 msgstr "Dit paswoord is verboden."
 
 msgctxt "model:ir.message,text:msg_password_length"
-msgid "The password is too short."
-msgstr "Het paswoord is te kort."
+msgid "The password must have at least %(length)i characters."
+msgstr "Het wachtwoord moet minimaal %(length)i-tekens bevatten."
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -536,7 +535,7 @@ msgstr "Gebruiker configuratie init"
 
 msgctxt "model:res.user.device,name:"
 msgid "User Device"
-msgstr ""
+msgstr "Gebruikersapparaat"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -556,9 +555,9 @@ msgid ""
 "                You must set a new one from the user's preferences.[3:]\n"
 "                You can connect with this temporary password [4:%(password)s] to[5:]\n"
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
-"                [8:%(host)s/#%(database)s]"
+"                [8:%(http_host)s/#%(database)s]"
 msgstr ""
-"Her wachtwoord voor uw account, [1:%(login)s], is opnieuw ingesteld.[2:]\n"
+"Het wachtwoord voor uw account, [1:%(login)s], is opnieuw ingesteld.[2:]\n"
 "                U moet er een nieuw aanmaken in de gebruikers voorkeuren[3:]\n"
 "               U kunt verbinding maken met dit tijdelijke wachtwoord [4:%(password)s] op[5:]\n"
 "                [6:tryton://%(host)s/%(database)s][7:]\n"

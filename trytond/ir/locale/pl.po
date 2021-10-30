@@ -193,6 +193,11 @@ msgid "Name"
 msgstr "Nazwa"
 
 #, fuzzy
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
 msgstr "ID rekordu"
@@ -597,6 +602,39 @@ msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
 msgstr "Szablon"
 
+#, fuzzy
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "Opis"
+
+#, fuzzy
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "Utworzył"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "Stan"
+
+#, fuzzy
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "Skrót opisu"
+
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Pola"
@@ -970,6 +1008,11 @@ msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Moduły przeznaczone do aktualizacji"
 
+#, fuzzy
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "Moduły"
+
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
 msgstr "Akcja"
@@ -1138,10 +1181,9 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "Prefiks"
 
-#, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
-msgstr "Typy sekwencji"
+msgstr "Typ sekwencji"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -1187,7 +1229,6 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "Prefiks"
 
-#, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
 msgid "Sequence Type"
 msgstr "Typy sekwencji"
@@ -1522,6 +1563,12 @@ msgstr ""
 "Pozostaw puste jako szablon. Sprawdź dokumentację LibreOffice dla właściwego"
 " formatu."
 
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
@@ -1757,6 +1804,11 @@ msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
 msgstr "Szablony e-maili"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr "Błąd"
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Wyeksportowania"
@@ -1851,7 +1903,7 @@ msgstr "Sekwencje"
 
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sekwencje ścisłe"
+msgstr "Sekwencje ciągłe"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
@@ -1929,6 +1981,21 @@ msgstr "Okno działania akcji"
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Domena okna działania akcji"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr "Wszystko"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "Otwórz"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -2174,6 +2241,11 @@ msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
 msgstr "Szablon e-maili - Raport"
 
+#, fuzzy
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr "Błąd"
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Eksport"
@@ -2262,6 +2334,11 @@ msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
 msgstr "Portugalski"
 
+#, fuzzy
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr "Estoński"
+
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
 msgstr "Rosyjski"
@@ -2278,9 +2355,10 @@ msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chiński uproszczony"
 
+#, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
-msgid "Language Configuration Start"
-msgstr "Rozpoczęcie konfiguracji języka"
+msgid "Configure languages"
+msgstr "Skonfiguruj języki"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2397,6 +2475,11 @@ msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
 msgstr "Nie masz uprawnień do usunięcia tego rekordu."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "Lis"
+
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
 msgstr "Boolean"
@@ -2501,6 +2584,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
@@ -2584,6 +2671,11 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID musi być dodatnie."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "Model musi być unikalny!"
+
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
 msgstr "Domyślny język \"%(language)s\" musi być przetłumaczalny."
@@ -2665,6 +2757,15 @@ msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
 msgstr "Nieprawidłowe określenie e-maila w raporcie \"%s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowa treść w szablonie e-mail \"%(template)s\" generująca wyjątek "
+"\"%(exception)s\"."
+
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "W polu \"%(fields)s\" w modelu \"%(model)s\" wymagana jest wartość."
@@ -2698,6 +2799,16 @@ msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
 msgstr ""
+"Typ sekwencji nie może zostać zmieniony. Należy utworzyć nową sekwencję."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
+msgstr ""
+"Nieprawidłowa treść w szablonie e-mail \"%(template)s\" generująca wyjątek "
+"\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
@@ -2835,6 +2946,20 @@ msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Uruchom jednokrotnie"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "Otwórz"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr "Dostęp"
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
 msgstr "Prześlij tłumaczenia"
@@ -2915,6 +3040,11 @@ msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
 msgstr "Rozpoczęcie aktywacji/aktualizacji modułu"
 
+#, fuzzy
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "Skonfiguruj moduły"
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "Uruchomiono kreatora konfiguracji modułu"
@@ -2961,7 +3091,7 @@ msgstr "Sekwencja"
 
 msgctxt "model:ir.sequence.strict,name:"
 msgid "Sequence Strict"
-msgstr "Sekwencja ścisła"
+msgstr "Sekwencja ciągła"
 
 msgctxt "model:ir.sequence.type,name:"
 msgid "Sequence type"
@@ -3072,6 +3202,11 @@ msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
 msgstr "Szablony e-maili"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
+msgstr "Błąd"
+
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "Wyeksportowania"
@@ -3156,7 +3291,7 @@ msgstr "Sekwencje"
 
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sekwencje ścisłe"
+msgstr "Sekwencje ciągłe"
 
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
@@ -3328,12 +3463,38 @@ msgid "Weeks"
 msgstr "Tygodnie"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
 msgstr "Wyczyść kolejkę zadań"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Wyzwalacze uruchamiane o określonym czasie"
+
+#, fuzzy
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "Otwórz"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
+msgstr ""
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
@@ -3527,8 +3688,13 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr "Dodatkowi odbiorcy:"
 
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
 msgctxt "view:ir.lang.config.start:"
-msgid "You can now load aditional translations to the system."
+msgid "You can now load additional translations to the system."
 msgstr "Możesz przesłać teraz do systemu dodatkowe tłumaczenia."
 
 msgctxt "view:ir.lang:"
@@ -3554,6 +3720,11 @@ msgstr "Wykonanie operacji może zająć kilka minut."
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "System zostanie zaktualizowany."
+
+#, fuzzy
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
+msgstr "Możesz przesłać teraz do systemu dodatkowe tłumaczenia."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3683,7 +3854,8 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Wydruk"
 
-msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
 msgstr "OK"
 
@@ -3694,6 +3866,16 @@ msgstr "Anuluj"
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Rozpocznij aktualizację"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "Aktywny"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
