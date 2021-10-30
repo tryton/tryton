@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import defaultdict
 
 from trytond.model import ModelView, ModelSQL
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -57,22 +59,26 @@ class ShipmentInternal(ModelSQL, ModelView):
         id2location.update({l.id: l for l in implicit_locations})
         location_ids = list(id2location.keys())
 
+        def get_pbl(start, end, grouping_filter):
+            with Transaction().set_context(
+                    forecast=True, stock_date_start=start, stock_date_end=end):
+                return Product.products_by_location(
+                    location_ids, with_childs=True,
+                    grouping_filter=grouping_filter)
+
         # ordered by ids to speedup reduce_ids in products_by_location
         if implicit_locations:
             products = Product.search([
                     ('type', 'in', ['goods', 'assets']),
                     ], order=[('id', 'ASC')])
             product_ids = [p.id for p in products]
-            grouping_filter = None
+            pbl = get_pbl(None, today, None)
         else:
             product_ids = list(id2product.keys())
             product_ids.sort()
-            grouping_filter = (product_ids,)
-
-        with Transaction().set_context(forecast=True, stock_date_end=today):
-            pbl = Product.products_by_location(
-                location_ids, with_childs=True,
-                grouping_filter=grouping_filter)
+            pbl = defaultdict(int)
+            for sub_product_ids in grouped_slice(product_ids):
+                pbl.update(get_pbl(None, today, (list(sub_product_ids),)))
 
         shipments = []
         date = today
@@ -153,16 +159,14 @@ class ShipmentInternal(ModelSQL, ModelView):
             date += datetime.timedelta(1)
 
             # Update quantities with next moves
-            with Transaction().set_context(
-                    forecast=True,
-                    stock_date_start=date,
-                    stock_date_end=date):
-                pbl = Product.products_by_location(
-                    location_ids,
-                    with_childs=True,
-                    grouping_filter=grouping_filter)
-            for key, qty in pbl.items():
-                current_qties[key] += qty
+            if implicit_locations:
+                for key, qty in get_pbl(date, date, None).items():
+                    current_qties[key] += qty
+            else:
+                for sub_product_ids in grouped_slice(product_ids):
+                    for key, qty in get_pbl(
+                            date, date, (list(sub_product_ids),)).items():
+                        current_qties[key] += qty
 
         if shipments:
             cls.save(shipments)
