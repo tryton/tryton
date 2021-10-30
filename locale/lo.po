@@ -11,10 +11,6 @@ msgctxt "field:project.work,currency:"
 msgid "Currency"
 msgstr "ເລກເສດສະກຸນເງິນ"
 
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
-
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr "ລາຍການລາຄາ"

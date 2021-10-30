@@ -4,14 +4,10 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Biaya"
 
 msgctxt "field:project.work,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
 msgstr ""
 
 msgctxt "field:project.work,list_price:"

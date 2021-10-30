@@ -11,10 +11,6 @@ msgctxt "field:project.work,currency:"
 msgid "Currency"
 msgstr "رقم های واحد پول"
 
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
-
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr "لیست قیمت"

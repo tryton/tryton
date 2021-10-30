@@ -11,10 +11,6 @@ msgctxt "field:project.work,currency:"
 msgid "Currency"
 msgstr "Zecimale valută"
 
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
-
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr "Lista de preturi"

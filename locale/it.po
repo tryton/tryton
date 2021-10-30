@@ -11,10 +11,6 @@ msgctxt "field:project.work,currency:"
 msgid "Currency"
 msgstr "Cifre valuta"
 
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cifre valuta"
-
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr "Listino prezzi"

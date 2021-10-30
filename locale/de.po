@@ -10,10 +10,6 @@ msgctxt "field:project.work,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:project.work,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr "Listenpreis"
