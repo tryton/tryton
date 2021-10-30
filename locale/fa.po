@@ -85,6 +85,11 @@ msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,has_payments:"
+msgid "Has Payments"
+msgstr "پرداخت ها"
+
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
 msgstr "شناسایی"
@@ -92,6 +97,10 @@ msgstr "شناسایی"
 msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
 msgid "Identification Readonly"
 msgstr "شناسایی فقط خواندنی"
+
+msgctxt "field:account.payment.sepa.mandate,is_first_payment:"
+msgid "Is First Payment"
+msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
@@ -161,6 +170,11 @@ msgstr "شناسه بستانکار استفاده شده SEPA"
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "مجوزهای SEPA"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,sepa_mandate:"
+msgid "Mandate"
+msgstr "مجوز"
 
 msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
 msgid "The identifier used for the initiating party."
@@ -245,6 +259,14 @@ msgid "Receivable with Mandate"
 msgstr "قابل دریافت با مجوز"
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
+msgid ""
+"By signing this mandate form, you authorise (A) %(creditor)s to send "
+"instructions to your bank to debit your account and (B) your bank to debit "
+"your account in accordance with the instructions from %(creditor)s."
+msgstr "برای ارسال دستورالعمل ها به بانک خود برای پرداخت و کسراز حسابتان"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -252,6 +274,11 @@ msgid ""
 msgstr ""
 "برای حذف مجوز\"%(mandate)s\" شما باید آنرا لغو یا حالت آنرا به پیش نویس "
 "دوباره تنظیم کنید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_title"
+msgid "SEPA %(scheme)s Direct Debit MANDATE"
+msgstr "مجوز پرداخت مستقیم"
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
@@ -343,10 +370,6 @@ msgid "SEPA Messages"
 msgstr "پیام های SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "."
-msgstr "."
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
 msgstr "شماره حساب - IBAN"
 
@@ -364,10 +387,6 @@ msgstr ""
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
 msgstr "BIC"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "By signing this mandate form, you authorize"
-msgstr "با امضای این فرم مجوز، شما اجازه می دهید"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
@@ -394,16 +413,18 @@ msgid "Date"
 msgstr "تاریخ"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "Direct Debit MANDATE"
-msgstr "مجوز پرداخت مستقیم"
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "مکان"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Name of the debtor"
 msgstr "نام بدهکار"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"Note: Your rights regarding the above mandate are explained in a statement "
+"that you can obtain from your bank."
+msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "One-off payment"
@@ -416,10 +437,6 @@ msgstr "کد پستی"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
 msgstr "پرداخت مجدد"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "SEPA"
-msgstr "SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
@@ -448,12 +465,6 @@ msgstr "آدرس شما"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Your name"
 msgstr "نام شما"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid ""
-"to send instructions to your bank to debit your account and your bank to "
-"debit your account in accordance with the instructions from"
-msgstr "برای ارسال دستورالعمل ها به بانک خود برای پرداخت و کسراز حسابتان"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "SEPA"

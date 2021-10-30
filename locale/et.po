@@ -85,6 +85,11 @@ msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,has_payments:"
+msgid "Has Payments"
+msgstr "Tausmised"
+
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
 msgstr "Identifikatsioon"
@@ -92,6 +97,10 @@ msgstr "Identifikatsioon"
 msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
 msgid "Identification Readonly"
 msgstr "Identification Readonly"
+
+msgctxt "field:account.payment.sepa.mandate,is_first_payment:"
+msgid "Is First Payment"
+msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
@@ -161,6 +170,11 @@ msgstr "SEPA Creditor Identifier Used"
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "SEPA mandaadid"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,sepa_mandate:"
+msgid "Mandate"
+msgstr "Mandaat"
 
 msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
 msgid "The identifier used for the initiating party."
@@ -244,6 +258,13 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Mandaadiga nõuded"
 
+msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
+msgid ""
+"By signing this mandate form, you authorise (A) %(creditor)s to send "
+"instructions to your bank to debit your account and (B) your bank to debit "
+"your account in accordance with the instructions from %(creditor)s."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
@@ -252,6 +273,11 @@ msgid ""
 msgstr ""
 "Mandaadi \"%(mandaatide)\" kustutamiseks tuleb need tühistada või muuta "
 "staatus mustandiks"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_title"
+msgid "SEPA %(scheme)s Direct Debit MANDATE"
+msgstr "Otse deebeti mandaat"
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
@@ -340,10 +366,6 @@ msgid "SEPA Messages"
 msgstr "SEPA sõnumid"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "."
-msgstr "."
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
 msgstr "IBAN konto number"
 
@@ -361,10 +383,6 @@ msgstr ""
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
 msgstr "BIC"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "By signing this mandate form, you authorize"
-msgstr "Allkirjastades selle mandaadi vormi autoriseerid"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
@@ -391,16 +409,18 @@ msgid "Date"
 msgstr "Kuupäev"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "Direct Debit MANDATE"
-msgstr "Otse deebeti mandaat"
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "Asukoht"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Name of the debtor"
 msgstr "Deebitori nimi"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"Note: Your rights regarding the above mandate are explained in a statement "
+"that you can obtain from your bank."
+msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "One-off payment"
@@ -413,10 +433,6 @@ msgstr "Postikood"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
 msgstr "Korduv tasumine"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "SEPA"
-msgstr "SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
@@ -445,12 +461,6 @@ msgstr "Sinu aadress"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Your name"
 msgstr "Sinu nimi"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid ""
-"to send instructions to your bank to debit your account and your bank to "
-"debit your account in accordance with the instructions from"
-msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "SEPA"

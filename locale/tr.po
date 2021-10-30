@@ -85,12 +85,20 @@ msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:account.payment.sepa.mandate,has_payments:"
+msgid "Has Payments"
+msgstr ""
+
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
 msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
 msgid "Identification Readonly"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,is_first_payment:"
+msgid "Is First Payment"
 msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,party:"
@@ -161,6 +169,11 @@ msgstr ""
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "SEPA Mandates"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,sepa_mandate:"
+msgid "Mandate"
+msgstr "Mandate"
 
 msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
 msgid "The identifier used for the initiating party."
@@ -248,10 +261,21 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Receivable with Mandate"
 
+msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
+msgid ""
+"By signing this mandate form, you authorise (A) %(creditor)s to send "
+"instructions to your bank to debit your account and (B) your bank to debit "
+"your account in accordance with the instructions from %(creditor)s."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
 "draft."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_mandate_title"
+msgid "SEPA %(scheme)s Direct Debit MANDATE"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
@@ -342,10 +366,6 @@ msgid "SEPA Messages"
 msgstr "SEPA Messages"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "."
-msgstr "."
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
 msgstr ""
 
@@ -359,10 +379,6 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
-msgstr ""
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "By signing this mandate form, you authorize"
 msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
@@ -390,15 +406,17 @@ msgid "Date"
 msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "Direct Debit MANDATE"
-msgstr ""
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Name of the debtor"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"Note: Your rights regarding the above mandate are explained in a statement "
+"that you can obtain from your bank."
 msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
@@ -411,10 +429,6 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
-msgstr ""
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "SEPA"
 msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
@@ -443,12 +457,6 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Your name"
-msgstr ""
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid ""
-"to send instructions to your bank to debit your account and your bank to "
-"debit your account in accordance with the instructions from"
 msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"

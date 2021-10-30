@@ -85,6 +85,11 @@ msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Azienda"
 
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,has_payments:"
+msgid "Has Payments"
+msgstr "Pagamenti"
+
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
 msgstr "Identificazione"
@@ -92,6 +97,10 @@ msgstr "Identificazione"
 msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
 msgid "Identification Readonly"
 msgstr "Identificazione - sola lettura"
+
+msgctxt "field:account.payment.sepa.mandate,is_first_payment:"
+msgid "Is First Payment"
+msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
@@ -161,6 +170,11 @@ msgstr "Identificatore SEPA del creditore usato"
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "Mandati SEPA"
+
+#, fuzzy
+msgctxt "field:party.party.reception_direct_debit,sepa_mandate:"
+msgid "Mandate"
+msgstr "Mandato"
 
 msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
 msgid "The identifier used for the initiating party."
@@ -245,6 +259,16 @@ msgid "Receivable with Mandate"
 msgstr "Ricevibili con mandato"
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
+msgid ""
+"By signing this mandate form, you authorise (A) %(creditor)s to send "
+"instructions to your bank to debit your account and (B) your bank to debit "
+"your account in accordance with the instructions from %(creditor)s."
+msgstr ""
+"per inviare alla tua banca le istruzioni sull'addebito del tuo conto ed alla"
+" tua banca di addebitare il tuo conto secondo il modulo di istruzioni"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
@@ -252,6 +276,11 @@ msgid ""
 msgstr ""
 "Per eliminare il mandato \"%(mandate)s\" è necessario annullarlo o "
 "reimpostare il suo stato come bozza."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_title"
+msgid "SEPA %(scheme)s Direct Debit MANDATE"
+msgstr "Addebito diretto MANDATO"
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
@@ -345,10 +374,6 @@ msgid "SEPA Messages"
 msgstr "Messaggi SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "."
-msgstr "."
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
 msgstr "Numero di conto IBAN"
 
@@ -367,10 +392,6 @@ msgstr ""
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
 msgstr "BIC"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "By signing this mandate form, you authorize"
-msgstr "Con la firma di questo mandato Voi autorizzate"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
@@ -397,16 +418,18 @@ msgid "Date"
 msgstr "Data"
 
 msgctxt "report:account.payment.sepa.mandate:"
-msgid "Direct Debit MANDATE"
-msgstr "Addebito diretto MANDATO"
-
-msgctxt "report:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "Luogo"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Name of the debtor"
 msgstr "Nome del debitore"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"Note: Your rights regarding the above mandate are explained in a statement "
+"that you can obtain from your bank."
+msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "One-off payment"
@@ -419,10 +442,6 @@ msgstr "Codice di avviamento postale"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
 msgstr "Pagamento ricorrente"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid "SEPA"
-msgstr "SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
@@ -451,14 +470,6 @@ msgstr "Il tuo indirizzo"
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Your name"
 msgstr "Il tuo nome"
-
-msgctxt "report:account.payment.sepa.mandate:"
-msgid ""
-"to send instructions to your bank to debit your account and your bank to "
-"debit your account in accordance with the instructions from"
-msgstr ""
-"per inviare alla tua banca le istruzioni sull'addebito del tuo conto ed alla"
-" tua banca di addebitare il tuo conto secondo il modulo di istruzioni"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "SEPA"
