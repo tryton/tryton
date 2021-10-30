@@ -94,11 +94,6 @@ msgid "Currency"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.complaint.action,currency_digits:"
-msgid "Currency Digits"
-msgstr "Десетични единици"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Редове от фактура"
@@ -121,11 +116,6 @@ msgstr "Ред от продажба"
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
 msgstr "Единица"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action,unit_price:"
@@ -157,11 +147,6 @@ msgid "Currency"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Десетични единици"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Ред от фактура"
@@ -175,11 +160,6 @@ msgstr "Количество"
 msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Единица"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
@@ -210,11 +190,6 @@ msgid "Currency"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Десетични единици"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Ред от продажба"
@@ -228,11 +203,6 @@ msgstr "Количество"
 msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
 msgstr "Единица"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"

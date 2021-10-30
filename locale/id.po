@@ -79,10 +79,6 @@ msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.complaint.action,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
@@ -93,7 +89,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
-msgstr ""
+msgstr "Hasil"
 
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
@@ -103,13 +99,9 @@ msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.complaint.action,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
@@ -134,10 +126,6 @@ msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Baris Faktur"
@@ -150,13 +138,9 @@ msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
@@ -180,10 +164,6 @@ msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Baris Penjualan"
@@ -196,13 +176,9 @@ msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Harga Satuan"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"

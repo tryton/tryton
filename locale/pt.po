@@ -79,11 +79,6 @@ msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos Decimais da Unidade"
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas da fatura"
@@ -103,10 +98,6 @@ msgstr "Linhas de Venda"
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
 msgstr "Unidade"
-
-msgctxt "field:sale.complaint.action,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos Decimais da Unidade"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
@@ -135,11 +126,6 @@ msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos Decimais da Unidade"
-
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Linha da Fatura"
@@ -153,11 +139,6 @@ msgstr "Quantidade"
 msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Unidade"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos Decimais da Unidade"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
@@ -186,11 +167,6 @@ msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos Decimais da Unidade"
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Linha de Venda"
@@ -204,11 +180,6 @@ msgstr "Quantidade"
 msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
 msgstr "Unidade"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos Decimais da Unidade"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"

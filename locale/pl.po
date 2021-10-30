@@ -80,11 +80,6 @@ msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Wiersze faktury"
@@ -104,10 +99,6 @@ msgstr "Wiersze sprzedaży"
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
 msgstr "Jednostka"
-
-msgctxt "field:sale.complaint.action,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
@@ -136,11 +127,6 @@ msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Wiersz faktury"
@@ -154,11 +140,6 @@ msgstr "Ilość"
 msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Jednostka"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
@@ -187,11 +168,6 @@ msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Wiersz sprzedaży"
@@ -205,11 +181,6 @@ msgstr "Ilość"
 msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
 msgstr "Jednostka"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"

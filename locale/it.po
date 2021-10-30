@@ -79,11 +79,6 @@ msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action,currency_digits:"
-msgid "Currency Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Righe fattura"
@@ -103,10 +98,6 @@ msgstr "righe vendita"
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
 msgstr "Unità"
-
-msgctxt "field:sale.complaint.action,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
@@ -135,11 +126,6 @@ msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Riga fattura"
@@ -152,11 +138,6 @@ msgstr "Quantità"
 msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
 msgid "Unit"
 msgstr "Unità"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
@@ -185,11 +166,6 @@ msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "riga vendita"
@@ -202,11 +178,6 @@ msgstr "Quantità"
 msgctxt "field:sale.complaint.action-sale.line,unit:"
 msgid "Unit"
 msgstr "Unità"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,unit_price:"
