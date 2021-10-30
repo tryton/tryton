@@ -70,7 +70,6 @@ msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
 msgstr "Alleen van toepassing op producten van deze categorie."
 
-#, fuzzy
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -80,7 +79,8 @@ msgid ""
 msgstr ""
 "Python-expressie die wordt geëvalueerd met:\n"
 "- unit_price: de oorspronkelijke eenheidsprijs\n"
-"- cost_price: de kostprijs van het product"
+"- cost_price: de kostprijs van het product\n"
+"- list_price: de catalogusprijs van het product"
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
@@ -106,7 +106,6 @@ msgstr ""
 "Ongeldige formule \"%(formula)s\" in prijslijstlijn \"%(line)s\" met "
 "uitzondering \"%(exception)s\"."
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"

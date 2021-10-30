@@ -20,7 +20,7 @@ msgstr "Steuer Inklusive"
 
 msgctxt "field:product.price_list,unit:"
 msgid "Unit"
-msgstr "Maßeinheit"
+msgstr "Einheit"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"

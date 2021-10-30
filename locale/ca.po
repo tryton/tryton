@@ -16,7 +16,7 @@ msgstr "Nom"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
-msgstr "Impost inclòs"
+msgstr "Impostos inclosos"
 
 msgctxt "field:product.price_list,unit:"
 msgid "Unit"
