@@ -62,29 +62,21 @@ msgstr ""
 "staat van de maximale gebruiksduur (shelf life time state)/ "
 "houdbaarheidstermijn"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "uiterste houdbaarheidsdatum"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Expiration State"
 msgstr "Vervalstatus"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_date:"
 msgid "Shelf Life Expiration Date"
-msgstr ""
-"staat van de maximale gebruiksduur (shelf life time state)/ "
-"houdbaarheidstermijn"
+msgstr "Shelf Life vervaldatum"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
-msgstr ""
-"staat van de maximale gebruiksduur (shelf life time state)/ "
-"houdbaarheidstermijn"
+msgstr "Shelf Life vervaldatum"
 
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."
@@ -212,32 +204,26 @@ msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Vereist"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "None"
 msgstr "Geen"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Optional"
 msgstr "optioneel"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,expiration_state:"
 msgid "Required"
 msgstr "Vereist"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "None"
 msgstr "Geen"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr "optioneel"
+msgstr "Optioneel"
 
-#, fuzzy
 msgctxt "selection:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Required"
 msgstr "Vereist"
