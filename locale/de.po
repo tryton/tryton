@@ -49,7 +49,7 @@ msgstr "Artikel"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Lieferposten"
+msgstr "Lieferungen"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
@@ -77,7 +77,7 @@ msgstr "Einstandskosten"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Lieferposten"
+msgstr "Lieferung"
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
@@ -117,7 +117,7 @@ msgstr "Einstandskosten - Artikel"
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
-msgstr "Einstandskosten - Lieferposten"
+msgstr "Einstandskosten - Lieferung"
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
@@ -144,7 +144,7 @@ msgstr "Festgeschrieben"
 
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
 msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
-msgstr "Die Einstandskostenposition \"%(landed_cost)s\" hat keine Lagerbewegung."
+msgstr "Die Einstandskostenposition \"%(landed_cost)s\" hat keine Warenbewegung."
 
 msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
 msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
