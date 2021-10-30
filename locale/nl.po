@@ -471,7 +471,6 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorieën"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Configuration"
 msgstr "Instellingen"
@@ -492,7 +491,6 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Producten"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories"
 msgstr "Categorieën"
@@ -569,7 +567,6 @@ msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "varianten"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Configuration"
 msgstr "Instellingen"

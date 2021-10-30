@@ -587,7 +587,7 @@ msgstr "Unitați de masura"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Categorie de Produse"
+msgstr "Categorie Produse"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
@@ -927,23 +927,23 @@ msgstr "Cod International Articol"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Securities Identification Number"
-msgstr ""
+msgstr "Număr internațional de identificare a valorilor mobiliare"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Audiovisual Number"
-msgstr ""
+msgstr "Număr Internațional Standard Audiovizual"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Book Number"
-msgstr ""
+msgstr "Numărul standard internațional al cărții"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Identifier for Libraries"
-msgstr ""
+msgstr "Identificator standard internațional pentru biblioteci"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
-msgstr ""
+msgstr "Numărul de muzică standard internațional"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
