@@ -26,45 +26,30 @@ msgctxt "field:stock.shipment.assign.manual.show,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
-#, fuzzy
 msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
 msgid "Assigned Quantity"
-msgstr "Verplaats hoeveelheid"
+msgstr "Toegewezen hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.shipment.assigned.move,move:"
 msgid "Move"
-msgstr "Boekingen/bewegingen"
+msgstr "Boeking/beweging"
 
-#, fuzzy
 msgctxt "field:stock.shipment.assigned.move,move_quantity:"
 msgid "Move Quantity"
 msgstr "Verplaats hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.shipment.assigned.move,unassigned_quantity:"
 msgid "Unassigned Quantity"
-msgstr "Verplaats hoeveelheid"
+msgstr "Niet-toegewezen hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.shipment.assigned.move,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-#, fuzzy
-msgctxt "field:stock.shipment.assigned.move,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"
 msgid "Assigned Moves"
-msgstr ""
+msgstr "Toegewezen bewegingen"
 
-#, fuzzy
 msgctxt "field:stock.shipment.unassign.manual.show,moves:"
 msgid "Moves"
 msgstr "Boekingen/bewegingen"
@@ -79,15 +64,15 @@ msgstr ""
 
 msgctxt "help:stock.shipment.assigned.move,assigned_quantity:"
 msgid "The quantity left assigned"
-msgstr ""
+msgstr "De hoeveelheid die gereserveerd blijft"
 
 msgctxt "help:stock.shipment.assigned.move,unassigned_quantity:"
 msgid "The quantity to unassign"
-msgstr ""
+msgstr "De hoeveelheid om de toewijzing ongedaan te maken"
 
 msgctxt "help:stock.shipment.unassign.manual.show,moves:"
 msgid "The moves to unassign."
-msgstr ""
+msgstr "De stock bewegingen die ongedaan gemaakt worden."
 
 msgctxt "model:ir.action,name:wizard_production_assign_manual"
 msgid "Manual Assign Production"
@@ -105,7 +90,6 @@ msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
 msgid "Manual Assign Customer Shipment"
 msgstr "Handmatig klantzending toewijzen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_unassign_manual"
 msgid "Manually Unassign Shipment"
 msgstr "Handmatig zending toewijzen"
@@ -143,16 +127,15 @@ msgstr "Handmatig zending toewijzen"
 
 msgctxt "model:stock.shipment.assigned.move,name:"
 msgid "Shipment Assigned Move"
-msgstr ""
+msgstr "Levering Gereserveerde voorraadbewegingen"
 
-#, fuzzy
 msgctxt "model:stock.shipment.unassign.manual.show,name:"
 msgid "Manually Unassign Shipment"
 msgstr "Handmatig zending toewijzen"
 
 msgctxt "view:stock.shipment.unassign.manual.show:"
 msgid "Enter the quantities to unassign:"
-msgstr ""
+msgstr "Voer de hoeveelheden in om de toewijzing ongedaan te maken:"
 
 msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
 msgid "Assign"
@@ -166,12 +149,10 @@ msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
 msgid "Skip"
 msgstr "Overslaan"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.unassign.manual,show,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.unassign.manual,show,unassign:"
 msgid "Unassign"
-msgstr "Toewijzen"
+msgstr "Toewijzing ongedaan maken"

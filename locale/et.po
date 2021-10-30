@@ -26,10 +26,6 @@ msgctxt "field:stock.shipment.assign.manual.show,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
-msgid "Unit Digits"
-msgstr ""
-
 msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
 msgid "Assigned Quantity"
 msgstr ""
@@ -48,10 +44,6 @@ msgstr ""
 
 msgctxt "field:stock.shipment.assigned.move,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:stock.shipment.assigned.move,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"

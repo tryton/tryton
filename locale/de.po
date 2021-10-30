@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.shipment.assign.manual.show,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
 msgid "Move Quantity"
-msgstr "Menge Lagerbewegung"
+msgstr "Menge Wargenbewegung"
 
 msgctxt "field:stock.shipment.assign.manual.show,place:"
 msgid "Place"
@@ -26,21 +26,17 @@ msgctxt "field:stock.shipment.assign.manual.show,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
 msgid "Assigned Quantity"
 msgstr "Reservierte Menge"
 
 msgctxt "field:stock.shipment.assigned.move,move:"
 msgid "Move"
-msgstr "Lagerbewegung"
+msgstr "Warenbewegung"
 
 msgctxt "field:stock.shipment.assigned.move,move_quantity:"
 msgid "Move Quantity"
-msgstr "Menge Lagerbewegung"
+msgstr "Menge Warenbewegung"
 
 msgctxt "field:stock.shipment.assigned.move,unassigned_quantity:"
 msgid "Unassigned Quantity"
@@ -50,17 +46,13 @@ msgctxt "field:stock.shipment.assigned.move,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:stock.shipment.assigned.move,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"
 msgid "Assigned Moves"
-msgstr "Reservierte Lagerbewegungen"
+msgstr "Reservierte Warenbewegungen"
 
 msgctxt "field:stock.shipment.unassign.manual.show,moves:"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Warenbewegungen"
 
 msgctxt "help:stock.shipment.assign.manual.show,quantity:"
 msgid ""
@@ -68,7 +60,7 @@ msgid ""
 "Leave empty for the full quantity of the move."
 msgstr ""
 "Die maximale Menge, die von diesem Platz reserviert werden kann.\n"
-"Leer lassen für die gesamte Menge der Lagerbewegung."
+"Leer lassen für die gesamte Menge der Warenbewegung."
 
 msgctxt "help:stock.shipment.assigned.move,assigned_quantity:"
 msgid "The quantity left assigned"
@@ -80,7 +72,7 @@ msgstr "Die Menge, deren Reservierung aufgehoben werden soll."
 
 msgctxt "help:stock.shipment.unassign.manual.show,moves:"
 msgid "The moves to unassign."
-msgstr "Die Lagerbewegungen, deren Reservierung aufgehoben werden soll."
+msgstr "Die Warenbewegungen, deren Reservierung aufgehoben werden soll."
 
 msgctxt "model:ir.action,name:wizard_production_assign_manual"
 msgid "Manual Assign Production"
@@ -105,7 +97,7 @@ msgstr "Manuelle Aufhebung Reservierung Lieferung"
 msgctxt "model:ir.message,text:msg_assign_failed"
 msgid "Failed to assign of %(move)s from %(place)s, please retry."
 msgstr ""
-"Die Reservierung für Lagerbewegung %(move)s von Platz %(place)s ist "
+"Die Reservierung für Warenbewegung %(move)s von Platz %(place)s ist "
 "fehlgeschlagen. Bitte nochmal versuchen."
 
 msgctxt "model:ir.message,text:msg_invalid_quantity"
@@ -137,7 +129,7 @@ msgstr "Manuelle Reservierung Lieferung"
 
 msgctxt "model:stock.shipment.assigned.move,name:"
 msgid "Shipment Assigned Move"
-msgstr "Lieferung Reservierte Lagerbewegungen"
+msgstr "Lieferung Reservierte Warenbewegungen"
 
 msgctxt "model:stock.shipment.unassign.manual.show,name:"
 msgid "Manually Unassign Shipment"
