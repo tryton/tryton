@@ -121,7 +121,7 @@ msgstr "Anwesenheiten"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Anwesenheitseintragszeiträume"
+msgstr "Lagerperioden"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
@@ -216,7 +216,7 @@ msgstr "Anwesenheit"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Anwesenheitseintragszeiträume"
+msgstr "Lagerperioden"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"

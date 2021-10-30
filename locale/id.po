@@ -120,7 +120,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
@@ -166,7 +166,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_sheet"
 msgid "Own attendance sheet"
@@ -206,7 +206,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"
