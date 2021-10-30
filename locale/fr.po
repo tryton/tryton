@@ -18,10 +18,6 @@ msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Effort"
 
-msgctxt "field:project.work,left:"
-msgid "Left"
-msgstr "Gauche"
-
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Nom"
@@ -38,13 +34,13 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Adresse"
 
+msgctxt "field:project.work,path:"
+msgid "Path"
+msgstr "Chemin"
+
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Progression"
-
-msgctxt "field:project.work,right:"
-msgid "Right"
-msgstr "Droite"
 
 msgctxt "field:project.work,status:"
 msgid "Status"

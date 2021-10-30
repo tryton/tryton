@@ -18,10 +18,6 @@ msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Inspanning"
 
-msgctxt "field:project.work,left:"
-msgid "Left"
-msgstr "Links"
-
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Naam"
@@ -38,13 +34,13 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "contact adres"
 
+msgctxt "field:project.work,path:"
+msgid "Path"
+msgstr "Pad"
+
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Vooruitgang"
-
-msgctxt "field:project.work,right:"
-msgid "Right"
-msgstr "Rechts"
 
 msgctxt "field:project.work,status:"
 msgid "Status"
@@ -204,7 +200,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"

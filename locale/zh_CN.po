@@ -18,10 +18,6 @@ msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "投入"
 
-msgctxt "field:project.work,left:"
-msgid "Left"
-msgstr "左"
-
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "名称"
@@ -38,13 +34,13 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "联系地址"
 
+msgctxt "field:project.work,path:"
+msgid "Path"
+msgstr ""
+
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "进度"
-
-msgctxt "field:project.work,right:"
-msgid "Right"
-msgstr "右"
 
 msgctxt "field:project.work,status:"
 msgid "Status"

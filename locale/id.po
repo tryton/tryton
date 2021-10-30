@@ -18,10 +18,6 @@ msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
 
-msgctxt "field:project.work,left:"
-msgid "Left"
-msgstr "Kiri"
-
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Nama"
@@ -38,13 +34,13 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr ""
 
+msgctxt "field:project.work,path:"
+msgid "Path"
+msgstr ""
+
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
-
-msgctxt "field:project.work,right:"
-msgid "Right"
-msgstr "Kanan"
 
 msgctxt "field:project.work,status:"
 msgid "Status"
@@ -217,11 +213,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Pelaporan"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Tugas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
