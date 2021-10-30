@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,deposit:"
 msgid "Deposit"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:account.account.type.template,deposit:"
 msgid "Deposit"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
@@ -28,19 +28,21 @@ msgstr "Depozit"
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
-msgstr ""
+msgstr "Rechemare depozit pe Factura"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"
-msgstr ""
+msgstr "Rânduri Depozit"
 
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr ""
+msgstr "Rechemare Depozit"
 
 msgctxt "model:ir.message,text:msg_deposit_not_enough"
 msgid "The account \"%(account)s\" has not enough deposit from party \"%(party)s\"."
 msgstr ""
+"Contul \"%(notification)s\" nu are destul de mult depozit de la parte "
+"\"%(party)s\"."
 
 msgctxt "model:ir.message,text:msg_erase_party_deposit"
 msgid ""
@@ -50,12 +52,12 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"
-msgstr ""
+msgstr "Rechemare Depozit"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
-msgstr ""
+msgstr "Rechemare"
