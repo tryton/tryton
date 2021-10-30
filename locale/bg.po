@@ -8,11 +8,6 @@ msgid "Height"
 msgstr "Височина"
 
 #, fuzzy
-msgctxt "field:product.product,height_digits:"
-msgid "Height Digits"
-msgstr "Цифри за височина"
-
-#, fuzzy
 msgctxt "field:product.product,height_uom:"
 msgid "Height Uom"
 msgstr "Мер. ед. за височина"
@@ -21,11 +16,6 @@ msgstr "Мер. ед. за височина"
 msgctxt "field:product.product,length:"
 msgid "Length"
 msgstr "Дължина"
-
-#, fuzzy
-msgctxt "field:product.product,length_digits:"
-msgid "Length Digits"
-msgstr "Цифри за дължина"
 
 #, fuzzy
 msgctxt "field:product.product,length_uom:"
@@ -37,10 +27,6 @@ msgctxt "field:product.product,volume:"
 msgid "Volume"
 msgstr "Обем"
 
-msgctxt "field:product.product,volume_digits:"
-msgid "Volume Digits"
-msgstr ""
-
 msgctxt "field:product.product,volume_uom:"
 msgid "Volume Uom"
 msgstr ""
@@ -49,11 +35,6 @@ msgstr ""
 msgctxt "field:product.product,weight:"
 msgid "Weight"
 msgstr "Тегло"
-
-#, fuzzy
-msgctxt "field:product.product,weight_digits:"
-msgid "Weight Digits"
-msgstr "Цифри за тегло"
 
 #, fuzzy
 msgctxt "field:product.product,weight_uom:"
@@ -66,11 +47,6 @@ msgid "Width"
 msgstr "Ширина"
 
 #, fuzzy
-msgctxt "field:product.product,width_digits:"
-msgid "Width Digits"
-msgstr "Цифри за ширина"
-
-#, fuzzy
 msgctxt "field:product.product,width_uom:"
 msgid "Width Uom"
 msgstr "Мер. ед, за ширина"
@@ -79,10 +55,6 @@ msgctxt "field:product.template,height:"
 msgid "Height"
 msgstr "Височина"
 
-msgctxt "field:product.template,height_digits:"
-msgid "Height Digits"
-msgstr "Цифри за височина"
-
 msgctxt "field:product.template,height_uom:"
 msgid "Height Uom"
 msgstr "Мер. ед. за височина"
@@ -90,10 +62,6 @@ msgstr "Мер. ед. за височина"
 msgctxt "field:product.template,length:"
 msgid "Length"
 msgstr "Дължина"
-
-msgctxt "field:product.template,length_digits:"
-msgid "Length Digits"
-msgstr "Цифри за дължина"
 
 msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
@@ -104,10 +72,6 @@ msgctxt "field:product.template,volume:"
 msgid "Volume"
 msgstr "Обем"
 
-msgctxt "field:product.template,volume_digits:"
-msgid "Volume Digits"
-msgstr ""
-
 msgctxt "field:product.template,volume_uom:"
 msgid "Volume Uom"
 msgstr ""
@@ -116,10 +80,6 @@ msgctxt "field:product.template,weight:"
 msgid "Weight"
 msgstr "Тегло"
 
-msgctxt "field:product.template,weight_digits:"
-msgid "Weight Digits"
-msgstr "Цифри за тегло"
-
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
 msgstr "Мер. ед. за тегло"
@@ -127,10 +87,6 @@ msgstr "Мер. ед. за тегло"
 msgctxt "field:product.template,width:"
 msgid "Width"
 msgstr "Ширина"
-
-msgctxt "field:product.template,width_digits:"
-msgid "Width Digits"
-msgstr "Цифри за ширина"
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
