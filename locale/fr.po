@@ -66,21 +66,17 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Unité"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Décimales de l'unité"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Entrepôt"
 
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
-msgstr "Laisser vide pour aucun surplus par défaut."
+msgstr "Laissez vide pour aucun surplus par défaut."
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
-msgstr "Laisser vide pour aucun approvisionnement par défaut."
+msgstr "Laissez vide pour aucun approvisionnement par défaut."
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"

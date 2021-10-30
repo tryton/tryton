@@ -70,11 +70,6 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Unità"
 
-#, fuzzy
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Posizioni Unità"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr ""

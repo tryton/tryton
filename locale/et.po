@@ -66,10 +66,6 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Ühik"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtus"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Lao asukoht"

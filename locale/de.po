@@ -66,13 +66,9 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Einheit"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
@@ -117,11 +113,11 @@ msgstr "Einkauf"
 
 msgctxt "model:ir.message,text:msg_late_customer_moves"
 msgid "There are some customer moves that are late."
-msgstr "Einige Lagerbewegungen zu Kunden sind verspätet."
+msgstr "Einige Warenbewegungen zu Kunden sind verspätet."
 
 msgctxt "model:ir.message,text:msg_late_supplier_moves"
 msgid "There are some supplier moves that are late."
-msgstr "Einige Lagerbewegungen von Lieferanten sind verspätet."
+msgstr "Einige Warenbewegungen von Lieferanten sind verspätet."
 
 msgctxt ""
 "model:ir.message,text:msg_order_point_concurrent_overflowing_location_internal"

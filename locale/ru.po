@@ -66,10 +66,6 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Единица измерения"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Местополжение на складе"

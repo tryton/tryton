@@ -67,10 +67,6 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Jednostka"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Lokalizacja magazynu"

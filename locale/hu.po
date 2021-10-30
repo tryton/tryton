@@ -68,10 +68,6 @@ msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Mértékegység"
 
-msgctxt "field:stock.order_point,unit_digits:"
-msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számjegy"
-
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Raktár"
