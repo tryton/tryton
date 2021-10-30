@@ -156,9 +156,9 @@ msgctxt "field:account.payment.braintree.refund,braintree_transaction_id:"
 msgid "Braintree Transaction ID"
 msgstr "Braintree Transaction ID"
 
-msgctxt "field:account.payment.braintree.refund,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
+msgctxt "field:account.payment.braintree.refund,currency:"
+msgid "Currency"
+msgstr "Währung"
 
 msgctxt "field:account.payment.braintree.refund,payment:"
 msgid "Payment"
@@ -175,6 +175,23 @@ msgstr "Konto"
 msgctxt "field:party.party,braintree_customers:"
 msgid "Braintree Customers"
 msgstr "Braintree Kunden"
+
+msgctxt "field:party.party.reception_direct_debit,braintree_account:"
+msgid "Braintree Account"
+msgstr "Braintree Konto"
+
+msgctxt "field:party.party.reception_direct_debit,braintree_customer:"
+msgid "Braintree Customer"
+msgstr "Braintree Kunde"
+
+msgctxt "field:party.party.reception_direct_debit,braintree_customer_method:"
+msgid "Braintree Customer Method"
+msgstr "Braintree Customer Method"
+
+msgctxt ""
+"field:party.party.reception_direct_debit,braintree_customer_method_selection:"
+msgid "Braintree Customer Method"
+msgstr "Braintree Customer Method"
 
 msgctxt "help:account.payment.braintree.account,webhook_endpoint:"
 msgid "The URL to be called by Braintree."
@@ -423,6 +440,14 @@ msgstr "Ausgeglichen:"
 msgctxt "view:account.payment:"
 msgid "Transaction ID:"
 msgstr "Transaction ID:"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Customer:"
+msgstr "Kunde:"
+
+msgctxt "view:party.party.reception_direct_debit:"
+msgid "Payment Method:"
+msgstr "Zahlungsmethode:"
 
 msgctxt ""
 "wizard_button:account.payment.braintree.customer.payment_method.delete,ask,delete_:"
