@@ -72,7 +72,7 @@ msgstr "Message"
 
 msgctxt "help:marketing.email.message,from_:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr "Laisser vide pour la valeur définie dans le fichier de configuration."
+msgstr "Laissez vide pour la valeur définie dans le fichier de configuration."
 
 msgctxt "model:ir.action,name:act_email_list_form"
 msgid "Mailing Lists"
