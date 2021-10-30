@@ -153,7 +153,7 @@ msgstr "Après combien de temps l'action doit être exécutée."
 msgctxt "help:marketing.automation.activity,email_from:"
 msgid "Leave empty to use the value defined in the configuration file."
 msgstr ""
-"Laisser vide pour utiliser la valeur définie dans le fichier de "
+"Laissez vide pour utiliser la valeur définie dans le fichier de "
 "configuration."
 
 msgctxt "help:marketing.automation.activity,email_template:"
