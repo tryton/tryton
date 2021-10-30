@@ -34,10 +34,6 @@ msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos Decimais da Moeda"
-
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
 msgstr "Cobrança"

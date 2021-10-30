@@ -34,10 +34,6 @@ msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
 msgstr "Para Birimi"
 
-msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
-msgid "Currency Digits"
-msgstr "Para Birimi Basamakları"
-
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
 msgstr "İhtarname"

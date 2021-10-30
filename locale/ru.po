@@ -40,11 +40,6 @@ msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
 msgstr "Валюты"
 
-#, fuzzy
-msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
-msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
-
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
 msgstr ""
