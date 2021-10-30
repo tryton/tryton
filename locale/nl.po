@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.rule,account:"
+msgid "Substitution Account"
+msgstr "Vervangingsaccount"
+
+msgctxt "field:account.account.rule,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.account.rule,end_date:"
+msgid "Ending Date"
+msgstr "Einddatum"
+
+msgctxt "field:account.account.rule,origin_account:"
+msgid "Original Account"
+msgstr "Oorspronkelijke account"
+
+msgctxt "field:account.account.rule,return_:"
+msgid "Return"
+msgstr "Retours"
+
+msgctxt "field:account.account.rule,start_date:"
+msgid "Starting Date"
+msgstr "Start datum"
+
+msgctxt "field:account.account.rule,tax:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:account.account.rule,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.account.rule,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "help:account.account.rule,return_:"
+msgid "Check to limit to return operation."
+msgstr "Vink aan om te beperken tot retour verwerking."
+
+msgctxt "model:account.account.rule,name:"
+msgid "Account Rule"
+msgstr "Accountregel"
+
+msgctxt "model:ir.action,name:act_account_rule_form"
+msgid "Account Rules"
+msgstr "Accountregels"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
+msgid "Account Rules"
+msgstr "Accountregels"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Expense"
+msgstr "uitgaven (Expense)"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Payable"
+msgstr "Te betalen"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Receivable"
+msgstr "Te ontvangen"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Revenue"
+msgstr "Omzet"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Stock"
+msgstr "Voorraad"
