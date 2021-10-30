@@ -273,13 +273,13 @@ msgid "Default"
 msgstr "Standard"
 
 msgid "Text and Icons"
-msgstr "Text und Symbole"
+msgstr "Text und Icons"
 
 msgid "Text"
 msgstr "Text"
 
 msgid "Icons"
-msgstr "Symbole"
+msgstr "Icons"
 
 msgid "Form"
 msgstr "Formular"
@@ -994,7 +994,7 @@ msgstr "Der Assistent %s kann nicht gelöscht werden."
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
+msgid "Created by"
 msgstr "Erstellt von"
 
 msgid "Created at"

@@ -1000,8 +1000,9 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr ""
+#, fuzzy
+msgid "Created by"
+msgstr "Creato da:"
 
 #, fuzzy
 msgid "Created at"

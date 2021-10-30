@@ -987,7 +987,7 @@ msgstr "No s'ha pogut eliminar l'assistent %s"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
+msgid "Created by"
 msgstr "Creat per"
 
 msgid "Created at"

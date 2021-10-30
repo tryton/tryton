@@ -1005,7 +1005,8 @@ msgstr "Negalima ištrinti %s vedlio"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
+#, fuzzy
+msgid "Created by"
 msgstr "Sukūręs naudotojas"
 
 msgid "Created at"

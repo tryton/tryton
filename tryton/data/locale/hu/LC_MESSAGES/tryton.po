@@ -991,8 +991,9 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr "Létrehozta"
+#, fuzzy
+msgid "Created by"
+msgstr "Létrehozta:"
 
 msgid "Created at"
 msgstr "Létrehozás dátuma"
@@ -1012,15 +1013,15 @@ msgstr "A menü láthatósága nem állítható be"
 
 #, python-format
 msgid "\"%s\" is not valid according to its domain."
-msgstr "A „%s” mezőben helytelen értéket adott meg."
+msgstr "A(z) „%s” mezőben helytelen értéket adott meg."
 
 #, python-format
 msgid "\"%s\" is required."
-msgstr "A „%s” mezőt meg kell adni."
+msgstr "A(z) „%s” mezőt meg kell adni."
 
 #, python-format
 msgid "The values of \"%s\" are not valid."
-msgstr "A „%s” mező értékei között van érvénytelen."
+msgstr "A(z) „%s” mező értékei között van érvénytelen."
 
 msgid "Pre-validation"
 msgstr "Adatkitöltés ellenőrzése"

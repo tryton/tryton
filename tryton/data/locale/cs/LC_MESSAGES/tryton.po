@@ -1067,8 +1067,9 @@ msgstr ""
 msgid "ID"
 msgstr "Najít"
 
-msgid "Create by"
-msgstr ""
+#, fuzzy
+msgid "Created by"
+msgstr "Datum vytvoření:"
 
 #, fuzzy
 msgid "Created at"

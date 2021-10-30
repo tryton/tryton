@@ -989,8 +989,9 @@ msgstr "无法删除向导 %s"
 msgid "ID"
 msgstr "标识"
 
-msgid "Create by"
-msgstr "创建者"
+#, fuzzy
+msgid "Created by"
+msgstr "创建者:"
 
 msgid "Created at"
 msgstr "创建日期"

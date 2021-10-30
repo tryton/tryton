@@ -990,8 +990,8 @@ msgstr "Impossible de supprimer l'assistant %s"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr "Crée par"
+msgid "Created by"
+msgstr "Créé par"
 
 msgid "Created at"
 msgstr "Crée le"

@@ -983,7 +983,7 @@ msgstr "Imposibil de șters asistent de configurare %s"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
+msgid "Created by"
 msgstr "Creat de"
 
 msgid "Created at"

@@ -1049,8 +1049,9 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr ""
+#, fuzzy
+msgid "Created by"
+msgstr "Дата создания"
 
 #, fuzzy
 msgid "Created at"

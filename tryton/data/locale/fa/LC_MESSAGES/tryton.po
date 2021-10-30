@@ -106,7 +106,7 @@ msgstr "نسخه فعلی خود را ذخیره کنید"
 
 #, fuzzy, python-format
 msgid "Compare: %s"
-msgstr "مقایسه : %s"
+msgstr "مقایسه"
 
 msgid "Close"
 msgstr "بستن"
@@ -556,7 +556,7 @@ msgstr "قادر به حذف دستیار \"%s\" نیست"
 
 #, fuzzy, python-format
 msgid "E-mail %s"
-msgstr "ایمیل %s"
+msgstr "ایمیل"
 
 msgid "To:"
 msgstr "به:"
@@ -1012,8 +1012,9 @@ msgstr "قادر به حذف دستیار \"%s\" نیست"
 msgid "ID"
 msgstr "شناسه"
 
-msgid "Create by"
-msgstr ""
+#, fuzzy
+msgid "Created by"
+msgstr "تاریخ ایجاد"
 
 #, fuzzy
 msgid "Created at"

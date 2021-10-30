@@ -981,7 +981,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-msgid "Create by"
+msgid "Created by"
 msgstr ""
 
 msgid "Created at"

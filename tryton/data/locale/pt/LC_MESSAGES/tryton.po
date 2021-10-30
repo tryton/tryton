@@ -1011,8 +1011,9 @@ msgstr "Não é possível apagar o assistente %s"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr ""
+#, fuzzy
+msgid "Created by"
+msgstr "Data de criação"
 
 #, fuzzy
 msgid "Created at"

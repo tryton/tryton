@@ -989,8 +989,9 @@ msgstr "Brak możliwości usunięcia kreatora %s"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr "Utworzył"
+#, fuzzy
+msgid "Created by"
+msgstr "Utworzył:"
 
 msgid "Created at"
 msgstr "Data utworzenia"

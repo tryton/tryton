@@ -570,25 +570,22 @@ msgid "Attachments"
 msgstr "Bijlagen"
 
 msgid "Files"
-msgstr ""
+msgstr "Bestanden"
 
 msgid "Send"
 msgstr "Sturen"
 
-#, fuzzy
 msgid "Select File"
-msgstr "Alles selecteren"
+msgstr "Selecteer bestand"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "Verwijder <Del>"
+msgstr "Bestand verwijderen"
 
 msgid "Add..."
 msgstr "Toevoegen..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "Vorige"
+msgstr "Voorbeeld"
 
 msgid "Previous"
 msgstr "Vorige"
@@ -989,8 +986,8 @@ msgstr "Kon de wizard %s niet verwijderen"
 msgid "ID"
 msgstr "ID"
 
-msgid "Create by"
-msgstr "Gemaakt door"
+msgid "Created by"
+msgstr "Aangemaakt door"
 
 msgid "Created at"
 msgstr "Aanmaakdatum"
