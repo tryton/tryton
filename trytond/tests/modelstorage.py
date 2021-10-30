@@ -117,6 +117,24 @@ class ModelStorageRelationDomainTarget(ModelSQL):
             return [('id', '=', -1)]
 
 
+class ModelStorageRelationMultiDomain(ModelSQL):
+    "Model stored containing a relation fields with multi domain"
+    __name__ = 'test.modelstorage.relation_multi_domain'
+    relation = fields.Many2One(
+        'test.modelstorage.relation_multi_domain.target', "Value",
+        domain=[
+            ('test1', '=', True),
+            ('test2', '=', True),
+            ])
+
+
+class ModelStorageRelationMultiDomainTarget(ModelSQL):
+    "Target of Model stored containing a relation field with multi domain"
+    __name__ = 'test.modelstorage.relation_multi_domain.target'
+    test1 = fields.Boolean("Test 1")
+    test2 = fields.Boolean("Test 2")
+
+
 class ModelStorageRelationDomain2(ModelSQL):
     "Model stored containing a relation field with a domain with 2 level"
     __name__ = 'test.modelstorage.relation_domain2'
@@ -163,6 +181,8 @@ def register(module):
         ModelStoragePYSONDomain,
         ModelStorageRelationDomain,
         ModelStorageRelationDomainTarget,
+        ModelStorageRelationMultiDomain,
+        ModelStorageRelationMultiDomainTarget,
         ModelStorageRelationDomain2,
         ModelStorageRelationDomain2Target,
         ModelStorageEvalEnvironment,
