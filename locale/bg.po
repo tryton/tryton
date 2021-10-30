@@ -29,11 +29,6 @@ msgid "Currency"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr "Десетични единици"
-
-#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
@@ -72,11 +67,6 @@ msgstr "Начална дата"
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Единица"
-
-#, fuzzy
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
-msgstr "Десетични единици"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"

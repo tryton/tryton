@@ -26,11 +26,6 @@ msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr "Cyfry jednostki"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
@@ -62,10 +57,6 @@ msgstr "Data rozpoczęcia"
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Jednostka"
-
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
-msgstr "Cyfry jednostki"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"

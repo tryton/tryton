@@ -27,10 +27,6 @@ msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Pabaigos data"
@@ -62,10 +58,6 @@ msgstr "Pradžios data"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:sale.promotion,untaxed_amount:"

@@ -28,11 +28,6 @@ msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr "Tizedes vessző utáni számjegy"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr ""
@@ -70,11 +65,6 @@ msgstr ""
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Egység"
-
-#, fuzzy
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"

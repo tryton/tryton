@@ -26,10 +26,6 @@ msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Enddatum"
@@ -61,10 +57,6 @@ msgstr "Startdatum"
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Einheit"
-
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
-msgstr "Nachkommastellen"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"

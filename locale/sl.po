@@ -26,11 +26,6 @@ msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.promotion,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimalke"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
@@ -62,10 +57,6 @@ msgstr "Začetni datum"
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "enota"
-
-msgctxt "field:sale.promotion,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalke"
 
 msgctxt "field:sale.promotion,untaxed_amount:"
 msgid "Untaxed Amount"
