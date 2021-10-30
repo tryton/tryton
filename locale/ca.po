@@ -32,10 +32,6 @@ msgctxt "field:account.invoice.deferred,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:account.invoice.deferred,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:account.invoice.deferred,end_date:"
 msgid "End Date"
 msgstr "Data final"

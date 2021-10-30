@@ -4,21 +4,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,deferred_account_expense:"
 msgid "Deferred Account Expense"
-msgstr ""
+msgstr "Rekening uitgestelde kosten"
 
 msgctxt "field:account.configuration,deferred_account_revenue:"
 msgid "Deferred Account Revenue"
-msgstr ""
+msgstr "Rekening uitgestelde inkomsten"
 
 msgctxt ""
 "field:account.configuration.default_account,deferred_account_expense:"
 msgid "Deferred Account Expense"
-msgstr ""
+msgstr "Rekening uitgestelde kosten"
 
 msgctxt ""
 "field:account.configuration.default_account,deferred_account_revenue:"
 msgid "Deferred Account Revenue"
-msgstr ""
+msgstr "Rekening uitgestelde inkomsten"
 
 msgctxt "field:account.invoice.deferred,amount:"
 msgid "Amount"
@@ -31,10 +31,6 @@ msgstr "Bedrijf"
 msgctxt "field:account.invoice.deferred,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:account.invoice.deferred,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:account.invoice.deferred,end_date:"
 msgid "End Date"
@@ -66,31 +62,31 @@ msgstr "Type"
 
 msgctxt "field:account.invoice.line,defer_from:"
 msgid "Defer From"
-msgstr ""
+msgstr "Uitstellen van"
 
 msgctxt "field:account.invoice.line,defer_to:"
 msgid "Defer To"
-msgstr ""
+msgstr "uitstellen tot"
 
 msgctxt "field:account.invoice.line,deferrable:"
 msgid "Deferrable"
-msgstr ""
+msgstr "uitstelbaar"
 
 msgctxt "model:account.invoice.deferred,name:"
 msgid "Invoice Deferred"
-msgstr ""
+msgstr "Factuur uitgesteld"
 
 msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
 msgid "Supplier Invoices Deferred"
-msgstr ""
+msgstr "Leveranciersfacturen uitgesteld"
 
 msgctxt "model:ir.action,name:act_invoice_deferred_out_form"
 msgid "Customer Invoices Deferred"
-msgstr ""
+msgstr "Klantfacturen uitgesteld"
 
 msgctxt "model:ir.action,name:wizard_invoice_deferred_create_moves"
 msgid "Create Invoices Deferred Moves"
-msgstr ""
+msgstr "Uitgestelde factuurbewegingen maken"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_all"
@@ -139,14 +135,16 @@ msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "
 "\"%(deferrals)s\" do not have yet move for the period."
 msgstr ""
+"U kunt periode \"%(period)s\" niet sluiten omdat sommige uitgestelde "
+"facturen \"%(deferrals)s\" nog niet zijn geboekt voor de periode."
 
 msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
 msgid "Are you sure you want to defer the invoices?"
-msgstr ""
+msgstr "Weet u zeker dat u de facturen wilt uitstellen?"
 
 msgctxt "model:ir.model.button,help:invoice_deferred_run_button"
 msgid "Start deferring the invoice"
-msgstr ""
+msgstr "Begin met het uitstellen van de factuur"
 
 msgctxt "model:ir.model.button,string:invoice_deferred_run_button"
 msgid "Run"
@@ -158,15 +156,15 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
 msgid "Create Invoices Deferred Moves"
-msgstr ""
+msgstr "Uitgestelde factuurbewegingen maken"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
 msgid "Supplier Invoices Deferred"
-msgstr ""
+msgstr "Leveranciersfacturen uitgesteld"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_out_form"
 msgid "Customer Invoices Deferred"
-msgstr ""
+msgstr "Klantfacturen uitgesteld"
 
 msgctxt "selection:account.invoice.deferred,state:"
 msgid "Closed"
@@ -190,7 +188,7 @@ msgstr "Leverancier"
 
 msgctxt "view:account.configuration:"
 msgid "Deferred"
-msgstr ""
+msgstr "uitgesteld"
 
 msgctxt "view:account.invoice.deferred:"
 msgid "Other Info"
