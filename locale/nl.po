@@ -126,7 +126,6 @@ msgctxt "model:ir.action,name:act_open_request_form"
 msgid "Requests"
 msgstr "verzoeken"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Requests"
 msgstr "verzoeken"
@@ -188,12 +187,10 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Aankoopafhandeling annuleren"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Requests"
 msgstr "verzoeken"
