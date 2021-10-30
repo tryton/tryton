@@ -8,11 +8,11 @@ msgstr "Téléphone"
 
 msgctxt "field:product.product,vsf_sku:"
 msgid "SKU"
-msgstr "UVC"
+msgstr "UGS"
 
 msgctxt "field:product.template,vsf_sku:"
 msgid "SKU"
-msgstr "UVC"
+msgstr "UGS"
 
 msgctxt "field:web.shop,vsf_elasticsearch_index:"
 msgid "Elasticsearch Index"
