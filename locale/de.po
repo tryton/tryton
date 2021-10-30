@@ -40,7 +40,7 @@ msgstr "Status"
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
@@ -80,7 +80,7 @@ msgstr "Übergeordnet (Arbeitsplatz)"
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
-msgstr "Warenlager"
+msgstr "Logistikstandort"
 
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"

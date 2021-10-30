@@ -178,17 +178,14 @@ msgctxt "model:ir.model.button,string:work_stop_button"
 msgid "Stop"
 msgstr "stop"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_work_center_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_work_cycle_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
