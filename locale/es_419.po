@@ -6,8 +6,8 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:sale.extra,end_date:"
@@ -32,6 +32,10 @@ msgstr ""
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
+msgstr ""
+
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:sale.extra.line,extra:"
@@ -60,10 +64,6 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr ""
-
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
 msgstr ""
 
 msgctxt "field:sale.line,extra:"

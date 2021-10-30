@@ -6,8 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr "Dígitos Decimais da Moeda"
 
 msgctxt "field:sale.extra,end_date:"
@@ -33,6 +34,11 @@ msgstr "Montande de Venda"
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "Dígitos Decimais da Moeda"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -61,10 +67,6 @@ msgstr "Montante da Venda"
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "Unidade"
-
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Dígitos Decimais da Unidade"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"

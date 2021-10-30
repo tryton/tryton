@@ -6,9 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
@@ -33,6 +33,10 @@ msgstr "Verkoopbedrag"
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Start datum"
+
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -62,10 +66,6 @@ msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "Eenheid"
 
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Decimalen eenheid"
-
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extra"
@@ -78,7 +78,6 @@ msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
 msgstr "verkoop Extras"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_extra_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"

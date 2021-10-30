@@ -8,8 +8,8 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr "ໂຕເລກສະກຸນເງິນ"
 
 #, fuzzy
@@ -40,6 +40,11 @@ msgstr ""
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "ໂຕເລກສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:sale.extra.line,extra:"
@@ -73,11 +78,6 @@ msgstr ""
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "ໜ່ວຍ"
-
-#, fuzzy
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
 
 #, fuzzy
 msgctxt "field:sale.line,extra:"

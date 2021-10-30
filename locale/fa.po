@@ -6,8 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr "رقم های واحد پول"
 
 msgctxt "field:sale.extra,end_date:"
@@ -33,6 +34,11 @@ msgstr "میزان فروش"
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -61,10 +67,6 @@ msgstr "میزان فروش"
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "واحد"
-
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "ارقام واحد"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"

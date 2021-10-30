@@ -6,8 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr "Valuuta numbriväärtus"
 
 msgctxt "field:sale.extra,end_date:"
@@ -33,6 +34,11 @@ msgstr "Summa"
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "Valuuta numbriväärtus"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -61,10 +67,6 @@ msgstr "Summa"
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
-
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Ühiku numbriväärtus"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"

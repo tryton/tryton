@@ -8,8 +8,8 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
-msgctxt "field:sale.extra,currency_digits:"
-msgid "Currency Digits"
+msgctxt "field:sale.extra,currency:"
+msgid "Currency"
 msgstr "Кол-во цифр валюты"
 
 #, fuzzy
@@ -39,6 +39,11 @@ msgstr ""
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Дата начала"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,currency:"
+msgid "Currency"
+msgstr "Кол-во цифр валюты"
 
 #, fuzzy
 msgctxt "field:sale.extra.line,extra:"
@@ -72,11 +77,6 @@ msgstr ""
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "Штука"
-
-#, fuzzy
-msgctxt "field:sale.extra.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
 
 #, fuzzy
 msgctxt "field:sale.line,extra:"
