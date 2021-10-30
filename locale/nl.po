@@ -18,14 +18,13 @@ msgctxt "field:carrier.selection,to_subdivision:"
 msgid "To Subdivision"
 msgstr "naar subdivisie"
 
-#, fuzzy
 msgctxt "help:carrier.selection,from_postal_code:"
 msgid ""
 "The regular expression to match the postal codes the carrier collects from.\n"
 "Leave empty to allow collection from any postal code."
 msgstr ""
-"De subdivisie waaruit de vervoerder verzamelt.\n"
-"Laat leeg om inzameling vanuit elke subdivisie mogelijk te maken."
+"De reguliere expressie die overeenkomt met de postcodes waar de vervoerder ophaalt.\n"
+"Laat leeg om collectie vanaf elke postcode toe te staan."
 
 msgctxt "help:carrier.selection,from_subdivision:"
 msgid ""
@@ -35,14 +34,13 @@ msgstr ""
 "De subdivisie waaruit de vervoerder verzamelt.\n"
 "Laat leeg om inzameling vanuit elke subdivisie mogelijk te maken."
 
-#, fuzzy
 msgctxt "help:carrier.selection,to_postal_code:"
 msgid ""
 "The regular expression to match the postal codes the carrier delivers to.\n"
 "Leave empty to allow delivery to any postal code."
 msgstr ""
-"De subdivisie waaraan de vervoerder levert.\n"
-"Laat leeg om levering aan een onderverdeling mogelijk te maken."
+"De reguliere expressie die overeenkomt met de postcodes waar de koerier bezorgt.\n"
+"Laat leeg om levering op elke postcode mogelijk te maken."
 
 msgctxt "help:carrier.selection,to_subdivision:"
 msgid ""
