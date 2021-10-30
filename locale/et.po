@@ -50,10 +50,6 @@ msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "Valuuta"
 
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtus"
-
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "Deebet"
@@ -118,9 +114,10 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Kreedit"
 
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtus"
+#, fuzzy
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"

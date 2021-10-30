@@ -50,10 +50,6 @@ msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "Devise"
 
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
-
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "Débit"
@@ -118,9 +114,9 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"

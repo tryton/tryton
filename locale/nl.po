@@ -12,7 +12,7 @@ msgstr "Analytische status"
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Rekening"
 
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
@@ -49,10 +49,6 @@ msgstr "Credit"
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -92,7 +88,7 @@ msgstr "Type"
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Rekening"
 
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
@@ -108,7 +104,7 @@ msgstr "Root"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Rekening"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
@@ -118,9 +114,9 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Credit"
 
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
@@ -144,7 +140,7 @@ msgstr "Start datum"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Rekening"
 
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
@@ -328,7 +324,7 @@ msgstr "analytisch"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Krediet"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"

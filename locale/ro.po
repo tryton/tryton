@@ -50,10 +50,6 @@ msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
-
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "Debit"
@@ -118,9 +114,10 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Credit"
 
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
+#, fuzzy
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
@@ -194,15 +191,13 @@ msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Cont"
+msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Cont"
+msgstr "Conturi"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
@@ -244,7 +239,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_account_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_entry_companies"
 msgid "User in companies"
@@ -258,19 +253,17 @@ msgctxt "model:ir.rule.group,name:rule_group_rule_companies"
 msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Cont"
+msgstr "Conturi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Cont"
+msgstr "Conturi"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
-msgstr ""
+msgstr "Analitic"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"

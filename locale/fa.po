@@ -50,10 +50,6 @@ msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "واحد پول"
 
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
-
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "بدهی"
@@ -118,9 +114,10 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
 
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
+#, fuzzy
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"

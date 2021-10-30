@@ -61,11 +61,6 @@ msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
-msgctxt "field:analytic_account.account,currency_digits:"
-msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
-
-#, fuzzy
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "ໜີ້"
@@ -141,9 +136,9 @@ msgid "Credit"
 msgstr "ມີ"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,currency_digits:"
-msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,date:"
