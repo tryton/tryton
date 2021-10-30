@@ -10,10 +10,6 @@ msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
 msgstr "Devise"
 
-msgctxt "field:account.be.vat_customer,currency_digits:"
-msgid "Currency Digits"
-msgstr "Décimales de la devise"
-
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "Identifiant de taxe du tiers"

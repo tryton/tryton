@@ -10,10 +10,6 @@ msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
 msgstr "واحد پول"
 
-msgctxt "field:account.be.vat_customer,currency_digits:"
-msgid "Currency Digits"
-msgstr "رقم های واحد پول"
-
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "شناسه مالیاتی نهاد/سازمان"
