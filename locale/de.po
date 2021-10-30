@@ -30,6 +30,10 @@ msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Attribute"
 
+msgctxt "field:product.product,attributes_name:"
+msgid "Attributes Name"
+msgstr "Attributnamen"
+
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
 msgstr "Attributssatz"
@@ -67,6 +71,10 @@ msgstr "Attribute"
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
 msgstr "Attributssatz"
+
+msgctxt "model:ir.message,text:msg_label_value"
+msgid "%(label)s: %(value)s"
+msgstr "%(label)s: %(value)s"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"

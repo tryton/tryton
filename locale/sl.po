@@ -30,6 +30,11 @@ msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atributi"
 
+#, fuzzy
+msgctxt "field:product.product,attributes_name:"
+msgid "Attributes Name"
+msgstr "Atributi"
+
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
 msgstr "Nabor"
@@ -67,6 +72,10 @@ msgstr "Attributes"
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
 msgstr "Attribute Sets"
+
+msgctxt "model:ir.message,text:msg_label_value"
+msgid "%(label)s: %(value)s"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute"
