@@ -1022,7 +1022,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for date, amount in term_lines:
             if self.type == 'out' and date < today:
                 lang = Lang.get()
-                warning_key = 'invoice_payment_term_%d' % self.id
+                warning_key = Warning.format('invoice_payment_term', [self])
                 if Warning.check(warning_key):
                     raise InvoicePaymentTermDateWarning(warning_key,
                         gettext('account_invoice'
