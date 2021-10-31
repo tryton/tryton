@@ -412,11 +412,15 @@ class WizardDialog(Wizard, NoModal):
             width, height = self.default_size()
         else:
             width, height = -1, -1
-        self.dia.set_default_size(max(200, width), height)
-        width, height = self.dia.get_default_size()
-        if width > 0 and height > 0:
-            self.dia.resize(*self.dia.get_default_size())
+        self.dia.set_default_size(width, height)
+        # reshow with initial size
+        self.dia.hide()
+        self.dia.unrealize()
         self.dia.show()
+        width, height = self.dia.get_size()
+        screen = self.dia.get_screen()
+        self.dia.resize(
+            min(width, screen.width()), min(height, screen.height()))
 
     def hide(self):
         self.dia.hide()
