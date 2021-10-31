@@ -1345,7 +1345,7 @@
             }.bind(this));
         },
         children_expand: function(node) {
-            if (jQuery.isEmptyObject(node.children)) {
+            if (jQuery.isEmptyObject(node.children) && node.relation) {
                 this.model_populate(
                     this._get_fields(node.relation), node.children,
                     node.field + '/', node.name + '/');
@@ -1415,9 +1415,10 @@
                 if (field.name == (prefix + parents[i]) ||
                     field.field == (prefix + parents[i])) {
                     this.children_expand(field);
-                    fields = field.children;
                     prefix += parents[i] + '/';
-                    this._traverse(fields, prefix, parents, ++i);
+                    if (field.children) {
+                        this._traverse(field.children, prefix, parents, ++i);
+                    }
                     break;
                 }
             }
@@ -1720,7 +1721,7 @@
             }.bind(this));
         },
         children_expand: function(node) {
-            if (jQuery.isEmptyObject(node.children)) {
+            if (jQuery.isEmptyObject(node.children) && node.relation) {
                 this.model_populate(
                     this._get_fields(node.relation), node.children,
                     node.path + '/', node.long_string + '/');
@@ -1865,9 +1866,10 @@
                 field = fields[names[item]];
                 if (field.path == (prefix + parents[i])) {
                     this.children_expand(field);
-                    fields = field.children;
                     prefix += parents[i] + '/';
-                    this._traverse(fields, prefix, parents, ++i);
+                    if (field.children) {
+                        this._traverse(field.children, prefix, parents, ++i);
+                    }
                     break;
                 }
             }
