@@ -985,19 +985,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for tax in self.taxes:
             move_lines += tax.get_move_lines()
 
-        total = Decimal('0.0')
-        total_currency = Decimal('0.0')
-        for line in move_lines:
-            total += line.debit - line.credit
-            if line.amount_second_currency:
-                total_currency += line.amount_second_currency
-
-        term_lines = [(self.payment_term_date or today, total)]
+        total = sum(l.debit - l.credit for l in move_lines)
         if self.payment_term:
             payment_date = self.payment_term_date or self.invoice_date
             term_lines = self.payment_term.compute(
                 total, self.company.currency, payment_date)
-        remainder_total_currency = total_currency
+        else:
+            term_lines = [(self.payment_term_date or today, total)]
+        if self.currency != self.company.currency:
+            remainder_total_currency = -self.total_amount
+        else:
+            remainder_total_currency = 0
         for date, amount in term_lines:
             if self.type == 'out' and date < today:
                 lang = Lang.get()
