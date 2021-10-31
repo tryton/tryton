@@ -194,7 +194,7 @@ class Invoice(metaclass=PoolMeta):
                 if total_currency:
                     line.amount_second_currency = total_currency
                     line.second_currency = second_currency
-            lines = list(move.lines)
-            lines.append(line)
-            move.lines = lines
+                lines = list(move.lines)
+                lines.append(line)
+                move.lines = lines
         return move
