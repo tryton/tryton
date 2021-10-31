@@ -2776,8 +2776,12 @@ class CreateChart(Wizard):
 
         if len(receivable_accounts) == 1:
             defaults['account_receivable'] = receivable_accounts[0].id
+        else:
+            defaults['account_receivable'] = None
         if len(payable_accounts) == 1:
             defaults['account_payable'] = payable_accounts[0].id
+        else:
+            defaults['account_payable'] = None
 
         return defaults
 
