@@ -1482,7 +1482,7 @@
                     'disabled', this.screen.readonly);
 
                 var msg = name + ' / ' + data[1];
-                if (data[1] < data[2]) {
+                if ((data[1] < data[2]) && (data[2] > this.screen.limit)) {
                     msg += Sao.i18n.gettext(' of ') + data[2];
                 }
                 this.status_label.text(msg).attr('title', msg);
