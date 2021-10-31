@@ -591,7 +591,7 @@
       <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;dunning.line.description if dunning.line else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Dunnings.B3" office:value-type="string">
-      <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;dunning.line.origin.rec_name if dunning.line and dunning.line.origin else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;dunning.line.origin_rec_name&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Dunnings.C3" office:value-type="string">
       <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;format_date(dunning.line.date, party.lang) if dunning.line else &apos;&apos;&gt;</text:placeholder></text:p>
