@@ -956,6 +956,15 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
+    @property
+    def origin_rec_name(self):
+        if self.origin:
+            return self.origin.rec_name
+        elif self.move_origin:
+            return self.move_origin.rec_name
+        else:
+            return ''
+
     @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_debit(self):
         if self.debit:

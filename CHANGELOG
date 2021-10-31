@@ -1,3 +1,4 @@
+* Add origin record name property on move line
 * Add group to edit accounting of parties
 * Rename lock buttons into lock_
 * Add split lines wizard
