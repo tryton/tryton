@@ -60,8 +60,12 @@ class CreateChart(metaclass=PoolMeta):
                 ], limit=2)
         if len(expense_accounts) == 1:
             defaults['category_account_expense'] = expense_accounts[0].id
+        else:
+            defaults['category_account_expense'] = None
         if len(revenue_accounts) == 1:
             defaults['category_account_revenue'] = revenue_accounts[0].id
+        else:
+            defaults['category_account_revenue'] = None
         return defaults
 
 
