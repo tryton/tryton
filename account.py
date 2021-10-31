@@ -153,10 +153,12 @@ class Invoice(metaclass=PoolMeta):
             config = Configuration(1)
             total = Decimal(0)
             total_currency = Decimal(0)
+            second_currency = None
             for line in move.lines:
                 total += line.debit - line.credit
                 if line.amount_second_currency:
                     total_currency += line.amount_second_currency
+                    second_currency = line.second_currency
             if total or total_currency:
                 line = MoveLine()
                 if total <= 0:
@@ -176,6 +178,7 @@ class Invoice(metaclass=PoolMeta):
                             '.msg_missing_cash_rounding_account'))
                 if total_currency:
                     line.amount_second_currency = total_currency
+                    line.second_currency = second_currency
             lines = list(move.lines)
             lines.append(line)
             move.lines = lines
