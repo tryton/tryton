@@ -313,11 +313,12 @@ class Account(
             if remainder:
                 i = 0
                 while remainder:
-                    account, amount = result[i]
+                    account, current_amount = result[i]
                     rounding = self.currency.rounding.copy_sign(remainder)
-                    result[i] = (account, amount - rounding)
+                    result[i] = (account, current_amount + rounding)
                     remainder -= rounding
                     i = (i + 1) % len(result)
+            assert sum(a for _, a in result) == amount
             return result
 
 

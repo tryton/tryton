@@ -232,6 +232,30 @@ class AnalyticAccountTestCase(ModuleTestCase):
             account.distribute(Decimal('100.03')),
             [(account1, Decimal('70.02')), (account2, Decimal('30.01'))])
 
+    @with_transaction()
+    def test_account_distribute_remainder(self):
+        "Test account distribute remainder"
+        pool = Pool()
+        Account = pool.get('analytic_account.account')
+        Distribution = pool.get('analytic_account.account.distribution')
+
+        currency = create_currency('usd')
+        account1 = Account(type='normal', currency=currency)
+        account2 = Account(type='normal', currency=currency)
+        account3 = Account(type='normal', currency=currency)
+        account = Account(type='distribution', currency=currency)
+        account.distributions = [
+            Distribution(account=account1, ratio=Decimal('0.5')),
+            Distribution(account=account2, ratio=Decimal('0.375')),
+            Distribution(account=account3, ratio=Decimal('0.125')),
+            ]
+
+        self.assertListEqual(
+            account.distribute(Decimal('65.35')), [
+                (account1, Decimal('32.67')),
+                (account2, Decimal('24.51')),
+                (account3, Decimal('8.17'))])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
