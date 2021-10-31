@@ -156,7 +156,7 @@ class Invoice(metaclass=PoolMeta):
             currency = line.second_currency
             if currency:
                 line.amount_second_currency = currency.cash_round(
-                    self.amount_second_currency)
+                    line.amount_second_currency)
         return line
 
     def get_move(self):
