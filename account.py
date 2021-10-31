@@ -2767,9 +2767,11 @@ class CreateChart(Wizard):
 
         receivable_accounts = Account.search([
                 ('type.receivable', '=', True),
+                ('company', '=', self.account.company.id),
                 ], limit=2)
         payable_accounts = Account.search([
                 ('type.payable', '=', True),
+                ('company', '=', self.account.company.id),
                 ], limit=2)
 
         if len(receivable_accounts) == 1:

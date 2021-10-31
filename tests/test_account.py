@@ -213,6 +213,17 @@ class AccountTestCase(
             update_chart.transition_update()
 
     @with_transaction()
+    def test_account_chart_many_companies(self):
+        "Test creation of chart of accounts for many companies"
+        company1 = create_company()
+        with set_company(company1):
+            create_chart(company1, tax=True)
+
+        company2 = create_company()
+        with set_company(company2):
+            create_chart(company2, tax=True)
+
+    @with_transaction()
     def test_fiscalyear(self):
         'Test fiscalyear'
         pool = Pool()
