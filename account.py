@@ -52,9 +52,11 @@ class CreateChart(metaclass=PoolMeta):
         defaults = super(CreateChart, self).default_properties(fields)
         expense_accounts = Account.search([
                 ('type.expense', '=', True),
+                ('company', '=', self.account.company.id),
                 ], limit=2)
         revenue_accounts = Account.search([
                 ('type.revenue', '=', True),
+                ('company', '=', self.account.company.id),
                 ], limit=2)
         if len(expense_accounts) == 1:
             defaults['category_account_expense'] = expense_accounts[0].id

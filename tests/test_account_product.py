@@ -19,6 +19,24 @@ class AccountProductTestCase(CompanyTestMixin, ModuleTestCase):
     extras = ['analytic_account']
 
     @with_transaction()
+    def test_account_chart(self):
+        "Test creation of chart of accounts"
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+
+    @with_transaction()
+    def test_account_chart_many_companies(self):
+        "Test creation of chart of accounts for many companies"
+        company1 = create_company()
+        with set_company(company1):
+            create_chart(company1, tax=True)
+
+        company2 = create_company()
+        with set_company(company2):
+            create_chart(company2, tax=True)
+
+    @with_transaction()
     def test_account_used(self):
         'Test account used'
         pool = Pool()
