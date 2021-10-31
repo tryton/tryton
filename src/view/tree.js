@@ -1985,10 +1985,8 @@
             if (states.invisible || states.readonly) {
                 return;
             }
-            button.el.prop('disabled', true);
-            this.screen.button(this.attributes).always(function() {
-                button.el.prop('disabled', false);
-            });
+            button.el.prop('disabled', true);  // state will be reset at display
+            this.screen.button(this.attributes);
         }
     });
 
