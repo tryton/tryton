@@ -1549,6 +1549,7 @@ class AccountTestCase(
         AccountTemplate = pool.get('account.account.template')
         TaxTemplate = pool.get('account.tax.template')
         TaxCodeTemplate = pool.get('account.tax.code.template')
+        TaxCodeTemplateLine = pool.get('account.tax.code.line.template')
         UpdateChart = pool.get('account.update_chart', type='wizard')
         Type = pool.get('account.account.type')
         Account = pool.get('account.account')
@@ -1607,7 +1608,7 @@ class AccountTestCase(
             tax_code.template_override = True
             tax_code.save()
 
-            template_tax_code_line, = TaxCodeLine.search([], limit=1)
+            template_tax_code_line, = TaxCodeTemplateLine.search([], limit=1)
             tax_code_line, = TaxCodeLine.search(
                 [('template', '=', template_tax_code_line.id)])
             tax_code_line.template_override = True
