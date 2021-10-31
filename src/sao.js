@@ -946,6 +946,9 @@ var Sao = {};
         },
         update: function(text) {
             var ir_model = new Sao.Model('ir.model');
+            if (!text) {
+                return jQuery.when([]);
+            }
             return ir_model.execute('global_search',
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
                     Sao.main_menu_screen.context)
