@@ -185,7 +185,7 @@ class WinExport(WinCSV):
 
     def on_row_expanded(self, treeview, iter, path):
         child = self.model1.iter_children(iter)
-        if self.model1.get_value(child, 0) is None:
+        if child and self.model1.get_value(child, 0) is None:
             prefix_field = self.model1.get_value(iter, 1)
             string_, relation = self.fields[prefix_field]
             self.model_populate(self._get_fields(relation), iter,
