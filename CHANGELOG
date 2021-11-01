@@ -1,3 +1,5 @@
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
 * Support grouping attribute
 * Add expander on tree to fold or unfold selected rows
 * Support monetary and symbol field attributes
