@@ -1,3 +1,5 @@
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
 * Prevent editing cost price without a warehouse when required
 * Replace cost_warehouse by warehouse of stock module
 
