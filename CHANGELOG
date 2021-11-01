@@ -1,3 +1,5 @@
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
 * Add monetary field
 * Provide digits from currency
 
