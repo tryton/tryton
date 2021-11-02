@@ -1016,7 +1016,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             term_lines = [(self.payment_term_date or today, total)]
         if self.currency != self.company.currency:
-            remainder_total_currency = -self.total_amount
+            remainder_total_currency = self.total_amount.copy_sign(total)
         else:
             remainder_total_currency = 0
         for date, amount in term_lines:
