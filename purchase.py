@@ -1352,8 +1352,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
         invoice_line = InvoiceLine()
         invoice_line.type = self.type
-        invoice_line.currency = self.currency
-        invoice_line.company = self.company
+        invoice_line.currency = self.purchase.currency
+        invoice_line.company = self.purchase.company
         invoice_line.description = self.description
         invoice_line.note = self.note
         invoice_line.origin = self
