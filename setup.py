@@ -76,9 +76,10 @@ if minor_version % 2:
 
 setup(name=name,
     version=version,
-    description='Tryton module',
+    description=(
+        'Tryton module that allows creating budgets for analytic accounts'),
     long_description=read('README.rst'),
-    author='Tryton module that allows creating budgets for analytic accounts',
+    author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
