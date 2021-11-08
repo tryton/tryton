@@ -5,6 +5,7 @@ import doctest
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
+from trytond import backend
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
@@ -338,6 +339,7 @@ class CurrencyTestCase(ModuleTestCase):
         "Test currency rate SQL"
         pool = Pool()
         Currency = pool.get('currency.currency')
+        Rate = pool.get('currency.currency.rate')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         date = datetime.date
@@ -355,6 +357,9 @@ class CurrencyTestCase(ModuleTestCase):
             add_currency_rate(cu2, rate, date_)
 
         query = Currency.currency_rate_sql()
+        if backend.name == 'sqlite':
+            query.columns[-1].output_name += (
+                ' [%s]' % Rate.date.sql_type().base)
         cursor.execute(*query)
         data = set(cursor)
         result = {
