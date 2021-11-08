@@ -358,7 +358,7 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
-        if sqlite.sqlite_version_info >= (3, 25, 0):
+        if sqlite.sqlite_version_info >= (3, 35, 0):
             cursor.execute('ALTER TABLE %s DROP COLUMN %s' % (
                     _escape_identifier(self.table_name),
                     _escape_identifier(column_name)))
