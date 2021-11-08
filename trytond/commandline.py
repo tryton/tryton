@@ -1,11 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import argparse
+import csv
 import os
 import logging
 import logging.config
 import logging.handlers
 from contextlib import contextmanager
+from io import StringIO
 
 from trytond import __version__
 
@@ -30,8 +32,13 @@ def get_parser():
     parser.add_argument('--dev', dest='dev', action='store_true',
         help='enable development mode')
 
+    db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
+    if db_names:
+        db_names = list(next(csv.reader(StringIO(db_names))))
+    else:
+        db_names = []
     parser.add_argument("-d", "--database", dest="database_names", nargs='+',
-        default=[], metavar='DATABASE', help="specify the database name")
+        default=db_names, metavar='DATABASE', help="specify the database name")
     parser.add_argument("--logconf", dest="logconf", metavar='FILE',
         help="logging configuration file (ConfigParser format)")
 
