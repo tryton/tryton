@@ -334,10 +334,11 @@ class Database(DatabaseInterface):
     IN_MAX = 200
 
     TYPES_MAPPING = {
-        'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP'),
         'BIGINT': SQLType('INTEGER', 'INTEGER'),
         'BOOL': SQLType('BOOLEAN', 'BOOLEAN'),
+        'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP'),
         'FULLTEXT': SQLType('TEXT', 'TEXT'),
+        'JSON': SQLType('TEXT', 'TEXT'),
         }
 
     def __new__(cls, name=_default_name):

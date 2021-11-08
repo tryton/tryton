@@ -21,7 +21,7 @@ dumps = partial(
 class Dict(Field):
     'Define dict field.'
     _type = 'dict'
-    _sql_type = 'TEXT'
+    _sql_type = 'JSON'
     _py_type = dict
 
     def __init__(self, schema_model, string='', help='', required=False,

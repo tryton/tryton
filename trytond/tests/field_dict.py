@@ -34,10 +34,11 @@ class DictRequired(ModelSQL):
     dico = fields.Dict(None, 'Test Dict', required=True)
 
 
-class DictJSONB(ModelSQL):
-    'Dict JSONB'
-    __name__ = 'test.dict_jsonb'
+class DictText(ModelSQL):
+    'Dict TEXT'
+    __name__ = 'test.dict_text'
     dico = fields.Dict('test.dict.schema', 'Test Dict')
+    dico._sql_type = 'TEXT'
 
 
 class DictNoSchema(ModelSQL):
@@ -69,7 +70,7 @@ def register(module):
         Dict,
         DictDefault,
         DictRequired,
-        DictJSONB,
+        DictText,
         DictNoSchema,
         DictUnaccentedOn,
         DictUnaccentedOff,

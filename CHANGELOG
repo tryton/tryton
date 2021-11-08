@@ -1,3 +1,5 @@
+* Use JSONB to store Dict field on PostgreSQL backend
+
 Version 6.2.0 - 2021-11-01
 * Bug fixes (see mercurial logs for details)
 * Allow to cast to date with timezone

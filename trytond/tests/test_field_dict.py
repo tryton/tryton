@@ -8,7 +8,6 @@ from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.tests.test_tryton import ExtensionTestCase
-from trytond.transaction import Transaction
 
 
 class FieldDictTestCase(unittest.TestCase):
@@ -47,11 +46,6 @@ class FieldDictTestCase(unittest.TestCase):
                         'es: Spain\n'
                         'fr: France'),
                     }])
-
-    def set_jsonb(self, table):
-        cursor = Transaction().connection.cursor()
-        cursor.execute('ALTER TABLE "%s" '
-            'ALTER COLUMN dico TYPE json USING dico::json' % table)
 
     @with_transaction()
     def test_create(self):
@@ -167,16 +161,9 @@ class FieldDictTestCase(unittest.TestCase):
                         }])
 
     @with_transaction()
-    @unittest.skipIf(
-        backend.name != 'postgresql', 'jsonb only supported by postgresql')
-    def test_create_jsonb(self):
-        "Test create dict as jsonb"
-        connection = Transaction().connection
-        if backend.Database().get_version(connection) < (9, 2):
-            return
-
-        Dict = Pool().get('test.dict_jsonb')
-        self.set_jsonb(Dict._table)
+    def test_create_text(self):
+        "Test create dict as text"
+        Dict = Pool().get('test.dict_text')
 
         dict_, = Dict.create([{
                     'dico': {'a': 1, 'b': 2},
@@ -214,16 +201,9 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertDictEqual(dict_.dico, {'y': 1})
 
     @with_transaction()
-    @unittest.skipIf(
-        backend.name != 'postgresql', 'jsonb only supported by postgresql')
-    def test_write_jsonb(self):
-        "Test write dict as jsonb"
-        connection = Transaction().connection
-        if backend.Database().get_version(connection) < (9, 2):
-            return
-
-        Dict = Pool().get('test.dict_jsonb')
-        self.set_jsonb(Dict._table)
+    def test_write_text(self):
+        "Test write dict as text"
+        Dict = Pool().get('test.dict_text')
         dict_, = Dict.create([{
                     'dico': {'a': 1, 'b': 2},
                     }])
@@ -827,17 +807,10 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertListEqual(dicts_b_b, [])
 
     @with_transaction()
-    @unittest.skipIf(
-        backend.name != 'postgresql', 'jsonb only supported by postgresql')
-    def test_search_element_jsonb(self):
-        "Test search dict element on jsonb"
-        connection = Transaction().connection
-        if backend.Database().get_version(connection) < (9, 2):
-            return
-
+    def test_search_element_text(self):
+        "Test search dict element on text"
         pool = Pool()
-        Dict = pool.get('test.dict_noschema')
-        self.set_jsonb(Dict._table)
+        Dict = pool.get('test.dict_text')
         dict_, = Dict.create([{
                     'dico': {'a': 'Foo'},
                     }])

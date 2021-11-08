@@ -198,13 +198,14 @@ class Database(DatabaseInterface):
     flavor = Flavor(ilike=True)
 
     TYPES_MAPPING = {
-        'INTEGER': SQLType('INT4', 'INT4'),
         'BIGINT': SQLType('INT8', 'INT8'),
-        'FLOAT': SQLType('FLOAT8', 'FLOAT8'),
         'BLOB': SQLType('BYTEA', 'BYTEA'),
         'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP(0)'),
-        'TIMESTAMP': SQLType('TIMESTAMP', 'TIMESTAMP(6)'),
+        'FLOAT': SQLType('FLOAT8', 'FLOAT8'),
         'FULLTEXT': SQLType('TSVECTOR', 'TSVECTOR'),
+        'INTEGER': SQLType('INT4', 'INT4'),
+        'JSON': SQLType('JSONB', 'JSONB'),
+        'TIMESTAMP': SQLType('TIMESTAMP', 'TIMESTAMP(6)'),
         }
 
     def __new__(cls, name=_default_name):
