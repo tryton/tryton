@@ -224,6 +224,8 @@ class TableHandler(TableHandlerInterface):
                         ('TEXT', 'VARCHAR'),
                         ('DATE', 'TIMESTAMP'),
                         ('INTEGER', 'FLOAT'),
+                        ('INTEGER', 'NUMERIC'),
+                        ('FLOAT', 'NUMERIC'),
                         ]:
                     self.alter_type(column_name, base_type)
                 else:

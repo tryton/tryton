@@ -291,7 +291,12 @@ class TableHandler(TableHandlerInterface):
                         ('varchar', 'text'),
                         ('text', 'varchar'),
                         ('date', 'timestamp'),
+                        ('int4', 'int8'),
                         ('int4', 'float8'),
+                        ('int4', 'numeric'),
+                        ('int8', 'float8'),
+                        ('int8', 'numeric'),
+                        ('float8', 'numeric'),
                         ]:
                     self.alter_type(column_name, base_type)
                 else:
