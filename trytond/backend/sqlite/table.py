@@ -7,6 +7,8 @@ import logging
 import re
 import warnings
 
+from .database import sqlite
+
 __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
@@ -124,9 +126,17 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions()
 
     def column_rename(self, old_name, new_name):
+        cursor = Transaction().connection.cursor()
         if self.column_exist(old_name):
             if not self.column_exist(new_name):
-                self._recreate_table({old_name: {'name': new_name}})
+                if sqlite.sqlite_version_info >= (3, 25, 0):
+                    cursor.execute('ALTER TABLE %s RENAME COLUMN %s TO %s' % (
+                            _escape_identifier(self.table_name),
+                            _escape_identifier(old_name),
+                            _escape_identifier(new_name)))
+                    self._update_definitions(columns=True)
+                else:
+                    self._recreate_table({old_name: {'name': new_name}})
             else:
                 logger.warning(
                     'Unable to rename column %s on table %s to %s.',
@@ -346,27 +356,33 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
-        temp_table = '__temp_%s' % self.table_name
-        TableHandler.table_rename(self.table_name, temp_table)
-        new_table = TableHandler(self._model, history=self.history)
-        for name, values in self._columns.items():
-            if name != column_name:
-                typname = values['typname']
-                size = values['size']
-                new_table._add_raw_column(
-                    name, database.sql_type(typname), field_size=size)
-        columns_name = list(new_table._columns.keys())
-        cursor.execute(
-            ('INSERT INTO %s ('
-                + ','.join(str(_escape_identifier(c))
-                    for c in columns_name)
-                + ') SELECT '
-                + ','.join(_escape_identifier(c) for c in columns_name)
-                + ' FROM %s')
-            % (_escape_identifier(self.table_name),
-                _escape_identifier(temp_table)))
-        cursor.execute('DROP TABLE %s' % _escape_identifier(temp_table))
-        self._update_definitions()
+        if sqlite.sqlite_version_info >= (3, 25, 0):
+            cursor.execute('ALTER TABLE %s DROP COLUMN %s' % (
+                    _escape_identifier(self.table_name),
+                    _escape_identifier(column_name)))
+            self._update_definitions(columns=True)
+        else:
+            temp_table = '__temp_%s' % self.table_name
+            TableHandler.table_rename(self.table_name, temp_table)
+            new_table = TableHandler(self._model, history=self.history)
+            for name, values in self._columns.items():
+                if name != column_name:
+                    typname = values['typname']
+                    size = values['size']
+                    new_table._add_raw_column(
+                        name, database.sql_type(typname), field_size=size)
+            columns_name = list(new_table._columns.keys())
+            cursor.execute(
+                ('INSERT INTO %s ('
+                    + ','.join(str(_escape_identifier(c))
+                        for c in columns_name)
+                    + ') SELECT '
+                    + ','.join(_escape_identifier(c) for c in columns_name)
+                    + ' FROM %s')
+                % (_escape_identifier(self.table_name),
+                    _escape_identifier(temp_table)))
+            cursor.execute('DROP TABLE %s' % _escape_identifier(temp_table))
+            self._update_definitions()
 
     @staticmethod
     def drop_table(model, table, cascade=False):
