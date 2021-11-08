@@ -1,3 +1,4 @@
+* Support window functions with SQLite backend
 * Use JSONB to store Dict field on PostgreSQL backend
 
 Version 6.2.0 - 2021-11-01
