@@ -113,18 +113,10 @@ Check Product Quantities by Warehouse Moves::
     ...   records = ProductQuantitiesByWarehouseMove.find([])
     >>> len(records)
     4
-    >>> if backend.name != 'sqlite':
-    ...     [(r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
+    >>> [(r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
     ...         for r in records] == [
     ...     (yesterday, 0, 10, 10),
     ...     (tomorrow, 10, -6, 4),
     ...     (tomorrow, 4, 5, 9),
     ...     (tomorrow, 9, -3, 6)]
-    ... else:
-    ...     [(r.date, r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
-    ...         for r in records] == [
-    ...     (yesterday, 0, 10, 0),
-    ...     (tomorrow, 10, -6, 10),
-    ...     (tomorrow, 10, 5, 10),
-    ...     (tomorrow, 10, -3, 10)]
     True
