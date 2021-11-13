@@ -157,11 +157,13 @@ class Report(URLMixin, PoolBase):
         else:
             action_report = ActionReport(action_id)
 
-        def report_name(records):
+        def report_name(records, reserved_length=0):
             names = []
             name_length = 0
             record_count = len(records)
-            max_length = REPORT_NAME_MAX_LENGTH - len(str(record_count)) - 2
+            max_length = (REPORT_NAME_MAX_LENGTH
+                - reserved_length
+                - len(str(record_count)) - 2)
             if action_report.record_name:
                 template = TextTemplate(action_report.record_name)
             else:
@@ -200,6 +202,7 @@ class Report(URLMixin, PoolBase):
                 headers.append(dict(key))
 
         n = len(groups)
+        join_string = '-'
         if n > 1:
             padding = math.ceil(math.log10(n))
             content = BytesIO()
@@ -208,9 +211,10 @@ class Report(URLMixin, PoolBase):
                         zip(headers, groups), 1):
                     oext, rcontent = cls._execute(
                         group_records, header, data, action_report)
-                    filename = report_name(group_records)
                     number = str(i).zfill(padding)
-                    filename = slugify('%s-%s' % (number, filename))
+                    filename = report_name(
+                        group_records, len(number) + len(join_string))
+                    filename = slugify(join_string.join([number, filename]))
                     rfilename = '%s.%s' % (filename, oext)
                     content_zip.writestr(rfilename, rcontent)
             content = content.getvalue()
@@ -220,11 +224,15 @@ class Report(URLMixin, PoolBase):
                 groups[0], headers[0], data, action_report)
         if not isinstance(content, str):
             content = bytearray(content) if bytes == str else bytes(content)
+        action_report_name = action_report.name[:REPORT_NAME_MAX_LENGTH]
         if context.get('with_rec_name', True):
-            filename = '-'.join(
-                filter(None, [action_report.name, report_name(records)]))
+            filename = join_string.join(
+                filter(None, [
+                    action_report_name,
+                    report_name(
+                        records, len(action_report_name) + len(join_string))]))
         else:
-            filename = action_report.name
+            filename = action_report_name
         return (oext, content, action_report.direct_print, filename)
 
     @classmethod
