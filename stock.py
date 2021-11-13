@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from itertools import groupby
 
 from trytond.model import ModelSQL, ModelView, Model, Workflow, fields
@@ -288,6 +289,56 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                 to_delete.append(plan)
         cls.delete(to_delete)
 
+        # Update early date based on internal incoming requests
+        for warehouse in warehouses:
+            product_plans = cls.search([
+                    ('company', '=', company.id),
+                    ('state', '=', 'open'),
+                    ('origin', 'like', 'stock.move,%'),
+                    ],
+                order=[('early_date', 'ASC NULLS LAST')])
+
+            in_plans = cls.search([
+                    ('company', '=', company.id),
+                    ('state', 'in', ['open', 'processing']),
+                    cls._incoming_domain(),
+                    ])
+            product2in = defaultdict(lambda: defaultdict(list))
+            for plan in in_plans:
+                products = defaultdict(int)
+                for product, quantity in plan._incoming_quantities(warehouse):
+                    products[product] += quantity
+                for product, quantity in products.items():
+                    product2in[product][plan.planned_date].append(
+                        (quantity, plan))
+
+            to_save = []
+            products = set()
+            for product_plan in product_plans:
+                if product_plan.warehouse != warehouse:
+                    continue
+                product = product_plan.origin.product
+                quantity = product_plan.origin.internal_quantity
+                plans = product2in[product][product_plan.early_date]
+                plans = cls._pick_incoming(quantity, plans)
+                if plans:
+                    incoming_products = {p
+                        for pl in plans
+                        for p, q in pl._incoming_quantities(warehouse)}
+                    if incoming_products & products:
+                        cls.save(to_save)
+                        del to_save[:]
+                        products.clear()
+
+                    earlier_date = max(p.earlier_date for p in plans)
+
+                    if (not product_plan.early_date
+                            or product_plan.early_date > earlier_date):
+                        product_plan.early_date = earlier_date
+                        to_save.append(product_plan)
+                        products.add(product)
+            cls.save(to_save)
+
     @classmethod
     def _get_earlier_date(cls, move, warehouse):
         pool = Pool()
@@ -347,6 +398,28 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         if move.shipment:
             yield move.shipment
 
+    @classmethod
+    def _incoming_domain(cls):
+        return ['OR',
+            ('origin.state', '=', 'request', 'stock.shipment.internal'),
+            ]
+
+    def _incoming_quantities(self, warehouse):
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+        if isinstance(self.origin, ShipmentInternal):
+            shipment = self.origin
+            if (shipment.to_location.warehouse == warehouse
+                    or shipment.from_location.warehouse != warehouse):
+                for move in shipment.outgoing_moves:
+                    yield move.product, move.internal_quantity
+
+    @classmethod
+    def _pick_incoming(cls, quantity, plans):
+        plans = [p for q, p in plans if q >= quantity]
+        plans.sort(key=lambda p: p.earlier_date)
+        return plans
+
 
 class QuantityEarlyPlanProduction(metaclass=PoolMeta):
     __name__ = 'stock.quantity.early_plan'
@@ -371,6 +444,22 @@ class QuantityEarlyPlanProduction(metaclass=PoolMeta):
             yield move.production_input
         if move.production_output:
             yield move.production_output
+
+    @classmethod
+    def _incoming_domain(cls):
+        return super()._internal_domain() + [
+            ('origin.state', '=', 'request', 'production'),
+            ]
+
+    def _incoming_quantities(self, warehouse):
+        pool = Pool()
+        Production = pool.get('production')
+        yield from super()._incoming_quantities(warehouse)
+        if isinstance(self.origin, Production):
+            production = self.origin
+            if production.warehouse == warehouse:
+                for output in production.outputs:
+                    yield output.product, output.internal_quantity
 
 
 class Move(metaclass=PoolMeta):
