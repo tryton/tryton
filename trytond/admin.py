@@ -21,6 +21,10 @@ logger = logging.getLogger(__name__)
 def run(options):
     main_lang = config.get('database', 'language')
     init = {}
+
+    if options.test_email:
+        send_test_email(options.test_email)
+
     for db_name in options.database_names:
         init[db_name] = False
         database = backend.Database(db_name)
@@ -115,8 +119,6 @@ def run(options):
             admin.save()
             if options.reset_password:
                 User.reset_password([admin])
-            if options.test_email:
-                send_test_email(options.test_email)
             if options.hostname is not None:
                 configuration.hostname = options.hostname or None
             configuration.save()
