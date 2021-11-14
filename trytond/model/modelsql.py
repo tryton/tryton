@@ -895,8 +895,6 @@ class ModelSQL(ModelStorage):
                         for row in sub_results:
                             if row['id'] in sub_ids:
                                 row[fname] = getter_result[row['id']]
-                                if transaction.readonly:
-                                    cache[row['id']][fname] = row[fname]
 
         def read_related(field, Target, rows, fields):
             name = field.name
