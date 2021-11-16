@@ -447,7 +447,7 @@ class QuantityEarlyPlanProduction(metaclass=PoolMeta):
 
     @classmethod
     def _incoming_domain(cls):
-        return super()._internal_domain() + [
+        return super()._incoming_domain() + [
             ('origin.state', '=', 'request', 'production'),
             ]
 
