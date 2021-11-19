@@ -262,14 +262,8 @@ class ProductCostHistory(metaclass=PoolMeta):
     __name__ = 'product.product.cost_history'
 
     @classmethod
-    def _non_moves_clause(cls, history_table):
-        pool = Pool()
-        Company = pool.get('company.company')
-        clause = super()._non_moves_clause(history_table)
-        context = Transaction().context
-        if context.get('company'):
-            company = Company(context['company'])
-            if company.cost_price_warehouse:
-                warehouse = context.get('warehouse')
-                clause &= history_table.warehouse == warehouse
+    def _non_moves_clause(cls, history_table, user):
+        clause = super()._non_moves_clause(history_table, user)
+        if user.company and user.company.cost_price_warehouse:
+            clause &= history_table.warehouse == user.warehouse
         return clause
