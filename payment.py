@@ -195,7 +195,7 @@ class Group(metaclass=PoolMeta):
     def __setup__(cls):
         super(Group, cls).__setup__()
         cls._buttons.update({
-                'generate_message': {
+                'sepa_generate_message': {
                     'invisible': Eval('process_method') != 'sepa',
                     'depends': ['process_method'],
                     },
@@ -239,14 +239,16 @@ class Group(metaclass=PoolMeta):
                         gettext('account_payment_sepa'
                             '.msg_payment_process_no_iban',
                             payment=payment.rec_name))
-        self.generate_message(_save=False)
+        self.sepa_generate_message(_save=False)
 
     @dualmethod
     @ModelView.button
-    def generate_message(cls, groups, _save=True):
+    def sepa_generate_message(cls, groups, _save=True):
         pool = Pool()
         Message = pool.get('account.payment.sepa.message')
         for group in groups:
+            if group.journal.process_method != 'sepa':
+                continue
             tmpl = group.get_sepa_template()
             if not tmpl:
                 raise NotImplementedError

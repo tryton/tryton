@@ -298,8 +298,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="group_generate_message_button">
-            <field name="name">generate_message</field>
-            <field name="string">Generate Message</field>
+            <field name="name">sepa_generate_message</field>
+            <field name="string">Generate SEPA Message</field>
             <field name="model"
                 search="[('model', '=', 'account.payment.group')]"/>
         </record>
