@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 import shopify
 import pyactiveresource
 
@@ -205,7 +207,10 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
         variant.sku = self.shopify_sku
         price = self.shopify_price(
             price, tax, taxes_included=shop_taxes_included)
-        variant.price = str(price) if price is not None else None
+        if price is not None:
+            variant.price = str(price.quantize(Decimal('.00')))
+        else:
+            variant.price = None
         variant.taxable = bool(tax)
         for identifier in self.identifiers:
             if identifier.type == 'ean':
