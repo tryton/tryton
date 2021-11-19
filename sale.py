@@ -13,6 +13,10 @@ class Sale(metaclass=PoolMeta):
         return self.party.sale_shipment_grouping_method
 
     @property
+    def _shipment_grouping_state(self):
+        return ['draft', 'waiting']
+
+    @property
     def _shipment_grouping_fields(self):
         return ('customer', 'delivery_address', 'company', 'warehouse')
 
@@ -28,7 +32,7 @@ class Sale(metaclass=PoolMeta):
         Shipment = shipment.__class__
         shipment_domain = [
             ('moves.origin', 'like', 'sale.line,%'),
-            ('state', 'in', ['draft', 'waiting']),
+            ('state', 'in', self._shipment_grouping_state),
             ]
         shipment_domain += self._get_grouped_shipment_planned_date(shipment)
         defaults = Shipment.default_get(self._shipment_grouping_fields,
