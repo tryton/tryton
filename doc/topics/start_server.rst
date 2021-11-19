@@ -17,6 +17,12 @@ The server will wait for client connections on the interface defined in the
 .. note:: When using multiple config files the order is importart as last
           entered files will override the items of first files
 
+.. warning::
+   This runs the of `Werkzeug`_ development server which should not be used on
+   production systems.
+
+.. _`Werkzeug`: https://werkzeug.palletsprojects.com/
+
 WSGI server
 -----------
 
@@ -44,6 +50,10 @@ The Werkzeug server uses thread for concurrency. This is not optimal for the
 long-polling request on the :ref:`bus <ref-bus>` as each client consumes
 permanently one thread.
 You can start the server with coroutine using the option ``--coroutine``.
+
+.. note::
+   This will use the pure-Python, gevent-friendly `WSGI server
+   <http://www.gevent.org/api/gevent.pywsgi.html>`_.
 
 Cron service
 ============
