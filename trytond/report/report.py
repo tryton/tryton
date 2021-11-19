@@ -358,14 +358,22 @@ class Report(URLMixin, PoolBase):
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
-                subprocess.check_call(cmd, timeout=timeout)
+                try:
+                    subprocess.check_call(cmd, timeout=timeout)
+                except subprocess.CalledProcessError:
+                    if count:
+                        continue
+                    logger.error(
+                        "fail to convert %s to %s", report.report_name, oext,
+                        exc_info=True)
+                    break
                 if os.path.exists(output):
                     with open(output, 'rb') as fp:
                         return oext, fp.read()
             else:
                 logger.error(
                     'fail to convert %s to %s', report.report_name, oext)
-                return input_format, data
+            return input_format, data
         finally:
             try:
                 os.remove(path)
