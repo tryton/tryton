@@ -595,6 +595,9 @@ class ModuleActivateUpgrade(Wizard):
         else:
             return 'end'
 
+    def end(self):
+        return 'reload menu'
+
 
 class ModuleConfig(Wizard):
     'Configure Modules'
