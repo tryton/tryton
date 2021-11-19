@@ -49,10 +49,7 @@ class FullText(Field):
         if value and database.has_search_full_text():
             value = database.format_full_text_query(
                 value, language=transaction.language)
-            column = database.rank_full_text(column, value, normalize=['rank'])
-        else:
-            column = Null
-        return column
+            return database.rank_full_text(column, value, normalize=['rank'])
 
     def convert_domain(self, domain, tables, Model):
         transaction = Transaction()
@@ -92,4 +89,7 @@ class FullText(Field):
         table, _ = tables[None]
         column = self.sql_column(table)
         column = self._domain_column('ilike', column)
-        return [self._rank_column(column, name, Model)]
+        column = self._rank_column(column, name, Model)
+        if column:
+            return [column]
+        return []
