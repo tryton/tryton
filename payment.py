@@ -195,7 +195,10 @@ class Group(metaclass=PoolMeta):
     def __setup__(cls):
         super(Group, cls).__setup__()
         cls._buttons.update({
-                'generate_message': {},
+                'generate_message': {
+                    'invisible': Eval('process_method') != 'sepa',
+                    'depends': ['process_method'],
+                    },
                 })
 
     def get_sepa_template(self):
