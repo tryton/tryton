@@ -448,17 +448,6 @@ class ViewTree(View):
 
         self.mnemonic_widget = self.treeview
 
-        # Add last column if necessary
-        for column in self.treeview.get_columns():
-            if column.get_expand():
-                break
-        else:
-            column = Gtk.TreeViewColumn()
-            column._type = 'fill'
-            column.name = None
-            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
-            self.treeview.append_column(column)
-
         self.treeview.set_property('enable-grid-lines', grid_lines)
         self.treeview.set_fixed_height_mode(
             all(c.get_sizing() == Gtk.TreeViewColumnSizing.FIXED
@@ -494,6 +483,17 @@ class ViewTree(View):
         self.treeview.set_search_equal_func(self.search_equal_func)
 
         self.display()
+
+        # Add last column if necessary after display for updated visible
+        for column in self.treeview.get_columns():
+            if column.get_expand() and column.get_visible():
+                break
+        else:
+            column = Gtk.TreeViewColumn()
+            column._type = 'fill'
+            column.name = None
+            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+            self.treeview.append_column(column)
 
     def get_column_widget(self, column):
         'Return the widget of the column'
