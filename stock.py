@@ -11,7 +11,17 @@ class Move(metaclass=PoolMeta):
         digits=price_digits, readonly=True)
 
     def _compute_unit_price(self, unit_price):
+        if self.unit_landed_cost:
+            unit_price -= self.unit_landed_cost
         unit_price = super()._compute_unit_price(unit_price)
+        if self.unit_landed_cost:
+            unit_price += self.unit_landed_cost
+        return unit_price
+
+    def _compute_component_unit_price(self, unit_price):
+        if self.unit_landed_cost:
+            unit_price -= self.unit_landed_cost
+        unit_price = super()._compute_component_unit_price(unit_price)
         if self.unit_landed_cost:
             unit_price += self.unit_landed_cost
         return unit_price
