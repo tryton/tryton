@@ -250,19 +250,32 @@ class Timesheet:
         cursor = Transaction().connection.cursor()
         line = TimesheetLine.__table__()
 
+        upto2tworks = defaultdict(list)
+        twork2work = {}
+        for work in works:
+            upto = work.invoice_timesheet_up_to
+            for timesheet_work in work.timesheet_works:
+                twork2work[timesheet_work.id] = work.id
+                upto2tworks[upto].append(timesheet_work.id)
+
         durations = defaultdict(datetime.timedelta)
-        twork2work = {tw.id: w.id for w in works for tw in w.timesheet_works}
-        for sub_ids in grouped_slice(twork2work.keys()):
-            red_sql = reduce_ids(line.work, sub_ids)
-            cursor.execute(*line.select(line.work, Sum(line.duration),
-                    where=red_sql & (line.invoice_line == Null),
-                    group_by=line.work))
-            for twork_id, duration in cursor:
-                if duration:
-                    # SQLite uses float for SUM
-                    if not isinstance(duration, datetime.timedelta):
-                        duration = datetime.timedelta(seconds=duration)
-                    durations[twork2work[twork_id]] += duration
+        query = line.select(
+            line.work, Sum(line.duration),
+            group_by=line.work)
+        for upto, tworks in upto2tworks.items():
+            for sub_ids in grouped_slice(tworks):
+                query.where = (reduce_ids(line.work, sub_ids)
+                    & (line.invoice_line == Null))
+                if upto:
+                    query.where &= (line.date <= upto)
+                cursor.execute(*query)
+
+                for twork_id, duration in cursor:
+                    if duration:
+                        # SQLite uses float for SUM
+                        if not isinstance(duration, datetime.timedelta):
+                            duration = datetime.timedelta(seconds=duration)
+                        durations[twork2work[twork_id]] += duration
 
         quantities = {}
         for work in works:
