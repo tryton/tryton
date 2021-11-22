@@ -46,8 +46,9 @@ Create project invoice user::
     >>> project_invoice_user.login = 'project_invoice'
     >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
     >>> project_group, = Group.find([('name', '=', 'Project Administration')])
+    >>> invoice_group, = Group.find([('name', '=', 'Account')])
     >>> project_invoice_user.groups.extend(
-    ...     [project_invoice_group, project_group])
+    ...     [project_invoice_group, project_group, invoice_group])
     >>> project_invoice_user.save()
 
 Create chart of accounts::
@@ -160,8 +161,19 @@ Invoice project up to yesterday::
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
-    Decimal('40.00')
+    Decimal('0.00')
     >>> project.invoiced_amount
+    Decimal('60.00')
+
+    >>> project.project_invoice_timesheet_up_to = today
+    >>> project.save()
+    >>> project.amount_to_invoice
+    Decimal('40.00')
+
+    >>> set_user(project_invoice_user)
+    >>> Invoice = Model.get('account.invoice')
+    >>> invoice, = Invoice.find([])
+    >>> invoice.total_amount
     Decimal('60.00')
 
 Invoice all project::
@@ -175,6 +187,11 @@ Invoice all project::
     Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('100.00')
+
+    >>> set_user(project_invoice_user)
+    >>> _, invoice = Invoice.find([], order=[('id', 'ASC')])
+    >>> invoice.total_amount
+    Decimal('40.00')
 
 Create more timesheets::
 
@@ -202,3 +219,8 @@ Invoice again project::
     Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('180.00')
+
+    >>> set_user(project_invoice_user)
+    >>> _, _, invoice = Invoice.find([], order=[('id', 'ASC')])
+    >>> invoice.total_amount
+    Decimal('80.00')
