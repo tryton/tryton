@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import http.client
 import logging
 import pydoc
 import time
@@ -155,7 +154,7 @@ def _dispatch(request, pool, *args, **kwargs):
         context = {'_request': request.context}
         if not security.check_timeout(
                 pool.database_name, user, session, context=context):
-            abort(http.client.UNAUTHORIZED)
+            abort(HTTPStatus.UNAUTHORIZED)
 
     log_message = '%s.%s(*%s, **%s) from %s@%s%s'
     username = request.authorization.username
