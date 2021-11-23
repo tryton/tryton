@@ -114,7 +114,7 @@ Create product::
     >>> unit.digits = 2
     >>> unit.rounding = 0.01
     >>> unit.save()
-    >>> cm, = Uom.find([('name', '=', "centimeter")])
+    >>> cm, = Uom.find([('name', '=', "Centimeter")])
     >>> cm.digits = 0
     >>> cm.rounding = 1
     >>> cm.save()
