@@ -56,7 +56,7 @@ Create Components::
     >>> component1, = template1.products
 
     >>> meter, = ProductUom.find([('name', '=', 'Meter')])
-    >>> centimeter, = ProductUom.find([('name', '=', 'centimeter')])
+    >>> centimeter, = ProductUom.find([('name', '=', 'Centimeter')])
 
     >>> template2 = ProductTemplate()
     >>> template2.name = 'component 2'
