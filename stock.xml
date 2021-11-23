@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('shipments', '=', Eval('active_id')), ('shipments', 'in', Eval('active_ids')))]"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
@@ -70,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('shipment_returns', '=', Eval('active_id')), ('shipment_returns', 'in', Eval('active_ids')))]"
+                eval="[('shipment_returns', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"

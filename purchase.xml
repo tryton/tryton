@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Shipments</field>
             <field name="res_model">stock.shipment.in</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.purchase', '=', Eval('active_id')), ('moves.purchase', 'in', Eval('active_ids')))]"
+                eval="[('moves.purchase', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Returns</field>
             <field name="res_model">stock.shipment.in.return</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.purchase', '=', Eval('active_id')), ('moves.purchase', 'in', Eval('active_ids')))]"
+                eval="[('moves.purchase', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="context"></field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lines.origin.purchase.id', '=', Eval('active_id'), 'purchase.line'), ('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line'))]"
+                eval="[('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -188,7 +188,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('invoices', '=', Eval('active_id')), ('invoices', 'in', Eval('active_ids')))]"
+                eval="[('invoices', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
