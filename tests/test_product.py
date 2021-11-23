@@ -114,7 +114,7 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         tests = [
             ('Meter', 'factor'),
             ('Kilometer', 'factor'),
-            ('centimeter', 'rate'),
+            ('Centimeter', 'rate'),
             ('Foot', 'factor'),
             ]
         for name, result in tests:
