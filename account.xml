@@ -84,7 +84,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.landed_cost</field>
             <field
                 name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('shipments', '=', Eval('active_id')), ('shipments', 'in', Eval('active_ids')))]"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_landed_cost_form_shipment_view1">
