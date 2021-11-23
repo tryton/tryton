@@ -175,7 +175,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_centimeter">
-            <field name="name">centimeter</field>
+            <field name="name">Centimeter</field>
             <field name="symbol">cm</field>
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.01"/>
