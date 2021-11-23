@@ -142,7 +142,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Statement Lines</field>
             <field name="res_model">account.statement.line</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('move.lines', '=', Eval('active_id')), ('move.lines', 'in', Eval('active_ids')))]"
+                eval="[('move.lines', 'in', Eval('active_ids'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_statement_line_move_line_keyword1">
