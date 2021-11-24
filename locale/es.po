@@ -272,7 +272,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_mandate_title"
 msgid "SEPA %(scheme)s Direct Debit MANDATE"
-msgstr "Orden de domiciliaciónSEPA %(schema) de adeudo directo"
+msgstr "Orden de domiciliación SEPA %(scheme)s de adeudo directo"
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
