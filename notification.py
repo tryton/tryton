@@ -112,6 +112,10 @@ class Email(ModelSQL, ModelView):
         domain=[('model.model', '=', Eval('model'))],
         depends=['model'],
         help="Add a trigger for the notification.")
+    send_after = fields.TimeDelta(
+        "Send After",
+        help="The delay after which the email must be sent.\n"
+        "Applied if a worker queue is activated.")
 
     model = fields.Function(
         fields.Char("Model"), 'on_change_with_model', searcher='search_model')
@@ -217,11 +221,27 @@ class Email(ModelSQL, ModelView):
     @classmethod
     def trigger(cls, records, trigger):
         "Action function for the triggers"
-        if not trigger.notification_email:
+        notification_email = trigger.notification_email
+        if not notification_email:
             raise ValueError(
                 'Trigger "%s" is not related to any email notification'
                 % trigger.rec_name)
-        trigger.notification_email.send_email(records, trigger)
+        if notification_email.send_after:
+            with Transaction().set_context(
+                    queue_name='notification_email',
+                    queue_scheduled_at=trigger.notification_email.send_after):
+                notification_email.__class__.__queue__._send_email_queued(
+                    notification_email, [r.id for r in records], trigger.id)
+        else:
+            notification_email.send_email(records, trigger)
+
+    def _send_email_queued(self, ids, trigger_id):
+        pool = Pool()
+        Model = pool.get(self.model)
+        Trigger = pool.get('ir.trigger')
+        records = Model.browse(ids)
+        trigger = Trigger(trigger_id)
+        self.send_email(records, trigger)
 
     def send_email(self, records, trigger):
         pool = Pool()

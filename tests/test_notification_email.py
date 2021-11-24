@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import sys
 import unittest
 from unittest.mock import patch, ANY
@@ -63,14 +64,19 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email.content = report
         notification_email.save()
 
-    def run_tasks(self):
+    def run_tasks(self, count=None):
         pool = Pool()
         Queue = pool.get('ir.queue')
         transaction = Transaction()
         self.assertTrue(transaction.tasks)
+        i = 0
         while transaction.tasks:
             task = Queue(transaction.tasks.pop())
             task.run()
+            i += 1
+            if count is not None:
+                if i >= count:
+                    break
 
     @unittest.skipIf(
         (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
@@ -121,6 +127,42 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(log.recipients, 'Administrator <user@example.com>')
         self.assertEqual(log.recipients_secondary, '')
         self.assertEqual(log.recipients_hidden, '')
+
+    @with_transaction()
+    def test_notification_email_delay(self):
+        "Test email notification is sent with delay"
+        pool = Pool()
+        User = pool.get('res.user')
+        Trigger = pool.get('ir.trigger')
+        Model = pool.get('ir.model')
+        NotificationEmail = pool.get('notification.email')
+
+        self._setup_notification()
+        notification_email, = NotificationEmail.search([])
+        notification_email.send_after = dt.timedelta(minutes=5)
+        notification_email.save()
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        Trigger.create([{
+                    'name': 'Test creation',
+                    'model': model.id,
+                    'on_create': True,
+                    'condition': 'true',
+                    'notification_email': notification_email.id,
+                    'action': 'notification.email|trigger',
+                    }])
+
+        with patch.object(
+                notification_module, 'sendmail_transactional') as sendmail, \
+                patch.object(notification_module, 'SMTPDataManager'):
+            User.create([{'name': "Michael Scott", 'login': "msc"}])
+            self.run_tasks(1)
+            sendmail.assert_not_called()
+            self.run_tasks()
+            sendmail.assert_called_once_with(
+                FROM, ['user@example.com'], ANY, datamanager=ANY)
 
     @with_transaction()
     def test_notification_email_attachment(self):
