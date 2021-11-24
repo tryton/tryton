@@ -1,3 +1,5 @@
+* Use all street lines in record name of address
+
 Version 6.2.0 - 2021-11-01
 * Bug fixes (see mercurial logs for details)
 * Support replacing party on reference field

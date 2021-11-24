@@ -34,6 +34,10 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         help="If filled, replace the name of the party for address formatting")
     name = fields.Char("Building Name")
     street = fields.Text("Street")
+    street_single_line = fields.Function(
+        fields.Char("Street"),
+        'on_change_with_street_single_line',
+        searcher='search_street_single_line')
     postal_code = fields.Char("Postal Code")
     city = fields.Char("City")
     country = fields.Many2One('country.country', "Country")
@@ -85,6 +89,15 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                     [sql_table.street],
                     [value]))
             table.drop_column('streetbis')
+
+    @fields.depends('street')
+    def on_change_with_street_single_line(self, name=None):
+        if self.street:
+            return " ".join(self.street.splitlines())
+
+    @classmethod
+    def search_street_single_line(cls, name, domain):
+        return [('street',) + tuple(domain[1:])]
 
     _autocomplete_limit = 100
 
@@ -178,8 +191,8 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         party = self.party_full_name
-        if self.street:
-            street = self.street.splitlines()[0]
+        if self.street_single_line:
+            street = self.street_single_line
         else:
             street = None
         if self.country:
