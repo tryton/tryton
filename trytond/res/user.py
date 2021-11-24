@@ -1179,6 +1179,13 @@ class EmailResetPassword(Report):
         context['expire'] = lang.strftime(
             records[0].password_reset_expire,
             format=lang.date + ' %H:%M:%S')
+        expire_delay = (
+            records[0].password_reset_expire - datetime.datetime.now())
+        # Use a precision of minutes
+        expire_delay = datetime.timedelta(
+            days=expire_delay.days,
+            minutes=round(expire_delay.seconds / 60))
+        context['expire_delay'] = expire_delay
         return context
 
 

@@ -1,3 +1,4 @@
+* Use expire delay instead of UTC datetime in reset password email
 * Use RENAME and DROP COLUMN with SQLite backend
 * Support window functions with SQLite backend
 * Use JSONB to store Dict field on PostgreSQL backend
