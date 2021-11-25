@@ -193,7 +193,7 @@ def append_ending_clause(domain, clause, deep):
 def default_operator(field):
     "Return default operator for field"
     if field['type'] in ('char', 'text', 'many2one', 'many2many', 'one2many',
-            'reference'):
+            'reference', 'one2one'):
         return 'ilike'
     else:
         return '='
