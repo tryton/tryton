@@ -1804,7 +1804,7 @@
         },
         default_operator: function(field) {
             if (~['char', 'text', 'many2one', 'many2many', 'one2many',
-                    'reference'].indexOf(field.type)) {
+                    'reference', 'one2one'].indexOf(field.type)) {
                 return 'ilike';
             } else {
                 return '=';
