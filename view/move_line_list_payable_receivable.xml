@@ -5,7 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="maturity_date"/>
     <field name="party"/>
     <field name="amount"/>
-    <field name="amount_currency"/>
     <field name="move"/>
     <field name="move_origin"/>
     <field name="origin"/>
