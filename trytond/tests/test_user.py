@@ -225,24 +225,26 @@ class UserTestCase(unittest.TestCase):
         user = User(login='user')
         user.save()
 
-        User._login_always = Mock(return_value=user.id)
-        User._login_different = Mock(return_value=user.id + 1)
-        User._login_never = Mock(return_value=None)
-
-        for methods, result in (
-                ('never,never', None),
-                ('never,always', user.id),
-                ('always,never', user.id),
-                ('always,always', user.id),
-                ('never+never', None),
-                ('never+always', None),
-                ('always+never', None),
-                ('always+always', user.id),
-                ('always+different', None),
-                ):
-            with self.subTest(methods=methods, result=result):
-                with set_authentications(methods):
-                    self.assertEqual(User.get_login('user', {}), result)
+        with patch.object(User, '_login_always',
+                Mock(return_value=user.id), create=True), \
+                patch.object(User, '_login_different',
+                    Mock(return_value=user.id + 1), create=True), \
+                patch.object(User, '_login_never',
+                    Mock(return_value=None), create=True):
+            for methods, result in (
+                    ('never,never', None),
+                    ('never,always', user.id),
+                    ('always,never', user.id),
+                    ('always,always', user.id),
+                    ('never+never', None),
+                    ('never+always', None),
+                    ('always+never', None),
+                    ('always+always', user.id),
+                    ('always+different', None),
+                    ):
+                with self.subTest(methods=methods, result=result):
+                    with set_authentications(methods):
+                        self.assertEqual(User.get_login('user', {}), result)
 
     @with_transaction()
     def test_bad_authentication_logging(self):
