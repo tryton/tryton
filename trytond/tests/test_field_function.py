@@ -52,8 +52,7 @@ class FieldFunctionTestCase(unittest.TestCase):
 
         with Transaction().new_transaction(readonly=True), \
                 patch.object(Model, 'getter') as getter:
-            record = Model()
-            record.save()
+            record, = Model.search([], limit=1)
             record.function_with_context
             record.function_without_context
             self.assertEqual(getter.call_count, 2)
