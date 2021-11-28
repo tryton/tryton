@@ -1921,10 +1921,8 @@ def _record_eval_pyson(record, source, encoded=False):
     else:
         pyson = source
     env = EvalEnvironment(record, record.__class__)
-    env.update(transaction.context)
-    env['current_date'] = datetime.datetime.today()
-    env['time'] = time
     env['context'] = transaction.context
+    env['active_model'] = record.__class__.__name__
     env['active_id'] = record.id
     return PYSONDecoder(env).decode(pyson)
 

@@ -349,7 +349,8 @@ class ModuleTestCase(unittest.TestCase):
                     fields |= get_eval_fields(field.size)
                 fields.discard(fname)
                 fields.discard('context')
-                fields.discard('_user')
+                fields.discard('active_model')
+                fields.discard('active_id')
                 depends = set(field.depends)
                 self.assertLessEqual(fields, depends,
                     msg='Missing depends %s in "%s"."%s"' % (
