@@ -961,7 +961,7 @@ Instance methods:
 Function
 --------
 
-.. class:: Function(field, getter[, setter[, searcher]])
+.. class:: Function(field, getter[, setter[, searcher[, getter_with_context]]])
 
 A function field can emulate any other given ``field``.
 
@@ -1018,6 +1018,14 @@ A function field can emulate any other given ``field``.
     :ref:`domain clause <topics-domain>`.
     It must return a list of :ref:`domain <topics-domain>` clauses but the
     ``operand`` can be a SQL query.
+
+.. attribute:: Function.getter_with_context
+
+    A boolean telling if the getter result depends on the context.
+    If it does not depend, the getter is called without context and the result
+    is stored in the transaction cache when readonly.
+    The default value is ``True``.
+
 
 Instance methods:
 

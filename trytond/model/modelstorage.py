@@ -1720,7 +1720,9 @@ class ModelStorage(Model):
                     if (field._type in no_local_cache
                             or field.context
                             or getattr(field, 'datetime_field', None)
-                            or isinstance(field, fields.Function)):
+                            or (isinstance(field, fields.Function)
+                                and (not transaction.readonly
+                                    or field.getter_with_context))):
                         to_delete.add(fname)
                 self._cache[id_]._update(
                     **{k: v for k, v in data.items() if k not in to_delete})
