@@ -557,10 +557,9 @@ class Invoice(metaclass=PoolMeta):
                         continue
                     payment_amount = Decimal(0)
                     for payment in line.payments:
-                        if payment.state != 'failed':
-                            with Transaction().set_context(date=payment.date):
-                                payment_amount += Currency.compute(
-                                    payment.currency, payment.amount,
-                                    invoice.currency)
+                        with Transaction().set_context(date=payment.date):
+                            payment_amount += Currency.compute(
+                                payment.currency, payment.amount_line_paid,
+                                invoice.currency)
                     amounts[invoice.id] -= payment_amount
         return amounts

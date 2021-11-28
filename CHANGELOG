@@ -1,3 +1,5 @@
+* Add amount_line_paid property on payments
+
 Version 6.2.0 - 2021-11-01
 * Bug fixes (see mercurial logs for details)
 * Add wizard to create direct debit for configured parties
