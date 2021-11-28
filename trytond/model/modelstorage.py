@@ -217,6 +217,11 @@ class ModelStorage(Model):
         return []
 
     @classmethod
+    def index_get_field(cls, name):
+        "Returns the index sort order of the field get calls."
+        return 0
+
+    @classmethod
     def write(cls, records, values, *args):
         '''
         Write values on records.

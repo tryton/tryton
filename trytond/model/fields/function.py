@@ -115,8 +115,17 @@ class Function(Field):
             instance_method = is_instance_method(Model, self.getter)
             multiple = self.getter_multiple(method)
 
+            records = Model.browse(ids)
+            for record, value in zip(records, values):
+                assert record.id == value['id']
+                for fname, val in value.items():
+                    field = Model._fields.get(fname)
+                    if field and field._type not in {
+                            'many2one', 'reference',
+                            'one2many', 'many2many', 'one2one'}:
+                        record._local_cache[record.id][fname] = val
+
             def call(name):
-                records = Model.browse(ids)
                 if not instance_method:
                     return method(records, name)
                 else:

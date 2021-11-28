@@ -43,9 +43,33 @@ class FunctionGetterContext(ModelSQL):
             context.get('language', 'empty'), context.get('test', 'empty'))
 
 
+class FunctionGetterLocalCache(ModelSQL):
+    "Function Getter with local cache"
+    __name__ = 'test.function.getter_local_cache'
+
+    function1 = fields.Function(
+        fields.Char("Char 1"), 'get_function1')
+    function2 = fields.Function(
+        fields.Char("Char 2"), 'get_function2')
+
+    def get_function1(self, name):
+        return "test"
+
+    def get_function2(self, name):
+        return self.function1.upper()
+
+    @classmethod
+    def index_get_field(cls, name):
+        index = super().index_get_field(name)
+        if name == 'function2':
+            index = cls.index_get_field('function1') + 1
+        return index
+
+
 def register(module):
     Pool.register(
         FunctionAccessor,
         FunctionAccessorTarget,
         FunctionGetterContext,
+        FunctionGetterLocalCache,
         module=module, type_='model')

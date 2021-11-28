@@ -264,6 +264,10 @@ Class methods:
     ``.``. The number of *dots* in the name is not limited.
     The order of the returned list is not guaranteed.
 
+.. classmethod:: ModelStorage.index_get_field(name)
+
+    Return the index sort order of the field get calls.
+
 .. classmethod:: ModelStorage.write(records, values, [[records, values], ...])
 
     Write ``values`` on the list of records.  ``values`` is a dictionary with

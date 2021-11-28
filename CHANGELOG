@@ -1,3 +1,4 @@
+* Fill local cache of Function field instances with values
 * Cache Function field getter without context in readonly transactions
 * Use expire delay instead of UTC datetime in reset password email
 * Use RENAME and DROP COLUMN with SQLite backend

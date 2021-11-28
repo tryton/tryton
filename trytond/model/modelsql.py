@@ -834,6 +834,7 @@ class ModelSQL(ModelStorage):
         # all fields for which there is a get attribute
         getter_fields = [f for f in all_fields
             if f in cls._fields and hasattr(cls._fields[f], 'get')]
+        getter_fields = sorted(getter_fields, key=cls.index_get_field)
 
         cache = transaction.get_cache()[cls.__name__]
         if getter_fields and cachable_fields:
@@ -882,24 +883,25 @@ class ModelSQL(ModelStorage):
                         result, record_cache_size(transaction)):
                     sub_results = list(sub_results)
                     sub_ids = []
+                    sub_values = []
                     for row in sub_results:
                         if (row['id'] not in cache
                                 or any(f not in cache[row['id']]
                                     for f in field_list)):
                             sub_ids.append(row['id'])
+                            sub_values.append(row)
                         else:
                             for fname in field_list:
                                 row[fname] = cache[row['id']][fname]
                     getter_results = field.get(
-                        sub_ids, cls, field_list, values=sub_results)
+                        sub_ids, cls, field_list, values=sub_values)
                     for fname in field_list:
                         getter_result = getter_results[fname]
-                        for row in sub_results:
-                            if row['id'] in sub_ids:
-                                row[fname] = getter_result[row['id']]
-                                if (transaction.readonly
-                                        and not getter_with_context):
-                                    cache[row['id']][fname] = row[fname]
+                        for row in sub_values:
+                            row[fname] = getter_result[row['id']]
+                            if (transaction.readonly
+                                    and not getter_with_context):
+                                cache[row['id']][fname] = row[fname]
 
         def read_related(field, Target, rows, fields):
             name = field.name

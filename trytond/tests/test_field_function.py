@@ -73,6 +73,21 @@ class FieldFunctionTestCase(unittest.TestCase):
             record.function_without_context
             self.assertEqual(getter.call_count, 2)
 
+    @with_transaction()
+    def test_getter_local_cache(self):
+        "Test getter use local cache"
+        pool = Pool()
+        Model = pool.get('test.function.getter_local_cache')
+
+        record = Model()
+        record.save()
+        with patch.object(Model, 'get_function1') as getter:
+            getter.return_value = 'test'
+
+            Model.read([record.id], ['function1', 'function2'])
+
+            self.assertEqual(getter.call_count, 1)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(FieldFunctionTestCase)
