@@ -1204,25 +1204,34 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Move = pool.get('account.move')
-        move = None
+
+        def move_fields():
+            for fname, field in cls._fields.items():
+                if (isinstance(field, fields.Function)
+                        and field.setter == 'set_move_field'):
+                    if fname.startswith('move_'):
+                        fname = fname[5:]
+                    yield fname
+
+        moves = {}
+        context = Transaction().context
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if not vals.get('move'):
+                move_values = {}
+                for fname in move_fields():
+                    move_values[fname] = vals.get(fname) or context.get(fname)
+                key = tuple(sorted(move_values.items()))
+                move = moves.get(key)
                 if move is None:
-                    journal_id = (vals.get('journal')
-                            or Transaction().context.get('journal'))
-                    move = Move()
-                    move.period = vals.get('period',
-                        Transaction().context.get('period'))
-                    if move.period:
-                        move.company = move.period.company
-                    move.journal = journal_id
-                    move.date = vals.get('date')
+                    move = Move(**move_values)
                     move.save()
+                    moves[key] = move
                 vals['move'] = move.id
             else:
-                # prevent computation of default date
-                vals.setdefault('date', None)
+                # prevent default value for field with set_move_field
+                for fname in move_fields():
+                    vals.setdefault(fname, None)
         lines = super(Line, cls).create(vlist)
         period_and_journals = set((line.period, line.journal)
             for line in lines)
