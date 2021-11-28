@@ -2708,6 +2708,12 @@
                 return;
             }
             button.el.prop('disabled', true);  // state will be reset at display
+            var row = this.view.rows.find(function(row) {
+                return row.record == record;
+            });
+            if (row) {
+                row._drawed_record = null;  // force redraw the row
+            }
             this.view.screen.button(this.attributes);
         }
     });
