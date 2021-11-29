@@ -1,6 +1,6 @@
-=====================
-Invoice Amount to Pay
-=====================
+======================================
+Payment Clearing Invoice Amount to Pay
+======================================
 
 Imports::
     >>> import datetime
