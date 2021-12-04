@@ -74,7 +74,7 @@ class Commission(metaclass=PoolMeta):
         period = Period.find(self.agent.company.id, date=date)
 
         move = Move(journal=self.get_journal(), origin=self,
-            date=date, period=period)
+            date=date, period=period, company=self.agent.company)
         amount = Currency.compute(self.currency, self.amount,
             self.agent.company.currency)
         line = Line()
