@@ -214,5 +214,8 @@ class ShipmentInternal(metaclass=PoolMeta):
         Config = pool.get('stock.configuration')
         location = super().on_change_with_transit_location(name=name)
         if not location and self.company and self.company.cost_price_warehouse:
-            location = Config(1).get_multivalue('shipment_internal_transit').id
+            location = Config(1).get_multivalue(
+                'shipment_internal_transit', company=self.company)
+            if location:
+                location = location.id
         return location
