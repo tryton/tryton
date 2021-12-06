@@ -153,7 +153,10 @@ class CreateDPDShipping(Wizard):
                         count += 1
                         credential.update_token()
                         continue
-                raise
+                raise DPDError(gettext(
+                        'stock_package_shipping_dpd.'
+                        'msg_dpd_webservice_error',
+                        message=e.message)) from e
         else:
             raise DPDError(
                 gettext('stock_package_shipping_dpd.msg_dpd_login_error',
