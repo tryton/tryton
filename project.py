@@ -11,6 +11,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.functions import Extract
 from sql.operators import Concat
+from sql.conditionals import NullIf
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -663,7 +664,7 @@ class WorkInvoicedProgress(ModelView, ModelSQL):
             # Don't use UPDATE FROM because SQLite does not support it.
             value = work.select(
                 (Extract('EPOCH', sql_table.effort_duration)
-                    / Extract('EPOCH', work.effort_duration)),
+                    / NullIf(Extract('EPOCH', work.effort_duration), 0)),
                 where=work.id == sql_table.work)
             cursor.execute(*sql_table.update([sql_table.progress], [value]))
 
