@@ -72,7 +72,11 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
     def __key_press_event(self, event):
         for name in ['KP_Decimal', 'KP_Separator']:
             if event.keyval == Gdk.keyval_from_name(name):
-                event.keyval = Gdk.unicode_to_keyval(ord(self.__decimal_point))
+                text = self.__decimal_point
+                self.do_insert_text(
+                    text, len(text), self.props.cursor_position)
+                self.set_position(self.props.cursor_position + len(text))
+                return True
 
 
 GObject.type_register(NumberEntry)
