@@ -116,12 +116,13 @@ class CreateDPDShipping(Wizard):
                         })
                 break
             except Fault as e:
-                tag = etree.QName(e.detail[0].tag)
-                if tag.localname == 'authenticationFault':
-                    count += 1
-                    credential.update_token()
-                else:
-                    raise
+                if e.detail:
+                    tag = etree.QName(e.detail[0].tag)
+                    if tag.localname == 'authenticationFault':
+                        count += 1
+                        credential.update_token()
+                        continue
+                raise
         else:
             self.raise_user_error('can_not_login', {
                     'credential': credential.rec_name,
