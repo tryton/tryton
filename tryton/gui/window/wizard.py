@@ -155,8 +155,8 @@ class Wizard(InfoBar):
                 process_exception=False, callback=end_callback)
         except Exception:
             logger.warn(
-                _("Unable to delete wizard %s") % self.session_id,
-                exc_info=True)
+                "Unable to delete session %s of wizard %s",
+                self.session_id, self.action, exc_info=True)
 
     def clean(self):
         for widget in self.widget.get_children():

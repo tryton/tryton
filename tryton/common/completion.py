@@ -67,7 +67,7 @@ def update_completion(entry, record, field, model, domain=None):
                 process_exception=False, callback=callback)
         except Exception:
             logger.warning(
-                _("Unable to search for completion of %s") % model,
+                "Unable to search for completion of %s", model,
                 exc_info=True)
         return False
     search_text = entry.get_text()

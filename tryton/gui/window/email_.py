@@ -59,7 +59,7 @@ class EmailEntry(Gtk.Entry):
                 results = results()
             except (TrytonError, TrytonServerError):
                 logger.warning(
-                    _("Unable to complete email entry"), exc_info=True)
+                    "Unable to complete email entry", exc_info=True)
                 results = []
             if text != self.get_text():
                 return False

@@ -72,7 +72,7 @@ def _listen(connection):
                     logger.info("Bus not supported")
                     break
             logger.error(
-                "An exception occured while connecting to the bus."
+                "An exception occurred while connecting to the bus. "
                 "Sleeping for %s seconds",
                 wait, exc_info=error)
             time.sleep(min(wait, bus_timeout))

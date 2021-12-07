@@ -837,8 +837,8 @@ class Screen(SignalEvent):
                 selected_nodes = json.loads(selected_nodes)
             except RPCException:
                 logger.warn(
-                    _('Unable to get view tree state for %s')
-                    % self.model_name)
+                    'Unable to get view tree state for %s',
+                    self.model_name)
             self.tree_states[parent][view.children_field] = (
                 expanded_nodes, selected_nodes)
         if view.view_type == 'tree':
