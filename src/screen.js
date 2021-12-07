@@ -2112,6 +2112,11 @@
                 Sao.Session.current_session.cache.clear(
                     'model.ir.ui.view_tree_state.get');
             };
+            var set_session_fail = function() {
+                Sao.Logger.warn(
+                    "Unable to set view tree state for %s",
+                    this.model_name);
+            }.bind(this);
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -2152,7 +2157,8 @@
                                 view.children_field,
                                 JSON.stringify(paths),
                                 JSON.stringify(selected_paths)], {})
-                            .then(clear_cache);
+                            .then(clear_cache)
+                            .fail(set_session_fail);
                         prms.push(prm);
                     }
                 }
@@ -2208,6 +2214,11 @@
                         }
                         this.tree_states[parent_][view.children_field || null] = state;
                         return state;
+                    }.bind(this))
+                    .fail(function() {
+                        Sao.Logger.warn(
+                            "Unable to get view tree state for %s",
+                            this.model_name);
                     }.bind(this));
             } else {
                 state_prm = jQuery.when(state);

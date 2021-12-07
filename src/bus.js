@@ -37,6 +37,9 @@
             }
             if (response.message) {
                 last_message = response.message.message_id;
+                Sao.Logger.info(
+                    "poll channels %s with last message",
+                    Sao.Bus.channels, last_message);
                 Sao.Bus.handle(response.message);
             }
             Sao.Bus.listen(last_message, 1);
@@ -49,9 +52,13 @@
             if (error === "timeout") {
                 Sao.Bus.listen(last_message, 1);
             } else if (response.status == 501) {
-                console.log("Bus not supported");
+                Sao.Logger.log("Bus not supported");
                 return;
             } else {
+                Sao.Logger.error(
+                    "An exception occured while connection to the bus. " +
+                    "Sleeping for %s seconds",
+                    wait, error);
                 window.setTimeout(
                     Sao.Bus.listen,
                     Math.min(wait * 1000, Sao.config.bus_timeout),
@@ -67,7 +74,7 @@
                     return;
                 }
             } catch (e) {
-                (console.error || console.log).call(console, e, e.stack);
+                Sao.Logger.error(e.message, e.stack);
                 return;
             }
 

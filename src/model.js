@@ -260,10 +260,10 @@
                 return jQuery.when();
             }
             var root_group = this.root_group;
-            console.assert(records.every(function(r) {
+            Sao.Logger.assert(records.every(function(r) {
                 return r.model.name == this.model.name;
             }.bind(this)), 'records not from the same model');
-            console.assert(records.every(function(r) {
+            Sao.Logger.assert(records.every(function(r) {
                 return r.group.root_group == root_group;
             }), 'records not from the same root group');
             records = records.filter(function(record) {
@@ -1896,10 +1896,17 @@
                 var digits_name = digits_field.description.relation;
                 var digits_id = digits_field.get(record);
                 if (digits_name && (digits_id !== null) && (digits_id >= 0)) {
-                    digits = Sao.rpc({
-                        'method': 'model.' + digits_name + '.get_digits',
-                        'params': [digits_id, {}],
-                    }, record.model.session, false);
+                    try {
+                        digits = Sao.rpc({
+                            'method': 'model.' + digits_name + '.get_digits',
+                            'params': [digits_id, {}],
+                        }, record.model.session, false);
+                    } catch(e) {
+                        Sao.Logger.warn(
+                            "Fail to fetch digits for %s,%s",
+                            digits_name, digits_id);
+                        return;
+                    }
                 } else {
                     return;
                 }
@@ -1925,10 +1932,16 @@
                 var symbol_name = symbol_field.description.relation;
                 var symbol_id = symbol_field.get(record);
                 if (symbol_name && (symbol_id !== null) && (symbol_id >= 0)) {
-                    return Sao.rpc({
-                        'method': 'model.' + symbol_name + '.get_symbol',
-                        'params': [symbol_id, sign, record.get_context()],
-                    }, record.model.session, false) || ['', 1];
+                    try {
+                        return Sao.rpc({
+                            'method': 'model.' + symbol_name + '.get_symbol',
+                            'params': [symbol_id, sign, record.get_context()],
+                        }, record.model.session, false) || ['', 1];
+                    } catch (e) {
+                        Sao.Logger.warn(
+                            "Fail to fetch symbol for %s,%s",
+                            symbol_name, symbol_id);
+                    }
                 }
             }
             return ['', 1];

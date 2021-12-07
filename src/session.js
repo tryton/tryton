@@ -169,6 +169,9 @@
                 localStorage.setItem(
                     'sao_device_cookies', JSON.stringify(device_cookies));
             }.bind(this));
+            renew_prm.fail(function() {
+                Sao.error("Cannot renew device cookie");
+            });
         }
     });
 
@@ -427,6 +430,7 @@
                 delete this.store[prefix][key];
                 return undefined;
             }
+            Sao.Logger.info("(cached)", prefix, key);
             return Sao.rpc.convertJSONObject(jQuery.parseJSON(data.value));
         },
         clear: function(prefix) {

@@ -50,7 +50,7 @@ SOFTWARE.
         var iframe = document.createElement('iframe');
         if (iframe.sandbox === undefined) {
             // Browser does not support sandboxed iframes
-            console.warn("Your browser do not support sandboxed iframes," +
+            Sao.Logger.warn("Your browser do not support sandboxed iframes," +
                 " unable to sanitize HTML.");
             return input;
         }

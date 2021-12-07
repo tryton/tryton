@@ -121,7 +121,12 @@
                 'params': [this.session_id, this.session.context]
             }, this.session).then(function(action) {
                 this.destroy(action);
-            }.bind(this));
+            }.bind(this))
+            .fail(function() {
+                Sao.Logger.warn(
+                    "Unable to delete session %s of wizard %s",
+                    this.session_id, this.action);
+            });
         },
         clean: function() {
             this.widget.empty();

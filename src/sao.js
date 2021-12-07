@@ -175,6 +175,47 @@ var Sao = {};
         return ClassConstructor;
     };
 
+    Sao.Logging = Sao.class_(Object, {
+        init: function() {
+            this.level = Sao.Logging.ERROR;
+        },
+        set_level: function(level) {
+            this.level = level;
+        },
+        _log: function(level, logger, args) {
+            if (this.level <= level) {
+                logger.apply(console, args);
+            }
+        },
+        debug: function() {
+            this._log(Sao.Logging.DEBUG, console.log, arguments);
+        },
+        info: function() {
+            this._log(Sao.Logging.INFO, console.info, arguments);
+        },
+        warn: function() {
+            this._log(Sao.Logging.WARNING, console.warn, arguments);
+        },
+        error: function() {
+            this._log(Sao.Logging.ERROR, console.error, arguments);
+        },
+        critical: function() {
+            this._log(Sao.Logging.CRITICAL, console.error, arguments);
+        },
+        assert: function() {
+            if (this.level <= Sao.Logging.DEBUG) {
+                console.assert.apply(console, arguments);
+            }
+        },
+    });
+    Sao.Logging.CRITICAL = 50;
+    Sao.Logging.ERROR = 40;
+    Sao.Logging.WARNING = 30;
+    Sao.Logging.INFO = 20;
+    Sao.Logging.DEBUG = 10;
+    Sao.Logging.NOTSET = 0;
+    Sao.Logger = new Sao.Logging();
+
     Sao.Decimal = Number;
 
     var _moment_to_string = moment.prototype.toString;
@@ -1095,7 +1136,7 @@ var Sao = {};
         try {
             Notification.requestPermission();
         } catch (e) {
-            (console.error || console.log).call(console, e, e.stack);
+            Sao.Logger.error(e.message, e.stack);
         }
         Sao.login();
     });

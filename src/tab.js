@@ -1195,7 +1195,7 @@
                 uris = [],
                 texts = [];
             if (evt.dataTransfer.items) {
-                console.log(evt.dataTransfer.items);
+                Sao.Logger.debug("Attach drop items:", evt.dataTransfer.items);
                 for (i = 0; i < evt.dataTransfer.items.length; i++) {
                     var item = evt.dataTransfer.items[i];
                     if (item.kind == 'string') {

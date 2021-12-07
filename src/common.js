@@ -3061,7 +3061,10 @@
                             var img_url = this._convert(icon);
                             this.loaded_icons[icon_name] = img_url;
                             return img_url;
-                        }.bind(this));
+                        }.bind(this))
+                        .fail(function() {
+                            Sao.error("Unknown icon %s", icon_name);
+                        });
                 }
             }.bind(this));
         },
@@ -3728,7 +3731,10 @@
         var order = field.get_search_order(record);
         var sao_model = new Sao.Model(model);
         return sao_model.execute('search_read',
-                [domain, 0, Sao.config.limit, order, ['rec_name']], context);
+                [domain, 0, Sao.config.limit, order, ['rec_name']], context).fail(function() {
+                    Sao.Logger.warning(
+                        "Unable to search for completion of %s", model);
+                });
     };
 
     Sao.common.Paned = Sao.class_(Object, {
