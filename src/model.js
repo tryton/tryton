@@ -583,7 +583,14 @@
             this.destroyed = false;
         },
         has_changed: function() {
-            return !jQuery.isEmptyObject(this._changed);
+            if (!jQuery.isEmptyObject(this._changed)) {
+                Sao.Logger.info(
+                    "Modified fields of %s@%s", this.id, this.model.name,
+                    Object.keys(this._changed));
+                return true;
+            } else {
+                return false;
+            }
         },
         save: function(force_reload) {
             if (force_reload === undefined) {
