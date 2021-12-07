@@ -1,11 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
+
 from tryton.signal_event import SignalEvent
 import tryton.common as common
 from tryton.pyson import PYSONDecoder
 from . import field as fields
 from tryton.common import RPCExecute, RPCException
 from tryton.config import CONFIG
+
+logger = logging.getLogger(__name__)
 
 
 class Record(SignalEvent):
@@ -146,7 +150,13 @@ class Record(SignalEvent):
 
     @property
     def modified(self):
-        return bool(self.modified_fields)
+        if self.modified_fields:
+            logger.info(
+                "Modified fields %s of %s",
+                list(self.modified_fields.keys()), self)
+            return True
+        else:
+            return False
 
     @property
     def parent(self):
