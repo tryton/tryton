@@ -294,8 +294,10 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 accounts = Account.search([
                         ('company', '=', fiscalyear.company.id),
                         ])
-                deferrals += [_f for _f in (fiscalyear.get_deferral(a)
-                        for a in accounts) if _f]
+                for account in accounts:
+                    deferral = fiscalyear.get_deferral(account)
+                    if deferral:
+                        deferrals.append(deferral)
         Deferral.save(deferrals)
 
     @classmethod
