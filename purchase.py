@@ -193,21 +193,51 @@ class RequisitionLine(metaclass=PoolMeta):
         if self.product and self.product.purchase_secondary_uom:
             return self.product.purchase_secondary_uom.category.id
 
-    def compute_request(self):
+    @property
+    def request_unit(self):
+        unit = super().request_unit
+        product = self.product
+        if (product
+                and self.unit
+                and (self.unit.category
+                    == product.purchase_secondary_uom.category)):
+            unit = product.purchase_uom
+        return unit
+
+    @property
+    def request_quantity(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        request = super().compute_request()
+        quantity = super().request_quantity
+        product = self.product
+        request_unit = self.request_unit
+        if (product
+                and self.unit
+                and request_unit
+                and (self.unit.category
+                    == product.purchase_secondary_uom.category)
+                and request_unit.category == product.purchase_uom.category):
+            quantity = Uom.compute_qty(
+                self.unit, self.quantity, request_unit, round=True,
+                factor=product.purchase_secondary_uom_normal_rate,
+                rate=product.purchase_secondary_uom_normal_factor)
+        return quantity
 
-        if request and request.product:
-            product = request.product
-            secondary_uom = product.purchase_secondary_uom
-            if (secondary_uom
-                    and request.uom.category == secondary_uom.category):
-                request.quantity, request.uom = (
-                    Uom.compute_qty(
-                        request.uom, request.quantity,
-                        product.purchase_uom, round=True,
-                        factor=product.purchase_secondary_uom_normal_rate,
-                        rate=product.purchase_secondary_uom_normal_factor),
-                    product.purchase_uom)
-        return request
+    @property
+    def request_unit_price(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        unit_price = super().request_unit_price
+        product = self.product
+        if (product
+                and self.unit
+                and self.unit_price
+                and product.purchase_secondary_uom
+                and (self.unit.category
+                    == product.purchase_secondary_uom.category)):
+            unit_price = round_price(
+                Uom.compute_price(
+                    self.unit, self.unit_price, product.purchase_uom,
+                    factor=product.purchase_secondary_uom_normal_rate,
+                    rate=product.purchase_secondary_uom_normal_factor))
+        return unit_price
