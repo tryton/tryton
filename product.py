@@ -36,7 +36,6 @@ class Category(metaclass=PoolMeta):
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
-                ('type.statement', '=', 'income'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -50,7 +49,6 @@ class Category(metaclass=PoolMeta):
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
-                ('type.statement', '=', 'income'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -59,6 +57,18 @@ class Category(metaclass=PoolMeta):
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
+
+    @classmethod
+    def __setup__(cls):
+        pool = Pool()
+        CategoryAccount = pool.get('product.category.account')
+        super().__setup__()
+        for account in [cls.account_stock_in, cls.account_stock_out]:
+            account.domain = [
+                account.domain,
+                ('type.statement', 'in',
+                    CategoryAccount.get_account_stock_type_statements()),
+                ]
 
     @classmethod
     def multivalue_model(cls, field):
@@ -108,7 +118,6 @@ class CategoryAccount(metaclass=PoolMeta):
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
-            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -117,10 +126,19 @@ class CategoryAccount(metaclass=PoolMeta):
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
-            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        for account in [cls.account_stock_in, cls.account_stock_out]:
+            account.domain = [
+                account.domain,
+                ('type.statement', 'in',
+                    cls.get_account_stock_type_statements()),
+                ]
 
     @classmethod
     def __register__(cls, module_name):
@@ -148,6 +166,10 @@ class CategoryAccount(metaclass=PoolMeta):
         value_names.extend(account_names)
         super(CategoryAccount, cls)._migrate_property(
             field_names, value_names, fields)
+
+    @classmethod
+    def get_account_stock_type_statements(cls):
+        return ['income']
 
 
 class Template(metaclass=PoolMeta):
