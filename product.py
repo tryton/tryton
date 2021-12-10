@@ -74,6 +74,10 @@ class CategoryAccount(metaclass=PoolMeta):
         super(CategoryAccount, cls)._migrate_property(
             field_names, value_names, fields)
 
+    @classmethod
+    def get_account_stock_type_statements(cls):
+        return super().get_account_stock_type_statements() + ['balance']
+
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
