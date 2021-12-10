@@ -22,9 +22,7 @@ class Category(metaclass=PoolMeta):
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
-                ('id', 'not in', [
-                        Eval('account_stock_in', -1),
-                        Eval('account_stock_out', -1)]),
+                ('type.statement', '=', 'balance'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -32,14 +30,13 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting',
-                'account_stock_in', 'account_stock_out']))
+            depends=['account_parent', 'accounting']))
     account_stock_in = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock IN",
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
-                ('id', '!=', Eval('account_stock', -1)),
+                ('type.statement', '=', 'income'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -47,13 +44,13 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting', 'account_stock']))
+            depends=['account_parent', 'accounting']))
     account_stock_out = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock OUT",
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
-                ('id', '!=', Eval('account_stock', -1)),
+                ('type.statement', '=', 'income'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -61,7 +58,7 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting', 'account_stock']))
+            depends=['account_parent', 'accounting']))
 
     @classmethod
     def multivalue_model(cls, field):
