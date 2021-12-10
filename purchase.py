@@ -552,6 +552,31 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             pattern['party'] = self.supplier.id
         return pattern
 
+    @property
+    def request_unit(self):
+        unit = self.unit
+        if (self.product
+                and self.product.purchase_uom.category == self.unit.category):
+            unit = self.product.purchase_uom
+        return unit
+
+    @property
+    def request_quantity(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        quantity = self.quantity
+        request_unit = self.request_unit
+        if (self.product
+                and request_unit
+                and request_unit.category == self.unit.category):
+            quantity = Uom.compute_qty(
+                self.unit, self.quantity, request_unit, round=True)
+        return quantity
+
+    @property
+    def request_unit_price(self):
+        return self.unit_price
+
     def compute_request(self):
         """
         Return the value of the purchase request which will answer to
@@ -578,8 +603,8 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             if lead_time is not None:
                 purchase_date = supply_date - lead_time
 
-        uom = self.unit
-        quantity = self.quantity
+        uom = self.request_unit
+        quantity = self.request_quantity
         if (self.product
                 and self.product.purchase_uom.category == self.unit.category):
             uom = self.product.purchase_uom
@@ -657,8 +682,9 @@ class CreatePurchase(Wizard):
         RequisitionLine = pool.get('purchase.requisition.line')
         key = super(CreatePurchase, self)._group_purchase_line_key(request)
         if isinstance(request.origin, RequisitionLine):
-            if request.origin.unit_price:
-                key += (('unit_price', request.origin.unit_price),)
+            unit_price = request.origin.request_unit_price
+            if unit_price:
+                key += (('unit_price', unit_price),)
         return key
 
     @classmethod
