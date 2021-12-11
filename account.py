@@ -9,15 +9,15 @@ from sql.functions import Abs
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval, Id
-from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
-    Button)
-from trytond.transaction import Transaction
-from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, Id
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import BlockedWarning, GroupWarning
 from .payment import KINDS

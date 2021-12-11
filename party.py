@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import (
-    ModelSQL, ModelView, sequence_ordered, MatchMixin, fields)
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.party.exceptions import EraseError
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 payment_direct_debit = fields.Boolean(

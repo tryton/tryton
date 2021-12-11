@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account_payment.tests.test_account_payment import suite  # noqa: E501
+    from trytond.modules.account_payment.tests.test_account_payment import \
+        suite  # noqa: E501
 except ImportError:
     from .test_account_payment import suite
 

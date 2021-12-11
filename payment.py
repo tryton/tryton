@@ -4,22 +4,22 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
-from sql.aggregate import Sum, Count
+from sql.aggregate import Count, Sum
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Workflow, ModelView, ModelSQL, DeactivableMixin, fields)
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
+from trytond.modules.company.model import (
+    employee_field, reset_employee, set_employee)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
-from trytond.tools import reduce_ids, grouped_slice, cursor_dict
+from trytond.tools import (
+    cursor_dict, grouped_slice, reduce_ids, sortable_values)
 from trytond.transaction import Transaction
-from trytond.tools import sortable_values
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pool import Pool
-from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import OverpayWarning
 
