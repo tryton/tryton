@@ -5,13 +5,12 @@ from decimal import Decimal
 from sql.aggregate import Sum
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, Bool
-from trytond.transaction import Transaction
-
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
+from trytond.transaction import Transaction
 
 
 class Production(metaclass=PoolMeta):

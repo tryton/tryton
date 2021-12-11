@@ -7,14 +7,14 @@ from functools import wraps
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, sequence_ordered,
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields, sequence_ordered,
     tree)
 from trytond.model.exceptions import AccessError
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits, round_price
 from .exceptions import PickerError
 
 

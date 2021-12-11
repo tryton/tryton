@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import work
-from . import routing
-from . import production
+
+from . import production, routing, work
 
 
 def register():
