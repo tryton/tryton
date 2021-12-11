@@ -1,14 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null, Literal
+from sql import Literal, Null
 from sql.functions import CurrentTimestamp
 
-
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
-from trytond.transaction import Transaction
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 from .exceptions import PartyIdentificationdError
 

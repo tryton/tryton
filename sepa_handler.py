@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from lxml import etree
 from dateutil.parser import parse
+from lxml import etree
 
 from trytond.transaction import Transaction
 

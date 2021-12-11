@@ -3,32 +3,31 @@
 import datetime
 import os
 import unicodedata
-from itertools import groupby
 from io import BytesIO
+from itertools import groupby
 
 import genshi
 import genshi.template
+# XXX fix: https://genshi.edgewall.org/ticket/582
+from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from lxml import etree
 from sql import Literal, Null
 
+from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
-from trytond.model import (ModelSQL, ModelView, Workflow, fields, dualmethod,
-    Unique)
+from trytond.model import (
+    ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If
-from trytond.transaction import Transaction
-from trytond.tools import reduce_ids, grouped_slice, sortable_values
-from trytond import backend
-
 from trytond.modules.account_payment.exceptions import ProcessError
 from trytond.modules.company import CompanyReport
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
+from trytond.tools import grouped_slice, reduce_ids, sortable_values
+from trytond.transaction import Transaction
 
 from .sepa_handler import CAMT054
 
-# XXX fix: https://genshi.edgewall.org/ticket/582
-from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
     def visit_NameConstant(self, node):
         if node.value is None:

@@ -4,20 +4,20 @@ import os
 import unittest
 from decimal import Decimal
 from io import BytesIO, open
-from lxml import etree
 from unittest.mock import Mock, patch
 
+from lxml import etree
+
 import trytond.tests.test_tryton
+from trytond.exceptions import UserError
+from trytond.modules.account.tests import create_chart
+from trytond.modules.account_payment_sepa.payment import CAMT054
+from trytond.modules.company.tests import (
+    CompanyTestMixin, create_company, set_company)
+from trytond.modules.currency.tests import create_currency
+from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-from trytond.exceptions import UserError
-from trytond.modules.account_payment_sepa.payment import CAMT054
-from trytond.pool import Pool
-
-from trytond.modules.currency.tests import create_currency
-from trytond.modules.company.tests import (
-    create_company, set_company, CompanyTestMixin)
-from trytond.modules.account.tests import create_chart
 
 
 def setup_environment():
