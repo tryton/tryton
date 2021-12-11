@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.product_attribute.tests.test_product_attribute import suite  # noqa: E501
+    from trytond.modules.product_attribute.tests.test_product_attribute import \
+        suite  # noqa: E501
 except ImportError:
     from .test_product_attribute import suite
 
