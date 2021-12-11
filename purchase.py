@@ -3,19 +3,19 @@
 import datetime
 from functools import wraps
 from itertools import groupby
+
 from sql.conditionals import Case
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, fields, ModelSQL
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company import CompanyReport
+from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool, If, Id
+from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools import sortable_values
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateTransition, Button
-
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import PreviousQuotation
 

@@ -3,7 +3,8 @@
 # the full copyright notices and license terms.
 
 try:
-    from trytond.modules.purchase_request_quotation.tests.test_purchase_request_quotation import suite  # noqa: E501
+    from trytond.modules.purchase_request_quotation.tests.test_purchase_request_quotation import \
+        suite  # noqa: E501
 except ImportError:
     from .test_purchase_request_quotation import suite
 
