@@ -2,13 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.model import ModelSQL, ValueMixin, fields
-from trytond.pyson import Eval
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-from trytond.tools.multivalue import migrate_property
-
 from trytond.modules.sale.sale import (
     get_shipments_returns, search_shipments_returns)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 sale_drop_location = fields.Many2One(
     'stock.location', "Sale Drop Location", domain=[('type', '=', 'drop')])

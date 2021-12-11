@@ -4,22 +4,21 @@ from collections import defaultdict
 from decimal import Decimal
 
 from sql import Column
+from sql.aggregate import Count
 from sql.conditionals import Coalesce
 from sql.operators import Concat
-from sql.aggregate import Count
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If, Id
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice, cursor_dict
-
-from trytond.modules.sale.stock import process_sale
 from trytond.modules.product import round_price
 from trytond.modules.purchase.stock import process_purchase
+from trytond.modules.sale.stock import process_sale
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, Id, If
+from trytond.tools import cursor_dict, grouped_slice
+from trytond.transaction import Transaction
 
 
 class Configuration(metaclass=PoolMeta):

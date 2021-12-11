@@ -4,13 +4,12 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.model.exceptions import RequiredValidationError
-from trytond.pyson import Eval
-from trytond.pool import Pool, PoolMeta
-from trytond.tools.multivalue import migrate_property
-
 from trytond.modules.product import round_price
 from trytond.modules.purchase.purchase import (
     get_shipments_returns, search_shipments_returns)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.tools.multivalue import migrate_property
 
 purchase_drop_location = fields.Many2One(
     'stock.location', "Purchase Drop Location", domain=[('type', '=', 'drop')])
