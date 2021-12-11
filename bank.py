@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from stdnum import iban, bic
 import stdnum.exceptions
-from sql import operators, Literal
+from sql import Literal, operators
+from stdnum import bic, iban
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
+    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
 
 from .exceptions import IBANValidationError, InvalidBIC
 
