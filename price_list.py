@@ -6,11 +6,12 @@ from functools import total_ordering
 from simpleeval import simple_eval
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    DeactivableMixin, sequence_ordered
+from trytond.model import (
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
+from trytond.pool import Pool
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 from .exceptions import FormulaError
 
