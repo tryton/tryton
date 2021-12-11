@@ -2,11 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account
 
+from . import account
 from .account import (
-    BudgetMixin, BudgetLineMixin,
-    CopyBudgetMixin, CopyBudgetStartMixin)
+    BudgetLineMixin, BudgetMixin, CopyBudgetMixin, CopyBudgetStartMixin)
 
 __all__ = [
     'BudgetMixin', 'BudgetLineMixin',

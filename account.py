@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
-from decimal import Decimal, ROUND_DOWN
+from decimal import ROUND_DOWN, Decimal
 from itertools import groupby
 
 from sql.aggregate import Sum
@@ -9,7 +9,8 @@ from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, fields, Unique, sequence_ordered, tree)
+    ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.rpc import RPC
@@ -17,8 +18,6 @@ from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
-
-from trytond.modules.currency.fields import Monetary
 
 from .exceptions import BudgetValidationError
 
