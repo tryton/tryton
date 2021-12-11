@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Cast, Literal
-from sql.functions import Substring, Position
+from sql.functions import Position, Substring
 
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool, Id, If
+from trytond.pyson import Bool, Eval, Id, If
 from trytond.transaction import Transaction
 
 from .exceptions import PackageError
