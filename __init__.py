@@ -3,10 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import payment
-from . import party
-from . import routes
-from . import ir
+from . import ir, party, payment, routes
 
 __all__ = ['register', 'routes']
 

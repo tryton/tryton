@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import uuid
 import logging
 import urllib.parse
+import uuid
 from decimal import Decimal
 from email.header import Header
 from itertools import groupby
@@ -14,8 +14,11 @@ from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, dualmethod)
-from trytond.pool import PoolMeta, Pool
+    DeactivableMixin, ModelSQL, ModelView, Workflow, dualmethod, fields)
+from trytond.modules.account_payment.exceptions import (
+    PaymentValidationError, ProcessError)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
@@ -24,11 +27,7 @@ from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wizard import (
-    Wizard, StateAction, StateView, StateTransition, Button)
-
-from trytond.modules.account_payment.exceptions import (
-    ProcessError, PaymentValidationError)
-from trytond.modules.currency.fields import Monetary
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import StripeCustomerMethodMixin
 

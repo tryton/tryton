@@ -1,15 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import http.client
 import json
 import logging
-import http.client
 
 import stripe
 from werkzeug.exceptions import abort
 from werkzeug.wrappers import Response
 
-from trytond.wsgi import app
 from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
 
