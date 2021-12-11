@@ -4,8 +4,8 @@ from sql import Table
 
 from trytond.config import config
 from trytond.model import ModelSQL, ValueMixin, fields
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
-from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
 

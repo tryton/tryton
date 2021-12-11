@@ -7,15 +7,15 @@ from functools import wraps
 from sql import Column
 
 from trytond.i18n import gettext
-from trytond.model import Model, ModelView, ModelSQL, fields
+from trytond.model import Model, ModelSQL, ModelView, fields
 from trytond.model.exceptions import (
     AccessError, RequiredValidationError, ValidationError)
-from trytond.pyson import Eval, Bool, Len
+from trytond.modules.stock import StockMixin
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Len
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
-from trytond.modules.stock import StockMixin
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
 def check_no_move(func):
