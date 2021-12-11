@@ -4,9 +4,10 @@ import sys
 import unittest
 
 from trytond import backend
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as tryton_suite
 from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as tryton_suite
+from trytond.tests.test_tryton import with_transaction
 from trytond.transaction import Transaction
 
 

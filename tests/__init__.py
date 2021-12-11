@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.party_relationship.tests.test_party_relationship import suite  # noqa: E501
+    from trytond.modules.party_relationship.tests.test_party_relationship import \
+        suite  # noqa: E501
 except ImportError:
     from .test_party_relationship import suite
 

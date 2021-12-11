@@ -3,12 +3,12 @@
 import json
 from functools import partial
 
-from sql import Union, As, Column, Null, Literal, With
+from sql import As, Column, Literal, Null, Union, With
 from sql.aggregate import Min
 
 from trytond.config import config
-from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 dumps = partial(json.dumps, separators=(',', ':'), sort_keys=True)
