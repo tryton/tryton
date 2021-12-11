@@ -1,18 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 from collections import defaultdict
+from decimal import Decimal
 from itertools import groupby
 
 from sql import Literal
 
-from trytond.model import ModelView, ModelSQL, fields, Check
-from trytond.wizard import Wizard, StateAction
+from trytond.model import Check, ModelSQL, ModelView, fields
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
-
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import StateAction, Wizard
 
 
 class Line(ModelSQL, ModelView):

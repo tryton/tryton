@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 from collections import defaultdict
+from decimal import Decimal
 
 from sql import Column, Literal, Null
 from sql.aggregate import Sum
@@ -9,15 +9,14 @@ from sql.conditionals import Coalesce
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import (ModelView, ModelSQL, DeactivableMixin, fields,
-    Unique, tree)
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
-from trytond.transaction import Transaction
-from trytond.tools import lstrip_wildcard
-from trytond.pool import Pool
-
+from trytond.model import (
+    DeactivableMixin, ModelSQL, ModelView, Unique, fields, tree)
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
+from trytond.tools import lstrip_wildcard
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import AccountValidationError
 

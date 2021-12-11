@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account
-from . import line
-from . import rule
+
+from . import account, line, rule
 from .account import AnalyticMixin
 
 __all__ = [AnalyticMixin]
