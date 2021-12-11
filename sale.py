@@ -4,8 +4,8 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 
 
 class Sale(metaclass=PoolMeta):
