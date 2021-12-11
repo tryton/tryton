@@ -6,8 +6,8 @@ from sql.conditionals import Case, Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, fields, DeactivableMixin)
-from trytond.pool import PoolMeta, Pool
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
