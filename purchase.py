@@ -5,19 +5,18 @@ from itertools import chain
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, If, Id
-from trytond.model import Workflow, ModelView, fields, ModelSQL, \
-        sequence_ordered
-from trytond.model.exceptions import RequiredValidationError, AccessError
-from trytond.wizard import Wizard
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice, firstline
-
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+from trytond.model.exceptions import AccessError, RequiredValidationError
 from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.tools import firstline, grouped_slice
+from trytond.transaction import Transaction
+from trytond.wizard import Wizard
 
 
 class Configuration(metaclass=PoolMeta):
