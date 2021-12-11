@@ -3,10 +3,10 @@
 from sql import Null
 
 from trytond.i18n import gettext
-from trytond.model import fields, ModelSQL, ModelView, Workflow
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import ValidationError
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, If, Bool
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
