@@ -6,15 +6,14 @@ from sql import Literal
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import (fields, ModelView, ModelSQL, Workflow, MatchMixin,
-    sequence_ordered)
-from trytond.pyson import Eval, If, Bool, Id
-from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
-
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.modules.account.exceptions import ClosePeriodError
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 
 class Configuration(metaclass=PoolMeta):

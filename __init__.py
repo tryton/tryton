@@ -2,11 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import payment_term
-from . import invoice
-from . import party
-from . import account
-from . import company
+
+from . import account, company, invoice, party, payment_term
 
 
 def register():

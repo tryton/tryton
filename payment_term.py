@@ -1,23 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from dateutil.relativedelta import relativedelta
 
+from dateutil.relativedelta import relativedelta
 from sql import Column
 
+from trytond import backend
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
-from trytond import backend
+    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.wizard import Wizard, StateView, Button
-from trytond.config import config
+from trytond.wizard import Button, StateView, Wizard
 
-from trytond.modules.currency.fields import Monetary
-
-from .exceptions import PaymentTermValidationError, PaymentTermComputeError
+from .exceptions import PaymentTermComputeError, PaymentTermValidationError
 
 
 class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):

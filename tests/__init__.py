@@ -3,8 +3,8 @@
 
 try:
     from trytond.modules.account_invoice.tests.test_account_invoice import (
-        suite, set_invoice_sequences)
+        set_invoice_sequences, suite)
 except ImportError:
-    from .test_account_invoice import suite, set_invoice_sequences
+    from .test_account_invoice import set_invoice_sequences, suite
 
 __all__ = ['suite', 'set_invoice_sequences']

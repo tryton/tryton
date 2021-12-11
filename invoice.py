@@ -1,37 +1,37 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 from collections import defaultdict, namedtuple
-from itertools import combinations, chain
+from decimal import Decimal
+from itertools import chain, combinations
 
 from sql import Null
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce, Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import Round
 
-from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields, \
-    sequence_ordered, Unique, DeactivableMixin, dualmethod
-from trytond.model.exceptions import AccessError
-from trytond.report import Report
-from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
-    Button
 from trytond import backend
-from trytond.pyson import If, Eval, Bool
-from trytond.tools import reduce_ids, grouped_slice, firstline
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.rpc import RPC
 from trytond.config import config
-
+from trytond.i18n import gettext
+from trytond.model import (
+    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
+from trytond.report import Report
+from trytond.rpc import RPC
+from trytond.tools import firstline, grouped_slice, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    InvoiceTaxValidationError, InvoiceNumberError, InvoiceValidationError,
-    InvoiceLineValidationError, PayInvoiceError, InvoicePaymentTermDateWarning,
-    InvoiceFutureWarning)
+    InvoiceFutureWarning, InvoiceLineValidationError, InvoiceNumberError,
+    InvoicePaymentTermDateWarning, InvoiceTaxValidationError,
+    InvoiceValidationError, PayInvoiceError)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
