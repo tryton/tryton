@@ -5,8 +5,7 @@ from trytond.pool import Pool
 
 __all__ = ['register']
 
-from . import ir
-from . import stock
+from . import ir, stock
 
 
 def register():
