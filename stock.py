@@ -6,7 +6,7 @@ from sql.aggregate import Sum
 from sql.operators import Concat
 
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 

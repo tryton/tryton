@@ -4,13 +4,12 @@
 import unittest
 from decimal import Decimal
 
-from trytond.pool import Pool
-from trytond.tests.test_tryton import (ModuleTestCase, activate_module,
-    with_transaction)
-from trytond.tests.test_tryton import suite as test_suite
-
 from trytond.modules.company.tests import (
-    create_company, set_company, CompanyTestMixin)
+    CompanyTestMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase, activate_module
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 
 class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
