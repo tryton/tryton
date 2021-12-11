@@ -5,10 +5,10 @@ from email.utils import formataddr, getaddresses
 
 from trytond.config import config
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
 from trytond.report import get_email
-from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
