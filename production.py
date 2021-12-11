@@ -6,7 +6,7 @@ from functools import wraps
 from trytond.i18n import gettext
 from trytond.model import Model, ModelView, Workflow
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 

@@ -3,7 +3,7 @@
 import datetime as dt
 
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 
 
 class Sale(metaclass=PoolMeta):
