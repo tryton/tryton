@@ -6,7 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Bool, Eval, If
 
 
 def no_payment(error):

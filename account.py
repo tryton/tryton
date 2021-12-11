@@ -5,9 +5,8 @@ from decimal import Decimal
 
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import Pool, PoolMeta
-
 from trytond.modules.account_payment.exceptions import PaymentValidationError
+from trytond.pool import Pool, PoolMeta
 
 
 def sale_payment_confirm(func):
