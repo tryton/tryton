@@ -1,13 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import fields, ModelSQL
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
+from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
-
 from trytond.modules.party.exceptions import EraseError
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 class Party(CompanyMultiValueMixin, metaclass=PoolMeta):

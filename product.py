@@ -7,15 +7,14 @@ from sql.aggregate import Count
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, MatchMixin, DeactivableMixin, sequence_ordered,
-    fields)
-from trytond.pyson import Eval, If, Bool
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-from trytond.tools import lstrip_wildcard
-
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
+from trytond.tools import lstrip_wildcard
+from trytond.transaction import Transaction
 
 from .exceptions import PurchaseUOMWarning
 

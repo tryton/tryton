@@ -2,36 +2,35 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from collections import defaultdict
-from itertools import chain
 from decimal import Decimal
+from itertools import chain
 
 from sql import Literal, Null
 from sql.aggregate import Count
 from sql.operators import Concat
 
-from trytond.i18n import gettext
-from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
-    sequence_ordered, Unique
-from trytond.model.exceptions import AccessError
-from trytond.modules.company import CompanyReport
-from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
-    Button
 from trytond import backend
-from trytond.pyson import Eval, Bool, If, PYSONEncoder
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.tools import firstline
-
+from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
+from trytond.model import (
+    Model, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
+from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.tools import firstline
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import PurchaseQuotationError, PartyLocationError
+from .exceptions import PartyLocationError, PurchaseQuotationError
 
 
 def get_shipments_returns(model_name):

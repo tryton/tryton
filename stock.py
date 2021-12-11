@@ -7,10 +7,10 @@ from sql.aggregate import Max
 from sql.operators import Concat
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
