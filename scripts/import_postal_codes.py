@@ -2,21 +2,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from __future__ import print_function
+
 import csv
 import os
 import sys
+
 try:
-    from urllib.request import urlopen
     from urllib.error import HTTPError
+    from urllib.request import urlopen
 except ImportError:
     from urllib2 import urlopen, HTTPError
-import zipfile
 
+import zipfile
 from argparse import ArgumentParser
 from io import BytesIO, TextIOWrapper
 
 try:
-    from progressbar import ProgressBar, Bar, ETA, SimpleProgress
+    from progressbar import ETA, Bar, ProgressBar, SimpleProgress
 except ImportError:
     ProgressBar = None
 
