@@ -1,19 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict
 import datetime
+from collections import defaultdict
 
-from sql import Null, Literal
+from sql import Literal, Null
 
-from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
-    sequence_ordered
+from trytond.model import (
+    Model, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
-    Button
-from trytond.pool import Pool
-
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 
 class Procedure(ModelSQL, ModelView):

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.model import ModelSQL, ValueMixin, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.tools.multivalue import migrate_property
 
 dunning_procedure = fields.Many2One(
