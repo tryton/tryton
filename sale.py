@@ -3,11 +3,10 @@
 from decimal import Decimal
 
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
-
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 class Line(metaclass=PoolMeta):
