@@ -4,15 +4,15 @@ from functools import wraps
 
 from sql import Null
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval, Or, Bool
-from trytond import backend
-from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
-from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Or
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 from .exceptions import AccountError, TaxError
 

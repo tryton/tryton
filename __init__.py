@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import product
-from . import configuration
-from . import account
-from . import analytic_account
+
+from . import account, analytic_account, configuration, product
 
 
 def register():
