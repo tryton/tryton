@@ -1,11 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields, Unique
+
 from trytond.cache import Cache
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
 from trytond.config import config
+from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['price_digits']
 

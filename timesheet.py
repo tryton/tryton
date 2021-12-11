@@ -2,9 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from .company import price_digits
 
