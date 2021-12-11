@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
-from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelView, Workflow, fields
-from trytond.pyson import Eval, If, Bool
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice
 
+from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 
 class Invoice(metaclass=PoolMeta):

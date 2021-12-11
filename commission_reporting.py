@@ -3,22 +3,22 @@
 from itertools import tee, zip_longest
 
 from dateutil.relativedelta import relativedelta
+
 try:
     import pygal
 except ImportError:
     pygal = None
 from sql import Literal, Null
-from sql.aggregate import Min, Sum, Count
+from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, DateTrunc
 
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.currency.fields import Monetary
+from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits
 
 
 def pairwise(iterable):

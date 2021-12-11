@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 

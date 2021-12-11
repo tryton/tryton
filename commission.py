@@ -5,6 +5,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from simpleeval import simple_eval
+
 try:
     from sql import Null
 except ImportError:
@@ -12,16 +13,15 @@ except ImportError:
 from sql.aggregate import Sum
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
-from trytond.pyson import Eval, Bool, If, Id
-from trytond.tools import decistmt, grouped_slice, reduce_ids
-from trytond.pool import Pool
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.transaction import Transaction
-
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.tools import decistmt, grouped_slice, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import FormulaError
 

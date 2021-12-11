@@ -2,14 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account
-from . import commission
-from . import commission_reporting
-from . import invoice
-from . import sale
-from . import product
-from . import party
-from . import ir
+
+from . import (
+    account, commission, commission_reporting, invoice, ir, party, product,
+    sale)
 
 
 def register():
