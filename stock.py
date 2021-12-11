@@ -8,12 +8,11 @@ from PyPDF2 import PdfFileReader, PdfFileWriter
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateAction, StateTransition
-
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+from trytond.wizard import StateAction, StateTransition, Wizard
 
 from .api import get_client, get_request
 from .exceptions import MyGLSError
