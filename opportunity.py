@@ -4,22 +4,21 @@
 import datetime
 
 from sql import Literal, Null
-from sql.aggregate import Max, Count, Sum
+from sql.aggregate import Count, Max, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Extract
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, Workflow, fields, \
-    sequence_ordered
-from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, In, If, Get, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, Get, If, In
+from trytond.transaction import Transaction
 
 
 class SaleOpportunity(
