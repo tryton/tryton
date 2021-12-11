@@ -2,11 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import product
-from . import sale
-from . import purchase
-from . import stock
-from . import account
+from . import account, product, purchase, sale, stock
 
 __all__ = ['register']
 

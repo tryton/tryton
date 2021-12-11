@@ -3,10 +3,9 @@
 from decimal import Decimal
 
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
-
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 class Move(metaclass=PoolMeta):

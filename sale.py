@@ -1,16 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, ModelView, fields
-
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
 
+from .common import (
+    AmendmentLineMixin, get_shipments_returns, handle_shipment_exception_mixin,
+    order_line_component_mixin, order_line_mixin, order_mixin,
+    search_shipments_returns)
 from .product import ComponentMixin
-from .common import order_mixin, order_line_mixin, order_line_component_mixin
-from .common import get_shipments_returns, search_shipments_returns
-from .common import handle_shipment_exception_mixin
-from .common import AmendmentLineMixin
 
 
 class Sale(order_mixin('sale'), metaclass=PoolMeta):

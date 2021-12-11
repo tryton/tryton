@@ -3,11 +3,10 @@
 from decimal import Decimal
 
 from trytond.model import (
-    ModelView, ModelSQL, ModelStorage, sequence_ordered, fields)
-from trytond.pyson import Eval, If, Bool
-from trytond.pool import PoolMeta, Pool
-
+    ModelSQL, ModelStorage, ModelView, fields, sequence_ordered)
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 
 
 class Template(metaclass=PoolMeta):
