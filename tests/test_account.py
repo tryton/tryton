@@ -1,22 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
-import doctest
 import datetime
+import doctest
+import unittest
 from decimal import Decimal
-from dateutil.relativedelta import relativedelta
-from trytond.pool import Pool
-import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
-from trytond.transaction import Transaction
-from trytond.exceptions import UserError
 
+from dateutil.relativedelta import relativedelta
+
+import trytond.tests.test_tryton
+from trytond.exceptions import UserError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin, CompanyTestMixin)
+    CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
 from trytond.modules.currency.tests import create_currency
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.transaction import Transaction
 
 
 def create_chart(company, tax=False, chart='account.account_template_root_en'):

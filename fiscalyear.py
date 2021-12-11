@@ -4,17 +4,18 @@
 from dateutil.relativedelta import relativedelta
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.wizard import (
-    Wizard, StateView, StateTransition, StateAction, Button)
+    Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import (FiscalYearNotFoundError, FiscalYearDatesError,
-    FiscalYearSequenceError, FiscalYearCloseError, FiscalYearReOpenError)
+from .exceptions import (
+    FiscalYearCloseError, FiscalYearDatesError, FiscalYearNotFoundError,
+    FiscalYearReOpenError, FiscalYearSequenceError)
 
 STATES = {
     'readonly': Eval('state') != 'open',

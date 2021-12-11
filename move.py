@@ -1,35 +1,35 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-from itertools import groupby, combinations, chain, islice
-from operator import itemgetter
 from collections import defaultdict
+from decimal import Decimal
+from itertools import chain, combinations, groupby, islice
+from operator import itemgetter
 
 from dateutil.relativedelta import relativedelta
-from sql import Null, Literal
-from sql.aggregate import Sum, Max
+from sql import Literal, Null
+from sql.aggregate import Max, Sum
+from sql.conditionals import Case, Coalesce
 from sql.functions import CharLength
-from sql.conditionals import Coalesce, Case
 
-from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields, Check, DeactivableMixin
-from trytond.model.exceptions import AccessError
-from trytond.wizard import (
-    Wizard, StateTransition, StateView, StateAction, Button)
-from trytond.report import Report
 from trytond import backend
-from trytond.pyson import Eval, Bool, If, PYSONEncoder
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.rpc import RPC
-from trytond.tools import reduce_ids, grouped_slice
 from trytond.config import config
-
+from trytond.i18n import gettext
+from trytond.model import Check, DeactivableMixin, ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.report import Report
+from trytond.rpc import RPC
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import (PostError, MoveDatesError, CancelWarning,
-    ReconciliationError, DeleteDelegatedWarning, GroupLineError,
-    SplitLineError, CancelDelegatedWarning)
+from .exceptions import (
+    CancelDelegatedWarning, CancelWarning, DeleteDelegatedWarning,
+    GroupLineError, MoveDatesError, PostError, ReconciliationError,
+    SplitLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',

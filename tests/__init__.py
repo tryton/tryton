@@ -3,8 +3,8 @@
 
 try:
     from trytond.modules.account.tests.test_account import (
-        suite, create_chart, get_fiscalyear)
+        create_chart, get_fiscalyear, suite)
 except ImportError:
-    from .test_account import suite, create_chart, get_fiscalyear
+    from .test_account import create_chart, get_fiscalyear, suite
 
 __all__ = ['suite', 'create_chart', 'get_fiscalyear']

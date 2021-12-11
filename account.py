@@ -1,33 +1,32 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 import datetime
 import operator
 from collections import defaultdict
-from itertools import zip_longest
+from decimal import Decimal
 from functools import wraps
+from itertools import zip_longest
 
 from dateutil.relativedelta import relativedelta
-from sql import Column, Null, Window, Literal
-from sql.aggregate import Sum, Max, Min
-from sql.conditionals import Coalesce, Case
+from sql import Column, Literal, Null, Window
+from sql.aggregate import Max, Min, Sum
+from sql.conditionals import Case, Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, fields, Unique, sequence_ordered, tree)
+    ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
-    Button
-from trytond.report import Report
-from trytond.tools import reduce_ids, grouped_slice, lstrip_wildcard
-from trytond.pyson import Eval, If, PYSONEncoder, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.report import Report
+from trytond.tools import grouped_slice, lstrip_wildcard, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
-from .common import PeriodMixin, ActivePeriodMixin
-from .exceptions import SecondCurrencyError, ChartWarning
+from .common import ActivePeriodMixin, PeriodMixin
+from .exceptions import ChartWarning, SecondCurrencyError
 
 
 def inactive_records(func):

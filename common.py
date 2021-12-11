@@ -6,8 +6,8 @@ from sql import Literal
 from sql.conditionals import Coalesce
 
 from trytond.model import Model, fields
-from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
 

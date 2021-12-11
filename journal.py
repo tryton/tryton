@@ -7,16 +7,16 @@ from sql.aggregate import Sum
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
+    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, Bool, Id
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.tools import reduce_ids, grouped_slice, lstrip_wildcard
-from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, Id
+from trytond.tools import grouped_slice, lstrip_wildcard, reduce_ids
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Eval('state') == 'close',

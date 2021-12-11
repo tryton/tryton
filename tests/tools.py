@@ -3,7 +3,6 @@
 import datetime
 
 from dateutil.relativedelta import relativedelta
-
 from proteus import Model, Wizard
 
 from trytond.modules.company.tests.tools import get_company

@@ -1,16 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.const import OPERATORS
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
+from trytond.pool import Pool
 from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.const import OPERATORS
 
-from .exceptions import (PeriodNotFoundError, ClosePeriodError,
-    PeriodDatesError, PeriodSequenceError)
+from .exceptions import (
+    ClosePeriodError, PeriodDatesError, PeriodNotFoundError,
+    PeriodSequenceError)
 
 _STATES = {
     'readonly': Eval('state') != 'open',

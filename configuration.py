@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import Pool
-from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
-from trytond.transaction import Transaction
-from trytond.pyson import Eval, Id
+from trytond.model import ModelSingleton, ModelSQL, ModelView, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.pool import Pool
+from trytond.pyson import Eval, Id
+from trytond.transaction import Transaction
 
 tax_roundings = [
     ('document', 'Per Document'),

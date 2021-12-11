@@ -9,21 +9,20 @@ from sql import Literal
 from sql.aggregate import Sum
 from sql.conditionals import Case
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond import backend
-from trytond.pyson import Eval, If, Bool, PYSONEncoder
-from trytond.transaction import Transaction
-from trytond.tools import cursor_dict, lstrip_wildcard
-from trytond.pool import Pool
-
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.tools import cursor_dict, lstrip_wildcard
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
-from .common import PeriodMixin, ActivePeriodMixin
+from .common import ActivePeriodMixin, PeriodMixin
 
 KINDS = [
     ('sale', 'Sale'),

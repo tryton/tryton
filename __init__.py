@@ -2,17 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account
-from . import configuration
-from . import company
-from . import fiscalyear
-from . import journal
-from . import move
-from . import move_template
-from . import party
-from . import period
-from . import tax
 
+from . import (
+    account, company, configuration, fiscalyear, journal, move, move_template,
+    party, period, tax)
 from .move import MoveLineMixin
 
 __all__ = ['register', 'MoveLineMixin']
