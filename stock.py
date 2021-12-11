@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import fields, Check
+
+from trytond.model import Check, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 

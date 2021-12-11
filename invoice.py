@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 import operator
+from decimal import Decimal
 
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
