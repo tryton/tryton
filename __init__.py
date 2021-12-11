@@ -3,12 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import ir
-from . import marketing_automation
-from . import web
-from . import party
-from . import sale
-from . import routes
+from . import ir, marketing_automation, party, routes, sale, web
 
 __all__ = ['register', 'routes']
 

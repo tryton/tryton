@@ -9,34 +9,34 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
 from urllib.parse import (
-    urlsplit, parse_qsl, urlencode, urlunsplit, quote, urljoin)
+    parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
 
 try:
     import html2text
 except ImportError:
     html2text = None
 
+from genshi.core import END, START, Attrs, QName
+from genshi.template import MarkupTemplate, TextTemplate
 from sql import Literal
 from sql.aggregate import Count
-from sql.functions import Substring, Position
-from genshi.template import MarkupTemplate, TextTemplate
-from genshi.core import START, END, QName, Attrs
+from sql.functions import Position, Substring
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import (fields, ModelSQL, ModelView, Workflow, Unique,
-    EvalEnvironment, dualmethod)
+from trytond.model import (
+    EvalEnvironment, ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)
 from trytond.pool import Pool
-from trytond.pyson import PYSONDecoder, Eval, If
+from trytond.pyson import Eval, If, PYSONDecoder
 from trytond.report import Report
-from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
 
-from .exceptions import DomainError, ConditionError, TemplateError
+from .exceptions import ConditionError, DomainError, TemplateError
 from .mixin import MarketingAutomationMixin
 
 if not config.get(

@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from werkzeug.wrappers import Response
 from werkzeug.utils import redirect
+from werkzeug.wrappers import Response
 
-from trytond.transaction import Transaction
-from trytond.tools import file_open
 from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.tools import file_open
+from trytond.transaction import Transaction
 from trytond.wsgi import app
 
 
