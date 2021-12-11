@@ -6,15 +6,14 @@ import logging
 
 import requests
 
-from trytond.i18n import gettext
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, If
-from trytond.transaction import Transaction
-
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 from .exceptions import InvoiceChorusValidationError
 

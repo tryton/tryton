@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account
-from . import party
-from . import edocument
-from . import ir
+
+from . import account, edocument, ir, party
 
 __all__ = ['register']
 
