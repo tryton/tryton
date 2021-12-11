@@ -7,13 +7,12 @@ from decimal import Decimal
 
 from simpleeval import simple_eval
 
-from trytond.model import ModelSQL, ModelView, sequence_ordered, fields
+from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import If, Eval
+from trytond.pyson import Eval, If
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
 
 
 class Statement(metaclass=PoolMeta):
