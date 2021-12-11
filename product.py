@@ -3,11 +3,10 @@
 
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import PoolMeta
-from trytond.pyson import Eval, Bool
-
 from trytond.modules.product import uom_conversion_digits
 from trytond.modules.product.exceptions import UOMValidationError
+from trytond.pool import PoolMeta
+from trytond.pyson import Bool, Eval
 
 
 class SaleSecondaryMixin:
