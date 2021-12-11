@@ -6,11 +6,10 @@ from decimal import Decimal
 from sql import Null
 
 from trytond.model import (
-    ModelSQL, ModelView, DeactivableMixin, MatchMixin, fields)
-from trytond.pyson import Eval, If, Bool
-from trytond.pool import Pool
-
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields)
 from trytond.modules.product import price_digits
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
 
 # Use 2 chars numbering to allow string comparison
 MONTHS = [

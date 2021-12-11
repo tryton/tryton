@@ -3,12 +3,13 @@
 
 
 import unittest
-from decimal import Decimal
 from datetime import date
+from decimal import Decimal
 
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 
 class CustomsTestCase(ModuleTestCase):

@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import PoolMeta, Pool
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
-from trytond.pyson import Eval, Or, Bool
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Or
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
-from trytond import backend
 
 
 class Category(metaclass=PoolMeta):
