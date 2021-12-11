@@ -8,22 +8,22 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import getaddresses
 
+from genshi.template import TextTemplate
 from sql import Null
 from sql.operators import Concat
-from genshi.template import TextTemplate
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.ir.resource import ResourceAccessMixin
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import get_email
-from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
-from .exceptions import TemplateError
 
-from trytond.ir.resource import ResourceAccessMixin
+from .exceptions import TemplateError
 
 
 class Email(ModelSQL, ModelView):

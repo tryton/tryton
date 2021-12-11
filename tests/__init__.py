@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.notification_email.tests.test_notification_email \
-        import suite
+    from trytond.modules.notification_email.tests.test_notification_email import (
+        suite)
 except ImportError:
     from .test_notification_email import suite
 

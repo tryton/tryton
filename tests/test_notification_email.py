@@ -3,17 +3,17 @@
 import datetime as dt
 import sys
 import unittest
-from unittest.mock import patch, ANY
+from unittest.mock import ANY, patch
 
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.pool import Pool
 from trytond.config import config
-from trytond.transaction import Transaction
-
 from trytond.modules.company.tests import CompanyTestMixin
-from trytond.modules.notification_email import notification \
-    as notification_module
+from trytond.modules.notification_email import \
+    notification as notification_module
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
+from trytond.transaction import Transaction
 
 FROM = 'tryton@example.com'
 
