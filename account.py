@@ -1,16 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Literal, Null, Select, Window
-from sql.aggregate import Min, Sum, BoolAnd
+from sql.aggregate import BoolAnd, Min, Sum
 from sql.functions import CurrentTimestamp, FirstValue
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-
 from trytond.modules.account import MoveLineMixin
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Move(metaclass=PoolMeta):
