@@ -3,9 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import party
-from . import product
-from . import purchase
+from . import party, product, purchase
 
 __all__ = ['register']
 
