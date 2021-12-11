@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, MatchMixin, fields,
-    sequence_ordered)
-from trytond.transaction import Transaction
-from trytond.pool import Pool
 from trytond.cache import Cache
+from trytond.model import (
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
+from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Carrier(DeactivableMixin, ModelSQL, ModelView):
