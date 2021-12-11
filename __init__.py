@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import company
-from . import ir
-from . import party
-from . import res
+
+from . import company, ir, party, res
 from .company import CompanyReport
 
 __all__ = ['register', 'CompanyReport']

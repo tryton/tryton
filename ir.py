@@ -6,8 +6,8 @@ except ImportError:
     pytz = None
 
 from trytond.model import (
-    ModelSQL, ModelView, fields, dualmethod, EvalEnvironment)
-from trytond.pool import PoolMeta, Pool
+    EvalEnvironment, ModelSQL, ModelView, dualmethod, fields)
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 

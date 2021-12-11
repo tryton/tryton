@@ -3,7 +3,7 @@
 from sql import Null
 
 from trytond.model import ModelSQL, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 

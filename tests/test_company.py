@@ -5,14 +5,13 @@ from collections import defaultdict
 from contextlib import contextmanager
 
 import trytond.tests.test_tryton
-from trytond.model import ModelView, ModelStorage
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
+from trytond.model import ModelStorage, ModelView
+from trytond.modules.currency.tests import add_currency_rate, create_currency
+from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import Eval, PYSONEncoder
-
-from trytond.modules.currency.tests import create_currency, add_currency_rate
-from trytond.modules.party.tests import PartyCheckEraseMixin
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.transaction import Transaction
 
 from ..model import CompanyMultiValueMixin
 

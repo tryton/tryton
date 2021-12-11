@@ -3,12 +3,12 @@
 
 try:
     from trytond.modules.company.tests.test_company import (
-        suite, create_company, set_company, create_employee,
-        PartyCompanyCheckEraseMixin, CompanyTestMixin)
+        CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company,
+        create_employee, set_company, suite)
 except ImportError:
     from .test_company import (
-        suite, create_company, set_company, create_employee,
-        PartyCompanyCheckEraseMixin, CompanyTestMixin)
+        CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company,
+        create_employee, set_company, suite)
 
 __all__ = [
     'suite', 'create_company', 'set_company', 'create_employee',
