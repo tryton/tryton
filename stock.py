@@ -3,14 +3,13 @@
 from collections import defaultdict
 from itertools import groupby
 
-from trytond.model import ModelSQL, ModelView, Model, Workflow, fields
+from trytond.model import Model, ModelSQL, ModelView, Workflow, fields
+from trytond.modules.company.model import (
+    employee_field, reset_employee, set_employee)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateAction, Button
-
-from trytond.modules.company.model import (
-    set_employee, reset_employee, employee_field)
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 
 class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
