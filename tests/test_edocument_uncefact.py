@@ -5,14 +5,14 @@ import datetime
 import os
 import unittest
 from decimal import Decimal
-from unittest.mock import Mock, MagicMock
+from unittest.mock import MagicMock, Mock
 
 from lxml import etree
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (ModuleTestCase, with_transaction,
-    activate_module)
+from trytond.tests.test_tryton import ModuleTestCase, activate_module
 from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 
 def get_invoice():

@@ -5,6 +5,8 @@ import os
 
 import genshi
 import genshi.template
+# XXX fix: https://genshi.edgewall.org/ticket/582
+from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 
 from trytond.model import Model
 from trytond.pool import Pool
@@ -12,8 +14,6 @@ from trytond.rpc import RPC
 from trytond.tools import cached_property
 from trytond.transaction import Transaction
 
-# XXX fix: https://genshi.edgewall.org/ticket/582
-from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
     def visit_NameConstant(self, node):
         if node.value is None:
