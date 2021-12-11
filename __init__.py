@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import carrier
-from . import stock
-from . import sale
+
+from . import carrier, sale, stock
 
 
 def register():
