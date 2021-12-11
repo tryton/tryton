@@ -4,12 +4,11 @@ from decimal import Decimal
 
 from trytond import backend
 from trytond.model import fields
-from trytond.pyson import Eval
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
-
 from trytond.modules.account_product.product import (
     account_used, template_property)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 account_names = [
     'account_stock', 'account_stock_in', 'account_stock_out']
