@@ -3,7 +3,7 @@
 
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.pyson import If, Bool, Eval
+from trytond.pyson import Bool, Eval, If
 
 
 class Line(metaclass=PoolMeta):

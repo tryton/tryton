@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import (
-    ModelSQL, ModelView, sequence_ordered, MatchMixin, DeactivableMixin,
-    fields)
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import If, Eval, Bool
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import lstrip_wildcard
 
 
