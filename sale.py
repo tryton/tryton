@@ -5,14 +5,13 @@ from decimal import Decimal
 
 from sql import Null
 
-from trytond.pool import PoolMeta, Pool
 from trytond.model import (
-    ModelSQL, ModelView, MatchMixin, Workflow, DeactivableMixin, fields,
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
 
 
 class Sale(metaclass=PoolMeta):
