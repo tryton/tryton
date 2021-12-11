@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account_stock_landed_cost_weight.tests.test_account_stock_landed_cost_weight import suite  # noqa: E501
+    from trytond.modules.account_stock_landed_cost_weight.tests.test_account_stock_landed_cost_weight import \
+        suite  # noqa: E501
 except ImportError:
     from .test_account_stock_landed_cost_weight import suite
 
