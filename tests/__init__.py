@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.purchase_secondary_unit.tests.test_purchase_secondary_unit import suite  # noqa: E501
+    from trytond.modules.purchase_secondary_unit.tests.test_purchase_secondary_unit import \
+        suite  # noqa: E501
 except ImportError:
     from .test_purchase_secondary_unit import suite
 
