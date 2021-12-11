@@ -3,6 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta
+
 from . import luhn
 from .exceptions import SIRETValidationError
 
