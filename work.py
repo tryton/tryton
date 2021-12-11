@@ -7,11 +7,11 @@ from sql import Literal
 from sql.aggregate import Sum
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, ModelStorage, fields, Unique
-from trytond.pyson import Bool, Eval, If
-from trytond.transaction import Transaction
+from trytond.model import ModelSQL, ModelStorage, ModelView, Unique, fields
 from trytond.pool import Pool
-from trytond.tools import reduce_ids, grouped_slice
+from trytond.pyson import Bool, Eval, If
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 
 from .exceptions import CompanyValidationError
 

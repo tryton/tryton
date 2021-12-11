@@ -8,11 +8,11 @@ from sql.aggregate import Max, Sum
 from sql.functions import Extract
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import Eval, PYSONEncoder, Date
-from trytond.transaction import Transaction
+from trytond.model import ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
+from trytond.pyson import Date, Eval, PYSONEncoder
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import DurationValidationError
 

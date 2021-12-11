@@ -5,10 +5,10 @@ import datetime
 from werkzeug.exceptions import abort
 from werkzeug.wrappers import Response
 
+from trytond.protocols.wrappers import (
+    allow_null_origin, user_application, with_pool, with_transaction)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
-from trytond.protocols.wrappers import (
-    with_pool, with_transaction, user_application, allow_null_origin)
 
 timesheet_application = user_application('timesheet')
 
