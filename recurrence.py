@@ -1,15 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
-from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
-from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
-from dateutil.rrule import rrule, rruleset
+
+from dateutil.rrule import (
+    DAILY, FR, MO, MONTHLY, SA, SU, TH, TU, WE, WEEKLY, YEARLY, rrule,
+    rruleset)
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, Button
+from trytond.wizard import Button, StateView, Wizard
 
 from .exceptions import RecurrenceRuleValidationError
 

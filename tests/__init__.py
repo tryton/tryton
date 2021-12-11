@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.sale_subscription.tests.test_sale_subscription \
-            import suite
+    from trytond.modules.sale_subscription.tests.test_sale_subscription import (
+        suite)
 except ImportError:
     from .test_sale_subscription import suite
 

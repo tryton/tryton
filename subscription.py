@@ -3,25 +3,25 @@
 import datetime
 from itertools import groupby
 
-from sql import operators, Literal, Null
-from sql.conditionals import Coalesce, Case
+from sql import Literal, Null, operators
+from sql.conditionals import Case, Coalesce
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields, \
-        sequence_ordered
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
-from trytond.pool import Pool
-from trytond.pyson import Eval, If, Bool
-from trytond.transaction import Transaction
-from trytond.tools import sortable_values
-from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
-        Button
-
 from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
+from trytond.tools import sortable_values
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
+
 from .exceptions import InvalidRecurrence, InvoiceError
 
 

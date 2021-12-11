@@ -2,13 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import configuration
-from . import recurrence
-from . import service
-from . import subscription
-from . import invoice
-from . import party
-from . import ir
+
+from . import (
+    configuration, invoice, ir, party, recurrence, service, subscription)
 
 
 def register():
