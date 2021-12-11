@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import product
-from . import stock
 
+from . import product, stock
 from .stock import LotUnitMixin
 
 __all__ = ['LotUnitMixin', 'register']
