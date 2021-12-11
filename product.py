@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 
