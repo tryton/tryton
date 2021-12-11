@@ -3,32 +3,31 @@
 import datetime
 from collections import defaultdict
 from decimal import Decimal
-from itertools import groupby, chain
 from functools import partial
+from itertools import chain, groupby
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
-    sequence_ordered, Unique
-from trytond.model.exceptions import AccessError
-from trytond.modules.company import CompanyReport
-from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
-    Button
-from trytond.pyson import If, Eval, Bool, PYSONEncoder
-from trytond.transaction import Transaction
-from trytond.tools import sortable_values, firstline
-from trytond.pool import Pool
-
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
+from trytond.model import (
+    Model, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
+from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.tools import firstline, sortable_values
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    SaleValidationError, SaleQuotationError, PartyLocationError)
+    PartyLocationError, SaleQuotationError, SaleValidationError)
 
 
 def get_shipments_returns(model_name):

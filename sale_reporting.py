@@ -8,20 +8,19 @@ try:
 except ImportError:
     pygal = None
 from dateutil.relativedelta import relativedelta
-from sql import Null, Literal, Column, With
-from sql.aggregate import Sum, Max, Min, Count
+from sql import Column, Literal, Null, With
+from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, DateTrunc, Power, Ceil, Log
+from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power
 
-from trytond.pool import Pool
+from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, UnionMixin, fields
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
-from trytond.pyson import Eval, If
-from trytond.wizard import Wizard, StateTransition, StateAction
-from trytond.i18n import lazy_gettext
-
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import StateAction, StateTransition, Wizard
 
 
 def pairwise(iterable):

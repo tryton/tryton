@@ -3,12 +3,12 @@
 import datetime
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Configuration(metaclass=PoolMeta):

@@ -4,12 +4,11 @@ from decimal import Decimal
 from functools import wraps
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
-
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 def process_sale(moves_field):
