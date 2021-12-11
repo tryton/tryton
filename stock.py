@@ -1,14 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal, ROUND_DOWN, ROUND_HALF_EVEN
+from decimal import ROUND_DOWN, ROUND_HALF_EVEN, Decimal
 from operator import itemgetter
 
 from trytond.model import ModelView, Workflow, fields
-from trytond.pyson import Eval, Bool
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
+from trytond.transaction import Transaction
 
 
 class ShipmentIn(metaclass=PoolMeta):
