@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.project_revenue.tests.test_project_revenue import suite  # noqa: E501
+    from trytond.modules.project_revenue.tests.test_project_revenue import \
+        suite  # noqa: E501
 except ImportError:
     from .test_project_revenue import suite
 

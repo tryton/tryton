@@ -1,19 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 from collections import defaultdict
+from decimal import Decimal
 
 from sql.aggregate import Sum
 from sql.operators import Concat
 
 from trytond.model import fields
-from trytond.pyson import Eval
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
-from trytond.tools import reduce_ids, grouped_slice
-
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 
 
 class Work(metaclass=PoolMeta):
