@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.stock_consignment.tests.test_stock_consignment import suite  # noqa: E501
+    from trytond.modules.stock_consignment.tests.test_stock_consignment import \
+        suite  # noqa: E501
 except ImportError:
     from .test_stock_consignment import suite
 

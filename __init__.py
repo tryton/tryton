@@ -3,8 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import stock
-from . import account
+from . import account, stock
 
 __all__ = ['register']
 
