@@ -6,17 +6,16 @@ from sql import Null
 from sql.operators import Equal
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, Workflow, Exclude, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, Id
+from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
+from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id
 from trytond.report import Report, get_email
 from trytond.sendmail import sendmail_transactional
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
-from trytond.wizard import StateView, StateTransition, Button
-
-from trytond.modules.company.model import CompanyValueMixin
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import Button, StateTransition, StateView
 
 
 class Configuration(metaclass=PoolMeta):
