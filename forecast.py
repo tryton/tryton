@@ -2,21 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
-from dateutil.relativedelta import relativedelta
 import itertools
 
+from dateutil.relativedelta import relativedelta
 from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow, ModelSQL, fields, Unique
+from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import Not, Equal, Eval, Or, Bool, If
-from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.tools import reduce_ids, grouped_slice
+from trytond.pyson import Bool, Equal, Eval, If, Not, Or
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import ForecastValidationError
 
