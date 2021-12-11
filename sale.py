@@ -6,16 +6,16 @@ from decimal import Decimal
 from simpleeval import simple_eval
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import (
-    ModelSQL, ModelView, MatchMixin, Workflow, DeactivableMixin, fields)
-from trytond.pyson import Eval, If, Bool
-from trytond.transaction import Transaction
-from trytond.tools import decistmt
-
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.product_price_list import Null
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
+from trytond.tools import decistmt
+from trytond.transaction import Transaction
+
 from .exceptions import FormulaError
 
 
