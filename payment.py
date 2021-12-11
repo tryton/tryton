@@ -5,8 +5,8 @@ import os
 import genshi
 import genshi.template
 
-from trytond.pool import PoolMeta
 from trytond.modules.account_payment_sepa import payment as sepa_payment
+from trytond.pool import PoolMeta
 
 
 class Journal(metaclass=PoolMeta):
