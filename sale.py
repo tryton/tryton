@@ -7,9 +7,10 @@ from sql import Literal, Union
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.operators import Equal
+
 from trytond.i18n import gettext
-from trytond.model import (DeactivableMixin, Exclude, ModelSQL, ModelView,
-    Workflow, fields)
+from trytond.model import (
+    DeactivableMixin, Exclude, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.fields import Monetary
