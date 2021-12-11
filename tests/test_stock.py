@@ -1,23 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
-import doctest
 import datetime
-from decimal import Decimal
-from dateutil.relativedelta import relativedelta
-from functools import partial
+import doctest
+import unittest
 from collections import defaultdict
+from decimal import Decimal
+from functools import partial
+
+from dateutil.relativedelta import relativedelta
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
-from trytond.transaction import Transaction
-from trytond.exceptions import UserWarning, UserError
-from trytond.pool import Pool
-
+from trytond.exceptions import UserError, UserWarning
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin, CompanyTestMixin)
+    CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.transaction import Transaction
 
 
 class StockTestCase(

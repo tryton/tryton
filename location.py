@@ -6,19 +6,18 @@ from decimal import Decimal
 
 from sql import Column
 
-from trytond.i18n import gettext
-from trytond.model import (
-    Model, ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin,
-    fields, sequence_ordered, tree)
 from trytond import backend
 from trytond.cache import Cache
-from trytond.pyson import Eval, If
-from trytond.transaction import Transaction
+from trytond.i18n import gettext
+from trytond.model import (
+    DeactivableMixin, MatchMixin, Model, ModelSQL, ModelView, ValueMixin,
+    fields, sequence_ordered, tree)
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice
 from trytond.tools.multivalue import migrate_property
-
-from trytond.modules.product import price_digits, round_price
+from trytond.transaction import Transaction
 
 from .exceptions import LocationValidationError
 

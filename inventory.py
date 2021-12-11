@@ -5,16 +5,16 @@ from collections import defaultdict
 from sql import Null
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
+from trytond.model import Check, Model, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, Bool, If
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import (
-    InventoryValidationError, InventoryCountWarning, InventoryFutureWarning)
+    InventoryCountWarning, InventoryFutureWarning, InventoryValidationError)
 
 
 class Inventory(Workflow, ModelSQL, ModelView):

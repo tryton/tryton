@@ -3,10 +3,10 @@
 from decimal import Decimal
 from itertools import tee, zip_longest
 
-from sql import Null, Literal, With
-from sql.aggregate import Sum, Min, Max
+from sql import Literal, Null, With
+from sql.aggregate import Max, Min, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import CurrentTimestamp, DateTrunc, Power, Ceil, Log, Round
+from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power, Round
 
 try:
     import pygal
@@ -16,12 +16,11 @@ from dateutil.relativedelta import relativedelta
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
 
 
 def pairwise(iterable):

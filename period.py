@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 
-from sql import Literal, For
+from sql import For, Literal
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool
+from trytond.pyson import Eval
 from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 from .exceptions import PeriodCloseError
 

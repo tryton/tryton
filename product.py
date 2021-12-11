@@ -2,30 +2,27 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import functools
-from decimal import Decimal
 from collections import defaultdict
 from copy import deepcopy
+from decimal import Decimal
 
 from simpleeval import simple_eval
-
 from sql import Literal, Select, Window, With
 from sql.aggregate import Max, Sum
-from sql.conditionals import Coalesce, Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import (
-    Wizard, StateTransition, StateAction, StateView, Button)
-from trytond.pyson import Eval, If, Bool, PYSONEncoder
-from trytond.tools import decistmt
-from trytond.transaction import Transaction
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
-
-from trytond.modules.product import round_price, price_digits
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.tools import decistmt, grouped_slice
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import ProductCostPriceError
 from .move import StockMixin

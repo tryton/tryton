@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import functools
 import datetime
+import functools
 from collections import defaultdict
 from functools import partial
 
@@ -9,15 +9,14 @@ from sql import Null
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields, dualmethod
+from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
-from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pyson import Eval, If, Id, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-
 from trytond.modules.company.model import employee_field, set_employee
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
 class ShipmentMixin:

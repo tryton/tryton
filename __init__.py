@@ -2,18 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import location
-from . import shipment
-from . import period
-from . import move
-from . import product
-from . import inventory
-from . import configuration
-from . import party
-from . import ir
-from . import res
-from . import stock_reporting_margin
 
+from . import (
+    configuration, inventory, ir, location, move, party, period, product, res,
+    shipment, stock_reporting_margin)
 from .move import StockMixin
 
 __all__ = ['StockMixin', 'register']

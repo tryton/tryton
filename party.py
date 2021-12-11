@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
-
 from trytond.modules.party.exceptions import EraseError
+from trytond.pool import Pool, PoolMeta
 
 
 class Address(metaclass=PoolMeta):
