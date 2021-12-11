@@ -1,10 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import math
+
 from lxml import etree
-from trytond.transaction import Transaction
+
 from trytond.cache import Cache
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 class View(metaclass=PoolMeta):

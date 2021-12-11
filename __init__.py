@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import dashboard
-from . import res
-from . import ir
+
+from . import dashboard, ir, res
 
 
 def register():
