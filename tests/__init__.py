@@ -3,8 +3,8 @@
 
 try:
     from trytond.modules.party.tests.test_party import (
-        suite, PartyCheckEraseMixin)
+        PartyCheckEraseMixin, suite)
 except ImportError:
-    from .test_party import suite, PartyCheckEraseMixin
+    from .test_party import PartyCheckEraseMixin, suite
 
 __all__ = ['suite', 'PartyCheckEraseMixin']

@@ -4,7 +4,7 @@ from sql.conditionals import Coalesce
 from sql.operators import Equal
 
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Exclude, tree)
+    DeactivableMixin, Exclude, ModelSQL, ModelView, fields, tree)
 
 
 class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):

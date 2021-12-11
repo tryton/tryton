@@ -2,12 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import category
-from . import party
-from . import address
-from . import contact_mechanism
-from . import configuration
-from . import ir
+
+from . import address, category, configuration, contact_mechanism, ir, party
 
 
 def register():

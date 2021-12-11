@@ -1,26 +1,27 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from stdnum import get_cc_module
 import stdnum.exceptions
-from sql import Null, Column, Literal
+from sql import Column, Literal, Null
 from sql.aggregate import Min
-from sql.functions import CharLength, Substring, Position
+from sql.functions import CharLength, Position, Substring
+from stdnum import get_cc_module
 
-from trytond.i18n import gettext
-from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
-    DeactivableMixin, fields, Unique, sequence_ordered)
-from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pyson import Eval, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool
 from trytond import backend
-from trytond.tools.multivalue import migrate_property
+from trytond.i18n import gettext
+from trytond.model import (
+    DeactivableMixin, ModelSQL, ModelView, MultiValueMixin, Unique, ValueMixin,
+    fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval
 from trytond.tools import lstrip_wildcard
-from .exceptions import (
-    InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .contact_mechanism import _PHONE_TYPES
+from .exceptions import (
+    EraseError, InvalidIdentifierCode, SimilarityWarning, VIESUnavailable)
 
 
 class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):

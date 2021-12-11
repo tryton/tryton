@@ -1,15 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
+
 try:
     import phonenumbers
-    from phonenumbers import PhoneNumberFormat, NumberParseException
+    from phonenumbers import NumberParseException, PhoneNumberFormat
 except ImportError:
     phonenumbers = None
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, MultiValueMixin, ValueMixin, fields,
+    DeactivableMixin, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields,
     sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval

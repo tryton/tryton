@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
-from trytond.model import MultiValueMixin, ValueMixin
+from trytond.model import (
+    ModelSingleton, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tools.multivalue import migrate_property
 from trytond.pyson import Id
+from trytond.tools.multivalue import migrate_property
 
 from .party import IDENTIFIER_TYPES
 

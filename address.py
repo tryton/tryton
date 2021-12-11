@@ -8,16 +8,17 @@ from sql.conditionals import Coalesce
 from sql.functions import Substring
 from sql.operators import Concat, Equal
 
+from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
-    sequence_ordered, Exclude)
+    DeactivableMixin, Exclude, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If
 from trytond.pool import Pool
+from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
-from trytond.cache import Cache
+
 from .exceptions import InvalidFormat
 
 
