@@ -4,12 +4,11 @@ from decimal import Decimal
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
-
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 class Configuration(metaclass=PoolMeta):

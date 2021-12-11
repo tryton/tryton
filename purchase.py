@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
+from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 
 
 class Purchase(metaclass=PoolMeta):
