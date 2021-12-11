@@ -4,12 +4,12 @@ import json
 
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import Model, ModelStorage, ModelView, fields, dualmethod
+from trytond.model import Model, ModelStorage, ModelView, dualmethod, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateTransition, StateView, Button
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
 class ShipmentUnassignMixin:
