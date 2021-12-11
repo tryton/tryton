@@ -2,15 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 import io
 import math
-from urllib.parse import urljoin, quote, urlencode
+from urllib.parse import quote, urlencode, urljoin
 
 import PIL.Image
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, MatchMixin, sequence_ordered
-from trytond.model import fields, Unique
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, If
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.url import http_host

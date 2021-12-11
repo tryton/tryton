@@ -7,8 +7,9 @@ import urllib.request
 import PIL.Image
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 
 class ProductImageTestCase(ModuleTestCase):

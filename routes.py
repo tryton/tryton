@@ -4,15 +4,15 @@ try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
+
 from urllib.parse import unquote
 
 from werkzeug.exceptions import abort
 from werkzeug.wrappers import Response
 
 from trytond.config import config
-from trytond.wsgi import app
 from trytond.protocols.wrappers import with_pool, with_transaction
-
+from trytond.wsgi import app
 
 TIMEOUT = config.getint('product', 'image_timeout', default=365 * 24 * 60 * 60)
 
