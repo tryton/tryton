@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.purchase_amendment.tests.test_purchase_amendment import suite  # noqa: E501
+    from trytond.modules.purchase_amendment.tests.test_purchase_amendment import \
+        suite  # noqa: E501
 except ImportError:
     from .test_purchase_amendment import suite
 
