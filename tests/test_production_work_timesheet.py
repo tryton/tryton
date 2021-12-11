@@ -3,11 +3,12 @@
 import datetime
 import unittest
 
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.pool import Pool
 from trytond.modules.company.tests import (
-    create_company, set_company, create_employee, CompanyTestMixin)
+    CompanyTestMixin, create_company, create_employee, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 
 class ProductionWorkTimesheetTestCase(CompanyTestMixin, ModuleTestCase):
