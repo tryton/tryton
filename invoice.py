@@ -3,10 +3,10 @@
 from decimal import Decimal
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, fields
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import DepositError
 

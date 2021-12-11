@@ -2,18 +2,17 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Null, Literal, For
+from sql import For, Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice, reduce_ids
-
-from trytond.modules.party.exceptions import EraseError
 from trytond.modules.currency.fields import Monetary
+from trytond.modules.party.exceptions import EraseError
+from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 
 
 class Party(metaclass=PoolMeta):

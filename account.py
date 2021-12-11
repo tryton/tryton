@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.pyson import If, Eval, Bool
+from trytond.pyson import Bool, Eval, If
 
 
 def AccountTypeMixin(template=False):
