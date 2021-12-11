@@ -5,25 +5,24 @@ import urllib
 import uuid
 
 import braintree
-from braintree.exceptions import TooManyRequestsError, GatewayTimeoutError
+from braintree.exceptions import GatewayTimeoutError, TooManyRequestsError
 from braintree.exceptions.braintree_error import BraintreeError
 
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, DeactivableMixin, Workflow, fields)
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+from trytond.modules.account_payment.exceptions import (
+    PaymentValidationError, ProcessError)
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
 from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wizard import (
-    Wizard, StateAction, StateView, StateTransition, Button)
-
-from trytond.modules.account_payment.exceptions import (
-    ProcessError, PaymentValidationError)
-from trytond.modules.currency.fields import Monetary
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import BraintreeCustomerMethodMixin
 
