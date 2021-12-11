@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-import shopify
 import pyactiveresource
+import shopify
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, If, Bool
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, slugify
 
 from .common import IdentifiersMixin, IdentifiersUpdateMixin

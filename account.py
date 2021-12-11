@@ -4,7 +4,7 @@ from collections import defaultdict
 from decimal import Decimal
 
 from trytond.model import Unique
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 
 from .common import IdentifierMixin
 

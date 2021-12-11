@@ -3,8 +3,8 @@
 import shopify
 
 from trytond.i18n import lazy_gettext
-from trytond.model import ModelSQL, ModelView, fields, Unique
-from trytond.pool import PoolMeta, Pool
+from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.pool import Pool, PoolMeta
 
 from .common import IdentifierMixin
 

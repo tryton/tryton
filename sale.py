@@ -8,14 +8,13 @@ import shopify
 
 from trytond.i18n import gettext
 from trytond.model import Unique, fields
-from trytond.pool import PoolMeta, Pool
-
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
+from trytond.pool import Pool, PoolMeta
 
-from .exceptions import ShopifyError
 from .common import IdentifierMixin
+from .exceptions import ShopifyError
 from .web import BACKOFF_TIME, BACKOFF_TIME_FACTOR
 
 

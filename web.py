@@ -10,9 +10,9 @@ from shopify.api_version import ApiVersion
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields, Unique
-from trytond.model import sequence_ordered, MatchMixin
-from trytond.pool import PoolMeta, Pool
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
