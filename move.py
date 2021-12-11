@@ -2,15 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import operators, Literal
+from sql import Literal, operators
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, fields, Check
+from trytond.model import Check, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
+from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-
-from trytond.modules.product import round_price
 
 
 class Move(metaclass=PoolMeta):
