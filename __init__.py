@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import res
-from . import ir
+
+from . import ir, res
 
 __all__ = ['register']
 

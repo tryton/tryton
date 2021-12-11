@@ -3,8 +3,8 @@
 import datetime
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, If, Bool
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 
 
 class Role(ModelSQL, ModelView):
