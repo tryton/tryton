@@ -3,11 +3,10 @@
 from decimal import Decimal
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval, Bool, Id
-from trytond.pool import PoolMeta
-from trytond.transaction import Transaction
-
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import PoolMeta
+from trytond.pyson import Bool, Eval, Id
+from trytond.transaction import Transaction
 
 
 class Carrier(metaclass=PoolMeta):
