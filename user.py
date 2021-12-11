@@ -25,18 +25,17 @@ from sql.operators import Equal
 
 from trytond.config import config
 from trytond.exceptions import RateLimitException
+from trytond.ir.session import token_hex
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Exclude,
-    avatar_mixin)
+    DeactivableMixin, Exclude, ModelSQL, ModelView, Unique, avatar_mixin,
+    fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
-from trytond.transaction import Transaction
-from trytond.tools.email_ import set_from_header
+from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
 from trytond.sendmail import sendmail_transactional
-
-from trytond.ir.session import token_hex
-from trytond.res.user import LoginAttempt, CRYPT_CONTEXT
+from trytond.tools.email_ import set_from_header
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 

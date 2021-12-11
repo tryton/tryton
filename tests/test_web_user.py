@@ -2,16 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
+from unittest.mock import ANY, patch
 
-from unittest.mock import patch, ANY
-
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.pool import Pool
 from trytond.config import config
-
 from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.modules.web_user import user as user_module
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
 
 VALIDATION_URL = 'http://www.example.com/validation'
 RESET_PASSWORD_URL = 'http://www.example.com/reset_password'
