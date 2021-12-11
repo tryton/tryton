@@ -4,8 +4,8 @@ from functools import wraps
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 
 class Request(metaclass=PoolMeta):
