@@ -6,8 +6,8 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
-from werkzeug.utils import redirect
 from werkzeug.exceptions import abort
+from werkzeug.utils import redirect
 
 from trytond.protocols.wrappers import with_pool, with_transaction
 from trytond.wsgi import app

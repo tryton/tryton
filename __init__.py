@@ -3,8 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import web
-from . import routes
+from . import routes, web
 
 __all__ = ['register', 'routes']
 

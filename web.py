@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import string
 import logging
-from urllib.parse import urljoin, quote
+import string
+from urllib.parse import quote, urljoin
 
 from sql.aggregate import Count
 
 from trytond.config import config
-from trytond.model import fields, ModelSQL, ModelView
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
