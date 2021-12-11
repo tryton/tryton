@@ -2,12 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import configuration
-from . import bom
-from . import product
-from . import production
-from . import stock
-from . import ir
+
+from . import bom, configuration, ir, product, production, stock
 
 
 def register():

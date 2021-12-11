@@ -9,17 +9,15 @@ from sql import Null
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, Workflow, fields, dualmethod
-from trytond.pyson import Eval, Bool, If
-from trytond.pool import Pool
-from trytond.transaction import Transaction
-
+from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock.shipment import ShipmentAssignMixin
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 from .exceptions import CostWarning
-
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']

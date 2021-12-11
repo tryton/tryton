@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.model.exceptions import RecursionError
-from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
+from trytond.pyson import Bool, Eval, Get, If
 
 
 class Template(metaclass=PoolMeta):
