@@ -4,8 +4,8 @@
 from sql import Literal
 from sql.conditionals import Coalesce
 
-from trytond.model import ModelView, ModelSQL, sequence_ordered, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 

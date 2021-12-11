@@ -6,7 +6,7 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-from .common import IncotermMixin, IncotermAvailableMixin
+from .common import IncotermAvailableMixin, IncotermMixin
 
 
 class Purchase(IncotermAvailableMixin, metaclass=PoolMeta):

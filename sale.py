@@ -3,10 +3,10 @@
 
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-from .common import IncotermMixin, IncotermAvailableMixin
+from .common import IncotermAvailableMixin, IncotermMixin
 
 
 class Sale(IncotermAvailableMixin, metaclass=PoolMeta):

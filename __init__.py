@@ -3,14 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import incoterm
-from . import company
-from . import party
-from . import carrier
-from . import sale
-from . import purchase
-from . import stock
-from . import account
+from . import account, carrier, company, incoterm, party, purchase, sale, stock
 
 __all__ = ['register']
 

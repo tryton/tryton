@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.cache import Cache
-from trytond.model import ModelSQL, ModelView, MatchMixin, fields
+from trytond.model import MatchMixin, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 
 
