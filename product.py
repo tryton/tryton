@@ -4,16 +4,16 @@ from sql import Column, Literal, Window
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, LastValue
+
 try:
     import pytz
 except ImportError:
     pytz = None
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-
-from trytond.modules.product import round_price
 
 
 def convert_from(table, tables):
