@@ -2,15 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Literal
 from sql.aggregate import Max, Min, Sum
-from sql.operators import Concat
 from sql.functions import Position
+from sql.operators import Concat
 
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
 
 
 class AccountTemplate(metaclass=PoolMeta):
