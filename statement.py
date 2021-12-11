@@ -1,28 +1,29 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict, namedtuple
 from decimal import Decimal
-from collections import namedtuple, defaultdict
 from itertools import groupby
 
 from sql import Null
-from sql.conditionals import Coalesce
 from sql.aggregate import Max, Sum
+from sql.conditionals import Coalesce
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
-    sequence_ordered, DictSchemaMixin
+from trytond.model import (
+    Check, DictSchemaMixin, ModelSQL, ModelView, Workflow, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.rpc import RPC
-from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If
+from trytond.rpc import RPC
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import (
-    StatementValidateError, StatementValidateWarning, StatementPostError)
+    StatementPostError, StatementValidateError, StatementValidateWarning)
 
 if config.getboolean('account_statement', 'filestore', default=False):
     file_id = 'origin_file_id'

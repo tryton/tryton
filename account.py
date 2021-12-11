@@ -7,11 +7,10 @@ from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import ModelView
-from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice, reduce_ids
-
 from trytond.modules.account.exceptions import PostError
+from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 
 
 class Journal(metaclass=PoolMeta):

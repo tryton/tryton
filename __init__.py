@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import journal
-from . import statement
-from . import account
-from . import party
+
+from . import account, journal, party, statement
 
 
 def register():
