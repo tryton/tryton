@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import dunning
-from . import account
+
+from . import account, dunning
 
 
 def register():

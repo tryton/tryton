@@ -2,12 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
-from trytond.pool import PoolMeta, Pool
+from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-from trytond.modules.currency.fields import Monetary
 
 
 class Fee(DeactivableMixin, ModelSQL, ModelView):
