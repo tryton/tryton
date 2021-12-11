@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.attendance.tests.test_attendance import suite  # noqa: E501
+    from trytond.modules.attendance.tests.test_attendance import \
+        suite  # noqa: E501
 except ImportError:
     from .test_attendance import suite
 

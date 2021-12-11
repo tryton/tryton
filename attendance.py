@@ -10,15 +10,15 @@ try:
 except ImportError:
     pytz = None
 
-from sql import Window, Literal, Null, Column
+from sql import Column, Literal, Null, Window
 from sql.aggregate import Min, Sum
 from sql.conditionals import Coalesce
-from sql.functions import NthValue, CurrentTimestamp, Function
+from sql.functions import CurrentTimestamp, Function, NthValue
 
 from trytond import backend
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
