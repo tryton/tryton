@@ -5,15 +5,12 @@ import doctest
 import unittest
 
 import trytond.tests.test_tryton
-from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_checker
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.transaction import Transaction
-
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin,
-    CompanyTestMixin)
+    CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.transaction import Transaction
 
 
 class ProjectTestCase(
