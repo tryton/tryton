@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 
 
 class Invoice(metaclass=PoolMeta):
