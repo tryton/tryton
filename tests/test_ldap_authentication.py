@@ -1,16 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-from unittest.mock import patch, ANY
+from unittest.mock import ANY, patch
 
 import ldap3
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.config import config
-from trytond.pool import Pool
-
 from trytond.modules.ldap_authentication.res import parse_ldap_url
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 section = 'ldap_authentication'
 

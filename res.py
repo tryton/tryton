@@ -6,12 +6,12 @@ import urllib.parse
 import ldap3
 from ldap3.core.exceptions import LDAPException
 
-from trytond.i18n import gettext
-from trytond.model.exceptions import AccessError
-from trytond.transaction import Transaction
-from trytond.pool import PoolMeta
 from trytond.config import config, parse_uri
 from trytond.exceptions import LoginException
+from trytond.i18n import gettext
+from trytond.model.exceptions import AccessError
+from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
