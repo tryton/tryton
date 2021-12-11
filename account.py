@@ -1,19 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal, ROUND_DOWN, ROUND_HALF_EVEN
+from decimal import ROUND_DOWN, ROUND_HALF_EVEN, Decimal
 from operator import itemgetter
 
-from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, MatchMixin, fields
-from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Id
-from trytond.transaction import Transaction
 from trytond import backend
-from trytond.tools.multivalue import migrate_property
+from trytond.i18n import gettext
+from trytond.model import MatchMixin, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, Id
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
-from .exceptions import NoMoveWarning, FilterUnusedWarning
+from .exceptions import FilterUnusedWarning, NoMoveWarning
 
 
 def _parents(records):
