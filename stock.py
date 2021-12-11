@@ -6,13 +6,13 @@ from sql import Column
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, Id
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id
 from trytond.report import Report
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateTransition, StateAction
+from trytond.wizard import StateAction, StateTransition, Wizard
 
 from .exceptions import PackWarning
 
