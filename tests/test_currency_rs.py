@@ -4,10 +4,9 @@ import doctest
 import os
 import unittest
 
-from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown)
 from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
 
 
 class CurrencyRsTestCase(ModuleTestCase):

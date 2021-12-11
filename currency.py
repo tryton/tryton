@@ -9,10 +9,9 @@ from zeep.exceptions import Error
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.model import fields
+from trytond.modules.currency.currency import CronFetchError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
-
-from trytond.modules.currency.currency import CronFetchError
 
 URL = (
     'https://webservices.nbs.rs/CommunicationOfficeService1_0/'
