@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 
 class InvoiceLine(metaclass=PoolMeta):

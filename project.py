@@ -2,27 +2,25 @@
 # this repository contains the full copyright notices and license terms.
 
 
-from itertools import groupby
+import datetime
 from collections import defaultdict
 from decimal import Decimal
-import datetime
+from itertools import groupby
 
 from sql import Null
 from sql.aggregate import Sum
+from sql.conditionals import NullIf
 from sql.functions import Extract
 from sql.operators import Concat
-from sql.conditionals import NullIf
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pool import PoolMeta
-from trytond.pyson import Eval, Bool, If, Id
-from trytond.pool import Pool
-from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateAction
-from trytond.tools import reduce_ids, grouped_slice
-
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
+from trytond.wizard import StateAction, Wizard
 
 from .exceptions import InvoicingError
 
