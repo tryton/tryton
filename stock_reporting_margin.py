@@ -3,8 +3,8 @@
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.pool import PoolMeta
 from trytond.model import fields
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
 
