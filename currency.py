@@ -7,10 +7,9 @@ import requests
 from lxml import etree
 
 from trytond.config import config
+from trytond.modules.currency.currency import CronFetchError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
-
-from trytond.modules.currency.currency import CronFetchError
 
 URL_10DAYS = 'https://bnr.ro/nbrfxrates10days.xml'
 URL_YEAR = 'https://bnr.ro/files/xml/years/nbrfxrates%s.xml'
