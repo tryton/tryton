@@ -5,9 +5,8 @@ from io import BytesIO, TextIOWrapper
 from coda import CODA
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
-
 from trytond.modules.account_statement.exceptions import ImportStatementError
+from trytond.pool import Pool, PoolMeta
 
 
 class StatementImportStart(metaclass=PoolMeta):
