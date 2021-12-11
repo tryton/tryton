@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import (ModelView, ModelSQL, MatchMixin, fields,
-    sequence_ordered)
-from trytond.pyson import If, Eval, Bool
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import PoolMeta
+from trytond.pyson import Bool, Eval, If
 
 
 class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
