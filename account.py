@@ -3,14 +3,14 @@
 from collections import defaultdict
 from itertools import groupby
 
-from sql import Null, Literal
+from sql import Literal, Null
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond.tools import sortable_values
+from trytond.transaction import Transaction
 
 from .exceptions import ClosePeriodWarning
 
