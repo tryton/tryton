@@ -2,21 +2,20 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
-from itertools import groupby
 from functools import partial
+from itertools import groupby
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import If, In, Eval, Bool
-from trytond.tools import sortable_values, firstline
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-
 from trytond.modules.company.model import (
-    employee_field, set_employee, reset_employee)
+    employee_field, reset_employee, set_employee)
 from trytond.modules.product import round_price
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, In
+from trytond.tools import firstline, sortable_values
+from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 STATES = {
     'readonly': Eval('state') != 'draft',

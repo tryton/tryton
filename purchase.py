@@ -3,11 +3,11 @@
 from functools import wraps
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.transaction import Transaction
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 from .exceptions import PurchaseWarehouseWarning
 
