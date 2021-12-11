@@ -3,14 +3,13 @@
 import doctest
 import unittest
 from decimal import Decimal
-import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
-from trytond.transaction import Transaction
-from trytond.pool import Pool
 
+import trytond.tests.test_tryton
 from trytond.modules.company.tests import CompanyTestMixin
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.transaction import Transaction
 
 from ..product import round_price
 

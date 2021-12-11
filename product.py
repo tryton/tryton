@@ -7,24 +7,24 @@ from importlib import import_module
 
 import stdnum
 import stdnum.exceptions
-from sql import Null, Column, Literal
+from sql import Column, Literal, Null
 from sql.operators import Equal
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, sequence_ordered,
-    Exclude, fields)
-from trytond.pyson import Eval, If, Get
-from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond import backend
-from trytond.tools import lstrip_wildcard
-from trytond.tools.multivalue import migrate_property
+    DeactivableMixin, Exclude, Model, ModelSQL, ModelView, UnionMixin, fields,
+    sequence_ordered)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.pool import Pool
+from trytond.pyson import Eval, Get, If
+from trytond.tools import lstrip_wildcard
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
+
 from .exceptions import InvalidIdentifierCode
 from .ir import price_decimal
-
 
 __all__ = ['price_digits', 'round_price', 'TemplateFunction']
 logger = logging.getLogger(__name__)

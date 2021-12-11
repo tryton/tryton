@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
-from trytond.model import (ModelView, ModelSQL, ModelSingleton,
-    MultiValueMixin, ValueMixin, fields)
+from trytond.model import (
+    ModelSingleton, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields)
 from trytond.pool import Pool
-from trytond.tools.multivalue import migrate_property
 from trytond.pyson import Id
+from trytond.tools.multivalue import migrate_property
 
 default_cost_price_method = fields.Selection(
     'get_cost_price_methods', "Default Cost Method",

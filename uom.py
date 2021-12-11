@@ -7,8 +7,8 @@ from math import ceil, floor, log10
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Check, SymbolMixin,
-    DigitsMixin)
+    Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
+    fields)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction

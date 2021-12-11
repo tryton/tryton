@@ -2,11 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import ir
-from . import uom
-from . import category
-from . import product
-from . import configuration
+
+from . import category, configuration, ir, product, uom
 from .product import price_digits, round_price
 from .uom import uom_conversion_digits
 
