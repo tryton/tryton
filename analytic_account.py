@@ -3,15 +3,14 @@
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.model import ModelSQL, ModelView, fields, Unique
+from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.modules.account_budget import (
+    BudgetLineMixin, BudgetMixin, CopyBudgetMixin, CopyBudgetStartMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
-
-from trytond.modules.account_budget import (
-    BudgetMixin, BudgetLineMixin, CopyBudgetMixin, CopyBudgetStartMixin)
 
 
 class BudgetContext(ModelView):
