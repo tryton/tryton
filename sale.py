@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import binascii
 import os
+
 try:
     from secrets import token_hex
 except ImportError:
@@ -15,10 +16,9 @@ from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import Exclude, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Bool, Eval
-
 from trytond.modules.sale.exceptions import SaleValidationError
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
 
 
 class Sale(metaclass=PoolMeta):

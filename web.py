@@ -7,10 +7,10 @@ from sql.operators import Equal
 
 from trytond.cache import Cache
 from trytond.model import (
-    ModelSQL, ModelView, DeactivableMixin, Exclude, fields)
-from trytond.transaction import Transaction
+    DeactivableMixin, Exclude, ModelSQL, ModelView, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Many2ManyInactive(fields.Many2Many):

@@ -3,11 +3,9 @@
 
 import unittest
 
-
+from trytond.modules.company.tests import CompanyTestMixin
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
-
-from trytond.modules.company.tests import CompanyTestMixin
 
 
 class WebShopTestCase(CompanyTestMixin, ModuleTestCase):

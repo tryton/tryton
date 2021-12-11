@@ -5,9 +5,7 @@ from trytond.pool import Pool
 
 __all__ = ['register']
 
-from . import web
-from . import product
-from . import sale
+from . import product, sale, web
 
 
 def register():
