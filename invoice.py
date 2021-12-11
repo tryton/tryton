@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelView, fields
-from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 
 class Invoice(metaclass=PoolMeta):
