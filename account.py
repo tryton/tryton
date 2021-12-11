@@ -4,10 +4,10 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If, Bool, Id
-from trytond.pool import PoolMeta, Pool
-from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id, If
+from trytond.tools.multivalue import migrate_property
 
 asset_bymonthday = fields.Selection([
         ('1', "First"),
