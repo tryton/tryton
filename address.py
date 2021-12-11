@@ -3,8 +3,8 @@
 import urllib.parse
 
 from trytond.model import fields
-from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 
 
 class Address(metaclass=PoolMeta):
