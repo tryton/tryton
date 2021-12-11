@@ -5,11 +5,10 @@ from sql.aggregate import Min, Sum
 from sql.functions import CurrentTimestamp
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool
-from trytond.transaction import Transaction
-
 from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
+from trytond.transaction import Transaction
 
 
 class TaxTemplate(metaclass=PoolMeta):
