@@ -4,13 +4,13 @@ import datetime
 import doctest
 import unittest
 from decimal import Decimal
+
 import trytond.tests.test_tryton
 from trytond import backend
-from trytond.transaction import Transaction
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.transaction import Transaction
 
 
 def create_currency(name):

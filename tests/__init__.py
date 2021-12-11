@@ -3,8 +3,8 @@
 
 try:
     from trytond.modules.currency.tests.test_currency import (
-        suite, create_currency, add_currency_rate)
+        add_currency_rate, create_currency, suite)
 except ImportError:
-    from .test_currency import suite, create_currency, add_currency_rate
+    from .test_currency import add_currency_rate, create_currency, suite
 
 __all__ = ['suite', 'create_currency', 'add_currency_rate']

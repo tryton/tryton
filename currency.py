@@ -2,11 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import logging
-
-from decimal import Decimal, ROUND_HALF_EVEN, localcontext
+from decimal import ROUND_HALF_EVEN, Decimal, localcontext
 
 from dateutil.relativedelta import relativedelta
-
 from sql import Window
 from sql.functions import NthValue
 
@@ -18,12 +16,12 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check, SymbolMixin,
-    DigitsMixin)
-from trytond.transaction import Transaction
+    Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
+    Unique, fields)
 from trytond.pool import Pool
-from trytond.rpc import RPC
 from trytond.pyson import Eval, If
+from trytond.rpc import RPC
+from trytond.transaction import Transaction
 
 from .exceptions import RateError
 from .ir import rate_decimal

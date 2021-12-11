@@ -10,7 +10,7 @@ import pycountry
 from forex_python.converter import CurrencyCodes
 
 try:
-    from progressbar import ProgressBar, Bar, ETA, SimpleProgress
+    from progressbar import ETA, Bar, ProgressBar, SimpleProgress
 except ImportError:
     ProgressBar = None
 

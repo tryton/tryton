@@ -6,8 +6,7 @@ from trytond.pool import Pool
 
 def register():
     # Prevent to import backend when importing scripts
-    from . import currency
-    from . import ir
+    from . import currency, ir
     Pool.register(
         currency.Currency,
         currency.CurrencyRate,
