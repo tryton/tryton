@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.modules.company.model import CompanyValueMixin
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-from trytond.modules.company.model import CompanyValueMixin
-
 
 cost_price_warehouse = fields.Boolean(
     "Cost Price per Warehouse",
