@@ -2,14 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields, Unique
+from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
+from trytond.modules.currency.fields import Monetary
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateTransition
-
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import StateTransition, Wizard
 
 
 class Configuration(metaclass=PoolMeta):
