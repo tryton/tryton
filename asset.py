@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
+from trytond.modules.analytic_account import AnalyticMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-from trytond.modules.analytic_account import AnalyticMixin
 
 
 class Asset(AnalyticMixin, metaclass=PoolMeta):
