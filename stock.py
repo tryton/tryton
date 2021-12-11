@@ -5,9 +5,9 @@ from itertools import zip_longest
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateAction, StateTransition
+from trytond.wizard import StateAction, StateTransition, Wizard
 
 
 class Package(metaclass=PoolMeta):

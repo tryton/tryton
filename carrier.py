@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import time
 from functools import wraps
+
 try:
     from http import HTTPStatus
 except ImportError:
@@ -9,11 +10,11 @@ except ImportError:
 
 import requests
 
-from trytond.i18n import gettext
 from trytond.cache import Cache
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, MatchMixin, sequence_ordered, fields)
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
