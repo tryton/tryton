@@ -6,20 +6,19 @@ from io import BytesIO
 from itertools import zip_longest
 
 from lxml import etree
-from zeep.exceptions import Fault
 from PyPDF2 import PdfFileReader, PdfFileWriter
+from zeep.exceptions import Fault
 
 from trytond.i18n import gettext
-from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateAction, StateTransition
-from trytond.transaction import Transaction
-
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+from trytond.wizard import StateAction, StateTransition, Wizard
 
-from .configuration import get_client, SHIPMENT_SERVICE
+from .configuration import SHIPMENT_SERVICE, get_client
 from .exceptions import DPDError
 
 TRACKING_URL = 'https://tracking.dpd.de/status/%(code)s/parcel/%(reference)s'

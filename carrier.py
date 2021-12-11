@@ -7,11 +7,11 @@ from zeep.exceptions import Fault
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, MatchMixin, sequence_ordered, fields)
+    MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-from .configuration import get_client, LOGIN_SERVICE
+from .configuration import LOGIN_SERVICE, get_client
 from .exceptions import DPDError
 
 
