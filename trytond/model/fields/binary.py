@@ -5,6 +5,7 @@ from sql import Column, Null
 from trytond.filestore import filestore
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
+
 from .field import Field
 
 

@@ -17,8 +17,8 @@ from sql.functions import CurrentTimestamp, Function
 from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
+from trytond.tools import grouped_slice, resolve
 from trytond.transaction import Transaction
-from trytond.tools import resolve, grouped_slice
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)

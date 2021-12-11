@@ -1,10 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import json
 import datetime
+import json
 from decimal import Decimal
-from dateutil.relativedelta import relativedelta
 from functools import reduce
+
+from dateutil.relativedelta import relativedelta
 
 
 class PYSON(object):

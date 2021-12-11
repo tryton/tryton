@@ -1,23 +1,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
-import sys
+import configparser
 import importlib
 import itertools
 import logging
-import configparser
-from glob import iglob
+import os
+import sys
 from collections import defaultdict
-from importlib.machinery import FileFinder, SourceFileLoader, SOURCE_SUFFIXES
+from glob import iglob
+from importlib.machinery import SOURCE_SUFFIXES, FileFinder, SourceFileLoader
 
 from sql import Table
 from sql.functions import CurrentTimestamp
 
+import trytond.convert as convert
 import trytond.tools as tools
 from trytond.config import config
 from trytond.exceptions import MissingDependenciesException
 from trytond.transaction import Transaction
-import trytond.convert as convert
 
 logger = logging.getLogger(__name__)
 

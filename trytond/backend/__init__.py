@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import importlib
 import urllib.parse
+
 try:
     import pkg_resources
 except ImportError:

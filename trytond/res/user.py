@@ -3,34 +3,34 @@
 "User"
 
 import copy
-import string
-import random
-import hashlib
-import time
 import datetime
+import hashlib
 import logging
-import uuid
 import mmap
+import random
 import re
+import string
+import time
+import uuid
+
 try:
     import secrets
 except ImportError:
     secrets = None
 import ipaddress
 import warnings
+from ast import literal_eval
 from email.header import Header
 from functools import wraps
 from itertools import groupby
 from operator import attrgetter
-from ast import literal_eval
-
-from sql import Literal, Null
-from sql.functions import CurrentTimestamp
-from sql.conditionals import Coalesce, Case
-from sql.aggregate import Count
-from sql.operators import Concat
 
 from passlib.context import CryptContext
+from sql import Literal, Null
+from sql.aggregate import Count
+from sql.conditionals import Case, Coalesce
+from sql.functions import CurrentTimestamp
+from sql.operators import Concat
 
 try:
     import bcrypt
@@ -43,14 +43,13 @@ except ImportError:
 
 from trytond.cache import Cache
 from trytond.config import config
-from trytond.exceptions import LoginException, RateLimitException
-from trytond.exceptions import UserError
+from trytond.exceptions import LoginException, RateLimitException, UserError
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique,
-    avatar_mixin)
+    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, avatar_mixin,
+    fields)
 from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, Eval, Bool
+from trytond.pyson import Bool, Eval, PYSONEncoder
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
@@ -58,7 +57,7 @@ from trytond.tools import grouped_slice
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import host, http_host
-from trytond.wizard import Wizard, StateView, Button, StateTransition
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 logger = logging.getLogger(__name__)
 _has_password = 'password' in re.split('[,+]', config.get(

@@ -8,14 +8,16 @@ import posixpath
 import sys
 import traceback
 import urllib.parse
+
 try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
 
+from werkzeug.exceptions import HTTPException, InternalServerError, abort
+from werkzeug.routing import BaseConverter, Map, Rule
 from werkzeug.wrappers import Response
-from werkzeug.routing import Map, Rule, BaseConverter
-from werkzeug.exceptions import abort, HTTPException, InternalServerError
+
 try:
     from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -37,8 +39,8 @@ except ImportError:
 import wrapt
 
 from trytond.config import config
-from trytond.protocols.wrappers import Request
 from trytond.protocols.jsonrpc import JSONProtocol
+from trytond.protocols.wrappers import Request
 from trytond.protocols.xmlrpc import XMLProtocol
 from trytond.status import processing
 from trytond.tools import resolve
@@ -250,5 +252,5 @@ if config.has_section('wsgi middleware'):
                 kwargs = eval(config.get(section, 'kwargs'))
         app.wsgi_app = Middleware(app.wsgi_app, *args, **kwargs)
 
-import trytond.protocols.dispatcher  # noqa: E402,F401
 import trytond.bus  # noqa: E402,F401
+import trytond.protocols.dispatcher  # noqa: E402,F401

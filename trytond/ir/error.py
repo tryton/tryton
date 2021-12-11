@@ -7,10 +7,10 @@ import logging
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
 from trytond.model import ModelSQL, ModelView, Workflow, fields
-from trytond.tools import firstline
-from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.tools import firstline
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 clean_days = config.getint('error', 'clean_days', default=90)

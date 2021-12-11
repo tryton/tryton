@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Query, Expression, Null, Literal
-from sql.operators import ILike, Not, In, NotIn
+from sql import Expression, Literal, Null, Query
+from sql.operators import ILike, In, Not, NotIn
 
 from trytond.transaction import Transaction
 
-from .field import Field, SQL_OPERATORS
 from .char import Char
+from .field import SQL_OPERATORS, Field
 
 
 class Text(Char):

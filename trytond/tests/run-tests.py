@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import logging
 import argparse
+import logging
 import os
+import sys
 import time
 import unittest
-import sys
 
 from trytond.config import config
 
@@ -36,6 +36,7 @@ config.update_etc(opt.config)
 
 # Import after application is configured
 from trytond import backend  # noqa: E402
+
 if backend.name == 'sqlite':
     database_name = ':memory:'
 else:
@@ -43,6 +44,7 @@ else:
 os.environ.setdefault('DB_NAME', database_name)
 
 from trytond.tests.test_tryton import all_suite, modules_suite  # noqa: E402
+
 if not opt.modules:
     suite = all_suite(opt.tests)
 else:

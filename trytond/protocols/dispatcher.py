@@ -4,26 +4,26 @@
 import logging
 import pydoc
 import time
+
 try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
 
+from sql import Table
 from werkzeug.exceptions import abort
 from werkzeug.wrappers import Response
-from sql import Table
 
-from trytond import security
-from trytond import backend
+from trytond import __version__, backend, security
 from trytond.config import config, get_hostname
-from trytond import __version__
-from trytond.transaction import Transaction
 from trytond.exceptions import (
-    UserError, UserWarning, ConcurrencyException, LoginException,
-    RateLimitException)
+    ConcurrencyException, LoginException, RateLimitException, UserError,
+    UserWarning)
 from trytond.tools import is_instance_method
-from trytond.wsgi import app
+from trytond.transaction import Transaction
 from trytond.worker import run_task
+from trytond.wsgi import app
+
 from .wrappers import with_pool
 
 logger = logging.getLogger(__name__)

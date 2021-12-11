@@ -5,19 +5,19 @@ from functools import wraps
 
 from sql.operators import NotIn
 
+from trytond import backend
 from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
+from trytond.model import ModelSQL, ModelView, Unique, fields, sequence_ordered
 from trytond.model.exceptions import AccessError
-from trytond.modules import get_module_list, get_module_info
-from trytond.wizard import Wizard, StateView, Button, StateTransition, \
-    StateAction
-from trytond import backend
+from trytond.modules import get_module_info, get_module_list
 from trytond.pool import Pool
-from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond.rpc import RPC
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 
 class DeactivateDependencyError(UserError):

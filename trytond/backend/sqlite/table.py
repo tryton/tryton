@@ -1,11 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.transaction import Transaction
-from trytond.backend.table import TableHandlerInterface
 import logging
 import re
 import warnings
+
+from trytond.backend.table import TableHandlerInterface
+from trytond.transaction import Transaction
 
 from .database import sqlite
 

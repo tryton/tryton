@@ -6,8 +6,9 @@
 __all__ = ['StringMatcher', 'StringPartitioned', 'LazyString']
 
 from warnings import warn
+
 try:
-    from Levenshtein import opcodes, editops, matching_blocks, ratio, distance
+    from Levenshtein import distance, editops, matching_blocks, opcodes, ratio
 
     class StringMatcher:
         """A SequenceMatcher-like class built on the top of Levenshtein"""

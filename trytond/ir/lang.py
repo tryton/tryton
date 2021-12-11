@@ -2,22 +2,22 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
-from locale import CHAR_MAX
 from ast import literal_eval
-
 from decimal import Decimal
+from locale import CHAR_MAX
+
 from sql import Table
 
 from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Check, Unique)
+    Check, DeactivableMixin, ModelSQL, ModelView, Unique, fields)
 from trytond.modules import create_graph, load_translations
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, Button, StateTransition
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 Transaction.cache_keys.add('translate_name')
 

@@ -5,20 +5,20 @@ __all__ = ['Wizard',
     'StateView', 'StateTransition', 'StateAction', 'StateReport',
     'Button']
 
-import json
 import copy
+import json
 
 from trytond.i18n import gettext
-from trytond.pool import Pool, PoolBase
-from trytond.transaction import Transaction
-from trytond.url import URLMixin
-from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.model import ModelSQL
 from trytond.model.exceptions import AccessError
 from trytond.model.fields import states_validate
+from trytond.pool import Pool, PoolBase
+from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import cached_property
+from trytond.transaction import Transaction
+from trytond.url import URLMixin
 
 
 class Button(object):

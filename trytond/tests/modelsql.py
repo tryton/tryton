@@ -4,7 +4,7 @@ from sql import Literal
 from sql.operators import Equal
 
 from trytond.model import (
-    ModelSQL, fields, Check, Unique, Exclude, DeactivableMixin)
+    Check, DeactivableMixin, Exclude, ModelSQL, Unique, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 

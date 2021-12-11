@@ -1,33 +1,35 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from itertools import islice, chain, product, groupby, repeat
 from collections import OrderedDict, defaultdict
 from functools import wraps
+from itertools import chain, groupby, islice, product, repeat
 
-from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
-    NullsFirst, NullsLast, For, Union, With)
-from sql.functions import CurrentTimestamp, Extract, Substring
-from sql.conditionals import Coalesce
-from sql.operators import Or, And, Operator, Equal, Concat
+from sql import (
+    Asc, Column, Desc, Expression, For, Literal, Null, NullsFirst, NullsLast,
+    Table, Union, With)
 from sql.aggregate import Count, Max
+from sql.conditionals import Coalesce
+from sql.functions import CurrentTimestamp, Extract, Substring
+from sql.operators import And, Concat, Equal, Operator, Or
 
-from trytond.i18n import gettext
-from trytond.model import ModelStorage, ModelView
-from trytond.model import fields
 from trytond import backend
-from trytond.tools import reduce_ids, grouped_slice, cursor_dict
-from trytond.transaction import Transaction, record_cache_size
-from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, PYSONDecoder
 from trytond.cache import freeze
-from trytond.exceptions import ConcurrencyException
-from trytond.rpc import RPC
 from trytond.config import config
+from trytond.exceptions import ConcurrencyException
+from trytond.i18n import gettext
+from trytond.pool import Pool
+from trytond.pyson import PYSONDecoder, PYSONEncoder
+from trytond.rpc import RPC
+from trytond.tools import cursor_dict, grouped_slice, reduce_ids
+from trytond.transaction import Transaction, record_cache_size
 
-from .modelstorage import (is_leaf,
-    ValidationError, RequiredValidationError, AccessError)
+from . import fields
 from .descriptors import dualmethod
+from .modelstorage import (
+    AccessError, ModelStorage, RequiredValidationError, ValidationError,
+    is_leaf)
+from .modelview import ModelView
 
 
 class ForeignKeyError(ValidationError):

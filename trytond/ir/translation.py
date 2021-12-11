@@ -2,33 +2,32 @@
 # this repository contains the full copyright notices and license terms.
 import os
 import xml.dom.minidom
-from difflib import SequenceMatcher
 from collections import defaultdict
+from difflib import SequenceMatcher
 from io import BytesIO
-from lxml import etree
 
 import polib
-from sql import Column, Null, Literal
-from sql.functions import Substring, Position
-from sql.conditionals import Case
-from sql.aggregate import Max
-
 from genshi.filters.i18n import extract as genshi_extract
+from lxml import etree
 from relatorio.reporting import MIMETemplateLoader
 from relatorio.templates.opendocument import get_zip_file
+from sql import Column, Literal, Null
+from sql.aggregate import Max
+from sql.conditionals import Case
+from sql.functions import Position, Substring
 
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, Eval
-from trytond.tools import file_open, grouped_slice, cursor_dict
+from trytond.pyson import Eval, PYSONEncoder
+from trytond.tools import cursor_dict, file_open, grouped_slice
 from trytond.tools.string_ import LazyString, StringPartitioned
 from trytond.transaction import Transaction
 from trytond.wizard import (
-    Wizard, StateView, StateTransition, StateAction, Button)
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .lang import get_parent_language as get_parent
 

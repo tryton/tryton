@@ -1,22 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import dateutil.tz
-import os
 import inspect
 import logging
 import math
+import operator
+import os
 import subprocess
 import tempfile
 import time
 import warnings
 import zipfile
-import operator
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from io import BytesIO
 from itertools import groupby
+
+import dateutil.tz
 
 try:
     import html2text
@@ -31,19 +31,20 @@ except ImportError:
 from genshi.filters import Translator
 from genshi.template.text import TextTemplate
 
+from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
-from trytond.transaction import Transaction
-from trytond.tools import slugify
-from trytond.url import URLMixin
 from trytond.rpc import RPC
-from trytond.exceptions import UserError
+from trytond.tools import slugify
+from trytond.transaction import Transaction
+from trytond.url import URLMixin
 
 warnings.simplefilter("ignore")
 import relatorio.reporting  # noqa: E402
+
 warnings.resetwarnings()
 try:
-    from relatorio.templates.opendocument import Manifest, MANIFEST
+    from relatorio.templates.opendocument import MANIFEST, Manifest
 except ImportError:
     Manifest, MANIFEST = None, None
 

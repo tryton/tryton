@@ -2,16 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
-from sql import Cast, Literal, Query, Expression
-from sql.functions import Substring, Position
+from sql import Cast, Expression, Literal, Query
+from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
+
+from .field import (
+    Field, context_validate, instantiate_context, search_order_validate,
+    with_inactive_records)
 from .selection import SelectionMixin
-from .field import (Field, search_order_validate, context_validate,
-    with_inactive_records, instantiate_context)
 
 
 class Reference(SelectionMixin, Field):

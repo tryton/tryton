@@ -8,46 +8,15 @@ except ImportError:
 
 
 def register():
-    from . import access
-    from . import copy_
-    from . import export_data
-    from . import field_binary
-    from . import field_boolean
-    from . import field_char
-    from . import field_context
-    from . import field_date
-    from . import field_datetime
-    from . import field_dict
-    from . import field_float
-    from . import field_function
-    from . import field_integer
-    from . import field_many2many
-    from . import field_many2one
-    from . import field_multiselection
-    from . import field_numeric
-    from . import field_one2many
-    from . import field_one2one
-    from . import field_reference
-    from . import field_selection
-    from . import field_text
-    from . import field_time
-    from . import field_timedelta
-    from . import history
-    from . import import_data
-    from . import mixin
-    from . import model
-    from . import modelsql
-    from . import modelstorage
-    from . import modelview
-    from . import mptt
-    from . import multivalue
-    from . import path
-    from . import resource
-    from . import rule
-    from . import tree
-    from . import trigger
-    from . import wizard
-    from . import workflow
+    from . import (
+        access, copy_, export_data, field_binary, field_boolean, field_char,
+        field_context, field_date, field_datetime, field_dict, field_float,
+        field_function, field_integer, field_many2many, field_many2one,
+        field_multiselection, field_numeric, field_one2many, field_one2one,
+        field_reference, field_selection, field_text, field_time,
+        field_timedelta, history, import_data, mixin, model, modelsql,
+        modelstorage, modelview, mptt, multivalue, path, resource, rule, tree,
+        trigger, wizard, workflow)
 
     access.register('tests')
     copy_.register('tests')

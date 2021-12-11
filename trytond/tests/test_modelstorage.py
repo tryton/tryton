@@ -5,10 +5,10 @@ import unittest
 
 from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
-    RequiredValidationError, DomainValidationError, AccessError)
+    AccessError, DomainValidationError, RequiredValidationError)
 from trytond.pool import Pool
-from trytond.transaction import Transaction
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 
 class ModelStorageTestCase(unittest.TestCase):

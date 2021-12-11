@@ -4,10 +4,11 @@
 import unittest
 from unittest.mock import Mock, sentinel
 
-from werkzeug.wrappers import Response
 from werkzeug.test import Client
-from trytond.wsgi import TrytondWSGI
+from werkzeug.wrappers import Response
+
 from trytond.exceptions import TrytonException
+from trytond.wsgi import TrytondWSGI
 
 
 class WSGIAppTestCase(unittest.TestCase):

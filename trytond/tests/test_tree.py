@@ -4,8 +4,8 @@
 import unittest
 
 from trytond.model.exceptions import DomainValidationError, RecursionError
-from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
+from trytond.tests.test_tryton import activate_module, with_transaction
 
 
 class TreeTestCaseMixin:

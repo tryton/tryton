@@ -4,13 +4,13 @@
 import time
 import unittest
 
-from trytond import backend, cache as cache_mod
+from trytond import backend
+from trytond import cache as cache_mod
 from trytond.cache import (
-    freeze, unfreeze, MemoryCache, LRUDict, LRUDictTransaction)
-from trytond.tests.test_tryton import with_transaction, activate_module
-from trytond.tests.test_tryton import DB_NAME, USER
+    LRUDict, LRUDictTransaction, MemoryCache, freeze, unfreeze)
+from trytond.tests.test_tryton import (
+    DB_NAME, USER, activate_module, with_transaction)
 from trytond.transaction import Transaction
-
 
 cache = MemoryCache('test.cache')
 cache_expire = MemoryCache('test.cache_expire', duration=1)

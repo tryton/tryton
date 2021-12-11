@@ -25,10 +25,10 @@ if options.coroutine:
     from gevent import monkey
     monkey.patch_all()
 
+from trytond.modules import get_module_info, get_module_list
+from trytond.pool import Pool
 # Import trytond things after it is configured
 from trytond.wsgi import app
-from trytond.pool import Pool
-from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
     Pool.start()

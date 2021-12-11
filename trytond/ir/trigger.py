@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import time
+
 from sql import Literal, Null, Select
 from sql.aggregate import Count, Max
 from sql.functions import CurrentTimestamp
@@ -10,12 +11,11 @@ from sql.operators import Concat
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, EvalEnvironment, Check)
+    Check, DeactivableMixin, EvalEnvironment, ModelSQL, ModelView, fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder
-from trytond.tools import grouped_slice
-from trytond.tools import reduce_ids
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 

@@ -1,20 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
 import json
+import os
 
 from lxml import etree
 
+from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
-from trytond.pyson import Eval, Bool, PYSONDecoder, If
+from trytond.pool import Pool
+from trytond.pyson import Bool, Eval, If, PYSONDecoder
+from trytond.rpc import RPC
 from trytond.tools import file_open
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, Button
-from trytond.pool import Pool
-from trytond.cache import Cache
-from trytond.rpc import RPC
+from trytond.wizard import Button, StateView, Wizard
 
 
 class XMLError(ValidationError):

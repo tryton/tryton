@@ -6,7 +6,8 @@ import random
 import select
 import signal
 import time
-from multiprocessing import Pool as MPool, cpu_count
+from multiprocessing import Pool as MPool
+from multiprocessing import cpu_count
 
 from sql import Flavor
 

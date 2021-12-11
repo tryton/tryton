@@ -1,16 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import time
 import datetime
-from xml import sax
 import logging
 import re
-
+import time
 from collections import defaultdict
 from decimal import Decimal
+from xml import sax
 
 from trytond import __version__
-from trytond.pyson import PYSONEncoder, CONTEXT
+from trytond.pyson import CONTEXT, PYSONEncoder
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 

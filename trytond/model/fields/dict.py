@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
-from functools import partial
 import json
+from functools import partial
 
-from sql import operators, Literal, Select, CombiningQuery, Cast, Null
+from sql import Cast, CombiningQuery, Literal, Null, Select, operators
 
 from trytond import backend
 from trytond.pool import Pool
@@ -11,7 +11,8 @@ from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.tools import grouped_slice
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.transaction import Transaction
-from .field import Field, SQL_OPERATORS
+
+from .field import SQL_OPERATORS, Field
 
 # Use canonical form
 dumps = partial(

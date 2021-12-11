@@ -3,7 +3,7 @@
 import unittest
 from unittest.mock import Mock
 
-from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT, activate_module
+from trytond.tests.test_tryton import CONTEXT, DB_NAME, USER, activate_module
 from trytond.transaction import Transaction
 
 

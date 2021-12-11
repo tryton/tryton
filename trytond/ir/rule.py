@@ -6,7 +6,7 @@ from sql import Literal
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields, EvalEnvironment, Check
+from trytond.model import Check, EvalEnvironment, ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder

@@ -6,7 +6,6 @@ import datetime as dt
 import math
 import os
 import sys
-
 from collections import defaultdict
 
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,

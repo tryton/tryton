@@ -1,11 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict, OrderedDict
-from threading import RLock
+import builtins
 import logging
+from collections import OrderedDict, defaultdict
+from threading import RLock
+
 from trytond.modules import load_modules, register_classes
 from trytond.transaction import Transaction
-import builtins
 
 __all__ = ['Pool', 'PoolMeta', 'PoolBase', 'isregisteredby']
 
@@ -188,6 +189,7 @@ class Pool(object):
         except KeyError:
             if type == 'report':
                 from trytond.report import Report
+
                 # Keyword argument 'type' conflicts with builtin function
                 cls = builtins.type(name, (Report,), {'__slots__': ()})
                 cls.__setup__()

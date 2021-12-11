@@ -1,30 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
-from . import configuration
-from . import translation
-from . import sequence
-from . import ui
-from . import action
-from . import model
-from . import attachment
-from . import note
-from . import avatar
-from . import cron
-from . import lang
-from . import export
-from . import rule
-from . import module
-from . import cache
-from . import date
-from . import trigger
-from . import session
-from . import queue
-from . import calendar_
-from . import message
-from . import email_
-from . import routes
-from . import error
+
+from . import (
+    action, attachment, avatar, cache, calendar_, configuration, cron, date,
+    email_, error, export, lang, message, model, module, note, queue, routes,
+    rule, sequence, session, translation, trigger, ui)
 
 __all__ = ['register', 'routes']
 

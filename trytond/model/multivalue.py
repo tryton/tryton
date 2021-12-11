@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
-from .model import Model
+
 from .match import MatchMixin
+from .model import Model
 
 
 class MultiValueMixin(object):

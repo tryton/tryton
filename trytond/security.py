@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
-from trytond.pool import Pool
-from trytond.config import config
-from trytond.transaction import Transaction
 from trytond import backend
+from trytond.config import config
 from trytond.exceptions import LoginException, RateLimitException
+from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 

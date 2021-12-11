@@ -8,11 +8,11 @@ from trytond.config import config
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import fields
 from trytond.model.exceptions import ValidationError
+from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.tools import slugify
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 
 class DomainError(ValidationError):

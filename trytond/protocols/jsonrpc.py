@@ -1,19 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
-from decimal import Decimal
-import json
 import base64
+import datetime
+import json
+from decimal import Decimal
 
-from werkzeug.wrappers import Response
 from werkzeug.exceptions import (
-    BadRequest, InternalServerError, Conflict, Forbidden, Locked,
+    BadRequest, Conflict, Forbidden, InternalServerError, Locked,
     TooManyRequests)
+from werkzeug.wrappers import Response
 
-from trytond.protocols.wrappers import Request
 from trytond.exceptions import (
-    TrytonException, UserWarning, LoginException, ConcurrencyException,
-    RateLimitException, MissingDependenciesException)
+    ConcurrencyException, LoginException, MissingDependenciesException,
+    RateLimitException, TrytonException, UserWarning)
+from trytond.protocols.wrappers import Request
 from trytond.tools import cached_property
 
 

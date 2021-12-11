@@ -4,11 +4,11 @@ from collections import defaultdict
 from itertools import groupby
 
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered, tree)
-from trytond.transaction import Transaction
-from trytond.tools import grouped_slice
+    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered, tree)
 from trytond.pool import Pool
 from trytond.rpc import RPC
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 
 def one_in(i, j):

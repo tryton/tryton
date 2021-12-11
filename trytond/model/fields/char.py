@@ -6,8 +6,9 @@ from sql.conditionals import Coalesce, NullIf
 from sql.operators import Not
 
 from trytond.rpc import RPC
-from trytond.tools import unescape_wildcard, is_full_text
+from trytond.tools import is_full_text, unescape_wildcard
 from trytond.transaction import Transaction
+
 from .field import Field, FieldTranslate, size_validate
 
 

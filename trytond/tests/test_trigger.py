@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 import datetime
+import unittest
 from itertools import combinations
 
+from trytond.ir.exceptions import TriggerConditionError
 from trytond.model.exceptions import SQLConstraintError
+from trytond.pool import Pool
+from trytond.pyson import Eval, PYSONEncoder
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, Eval
-
-from trytond.ir.exceptions import TriggerConditionError
 
 
 class TriggerTestCase(unittest.TestCase):

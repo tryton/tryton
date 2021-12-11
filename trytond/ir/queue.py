@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql import With, Literal, Null
+from sql import Literal, Null, With
 from sql.aggregate import Min
 from sql.functions import CurrentTimestamp, Extract
 

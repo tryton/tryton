@@ -5,13 +5,13 @@
 import unittest
 import urllib.parse
 
-from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.transaction import Transaction
 from trytond.model import ModelView
 from trytond.pool import Pool
-from trytond.url import http_host, HOSTNAME
+from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
+from trytond.url import HOSTNAME, http_host
 
-from .mixin import TestMixin, TestSecondMixin, NotMixin, ReportMixin
+from .mixin import NotMixin, ReportMixin, TestMixin, TestSecondMixin
 
 
 class UrlTestCase(unittest.TestCase):

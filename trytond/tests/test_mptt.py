@@ -5,9 +5,9 @@ import sys
 import unittest
 from unittest.mock import patch
 
+from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 from .test_tree import TreeTestCaseMixin
 

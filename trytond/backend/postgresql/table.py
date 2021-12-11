@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import re
 import logging
+import re
 
-from psycopg2.sql import SQL, Identifier, Composed
+from psycopg2.sql import SQL, Composed, Identifier
 
-from trytond.transaction import Transaction
 from trytond.backend.table import TableHandlerInterface
+from trytond.transaction import Transaction
 
 __all__ = ['TableHandler']
 

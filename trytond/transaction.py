@@ -4,6 +4,7 @@ import logging
 import time
 from collections import defaultdict
 from threading import local
+
 from sql import Flavor
 
 from trytond.config import config
@@ -65,8 +66,8 @@ class Transaction(object):
     started_at = None
 
     def __new__(cls, new=False):
-        from trytond.pool import Pool
         from trytond.cache import LRUDict
+        from trytond.pool import Pool
         transactions = cls._local.transactions
         if new or not transactions:
             instance = super(Transaction, cls).__new__(cls)

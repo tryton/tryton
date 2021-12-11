@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pyson import PYSONEncoder, PYSON
+from trytond.pyson import PYSON, PYSONEncoder
+
 from .field import Field
 
 

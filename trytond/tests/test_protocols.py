@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
-import json
 import datetime
+import json
+import unittest
 from decimal import Decimal
 
+from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder, JSONRequest
+from trytond.protocols.xmlrpc import XMLRequest, client
 from trytond.tools.immutabledict import ImmutableDict
-from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder, JSONRequest
-from trytond.protocols.xmlrpc import client, XMLRequest
 
 
 class DumpsLoadsMixin:

@@ -62,8 +62,8 @@ class URLAccessor(object):
 
     def __get__(self, inst, cls):
         from trytond.model import Model
-        from trytond.wizard import Wizard
         from trytond.report import Report
+        from trytond.wizard import Wizard
 
         url_part = {}
         if issubclass(cls, Model):

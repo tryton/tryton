@@ -11,6 +11,7 @@ import urllib.parse
 import warnings
 from decimal import Decimal
 from weakref import WeakKeyDictionary
+
 from werkzeug.security import safe_join
 
 try:
@@ -21,10 +22,12 @@ except ImportError:
     import sqlite3 as sqlite
     from sqlite3 import IntegrityError as DatabaseIntegrityError
     from sqlite3 import OperationalError as DatabaseOperationalError
-from sql import Flavor, Table, Query, Expression, Literal, Null
+
+from sql import Expression, Flavor, Literal, Null, Query, Table
 from sql.conditionals import NullIf
-from sql.functions import (Function, Extract, Position, Substring,
-    Overlay, CharLength, CurrentTimestamp, Trim)
+from sql.functions import (
+    CharLength, CurrentTimestamp, Extract, Function, Overlay, Position,
+    Substring, Trim)
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri

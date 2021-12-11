@@ -1,10 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
-    Button
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 
 class TestWizardStart(ModelSQL, ModelView):

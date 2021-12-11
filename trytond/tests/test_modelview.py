@@ -6,10 +6,10 @@ from unittest.mock import patch
 
 from lxml import etree
 
-from trytond.model.exceptions import AccessError, AccessButtonError
-from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.model.exceptions import AccessButtonError, AccessError
 from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, PYSONDecoder, Eval
+from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
+from trytond.tests.test_tryton import activate_module, with_transaction
 
 
 class ModelView(unittest.TestCase):

@@ -1,15 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import time
-from dateutil.relativedelta import relativedelta
 import logging
+import time
+
+from dateutil.relativedelta import relativedelta
 
 from trytond import backend
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, dualmethod)
+    DeactivableMixin, ModelSQL, ModelView, dualmethod, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing

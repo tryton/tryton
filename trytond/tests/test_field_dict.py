@@ -6,8 +6,8 @@ from trytond import backend
 from trytond.model.dictschema import SelectionError
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.tests.test_tryton import ExtensionTestCase
+from trytond.tests.test_tryton import (
+    ExtensionTestCase, activate_module, with_transaction)
 
 
 class FieldDictTestCase(unittest.TestCase):

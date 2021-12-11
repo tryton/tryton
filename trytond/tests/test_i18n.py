@@ -1,9 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-from trytond.tests.test_tryton import activate_module, with_transaction
+
 from trytond.i18n import gettext, lazy_gettext
 from trytond.pool import Pool
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.tools.string_ import LazyString
 
 

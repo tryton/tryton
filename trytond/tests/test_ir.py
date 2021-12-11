@@ -3,7 +3,7 @@
 import datetime
 import unittest
 from decimal import Decimal
-from unittest.mock import Mock, patch, ANY
+from unittest.mock import ANY, Mock, patch
 
 from dateutil.relativedelta import relativedelta
 
@@ -11,6 +11,7 @@ from trytond.config import config
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
+
 from .test_tryton import ModuleTestCase, with_transaction
 
 

@@ -9,7 +9,7 @@ from werkzeug.test import Client
 from werkzeug.wrappers import BaseResponse
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import activate_module, DB_NAME, drop_db
+from trytond.tests.test_tryton import DB_NAME, activate_module, drop_db
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 

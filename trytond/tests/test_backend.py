@@ -4,8 +4,7 @@ import datetime
 import math
 import unittest
 
-from sql import Select
-from sql import functions, Literal
+from sql import Literal, Select, functions
 from sql.functions import CurrentTimestamp, ToChar
 
 from trytond.tests.test_tryton import activate_module, with_transaction

@@ -1,17 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from string import Template
 import time
+from string import Template
 
-from sql import Literal, For
+from sql import For, Literal
 
 from trytond import backend
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
-from trytond.model.exceptions import ValidationError, AccessError
+from trytond.model import Check, DeactivableMixin, ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Eval, And
+from trytond.pyson import And, Eval
 from trytond.transaction import Transaction
 
 sql_sequence = backend.Database.has_sequence()

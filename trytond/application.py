@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import csv
-import os
 import logging.config
+import os
 import threading
 from io import StringIO
 

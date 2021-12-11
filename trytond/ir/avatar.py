@@ -5,7 +5,7 @@ import math
 import os
 import uuid
 from random import Random
-from urllib.parse import urljoin, quote
+from urllib.parse import quote, urljoin
 
 try:
     import PIL
@@ -14,7 +14,7 @@ except ImportError:
     PIL = None
 
 from trytond.config import config
-from trytond.model import ModelSQL, fields, Unique
+from trytond.model import ModelSQL, Unique, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wsgi import Base64Converter

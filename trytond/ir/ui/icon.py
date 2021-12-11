@@ -3,10 +3,10 @@
 
 import os
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.rpc import RPC
 from trytond.tools import file_open
 from trytond.transaction import Transaction
-from trytond.rpc import RPC
 
 
 class Icon(sequence_ordered(), ModelSQL, ModelView):

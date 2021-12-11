@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Table, Column, Literal, Union, Null
+from sql import Column, Literal, Null, Table, Union
 from sql.aggregate import Max
 
 from trytond import backend

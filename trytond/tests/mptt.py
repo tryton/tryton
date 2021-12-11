@@ -4,7 +4,7 @@
 from sql import Null
 from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, tree, fields
+from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields, tree
 from trytond.pool import Pool
 
 

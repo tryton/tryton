@@ -6,7 +6,7 @@ from decimal import Decimal, InvalidOperation
 from sql import Literal
 
 from trytond.model.exceptions import (
-    RequiredValidationError, DigitsValidationError)
+    DigitsValidationError, RequiredValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 

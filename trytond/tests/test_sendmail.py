@@ -3,12 +3,13 @@
 import smtplib
 import unittest
 from email.message import Message
-from unittest.mock import Mock, MagicMock, patch, call
+from unittest.mock import MagicMock, Mock, call, patch
 
 from trytond.sendmail import (
-    sendmail_transactional, sendmail, SMTPDataManager, get_smtp_server)
+    SMTPDataManager, get_smtp_server, sendmail, sendmail_transactional)
 from trytond.transaction import Transaction
-from .test_tryton import with_transaction, activate_module
+
+from .test_tryton import activate_module, with_transaction
 
 
 class SendmailTestCase(unittest.TestCase):

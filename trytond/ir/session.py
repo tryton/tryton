@@ -4,6 +4,7 @@ import binascii
 import datetime
 import json
 import os
+
 try:
     from secrets import token_hex
 except ImportError:
@@ -12,8 +13,8 @@ except ImportError:
             nbytes = 32
         return binascii.hexlify(os.urandom(nbytes)).decode('ascii')
 
-from trytond.model import ModelSQL, fields
 from trytond.config import config
+from trytond.model import ModelSQL, fields
 
 
 class Session(ModelSQL):

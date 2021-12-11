@@ -5,13 +5,12 @@ try:
 except ImportError:
     from werkzeug.utils import cached_property
 
-from .misc import (
-    file_open, get_smtp_server, reduce_ids, reduce_domain,
-    grouped_slice, is_instance_method, resolve, strip_wildcard,
-    lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard, unescape_wildcard, is_full_text, sql_pairing, firstline,
-    remove_forbidden_chars)
 from .decimal_ import decistmt
+from .misc import (
+    escape_wildcard, file_open, firstline, get_smtp_server, grouped_slice,
+    is_full_text, is_instance_method, lstrip_wildcard, reduce_domain,
+    reduce_ids, remove_forbidden_chars, resolve, rstrip_wildcard, slugify,
+    sortable_values, sql_pairing, strip_wildcard, unescape_wildcard)
 
 __all__ = ['file_open', 'get_smtp_server', 'reduce_ids',
     'reduce_domain', 'grouped_slice', 'is_instance_method', 'resolve',

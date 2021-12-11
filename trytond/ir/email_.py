@@ -17,18 +17,18 @@ except ImportError:
     html2text = None
 from genshi.template import TextTemplate
 
-from trytond.i18n import gettext
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, fields, EvalEnvironment
-from trytond.model.exceptions import ValidationError, AccessError
+from trytond.i18n import gettext
+from trytond.model import EvalEnvironment, ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Eval, Bool, PYSONDecoder
+from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import escape_wildcard
-from trytond.tools.string_ import StringMatcher
 from trytond.tools.email_ import set_from_header
+from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction
 
 from .resource import ResourceAccessMixin

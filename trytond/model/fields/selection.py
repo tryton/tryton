@@ -10,6 +10,7 @@ from trytond.rpc import RPC
 from trytond.tools import is_instance_method
 from trytond.tools.string_ import LazyString
 from trytond.transaction import Transaction
+
 from .field import Field
 
 

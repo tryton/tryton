@@ -1,22 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import xmlrpc.client as client
 import datetime
 import logging
-
+import xmlrpc.client as client
 # convert decimal to float before marshalling:
 from decimal import Decimal
 
-from werkzeug.wrappers import Response
 from werkzeug.exceptions import (
-    BadRequest, InternalServerError, Conflict, Forbidden, Locked,
+    BadRequest, Conflict, Forbidden, InternalServerError, Locked,
     TooManyRequests)
+from werkzeug.wrappers import Response
 
+from trytond.exceptions import (
+    ConcurrencyException, LoginException, MissingDependenciesException,
+    RateLimitException, TrytonException, UserWarning)
 from trytond.model.fields.dict import ImmutableDict
 from trytond.protocols.wrappers import Request
-from trytond.exceptions import (
-    TrytonException, UserWarning, LoginException, ConcurrencyException,
-    RateLimitException, MissingDependenciesException)
 from trytond.tools import cached_property
 
 logger = logging.getLogger(__name__)

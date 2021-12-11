@@ -7,8 +7,8 @@ import unittest
 from sql import Literal
 
 from trytond.config import config
-from trytond.model.exceptions import RequiredValidationError
 from trytond.model import fields
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction

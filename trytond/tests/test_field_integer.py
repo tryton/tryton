@@ -5,7 +5,7 @@ import unittest
 from sql import Literal
 
 from trytond.model.exceptions import (
-    RequiredValidationError, DomainValidationError)
+    DomainValidationError, RequiredValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 

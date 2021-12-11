@@ -3,9 +3,9 @@
 import unittest
 
 from trytond.model.exceptions import AccessError
+from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 
 class WizardTestCase(unittest.TestCase):

@@ -3,7 +3,7 @@
 import unittest
 
 from trytond.model.exceptions import (
-    SelectionValidationError, RequiredValidationError)
+    RequiredValidationError, SelectionValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 

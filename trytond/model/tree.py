@@ -3,6 +3,7 @@
 from itertools import chain
 
 from trytond.i18n import gettext
+
 from .modelstorage import ValidationError
 
 

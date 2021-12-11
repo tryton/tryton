@@ -4,28 +4,28 @@ import heapq
 import json
 import logging
 import re
-
-from sql import Null, Literal
-from sql.aggregate import Max
-from sql.conditionals import Case
 from collections import defaultdict
 from itertools import groupby
+
+from sql import Literal, Null
+from sql.aggregate import Max
+from sql.conditionals import Case
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique,
-    EvalEnvironment)
+    DeactivableMixin, EvalEnvironment, ModelSQL, ModelView, Unique, Workflow,
+    fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import is_instance_method, cursor_dict, grouped_slice
+from trytond.tools import cursor_dict, grouped_slice, is_instance_method
 from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateAction, Button
+from trytond.wizard import Button, StateAction, StateView, Wizard
 
 logger = logging.getLogger(__name__)
 
@@ -1295,8 +1295,8 @@ class ModelData(ModelSQL, ModelView):
             return dict(json.loads(values, object_hook=JSONDecoder()))
         except ValueError:
             # Migration from 3.2
-            from decimal import Decimal
             import datetime
+            from decimal import Decimal
             return eval(values, {
                     'Decimal': Decimal,
                     'datetime': datetime,

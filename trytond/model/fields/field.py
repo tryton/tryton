@@ -4,8 +4,9 @@ import warnings
 from functools import wraps
 
 import sql
-from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
-    Query, Expression, Cast)
+from sql import (
+    Cast, Column, CombiningQuery, Expression, Literal, Null, Query, Select,
+    operators)
 from sql.aggregate import Min
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
@@ -13,9 +14,9 @@ from sql.operators import Concat
 from trytond import backend
 from trytond.const import OPERATORS
 from trytond.pool import Pool
-from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
+from trytond.pyson import PYSON, Eval, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
-from trytond.tools.string_ import StringPartitioned, LazyString
+from trytond.tools.string_ import LazyString, StringPartitioned
 from trytond.transaction import Transaction
 
 _sql_version = tuple(map(int, sql.__version__.split('.')))

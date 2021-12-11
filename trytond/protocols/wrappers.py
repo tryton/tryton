@@ -4,23 +4,25 @@ import base64
 import gzip
 import logging
 import time
-from io import BytesIO
 from functools import wraps
+from io import BytesIO
+
 try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
 
-from werkzeug.wrappers import Request as _Request, Response
 from werkzeug.datastructures import Authorization
-from werkzeug.exceptions import abort, HTTPException
+from werkzeug.exceptions import HTTPException, abort
+from werkzeug.wrappers import Request as _Request
+from werkzeug.wrappers import Response
 
-from trytond import security, backend
+from trytond import backend, security
+from trytond.config import config
 from trytond.exceptions import RateLimitException
 from trytond.pool import Pool
 from trytond.tools import cached_property
 from trytond.transaction import Transaction
-from trytond.config import config
 
 logger = logging.getLogger(__name__)
 
@@ -209,7 +211,8 @@ def with_transaction(readonly=None, user=0, context=None):
 
 
 def user_application(name, json=True):
-    from .jsonrpc import JSONEncoder, json as json_
+    from .jsonrpc import JSONEncoder
+    from .jsonrpc import json as json_
 
     def decorator(func):
         @wraps(func)

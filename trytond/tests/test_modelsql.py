@@ -3,18 +3,18 @@
 # repository contains the full copyright notices and license terms.
 
 import random
-import unittest
 import time
-from unittest.mock import patch, call
+import unittest
+from unittest.mock import call, patch
 
 from trytond import backend
 from trytond.exceptions import ConcurrencyException
 from trytond.model.exceptions import (
-    RequiredValidationError, SQLConstraintError, ForeignKeyError)
+    ForeignKeyError, RequiredValidationError, SQLConstraintError)
 from trytond.model.modelsql import split_subquery_domain
-from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 
 class ModelSQLTestCase(unittest.TestCase):

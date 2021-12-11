@@ -1,16 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
-import time
 import random
+import time
 
 from werkzeug.exceptions import abort
 
 from trytond.config import config
-from trytond.wsgi import app
 from trytond.protocols.wrappers import (
-    with_pool, with_transaction, allow_null_origin)
+    allow_null_origin, with_pool, with_transaction)
 from trytond.transaction import Transaction
+from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
 

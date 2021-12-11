@@ -3,24 +3,24 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime as dt
-import unittest
 import doctest
 import sys
+import unittest
 
 import sql
 import sql.operators
 
 from trytond.tools import (
-    reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
-    strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard, unescape_wildcard, is_full_text, firstline,
-    remove_forbidden_chars)
-from trytond.tools.string_ import StringPartitioned, LazyString
+    decimal_, escape_wildcard, file_open, firstline, is_full_text,
+    is_instance_method, lstrip_wildcard, reduce_domain, reduce_ids,
+    remove_forbidden_chars, rstrip_wildcard, slugify, sortable_values,
+    strip_wildcard, unescape_wildcard)
 from trytond.tools.domain_inversion import (
-    domain_inversion, parse, simplify, merge, concat, unique_value,
-    eval_domain, localize_domain,
-    prepare_reference_domain, extract_reference_models)
+    concat, domain_inversion, eval_domain, extract_reference_models,
+    localize_domain, merge, parse, prepare_reference_domain, simplify,
+    unique_value)
 from trytond.tools.immutabledict import ImmutableDict
+from trytond.tools.string_ import LazyString, StringPartitioned
 
 
 class ToolsTestCase(unittest.TestCase):

@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from tokenize import tokenize, untokenize, NUMBER, NAME, OP, STRING
 from io import BytesIO
+from tokenize import NAME, NUMBER, OP, STRING, tokenize, untokenize
 
 # code snippet taken from http://docs.python.org/library/tokenize.html
 

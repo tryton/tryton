@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelStorage as ModelStorage_, fields
+from trytond.model import ModelSQL
+from trytond.model import ModelStorage as ModelStorage_
+from trytond.model import fields
+from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 
 class ModelStorage(ModelSQL):

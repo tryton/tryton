@@ -1,23 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-from operator import itemgetter
 from collections import defaultdict
 from functools import partial
+from operator import itemgetter
 
-from sql import Null
 from genshi.template.text import TextTemplate
+from sql import Null
 
 from trytond.cache import Cache, MemoryCache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields,
-    sequence_ordered, ModelSingleton)
+    DeactivableMixin, ModelSingleton, ModelSQL, ModelStorage, ModelView,
+    fields, sequence_ordered)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import PYSONDecoder, PYSON, Eval
-from trytond.pyson import PYSONEncoder
+from trytond.pyson import PYSON, Eval, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import file_open
 from trytond.transaction import Transaction

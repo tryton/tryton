@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.cache import Cache
 from trytond.config import config
-from trytond.model import ModelSQL, ModelSingleton, fields
+from trytond.model import ModelSingleton, ModelSQL, fields
 
 
 class Configuration(ModelSingleton, ModelSQL):

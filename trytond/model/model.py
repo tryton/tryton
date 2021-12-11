@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import copy
 import collections.abc
+import copy
 import sys
 from collections import defaultdict
 from functools import total_ordering
@@ -11,10 +11,10 @@ from itertools import chain
 from trytond.i18n import lazy_gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolBase, PoolMeta
-from trytond.pyson import PYSONEncoder, PYSONDecoder
+from trytond.pyson import PYSONDecoder, PYSONEncoder
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
-from trytond.rpc import RPC
 
 __all__ = ['Model']
 

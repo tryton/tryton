@@ -1,20 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from lxml import etree
-from functools import wraps
 import collections
+from functools import wraps
 
+from lxml import etree
+
+from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import Model, fields
-from trytond.tools import ClassProperty, is_instance_method
-from trytond.pyson import PYSONDecoder, PYSONEncoder
-from trytond.transaction import Transaction
-from trytond.cache import Cache
 from trytond.pool import Pool
+from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
+from trytond.tools import ClassProperty, is_instance_method
+from trytond.transaction import Transaction
 
+from . import fields
 from .fields import on_change_result
+from .model import Model
 
 __all__ = ['ModelView']
 

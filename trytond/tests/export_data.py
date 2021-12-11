@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Test for export_data"
 from trytond.model import ModelSQL, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 
 
 class ExportDataTarget(ModelSQL):

@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from sql import Cast, Literal, Select, CombiningQuery, As
+
+from sql import As, Cast, CombiningQuery, Literal, Select
 
 from trytond import backend
+
 from .float import Float
 
 

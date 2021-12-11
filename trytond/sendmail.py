@@ -3,8 +3,8 @@
 import logging
 import smtplib
 from email.message import Message
-from email.utils import formatdate
 from email.mime.text import MIMEText
+from email.utils import formatdate
 from urllib.parse import parse_qs, unquote_plus
 
 from trytond.config import config, parse_uri

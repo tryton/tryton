@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import datetime as dt
-import json
 import io
+import json
 from numbers import Number
+
 try:
     from http import HTTPStatus
 except ImportError:
@@ -14,13 +15,13 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 from werkzeug.wrappers import Response
 
-from trytond.i18n import gettext
 from trytond.config import config
-from trytond.wsgi import app
+from trytond.i18n import gettext
 from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.protocols.wrappers import with_pool, with_transaction
 from trytond.tools import slugify
 from trytond.transaction import Transaction
+from trytond.wsgi import app
 
 SOURCE = config.get(
     'html', 'src', default='https://cloud.tinymce.com/stable/tinymce.min.js')

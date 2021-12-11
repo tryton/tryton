@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval
 from trytond.pool import Pool
+from trytond.pyson import Eval
 
 
 class FieldContextParent(ModelSQL):

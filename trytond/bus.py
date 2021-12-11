@@ -9,24 +9,25 @@ import select
 import threading
 import time
 import uuid
+
 try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
+
 from urllib.parse import urljoin
 
+from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import NotImplemented as NotImplementedException
 from werkzeug.utils import redirect
 from werkzeug.wrappers import Response
-from werkzeug.exceptions import (
-    NotImplemented as NotImplementedException, BadRequest)
 
 from trytond import backend
-from trytond.wsgi import app
-from trytond.transaction import Transaction
-from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder
 from trytond.config import config
+from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.tools import resolve
-
+from trytond.transaction import Transaction
+from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
 

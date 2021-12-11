@@ -2,32 +2,32 @@
 # this repository contains the full copyright notices and license terms.
 
 import base64
-import datetime
-import time
 import csv
+import datetime
 import random
-
-from decimal import Decimal
-from itertools import islice, chain
-from functools import lru_cache, wraps
-from operator import itemgetter
+import time
 from collections import defaultdict
+from decimal import Decimal
+from functools import lru_cache, wraps
+from itertools import chain, islice
+from operator import itemgetter
 
-from trytond.exceptions import UserError
-from trytond.model import Model
-from trytond.model import fields
-from trytond.tools import reduce_domain, is_instance_method, grouped_slice
-from trytond.tools.domain_inversion import (
-    domain_inversion, eval_domain, parse as domain_parse)
-from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
-from trytond.const import OPERATORS
-from trytond.config import config
-from trytond.i18n import gettext, lazy_gettext
-from trytond.transaction import Transaction, record_cache_size
-from trytond.pool import Pool
 from trytond.cache import Cache, LRUDictTransaction, freeze, unfreeze
+from trytond.config import config
+from trytond.const import OPERATORS
+from trytond.exceptions import UserError
+from trytond.i18n import gettext, lazy_gettext
+from trytond.pool import Pool
+from trytond.pyson import PYSON, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
+from trytond.tools import grouped_slice, is_instance_method, reduce_domain
+from trytond.tools.domain_inversion import domain_inversion, eval_domain
+from trytond.tools.domain_inversion import parse as domain_parse
+from trytond.transaction import Transaction, record_cache_size
+
+from . import fields
 from .descriptors import dualmethod
+from .model import Model
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
 _cache_field = config.getint('cache', 'field')

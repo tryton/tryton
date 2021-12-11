@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import argparse
 import csv
-import os
 import logging
 import logging.config
 import logging.handlers
+import os
 from contextlib import contextmanager
 from io import StringIO
 

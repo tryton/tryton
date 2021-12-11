@@ -5,10 +5,10 @@ import time
 import unittest
 from unittest.mock import patch
 
-from trytond import bus, backend
-from trytond.bus import _MessageQueue, notify, Bus
+from trytond import backend, bus
+from trytond.bus import Bus, _MessageQueue, notify
 from trytond.tests.test_tryton import (
-    activate_module, with_transaction, DB_NAME)
+    DB_NAME, activate_module, with_transaction)
 from trytond.transaction import Transaction
 
 

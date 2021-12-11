@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict
-import time
+import json
 import logging
 import os
-import json
+import time
 import warnings
+from collections import defaultdict
 from datetime import datetime
 from decimal import Decimal
 from itertools import chain, repeat
@@ -16,24 +16,22 @@ try:
     compat.register()
 except ImportError:
     pass
-from psycopg2 import connect, Binary
+from psycopg2 import Binary, connect
+from psycopg2.extensions import (
+    ISOLATION_LEVEL_AUTOCOMMIT, ISOLATION_LEVEL_REPEATABLE_READ, UNICODE, AsIs,
+    cursor, register_adapter, register_type)
+from psycopg2.pool import PoolError, ThreadedConnectionPool
 from psycopg2.sql import SQL, Identifier
-from psycopg2.pool import ThreadedConnectionPool, PoolError
-from psycopg2.extensions import cursor
-from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from psycopg2.extensions import register_type, register_adapter
-from psycopg2.extensions import UNICODE, AsIs
+
 try:
-    from psycopg2.extensions import PYDATE, PYDATETIME, PYTIME, PYINTERVAL
+    from psycopg2.extensions import PYDATE, PYDATETIME, PYINTERVAL, PYTIME
 except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
 from psycopg2.extras import register_default_json, register_default_jsonb
-
-from sql import Flavor, Cast, For, Table
+from sql import Cast, Flavor, For, Table
 from sql.conditionals import Coalesce
 from sql.functions import Function
 from sql.operators import BinaryOperator, Concat

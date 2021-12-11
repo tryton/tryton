@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Column, With, Query, Expression
+from sql import Column, Expression, Literal, Query, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -9,8 +9,10 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
-from .field import (Field, search_order_validate, context_validate,
-    with_inactive_records, instantiate_context)
+
+from .field import (
+    Field, context_validate, instantiate_context, search_order_validate,
+    with_inactive_records)
 
 
 class Many2One(Field):

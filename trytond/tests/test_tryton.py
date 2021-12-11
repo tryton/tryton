@@ -11,9 +11,9 @@ import time
 import unittest
 import unittest.mock
 from configparser import ConfigParser
-from functools import reduce
-from functools import wraps
+from functools import reduce, wraps
 from itertools import chain
+
 try:
     import pkg_resources
 except ImportError:
@@ -22,17 +22,17 @@ except ImportError:
 from lxml import etree
 from sql import Table
 
-from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import (
-    Workflow, ModelSQL, ModelStorage, ModelSingleton, ModelView, fields)
-from trytond.model.fields import get_eval_fields, Function
-from trytond.tools import is_instance_method, file_open
-from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.config import config, parse_uri
-from trytond.wizard import StateView, StateAction
+from trytond.model import (
+    ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
+from trytond.model.fields import Function, get_eval_fields
+from trytond.pool import Pool, isregisteredby
 from trytond.pyson import PYSONDecoder, PYSONEncoder
+from trytond.tools import file_open, is_instance_method
+from trytond.transaction import Transaction
+from trytond.wizard import StateAction, StateView
 
 __all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',

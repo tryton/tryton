@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from proteus import config as pconfig, Model, Wizard
+from proteus import Model, Wizard
+from proteus import config as pconfig
 
-from .test_tryton import restore_db_cache, backup_db_cache, drop_create
+from .test_tryton import backup_db_cache, drop_create, restore_db_cache
 
 __all__ = ['activate_modules', 'set_user']
 

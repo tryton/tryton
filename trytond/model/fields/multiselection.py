@@ -3,10 +3,11 @@
 import json
 from functools import partial
 
-from sql import operators, Literal
+from sql import Literal, operators
 
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
+
 from .field import Field
 from .selection import SelectionMixin
 

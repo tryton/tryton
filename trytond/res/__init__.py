@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import group
-from . import user
-from . import ir
-from . import routes
+from . import group, ir, routes, user
 
 __all__ = ['register', 'routes']
 

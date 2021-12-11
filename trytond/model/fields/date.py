@@ -2,10 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql.functions import Function, AtTimeZone
+from sql.functions import AtTimeZone, Function
 
 from trytond import backend
 from trytond.pyson import PYSONEncoder
+
 from .field import Field
 
 

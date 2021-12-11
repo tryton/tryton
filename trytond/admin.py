@@ -1,18 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
-import os
 import logging
+import os
 import random
+import sys
 from getpass import getpass
 
-from sql import Table, Literal
+from sql import Literal, Table
 
 from trytond import backend
-from trytond.transaction import Transaction
-from trytond.pool import Pool
 from trytond.config import config
+from trytond.pool import Pool
 from trytond.sendmail import send_test_email
+from trytond.transaction import Transaction
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -128,7 +128,7 @@ def run(options):
 
 
 def validate(models, percentage=100):
-    from trytond.model import ModelStorage, ModelSingleton
+    from trytond.model import ModelSingleton, ModelStorage
     from trytond.model.exceptions import ValidationError
     logger = logging.getLogger('validate')
     pool = Pool()
