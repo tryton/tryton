@@ -8,11 +8,11 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond.config import config
-from trytond.pool import PoolMeta, Pool
+from trytond.model import ModelStorage, ModelView, fields
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.model import ModelView, ModelStorage, fields
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 OPENING_CODE = config.get('account_fr', 'fec_opening_code', default="OUV")
 OPENING_NAME = config.get(
