@@ -3,12 +3,11 @@
 import binascii
 
 from geomet import wkb
-from psycopg2.extensions import (register_adapter, new_type, register_type,
-    Binary)
+from psycopg2.extensions import (
+    Binary, new_type, register_adapter, register_type)
 
 from trytond.backend.postgresql.database import Database as PGDatabase
 from trytond.config import parse_uri
-
 from trytond_gis import _GeoJSON
 
 

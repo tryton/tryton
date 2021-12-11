@@ -3,11 +3,12 @@
 
 from sql import Null
 from sql.operators import Not
+
 from trytond import backend
 from trytond.model import fields
 from trytond.model.fields.field import SQL_OPERATORS
-
-from trytond_gis import _GeoJSON, sql as geo_sql
+from trytond_gis import _GeoJSON
+from trytond_gis import sql as geo_sql
 
 GEOGRAPHIC_OPERATORS = {
     '=': geo_sql.ST_Equals,
