@@ -5,10 +5,10 @@ import datetime
 from collections import defaultdict
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow
-from trytond.transaction import Transaction
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 from .exceptions import StockQuantityError, StockQuantityWarning
 
