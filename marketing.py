@@ -8,10 +8,11 @@ from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
 from functools import lru_cache
 from urllib.parse import (
-    parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit, urljoin)
+    parse_qs, parse_qsl, urlencode, urljoin, urlsplit, urlunsplit)
 
+from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
-from genshi.core import START, END, QName, Attrs
+
 try:
     import html2text
 except ImportError:
@@ -21,17 +22,16 @@ from trytond.config import config
 from trytond.i18n import gettext
 from trytond.ir.session import token_hex
 from trytond.model import (
-    DeactivableMixin, Workflow, ModelSQL, ModelView, Unique, fields)
+    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.report import Report
-from trytond.report import get_email
-from trytond.sendmail import sendmail_transactional, SMTPDataManager
+from trytond.report import Report, get_email
+from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import TemplateError
 

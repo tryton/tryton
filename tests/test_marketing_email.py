@@ -2,15 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
-from unittest.mock import patch, ANY, Mock
+from unittest.mock import ANY, Mock, patch
 
 from trytond.config import config
-from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.transaction import Transaction
-
 from trytond.modules.marketing_email import marketing as marketing_module
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
+from trytond.transaction import Transaction
 
 SUBSCRIBE_URL = 'http://www.example.com/subscribe'
 UNSUBSCRIBE_URL = 'http://www.example.com/unsubscribe'

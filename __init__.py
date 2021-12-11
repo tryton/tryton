@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import marketing
-from . import ir
-from . import web
-from . import routes
+
+from . import ir, marketing, routes, web
 
 __all__ = ['register', 'routes']
 

@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.marketing_email.tests.test_marketing_email import suite  # noqa: E501
+    from trytond.modules.marketing_email.tests.test_marketing_email import \
+        suite  # noqa: E501
 except ImportError:
     from .test_marketing_email import suite
 
