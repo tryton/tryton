@@ -1,18 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
-import doctest
 import datetime
+import doctest
+import unittest
 from decimal import Decimal
-import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_teardown
-from trytond.tests.test_tryton import doctest_checker
-from trytond.pool import Pool
 
-from trytond.modules.company.tests import (
-    create_company, set_company, CompanyTestMixin)
+import trytond.tests.test_tryton
 from trytond.modules.account.tests import create_chart
+from trytond.modules.company.tests import (
+    CompanyTestMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
 
 DATES = [
     # purchase date, lead time, supply date

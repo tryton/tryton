@@ -2,13 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import order_point
-from . import ir
-from . import product
-from . import purchase_request
-from . import shipment
-from . import location
-from . import stock
+
+from . import (
+    ir, location, order_point, product, purchase_request, shipment, stock)
 
 
 def register():

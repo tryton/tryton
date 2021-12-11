@@ -3,10 +3,10 @@
 import datetime
 from collections import defaultdict
 
-from trytond.model import ModelView, ModelSQL
+from trytond.model import ModelSQL, ModelView
+from trytond.pool import Pool
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 
 class ShipmentInternal(ModelSQL, ModelView):

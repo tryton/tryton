@@ -3,9 +3,9 @@
 from sql import Null
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.pyson import If, Equal, Eval, Not, In
+from trytond.pyson import Equal, Eval, If, In, Not
 from trytond.transaction import Transaction
 
 from .exceptions import OrderPointValidationError

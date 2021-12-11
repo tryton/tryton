@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.pool import Pool
 from trytond.model import ModelView
+from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
-    Button)
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import SupplyWarning
 
