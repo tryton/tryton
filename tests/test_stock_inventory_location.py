@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import doctest
 import unittest
-import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 
+import trytond.tests.test_tryton
 from trytond.modules.company.tests import CompanyTestMixin
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown)
 
 
 class StockInventoryLocationTestCase(CompanyTestMixin, ModuleTestCase):
