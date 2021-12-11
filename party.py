@@ -3,11 +3,11 @@
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
+from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
-from trytond.modules.company.model import CompanyValueMixin
+from trytond.transaction import Transaction
 
 from .exceptions import CreditLimitError, CreditLimitWarning
 
