@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval
-from trytond.pool import PoolMeta, Pool
-from trytond.tools.multivalue import migrate_property
-from trytond.transaction import Transaction
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
+from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 
 class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
