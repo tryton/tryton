@@ -1,12 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import operator
 import math
+import operator
 
 from gi.repository import Gdk, GLib, GObject, Gtk
 
-from tryton.common import RPCExecute, RPCException
-from tryton.common import eval_domain
+from tryton.common import RPCException, RPCExecute, eval_domain
 
 
 class SelectionMixin(object):

@@ -5,13 +5,14 @@ import gettext
 from gi.repository import Gdk, Gtk
 
 import tryton.common as common
-from .widget import Widget
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
 from tryton.gui.window.view_form.screen import Screen
-from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
+from tryton.gui.window.win_search import WinSearch
+
+from .widget import Widget
 
 _ = gettext.gettext
 

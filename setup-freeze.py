@@ -8,9 +8,9 @@ import re
 import ssl
 import sys
 import tempfile
-from subprocess import Popen, PIPE, check_call
+from subprocess import PIPE, Popen, check_call
 
-from cx_Freeze import setup, Executable
+from cx_Freeze import Executable, setup
 
 home = os.path.expanduser('~/')
 pythonrc = os.path.join(home, '.pythonrc.py')

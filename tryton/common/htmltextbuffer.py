@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import sys
-from io import StringIO
 import xml.etree.ElementTree as ET
-from xml.sax.saxutils import escape, unescape
 from html.parser import HTMLParser
+from io import StringIO
+from xml.sax.saxutils import escape, unescape
 
-from gi.repository import Gtk, Gdk, Pango
+from gi.repository import Gdk, Gtk, Pango
 
 
 def guess_decode(bytes, errors='strict'):

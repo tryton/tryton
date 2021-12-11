@@ -4,8 +4,8 @@ import gettext
 
 from gi.repository import Gtk
 
-from tryton.common import (get_toplevel_window, IconFactory,
-    timezoned_date, untimezoned_date)
+from tryton.common import (
+    IconFactory, get_toplevel_window, timezoned_date, untimezoned_date)
 from tryton.common.datetime_ import date_parse
 from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON

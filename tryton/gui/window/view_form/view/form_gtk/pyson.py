@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from gi.repository import Gtk
 
-from .char import Char
 from tryton.common import IconFactory
-from tryton.pyson import CONTEXT, PYSONEncoder, PYSONDecoder
+from tryton.pyson import CONTEXT, PYSONDecoder, PYSONEncoder
+
+from .char import Char
 
 
 class PYSON(Char):

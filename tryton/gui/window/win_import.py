@@ -9,7 +9,7 @@ from decimal import Decimal
 from gi.repository import Gtk
 
 import tryton.common as common
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCException, RPCExecute
 from tryton.common.datetime_ import date_parse
 from tryton.gui.window.win_csv import WinCSV
 

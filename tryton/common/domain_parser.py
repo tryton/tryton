@@ -1,19 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+import decimal
+import gettext
+import io
+import locale
+from collections import OrderedDict
+from decimal import Decimal
 from shlex import shlex
 from types import GeneratorType
-import gettext
-import locale
-import decimal
-from decimal import Decimal
-import datetime
-import io
-from collections import OrderedDict
 
-from tryton.common import untimezoned_date, timezoned_date, date_format
+from tryton.common import date_format, timezoned_date, untimezoned_date
 from tryton.common.datetime_ import date_parse
-from tryton.common.timedelta import parse as timedelta_parse
 from tryton.common.timedelta import format as timedelta_format
+from tryton.common.timedelta import parse as timedelta_parse
 from tryton.pyson import PYSONDecoder
 
 __all__ = ['DomainParser']

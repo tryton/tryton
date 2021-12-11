@@ -5,10 +5,13 @@ import gettext
 
 from gi.repository import GLib, Gtk
 
-from .widget import Widget
 from tryton import common
-from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
-    DateTime as DateTimeEntry, add_operators)
+from tryton.common.datetime_ import Date as DateEntry
+from tryton.common.datetime_ import DateTime as DateTimeEntry
+from tryton.common.datetime_ import Time as TimeEntry
+from tryton.common.datetime_ import add_operators
+
+from .widget import Widget
 
 _ = gettext.gettext
 

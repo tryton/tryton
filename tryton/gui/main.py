@@ -9,7 +9,7 @@ import sys
 import threading
 import traceback
 import webbrowser
-from urllib.parse import urlparse, parse_qsl, unquote
+from urllib.parse import parse_qsl, unquote, urlparse
 
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk
 
@@ -18,9 +18,9 @@ import tryton.plugins
 import tryton.rpc as rpc
 import tryton.translate as translate
 from tryton.action import Action
-from tryton.common import RPCExecute, RPCException, RPCContextReload
-from tryton.common.cellrendererclickablepixbuf import \
-        CellRendererClickablePixbuf
+from tryton.common import RPCContextReload, RPCException, RPCExecute
+from tryton.common.cellrendererclickablepixbuf import (
+    CellRendererClickablePixbuf)
 from tryton.config import CONFIG, TRYTON_ICON, get_config_dir
 from tryton.exceptions import TrytonError, TrytonServerUnavailable
 from tryton.gui.window import Window

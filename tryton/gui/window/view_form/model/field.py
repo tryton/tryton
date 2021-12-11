@@ -1,24 +1,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
-from itertools import chain
-import tempfile
-import logging
-import locale
-from tryton.common import \
-        domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, filter_leaf, prepare_reference_domain, \
-        extract_reference_models, concat, simplify, unique_value, \
-        EvalEnvironment
-import tryton.common as common
 import datetime
 import decimal
-from decimal import Decimal
+import locale
+import logging
 import math
-from tryton.common import RPCExecute, RPCException
+import os
+import tempfile
+from decimal import Decimal
+from itertools import chain
+
+import tryton.common as common
+from tryton.common import (
+    EvalEnvironment, RPCException, RPCExecute, concat, domain_inversion,
+    eval_domain, extract_reference_models, filter_leaf, inverse_leaf,
+    localize_domain, merge, prepare_reference_domain, simplify, unique_value)
 from tryton.common.htmltextbuffer import guess_decode
-from tryton.pyson import PYSONDecoder
 from tryton.config import CONFIG
+from tryton.pyson import PYSONDecoder
 
 logger = logging.getLogger(__name__)
 

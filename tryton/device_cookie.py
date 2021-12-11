@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
 import json
 import logging
+import os
 from threading import Lock
 
-from tryton.config import get_config_dir, CONFIG
+from tryton.config import CONFIG, get_config_dir
 
 logger = logging.getLogger(__name__)
 COOKIES_PATH = os.path.join(get_config_dir(), 'device_cookies')

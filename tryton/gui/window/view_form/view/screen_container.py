@@ -6,10 +6,10 @@ import gettext
 from gi.repository import Gdk, GLib, GObject, Gtk
 
 import tryton.common as common
+from tryton.common.datetime_ import Date, DateTime, Time, add_operators
 from tryton.common.domain_parser import quote
-from tryton.common.treeviewcontrol import TreeViewControl
-from tryton.common.datetime_ import Date, Time, DateTime, add_operators
 from tryton.common.number_entry import NumberEntry
+from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext

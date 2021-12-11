@@ -3,13 +3,12 @@
 import gettext
 from contextlib import contextmanager
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gdk, Gtk
 
 from tryton.common import IconFactory
 from tryton.common.htmltextbuffer import (
-    serialize, deserialize,
-    setup_tags, register_foreground, remove_tags,
-    FAMILIES, SIZE2SCALE, MIME, use_serialize_func)
+    FAMILIES, MIME, SIZE2SCALE, deserialize, register_foreground, remove_tags,
+    serialize, setup_tags, use_serialize_func)
 
 _ = gettext.gettext
 SIZES = sorted(SIZE2SCALE.keys())

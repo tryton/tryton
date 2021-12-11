@@ -2,14 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 import os
+from urllib.parse import unquote, urlparse
 from urllib.request import urlopen
-from urllib.parse import urlparse, unquote
 
 from gi.repository import Gdk, Gtk
 
-from tryton.common import common
-from tryton.common import file_selection, Tooltips, file_open, file_write
+from tryton.common import (
+    Tooltips, common, file_open, file_selection, file_write)
 from tryton.common.entry_position import reset_position
+
 from .widget import Widget
 
 _ = gettext.gettext

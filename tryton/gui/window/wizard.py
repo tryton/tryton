@@ -1,20 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import logging
 import gettext
+import logging
 
 from gi.repository import Gdk, Gtk, Pango
 
-from tryton.signal_event import SignalEvent
 import tryton.common as common
-from tryton.gui.window.view_form.screen import Screen
-from tryton.gui import Main
-from tryton.exceptions import TrytonServerError
-from tryton.gui.window.nomodal import NoModal
+from tryton.common import (
+    TRYTON_ICON, RPCContextReload, RPCException, RPCExecute)
 from tryton.common.button import Button
-from tryton.common import RPCExecute, RPCException, RPCContextReload
-from tryton.common import TRYTON_ICON
 from tryton.common.widget_style import widget_class
+from tryton.exceptions import TrytonServerError
+from tryton.gui import Main
+from tryton.gui.window.nomodal import NoModal
+from tryton.gui.window.view_form.screen import Screen
+from tryton.signal_event import SignalEvent
+
 from .infobar import InfoBar
 from .tabcontent import TabContent
 

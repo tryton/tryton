@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-from tryton.gui.window import Window
 from tryton.common import MODELACCESS
+from tryton.gui.window import Window
 
 _ = gettext.gettext
 

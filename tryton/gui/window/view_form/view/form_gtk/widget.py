@@ -5,8 +5,7 @@ import gettext
 from gi.repository import Gdk, GLib, Gtk
 
 import tryton.common as common
-from tryton.common import RPCExecute, RPCException
-from tryton.common import TRYTON_ICON
+from tryton.common import TRYTON_ICON, RPCException, RPCExecute
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.gui import Main

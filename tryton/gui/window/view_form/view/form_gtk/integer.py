@@ -4,6 +4,7 @@ from gi.repository import Gtk
 
 from tryton.common.entry_position import reset_position
 from tryton.common.number_entry import NumberEntry
+
 from .widget import Widget
 
 

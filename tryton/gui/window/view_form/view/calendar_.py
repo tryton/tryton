@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from functools import wraps
-
 import datetime
 import gettext
+from functools import wraps
 
 from gi.repository import Gtk
 
 from . import View, XMLViewParser
+
 try:
     from .calendar_gtk.calendar_ import Calendar_
     from .calendar_gtk.toolbar import Toolbar

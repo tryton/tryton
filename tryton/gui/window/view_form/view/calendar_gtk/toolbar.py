@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
 import calendar
+import datetime
 import gettext
 
 from gi.repository import Gdk, Gtk
 
-from tryton.gui import Main
 from tryton.common import IconFactory
-from tryton.common.datetime_ import popup_position, popup_show, popup_hide
+from tryton.common.datetime_ import popup_hide, popup_position, popup_show
+from tryton.gui import Main
 
 _ = gettext.gettext
 

@@ -2,12 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
-from tryton.signal_event import SignalEvent
 import tryton.common as common
-from tryton.pyson import PYSONDecoder
-from . import field as fields
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
+from tryton.pyson import PYSONDecoder
+from tryton.signal_event import SignalEvent
+
+from . import field as fields
 
 logger = logging.getLogger(__name__)
 

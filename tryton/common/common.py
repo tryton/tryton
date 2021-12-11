@@ -1,36 +1,39 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import colorsys
 import gettext
+import logging
 import os
 import platform
+import re
 import subprocess
 import tempfile
-import re
-import logging
 import unicodedata
-import colorsys
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from decimal import Decimal
+
 try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
-from functools import wraps, lru_cache
-from tryton.config import CONFIG
-from tryton.config import TRYTON_ICON, PIXMAPS_DIR
-import sys
-import webbrowser
-import traceback
-import tryton.rpc as rpc
-import socket
+
 import _thread
-import urllib.request
-import urllib.parse
-import urllib.error
-from string import Template
 import shlex
+import socket
+import sys
+import traceback
+import urllib.error
+import urllib.parse
+import urllib.request
+import webbrowser
+from functools import lru_cache, wraps
+from string import Template
+
+import tryton.rpc as rpc
+from tryton.config import CONFIG, PIXMAPS_DIR, TRYTON_ICON
+
 try:
     import ssl
 except ImportError:
@@ -41,8 +44,9 @@ from threading import Lock
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk
 
 from tryton import __version__
-from tryton.exceptions import TrytonServerError, TrytonError
+from tryton.exceptions import TrytonError, TrytonServerError
 from tryton.pyson import PYSONEncoder
+
 from .underline import set_underline
 from .widget_style import widget_class
 

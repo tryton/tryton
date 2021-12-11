@@ -1,10 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
-import importlib
 import gettext
+import importlib
+import os
 
-from tryton.config import get_config_dir, CURRENT_DIR
+from tryton.config import CURRENT_DIR, get_config_dir
 
 __all__ = ['MODULES', 'register']
 

@@ -4,8 +4,8 @@ import gettext
 import webbrowser
 
 import tryton.rpc as rpc
-from tryton.common import RPCExecute, RPCException
-from tryton.common import message, selection, file_write, file_open
+from tryton.common import (
+    RPCException, RPCExecute, file_open, file_write, message, selection)
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
 

@@ -1,30 +1,30 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
-import operator
-import locale
 import decimal
 import gettext
+import locale
+import operator
 from decimal import Decimal
 
 from gi.repository import GLib, GObject, Gtk
 
-from .widget import Widget
-
-from tryton.gui.window.win_search import WinSearch
-from tryton.common import Tooltips, timezoned_date, untimezoned_date, \
-        IconFactory
-from tryton.common.selection import selection_shortcuts
+from tryton.common import (
+    IconFactory, Tooltips, timezoned_date, untimezoned_date)
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime, add_operators
+from tryton.common.domain_inversion import eval_domain
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
 from tryton.common.number_entry import NumberEntry
-from tryton.common.underline import set_underline
-from tryton.common.domain_inversion import eval_domain
-from tryton.common.widget_style import widget_class
+from tryton.common.selection import selection_shortcuts
 from tryton.common.treeviewcontrol import TreeViewControl
+from tryton.common.underline import set_underline
+from tryton.common.widget_style import widget_class
+from tryton.gui.window.win_search import WinSearch
 from tryton.pyson import PYSONDecoder
+
+from .widget import Widget
 
 _ = gettext.gettext
 

@@ -5,10 +5,11 @@ import urllib.request
 
 from gi.repository import Gdk, Gtk
 
-from tryton.common import resize_pixbuf, data2pixbuf
+from tryton.common import data2pixbuf, resize_pixbuf
 from tryton.config import CONFIG
-from .widget import Widget
+
 from .binary import BinaryMixin
+from .widget import Widget
 
 _ = gettext.gettext
 

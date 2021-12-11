@@ -2,10 +2,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from setuptools import setup, find_packages
 import io
 import os
 import re
+
+from setuptools import find_packages, setup
 
 
 def read(fname):

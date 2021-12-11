@@ -61,10 +61,10 @@ class View(object):
 
     @staticmethod
     def parse(screen, view_id, view_type, xml, children_field):
-        from .list import ViewTree
+        from .calendar_ import ViewCalendar
         from .form import ViewForm
         from .graph import ViewGraph
-        from .calendar_ import ViewCalendar
+        from .list import ViewTree
         from .list_form import ViewListForm
 
         root, = xml.childNodes

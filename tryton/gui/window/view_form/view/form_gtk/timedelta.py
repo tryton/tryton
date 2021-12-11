@@ -3,6 +3,7 @@
 from gi.repository import Gtk
 
 from tryton.common.entry_position import reset_position
+
 from .widget import Widget
 
 

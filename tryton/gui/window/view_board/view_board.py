@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-from tryton.gui.window.view_form.view.form import Container, FormXMLViewParser
 from tryton.common import node_attributes
+from tryton.gui.window.view_form.view.form import Container, FormXMLViewParser
+
 from .action import Action
 
 _ = gettext.gettext

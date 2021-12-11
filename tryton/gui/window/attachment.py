@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Attachment"
-import os
-from urllib.request import urlopen
-from urllib.parse import urlparse, unquote
 import gettext
+import os
 import webbrowser
 from functools import partial
+from urllib.parse import unquote, urlparse
+from urllib.request import urlopen
 
-from tryton.common import RPCExecute, RPCException, file_write, file_open
+from tryton.common import RPCException, RPCExecute, file_open, file_write
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
 

@@ -3,7 +3,7 @@
 import datetime as dt
 from unittest import TestCase
 
-from tryton.common.timedelta import format, parse, DEFAULT_CONVERTER
+from tryton.common.timedelta import DEFAULT_CONVERTER, format, parse
 
 
 class TimeDeltaTestCase(TestCase):

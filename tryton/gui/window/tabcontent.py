@@ -6,9 +6,10 @@ import gettext
 from gi.repository import Gtk, Pango
 
 import tryton.common as common
-from tryton.config import CONFIG
 from tryton.common.widget_style import widget_class
+from tryton.config import CONFIG
 from tryton.gui import Main
+
 from .infobar import InfoBar
 
 _ = gettext.gettext

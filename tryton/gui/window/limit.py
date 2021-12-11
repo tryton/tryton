@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
 import gettext
+import sys
 
 from gi.repository import Gtk
 
-from tryton.common import get_toplevel_window, IconFactory
+from tryton.common import IconFactory, get_toplevel_window
 from tryton.common.underline import set_underline
-from tryton.config import TRYTON_ICON, CONFIG
+from tryton.config import CONFIG, TRYTON_ICON
 from tryton.gui import Main
 
 _ = gettext.gettext

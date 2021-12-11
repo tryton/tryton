@@ -4,11 +4,12 @@ from weakref import WeakKeyDictionary
 
 from gi.repository import Gtk
 
-from .textbox import TextBox
 from tryton.common.htmltextbuffer import normalize_markup
 from tryton.common.richtext import (
-    register_format, set_content, get_content, add_toolbar)
+    add_toolbar, get_content, register_format, set_content)
 from tryton.config import CONFIG
+
+from .textbox import TextBox
 
 
 class RichTextBox(TextBox):

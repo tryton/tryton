@@ -4,10 +4,10 @@
 import gettext
 import xml.dom.minidom
 
-from tryton.signal_event import SignalEvent
+from tryton.common import MODELNAME, RPCException, RPCExecute
 from tryton.gui import Main
 from tryton.gui.window.view_board import ViewBoard
-from tryton.common import RPCExecute, RPCException, MODELNAME
+from tryton.signal_event import SignalEvent
 
 from .tabcontent import TabContent
 

@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import http.client
 import logging
-import socket
 import os
+import socket
+
 try:
     from http import HTTPStatus
 except ImportError:
@@ -12,10 +13,9 @@ except ImportError:
 from functools import partial
 
 from tryton import bus, device_cookie, fingerprints
-from tryton.jsonrpc import ServerProxy, ServerPool, Fault
-from tryton.config import get_config_dir
+from tryton.config import CONFIG, get_config_dir
 from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
-from tryton.config import CONFIG
+from tryton.jsonrpc import Fault, ServerPool, ServerProxy
 
 CONNECTION = None
 _USER = None

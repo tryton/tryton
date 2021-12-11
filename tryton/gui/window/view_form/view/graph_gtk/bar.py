@@ -2,15 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
+import datetime
 import locale
 import math
-import datetime
 
 import cairo
 
-from .graph import Graph
 import tryton.common as common
 import tryton.rpc as rpc
+
+from .graph import Graph
 
 
 class Bar(Graph):

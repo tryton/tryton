@@ -2,12 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import operator
 
-from .record import Record
-from .field import Field, M2OField, ReferenceField
 from tryton import rpc
-from tryton.signal_event import SignalEvent
+from tryton.common import MODELACCESS, RPCException, RPCExecute
 from tryton.common.domain_inversion import is_leaf
-from tryton.common import RPCExecute, RPCException, MODELACCESS
+from tryton.signal_event import SignalEvent
+
+from .field import Field, M2OField, ReferenceField
+from .record import Record
 
 
 class Group(SignalEvent, list):

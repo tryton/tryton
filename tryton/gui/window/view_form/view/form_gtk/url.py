@@ -2,17 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 import webbrowser
-from urllib.parse import urljoin, urlencode
+from urllib.parse import urlencode, urljoin
 
 from gi.repository import Gtk
 
-from .char import Char
-from .widget import Widget, TranslateMixin
 import tryton.common as common
-from tryton.config import CONFIG
 from tryton.common.common import selection
 from tryton.common.underline import set_underline
+from tryton.config import CONFIG
 from tryton.rpc import CONNECTION
+
+from .char import Char
+from .widget import TranslateMixin, Widget
 
 _ = gettext.gettext
 

@@ -11,23 +11,23 @@ from itertools import zip_longest
 
 from gi.repository import Gdk, GLib, Gtk
 
-from tryton.gui.window.view_form.screen import Screen
-from tryton.action import Action
-from tryton.gui import Main
-from tryton.gui.window import Window
-from tryton.gui.window.email_ import Email
-from tryton.gui.window.win_export import WinExport
-from tryton.gui.window.win_import import WinImport
-from tryton.gui.window.attachment import Attachment
-from tryton.gui.window.note import Note
-from tryton.gui.window.revision import Revision
-from tryton.signal_event import SignalEvent
-from tryton.common import message, sur, sur_3b, timezoned_date
 import tryton.common as common
-from tryton.common import RPCExecute, RPCException
+from tryton import plugins
+from tryton.action import Action
+from tryton.common import (
+    RPCException, RPCExecute, message, sur, sur_3b, timezoned_date)
 from tryton.common.common import selection as selection_
 from tryton.common.underline import set_underline
-from tryton import plugins
+from tryton.gui import Main
+from tryton.gui.window import Window
+from tryton.gui.window.attachment import Attachment
+from tryton.gui.window.email_ import Email
+from tryton.gui.window.note import Note
+from tryton.gui.window.revision import Revision
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_export import WinExport
+from tryton.gui.window.win_import import WinImport
+from tryton.signal_event import SignalEvent
 
 from .tabcontent import TabContent
 

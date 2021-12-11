@@ -2,9 +2,10 @@
 # repository contains the full copyright notices and license terms.
 from gi.repository import GLib, GObject, Gtk
 
-from .widget import Widget
 from tryton.common.selection import SelectionMixin
 from tryton.common.treeviewcontrol import TreeViewControl
+
+from .widget import Widget
 
 
 class MultiSelection(Widget, SelectionMixin):

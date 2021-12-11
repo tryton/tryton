@@ -1,32 +1,33 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Screen"
-import copy
-import functools
-import datetime
 import calendar
-import json
 import collections
+import copy
+import datetime
+import functools
+import gettext
+import json
+import logging
 import urllib.parse
 import xml.dom.minidom
-import gettext
-import logging
 from operator import itemgetter
 
 from gi.repository import GLib, Gtk
 
-from tryton.gui.window.view_form.model.group import Group
-from tryton.gui.window.view_form.view.screen_container import ScreenContainer
-from tryton.gui.window.view_form.view import View
-from tryton.signal_event import SignalEvent
-from tryton.config import CONFIG
-from tryton.jsonrpc import JSONEncoder
-from tryton.common.domain_parser import DomainParser
-from tryton.common import RPCExecute, RPCException, MODELACCESS, \
-    node_attributes, sur, RPCContextReload, warning
 from tryton.action import Action
+from tryton.common import (
+    MODELACCESS, RPCContextReload, RPCException, RPCExecute, node_attributes,
+    sur, warning)
+from tryton.common.domain_parser import DomainParser
+from tryton.config import CONFIG
+from tryton.gui.window.view_form.model.group import Group
+from tryton.gui.window.view_form.view import View
+from tryton.gui.window.view_form.view.screen_container import ScreenContainer
+from tryton.jsonrpc import JSONEncoder
 from tryton.pyson import PYSONDecoder
 from tryton.rpc import clear_cache
+from tryton.signal_event import SignalEvent
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)

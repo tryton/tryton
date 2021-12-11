@@ -5,15 +5,15 @@
 import datetime
 import locale
 import math
-from dateutil.relativedelta import relativedelta
 from functools import reduce
 
 import cairo
+from dateutil.relativedelta import relativedelta
 from gi.repository import Gdk, Gtk
 
 import tryton.rpc as rpc
 from tryton.action import Action
-from tryton.common import hex2rgb, generateColorscheme, COLOR_SCHEMES
+from tryton.common import COLOR_SCHEMES, generateColorscheme, hex2rgb
 from tryton.config import CONFIG
 from tryton.gui.window import Window
 from tryton.pyson import PYSONDecoder

@@ -7,14 +7,13 @@ import socket
 import threading
 import time
 import uuid
-from urllib.request import Request, urlopen
 from urllib.error import HTTPError
+from urllib.request import Request, urlopen
 
 from gi.repository import GLib
 
-from tryton.jsonrpc import object_hook
 from tryton.config import CONFIG
-
+from tryton.jsonrpc import object_hook
 
 logger = logging.getLogger(__name__)
 

@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from gi.repository import Gtk, GObject, Pango
+from gi.repository import GObject, Gtk, Pango
 
 
 class CellRendererButton(Gtk.CellRenderer):

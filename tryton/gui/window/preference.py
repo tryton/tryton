@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Preference"
-import gettext
 import copy
+import gettext
 
 from gi.repository import Gdk, Gtk
 
 import tryton.rpc as rpc
-from tryton.common import RPCExecute, RPCException, IconFactory
+from tryton.common import IconFactory, RPCException, RPCExecute
 from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main

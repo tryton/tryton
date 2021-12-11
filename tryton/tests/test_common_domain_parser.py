@@ -6,9 +6,8 @@ from unittest import TestCase
 
 from tryton.common import untimezoned_date
 from tryton.common.domain_parser import (
-    group_operator, quote, split_target_value, convert_value, format_value,
-    complete_value, parenthesize, rlist, operatorize, DomainParser, udlex,
-    likify)
+    DomainParser, complete_value, convert_value, format_value, group_operator,
+    likify, operatorize, parenthesize, quote, rlist, split_target_value, udlex)
 
 
 class DomainParserTestCase(TestCase):

@@ -1,18 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import chain
 import gettext
+from itertools import chain
 
 from gi.repository import Gdk, Gtk, Pango
 
-from .infobar import InfoBar
 import tryton.common as common
-from tryton.common import TRYTON_ICON, MODELNAME
+from tryton.common import MODELNAME, TRYTON_ICON
 from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
+
+from .infobar import InfoBar
 
 _ = gettext.gettext
 

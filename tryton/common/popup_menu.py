@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gdk, Gtk
 
-from tryton.common import RPCExecute, RPCException
-from tryton.common.common import selection
-from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
+from tryton.common import RPCException, RPCExecute
+from tryton.common.common import selection
 from tryton.gui.window import Window
 from tryton.gui.window.attachment import Attachment
 from tryton.gui.window.email_ import Email
 from tryton.gui.window.note import Note
+from tryton.gui.window.view_form.screen import Screen
 
 _ = gettext.gettext
 

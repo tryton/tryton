@@ -1,27 +1,30 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
+import gettext
 import json
 import locale
-import gettext
+import sys
 from functools import wraps
 
 from gi.repository import Gdk, GLib, GObject, Gtk
 from pygtkcompat.generictreemodel import GenericTreeModel
 
-from tryton.config import CONFIG
-from tryton.common.cellrendererbutton import CellRendererButton
-from tryton.gui.window import Window
-from tryton.common.popup_menu import populate
-from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
-from tryton.common import domain_inversion, simplify, unique_value
-from tryton.pyson import PYSONDecoder
 import tryton.common as common
+from tryton.common import (
+    RPCException, RPCExecute, Tooltips, domain_inversion, node_attributes,
+    simplify, unique_value)
+from tryton.common.cellrendererbutton import CellRendererButton
+from tryton.common.popup_menu import populate
+from tryton.config import CONFIG
+from tryton.gui.window import Window
+from tryton.pyson import PYSONDecoder
+
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
-from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
-    Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection,
-    MultiSelection, Reference, Dict, ProgressBar, Button, Image)
+from .list_gtk.widget import (
+    M2M, M2O, O2M, O2O, URL, Affix, Binary, Boolean, Button, Char, Date, Dict,
+    Float, Image, Int, MultiSelection, ProgressBar, Reference, Selection, Text,
+    Time, TimeDelta)
 
 _ = gettext.gettext
 

@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
 import gettext
-from gi.repository import Gtk, GdkPixbuf
+import os
 
-from tryton.config import PIXMAPS_DIR, CONFIG
-from tryton.common import get_toplevel_window
+from gi.repository import GdkPixbuf, Gtk
+
 from tryton import __version__
+from tryton.common import get_toplevel_window
+from tryton.config import CONFIG, PIXMAPS_DIR
 
 COPYRIGHT = '''\
 Copyright (C) 2004-2021 Tryton.

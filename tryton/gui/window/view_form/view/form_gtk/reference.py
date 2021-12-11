@@ -4,9 +4,10 @@ import gettext
 
 from gi.repository import Gtk
 
+from tryton.common.selection import (
+    PopdownMixin, SelectionMixin, selection_shortcuts)
+
 from .many2one import Many2One
-from tryton.common.selection import SelectionMixin, PopdownMixin, \
-        selection_shortcuts
 
 _ = gettext.gettext
 

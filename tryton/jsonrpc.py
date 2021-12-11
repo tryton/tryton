@@ -1,23 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import copy
-import xmlrpc.client
-import json
-import ssl
-import http.client
-from decimal import Decimal
-import datetime
-import socket
-import hashlib
 import base64
-import threading
+import copy
+import datetime
 import errno
+import hashlib
+import http.client
+import json
 import logging
-from functools import partial
+import socket
+import ssl
+import threading
+import xmlrpc.client
 from collections import defaultdict
 from contextlib import contextmanager
-from functools import reduce
-from urllib.parse import urljoin, quote
+from decimal import Decimal
+from functools import partial, reduce
+from urllib.parse import quote, urljoin
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]

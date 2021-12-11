@@ -3,7 +3,8 @@
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gdk, GLib, Gtk
+
 try:
     from gi.repository import EvinceDocument, EvinceView
     EvinceDocument.init()
@@ -12,8 +13,8 @@ except ImportError:
 
 from tryton.common import data2pixbuf, resize_pixbuf
 
-from .widget import Widget
 from .binary import BinaryMixin
+from .widget import Widget
 
 
 class Document(BinaryMixin, Widget):

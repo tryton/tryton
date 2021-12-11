@@ -2,18 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 import configparser
-import os
 import gettext
-import threading
 import logging
+import os
+import threading
 
 from gi.repository import GLib, GObject, Gtk
 
-from tryton import __version__
 import tryton.common as common
-from tryton.config import CONFIG, TRYTON_ICON, PIXMAPS_DIR, get_config_dir
 import tryton.rpc as rpc
+from tryton import __version__
 from tryton.common.underline import set_underline
+from tryton.config import CONFIG, PIXMAPS_DIR, TRYTON_ICON, get_config_dir
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)

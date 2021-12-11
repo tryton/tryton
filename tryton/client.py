@@ -6,11 +6,9 @@ import sys
 import traceback
 from urllib.parse import urlparse
 
-from gi.repository import Gdk, Gtk, Gio
+from gi.repository import Gdk, Gio, Gtk
 
-from tryton import common
-from tryton import gui
-from tryton import translate
+from tryton import common, gui, translate
 from tryton.config import CONFIG, get_config_dir
 from tryton.gui.window.dblogin import DBLogin
 

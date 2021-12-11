@@ -4,15 +4,16 @@ import gettext
 
 from gi.repository import Gdk, GLib, Gtk
 
-from .widget import Widget
 import tryton.common as common
-from tryton.gui.window.view_form.screen import Screen
-from tryton.gui.window.win_search import WinSearch
-from tryton.gui.window.win_form import WinForm
-from tryton.common.popup_menu import populate
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.entry_position import reset_position
 from tryton.common.domain_parser import quote
+from tryton.common.entry_position import reset_position
+from tryton.common.popup_menu import populate
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_form import WinForm
+from tryton.gui.window.win_search import WinSearch
+
+from .widget import Widget
 
 _ = gettext.gettext
 

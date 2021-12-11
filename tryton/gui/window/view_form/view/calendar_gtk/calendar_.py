@@ -2,11 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import calendar
 import datetime
+
 import goocalendar
-from .dates_period import DatesPeriod
 
 from tryton.common import MODELACCESS
 from tryton.config import CONFIG
+
+from .dates_period import DatesPeriod
 
 _colors = CONFIG['calendar.colors'].split(',')
 

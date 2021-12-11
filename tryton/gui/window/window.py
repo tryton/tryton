@@ -40,7 +40,8 @@ class Window(object):
     def create_wizard(action, data, direct_print=False, email_print=False,
             email=None, name='', context=None, icon=None, window=False):
         from tryton.gui import Main
-        from .wizard import WizardForm, WizardDialog
+
+        from .wizard import WizardDialog, WizardForm
         if window:
             win = WizardForm(name=name)
             win.icon = icon

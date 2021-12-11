@@ -1,20 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
-
 import gettext
+import sys
 
 from gi.repository import Gtk
 
-from . import View, XMLViewParser
-from .graph_gtk.bar import VerticalBar, HorizontalBar
-from .graph_gtk.line import Line
-from .graph_gtk.pie import Pie
-from tryton.common import file_selection, IconFactory
-from tryton.common import node_attributes, get_toplevel_window, message
+from tryton.common import (
+    IconFactory, file_selection, get_toplevel_window, message, node_attributes)
 from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
+
+from . import View, XMLViewParser
+from .graph_gtk.bar import HorizontalBar, VerticalBar
+from .graph_gtk.line import Line
+from .graph_gtk.pie import Pie
 
 _ = gettext.gettext
 

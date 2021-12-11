@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gdk, Gtk
 
 import tryton.common as common
 from tryton.common.underline import set_underline

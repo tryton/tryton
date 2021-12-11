@@ -2,15 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
-import math
-import locale
 import datetime
+import locale
+import math
 
 import cairo
 
-from .graph import Graph, Area
 import tryton.common as common
 import tryton.rpc as rpc
+
+from .graph import Area, Graph
 
 
 class Pie(Graph):

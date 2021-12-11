@@ -5,15 +5,16 @@ import gettext
 
 from gi.repository import GLib, Gtk
 
-from tryton.gui.window.view_form.screen import Screen
-import tryton.rpc as rpc
 import tryton.common as common
+import tryton.rpc as rpc
+from tryton.action import Action as GenericAction
+from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_form import WinForm
 from tryton.pyson import PYSONDecoder
 from tryton.signal_event import SignalEvent
-from tryton.gui.window.win_form import WinForm
-from tryton.common import RPCExecute, RPCException
-from tryton.action import Action as GenericAction
+
 _ = gettext.gettext
 
 

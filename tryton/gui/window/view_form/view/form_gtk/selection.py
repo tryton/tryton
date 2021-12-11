@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from gi.repository import GLib, Gtk
 
+from tryton.common.selection import (
+    PopdownMixin, SelectionMixin, selection_shortcuts)
+
 from .widget import Widget
-from tryton.common.selection import SelectionMixin, selection_shortcuts, \
-    PopdownMixin
 
 
 class Selection(Widget, SelectionMixin, PopdownMixin):

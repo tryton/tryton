@@ -1,12 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gettext
 import datetime
+import gettext
 
-from gi.repository import Gdk, GObject, Gtk
-
-from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta
+from gi.repository import Gdk, GObject, Gtk
 
 from .common import IconFactory
 

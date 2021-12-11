@@ -1,10 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Translate"
-import os
-import locale
 import gettext
+import locale
 import logging
+import os
 import sys
 
 from gi.repository import Gtk

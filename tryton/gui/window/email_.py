@@ -4,20 +4,21 @@ import gettext
 import logging
 import os
 
-from gi.repository import Gtk, GLib, GObject
+from gi.repository import GLib, GObject, Gtk
+
 try:
     from gi.repository import GtkSpell
 except ImportError:
     GtkSpell = None
 
-from tryton.common import IconFactory, Tooltips, RPCExecute, RPCException
+from tryton.common import IconFactory, RPCException, RPCExecute, Tooltips
 from tryton.common.richtext import (
-    register_format, add_toolbar, get_content, set_content)
+    add_toolbar, get_content, register_format, set_content)
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
-from tryton.config import TRYTON_ICON, CONFIG
-from tryton.exceptions import TrytonServerError, TrytonError
+from tryton.config import CONFIG, TRYTON_ICON
+from tryton.exceptions import TrytonError, TrytonServerError
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
 

@@ -1,34 +1,33 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import os
 import gettext
+import os
 import webbrowser
-from functools import wraps, partial
+from functools import partial, wraps
 
 from gi.repository import Gdk, GLib, Gtk
 
-from tryton.gui.window.win_search import WinSearch
-from tryton.gui.window.win_form import WinForm
-from tryton.gui.window.view_form.screen import Screen
-from tryton.common import file_selection, file_open, file_write
 import tryton.common as common
+from tryton.common import data2pixbuf, file_open, file_selection, file_write
 from tryton.common.cellrendererbutton import CellRendererButton
-from tryton.common.cellrenderertext import CellRendererText, \
-    CellRendererTextCompletion
-from tryton.common.cellrenderertoggle import CellRendererToggle
+from tryton.common.cellrendererclickablepixbuf import (
+    CellRendererClickablePixbuf)
 from tryton.common.cellrenderercombo import CellRendererCombo
-from tryton.common.cellrendererinteger import CellRendererInteger
 from tryton.common.cellrendererfloat import CellRendererFloat
-from tryton.common.cellrendererclickablepixbuf import \
-    CellRendererClickablePixbuf
-from tryton.common import data2pixbuf
+from tryton.common.cellrendererinteger import CellRendererInteger
+from tryton.common.cellrenderertext import (
+    CellRendererText, CellRendererTextCompletion)
+from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.selection import (
-    SelectionMixin, PopdownMixin, selection_shortcuts)
 from tryton.common.datetime_ import CellRendererDate, CellRendererTime
 from tryton.common.domain_parser import quote
+from tryton.common.selection import (
+    PopdownMixin, SelectionMixin, selection_shortcuts)
 from tryton.config import CONFIG
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_form import WinForm
+from tryton.gui.window.win_search import WinSearch
 
 _ = gettext.gettext
 
