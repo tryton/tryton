@@ -2,13 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from io import BytesIO, TextIOWrapper
 
-from stdnum.es.ccc import calc_check_digits, to_iban
 from csb43 import csb43
+from stdnum.es.ccc import calc_check_digits, to_iban
 
 from trytond.i18n import gettext
-from trytond.pool import Pool, PoolMeta
-
 from trytond.modules.account_statement.exceptions import ImportStatementError
+from trytond.pool import Pool, PoolMeta
 
 
 class ImportStatementStart(metaclass=PoolMeta):
