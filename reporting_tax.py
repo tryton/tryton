@@ -2,35 +2,34 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import unicodedata
-from io import BytesIO, TextIOWrapper
-
 from collections import defaultdict
-from dateutil.relativedelta import relativedelta
 from decimal import Decimal
+from io import BytesIO, TextIOWrapper
 from operator import attrgetter
 
-from sql import Cast, Null, Literal
+from dateutil.relativedelta import relativedelta
+# XXX fix: https://genshi.edgewall.org/ticket/582
+from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
+from sql import Cast, Literal, Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import Substring, Position, Extract, CurrentTimestamp
+from sql.functions import CurrentTimestamp, Extract, Position, Substring
 from sql.operators import Exists
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.modelsql import convert_from
+from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.report import Report
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
-    Button
-from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
-from trytond.modules.currency.fields import Monetary
+from trytond.wizard import (
+    Button, StateReport, StateTransition, StateView, Wizard)
 
 from .exceptions import PrintError
 
-# XXX fix: https://genshi.edgewall.org/ticket/582
-from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
     def visit_NameConstant(self, node):
         if node.value is None:
