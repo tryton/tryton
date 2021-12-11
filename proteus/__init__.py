@@ -3,9 +3,9 @@
 '''
 A library to access Tryton's models like a client.
 '''
-import threading
 import datetime
 import functools
+import threading
 from decimal import Decimal
 
 import proteus.config

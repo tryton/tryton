@@ -10,8 +10,8 @@ import os
 import threading
 import urllib.parse
 import xmlrpc.client
-from decimal import Decimal
 from contextlib import contextmanager
+from decimal import Decimal
 
 __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 

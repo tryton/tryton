@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from unittest import TestCase
 
-from trytond.tests.test_tryton import db_exist, create_db
-
 from proteus import config
+from trytond.tests.test_tryton import create_db, db_exist
 
 
 class ProteusTestCase(TestCase):

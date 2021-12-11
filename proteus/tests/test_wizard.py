@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from proteus import Wizard, Model
+from proteus import Model, Wizard
+
 from .common import ProteusTestCase
 
 
