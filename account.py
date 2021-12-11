@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
-
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 class InvoiceLine(metaclass=PoolMeta):
