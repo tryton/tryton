@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.sale_credit_limit.tests.test_sale_credit_limit import suite  # noqa: E501
+    from trytond.modules.sale_credit_limit.tests.test_sale_credit_limit import \
+        suite  # noqa: E501
 except ImportError:
     from .test_sale_credit_limit import suite
 
