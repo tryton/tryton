@@ -3,11 +3,10 @@
 import datetime
 
 from trytond.i18n import gettext
-from trytond.pyson import Eval, If
-from trytond.pool import PoolMeta, Pool
-from trytond.wizard import StateAction
-
 from trytond.modules.stock_supply.exceptions import SupplyWarning
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
+from trytond.wizard import StateAction
 
 
 class OrderPoint(metaclass=PoolMeta):
