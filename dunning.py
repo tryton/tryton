@@ -1,15 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from itertools import chain, groupby
 from operator import attrgetter
-from itertools import groupby, chain
 
 from trytond.model import fields
-from trytond.pool import PoolMeta
-from trytond.wizard import StateReport
 from trytond.modules.company import CompanyReport
-from trytond.pool import Pool
-from trytond.transaction import Transaction
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
+from trytond.wizard import StateReport
 
 
 class Level(metaclass=PoolMeta):
