@@ -4,7 +4,7 @@ import json
 from operator import attrgetter
 
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.tools import slugify
 
 from .web import ShopVSFIdentifierMixin

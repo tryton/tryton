@@ -2,16 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
+
 from . import routes
 
 __all__ = ['register', 'routes']
 
-from . import carrier
-from . import ir
-from . import party
-from . import product
-from . import sale
-from . import web
+from . import carrier, ir, party, product, sale, web
 
 
 def register():

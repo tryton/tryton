@@ -3,15 +3,16 @@
 from functools import wraps
 
 import elasticsearch
-from elasticsearch import Elasticsearch, VERSION as ES_VERSION
+from elasticsearch import VERSION as ES_VERSION
+from elasticsearch import Elasticsearch
 
 from trytond.exceptions import RateLimitException
-from trytond.i18n import lazy_gettext, gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.model import ModelSQL, Unique, fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-from .exceptions import LoginException, NotFound, BadRequest
+from .exceptions import BadRequest, LoginException, NotFound
 
 
 def migrate_doc_type(func):

@@ -4,9 +4,8 @@
 from decimal import Decimal
 
 from trytond.i18n import gettext
-from trytond.pool import PoolMeta, Pool
-
 from trytond.modules.account.tax import TaxableMixin
+from trytond.pool import Pool, PoolMeta
 
 from .exceptions import BadRequest
 from .web import split_name

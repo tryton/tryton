@@ -1,20 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from stdnum import get_cc_module
+
 try:
     import phonenumbers
-    from phonenumbers import PhoneNumberFormat, NumberParseException
+    from phonenumbers import NumberParseException, PhoneNumberFormat
 except ImportError:
     phonenumbers = None
 
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pool import PoolMeta, Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import remove_forbidden_chars
 
 from .exceptions import BadRequest
-from .web import split_name, join_name
+from .web import join_name, split_name
 
 
 def remove_forbidden_chars(value):

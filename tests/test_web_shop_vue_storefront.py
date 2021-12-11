@@ -1,22 +1,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 import doctest
+import unittest
 from contextlib import contextmanager
 from decimal import Decimal
-
-from unittest.mock import patch, ANY
+from unittest.mock import ANY, patch
 
 from werkzeug.exceptions import Unauthorized
 
-from trytond.pool import Pool
-from trytond.tests.test_tryton import doctest_teardown, doctest_checker
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.transaction import Transaction
 from trytond.modules.company.tests import (
-    create_company, set_company, CompanyTestMixin)
+    CompanyTestMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import (
+    ModuleTestCase, doctest_checker, doctest_teardown)
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import with_transaction
+from trytond.transaction import Transaction
+
 from ..exceptions import LoginException
 
 CUSTOMER = {
