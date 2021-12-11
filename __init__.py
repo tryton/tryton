@@ -3,8 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import carrier
-from . import stock
+from . import carrier, stock
 
 
 def register():

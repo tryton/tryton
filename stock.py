@@ -1,23 +1,24 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import re
 import base64
-import requests
+import re
 import ssl
 import urllib.parse
 from itertools import zip_longest
+
+import requests
 
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateTransition, StateAction
-
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+from trytond.wizard import StateAction, StateTransition, Wizard
+
 from .exceptions import UPSError
 
 SERVER_URLS = {
