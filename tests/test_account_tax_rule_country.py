@@ -2,13 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.pool import Pool
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-
-from trytond.modules.company.tests import (
-    create_company, set_company, CompanyTestMixin)
 from trytond.modules.account.tests import create_chart
+from trytond.modules.company.tests import (
+    CompanyTestMixin, create_company, set_company)
+from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class AccountTaxRuleCountryTestCase(CompanyTestMixin, ModuleTestCase):
