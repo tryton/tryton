@@ -4,13 +4,12 @@ from decimal import Decimal
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow, Unique, fields
-from trytond.transaction import Transaction
-from trytond.pyson import Eval, If
-from trytond.pool import Pool, PoolMeta
-
+from trytond.model import ModelView, Unique, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
+from trytond.transaction import Transaction
 
 sale_shipment_cost_method = fields.Selection(
         'get_sale_shipment_cost_methods', "Sale Shipment Cost Method")

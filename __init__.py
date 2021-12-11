@@ -3,10 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import party
-from . import account
-from . import sale
-from . import stock
+from . import account, party, sale, stock
 
 
 def register():

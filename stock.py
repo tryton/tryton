@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
-from trytond.pyson import Eval, Bool
-from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
-
 from trytond.modules.product import price_digits, round_price
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval
+from trytond.transaction import Transaction
+
 from .exceptions import InvoiceShipmentCostError
 
 
