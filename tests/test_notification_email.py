@@ -6,7 +6,10 @@ import unittest
 from unittest.mock import ANY, patch
 
 from trytond.config import config
-from trytond.modules.company.tests import CompanyTestMixin
+try:
+    from trytond.modules.company.tests import CompanyTestMixin
+except ImportError:
+    CompanyTestMixin = object
 from trytond.modules.notification_email import \
     notification as notification_module
 from trytond.pool import Pool
