@@ -9,7 +9,8 @@ from trytond.config import config
 try:
     from trytond.modules.company.tests import CompanyTestMixin
 except ImportError:
-    CompanyTestMixin = object
+    class CompanyTestMixin:
+        pass
 from trytond.modules.notification_email import \
     notification as notification_module
 from trytond.pool import Pool
