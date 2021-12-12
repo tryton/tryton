@@ -6,7 +6,8 @@ import unittest
 try:
     from trytond.modules.company.tests import CompanyTestMixin
 except ImportError:
-    CompanyTestMixin = object
+    class CompanyTestMixin:
+        pass
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
