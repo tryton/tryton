@@ -3,7 +3,10 @@
 
 import unittest
 
-from trytond.modules.company.tests import CompanyTestMixin
+try:
+    from trytond.modules.company.tests import CompanyTestMixin
+except ImportError:
+    CompanyTestMixin = object
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
