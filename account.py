@@ -394,11 +394,11 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                     number, = numbers
                     if number.account.owners:
                         party = number.account.owners[0]
-                if not number:
+                else:
                     lines = Line.search([
                             ('statement.state', 'in', ['validated', 'posted']),
                             ('origin.keywords.bank_account', '=',
-                                keywords['bank_account']),
+                                bank_account),
                             ('party', '!=', None),
                             ],
                         order=[('date', 'DESC')], limit=1)
@@ -410,7 +410,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                     [('rec_name', 'ilike', keywords['party'])])
                 if len(parties) == 1:
                     party, = parties
-                if not party:
+                else:
                     lines = Line.search([
                             ('statement.state', 'in', ['validated', 'posted']),
                             ('origin.keywords.party', '=', keywords['party']),
