@@ -150,6 +150,8 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             ('cancelled', 'Cancelled'),
             ], 'State', readonly=True)
 
+    factors = fields.Dict(None, "Factors", readonly=True)
+
     @classmethod
     def __setup__(cls):
         super(LandedCost, cls).__setup__()
@@ -218,6 +220,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                     landed_cost.allocation_method)()
         cls.write(landed_costs, {
                 'posted_date': None,
+                'factors': None,
                 'state': 'cancelled',
                 })
 
@@ -293,10 +296,12 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                             product=product.rec_name))
 
     def allocate_cost_by_value(self):
-        self._allocate_cost(self._get_value_factors())
+        self.factors = self._get_value_factors()
+        self._allocate_cost(self.factors)
 
     def unallocate_cost_by_value(self):
-        self._allocate_cost(self._get_value_factors(), sign=-1)
+        factors = self.factors or self._get_value_factors()
+        self._allocate_cost(factors, sign=-1)
 
     def _get_value_factors(self):
         "Return the factor for each move based on value"
@@ -320,9 +325,10 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         for move in moves:
             quantity = Decimal(str(move.quantity))
             if not sum_value:
-                factors[move.id] = 1 / length
+                factors[str(move.id)] = 1 / length
             else:
-                factors[move.id] = quantity * unit_prices[move.id] / sum_value
+                factors[str(move.id)] = (
+                    quantity * unit_prices[move.id] / sum_value)
         return factors
 
     def _allocate_cost(self, factors, sign=1):
@@ -342,7 +348,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         difference = cost
         for move in moves:
             quantity = Decimal(str(move.quantity))
-            move_cost = cost * factors[move.id]
+            move_cost = cost * factors[str(move.id)]
             unit_landed_cost = round_price(
                 move_cost / quantity, rounding=ROUND_DOWN)
             costs.append({
@@ -382,6 +388,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         pool = Pool()
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
+        today = Date.today()
 
         for landed_cost in landed_costs:
             stock_moves = landed_cost.stock_moves()
@@ -396,9 +403,9 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             landed_cost._stock_move_filter_unused(stock_moves)
             getattr(landed_cost, 'allocate_cost_by_%s' %
                 landed_cost.allocation_method)()
-        cls.write(landed_costs, {
-                'posted_date': Date.today(),
-                })
+            landed_cost.posted_date = today
+        # Use save as allocate methods may modify the records
+        cls.save(landed_costs)
 
     @classmethod
     def create(cls, vlist):

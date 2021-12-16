@@ -171,6 +171,8 @@ Add landed cost::
     'posted'
     >>> bool(landed_cost.posted_date)
     True
+    >>> bool(landed_cost.factors)
+    True
 
 Check move unit price is 101::
 
@@ -191,6 +193,7 @@ Cancel landed cost reset unit price::
     >>> landed_cost.state
     'cancelled'
     >>> landed_cost.posted_date
+    >>> landed_cost.factors
 
     >>> shipment.reload()
     >>> sorted([m.unit_price for m in shipment.incoming_moves if m.quantity])
