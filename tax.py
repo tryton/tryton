@@ -279,6 +279,29 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         if values:
             cls.write(*values)
 
+        # Update parent
+        to_save = []
+        childs = cls.search([
+                ('company', '=', company_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            for child in childs:
+                if child.template:
+                    if not child.template_override:
+                        if child.template.parent:
+                            parent = template2tax_code[
+                                child.template.parent.id]
+                        else:
+                            parent = None
+                        old_parent = (
+                            child.parent.id if child.parent else None)
+                        if parent != old_parent:
+                            child.parent = parent
+                            to_save.append(child)
+            childs = sum((c.childs for c in childs), ())
+        cls.save(to_save)
+
 
 class TaxCodeLineTemplate(ModelSQL, ModelView):
     "Tax Code Line Template"
@@ -1093,6 +1116,28 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             childs = sum((c.childs for c in childs), ())
         if values:
             cls.write(*values)
+
+        # Update parent
+        to_save = []
+        childs = cls.search([
+                ('company', '=', company_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            for child in childs:
+                if child.template:
+                    if not child.template_override:
+                        if child.template.parent:
+                            parent = template2tax[child.template.parent.id]
+                        else:
+                            parent = None
+                        old_parent = (
+                            child.parent.id if child.parent else None)
+                        if parent != old_parent:
+                            child.parent = parent
+                            to_save.append(child)
+            childs = sum((c.childs for c in childs), ())
+        cls.save(to_save)
 
 
 class _TaxKey(dict):

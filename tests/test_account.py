@@ -1414,6 +1414,11 @@ class AccountTestCase(
                 self.assertEqual(type_.name, type_.template.name)
                 self.assertEqual(
                     type_.statement, type_.template.statement)
+                if type_.template.parent:
+                    self.assertEqual(
+                        type_.parent.name, type_.template.parent.name)
+                else:
+                    self.assertEqual(type_.parent, None)
 
             for account in Account.search([]):
                 self.assertEqual(account.name, account.template.name)
@@ -1431,6 +1436,11 @@ class AccountTestCase(
                 self.assertEqual(
                     set(t.template for t in account.taxes),
                     set(t for t in account.template.taxes))
+                if account.template.parent:
+                    self.assertEqual(
+                        account.parent.name, account.template.parent.name)
+                else:
+                    self.assertEqual(account.parent, None)
 
             for tax_code in TaxCode.search([]):
                 self.assertEqual(tax_code.name, tax_code.template.name)
@@ -1481,6 +1491,11 @@ class AccountTestCase(
             new_type.parent = root_type
             new_type.statement = 'balance'
             new_type.save()
+            updated_tax_type, = TypeTemplate.search([
+                    ('name', '=', "Tax"),
+                    ])
+            updated_tax_type.parent = updated_tax_type.parent.parent
+            updated_tax_type.save()
             new_account = AccountTemplate()
             new_account.name = 'New Account'
             new_account.parent = chart
@@ -1494,6 +1509,7 @@ class AccountTestCase(
                     'account', 'account_template_revenue_en'))
             updated_account.code = 'REV'
             updated_account.name = 'Updated Account'
+            updated_account.parent = new_account
             updated_account.reconcile = True
             updated_account.end_date = datetime.date.today()
             updated_account.taxes = [updated_tax]
