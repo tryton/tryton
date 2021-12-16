@@ -28,7 +28,8 @@ class Template(metaclass=PoolMeta):
             return pool.get('product.gross_price')
         return super(Template, cls).multivalue_model(field)
 
-    @fields.depends('gross_price', 'account_category')
+    @fields.depends(
+        'gross_price', 'account_category', methods=['customer_taxes_used'])
     def on_change_gross_price(self):
         pool = Pool()
         Tax = pool.get('account.tax')
