@@ -311,9 +311,12 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                         ('date', '<=', move.planned_date),
                         ],
                     order=[('date', 'DESC')]))
-            last_product_quantity, = (
-                ProductQuantitiesByWarehouse.search(
-                    [], order=[('date', 'DESC')], limit=1))
+            future_product_quantities = (
+                ProductQuantitiesByWarehouse.search([
+                        ('date', '>=', move.planned_date),
+                        ]))
+            min_future_product_quantity = min(
+                p.quantity for p in future_product_quantities)
         earlier_date = move.planned_date
         if product_quantities:
             assert product_quantities[0].date == move.planned_date
@@ -322,10 +325,10 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             min_quantity = (
                 product_quantities[0].quantity
                 + move.internal_quantity)
-            if last_product_quantity.quantity > 0:
+            if min_future_product_quantity > 0:
                 # The remaining quantities can be used
-                min_quantity -= last_product_quantity.quantity
-            if min_quantity >= 0:
+                min_quantity -= min_future_product_quantity
+            if min_quantity > 0:
                 for product_quantity in product_quantities[1:]:
                     if product_quantity.quantity < min_quantity:
                         break
