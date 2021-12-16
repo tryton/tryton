@@ -10,6 +10,7 @@
         view_id: null,
         modified: null,
         editable: null,
+        creatable: null,
         children_field: null,
         xml_parser: null,
         init: function(view_id, screen, xml) {

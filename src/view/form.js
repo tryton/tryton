@@ -275,6 +275,7 @@ function eval_pyson(value){
 
     Sao.View.Form = Sao.class_(Sao.View, {
         editable: true,
+        creatable: true,
         view_type: 'form',
         xml_parser: Sao.View.FormXMLViewParser,
         init: function(view_id, screen, xml) {
@@ -286,6 +287,9 @@ function eval_pyson(value){
             this.containers = [];
             this.widget_id = 0;
             Sao.View.Form._super.init.call(this, view_id, screen, xml);
+            if (this.attributes.creatable) {
+                this.creatable = Boolean(parseInt(this.attributes.creatable, 10));
+            }
         },
         get_fields: function() {
             return Object.keys(this.widgets);
@@ -3456,8 +3460,7 @@ function eval_pyson(value){
                         sequence, this.screen.new_position);
                 }
             }.bind(this);
-            if (this.screen.current_view.type == 'form' ||
-                    this.screen.current_view.editable) {
+            if (this.screen.current_view.creatable) {
                 this.screen.new_().then(update_sequence);
                 this.screen.current_view.el.prop('disabled', false);
             } else {

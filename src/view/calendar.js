@@ -83,6 +83,7 @@
     /* Fullcalendar works with utc date, the default week start day depends on
        the user language, the events dates are handled by moment object. */
         editable: false,
+        creatable: false,
         view_type: 'calendar',
         xml_parser: Sao.View.CalendarXMLViewParser,
         init: function(view_id, screen, xml) {

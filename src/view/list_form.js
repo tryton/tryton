@@ -4,7 +4,6 @@
     'use strict';
 
     Sao.View.ListGroupViewForm = Sao.class_(Sao.View.Form, {
-        editable: true,
         get record() {
             return this._record;
         },
@@ -14,10 +13,14 @@
     });
 
     Sao.View.ListForm = Sao.class_(Sao.View, {
+        editable: true,
+        creatable: true,
         view_type: 'list-form',
         init: function(view_id, screen, xml) {
             Sao.View.ListForm._super.init.call(this, view_id, screen, xml);
-            this.editable = true;
+            if (this.attributes.creatable) {
+                this.creatable = Boolean(parseInt(this.attributes.creatable, 10));
+            }
 
             this.form_xml = xml;
             this.el = jQuery('<ul/>', {
