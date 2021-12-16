@@ -485,6 +485,7 @@ class Form(SignalEvent, TabContent):
 
         msg = name + ' / ' + str(signal_data[1])
         if (signal_data[1] < signal_data[2]
+                and self.screen.limit is not None
                 and signal_data[2] > self.screen.limit):
             msg += _(' of ') + str(signal_data[2])
         self.status_label.set_text(msg)
