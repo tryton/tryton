@@ -1137,7 +1137,9 @@
                 this.buttons.switch_.prop('disabled',
                     this.attributes.view_ids > 1);
                 var msg = name + ' / ' + data[1];
-                if ((data[1] < data[2]) && (data[2] > this.screen.limit)) {
+                if ((data[1] < data[2]) &&
+                    this.screen.limit !== null &&
+                    (data[2] > this.screen.limit)) {
                     msg += Sao.i18n.gettext(' of ') + data[2];
                 }
                 this.status_label.text(msg).attr('title', msg);
