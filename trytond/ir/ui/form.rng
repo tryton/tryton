@@ -32,6 +32,17 @@
   </define>
   <define name="attlist.form" combine="interleave">
     <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">creatable</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.form" combine="interleave">
+    <optional>
       <attribute a:defaultValue="4">
         <name ns="">col</name>
         <text/>

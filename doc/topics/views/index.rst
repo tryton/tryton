@@ -204,6 +204,9 @@ Each form view must start with this tag.
         The method must be registered in :attr:`trytond.model.Model.__rpc__`.
       ..
 
+    * ``creatable``: A boolean to specify if the form can be used to create new
+      record. The default value is ``true``.
+
     * ``col``: see in common-attributes-col_.
 
     * ``cursor``: The name of the field that must have the cursor by default.
@@ -585,6 +588,9 @@ Each tree view must start with this tag.
     * ``on_write``: see form-attributes-on_write_.
 
     * ``editable``: A boolean to specify if the list is editable.
+
+    * ``creatable``: A boolean to specify if the editable list can be used to
+      create new record. The default value is ``true``.
 
     * ``sequence``: The name of the field that is used for sorting.  This field
       must be an integer and it will be updated to match the new sort order

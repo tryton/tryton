@@ -16,6 +16,8 @@ form =
      | vpaned)*
   }
 attlist.form &= attribute on_write { text }?
+attlist.form &=
+  [ a:defaultValue = "1" ] attribute creatable { "0" | "1" }?
 attlist.form &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.form &= attribute cursor { text }?
 
