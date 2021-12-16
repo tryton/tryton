@@ -47,6 +47,7 @@ def account_used(field_name, field_string=None):
 
 def template_property(field_name):
     @property
+    @fields.depends('template')
     def prop(self):
         return getattr(self.template, field_name)
     return prop
@@ -343,25 +344,30 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             ('accounting', '=', True),
             ])
 
+    @fields.depends('account_category')
     def get_account(self, name, **pattern):
         if self.account_category:
             return self.account_category.get_account(name, **pattern)
 
+    @fields.depends('account_category')
     def get_taxes(self, name):
         if self.account_category:
             return getattr(self.account_category, name)
 
     @property
+    @fields.depends('account_category', methods=['get_account'])
     @account_used('account_expense', 'account_category')
     def account_expense_used(self):
         pass
 
     @property
+    @fields.depends('account_category', methods=['get_account'])
     @account_used('account_revenue', 'account_category')
     def account_revenue_used(self):
         pass
 
     @property
+    @fields.depends(methods=['get_taxes', 'account_revenue_used'])
     def customer_taxes_used(self):
         taxes = self.get_taxes('customer_taxes_used')
         if taxes is None:
@@ -379,6 +385,7 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
         return taxes
 
     @property
+    @fields.depends(methods=['get_taxes', 'account_expense_used'])
     def supplier_taxes_used(self):
         taxes = self.get_taxes('supplier_taxes_used')
         if taxes is None:
@@ -396,6 +403,7 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
         return taxes
 
     @property
+    @fields.depends(methods=['get_taxes'])
     def supplier_taxes_deductible_rate_used(self):
         return self.get_taxes('supplier_taxes_deductible_rate_used')
 
