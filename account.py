@@ -198,6 +198,7 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         pool = Pool()
         Account = pool.get('account.account')
         GeneralLedger = pool.get('account.general_ledger.account')
+        context = Transaction().context
 
         res = {}
         for type_ in types:
@@ -210,10 +211,13 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         for type_ in childs:
             type_sum[type_.id] = Decimal('0.0')
 
-        start_period_ids = GeneralLedger.get_period_ids('start_%s' % name)
-        end_period_ids = GeneralLedger.get_period_ids('end_%s' % name)
-        period_ids = list(
-            set(end_period_ids).difference(set(start_period_ids)))
+        if context.get('start_period') or context.get('end_period'):
+            start_period_ids = GeneralLedger.get_period_ids('start_%s' % name)
+            end_period_ids = GeneralLedger.get_period_ids('end_%s' % name)
+            period_ids = list(
+                set(end_period_ids).difference(set(start_period_ids)))
+        else:
+            period_ids = None
 
         with Transaction().set_context(periods=period_ids):
             accounts = Account.search([
