@@ -1826,7 +1826,7 @@ class GeneralLedgerAccountContext(ModelView):
                 ()),
             ],
         states={
-            'invisible': (Eval('start_period', 'False')
+            'invisible': (Eval('start_period', False)
                 | Eval('end_period', False)),
             },
         depends=['to_date', 'start_period', 'end_period'])
@@ -1837,7 +1837,7 @@ class GeneralLedgerAccountContext(ModelView):
                 ()),
             ],
         states={
-            'invisible': (Eval('start_period', 'False')
+            'invisible': (Eval('start_period', False)
                 | Eval('end_period', False)),
             },
         depends=['from_date', 'start_period', 'end_period'])
@@ -1897,17 +1897,25 @@ class GeneralLedgerAccountContext(ModelView):
                 and self.end_period.fiscalyear != self.fiscalyear):
             self.end_period = None
 
+    @fields.depends('start_period')
     def on_change_start_period(self):
-        self.from_date = self.to_date = None
+        if self.start_period:
+            self.from_date = self.to_date = None
 
+    @fields.depends('end_period')
     def on_change_end_period(self):
-        self.from_date = self.to_date = None
+        if self.end_period:
+            self.from_date = self.to_date = None
 
+    @fields.depends('from_date')
     def on_change_from_date(self):
-        self.start_period = self.end_period = None
+        if self.from_date:
+            self.start_period = self.end_period = None
 
+    @fields.depends('to_date')
     def on_change_to_date(self):
-        self.start_period = self.end_period = None
+        if self.to_date:
+            self.start_period = self.end_period = None
 
 
 class GeneralLedgerAccountParty(_GeneralLedgerAccount):
