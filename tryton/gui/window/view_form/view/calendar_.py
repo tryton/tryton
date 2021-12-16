@@ -62,6 +62,7 @@ class CalendarXMLViewParser(XMLViewParser):
 
 class ViewCalendar(View):
     editable = False
+    creatable = False
     view_type = 'calendar'
     xml_parser = CalendarXMLViewParser
 

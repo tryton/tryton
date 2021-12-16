@@ -509,7 +509,8 @@ class Screen(SignalEvent):
     def number_of_views(self):
         return len(self.views) + len(self.view_to_load)
 
-    def switch_view(self, view_type=None, view_id=None, display=True):
+    def switch_view(
+            self, view_type=None, view_id=None, creatable=None, display=True):
         if view_id is not None:
             view_id = int(view_id)
         if self.current_view:
@@ -528,13 +529,15 @@ class Screen(SignalEvent):
         def found():
             if not self.current_view:
                 return False
-            elif not view_type and view_id is None:
-                return False
-            elif view_id is not None:
-                return self.current_view.view_id == view_id
-            else:
-                return self.current_view.view_type == view_type
-        while not found():
+            result = True
+            if view_type is not None:
+                result &= self.current_view.view_type == view_type
+            if view_id is not None:
+                result &= self.current_view.view_id == view_id
+            if creatable is not None:
+                result &= self.current_view.creatable == creatable
+            return result
+        for i in range(len(self.views) + len(self.view_to_load)):
             if len(self.view_to_load):
                 self.load_view_to_load()
                 self.__current_view = len(self.views) - 1
@@ -546,9 +549,7 @@ class Screen(SignalEvent):
             else:
                 self.__current_view = ((self.__current_view + 1)
                         % len(self.views))
-            if not view_type and view_id is None:
-                break
-            if view_type and not view_id and not len(self.view_to_load):
+            if found():
                 break
         self.screen_container.set(self.current_view.widget)
         if display:
@@ -616,9 +617,9 @@ class Screen(SignalEvent):
         previous_view = self.current_view
         if self.current_view.view_type == 'calendar':
             selected_date = self.current_view.get_selected_date()
-        if self.current_view and not self.current_view.editable:
-            self.switch_view('form', display=False)
-            if self.current_view.view_type != 'form':
+        if self.current_view and not self.current_view.creatable:
+            self.switch_view(creatable=True)
+            if not self.current_view.creatable:
                 return None
         if self.current_record:
             group = self.current_record.group

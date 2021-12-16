@@ -118,7 +118,7 @@ class EditableTreeView(TreeView):
         model = self.get_model()
         limit = (self.view.screen.size_limit is not None
             and (len(model) >= self.view.screen.size_limit >= 0))
-        if not access['create'] or limit:
+        if not self.view.creatable or not access['create'] or limit:
             return
         if self.view.screen.new_position == 0:
             method = model.prepend

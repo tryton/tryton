@@ -371,7 +371,7 @@ class One2Many(Widget):
                 self.screen.group.set_sequence(
                     field=sequence, position=self.screen.new_position)
 
-        if self.screen.current_view.editable:
+        if self.screen.current_view.creatable:
             self.screen.new()
             self.screen.current_view.widget.set_sensitive(True)
             update_sequence()

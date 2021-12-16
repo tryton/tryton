@@ -59,6 +59,7 @@ class ViewListForm(View):
 
     def __init__(self, view_id, screen, xml):
         super().__init__(view_id, screen, xml)
+        self.creatable = bool(int(self.attributes.get('creatable', 1)))
         self.view_type = 'list-form'
 
         self.form_xml = xml

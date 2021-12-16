@@ -1,3 +1,5 @@
+* Manage creatable attribute of view
+
 Version 6.2.0 - 2021-11-01
 * Bug fixes (see mercurial logs for details)
 * Support grouping attribute

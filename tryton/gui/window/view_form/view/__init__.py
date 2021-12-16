@@ -16,6 +16,7 @@ class View(object):
     view_id = None
     modified = None
     editable = None
+    creatable = None
     children_field = None
     scroll = None
     xml_parser = None

@@ -67,6 +67,7 @@ class GraphXMLViewParser(XMLViewParser):
 class ViewGraph(View):
     view_type = 'graph'
     editable = False
+    creatable = False
     xml_parser = GraphXMLViewParser
 
     def __init__(self, view_id, screen, xml):

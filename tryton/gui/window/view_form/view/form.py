@@ -461,6 +461,8 @@ class ViewForm(View):
 
         super().__init__(view_id, screen, xml)
 
+        self.creatable = bool(int(self.attributes.get('creatable', 1)))
+
     def get_fields(self):
         return list(self.widgets.keys())
 
