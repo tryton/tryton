@@ -14,10 +14,12 @@ class LandedCost(metaclass=PoolMeta):
         cls.allocation_method.selection.append(('weight', 'By Weight'))
 
     def allocate_cost_by_weight(self):
-        self._allocate_cost(self._get_weight_factors())
+        self.factors = self._get_weight_factors()
+        self._allocate_cost(self.factors)
 
     def unallocate_cost_by_weight(self):
-        self._allocate_cost(self._get_weight_factors(), sign=-1)
+        factors = self.factors or self._get_weight_factors()
+        self._allocate_cost(factors, sign=-1)
 
     def _get_weight_factors(self):
         "Return the factor for each move based on weight"
@@ -32,7 +34,7 @@ class LandedCost(metaclass=PoolMeta):
         length = Decimal(len(moves))
         for move in moves:
             if not sum_weight:
-                factors[move.id] = 1 / length
+                factors[str(move.id)] = 1 / length
             else:
-                factors[move.id] = weights[move.id] / sum_weight
+                factors[str(move.id)] = weights[move.id] / sum_weight
         return factors
