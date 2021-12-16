@@ -195,13 +195,13 @@ class QuantityIssue(
         If warehouses is specified it checks the stock only for them.
         """
         pool = Pool()
-        Company = pool.get('company.company')
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
         Product = pool.get('product.product')
         ProductQuantitiesByWarehouse = pool.get(
             'stock.product_quantities_warehouse')
+        User = pool.get('res.user')
 
         transaction = Transaction()
         today = Date.today()
@@ -210,7 +210,7 @@ class QuantityIssue(
                     ('type', '=', 'warehouse'),
                     ])
         if company is None:
-            company = Company(transaction.context.get('company'))
+            company = User(Transaction().user).company
 
         # Do not keep former open issues as they may no more be valid
         opens = cls.search([
