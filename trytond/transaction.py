@@ -207,6 +207,8 @@ class Transaction(object):
                     datamanager.commit(self)
                 for datamanager in self._datamanagers:
                     datamanager.tpc_vote(self)
+            for cache in self.cache.values():
+                cache.clear()
             self.connection.commit()
         except:
             self.rollback()
