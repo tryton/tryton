@@ -1058,7 +1058,9 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                     ('start_date', '<=', date),
                     ('end_date', '>=', date),
                     ('company', '=', company),
-                    ], limit=1)
+                    ],
+                order=[('start_date', 'DESC')],
+                limit=1)
             if fiscalyears:
                 fiscalyear_id = fiscalyears[0].id
             else:
@@ -1509,17 +1511,28 @@ class OpenAccount(Wizard):
     open_ = StateAction('account.act_move_line_form')
 
     def do_open_(self, action):
-        FiscalYear = Pool().get('account.fiscalyear')
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        context = Transaction().context
 
-        if not Transaction().context.get('fiscalyear'):
+        company_id = self.record.company.id if self.record else -1
+        date = context.get('date')
+        fiscalyear = context.get('fiscalyear')
+        if date:
+            fiscalyears = FiscalYear.search([
+                    ('start_date', '<=', date),
+                    ('end_date', '>=', date),
+                    ('company', '=', company_id),
+                    ],
+                order=[('start_date', 'DESC')],
+                limit=1)
+        elif fiscalyear:
+            fiscalyears = [FiscalYear(fiscalyear)]
+        else:
             fiscalyears = FiscalYear.search([
                     ('state', '=', 'open'),
-                    ('company', '=',
-                        self.record.company.id if self.record else None),
+                    ('company', '=', company_id),
                     ])
-        else:
-            fiscalyears = [FiscalYear(Transaction().context['fiscalyear'])]
-
         periods = [p for f in fiscalyears for p in f.periods]
 
         action['pyson_domain'] = [
