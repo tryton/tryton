@@ -226,19 +226,18 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         If warehouses is specified it searches only for moves from them.
         """
         pool = Pool()
-        Company = pool.get('company.company')
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
+        User = pool.get('res.user')
 
-        transaction = Transaction()
         today = Date.today()
         if warehouses is None:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
                     ])
         if company is None:
-            company = Company(transaction.context.get('company'))
+            company = User(Transaction().user).company
 
         # Do not keep former plan as the may no more be valid
         opens = cls.search([
@@ -260,6 +259,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
 
         for warehouse in warehouses:
             moves = Move.search([
+                    ('company', '=', company.id),
                     ('from_location', 'child_of', [warehouse.id], 'parent'),
                     ('to_location', 'not child_of', [warehouse.id], 'parent'),
                     ('planned_date', '>', today),
