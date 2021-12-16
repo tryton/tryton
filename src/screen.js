@@ -638,7 +638,7 @@
         init: function(format, id) {
             this.format = format;
             Sao.ScreenContainer.BetweenDates._super.init.call(this, id);
-            this.from.on('dp.change', this._from_changed.bind(this));
+            this.from.change(this._from_changed.bind(this));
         },
         _get_value: function(entry, value) {
             return entry.find('input[type=text]').val();
