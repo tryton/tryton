@@ -399,6 +399,26 @@ class Type(
         if values:
             self.write(*values)
 
+        # Update parent
+        to_save = []
+        childs = [self]
+        while childs:
+            for child in childs:
+                if child.template:
+                    if not child.template_override:
+                        if child.template.parent:
+                            parent = template2type[
+                                child.template.parent.id]
+                        else:
+                            parent = None
+                        old_parent = (
+                            child.parent.id if child.parent else None)
+                        if parent != old_parent:
+                            child.parent = parent
+                            to_save.append(child)
+            childs = sum((c.childs for c in childs), ())
+        self.__class__.save(to_save)
+
 
 class OpenType(Wizard):
     'Open Type'
@@ -1220,6 +1240,13 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                                     for x in child.template.taxes
                                     if x.id in template2tax])]
                         break
+                if child.template.parent:
+                    parent = template2account[child.template.parent.id]
+                else:
+                    parent = None
+                old_parent = child.parent.id if child.parent else None
+                if parent != old_parent:
+                    values['parent'] = parent
                 if child.template.replaced_by:
                     replaced_by = template2account[
                         child.template.replaced_by.id]
