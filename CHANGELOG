@@ -1,3 +1,5 @@
+* Add support for Python 3.10
+* Remove support for Python 3.6
 * Add delay to sending email
 
 Version 6.2.0 - 2021-11-01
