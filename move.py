@@ -157,7 +157,8 @@ class StockMixin(object):
             }.get(operator_, lambda v, l: False)
         record_ids = []
         for key, quantity in pbl.items():
-            if operator_(quantity, operand):
+            if (quantity is not None and operand is not None
+                    and operator_(quantity, operand)):
                 # pbl could return None in some keys
                 if key[position] is not None:
                     record_ids.append(key[position])
