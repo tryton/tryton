@@ -1,3 +1,5 @@
+* Add support for Python 3.10
+* Remove support for Python 3.6
 * Rename generate_message button to sepa_generate_message
 
 Version 6.2.0 - 2021-11-01
