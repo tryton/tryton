@@ -1,15 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import binascii
-import os
-
-try:
-    from secrets import token_hex
-except ImportError:
-    def token_hex(nbytes=None):
-        if nbytes is None:
-            nbytes = 32
-        return binascii.hexlify(os.urandom(nbytes)).decode('ascii')
+from secrets import token_hex
 
 from sql.conditionals import NullIf
 from sql.operators import Equal
