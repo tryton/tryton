@@ -9,6 +9,7 @@ import math
 import subprocess
 import tempfile
 import time
+import unicodedata
 import warnings
 import zipfile
 import operator
@@ -163,7 +164,8 @@ class Report(URLMixin, PoolBase):
                 - len(str(record_count)) - 2)
             for record in records[:5]:
                 record_name = record.rec_name
-                name_length += len(record_name) + 1
+                name_length += len(
+                    unicodedata.normalize('NFKD', record_name)) + 1
                 if name_length > max_length:
                     break
                 names.append(record_name)
