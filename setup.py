@@ -86,15 +86,15 @@ setup(name=name,
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries :: Python Modules'
         ],
     platforms='any',
     license='GPL-3',
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     install_requires=requires,
     entry_points={
         'trytond.backend': [
