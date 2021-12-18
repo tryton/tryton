@@ -9,6 +9,7 @@ import time
 import urllib.parse
 import warnings
 from email.header import Header
+from secrets import token_hex
 
 try:
     import bcrypt
@@ -25,7 +26,6 @@ from sql.operators import Equal
 
 from trytond.config import config
 from trytond.exceptions import RateLimitException
-from trytond.ir.session import token_hex
 from trytond.model import (
     DeactivableMixin, Exclude, ModelSQL, ModelView, Unique, avatar_mixin,
     fields)
