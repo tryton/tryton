@@ -9,6 +9,7 @@ import os
 import subprocess
 import tempfile
 import time
+import unicodedata
 import warnings
 import zipfile
 from email.mime.multipart import MIMEMultipart
@@ -174,7 +175,8 @@ class Report(URLMixin, PoolBase):
                     record_name = template.generate(record=record).render()
                 else:
                     record_name = record.rec_name
-                name_length += len(record_name) + 1
+                name_length += len(
+                    unicodedata.normalize('NFKD', record_name)) + 1
                 if name_length > max_length:
                     break
                 names.append(record_name)
