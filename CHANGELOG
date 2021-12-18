@@ -1,3 +1,5 @@
+* Add support for Python 3.10
+* Remove support for Python 3.6
 * Manage creatable attribute of view
 
 Version 6.2.0 - 2021-11-01

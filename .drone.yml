@@ -26,11 +26,11 @@ pipeline:
 
 matrix:
     include:
-        - IMAGE: tryton/tryton-test:3.6
-          TOXENV: py36
         - IMAGE: tryton/tryton-test:3.7
           TOXENV: py37
         - IMAGE: tryton/tryton-test:3.8
           TOXENV: py38
         - IMAGE: tryton/tryton-test:3.9
           TOXENV: py39
+        - IMAGE: tryton/tryton-test:3.10
+          TOXENV: py310
