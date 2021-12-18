@@ -180,6 +180,10 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 self.amount = self.invoice_line.amount
 
     @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
     def default_state(cls):
         return 'draft'
 
