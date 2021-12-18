@@ -1,3 +1,5 @@
+* Add support for Python 3.10
+* Remove support for Python 3.6
 * Add creatable attribute on tree and form views
 * Fill local cache of Function field instances with values
 * Cache Function field getter without context in readonly transactions

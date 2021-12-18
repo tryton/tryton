@@ -55,10 +55,7 @@ def run(options):
             console = Console(local, histsize=options.histsize)
             banner = "Tryton %s, Python %s on %s" % (
                 __version__, sys.version, sys.platform)
-            kwargs = {}
-            if sys.version_info >= (3, 6):
-                kwargs['exitmsg'] = ''
-            console.interact(banner=banner, **kwargs)
+            console.interact(banner=banner, exitmsg='')
         else:
             console = InteractiveConsole(local)
             console.runcode(sys.stdin.read())
