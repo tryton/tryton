@@ -75,7 +75,9 @@ class ShipmentAssignMixin(ShipmentMixin):
     def _get_assign_domain(cls):
         pool = Pool()
         Date = pool.get('ir.date')
+        context = Transaction().context
         return [
+            ('company', '=', context.get('company')),
             ('state', '=', 'waiting'),
             ('planned_date', '=', Date.today()),
             ]
