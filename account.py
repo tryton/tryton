@@ -2269,27 +2269,41 @@ class IncomeStatementContext(ModelView):
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '<=', (Eval('end_period'), 'start_date'))
             ],
-        depends=['end_period', 'fiscalyear'])
+        states={
+            'invisible': Eval('from_date', False) | Eval('to_date', False),
+            },
+        depends=['end_period', 'fiscalyear', 'from_date', 'to_date'])
     end_period = fields.Many2One('account.period', 'End Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '>=', (Eval('start_period'), 'start_date')),
             ],
-        depends=['start_period', 'fiscalyear'])
+        states={
+            'invisible': Eval('from_date', False) | Eval('to_date', False),
+            },
+        depends=['start_period', 'fiscalyear', 'from_date', 'to_date'])
     from_date = fields.Date("From Date",
         domain=[
             If(Eval('to_date') & Eval('from_date'),
                 ('from_date', '<=', Eval('to_date')),
                 ()),
             ],
-        depends=['to_date'])
+        states={
+            'invisible': (
+                Eval('start_period', False) | Eval('end_period', False)),
+            },
+        depends=['to_date', 'start_period', 'end_period'])
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('to_date', '>=', Eval('from_date')),
                 ()),
             ],
-        depends=['from_date'])
+        states={
+            'invisible': (
+                Eval('start_period', False) | Eval('end_period', False)),
+            },
+        depends=['from_date', 'start_period', 'end_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help="Only include posted moves.")
     comparison = fields.Boolean('Comparison')
@@ -2359,10 +2373,34 @@ class IncomeStatementContext(ModelView):
     def default_comparison(cls):
         return False
 
-    @fields.depends('fiscalyear')
+    @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
-        self.start_period = None
-        self.end_period = None
+        if (self.start_period
+                and self.start_period.fiscalyear != self.fiscalyear):
+            self.start_period = None
+        if (self.end_period
+                and self.end_period.fiscalyear != self.fiscalyear):
+            self.end_period = None
+
+    @fields.depends('start_period')
+    def on_change_start_period(self):
+        if self.start_period:
+            self.from_date = self.to_date = None
+
+    @fields.depends('end_period')
+    def on_change_end_period(self):
+        if self.end_period:
+            self.from_date = self.to_date = None
+
+    @fields.depends('from_date')
+    def on_change_from_date(self):
+        if self.from_date:
+            self.start_period = self.end_period = None
+
+    @fields.depends('to_date')
+    def on_change_to_date(self):
+        if self.to_date:
+            self.start_period = self.end_period = None
 
     @classmethod
     def view_attributes(cls):
