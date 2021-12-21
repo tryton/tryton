@@ -115,13 +115,20 @@ class Shop(metaclass=PoolMeta):
                     and payment_journal.match(pattern)):
                 return payment_journal.journal
 
+    def managed_metafields(self):
+        return set()
+
     def __sync_metafields(self, resource, metafields):
+        metafields = metafields.copy()
+        managed_metafields = self.managed_metafields()
+        assert metafields.keys() <= managed_metafields
         for metafield in resource.metafields():
             key = '.'.join([metafield.namespace, metafield.key])
             value = metafield.to_dict()
             if key not in metafields:
-                metafield.destroy()
-                time.sleep(BACKOFF_TIME)
+                if key in managed_metafields:
+                    metafield.destroy()
+                    time.sleep(BACKOFF_TIME)
             elif metafields[key] != value:
                 for k, v in metafields.pop(key).items():
                     setattr(metafield, k, v)

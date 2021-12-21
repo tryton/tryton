@@ -70,6 +70,12 @@ Set metafields to product::
 
     >>> Template.get_shopify_metafields = get_shopify_metafields
 
+    >>> from trytond.modules.web_shop_shopify.web import Shop
+    >>> def managed_metafields(self):
+    ...     return {'global.test'}
+
+    >>> Shop.managed_metafields = managed_metafields
+
 Create country::
 
     >>> belgium = Country(name="Belgium", code='BE')
