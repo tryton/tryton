@@ -3,13 +3,13 @@
 from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, combinations, groupby, islice
-from operator import itemgetter
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal, Null
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import CharLength
+from sql.functions import Abs, CharLength, Round
+from sql.operators import Exists
 
 from trytond import backend
 from trytond.config import config
@@ -254,7 +254,6 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         actions = iter(args)
-        all_moves = set()
         args = []
         for moves, values in zip(actions, actions):
             keys = list(values.keys())
@@ -264,10 +263,7 @@ class Move(ModelSQL, ModelView):
             if len(keys):
                 cls.check_modify(moves)
             args.extend((moves, values))
-            all_moves.update(moves)
         super(Move, cls).write(*args)
-        if not Transaction().context.get('_skip_validate_move', False):
-            cls.validate_move(cls.browse(all_moves))
 
     @classmethod
     def create(cls, vlist):
@@ -292,9 +288,7 @@ class Move(ModelSQL, ModelView):
                     if sequence:
                         vals['number'] = sequence.get()
 
-        moves = super(Move, cls).create(vlist)
-        cls.validate_move(moves)
-        return moves
+        return super().create(vlist)
 
     @classmethod
     def delete(cls, moves):
@@ -323,54 +317,43 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         line = MoveLine.__table__()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
-        cursor = Transaction().connection.cursor()
+        for company, moves in groupby(moves, key=lambda m: m.company):
+            currency = company.currency
+            for sub_moves in grouped_slice(list(moves)):
+                red_sql = reduce_ids(line.move, [m.id for m in sub_moves])
 
-        amounts = {}
-        move2draft_lines = {}
-        for sub_move_ids in grouped_slice([m.id for m in moves]):
-            red_sql = reduce_ids(line.move, sub_move_ids)
-
-            cursor.execute(*line.select(line.move,
-                    Sum(line.debit - line.credit),
+                valid_move_query = line.select(
+                    line.move,
                     where=red_sql,
-                    group_by=line.move))
-            amounts.update(dict(cursor))
+                    group_by=line.move,
+                    having=Abs(Round(
+                            Sum(line.debit - line.credit),
+                            currency.digits)) < abs(currency.rounding))
+                cursor.execute(*line.update(
+                        [line.state],
+                        ['valid'],
+                        where=line.move.in_(valid_move_query)))
 
-            cursor.execute(*line.select(line.move, line.id,
-                    where=red_sql & (line.state == 'draft'),
-                    order_by=line.move))
-            move2draft_lines.update(dict((k, [j[1] for j in g])
-                    for k, g in groupby(cursor, itemgetter(0))))
+                draft_move_query = line.select(
+                    line.move,
+                    where=red_sql,
+                    group_by=line.move,
+                    having=Abs(Round(
+                            Sum(line.debit - line.credit),
+                            currency.digits)) >= abs(currency.rounding))
+                cursor.execute(*line.update(
+                        [line.state],
+                        ['draft'],
+                        where=line.move.in_(draft_move_query)))
 
-        valid_moves = []
-        draft_moves = []
-        for move in moves:
-            if move.id not in amounts:
-                continue
-            amount = amounts[move.id]
-            # SQLite uses float for SUM
-            if not isinstance(amount, Decimal):
-                amount = Decimal(amount)
-            draft_lines = MoveLine.browse(move2draft_lines.get(move.id, []))
-            if not move.company.currency.is_zero(amount):
-                draft_moves.append(move.id)
-                continue
-            if not draft_lines:
-                continue
-            valid_moves.append(move.id)
-        for move_ids, state in (
-                (valid_moves, 'valid'),
-                (draft_moves, 'draft'),
-                ):
-            if move_ids:
-                for sub_ids in grouped_slice(move_ids):
-                    red_sql = reduce_ids(line.move, sub_ids)
-                    # Use SQL to prevent double validate loop
-                    cursor.execute(*line.update(
-                            columns=[line.state],
-                            values=[state],
-                            where=red_sql))
+        Transaction().counter += 1
+        for cache in Transaction().cache.values():
+            if MoveLine.__name__ in cache:
+                cache_cls = cache[MoveLine.__name__]
+                cache_cls.clear()
 
     def _cancel_default(self):
         'Return default dictionary to cancel move'
@@ -421,35 +404,69 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         Date = pool.get('ir.date')
         Line = pool.get('account.move.line')
+        move = cls.__table__()
+        line = Line.__table__()
+        cursor = Transaction().connection.cursor()
 
-        for move in moves:
-            amount = Decimal('0.0')
-            if not move.lines:
-                raise PostError(
-                    gettext('account.msg_post_empty_move', move=move.rec_name))
-            company = None
-            for line in move.lines:
-                amount += line.debit - line.credit
-                if not company:
-                    company = line.account.company
-            if not company.currency.is_zero(amount):
-                raise PostError(
-                    gettext('account.msg_post_unbalanced_move',
-                        move=move.rec_name))
+        to_reconcile = []
+
+        for company, c_moves in groupby(moves, lambda m: m.company):
+            currency = company.currency
+            for sub_moves in grouped_slice(list(c_moves)):
+                sub_moves_ids = [m.id for m in sub_moves]
+
+                cursor.execute(*move.select(
+                        move.id,
+                        where=reduce_ids(move.id, sub_moves_ids)
+                        & ~Exists(line.select(
+                                line.move,
+                                where=line.move == move.id))))
+                try:
+                    move_id, = cursor.fetchone()
+                except TypeError:
+                    pass
+                else:
+                    raise PostError(
+                        gettext('account.msg_post_empty_move',
+                            move=cls(move_id).rec_name))
+
+                cursor.execute(*line.select(
+                        line.move,
+                        where=reduce_ids(line.move, sub_moves_ids),
+                        group_by=line.move,
+                        having=Abs(Round(
+                                Sum(line.debit - line.credit),
+                                currency.digits)) >= abs(currency.rounding)))
+                try:
+                    move_id, = cursor.fetchone()
+                except TypeError:
+                    pass
+                else:
+                    raise PostError(
+                        gettext('account.msg_post_unbalanced_move',
+                            move=cls(move_id).rec_name))
+
+                cursor.execute(*line.select(
+                        line.id,
+                        where=reduce_ids(line.move, sub_moves_ids)
+                        & (line.debit == Decimal(0))
+                        & (line.credit == Decimal(0))))
+                to_reconcile.extend(l for l, in cursor)
+
         for move in moves:
             move.state = 'posted'
             if not move.post_number:
                 move.post_date = Date.today()
                 move.post_number = move.period.post_move_sequence_used.get()
 
-            def keyfunc(l):
-                return l.party, l.account
-            to_reconcile = [l for l in move.lines
-                if ((l.debit == l.credit == Decimal('0'))
-                    and l.account.reconcile)]
-            to_reconcile = sorted(to_reconcile, key=keyfunc)
-            for _, zero_lines in groupby(to_reconcile, keyfunc):
-                Line.reconcile(list(zero_lines))
+        def keyfunc(line):
+            return line.party, line.account
+        to_reconcile = Line.browse(sorted(
+                [l for l in Line.browse(to_reconcile) if l.account.reconcile],
+                key=keyfunc))
+        for _, lines in groupby(to_reconcile, keyfunc):
+            Line.reconcile(list(lines))
+
         cls.save(moves)
 
 
@@ -640,10 +657,9 @@ class MoveLineMixin:
             return
         moves = {line.move for line in lines}
         moves = Move.browse(moves)
-        with Transaction().set_context(_skip_validate_move=True):
-            Move.write(moves, {
-                    name: value,
-                    })
+        Move.write(moves, {
+                name: value,
+                })
 
     @classmethod
     def search_move_field(cls, name, clause):
