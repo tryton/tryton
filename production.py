@@ -773,7 +773,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def _get_reschedule_domain(cls, date):
+        context = Transaction().context
         return [
+            ('company', '=', context.get('company')),
             ('state', '=', 'waiting'),
             ('planned_start_date', '<', date),
             ]
