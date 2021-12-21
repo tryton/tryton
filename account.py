@@ -264,6 +264,7 @@ class BudgetContext(ModelView):
         'account.period', None, None, "Periods",
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear', -1)),
+            ('type', '=', 'standard'),
             ],
         depends=['fiscalyear'])
 
@@ -522,6 +523,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
     def _get_amount_query(cls, records, context):
         pool = Pool()
         Line = pool.get('account.move.line')
+        Period = pool.get('account.period')
 
         table = cls.__table__()
         children = cls.__table__()
@@ -531,7 +533,10 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         red_sql = reduce_ids(table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
-            periods = None
+            periods = [p.id for p in Period.search([
+                        ('fiscalyear', '=', context.get('fiscalyear')),
+                        ('type', '=', 'standard'),
+                        ])]
         with Transaction().set_context(context, periods=periods):
             query_where, _ = Line.query_get(line)
         return (table
@@ -596,7 +601,10 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         'on_change_with_fiscalyear')
     period = fields.Many2One(
         'account.period', "Period", required=True,
-        domain=[('fiscalyear', '=', Eval('fiscalyear', -1))],
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
+            ('type', '=', 'standard'),
+            ],
         depends=['fiscalyear'])
     currency = fields.Function(
         fields.Many2One('currency.currency', "Currency"),
@@ -661,6 +669,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         BudgetLine = pool.get('account.budget.line')
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
+        Period = pool.get('account.period')
 
         table = cls.__table__()
         budget_line = BudgetLine.__table__()
@@ -672,7 +681,11 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         red_sql = reduce_ids(table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
-            periods = None
+            periods = [p.id for p in Period.search([
+                        ('fiscalyear', '=', context.get('fiscalyear')),
+                        ('type', '=', 'standard'),
+                        ])]
+
         with Transaction().set_context(context, periods=periods):
             query_where, _ = MoveLine.query_get(line)
         return (table
@@ -808,6 +821,7 @@ class CreatePeriods(Wizard):
         Period = pool.get('account.budget.line.period')
         account_periods = AccountPeriod.search([
                 ('fiscalyear', '=', self.record.budget.fiscalyear.id),
+                ('type', '=', 'standard'),
                 ])
         periods = self.record.create_period(self.start.method, account_periods)
         Period.save(periods)
