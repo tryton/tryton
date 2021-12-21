@@ -189,7 +189,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     def queue_trigger_action(self, records):
         trigger_records = Transaction().trigger_records[self.id]
-        ids = set(map(int, records)) - trigger_records
+        ids = {r.id for r in records if self.eval(r)} - trigger_records
         if ids:
             self.__class__.__queue__.trigger_action(self, list(ids))
             trigger_records.update(ids)
