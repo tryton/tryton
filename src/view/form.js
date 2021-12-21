@@ -932,14 +932,12 @@ function eval_pyson(value){
                 'aria-controls': this.collapsible.attr('id'),
                 'aria-expanded': attributes.expandable == '1',
             }).appendTo(title);
-            link.append(jQuery('<div/>', {
-                'class': 'btn btn-sm',
-            }).append(jQuery('<span/>', {
-                'class': 'caret',
-            })));
             if (attributes.string) {
                 link.text(attributes.string);
             }
+            link.append(jQuery('<span/>', {
+                'class': 'caret',
+            }));
         },
         add: function(widget) {
             this.body.empty();
