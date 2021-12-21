@@ -196,6 +196,26 @@ default_name
 The name of the database to use for operations without a database name.
 Default: ``template1`` for PostgreSQL, ``:memory:`` for SQLite.
 
+timeout
+~~~~~~~
+
+The timeout duration in seconds after which the connections to unused databases
+are closed.
+Default: ``1800`` (30 minutes)
+
+minconn
+~~~~~~~
+
+The minimum number of connections to keep in the pool (if the backend supports
+pool) per process.
+Default: ``1``
+
+maxconn
+~~~~~~~
+
+The maximum number of simultaneous connections to the database per process.
+Default: ``64``
+
 request
 -------
 
