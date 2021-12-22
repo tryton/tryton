@@ -1842,7 +1842,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 Eval('_parent_invoice', {}).get('accounting_date'),
                 Eval('_parent_invoice', {}).get('invoice_date')),
             },
-        depends=['type', 'invoice_type', 'company'] + _depends)
+        depends=['type', 'company'] + _depends)
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
         states={
