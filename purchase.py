@@ -16,8 +16,6 @@ class Purchase(order_mixin('purchase'), metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     def create_move(self, move_type):
-        pool = Pool()
-        Move = pool.get('stock.move')
         moves = super().create_move(move_type)
         for line in self.lines:
             if line.components:
