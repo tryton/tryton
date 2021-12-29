@@ -642,6 +642,7 @@ class Line(
         depends=['company'])
     invoice = fields.Many2One('account.invoice', 'Invoice',
         domain=[
+            ('company', '=', Eval('company', -1)),
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
             If(Bool(Eval('account')), [('account', '=', Eval('account'))], []),
             If(Eval('statement_state') == 'draft',
@@ -649,7 +650,7 @@ class Line(
                 ('state', '!=', '')),
             ],
         states=_states,
-        depends=['party', 'account'] + _depends)
+        depends=['company', 'party', 'account'] + _depends)
     origin = fields.Many2One('account.statement.origin', 'Origin',
         readonly=True,
         states={
