@@ -64,7 +64,8 @@ this repository contains the full copyright notices and license terms. -->
             action="act_uom_category_form"
             sequence="20"
             id="menu_uom_category_form"/>
-
+    </data>
+    <data noupdate="1">
         <record model="product.uom.category" id="uom_cat_unit">
             <field name="name">Units</field>
         </record>
