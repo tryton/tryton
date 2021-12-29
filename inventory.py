@@ -343,7 +343,7 @@ class InventoryLine(ModelSQL, ModelView):
         },
         help="The quantity the system calculated should be in the location.")
     quantity = fields.Float(
-        "Quantity", digits='uom', states=_states, depends=_depends,
+        "Actual Quantity", digits='uom', states=_states, depends=_depends,
         help="The actual quantity found in the location.")
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
