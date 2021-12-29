@@ -291,6 +291,68 @@ class UserTestCase(unittest.TestCase):
         self.assertEqual(LoginAttempt.count('user', None), 1)
         self.assertEqual(LoginAttempt.count('user', cookie), 0)
 
+    @with_transaction()
+    def test_authentication_option_ip_address(self):
+        "Test authentication with ip_address option"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(login='user')
+        user.save()
+
+        ip_network = config.get(
+            'session', 'authentication_ip_network', default='')
+        config.set(
+            'session', 'authentication_ip_network',
+            '192.168.0.0/16,127.0.0.0/8')
+        self.addCleanup(
+            config.set, 'session', 'authentication_ip_network', ip_network)
+
+        with patch.object(User, '_login_always', create=True) as always, \
+                patch.object(User, '_login_never', create=True) as never:
+            always.return_value = user.id
+            never.return_value = None
+
+            with set_authentications('always+never?ip_address'):
+                for address, result in [
+                        ('192.168.0.1', user.id),
+                        ('172.17.0.1', None),
+                        ('127.0.0.1', user.id),
+                        ]:
+                    with self.subTest(address=address):
+                        with Transaction().set_context(_request={
+                                    'remote_addr': address,
+                                    }):
+                            self.assertEqual(
+                                User.get_login('user', {}), result)
+
+    @with_transaction()
+    def test_authentication_option_device_cookie(self):
+        "Test authentication with device cookie option"
+        pool = Pool()
+        User = pool.get('res.user')
+        UserDevice = pool.get('res.user.device')
+
+        user = User(login='user')
+        user.save()
+        with Transaction().set_user(user.id):
+            cookie = UserDevice.renew(None)
+
+        with patch.object(User, '_login_always', create=True) as always, \
+                patch.object(User, '_login_never', create=True) as never:
+            always.return_value = user.id
+            never.return_value = None
+
+            with set_authentications('always+never?device_cookie'):
+                for value, result in [
+                        (cookie, user.id),
+                        ('not cookie', None),
+                        ]:
+                    with self.subTest(cookie=value):
+                        self.assertEqual(
+                            User.get_login('user', {'device_cookie': value}),
+                            result)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(UserTestCase)

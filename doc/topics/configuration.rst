@@ -405,12 +405,34 @@ Example::
 
     authentications = password+sms,ldap
 
+Each combined method can have options to skip them if they are met except for
+the first method.
+They are defined by appending their name to the method name after a question
+mark (``?``) and separated by colons (``:``).
+
+Example::
+
+   authentications = password+sms?ip_address:device_cookie
+
+
 By default, Tryton only supports the ``password`` method.  This method compares
 the password entered by the user against a stored hash of the user's password.
-Other modules can define additional authentication methods, please refer to
-their documentation for more information.
+By default, Tryton supports the ``ip_address`` and ``device_cookie`` options.
+The ``ip_address`` compares the client IP address with the known network list
+defined in `authentication_ip_network`_.
+The ``device_cookie`` checks the client device is a known device of the user.
+Other modules can define additional authentication methods and options, please
+refer to their documentation for more information.
 
 Default: ``password``
+
+authentication_ip_network
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A comma separated list of known IP networks used to check for ``ip_address``
+authentication method option.
+
+Default: ``''``
 
 max_age
 ~~~~~~~

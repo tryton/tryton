@@ -670,6 +670,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         LoginAttempt = pool.get('res.user.login.attempt')
         UserDevice = pool.get('res.user.device')
+        parameters = parameters.copy()
 
         count_ip = LoginAttempt.count_ip()
         if count_ip > config.getint(
@@ -678,6 +679,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             raise RateLimitException()
         device_cookie = UserDevice.get_valid_cookie(
             login, parameters.get('device_cookie'))
+        parameters['device_cookie'] = device_cookie
         count = LoginAttempt.count(login, device_cookie)
         if count > config.getint('session', 'max_attempt', default=5):
             LoginAttempt.add(login, device_cookie)
@@ -687,6 +689,15 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 'session', 'authentications', default='password').split(','):
             user_ids = set()
             for method in methods.split('+'):
+                if user_ids:
+                    try:
+                        method, options = method.split('?', 1)
+                    except ValueError:
+                        options = []
+                    else:
+                        options = options.split(':')
+                    if cls._check_login_options(options, login, parameters):
+                        continue
                 try:
                     func = getattr(cls, '_login_%s' % method)
                 except AttributeError:
@@ -699,6 +710,37 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 LoginAttempt.remove(login, device_cookie)
                 return user_ids.pop()
         LoginAttempt.add(login, device_cookie)
+
+    @classmethod
+    def _check_login_options(cls, options, login, parameters):
+        for option in options:
+            try:
+                func = getattr(cls, '_check_login_options_%s' % option)
+            except AttributeError:
+                logger.info("Missing login option: %s", option)
+                continue
+            if func(login, parameters):
+                return True
+        else:
+            return False
+
+    @classmethod
+    def _check_login_options_ip_address(cls, login, parameters):
+        context = Transaction().context
+        if context.get('_request') and context['_request'].get('remote_addr'):
+            ip_address = ipaddress.ip_address(
+                str(context['_request']['remote_addr']))
+            network_list = config.get('session', 'authentication_ip_network')
+            if network_list:
+                for network in network_list.split(','):
+                    ip_network = ipaddress.ip_network(network)
+                    if ip_address in ip_network:
+                        return True
+        return False
+
+    @classmethod
+    def _check_login_options_device_cookie(cls, login, parameters):
+        return bool(parameters.get('device_cookie'))
 
     @classmethod
     def _login_password(cls, login, parameters):

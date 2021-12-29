@@ -1,3 +1,4 @@
+* Add ip_address and device_cookie login method options
 * Add support for Python 3.10
 * Remove support for Python 3.6
 * Add creatable attribute on tree and form views
