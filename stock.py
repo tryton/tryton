@@ -368,7 +368,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             min_future_product_quantity = min(
                 p.quantity for p in future_product_quantities)
         earlier_date = move.planned_date
-        if product_quantities:
+        if product_quantities and product_quantities[0].quantity >= 0:
             assert product_quantities[0].date == move.planned_date
             # The new date must left the same available
             # quantity for other moves at the current date
