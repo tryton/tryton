@@ -1393,9 +1393,9 @@
                 preview: 1,
                 encoding: this.el_csv_encoding.val(),
                 error: function(err, file, inputElem, reason) {
-                    Sao.common.warning(
-                        Sao.i18n.gettext(
-                            'An error occured in loading the file.'));
+                    Sao.common.warning.run(
+                        reason,
+                        Sao.i18n.gettext("Detection failed"));
                 },
                 complete: function(results) {
                     results.data[0].forEach(function(word) {
@@ -1480,7 +1480,8 @@
                 encoding: encoding,
                 error: function(err, file, inputElem, reason) {
                     Sao.common.warning.run(
-                        Sao.i18n.gettext('Error occured in loading the file'))
+                        reason,
+                        Sao.i18n.gettext("Import failed"))
                         .always(prm.reject);
                 },
                 complete: function(results) {
