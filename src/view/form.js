@@ -112,7 +112,7 @@ function eval_pyson(value){
                     widget.labelled.get(0).tagName)) {
                     jQuery('<span/>', {
                         'data-accesskey': accesskey,
-                    }).insertAfter(widget.labelled);
+                    }).appendTo(widget.labelled.parent());
                 }
                 label.label_el.attr('for', widget.labelled.attr('id'));
             }
