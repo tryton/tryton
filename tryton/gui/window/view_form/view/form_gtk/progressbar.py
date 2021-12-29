@@ -23,6 +23,7 @@ class ProgressBar(Widget):
         orientation = self.orientations.get(attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
         self.widget.set_orientation(orientation)
+        self.widget.set_show_text(True)
 
     def display(self, record, field):
         super(ProgressBar, self).display(record, field)
