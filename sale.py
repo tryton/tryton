@@ -56,7 +56,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             party.save()
             party.set_shopify_identifier(shop, order.customer.id)
         else:
-            party = None
+            party = Party()
+            party.save()
 
         sale = shop.get_sale(party=party)
         sale.shopify_identifier = order.id
