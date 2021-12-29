@@ -595,7 +595,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                         & move.to_location.in_(
                             warehouse.select(warehouse.id))))
                 & ((date_column < today) & (move.state == 'done')
-                    | (date_column >= today)),
+                    | (date_column > today)),
                 group_by=(date_column, product_column, move.company),
                 with_=warehouse))
         for model, id_ in products:
