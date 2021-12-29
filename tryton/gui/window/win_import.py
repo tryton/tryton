@@ -117,8 +117,8 @@ class WinImport(WinCSV):
                 open(fname, 'r', encoding=encoding, newline=''),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
-        except IOError:
-            common.warning(_('Error opening CSV file'), _('Error'))
+        except (IOError, UnicodeDecodeError, csv.Error) as exception:
+            common.warning(str(exception), _("Detection failed"))
             return True
         self.sig_unsel_all()
         word = ''
@@ -192,30 +192,34 @@ class WinImport(WinCSV):
         skip = self.csv_skip.get_value_as_int()
         encoding = self.get_encoding()
         locale_format = self.csv_locale.get_active()
-        reader = csv.reader(
-            open(fname, 'r', encoding=encoding),
-            quotechar=self.get_quotechar(),
-            delimiter=self.get_delimiter())
-        data = []
-        for i, line in enumerate(reader):
-            if i < skip or not line:
-                continue
-            row = []
-            for field, val in zip(fields, line):
-                if locale_format and val:
-                    type_ = self.fields_data[field]['type']
-                    if type_ in ['integer', 'biginteger']:
-                        val = locale.atoi(val)
-                    elif type_ == 'float':
-                        val = locale.atof(val)
-                    elif type_ == 'numeric':
-                        val = Decimal(locale.delocalize(val))
-                    elif type_ in ['date', 'datetime']:
-                        val = date_parse(val, common.date_format())
-                    elif type_ == 'binary':
-                        val = base64.b64decode(val)
-                row.append(val)
-            data.append(row)
+        try:
+            reader = csv.reader(
+                open(fname, 'r', encoding=encoding),
+                quotechar=self.get_quotechar(),
+                delimiter=self.get_delimiter())
+            data = []
+            for i, line in enumerate(reader):
+                if i < skip or not line:
+                    continue
+                row = []
+                for field, val in zip(fields, line):
+                    if locale_format and val:
+                        type_ = self.fields_data[field]['type']
+                        if type_ in ['integer', 'biginteger']:
+                            val = locale.atoi(val)
+                        elif type_ == 'float':
+                            val = locale.atof(val)
+                        elif type_ == 'numeric':
+                            val = Decimal(locale.delocalize(val))
+                        elif type_ in ['date', 'datetime']:
+                            val = date_parse(val, common.date_format())
+                        elif type_ == 'binary':
+                            val = base64.b64decode(val)
+                    row.append(val)
+                data.append(row)
+        except (IOError, UnicodeDecodeError, csv.Error) as exception:
+            common.warning(str(exception), _("Import failed"))
+            return
         try:
             count = RPCExecute(
                 'model', self.model, 'import_data', fields, data,

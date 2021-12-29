@@ -375,9 +375,11 @@ class WinExport(WinCSV):
             else:
                 fileno, fname = tempfile.mkstemp(
                     '.csv', common.slugify(self.name) + '_')
-                self.export_csv(fname, fields2, data, paths, popup=False)
-                os.close(fileno)
-                common.file_open(fname, 'csv')
+                if self.export_csv(fname, fields2, data, paths, popup=False):
+                    os.close(fileno)
+                    common.file_open(fname, 'csv')
+                else:
+                    os.close(fileno)
         self.destroy()
 
     def export_csv(self, fname, fields, data, paths, popup=True):
@@ -402,9 +404,8 @@ class WinExport(WinCSV):
                 else:
                     common.message(_('%d records saved.') % len(data))
             return True
-        except IOError as exception:
-            common.warning(_("Operation failed.\nError message:\n%s")
-                % exception, _('Error'))
+        except (IOError, UnicodeEncodeError, csv.Error) as exception:
+            common.warning(str(exception), _('Export failed'))
             return False
 
     @classmethod
