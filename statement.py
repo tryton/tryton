@@ -72,6 +72,7 @@ class StatementLine(metaclass=PoolMeta):
     __name__ = 'account.statement.line'
     payment = fields.Many2One('account.payment', 'Payment',
         domain=[
+            ('company', '=', Eval('company', -1)),
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
             ('state', 'in', ['processing', 'succeeded', 'failed']),
             ],
@@ -79,7 +80,7 @@ class StatementLine(metaclass=PoolMeta):
             'invisible': Bool(Eval('payment_group')) | Bool(Eval('invoice')),
             'readonly': Eval('statement_state') != 'draft',
             },
-        depends=['party', 'statement_state'])
+        depends=['company', 'party', 'statement_state'])
     payment_group = fields.Many2One(
         'account.payment.group', "Payment Group",
         domain=[
