@@ -317,7 +317,8 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
 
     @classmethod
     def default_format_(cls):
-        return """${party_name}
+        return """${attn}
+${party_name}
 ${name}
 ${street}
 ${postal_code} ${city}
