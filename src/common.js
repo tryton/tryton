@@ -919,7 +919,7 @@
                         (this.attributes.type === 'class')) && (record)) {
                 var parent = record.group.parent;
                 while (parent) {
-                    if (parent.has_changed()) {
+                    if (parent.modified) {
                         this.el.prop('disabled', true);
                         break;
                     }

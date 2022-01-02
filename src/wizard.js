@@ -158,6 +158,9 @@
             this.states[definition.state] = button;
             return button;
         },
+        record_message: function() {
+            this.update_buttons();
+        },
         update_buttons: function() {
             var record = this.screen.current_record;
             for (var state in this.states) {
@@ -169,11 +172,15 @@
             buttons.forEach(function(button) {
                 this._get_button(button);
             }.bind(this));
+            if (this.screen) {
+                this.screen.windows.splice(
+                    this.screen.windows.indexOf(this), 1);
+            }
             this.screen = new Sao.Screen(view.model,
                     {mode: [], context: this.context});
             this.screen.add_view(view);
             this.screen.switch_view();
-            this.screen.group_changed_callback = this.update_buttons.bind(this);
+            this.screen.windows.push(this);
             this.header.append(jQuery('<h4/>', {
                 'class': 'model-title',
                 'title': this.name,

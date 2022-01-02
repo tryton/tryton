@@ -585,10 +585,10 @@
                         origin_group.record_removed.indexOf(record));
                     dest_group.add(record, dest_position);
                     if (!record.parent_name) {
-                        record._changed[origin_group.parent_name] = true;
+                        record.modified_fields[origin_group.parent_name] = true;
                         record._values[origin_group.parent_name] = null;
                     } else {
-                        record._changed[origin_group.parent_name] = true;
+                        record.modified_fields[origin_group.parent_name] = true;
                     }
                 }
                 dest_rows.splice(dest_position, 0, row);

@@ -157,7 +157,11 @@
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.readonly);
 
+            this.but_ok = null;
+            this.but_new = null;
+
             this._initial_value = null;
+            this.view_type = view_type;
             if (view_type == 'form') {
                 var button_text;
                 if (kwargs.new_) {
@@ -195,17 +199,20 @@
             }
 
             if (this.save_current) {
-                dialog.footer.append(jQuery('<button/>', {
+                this.but_ok = jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit',
                     'title': Sao.i18n.gettext("Save"),
-                }).text(Sao.i18n.gettext('Save')));
+                }).text(Sao.i18n.gettext('Save')).appendTo(dialog.footer);
+                if (!kwargs.new_) {
+                    this.but_ok.addClass('disabled');
+                }
             } else {
-                dialog.footer.append(jQuery('<button/>', {
+                this.but_ok = jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit',
                     'title': Sao.i18n.gettext("OK"),
-                }).text(Sao.i18n.gettext('OK')));
+                }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             }
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -330,13 +337,13 @@
                 ).appendTo(buttons);
                 this.but_undel.click(disable_during(this.undelete.bind(this)));
                 this.but_undel.prop('disabled', !access['delete'] || readonly);
-
-                this.screen.message_callback = this.record_label.bind(this);
             }
 
             var content = jQuery('<div/>').appendTo(dialog.body);
 
             dialog.body.append(this.info_bar.el);
+
+            this.screen.windows.push(this);
 
             this.switch_prm.done(function() {
                 if (this.screen.current_view.view_type != view_type) {
@@ -356,18 +363,22 @@
                 jQuery(this).remove();
             });
         },
-        record_label: function(data) {
+        record_message: function(position, size) {
+            this.activate_save();
+            if (this.view_type != 'tree') {
+                return;
+            }
             var name = '_';
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
             var deletable = this.screen.deletable;
             var readonly = this.screen.group.readonly || this.screen.readonly;
-            if (data[0] >= 1) {
-                name = data[0];
+            if (position >= 1) {
+                name = position;
                 if (this.domain) {
                     this.but_remove.prop('disabled', false);
                 }
-                this.but_next.prop('disabled', data[0] >= data[1]);
-                this.but_previous.prop('disabled', data[0] <= 1);
+                this.but_next.prop('disabled', position >= size);
+                this.but_previous.prop('disabled', position <= 1);
                 if (access.delete && !readonly && deletable) {
                     this.but_del.prop('disabled', false);
                     this.but_undel.prop('disabled', false);
@@ -381,8 +392,16 @@
                     this.but_remove.prop('disabled', true);
                 }
             }
-            var message = name + '/' + data[1];
+            var message = name + '/' + size;
             this.label.text(message).attr('title', message);
+        },
+        record_modified: function() {
+            this.activate_save();
+        },
+        activate_save: function() {
+            if (this.but_ok.hasClass('disabled') && this.screen.modified()) {
+                this.but_ok.removeClass('disabled');
+            }
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
@@ -418,6 +437,10 @@
         new_: function() {
             this.screen.new_();
             this._initial_value = null;
+            this.many -= 1;
+            if (this.many == 0) {
+                this.but_new.addClass('disabled');
+            }
         },
         delete_: function() {
             this.screen.remove(false, false, false);
@@ -509,18 +532,18 @@
                     this.screen.current_record) {
                 result = false;
                 var record = this.screen.current_record;
-                var added = record._changed.id;
+                var added = record.modified_fields.id;
                 if ((record.id < 0) || this.save_current) {
                     cancel_prm = this.screen.cancel_current(
                         this._initial_value);
-                } else if (record.has_changed()) {
+                } else if (record.modified) {
                     record.cancel();
                     cancel_prm = record.reload().then(function() {
                         this.screen.display();
                     }.bind(this));
                 }
                 if (added) {
-                    record._changed.id = added;
+                    record.modified_fields.id = added;
                 }
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
@@ -531,6 +554,7 @@
             }.bind(this));
         },
         destroy: function() {
+            this.screen.windows.splice(this.screen.windows.indexOf(this), 1);
             this.screen.screen_container.alternate_view = false;
             this.screen.screen_container.alternate_viewport.children()
                 .detach();
@@ -676,7 +700,7 @@
                 var unread = this.screen.group.model.fields.unread;
                 this.screen.group.forEach(function(record) {
                     if (record.get_loaded() || record.id < 0) {
-                        if (!record._changed.unread) {
+                        if (!record.modified_fields.unread) {
                             unread.set_client(record, false);
                         }
                     }

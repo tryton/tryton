@@ -798,6 +798,7 @@
     Sao.Screen = Sao.class_(Object, {
         init: function(model_name, attributes) {
             this.model_name = model_name;
+            this.windows = [];
             this.model = new Sao.Model(model_name, attributes);
             this.attributes = jQuery.extend({}, attributes);
             this.view_ids = jQuery.extend([], attributes.view_ids);
@@ -862,10 +863,7 @@
             this.fields_view_tree = {};
             this._domain_parser = {};
             this.pre_validate = false;
-            this.tab = null;
-            this.message_callback = null;
             this.switch_callback = null;
-            this.group_changed_callback = null;
             // count_tab_domain is called in Sao.Tab.Form.init after
             // switch_view to avoid unnecessary call to fields_view_get by
             // domain_parser.
@@ -1252,38 +1250,71 @@
             group.readonly = this.attributes.readonly;
             this.set_group(group);
         },
+        record_modified: function(display) {
+            this.windows.forEach(function(window_) {
+                if (window_.record_modified) {
+                    window_.record_modified();
+                }
+            });
+            if (display || display === undefined) {
+                return this.display();
+            }
+        },
+        record_message: function(position, size, max_size, record_id) {
+            this.windows.forEach(function(window_) {
+                if (window_.record_message) {
+                    window_.record_message(position, size, max_size, record_id);
+                }
+            });
+        },
+        record_saved: function() {
+            this.windows.forEach(function(window_) {
+                if (window_.record_saved) {
+                    window_.record_saved();
+                }
+            });
+        },
+        update_resources: function(resources) {
+            this.windows.forEach(function(window_) {
+                if (window_.update_resources) {
+                    window_.update_resources(resources);
+                }
+            });
+        },
+        has_update_resources: function() {
+            return this.windows.some(function(window_) {
+                return window_.update_resources;
+            });
+        },
         get current_record() {
             return this.__current_record;
         },
         set current_record(record) {
             this.__current_record = record;
-            if (this.message_callback){
-                var pos = null;
-                var record_id = null;
-                if (record) {
-                    var i = this.group.indexOf(record);
-                    if (i >= 0) {
-                        pos = i + this.offset + 1;
-                    } else {
-                        pos = record.get_index_path();
-                    }
-                    record_id = record.id;
+            var pos = null;
+            var record_id = null;
+            if (record) {
+                var i = this.group.indexOf(record);
+                if (i >= 0) {
+                    pos = i + this.offset + 1;
+                } else {
+                    pos = record.get_index_path();
                 }
-                var data = [pos || 0, this.group.length + this.offset,
-                    this.search_count, record_id];
-                this.message_callback(data);
+                record_id = record.id;
             }
+            this.record_message(
+                pos || 0, this.group.length + this.offset, this.search_count,
+                record_id);
             if (this.switch_callback) {
                 this.switch_callback();
             }
-            if (this.tab) {
+            if (this.has_update_resources()) {
                 if (record) {
                     record.get_resources().always(
-                        this.tab.update_resources.bind(this.tab));
+                        this.update_resources.bind(this));
                 } else {
-                    this.tab.update_resources();
+                    this.update_resources();
                 }
-                this.tab.record_message();
             }
         },
         load: function(ids, set_cursor, modified) {
@@ -1595,7 +1626,7 @@
         },
         modified: function() {
             var test = function(record) {
-                return (record.has_changed() || record.id < 0);
+                return (record.modified || record.id < 0);
             };
             if (this.current_view.view_type != 'tree') {
                 if (this.current_record) {

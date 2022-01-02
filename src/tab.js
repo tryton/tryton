@@ -472,14 +472,13 @@
             this.set_name(name);
             attributes.breadcrumb = [name];
             var screen = new Sao.Screen(model_name, attributes);
-            screen.tab = this;
+            screen.windows.push(this);
             this.screen = screen;
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
 
             this.attachment_screen = null;
 
-            screen.message_callback = this.record_message.bind(this);
             screen.switch_callback = function() {
                 if (this === Sao.Tab.tabs.get_current()) {
                     Sao.set_url(this.get_url(), this.name.split(' / ').pop());
@@ -807,8 +806,8 @@
             return this.modified_save().then(function() {
                 return this.screen.new_().then(function() {
                     this.info_bar.message();
+                    this.activate_save();
                 }.bind(this));
-                // TODO activate_save
             }.bind(this));
         },
         save: function(tab) {
@@ -866,7 +865,7 @@
                 .then(function(set_cursor) {
                     return this.screen.display(set_cursor).then(function() {
                         this.info_bar.message();
-                        // TODO activate_save
+                        this.activate_save();
                         this.screen.count_tab_domain();
                     }.bind(this));
                 }.bind(this));
@@ -920,7 +919,7 @@
             return this.modified_save().then(function() {
                 var prm = this.screen.display_previous();
                 this.info_bar.message();
-                // TODO activate_save
+                this.activate_save();
                 return prm;
             }.bind(this));
         },
@@ -928,7 +927,7 @@
             return this.modified_save().then(function() {
                 var prm = this.screen.display_next();
                 this.info_bar.message();
-                // TODO activate_save
+                this.activate_save();
                 return prm;
             }.bind(this));
         },
@@ -1063,7 +1062,7 @@
                     var name = e[0];
                     var access = e[1];
                     if (this.buttons[name]) {
-                        this.buttons[name].toggleClass('disabled', !access);
+                        this.buttons[name].prop('disabled', !access);
                     }
                     if (this.menu_buttons[name]) {
                         this.menu_buttons[name]
@@ -1074,7 +1073,7 @@
                 ['new_', 'save', 'delete_', 'copy', 'import'].forEach(
                     function(name) {
                         if (this.buttons[name]) {
-                            this.buttons[name].addClass('disabled');
+                            this.buttons[name].prop('disabled', true);
                         }
                         if (this.menu_buttons[name]) {
                             this.menu_buttons[name].addClass('disabled');
@@ -1304,14 +1303,14 @@
                 screen.display_next();
             });
 
-            screen.message_callback = function(data) {
-                var position = data[0];
-                var length = data[1];
+            preview = {};
+            preview.record_message = function(position, length) {
                 var text = (position || '_') + '/' + length;
                 label.text(text).attr('title', text);
                 but_prev.prop('disabled', !position || position <= 1);
                 but_next.prop('disabled', !position || position >= length);
             };
+            screen.windows.push(preview);
 
             screen.switch_view().done(function() {
                 el.append(screen.screen_container.el);
@@ -1350,7 +1349,7 @@
             function is_report(action) {
                 return action.type == 'ir.action.report';
             }
-            if (!this.buttons.email.hasClass('disabled')) {
+            if (!this.buttons.email.prop('disabled')) {
                 this.modified_save().then(function() {
                     var record = this.screen.current_record;
                     if (!record || (record.id < 0)) {
@@ -1448,51 +1447,62 @@
             title = Sao.i18n.gettext("Note (%1/%2)", unread, count);
             update('note', title, badge, color);
         },
-        record_message: function(data) {
-            if (data) {
-                var name = "_";
-                if (data[0] !== 0) {
-                    name = data[0];
-                }
-                var buttons = ['print', 'relate', 'email', 'save', 'attach'];
-                buttons.forEach(function(button_id){
-                    var button = this.buttons[button_id];
-                    var can_be_sensitive = button._can_be_sensitive;
-                    if (can_be_sensitive === undefined) {
-                        can_be_sensitive = true;
-                    }
-                    if ((button_id == 'print') ||
-                        (button_id == 'relate') ||
-                        (button_id == 'email')) {
-                        can_be_sensitive |= this.screen.get_buttons().some(
-                            function(button) {
-                                var keyword = button.attributes.keyword || 'action';
-                                return keyword == button_id;
-                            });
-                    } else if (button_id == 'save') {
-                        can_be_sensitive &= !this.screen.readonly;
-                    }
-                    button.prop('disabled', !(data[0] && can_be_sensitive));
-                }.bind(this));
-                this.buttons.switch_.prop('disabled',
-                    this.attributes.view_ids > 1);
-
-                this.menu_buttons.delete_.toggleClass(
-                    'disabled', !this.screen.deletable);
-                this.menu_buttons.save.toggleClass(
-                    'disabled', this.screen.readonly);
-
-                var msg = name + ' / ' + data[1];
-                if ((data[1] < data[2]) &&
-                    this.screen.limit !== null &&
-                    (data[2] > this.screen.limit)) {
-                    msg += Sao.i18n.gettext(' of ') + data[2];
-                }
-                this.status_label.text(msg).attr('title', msg);
+        record_message: function(position, size, max_size, record_id) {
+            var name = "_";
+            if (position) {
+                name = position;
             }
+            var buttons = ['print', 'relate', 'email', 'save', 'attach'];
+            buttons.forEach(function(button_id){
+                var button = this.buttons[button_id];
+                var can_be_sensitive = button._can_be_sensitive;
+                if (can_be_sensitive === undefined) {
+                    can_be_sensitive = true;
+                }
+                if ((button_id == 'print') ||
+                    (button_id == 'relate') ||
+                    (button_id == 'email')) {
+                    can_be_sensitive |= this.screen.get_buttons().some(
+                        function(button) {
+                            var keyword = button.attributes.keyword || 'action';
+                            return keyword == button_id;
+                        });
+                } else if (button_id == 'save') {
+                    can_be_sensitive &= !this.screen.readonly;
+                }
+                button.prop('disabled', !(position && can_be_sensitive));
+            }.bind(this));
+            this.buttons.switch_.prop('disabled',
+                this.attributes.view_ids > 1);
+
+            this.menu_buttons.delete_.toggleClass(
+                'disabled', !this.screen.deletable);
+            this.menu_buttons.save.toggleClass(
+                'disabled', this.screen.readonly);
+            this.buttons.save.prop('disabled', this.screen.readonly);
+
+            var msg = name + ' / ' + size;
+            if ((size < max_size) &&
+                this.screen.limit !== null &&
+                (max_size > this.screen.limit)) {
+                msg += Sao.i18n.gettext(' of ') + max_size;
+            }
+            this.status_label.text(msg).attr('title', msg);
             this.info_bar.message();
-            // TODO activate_save
+            this.activate_save();
             this.refresh_attachment_preview();
+        },
+        record_modified: function() {
+            this.activate_save();
+        },
+        record_saved: function() {
+            this.activate_save();
+            this.refresh_resources();
+        },
+        activate_save: function() {
+            this.menu_buttons.save.toggleClass(
+                'disabled', !this.screen.modified());
+            this.buttons.save.prop('disabled', !this.screen.modified());
         },
         action: function() {
             window.setTimeout(function() {
@@ -1604,7 +1614,7 @@
                     var i, len, action;
                     for (i = 0, len = this.board.actions.length; i < len; i++) {
                         action = this.board.actions[i];
-                        action.screen.tab = this;
+                        action.screen.windows.push(this);
                     }
                     this.board.reload();
                 }.bind(this));
