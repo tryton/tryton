@@ -78,7 +78,7 @@ class Widget(object):
             if not self.widget.props.window:
                 return
             if self.record and self.get_value() == value:
-                self.record.signal('record-modified')
+                self.view.screen.record_modified(display=False)
 
         def get_value():
             if not self.widget.props.window:
@@ -124,6 +124,9 @@ class Widget(object):
         widget_class(self._invalid_widget, 'invalid', not readonly and invalid)
         self.invisible_set(self.attrs.get(
                 'invisible', states.get('invisible', False)))
+
+    def get_value(self):
+        pass
 
     def set_value(self):
         pass

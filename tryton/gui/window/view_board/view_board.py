@@ -24,9 +24,7 @@ class BoardXMLViewParser(FormXMLViewParser):
     def _parse_action(self, node, attributes):
         attributes.setdefault('yexpand', True)
         attributes.setdefault('yfill', True)
-        action = Action(attributes, self.view.context)
-        action.signal_connect(
-            self.view, 'active-changed', self.view._active_changed)
+        action = Action(self.view, attributes)
         self.view.actions.append(action)
         self.container.add(action.widget, attributes)
 
@@ -42,7 +40,7 @@ class ViewBoard(object):
         self.state_widgets = []
         self.xml_parser(self, None, {}).parse(xml)
         self.widget.show_all()
-        self._active_changed(None)
+        self.active_changed(None)
 
     def widget_get(self):
         return self.widget
@@ -53,7 +51,7 @@ class ViewBoard(object):
         for state_widget in self.state_widgets:
             state_widget.state_set(None)
 
-    def _active_changed(self, event_action, *args):
+    def active_changed(self, event_action):
         for action in self.actions:
             if action == event_action:
                 continue

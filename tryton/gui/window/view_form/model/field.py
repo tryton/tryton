@@ -155,15 +155,13 @@ class Field(object):
         previous_value = self.get(record)
         self.set(record, value)
         if previous_value != self.get(record):
-            record.modified_fields.setdefault(self.name)
-            record.signal('record-modified')
             self.sig_changed(record)
             record.validate(softvalidation=True)
-            record.signal('record-changed')
+            record.set_modified(self.name)
         elif force_change:
             self.sig_changed(record)
             record.validate(softvalidation=True)
-            record.signal('record-changed')
+            record.set_modified()
 
     def get_client(self, record):
         return self.get(record)
@@ -564,29 +562,6 @@ class O2MField(Field):
     def __init__(self, attrs):
         super(O2MField, self).__init__(attrs)
 
-    def _group_changed(self, group, record):
-        if not record.parent:
-            return
-        # Store parent as it could be removed by validation
-        parent = record.parent
-        parent.modified_fields.setdefault(self.name)
-        self.sig_changed(parent)
-        parent.validate(softvalidation=True)
-        parent.signal('record-changed')
-
-    def _group_list_changed(self, group, signal):
-        if group.model_name == group.parent.model_name:
-            group.parent.group.signal('group-list-changed', signal)
-
-    def _group_cleared(self, group, signal):
-        if group.model_name == group.parent.model_name:
-            group.parent.signal('group-cleared')
-
-    def _record_modified(self, group, record):
-        if not record.parent:
-            return
-        record.parent.signal('record-modified')
-
     def _set_default_value(self, record, fields=None):
         if record.value.get(self.name) is not None:
             return
@@ -603,14 +578,6 @@ class O2MField(Field):
         if not fields and record.model_name == self.attrs['relation']:
             group.fields = record.group.fields
         record.value[self.name] = group
-        self._connect_value(group)
-
-    def _connect_value(self, group):
-        group.signal_connect(group, 'group-changed', self._group_changed)
-        group.signal_connect(group, 'group-list-changed',
-            self._group_list_changed)
-        group.signal_connect(group, 'group-cleared', self._group_cleared)
-        group.signal_connect(group, 'record-modified', self._record_modified)
 
     def get_client(self, record):
         self._set_default_value(record)
@@ -720,7 +687,7 @@ class O2MField(Field):
                     new_record.set(vals, signal=False)
                     group.append(new_record)
             # Trigger signal only once with the last record
-            new_record.signal('record-changed')
+            group.record_modified()
 
     def set(self, record, value, _default=False):
         group = record.value.get(self.name)
@@ -728,7 +695,7 @@ class O2MField(Field):
         if group is not None:
             fields = group.fields.copy()
             # Unconnect to prevent infinite loop
-            group.signal_unconnect(group)
+            group.parent = None
             group.destroy()
         elif record.model_name == self.attrs['relation']:
             fields = record.group.fields
@@ -740,9 +707,10 @@ class O2MField(Field):
         self._set_default_value(record, fields=fields)
         group = record.value[self.name]
 
-        group.signal_unconnect(group)
+        # Prevent to trigger group-cleared
+        group.parent = None
         self._set_value(record, value, default=_default)
-        self._connect_value(group)
+        group.parent = record
 
     def set_client(self, record, value, force_change=False):
         # domain inversion could try to set None as value
@@ -757,15 +725,13 @@ class O2MField(Field):
         modified = set(previous_ids) != set(value)
         self._set_value(record, value, modified=modified)
         if modified:
-            record.modified_fields.setdefault(self.name)
-            record.signal('record-modified')
             self.sig_changed(record)
             record.validate(softvalidation=True)
-            record.signal('record-changed')
+            record.set_modified(self.name)
         elif force_change:
             self.sig_changed(record)
             record.validate(softvalidation=True)
-            record.signal('record-changed')
+            record.set_modified()
 
     def set_default(self, record, value):
         self.set(record, value, _default=True)
@@ -1040,11 +1006,9 @@ class BinaryField(Field):
         with open(filename, 'wb') as fp:
             fp.write(data)
         self.set(record, _FileCache(filename))
-        record.modified_fields.setdefault(self.name)
-        record.signal('record-modified')
         self.sig_changed(record)
         record.validate(softvalidation=True)
-        record.signal('record-changed')
+        record.set_modified(self.name)
 
     def get_size(self, record):
         result = record.value.get(self.name) or 0

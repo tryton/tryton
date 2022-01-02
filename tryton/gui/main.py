@@ -884,7 +884,6 @@ class Main(Gtk.Application):
             for i in range(len(self.pages)):
                 if self.pages[i].widget == page_widget:
                     page = self.pages.pop(i)
-                    page.signal_unconnect(self)
                     break
             self.notebook.remove_page(page_id)
 

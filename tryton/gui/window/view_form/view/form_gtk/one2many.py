@@ -170,7 +170,7 @@ class One2Many(Widget):
             limit=None,
             breadcrumb=breadcrumb)
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
-        self.screen.signal_connect(self, 'record-message', self._sig_label)
+        self.screen.windows.append(self)
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)
 
@@ -507,9 +507,9 @@ class One2Many(Widget):
         win.screen.search_filter(quote(text))
         win.show()
 
-    def _sig_label(self, screen, signal_data):
-        self._position = signal_data[0]
-        self._length = signal_data[1]
+    def record_message(self, position, size, *args):
+        self._position = position
+        self._length = size
         if self._position:
             name = str(self._position)
         else:
@@ -555,8 +555,7 @@ class One2Many(Widget):
     def set_value(self):
         self.screen.current_view.set_value()
         if self.screen.modified():  # TODO check if required
-            self.record.modified_fields.setdefault(self.field.name)
-            self.record.signal('record-modified')
+            self.view.screen.record_modified(display=False)
         return True
 
     def _completion_match_selected(self, completion, model, iter_):

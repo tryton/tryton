@@ -114,14 +114,13 @@ class ViewListForm(View):
         selected_rows = self.listbox.get_selected_rows()
         return [self.group[r.get_index()] for r in selected_rows]
 
-    def group_list_changed(self, group, signal):
-        action = signal[0]
+    def group_list_changed(self, group, action, *args):
         if action == 'record-added':
-            position = signal[2]
+            record, position = args
             self._model.emit('items-changed', position, 0, 1)
             self._view_forms.insert(position, self._view_forms.pop())
         elif action == 'record-removed':
-            position = signal[2]
+            record, position = args
             self._model.emit('items-changed', position, 1, 0)
             self._view_forms.pop(position)
 

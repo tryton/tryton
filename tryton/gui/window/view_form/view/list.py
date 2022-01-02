@@ -917,14 +917,16 @@ class ViewTree(View):
             return True
         return False
 
-    def group_list_changed(self, group, signal):
+    def group_list_changed(self, group, action, *args):
         model = self.treeview.get_model()
         if model is not None:
-            if signal[0] == 'record-added':
-                model.added(group, signal[1])
-            elif signal[0] == 'record-removed':
-                model.removed(group, signal[1])
-        self.display()
+            if action == 'record-added':
+                record, pos = args
+                model.added(group, record)
+            elif action == 'record-removed':
+                record, pos = args
+                model.removed(group, record)
+        self.display(force=action == 'group-cleared')
 
     def __str__(self):
         return 'ViewList (%d)' % id(self)

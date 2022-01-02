@@ -94,7 +94,7 @@ class Many2Many(Widget):
             row_activate=self._on_activate,
             readonly=True,
             limit=None)
-        self.screen.signal_connect(self, 'record-message', self._sig_label)
+        self.screen.windows.append(self)
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)
 
@@ -270,8 +270,8 @@ class Many2Many(Widget):
                 not self._readonly
                 and self._position))
 
-    def _sig_label(self, screen, signal_data):
-        self._position = signal_data[0]
+    def record_message(self, position, *args):
+        self._position = position
         self._set_button_sensitive()
 
     def display(self):

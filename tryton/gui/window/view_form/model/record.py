@@ -6,14 +6,13 @@ import tryton.common as common
 from tryton.common import RPCException, RPCExecute
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
-from tryton.signal_event import SignalEvent
 
 from . import field as fields
 
 logger = logging.getLogger(__name__)
 
 
-class Record(SignalEvent):
+class Record:
 
     id = -1
 
@@ -182,10 +181,6 @@ class Record(SignalEvent):
             i += 1
             parent = parent.parent
         return i
-
-    def set_modified(self, value):
-        if value:
-            self.signal('record-modified')
 
     def children_group(self, field_name):
         if not field_name:
@@ -448,7 +443,7 @@ class Record(SignalEvent):
         if validate:
             self.validate(softvalidation=True)
         if signal:
-            self.signal('record-changed')
+            self.set_modified()
 
     def set(self, val, signal=True, validate=True):
         later = {}
@@ -482,7 +477,7 @@ class Record(SignalEvent):
         if validate:
             self.validate(fieldnames, softvalidation=True)
         if signal:
-            self.signal('record-changed')
+            self.set_modified()
 
     def set_on_change(self, values):
         for fieldname, value in list(values.items()):
@@ -513,7 +508,7 @@ class Record(SignalEvent):
             self.parent.on_change([self.group.child_name])
             self.parent.on_change_with([self.group.child_name])
 
-        self.signal('record-changed')
+        self.set_modified()
 
     def expr_eval(self, expr):
         if not isinstance(expr, str):
@@ -675,9 +670,13 @@ class Record(SignalEvent):
             return
         return clicks
 
+    def set_modified(self, field=None):
+        if field:
+            self.modified_fields.setdefault(field)
+        self.group.record_modified()
+
     def destroy(self):
         for v in self.value.values():
             if hasattr(v, 'destroy'):
                 v.destroy()
-        super(Record, self).destroy()
         self.destroyed = True

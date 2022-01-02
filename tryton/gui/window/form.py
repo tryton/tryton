@@ -27,14 +27,13 @@ from tryton.gui.window.revision import Revision
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_export import WinExport
 from tryton.gui.window.win_import import WinImport
-from tryton.signal_event import SignalEvent
 
 from .tabcontent import TabContent
 
 _ = gettext.gettext
 
 
-class Form(SignalEvent, TabContent):
+class Form(TabContent):
     "Form"
 
     def __init__(self, model, res_id=None, name='', **attributes):
@@ -52,20 +51,11 @@ class Form(SignalEvent, TabContent):
 
         self.screen = Screen(self.model, breadcrumb=[self.name], **attributes)
         self.screen.widget.show()
+        self.screen.windows.append(self)
 
         self.create_tabcontent()
 
         self.set_buttons_sensitive()
-
-        self.screen.signal_connect(self, 'record-message',
-            self._record_message)
-
-        self.screen.signal_connect(self, 'record-modified',
-            lambda *a: GLib.idle_add(self._record_modified, *a))
-        self.screen.signal_connect(self, 'record-saved', self._record_saved)
-        self.screen.signal_connect(
-            self, 'resources',
-            lambda screen, resources: self.update_resources(resources))
 
         self.attachment_screen = None
 
@@ -127,8 +117,6 @@ class Form(SignalEvent, TabContent):
         return id(self)
 
     def destroy(self):
-        super(Form, self).destroy()
-        self.screen.signal_unconnect(self)
         self.screen.destroy()
 
     def sig_attach(self, widget=None):
@@ -223,13 +211,13 @@ class Form(SignalEvent, TabContent):
         but_prev.connect('clicked', lambda *a: screen.display_prev())
         but_next.connect('clicked', lambda *a: screen.display_next())
 
-        def update_label(screen, data):
-            position, length = data[:2]
-            label.set_text('(%s/%s)' % (position or '_', length))
-            but_prev.set_sensitive(position and position > 1)
-            but_next.set_sensitive(position and position < length)
+        class Preview():
+            def record_message(self, position, length, *args):
+                label.set_text('(%s/%s)' % (position or '_', length))
+                but_prev.set_sensitive(position and position > 1)
+                but_next.set_sensitive(position and position < length)
+        screen.windows.append(Preview())
 
-        screen.signal_connect(self, 'record-message', update_label)
         vbox.pack_start(screen.widget, expand=True, fill=True, padding=0)
         return vbox
 
@@ -612,10 +600,8 @@ class Form(SignalEvent, TabContent):
                 None, None, menu_position, None, 0,
                 Gtk.get_current_event_time())
 
-    def _record_message(self, screen, signal_data):
-        name = '_'
-        if signal_data[0]:
-            name = str(signal_data[0])
+    def record_message(self, position, size, max_size, record_id):
+        name = str(position) if position else '_'
         for button_id in ('print', 'relate', 'email', 'open', 'save',
                 'attach'):
             button = self.buttons[button_id]
@@ -626,11 +612,10 @@ class Form(SignalEvent, TabContent):
                     action_type = 'print'
                 can_be_sensitive |= any(
                     b.attrs.get('keyword', 'action') == action_type
-                    for b in screen.get_buttons())
+                    for b in self.screen.get_buttons())
             elif button_id == 'save':
                 can_be_sensitive &= not self.screen.readonly
-            button.props.sensitive = (bool(signal_data[0])
-                and can_be_sensitive)
+            button.props.sensitive = bool(position) and can_be_sensitive
         button_switch = self.buttons['switch']
         button_switch.props.sensitive = self.screen.number_of_views > 1
 
@@ -639,23 +624,25 @@ class Form(SignalEvent, TabContent):
         menu_save = self.menu_buttons['save']
         menu_save.props.sensitive = not self.screen.readonly
 
-        msg = name + ' / ' + str(signal_data[1])
-        if (signal_data[1] < signal_data[2]
+        msg = name + ' / ' + str(size)
+        if (size < max_size
                 and self.screen.limit is not None
-                and signal_data[2] > self.screen.limit):
-            msg += _(' of ') + str(signal_data[2])
+                and max_size > self.screen.limit):
+            msg += _(' of ') + str(max_size)
         self.status_label.set_text(msg)
         self.message_info()
         self.activate_save()
         self.refresh_attachment_preview()
 
-    def _record_modified(self, screen, signal_data):
-        # As it is called via idle_add, the form could have been destroyed in
-        # the meantime.
-        if self.widget_get().props.window:
-            self.activate_save()
+    def record_modified(self):
+        def _record_modified():
+            # As it is called via idle_add, the form could have been destroyed
+            # in the meantime.
+            if self.widget_get().props.window:
+                self.activate_save()
+        GLib.idle_add(_record_modified)
 
-    def _record_saved(self, screen, signal_data):
+    def record_saved(self):
         self.activate_save()
         self.refresh_resources()
 
