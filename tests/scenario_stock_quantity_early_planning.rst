@@ -18,6 +18,7 @@ Imports::
     >>> week1 = today + relativedelta(weeks=1)
     >>> week2 = today + relativedelta(weeks=2)
     >>> week3 = today + relativedelta(weeks=3)
+    >>> week4 = today + relativedelta(weeks=4)
 
 Activate modules::
 
@@ -78,6 +79,7 @@ Plan receiving some products tomorrow and in 2 week::
 
     >>> fill(5, product1, today)
     >>> fill(10, product1, week2)
+    >>> fill(5, product1, week4)
     >>> fill(5, product2, week1)
     >>> fill(5, product2, week2)
 
@@ -111,7 +113,18 @@ Plan to ship some products in 3 weeks::
     >>> move.unit_price = product1.list_price
     >>> shipment_out2.save()
 
-    >>> ShipmentOut.click([shipment_out1, shipment_out2], 'wait')
+    >>> shipment_out3 = ShipmentOut()
+    >>> shipment_out3.planned_date = week4
+    >>> shipment_out3.customer = customer
+    >>> move = shipment_out3.outgoing_moves.new()
+    >>> move.product = product1
+    >>> move.quantity = 4
+    >>> move.from_location = output_loc
+    >>> move.to_location = customer_loc
+    >>> move.unit_price = product1.list_price
+    >>> shipment_out3.save()
+
+    >>> ShipmentOut.click([shipment_out1, shipment_out2, shipment_out3], 'wait')
 
 Generate early planning::
 
@@ -137,3 +150,12 @@ Check early planning::
     True
     >>> plan2.earliest_percentage
     1.0
+
+    >>> plan3, = QuantityEarlyPlan.find(
+    ...     [('origin', '=', str(shipment_out3))])
+    >>> plan3.earlier_date == week4
+    True
+    >>> plan3.earliest_date == today
+    True
+    >>> plan3.earliest_percentage
+    0.75

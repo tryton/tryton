@@ -27,6 +27,11 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
     planned_date = fields.Function(
         fields.Date("Planned Date"),
         'on_change_with_planned_date')
+    early_quantity = fields.Float(
+        "Early Quantity", readonly=True,
+        states={
+            'invisible': True,
+            })
     early_date = fields.Date(
         "Early Date", readonly=True,
         states={
@@ -129,22 +134,35 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         if isinstance(self.origin, Move) and self.origin.id >= 0:
-            return self.early_date
+            if (aggregate == max
+                    and self.early_quantity != self.origin.internal_quantity):
+                return self.origin.planned_date
+            else:
+                return self.early_date
         else:
             return aggregate(
-                (m.early_date for m in self.moves if m.early_date),
+                filter(None, (m._get_dates(aggregate) for m in self.moves)),
                 default=self.planned_date)
+
+    @property
+    def _early_quantity(self):
+        if isinstance(self.origin, Move) and self.origin.id >= 0:
+            if self.early_quantity is not None:
+                return self.early_quantity
+            else:
+                return self.origin.internal_quantity
 
     def get_earliest_percentage(self, name):
         pool = Pool()
         Move = pool.get('stock.move')
         if isinstance(self.origin, Move) and self.origin.id >= 0:
-            return 1
+            return round(
+                self._early_quantity / self.origin.internal_quantity, 4)
         else:
             date = self._get_dates(min)
             total = sum(m.origin.internal_quantity for m in self.moves)
             quantity = sum(
-                m.origin.internal_quantity for m in self.moves
+                m._early_quantity for m in self.moves
                 if m.early_date and m.early_date <= date)
             if total:
                 return round(quantity / total, 4)
@@ -269,12 +287,14 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
 
             for product, moves in groupby(moves, lambda m: m.product):
                 for move in moves:
-                    earlier_date = cls._get_earlier_date(move, warehouse)
+                    earlier_date, quantity = cls._get_earlier_date(
+                        move, warehouse)
                     plan = cls._add(move, plans)
                     if earlier_date < move.planned_date:
                         plan.early_date = earlier_date
                     else:
                         plan.early_date = None
+                    plan.early_quantity = quantity
 
                     for parent in cls._parents(move):
                         cls._add(parent, plans)
@@ -347,8 +367,9 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         product = move.product
         today = Date.today()
 
+        quantity = move.internal_quantity
         if product.consumable:
-            return today
+            return today, quantity
 
         with Transaction().set_context(
                 product=product.id,
@@ -370,20 +391,31 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         earlier_date = move.planned_date
         if product_quantities and product_quantities[0].quantity >= 0:
             assert product_quantities[0].date == move.planned_date
-            # The new date must left the same available
-            # quantity for other moves at the current date
-            min_quantity = (
-                product_quantities[0].quantity
-                + move.internal_quantity)
-            if min_future_product_quantity > 0:
-                # The remaining quantities can be used
-                min_quantity -= min_future_product_quantity
-            if min_quantity > 0:
-                for product_quantity in product_quantities[1:]:
-                    if product_quantity.quantity < min_quantity:
-                        break
-                    earlier_date = product_quantity.date
-        return earlier_date
+            if product_quantities[0].quantity > -quantity:
+                # The new date must left the same available
+                # quantity for other moves at the current date
+                min_quantity = (
+                    product_quantities[0].quantity
+                    + move.internal_quantity)
+                quantity = min(min_quantity, move.internal_quantity)
+                if min_future_product_quantity > 0:
+                    # The remaining quantities can be used
+                    min_quantity -= min_future_product_quantity
+                if quantity >= 0:
+                    for product_quantity in product_quantities[1:]:
+                        if product_quantity.quantity < min_quantity:
+                            if earlier_date == move.planned_date:
+                                # Not found earlier date,
+                                # try with the first smaller quantity
+                                quantity = min(
+                                    quantity, product_quantity.quantity)
+                                min_quantity = min(
+                                    product_quantity.quantity,
+                                    move.internal_quantity)
+                            else:
+                                break
+                        earlier_date = product_quantity.date
+        return earlier_date, quantity
 
     @classmethod
     def _add(cls, origin, plans):
