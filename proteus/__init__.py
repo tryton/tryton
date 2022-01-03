@@ -1235,10 +1235,15 @@ class Report(object):
         self._proxy = self._config.get_proxy(name, type='report')
 
     def execute(self, models=None, data=None):
-        ids = [m.id for m in models] if models else data.get('ids', [])
+        if models:
+            ids = [m.id for m in models]
+        elif data:
+            ids = data.get('ids', [])
+        else:
+            ids = []
         if data is None:
             data = {
-                'id': ids[0],
+                'id': ids[0] if ids else None,
                 'ids': ids,
                 }
             if models:
