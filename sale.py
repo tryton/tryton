@@ -6,8 +6,6 @@ from decimal import Decimal
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 
-from trytond.modules.account.tax import TaxableMixin
-
 from .exceptions import BadRequest
 from .web import split_name
 
@@ -170,17 +168,8 @@ class SaleShipmentCost(metaclass=PoolMeta):
             self.carrier = carrier.id if carrier else None
 
 
-class Line(TaxableMixin, metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
-
-    @property
-    def taxable_lines(self):
-        return [(
-                getattr(self, 'taxes', None) or [],
-                getattr(self, 'unit_price', None) or Decimal(0),
-                getattr(self, 'quantity', None) or 0,
-                None,
-                )]
 
     @property
     def vsf_tax_amount(self):
