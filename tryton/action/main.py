@@ -111,7 +111,7 @@ class Action(object):
             ctx = {
                 'active_model': data.get('model'),
                 'active_id': data.get('id'),
-                'active_ids': data.get('ids', []),
+                'active_ids': data.get('ids') or [],
             }
             ctx.update(rpc.CONTEXT)
             ctx['_user'] = rpc._USER
