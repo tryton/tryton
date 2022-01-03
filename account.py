@@ -203,12 +203,24 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         # Ensure it starts at an opened period
         for deferral in deferrals:
             Period.find(deferral.company.id, deferral.start_date)
-        # Set state before create moves to pass assert
+        # Set state before create moves and defer amount to pass assert
         cls.write(deferrals, {'state': 'running'})
         cls.create_moves(deferrals)
         # defer_amount is called after create_moves to be sure that
         # create_moves call get_move with the invoice period if needed.
         cls.defer_amount(deferrals)
+        cls.close_try(deferrals)
+
+    @classmethod
+    def close_try(cls, deferrals):
+        "Try to close the deferrals if last move has been created"
+        to_close = []
+        for deferral in deferrals:
+            if deferral.moves:
+                last_move = deferral.moves[-1]
+                if last_move.period.end_date >= deferral.end_date:
+                    to_close.append(deferral)
+        cls.close(to_close)
 
     @classmethod
     @Workflow.transition('closed')
@@ -244,7 +256,6 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         Move = pool.get('account.move')
         moves = []
-        to_close = []
         for deferral in deferrals:
             assert deferral.state == 'running'
             periods = Period.search([
@@ -278,10 +289,8 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                                 line.credit -= remainder
                     if remainder:
                         to_save.append(last_move)
-                    to_close.append(deferral)
         Move.save(to_save)
         Move.post(moves)
-        cls.close(to_close)
 
     @property
     def amount_daily(self):
@@ -374,6 +383,7 @@ class InvoiceDeferredCreateMoves(Wizard):
                     ])
         deferrals = InvoiceDeferred.browse(deferrals)
         InvoiceDeferred.create_moves(deferrals)
+        InvoiceDeferred.close_try(deferrals)
         return 'end'
 
 
