@@ -102,6 +102,9 @@
             "decode(Eval('test', 0))");
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 0,
             "decode(Eval('test', 0))");
+        QUnit.strictEqual(
+            new Sao.PYSON.Decoder({test: undefined}).decode(eval_), 0,
+            "decode(Eval('test', 0))");
     });
 
     QUnit.test('PYSON Not', function() {

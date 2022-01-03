@@ -179,7 +179,7 @@
                 'd': value.d,
             }, context[value.v.substring(0, idx)] || {});
         }
-        if (value.v in context) {
+        if ((value.v in context) && (context[value.v] !== undefined)) {
             return context[value.v];
         } else {
             return value.d;
