@@ -4,6 +4,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
+from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
@@ -355,9 +356,17 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         if invoice.type == 'out':
             balance.account = configuration.get_multivalue(
                 'deferred_account_revenue', company=self.company.id)
+            if not balance.account:
+                raise AccountMissing(gettext(
+                        'account_invoice_defer.'
+                        'msg_missing_deferred_account_revenue'))
         else:
             balance.account = configuration.get_multivalue(
                 'deferred_account_expense', company=self.company.id)
+            if not balance.account:
+                raise AccountMissing(gettext(
+                        'account_invoice_defer.'
+                        'msg_missing_deferred_account_expense'))
         balance.debit, balance.credit = income.credit, income.debit
         if balance.account.party_required:
             balance.party = invoice.party

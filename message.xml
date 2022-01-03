@@ -12,5 +12,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_deferred_delete_draft">
             <field name="text">You cannot delete invoice deferred "%(deferral)s" because it is not in "draft" state.</field>
         </record>
+        <record model="ir.message" id="msg_missing_deferred_account_revenue">
+            <field name="text">There is no deferred account revenue configured.</field>
+        </record>
+        <record model="ir.message" id="msg_missing_deferred_account_expense">
+            <field name="text">There is no deferred account expense configured.</field>
+        </record>
     </data>
 </tryton>
