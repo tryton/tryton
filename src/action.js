@@ -68,7 +68,7 @@
                 var ctx = {
                     active_model: data.model || null,
                     active_id: data.id || null,
-                    active_ids: data.ids
+                    active_ids: data.ids || [],
                 };
                 ctx = jQuery.extend(ctx, session.context);
                 ctx._user = session.user_id;
