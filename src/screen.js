@@ -1519,7 +1519,9 @@
                 if (props.selection instanceof Array) {
                     continue;
                 }
+                props = jQuery.extend({}, props);
                 props.selection = this.get_selection(props);
+                fields[name] = props;
             }
 
             if ('arch' in view_tree) {
