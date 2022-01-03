@@ -286,7 +286,8 @@
             return toolbar;
         },
         show: function() {
-            jQuery('#tablist').find('a[href="#' + this.id + '"]').tab('show');
+            jQuery('#tablist').find('a[href="#' + this.id + '"]')
+                .tab('show')[0].scrollIntoView();
         },
         close: function() {
             var tabs = jQuery('#tabs');
@@ -318,7 +319,7 @@
         },
         set_name: function(name) {
             this.name = name;
-            this.name_el.text(Sao.common.ellipsize(name.split(' / ').pop(), 20));
+            this.name_el.text(name.split(' / ').pop());
             this.name_el.attr('title', name);
         },
         get_url: function() {
@@ -372,7 +373,8 @@
         for (var i = 0; i < Sao.Tab.tabs.length; i++) {
             var other = Sao.Tab.tabs[i];
             if (other.compare(attributes)) {
-                tablist.find('a[href="#' + other.id + '"]').tab('show');
+                tablist.find('a[href="#' + other.id + '"]')
+                    .tab('show')[0].scrollIntoView();
                 return;
             }
         }
@@ -429,7 +431,7 @@
         tab_link.on('shown.bs.tab', function(evt) {
             tabs.scrollTop(jQuery(evt.target).data('scrollTop') || 0);
         });
-        tab_link.tab('show');
+        tab_link.tab('show')[0].scrollIntoView();
         tabs.trigger('ready');
     };
 

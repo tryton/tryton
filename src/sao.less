@@ -102,19 +102,37 @@ button {
     color: #fff;
 }
 
-#tablist > li > a {
-    > span {
-        max-width: 9em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        /* For IE */
-        display: block;
-        margin-right: 15px;
+#tablist {
+    display: flex;
+    overflow-x: auto;
+
+    > li {
+        flex: auto;
+        min-width: 9em;
+        > a {
+            > span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                /* For IE */
+                display: block;
+                margin-right: 15px;
+            }
+            [dir="rtl"] & > span {
+                margin-right: 0;
+                margin-left: 15px;
+            }
+        }
     }
-    [dir="rtl"] & > span {
-        margin-right: 0;
-        margin-left: 15px;
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    #tablist {
+        display: block;
+
+        > li {
+            float: none;
+        }
     }
 }
 
