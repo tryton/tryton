@@ -38,7 +38,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         fields.Date("Earliest Date"), 'get_earliest_date')
     earliest_percentage = fields.Function(
         fields.Float(
-            "Earliest Percentage",
+            "Earliest Percentage", digits=(1, 4),
             states={
                 'invisible': ~Eval('earliest_date'),
                 },
@@ -147,7 +147,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                 m.origin.internal_quantity for m in self.moves
                 if m.early_date and m.early_date <= date)
             if total:
-                return quantity / total
+                return round(quantity / total, 4)
             else:
                 return 1
 
