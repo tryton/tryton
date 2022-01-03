@@ -3,11 +3,10 @@
 from trytond.pool import Pool, PoolMeta
 
 
-class Request(metaclass=PoolMeta):
-    __name__ = 'purchase.request'
+class Supply(metaclass=PoolMeta):
+    __name__ = 'stock.supply'
 
-    @classmethod
-    def generate_requests(cls, *args, **kwargs):
+    def transition_create_(self):
         pool = Pool()
         Forecast = pool.get('stock.forecast')
         Date = pool.get('ir.date')
@@ -19,5 +18,6 @@ class Request(metaclass=PoolMeta):
                 ('state', '=', 'done'),
                 ])
         Forecast.create_moves(forecasts)
-        super().generate_requests(*args, **kwargs)
+        transition = super().transition_create_()
         Forecast.delete_moves(forecasts)
+        return transition

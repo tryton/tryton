@@ -3,10 +3,10 @@
 
 from trytond.pool import Pool
 
-from . import purchase_request
+from . import stock
 
 
 def register():
     Pool.register(
-        purchase_request.Request,
-        module='stock_supply_forecast', type_='model')
+        stock.Supply,
+        module='stock_supply_forecast', type_='wizard')
