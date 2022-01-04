@@ -92,6 +92,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_account_invalid_deferral_second_currency">
             <field name="text">To set a second currency for account "%(account)s", it must be deferral.</field>
         </record>
+        <record model="ir.message" id="msg_account_invalid_lines_second_currency">
+            <field name="text">To set a second currency for account "%(account)s", its lines must have the same second currency "%(currency)s".</field>
+        </record>
 
         <record model="ir.message" id="msg_deferral_unique">
             <field name="text">Deferral must be unique by account and fiscal year.</field>
