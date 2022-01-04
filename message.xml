@@ -95,6 +95,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_account_invalid_lines_second_currency">
             <field name="text">To set a second currency for account "%(account)s", its lines must have the same second currency "%(currency)s".</field>
         </record>
+        <record model="ir.message" id="msg_account_closed_lines">
+            <field name="text">You cannot close account "%(account)s" because it has move lines.</field>
+        </record>
+        <record model="ir.message" id="msg_account_no_type_lines">
+            <field name="text">You cannot remove type of account "%(account)s" because it has move lines.</field>
+        </record>
 
         <record model="ir.message" id="msg_deferral_unique">
             <field name="text">Deferral must be unique by account and fiscal year.</field>

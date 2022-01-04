@@ -53,7 +53,11 @@ class AccountMissing(UserError):
     pass
 
 
-class SecondCurrencyError(ValidationError):
+class AccountValidationError(ValidationError):
+    pass
+
+
+class SecondCurrencyError(AccountValidationError):
     pass
 
 

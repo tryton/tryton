@@ -26,7 +26,8 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import ActivePeriodMixin, PeriodMixin
-from .exceptions import ChartWarning, SecondCurrencyError
+from .exceptions import (
+    AccountValidationError, ChartWarning, SecondCurrencyError)
 
 
 def inactive_records(func):
@@ -912,6 +913,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
         cls.check_second_currency(accounts)
+        cls.check_move_domain(accounts)
 
     @staticmethod
     def default_left():
@@ -1136,6 +1138,32 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                         '.msg_account_invalid_lines_second_currency',
                         currency=account.second_currency.rec_name,
                         account=account.rec_name))
+
+    @classmethod
+    def check_move_domain(cls, accounts):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        accounts = [a for a in accounts if a.closed or not a.type]
+        for sub_accounts in grouped_slice(accounts):
+            sub_accounts = list(sub_accounts)
+            if Line.search([
+                        ('account', 'in', [a.id for a in sub_accounts]),
+                        ], order=[], limit=1):
+                for account in sub_accounts:
+                    if not account.closed:
+                        continue
+                    lines = Line.search([
+                            ('account', '=', account.id),
+                            ], order=[], limit=1)
+                    if lines:
+                        if account.closed:
+                            raise AccountValidationError(gettext(
+                                    'account.msg_account_closed_lines',
+                                    account=account.rec_name))
+                        elif account.type:
+                            raise AccountValidationError(gettext(
+                                    'account.msg_account_no_type_lines',
+                                    account=account.rec_name))
 
     @classmethod
     def copy(cls, accounts, default=None):
