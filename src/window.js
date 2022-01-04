@@ -1422,14 +1422,14 @@
                         Sao.i18n.gettext("Detection failed"));
                 },
                 complete: function(results) {
-                    results.data[0].forEach(function(word) {
+                    results.data[0].every(function(word) {
                         if (!(word in this.fields_invert) && !(word in this.fields)) {
                             var fields = this.fields_model;
                             var prefix = '';
                             var parents = word.split('/').slice(0, -1);
                             this._traverse(fields, prefix, parents, 0);
                         }
-                        this._auto_select(word);
+                        return this._auto_select(word);
                     }.bind(this));
                 }.bind(this)
             });
@@ -1449,7 +1449,7 @@
                     Sao.i18n.gettext(
                         'Error processing the file at field %1.', word),
                         Sao.i18n.gettext('Error'));
-                return;
+                return false;
             }
             var node = jQuery('<li/>', {
                 'field': field
@@ -1457,6 +1457,7 @@
                 node.addClass('bg-primary')
                     .siblings().removeClass('bg-primary');
             }).appendTo(this.fields_selected);
+            return true;
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;
