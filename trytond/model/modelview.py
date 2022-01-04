@@ -378,8 +378,9 @@ class ModelView(Model):
         # Update arch and compute fields from arch
         parser = etree.XMLParser(remove_blank_text=True)
         tree = etree.fromstring(result['arch'], parser)
-        result['arch'], result['fields'] = cls.parse_view(
-            tree, result['type'], result['field_childs'], level=level)
+        with Transaction().set_context(view_id=view_id):
+            result['arch'], result['fields'] = cls.parse_view(
+                tree, result['type'], result['field_childs'], level=level)
 
         cls._fields_view_get_cache.set(key, result)
         return result

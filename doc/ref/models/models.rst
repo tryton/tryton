@@ -182,6 +182,11 @@ Class methods:
     encoded value. If the depends list is set its fields are added to the
     view if the xpath matches at least one element.
 
+.. note::
+
+   The``view_id`` is set to the
+   :attr:`~trytond.transaction.Transaction.context` when calling this method.
+
 
 .. classmethod:: ModelView.parse_view(tree, type[, field_children[, level[, view_depends]]])
 
