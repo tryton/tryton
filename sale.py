@@ -7,11 +7,12 @@ import dateutil
 import shopify
 
 from trytond.i18n import gettext
-from trytond.model import Unique, fields
+from trytond.model import ModelView, Unique, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from .common import IdentifierMixin
 from .exceptions import ShopifyError
@@ -149,9 +150,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         return invoice
 
     @classmethod
+    @ModelView.button
     def process(cls, sales):
-        pool = Pool()
-        Payment = pool.get('account.payment')
         for sale in sales:
             for line in sale.lines:
                 if not line.product and line.shopify_identifier:
@@ -164,47 +164,58 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         for sale in sales:
             if not sale.web_shop or not sale.shopify_identifier:
                 continue
-            with sale.web_shop.shopify_session():
-                for shipment in sale.shipments:
-                    fulfillment = shipment.get_shopify(sale)
-                    if fulfillment:
-                        if not fulfillment.save():
-                            raise ShopifyError(gettext(
-                                    'web_shop_shopify.msg_fulfillment_fail',
-                                    sale=sale.rec_name,
-                                    error="\n".join(
-                                        fulfillment.errors.full_messages())))
-                        time.sleep(
-                            BACKOFF_TIME
-                            * (BACKOFF_TIME_FACTOR
-                                if sale.web_shop.shopify_trial else 1))
-                        shipment.set_shopify_identifier(sale, fulfillment.id)
-                # TODO: manage drop shipment
+            cls.__queue__._process_shopify(sale)
 
-                if sale.shipment_state == 'sent':
-                    # TODO: manage shopping refund
-                    refund = sale.get_shopify_refund(shipping={
-                            'full_refund': False,
-                            })
-                    if refund:
-                        if not refund.save():
-                            raise ShopifyError(gettext(
-                                    'web_shop_shopify.msg_refund_fail',
-                                    sale=sale.rec_name,
-                                    error="\n".join(
-                                        refund.errors.full_messages())))
-                        time.sleep(
-                            BACKOFF_TIME
-                            * (BACKOFF_TIME_FACTOR
-                                if sale.web_shop.shopify_trial else 1))
-                        order = shopify.Order.find(sale.shopify_identifier)
-                        Payment.get_from_shopify(sale, order)
-                        time.sleep(BACKOFF_TIME)
+    def _process_shopify(self):
+        """Sent updates to shopify
 
-                if sale.state == 'done':
-                    order = shopify.Order.find(sale.shopify_identifier)
-                    order.close()
+        The transaction is committed if fulfillment is created.
+        """
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        with self.web_shop.shopify_session():
+            for shipment in self.shipments:
+                fulfillment = shipment.get_shopify(self)
+                if fulfillment:
+                    if not fulfillment.save():
+                        raise ShopifyError(gettext(
+                                'web_shop_shopify.msg_fulfillment_fail',
+                                sale=self.rec_name,
+                                error="\n".join(
+                                    fulfillment.errors.full_messages())))
+                    shipment.set_shopify_identifier(self, fulfillment.id)
+                    Transaction().commit()
+                    time.sleep(
+                        BACKOFF_TIME
+                        * (BACKOFF_TIME_FACTOR
+                            if self.web_shop.shopify_trial else 1))
+
+            # TODO: manage drop shipment
+
+            if self.shipment_state == 'sent':
+                # TODO: manage shopping refund
+                refund = self.get_shopify_refund(shipping={
+                        'full_refund': False,
+                        })
+                if refund:
+                    if not refund.save():
+                        raise ShopifyError(gettext(
+                                'web_shop_shopify.msg_refund_fail',
+                                sale=self.rec_name,
+                                error="\n".join(
+                                    refund.errors.full_messages())))
+                    time.sleep(
+                        BACKOFF_TIME
+                        * (BACKOFF_TIME_FACTOR
+                            if self.web_shop.shopify_trial else 1))
+                    order = shopify.Order.find(self.shopify_identifier)
+                    Payment.get_from_shopify(self, order)
                     time.sleep(BACKOFF_TIME)
+
+            if self.state == 'done':
+                order = shopify.Order.find(self.shopify_identifier)
+                order.close()
+                time.sleep(BACKOFF_TIME)
 
     def get_shopify_refund(self, shipping):
         order = shopify.Order.find(self.shopify_identifier)

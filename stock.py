@@ -21,8 +21,8 @@ class ShipmentOut(metaclass=PoolMeta):
             return
         shopify_id = self.get_shopify_identifier(sale)
         if shopify_id:
-            fulfillment = shopify.Fulfillment.find(
-                shopify_id, order_id=sale.shopify_identifier)
+            # Fulfillment can not be modified
+            return
         else:
             fulfillment = shopify.Fulfillment(
                 prefix_options={'order_id': sale.shopify_identifier})
