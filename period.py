@@ -301,8 +301,9 @@ class Period(Workflow, ModelSQL, ModelView):
         Account = pool.get('account.account')
         transaction = Transaction()
 
-        # Lock period to be sure no new period will be created in between.
+        # Lock period and move to be sure no new record will be created
         JournalPeriod.lock()
+        Move.lock()
 
         for period in periods:
             with transaction.set_context(
