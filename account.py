@@ -1440,15 +1440,28 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         return [('id', 'in', ids)]
 
     @classmethod
+    def _debit_credit_context(cls):
+        period_ids, from_date, to_date = None, None, None
+        context = Transaction().context
+        if context.get('start_period') or context.get('end_period'):
+            start_period_ids = set(cls.get_period_ids('start_balance'))
+            end_period_ids = set(cls.get_period_ids('end_balance'))
+            period_ids = list(end_period_ids.difference(start_period_ids))
+        elif context.get('from_date') or context.get('end_date'):
+            _, from_date = cls.get_dates('start_balance')
+            _, to_date = cls.get_dates('end_balance')
+        return {
+            'periods': period_ids,
+            'from_date': from_date,
+            'to_date': to_date,
+            }
+
+    @classmethod
     def get_debit_credit(cls, records, name):
         pool = Pool()
         Account = pool.get('account.account')
 
-        start_period_ids = cls.get_period_ids('start_%s' % name)
-        end_period_ids = cls.get_period_ids('end_%s' % name)
-        periods_ids = list(
-            set(end_period_ids).difference(set(start_period_ids)))
-        with Transaction().set_context(periods=periods_ids):
+        with Transaction().set_context(cls._debit_credit_context()):
             accounts = Account.browse(records)
         return {a.id: getattr(a, name) for a in accounts}
 
@@ -1457,11 +1470,7 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         pool = Pool()
         Account = pool.get('account.account')
 
-        start_period_ids = cls.get_period_ids('start_%s' % name)
-        end_period_ids = cls.get_period_ids('end_%s' % name)
-        periods_ids = list(
-            set(end_period_ids).difference(set(start_period_ids)))
-        with Transaction().set_context(periods=periods_ids):
+        with Transaction().set_context(cls._debit_credit_context()):
             accounts = Account.search([], order=[])
 
         _, operator_, operand = domain
@@ -1677,10 +1686,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             else:
                 column = Column(line, fname).as_(fname)
             columns.append(column)
-        start_period_ids = set(LedgerAccount.get_period_ids('start_balance'))
-        end_period_ids = set(LedgerAccount.get_period_ids('end_balance'))
-        period_ids = list(end_period_ids.difference(start_period_ids))
-        with Transaction().set_context(periods=period_ids):
+        with Transaction().set_context(LedgerAccount._debit_credit_context()):
             line_query, fiscalyear_ids = Line.query_get(line)
         return line.join(move, condition=line.move == move.id
             ).join(account, condition=line.account == account.id
