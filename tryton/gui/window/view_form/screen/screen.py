@@ -3,7 +3,6 @@
 "Screen"
 import calendar
 import collections
-import copy
 import datetime
 import functools
 import gettext
@@ -184,12 +183,13 @@ class Screen:
         else:
             view_tree = self.fields_view_tree[view_id]
 
-        fields = copy.deepcopy(view_tree['fields'])
-        for name, props in fields.items():
-            if props['type'] not in ('selection', 'reference'):
+        fields = view_tree['fields'].copy()
+        for name in fields:
+            if fields[name]['type'] not in ('selection', 'reference'):
                 continue
-            if isinstance(props['selection'], (tuple, list)):
+            if isinstance(fields[name]['selection'], (tuple, list)):
                 continue
+            props = fields[name] = fields[name].copy()
             props['selection'] = self.get_selection(props)
 
         if 'arch' in view_tree:
