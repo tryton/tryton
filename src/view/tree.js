@@ -698,8 +698,8 @@
                     !column.col.hasClass('selection-state') &&
                     !column.col.hasClass('favorite')) {
                     var width, c_width;
-                    if (column.width) {
-                        width = c_width = column.width;
+                    if (column.attributes.width) {
+                        width = c_width = column.attributes.width;
                         min_width.push(width + 'px');
                     } else {
                         width = {
