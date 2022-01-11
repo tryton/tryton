@@ -1316,6 +1316,18 @@
                 this.select_column(event_.data.index);
             }.bind(this);
 
+            if (this.children_field) {
+                this.expander = jQuery('<span/>', {
+                    'class': 'expander',
+                }).append('<img/>', {
+                    'tabindex': 0,
+                    'class': 'icon',
+                });
+                this.expander.children().html('&nbsp;');
+                this.expander.on('click keypress',
+                        Sao.common.click_press(this.toggle_row.bind(this)));
+            }
+
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var column = this.tree.columns[i];
                 if (column instanceof Sao.View.Tree.ButtonColumn) {
@@ -1343,18 +1355,6 @@
                     'class': 'cell',
                 });
                 td.append(cell);
-                if ((i === 0) && this.children_field) {
-                    this.expander = jQuery('<img/>', {
-                        'tabindex': 0,
-                        'class': 'icon',
-                    });
-                    this.expander.html('&nbsp;');
-                    this.expander.on('click keypress',
-                            Sao.common.click_press(this.toggle_row.bind(this)));
-                    cell.append(jQuery('<span/>', {
-                        'class': 'expander'
-                    }).append(this.expander));
-                }
                 var j;
                 if (column.prefixes) {
                     for (j = 0; j < column.prefixes.length; j++) {
@@ -1467,6 +1467,21 @@
                     }
                 }
             }
+            if (this.children_field) {
+                this.tree.columns.every(function(column, i) {
+                    if (column.col.hasClass('draggable-handle') ||
+                        column.header.hasClass('invisible')) {
+                        return true;
+                    } else {
+                        var td = this._get_column_td(i);
+                        var cell = td.find('.cell');
+                        if (this.expander.parent()[0] !== cell[0]) {
+                            cell.prepend(this.expander);
+                        }
+                        return false;
+                    }
+                }.bind(this));
+            }
             this._drawed_record = this.record.identity;
 
             var row_id_path = this.get_id_path();
@@ -1477,7 +1492,7 @@
                 if (Sao.i18n.rtl) {
                     margin = 'margin-right';
                 }
-                this.expander.css(margin, (depth - 1) + 'em');
+                this.expander.children().css(margin, (depth - 1) + 'em');
 
                 var update_expander = function() {
                     var length = this.record.field_get_client(
@@ -1535,7 +1550,7 @@
             }
             Sao.common.ICONFACTORY.get_icon_url(icon)
                 .then(function(url) {
-                    this.expander.attr('src', url);
+                    this.expander.children().attr('src', url);
                 }.bind(this));
         },
         collapse_children: function() {
