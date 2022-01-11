@@ -173,7 +173,7 @@
 
     Sao.PYSON.Eval.eval_ = function(value, context) {
         var idx = value.v.indexOf('.');
-        if (idx >= 0) {
+        if ((idx >= 0) && !(value.v in context)) {
             return Sao.PYSON.Eval.eval_({
                 'v': value.v.substring(idx + 1),
                 'd': value.d,

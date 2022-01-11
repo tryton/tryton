@@ -1234,6 +1234,20 @@
         });
     });
 
+    QUnit.test('PYSON.EVal dot notation in context', function() {
+        var eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Eval('foo.bar', 0));
+        var ctx = {
+            'foo.bar': 1,
+            'foo': {
+                'bar': 0,
+            },
+        };
+        QUnit.strictEqual(
+            new Sao.PYSON.Decoder(ctx).decode(eval_), 1,
+            "decode(" + JSON.stringify(ctx) + ")");
+    });
+
     QUnit.test('PYSON eval', function() {
         QUnit.strictEqual(eval_pyson('True'), true, "eval_pyson('True')");
         QUnit.strictEqual(eval_pyson('False'), false, "eval_pyson('False')");
