@@ -31,18 +31,24 @@ class CellRendererFloat(CellRendererInteger):
         for name in ('KP_Decimal', 'KP_Separator'):
             if event.keyval == Gdk.keyval_from_name(name):
                 text = self.__decimal_point
-                position = widget.props.cursor_position
-                if self._can_insert_text(widget, text, position):
+                try:
+                    start_pos, end_pos = widget.get_selection_bounds()
+                except ValueError:
+                    start_pos = widget.props.cursor_position
+                    end_pos = None
+                if self._can_insert_text(widget, text, start_pos, end_pos):
                     buffer_ = widget.get_buffer()
-                    buffer_.insert_text(position, text, len(text))
+                    buffer_.delete_text(start_pos, end_pos - start_pos)
+                    buffer_.insert_text(start_pos, text, len(text))
                     widget.set_position(
                         widget.props.cursor_position + len(text))
                 return True
 
-    def _can_insert_text(self, entry, new_text, position):
+    def _can_insert_text(self, entry, new_text, start_pos, end_pos=None):
         value = entry.get_text()
-        position = entry.get_position()
-        new_value = value[:position] + new_text + value[position:]
+        if end_pos is None:
+            end_pos = start_pos
+        new_value = value[:start_pos] + new_text + value[end_pos:]
         if new_value not in {'-', self.__decimal_point, self.__thousands_sep}:
             try:
                 value = self.convert(

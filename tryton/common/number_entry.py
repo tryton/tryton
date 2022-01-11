@@ -73,6 +73,8 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         for name in ['KP_Decimal', 'KP_Separator']:
             if event.keyval == Gdk.keyval_from_name(name):
                 text = self.__decimal_point
+                if self.get_selection_bounds():
+                    self.delete_text(*self.get_selection_bounds())
                 self.do_insert_text(
                     text, len(text), self.props.cursor_position)
                 self.set_position(self.props.cursor_position + len(text))
