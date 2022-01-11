@@ -456,13 +456,20 @@ class ModelStorage(Model):
             if is_leaf(domain):
                 local, relate = (domain[0].split('.', 1) + [None])[:2]
                 to_check[cls.__name__].add(local)
-                if relate:
-                    if len(domain) >= 4:
-                        target = pool.get(domain[3])
-                    elif hasattr(cls._fields[local], 'get_target'):
-                        target = cls._fields[local].get_target()
-                    else:
-                        return
+                field = cls._fields[local]
+                target = None
+                if hasattr(field, 'get_target'):
+                    target = cls._fields[local].get_target()
+                    if (not relate
+                            and (domain[1].endswith('child_of')
+                                or domain[1].endswith('parent_of'))
+                            and len(domain) >= 4):
+                        relate = domain[3]
+                        domain = domain[:3] + domain[4:]
+                if field._type == 'reference' and len(domain) >= 4:
+                    target = pool.get(domain[3])
+                    domain = domain[:3] + domain[4:]
+                if relate and target:
                     target_domain = [(relate,) + tuple(domain[1:])]
                     check_domain(target_domain, target, to_check)
             elif not domain:
@@ -478,8 +485,9 @@ class ModelStorage(Model):
             for oexpr, otype in order:
                 local, _, relate = oexpr.partition('.')
                 to_check[cls.__name__].add(local)
-                if relate and hasattr(cls._fields[local], 'get_target'):
-                    target = cls._fields[local].get_target()
+                field = cls._fields[local]
+                if relate and hasattr(field, 'get_target'):
+                    target = field.get_target()
                     target_order = [(relate, otype)]
                     check_order(target_order, target, to_check)
 
