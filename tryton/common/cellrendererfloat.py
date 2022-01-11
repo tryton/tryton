@@ -12,6 +12,8 @@ class CellRendererFloat(CellRendererInteger):
     def __init__(self):
         super(CellRendererFloat, self).__init__()
         self.digits = None
+        self.monetary = False
+        self.convert = float
 
     def on_editing_started(self, editable, path):
         super().on_editing_started(editable, path)
@@ -43,11 +45,12 @@ class CellRendererFloat(CellRendererInteger):
         new_value = value[:position] + new_text + value[position:]
         if new_value not in {'-', self.__decimal_point, self.__thousands_sep}:
             try:
-                value = locale.atof(new_value)
+                value = self.convert(
+                    locale.delocalize(new_value, self.monetary))
             except ValueError:
                 return False
-            if (self.digits
-                    and not (round(value, self.digits[1]) == float(value))):
+            if (value and self.digits is not None
+                    and round(value, self.digits[1]) != value):
                 return False
         return True
 

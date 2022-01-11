@@ -506,6 +506,7 @@ class Float(Int):
         if renderer is None:
             renderer = CellRendererFloat
         super(Float, self).__init__(view, attrs, renderer=renderer)
+        self.renderer.monetary = attrs.get('monetary', False)
 
     @realized
     def setter(self, column, cell, store, iter_, user_data=None):
