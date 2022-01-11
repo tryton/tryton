@@ -193,7 +193,7 @@ class Link(StateMixin, Gtk.Button):
                         counter=counter, label=label))
 
     def _set_count(self, value, idx=0, current=None, counter=None, label=''):
-        if current != self._current:
+        if current != self._current and not self.get_parent():
             return
         try:
             counter[idx] = value()
