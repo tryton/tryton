@@ -460,10 +460,7 @@ class ViewTree(View):
         self.treeview.connect('key-press-event', self.on_keypress)
         self.treeview.connect_after('row-activated', self.__sig_switch)
         if self.children_field:
-            child_col = 1 if self.draggable else 0
             self.treeview.connect('test-expand-row', self.test_expand_row)
-            self.treeview.set_expander_column(
-                self.treeview.get_column(child_col))
         self.treeview.set_rubber_banding(True)
 
         selection = self.treeview.get_selection()
@@ -1085,6 +1082,13 @@ class ViewTree(View):
                     inv_domain = simplify(inv_domain)
                 unique, _, _ = unique_value(inv_domain)
                 column.set_visible(not unique or bool(self.children_field))
+        if self.children_field:
+            for i, column in enumerate(self.treeview.get_columns()):
+                if self.draggable and not i:
+                    continue
+                if column.get_visible():
+                    self.treeview.set_expander_column(column)
+                    break
 
     def set_state(self):
         record = self.record
