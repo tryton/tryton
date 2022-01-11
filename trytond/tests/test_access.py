@@ -935,6 +935,8 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
 
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+        TestAccess.search([
+                ('reference.parent.value', '=', 42, 'test.access.relate')])
         TestAccess.search([], order=[('relate.value', 'ASC')])
 
     @with_transaction(context=_context)
@@ -959,7 +961,47 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
             TestAccess.search(
                 [('reference.value', '=', 42, 'test.access.relate')])
         with self.assertRaises(AccessError):
+            TestAccess.search(
+                [('reference.parent.value', '=', 42, 'test.access.relate')])
+        with self.assertRaises(AccessError):
             TestAccess.search([], order=[('relate.value', 'ASC')])
+
+    @with_transaction(context=_context)
+    def test_access_search_relate_parent_field(self):
+        "Test access on search relate with a parent field"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        field, = Field.search([
+                ('model.model', '=', 'test.access.relate'),
+                ('name', '=', 'parent'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': True,
+                    }])
+
+        TestAccess.search([('relate', 'child_of', 42, 'parent')])
+
+    @with_transaction(context=_context)
+    def test_no_access_search_relate_parent_field(self):
+        "Test no access on search relate with a parent field"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        field, = Field.search([
+                ('model.model', '=', 'test.access.relate'),
+                ('name', '=', 'parent'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            TestAccess.search([('relate', 'child_of', 42, 'parent')])
 
 
 class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
