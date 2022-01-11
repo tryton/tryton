@@ -154,7 +154,7 @@ class Eval(PYSON):
 
     @staticmethod
     def eval(dct, context):
-        if '.' in dct['v']:
+        if '.' in dct['v'] and dct['v'] not in context:
             base, name = dct['v'].split('.', 1)
             return Eval.eval({
                     'v': name,
