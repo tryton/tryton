@@ -121,7 +121,8 @@ class MoveLine(metaclass=PoolMeta):
         second_amount = Abs(table.amount_second_currency) - payment_amount
         amount = Case((table.second_currency == Null, main_amount),
             else_=second_amount)
-        value = cls.payment_amount.sql_format(value)
+        value = cls.payment_amount._field.sql_cast(
+            cls.payment_amount.sql_format(value))
 
         query = (table
             .join(payment, type_='LEFT',
