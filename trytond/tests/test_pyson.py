@@ -838,6 +838,19 @@ class PYSONTestCase(unittest.TestCase):
                 ]:
             self.assertEqual(pyson.PYSONDecoder(ctx).decode(eval), result)
 
+    def test_Eval_dot_notation_in_context(self):
+        "Test pyson.Eval with dot notation in context"
+
+        eval = pyson.PYSONEncoder().encode(pyson.Eval('foo.bar', 0))
+        ctx = {
+            'foo.bar': 1,
+            'foo': {
+                'bar': 0,
+                },
+            }
+
+        self.assertEqual(pyson.PYSONDecoder(ctx).decode(eval), 1)
+
     def test_eval_true(self):
         "Test PYSON.eval JS true"
         self.assertEqual(eval('true', pyson.CONTEXT), True)
