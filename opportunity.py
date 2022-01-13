@@ -211,6 +211,14 @@ class SaleOpportunity(
                     'depends': ['state'],
                     },
                 'opportunity': {
+                    'pre_validate': [
+                        If(~Eval('party'),
+                            ('party', '!=', None),
+                            ()),
+                        If(~Eval('employee'),
+                            ('employee', '!=', None),
+                            ()),
+                        ],
                     'invisible': ~Eval('state').in_(['lead']),
                     'depends': ['state'],
                     },
