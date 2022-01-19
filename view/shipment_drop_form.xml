@@ -22,10 +22,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <notebook>
         <page name="supplier_moves">
-            <field name="supplier_moves" colspan="4"/>
+            <field name="supplier_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page name="customer_moves">
-            <field name="customer_moves" colspan="4"/>
+            <field name="customer_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
     </notebook>
     <label name="state"/>
