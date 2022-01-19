@@ -773,8 +773,8 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                 Exclude(t, (t.point, Equal),
                     where=t.state == 'open'),
                 'sale_point.msg_point_cash_session_open_unique'),
-            ('previous_session_unique',
-                Exclude(t, (Coalesce(t.previous_session, -1), Equal)),
+            ('point_cash_session_previous_unique',
+                Exclude(t, (Coalesce(t.previous_session, -t.point), Equal)),
                 'sale_point.msg_cash_session_previous_unique'),
             ]
         cls._transitions |= {
@@ -799,6 +799,13 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                 'depends': ['state'],
                 },
             )
+
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+        table_h = cls.__table_handler__(module_name)
+        # Migration from 6.2: add point to previous session uniqueness.
+        table_h.drop_constraint('previous_session_unique')
 
     @classmethod
     def default_state(cls):
