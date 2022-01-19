@@ -94,6 +94,7 @@ class Group(ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('number', None)
         default.setdefault('payments', None)
         return super(Group, cls).copy(groups, default=default)
 
