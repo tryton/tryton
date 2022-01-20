@@ -39,7 +39,7 @@ def clean(code):
 
 def fetch(code):
     sys.stderr.write('Fetching')
-    url = 'https://download.geonames.org/export/zip/%s.zip' % code
+    url = 'https://downloads-cdn.tryton.org/geonames/%s.zip' % code
     try:
         responce = urlopen(url)
     except HTTPError as e:

@@ -1,3 +1,4 @@
+* Use Tryton's CDN to download postal codes
 * Support pycountry 22.1.10
 * Manage unknown subdivision type
 * Add support for Python 3.10
