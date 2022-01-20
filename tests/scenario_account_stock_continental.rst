@@ -75,11 +75,12 @@ Create product category::
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
-    >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> m, = ProductUom.find([('symbol', '=', 'm')])
+    >>> cm, = ProductUom.find([('symbol', '=', 'cm')])
     >>> ProductTemplate = Model.get('product.template')
     >>> template = ProductTemplate()
     >>> template.name = 'product'
-    >>> template.default_uom = unit
+    >>> template.default_uom = cm
     >>> template.type = 'goods'
     >>> template.purchasable = True
     >>> template.salable = True
@@ -113,11 +114,13 @@ Purchase 12 products::
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
-    >>> purchase_line.unit_price = Decimal(4)
+    >>> purchase_line.unit = m
+    >>> purchase_line.unit_price = Decimal(400)
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product_average
     >>> purchase_line.quantity = 7.0
-    >>> purchase_line.unit_price = Decimal(6)
+    >>> purchase_line.unit = m
+    >>> purchase_line.unit_price = Decimal(600)
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
@@ -145,10 +148,10 @@ Receive 9 products::
     >>> stock_in.debit
     Decimal('0.00')
     >>> stock_in.credit
-    Decimal('50.00')
+    Decimal('5000.00')
     >>> stock.reload()
     >>> stock.debit
-    Decimal('50.00')
+    Decimal('5000.00')
     >>> stock.credit
     Decimal('0.00')
 
@@ -187,9 +190,11 @@ Sale 5 products::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
+    >>> sale_line.unit = cm
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product_average
     >>> sale_line.quantity = 3.0
+    >>> sale_line.unit = cm
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -219,7 +224,7 @@ Send 5 products::
     Decimal('0.00')
     >>> stock.reload()
     >>> stock.debit
-    Decimal('50.00')
+    Decimal('5000.00')
     >>> stock.credit
     Decimal('28.00')
 
@@ -252,23 +257,23 @@ Create an Inventory::
     >>> inventory.location = storage
     >>> inventory.click('complete_lines')
     >>> inventory_line, = [l for l in inventory.lines if l.product == product]
-    >>> inventory_line.quantity = 1.0
+    >>> inventory_line.quantity = 100.0
     >>> inventory_line, = [l for l in inventory.lines
     ...     if l.product == product_average]
-    >>> inventory_line.quantity = 1.0
+    >>> inventory_line.quantity = 100.0
     >>> inventory.click('confirm')
     >>> inventory.state
     'done'
     >>> stock_out.reload()
     >>> stock_out.debit
-    Decimal('39.00')
+    Decimal('3900.00')
     >>> stock_out.credit
     Decimal('0.00')
     >>> stock.reload()
     >>> stock.debit
-    Decimal('50.00')
+    Decimal('5000.00')
     >>> stock.credit
-    Decimal('39.00')
+    Decimal('3900.00')
 
 Create Drop Shipment Move::
 
@@ -287,7 +292,8 @@ Create Drop Shipment Move::
     >>> sale.payment_term = payment_term
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
-    >>> sale_line.quantity = 3
+    >>> sale_line.quantity = 300
+    >>> sale_line.unit = cm
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -318,10 +324,10 @@ Create Drop Shipment Move::
     >>> stock_in.debit
     Decimal('0.00')
     >>> stock_in.credit
-    Decimal('68.00')
+    Decimal('6800.00')
     >>> stock_out.reload()
     >>> stock_out.debit
-    Decimal('57.00')
+    Decimal('5700.00')
     >>> stock_out.credit
     Decimal('0.00')
 
@@ -339,7 +345,7 @@ Create Drop Shipment Move::
     >>> sale.payment_term = payment_term
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product_average
-    >>> sale_line.quantity = 4
+    >>> sale_line.quantity = 400
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -370,10 +376,10 @@ Create Drop Shipment Move::
     >>> stock_in.debit
     Decimal('0.00')
     >>> stock_in.credit
-    Decimal('88.00')
+    Decimal('8800.00')
     >>> stock_out.reload()
     >>> stock_out.debit
-    Decimal('77.00')
+    Decimal('7700.00')
     >>> stock_out.credit
     Decimal('0.00')
 
@@ -387,6 +393,6 @@ Modify cost price::
     Decimal('3.00')
     >>> stock_out.reload()
     >>> stock_out.debit
-    Decimal('79.00')
+    Decimal('7900.00')
     >>> stock_out.credit
     Decimal('0.00')
