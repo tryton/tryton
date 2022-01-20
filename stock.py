@@ -567,6 +567,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                                 move.shipment = shipment
                                 to_save.append(move)
         Move.save(to_save)
+        Move.draft(to_save)
         cls._synchronize_moves(shipments)
 
     @classmethod
