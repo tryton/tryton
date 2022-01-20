@@ -427,7 +427,7 @@ msgid ""
 "amount of %(total_amount)s instead of %(amount)s."
 msgstr ""
 "Per validar l'extracte \"%(statement)s\" heu de canviar les seves línies per"
-" a tenir un import total de %total_balance)s en comptes de %(amount)s."
+" a tenir un import total de %(total_amount)s en comptes de %(amount)s."
 
 msgctxt "model:ir.model.button,confirm:statement_post_button"
 msgid "Are you sure you want to post the statement?"
