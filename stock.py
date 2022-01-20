@@ -277,9 +277,20 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
         return move.to_location == location.id
 
     def get_total_measurements(self, name):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
+
         field = name[len('total_'):]
         measurement = ((getattr(self, field) or 0)
             + sum(p.get_total_measurements(name) for p in self.children))
-        if name == 'total_weight' and self.additional_weight:
-            measurement += self.additional_weight
+        if name == 'total_weight':
+            if self.additional_weight:
+                measurement += self.additional_weight
+            if self.packaging_weight:
+                measurement += Uom.compute_qty(
+                    self.packaging_weight_uom, self.packaging_weight, kg,
+                    round=False)
         return measurement
