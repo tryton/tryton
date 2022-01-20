@@ -138,8 +138,13 @@ class Invoice(metaclass=PoolMeta):
                     continue
                 if payment.party != line.party:
                     continue
+                if (getattr(payment, 'account')
+                        and payment.account != line.account):
+                    continue
                 if payment.amount <= payment_amount:
                     payment.line = line
+                    if hasattr(payment, 'account'):
+                        payment.account = None
                     payment_amount -= payment.amount
         return payments
 
