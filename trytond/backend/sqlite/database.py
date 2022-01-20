@@ -322,7 +322,8 @@ class Database(DatabaseInterface):
     _local = threading.local()
     _conn = None
     flavor = Flavor(
-        paramstyle='qmark', function_mapping=MAPPING, null_ordering=False)
+        paramstyle='qmark', function_mapping=MAPPING, null_ordering=False,
+        max_limit=-1)
     IN_MAX = 200
 
     TYPES_MAPPING = {
