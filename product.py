@@ -263,5 +263,6 @@ class ProductCostHistory(metaclass=PoolMeta):
     def _non_moves_clause(cls, history_table, user):
         clause = super()._non_moves_clause(history_table, user)
         if user.company and user.company.cost_price_warehouse:
-            clause &= history_table.warehouse == user.warehouse
+            warehouse_id = user.warehouse.id if user.warehouse else None
+            clause &= history_table.warehouse == warehouse_id
         return clause
