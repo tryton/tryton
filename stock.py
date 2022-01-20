@@ -134,18 +134,22 @@ class ShipmentInReturn(metaclass=PoolMeta):
         super(ShipmentInReturn, cls).done(shipments)
 
 
-def process_purchase_move(func):
-    @wraps(func)
-    def wrapper(cls, moves):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        with Transaction().set_context(_check_access=False):
-            purchases = set(
-                m.purchase for m in cls.browse(moves) if m.purchase)
-        func(cls, moves)
-        if purchases:
-            Purchase.__queue__.process(purchases)
-    return wrapper
+def process_purchase_move(without_shipment=False):
+    def _process_purchase_move(func):
+        @wraps(func)
+        def wrapper(cls, moves):
+            pool = Pool()
+            Purchase = pool.get('purchase.purchase')
+            with Transaction().set_context(_check_access=False):
+                p_moves = cls.browse(moves)
+                if without_shipment:
+                    p_moves = [m for m in p_moves if not m.shipment]
+                purchases = set(m.purchase for m in p_moves if m.purchase)
+            func(cls, moves)
+            if purchases:
+                Purchase.__queue__.process(purchases)
+        return wrapper
+    return _process_purchase_move
 
 
 class Move(metaclass=PoolMeta):
@@ -232,13 +236,20 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('done')
+    @process_purchase_move(without_shipment=True)
+    def do(cls, moves):
+        super().do(moves)
+
+    @classmethod
+    @ModelView.button
     @Workflow.transition('cancelled')
-    @process_purchase_move
+    @process_purchase_move(without_shipment=True)
     def cancel(cls, moves):
         super(Move, cls).cancel(moves)
 
     @classmethod
-    @process_purchase_move
+    @process_purchase_move()
     def delete(cls, moves):
         super(Move, cls).delete(moves)
 
