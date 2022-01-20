@@ -462,8 +462,9 @@ class BalanceNonDeferral(Wizard):
 
     def do_balance(self, action):
         move = self.create_move()
-        action['views'].reverse()
-        return action, {'res_id': move.id}
+        if move:
+            action['views'].reverse()
+        return action, {'res_id': move.id if move else None}
 
 
 class CreatePeriodsStart(ModelView):
