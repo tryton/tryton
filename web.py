@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import time
 from decimal import Decimal
 
@@ -14,6 +15,7 @@ from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .common import IdentifierMixin, IdentifiersMixin
@@ -22,6 +24,7 @@ from .exceptions import ShopifyError
 BACKOFF_TIME = config.getfloat(
     'web_shop_shopify', 'api_backoff_time', default=1)
 BACKOFF_TIME_FACTOR = 12
+EDIT_ORDER_DELAY = dt.timedelta(days=60 + 1)
 
 
 class Shop(metaclass=PoolMeta):
@@ -509,26 +512,77 @@ class Shop(metaclass=PoolMeta):
 
     @classmethod
     def shopify_update_order(cls, shops=None):
-        """Update existing Shopify Order"""
+        """Update existing sale from Shopify"""
         pool = Pool()
         Sale = pool.get('sale.sale')
-        Payment = pool.get('account.payment')
         if shops is None:
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
         cls.lock(shops)
+        now = dt.datetime.now()
         for shop in shops:
             sales = Sale.search([
                     ('web_shop', '=', shop.id),
                     ('shopify_identifier', '!=', None),
-                    ('state', 'in', ['quotation', 'confirmed', 'processing']),
+                    ['OR',
+                        ('state', 'in',
+                            ['quotation', 'confirmed', 'processing']),
+                        ('create_date', '>=', now - EDIT_ORDER_DELAY),
+                        ],
                     ])
+            for sub_sales in grouped_slice(sales, count=250):
+                cls._shopify_update_order(shop, list(sub_sales))
+
+    @classmethod
+    def _shopify_update_order(cls, shop, sales):
+        assert shop.type == 'shopify'
+        assert all(s.web_shop == shop for s in sales)
+        with shop.shopify_session():
+            orders = shopify.Order.find(
+                ids=','.join(str(s.shopify_identifier) for s in sales),
+                status='any')
+            id2order = {o.id: o for o in orders}
+
+        to_update = []
+        orders = []
+        for sale in sales:
+            try:
+                order = id2order[sale.shopify_identifier]
+            except KeyError:
+                continue
+            to_update.append(sale)
+            orders.append(order)
+        cls.shopify_update_sale(to_update, orders)
+
+    @classmethod
+    def shopify_update_sale(cls, sales, orders):
+        """Update sales based on Shopify orders"""
+        pool = Pool()
+        Amendment = pool.get('sale.amendment')
+        Payment = pool.get('account.payment')
+        Sale = pool.get('sale.sale')
+        assert len(sales) == len(orders)
+        to_update = {}
+        for sale, order in zip(sales, orders):
+            assert sale.shopify_identifier == order.id
+            shop = sale.web_shop
             with shop.shopify_session():
-                for sale in sales:
-                    order, = shopify.Order.find(ids=sale.shopify_identifier)
-                    Payment.get_from_shopify(sale, order)
-                    time.sleep(BACKOFF_TIME)
+                sale = Sale.get_from_shopify(shop, order, sale=sale)
+                if sale._changed_values:
+                    sale.untaxed_amount_cache = None
+                    sale.tax_amount_cache = None
+                    sale.total_amount_cache = None
+                    to_update[sale] = order
+                Payment.get_from_shopify(sale, order)
+            time.sleep(BACKOFF_TIME)
+        Sale.save(to_update.keys())
+        for sale, order in to_update.items():
+            sale.shopify_tax_adjustment = (
+                Decimal(order.current_total_price) - sale.total_amount)
+        Sale.store_cache(to_update.keys())
+        Amendment._clear_sale(to_update.keys())
+        Sale.__queue__.process(to_update.keys())
 
 
 class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

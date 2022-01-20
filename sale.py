@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import time
+from collections import defaultdict
 from decimal import Decimal
+from itertools import zip_longest
 
 import dateutil
 import shopify
@@ -44,7 +46,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         return amount
 
     @classmethod
-    def get_from_shopify(cls, shop, order):
+    def get_from_shopify(cls, shop, order, sale=None):
         pool = Pool()
         Party = pool.get('party.party')
         Address = pool.get('party.address')
@@ -60,8 +62,10 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             party = Party()
             party.save()
 
-        sale = shop.get_sale(party=party)
-        sale.shopify_identifier = order.id
+        if not sale:
+            sale = shop.get_sale(party=party)
+            sale.shopify_identifier = order.id
+        assert sale.shopify_identifier == order.id
         if order.location_id:
             for shop_warehouse in shop.shopify_warehouses:
                 if shop_warehouse.shopify_id == str(order.location_id):
@@ -102,11 +106,37 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     party=party, type='phone', value=order.phone)
             sale.contact = contact_mechanism
 
+        refund_line_items = defaultdict(list)
+        for refund in order.refunds:
+            for refund_line_item in refund.refund_line_items:
+                refund_line_items[refund_line_item.line_item_id].append(
+                    refund_line_item)
+
+        id2line = {
+            l.shopify_identifier: l for l in getattr(sale, 'lines', [])
+            if l.shopify_identifier}
+        shipping_lines = [
+            l for l in getattr(sale, 'lines', []) if not
+            l.shopify_identifier]
         lines = []
         for line_item in order.line_items:
-            lines.append(Line.get_from_shopify(sale, line_item))
-        for shipping_line in order.shipping_lines:
-            lines.append(Line.get_from_shopify_shipping(sale, shipping_line))
+            line = id2line.pop(line_item.id, None)
+            quantity = line_item.quantity
+            for refund_line_item in refund_line_items[line_item.id]:
+                if refund_line_item.restock_type == 'cancel':
+                    quantity -= refund_line_item.quantity
+            lines.append(Line.get_from_shopify(
+                    sale, line_item, quantity, line=line))
+        for shipping_line, line in zip_longest(
+                order.shipping_lines, shipping_lines):
+            if shipping_line:
+                line = Line.get_from_shopify_shipping(
+                    sale, shipping_line, line=line)
+            else:
+                line.quantity = 0
+            lines.append(line)
+        for line in id2line.values():
+            line.quantity = 0
         sale.lines = lines
         return sale
 
@@ -275,11 +305,11 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         return super().set_shipment_cost()
 
     @classmethod
-    def get_from_shopify(cls, shop, order):
+    def get_from_shopify(cls, shop, order, sale=None):
         pool = Pool()
         Tax = pool.get('account.tax')
 
-        sale = super().get_from_shopify(shop, order)
+        sale = super().get_from_shopify(shop, order, sale=sale)
 
         sale.shipment_cost_method = 'order'
         if order.shipping_lines:
@@ -305,24 +335,26 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
-    def get_from_shopify(cls, sale, line_item):
+    def get_from_shopify(cls, sale, line_item, quantity, line=None):
         pool = Pool()
         Product = pool.get('product.product')
         Tax = pool.get('account.tax')
 
-        line = cls(type='line')
-        line.sale = sale
-        line.shopify_identifier = line_item.id
+        if not line:
+            line = cls(type='line')
+            line.sale = sale
+            line.shopify_identifier = line_item.id
+        assert line.shopify_identifier == line_item.id
         if hasattr(line_item, 'variant_id'):
             line.product = Product.search_shopify_identifier(
                 sale.web_shop, line_item.variant_id)
         else:
             line.product = None
         if line.product:
-            line._set_shopify_quantity(line.product, line_item.quantity)
+            line._set_shopify_quantity(line.product, quantity)
             line.on_change_product()
         else:
-            line.quantity = line_item.quantity
+            line.quantity = quantity
             line.description = line_item.title
             line.taxes = []
         total_discount = sum(
@@ -349,9 +381,10 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
             self.unit_price = unit_price
 
     @classmethod
-    def get_from_shopify_shipping(cls, sale, shipping_line):
-        line = cls(type='line')
-        line.sale = sale
+    def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
+        if not line:
+            line = cls(type='line')
+            line.sale = sale
         line.quantity = 1
         line.unit_price = round_price(Decimal(shipping_line.discounted_price))
         line.description = shipping_line.title
@@ -371,17 +404,18 @@ class Line_Discount(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
-    def get_from_shopify(cls, sale, line_item):
+    def get_from_shopify(cls, sale, line_item, quantity, line=None):
         pool = Pool()
         Tax = pool.get('account.tax')
-        line = super().get_from_shopify(sale, line_item)
+        line = super().get_from_shopify(sale, line_item, quantity, line=line)
         line.base_price = round_price(Tax.reverse_compute(
                 Decimal(line_item.price), line.taxes, sale.sale_date))
         return line
 
     @classmethod
-    def get_from_shopify_shipping(cls, sale, shipping_line):
-        line = super().get_from_shopify_shipping(sale, shipping_line)
+    def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
+        line = super().get_from_shopify_shipping(
+            sale, shipping_line, line=line)
         line.base_price = Decimal(shipping_line.price)
         return line
 
@@ -413,8 +447,9 @@ class Line_ShipmentCost(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
-    def get_from_shopify_shipping(cls, sale, shipping_line):
-        line = super().get_from_shopify_shipping(sale, shipping_line)
+    def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
+        line = super().get_from_shopify_shipping(
+            sale, shipping_line, line=line)
         line.shipment_cost = Decimal(shipping_line.price)
         return line
 
