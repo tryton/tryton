@@ -27,8 +27,9 @@ class Move(metaclass=PoolMeta):
                 and self.product.cost_price_method != 'fixed'):
             unit_price = self.unit_price_company
         else:
-            unit_price = Uom.compute_price(self.product.default_uom,
-                self.cost_price, self.uom)
+            unit_price = self.cost_price
+        unit_price = Uom.compute_price(self.product.default_uom,
+            unit_price, self.uom)
         amount = self.company.currency.round(
                 Decimal(str(self.quantity)) * unit_price)
 
