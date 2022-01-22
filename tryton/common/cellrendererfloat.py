@@ -34,14 +34,13 @@ class CellRendererFloat(CellRendererInteger):
                 try:
                     start_pos, end_pos = widget.get_selection_bounds()
                 except ValueError:
-                    start_pos = widget.props.cursor_position
+                    start_pos = widget.get_position()
                     end_pos = None
                 if self._can_insert_text(widget, text, start_pos, end_pos):
                     buffer_ = widget.get_buffer()
                     buffer_.delete_text(start_pos, end_pos - start_pos)
                     buffer_.insert_text(start_pos, text, len(text))
-                    widget.set_position(
-                        widget.props.cursor_position + len(text))
+                    widget.set_position(widget.get_position() + len(text))
                 return True
 
     def _can_insert_text(self, entry, new_text, start_pos, end_pos=None):
