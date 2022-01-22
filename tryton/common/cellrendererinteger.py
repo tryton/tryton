@@ -16,7 +16,6 @@ class CellRendererInteger(CellRendererText):
 
     def _can_insert_text(self, entry, new_text, position):
         value = entry.get_text()
-        position = entry.get_position()
         new_value = value[:position] + new_text + value[position:]
         if new_value != '-':
             try:
@@ -26,6 +25,7 @@ class CellRendererInteger(CellRendererText):
         return True
 
     def sig_insert_text(self, entry, new_text, new_text_length, position):
+        position = entry.get_position()
         if not self._can_insert_text(entry, new_text, position):
             entry.stop_emission_by_name('insert-text')
 
