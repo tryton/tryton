@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from itertools import groupby
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
@@ -254,10 +255,14 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                                     shipment=shipment.rec_name,
                                     other=other.rec_name))
             shipment_cost.allocate_cost()
-        cls.write(shipment_costs, {
-                'posted_date': Date.today(),
-                'state': 'posted',
-                })
+        for company, c_shipment_costs in groupby(
+                shipment_costs, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write(list(c_shipment_costs), {
+                    'posted_date': today,
+                    'state': 'posted',
+                    })
 
     @classmethod
     def create(cls, vlist):
