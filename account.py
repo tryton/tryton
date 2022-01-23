@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from itertools import groupby
 
 from sql import Null
 from sql.aggregate import Sum
@@ -543,24 +544,26 @@ class Invoice(metaclass=PoolMeta):
         Date = pool.get('ir.date')
         context = Transaction().context
 
-        today = Date.today()
-
         amounts = super(Invoice, cls).get_amount_to_pay(invoices, name)
 
         if context.get('with_payment', True):
-            for invoice in invoices:
-                for line in invoice.lines_to_pay:
-                    if line.reconciliation:
-                        continue
-                    if (name == 'amount_to_pay_today'
-                            and line.maturity_date
-                            and line.maturity_date > today):
-                        continue
-                    payment_amount = Decimal(0)
-                    for payment in line.payments:
-                        with Transaction().set_context(date=payment.date):
-                            payment_amount += Currency.compute(
-                                payment.currency, payment.amount_line_paid,
-                                invoice.currency)
-                    amounts[invoice.id] -= payment_amount
+            for company, c_invoices in groupby(
+                    invoices, key=lambda i: i.company):
+                with Transaction().set_context(company=company.id):
+                    today = Date.today()
+                for invoice in c_invoices:
+                    for line in invoice.lines_to_pay:
+                        if line.reconciliation:
+                            continue
+                        if (name == 'amount_to_pay_today'
+                                and line.maturity_date
+                                and line.maturity_date > today):
+                            continue
+                        payment_amount = Decimal(0)
+                        for payment in line.payments:
+                            with Transaction().set_context(date=payment.date):
+                                payment_amount += Currency.compute(
+                                    payment.currency, payment.amount_line_paid,
+                                    invoice.currency)
+                        amounts[invoice.id] -= payment_amount
         return amounts

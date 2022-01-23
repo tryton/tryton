@@ -7,6 +7,7 @@ from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 payment_direct_debit = fields.Boolean(
     "Direct Debit", help="Check if supplier does direct debit.")
@@ -108,7 +109,8 @@ class PartyReceptionDirectDebit(
     def get_payments(self, line):
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         for date, amount in self._compute(
                 line.maturity_date or today, line.payment_amount):
             yield self._get_payment(line, date, amount)
