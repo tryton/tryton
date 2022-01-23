@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from collections import defaultdict
+from itertools import groupby
 
 from sql import Literal, Null
 
@@ -186,7 +187,8 @@ class Dunning(ModelSQL, ModelView):
         pool = Pool()
         Date = pool.get('ir.date')
         if self.date:
-            return Date.today() - self.date
+            with Transaction().set_context(company=self.company.id):
+                return Date.today() - self.date
 
     @classmethod
     def order_age(cls, tables):
@@ -325,11 +327,14 @@ class Dunning(ModelSQL, ModelView):
     def process(cls, dunnings):
         pool = Pool()
         Date = pool.get('ir.date')
-        cls.write([d for d in dunnings
-                if not d.blocked and d.state == 'draft'], {
-                'state': 'waiting',
-                'date': Date.today(),
-                })
+        for company, c_dunnings in groupby(dunnings, key=lambda d: d.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([d for d in c_dunnings
+                    if not d.blocked and d.state == 'draft'], {
+                    'state': 'waiting',
+                    'date': today,
+                    })
 
     @classmethod
     @ModelView.button_action('account_dunning.act_reschedule_dunning_wizard')
