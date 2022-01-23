@@ -1,3 +1,6 @@
+* Apply view inheritance to board
+* Add RPC view_get method to View
+* Apply view inheritance to all matching elements
 * Limit board action domain to active id and ids
 * Remove entropy check on password
 * Set view_id in the context when calling view_attributes

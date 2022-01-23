@@ -26,9 +26,9 @@ Each view must start with this tag.
 xpath
 -----
 
-    * ``expr``: the xpath expression to find a node in the inherited view.
+    * ``expr``: the xpath expression to find the nodes in the inherited view.
 
-    * ``position``: Define the position in relation to the node found. It can
+    * ``position``: Define the position in relation to the nodes found. It can
       be ``before``, ``after``, ``replace``, ``inside`` or
       ``replace_attributes`` which will change the attributes.
 

@@ -64,10 +64,13 @@ class View(ModelSQL, ModelView):
             'invisible': ~Eval('inherit'),
             }, depends=['inherit'])
     _get_rng_cache = Cache('ir_ui_view.get_rng')
+    _view_get_cache = Cache('ir_ui_view.view_get')
+    __module_index = None
 
     @classmethod
     def __setup__(cls):
         super(View, cls).__setup__()
+        cls.__rpc__['view_get'] = RPC(instantiate=0, cache=dict(days=1))
         cls._order.insert(0, ('priority', 'ASC'))
         cls._buttons.update({
                 'show': {
@@ -185,12 +188,14 @@ class View(ModelSQL, ModelView):
     def delete(cls, views):
         super(View, cls).delete(views)
         # Restart the cache
+        cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
         views = super(View, cls).create(vlist)
         # Restart the cache
+        cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return views
 
@@ -198,7 +203,114 @@ class View(ModelSQL, ModelView):
     def write(cls, views, values, *args):
         super(View, cls).write(views, values, *args)
         # Restart the cache
+        cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
+
+    @property
+    def _module_index(self):
+        from trytond.modules import create_graph, get_module_list
+        if self.__class__.__module_index is None:
+            graph = create_graph(get_module_list())
+            modules = [m.name for m in graph]
+            self.__class__.__module_index = {
+                m: i for i, m in enumerate(reversed(modules))}
+        return self.__class__.__module_index
+
+    def view_get(self, model=None):
+        key = (self.id, model)
+        result = self._view_get_cache.get(key)
+        if result:
+            return result
+        if self.inherit:
+            if self.model == model:
+                return self.inherit.view_get(model=model)
+            else:
+                arch = self.inherit.arch
+                view_id = self.inherit.id
+        else:
+            arch = self.arch
+            view_id = self.id
+
+        views = self.__class__.search(['OR', [
+                    ('inherit', '=', view_id),
+                    ('model', '=', model),
+                    ], [
+                    ('id', '=', view_id),
+                    ('inherit', '!=', None),
+                    ],
+                ])
+        views.sort(
+            key=lambda v: self._module_index.get(v.module, -1), reverse=True)
+        parser = etree.XMLParser(remove_comments=True)
+        tree = etree.fromstring(arch, parser=parser)
+        decoder = PYSONDecoder({'context': Transaction().context})
+        for view in views:
+            if view.domain and not decoder.decode(view.domain):
+                continue
+            if not view.arch or not view.arch.strip():
+                continue
+            tree_inherit = etree.fromstring(view.arch, parser=parser)
+            tree = self.inherit_apply(tree, tree_inherit)
+        arch = etree.tostring(tree, encoding='utf-8').decode('utf-8')
+        result = {
+            'type': self.rng_type,
+            'view_id': view_id,
+            'arch': arch,
+            'field_childs': self.field_childs,
+            }
+        self._view_get_cache.set(key, result)
+        return result
+
+    @classmethod
+    def inherit_apply(cls, tree, inherit):
+        root_inherit = inherit.getroottree().getroot()
+        for element in root_inherit:
+            targets = tree.xpath(element.get('expr'))
+            assert targets
+            for target in targets:
+                position = element.get('position', 'inside')
+                new_tree = getattr(cls, '_inherit_apply_%s' % position)(
+                    tree, element, target)
+                if new_tree:
+                    tree = new_tree
+        return tree
+
+    @classmethod
+    def _inherit_apply_replace(cls, tree, element, target):
+        parent = target.getparent()
+        if parent is None:
+            tree, = element
+            return tree
+        cls._inherit_apply_after(tree, element, target)
+        parent.remove(target)
+
+    @classmethod
+    def _inherit_apply_replace_attributes(cls, tree, element, target):
+        child, = element
+        for attr in child.attrib:
+            target.set(attr, child.get(attr))
+
+    @classmethod
+    def _inherit_apply_inside(cls, tree, element, target):
+        target.extend(list(element))
+
+    @classmethod
+    def _inherit_apply_after(cls, tree, element, target):
+        parent = target.getparent()
+        next_ = target.getnext()
+        if next_ is not None:
+            for child in element:
+                index = parent.index(next_)
+                parent.insert(index, child)
+        else:
+            parent.extend(list(element))
+
+    @classmethod
+    def _inherit_apply_before(cls, tree, element, target):
+        parent = target.getparent()
+        for child in element:
+            index = parent.index(target)
+            parent.insert(index, child)
 
 
 class ShowViewStart(ModelView):

@@ -9,9 +9,9 @@ from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool
-from trytond.pyson import PYSONDecoder, PYSONEncoder
+from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
-from trytond.tools import ClassProperty, is_instance_method
+from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 
 from . import fields
@@ -23,65 +23,6 @@ __all__ = ['ModelView']
 
 class AccessButtonError(UserError):
     pass
-
-
-def _find(tree, element):
-    if element.tag == 'xpath':
-        res = tree.xpath(element.get('expr'))
-        if res:
-            return res[0]
-    return None
-
-
-def _inherit_apply(tree, inherit):
-    root_inherit = inherit.getroottree().getroot()
-    for element2 in root_inherit:
-        if element2.tag != 'xpath':
-            continue
-        element = _find(tree, element2)
-        if element is not None:
-            pos = element2.get('position', 'inside')
-            if pos == 'replace':
-                parent = element.getparent()
-                if parent is None:
-                    tree, = element2
-                    continue
-                enext = element.getnext()
-                if enext is not None:
-                    for child in element2:
-                        index = parent.index(enext)
-                        parent.insert(index, child)
-                else:
-                    parent.extend(list(element2))
-                parent.remove(element)
-            elif pos == 'replace_attributes':
-                child = element2[0]
-                for attr in child.attrib:
-                    element.set(attr, child.get(attr))
-            elif pos == 'inside':
-                element.extend(list(element2))
-            elif pos == 'after':
-                parent = element.getparent()
-                enext = element.getnext()
-                if enext is not None:
-                    for child in list(element2):
-                        index = parent.index(enext)
-                        parent.insert(index, child)
-                else:
-                    parent.extend(list(element2))
-            elif pos == 'before':
-                parent = element.getparent()
-                for child in list(element2):
-                    index = parent.index(element)
-                    parent.insert(index, child)
-            else:
-                raise AttributeError(
-                    'Unknown position in inherited view %s!' % pos)
-        else:
-            raise AttributeError(
-                'Couldn\'t find tag (%s: %s) in parent view!'
-                % (element2.tag, element2.get('expr')))
-    return tree
 
 
 def on_change(func):
@@ -99,23 +40,8 @@ class ModelView(Model):
     Define a model with views in Tryton.
     """
     __slots__ = ()
-    __modules_list = None  # Cache for the modules list sorted by dependency
     _fields_view_get_cache = Cache('modelview.fields_view_get')
     _view_toolbar_get_cache = Cache('modelview.view_toolbar_get')
-
-    @staticmethod
-    def _reset_modules_list():
-        ModelView.__modules_list = None
-
-    @ClassProperty
-    @classmethod
-    def _modules_list(cls):
-        from trytond.modules import create_graph, get_module_list
-        if ModelView.__modules_list:
-            return ModelView.__modules_list
-        graph = create_graph(get_module_list())
-        ModelView.__modules_list = [x.name for x in graph] + [None]
-        return ModelView.__modules_list
 
     @classmethod
     def __setup__(cls):
@@ -260,8 +186,6 @@ class ModelView(Model):
         pool = Pool()
         View = pool.get('ir.ui.view')
 
-        view = None
-        inherit_view_id = None
         if view_id:
             view = View(view_id)
         else:
@@ -276,64 +200,13 @@ class ModelView(Model):
             views = [v for v in views if v.rng_type == view_type]
             if views:
                 view = views[0]
-        if view:
-            if view.inherit:
-                inherit_view_id = view.id
-                view = view.inherit
+                view_id = view.id
+            else:
+                view = None
 
         # if a view was found
         if view:
-            result['type'] = view.rng_type
-            result['view_id'] = view_id
-            result['arch'] = view.arch
-            result['field_childs'] = view.field_childs
-
-            # Check if view is not from an inherited model
-            if view.model != cls.__name__:
-                Inherit = pool.get(view.model)
-                result['arch'] = Inherit.fields_view_get(view.id)['arch']
-                real_view_id = inherit_view_id
-            else:
-                real_view_id = view.id
-
-            # get all views which inherit from (ie modify) this view
-            views = View.search([
-                    'OR', [
-                        ('inherit', '=', real_view_id),
-                        ('model', '=', cls.__name__),
-                        ], [
-                        ('id', '=', real_view_id),
-                        ('inherit', '!=', None),
-                        ],
-                    ])
-            raise_p = False
-            while True:
-                try:
-                    views.sort(key=lambda x:
-                        cls._modules_list.index(x.module or None))
-                    break
-                except ValueError:
-                    if raise_p:
-                        raise
-                    # There is perhaps a new module in the directory
-                    ModelView._reset_modules_list()
-                    raise_p = True
-            if not result['arch']:
-                raise ValueError("Missing view architecture for %s" % ((
-                            cls.__name__, view_id, view_type),))
-            parser = etree.XMLParser(remove_comments=True)
-            tree = etree.fromstring(result['arch'], parser=parser)
-            for view in views:
-                if view.domain:
-                    if not PYSONDecoder({'context': Transaction().context}
-                            ).decode(view.domain):
-                        continue
-                if not view.arch or not view.arch.strip():
-                    continue
-                tree_inherit = etree.fromstring(view.arch, parser=parser)
-                tree = _inherit_apply(tree, tree_inherit)
-            result['arch'] = etree.tostring(
-                tree, encoding='utf-8').decode('utf-8')
+            result = view.view_get(model=cls.__name__)
 
         # otherwise, build some kind of default view
         else:
@@ -368,9 +241,10 @@ class ModelView(Model):
             else:
                 xml = ''
             result['type'] = view_type
+            result['view_id'] = view_id
             result['arch'] = xml
             result['field_childs'] = None
-            result['view_id'] = view_id
+        result['model'] = cls.__name__
 
         if level is None:
             level = 1 if result['type'] == 'tree' else 0
