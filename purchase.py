@@ -3,7 +3,7 @@
 import datetime
 from collections import defaultdict
 from decimal import Decimal
-from itertools import chain
+from itertools import chain, groupby
 
 from sql import Literal, Null
 from sql.aggregate import Count
@@ -729,11 +729,12 @@ class Purchase(
     @classmethod
     def set_purchase_date(cls, purchases):
         Date = Pool().get('ir.date')
-        for purchase in purchases:
-            if not purchase.purchase_date:
-                cls.write([purchase], {
-                        'purchase_date': Date.today(),
-                        })
+        for company, purchases in groupby(purchases, key=lambda p: p.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([p for p in purchases if not p.purchase_date], {
+                    'purchase_date': today,
+                    })
 
     @classmethod
     def store_cache(cls, purchases):
@@ -1465,16 +1466,22 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'product_supplier', 'quantity', 'purchase',
         '_parent_purchase.purchase_date',
         'delivery_date_edit', 'delivery_date_store',
-        '_parent_purchase.delivery_date', '_parent_purchase.party')
+        '_parent_purchase.delivery_date', '_parent_purchase.party',
+        '_parent_purchase.company')
     def planned_delivery_date(self):
         pool = Pool()
         Date = pool.get('ir.date')
         ProductSupplier = pool.get('purchase.product_supplier')
+        if self.purchase and self.purchase.company:
+            with Transaction().set_context(company=self.purchase.company.id):
+                today = Date.today()
+        else:
+            today = Date.today()
         product_supplier = self.product_supplier
-        if not product_supplier:
-            product_supplier = ProductSupplier()
-            if self.purchase:
-                product_supplier.party = self.purchase.party
+        if not product_supplier and self.purchase and self.purchase.company:
+            product_supplier = ProductSupplier(
+                party=self.purchase.party,
+                company=self.purchase.company)
         delivery_date = None
         if self.delivery_date_edit:
             delivery_date = self.delivery_date_store
@@ -1488,7 +1495,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             delivery_date = product_supplier.compute_supply_date(date=date)
             if delivery_date == datetime.date.max:
                 delivery_date = None
-        if delivery_date and delivery_date < Date.today():
+        if delivery_date and delivery_date < today:
             delivery_date = None
         return delivery_date
 
@@ -1828,7 +1835,8 @@ class PurchaseReport(CompanyReport):
         pool = Pool()
         Date = pool.get('ir.date')
         context = super().get_context(records, header, data)
-        context['today'] = Date.today()
+        with Transaction().set_context(company=context.get('company')):
+            context['today'] = Date.today()
         return context
 
 

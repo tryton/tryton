@@ -420,7 +420,8 @@ class ProductSupplier(
         Date = Pool().get('ir.date')
 
         if not date:
-            date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         if self.lead_time_used is None:
             return datetime.date.max
         return date + self.lead_time_used
@@ -432,7 +433,8 @@ class ProductSupplier(
         Date = Pool().get('ir.date')
 
         if self.lead_time_used is None or date is None:
-            return Date.today()
+            with Transaction().set_context(company=self.company.id):
+                return Date.today()
         return date - self.lead_time_used
 
     @staticmethod
