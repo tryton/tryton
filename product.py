@@ -11,6 +11,7 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, slugify
+from trytond.transaction import Transaction
 
 from .common import IdentifiersMixin, IdentifiersUpdateMixin
 
@@ -345,7 +346,8 @@ class ShopifyInventoryItem_Customs(metaclass=PoolMeta):
         Date = pool.get('ir.date')
         inventory_item = super().get_shopify(shop)
         if inventory_item:
-            today = Date.today()
+            with Transaction().set_context(company=shop.company.id):
+                today = Date.today()
             inventory_item.country_code_of_origin = (
                 self.product.country_of_origin.code
                 if self.product.country_of_origin else None)
