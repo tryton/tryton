@@ -48,10 +48,6 @@ class UserTestCase(unittest.TestCase):
             os.path.join(os.path.dirname(__file__), 'forbidden.txt'))
         self.addCleanup(config.set, 'password', 'forbidden', forbidden)
 
-        entropy = config.get('password', 'entropy')
-        config.set('password', 'entropy', '0.9')
-        self.addCleanup(config.set, 'password', 'entropy', entropy)
-
         reset_from = config.get('email', 'from', fallback='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
@@ -113,15 +109,6 @@ class UserTestCase(unittest.TestCase):
 
         with self.assertRaises(PasswordError):
             User.validate_password('password', [])
-
-    @with_transaction()
-    def test_validate_password_entropy(self):
-        "Test validate password entropy"
-        pool = Pool()
-        User = pool.get('res.user')
-
-        with self.assertRaises(PasswordError):
-            User.validate_password('aaaaaa', [])
 
     @with_transaction()
     def test_validate_password_name(self):
