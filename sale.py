@@ -317,7 +317,8 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @Workflow.transition('done')
     def do(cls, sales):
         for sale in sales:
-            sale.number = sale.point.sequence.get()
+            with Transaction().set_context(company=sale.company.id):
+                sale.number = sale.point.sequence.get()
         cls.save(sales)
 
     @classmethod

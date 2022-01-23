@@ -31,12 +31,15 @@ class Template(metaclass=PoolMeta):
         'gross_price', 'account_category', methods=['customer_taxes_used'])
     def on_change_gross_price(self):
         pool = Pool()
+        Date = pool.get('ir.date')
         Tax = pool.get('account.tax')
         if self.gross_price is None or not self.account_category:
             return
+        today = Date.today()
         self.list_price = round_price(Tax.reverse_compute(
                 self.gross_price,
-                self.customer_taxes_used))
+                self.customer_taxes_used,
+                today))
 
 
 class Product(metaclass=PoolMeta):
