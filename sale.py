@@ -454,7 +454,8 @@ class _LineMixin:
             sequence = config.get_multivalue(
                 'gift_card_sequence', company=card.company.id)
             if sequence:
-                card.number = sequence.get()
+                with Transaction().set_context(company=card.company.id):
+                    card.number = sequence.get()
             card.product = self.product
             card.value = unit_price
             card.currency = self.sale.currency
