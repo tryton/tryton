@@ -4,6 +4,7 @@ import datetime as dt
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 class Sale(metaclass=PoolMeta):
@@ -71,7 +72,8 @@ class Line(metaclass=PoolMeta):
         pool = Pool()
         Production = pool.get('production')
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(company=self.sale.company.id):
+            today = Date.today()
 
         if (not self.supply_on_sale
                 or self.productions
