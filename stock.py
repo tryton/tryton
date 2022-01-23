@@ -249,13 +249,15 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         User = pool.get('res.user')
 
-        today = Date.today()
         if warehouses is None:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
                     ])
         if company is None:
             company = User(Transaction().user).company
+
+        with Transaction().set_context(company=company.id):
+            today = Date.today()
 
         # Do not keep former plan as the may no more be valid
         opens = cls.search([
@@ -365,7 +367,8 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         ProductQuantitiesByWarehouse = pool.get(
             'stock.product_quantities_warehouse')
         product = move.product
-        today = Date.today()
+        with Transaction().set_context(company=move.company.id):
+            today = Date.today()
 
         quantity = move.internal_quantity
         if product.consumable:
