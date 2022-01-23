@@ -116,7 +116,6 @@
 
                 ctx.context = ctx;
                 decoder = new Sao.PYSON.Decoder(ctx);
-                params.domain = decoder.decode(action.pyson_domain);
                 params.order = decoder.decode(action.pyson_order);
                 params.search_value = decoder.decode(
                     action.pyson_search_value || '[]');
@@ -189,9 +188,20 @@
         record_message: function() {
             this.view.active_changed(this);
         },
-        get_active: function() {
+        get active() {
             if (this.screen && this.screen.current_record) {
-                return Sao.common.EvalEnvironment(this.screen.current_record);
+                return {
+                    'active_id': this.screen.current_record.id,
+                    'active_ids': this.screen.selected_records.map(
+                        function(r) {
+                            return r.id;
+                        }),
+                };
+            } else {
+                return {
+                    'active_id': null,
+                    'active_ids': [],
+                };
             }
         },
         update_domain: function(actions) {
@@ -199,13 +209,9 @@
             var active, domain_ctx, decoder, new_domain;
 
             domain_ctx = jQuery.extend({}, this.context);
-            domain_ctx.context = domain_ctx;
-            domain_ctx._user = Sao.Session.current_session.user_id;
+            domain_ctx._actions = {};
             for (i = 0, len = actions.length; i < len; i++) {
-                active = actions[i].get_active();
-                if (active) {
-                    domain_ctx[actions[i].name] = active;
-                }
+                domain_ctx._actions[actions[i].name] = actions[i].active;
             }
             decoder = new Sao.PYSON.Decoder(domain_ctx);
             new_domain = decoder.decode(this.action.pyson_domain);
