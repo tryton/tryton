@@ -366,13 +366,34 @@ class ProductMixin:
     internal_quantity = fields.Float("Internal Quantity")
     quantity = fields.Function(fields.Float(
             "Quantity", digits='unit'), 'get_quantity')
-    unit = fields.Function(fields.Many2One('product.uom', "Unit"), 'get_unit')
+    unit = fields.Many2One('product.uom', "Unit")
+
+    @classmethod
+    def _joins(cls):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        from_item, tables, withs = super()._joins()
+        if 'move.product' not in tables:
+            product = Product.__table__()
+            tables['move.product'] = product
+            move = tables['move']
+            from_item = (from_item
+                .join(product, condition=move.product == product.id))
+        if 'move.product.template' not in tables:
+            template = Template.__table__()
+            tables['move.product.template'] = template
+            product = tables['move.product']
+            from_item = (from_item
+                .join(template, condition=product.template == template.id))
+        return from_item, tables, withs
 
     @classmethod
     def _columns(cls, tables, withs):
         move = tables['move']
         from_location = tables['move.from_location']
         to_location = tables['move.to_location']
+        template = tables['move.product.template']
         sign = Case(
             (from_location.type.in_(cls._to_location_types())
                 & to_location.type.in_(cls._from_location_types()),
@@ -381,21 +402,21 @@ class ProductMixin:
         return super()._columns(tables, withs) + [
             move.product.as_('product'),
             Sum(sign * move.internal_quantity).as_('internal_quantity'),
+            template.default_uom.as_('unit'),
             ]
 
     @classmethod
     def _group_by(cls, tables, withs):
         move = tables['move']
-        return super()._group_by(tables, withs) + [move.product]
+        template = tables['move.product.template']
+        return super()._group_by(tables, withs) + [
+            move.product, template.default_uom]
 
     def get_rec_name(self, name):
         return self.product.rec_name
 
     def get_quantity(self, name):
         return self.unit.round(self.internal_quantity)
-
-    def get_unit(self, name):
-        return self.product.default_uom.id
 
 
 class Product(ProductMixin, Abstract, ModelView):
