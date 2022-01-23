@@ -139,7 +139,8 @@ class Production(metaclass=PoolMeta):
         """
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(company=company.id):
+            today = Date.today()
         if date <= today:
             date = today
         else:
