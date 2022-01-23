@@ -416,7 +416,8 @@ class PurchaseRequestQuotationReport(CompanyReport):
         pool = Pool()
         Date = pool.get('ir.date')
         context = super().get_context(records, header, data)
-        context['today'] = Date.today()
+        with Transaction().set_context(company=header['company'].id):
+            context['today'] = Date.today()
         return context
 
 
