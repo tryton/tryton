@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Sales extension for managing leads and opportunities"
 import datetime
+from itertools import groupby
 
 from sql import Literal, Null
 from sql.aggregate import Count, Max, Sum
@@ -384,7 +385,8 @@ class SaleOpportunity(
     def is_forecast(self):
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         return self.end_date or datetime.date.max > today
 
     @classmethod
@@ -392,29 +394,44 @@ class SaleOpportunity(
     def won(cls, opportunities):
         pool = Pool()
         Date = pool.get('ir.date')
-        cls.write([o for o in opportunities if o.is_forecast], {
-                'end_date': Date.today(),
-                'state': 'won',
-                })
+        for company, c_opportunities in groupby(
+                opportunities, key=lambda o: o.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([o for o in c_opportunities if o.is_forecast], {
+                    'end_date': today,
+                    'state': 'won',
+                    })
 
     @classmethod
     @ModelView.button
     @Workflow.transition('lost')
     def lost(cls, opportunities):
-        Date = Pool().get('ir.date')
-        cls.write([o for o in opportunities if o.is_forecast], {
-                'end_date': Date.today(),
-                'state': 'lost',
-                })
+        pool = Pool()
+        Date = pool.get('ir.date')
+        for company, c_opportunities in groupby(
+                opportunities, key=lambda o: o.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([o for o in c_opportunities if o.is_forecast], {
+                    'end_date': today,
+                    'state': 'lost',
+                    })
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, opportunities):
-        Date = Pool().get('ir.date')
-        cls.write([o for o in opportunities if o.is_forecast], {
-                'end_date': Date.today(),
-                })
+        pool = Pool()
+        Date = pool.get('ir.date')
+        for company, c_opportunities in groupby(
+                opportunities, key=lambda o: o.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([o for o in c_opportunities if o.is_forecast], {
+                    'end_date': today,
+                    'state': 'cancelled',
+                    })
 
     @staticmethod
     def _sale_won_states():
