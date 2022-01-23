@@ -597,7 +597,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
 
         if date is None:
-            date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         period_id = Period.find(self.company.id, date)
         if self.supplier_invoice_line:
             account_asset = self.supplier_invoice_line.account.current()
