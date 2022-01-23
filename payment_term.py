@@ -45,7 +45,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
                     '.msg_payment_term_missing_last_remainder',
                     payment_term=self.rec_name))
 
-    def compute(self, amount, currency, date=None):
+    def compute(self, amount, currency, date):
         """Calculate payment terms and return a list of tuples
         with (date, amount) for each payment term line.
 
@@ -55,12 +55,8 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
         """
         # TODO implement business_days
         # http://pypi.python.org/pypi/BusinessHours/
-        Date = Pool().get('ir.date')
-
         sign = 1 if amount >= Decimal('0.0') else -1
         res = []
-        if date is None:
-            date = Date.today()
         remainder = amount
         for line in self.lines:
             value = line.get_value(remainder, amount, currency)

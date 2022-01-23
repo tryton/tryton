@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict, namedtuple
 from decimal import Decimal
-from itertools import chain, combinations
+from itertools import chain, combinations, groupby
 
 from sql import Null
 from sql.aggregate import Sum
@@ -495,10 +495,15 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             self.payment_term = None
 
-    @fields.depends('invoice_date')
+    @fields.depends('invoice_date', 'company')
     def on_change_with_currency_date(self, name=None):
         Date = Pool().get('ir.date')
-        return self.invoice_date or Date.today()
+        if self.company:
+            company_id = self.company.id
+        else:
+            company_id = Transaction().context.get('company')
+        with Transaction().set_context(company=company_id):
+            return self.invoice_date or Date.today()
 
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
@@ -526,9 +531,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def on_change_taxes(self):
         self._on_change_lines_taxes()
 
-    @fields.depends('lines', 'taxes', 'currency',
-        'accounting_date', 'invoice_date',  # From tax_date
-        methods=['_get_taxes'])
+    @fields.depends(
+        'lines', 'taxes', 'currency', methods=['_get_taxes', 'tax_date'])
     def _on_change_lines_taxes(self):
         pool = Pool()
         InvoiceTax = pool.get('account.invoice.tax')
@@ -753,40 +757,43 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
 
-        today = Date.today()
         res = dict((x.id, Decimal(0)) for x in invoices)
-        for invoice in invoices:
-            if invoice.state != 'posted':
-                continue
-            amount = Decimal(0)
-            amount_currency = Decimal(0)
-            for line in invoice.lines_to_pay:
-                if line.reconciliation:
+        for company, grouped_invoices in groupby(
+                invoices, key=lambda i: i.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            for invoice in grouped_invoices:
+                if invoice.state != 'posted':
                     continue
-                if (name == 'amount_to_pay_today'
-                        and (not line.maturity_date
-                            or line.maturity_date > today)):
-                    continue
-                if (line.second_currency
-                        and line.second_currency == invoice.currency):
-                    amount_currency += line.amount_second_currency
-                else:
-                    amount += line.debit - line.credit
-            for line in invoice.payment_lines:
-                if line.reconciliation:
-                    continue
-                if (line.second_currency
-                        and line.second_currency == invoice.currency):
-                    amount_currency += line.amount_second_currency
-                else:
-                    amount += line.debit - line.credit
-            if amount != Decimal(0):
-                with Transaction().set_context(date=invoice.currency_date):
-                    amount_currency += Currency.compute(
-                        invoice.company.currency, amount, invoice.currency)
-            if invoice.type == 'in' and amount_currency:
-                amount_currency *= -1
-            res[invoice.id] = amount_currency
+                amount = Decimal(0)
+                amount_currency = Decimal(0)
+                for line in invoice.lines_to_pay:
+                    if line.reconciliation:
+                        continue
+                    if (name == 'amount_to_pay_today'
+                            and (not line.maturity_date
+                                or line.maturity_date > today)):
+                        continue
+                    if (line.second_currency
+                            and line.second_currency == invoice.currency):
+                        amount_currency += line.amount_second_currency
+                    else:
+                        amount += line.debit - line.credit
+                for line in invoice.payment_lines:
+                    if line.reconciliation:
+                        continue
+                    if (line.second_currency
+                            and line.second_currency == invoice.currency):
+                        amount_currency += line.amount_second_currency
+                    else:
+                        amount += line.debit - line.credit
+                if amount != Decimal(0):
+                    with Transaction().set_context(date=invoice.currency_date):
+                        amount_currency += Currency.compute(
+                            invoice.company.currency, amount, invoice.currency)
+                if invoice.type == 'in' and amount_currency:
+                    amount_currency *= -1
+                res[invoice.id] = amount_currency
         return res
 
     @classmethod
@@ -898,8 +905,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return taxable_lines
 
     @property
+    @fields.depends('accounting_date', 'invoice_date', 'company')
     def tax_date(self):
-        return self.accounting_date or self.invoice_date
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        with Transaction().set_context(
+                company=self.company.id if self.company
+                else context.get('company')):
+            today = Date.today()
+        return self.accounting_date or self.invoice_date or today
 
     @fields.depends('party', 'company')
     def _get_tax_context(self):
@@ -997,10 +1012,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Warning = pool.get('res.user.warning')
         Lang = pool.get('ir.lang')
 
-        today = Date.today()
-
         if self.move:
             return self.move
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         self.update_taxes(exception=True)
         move_lines = []
         for line in self.lines:
@@ -1010,7 +1025,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         total = sum(l.debit - l.credit for l in move_lines)
         if self.payment_term:
-            payment_date = self.payment_term_date or self.invoice_date
+            payment_date = self.payment_term_date or self.invoice_date or today
             term_lines = self.payment_term.compute(
                 total, self.company.currency, payment_date)
         else:
@@ -1038,7 +1053,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             move_lines[-1].amount_second_currency -= \
                 remainder_total_currency
 
-        accounting_date = self.accounting_date or self.invoice_date
+        accounting_date = self.accounting_date or self.invoice_date or today
         period_id = Period.find(self.company.id, date=accounting_date)
 
         move = Move()
@@ -1059,36 +1074,41 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Date = pool.get('ir.date')
         Lang = pool.get('ir.lang')
         Sequence = pool.get('ir.sequence.strict')
-        today = Date.today()
 
-        def accounting_date(invoice):
-            return invoice.accounting_date or invoice.invoice_date or today
-
-        invoices = sorted(invoices, key=accounting_date)
         sequences = set()
 
-        for invoice in invoices:
-            # Posted and paid invoices are tested by check_modify so we can
-            # not modify tax_identifier nor number
-            if invoice.state in {'posted', 'paid'}:
-                continue
-            if not invoice.tax_identifier:
-                invoice.tax_identifier = invoice.get_tax_identifier()
-            # Generated invoice may not fill the party tax identifier
-            if not invoice.party_tax_identifier:
-                invoice.party_tax_identifier = invoice.party.tax_identifier
+        for company, grouped_invoices in groupby(
+                invoices, key=lambda i: i.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
 
-            if invoice.number:
-                continue
+            def accounting_date(invoice):
+                return invoice.accounting_date or invoice.invoice_date or today
 
-            if not invoice.invoice_date and invoice.type == 'out':
-                invoice.invoice_date = today
-            invoice.number, invoice.sequence = invoice.get_next_number()
-            if invoice.type == 'out' and invoice.sequence not in sequences:
-                date = accounting_date(invoice)
-                # Do not need to lock the table
-                # because sequence.get_id is sequential
-                after_invoices = cls.search([
+            grouped_invoices = sorted(grouped_invoices, key=accounting_date)
+
+            for invoice in grouped_invoices:
+                # Posted and paid invoices are tested by check_modify so we can
+                # not modify tax_identifier nor number
+                if invoice.state in {'posted', 'paid'}:
+                    continue
+                if not invoice.tax_identifier:
+                    invoice.tax_identifier = invoice.get_tax_identifier()
+                # Generated invoice may not fill the party tax identifier
+                if not invoice.party_tax_identifier:
+                    invoice.party_tax_identifier = invoice.party.tax_identifier
+
+                if invoice.number:
+                    continue
+
+                if not invoice.invoice_date and invoice.type == 'out':
+                    invoice.invoice_date = today
+                invoice.number, invoice.sequence = invoice.get_next_number()
+                if invoice.type == 'out' and invoice.sequence not in sequences:
+                    date = accounting_date(invoice)
+                    # Do not need to lock the table
+                    # because sequence.get_id is sequential
+                    after_invoices = cls.search([
                             ('sequence', '=', invoice.sequence),
                             ['OR',
                                 ('accounting_date', '>', date),
@@ -1097,16 +1117,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                                     ('invoice_date', '>', date),
                                     ],
                                 ],
-                            ], limit=1, order=[('accounting_date', 'DESC')])
-                if after_invoices:
-                    after_invoice, = after_invoices
-                    raise InvoiceNumberError(
-                        gettext('account_invoice.msg_invoice_number_after',
-                            invoice=invoice.rec_name,
-                            sequence=Sequence(invoice.sequence).rec_name,
-                            date=Lang.get().strftime(date),
-                            after_invoice=after_invoice.rec_name))
-                sequences.add(invoice.sequence)
+                            ],
+                        limit=1, order=[('accounting_date', 'DESC')])
+                    if after_invoices:
+                        after_invoice, = after_invoices
+                        raise InvoiceNumberError(
+                            gettext('account_invoice.msg_invoice_number_after',
+                                invoice=invoice.rec_name,
+                                sequence=Sequence(invoice.sequence).rec_name,
+                                date=Lang.get().strftime(date),
+                                after_invoice=after_invoice.rec_name))
+                    sequences.add(invoice.sequence)
         cls.save(invoices)
 
     def get_next_number(self, pattern=None):
@@ -1140,7 +1161,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 gettext('account_invoice.msg_invoice_no_sequence',
                     invoice=self.rec_name,
                     fiscalyear=fiscalyear.rec_name))
-        with Transaction().set_context(date=accounting_date):
+        with Transaction().set_context(
+                date=accounting_date,
+                company=self.company.id):
             return sequence.get(), sequence.id
 
     @property
@@ -1516,11 +1539,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def post_batch(cls, invoices):
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
         cls.set_number(invoices)
-        for invoice in invoices:
-            if not invoice.payment_term_date:
-                invoice.payment_term_date = today
+        for company, grouped_invoices in groupby(
+                invoices, key=lambda i: i.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            for invoice in grouped_invoices:
+                if not invoice.payment_term_date:
+                    invoice.payment_term_date = today
         cls.save(invoices)
         with Transaction().set_context(_skip_warnings=True):
             cls.__queue__._post(invoices)
@@ -1532,20 +1558,24 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
-        today = Date.today()
-        future_invoices = [
-            i for i in invoices
-            if i.type == 'out' and i.invoice_date and i.invoice_date > today]
-        if future_invoices:
-            names = ', '.join(m.rec_name for m in future_invoices[:5])
-            if len(future_invoices) > 5:
-                names += '...'
-            warning_key = Warning.format(
-                'invoice_date_future', future_invoices)
-            if Warning.check(warning_key):
-                raise InvoiceFutureWarning(warning_key,
-                    gettext('account_invoice.msg_invoice_date_future',
-                        invoices=names))
+        for company, grouped_invoices in groupby(
+                invoices, key=lambda i: i.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            future_invoices = [
+                i for i in grouped_invoices
+                if i.type == 'out'
+                and i.invoice_date and i.invoice_date > today]
+            if future_invoices:
+                names = ', '.join(m.rec_name for m in future_invoices[:5])
+                if len(future_invoices) > 5:
+                    names += '...'
+                warning_key = Warning.format(
+                    'invoice_date_future', future_invoices)
+                if Warning.check(warning_key):
+                    raise InvoiceFutureWarning(warning_key,
+                        gettext('account_invoice.msg_invoice_date_future',
+                            invoices=names))
         cls._post(invoices)
 
     @classmethod
@@ -2624,20 +2654,27 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             else:
                 self.account = self.tax.credit_note_account
 
-    @fields.depends('tax', 'base', 'amount', 'manual', 'invoice',
-        '_parent_invoice.currency')
+    @fields.depends(
+        'tax', 'base', 'amount', 'manual', 'invoice',
+        '_parent_invoice.currency',
+        # From_date
+        '_parent_invoice.accounting_date', '_parent_invoice.invoice_date',
+        '_parent_invoice.company')
     def on_change_with_amount(self):
-        Tax = Pool().get('account.tax')
+        pool = Pool()
+        Tax = pool.get('account.tax')
         if self.tax and self.manual:
             tax = self.tax
             base = self.base or Decimal(0)
-            for values in Tax.compute([tax], base, 1):
-                if (values['tax'] == tax
-                        and values['base'] == base):
-                    amount = values['amount']
-                    if self.invoice.currency:
-                        amount = self.invoice.currency.round(amount)
-                    return amount
+            if self.invoice and self.invoice.tax_date:
+                tax_date = self.invoice.tax_date
+                for values in Tax.compute([tax], base, 1, tax_date):
+                    if (values['tax'] == tax
+                            and values['base'] == base):
+                        amount = values['amount']
+                        if self.invoice.currency:
+                            amount = self.invoice.currency.round(amount)
+                        return amount
         return self.amount
 
     @property
@@ -2852,7 +2889,8 @@ class InvoiceReport(Report):
         Date = pool.get('ir.date')
         context = super().get_context(records, header, data)
         context['invoice'] = context['record']
-        context['today'] = Date.today()
+        with Transaction().set_context(company=context['invoice'].company.id):
+            context['today'] = Date.today()
         return context
 
 
