@@ -130,7 +130,8 @@ class FeeDunningLevel(ModelSQL, ModelView):
         Period = pool.get('account.period')
         Currency = pool.get('currency.currency')
 
-        today = Date.today()
+        with Transaction().set_context(company=self.dunning.company.id):
+            today = Date.today()
         move = Move()
         move.company = self.dunning.company
         move.journal = self.level.fee.journal
