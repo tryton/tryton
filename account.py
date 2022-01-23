@@ -9,6 +9,7 @@ from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Configuration(metaclass=PoolMeta):
@@ -129,16 +130,24 @@ class Invoice(metaclass=PoolMeta):
                     total_amounts[invoice.id] = amount
         return amounts
 
-    @fields.depends('currency', 'payment_term', 'company', 'invoice_date')
+    @fields.depends(
+        'currency', 'payment_term', 'company', 'invoice_date',
+        'payment_term_date')
     def _cash_round_total_amount(self, amount):
         "Round total amount according to cash rounding"
+        pool = Pool()
+        Date = pool.get('ir.date')
         if self.currency:
             amounts = [amount]
             if self.payment_term and self.company:
+                with Transaction().set_context(company=self.company.id):
+                    today = Date.today()
+                payment_date = (
+                    self.payment_term_date or self.invoice_date or today)
                 try:
                     term_lines = self.payment_term.compute(
                         amount, self.company.currency,
-                        self.invoice_date)
+                        payment_date)
                     amounts = [a for _, a in term_lines]
                 except PaymentTermComputeError:
                     pass

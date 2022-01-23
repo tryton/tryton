@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
@@ -56,12 +56,16 @@ class Purchase(metaclass=PoolMeta):
 
     @fields.depends('currency', 'payment_term', 'company')
     def _cash_round_total_amount(self, amount):
+        pool = Pool()
+        Date = pool.get('ir.date')
         if self.currency:
             amounts = [amount]
             if self.payment_term and self.company:
+                with Transaction().set_context(company=self.company.id):
+                    today = Date.today()
                 try:
                     term_lines = self.payment_term.compute(
-                        amount, self.company.currency)
+                        amount, self.company.currency, today)
                     amounts = [a for _, a in term_lines]
                 except PaymentTermComputeError:
                     pass
