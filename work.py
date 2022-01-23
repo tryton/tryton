@@ -5,6 +5,7 @@ from collections import defaultdict
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Work(metaclass=PoolMeta):
@@ -86,12 +87,13 @@ class Work(metaclass=PoolMeta):
         pool = Pool()
         Timesheet = pool.get('timesheet.work')
         Date = pool.get('ir.date')
-        today = Date.today()
 
         to_create = []
         to_delete = []
         to_write = defaultdict(list)
         for production in productions:
+            with Transaction().set_context(company=production.company.id):
+                today = Date.today()
             if production.timesheet_available:
                 ended = production.state in {'done', 'cancelled'}
                 if not production.timesheet_works:
