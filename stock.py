@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 from collections import defaultdict
 from itertools import groupby
 
@@ -130,6 +131,11 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
     def get_earliest_date(self, name):
         return self._get_dates(min)
 
+    @property
+    def _allow_partial_moves(self):
+        "Allow to early planning without all moves"
+        return True
+
     def _get_dates(self, aggregate):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -139,6 +145,9 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                 return self.origin.planned_date
             else:
                 return self.early_date
+        elif (not self._allow_partial_moves
+                and any(not m.early_date for m in self.moves)):
+            return self.planned_date
         else:
             return aggregate(
                 filter(None, (m._get_dates(aggregate) for m in self.moves)),
@@ -163,7 +172,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             total = sum(m.origin.internal_quantity for m in self.moves)
             quantity = sum(
                 m._early_quantity for m in self.moves
-                if m.early_date and m.early_date <= date)
+                if (m.early_date or m.planned_date or dt.date.max) <= date)
             if total:
                 return round(quantity / total, 4)
             else:
@@ -464,6 +473,16 @@ class QuantityEarlyPlanProduction(metaclass=PoolMeta):
     @classmethod
     def _get_origins(cls):
         return super()._get_origins() + ['production']
+
+    @property
+    def _allow_partial_moves(self):
+        pool = Pool()
+        Production = pool.get('production')
+        allow = super()._allow_partial_moves
+        if (isinstance(self.origin, Production)
+                and any(not m.early_date for m in self.moves)):
+            allow = False
+        return allow
 
     def get_moves(self, name):
         pool = Pool()
