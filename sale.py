@@ -231,7 +231,8 @@ class Sale(metaclass=PoolMeta):
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
             if cost is not None:
-                today = Date.today()
+                with Transaction().set_context(company=self.company.id):
+                    today = Date.today()
                 date = self.sale_date or today
                 with Transaction().set_context(date=date):
                     return Currency.compute(
