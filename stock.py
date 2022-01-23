@@ -210,7 +210,8 @@ class ShipmentAssignManualShow(ModelView):
 
         location_ids = [loc.id for loc in locations]
         product_ids = [self.move.product.id]
-        stock_date_end = Date.today()
+        with Transaction().set_context(company=self.move.company.id):
+            stock_date_end = Date.today()
         with Transaction().set_context(
                 stock_date_end=stock_date_end,
                 stock_assign=True,
