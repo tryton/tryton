@@ -567,3 +567,26 @@ class Invoice(metaclass=PoolMeta):
                                     invoice.currency)
                         amounts[invoice.id] -= payment_amount
         return amounts
+
+
+class Dunning(metaclass=PoolMeta):
+    __name__ = 'account.dunning'
+
+    def get_active(self, name):
+        return super().get_active(name) and self.line.payment_amount > 0
+
+    @classmethod
+    def search_active(cls, name, clause):
+        if tuple(clause[1:]) in {('=', True), ('!=', False)}:
+            domain = ('line.payment_amount', '>', 0)
+        elif tuple(clause[1:]) in {('=', False), ('!=', True)}:
+            domain = ('line.payment_amount', '<=', 0)
+        else:
+            domain = []
+        return [super().search_active(name, clause), domain]
+
+    @classmethod
+    def _overdue_line_domain(cls, date):
+        return [super()._overdue_line_domain(date),
+            ('payment_amount', '>', 0),
+            ]

@@ -64,7 +64,10 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [
+    get_require_version('proteus'),
+    get_require_version('trytond_account_dunning'),
+    ]
 for dep in ['account_invoice']:
     tests_require.append(get_require_version('trytond_%s' % dep))
 dependency_links = []

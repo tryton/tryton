@@ -1,3 +1,4 @@
+* Do not create dunning for line with pending payment
 * Add support for Python 3.10
 * Remove support for Python 3.6
 * Add amount_line_paid property on payments

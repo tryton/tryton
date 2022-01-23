@@ -25,6 +25,9 @@ def register():
         account.Invoice,
         module='account_payment', type_='model', depends=['account_invoice'])
     Pool.register(
+        account.Dunning,
+        module='account_payment', type_='model', depends=['account_dunning'])
+    Pool.register(
         payment.ProcessPayment,
         account.CreateDirectDebit,
         account.PayLine,
