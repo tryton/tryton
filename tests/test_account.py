@@ -540,6 +540,7 @@ class AccountTestCase(
             with Transaction().set_context(fiscalyear=fiscalyear.id):
                 debit_receivable_type, = Type.copy([receivable_type])
             receivable.debit_type = debit_receivable_type
+            receivable.credit_type = None
             receivable.save()
             self.assertEqual(receivable_type.amount, Decimal(0))
             self.assertEqual(debit_receivable_type.amount, Decimal(100))
@@ -548,9 +549,28 @@ class AccountTestCase(
             with Transaction().set_context(fiscalyear=fiscalyear.id):
                 debit_revenue_type, = Type.copy([revenue_type])
             revenue.debit_type = debit_revenue_type
+            revenue.credit_type = None
             revenue.save()
             self.assertEqual(revenue_type.amount, Decimal(100))
             self.assertEqual(debit_revenue_type.amount, Decimal(0))
+
+            # Set a credit type on revenue
+            with Transaction().set_context(fiscalyear=fiscalyear.id):
+                credit_revenue_type, = Type.copy([revenue_type])
+            revenue.credit_type = credit_revenue_type
+            revenue.debit_type = None
+            revenue.save()
+            self.assertEqual(revenue_type.amount, Decimal(0))
+            self.assertEqual(credit_revenue_type.amount, Decimal(100))
+
+            # Set a credit type on receivable
+            with Transaction().set_context(fiscalyear=fiscalyear.id):
+                credit_receivable_type, = Type.copy([receivable_type])
+            receivable.credit_type = credit_receivable_type
+            receivable.debit_type = None
+            receivable.save()
+            self.assertEqual(receivable_type.amount, Decimal(100))
+            self.assertEqual(credit_receivable_type.amount, Decimal(0))
 
     @with_transaction()
     def test_move_post(self):

@@ -83,6 +83,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot erase party "%(party)s" while they have pending receivable/payable with company "%(company)s".</field>
         </record>
 
+        <record model="ir.message" id="msg_only_one_debit_credit_types">
+            <field name="text">Account can have only one of the debit or credit type set.</field>
+        </record>
         <record model="ir.message" id="msg_delete_account_with_move_lines">
             <field name="text">You cannot delete account "%(account)s" because it has move lines.</field>
         </record>

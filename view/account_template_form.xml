@@ -10,15 +10,19 @@ this repository contains the full copyright notices and license terms. -->
     <field name="parent"/>
 
     <label name="type"/>
-    <group id="types" col="-1">
-        <field name="type"/>
-        <label name="debit_type"/>
-        <field name="debit_type"/>
-    </group>
+    <field name="type" colspan="5"/>
+
+    <label name="debit_type"/>
+    <field name="debit_type" colspan="5"/>
+
+    <label name="credit_type"/>
+    <field name="credit_type" colspan="5"/>
+
     <label name="closed"/>
     <field name="closed"/>
     <label name="general_ledger_balance"/>
     <field name="general_ledger_balance"/>
+    <newline/>
 
     <label name="start_date"/>
     <field name="start_date"/>
