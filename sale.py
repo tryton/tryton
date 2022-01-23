@@ -121,7 +121,8 @@ class Sale(metaclass=PoolMeta):
                     gettext('sale_stock_quantity.msg_sale_stock_quantity',
                         **message_values))
 
-        today = Date.today()
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         sale_date = self.sale_date or today
         product_ids = {l.product.id for l in filter(filter_line, self.lines)}
         product_ids = list(product_ids)
