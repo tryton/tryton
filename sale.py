@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import time
 from collections import defaultdict
 from decimal import Decimal
 from itertools import zip_longest
@@ -18,7 +17,6 @@ from trytond.transaction import Transaction
 
 from .common import IdentifierMixin
 from .exceptions import ShopifyError
-from .web import BACKOFF_TIME, BACKOFF_TIME_FACTOR
 
 
 class Sale(IdentifierMixin, metaclass=PoolMeta):
@@ -215,10 +213,6 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                                     fulfillment.errors.full_messages())))
                     shipment.set_shopify_identifier(self, fulfillment.id)
                     Transaction().commit()
-                    time.sleep(
-                        BACKOFF_TIME
-                        * (BACKOFF_TIME_FACTOR
-                            if self.web_shop.shopify_trial else 1))
 
             # TODO: manage drop shipment
 
@@ -234,18 +228,12 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                                 sale=self.rec_name,
                                 error="\n".join(
                                     refund.errors.full_messages())))
-                    time.sleep(
-                        BACKOFF_TIME
-                        * (BACKOFF_TIME_FACTOR
-                            if self.web_shop.shopify_trial else 1))
                     order = shopify.Order.find(self.shopify_identifier)
                     Payment.get_from_shopify(self, order)
-                    time.sleep(BACKOFF_TIME)
 
             if self.state == 'done':
                 order = shopify.Order.find(self.shopify_identifier)
                 order.close()
-                time.sleep(BACKOFF_TIME)
 
     def get_shopify_refund(self, shipping):
         order = shopify.Order.find(self.shopify_identifier)

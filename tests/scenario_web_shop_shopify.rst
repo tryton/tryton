@@ -125,7 +125,6 @@ Define a web shop::
     >>> web_shop.shopify_url = os.getenv('SHOPIFY_URL')
     >>> web_shop.shopify_password = os.getenv('SHOPIFY_PASSWORD')
     >>> web_shop.shopify_version = sorted(ApiVersion.versions, reverse=True)[1]
-    >>> web_shop.shopify_trial = True
     >>> shop_warehouse = web_shop.shopify_warehouses.new()
     >>> shop_warehouse.warehouse, = Location.find([('type', '=', 'warehouse')])
     >>> shopify_payment_journal = web_shop.shopify_payment_journals.new()

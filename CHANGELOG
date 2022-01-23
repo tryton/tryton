@@ -1,3 +1,4 @@
+* Remove API backoff time
 * Support edit orders from Shopify
 * Define the metafields managed by Tryton
 * Add support for Python 3.10

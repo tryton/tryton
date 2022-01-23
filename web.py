@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
-import time
 from decimal import Decimal
 
 import pyactiveresource
@@ -21,9 +20,6 @@ from trytond.transaction import Transaction
 from .common import IdentifierMixin, IdentifiersMixin
 from .exceptions import ShopifyError
 
-BACKOFF_TIME = config.getfloat(
-    'web_shop_shopify', 'api_backoff_time', default=1)
-BACKOFF_TIME_FACTOR = 12
 EDIT_ORDER_DELAY = dt.timedelta(days=60 + 1)
 
 
@@ -39,9 +35,6 @@ class Shop(metaclass=PoolMeta):
     shopify_url = fields.Char("Shop URL", states=_states, depends=_depends)
     shopify_version = fields.Selection(
         'get_shopify_versions', "Version", states=_states, depends=_depends)
-    shopify_trial = fields.Boolean(
-        "Trial",
-        help="If checked reduce the number of calls per minute.")
     shopify_password = fields.Char(
         "Password", states=_states, depends=_depends)
     shopify_warehouses = fields.One2Many(
@@ -131,18 +124,15 @@ class Shop(metaclass=PoolMeta):
             if key not in metafields:
                 if key in managed_metafields:
                     metafield.destroy()
-                    time.sleep(BACKOFF_TIME)
             elif metafields[key] != value:
                 for k, v in metafields.pop(key).items():
                     setattr(metafield, k, v)
                 metafield.save()
-                time.sleep(BACKOFF_TIME)
         for key, value in metafields.items():
             namespace, key = key.split('.', 1)
             value['namespace'] = namespace
             value['key'] = key
             resource.add_metafield(shopify.Metafield(value))
-            time.sleep(BACKOFF_TIME)
 
     @classmethod
     def shopify_update_product(cls, shops=None):
@@ -232,7 +222,6 @@ class Shop(metaclass=PoolMeta):
             identifier.to_update = False
             identifier.save()
         Transaction().commit()
-        time.sleep(BACKOFF_TIME)
 
         self.__sync_metafields(
             custom_collection, category.get_shopify_metafields(self))
@@ -242,7 +231,6 @@ class Shop(metaclass=PoolMeta):
         if shopify_id:
             if shopify.CustomCollection.exists(shopify_id):
                 shopify.CustomCollection.find(shopify_id).destroy()
-            time.sleep(BACKOFF_TIME)
             category.set_shopify_identifier(self)
 
     def __shopify_update_template(
@@ -278,7 +266,6 @@ class Shop(metaclass=PoolMeta):
             variant, = shopify_product.variants
             product.set_shopify_identifier(self, variant.id)
         Transaction().commit()
-        time.sleep(BACKOFF_TIME)
 
         self.__sync_metafields(
             shopify_product, template.get_shopify_metafields(self))
@@ -312,7 +299,6 @@ class Shop(metaclass=PoolMeta):
             return
         if shopify.Product.exists(shopify_id):
             shopify.Product.find(shopify_id).destroy()
-        time.sleep(BACKOFF_TIME)
         template.set_shopify_identifier(self)
         for product in template.products:
             product.set_shopify_identifier(self)
@@ -345,12 +331,10 @@ class Shop(metaclass=PoolMeta):
                 image.set_shopify_identifier(
                     self, product_image.id)
                 transaction.commit()
-            time.sleep(BACKOFF_TIME)
 
         for image in shopify_product.images:
             if image.id not in image_ids:
                 image.destroy()
-                time.sleep(BACKOFF_TIME)
 
     def __shopify_update_product(self, shopify_shop, product, price, tax):
         update_extra = {'price': str(price), 'tax': str(tax)}
@@ -372,7 +356,6 @@ class Shop(metaclass=PoolMeta):
             identifier.to_update_extra = update_extra
             identifier.save()
         Transaction().commit()
-        time.sleep(BACKOFF_TIME)
 
         self.__sync_metafields(variant, product.get_shopify_metafields(self))
 
@@ -394,13 +377,11 @@ class Shop(metaclass=PoolMeta):
                 identifier.to_update = False
                 identifier.save()
             Transaction().commit()
-        time.sleep(BACKOFF_TIME)
 
     def __shopify_remove_product(self, product):
         shopify_id = product.get_shopify_identifier(self)
         if shopify_id:
             if shopify.Variant.exists(shopify_id):
-                time.sleep(BACKOFF_TIME)
                 shopify.Variant.find(shopify_id).destroy()
             product.set_shopify_identifier(self)
 
@@ -451,9 +432,6 @@ class Shop(metaclass=PoolMeta):
                         location_id, inventory_item_id, quantity)
                 except pyactiveresource.connection.ResourceNotFound:
                     pass
-                time.sleep(BACKOFF_TIME)
-            elif not i % 250:
-                time.sleep(BACKOFF_TIME)
 
         for product_id, quantity in product2quantity.items():
             inventory_item_id = product2shopify.get(product_id)
@@ -464,7 +442,6 @@ class Shop(metaclass=PoolMeta):
                     location_id, inventory_item_id, quantity)
             except pyactiveresource.connection.ResourceNotFound:
                 pass
-            time.sleep(BACKOFF_TIME)
 
     @classmethod
     def shopify_fetch_order(cls, shops=None):
@@ -499,8 +476,6 @@ class Shop(metaclass=PoolMeta):
                 sales = []
                 for i, order in enumerate(orders):
                     sales.append(Sale.get_from_shopify(shop, order))
-                    if i % 250:
-                        time.sleep(BACKOFF_TIME)
                 Sale.save(sales)
                 for sale, order in zip(sales, orders):
                     sale.shopify_tax_adjustment = (
@@ -575,7 +550,6 @@ class Shop(metaclass=PoolMeta):
                     sale.total_amount_cache = None
                     to_update[sale] = order
                 Payment.get_from_shopify(sale, order)
-            time.sleep(BACKOFF_TIME)
         Sale.save(to_update.keys())
         for sale, order in to_update.items():
             sale.shopify_tax_adjustment = (

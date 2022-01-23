@@ -3,9 +3,11 @@
 
 from trytond.pool import Pool
 
-from . import account, ir, party, product, sale, stock, web
+from . import account, ir, party, product, sale, shopify_retry, stock, web
 
 __all__ = ['register']
+
+shopify_retry.patch()
 
 
 def register():
