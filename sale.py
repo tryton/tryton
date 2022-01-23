@@ -118,7 +118,7 @@ class SaleShipmentCost(metaclass=PoolMeta):
             cost = self.compute_shipment_cost()
             if cost is not None:
                 cost_line = self.get_shipment_cost_line(cost)
-                taxes = Tax.compute(cost_line.taxes, cost, 1)
+                taxes = Tax.compute(cost_line.taxes, cost, 1, self.tax_date)
                 cost += sum(t['amount'] for t in taxes)
                 cost = float(self.currency.round(cost))
                 item['grand_total'] += cost
