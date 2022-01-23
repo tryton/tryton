@@ -1593,11 +1593,9 @@ class ModelStorage(Model):
             ifields = islice(ifields, 0, _cache_field)
             ffields.update(ifields)
 
-        require_context_field = False
         # add datetime_field
         for field in list(ffields.values()):
             if hasattr(field, 'datetime_field') and field.datetime_field:
-                require_context_field = True
                 if field.datetime_field not in ffields:
                     datetime_field = self._fields[field.datetime_field]
                     ffields[field.datetime_field] = datetime_field
@@ -1609,7 +1607,6 @@ class ModelStorage(Model):
                 for context_field_name in eval_fields:
                     if context_field_name not in field.depends:
                         continue
-                    require_context_field = True
                     if context_field_name not in ffields:
                         context_field = self._fields.get(context_field_name)
                         ffields[context_field_name] = context_field
@@ -1695,15 +1692,20 @@ class ModelStorage(Model):
                 self._transaction.set_context(
                     self._context, _check_access=False) as transaction:
             if (self.id in self._cache and name in self._cache[self.id]
-                    and not require_context_field):
+                    and ffields.keys() <= set(self._cache[self.id]._keys())):
                 # Use values from cache
-                ids = islice(chain(islice(self._ids, index, None),
-                        islice(self._ids, 0, max(index - 1, 0))),
-                    self._transaction.database.IN_MAX)
-                ffields = {name: ffields[name]}
-                read_data = [{'id': i, name: self._cache[i][name]}
-                    for i in ids
-                    if i in self._cache and name in self._cache[i]]
+                read_data = []
+                for id_ in islice(chain(islice(self._ids, index, None),
+                            islice(self._ids, 0, max(index - 1, 0))),
+                        self._transaction.database.IN_MAX):
+                    if id_ in self._cache:
+                        data = {'id': id_}
+                        for fname in ffields:
+                            if fname not in self._cache[id_]:
+                                break
+                            data[fname] = self._cache[id_][fname]
+                        else:
+                            read_data.append(data)
             else:
                 # Order data read to update cache in the same order
                 index = {i: n for n, i in enumerate(ids)}
@@ -1722,7 +1724,6 @@ class ModelStorage(Model):
                             'many2one', 'one2one', 'one2many', 'many2many',
                             'reference'}:
                         if (fname != name
-                                and not require_context_field
                                 and field._type not in no_local_cache):
                             continue
                         fvalue = instantiate(field, data[fname], data)
