@@ -88,7 +88,6 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('session', 'ip_network_6', '56')
         self.add_section('password')
         self.set('password', 'length', '8')
-        self.set('password', 'entropy', '0.75')
         self.set('password', 'reset_timeout', str(24 * 60 * 60))
         self.add_section('bus')
         self.set('bus', 'allow_subscribe', 'False')

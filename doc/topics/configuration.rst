@@ -497,13 +497,6 @@ forbidden
 
 The path to a file containing one forbidden password per line.
 
-entropy
-~~~~~~~
-
-The ratio of non repeated characters for the user password.
-
-Default: ``0.75``
-
 reset_timeout
 ~~~~~~~~~~~~~
 

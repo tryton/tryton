@@ -295,10 +295,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                     f.fileno(), 0, access=mmap.ACCESS_READ)
                 if forbidden.find(password_b) >= 0:
                     raise PasswordError(gettext('res.msg_password_forbidden'))
-        entropy = config.getfloat('password', 'entropy', default=0)
-        if entropy:
-            if len(set(password)) / len(password) < entropy:
-                raise PasswordError(gettext('res.msg_password_entropy'))
         for user in users:
             # Use getattr to allow to use non User instances
             for test, message in [

@@ -1,3 +1,4 @@
+* Remove entropy check on password
 * Set view_id in the context when calling view_attributes
 * Add ip_address and device_cookie login method options
 * Add support for Python 3.10
