@@ -5,7 +5,6 @@ import gettext
 
 from gi.repository import GLib, Gtk
 
-import tryton.common as common
 import tryton.rpc as rpc
 from tryton.action import Action as GenericAction
 from tryton.common import RPCException, RPCExecute
@@ -50,7 +49,6 @@ class Action:
 
         ctx['context'] = ctx
         decoder = PYSONDecoder(ctx)
-        self.domain = decoder.decode(self.action['pyson_domain'])
         order = decoder.decode(self.action['pyson_order'])
         search_value = decoder.decode(
             self.action['pyson_search_value'] or '[]')
@@ -136,17 +134,23 @@ class Action:
 
     def _get_active(self):
         if self.screen and self.screen.current_record:
-            return common.EvalEnvironment(self.screen.current_record)
+            return {
+                'active_id': self.screen.current_record.id,
+                'active_ids': [r.id for r in self.screen.selected_records]
+                }
+        else:
+            return {
+                'active_id': None,
+                'active_ids': [],
+                }
 
     active = property(_get_active)
 
     def update_domain(self, actions):
         domain_ctx = self.context.copy()
-        domain_ctx['context'] = domain_ctx
-        domain_ctx['_user'] = rpc._USER
+        domain_ctx['_actions'] = {}
         for action in actions:
-            if action.active:
-                domain_ctx[action.name] = action.active
+            domain_ctx['_actions'][action.name] = action.active
         new_domain = PYSONDecoder(domain_ctx).decode(
                 self.action['pyson_domain'])
         if self.domain == new_domain:

@@ -1,3 +1,4 @@
+* Limit board action domain to active id and ids
 * Add support for Python 3.10
 * Remove support for Python 3.6
 * Manage creatable attribute of view
