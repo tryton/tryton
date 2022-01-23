@@ -7,6 +7,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 from .exceptions import PurchaseWarning
 
@@ -157,7 +158,6 @@ class Production(metaclass=PoolMeta):
 
         super(Production, cls).wait(productions)
 
-        today = Date.today()
         purchases = []
         lines = []
 
@@ -168,6 +168,9 @@ class Production(metaclass=PoolMeta):
                 key=cls._group_purchase_key))
         for key, grouped in groupby(productions, key=cls._group_purchase_key):
             productions = list(grouped)
+            key = dict(key)
+            with Transaction().set_context(company=key['company'].id):
+                today = Date.today()
             try:
                 purchase_date = min(p.planned_start_date or p.planned_date
                     for p in productions if p.planned_date)
@@ -176,7 +179,7 @@ class Production(metaclass=PoolMeta):
             if purchase_date < today:
                 purchase_date = today
             purchase = Purchase(purchase_date=purchase_date)
-            for f, v in key:
+            for f, v in key.items():
                 setattr(purchase, f, v)
             purchases.append(purchase)
             for production in productions:
