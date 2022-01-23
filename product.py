@@ -213,8 +213,9 @@ class Product(metaclass=PoolMeta):
 
         context = Transaction().context
         locations = Stock.search([('type', '=', 'storage')])
-        stock_date_end = Date.today()
         company = Company(context['company'])
+        with Transaction().set_context(company=company.id):
+            stock_date_end = Date.today()
         moves = []
         with Transaction().set_context(locations=[l.id for l in locations],
                 stock_date_end=stock_date_end):
@@ -245,10 +246,12 @@ class Product(metaclass=PoolMeta):
             account = self.account_stock_in_used
         else:
             account = self.account_stock_out_used
+        with Transaction().set_context(company=company.id):
+            today = Date.today()
         return Move(
             period=Period.find(company.id),
             journal=config.stock_journal,
-            date=Date.today(),
+            date=today,
             origin=self,
             lines=[Line(
                     debit=amount if amount > 0 else 0,
