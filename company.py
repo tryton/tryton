@@ -57,7 +57,8 @@ class Employee(metaclass=PoolMeta):
         employee_costs = self.get_employee_costs()
 
         if date is None:
-            date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         # compute the cost price for the given date
         cost = 0
         if employee_costs and date >= employee_costs[0][0]:
