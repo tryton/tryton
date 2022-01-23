@@ -70,7 +70,8 @@ class Commission(metaclass=PoolMeta):
             return self.waiting_move
 
         if date is None:
-            date = Date.today()
+            with Transaction().set_context(company=self.agent.company.id):
+                date = Date.today()
         period = Period.find(self.agent.company.id, date=date)
 
         move = Move(journal=self.get_journal(), origin=self,
