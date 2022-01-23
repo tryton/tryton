@@ -169,7 +169,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
     def get_context(self):
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         return {
             'language': self.language.code if self.language else None,
             'company': self.company.id,
@@ -182,6 +183,7 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
     def get_products(self, pattern=None):
         "Return the list of products with corresponding prices and taxes"
         pool = Pool()
+        Date = pool.get('ir.date')
         Product = pool.get('product.product')
         Tax = pool.get('account.tax')
         if pattern is None:
@@ -189,6 +191,7 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
 
         with Transaction().set_context(**self.get_context()):
             all_products = Product.browse(self.products)
+            today = Date.today()
 
         customer_tax_rule = self._customer_taxe_rule()
         taxes2products = defaultdict(list)
@@ -218,7 +221,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
                 price = prices[product.id]
                 if price is not None:
                     taxes[product.id] = sum(
-                        t['amount'] for t in Tax.compute(taxes_, price, 1))
+                        t['amount'] for t in Tax.compute(
+                            taxes_, price, 1, today))
                 else:
                     taxes[product.id] = None
 
