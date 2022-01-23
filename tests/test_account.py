@@ -675,7 +675,7 @@ class AccountTestCase(
             tax.childs = [child1, child2]
             tax.save()
 
-            self.assertEqual(Tax.compute([tax], Decimal('100'), 2),
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2, today),
                 [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -687,7 +687,7 @@ class AccountTestCase(
                         }])
 
             self.assertEqual(
-                Tax.reverse_compute(Decimal('130'), [tax]),
+                Tax.reverse_compute(Decimal('130'), [tax], today),
                 Decimal('100'))
 
             child1.end_date = today + relativedelta(days=5)
@@ -802,7 +802,7 @@ class AccountTestCase(
             vat1.save()
 
             self.assertEqual(
-                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
+                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -817,7 +817,8 @@ class AccountTestCase(
                         'tax': vat1,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal(135), [vat0, ecotax1, vat1]),
+                Tax.reverse_compute(
+                    Decimal(135), [vat0, ecotax1, vat1], today),
                 Decimal(100))
 
     @with_transaction()
@@ -825,7 +826,9 @@ class AccountTestCase(
         'Test tax compute with unit_price modifying tax'
         pool = Pool()
         Account = pool.get('account.account')
+        Date = pool.get('ir.date')
         Tax = pool.get('account.tax')
+        today = Date.today()
 
         company = create_company()
         with set_company(company):
@@ -854,7 +857,7 @@ class AccountTestCase(
             vat1.save()
 
             self.assertEqual(
-                Tax.compute([ecotax1, vat1], Decimal(100), 5),
+                Tax.compute([ecotax1, vat1], Decimal(100), 5, today),
                 [{
                         'base': Decimal(500),
                         'amount': Decimal(25),
@@ -865,7 +868,7 @@ class AccountTestCase(
                         'tax': vat1,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal(126), [ecotax1, vat1]),
+                Tax.reverse_compute(Decimal(126), [ecotax1, vat1], today),
                 Decimal(100))
 
             ecotax2 = Tax()
@@ -879,7 +882,7 @@ class AccountTestCase(
             ecotax2.save()
 
             self.assertEqual(
-                Tax.compute([ecotax1, ecotax2, vat1], Decimal(100), 1),
+                Tax.compute([ecotax1, ecotax2, vat1], Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(5),
@@ -894,8 +897,8 @@ class AccountTestCase(
                         'tax': vat1,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal(186),
-                    [ecotax1, ecotax2, vat1]),
+                Tax.reverse_compute(
+                    Decimal(186), [ecotax1, ecotax2, vat1], today),
                 Decimal(100))
 
             vat0 = Tax()
@@ -908,7 +911,7 @@ class AccountTestCase(
             vat0.save()
 
             self.assertEqual(
-                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
+                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -923,13 +926,13 @@ class AccountTestCase(
                         'tax': vat1,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal(136),
-                    [vat0, ecotax1, vat1]),
+                Tax.reverse_compute(
+                    Decimal(136), [vat0, ecotax1, vat1], today),
                 Decimal(100))
 
             self.assertEqual(
                 Tax.compute([vat0, ecotax1, ecotax2, vat1],
-                    Decimal(100), 1),
+                    Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -948,8 +951,8 @@ class AccountTestCase(
                         'tax': vat1,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal(196),
-                    [vat0, ecotax1, ecotax2, vat1]),
+                Tax.reverse_compute(
+                    Decimal(196), [vat0, ecotax1, ecotax2, vat1], today),
                 Decimal(100))
 
             vat2 = Tax()
@@ -963,7 +966,7 @@ class AccountTestCase(
 
             self.assertEqual(
                 Tax.compute([vat0, ecotax1, vat1, vat2],
-                    Decimal(100), 1),
+                    Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -982,8 +985,8 @@ class AccountTestCase(
                         'tax': vat2,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal('167.5'),
-                    [vat0, ecotax1, vat1, vat2]),
+                Tax.reverse_compute(
+                    Decimal('167.5'), [vat0, ecotax1, vat1, vat2], today),
                 Decimal(100))
 
             ecotax3 = Tax()
@@ -998,7 +1001,7 @@ class AccountTestCase(
 
             self.assertEqual(
                 Tax.compute([vat0, ecotax1, vat1, ecotax3, vat2],
-                    Decimal(100), 1),
+                    Decimal(100), 1, today),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -1021,17 +1024,20 @@ class AccountTestCase(
                         'tax': vat2
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal('222.1'),
-                    [vat0, ecotax1, vat1, ecotax3, vat2]),
+                Tax.reverse_compute(
+                    Decimal('222.1'),
+                    [vat0, ecotax1, vat1, ecotax3, vat2],
+                    today),
                 Decimal(100))
 
     class Taxable(TaxableMixin):
-        __slots__ = ('currency', 'taxable_lines')
+        __slots__ = ('currency', 'taxable_lines', 'company')
 
-        def __init__(self, currency=None, taxable_lines=None):
+        def __init__(self, currency=None, taxable_lines=None, company=None):
             super().__init__()
             self.currency = currency
             self.taxable_lines = taxable_lines
+            self.company = company
 
     @with_transaction()
     def test_taxable_mixin_line(self):
@@ -1053,7 +1059,8 @@ class AccountTestCase(
                 currency=currency,
                 taxable_lines=[
                     ([tax], Decimal('1.001'), 1, None),
-                    ] * 100)
+                    ] * 100,
+                company=company)
 
             taxes = taxable._get_taxes()
 
@@ -1069,14 +1076,6 @@ class AccountTestCase(
         Configuration = pool.get('account.configuration')
         currency = create_currency('cur')
 
-        class Taxable(TaxableMixin):
-            __slots__ = ('currency', 'taxable_lines')
-
-            def __init__(self, currency=None, taxable_lines=None):
-                super().__init__()
-                self.currency = currency
-                self.taxable_lines = taxable_lines
-
         company = create_company()
         with set_company(company):
             create_chart(company, tax=True)
@@ -1085,11 +1084,12 @@ class AccountTestCase(
             config.tax_rounding = 'document'
             config.save()
 
-            taxable = Taxable(
+            taxable = self.Taxable(
                 currency=currency,
                 taxable_lines=[
                     ([tax], Decimal('1.001'), 1, None),
-                    ] * 100)
+                    ] * 100,
+                company=company)
 
             taxes = taxable._get_taxes()
 
@@ -1102,7 +1102,9 @@ class AccountTestCase(
         "Test tax compute with children taxes modifying unit_price"
         pool = Pool()
         Account = pool.get('account.account')
+        Date = pool.get('ir.date')
         Tax = pool.get('account.tax')
+        today = Date.today()
 
         company = create_company()
         with set_company(company):
@@ -1137,7 +1139,7 @@ class AccountTestCase(
             tax2.save()
 
             self.assertEqual(
-                Tax.compute([tax1, tax2], Decimal(100), 2), [{
+                Tax.compute([tax1, tax2], Decimal(100), 2, today), [{
                         'base': Decimal(200),
                         'amount': Decimal(20),
                         'tax': child1,
@@ -1147,7 +1149,7 @@ class AccountTestCase(
                         'tax': tax2,
                         }])
             self.assertEqual(
-                Tax.reverse_compute(Decimal('120'), [tax1, tax2]),
+                Tax.reverse_compute(Decimal('120'), [tax1, tax2], today),
                 Decimal('100'))
 
     @with_transaction()

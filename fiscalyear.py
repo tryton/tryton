@@ -220,7 +220,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         if not date:
-            date = Date.today()
+            with Transaction().set_context(company=company_id):
+                date = Date.today()
         fiscalyears = cls.search([
             ('start_date', '<=', date),
             ('end_date', '>=', date),

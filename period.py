@@ -173,7 +173,8 @@ class Period(Workflow, ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
 
         if not date:
-            date = Date.today()
+            with Transaction().set_context(company=company_id):
+                date = Date.today()
         clause = [
             ('start_date', '<=', date),
             ('end_date', '>=', date),

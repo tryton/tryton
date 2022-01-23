@@ -1015,7 +1015,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         return sorted(taxes, key=key, reverse=reverse)
 
     @classmethod
-    def compute(cls, taxes, price_unit, quantity, date=None):
+    def compute(cls, taxes, price_unit, quantity, date):
         '''
         Compute taxes for price_unit and quantity at the date.
         Return list of dict for each taxes and their childs with:
@@ -1023,10 +1023,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             amount
             tax
         '''
-        pool = Pool()
-        Date = pool.get('ir.date')
-        if date is None:
-            date = Date.today()
         taxes = cls.sort_taxes(taxes)
         res = cls._unit_compute(taxes, price_unit, date)
         quantity = Decimal(str(quantity or 0.0))
@@ -1036,14 +1032,10 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         return res
 
     @classmethod
-    def reverse_compute(cls, price_unit, taxes, date=None):
+    def reverse_compute(cls, price_unit, taxes, date):
         '''
         Reverse compute the price_unit for taxes at the date.
         '''
-        pool = Pool()
-        Date = pool.get('ir.date')
-        if date is None:
-            date = Date.today()
         taxes = cls.sort_taxes(taxes)
         return cls._reverse_unit_compute(price_unit, taxes, date)
 
@@ -1162,7 +1154,8 @@ class TaxableMixin(object):
         "Date to use when computing the tax"
         pool = Pool()
         Date = pool.get('ir.date')
-        return Date.today()
+        with Transaction().set_context(company=self.company.id):
+            return Date.today()
 
     def _get_tax_context(self):
         return {}
@@ -1191,7 +1184,7 @@ class TaxableMixin(object):
         for taxline in taxes.values():
             taxline['amount'] = self.currency.round(taxline['amount'])
 
-    @fields.depends(methods=['_get_tax_context', '_round_taxes'])
+    @fields.depends('company', methods=['_get_tax_context', '_round_taxes'])
     def _get_taxes(self):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -1204,6 +1197,7 @@ class TaxableMixin(object):
             taxable_lines = [_TaxableLine(*params)
                 for params in self.taxable_lines]
             for line in taxable_lines:
+                assert all(t.company == self.company for t in line.taxes)
                 l_taxes = Tax.compute(Tax.browse(line.taxes), line.unit_price,
                     line.quantity, line.tax_date or self.tax_date)
                 for tax in l_taxes:

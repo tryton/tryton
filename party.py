@@ -146,6 +146,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             return result
         company_id = user.company.id
         exp = Decimal(str(10.0 ** -user.company.currency.digits))
+        with Transaction().set_context(company=company_id):
+            today = Date.today()
 
         amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
         for name in names:
@@ -153,7 +155,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             today_where = Literal(True)
             if name in ('receivable_today', 'payable_today'):
                 code = name[:-6]
-                today_where = ((line.maturity_date <= Date.today())
+                today_where = ((line.maturity_date <= today)
                     | (line.maturity_date == Null))
             for sub_parties in grouped_slice(parties):
                 sub_ids = [p.id for p in sub_parties]
@@ -198,12 +200,14 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         if not user.company:
             return []
         company_id = user.company.id
+        with Transaction().set_context(company=company_id):
+            today = Date.today()
 
         code = name
         today_query = Literal(True)
         if name in ('receivable_today', 'payable_today'):
             code = name[:-6]
-            today_query = ((line.maturity_date <= Date.today())
+            today_query = ((line.maturity_date <= today)
                 | (line.maturity_date == Null))
 
         Operator = fields.SQL_OPERATORS[operator]

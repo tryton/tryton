@@ -1301,7 +1301,8 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         Date = pool.get('ir.date')
         context = Transaction().context
         if date is None:
-            date = context.get('date') or Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = context.get('date') or Date.today()
         if self.start_date and date < self.start_date:
             return None
         elif self.end_date and self.end_date < date:

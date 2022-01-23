@@ -165,12 +165,17 @@ class Move(ModelSQL, ModelView):
                 return period.start_date
         return today
 
-    @fields.depends('period', 'journal', 'date')
+    @fields.depends('period', 'journal', 'date', 'company')
     def on_change_with_date(self):
         pool = Pool()
         Line = pool.get('account.move.line')
         Date = pool.get('ir.date')
-        today = Date.today()
+        if self.company:
+            company_id = self.company.id
+        else:
+            company_id = Transaction().context.get('company')
+        with Transaction().set_context(company=company_id):
+            today = Date.today()
         date = self.date
         if date:
             if self.period and not (
@@ -286,7 +291,8 @@ class Move(ModelSQL, ModelView):
                     sequence = journal.get_multivalue(
                         'sequence', company=company_id)
                     if sequence:
-                        vals['number'] = sequence.get()
+                        with Transaction().set_context(company=company_id):
+                            vals['number'] = sequence.get()
 
         return super().create(vlist)
 
@@ -371,7 +377,8 @@ class Move(ModelSQL, ModelView):
                 raise CancelWarning(key,
                     gettext('account.msg_move_cancel_closed_period',
                         move=self.rec_name))
-            date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
             period_id = Period.find(self.company.id, date=date)
             default.update({
                     'date': date,
@@ -456,7 +463,8 @@ class Move(ModelSQL, ModelView):
         for move in moves:
             move.state = 'posted'
             if not move.post_number:
-                move.post_date = Date.today()
+                with Transaction().set_context(company=move.company.id):
+                    move.post_date = Date.today()
                 move.post_number = move.period.post_move_sequence_used.get()
 
         def keyfunc(line):
@@ -1358,8 +1366,10 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Period = pool.get('account.period')
         Move = pool.get('account.move')
+        company = reconcile_account.company
         if not date:
-            date = Date.today()
+            with Transaction().set_context(company=company.id):
+                date = Date.today()
         period_id = Period.find(reconcile_account.company.id, date=date)
         account = None
         journal = None
@@ -1371,7 +1381,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             journal = writeoff.journal
 
         move = Move()
-        move.company = reconcile_account.company
+        move.company = company
         move.journal = journal
         move.period = period_id
         move.date = date
@@ -1795,7 +1805,8 @@ class Reconcile(Wizard):
         defaults['currency'] = self.show.account.company.currency.id
         defaults['lines'] = self._default_lines()
         defaults['write_off_amount'] = Decimal(0)
-        defaults['date'] = Date.today()
+        with Transaction().set_context(company=self.show.account.company.id):
+            defaults['date'] = Date.today()
         return defaults
 
     def _all_lines(self):
@@ -2085,9 +2096,10 @@ class GroupLines(Wizard):
         Period = pool.get('account.period')
         Line = pool.get('account.move.line')
 
-        if not date:
-            date = Date.today()
         company = grouping['company']
+        if not date:
+            with Transaction().set_context(company=company.id):
+                date = Date.today()
         period = Period.find(company.id, date=date)
 
         move = Move()
@@ -2346,9 +2358,10 @@ class SplitLines(Wizard):
         Move = pool.get('account.move')
         Period = pool.get('account.period')
 
-        if not date:
-            date = Date.today()
         company = account.company
+        if not date:
+            with Transaction().set_context(company=company.id):
+                date = Date.today()
         period = Period.find(company.id, date=date)
 
         move = Move()
