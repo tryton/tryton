@@ -3,7 +3,7 @@
 from collections import defaultdict
 from datetime import timedelta
 from decimal import Decimal
-from itertools import chain
+from itertools import chain, groupby
 
 from sql import Null
 from sql.conditionals import Coalesce
@@ -734,9 +734,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for p in productions for m in p.inputs])
-        cls.write([p for p in productions if not p.effective_start_date], {
-                'effective_start_date': Date.today(),
-                })
+        for company, productions in groupby(
+                productions, key=lambda p: p.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([p for p in productions if not p.effective_start_date], {
+                    'effective_start_date': today,
+                    })
 
     @classmethod
     @ModelView.button
@@ -748,9 +752,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         cls.set_cost(productions)
         Move.do([m for p in productions for m in p.outputs])
-        cls.write([p for p in productions if not p.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, productions in groupby(
+                productions, key=lambda p: p.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([p for p in productions if not p.effective_date], {
+                    'effective_date': today,
+                    })
 
     @classmethod
     @ModelView.button_action('production.wizard_production_assign')
