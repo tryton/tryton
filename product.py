@@ -10,12 +10,14 @@ class Product(metaclass=PoolMeta):
 
     def _get_sale_unit_price(self, quantity=0):
         pool = Pool()
+        Date = pool.get('ir.date')
         PriceList = pool.get('product.price_list')
         Party = pool.get('party.party')
         Uom = pool.get('product.uom')
         Tax = pool.get('account.tax')
         User = pool.get('res.user')
         context = Transaction().context
+        today = Date.today()
 
         unit_price = super()._get_sale_unit_price(quantity=quantity)
 
@@ -38,7 +40,8 @@ class Product(metaclass=PoolMeta):
             unit_price = price_list.compute(
                  customer, self, unit_price, quantity, uom)
             if price_list.tax_included and taxes and unit_price is not None:
-                unit_price = Tax.reverse_compute(unit_price, taxes)
+                unit_price = Tax.reverse_compute(
+                    unit_price, taxes, today)
         return unit_price
 
 
