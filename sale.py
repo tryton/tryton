@@ -754,9 +754,12 @@ class Sale(
     @classmethod
     def set_sale_date(cls, sales):
         Date = Pool().get('ir.date')
-        cls.write([s for s in sales if not s.sale_date], {
-                'sale_date': Date.today(),
-                })
+        for company, c_sales in groupby(sales, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_sales if not s.sale_date], {
+                    'sale_date': today,
+                    })
 
     @classmethod
     def store_cache(cls, sales):
@@ -1444,11 +1447,12 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @property
     @fields.depends(
-        'product', 'quantity', 'sale',
+        'product', 'quantity', 'company', 'sale',
         '_parent_sale.sale_date', '_parent_sale.shipping_date')
     def planned_shipping_date(self):
         pool = Pool()
         Date = pool.get('ir.date')
+        transaction = Transaction()
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             shipping_date = self.product.compute_shipping_date(date=date)
@@ -1457,7 +1461,12 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             elif self.sale and self.sale.shipping_date:
                 shipping_date = max(shipping_date, self.sale.shipping_date)
             if shipping_date:
-                shipping_date = max(shipping_date, Date.today())
+                if self.company:
+                    company_id = self.company.id
+                else:
+                    company_id = transaction.context.get('company')
+                with transaction.set_context(company=company_id):
+                    shipping_date = max(shipping_date, Date.today())
             return shipping_date
 
     @fields.depends('sale', '_parent_sale.currency')
@@ -1803,7 +1812,8 @@ class SaleReport(CompanyReport):
         pool = Pool()
         Date = pool.get('ir.date')
         context = super().get_context(records, header, data)
-        context['today'] = Date.today()
+        with Transaction().set_context(company=header['company'].id):
+            context['today'] = Date.today()
         return context
 
 

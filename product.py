@@ -180,7 +180,8 @@ class Product(metaclass=PoolMeta):
         Date = Pool().get('ir.date')
 
         if not date:
-            date = Date.today()
+            with Transaction().set_context(context=self._context):
+                date = Date.today()
 
         lead_time = self.lead_time_used
         if lead_time is None:
