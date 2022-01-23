@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import ROUND_DOWN, ROUND_HALF_EVEN, Decimal
+from itertools import groupby
 from operator import itemgetter
 
 from trytond import backend
@@ -403,6 +404,12 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             landed_cost._stock_move_filter_unused(stock_moves)
             getattr(landed_cost, 'allocate_cost_by_%s' %
                 landed_cost.allocation_method)()
+        for company, c_landed_costs in groupby(
+                landed_costs, key=lambda l: l.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            for landed_cost in c_landed_costs:
+                landed_cost.posted_date = today
             landed_cost.posted_date = today
         # Use save as allocate methods may modify the records
         cls.save(landed_costs)
