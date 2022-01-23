@@ -809,11 +809,17 @@ trytond/ir/ui/board.rng.  There is also a RNC in trytond/ir/ui/graph.rnc.
 
 Board view is used to display multiple views at once.
 
-Elements are put on the screen followin the same rules as for ``Form`` view.
+Elements are put on the screen following the same rules as for ``Form`` view.
 
 The views can be updated by the selection of records on an other view inside
-the same board by using :class:`~trytond.pyson.Eval()` on the action id of the
-other view in the domain.
+the same board by using in the domain the ``active_id`` or ``active_ids`` from
+the ``_actions`` dictionary with the action id of the other view as key. For
+example:
+.. highlight:: xml
+   <field
+      name="domain"
+      pyson="1"
+      eval="[('field', '=', Eval('_actions', {}).get('module.action_id', {}).get('active_id'))]"/>
 
 
 XML description
