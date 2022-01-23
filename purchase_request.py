@@ -344,7 +344,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         "Return the best product supplier to request product at date"
         pool = Pool()
         Date = pool.get('ir.date')
-        today = Date.today()
+        with Transaction().set_context(context=product._context):
+            today = Date.today()
         for product_supplier in product.product_suppliers_used(**pattern):
             if date is None:
                 return product_supplier
@@ -368,7 +369,8 @@ class PurchaseRequest(ModelSQL, ModelView):
             purchase_date = product_supplier.compute_purchase_date(date)
         else:
             supplier = None
-            purchase_date = Date.today()
+            with Transaction().set_context(context=product._context):
+                purchase_date = Date.today()
         return supplier, purchase_date
 
     @classmethod
@@ -471,8 +473,6 @@ class CreatePurchase(Wizard):
         if any(reqs):
             return 'ask_party'
 
-        today = Date.today()
-
         requests = [r for r in requests if not r.purchase_line]
 
         keyfunc = partial(self._group_purchase_key, requests)
@@ -482,6 +482,9 @@ class CreatePurchase(Wizard):
         lines = []
         for key, grouped_requests in groupby(requests, key=keyfunc):
             grouped_requests = list(grouped_requests)
+            key = dict(key)
+            with Transaction().set_context(company=key['company']):
+                today = Date.today()
             try:
                 purchase_date = min(r.purchase_date
                     for r in grouped_requests
@@ -491,7 +494,7 @@ class CreatePurchase(Wizard):
             if purchase_date < today:
                 purchase_date = today
             purchase = Purchase(purchase_date=purchase_date)
-            for f, v in key:
+            for f, v in key.items():
                 setattr(purchase, f, v)
             purchases.append(purchase)
             for line_key, line_requests in groupby(
