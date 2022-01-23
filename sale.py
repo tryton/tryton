@@ -4,6 +4,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from .common import (
     AmendmentLineMixin, get_shipments_returns, handle_shipment_exception_mixin,
@@ -106,7 +107,8 @@ class LineComponent(
         if self.moves:
             # backorder can not be planned but shipping date could be used
             # if set in the future
-            today = Date.today()
+            with Transaction().set_context(company=self.line.sale.company.id):
+                today = Date.today()
             if self.line.shipping_date and self.line.shipping_date > today:
                 move.planned_date = self.line.shipping_date
             else:
