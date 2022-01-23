@@ -1606,8 +1606,8 @@
             this.dialogs = [];
             this.board = null;
             UIView = new Sao.Model('ir.ui.view');
-            this.view_prm = UIView.execute('read', [[this.view_id], ['arch']],
-                    this.context);
+            this.view_prm = UIView.execute(
+                'view_get', [this.view_id], this.context);
             this.view_prm.done(function(views) {
                 var view, board;
                 view = jQuery(jQuery.parseXML(views[0].arch));

@@ -1,3 +1,4 @@
+* Call view_get for board view
 * Limit board action domain to active id and ids
 * Manage creatable attribute of view
 
