@@ -299,12 +299,14 @@ class Invoice(metaclass=PoolMeta):
         # Call update_cash_basis grouped per period and ratio only because
         # group_cash_basis_key already group per move_line.
         to_update = defaultdict(list)
-        date = Transaction().context.get('payment_date', Date.today())
         periods = {}
         for invoice in invoices:
             if not invoice.move:
                 continue
             if invoice.company not in periods:
+                with Transaction().set_context(company=invoice.company.id):
+                    date = Transaction().context.get(
+                        'payment_date', Date.today())
                 periods[invoice.company] = Period.find(
                     invoice.company.id, date=date)
             period = periods[invoice.company]
