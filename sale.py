@@ -182,7 +182,8 @@ class Promotion(
     def _promotions_domain(cls, sale):
         pool = Pool()
         Date = pool.get('ir.date')
-        sale_date = sale.sale_date or Date.today()
+        with Transaction().set_context(company=sale.company.id):
+            sale_date = sale.sale_date or Date.today()
         return [
             ['OR',
                 ('start_date', '<=', sale_date),
