@@ -203,7 +203,8 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
         pattern = pattern.copy()
         if 'company' in pattern:
             pattern.pop('company')
-        date = pattern.pop('date', None) or Date.today()
+        with Transaction().set_context(company=self.company.id):
+            date = pattern.pop('date', None) or Date.today()
         if self.start_date and self.start_date > date:
             return False
         if self.end_date and self.end_date < date:
