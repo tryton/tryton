@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 from decimal import Decimal
+from itertools import groupby
 
 from sql import Column
 from sql.aggregate import Count
@@ -590,9 +591,12 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.customer_moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, shipments in groupby(shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
 
 class Move(metaclass=PoolMeta):
