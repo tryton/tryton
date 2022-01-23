@@ -80,7 +80,8 @@ class Letter(CompanyReport, metaclass=PoolMeta):
             letters[party] = PartyLetter(dunnings=current_dunnings,
                 payments=current_payments)
         report_context['letters'] = letters
-        report_context['today'] = Date.today()
+        with Transaction().set_context(company=header.get('company')):
+            report_context['today'] = Date.today()
         report_context['get_payment_amount'] = cls.get_payment_amount
         report_context['get_payment_currency'] = cls.get_payment_currency
         return report_context
