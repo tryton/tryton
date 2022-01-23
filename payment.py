@@ -224,7 +224,8 @@ class Payment(metaclass=PoolMeta):
             return self.clearing_move
 
         if date is None:
-            date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         period = Period.find(self.company.id, date=date)
 
         local_currency = self.journal.currency == self.company.currency
