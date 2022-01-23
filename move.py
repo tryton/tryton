@@ -424,20 +424,22 @@ class Move(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
         Date = pool.get('ir.date')
-        today = Date.today()
         prices = {}
-        for move in moves:
-            if move.unit_price is not None:
-                date = move.effective_date or move.planned_date or today
-                with Transaction().set_context(date=date):
-                    unit_price = Currency.compute(
-                        move.currency, move.unit_price,
-                        move.company.currency, round=False)
-                    unit_price = Uom.compute_price(
-                        move.uom, unit_price, move.product.default_uom)
-                    prices[move.id] = round_price(unit_price)
-            else:
-                prices[move.id] = None
+        for company, c_moves in groupby(moves, key=lambda m: m.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            for move in c_moves:
+                if move.unit_price is not None:
+                    date = move.effective_date or move.planned_date or today
+                    with Transaction().set_context(date=date):
+                        unit_price = Currency.compute(
+                            move.currency, move.unit_price,
+                            move.company.currency, round=False)
+                        unit_price = Uom.compute_price(
+                            move.uom, unit_price, move.product.default_uom)
+                        prices[move.id] = round_price(unit_price)
+                else:
+                    prices[move.id] = None
         return prices
 
     @fields.depends('from_location', 'to_location')
@@ -602,7 +604,8 @@ class Move(Workflow, ModelSQL, ModelView):
         if not self.effective_date and self.shipment:
             self.effective_date = self.shipment.effective_date
         if not self.effective_date:
-            self.effective_date = Date.today()
+            with Transaction().set_context(company=self.company.id):
+                self.effective_date = Date.today()
 
     @classmethod
     def view_attributes(cls):
@@ -757,7 +760,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 ])
         context['with_childs'] = False
         context['locations'] = [l.id for l in locations]
-        context['stock_date_end'] = Date.today()
+        with Transaction().set_context(company=moves[0].company.id):
+            context['stock_date_end'] = Date.today()
         context['company'] = moves[0].company.id
         return context
 
@@ -948,12 +952,15 @@ class Move(Workflow, ModelSQL, ModelView):
         companies = {m.company for m in moves}
         stock_date_end = Date.today()
 
-        cls._assign_try_lock(
-            product_ids, location_ids, [c.id for c in companies],
-            stock_date_end, grouping)
-
         pblc = {}
         for company in companies:
+            with Transaction().set_context(company=company.id):
+                stock_date_end = Date.today()
+
+            cls._assign_try_lock(
+                product_ids, location_ids, [company.id],
+                stock_date_end, grouping)
+
             with Transaction().set_context(
                     stock_date_end=stock_date_end,
                     stock_assign=True,

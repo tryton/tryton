@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import chain
+from itertools import chain, groupby
 
 from sql import For, Literal
 
@@ -112,12 +112,14 @@ class Period(Workflow, ModelSQL, ModelView):
         locations = Location.search([
                 ('type', 'not in', ['warehouse', 'view']),
                 ], order=[])
-        today = Date.today()
 
-        recent_date = max(period.date for period in periods)
-        if recent_date >= today:
-            raise PeriodCloseError(
-                gettext('stock.msg_period_close_date'))
+        for company, c_periods in groupby(periods, key=lambda p: p.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            recent_date = max(period.date for period in c_periods)
+            if recent_date >= today:
+                raise PeriodCloseError(
+                    gettext('stock.msg_period_close_date'))
         if Move.search([
                     ('state', '=', 'assigned'),
                     ['OR', [

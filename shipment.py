@@ -4,6 +4,7 @@ import datetime
 import functools
 from collections import defaultdict
 from functools import partial
+from itertools import groupby
 
 from sql import Null
 from sql.conditionals import Coalesce
@@ -469,6 +470,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         if incoming_move.quantity <= 0.0:
             return None
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         move = Move()
         move.product = incoming_move.product
         move.uom = incoming_move.uom
@@ -477,7 +480,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
         move.planned_date = max(
-            filter(None, [self._move_planned_date[1], Date.today()]))
+            filter(None, [self._move_planned_date[1], today]))
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
@@ -556,9 +559,13 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.inventory_moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
 
 class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
@@ -869,9 +876,13 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         Move.do([m for s in shipments for m in s.moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
     @classmethod
     @ModelView.button
@@ -1437,9 +1448,13 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 m for s in shipments for m in s.outgoing_moves
                 if m.state == 'staging'])
         Move.do([m for s in shipments for m in s.outgoing_moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
     @classmethod
     @ModelView.button
@@ -1954,9 +1969,13 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.inventory_moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
     @classmethod
     @ModelView.button
@@ -1973,6 +1992,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         if incoming_move.quantity <= 0.0:
             return
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
         move = Move()
         move.product = incoming_move.product
         move.uom = incoming_move.uom
@@ -1981,7 +2002,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
         move.planned_date = max(
-            filter(None, [self._get_move_planned_date()[1], Date.today()]))
+            filter(None, [self._get_move_planned_date()[1], today]))
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
@@ -2576,9 +2597,13 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.outgoing_moves])
         cls._sync_moves(shipments)
-        cls.write([s for s in shipments if not s.effective_start_date], {
-                'effective_start_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_start_date], {
+                    'effective_start_date': today,
+                    })
 
     @classmethod
     @ModelView.button
@@ -2589,9 +2614,13 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.incoming_moves])
-        cls.write([s for s in shipments if not s.effective_date], {
-                'effective_date': Date.today(),
-                })
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            cls.write([s for s in c_shipments if not s.effective_date], {
+                    'effective_date': today,
+                    })
 
     @classmethod
     @ModelView.button
