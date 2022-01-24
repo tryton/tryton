@@ -95,7 +95,7 @@ class AmendmentLine(metaclass=PoolMeta):
             super().on_change_product()
         except AttributeError:
             pass
-        if not self.product and not self.line:
+        if not self.product or not self.line:
             return
         product_customers = list(self.product.product_customer_used(
                 **self.line._get_product_customer_pattern()))
