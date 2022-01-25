@@ -1019,21 +1019,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             remainder_total_currency = self.total_amount.copy_sign(total)
         else:
             remainder_total_currency = 0
+        past_payment_term_dates = []
         for date, amount in term_lines:
-            if self.type == 'out' and date < today:
-                lang = Lang.get()
-                warning_key = Warning.format('invoice_payment_term', [self])
-                if Warning.check(warning_key):
-                    raise InvoicePaymentTermDateWarning(warning_key,
-                        gettext('account_invoice'
-                            '.msg_invoice_payment_term_date_past',
-                            invoice=self.rec_name,
-                            date=lang.strftime(date)))
-
             line = self._get_move_line(date, amount)
             if line.amount_second_currency:
                 remainder_total_currency += line.amount_second_currency
             move_lines.append(line)
+            if self.type == 'out' and date < today:
+                past_payment_term_dates.append(date)
+        if any(past_payment_term_dates):
+            lang = Lang.get()
+            warning_key = Warning.format('invoice_payment_term', [self])
+            if Warning.check(warning_key):
+                raise InvoicePaymentTermDateWarning(warning_key,
+                    gettext('account_invoice'
+                        '.msg_invoice_payment_term_date_past',
+                        invoice=self.rec_name,
+                        date=lang.strftime(min(past_payment_term_dates))))
         if not self.currency.is_zero(remainder_total_currency):
             move_lines[-1].amount_second_currency -= \
                 remainder_total_currency
