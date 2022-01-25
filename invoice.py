@@ -3226,7 +3226,7 @@ class CreditInvoice(Wizard):
 class RescheduleLinesToPay(Wizard):
     "Reschedule Lines to Pay"
     __name__ = 'account.invoice.lines_to_pay.reschedule'
-    start = StateAction('account.act_split_lines_wizard')
+    start = StateAction('account.act_reschedule_lines_wizard')
 
     def do_start(self, action):
         return action, {

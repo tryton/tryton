@@ -413,14 +413,14 @@ class RenewFiscalYear(metaclass=PoolMeta):
         return fiscalyear
 
 
-class SplitLines(metaclass=PoolMeta):
-    __name__ = 'account.move.line.split'
+class RescheduleLines(metaclass=PoolMeta):
+    __name__ = 'account.move.line.reschedule'
 
     @classmethod
-    def split_lines(cls, lines, journal, terms):
+    def reschedule_lines(cls, lines, journal, terms):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        move, balance_line = super().split_lines(lines, journal, terms)
+        move, balance_line = super().reschedule_lines(lines, journal, terms)
 
         move_ids = list({l.move.id for l in lines})
         invoices = Invoice.search(['OR',

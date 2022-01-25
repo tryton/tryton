@@ -1,6 +1,6 @@
-============================
-Invoice Split Lines Scenario
-============================
+=================================
+Invoice Reschedule Lines Scenario
+=================================
 
 Imports::
 
@@ -74,15 +74,16 @@ Post customer invoice::
 
 Reschedule line::
 
-    >>> reschedule = Wizard('account.invoice.lines_to_pay.reschedule', [invoice])
-    >>> split_lines, = reschedule.actions
-    >>> split_lines.form.total_amount
+    >>> reschedule = Wizard(
+    ...     'account.invoice.lines_to_pay.reschedule', [invoice])
+    >>> reschedule_lines, = reschedule.actions
+    >>> reschedule_lines.form.total_amount
     Decimal('10.00')
-    >>> split_lines.form.start_date = period.end_date
-    >>> split_lines.form.frequency ='monthly'
-    >>> split_lines.form.number = 2
-    >>> split_lines.execute('preview')
-    >>> split_lines.execute('split')
+    >>> reschedule_lines.form.start_date = period.end_date
+    >>> reschedule_lines.form.frequency ='monthly'
+    >>> reschedule_lines.form.number = 2
+    >>> reschedule_lines.execute('preview')
+    >>> reschedule_lines.execute('reschedule')
 
     >>> invoice.reload()
     >>> invoice.state

@@ -47,7 +47,7 @@ def register():
         party.Replace,
         party.Erase,
         account.RenewFiscalYear,
-        account.SplitLines,
+        account.RescheduleLines,
         module='account_invoice', type_='wizard')
     Pool.register(
         invoice.InvoiceReport,

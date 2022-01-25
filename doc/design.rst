@@ -108,8 +108,8 @@ Reschedule Lines to Pay
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The *Reschedule Lines to Pay* wizard allows to modify the payment terms of the
-remaining lines to pay using the `Split Lines <wizard-account.move.line.split>`
-wizard.
+remaining lines to pay using the `Reschedule Lines
+<wizard-account.move.line.reschedule>` wizard.
 
 Reports
 -------
