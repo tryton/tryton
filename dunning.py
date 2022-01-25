@@ -410,7 +410,7 @@ class ProcessDunning(Wizard):
 class RescheduleDunning(Wizard):
     "Reschedule Account Dunning"
     __name__ = 'account.dunning.reschedule'
-    start = StateAction('account.act_split_lines_wizard')
+    start = StateAction('account.act_reschedule_lines_wizard')
 
     def do_start(self, action):
         return action, {
