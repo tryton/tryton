@@ -452,43 +452,43 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_move_form_grouping"/>
         </record>
 
-        <record model="ir.action.wizard" id="act_split_lines_wizard">
-            <field name="name">Split Lines</field>
-            <field name="wiz_name">account.move.line.split</field>
+        <record model="ir.action.wizard" id="act_reschedule_lines_wizard">
+            <field name="name">Reschedule Lines</field>
+            <field name="wiz_name">account.move.line.reschedule</field>
             <field name="model">account.move.line</field>
         </record>
-        <record model="ir.action.keyword" id="act_split_lines_keyword1">
+        <record model="ir.action.keyword" id="act_reschedule_lines_keyword1">
             <field name="keyword">form_action</field>
             <field name="model">account.move.line,-1</field>
-            <field name="action" ref="act_split_lines_wizard"/>
+            <field name="action" ref="act_reschedule_lines_wizard"/>
         </record>
 
-        <record model="ir.ui.view" id="move_line_split_start_view_form">
-            <field name="model">account.move.line.split.start</field>
+        <record model="ir.ui.view" id="move_line_reschedule_start_view_form">
+            <field name="model">account.move.line.reschedule.start</field>
             <field name="type">form</field>
-            <field name="name">move_line_split_start_form</field>
+            <field name="name">move_line_reschedule_start_form</field>
         </record>
 
-        <record model="ir.ui.view" id="move_line_split_preview_view_form">
-            <field name="model">account.move.line.split.preview</field>
+        <record model="ir.ui.view" id="move_line_reschedule_preview_view_form">
+            <field name="model">account.move.line.reschedule.preview</field>
             <field name="type">form</field>
-            <field name="name">move_line_split_preview_form</field>
+            <field name="name">move_line_reschedule_preview_form</field>
         </record>
 
-        <record model="ir.ui.view" id="move_line_split_term_view_list">
-            <field name="model">account.move.line.split.term</field>
+        <record model="ir.ui.view" id="move_line_reschedule_term_view_list">
+            <field name="model">account.move.line.reschedule.term</field>
             <field name="type">tree</field>
-            <field name="name">move_line_split_term_list</field>
+            <field name="name">move_line_reschedule_term_list</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_move_form_splitting">
-            <field name="name">Split Account Move</field>
+        <record model="ir.action.act_window" id="act_move_form_rescheduling">
+            <field name="name">Reschedule Account Move</field>
             <field name="res_model">account.move</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_splitting_view1">
+        <record model="ir.action.act_window.view" id="act_move_form_rescheduling_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="move_view_form"/>
-            <field name="act_window" ref="act_move_form_splitting"/>
+            <field name="act_window" ref="act_move_form_rescheduling"/>
         </record>
 
         <record model="ir.action.report" id="report_general_journal">

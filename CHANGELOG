@@ -1,3 +1,4 @@
+* Rename split lines into reschedule lines
 * Add optional credit type on account
 * Always require a date to compute taxes
 * Add support for Python 3.10

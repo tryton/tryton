@@ -93,5 +93,5 @@ class GroupLineError(UserError):
     pass
 
 
-class SplitLineError(UserError):
+class RescheduleLineError(UserError):
     pass

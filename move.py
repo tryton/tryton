@@ -29,7 +29,7 @@ from trytond.wizard import (
 from .exceptions import (
     CancelDelegatedWarning, CancelWarning, DeleteDelegatedWarning,
     GroupLineError, MoveDatesError, PostError, ReconciliationError,
-    SplitLineError)
+    RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -2182,28 +2182,28 @@ class GroupLinesStart(ModelView):
     description = fields.Char("Description")
 
 
-class SplitLines(Wizard):
-    "Split Lines"
-    __name__ = 'account.move.line.split'
-    start = StateView('account.move.line.split.start',
-        'account.move_line_split_start_view_form', [
+class RescheduleLines(Wizard):
+    "Reschedule Lines"
+    __name__ = 'account.move.line.reschedule'
+    start = StateView('account.move.line.reschedule.start',
+        'account.move_line_reschedule_start_view_form', [
             Button("Cancel", 'end', 'tryton-cancel'),
             Button("Preview", 'preview', 'tryton-ok',
                 validate=False, default=True),
             ])
-    preview = StateView('account.move.line.split.preview',
-        'account.move_line_split_preview_view_form', [
+    preview = StateView('account.move.line.reschedule.preview',
+        'account.move_line_reschedule_preview_view_form', [
             Button("Cancel", 'end', 'tryton-cancel'),
-            Button("Split", 'split', 'tryton-ok', default=True),
+            Button("Reschedule", 'reschedule', 'tryton-ok', default=True),
             ])
-    split = StateAction('account.act_move_form_splitting')
+    reschedule = StateAction('account.act_move_form_rescheduling')
 
     def get_origin(self):
         try:
             origin, = {r.move.origin for r in self.records}
         except ValueError:
-            raise SplitLineError(
-                gettext('account.msg_split_line_same_origins'))
+            raise RescheduleLineError(
+                gettext('account.msg_reschedule_line_same_origins'))
         return origin
 
     @classmethod
@@ -2211,8 +2211,8 @@ class SplitLines(Wizard):
         try:
             currency, = {l.amount_currency for l in lines}
         except ValueError:
-            raise SplitLineError(
-                gettext('account.msg_split_line_same_currency'))
+            raise RescheduleLineError(
+                gettext('account.msg_reschedule_line_same_currency'))
         return currency
 
     @classmethod
@@ -2220,8 +2220,8 @@ class SplitLines(Wizard):
         try:
             account, = {l.account for l in lines}
         except ValueError:
-            raise SplitLineError(
-                gettext('account.msg_split_line_same_account'))
+            raise RescheduleLineError(
+                gettext('account.msg_reschedule_line_same_account'))
         return account
 
     @classmethod
@@ -2229,8 +2229,8 @@ class SplitLines(Wizard):
         try:
             party, = {l.party for l in lines}
         except ValueError:
-            raise SplitLineError(
-                gettext('account.msg_split_line_same_party'))
+            raise RescheduleLineError(
+                gettext('account.msg_reschedule_line_same_party'))
         return party
 
     @classmethod
@@ -2298,8 +2298,8 @@ class SplitLines(Wizard):
                     terms[-1]['amount'] += remaining
         return values
 
-    def do_split(self, action):
-        move, balance_line = self.split_lines(
+    def do_reschedule(self, action):
+        move, balance_line = self.reschedule_lines(
             self.records, self.preview.journal, self.preview.terms)
         move.origin = self.get_origin()
         move.description = self.preview.description
@@ -2320,7 +2320,7 @@ class SplitLines(Wizard):
             }
 
     @classmethod
-    def split_lines(cls, lines, journal, terms):
+    def reschedule_lines(cls, lines, journal, terms):
         pool = Pool()
         Lang = pool.get('ir.lang')
         Line = pool.get('account.move.line')
@@ -2330,15 +2330,15 @@ class SplitLines(Wizard):
         if amount != total_amount:
             lang = Lang.get()
             currency = cls.get_currency(lines)
-            raise SplitLineError(
-                gettext('account.msg_split_line_wrong_amount',
+            raise RescheduleLineError(
+                gettext('account.msg_reschedule_line_wrong_amount',
                     total_amount=lang.currency(total_amount, currency),
                     amount=lang.currency(amount, currency)))
 
         balance = cls.get_balance(lines)
         line_values = cls._line_values(lines)
         account = line_values['account']
-        move, balance_line = cls.get_split_move(
+        move, balance_line = cls.get_reschedule_move(
             amount, balance, journal, terms, **line_values)
         move.save()
         balance_line.move = move
@@ -2349,7 +2349,7 @@ class SplitLines(Wizard):
         return move, balance_line
 
     @classmethod
-    def get_split_move(
+    def get_reschedule_move(
             cls, amount, balance, journal, terms, account, date=None,
             **line_values):
         pool = Pool()
@@ -2408,9 +2408,9 @@ class SplitLines(Wizard):
         return move, balance_line
 
 
-class SplitLinesStart(ModelView):
-    "Split Lines"
-    __name__ = 'account.move.line.split.start'
+class RescheduleLinesStart(ModelView):
+    "Reschedule Lines"
+    __name__ = 'account.move.line.reschedule.start'
     start_date = fields.Date("Start Date", required=True)
     frequency = fields.Selection([
             ('monthly', "Monthly"),
@@ -2474,13 +2474,13 @@ class SplitLinesStart(ModelView):
             self.interval = self.frequency_intervals()[self.frequency]
 
 
-class SplitLinesPreview(ModelView):
-    "Split Lines"
-    __name__ = 'account.move.line.split.preview'
+class RescheduleLinesPreview(ModelView):
+    "Reschedule Lines"
+    __name__ = 'account.move.line.reschedule.preview'
     journal = fields.Many2One('account.journal', "Journal", required=True)
     description = fields.Char("Description")
     terms = fields.One2Many(
-        'account.move.line.split.term', None, "Terms",
+        'account.move.line.reschedule.term', None, "Terms",
         domain=[
             ('currency', '=', Eval('currency', -1)),
             ],
@@ -2488,9 +2488,9 @@ class SplitLinesPreview(ModelView):
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)
 
 
-class SplitLinesTerm(ModelView):
-    "Split Lines"
-    __name__ = 'account.move.line.split.term'
+class RescheduleLinesTerm(ModelView):
+    "Reschedule Lines"
+    __name__ = 'account.move.line.reschedule.term'
     date = fields.Date("Date", required=True)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True)

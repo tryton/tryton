@@ -1,6 +1,6 @@
-====================
-Split Lines Scenario
-====================
+=========================
+Reschedule Lines Scenario
+=========================
 
 Imports::
 
@@ -51,7 +51,7 @@ Create parties::
     >>> party = Party(name="Party")
     >>> party.save()
 
-Create Lines to split::
+Create Lines to reschedule::
 
     >>> journal_revenue, = Journal.find([
     ...         ('code', '=', 'REV'),
@@ -79,16 +79,16 @@ Create Lines to split::
 
 Split line by amount::
 
-    >>> split = Wizard('account.move.line.split', [line])
-    >>> split.form.total_amount
+    >>> reschedule = Wizard('account.move.line.reschedule', [line])
+    >>> reschedule.form.total_amount
     Decimal('100.00')
-    >>> split.form.start_date = period.end_date
-    >>> split.form.frequency = 'other'
-    >>> split.form.interval = 2
-    >>> split.form.amount = Decimal('30.00')
-    >>> split.execute('preview')
+    >>> reschedule.form.start_date = period.end_date
+    >>> reschedule.form.frequency = 'other'
+    >>> reschedule.form.interval = 2
+    >>> reschedule.form.amount = Decimal('30.00')
+    >>> reschedule.execute('preview')
 
-    >>> term1, term2, term3, term4 = split.form.terms
+    >>> term1, term2, term3, term4 = reschedule.form.terms
     >>> term1.date == period.end_date
     True
     >>> term2.date == period.end_date + relativedelta(months=2)
@@ -102,16 +102,16 @@ Split line by amount::
 
 Split line by number::
 
-    >>> split = Wizard('account.move.line.split', [line])
-    >>> split.form.total_amount
+    >>> reschedule = Wizard('account.move.line.reschedule', [line])
+    >>> reschedule.form.total_amount
     Decimal('100.00')
-    >>> split.form.start_date = period.end_date
-    >>> split.form.frequency = 'monthly'
-    >>> split.form.number = 3
-    >>> split.execute('preview')
+    >>> reschedule.form.start_date = period.end_date
+    >>> reschedule.form.frequency = 'monthly'
+    >>> reschedule.form.number = 3
+    >>> reschedule.execute('preview')
 
-    >>> split.form.description = "Split 3 months"
-    >>> term1, term2, term3 = split.form.terms
+    >>> reschedule.form.description = "Split 3 months"
+    >>> term1, term2, term3 = reschedule.form.terms
     >>> term1.date == period.end_date
     True
     >>> term2.date == period.end_date + relativedelta(months=1)
@@ -124,9 +124,9 @@ Split line by number::
     >>> term2.amount = term3.amount = Decimal('30.00')
     >>> term3.date += relativedelta(months=1)
 
-    >>> split.execute('split')
-    >>> split_move, = split.actions[0]
-    >>> split_move.description
+    >>> reschedule.execute('reschedule')
+    >>> reschedule_move, = reschedule.actions[0]
+    >>> reschedule_move.description
     'Split 3 months'
 
 Check receivable::

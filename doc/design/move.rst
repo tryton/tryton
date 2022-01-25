@@ -97,13 +97,14 @@ line is created for the net amount of the grouped lines.
 The maturity date used for the newly created account move line is the
 earliest maturity date from the lines that were grouped together.
 
-.. _wizard-account.move.line.split:
+.. _wizard-account.move.line.reschedule:
 
-Split Lines
-^^^^^^^^^^^
+Reschedule Lines
+^^^^^^^^^^^^^^^^
 
-The *Split Lines* wizard allows to reschedule payable or receivable *Account
-Move Lines* by creating an account move line for each new maturity date.
+The *Reschedule Lines* wizard allows to reschedule payable or receivable
+*Account Move Lines* by creating an account move line for each new maturity
+date.
 
 .. _wizard-account.move.reconcile_lines:
 
