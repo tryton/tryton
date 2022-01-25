@@ -164,7 +164,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
         if journals:
             self.journal, = journals
 
-    @fields.depends('invoice_line', 'start_date')
+    @fields.depends('invoice_line', 'start_date', 'company')
     def on_change_invoice_line(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
@@ -172,7 +172,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             if not self.start_date:
                 self.start_date = self.invoice_line.invoice.invoice_date
             invoice = self.invoice_line.invoice
-            if invoice.currency != self.company.currency:
+            if self.company and invoice.currency != self.company.currency:
                 with Transaction().set_context(date=invoice.currency_date):
                     self.amount = Currency.compute(
                         invoice.currency, self.invoice_line.amount,
