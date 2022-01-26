@@ -190,7 +190,6 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         pool = Pool()
         Credential = pool.get('account.credential.chorus')
         transaction = Transaction()
-        cls.lock()
 
         if not records:
             records = cls.search(['OR',
@@ -200,9 +199,11 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                         transaction.context.get('company')),
                     ])
 
+        cls.lock(records)
         for record in records:
             # Use clear cache after a commit
             record = cls(record.id)
+            record.lock()
             with Transaction().set_context(**record._send_context()):
                 payload = record.get_payload()
                 resp = Credential.post('factures/deposer/flux', payload)
