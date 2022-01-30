@@ -4,7 +4,6 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
 from .common import (
     AmendmentLineMixin, get_shipments_returns, handle_shipment_exception_mixin,
@@ -70,7 +69,6 @@ class LineComponent(
         from trytond.modules.purchase.exceptions import PartyLocationError
         pool = Pool()
         Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
 
         if (self.quantity >= 0) != (move_type == 'in'):
             return
@@ -101,19 +99,7 @@ class LineComponent(
             move.unit_price = round_price(
                 self.line.unit_price * self.price_ratio)
             move.currency = self.line.purchase.currency
-        if self.moves:
-            # backorder can not be planned but shipping date could be used
-            # if set in the future
-            with Transaction().set_context(
-                    company=self.line.purchase.company.id):
-                today = Date.today()
-            if (self.line.delivery_date
-                    and self.line.delivery_date > today):
-                move.planned_date = self.line.shipping_date
-            else:
-                move.planned_date = None
-        else:
-            move.planned_date = self.line.delivery_date
+        move.planned_date = self.line.planned_delivery_date
         move.origin = self
         return move
 
