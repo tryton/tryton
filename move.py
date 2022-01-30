@@ -1835,11 +1835,17 @@ class Reconcile(Wizard):
             requested = None
 
         currency = self.show.account.company.currency
+
+        all_lines = self._all_lines()
+        amount = sum((l.debit - l.credit) for l in all_lines)
+        if currency.is_zero(amount):
+            return [l.id for l in all_lines]
+
         chunk = config.getint('account', 'reconciliation_chunk', default=10)
         # Combination is exponential so it must be limited to small number
         default = []
         for lines in grouped_slice(
-                sorted(self._all_lines(), key=self._line_sort_key), chunk):
+                sorted(all_lines, key=self._line_sort_key), chunk):
             lines = list(lines)
             best = None
             for n in range(len(lines), 1, -1):
