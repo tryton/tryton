@@ -7,6 +7,7 @@ from stdnum import bic, iban
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
+from trytond.tools import lstrip_wildcard
 
 from .exceptions import IBANValidationError, InvalidBIC
 
@@ -23,7 +24,17 @@ class Bank(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party.rec_name',) + tuple(clause[1:])]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        bic_value = clause[2]
+        if clause[1].endswith('like'):
+            bic_value = lstrip_wildcard(clause[2])
+        return [bool_op,
+            ('party.rec_name',) + tuple(clause[1:]),
+            ('bic', clause[1], bic_value) + tuple(clause[3:]),
+            ]
 
     @fields.depends('bic')
     def on_change_with_bic(self):
@@ -127,6 +138,19 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     def compact_iban(self):
         return (iban.compact(self.number) if self.type == 'iban'
             else self.number)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        number_value = clause[2]
+        if clause[1].endswith('like'):
+            number_value = lstrip_wildcard(clause[2])
+        return [bool_op,
+            ('number', clause[1], number_value) + tuple(clause[3:]),
+            ]
 
     @classmethod
     def create(cls, vlist):
