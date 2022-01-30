@@ -2693,6 +2693,20 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                         invoice=invoice.rec_name))
         return super(InvoiceTax, cls).create(vlist)
 
+    @classmethod
+    def validate(cls, taxes):
+        super().validate(taxes)
+        for tax in taxes:
+            tax.check_same_account()
+
+    def check_same_account(self):
+        if self.account == self.invoice.account:
+            raise InvoiceTaxValidationError(
+                gettext('account_invoice.msg_invoice_same_account_line',
+                    account=self.account.rec_name,
+                    invoice=self.invoice.rec_name,
+                    line=self.rec_name))
+
     def get_move_lines(self):
         '''
         Return a list of move lines instances for invoice tax
