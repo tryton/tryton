@@ -53,28 +53,12 @@ Create Bank Account::
     >>> bank_account_number.number = 'BE47435000000080'
     >>> bank_account.save()
 
-Create Account Journal::
-
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceType = Model.get('ir.sequence.type')
-    >>> AccountJournal = Model.get('account.journal')
-
-    >>> sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
-    >>> sequence = Sequence(name="Satement",
-    ...     sequence_type=sequence_type,
-    ...     company=company,
-    ...     )
-    >>> sequence.save()
-    >>> account_journal = AccountJournal(name="Statement",
-    ...     type='statement',
-    ...     sequence=sequence,
-    ... )
-    >>> account_journal.save()
-
 Create Statement Journal::
 
+    >>> AccountJournal = Model.get('account.journal')
     >>> StatementJournal = Model.get('account.statement.journal')
 
+    >>> account_journal, = AccountJournal.find([('code', '=', 'STA')], limit=1)
     >>> journal = StatementJournal(name="Bank",
     ...     journal=account_journal,
     ...     account=cash,
