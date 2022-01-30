@@ -369,7 +369,8 @@ class TaxCodeLine(ModelSQL, ModelView):
         'account.tax', "Tax", required=True, states=_states,
         domain=[
             ('company', '=', Eval('_parent_code', {}).get('company')),
-            ])
+            ],
+        depends=['code'])
     amount = fields.Selection([
             ('tax', "Tax"),
             ('base', "Base"),
@@ -1504,7 +1505,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
             ],
         help=('If the original tax template is filled, the rule will be '
             'applied only for this tax template.'),
-        depends=['group'],
+        depends=['group', 'rule'],
         ondelete='RESTRICT')
     keep_origin = fields.Boolean("Keep Origin",
         help="Check to append the original tax to substituted tax.")
@@ -1523,7 +1524,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group'],
+        depends=['group', 'rule'],
         ondelete='RESTRICT')
 
     @classmethod
@@ -1625,7 +1626,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ],
         help=('If the original tax is filled, the rule will be applied '
             'only for this tax.'),
-        depends=['group'],
+        depends=['group', 'rule'],
         ondelete='RESTRICT', states=_states)
     keep_origin = fields.Boolean("Keep Origin", states=_states,
         help="Check to append the original tax to substituted tax.")
@@ -1644,7 +1645,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group'],
+        depends=['group', 'rule'],
         ondelete='RESTRICT', states=_states)
     template = fields.Many2One(
         'account.tax.rule.line.template', 'Template', ondelete='CASCADE')

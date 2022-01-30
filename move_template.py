@@ -168,7 +168,8 @@ class MoveLineTemplate(ModelSQL, ModelView):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('_parent_move', {}).get('company', -1)),
-            ])
+            ],
+        depends=['move'])
     party = fields.Char('Party',
         states={
             'required': Eval('party_required', False),
@@ -234,7 +235,8 @@ class TaxLineTemplate(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('_parent_line', {}
                     ).get('_parent_move', {}).get('company', -1)),
-            ])
+            ],
+        depends=['line'])
 
     @classmethod
     def __setup__(cls):
