@@ -230,21 +230,8 @@ Create statement::
 
     >>> StatementJournal = Model.get('account.statement.journal')
     >>> Statement = Model.get('account.statement')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceType = Model.get('ir.sequence.type')
 
-    >>> sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
-    >>> sequence = Sequence(name='Satement',
-    ...     sequence_type=sequence_type,
-    ...     company=company,
-    ... )
-    >>> sequence.save()
-    >>> account_journal = Journal(name='Statement',
-    ...     type='statement',
-    ...     sequence=sequence,
-    ... )
-    >>> account_journal.save()
-
+    >>> account_journal, = Journal.find([('code', '=', 'STA')], limit=1)
     >>> statement_journal = StatementJournal(name='Test',
     ...     journal=account_journal,
     ...     account=cash,
