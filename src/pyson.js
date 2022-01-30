@@ -168,7 +168,18 @@
         },
         __string_params__: function() {
             return [this._value, this._default];
-        }
+        },
+        get basename() {
+            var name = this._value;
+            if (name.startsWith('_parent_')) {
+                name = name.slice('_parent_'.length);
+            }
+            var idx = name.indexOf('.');
+            if (idx >= 0) {
+                name = name.substring(0, idx);
+            }
+            return name;
+        },
     });
 
     Sao.PYSON.Eval.eval_ = function(value, context) {
