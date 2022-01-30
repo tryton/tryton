@@ -89,6 +89,7 @@ class WeightPriceList(ModelSQL, ModelView):
         help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
+        depends=['carrier'],
         help="The lower limit for the price.")
     price = Monetary(
         "Price", currency='currency', digits='currency',
