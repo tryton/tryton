@@ -118,10 +118,10 @@ class CreateShippingSendcloud(Wizard):
             format_ = shipment.carrier.sendcloud_format.split()
             label_url = parcel['label']
             for key in format_:
-                key += '_printer'
                 try:
                     index = int(key)
                 except ValueError:
+                    key += '_printer'
                     label_url = label_url[key]
                 else:
                     label_url = label_url[index]
