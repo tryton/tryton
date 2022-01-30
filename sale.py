@@ -28,7 +28,7 @@ class Line(metaclass=PoolMeta):
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
             },
-        depends=['product', 'type', 'sale_state'])
+        depends=['product', 'type', 'sale_state', 'sale'])
 
     @fields.depends('sale', '_parent_sale.party')
     def _get_product_customer_pattern(self):
