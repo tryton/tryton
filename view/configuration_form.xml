@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
+        <separator id="lot" colspan="4" string="Lot"/>
         <label name="shelf_life_delay"/>
         <field name="shelf_life_delay"/>
         <newline/>
