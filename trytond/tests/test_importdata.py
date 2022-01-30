@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
+import datetime as dt
 import unittest
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 
-from trytond.model.exceptions import (
-    ImportDataError, RequiredValidationError, SelectionValidationError)
+from trytond.model.exceptions import ImportDataError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.transaction import Transaction
 
 
 class ImportDataTestCase(unittest.TestCase):
@@ -25,26 +23,28 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Boolean = pool.get('test.import_data.boolean')
 
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['True']]), 1)
+        for value in ['True', '1', 'False', '0', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Boolean.import_data(['boolean'], [[value]]), 1)
 
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['1']]), 1)
+    @with_transaction()
+    def test_boolean_many_rows(self):
+        "Test boolean many rows"
+        pool = Pool()
+        Boolean = pool.get('test.import_data.boolean')
 
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['False']]), 1)
+        self.assertEqual(
+            Boolean.import_data(['boolean'], [['True'], ['False']]), 2)
 
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['0']]), 1)
+    @with_transaction()
+    def test_boolean_invalid(self):
+        "Test boolean invalid value"
+        pool = Pool()
+        Boolean = pool.get('test.import_data.boolean')
 
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['']]), 1)
-
-        self.assertEqual(Boolean.import_data(['boolean'],
-            [['True'], ['False']]), 2)
-
-        self.assertRaises(ValueError, Boolean.import_data,
-            ['boolean'], [['foo']])
+        with self.assertRaises(ImportDataError):
+            Boolean.import_data(['boolean'], [['foo']])
 
     @with_transaction()
     def test_integer(self):
@@ -52,77 +52,30 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Integer = pool.get('test.import_data.integer')
 
-        self.assertEqual(Integer.import_data(['integer'],
-            [['1']]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [[0]]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [[1]]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [['-1']]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [['']]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [['1'], ['2']]), 2)
-
-        self.assertRaises(ValueError, Integer.import_data,
-            ['integer'], [['1.1']])
-
-        self.assertRaises(ValueError, Integer.import_data,
-            ['integer'], [['-1.1']])
-
-        self.assertRaises(ValueError, Integer.import_data,
-            ['integer'], [['foo']])
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [['0']]), 1)
-
-        self.assertEqual(Integer.import_data(['integer'],
-            [[None]]), 1)
+        for value in ['1', '0', 0, 1, '-1', '', None]:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Integer.import_data(['integer'], [[value]]), 1)
 
     @with_transaction()
-    def test_integer_required(self):
-        'Test required integer'
+    def test_integer_many_rows(self):
+        "Test integer many rows"
         pool = Pool()
-        IntegerRequired = pool.get('test.import_data.integer_required')
-        transaction = Transaction()
+        Integer = pool.get('test.import_data.integer')
 
-        self.assertEqual(IntegerRequired.import_data(['integer'],
-            [['1']]), 1)
+        self.assertEqual(
+            Integer.import_data(['integer'], [['1'], ['2']]), 2)
 
-        self.assertEqual(IntegerRequired.import_data(['integer'],
-            [['-1']]), 1)
+    @with_transaction()
+    def test_integer_invalid(self):
+        "Test integer invalid value"
+        pool = Pool()
+        Integer = pool.get('test.import_data.integer')
 
-        with self.assertRaises(RequiredValidationError):
-            IntegerRequired.import_data(['integer'], [['']])
-        transaction.rollback()
-
-        self.assertEqual(IntegerRequired.import_data(['integer'],
-            [['1'], ['2']]), 2)
-
-        self.assertRaises(ValueError, IntegerRequired.import_data,
-            ['integer'], [['1.1']])
-
-        self.assertRaises(ValueError, IntegerRequired.import_data,
-            ['integer'], [['-1.1']])
-
-        self.assertRaises(ValueError, IntegerRequired.import_data,
-            ['integer'], [['foo']])
-
-        self.assertEqual(IntegerRequired.import_data(['integer'],
-            [['0']]), 1)
-
-        self.assertEqual(IntegerRequired.import_data(['integer'],
-            [[0]]), 1)
-
-        with self.assertRaises(RequiredValidationError):
-            IntegerRequired.import_data(['integer'], [[None]])
-        transaction.rollback()
+        for value in ['1.1', '-1.1', 'foo']:
+            with self.subTest(value=value):
+                with self.assertRaises(ImportDataError):
+                    Integer.import_data(['integer'], [[value]])
 
     @with_transaction()
     def test_float(self):
@@ -130,77 +83,20 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Float = pool.get('test.import_data.float')
 
-        self.assertEqual(Float.import_data(['float'],
-            [['1.1']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [[0.0]]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [[1.1]]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [['-1.1']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [['1']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [['']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [['1.1'], ['2.2']]), 2)
-
-        self.assertRaises(ValueError, Float.import_data,
-            ['float'], [['foo']])
-
-        self.assertEqual(Float.import_data(['float'],
-            [['0']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [['0.0']]), 1)
-
-        self.assertEqual(Float.import_data(['float'],
-            [[None]]), 1)
+        for value in [
+                '1.1', 0.0, 1.1, '-1.1', '1', '', '1.1', '0', '0.0', None]:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Float.import_data(['float'], [[value]]), 1)
 
     @with_transaction()
-    def test_float_required(self):
-        'Test required float'
+    def test_float_invalid(self):
+        "Test float invalid value"
         pool = Pool()
-        FloatRequired = pool.get('test.import_data.float_required')
-        transaction = Transaction()
+        Float = pool.get('test.import_data.float')
 
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['1.1']]), 1)
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['-1.1']]), 1)
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['1']]), 1)
-
-        with self.assertRaises(RequiredValidationError):
-            FloatRequired.import_data(['float'], [['']])
-        transaction.rollback()
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['1.1'], ['2.2']]), 2)
-
-        self.assertRaises(ValueError, FloatRequired.import_data,
-            ['float'], [['foo']])
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['0']]), 1)
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [['0.0']]), 1)
-
-        self.assertEqual(FloatRequired.import_data(['float'],
-            [[0.0]]), 1)
-
-        with self.assertRaises(RequiredValidationError):
-            FloatRequired.import_data(['float'], [[None]])
-        transaction.rollback()
+        with self.assertRaises(ImportDataError):
+            Float.import_data(['float'], [['foo']])
 
     @with_transaction()
     def test_numeric(self):
@@ -208,77 +104,20 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Numeric = pool.get('test.import_data.numeric')
 
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['1.1']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [[Decimal('0.0')]]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [[Decimal('1.1')]]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['-1.1']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['1']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['1.1'], ['2.2']]), 2)
-
-        self.assertRaises(InvalidOperation, Numeric.import_data,
-            ['numeric'], [['foo']])
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['0']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [['0.0']]), 1)
-
-        self.assertEqual(Numeric.import_data(['numeric'],
-            [[None]]), 1)
+        for value in [
+                '1.1', Decimal('1.1'), '-1.1', '1',
+                Decimal('0.0'), '0', '0.0', '', None]:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Numeric.import_data(['numeric'], [[value]]), 1)
 
     @with_transaction()
-    def test_numeric_required(self):
-        'Test required numeric'
+    def test_numeric_invalid(self):
         pool = Pool()
-        NumericRequired = pool.get('test.import_data.numeric_required')
-        transaction = Transaction()
+        Numeric = pool.get('test.import_data.numeric')
 
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['1.1']]), 1)
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['-1.1']]), 1)
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['1']]), 1)
-
-        with self.assertRaises(RequiredValidationError):
-            NumericRequired.import_data(['numeric'], [['']])
-        transaction.rollback()
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['1.1'], ['2.2']]), 2)
-
-        self.assertRaises(InvalidOperation,
-            NumericRequired.import_data, ['numeric'], [['foo']])
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['0']]), 1)
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [['0.0']]), 1)
-
-        self.assertEqual(NumericRequired.import_data(['numeric'],
-            [[Decimal('0.0')]]), 1)
-
-        with self.assertRaises(RequiredValidationError):
-            NumericRequired.import_data(['numeric'], [[None]])
-        transaction.rollback()
+        with self.assertRaises(ImportDataError):
+            Numeric.import_data(['numeric'], [['foo']])
 
     @with_transaction()
     def test_char(self):
@@ -286,14 +125,19 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Char = pool.get('test.import_data.char')
 
-        self.assertEqual(Char.import_data(['char'],
-            [['test']]), 1)
+        for value in ['test', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Char.import_data(['char'], [[value]]), 1)
 
-        self.assertEqual(Char.import_data(['char'],
-            [['']]), 1)
+    @with_transaction()
+    def test_char_many_rows(self):
+        "Test char many rows"
+        pool = Pool()
+        Char = pool.get('test.import_data.char')
 
-        self.assertEqual(Char.import_data(['char'],
-            [['test'], ['foo'], ['bar']]), 3)
+        self.assertEqual(
+            Char.import_data(['char'], [['test'], ['foo'], ['bar']]), 3)
 
     @with_transaction()
     def test_text(self):
@@ -301,14 +145,19 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Text = pool.get('test.import_data.text')
 
-        self.assertEqual(Text.import_data(['text'],
-            [['test']]), 1)
+        for value in ['test', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Text.import_data(['text'], [[value]]), 1)
 
-        self.assertEqual(Text.import_data(['text'],
-            [['']]), 1)
+    @with_transaction()
+    def test_text_many_rows(self):
+        "Test text many rows"
+        pool = Pool()
+        Text = pool.get('test.import_data.text')
 
-        self.assertEqual(Text.import_data(['text'],
-            [['test'], ['foo'], ['bar']]), 3)
+        self.assertEqual(
+            Text.import_data(['text'], [['test'], ['foo'], ['bar']]), 3)
 
     @with_transaction()
     def test_date(self):
@@ -316,20 +165,28 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Date = pool.get('test.import_data.date')
 
-        self.assertEqual(Date.import_data(['date'],
-            [['2010-01-01']]), 1)
+        for value in ['2010-01-01', dt.date(2019, 3, 13), '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Date.import_data(['date'], [[value]]), 1)
 
-        self.assertEqual(Date.import_data(['date'],
-            [[datetime.date(2019, 3, 13)]]), 1)
+    @with_transaction()
+    def test_date_many_rows(self):
+        "Test date many rows"
+        pool = Pool()
+        Date = pool.get('test.import_data.date')
 
-        self.assertEqual(Date.import_data(['date'],
-            [['']]), 1)
+        self.assertEqual(
+            Date.import_data(['date'], [['2010-01-01'], ['2010-02-01']]), 2)
 
-        self.assertEqual(Date.import_data(['date'],
-            [['2010-01-01'], ['2010-02-01']]), 2)
+    @with_transaction()
+    def test_date_invalid(self):
+        "Test date invalid value"
+        pool = Pool()
+        Date = pool.get('test.import_data.date')
 
-        self.assertRaises(ValueError, Date.import_data,
-            ['date'], [['foo']])
+        with self.assertRaises(ImportDataError):
+            Date.import_data(['date'], [['foo']])
 
     @with_transaction()
     def test_datetime(self):
@@ -337,20 +194,31 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Datetime = pool.get('test.import_data.datetime')
 
-        self.assertEqual(Datetime.import_data(['datetime'],
-            [['2010-01-01 12:00:00']]), 1)
+        for value in [
+                '2010-01-01 12:00:00', dt.datetime(2019, 3, 13, 12, 0), '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Datetime.import_data(['datetime'], [[value]]), 1)
 
-        self.assertEqual(Datetime.import_data(['datetime'],
-            [[datetime.datetime(2019, 3, 13, 12, 0)]]), 1)
+    @with_transaction()
+    def test_datetime_many_rows(self):
+        "Test datetime many rows"
+        pool = Pool()
+        Datetime = pool.get('test.import_data.datetime')
 
-        self.assertEqual(Datetime.import_data(['datetime'],
-            [['']]), 1)
+        self.assertEqual(
+            Datetime.import_data(
+                ['datetime'], [
+                    ['2010-01-01 12:00:00'], ['2010-01-01 13:30:00']]), 2)
 
-        self.assertEqual(Datetime.import_data(['datetime'],
-            [['2010-01-01 12:00:00'], ['2010-01-01 13:30:00']]), 2)
+    @with_transaction()
+    def test_datetime_invalid(self):
+        "Test datetime invalid value"
+        pool = Pool()
+        Datetime = pool.get('test.import_data.datetime')
 
-        self.assertRaises(ValueError, Datetime.import_data,
-            ['datetime'], [['foo']])
+        with self.assertRaises(ImportDataError):
+            Datetime.import_data(['datetime'], [['foo']])
 
     @with_transaction()
     def test_timedelta(self):
@@ -358,30 +226,23 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Timedelta = pool.get('test.import_data.timedelta')
 
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [['00:00']]), 1)
+        for value in [
+                '00:00', '0:00:00', '01:00:00', '36:00:00', '0:00:00.0001',
+                dt.timedelta(
+                    weeks=2, days=3, hours=8, minutes=50, seconds=30.45),
+                30.45]:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Timedelta.import_data(['timedelta'], [[value]]), 1)
 
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [['0:00:00']]), 1)
+    @with_transaction()
+    def test_timedelta_invalid(self):
+        'Test timedelta'
+        pool = Pool()
+        Timedelta = pool.get('test.import_data.timedelta')
 
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [['01:00:00']]), 1)
-
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [['36:00:00']]), 1)
-
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [['0:00:00.0001']]), 1)
-
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [[datetime.timedelta(
-                weeks=2, days=3, hours=8, minutes=50, seconds=30.45)]]), 1)
-
-        self.assertEqual(Timedelta.import_data(['timedelta'],
-            [[30.45]]), 1)
-
-        self.assertRaises(ValueError, Timedelta.import_data,
-            ['timedelta'], [['foo']])
+        with self.assertRaises(ImportDataError):
+            Timedelta.import_data(['timedelta'], [['foo']])
 
     @with_transaction()
     def test_selection(self):
@@ -389,100 +250,120 @@ class ImportDataTestCase(unittest.TestCase):
         pool = Pool()
         Selection = pool.get('test.import_data.selection')
 
-        self.assertEqual(Selection.import_data(['selection'],
-            [['select1']]), 1)
+        for value in ['select1', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Selection.import_data(['selection'], [[value]]), 1)
 
-        self.assertEqual(Selection.import_data(['selection'],
-            [['']]), 1)
+    @with_transaction()
+    def test_selection_many_rows(self):
+        'Test selection many rows'
+        pool = Pool()
+        Selection = pool.get('test.import_data.selection')
 
-        self.assertEqual(Selection.import_data(['selection'],
-            [['select1'], ['select2']]), 2)
-
-        with self.assertRaises(SelectionValidationError):
-            Selection.import_data(['selection'], [['foo']])
+        self.assertEqual(
+            Selection.import_data(['selection'], [['select1'], ['select2']]),
+            2)
 
     @with_transaction()
     def test_many2one(self):
         'Test many2one'
         pool = Pool()
         Many2one = pool.get('test.import_data.many2one')
-        transaction = Transaction()
 
-        self.assertEqual(Many2one.import_data(['many2one'],
-            [['Test']]), 1)
+        for value in ['Test', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Many2one.import_data(['many2one'], [[value]]), 1)
 
-        self.assertEqual(Many2one.import_data(['many2one:id'],
-            [['tests.import_data_many2one_target_test']]), 1)
+    @with_transaction()
+    def test_many2one_id(self):
+        "Test many2one with id"
+        pool = Pool()
+        Many2one = pool.get('test.import_data.many2one')
 
-        self.assertEqual(Many2one.import_data(['many2one'],
-            [['']]), 1)
+        self.assertEqual(
+            Many2one.import_data(
+                ['many2one:id'], [['tests.import_data_many2one_target_test']]),
+            1)
 
-        self.assertEqual(Many2one.import_data(['many2one'],
-            [['Test'], ['Test']]), 2)
+    @with_transaction()
+    def test_many2one_many_rows(self):
+        "Test many2one many rows"
+        pool = Pool()
+        Many2one = pool.get('test.import_data.many2one')
 
-        with self.assertRaises(ImportDataError):
-            Many2one.import_data(['many2one'], [['foo']])
-        transaction.rollback()
+        self.assertEqual(
+            Many2one.import_data(['many2one'], [['Test'], ['Test']]), 2)
 
-        with self.assertRaises(ImportDataError):
-            Many2one.import_data(['many2one'], [['Duplicate']])
-        transaction.rollback()
+    @with_transaction()
+    def test_many2one_invalid(self):
+        "Test many2one invalid value"
+        pool = Pool()
+        Many2one = pool.get('test.import_data.many2one')
 
-        with self.assertRaises(ImportDataError):
-            Many2one.import_data(['many2one:id'], [['foo']])
-        transaction.rollback()
+        for value in ['foo', 'Duplicate']:
+            with self.subTest(value=value):
+                with self.assertRaises(ImportDataError):
+                    Many2one.import_data(['many2one'], [[value]])
 
-        with self.assertRaises(KeyError):
-            Many2one.import_data(['many2one:id'], [['tests.foo']])
-        transaction.rollback()
+    @with_transaction()
+    def test_many2one_id_invalid(self):
+        "Test many2one invalid id"
+        pool = Pool()
+        Many2one = pool.get('test.import_data.many2one')
+
+        for value in ['foo', 'tests.foo']:
+            with self.subTest(value=value):
+                with self.assertRaises(ImportDataError):
+                    Many2one.import_data(['many2one:id'], [[value]])
 
     @with_transaction()
     def test_many2many(self):
         'Test many2many'
         pool = Pool()
         Many2many = pool.get('test.import_data.many2many')
-        transaction = Transaction()
 
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test 1']]), 1)
+        for value in [
+                'Test 1', 'Test\\, comma', 'Test\\, comma,Test 1',
+                'Test 1,Test 2', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Many2many.import_data(['many2many'], [[value]]), 1)
 
-        self.assertEqual(Many2many.import_data(['many2many:id'],
-            [['tests.import_data_many2many_target_test1']]), 1)
+    @with_transaction()
+    def test_many2many_id(self):
+        "Test many2many with id"
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
 
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test 1,Test 2']]), 1)
+        for value in [
+                'tests.import_data_many2many_target_test1',
+                'tests.import_data_many2many_target_test1,'
+                'tests.import_data_many2many_target_test2']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    Many2many.import_data(['many2many:id'], [[value]]), 1)
 
-        self.assertEqual(Many2many.import_data(['many2many:id'],
-            [['tests.import_data_many2many_target_test1,'
-                'tests.import_data_many2many_target_test2']]), 1)
+    @with_transaction()
+    def test_many2many_many_rows(self):
+        "Test many2many many rows"
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
 
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test\\, comma']]), 1)
+        self.assertEqual(
+            Many2many.import_data(['many2many'], [['Test 1'], ['Test 2']]), 2)
 
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test\\, comma,Test 1']]), 1)
+    @with_transaction()
+    def test_many2many_invalid(self):
+        "Test many2many invalid value"
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
 
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['']]), 1)
-
-        self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test 1'], ['Test 2']]), 2)
-
-        with self.assertRaises(ImportDataError):
-            Many2many.import_data(['many2many'], [['foo']])
-        transaction.rollback()
-
-        with self.assertRaises(ImportDataError):
-            Many2many.import_data(['many2many'], [['Test 1,foo']])
-        transaction.rollback()
-
-        with self.assertRaises(ImportDataError):
-            Many2many.import_data(['many2many'], [['Duplicate']])
-        transaction.rollback()
-
-        with self.assertRaises(ImportDataError):
-            Many2many.import_data(['many2many'], [['Test 1,Duplicate']])
-        transaction.rollback()
+        for value in ['foo', 'Test 1,foo', 'Duplicate', 'Test 1,Duplicate']:
+            with self.subTest(value=value):
+                with self.assertRaises(ImportDataError):
+                    Many2many.import_data(['many2many'], [[value]])
 
     @with_transaction()
     def test_one2many(self):
@@ -493,9 +374,21 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(One2many.import_data(
                 ['name', 'one2many/name'], [['Test', 'Test 1']]), 1)
 
+    @with_transaction()
+    def test_one2many_many_targets(self):
+        "Test one2many with many targets"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2many')
+
         self.assertEqual(One2many.import_data(
                 ['name', 'one2many/name'],
                 [['Test', 'Test 1'], ['', 'Test 2']]), 1)
+
+    @with_transaction()
+    def test_one2many_many_rows(self):
+        "Test one2many many rows"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2many')
 
         self.assertEqual(One2many.import_data(
                 ['name', 'one2many/name'],
@@ -509,14 +402,18 @@ class ImportDataTestCase(unittest.TestCase):
         'Test reference'
         pool = Pool()
         Reference = pool.get('test.import_data.reference')
-        transaction = Transaction()
 
         self.assertEqual(Reference.import_data(['reference'],
             [['test.import_data.reference.selection,Test']]), 1)
         reference, = Reference.search([])
         self.assertEqual(reference.reference.__name__,
             'test.import_data.reference.selection')
-        transaction.rollback()
+
+    @with_transaction()
+    def test_reference_id(self):
+        "Test reference with id"
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
 
         self.assertEqual(Reference.import_data(['reference:id'],
             [['test.import_data.reference.selection,'
@@ -524,13 +421,23 @@ class ImportDataTestCase(unittest.TestCase):
         reference, = Reference.search([])
         self.assertEqual(reference.reference.__name__,
             'test.import_data.reference.selection')
-        transaction.rollback()
+
+    @with_transaction()
+    def test_reference_empty(self):
+        "Test reference empty"
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
 
         self.assertEqual(Reference.import_data(['reference'],
             [['']]), 1)
         reference, = Reference.search([])
         self.assertEqual(reference.reference, None)
-        transaction.rollback()
+
+    @with_transaction()
+    def test_reference_many_rows(self):
+        "Test reference many rows"
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
 
         self.assertEqual(Reference.import_data(['reference'],
             [['test.import_data.reference.selection,Test'],
@@ -538,30 +445,31 @@ class ImportDataTestCase(unittest.TestCase):
         for reference in Reference.search([]):
             self.assertEqual(reference.reference.__name__,
                 'test.import_data.reference.selection')
-        transaction.rollback()
 
-        with self.assertRaises(ImportDataError):
-            Reference.import_data(
-                ['reference'], [['test.import_data.reference.selection,foo']])
-        transaction.rollback()
+    @with_transaction()
+    def test_reference_invalid(self):
+        "Test reference invalid value"
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
 
-        with self.assertRaises(ImportDataError):
-            Reference.import_data(
-                ['reference'],
-                [['test.import_data.reference.selection,Duplicate']])
-            transaction.rollback()
+        for value in [
+                'test.import_data.reference.selection,foo',
+                'test.import_data.reference.selection,Duplicate',
+                'test.import_data.reference.selection,test.foo']:
+            with self.subTest(value=value):
+                with self.assertRaises(ImportDataError):
+                    Reference.import_data(['reference'], [[value]])
+
+    @with_transaction()
+    def test_reference_id_invalid(self):
+        "Test reference invalid id"
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
 
         with self.assertRaises(ImportDataError):
             Reference.import_data(
                 ['reference:id'],
                 [['test.import_data.reference.selection,foo']])
-        transaction.rollback()
-
-        with self.assertRaises(KeyError):
-            Reference.import_data(
-                ['reference:id'],
-                [['test.import_data.reference.selection,test.foo']])
-        transaction.rollback()
 
     @with_transaction()
     def test_binary_bytes(self):

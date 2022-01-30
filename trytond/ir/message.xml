@@ -146,16 +146,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">This record is part of the base configuration.</field>
         </record>
         <record model="ir.message" id="msg_relation_not_found">
-            <field name="text">Relation not found: "%(value)r" in "%(model)s".</field>
+            <field name="text">Relation not found: %(value)r in "%(model)s" (%(column)s).</field>
         </record>
         <record model="ir.message" id="msg_too_many_relations_found">
-            <field name="text">Too many relations found: "%(value)r" in "%(model)s".</field>
+            <field name="text">Too many relations found: %(value)r in "%(model)s" (%(column)s).</field>
+        </record>
+        <record model="ir.message" id="msg_value_syntax_error">
+            <field name="text">Syntax error for value: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
         </record>
         <record model="ir.message" id="msg_reference_syntax_error">
-            <field name="text">Syntax error for reference: "%(value)r" in "%(field)s".</field>
+            <field name="text">Syntax error for reference: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
         </record>
         <record model="ir.message" id="msg_xml_id_syntax_error">
-            <field name="text">Syntax error for XML id: "%(value)r" in "%(field)s".</field>
+            <field name="text">Syntax error for XML id: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
         </record>
         <record model="ir.message" id="msg_domain_validation_record">
             <field name="text">The value for field "%(field)s" in "%(model)s" is not valid according to its domain.</field>

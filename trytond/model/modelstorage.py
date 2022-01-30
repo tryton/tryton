@@ -4,6 +4,7 @@
 import base64
 import csv
 import datetime
+import decimal
 import random
 import time
 from collections import defaultdict
@@ -764,7 +765,7 @@ class ModelStorage(Model):
         pool = Pool()
 
         @lru_cache(maxsize=1000)
-        def get_many2one(relation, value):
+        def get_many2one(relation, value, column):
             if not value:
                 return None
             Relation = pool.get(relation)
@@ -775,18 +776,19 @@ class ModelStorage(Model):
                 raise ImportDataError(gettext(
                         'ir.msg_relation_not_found',
                         value=value,
-                        model=relation))
+                        **Relation.__names__()))
             elif len(res) > 1:
                 raise ImportDataError(
                     gettext('ir.msg_too_many_relations_found',
                         value=value,
-                        model=relation))
+                        column=column,
+                        **Relation.__names__()))
             else:
                 res = res[0].id
             return res
 
         @lru_cache(maxsize=1000)
-        def get_many2many(relation, value):
+        def get_many2many(relation, value, column):
             if not value:
                 return None
             res = []
@@ -800,33 +802,36 @@ class ModelStorage(Model):
                     raise ImportDataError(
                         gettext('ir.msg_relation_not_found',
                             value=word,
-                            model=relation))
+                            column=column,
+                            **Relation.__names__()))
                 elif len(res2) > 1:
                     raise ImportDataError(
                         gettext('ir.msg_too_many_relations_found',
                             value=word,
-                            model=relation))
+                            column=column,
+                            **Relation.__names__()))
                 else:
                     res.extend(res2)
             if len(res):
                 res = [('add', [x.id for x in res])]
             return res
 
-        def get_one2one(relation, value):
-            return ('add', get_many2one(relation, value))
+        def get_one2one(relation, value, column):
+            return ('add', get_many2one(relation, value, column))
 
         @lru_cache(maxsize=1000)
-        def get_reference(value, field):
+        def get_reference(value, field, klass, column):
             if not value:
                 return None
             try:
                 relation, value = value.split(',', 1)
-            except Exception:
+                Relation = pool.get(relation)
+            except (ValueError, KeyError) as e:
                 raise ImportDataError(
                     gettext('ir.msg_reference_syntax_error',
                         value=value,
-                        field=field))
-            Relation = pool.get(relation)
+                        column=column,
+                        **klass.__names__(field))) from e
             res = Relation.search([
                 ('rec_name', '=', value),
                 ], limit=2)
@@ -834,18 +839,19 @@ class ModelStorage(Model):
                 raise ImportDataError(gettext(
                         'ir.msg_relation_not_found',
                         value=value,
-                        model=relation))
+                        **Relation.__names__()))
             elif len(res) > 1:
                 raise ImportDataError(
                     gettext('ir.msg_too_many_relations_found',
                         value=value,
-                        model=relation))
+                        column=column,
+                        **Relation.__names__()))
             else:
                 res = '%s,%s' % (relation, res[0].id)
             return res
 
         @lru_cache(maxsize=1000)
-        def get_by_id(value, field, ftype):
+        def get_by_id(value, ftype, field, klass, column):
             if not value:
                 return None
             relation = None
@@ -855,11 +861,12 @@ class ModelStorage(Model):
             elif ftype == 'reference':
                 try:
                     relation, value = value.split(',', 1)
-                except Exception:
+                except ValueError as e:
                     raise ImportDataError(
                         gettext('ir.msg_reference_syntax_error',
                             value=value,
-                            field=field))
+                            column=column,
+                            **klass.__names__(field))) from e
                 value = [value]
             else:
                 value = [value]
@@ -867,12 +874,13 @@ class ModelStorage(Model):
             for word in value:
                 try:
                     module, xml_id = word.rsplit('.', 1)
-                except Exception:
+                    db_id = ModelData.get_id(module, xml_id)
+                except (ValueError, KeyError) as e:
                     raise ImportDataError(
                         gettext('ir.msg_xml_id_syntax_error',
                             value=word,
-                            field=field))
-                db_id = ModelData.get_id(module, xml_id)
+                            column=column,
+                            **klass.__names__(field))) from e
                 res_ids.append(db_id)
             if ftype == 'many2many' and res_ids:
                 return [('add', res_ids)]
@@ -889,6 +897,78 @@ class ModelStorage(Model):
                 create.append(row)
             return id_
 
+        def convert(value, ftype, field, klass, column):
+            def convert_boolean(value):
+                if value.lower() == 'true':
+                    return True
+                elif value.lower() == 'false':
+                    return False
+                elif not value:
+                    return False
+                else:
+                    return bool(int(value))
+
+            def convert_integer(value):
+                if isinstance(value, int):
+                    return value
+                elif value:
+                    return int(value)
+
+            def convert_float(value):
+                if isinstance(value, float):
+                    return value
+                elif value:
+                    return float(value)
+
+            def convert_numeric(value):
+                if isinstance(value, Decimal):
+                    return value
+                elif value:
+                    return Decimal(value)
+
+            def convert_date(value):
+                if isinstance(value, datetime.date):
+                    return value
+                elif value:
+                    return datetime.datetime.strptime(value, '%Y-%m-%d').date()
+
+            def convert_datetime(value):
+                if isinstance(value, datetime.datetime):
+                    return value
+                elif value:
+                    return datetime.datetime.strptime(
+                        value, '%Y-%m-%d %H:%M:%S')
+
+            def convert_timedelta(value):
+                if isinstance(value, datetime.timedelta):
+                    return value
+                elif value:
+                    try:
+                        return float(value)
+                    except ValueError:
+                        hours, minutes, seconds = (
+                            value.split(':') + ['00'])[:3]
+                        return datetime.timedelta(
+                            hours=int(hours), minutes=int(minutes),
+                            seconds=float(seconds))
+
+            def convert_binary(value):
+                if not isinstance(value, bytes):
+                    return base64.b64decode(value)
+                elif value:
+                    return value
+
+            try:
+                return locals()['convert_%s' % ftype](value)
+            except KeyError:
+                return value
+            except (ValueError, TypeError, decimal.InvalidOperation) as e:
+                raise ImportDataError(
+                    gettext('ir.msg_value_syntax_error',
+                        value=value,
+                        column=column,
+                        **klass.__names__(field))) from e
+
         def process_lines(data, prefix, fields_def, position=0, klass=cls):
             line = data[position]
             row = {}
@@ -903,95 +983,39 @@ class ModelStorage(Model):
                         % len(fields_names))
                 is_prefix_len = (len(field) == (prefix_len + 1))
                 value = line[i]
+                column = '/'.join(field)
                 if is_prefix_len and field[-1].endswith(':id'):
-                    ftype = fields_def[field[-1][:-3]]['type']
+                    field_name = field[-1][:-3]
+                    ftype = fields_def[field_name]['type']
                     row[field[0][:-3]] = get_by_id(
-                        value, '/'.join(field), ftype)
+                        value, ftype, field_name, klass, column)
                 elif is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
                     translate.setdefault(lang, {})[field_name] = value or False
                 elif is_prefix_len and prefix == field[:-1]:
-                    this_field_def = fields_def[field[-1]]
+                    field_name = field[-1]
+                    this_field_def = fields_def[field_name]
                     field_type = this_field_def['type']
                     res = None
-                    if field[-1] == 'id':
+                    if field_name == 'id':
                         try:
                             res = int(value)
                         except ValueError:
-                            res = get_many2one(klass.__name__, value)
-                    elif field_type == 'boolean':
-                        if value.lower() == 'true':
-                            res = True
-                        elif value.lower() == 'false':
-                            res = False
-                        elif not value:
-                            res = False
-                        else:
-                            res = bool(int(value))
-                    elif field_type == 'integer':
-                        if isinstance(value, int):
-                            res = value
-                        elif value:
-                            res = int(value)
-                        else:
-                            res = None
-                    elif field_type == 'float':
-                        if isinstance(value, float):
-                            res = value
-                        elif value:
-                            res = float(value)
-                        else:
-                            res = None
-                    elif field_type == 'numeric':
-                        if isinstance(value, Decimal):
-                            res = value
-                        elif value:
-                            res = Decimal(value)
-                        else:
-                            res = None
-                    elif field_type == 'date':
-                        if isinstance(value, datetime.date):
-                            res = value
-                        elif value:
-                            res = datetime.datetime.strptime(
-                                value, '%Y-%m-%d').date()
-                        else:
-                            res = None
-                    elif field_type == 'datetime':
-                        if isinstance(value, datetime.datetime):
-                            res = value
-                        elif value:
-                            res = datetime.datetime.strptime(
-                                value, '%Y-%m-%d %H:%M:%S')
-                        else:
-                            res = None
-                    elif field_type == 'timedelta':
-                        if isinstance(value, datetime.timedelta):
-                            res = value
-                        elif value:
-                            try:
-                                res = float(value)
-                            except ValueError:
-                                hours, minutes, seconds = (
-                                    value.split(':') + ['00'])[:3]
-                                res = datetime.timedelta(
-                                    hours=int(hours), minutes=int(minutes),
-                                    seconds=float(seconds))
-                        else:
-                            res = None
+                            res = get_many2one(klass.__name__, value, column)
                     elif field_type == 'many2one':
-                        res = get_many2one(this_field_def['relation'], value)
+                        res = get_many2one(
+                            this_field_def['relation'], value, column)
                     elif field_type == 'many2many':
-                        res = get_many2many(this_field_def['relation'], value)
+                        res = get_many2many(
+                            this_field_def['relation'], value, column)
                     elif field_type == 'one2one':
-                        res = get_one2one(this_field_def['relation'], value)
+                        res = get_one2one(
+                            this_field_def['relation'], value, column)
                     elif field_type == 'reference':
-                        res = get_reference(value, '/'.join(field))
-                    elif (field_type == 'binary'
-                            and not isinstance(value, bytes)):
-                        res = base64.b64decode(value)
+                        res = get_reference(value, field_name, klass, column)
                     else:
-                        res = value or None
+                        res = convert(
+                            value, field_type, field_name, klass, column)
                     row[field[-1]] = res
                 elif prefix == field[0:prefix_len]:
                     todo.add(field[prefix_len])
