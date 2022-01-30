@@ -162,6 +162,15 @@ class Eval(PYSON):
                     }, context.get(base) or {})
         return context.get(dct['v'], dct['d'])
 
+    @property
+    def basename(self):
+        name = self._value
+        if name.startswith('_parent_'):
+            name = name[len('_parent_'):]
+        if '.' in name:
+            name = name.split('.', 1)[0]
+        return name
+
 
 class Not(PYSON):
 
