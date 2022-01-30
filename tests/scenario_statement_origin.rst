@@ -114,3 +114,7 @@ Test statement report::
 
     >>> report = Report('account.statement')
     >>> _ = report.execute([statement], {})
+
+Test copy statement::
+
+    >>> _ = statement.duplicate()
