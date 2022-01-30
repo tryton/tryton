@@ -1182,7 +1182,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
-            }, depends=['type', 'sale_state'])
+            },
+        depends=['type', 'sale_state', 'sale'])
     invoice_lines = fields.One2Many('account.invoice.line', 'origin',
         'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
