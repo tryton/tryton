@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
-        <newline/>
-        <label name="package_sequence"/>
+        <separator id="package" colspan="4" string="Package"/>
+        <label name="package_sequence" string="Sequence"/>
         <field name="package_sequence"/>
         <newline/>
     </xpath>
