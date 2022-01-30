@@ -21,7 +21,8 @@ class Line(AnalyticMixin, metaclass=PoolMeta):
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
             }
-        cls.analytic_accounts.depends.extend(['type', 'sale_state'])
+        cls.analytic_accounts.depends.extend(
+            ['type', 'sale_state', 'sale'])
 
     def get_invoice_line(self):
         pool = Pool()
