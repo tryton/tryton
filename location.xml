@@ -40,7 +40,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="menu_stock"
             action="act_location_tree"
-            sequence="20"
+            sequence="30"
             id="menu_location_tree"/>
 
         <record model="ir.action.act_window" id="act_location_form">
