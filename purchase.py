@@ -72,7 +72,6 @@ class LineComponent(
         from trytond.modules.purchase.exceptions import PartyLocationError
         pool = Pool()
         Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
 
         if (self.quantity >= 0) != (move_type == 'in'):
             return
@@ -103,16 +102,7 @@ class LineComponent(
             move.unit_price = round_price(
                 self.line.unit_price * self.price_ratio)
             move.currency = self.line.purchase.currency
-        if self.moves:
-            # backorder can not be planned but shipping date could be used
-            # if set in the future
-            if (self.line.delivery_date
-                    and self.line.delivery_date > Date.today()):
-                move.planned_date = self.line.shipping_date
-            else:
-                move.planned_date = None
-        else:
-            move.planned_date = self.line.delivery_date
+        move.planned_date = self.line.planned_delivery_date
         move.origin = self
         return move
 
