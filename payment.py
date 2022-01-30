@@ -579,7 +579,11 @@ class ProcessPayment(Wizard):
     process = StateAction('account_payment.act_payment_group_form')
 
     def _group_payment_key(self, payment):
-        return (('journal', payment.journal.id), ('kind', payment.kind))
+        return (
+            ('company', payment.company.id),
+            ('journal', payment.journal.id),
+            ('kind', payment.kind),
+            )
 
     def _new_group(self, values):
         pool = Pool()
