@@ -81,8 +81,7 @@ class WeightMixin:
     __slots__ = ()
 
     packaging_weight = fields.Float(
-        "Packaging Weight", digits=(16, Eval('packaging_weight_digits', 2)),
-        depends=['packaging_weight_digits'],
+        "Packaging Weight", digits='packaging_weight_uom',
         help="The weight of the package when empty.")
     packaging_weight_uom = fields.Many2One(
         'product.uom', "Packaging Weight Uom",
@@ -91,15 +90,6 @@ class WeightMixin:
             'required': Bool(Eval('packaging_weight')),
             },
         depends=['packaging_weight'])
-    packaging_weight_digits = fields.Function(
-        fields.Integer("Packaging Weight Digits"),
-        'on_change_with_packaging_weight_digits')
-
-    @fields.depends('packaging_weight_uom')
-    def on_change_with_packaging_weight_digits(self, name=None):
-        return (
-            self.packaging_weight_uom.digits if self.packaging_weight_uom
-            else None)
 
 
 class Package(tree(), WeightMixin, ModelSQL, ModelView):
