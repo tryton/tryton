@@ -294,3 +294,23 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
                     self.packaging_weight_uom, self.packaging_weight, kg,
                     round=False)
         return measurement
+
+
+class MeasurementsPackageMixin:
+    __slots__ = ()
+
+    packages_weight = fields.Function(
+        fields.Float("Packages Weight", digits=None,
+            help="The total weight of the packages in kg."),
+        'get_packages_weight')
+
+    def get_packages_weight(self, name):
+        return sum(p.total_weight for p in self.root_packages)
+
+
+class ShipmentOutPackage(MeasurementsPackageMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
+
+
+class ShipmentInReturnPackage(MeasurementsPackageMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in.return'

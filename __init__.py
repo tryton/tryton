@@ -18,6 +18,8 @@ def register():
         module='stock_shipment_measurements', type_='model')
     Pool.register(
         stock.Package,
+        stock.ShipmentOutPackage,
+        stock.ShipmentInReturnPackage,
         module='stock_shipment_measurements', type_='model',
         depends=['stock_package'])
     Pool.register(
