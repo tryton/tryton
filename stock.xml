@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_shipment_drop_form"/>
         </record>
         <menuitem
-            parent="stock.menu_stock"
+            parent="stock.menu_shipment"
             sequence="10"
             action="act_shipment_drop_form"
             id="menu_shipment_drop_form"/>
