@@ -1451,9 +1451,17 @@ class ModelSQL(ModelStorage):
         main_table, _ = tables[None]
         if count:
             table = convert_from(None, tables)
-            cursor.execute(*table.select(Count(Literal('*')),
-                    where=expression, limit=limit, offset=offset))
-            return cursor.fetchone()[0]
+            if (limit is not None and limit < cls.count()) or offset:
+                select = table.select(
+                    Literal(1), where=expression, limit=limit, offset=offset
+                    ).select(Count(Literal('*')))
+            else:
+                select = table.select(Count(Literal('*')), where=expression)
+            if query:
+                return select
+            else:
+                cursor.execute(*select)
+                return cursor.fetchone()[0]
 
         order_by = cls.__search_order(order, tables)
         # compute it here because __search_order might modify tables

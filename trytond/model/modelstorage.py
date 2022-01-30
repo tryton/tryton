@@ -543,11 +543,12 @@ class ModelStorage(Model):
         return []
 
     @classmethod
-    def search_count(cls, domain):
+    def search_count(cls, domain, offset=0, limit=None):
         '''
         Return the number of records that match the domain.
         '''
-        res = cls.search(domain, order=[], count=True)
+        res = cls.search(
+            domain, order=[], count=True, offset=offset, limit=limit)
         if isinstance(res, list):
             return len(res)
         return res

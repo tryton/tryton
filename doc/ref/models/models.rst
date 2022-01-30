@@ -340,10 +340,12 @@ Class methods:
     sort on the key's value.
 
     If ``count`` is set to ``True``, then the result is the number of records.
+    The count result is limited upto the value of ``limit`` if set.
 
-.. classmethod:: ModelStorage.search_count(domain)
+.. classmethod:: ModelStorage.search_count(domain[, offset[, limit]])
 
     Return the number of records that match the :ref:`domain <topics-domain>`.
+    The result is limited upto the value of ``limit`` if set and reduced by offset.
 
 .. classmethod:: ModelStorage.search_read(domain[, offset[, limit[, order[, fields_names]]]])
 

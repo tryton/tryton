@@ -916,6 +916,30 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertEqual(Model.search(domain), [model_c, model_a])
         self.assertIn('UNION', str(Model.search(domain, query=True)))
 
+    @with_transaction()
+    def test_search_limit(self):
+        "Test searching with limit"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search')
+
+        Model.create([{'name': str(i)} for i in range(10)])
+
+        self.assertEqual(Model.search([], limit=5, count=True), 5)
+        self.assertEqual(Model.search([], limit=20, count=True), 10)
+        self.assertEqual(Model.search([], limit=None, count=True), 10)
+
+    @with_transaction()
+    def test_search_offset(self):
+        "Test searching with offset"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search')
+
+        Model.create([{'name': str(i)} for i in range(10)])
+
+        self.assertEqual(Model.search([], offset=0, count=True), 10)
+        self.assertEqual(Model.search([], offset=5, count=True), 5)
+        self.assertEqual(Model.search([], offset=20, count=True), 0)
+
     def test_split_subquery_domain_empty(self):
         """
         Test the split of domains in local and relation parts (empty domain)
