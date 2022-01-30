@@ -129,7 +129,8 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': If(Bool(Eval('_parent_invoice')),
                 Eval('_parent_invoice', {}).get('type') == 'in',
                 Eval('invoice_type') == 'in'),
-            }, depends=['invoice_type', 'company'],
+            },
+        depends=['invoice_type', 'company', 'invoice'],
         help="The principal who pays a commission for the invoice line.")
     commissions = fields.One2Many('commission', 'origin', 'Commissions',
         readonly=True,

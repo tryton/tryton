@@ -81,6 +81,7 @@ class Line(metaclass=PoolMeta):
             ('type_', '=', 'principal'),
             ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
             ],
+        depends=['sale'],
         help="The principal who pays a commission for the line.")
 
     def get_invoice_line(self):
