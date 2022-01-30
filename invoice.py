@@ -1874,7 +1874,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 Eval('_parent_invoice', {}).get('accounting_date'),
                 Eval('_parent_invoice', {}).get('invoice_date')),
             },
-        depends=['type', 'company'] + _depends)
+        depends=['type', 'company', 'invoice'] + _depends)
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
         states={
@@ -1913,7 +1913,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'invisible': Eval('type') != 'line',
             'readonly': _states['readonly'] | ~Bool(Eval('account')),
             },
-        depends=['type', 'invoice_type', 'company', 'account'] + _depends)
+        depends=['type', 'invoice_type', 'company', 'account', 'invoice']
+        + _depends)
     taxes_deductible_rate = fields.Numeric(
         "Taxes Deductible Rate", digits=(14, 10),
         domain=[
@@ -2556,7 +2557,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             ('closed', '!=', True),
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
-        states=_states, depends=_depends)
+        states=_states, depends=['invoice'] + _depends)
     base = Monetary(
         "Base", currency='currency', digits='currency', required=True,
         states=_states, depends=_depends)
@@ -2575,7 +2576,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': ~Eval('manual', False) | _states['readonly'],
             },
-        depends=['manual'] + _depends)
+        depends=['manual', 'invoice'] + _depends)
     legal_notice = fields.Text("Legal Notice", states=_states,
         depends=_depends)
 
