@@ -25,8 +25,6 @@ Activate modules::
     >>> BankAccount = Model.get('bank.account')
     >>> Party = Model.get('party.party')
     >>> Rule = Model.get('account.statement.rule')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceType = Model.get('ir.sequence.type')
     >>> Statement = Model.get('account.statement')
     >>> StatementJournal = Model.get('account.statement.journal')
 
@@ -58,20 +56,6 @@ Create a bank::
     >>> bank = Bank(party=party_bank)
     >>> bank.save()
 
-Create Account Journal::
-
-    >>> sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
-    >>> sequence = Sequence(
-    ...     name="Satement",
-    ...     sequence_type=sequence_type,
-    ...     company=company)
-    >>> sequence.save()
-    >>> account_journal = AccountJournal(
-    ...     name="Statement",
-    ...     type='statement',
-    ...     sequence=sequence)
-    >>> account_journal.save()
-
 Create statement rules::
 
     >>> rule = Rule(name="Party Rule")
@@ -84,6 +68,7 @@ Create statement rules::
 
 Create a statement with non matching rule::
 
+    >>> account_journal, = AccountJournal.find([('code', '=', 'STA')], limit=1)
     >>> journal_number = StatementJournal(
     ...     name="Number",
     ...     journal=account_journal,
