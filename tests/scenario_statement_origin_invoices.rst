@@ -70,28 +70,12 @@ Create 2 customer invoices::
     >>> customer_invoice2.state
     'posted'
 
-Create Account Journal::
-
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceType = Model.get('ir.sequence.type')
-    >>> AccountJournal = Model.get('account.journal')
-
-    >>> sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
-    >>> sequence = Sequence(name="Satement",
-    ...     sequence_type=sequence_type,
-    ...     company=company,
-    ...     )
-    >>> sequence.save()
-    >>> account_journal = AccountJournal(name="Statement",
-    ...     type='statement',
-    ...     sequence=sequence,
-    ...     )
-    >>> account_journal.save()
-
 Create a statement with origins::
 
+    >>> AccountJournal = Model.get('account.journal')
     >>> StatementJournal = Model.get('account.statement.journal')
     >>> Statement = Model.get('account.statement')
+    >>> account_journal, = AccountJournal.find([('code', '=', 'STA')], limit=1)
     >>> journal_number = StatementJournal(name="Number",
     ...     journal=account_journal,
     ...     account=cash,
