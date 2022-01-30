@@ -3,7 +3,7 @@
 import unittest
 
 from trytond.model import ModelView, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.tests.test_tryton import activate_module, with_transaction
 
 
@@ -247,6 +247,22 @@ class FieldDependsTestCase(unittest.TestCase):
         Model.__post_setup__()
 
         self.assertEqual(Model.bar.on_change, {'foo', 'bar'})
+
+    def test_get_eval_fields(self):
+        "Test get_eval_fields"
+        for value, result in [
+                ('test', set()),
+                (Eval('foo'), {'foo'}),
+                (Eval('_parent_foo'), {'foo'}),
+                (Eval('foo.bar'), {'foo'}),
+                ([Eval('foo'), Eval('bar')], {'foo', 'bar'}),
+                ((Eval('foo'), Eval('bar')), {'foo', 'bar'}),
+                ({'foo': Eval('bar')}, {'bar'}),
+                (If(Eval('foo'), Eval('bar'), Eval('baz')),
+                    {'foo', 'bar', 'baz'}),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(fields.get_eval_fields(value), result)
 
 
 def suite():
