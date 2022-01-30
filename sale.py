@@ -78,7 +78,8 @@ class Line(metaclass=PoolMeta):
         ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
-            ])
+            ],
+        depends=['sale'])
 
 
 class Promotion(
