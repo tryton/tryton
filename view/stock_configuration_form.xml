@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/field[@name='shipment_internal_sequence']"
         position="after">
         <label name="shipment_drop_sequence"/>
-        <field name="shipment_drop_sequence"/>
+        <field name="shipment_drop_sequence" string="Drop Shipment Sequence"/>
     </xpath>
 </data>
