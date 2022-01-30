@@ -376,7 +376,11 @@
                 counter.html('&nbsp;');
                 counter.css('visibility', 'hidden');
             } else {
-                counter.attr('title', count);
+                var title = Sao.common.humanize(count);
+                if (count >= 1000) {
+                    title += '+';
+                }
+                counter.attr('title', title);
                 var text = count;
                 if (count > 99) {
                     text = '99+';
@@ -879,6 +883,9 @@
                 return r.deletable;
             });
         },
+        get count_limit() {
+            return this.limit * 100 + this.offset;
+        },
         load_next_view: function() {
             if (!jQuery.isEmptyObject(this.view_to_load)) {
                 var view_id;
@@ -1077,7 +1084,8 @@
                         if ((this.limit !== null) &&
                             (ids.length == this.limit)) {
                             count_prm = this.model.execute(
-                                'search_count', [domain], context)
+                                'search_count',
+                                [domain, 0, this.count_limit], context)
                                 .then(function(count) {
                                     this.search_count = count;
                                     return this.search_count;
@@ -1176,7 +1184,7 @@
                     var domain = ['AND', tab_domain[1], screen_domain];
                     this.screen_container.set_tab_counter(null, i);
                     this.group.model.execute(
-                        'search_count', [domain], this.context)
+                        'search_count', [domain, 0, 1000], this.context)
                         .then(function(count) {
                             this.screen_container.set_tab_counter(count, i);
                         }.bind(this));

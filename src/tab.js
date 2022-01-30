@@ -1452,7 +1452,11 @@
         record_message: function(position, size, max_size, record_id) {
             var name = "_";
             if (position) {
-                name = position;
+                var selected = this.screen.selected_records.length;
+                name = '' + position;
+                if (selected > 1) {
+                    name += '#' + selected;
+                }
             }
             var buttons = ['print', 'relate', 'email', 'save', 'attach'];
             buttons.forEach(function(button_id){
@@ -1483,11 +1487,17 @@
                 'disabled', this.screen.readonly);
             this.buttons.save.prop('disabled', this.screen.readonly);
 
-            var msg = name + ' / ' + size;
-            if ((size < max_size) &&
-                this.screen.limit !== null &&
-                (max_size > this.screen.limit)) {
-                msg += Sao.i18n.gettext(' of ') + max_size;
+            var msg;
+            if (size < max_size) {
+                msg = (
+                    name + '@' +
+                    Sao.common.humanize(size) + '/' +
+                    Sao.common.humanize(max_size));
+                if (max_size >= this.screen.count_limit) {
+                    msg += '+';
+                }
+            } else {
+                msg = name + '/' + Sao.common.humanize(size);
             }
             this.status_label.text(msg).attr('title', msg);
             this.info_bar.message();

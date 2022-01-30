@@ -1045,7 +1045,7 @@ function eval_pyson(value){
                             'method': (
                                 'model.' + action.res_model + '.search_count'),
                             'params': [
-                                ['AND', domain, tab_domain], context],
+                                ['AND', domain, 0, tab_domain], 100, context],
                         }, Sao.Session.current_session).then(function(value) {
                             this._set_count(
                                 value, i, current, counter,
@@ -1056,7 +1056,7 @@ function eval_pyson(value){
                     Sao.rpc({
                         'method': (
                             'model.' + action.res_model + '.search_count'),
-                        'params': [domain, context],
+                        'params': [domain, 0, 100, context],
                     }, Sao.Session.current_session).then(function(value) {
                         this._set_count(
                             value, 0, current, counter,
@@ -1068,6 +1068,9 @@ function eval_pyson(value){
         _set_count: function(value, idx, current, counter, name, domains) {
             if (current != this._current) {
                 return;
+            }
+            if (value > 99) {
+                value = '99+';
             }
             counter[idx] = value;
             this.set_label(name, domains, counter);
@@ -4188,7 +4191,7 @@ function eval_pyson(value){
             } else {
                 size = field.get(record).length;
             }
-            this.size.val(Sao.common.humanize(size));
+            this.size.val(Sao.common.humanize(size, 'B'));
 
             if (this.text) {
                 this.text.val(this.filename_field.get(record) || '');

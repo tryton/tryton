@@ -605,11 +605,21 @@
     });
     Sao.common.VIEW_SEARCH = new Sao.common.ViewSearch();
 
-    Sao.common.humanize = function(size) {
-        var sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+    Sao.common.humanize = function(size, suffix) {
+        suffix = suffix || '';
+        var sizes = ['', 'K', 'M', 'G', 'T', 'P'];
         for (var i =0, len = sizes.length; i < len; i++) {
-            if (size < 1000) {
-                return size.toPrecision(4) + ' ' + sizes[i];
+            if (size <= 1000) {
+                if (size % 1 === 0) {
+                    size = '' + size;
+                } else {
+                    size = size.toLocaleString(
+                        Sao.i18n.BC47(Sao.i18n.getlang()), {
+                            'minimumFractionDigits': 0,
+                            'maximumFractionDigits': 2,
+                        });
+                }
+                return size + sizes[i] + suffix;
             }
             size /= 1000;
         }

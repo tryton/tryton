@@ -2573,7 +2573,7 @@
             } else {
                 size = this.field.get(record).length;
             }
-            var text = size? Sao.common.humanize(size) : '';
+            var text = size? Sao.common.humanize(size, 'B') : '';
             cell.children('span').text(text).attr('title', text);
             var button = cell.children('button');
             if (!button.length) {
