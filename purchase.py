@@ -1119,7 +1119,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
             },
-        depends=['product', 'type', 'purchase_state'])
+        depends=['product', 'type', 'purchase_state', 'purchase'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1155,7 +1155,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
-            }, depends=['type', 'purchase_state'])
+            },
+        depends=['type', 'purchase_state', 'purchase'])
     invoice_lines = fields.One2Many('account.invoice.line', 'origin',
         'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
