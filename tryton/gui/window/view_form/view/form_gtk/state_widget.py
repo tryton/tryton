@@ -167,9 +167,9 @@ class Link(StateMixin, Gtk.Button):
             for n, d, c in action['domains'] if c]
         if tab_domains:
             label = ('%s\n' % action['name']) + '\n'.join(
-                '%s (%%d)' % n for n, _ in tab_domains)
+                '%s (%%s)' % n for n, _ in tab_domains)
         else:
-            label = '%s (%%d)' % action['name']
+            label = '%s (%%s)' % action['name']
         if record and self.action_id in record.links_counts:
             counter = record.links_counts[self.action_id]
             self._set_label_counter(label, counter)
@@ -181,14 +181,15 @@ class Link(StateMixin, Gtk.Button):
                 for i, (_, tab_domain) in enumerate(tab_domains):
                     common.RPCExecute(
                         'model', action['res_model'], 'search_count',
-                        ['AND', domain, tab_domain], context=context,
+                        ['AND', domain, tab_domain], 0, 100, context=context,
                         callback=functools.partial(
                             self._set_count, idx=i, current=self._current,
                             counter=counter, label=label))
             else:
                 common.RPCExecute(
-                    'model', action['res_model'], 'search_count', domain,
-                    context=context, callback=functools.partial(
+                    'model', action['res_model'], 'search_count',
+                    domain, 0, 100, context=context,
+                    callback=functools.partial(
                         self._set_count, current=self._current,
                         counter=counter, label=label))
 
@@ -196,7 +197,10 @@ class Link(StateMixin, Gtk.Button):
         if current != self._current and not self.get_parent():
             return
         try:
-            counter[idx] = value()
+            count = value()
+            if count > 99:
+                count = '99+'
+            counter[idx] = count
         except common.RPCException:
             pass
         self._set_label_counter(label, counter)

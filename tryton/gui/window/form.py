@@ -602,6 +602,9 @@ class Form(TabContent):
 
     def record_message(self, position, size, max_size, record_id):
         name = str(position) if position else '_'
+        selected = len(self.screen.selected_records)
+        if selected > 1:
+            name += '#%i' % selected
         for button_id in ('print', 'relate', 'email', 'open', 'save',
                 'attach'):
             button = self.buttons[button_id]
@@ -624,11 +627,13 @@ class Form(TabContent):
         menu_save = self.menu_buttons['save']
         menu_save.props.sensitive = not self.screen.readonly
 
-        msg = name + ' / ' + str(size)
-        if (size < max_size
-                and self.screen.limit is not None
-                and max_size > self.screen.limit):
-            msg += _(' of ') + str(max_size)
+        if size < max_size:
+            msg = "%s@%s/%s" % (
+                name, common.humanize(size), common.humanize(max_size))
+            if max_size >= self.screen.count_limit:
+                msg += "+"
+        else:
+            msg = "%s/%s" % (name, common.humanize(size))
         self.status_label.set_text(msg)
         self.message_info()
         self.activate_save()

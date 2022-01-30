@@ -546,7 +546,7 @@ class Binary(GenericText):
             size = field.get_size(record)
         else:
             size = len(field.get(record))
-        return common.humanize(size) if size else ''
+        return common.humanize(size, 'B') if size else ''
 
     def value_from_text(self, record, text, callback=None):
         if callback:

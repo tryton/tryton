@@ -155,6 +155,10 @@ class Screen:
     def deletable(self):
         return all(r.deletable for r in self.selected_records)
 
+    @property
+    def count_limit(self):
+        return self.limit * 100 + self.offset
+
     def search_active(self, active=True):
         if active and not self.parent:
             self.screen_container.set_screen(self)
@@ -299,8 +303,9 @@ class Screen:
         if not only_ids:
             if self.limit is not None and len(ids) == self.limit:
                 try:
-                    self.search_count = RPCExecute('model', self.model_name,
-                        'search_count', domain, context=context)
+                    self.search_count = RPCExecute(
+                        'model', self.model_name, 'search_count',
+                        domain, 0, self.count_limit, context=context)
                 except RPCException:
                     self.search_count = 0
             else:
@@ -376,7 +381,7 @@ class Screen:
             domain = ['AND', domain, screen_domain]
             set_tab_counter(lambda: None, idx)
             RPCExecute('model', self.model_name,
-                'search_count', domain, context=self.context,
+                'search_count', domain, 0, 1000, context=self.context,
                 callback=functools.partial(set_tab_counter, idx=idx))
 
     @property

@@ -507,7 +507,10 @@ class ScreenContainer(object):
             label.set_label('')
             tooltip.set_tip(label, '')
         else:
-            tooltip.set_tip(label, '%d' % count)
+            tip = common.humanize(count)
+            if count >= 1000:
+                tip += '+'
+            tooltip.set_tip(label, tip)
             fmt = '(%d)'
             if count > 99:
                 fmt = '(%d+)'

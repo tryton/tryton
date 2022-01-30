@@ -3,6 +3,7 @@
 
 import colorsys
 import gettext
+import locale
 import logging
 import os
 import platform
@@ -1236,10 +1237,14 @@ def untimezoned_date(date):
     return timezoned_date(date, reverse=True)
 
 
-def humanize(size):
-    for x in ('bytes', 'KB', 'MB', 'GB', 'TB', 'PB'):
-        if size < 1000:
-            return '%3.1f%s' % (size, x)
+def humanize(size, suffix=''):
+    for u in ['', 'K', 'M', 'G', 'T', 'P']:
+        if size <= 1000:
+            if isinstance(size, int) or size.is_integer():
+                size = locale.localize('{0:.0f}'.format(size))
+            else:
+                size = locale.localize('{0:.{1}f}'.format(size, 2).rstrip('0'))
+            return ''.join([size, u, suffix])
         size /= 1000.0
 
 

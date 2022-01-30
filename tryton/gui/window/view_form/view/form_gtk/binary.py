@@ -209,7 +209,7 @@ class Binary(BinaryMixin, Widget):
             size = self.field.get_size(self.record)
         else:
             size = len(self.field.get(self.record))
-        self.wid_size.set_text(common.humanize(size or 0))
+        self.wid_size.set_text(common.humanize(size or 0, 'B'))
         reset_position(self.wid_size)
         if self.wid_text:
             self.wid_text.set_text(self.filename_field.get(self.record) or '')

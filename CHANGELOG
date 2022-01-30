@@ -1,3 +1,6 @@
+* Display the number of selected records
+* Humanize the count result
+* Add limit to search_count
 * Call view_get for board view
 * Limit board action domain to active id and ids
 * Add support for Python 3.10
