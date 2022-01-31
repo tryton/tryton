@@ -313,19 +313,14 @@ function eval_pyson(value){
             if (record) {
                 // Force to set fields in record
                 // Get first the lazy one from the view to reduce number of requests
-                var field_names = new Set();
-                for (name in this.widgets) {
-                    depends = (
-                        record.model.fields[name].description.depends || []);
-                    field_names.add(name);
-                    for (var i = 0; i < depends.length; i++) {
-                        var depend = depends[i];
-                        if (!depend.startsWith('_parent') &&
-                            depend in record.model.fields) {
-                            field_names.add(depend);
-                        }
+                var field_names = new Set(this.get_fields());
+                for (name in record.model.fields) {
+                    field = record.model.fields[name];
+                    if (~field.views.indexOf(this.view_id)) {
+                        field_names.add(name);
                     }
                 }
+
                 var fields = [];
                 field_names.forEach(function(fname) {
                     field = record.model.fields[fname];
