@@ -516,13 +516,10 @@ class ViewForm(View):
         if record:
             # Force to set fields in record
             # Get first the lazy one from the view to reduce number of requests
-            field_names = set()
-            for name in self.widgets:
-                field = record.group.fields[name]
-                field_names.add(name)
-                field_names.update(f for f in field.attrs.get('depends', [])
-                    if (not f.startswith('_parent')
-                        and f in record.group.fields))
+            field_names = set(self.get_fields())
+            for name, field in record.group.fields.items():
+                if self.view_id in field.views:
+                    field_names.add(name)
             fields = []
             for name in field_names:
                 field = record.group.fields[name]
