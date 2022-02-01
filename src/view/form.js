@@ -316,7 +316,7 @@ function eval_pyson(value){
                 var field_names = new Set(this.get_fields());
                 for (name in record.model.fields) {
                     field = record.model.fields[name];
-                    if (~field.views.indexOf(this.view_id)) {
+                    if (~field.views.has(this.view_id)) {
                         field_names.add(name);
                     }
                 }
