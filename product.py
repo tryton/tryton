@@ -27,7 +27,7 @@ class Product(metaclass=PoolMeta):
                     context_uom = UoM(context['uom'])
                 if context.get('taxes'):
                     taxes = Tax.browse(context.get('taxes'))
-                uom = context_uom or self.sale_uom
+                uom = context_uom or self.purchase_uom
                 if uom.category != self.purchase_uom.category:
                     uom = self.purchase_uom
                 unit_price = price_list.compute(
