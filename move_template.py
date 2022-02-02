@@ -3,8 +3,9 @@
 from decimal import Decimal
 from xml.sax.saxutils import quoteattr
 
-from simpleeval import simple_eval
+from simpleeval import InvalidExpression, simple_eval
 
+from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool
@@ -13,6 +14,8 @@ from trytond.tools import decistmt
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
+
+from .exceptions import MoveTemplateExpressionError
 
 
 class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
@@ -202,8 +205,23 @@ class MoveLineTemplate(ModelSQL, ModelView):
         Keyword = pool.get('account.move.template.keyword')
 
         line = Line()
-        amount = simple_eval(decistmt(self.amount),
-            functions={'Decimal': Decimal}, names=values)
+        try:
+            amount = simple_eval(decistmt(self.amount),
+                functions={'Decimal': Decimal}, names=values)
+        except InvalidExpression as e:
+            raise MoveTemplateExpressionError(
+                gettext('account.msg_move_template_invalid_expression',
+                    expression=values,
+                    template=self.move.rec_name,
+                    error=e)) from e
+
+        if not isinstance(amount, Decimal):
+            raise MoveTemplateExpressionError(
+                gettext('account.msg_move_template_expession_not_number',
+                    value=amount,
+                    expression=self.move.name,
+                    template=self.move.rec_name))
+
         amount = self.move.company.currency.round(amount)
         if self.operation == 'debit':
             line.debit = amount
@@ -213,8 +231,15 @@ class MoveLineTemplate(ModelSQL, ModelView):
         if self.party:
             line.party = values.get(self.party)
         if self.description:
-            line.description = self.description.format(
-                **dict(Keyword.format_values(self.move, values)))
+            try:
+                line.description = self.description.format(
+                    **dict(Keyword.format_values(self.move, values)))
+            except KeyError as e:
+                raise MoveTemplateExpressionError(
+                    gettext('account.msg_move_template_invalid_expression',
+                        expression=values,
+                        template=self.move.name,
+                        error=e)) from e
         line.tax_lines = [t.get_line(values) for t in self.taxes]
 
         return line
@@ -258,8 +283,21 @@ class TaxLineTemplate(ModelSQL, ModelView):
         TaxLine = pool.get('account.tax.line')
 
         line = TaxLine()
-        amount = simple_eval(decistmt(self.amount),
-            functions={'Decimal': Decimal}, names=values)
+        try:
+            amount = simple_eval(decistmt(self.amount),
+                functions={'Decimal': Decimal}, names=values)
+        except InvalidExpression as e:
+            raise MoveTemplateExpressionError(
+                gettext('account.msg_template_invalid_expression',
+                    expression=values,
+                    template=self.line.rec_name,
+                    error=e)) from e
+
+        if not isinstance(amount, Decimal):
+            raise MoveTemplateExpressionError(
+                gettext('account.msg_not_number',
+                    result=amount,
+                    expression=self.move.rec_name))
         amount = self.line.move.company.currency.round(amount)
         line.amount = amount
         line.type = self.type

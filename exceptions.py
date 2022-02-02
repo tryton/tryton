@@ -73,6 +73,10 @@ class MoveDatesError(ValidationError):
     pass
 
 
+class MoveTemplateExpressionError(UserError):
+    pass
+
+
 class CancelWarning(UserWarning):
     pass
 

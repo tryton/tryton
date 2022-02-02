@@ -1,3 +1,4 @@
+* Handle errors in move template expression
 * Rename split lines into reschedule lines
 * Add optional credit type on account
 * Always require a date to compute taxes
