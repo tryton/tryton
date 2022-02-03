@@ -2,10 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="line" expand="1"/>
+    <field name="line" expand="1" optional="1"/>
     <field name="party" expand="2"/>
     <field name="amount"/>
-    <field name="amount_second_currency"/>
+    <field name="amount_second_currency" optional="1"/>
     <field name="maturity_date"/>
     <field name="level" expand="1"/>
     <field name="age"/>
