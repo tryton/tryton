@@ -2769,7 +2769,7 @@ class InvoiceReport(Report):
         if invoice.invoice_report_cache:
             return (
                 invoice.invoice_report_format,
-                bytes(invoice.invoice_report_cache))
+                invoice.invoice_report_cache)
         else:
             result = super()._execute(records, header, data, action)
             # If the invoice is posted or paid and the report not saved in
@@ -2777,6 +2777,8 @@ class InvoiceReport(Report):
             # now in invoice_report_cache
             if invoice.state in {'posted', 'paid'} and invoice.type == 'out':
                 format_, data = result
+                if isinstance(data, str):
+                    data = bytes(data, 'utf-8')
                 invoice.invoice_report_format = format_
                 invoice.invoice_report_cache = \
                     Invoice.invoice_report_cache.cast(data)
