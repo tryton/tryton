@@ -109,9 +109,14 @@ class Package(tree(), WeightMixin, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') == 'closed',
             },
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
+        domain={
+            'stock.shipment.out': [
+                ('company', '=', Eval('company', -1)),
+                ],
+            'stock.shipment.in.return': [
+                ('company', '=', Eval('company', -1)),
+                ],
+            },
         depends=['state', 'company'])
     moves = fields.One2Many('stock.move', 'package', 'Moves',
         domain=[
