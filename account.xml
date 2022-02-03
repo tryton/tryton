@@ -7,7 +7,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Statement</field>
             <field name="code">STA</field>
             <field name="type">statement</field>
-            <field name="sequence" ref="account.sequence_account_journal"/>
         </record>
     </data>
 </tryton>
