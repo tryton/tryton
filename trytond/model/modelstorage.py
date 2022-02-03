@@ -1196,7 +1196,11 @@ class ModelStorage(Model):
                     domain = _record_eval_pyson(
                         record, pyson_domain, encoded=True)
                     if isinstance(domain, dict):
-                        domain = domain.get(get_relation(record).__name__, [])
+                        relation = get_relation(record)
+                        if relation:
+                            domain = domain.get(relation.__name__, [])
+                        else:
+                            domain = []
                     domain = freeze(domain)
                     context = freeze(_record_eval_pyson(
                             record, pyson_context, encoded=True))
