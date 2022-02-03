@@ -910,6 +910,7 @@ function eval_pyson(value){
             this.el = jQuery('<button/>', {
                 'class': this.class_ + ' btn btn-link',
                 'name': attributes.name,
+                'type': 'button',
             });
             if (attributes.icon) {
                 var img = jQuery('<img/>', {
