@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name" icon="icon" expand="1"/>
-    <field name="company" expand="1"/>
+    <field name="company" expand="1" optional="1"/>
     <button name="reopen"/>
     <button name="close"/>
     <button name="lock_"/>
