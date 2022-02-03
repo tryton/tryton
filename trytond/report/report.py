@@ -300,7 +300,7 @@ class Report(URLMixin, PoolBase):
         input_format = report.template_extension
         output_format = report.extension or report.template_extension
 
-        if output_format in MIMETYPES:
+        if input_format == output_format and output_format in MIMETYPES:
             return output_format, data
 
         dtemp = tempfile.mkdtemp(prefix='trytond_')
