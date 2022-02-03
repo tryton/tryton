@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='list_price']" position="after">
-        <field name="gross_price"/>
+        <field name="gross_price" optional="0"/>
     </xpath>
 </data>

@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="point" expand="1"/>
-    <field name="start_amount"/>
-    <field name="balance"/>
-    <field name="end_amount"/>
+    <field name="start_amount" optional="0"/>
+    <field name="balance" optional="0"/>
+    <field name="end_amount" optional="0"/>
     <field name="state"/>
     <button name="close"/>
     <button name="post" tree_invisible="1"/>
