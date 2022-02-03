@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='symbol']" position="after">
-        <field name="unece_code"/>
+        <field name="unece_code" optional="1"/>
     </xpath>
 </data>
