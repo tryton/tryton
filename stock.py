@@ -1,14 +1,73 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from itertools import groupby
 
 from sql.aggregate import Sum
 from sql.operators import Concat
 
-from trytond.model import fields
+from trytond.model import ModelSQL, fields
+from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, Id
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'stock.configuration'
+
+    measurement_weight_uom = fields.MultiValue(
+        fields.Many2One(
+            'product.uom', "Measurement Weight Uom", required=True,
+            domain=[('category', '=', Id('product', 'uom_cat_weight'))]))
+    measurement_volume_uom = fields.MultiValue(
+        fields.Many2One(
+            'product.uom', "Measurement Volume Uom", required=True,
+            domain=[('category', '=', Id('product', 'uom_cat_volume'))]))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in {'measurement_weight_uom', 'measurement_volume_uom'}:
+            return pool.get('stock.configuration.measurement')
+        return super().multivalue_model(field)
+
+    @classmethod
+    def default_measurement_weight_uom(cls, **pattern):
+        model = cls.multivalue_model('measurement_weight_uom')
+        return model.default_measurement_weight_uom()
+
+    @classmethod
+    def default_measurement_volume_uom(cls, **pattern):
+        model = cls.multivalue_model('measurement_volume_uom')
+        return model.default_measurement_volume_uom()
+
+
+class ConfigurationMeasurement(ModelSQL, CompanyValueMixin):
+    "Stock Configuration Measurement"
+    __name__ = 'stock.configuration.measurement'
+
+    measurement_weight_uom = fields.Many2One(
+        'product.uom', "Measurement Weight Uom", required=True,
+        domain=[('category', '=', Id('product', 'uom_cat_weight'))])
+    measurement_volume_uom = fields.Many2One(
+        'product.uom', "Measurement Volume Uom", required=True,
+        domain=[('category', '=', Id('product', 'uom_cat_volume'))])
+
+    @classmethod
+    def default_measurement_weight_uom(cls):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+        return Uom(ModelData.get_id('product', 'uom_kilogram')).id
+
+    @classmethod
+    def default_measurement_volume_uom(cls):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+        return Uom(ModelData.get_id('product', 'uom_liter')).id
 
 
 class Move(metaclass=PoolMeta):
@@ -112,19 +171,49 @@ class Move(metaclass=PoolMeta):
 class MeasurementsMixin(object):
     __slots__ = ()
     weight = fields.Function(
-        fields.Float("Weight", digits=None,
-            help="The total weight of the record's moves in kg."),
+        fields.Float(
+            "Weight", digits='weight_uom',
+            states={
+                'invisible': ~Eval('weight'),
+                },
+            help="The total weight of the record's moves."),
         'get_measurements', searcher='search_measurements')
+    weight_uom = fields.Function(
+        fields.Many2One('product.uom', "Weight Uom"), 'get_measurements_uom')
     volume = fields.Function(
-        fields.Float("Volume", digits=None,
-            help="The total volume of the record's moves in liter."),
+        fields.Float(
+            "Volume", digits='volume_uom',
+            states={
+                'invisible': ~Eval('volume'),
+                },
+            help="The total volume of the record's moves."),
         'get_measurements', searcher='search_measurements')
+    volume_uom = fields.Function(
+        fields.Many2One('product.uom', "Volume Uom"), 'get_measurements_uom')
+
+    @classmethod
+    def get_measurements_uom(cls, shipments, name):
+        pool = Pool()
+        Configuration = pool.get('stock.configuration')
+        configuration = Configuration(1)
+        uoms = {}
+        for company, shipments in groupby(shipments, key=lambda s: s.company):
+            uom = configuration.get_multivalue(
+                'measurement_%s' % name, company=company.id)
+            for shipment in shipments:
+                uoms[shipment.id] = uom.id
+        return uoms
 
     @classmethod
     def get_measurements(cls, shipments, names):
         pool = Pool()
-        Move = pool.get('stock.move')
         Location = pool.get('stock.location')
+        ModelData = pool.get('ir.model.data')
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+
+        kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
+        liter = Uom(ModelData.get_id('product', 'uom_liter'))
 
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
@@ -145,34 +234,49 @@ class MeasurementsMixin(object):
                     Sum(move.internal_volume),
                     group_by=[table.id])
 
+        id2shipment = {s.id: s for s in shipments}
         for sub_shipments in grouped_slice(shipments):
             query.where = reduce_ids(
                 table.id, [s.id for s in sub_shipments])
             cursor.execute(*query)
             for id_, weight, volume in cursor:
+                shipment = id2shipment[id_]
                 if 'weight' in names:
-                    measurements['weight'][id_] = weight
+                    measurements['weight'][id_] = Uom.compute_qty(
+                        kg, weight, shipment.weight_uom)
                 if 'volume' in names:
-                    measurements['volume'][id_] = volume
+                    measurements['volume'][id_] = Uom.compute_qty(
+                        liter, volume, shipment.volume_uom)
         return measurements
 
     @classmethod
     def search_measurements(cls, name, clause):
         pool = Pool()
-        Move = pool.get('stock.move')
+        Configuration = pool.get('stock.configuration')
         Location = pool.get('stock.location')
+        ModelData = pool.get('ir.model.data')
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
 
         table = cls.__table__()
         move = Move.__table__()
         location = Location.__table__()
+        configuration = Configuration(1)
+        uom = configuration.get_multivalue('measurement_%s_uom' % name)
 
         _, operator, value = clause
 
         Operator = fields.SQL_OPERATORS[operator]
         if name == 'weight':
             measurement = Sum(move.internal_weight)
+            if value is not None:
+                kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
+                value = Uom.compute_qty(uom, value, kg, round=False)
         else:
             measurement = Sum(move.internal_volume)
+            if value is not None:
+                liter = Uom(ModelData.get_id('product', 'uom_liter'))
+                value = Uom.compute_qty(uom, value, liter, round=False)
 
         query = table.join(
             move, type_='LEFT',
@@ -257,16 +361,38 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     additional_weight = fields.Float(
-        "Additional Weight",
-        help="The weight to add to the packages in kg.")
+        "Additional Weight", digits='additional_weight_uom',
+        help="The weight to add to the packages.")
+    additional_weight_uom = fields.Many2One(
+        'product.uom', "Additional Weight Uom",
+        domain=[('category', '=', Id('product', 'uom_cat_weight'))],
+        states={
+            'required': Bool(Eval('additional_weight')),
+            },
+        depends=['additional_weight'])
     total_weight = fields.Function(
-        fields.Float("Total Weight", digits=None,
-            help="The total weight of the packages in kg."),
+        fields.Float(
+            "Total Weight", digits='weight_uom',
+            states={
+                'invisible': ~Eval('total_weight'),
+                },
+            help="The total weight of the packages."),
         'get_total_measurements')
     total_volume = fields.Function(
-        fields.Float("Total Volume", digits=None,
-            help="The total volume of the packages in liter."),
+        fields.Float(
+            "Total Volume", digits='volume_uom',
+            states={
+                'invisible': ~Eval('total_volume'),
+                },
+            help="The total volume of the packages."),
         'get_total_measurements')
+
+    @classmethod
+    def default_additional_weight_uom(cls):
+        pool = Pool()
+        Configuration = pool.get('stock.configuration')
+        configuration = Configuration(1)
+        return configuration.get_multivalue('measurement_weight_uom').id
 
     @classmethod
     def _measurements_move_condition(cls, package, move):
@@ -279,20 +405,19 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
     def get_total_measurements(self, name):
         pool = Pool()
         Uom = pool.get('product.uom')
-        ModelData = pool.get('ir.model.data')
-
-        kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
 
         field = name[len('total_'):]
         measurement = ((getattr(self, field) or 0)
             + sum(p.get_total_measurements(name) for p in self.children))
         if name == 'total_weight':
             if self.additional_weight:
-                measurement += self.additional_weight
+                measurement += Uom.compute_qty(
+                    self.additional_weight_uom, self.additional_weight,
+                    self.weight_uom, round=False)
             if self.packaging_weight:
                 measurement += Uom.compute_qty(
-                    self.packaging_weight_uom, self.packaging_weight, kg,
-                    round=False)
+                    self.packaging_weight_uom, self.packaging_weight,
+                    self.weight_uom, round=False)
         return measurement
 
 

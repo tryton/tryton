@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='type']" position="after">
-        <field name="total_weight"/>
-        <field name="total_volume"/>
+        <field name="total_weight" symbol="weight_uom"/>
+        <field name="total_volume" symbol="volume_uom"/>
     </xpath>
 </data>

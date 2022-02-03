@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//page[@id='measurements']" position="inside">
         <label name="additional_weight"/>
         <field name="additional_weight"/>
+        <field name="additional_weight_uom"/>
         <newline/>
     </xpath>
 </data>

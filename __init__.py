@@ -10,6 +10,8 @@ __all__ = ['register']
 
 def register():
     Pool.register(
+        stock.Configuration,
+        stock.ConfigurationMeasurement,
         stock.Move,
         stock.ShipmentIn,
         stock.ShipmentInReturn,
