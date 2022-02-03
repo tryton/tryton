@@ -193,6 +193,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Purchase, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('purchase_date', 'DESC'),
             ('id', 'DESC'),
@@ -315,9 +316,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     columns=[sql_table.state],
                     values=['processing'],
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
     @classmethod
     def default_payment_term(cls):
