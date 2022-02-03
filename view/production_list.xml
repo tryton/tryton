@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='reference']" position="after">
-        <field name="work_center"/>
+        <field name="work_center" optional="1"/>
     </xpath>
 </data>
