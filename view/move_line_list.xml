@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='reconciliation']" position="after">
-        <field name="invoice_payment"/>
+        <field name="invoice_payment" optional="1"/>
     </xpath>
 </data>

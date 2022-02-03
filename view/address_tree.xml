@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
         expr="/tree/field[@name='subdivision']" position="after">
-        <field name="invoice"/>
+        <field name="invoice" optional="1"/>
     </xpath>
 </data>

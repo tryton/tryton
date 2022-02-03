@@ -3,12 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="invoice" expand="1"/>
-    <field name="type"/>
-    <field name="product" expand="1"/>
-    <field name="summary" expand="1"/>
-    <field name="account" expand="1"/>
+    <field name="type" optional="1"/>
+    <field name="product" expand="1" optional="0"/>
+    <field name="summary" expand="1" optional="1"/>
+    <field name="account" expand="1" optional="0"/>
     <field name="quantity" symbol="unit"/>
     <field name="unit_price"/>
-    <field name="taxes"/>
+    <field name="taxes" optional="0"/>
     <field name="amount"/>
 </tree>
