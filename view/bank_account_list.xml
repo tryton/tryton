@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="rec_name" string="Number" expand="2"/>
-    <field name="bank" expand="1"/>
-    <field name="currency"/>
+    <field name="bank" expand="1" optional="0"/>
+    <field name="currency" optional="1"/>
 </tree>
