@@ -296,6 +296,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls.create_date.select = True
         cls.product.domain = [
             If(Bool(Eval('product_uom_category'))
                 & ~Eval('state').in_(['done', 'cancelled']),
@@ -363,9 +364,6 @@ class Move(Workflow, ModelSQL, ModelView):
 
         super(Move, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Index for period join in compute_quantities_query
         table.index_action([

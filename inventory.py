@@ -72,6 +72,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Inventory, cls).__setup__()
+        cls.create_date.select = True
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'done'),
@@ -103,9 +104,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Migration from 5.4: remove lost_found
         table.not_null_action('lost_found', 'remove')
