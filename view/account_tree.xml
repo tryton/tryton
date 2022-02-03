@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="rec_name" expand="2"/>
-    <field name="company" expand="1"/>
-    <field name="type"/>
+    <field name="company" expand="1" optional="1"/>
+    <field name="type" optional="1"/>
     <field name="name" tree_invisible="1"/>
     <field name="code" tree_invisible="1"/>
 </tree>
