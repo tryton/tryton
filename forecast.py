@@ -65,6 +65,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
+        cls.create_date.select = True
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_from_to_date', Check(t, t.to_date >= t.from_date),
@@ -108,9 +109,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         super(Forecast, cls).__register__(module_name)
 
-        # Add index on create_date
         table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():
