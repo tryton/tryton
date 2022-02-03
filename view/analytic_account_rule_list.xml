@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='journal']" position="after">
-        <field name="product" expand="1"/>
-        <field name="product_category" expand="1"/>
+        <field name="product" expand="1" optional="0"/>
+        <field name="product_category" expand="1" optional="0"/>
     </xpath>
 </data>
