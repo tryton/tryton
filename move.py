@@ -82,6 +82,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls.create_date.select = True
         cls._check_modify_exclude = []
         cls._order.insert(0, ('date', 'DESC'))
         cls._order.insert(1, ('number', 'DESC'))
@@ -135,9 +136,6 @@ class Move(ModelSQL, ModelView):
 
         table = cls.__table_handler__(module_name)
         table.index_action(['journal', 'period'], 'add')
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
     @classmethod
     def order_post_number(cls, tables):
