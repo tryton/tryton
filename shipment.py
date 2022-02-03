@@ -247,6 +247,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentIn, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('id', 'DESC'),
             ]
@@ -287,10 +288,6 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentIn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -659,6 +656,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -717,10 +715,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentInReturn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1047,6 +1041,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -1136,9 +1131,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             table.column_rename('assigned_by', 'picked_by')
 
         super(ShipmentOut, cls).__register__(module_name)
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1694,6 +1686,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOutReturn, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -1736,10 +1729,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentOutReturn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -2168,6 +2157,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInternal, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -2253,10 +2243,6 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 [sql_table.planned_date],
                 where=(sql_table.planned_start_date == Null)
                 & (sql_table.planned_date != Null)))
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
