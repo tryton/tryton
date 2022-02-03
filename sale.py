@@ -218,6 +218,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Sale, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('sale_date', 'DESC'),
             ('id', 'DESC'),
@@ -306,8 +307,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         # Migration from 4.0: Drop not null on payment_term
         table.not_null_action('payment_term', 'remove')
 
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
     @classmethod
     def default_payment_term(cls):
