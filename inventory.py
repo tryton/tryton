@@ -630,30 +630,17 @@ class CountSearch(ModelView):
             ('product.product', "Product"),
             ],
         required=True,
-        domain=[If(Eval('search_model') == 'product.product',
-                [
-                    ('type', '=', 'goods'),
-                    ('consumable', '=', False),
-                    ],
-                [])],
-        depends=['search_model'],
+        domain={
+            'product.product': [
+                ('type', '=', 'goods'),
+                ('consumable', '=', False),
+                ],
+            },
         help="The item that's counted.")
-    search_model = fields.Function(fields.Selection(
-        'get_search_models', "Search Model"),
-        'on_change_with_search_model')
 
     @classmethod
     def default_search(cls):
         return 'product.product,-1'
-
-    @classmethod
-    def get_search_models(cls):
-        return cls.fields_get(['search'])['search']['selection']
-
-    @fields.depends('search')
-    def on_change_with_search_model(self, name=None):
-        if self.search:
-            return self.search.__name__
 
 
 class CountQuantity(ModelView):
