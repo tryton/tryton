@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="code"/>
     <field name="name" expand="1"/>
-    <field name="lang"/>
-    <field name="tax_identifier"/>
+    <field name="lang" optional="1"/>
+    <field name="tax_identifier" optional="0"/>
 </tree>
