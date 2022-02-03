@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="name"/>
-    <field name="types"/>
+    <field name="types" expand="1"/>
     <field name="default"/>
 </tree>
