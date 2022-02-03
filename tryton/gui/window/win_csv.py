@@ -161,8 +161,7 @@ class WinCSV(NoModal):
         self.csv_enc = Gtk.ComboBoxText()
         for i, encoding in enumerate(encodings):
             self.csv_enc.append_text(encoding)
-            if ((os.name == 'nt' and encoding == 'cp1252')
-                    or (os.name != 'nt' and encoding == 'utf_8')):
+            if encoding == 'utf_8_sig':
                 self.csv_enc.set_active(i)
         label_csv_enc.set_mnemonic_widget(self.csv_enc)
         box.pack_start(self.csv_enc, expand=False, fill=True, padding=0)

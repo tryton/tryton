@@ -383,7 +383,7 @@ class WinExport(WinCSV):
         self.destroy()
 
     def export_csv(self, fname, fields, data, paths, popup=True):
-        encoding = self.csv_enc.get_active_text() or 'UTF-8'
+        encoding = self.csv_enc.get_active_text() or 'utf_8_sig'
         locale_format = self.csv_locale.get_active()
 
         try:
