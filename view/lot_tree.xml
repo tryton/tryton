@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='product']" position="after">
-        <field name="shelf_life_expiration_date"/>
-        <field name="expiration_date"/>
+        <field name="shelf_life_expiration_date" optional="1"/>
+        <field name="expiration_date" optional="1"/>
     </xpath>
 </data>
