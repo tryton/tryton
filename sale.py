@@ -325,6 +325,15 @@ class Line(metaclass=PoolMeta):
                 Unique(t, t.sale, t.shipment_cost),
                 'sale_shipment_cost.msg_sale_shipment_cost_unique'),
             ]
+        # shipment_cost is needed to compute the unit_price
+        cls.unit_price.depends.append('shipment_cost')
+
+    @fields.depends('shipment_cost', 'unit_price')
+    def compute_unit_price(self):
+        unit_price = super().compute_unit_price()
+        if self.shipment_cost is not None:
+            unit_price = self.unit_price
+        return unit_price
 
     def get_invoice_line(self):
         context = Transaction().context
