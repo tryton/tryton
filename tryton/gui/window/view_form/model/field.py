@@ -952,6 +952,16 @@ class ReferenceField(Field):
         screen_domain, attr_domain = self.domains_get(record, pre_validate)
         return screen_domain
 
+    def domains_get(self, record, pre_validate=None):
+        if record.value.get(self.name):
+            model = record.value[self.name][0]
+        else:
+            model = None
+        screen_domain, attr_domain = super().domains_get(
+            record, pre_validate=pre_validate)
+        attr_domain = attr_domain.get(model, [])
+        return screen_domain, attr_domain
+
     def domain_get(self, record):
         if record.value.get(self.name):
             model = record.value[self.name][0]
