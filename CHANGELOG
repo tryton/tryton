@@ -1,3 +1,4 @@
+* Support webhook for orders
 * Remove API backoff time
 * Support edit orders from Shopify
 * Define the metafields managed by Tryton

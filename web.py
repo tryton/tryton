@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
+import urllib.parse
 from decimal import Decimal
 
 import pyactiveresource
@@ -16,6 +17,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
+from trytond.url import http_host
 
 from .common import IdentifierMixin, IdentifiersMixin
 from .exceptions import ShopifyError
@@ -37,6 +39,17 @@ class Shop(metaclass=PoolMeta):
         'get_shopify_versions', "Version", states=_states, depends=_depends)
     shopify_password = fields.Char(
         "Password", states=_states, depends=_depends)
+    shopify_webhook_shared_secret = fields.Char(
+        "Webhook Shared Secret",
+        states={
+            'invisible': _states['invisible'],
+            },
+        depends=_depends)
+    shopify_webhook_endpoint_order = fields.Function(
+        fields.Char(
+            "Webhook Order Endpoint",
+            help="The URL to be called by Shopify for Order events."),
+        'on_change_with_shopify_webhook_endpoint_order')
     shopify_warehouses = fields.One2Many(
         'web.shop-stock.location', 'shop', "Warehouses",
         states=_states, depends=_depends)
@@ -62,6 +75,19 @@ class Shop(metaclass=PoolMeta):
     def get_shopify_versions(cls):
         return [(None, "")] + sorted(
             ((v, v) for v in ApiVersion.versions), reverse=True)
+
+    @fields.depends('name')
+    def on_change_with_shopify_webhook_endpoint_order(self, name=None):
+        if not self.name:
+            return
+        url_part = {
+            'database_name': Transaction().database.name,
+            'shop': self.name,
+            }
+        return http_host() + (
+            urllib.parse.quote(
+                '/%(database_name)s/web_shop_shopify/webhook/%(shop)s/order' %
+                url_part))
 
     @classmethod
     def view_attributes(cls):

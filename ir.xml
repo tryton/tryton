@@ -17,14 +17,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.cron" id="cron_fetch_order">
             <field name="method">web.shop|shopify_fetch_order</field>
-            <field name="interval_number" eval="15"/>
-            <field name="interval_type">minutes</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
         </record>
 
         <record model="ir.cron" id="cron_update_order">
             <field name="method">web.shop|shopify_update_order</field>
-            <field name="interval_number" eval="30"/>
-            <field name="interval_type">minutes</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
         </record>
     </data>
 </tryton>

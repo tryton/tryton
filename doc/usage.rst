@@ -34,3 +34,6 @@ the "Password" with the copied one.
 
 Different scheduled tasks are responsible for uploading products and
 inventories and fetching and updating orders as `Sales <sale:model-sale.sale>`.
+
+You can also register a `webhook <https://shopify.dev/apps/webhooks>`_ for each
+order event to get updates when they happen.
