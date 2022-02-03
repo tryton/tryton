@@ -2687,6 +2687,16 @@
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
         },
+        get_domains: function(record, pre_validate) {
+            var model = null;
+            if (record._values[this.name]) {
+                model = record._values[this.name][0];
+            }
+            var domains = Sao.field.Reference._super.get_domains.call(
+                this, record, pre_validate);
+            domains[1] = domains[1][model] || [];
+            return domains;
+        },
         get_domain: function(record) {
             var model = null;
             if (record._values[this.name]) {
