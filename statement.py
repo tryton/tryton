@@ -75,22 +75,27 @@ class StatementLine(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
             ('state', 'in', ['processing', 'succeeded', 'failed']),
+            ('currency', '=', Eval('currency', -1)),
+            ('kind', '=',
+                If(Eval('amount', 0) > 0, 'receivable',
+                    If(Eval('amount', 0) < 0, 'payable', ''))),
             ],
         states={
             'invisible': Bool(Eval('payment_group')) | Bool(Eval('invoice')),
             'readonly': Eval('statement_state') != 'draft',
             },
-        depends=['company', 'party', 'statement_state'])
+        depends=['company', 'party', 'currency', 'amount', 'statement_state'])
     payment_group = fields.Many2One(
         'account.payment.group', "Payment Group",
         domain=[
             ('company', '=', Eval('company', -1)),
+            ('currency', '=', Eval('currency', -1)),
             ],
         states={
             'invisible': Bool(Eval('payment')) | Bool(Eval('invoice')),
             'readonly': Eval('statement_state') != 'draft',
             },
-        depends=['company', 'statement_state'])
+        depends=['company', 'currency', 'statement_state'])
 
     @classmethod
     def __setup__(cls):
@@ -114,21 +119,12 @@ class StatementLine(metaclass=PoolMeta):
     @fields.depends('payment', 'party', 'account',
         'statement', '_parent_statement.journal')
     def on_change_payment(self):
-        pool = Pool()
-        Currency = pool.get('currency.currency')
         if self.payment:
             if not self.party:
                 self.party = self.payment.party
             clearing_account = self.payment.journal.clearing_account
             if clearing_account and self.account != clearing_account:
                 self.account = clearing_account
-            if self.statement and self.statement.journal:
-                with Transaction().set_context(date=self.payment.date):
-                    amount = Currency.compute(self.payment.currency,
-                        self.payment.amount, self.statement.journal.currency)
-                self.amount = amount
-                if self.payment.kind == 'payable':
-                    self.amount *= -1
 
     @fields.depends('payment_group', 'account')
     def on_change_payment_group(self):

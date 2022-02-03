@@ -247,13 +247,12 @@ Create statement::
 Create a line for the payment::
 
     >>> line = statement.lines.new(date=today)
+    >>> line.amount = Decimal('-50.00')
     >>> line.payment = payment
     >>> line.party == supplier
     True
     >>> line.account == bank_clearing
     True
-    >>> line.amount
-    Decimal('-50.00')
 
 Remove the party must remove payment::
 
@@ -436,13 +435,12 @@ Create statement for the payment::
     ...     start_balance=Decimal('0.00'),
     ...     end_balance=Decimal('-50.00'))
     >>> line = statement.lines.new(date=yesterday)
+    >>> line.amount = Decimal('-50.00')
     >>> line.payment = payment
     >>> line.party == supplier
     True
     >>> line.account == bank_clearing
     True
-    >>> line.amount
-    Decimal('-50.00')
     >>> statement.save()
 
 Validate statement and check the payment is confirmed::
