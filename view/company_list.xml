@@ -3,4 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="party" expand="1"/>
+    <field name="currency" optional="1"/>
+    <field name="timezone" optional="1"/>
 </tree>
