@@ -342,7 +342,7 @@ class Report(URLMixin, PoolBase):
                 and output_format == 'pdf'):
             return output_format, weasyprint.HTML(string=data).write_pdf()
 
-        if output_format in MIMETYPES:
+        if input_format == output_format and output_format in MIMETYPES:
             return output_format, data
 
         dtemp = tempfile.mkdtemp(prefix='trytond_')
