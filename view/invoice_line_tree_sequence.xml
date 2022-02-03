@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='invoice']" position="before">
-        <field name="origin" expand="1"/>
+        <field name="origin" expand="1" optional="1"/>
     </xpath>
 </data>
