@@ -252,9 +252,9 @@ class ModelView(Model):
         # Update arch and compute fields from arch
         parser = etree.XMLParser(remove_blank_text=True)
         tree = etree.fromstring(result['arch'], parser)
-        with Transaction().set_context(view_id=view_id):
-            result['arch'], result['fields'] = cls.parse_view(
-                tree, result['type'], result['field_childs'], level=level)
+        result['arch'], result['fields'] = cls.parse_view(
+            tree, result['type'], view_id=view_id,
+            field_children=result['field_childs'], level=level)
 
         cls._fields_view_get_cache.set(key, result)
         return result
@@ -303,7 +303,8 @@ class ModelView(Model):
 
     @classmethod
     def parse_view(
-            cls, tree, type, field_children=None, level=0, view_depends=None):
+            cls, tree, type, view_id=None, field_children=None, level=0,
+            view_depends=None):
         """
         Return sanitized XML and the corresponding fields definition
         """
@@ -316,17 +317,19 @@ class ModelView(Model):
             view_depends = []
         else:
             view_depends = view_depends.copy()
-        for xpath, attribute, value, *extra in cls.view_attributes():
-            depends = []
-            if extra:
-                depends, = extra
-            nodes = tree.xpath(xpath)
-            for element in nodes:
-                element.set(attribute, encoder.encode(value))
-            if nodes and depends:
-                view_depends.extend(depends)
+        with Transaction().set_context(view_id=view_id):
+            for xpath, attribute, value, *extra in cls.view_attributes():
+                depends = []
+                if extra:
+                    depends, = extra
+                nodes = tree.xpath(xpath)
+                for element in nodes:
+                    element.set(attribute, encoder.encode(value))
+                if nodes and depends:
+                    view_depends.extend(depends)
 
         fields_width = {}
+        fields_optional = {}
         tree_root = tree.getroottree().getroot()
 
         # Find field without read access
@@ -382,18 +385,30 @@ class ModelView(Model):
             for page in tree.xpath('//page[not(descendant::*)]'):
                 page.getparent().remove(page)
 
-        if type == 'tree' and Transaction().context.get('view_tree_width'):
-            ViewTreeWidth = pool.get('ir.ui.view_tree_width')
-            viewtreewidth_ids = ViewTreeWidth.search([
-                ('model', '=', cls.__name__),
-                ('user', '=', Transaction().user),
-                ])
-            for viewtreewidth in ViewTreeWidth.browse(viewtreewidth_ids):
-                if viewtreewidth.width > 0:
-                    fields_width[viewtreewidth.field] = viewtreewidth.width
+        if type == 'tree':
+            user = Transaction().user
+            if Transaction().context.get('view_tree_width'):
+                ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+                viewtreewidths = ViewTreeWidth.search([
+                    ('model', '=', cls.__name__),
+                    ('user', '=', user),
+                    ])
+                for viewtreewidth in viewtreewidths:
+                    if viewtreewidth.width > 0:
+                        fields_width[viewtreewidth.field] = viewtreewidth.width
+
+            if view_id:
+                ViewTreeOptional = pool.get('ir.ui.view_tree_optional')
+                viewtreeoptionals = ViewTreeOptional.search([
+                        ('view_id', '=', view_id),
+                        ('user', '=', user),
+                        ])
+                fields_optional = {o.field: o.value for o in viewtreeoptionals}
 
         fields_def = cls.__parse_fields(
-            tree_root, type, fields_width=fields_width)
+            tree_root, type,
+            fields_width=fields_width,
+            fields_optional=fields_optional)
 
         if hasattr(cls, 'active'):
             fields_def.setdefault('active', {'name': 'active'})
@@ -435,7 +450,8 @@ class ModelView(Model):
 
     @classmethod
     def __parse_fields(
-            cls, element, type, fields_width=None, _fields_attrs=None):
+            cls, element, type, fields_width=None, fields_optional=None,
+            _fields_attrs=None):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ModelData = pool.get('ir.model.data')
@@ -446,6 +462,8 @@ class ModelView(Model):
 
         if fields_width is None:
             fields_width = {}
+        if fields_optional is None:
+            fields_optional = {}
         if _fields_attrs is None:
             fields_attrs = {}
         else:
@@ -509,8 +527,15 @@ class ModelView(Model):
                 element.attrib['mode'] = ','.join(mode)
                 fields_attrs[fname].setdefault('views', {}).update(views)
 
-            if type == 'tree' and element.get('name') in fields_width:
-                element.set('width', str(fields_width[element.get('name')]))
+            if type == 'tree':
+                if element.get('name') in fields_width:
+                    element.set(
+                        'width', str(fields_width[element.get('name')]))
+                if element.get('optional'):
+                    if element.get('name') in fields_optional:
+                        optional = str(int(
+                                fields_optional[element.get('name')]))
+                        element.set('optional', optional)
 
         encoder = PYSONEncoder()
         if element.tag == 'button':
@@ -595,7 +620,9 @@ class ModelView(Model):
 
         for field in element:
             fields_attrs = cls.__parse_fields(
-                field, type, fields_width=fields_width,
+                field, type,
+                fields_width=fields_width,
+                fields_optional=fields_optional,
                 _fields_attrs=fields_attrs)
         return fields_attrs
 

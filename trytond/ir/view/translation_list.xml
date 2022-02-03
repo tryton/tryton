@@ -5,9 +5,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="src" widget="char" expand="2"/>
     <field name="value" widget="char" expand="2"/>
     <field name="fuzzy"/>
-    <field name="name" expand="1"/>
+    <field name="name" expand="1" optional="1"/>
     <field name="lang"/>
-    <field name="type"/>
-    <field name="res_id"/>
-    <field name="module"/>
+    <field name="type" optional="1"/>
+    <field name="res_id" optional="1"/>
+    <field name="module" optional="0"/>
 </tree>

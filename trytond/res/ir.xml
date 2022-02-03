@@ -589,6 +589,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" ref="ir.menu_view_tree_width"/>
             <field name="group" ref="group_admin"/>
         </record>
+        <record model="ir.ui.menu-res.group" id="menu_view_tree_optional_group_admin">
+            <field name="menu" ref="ir.menu_view_tree_optional"/>
+            <field name="group" ref="group_admin"/>
+        </record>
         <record model="ir.ui.menu-res.group" id="menu_action_group_admin">
             <field name="menu" ref="ir.menu_action"/>
             <field name="group" ref="group_admin"/>

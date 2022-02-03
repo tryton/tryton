@@ -188,7 +188,7 @@ Class methods:
    :attr:`~trytond.transaction.Transaction.context` when calling this method.
 
 
-.. classmethod:: ModelView.parse_view(tree, type[, field_children[, level[, view_depends]]])
+.. classmethod:: ModelView.parse_view(tree, type[, view_id[, field_children[, level[, view_depends]]]])
 
     Return the sanitized XML and the corresponding fields definition.
 

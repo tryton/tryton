@@ -29,6 +29,7 @@ def register():
         ui.view.View,
         ui.view.ShowViewStart,
         ui.view.ViewTreeWidth,
+        ui.view.ViewTreeOptional,
         ui.view.ViewTreeState,
         ui.view.ViewSearch,
         ui.icon.Icon,

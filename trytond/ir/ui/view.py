@@ -405,6 +405,69 @@ class ViewTreeWidth(ModelSQL, ModelView):
             cls.create(to_create)
 
 
+class ViewTreeOptional(ModelSQL, ModelView):
+    "View Tree Optional"
+    __name__ = 'ir.ui.view_tree_optional'
+    view_id = fields.Many2One(
+        'ir.ui.view', "View ID", required=True, ondelete='CASCADE',
+        domain=[
+            ('type', '=', 'tree'),
+            ])
+    user = fields.Many2One(
+        'res.user', "User", required=True, ondelete='CASCADE')
+    field = fields.Char("Field", required=True)
+    value = fields.Boolean("Value")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__rpc__.update({
+                'set_optional': RPC(readonly=False),
+                })
+
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+        table_h = cls.__table_handler__(module_name)
+        table_h.index_action(['view_id', 'user'], 'add')
+
+    @classmethod
+    def create(cls, vlist):
+        records = super().create(vlist)
+        ModelView._fields_view_get_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        ModelView._fields_view_get_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        ModelView._fields_view_get_cache.clear()
+        super().delete(records)
+
+    @classmethod
+    def set_optional(cls, view_id, fields):
+        "Store optional field that must be displayed"
+        user = Transaction().user
+        records = cls.search([
+                ('view_id', '=', view_id),
+                ('user', '=', user),
+                ])
+        cls.delete(records)
+        to_create = []
+        for field, value in fields.items():
+            to_create.append({
+                    'view_id': view_id,
+                    'user': user,
+                    'field': field,
+                    'value': bool(value),
+                    })
+        if to_create:
+            cls.create(to_create)
+
+
 class ViewTreeState(ModelSQL, ModelView):
     'View Tree State'
     __name__ = 'ir.ui.view_tree_state'

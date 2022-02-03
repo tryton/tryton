@@ -154,6 +154,17 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
+      <attribute>
+        <name ns="">optional</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
       <attribute a:defaultValue="0">
         <name ns="">expand</name>
         <data type="integer"/>

@@ -619,6 +619,11 @@ field
       that will be evaluated as boolean with the context of the view to display
       or not the column.
 
+    * ``optional``: A boolean to define if the column is hidden or not.
+      Defining the optional attribute allows each user to show/hide the column.
+      The attribute value is used as default when the user has no custom
+      setting for it.
+
     * ``visual``: A :ref:`PYSON statement <topics-pyson>` that will be
       evaluated as string ``muted``, ``success``, ``warning`` or ``danger``
       with the context of the record to provide a visual context to the field.

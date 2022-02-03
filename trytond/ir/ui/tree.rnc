@@ -46,6 +46,7 @@ attlist.field &=
   }?
 attlist.field &=
   [ a:defaultValue = "0" ] attribute tree_invisible { text }?
+attlist.field &= attribute optional { "0" | "1" }?
 attlist.field &=
   [ a:defaultValue = "0" ] attribute expand { xsd:integer }?
 attlist.field &= attribute visual { text }?

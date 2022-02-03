@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name" expand="1"/>
-    <field name="code"/>
-    <field name="direction"/>
+    <field name="code" optional="1"/>
+    <field name="direction" optional="1"/>
     <field name="translatable"/>
     <button name="load_translations"/>
 </tree>
