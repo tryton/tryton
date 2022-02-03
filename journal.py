@@ -71,7 +71,7 @@ class Journal(
 
     @classmethod
     def default_sequence(cls, **pattern):
-        return None
+        return cls.multivalue_model('sequence').default_sequence()
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -188,6 +188,15 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
         migrate_property(
             'account.journal', field_names, cls, value_names,
             parent='journal', fields=fields)
+
+    @classmethod
+    def default_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('account', 'sequence_account_journal')
+        except KeyError:
+            return None
 
 
 class JournalCashContext(ModelView):
