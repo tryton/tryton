@@ -239,6 +239,7 @@ class Purchase(
     @classmethod
     def __setup__(cls):
         super(Purchase, cls).__setup__()
+        cls.create_date.select = True
         cls._order = [
             ('purchase_date', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -358,9 +359,6 @@ class Purchase(
                     columns=[sql_table.state],
                     values=['processing'],
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
