@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='tax_identifier']" position="after">
-        <field name="siren"/>
+        <field name="siren" optional="1"/>
     </xpath>
 </data>
