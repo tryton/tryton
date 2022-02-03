@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="party" expand="1"/>
-    <field name="carrier_product" expand="1"/>
-    <field name="carrier_cost_method"/>
+    <field name="carrier_product" expand="1" optional="0"/>
+    <field name="carrier_cost_method" optional="1"/>
 </tree>
