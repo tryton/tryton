@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='type']" position="after">
-        <field name="attribute_set"/>
+        <field name="attribute_set" optional="1"/>
     </xpath>
 </data>
