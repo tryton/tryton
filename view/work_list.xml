@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='total_effort']" position="after">
-        <field name="product"/>
-        <field name="list_price"/>
-        <field name="revenue"/>
-        <field name="cost"/>
+        <field name="product" optional="1"/>
+        <field name="list_price" optional="1"/>
+        <field name="revenue" optional="0"/>
+        <field name="cost" optional="0"/>
     </xpath>
 </data>
