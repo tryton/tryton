@@ -750,13 +750,13 @@ class ModelSQL(ModelStorage):
             history_order = (column.desc, Column(table, '__id').desc)
             history_limit = 1
 
-        columns = []
+        columns = {}
         for f in all_fields:
             field = cls._fields.get(f)
             if field and field.sql_type():
-                columns.append(field.sql_column(table).as_(f))
+                columns[f] = field.sql_column(table).as_(f)
                 if backend.name == 'sqlite':
-                    columns[-1].output_name += ' [%s]' % field.sql_type().base
+                    columns[f].output_name += ' [%s]' % field.sql_type().base
             elif f in {'_write', '_delete'}:
                 if not callable(cls.table_query):
                     rule_domain = Rule.domain_get(
@@ -774,18 +774,22 @@ class ModelSQL(ModelStorage):
                             rule_where = rule_table.id == table.id
                             rule_expression = rule_from.select(
                                         rule_expression, where=rule_where)
-                        columns.append(rule_expression.as_(f))
+                        columns[f] = rule_expression.as_(f)
                     else:
-                        columns.append(Literal(True).as_(f))
+                        columns[f] = Literal(True).as_(f)
             elif f == '_timestamp' and not callable(cls.table_query):
                 sql_type = fields.Char('timestamp').sql_type().base
-                columns.append(Extract('EPOCH',
-                        Coalesce(table.write_date, table.create_date)
-                        ).cast(sql_type).as_('_timestamp'))
+                columns[f] = Extract(
+                    'EPOCH', Coalesce(table.write_date, table.create_date)
+                    ).cast(sql_type).as_('_timestamp')
 
-        if len(columns):
+        if ('write_date' not in fields_names
+                and columns.keys() == {'write_date'}):
+            columns.pop('write_date')
+            extra_fields.discard('write_date')
+        if columns:
             if 'id' not in fields_names:
-                columns.append(table.id.as_('id'))
+                columns['id'] = table.id.as_('id')
 
             tables = {None: (table, None)}
             if domain:
@@ -800,7 +804,7 @@ class ModelSQL(ModelStorage):
                     where &= history_clause
                 if domain:
                     where &= dom_exp
-                cursor.execute(*from_.select(*columns, where=where,
+                cursor.execute(*from_.select(*columns.values(), where=where,
                         order_by=history_order, limit=history_limit))
                 fetchall = list(cursor_dict(cursor))
                 if not len(fetchall) == len({}.fromkeys(sub_ids)):
@@ -816,9 +820,7 @@ class ModelSQL(ModelStorage):
         max_write_date = max(
             (r['write_date'] for r in result if r.get('write_date')),
             default=None)
-        for column in columns:
-            # Split the output name to remove SQLite type detection
-            fname = column.output_name.split()[0]
+        for fname, column in columns.items():
             if fname.startswith('_'):
                 continue
             field = cls._fields[fname]
