@@ -80,7 +80,7 @@ class Group(ModelSQL, ModelView):
         depends=['company', 'journal'])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
-        'on_change_with_currency')
+        'on_change_with_currency', searcher='search_currency')
     payment_count = fields.Function(fields.Integer(
             "Payment Count",
             help="The number of payments in the group."),
@@ -267,6 +267,10 @@ class Group(ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.journal:
             return self.journal.currency.id
+
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('journal.' + clause[0],) + tuple(clause[1:])]
 
 
 _STATES = {
