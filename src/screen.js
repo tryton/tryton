@@ -2007,6 +2007,7 @@
                         return record.model.execute(attributes.name, [values],
                             this.context).then(function(changes) {
                             record.set_on_change(changes);
+                            record.set_modified();
                             record.group.root_group.screens.forEach(
                                 function(screen) {
                                     screen.display();
