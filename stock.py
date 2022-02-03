@@ -26,9 +26,17 @@ class QuantityIssue(
         'company.company', "Company", required=True, select=True)
     origin = fields.Reference(
         "Origin", 'get_origins', required=True,
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
+        domain={
+            'stock.shipment.out': [
+                ('company', '=', Eval('company', -1)),
+                ],
+            'stock.shipment.in.return': [
+                ('company', '=', Eval('company', -1)),
+                ],
+            'stock.shipment.internal': [
+                ('company', '=', Eval('company', -1)),
+                ],
+            },
         depends=['company'])
     planned_date = fields.Function(
         fields.Date("Planned Date"),
@@ -314,6 +322,13 @@ class QuantityIssue(
 
 class QuantityIssueProduction(metaclass=PoolMeta):
     __name__ = 'stock.quantity.issue'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.origin.domain['production'] = [
+            ('company', '=', Eval('company', -1)),
+            ]
 
     @classmethod
     def _get_origins(cls):
