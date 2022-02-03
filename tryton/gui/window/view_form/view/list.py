@@ -14,7 +14,7 @@ from tryton.common import (
     RPCException, RPCExecute, Tooltips, domain_inversion, node_attributes,
     simplify, unique_value)
 from tryton.common.cellrendererbutton import CellRendererButton
-from tryton.common.popup_menu import populate
+from tryton.common.popup_menu import populate, popup
 from tryton.config import CONFIG
 from tryton.gui.window import Window
 from tryton.pyson import PYSONDecoder
@@ -334,6 +334,9 @@ class TreeXMLViewParser(XMLViewParser):
 
         self.view.treeview.append_column(column)
 
+        if 'optional' in attributes:
+            self.view.optionals.append(column)
+
         if 'sum' in attributes:
             text = attributes['sum'] + _(':')
             label, sum_ = Gtk.Label(label=text), Gtk.Label()
@@ -435,6 +438,7 @@ class ViewTree(View):
 
     def __init__(self, view_id, screen, xml, children_field):
         self.children_field = children_field
+        self.optionals = []
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
         self.treeview = None
@@ -485,6 +489,23 @@ class ViewTree(View):
 
         self.display()
 
+        if self.optionals:
+            if self.draggable:
+                column = self.treeview.get_columns()[0]
+            else:
+                column = Gtk.TreeViewColumn()
+                column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+                column.name = None
+                column._type = 'optional'
+                self.treeview.insert_column(column, 0)
+            image = Gtk.Image()
+            image.set_from_pixbuf(common.IconFactory.get_pixbuf('tryton-menu'))
+            image.show()
+            column.set_widget(image)
+            column.set_fixed_width(25)
+            column.set_clickable(True)
+            column.connect('clicked', self.optional_menu)
+
         # Add last column if necessary after display for updated visible
         for column in self.treeview.get_columns():
             if column.get_expand() and column.get_visible():
@@ -495,6 +516,30 @@ class ViewTree(View):
             column.name = None
             column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
             self.treeview.append_column(column)
+
+    def optional_menu(self, column):
+        def toggle(menuitem, column):
+            column.set_visible(menuitem.get_active())
+            self.save_optional()
+
+        widget = column.get_widget()
+        menu = Gtk.Menu()
+        for optional in self.optionals:
+            menuitem = Gtk.CheckMenuItem(label=optional.get_title())
+            menuitem.set_active(optional.get_visible())
+            menuitem.connect('toggled', toggle, optional)
+            menu.add(menuitem)
+        popup(menu, widget)
+
+    def save_optional(self):
+        fields = {c.name: not c.get_visible() for c in self.optionals}
+        try:
+            RPCExecute(
+                'model', 'ir.ui.view_tree_optional', 'set_optional',
+                self.view_id, fields)
+        except RPCException:
+            pass
+        self.screen.tree_column_optional[self.view_id] = fields
 
     def get_column_widget(self, column):
         'Return the widget of the column'
@@ -1066,13 +1111,20 @@ class ViewTree(View):
             domain.append(tab_domain)
         domain = simplify(domain)
         decoder = PYSONDecoder(self.screen.context)
+        tree_column_optional = self.screen.tree_column_optional.get(
+            self.view_id, {})
         for column in self.treeview.get_columns():
             name = column.name
             if not name:
                 continue
             widget = self.get_column_widget(column)
             widget.set_editable()
-            if decoder.decode(widget.attrs.get('tree_invisible', '0')):
+            if column.name in tree_column_optional:
+                optional = tree_column_optional[column.name]
+            else:
+                optional = bool(int(widget.attrs.get('optional', '0')))
+            invisible = decoder.decode(widget.attrs.get('tree_invisible', '0'))
+            if invisible or optional:
                 column.set_visible(False)
             elif name == self.screen.exclude_field:
                 column.set_visible(False)

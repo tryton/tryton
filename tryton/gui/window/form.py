@@ -17,6 +17,7 @@ from tryton.action import Action
 from tryton.common import (
     RPCException, RPCExecute, message, sur, sur_3b, timezoned_date)
 from tryton.common.common import selection as selection_
+from tryton.common.popup_menu import popup
 from tryton.common.underline import set_underline
 from tryton.gui import Main
 from tryton.gui.window import Window
@@ -587,21 +588,7 @@ class Form(TabContent):
         if not widget.props.active:
             menu.popdown()
             return
-
-        def menu_position(menu, x, y, user_data):
-            widget_allocation = widget.get_allocation()
-            x, y = widget.get_window().get_root_coords(
-                widget_allocation.x, widget_allocation.y)
-            return (x, y + widget_allocation.height, False)
-        menu.show_all()
-        if hasattr(menu, 'popup_at_widget'):
-            menu.popup_at_widget(
-                widget, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST,
-                Gtk.get_current_event())
-        else:
-            menu.popup(
-                None, None, menu_position, None, 0,
-                Gtk.get_current_event_time())
+        popup(menu, widget)
 
     def record_message(self, position, size, max_size, record_id):
         name = str(position) if position else '_'

@@ -143,3 +143,20 @@ def populate(menu, model, record, title='', field=None, context=None):
         action_menu.append(email_item)
         email_item.connect('activate', email, toolbar)
     menu.show_all()
+
+
+def popup(menu, widget):
+    def menu_position(menu, x, y, user_data):
+        widget_allocation = widget.get_allocation()
+        x, y = widget.get_window().get_root_coords(
+            widget_allocation.x, widget_allocation.y)
+        return (x, y + widget_allocation.height, False)
+    menu.show_all()
+    if hasattr(menu, 'popup_at_widget'):
+        menu.popup_at_widget(
+            widget, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST,
+            Gtk.get_current_event())
+    else:
+        menu.popup(
+            None, None, menu_position, None, 0,
+            Gtk.get_current_event_time())
