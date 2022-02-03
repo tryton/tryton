@@ -257,6 +257,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
+        cls.create_date.select = True
         cls._check_modify_exclude = {
             'state', 'payment_lines', 'move', 'cancel_move',
             'invoice_report_cache', 'invoice_report_format', 'lines'}
@@ -394,9 +395,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Migration from 4.0: Drop not null on payment_term
         table.not_null_action('payment_term', 'remove')
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
