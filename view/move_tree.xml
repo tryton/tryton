@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='product']" position="after">
-        <field name="lot" expand="1"/>
+        <field name="lot" expand="1" optional="0"/>
     </xpath>
     <xpath expr="/tree" position="inside">
         <button name="add_lots_wizard"/>
