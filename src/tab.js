@@ -472,6 +472,11 @@
                 name = Sao.common.MODELNAME.get(model_name);
             }
             this.set_name(name);
+            if (attributes.res_id) {
+                if (attributes.hasOwnPropery('tab_domain')) {
+                    delete attributes.tab_domain;
+                }
+            }
             attributes.breadcrumb = [name];
             var screen = new Sao.Screen(model_name, attributes);
             screen.windows.push(this);
@@ -490,7 +495,6 @@
             this.set_buttons_sensitive();
 
             this.view_prm = this.screen.switch_view().done(function() {
-                this.screen.count_tab_domain();
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     if (!jQuery.isArray(attributes.res_id)) {
