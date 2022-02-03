@@ -427,11 +427,11 @@ img.icon {
         width: 100%;
         table-layout: fixed;
 
-        col.selection-state, col.favorite, col.draggable-handle {
+        col.selection-state, col.favorite, col.draggable-handle, col.optional {
             width: 30px;
         }
 
-        td.draggable-handle {
+        td.draggable-handle, td.optional {
             cursor: grab;
             > img {
                 .center-block();
@@ -445,6 +445,16 @@ img.icon {
         > thead > tr > th {
             > label.sortable {
                 cursor: pointer;
+            }
+            &.optional {
+                cursor: pointer;
+                overflow: visible;
+
+                .dropdown {
+                    input[type="checkbox"] {
+                        margin-left: 5px;
+                    }
+                }
             }
             overflow: hidden;
             text-overflow: ellipsis;

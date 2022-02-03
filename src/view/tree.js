@@ -112,6 +112,10 @@
             }
             this.view.columns.push(column);
 
+            if (attributes.optional) {
+                this.view.optionals.push(column);
+            }
+
             if (attributes.sum) {
                 var label = attributes.sum + Sao.i18n.gettext(': ');
                 var sum = jQuery('<label/>', {
@@ -137,6 +141,7 @@
         display_size: Sao.config.display_size,
         init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
+            this.optionals = [];
             this.sum_widgets = new Map();
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
@@ -273,6 +278,80 @@
             this.table.append(this.tbody);
 
             this.set_drag_and_drop();
+
+            if (this.optionals.length) {
+                if (this.draggable) {
+                    th = this.thead.children().children().first();
+                    th.addClass('optional');
+                } else {
+                    this.colgroup.prepend(jQuery('<col/>', {
+                        'class': 'optional',
+                    }));
+                    th = jQuery('<th/>', {
+                        'class': 'optional',
+                    });
+                    this.thead.children().prepend(th);
+                }
+                var menu = jQuery('<ul/>', {
+                    'class': 'dropdown-menu',
+                }).click(function(evt) {
+                    evt.stopImmediatePropagation();
+                });
+                var dropdown = jQuery('<div/>', {
+                    'class': 'dropdown',
+                }).append(jQuery('<a/>', {
+                    'data-toggle': 'dropdown',
+                    'aria-haspopup': true,
+                    'aria-expanded': false,
+                    'title': Sao.i18n.gettext("Customize"),
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-menu'))
+                    .click(menu, this.optional_menu.bind(this))
+                ).append(menu);
+                dropdown.on('hide.bs.dropdown', function() {
+                    this.save_optional(true);
+                }.bind(this));
+                th.append(dropdown);
+            }
+        },
+        optional_menu: function(evt) {
+            var toggle = function(evt) {
+                var column = evt.data;
+                column.set_visible(jQuery(evt.delegateTarget).prop('checked'));
+                this.save_optional();
+                this.display();
+                this.rows.forEach(function(row) {
+                    row.update_visible();
+                });
+            }.bind(this);
+            var menu = evt.data;
+            menu.empty();
+            this.optionals.forEach(function(optional) {
+                menu.append(jQuery('<li/>', {
+                    'role': 'presentation',
+                }).append(jQuery('<a/>', {
+                    'role': 'menuitem',
+                }).append(jQuery('<label/>', {
+                    'class': 'checkbox',
+                }).append(jQuery('<input/>', {
+                    'type': 'checkbox',
+                    'checked': optional.get_visible(),
+                }).change(optional, toggle))
+                    .append(' ' + optional.attributes.string))));
+            });
+        },
+        save_optional: function(store) {
+            store = (store === undefined) ? true : store;
+            var fields = {};
+            this.optionals.forEach(function(column) {
+                fields[column.attributes.name] = !column.get_visible();
+            });
+            if (store) {
+                var tree_optional_model = new Sao.Model(
+                    'ir.ui.view_tree_optional');
+                tree_optional_model.execute('set_optional', [
+                    this.view_id, fields], {});
+            }
+            Sao.Screen.tree_column_optional[this.view_id] = fields;
         },
         reset: function() {
             this.display_size = Sao.config.display_size;
@@ -727,21 +806,29 @@
             domain = inversion.simplify(domain);
             var decoder = new Sao.PYSON.Decoder(this.screen.context);
             var min_width = [];
+            var tree_column_optional = (
+                Sao.Screen.tree_column_optional[this.view_id] || {});
             this.columns.forEach(function(column) {
                 visible_columns += 1;
                 var name = column.attributes.name;
                 if (!name) {
                     return;
                 }
-                var related_cells = column.footers.slice();
-                related_cells.push(column.header);
-                if ((decoder.decode(column.attributes.tree_invisible || '0')) ||
-                        (name === this.screen.exclude_field)) {
+                var optional;
+                if (tree_column_optional.hasOwnProperty(name)) {
+                    optional = tree_column_optional[name];
+                } else {
+                    optional = Boolean(parseInt(
+                        column.attributes.optional || '0', 10));
+                }
+                var invisible = decoder.decode(
+                    column.attributes.tree_invisible || '0');
+                if (invisible || optional) {
                     visible_columns -= 1;
-                    related_cells.forEach(function(cell) {
-                        cell.hide();
-                        cell.addClass('invisible');
-                    });
+                    column.set_visible(false);
+                } else if (name === this.screen.exclude_field) {
+                    visible_columns -= 1;
+                    column.set_visible(false);
                 } else {
                     var inv_domain = inversion.domain_inversion(domain, name);
                     if (typeof inv_domain != 'boolean') {
@@ -750,22 +837,17 @@
                     var unique = inversion.unique_value(inv_domain)[0];
                     if (unique && jQuery.isEmptyObject(this.children_field)) {
                         visible_columns -= 1;
-                        related_cells.forEach(function(cell) {
-                            cell.hide();
-                            cell.addClass('invisible');
-                        });
+                        column.set_visible(false);
                     } else {
-                        related_cells.forEach(function(cell) {
-                            cell.show();
-                            cell.removeClass('invisible');
-                        });
+                        column.set_visible(true);
                     }
                 }
 
-                if (column.header.hasClass('invisible')) {
+                if (!column.get_visible()) {
                     column.col.css('width', 0);
                     column.col.hide();
                 } else if (!column.col.hasClass('draggable-handle') &&
+                    !column.col.hasClass('optional') &&
                     !column.col.hasClass('selection-state') &&
                     !column.col.hasClass('favorite')) {
                     var width, c_width;
@@ -817,7 +899,7 @@
 
             if (!this.table.hasClass('no-responsive') &
                 (this.columns.filter(function(c) {
-                    return !c.header.hasClass('invisible');
+                    return c.get_visible();
                 }).length > 1)) {
                 this.table.addClass('responsive');
                 this.table.addClass('responsive-header');
@@ -1377,7 +1459,15 @@
                 td = jQuery('<td/>', {
                     'class': 'draggable-handle'
                 });
+                if (this.tree.optionals.length) {
+                    td.addClass('optional');
+                }
                 td.append(Sao.common.ICONFACTORY.get_icon_img('tryton-drag'));
+                this.el.append(td);
+            } else if (this.tree.optionals.length) {
+                td = jQuery('<td/>', {
+                    'class': 'optional'
+                });
                 this.el.append(td);
             }
             td = jQuery('<td/>', {
@@ -1470,8 +1560,10 @@
         },
         _get_column_td: function(column_index, row) {
             row = row || this.el;
-            var offset = 1;  // take into account the selection column
+            var offset = 1;  // take into account the selection or optional column
             if (this.tree.draggable) {
+                offset += 1;
+            } else if (this.tree.optionals.length) {
                 offset += 1;
             }
             return jQuery(row.children()[column_index + offset]);
@@ -1479,7 +1571,6 @@
         redraw: function(selected, expanded) {
             selected = selected || [];
             expanded = expanded || [];
-            var thead_visible = this.tree.thead.is(':visible');
 
             switch(this.tree.selection_mode) {
                 case Sao.common.SELECTION_NONE:
@@ -1546,15 +1637,8 @@
                     }
                     apply_visual(
                         td, this.record.expr_eval(column.attributes.visual));
-                    if ((column.header.is(':hidden') && thead_visible) ||
-                        column.header.css('display') == 'none') {
-                        td.hide();
-                        td.addClass('invisible');
-                    } else {
-                        td.show();
-                        td.removeClass('invisible');
-                    }
                 }
+                this.update_visible();
             }
             if (this.children_field) {
                 this.tree.columns.every(function(column, i) {
@@ -1611,6 +1695,21 @@
                 this.el.css('text-decoration', 'line-through');
             } else {
                 this.el.css('text-decoration', 'inherit');
+            }
+        },
+        update_visible: function() {
+            var thead_visible = this.tree.thead.is(':visible');
+            for (var i = 0; i < this.tree.columns.length; i++) {
+                var column = this.tree.columns[i];
+                var td = this._get_column_td(i);
+                if ((column.header.is(':hidden') && thead_visible) ||
+                    column.header.css('display') == 'none') {
+                    td.hide();
+                    td.addClass('invisible');
+                } else {
+                    td.show();
+                    td.removeClass('invisible');
+                }
             }
         },
         toggle_row: function() {
@@ -2295,7 +2394,23 @@
                 render();
             }
             return cell;
-        }
+        },
+        set_visible: function(visible) {
+            var cells = this.footers.slice();
+            cells.push(this.header);
+            cells.forEach(function(cell) {
+                if (visible) {
+                    cell.show();
+                    cell.removeClass('invisible');
+                } else {
+                    cell.hide();
+                    cell.addClass('invisible');
+                }
+            });
+        },
+        get_visible: function() {
+            return !this.header.hasClass('invisible');
+        },
     });
 
     Sao.View.Tree.TextColum = Sao.class_(Sao.View.Tree.CharColumn, {
@@ -2716,6 +2831,7 @@
             this.view = view;
             this.type = 'button';
             this.attributes = attributes;
+            this.footers = [];
         },
         render: function(record, el) {
             var button = new Sao.common.Button(this.attributes, el, 'btn-sm');
@@ -2734,6 +2850,22 @@
                 });
             button.set_state(record);
             return button.el;
+        },
+        set_visible: function(visible) {
+            var cells = this.footers.slice();
+            cells.push(this.header);
+            cells.forEach(function(cell) {
+                if (visible) {
+                    cell.show();
+                    cell.removeClass('invisible');
+                } else {
+                    cell.hide();
+                    cell.addClass('invisible');
+                }
+            });
+        },
+        get_visible: function() {
+            return !this.header.hasClass('invisible');
         },
         button_clicked: function(event) {
             var record = event.data[0];

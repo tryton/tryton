@@ -2280,4 +2280,5 @@
             }.bind(this));
         }
     });
+    Sao.Screen.tree_column_optional = {};
 }());
