@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name" expand="2"/>
-    <field name="symbol"/>
-    <field name="code"/>
-    <field name="numeric_code"/>
-    <field name="rate" expand="1"/>
+    <field name="symbol" optional="1"/>
+    <field name="code" optional="0"/>
+    <field name="numeric_code" optional="1"/>
+    <field name="rate" expand="1" optional="0"/>
 </tree>
