@@ -44,7 +44,7 @@ class CacheTestCase(unittest.TestCase):
     def testUnfreeze(self):
         "Test unfreeze"
         for value, result in [
-                (freeze([1, 2, 3]), (1, 2, 3)),
+                (freeze([1, 2, 3]), [1, 2, 3]),
                 (freeze({'dict': {
                                 'inner dict': {
                                     'list': [1, 2, 3],
@@ -54,7 +54,7 @@ class CacheTestCase(unittest.TestCase):
                             }),
                     {'dict': {
                             'inner dict': {
-                                'list': (1, 2, 3),
+                                'list': [1, 2, 3],
                                 'string': 'test',
                                 },
                             },

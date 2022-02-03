@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
@@ -49,6 +50,44 @@ class ReferenceContextTarget(ModelSQL):
         return context.get('test')
 
 
+class ReferenceDomainValidation(ModelSQL):
+    "Reference Domain Validation"
+    __name__ = 'test.reference_domainvalidation'
+    reference = fields.Reference("Reference", selection=[
+            (None, ''),
+            ('test.reference.target', "Target"),
+            ('test.reference_domainvalidation.target', "Domain Target"),
+            ],
+        domain={
+            'test.reference_domainvalidation.target': [
+                ('value', '>', 5),
+                ],
+            })
+
+
+class ReferenceDomainValidationTarget(ModelSQL):
+    "Reference Domain Validation Target"
+    __name__ = 'test.reference_domainvalidation.target'
+    value = fields.Integer("Value")
+
+
+class ReferenceDomainValidationPYSON(ModelSQL):
+    "Reference Domain Validation"
+    __name__ = 'test.reference_domainvalidation_pyson'
+    reference = fields.Reference("Reference", selection=[
+            (None, ''),
+            ('test.reference.target', "Target"),
+            ('test.reference_domainvalidation.target', "Domain Target"),
+            ],
+        domain={
+            'test.reference_domainvalidation.target': [
+                ('value', '>', Eval('value')),
+                ],
+            },
+        depends=['value'])
+    value = fields.Integer("Value")
+
+
 def register(module):
     Pool.register(
         Reference,
@@ -56,4 +95,7 @@ def register(module):
         ReferenceRequired,
         ReferenceContext,
         ReferenceContextTarget,
+        ReferenceDomainValidation,
+        ReferenceDomainValidationTarget,
+        ReferenceDomainValidationPYSON,
         module=module, type_='model')

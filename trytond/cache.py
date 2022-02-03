@@ -45,7 +45,9 @@ def freeze(o):
 
 
 def unfreeze(o):
-    if isinstance(o, frozenset):
+    if isinstance(o, tuple):
+        return [unfreeze(x) for x in o]
+    elif isinstance(o, frozenset):
         return dict((x, unfreeze(y)) for x, y in o)
     else:
         return o

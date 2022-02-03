@@ -55,6 +55,11 @@ If ``True``, the field is not editable in the client. Default is ``False``.
 A :ref:`domain <topics-domain>` constraint that will be applied on the field
 value.
 
+.. note::
+
+   For :class:`Reference` field it is a dictionary that contains the domain per
+   model name.
+
 ``states``
 ----------
 

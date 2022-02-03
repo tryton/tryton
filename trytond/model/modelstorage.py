@@ -10,7 +10,7 @@ import time
 from collections import defaultdict
 from decimal import Decimal
 from functools import lru_cache, wraps
-from itertools import chain, islice
+from itertools import chain, groupby, islice
 from operator import itemgetter
 
 from trytond.cache import Cache, LRUDictTransaction, freeze, unfreeze
@@ -1172,22 +1172,32 @@ class ModelStorage(Model):
         def validate_domain(field):
             if not field.domain:
                 return
-            if field._type in ['dict', 'reference']:
+            if field._type == 'dict':
                 return
-            if field._type in ('many2one', 'one2many'):
-                Relation = pool.get(field.model_name)
-            elif field._type in ('many2many', 'one2one'):
-                Relation = field.get_target()
-            else:
-                Relation = cls
+
+            def get_relation(record):
+                if field._type in ('many2one', 'one2many'):
+                    Relation = pool.get(field.model_name)
+                elif field._type in ('many2many', 'one2one'):
+                    Relation = field.get_target()
+                elif field._type == 'reference':
+                    value = getattr(record, field.name)
+                    Relation = value.__class__ if value else None
+                else:
+                    Relation = cls
+                return Relation
+
             domains = defaultdict(lambda: defaultdict(list))
             if is_pyson(field.domain) or is_pyson(field.context):
                 encoder = PYSONEncoder()
                 pyson_domain = encoder.encode(field.domain)
                 pyson_context = encoder.encode(field.context)
                 for record in records:
-                    domain = freeze(_record_eval_pyson(
-                            record, pyson_domain, encoded=True))
+                    domain = _record_eval_pyson(
+                        record, pyson_domain, encoded=True)
+                    if isinstance(domain, dict):
+                        domain = domain.get(get_relation(record).__name__, [])
+                    domain = freeze(domain)
                     context = freeze(_record_eval_pyson(
                             record, pyson_context, encoded=True))
                     domains[context][domain].append(record)
@@ -1224,23 +1234,32 @@ class ModelStorage(Model):
                     records)
 
             for context, ctx_domains in domains.items():
-                for domain, sub_records in ctx_domains.items():
-                    with Transaction().set_context(unfreeze(context)):
-                        validate_relation_domain(
-                            field, sub_records, Relation, unfreeze(domain))
+                for domain, ctx_records in ctx_domains.items():
+                    domain = unfreeze(domain)
+                    for Relation, sub_records in groupby(
+                            ctx_records, key=get_relation):
+                        if not Relation:
+                            continue
+                        if isinstance(domain, dict):
+                            sub_domain = domain.get(Relation.__name__)
+                            if not sub_domain:
+                                continue
+                        else:
+                            sub_domain = domain
+                        with Transaction().set_context(unfreeze(context)):
+                            validate_relation_domain(
+                                field, list(sub_records), Relation, sub_domain)
 
         def relation_domain(field, records):
-            if field._type in ('many2one', 'one2many', 'many2many', 'one2one'):
-                relations = set()
-                for record in records:
-                    if getattr(record, field.name):
-                        if field._type in ('many2one', 'one2one'):
-                            relations.add(getattr(record, field.name))
-                        else:
-                            relations.update(getattr(record, field.name))
+            relations = set()
+            if field._type in {'many2one', 'one2one', 'reference'}:
+                relations.update(getattr(r, field.name) for r in records)
+            elif field._type in {'one2many', 'many2many'}:
+                relations.update(*(getattr(r, field.name) for r in records))
             else:
                 # Cache alignment is not a problem
                 relations = set(records)
+            relations.discard(None)
             return relations
 
         def validate_relation_domain(field, records, Relation, domain):
@@ -1260,6 +1279,8 @@ class ModelStorage(Model):
                         domain = field.domain
                         if is_pyson(domain):
                             domain = _record_eval_pyson(records[0], domain)
+                        if isinstance(domain, dict):
+                            domain = domain.get(Relation.__class__, [])
                         msg = gettext(
                             'ir.msg_domain_validation_record',
                             **cls.__names__(field.name))

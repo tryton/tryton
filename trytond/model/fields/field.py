@@ -257,7 +257,7 @@ class Field(object):
         self.required = required
         self.readonly = readonly
         self.__domain = None
-        self.domain = domain or []
+        self.domain = domain
         self.__states = None
         self.states = states or {}
         self.select = bool(select)
@@ -302,6 +302,8 @@ class Field(object):
         return self.__domain
 
     def _set_domain(self, value):
+        if value is None:
+            value = []
         domain_validate(value)
         self.__domain = value
 

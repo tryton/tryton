@@ -11,8 +11,8 @@ from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, instantiate_context, search_order_validate,
-    with_inactive_records)
+    Field, context_validate, domain_validate, instantiate_context,
+    search_order_validate, with_inactive_records)
 from .selection import SelectionMixin
 
 
@@ -65,6 +65,19 @@ class Reference(SelectionMixin, Field):
         self.search_context = search_context or {}
 
     __init__.__doc__ += Field.__init__.__doc__
+
+    @property
+    def domain(self):
+        return self.__domain
+
+    @domain.setter
+    def domain(self, value):
+        if value is None:
+            value = {}
+        assert isinstance(value, dict)
+        for domain in value.values():
+            domain_validate(domain)
+        self.__domain = value
 
     @property
     def search_order(self):

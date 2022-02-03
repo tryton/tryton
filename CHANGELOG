@@ -1,3 +1,4 @@
+* Use dictionary as domain on Reference field
 * Include model, field and column in import data error message
 * Support limit and offset to ModelSQL count search and search_count
 * Apply view inheritance to board

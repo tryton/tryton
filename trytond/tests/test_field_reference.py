@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.model.exceptions import RequiredValidationError
+from trytond.model.exceptions import (
+    DomainValidationError, RequiredValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -456,6 +457,73 @@ class FieldReferenceTestCase(unittest.TestCase):
         record = Reference(target=str(target))
 
         self.assertEqual(record.target.context, 'foo')
+
+    @with_transaction()
+    def test_domain_valid(self):
+        "Test reference with valid domain"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+        Target = pool.get('test.reference_domainvalidation.target')
+        target = Target(value=42)
+        target.save()
+
+        reference, = Reference.create([{
+                    'reference': str(target),
+                    }])
+        self.assertEqual(reference.reference, target)
+
+    @with_transaction()
+    def test_domain_invalid(self):
+        "Test reference with invalid domain"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+        Target = pool.get('test.reference_domainvalidation.target')
+        target = Target(value=1)
+        target.save()
+
+        reference = Reference(reference=target)
+        with self.assertRaises(DomainValidationError):
+            reference.save()
+
+    @with_transaction()
+    def test_no_domain(self):
+        "Test reference with no domain"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+        Target = pool.get('test.reference.target')
+        target = Target(name="Test")
+        target.save()
+
+        reference, = Reference.create([{
+                    'reference': str(target),
+                    }])
+        self.assertEqual(reference.reference, target)
+
+    @with_transaction()
+    def test_domain_none_value(self):
+        "Test reference with domain and None value"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+
+        reference, = Reference.create([{
+                    'reference': None,
+                    }])
+        self.assertEqual(reference.reference, None)
+
+    @with_transaction()
+    def test_domain_pyson(self):
+        "Test reference with pyson domain"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation_pyson')
+        Target = pool.get('test.reference_domainvalidation.target')
+        target = Target(value=42)
+        target.save()
+
+        reference, = Reference.create([{
+                    'value': 1,
+                    'reference': str(target),
+                    }])
+        self.assertEqual(reference.reference, target)
 
 
 def suite():
