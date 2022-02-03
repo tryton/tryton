@@ -171,6 +171,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentIn, cls).__setup__()
+        cls.create_date.select = True
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'incoming_move_input_dest': ('Incoming Moves must have '
@@ -215,10 +216,6 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentIn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_planned_date():
@@ -554,6 +551,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
+        cls.create_date.select = True
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Supplier Return Shipment "%s" must be '
@@ -611,10 +609,6 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentInReturn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():
@@ -889,6 +883,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
+        cls.create_date.select = True
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Customer Shipment "%s" must be cancelled '
@@ -962,9 +957,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentOut, cls).__register__(module_name)
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():
@@ -1451,6 +1443,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOutReturn, cls).__setup__()
+        cls.create_date.select = True
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Customer Return Shipment "%s" must be '
@@ -1492,10 +1485,6 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             table.column_rename('code', 'number')
 
         super(ShipmentOutReturn, cls).__register__(module_name)
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():
@@ -1934,6 +1923,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInternal, cls).__setup__()
+        cls.create_date.select = True
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Internal Shipment "%s" must be cancelled '
@@ -2020,10 +2010,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 [sql_table.planned_date],
                 where=(sql_table.planned_start_date == Null)
                 & (sql_table.planned_date != Null)))
-
-        # Add index on create_date
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():

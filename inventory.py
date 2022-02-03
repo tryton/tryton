@@ -64,6 +64,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Inventory, cls).__setup__()
+        cls.create_date.select = True
         cls._order.insert(0, ('date', 'DESC'))
         cls._error_messages.update({
                 'delete_cancel': ('Inventory "%s" must be canceled before '
@@ -99,9 +100,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
         super(Inventory, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_state():

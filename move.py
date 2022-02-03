@@ -246,6 +246,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls.create_date.select = True
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned |
@@ -320,9 +321,6 @@ class Move(Workflow, ModelSQL, ModelView):
 
         super(Move, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
-
-        # Add index on create_date
-        table.index_action('create_date', action='add')
 
         # Index for period join in compute_quantities_query
         table.index_action([
