@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name" expand="2"/>
-    <field name="product" expand="1"/>
-    <field name="journal" expand="1"/>
-    <field name="compute_method"/>
+    <field name="product" expand="1" optional="1"/>
+    <field name="journal" expand="1" optional="1"/>
+    <field name="compute_method" optional="1"/>
 </tree>
