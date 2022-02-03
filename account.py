@@ -1498,8 +1498,39 @@ class AccountDeferral(ModelSQL, ModelView):
     def default_amount_second_currency(cls):
         return Decimal(0)
 
-    def get_balance(self, name):
-        return self.debit - self.credit
+    @classmethod
+    def get_balance(cls, deferrals, name):
+        pool = Pool()
+        Account = pool.get('account.account')
+        cursor = Transaction().connection.cursor()
+
+        table = cls.__table__()
+        table_child = cls.__table__()
+        account = Account.__table__()
+        account_child = Account.__table__()
+        balances = defaultdict(Decimal)
+
+        for sub_deferrals in grouped_slice(deferrals):
+            red_sql = reduce_ids(table.id, [d.id for d in sub_deferrals])
+            cursor.execute(*table
+                .join(account, condition=table.account == account.id)
+                .join(account_child,
+                    condition=(account_child.left >= account.left)
+                    & (account_child.right <= account.right))
+                .join(table_child,
+                    condition=(table_child.account == account_child.id)
+                    & (table_child.fiscalyear == table.fiscalyear))
+                .select(
+                    table.id,
+                    Sum(table_child.debit - table_child.credit),
+                    where=red_sql,
+                    group_by=table.id))
+            balances.update(dict(cursor))
+
+        for id_, balance in balances.items():
+            if not isinstance(balance, Decimal):
+                balances[id_] = Decimal(str(balance))
+        return balances
 
     def get_currency(self, name):
         return self.account.currency.id
