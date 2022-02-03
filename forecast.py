@@ -71,6 +71,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
+        cls.create_date.select = True
         cls._order.insert(0, ('from_date', 'DESC'))
         cls._order.insert(1, ('warehouse', 'ASC'))
         cls._transitions |= set((
@@ -106,9 +107,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
         super(Forecast, cls).__register__(module_name)
 
-        # Add index on create_date
         table = cls.__table_handler__(module_name)
-        table.index_action('create_date', action='add')
 
         # Migration from 5.0: remove check_from_to_date
         table.drop_constraint('check_from_to_date')
