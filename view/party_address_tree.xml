@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='subdivision']" position="after">
-        <field name="delivery"/>
+        <field name="delivery" optional="1"/>
     </xpath>
 </data>

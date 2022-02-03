@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='party']" position="after">
-        <field name="delivery"/>
+        <field name="delivery" optional="1"/>
     </xpath>
 </data>
