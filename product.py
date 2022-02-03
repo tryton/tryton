@@ -29,11 +29,22 @@ def classification_tree(name):
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
-    classification = fields.Reference('Classification',
-        selection='get_classification',
-        domain=[
-            ('selectable', '=', True),
-            ])
+    classification = fields.Reference(
+        "Classification", selection='get_classification')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        for model in cls._get_classification():
+            if model in cls.classification.domain:
+                cls.classification.domain[model] = [
+                    cls.classification.domain[model],
+                    ('selectable', '=', True),
+                    ]
+            else:
+                cls.classification.domain[model] = [
+                    ('selectable', '=', True),
+                    ]
 
     @classmethod
     def _get_classification(cls):
