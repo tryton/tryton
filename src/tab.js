@@ -1309,7 +1309,7 @@
                 screen.display_next();
             });
 
-            preview = {};
+            var preview = {};
             preview.record_message = function(position, length) {
                 var text = (position || '_') + '/' + length;
                 label.text(text).attr('title', text);
