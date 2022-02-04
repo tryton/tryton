@@ -257,6 +257,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             deferral.fiscalyear = self
             deferral.debit = account.debit
             deferral.credit = account.credit
+            deferral.line_count = account.line_count
             deferral.amount_second_currency = account.amount_second_currency
             return deferral
 

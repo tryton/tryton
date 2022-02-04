@@ -1,3 +1,5 @@
+* Show debit / credit columns in ledgers when they contain lines
+* Count number of lines in Account and General Ledger
 * Handle errors in move template expression
 * Rename split lines into reschedule lines
 * Add optional credit type on account

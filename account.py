@@ -9,9 +9,10 @@ from itertools import zip_longest
 
 from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Window
-from sql.aggregate import Max, Min, Sum
+from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Case, Coalesce
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Check, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
@@ -876,10 +877,18 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             "Balance", currency='currency', digits='currency'),
         'get_balance')
     credit = fields.Function(Monetary(
-            "Credit", currency='currency', digits='currency'),
+            "Credit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_credit_debit')
     debit = fields.Function(Monetary(
-            "Debit", currency='currency', digits='currency'),
+            "Debit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_credit_debit')
     amount_second_currency = fields.Function(Monetary(
             "Amount Second Currency",
@@ -889,6 +898,8 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 },
             depends=['second_currency']),
         'get_credit_debit')
+    line_count = fields.Function(
+        fields.Integer("Line Count"), 'get_credit_debit')
     note = fields.Text('Note')
     deferrals = fields.One2Many(
         'account.account.deferral', 'account', "Deferrals", readonly=True,
@@ -1026,16 +1037,21 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         result = {}
         ids = [a.id for a in accounts]
         for name in names:
-            if name not in {'credit', 'debit', 'amount_second_currency'}:
+            if name not in {
+                    'credit', 'debit', 'amount_second_currency', 'line_count'}:
                 raise ValueError('Unknown name: %s' % name)
-            result[name] = dict((i, Decimal(0)) for i in ids)
+            col_type = int if name == 'line_count' else Decimal
+            result[name] = defaultdict(col_type)
 
         table = cls.__table__()
         line = MoveLine.__table__()
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         columns = [table.id]
         for name in names:
-            columns.append(Sum(Coalesce(Column(line, name), 0)))
+            if name == 'line_count':
+                columns.append(Count(Literal('*')))
+            else:
+                columns.append(Sum(Coalesce(Column(line, name), 0)))
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(line, 'LEFT',
@@ -1047,12 +1063,15 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 account_id = row[0]
                 for i, name in enumerate(names, 1):
                     # SQLite uses float for SUM
-                    if not isinstance(row[i], Decimal):
+                    if (name != 'line_count'
+                            and not isinstance(row[i], Decimal)):
                         result[name][account_id] = Decimal(str(row[i]))
                     else:
                         result[name][account_id] = row[i]
         for account in accounts:
             for name in names:
+                if name == 'line_count':
+                    continue
                 if (name == 'amount_second_currency'
                         and account.second_currency):
                     currency = account.second_currency
@@ -1397,6 +1416,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                 },
             depends=['second_currency']),
         'get_credit_debit')
+    line_count = fields.Function(
+        fields.Integer("Line Count"), 'get_credit_debit')
     second_currency = fields.Many2One(
         'currency.currency', "Secondary Currency")
 
@@ -1496,11 +1517,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         cursor = Transaction().connection.cursor()
 
         result = {}
-        ids = [a.id for a in records]
         for name in names:
-            if name not in {'credit', 'debit', 'amount_second_currency'}:
+            if name not in {
+                    'credit', 'debit', 'amount_second_currency', 'line_count'}:
                 raise ValueError('Unknown name: %s' % name)
-            result[name] = dict((i, Decimal(0)) for i in ids)
+            column_type = int if name == 'line_count' else Decimal
+            result[name] = defaultdict(column_type)
 
         account_ids = {a.account.id for a in records}
         party_ids = {a.party.id for a in records}
@@ -1510,7 +1532,10 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         columns = [table.id, line.party]
         for name in names:
-            columns.append(Sum(Coalesce(Column(line, name), 0)))
+            if name == 'line_count':
+                columns.append(Count(Literal('*')))
+            else:
+                columns.append(Sum(Coalesce(Column(line, name), 0)))
         for sub_account_ids in grouped_slice(account_ids):
             account_sql = reduce_ids(table.id, sub_account_ids)
             for sub_party_ids in grouped_slice(party_ids):
@@ -1529,12 +1554,15 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         continue
                     for i, name in enumerate(names, 2):
                         # SQLite uses float for SUM
-                        if not isinstance(row[i], Decimal):
+                        if (name != 'line_count'
+                                and not isinstance(row[i], Decimal)):
                             result[name][id_] = Decimal(str(row[i]))
                         else:
                             result[name][id_] = row[i]
         for record in records:
             for name in names:
+                if name == 'line_count':
+                    continue
                 if name == 'amount_second_currency' and record.second_currency:
                     currency = record.second_currency
                 else:
@@ -1586,6 +1614,7 @@ class AccountDeferral(ModelSQL, ModelView):
             'invisible': ~Eval('second_currency'),
             },
         depends=['second_currency'])
+    line_count = fields.Integer("Line Count", required=True)
     second_currency = fields.Function(fields.Many2One(
             'currency.currency', "Second Currency"), 'get_second_currency')
 
@@ -1599,8 +1628,45 @@ class AccountDeferral(ModelSQL, ModelView):
         ]
 
     @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        cursor = Transaction().connection.cursor()
+        deferral = cls.__table__()
+        move_line = MoveLine.__table__()
+        move = Move.__table__()
+        period = Period.__table__()
+
+        exist = backend.TableHandler.table_exist(cls._table)
+        table_h = cls.__table_handler__(module_name)
+        created_line_count = exist and not table_h.column_exist('line_count')
+
+        super().__register__(module_name)
+
+        # Migration from 6.2: add line_count on deferrals
+        if created_line_count:
+            counting_query = (move_line
+                .join(move, condition=move_line.move == move.id)
+                .join(period, condition=move.period == period.id)
+                .select(
+                    move_line.account, period.fiscalyear, Count(Literal('*')),
+                    group_by=[move_line.account, period.fiscalyear]))
+            cursor.execute(*deferral.update(
+                    [deferral.line_count], [counting_query.line_count],
+                    from_=[counting_query],
+                    where=((deferral.account == counting_query.account)
+                        & (deferral.fiscalyear == counting_query.fiscalyear))))
+
+    @classmethod
     def default_amount_second_currency(cls):
         return Decimal(0)
+
+    @classmethod
+    def default_line_count(cls):
+        return 0
 
     @classmethod
     def get_balance(cls, deferrals, name):
@@ -1715,23 +1781,50 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
     account = fields.Many2One('account.account', "Account")
     company = fields.Many2One('company.company', 'Company')
     start_debit = fields.Function(Monetary(
-            "Start Debit", currency='currency', digits='currency'),
+            "Start Debit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_account', searcher='search_account')
     debit = fields.Function(Monetary(
-            "Debit", currency='currency', digits='currency'),
+            "Debit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_debit_credit', searcher='search_debit_credit')
     end_debit = fields.Function(Monetary(
-            "End Debit", currency='currency', digits='currency'),
+            "End Debit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_account', searcher='search_account')
     start_credit = fields.Function(Monetary(
-            "Start Credit", currency='currency', digits='currency'),
+            "Start Credit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_account', searcher='search_account')
     credit = fields.Function(Monetary(
-            "Credit", currency='currency', digits='currency'),
+            "Credit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_debit_credit', searcher='search_debit_credit')
     end_credit = fields.Function(Monetary(
-            "End Credit", currency='currency', digits='currency'),
+            "End Credit", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('line_count', -1),
+                },
+            depends=['line_count']),
         'get_account', searcher='search_account')
+    line_count = fields.Function(
+        fields.Integer("Line Count"),
+        'get_debit_credit', searcher='search_debit_credit')
     start_balance = fields.Function(Monetary(
             "Start Balance", currency='currency', digits='currency'),
         'get_account', searcher='search_account')
