@@ -445,15 +445,15 @@ class Move(Workflow, ModelSQL, ModelView):
         from_type = self.from_location.type if self.from_location else None
         to_type = self.to_location.type if self.to_location else None
 
-        if from_type == 'supplier' and to_type in {'storage', 'drop'}:
+        if from_type == 'supplier' and to_type in {'storage', 'drop', 'view'}:
             return True
         if from_type == 'production' and to_type != 'lost_found':
             return True
-        if from_type in {'storage', 'drop'} and to_type == 'customer':
+        if from_type in {'storage', 'drop', 'view'} and to_type == 'customer':
             return True
-        if from_type == 'storage' and to_type == 'supplier':
+        if from_type in {'storage', 'view'} and to_type == 'supplier':
             return True
-        if from_type == 'customer' and to_type == 'storage':
+        if from_type == 'customer' and to_type == {'storage', 'view'}:
             return True
         return False
 
