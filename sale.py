@@ -11,7 +11,7 @@ class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     complaint_sequence = fields.MultiValue(fields.Many2One(
-            'ir.sequence', "Complaint Sequence",
+            'ir.sequence', "Complaint Sequence", required=True,
             domain=[
                 ('sequence_type', '=',
                     Id('sale_complaint', 'sequence_type_complaint')),
@@ -35,7 +35,7 @@ class Configuration(metaclass=PoolMeta):
 class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sequence'
     complaint_sequence = fields.Many2One(
-        'ir.sequence', "Complaint Sequence",
+        'ir.sequence', "Complaint Sequence", required=True,
         domain=[
             ('sequence_type', '=',
                 Id('sale_complaint', 'sequence_type_complaint')),
