@@ -54,6 +54,40 @@ class Complaint(Workflow, ModelSQL, ModelView):
     type = fields.Many2One('sale.complaint.type', 'Type', required=True,
         states=_states, depends=_depends)
     origin = fields.Reference('Origin', selection='get_origin',
+        domain={
+            'sale.sale': [
+                If(Eval('customer'),
+                    ('party', '=', Eval('customer')),
+                    ()),
+                ('company', '=', Eval('company')),
+                ('state', 'in', ['confirmed', 'processing', 'done']),
+                ],
+            'sale.line': [
+                ('type', '=', 'line'),
+                If(Eval('customer'),
+                    ('sale.party', '=', Eval('customer')),
+                    ()),
+                ('sale.company', '=', Eval('company')),
+                ('sale.state', 'in', ['confirmed', 'processing', 'done']),
+                ],
+            'account.invoice': [
+                If(Eval('customer'),
+                    ('party', '=', Eval('customer')),
+                    ()),
+                ('company', '=', Eval('company')),
+                ('type', '=', 'out'),
+                ('state', 'in', ['posted', 'paid']),
+                ],
+            'account.invoice.line': [
+                ('type', '=', 'line'),
+                If(Eval('customer'),
+                    ('invoice.party', '=', Eval('customer')),
+                    ()),
+                ('invoice.company', '=', Eval('company')),
+                ('invoice.type', '=', 'out'),
+                ('invoice.state', 'in', ['posted', 'paid']),
+                ],
+            },
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Bool(Eval('actions', [0]))),
@@ -127,12 +161,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
                     },
                 })
 
-        origin_domain = []
-        for model, domain in cls._origin_domains().items():
-            origin_domain = If(Eval('origin_model') == model,
-                domain, origin_domain)
-        cls.origin.domain = [origin_domain]
-
         actions_domains = cls._actions_domains()
         actions_domain = [('action', 'in', actions_domains.pop(None))]
         for model, actions in actions_domains.items():
@@ -150,43 +178,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
             table_h.column_rename('reference', 'number')
 
         super(Complaint, cls).__register__(module_name)
-
-    @classmethod
-    def _origin_domains(cls):
-        return {
-            'sale.sale': [
-                If(Eval('customer'),
-                    ('party', '=', Eval('customer')),
-                    ()),
-                ('company', '=', Eval('company')),
-                ('state', 'in', ['confirmed', 'processing', 'done']),
-                ],
-            'sale.line': [
-                ('type', '=', 'line'),
-                If(Eval('customer'),
-                    ('sale.party', '=', Eval('customer')),
-                    ()),
-                ('sale.company', '=', Eval('company')),
-                ('sale.state', 'in', ['confirmed', 'processing', 'done']),
-                ],
-            'account.invoice': [
-                If(Eval('customer'),
-                    ('party', '=', Eval('customer')),
-                    ()),
-                ('company', '=', Eval('company')),
-                ('type', '=', 'out'),
-                ('state', 'in', ['posted', 'paid']),
-                ],
-            'account.invoice.line': [
-                ('type', '=', 'line'),
-                If(Eval('customer'),
-                    ('invoice.party', '=', Eval('customer')),
-                    ()),
-                ('invoice.company', '=', Eval('company')),
-                ('invoice.type', '=', 'out'),
-                ('invoice.state', 'in', ['posted', 'paid']),
-                ],
-            }
 
     @classmethod
     def _actions_domains(cls):
