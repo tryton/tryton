@@ -473,7 +473,7 @@
             }
             this.set_name(name);
             if (attributes.res_id) {
-                if (attributes.hasOwnPropery('tab_domain')) {
+                if (attributes.hasOwnProperty('tab_domain')) {
                     delete attributes.tab_domain;
                 }
             }
