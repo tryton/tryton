@@ -683,7 +683,7 @@ ${COUNTRY}</field>
 
         <record model="party.address.subdivision_type" id="address_subdivision_es">
             <field name="country_code">ES</field>
-            <field name="types" eval="['province']"/>
+            <field name="types" eval="['province', 'autonomous city']"/>
         </record>
 
         <record model="party.address.format" id="address_format_lk">

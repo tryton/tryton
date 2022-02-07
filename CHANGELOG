@@ -1,3 +1,4 @@
+* Add autonomous city as subdivision type for Spain
 * Add support for Python 3.10
 * Remove support for Python 3.6
 * Use all street lines in record name of address
