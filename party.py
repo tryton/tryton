@@ -59,6 +59,7 @@ class Address(metaclass=PoolMeta):
         pool = Pool()
         Country = pool.get('country.country')
         Subdivision = pool.get('country.subdivision')
+        SubdivisionType = pool.get('party.address.subdivision_type')
 
         values = {}
         values['party_name'] = remove_forbidden_chars(address.name or '')
@@ -75,10 +76,14 @@ class Address(metaclass=PoolMeta):
             if address.province_code:
                 subdivision_code = '-'.join(
                     [address.country_code, address.province_code])
-                subdivisions = Subdivision.search([
-                        ('country', '=', country.id),
-                        ('code', 'like', subdivision_code + '%'),
-                        ], limit=1)
+                subdivision_domain = [
+                    ('country', '=', country.id),
+                    ('code', 'like', subdivision_code + '%'),
+                    ]
+                types = SubdivisionType.get_types(country)
+                if types:
+                    subdivision_domain.append(('type', 'in', types))
+                subdivisions = Subdivision.search(subdivision_domain, limit=1)
                 if subdivisions:
                     subdivision, = subdivisions
                     values['subdivision'] = subdivision.id
