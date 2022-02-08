@@ -243,8 +243,10 @@ class CommonTestCaseMixin:
     def test_search_ilike(self):
         "Test search text ilike"
         Text = self.Text()
-        text, = Text.create([{
+        text, sambreville = Text.create([{
                     'text': "Bar",
+                    }, {
+                    'text': "Sambreville",
                     }])
         with Transaction().set_context({
                     '%s.text.search_full_text' % Text.__name__: False,
@@ -266,6 +268,10 @@ class CommonTestCaseMixin:
         self.assertListEqual(texts_b, [text])
         self.assertListEqual(texts_foo, [])
         self.assertListEqual(texts_f, [])
+
+        self.assertListEqual(
+            Text.search([('text', 'ilike', "%Sambreville%")]),
+            [sambreville])
 
     @unittest.skipIf(backend.name == 'sqlite',
         "SQLite does not have full text search")
