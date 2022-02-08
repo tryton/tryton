@@ -2086,16 +2086,15 @@
             if (!rec_name && (value >= 0) && (value !== null)) {
                 var model_name = record.model.fields[this.name].description
                     .relation;
-                Sao.rpc({
+                var remote_rec_name = Sao.rpc({
                     'method': 'model.' + model_name + '.read',
                     'params': [[value], ['rec_name'], record.get_context()]
-                }, record.model.session).done(store_rec_name.bind(this)).done(
-                        function() {
-                            record.group.root_group.screens.forEach(
-                                function(screen) {
-                                    screen.display();
-                            });
-                       });
+                }, record.model.session, false);
+                store_rec_name(remote_rec_name);
+                record.group.root_group.screens.forEach(
+                    function (screen) {
+                        screen.display();
+                    });
             } else {
                 store_rec_name.call(this, [{'rec_name': rec_name}]);
             }
