@@ -1652,7 +1652,8 @@ class AccountDeferral(ModelSQL, ModelView):
                 .join(move, condition=move_line.move == move.id)
                 .join(period, condition=move.period == period.id)
                 .select(
-                    move_line.account, period.fiscalyear, Count(Literal('*')),
+                    move_line.account, period.fiscalyear,
+                    Count(Literal('*')).as_('line_count'),
                     group_by=[move_line.account, period.fiscalyear]))
             cursor.execute(*deferral.update(
                     [deferral.line_count], [counting_query.line_count],
