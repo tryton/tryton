@@ -52,7 +52,7 @@
             if (error === "timeout") {
                 Sao.Bus.listen(last_message, 1);
             } else if (response.status == 501) {
-                Sao.Logger.log("Bus not supported");
+                Sao.Logger.info("Bus not supported");
                 return;
             } else {
                 Sao.Logger.error(
