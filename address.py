@@ -58,6 +58,13 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         depends=['country', 'subdivision_types'])
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
+    identifiers = fields.One2Many(
+        'party.identifier', 'address', "Identifiers",
+        domain=[
+            ('party', '=', Eval('party')),
+            ('type', 'in', ['fr_siret']),
+            ],
+        depends=['party'])
 
     @classmethod
     def __setup__(cls):

@@ -14,4 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <label name="code"/>
     <field name="code"/>
+
+    <label name="address"/>
+    <field name="address"/>
 </form>

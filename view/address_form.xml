@@ -14,20 +14,26 @@ this repository contains the full copyright notices and license terms. -->
         <label name="sequence"/>
         <field name="sequence"/>
     </group>
-    <newline/>
-    <label name="name"/>
-    <field name="name"/>
-    <newline/>
-    <label name="street"/>
-    <field name="street" colspan="3"/>
-    <newline/>
-    <label name="postal_code"/>
-    <field name="postal_code"/>
-    <label name="city"/>
-    <field name="city"/>
-    <newline/>
-    <label name="country"/>
-    <field name="country" widget="selection"/>
-    <label name="subdivision"/>
-    <field name="subdivision" widget="selection"/>
+    <notebook colspan="6">
+        <page string="General" id="general">
+            <label name="name"/>
+            <field name="name"/>
+            <newline/>
+            <label name="street"/>
+            <field name="street" colspan="3"/>
+            <newline/>
+            <label name="postal_code"/>
+            <field name="postal_code"/>
+            <label name="city"/>
+            <field name="city"/>
+            <newline/>
+            <label name="country"/>
+            <field name="country" widget="selection"/>
+            <label name="subdivision"/>
+            <field name="subdivision" widget="selection"/>
+        </page>
+        <page name="identifiers">
+            <field name="identifiers" colspan="4" pre_validate="1" view_ids="party.identifier_list_sequence"/>
+        </page>
+    </notebook>
 </form>

@@ -457,8 +457,8 @@ IDENTIFIER_TYPES = [
     ('fi_ytunnus', "Finnish Business Identifier"),
     ('fr_nif', "French Tax Identification Number"),
     ('fr_nir', "French Personal Identification Number"),
-    # TODO: remove from party_siren
-    # ('fr_siren', "French Company Identification Number"),
+    ('fr_siren', "French Company Identification Number"),
+    ('fr_siret', "French Company Establishment Identification Number"),
     ('fr_tva', "French VAT Number"),
     ('gb_nhs',
         "United Kingdom National Health Service Patient Identifier"),
@@ -618,8 +618,21 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
         required=True, select=True,
         help="The party identified by this record.")
+    address = fields.Many2One(
+        'party.address', "Address", ondelete='CASCADE', select=True,
+        states={
+            'required': Eval('type_address', False),
+            'invisible': ~Eval('type_address', True),
+            },
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ],
+        depends=['party', 'type_address'],
+        help="The address identified by this record.")
     type = fields.Selection('get_types', 'Type')
     type_string = type.translated('type')
+    type_address = fields.Function(
+        fields.Boolean("Type of Address"), 'on_change_with_type_address')
     code = fields.Char('Code', required=True)
 
     @classmethod
@@ -666,6 +679,14 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         Configuration = pool.get('party.configuration')
         configuration = Configuration(1)
         return [(None, '')] + configuration.get_identifier_types()
+
+    @classmethod
+    def _type_addresses(cls):
+        return {'fr_siret'}
+
+    @fields.depends('type')
+    def on_change_with_type_address(self, name=None):
+        return self.type in self._type_addresses()
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):
