@@ -1,31 +1,38 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta
-
-from . import luhn
-from .exceptions import SIRENValidationError
 
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
-    siren = fields.Char("SIREN", select=True, size=9)
+    siren = fields.Function(fields.Many2One(
+            'party.identifier', "SIREN"),
+        'get_siren', searcher='search_siren')
+
+    def get_siren(self, name):
+        for identifier in self.identifiers:
+            if identifier.type == 'fr_siren':
+                return identifier.id
 
     @classmethod
-    def validate(cls, parties):
-        super(Party, cls).validate(parties)
-        for party in parties:
-            party.check_siren()
-
-    def check_siren(self):
-        '''
-        Check validity of SIREN
-        '''
-        if self.siren:
-            if len(self.siren) != 9 or not luhn.validate(self.siren):
-                raise SIRENValidationError(
-                    gettext('party_siret.msg_invalid_siren',
-                        number=self.siren,
-                        party=self.rec_name))
+    def search_siren(cls, name, clause):
+        _, operator, value = clause
+        domain = [
+            ('identifiers', 'where', [
+                    ('code', operator, value),
+                    ('type', 'in', 'fr_siren'),
+                    ]),
+            ]
+        # Add party without tax identifier
+        if ((operator == '=' and value is None)
+                or (operator == 'in' and None in value)):
+            domain = ['OR',
+                domain, [
+                    ('identifiers', 'not where', [
+                            ('type', '=', 'fr_siren'),
+                            ]),
+                    ],
+                ]
+        return domain
