@@ -105,7 +105,7 @@ class AccountRule(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
             'type': context.get('account_type'),
             'return_': context.get('return_', False),
             }
-        date = context.get('date', today)
+        date = context.get('date') or today
         rules = cls.search([
                 ('company', '=', context.get('company', -1)),
                 ['OR',
