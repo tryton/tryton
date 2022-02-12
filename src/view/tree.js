@@ -1965,9 +1965,13 @@
                                             }.bind(this));
                                     }
                                 } else {
-                                    this._get_column_td(next_column, next_row)
-                                        .trigger('click')
-                                        .find(':input,[tabindex=0]').focus();
+                                    prm.then(function() {
+                                        this._get_column_td(
+                                            next_column, next_row)
+                                            .trigger('click')
+                                            .find(':input,[tabindex=0]')
+                                            .focus();
+                                    }.bind(this));
                                 }
                             }
                         }.bind(this));
