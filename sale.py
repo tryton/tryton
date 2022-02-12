@@ -11,7 +11,7 @@ class Line(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
-        cls.product.context['date'] = Eval(
+        cls.product.search_context['date'] = Eval(
             '_parent_sale', {}).get('sale_date')
 
     @fields.depends('sale', '_parent_sale.sale_date')
