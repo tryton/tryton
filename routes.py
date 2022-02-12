@@ -21,12 +21,12 @@ def unsubscribe(request, pool):
     record.block()
     next_ = request.args.get('next')
     if next_:
-        redirect(next_)
+        return redirect(next_)
     data = {
         'model': Record.__name__,
         }
     with Transaction().set_context(language=record.language):
-        ext, content, _, _ = Report.execute([record], data)
+        ext, content, _, _ = Report.execute([record.id], data)
     assert ext == 'html'
     return Response(content, 200, content_type='text/html')
 
