@@ -137,5 +137,8 @@ Accounting
 `Tax Cash </projects/modules-account-tax-cash/en/latest>`_
     Reports tax on cash basis.
 
+`Tax Non-Deductible </projects/modules-account-tax-non-deductible/en/latest>`_
+    Reports non-deductible tax.
+
 `Tax Rule Country </projects/modules-account-tax-rule-country/en/latest>`_
     Applies taxes per country of origin and destination.
