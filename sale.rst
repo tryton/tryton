@@ -32,6 +32,9 @@ Sale
 `History </projects/modules-sale-history/en/latest>`_
     Manages revisions.
 
+`Invoice Date </projects/modules-sale-invoice-date/en/latest>`_
+    Compute the date of invoice.
+
 `Invoice Grouping </projects/modules-sale-invoice-grouping/en/latest>`_
     Groups invoices.
 
