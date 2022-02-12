@@ -1674,7 +1674,7 @@
                     record.group.remove(record, remove, true, force_remove, false);
                 });
                 // trigger changed only once
-                records[0].group.changed();
+                records[0].group.record_modified();
                 var prms = [];
                 if (delete_) {
                     records.forEach(function(record) {

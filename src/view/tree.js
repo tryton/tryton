@@ -654,7 +654,7 @@
                     }
                     origin_group.splice(origin_position, 1);
                     origin_group.splice(dest_position, 0, record);
-                    origin_group.changed();
+                    origin_group.record_modified();
                 } else {
                     origin_group.remove(record, true, true, true);
                     // Don't remove record from previous group

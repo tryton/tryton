@@ -368,7 +368,7 @@
                         new_.forEach(function(record) {
                             record.set_default(values, true, false);
                         });
-                        this.changed();
+                        this.record_modified();
                     }.bind(this));
             }
         };
