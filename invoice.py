@@ -2154,7 +2154,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         else:
             deductible_rate = 1
         return [(
-                getattr(self, 'taxes', None) or [],
+                list(getattr(self, 'taxes', None)) or [],
                 ((getattr(self, 'unit_price', None) or Decimal(0))
                     * deductible_rate),
                 getattr(self, 'quantity', None) or 0,
