@@ -74,6 +74,9 @@ Accounting
 `Invoice Stock </projects/modules-account-invoice-stock/en/latest>`_
     Links invoice lines and stock moves.
 
+`Invoice Watermark </projects/modules-account-invoice-watermark/en/latest>`_
+    Adds watermark to printed invoices.
+
 `Move Line Grouping </projects/modules-account-move-line-grouping/en/latest>`_
     Show move line grouped.
 
