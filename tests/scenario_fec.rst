@@ -27,7 +27,8 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
-    >>> company.party.siren = '820043784'
+    >>> siren = company.party.identifiers.new(type='fr_siren')
+    >>> siren.code = '820043784'
     >>> company.party.save()
 
 Create last year fiscal year::
