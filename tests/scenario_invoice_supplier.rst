@@ -3,6 +3,7 @@ Invoice Supplier Scenario
 =========================
 
 Imports::
+
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
@@ -102,6 +103,7 @@ Create invoice::
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> invoice.invoice_date = today
+    >>> invoice.reference = 'FAC001'
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.product = product
@@ -191,6 +193,26 @@ Credit invoice::
     True
     >>> credit_note.total_amount == -invoice.total_amount
     True
+
+A warning is raised when creating an invoice with same reference::
+
+    >>> invoice = Invoice()
+    >>> invoice.type = 'in'
+    >>> invoice.party = party
+    >>> invoice.invoice_date = today
+    >>> invoice.reference = 'FAC001'
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('20')
+    >>> invoice.click('post') # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    InvoiceSimilarWarning: ...
+    >>> invoice.reference = 'FAC002'
+    >>> invoice.click('post')
+    >>> invoice.state
+    'posted'
 
 Create a posted and a draft invoice to cancel::
 

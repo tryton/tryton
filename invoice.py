@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 from collections import defaultdict, namedtuple
 from decimal import Decimal
 from itertools import chain, combinations, groupby
@@ -30,8 +31,8 @@ from trytond.wizard import (
 
 from .exceptions import (
     InvoiceFutureWarning, InvoiceLineValidationError, InvoiceNumberError,
-    InvoicePaymentTermDateWarning, InvoiceTaxValidationError,
-    InvoiceValidationError, PayInvoiceError)
+    InvoicePaymentTermDateWarning, InvoiceSimilarWarning,
+    InvoiceTaxValidationError, InvoiceValidationError, PayInvoiceError)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
@@ -1524,6 +1525,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         invoices_in = cls.browse([i for i in invoices if i.type == 'in'])
         cls.set_number(invoices_in)
+        cls._check_similar(invoices)
         moves = []
         for invoice in invoices_in:
             move = invoice.get_move()
@@ -1576,6 +1578,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     raise InvoiceFutureWarning(warning_key,
                         gettext('account_invoice.msg_invoice_date_future',
                             invoices=names))
+        cls._check_similar([i for i in invoices if i.state != 'validated'])
         cls._post(invoices)
 
     @classmethod
@@ -1604,6 +1607,58 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 reconciled.append(invoice)
         if reconciled:
             cls.__queue__.process(reconciled)
+
+    @classmethod
+    def _check_similar(cls, invoices, type='in'):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for sub_invoices in grouped_slice(invoices):
+            sub_invoices = list(sub_invoices)
+            domain = list(filter(None,
+                        (i._similar_domain() for i in sub_invoices
+                        if i.type == type)))
+            if not domain:
+                continue
+            if cls.search(['OR'] + domain, order=[]):
+                for invoice in sub_invoices:
+                    domain = invoice._similar_domain()
+                    if not domain:
+                        continue
+                    try:
+                        similar, = cls.search(domain, limit=1)
+                    except ValueError:
+                        continue
+                    warning_key = Warning.format(
+                        'invoice_similar', [invoice])
+                    if Warning.check(warning_key):
+                        raise InvoiceSimilarWarning(warning_key,
+                            gettext('account_invoice.msg_invoice_similar',
+                                similar=similar.rec_name,
+                                invoice=invoice.rec_name))
+
+    def _similar_domain(self, delay=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if not self.reference:
+            return
+        with Transaction().set_context(company=self.company.id):
+            invoice_date = self.invoice_date or Date.today()
+        if delay is None:
+            delay = dt.timedelta(days=60)
+        return [
+            ('company', '=', self.company.id),
+            ('type', '=', self.type),
+            ('party', '=', self.party.id),
+            ('reference', '=', self.reference),
+            ('id', '!=', self.id),
+            ['OR',
+                ('invoice_date', '=', None),
+                [
+                    ('invoice_date', '>=', invoice_date - delay),
+                    ('invoice_date', '<=', invoice_date + delay),
+                    ],
+                ],
+            ]
 
     @classmethod
     @ModelView.button_action('account_invoice.wizard_pay')

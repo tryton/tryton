@@ -39,3 +39,7 @@ class InvoicePaymentTermDateWarning(UserWarning):
 
 class InvoiceFutureWarning(UserWarning):
     pass
+
+
+class InvoiceSimilarWarning(UserWarning):
+    pass
