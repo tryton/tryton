@@ -1483,8 +1483,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Kapitaal</field>
             <field name="code">10</field>
-            <field name="type" ref="passif_I_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="1_nl"/>
         </record>
 
@@ -1510,8 +1508,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Reserves</field>
             <field name="code">13</field>
-            <field name="type" ref="passif_IV_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="1_nl"/>
         </record>
 
@@ -1544,8 +1540,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Schulden op meer dan één jaar</field>
             <field name="code">17</field>
-            <field name="type" ref="passif_VIII_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="1_nl"/>
         </record>
 
@@ -1625,8 +1619,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Financiële vaste activa</field>
             <field name="code">28</field>
-            <field name="type" ref="actif_IV_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="2_nl"/>
         </record>
 
@@ -1634,8 +1626,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Vorderingen op meer dan één jaar</field>
             <field name="code">29</field>
-            <field name="type" ref="actif_V_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="2_nl"/>
         </record>
 
@@ -1741,8 +1731,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Financiële schulden</field>
             <field name="code">43</field>
-            <field name="type" ref="passif_IX_B_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="4_nl"/>
         </record>
 
@@ -1875,8 +1863,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Handelsgoederen, grond- en hulpstoffen</field>
             <field name="code">60</field>
-            <field name="type" ref="resultats_II_A_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="6_nl"/>
         </record>
 
@@ -1918,8 +1904,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Financiële kosten</field>
             <field name="code">65</field>
-            <field name="type" ref="resultats_V_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="6_nl"/>
         </record>
 
@@ -1927,8 +1911,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Uitzonderlijke kosten</field>
             <field name="code">66</field>
-            <field name="type" ref="resultats_VIII_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="6_nl"/>
         </record>
 
@@ -1995,8 +1977,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Financiële opbrengsten</field>
             <field name="code">75</field>
-            <field name="type" ref="resultats_IV_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="7_nl"/>
         </record>
 
@@ -2004,8 +1984,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Uitzonderlijke opbrengsten</field>
             <field name="code">76</field>
-            <field name="type" ref="resultats_VII_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="7_nl"/>
         </record>
 
@@ -2377,8 +2355,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Onbeschikbare reserves</field>
             <field name="code">131</field>
-            <field name="type" ref="passif_IV_B_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="13_nl"/>
         </record>
 
@@ -2502,8 +2478,6 @@ this repository contains the full copyright notices and license terms. -->
             
             <field name="name">Handelsschulden</field>
             <field name="code">175</field>
-            <field name="type" ref="passif_VIII_B_nl"/>
-            <field name="closed" eval="True"/>
             <field name="parent" ref="17_nl"/>
         </record>
 
@@ -5795,7 +5769,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Toevoeging</field>
             <field name="code">6510</field>
             <field name="type" ref="resultats_V_B_nl"/>
-            <field name="parent" ref="650_nl"/>
+            <field name="parent" ref="651_nl"/>
         </record>
 
         <record id="6511_nl" model="account.account.template">
@@ -5803,7 +5777,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Terugneming (-)</field>
             <field name="code">6511</field>
             <field name="type" ref="resultats_V_B_nl"/>
-            <field name="parent" ref="650_nl"/>
+            <field name="parent" ref="651_nl"/>
         </record>
 
         <record id="6560_nl" model="account.account.template">
