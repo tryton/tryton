@@ -84,6 +84,10 @@ class StatementLine(metaclass=PoolMeta):
             'invisible': Bool(Eval('payment_group')) | Bool(Eval('invoice')),
             'readonly': Eval('statement_state') != 'draft',
             },
+        search_order=[('amount', 'ASC'), ('state', 'ASC')],
+        search_context={
+            'amount_order': Eval('amount', 0),
+            },
         depends=['company', 'party', 'currency', 'amount', 'statement_state'])
     payment_group = fields.Many2One(
         'account.payment.group', "Payment Group",
