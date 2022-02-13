@@ -5,6 +5,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from sql.aggregate import Count, Sum
+from sql.operators import Abs
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -448,6 +449,16 @@ class Payment(Workflow, ModelSQL, ModelView):
     @classmethod
     def search_currency(cls, name, clause):
         return [('journal.' + clause[0],) + tuple(clause[1:])]
+
+    @classmethod
+    def order_amount(cls, tables):
+        table, _ = tables[None]
+        context = Transaction().context
+        column = cls.amount.sql_column(table)
+        if isinstance(context.get('amount_order'), Decimal):
+            return [Abs(column - abs(context['amount_order']))]
+        else:
+            return [column]
 
     @fields.depends('kind')
     def on_change_kind(self):
