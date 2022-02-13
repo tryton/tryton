@@ -545,6 +545,29 @@ def AccountMixin(template=False):
             'on_change_with_deferral', searcher='search_deferral')
 
         @classmethod
+        def __setup__(cls):
+            super().__setup__()
+
+            if not cls.childs.domain:
+                cls.childs.domain = []
+            for type_ in ['type', 'debit_type']:
+                field = getattr(cls, type_)
+                field.domain = [
+                    If(Eval('parent')
+                        & Eval('_parent_parent.%s' % type_)
+                        & Eval('_parent_parent.parent'),
+                        ('id', '=', Eval('_parent_parent.%s' % type_)),
+                        ()),
+                    ]
+                field.depends.append('parent')
+
+                cls.childs.domain.append(
+                    If(Eval(type_),
+                        (type_, '=', Eval(type_)),
+                        ()))
+                cls.childs.depends.append(type_)
+
+        @classmethod
         def default_closed(cls):
             return False
 

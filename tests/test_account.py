@@ -1539,6 +1539,7 @@ class AccountTestCase(
             updated_account.code = 'REV'
             updated_account.name = 'Updated Account'
             updated_account.parent = new_account
+            updated_account.type = new_account.type
             updated_account.reconcile = True
             updated_account.end_date = datetime.date.today()
             updated_account.taxes = [updated_tax]
