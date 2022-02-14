@@ -491,7 +491,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('requested', 'Requested'),
             ('validated', 'Validated'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True)
+            ], "State", readonly=True, sort=False)
     payments = fields.One2Many('account.payment', 'sepa_mandate', 'Payments')
     has_payments = fields.Function(fields.Boolean('Has Payments'),
         'get_has_payments')
@@ -777,7 +777,7 @@ class Message(Workflow, ModelSQL, ModelView):
             ('waiting', 'Waiting'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
 
     @classmethod
     def __setup__(cls):
