@@ -182,7 +182,7 @@ class Purchase(
             ('waiting', 'Waiting'),
             ('paid', 'Paid'),
             ('exception', 'Exception'),
-            ], 'Invoice State', readonly=True, required=True)
+            ], 'Invoice State', readonly=True, required=True, sort=False)
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
@@ -210,7 +210,7 @@ class Purchase(
             ('waiting', 'Waiting'),
             ('received', 'Received'),
             ('exception', 'Exception'),
-            ], 'Shipment State', readonly=True, required=True)
+            ], 'Shipment State', readonly=True, required=True, sort=False)
     shipments = fields.Function(fields.Many2Many(
             'stock.shipment.in', None, None, "Shipments"),
         'get_shipments', searcher='search_shipments')
@@ -232,7 +232,7 @@ class Purchase(
             ('processing', "Processing"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     del _states, _depends
 
