@@ -223,7 +223,7 @@ class JournalPeriod(
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
-        ], 'State', readonly=True, required=True)
+        ], 'State', readonly=True, required=True, sort=False)
 
     @classmethod
     def __setup__(cls):

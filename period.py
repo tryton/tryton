@@ -35,7 +35,7 @@ class Period(Workflow, ModelSQL, ModelView):
             ('open', 'Open'),
             ('close', 'Close'),
             ('locked', 'Locked'),
-            ], 'State', readonly=True, required=True)
+            ], 'State', readonly=True, required=True, sort=False)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
         domain=[
             ('sequence_type', '=',

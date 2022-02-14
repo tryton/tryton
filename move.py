@@ -77,7 +77,7 @@ class Move(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'State', required=True, readonly=True, select=True)
+        ], 'State', required=True, readonly=True, select=True, sort=False)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'],
         context={
@@ -834,7 +834,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
-        ], 'State', readonly=True, required=True, select=True)
+        ], 'State', readonly=True, required=True, select=True, sort=False)
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=True)
     reconciliations_delegated = fields.One2Many(

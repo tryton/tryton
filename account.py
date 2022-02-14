@@ -2278,7 +2278,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'State')
+        ], "State", sort=False)
     state_string = state.translated('state')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
