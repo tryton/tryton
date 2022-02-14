@@ -115,7 +115,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('running', "Running"),
             ('closed', "Closed"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
