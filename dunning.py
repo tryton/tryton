@@ -120,7 +120,7 @@ class Dunning(ModelSQL, ModelView):
             ('draft', 'Draft'),
             ('waiting', "Waiting"),
             ('final', "Final"),
-            ], 'State', readonly=True)
+            ], 'State', readonly=True, sort=False)
     active = fields.Function(fields.Boolean('Active'), 'get_active',
         searcher='search_active')
     party = fields.Function(fields.Many2One(
