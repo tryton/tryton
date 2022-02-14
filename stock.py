@@ -81,7 +81,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('closed', "Closed"),
             ('ignored', "Ignored"),
-            ], "State", required=True, readonly=True, select=True)
+            ], "State", required=True, readonly=True, select=True, sort=False)
 
     @classmethod
     def __setup__(cls):
