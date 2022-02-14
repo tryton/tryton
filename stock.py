@@ -69,7 +69,7 @@ class QuantityIssue(
             ('open', "Open"),
             ('processing', "Processing"),
             ('solved', "Solved"),
-            ], "State", required=True, select=True, readonly=True)
+            ], "State", required=True, select=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
