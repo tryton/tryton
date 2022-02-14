@@ -52,7 +52,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     amount_reconciled = Monetary(
         "Amount Reconciled",
         currency='currency', digits='currency', readonly=True)
-    state = fields.Selection('get_states', "State", readonly=True)
+    state = fields.Selection('get_states', "State", readonly=True, sort=False)
 
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
