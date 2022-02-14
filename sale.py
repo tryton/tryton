@@ -202,7 +202,7 @@ class Sale(
             ('waiting', 'Waiting'),
             ('paid', 'Paid'),
             ('exception', 'Exception'),
-            ], 'Invoice State', readonly=True, required=True)
+            ], 'Invoice State', readonly=True, required=True, sort=False)
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
@@ -226,7 +226,7 @@ class Sale(
             ('waiting', 'Waiting'),
             ('sent', 'Sent'),
             ('exception', 'Exception'),
-            ], 'Shipment State', readonly=True, required=True)
+            ], "Shipment State", readonly=True, required=True, sort=False)
     shipments = fields.Function(fields.Many2Many(
             'stock.shipment.out', None, None, "Shipments"),
         'get_shipments', searcher='search_shipments')
@@ -264,7 +264,7 @@ class Sale(
             ('processing', "Processing"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
     state_string = state.translated('state')
 
     @classmethod
