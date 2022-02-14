@@ -147,7 +147,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('running', 'Running'),
             ('finished', 'Finished'),
             ('done', 'Done'),
-            ], 'State', select=True, readonly=True)
+            ], "State", select=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
@@ -291,7 +291,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
             ('running', 'Running'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], 'State', required=True, readonly=True)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
