@@ -148,7 +148,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     del _states
 
