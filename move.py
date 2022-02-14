@@ -235,7 +235,7 @@ class Move(Workflow, ModelSQL, ModelView):
         ('assigned', 'Assigned'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-        ], 'State', select=True, readonly=True,
+        ], "State", select=True, readonly=True, sort=False,
         help="The current state of the stock move.")
     company = fields.Many2One(
         'company.company', "Company", required=True,

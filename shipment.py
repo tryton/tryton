@@ -240,10 +240,10 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
+        ('received', 'Received'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-        ('received', 'Received'),
-        ], 'State', readonly=True,
+        ], "State", readonly=True, sort=False,
         help="The current state of the shipment.")
 
     @classmethod
@@ -654,11 +654,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('cancelled', 'Cancelled'),
-        ('assigned', 'Assigned'),
         ('waiting', 'Waiting'),
+        ('assigned', 'Assigned'),
         ('done', 'Done'),
-        ], 'State', readonly=True,
+        ('cancelled', 'Cancelled'),
+        ], 'State', readonly=True, sort=False,
         help="The current state of the shipment.")
 
     @classmethod
@@ -1041,13 +1041,13 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('done', 'Done'),
-        ('cancelled', 'Cancelled'),
+        ('waiting', 'Waiting'),
         ('assigned', 'Assigned'),
         ('picked', 'Picked'),
         ('packed', 'Packed'),
-        ('waiting', 'Waiting'),
-        ], 'State', readonly=True,
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled'),
+        ], "State", readonly=True, sort=False,
         help="The current state of the shipment.")
 
     @classmethod
@@ -1699,10 +1699,10 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
+        ('received', 'Received'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-        ('received', 'Received'),
-        ], 'State', readonly=True,
+        ], "State", readonly=True, sort=False,
         help="The current state of the shipment.")
 
     @classmethod
@@ -2174,12 +2174,12 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('request', 'Request'),
             ('draft', 'Draft'),
-            ('cancelled', 'Cancelled'),
             ('waiting', 'Waiting'),
             ('assigned', 'Assigned'),
             ('shipped', 'Shipped'),
             ('done', 'Done'),
-            ], 'State', readonly=True,
+            ('cancelled', 'Cancelled'),
+            ], "State", readonly=True, sort=False,
         help="The current state of the shipment.")
 
     @classmethod

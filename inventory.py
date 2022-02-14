@@ -64,7 +64,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True,
+            ], "State", readonly=True, select=True, sort=False,
         help="The current state of the inventory.")
 
     del _states, _depends
