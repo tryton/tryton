@@ -122,7 +122,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             ('validated', "Validated"),
             ('cancelled', "Cancelled"),
             ('posted', "Posted"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
     to_reconcile = fields.Function(
