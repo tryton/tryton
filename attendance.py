@@ -173,7 +173,7 @@ class Period(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
-        ], 'State', select=True, readonly=True,
+        ], "State", select=True, readonly=True, sort=False,
         help="The current state of the attendance period.")
 
     @classmethod
