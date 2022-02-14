@@ -1111,7 +1111,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
             ('requested', "Requested"),
             ('validated', "Validated"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True)
+            ], "State", readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):

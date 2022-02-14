@@ -72,7 +72,7 @@ class Error(Workflow, ModelView, ModelSQL):
             ('open', "Open"),
             ('processing', "Processing"),
             ('solved', "Solved"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
 
     @classmethod
     def __setup__(cls):

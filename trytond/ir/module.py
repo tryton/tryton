@@ -380,7 +380,7 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
     state = fields.Selection([
         ('open', 'Open'),
         ('done', 'Done'),
-        ], string='State', required=True, select=True)
+        ], string="State", required=True, select=True, sort=False)
 
     @classmethod
     def __register__(cls, module_name):
