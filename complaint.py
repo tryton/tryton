@@ -112,7 +112,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
             ('rejected', 'Rejected'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     @classmethod
     def __setup__(cls):
