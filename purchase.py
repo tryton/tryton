@@ -60,7 +60,7 @@ class Amendment(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', "Draft"),
             ('validated', "Validated"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
     lines = fields.One2Many(
         'purchase.amendment.line', 'amendment', "Lines",
         states={
