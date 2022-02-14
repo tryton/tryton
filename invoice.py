@@ -90,7 +90,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('posted', "Posted"),
             ('paid', "Paid"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True)
+            ], "State", readonly=True, sort=False)
     invoice_date = fields.Date('Invoice Date',
         states={
             'readonly': Eval('state').in_(['posted', 'paid', 'cancelled']),
