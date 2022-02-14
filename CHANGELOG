@@ -1,3 +1,4 @@
+* Order not sorted Selection by index definition
 * Add optional column on tree view
 * Use dictionary as domain on Reference field
 * Include model, field and column in import data error message

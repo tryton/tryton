@@ -132,11 +132,16 @@ class Selection(SelectionMixin, Field):
             else:
                 selections = []
         column = self.sql_column(table)
+        if not self.sort:
+            else_ = len(selections) + 1
+            selections = ((k, i) for i, (k, v) in enumerate(selections))
+        else:
+            else_ = column
         whens = []
         for key, value in selections:
             whens.append((column == key, value))
         if whens:
-            return [Case(*whens, else_=column)]
+            return [Case(*whens, else_=else_)]
         else:
             return [column]
 

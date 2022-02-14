@@ -543,6 +543,11 @@ A string field with limited values to choose from.
     If true, the choices will be sorted by human-readable value. Default value
     is ``True``.
 
+    .. note::
+      If it is ``False``, search results ordered by the field will use the
+      index of the selection instead of the human-readable name.
+   ..
+
 .. attribute:: Selection.selection_change_with
 
     A set of field names. If this attribute is set, the client will call the

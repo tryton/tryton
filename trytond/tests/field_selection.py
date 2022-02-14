@@ -19,6 +19,12 @@ class Selection(ModelSQL):
         'Static Selection')
     dyn_select_static_string = dyn_select_static.translated(
         'dyn_select_static')
+    unsorted_select = fields.Selection([
+            (None, ""),
+            ('first', "First"),
+            ('second', "Second"),
+            ('last', "Last"),
+            ], "Unsorted Selection", sort=False)
 
     @fields.depends('select')
     def get_selection(self):

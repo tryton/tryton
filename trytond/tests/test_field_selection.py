@@ -173,6 +173,25 @@ class FieldSelectionTestCase(unittest.TestCase):
         self.assertListEqual(values, ['3', '2', '1', '0x3', '0x2', '0x1'])
 
     @with_transaction()
+    def test_search_order_unsorted(self):
+        "Test search order with unsorted selection"
+        pool = Pool()
+        Selection = pool.get('test.selection')
+
+        Selection.create([{
+                    'unsorted_select': 'second',
+                    }, {
+                    'unsorted_select': 'last',
+                    }, {
+                    'unsorted_select': 'first',
+                    }])
+
+        records = Selection.search([], order=[('unsorted_select', 'ASC')])
+        values = [r.unsorted_select for r in records]
+
+        self.assertListEqual(values, ['first', 'second', 'last'])
+
+    @with_transaction()
     def test_string(self):
         "Test string selection"
         Selection = Pool().get('test.selection')
