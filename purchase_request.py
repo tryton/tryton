@@ -98,12 +98,12 @@ class PurchaseRequest(ModelSQL, ModelView):
     purchased_by = employee_field(
         "Purchased By", states=['purchased', 'done', 'cancelled', 'exception'])
     state = fields.Selection([
+            ('draft', "Draft"),
             ('purchased', "Purchased"),
             ('done', "Done"),
-            ('draft', "Draft"),
             ('cancelled', "Cancelled"),
             ('exception', "Exception"),
-            ], "State", required=True, readonly=True, select=True)
+            ], "State", required=True, readonly=True, select=True, sort=False)
 
     @classmethod
     def __setup__(cls):
