@@ -336,7 +336,7 @@ class Message(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('sending', "Sending"),
             ('sent', "Sent"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
     del _states, _depends
 
     @classmethod
