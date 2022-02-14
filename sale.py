@@ -155,7 +155,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('done', "Done"),
             ('posted', "Posted"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
 
     move = fields.Many2One(
         'account.move', "Move", readonly=True,
@@ -759,7 +759,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
             ('open', "Open"),
             ('closed', "Closed"),
             ('posted', "Posted"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
@@ -1211,7 +1211,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', "Draft"),
             ('posted', "Posted"),
-            ], "State", readonly=True, required=True)
+            ], "State", readonly=True, required=True, sort=False)
 
     move = fields.Many2One(
         'account.move', "Move", readonly=True,
