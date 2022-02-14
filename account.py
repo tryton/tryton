@@ -546,7 +546,7 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('succeeded', "Succeeded"),
             ('failed', "Failed"),
-            ], "State", readonly=True)
+            ], "State", readonly=True, sort=False)
 
     braintree_transaction_id = fields.Char(
         "Braintree Transaction ID", readonly=True)
