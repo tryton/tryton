@@ -163,7 +163,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
             ('running', "Running"),
             ('closed', "Closed"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, required=True,
+            ], "State", readonly=True, required=True, sort=False,
         help="The current state of the subscription.")
 
     @classmethod
