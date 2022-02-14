@@ -76,7 +76,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('running', "Running"),
             ('stopped', "Stopped"),
-            ], "State", required=True, readonly=True)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
@@ -754,7 +754,7 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
             ('waiting', "Waiting"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", required=True, readonly=True)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
