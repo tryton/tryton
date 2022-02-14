@@ -184,7 +184,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             ('shipped', 'Shipped'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True)
+            ], "State", readonly=True, sort=False)
 
     @classmethod
     def __register__(cls, module_name):
