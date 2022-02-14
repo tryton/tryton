@@ -693,7 +693,7 @@ class Refund(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('succeeded', "Succeeded"),
             ('failed', "Failed"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
 
     stripe_idempotency_key = fields.Char(
         "Stripe Idempotency Key", readonly=True)
