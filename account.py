@@ -149,7 +149,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             ('draft', 'Draft'),
             ('posted', 'Posted'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True)
+            ], "State", readonly=True, sort=False)
 
     factors = fields.Dict(None, "Factors", readonly=True)
 
