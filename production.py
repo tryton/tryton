@@ -160,7 +160,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             ('running', 'Running'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], 'State', readonly=True)
+            ], 'State', readonly=True, sort=False)
     origin = fields.Reference(
         "Origin", selection='get_origin', select=True,
         states={
