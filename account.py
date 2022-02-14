@@ -110,7 +110,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('posted', "Posted"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True)
+            ], "State", readonly=True, sort=False)
 
     del _states, _depends
 
