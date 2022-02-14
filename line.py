@@ -176,7 +176,7 @@ class MoveLine(ModelSQL, ModelView):
     analytic_state = fields.Selection([
             ('draft', 'Draft'),
             ('valid', 'Valid'),
-            ], 'Analytic State', readonly=True, select=True)
+            ], "Analytic State", readonly=True, select=True, sort=False)
 
     @classmethod
     def __setup__(cls):

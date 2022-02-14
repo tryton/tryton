@@ -80,7 +80,7 @@ class Account(
         ('draft', 'Draft'),
         ('opened', 'Opened'),
         ('closed', 'Closed'),
-        ], 'State', required=True)
+        ], "State", required=True, sort=False)
     note = fields.Text('Note')
     distributions = fields.One2Many(
         'analytic_account.account.distribution', 'parent',
