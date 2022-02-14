@@ -128,10 +128,10 @@ class Quotation(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('sent', 'Sent'),
-        ('rejected', 'Rejected'),
         ('received', 'Received'),
+        ('rejected', 'Rejected'),
         ('cancelled', 'Cancelled'),
-        ], 'State', readonly=True, required=True)
+        ], "State", readonly=True, required=True, sort=False)
 
     @classmethod
     def __setup__(cls):
