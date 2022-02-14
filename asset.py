@@ -186,7 +186,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             ('draft', 'Draft'),
             ('running', 'Running'),
             ('closed', 'Closed'),
-            ], 'State', readonly=True)
+            ], "State", readonly=True, sort=False)
     lines = fields.One2Many('account.asset.line', 'asset', 'Lines',
         readonly=True)
     move = fields.Many2One('account.move', 'Account Move', readonly=True,
