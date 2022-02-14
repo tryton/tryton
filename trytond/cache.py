@@ -6,6 +6,7 @@ import logging
 import os
 import select
 import threading
+import time
 from collections import OrderedDict, defaultdict
 from datetime import datetime
 from weakref import WeakKeyDictionary
@@ -216,6 +217,9 @@ class MemoryCache(BaseCache):
                     cls._listener[pid, dbname] = listener = threading.Thread(
                         target=cls._listen, args=(dbname,), daemon=True)
                     listener.start()
+                    while (not getattr(listener, 'listening', False)
+                            and listener.is_alive()):
+                        time.sleep(.01)
             return
         if (datetime.now() - cls._clean_last).total_seconds() < _clear_timeout:
             return
@@ -354,9 +358,10 @@ class MemoryCache(BaseCache):
         try:
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
+            current_thread.listening = True
 
             while cls._listener.get((pid, dbname)) == current_thread:
-                readable, _, _ = select.select([conn], [], [])
+                readable, _, _ = select.select([conn], [], [], 60)
                 if not readable:
                     continue
 
