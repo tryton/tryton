@@ -367,7 +367,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             ('processing', 'Processing'),
             ('succeeded', 'Succeeded'),
             ('failed', 'Failed'),
-            ], 'State', readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
 
     @property
     def amount_line_paid(self):
