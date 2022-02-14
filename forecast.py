@@ -62,7 +62,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True, select=True, sort=False)
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
 
