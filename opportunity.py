@@ -128,10 +128,9 @@ class SaleOpportunity(
             ('opportunity', "Opportunity"),
             ('converted', "Converted"),
             ('won', "Won"),
-            ('cancelled', "Cancelled"),
             ('lost', "Lost"),
-            ], "State", required=True, select=True,
-        sort=False, readonly=True)
+            ('cancelled', "Cancelled"),
+            ], "State", required=True, select=True, sort=False, readonly=True)
 
     del _states_start, _depends_start
     del _states_stop, _depends_stop
