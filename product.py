@@ -15,8 +15,9 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        depends=['type'])
-    length_uom = fields.Many2One('product.uom', 'Length Uom',
+        depends=['type'],
+        help="Length for 1 default UOM.")
+    length_uom = fields.Many2One('product.uom', 'Length UOM',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
@@ -28,8 +29,9 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        depends=['type'])
-    height_uom = fields.Many2One('product.uom', 'Height Uom',
+        depends=['type'],
+        help="Height for 1 default UOM.")
+    height_uom = fields.Many2One('product.uom', 'Height UOM',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
@@ -41,8 +43,9 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        depends=['type'])
-    width_uom = fields.Many2One('product.uom', 'Width Uom',
+        depends=['type'],
+        help="Width for 1 default UOM.")
+    width_uom = fields.Many2One('product.uom', 'Width UOM',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
@@ -56,8 +59,9 @@ class Template(metaclass=PoolMeta):
             'readonly': (Bool(Eval('length'))
                 & Bool(Eval('height')) & Bool(Eval('width'))),
             },
-        depends=['type'])
-    volume_uom = fields.Many2One('product.uom', 'Volume Uom',
+        depends=['type'],
+        help="Volume for 1 default UOM.")
+    volume_uom = fields.Many2One('product.uom', 'Volume UOM',
         domain=[('category', '=', Id('product', 'uom_cat_volume'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
@@ -69,8 +73,9 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
             },
-        depends=['type'])
-    weight_uom = fields.Many2One('product.uom', 'Weight Uom',
+        depends=['type'],
+        help="Weight for 1 default UOM.")
+    weight_uom = fields.Many2One('product.uom', 'Weight UOM',
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'invisible': Eval('type').in_(NON_MEASURABLE),
