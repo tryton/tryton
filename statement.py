@@ -1056,7 +1056,7 @@ class LineGroup(ModelSQL, ModelView):
         return move.join(line,
             condition=move.id == line.move
             ).select(*columns,
-                where=move.origin.ilike(Statement.__name__ + ',%'),
+                where=move.origin.like(Statement.__name__ + ',%'),
                 group_by=std_columns + [move.id]
                 )
 
