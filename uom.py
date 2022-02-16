@@ -9,11 +9,10 @@ from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
     fields)
-from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
-from .exceptions import UOMValidationError
+from .exceptions import UOMAccessError, UOMValidationError
 
 __all__ = ['uom_conversion_digits']
 
@@ -153,26 +152,25 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
             super(Uom, cls).write(*args)
             return
 
-        actions = iter(args)
-        all_uoms = []
-        for uoms, values in zip(actions, actions):
-            if 'rate' not in values and 'factor' not in values \
-                    and 'category' not in values:
-                continue
-            all_uoms += uoms
-
-        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category))
-            for uom in all_uoms)
+        all_uoms = sum(args[0:None:2], [])
+        old_uom = {
+            uom.id: (uom.factor, uom.rate, uom.category) for uom in all_uoms}
+        old_digits = {uom.id: uom.digits for uom in all_uoms}
 
         super(Uom, cls).write(*args)
 
         for uom in all_uoms:
             for i, field in enumerate(['factor', 'rate', 'category']):
                 if getattr(uom, field) != old_uom[uom.id][i]:
-                    raise AccessError(
+                    raise UOMAccessError(
                         gettext('product.msg_uom_modify_%s' % field,
                             uom=uom.rec_name),
                         gettext('product.msg_uom_modify_options'))
+            if uom.digits < old_digits[uom.id]:
+                raise UOMAccessError(
+                    gettext('product.msg_uom_decrease_digits',
+                        uom=uom.rec_name),
+                    gettext('product.msg_uom_modify_options'))
 
     @property
     def accurate_field(self):

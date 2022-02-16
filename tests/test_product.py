@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import (
     ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
 from trytond.transaction import Transaction
 
+from ..exceptions import UOMAccessError
 from ..product import round_price
 
 
@@ -260,6 +261,57 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(
                 Uom.compute_price(g, price, m3, **keys), result,
                 msg=msg)
+
+    @with_transaction()
+    def test_uom_modify_factor_rate(self):
+        "Test can not modify factor or rate of uom"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        g, = Uom.search([('name', '=', "Gram")])
+
+        g.factor = 1
+        g.rate = 1
+
+        with self.assertRaises(UOMAccessError):
+            g.save()
+
+    @with_transaction()
+    def test_uom_modify_category(self):
+        "Test can not modify category of uom"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Category = pool.get('product.uom.category')
+        g, = Uom.search([('name', '=', "Gram")])
+        units, = Category.search([('name', '=', "Units")])
+
+        g.category = units
+
+        with self.assertRaises(UOMAccessError):
+            g.save()
+
+    @with_transaction()
+    def test_uom_increase_digits(self):
+        "Test can increase digits of uom"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        g, = Uom.search([('name', '=', "Gram")])
+
+        g.digits += 1
+
+        g.save()
+
+    @with_transaction()
+    def test_uom_decrease_digits(self):
+        "Test can not decrease digits of uom"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        g, = Uom.search([('name', '=', "Gram")])
+
+        g.digits -= 1
+        g.rounding = 1
+
+        with self.assertRaises(UOMAccessError):
+            g.save()
 
     @with_transaction()
     def test_product_search_domain(self):

@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model.exceptions import ValidationError
+from trytond.model.exceptions import AccessError, ValidationError
 
 
 class TemplateValidationError(ValidationError):
@@ -13,6 +13,10 @@ class ProductValidationError(TemplateValidationError):
 
 
 class UOMValidationError(ValidationError):
+    pass
+
+
+class UOMAccessError(AccessError):
     pass
 
 

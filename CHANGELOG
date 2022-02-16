@@ -1,3 +1,4 @@
+* Forbid to decrease digits of unit of measure
 * Add support for Python 3.10
 * Remove support for Python 3.6
 

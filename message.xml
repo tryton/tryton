@@ -12,6 +12,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_uom_modify_category">
             <field name="text">You cannot modify the category of UOM "%(uom)s".</field>
         </record>
+        <record model="ir.message" id="msg_uom_decrease_digits">
+            <field name="text">You cannot decrease the digits of UOM "%(uom)s".</field>
+        </record>
         <record model="ir.message" id="msg_uom_modify_options">
             <field name="text">If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.</field>
         </record>
