@@ -8,8 +8,9 @@ from collections import OrderedDict, defaultdict
 from itertools import groupby
 
 from sql import Literal, Union, Column, Null, For
-from sql.aggregate import Sum
+from sql.aggregate import Max, Sum
 from sql.conditionals import Coalesce, Case
+from sql.functions import Round
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
@@ -119,6 +120,8 @@ class StockMixin(object):
         pool = Pool()
         Product = pool.get('product.product')
         Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        uom = Uom.__table__()
 
         if not location_ids or not domain:
             return []
@@ -136,7 +139,12 @@ class StockMixin(object):
                 query = Move.compute_quantities_query(
                     location_ids, with_childs, grouping=grouping)
                 col_id = Column(query, grouping[position])
-                quantity = Sum(query.quantity)
+                # We need to round the result to have same result as
+                # products_by_location but as we do not have the unit, we use
+                # the biggest digits of all unit as best approximation.
+                quantity = Round(
+                    fields.Numeric('quantity').sql_cast(Sum(query.quantity)),
+                    uom.select(Max(uom.digits)))
                 group_by = [Column(query, key).as_(key) for key in grouping]
                 return [('id', 'in', query.select(
                             col_id,
