@@ -195,8 +195,8 @@ class CreateDPDShipping(Wizard):
                 email = mechanism.value
         if phone:
             shipping_party['phone'] = phone[:30]
-        if email:
-            shipping_party['email'] = email[:50]
+        if len(email) <= 50:
+            shipping_party['email'] = email
 
         return shipping_party
 
