@@ -142,7 +142,6 @@ class Function(Field):
 
     def definition(self, model, language):
         definition = self._field.definition(model, language)
-        definition.update(super().definition(model, language))
         definition['searchable'] &= (
             bool(self.searcher) or hasattr(model, 'domain_' + self.name))
         definition['sortable'] &= hasattr(model, 'order_' + self.name)
