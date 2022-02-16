@@ -390,6 +390,13 @@ For example::
 
     from: "Company Inc" <info@example.com>
 
+retry
+~~~~~
+
+The number of retries when the SMTP server returns a temporary error.
+
+Default: ``5``
+
 session
 -------
 

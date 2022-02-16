@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import smtplib
+import time
 from email.message import Message
 from email.mime.text import MIMEText
 from email.utils import formatdate
@@ -12,6 +13,7 @@ from trytond.transaction import Transaction
 
 __all__ = ['sendmail_transactional', 'sendmail', 'SMTPDataManager']
 logger = logging.getLogger(__name__)
+retry = config.getint('email', 'retry', default=5)
 
 
 def sendmail_transactional(
@@ -33,20 +35,36 @@ def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
             return
         quit = True
     else:
+        assert server.uri
         quit = False
     if 'Date' not in msg:
         msg['Date'] = formatdate()
-    try:
-        senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
-    except Exception:
-        if strict:
-            raise
-        logger.error('fail to send email', exc_info=True)
-    else:
-        if senderrs:
-            logger.warning('fail to send email to %s', senderrs)
+    for count in range(retry, -1, -1):
+        if count != retry:
+            time.sleep(0.02 * (retry - count))
+        try:
+            senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
+        except smtplib.SMTPResponseException as e:
+            if count and 400 <= e.smtp_code <= 499 and hasattr(server, 'uri'):
+                server.quit()
+                server = get_smtp_server(server.uri, strict=strict)
+                if server:
+                    continue
+            if strict:
+                raise
+            logger.error('fail to send email', exc_info=True)
+        except Exception:
+            if strict:
+                raise
+            logger.error('fail to send email', exc_info=True)
+        else:
+            if senderrs:
+                logger.warning('fail to send email to %s', senderrs)
+        break
     if quit:
         server.quit()
+    else:
+        return server
 
 
 def send_test_email(to_addrs, server=None):
@@ -62,6 +80,7 @@ def send_test_email(to_addrs, server=None):
 def get_smtp_server(uri=None, strict=False):
     if uri is None:
         uri = config.get('email', 'uri')
+    ini_uri = uri
     uri = parse_uri(uri)
     extra = {}
     if uri.query:
@@ -87,6 +106,7 @@ def get_smtp_server(uri=None, strict=False):
         server.login(
             unquote_plus(uri.username),
             unquote_plus(uri.password))
+    server.uri = ini_uri
     return server
 
 
@@ -123,7 +143,10 @@ class SMTPDataManager(object):
     def tpc_finish(self, trans):
         if self._server is not None:
             for from_addr, to_addrs, msg in self.queue:
-                sendmail(from_addr, to_addrs, msg, server=self._server)
+                new_server = sendmail(
+                    from_addr, to_addrs, msg, server=self._server)
+                if new_server:
+                    self._server = new_server
             self._server.quit()
             self._finish()
 

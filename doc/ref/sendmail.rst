@@ -23,8 +23,10 @@ The strict value is passed to instantiate the default :class:`SMTPDataManager`.
 .. method:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
 
 Send email message like :meth:`sendmail_transactional` but directly without
-caring about the transaction.
+caring about the transaction and return the `server`.
 The caller may pass a server instance from `smtplib`_.
+It may return a new server instance if a reconnection was needed and if the
+instance comes from :meth:`get_smtp_server`.
 If strict is ``True``, an exception is raised if it is not possible to connect
 to the server.
 
