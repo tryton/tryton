@@ -14,6 +14,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="ir.sequence_view_tree"/>
             <field name="name">sequence_tree</field>
         </record>
+        <record model="ir.ui.view" id="sequence_strict_view_form">
+            <field name="model">ir.sequence.strict</field>
+            <field name="inherit" ref="ir.sequence_view_form"/>
+            <field name="name">sequence_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sequence_strict_view_tree">
+            <field name="model">ir.sequence.strict</field>
+            <field name="inherit" ref="ir.sequence_view_tree"/>
+            <field name="name">sequence_tree</field>
+        </record>
 
         <record model="ir.rule.group" id="rule_group_sequence_companies">
             <field name="name">User in companies</field>
