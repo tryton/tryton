@@ -1445,10 +1445,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('moves', methods=['planned_delivery_date'])
     def on_change_with_delivery_date(self, name=None):
-        if self.moves:
+        moves = [m for m in self.moves if m.state != 'cancelled']
+        if moves:
             dates = filter(
-                None, (m.effective_date or m.planned_date for m in self.moves
-                    if m.state != 'cancelled'))
+                None, (m.effective_date or m.planned_date for m in moves))
             return min(dates, default=None)
         return self.planned_delivery_date
 
