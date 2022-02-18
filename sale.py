@@ -89,7 +89,7 @@ class Line(metaclass=PoolMeta):
                         for l in invoice_lines)):
                 return
 
-        date = self.shipping_date
+        date = self.shipping_date or today
         if date <= today:
             date = today
         else:
