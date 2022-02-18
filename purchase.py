@@ -1313,10 +1313,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_delivery_date(self, name=None):
         pool = Pool()
         Date = pool.get('ir.date')
-        if self.moves:
+        moves = [m for m in self.moves if m.state != 'cancel']
+        if moves:
             dates = filter(
-                None, (m.effective_date or m.planned_date for m in self.moves
-                    if m.state != 'cancel'))
+                None, (m.effective_date or m.planned_date for m in moves))
             return min(dates, default=None)
         delivery_date = None
         if self.delivery_date_edit:
