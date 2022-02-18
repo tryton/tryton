@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import ANY, patch
 
 from trytond.config import config
+
 try:
     from trytond.modules.company.tests import CompanyTestMixin
 except ImportError:
@@ -33,7 +34,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
-    def _setup_notification(self):
+    def _setup_notification(self, recipient_field='create_uid'):
         pool = Pool()
         Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
@@ -63,7 +64,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email = NotificationEmail()
         notification_email.recipients, = ModelField.search([
                 ('model.model', '=', model.model),
-                ('name', '=', 'create_uid'),
+                ('name', '=', recipient_field),
                 ])
         notification_email.content = report
         notification_email.save()
@@ -131,6 +132,49 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(log.recipients, 'Administrator <user@example.com>')
         self.assertEqual(log.recipients_secondary, '')
         self.assertEqual(log.recipients_hidden, '')
+
+    @unittest.skipIf(
+        (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
+    @with_transaction()
+    def test_notification_email_id_recipient(self):
+        "Test email notificiation is sent when using id as recipient"
+        pool = Pool()
+        User = pool.get('res.user')
+        Trigger = pool.get('ir.trigger')
+        Model = pool.get('ir.model')
+        NotificationEmail = pool.get('notification.email')
+        Log = pool.get('notification.email.log')
+
+        self._setup_notification(recipient_field='id')
+        notification_email, = NotificationEmail.search([])
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        Trigger.create([{
+                    'name': 'Test creation',
+                    'model': model.id,
+                    'on_create': True,
+                    'condition': 'true',
+                    'notification_email': notification_email.id,
+                    'action': 'notification.email|trigger',
+                    }])
+
+        with patch.object(
+                notification_module, 'sendmail_transactional') as sendmail, \
+                patch.object(notification_module, 'SMTPDataManager'):
+            User.create([{
+                        'name': "Michael Scott",
+                        'login': "msc",
+                        'email': 'msc@example.com'}])
+            self.run_tasks()
+            sendmail.assert_called_once_with(
+                FROM, ['msc@example.com'], ANY,
+                datamanager=ANY)
+
+        log, = Log.search([])
+        self.assertEqual(log.trigger.notification_email, notification_email)
+        self.assertEqual(log.recipients, 'Michael Scott <msc@example.com>')
 
     @with_transaction()
     def test_notification_email_delay(self):
