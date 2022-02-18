@@ -1280,10 +1280,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_shipping_date(self, name=None):
         pool = Pool()
         Date = pool.get('ir.date')
-        if self.moves:
+        moves = [m for m in self.moves if m.state != 'cancel']
+        if moves:
             dates = filter(
-                None, (m.effective_date or m.planned_date for m in self.moves
-                    if m.state != 'cancel'))
+                None, (m.effective_date or m.planned_date for m in moves))
             return min(dates, default=None)
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
