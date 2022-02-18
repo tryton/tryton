@@ -266,11 +266,17 @@ class Email(ModelSQL, ModelView):
         if logs:
             Log.create(logs)
 
+    def _get_recipients(self, record, name):
+        if name == 'id':
+            return record
+        else:
+            return getattr(record, name, None)
+
     def _get_to(self, record):
         to = []
         languagues = set()
         if self.recipients:
-            recipients = getattr(record, self.recipients.name, None)
+            recipients = self._get_recipients(record, self.recipients.name)
             if recipients:
                 languagues.update(self._get_languages(recipients))
                 to = self._get_addresses(recipients)
@@ -284,8 +290,8 @@ class Email(ModelSQL, ModelView):
         cc = []
         languagues = set()
         if self.recipients_secondary:
-            recipients_secondary = getattr(
-                record, self.recipients_secondary.name, None)
+            recipients_secondary = self._get_recipients(
+                record, self.recipients_secondary.name)
             if recipients_secondary:
                 languagues.update(
                     self._get_languages(recipients_secondary))
@@ -300,8 +306,8 @@ class Email(ModelSQL, ModelView):
         bcc = []
         languagues = set()
         if self.recipients_hidden:
-            recipients_hidden = getattr(
-                record, self.recipients_hidden.name, None)
+            recipients_hidden = self._get_recipients(
+                record, self.recipients_hidden.name)
             if recipients_hidden:
                 languagues.update(self._get_languages(recipients_hidden))
                 bcc = self._get_addresses(recipients_hidden)
