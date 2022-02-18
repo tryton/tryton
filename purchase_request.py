@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import If, In, Eval, Bool
+from trytond.pyson import If, Eval, Bool
 from trytond.tools import sortable_values, firstline
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -89,10 +89,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     purchase = fields.Function(fields.Many2One('purchase.purchase',
         'Purchase'), 'get_purchase', searcher='search_purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
-            readonly=True, domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Eval('context', {}).get('company', -1)),
-            ])
+            readonly=True)
     origin = fields.Reference('Origin', selection='get_origin', readonly=True)
     exception_ignored = fields.Boolean('Ignored Exception')
 
