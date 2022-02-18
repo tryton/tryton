@@ -211,11 +211,17 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         if not name and not email:
             return []
         s = StringMatcher()
-        s.set_seq2(_formataddr((name, email)))
+        try:
+            s.set_seq2(_formataddr((name, email)))
+        except UnicodeEncodeError:
+            return []
 
         def generate(name, email):
             for name, email in cls._match(name, email):
-                address = _formataddr((name, email))
+                try:
+                    address = _formataddr((name, email))
+                except UnicodeEncodeError:
+                    continue
                 s.set_seq1(address)
                 yield (
                     s.ratio(), address,
