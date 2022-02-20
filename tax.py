@@ -374,7 +374,8 @@ class TaxCodeLine(ModelSQL, ModelView):
     @property
     def value(self):
         value = getattr(self.tax, '%s_%s_amount' % (self.type, self.amount))
-        value = abs(value)
+        if self.type == 'credit':
+            value *= -1
         if self.operator == '-':
             value *= -1
         return value
