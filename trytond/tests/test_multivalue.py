@@ -120,6 +120,20 @@ class MultiValueTestCase(unittest.TestCase):
         self.assertEqual(len(ModelValue.search([])), 2)
 
     @with_transaction()
+    def test_set_multivalue_other_default(self):
+        "Test set_multivalue with other default"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        ModelValue = pool.get('test.model_multivalue.value')
+
+        record = ModelMultiValue()
+        record.save()
+        record.set_multivalue('value', "test")
+
+        value, = ModelValue.search([])
+        self.assertEqual(value.value_default, "other default")
+
+    @with_transaction()
     def test_mutlivalue_setter(self):
         "Test multivalue setter"
         pool = Pool()

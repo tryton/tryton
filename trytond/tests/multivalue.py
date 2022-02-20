@@ -8,12 +8,24 @@ class ModelMultiValue(ModelSQL, MultiValueMixin):
     "Model MultiValue"
     __name__ = 'test.model_multivalue'
     value = fields.MultiValue(fields.Char("Value"))
+    value_default = fields.MultiValue(fields.Char("Value Default"))
     values = fields.One2Many(
         'test.model_multivalue.value', 'record', "Values")
 
     @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'value_default':
+            return pool.get('test.model_multivalue.value')
+        return super().multivalue_model(field)
+
+    @classmethod
     def default_value(cls, **pattern):
         return "default"
+
+    @classmethod
+    def default_value_default(cls, **pattern):
+        return "other default"
 
 
 class ModelValue(ModelSQL, ValueMixin):
@@ -23,6 +35,7 @@ class ModelValue(ModelSQL, ValueMixin):
         'test.model_multivalue', "Record")
     condition = fields.Char("Condition")
     value = fields.Char("Value")
+    value_default = fields.Char("Value Default")
 
 
 def register(module):

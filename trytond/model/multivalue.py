@@ -2,6 +2,7 @@
 # repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
+from .fields import MultiValue
 from .match import MatchMixin
 from .model import Model
 
@@ -33,7 +34,15 @@ class MultiValueMixin(object):
                 pattern = pattern.copy()
                 pattern[fname] = self
                 break
-        return Value(**pattern)
+        record = Value(**pattern)
+        for oname, ofield in self._fields.items():
+            if (oname != field
+                    and isinstance(ofield, MultiValue)
+                    and self.multivalue_model(oname) == Value):
+                func = getattr(self, 'default_%s' % oname, None)
+                if func:
+                    setattr(record, oname, func(**pattern))
+        return record
 
     def __values(self, field, pattern, match_none=True):
         Value = self.multivalue_model(field)
