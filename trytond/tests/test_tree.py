@@ -140,6 +140,23 @@ class TreeTestCaseMixin:
         Model.delete(records)
         self.check_tree()
 
+    @with_transaction()
+    def test_write_multiple_parents(self):
+        "Test write multiple parents"
+        pool = Pool()
+        Model = pool.get(self.model_name)
+
+        record1 = Model(name="Root")
+        record1.save()
+        record2 = Model(name="Child", parent=record1)
+        record2.save()
+        record3 = Model(name="Grand Child", parent=record2)
+        record3.save()
+        self.check_tree()
+
+        Model.write([record2, record3], {'parent': None})
+        self.check_tree()
+
     def rebuild(self):
         raise NotImplementedError
 
