@@ -95,7 +95,7 @@ Pending amount is used to fill all invoices::
 
     >>> origin, = statement.origins
     >>> line = origin.lines.new()
-    >>> line.invoice = customer_invoice1
+    >>> line.related_to = customer_invoice1
     >>> line.amount
     Decimal('100.00')
     >>> line.party == customer
@@ -105,7 +105,7 @@ Pending amount is used to fill all invoices::
     >>> origin.pending_amount
     Decimal('80.00')
     >>> line = origin.lines.new()
-    >>> line.invoice = customer_invoice2
+    >>> line.related_to = customer_invoice2
     >>> line.amount
     Decimal('80.00')
     >>> line.party == customer

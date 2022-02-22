@@ -143,7 +143,7 @@ Received 180 from customer::
     >>> statement_line.party = customer
     >>> statement_line.account == receivable
     True
-    >>> statement_line.invoice = customer_invoice1
+    >>> statement_line.related_to = customer_invoice1
     >>> statement_line.amount
     Decimal('100.00')
     >>> statement_line = statement.lines[-1]
@@ -158,7 +158,7 @@ Received 180 from customer::
     >>> statement_line.account == receivable
     True
     >>> statement_line.description = 'other description'
-    >>> statement_line.invoice = customer_invoice2
+    >>> statement_line.related_to = customer_invoice2
     >>> statement_line.amount
     Decimal('80.00')
 
@@ -172,7 +172,7 @@ Paid 50 to customer::
     >>> statement_line.amount = Decimal('-50')
     >>> statement_line.party = customer
     >>> statement_line.account = receivable
-    >>> statement_line.invoice = customer_credit_note
+    >>> statement_line.related_to = customer_credit_note
 
 Paid 50 to supplier::
 
@@ -183,7 +183,7 @@ Paid 50 to supplier::
     >>> statement_line.party = supplier
     >>> statement_line.account == payable
     True
-    >>> statement_line.invoice = supplier_invoice
+    >>> statement_line.related_to = supplier_invoice
     >>> statement_line.amount
     Decimal('-50.00')
     >>> statement_line = statement.lines.pop()
@@ -302,8 +302,8 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> statement_line.party = customer
     >>> statement_line.account = receivable
     >>> statement_line.amount = Decimal(-120)
-    >>> statement_line.invoice = customer_invoice3
-    >>> statement_line.invoice.id == customer_invoice3.id
+    >>> statement_line.related_to = customer_invoice3
+    >>> statement_line.related_to.id == customer_invoice3.id
     True
 
     >>> statement_line = StatementLine()
@@ -312,7 +312,7 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> statement_line.party = supplier
     >>> statement_line.account = payable
     >>> statement_line.amount = Decimal(50)
-    >>> statement_line.invoice = supplier_invoice2
+    >>> statement_line.related_to = supplier_invoice2
     >>> statement_line.amount
     Decimal('40.00')
     >>> len(statement.lines)
@@ -341,7 +341,7 @@ Testing the use of an invoice in multiple statements::
     >>> statement_line.party = customer
     >>> statement_line.account = receivable
     >>> statement_line.amount = Decimal(300)
-    >>> statement_line.invoice = customer_invoice4
+    >>> statement_line.related_to = customer_invoice4
     >>> statement1.save()
 
     >>> statement2 = Statement(name='2', journal=statement_journal)
@@ -351,7 +351,7 @@ Testing the use of an invoice in multiple statements::
     >>> statement_line.party = customer
     >>> statement_line.account = receivable
     >>> statement_line.amount = Decimal(300)
-    >>> statement_line.invoice = customer_invoice4
+    >>> statement_line.related_to = customer_invoice4
     >>> statement2.save()
 
     >>> statement1.click('validate_statement') # doctest: +IGNORE_EXCEPTION_DETAIL
@@ -366,10 +366,10 @@ Testing the use of an invoice in multiple statements::
     'validated'
 
     >>> statement1.reload()
-    >>> bool(statement1.lines[0].invoice)
+    >>> bool(statement1.lines[0].related_to)
     True
     >>> statement2.reload()
-    >>> bool(statement2.lines[0].invoice)
+    >>> bool(statement2.lines[0].related_to)
     False
 
 Testing balance validation::

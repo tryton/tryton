@@ -7,6 +7,7 @@ from itertools import groupby
 from sql import Null
 from sql.aggregate import Max, Sum
 from sql.conditionals import Coalesce
+from sql.operators import Concat
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -250,12 +251,12 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         invoices = set()
         for line in self.lines:
-            if (getattr(line, 'invoice', None)
+            if (line.invoice
                     and line.invoice.currency == self.company.currency):
                 invoices.add(line.invoice)
         for origin in self.origins:
             for line in origin.lines:
-                if (getattr(line, 'invoice', None)
+                if (line.invoice
                         and line.invoice.currency == self.company.currency):
                     invoices.add(line.invoice)
         invoice_id2amount_to_pay = {}
@@ -270,7 +271,8 @@ class Statement(Workflow, ModelSQL, ModelView):
         for origin in origins:
             lines = list(origin.lines)
             for line in lines:
-                if (getattr(line, 'invoice', None) and line.id
+                if (line.invoice
+                        and line.id
                         and line.invoice.id in invoice_id2amount_to_pay):
                     amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
                     if (amount_to_pay
@@ -297,7 +299,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         invoices = set()
         for line in self.lines:
-            if (getattr(line, 'invoice', None)
+            if (line.invoice
                     and line.invoice.currency == self.company.currency):
                 invoices.add(line.invoice)
         invoice_id2amount_to_pay = {}
@@ -311,7 +313,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         lines = list(self.lines)
         line_offset = 0
         for index, line in enumerate(self.lines or []):
-            if getattr(line, 'invoice', None) and line.id:
+            if line.invoice and line.id:
                 if line.invoice.id not in invoice_id2amount_to_pay:
                     continue
                 amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
@@ -495,7 +497,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     gettext('account_statement'
                         '.msg_statement_invoice_paid_cancelled'))
             Line.write(paid_cancelled_invoice_lines, {
-                    'invoice': None,
+                    'related_to': None,
                     })
 
         cls.create_move(statements)
@@ -504,9 +506,10 @@ class Statement(Workflow, ModelSQL, ModelView):
                 'state': 'validated',
                 })
         common_lines = [l for l in Line.search([
-                ('statement.state', '=', 'draft'),
-                ('invoice.state', 'in', ['posted', 'paid']),
-                ])
+                    ('statement.state', '=', 'draft'),
+                    ('related_to.state', 'in', ['posted', 'paid'],
+                        'account.invoice'),
+                    ])
             if l.invoice.reconciled]
         if common_lines:
             warning_key = '_'.join(str(l.id) for l in common_lines)
@@ -515,7 +518,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     gettext('account_statement'
                         '.msg_statement_paid_invoice_draft'))
             Line.write(common_lines, {
-                    'invoice': None,
+                    'related_to': None,
                     })
 
     @classmethod
@@ -757,15 +760,22 @@ class Line(
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
-            If(Bool(Eval('account')), [('account', '=', Eval('account'))], []),
-            If(Eval('statement_state') == 'draft',
-                ('state', '=', 'posted'),
-                ('state', '!=', '')),
-            ],
+    related_to = fields.Reference(
+        "Related To", 'get_relations',
+        domain={
+            'account.invoice': [
+                ('company', '=', Eval('company', -1)),
+                If(Bool(Eval('party')),
+                    ('party', '=', Eval('party')),
+                    ()),
+                If(Bool(Eval('account')),
+                    ('account', '=', Eval('account')),
+                    ()),
+                If(Eval('statement_state') == 'draft',
+                    ('state', '=', 'posted'),
+                    ('state', '!=', '')),
+                ],
+            },
         states=_states,
         context={'with_payment': False},
         depends=['company', 'party', 'account'] + _depends)
@@ -796,11 +806,51 @@ class Line(
                 'account_statement.msg_line_amount_non_zero'),
             ]
 
+    @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+
+        super().__register__(module)
+
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+        if table_h.column_exist('invoice'):
+            cursor.execute(*table.update(
+                    [table.related_to],
+                    [Concat('account.invoice,', table.invoice)],
+                    where=table.invoice != Null))
+            table_h.drop_column('invoice')
+
+    @property
+    @fields.depends('related_to')
+    def invoice(self):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        related_to = getattr(self, 'related_to', None)
+        if isinstance(related_to, Invoice) and related_to.id >= 0:
+            return related_to
+
+    @invoice.setter
+    def invoice(self, value):
+        self.related_to = value
+
     @staticmethod
     def default_amount():
         return Decimal(0)
 
-    @fields.depends('amount', 'party', 'invoice', 'date')
+    @classmethod
+    def _get_relations(cls):
+        "Return a list of Model names for related_to Reference"
+        return ['account.invoice']
+
+    @classmethod
+    def get_relations(cls):
+        Model = Pool().get('ir.model')
+        get_name = Model.get_name
+        models = cls._get_relations()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
+
+    @fields.depends('amount', 'party', 'date', methods=['invoice'])
     def on_change_party(self):
         if self.party:
             if self.amount:
@@ -817,8 +867,10 @@ class Line(
             else:
                 self.invoice = None
 
-    @fields.depends('amount', 'party', 'account', 'invoice', 'statement',
-        'date', '_parent_statement.journal')
+    @fields.depends(
+        'amount', 'party', 'account', 'date',
+        'statement', '_parent_statement.journal',
+        methods=['invoice'])
     def on_change_amount(self):
         Currency = Pool().get('currency.currency')
         if self.party:
@@ -845,7 +897,7 @@ class Line(
             else:
                 self.invoice = None
 
-    @fields.depends('account', 'invoice')
+    @fields.depends('account', methods=['invoice'])
     def on_change_account(self):
         if self.invoice:
             if self.account:
@@ -854,8 +906,8 @@ class Line(
             else:
                 self.invoice = None
 
-    @fields.depends('party', 'account', 'invoice')
-    def on_change_invoice(self):
+    @fields.depends('party', 'account', methods=['invoice'])
+    def on_change_related_to(self):
         if self.invoice:
             if not self.party:
                 self.party = self.invoice.party
@@ -915,7 +967,7 @@ class Line(
         else:
             default = default.copy()
         default.setdefault('move', None)
-        default.setdefault('invoice', None)
+        default.setdefault('related_to', None)
         return super(Line, cls).copy(lines, default=default)
 
     @classmethod

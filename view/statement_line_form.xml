@@ -16,8 +16,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="account"/>
     <field name="account"/>
-    <label name="invoice"/>
-    <field name="invoice"/>
+    <label name="related_to"/>
+    <field name="related_to"/>
     <newline/>
     <label name="description"/>
     <field name="description" colspan="3"/>
