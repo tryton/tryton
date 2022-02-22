@@ -1640,6 +1640,24 @@ class ModelSQL(ModelStorage):
         update = transaction.connection.cursor()
         table = cls.__table__()
         parent = cls.__table__()
+
+        def update_path(query, column, sub_ids):
+            updated = set()
+            query.where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*query)
+            for old_path, new_path in cursor:
+                if old_path == new_path:
+                    continue
+                if any(old_path.startswith(p) for p in updated):
+                    return False
+                update.execute(*table.update(
+                        [column],
+                        [Concat(new_path,
+                                Substring(table.path, len(old_path) + 1))],
+                        where=table.path.like(old_path + '%')))
+                updated.add(old_path)
+            return True
+
         for field_name, ids in zip(field_names, list_ids):
             field = cls._fields[field_name]
             parent_column = Column(table, field_name)
@@ -1652,16 +1670,9 @@ class ModelSQL(ModelStorage):
                     Concat(Concat(
                             Coalesce(parent_path_column, ''), table.id), '/')))
             for sub_ids in grouped_slice(ids):
-                query.where = reduce_ids(table.id, sub_ids)
-                cursor.execute(*query)
-                for old_path, new_path in cursor:
-                    if old_path == new_path:
-                        continue
-                    update.execute(*table.update(
-                            [path_column],
-                            [Concat(new_path,
-                                    Substring(table.path, len(old_path) + 1))],
-                            where=table.path.like(old_path + '%')))
+                sub_ids = list(sub_ids)
+                while not update_path(query, path_column, sub_ids):
+                    pass
 
     @classmethod
     def _update_mptt(cls, field_names, list_ids, values=None):
