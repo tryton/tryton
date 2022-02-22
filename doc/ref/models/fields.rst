@@ -648,7 +648,9 @@ But a ``tuple`` can be used to search or set value.
 
 .. attribute:: Reference.search_order
 
-    Same as :attr:`Many2One.search_order`
+   A dictionary that contains a :ref:`PYSON <ref-pyson>` expression defining
+   the default order used to display search results in the clients per model
+   name.
 
 .. attribute:: Reference.search_context
 

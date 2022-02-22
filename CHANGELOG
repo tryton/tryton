@@ -1,3 +1,4 @@
+* Use dictionary as search_order on Reference field
 * Retry sending email on temporary failure
 * Order not sorted Selection by index definition
 * Add optional column on tree view

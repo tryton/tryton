@@ -85,7 +85,11 @@ class Reference(SelectionMixin, Field):
 
     @search_order.setter
     def search_order(self, value):
-        search_order_validate(value)
+        if value is None:
+            value = {}
+        assert isinstance(value, dict)
+        for order in value.values():
+            search_order_validate(order)
         self.__search_order = value
 
     @property
