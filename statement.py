@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
@@ -70,83 +70,58 @@ class Statement(metaclass=PoolMeta):
 
 class StatementLine(metaclass=PoolMeta):
     __name__ = 'account.statement.line'
-    payment = fields.Many2One('account.payment', 'Payment',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
-            ('state', 'in', ['processing', 'succeeded', 'failed']),
-            ('currency', '=', Eval('currency', -1)),
-            ('kind', '=',
-                If(Eval('amount', 0) > 0, 'receivable',
-                    If(Eval('amount', 0) < 0, 'payable', ''))),
-            ],
-        states={
-            'invisible': Bool(Eval('payment_group')) | Bool(Eval('invoice')),
-            'readonly': Eval('statement_state') != 'draft',
-            },
-        search_order=[('amount', 'ASC'), ('state', 'ASC')],
-        search_context={
-            'amount_order': Eval('amount', 0),
-            },
-        depends=['company', 'party', 'currency', 'amount', 'statement_state'])
-    payment_group = fields.Many2One(
-        'account.payment.group', "Payment Group",
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ('currency', '=', Eval('currency', -1)),
-            ],
-        states={
-            'invisible': Bool(Eval('payment')) | Bool(Eval('invoice')),
-            'readonly': Eval('statement_state') != 'draft',
-            },
-        depends=['company', 'currency', 'statement_state'])
 
     @classmethod
     def __setup__(cls):
         super(StatementLine, cls).__setup__()
-        invoice_invisible = Bool(Eval('payment')) | Bool(Eval('payment_group'))
-        if 'invisible' in cls.invoice.states:
-            cls.invoice.states['invisible'] |= invoice_invisible
-        else:
-            cls.invoice.states['invisible'] = invoice_invisible
+        cls.related_to.domain['account.payment.group'] = [
+            ('company', '=', Eval('company', -1)),
+            ('currency', '=', Eval('currency', -1))
+            ]
+        for fname in ['company', 'currency']:
+            if fname not in cls.related_to.depends:
+                cls.related_to.depends.append(fname)
 
     @classmethod
-    def copy(cls, lines, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-        default.setdefault('payment', None)
-        default.setdefault('payment_group', None)
-        return super(StatementLine, cls).copy(lines, default=default)
+    def _get_relations(cls):
+        return super()._get_relations() + ['account.payment.group']
 
-    @fields.depends('payment', 'party', 'account',
-        'statement', '_parent_statement.journal')
-    def on_change_payment(self):
+    @property
+    @fields.depends('related_to')
+    def payment_group(self):
+        pool = Pool()
+        PaymentGroup = pool.get('account.payment.group')
+        related_to = getattr(self, 'related_to', None)
+        if isinstance(related_to, PaymentGroup) and related_to.id >= 0:
+            return related_to
+
+    @payment_group.setter
+    def payment_group(self, value):
+        self.related_to = value
+
+    @fields.depends(methods=['payment', 'payment_group'])
+    def on_change_related_to(self):
+        super().on_change_related_to()
         if self.payment:
-            if not self.party:
-                self.party = self.payment.party
             clearing_account = self.payment.journal.clearing_account
-            if clearing_account and self.account != clearing_account:
+            if clearing_account:
                 self.account = clearing_account
-
-    @fields.depends('payment_group', 'account')
-    def on_change_payment_group(self):
         if self.payment_group:
             self.party = None
             clearing_account = self.payment_group.journal.clearing_account
-            if clearing_account and self.account != clearing_account:
+            if clearing_account:
                 self.account = clearing_account
 
-    @fields.depends('party', 'payment')
+    @fields.depends('party', methods=['payment'])
     def on_change_party(self):
         super(StatementLine, self).on_change_party()
         if self.payment:
             if self.payment.party != self.party:
                 self.payment = None
-        self.payment_group = None
+        if self.party:
+            self.payment_group = None
 
-    @fields.depends('account', 'payment', 'payment_group')
+    @fields.depends('account', methods=['payment', 'payment_group'])
     def on_change_account(self):
         super(StatementLine, self).on_change_account()
         if self.payment:

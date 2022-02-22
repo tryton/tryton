@@ -12,13 +12,11 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> from trytond.modules.account_invoice.tests.tools import \
-    ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
 
 Activate modules::
 
-    >>> config = activate_modules(['account_payment_clearing', 'account_statement'])
+    >>> config = activate_modules(['account_payment_clearing'])
 
 Create company::
 
@@ -27,8 +25,7 @@ Create company::
 
 Create fiscal year::
 
-    >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    >>> fiscalyear = create_fiscalyear(company)
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::

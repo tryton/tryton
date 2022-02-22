@@ -248,7 +248,7 @@ Create a line for the payment::
 
     >>> line = statement.lines.new(date=today)
     >>> line.amount = Decimal('-50.00')
-    >>> line.payment = payment
+    >>> line.related_to = payment
     >>> line.party == supplier
     True
     >>> line.account == bank_clearing
@@ -257,17 +257,17 @@ Create a line for the payment::
 Remove the party must remove payment::
 
     >>> line.party = None
-    >>> line.payment
+    >>> line.related_to
 
-    >>> line.payment = payment
+    >>> line.related_to = payment
 
 Change account must remove payment::
 
     >>> line.account = receivable
-    >>> line.payment
+    >>> line.related_to
 
     >>> line.account = None
-    >>> line.payment = payment
+    >>> line.related_to = payment
 
 Validate statement::
 
@@ -291,7 +291,7 @@ Create a statement that reimburse the payment group::
     ...     end_balance=Decimal('0.00'),
     ...     )
     >>> line = statement.lines.new(date=today)
-    >>> line.payment_group = payment.group
+    >>> line.related_to = payment.group
     >>> line.account == bank_clearing
     True
     >>> line.amount = Decimal('50.00')
@@ -436,7 +436,7 @@ Create statement for the payment::
     ...     end_balance=Decimal('-50.00'))
     >>> line = statement.lines.new(date=yesterday)
     >>> line.amount = Decimal('-50.00')
-    >>> line.payment = payment
+    >>> line.related_to = payment
     >>> line.party == supplier
     True
     >>> line.account == bank_clearing
