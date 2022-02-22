@@ -14,7 +14,7 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Id
+from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 from trytond.wizard import (
@@ -567,6 +567,63 @@ class Invoice(metaclass=PoolMeta):
                                     invoice.currency)
                         amounts[invoice.id] -= payment_amount
         return amounts
+
+
+class StatementLine(metaclass=PoolMeta):
+    __name__ = 'account.statement.line'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.related_to.domain['account.payment'] = [
+            ('company', '=', Eval('company', -1)),
+            If(Bool(Eval('party')),
+                ('party', '=', Eval('party')),
+                ()),
+            ('state', 'in', ['processing', 'succeeded', 'failed']),
+            ('currency', '=', Eval('currency', -1)),
+            ('kind', '=',
+                If(Eval('amount', 0) > 0, 'receivable',
+                    If(Eval('amount', 0) < 0, 'payable', ''))),
+            ]
+        cls.related_to.search_order['account.payment'] = [
+            ('amount', 'ASC'),
+            ('state', 'ASC'),
+            ]
+        cls.related_to.search_context.update({
+                'amount_order': Eval('amount', 0),
+                })
+        for field in ['company', 'party', 'currency', 'amount']:
+            if field not in cls.related_to.depends:
+                cls.related_to.depends.append(field)
+
+    @classmethod
+    def _get_relations(cls):
+        return super()._get_relations() + ['account.payment']
+
+    @property
+    @fields.depends('related_to')
+    def payment(self):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        related_to = getattr(self, 'related_to', None)
+        if isinstance(related_to, Payment) and related_to.id >= 0:
+            return related_to
+
+    @payment.setter
+    def payment(self, value):
+        self.related_to = value
+
+    @fields.depends(
+        'party', 'statement', '_parent_statement.journal',
+        methods=['payment'])
+    def on_change_related_to(self):
+        super().on_change_related_to()
+        if self.payment:
+            if not self.party:
+                self.party = self.payment.party
+            if self.payment.line:
+                self.account = self.payment.line.account
 
 
 class Dunning(metaclass=PoolMeta):
