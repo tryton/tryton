@@ -2698,6 +2698,18 @@
                 inversion.localize_domain(screen_domain, this.name, true),
                 attr_domain]);
         },
+        get_search_order: function(record) {
+            var order = Sao.field.Reference._super.get_search_order.call(
+                this, record);
+            if (order !== null) {
+                var model = null;
+                if (record._values[this.name]) {
+                    model = record._values[this.name][0];
+                }
+                order = order[model] || null;
+            }
+            return order;
+        },
         get_models: function(record) {
             var domains = this.get_domains(record);
             var inversion = new Sao.common.DomainInversion();
