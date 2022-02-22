@@ -2078,26 +2078,16 @@
         set: function(record, value) {
             var rec_name = (
                 record._values[this.name + '.'] || {}).rec_name || '';
-            var store_rec_name = function(rec_name) {
-                Sao.setdefault(
-                    record._values, this.name + '.', {})
-                    .rec_name = rec_name[0].rec_name;
-            };
             if (!rec_name && (value >= 0) && (value !== null)) {
                 var model_name = record.model.fields[this.name].description
                     .relation;
-                var remote_rec_name = Sao.rpc({
+                rec_name = Sao.rpc({
                     'method': 'model.' + model_name + '.read',
                     'params': [[value], ['rec_name'], record.get_context()]
-                }, record.model.session, false);
-                store_rec_name(remote_rec_name);
-                record.group.root_group.screens.forEach(
-                    function (screen) {
-                        screen.display();
-                    });
-            } else {
-                store_rec_name.call(this, [{'rec_name': rec_name}]);
+                }, record.model.session, false)[0].rec_name;
             }
+            Sao.setdefault(
+                record._values, this.name + '.', {}).rec_name = rec_name;
             record._values[this.name] = value;
         },
         set_client: function(record, value, force_change) {
@@ -2643,26 +2633,21 @@
             }
             var rec_name = (
                 record._values[this.name + '.'] || {}).rec_name || '';
-            var store_rec_name = function(rec_name) {
-                Sao.setdefault(
-                    record._values, this.name + '.', {}).rec_name = rec_name;
-            }.bind(this);
             if (ref_model && ref_id !== null && ref_id >= 0) {
                 if (!rec_name && ref_id >= 0) {
-                    Sao.rpc({
+                    rec_name = Sao.rpc({
                         'method': 'model.' + ref_model + '.read',
                         'params': [[ref_id], ['rec_name'], record.get_context()]
-                    }, record.model.session).done(function(result) {
-                        store_rec_name(result[0].rec_name);
-                    });
+                    }, record.model.session, false)[0].rec_name;
                 }
             } else if (ref_model) {
                 rec_name = '';
             } else {
                 rec_name = ref_id;
             }
+            Sao.setdefault(
+                record._values, this.name + '.', {}).rec_name = rec_name;
             record._values[this.name] = [ref_model, ref_id];
-            store_rec_name(rec_name);
         },
         get_on_change_value: function(record) {
             if ((record.group.parent_name == this.name) &&
