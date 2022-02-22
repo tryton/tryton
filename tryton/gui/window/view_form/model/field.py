@@ -973,6 +973,16 @@ class ReferenceField(Field):
         return concat(localize_domain(
                 screen_domain, self.name, strip_target=True), attr_domain)
 
+    def get_search_order(self, record):
+        order = super().get_search_order(record)
+        if order is not None:
+            if record.value.get(self.name):
+                model = record.value[self.name][0]
+            else:
+                model = None
+            order = order.get(model)
+        return order
+
     def get_models(self, record):
         screen_domain, attr_domain = self.domains_get(record)
         screen_domain = prepare_reference_domain(screen_domain, self.name)
