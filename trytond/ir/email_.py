@@ -492,16 +492,17 @@ class EmailTemplate(ModelSQL, ModelView):
                         ],
                     ],
                 ])
-        values['to'] = addresses = []
+        addresses = set()
         for field in fields:
             try:
                 if field.name == 'id':
                     value = record
                 else:
                     value = getattr(record, field.name)
-                addresses += cls.get_addresses(value)
+                addresses.update(cls.get_addresses(value))
             except AccessError:
                 pass
+        values['to'] = list(addresses)
 
         try:
             values['subject'] = '%s: %s' % (
