@@ -28,7 +28,7 @@
                     name = data.error[1][0];
                     msg = data.error[1][1];
                     description = data.error[1][2];
-                    Sao.common.userwarning.run(msg, description)
+                    Sao.common.userwarning.run(description, msg)
                         .then(function(result) {
                             if (!~['always', 'ok'].indexOf(result)) {
                                 dfd.reject();
