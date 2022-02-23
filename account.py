@@ -370,7 +370,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         line.date = origin.date
         line.party = party
         line.account = account
-        line.invoice = invoice
+        line.related_to = invoice
         return line
 
     def _get_party(self, origin, keywords):
