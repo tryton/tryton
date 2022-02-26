@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import uuid
 import logging
 import urllib.parse
@@ -974,6 +975,9 @@ class Account(ModelSQL, ModelView):
         depends=['webhook_identifier'],
         help="The Stripe's signing secret of the webhook.")
     last_event = fields.Char("Last Event", readonly=True)
+    setup_intent_delay = fields.TimeDelta(
+        "Setup Intent Delay", required=True,
+        help="The delay before cancelling setup intent not succeeded.")
 
     @classmethod
     def __setup__(cls):
@@ -1001,6 +1005,10 @@ class Account(ModelSQL, ModelView):
                 '/%(database_name)s/account_payment_stripe'
                 '/webhook/%(identifier)s'
                 % url_part))
+
+    @classmethod
+    def default_setup_intent_delay(cls):
+        return dt.timedelta(days=30)
 
     @classmethod
     def fetch_events(cls):
@@ -1715,21 +1723,30 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             # Use clear cache after commit
             customer = cls(customer.id)
             setup_intent = customer.stripe_setup_intent
-            if not setup_intent or setup_intent.status != 'succeeded':
+            if not setup_intent:
+                continue
+            if setup_intent.status not in {'succeeded', 'canceled'}:
+                delay = customer.stripe_account.setup_intent_delay
+                expiration = dt.datetime.now() - delay
+                if dt.datetime.fromtimstamp(setup_intent.created) < expiration:
+                    stripe.SetupIntent.cancel(
+                        customer.stripe_customer_id,
+                        api_key=customer.stripe_account.secret_key)
                 continue
             customer.lock()
             try:
-                if customer.stripe_customer_id:
-                    stripe.PaymentMethod.attach(
-                        setup_intent.payment_method,
-                        customer=customer.stripe_customer_id,
-                        api_key=customer.stripe_account.secret_key)
-                else:
-                    cu = stripe.Customer.create(
-                        api_key=customer.stripe_account.secret_key,
-                        payment_method=setup_intent.payment_method,
-                        **customer._customer_parameters())
-                    customer.stripe_customer_id = cu.id
+                if setup_intent.status == 'succeeded':
+                    if customer.stripe_customer_id:
+                        stripe.PaymentMethod.attach(
+                            setup_intent.payment_method,
+                            customer=customer.stripe_customer_id,
+                            api_key=customer.stripe_account.secret_key)
+                    else:
+                        cu = stripe.Customer.create(
+                            api_key=customer.stripe_account.secret_key,
+                            payment_method=setup_intent.payment_method,
+                            **customer._customer_parameters())
+                        customer.stripe_customer_id = cu.id
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))

@@ -13,4 +13,7 @@ this repository contains the full copyright notices and license terms. -->
     <button name="new_identifier"/>
     <label name="webhook_signing_secret"/>
     <field name="webhook_signing_secret" colspan="3"/>
+
+    <label name="setup_intent_delay"/>
+    <field name="setup_intent_delay" colspan="3"/>
 </form>
