@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import xml.dom.minidom
 from difflib import SequenceMatcher
 from collections import defaultdict
 from io import BytesIO
@@ -13,6 +12,7 @@ from sql.functions import Substring, Position
 from sql.conditionals import Case
 from sql.aggregate import Max
 
+from defusedxml.minidom import parseString
 from genshi.filters.i18n import extract as genshi_extract
 from relatorio.reporting import MIMETemplateLoader
 from relatorio.templates.opendocument import get_zip_file
@@ -959,7 +959,7 @@ class TranslationSet(Wizard):
                 zip_.read('content.xml'),
                 zip_.read('styles.xml'),
                 ]:
-            document = xml.dom.minidom.parseString(content_xml)
+            document = parseString(content_xml)
             for string in extract(document.documentElement):
                 yield string
 

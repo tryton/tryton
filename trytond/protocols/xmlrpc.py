@@ -7,6 +7,7 @@ import logging
 # convert decimal to float before marshalling:
 from decimal import Decimal
 
+import defusedxml.xmlrpc
 from werkzeug.wrappers import Response
 from werkzeug.exceptions import (
     BadRequest, InternalServerError, Conflict, Forbidden, Locked,
@@ -20,6 +21,8 @@ from trytond.exceptions import (
 from trytond.tools import cached_property
 
 logger = logging.getLogger(__name__)
+
+defusedxml.xmlrpc.monkey_patch()
 
 
 def dump_decimal(self, value, write):
