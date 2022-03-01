@@ -13,7 +13,11 @@ import xmlrpc.client
 from decimal import Decimal
 from contextlib import contextmanager
 
+import defusedxml.xmlrpc
+
 __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
+
+defusedxml.xmlrpc.monkey_patch()
 
 
 def dump_decimal(self, value, write):
