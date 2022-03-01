@@ -10,7 +10,7 @@ from decimal import Decimal
 
 import proteus.config
 
-__version__ = "5.0.12"
+__version__ = "5.0.13"
 __all__ = ['Model', 'Wizard', 'Report']
 
 _MODELS = threading.local()
