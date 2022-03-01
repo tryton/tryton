@@ -1,3 +1,6 @@
+* Do not resolve entities by default with lxml (issue11219)
+* Use defusedxml to parse XML (issue11244)
+
 Version 6.0.15 - 2022-02-16
 * Bug fixes (see mercurial logs for details)
 

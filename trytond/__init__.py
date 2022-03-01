@@ -5,6 +5,8 @@ import time
 import warnings
 from email import charset
 
+from lxml import etree, objectify
+
 __version__ = "6.0.16"
 
 os.environ['TZ'] = 'UTC'
@@ -16,3 +18,7 @@ if time.tzname[0] != 'UTC':
 
 # set email encoding for utf-8 to 'quoted-printable'
 charset.add_charset('utf-8', charset.QP, charset.QP)
+
+# prevent XML vulnerabilities by default
+etree.set_default_parser(etree.XMLParser(resolve_entities=False))
+objectify.set_default_parser(objectify.makeparser(resolve_entities=False))
