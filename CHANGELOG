@@ -1,3 +1,5 @@
+Version 6.0.16 - 2022-03-01
+* Bug fixes (see mercurial logs for details)
 * Do not resolve entities by default with lxml (issue11219)
 * Use defusedxml to parse XML (issue11244)
 
