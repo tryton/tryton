@@ -250,7 +250,8 @@ class ModelView(Model):
             level = 1 if result['type'] == 'tree' else 0
 
         # Update arch and compute fields from arch
-        parser = etree.XMLParser(remove_blank_text=True)
+        parser = etree.XMLParser(
+            remove_blank_text=True, resolve_entities=False)
         tree = etree.fromstring(result['arch'], parser)
         result['arch'], result['fields'] = cls.parse_view(
             tree, result['type'], view_id=view_id,

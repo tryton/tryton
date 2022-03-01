@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import xml.dom.minidom
 from collections import defaultdict
 from difflib import SequenceMatcher
 from io import BytesIO
 
 import polib
+from defusedxml.minidom import parseString
 from genshi.filters.i18n import extract as genshi_extract
 from lxml import etree
 from relatorio.reporting import MIMETemplateLoader
@@ -958,7 +958,7 @@ class TranslationSet(Wizard):
                 zip_.read('content.xml'),
                 zip_.read('styles.xml'),
                 ]:
-            document = xml.dom.minidom.parseString(content_xml)
+            document = parseString(content_xml)
             for string in extract(document.documentElement):
                 yield string
 

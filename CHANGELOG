@@ -1,3 +1,5 @@
+* Do not resolve entities by default with lxml (issue11219)
+* Use defusedxml to parse XML (issue11244)
 * Use dictionary as search_order on Reference field
 * Retry sending email on temporary failure
 * Order not sorted Selection by index definition

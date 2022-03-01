@@ -157,6 +157,7 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.7',
     install_requires=[
+        'defusedxml',
         'lxml >= 2.0',
         'relatorio[fodt] >= 0.7.0',
         'Genshi',

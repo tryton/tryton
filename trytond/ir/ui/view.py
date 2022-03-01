@@ -241,7 +241,7 @@ class View(ModelSQL, ModelView):
                 ])
         views.sort(
             key=lambda v: self._module_index.get(v.module, -1), reverse=True)
-        parser = etree.XMLParser(remove_comments=True)
+        parser = etree.XMLParser(remove_comments=True, resolve_entities=False)
         tree = etree.fromstring(arch, parser=parser)
         decoder = PYSONDecoder({'context': Transaction().context})
         for view in views:
