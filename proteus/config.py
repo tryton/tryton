@@ -11,7 +11,11 @@ import urllib.parse
 import xmlrpc.client
 from decimal import Decimal
 
+import defusedxml.xmlrpc
+
 __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
+
+defusedxml.xmlrpc.monkey_patch()
 
 
 def dump_decimal(self, value, write):

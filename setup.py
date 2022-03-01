@@ -77,6 +77,7 @@ setup(name=name,
     license='LGPL-3',
     python_requires='>=3.4',
     install_requires=[
+        'defusedxml',
         "python-dateutil",
         ],
     extras_require={
