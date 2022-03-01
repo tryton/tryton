@@ -294,7 +294,7 @@ class ModelView(Model):
                     # There is perhaps a new module in the directory
                     ModelView._reset_modules_list()
                     raise_p = True
-            parser = etree.XMLParser(remove_comments=True)
+            parser = etree.XMLParser(remove_comments=True, resolve_entities=False)
             tree = etree.fromstring(result['arch'], parser=parser)
             for view in views:
                 if view.domain:
@@ -341,7 +341,8 @@ class ModelView(Model):
             result['view_id'] = view_id
 
         # Update arch and compute fields from arch
-        parser = etree.XMLParser(remove_blank_text=True)
+        parser = etree.XMLParser(
+            remove_blank_text=True, resolve_entities=False)
         tree = etree.fromstring(result['arch'], parser)
         xarch, xfields = cls._view_look_dom_arch(tree, result['type'],
                 result['field_childs'])

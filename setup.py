@@ -101,6 +101,7 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.4',
     install_requires=[
+        'defusedxml',
         'lxml >= 2.0; python_version != "3.4"',
         'lxml >=2.0, < 4.4; python_version == "3.4"',
         'relatorio[fodt] >= 0.7.0',
