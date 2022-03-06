@@ -101,7 +101,7 @@ class Package(metaclass=PoolMeta):
 class ShippingUPSMixin:
     __slots__ = ()
 
-    def validate_packing_ups(self):
+    def validate_packing_ups(self, usage=None):
         warehouse = self.shipping_warehouse
         if not warehouse.address:
             raise PackingValidationError(
@@ -111,7 +111,8 @@ class ShippingUPSMixin:
                     warehouse=warehouse.rec_name))
         if warehouse.address.country != self.delivery_address.country:
             for party in {self.shipping_to, self.company.party}:
-                if not party.contact_mechanism_get({'phone', 'mobile'}):
+                if not party.contact_mechanism_get(
+                        {'phone', 'mobile'}, usage=usage):
                     raise PackingValidationError(
                         gettext('stock_package_shipping_ups'
                             '.msg_phone_required',
@@ -269,7 +270,7 @@ class CreateShippingUPS(Wizard):
                 },
             }
 
-    def get_shipping_party(self, party, address):
+    def get_shipping_party(self, party, address, usage=None):
         shipping_party = {
             'Name': address.party_full_name[:35],
             'AttentionName': party.full_name[:35],
@@ -281,7 +282,7 @@ class CreateShippingUPS(Wizard):
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
-        phone = party.contact_mechanism_get({'phone', 'mobile'})
+        phone = party.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone:
             shipping_party['Phone'] = {
                 'Number': re.sub('[() .-]', '', phone.value)[:15]
