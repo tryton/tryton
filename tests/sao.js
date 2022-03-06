@@ -782,6 +782,12 @@
             new Sao.PYSON.In('test', []));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 "decode(In('test', []))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.In('test', new Sao.PYSON.Eval('foo', [])));
+        QUnit.strictEqual(new Sao.PYSON.Decoder({'foo': null}).decode(eval_),
+            false, "decode(In('test', Eval('foo', [])))");
+
         QUnit.strictEqual(new Sao.PYSON.In('foo', ['foo', 'bar']).toString(),
                 'In("foo", ["foo", "bar"])');
     });
