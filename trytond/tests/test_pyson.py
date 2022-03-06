@@ -488,6 +488,10 @@ class PYSONTestCase(unittest.TestCase):
         eval = pyson.PYSONEncoder().encode(pyson.In('test', []))
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
+        eval = pyson.PYSONEncoder().encode(
+            pyson.In('test', pyson.Eval('foo', [])))
+        self.assertFalse(pyson.PYSONDecoder({'foo': None}).decode(eval))
+
         self.assertEqual(repr(pyson.In('foo', ['foo', 'bar'])),
             "In('foo', ['foo', 'bar'])")
 
