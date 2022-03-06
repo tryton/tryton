@@ -682,10 +682,14 @@
     });
 
     Sao.PYSON.In.eval_ = function(value, context) {
-        if (value.v.indexOf) {
-            return Boolean(~value.v.indexOf(value.k));
+        if (value.v) {
+            if (value.v.indexOf) {
+                return Boolean(~value.v.indexOf(value.k));
+            } else {
+                return !!value.v[value.k];
+            }
         } else {
-            return !!value.v[value.k];
+            return false;
         }
     };
     Sao.PYSON.In.init_from_object = function(obj) {
