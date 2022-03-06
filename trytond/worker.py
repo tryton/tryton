@@ -138,9 +138,12 @@ def run_task(pool, task_id):
                     logger.critical('%s failed', name, exc_info=True)
                     return
                 task = Queue(task_id)
-                scheduled_at = dt.datetime.now()
-                scheduled_at += dt.timedelta(
-                    seconds=random.randint(0, 2 * retry))
+                if task.scheduled_at and task.enqueued_at < task.scheduled_at:
+                    duration = (task.scheduled_at - task.enqueued_at) * 2
+                else:
+                    duration = dt.timedelta(seconds=2 * retry)
+                duration = max(duration, dt.timedelta(hours=1))
+                scheduled_at = dt.datetime.now() + duration * random.random()
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
             logger.critical(
