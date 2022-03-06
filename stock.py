@@ -69,23 +69,26 @@ class ShippingMyGLSMixin:
                 gettext('stock_package_shipping_mygls'
                     '.msg_shipping_to_address_country_code_required',
                     shipping=self.rec_name))
-        if 'CS1' in self.carrier.mygls_services:
+        if (self.carrier.mygls_services
+                and 'CS1' in self.carrier.mygls_services):
             if not self.shipping_to.contact_mechanism_get({'phone', 'mobile'}):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
                         '.msg_phone_mobile_required',
                         shipment=self.rec_name,
                         party=self.shipping_to.rec_name))
-        if 'FDS' in self.carrier.mygls_services:
+        if (self.carrier.mygls_services
+                and 'FDS' in self.carrier.mygls_services):
             if not self.shipping_to.contact_mechanism_get('email'):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
                         '.msg_email_required',
                         shipment=self.rec_name,
                         party=self.shipping_to.rec_name))
-        if ('FSS' in self.carrier.mygls_services
-                or 'SM1' in self.carrier.mygls_services
-                or 'SM2' in self.carrier.mygls_services):
+        if (self.carrier.mygls_services
+                and ('FSS' in self.carrier.mygls_services
+                    or 'SM1' in self.carrier.mygls_services
+                    or 'SM2' in self.carrier.mygls_services)):
             if not self.shipping_to.contact_mechanism_get('mobile'):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
@@ -199,8 +202,9 @@ class ShipmentCreateShippingMyGLS(Wizard):
 
     def get_parcel(self, shipment, packages, credential):
         services = []
-        for code in shipment.carrier.mygls_services:
-            services.append({'Service': self.get_service(code, shipment)})
+        if shipment.carrier.mygls_services:
+            for code in shipment.carrier.mygls_services:
+                services.append({'Service': self.get_service(code, shipment)})
         return {
             'ClientNumber': credential.client_number,
             'ClientReference': shipment.number,
