@@ -485,11 +485,17 @@ class In(PYSON):
             assert obj.types().issubset({dict, list}), \
                 'obj must be a dict or a list'
             if obj.types() == {dict}:
-                assert isinstance(key, str), 'key must be a string'
+                if isinstance(key, PYSON):
+                    assert key.types() == {str}, 'key must be a string'
+                else:
+                    assert isinstance(key, str), 'key must be a string'
         else:
             assert isinstance(obj, (dict, list))
             if isinstance(obj, dict):
-                assert isinstance(key, str), 'key must be a string'
+                if isinstance(key, PYSON):
+                    assert key.types() == {str}, 'key must be a string'
+                else:
+                    assert isinstance(key, str), 'key must be a string'
         self._key = key
         self._obj = obj
 
