@@ -562,10 +562,10 @@ def AccountMixin(template=False):
                 field.depends.append('parent')
 
                 cls.childs.domain.append(
-                    If(Eval(type_),
+                    If(Eval(type_) & Eval('parent'),
                         (type_, '=', Eval(type_)),
                         ()))
-                cls.childs.depends.append(type_)
+                cls.childs.depends.extend([type_, 'parent'])
 
         @classmethod
         def default_closed(cls):
