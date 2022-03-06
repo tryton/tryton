@@ -139,6 +139,11 @@ class Product(metaclass=PoolMeta):
         def out_move(move):
             return not in_move(move)
 
+        def production_move(move):
+            return (
+                move.from_location.type == 'production'
+                or move.to_location.type == 'production')
+
         def compute_fifo_cost_price(quantity, date):
             fifo_moves = self.get_fifo_move(float(quantity), date=date)
 
@@ -154,10 +159,13 @@ class Product(metaclass=PoolMeta):
         # in order to keep quantity positive where possible
         # We do not re-browse because we expect only small changes
         moves = sorted(moves, key=lambda m: (
-                m.effective_date, out_move(m), m.id))
+                m.effective_date,
+                out_move(m) or (in_move(m) and production_move(m)),
+                m.id))
         current_moves = []
         current_out_qty = 0
         current_cost_price = cost_price
+        qty_production = 0
         for move in moves:
             if (current_moves
                     and current_moves[-1].effective_date
@@ -188,6 +196,7 @@ class Product(metaclass=PoolMeta):
                     current_cost_price = round_price(cost_price)
                 current_moves.clear()
                 current_out_qty = 0
+                qty_production = 0
             current_moves.append(move)
 
             cost_price = Revision.apply_up_to(
@@ -197,17 +206,23 @@ class Product(metaclass=PoolMeta):
             if out_move(move):
                 qty *= -1
             if in_move(move):
+                in_qty = qty
+                if production_move(move) and qty_production < 0:
+                    # Exclude quantity coming back from production
+                    in_qty -= min(abs(qty_production), in_qty)
                 unit_price = move.get_cost_price(product_cost_price=cost_price)
-                if quantity + qty > 0 and quantity >= 0:
+                if quantity + in_qty > 0 and quantity >= 0:
                     cost_price = (
-                        (cost_price * quantity) + (unit_price * qty)
-                        ) / (quantity + qty)
-                elif qty > 0:
+                        (cost_price * quantity) + (unit_price * in_qty)
+                        ) / (quantity + in_qty)
+                elif in_qty > 0:
                     cost_price = unit_price
                 current_cost_price = round_price(cost_price)
             elif out_move(move):
                 current_out_qty += -qty
             quantity += qty
+            if production_move(move):
+                qty_production += qty
 
         Move.write([
                 m for m in filter(in_move, current_moves)
@@ -224,11 +239,13 @@ class Product(metaclass=PoolMeta):
                     m for m in out_moves
                     if m.cost_price != fifo_cost_price],
                 dict(cost_price=fifo_cost_price))
-            if quantity:
+            if quantity > 0:
                 cost_price = (
                     ((cost_price * (quantity + current_out_qty))
                         - (fifo_cost_price * current_out_qty))
                     / quantity)
+            else:
+                cost_price = current_cost_price
         for revision in revisions:
             cost_price = revision.get_cost_price(cost_price)
         return cost_price
