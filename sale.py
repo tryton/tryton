@@ -233,7 +233,9 @@ class Sale(
     shipment_returns = fields.Function(fields.Many2Many(
             'stock.shipment.out.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
-    moves = fields.One2Many('stock.move', 'sale', 'Moves', readonly=True)
+    moves = fields.Function(
+        fields.Many2Many('stock.move', None, None, "Moves"),
+        'get_moves', searcher='search_moves')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -593,6 +595,13 @@ class Sale(
                 return 'waiting'
         return 'none'
 
+    def get_moves(self, name):
+        return [m.id for l in self.lines for m in l.moves]
+
+    @classmethod
+    def search_moves(cls, name, clause):
+        return [('lines.' + clause[0],) + tuple(clause[1:])]
+
     @classmethod
     def _get_origin(cls):
         'Return list of Model names for origin Reference'
@@ -703,7 +712,6 @@ class Sale(
         default.setdefault('number', None)
         default.setdefault('invoice_state', 'none')
         default.setdefault('invoices_ignored', None)
-        default.setdefault('moves', None)
         default.setdefault('shipment_state', 'none')
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
