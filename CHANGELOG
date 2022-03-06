@@ -1,3 +1,4 @@
+* Add volume dimensions to package
 * Filter out moves without quantity from package
 * Add support for Python 3.10
 * Remove support for Python 3.6

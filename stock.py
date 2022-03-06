@@ -10,7 +10,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.transaction import Transaction
 
-from .exceptions import PackageError
+from .exceptions import PackageError, PackageValidationError
 
 
 class Configuration(metaclass=PoolMeta):
@@ -77,22 +77,108 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class WeightMixin:
+class MeasurementsMixin:
     __slots__ = ()
+
+    packaging_length = fields.Float(
+        "Packaging Length", digits='packaging_length_uom',
+        help="The length of the package.")
+    packaging_length_uom = fields.Many2One(
+        'product.uom', "Packaging Length UOM",
+        domain=[('category', '=', Id('product', 'uom_cat_length'))],
+        states={
+            'required': Bool(Eval('packaging_length')),
+            },
+        depends=['packaging_length'])
+    packaging_height = fields.Float(
+        "Packaging Height", digits='packaging_height_uom',
+        help="The height of the package.")
+    packaging_height_uom = fields.Many2One(
+        'product.uom', "Packaging Height UOM",
+        domain=[('category', '=', Id('product', 'uom_cat_length'))],
+        states={
+            'required': Bool(Eval('packaging_height')),
+            },
+        depends=['packaging_height'])
+    packaging_width = fields.Float(
+        "Packaging Width", digits='packaging_width_uom',
+        help="The width of the package.")
+    packaging_width_uom = fields.Many2One(
+        'product.uom', "Packaging Width UOM",
+        domain=[('category', '=', Id('product', 'uom_cat_length'))],
+        states={
+            'required': Bool(Eval('packaging_width')),
+            },
+        depends=['packaging_width'])
+
+    packaging_volume = fields.Float(
+        "Packaging Volume", digits='packaging_volume_uom',
+        states={
+            'readonly': (
+                Bool(Eval('packaging_length'))
+                & Bool(Eval('packaging_height'))
+                & Bool(Eval('packaging_width'))),
+            },
+        depends=['packaging_length', 'packaging_height', 'packaging_width'],
+        help="The volume of the package.")
+    packaging_volume_uom = fields.Many2One(
+        'product.uom', "Packaging Volume UOM",
+        domain=[('category', '=', Id('product', 'uom_cat_volume'))],
+        states={
+            'required': Bool(Eval('packaging_volume')),
+            },
+        depends=['packaging_volume'])
 
     packaging_weight = fields.Float(
         "Packaging Weight", digits='packaging_weight_uom',
         help="The weight of the package when empty.")
     packaging_weight_uom = fields.Many2One(
-        'product.uom', "Packaging Weight Uom",
+        'product.uom', "Packaging Weight UOM",
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'required': Bool(Eval('packaging_weight')),
             },
         depends=['packaging_weight'])
 
+    @fields.depends(
+        'packaging_volume', 'packaging_volume_uom',
+        'packaging_length', 'packaging_length_uom',
+        'packaging_height', 'packaging_height_uom',
+        'packaging_width', 'packaging_width_uom')
+    def on_change_with_packaging_volume(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
 
-class Package(tree(), WeightMixin, ModelSQL, ModelView):
+        if not all([self.packaging_volume_uom,
+                    self.packaging_length, self.packaging_length_uom,
+                    self.packaging_height, self.packaging_height_uom,
+                    self.packaging_width, self.packaging_width_uom]):
+            if all([
+                        self.packaging_length,
+                        self.packaging_height,
+                        self.packaging_width]):
+                return
+            return self.packaging_volume
+
+        meter = Uom(ModelData.get_id('product', 'uom_meter'))
+        cubic_meter = Uom(ModelData.get_id('product', 'uom_cubic_meter'))
+
+        length = Uom.compute_qty(
+            self.packaging_length_uom, self.packaging_length, meter,
+            round=False)
+        height = Uom.compute_qty(
+            self.packaging_height_uom, self.packaging_height, meter,
+            round=False)
+        width = Uom.compute_qty(
+            self.packaging_width_uom, self.packaging_width, meter,
+            round=False)
+
+        return Uom.compute_qty(
+            cubic_meter, length * height * width, self.packaging_volume_uom)
+
+
+class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
     'Stock Package'
     __name__ = 'stock.package'
     _rec_name = 'code'
@@ -216,8 +302,37 @@ class Package(tree(), WeightMixin, ModelSQL, ModelView):
     @fields.depends('type')
     def on_change_type(self):
         if self.type:
-            self.packaging_weight = self.type.packaging_weight
-            self.packaging_weight_uom = self.type.packaging_weight_uom
+            for name in dir(MeasurementsMixin):
+                if isinstance(getattr(MeasurementsMixin, name), fields.Field):
+                    setattr(self, name, getattr(self.type, name))
+
+    @classmethod
+    def validate(cls, packages):
+        super().validate(packages)
+        for package in packages:
+            package.check_volume()
+
+    def check_volume(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        if not self.packaging_volume:
+            return
+        children_volume = 0
+        for child in self.children:
+            if child.packaging_volume:
+                children_volume += Uom.compute_qty(
+                    child.packaging_volume_uom, child.packaging_volume,
+                    self.packaging_volume_uom, round=False)
+        if self.packaging_volume < children_volume:
+            raise PackageValidationError(
+                gettext('stock_package.msg_package_volume_too_small',
+                    package=self.rec_name,
+                    volume=lang.format_number_symbol(
+                        self.packaging_volume, self.packaging_volume_uom),
+                    children_volume=lang.format_number_symbol(
+                        children_volume, self.packaging_volume_uom)))
 
     @classmethod
     def create(cls, vlist):
@@ -243,7 +358,7 @@ class Package(tree(), WeightMixin, ModelSQL, ModelView):
         return super().copy(packages, default=default)
 
 
-class Type(WeightMixin, ModelSQL, ModelView):
+class Type(MeasurementsMixin, ModelSQL, ModelView):
     'Stock Package Type'
     __name__ = 'stock.package.type'
     name = fields.Char('Name', required=True)

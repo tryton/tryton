@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_package_mismatch">
             <field name="text">To process shipment "%(shipment)s", you must pack all its moves.</field>
         </record>
+        <record model="ir.message" id="msg_package_volume_too_small">
+            <field name="text">The volume (%(volume)s) of package "%(package)s" is too small for summed volume (%(children_volume)s) of its children packages.</field>
+        </record>
     </data>
 </tryton>

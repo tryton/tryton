@@ -20,6 +20,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="children" colspan="4"/>
         </page>
         <page string="Measurements" col="3" id="measurements">
+            <label name="packaging_length"/>
+            <field name="packaging_length"/>
+            <field name="packaging_length_uom" widget="selection"/>
+
+            <label name="packaging_height"/>
+            <field name="packaging_height"/>
+            <field name="packaging_height_uom" widget="selection"/>
+
+            <label name="packaging_width"/>
+            <field name="packaging_width"/>
+            <field name="packaging_width_uom" widget="selection"/>
+
+            <label name="packaging_volume"/>
+            <field name="packaging_volume"/>
+            <field name="packaging_volume_uom" widget="selection"/>
+
             <label name="packaging_weight"/>
             <field name="packaging_weight"/>
             <field name="packaging_weight_uom"/>
