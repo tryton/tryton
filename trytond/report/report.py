@@ -148,6 +148,7 @@ class Report(URLMixin, PoolBase):
         ActionReport = pool.get('ir.action.report')
         cls.check_access()
         context = Transaction().context
+        ids = list(map(int, ids))
 
         action_id = data.get('action_id')
         if action_id is None:
