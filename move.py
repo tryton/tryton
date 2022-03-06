@@ -1759,17 +1759,18 @@ class Reconcile(Wizard):
             self.show.parties = parties
             return party,
 
-        if getattr(self.show, 'accounts', None) is None:
-            self.show.accounts = self.get_accounts()
-            if not next_account():
-                return 'end'
-        if getattr(self.show, 'parties', None) is None:
-            self.show.parties = self.get_parties(self.show.account)
+        with Transaction().set_context(_check_access=True):
+            if getattr(self.show, 'accounts', None) is None:
+                self.show.accounts = self.get_accounts()
+                if not next_account():
+                    return 'end'
+            if getattr(self.show, 'parties', None) is None:
+                self.show.parties = self.get_parties(self.show.account)
 
-        while not next_party():
-            if not next_account():
-                return 'end'
-        return 'show'
+            while not next_party():
+                if not next_account():
+                    return 'end'
+            return 'show'
 
     def default_show(self, fields):
         pool = Pool()
