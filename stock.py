@@ -210,7 +210,7 @@ class CreateDPDShipping(Wizard):
             'paperFormat': shipment.carrier.dpd_paper_format,
             }
 
-    def shipping_party(self, party, address):
+    def shipping_party(self, party, address, usage=None):
         shipping_party = {
             'name1': address.party_full_name[:35],
             'name2': '',
@@ -222,10 +222,10 @@ class CreateDPDShipping(Wizard):
         if party.full_name != address.party_full_name:
             shipping_party['name2'] = party.full_name[:35]
 
-        phone = party.contact_mechanism_get({'phone', 'mobile'})
+        phone = party.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone and len(phone.value) <= 30:
             shipping_party['phone'] = phone.value
-        email = party.contact_mechanism_get('email')
+        email = party.contact_mechanism_get('email', usage=usage)
         if email and len(email.value) <= 50:
             shipping_party['email'] = email.value
 
