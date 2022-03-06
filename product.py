@@ -382,8 +382,14 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         def out_move(move):
             return not in_move(move)
 
+        def production_move(move):
+            return (
+                move.from_location.type == 'production'
+                or move.to_location.type == 'production')
+
         current_moves = []
         current_cost_price = cost_price
+        qty_production = 0
         for move in moves:
             if (current_moves
                     and current_moves[-1].effective_date
@@ -393,6 +399,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                         if m.cost_price != current_cost_price],
                     dict(cost_price=current_cost_price))
                 current_moves.clear()
+                qty_production = 0
             current_moves.append(move)
 
             cost_price = Revision.apply_up_to(
@@ -402,15 +409,21 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             if out_move(move):
                 qty *= -1
             if in_move(move):
+                in_qty = qty
+                if production_move(move) and qty_production < 0:
+                    # Exclude quantity coming back from production
+                    in_qty -= min(abs(qty_production), in_qty)
                 unit_price = move.get_cost_price(product_cost_price=cost_price)
-                if quantity + qty > 0 and quantity >= 0:
+                if quantity + in_qty > 0 and quantity >= 0:
                     cost_price = (
-                        (cost_price * quantity) + (unit_price * qty)
-                        ) / (quantity + qty)
-                elif qty > 0:
+                        (cost_price * quantity) + (unit_price * in_qty)
+                        ) / (quantity + in_qty)
+                elif in_qty > 0:
                     cost_price = unit_price
                 current_cost_price = round_price(cost_price)
             quantity += qty
+            if production_move(move):
+                qty_production += qty
 
         Move.write([
                 m for m in current_moves
