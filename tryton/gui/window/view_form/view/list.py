@@ -1136,7 +1136,7 @@ class ViewTree(View):
                 column.set_visible(not unique or bool(self.children_field))
         if self.children_field:
             for i, column in enumerate(self.treeview.get_columns()):
-                if self.draggable and not i:
+                if (self.draggable or self.optionals) and not i:
                     continue
                 if column.get_visible():
                     self.treeview.set_expander_column(column)
