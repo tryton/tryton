@@ -2643,8 +2643,10 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     @property
     def _key(self):
         # Same as _TaxKey
-        tax_id = self.tax.id if self.tax else -1
-        return (self.account.id, tax_id, self.base >= 0)
+        tax_id = self.tax.id if getattr(self, 'tax', None) else -1
+        account_id = (
+            self.account.id if getattr(self, 'account', None) else None)
+        return (account_id, tax_id, (getattr(self, 'base', 0) or 0) >= 0)
 
     @classmethod
     def check_modify(cls, taxes):
