@@ -62,7 +62,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_agent_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_commission')"/>
+            <field name="model" ref="menu_reporting_commission"/>
             <field name="action" ref="act_reporting_agent"/>
         </record>
 
