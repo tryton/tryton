@@ -8,7 +8,6 @@ import select
 import threading
 import time
 from collections import OrderedDict, defaultdict
-from datetime import datetime
 from weakref import WeakKeyDictionary
 
 from sql import Table
@@ -140,7 +139,7 @@ class MemoryCache(BaseCache):
     A key value LRU cache with size limit.
     """
     _reset = WeakKeyDictionary()
-    _clean_last = datetime.now()
+    _clean_last = dt.datetime.now()
     _default_lower = Transaction.monotonic_time()
     _listener = {}
     _listener_lock = defaultdict(threading.Lock)
@@ -225,7 +224,8 @@ class MemoryCache(BaseCache):
                             and listener.is_alive()):
                         time.sleep(.01)
             return
-        if (datetime.now() - cls._clean_last).total_seconds() < _clear_timeout:
+        last_clean = (dt.datetime.now() - cls._clean_last).total_seconds()
+        if last_clean < _clear_timeout:
             return
         connection = database.get_connection(readonly=True, autocommit=True)
         try:
@@ -248,7 +248,7 @@ class MemoryCache(BaseCache):
             if not inst_timestamp or timestamp > inst_timestamp:
                 inst._clear(dbname, timestamp)
         Pool(dbname).refresh(modules)
-        cls._clean_last = datetime.now()
+        cls._clean_last = dt.datetime.now()
 
     def sync_since(self, value):
         return self._clean_last > value
@@ -304,7 +304,7 @@ class MemoryCache(BaseCache):
                 connection.commit()
             finally:
                 database.put_connection(connection)
-            cls._clean_last = datetime.now()
+            cls._clean_last = dt.datetime.now()
         reset.clear()
 
     @classmethod
@@ -376,7 +376,7 @@ class MemoryCache(BaseCache):
                         for name in reset:
                             inst = cls._instances[name]
                             inst._clear(dbname)
-                cls._clean_last = datetime.now()
+                cls._clean_last = dt.datetime.now()
         except Exception:
             logger.error(
                 "cache listener on '%s' crashed", dbname, exc_info=True)
