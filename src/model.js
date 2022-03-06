@@ -665,7 +665,7 @@
                     return;
                 }
             }
-            if (this.group.prm.state() == 'pending') {
+            if (async && this.group.prm.state() == 'pending') {
                 return this.group.prm.then(function() {
                     return this.load(name);
                 }.bind(this));
