@@ -1454,14 +1454,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if to_write:
             cls.write(*to_write)
 
-    def print_invoice(self):
+    @dualmethod
+    def print_invoice(cls, invoices):
         '''
         Generate invoice report and store it in invoice_report field.
         '''
-        if self.invoice_report_cache:
-            return
         InvoiceReport = Pool().get('account.invoice', type='report')
-        InvoiceReport.execute([self.id], {})
+        for invoice in invoices:
+            if invoice.invoice_report_cache:
+                return
+            InvoiceReport.execute([invoice.id], {})
 
     def _credit(self, **values):
         '''
@@ -1600,11 +1602,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.save(invoices)
         Move.post([i.move for i in invoices if i.move.state != 'posted'])
         reconciled = []
+        to_print = []
         for invoice in invoices:
             if invoice.type == 'out':
-                invoice.print_invoice()
+                to_print.append(invoice)
             if invoice.reconciled:
                 reconciled.append(invoice)
+        if to_print:
+            cls.__queue__.print_invoice(to_print)
         if reconciled:
             cls.__queue__.process(reconciled)
 
