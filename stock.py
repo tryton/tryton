@@ -139,7 +139,7 @@ class CreateShippingSendcloud(Wizard):
 
         return 'end'
 
-    def get_parcel(self, shipment, package, credential):
+    def get_parcel(self, shipment, package, credential, usage=None):
         pool = Pool()
         UoM = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -147,8 +147,9 @@ class CreateShippingSendcloud(Wizard):
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
         party = shipment.shipping_to
         address = shipment.shipping_to_address
-        phone = party.contact_mechanism_get({'phone', 'mobile'})
-        email = party.contact_mechanism_get('email')
+        phone = party.contact_mechanism_get(
+            {'phone', 'mobile'}, usage=usage)
+        email = party.contact_mechanism_get('email', usage=usage)
         street_lines = (address.street or '').splitlines()
         parcel = {
             'name': address.party_full_name,
