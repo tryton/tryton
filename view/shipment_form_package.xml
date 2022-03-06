@@ -6,4 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <label name="packages_weight"/>
         <field name="packages_weight"/>
     </xpath>
+    <xpath expr="//field[@name='volume']" position="after">
+        <label name="packages_volume"/>
+        <field name="packages_volume"/>
+    </xpath>
 </data>

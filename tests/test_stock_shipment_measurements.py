@@ -198,6 +198,8 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             package_root.type = package_type
             package_root.shipment = shipment
             package_root.additional_weight = 1
+            package_root.packaging_volume = 3
+            package_root.packaging_volume_uom = liter
             package_root.save()
 
             package = Package()
@@ -214,7 +216,10 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(package.volume, 2)
 
             self.assertEqual(package_root.total_weight, 11)
-            self.assertEqual(package_root.total_volume, 2)
+            self.assertEqual(package_root.total_volume, 3)
+
+            self.assertEqual(package.total_weight, 10)
+            self.assertEqual(package.total_volume, 2)
 
 
 def suite():

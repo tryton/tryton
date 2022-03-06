@@ -402,13 +402,20 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
     def _measurements_location_condition(cls, package, move, location):
         return move.to_location == location.id
 
-    def get_total_measurements(self, name):
+    def get_total_measurements(self, name, round=True):
         pool = Pool()
         Uom = pool.get('product.uom')
-
         field = name[len('total_'):]
-        measurement = ((getattr(self, field) or 0)
-            + sum(p.get_total_measurements(name) for p in self.children))
+
+        if name == 'total_volume' and self.packaging_volume is not None:
+            return Uom.compute_qty(
+                self.packaging_volume_uom, self.packaging_volume,
+                self.volume_uom, round=round)
+
+        measurement = (
+            (getattr(self, field) or 0)
+            + sum(p.get_total_measurements(name, round=False)
+                for p in self.children))
         if name == 'total_weight':
             if self.additional_weight:
                 measurement += Uom.compute_qty(
@@ -418,19 +425,29 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
                 measurement += Uom.compute_qty(
                     self.packaging_weight_uom, self.packaging_weight,
                     self.weight_uom, round=False)
-        return measurement
+        if round:
+            return getattr(self, field + '_uom').round(measurement)
+        else:
+            return measurement
 
 
 class MeasurementsPackageMixin:
     __slots__ = ()
 
     packages_weight = fields.Function(
-        fields.Float("Packages Weight", digits=None,
-            help="The total weight of the packages in kg."),
-        'get_packages_weight')
+        fields.Float("Packages Weight", digits='weight_uom',
+            help="The total weight of the packages."),
+        'get_packages_measurements')
+    packages_volume = fields.Function(
+        fields.Float("Packages Volume", digits='volume_uom',
+            help="The total volume of the packages."),
+        'get_packages_measurements')
 
-    def get_packages_weight(self, name):
-        return sum(p.total_weight for p in self.root_packages)
+    def get_packages_measurements(self, name):
+        name = name[len('packages_'):]
+        uom = getattr(self, name + '_uom')
+        return uom.round(
+            sum(getattr(p, 'total_' + name)for p in self.root_packages))
 
 
 class ShipmentOutPackage(MeasurementsPackageMixin, metaclass=PoolMeta):

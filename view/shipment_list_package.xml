@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='weight']" position="after">
-        <field name="packages_weight"/>
+        <field name="packages_weight" optional="1"/>
+        <field name="packages_volume" optional="1"/>
     </xpath>
 </data>
