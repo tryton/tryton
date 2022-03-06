@@ -64,15 +64,28 @@ class Sale(metaclass=PoolMeta):
         default.setdefault('payments', None)
         return super(Sale, cls).copy(sales, default=default)
 
+    @property
+    def payment_amount_authorized(self):
+        "Total amount of the authorized payments"
+        return sum(p.amount for p in self.payments if p.is_authorized)
+
+    @property
+    def amount_to_pay(self):
+        "Amount to pay to confirm the sale"
+        return self.total_amount
+
     @classmethod
     def payment_confirm(cls, sales):
         "Confirm the sale based on payment authorization"
         to_confirm = []
         for sale in sales:
-            payment_amount = sum(
-                p.amount for p in sale.payments if p.is_authorized)
-            if payment_amount >= sale.total_amount:
+            if sale.payment_amount_authorized >= sale.amount_to_pay:
                 to_confirm.append(sale)
         if to_confirm:
             to_confirm = cls.browse(to_confirm)  # optimize cache
             cls.confirm(to_confirm)
+
+    @property
+    def credit_limit_amount(self):
+        amount = super().credit_limit_amount
+        return max(0, amount - self.payment_amount_authorized)
