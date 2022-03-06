@@ -704,13 +704,14 @@
                         menu.children().length);
                 }
 
-                if (menu_action[0] == 'print') {
-                    if (toolbars.exports.length && toolbars.print.length) {
+                if ((menu_action[0] == 'print') &&
+                    toolbars.exports.length) {
+                    button._can_be_sensitive = true;
+                    if (toolbars.print.length) {
                         menu.append(jQuery('<li/>', {
                             'role': 'separator',
                             'class': 'divider',
                         }));
-                        button._can_be_sensitive = true;
                     }
                     toolbars.exports.forEach(function(export_) {
                         var item = jQuery('<li/>', {
