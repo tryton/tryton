@@ -125,6 +125,9 @@ class Package(tree(), WeightMixin, ModelSQL, ModelView):
             ('to_location.type', 'in', ['customer', 'supplier']),
             ('state', '!=', 'cancelled'),
             ],
+        filter=[
+            ('quantity', '!=', 0),
+            ],
         add_remove=[
             ('package', '=', None),
             ],
@@ -318,7 +321,7 @@ class PackageMixin(object):
             if not shipment.packages:
                 continue
             length = sum(len(p.moves) for p in shipment.packages)
-            if len(list(shipment.packages_moves)) != length:
+            if len(shipment.packages_moves) != length:
                 raise PackageError(
                     gettext('stock_package.msg_package_mismatch',
                         shipment=shipment.rec_name))
@@ -359,7 +362,9 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
 
     @property
     def packages_moves(self):
-        return (m for m in self.outgoing_moves if m.state != 'cancelled')
+        return [
+            m for m in self.outgoing_moves
+            if m.state != 'cancelled' and m.quantity]
 
     def _group_parcel_key(self, lines, line):
         try:
@@ -406,4 +411,6 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
 
     @property
     def packages_moves(self):
-        return (m for m in self.moves if m.state != 'cancelled')
+        return [
+            m for m in self.moves
+            if m.state != 'cancelled' and m.quantity]
