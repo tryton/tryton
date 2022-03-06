@@ -48,7 +48,7 @@ class ShippingMyGLSMixin:
             'country': self.shipping_warehouse.address.country.code.lower(),
             }
 
-    def validate_packing_mygls(self):
+    def validate_packing_mygls(self, usage=None):
         warehouse = self.shipping_warehouse
         if not warehouse.address:
             raise PackingValidationError(
@@ -71,7 +71,8 @@ class ShippingMyGLSMixin:
                     shipping=self.rec_name))
         if (self.carrier.mygls_services
                 and 'CS1' in self.carrier.mygls_services):
-            if not self.shipping_to.contact_mechanism_get({'phone', 'mobile'}):
+            if not self.shipping_to.contact_mechanism_get(
+                    {'phone', 'mobile'}, usage=usage):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
                         '.msg_phone_mobile_required',
@@ -79,7 +80,8 @@ class ShippingMyGLSMixin:
                         party=self.shipping_to.rec_name))
         if (self.carrier.mygls_services
                 and 'FDS' in self.carrier.mygls_services):
-            if not self.shipping_to.contact_mechanism_get('email'):
+            if not self.shipping_to.contact_mechanism_get(
+                    'email', usage=usage):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
                         '.msg_email_required',
@@ -89,7 +91,8 @@ class ShippingMyGLSMixin:
                 and ('FSS' in self.carrier.mygls_services
                     or 'SM1' in self.carrier.mygls_services
                     or 'SM2' in self.carrier.mygls_services)):
-            if not self.shipping_to.contact_mechanism_get('mobile'):
+            if not self.shipping_to.contact_mechanism_get(
+                    'mobile', usage=usage):
                 raise PackingValidationError(
                     gettext('stock_package_shipping_mygls'
                         '.msg_mobile_required',
@@ -219,9 +222,9 @@ class ShipmentCreateShippingMyGLS(Wizard):
             'ServiceList': services,
             }
 
-    def get_address(self, party, address):
-        phone = party.contact_mechanism_get({'phone', 'mobile'})
-        email = party.contact_mechanism_get('email')
+    def get_address(self, party, address, usage=None):
+        phone = party.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
+        email = party.contact_mechanism_get('email', usage=usage)
         return {
             'Name': address.party_full_name,
             'Street': ' '.join((address.street or '').splitlines()),
@@ -233,7 +236,7 @@ class ShipmentCreateShippingMyGLS(Wizard):
             'ContactEmail': email.value if email else None,
             }
 
-    def get_service(self, code, shipment):
+    def get_service(self, code, shipment, usage=None):
         pool = Pool()
         Carrier = pool.get('carrier')
         service = {'Code': code}
@@ -241,13 +244,15 @@ class ShipmentCreateShippingMyGLS(Wizard):
             service['AOSParameter'] = shipment.shipping_to.full_name,
         elif code == 'CS1':
             phone = shipment.shipping_to.contact_mechanism_get(
-                    {'phone', 'mobile'})
+                    {'phone', 'mobile'}, usage=usage)
             service['CS1Parameter'] = phone.value
         elif code == 'FDS':
-            email = shipment.shipping_to.contact_mechanism_get('email')
+            email = shipment.shipping_to.contact_mechanism_get(
+                'email', usage=usage)
             service['FDSParameter'] = email.value
         elif code == 'FSS':
-            mobile = shipment.shipping_to.contact_mechanism_get('mobile')
+            mobile = shipment.shipping_to.contact_mechanism_get(
+                'mobile', usage=usage)
             service['FSSParameter'] = mobile.value
         elif code == 'SM1':
             if shipment.shipping_to.lang:
@@ -256,10 +261,12 @@ class ShipmentCreateShippingMyGLS(Wizard):
                 lang_code = None
             with Transaction().set_context(language=lang_code):
                 carrier = Carrier(shipment.carrier.id)
-            mobile = shipment.shipping_to.contact_mechanism_get('mobile')
+            mobile = shipment.shipping_to.contact_mechanism_get(
+                'mobile', usage=usage)
             service['SM1Parameter'] = '|'.join([
                     mobile.value, carrier.mygls_sms])
         elif code == 'SM2':
-            mobile = shipment.shipping_to.contact_mechanism_get('mobile')
+            mobile = shipment.shipping_to.contact_mechanism_get(
+                'mobile', usage=usage)
             service['SM1Parameter'] = mobile.value
         return service
