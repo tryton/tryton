@@ -525,7 +525,10 @@ class In(PYSON):
 
     @staticmethod
     def eval(dct, context):
-        return dct['k'] in dct['v']
+        if dct['v']:
+            return dct['k'] in dct['v']
+        else:
+            return False
 
 
 class Date(PYSON):
