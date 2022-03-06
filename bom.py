@@ -28,6 +28,8 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
                 quantity = Uom.compute_qty(uom, quantity,
                     output.uom, round=False)
                 return quantity / output.quantity
+        else:
+            return 0.0
 
     @classmethod
     def copy(cls, records, default=None):
