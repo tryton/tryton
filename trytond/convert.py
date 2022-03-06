@@ -19,6 +19,10 @@ CDATA_START = re.compile(r'^\s*\<\!\[cdata\[', re.IGNORECASE)
 CDATA_END = re.compile(r'\]\]\>\s*$', re.IGNORECASE)
 
 
+class ParsingError(Exception):
+    pass
+
+
 class DummyTagHandler:
     """Dubhandler implementing empty methods. Will be used when whe
     want to ignore the xml content"""
@@ -51,7 +55,7 @@ class MenuitemTagHandler:
             self.xml_id = attributes['id']
         except KeyError:
             self.xml_id = None
-            raise
+            raise ParsingError("missing 'id' attribute")
 
         for attr in ('name', 'sequence', 'parent', 'action', 'groups'):
             if attr in attributes:
@@ -62,11 +66,18 @@ class MenuitemTagHandler:
             values['active'] = bool(eval(attributes['active']))
 
         if values.get('parent'):
-            values['parent'] = self.mh.get_id(values['parent'])
+            model, id_ = self.mh.get_id(values['parent'])
+            if model != 'ir.ui.menu':
+                raise ParsingError(
+                    "invalid 'ir.ui.menu' parent: %s" % model)
+            values['parent'] = id_
 
         action_name = None
         if values.get('action'):
-            action_id = self.mh.get_id(values['action'])
+            model, action_id = self.mh.get_id(values['action'])
+            if not model.startswith('ir.action'):
+                raise ParsingError(
+                    "invalid model for action: %s" % model)
 
             # TODO maybe use a prefetch for this:
             action = self.mh.pool.get('ir.action').__table__()
@@ -135,12 +146,11 @@ class MenuitemTagHandler:
                 values['icon'] = None
 
         if values.get('groups'):
-            raise Exception("Please use separate records for groups")
+            raise ParsingError("forbidden 'groups' attribute")
 
         if not values.get('name'):
             if not action_name:
-                raise Exception("Please provide at least a 'name' attributes "
-                        "or a 'action' attributes on the menuitem tags.")
+                raise ParsingError("missing 'name' or 'action' attribute")
             else:
                 values['name'] = action_name
 
@@ -161,7 +171,7 @@ class MenuitemTagHandler:
             return None
 
     def current_state(self):
-        return "Tag menuitem with id %s.%s" % (self.mh.module, self.xml_id)
+        return "menuitem '%s.%s'" % (self.mh.module, self.xml_id)
 
 
 class RecordTagHandler:
@@ -189,7 +199,7 @@ class RecordTagHandler:
                 self.xml_id = attributes["id"]
             except KeyError:
                 self.xml_id = None
-                raise
+                raise ParsingError("missing 'id' attribute")
 
             self.model = self.mh.pool.get(attributes["model"])
 
@@ -230,21 +240,32 @@ class RecordTagHandler:
             context = {}
             context['time'] = time
             context['version'] = __version__.rsplit('.', 1)[0]
-            context['ref'] = self.mh.get_id
+            context['ref'] = lambda xml_id: ','.join(self.mh.get_id(xml_id))
             context['Decimal'] = Decimal
             context['datetime'] = datetime
             if pyson_attr:
                 context.update(CONTEXT)
 
+            field = self.model._fields[field_name]
             if search_attr:
-                search_model = self.model._fields[field_name].model_name
+                search_model = field.model_name
                 SearchModel = self.mh.pool.get(search_model)
                 with Transaction().set_context(active_test=False):
                     found, = SearchModel.search(eval(search_attr, context))
                     self.values[field_name] = found.id
 
             elif ref_attr:
-                self.values[field_name] = self.mh.get_id(ref_attr)
+                model, id_ = self.mh.get_id(ref_attr)
+                if field._type == 'reference':
+                    self.values[field_name] = '%s,%s' % (model, id_)
+                else:
+                    if (field.model_name == 'ir.action'
+                            and model.startswith('ir.action')):
+                        pass
+                    elif model != field.model_name:
+                        raise ParsingError(
+                            "invalid model for %s: %s" % (field_name, model))
+                    self.values[field_name] = id_
 
             elif eval_attr:
                 value = eval(eval_attr, context)
@@ -253,8 +274,8 @@ class RecordTagHandler:
                 self.values[field_name] = value
 
         else:
-            raise Exception("Tags '%s' not supported inside tag record." %
-                    (name,))
+            raise ParsingError(
+                "forbidden '%s' tag inside record tag" % name)
 
     def characters(self, data):
 
@@ -284,37 +305,21 @@ class RecordTagHandler:
                 self.values[self.current_field] = \
                     CDATA_END.sub('', self.values[self.current_field])
                 self.cdata = 'done'
-
-                value = self.values[self.current_field]
-                match = re.findall(r'[^%]%\((.*?)\)[ds]', value)
-                xml_ids = {}
-                for xml_id in match:
-                    xml_ids[xml_id] = self.mh.get_id(xml_id)
-                self.values[self.current_field] = value % xml_ids
-
             self.current_field = None
             return self
 
         elif name == "record":
             if self.xml_id in self.xml_ids and not self.update:
-                raise Exception('Duplicate id: "%s".' % (self.xml_id,))
+                raise ParsingError("duplicate id: %s" % self.xml_id)
             self.mh.import_record(
                 self.model.__name__, self.values, self.xml_id)
             self.xml_ids.append(self.xml_id)
             return None
         else:
-            raise Exception("Unexpected closing tag '%s'" % (name,))
+            raise ParsingError("unexpected closing tag '%s'" % name)
 
     def current_state(self):
-        return "Tag record with id %s.%s." % (self.mh.module, self.xml_id)
-
-
-# Custom exception:
-class Unhandled_field(Exception):
-    """
-    Raised when a field type is not supported by the update mechanism.
-    """
-    pass
+        return "record '%s.%s'" % (self.mh.module, self.xml_id)
 
 
 class Fs2bdAccessor:
@@ -458,7 +463,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         try:
             self.sax_parser.parse(source)
         except Exception as e:
-            raise Exception("Error in " + self.current_state()) from e
+            raise ParsingError("in %s" % self.current_state()) from e
         return self.to_delete
 
     def startElement(self, name, attributes):
@@ -529,9 +534,9 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             module = self.module
 
         if self.fs2db.get(module, xml_id) is None:
-            raise Exception("Reference to %s not found"
-                % ".".join([module, xml_id]))
-        return self.fs2db.get(module, xml_id)["db_id"]
+            raise ParsingError("%s.%s not found" % (module, xml_id))
+        value = self.fs2db.get(module, xml_id)
+        return value['model'], value["db_id"]
 
     @staticmethod
     def _clean_value(key, record):
@@ -552,7 +557,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 return None
             return str(getattr(record, key))
         elif field_type in ['one2many', 'many2many']:
-            raise Unhandled_field("Unhandled field %s" % key)
+            raise ParsingError(
+                "unsupported field %s of type %s" % (key, field_type))
         else:
             return getattr(record, key)
 
@@ -572,7 +578,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         module = self.module
 
         if not fs_id:
-            raise Exception('import_record : Argument fs_id is mandatory')
+            raise ValueError("missing fs_id")
 
         if '.' in fs_id:
             assert len(fs_id.split('.')) == 2, ('"%s" contains too many dots. '
@@ -582,8 +588,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
             module, fs_id = fs_id.split('.')
             if not self.fs2db.get(module, fs_id):
-                raise Exception('Reference to %s.%s not found'
-                    % (module, fs_id))
+                raise ParsingError("%s.%s not found" % (module, fs_id))
 
         Model = self.pool.get(model)
 
@@ -598,10 +603,11 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 return
 
             # this record is already in the db:
-            # XXX maybe use only one call to get()
-            db_id, db_model, mdata_id, old_values = [
-                self.fs2db.get(module, fs_id)[x]
-                for x in ["db_id", "model", "id", "values"]]
+            db_value = self.fs2db.get(module, fs_id)
+            db_id = db_value['db_id']
+            db_model = db_value['model']
+            mdata_id = db_value['id']
+            old_values = db_value['values']
 
             # Check if record has not been deleted
             if db_id is None:
@@ -618,9 +624,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     old_values[key] = old_values[key].decode('utf-8')
 
             if model != db_model:
-                raise Exception("This record try to overwrite "
-                    "data with the wrong model: %s (module: %s)"
-                    % (fs_id, module))
+                raise ParsingError(
+                    "wrong model '%s': %s.%s" % (model, module, fs_id))
 
             record = self.fs2db.get_browserecord(module, Model.__name__, db_id)
             # Re-create record if it was deleted
