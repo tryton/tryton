@@ -187,6 +187,8 @@ Check shipment::
     >>> shipment, = sale.shipments
     >>> len(shipment.outgoing_moves)
     4
+    >>> len(sale.moves)
+    4
     >>> product2quantity = {
     ...     m.product: m.quantity for m in shipment.outgoing_moves}
     >>> product2quantity[composed_product]

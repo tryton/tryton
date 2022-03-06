@@ -51,6 +51,24 @@ def search_shipments_returns(model_name):
     return _search_shipments_returns
 
 
+def get_moves(func):
+    @wraps(func)
+    def wrapper(self, name):
+        return func(self, name) + [
+            m.id for l in self.lines for c in l.components for m in c.moves]
+    return wrapper
+
+
+def search_moves(func):
+    @wraps(func)
+    def wrapper(cls, name, clause):
+        return ['OR',
+            func(cls, name, clause),
+            ('lines.components.' + clause[0],) + tuple(clause[1:]),
+            ]
+    return wrapper
+
+
 def order_mixin(prefix):
     class OrderMixin(ModelStorage):
 

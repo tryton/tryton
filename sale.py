@@ -6,9 +6,9 @@ from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 
 from .common import (
-    AmendmentLineMixin, get_shipments_returns, handle_shipment_exception_mixin,
-    order_line_component_mixin, order_line_mixin, order_mixin,
-    search_shipments_returns)
+    AmendmentLineMixin, get_moves, get_shipments_returns,
+    handle_shipment_exception_mixin, order_line_component_mixin,
+    order_line_mixin, order_mixin, search_moves, search_shipments_returns)
 from .product import ComponentMixin
 
 
@@ -42,6 +42,15 @@ class Sale(order_mixin('sale'), metaclass=PoolMeta):
     @search_shipments_returns('stock.shipment.out.return')
     def search_shipment_returns(cls, name, clause):
         return super().search_shipments(name, clause)
+
+    @get_moves
+    def get_moves(self, name):
+        return super().get_moves(name)
+
+    @classmethod
+    @search_moves
+    def search_moves(cls, name, clause):
+        return super().search_moves(name, clause)
 
 
 class Line(order_line_mixin('sale'), metaclass=PoolMeta):
