@@ -54,7 +54,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_main_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_main"/>
         </record>
 
@@ -208,7 +208,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_customer_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_customer"/>
         </record>
         <record model="ir.action.keyword" id="act_reporting_customer_keyword2">
@@ -344,7 +344,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_customer_category_tree_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_customer_category_tree"/>
         </record>
 
@@ -529,7 +529,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_product_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_product"/>
         </record>
         <record model="ir.action.keyword" id="act_reporting_product_keyword2">
@@ -664,7 +664,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_product_category_tree_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_product_category_tree"/>
         </record>
 
@@ -822,7 +822,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reporting_country_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="model" ref="menu_reporting_sale"/>
             <field name="action" ref="act_reporting_region"/>
         </record>
 
