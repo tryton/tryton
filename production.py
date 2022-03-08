@@ -16,9 +16,11 @@ def process_sale_supply(func):
     def wrapper(cls, productions):
         pool = Pool()
         Sale = pool.get('sale.sale')
+        transaction = Transaction()
+        context = transaction.context
 
         sales = set()
-        with Transaction().set_context(_check_access=False):
+        with transaction.set_context(_check_access=False):
             for sub_productions in grouped_slice(productions):
                 ids = [p.id for p in sub_productions]
                 sales.update([s.id for s in Sale.search([
@@ -26,7 +28,9 @@ def process_sale_supply(func):
                                 ])])
         func(cls, productions)
         if sales:
-            Sale.__queue__.process(sales)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Sale.__queue__.process(sales)
     return wrapper
 
 
