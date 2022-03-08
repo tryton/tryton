@@ -882,12 +882,15 @@ class Purchase(
     def confirm(cls, purchases):
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
+        transaction = Transaction()
+        context = transaction.context
         cls.set_purchase_date(purchases)
         cls.store_cache(purchases)
         config = Configuration(1)
-        with Transaction().set_context(
+        with transaction.set_context(
                 queue_name='purchase',
-                queue_scheduled_at=config.purchase_process_after):
+                queue_scheduled_at=config.purchase_process_after,
+                queue_batch=context.get('queue_batch', True)):
             cls.__queue__.process(purchases)
 
     @classmethod

@@ -20,12 +20,16 @@ def process_purchase(moves_field):
         def wrapper(cls, shipments):
             pool = Pool()
             Purchase = pool.get('purchase.purchase')
-            with Transaction().set_context(_check_access=False):
+            transaction = Transaction()
+            context = transaction.context
+            with transaction.set_context(_check_access=False):
                 purchases = set(m.purchase for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.purchase)
             func(cls, shipments)
             if purchases:
-                Purchase.__queue__.process(purchases)
+                with transaction.set_context(
+                        queue_batch=context.get('queue_batch', True)):
+                    Purchase.__queue__.process(purchases)
         return wrapper
     return _process_purchase
 
@@ -140,14 +144,18 @@ def process_purchase_move(without_shipment=False):
         def wrapper(cls, moves):
             pool = Pool()
             Purchase = pool.get('purchase.purchase')
-            with Transaction().set_context(_check_access=False):
+            transaction = Transaction()
+            context = transaction.context
+            with transaction.set_context(_check_access=False):
                 p_moves = cls.browse(moves)
                 if without_shipment:
                     p_moves = [m for m in p_moves if not m.shipment]
                 purchases = set(m.purchase for m in p_moves if m.purchase)
             func(cls, moves)
             if purchases:
-                Purchase.__queue__.process(purchases)
+                with transaction.set_context(
+                        queue_batch=context.get('queue_batch', True)):
+                    Purchase.__queue__.process(purchases)
         return wrapper
     return _process_purchase_move
 
