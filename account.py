@@ -333,17 +333,25 @@ class Reconciliation(metaclass=PoolMeta):
     @classmethod
     def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
+        transaction = Transaction()
+        context = transaction.context
         reconciliations = super(Reconciliation, cls).create(vlist)
-        Invoice.__queue__.process(list(_invoices_to_process(reconciliations)))
+        with transaction.set_context(
+                queue_batch=context.get('queue_batch', True)):
+            Invoice.__queue__.process(
+                list(_invoices_to_process(reconciliations)))
         return reconciliations
 
     @classmethod
     def delete(cls, reconciliations):
         Invoice = Pool().get('account.invoice')
-
+        transaction = Transaction()
+        context = transaction.context
         invoices_to_process = _invoices_to_process(reconciliations)
         super(Reconciliation, cls).delete(reconciliations)
-        Invoice.__queue__.process(list(invoices_to_process))
+        with transaction.set_context(
+                queue_batch=context.get('queue_batch', True)):
+            Invoice.__queue__.process(list(invoices_to_process))
 
 
 class RenewFiscalYear(metaclass=PoolMeta):

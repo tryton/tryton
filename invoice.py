@@ -1543,6 +1543,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def post_batch(cls, invoices):
         pool = Pool()
         Date = pool.get('ir.date')
+        transaction = Transaction()
+        context = transaction.context
         cls.set_number(invoices)
         for company, grouped_invoices in groupby(
                 invoices, key=lambda i: i.company):
@@ -1552,7 +1554,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 if not invoice.payment_term_date:
                     invoice.payment_term_date = today
         cls.save(invoices)
-        with Transaction().set_context(_skip_warnings=True):
+        with transaction.set_context(
+                _skip_warnings=True,
+                queue_batch=context.get('queue_batch', True)):
             cls.__queue__._post(invoices)
 
     @classmethod
@@ -1587,6 +1591,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')
+        transaction = Transaction()
+        context = transaction.context
 
         cls.set_number(invoices)
         moves = []
@@ -1611,7 +1617,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if to_print:
             cls.__queue__.print_invoice(to_print)
         if reconciled:
-            cls.__queue__.process(reconciled)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                cls.__queue__.process(reconciled)
 
     @classmethod
     def _check_similar(cls, invoices, type='in'):
