@@ -6,6 +6,7 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 from .exceptions import AmendmentValidateError
 
@@ -99,6 +100,8 @@ class Amendment(Workflow, ModelSQL, ModelView):
     def validate_amendment(cls, amendments):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
+        transaction = Transaction()
+        context = transaction.context
         purchases = set()
         for amendment in amendments:
             purchase = amendment.purchase
@@ -120,7 +123,9 @@ class Amendment(Workflow, ModelSQL, ModelView):
         Purchase.save(purchases)
         Purchase.store_cache(purchases)
         cls._clear_purchase(purchases)
-        Purchase.__queue__.process(purchases)
+        with transaction.set_context(
+                queue_batch=context.get('queue_batch', True)):
+            Purchase.__queue__.process(purchases)
 
     @classmethod
     def _clear_purchase(cls, purchases):
