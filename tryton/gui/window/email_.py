@@ -14,7 +14,6 @@ except ImportError:
 from tryton.common import IconFactory, RPCException, RPCExecute, Tooltips
 from tryton.common.richtext import (
     add_toolbar, get_content, register_format, set_content)
-from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.config import CONFIG, TRYTON_ICON
@@ -213,7 +212,7 @@ class Email(NoModal):
         attachment_frame.add(scrolledwindow)
         scrolledwindow.set_policy(
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        self.attachments = TreeViewControl()
+        self.attachments = Gtk.TreeView()
         self.attachments.set_headers_visible(False)
         scrolledwindow.add(self.attachments)
         self.attachments.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)

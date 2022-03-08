@@ -3,7 +3,6 @@
 from gi.repository import GLib, GObject, Gtk
 
 from tryton.common.selection import SelectionMixin
-from tryton.common.treeviewcontrol import TreeViewControl
 
 from .widget import Widget
 
@@ -25,7 +24,7 @@ class MultiSelection(Widget, SelectionMixin):
         self.widget.get_accessible().set_name(attrs.get('string', ''))
 
         self.model = Gtk.ListStore(GObject.TYPE_PYOBJECT, GObject.TYPE_STRING)
-        self.tree = self.mnemonic_widget = TreeViewControl()
+        self.tree = self.mnemonic_widget = Gtk.TreeView()
         self.tree.set_model(self.model)
         self.tree.set_search_column(1)
         self.tree.connect('focus-out-event', lambda *a: self._focus_out())

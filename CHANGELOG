@@ -1,3 +1,4 @@
+* Remove TreeViewControl
 * Manage optional column
 * Default CSV encoding to UTF8 with BOM
 * Display the number of selected records

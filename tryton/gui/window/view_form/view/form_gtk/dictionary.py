@@ -18,7 +18,6 @@ from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
 from tryton.common.number_entry import NumberEntry
 from tryton.common.selection import selection_shortcuts
-from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.gui.window.win_search import WinSearch
@@ -187,7 +186,7 @@ class DictMultiSelectionEntry(DictEntry):
         widget.set_size_request(100, 100)
 
         model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
-        self.tree = TreeViewControl()
+        self.tree = Gtk.TreeView()
         self.tree.set_model(model)
         self.tree.set_search_column(1)
         self.tree.connect(
