@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, Workflow
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 class Invoice(metaclass=PoolMeta):
@@ -13,11 +14,15 @@ class Invoice(metaclass=PoolMeta):
     def post(cls, invoices):
         pool = Pool()
         Move = pool.get('stock.move')
+        transaction = Transaction()
+        context = transaction.context
         super().post(invoices)
         moves = sum(
             (l.stock_component_moves for i in invoices for l in i.lines), [])
         if moves:
-            Move.__queue__.update_unit_price(moves)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Move.__queue__.update_unit_price(moves)
 
 
 class InvoiceLine(metaclass=PoolMeta):
