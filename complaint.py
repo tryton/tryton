@@ -301,10 +301,13 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def approve(cls, complaints):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
+        transaction = Transaction()
+        context = transaction.context
         config = Configuration(1)
-        with Transaction().set_context(
+        with transaction.set_context(
                 queue_name='sale',
-                queue_scheduled_at=config.sale_process_after):
+                queue_scheduled_at=config.sale_process_after,
+                queue_batch=context.get('queue_batch', True)):
             cls.__queue__.process(complaints)
 
     @classmethod
