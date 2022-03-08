@@ -13,10 +13,14 @@ class Invoice(metaclass=PoolMeta):
     def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('stock.move')
+        transaction = Transaction()
+        context = transaction.context
         super()._post(invoices)
         moves = sum((l.stock_moves for i in invoices for l in i.lines), ())
         if moves:
-            Move.__queue__.update_unit_price(moves)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Move.__queue__.update_unit_price(moves)
 
 
 class InvoiceLineStockMove(ModelSQL):
@@ -102,11 +106,15 @@ class InvoiceLine(metaclass=PoolMeta):
     def write(cls, *args):
         pool = Pool()
         Move = pool.get('stock.move')
+        transaction = Transaction()
+        context = transaction.context
         super().write(*args)
         lines = sum(args[0:None:2], [])
         moves = sum((l.stock_moves for l in lines), ())
         if moves:
-            Move.__queue__.update_unit_price(moves)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Move.__queue__.update_unit_price(moves)
 
     @classmethod
     def copy(cls, lines, default=None):
