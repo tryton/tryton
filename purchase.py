@@ -378,11 +378,14 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def approve(cls, requisitions):
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
+        transaction = Transaction()
+        context = transaction.context
         cls.store_cache(requisitions)
         config = Configuration(1)
-        with Transaction().set_context(
+        with transaction.set_context(
                 queue_name='purchase',
-                queue_scheduled_at=config.purchase_process_after):
+                queue_scheduled_at=config.purchase_process_after,
+                queue_batch=context.get('queue_batch', True)):
             cls.__queue__.process(requisitions)
 
     @classmethod
