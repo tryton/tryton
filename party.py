@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from .common import BraintreeCustomerMethodMixin
 
@@ -16,6 +17,8 @@ class Party(metaclass=PoolMeta):
     def write(cls, *args):
         pool = Pool()
         Customer = pool.get('account.payment.braintree.customer')
+        transaction = Transaction()
+        context = transaction.context
 
         parties = sum(args[0:None:2], [])
         customers = sum((p.braintree_customers for p in parties), ())
@@ -28,7 +31,9 @@ class Party(metaclass=PoolMeta):
             if customer._customer_parameters() != params:
                 to_update.append(customer)
         if to_update:
-            Customer.__queue__.braintree_update(to_update)
+            with Transaction().set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Customer.__queue__.braintree_update(to_update)
 
 
 class PartyReceptionDirectDebit(
