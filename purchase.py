@@ -23,8 +23,10 @@ class Request(metaclass=PoolMeta):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
+        transaction = Transaction()
+        context = transaction.context
 
-        with Transaction().set_context(_check_access=False):
+        with transaction.set_context(_check_access=False):
             reqs = cls.browse(requests)
             sales = set(r.origin for r in reqs if isinstance(r.origin, Sale))
             sale_lines = [l for r in reqs for l in r.sale_lines]
@@ -36,7 +38,9 @@ class Request(metaclass=PoolMeta):
         super().delete(requests)
 
         if sales:
-            Sale.__queue__.process(sales)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Sale.__queue__.process(sales)
 
 
 def process_sale_supply(func):
@@ -45,9 +49,11 @@ def process_sale_supply(func):
         pool = Pool()
         Request = pool.get('purchase.request')
         Sale = pool.get('sale.sale')
+        transaction = Transaction()
+        context = transaction.context
 
         sales = set()
-        with Transaction().set_context(_check_access=False):
+        with transaction.set_context(_check_access=False):
             for sub_purchases in grouped_slice(purchases):
                 ids = [x.id for x in sub_purchases]
                 requests = Request.search([
@@ -57,7 +63,9 @@ def process_sale_supply(func):
                 sales.update(r.origin.id for r in requests)
         func(cls, purchases)
         if sales:
-            Sale.__queue__.process(sales)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Sale.__queue__.process(sales)
     return wrapper
 
 
