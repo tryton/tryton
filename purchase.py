@@ -10,6 +10,7 @@ from trytond.modules.purchase.purchase import (
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 purchase_drop_location = fields.Many2One(
     'stock.location', "Purchase Drop Location", domain=[('type', '=', 'drop')])
@@ -238,6 +239,8 @@ class HandleShipmentException(metaclass=PoolMeta):
         pool = Pool()
         Sale = pool.get('sale.sale')
         Move = pool.get('stock.move')
+        transaction = Transaction()
+        context = transaction.context
 
         super().transition_handle()
 
@@ -260,5 +263,7 @@ class HandleShipmentException(metaclass=PoolMeta):
         if moves:
             Move.cancel(moves)
         if sales:
-            Sale.__queue__.process(sales)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Sale.__queue__.process(sales)
         return 'end'
