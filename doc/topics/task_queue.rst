@@ -34,6 +34,11 @@ parameters for the queue:
       define when the task should be finished. Default value is ``None`` which
       means as soon as possible.
 
+    - ``queue_batch``: An ``integer`` to divide the instances by batch of this
+      size. If the value is ``true`` then the size is the value defined by the
+      configuration ``queue`` of ``batch_size``.
+      Default is ``None`` which means no division.
+
 .. warning::
 
     There is no access right verification during the execution of the task.

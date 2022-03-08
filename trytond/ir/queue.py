@@ -14,6 +14,7 @@ from trytond.transaction import Transaction
 
 has_worker = config.getboolean('queue', 'worker', default=False)
 clean_days = config.getint('queue', 'clean_days', default=30)
+batch_size = config.getint('queue', 'batch_size', default=20)
 
 
 class Queue(ModelSQL):
@@ -221,6 +222,7 @@ class _Method(object):
         if scheduled_at is not None:
             scheduled_at = now + scheduled_at
         expected_at = context.pop('queue_expected_at', None)
+        queue_batch = context.pop('queue_batch', None)
         context.pop('_check_access', None)
         context.pop('language', None)
         if expected_at is not None:
@@ -229,15 +231,32 @@ class _Method(object):
             instances = list(map(int, instances))
         except TypeError:
             instances = int(instances)
-        data = {
-            'model': self.__model.__name__,
-            'method': self.__name,
-            'user': transaction.user,
-            'context': context,
-            'instances': instances,
-            'args': args,
-            'kwargs': kwargs,
-            }
-        return self.__queue.push(
-            name, data,
-            scheduled_at=scheduled_at, expected_at=expected_at)
+
+        def _push(instances):
+            data = {
+                'model': self.__model.__name__,
+                'method': self.__name,
+                'user': transaction.user,
+                'context': context,
+                'instances': instances,
+                'args': args,
+                'kwargs': kwargs,
+                }
+            return self.__queue.push(
+                name, data,
+                scheduled_at=scheduled_at, expected_at=expected_at)
+
+        if isinstance(instances, list):
+            if has_worker and queue_batch:
+                if isinstance(queue_batch, int):
+                    count = queue_batch
+                else:
+                    count = batch_size
+            else:
+                count = len(instances)
+            task_ids = []
+            for sub_instances in grouped_slice(instances, count=count):
+                task_ids.append(_push(list(sub_instances)))
+            return task_ids
+        else:
+            return _push(instances)

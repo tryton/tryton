@@ -311,6 +311,13 @@ The number of days after which processed tasks are removed.
 
 Default: ``30``
 
+batch_size
+~~~~~~~~~~
+
+The default number of the instances to process in a batch.
+
+Default: ``20``
+
 error
 -----
 
