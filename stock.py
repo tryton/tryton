@@ -17,12 +17,16 @@ def process_sale(moves_field):
         def wrapper(cls, shipments):
             pool = Pool()
             Sale = pool.get('sale.sale')
-            with Transaction().set_context(_check_access=False):
+            transaction = Transaction()
+            context = transaction.context
+            with transaction.set_context(_check_access=False):
                 sales = set(m.sale for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.sale)
             func(cls, shipments)
             if sales:
-                Sale.__queue__.process(sales)
+                with transaction.set_context(
+                        queue_batch=context.get('queue_batch', True)):
+                    Sale.__queue__.process(sales)
         return wrapper
     return _process_sale
 
@@ -91,11 +95,15 @@ def process_sale_move(func):
     def wrapper(cls, moves):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        with Transaction().set_context(_check_access=False):
+        transaction = Transaction()
+        context = transaction.context
+        with transaction.set_context(_check_access=False):
             sales = set(m.sale for m in cls.browse(moves) if m.sale)
         func(cls, moves)
         if sales:
-            Sale.__queue__.process(sales)
+            with transaction.set_context(
+                    queue_batch=context.get('queue_batch', True)):
+                Sale.__queue__.process(sales)
     return wrapper
 
 
