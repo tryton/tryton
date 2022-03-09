@@ -75,7 +75,10 @@ class ImportStatement(metaclass=PoolMeta):
         pool = Pool()
         Origin = pool.get('account.statement.origin')
         origin = Origin()
-        origin.date = transaction.valueDate
+        try:
+            origin.date = transaction.valueDate
+        except ValueError:
+            origin.date = transaction.transactionDate
         origin.amount = transaction.amount
         descriptions = []
         for item in transaction.optionalItems:
