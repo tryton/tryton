@@ -114,9 +114,7 @@ Create product::
     >>> unit.rounding = 0.01
     >>> unit.save()
     >>> cm, = Uom.find([('name', '=', "Centimeter")])
-    >>> cm.digits = 0
-    >>> cm.rounding = 1
-    >>> cm.save()
+    >>> cm, = cm.duplicate(default={'digits': 0, 'rounding': 1})
 
     >>> template = ProductTemplate()
     >>> template.name = "Product 1"
