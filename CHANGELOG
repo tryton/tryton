@@ -1,3 +1,4 @@
+* Always show country name in English language
 * Add fr_siren and fr_siret identifiers
 * Add optional address to identifiers
 * Add autonomous city as subdivision type for Spain

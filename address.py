@@ -154,12 +154,19 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             filter(None, (x.strip() for x in full_address.splitlines())))
 
     def _get_address_substitutions(self):
+        pool = Pool()
+        Country = pool.get('country.country')
+
         context = Transaction().context
         subdivision_code = ''
         if getattr(self, 'subdivision', None):
             subdivision_code = self.subdivision.code or ''
             if '-' in subdivision_code:
                 subdivision_code = subdivision_code.split('-', 1)[1]
+        country_name = ''
+        if getattr(self, 'country', None):
+            with Transaction().set_context(language='en'):
+                country_name = Country(self.country.id).name
         substitutions = {
             'party_name': '',
             'attn': '',
@@ -170,8 +177,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             'subdivision': (self.subdivision.name
                 if getattr(self, 'subdivision', None) else ''),
             'subdivision_code': subdivision_code,
-            'country': (self.country.name
-                if getattr(self, 'country', None) else ''),
+            'country': country_name,
             'country_code': (self.country.code or ''
                 if getattr(self, 'country', None) else ''),
             }
