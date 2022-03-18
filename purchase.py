@@ -198,6 +198,7 @@ class RequisitionLine(metaclass=PoolMeta):
         product = self.product
         if (product
                 and self.unit
+                and product.purchase_secondary_uom
                 and (self.unit.category
                     == product.purchase_secondary_uom.category)):
             unit = product.purchase_uom
@@ -213,6 +214,7 @@ class RequisitionLine(metaclass=PoolMeta):
         if (product
                 and self.unit
                 and request_unit
+                and product.purchase_secondary_uom
                 and (self.unit.category
                     == product.purchase_secondary_uom.category)
                 and request_unit.category == product.purchase_uom.category):
