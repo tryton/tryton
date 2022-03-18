@@ -9,6 +9,14 @@ from trytond.transaction import Transaction
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
+    shipments = fields.Function(fields.Char("Shipments"), 'get_shipments')
+
+    def get_shipments(self, name):
+        shipments = {
+            m.shipment.rec_name for l in self.lines
+            for m in l.stock_moves if m.shipment}
+        return ', '.join(sorted(shipments))
+
     @classmethod
     def _post(cls, invoices):
         pool = Pool()
@@ -61,6 +69,7 @@ class InvoiceLine(metaclass=PoolMeta):
                 | ~Eval('product')),
             },
         depends=['type', 'product_uom_category', 'invoice', 'invoice_type'])
+    shipments = fields.Function(fields.Char("Shipments"), 'get_shipments')
     correction = fields.Boolean(
         "Correction",
         states={
@@ -101,6 +110,11 @@ class InvoiceLine(metaclass=PoolMeta):
                 quantity += Uom.compute_qty(
                     stock_move.uom, stock_move.quantity, self.unit)
         return quantity
+
+    def get_shipments(self, name):
+        shipments = {
+            m.shipment.rec_name for m in self.stock_moves if m.shipment}
+        return ', '.join(sorted(shipments))
 
     @classmethod
     def write(cls, *args):

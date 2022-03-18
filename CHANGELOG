@@ -1,3 +1,4 @@
+* Add shipments reference on invoice and invoice line
 * Add support for Python 3.10
 * Remove support for Python 3.6
 
