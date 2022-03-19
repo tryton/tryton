@@ -694,11 +694,11 @@
                     var value = this._parse(this.format, date.val());
                     value = this._format(this.format, value);
                     date.val(value);
-                });
+                }.bind(this));
                 mousetrap.bind('=', function(e, combo) {
                     e.preventDefault();
                     date.val(this._format(this.format, moment()));
-                });
+                }.bind(this));
 
                 Sao.common.DATE_OPERATORS.forEach(function(operator) {
                     mousetrap.bind(operator[0], function(e, combo) {
