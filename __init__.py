@@ -27,5 +27,8 @@ def register():
         ir.Cron,
         module='production', type_='model')
     Pool.register(
+        stock.LotTrace,
+        module='production', type_='model', depends=['stock_lot'])
+    Pool.register(
         bom.OpenBOMTree,
         module='production', type_='wizard')

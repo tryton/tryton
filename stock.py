@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 
@@ -96,3 +96,44 @@ class ProductQuantitiesByWarehouseMove(metaclass=PoolMeta):
         if self.move.production_output:
             document = str(self.move.production_output)
         return document
+
+
+class LotTrace(metaclass=PoolMeta):
+    __name__ = 'stock.lot.trace'
+
+    production_input = fields.Many2One('production', "Production Input")
+    production_output = fields.Many2One('production', "Production Output")
+
+    @classmethod
+    def _columns(cls, move):
+        return super()._columns(move) + [
+            move.production_input.as_('production_input'),
+            move.production_output.as_('production_output'),
+            ]
+
+    @classmethod
+    def get_documents(cls):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        return super().get_documents() + [
+            ('production', Model.get_name('production'))]
+
+    def get_document(self, name):
+        document = super().get_document(name)
+        if self.production_input:
+            document = str(self.production_input)
+        elif self.production_output:
+            document = str(self.production_output)
+        return document
+
+    def _get_upward_traces(self):
+        traces = super()._get_upward_traces()
+        if self.production_input:
+            traces.update(self.production_input.outputs)
+        return traces
+
+    def _get_downward_traces(self):
+        traces = super()._get_downward_traces()
+        if self.production_output:
+            traces.update(self.production_output.inputs)
+        return traces
