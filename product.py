@@ -554,9 +554,9 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             product_column = Concat('product.template,', product.template)
             products = [('product.template', i) for i in product_template]
         else:
-            product = context.get('product', -1)
+            product = context.get('product')
             if product is None:
-                product = -1
+                product = []
             if isinstance(product, int):
                 product = [product]
             product_clause = move.product.in_(product or [-1])
