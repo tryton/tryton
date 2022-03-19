@@ -12,6 +12,7 @@ __all__ = ['LotMixin', 'register']
 def register():
     Pool.register(
         stock.Lot,
+        stock.LotTrace,
         stock.LotByLocationContext,
         stock.LotsByLocations,
         stock.LotByWarehouseContext,

@@ -89,6 +89,10 @@ class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
         cls._modify_no_move = [
             ('product', None, 'stock_lot.msg_change_product'),
             ]
+        cls._buttons.update({
+                'upward_traces': {},
+                'downward_traces': {},
+                })
 
     @classmethod
     def get_quantity(cls, lots, name):
@@ -138,6 +142,120 @@ class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
     @check_no_move
     def write(cls, *args):
         super(Lot, cls).write(*args)
+
+    @classmethod
+    @ModelView.button_action('stock_lot.act_lot_trace_upward_relate')
+    def upward_traces(cls, lots):
+        pass
+
+    @classmethod
+    @ModelView.button_action('stock_lot.act_lot_trace_downward_relate')
+    def downward_traces(cls, lots):
+        pass
+
+
+class LotTrace(ModelSQL, ModelView):
+    "Lot Trace"
+    __name__ = 'stock.lot.trace'
+
+    product = fields.Many2One(
+        'product.product', "Product",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    lot = fields.Many2One('stock.lot', "Lot")
+
+    quantity = fields.Float("Quantity", digits='unit')
+    unit = fields.Many2One('product.uom', "Unit")
+
+    company = fields.Many2One('company.company', "Company")
+    date = fields.Date("Date")
+    shipment = fields.Reference("Shipment", 'get_shipments')
+    document = fields.Function(
+        fields.Reference("Document", 'get_documents'), 'get_document')
+
+    upward_traces = fields.Function(
+        fields.Many2Many(
+            'stock.lot.trace', None, None, "Upward Traces"),
+        'get_upward_traces')
+    downward_traces = fields.Function(
+        fields.Many2Many(
+            'stock.lot.trace', None, None, "Downward Traces"),
+        'get_downward_traces')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('date', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        move = Move.__table__()
+        return (
+            move.select(
+                *cls._columns(move),
+                where=move.state == 'done'))
+
+    @classmethod
+    def _columns(cls, move):
+        return [
+            move.id.as_('id'),
+            move.create_uid.as_('create_uid'),
+            move.create_date.as_('create_date'),
+            move.write_uid.as_('write_uid'),
+            move.write_date.as_('write_date'),
+            move.product.as_('product'),
+            move.lot.as_('lot'),
+            move.quantity.as_('quantity'),
+            move.uom.as_('unit'),
+            move.company.as_('company'),
+            move.effective_date.as_('date'),
+            move.shipment.as_('shipment'),
+            ]
+
+    def get_rec_name(self, name):
+        return self.document.rec_name if self.document else str(self.id)
+
+    @classmethod
+    def get_shipments(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_shipment()
+
+    @classmethod
+    def get_documents(cls):
+        return cls.get_shipments()
+
+    def get_document(self, name):
+        if self.shipment:
+            return str(self.shipment)
+
+    @classmethod
+    def _is_trace_move(cls, move):
+        return move.state == 'done'
+
+    @classmethod
+    def _trace_move_order_key(cls, move):
+        return (move.effective_date,)
+
+    def get_upward_traces(self, name):
+        return list(map(int, sorted(filter(
+                        self._is_trace_move, self._get_upward_traces()),
+                    key=self._trace_move_order_key)))
+
+    def _get_upward_traces(self):
+        return set()
+
+    def get_downward_traces(self, name):
+        return list(map(int, sorted(filter(
+                        self._is_trace_move, self._get_downward_traces()),
+                    key=self._trace_move_order_key)))
+
+    def _get_downward_traces(self):
+        return set()
 
 
 class LotByLocationContext(ModelView):
