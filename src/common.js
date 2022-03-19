@@ -3218,8 +3218,8 @@
             dialog.body.append(jQuery('<div/>', {
                 'class': 'checkbox',
             }).append(jQuery('<label/>')
-                .append(always)
-                .text(Sao.i18n.gettext('Always ignore this warning.')))
+                .text(Sao.i18n.gettext("Always ignore this warning."))
+                .prepend(always))
             );
             dialog.body.append(jQuery('<p/>')
                     .text(Sao.i18n.gettext('Do you want to proceed?')));
