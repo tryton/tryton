@@ -390,6 +390,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_payment_approval"/>
         </record>
 
+        <record model="ir.model.button" id="payment_proceed_button">
+            <field name="name">proceed</field>
+            <field name="string">Processing</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_proceed_button_group_payment">
+            <field name="button" ref="payment_proceed_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
         <record model="ir.model.button" id="payment_succeed_button">
             <field name="name">succeed</field>
             <field name="string">Succeed</field>

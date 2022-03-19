@@ -41,6 +41,7 @@ this repository contains the full copyright notices and license terms. -->
         <group col="-1" colspan="2" id="buttons">
             <button name="draft"/>
             <button name="approve"/>
+            <button name="proceed"/>
             <button name="fail"/>
             <button name="succeed"/>
         </group>

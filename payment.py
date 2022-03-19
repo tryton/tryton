@@ -305,7 +305,13 @@ class Payment(Workflow, ModelSQL, ModelView):
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
-        states=_STATES, depends=_DEPENDS)
+        states={
+            'readonly': ~Eval('state').in_(
+                If(Eval('process_method') == 'manual',
+                    ['draft', 'processing'],
+                    ['draft'])),
+            },
+        depends=['state', 'process_method'])
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
         domain=[
             ('move.company', '=', Eval('company', -1)),
@@ -404,6 +410,13 @@ class Payment(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'draft',
                     'icon': 'tryton-forward',
                     'depends': ['state'],
+                    },
+                'proceed': {
+                    'invisible': (
+                        ~Eval('state').in_(['succeeded', 'failed'])
+                        | (Eval('process_method') != 'manual')),
+                    'icon': 'tryton-back',
+                    'depends': ['state', 'process_method'],
                     },
                 'succeed': {
                     'invisible': ~Eval('state').in_(
@@ -559,6 +572,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             return group
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('processing')
     def proceed(cls, payments):
         assert all(p.group for p in payments)

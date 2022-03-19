@@ -1,3 +1,4 @@
+* Permit to edit amount for manual payment in processing
 * Use reference field for statement line relation
 * Do not create dunning for line with pending payment
 * Add support for Python 3.10
