@@ -266,6 +266,7 @@ class Payment(metaclass=PoolMeta):
         return move
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('processing')
     @cancel_clearing_move
     def proceed(cls, payments):
