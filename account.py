@@ -213,7 +213,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                 (list(self.shipment_returns), ShipmentReturn),
                 ]:
             for shipment in shipments:
-                if any(c.state == 'posted' for c in shipment.shipment_costs):
+                if (any(c.state == 'posted' for c in shipment.shipment_costs)
+                        and shipment.cost):
                     shipment.cost += round_price(cost * factors[shipment])
                 else:
                     shipment.cost = round_price(cost * factors[shipment])
