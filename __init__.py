@@ -9,11 +9,14 @@ def register():
     Pool.register(
         payment.Journal,
         payment.Payment,
+        payment.Group,
         payment.SucceedStart,
         account.Move,
         ir.Cron,
         module='account_payment_clearing', type_='model')
     Pool.register(
+        statement.Payment,
+        statement.PaymentGroup,
         statement.Statement,
         statement.StatementLine,
         module='account_payment_clearing', type_='model',

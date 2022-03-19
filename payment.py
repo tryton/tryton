@@ -192,6 +192,7 @@ class Payment(metaclass=PoolMeta):
                 if not sum(l.debit - l.credit for l in lines):
                     to_reconcile.append(lines)
         Line.reconcile(*to_reconcile)
+        cls.reconcile_clearing(payments)
 
     @property
     def clearing_account(self):
@@ -278,6 +279,34 @@ class Payment(metaclass=PoolMeta):
         super(Payment, cls).fail(payments)
 
     @classmethod
+    def reconcile_clearing(cls, payments):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        Group = pool.get('account.payment.group')
+        to_reconcile = []
+        for payment in payments:
+            if not payment.clearing_move:
+                continue
+            clearing_account = payment.journal.clearing_account
+            if not clearing_account or not clearing_account.reconcile:
+                continue
+            lines = [l for l in payment.clearing_lines if not l.reconciliation]
+            if lines and not sum((l.debit - l.credit) for l in lines):
+                to_reconcile.append(lines)
+        if to_reconcile:
+            MoveLine.reconcile(*to_reconcile)
+        Group.reconcile_clearing(
+            Group.browse(list({p.group for p in payments if p.group})))
+
+    @property
+    def clearing_lines(self):
+        clearing_account = self.journal.clearing_account
+        if self.clearing_move:
+            for line in self.clearing_move.lines:
+                if line.account == clearing_account:
+                    yield line
+
+    @classmethod
     def copy(cls, payments, default=None):
         if default is None:
             default = {}
@@ -285,6 +314,30 @@ class Payment(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('clearing_move')
         return super(Payment, cls).copy(payments, default=default)
+
+
+class Group(metaclass=PoolMeta):
+    __name__ = 'account.payment.group'
+
+    @classmethod
+    def reconcile_clearing(cls, groups):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        to_reconcile = []
+        for group in groups:
+            clearing_account = group.journal.clearing_account
+            if not clearing_account or not clearing_account.reconcile:
+                continue
+            lines = [l for l in group.clearing_lines if not l.reconciliation]
+            if lines and not sum((l.debit - l.credit) for l in lines):
+                to_reconcile.append(lines)
+        if to_reconcile:
+            MoveLine.reconcile(*to_reconcile)
+
+    @property
+    def clearing_lines(self):
+        for payment in self.payments:
+            yield from payment.clearing_lines
 
 
 class Succeed(Wizard):

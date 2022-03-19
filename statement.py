@@ -8,13 +8,48 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
+class Payment(metaclass=PoolMeta):
+    __name__ = 'account.payment'
+
+    statement_lines = fields.One2Many(
+        'account.statement.line', 'related_to', "Statement Lines",
+        readonly=True)
+
+    @property
+    def clearing_lines(self):
+        clearing_account = self.journal.clearing_account
+        yield from super().clearing_lines
+        for statement_line in self.statement_lines:
+            if statement_line.move:
+                for line in statement_line.move.lines:
+                    if line.account == clearing_account:
+                        yield line
+
+
+class PaymentGroup(metaclass=PoolMeta):
+    __name__ = 'account.payment.group'
+
+    statement_lines = fields.One2Many(
+        'account.statement.line', 'related_to', "Statement Lines",
+        readonly=True)
+
+    @property
+    def clearing_lines(self):
+        clearing_account = self.journal.clearing_account
+        yield from super().clearing_lines
+        for statement_line in self.statement_lines:
+            if statement_line.move:
+                for line in statement_line.move.lines:
+                    if line.account == clearing_account:
+                        yield line
+
+
 class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'
 
     @classmethod
     def create_move(cls, statements):
         pool = Pool()
-        MoveLine = pool.get('account.move.line')
         Payment = pool.get('account.payment')
 
         moves = super(Statement, cls).create_move(statements)
@@ -46,19 +81,8 @@ class Statement(metaclass=PoolMeta):
                 with Transaction().set_context(clearing_date=date):
                     Payment.fail(Payment.browse(payments))
 
-        for move, statement, lines in moves:
-            assert len({l.payment for l in lines}) == 1
-            line = lines[0]
-            if line.payment and line.payment.clearing_move:
-                clearing_account = line.payment.journal.clearing_account
-                if clearing_account.reconcile:
-                    to_reconcile = []
-                    for line in move.lines + line.payment.clearing_move.lines:
-                        if (line.account == clearing_account
-                                and not line.reconciliation):
-                            to_reconcile.append(line)
-                    if not sum((l.debit - l.credit) for l in to_reconcile):
-                        MoveLine.reconcile(to_reconcile)
+        Payment.__queue__.reconcile_clearing(
+            list(set.union(*to_success.values(), *to_fail.values())))
         return moves
 
     def _group_key(self, line):
