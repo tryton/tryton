@@ -45,10 +45,8 @@ class MultiValueMixin(object):
         return record
 
     def __values(self, field, pattern, match_none=True):
-        Value = self.multivalue_model(field)
-        # Limit the cache to matching records
-        return Value.browse((v for v in self.multivalue_records(field)
-            if v.match(pattern, match_none=match_none)))
+        return [v for v in self.multivalue_records(field)
+            if v.match(pattern, match_none=match_none)]
 
     def get_multivalue(self, name, **pattern):
         Value = self.multivalue_model(name)
