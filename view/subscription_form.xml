@@ -27,7 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <label name="end_date"/>
             <field name="end_date"/>
             <label name="invoice_start_date"/>
-            <field name="invoice_start_date"/>
+            <group col="-1" id="invoice_dates">
+                <field name="invoice_start_date"/>
+                <label name="next_invoice_date"/>
+                <field name="next_invoice_date"/>
+            </group>
             <label name="invoice_recurrence"/>
             <field name="invoice_recurrence"/>
             <label name="payment_term"/>

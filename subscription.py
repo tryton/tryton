@@ -143,7 +143,12 @@ class Subscription(Workflow, ModelSQL, ModelView):
                 | Eval('next_invoice_date')),
             },
         depends=['state', 'next_invoice_date'])
-    next_invoice_date = fields.Date("Next Invoice Date", readonly=True)
+    next_invoice_date = fields.Date(
+        "Next Invoice Date", readonly=True,
+        states={
+            'invisible': Eval('state') != 'running',
+            },
+        depends=['state'])
 
     lines = fields.One2Many(
         'sale.subscription.line', 'subscription', "Lines",
