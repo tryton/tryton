@@ -242,7 +242,7 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="search_value"
                 eval="[('reconciliation', '=', None)]" pyson="1"/>
-            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+            <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_move_line_payable_receivable_view1">
