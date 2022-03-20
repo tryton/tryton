@@ -4,7 +4,7 @@ import datetime as dt
 import json
 import logging
 import os
-import select
+import selectors
 import threading
 import time
 from collections import OrderedDict, defaultdict
@@ -355,17 +355,15 @@ class MemoryCache(BaseCache):
         logger.info("listening on channel '%s' of '%s'", cls._channel, dbname)
         conn = database.get_connection(autocommit=True)
         pid = os.getpid()
+        selector = selectors.DefaultSelector()
         current_thread = threading.current_thread()
         try:
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
             current_thread.listening = True
-
+            selector.register(conn, selectors.EVENT_READ)
             while cls._listener.get((pid, dbname)) == current_thread:
-                readable, _, _ = select.select([conn], [], [], 60)
-                if not readable:
-                    continue
-
+                selector.select(timeout=60)
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
@@ -382,6 +380,7 @@ class MemoryCache(BaseCache):
                 "cache listener on '%s' crashed", dbname, exc_info=True)
             raise
         finally:
+            selector.close()
             database.put_connection(conn)
             with cls._listener_lock[pid]:
                 if cls._listener.get((pid, dbname)) == current_thread:

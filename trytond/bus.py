@@ -5,7 +5,7 @@ import collections
 import json
 import logging
 import os
-import select
+import selectors
 import threading
 import time
 import uuid
@@ -152,6 +152,7 @@ class LongPollingBus:
         logger.info("listening on channel '%s'", cls._channel)
         conn = db.get_connection(autocommit=True)
         pid = os.getpid()
+        selector = selectors.DefaultSelector()
         try:
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
@@ -159,11 +160,9 @@ class LongPollingBus:
             cls._messages[database] = messages = _MessageQueue(_cache_timeout)
 
             now = time.time()
+            selector.register(conn, selectors.EVENT_READ)
             while cls._queues[pid, database]['timeout'] > now:
-                readable, _, _ = select.select([conn], [], [], _select_timeout)
-                if not readable:
-                    continue
-
+                selector.select(timeout=_select_timeout)
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
@@ -189,6 +188,7 @@ class LongPollingBus:
                 del cls._queues[pid, database]
             raise
         finally:
+            selector.close()
             db.put_connection(conn)
 
         with cls._queues_lock[pid]:

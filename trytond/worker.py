@@ -3,7 +3,7 @@
 import datetime as dt
 import logging
 import random
-import select
+import selectors
 import signal
 import time
 from multiprocessing import Pool as MPool
@@ -61,6 +61,9 @@ def work(options):
 
     tasks = TaskList()
     timeout = options.timeout
+    selector = selectors.DefaultSelector()
+    for queue in queues:
+        selector.register(queue.connection, selectors.EVENT_READ)
     try:
         while True:
             while len(tasks.filter()) >= processes:
@@ -73,14 +76,15 @@ def work(options):
                     tasks.append(queue.run(task_id))
                     break
             else:
-                connections = [q.connection for q in queues]
-                connections, _, _ = select.select(connections, [], [], timeout)
-                for connection in connections:
+                for key, _ in selector.select(timeout=timeout):
+                    connection = key.fileobj
                     connection.poll()
                     while connection.notifies:
                         connection.notifies.pop(0)
     except KeyboardInterrupt:
         mpool.close()
+    finally:
+        selector.close()
 
 
 def initializer(options, worker=True):

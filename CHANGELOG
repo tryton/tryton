@@ -1,3 +1,4 @@
+* Use default selectors instead of select
 * Add batch option to push queue tasks
 * Support ref value for reference field
 * Enforce ref model in XML data
