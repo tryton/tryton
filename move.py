@@ -216,6 +216,9 @@ class Move(Workflow, ModelSQL, ModelView):
         help="Where the stock is moved to.")
     shipment = fields.Reference('Shipment', selection='get_shipment',
         readonly=True, select=True,
+        states={
+            'invisible': ~Eval('shipment'),
+            },
         help="Used to group several stock moves together.")
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states={
