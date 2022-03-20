@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from sql import Null
+
+from trytond.model import Check, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
@@ -47,17 +49,49 @@ class Move(metaclass=PoolMeta):
     production_input = fields.Many2One('production', 'Production Input',
         readonly=True, select=True, ondelete='CASCADE',
         domain=[('company', '=', Eval('company'))],
+        states={
+            'invisible': ~Eval('production_input'),
+            },
         depends=['company'])
     production_output = fields.Many2One('production', 'Production Output',
         readonly=True, select=True, ondelete='CASCADE',
         domain=[('company', '=', Eval('company'))],
+        states={
+            'invisible': ~Eval('production_output'),
+            },
         depends=['company'])
+    production = fields.Function(fields.Many2One(
+            'production', "Production",
+            states={
+                'invisible': ~Eval('production'),
+                }),
+        'on_change_with_production')
     production_cost_price_updated = fields.Boolean(
         "Cost Price Updated", readonly=True,
         states={
             'invisible': ~Eval('production_input') & (Eval('state') == 'done'),
             },
         depends=['production_input', 'state'])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('production_single', Check(t, (
+                        (t.production_input == Null)
+                        | (t.production_output == Null))),
+                'production.msg_stock_move_production_single'),
+            ]
+
+    @fields.depends(
+        'production_input', '_parent_production_input.id',
+        'production_output', '_parent_production_output.id')
+    def on_change_with_production(self, name=None):
+        if self.production_input:
+            return self.production_input.id
+        elif self.production_output:
+            return self.production_output.id
 
     def set_effective_date(self):
         if not self.effective_date and self.production_input:
