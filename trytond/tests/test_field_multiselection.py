@@ -29,7 +29,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     }])
 
         self.assertEqual(selection.selects, ('bar', 'foo'))
-        self.assertEqual(selection_none.selects, None)
+        self.assertEqual(selection_none.selects, ())
 
     @with_transaction()
     def test_create_not_in(self):
@@ -67,7 +67,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'dyn_selects': None,
                     }])
 
-        self.assertEqual(selection.dyn_selects, None)
+        self.assertEqual(selection.dyn_selects, ())
 
     @with_transaction()
     def test_create_dynamic_not_in(self):
@@ -100,7 +100,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'static_selects': None,
                     }])
 
-        self.assertEqual(selection.static_selects, None)
+        self.assertEqual(selection.static_selects, ())
 
     @with_transaction()
     def test_create_static_not_in(self):
@@ -183,7 +183,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
                     'selects': None,
                     }])
 
-        self.assertEqual(selection.selects_string, None)
+        self.assertEqual(selection.selects_string, [])
 
     @with_transaction()
     def test_search_equals(self):

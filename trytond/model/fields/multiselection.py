@@ -55,7 +55,7 @@ class MultiSelection(SelectionMixin, Field):
                 self.selection, RPC(instantiate=instantiate))
 
     def get(self, ids, model, name, values=None):
-        lists = {id: None for id in ids}
+        lists = {id: () for id in ids}
         for value in values or []:
             data = value[name]
             if data:
