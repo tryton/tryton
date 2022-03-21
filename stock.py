@@ -53,6 +53,17 @@ class MoveSale(metaclass=PoolMeta):
             ('origin.line.' + clause[0],) + tuple(clause[1:3])
             + ('sale.line.component',) + tuple(clause[3:])]
 
+    def get_sale_exception_state(self, name):
+        pool = Pool()
+        SaleLineComponent = pool.get('sale.line.component')
+        state = super().get_sale_exception_state(name)
+        if isinstance(self.origin, SaleLineComponent):
+            if self in self.origin.moves_recreated:
+                state = 'recreated'
+            elif self in self.origin.moves_ignored:
+                state = 'ignored'
+        return state
+
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):
         pool = Pool()
@@ -148,6 +159,17 @@ class MovePurchase(metaclass=PoolMeta):
             ('origin.line.purchase.party' + clause[0].lstrip(name),)
             + tuple(clause[1:3]) + ('purchase.line.component',)
             + tuple(clause[3:])]
+
+    def get_purchase_exception_state(self, name):
+        pool = Pool()
+        PurchaseLineComponent = pool.get('purchase.line.component')
+        state = super().get_purchase_exception_state(name)
+        if isinstance(self.origin, PurchaseLineComponent):
+            if self in self.origin.moves_recreated:
+                state = 'recreated'
+            elif self in self.origin.moves_ignored:
+                state = 'ignored'
+        return state
 
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):
