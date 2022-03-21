@@ -273,3 +273,6 @@ Handle shipment exception::
     >>> _, _, shipment = sale.shipments
     >>> len(shipment.outgoing_moves)
     1
+    >>> backorder.reload()
+    >>> list(sorted(m.sale_exception_state for m in backorder.outgoing_moves))
+    ['ignored', 'recreated']

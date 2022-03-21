@@ -277,3 +277,6 @@ Handle shipment exception::
 
     >>> len(purchase.moves)
     6
+    >>> backorder.reload()
+    >>> backorder.purchase_exception_state
+    'recreated'
