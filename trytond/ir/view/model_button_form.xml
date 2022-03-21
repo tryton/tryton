@@ -8,7 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="string"/>
     <field name="string"/>
-    <newline/>
+    <label name="active"/>
+    <field name="active"/>
     <separator name="help" colspan="4"/>
     <field name="help" colspan="4"/>
     <separator name="confirm" colspan="4"/>

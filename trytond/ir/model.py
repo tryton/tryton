@@ -10,12 +10,13 @@ from itertools import groupby
 from sql import Literal, Null
 from sql.aggregate import Max
 from sql.conditionals import Case
+from sql.operators import Equal
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, EvalEnvironment, ModelSQL, ModelView, Unique, Workflow,
-    fields)
+    DeactivableMixin, EvalEnvironment, Exclude, ModelSQL, ModelView, Unique,
+    Workflow, fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
@@ -834,7 +835,7 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelButton(ModelSQL, ModelView):
+class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     "Model Button"
     __name__ = 'ir.model.button'
     name = fields.Char('Name', required=True, readonly=True)
@@ -870,12 +871,23 @@ class ModelButton(ModelSQL, ModelView):
         'ir.model.button.view_attributes', context=False)
 
     @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.2: replace unique by exclude
+        table_h.drop_constraint('name_model_uniq')
+
+    @classmethod
     def __setup__(cls):
         super(ModelButton, cls).__setup__()
-        table = cls.__table__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('name_model_uniq', Unique(table, table.name, table.model),
-                'The button name in model must be unique!'),
+            ('name_model_exclude',
+                Exclude(t, (t.name, Equal), (t.model, Equal),
+                    where=(t.active == Literal(True))),
+                'ir.msg_button_name_unique'),
             ]
         cls._order.insert(0, ('model', 'ASC'))
 
