@@ -385,7 +385,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The code on language must be unique.</field>
         </record>
         <record model="ir.message" id="msg_button_name_unique">
-            <field name="text">The button name in model must be unique.</field>
+            <field name="text">The name of the button must be unique per model.</field>
         </record>
     </data>
 </tryton>

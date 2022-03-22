@@ -1,4 +1,4 @@
-* Allow to deactivate button access
+* Allow button access to be deactivated
 * Always return tuple for MultiSelection
 * Use default selectors instead of select
 * Add batch option to push queue tasks
