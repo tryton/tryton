@@ -60,7 +60,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             },
         depends=['parent'],
-        help="Check to convert into accounting category.")
+        help="Check to indicate the category is used for accounting.")
     account_parent = fields.Boolean('Use Parent\'s accounts',
         states={
             'invisible': ~Eval('accounting', False),
