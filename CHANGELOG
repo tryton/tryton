@@ -1,3 +1,4 @@
+* Allow CORS on root path
 * Allow button access to be deactivated
 * Always return tuple for MultiSelection
 * Use default selectors instead of select

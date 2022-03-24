@@ -86,8 +86,9 @@ def root(request, *args):
     return methods[request.rpc_method](request, *request.rpc_params)
 
 
+@app.route('/', methods=['OPTIONS'])
 @app.route('/<path:path>', methods=['OPTIONS'])
-def options(request, path):
+def options(request, path=None):
     return Response(status=HTTPStatus.NO_CONTENT)
 
 
