@@ -4668,12 +4668,10 @@
         <record model="account.account.template" id="400">
             <field name="name">Fournisseurs et comptes rattachés</field>
             <field name="code">400</field>
-            <field name="party_required" eval="True"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="40"/>
             <!-- Migration from 5.0 -->
             <field name="party_required" eval="False"/>
             <field name="reconcile" eval="False"/>
+            <field name="parent" ref="40"/>
         </record>
         <record model="account.account.template" id="401">
             <field name="name">Fournisseurs</field>
@@ -4831,12 +4829,10 @@
             <field name="code">410</field>
             <field name="type" ref="creances_clients"/>
             <field name="closed" eval="True"/>
-            <field name="party_required" eval="True"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="41"/>
             <!-- Migration from 5.0 -->
             <field name="party_required" eval="False"/>
             <field name="reconcile" eval="False"/>
+            <field name="parent" ref="41"/>
         </record>
         <record model="account.account.template" id="411">
             <field name="name">Clients</field>
