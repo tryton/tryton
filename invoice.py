@@ -67,7 +67,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             depends=['company']),
         'on_change_with_company_party')
     tax_identifier = fields.Many2One(
-        'party.identifier', "Tax Identifier",
+        'party.identifier', "Tax Identifier", ondelete='RESTRICT',
         states=_states, depends=_depends)
     type = fields.Selection([
             ('out', "Customer"),
@@ -114,7 +114,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             },
         depends=_depends + ['company'])
     party_tax_identifier = fields.Many2One(
-        'party.identifier', "Party Tax Identifier",
+        'party.identifier', "Party Tax Identifier", ondelete='RESTRICT',
         states=_states,
         domain=[
             ('party', '=', Eval('party', -1)),
