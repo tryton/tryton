@@ -214,7 +214,7 @@ class PurchaseRequest(metaclass=PoolMeta):
     @classmethod
     def get_supply_dates(cls, product):
         """
-        Return the minimal interval of earliest supply dates for a product.
+        Return the interval of earliest supply dates for a product.
         """
         Date = Pool().get('ir.date')
 
@@ -229,11 +229,7 @@ class PurchaseRequest(metaclass=PoolMeta):
                 date=next_day)
             if (not min_date) or supply_date < min_date:
                 min_date = supply_date
-            if (not max_date):
-                max_date = next_supply_date
-            if supply_date > min_date and supply_date < max_date:
-                max_date = supply_date
-            if next_supply_date < max_date:
+            if (not max_date) or next_supply_date > max_date:
                 max_date = next_supply_date
 
         if not min_date:
