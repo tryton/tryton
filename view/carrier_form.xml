@@ -11,5 +11,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="ups_label_image_format"/>
         <label name="ups_label_height"/>
         <field name="ups_label_height"/>
+
+        <label name="ups_notifications"/>
+        <field name="ups_notifications" colspan="3"/>
     </xpath>
 </data>

@@ -344,6 +344,38 @@ class CreateShippingUPS(Wizard):
                 }
         return pkg
 
+    def get_service_options(self, shipment):
+        service_options = {}
+        notifications = list(self.get_notifications(shipment))
+        if notifications:
+            service_options['Notification'] = notifications
+        return service_options
+
+    def get_notifications(self, shipment):
+        for code in shipment.carrier.ups_notifications:
+            email = shipment.shipping_to.contact_mechanism_get('email')
+            if email and len(email.value) <= 50:
+                notification = {
+                    'NotificationCode': code,
+                    'EMail': {
+                        'EMailAddress': email.value,
+                        },
+                    }
+                if code in {'012', '013'}:
+                    phone = shipment.shipping_to.contact_mechanism_get(
+                        {'phone', 'mobile'})
+                    if phone and len(phone.value) <= 15:
+                        notification['VoiceMessage'] = {
+                            'PhoneNumber': phone.value,
+                            }
+                    mobile = shipment.shipping_to.contact_mechanism_get(
+                        'mobile')
+                    if mobile and len(mobile.value) <= 15:
+                        notification['TextMessage'] = {
+                            'PhoneNumber': phone.value,
+                            }
+                yield notification
+
     def get_request(self, shipment, packages, credential):
         shipper = self.get_shipping_party(
             shipment.company.party, shipment.shipping_warehouse.address)
@@ -354,7 +386,10 @@ class CreateShippingUPS(Wizard):
 
         packages = [self.get_package(credential.use_metric, p)
             for p in packages]
-
+        options = self.get_service_options(shipment)
+        if options:
+            for pkg in packages:
+                pkg['ShipmentServiceOptions'] = options
         return {
             'UPSSecurity': self.get_security(credential),
             'ShipmentRequest': {

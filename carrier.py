@@ -90,6 +90,19 @@ class Carrier(metaclass=PoolMeta):
                 | (Eval('ups_label_image_format') == 'GIF')),
             },
         depends=['shipping_service', 'ups_label_image_format'])
+    ups_notifications = fields.MultiSelection([
+            ('5', "Quantum View In-transit"),
+            ('6', "Quantum View Shop"),
+            ('7', "Quantum View Exception"),
+            ('8', "Quantum View Delivery"),
+            ('2', "Return or Label Creation"),
+            ('012', "Alternate Delivery Location"),
+            ('013', "UPS Access Point Shipper"),
+            ], "Notifications", sort=False,
+        states={
+            'invisible': Eval('shipping_service') != 'ups',
+            },
+        depends=['shipping_service'])
 
     @classmethod
     def __setup__(cls):

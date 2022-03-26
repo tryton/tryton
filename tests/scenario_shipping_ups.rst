@@ -68,6 +68,10 @@ Create parties::
     >>> customer_phone.type = 'phone'
     >>> customer_phone.value = '+44 151 260 6677'
     >>> customer_phone.save()
+    >>> customer_email = customer.contact_mechanisms.new()
+    >>> customer_email.type = 'email'
+    >>> customer_email.value = 'customer@example.com'
+    >>> customer_email.save()
 
 Set the warehouse address::
 
@@ -180,6 +184,7 @@ Create a UPS Carrier and the related credential::
     >>> carrier.shipping_service = 'ups'
     >>> carrier.ups_service_type = '65'
     >>> carrier.ups_label_image_format = 'GIF'
+    >>> carrier.ups_notifications = ['5', '7', '012']
     >>> carrier.save()
 
     >>> catchall_selection = CarrierSelection(carrier=carrier)
