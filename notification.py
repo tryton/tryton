@@ -228,7 +228,6 @@ class Email(ModelSQL, ModelView):
                 % trigger.rec_name)
         if notification_email.send_after:
             with Transaction().set_context(
-                    queue_name='notification_email',
                     queue_scheduled_at=trigger.notification_email.send_after):
                 notification_email.__class__.__queue__._send_email_queued(
                     notification_email, [r.id for r in records], trigger.id)
