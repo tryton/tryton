@@ -40,6 +40,8 @@ class POS(ModelSQL, ModelView):
             ],
         depends=['company'])
 
+    address = fields.Many2One('party.address', "Address")
+
     storage_location = fields.Many2One(
         'stock.location', "Storage Location", required=True,
         domain=[('type', '=', 'storage')],

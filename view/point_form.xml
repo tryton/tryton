@@ -13,6 +13,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sequence"/>
     <field name="sequence"/>
     <newline/>
+    <label name="address"/>
+    <field name="address"/>
+    <newline/>
     <label name="storage_location"/>
     <field name="storage_location"/>
     <label name="return_location"/>

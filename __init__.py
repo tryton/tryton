@@ -1,9 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.modules.sale.sale_reporting import Abstract
 from trytond.pool import Pool
 
-from . import account, product, sale, stock
+from . import account, product, sale, sale_reporting, stock
 
 
 def register():
@@ -27,3 +28,4 @@ def register():
     Pool.register(
         sale.POSPay,
         module='sale_point', type_='wizard')
+    Pool.register_mixin(sale_reporting.AbstractMixin, Abstract, 'sale_point')
