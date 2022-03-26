@@ -1083,10 +1083,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             with Transaction().set_context(company=company.id):
                 today = Date.today()
 
-            def accounting_date(invoice):
-                return invoice.accounting_date or invoice.invoice_date or today
+            def invoice_date(invoice):
+                return invoice.invoice_date or today
 
-            grouped_invoices = sorted(grouped_invoices, key=accounting_date)
+            grouped_invoices = sorted(grouped_invoices, key=invoice_date)
 
             for invoice in grouped_invoices:
                 # Posted and paid invoices are tested by check_modify so we can
@@ -1106,20 +1106,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     invoice.invoice_date = today
                 invoice.number, invoice.sequence = invoice.get_next_number()
                 if invoice.type == 'out' and invoice.sequence not in sequences:
-                    date = accounting_date(invoice)
+                    date = invoice_date(invoice)
                     # Do not need to lock the table
                     # because sequence.get_id is sequential
                     after_invoices = cls.search([
                             ('sequence', '=', invoice.sequence),
-                            ['OR',
-                                ('accounting_date', '>', date),
-                                [
-                                    ('accounting_date', '=', None),
-                                    ('invoice_date', '>', date),
-                                    ],
-                                ],
+                            ('invoice_date', '>', date),
                             ],
-                        limit=1, order=[('accounting_date', 'DESC')])
+                        limit=1, order=[('invoice_date', 'DESC')])
                     if after_invoices:
                         after_invoice, = after_invoices
                         raise InvoiceNumberError(

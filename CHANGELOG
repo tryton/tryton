@@ -1,3 +1,4 @@
+* Use invoice date to enforce sequence on customer invoice
 * Prevent delete tax identifier used on invoice
 * Raise a warning when validating supplier invoice with same reference
 * Add support for Python 3.10

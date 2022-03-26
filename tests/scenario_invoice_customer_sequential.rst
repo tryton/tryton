@@ -53,7 +53,7 @@ Create invoice invoice second period and next year::
 
     >>> invoice = Invoice(type='out')
     >>> invoice.party = party
-    >>> invoice.accounting_date = fiscalyear.periods[1].start_date
+    >>> invoice.invoice_date = fiscalyear.periods[1].start_date
     >>> line = invoice.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('10')
@@ -62,7 +62,7 @@ Create invoice invoice second period and next year::
 
     >>> invoice = Invoice(type='out')
     >>> invoice.party = party
-    >>> invoice.accounting_date = next_fiscalyear.periods[0].start_date
+    >>> invoice.invoice_date = next_fiscalyear.periods[0].start_date
     >>> line = invoice.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('20')
@@ -73,7 +73,7 @@ Try to post invoice on first period::
 
     >>> invoice = Invoice(type='out')
     >>> invoice.party = party
-    >>> invoice.accounting_date = fiscalyear.periods[0].start_date
+    >>> invoice.invoice_date = fiscalyear.periods[0].start_date
     >>> line = invoice.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('5')
@@ -87,5 +87,5 @@ Try to post invoice on first period::
 
 Post invoice on the third period::
 
-    >>> invoice.accounting_date = fiscalyear.periods[2].start_date
+    >>> invoice.invoice_date = fiscalyear.periods[2].start_date
     >>> invoice.click('post')
