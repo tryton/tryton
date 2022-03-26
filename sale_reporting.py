@@ -8,10 +8,11 @@ try:
 except ImportError:
     pygal = None
 from dateutil.relativedelta import relativedelta
-from sql import Column, Literal, Null, With
+from sql import Column, Literal, Null, Union, With
 from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Coalesce
 from sql.functions import Ceil, CurrentTimestamp, DateTrunc, Log, Power
+from sql.operators import Concat
 
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, UnionMixin, fields
@@ -57,17 +58,49 @@ class Abstract(ModelSQL):
             with_=withs.values())
 
     @classmethod
+    def _sale_line(cls, length, index, company_id=None):
+        pool = Pool()
+        Line = pool.get('sale.line')
+        Sale = pool.get('sale.sale')
+
+        line = Line.__table__()
+        sale = Sale.__table__()
+
+        return (line
+            .join(sale, condition=line.sale == sale.id)
+            .select(
+                (line.id * length + index).as_('id'),
+                line.product.as_('product'),
+                Coalesce(line.actual_quantity, line.quantity).as_('quantity'),
+                line.unit_price.as_('unit_price'),
+                Concat('sale.sale,', line.sale).as_('order'),
+                sale.sale_date.as_('date'),
+                sale.company.as_('company'),
+                sale.currency.as_('currency'),
+                sale.party.as_('customer'),
+                sale.warehouse.as_('location'),
+                sale.shipment_address.as_('shipment_address'),
+                where=sale.state.in_(cls._sale_states())
+                & (sale.company == company_id),
+                ))
+
+    @classmethod
+    def _lines(cls):
+        return [cls._sale_line]
+
+    @classmethod
     def _joins(cls):
         pool = Pool()
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
-        Line = pool.get('sale.line')
-        Sale = pool.get('sale.sale')
+        context = Transaction().context
 
         tables = {}
-        tables['line'] = line = Line.__table__()
-        tables['line.sale'] = sale = Sale.__table__()
-        tables['line.sale.company'] = company = Company.__table__()
+        company = context.get('company')
+        lines = cls._lines()
+        tables['line'] = line = Union(*(
+                l(len(lines), i, company) for i, l in enumerate(lines)))
+        tables['line.company'] = company = Company.__table__()
         withs = {}
         currency_sale = With(query=Currency.currency_rate_sql())
         withs['currency_sale'] = currency_sale
@@ -75,32 +108,29 @@ class Abstract(ModelSQL):
         withs['currency_company'] = currency_company
 
         from_item = (line
-            .join(sale, condition=line.sale == sale.id)
             .join(currency_sale,
-                condition=(sale.currency == currency_sale.currency)
-                & (currency_sale.start_date <= sale.sale_date)
+                condition=(line.currency == currency_sale.currency)
+                & (currency_sale.start_date <= line.date)
                 & ((currency_sale.end_date == Null)
-                    | (currency_sale.end_date >= sale.sale_date))
+                    | (currency_sale.end_date >= line.date))
                 )
-            .join(company, condition=sale.company == company.id)
+            .join(company, condition=line.company == company.id)
             .join(currency_company,
                 condition=(company.currency == currency_company.currency)
-                & (currency_company.start_date <= sale.sale_date)
+                & (currency_company.start_date <= line.date)
                 & ((currency_company.end_date == Null)
-                    | (currency_company.end_date >= sale.sale_date))
+                    | (currency_company.end_date >= line.date))
                 ))
         return from_item, tables, withs
 
     @classmethod
     def _columns(cls, tables, withs):
         line = tables['line']
-        sale = tables['line.sale']
         currency_company = withs['currency_company']
         currency_sale = withs['currency_sale']
 
-        quantity = Coalesce(line.actual_quantity, line.quantity)
         revenue = cls.revenue.sql_cast(
-            Sum(quantity * line.unit_price
+            Sum(line.quantity * line.unit_price
                 * currency_company.rate / currency_sale.rate))
         return [
             cls._column_id(tables, withs).as_('id'),
@@ -108,9 +138,9 @@ class Abstract(ModelSQL):
             CurrentTimestamp().as_('create_date'),
             cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
             cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
-            sale.company.as_('company'),
+            line.company.as_('company'),
             revenue.as_('revenue'),
-            Count(sale.id, distinct=True).as_('number'),
+            Count(line.order, distinct=True).as_('number'),
             ]
 
     @classmethod
@@ -120,25 +150,30 @@ class Abstract(ModelSQL):
 
     @classmethod
     def _group_by(cls, tables, withs):
-        sale = tables['line.sale']
-        return [sale.company]
+        line = tables['line']
+        return [line.company]
 
     @classmethod
     def _where(cls, tables, withs):
+        pool = Pool()
+        Location = pool.get('stock.location')
         context = Transaction().context
-        sale = tables['line.sale']
+        line = tables['line']
 
-        where = sale.company == context.get('company')
-        where &= sale.state.in_(cls._sale_states())
+        where = Literal(True)
         from_date = context.get('from_date')
         if from_date:
-            where &= sale.sale_date >= from_date
+            where &= line.date >= from_date
         to_date = context.get('to_date')
         if to_date:
-            where &= sale.sale_date <= to_date
+            where &= line.date <= to_date
         warehouse = context.get('warehouse')
         if warehouse:
-            where &= sale.warehouse == warehouse
+            locations = Location.search([
+                    ('parent', 'child_of', warehouse),
+                    ],
+                query=True)
+            where &= line.location.in_(locations)
         return where
 
     @classmethod
@@ -194,8 +229,8 @@ class AbstractTimeseries(Abstract):
     @classmethod
     def _column_date(cls, tables, withs):
         context = Transaction().context
-        sale = tables['line.sale']
-        date = DateTrunc(context.get('period'), sale.sale_date)
+        line = tables['line']
+        date = DateTrunc(context.get('period'), line.date)
         date = cls.date.sql_cast(date)
         return date
 
@@ -299,15 +334,15 @@ class CustomerMixin(object):
 
     @classmethod
     def _columns(cls, tables, withs):
-        sale = tables['line.sale']
+        line = tables['line']
         return super(CustomerMixin, cls)._columns(tables, withs) + [
-            sale.party.as_('customer')]
+            line.customer.as_('customer')]
 
     @classmethod
     def _group_by(cls, tables, withs):
-        sale = tables['line.sale']
+        line = tables['line']
         return super(CustomerMixin, cls)._group_by(tables, withs) + [
-            sale.party]
+            line.customer]
 
     def get_rec_name(self, name):
         return self.customer.rec_name
@@ -327,8 +362,15 @@ class Customer(CustomerMixin, Abstract, ModelView):
 
     @classmethod
     def _column_id(cls, tables, withs):
-        sale = tables['line.sale']
-        return sale.party
+        line = tables['line']
+        return line.customer
+
+    @classmethod
+    def _where(cls, tables, withs):
+        line = tables['line']
+        where = super()._where(tables, withs)
+        where &= line.customer != Null
+        return where
 
 
 class CustomerTimeseries(CustomerMixin, AbstractTimeseries, ModelView):
@@ -345,18 +387,18 @@ class CustomerCategoryMixin:
         pool = Pool()
         PartyCategory = pool.get('party.party-party.category')
         from_item, tables, withs = super()._joins()
-        if 'line.sale.party.party_category' not in tables:
+        if 'line.customer.party_category' not in tables:
             party_category = PartyCategory.__table__()
-            tables['line.sale.party.party_category'] = party_category
-            sale = tables['line.sale']
+            tables['line.customer.party_category'] = party_category
+            line = tables['line']
             from_item = (from_item
                 .join(party_category,
-                    condition=sale.party == party_category.party))
+                    condition=line.customer == party_category.party))
         return from_item, tables, withs
 
     @classmethod
     def _columns(cls, tables, withs):
-        party_category = tables['line.sale.party.party_category']
+        party_category = tables['line.customer.party_category']
         return super()._columns(tables, withs) + [
             party_category.category.as_('category')]
 
@@ -366,7 +408,7 @@ class CustomerCategoryMixin:
         Category = pool.get('party.category')
         category = Category.__table__()
         line = tables['line']
-        party_category = tables['line.sale.party.party_category']
+        party_category = tables['line.customer.party_category']
         # Get a stable number of categories over time
         # by using a number one order bigger.
         nb_category = category.select(
@@ -375,12 +417,12 @@ class CustomerCategoryMixin:
 
     @classmethod
     def _group_by(cls, tables, withs):
-        party_category = tables['line.sale.party.party_category']
+        party_category = tables['line.customer.party_category']
         return super()._group_by(tables, withs) + [party_category.category]
 
     @classmethod
     def _where(cls, tables, withs):
-        party_category = tables['line.sale.party.party_category']
+        party_category = tables['line.customer.party_category']
         where = super()._where(tables, withs)
         where &= party_category.category != Null
         return where
@@ -404,7 +446,7 @@ class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
 
     @classmethod
     def _column_id(cls, tables, withs):
-        party_category = tables['line.sale.party.party_category']
+        party_category = tables['line.customer.party_category']
         return party_category.category
 
 
@@ -795,29 +837,29 @@ class CountryMixin(object):
         pool = Pool()
         Address = pool.get('party.address')
         from_item, tables, withs = super(CountryMixin, cls)._joins()
-        if 'line.sale.shipment_address' not in tables:
+        if 'line.shipment_address' not in tables:
             address = Address.__table__()
-            tables['line.sale.shipment_address'] = address
-            sale = tables['line.sale']
+            tables['line.shipment_address'] = address
+            line = tables['line']
             from_item = (from_item
-                .join(address, condition=sale.shipment_address == address.id))
+                .join(address, condition=line.shipment_address == address.id))
         return from_item, tables, withs
 
     @classmethod
     def _columns(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return super(CountryMixin, cls)._columns(tables, withs) + [
             address.country.as_('country')]
 
     @classmethod
     def _group_by(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return super(CountryMixin, cls)._group_by(tables, withs) + [
             address.country]
 
     @classmethod
     def _where(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         where = super(CountryMixin, cls)._where(tables, withs)
         where &= address.country != Null
         return where
@@ -837,7 +879,7 @@ class Country(CountryMixin, Abstract):
 
     @classmethod
     def _column_id(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return address.country
 
     def get_rec_name(self, name):
@@ -855,19 +897,19 @@ class SubdivisionMixin(CountryMixin):
 
     @classmethod
     def _columns(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return super(SubdivisionMixin, cls)._columns(tables, withs) + [
             address.subdivision.as_('subdivision')]
 
     @classmethod
     def _group_by(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return super(SubdivisionMixin, cls)._group_by(tables, withs) + [
             address.subdivision]
 
     @classmethod
     def _where(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         where = super(SubdivisionMixin, cls)._where(tables, withs)
         where &= address.subdivision != Null
         return where
@@ -888,7 +930,7 @@ class Subdivision(SubdivisionMixin, Abstract):
 
     @classmethod
     def _column_id(cls, tables, withs):
-        address = tables['line.sale.shipment_address']
+        address = tables['line.shipment_address']
         return address.subdivision
 
     def get_rec_name(self, name):
