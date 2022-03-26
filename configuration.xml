@@ -38,8 +38,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
 
     </data>
