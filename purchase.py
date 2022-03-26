@@ -383,7 +383,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         cls.store_cache(requisitions)
         config = Configuration(1)
         with transaction.set_context(
-                queue_name='purchase',
                 queue_scheduled_at=config.purchase_process_after,
                 queue_batch=context.get('queue_batch', True)):
             cls.__queue__.process(requisitions)
