@@ -4,7 +4,7 @@ from trytond.pool import Pool
 
 from . import (
     action, attachment, avatar, cache, calendar_, configuration, cron, date,
-    email_, error, export, lang, message, model, module, note, queue, routes,
+    email_, error, export, lang, message, model, module, note, queue_, routes,
     rule, sequence, session, translation, trigger, ui)
 
 __all__ = ['register', 'routes']
@@ -78,7 +78,7 @@ def register():
         trigger.TriggerLog,
         session.Session,
         session.SessionWizard,
-        queue.Queue,
+        queue_.Queue,
         calendar_.Month,
         calendar_.Day,
         message.Message,
