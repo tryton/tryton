@@ -19,12 +19,14 @@ this repository contains the full copyright notices and license terms. -->
     <label name="stripe_error_param"/>
     <field name="stripe_error_param"/>
 
-    <group col="4" colspan="4" id="state_buttons">
-        <label name="state"/>
-        <field name="state"/>
-        <group col="-1" colspan="2" id="buttons">
-            <button name="draft"/>
-            <button name="approve"/>
-        </group>
+    <label name="approved_by"/>
+    <field name="approved_by"/>
+    <newline/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="draft"/>
+        <button name="approve"/>
     </group>
 </form>
