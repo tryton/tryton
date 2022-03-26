@@ -3,10 +3,9 @@
 import functools
 from decimal import Decimal
 
-from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.modules.account_payment.exceptions import PaymentValidationError
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
 
 
 def sale_payment_confirm(func):
@@ -28,6 +27,20 @@ def sale_payment_confirm(func):
 
 class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.origin.domain['sale.sale'] = [
+            If(~Eval('state').in_(['failed', 'succeeded']),
+                ('state', '!=', 'draft'),
+                ()),
+            If(Eval('state') == 'draft',
+                ('state', '!=', 'cancelled'),
+                ()),
+            ]
+        if 'state' not in cls.origin.depends:
+            cls.origin.depends.append('state')
 
     @classmethod
     def _get_origin(cls):
@@ -59,31 +72,6 @@ class Payment(metaclass=PoolMeta):
             currency = getattr(sale, 'currency', None)
             if currency is not None:
                 self.currency = currency
-
-    @classmethod
-    def validate(cls, payments):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        super(Payment, cls).validate(payments)
-        for payment in payments:
-            if isinstance(payment.origin, Sale):
-                payment.check_sale_state()
-
-    def check_sale_state(self):
-        assert isinstance(self.origin, Pool().get('sale.sale'))
-        if self.state == 'succeeded':
-            # Do not prevent succeeding payment
-            return
-        if self.state != 'failed' and self.origin.state == 'draft':
-            raise PaymentValidationError(
-                gettext('sale_payment.msg_payment_sale_draft',
-                    sale=self.origin.rec_name,
-                    payment=self.rec_name))
-        elif self.state == 'draft' and self.origin.state == 'cancelled':
-            raise PaymentValidationError(
-                gettext('sale_payment.msg_payment_sale_cancel',
-                    sale=self.origin.rec_name,
-                    payment=self.rec_name))
 
     @classmethod
     def create(cls, vlist):

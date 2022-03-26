@@ -9,11 +9,5 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_draft_payment">
             <field name="text">You cannot reset to draft sale "%(sale)s" because it has payments.</field>
         </record>
-        <record model="ir.message" id="msg_payment_sale_draft">
-            <field name="text">You cannot use sale "%(sale)s" on payment "%(payment)s" because it is a draft sale.</field>
-        </record>
-        <record model="ir.message" id="msg_payment_sale_cancel">
-            <field name="text">You cannot use sale "%(sale)s" on payment "%(payment)s" because it is a cancelled sale.</field>
-        </record>
     </data>
 </tryton>
