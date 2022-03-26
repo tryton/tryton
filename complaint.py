@@ -305,7 +305,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
         context = transaction.context
         config = Configuration(1)
         with transaction.set_context(
-                queue_name='sale',
                 queue_scheduled_at=config.sale_process_after,
                 queue_batch=context.get('queue_batch', True)):
             cls.__queue__.process(complaints)
