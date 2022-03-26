@@ -1310,10 +1310,10 @@
             this.attachment_screen = screen;
 
             but_prev.click(function() {
-                screen.display_previous();
+                return screen.display_previous();
             });
             but_next.click(function() {
-                screen.display_next();
+                return screen.display_next();
             });
 
             var preview = {};
@@ -1461,6 +1461,15 @@
             update('note', title, badge, color);
         },
         record_message: function(position, size, max_size, record_id) {
+            var set_sensitive = function(button_id, sensitive) {
+                if (this.buttons[button_id]) {
+                    this.buttons[button_id].prop('disabled', !sensitive);
+                }
+                if (this.menu_buttons[button_id]) {
+                    this.menu_buttons[button_id].toggleClass('disabled', !sensitive);
+                }
+            }.bind(this);
+
             var name = "_";
             if (position) {
                 var selected = this.screen.selected_records.length;
@@ -1487,16 +1496,12 @@
                 } else if (button_id == 'save') {
                     can_be_sensitive &= !this.screen.readonly;
                 }
-                button.prop('disabled', !(position && can_be_sensitive));
+                set_sensitive(button_id, position && can_be_sensitive);
             }.bind(this));
-            this.buttons.switch_.prop('disabled',
-                this.attributes.view_ids > 1);
-
-            this.menu_buttons.delete_.toggleClass(
-                'disabled', !this.screen.deletable);
-            this.menu_buttons.save.toggleClass(
-                'disabled', this.screen.readonly);
-            this.buttons.save.prop('disabled', this.screen.readonly);
+            set_sensitive('switch_', this.attributes.view_ids.length > 1);
+            set_sensitive('delete_', this.screen.deletable);
+            set_sensitive('previous', position > (this.screen.offset + 1));
+            set_sensitive('next', position < size);
 
             var msg;
             if (size < max_size) {
