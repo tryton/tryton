@@ -15,6 +15,8 @@ from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.account_payment.exceptions import (
     PaymentValidationError, ProcessError)
+from trytond.modules.company.model import (
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
@@ -539,6 +541,9 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+    approved_by = employee_field(
+        "Approved by",
+        states=['approved', 'processing', 'succeeded', 'failed'])
 
     state = fields.Selection([
             ('draft', "Draft"),
@@ -560,6 +565,9 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     @classmethod
     def __setup__(cls):
@@ -594,6 +602,11 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
         if self.payment and self.payment.currency:
             return self.payment.currency.id
 
+    @fields.depends('payment', '_parent_payment.company')
+    def on_change_with_company(self, name=None):
+        if self.payment and self.payment.company:
+            return self.payment.company.id
+
     @classmethod
     def copy(cls, refunds, default=None):
         if default is None:
@@ -607,12 +620,14 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('approved_by')
     def draft(cls, refunds):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('approved')
+    @set_employee('approved_by')
     def approve(cls, refunds):
         pass
 
