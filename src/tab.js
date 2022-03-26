@@ -245,10 +245,16 @@
                 this.buttons[item.id].click(item, function(event) {
                     var item = event.data;
                     var button = this.buttons[item.id];
-                    button.prop('disabled', true);
+                    // Use data instead of disabled prop because the action may
+                    // actually disable the button.
+                    if (button.data('disabled')) {
+                        event.preventDefault();
+                        return;
+                    }
+                    button.data('disabled', true);
                     (this[item.id](this) || jQuery.when())
                         .always(function() {
-                            button.prop('disabled', false);
+                            button.data('disabled', false);
                         });
                 }.bind(this));
             };
