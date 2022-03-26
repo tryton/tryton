@@ -1087,7 +1087,7 @@ class POSPayment(ModelSQL, ModelView):
         Line = pool.get('account.move.line')
 
         line = Line()
-        if self.amount >= 0:
+        if self.sale.total >= 0:
             line.debit, line.credit = self.amount, Decimal(0)
         else:
             line.debit, line.credit = Decimal(0), -self.amount

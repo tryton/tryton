@@ -208,7 +208,7 @@ Check account move::
 
     >>> accounts['cash'].reload()
     >>> accounts['cash'].debit, accounts['cash'].credit
-    (Decimal('0.00'), Decimal('64.00'))
+    (Decimal('-64.00'), Decimal('0.00'))
 
     >>> accounts['terminal'].reload()
     >>> accounts['terminal'].debit, accounts['terminal'].credit
