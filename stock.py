@@ -287,6 +287,9 @@ class CreateShippingUPS(Wizard):
             shipping_party['Phone'] = {
                 'Number': re.sub('[() .-]', '', phone.value)[:15]
                 }
+        email = party.contact_mechanism_get('email')
+        if email and len(email.value) <= 50:
+            shipping_party['EMailAddress'] = email.value
 
         return shipping_party
 
@@ -345,6 +348,9 @@ class CreateShippingUPS(Wizard):
         shipper = self.get_shipping_party(
             shipment.company.party, shipment.shipping_warehouse.address)
         shipper['ShipperNumber'] = credential.account_number
+        # email is not required but must be associated with the UserId
+        # which can not be ensured.
+        shipper.pop('EMailAddress', None)
 
         packages = [self.get_package(credential.use_metric, p)
             for p in packages]
