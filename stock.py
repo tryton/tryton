@@ -5,7 +5,8 @@ from sql.functions import Position, Substring
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
+from trytond.model import (
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields, tree)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.transaction import Transaction
@@ -358,7 +359,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         return super().copy(packages, default=default)
 
 
-class Type(MeasurementsMixin, ModelSQL, ModelView):
+class Type(MeasurementsMixin, DeactivableMixin, ModelSQL, ModelView):
     'Stock Package Type'
     __name__ = 'stock.package.type'
     name = fields.Char('Name', required=True)
