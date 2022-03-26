@@ -591,6 +591,12 @@ class Form(TabContent):
         popup(menu, widget)
 
     def record_message(self, position, size, max_size, record_id):
+        def set_sensitive(button_id, sensitive):
+            if button_id in self.buttons:
+                self.buttons[button_id].props.sensitive = sensitive
+            if button_id in self.menu_buttons:
+                self.menu_buttons[button_id].props.sensitive = sensitive
+
         name = str(position) if position else '_'
         selected = len(self.screen.selected_records)
         if selected > 1:
@@ -608,14 +614,11 @@ class Form(TabContent):
                     for b in self.screen.get_buttons())
             elif button_id == 'save':
                 can_be_sensitive &= not self.screen.readonly
-            button.props.sensitive = bool(position) and can_be_sensitive
-        button_switch = self.buttons['switch']
-        button_switch.props.sensitive = self.screen.number_of_views > 1
-
-        menu_delete = self.menu_buttons['remove']
-        menu_delete.props.sensitive = self.screen.deletable
-        menu_save = self.menu_buttons['save']
-        menu_save.props.sensitive = not self.screen.readonly
+            set_sensitive(button_id, bool(position) and can_be_sensitive)
+        set_sensitive('switch', self.screen.number_of_views > 1)
+        set_sensitive('remove', self.screen.deletable)
+        set_sensitive('previous', position > (self.screen.offset + 1))
+        set_sensitive('next', position < size)
 
         if size < max_size:
             msg = "%s@%s/%s" % (
