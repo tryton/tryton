@@ -288,6 +288,7 @@ The field is ordered using the similarity with the context value from the key
 
     The maximum length (in characters) of the field. The size is enforced at
     the storage level and in the client input.
+    The value can be a :class:`~trytond.pyson.PYSON` statement.
 
 .. attribute:: Char.translate
 

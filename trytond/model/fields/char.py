@@ -57,7 +57,10 @@ class Char(FieldTranslate):
 
     @property
     def _sql_type(self):
-        return 'VARCHAR(%s)' % self.size if self.size else 'VARCHAR'
+        if isinstance(self.size, int):
+            return 'VARCHAR(%s)' % self.size
+        else:
+            return 'VARCHAR'
 
     def set_rpc(self, model):
         super(Char, self).set_rpc(model)

@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
+from trytond.pyson import Eval
 
 
 class Char(ModelSQL):
@@ -31,6 +32,15 @@ class CharSize(ModelSQL):
     'Char Size'
     __name__ = 'test.char_size'
     char = fields.Char("Char", size=5)
+
+
+class CharSizePYSON(ModelSQL):
+    "Char PYSON Size"
+    __name__ = 'test.char_size_pyson'
+    char = fields.Char(
+        "Char", size=Eval('size', 0),
+        depends=['size'])
+    size = fields.Integer("Size")
 
 
 class CharTranslate(ModelSQL):
@@ -68,6 +78,7 @@ def register(module):
         CharDefault,
         CharRequired,
         CharSize,
+        CharSizePYSON,
         CharTranslate,
         CharUnaccentedOn,
         CharUnaccentedOff,

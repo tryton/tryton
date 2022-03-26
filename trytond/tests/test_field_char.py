@@ -7,7 +7,7 @@ from sql import Literal
 
 from trytond import backend
 from trytond.model.exceptions import (
-    ForbiddenCharValidationError, RequiredValidationError)
+    ForbiddenCharValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     ExtensionTestCase, activate_module, with_transaction)
@@ -420,6 +420,29 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         with self.assertRaises(Exception):
             Char.create([{
                         'char': "foobar",
+                        }])
+
+    @with_transaction()
+    def test_create_size_pyson_valid(self):
+        "Test create char with PYSON size"
+        Char = Pool().get('test.char_size_pyson')
+
+        char, = Char.create([{
+                    'char': "Test",
+                    'size': 5,
+                    }])
+
+        self.assertEqual(char.char, "Test")
+
+    @with_transaction()
+    def test_create_size_pyson_invalid(self):
+        "Test create char with invalid PYSON size"
+        Char = Pool().get('test.char_size_pyson')
+
+        with self.assertRaises(SizeValidationError):
+            Char.create([{
+                        'char': "foobar",
+                        'size': 5,
                         }])
 
     @with_transaction()
