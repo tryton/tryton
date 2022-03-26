@@ -62,9 +62,22 @@ Create stock user::
     >>> stock_force_group, = Group.find([
     ...     ('name', '=', 'Stock Force Assignment'),
     ...     ])
+    >>> product_admin_group, = Group.find([
+    ...     ('name', '=', "Product Administration"),
+    ...     ])
     >>> stock_user.groups.append(stock_group)
     >>> stock_user.groups.append(stock_force_group)
+    >>> stock_user.groups.append(product_admin_group)
     >>> stock_user.save()
+
+Create account user::
+
+    >>> account_user = User()
+    >>> account_user.name = "Account"
+    >>> account_user.login = 'account'
+    >>> account_group, = Group.find([('name', '=', "Account")])
+    >>> account_user.groups.append(account_group)
+    >>> account_user.save()
 
 Create fiscal year::
 
@@ -190,7 +203,6 @@ Receiving only 100 products::
     >>> move.unit_price
     Decimal('10.0000')
     >>> move.cost_price
-    Decimal('3.0000')
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
@@ -204,6 +216,9 @@ Receiving only 100 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
+    >>> move, = shipment.customer_moves
+    >>> move.cost_price
+    Decimal('3.0000')
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
@@ -251,8 +266,29 @@ As a consequence the sale order is now in exception::
     >>> sale.shipment_state
     'exception'
 
+Receive purchase invoice at different price::
+
+    >>> set_user(account_user)
+    >>> invoice, = purchase.invoices
+    >>> invoice_line, = invoice.lines
+    >>> invoice_line.unit_price = Decimal('4.0000')
+    >>> invoice.invoice_date = today
+    >>> invoice.click('post')
+
+    >>> set_user(stock_user)
+
+    >>> recompute = Wizard('product.recompute_cost_price', [product])
+    >>> recompute.execute('recompute')
+
+    >>> shipment, = [s for s in purchase.drop_shipments
+    ...     if s.state == 'done']
+    >>> move, = shipment.customer_moves
+    >>> move.cost_price
+    Decimal('4.0000')
+
 Cancelling the workflow on the purchase step::
 
+    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term

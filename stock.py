@@ -443,7 +443,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         to_save = []
         for shipment in shipments:
             product_qty = defaultdict(int)
-            product_cost = defaultdict(int)
 
             for c_move in shipment.customer_moves:
                 if c_move.state == 'cancelled':
@@ -456,10 +455,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             for s_move in shipment.supplier_moves:
                 if s_move.state == 'cancelled':
                     continue
-                internal_quantity = Decimal(str(s_move.internal_quantity))
-                product_cost[s_move.product] += (
-                    s_move.get_cost_price() * internal_quantity)
-
                 quantity = UoM.compute_qty(
                     s_move.uom, s_move.quantity, s_move.product.default_uom,
                     round=False)
@@ -488,15 +483,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 new_customer_move.unit_price = unit_price
                 to_save.append(new_customer_move)
 
-            for product, cost in product_cost.items():
-                qty = Decimal(str(s_product_qty[product]))
-                if qty:
-                    product_cost[product] = round_price(cost / qty)
             for c_move in list(shipment.customer_moves) + to_save:
-                if c_move.id is not None and c_move.state == 'cancelled':
-                    continue
-                c_move.cost_price = product_cost[c_move.product]
-                if c_move.id is None:
+                if c_move.id is None or c_move.state == 'cancelled':
                     continue
                 if product_qty[c_move.product] > 0:
                     exc_qty = UoM.compute_qty(
@@ -526,6 +514,41 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             planned_date=self.planned_date,
             company=move.company,
             )
+
+    @classmethod
+    def set_cost(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        UoM = pool.get('product.uom')
+
+        to_save = []
+        for shipment in shipments:
+            product_cost = defaultdict(int)
+            s_product_qty = defaultdict(int)
+            for s_move in shipment.supplier_moves:
+                if s_move.state == 'cancelled':
+                    continue
+                internal_quantity = Decimal(str(s_move.internal_quantity))
+                product_cost[s_move.product] += (
+                    s_move.get_cost_price() * internal_quantity)
+
+                quantity = UoM.compute_qty(
+                    s_move.uom, s_move.quantity, s_move.product.default_uom,
+                    round=False)
+                s_product_qty[s_move.product] += quantity
+
+            for product, cost in product_cost.items():
+                qty = Decimal(str(s_product_qty[product]))
+                if qty:
+                    product_cost[product] = round_price(cost / qty)
+
+            for c_move in shipment.customer_moves:
+                cost_price = product_cost[c_move.product]
+                if cost_price != c_move.cost_price:
+                    c_move.cost_price = cost_price
+                    to_save.append(c_move)
+        if to_save:
+            Move.save(to_save)
 
     @classmethod
     @ModelView.button
@@ -590,6 +613,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
+        cls.set_cost(shipments)
         Move.do([m for s in shipments for m in s.customer_moves])
         for company, shipments in groupby(shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):

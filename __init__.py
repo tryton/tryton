@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import party, purchase, sale, stock
+from . import party, product, purchase, sale, stock
 
 
 def register():
@@ -22,6 +22,7 @@ def register():
         purchase.Purchase,
         purchase.Line,
         purchase.ProductSupplier,
+        product.Product,
         module='sale_supply_drop_shipment', type_='model')
     Pool.register(
         purchase.RequestCreatePurchase,

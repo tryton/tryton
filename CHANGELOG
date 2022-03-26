@@ -1,3 +1,4 @@
+* Recompute cost price of drop shipment
 * Add support for Python 3.10
 * Remove support for Python 3.6
 
