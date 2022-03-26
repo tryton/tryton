@@ -1,3 +1,4 @@
+* Prevent to create and delete singleton
 * Allow CORS on root path
 * Allow button access to be deactivated
 * Always return tuple for MultiSelection

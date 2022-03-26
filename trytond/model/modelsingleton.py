@@ -58,7 +58,8 @@ class ModelSingleton(ModelStorage):
     def write(cls, records, values, *args):
         singleton = cls.get_singleton()
         if not singleton:
-            singleton, = cls.create([values])
+            with Transaction().set_context(_check_access=False):
+                singleton, = cls.create([values])
         actions = (records, values) + args
         args = []
         for values in actions[1:None:2]:

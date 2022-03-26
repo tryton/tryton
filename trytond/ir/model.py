@@ -15,8 +15,8 @@ from sql.operators import Equal
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, EvalEnvironment, Exclude, ModelSQL, ModelView, Unique,
-    Workflow, fields)
+    DeactivableMixin, EvalEnvironment, Exclude, ModelSingleton, ModelSQL,
+    ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
@@ -549,7 +549,12 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
 
         all_models = list(set(sum(model2models.values(), [])))
         default = {'read': True, 'write': True, 'create': True, 'delete': True}
-        access = dict((m, default) for m in models)
+        default_singleton = {
+            'read': True, 'write': True, 'create': False, 'delete': False}
+        access = {
+            m: default
+            if not issubclass(pool.get(m), ModelSingleton)
+            else default_singleton for m in models}
         cursor.execute(*model_access.join(ir_model, 'LEFT',
                 condition=model_access.model == ir_model.id
                 ).join(user_group, 'LEFT',
