@@ -7,15 +7,20 @@ How to start the server
 Web service
 ===========
 
-You can start the default web server bundled in Tryton with this command line::
+You can start the default web server bundled in ``trytond`` with this command
+line:
 
-    trytond -c <config file>
+.. code-block:: console
+
+    $ trytond -c <config file>
 
 The server will wait for client connections on the interface defined in the
 ``web`` section of the :ref:`configuration <topics-configuration>`.
 
-.. note:: When using multiple config files the order is importart as last
-          entered files will override the items of first files
+.. note::
+
+   When using multiple config files the order is important as last entered
+   files will override the items of first files
 
 .. warning::
    This runs the of `Werkzeug`_ development server which should not be used on
@@ -27,7 +32,8 @@ WSGI server
 -----------
 
 If you prefer to run Tryton inside your own WSGI server instead of the simple
-server of Werkzeug, you can use the application ``trytond.application.app``.
+server of Werkzeug, you can use the application
+:class:`trytond.application.app`.
 Following environment variables can be set:
 
  * ``TRYTOND_CONFIG``: Point to :ref:`configuration <topics-configuration>`
@@ -59,9 +65,11 @@ Cron service
 ============
 
 If you want to run some :ref:`scheduled actions <topics-cron>`, you must also
-run the cron server with this command line::
+run the cron server with this command line:
 
-    trytond-cron -c <config file> -d <database>
+.. code-block:: console
+
+    $ trytond-cron -c <config file> -d <database>
 
 The server will wake up every minutes and preform the scheduled actions defined
 in the ``database``.
@@ -74,9 +82,11 @@ Worker service
 If you want to use a pool of workers to run :ref:`asynchronously some tasks
 <topics-task-queue>`, you must activate the worker in the ``queue`` section of
 the :ref:`configuration <topics-configuration>` and run the worker manager with
-this command line::
+this command line:
 
-    trytond-worker -c <config file> -d <database>
+.. code-block:: console
+
+    $ trytond-worker -c <config file> -d <database>
 
 The manager will dispatch tasks from the queue to a pool of worker processes.
 

@@ -21,7 +21,7 @@ by this pattern::
 
     domain = [(<field name>, <operator>, <operand>)]
 
-``<field name>``
+``field name``
     Is the name of a :mod:`~trytond.model.fields` or a
     :ref:`pyson <topics-pyson>` statement, that evaluates to a
     string.
@@ -37,20 +37,19 @@ by this pattern::
 
     The number of *dots* in a clause is not limited.
 
-.. warning::
-    For :class:`trytond.model.fields.Reference`, an extra ending clause is
-    needed to define the target model to join, for example::
+    .. warning::
+        For :class:`trytond.model.fields.Reference`, an extra ending clause is
+        needed to define the target model to join, for example::
 
-        domain = [('origin.party.name', '=', 'John Doe', 'sale.sale')]
-..
+            domain = [('origin.party.name', '=', 'John Doe', 'sale.sale')]
 
     A field of type :class:`~trytond.model.fields.Dict` can be searched by key
     also by using one *dot*. For example::
 
         domain = [('attributes.color', '=', 'yellow')]
 
-.. warning::
-    Order comparison of ``date`` and ``datetime`` types is not supported.
+    .. warning::
+        Order comparison of ``date`` and ``datetime`` types is not supported.
 
 ``operator``
     Is an operator out of `Domain Operators`_ or a
@@ -79,7 +78,8 @@ this pattern::
     domain = [
         ('field name1', 'operator1', 'operand1'),
         ('field name2', 'operator2', 'operand2'),
-        ('field name3', 'operator3', 'operand3'),]
+        ('field name3', 'operator3', 'operand3'),
+        ]
 
 The single clauses are implicitly combined with a logical
 AND_ operation.
@@ -89,12 +89,13 @@ In the domain syntax it is possible to provide explicitly the
 combination operation of the clauses. These operations can be AND_
 or OR_. This is illustrated by the following pattern::
 
-    domain = [ 'OR', [
+    domain = ['OR', [
                 ('field name1', 'operator1', 'operand1'),
                 ('field name2', 'operator2', 'operand2'),
             ], [
                 ('field name3', 'operator3', 'operand3'),
-            ],]
+            ],
+        ]
 
 .. _AND: http://en.wikipedia.org/wiki/Logical_and
 .. _OR: http://en.wikipedia.org/wiki/Logical_or
@@ -106,15 +107,16 @@ assumed when no operator is given. While the ``OR`` operation must
 be given explicitly. The former pattern is equivalent to the
 following completely explicit domain definition::
 
-    domain = [ 'OR',
-                 [ 'AND', [
+    domain = ['OR',
+                 ['AND', [
                          ('field name1', 'operator1', 'operand1'),
                      ], [
                          ('field name2', 'operator2', 'operand2'),
                      ],
                  ], [
                      ('field name3', 'operator3', 'operand3'),
-             ],]
+             ],
+        ]
 
 Obviously the use of the implicit ``AND`` operation makes the code
 more readable.

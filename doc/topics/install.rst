@@ -14,25 +14,25 @@ There are three options to install Tryton:
       that distributes Tryton.
 
     * Install the published package.
-      You first need to have `pip <https://pip.pypa.io/>` installed.
+      You first need to have `pip <https://pip.pypa.io/>`_ installed.
       Then to install ``trytond`` run:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         python -m pip install trytond
+         $ python -m pip install trytond
 
       You can also install for example the ``sale`` module with:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         python -m pip install trytond_sale
+         $ python -m pip install trytond_sale
 
     * Without installation, you need to make sure you have all the dependencies
       installed and then run:
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         python bin/trytond
+         $ python bin/trytond
 
       You can register modules by linking them into the ``trytond/modules``
       folder.

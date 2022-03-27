@@ -11,7 +11,7 @@ records in a single database table.
 The basics:
 
     * Each model is a Python class that subclasses one of
-      :class:`trytond.model.model.Model`.
+      :class:`~trytond.model.Model`.
 
     * :ref:`Fields <ref-models-fields>` are defined as model attributes.
 
@@ -35,8 +35,8 @@ fields::
         name = fields.Char('Name')
         code = fields.Char('Code')
 
-The class must be registered in the :ref:`Pool <ref-pool>` by the ``register()``
-method of the :ref:`module <topics-modules>`.
+The class must be registered in the :class:`~trytond.pool.Pool` by the
+``register()`` method of the :ref:`module <topics-modules>`.
 Model classes are essentially data mappers to records and Model instances are
 records.
 

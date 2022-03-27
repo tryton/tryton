@@ -4,20 +4,23 @@
 API Reference
 =============
 
-.. toctree::
-    :maxdepth: 1
+Reference of the ``trytond`` API:
 
-    models/index
-    wizard
-    pyson
-    transaction
-    exceptions
-    tools/index
-    pool
-    rpc
-    i18n
-    sendmail
-    filestore
-    cache
-    bus
-    tests
+.. toctree::
+   :maxdepth: 1
+
+   models
+   fields
+   wizard
+   pyson
+   transaction
+   exceptions
+   tools/index
+   pool
+   rpc
+   i18n
+   sendmail
+   filestore
+   cache
+   bus
+   tests

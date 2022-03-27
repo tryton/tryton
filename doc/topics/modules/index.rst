@@ -4,44 +4,53 @@
 Modules
 =======
 
-The modules of Tryton extend the functionality of the platform. The server
-comes by default with only a basic functionality included in these modules:
-``ir``, ``res``.
+The modules of Tryton extend the functionality of the platform.
+The server comes by default with only a basic functionality included in these
+modules: ``ir``, ``res``.
 
 Module Structure
 ================
 
-A module is a directory in trytond/modules which contains at least two files:
+A module is a directory in :file:`trytond/modules` which contains at least two
+files:
 
-   * ``__init__.py``: a Tryton module must be a Python module.
+:file:`__init__.py`
+   A Tryton module must be a Python module.
 
-   * ``tryton.cfg``: a Configuration file that describes the Tryton module.
+:file:`tryton.cfg`
+   A Configuration file that describes the Tryton module.
 
-``__init__.py`` file
---------------------
+:file:`__init__.py` file
+------------------------
 
-It is the Python ``__init__.py`` to define a module. It must contains a method
-named ``register()`` that must register to the pool all the objects of the
-module.
+It is the Python :file:`__init__.py` to define a module.
+It must contains a method named ``register()`` that must register to the pool
+all the objects of the module.
 
 
-``tryton.cfg`` file
--------------------
+:file:`tryton.cfg` file
+-----------------------
 
 It is a configuration file using the format of `ConfigParser`_ that must
-contain ``tryton`` section with this following name:
+contain ``tryton`` section with this following keys:
 
-   * ``version``: The version number of the module.
+``version``
+   The version number of the module.
 
-   * ``depends``: A one per line list of modules on which this module depends.
+``depends``
+   A one per line list of modules on which this module depends.
 
-   * ``extras_depend``: A one per line list of modules on which this module
-     *may* depend.
+``extras_depend``
+   A one per line list of modules on which this module *may* depend.
 
-   * ``xml``: The one per line list of the XML files of the module. They will
-     be loaded in the given order when the module is activated or updated.
+``xml``
+   The one per line list of the XML files of the module.
+   They will be loaded in the given order when the module is activated or
+   updated.
 
-Here is an example::
+Here is an example:
+
+.. code-block:: ini
 
     [tryton]
     version=0.0.1
@@ -63,11 +72,11 @@ The Python files define the models for the modules.
 XML Files
 =========
 
-The XML files define data that will be inserted into the database.
+The XML files define data that are inserted into the database on activation.
 
-There is an rnc for those files stored in ``trytond/tryton.rnc``.
+There is an RNC for those files stored in :file:`trytond/tryton.rnc`.
 
-The following snippet gives a first idea of what an xml file looks:
+The following snippet gives a first idea of what an XML file looks:
 
 .. highlight:: xml
 
@@ -85,7 +94,10 @@ The following snippet gives a first idea of what an xml file looks:
               <field name="group" ref="group_party_admin"/>
           </record>
 
-          <menuitem name="Party Management" sequence="0" id="menu_party"
+          <menuitem
+              name="Party Management"
+              sequence="0"
+              id="menu_party"
               icon="tryton-users"/>
 
           <record model="ir.ui.view" id="party_view_tree">
@@ -110,76 +122,98 @@ The following snippet gives a first idea of what an xml file looks:
 
 Here is the list of the tags:
 
-    * ``tryton``: The main tag of the xml
+``tryton``
+   The main tag of the XML
 
-    * ``data``: Define a set of data inside the file. It can have the
-      attributes:
+``data``
+   Define a set of data inside the file.
+   It can have the attributes:
 
-        * ``noupdate`` to prevent the framework to update the records,
-        * ``depends`` to import data only if all modules in the comma separated
-          module list value are activated,
-        * ``grouped`` to create records at the end with a grouped call.
-        * ``language`` to import data only if the language is translatable.
+   ``noupdate``
+      Prevent the framework to update the records,
+   ``depends``
+      Import data only if all modules in the comma separated module list value
+      are activated,
+   ``grouped``
+      Create records at the end with a grouped call.
+   ``language``
+      Import data only if the language is translatable.
 
-    * ``record``: Create a record of the model defined by the attribute
-      ``model`` in the database. The ``id`` attribute can be used to refer to
-      the record later in any xml file.
+``record``
+   Create a record of the model defined by the attribute ``model`` in the
+   database.
+   The ``id`` attribute can be used to refer to the record later in any XML
+   file.
 
-    * ``field``: Set the value of the field with the name defined by the
-      attribute ``name``.
+``field``
+   Set the value of the field with the name defined by the attribute ``name``.
+   Here is the list of attributes:
 
-      Here is the list of attributes:
+   ``search``
+      Only for relation field.
+      It contains a domain which is used to search for the value to use.
+      The first value found will be used.
 
-        * ``search``: Only for relation field. It contains a domain which is
-          used to search for the value to use. The first value found will be
-          used.
+   ``ref``
+      Only for relation field.
+      It contains an XML id of the relation to use as value.
+      It must be prefixed by the module name with an ending dot, if the record
+      is defined in an other module.
 
-        * ``ref``: Only for relation field. It contains an xml id of the
-          relation to use as value. It must be prefixed by the module name with
-          an ending dot, if the record is defined in an other module.
+   ``eval``
+      Python code to evaluate and use result as value.
+      The following expressions are available:
 
-        * ``eval``: Python code to evaluate and use result as value.
-          The following expressions are available:
+      ``time``
+         The python time_ module.
+      ``version``
+         The current Tryton version.
+      ``ref``
+         A function that converts an XML id into a database id.
+      ``Decimal``
+         The python Decimal_ object.
+      ``datetime``
+         The python datetime_ module.
 
-            * ``time``: The python time_ module
-            * ``version``: The current Tryton version
-            * ``ref``: A function that converts an XML id into a database id.
-            * ``Decimal``: The python Decimal_ object
-            * ``datetime``: The python datetime_ module
+   ``pyson``
+      Convert the evaluated value into :ref:`PYSON <ref-pyson>` string.
 
-        * ``pyson``: convert the evaluated value into :ref:`PYSON <ref-pyson>`
-          string.
+   ``depends``
+      Set value only if all modules in the comma separated module list value
+      are activated.
 
-        * ``depends``: set value only if all modules in the comma separated
-          module list value are activated.
+   .. note::
+       Field content is considered as a string. So for fields that require
+       other types, it is required to use the ``eval`` attribute.
 
-        .. note::
-            Field content is considered as a string. So for fields that require
-            other types, it is required to use the ``eval`` attribute.
-        ..
+``menuitem``
+   Shortcut to create ``ir.ui.menu`` records.
+   Here is the list of attributes:
 
+   ``id``
+      The id of the menu.
 
-    * ``menuitem``: Shortcut to create ir.ui.menu records.
+   ``name``
+      The name of the menu.
 
-      Here is the list of attributes:
+   ``icon``
+      The icon of the menu.
 
-        * ``id``: The id of the menu.
+   ``sequence``
+      The sequence value used to order the menu entries.
 
-        * ``name``: The name of the menu.
+   ``parent``
+      The XML id of the parent menu.
 
-        * ``icon``: The icon of the menu.
+   ``action``
+      The XML id of the action linked to the menu.
 
-        * ``sequence``: The sequence value used to order the menu entries.
+   ``groups``
+      A list of XML id of group, that have access to the menu, separated by
+      commas.
 
-        * ``parent``: The xml id of the parent menu.
-
-        * ``action``: The xml id of the action linked to the menu.
-
-        * ``groups``: A list of xml id of group, that have access to the menu,
-          separated by commas.
-
-        * ``active``: A boolean telling if the menu is active or not.
-
+   ``active``
+      A boolean telling if the menu is active or not.
 
 .. _ConfigParser: http://docs.python.org/library/configparser.html
 .. _time: http://docs.python.org/library/time.html

@@ -6,34 +6,15 @@ Extending View
 
 Extending a view means, that the original view will be modified by a set of
 rules which are defined with XML.
+For this purpose, the extension engine uses XPath_ expressions.
+The view is defined with the field ``inherit`` of the ``ir.ui.view``.
 
-For this purpose, the extension engine uses xpath expressions.
+If the field :ref:`domain <topics-domain>` is not set or evaluated to ``True``,
+the inheritance will be proceeded.
 
-The view is defined with the field ``inherit`` of the ir.ui.view.
+.. _XPath: https://en.wikipedia.org/wiki/XPath
 
-If the field ``domain`` (a Python string representation of a :ref:`domain
-<topics-domain>`) is not set or evaluated to True, the inheritance will be
-proceeded.
-
-XML Description
-===============
-
-data
-----
-
-Each view must start with this tag.
-
-xpath
------
-
-    * ``expr``: the xpath expression to find the nodes in the inherited view.
-
-    * ``position``: Define the position in relation to the nodes found. It can
-      be ``before``, ``after``, ``replace``, ``inside`` or
-      ``replace_attributes`` which will change the attributes.
-
-Example
-=======
+Example:
 
 .. highlight:: xml
 
@@ -49,3 +30,19 @@ Example
           <field name="employee"/>
       </xpath>
   </data>
+
+data
+----
+
+Each view must start with this tag.
+
+xpath
+-----
+
+``expr``
+   The XPath expression to find the nodes in the inherited view.
+
+``position``
+   Define the position in relation to the nodes found.
+   It can be ``before``, ``after``, ``replace``, ``inside`` or
+   ``replace_attributes`` which will change the attributes.

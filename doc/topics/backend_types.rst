@@ -13,7 +13,6 @@ The columns are in the following order:
 * The python type expected on input
 * The python type received on output
 
-.. [#] Corresponding to the `SQL 92`_ standard or to a `PostgreSQL type`_.
 .. _`SQL 92`: http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt
 .. _`PostgreSQL type`: https://www.postgresql.org/docs/current/static/datatype.html
 
@@ -27,21 +26,19 @@ input or output for any SQL type.
 +----------------------+----------------------+----------------------+
 | ``INTEGER``          | int                  | int                  |
 +----------------------+----------------------+----------------------+
-| ``BIGINT``           | int / long           | int / long           |
-|                      | [#pyver_int]_        | [#pyver_int]_        |
+| ``BIGINT``           | int                  | int                  |
 +----------------------+----------------------+----------------------+
-| ``FLOAT``            | float / int / long   | float                |
-|                      | [#pyver_int]_        |                      |
+| ``FLOAT``            | float / int          | float                |
 +----------------------+----------------------+----------------------+
 | ``NUMERIC``          | decimal.Decimal_     | decimal.Decimal_     |
 +----------------------+----------------------+----------------------+
-| ``VARCHAR`` /        | str / unicode        | str / unicode        |
-| ``VARCHAR(length)``  | [#pyver_str]_        | [#pyver_str]_        |
+| ``VARCHAR`` /        | str                  | str                  |
+| ``VARCHAR(length)``  |                      |                      |
 +----------------------+----------------------+----------------------+
-| ``TEXT``             | str / unicode        | str / unicode        |
-|                      | [#pyver_str]_        | [#pyver_str]_        |
+| ``TEXT``             | str                  | str                  |
 +----------------------+----------------------+----------------------+
 | ``TIMESTAMP``        | datetime.datetime_   | datetime.datetime_   |
+|                      | [#utc_tz]_           | [#utc_tz]_           |
 +----------------------+----------------------+----------------------+
 | ``DATETIME``         | datetime.datetime_   | datetime.datetime_   |
 |                      | without microseconds | without microseconds |
@@ -55,11 +52,11 @@ input or output for any SQL type.
 +----------------------+----------------------+----------------------+
 | ``BLOB``             | bytes                | bytes                |
 +----------------------+----------------------+----------------------+
+| ``JSON``             | dict                 | dict                 |
++----------------------+----------------------+----------------------+
 
-.. [#pyver_int] in python 2 integers over *sys.maxint* are represented by the
-                ``long`` type
-.. [#pyver_str] str when using python 3 ; unicode when using python 2
-.. [#utc_tz] Datetime objects are not localized to any timezone
+.. [#] Corresponding to the `SQL 92`_ standard or to a `PostgreSQL type`_.
+.. [#utc_tz] datetime objects are in UTC but without timezone.
 
 .. _datetime.date: https://docs.python.org/library/datetime.html#date-objects
 .. _datetime.datetime: https://docs.python.org/library/datetime.html#datetime-objects

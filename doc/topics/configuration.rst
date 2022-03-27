@@ -32,6 +32,11 @@ possible values.
 Some modules could request the usage of other sections for which the guideline
 asks them to be named like their module.
 
+.. contents::
+   :local:
+   :backlinks: entry
+   :depth: 2
+
 web
 ---
 
@@ -132,7 +137,8 @@ Please refer to `psycopg2 for the complete specification of the URI
 <https://www.psycopg.org/docs/module.html#psycopg2.connect>`_.
 
 A list of parameters supported by PostgreSQL can be found in the
-`documentation <https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS>`_.
+`documentation
+<https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS>`__.
 
 SQLite
 ******
@@ -143,15 +149,17 @@ If the name of the database is ``:memory:``, the parameter ``mode`` will be set
 to ``memory`` thus using a pure in-memory database.
 
 The recognized query parameters can be found in SQLite's
-`documentation <https://www.sqlite.org/uri.html#recognized_query_parameters>`_.
+`documentation
+<https://www.sqlite.org/uri.html#recognized_query_parameters>`__.
 
 path
 ~~~~
 
-The directory where Tryton stores files and so the user running ``trytond``
-must have write access on this directory.
+The directory where Tryton stores files and so the user running
+:command:`trytond` must have write access on this directory.
 
-Default: The ``db`` folder under the user home directory running ``trytond``.
+Default: The :file:`db` folder under the user home directory running
+:command:`trytond`.
 
 list
 ~~~~

@@ -24,31 +24,36 @@ Example::
 
 The following converter is added by Tryton:
 
-    - ``base64``: This converter accepts any Base64_ string and transforms it
-      into its corresponding bytes value.
+``base64``
+   This converter accepts any Base64_ string and transforms it into its
+   corresponding bytes value.
 
 .. _Base64: https://en.wikipedia.org/wiki/Base64
 
 Tryton also provides some wrappers in ``trytond.protocols.wrappers`` to ease the
 creation of such route.
 
-    - ``set_max_request_size(size)``: change the default limit of the request to
-      the size in bytes.
+``set_max_request_size(size)``
+   Change the default limit of the request to the size in bytes.
 
-    - ``allow_null_origin``: allow requests which have their ``Origin`` set to
-      ``null``.
+``allow_null_origin``
+   Allow requests which have their ``Origin`` set to ``null``.
 
-    - ``with_pool``: which takes the first parameter as database name and
-      replace it by the corresponding instance of the :ref:`Pool <ref-pool>`.
+``with_pool``
+   Take the first parameter as database name and replace it by the
+   corresponding instance of the :ref:`Pool <ref-pool>`.
 
-    - ``with_transaction([readonly])``: which starts a :class:`Transaction`
-      using the :ref:`Pool <ref-pool>` from ``with_pool``. If ``readonly`` is
-      not set, the transaction will not be readonly for ``POST``, ``PUT``,
-      ``DELETE`` and ``PATCH`` methods and readonly for all others.
+``with_transaction([readonly])``
+   Start a :class:`Transaction` using the :ref:`Pool <ref-pool>` from
+   ``with_pool``.
+   If ``readonly`` is not set, the transaction will not be readonly for
+   ``POST``, ``PUT``, ``DELETE`` and ``PATCH`` methods and readonly for all
+   others.
 
-    - ``user_application(name[, json])``: which set the
-      :attr:`Transaction.user` from the ``Authorization`` header using the
-      type ``bearer`` and a valid key for the named user application.
+``user_application(name[, json])``
+   Set the :attr:`~trytond.transaction.Transaction.user` from the
+   ``Authorization`` header using the type ``bearer`` and a valid key for the
+   named user application.
 
 User Application Key
 ====================
@@ -57,20 +62,25 @@ Tryton also provides a easy way to manage access to user application using
 keys per named application.
 A key is created with a ``POST`` request on the ``URL``
 ``/<database_name>/user/application/`` which returns the key. The request must
-contain as data a json object with the keys:
+contain as data a JSON object with the keys:
 
-    - ``user``: the user login
+``user``
+   The user login.
 
-    - ``application``: the name of the application
+``application``
+   The name of the application.
 
 After the creation, the key must be validated by the user from the preferences
 of a Tryton client.
 
 A key can be deleted with a ``DELETE`` request on the same ``URL``. The request
-must contain as data a json object with the keys:
+must contain as data a JSON object with the keys:
 
-    - ``user``: the user login
+``user``
+   The user login.
 
-    - ``key``: the key to delete
+``key``
+   The key to delete.
 
-    - ``application``: the name of the application of the key
+``application``
+   The name of the application of the key.

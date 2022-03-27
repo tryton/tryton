@@ -60,7 +60,8 @@ Example:
         __name__ = 'my_model'
 
         def process(self):
-            Warning = Pool().get('res.user.warning')
+            pool = Pool()
+            Warning = pool.get('res.user.warning')
             warning_name = Warning.format('mywarning', [self])
             if Warning.check(warning_name):
                 raise UserWarning(warning_name, "Process cannot be canceled.")

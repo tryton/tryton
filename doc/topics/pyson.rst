@@ -40,9 +40,9 @@ Given the PYSON statement::
 
     Eval('active_id', -1)
 
-``Eval()`` checks the evaluation context for the variable ``active_id``
-and returns its value or ``-1`` if not defined. A similar expression
-in Python looks like this::
+:class:`~trytond.pyson.Eval` checks the evaluation context for the variable
+``active_id`` and returns its value or ``-1`` if not defined.
+A similar expression in Python looks like this::
 
     'active_id' in locals() and active_id or -1
 
@@ -50,11 +50,13 @@ Given the PYSON statement::
 
     Not(Bool(Eval('active')))
 
-``Eval()`` checks the evaluation context for a variable ``active`` and
-returns its value to ``Bool()`` or ``''`` if not defined. ``Bool()``
-returns the corresponding boolean value of the former result to ``Not()``.
-``Not()`` returns the boolean negation of the previous result. A similar
-expression in Python looks like this::
+:class:`~trytond.pyson.Eval` checks the evaluation context for a variable ``active`` and
+returns its value to :class:`~trytond.pyson.Bool` or ``''`` if not defined.
+:class:`~trytond.pyson.Bool` returns the corresponding boolean value of the
+former result to :class:`~trytond.pyson.Not`.
+:class:`~trytond.pyson.Not` returns the boolean negation of the previous
+result.
+A similar expression in Python looks like this::
 
     'active' in locals() and active == False
 
@@ -66,11 +68,11 @@ In this example are the results of two partial expressions
 ``Not(Equal(Eval('state'), 'draft'))`` and ``Bool(Eval('lines'))``
 evaluated by a logical *OR* operator. The first expression part is
 evaluated as follow: When the value of ``Eval('state')`` is equal to
-the string ``'draft'`` then return true, else false. ``Not()`` negates
-the former result. A similar expression in Python looks like this::
+the string ``'draft'`` then return true, else false.
+:class:`~trytond.pyson.Not`` negates the former result.
+A similar expression in Python looks like this::
 
-    'states' in locals() and 'lines' in locals() \
-            and state != 'draft' or bool(lines)
+    'states' in locals() and 'lines' in locals() and state != 'draft' or bool(lines)
 
 Given the PYSON statement::
 
@@ -79,12 +81,12 @@ Given the PYSON statement::
 In this example the result is determined by an `if-then-else`_ condition.
 ``In('company', Eval('context', {}))`` is evaluated like this: When
 the key ``'company'`` is in the dictionary ``context``, returns
-true, otherwise false. ``If()`` evaluates the former result and returns
-the string ``'='`` if the result is true, otherwise returns the
-string ``'!='``. A similar expression in Python looks like this::
+true, otherwise false.
+:class:`~trytond.pyson.If` evaluates the former result and returns the string
+``'='`` if the result is true, otherwise returns the string ``'!='``.
+A similar expression in Python looks like this::
 
-    'context' in locals() and isinstance(context, dict) \
-            and 'company' in context and '=' or '!='
+    'context' in locals() and isinstance(context, dict) and 'company' in context and '=' or '!='
 
 .. _if-then-else: http://en.wikipedia.org/wiki/Conditional_statement#If-Then.28-Else.29
 
@@ -92,13 +94,11 @@ Given the PYSON statement::
 
     Get(Eval('context', {}), 'company', 0))
 
-``Eval()`` checks the evaluation context for a variable ``context`` if
-defined, return the variable ``context``, otherwise return an empty
-dictionary ``{}``. ``Get()`` checks the former resulting dictionary
-and returns the value of the key ``'company'``, otherwise it returns
-the number ``0``. A similar expression in Python looks like this::
+:class:`~trytond.pyson.Eval` checks the evaluation context for a variable
+``context`` if defined, return the variable ``context``, otherwise return an
+empty dictionary ``{}``.
+:class:`~trytond.pyson.Get` checks the former resulting dictionary and returns
+the value of the key ``'company'``, otherwise it returns the number ``0``.
+A similar expression in Python looks like this::
 
     'context' in locals() and context.get('company', 0) or 0
-
-
-

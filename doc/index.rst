@@ -7,46 +7,52 @@ Tryton Server
 First steps
 ===========
 
-    * **Installation:**
-      :ref:`Installation <topics-install>` |
-      :ref:`Configuration <topics-configuration>` |
-      :ref:`Setup a database <topics-setup-database>` |
-      :ref:`Start the server <topics-start-server>`
+* **Installation:**
+  :ref:`Installation <topics-install>` |
+  :ref:`Configuration <topics-configuration>` |
+  :ref:`Setup a database <topics-setup-database>` |
+  :ref:`Start the server <topics-start-server>`
 
 The model layer
 ===============
 
-    * **Models:**
-      :ref:`Model syntax <topics-models>` |
-      :ref:`Field types <ref-models-fields>` |
-      :ref:`Domain syntax <topics-domain>` |
-      :ref:`Access rights <topics-access_rights>` |
-      :ref:`Triggers <topics-triggers>`
+* **Models:**
+  :ref:`Model definition <topics-models>` |
+  :ref:`Field types <ref-models-fields-types>` |
+  :ref:`Domain syntax <topics-domain>` |
+  :ref:`Access rights <topics-access_rights>` |
+  :ref:`Triggers <topics-triggers>`
+
+* **Wizards:**
+  :ref:`Wizards definition <topics-wizard>`
 
 The view layer
 ==============
 
-    * **Views:**
-      :ref:`View types <topics-views>` |
-      :ref:`Extension <topics-extension>`
+* **Views:**
+  :ref:`View types <topics-views>` |
+  :ref:`Extension <topics-extension>`
 
-    * **Reports:**
-      :ref:`Report definition <topics-reports>`
+* **Reports:**
+  :ref:`Report definition <topics-reports>`
+
+* **Actions:**
+  :ref:`Actions <topics-actions>`
 
 The development process
 =======================
 
-    * **Modules**
-      :ref:`Module definition <topics-modules>`
+* **Modules**
+  :ref:`Module definition <topics-modules>`
 
 Contents
 ========
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    topics/index
-    ref/index
+   topics/index
+   ref/index
 
 Indices, glossary and tables
 ============================

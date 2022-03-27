@@ -4,7 +4,7 @@
 Triggers
 ========
 
-Triggers allow to define methods of :class:`trytond.model.model.Model` that are
+Triggers allow to define methods of :class:`~trytond.model.Model` that are
 called at the end of the transaction when one of those events happen to a
 record:
 

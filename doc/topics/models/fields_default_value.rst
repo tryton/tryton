@@ -7,17 +7,23 @@ Default value of fields
 When a record is created, each field, which doesn't have a value specified,
 is set with the default value if exists.
 
-The following class method::
+The following class method:
+
+.. code-block:: python
 
     Model.default_<field name>()
 
 Return the default value for ``field name``.
 
-This example defines an ``Item`` model which has a default ``since``::
+This example defines an ``Item`` model which has a default ``since``:
+
+
+.. code-block:: python
 
     import datetime
 
     from trytond.model import ModelView, ModelSQL, fields
+
 
     class Item(ModelSQL, ModelView):
         "Item"
@@ -28,4 +34,4 @@ This example defines an ``Item`` model which has a default ``since``::
         def default_since(cls):
             return datetime.date.today()
 
-See also method ``Model.default_get``: :attr:`~trytond.model.Model.default_get`
+See also method :meth:`~trytond.model.Model.default_get`.
