@@ -42,3 +42,7 @@ class InventoryFutureWarning(UserWarning):
 
 class ProductCostPriceError(ValidationError):
     pass
+
+
+class ProductStockWarning(UserWarning):
+    pass

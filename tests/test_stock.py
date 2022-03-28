@@ -1476,6 +1476,53 @@ class StockTestCase(
                 location.active = False
                 location.save()
 
+    @with_transaction()
+    def test_inactive_product_with_stock(self):
+        "Test inactivate product with stock"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        storage, = Location.search([('code', '=', 'STO')])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{'template': template.id}])
+
+        company = create_company()
+        with set_company(company):
+            Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }])
+            with self.assertRaises(UserWarning):
+                product.active = False
+                product.save()
+
+            Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': supplier.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }])
+            product.active = False
+            product.save()
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

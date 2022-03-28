@@ -1,3 +1,4 @@
+* Warn user when deactivating a product that has stock
 * Add support for Python 3.10
 * Remove support for Python 3.6
 

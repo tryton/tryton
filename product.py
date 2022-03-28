@@ -24,7 +24,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import ProductCostPriceError
+from .exceptions import ProductCostPriceError, ProductStockWarning
 from .move import StockMixin
 from .shipment import ShipmentAssignMixin
 
@@ -77,6 +77,71 @@ def check_no_move(func):
                             # No moves for this record
                             break
         func(cls, *args)
+    return decorator
+
+
+def check_no_stock_if_inactive(func):
+
+    def get_product_locations(company, location_ids, sub_products):
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        product2locations = defaultdict(list)
+        product_ids = [(p.id,) for p in sub_products]
+        with Transaction().set_context(company=company.id):
+            quantities = Product.products_by_location(
+                location_ids, with_childs=True,
+                grouping=('product',), grouping_filter=product_ids)
+        for key, quantity in quantities.items():
+            location_id, product_id, = key
+            if quantity:
+                product2locations[product_id].append(location_id)
+        return product2locations
+
+    def raise_warning(company, product2locations):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Warning = pool.get('res.user.warning')
+        Product = pool.get('product.product')
+
+        for product_id, location_ids in product2locations.items():
+            product = Product(product_id)
+            locations = ','.join(
+                l.rec_name for l in Location.browse(location_ids[:5]))
+            if len(location_ids) > 5:
+                locations += '...'
+            warning_name = Warning.format(
+                'deactivate_product_with_stock', [product])
+            if Warning.check(warning_name):
+                raise ProductStockWarning(warning_name,
+                    gettext(
+                        'stock.msg_product_location_quantity',
+                        product=product.rec_name,
+                        company=company.rec_name,
+                        locations=locations),
+                    gettext('stock.msg_product_location_quantity_description'))
+
+    @functools.wraps(func)
+    def decorator(cls, *args):
+        pool = Pool()
+        Company = pool.get('company.company')
+        Location = pool.get('stock.location')
+
+        to_check = []
+        actions = iter(args)
+        for products, values in zip(actions, actions):
+            if not values.get('active', True):
+                to_check.extend(products)
+        if to_check:
+            with Transaction().set_context(_check_access=False):
+                locations = Location.search([('type', '=', 'storage')])
+                location_ids = list(map(int, locations))
+                for company in Company.search([]):
+                    for sub_products in grouped_slice(to_check):
+                        product2locations = get_product_locations(
+                            company, location_ids, sub_products)
+                        raise_warning(company, product2locations)
+        return func(cls, *args)
     return decorator
 
 
@@ -174,6 +239,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 
     @classmethod
     @check_no_move
+    @check_no_stock_if_inactive
     def write(cls, *args):
         super(Product, cls).write(*args)
 

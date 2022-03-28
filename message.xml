@@ -119,5 +119,11 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_stock_reporting_currency">
             <field name="text">Currency</field>
         </record>
+        <record model="ir.message" id="msg_product_location_quantity">
+            <field name="text">The product "%(product)s" has still some quantities in locations "%(locations)s" for company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_product_location_quantity_description">
+            <field name="text">It is recommended to clear the stock from the storage locations before deactivating the product.</field>
+        </record>
     </data>
 </tryton>
