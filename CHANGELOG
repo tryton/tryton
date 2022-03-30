@@ -1,3 +1,4 @@
+* Deduplicate entries in domain inversion's simplify
 * Prevent to create and delete singleton
 * Allow CORS on root path
 * Allow button access to be deactivated

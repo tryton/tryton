@@ -533,7 +533,7 @@ class DomainInversionTestCase(unittest.TestCase):
             domain_inversion(domain, 'x', {'y': 7, 'z': 'abc'}), True)
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': 4, 'z': 'b'}),
-            ['OR', [['x', '=', 3]], [['x', '=', 2]]])
+            ['OR', ['x', '=', 3], ['x', '=', 2]])
 
     def test_parse(self):
         domain = parse([['x', '=', 5]])
@@ -555,22 +555,69 @@ class DomainInversionTestCase(unittest.TestCase):
         domain = [[['x', '=', 3]]]
         self.assertEqual(simplify(domain), [['x', '=', 3]])
 
+        domain = [[['x', '=', 3], ['y', '=', 4]]]
+        self.assertEqual(simplify(domain), [['x', '=', 3], ['y', '=', 4]])
+
         domain = ['OR', ['x', '=', 3]]
         self.assertEqual(simplify(domain), [['x', '=', 3]])
 
         domain = ['OR', [['x', '=', 3]], [['y', '=', 5]]]
         self.assertEqual(
-            simplify(domain), ['OR', [['x', '=', 3]], [['y', '=', 5]]])
+            simplify(domain), ['OR', ['x', '=', 3], ['y', '=', 5]])
 
         domain = ['OR', ['x', '=', 3], ['AND', ['y', '=', 5]]]
         self.assertEqual(
-            simplify(domain), ['OR', ['x', '=', 3], [['y', '=', 5]]])
+            simplify(domain), ['OR', ['x', '=', 3], ['y', '=', 5]])
+
+        domain = [['x', '=', 3], ['OR']]
+        self.assertEqual(simplify(domain), [['x', '=', 3]])
+
+        domain = ['OR', ['x', '=', 3], []]
+        self.assertEqual(simplify(domain), [])
+
+        domain = ['OR', ['x', '=', 3], ['OR']]
+        self.assertEqual(simplify(domain), [])
+
+        domain = [['x', '=', 3], []]
+        self.assertEqual(simplify(domain), [['x', '=', 3]])
+
+        domain = [['x', '=', 3], ['AND']]
+        self.assertEqual(simplify(domain), [['x', '=', 3]])
 
         domain = ['AND']
         self.assertEqual(simplify(domain), [])
 
         domain = ['OR']
         self.assertEqual(simplify(domain), [])
+
+    def test_simplify_deduplicate(self):
+        "Test deduplicate"
+        clause = ('x', '=', 'x')
+        another = ('y', '=', 'y')
+        third = ('z', '=', 'z')
+        tests = [
+            ([], []),
+            (['OR', []], []),
+            (['AND', []], []),
+            ([clause], [clause]),
+            (['OR', clause], [clause]),
+            ([clause, clause], [clause]),
+            (['OR', clause, clause], [clause]),
+            ([clause, [clause, clause]], [clause]),
+            ([clause, another], [clause, another]),
+            (['OR', clause, another], ['OR', clause, another]),
+            ([clause, clause, another], [clause, another]),
+            ([clause, [clause, clause], another], [clause, another]),
+            ([clause, clause, another, another], [clause, another]),
+            ([clause, another, clause, another], [clause, another]),
+            (
+                ['AND', ['OR', clause, another], third],
+                ['AND', ['OR', clause, another], third]),
+            ]
+
+        for input, expected in tests:
+            with self.subTest(input=input):
+                self.assertEqual(simplify(input), expected)
 
     def test_merge(self):
         domain = [['x', '=', 6], ['y', '=', 7]]
@@ -621,7 +668,7 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(concat([], []), [])
         self.assertEqual(
             concat(domain1, domain2, domoperator='OR'),
-            ['OR', [['a', '=', 1]], [['b', '=', 2]]])
+            ['OR', ['a', '=', 1], ['b', '=', 2]])
 
     def test_unique_value(self):
         domain = [['a', '=', 1]]
