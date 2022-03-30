@@ -2574,7 +2574,7 @@
                 JSON.stringify(context) + ')');
         context = {y: 4, z: 'b'};
         QUnit.ok(compare(domain_inversion(domain, 'x', context),
-                ['OR', [['x', '=', 3]], [['x', '=', 2]]]),
+                ['OR', ['x', '=', 3], ['x', '=', 2]]),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\', ' +
                 JSON.stringify(context) + ')');
     });
@@ -2600,21 +2600,66 @@
         var compare = Sao.common.compare;
 
         [
-        [[['x', '=', 3]], [['x', '=', 3]]],
-        [[[['x', '=', 3]]], [['x', '=', 3]]],
-        [['OR', ['x', '=', 3]], [['x', '=', 3]]],
-        [['OR', [['x', '=', 3]], [['y', '=', 5]]],
-            ['OR', [['x', '=', 3]], [['y', '=', 5]]]],
-        [['OR', ['x', '=', 3], ['AND', ['y', '=', 5]]],
-            ['OR', ['x', '=', 3], [['y', '=', 5]]]],
-        [['AND'], []],
-        [['OR'], []]
+            [[['x', '=', 3]], [['x', '=', 3]]],
+            [[[['x', '=', 3]]], [['x', '=', 3]]],
+            [
+                [[['x', '=', 3], ['y', '=', 4]]], 
+                [['x', '=', 3], ['y', '=', 4]]],
+            [['OR', ['x', '=', 3]], [['x', '=', 3]]],
+            [
+                ['OR', [['x', '=', 3]], [['y', '=', 5]]],
+                ['OR', ['x', '=', 3], ['y', '=', 5]]],
+            [
+                ['OR', ['x', '=', 3], ['AND', ['y', '=', 5]]],
+                ['OR', ['x', '=', 3], ['y', '=', 5]]],
+            [[['x', '=', 3], ['OR']], [['x', '=', 3]]],
+            [['OR', ['x', '=', 3], []], []],
+            [['OR', ['x', '=', 3], ['OR']], []],
+            [[['x', '=', 3], []], [['x', '=', 3]]],
+            [[['x', '=', 3], ['AND']], [['x', '=', 3]]],
+            [['AND'], []],
+            [['OR'], []]
         ].forEach(function(test) {
             var domain = test[0];
             var result = test[1];
             QUnit.ok(compare(simplify(domain), result),
                 'simplify(' + JSON.stringify(domain) + ')');
         });
+    });
+
+    QUnit.test('DomainInversion simplify deduplicate', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var simplify = domain_inversion.simplify.bind(domain_inversion);
+        var compare = Sao.common.compare;
+
+        var clause = ['x', '=', 3];
+        var another = ['y', '=', 4];
+        var third = ['z', '=', 5];
+        [
+            [[], []],
+            [['OR', []], []],
+            [['AND', []], []],
+            [[clause], [clause]],
+            [['OR', clause], [clause]],
+            [[clause, clause], [clause]],
+            [['OR', clause, clause], [clause]],
+            [[clause, [clause, clause]], [clause]],
+            [[clause, another], [clause, another]],
+            [['OR', clause, another], ['OR', clause, another]],
+            [[clause, clause, another], [clause, another]],
+            [[clause, [clause, clause], another], [clause, another]],
+            [[clause, clause, another, another], [clause, another]],
+            [[clause, another, clause, another], [clause, another]],
+            [
+                ['AND', ['OR', clause, another], third],
+                ['AND', ['OR', clause, another], third]],
+        ].forEach(function(test) {
+            var domain = test[0];
+            var result = test[1];
+            QUnit.ok(compare(simplify(domain), result),
+                'simplify(' + JSON.stringify(domain) + ')');
+        });
+
     });
 
     QUnit.test('DomainInversion merge', function() {
@@ -2669,7 +2714,7 @@
         QUnit.ok(compare(concat([[], []]), []),
             'compare(' + JSON.stringify([[], []]) + ')');
         QUnit.ok(compare(concat([domain1, domain2], 'OR'),
-                ['OR', [['a', '=', 1]], [['b', '=', 2]]]),
+                ['OR', ['a', '=', 1], ['b', '=', 2]]),
             'compare(' + JSON.stringify([domain1, domain2]) + ', \'OR\')');
     });
 
