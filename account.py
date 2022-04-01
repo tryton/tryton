@@ -1843,9 +1843,9 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             start_period_ids = set(cls.get_period_ids('start_balance'))
             end_period_ids = set(cls.get_period_ids('end_balance'))
             period_ids = list(end_period_ids.difference(start_period_ids))
-        elif context.get('from_date') or context.get('end_date'):
-            _, from_date = cls.get_dates('start_balance')
-            _, to_date = cls.get_dates('end_balance')
+        elif context.get('from_date') or context.get('to_date'):
+            from_date = context.get('from_date')
+            to_date = context.get('to_date')
         return {
             'periods': period_ids,
             'from_date': from_date,
