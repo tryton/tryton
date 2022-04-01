@@ -128,7 +128,8 @@ def main(stdscr):
             processes[pid] = data
         refresh()
     refresh()
-    status.listen(config.get('database', 'path'), update)
+    return status.listen(config.get('database', 'path'), update)
 
 
-curses.wrapper(main)
+if not curses.wrapper(main):
+    sys.stderr.write("status not supported on this platform\n")
