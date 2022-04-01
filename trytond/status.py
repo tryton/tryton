@@ -49,6 +49,8 @@ def log():
 
 
 def dump(path):
+    if not hasattr(socket, 'AF_UNIX'):
+        return False
     sock = socket.socket(socket.AF_UNIX)
     try:
         try:
@@ -74,6 +76,8 @@ def dumper(path):
 
 def start(path):
     global _PID, _PATH
+    if not hasattr(socket, 'AF_UNIX'):
+        return
     if _PID != os.getpid() and path:  # Quick test without lock
         with _LOCK:
             if _PID != os.getpid():
@@ -84,6 +88,8 @@ def start(path):
 
 
 def listen(path, callback=None):
+    if not hasattr(socket, 'AF_UNIX'):
+        return False
     sock = socket.socket(socket.AF_UNIX)
     socket_file = os.path.join(path, address)
     try:
@@ -116,3 +122,4 @@ def listen(path, callback=None):
     finally:
         sock.close()
         os.unlink(socket_file)
+    return True
