@@ -1634,9 +1634,9 @@
             UIView = new Sao.Model('ir.ui.view');
             this.view_prm = UIView.execute(
                 'view_get', [this.view_id], this.context);
-            this.view_prm.done(function(views) {
-                var view, board;
-                view = jQuery(jQuery.parseXML(views[0].arch));
+            this.view_prm.done(function(view) {
+                var board;
+                view = jQuery(jQuery.parseXML(view.arch));
                 this.board = new Sao.View.Board(view, this.context);
                 this.board.actions_prms.done(function() {
                     var i, len, action;
