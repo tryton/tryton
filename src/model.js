@@ -324,7 +324,7 @@
             });
             ids.forEach(function(id) {
                 var record = this.get(id);
-                if (record && !record.modified_fields) {
+                if (record && jQuery.isEmptyObject(record.modified_fields)) {
                     record.cancel();
                 }
             }.bind(this));
