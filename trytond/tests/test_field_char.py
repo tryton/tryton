@@ -416,8 +416,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create char with invalid size"
         Char = Pool().get('test.char_size')
 
-        # XXX: should be UserError but postgresql raises DataError
-        with self.assertRaises(Exception):
+        with self.assertRaises(SizeValidationError):
             Char.create([{
                         'char': "foobar",
                         }])
@@ -492,8 +491,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
                     'char': "Test",
                     }])
 
-        # XXX: should be UserError but postgresql raises DataError
-        with self.assertRaises(Exception):
+        with self.assertRaises(SizeValidationError):
             Char.write([char], {
                     'char': 'foobar',
                     })

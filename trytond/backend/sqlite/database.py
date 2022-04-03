@@ -11,6 +11,7 @@ import time
 import urllib.parse
 import warnings
 from decimal import Decimal
+from sqlite3 import DatabaseError
 from sqlite3 import IntegrityError as DatabaseIntegrityError
 from sqlite3 import OperationalError as DatabaseOperationalError
 from weakref import WeakKeyDictionary
@@ -26,10 +27,16 @@ from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 from trytond.transaction import Transaction
 
-__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
+__all__ = [
+    'Database',
+    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
 
 _default_name = config.get('database', 'default_name', default=':memory:')
+
+
+class DatabaseDataError(DatabaseError):
+    pass
 
 
 class SQLiteExtract(Function):

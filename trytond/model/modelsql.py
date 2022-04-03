@@ -27,8 +27,8 @@ from trytond.transaction import Transaction, record_cache_size
 from . import fields
 from .descriptors import dualmethod
 from .modelstorage import (
-    AccessError, ModelStorage, RequiredValidationError, ValidationError,
-    is_leaf)
+    AccessError, ModelStorage, RequiredValidationError, SizeValidationError,
+    ValidationError, is_leaf)
 from .modelview import ModelView
 
 
@@ -394,6 +394,29 @@ class ModelSQL(ModelStorage):
                                 **error_args))
 
     @classmethod
+    def __raise_data_error(
+            cls, exception, values, field_names=None, transaction=None):
+        if field_names is None:
+            field_names = list(cls._fields.keys())
+        if transaction is None:
+            transaction = Transaction()
+        for field_name in field_names:
+            if field_name not in cls._fields:
+                continue
+            field = cls._fields[field_name]
+            # Check field size
+            if (hasattr(field, 'size')
+                    and isinstance(field.size, int)
+                    and field.sql_type()):
+                size = len(values.get(field_name) or '')
+                if size > field.size:
+                    error_args = cls.__names__(field_name)
+                    error_args['size'] = size
+                    error_args['max_size'] = field.size
+                    raise SizeValidationError(
+                        gettext('ir.msg_size_validation_record', **error_args))
+
+    @classmethod
     def history_revisions(cls, ids):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
@@ -640,12 +663,18 @@ class ModelSQL(ModelStorage):
                                 [insert_values]))
                         id_new = transaction.database.lastid(cursor)
                 new_ids.append(id_new)
-            except backend.DatabaseIntegrityError as exception:
+            except (
+                    backend.DatabaseIntegrityError,
+                    backend.DatabaseDataError) as exception:
                 transaction = Transaction()
                 with Transaction().new_transaction(), \
                         Transaction().set_context(_check_access=False):
-                    cls.__raise_integrity_error(
-                        exception, values, transaction=transaction)
+                    if isinstance(exception, backend.DatabaseIntegrityError):
+                        cls.__raise_integrity_error(
+                            exception, values, transaction=transaction)
+                    elif isinstance(exception, backend.DatabaseDataError):
+                        cls.__raise_data_error(
+                            exception, values, transaction=transaction)
                 raise
 
         transaction.create_records[cls.__name__].update(new_ids)
@@ -1049,13 +1078,21 @@ class ModelSQL(ModelStorage):
                 try:
                     cursor.execute(*table.update(columns, update_values,
                             where=red_sql))
-                except backend.DatabaseIntegrityError as exception:
+                except (
+                        backend.DatabaseIntegrityError,
+                        backend.DatabaseDataError) as exception:
                     transaction = Transaction()
                     with Transaction().new_transaction(), \
                             Transaction().set_context(_check_access=False):
-                        cls.__raise_integrity_error(
-                            exception, values, list(values.keys()),
-                            transaction=transaction)
+                        if isinstance(
+                                exception, backend.DatabaseIntegrityError):
+                            cls.__raise_integrity_error(
+                                exception, values, list(values.keys()),
+                                transaction=transaction)
+                        elif isinstance(exception, backend.DatabaseDataError):
+                            cls.__raise_data_error(
+                                exception, values, list(values.keys()),
+                                transaction=transaction)
                     raise
 
             for fname, value in values.items():

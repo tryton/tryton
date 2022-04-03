@@ -2,8 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from .database import (
-    Database, DatabaseIntegrityError, DatabaseOperationalError)
+    Database, DatabaseDataError, DatabaseIntegrityError,
+    DatabaseOperationalError)
 from .table import TableHandler
 
 __all__ = [
-    Database, DatabaseIntegrityError, DatabaseOperationalError, TableHandler]
+    Database, TableHandler,
+    DatabaseIntegrityError, DatabaseDataError, DatabaseOperationalError]

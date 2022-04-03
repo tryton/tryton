@@ -27,6 +27,7 @@ try:
     from psycopg2.extensions import PYDATE, PYDATETIME, PYINTERVAL, PYTIME
 except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
+from psycopg2 import DataError as DatabaseDataError
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
@@ -40,7 +41,9 @@ from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 from trytond.tools.gevent import is_gevent_monkey_patched
 
-__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
+__all__ = [
+    'Database',
+    'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError']
 
 logger = logging.getLogger(__name__)
 
