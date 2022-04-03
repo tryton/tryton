@@ -255,6 +255,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                                     shipment_cost=shipment_cost.rec_name,
                                     shipment=shipment.rec_name,
                                     other=other.rec_name))
+                        else:
+                            break
             shipment_cost.allocate_cost()
         for company, c_shipment_costs in groupby(
                 shipment_costs, key=lambda s: s.company):
