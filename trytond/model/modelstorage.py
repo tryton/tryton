@@ -1046,6 +1046,7 @@ class ModelStorage(Model):
                     i += max2
                     nbrmax = max(nbrmax, i)
                 row[field] = []
+                create = [v for v in create if any(v.values())]
                 if create:
                     row[field].append(('create', create))
                 if write:

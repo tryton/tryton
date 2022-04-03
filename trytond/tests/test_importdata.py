@@ -398,6 +398,55 @@ class ImportDataTestCase(unittest.TestCase):
                     ['Test 2', 'Test 1']]), 2)
 
     @with_transaction()
+    def test_many_one2many(self):
+        "Test many one2many"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2manies')
+
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many1/name', 'one2many2/name'],
+                [["Test", "Test 1", "Test 2"],
+                    ['', '', "Test 3"]]), 1)
+
+        record, = One2many.search([])
+
+        self.assertEqual(len(record.one2many1), 1)
+        self.assertEqual(len(record.one2many2), 2)
+
+    @with_transaction()
+    def test_many_one2many_empty_last(self):
+        "Test many one2many with empty last"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2manies')
+
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many1/name', 'one2many2/name'],
+                [["Test", "Test 1", "Test 2"],
+                    ['', "Test 3", '']]), 1)
+
+        record, = One2many.search([])
+
+        self.assertEqual(len(record.one2many1), 2)
+        self.assertEqual(len(record.one2many2), 1)
+
+    @with_transaction()
+    def test_many_one2many_multiple_empty(self):
+        "Test many one2many with multiple empty"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2manies')
+
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many1/name', 'one2many2/name'],
+                [["Test", "Test 1", "Test 2"],
+                    ['', "Test 3", ''],
+                    ['', '', "Test 4"]]), 1)
+
+        record, = One2many.search([])
+
+        self.assertEqual(len(record.one2many1), 2)
+        self.assertEqual(len(record.one2many2), 2)
+
+    @with_transaction()
     def test_reference(self):
         'Test reference'
         pool = Pool()

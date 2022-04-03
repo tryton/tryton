@@ -117,6 +117,30 @@ class ImportDataOne2ManyTarget(ModelSQL):
     one2many = fields.Many2One('test.import_data.one2many', 'One2Many')
 
 
+class ImportDataOne2Manies(ModelSQL):
+    "Import Data One2Manies"
+    __name__ = 'test.import_data.one2manies'
+    name = fields.Char("Name")
+    one2many1 = fields.One2Many(
+        'test.import_data.one2many1.target', 'one2many', "One2Many 1")
+    one2many2 = fields.One2Many(
+        'test.import_data.one2many2.target', 'one2many', "One2Many 2")
+
+
+class ImportDataOne2Many1Target(ModelSQL):
+    "Import Data One2Many 1 Target"
+    __name__ = 'test.import_data.one2many1.target'
+    name = fields.Char("Name")
+    one2many = fields.Many2One('test.import_data.one2manies', "One2Many")
+
+
+class ImportDataOne2Many2Target(ModelSQL):
+    "Import Data One2Many 2 Target"
+    __name__ = 'test.import_data.one2many2.target'
+    name = fields.Char("Name")
+    one2many = fields.Many2One('test.import_data.one2manies', "One2Many")
+
+
 class ImportDataBinary(ModelSQL):
     "Import Data Binary"
     __name__ = 'test.import_data.binary'
@@ -163,6 +187,9 @@ def register(module):
         ImportDataMany2ManyRelation,
         ImportDataOne2Many,
         ImportDataOne2ManyTarget,
+        ImportDataOne2Manies,
+        ImportDataOne2Many1Target,
+        ImportDataOne2Many2Target,
         ImportDataReferenceSelection,
         ImportDataReference,
         ImportDataBinary,
