@@ -106,6 +106,8 @@ class TrytonConfigParser(configparser.ConfigParser):
                 section, option = key[len('TRYTOND_'):].lower().split('__', 1)
             except ValueError:
                 continue
+            if section.startswith('wsgi_'):
+                section = section.replace('wsgi_', 'wsgi ')
             if not self.has_section(section):
                 self.add_section(section)
             self.set(section, option, value)

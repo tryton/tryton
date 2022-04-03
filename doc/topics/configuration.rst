@@ -645,6 +645,10 @@ Example::
     [wsgi ie]
     kwargs={'fix_attach': False}
 
+.. note::
+   The options can be set using environment variables with names like:
+   ``TRYTOND_WSGI_<MIDDLEWARE>__<NAME>``.
+
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
