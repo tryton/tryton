@@ -1,3 +1,4 @@
+* Remove support for pysqlite2
 * Do not import empty One2Many data
 * Deduplicate entries in domain inversion's simplify
 * Prevent to create and delete singleton

@@ -5,29 +5,22 @@ import logging
 import math
 import os
 import random
+import sqlite3 as sqlite
 import threading
 import time
 import urllib.parse
 import warnings
 from decimal import Decimal
+from sqlite3 import IntegrityError as DatabaseIntegrityError
+from sqlite3 import OperationalError as DatabaseOperationalError
 from weakref import WeakKeyDictionary
-
-from werkzeug.security import safe_join
-
-try:
-    from pysqlite2 import dbapi2 as sqlite
-    from pysqlite2.dbapi2 import IntegrityError as DatabaseIntegrityError
-    from pysqlite2.dbapi2 import OperationalError as DatabaseOperationalError
-except ImportError:
-    import sqlite3 as sqlite
-    from sqlite3 import IntegrityError as DatabaseIntegrityError
-    from sqlite3 import OperationalError as DatabaseOperationalError
 
 from sql import Expression, Flavor, Literal, Null, Query, Table
 from sql.conditionals import NullIf
 from sql.functions import (
     CharLength, CurrentTimestamp, Extract, Function, Overlay, Position,
     Substring, Trim)
+from werkzeug.security import safe_join
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri

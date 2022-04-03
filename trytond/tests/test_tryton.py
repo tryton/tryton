@@ -123,9 +123,6 @@ def _sqlite_copy(file_, restore=False):
     with Transaction().start(DB_NAME, 0) as transaction, \
             sqlite.connect(file_) as conn2:
         conn1 = transaction.connection
-        # sqlitebck does not work with pysqlite2
-        if not isinstance(conn1, sqlite.Connection):
-            return False
         if restore:
             conn2, conn1 = conn1, conn2
         if hasattr(conn1, 'backup'):
