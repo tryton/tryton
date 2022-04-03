@@ -543,8 +543,13 @@ class Move(Workflow, ModelSQL, ModelView):
     def set_effective_date(self):
         pool = Pool()
         Date = pool.get('ir.date')
+        ShipmentInternal = pool.get('stock.shipment.internal')
 
-        if not self.effective_date and self.shipment:
+        if (not self.effective_date
+                and isinstance(self.shipment, ShipmentInternal)
+                and self.to_location == self.shipment.transit_location):
+            self.effective_date = self.shipment.effective_start_date
+        elif not self.effective_date and self.shipment:
             self.effective_date = self.shipment.effective_date
         if not self.effective_date:
             self.effective_date = Date.today()

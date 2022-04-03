@@ -175,12 +175,17 @@ Create Internal Shipment with lead time::
 
     >>> shipment.click('assign_try')
     True
+    >>> shipment.effective_start_date = yesterday
     >>> shipment.click('ship')
     >>> shipment.outgoing_moves[0].state
     'done'
+    >>> shipment.outgoing_moves[0].effective_date == yesterday
+    True
     >>> shipment.click('done')
     >>> shipment.incoming_moves[0].state
     'done'
+    >>> shipment.incoming_moves[0].effective_date == today
+    True
 
 Duplicate Internal Shipment::
 
