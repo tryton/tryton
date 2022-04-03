@@ -255,6 +255,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                                     shipment_cost=shipment_cost.rec_name,
                                     shipment=shipment.rec_name,
                                     other=other.rec_name))
+                        else:
+                            break
             shipment_cost.allocate_cost()
         cls.write(shipment_costs, {
                 'posted_date': Date.today(),
