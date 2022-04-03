@@ -211,7 +211,7 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     def process(cls, sales):
-        with Transaction().set_context(_shipment_cost_invoiced=set()):
+        with Transaction().set_context(_shipment_cost_invoiced=list()):
             super().process(sales)
 
     def _get_carrier_context(self):
@@ -352,7 +352,7 @@ class Line(metaclass=PoolMeta):
                     if invoice_line:
                         invoice_line.origin = self
                         lines.append(invoice_line)
-                        shipment_cost_invoiced.add(shipment.id)
+                        shipment_cost_invoiced.append(shipment.id)
         return lines
 
     def _get_invoice_line_quantity(self):
