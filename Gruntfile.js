@@ -37,17 +37,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    xgettext: {
-        locale: {
-            files: {
-                javascript: jsfiles
-            },
-            options: {
-                functionName: "Sao.i18n.gettext",
-                potFile: "locale/messages.pot"
-            },
-        }
-    },
     shell: {
         options: {
             failOnError: true
@@ -55,8 +44,20 @@ module.exports = function(grunt) {
         msgmerge: {
             command: _.map(locales, function(locale) {
                 var po = "locale/" + locale + ".po";
-                return "msgmerge -U " + po + " locale/messages.pot;";
+                return (
+                    "msgmerge " +
+                    "-U " + po + " " +
+                    "--no-location " +
+                    "locale/messages.pot;");
             }).join("")
+        },
+        xgettext: {
+            command: (
+                "xgettext " +
+                "--language=JavaScript --from-code=UTF-8 " +
+                "--omit-header --no-location " +
+                "-o locale/messages.pot " +
+                jsfiles.join(" "))
         }
     },
     po2json: {
@@ -170,8 +171,8 @@ module.exports = function(grunt) {
     grunt.task.run(['shell:msgmerge']);
     });
   grunt.registerTask('xgettext', ' Extracts translatable messages', function() {
-    grunt.loadNpmTasks('grunt-xgettext');
-    grunt.task.run(['xgettext']);
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.task.run(['shell:xgettext']);
   });
   grunt.registerTask('test', 'Run tests', function() {
     grunt.loadNpmTasks('grunt-contrib-qunit');

@@ -40,7 +40,6 @@
     "grunt-contrib-qunit": "^3.1",
     "grunt-contrib-watch": "^1.1",
     "grunt-shell": "^3.0",
-    "grunt-xgettext": "^0.3",
     "grunt-po2json": "^0.3"
   },
   "keywords": [
