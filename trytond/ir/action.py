@@ -833,11 +833,11 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                     continue
                 try:
                     value = PYSONDecoder().decode(domain)
-                except Exception:
+                except Exception as exception:
                     raise DomainError(
                         gettext('ir.msg_action_invalid_domain',
                             domain=domain,
-                            action=action.rec_name))
+                            action=action.rec_name)) from exception
                 if isinstance(value, PYSON):
                     if not value.types() == set([list]):
                         raise DomainError(
@@ -852,11 +852,11 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                 else:
                     try:
                         fields.domain_validate(value)
-                    except Exception:
+                    except Exception as exception:
                         raise DomainError(
                             gettext('ir.msg_action_invalid_domain',
                                 domain=domain,
-                                action=action.rec_name))
+                                action=action.rec_name)) from exception
 
     @classmethod
     def check_context(cls, actions):
@@ -865,11 +865,11 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
             if action.context:
                 try:
                     value = PYSONDecoder().decode(action.context)
-                except Exception:
+                except Exception as exception:
                     raise ContextError(
                         gettext('ir.msg_action_invalid_context',
                             context=action.context,
-                            action=action.rec_name))
+                            action=action.rec_name)) from exception
                 if isinstance(value, PYSON):
                     if not value.types() == set([dict]):
                         raise ContextError(
@@ -884,11 +884,11 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                 else:
                     try:
                         fields.context_validate(value)
-                    except Exception:
+                    except Exception as exception:
                         raise ContextError(
                             gettext('ir.msg_action_invalid_context',
                                 context=action.context,
-                                action=action.rec_name))
+                                action=action.rec_name)) from exception
 
     def get_views(self, name):
         return [(view.view.id, view.view.type)
@@ -1006,23 +1006,30 @@ class ActionActWindowDomain(
                 continue
             try:
                 value = PYSONDecoder().decode(action.domain)
-            except Exception:
-                value = None
+            except Exception as exception:
+                raise DomainError(gettext(
+                        'ir.msg_action_invalid_domain',
+                        domain=action.domain,
+                        action=action.rec_name)) from exception
             if isinstance(value, PYSON):
                 if not value.types() == set([list]):
-                    value = None
+                    raise DomainError(gettext(
+                            'ir.msg_action_invalid_domain',
+                            domain=action.domain,
+                            action=action.rec_name))
             elif not isinstance(value, list):
-                value = None
-            else:
-                try:
-                    fields.domain_validate(value)
-                except Exception:
-                    value = None
-            if value is None:
                 raise DomainError(gettext(
                         'ir.msg_action_invalid_domain',
                         domain=action.domain,
                         action=action.rec_name))
+            else:
+                try:
+                    fields.domain_validate(value)
+                except Exception as exception:
+                    raise DomainError(gettext(
+                            'ir.msg_action_invalid_domain',
+                            domain=action.domain,
+                            action=action.rec_name)) from exception
 
     @classmethod
     def create(cls, vlist):
