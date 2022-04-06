@@ -61,6 +61,5 @@ used as criteria by the analytic rule engine.
 
 .. seealso::
 
-   The `Analytic Account Rule <analytic_account:model-analytic_account.rule>`
-   concept is introduced by the
-   :doc:`Analytic Account Module <analytic_account:index>`.
+   The *Analytic Account Rule* concept is introduced by the :doc:`Analytic
+   Account Module <analytic_account:index>`.
