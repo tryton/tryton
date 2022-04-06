@@ -30,7 +30,7 @@ pipeline:
             - python setup.py sdist
             - twine check dist/*
     check_doc:
-        image: ${IMAGE]
+        image: ${IMAGE}
         commands:
             - pip install sphinx
             - python -m sphinx -T -E -W -n -b html doc _build/html
