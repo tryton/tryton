@@ -149,9 +149,8 @@ wizard.
 Fiscal Year Invoice Sequence
 ============================
 
-The *Fiscal Year Invoice Sequence* concept allows a set of
-`Sequences <trytond:model-ir.sequence.strict>` to be defined for use with
-`Invoices <model-account.invoice>`.
+The *Fiscal Year Invoice Sequence* concept allows a set of *Sequences* to be
+defined for use with `Invoices <model-account.invoice>`.
 It allows different sequences to be used for each of the different types of
 invoices and credit notes.
 It also allows the use of different sequences for each accounting
