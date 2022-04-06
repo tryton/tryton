@@ -51,12 +51,15 @@ def send_keys(renderer, editable, position, treeview):
 
 
 def realized(func):
-    "Decorator for treeview realized"
+    has_been_realized = False
+
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        if (hasattr(self.view.treeview, 'get_realized')
-                and not self.view.treeview.get_realized()):
-            return
+        nonlocal has_been_realized
+        if not has_been_realized:
+            has_been_realized = self.view.treeview.get_realized()
+            if has_been_realized:
+                self.view.treeview.queue_resize()
         return func(self, *args, **kwargs)
     return wrapper
 
