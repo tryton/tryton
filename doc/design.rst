@@ -32,5 +32,5 @@ These include a new shipping server "MyGLS", printer configuration and services.
 
 .. seealso::
 
-   The `Carrier <carrier:model-carrier>` concept is introduced by the
+   The :doc:`Carrier <carrier:index>` concept is introduced by the
    :doc:`Carrier Module <carrier:index>`.
