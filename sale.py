@@ -150,5 +150,17 @@ class HandleShipmentException(
     __name__ = 'sale.handle.shipment.exception'
 
 
+class Amendment(metaclass=PoolMeta):
+    __name__ = 'sale.amendment'
+
+    @classmethod
+    def _stock_moves(cls, line):
+        yield from super()._stock_moves(line)
+        for component in line.components:
+            for move in component.moves:
+                if move.state == 'draft':
+                    yield move
+
+
 class AmendmentLine(AmendmentLineMixin, metaclass=PoolMeta):
     __name__ = 'sale.amendment.line'

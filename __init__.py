@@ -37,6 +37,7 @@ def register():
         sale.HandleShipmentException,
         module='product_kit', type_='wizard', depends=['sale'])
     Pool.register(
+        sale.Amendment,
         sale.AmendmentLine,
         module='product_kit', type_='model', depends=['sale_amendment'])
     Pool.register(
@@ -52,5 +53,6 @@ def register():
         purchase.HandleShipmentException,
         module='product_kit', type_='wizard', depends=['purchase'])
     Pool.register(
+        purchase.Amendment,
         purchase.AmendmentLine,
         module='product_kit', type_='model', depends=['purchase_amendment'])
