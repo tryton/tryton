@@ -5,7 +5,7 @@ User Application
 ================
 
 Tryton provides a way to connect URL rules to an callable endpoint using the
-decorator method ``route`` of the ``trytond.application.app`` instance. This
+decorator method ``route`` of the ``trytond.wsgi.app`` instance. This
 allows you to define a custom API based on HTTP that can be used to create a
 specific user application.
 
@@ -14,7 +14,7 @@ Format`_ of Werkzeug and as second parameter sequence of HTTP methods.
 
 Example::
 
-    from trytond.application import app
+    from trytond.wsgi import app
 
     @app.route('/hello', methods=['GET'])
     def hello(request):
