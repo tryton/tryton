@@ -36,7 +36,7 @@ When defining an ``ir.action.report`` the following attributes are available:
    The name of the report.
 
 ``report_name``
-   The `__name__` of the report model.
+   The ``__name__`` of the report model.
 
 ``model``
    The :attr:`~trytond.model.Model.__name__` of the

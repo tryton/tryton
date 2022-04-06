@@ -230,28 +230,28 @@ Boolean
 
 .. class:: Boolean(string[, \**options])
 
-   A true/false field.
+   A :py:class:`boolean <bool>` field.
 
 Integer
 -------
 
 .. class:: Integer(string[, \**options])
 
-   An integer field.
+   An :py:class:`integer <int>` field.
 
 BigInteger
 ----------
 
 .. class:: BigInteger(string[, \**options])
 
-   A long integer field.
+   A long :py:class:`integer <int>` field.
 
 Char
 ----
 
 .. class:: Char(string[, size[, translate[, \**options]]])
 
-   A single line string field.
+   A single line :py:class:`string <str>` field.
 
    Search by similarity is used for the ``ilike`` operator and
    :meth:`~trytond.tools.is_full_text` value if the backend supports it and a
@@ -326,7 +326,7 @@ Text
 
 .. class:: Text(string[, size[, translatable[, \**options]]])
 
-   A multi line string field.
+   A multi line :py:class:`string <str>` field.
 
 :class:`Text` has some extra arguments:
 
@@ -354,7 +354,7 @@ FullText
 
    An internal field to store a list of parsed strings ordered by weights.
    The field is ordered using the full text ranking with the context value from
-   the key `<model name>.<field name>.order`` if it is set.
+   the key ``<model name>.<field name>.order`` if it is set.
 
 
 Float
@@ -362,14 +362,14 @@ Float
 
 .. class:: Float(string[, digits[, \**options]])
 
-   A floating-point number field.
+   A :py:class:`floating-point number <float>` field.
    It is represented in Python by a ``float`` instance.
 
 :class:`Float` has some extra arguments:
 
 .. attribute:: Float.digits
 
-   A tuple of two integers.
+   A tuple of two :py:class:`integers <int>`.
 
    The first integer defines the total of numbers in the integer part.
 
@@ -386,8 +386,7 @@ Numeric
 
 .. class:: Numeric(string[, digits[, \**options]])
 
-   A fixed-point number field.
-   It is represented in Python by a ``decimal.Decimal`` instance.
+   A :py:class:`fixed-point number <decimal.Decimal>` field.
 
 :class:`Numeric` has some extra arguments:
 
@@ -400,7 +399,7 @@ Date
 
 .. class:: Date(string[, \**options])
 
-   A date, represented in Python by a ``datetime.date`` instance.
+   A :py:class:`date <datetime.date>` field.
 
 Instance methods:
 
@@ -415,7 +414,7 @@ DateTime
 
 .. class:: DateTime(string[, format, \**options])
 
-   A date and time, represented in Python by a ``datetime.datetime`` instance.
+   A :py:class:`date and time <datetime.datetime>` field.
 
    It is stored in `UTC`_ while displayed in the user timezone.
 
@@ -425,7 +424,7 @@ DateTime
 
 .. attribute:: DateTime.format
 
-   A string format as used by strftime.
+   A string format as used by :py:meth:`~datetime.datetime.strftime`.
 
    This format is used to display the time part of the field.
    The default value is ``%H:%M:%S``.
@@ -436,14 +435,14 @@ Timestamp
 
 .. class:: Timestamp(string[, \**options])
 
-   A timestamp, represented in Python by a ``datetime.datetime`` instance.
+   A :py:class:`timestamp <datetime.datetime>` field.
 
 Time
 ----
 
 .. class:: Time(string[, format, \**options])
 
-   A time, represented in Python by a ``datetime.time`` instance.
+   A :py:class:`time <datetime.time>` field.
 
 :class:`Time` has some extra arguments:
 
@@ -456,7 +455,7 @@ TimeDelta
 
 .. class:: TimeDelta(string[, converter[, \**options]])
 
-   An interval, represented in Python by a ``datetime.timedelta`` instance.
+   An :py:class:`interval <datetime.timedelta>` field.
 
 :class:`TimeDelta` has some extra arguments:
 
@@ -473,8 +472,7 @@ Binary
 
 .. class:: Binary(string[, \**options])
 
-   A binary field.
-   It is represented in Python by a ``bytes`` instance.
+   A :py:class:`binary <bytes>` field.
 
    .. warning::
 
@@ -516,7 +514,7 @@ Selection
 
 .. class:: Selection(selection, string[, sort[, selection_change_with[, translate[, help_selection[, \**options]]]]])
 
-   A string field with limited values to choose from.
+   A :py:class:`string <str>` field with limited values to choose from.
 
 :class:`Selection` has some extra arguments:
 
@@ -536,7 +534,7 @@ Selection
       selection()
 
    .. note::
-      The method is automaticly added to :attr:`trytond.model.Model._rpc` if
+      The method is automaticly added to :attr:`trytond.model.Model.__rpc__` if
       not manually set.
 
 .. attribute:: Selection.sort
@@ -586,7 +584,7 @@ MultiSelection
 
 .. class:: MultiSelection(selection, string[, sort[, translate[, help_selection[, \**options]]]])
 
-   A list field with limited values to choose from.
+   A :py:class:`tuple` field with limited values to choose from.
 
 :class:`MultiSelection` has some extra arguments:
 
@@ -619,8 +617,7 @@ Reference
 
 .. class:: Reference(string[, selection[, sort[, selection_change_with[, translate[, help_selection[,search_order[, search_context[, \**options]]]]]]]])
 
-   A field that refers to a record of a model.
-   It is represented in Python by a ``str`` instance like this::
+   A :py:class:`string <str>` field that refers to a record of a model.
 
       '<model name>,<record id>'
 
@@ -1115,8 +1112,8 @@ Dict
 
 .. attribute:: Dict.schema_model
 
-   The name of the :class:`DictSchemaMixin` model that stores the definition of
-   keys.
+   The name of the :class:`~trytond.model.DictSchemaMixin` model that stores
+   the definition of keys.
 
 .. attribute:: Dict.search_unaccented
 

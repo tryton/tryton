@@ -54,7 +54,7 @@ Instance attributes are:
 
 .. attribute:: RPC.duration
 
-   A `datetime.timdelta` instance.
+   A :py:class:`datetime.timedelta` instance.
 
 Instance methods are:
 

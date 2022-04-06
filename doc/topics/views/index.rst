@@ -85,7 +85,7 @@ Some attributes are shared by many form elements:
 ``col``
    The number of columns the container must have.
    A negative value (or zero) remove the constraint on the number of columns.
-   The default value is `4`.
+   The default value is ``4``.
 
 .. _common-attributes-states:
 

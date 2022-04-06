@@ -221,15 +221,15 @@ pattern, unless otherwise noted::
 
     Is a parent child comparison operator. Returns true for records that are
     a child of ``<operand>``. ``<operand>`` is a list of ``ids`` and ``<field
-    name>`` must be a :class:`~trytond.model.fields.many2one` or a
-    :class:`~trytond.model.fields.many2many`.
+    name>`` must be a :class:`~trytond.model.fields.Many2One` or a
+    :class:`~trytond.model.fields.Many2Many`.
     In case ``<field name>`` is not linked to itself, the clause pattern
     extends to::
 
         (<field name>, ['child_of'|'not_child_of'], <operand>, <parent field>)
 
     Where ``<parent field>`` is the name of the field constituting the
-    :class:`~trytond.model.fields.many2one` on the target model.
+    :class:`~trytond.model.fields.Many2One` on the target model.
 
 ``not child_of``
 ----------------

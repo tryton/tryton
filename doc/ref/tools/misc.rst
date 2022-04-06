@@ -30,4 +30,4 @@ Miscellaneous
 .. method:: remove_forbidden_chars(value)
 
    Return a copy of the string with forbidden char from
-   :class:`~trytond.models.fields.Char` replaced by space.
+   :class:`~trytond.model.fields.Char` replaced by space.

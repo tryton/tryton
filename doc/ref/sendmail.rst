@@ -11,9 +11,10 @@ Sendmail
    The required arguments are an `RFC 822`_ from-address string, a list of `RFC
    822`_ to-address strings (a bare string is treated as a list with 1
    address), and an email message.
-   The caller may pass a :class:`Transaction` instance to join otherwise the
-   current one is joined. A specific data manager can be specified otherwise
-   the default :class:`SMTPDataManager` is used for sending email.
+   The caller may pass a :class:`~trytond.transaction.Transaction` instance to
+   join otherwise the current one is joined.
+   A specific data manager can be specified otherwise the default
+   :class:`SMTPDataManager` is used for sending email.
    The strict value is passed to instantiate the default :class:`SMTPDataManager`.
 
    .. warning::
@@ -23,7 +24,7 @@ Sendmail
 .. method:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
 
    Send email message like :meth:`sendmail_transactional` but directly without
-   caring about the transaction and return the `server`.
+   caring about the transaction and return the ``server``.
 
    The caller may pass a server instance from `smtplib`_.
    It may return a new server instance if a reconnection was needed and if the

@@ -154,7 +154,7 @@ Static methods:
    fields on client side (similar to :ref:`on_change
    <topics-fields_on_change>`).
 
-   `methods`  can be used to duplicate the field names from other decorated
+   ``methods`` can be used to duplicate the field names from other decorated
    methods.
    This is useful if the decorated method calls another method.
 
@@ -437,7 +437,7 @@ Class methods:
    Validate the integrity of records after creation and modification.
 
    This method must be overridden to add validation and must raise an
-   :exc:`~trytond.exceptions.ValidationError` if validation fails.
+   :exc:`~trytond.model.exceptions.ValidationError` if validation fails.
 
 Dual methods:
 

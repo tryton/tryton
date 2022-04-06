@@ -44,8 +44,8 @@ creation of such route.
    corresponding instance of the :ref:`Pool <ref-pool>`.
 
 ``with_transaction([readonly])``
-   Start a :class:`Transaction` using the :ref:`Pool <ref-pool>` from
-   ``with_pool``.
+   Start a :class:`~trytond.transaction.Transaction` using the :ref:`Pool
+   <ref-pool>` from ``with_pool``.
    If ``readonly`` is not set, the transaction will not be readonly for
    ``POST``, ``PUT``, ``DELETE`` and ``PATCH`` methods and readonly for all
    others.

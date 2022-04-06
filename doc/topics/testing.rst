@@ -20,7 +20,7 @@ Unit tests
 Tryton provides the :class:`~trytond.tests.test_tryton.ModuleTestCase` class
 that bundles a set of tests that are useful for every module.
 
-Unit tests in :class:`~trytond.tests.test_tryton.ModuleTestCase`` can be
+Unit tests in :class:`~trytond.tests.test_tryton.ModuleTestCase` can be
 decorated with :func:`~trytond.tests.test_tryton.with_transaction` to run the
 test in a transaction.
 

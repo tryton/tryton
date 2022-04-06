@@ -69,7 +69,7 @@ In this example are the results of two partial expressions
 evaluated by a logical *OR* operator. The first expression part is
 evaluated as follow: When the value of ``Eval('state')`` is equal to
 the string ``'draft'`` then return true, else false.
-:class:`~trytond.pyson.Not`` negates the former result.
+:class:`~trytond.pyson.Not` negates the former result.
 A similar expression in Python looks like this::
 
     'states' in locals() and 'lines' in locals() and state != 'draft' or bool(lines)

@@ -32,8 +32,7 @@ WSGI server
 -----------
 
 If you prefer to run Tryton inside your own WSGI server instead of the simple
-server of Werkzeug, you can use the application
-:class:`trytond.application.app`.
+server of Werkzeug, you can use the application ``trytond.application.app``.
 Following environment variables can be set:
 
  * ``TRYTOND_CONFIG``: Point to :ref:`configuration <topics-configuration>`

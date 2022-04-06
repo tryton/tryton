@@ -266,14 +266,15 @@ record
 
 The number of record loaded kept in the cache of the list.
 It can be changed locally using the ``_record_cache_size`` key in
-:attr:`Transaction.context`.
+:attr:`Transaction.context <trytond.transaction.Transaction.context>`.
 
 Default: ``2000``
 
 field
 ~~~~~
 
-The number of field to load with an ``eager`` :attr:`Field.loading`.
+The number of field to load with an ``eager`` :attr:`Field.loading
+<trytond.model.fields.Field.loading>`.
 
 Default: ``100``
 
@@ -340,8 +341,9 @@ table
 -----
 
 This section allows to override the default generated table name for a
-:class:`ModelSQL`. The main goal is to bypass limitation on the name length of
-the database backend.
+:class:`~trytond.model.ModelSQL`.
+The main goal is to bypass limitation on the name length of the database
+backend.
 For example::
 
     [table]

@@ -7,8 +7,7 @@ Pool
 .. class:: Pool([database_name])
 
    Store the instances of :class:`~trytond.model.Model`,
-   :class:`~trytond.wizard.Wizard` and :class:`~trytond.report.Report` per
-   database.
+   :class:`~trytond.wizard.Wizard` and *Report* per database.
 
 Static methods:
 
@@ -89,7 +88,7 @@ Class methods:
 
    Setup the class.
 
-.. classmethod:: PoolBase._post_setup__()
+.. classmethod:: PoolBase.__post_setup__()
 
    Post setup the class.
 

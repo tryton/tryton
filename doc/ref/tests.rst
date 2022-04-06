@@ -67,8 +67,9 @@ doctest helpers
    .. deprecated:: 4.2
 
       The ``doctest_setup`` function should not be used anymore to set up
-      ``DocFileSuite``.
-      New modules should use :func:`tools.activate_modules` instead.
+      :py:func:`~doctest.DocFileSuite`.
+      New modules should use :func:`~trytond.tests.tools.activate_modules`
+      instead.
 
 .. function:: doctest_teardown()
 
