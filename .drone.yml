@@ -29,11 +29,15 @@ pipeline:
             - pip install twine
             - python setup.py sdist
             - twine check dist/*
+        volumes:
+            - cache:/root/.cache
     check_doc:
         image: ${IMAGE}
         commands:
             - pip install sphinx
             - python -m sphinx -T -E -W -n -b html doc _build/html
+        volumes:
+            - cache:/root/.cache
 
 services:
     postgresql:
