@@ -54,8 +54,8 @@ Manually assigning party codes
 Each `Party <model-party.party>` that gets entered onto the system needs a
 unique code.
 By default Tryton will automatically generate a code for each new party using
-the `Sequence <trytond:model-ir.sequence>` defined in the party
-`Configuration <model-party.configuration>`.
+the *Sequence* defined in the party `Configuration
+<model-party.configuration>`.
 
 There are times when you want to manually allocate codes to parties.
 Perhaps you have a policy of coding parties based on part of their name, or
