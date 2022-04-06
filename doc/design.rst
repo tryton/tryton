@@ -25,7 +25,7 @@ sale is made to, including details such as the party's preferred
 sent to.
 
 A sale is identified by a unique number that is generated automatically from
-the configured `Sequence <trytond:model-ir.sequence>`.
+the configured *Sequence*.
 It also has other general information like a sale date, description, and
 reference used by the customer.
 
