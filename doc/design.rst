@@ -26,9 +26,8 @@ supplier, the contact at the supplier or the party that is sending the
 `Invoice <account_invoice:model-account.invoice>`.
 
 A purchase is identified by a unique number that is generated automatically
-from the configured `Sequence <trytond:model-ir.sequence>` and may also have
-other general information such as the purchase date, a description, or a
-reference provided by the supplier.
+from the configured *Sequence* and may also have other general information such
+as the purchase date, a description, or a reference provided by the supplier.
 
 Each purchase is made up from one or more lines.
 These lines can be put into a particular order if desired.
