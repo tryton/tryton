@@ -152,9 +152,7 @@ class Amendment(Workflow, ModelSQL, ModelView):
                 for invoice_line in line.invoice_lines:
                     if invoice_line.invoice_state == 'draft':
                         invoice_lines.add(invoice_line)
-                for move in line.moves:
-                    if move.state == 'draft':
-                        moves.add(move)
+                moves.update(cls._stock_moves(line))
 
         shipments_waiting = [s for s in shipments if s.state == 'waiting']
         Shipment.draft(shipments)  # Clear inventory moves
@@ -167,6 +165,12 @@ class Amendment(Workflow, ModelSQL, ModelView):
         Shipment.delete([s for s in shipments if not s.outgoing_moves])
         ShipmentReturn.delete(
             [s for s in shipment_returns if not s.incoming_moves])
+
+    @classmethod
+    def _stock_moves(cls, line):
+        for move in line.moves:
+            if move.state == 'draft':
+                yield move
 
 
 class AmendmentLine(ModelSQL, ModelView):
