@@ -1498,7 +1498,7 @@
                 }
                 set_sensitive(button_id, position && can_be_sensitive);
             }.bind(this));
-            set_sensitive('switch_', this.attributes.view_ids.length > 1);
+            set_sensitive('switch_', this.screen.number_of_views > 1);
             set_sensitive('delete_', this.screen.deletable);
             set_sensitive('previous', position > (this.screen.offset + 1));
             set_sensitive('next', position < size);
