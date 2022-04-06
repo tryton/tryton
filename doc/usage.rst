@@ -2,7 +2,7 @@
 Usage
 *****
 
-.. _Defer line from invoice
+.. _Defer line from invoice:
 
 Defer line from invoice
 =======================

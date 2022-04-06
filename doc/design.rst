@@ -40,7 +40,7 @@ in the period.
 Wizards
 -------
 
-.. _wizard-account.invoice.deferred.create_moves
+.. _wizard-account.invoice.deferred.create_moves:
 
 Invoice Deferred Create Moves
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
