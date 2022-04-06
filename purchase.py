@@ -146,15 +146,19 @@ class Amendment(Workflow, ModelSQL, ModelView):
                 for invoice_line in line.invoice_lines:
                     if invoice_line.invoice_state == 'draft':
                         invoice_lines.add(invoice_line)
-                for move in line.moves:
-                    if move.state == 'draft':
-                        moves.add(move)
+                moves.update(cls._stock_moves(line))
 
         InvoiceLine.delete(invoice_lines)
         Move.delete(moves)
 
         Invoice.update_taxes([i for i in invoices if i.lines])
         Invoice.delete([i for i in invoices if not i.lines])
+
+    @classmethod
+    def _stock_moves(cls, line):
+        for move in line.moves:
+            if move.state == 'draft':
+                yield move
 
 
 class AmendmentLine(ModelSQL, ModelView):
