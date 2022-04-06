@@ -16,9 +16,9 @@ Configuration to connect to a sqlite memory database using trytond as module.
 
     >>> config = config.set_trytond('sqlite:///:memory:')
 
-There is also the `config.set_xmlrpc` method which can be used to connect using
-a URL, and the `config.set_xmlrpc_session` method (when used as a context
-manager) which connects for a session.
+There is also the ``config.set_xmlrpc`` method which can be used to connect
+using a URL, and the ``config.set_xmlrpc_session`` method (when used as a
+context manager) which connects for a session.
 
 Activating a module
 ~~~~~~~~~~~~~~~~~~~
@@ -33,7 +33,7 @@ Find the module, call the activate button and run the upgrade wizard.
 Creating a party
 ~~~~~~~~~~~~~~~~
 
-First instanciate a new Party:
+First instantiate a new Party:
 
     >>> Party = Model.get('party.party')
     >>> party = Party()
@@ -55,8 +55,8 @@ Save the instance into the server:
 Setting the language of the party
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The language on party is a `Many2One` relation field. So it requires to get a
-`Model` instance as value.
+The language on party is a ``Many2One`` relation field. So it requires to get a
+``Model`` instance as value.
 
     >>> Lang = Model.get('ir.lang')
     >>> en, = Lang.find([('code', '=', 'en')])
@@ -68,8 +68,8 @@ The language on party is a `Many2One` relation field. So it requires to get a
 Creating an address for the party
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Addresses are store on party with a `One2Many` field. So the new address just
-needs to be appended to the list `addresses`.
+Addresses are store on party with a ``One2Many`` field.
+So the new address just needs to be appended to the list ``addresses``.
 
     >>> address = party.addresses.new(postal_code='42')
     >>> party.save()
@@ -79,7 +79,7 @@ needs to be appended to the list `addresses`.
 Adding category to the party
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Categories are linked to party with a `Many2Many` field.
+Categories are linked to party with a ``Many2Many`` field.
 
 So first create a category
 
@@ -98,7 +98,7 @@ Append it to categories of the party
 Print party label
 ~~~~~~~~~~~~~~~~~
 
-There is a label report on `Party`.
+There is a label report on ``Party``.
 
     >>> label = Report('party.label')
 
@@ -110,7 +110,8 @@ Sorting addresses and register order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Addresses are ordered by sequence which means they can be stored following a
-specific order. The `set_sequence` method stores the current order.
+specific order.
+The ``set_sequence`` method stores the current order.
 
     >>> address = party.addresses.new(postal_code='69')
     >>> party.save()
