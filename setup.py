@@ -73,9 +73,9 @@ if minor_version % 2:
         + '.'.join(local_version))
 
 if platform.python_implementation() == 'PyPy':
-    pg_require = ['psycopg2cffi >= 2.5.4']
+    pg_require = ['psycopg2cffi > 2.9.0']
 else:
-    pg_require = ['psycopg2 >= 2.5.4']
+    pg_require = ['psycopg2 >= 2.7.0']
 tests_require = ['pillow']
 
 setup(name=name,
