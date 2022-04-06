@@ -43,8 +43,8 @@ All exchange rates are relative with respect to each other.
 Scheduled Rate Updates
 ======================
 
-The `Exchange Rates <model-currency.rate>` can be automatically updated using a
-`Scheduled Task <trytond:model-ir.cron>`.
+The `Exchange Rates <model-currency.currency.rate>` can be automatically
+updated using a *Scheduled Task*.
 When the scheduled task is run it uses the external source to fill in the
 missing rates since the last update.
 The frequency determines which dates get rates.

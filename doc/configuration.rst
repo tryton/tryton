@@ -18,6 +18,6 @@ storing currencies' `Rates <model-currency.currency.rate>`.
    Once the database has been created you cannot reduce this value, doing so
    will break your system's data integrity.
    Also if you want to increase this value you must also manually change it in
-   the database `IR Configuration <trytond:model-ir.configuration>`.
+   the database *IR Configuration*.
 
 The default value is: ``6``
