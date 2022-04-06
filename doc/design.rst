@@ -21,8 +21,8 @@ also possible to track the actual time and effort required.
 
 If timesheets are selected to be used, then the time spent on the work can
 be recorded by `Employees <company:model-company.employee>` by creating
-`Timesheet Lines <timesheet:model-timesheet.line>` with the right
-`Timesheet Works <timesheet:model-timesheet.work>`.
+:doc:`Timesheet Lines <timesheet:index>` with the right :doc:`Timesheet Works
+<timesheet:index>`.
 The *Timesheet Works* for the *Work Efforts* are automatically created and
 deleted as needed.
 
