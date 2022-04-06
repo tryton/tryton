@@ -38,14 +38,13 @@ For `Sale Lines <model-sale.line>` with a kit `Product <concept-product>`, a
 `Sale Line Component <model-sale.line.component>` is created for each `Product
 Component <model-product.component>`.
 These components are used as the origins for the `Stock Moves
-<stock:model-stock.move>` and the sale lines of the `Invoice Lines
-<account_invoice:model-account.invoice.line>`.
+<stock:model-stock.move>` and the sale lines of the *Invoice Lines*.
 When the `Invoice <account_invoice:model-account.invoice>` method is on
 shipment, the smallest ratio of shipped components is used to calculate the
 quantity invoiced.
 
-For `Sale Lines <model-sale.line>` with a non-kit product containing `Product
-Components <model-product.component>`, a sale line is created for each one.
+For *Sale Lines* with a non-kit product containing `Product Components
+<model-product.component>`, a sale line is created for each one.
 
 When the sale is reset to draft, all created components are deleted.
 
@@ -63,9 +62,8 @@ The sale lines gain a list of `Sale Line Components
 Line Component
 --------------
 
-The *Sale Line Component* concept defines for a `Sale Line
-<sale:model-sale.line>` the quantity of a `Product Component
-<model-product.component>` to be shipped instead of the kit.
+The *Sale Line Component* concept defines for a *Sale Line* the quantity of a
+`Product Component <model-product.component>` to be shipped instead of the kit.
 
 .. seealso::
 
@@ -85,8 +83,7 @@ For `Purchase Lines <model-purchase.line>` with a kit `Product
 <concept-product>`, a `Purchase Line Component <model-sale.line.component>` is
 created for each `Product Component <model-product.component>`.
 These components are used as the origins for the `Stock Moves
-<stock:model-stock.move>` and the purchase lines of the `Invoice Lines
-<account_invoice:model-account.invoice.line>`.
+<stock:model-stock.move>` and the purchase lines of the *Invoice Lines*.
 When the `Invoice <account_invoice:model-account.invoice>` method is on
 shipment, the smallest ratio of received components is used to calculate the
 quantity invoiced.
@@ -111,9 +108,9 @@ the `Purchase <purchase:model-purchase.purchase>` is quoted.
 Line Component
 --------------
 
-The *Purchase Line Component* concept defines for a `Purchase Line
-<purchase:model-purchase.line>` the quantity of a `Product Component
-<model-product.component>` to be received instead of the kit.
+The *Purchase Line Component* concept defines for a *Purchase Line* the
+quantity of a `Product Component <model-product.component>` to be received
+instead of the kit.
 
 .. seealso::
 
