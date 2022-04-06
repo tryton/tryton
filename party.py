@@ -30,7 +30,7 @@ class ContactMechanism(metaclass=PoolMeta):
         return super(ContactMechanism, cls).usages(_fields=_fields)
 
 
-class Party(ModelSQL, ModelView):
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     customer_payment_term = fields.MultiValue(customer_payment_term)
     supplier_payment_term = fields.MultiValue(supplier_payment_term)
