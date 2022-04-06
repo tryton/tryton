@@ -10,7 +10,7 @@ Scheduled Rate Updates
 ======================
 
 When the *Currency RS Module* is activated, the `Serbian National Bank
-<https://nbs.rs/>` is added as a source.
+<https://nbs.rs/>`_ is added as a source.
 If it is selected then only the Serbian Dinar can be used as a base currency.
 
 .. seealso::
