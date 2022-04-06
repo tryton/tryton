@@ -23,7 +23,7 @@ store with, as a minimum, the following permissions:
 
 You also need to copy the password that is generated.
 
-When setting the `Web Shop <web_shop:model-web.shop>`'s type to  "Shopify", you
+When setting the :doc:`Web Shop <web_shop:index>`'s type to  "Shopify", you
 must fill in the "Shop URL" (e.g. ``https://<store-name>.myshopify.com``) and
 the "Password" with the copied one.
 

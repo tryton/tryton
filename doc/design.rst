@@ -4,13 +4,13 @@ Design
 
 The *Web Shop Shopify Module* introduces some new concepts.
 
-.. _model-web.shop.shopify_identifier
+.. _model-web.shop.shopify_identifier:
 
 Shopify Identifier
 ==================
 
 A *Shopify Identifier* stores the Shopify ID for records from other models for
-each different `Web Shop <web_shop:model-web.shop>`.
+each different :doc:`Web Shop <web_shop:index>`.
 
 .. seealso::
 
@@ -21,16 +21,16 @@ each different `Web Shop <web_shop:model-web.shop>`.
       .. |Administration --> Models --> Shopify Identifiers| replace:: :menuselection:`Administration --> Models --> Shopify Identifiers`
       __ https://demo.tryton.org/model/web.shop.shopify_identifier
 
-.. model-web.shop.shopify_payment_journal
+.. _model-web.shop.shopify_payment_journal:
 
 Shopify Payment Journal
 =======================
 
 The *Shopify Payment Journal* stores the rules which are used to determine on
-which `Payment Journal <account_payment:model-account.payment.journal>` the
-transactions are entered.
+which :doc:`Payment Journal <account_payment:index>` the transactions are
+entered.
 
-.. model-stock.shipment.shopify_identifier
+.. _model-stock.shipment.shopify_identifier:
 
 Shopify Shipment Identifier
 ===========================
@@ -48,7 +48,7 @@ for each `Sale <sale:model-sale.sale>`.
       __ https://demo.tryton.org/model/stock.shipment.shopify_identifier
 
 
-.. model-web.shop.shopify_inventory_item
+.. _model-web.shop.shopify_inventory_item:
 
 Shopify Inventory Item
 ======================
