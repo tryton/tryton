@@ -15,9 +15,8 @@ Any `Storage Locations <stock:model-stock.location>` that are not under a
 `Warehouse <stock:concept-stock.location.warehouse>` also need linking to a
 cost warehouse.
 
-You must also ensure that the `Scheduled Task <trytond:model-ir.cron>` that
-recalculates the cost prices is configured to run for each different
-warehouse.
+You must also ensure that the *Scheduled Task* that recalculates the cost
+prices is configured to run for each different warehouse.
 
 .. note::
 
@@ -38,7 +37,7 @@ These can be updated in your user preferences.
 .. _Moving stock between warehouses:
 
 Moving stock between warehouses
-===============================  
+===============================
 
 If you have checked the :guilabel:`Cost Price Warehouse` option, then to move
 stock between different `Warehouses <stock:concept-stock.location.warehouse>`
