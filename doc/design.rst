@@ -37,5 +37,5 @@ These include a new shipping service "Sendcloud" and a label format.
 
 .. seealso::
 
-   The `Carrier <carrier:model-carrier>` concept is introduced by the
+   The :doc:`Carrier <carrier:index>` concept is introduced by the
    :doc:`Carrier Module <carrier:index>`.
