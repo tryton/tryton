@@ -94,7 +94,11 @@ class StockSupply(metaclass=PoolMeta):
 
     @property
     def _production_parameters(self):
-        return {}
+        parameters = {}
+        # Use getattr because start is empty when run by cron
+        if getattr(self.start, 'warehouses', None):
+            parameters['warehouses'] = self.start.warehouses
+        return parameters
 
     def generate_production(self, clean):
         pool = Pool()
