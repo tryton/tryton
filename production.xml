@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <menuitem
-            name="Production"
+            name="Productions"
             sequence="100"
             id="menu_production"
             icon="tryton-production"/>
