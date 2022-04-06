@@ -51,9 +51,8 @@ supervisor.
 User
 ====
 
-The *Company Module* extends the `User <trytond:model-res.user>` concept so
-that each user can be associated with one or more
-`Companies <model-company.company>` and a set of
+The *Company Module* extends the *User* concept so that each user can be
+associated with one or more `Companies <model-company.company>` and a set of
 `Employees <model-company.employee>`.
 From these a user then `chooses a current company and employee
 <Setting your current company and employee>`.
@@ -64,8 +63,7 @@ the user's setup.
 
 .. seealso::
 
-   The *User* concept is introduced by the
-   :doc:`Res Module <trytond:modules/res/index>`.
+   The *User* concept is introduced by the ``res`` module.
 
 .. _model-party.party:
 
@@ -90,6 +88,5 @@ Letter
 This report is a document that can be used as the starting point for a letter
 to the selected `Party <party:model-party.party>`.
 The letter that is created is preformatted with information about the party,
-the `User <trytond:model-res.user>` and the user's current
-`Company <model-company.company>`.
+the *User* and the user's current `Company <model-company.company>`.
 The only thing that then needs to be added is the main contents of the letter.

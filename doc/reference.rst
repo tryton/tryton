@@ -39,9 +39,8 @@ Employee Fields
 
    Used to decorate methods which need to record the employee that last
    ran them.
-   The specified ``field`` is updated with the
-   `User's <trytond:model-res.user>` current
-   `Employee <model-company.employee>`, but only if the employee works for the
+   The specified ``field`` is updated with the *User's* current `Employee
+   <model-company.employee>`, but only if the employee works for the
    ``company``.
 
    :param field: The name of the field to set to the user's current employee.
