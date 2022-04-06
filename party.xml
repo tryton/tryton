@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-party.svg</field>
         </record>
         <menuitem
-            name="Party"
+            name="Parties"
             sequence="10"
             id="menu_party"
             icon="tryton-party"/>
