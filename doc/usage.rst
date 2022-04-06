@@ -15,9 +15,9 @@ tryton - Graphical user client of the Tryton application framework
 Synopsis
 ********
 
-::
+.. code-block:: console
 
-  tryton [options] [url]
+   $ tryton [options] [url]
 
 On startup the login dialog is displayed.
 
@@ -51,20 +51,19 @@ then it will start the GUI and open the url itself.
 
 The url schemes are:
 
-    `tryton://<hostname>[:<port>]/<database>/model/<model name>[/<id>][;parameters]`
+   ``tryton://<hostname>[:<port>]/<database>/model/<model name>[/<id>][;parameters]``
 
-    `tryton://<hostname>[:<port>]/<database>/wizard/<wizard name>[;parameters]`
+   ``tryton://<hostname>[:<port>]/<database>/wizard/<wizard name>[;parameters]``
 
-    `tryton://<hostname>[:<port>]/<database>/report/<report name>[;parameters]`
+   ``tryton://<hostname>[:<port>]/<database>/report/<report name>[;parameters]``
 
-
-where `parameters` are the corresponding fields of actions encoded in
-`JSON`_.
+``parameters``
+   the corresponding fields of actions encoded in `JSON`_
 
 .. _JSON: http://en.wikipedia.org/wiki/Json
-.. Note:: `model` is for `act_window`
-.. Note:: `report` must have at least a data parameter with `ids`, `id` and
-    `model name`
+.. Note:: ``model`` is for ``window``
+.. Note:: ``report`` must have at least a data parameter with ``ids``, ``id``
+   and ``model name``
 
 
 Overview
@@ -395,15 +394,15 @@ Date/DateTime/Time Widgets
 These widgets have several key shortcuts to quickly modify the value. Each key
 increases if lower case or decreases if upper case:
 
-    - `y`: by one year
-    - `m`: by one month
-    - `w`: by one week
-    - `d`: by one day
-    - `h`: by one hour
-    - `i`: by one minute
-    - `s`: by one second
+   - ``y``: by one year
+   - ``m``: by one month
+   - ``w``: by one week
+   - ``d``: by one day
+   - ``h``: by one hour
+   - ``i``: by one minute
+   - ``s``: by one second
 
-The `=` key sets the widget value to the current date and time.
+The ``=`` key sets the widget value to the current date and time.
 
 TimeDelta Widgets
 ^^^^^^^^^^^^^^^^^
@@ -411,15 +410,15 @@ TimeDelta Widgets
 This widget represent a duration using different symbol of time separated by
 space:
 
-   - `Y`: for years (default: 365 days)
-   - `M`: for months (default: 30 days)
-   - `w`: for weeks (default: 7 days)
-   - `d`: for days (default: 24 hours)
-   - `h`: for hours (default: 60 minutes)
-   - `m`: for minutes (default: 60 seconds)
-   - `s`: for seconds (default: 1 seconds)
+   - ``Y``: for years (default: 365 days)
+   - ``M``: for months (default: 30 days)
+   - ``w``: for weeks (default: 7 days)
+   - ``d``: for days (default: 24 hours)
+   - ``h``: for hours (default: 60 minutes)
+   - ``m``: for minutes (default: 60 seconds)
+   - ``s``: for seconds (default: 1 seconds)
 
-The hours, minutes and seconds are also represented as `H:M:s`.
+The hours, minutes and seconds are also represented as ``H:M:s``.
 
 For example: ``2w 3d 4:30`` which represents: two weeks, three days and four
 and an half hours.
@@ -431,96 +430,101 @@ Search Widget
 ^^^^^^^^^^^^^
 
 The search widget adds the ability to easily search for records on the current
-tab.  This widget is visible only on :term:`tree view`.
+tab.
+This widget is visible only on :term:`tree view`.
 
 The Syntax
 ++++++++++
 
 A query is composed of search clauses.
-A clause is composed of a field name (with `:` at the end), an operator and a value.
+A clause is composed of a field name (with ``:`` at the end), an operator and a
+value.
 The field name is optional and defaults to the record name.
-The operator is also optional and defaults to `like` or `equal` depending on
-the type of the field.  The default operator is `=` except for fields of type
-`char`, `text` and `many2one` which is `ilike`.
+The operator is also optional and defaults to ``like`` or ``equal`` depending
+on the type of the field.
+The default operator is ``=`` except for fields of type ``char``, ``text`` and
+``many2one`` which is ``ilike``.
 
 Field Names
 +++++++++++
 
 All field names shown in the :term:`tree view` can be searched. Field names
-must be followed by a `:`
+must be followed by a ``:``.
 
-    For example: ``Name:``
+   For example: ``Name:``
 
 If the field name contains spaces, it is possible to
 escape it using double quotes.
 
-    For example: ``"Receivable Today":``
+   For example: ``"Receivable Today":``
 
 Operators
 +++++++++
 
 The following operators can be used:
 
-    * `=`: equal to
-    * `<`: less then
-    * `<=`: less then or equal to
-    * `>`: greater then
-    * `>=`: greater then or equal to
-    * `!=`: not equal
-    * `!`: not equal or not like (depending of the type of field)
+   * ``=``: equal to
+   * ``<``: less then
+   * ``<=``: less then or equal to
+   * ``>``: greater then
+   * ``>=``: greater then or equal to
+   * ``!=``: not equal
+   * ``!``: not equal or not like (depending of the type of field)
 
-    For example: ``Name: != Dwight``
+   For example: ``Name: != Dwight``
 
-.. note:: The `ilike` operator is never explicit and `%` is appended to the
-    value to make it behaves like `starts with`
+.. note::
+   The ``ilike`` operator is never explicit and ``%`` is appended to the value
+   to make it behaves like ``starts with``.
 
 Values
 ++++++
 
 The format of the value depends on the type of the field.
-A list of values can be set using `;` as separator.
+A list of values can be set using ``;`` as separator.
 
-    For example: ``Name: Michael; Pam``
+   For example: ``Name: Michael; Pam``
 
-    It will find all records having the `Name` starting with `Michael` or
-    `Pam`.
+   It will find all records having the ``Name`` starting with ``Michael`` or
+   ``Pam``.
 
-A range of number values can be set using `..`.
+A range of number values can be set using ``..``.
 
-    For example: ``Amount: 100..500``
+   For example: ``Amount: 100..500``
 
-    It will find all records with `Amount` between `100` and `500` included.
+   It will find all records with ``Amount`` between ``100`` and ``500``
+   included.
 
 There are two wildcards:
 
-    * `%`: matches any string of zero or more characters.
-    * `_`: matches any single character.
+   * ``%``: matches any string of zero or more characters.
+   * ``_``: matches any single character.
 
 It is possible to escape special characters in values by using double quotes.
 
-    For example: ``Name: "Michael:Scott"``
+   For example: ``Name: "Michael:Scott"``
 
-    Here it will search with the value `Michael:Scott`.
+   Here it will search with the value ``Michael:Scott``.
 
 Clause composition
 ++++++++++++++++++
 
-The clauses can be composed using the two boolean operators `and` and `or`.
-By default, there is an implicit `and` between each clause if no operator is
+The clauses can be composed using the two boolean operators ``and`` and ``or``.
+By default, there is an implicit ``and`` between each clause if no operator is
 specified.
 
-    For example: ``Name: Michael Amount: 100``
+   For example: ``Name: Michael Amount: 100``
 
-    is the same as ``Name: Michael and Amount: 100``
+   is the same as ``Name: Michael and Amount: 100``
 
-The `and` operator has a highest precedence than `or` but you can change it by
-using parenthesis.
+The ``and`` operator has a highest precedence than ``or`` but you can change it
+by using parenthesis.
 
-    For example: ``(Name: Michael or Name: Pam) and Amount: 100``
+   For example: ``(Name: Michael or Name: Pam) and Amount: 100``
 
-    is different than ``Name: Michael or Name: Pam and Amount: 100``
+   is different than ``Name: Michael or Name: Pam and Amount: 100``
 
-    which is evaluated as ``Name: Michael or (Name: Pam and Amount: 100)``
+   which is evaluated as ``Name: Michael or (Name: Pam and Amount: 100)``
 
 RichText Editor
 ^^^^^^^^^^^^^^^
@@ -528,51 +532,52 @@ RichText Editor
 This feature create a rich text editor with various features that allow for
 text formatting. The features are:
 
-  * Bold: On/off style of bold text
-  * Italic: On/off style of italic text
-  * Underline: On/off style of underline text
-  * Choose font family: Choice from a combo box the desired font family
-  * Choose font size: Choice from a combo box the desired size font
-  * Text justify: Choice between four options for alignment of the line (left,
-    right, center, fill)
-  * Background color: Choose the background color of text from a color palette
-  * Foreground color: Choose the foreground color of text from a color palette
+   * Bold: On/off style of bold text
+   * Italic: On/off style of italic text
+   * Underline: On/off style of underline text
+   * Choose font family: Choice from a combo box the desired font family
+   * Choose font size: Choice from a combo box the desired size font
+   * Text justify: Choice between four options for alignment of the line (left,
+     right, center, fill)
+   * Background color: Choose the background color of text from a color palette
+   * Foreground color: Choose the foreground color of text from a color palette
 
 Besides these features, it can change and edit text markup. The text markup
 feature has a similar HTML tags and is used to describe the format specified by
 the user and is a way of storing this format for future opening of a correct
 formatted text. The tags are explain follows:
 
-  * Bold: Tag `b` is used, i.e. <b>text</b>
-  * Italic: Tag `i` is used, i.e. <i>text</i>
-  * Underline: Tag `u` is used, i.e. <u>text</u>
-  * Font family: It is a attribute `font-family` for `span` tag, i.e.
-    <span font-family="Arial">text</span>
-  * Font size: It is a attribute `size` for `span` tag, i.e. <span size="12">
-    text</span>
-  * Text Justify: For justification text is used paragraph tag `p`. The
-    paragraph tag is used to create new lines and the alignment is applied
-    across the board. Example: <p align='center'>some text</p>
-  * Background color: It is a attribute `background` for `span` tag, i.e.
-    <span background='#7f7f7f'>text</span>
-  * Foreground color: It is a attribute `foreground` for `span` tag, i.e.
-    <span foreground='#00f'>text</span>
+   * Bold: Tag ``b`` is used, i.e. <b>text</b>
+   * Italic: Tag ``i`` is used, i.e. <i>text</i>
+   * Underline: Tag ``u`` is used, i.e. <u>text</u>
+   * Font family: It is a attribute ``font-family`` for ``span`` tag, i.e.
+     <span font-family="Arial">text</span>
+   * Font size: It is a attribute ``size`` for ``span`` tag, i.e. <span
+     size="12"> text</span>
+   * Text Justify: For justification text is used paragraph tag ``p``.
+     The paragraph tag is used to create new lines and the alignment is applied
+     across the board.
+     Example: <p align='center'>some text</p>
+   * Background color: It is a attribute ``background`` for ``span`` tag, i.e.
+     <span background='#7f7f7f'>text</span>
+   * Foreground color: It is a attribute ``foreground`` for ``span`` tag, i.e.
+     <span foreground='#00f'>text</span>
 
 CSS
 ***
 
-The client can be styled using the file `theme.css`.
+The client can be styled using the file :file:`theme.css`.
 
 Here are the list of custom selectors:
 
-    * `.readonly`: readonly widget or label
+   * ``.readonly``: read only widget or label
 
-    * `.required`: widget or label of required field
+   * ``.required``: widget or label of required field
 
-    * `.invalid`: widget for which the field value is not valid
+   * ``.invalid``: widget for which the field value is not valid
 
-    * `headerbar.profile-<name>`: the name of the connection profile is set on the
-      main window
+   * ``headerbar.profile-<name>``: the name of the connection profile is set on
+     the main window
 
 For more information about style option see `GTK+ CSS`_
 
@@ -581,20 +586,19 @@ For more information about style option see `GTK+ CSS`_
 Appendix
 ********
 
-
 Configuration File
 ^^^^^^^^^^^^^^^^^^
 
 ::
 
-   ~/.config/tryton/x.y/tryton.conf      # General configuration
-   ~/.config/tryton/x.y/accel.map        # Accelerators configuration
-   ~/.config/tryton/x.y/known_hosts      # Fingerprints
-   ~/.config/tryton/x.y/ca_certs         # Certification Authority (http://docs.python.org/library/ssl.html#ssl-certificates)
-   ~/.config/tryton/x.y/profiles.cfg     # Profile configuration
-   ~/.config/tryton/x.y/plugins          # Local user plugins directory
-   ~/.config.tryton/x.y/theme.css        # Custom CSS theme
+   :file:`~/.config/tryton/x.y/tryton.conf`  # General configuration
+   :file:`~/.config/tryton/x.y/accel.map`    # Accelerators configuration
+   :file:`~/.config/tryton/x.y/known_hosts`  # Fingerprints
+   :file:`~/.config/tryton/x.y/ca_certs`     # Certification Authority (http://docs.python.org/library/ssl.html#ssl-certificates)
+   :file:`~/.config/tryton/x.y/profiles.cfg` # Profile configuration
+   :file:`~/.config/tryton/x.y/plugins`      # Local user plugins directory
+   :file:`~/.config.tryton/x.y/theme.css`    # Custom CSS theme
 
 .. note::
-    `~` means the home directory of the user.
-    But on Windows system it is the `APPDATA` directory.
+   ``~`` means the home directory of the user.
+   But on Windows system it is the ``APPDATA`` directory.
