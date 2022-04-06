@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-currency.svg</field>
         </record>
         <menuitem
-            name="Currency"
+            name="Currencies"
             sequence="50"
             id="menu_currency"
             icon="tryton-currency"/>
