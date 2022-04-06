@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-product.svg</field>
         </record>
         <menuitem
-            name="Product"
+            name="Products"
             sequence="30"
             id="menu_main_product"
             icon="tryton-product"/>
