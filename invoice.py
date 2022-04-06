@@ -1712,7 +1712,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         to_save = []
         for invoice in invoices:
             if invoice.move or invoice.number:
-                if invoice.move.state == 'draft':
+                if invoice.move and invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                     delete_moves.extend(invoice.additional_moves)
                 elif not invoice.cancel_move:
@@ -1722,13 +1722,15 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                             gettext('account_invoice'
                                 '.msg_invoice_customer_cancel_move',
                                 invoice=invoice.rec_name))
-                    invoice.cancel_move = invoice.move.cancel()
-                    additional_cancel_moves = [
-                        m.cancel() for m in invoice.additional_moves]
-                    invoice.additional_moves += tuple(additional_cancel_moves)
-                    to_save.append(invoice)
-                    cancel_moves.append(invoice.cancel_move)
-                    cancel_moves.extend(additional_cancel_moves)
+                    if invoice.move:
+                        invoice.cancel_move = invoice.move.cancel()
+                        additional_cancel_moves = [
+                            m.cancel() for m in invoice.additional_moves]
+                        invoice.additional_moves += tuple(
+                            additional_cancel_moves)
+                        to_save.append(invoice)
+                        cancel_moves.append(invoice.cancel_move)
+                        cancel_moves.extend(additional_cancel_moves)
         if cancel_moves:
             Move.save(cancel_moves)
         cls.save(to_save)
