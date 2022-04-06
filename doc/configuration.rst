@@ -30,7 +30,7 @@ The default value is: ``None``
 The base URL for the images, without the path.
 
 The default value is generated from the `hostname
-<trytond:config-web-hostname>` configuration setting.
+<trytond:topics-configuration>` configuration setting.
 
 ``image_timeout``
 =================
