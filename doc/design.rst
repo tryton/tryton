@@ -10,7 +10,7 @@ Scheduled Rate Updates
 ======================
 
 When the *Currency RO Module* is activated, the `Romanian National Bank
-<https://bnr.ro/>` is added as source.
+<https://bnr.ro/>`_ is added as source.
 If it is selected then only the Romanian Leu can be used as a base currency.
 
 .. seealso::
