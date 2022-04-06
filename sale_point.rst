@@ -1,3 +1,5 @@
+:orphan:
+
 .. _index-sale-point:
 
 Point of Sale
