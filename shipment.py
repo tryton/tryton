@@ -2031,17 +2031,27 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             }, depends=['state'],
         help="When the shipment is expected to be completed.")
     effective_start_date = fields.Date('Effective Start Date',
+        domain=[
+            If(Eval('effective_start_date') & Eval('effective_date'),
+                ('effective_start_date', '<=', Eval('effective_date')),
+                ()),
+            ],
         states={
             'readonly': Eval('state').in_(['cancelled', 'shipped', 'done']),
             },
-        depends=['state'],
+        depends=['effective_date', 'state'],
         help="When the stock was actually sent.")
     planned_start_date = fields.Date('Planned Start Date',
+        domain=[
+            If(Eval('planned_start_date') & Eval('planned_date'),
+                ('planned_start_date', '<=', Eval('planned_date')),
+                ()),
+            ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('planned_date')),
             },
-        depends=['state'],
+        depends=['planned_date', 'state'],
         help="When the stock is expected to be sent.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
