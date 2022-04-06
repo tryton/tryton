@@ -7,12 +7,12 @@ Design
 Analytic Budget
 ===============
 
-An *Analytic Budget* is used to define a financial plan for a set of `Analytic
-Accounts <analytic_account:model-analytic_account.account>` over a defined
-period of time and for a specific `Company <company:model-company.company>`.
+An *Analytic Budget* is used to define a financial plan for a set of
+:doc:`Analytic Accounts <analytic_account:index>` over a defined period of time
+and for a specific `Company <company:model-company.company>`.
 
 A budget is made up from budget lines which define the budgeted amount for an
-`Analytic Account <analytic_account:model-analytic_account.account>`.
+:doc:`Analytic Account <analytic_account:index>`.
 These lines can be grouped under another line to form a tree structure that
 sums up the amounts.
 
