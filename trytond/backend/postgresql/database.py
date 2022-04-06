@@ -12,11 +12,13 @@ from itertools import chain, repeat
 from threading import RLock
 
 try:
+    from psycopg2 import connect
+except ImportError:
     from psycopg2cffi import compat
     compat.register()
 except ImportError:
-    pass
-from psycopg2 import connect, Binary
+    from psycopg2 import connect
+from psycopg2 import Binary
 from psycopg2.sql import SQL, Identifier
 from psycopg2.pool import ThreadedConnectionPool, PoolError
 from psycopg2.extensions import cursor
