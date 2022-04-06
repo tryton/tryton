@@ -9,9 +9,9 @@ The *Purchase Price List Module* extends the following concepts:
 Party
 =====
 
-When the *Purchase Price List Module* is activated, `Price List
-<product_price_list:model-product.price_list>` can also be defined for use with
-purchases from the party.
+When the *Purchase Price List Module* is activated, :doc:`Price List
+<product_price_list:index>` can also be defined for use with purchases from the
+party.
 
 .. seealso::
 
@@ -24,10 +24,9 @@ Purchase
 ========
 
 When the *Purchase Price List Module* is activated, the unit price of a product
-is calculated using the `Price List
-<product_price_list:model-product.price_list>` if one is defined for the
-supplier and if the `Product <product:model-product.product>` does not have a
-`Product Supplier Price <purchase:model-purchase.product_supplier.price>`.
+is calculated using the :doc:`Price List <product_price_list:index>` if one is
+defined for the supplier and if the `Product <product:concept-product>` does
+not have a `Product Supplier Price <purchase:model-purchase.product_supplier>`.
 
 
 .. seealso::
