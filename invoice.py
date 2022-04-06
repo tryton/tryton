@@ -1571,7 +1571,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         to_save = []
         for invoice in invoices:
             if invoice.move or invoice.number:
-                if invoice.move.state == 'draft':
+                if invoice.move and invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                 elif not invoice.cancel_move:
                     if (invoice.type == 'out'
@@ -1580,9 +1580,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                             gettext('account_invoice'
                                 '.msg_invoice_customer_cancel_move',
                                 invoice=invoice.rec_name))
-                    invoice.cancel_move = invoice.move.cancel()
-                    to_save.append(invoice)
-                    cancel_moves.append(invoice.cancel_move)
+                    if invoice.move:
+                        invoice.cancel_move = invoice.move.cancel()
+                        to_save.append(invoice)
+                        cancel_moves.append(invoice.cancel_move)
         if cancel_moves:
             Move.save(cancel_moves)
         cls.save(to_save)
