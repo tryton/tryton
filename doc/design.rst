@@ -34,7 +34,7 @@ A sale progress though these states until it is posted.
 Each sale is linked to a `Point <model-sale.point>` where it takes place.
 
 A sale is identified by a unique number that is generated automatically from
-the configured `Sequence <trytond:model-ir.sequence>` for the sale Point.
+the configured *Sequence* for the sale Point.
 It also has other general information like the date and the `Employee
 <company:model-company.employee>` who creates the order.
 
@@ -80,7 +80,7 @@ Cash Session
 ============
 
 The *Cash Session* groups the cash payments and the transfers of a `Point of
-Sale <sale.point>` over a period.
+Sale <model-sale.point>` over a period.
 The sessions of a point of sale are a chained list that tracks the cash amount
 between each closure.
 
