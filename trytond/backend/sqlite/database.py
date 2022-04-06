@@ -108,7 +108,7 @@ def date_trunc(_type, date):
             ('hour', 0),
             ('day', 1),
             ('month', 1)]:
-        if _type.startswith(attribute):
+        if _type.lower().startswith(attribute):
             break
         value = value.replace(**{attribute: replace})
     return str(value)

@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
+import datetime as dt
 import math
 import unittest
 
 from sql import Literal, Select, functions
-from sql.functions import CurrentTimestamp, ToChar
+from sql.functions import CurrentTimestamp, DateTrunc, ToChar
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -64,7 +64,7 @@ class BackendTestCase(unittest.TestCase):
     @with_transaction()
     def test_to_char_datetime(self):
         "Test TO_CHAR with datetime"
-        now = datetime.datetime.now()
+        now = dt.datetime.now()
         query = Select([ToChar(now, 'YYYYMMDD HH24:MI:SS.US')])
         cursor = Transaction().connection.cursor()
 
@@ -76,7 +76,7 @@ class BackendTestCase(unittest.TestCase):
     @with_transaction()
     def test_to_char_date(self):
         "Test TO_CHAR with date"
-        today = datetime.date.today()
+        today = dt.date.today()
         query = Select([ToChar(today, 'YYYY-MM-DD')])
         cursor = Transaction().connection.cursor()
 
@@ -152,6 +152,25 @@ class BackendTestCase(unittest.TestCase):
         "Test SETSEED function"
         cursor = Transaction().connection.cursor()
         cursor.execute(*Select([functions.SetSeed(1)]))
+
+    @with_transaction()
+    def test_function_date_trunc(self):
+        "Test DateTrunc function"
+        cursor = Transaction().connection.cursor()
+        date = dt.datetime(2001, 2, 16, 20, 38, 40, 100)
+        for type_, result in [
+                ('microsecond', dt.datetime(2001, 2, 16, 20, 38, 40, 100)),
+                ('second', dt.datetime(2001, 2, 16, 20, 38, 40)),
+                ('minute', dt.datetime(2001, 2, 16, 20, 38)),
+                ('hour', dt.datetime(2001, 2, 16, 20)),
+                ('day', dt.datetime(2001, 2, 16)),
+                ('month', dt.datetime(2001, 2, 1)),
+                ]:
+            for type_ in [type_.lower(), type_.upper()]:
+                with self.subTest(type_=type_):
+                    cursor.execute(*Select([DateTrunc(type_, date)]))
+                    value, = cursor.fetchone()
+                    self.assertEqual(str(value), str(result))
 
 
 def suite():
