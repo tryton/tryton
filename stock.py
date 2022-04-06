@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelView
+from trytond.model import ModelView, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import (
@@ -91,14 +91,24 @@ class Supply(Wizard):
     def generate_internal(self, clean):
         pool = Pool()
         ShipmentInternal = pool.get('stock.shipment.internal')
-        return ShipmentInternal.generate_internal_shipment(clean=clean)
+        # Use getattr because start is empty when run by cron
+        if getattr(self.start, 'warehouses', None):
+            warehouses = self.start.warehouses
+        else:
+            warehouses = None
+        return ShipmentInternal.generate_internal_shipment(
+            clean=clean, warehouses=warehouses)
 
     def transition_internal(self):
         return self.next_action('internal')
 
     @property
     def _purchase_parameters(self):
-        return {}
+        parameters = {}
+        # Use getattr because start is empty when run by cron
+        if getattr(self.start, 'warehouses', None):
+            parameters['warehouses'] = self.start.warehouses
+        return parameters
 
     def generate_purchase(self, clean):
         pool = Pool()
@@ -113,3 +123,18 @@ class Supply(Wizard):
 class SupplyStart(ModelView):
     "Supply Stock"
     __name__ = 'stock.supply.start'
+
+    warehouses = fields.Many2Many(
+        'stock.location', None, None, "Warehouses",
+        domain=[
+            ('type', '=', 'warehouse'),
+            ],
+        help="If empty all warehouses are used.")
+
+    @classmethod
+    def default_warehouses(cls):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        warehouse = Location.get_default_warehouse()
+        if warehouse:
+            return [warehouse]
