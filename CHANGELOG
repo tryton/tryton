@@ -1,3 +1,4 @@
+* Store sepa message id and sepa payment info id
 * Add support for Python 3.10
 * Remove support for Python 3.6
 * Rename generate_message button to sepa_generate_message

@@ -3,6 +3,7 @@
 import datetime
 import os
 import unicodedata
+import uuid
 from io import BytesIO
 from itertools import groupby
 
@@ -23,7 +24,8 @@ from trytond.modules.account_payment.exceptions import ProcessError
 from trytond.modules.company import CompanyReport
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, reduce_ids, sortable_values
+from trytond.tools import (
+    grouped_slice, lstrip_wildcard, reduce_ids, sortable_values)
 from trytond.transaction import Transaction
 
 from .sepa_handler import CAMT054
@@ -189,6 +191,10 @@ class Group(metaclass=PoolMeta):
             'invisible': ~Eval('sepa_messages'),
             },
         depends=['company'])
+    sepa_id = fields.Char("SEPA ID", readonly=True, size=35,
+        states={
+            'invisible': ~Eval('sepa_id'),
+            })
 
     @classmethod
     def __setup__(cls):
@@ -238,6 +244,15 @@ class Group(metaclass=PoolMeta):
                         gettext('account_payment_sepa'
                             '.msg_payment_process_no_iban',
                             payment=payment.rec_name))
+        to_write = []
+        for key, payments in self.sepa_payments:
+            to_write.append(payments)
+            to_write.append({
+                    'sepa_info_id': self.sepa_group_payment_id(key),
+                    })
+        if to_write:
+            Payment.write(*to_write)
+        self.sepa_id = uuid.uuid4().hex
         self.sepa_generate_message(_save=False)
 
     @dualmethod
@@ -267,17 +282,17 @@ class Group(metaclass=PoolMeta):
         return self.company.party
 
     def sepa_group_payment_key(self, payment):
-        key = (('date', payment.date),)
+        key = (
+            ('payment_info', payment.sepa_info_id),
+            ('date', payment.date),
+            )
         if self.kind == 'receivable':
             key += (('sequence_type', payment.sepa_mandate_sequence_type),)
             key += (('scheme', payment.sepa_mandate.scheme),)
         return key
 
     def sepa_group_payment_id(self, key):
-        payment_id = str(key['date'].toordinal())
-        if self.kind == 'receivable':
-            payment_id += '-' + key['sequence_type']
-        return payment_id
+        return key['payment_info'] or uuid.uuid4().hex
 
     @property
     def sepa_payments(self):
@@ -292,7 +307,23 @@ class Group(metaclass=PoolMeta):
 
     @property
     def sepa_message_id(self):
-        return self.number
+        return self.sepa_id or self.number
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
+        domain = super().search_rec_name(name, clause)
+        return [
+            bool_op,
+            domain,
+            ('sepa_id', clause[1], code_value) + tuple(clause[3:]),
+            ]
 
 
 class Payment(metaclass=PoolMeta):
@@ -335,6 +366,10 @@ class Payment(metaclass=PoolMeta):
         'get_sepa_end_to_end_id', searcher='search_end_to_end_id')
     sepa_instruction_id = fields.Function(fields.Char('SEPA Instruction ID'),
         'get_sepa_instruction_id', searcher='search_sepa_instruction_id')
+    sepa_info_id = fields.Char("SEPA Info ID", readonly=True, size=35,
+        states={
+            'invisible': ~Eval('sepa_info_id'),
+            })
 
     @classmethod
     def copy(cls, payments, default=None):
@@ -416,6 +451,25 @@ class Payment(metaclass=PoolMeta):
                         | (Eval('state') != 'failed')),
                     }),
             ]
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        domain = super().search_rec_name(name, clause)
+        if domain:
+            if clause[1].startswith('!') or clause[1].startswith('not '):
+                bool_op = 'AND'
+            else:
+                bool_op = 'OR'
+            domain = [
+                bool_op,
+                domain,
+                ]
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
+        domain.append(
+            ('sepa_info_id', clause[1], code_value) + tuple(clause[3:]))
+        return domain
 
 
 class Mandate(Workflow, ModelSQL, ModelView):

@@ -355,6 +355,8 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
 
             for payment in payments:
                 self.assertEqual(payment.sepa_mandate_sequence_type, 'RCUR')
+                self.assertTrue(payment.sepa_info_id)
+            self.assertIsNotNone(payment.group.sepa_id)
 
     @with_transaction()
     def handle_camt054(self, flavor):

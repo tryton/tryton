@@ -5,6 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="//notebook/page[@id='info']" position="inside">
         <label name="sepa_mandate"/>
         <field name="sepa_mandate"/>
+        <label name="sepa_info_id"/>
+        <field name="sepa_info_id"/>
         <separator id="sepa_return_reason" string="Return Reason" colspan="4"/>
         <label name="sepa_return_reason_code" string="Code"/>
         <field name="sepa_return_reason_code"/>

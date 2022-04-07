@@ -14,11 +14,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="account_payment.payment_group_view_form"/>
             <field name="name">payment_group_form</field>
         </record>
+        <record model="ir.ui.view" id="group_list">
+            <field name="model">account.payment.group</field>
+            <field name="inherit" ref="account_payment.payment_group_view_list"/>
+            <field name="name">payment_group_list</field>
+        </record>
 
         <record model="ir.ui.view" id="payment_view_form">
             <field name="model">account.payment</field>
             <field name="inherit" ref="account_payment.payment_view_form"/>
             <field name="name">payment_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_list"/>
+            <field name="name">payment_list</field>
         </record>
 
         <record model="ir.ui.view" id="mandate_view_form">

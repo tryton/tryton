@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <!-- FwdgAgt -->
         </GrpHdr>
         <PmtInf py:for="key, payments in group.sepa_payments">
-            <PmtInfId>${group.sepa_group_payment_id(key)[:35]}</PmtInfId>
+            <PmtInfId>${key['payment_info'][:35]}</PmtInfId>
             <PmtMtd>DD</PmtMtd>
             <BtchBookg>${'true' if group.journal.sepa_batch_booking else 'false'}</BtchBookg>
             <NbOfTxs>${len(payments)}</NbOfTxs>
