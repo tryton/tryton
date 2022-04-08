@@ -96,24 +96,23 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
-            }, depends=['type'])
+            })
     divisor = fields.Numeric('Divisor', digits=(10, 14),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
-            }, depends=['type'])
+            })
     amount = Monetary(
         "Amount", currency='currency', digits='currency',
         states={
             'invisible': Eval('type') != 'fixed',
             'required': Eval('type') == 'fixed',
-            },
-        depends=['type'])
+            })
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('type') != 'fixed',
             'required': Eval('type') == 'fixed',
-            }, depends=['type'])
+            })
     relativedeltas = fields.One2Many(
         'account.invoice.payment_term.line.delta', 'line', 'Deltas')
 

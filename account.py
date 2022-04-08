@@ -46,8 +46,7 @@ class FiscalYear(metaclass=PoolMeta):
         "Invoice Sequences",
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -167,46 +166,40 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         'account.fiscalyear', "Fiscal Year", required=True, ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     period = fields.Many2One('account.period', 'Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('type', '=', 'standard'),
-            ],
-        depends=['fiscalyear'])
+            ])
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Invoice Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Credit Note Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Invoice Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Credit Note Sequence', required=True,
         domain=[
             ('sequence_type', '=',
                 Id('account_invoice', 'sequence_type_account_invoice')),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -240,8 +233,7 @@ class MoveLine(metaclass=PoolMeta):
                 ],
             states={
                 'invisible': Bool(Eval('reconciliation')),
-                },
-            depends=['account', 'party', 'reconciliation']),
+                }),
         'get_invoice_payment',
         setter='set_invoice_payment',
         searcher='search_invoice_payment')
