@@ -41,8 +41,7 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     start_month = fields.Selection(MONTHS, 'Start Month', sort=False,
         states={
             'required': Eval('end_month') | Eval('start_day'),
-            },
-        depends=['end_month', 'start_day'])
+            })
     start_day = fields.Integer('Start Day',
         domain=['OR',
             ('start_day', '<=', If(Eval('start_month').in_(
@@ -52,13 +51,11 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             ],
         states={
             'required': Bool(Eval('start_month')),
-            },
-        depends=['start_month'])
+            })
     end_month = fields.Selection(MONTHS, 'End Month', sort=False,
         states={
             'required': Eval('start_month') | Eval('end_day'),
-            },
-        depends=['start_month', 'end_day'])
+            })
     end_day = fields.Integer('End Day',
         domain=['OR',
             ('end_day', '<=', If(Eval('end_month').in_(
@@ -68,8 +65,7 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             ],
         states={
             'required': Bool(Eval('end_month')),
-            },
-        depends=['end_month'])
+            })
     duty_rates = fields.One2Many('customs.duty.rate', 'tariff_code',
         'Duty Rates')
 
@@ -116,15 +112,13 @@ class DutyRate(ModelSQL, ModelView, MatchMixin):
             ('start_date', '<=', If(Bool(Eval('end_date')),
                     Eval('end_date', datetime.date.max), datetime.date.max)),
             ('start_date', '=', None),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date('End Date',
         domain=['OR',
             ('end_date', '>=', If(Bool(Eval('start_date')),
                     Eval('start_date', datetime.date.min), datetime.date.min)),
             ('end_date', '=', None),
-            ],
-        depends=['start_date'])
+            ])
     computation_type = fields.Selection([
             ('amount', 'Amount'),
             ('quantity', 'Quantity'),
@@ -133,20 +127,17 @@ class DutyRate(ModelSQL, ModelView, MatchMixin):
         states={
             'required': Eval('computation_type').in_(['amount', 'quantity']),
             'invisible': ~Eval('computation_type').in_(['amount', 'quantity']),
-            },
-        depends=['computation_type'])
+            })
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': Eval('computation_type').in_(['amount', 'quantity']),
             'invisible': ~Eval('computation_type').in_(['amount', 'quantity']),
-            },
-        depends=['computation_type'])
+            })
     uom = fields.Many2One('product.uom', 'Uom',
         states={
             'required': Eval('computation_type') == 'quantity',
             'invisible': Eval('computation_type') != 'quantity',
-            },
-        depends=['computation_type'])
+            })
 
     @classmethod
     def __setup__(cls):

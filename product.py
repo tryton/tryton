@@ -13,21 +13,18 @@ class Category(metaclass=PoolMeta):
     customs = fields.Boolean('Customs', select=True,
         states={
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
-            },
-        depends=['parent'])
+            })
     tariff_codes_parent = fields.Boolean("Use Parent's Tariff Codes",
         states={
             'invisible': ~Eval('customs', False),
             },
-        depends=['customs'],
         help='Use the tariff codes defined on the parent category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
         'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': (Eval('tariff_codes_parent', False)
                 | ~Eval('customs', False)),
-            },
-        depends=['tariff_codes_parent', 'customs'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -35,11 +32,9 @@ class Category(metaclass=PoolMeta):
         cls.parent.domain = [
             ('customs', '=', Eval('customs', False)),
             cls.parent.domain or []]
-        cls.parent.depends.append('customs')
         cls.parent.states['required'] = Or(
             cls.parent.states.get('required', False),
             Eval('tariff_codes_parent', False))
-        cls.parent.depends.append('tariff_codes_parent')
 
     @classmethod
     def default_customs(cls):
@@ -100,8 +95,7 @@ class Template(metaclass=PoolMeta):
             ],
         states={
             'required': Eval('tariff_codes_category', False),
-            },
-        depends=['tariff_codes_category'])
+            })
     tariff_codes_category = fields.Boolean("Use Category's Tariff Codes",
         help='Use the tariff codes defined on the category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
@@ -109,14 +103,12 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': ((Eval('type') == 'service')
                 | Eval('tariff_codes_category', False)),
-            },
-        depends=['type', 'tariff_codes_category'])
+            })
     country_of_origin = fields.Many2One(
         'country.country', "Country",
         states={
             'invisible': Eval('type') == 'service',
-            },
-        depends=['type'])
+            })
 
     @classmethod
     def __register__(cls, module_name):
