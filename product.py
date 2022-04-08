@@ -22,8 +22,7 @@ class ProductCustomer(
                 ('products', '=', Eval('product')),
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
-            ],
-        depends=['product', 'active'])
+            ])
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
@@ -31,8 +30,7 @@ class ProductCustomer(
                 ('template', '=', Eval('template')),
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
-            ],
-        depends=['template', 'active'])
+            ])
     party = fields.Many2One('party.party', "Customer", required=True,
         ondelete='CASCADE')
     name = fields.Char("Name", translate=True)
@@ -88,8 +86,7 @@ class Template(metaclass=PoolMeta):
             },
         domain=[
             If(~Eval('active'), ('active', '=', False), ()),
-            ],
-        depends=['salable', 'active'])
+            ])
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
@@ -132,8 +129,7 @@ class Product(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('salable', False),
-            },
-        depends=['template', 'salable', 'active'])
+            })
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
