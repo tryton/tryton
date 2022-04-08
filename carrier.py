@@ -14,7 +14,6 @@ class Carrier(metaclass=PoolMeta):
         states={
             'invisible': Eval('carrier_cost_method') != 'percentage',
             },
-        depends=['carrier_cost_method'],
         help="The percentage applied on the amount to compute the cost.")
 
     @classmethod
