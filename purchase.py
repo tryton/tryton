@@ -14,8 +14,6 @@ class Purchase(metaclass=PoolMeta):
             | Eval('lines', [0]))
         cls.lines.states['readonly'] = (cls.lines.states['readonly']
             | ~Eval('party'))
-        if 'party' not in cls.lines.depends:
-            cls.lines.depends.append('party')
 
 
 class Line(metaclass=PoolMeta):

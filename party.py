@@ -30,10 +30,9 @@ class PartyPurchasePriceList(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     purchase_price_list = fields.Many2One(
         'product.price_list', "Purchase Price List",
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
