@@ -241,7 +241,6 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('country', '=', Eval('country', -1)),
             ],
-        depends=['country'],
         help="Add subdivision below the parent.")
 
     @classmethod
@@ -303,7 +302,6 @@ class PostalCode(ModelSQL, ModelView):
     subdivision = fields.Many2One('country.subdivision', 'Subdivision',
         select=True, ondelete='CASCADE',
         domain=[('country', '=', Eval('country', -1))],
-        depends=['country'],
         help="The subdivision where the postal code is.")
     postal_code = fields.Char('Postal Code')
     city = fields.Char(
