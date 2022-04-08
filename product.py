@@ -59,13 +59,11 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         states={
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             },
-        depends=['parent'],
         help="Check to indicate the category is used for accounting.")
     account_parent = fields.Boolean('Use Parent\'s accounts',
         states={
             'invisible': ~Eval('accounting', False),
             },
-        depends=['accounting'],
         help="Use the accounts defined on the parent category.")
     accounts = fields.One2Many(
         'product.category.account', 'category', "Accounts")
@@ -79,8 +77,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
     account_revenue = fields.MultiValue(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('closed', '!=', True),
@@ -91,13 +88,11 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
         states={
             'invisible': ~Eval('accounting', False),
             },
-        depends=['accounting'],
         help="Use the taxes defined on the parent category.")
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
         'category', 'tax', 'Customer Taxes',
@@ -111,7 +106,6 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
                 | Eval('taxes_parent')
                 | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent', 'accounting'],
         help="The taxes to apply when selling products of this category.")
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
         'category', 'tax', 'Supplier Taxes',
@@ -125,7 +119,6 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
                 | Eval('taxes_parent')
                 | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent', 'accounting'],
         help="The taxes to apply when purchasing products of this category.")
     supplier_taxes_deductible_rate = fields.Numeric(
         "Supplier Taxes Deductible Rate", digits=(14, 10),
@@ -136,8 +129,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         states={
             'invisible': (
                 Eval('taxes_parent') | ~Eval('accounting', False)),
-            },
-        depends=['taxes_parent', 'accounting'])
+            })
     customer_taxes_used = fields.Function(fields.Many2Many(
             'account.tax', None, None, "Customer Taxes Used"), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.Many2Many(
@@ -149,11 +141,9 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         cls.parent.domain = [
             ('accounting', '=', Eval('accounting', False)),
             cls.parent.domain or []]
-        cls.parent.depends.append('accounting')
         cls.parent.states['required'] = Or(
             cls.parent.states.get('required', False),
             Eval('account_parent', False) | Eval('taxes_parent', False))
-        cls.parent.depends.extend(['account_parent', 'taxes_parent'])
 
     @classmethod
     def multivalue_model(cls, field):
@@ -272,21 +262,19 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     account_expense = fields.Many2One(
         'account.account', "Account Expense",
         domain=[
             ('type.expense', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     account_revenue = fields.Many2One(
         'account.account', "Account Revenue",
         domain=[
             ('type.revenue', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):

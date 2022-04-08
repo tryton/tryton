@@ -37,12 +37,10 @@ class ConfigurationDefaultAccount(metaclass=PoolMeta):
         domain=[
             ('type.expense', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     default_category_account_revenue = fields.Many2One(
         'account.account', "Default Account Revenue",
         domain=[
             ('type.revenue', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])

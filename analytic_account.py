@@ -13,13 +13,13 @@ class Rule(metaclass=PoolMeta):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     product_category = fields.Many2One(
         'product.category', "Product Category", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
 
     def match(self, pattern):
         if 'product_categories' in pattern:
