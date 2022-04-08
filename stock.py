@@ -17,7 +17,6 @@ class Location(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('type').in_(['supplier', 'storage']),
             },
-        depends=['type'],
         help="The party invoiced when consignment stock is used.")
 
     @classmethod
