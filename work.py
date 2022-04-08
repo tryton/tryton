@@ -136,12 +136,12 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['type', 'company'])
+        depends={'company'})
     party_address = fields.Many2One('party.address', 'Contact Address',
         domain=[('party', '=', Eval('party'))],
         states={
             'invisible': Eval('type') != 'project',
-            }, depends=['party', 'type'])
+            })
     timesheet_works = fields.One2Many(
         'timesheet.work', 'origin', 'Timesheet Works', readonly=True, size=1)
     timesheet_available = fields.Function(
@@ -150,14 +150,12 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     timesheet_start_date = fields.Function(fields.Date('Timesheet Start',
             states={
                 'invisible': ~Eval('timesheet_available'),
-                },
-            depends=['timesheet_available']),
+                }),
         'get_timesheet_date', setter='set_timesheet_date')
     timesheet_end_date = fields.Function(fields.Date('Timesheet End',
             states={
                 'invisible': ~Eval('timesheet_available'),
-                },
-            depends=['timesheet_available']),
+                }),
         'get_timesheet_date', setter='set_timesheet_date')
     timesheet_duration = fields.Function(fields.TimeDelta('Duration',
             'company_work_time',
@@ -191,18 +189,15 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         'project.work', 'Parent', path='path', ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     path = fields.Char("Path", select=True)
     children = fields.One2Many('project.work', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     status = fields.Many2One(
         'project.work.status', "Status", required=True, select=True,
-        domain=[If(Bool(Eval('type')), ('types', 'in', Eval('type')), ())],
-        depends=['type'])
+        domain=[If(Bool(Eval('type')), ('types', 'in', Eval('type')), ())])
 
     @staticmethod
     def default_type():
