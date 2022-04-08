@@ -11,8 +11,7 @@ class Template(metaclass=PoolMeta):
         "Default Locations",
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
-            },
-        depends=['type'])
+            })
 
     @classmethod
     def copy(cls, templates, default=None):
@@ -48,8 +47,7 @@ class Product(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
-            },
-        depends=['type', 'template'])
+            })
 
     @classmethod
     def copy(cls, products, default=None):

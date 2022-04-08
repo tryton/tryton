@@ -19,16 +19,14 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
-            ],
-        depends=['product'])
+            ])
     product = fields.Many2One(
         'product.product', "Variant", ondelete='CASCADE', select=True,
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
-            ],
-        depends=['template'])
+            ])
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[('type', '=', 'warehouse')], ondelete='CASCADE')
     location = fields.Many2One('stock.location', 'Storage Location',
@@ -37,7 +35,7 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ('type', '=', 'storage'),
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
-            ], depends=['warehouse'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
