@@ -131,8 +131,7 @@ class TaxLine(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('on_cash_basis', False),
-            },
-        depends=['company', 'on_cash_basis'])
+            })
 
     @classmethod
     def default_on_cash_basis(cls):
@@ -222,7 +221,6 @@ class Invoice(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') != 'in',
             },
-        depends=['type'],
         help="The tax group reported on cash basis for this invoice.")
 
     @fields.depends('party', 'type')
