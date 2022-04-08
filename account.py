@@ -381,7 +381,6 @@ class FrFECStart(ModelView):
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('type', '=', 'adjustment'),
             ],
-        depends=['fiscalyear'],
         help="The period to exclude which contains "
         "the moves to balance non-deferral account")
 
