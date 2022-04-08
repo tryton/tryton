@@ -86,8 +86,7 @@ class Product(ImageURLMixin, metaclass=PoolMeta):
         'product.image', 'product', "Images",
         domain=[
             ('template', '=', Eval('template', -1)),
-            ],
-        depends=['template'])
+            ])
 
     @property
     def images_used(self):
@@ -114,16 +113,14 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
-            ],
-        depends=['product'])
+            ])
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
-            ],
-        depends=['template'])
+            ])
     cache = fields.One2Many(
         'product.image.cache', 'product_image', "Cache", readonly=True)
 
