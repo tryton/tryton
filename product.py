@@ -12,7 +12,6 @@ class Template(metaclass=PoolMeta):
         super().__setup__()
         cls.supply_on_sale.states['invisible'] &= (
             ~Eval('producible') | ~Eval('salable'))
-        cls.supply_on_sale.depends.extend(['producible', 'salable'])
 
 
 class Product(metaclass=PoolMeta):
