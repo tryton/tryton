@@ -32,32 +32,28 @@ class Shop(metaclass=PoolMeta):
         'required': Eval('type') == 'shopify',
         'invisible': Eval('type') != 'shopify',
         }
-    _depends = ['type']
 
-    shopify_url = fields.Char("Shop URL", states=_states, depends=_depends)
+    shopify_url = fields.Char("Shop URL", states=_states)
     shopify_version = fields.Selection(
-        'get_shopify_versions', "Version", states=_states, depends=_depends)
-    shopify_password = fields.Char(
-        "Password", states=_states, depends=_depends)
+        'get_shopify_versions', "Version", states=_states)
+    shopify_password = fields.Char("Password", states=_states)
     shopify_webhook_shared_secret = fields.Char(
         "Webhook Shared Secret",
         states={
             'invisible': _states['invisible'],
-            },
-        depends=_depends)
+            })
     shopify_webhook_endpoint_order = fields.Function(
         fields.Char(
             "Webhook Order Endpoint",
             help="The URL to be called by Shopify for Order events."),
         'on_change_with_shopify_webhook_endpoint_order')
     shopify_warehouses = fields.One2Many(
-        'web.shop-stock.location', 'shop', "Warehouses",
-        states=_states, depends=_depends)
+        'web.shop-stock.location', 'shop', "Warehouses", states=_states)
     shopify_payment_journals = fields.One2Many(
         'web.shop.shopify_payment_journal', 'shop', "Payment Journals",
-        states=_states, depends=_depends)
+        states=_states)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -69,7 +65,6 @@ class Shop(metaclass=PoolMeta):
                 field.states['invisible'] |= invisible
             else:
                 field.states['invisible'] = invisible
-            field.depends.append('type')
 
     @classmethod
     def get_shopify_versions(cls):

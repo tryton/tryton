@@ -75,7 +75,7 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
             'readonly': Bool(Eval('shopify_identifiers', [-1])),
             'invisible': ~Eval('salable', False),
             },
-        depends=['default_uom_category', 'shopify_identifiers', 'salable'])
+        depends={'default_uom_category'})
 
     @classmethod
     def __setup__(cls):
@@ -89,7 +89,6 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
             ('category', 'in', [Eval(c, -1) for c in categories]),
             ('digits', '=', 0),
             ]
-        cls.shopify_uom.depends.extend(categories)
 
     @classmethod
     def _shopify_uom_categories(cls):
@@ -471,8 +470,7 @@ class AttributeSet(IdentifiersUpdateMixin, metaclass=PoolMeta):
             If(Eval('shopify_option3'),
                 ('id', '!=', Eval('shopify_option3')),
                 ()),
-            ],
-        depends=['attributes', 'shopify_option2', 'shopify_option3'])
+            ])
     shopify_option2 = fields.Many2One(
         'product.attribute', "Option 2",
         domain=[
@@ -486,8 +484,7 @@ class AttributeSet(IdentifiersUpdateMixin, metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('shopify_option1'),
-            },
-        depends=['attributes', 'shopify_option1', 'shopify_option3'])
+            })
     shopify_option3 = fields.Many2One(
         'product.attribute', "Option 3",
         domain=[
@@ -501,8 +498,7 @@ class AttributeSet(IdentifiersUpdateMixin, metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('shopify_option2'),
-            },
-        depends=['attributes', 'shopify_option1', 'shopify_option2'])
+            })
 
     @classmethod
     def __setup__(cls):
