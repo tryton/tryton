@@ -28,8 +28,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', select=True, states={
             'readonly': Eval('id', 0) > 0,
-            },
-        depends=['id'])
+            })
     party_name = fields.Char(
         "Party Name",
         help="If filled, replace the name of the party for address formatting")
@@ -54,8 +53,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                 ('type', 'in', Eval('subdivision_types', [])),
                 ()
                 ),
-            ],
-        depends=['country', 'subdivision_types'])
+            ])
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
     identifiers = fields.One2Many(
@@ -63,8 +61,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         domain=[
             ('party', '=', Eval('party')),
             ('type', 'in', ['fr_siret']),
-            ],
-        depends=['party'])
+            ])
 
     @classmethod
     def __setup__(cls):

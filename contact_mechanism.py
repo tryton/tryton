@@ -48,9 +48,9 @@ class ContactMechanism(
     type = fields.Selection(_TYPES, "Type", required=True, sort=False)
     value = fields.Char("Value", select=True,
         # Add all function fields to ensure to always fill them via on_change
-        depends=[
+        depends={
             'email', 'website', 'skype', 'sip', 'other_value',
-            'value_compact'])
+            'value_compact'})
     value_compact = fields.Char('Value Compact', readonly=True)
     name = fields.Char("Name")
     comment = fields.Text("Comment")
@@ -66,27 +66,27 @@ class ContactMechanism(
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
-        }, depends=['value', 'type']),
+        }, depends={'value'}),
         'get_value', setter='set_value')
     website = fields.Function(fields.Char('Website', states={
         'invisible': Eval('type') != 'website',
         'required': Eval('type') == 'website',
-        }, depends=['value', 'type']),
+        }, depends={'value'}),
         'get_value', setter='set_value')
     skype = fields.Function(fields.Char('Skype', states={
         'invisible': Eval('type') != 'skype',
         'required': Eval('type') == 'skype',
-        }, depends=['value', 'type']),
+        }, depends={'value'}),
         'get_value', setter='set_value')
     sip = fields.Function(fields.Char('SIP', states={
         'invisible': Eval('type') != 'sip',
         'required': Eval('type') == 'sip',
-        }, depends=['value', 'type']),
+        }, depends={'value'}),
         'get_value', setter='set_value')
     other_value = fields.Function(fields.Char('Value', states={
         'invisible': Eval('type').in_(['email', 'website', 'skype', 'sip']),
         'required': ~Eval('type').in_(['email', 'website']),
-        }, depends=['value', 'type']),
+        }, depends={'value'}),
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
                 'invisible': ~Eval('url'),

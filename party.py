@@ -39,7 +39,6 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         states={
             'readonly': Eval('code_readonly', True),
             },
-        depends=['code_readonly'],
         help="The unique identifier of the party.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
@@ -98,7 +97,6 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         cls.active.states.update({
                 'readonly': Bool(Eval('replaced_by')),
                 })
-        cls.active.depends.append('replaced_by')
 
     @classmethod
     def __register__(cls, module_name):
@@ -627,7 +625,6 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('party', '=', Eval('party', -1)),
             ],
-        depends=['party', 'type_address'],
         help="The address identified by this record.")
     type = fields.Selection('get_types', 'Type')
     type_string = type.translated('type')
@@ -893,7 +890,6 @@ class ReplaceAsk(ModelView):
         domain=[
             ('id', '!=', Eval('source', -1)),
             ],
-        depends=['source'],
         help="The party that replaces.")
 
     @classmethod
