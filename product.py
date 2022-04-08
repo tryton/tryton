@@ -11,8 +11,7 @@ class ProductBom(metaclass=PoolMeta):
         ondelete='CASCADE', select=True,
         domain=[
             ('boms', '=', Eval('bom', 0)),
-            ],
-        depends=['bom'])
+            ])
 
 
 class ProductionLeadTime(metaclass=PoolMeta):
@@ -21,5 +20,4 @@ class ProductionLeadTime(metaclass=PoolMeta):
         ondelete='CASCADE',
         domain=[
             ('boms', '=', Eval('bom', 0)),
-            ],
-        depends=['bom'])
+            ])

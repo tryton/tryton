@@ -14,8 +14,7 @@ class Production(metaclass=PoolMeta):
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'invisible': ~Eval('bom'),
-            },
-        depends=['bom', 'state'])
+            })
 
     @fields.depends('bom', 'routing')
     def on_change_bom(self):
