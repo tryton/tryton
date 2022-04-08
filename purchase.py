@@ -53,8 +53,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('sequence_type', '=',
                 Id('purchase_requisition',
                     'sequence_type_purchase_requisition')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -93,40 +92,34 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
-            },
-        depends=['lines'] + _depends)
+            })
     number = fields.Char('Number', readonly=True, select=True)
-    description = fields.Char(
-        'Description', states=_states, depends=_depends)
+    description = fields.Char('Description', states=_states)
     employee = fields.Many2One(
-        'company.employee', 'Employee', required=True,
-        states=_states, depends=_depends)
+        'company.employee', 'Employee', required=True, states=_states)
     supply_date = fields.Date(
         'Supply Date',
         states={
             'required': ~Eval('state').in_(['draft', 'cancelled']),
             'readonly': _states['readonly'],
-            },
-        depends=_depends)
+            })
     warehouse = fields.Many2One(
         'stock.location', 'Warehouse',
         domain=[
             ('type', '=', 'warehouse'),
             ],
-        states=_states, depends=_depends)
+        states=_states)
     currency = fields.Many2One(
         'currency.currency', 'Currency',
         states={
             'readonly': (_states['readonly']
                 | (Eval('lines', [0]) & Eval('currency'))),
-            },
-        depends=_depends)
+            })
     total_amount = fields.Function(
         Monetary("Total", currency='currency', digits='currency'),
         'get_amount')
@@ -134,7 +127,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         "Total Cache", currency='currency', digits='currency')
     lines = fields.One2Many(
         'purchase.requisition.line', 'requisition', 'Lines',
-        states=_states, depends=_depends)
+        states=_states)
 
     approved_by = employee_field(
         "Approved By", states=['approved', 'processing', 'done', 'cancelled'])
@@ -428,38 +421,33 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     _states = {
         'readonly': Eval('purchase_requisition_state') != 'draft',
         }
-    _depends = ['purchase_requisition_state']
 
     requisition = fields.Many2One(
         'purchase.requisition', 'Requisition',
         ondelete='CASCADE', select=True, required=True)
-    supplier = fields.Many2One(
-        'party.party', 'Supplier', states=_states, depends=_depends)
+    supplier = fields.Many2One('party.party', 'Supplier', states=_states)
     product = fields.Many2One(
         'product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
             ('purchasable', '=', True),
             ],
-        states=_states, depends=_depends)
+        states=_states)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', "Product UOM Category"),
         'on_change_with_product_uom_category')
-    description = fields.Text("Description", states=_states, depends=_depends)
+    description = fields.Text("Description", states=_states)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     quantity = fields.Float(
-        "Quantity", digits='unit', required=True,
-        states=_states, depends=_depends)
+        "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Many2One(
         'product.uom', 'Unit', ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
             'readonly': _states['readonly'],
-            },
-        depends=['product'] + _depends)
+            })
     unit_price = Monetary(
-        'Unit Price', currency='currency', digits=price_digits,
-        states=_states, depends=_depends)
+        'Unit Price', currency='currency', digits=price_digits, states=_states)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
     amount = fields.Function(Monetary(
@@ -483,7 +471,6 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
                 ('category', 'in', [Eval(c) for c in unit_categories]),
                 ('category', '!=', -1)),
             ]
-        cls.unit.depends.extend(unit_categories)
 
     @classmethod
     def _unit_categories(cls):
