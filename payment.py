@@ -68,7 +68,7 @@ class Journal(metaclass=PoolMeta):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'on_change_with_company_party')
     sepa_bank_account_number = fields.Many2One('bank.account.number',
         'Bank Account Number', states={
@@ -78,8 +78,7 @@ class Journal(metaclass=PoolMeta):
         domain=[
             ('type', '=', 'iban'),
             ('account.owners', '=', Eval('company_party')),
-            ],
-        depends=['process_method', 'company_party'])
+            ])
     sepa_payable_flavor = fields.Selection([
             (None, ''),
             ('pain.001.001.03', 'pain.001.001.03'),
@@ -89,8 +88,7 @@ class Journal(metaclass=PoolMeta):
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
             },
-        translate=False,
-        depends=['process_method'])
+        translate=False)
     sepa_receivable_flavor = fields.Selection([
             (None, ''),
             ('pain.008.001.02', 'pain.008.001.02'),
@@ -100,26 +98,22 @@ class Journal(metaclass=PoolMeta):
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
             },
-        translate=False,
-        depends=['process_method'])
+        translate=False)
     sepa_payable_initiator_id = fields.Selection(
         INITIATOR_IDS, "SEPA Payable Initiator Identifier",
         states={
             'invisible': Eval('process_method') != 'sepa',
             },
-        depends=['process_method'],
         help="The identifier used for the initiating party.")
     sepa_receivable_initiator_id = fields.Selection(
         INITIATOR_IDS, "SEPA Receivable Initiator Identifier",
         states={
             'invisible': Eval('process_method') != 'sepa',
             },
-        depends=['process_method'],
         help="The identifier used for the initiating party.")
     sepa_batch_booking = fields.Boolean('Batch Booking', states={
             'invisible': Eval('process_method') != 'sepa',
-            },
-        depends=['process_method'])
+            })
     sepa_charge_bearer = fields.Selection([
             ('DEBT', 'Debtor'),
             ('CRED', 'Creditor'),
@@ -128,8 +122,7 @@ class Journal(metaclass=PoolMeta):
             ], 'Charge Bearer', states={
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
-            },
-        depends=['process_method'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -189,8 +182,7 @@ class Group(metaclass=PoolMeta):
         domain=[('company', '=', Eval('company', -1))],
         states={
             'invisible': ~Eval('sepa_messages'),
-            },
-        depends=['company'])
+            })
     sepa_id = fields.Char("SEPA ID", readonly=True, size=35,
         states={
             'invisible': ~Eval('sepa_id'),
@@ -343,8 +335,7 @@ class Payment(metaclass=PoolMeta):
                 ('state', '=', 'validated'),
                 (),
                 )
-            ],
-        depends=['party', 'company', 'state', 'process_method', 'kind'])
+            ])
     sepa_mandate_sequence_type = fields.Char('Mandate Sequence Type',
         readonly=True)
     sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
@@ -352,16 +343,14 @@ class Payment(metaclass=PoolMeta):
             'invisible': ((Eval('process_method') != 'sepa')
                 | (~Eval('sepa_return_reason_code')
                     & (Eval('state') != 'failed'))),
-            },
-        depends=['process_method', 'state'])
+            })
     sepa_return_reason_information = fields.Text('Return Reason Information',
         readonly=True,
         states={
             'invisible': ((Eval('process_method') != 'sepa')
                 | (~Eval('sepa_return_reason_information')
                     & (Eval('state') != 'failed'))),
-            },
-        depends=['process_method', 'state'])
+            })
     sepa_end_to_end_id = fields.Function(fields.Char('SEPA End To End ID'),
         'get_sepa_end_to_end_id', searcher='search_end_to_end_id')
     sepa_instruction_id = fields.Function(fields.Char('SEPA Instruction ID'),
@@ -483,7 +472,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'company'])
+        depends={'company'})
     account_number = fields.Many2One('bank.account.number', 'Account Number',
         ondelete='RESTRICT',
         states={
@@ -495,51 +484,44 @@ class Mandate(Workflow, ModelSQL, ModelView):
         domain=[
             ('type', '=', 'iban'),
             ('account.owners', '=', Eval('party')),
-            ],
-        depends=['state', 'party'])
+            ])
     identification = fields.Char('Identification', size=35,
         states={
             'readonly': Eval('identification_readonly', True),
             'required': Eval('state') == 'validated',
-            },
-        depends=['state', 'identification_readonly'])
+            })
     identification_readonly = fields.Function(fields.Boolean(
             'Identification Readonly'), 'get_identification_readonly')
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     type = fields.Selection([
             ('recurrent', 'Recurrent'),
             ('one-off', 'One-off'),
             ], 'Type',
         states={
             'readonly': Eval('state').in_(['validated', 'cancelled']),
-            },
-        depends=['state'])
+            })
     sequence_type_rcur = fields.Boolean(
         "Always use RCUR",
         states={
             'invisible': Eval('type') == 'one-off',
-            },
-        depends=['type'])
+            })
     scheme = fields.Selection([
             ('CORE', 'Core'),
             ('B2B', 'Business to Business'),
             ], 'Scheme', required=True,
         states={
             'readonly': Eval('state').in_(['validated', 'cancelled']),
-            },
-        depends=['state'])
+            })
     scheme_string = scheme.translated('scheme')
     signature_date = fields.Date('Signature Date',
         states={
             'readonly': Eval('state').in_(['validated', 'cancelled']),
             'required': Eval('state') == 'validated',
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
             ('draft', 'Draft'),
             ('requested', 'Requested'),
@@ -808,24 +790,22 @@ class Message(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
     message = fields.Binary('Message', filename='filename',
         file_id=file_id, store_prefix=store_prefix,
-        states=_states, depends=_depends)
+        states=_states)
     message_file_id = fields.Char("Message File ID", readonly=True)
     filename = fields.Function(fields.Char('Filename'), 'get_filename')
     type = fields.Selection([
             ('in', 'IN'),
             ('out', 'OUT'),
-            ], 'Type', required=True, states=_states, depends=_depends)
+            ], 'Type', required=True, states=_states)
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     origin = fields.Reference('Origin', selection='get_origin', select=True,
-        states=_states, depends=_depends)
+        states=_states)
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),

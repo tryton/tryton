@@ -29,8 +29,7 @@ class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
             ('sequence_type', '=', Id(
                     'account_payment_sepa', 'sequence_type_mandate')),
             ('company', 'in', [Eval('company', -1), None]),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):

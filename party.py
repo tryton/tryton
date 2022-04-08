@@ -81,8 +81,7 @@ class PartyReceptionDirectDebit(metaclass=PoolMeta):
         states={
             'invisible': Eval('process_method') != 'sepa',
             'readonly': ~Eval('party') | (Eval('party', -1) < 0),
-            },
-        depends=['party', 'process_method'])
+            })
 
     def _get_payment(self, line, date, amount):
         payment = super()._get_payment(line, date, amount)
@@ -97,8 +96,7 @@ class PartyIdentifier(metaclass=PoolMeta):
         "SEPA Suffix", size=3,
         states={
             'invisible': Eval('type') != 'es_nif',
-            },
-        depends=['type'])
+            })
 
     @classmethod
     def __register__(cls, module_name):
