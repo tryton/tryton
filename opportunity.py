@@ -33,12 +33,10 @@ class SaleOpportunity(
     _states_start = {
         'readonly': Eval('state') != 'lead',
         }
-    _depends_start = ['state']
     _states_stop = {
         'readonly': Eval('state').in_(
             ['converted', 'won', 'lost', 'cancelled']),
     }
-    _depends_stop = ['state']
 
     number = fields.Char('Number', readonly=True, required=True, select=True)
     reference = fields.Char('Reference', select=True)
@@ -51,7 +49,7 @@ class SaleOpportunity(
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'company'])
+        depends={'company'})
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
         context={
@@ -63,7 +61,7 @@ class SaleOpportunity(
         depends=['party', 'company'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
-        select=True, depends=['party', 'state'],
+        select=True,
         states=_states_stop)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True,
@@ -73,38 +71,32 @@ class SaleOpportunity(
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
-            ],
-        depends=_depends_stop)
+            ])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency')
     amount = Monetary(
         "Amount", currency='currency', digits='currency',
-        states=_states_stop, depends=_depends_stop,
+        states=_states_stop,
         help='Estimated revenue amount.')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'readonly': In(Eval('state'),
                 ['converted', 'lost', 'cancelled']),
-            },
-        depends=['state'])
+            })
     employee = fields.Many2One('company.employee', 'Employee',
         states={
             'readonly': _states_stop['readonly'],
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
         },
-        depends=['state', 'company'],
         domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=True,
-        states=_states_start, depends=_depends_start)
-    end_date = fields.Date('End Date', select=True,
-        states=_states_stop, depends=_depends_stop)
-    description = fields.Char('Description',
-        states=_states_stop, depends=_depends_stop)
-    comment = fields.Text('Comment', states=_states_stop,
-        depends=_depends_stop)
+        states=_states_start)
+    end_date = fields.Date('End Date', select=True, states=_states_stop)
+    description = fields.Char('Description', states=_states_stop)
+    comment = fields.Text('Comment', states=_states_stop)
     lines = fields.One2Many('sale.opportunity.line', 'opportunity', 'Lines',
-        states=_states_stop, depends=_depends_stop)
+        states=_states_stop)
     conversion_probability = fields.Float('Conversion Probability',
         digits=(1, 4), required=True,
         domain=[
@@ -115,10 +107,10 @@ class SaleOpportunity(
             'readonly': ~Eval('state').in_(
                 ['opportunity', 'lead', 'converted']),
             },
-        depends=['state'], help="Percentage between 0 and 100.")
+        help="Percentage between 0 and 100.")
     lost_reason = fields.Text('Reason for loss', states={
             'invisible': Eval('state') != 'lost',
-            }, depends=['state'])
+            })
     sales = fields.One2Many('sale.sale', 'origin', 'Sales')
 
     converted_by = employee_field(
@@ -132,8 +124,8 @@ class SaleOpportunity(
             ('cancelled', "Cancelled"),
             ], "State", required=True, select=True, sort=False, readonly=True)
 
-    del _states_start, _depends_start
-    del _states_stop, _depends_stop
+    del _states_start
+    del _states_stop
 
     @classmethod
     def __register__(cls, module_name):
@@ -502,26 +494,23 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         'readonly': Eval('opportunity_state').in_(
             ['converted', 'won', 'lost', 'cancelled']),
         }
-    _depends = ['opportunity_state']
 
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity',
         ondelete='CASCADE', select=True, required=True,
         states={
             'readonly': _states['readonly'] & Bool(Eval('opportunity')),
-            },
-        depends=_depends)
+            })
     opportunity_state = fields.Function(
         fields.Selection('get_opportunity_states', "Opportunity State"),
         'on_change_with_opportunity_state')
     product = fields.Many2One('product.product', 'Product', required=True,
-        domain=[('salable', '=', True)], states=_states, depends=_depends)
+        domain=[('salable', '=', True)], states=_states)
     quantity = fields.Float(
-        "Quantity", digits='unit', required=True,
-        states=_states, depends=_depends)
+        "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Many2One('product.uom', 'Unit', required=True,
-        states=_states, depends=_depends)
+        states=_states)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):

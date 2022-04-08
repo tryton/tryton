@@ -39,8 +39,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('sale_opportunity', 'sequence_type_sale_opportunity')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
