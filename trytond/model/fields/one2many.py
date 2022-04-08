@@ -9,12 +9,13 @@ from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.tools import grouped_slice
+from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, domain_validate, instanciate_values,
-    instantiate_context, search_order_validate, size_validate)
+    Field, context_validate, domain_validate, get_eval_fields,
+    instanciate_values, instantiate_context, search_order_validate,
+    size_validate)
 from .function import Function
 
 
@@ -106,6 +107,17 @@ class One2Many(Field):
     def search_context(self, value):
         context_validate(value)
         self.__search_context = value
+
+    @cached_property
+    def edition_depends(self):
+        depends = super().edition_depends
+        for attribute in ['add_remove', 'size']:
+            depends |= get_eval_fields(getattr(self, attribute))
+        return depends
+
+    @cached_property
+    def validation_depends(self):
+        return super().validation_depends | get_eval_fields(self.size)
 
     def sql_type(self):
         return None

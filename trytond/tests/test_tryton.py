@@ -343,26 +343,9 @@ class ModuleTestCase(unittest.TestCase):
             if not isregisteredby(model, self.module):
                 continue
             for fname, field in model._fields.items():
-                fields = set()
-                fields |= get_eval_fields(field.domain)
-                if hasattr(field, 'digits'):
-                    if isinstance(field.digits, str):
-                        fields.add(field.digits)
-                    else:
-                        fields |= get_eval_fields(field.digits)
-                if hasattr(field, 'add_remove'):
-                    fields |= get_eval_fields(field.add_remove)
-                if hasattr(field, 'size'):
-                    fields |= get_eval_fields(field.size)
-                fields.discard(fname)
-                fields.discard('context')
-                fields.discard('active_model')
-                fields.discard('active_id')
-                depends = set(field.depends)
+                depends = {
+                    f for f in field.depends if not f.startswith('_parent_')}
                 with self.subTest(model=mname, field=fname):
-                    self.assertLessEqual(fields, depends,
-                        msg='Missing depends %s in "%s"."%s"' % (
-                            list(fields - depends), mname, fname))
                     self.assertLessEqual(depends, set(model._fields),
                         msg='Unknown depends %s in "%s"."%s"' % (
                             list(depends - set(model._fields)), mname, fname))

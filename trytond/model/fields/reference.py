@@ -9,10 +9,11 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
+from trytond.tools import cached_property
 
 from .field import (
-    Field, context_validate, domain_validate, instantiate_context,
-    search_order_validate, with_inactive_records)
+    Field, context_validate, domain_validate, get_eval_fields,
+    instantiate_context, search_order_validate, with_inactive_records)
 from .selection import SelectionMixin
 
 
@@ -39,11 +40,6 @@ class Reference(SelectionMixin, Field):
         :param search_order: The order to use when searching for a record
         :param search_context: The context to use when searching for a record
         '''
-        if datetime_field:
-            if depends:
-                depends.append(datetime_field)
-            else:
-                depends = [datetime_field]
         super(Reference, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,
@@ -100,6 +96,13 @@ class Reference(SelectionMixin, Field):
     def search_context(self, value):
         context_validate(value)
         self.__search_context = value
+
+    @cached_property
+    def display_depends(self):
+        depends = super().display_depends
+        if self.datetime_field:
+            depends.add(self.datetime_field)
+        return depends
 
     def set_rpc(self, model):
         super(Reference, self).set_rpc(model)

@@ -9,12 +9,13 @@ from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.tools import grouped_slice
+from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, domain_validate, instanciate_values,
-    instantiate_context, search_order_validate, size_validate)
+    Field, context_validate, domain_validate, get_eval_fields,
+    instanciate_values, instantiate_context, search_order_validate,
+    size_validate)
 from .function import Function
 
 
@@ -108,6 +109,18 @@ class Many2Many(Field):
     @property
     def add_remove(self):
         return self.domain
+
+    @cached_property
+    def edition_depends(self):
+        depends = super().edition_depends
+        depends |= get_eval_fields(self.size)
+        return depends
+
+    @cached_property
+    def validation_depends(self):
+        depends = super().validation_depends
+        depends |= get_eval_fields(self.size)
+        return depends
 
     def sql_type(self):
         return None

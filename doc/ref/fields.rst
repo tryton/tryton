@@ -112,12 +112,27 @@ All are optional except :attr:`~Field.string`.
 
 .. attribute:: Field.depends
 
-   A list of field names on which the field depends.
+   A :py:class:`set` of extra field names on which the field depends.
 
    This means that the client read also these fields even if they are not
    defined on the view.
    :attr:`Field.depends` is used for example to ensure that
    :class:`~trytond.pyson.PYSON` statement could be evaluated.
+
+.. attribute:: Field.display_depends
+
+   A computed set of field names on which the field depends when being
+   displayed in a read only view.
+
+.. attribute:: Field.edition_depends
+
+   A computed set of field names on which the field depends when being
+   displayed in a writable view.
+
+.. attribute:: Field.validation_depends
+
+   A computed set of field names on which the field depends when being
+   validated.
 
 .. attribute:: Field.context
 

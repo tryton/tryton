@@ -1320,11 +1320,10 @@ class ModelStorage(Model):
         ctx_pref['active_test'] = False
         with Transaction().set_context(ctx_pref):
             for field_name, field in cls._fields.items():
-                depends = set(field.depends)
                 if (field_names
                         and field_name not in field_names
-                        and not (depends & field_names)
-                        and not (depends & function_fields)):
+                        and not (field.validation_depends & field_names)
+                        and not (field.validation_depends & function_fields)):
                     continue
                 if isinstance(field, fields.Function):
                     continue
@@ -1656,7 +1655,7 @@ class ModelStorage(Model):
             if field.context:
                 eval_fields = fields.get_eval_fields(field.context)
                 for context_field_name in eval_fields:
-                    if context_field_name not in field.depends:
+                    if context_field_name not in field.validation_depends:
                         continue
                     if context_field_name not in ffields:
                         context_field = self._fields.get(context_field_name)

@@ -16,6 +16,7 @@ from trytond.const import OPERATORS
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Eval, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
+from trytond.tools import cached_property
 from trytond.tools.string_ import LazyString, StringPartitioned
 from trytond.transaction import Transaction
 
@@ -62,7 +63,7 @@ def states_validate(value):
 
 
 def depends_validate(value):
-    assert isinstance(value, list), 'depends must be a list'
+    assert isinstance(value, set), 'depends must be a set'
 
 
 def context_validate(value):
@@ -244,7 +245,7 @@ class Field(object):
         :param on_change_with: A list of values. Like ``on_change``, but
             defined the other way around. The list contains all the fields that
             must update the current field.
-        :param depends: A list of field name on which this one depends.
+        :param depends: A set of field name on which this one depends.
         :param context: A dictionary which will be given to open the relation
             fields.
         :param loading: Define how the field must be loaded:
@@ -274,7 +275,7 @@ class Field(object):
                 DeprecationWarning, stacklevel=3)
             self.on_change_with.update(on_change_with)
         self.__depends = None
-        self.depends = depends or []
+        self.depends = depends or set()
         self.__context = None
         self.context = context or {}
         assert loading in ('lazy', 'eager'), \
@@ -322,10 +323,29 @@ class Field(object):
         return self.__depends
 
     def _set_depends(self, value):
+        value = set(value)
         depends_validate(value)
         self.__depends = value
 
     depends = property(_get_depends, _set_depends)
+
+    @cached_property
+    def display_depends(self):
+        depends = get_eval_fields(self.states.get('invisible'))
+        return self.depends | depends
+
+    @cached_property
+    def edition_depends(self):
+        depends = get_eval_fields(self.domain)
+        depends |= get_eval_fields(self.states.get('readonly'))
+        depends |= get_eval_fields(self.states.get('required'))
+        return self.depends | depends
+
+    @cached_property
+    def validation_depends(self):
+        depends = get_eval_fields(self.domain)
+        depends |= get_eval_fields(self.states.get('required'))
+        return self.depends | depends
 
     def _get_context(self):
         return self.__context

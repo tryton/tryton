@@ -313,6 +313,12 @@ class ModelView(Model):
         ModelAccess = pool.get('ir.model.access')
         FieldAccess = pool.get('ir.model.field.access')
 
+        tree_root = tree.getroottree().getroot()
+        readonly_view = (
+            tree_root.tag == 'board'
+            or (tree_root.tag == 'tree'
+                and not int(tree_root.attrib.get('editable', '0'))))
+
         encoder = PYSONEncoder()
         if view_depends is None:
             view_depends = []
@@ -320,6 +326,8 @@ class ModelView(Model):
             view_depends = view_depends.copy()
         with Transaction().set_context(view_id=view_id):
             for xpath, attribute, value, *extra in cls.view_attributes():
+                if readonly_view and attribute in {'required', 'readonly'}:
+                    continue
                 depends = []
                 if extra:
                     depends, = extra
@@ -426,13 +434,17 @@ class ModelView(Model):
                 fields_def.setdefault(depend, {'name': depend})
 
         field_names = list(fields_def.keys())
-        while field_names:
-            field_name = field_names.pop()
-            if field_name in cls._fields:
-                field = cls._fields[field_name]
-            else:
+
+        for field_name in field_names:
+            if field_name not in cls._fields:
                 continue
-            for depend in field.depends:
+            field = cls._fields[field_name]
+            field_depends = field.display_depends.copy()
+            if not readonly_view:
+                field_depends |= field.edition_depends
+            if 'context' in field_depends and 'context' not in cls._fields:
+                field_depends.discard('context')
+            for depend in field_depends:
                 if depend not in fields_def:
                     fields_def[depend] = {'name': depend}
                     field_names.append(depend)

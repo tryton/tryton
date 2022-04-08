@@ -1,3 +1,6 @@
+* Use a set for field's depends
+* Relax the constraint on a field's depends
+* Include only needed fields when fetching a view definition
 * Make warning check re-entrant
 * Manage DatabaseDataError in ModelSQL
 * Remove support for pysqlite2

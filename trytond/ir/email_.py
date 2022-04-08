@@ -332,7 +332,7 @@ class EmailTemplate(ModelSQL, ModelView):
                         ],
                     ]
                 ]
-            field.depends.append('model')
+            field.depends.add('model')
         cls.__rpc__.update({
                 'get': RPC(instantiate=0),
                 'get_default': RPC(),

@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from functools import cached_property
 
 from sql.functions import AtTimeZone, Function
 
 from trytond import backend
-from trytond.pyson import PYSONEncoder
+from trytond.pyson import PYSON, PYSONEncoder
 
-from .field import Field
+from .field import Field, get_eval_fields
 
 
 class SQLite_Date(Function):
@@ -58,6 +59,20 @@ class FormatMixin(Field):
         definition = super().definition(model, language)
         definition['format'] = encoder.encode(self.format)
         return definition
+
+    @cached_property
+    def display_depends(self):
+        depends = super().display_depends
+        if isinstance(self.format, PYSON):
+            depends |= get_eval_fields(self.format)
+        return depends
+
+    @cached_property
+    def validation_depends(self):
+        depends = super().display_depends
+        if isinstance(self.format, PYSON):
+            depends |= get_eval_fields(self.format)
+        return depends
 
 
 class Timestamp(FormatMixin, Field):

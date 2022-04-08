@@ -32,8 +32,6 @@ class DeactivableMixin(Model):
                 field.states['readonly'] |= inactive
             else:
                 field.states['readonly'] = inactive
-            if 'active' not in field.depends:
-                field.depends.append('active')
 
         if issubclass(cls, ModelView):
             for states in cls._buttons.values():

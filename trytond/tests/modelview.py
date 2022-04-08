@@ -260,6 +260,21 @@ class ModelViewViewAttributesDepends(ModelView):
             ]
 
 
+class ModelViewStatesDepends(ModelView):
+    "ModelView States Depends"
+    __name__ = 'test.modelview.states_depends'
+
+    foo = fields.Char("Foo",
+        states={
+            'invisible': Eval('bar', True),
+            'readonly': Eval('baz', True),
+            },
+        depends=['quux'])
+    bar = fields.Boolean("Bar")
+    baz = fields.Boolean("Baz")
+    quux = fields.Char("Quux")
+
+
 def register(module):
     Pool.register(
         ModelViewChangedValues,
@@ -280,4 +295,5 @@ def register(module):
         ModeViewDependsDepends,
         ModelViewViewAttributes,
         ModelViewViewAttributesDepends,
+        ModelViewStatesDepends,
         module=module, type_='model')
