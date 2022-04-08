@@ -20,7 +20,6 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 STATES = {
     'readonly': Eval('state') != 'draft',
     }
-DEPENDS = ['state']
 
 
 class PurchaseRequest(ModelSQL, ModelView):
@@ -33,18 +32,17 @@ class PurchaseRequest(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
-    description = fields.Text('Description', readonly=True,
-        states=STATES, depends=DEPENDS)
+        depends={'company'})
+    description = fields.Text('Description', readonly=True, states=STATES)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     party = fields.Many2One(
         'party.party', "Party", select=True, states=STATES,
         context={
             'company': Eval('company', -1),
             },
-        depends=DEPENDS + ['company'])
+        depends={'company'})
     quantity = fields.Float('Quantity', required=True, states=STATES,
-        digits=(16, Eval('uom_digits', 2)), depends=DEPENDS + ['uom_digits'])
+        digits=(16, Eval('uom_digits', 2)))
     uom = fields.Many2One('product.uom', 'UOM', select=True,
         ondelete='RESTRICT',
         domain=[
@@ -55,8 +53,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         states={
             'required': Bool(Eval('product')),
             'readonly': STATES['readonly'],
-            },
-        depends=['product', 'product_uom_category'] + DEPENDS)
+            })
     uom_digits = fields.Function(fields.Integer('UOM Digits'),
         'on_change_with_uom_digits')
     product_uom_category = fields.Function(
@@ -72,14 +69,13 @@ class PurchaseRequest(ModelSQL, ModelView):
     default_uom_digits = fields.Function(fields.Integer('Default UOM Digits'),
         'on_change_with_default_uom_digits')
     stock_level = fields.Float('Stock at Supply Date', readonly=True,
-        digits=(16, Eval('default_uom_digits', 2)),
-        depends=['default_uom_digits'])
+        digits=(16, Eval('default_uom_digits', 2)))
     warehouse = fields.Many2One(
         'stock.location', "Warehouse",
         states={
             'required': Eval('warehouse_required', False),
             },
-        domain=[('type', '=', 'warehouse')], depends=['warehouse_required'],
+        domain=[('type', '=', 'warehouse')],
         readonly=True)
     warehouse_required = fields.Function(fields.Boolean('Warehouse Required'),
         'get_warehouse_required')
