@@ -3,7 +3,7 @@
 from sql import Column, Null
 
 from trytond.filestore import filestore
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import cached_property, grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 from .field import Field
@@ -22,17 +22,19 @@ class Binary(Field):
             on_change_with=None, depends=None, context=None, loading='lazy',
             filename=None, file_id=None, store_prefix=None):
         self.filename = filename
-        if filename is not None:
-            if depends is None:
-                depends = [filename]
-            else:
-                depends.append(filename)
         self.file_id = file_id
         self.store_prefix = store_prefix
         super(Binary, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
+
+    @cached_property
+    def display_depends(self):
+        depends = super().display_depends
+        if self.filename:
+            depends.add(self.filename)
+        return depends
 
     def get(self, ids, model, name, values=None):
         '''

@@ -45,11 +45,6 @@ class One2Many(Field):
         :param search_context: The context to use when searching for a record
         :param filter: A domain to filter target records.
         '''
-        if datetime_field:
-            if depends:
-                depends.append(datetime_field)
-            else:
-                depends = [datetime_field]
         super(One2Many, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
@@ -107,6 +102,13 @@ class One2Many(Field):
     def search_context(self, value):
         context_validate(value)
         self.__search_context = value
+
+    @cached_property
+    def display_depends(self):
+        depends = super().display_depends
+        if self.datetime_field:
+            depends.add(self.datetime_field)
+        return depends
 
     @cached_property
     def edition_depends(self):

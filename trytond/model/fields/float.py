@@ -42,12 +42,6 @@ class Float(Field):
         :param digits: a list of two integers defining the total
             of digits and the number of decimals of the float.
         '''
-        if isinstance(digits, str):
-            if depends is None:
-                depends = [digits]
-            elif digits not in depends:
-                depends = depends.copy()
-                depends.append(digits)
         super(Float, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,

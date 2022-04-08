@@ -7,7 +7,7 @@ from sql.operators import Or
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.tools import reduce_ids
+from trytond.tools import cached_property, reduce_ids
 from trytond.transaction import Transaction
 
 from .field import (
@@ -48,11 +48,6 @@ class Many2One(Field):
         if ondelete not in ('CASCADE', 'RESTRICT', 'SET NULL'):
             raise Exception('Bad arguments')
         self.ondelete = ondelete
-        if datetime_field:
-            if depends:
-                depends.append(datetime_field)
-            else:
-                depends = [datetime_field]
         super(Many2One, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,
@@ -97,6 +92,13 @@ class Many2One(Field):
     def search_context(self, value):
         context_validate(value)
         self.__search_context = value
+
+    @cached_property
+    def display_depends(self):
+        depends = super().display_depends
+        if self.datetime_field:
+            depends.add(self.datetime_field)
+        return depends
 
     def get_target(self):
         'Return the target Model'
