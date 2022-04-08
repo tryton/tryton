@@ -202,6 +202,19 @@ class TreeMixinTestCase(unittest.TestCase):
         self.assertEqual(record.rec_name, "parent / record")
 
     @with_transaction()
+    def test_on_change_with_rec_name(self):
+        "Test on_change_with_rec_name"
+        pool = Pool()
+        Tree = pool.get('test.tree')
+
+        parent = Tree(name="parent")
+        parent.save()
+        record = Tree(name="record", parent=parent)
+        record.save()
+
+        self.assertEqual(record.rec_name, record.on_change_with_rec_name())
+
+    @with_transaction()
     def test_search_rec_name_equals(self):
         "Test search_rec_name equals"
         pool = Pool()

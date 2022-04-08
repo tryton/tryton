@@ -12,6 +12,8 @@ class RecursionError(ValidationError):
 
 
 def tree(parent='parent', name='name', separator=None):
+    from . import fields
+
     class TreeMixin(object):
         __slots__ = ()
 
@@ -36,6 +38,14 @@ def tree(parent='parent', name='name', separator=None):
                     names.append(getattr(record, name))
                     record = getattr(record, parent)
                 return separator.join(reversed(names))
+
+            @fields.depends(parent, '_parent_%s.rec_name' % parent, name)
+            def on_change_with_rec_name(self):
+                names = []
+                if self.parent and self.parent.rec_name:
+                    names.append(self.parent.rec_name)
+                names.append(getattr(self, name) or '')
+                return separator.join(names)
 
             @classmethod
             def search_rec_name(cls, _, clause):
