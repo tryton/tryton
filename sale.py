@@ -17,24 +17,21 @@ class Line(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
-            },
-        depends=['type', 'sale_state'])
+            })
 
     discount_rate = fields.Function(fields.Numeric(
             "Discount Rate", digits=(16, 4),
             states={
                 'invisible': Eval('type') != 'line',
                 'readonly': Eval('sale_state') != 'draft',
-                },
-            depends=['type', 'sale_state']),
+                }),
         'on_change_with_discount_rate', setter='set_discount_rate')
     discount_amount = fields.Function(Monetary(
             "Discount Amount", currency='currency', digits=price_digits,
             states={
                 'invisible': Eval('type') != 'line',
                 'readonly': Eval('sale_state') != 'draft',
-                },
-            depends=['type', 'sale_state']),
+                }),
         'on_change_with_discount_amount', setter='set_discount_amount')
 
     discount = fields.Function(fields.Char(
