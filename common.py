@@ -22,8 +22,7 @@ class StripeCustomerMethodMixin:
             'readonly': (
                 ~Eval('party') | (Eval('party', -1) < 0)
                 | ~Eval('stripe_account') | (Eval('stripe_account', -1) < 0)),
-            },
-        depends=['party', 'stripe_account', 'process_method'])
+            })
 
     stripe_customer_source = fields.Char(
         "Stripe Customer Source",
@@ -32,10 +31,7 @@ class StripeCustomerMethodMixin:
                 (Eval('process_method') != 'stripe')
                 | ~Eval('stripe_customer')
                 | Eval('stripe_customer_payment_method')),
-            },
-        depends=[
-            'process_method', 'stripe_customer',
-            'stripe_customer_payment_method'])
+            })
     # Use Function field with selection to avoid to query Stripe
     # to validate the value
     stripe_customer_source_selection = fields.Function(fields.Selection(
@@ -45,10 +41,7 @@ class StripeCustomerMethodMixin:
                     (Eval('process_method') != 'stripe')
                     | ~Eval('stripe_customer')
                     | Eval('stripe_customer_payment_method')),
-                },
-            depends=[
-                'process_method', 'stripe_customer',
-                'stripe_customer_payment_method']),
+                }),
         'get_stripe_customer_source', setter='set_stripe_customer_source')
 
     stripe_customer_payment_method = fields.Char(
@@ -58,9 +51,7 @@ class StripeCustomerMethodMixin:
                 (Eval('process_method') != 'stripe')
                 | ~Eval('stripe_customer')
                 | Eval('stripe_customer_source')),
-            },
-        depends=[
-            'process_method', 'stripe_customer', 'stripe_customer_source'])
+            })
     # Use Function field with selection to avoid to query Stripe
     # to validate the value
     stripe_customer_payment_method_selection = fields.Function(
@@ -72,10 +63,7 @@ class StripeCustomerMethodMixin:
                     (Eval('process_method') != 'stripe')
                     | ~Eval('stripe_customer')
                     | Eval('stripe_customer_source')),
-                },
-            depends=[
-                'process_method', 'stripe_customer',
-                'stripe_customer_source']),
+                }),
         'get_stripe_customer_payment_method',
         setter='set_stripe_customer_payment_method')
 

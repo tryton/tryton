@@ -49,8 +49,7 @@ class Journal(metaclass=PoolMeta):
         states={
             'required': Eval('process_method') == 'stripe',
             'invisible': Eval('process_method') != 'stripe',
-            },
-        depends=['process_method'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -133,15 +132,13 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         states={
             'invisible': ((Eval('process_method') != 'stripe')
                 | ~Eval('stripe_charge_id')),
-            },
-        depends=['process_method'])
+            })
     stripe_capture = fields.Boolean(
         "Stripe Capture",
         states={
             'invisible': Eval('process_method') != 'stripe',
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['process_method', 'state'])
+            })
     stripe_captured = fields.Boolean(
         "Stripe Captured", readonly=True)
     stripe_capture_needed = fields.Function(
@@ -162,18 +159,14 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         states={
             'invisible': ((Eval('process_method') != 'stripe')
                 | ~Eval('stripe_token')),
-            },
-        depends=['process_method', 'stripe_token'])
+            })
     stripe_capturable = fields.Boolean(
         "Stripe Capturable",
         states={
             'invisible': ((Eval('process_method') != 'stripe')
                 | ~Eval('stripe_payment_intent_id')
                 | ~Eval('stripe_capture_needed')),
-            },
-        depends=[
-            'process_method', 'stripe_payment_intent_id',
-            'stripe_capture_needed'])
+            })
     stripe_idempotency_key = fields.Char(
         "Stripe Idempotency Key", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
@@ -205,9 +198,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'invisible': ((Eval('process_method') != 'stripe')
                 | (~Eval('stripe_charge_id')
                     & ~Eval('stripe_payment_intent_id'))),
-            },
-        depends=[
-            'process_method', 'stripe_charge_id', 'stripe_payment_intent_id'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -217,43 +208,31 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             ~Eval('state').in_(['draft', 'approved'])
             | Eval('stripe_token')
             | Eval('stripe_payment_intent_id'))
-        cls.stripe_customer.depends.extend(
-            ['state', 'stripe_token', 'stripe_payment_intent_id'])
 
         cls.stripe_customer_source.states['invisible'] |= (
             Eval('stripe_token') | Eval('stripe_payment_intent_id'))
         cls.stripe_customer_source.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved']))
-        cls.stripe_customer_source.depends.extend(
-            ['stripe_token', 'stripe_payment_intent_id', 'state'])
 
         cls.stripe_customer_source_selection.states['invisible'] |= (
             Eval('stripe_token') | Eval('stripe_payment_intent_id'))
         cls.stripe_customer_source_selection.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved']))
-        cls.stripe_customer_source_selection.depends.extend(
-            ['stripe_token', 'stripe_payment_intent_id', 'state'])
 
         cls.stripe_customer_payment_method.states['invisible'] |= (
             Eval('stripe_token'))
         cls.stripe_customer_payment_method.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved'])
             | Eval('stripe_payment_intent_id'))
-        cls.stripe_customer_payment_method.depends.extend(
-            ['stripe_token', 'state', 'stripe_payment_intent_id'])
 
         cls.stripe_customer_payment_method_selection.states['invisible'] |= (
             Eval('stripe_token'))
         cls.stripe_customer_payment_method_selection.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved'])
             | Eval('stripe_payment_intent_id'))
-        cls.stripe_customer_payment_method_selection.depends.extend(
-            ['stripe_token', 'state', 'stripe_payment_intent_id'])
 
         cls.amount.states['readonly'] &= ~Eval('stripe_capture_needed')
-        cls.amount.depends.append('stripe_capture_needed')
         cls.stripe_amount.states.update(cls.amount.states)
-        cls.stripe_amount.depends.extend(cls.amount.depends)
         cls._buttons.update({
                 'stripe_checkout': {
                     'invisible': (~Eval('state', 'draft').in_(
@@ -670,14 +649,12 @@ class Refund(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     stripe_amount = fields.Function(
         fields.Integer("Stripe Amount"), 'get_stripe_amount')
     reason = fields.Selection([
@@ -688,8 +665,7 @@ class Refund(Workflow, ModelSQL, ModelView):
             ], "Reason",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     approved_by = employee_field(
         "Approved by",
         states=['approved', 'processing', 'succeeded', 'failed'])
@@ -904,7 +880,6 @@ class Account(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('webhook_identifier'),
             },
-        depends=['webhook_identifier'],
         help="The Stripe's signing secret of the webhook.")
     last_event = fields.Char("Last Event", readonly=True)
     setup_intent_delay = fields.TimeDelta(
@@ -1307,14 +1282,12 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     party = fields.Many2One('party.party', "Party", required=True, select=True,
         states={
             'readonly': Eval('stripe_customer_id') | Eval('stripe_token'),
-            },
-        depends=['stripe_customer_id', 'stripe_token'])
+            })
     stripe_account = fields.Many2One(
         'account.payment.stripe.account', "Account", required=True,
         states={
             'readonly': Eval('stripe_customer_id') | Eval('stripe_token'),
-            },
-        depends=['stripe_customer_id', 'stripe_token'])
+            })
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
     stripe_customer_id = fields.Char(
@@ -1322,8 +1295,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         states={
             'readonly': ((Eval('stripe_customer_id') | Eval('stripe_token'))
                 & (Eval('id', -1) >= 0)),
-            },
-        depends=['stripe_token'])
+            })
     stripe_token = fields.Char("Stripe Token", readonly=True)
     stripe_setup_intent_id = fields.Char(
         "Stripe SetupIntent ID", readonly=True)
