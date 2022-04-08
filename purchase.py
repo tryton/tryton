@@ -68,8 +68,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('sequence_type', '=',
                 Id('purchase_request_quotation',
                     'sequence_type_purchase_request_quotation')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_purchase_request_quotation_sequence(cls):
@@ -92,7 +91,6 @@ class Quotation(Workflow, ModelSQL, ModelView):
         states={
             'required': ~Eval('state').in_(['draft', 'cancelled'])
             },
-        depends=['state'],
         help="The unique identifier of the quotation.")
     revision = fields.Integer('Revision', readonly=True,
         help="Number incremented each time the quotation is sent.")
@@ -114,17 +112,15 @@ class Quotation(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     supplier_address = fields.Many2One('party.address', 'Supplier Address',
         domain=[
             ('party', '=', Eval('supplier')),
-            ],
-        depends=['supplier'])
+            ])
     lines = fields.One2Many('purchase.request.quotation.line', 'quotation',
         'Lines', states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
         ('draft', 'Draft'),
         ('sent', 'Sent'),
@@ -270,8 +266,7 @@ class QuotationLine(ModelSQL, ModelView):
     description = fields.Text('Description',
         states={
             'required': ~Eval('product')
-            },
-        depends=['product'])
+            })
     quantity = fields.Float("Quantity", digits='unit', required=True)
     unit = fields.Many2One(
         'product.uom', 'Unit', ondelete='RESTRICT',
@@ -282,8 +277,7 @@ class QuotationLine(ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
-        ],
-        depends=['product', 'product_uom_category'])
+            ])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -292,8 +286,7 @@ class QuotationLine(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': Bool(Eval('unit_price')),
-            },
-        depends=['unit_price'])
+            })
     request = fields.Many2One('purchase.request', 'Request',
         ondelete='CASCADE', select=True, required=True,
         domain=[
@@ -303,14 +296,12 @@ class QuotationLine(ModelSQL, ModelView):
         states={
             'readonly': Eval('quotation_state') != 'draft'
             },
-        depends=['quotation_state'],
         help="The request which this line belongs to.")
     quotation = fields.Many2One('purchase.request.quotation', 'Quotation',
         ondelete='CASCADE', required=True,
         domain=[
                ('supplier', '=', Eval('supplier')),
-        ],
-        depends=['supplier'])
+        ])
     quotation_state = fields.Function(fields.Selection(
             'get_quotation_state', 'Quotation State'),
         'on_change_with_quotation_state', searcher='search_quotation_state')
@@ -563,7 +554,6 @@ class PurchaseRequest(metaclass=PoolMeta):
             ('quotation_state', '=', 'received'),
             ('request', '=', Eval('id'))
         ],
-        depends=['id'],
         help="The quotation that will be chosen to create the purchase\n"
         "otherwise first ordered received quotation line will be selected.")
 
