@@ -37,21 +37,18 @@ class DunningLevel(metaclass=PoolMeta):
         states={
             'required': Bool(Eval('send_email')),
             'invisible': ~Eval('send_email'),
-            },
-        depends=['send_email'])
+            })
     email_from = fields.Char(
         "From", translate=True,
         states={
             'invisible': ~Eval('send_email'),
             },
-        depends=['send_email'],
         help="Leave empty for the value defined in the configuration file.")
     email_contact_mechanism = fields.Selection(
         'get_contact_mechanisms', "Contact Mechanism",
         states={
             'invisible': ~Eval('send_email'),
             },
-        depends=['send_email'],
         help="Define which e-mail to use from the party's contact mechanisms")
 
     @classmethod
