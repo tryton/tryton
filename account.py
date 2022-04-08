@@ -37,14 +37,8 @@ class Invoice(metaclass=PoolMeta):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude.add('numbered_at')
         cls.party.datetime_field = 'history_datetime'
-        if 'history_datetime' not in cls.party.depends:
-            cls.party.depends.append('history_datetime')
         cls.invoice_address.datetime_field = 'history_datetime'
-        if 'history_datetime' not in cls.invoice_address.depends:
-            cls.invoice_address.depends.append('history_datetime')
         cls.payment_term.datetime_field = 'history_datetime'
-        if 'history_datetime' not in cls.payment_term.depends:
-            cls.payment_term.depends.append('history_datetime')
 
     @classmethod
     def get_history_datetime(cls, invoices, name):
