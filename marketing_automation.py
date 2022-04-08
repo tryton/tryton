@@ -270,7 +270,6 @@ class Activity(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('event'),
             },
-        depends=['event'],
         help="Check to execute the activity "
         "if the event has not happened by the end of the delay.")
     on = fields.Function(fields.Selection([
@@ -291,7 +290,6 @@ class Activity(ModelSQL, ModelView):
         states={
             'required': Eval('negative', False),
             },
-        depends=['negative'],
         help="After how much time the action should be executed.")
 
     action = fields.Selection([
@@ -304,7 +302,6 @@ class Activity(ModelSQL, ModelView):
         states={
             'invisible': Eval('action') != 'send_email',
             },
-        depends=['action'],
         help="Leave empty to use the value defined in the configuration file.")
     email_title = fields.Char(
         "E-Mail Title",
@@ -313,7 +310,6 @@ class Activity(ModelSQL, ModelView):
             'invisible': Eval('action') != 'send_email',
             'required': Eval('action') == 'send_email',
             },
-        depends=['action'],
         help="The subject of the email.\n"
         "The Genshi syntax can be used "
         "with 'record' in the evaluation context.")
@@ -324,7 +320,6 @@ class Activity(ModelSQL, ModelView):
             'invisible': Eval('action') != 'send_email',
             'required': Eval('action') == 'send_email',
             },
-        depends=['action'],
         help="The HTML content of the E-mail.\n"
         "The Genshi syntax can be used "
         "with 'record' in the evaluation context.")
@@ -336,15 +331,14 @@ class Activity(ModelSQL, ModelView):
             "E-Mails Opened",
             states={
                 'invisible': Eval('action') != 'send_email',
-                },
-            depends=['action']), 'get_record_count')
+                }), 'get_record_count')
     email_clicked = fields.Function(
         fields.Integer(
             "E-Mails Clicked",
             states={
                 'invisible': Eval('action') != 'send_email',
-                },
-            depends=['action']), 'get_record_count')
+                }),
+        'get_record_count')
 
     @classmethod
     def __setup__(cls):
@@ -359,7 +353,6 @@ class Activity(ModelSQL, ModelView):
                     [(name, 'in', events + [None])],
                     domain)
             field.domain = [domain]
-            field.depends = ['parent_action']
 
     @classmethod
     def view_attributes(cls):
@@ -736,20 +729,17 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
         "At",
         states={
             'readonly': Eval('state') != 'waiting',
-            },
-        depends=['state'])
+            })
     email_opened = fields.Boolean(
         "E-Mail Opened",
         states={
             'invisible': Eval('activity_action') != 'send_email',
-            },
-        depends=['activity_action'])
+            })
     email_clicked = fields.Boolean(
         "E-Mail Clicked",
         states={
             'invisible': Eval('activity_action') != 'send_email',
-            },
-        depends=['activity_action'])
+            })
     state = fields.Selection([
             ('waiting', "Waiting"),
             ('done', "Done"),
