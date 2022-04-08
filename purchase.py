@@ -15,7 +15,6 @@ class Purchase(metaclass=PoolMeta):
         for field in (cls.invoice_address, cls.warehouse):
             field.states['readonly'] |= (
                 Eval('lines', [0]) & Eval('invoice_address'))
-            field.depends.extend(['invoice_address'])
 
 
 class Line(metaclass=PoolMeta):

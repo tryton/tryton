@@ -41,7 +41,6 @@ class _TaxRuleLineMixin:
         states={
             'invisible': ~Eval('from_country'),
             },
-        depends=['from_country'],
         help="Apply only to addresses in this subdivision.")
     to_country = fields.Many2One(
         'country.country', 'To Country', ondelete='RESTRICT',
@@ -54,7 +53,6 @@ class _TaxRuleLineMixin:
         states={
             'invisible': ~Eval('to_country'),
             },
-        depends=['to_country'],
         help="Apply only to addresses in this subdivision.")
 
 
