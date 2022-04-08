@@ -52,8 +52,7 @@ class LotSledMixin:
             'required': (
                 Eval('shelf_life_expiration_state', 'none') == 'required'),
             'invisible': Eval('shelf_life_expiration_state', 'none') == 'none',
-            },
-        depends=['shelf_life_expiration_state'])
+            })
     shelf_life_expiration_state = fields.Function(
         fields.Selection(DATE_STATE, 'Shelf Life Expiration State'),
         'on_change_with_shelf_life_expiration_state')
@@ -61,8 +60,7 @@ class LotSledMixin:
         states={
             'required': Eval('expiration_state', 'none') == 'required',
             'invisible': Eval('expiration_state', 'none') == 'none',
-            },
-        depends=['expiration_state'])
+            })
     expiration_state = fields.Function(
         fields.Selection(DATE_STATE, 'Expiration State'),
         'on_change_with_expiration_state')

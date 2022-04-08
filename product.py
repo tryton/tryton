@@ -16,7 +16,6 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('shelf_life_state', 'none') == 'none',
             },
-        depends=['shelf_life_state'],
         help='In number of days.')
     expiration_state = fields.Selection(
         DATE_STATE, 'Expiration State', sort=False)
@@ -24,7 +23,6 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('expiration_state', 'none') == 'none',
             },
-        depends=['expiration_state'],
         help='In number of days.')
 
     @staticmethod
