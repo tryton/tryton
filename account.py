@@ -34,8 +34,7 @@ class TaxCode(metaclass=PoolMeta):
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
 
 
 class TaxTemplate(metaclass=PoolMeta):
@@ -90,26 +89,22 @@ class Tax(metaclass=PoolMeta):
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
     es_ec_purchases_list_code = fields.Char("Spanish EC Purchases List Code",
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
     es_reported_with = fields.Many2One('account.tax', "Reported with",
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
     es_exclude_from_vat_book = fields.Boolean("Exclude from Spanish VAT Book",
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
 
     @classmethod
     def default_es_exclude_from_vat_book(cls):

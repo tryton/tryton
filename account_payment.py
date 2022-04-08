@@ -15,7 +15,6 @@ class Journal(metaclass=PoolMeta):
             'invisible': ((Eval('process_method') != 'sepa')
                 | (Eval('es_sepa_bank_account_country_code') != 'ES')),
             },
-        depends=['process_method', 'es_sepa_bank_account_country_code'],
         help="Check to receive payments before the payment date.")
 
     @fields.depends('sepa_bank_account_number')

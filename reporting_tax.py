@@ -632,16 +632,14 @@ class ECOperationListContext(ECSalesListContext):
                 ('start_date', '<=', Eval('end_date')),
                 (),
                 ),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date("End Date",
         domain=[
             If(Eval('start_date'),
                 ('end_date', '>=', Eval('start_date')),
                 (),
                 ),
-            ],
-        depends=['start_date'])
+            ])
 
     @classmethod
     def default_start_date(cls):
@@ -714,19 +712,17 @@ class ESVATBookContext(ModelView):
         required=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     start_period = fields.Many2One('account.period', "Start Period",
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '<=', (Eval('end_period'), 'start_date')),
-            ], depends=['fiscalyear', 'end_period'])
+            ])
     end_period = fields.Many2One('account.period', "End Period",
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('start_date', '>=', (Eval('start_period'), 'start_date'))
-            ],
-        depends=['fiscalyear', 'start_period'])
+            ])
     es_vat_book_type = fields.Selection([
             # Use same key as tax authority
             ('E', "Issued"),
@@ -769,8 +765,7 @@ class ESVATBook(ModelSQL, ModelView):
         "Surcharge Tax Amount", currency='currency', digits='currency',
         states={
             'invisible': ~(Eval('surcharge_tax', None)),
-            },
-        depends=['surcharge_tax'])
+            })
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
