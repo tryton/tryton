@@ -33,8 +33,7 @@ class Line(ModelSQL, ModelView):
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),
                 ],
-            ],
-        depends=['company'])
+            ])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
             ondelete='CASCADE', required=True)
     date = fields.Date('Date', required=True)

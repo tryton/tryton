@@ -19,8 +19,7 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('type', '!=', 'view'),
-            ],
-        depends=['company'])
+            ])
     party = fields.Many2One(
         'party.party', "Party",
         states={
@@ -29,7 +28,7 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['party_visible', 'company'])
+        depends={'company'})
     party_visible = fields.Function(fields.Boolean("Party Visible"),
         'on_change_with_party_visible')
     journal = fields.Many2One(
@@ -37,7 +36,7 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
 
     @classmethod
     def __setup__(cls):
@@ -45,7 +44,6 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         cls.analytic_accounts.domain = [
             ('company', '=', Eval('company', -1)),
             ]
-        cls.analytic_accounts.depends.append('company')
 
     @classmethod
     def default_company(cls):

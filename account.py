@@ -47,8 +47,7 @@ class Account(
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
-            },
-        depends=['company', 'type'])
+            })
     parent = fields.Many2One('analytic_account.account', 'Parent', select=True,
         domain=['OR',
             ('root', '=', Eval('root', -1)),
@@ -57,16 +56,14 @@ class Account(
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
-            },
-        depends=['root', 'type'])
+            })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children',
         states={
             'invisible': Eval('id', -1) < 0,
             },
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     balance = fields.Function(Monetary(
             "Balance", currency='currency', digits='currency'),
         'get_balance')
@@ -88,8 +85,7 @@ class Account(
         states={
             'invisible': Eval('type') != 'distribution',
             'required': Eval('type') == 'distribution',
-            },
-        depends=['type'])
+            })
     distribution_parents = fields.Many2Many(
         'analytic_account.account.distribution', 'account', 'parent',
         "Distribution Parents", readonly=True)
@@ -338,8 +334,7 @@ class AccountDistribution(ModelView, ModelSQL):
         'analytic_account.account', "Account", required=True,
         domain=[
             ('root', '=', Eval('root', -1)),
-            ],
-        depends=['root'])
+            ])
     ratio = fields.Numeric("Ratio", required=True,
         domain=[
             ('ratio', '>=', 0),
@@ -369,15 +364,13 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
                 (),
                 ('company', '=', Eval('company', -1))),
             ('type', '=', 'root'),
-            ],
-        depends=['company'])
+            ])
     account = fields.Many2One('analytic_account.account', 'Account',
         ondelete='RESTRICT',
         domain=[
             ('root', '=', Eval('root')),
             ('type', 'in', ['normal', 'distribution']),
-            ],
-        depends=['root', 'company'])
+            ])
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_company')
 
@@ -463,8 +456,7 @@ class AnalyticMixin(object):
     __slots__ = ()
     analytic_accounts = fields.One2Many('analytic.account.entry', 'origin',
         'Analytic Accounts',
-        size=Eval('analytic_accounts_size', 0),
-        depends=['analytic_accounts_size'])
+        size=Eval('analytic_accounts_size', 0))
     analytic_accounts_size = fields.Function(fields.Integer(
             'Analytic Accounts Size'), 'get_analytic_accounts_size')
 
