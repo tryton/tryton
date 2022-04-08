@@ -52,13 +52,12 @@ class PartySalePriceList(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     sale_price_list = fields.Many2One(
         'product.price_list', "Sale Price List",
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):

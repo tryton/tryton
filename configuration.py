@@ -27,5 +27,4 @@ class ConfigurationSalePriceList(ModelSQL, CompanyValueMixin):
         'product.price_list', "Sale Price List",
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])

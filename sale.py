@@ -13,8 +13,7 @@ class Sale(metaclass=PoolMeta):
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines', [0]))),
-            },
-        depends=['state', 'company'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -23,10 +22,6 @@ class Sale(metaclass=PoolMeta):
             | Eval('lines', [0]))
         cls.lines.states['readonly'] = (cls.lines.states['readonly']
             | ~Eval('party') | ~Eval('company'))
-        if 'party' not in cls.lines.depends:
-            cls.lines.depends.append('party')
-        if 'company' not in cls.lines.depends:
-            cls.lines.depends.append('company')
 
     @fields.depends('company')
     def on_change_party(self):
