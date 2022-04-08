@@ -11,8 +11,7 @@ class Template(metaclass=PoolMeta):
         "Shipment Cost",
         states={
             'invisible': Eval('type') != 'service',
-            },
-        depends=['type'])
+            })
 
 
 class Product(metaclass=PoolMeta):

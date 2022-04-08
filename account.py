@@ -42,8 +42,7 @@ class ConfigurationShipmentCostSequence(ModelSQL, CompanyValueMixin):
             ('sequence_type', '=',
                 Id('account_stock_shipment_cost',
                     'sequence_type_shipment_cost')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_shipment_cost_sequence(cls, **pattern):
@@ -64,14 +63,13 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     number = fields.Char(
         "Number", select=True, readonly=True,
         help="The main identifier for the shipment cost.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
-        states=_states, depends=_depends,
+        states=_states,
         help="The company the shipment cost is associated with.")
 
     shipments = fields.Many2Many(
@@ -81,7 +79,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ('state', '=', 'done'),
             ],
-        states=_states, depends=['company'] + _depends)
+        states=_states)
     shipment_returns = fields.Many2Many(
         'account.shipment_cost-stock.shipment.out.return',
         'shipment_cost', 'shipment', "Shipment Returns",
@@ -89,7 +87,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ('state', 'in', ['received', 'done']),
             ],
-        states=_states, depends=['company'] + _depends)
+        states=_states)
 
     invoice_lines = fields.One2Many(
         'account.invoice.line', 'shipment_cost', 'Invoice Lines',
@@ -103,7 +101,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('product.shipment_cost', '=', True),
             ('type', '=', 'line'),
             ],
-        states=_states, depends=['company'] + _depends)
+        states=_states)
 
     posted_date = fields.Date("Posted Date", readonly=True)
     state = fields.Selection([
@@ -112,7 +110,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('cancelled', "Cancelled"),
             ], "State", readonly=True, sort=False)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
