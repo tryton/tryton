@@ -102,9 +102,6 @@ class StatementLine(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ('currency', '=', Eval('currency', -1))
             ]
-        for fname in ['company', 'currency']:
-            if fname not in cls.related_to.depends:
-                cls.related_to.depends.append(fname)
 
     @classmethod
     def _get_relations(cls):
