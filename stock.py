@@ -16,8 +16,7 @@ class Move(metaclass=PoolMeta):
                 'invisible': ~Eval('secondary_unit'),
                 'readonly': Eval('state').in_(
                     ['cancelled', 'assigned', 'done']),
-                },
-            depends=['secondary_unit', 'state']),
+                }),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -27,8 +26,7 @@ class Move(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('product_secondary_uom_category'),
             'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
-            },
-        depends=['product_secondary_uom_category', 'state'])
+            })
     secondary_unit_price = fields.Function(
         Monetary(
             "Secondary Unit Price", currency='currency', digits=price_digits,
@@ -36,8 +34,7 @@ class Move(metaclass=PoolMeta):
                 'invisible': (~Eval('unit_price_required')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('state') != 'draft',
-                },
-            depends=['unit_price_required', 'secondary_unit', 'state']),
+                }),
         'on_change_with_secondary_unit_price', setter='set_secondary')
 
     product_secondary_uom_category = fields.Function(
