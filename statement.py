@@ -773,11 +773,11 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
-        if 'origin' not in cls.date.depends:
-            cls.date.states.update({
-                    'readonly': (cls.date.states['readonly']
-                        | Bool(Eval('origin', 0))),
-                    })
+        cls.date.states = {
+            'readonly': (
+                (Eval('statement_state') != 'draft')
+                | Bool(Eval('origin', 0))),
+            }
         cls.account.required = True
         t = cls.__table__()
         cls._sql_constraints += [
