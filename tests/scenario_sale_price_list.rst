@@ -155,7 +155,7 @@ Create a sale price List and assign to configuration::
     >>> sale_price_list_line.formula = 'unit_price * 0.5'
     >>> sale_price_list.save()
     >>> Configuration = Model.get('sale.configuration')
-    >>> config = Configuration()
+    >>> config = Configuration(1)
     >>> config.sale_price_list = sale_price_list
     >>> config.save()
 
