@@ -38,8 +38,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('sale_subscription', 'sequence_type_subscription')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_subscription_sequence(cls):

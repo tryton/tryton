@@ -35,7 +35,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('state') != 'draft') | Eval('party', True),
             },
-        depends=['state', 'party'],
         help="Make the subscription belong to the company.")
 
     number = fields.Char(
@@ -48,8 +47,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
     description = fields.Char("Description",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     party = fields.Many2One(
         'party.party', "Party", required=True,
@@ -60,7 +58,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'company'],
         help="The party who subscribes.")
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
@@ -70,7 +67,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['company', 'party'])
+        depends={'company', 'party'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -82,7 +79,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['state', 'company', 'party'])
+        depends={'company', 'party'})
     invoice_address = fields.Many2One(
         'party.address', "Invoice Address",
         domain=[
@@ -92,30 +89,26 @@ class Subscription(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft']),
-            },
-        depends=['party', 'invoice_party', 'state'])
+            })
     payment_term = fields.Many2One(
         'account.invoice.payment_term', "Payment Term",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('currency', 0))),
-            },
-        depends=['state'])
+            })
 
     start_date = fields.Date(
         "Start Date", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('next_invoice_date')),
-            },
-        depends=['state', 'next_invoice_date'])
+            })
     end_date = fields.Date(
         "End Date",
         domain=['OR',
@@ -127,36 +120,31 @@ class Subscription(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['start_date', 'state'])
+            })
 
     invoice_recurrence = fields.Many2One(
         'sale.subscription.recurrence.rule.set', "Invoice Recurrence",
         required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     invoice_start_date = fields.Date("Invoice Start Date",
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('next_invoice_date')),
-            },
-        depends=['state', 'next_invoice_date'])
+            })
     next_invoice_date = fields.Date(
         "Next Invoice Date", readonly=True,
         states={
             'invisible': Eval('state') != 'running',
-            },
-        depends=['state'])
+            })
 
     lines = fields.One2Many(
         'sale.subscription.line', 'subscription', "Lines",
         states={
             'readonly': ((Eval('state') != 'draft')
                 | ~Eval('start_date')),
-            },
-        depends=['state'])
+            })
 
     quoted_by = employee_field(
         "Quoted By", states=['quotation', 'running', 'closed', 'cancelled'])
@@ -467,7 +455,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': ((Eval('subscription_state') != 'draft')
                 & Bool(Eval('subscription'))),
             },
-        depends=['subscription_state'],
         help="Add the line below the subscription.")
     subscription_state = fields.Function(
         fields.Selection('get_subscription_states', "Subscription State"),
@@ -490,20 +477,18 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         context={
             'company': Eval('company', None),
             },
-        depends=['subscription_state', 'company'])
+        depends={'company'})
     description = fields.Text("Description",
         states={
             'readonly': Eval('subscription_state') != 'draft',
-            },
-        depends=['subscription_state'])
+            })
 
     quantity = fields.Float(
         "Quantity", digits='unit',
         states={
             'readonly': Eval('subscription_state') != 'draft',
             'required': Bool(Eval('consumption_recurrence')),
-            },
-        depends=['subscription_state', 'consumption_recurrence'])
+            })
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
         states={
@@ -513,8 +498,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             If(Bool(Eval('service_unit_category')),
                 ('category', '=', Eval('service_unit_category')),
                 ('category', '!=', -1)),
-            ],
-        depends=['subscription_state', 'service_unit_category'])
+            ])
     service_unit_category = fields.Function(
         fields.Many2One('product.uom.category', "Service Unit Category"),
         'on_change_with_service_unit_category')
@@ -523,23 +507,20 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         "Unit Price", currency='currency', digits=price_digits,
         states={
             'readonly': Eval('subscription_state') != 'draft',
-            },
-        depends=['subscription_state'])
+            })
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
     consumption_recurrence = fields.Many2One(
         'sale.subscription.recurrence.rule.set', "Consumption Recurrence",
         states={
             'readonly': Eval('subscription_state') != 'draft',
-            },
-        depends=['subscription_state'])
+            })
     consumption_delay = fields.TimeDelta(
         "Consumption Delay",
         states={
             'readonly': Eval('subscription_state') != 'draft',
             'invisible': ~Eval('consumption_recurrence'),
-            },
-        depends=['subscription_state', 'consumption_recurrence'])
+            })
     next_consumption_date = fields.Date("Next Consumption Date", readonly=True)
     next_consumption_date_delayed = fields.Function(
         fields.Date("Next Consumption Delayed"),
@@ -553,9 +534,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
                 | Eval('consumed_until')),
-            },
-        depends=[
-            'subscription_start_date', 'subscription_state', 'consumed_until'])
+            })
     end_date = fields.Date(
         "End Date",
         domain=['OR', [
@@ -572,9 +551,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
                 | (~Eval('consumed_until') & Eval('consumed_until'))),
-            },
-        depends=['subscription_end_date', 'start_date',
-            'consumed_until', 'subscription_state', 'consumed_until'])
+            })
 
     @classmethod
     def __setup__(cls):

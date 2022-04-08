@@ -18,8 +18,7 @@ class Service(DeactivableMixin, ModelSQL, ModelView):
     consumption_delay = fields.TimeDelta("Consumption Delay",
         states={
             'invisible': ~Eval('consumption_recurrence'),
-            },
-        depends=['consumption_recurrence'])
+            })
 
     def get_rec_name(self, name):
         return self.product.rec_name
