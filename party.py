@@ -36,8 +36,7 @@ class Address(metaclass=PoolMeta):
         domain=[
             ('party', '=', Eval('party', -1)),
             ('type', 'in', ['phone', 'mobile']),
-            ],
-        depends=['party'])
+            ])
 
     def get_vsf(self, for_party=None):
         if for_party and for_party != self.party:

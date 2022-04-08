@@ -82,15 +82,13 @@ class Shop(metaclass=PoolMeta):
         states={
             'required': Eval('type') == 'vsf',
             'invisible': Eval('type') != 'vsf',
-            },
-        depends=['type'])
+            })
     vsf_elasticsearch_index = fields.Char(
         "Elasticsearch Index",
         states={
             'required': Eval('type') == 'vsf',
             'invisible': Eval('type') != 'vsf',
-            },
-        depends=['type'])
+            })
 
     @classmethod
     def __setup__(cls):
