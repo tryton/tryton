@@ -34,8 +34,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             'stock.shipment.internal': [
                 ('company', '=', Eval('company', -1)),
                 ],
-            },
-        depends=['company'])
+            })
     planned_date = fields.Function(
         fields.Date("Planned Date"),
         'on_change_with_planned_date')
@@ -58,8 +57,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             "Earliest Percentage", digits=(1, 4),
             states={
                 'invisible': ~Eval('earliest_date'),
-                },
-            depends=['earliest_date']),
+                }),
         'get_earliest_percentage')
     warehouse = fields.Function(
         fields.Many2One('stock.location', "Warehouse"),
