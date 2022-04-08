@@ -29,8 +29,6 @@ class Cron(metaclass=PoolMeta):
                 ('code', '=', 'RON'),
                 ()),
             ]
-        if 'source' not in cls.currency.depends:
-            cls.currency.depends.append('source')
 
     def fetch_bnr_ro(self, date):
         if (dt.date.today() - date).days < 10:
