@@ -180,7 +180,6 @@ class ShipmentAssignManualShow(ModelView):
                 ('quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['move_quantity'],
         help="The maximum quantity to assign from the place.\n"
         "Leave empty for the full quantity of the move.")
     unit = fields.Many2One('product.uom', "Unit", readonly=True)
@@ -369,7 +368,6 @@ class ShipmentAssignedMove(ModelView):
                 ('unassigned_quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['move_quantity'],
         help="The quantity to unassign")
     assigned_quantity = fields.Float(
         "Assigned Quantity", digits='unit',
@@ -380,7 +378,6 @@ class ShipmentAssignedMove(ModelView):
                 ('assigned_quantity', '<=', Eval('move_quantity', 0)),
                 ],
             ],
-        depends=['move_quantity'],
         help="The quantity left assigned")
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
@@ -427,7 +424,6 @@ class ShipmentUnassignManualShow(ModelView):
     moves = fields.One2Many(
         'stock.shipment.assigned.move', None, "Moves",
         domain=[('move.id', 'in', Eval('assigned_moves'))],
-        depends=['assigned_moves'],
         help="The moves to unassign.")
     assigned_moves = fields.Many2Many(
         'stock.move', None, None, "Assigned Moves")
