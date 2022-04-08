@@ -32,20 +32,17 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('warehouse', '=', Eval('warehouse', -1)),
-            ],
-        depends=['company', 'warehouse'])
+            ])
     children = fields.One2Many('production.work.center', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('warehouse', '=', Eval('warehouse', -1)),
-            ],
-        depends=['company', 'warehouse'])
+            ])
     category = fields.Many2One('production.work.center.category', 'Category')
     cost_price = fields.Numeric('Cost Price', digits=price_digits,
         states={
             'required': Bool(Eval('cost_method')),
-            },
-        depends=['cost_method'])
+            })
     cost_method = fields.Selection([
             ('', ''),
             ('cycle', 'Per Cycle'),
@@ -53,8 +50,7 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
             ], 'Cost Method',
         states={
             'required': Bool(Eval('cost_price')),
-            },
-        depends=['cost_price'])
+            })
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
@@ -108,8 +104,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         select=True, ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     work_center_category = fields.Function(fields.Many2One(
             'production.work.center.category', 'Work Center Category'),
         'on_change_with_work_center_category')
@@ -123,13 +118,11 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'required': ~Eval('state').in_(['request', 'draft']),
-            },
-        depends=['work_center_category', 'company', 'warehouse', 'state'])
+            })
     cycles = fields.One2Many('production.work.cycle', 'work', 'Cycles',
         states={
             'readonly': Eval('state').in_(['request', 'done']),
-            },
-        depends=['state'])
+            })
     active_cycles = fields.One2Many(
         'production.work.cycle', 'work', "Active Cycles",
         readonly=True,
@@ -283,8 +276,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
         states={
             'required': Eval('state') == 'done',
             'readonly': Eval('state').in_(['done', 'draft', 'cancelled']),
-            },
-        depends=['state'])
+            })
     cost = fields.Numeric('Cost', digits=price_digits, readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),

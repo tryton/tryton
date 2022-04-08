@@ -25,8 +25,7 @@ class Production(metaclass=PoolMeta):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('warehouse', '=', Eval('warehouse', -1)),
-            ],
-        depends=['routing', 'company', 'warehouse', 'state'])
+            ])
     works = fields.One2Many('production.work', 'production', 'Works',
         states={
             'readonly': Eval('state').in_(
@@ -34,8 +33,7 @@ class Production(metaclass=PoolMeta):
             },
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['state', 'company'])
+            ])
 
     def get_cost(self, name):
         pool = Pool()
