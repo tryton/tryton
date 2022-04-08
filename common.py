@@ -23,16 +23,14 @@ class BraintreeCustomerMethodMixin:
                 ~Eval('party') | (Eval('party', -1) < 0)
                 | ~Eval('braintree_account')
                 | (Eval('braintree_account', -1) < 0)),
-            },
-        depends=['party', 'process_method', 'braintree_account'])
+            })
     braintree_customer_method = fields.Char(
         "Braintree Customer Method",
         states={
             'invisible': (
                 (Eval('process_method') != 'braintree')
                 | ~Eval('braintree_customer')),
-            },
-        depends=['process_method', 'braintree_customer'])
+            })
     # Use Function field with selection
     # to avoid querying Braintree on validation
     braintree_customer_method_selection = fields.Function(fields.Selection(
@@ -41,8 +39,7 @@ class BraintreeCustomerMethodMixin:
                 'invisible': (
                     (Eval('process_method') != 'braintree')
                     | ~Eval('braintree_customer')),
-                },
-            depends=['process_method', 'braintree_customer']),
+                }),
         'get_braintree_customer_method',
         setter='set_braintree_customer_method')
 

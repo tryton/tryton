@@ -57,8 +57,7 @@ class PaymentJournal(metaclass=PoolMeta):
         states={
             'required': Eval('process_method') == 'braintree',
             'invisible': Eval('process_method') != 'braintree',
-            },
-        depends=['currency', 'process_method'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -160,15 +159,13 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
         states={
             'invisible': ((Eval('process_method') != 'braintree')
                 | ~Eval('braintree_transaction_id')),
-            },
-        depends=['process_method'])
+            })
     braintree_settle_payment = fields.Boolean(
         "Braintree Settle Payment",
         states={
             'invisible': Eval('process_method') != 'braintree',
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['process_method', 'state'])
+            })
     braintree_payment_settled = fields.Boolean(
         "Braintree Payment Settled", readonly=True)
     braintree_settlement_needed = fields.Function(
@@ -180,8 +177,7 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
         states={
             'invisible': ((Eval('process_method') != 'braintree')
                 | ~Eval('braintree_transaction_id')),
-            },
-        depends=['process_method', 'braintree_transaction_id'])
+            })
 
     braintree_dispute_reason = fields.Char(
         "Braintree Dispute Reason", readonly=True,
@@ -204,26 +200,20 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.amount.states['readonly'] &= ~Eval('braintree_settlement_needed')
-        cls.amount.depends.append('braintree_settlement_needed')
 
         cls.braintree_customer.states['readonly'] = (
                 ~Eval('state').in_(['draft', 'approved'])
                 | Eval('braintree_nonce'))
-        cls.braintree_customer.depends.extend(['state', 'braintree_nonce'])
 
         cls.braintree_customer_method.states['invisible'] |= (
             Eval('braintree_nonce'))
         cls.braintree_customer_method.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved']))
-        cls.braintree_customer_method.depends.extend(
-            ['braintree_nonce', 'state'])
 
         cls.braintree_customer_method_selection.states['invisible'] |= (
             Eval('braintree_nonce'))
         cls.braintree_customer_method_selection.states['readonly'] = (
             ~Eval('state').in_(['draft', 'approved']))
-        cls.braintree_customer_method_selection.depends.extend(
-            ['braintree_nonce', 'state'])
 
         cls._buttons.update({
                 'braintree_checkout': {
@@ -533,14 +523,12 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     approved_by = employee_field(
         "Approved by",
         states=['approved', 'processing', 'succeeded', 'failed'])
@@ -768,8 +756,7 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
         "Automatic Settlement",
         states={
             'invisible': Eval('environment') != 'sandbox',
-            },
-        depends=['environment'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -891,15 +878,13 @@ class PaymentBraintreeCustomer(
         states={
             'readonly': (
                 Eval('braintree_customer_id') | Eval('braintree_nonce')),
-            },
-        depends=['braintree_customer_id', 'braintree_nonce'])
+            })
     braintree_account = fields.Many2One(
         'account.payment.braintree.account', "Account", required=True,
         states={
             'readonly': (
                 Eval('braintree_customer_id') | Eval('braintree_nonce')),
-            },
-        depends=['braintree_customer_id', 'braintree_nonce'])
+            })
     braintree_customer_id = fields.Char(
         "Braintree Customer ID",
         states={
