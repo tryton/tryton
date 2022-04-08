@@ -18,7 +18,6 @@ class Carrier(metaclass=PoolMeta):
             'required': Eval('carrier_cost_method') == 'weight',
             'readonly': Bool(Eval('weight_price_list', [])),
             },
-        depends=['carrier_cost_method', 'weight_price_list'],
         help="The unit of weight criteria of the price list.")
     weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits'),
         'on_change_with_weight_uom_digits')
@@ -28,7 +27,6 @@ class Carrier(metaclass=PoolMeta):
             'required': Eval('carrier_cost_method') == 'weight',
             'readonly': Bool(Eval('weight_price_list', [])),
             },
-        depends=['carrier_cost_method', 'weight_price_list'],
         help="The currency of the price.")
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',
         'Price List',
@@ -36,7 +34,6 @@ class Carrier(metaclass=PoolMeta):
             'invisible': Eval('carrier_cost_method') != 'weight',
             'readonly': ~(Eval('weight_uom', 0) & Eval('weight_currency', 0)),
             },
-        depends=['carrier_cost_method', 'weight_uom', 'weight_currency'],
         help="Add price to the carrier service.")
 
     @classmethod
@@ -89,7 +86,7 @@ class WeightPriceList(ModelSQL, ModelView):
         help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
-        depends=['carrier'],
+        depends={'carrier'},
         help="The lower limit for the price.")
     price = Monetary(
         "Price", currency='currency', digits='currency',
