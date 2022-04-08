@@ -60,14 +60,12 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         'carrier.sendcloud.address', 'sendcloud', "Addresses",
         states={
             'readonly': ~Eval('id') | (Eval('id', -1) < 0),
-            },
-        depends=['id'])
+            })
     shipping_methods = fields.One2Many(
         'carrier.sendcloud.shipping_method', 'sendcloud', "Methods",
         states={
             'readonly': ~Eval('id') | (Eval('id', -1) < 0),
-            },
-        depends=['id'])
+            })
 
     _addresses_sender_cache = Cache(
         'carrier.credential.sendcloud.addresses_sender',
@@ -252,8 +250,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'invisible': Eval('shipping_service') != 'sendcloud',
             'required': Eval('shipping_service') == 'sendcloud',
-            },
-        depends=['shipping_service'])
+            })
 
     @classmethod
     def __setup__(cls):
