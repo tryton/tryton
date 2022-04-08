@@ -8,12 +8,12 @@ from sql.functions import Position, Substring
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
-from trytond.transaction import Transaction
 from trytond.tools import cached_property
+from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, domain_validate, get_eval_fields,
-    instantiate_context, search_order_validate, with_inactive_records)
+    Field, context_validate, domain_validate, instantiate_context,
+    search_order_validate, with_inactive_records)
 from .selection import SelectionMixin
 
 
