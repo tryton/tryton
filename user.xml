@@ -36,6 +36,30 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_user_form"/>
 
+        <record model="ir.action.act_window" id="act_user_form_party">
+            <field name="name">Web Users</field>
+            <field name="res_model">web.user</field>
+            <field
+                name="domain"
+                eval="['OR', ('party', 'in', Eval('active_ids')), ('secondary_parties', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_user_form_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="user_view_list"/>
+            <field name="act_window" ref="act_user_form_party"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_user_form_party_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="user_view_form"/>
+            <field name="act_window" ref="act_user_form_party"/>
+        </record>
+        <record model="ir.action.keyword" id="act_user_form_party_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_user_form_party"/>
+        </record>
+
         <record model="ir.model.access" id="access_user">
             <field name="model" search="[('model', '=', 'web.user')]"/>
             <field name="perm_read" eval="True"/>
