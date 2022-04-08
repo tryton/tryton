@@ -18,7 +18,6 @@ class Location(metaclass=PoolMeta):
         domain=[
             ('type', 'in', ['storage', 'view']),
             ],
-        depends=['type'],
         help='Leave empty for no default provisioning.')
     overflowing_location = fields.Many2One('stock.location',
         'Overflowing Location',
@@ -28,7 +27,6 @@ class Location(metaclass=PoolMeta):
         domain=[
             ('type', 'in', ['storage', 'view']),
             ],
-        depends=['type'],
         help='Leave empty for no default overflowing.')
 
 

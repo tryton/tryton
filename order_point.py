@@ -30,23 +30,21 @@ class OrderPoint(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['type', 'company'])
+        depends={'company'})
     warehouse_location = fields.Many2One('stock.location',
         'Warehouse Location', select=True,
         domain=[('type', '=', 'warehouse')],
         states={
             'invisible': Not(Equal(Eval('type'), 'purchase')),
             'required': Equal(Eval('type'), 'purchase'),
-            },
-        depends=['type'])
+            })
     storage_location = fields.Many2One('stock.location', 'Storage Location',
         select=True,
         domain=[('type', '=', 'storage')],
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': Equal(Eval('type'), 'internal'),
-        },
-        depends=['type'])
+        })
     location = fields.Function(fields.Many2One('stock.location', 'Location'),
             'get_location', searcher='search_location')
     provisioning_location = fields.Many2One(
@@ -56,8 +54,7 @@ class OrderPoint(ModelSQL, ModelView):
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': ((Eval('type') == 'internal')
                 & (Eval('min_quantity', None) != None)),  # noqa: E711
-        },
-        depends=['type', 'min_quantity'])
+        })
     overflowing_location = fields.Many2One(
         'stock.location', 'Overflowing Location',
         domain=[('type', 'in', ['storage', 'view'])],
@@ -65,8 +62,7 @@ class OrderPoint(ModelSQL, ModelView):
             'invisible': Eval('type') != 'internal',
             'required': ((Eval('type') == 'internal')
                 & (Eval('max_quantity', None) != None)),  # noqa: E711
-            },
-        depends=['type', 'max_quantity'])
+            })
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
@@ -80,8 +76,7 @@ class OrderPoint(ModelSQL, ModelView):
         domain=['OR',
             ('min_quantity', '=', None),
             ('min_quantity', '<=', Eval('target_quantity', 0)),
-            ],
-        depends=['target_quantity', 'type'])
+            ])
     target_quantity = fields.Float(
         "Target Quantity", digits='unit', required=True,
         domain=[
@@ -93,8 +88,7 @@ class OrderPoint(ModelSQL, ModelView):
                 ('max_quantity', '=', None),
                 ('target_quantity', '<=', Eval('max_quantity', 0)),
                 ],
-            ],
-        depends=['min_quantity', 'max_quantity'])
+            ])
     max_quantity = fields.Float(
         "Maximal Quantity", digits='unit',
         states={
@@ -103,8 +97,7 @@ class OrderPoint(ModelSQL, ModelView):
         domain=['OR',
             ('max_quantity', '=', None),
             ('max_quantity', '>=', Eval('target_quantity', 0)),
-            ],
-        depends=['type', 'target_quantity'])
+            ])
     company = fields.Many2One('company.company', 'Company', required=True,
             domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
