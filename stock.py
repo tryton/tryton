@@ -16,8 +16,7 @@ class Location(metaclass=PoolMeta):
             },
         domain=[
             ('type', '=', 'production'),
-            ],
-        depends=['type'])
+            ])
     production_picking_location = fields.Many2One(
         'stock.location', "Production Picking",
         states={
@@ -27,7 +26,6 @@ class Location(metaclass=PoolMeta):
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('id', -1)]),
             ],
-        depends=['type', 'id'],
         help="Where the production components are picked from.\n"
         "Leave empty to use the warehouse storage location.")
     production_output_location = fields.Many2One(
@@ -39,7 +37,6 @@ class Location(metaclass=PoolMeta):
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('id', -1)]),
             ],
-        depends=['type', 'id'],
         help="Where the produced goods are stored.\n"
         "Leave empty to use the warehouse storage location.")
 
@@ -51,15 +48,13 @@ class Move(metaclass=PoolMeta):
         domain=[('company', '=', Eval('company'))],
         states={
             'invisible': ~Eval('production_input'),
-            },
-        depends=['company'])
+            })
     production_output = fields.Many2One('production', 'Production Output',
         readonly=True, select=True, ondelete='CASCADE',
         domain=[('company', '=', Eval('company'))],
         states={
             'invisible': ~Eval('production_output'),
-            },
-        depends=['company'])
+            })
     production = fields.Function(fields.Many2One(
             'production', "Production",
             states={
@@ -70,8 +65,7 @@ class Move(metaclass=PoolMeta):
         "Cost Price Updated", readonly=True,
         states={
             'invisible': ~Eval('production_input') & (Eval('state') == 'done'),
-            },
-        depends=['production_input', 'state'])
+            })
 
     @classmethod
     def __setup__(cls):

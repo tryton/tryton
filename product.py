@@ -18,7 +18,6 @@ class Template(metaclass=PoolMeta):
         cls.producible.states = {
             'invisible': ~Eval('type').in_(cls.get_producible_types()),
             }
-        cls.producible.depends = ['type']
 
     @classmethod
     def get_producible_types(cls):
@@ -39,14 +38,12 @@ class Product(metaclass=PoolMeta):
         'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': ~Eval('producible')
-            },
-        depends=['producible'])
+            })
     lead_times = fields.One2Many('production.lead_time',
         'product', 'Lead Times', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': ~Eval('producible'),
-            },
-        depends=['producible'])
+            })
 
     @classmethod
     def validate(cls, products):
@@ -93,7 +90,7 @@ class ProductBom(sequence_ordered(), ModelSQL, ModelView):
             ('output_products', '=', If(Bool(Eval('product')),
                     Eval('product', 0),
                     Get(Eval('_parent_product', {}), 'id', 0))),
-            ], depends=['product'])
+            ])
 
     def get_rec_name(self, name):
         return self.bom.rec_name
@@ -117,8 +114,7 @@ class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ('output_products', '=', If(Bool(Eval('product')),
                     Eval('product', -1),
                     Get(Eval('_parent_product', {}), 'id', 0))),
-            ],
-        depends=['product'])
+            ])
     lead_time = fields.TimeDelta('Lead Time')
 
     @classmethod

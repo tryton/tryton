@@ -38,8 +38,7 @@ class ConfigurationProductionSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('production', 'sequence_type_production')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):

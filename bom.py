@@ -53,7 +53,7 @@ class BOMInput(ModelSQL, ModelView):
     uom = fields.Many2One('product.uom', 'Uom', required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
-        ], depends=['uom_category'])
+            ])
     quantity = fields.Float('Quantity', digits='uom', required=True,
         domain=['OR',
             ('quantity', '>=', 0),
@@ -190,13 +190,13 @@ class OpenBOMTreeStart(ModelView):
     uom = fields.Many2One('product.uom', 'Unit', required=True,
         domain=[
             ('category', '=', Eval('category')),
-        ], depends=['category'])
+            ])
     category = fields.Many2One('product.uom.category', 'Category',
         readonly=True)
     bom = fields.Many2One('product.product-production.bom',
         'BOM', required=True, domain=[
             ('product', '=', Eval('product')),
-        ], depends=['product'])
+            ])
     product = fields.Many2One('product.product', 'Product', readonly=True)
 
 

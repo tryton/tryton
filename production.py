@@ -32,34 +32,28 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     reference = fields.Char('Reference', select=1,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        depends=['state'])
+            })
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        depends=['state'])
+            })
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        depends=['state'])
+            })
     planned_start_date = fields.Date('Planned Start Date',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('planned_date')),
-            },
-        depends=['state', 'planned_date'])
+            })
     effective_start_date = fields.Date('Effective Start Date',
         states={
             'readonly': Eval('state').in_(['cancelled', 'running', 'done']),
-            },
-        depends=['state'])
+            })
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        depends=['state'])
+            })
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
             ('type', '=', 'warehouse'),
@@ -67,8 +61,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | Eval('inputs', [-1]) | Eval('outputs', [-1])),
-            },
-        depends=['state'])
+            })
     location = fields.Many2One('stock.location', 'Location', required=True,
         domain=[
             ('type', '=', 'production'),
@@ -76,8 +69,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | Eval('inputs', [-1]) | Eval('outputs', [-1])),
-            },
-        depends=['state'])
+            })
     product = fields.Many2One('product.product', 'Product',
         domain=[
             ('producible', '=', True),
@@ -88,7 +80,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     bom = fields.Many2One('production.bom', 'BOM',
         domain=[
             ('output_products', '=', Eval('product', 0)),
@@ -97,8 +89,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | ~Eval('warehouse', 0) | ~Eval('location', 0)),
             'invisible': ~Eval('product'),
-            },
-        depends=['product'])
+            })
     uom_category = fields.Function(fields.Many2One(
             'product.uom.category', 'Uom Category'),
         'on_change_with_uom_category')
@@ -110,8 +101,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('bom')),
             'invisible': ~Eval('product'),
-            },
-        depends=['uom_category'])
+            })
     quantity = fields.Float(
         "Quantity", digits='uom',
         states={
@@ -131,8 +121,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': (~Eval('state').in_(['request', 'draft', 'waiting'])
                 | ~Eval('warehouse') | ~Eval('location')),
-            },
-        depends=['warehouse', 'location', 'company'])
+            })
     outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
         domain=[
             ('shipment', '=', None),
@@ -146,8 +135,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('state').in_(['done', 'cancelled'])
                 | ~Eval('warehouse') | ~Eval('location')),
-            },
-        depends=['warehouse', 'location', 'company'])
+            })
 
     assigned_by = employee_field("Assigned By")
     run_by = employee_field("Run By")
@@ -165,8 +153,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         "Origin", selection='get_origin', select=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def __setup__(cls):
