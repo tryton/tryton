@@ -22,8 +22,6 @@ class OrderPoint(metaclass=PoolMeta):
                 ('producible', '=', True),
                 ()),
             ]
-        if 'type' not in cls.product.depends:
-            cls.product.depends.append('type')
 
         cls.warehouse_location.states['invisible'] &= (
             Eval('type') != 'production')
