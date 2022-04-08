@@ -30,14 +30,12 @@ class Template(metaclass=PoolMeta):
             },
         domain=[
             If(~Eval('active'), ('active', '=', False), ()),
-            ],
-        depends=['purchasable', 'active'])
+            ])
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
             },
-        domain=[('category', '=', Eval('default_uom_category'))],
-        depends=['purchasable', 'default_uom_category'])
+        domain=[('category', '=', Eval('default_uom_category'))])
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
@@ -127,8 +125,7 @@ class Product(metaclass=PoolMeta):
         states={
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
-            },
-        depends=['template', 'purchasable', 'active'])
+            })
     purchase_price_uom = fields.Function(fields.Numeric(
             "Purchase Price", digits=price_digits), 'get_purchase_price_uom')
 
@@ -262,7 +259,7 @@ class ProductSupplier(
         context={
             'company': Eval('company', -1),
             },
-        depends=['product', 'active', 'company'])
+        depends={'company'})
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
@@ -274,14 +271,14 @@ class ProductSupplier(
         context={
             'company': Eval('company', -1),
             },
-        depends=['template', 'active', 'company'])
+        depends={'company'})
     party = fields.Many2One(
         'party.party', 'Supplier', required=True, ondelete='CASCADE',
         select=True,
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
     prices = fields.One2Many('purchase.product_supplier.price',

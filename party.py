@@ -39,7 +39,7 @@ class CustomerCode(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     customer_code = fields.Char('Customer Code')
 
 
@@ -51,7 +51,7 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     supplier_lead_time = fields.TimeDelta("Lead Time")
 
 

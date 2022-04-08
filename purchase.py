@@ -73,7 +73,6 @@ class Purchase(
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
@@ -83,24 +82,20 @@ class Purchase(
                 | Eval('lines', [0])
                 | Eval('party', True)
                 | Eval('invoice_party', True)),
-            },
-        depends=['state'])
+            })
     number = fields.Char('Number', size=None, readonly=True, select=True)
     reference = fields.Char('Reference', select=True)
-    description = fields.Char('Description', size=None, states=_states,
-        depends=_depends)
+    description = fields.Char('Description', size=None, states=_states)
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
             'required': ~Eval('state').in_(
                 ['draft', 'quotation', 'cancelled']),
-            },
-        depends=['state'])
+            })
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
-            },
-        depends=['state'])
+            })
     party = fields.Many2One('party.party', 'Party', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -109,7 +104,7 @@ class Purchase(
         context={
             'company': Eval('company', -1),
             },
-        select=True, depends=['state', 'company'])
+        select=True, depends={'company'})
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     contact = fields.Many2One(
@@ -120,7 +115,7 @@ class Purchase(
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['party', 'company'])
+        depends={'company'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -132,7 +127,7 @@ class Purchase(
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['state', 'party', 'company'])
+        depends={'company'})
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[
             ('party', '=', If(Bool(Eval('invoice_party')),
@@ -142,19 +137,16 @@ class Purchase(
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(
                 ['draft', 'quotation', 'cancelled']),
-            },
-        depends=['party', 'invoice_party', 'state'])
+            })
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-        domain=[('type', '=', 'warehouse')], states=_states,
-        depends=_depends)
+        domain=[('type', '=', 'warehouse')], states=_states)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('currency'))),
-            },
-        depends=['state'])
+            })
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-        states=_states, depends=_depends)
+        states=_states)
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
@@ -175,8 +167,7 @@ class Purchase(
             ('manual', 'Manual'),
             ('order', 'Based On Order'),
             ('shipment', 'Based On Shipment'),
-            ], 'Invoice Method', required=True, states=_states,
-        depends=_depends)
+            ], 'Invoice Method', required=True, states=_states)
     invoice_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
@@ -195,15 +186,13 @@ class Purchase(
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     delivery_date = fields.Date(
         "Delivery Date",
         states={
             'readonly': Eval('state').in_([
                     'processing', 'done', 'cancelled']),
             },
-        depends=['state'],
         help="The default delivery date for each line.")
     shipment_state = fields.Selection([
             ('none', 'None'),
@@ -236,7 +225,7 @@ class Purchase(
             ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True, sort=False)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -1038,8 +1027,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': ((Eval('purchase_state') != 'draft')
                 & Bool(Eval('purchase'))),
-            },
-        depends=['purchase_state'])
+            })
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1048,22 +1036,19 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         ], 'Type', select=True, required=True,
         states={
             'readonly': Eval('purchase_state') != 'draft',
-            },
-        depends=['purchase_state'])
+            })
     quantity = fields.Float(
         "Quantity", digits='unit',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('purchase_state') != 'draft',
-            },
-        depends=['type', 'purchase_state'])
+            })
     actual_quantity = fields.Float(
         "Actual Quantity", digits='unit', readonly=True,
         states={
             'invisible': Eval('type') != 'line',
-            },
-        depends=['type'])
+            })
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
         states={
@@ -1075,8 +1060,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
-            ],
-        depends=['product', 'type', 'product_uom_category', 'purchase_state'])
+            ])
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
@@ -1107,7 +1091,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
             },
-        depends=['type', 'purchase_state', 'product_supplier', 'company'])
+        depends={'company'})
     product_supplier = fields.Many2One(
         'purchase.product_supplier', "Supplier's Product",
         ondelete='RESTRICT',
@@ -1126,8 +1110,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
-            },
-        depends=['product', 'type', 'purchase_state', 'purchase'])
+            })
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1137,18 +1120,17 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': Eval('purchase_state') != 'draft',
-            }, depends=['type', 'purchase_state'])
+            })
     amount = fields.Function(Monetary(
             "Amount", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
-                },
-            depends=['type']), 'get_amount')
+                }),
+        'get_amount')
     description = fields.Text('Description', size=None,
         states={
             'readonly': Eval('purchase_state') != 'draft',
-            },
-        depends=['purchase_state'])
+            })
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
@@ -1163,8 +1145,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
-            },
-        depends=['type', 'purchase_state', 'purchase'])
+            })
     invoice_lines = fields.One2Many('account.invoice.line', 'origin',
         'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
@@ -1185,8 +1166,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     | (Eval('delivery_date_edit', False)
                         & ~Eval('purchase_state').in_(
                             ['processing', 'done', 'cancelled']))),
-                },
-            depends=['type', 'delivery_date_edit', 'purchase_state']),
+                }),
         'on_change_with_delivery_date')
     delivery_date_edit = fields.Boolean(
         "Edit Delivery Date",
@@ -1195,7 +1175,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('purchase_state').in_([
                     'processing', 'done', 'cancelled']),
             },
-        depends=['type', 'purchase_state'],
         help="Check to edit the delivery date.")
     delivery_date_store = fields.Date(
         "Delivery Date",
@@ -1206,8 +1185,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     ['processing', 'done', 'cancelled'])),
             'readonly': Eval('purchase_state').in_([
                     'processing', 'done', 'cancelled']),
-            },
-        depends=['type', 'delivery_date_edit', 'purchase_state'])
+            })
     purchase_state = fields.Function(
         fields.Selection('get_purchase_states', 'Purchase State'),
         'on_change_with_purchase_state')
@@ -1878,7 +1856,7 @@ class HandleShipmentExceptionAsk(ModelView):
     __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
-        domain=[('id', 'in', Eval('domain_moves'))], depends=['domain_moves'],
+        domain=[('id', 'in', Eval('domain_moves'))],
         help=('The selected moves will be recreated. '
             'The other ones will be ignored.'))
     domain_moves = fields.Many2Many(
@@ -1942,7 +1920,6 @@ class HandleInvoiceExceptionAsk(ModelView):
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Recreate Invoices',
         domain=[('id', 'in', Eval('domain_invoices'))],
-        depends=['domain_invoices'],
         help=('The selected invoices will be recreated. '
             'The other ones will be ignored.'))
     domain_invoices = fields.Many2Many(

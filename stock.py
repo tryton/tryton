@@ -50,8 +50,7 @@ class ShipmentIn(metaclass=PoolMeta):
                 add_remove,
                 cls.incoming_moves.add_remove,
                 ]
-        if 'supplier' not in cls.incoming_moves.depends:
-            cls.incoming_moves.depends.append('supplier')
+        cls.incoming_moves.depends.add('supplier')
 
     @classmethod
     @ModelView.button
@@ -170,7 +169,7 @@ class Move(metaclass=PoolMeta):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
@@ -274,5 +273,4 @@ class Location(metaclass=PoolMeta):
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('id', -1)]),
             ],
-        depends=['type', 'id'],
         help='If empty the Storage location is used.')
