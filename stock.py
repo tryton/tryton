@@ -46,8 +46,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock_package', 'sequence_type_package')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -138,8 +137,7 @@ class MeasurementsMixin:
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'required': Bool(Eval('packaging_weight')),
-            },
-        depends=['packaging_weight'])
+            })
 
     @fields.depends(
         'packaging_volume', 'packaging_volume_uom',
@@ -189,8 +187,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         'stock.package.type', "Type", required=True,
         states={
             'readonly': Eval('state') == 'closed',
-            },
-        depends=['state'])
+            })
     shipment = fields.Reference(
         "Shipment", selection='get_shipment', select=True,
         states={
@@ -203,8 +200,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             'stock.shipment.in.return': [
                 ('company', '=', Eval('company', -1)),
                 ],
-            },
-        depends=['state', 'company'])
+            })
     moves = fields.One2Many('stock.move', 'package', 'Moves',
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -220,8 +216,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') == 'closed',
-            },
-        depends=['company', 'shipment', 'state'])
+            })
     parent = fields.Many2One(
         'stock.package', "Parent", select=True, ondelete='CASCADE',
         domain=[
@@ -230,8 +225,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') == 'closed',
-            },
-        depends=['company', 'shipment', 'state'])
+            })
     children = fields.One2Many(
         'stock.package', 'parent', 'Children',
         domain=[
@@ -240,8 +234,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') == 'closed',
-            },
-        depends=['company', 'shipment', 'state'])
+            })
     state = fields.Function(fields.Selection([
                 ('open', "Open"),
                 ('closed', "Closed"),
@@ -374,8 +367,7 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state') == 'cancelled',
-            },
-        depends=['company', 'state'])
+            })
 
     @property
     def package_path(self):
@@ -409,15 +401,13 @@ class PackageMixin(object):
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
             domain=[
                 ('company', '=', Eval('company', -1)),
                 ('parent', '=', None),
-                ],
-            depends=['company']),
+                ]),
         'get_root_packages', setter='set_root_packages')
 
     def get_root_packages(self, name):
@@ -457,10 +447,8 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
             Eval('warehouse_storage') == Eval('warehouse_output'),
             Eval('state') != 'waiting',
             Eval('state') != 'picked')
-        packages_depends = ['warehouse_storage', 'warehouse_output', 'state']
         for field in [cls.packages, cls.root_packages]:
             field.states['readonly'] = packages_readonly
-            field.depends.extend(packages_depends)
 
     @classmethod
     @ModelView.button
@@ -513,10 +501,8 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         packages_readonly = ~Eval('state').in_(['waiting', 'assigned'])
-        packages_depends = ['state']
         for field in [cls.packages, cls.root_packages]:
             field.states['readonly'] = packages_readonly
-            field.depends.extend(packages_depends)
 
     @classmethod
     @ModelView.button
