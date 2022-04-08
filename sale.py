@@ -21,8 +21,7 @@ class Sale(metaclass=PoolMeta):
         states={
             'required': Bool(Eval('web_shop')),
             'readonly': ~Eval('web_id'),
-            },
-        depends=['web_shop'])
+            })
 
     @classmethod
     def __setup__(cls):

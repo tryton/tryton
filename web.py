@@ -69,7 +69,7 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
 
     products = fields.Many2Many(
         'web.shop-product.product', 'shop', 'product', "Products",
@@ -79,14 +79,14 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="The list of products to publish.")
     products_removed = Many2ManyInactive(
         'web.shop-product.product', 'shop', 'product', "Products Removed",
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="The list of products to unpublish.")
 
     categories = fields.Many2Many(
@@ -94,14 +94,14 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="The list of categories to publish.")
     categories_removed = Many2ManyInactive(
         'web.shop-product.category', 'shop', 'category', "Categories Removed",
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="The list of categories to unpublish.")
 
     _name_cache = Cache('web.shop.name', context=False)
@@ -325,12 +325,10 @@ class User(metaclass=PoolMeta):
         domain=['OR',
             ('party', '=', Eval('party', -1)),
             ('party', 'in', Eval('secondary_parties', [])),
-            ],
-        depends=['party', 'secondary_parties'])
+            ])
     shipment_address = fields.Many2One(
         'party.address', "Shipment Address",
         domain=['OR',
             ('party', '=', Eval('party', -1)),
             ('party', 'in', Eval('secondary_parties', [])),
-            ],
-        depends=['party', 'secondary_parties'])
+            ])

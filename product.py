@@ -25,7 +25,6 @@ class Product(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('salable'),
             },
-        depends=['salable'],
         help="The list of web shops on which the product is published.")
 
 
