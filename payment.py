@@ -20,13 +20,11 @@ class Journal(metaclass=PoolMeta):
             ],
         states={
             'required': Bool(Eval('clearing_journal')),
-            },
-        depends=['clearing_journal'])
+            })
     clearing_journal = fields.Many2One('account.journal', 'Clearing Journal',
         states={
             'required': Bool(Eval('clearing_account')),
-            },
-        depends=['clearing_account'])
+            })
     clearing_posting_delay = fields.TimeDelta(
         "Clearing Posting Delay",
         help="Post automatically the clearing moves after the delay.\n"
@@ -119,7 +117,6 @@ class Payment(metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             'invisible': Bool(Eval('line')),
             },
-        depends=['company', 'currency', 'state', 'line'],
         help="Define the account to use for clearing move.")
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
         readonly=True)
