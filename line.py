@@ -34,7 +34,6 @@ class Line(ModelSQL, ModelView):
                 ('end_date', '>=', Eval('date', None)),
                 ],
             ],
-        depends=['company', 'date'],
         help="The employee who spends the time.")
     date = fields.Date('Date', required=True, select=True,
         help="When the time is spent.")
@@ -51,7 +50,6 @@ class Line(ModelSQL, ModelView):
                 ('timesheet_end_date', '>=', Eval('date', None)),
                 ],
             ],
-        depends=['date', 'company'],
         help="The work on which the time is spent.")
     description = fields.Char('Description',
         help="Additional description of the work done.")
@@ -177,7 +175,6 @@ class EnterLinesStart(ModelView):
                 ('end_date', '>=', Eval('date', None)),
                 ],
             ],
-        depends=['date'],
         help="The employee who spends the time.")
     date = fields.Date('Date', required=True,
         help="When the time is spent.")

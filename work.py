@@ -24,14 +24,12 @@ class Work(ModelSQL, ModelView):
             'invisible': Bool(Eval('origin')),
             'required': ~Eval('origin'),
             },
-        depends=['origin'],
         help="The main identifier of the work.")
     origin = fields.Reference('Origin', selection='get_origin',
         states={
             'invisible': Bool(Eval('name')),
             'required': ~Eval('name'),
             },
-        depends=['name'],
         help="Use to relate the time spent to other records.")
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
             'company_work_time', help="Total time spent on this work."),
@@ -42,7 +40,6 @@ class Work(ModelSQL, ModelView):
                 ('timesheet_start_date', '<=', Eval('timesheet_end_date')),
                 ()),
             ],
-        depends=['timesheet_end_date'],
         help="Restrict adding lines before the date.")
     timesheet_end_date = fields.Date('Timesheet End',
         domain=[
@@ -50,7 +47,6 @@ class Work(ModelSQL, ModelView):
                 ('timesheet_end_date', '>=', Eval('timesheet_start_date')),
                 ()),
             ],
-        depends=['timesheet_start_date'],
         help="Restrict adding lines after the date.")
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, help="Make the work belong to the company.")
