@@ -57,7 +57,6 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('rounding', '>', 0),
             ],
-        depends=['digits'],
         help="The accuracy to which values are rounded.")
     digits = fields.Integer(
         "Display Digits", required=True,

@@ -63,14 +63,12 @@ class Template(
         "Code", select=True,
         states={
             'readonly': Eval('code_readonly', False),
-            },
-        depends=['code_readonly'])
+            })
     type = fields.Selection(TYPES, "Type", required=True)
     consumable = fields.Boolean('Consumable',
         states={
             'invisible': Eval('type', 'goods') != 'goods',
             },
-        depends=['type'],
         help="Check to allow stock moves to be assigned "
         "regardless of stock level.")
     list_price = fields.MultiValue(fields.Numeric(
@@ -114,7 +112,6 @@ class Template(
         domain=[
             If(~Eval('active'), ('active', '=', False), ()),
             ],
-        depends=['active'],
         help="The different variants the product comes in.")
 
     @classmethod
@@ -138,7 +135,6 @@ class Template(
         cls.cost_price_method.domain = [
             Get(types_cost_method, Eval('type'), []),
             ]
-        cls.cost_price_method.depends = ['type']
 
     @classmethod
     def _cost_price_method_domain_per_type(cls):
@@ -339,7 +335,6 @@ class Product(
         domain=[
             If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['active'],
         help="The product that defines the common properties "
         "inherited by the variant.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
@@ -355,7 +350,6 @@ class Product(
         states={
             'readonly': Eval('code_readonly', False),
             },
-        depends=['code_readonly'],
         help="The unique identifier for the product (aka SKU).")
     code = fields.Char("Code", readonly=True, select=True,
         help="A unique identifier for the variant.")
@@ -414,8 +408,6 @@ class Product(
                     tfield.states['invisible'] |= invisible_state
                 else:
                     tfield.states['invisible'] = invisible_state
-                if 'template' not in tfield.depends:
-                    tfield.depends.append('template')
                 setattr(cls, attr, TemplateFunction(tfield))
                 order_method = getattr(cls, 'order_%s' % attr, None)
                 if (not order_method
@@ -634,7 +626,7 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     list_price = fields.Numeric("List Price", digits=price_digits)
 
     @classmethod
@@ -669,7 +661,7 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     cost_price_method = fields.Selection(
         'get_cost_price_methods', "Cost Price Method")
 
@@ -729,7 +721,7 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     cost_price = fields.Numeric(
         "Cost Price", required=True, digits=price_digits)
 
