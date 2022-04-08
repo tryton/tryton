@@ -71,7 +71,6 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
 _STATES = {
     'readonly': Eval('state') != 'draft',
     }
-_DEPENDS = ['state']
 
 
 class Dunning(ModelSQL, ModelView):
@@ -80,7 +79,7 @@ class Dunning(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         help="Make the dunning belong to the company.",
         select=True,
-        states=_STATES, depends=_DEPENDS)
+        states=_STATES)
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",
         domain=[
@@ -91,27 +90,25 @@ class Dunning(ModelSQL, ModelView):
                 ('credit', '<', 0),
                 ],
             ],
-        states=_STATES, depends=_DEPENDS + ['company'])
+        states=_STATES)
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
-        required=True, states=_STATES, depends=_DEPENDS)
+        required=True, states=_STATES)
     level = fields.Many2One('account.dunning.level', 'Level', required=True,
         domain=[
             ('procedure', '=', Eval('procedure', -1)),
             ],
-        states=_STATES, depends=_DEPENDS + ['procedure'])
+        states=_STATES)
     date = fields.Date(
         "Date", readonly=True,
         states={
             'invisible': Eval('state') == 'draft',
             },
-        depends=['state'],
         help="When the dunning reached the level.")
     age = fields.Function(fields.TimeDelta(
             "Age",
             states={
                 'invisible': Eval('state') == 'draft',
             },
-            depends=['state'],
             help="How long the dunning has been at the level."),
         'get_age')
     blocked = fields.Boolean('Blocked',
@@ -128,7 +125,7 @@ class Dunning(ModelSQL, ModelView):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'get_line_field', searcher='search_line_field')
     amount = fields.Function(Monetary(
             "Amount", currency='currency', digits='currency'),
@@ -142,8 +139,7 @@ class Dunning(ModelSQL, ModelView):
             currency='second_currency', digits='second_currency',
             states={
                 'invisible': Eval('currency') == Eval('second_currency'),
-                },
-            depends=['currency', 'second_currency']),
+                }),
         'get_amount_second_currency')
     second_currency = fields.Function(fields.Many2One('currency.currency',
             'Second Currency'), 'get_second_currency')
