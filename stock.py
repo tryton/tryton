@@ -17,7 +17,6 @@ class LotUnitMixin:
         domain=[
             ('category', '=', Eval('product_default_uom_category', -1)),
             ],
-        depends=['product_default_uom_category'],
         help="The biggest unit for the lot.")
     unit_quantity = fields.Float(
         "Unit Quantity", digits='unit',
@@ -25,7 +24,6 @@ class LotUnitMixin:
             'required': Bool(Eval('unit')),
             'invisible': ~Eval('unit'),
             },
-        depends=['unit'],
         help="The maximal quantity for the lot.")
 
     product_default_uom_category = fields.Function(

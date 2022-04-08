@@ -16,7 +16,6 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') == 'service',
             },
-        depends=['type', 'default_uom_category'],
         help="The default unit for lot.")
 
 
