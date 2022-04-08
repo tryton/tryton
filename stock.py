@@ -57,8 +57,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('sequence_type', '=',
                 Id('sale_supply_drop_shipment',
                     'sequence_type_shipment_drop')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -99,20 +98,18 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
             },
-        depends=['state'],
         help="When the stock was actually sent.")
     planned_date = fields.Date('Planned Date', states={
             'readonly': Eval('state') != 'draft',
-            }, depends=['state'])
+            })
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     reference = fields.Char('Reference', select=1,
         states={
             'readonly': Eval('state') != 'draft',
-            }, depends=['state'])
+            })
     supplier = fields.Many2One('party.party', 'Supplier', required=True,
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -122,13 +119,12 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'supplier', 'company'])
+        depends={'company'})
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[('party', '=', Eval('supplier'))],
-        depends=['state', 'supplier'])
+        domain=[('party', '=', Eval('supplier'))])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
             'readonly': (((Eval('state') != 'draft')
@@ -138,14 +134,13 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'company'])
+        depends={'company'})
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         required=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[('party', '=', Eval('customer'))],
-        depends=['state', 'customer'])
+        domain=[('party', '=', Eval('customer'))])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[
             ('company', '=', Eval('company')),
@@ -160,21 +155,21 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     ],
                 ],
             ],
-        depends=['company'], readonly=True)
+        readonly=True)
     supplier_moves = fields.One2Many('stock.move', 'shipment',
         'Supplier Moves',
         filter=[('to_location.type', '=', 'drop')],
         states={
             'readonly': Eval('state').in_(['shipped', 'done', 'cancelled']),
             },
-        depends=['state', 'supplier'])
+        depends={'supplier'})
     customer_moves = fields.One2Many('stock.move', 'shipment',
         'Customer Moves',
         filter=[('from_location.type', '=', 'drop')],
         states={
             'readonly': Eval('state') != 'shipped',
             },
-        depends=['state', 'customer'])
+        depends={'customer'})
     number = fields.Char(
         "Number", select=True, readonly=True,
         help="The main identifier for the shipment.")
@@ -631,7 +626,7 @@ class Move(metaclass=PoolMeta):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'get_customer_drop',
         searcher='search_customer_drop')
 

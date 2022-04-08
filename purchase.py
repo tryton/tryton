@@ -26,14 +26,13 @@ class Request(metaclass=PoolMeta):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         domain=[('party', '=', Eval('customer'))],
         states={
             'invisible': ~Eval('customer'),
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['customer', 'state'])
+            })
 
 
 class Configuration(metaclass=PoolMeta):
@@ -90,28 +89,25 @@ class Purchase(metaclass=PoolMeta):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         domain=[('party', '=', Eval('customer'))],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': ~Eval('customer'),
-            },
-        depends=['state', 'customer'])
+            })
     drop_shipments = fields.Function(fields.Many2Many('stock.shipment.drop',
             None, None, "Drop Shipments",
             states={
                 'invisible': ~Eval('customer'),
-                },
-            depends=['customer']),
+                }),
         'get_drop_shipments', searcher='search_drop_shipments')
     drop_location = fields.Many2One('stock.location', 'Drop Location',
         domain=[('type', '=', 'drop')],
         states={
             'invisible': ~Eval('customer', False),
             'required': Eval('customer', False),
-            },
-        depends=['customer'])
+            })
 
     @staticmethod
     def default_drop_location():
@@ -203,8 +199,7 @@ class ProductSupplier(metaclass=PoolMeta):
     drop_shipment = fields.Boolean('Drop Shipment',
         states={
             'invisible': ~Eval('drop_shipment_available', False),
-            },
-        depends=['drop_shipment_available'])
+            })
     drop_shipment_available = fields.Function(
         fields.Boolean("Drop Shipment Available"),
         'on_change_with_drop_shipment_available')
