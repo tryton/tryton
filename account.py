@@ -67,8 +67,7 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': (
                 (Eval('type') != 'line')
                 | ~Eval('product')),
-            },
-        depends=['type', 'product_uom_category', 'invoice', 'invoice_type'])
+            })
     shipments = fields.Function(fields.Char("Shipments"), 'get_shipments')
     correction = fields.Boolean(
         "Correction",
@@ -76,7 +75,6 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': ((Eval('_parent_invoice', {}).get('type') == 'out')
                 | (Eval('invoice_type') == 'out')),
             },
-        depends=['invoice_type'],
         help="Check to correct price of already posted invoice.")
 
     @classmethod

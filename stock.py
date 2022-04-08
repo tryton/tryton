@@ -25,8 +25,7 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('invoice_types', []),
-            },
-        depends=['product_uom_category', 'invoice_types'])
+            })
     invoice_types = fields.Function(
         fields.MultiSelection('get_invoice_types', "Invoice Types"),
         'on_change_with_invoice_types')
