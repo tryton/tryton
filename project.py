@@ -232,7 +232,7 @@ class Timesheet:
                 ()),
             ]
         if 'invoice_method' not in cls.product.depends:
-            cls.product.depends.append('invoice_method')
+            cls.product.depends.add('invoice_method')
 
     @fields.depends('type', 'project_invoice_timesheet_up_to',
         'parent', '_parent_parent.invoice_timesheet_up_to')
