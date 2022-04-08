@@ -19,8 +19,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
     account_asset = fields.MultiValue(fields.Many2One('account.account',
             'Account Asset',
             domain=[
@@ -31,8 +30,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -69,15 +67,13 @@ class CategoryAccount(metaclass=PoolMeta):
         domain=[
             ('type.fixed_asset', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     account_asset = fields.Many2One(
         'account.account', "Account Asset",
         domain=[
             ('type.fixed_asset', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -105,14 +101,13 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     depreciable = fields.Boolean('Depreciable', states={
             'invisible': Eval('type', '') != 'assets',
-            }, depends=['type'])
+            })
     depreciation_duration = fields.Integer(
         "Depreciation Duration",
         states={
             'invisible': (~Eval('depreciable')
                 | (Eval('type', '') != 'assets')),
             },
-        depends=['depreciable', 'type'],
         help='In months')
 
     @property

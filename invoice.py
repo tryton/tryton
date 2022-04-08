@@ -16,10 +16,7 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': (~Eval('is_assets_depreciable', False)
                 | (Eval('invoice_type') != 'out')),
             'readonly': Eval('invoice_state') != 'draft',
-            },
-        depends=[
-            'product', 'is_assets_depreciable',
-            'invoice_state', 'invoice_type'])
+            })
     is_assets_depreciable = fields.Function(fields.Boolean(
             'Is Assets depreciable'),
         'on_change_with_is_assets_depreciable')

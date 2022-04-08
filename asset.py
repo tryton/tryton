@@ -58,7 +58,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', None),
             },
-        depends=['state', 'company'],
+        depends={'company'},
         domain=[
             ('type', '=', 'assets'),
             ('depreciable', '=', True),
@@ -78,8 +78,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
-            },
-        depends=['product', 'state', 'company'])
+            })
     customer_invoice_line = fields.Function(fields.Many2One(
             'account.invoice.line', 'Customer Invoice Line'),
         'get_customer_invoice_line')
@@ -87,14 +86,12 @@ class Asset(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         domain=[('type', '=', 'asset')],
         required=True)
     company = fields.Many2One('company.company', 'Company',
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         required=True)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
@@ -104,20 +101,17 @@ class Asset(Workflow, ModelSQL, ModelView):
             'readonly': (Bool(Eval('supplier_invoice_line', 1))
                 | Eval('lines', [0])
                 | (Eval('state') != 'draft')),
-            },
-        depends=['state'])
+            })
     unit = fields.Many2One('product.uom', 'Unit',
         states={
             'readonly': (Bool(Eval('product'))
                 | (Eval('state') != 'draft')),
-            },
-        depends=['state'])
+            })
     value = Monetary(
         "Value", currency='currency', digits='currency',
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['state'],
         required=True,
         help="The value of the asset when purchased.")
     depreciated_amount = Monetary(
@@ -128,7 +122,6 @@ class Asset(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['value', 'state'],
         required=True,
         help="The amount already depreciated at the start date.")
     depreciating_value = fields.Function(Monetary(
@@ -143,36 +136,31 @@ class Asset(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
-            },
-        depends=['depreciating_value', 'state'])
+            })
     purchase_date = fields.Date('Purchase Date', states={
             'readonly': (Bool(Eval('supplier_invoice_line', 1))
                 | Eval('lines', [0])
                 | (Eval('state') != 'draft')),
             },
-        required=True,
-        depends=['state'])
+        required=True)
     start_date = fields.Date('Start Date', states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
         required=True,
-        domain=[('start_date', '<=', Eval('end_date', None))],
-        depends=['state', 'end_date'])
+        domain=[('start_date', '<=', Eval('end_date', None))])
     end_date = fields.Date('End Date',
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
         required=True,
-        domain=[('end_date', '>=', Eval('start_date', None))],
-        depends=['state', 'start_date'])
+        domain=[('end_date', '>=', Eval('start_date', None))])
     depreciation_method = fields.Selection([
             ('linear', 'Linear'),
             ], 'Depreciation Method',
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        required=True,
-        depends=['state'])
+        required=True)
     frequency = fields.Selection([
             ('monthly', 'Monthly'),
             ('yearly', 'Yearly'),
@@ -180,8 +168,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         required=True,
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
             ('draft', 'Draft'),
             ('running', 'Running'),
@@ -192,8 +179,7 @@ class Asset(Workflow, ModelSQL, ModelView):
     move = fields.Many2One('account.move', 'Account Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     update_moves = fields.Many2Many('account.asset-update-account.move',
         'asset', 'move', 'Update Moves', readonly=True,
         domain=[
@@ -201,8 +187,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             ],
         states={
             'invisible': ~Eval('update_moves'),
-            },
-        depends=['company'])
+            })
     comment = fields.Text('Comment')
     revisions = fields.One2Many(
         'account.asset.revision', 'asset', "Revisions", readonly=True)
@@ -806,7 +791,6 @@ class UpdateAssetShowDepreciation(ModelView):
             ('date', '>=', Eval('latest_move_date')),
             ('date', '<=', Eval('next_depreciation_date')),
             ],
-        depends=['latest_move_date', 'next_depreciation_date'],
         help=('The date must be between the last update/depreciation date '
             'and the next depreciation date.'))
     latest_move_date = fields.Date('Latest Move Date', readonly=True)
@@ -1151,11 +1135,9 @@ class PrintDepreciationTableStart(ModelView):
     __name__ = 'account.asset.print_depreciation_table.start'
 
     start_date = fields.Date('Start Date', required=True,
-        domain=[('start_date', '<', Eval('end_date'))],
-        depends=['end_date'])
+        domain=[('start_date', '<', Eval('end_date'))])
     end_date = fields.Date('End Date', required=True,
-        domain=[('end_date', '>', Eval('start_date'))],
-        depends=['start_date'])
+        domain=[('end_date', '>', Eval('start_date'))])
 
     @staticmethod
     def default_start_date():

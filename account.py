@@ -94,8 +94,7 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('account_asset', 'sequence_type_asset')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -164,8 +163,7 @@ def AccountTypeMixin(template=False):
             states={
                 'invisible': ((Eval('statement') != 'balance')
                     | ~Eval('assets', True)),
-                },
-            depends=['statement', 'assets'])
+                })
     if not template:
         for fname in dir(Mixin):
             field = getattr(Mixin, fname)
