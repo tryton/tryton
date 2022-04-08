@@ -28,8 +28,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
     account_stock_in = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock IN",
             domain=[
@@ -41,8 +40,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
     account_stock_out = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock OUT",
             domain=[
@@ -54,8 +52,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
 
     @classmethod
     def __setup__(cls):
@@ -110,24 +107,21 @@ class CategoryAccount(metaclass=PoolMeta):
             ('type.stock', '=', True),
             ('type.statement', '=', 'balance'),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     account_stock_in = fields.Many2One(
         'account.account', "Account Stock IN",
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     account_stock_out = fields.Many2One(
         'account.account', "Account Stock OUT",
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __setup__(cls):
