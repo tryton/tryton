@@ -28,36 +28,31 @@ class Forecast(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Not(Equal(Eval('state'), 'draft')),
     }
-    _depends = ['state']
 
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines', [0]))),
-            },
-        depends=['state'])
+            })
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
-        domain=[('type', 'in', ['customer', 'production'])], states=_states,
-        depends=_depends)
+        domain=[('type', 'in', ['customer', 'production'])], states=_states)
     from_date = fields.Date(
         "From Date", required=True,
         domain=[('from_date', '<=', Eval('to_date'))],
-        states=_states, depends=_depends + ['to_date'])
+        states=_states)
     to_date = fields.Date(
         "To Date", required=True,
         domain=[('to_date', '>=', Eval('from_date'))],
-        states=_states, depends=_depends + ['from_date'])
+        states=_states)
     lines = fields.One2Many(
-        'stock.forecast.line', 'forecast', 'Lines', states=_states,
-        depends=_depends)
+        'stock.forecast.line', 'forecast', 'Lines', states=_states)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines', [0]))),
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
             ('draft', "Draft"),
             ('done', "Done"),
@@ -66,7 +61,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -259,14 +254,13 @@ class ForecastLine(ModelSQL, ModelView):
     _states = {
         'readonly': Eval('forecast_state') != 'draft',
         }
-    _depends = ['forecast_state']
 
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
             ],
-        states=_states, depends=_depends)
+        states=_states)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -277,15 +271,15 @@ class ForecastLine(ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         states=_states,
-        depends=['product', 'product_uom_category'] + _depends)
+        depends={'product'})
     quantity = fields.Float(
         "Quantity", digits='uom', required=True,
         domain=[('quantity', '>=', 0)],
-        states=_states, depends=_depends)
+        states=_states)
     minimal_quantity = fields.Float(
         "Minimal Qty", digits='uom', required=True,
         domain=[('minimal_quantity', '<=', Eval('quantity'))],
-        states=_states, depends=['quantity'] + _depends)
+        states=_states)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
         'line', 'move', 'Moves', readonly=True)
     forecast = fields.Many2One(
@@ -293,15 +287,14 @@ class ForecastLine(ModelSQL, ModelView):
         states={
             'readonly': ((Eval('forecast_state') != 'draft')
                 & Bool(Eval('forecast'))),
-            },
-        depends=['forecast_state'])
+            })
     forecast_state = fields.Function(
         fields.Selection('get_forecast_states', 'Forecast State'),
         'on_change_with_forecast_state')
     quantity_executed = fields.Function(fields.Float(
             "Quantity Executed", digits='uom'), 'get_quantity_executed')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -509,12 +502,10 @@ class ForecastCompleteAsk(ModelView):
     __name__ = 'stock.forecast.complete.ask'
     from_date = fields.Date(
         "From Date", required=True,
-        domain=[('from_date', '<', Eval('to_date'))],
-        depends=['to_date'])
+        domain=[('from_date', '<', Eval('to_date'))])
     to_date = fields.Date(
         "To Date", required=True,
-        domain=[('to_date', '>', Eval('from_date'))],
-        depends=['from_date'])
+        domain=[('to_date', '>', Eval('from_date'))])
 
 
 class ForecastCompleteChoose(ModelView):
