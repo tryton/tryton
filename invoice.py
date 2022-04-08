@@ -38,8 +38,7 @@ class InvoiceCorrectStart(ModelView):
         domain=[
             ('invoice', '=', Eval('invoice')),
             ('type', '=', 'line'),
-            ],
-        depends=['invoice'])
+            ])
 
 
 class InvoiceCorrect(Wizard):
