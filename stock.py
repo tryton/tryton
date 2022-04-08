@@ -17,8 +17,7 @@ class Location(metaclass=PoolMeta):
         "Movable", select=True,
         states={
             'invisible': Eval('type') != 'storage',
-            },
-        depends=['type'])
+            })
     assigned_by = fields.Reference(
         "Assigned by", 'get_assigned_by', readonly=True)
 
@@ -119,8 +118,7 @@ class ShipmentInternal(metaclass=PoolMeta):
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | ~Eval('from_location') | ~Eval('to_location')),
-            },
-        depends=['state', 'from_location', 'to_location'])
+            })
 
     @classmethod
     @ModelView.button
