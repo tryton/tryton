@@ -15,7 +15,6 @@ class Agent(metaclass=PoolMeta):
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
-        depends=['company'],
         help="The account the agent's waiting commission amounts are posted "
         "to.")
 
@@ -29,7 +28,6 @@ class Commission(metaclass=PoolMeta):
     def __setup__(cls):
         super(Commission, cls).__setup__()
         cls.amount.states['readonly'] |= Bool(Eval('waiting_move'))
-        cls.amount.depends.append('waiting_move')
 
     @classmethod
     def copy(cls, commissions, default=None):
