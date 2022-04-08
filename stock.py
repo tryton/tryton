@@ -368,8 +368,7 @@ class Package(MeasurementsMixin, object, metaclass=PoolMeta):
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
             'required': Bool(Eval('additional_weight')),
-            },
-        depends=['additional_weight'])
+            })
     total_weight = fields.Function(
         fields.Float(
             "Total Weight", digits='weight_uom',
