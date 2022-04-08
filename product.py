@@ -33,14 +33,12 @@ class Image(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('attribute_set') | Eval('product'),
-            },
-        depends=['attribute_set', 'product'])
+            })
     attributes_name = fields.Function(fields.Char(
             "Attributes Name",
             states={
                 'invisible': ~Eval('attribute_set'),
-                },
-            depends=['attribute_set']),
+                }),
         'on_change_with_attributes_name')
 
     attribute_set = fields.Function(
