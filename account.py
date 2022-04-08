@@ -16,8 +16,7 @@ class InvoiceLine(metaclass=PoolMeta):
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('invoice_state') != 'draft',
-                },
-            depends=['type', 'secondary_unit', 'invoice_state']),
+                }),
         'on_change_with_secondary_quantity', setter='set_secondary')
     secondary_unit = fields.Many2One(
         'product.uom', "Secondary Unit", ondelete='RESTRICT',
@@ -28,8 +27,7 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': ((Eval('type') != 'line')
                 | ~Eval('product_secondary_uom_category')),
             'readonly': Eval('invoice_state') != 'draft',
-            },
-        depends=['product_secondary_uom_category', 'type', 'invoice_state'])
+            })
     secondary_unit_price = fields.Function(
         fields.Numeric(
             "Secondary Unit Price", digits=price_digits,
@@ -37,8 +35,7 @@ class InvoiceLine(metaclass=PoolMeta):
                 'invisible': ((Eval('type') != 'line')
                     | ~Eval('secondary_unit')),
                 'readonly': Eval('invoice_state') != 'draft',
-                },
-            depends=['type', 'secondary_unit', 'invoice_state']),
+                }),
         'on_change_with_secondary_unit_price', setter='set_secondary')
 
     product_secondary_uom_category = fields.Function(
