@@ -28,8 +28,7 @@ class Fee(DeactivableMixin, ModelSQL, ModelView):
         states={
             'invisible': Eval('compute_method') != 'percentage',
             'required': Eval('compute_method') == 'percentage',
-            },
-        depends=['compute_method'])
+            })
 
     def get_amount(self, dunning):
         'Return fee amount and currency'
