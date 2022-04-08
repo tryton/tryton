@@ -38,16 +38,15 @@ class Cron(metaclass=PoolMeta):
         'required': Eval('source') == 'nbs_rs',
         'invisible': Eval('source') != 'nbs_rs',
         }
-    _depends = ['source']
 
-    rs_username = fields.Char("Username", states=_states, depends=_depends)
-    rs_password = fields.Char("Password", states=_states, depends=_depends)
-    rs_license_id = fields.Char("License ID", states=_states, depends=_depends)
+    rs_username = fields.Char("Username", states=_states)
+    rs_password = fields.Char("Password", states=_states)
+    rs_license_id = fields.Char("License ID", states=_states)
     rs_list_type = fields.Selection(
-        'get_rs_list_types', "List Type", states=_states, depends=_depends)
+        'get_rs_list_types', "List Type", states=_states)
     _rs_list_types = Cache(__name__ + '.get_rs_list_types', context=False)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -59,8 +58,6 @@ class Cron(metaclass=PoolMeta):
                 ('code', '=', 'RSD'),
                 ()),
             ]
-        if 'source' not in cls.currency.depends:
-            cls.currency.depends.append('source')
 
     @fields.depends('rs_username', 'rs_password', 'rs_license_id')
     def _rs_client(self):
