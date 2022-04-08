@@ -19,8 +19,7 @@ def AccountTypeMixin(template=False):
             states={
                 'invisible': ((Eval('statement') != 'balance')
                     | Eval('assets', True)),
-                },
-            depends=['statement', 'assets'])
+                })
     if not template:
         for fname in dir(Mixin):
             field = getattr(Mixin, fname)

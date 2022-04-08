@@ -136,8 +136,7 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
         domain=[
             ('type.unearned_revenue', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
 
 class AdvancePaymentCondition(ModelSQL, ModelView):
@@ -148,34 +147,26 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
     _states = {
         'readonly': Eval('sale_state') != 'draft',
         }
-    _depends = ['sale_state']
 
     sale = fields.Many2One('sale.sale', 'Sale', required=True,
         ondelete='CASCADE', select=True,
         states={
             'readonly': ((Eval('sale_state') != 'draft')
                 & Bool(Eval('sale'))),
-            },
-        depends=['sale_state'])
-    description = fields.Char(
-        "Description", required=True, states=_states, depends=_depends)
+            })
+    description = fields.Char("Description", required=True, states=_states)
     amount = Monetary(
-        "Amount", currency='currency', digits='currency',
-        states=_states, depends=_depends)
+        "Amount", currency='currency', digits='currency', states=_states)
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
             ('type.unearned_revenue', '=', True),
             ('company', '=', Eval('sale_company')),
             ],
-        states=_states,
-        depends=_depends + ['sale_company'])
-    block_supply = fields.Boolean(
-        "Block Supply", states=_states, depends=_depends)
-    block_shipping = fields.Boolean(
-        "Block Shipping", states=_states, depends=_depends)
-    invoice_delay = fields.TimeDelta(
-        "Invoice Delay", states=_states, depends=_depends)
+        states=_states)
+    block_supply = fields.Boolean("Block Supply", states=_states)
+    block_shipping = fields.Boolean("Block Shipping", states=_states)
+    invoice_delay = fields.TimeDelta("Invoice Delay", states=_states)
 
     invoice_lines = fields.One2Many(
         'account.invoice.line', 'origin', "Invoice Lines", readonly=True)
@@ -190,7 +181,6 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         'on_change_with_currency')
 
     del _states
-    del _depends
 
     @classmethod
     def __setup__(cls):
@@ -292,15 +282,13 @@ class Sale(metaclass=PoolMeta):
         'Advance Payment Term',
         ondelete='RESTRICT', states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     advance_payment_conditions = fields.One2Many(
         'sale.advance_payment.condition', 'sale',
         'Advance Payment Conditions',
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     advance_payment_invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Advance Payment Invoices"),
         'get_advance_payment_invoices',
