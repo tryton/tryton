@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from functools import cached_property
 
 from sql.functions import AtTimeZone, Function
 
 from trytond import backend
 from trytond.pyson import PYSON, PYSONEncoder
+from trytond.tools import cached_property
 
 from .field import Field, get_eval_fields
 
