@@ -31,8 +31,7 @@ class MoveLine(metaclass=PoolMeta):
             currency='payment_currency', digits='payment_currency',
             states={
                 'invisible': ~Eval('payment_kind'),
-                },
-            depends=['payment_kind']),
+                }),
         'get_payment_amount', searcher='search_payment_amount')
     payment_currency = fields.Function(fields.Many2One(
             'currency.currency', "Payment Currency"),
@@ -41,8 +40,7 @@ class MoveLine(metaclass=PoolMeta):
         readonly=True,
         states={
             'invisible': ~Eval('payment_kind'),
-            },
-        depends=['payment_kind'])
+            })
     payment_kind = fields.Function(fields.Selection([
                 (None, ''),
                 ] + KINDS, 'Payment Kind'), 'get_payment_kind')
@@ -53,7 +51,6 @@ class MoveLine(metaclass=PoolMeta):
                 (Eval('payment_kind') == 'payable')
                 & ((Eval('credit', 0) > 0) | (Eval('debit', 0) < 0))),
             },
-        depends=['payment_kind', 'debit', 'credit'],
         help="Check if the line will be paid by direct debit.")
 
     @classmethod
@@ -280,8 +277,7 @@ class PayLineAskJournal(ModelView):
         required=True, domain=[
             ('company', '=', Eval('company', -1)),
             ('currency', '=', Eval('currency', -1)),
-            ],
-        depends=['company', 'currency'])
+            ])
 
     journals = fields.One2Many(
         'account.payment.journal', None, 'Journals', readonly=True)
@@ -479,8 +475,7 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('account_payment', 'sequence_type_account_payment_group')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -519,7 +514,6 @@ class Invoice(metaclass=PoolMeta):
             'invisible': Eval('type') != 'in',
             'readonly': Eval('state') != 'draft',
             },
-        depends=['type', 'state'],
         help="Check if the invoice is paid by direct debit.")
 
     @classmethod

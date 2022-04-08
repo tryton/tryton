@@ -69,16 +69,14 @@ class Group(ModelSQL, ModelView):
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, readonly=True, domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     kind = fields.Selection(KINDS, 'Kind', required=True, readonly=True)
     payments = fields.One2Many(
         'account.payment', 'group', 'Payments', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ('journal', '=', Eval('journal', -1)),
-            ],
-        depends=['company', 'journal'])
+            ])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency', searcher='search_currency')
@@ -277,7 +275,6 @@ class Group(ModelSQL, ModelView):
 _STATES = {
     'readonly': Eval('state') != 'draft',
     }
-_DEPENDS = ['state']
 
 
 class Payment(Workflow, ModelSQL, ModelView):
@@ -285,24 +282,23 @@ class Payment(Workflow, ModelSQL, ModelView):
     __name__ = 'account.payment'
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
-        states=_STATES, depends=_DEPENDS)
+        states=_STATES)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, states=_STATES, domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=_DEPENDS + ['company'])
+            ])
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'on_change_with_currency',
         searcher='search_currency')
     kind = fields.Selection(KINDS, 'Kind', required=True,
-        states=_STATES, depends=_DEPENDS)
+        states=_STATES)
     party = fields.Many2One(
         'party.party', "Party", required=True, states=_STATES,
         context={
             'company': Eval('company', -1),
             },
-        depends=_DEPENDS + ['company'])
-    date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS)
+        depends={'company'})
+    date = fields.Date('Date', required=True, states=_STATES)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
         states={
@@ -310,8 +306,7 @@ class Payment(Workflow, ModelSQL, ModelView):
                 If(Eval('process_method') == 'manual',
                     ['draft', 'processing'],
                     ['draft'])),
-            },
-        depends=['state', 'process_method'])
+            })
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
         domain=[
             ('move.company', '=', Eval('company', -1)),
@@ -338,15 +333,13 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ],
             ('move_state', '=', 'posted'),
             ],
-        states=_STATES, depends=_DEPENDS + ['party', 'currency', 'kind',
-            'company'])
-    description = fields.Char('Description', states=_STATES, depends=_DEPENDS)
+        states=_STATES)
+    description = fields.Char('Description', states=_STATES)
     origin = fields.Reference(
         "Origin", selection='get_origin', select=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     group = fields.Many2One('account.payment.group', 'Group', readonly=True,
         ondelete='RESTRICT',
         states={
@@ -354,8 +347,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['state', 'company'])
+            ])
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
         'on_change_with_process_method', searcher='search_process_method')

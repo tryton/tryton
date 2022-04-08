@@ -45,7 +45,7 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     payment_direct_debit = payment_direct_debit
 
 
@@ -59,7 +59,7 @@ class PartyReceptionDirectDebit(
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     journal = fields.Many2One(
         'account.payment.journal', "Journal", required=True)
     company = fields.Function(
