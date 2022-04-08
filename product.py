@@ -15,15 +15,13 @@ class PurchaseSecondaryMixin:
         'product.uom', "Purchase Secondary UOM",
         domain=[
             ('category', '!=', Eval('default_uom_category')),
-            ],
-        depends=['default_uom_category'])
+            ])
     purchase_secondary_uom_factor = fields.Float(
         "Purchase Secondary UOM Factor", digits=uom_conversion_digits,
         states={
             'required': Bool(Eval('purchase_secondary_uom')),
             'invisible': ~Eval('purchase_secondary_uom'),
             },
-        depends=['purchase_secondary_uom'],
         help="The coefficient for the formula:\n"
         "1 (purchase unit) = coefficient (secondary unit)")
     purchase_secondary_uom_rate = fields.Float(
@@ -32,7 +30,6 @@ class PurchaseSecondaryMixin:
             'required': Bool(Eval('purchase_secondary_uom')),
             'invisible': ~Eval('purchase_secondary_uom'),
             },
-        depends=['purchase_secondary_uom'],
         help="The coefficient for the formula:\n"
         "coefficient (purchase unit) = 1 (secondary unit)")
     purchase_secondary_uom_category = fields.Function(
@@ -126,7 +123,6 @@ class Template(PurchaseSecondaryMixin, metaclass=PoolMeta):
         cls.purchase_secondary_uom.states = {
             'invisible': ~Eval('purchasable', False),
             }
-        cls.purchase_secondary_uom.depends.append('purchasable')
 
 
 class Product(metaclass=PoolMeta):
