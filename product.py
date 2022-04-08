@@ -20,8 +20,7 @@ class Category(metaclass=PoolMeta):
                 'invisible': (~Eval('context', {}, ).get('company')
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+                }))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -50,8 +49,7 @@ class CategoryAccount(metaclass=PoolMeta):
             ('closed', '!=', True),
             ('type.expense', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
