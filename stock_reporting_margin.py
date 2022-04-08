@@ -282,15 +282,13 @@ class Context(ModelView):
             If(Eval('to_date') & Eval('from_date'),
                 ('from_date', '<=', Eval('to_date')),
                 ()),
-            ],
-        depends=['to_date'])
+            ])
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('to_date', '>=', Eval('from_date')),
                 ()),
-            ],
-        depends=['from_date'])
+            ])
     period = fields.Selection([
             ('year', "Year"),
             ('month', "Month"),
@@ -362,7 +360,7 @@ class ProductMixin:
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     internal_quantity = fields.Float("Internal Quantity")
     quantity = fields.Function(fields.Float(
             "Quantity", digits='unit'), 'get_quantity')

@@ -26,7 +26,6 @@ from .exceptions import MoveFutureWarning, MoveOriginWarning
 STATES = {
     'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
 }
-DEPENDS = ['state']
 LOCATION_DOMAIN = [
     If(Eval('state').in_(['staging', 'draft', 'cancelled']),
         ('type', 'not in', ['warehouse']),
@@ -35,7 +34,6 @@ LOCATION_DOMAIN = [
         ('active', '=', True),
         ()),
     ]
-LOCATION_DEPENDS = ['state']
 
 
 class StockMixin(object):
@@ -183,7 +181,7 @@ class Move(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=DEPENDS + ['company'],
+        depends={'company'},
         help="The product that the move is associated with.")
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
@@ -198,21 +196,20 @@ class Move(Workflow, ModelSQL, ModelView):
                 ('category', '=', Eval('product_uom_category')),
                 ()),
             ],
-        depends=['state', 'unit_price', 'product_uom_category'],
         help="The unit in which the quantity is specified.")
     quantity = fields.Float(
         "Quantity", digits='uom', required=True,
-        states=STATES, depends=DEPENDS,
+        states=STATES,
         help="The amount of stock moved.")
     internal_quantity = fields.Float('Internal Quantity', readonly=True,
         required=True)
     from_location = fields.Many2One("stock.location", "From Location",
         select=True, required=True, states=STATES,
-        depends=DEPENDS + LOCATION_DEPENDS, domain=LOCATION_DOMAIN,
+        domain=LOCATION_DOMAIN,
         help="Where the stock is moved from.")
     to_location = fields.Many2One("stock.location", "To Location", select=True,
         required=True, states=STATES,
-        depends=DEPENDS + LOCATION_DEPENDS, domain=LOCATION_DOMAIN,
+        domain=LOCATION_DOMAIN,
         help="Where the stock is moved to.")
     shipment = fields.Reference('Shipment', selection='get_shipment',
         readonly=True, select=True,
@@ -224,12 +221,11 @@ class Move(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         help="The source of the stock move.")
     planned_date = fields.Date("Planned Date", states={
             'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | Eval('shipment'))
-            }, depends=['state', 'shipment'],
+            },
         select=True,
         help="When the stock is expected to be moved.")
     effective_date = fields.Date("Effective Date", select=True,
@@ -238,7 +234,6 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state').in_(['cancelled', 'done'])
                 | Eval('shipment')),
             },
-        depends=['state', 'shipment'],
         help="When the stock was actually moved.")
     state = fields.Selection([
         ('staging', 'Staging'),
@@ -253,29 +248,25 @@ class Move(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         help="The company the stock move is associated with.")
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
             'invisible': ~Eval('unit_price_required'),
             'required': Bool(Eval('unit_price_required')),
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['unit_price_required', 'state'])
+            })
     unit_price_company = fields.Function(
         fields.Numeric("Unit Price", digits=price_digits,
             states={
                 'invisible': ~Eval('unit_price_required'),
                 },
-            depends=['unit_price_required'],
             help="Unit price in company currency."),
         'get_unit_price_company')
     unit_price_updated = fields.Boolean(
         "Unit Price Updated", readonly=True,
         states={
             'invisible': Eval('state') != 'done',
-            },
-        depends=['state'])
+            })
     cost_price = fields.Numeric(
         "Cost Price", digits=price_digits, readonly=True,
         states={
@@ -283,15 +274,13 @@ class Move(Workflow, ModelSQL, ModelView):
             'required': (
                 (Eval('state') == 'done')
                 & Eval('cost_price_required', False)),
-            },
-        depends=['cost_price_required'])
+            })
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': ~Eval('unit_price_required'),
             'required': Bool(Eval('unit_price_required')),
             'readonly': Eval('state') != 'draft',
             },
-        depends=['unit_price_required', 'state'],
         help="The currency in which the unit price is specified.")
     unit_price_required = fields.Function(
         fields.Boolean('Unit Price Required'),
@@ -315,7 +304,6 @@ class Move(Workflow, ModelSQL, ModelView):
                 ()),
             ('type', 'in', cls.get_product_types()),
             ]
-        cls.product.depends += ['product_uom_category']
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned

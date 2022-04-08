@@ -19,7 +19,7 @@ class Period(Workflow, ModelSQL, ModelView):
     __name__ = 'stock.period'
     date = fields.Date('Date', required=True, states={
             'readonly': Eval('state') == 'closed',
-            }, depends=['state'],
+            },
         help="When the stock period ends.")
     company = fields.Many2One(
         'company.company', "Company", required=True,

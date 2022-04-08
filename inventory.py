@@ -25,7 +25,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     number = fields.Char('Number', readonly=True,
         help="The main identifier for the inventory.")
@@ -34,31 +33,27 @@ class Inventory(Workflow, ModelSQL, ModelView):
         domain=[('type', '=', 'storage')], states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'],
         help="The location inventoried.")
     date = fields.Date('Date', required=True, states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'],
         help="The date of the stock count.")
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines',
         states={
             'readonly': (_states['readonly'] | ~Eval('location')
                 | ~Eval('date')),
-            },
-        depends=['location', 'date'] + _depends)
+            })
     empty_quantity = fields.Selection([
             (None, ""),
             ('keep', "Keep"),
             ('empty', "Empty"),
-            ], "Empty Quantity", states=_states, depends=_depends,
+            ], "Empty Quantity", states=_states,
         help="How lines without a quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'],
         help="The company the inventory is associated with.")
     state = fields.Selection([
             ('draft', "Draft"),
@@ -67,7 +62,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             ], "State", readonly=True, select=True, sort=False,
         help="The current state of the inventory.")
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -326,12 +321,11 @@ class InventoryLine(ModelSQL, ModelView):
     _states = {
         'readonly': Eval('inventory_state') != 'draft',
         }
-    _depends = ['inventory_state']
 
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
-            ], states=_states, depends=_depends)
+            ], states=_states)
     uom = fields.Function(fields.Many2One('product.uom', 'UOM',
         help="The unit in which the quantity is specified."), 'get_uom')
     expected_quantity = fields.Float(
@@ -341,7 +335,7 @@ class InventoryLine(ModelSQL, ModelView):
         },
         help="The quantity the system calculated should be in the location.")
     quantity = fields.Float(
-        "Actual Quantity", digits='uom', states=_states, depends=_depends,
+        "Actual Quantity", digits='uom', states=_states,
         help="The actual quantity found in the location.")
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
@@ -349,7 +343,6 @@ class InventoryLine(ModelSQL, ModelView):
         states={
             'readonly': _states['readonly'] & Bool(Eval('inventory')),
             },
-        depends=_depends,
         help="The inventory the line belongs to.")
     inventory_location = fields.Function(
         fields.Many2One('stock.location', "Location"),
@@ -361,7 +354,7 @@ class InventoryLine(ModelSQL, ModelView):
         searcher='search_inventory_date')
     inventory_state = fields.Function(
         fields.Selection('get_inventory_states', "Inventory State",
-        depends=['inventory']),
+        depends={'inventory'}),
         'on_change_with_inventory_state')
 
     @classmethod

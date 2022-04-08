@@ -137,48 +137,42 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_shipment_in')),
-            ],
-        depends=['company'])
+            ])
     shipment_in_return_sequence = fields.Many2One(
         'ir.sequence', "Supplier Return Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_shipment_in_return')),
-            ],
-        depends=['company'])
+            ])
     shipment_out_sequence = fields.Many2One(
         'ir.sequence', "Customer Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_shipment_out')),
-            ],
-        depends=['company'])
+            ])
     shipment_out_return_sequence = fields.Many2One(
         'ir.sequence', "Customer Return Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_shipment_out_return')),
-            ],
-        depends=['company'])
+            ])
     shipment_internal_sequence = fields.Many2One(
         'ir.sequence', "Internal Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_shipment_internal')),
-            ],
-        depends=['company'])
+            ])
     inventory_sequence = fields.Many2One(
         'ir.sequence', "Inventory Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('stock', 'sequence_type_inventory')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):

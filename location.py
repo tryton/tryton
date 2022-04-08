@@ -48,8 +48,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         'party.address', "Address",
         states={
             'invisible': Eval('type') != 'warehouse',
-            },
-        depends=['type'])
+            })
     type = fields.Selection([
         ('supplier', 'Supplier'),
         ('customer', 'Customer'),
@@ -86,7 +85,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 ('parent', '=', None),
                 ],
             ],
-        depends=['type', 'id'],
         help="Where incoming stock is received.")
     output_location = fields.Many2One(
         "stock.location", "Output", states={
@@ -98,7 +96,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ['OR',
                 ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None)]],
-        depends=['type', 'id'],
         help="Where outgoing stock is sent from.")
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
@@ -110,7 +107,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ['OR',
                 ('parent', 'child_of', [Eval('id', -1)]),
                 ('parent', '=', None)]],
-        depends=['type', 'id'],
         help="The top level location where stock is stored.")
     picking_location = fields.Many2One(
         'stock.location', 'Picking', states={
@@ -120,7 +116,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('storage_location', -1)]),
             ],
-        depends=['type', 'storage_location'],
         help="Where stock is picked from.\n"
         "Leave empty to use the storage location.")
     lost_found_location = fields.Many2One(
@@ -132,7 +127,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', '=', 'lost_found'),
             ],
-        depends=['type', 'active'],
         help="Used, by inventories, when correcting stock levels "
         "in the warehouse.")
     waste_locations = fields.Many2Many(
@@ -143,7 +137,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', '=', 'lost_found'),
             ],
-        depends=['type'],
         help="The locations used for waste products from the warehouse.")
     waste_warehouses = fields.Many2Many(
         'stock.location.waste', 'location', 'warehouse', "Waste Warehouses",
@@ -153,19 +146,16 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('type', '=', 'warehouse'),
             ],
-        depends=['type'],
         help="The warehouses that use the location for waste products.")
 
     quantity = fields.Function(
         fields.Float(
             "Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
-            depends=['quantity_uom_digits'],
             help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
     forecast_quantity = fields.Function(
         fields.Float(
             "Forecast Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
-            depends=['quantity_uom_digits'],
             help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
     quantity_uom = fields.Function(fields.Many2One(
@@ -202,9 +192,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             childs_domain.append(If(Eval('type') == type_,
                     ('type', 'in', childs_mapping[type_]), ()))
         cls.parent.domain = parent_domain
-        cls.parent.depends.append('type')
         cls.childs.domain = childs_domain
-        cls.childs.depends.extend(['flat_childs', 'type'])
 
     @classmethod
     def _parent_domain(cls):
@@ -747,13 +735,11 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
     product = fields.Many2One('product.product', "Product")
     quantity = fields.Function(
         fields.Float(
-            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits']),
+            "Quantity", digits=(16, Eval('default_uom_digits', 2))),
         'get_product', searcher='search_product')
     forecast_quantity = fields.Function(
         fields.Float(
-            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits']),
+            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2))),
         'get_product', searcher='search_product')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),

@@ -192,12 +192,10 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     __name__ = "product.product"
     quantity = fields.Function(fields.Float(
             "Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits'],
             help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
     forecast_quantity = fields.Function(fields.Float(
             "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits'],
             help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
     cost_value = fields.Function(fields.Numeric(
@@ -1195,7 +1193,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
         context={
             'company': Eval('company', -1),
             },
-        depends=['product', 'company'])
+        depends={'company'})
     product = fields.Many2One(
         'product.product', "Variant",
         ondelete='CASCADE', select=True,
@@ -1207,7 +1205,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
         context={
             'company': Eval('company', -1),
             },
-        depends=['template', 'company'])
+        depends={'company'})
     company = fields.Many2One(
         'company.company', "Company", ondelete='CASCADE', required=True)
 
