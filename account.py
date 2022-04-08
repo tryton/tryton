@@ -587,9 +587,6 @@ class StatementLine(metaclass=PoolMeta):
         cls.related_to.search_context.update({
                 'amount_order': Eval('amount', 0),
                 })
-        for field in ['company', 'party', 'currency', 'amount']:
-            if field not in cls.related_to.depends:
-                cls.related_to.depends.append(field)
 
     @classmethod
     def _get_relations(cls):
