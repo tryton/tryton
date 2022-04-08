@@ -14,15 +14,13 @@ class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     cost_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Currency",
             states={
                 'invisible': Eval('cost_edit', False),
-                },
-            depends=['cost_edit']),
+                }),
         'on_change_with_cost_currency_used')
     cost_currency = fields.Many2One(
         'currency.currency', "Cost Currency",
@@ -30,29 +28,25 @@ class ShipmentIn(metaclass=PoolMeta):
             'required': Bool(Eval('cost')),
             'invisible': ~Eval('cost_edit', False),
             'readonly': ~Eval('state').in_(['draft']),
-            },
-        depends=['cost', 'cost_edit', 'state'])
+            })
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
                 'invisible': Eval('cost_edit', False),
-                },
-            depends=['cost_edit']),
+                }),
         'on_change_with_cost_used')
     cost = fields.Numeric(
         "Cost", digits=price_digits,
         states={
             'invisible': ~Eval('cost_edit', False),
             'readonly': ~Eval('state').in_(['draft']),
-            },
-        depends=['cost_edit', 'state'])
+            })
 
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={
             'readonly': ~Eval('state').in_(['draft']),
             },
-        depends=['state'],
         help="Check to edit the cost.")
 
     def _get_carrier_context(self):
