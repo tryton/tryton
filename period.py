@@ -16,7 +16,6 @@ from .exceptions import (
 _STATES = {
     'readonly': Eval('state') != 'open',
 }
-_DEPENDS = ['state']
 
 
 class Period(Workflow, ModelSQL, ModelView):
@@ -25,12 +24,12 @@ class Period(Workflow, ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
         domain=[('start_date', '<=', Eval('end_date', None))],
-        depends=_DEPENDS + ['end_date'], select=True)
+        select=True)
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
         domain=[('end_date', '>=', Eval('start_date', None))],
-        depends=_DEPENDS + ['start_date'], select=True)
+        select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, states=_STATES, depends=_DEPENDS, select=True)
+        required=True, states=_STATES, select=True)
     state = fields.Selection([
             ('open', 'Open'),
             ('close', 'Close'),
@@ -44,13 +43,12 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),
                 ],
-            ],
-        depends=['company'])
+            ])
     type = fields.Selection([
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
             ], 'Type', required=True,
-        states=_STATES, depends=_DEPENDS, select=True)
+        states=_STATES, select=True)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'on_change_with_company', searcher='search_company')
     icon = fields.Function(fields.Char("Icon"), 'get_icon')

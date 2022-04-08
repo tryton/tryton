@@ -30,7 +30,7 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     date = fields.Char('Date', help='Leave empty for today.')
     description = fields.Char('Description',
         help="Keyword values substitutions are identified "
@@ -38,8 +38,7 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
     lines = fields.One2Many('account.move.line.template', 'move', 'Lines',
         domain=[
             ('account.company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @staticmethod
     def default_company():
@@ -80,7 +79,7 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
     digits = fields.Integer('Digits', states={
             'invisible': Eval('type_') != 'numeric',
             'required': Eval('type_') == 'numeric',
-            }, depends=['type_'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -171,14 +170,12 @@ class MoveLineTemplate(ModelSQL, ModelView):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('_parent_move', {}).get('company', -1)),
-            ],
-        depends=['move'])
+            ])
     party = fields.Char('Party',
         states={
             'required': Eval('party_required', False),
             'invisible': ~Eval('party_required', False),
             },
-        depends=['party_required'],
         help="The name of the 'Party' keyword.")
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
@@ -261,7 +258,7 @@ class TaxLineTemplate(ModelSQL, ModelView):
             ('company', '=', Eval('_parent_line', {}
                     ).get('_parent_move', {}).get('company', -1)),
             ],
-        depends=['line'])
+        depends={'line'})
 
     @classmethod
     def __setup__(cls):

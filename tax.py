@@ -146,8 +146,7 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
     description = fields.Text('Description')
     del _states
 
@@ -370,7 +369,7 @@ class TaxCodeLine(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('_parent_code', {}).get('company')),
             ],
-        depends=['code'])
+        depends={'code'})
     amount = fields.Selection([
             ('tax', "Tax"),
             ('base', "Base"),
@@ -386,8 +385,7 @@ class TaxCodeLine(ModelSQL, ModelView):
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
 
     del _states
 
@@ -476,15 +474,13 @@ class OpenChartTaxCodeStart(ModelView):
         states={
             'invisible': Eval('method') != 'fiscalyear',
             'required': Eval('method') == 'fiscalyear',
-            },
-        depends=['method'])
+            })
     periods = fields.Many2Many('account.period', None, None, 'Periods',
         help='Leave empty for all periods of all open fiscal year.',
         states={
             'invisible': Eval('method') != 'periods',
             'required': Eval('method') == 'periods',
-            },
-        depends=['method'])
+            })
 
     @staticmethod
     def default_method():
@@ -530,21 +526,19 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         'account.tax.group', 'Group',
         states={
             'invisible': Bool(Eval('parent')),
-            },
-        depends=['parent'])
+            })
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
     amount = fields.Numeric('Amount', digits=(16, 8),
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
-            },
-        depends=['type'])
+            })
     rate = fields.Numeric('Rate', digits=(14, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
-            }, depends=['type'])
+            })
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -553,8 +547,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     update_unit_price = fields.Boolean('Update Unit Price',
         states={
             'invisible': Bool(Eval('parent')),
-            },
-        depends=['parent'])
+            })
     parent = fields.Many2One('account.tax.template', 'Parent')
     childs = fields.One2Many('account.tax.template', 'parent', 'Children')
     invoice_account = fields.Many2One(
@@ -565,8 +558,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ],
         states={
             'required': Eval('type') != 'none',
-            },
-        depends=['type'])
+            })
     credit_note_account = fields.Many2One(
         'account.account.template', 'Credit Note Account',
         domain=[
@@ -575,8 +567,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ],
         states={
             'required': Eval('type') != 'none',
-            },
-        depends=['type'])
+            })
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
     legal_notice = fields.Text("Legal Notice")
@@ -704,7 +695,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         states={
             'invisible': Bool(Eval('parent')),
             'readonly': _states['readonly'],
-            }, depends=['parent'])
+            })
     start_date = fields.Date('Starting Date', states=_states)
     end_date = fields.Date('Ending Date', states=_states)
     amount = fields.Numeric('Amount', digits=(16, 8),
@@ -712,14 +703,13 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             'readonly': _states['readonly'],
-            }, help='In company\'s currency.',
-        depends=['type'])
+            }, help='In company\'s currency.')
     rate = fields.Numeric('Rate', digits=(14, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
             'readonly': _states['readonly'],
-            }, depends=['type'])
+            })
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -730,7 +720,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             'invisible': Bool(Eval('parent')),
             'readonly': _states['readonly'],
             },
-        depends=['parent'],
         help=('If checked then the unit price for further tax computation will'
             ' be modified by this tax.'))
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
@@ -747,8 +736,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         states={
             'readonly': _states['readonly'],
             'required': Eval('type') != 'none',
-            },
-        depends=['company', 'type'])
+            })
     credit_note_account = fields.Many2One('account.account',
         'Credit Note Account',
         domain=[
@@ -759,8 +747,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         states={
             'readonly': _states['readonly'],
             'required': Eval('type') != 'none',
-            },
-        depends=['company', 'type'])
+            })
     legal_notice = fields.Text("Legal Notice", translate=True,
         states=_states)
     template = fields.Many2One('account.tax.template', 'Template',
@@ -769,8 +756,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
 
     invoice_base_amount = fields.Function(Monetary(
             "Invoice Base Amount", currency='currency', digits='currency'),
@@ -1236,8 +1222,7 @@ class TaxLine(ModelSQL, ModelView):
         ondelete='RESTRICT', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=True, ondelete='CASCADE')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
@@ -1415,8 +1400,7 @@ class TaxRule(ModelSQL, ModelView):
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
     del _states
 
     @staticmethod
@@ -1506,7 +1490,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
             ],
         help=('If the original tax template is filled, the rule will be '
             'applied only for this tax template.'),
-        depends=['group', 'rule'],
+        depends={'rule'},
         ondelete='RESTRICT')
     keep_origin = fields.Boolean("Keep Origin",
         help="Check to append the original tax to substituted tax.")
@@ -1525,7 +1509,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group', 'rule'],
+        depends={'rule'},
         ondelete='RESTRICT')
 
     @classmethod
@@ -1627,7 +1611,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ],
         help=('If the original tax is filled, the rule will be applied '
             'only for this tax.'),
-        depends=['group', 'rule'],
+        depends={'rule'},
         ondelete='RESTRICT', states=_states)
     keep_origin = fields.Boolean("Keep Origin", states=_states,
         help="Check to append the original tax to substituted tax.")
@@ -1646,7 +1630,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group', 'rule'],
+        depends={'rule'},
         ondelete='RESTRICT', states=_states)
     template = fields.Many2One(
         'account.tax.rule.line.template', 'Template', ondelete='CASCADE')
@@ -1654,8 +1638,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
     del _states
 
     @classmethod

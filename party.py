@@ -297,7 +297,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     account_payable = fields.Many2One(
         'account.account', "Account Payable",
         domain=[
@@ -305,7 +305,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'], ondelete='RESTRICT')
+        ondelete='RESTRICT')
     account_receivable = fields.Many2One(
         'account.account', "Account Receivable",
         domain=[
@@ -313,21 +313,21 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'], ondelete='RESTRICT')
+        ondelete='RESTRICT')
     customer_tax_rule = fields.Many2One(
         'account.tax.rule', "Customer Tax Rule",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['sale', 'both']),
             ],
-        depends=['company'], ondelete='RESTRICT')
+        ondelete='RESTRICT')
     supplier_tax_rule = fields.Many2One(
         'account.tax.rule', "Supplier Tax Rule",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['purchase', 'both']),
             ],
-        depends=['company'], ondelete='RESTRICT')
+        ondelete='RESTRICT')
 
     @classmethod
     def __register__(cls, module_name):

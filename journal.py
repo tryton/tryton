@@ -21,7 +21,6 @@ from trytond.transaction import Transaction
 STATES = {
     'readonly': Eval('state') == 'close',
 }
-DEPENDS = ['state']
 
 
 class Journal(
@@ -161,7 +160,7 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     sequence = fields.Many2One(
         'ir.sequence', "Sequence",
         domain=[
@@ -169,7 +168,7 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
                 Id('account', 'sequence_type_account_journal')),
             ('company', 'in', [Eval('company', -1), None]),
             ],
-        depends=['company'])
+        depends={'company'})
 
     @classmethod
     def __register__(cls, module_name):
@@ -216,9 +215,9 @@ class JournalPeriod(
     'Journal - Period'
     __name__ = 'account.journal.period'
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-            ondelete='CASCADE', states=STATES, depends=DEPENDS)
+            ondelete='CASCADE', states=STATES)
     period = fields.Many2One('account.period', 'Period', required=True,
-            ondelete='CASCADE', states=STATES, depends=DEPENDS)
+            ondelete='CASCADE', states=STATES)
     icon = fields.Function(fields.Char('Icon'), 'get_icon')
     state = fields.Selection([
         ('open', 'Open'),
@@ -248,7 +247,6 @@ class JournalPeriod(
                     },
                 })
         cls.active.states = STATES
-        cls.active.depends = DEPENDS
 
     @classmethod
     def __register__(cls, module_name):

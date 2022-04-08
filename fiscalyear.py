@@ -20,26 +20,22 @@ from .exceptions import (
 STATES = {
     'readonly': Eval('state') != 'open',
 }
-DEPENDS = ['state']
 
 
 class FiscalYear(Workflow, ModelSQL, ModelView):
     'Fiscal Year'
     __name__ = 'account.fiscalyear'
-    name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
+    name = fields.Char('Name', size=None, required=True)
     start_date = fields.Date('Starting Date', required=True, states=STATES,
-        domain=[('start_date', '<=', Eval('end_date', None))],
-        depends=DEPENDS + ['end_date'])
+        domain=[('start_date', '<=', Eval('end_date', None))])
     end_date = fields.Date('Ending Date', required=True, states=STATES,
-        domain=[('end_date', '>=', Eval('start_date', None))],
-        depends=DEPENDS + ['start_date'])
+        domain=[('end_date', '>=', Eval('start_date', None))])
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
         states=STATES,
         domain=[
             ('company', '=', Eval('company')),
             ],
-        order=[('start_date', 'ASC'), ('id', 'ASC')],
-        depends=DEPENDS + ['company'])
+        order=[('start_date', 'ASC'), ('id', 'ASC')])
     state = fields.Selection([
             ('open', 'Open'),
             ('close', 'Close'),
@@ -51,8 +47,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ('sequence_type', '=',
                 Id('account', 'sequence_type_account_move')),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True)
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
@@ -353,13 +348,12 @@ class BalanceNonDeferralStart(ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('type', '=', 'adjustment'),
-            ],
-        depends=['fiscalyear'])
+            ])
     credit_account = fields.Many2One('account.account', 'Credit Account',
         required=True,
         domain=[
@@ -367,8 +361,7 @@ class BalanceNonDeferralStart(ModelView):
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
-            ],
-        depends=['company'])
+            ])
     debit_account = fields.Many2One('account.account', 'Debit Account',
         required=True,
         domain=[
@@ -376,8 +369,7 @@ class BalanceNonDeferralStart(ModelView):
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
-            ],
-        depends=['company'])
+            ])
 
     @fields.depends('fiscalyear')
     def on_change_with_company(self, name=None):
@@ -481,7 +473,6 @@ class CreatePeriodsStart(ModelView):
         states={
             'invisible': Eval('frequency') != 'other',
             },
-        depends=['frequency'],
         help="The length of each period, in months.")
     end_day = fields.Integer("End Day", required=True,
         help="The day of the month on which periods end.\n"
@@ -540,7 +531,6 @@ class RenewFiscalYearStart(ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ],
-        depends=['company'],
         help="Used as reference for fiscalyear configuration.")
     start_date = fields.Date("Start Date", required=True)
     end_date = fields.Date("End Date", required=True)

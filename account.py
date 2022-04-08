@@ -53,14 +53,12 @@ def TypeMixin(template=False):
                 ], "Statement",
             states={
                 'required': Bool(Eval('parent')),
-                },
-            depends=['parent'])
+                })
         assets = fields.Boolean(
             "Assets",
             states={
                 'invisible': Eval('statement') != 'balance',
-                },
-            depends=['statement'])
+                })
 
         receivable = fields.Boolean(
             "Receivable",
@@ -72,8 +70,7 @@ def TypeMixin(template=False):
             states={
                 'invisible': ((Eval('statement') != 'balance')
                     | ~Eval('assets', True)),
-                },
-            depends=['statement', 'assets'])
+                })
         stock = fields.Boolean(
             "Stock",
             domain=[
@@ -82,8 +79,7 @@ def TypeMixin(template=False):
                 ],
             states={
                 'invisible': Eval('statement') == 'off-balance',
-                },
-            depends=['statement'])
+                })
 
         payable = fields.Boolean(
             "Payable",
@@ -95,8 +91,7 @@ def TypeMixin(template=False):
             states={
                 'invisible': ((Eval('statement') != 'balance')
                     | Eval('assets', False)),
-                },
-            depends=['statement', 'assets'])
+                })
 
         debt = fields.Boolean(
             "Debt",
@@ -109,7 +104,6 @@ def TypeMixin(template=False):
                 'invisible': ((Eval('statement') != 'balance')
                     | Eval('assets', False)),
                 },
-            depends=['statement', 'assets'],
             help="Check to allow booking debt via supplier invoice.")
 
         revenue = fields.Boolean(
@@ -120,8 +114,7 @@ def TypeMixin(template=False):
                 ],
             states={
                 'invisible': Eval('statement') != 'income',
-                },
-            depends=['statement'])
+                })
 
         expense = fields.Boolean(
             "Expense",
@@ -131,8 +124,7 @@ def TypeMixin(template=False):
                 ],
             states={
                 'invisible': Eval('statement') != 'income',
-                },
-            depends=['statement'])
+                })
     if not template:
         for fname in dir(Mixin):
             field = getattr(Mixin, fname)
@@ -158,8 +150,7 @@ class TypeTemplate(
                     ('statement', '!=', 'off-balance')),
                 ),
             ('statement', '=', None),
-            ],
-        depends=['statement'])
+            ])
     childs = fields.One2Many(
         'account.account.type.template', 'parent', "Children")
 
@@ -245,13 +236,11 @@ class Type(
             },
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company', 'statement'])
+            ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company')),
-        ],
-        depends=['company'])
+            ])
     currency = fields.Function(fields.Many2One(
         'currency.currency', 'Currency'), 'get_currency')
     amount = fields.Function(Monetary(
@@ -268,8 +257,7 @@ class Type(
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
 
     @classmethod
     def __register__(cls, module_name):
@@ -508,14 +496,12 @@ def AccountMixin(template=False):
             states={
                 'invisible': ~Eval('type'),
                 },
-            depends=['type'],
             help="Check to prevent posting move on the account.")
         reconcile = fields.Boolean(
             "Reconcile",
             states={
                 'invisible': ~Eval('type'),
                 },
-            depends=['type'],
             help="Allow move lines of this account to be reconciled.")
 
         party_required = fields.Boolean('Party Required',
@@ -526,22 +512,19 @@ def AccountMixin(template=False):
                 ],
             states={
                 'invisible': ~Eval('type') | ~Eval('deferral', False),
-                },
-            depends=['type', 'deferral'])
+                })
 
         general_ledger_balance = fields.Boolean('General Ledger Balance',
             states={
                 'invisible': ~Eval('type'),
                 },
-            depends=['type'],
             help="Display only the balance in the general ledger report.")
 
         deferral = fields.Function(fields.Boolean(
                 "Deferral",
                 states={
                     'invisible': ~Eval('type'),
-                    },
-                depends=['type']),
+                    }),
             'on_change_with_deferral', searcher='search_deferral')
 
         @classmethod
@@ -559,13 +542,11 @@ def AccountMixin(template=False):
                         ('id', '=', Eval('_parent_parent.%s' % type_)),
                         ()),
                     ]
-                field.depends.append('parent')
 
                 cls.childs.domain.append(
                     If(Eval(type_) & Eval('parent'),
                         (type_, '=', Eval(type_)),
                         ()))
-                cls.childs.depends.extend([type_, 'parent'])
 
         @classmethod
         def default_closed(cls):
@@ -852,8 +833,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         states={
             'readonly': _states['readonly'],
             'invisible': ~Eval('deferral', False),
-            },
-        depends=['currency', 'deferral'])
+            })
     type = fields.Many2One(
         'account.account.type', "Type", ondelete='RESTRICT',
         states={
@@ -861,8 +841,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             },
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     debit_type = fields.Many2One(
         'account.account.type', "Debit Type", ondelete='RESTRICT',
         states={
@@ -874,7 +853,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ],
-        depends=['company', 'type', 'credit_type'],
         help="The type used if not empty and debit > credit.")
     credit_type = fields.Many2One(
         'account.account.type', "Credit Type", ondelete='RESTRICT',
@@ -887,7 +865,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ],
-        depends=['company', 'type', 'debit_type'],
         help="The type used if not empty and debit < credit.")
     parent = fields.Many2One(
         'account.account', 'Parent', select=True,
@@ -903,23 +880,20 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             "Credit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_credit_debit')
     debit = fields.Function(Monetary(
             "Debit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_credit_debit')
     amount_second_currency = fields.Function(Monetary(
             "Amount Second Currency",
             currency='second_currency', digits='second_currency',
             states={
                 'invisible': ~Eval('second_currency'),
-                },
-            depends=['second_currency']),
+                }),
         'get_credit_debit')
     line_count = fields.Function(
         fields.Integer("Line Count"), 'get_credit_debit')
@@ -928,8 +902,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         'account.account.deferral', 'account', "Deferrals", readonly=True,
         states={
             'invisible': ~Eval('type'),
-            },
-        depends=['type'])
+            })
     taxes = fields.Many2Many('account.account-account.tax',
         'account', 'tax', 'Default Taxes',
         domain=[
@@ -937,23 +910,20 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ('parent', '=', None),
             ],
         help="Default tax for manual encoding of move lines\n"
-        'for journal types: "expense" and "revenue".',
-        depends=['company'])
+        'for journal types: "expense" and "revenue".')
     replaced_by = fields.Many2One(
         'account.account', "Replaced By",
         domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': _states['readonly'],
             'invisible': ~Eval('end_date'),
-            },
-        depends=['company'])
+            })
     template = fields.Many2One('account.account.template', 'Template')
     template_override = fields.Boolean('Override Template',
         help="Check to override template definition",
         states={
             'invisible': ~Bool(Eval('template', -1)),
-            },
-        depends=['template'])
+            })
     del _states
 
     @classmethod
@@ -1413,7 +1383,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     name = fields.Char("Name")
     code = fields.Char("Code")
     company = fields.Many2One('company.company', "Company")
@@ -1436,8 +1406,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             currency='second_currency', digits='second_currency',
             states={
                 'invisible': ~Eval('second_currency'),
-                },
-            depends=['second_currency']),
+                }),
         'get_credit_debit')
     line_count = fields.Function(
         fields.Integer("Line Count"), 'get_credit_debit')
@@ -1635,8 +1604,7 @@ class AccountDeferral(ModelSQL, ModelView):
         currency='second_currency', digits='second_currency', required=True,
         states={
             'invisible': ~Eval('second_currency'),
-            },
-        depends=['second_currency'])
+            })
     line_count = fields.Integer("Line Count", required=True)
     second_currency = fields.Function(fields.Many2One(
             'currency.currency', "Second Currency"), 'get_second_currency')
@@ -1808,43 +1776,37 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             "Start Debit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_account', searcher='search_account')
     debit = fields.Function(Monetary(
             "Debit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_debit_credit', searcher='search_debit_credit')
     end_debit = fields.Function(Monetary(
             "End Debit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_account', searcher='search_account')
     start_credit = fields.Function(Monetary(
             "Start Credit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_account', searcher='search_account')
     credit = fields.Function(Monetary(
             "Credit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_debit_credit', searcher='search_debit_credit')
     end_credit = fields.Function(Monetary(
             "End Credit", currency='currency', digits='currency',
             states={
                 'invisible': ~Eval('line_count', -1),
-                },
-            depends=['line_count']),
+                }),
         'get_account', searcher='search_account')
     line_count = fields.Function(
         fields.Integer("Line Count"),
@@ -2074,8 +2036,7 @@ class GeneralLedgerAccountContext(ModelView):
             ],
         states={
             'invisible': Eval('from_date', False) | Eval('to_date', False),
-            },
-        depends=['fiscalyear', 'end_period', 'from_date', 'to_date'])
+            })
     end_period = fields.Many2One('account.period', 'End Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -2083,8 +2044,7 @@ class GeneralLedgerAccountContext(ModelView):
             ],
         states={
             'invisible': Eval('from_date', False) | Eval('to_date', False),
-            },
-        depends=['fiscalyear', 'start_period', 'from_date', 'to_date'])
+            })
     from_date = fields.Date("From Date",
         domain=[
             If(Eval('to_date') & Eval('from_date'),
@@ -2094,8 +2054,7 @@ class GeneralLedgerAccountContext(ModelView):
         states={
             'invisible': (Eval('start_period', False)
                 | Eval('end_period', False)),
-            },
-        depends=['to_date', 'start_period', 'end_period'])
+            })
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
@@ -2105,8 +2064,7 @@ class GeneralLedgerAccountContext(ModelView):
         states={
             'invisible': (Eval('start_period', False)
                 | Eval('end_period', False)),
-            },
-        depends=['from_date', 'start_period', 'end_period'])
+            })
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help="Only include posted moves.")
     journal = fields.Many2One(
@@ -2114,7 +2072,7 @@ class GeneralLedgerAccountContext(ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="Only include moves from the journal.")
 
     @classmethod
@@ -2193,7 +2151,7 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
 
     @classmethod
     def __setup__(cls):
@@ -2254,7 +2212,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['party_required', 'company'])
+        depends={'company'})
     party_required = fields.Boolean('Party Required')
     account_party = fields.Function(
         fields.Many2One(
@@ -2492,8 +2450,7 @@ class BalanceSheetComparisionContext(BalanceSheetContext):
     date_cmp = fields.Date('Date', states={
             'required': Eval('comparison', False),
             'invisible': ~Eval('comparison', False),
-            },
-        depends=['comparison'])
+            })
 
     @classmethod
     def default_comparison(cls):
@@ -2521,8 +2478,7 @@ class IncomeStatementContext(ModelView):
         required=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -2530,8 +2486,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': Eval('from_date', False) | Eval('to_date', False),
-            },
-        depends=['end_period', 'fiscalyear', 'from_date', 'to_date'])
+            })
     end_period = fields.Many2One('account.period', 'End Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -2539,8 +2494,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': Eval('from_date', False) | Eval('to_date', False),
-            },
-        depends=['start_period', 'fiscalyear', 'from_date', 'to_date'])
+            })
     from_date = fields.Date("From Date",
         domain=[
             If(Eval('to_date') & Eval('from_date'),
@@ -2550,8 +2504,7 @@ class IncomeStatementContext(ModelView):
         states={
             'invisible': (
                 Eval('start_period', False) | Eval('end_period', False)),
-            },
-        depends=['to_date', 'start_period', 'end_period'])
+            })
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
@@ -2561,8 +2514,7 @@ class IncomeStatementContext(ModelView):
         states={
             'invisible': (
                 Eval('start_period', False) | Eval('end_period', False)),
-            },
-        depends=['from_date', 'start_period', 'end_period'])
+            })
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help="Only include posted moves.")
     comparison = fields.Boolean('Comparison')
@@ -2573,8 +2525,7 @@ class IncomeStatementContext(ModelView):
             },
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     start_period_cmp = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear_cmp')),
@@ -2582,8 +2533,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': ~Eval('comparison', False),
-            },
-        depends=['end_period_cmp', 'fiscalyear_cmp'])
+            })
     end_period_cmp = fields.Many2One('account.period', 'End Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear_cmp')),
@@ -2591,8 +2541,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': ~Eval('comparison', False),
-            },
-        depends=['start_period_cmp', 'fiscalyear_cmp'])
+            })
     from_date_cmp = fields.Date("From Date",
         domain=[
             If(Eval('to_date_cmp') & Eval('from_date_cmp'),
@@ -2601,8 +2550,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': ~Eval('comparison', False),
-            },
-        depends=['to_date_cmp', 'comparison'])
+            })
     to_date_cmp = fields.Date("To Date",
         domain=[
             If(Eval('from_date_cmp') & Eval('to_date_cmp'),
@@ -2611,8 +2559,7 @@ class IncomeStatementContext(ModelView):
             ],
         states={
             'invisible': ~Eval('comparison', False),
-            },
-        depends=['from_date_cmp', 'comparison'])
+            })
 
     @staticmethod
     def default_fiscalyear():
@@ -2684,13 +2631,11 @@ class AgedBalanceContext(ModelView):
     term2 = fields.Integer("Second Term", required=True,
         domain=[
             ('term2', '>', Eval('term1', 0)),
-            ],
-        depends=['term1'])
+            ])
     term3 = fields.Integer("Third Term", required=True,
         domain=[
             ('term3', '>', Eval('term2', 0)),
-            ],
-        depends=['term2'])
+            ])
     unit = fields.Selection([
             ('day', 'Days'),
             ('week', "Weeks"),
@@ -2757,7 +2702,7 @@ class AgedBalance(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     company = fields.Many2One('company.company', 'Company')
     term0 = Monetary(
         "Now", currency='currency', digits='currency')
@@ -2947,8 +2892,7 @@ class CreateChartProperties(ModelView):
                 ('type.receivable', '=', True),
                 ('party_required', '=', True),
                 ('company', '=', Eval('company')),
-            ],
-            depends=['company'])
+                ])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
             domain=[
@@ -2956,8 +2900,7 @@ class CreateChartProperties(ModelView):
                 ('type.payable', '=', True),
                 ('party_required', '=', True),
                 ('company', '=', Eval('company')),
-            ],
-            depends=['company'])
+                ])
 
 
 class CreateChart(Wizard):

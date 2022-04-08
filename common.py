@@ -19,16 +19,14 @@ class PeriodMixin(Model):
             If(Eval('start_date') & Eval('end_date'),
                 ('start_date', '<=', Eval('end_date')),
                 ()),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date(
         "End Date",
         domain=[
             If(Eval('start_date') & Eval('end_date'),
                 ('end_date', '>=', Eval('start_date')),
                 ()),
-            ],
-        depends=['start_date'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -51,7 +49,7 @@ class PeriodMixin(Model):
                     ('end_date', '=', None),
                     ],
                 ]
-            cls.parent.depends.extend(['company', 'start_date', 'end_date'])
+            cls.parent.depends.update({'company', 'start_date', 'end_date'})
 
             cls.childs.domain = [
                 ('company', '=', Eval('company', 0)),
@@ -62,7 +60,7 @@ class PeriodMixin(Model):
                     ('end_date', '<=', Eval('end_date', None)),
                     ()),
                 ]
-            cls.childs.depends.extend(['company', 'start_date', 'end_date'])
+            cls.childs.depends.update({'company', 'start_date', 'end_date'})
 
 
 class ActivePeriodMixin(PeriodMixin):

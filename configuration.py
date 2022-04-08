@@ -89,16 +89,14 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
             ('type.receivable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     default_account_payable = fields.Many2One(
         'account.account', "Default Account Payable",
         domain=[
             ('type.payable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
 
 class DefaultTaxRule(ModelSQL, CompanyValueMixin):
@@ -109,15 +107,13 @@ class DefaultTaxRule(ModelSQL, CompanyValueMixin):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['sale', 'both']),
-            ],
-        depends=['company'])
+            ])
     default_supplier_tax_rule = fields.Many2One(
         'account.tax.rule', "Default Supplier Tax Rule",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['purchase', 'both']),
-            ],
-        depends=['company'])
+            ])
 
 
 class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
@@ -128,7 +124,7 @@ class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     tax_rounding = fields.Selection(tax_roundings, 'Method', required=True)
 
     @classmethod
@@ -160,8 +156,7 @@ class Sequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('account', 'sequence_type_account_move_reconciliation')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_reconciliation_sequence(cls):

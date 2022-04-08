@@ -34,11 +34,9 @@ from .exceptions import (
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
     }
-_MOVE_DEPENDS = ['state']
 _LINE_STATES = {
     'readonly': Eval('state') == 'valid',
     }
-_LINE_DEPENDS = ['state']
 
 
 class Move(ModelSQL, ModelView):
@@ -49,7 +47,7 @@ class Move(ModelSQL, ModelView):
     post_number = fields.Char('Post Number', readonly=True,
         help='Also known as Folio Number.')
     company = fields.Many2One('company.company', 'Company', required=True,
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+        states=_MOVE_STATES)
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -57,7 +55,7 @@ class Move(ModelSQL, ModelView):
                 ('state', '=', 'open'),
                 ()),
             ],
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company', 'state'],
+        states=_MOVE_STATES,
         select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states={
@@ -66,20 +64,19 @@ class Move(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['number', 'company'])
+        depends={'company'})
     date = fields.Date('Effective Date', required=True, select=True,
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+        states=_MOVE_STATES)
     post_date = fields.Date('Post Date', readonly=True)
-    description = fields.Char('Description', states=_MOVE_STATES,
-        depends=_MOVE_DEPENDS)
+    description = fields.Char('Description', states=_MOVE_STATES)
     origin = fields.Reference('Origin', selection='get_origin',
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+        states=_MOVE_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
         ], 'State', required=True, readonly=True, select=True, sort=False)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'],
+        states=_MOVE_STATES, depends={'company'},
         context={
             'journal': Eval('journal'),
             'period': Eval('period'),
@@ -485,8 +482,7 @@ class Reconciliation(ModelSQL, ModelView):
         'account.move.line', 'reconciliation', 'Lines',
         domain=[
             ('move.company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     date = fields.Date('Date', required=True, select=True,
         help='Highest date of the reconciled lines.')
     delegate_to = fields.Many2One(
@@ -494,7 +490,6 @@ class Reconciliation(ModelSQL, ModelView):
         domain=[
             ('move.company', '=', Eval('company', -1)),
             ],
-        depends=['company'],
         help="The line to which the reconciliation status is delegated.")
 
     @classmethod
@@ -723,16 +718,15 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('move_state') == 'posted',
         }
-    _depends = ['move_state']
 
     debit = Monetary(
         "Debit", currency='currency', digits='currency', required=True,
         states=_states,
-        depends=['credit', 'tax_lines', 'journal'] + _depends)
+        depends={'credit', 'tax_lines', 'journal'})
     credit = Monetary(
         "Credit", currency='currency', digits='currency', required=True,
         states=_states,
-        depends=['debit', 'tax_lines', 'journal'] + _depends)
+        depends={'debit', 'tax_lines', 'journal'})
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -750,44 +744,43 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        select=True, states=_states, depends=_depends + ['date', 'company'])
+        select=True, states=_states, depends={'company'})
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
         ondelete='CASCADE',
         states={
             'required': False,
             'readonly': (((Eval('state') == 'valid') | _states['readonly'])
                 & Bool(Eval('move'))),
-            },
-        depends=['state'] + _depends)
+            })
     journal = fields.Function(fields.Many2One(
             'account.journal', 'Journal',
             states=_states,
             context={
                 'company': Eval('company', -1),
                 },
-            depends=_depends + ['company']),
+            depends={'company'}),
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
     period = fields.Function(fields.Many2One('account.period', 'Period',
-            states=_states, depends=_depends),
+            states=_states),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
     company = fields.Function(fields.Many2One(
-            'company.company', "Company", states=_states, depends=_depends),
+            'company.company', "Company", states=_states),
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
     date = fields.Function(fields.Date('Effective Date', required=True,
-            states=_states, depends=_depends),
+            states=_states),
             'on_change_with_date', setter='set_move_field',
             searcher='search_move_field')
     origin = fields.Reference(
-        "Origin", selection='get_origin', states=_states, depends=_depends)
+        "Origin", selection='get_origin', states=_states)
     move_origin = fields.Function(
         fields.Reference("Move Origin", selection='get_move_origin'),
         'get_move_field', searcher='search_move_field')
-    description = fields.Char('Description', states=_states, depends=_depends)
+    description = fields.Char('Description', states=_states)
     move_description = fields.Function(fields.Char('Move Description',
-            states=_states, depends=_depends),
+            states=_states),
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
     amount_second_currency = Monetary(
@@ -797,7 +790,6 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             'required': Bool(Eval('second_currency')),
             'readonly': _states['readonly'],
             },
-        depends=['second_currency'] + _depends,
         help='The amount expressed in a second currency.')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency.',
@@ -810,9 +802,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             'required': (Bool(Eval('amount_second_currency'))
                 | Bool(Eval('second_currency_required'))),
             'readonly': _states['readonly']
-            },
-        depends=['amount_second_currency', 'second_currency_required']
-        + _depends)
+            })
     second_currency_required = fields.Function(
         fields.Many2One('currency.currency', "Second Currency Required"),
         'on_change_with_second_currency_required')
@@ -825,7 +815,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['party_required', 'company'] + _depends, ondelete='RESTRICT')
+        depends={'company'}, ondelete='RESTRICT')
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
@@ -852,7 +842,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     amount_currency = fields.Function(fields.Many2One('currency.currency',
             'Amount Currency'), 'get_amount_currency')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -1416,23 +1406,21 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     credit_account = fields.Many2One('account.account', "Credit Account",
         required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     debit_account = fields.Many2One('account.account', "Debit Account",
         required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -1586,8 +1574,7 @@ class ReconcileLinesWriteOff(ModelView):
         required=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     date = fields.Date('Date', required=True)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', readonly=True)
@@ -1890,30 +1877,28 @@ class ReconcileShow(ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     party = fields.Many2One(
         'party.party', 'Party', readonly=True,
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
             ('account', '=', Eval('account')),
             ('party', '=', Eval('party')),
             ('reconciliation', '=', None),
-            ],
-        depends=['account', 'party'])
+            ])
 
     _write_off_states = {
         'required': Bool(Eval('write_off_amount', 0)),
         'invisible': ~Eval('write_off_amount', 0),
         }
-    _write_off_depends = ['write_off_amount']
 
     write_off_amount = fields.Function(Monetary(
             "Amount", currency='currency', digits='currency',
-            states=_write_off_states, depends=_write_off_depends),
+            states=_write_off_states),
         'on_change_with_write_off_amount')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
@@ -1923,13 +1908,12 @@ class ReconcileShow(ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        states=_write_off_states, depends=_write_off_depends + ['company'])
-    date = fields.Date('Date',
-        states=_write_off_states, depends=_write_off_depends)
+        states=_write_off_states)
+    date = fields.Date('Date', states=_write_off_states)
     description = fields.Char('Description',
         states={
             'invisible': _write_off_states['invisible'],
-            }, depends=_write_off_depends)
+            })
 
     @fields.depends('lines', 'currency')
     def on_change_with_write_off_amount(self, name=None):
@@ -2427,7 +2411,6 @@ class RescheduleLinesStart(ModelView):
         states={
             'invisible': Eval('frequency') != 'other',
             },
-        depends=['frequency'],
         help="The length of each period, in months.")
     amount = Monetary(
         "Amount", currency='currency', digits='currency',
@@ -2445,8 +2428,7 @@ class RescheduleLinesStart(ModelView):
                         ('amount', '>=', Eval('total_amount', 0)),
                         ('amount', '<', 0),
                         ]),
-                [])],
-        depends=['number', 'total_amount'])
+                [])])
     number = fields.Integer(
         "Number",
         domain=[
@@ -2455,8 +2437,7 @@ class RescheduleLinesStart(ModelView):
         states={
             'required': ~Eval('amount'),
             'invisible': Bool(Eval('amount')),
-            },
-        depends=['amount'])
+            })
 
     total_amount = fields.Numeric("Total Amount", readonly=True)
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)
@@ -2488,8 +2469,7 @@ class RescheduleLinesPreview(ModelView):
         'account.move.line.reschedule.term', None, "Terms",
         domain=[
             ('currency', '=', Eval('currency', -1)),
-            ],
-        depends=['currency'])
+            ])
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)
 
 
