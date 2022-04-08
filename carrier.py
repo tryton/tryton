@@ -71,8 +71,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'required': Eval('shipping_service') == 'dpd',
             'invisible': Eval('shipping_service') != 'dpd',
-            },
-        depends=['shipping_service'])
+            })
     dpd_printer_language = fields.Selection([
             (None, ''),
             ('PDF', "PDF"),
@@ -81,8 +80,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'required': Eval('shipping_service') == 'dpd',
             'invisible': Eval('shipping_service') != 'dpd',
-            },
-        depends=['shipping_service'])
+            })
     dpd_paper_format = fields.Selection([
             (None, ''),
             ('A4', "A4"),
@@ -92,8 +90,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'required': Eval('shipping_service') == 'dpd',
             'invisible': Eval('shipping_service') != 'dpd',
-            },
-        depends=['shipping_service'])
+            })
 
     @classmethod
     def __setup__(cls):
