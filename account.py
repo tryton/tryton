@@ -11,5 +11,4 @@ class InvoiceLine(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.product.context['warehouse'] = Eval('warehouse', -1)
-        if 'warehouse' not in cls.product.depends:
-            cls.product.depends.append('warehouse')
+        cls.product.depends.add('warehouse')

@@ -48,8 +48,7 @@ class Location(metaclass=PoolMeta):
                 (Eval('type') != 'storage')
                 | Bool(Eval('warehouse'))
                 | (Eval('id', -1) < 0)),
-            },
-        depends=['type', 'warehouse'])
+            })
 
 
 class Move(metaclass=PoolMeta):

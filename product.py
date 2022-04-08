@@ -192,8 +192,7 @@ class CostPrice(metaclass=PoolMeta):
             ],
         states={
             'required': Eval('warehouse_required', False),
-            },
-        depends=['warehouse_required'])
+            })
     warehouse_required = fields.Function(fields.Boolean(
             "Warehouse Required"), 'get_warehouse_required')
 
@@ -211,8 +210,7 @@ class CostPriceRevision(metaclass=PoolMeta):
             ],
         states={
             'required': Eval('warehouse_required', False),
-            },
-        depends=['warehouse_required'])
+            })
     warehouse_required = fields.Function(fields.Boolean(
             "Warehouse Required"), 'get_warehouse_required')
 
