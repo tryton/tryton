@@ -18,7 +18,6 @@ class Selection(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('from_country'),
             },
-        depends=['from_country'],
         help="The subdivision the carrier collects from.\n"
         "Leave empty to allow collection from any subdivision.")
     from_postal_code = fields.Char("From Postal Code",
@@ -34,7 +33,6 @@ class Selection(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('to_country'),
             },
-        depends=['to_country'],
         help="The subdivision the carrier delivers to.\n"
         "Leave empty to allow delivery to any subdivision.")
     to_postal_code = fields.Char("To Postal Code",
