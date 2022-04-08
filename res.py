@@ -98,16 +98,14 @@ class UserRole(ModelSQL, ModelView):
             If(Eval('from_date') & Eval('to_date'),
                 ('from_date', '<=', Eval('to_date', None)),
                 ()),
-            ],
-        depends=['to_date'])
+            ])
     to_date = fields.Date(
         "To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('to_date', '>=', Eval('from_date', None)),
                 ()),
-            ],
-        depends=['from_date'])
+            ])
 
     @classmethod
     def __setup__(cls):
