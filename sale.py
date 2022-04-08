@@ -37,9 +37,7 @@ class Sale(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state') != 'quotation',
-            },
-        depends=['company', 'total_amount', 'party', 'invoice_party',
-            'currency', 'state'])
+            })
 
     @classmethod
     @ModelView.button
