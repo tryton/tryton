@@ -47,7 +47,7 @@ class Currency(
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates',
         help="Add floating exchange rates for the currency.")
     rounding = fields.Numeric('Rounding factor', required=True,
-        digits=(12, Eval('digits', 6)), depends=['digits'],
+        digits=(12, Eval('digits', 6)),
         help="The minimum amount which can be represented in this currency.")
     digits = fields.Integer("Digits", required=True,
         help="The number of digits to display after the decimal separator.")
@@ -312,8 +312,7 @@ class Cron(ModelSQL, ModelView):
         states={
             'required': Eval('frequency') == 'weekly',
             'invisible': Eval('frequency') != 'weekly',
-            },
-        depends=['frequency'])
+            })
     day = fields.Integer(
         "Day of Month",
         domain=[If(Eval('frequency') == 'monthly',
@@ -323,8 +322,7 @@ class Cron(ModelSQL, ModelView):
         states={
             'required': Eval('frequency') == 'monthly',
             'invisible': Eval('frequency') != 'monthly',
-            },
-        depends=['frequency'])
+            })
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         help="The base currency to fetch rate.")

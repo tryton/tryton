@@ -19,10 +19,10 @@ class Monetary(fields.Numeric):
         '''
         if currency:
             if depends is None:
-                depends = [currency]
-            elif currency not in depends:
-                depends = depends.copy()
-                depends.append(currency)
+                depends = set()
+            else:
+                depends = set(depends)
+            depends.add(currency)
         super().__init__(string=string, digits=digits, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,
