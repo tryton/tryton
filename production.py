@@ -29,7 +29,7 @@ class Routing(metaclass=PoolMeta):
             'required': Bool(Eval('supplier')),
             'invisible': ~Eval('supplier'),
             },
-        depends=['supplier', 'supplier_service_supplier'],
+        depends={'supplier_service_supplier'},
         help="The service to buy to the supplier for the production.")
     supplier_service_supplier = fields.Many2One(
         'purchase.product_supplier', "Supplier's Service",
@@ -50,14 +50,12 @@ class Routing(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('supplier'),
             },
-        depends=['supplier_service', 'supplier'],
         help="The supplier's service to buy for the production.")
     supplier_quantity = fields.Float("Quantity",
         states={
             'invisible': ~Eval('supplier_service'),
             'required': Bool(Eval('supplier_service')),
             },
-        depends=['supplier_service'],
         help="The quantity to buy to produce one time the BOM.")
 
     @classmethod
@@ -111,7 +109,6 @@ class Production(metaclass=PoolMeta):
         domain=[
             ('purchase.company', '=', Eval('company', -1)),
             ],
-        depends=['company'],
         help="The lines to add to the production cost.")
 
     def get_cost(self, name):
