@@ -200,15 +200,13 @@ class Context(ModelView):
             If(Eval('to_date') & Eval('from_date'),
                 ('from_date', '<=', Eval('to_date')),
                 ()),
-            ],
-        depends=['to_date'])
+            ])
     to_date = fields.Date("To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('to_date', '>=', Eval('from_date')),
                 ()),
-            ],
-        depends=['from_date'])
+            ])
     period = fields.Selection([
             ('year', "Year"),
             ('month', "Month"),

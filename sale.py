@@ -18,7 +18,6 @@ class Sale(metaclass=PoolMeta):
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
             },
-        depends=['state', 'company'],
         help="The agent who receives a commission for the sale.")
 
     def create_invoice(self):
@@ -81,7 +80,7 @@ class Line(metaclass=PoolMeta):
             ('type_', '=', 'principal'),
             ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
             ],
-        depends=['sale'],
+        depends={'sale'},
         help="The principal who pays a commission for the line.")
 
     def get_invoice_line(self):

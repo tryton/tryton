@@ -33,7 +33,7 @@ class Agent(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="The party for whom the commission is calculated.")
     type_ = fields.Selection([
             ('agent', 'Agent Of'),
@@ -154,7 +154,6 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
                 ('start_date', '<=', Eval('end_date')),
                 ()),
             ],
-        depends=['end_date'],
         help="The first date that the agent will be considered for selection.")
     end_date = fields.Date(
         "End Date",
@@ -163,22 +162,20 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
                 ('end_date', '>=', Eval('start_date')),
                 ()),
             ],
-        depends=['start_date'],
         help="The last date that the agent will be considered for selection.")
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', select=True,
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     company = fields.Function(fields.Many2One('company.company', "Company"),
         'on_change_with_company', searcher='search_company')
     employee = fields.Many2One(
         'company.employee', "Employee", select=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -334,26 +331,23 @@ class Commission(ModelSQL, ModelView):
     _readonly_states = {
         'readonly': Bool(Eval('invoice_line')),
         }
-    _readonly_depends = ['invoice_line']
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         readonly=True,
         help="The source of the commission.")
     date = fields.Date('Date', select=True, states=_readonly_states,
-        depends=_readonly_depends,
         help="When the commission is due.")
     agent = fields.Many2One('commission.agent', 'Agent', required=True,
-        states=_readonly_states, depends=_readonly_depends)
+        states=_readonly_states)
     product = fields.Many2One('product.product', 'Product', required=True,
-        states=_readonly_states, depends=_readonly_depends,
+        states=_readonly_states,
         help="The product that is used on the invoice line.")
     base_amount = Monetary(
         "Base Amount", currency='currency', digits='currency',
-        states=_readonly_states,
-        depends=_readonly_depends)
+        states=_readonly_states)
     amount = Monetary(
         "Amount", currency='currency', required=True, digits=price_digits,
         domain=[('amount', '!=', 0)],
-        states=_readonly_states, depends=_readonly_depends)
+        states=_readonly_states)
     currency = fields.Function(fields.Many2One('currency.currency',
             'Currency'), 'on_change_with_currency')
     type_ = fields.Function(fields.Selection([
@@ -361,7 +355,7 @@ class Commission(ModelSQL, ModelView):
                 ('out', 'Outgoing'),
                 ], 'Type'), 'on_change_with_type_')
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-        readonly=True, depends=['amount', 'type_'])
+        readonly=True)
     invoice_state = fields.Function(fields.Selection([
                 ('', ''),
                 ('invoiced', 'Invoiced'),
@@ -586,14 +580,12 @@ class CreateInvoiceAsk(ModelView):
             If(Eval('to') & Eval('from_'), [('from_', '<=', Eval('to'))],
                 []),
             ],
-        depends=['to'],
         help="Limit to commissions from this date.")
     to = fields.Date('To',
         domain=[
             If(Eval('from_') & Eval('to'), [('to', '>=', Eval('from_'))],
                 []),
             ],
-        depends=['from_'],
         help="Limit to commissions to this date.")
     type_ = fields.Selection([
             ('in', 'Incoming'),
@@ -609,7 +601,6 @@ class CreateInvoiceAsk(ModelView):
             If(Eval('type_') == 'out',
                 ('type_', '=', 'agent'), ()),
         ],
-        depends=['type_'],
         help="Limit to commissions for these agents.\n"
         "If empty all agents of the selected type are used.")
 

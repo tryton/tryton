@@ -22,7 +22,6 @@ class Invoice(metaclass=PoolMeta):
             'invisible': Eval('type') == 'in',
             'readonly': Eval('state', '') != 'draft',
             },
-        depends=['type', 'company', 'state'],
         help="The agent who receives a commission for the invoice.")
 
     @classmethod
@@ -130,7 +129,6 @@ class InvoiceLine(metaclass=PoolMeta):
                 Eval('_parent_invoice', {}).get('type') == 'in',
                 Eval('invoice_type') == 'in'),
             },
-        depends=['invoice_type', 'company', 'invoice'],
         help="The principal who pays a commission for the invoice line.")
     commissions = fields.One2Many('commission', 'origin', 'Commissions',
         readonly=True,
