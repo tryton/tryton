@@ -19,8 +19,7 @@ class ShipmentOut(metaclass=PoolMeta):
                 'invisible': (
                     Eval('cost_edit', False)
                     | (Eval('cost_method') != 'shipment')),
-                },
-            depends=['cost_edit', 'cost_method']),
+                }),
         'on_change_with_cost_sale_currency_used')
     cost_sale_currency = fields.Many2One(
         'currency.currency', "Cost Sale Currency",
@@ -30,16 +29,14 @@ class ShipmentOut(metaclass=PoolMeta):
                 | (Eval('cost_method') != 'shipment')),
             'required': Bool(Eval('cost_sale')),
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            },
-        depends=['cost_method', 'cost_sale', 'state'])
+            })
     cost_sale_used = fields.Function(fields.Numeric(
             "Cost Sale", digits=price_digits,
             states={
                 'invisible': (
                     Eval('cost_edit', False)
                     | (Eval('cost_method') != 'shipment')),
-                },
-            depends=['cost_edit', 'cost_method']),
+                }),
         'on_change_with_cost_sale_used')
     cost_sale = fields.Numeric(
         "Cost Sale", digits=price_digits,
@@ -48,8 +45,7 @@ class ShipmentOut(metaclass=PoolMeta):
                 ~Eval('cost_edit', False)
                 | (Eval('cost_method') != 'shipment')),
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            },
-        depends=['cost_method', 'state'])
+            })
 
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)

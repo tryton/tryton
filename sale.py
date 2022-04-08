@@ -87,7 +87,7 @@ class Sale(metaclass=PoolMeta):
         context={
             'company': Eval('company', -1),
             },
-        depends=['state', 'available_carriers', 'company'])
+        depends={'company'})
     available_carriers = fields.Function(
         fields.Many2Many('carrier', None, None, 'Available Carriers'),
         'on_change_with_available_carriers')
@@ -97,7 +97,7 @@ class Sale(metaclass=PoolMeta):
         ('shipment', 'On Shipment'),
         ], 'Shipment Cost Method', states={
             'readonly': Eval('state') != 'draft',
-            }, depends=['state'])
+            })
 
     @classmethod
     def __register__(cls, module):
@@ -326,7 +326,7 @@ class Line(metaclass=PoolMeta):
                 'sale_shipment_cost.msg_sale_shipment_cost_unique'),
             ]
         # shipment_cost is needed to compute the unit_price
-        cls.unit_price.depends.append('shipment_cost')
+        cls.unit_price.depends.add('shipment_cost')
 
     @fields.depends('shipment_cost', 'unit_price')
     def compute_unit_price(self):
@@ -404,8 +404,7 @@ class Promotion(metaclass=PoolMeta):
         "Amount with Shipment Cost Included",
         states={
             'invisible': ~Eval('amount'),
-            },
-        depends=['amount'])
+            })
 
     @classmethod
     def default_amount_shipment_cost_included(cls):
