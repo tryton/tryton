@@ -26,11 +26,10 @@ class IncotermMixin(Model):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        readonly, depends = cls._incoterm_readonly_state()
+        readonly = cls._incoterm_readonly_state()
         cls.incoterm.states = {
             'readonly': readonly,
             }
-        cls.incoterm.depends = depends
 
         cls.incoterm_location.states = {
             'readonly': readonly,
@@ -40,16 +39,15 @@ class IncotermMixin(Model):
         cls.incoterm_location.search_context = {
             'related_party': related_party,
             }
-        cls.incoterm_location.depends = (
-            depends + ['incoterm'] + related_party_depends)
+        cls.incoterm_location.depends = {'incoterm'} | related_party_depends
 
     @classmethod
     def _incoterm_readonly_state(cls):
-        return ~Eval('state').in_(['draft']), ['state']
+        return ~Eval('state').in_(['draft'])
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('party'), ['party']
+        return Eval('party'), {'party'}
 
     @property
     def incoterm_name(self):
@@ -73,16 +71,14 @@ class IncotermAvailableMixin(IncotermMixin):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        readonly, depends = cls._incoterm_readonly_state()
+        readonly = cls._incoterm_readonly_state()
         cls.incoterm.domain = [
             If(~readonly,
                 ('id', 'in', Eval('available_incoterms', [])),
                 ()),
             ]
-        cls.incoterm.depends += depends + ['available_incoterms']
         cls.incoterm_location.states['required'] = (
             Eval('incoterm_location_required', False))
-        cls.incoterm_location.depends.append('incoterm_location_required')
 
     @fields.depends('company', 'party', methods=['_get_incoterm_pattern'])
     def on_change_with_available_incoterms(self, name=None):

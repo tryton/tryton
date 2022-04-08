@@ -94,7 +94,7 @@ class Incoterm(sequence_ordered(), ModelView, ModelSQL):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     company = fields.Many2One('company.company', "Company")
     type = fields.Selection([
             ('purchase', "Purchase"),
@@ -111,7 +111,7 @@ class Incoterm(sequence_ordered(), ModelView, ModelSQL):
             ('party.distance', 'ASC NULLS LAST'),
             ('id', None),
             ],
-        depends=['party'])
+        depends={'party'})
 
     @classmethod
     def __setup__(cls):
