@@ -56,8 +56,7 @@ class LotMixin:
         "Number", required=True, select=True,
         states={
             'required': ~Eval('has_sequence') | (Eval('id', -1) >= 0),
-            },
-        depends=['has_sequence'])
+            })
     product = fields.Many2One('product.product', 'Product', required=True)
     has_sequence = fields.Function(
         fields.Boolean("Has Sequence"), 'on_change_with_has_sequence')
@@ -289,13 +288,11 @@ class LotsByLocations(ModelSQL, ModelView):
     product = fields.Many2One('product.product', "Product")
     quantity = fields.Function(
         fields.Float(
-            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits']),
+            "Quantity", digits=(16, Eval('default_uom_digits', 2))),
         'get_lot', searcher='search_lot')
     forecast_quantity = fields.Function(
         fields.Float(
-            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
-            depends=['default_uom_digits']),
+            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2))),
         'get_lot', searcher='search_lot')
     default_uom = fields.Function(
         fields.Many2One('product.uom', "Default UOM"),
@@ -398,8 +395,7 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
-            },
-        depends=['state', 'product'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -526,15 +522,13 @@ class MoveAddLotsStart(ModelView):
             ],
         states={
             'readonly': ~Eval('quantity_remaining', 0),
-            },
-        depends=['product', 'quantity_remaining'])
+            })
 
     duplicate_lot_number = fields.Integer(
         "Duplicate Lot Number",
         states={
             'invisible': Len(Eval('lots')) != 1,
             },
-        depends=['lots'],
         help="The number of times the lot must be duplicated.")
 
     @classmethod
@@ -725,8 +719,7 @@ class InventoryLine(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('inventory_state') != 'draft',
-            },
-        depends=['product', 'inventory_state'])
+            })
 
     @classmethod
     def __setup__(cls):

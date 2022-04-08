@@ -45,8 +45,7 @@ class Template(metaclass=PoolMeta):
         help='The type of location for which lot is required.',
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
-            },
-        depends=['type'])
+            })
     lot_sequence = fields.Many2One(
         'ir.sequence', "Lot Sequence",
         domain=[
@@ -55,7 +54,6 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
             },
-        depends=['type'],
         help="The sequence used to automatically number lots.")
 
     @classmethod
