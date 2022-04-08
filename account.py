@@ -54,20 +54,19 @@ class Configuration(_SyntaxMixin, metaclass=PoolMeta):
     _states = {
         'required': Bool(Eval('chorus_login')),
         }
-    _depends = ['chorus_login']
 
     chorus_login = fields.MultiValue(fields.Char("Chorus Login"))
     chorus_password = fields.MultiValue(fields.Char(
-            "Chorus Password", states=_states, depends=_depends))
+            "Chorus Password", states=_states))
     chorus_service = fields.MultiValue(fields.Selection([
                 (None, ""),
                 ('service-qualif', "Qualification"),
                 ('service', "Production"),
-                ], "Chorus Service", states=_states, depends=_depends))
+                ], "Chorus Service", states=_states))
     chorus_syntax = fields.Selection(
-        'get_syntaxes', "Chorus Syntax", states=_states, depends=_depends)
+        'get_syntaxes', "Chorus Syntax", states=_states)
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def multivalue_model(cls, field):
@@ -129,8 +128,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
             ('state', 'in', If(Bool(Eval('number')),
                     ['posted', 'paid'],
                     ['posted'])),
-            ],
-        depends=['number'])
+            ])
     syntax = fields.Selection('get_syntaxes', "Syntax", required=True)
     number = fields.Char("Number", readonly=True)
     date = fields.Date("Date", readonly=True)
