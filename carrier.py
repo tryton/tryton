@@ -44,8 +44,7 @@ class Carrier(metaclass=PoolMeta):
             ], "Type of Printer", sort=False, translate=False,
         states={
             'invisible': Eval('shipping_service') != 'mygls',
-            },
-        depends=['shipping_service'])
+            })
     mygls_print_position = fields.Integer(
         "Print Position",
         domain=[
@@ -58,8 +57,7 @@ class Carrier(metaclass=PoolMeta):
             'invisible': (
                 (Eval('mygls_type_of_printer') != 'A4_2x2')
                 | (Eval('shipping_service') != 'mygls')),
-            },
-        depends=['mygls_type_of_printer', 'shipping_service'])
+            })
     mygls_services = fields.MultiSelection([
             ('24h', "Service guaranteed delivery shipment in 24 Hours"),
             ('AOS', "Addressee Only Service"),
@@ -80,8 +78,7 @@ class Carrier(metaclass=PoolMeta):
             ], "Services",
         states={
             'invisible': Eval('shipping_service') != 'mygls',
-            },
-        depends=['shipping_service'])
+            })
 
     mygls_sms = fields.Char(
         "SMS", translate=True,
@@ -89,7 +86,6 @@ class Carrier(metaclass=PoolMeta):
             'invisible': Eval('shipping_service') != 'mygls',
             'required': Eval('mygls_services', []).contains('SM1'),
             },
-        depends=['shipping_service', 'mygls_services'],
         help="Variables that can be used in the text of the SMS:\n"
         "ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#")
 
