@@ -48,8 +48,7 @@ class Line(ModelSQL, ModelView):
                 ('end_date', '=', None),
                 ('end_date', '>=', Eval('date', None)),
                 ],
-            ],
-        depends=['company', 'date'])
+            ])
     at = fields.DateTime("At", required=True)
     date = fields.Date("Date", required=True)
     type = fields.Selection([
@@ -161,15 +160,12 @@ class Period(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') == 'closed',
         }
-    _depends = ['state']
 
     _last_period_cache = Cache('attendance.period', context=False)
 
-    ends_at = fields.DateTime("Ends at", required=True, states=_states,
-        depends=_depends)
+    ends_at = fields.DateTime("Ends at", required=True, states=_states)
     company = fields.Many2One('company.company', "Company", required=True,
-        states=_states, depends=_depends,
-        help="The company the period is associated with.")
+        states=_states, help="The company the period is associated with.")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
