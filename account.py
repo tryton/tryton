@@ -74,8 +74,7 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
             If(Eval('company'),
                 ('company', '=', Eval('company')),
                 ()),
-            ],
-        depends=['company'])
+            ])
     amount_low = Monetary(
         "Amount Low", currency='currency', digits='currency',
         domain=[If(Eval('amount_high'),
@@ -83,8 +82,7 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
                     ('amount_low', '=', None),
                     ('amount_low', '<=', Eval('amount_high')),
                     ],
-                [])],
-        depends=['amount_high'])
+                [])])
     amount_high = Monetary(
         "Amount High", currency='currency', digits='currency',
         domain=[If(Eval('amount_low'),
@@ -92,8 +90,7 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
                     ('amount_high', '=', None),
                     ('amount_high', '>=', Eval('amount_low')),
                     ],
-                [])],
-        depends=['amount_low'])
+                [])])
     description = fields.Char("Description",
         help="The regular expression the description is searched with.\n"
         "It may define the groups named:\n"
@@ -165,13 +162,11 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
     boolean = fields.Boolean("Boolean",
         states={
             'invisible': Eval('key_type') != 'boolean',
-            },
-        depends=['key_type'])
+            })
     char = fields.Char("Char",
         states={
             'invisible': Eval('key_type') != 'char',
             },
-        depends=['key_type'],
         help="The regular expression the key information is searched with.\n"
         "It may define the groups named:\n"
         "party, bank_account, invoice.")
@@ -179,8 +174,7 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
         'get_selections', "Selection",
         states={
             'invisible': Eval('key_type') != 'selection',
-            },
-        depends=['key_type'])
+            })
 
     key_type = fields.Function(
         fields.Selection('get_key_types', "Key Type"),
@@ -260,8 +254,7 @@ def _add_range(cls, name, type_, string):
                     [])],
             states={
                 'invisible': Eval('key_type') != name,
-                },
-            depends=['key_type', high_name]))
+                }))
     setattr(cls, high_name,
         type_("%s High" % string,
             domain=[If(Eval(low_name),
@@ -272,8 +265,7 @@ def _add_range(cls, name, type_, string):
                     [])],
             states={
                 'invisible': Eval('key_type') != name,
-                },
-            depends=['key_type', low_name]))
+                }))
 
 
 _add_range(StatementRuleInformation, 'integer', fields.Integer, "Integer")
@@ -295,7 +287,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'],
+        depends={'company'},
         help="Leave empty to use the group named 'party' "
         "from the regular expressions.")
     account = fields.Many2One(
@@ -307,7 +299,6 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': ~Eval('company'),
             },
-        depends=['company'],
         help="Leave empty to use the party's receivable or payable account.\n"
         "The rule must have a company to use this field.")
 
