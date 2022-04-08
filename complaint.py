@@ -33,26 +33,24 @@ class Complaint(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     number = fields.Char('Number', readonly=True, select=True)
     reference = fields.Char('Reference', select=True)
-    date = fields.Date('Date', states=_states, depends=_depends)
+    date = fields.Date('Date', states=_states)
     customer = fields.Many2One(
         'party.party', "Customer", required=True, states=_states,
         context={
             'company': Eval('company', -1),
             },
-        depends=_depends + ['company'])
+        depends={'company'})
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('customer'))],
-        states=_states, depends=_depends + ['customer'])
+        states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
-        states=_states, depends=_depends)
-    employee = fields.Many2One('company.employee', 'Employee',
-        states=_states, depends=_depends)
+        states=_states)
+    employee = fields.Many2One('company.employee', 'Employee', states=_states)
     type = fields.Many2One('sale.complaint.type', 'Type', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     origin = fields.Reference('Origin', selection='get_origin',
         domain={
             'sale.sale': [
@@ -93,18 +91,18 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 | Bool(Eval('actions', [0]))),
             'required': Bool(Eval('origin_model')),
             },
-        depends=['state', 'customer', 'origin_model', 'company'])
+        depends={'origin_model'})
     origin_id = fields.Function(fields.Integer('Origin ID'),
         'on_change_with_origin_id')
     origin_model = fields.Function(fields.Char('Origin Model'),
         'on_change_with_origin_model')
-    description = fields.Text('Description', states=_states, depends=_depends)
+    description = fields.Text('Description', states=_states)
     actions = fields.One2Many('sale.complaint.action', 'complaint', 'Actions',
         states={
             'readonly': ((Eval('state') != 'draft')
                 | (If(~Eval('origin_id', 0), 0, Eval('origin_id', 0)) <= 0)),
             },
-        depends=['state', 'origin_model', 'origin_id'])
+        depends={'origin_model'})
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
@@ -345,18 +343,16 @@ class Action(ModelSQL, ModelView):
         'readonly': ((Eval('complaint_state') != 'draft')
             | Bool(Eval('result'))),
         }
-    _depends = ['complaint_state', 'result']
     _line_states = {
         'invisible': ~Eval('_parent_complaint', {}
             ).get('origin_model', 'sale.line').in_(
             ['sale.line', 'account.invoice.line']),
         'readonly': _states['readonly'],
         }
-    _line_depends = _depends
 
     complaint = fields.Many2One(
         'sale.complaint', 'Complaint', required=True, ondelete='CASCADE',
-        states=_states, depends=_depends)
+        states=_states)
     action = fields.Selection([
             ('sale_return', 'Create Sale Return'),
             ('credit_note', 'Create Credit Note'),
@@ -369,7 +365,6 @@ class Action(ModelSQL, ModelView):
                 ).get('origin_model', 'sale.sale') != 'sale.sale',
             'readonly': _states['readonly'],
             },
-        depends=_depends,
         help='Leave empty for all lines.')
 
     invoice_lines = fields.One2Many(
@@ -381,19 +376,18 @@ class Action(ModelSQL, ModelView):
                 ) != 'account.invoice',
             'readonly': _states['readonly'],
             },
-        depends=_depends,
         help='Leave empty for all lines.')
 
     quantity = fields.Float(
         "Quantity", digits='unit',
-        states=_line_states, depends=_line_depends,
+        states=_line_states,
         help='Leave empty for the same quantity.')
     unit = fields.Function(fields.Many2One('product.uom', 'Unit',
-            states=_line_states, depends=_line_depends),
+            states=_line_states),
         'on_change_with_unit')
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
-        states=_line_states, depends=_line_depends,
+        states=_line_states,
         help='Leave empty for the same price.')
 
     amount = fields.Function(Monetary(
@@ -616,17 +610,16 @@ class _Action_Line:
             (Eval('complaint_state') != 'draft')
             | Bool(Eval('_parent_action.result', True))),
         }
-    _depends = ['complaint_state']
 
     action = fields.Many2One('sale.complaint.action', 'Action',
         ondelete='CASCADE', select=True, required=True)
     quantity = fields.Float(
-        "Quantity", digits='unit', states=_states, depends=_depends)
+        "Quantity", digits='unit', states=_states)
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
     unit_price = Monetary(
         "Unit Price", currency='currency', digits=price_digits,
-        states=_states, depends=_depends,
+        states=_states,
         help='Leave empty for the same price.')
 
     amount = fields.Function(Monetary(
@@ -700,8 +693,7 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
         domain=[
             ('type', '=', 'line'),
             ('sale', '=', Eval('complaint_origin_id', -1)),
-            ],
-        depends=['complaint_origin_id'])
+            ])
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
@@ -733,8 +725,7 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
         domain=[
             ('type', '=', 'line'),
             ('invoice', '=', Eval('complaint_origin_id', -1)),
-            ],
-        depends=['complaint_origin_id'])
+            ])
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):

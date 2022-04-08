@@ -40,8 +40,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('sequence_type', '=',
                 Id('sale_complaint', 'sequence_type_complaint')),
             ('company', 'in', [Eval('company', -1), None]),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
