@@ -62,6 +62,7 @@ class Transaction(object):
     create_records = None
     delete_records = None
     trigger_records = None
+    check_warnings = None
     timestamp = None
     started_at = None
 
@@ -131,6 +132,7 @@ class Transaction(object):
         self.create_records = defaultdict(set)
         self.delete_records = defaultdict(set)
         self.trigger_records = defaultdict(set)
+        self.check_warnings = set()
         self.timestamp = {}
         self.counter = 0
         self._datamanagers = []

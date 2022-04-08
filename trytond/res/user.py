@@ -1089,12 +1089,16 @@ class Warning_(ModelSQL, ModelView):
         context = transaction.context
         if not user or context.get('_skip_warnings'):
             return False
+        key = (user, warning_name)
+        if key in transaction.check_warnings:
+            return False
         warnings = cls.search([
             ('user', '=', user),
             ('name', '=', warning_name),
             ])
         if not warnings:
             return True
+        transaction.check_warnings.add(key)
         cls.delete([x for x in warnings if not x.always])
         return False
 

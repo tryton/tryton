@@ -35,6 +35,10 @@ Transaction
 
 .. attribute:: Transaction.trigger_records
 
+.. attribute:: Transaction.check_warnings
+
+    The set of warnings already checked.
+
 .. attribute:: Transaction.timestamp
 
 .. attribute:: Transaction.started_at

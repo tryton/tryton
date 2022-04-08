@@ -1,3 +1,4 @@
+* Make warning check re-entrant
 * Manage DatabaseDataError in ModelSQL
 * Remove support for pysqlite2
 * Do not import empty One2Many data
