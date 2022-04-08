@@ -151,8 +151,7 @@ class BEVATCustomerContext(ModelView):
         'account.fiscalyear', "Fiscal Year", required=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_company(cls):
