@@ -314,22 +314,20 @@ class Message(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
     from_ = fields.Char(
-        "From", states=_states, depends=_depends,
+        "From", states=_states,
         help="Leave empty for the value defined in the configuration file.")
     list_ = fields.Many2One(
         'marketing.email.list', "List",
-        required=True, states=_states, depends=_depends)
+        required=True, states=_states)
     title = fields.Char(
-        "Title", required=True, states=_states, depends=_depends)
+        "Title", required=True, states=_states)
     content = fields.Text(
         "Content",
         states={
             'required': Eval('state') != 'draft',
             'readonly': _states['readonly'],
-            },
-        depends=['state'] + _depends)
+            })
     urls = fields.One2Many(
         'web.shortened_url', 'record', "URLs", readonly=True)
     state = fields.Selection([
@@ -337,7 +335,7 @@ class Message(Workflow, ModelSQL, ModelView):
             ('sending', "Sending"),
             ('sent', "Sent"),
             ], "State", readonly=True, select=True, sort=False)
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -522,5 +520,4 @@ class SendTestView(ModelView):
         'marketing.email', "E-Mail", required=True,
         domain=[
             ('list_', '=', Eval('list_')),
-            ],
-        depends=['list_'])
+            ])
