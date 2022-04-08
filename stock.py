@@ -30,29 +30,25 @@ class ShipmentCostMixin:
 
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            },
-        depends=['state'])
+            })
 
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
                 'invisible': Eval('cost_edit', False),
-                },
-            depends=['cost_edit']),
+                }),
         'on_change_with_cost_used')
     cost = fields.Numeric(
         "Cost", digits=price_digits,
         states={
             'invisible': ~Eval('cost_edit', False),
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            },
-        depends=['state'])
+            })
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={
             'readonly': Eval('state').in_(['done', 'cancelled']),
             },
-        depends=['state'],
         help="Check to edit the cost.")
 
     def _get_carrier_context(self):
