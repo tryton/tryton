@@ -146,6 +146,5 @@ class DepositRecallStart(ModelView):
         domain=[
             ('type.deposit', '=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     description = fields.Text('Description', required=True)
