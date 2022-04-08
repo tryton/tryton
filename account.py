@@ -9,8 +9,7 @@ from trytond.transaction import Transaction
 default_credit_limit_amount = fields.Numeric(
     "Default Credit Limit Amount",
     help="The default credit limit amount for new customers.",
-    digits=(16, Eval('default_credit_limit_amount_digits', 2)),
-    depends=['default_credit_limit_amount_digits'])
+    digits=(16, Eval('default_credit_limit_amount_digits', 2)))
 
 
 class Configuration(metaclass=PoolMeta):

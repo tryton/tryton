@@ -16,13 +16,11 @@ class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     credit_amount = fields.Function(fields.Numeric('Credit Amount',
-            digits=(16, Eval('credit_limit_digits', 2)),
-            depends=['credit_limit_digits']),
+            digits=(16, Eval('credit_limit_digits', 2))),
         'get_credit_amount')
     credit_limit_amount = fields.MultiValue(fields.Numeric(
             'Credit Limit Amount',
-            digits=(16, Eval('credit_limit_digits', 2)),
-            depends=['credit_limit_digits']))
+            digits=(16, Eval('credit_limit_digits', 2))))
     credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_credit_limit_digits')
     credit_limit_amounts = fields.One2Many(
@@ -138,10 +136,9 @@ class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     credit_limit_amount = fields.Numeric(
-        "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)),
-        depends=['credit_limit_digits'])
+        "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)))
     credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_credit_limit_digits')
 
