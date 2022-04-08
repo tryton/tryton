@@ -44,15 +44,13 @@ class ConfigurationDefaultAccount(metaclass=PoolMeta):
         domain=[
             ('type.statement', '=', 'balance'),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     deferred_account_expense = fields.Many2One(
         'account.account', "Deferred Account Expense",
         domain=[
             ('type.statement', '=', 'balance'),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
 
 class InvoiceDeferred(Workflow, ModelSQL, ModelView):
@@ -62,26 +60,24 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') != 'draft',
         }
-    _depends = ['state']
 
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
             'readonly': (Eval('state') != 'draft') & Eval('invoice_line'),
-            },
-        depends=['state', 'invoice_line'])
+            })
     type = fields.Selection([
             ('out', "Customer"),
             ('in', "Supplier"),
             ], "Type", required=True,
-        states=_states, depends=_depends)
+        states=_states)
     journal = fields.Many2One(
         'account.journal', "Journal", required=True,
         states=_states,
         context={
             'company': Eval('company', -1),
             },
-        depends=_depends + ['company'])
+        depends={'company'})
     invoice_line = fields.Many2One(
         'account.invoice.line', "Invoice Line", required=True,
         domain=[
@@ -90,22 +86,22 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ('invoice.state', 'in', ['posted', 'paid']),
             ('invoice.company', '=', Eval('company', -1)),
             ],
-        states=_states, depends=_depends + ['type', 'company'])
+        states=_states)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     start_date = fields.Date(
         "Start Date", required=True,
         domain=[
             ('start_date', '<', Eval('end_date', None)),
             ],
-        states=_states, depends=_depends + ['end_date'])
+        states=_states)
     end_date = fields.Date(
         "End Date", required=True,
         domain=[
             ('end_date', '>', Eval('start_date', None)),
             ],
-        states=_states, depends=_depends + ['start_date'])
+        states=_states)
     moves = fields.One2Many(
         'account.move', 'origin', "Moves", readonly=True,
         order=[
@@ -120,7 +116,7 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -135,7 +131,6 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 ('type', 'in', cls._journal_types('out')),
                 ('type', 'in', cls._journal_types('in'))),
             ]
-        cls.journal.depends += ['type']
         cls._transitions |= set((
                 ('draft', 'running'),
                 ('running', 'closed'),
@@ -487,8 +482,7 @@ class InvoiceLine(metaclass=PoolMeta):
         states={
             'readonly': Eval('invoice_state') != 'draft',
             'invisible': ~Eval('deferrable', False),
-            },
-        depends=['deferrable', 'defer_to', 'invoice_state'])
+            })
     defer_to = fields.Date(
         "Defer To",
         domain=[
@@ -499,8 +493,7 @@ class InvoiceLine(metaclass=PoolMeta):
         states={
             'readonly': Eval('invoice_state') != 'draft',
             'invisible': ~Eval('deferrable', False),
-            },
-        depends=['deferrable', 'defer_from', 'invoice_state'])
+            })
 
     @fields.depends('product')
     def on_change_with_deferrable(self, name=None):
