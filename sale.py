@@ -185,7 +185,7 @@ class Sale(metaclass=PoolMeta):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state', 'company', 'party'])
+        depends={'party'})
 
     @classmethod
     @ModelView.button
