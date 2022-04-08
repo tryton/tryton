@@ -63,8 +63,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'required': Eval('shipping_service') == 'ups',
             'invisible': Eval('shipping_service') != 'ups',
-            },
-        depends=['shipping_service'])
+            })
     ups_label_image_format = fields.Selection([
             (None, ''),
             ('EPL', 'EPL2'),
@@ -76,8 +75,7 @@ class Carrier(metaclass=PoolMeta):
         states={
             'required': Eval('shipping_service') == 'ups',
             'invisible': Eval('shipping_service') != 'ups',
-            },
-        depends=['shipping_service'])
+            })
     ups_label_height = fields.Selection([
             (None, ''),
             ('6', '6'),
@@ -88,8 +86,7 @@ class Carrier(metaclass=PoolMeta):
                 & (Eval('ups_label_image_format') != 'GIF')),
             'invisible': ((Eval('shipping_service') != 'ups')
                 | (Eval('ups_label_image_format') == 'GIF')),
-            },
-        depends=['shipping_service', 'ups_label_image_format'])
+            })
     ups_notifications = fields.MultiSelection([
             ('5', "Quantum View In-transit"),
             ('6', "Quantum View Shop"),
@@ -101,8 +98,7 @@ class Carrier(metaclass=PoolMeta):
             ], "Notifications", sort=False,
         states={
             'invisible': Eval('shipping_service') != 'ups',
-            },
-        depends=['shipping_service'])
+            })
 
     @classmethod
     def __setup__(cls):
