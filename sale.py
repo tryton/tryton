@@ -77,22 +77,19 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
                     datetime.date.max,
                     Eval('end_date', datetime.date.max))),
             ('start_date', '=', None),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date('End Date',
         domain=['OR',
             ('end_date', '>=', If(~Eval('start_date', None),
                     datetime.date.min,
                     Eval('start_date', datetime.date.min))),
             ('end_date', '=', None),
-            ],
-        depends=['start_date'])
+            ])
     price_list = fields.Many2One('product.price_list', 'Price List',
         ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     sale_amount = Monetary(
         "Sale Amount", currency='currency', digits='currency')
     currency = fields.Function(fields.Many2One(
@@ -209,8 +206,7 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     unit = fields.Many2One('product.uom', 'Unit', required=True,
         domain=[
             ('category', '=', Eval('product_uom_category', -1)),
-            ],
-        depends=['product_uom_category'])
+            ])
     free = fields.Boolean('Free')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
