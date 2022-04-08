@@ -231,12 +231,6 @@ class Statement(Workflow, ModelSQL, ModelView):
         if self.journal:
             return self.journal.currency.id
 
-    def get_end_balance(self, name):
-        end_balance = self.start_balance
-        for line in self.lines:
-            end_balance += line.amount
-        return end_balance
-
     @fields.depends('start_balance', 'end_balance')
     def on_change_with_balance(self, name=None):
         return ((getattr(self, 'end_balance', 0) or 0)
