@@ -22,21 +22,19 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
         domain=[
             ('parent', '=', Eval('parent', -1)),
             ('id', '!=', Eval('id', -1)),
-            ],
-        depends=['parent', 'id'])
+            ])
     successors = fields.Many2Many('project.predecessor_successor',
         'predecessor', 'successor', 'Successors',
         domain=[
             ('parent', '=', Eval('parent', -1)),
             ('id', '!=', Eval('id', -1)),
-            ],
-        depends=['parent', 'id'])
+            ])
     leveling_delay = fields.Float("Leveling Delay", required=True)
     back_leveling_delay = fields.Float("Back Leveling Delay", required=True)
     allocations = fields.One2Many('project.allocation', 'work', 'Allocations',
         states={
             'invisible': Eval('type') != 'task',
-            }, depends=['type'])
+            })
     duration = fields.Function(
         fields.TimeDelta('Duration', 'company_work_time'),
         'get_function_fields')
@@ -61,10 +59,10 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
     actual_finish_date = fields.Function(fields.Date('Actual Finish'),
             'get_function_fields', setter='set_function_fields')
     constraint_start_date = fields.Function(fields.Date('Constraint Start',
-        depends=['type']), 'get_function_fields',
+        depends={'type'}), 'get_function_fields',
         setter='set_function_fields')
     constraint_finish_date = fields.Function(fields.Date('Constraint Finish',
-        depends=['type']), 'get_function_fields',
+        depends={'type'}), 'get_function_fields',
         setter='set_function_fields')
 
     @classmethod
