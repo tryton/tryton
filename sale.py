@@ -37,8 +37,7 @@ class POS(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('sequence_type', '=', Id('sale_point', 'sequence_type_sale')),
-            ],
-        depends=['company'])
+            ])
 
     address = fields.Many2One('party.address', "Address")
 
@@ -100,18 +99,15 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     _states = {
         'readonly': Eval('state') != 'open',
         }
-    _depends = ['state']
 
     company = fields.Many2One(
-        'company.company', "Company", required=True,
-        states=_states, depends=_depends)
+        'company.company', "Company", required=True, states=_states)
     employee = fields.Many2One(
         'company.employee', "Employee",
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        states=_states,
-        depends=['company'] + _depends)
+        states=_states)
     point = fields.Many2One(
         'sale.point', "Point", required=True, ondelete='RESTRICT',
         states={
@@ -121,25 +117,21 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
             },
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'] + _depends)
+            ])
     number = fields.Char(
         "Number", readonly=True, select=True,
         states={
             'required': Eval('state').in_(['done', 'posted']),
-            },
-        depends=['state'])
-    date = fields.Date("Date", required=True, states=_states, depends=_depends)
+            })
+    date = fields.Date("Date", required=True, states=_states)
     lines = fields.One2Many(
         'sale.point.sale.line', 'sale', "Lines",
         states={
             'readonly': (~Eval('point')
                 | _states['readonly']),
-            },
-        depends=['point'] + _depends)
+            })
     payments = fields.One2Many(
-        'sale.point.payment', 'sale', "Payments",
-        states=_states, depends=_depends)
+        'sale.point.payment', 'sale', "Payments", states=_states)
     total_tax = fields.Function(Monetary(
             "Total Tax", currency='currency', digits='currency'),
         'on_change_with_total_tax')
@@ -168,7 +160,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -446,11 +438,10 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
     _states = {
         'readonly': Eval('sale_state') != 'open',
         }
-    _depends = ['sale_state']
 
     sale = fields.Many2One(
         'sale.point.sale', "Sale", required=True, ondelete='CASCADE',
-        states=_states, depends=_depends)
+        states=_states)
     product = fields.Many2One(
         'product.product', "Product", required=True,
         domain=[
@@ -459,10 +450,9 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
         context={
             'company': Eval('company'),
             },
-        states=_states, depends=_depends + ['company'])
+        states=_states, depends={'company'})
     quantity = fields.Float(
-        "Quantity", digits='unit', required=True,
-        states=_states, depends=_depends)
+        "Quantity", digits='unit', required=True, states=_states)
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
     unit_list_price = fields.Numeric(
@@ -477,7 +467,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             })
     unit_price = fields.Function(fields.Numeric(
             "Unit Price", digits=price_digits,
-            depends=['unit_list_price', 'unit_gross_price']),
+            depends={'unit_list_price', 'unit_gross_price'}),
         'on_change_with_unit_price')
     amount = fields.Function(Monetary(
             "Amount", currency='currency', digits='currency'),
@@ -498,7 +488,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
         fields.Many2One('currency.currency', "Currency"),
         'on_change_with_currency')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -721,21 +711,18 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
         readonly=True, ondelete='RESTRICT',
         domain=[
             ('point', '=', Eval('point', -1)),
-            ],
-        depends=['point'])
+            ])
     next_session = fields.One2One(
         'sale.point.cash.session.relation', 'previous', 'next', "Next Session",
         readonly=True,
         domain=[
             ('point', '=', Eval('point', -1)),
-            ],
-        depends=['point'])
+            ])
     payments = fields.One2Many(
         'sale.point.payment', 'session', "Payments", readonly=True,
         domain=[
             ('sale.point', '=', Eval('point', -1)),
-            ],
-        depends=['point'])
+            ])
     transfers = fields.One2Many(
         'sale.point.cash.transfer', 'session', "Transfers",
         domain=[
@@ -743,8 +730,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': ~Eval('point'),
-            },
-        depends=['point'])
+            })
     start_amount = fields.Function(
         Monetary("Start Amount", currency='currency', digits='currency'),
         'get_start_amount')
@@ -755,8 +741,7 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
         "End Amount", currency='currency', digits='currency', required=True,
         states={
             'required': Eval('state').in_(['closed', 'posted']),
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
             ('open', "Open"),
             ('closed', "Closed"),
@@ -965,11 +950,10 @@ class POSPayment(ModelSQL, ModelView):
     _states = {
         'readonly': Eval('sale_state') != 'open',
         }
-    _depends = ['sale_state']
 
     sale = fields.Many2One(
         'sale.point.sale', "Sale", required=True, ondelete='CASCADE',
-        states=_states, depends=_depends)
+        states=_states)
     method = fields.Many2One(
         'sale.point.payment.method', "Method", required=True,
         domain=[
@@ -978,11 +962,9 @@ class POSPayment(ModelSQL, ModelView):
                 ('cash', '=', True),
                 ()),
             ],
-        states=_states,
-        depends=['company', 'amount'] + _depends)
+        states=_states)
     amount = Monetary(
-        "Amount", currency='currency', digits='currency',
-        states=_states, depends=_depends)
+        "Amount", currency='currency', digits='currency', states=_states)
     session = fields.Many2One(
         'sale.point.cash.session', "Session",
         ondelete='RESTRICT', readonly=True,
@@ -992,8 +974,7 @@ class POSPayment(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('cash'),
             'required': Eval('cash', False),
-            },
-        depends=['point', 'cash'])
+            })
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
@@ -1006,7 +987,7 @@ class POSPayment(ModelSQL, ModelView):
             'sale.point', "Point"), 'on_change_with_point')
     cash = fields.Function(fields.Boolean("Cash"), 'on_change_with_cash')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -1109,8 +1090,7 @@ class POSPaymentMethod(DeactivableMixin, ModelSQL, ModelView):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     cash = fields.Boolean("Cash")
 
     @classmethod
@@ -1182,10 +1162,9 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
     _states = {
         'readonly': Eval('state') == 'done',
         }
-    _depends = ['state']
 
     point = fields.Many2One(
-        'sale.point', "Point", required=True, states=_states, depends=_depends)
+        'sale.point', "Point", required=True, states=_states)
     session = fields.Many2One(
         'sale.point.cash.session', "Session", required=True,
         domain=[
@@ -1198,17 +1177,14 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
             'required': Eval('id', -1) >= 0,
             'readonly': _states['readonly'],
             'invisible': ~Eval('point'),
-            },
-        depends=['point', 'state'] + _depends)
+            })
     type = fields.Many2One(
         'sale.point.cash.transfer.type', "Type", required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     amount = Monetary(
-        "Amount", currency='currency', digits='currency',
-        states=_states, depends=_depends)
+        "Amount", currency='currency', digits='currency', states=_states)
     date = fields.Date("Date", required=True)
     state = fields.Selection([
             ('draft', "Draft"),
@@ -1228,7 +1204,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
             'currency.currency', "Currency"),
         'on_change_with_currency')
 
-    del _states, _depends
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -1346,15 +1322,14 @@ class POSCashTransferType(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_company(cls):
