@@ -36,8 +36,7 @@ class QuantityIssue(
             'stock.shipment.internal': [
                 ('company', '=', Eval('company', -1)),
                 ],
-            },
-        depends=['company'])
+            })
     planned_date = fields.Function(
         fields.Date("Planned Date"),
         'on_change_with_planned_date')
@@ -60,7 +59,7 @@ class QuantityIssue(
             'stock_skip_warehouse': False,
             'stock_date_end': Eval('planned_date'),
             },
-        depends=['company', 'warehouse', 'planned_date'])
+        depends={'company', 'warehouse', 'planned_date'})
 
     processed_by = employee_field("Processed by", states=['processing'])
     solved_by = employee_field("Solved by", states=['solved'])
