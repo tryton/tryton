@@ -59,8 +59,7 @@ class AccountRule(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
             ],
         states={
             'invisible': ~Eval('type').in_(['revenue', 'expense']),
-            },
-        depends=['company', 'type'])
+            })
 
     account = fields.Many2One(
         'account.account', "Substitution Account", required=True)
@@ -74,7 +73,6 @@ class AccountRule(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
                 ('company', '=', Eval('company', -1)),
                 Get(account_domain, Eval('type'), []),
                 ]
-            field.depends = ['company', 'type']
 
     @classmethod
     def _account_domain_per_type(cls):
@@ -136,8 +134,7 @@ class AccountRuleStock(metaclass=PoolMeta):
             ],
         states={
             'invisible': Eval('type') != 'stock',
-            },
-        depends=['type'])
+            })
 
 
 class InvoiceLine(metaclass=PoolMeta):
@@ -162,5 +159,4 @@ class InvoiceLineStock(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.product.context['warehouse'] = Eval('warehouse', -1)
-        if 'warehouse' not in cls.product.depends:
-            cls.product.depends.append('warehouse')
+        cls.product.depends.add('warehouse')
