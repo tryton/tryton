@@ -98,10 +98,10 @@ Let's ship a product with a lot::
     >>> move.unit_price = Decimal('20')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.lot = lot
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
     True
+    >>> move.lot = lot
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
@@ -119,17 +119,19 @@ Let's ship now two times the same lot::
     >>> move1.unit_price = Decimal('20')
     >>> move1.from_location = output_loc
     >>> move1.to_location = customer_loc
-    >>> move1.lot = lot
     >>> move2 = shipment.outgoing_moves.new()
     >>> move2.product = product
     >>> move2.quantity = 1
     >>> move2.unit_price = Decimal('20')
     >>> move2.from_location = output_loc
     >>> move2.to_location = customer_loc
-    >>> move2.lot = lot
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
     True
+    >>> move1, move2 = shipment.inventory_moves
+    >>> move1.lot = lot
+    >>> move2.lot = lot
+    >>> shipment.save()
     >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -149,10 +151,11 @@ Now let's ship one move with a quantity bigger than lot unit quantity::
     >>> move.unit_price = Decimal('20')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.lot = lot
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
     True
+    >>> move, = shipment.inventory_moves
+    >>> move.lot = lot
     >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
