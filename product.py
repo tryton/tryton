@@ -31,16 +31,14 @@ class PriceListLine(metaclass=PoolMeta):
             If(Eval('start_date') & Eval('end_date'),
                 ('start_date', '<=', Eval('end_date')),
                 ()),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date(
         "End Date",
         domain=[
             If(Eval('start_date') & Eval('end_date'),
                 ('end_date', '>=', Eval('start_date')),
                 ()),
-            ],
-        depends=['start_date'])
+            ])
 
     def match(self, pattern):
         pool = Pool()
