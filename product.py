@@ -43,14 +43,12 @@ class Template(metaclass=PoolMeta):
             },
         domain=[
             ('category', '=', Eval('default_uom_category')),
-            ],
-        depends=['salable', 'default_uom_category'])
+            ])
     lead_time = fields.TimeDelta(
         "Lead Time",
         states={
             'invisible': ~Eval('salable', False),
             },
-        depends=['salable'],
         help="The time from confirming the sales order to sending the "
         "products.\n"
         "If empty the default lead time from the configuration is used.")
@@ -203,7 +201,7 @@ class SaleContext(ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     sale_date = fields.Date("Sale Date")
     quantity = fields.Float("Quantity")
 

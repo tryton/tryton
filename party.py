@@ -66,7 +66,7 @@ class PartySaleMethod(ModelSQL, CompanyValueMixin):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     sale_invoice_method = fields.Selection(
         'get_sale_invoice_method', "Sale Invoice Method")
     sale_shipment_method = fields.Selection(
