@@ -122,8 +122,7 @@ class BudgetLineMixin(
         states={
             'required': ~Eval('account'),
             'invisible': Bool(Eval('account')),
-            },
-        depends=['account'])
+            })
     account = None
     current_name = fields.Function(
         fields.Char("Current Name"),
@@ -157,14 +156,12 @@ class BudgetLineMixin(
             domain=[
                 ('budget', '=', Eval('budget', -1)),
                 ],
-            depends=['budget'],
             help="Used to add structure above the budget.")
         cls.children = fields.One2Many(
             cls.__name__, 'parent', "Children",
             domain=[
                 ('budget', '=', Eval('budget', -1)),
                 ],
-            depends=['budget'],
             help="Used to add structure below the budget.")
         super().__setup__()
         cls.__access__.add('budget')
@@ -265,8 +262,7 @@ class BudgetContext(ModelView):
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'standard'),
-            ],
-        depends=['fiscalyear'])
+            ])
 
     fiscalyear = fields.Function(
         fields.Many2One('account.fiscalyear', "Fiscal Year"),
@@ -302,7 +298,6 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
     fiscalyear = fields.Many2One(
         'account.fiscalyear', "Fiscal Year", required=True,
         domain=[('company', '=', Eval('company', -1))],
-        depends=['company'],
         help="The fiscal year the budget applies to.")
     lines = fields.One2Many(
         'account.budget.line', 'budget', "Lines",
@@ -439,7 +434,6 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
             'invisible': Eval('name') | Eval('account'),
             'readonly': Bool(Eval('lines', [-1])),
             },
-        depends=['company', 'name', 'account'],
         help="The account type the budget applies to.")
     account = fields.Many2One(
         'account.account', "Account",
@@ -455,7 +449,6 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
             'required': ~Eval('name') & ~Eval('account_type'),
             'invisible': Eval('name') | Eval('account_type'),
             },
-        depends=['company', 'name', 'account_type', 'parent_account_type'],
         help="The account the budget applies to.")
     periods = fields.One2Many(
         'account.budget.line.period', 'budget_line', "Periods",
@@ -471,7 +464,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         super().__setup__()
         cls.name.states['required'] &= ~Eval('account_type')
         cls.name.states['invisible'] |= Eval('account_type')
-        cls.name.depends.append('account_type')
+        cls.name.depends.add('account_type')
         t = cls.__table__()
         cls._sql_constraints.append(
             ('budget_account_unique', Unique(t, t.budget, t.account),
@@ -604,8 +597,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'standard'),
-            ],
-        depends=['fiscalyear'])
+            ])
     currency = fields.Function(
         fields.Many2One('currency.currency', "Currency"),
         'on_change_with_currency')
@@ -800,7 +792,6 @@ class CopyBudgetStart(CopyBudgetStartMixin, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'],
         help="The fiscal year during which the new budget will apply.")
 
 
