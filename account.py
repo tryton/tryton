@@ -51,8 +51,7 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=',
                 Id('account_stock_landed_cost', 'sequence_type_landed_cost')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __register__(cls, module_name):
@@ -91,8 +90,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     shipments = fields.Many2Many('account.landed_cost-stock.shipment.in',
         'landed_cost', 'shipment', 'Shipments',
         states={
@@ -101,8 +99,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         domain=[
             ('company', '=', Eval('company')),
             ('state', 'in', ['received', 'done']),
-            ],
-        depends=['company', 'state'])
+            ])
     invoice_lines = fields.One2Many('account.invoice.line', 'landed_cost',
         'Invoice Lines',
         states={
@@ -117,15 +114,13 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
             ('invoice.type', '=', 'in'),
             ('product.landed_cost', '=', True),
             ('type', '=', 'line'),
-            ],
-        depends=['state', 'company'])
+            ])
     allocation_method = fields.Selection([
             ('value', 'By Value'),
             ], 'Allocation Method', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     categories = fields.Many2Many(
         'account.landed_cost-product.category', 'landed_cost', 'category',
@@ -133,7 +128,6 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         help="Apply only to products of these categories.")
     products = fields.Many2Many(
         'account.landed_cost-product.product', 'landed_cost', 'product',
@@ -141,7 +135,6 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'],
         help="Apply only to these products.")
 
     posted_date = fields.Date('Posted Date', readonly=True)

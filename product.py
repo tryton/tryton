@@ -11,7 +11,7 @@ class Template(metaclass=PoolMeta):
         "Landed Cost",
         states={
             'invisible': Eval('type') != 'service',
-            }, depends=['type'])
+            })
 
 
 class Product(metaclass=PoolMeta):
