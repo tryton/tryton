@@ -25,8 +25,7 @@ class Configuration(metaclass=PoolMeta):
                 ],
             states={
                 'required': Eval('cash_rounding', False),
-                },
-            depends=['cash_rounding']))
+                }))
     cash_rounding_debit_account = fields.MultiValue(fields.Many2One(
             'account.account', "Cash Rounding Debit Account",
             domain=[
@@ -36,8 +35,7 @@ class Configuration(metaclass=PoolMeta):
                 ],
             states={
                 'required': Eval('cash_rounding', False),
-                },
-            depends=['cash_rounding']))
+                }))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -62,16 +60,14 @@ class ConfigurationCashRoundingAccount(ModelSQL, CompanyValueMixin):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     cash_rounding_debit_account = fields.Many2One(
         'account.account', "Cash Rounding Debit Account",
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
 
 class Invoice(metaclass=PoolMeta):
@@ -81,8 +77,7 @@ class Invoice(metaclass=PoolMeta):
         "Cash Rounding",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     @fields.depends('company', 'type')
     def on_change_company(self):

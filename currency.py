@@ -12,8 +12,7 @@ class Currency(metaclass=PoolMeta):
 
     cash_rounding = fields.Numeric(
         "Cash Rounding Factor",
-        digits=(12, Eval('digits', 6)),
-        depends=['digits'])
+        digits=(12, Eval('digits', 6)))
 
     def cash_round(self, amount, rounding=ROUND_HALF_EVEN):
         return self._round(amount, self.cash_rounding, rounding)

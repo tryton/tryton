@@ -14,8 +14,7 @@ class Purchase(metaclass=PoolMeta):
         "Cash Rounding",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     @fields.depends('party')
     def on_change_party(self):
