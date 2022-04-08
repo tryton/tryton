@@ -30,7 +30,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     maturity_date = fields.Date("Maturity Date", readonly=True)
 
     debit = Monetary(
@@ -62,7 +62,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'get_move_field', searcher='search_move_field')
     period = fields.Function(fields.Many2One(
             'account.period', "Period"),
