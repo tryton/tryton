@@ -82,8 +82,7 @@ class SplitMoveStart(ModelView):
     uom = fields.Many2One('product.uom', 'Uom', required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
-            ],
-        depends=['uom_category'])
+            ])
     uom_category = fields.Many2One('product.uom.category', 'Uom Category',
         readonly=True)
 
@@ -194,6 +193,5 @@ class SplitShipmentStart(ModelView):
     moves = fields.Many2Many(
         'stock.move', None, None, "Moves",
         domain=[('id', 'in', Eval('domain_moves'))],
-        depends=['domain_moves'],
         help="The selected moves will be sent in the new shipment.")
     domain_moves = fields.Many2Many('stock.move', None, None, "Domain Moves")
