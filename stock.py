@@ -27,8 +27,7 @@ else:
 class DimensionsMixin(object):
     __slots__ = ()
 
-    length = fields.Float('Length', digits=(16, Eval('length_digits', 2)),
-        depends=['length_digits'])
+    length = fields.Float('Length', digits=(16, Eval('length_digits', 2)))
     length_uom = fields.Many2One('product.uom', 'Length Unit',
         domain=[
             ('category', '=', Id('product', 'uom_cat_length')),
@@ -36,11 +35,10 @@ class DimensionsMixin(object):
         states={
             'required': Bool(Eval('length')),
             },
-        depends=['length', 'length_digits'])
+        depends={'length_digits'})
     length_digits = fields.Function(fields.Integer('Length Digits'),
         'on_change_with_length_digits')
-    height = fields.Float('Height', digits=(16, Eval('height_digits', 2)),
-        depends=['height_digits'])
+    height = fields.Float('Height', digits=(16, Eval('height_digits', 2)))
     height_uom = fields.Many2One('product.uom', 'Height Unit',
         domain=[
             ('category', '=', Id('product', 'uom_cat_length')),
@@ -48,11 +46,10 @@ class DimensionsMixin(object):
         states={
             'required': Bool(Eval('height')),
             },
-        depends=['height', 'height_digits'])
+        depends={'height_digits'})
     height_digits = fields.Function(fields.Integer('Height Digits'),
         'on_change_with_height_digits')
-    width = fields.Float('Width', digits=(16, Eval('width_digits', 2)),
-        depends=['width_digits'])
+    width = fields.Float('Width', digits=(16, Eval('width_digits', 2)))
     width_uom = fields.Many2One('product.uom', 'Width Unit',
         domain=[
             ('category', '=', Id('product', 'uom_cat_length')),
@@ -60,7 +57,7 @@ class DimensionsMixin(object):
         states={
             'required': Bool(Eval('width')),
             },
-        depends=['width', 'width_digits'])
+        depends={'width_digits'})
     width_digits = fields.Function(fields.Integer('Width Digits'),
         'on_change_with_width_digits')
 
@@ -198,8 +195,7 @@ class ShippingMixin:
     shipping_description = fields.Char('Shipping Description',
         states={
             'readonly': Eval('state').in_(['done', 'packed'])
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -324,8 +320,7 @@ class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
         'carrier', "Carrier",
         states={
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned']),
-            },
-        depends=['state'])
+            })
 
     @classmethod
     @ModelView.button
