@@ -269,8 +269,7 @@ def order_line_component_mixin(prefix):
             "Quantity Ratio", readonly=True,
             states={
                 'required': ~Eval('fixed', False),
-                },
-            depends=['fixed'])
+                })
         price_ratio = fields.Numeric(
             "Price Ratio", readonly=True, required=True)
 

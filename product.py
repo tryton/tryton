@@ -147,8 +147,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
             If(Eval('parent_type') == 'kit',
                 ('type', '=', 'goods'),
                 ()),
-            ],
-        depends=['parent_type'])
+            ])
     product_unit_category = fields.Function(
         fields.Many2One('product.uom.category', "Product Unit Category"),
         'on_change_with_product_unit_category')
@@ -159,7 +158,7 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
                 ('category', '=', Eval('product_unit_category')),
                 ('category', '!=', -1)),
             ],
-        depends=['product', 'product_unit_category'])
+        depends={'product'})
     fixed = fields.Boolean("Fixed",
         help="Check to make the quantity of the component independent "
         "of the kit quantity.")
@@ -231,16 +230,14 @@ class Component(ComponentMixin, ModelSQL, ModelView):
             If(Bool(Eval('parent_product')),
                 ('products', '=', Eval('parent_product')),
                 ()),
-            ],
-        depends=['parent_product'])
+            ])
     parent_product = fields.Many2One(
         'product.product', "Parent Variant", ondelete='CASCADE', select=True,
         domain=[
             If(Bool(Eval('parent_template')),
                 ('template', '=', Eval('parent_template')),
                 ()),
-            ],
-        depends=['parent_template'])
+            ])
 
     @classmethod
     def __setup__(cls):
