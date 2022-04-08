@@ -15,5 +15,5 @@ class Line(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') != 'line',
             },
-        depends=['type', 'purchase'],
+        depends={'purchase'},
         help="Add to the cost of the work effort.")

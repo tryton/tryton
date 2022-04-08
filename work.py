@@ -24,7 +24,7 @@ class Work(metaclass=PoolMeta):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     list_price = Monetary(
         "List Price", currency='currency', digits=price_digits)
     revenue = fields.Function(Monetary(
@@ -52,8 +52,7 @@ class Work(metaclass=PoolMeta):
                 'Purchase Lines', domain=[
                     ('purchase.company', '=', Eval('company', -1)),
                     ('type', '=', 'line'),
-                    ],
-                depends=['company'])
+                    ])
 
     @classmethod
     def _get_cost(cls, works):
