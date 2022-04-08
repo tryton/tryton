@@ -11,8 +11,7 @@ class Template(metaclass=PoolMeta):
     supply_on_sale = fields.Boolean('Supply On Sale',
         states={
             'invisible': ~Eval('purchasable') | ~Eval('salable'),
-            },
-        depends=['purchasable', 'salable'])
+            })
 
 
 class Product(metaclass=PoolMeta):
