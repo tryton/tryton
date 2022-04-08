@@ -30,8 +30,7 @@ class Tax(metaclass=PoolMeta):
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
-            },
-        depends=['template', 'template_override'])
+            })
 
 
 class ECSalesList(ModelSQL, ModelView):
@@ -117,14 +116,12 @@ class ECSalesListContext(ModelView):
         'account.fiscalyear', "Fiscal Year", required=True,
         domain=[
             ('company', '=', Eval('company')),
-            ],
-        depends=['company'])
+            ])
     period = fields.Many2One(
         'account.period', "Period",
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
-            ],
-        depends=['fiscalyear'])
+            ])
 
     @classmethod
     def default_company(cls):
