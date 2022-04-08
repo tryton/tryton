@@ -44,12 +44,10 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
 
     start_date = fields.Date(
         "Start Date", required=True,
-        domain=[('start_date', '<=', Eval('end_date'))],
-        depends=['end_date'])
+        domain=[('start_date', '<=', Eval('end_date'))])
     end_date = fields.Date(
         "End Date", required=True,
-        domain=[('end_date', '>=', Eval('start_date'))],
-        depends=['start_date'])
+        domain=[('end_date', '>=', Eval('start_date'))])
     root = fields.Many2One(
         'analytic_account.account', "Root", required=True,
         domain=[
@@ -59,8 +57,7 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('root') & Eval('lines', [-1]),
-            },
-        depends=['company'])
+            })
     lines = fields.One2Many(
         'analytic_account.budget.line', 'budget', "Lines",
         states={
@@ -150,8 +147,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ('root', '=', Eval('root', -1)),
             ('type', '=', 'normal'),
-            ],
-        depends=['company', 'root'])
+            ])
 
     root = fields.Function(fields.Many2One(
             'analytic_account.account', "Root"),
@@ -235,9 +231,7 @@ class CopyBudgetStart(CopyBudgetStartMixin, ModelView):
 
     start_date = fields.Date(
         "Start Date", required=True,
-        domain=[('start_date', '<=', Eval('end_date'))],
-        depends=['end_date'])
+        domain=[('start_date', '<=', Eval('end_date'))])
     end_date = fields.Date(
         "End Date", required=True,
-        domain=[('end_date', '>=', Eval('start_date'))],
-        depends=['start_date'])
+        domain=[('end_date', '>=', Eval('start_date'))])
