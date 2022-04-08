@@ -29,9 +29,7 @@ class Move(metaclass=PoolMeta):
                 & (Eval('state') == 'done')),
             'readonly': Eval('state').in_(['cancel', 'done']),
             },
-        depends=[
-            'gift_cards_required', 'internal_quantity', 'company', 'product',
-            'state'])
+        depends={'internal_quantity'})
     gift_cards_required = fields.Function(
         fields.Boolean("Gift Cards Required"),
         'on_change_with_gift_cards_required')

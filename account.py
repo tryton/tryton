@@ -42,16 +42,14 @@ class ConfigurationGiftCardAccount(ModelSQL, CompanyValueMixin):
             ('type.gift_card', '=', True),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
     gift_card_account_revenue = fields.Many2One(
         'account.account', "Gift Card Revenue",
         domain=[
             ('type.gift_card', '=', True),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
 
 def AccountTypeMixin(template=False):
@@ -66,8 +64,7 @@ def AccountTypeMixin(template=False):
                 ],
             states={
                 'invisible': Eval('statement') != 'balance',
-                },
-            depends=['statement'])
+                })
     if not template:
         for fname in dir(Mixin):
             field = getattr(Mixin, fname)

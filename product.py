@@ -16,8 +16,7 @@ class Template(metaclass=PoolMeta):
         "Gift Card",
         states={
             'invisible': ~Eval('type').in_(['service', 'goods']),
-            },
-        depends=['type'])
+            })
 
     @fields.depends('gift_card')
     def on_change_gift_card(self):

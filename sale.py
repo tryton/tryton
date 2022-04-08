@@ -47,8 +47,7 @@ class ConfigurationGiftCardSequence(ModelSQL, CompanyValueMixin):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=', Id(
                     'sale_gift_card', 'sequence_type_gift_card')),
-            ],
-        depends=['company'])
+            ])
 
 
 class GiftCard(ModelSQL, ModelView):
@@ -59,13 +58,11 @@ class GiftCard(ModelSQL, ModelView):
     _states = {
         'readonly': Bool(Eval('origin')) | Bool(Eval('spent_on')),
         }
-    _depends = ['origin']
 
     number = fields.Char(
-        "Number", required=True, states=_states, depends=_depends)
+        "Number", required=True, states=_states)
     company = fields.Many2One(
-        'company.company', "Company", required=True,
-        states=_states, depends=_depends)
+        'company.company', "Company", required=True, states=_states)
     product = fields.Many2One(
         'product.product', "Product", required=True,
         domain=[
@@ -74,13 +71,12 @@ class GiftCard(ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        states=_states, depends=_depends + ['company'])
+        states=_states, depends={'company'})
     value = Monetary(
         "Value", currency='currency', digits='currency', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     currency = fields.Many2One(
-        'currency.currency', "Currency", required=True,
-        states=_states, depends=_depends)
+        'currency.currency', "Currency", required=True, states=_states)
 
     origin = fields.Reference(
         "Origin", selection='get_origin', select=True, readonly=True)
@@ -88,7 +84,6 @@ class GiftCard(ModelSQL, ModelView):
         "Spent On", selection='get_spent_on', select=True, readonly=True)
 
     del _states
-    del _depends
 
     @classmethod
     def __setup__(cls):
@@ -269,8 +264,7 @@ class Sale(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state', 'company', 'currency'])
+            })
 
     @classmethod
     @ModelView.button
@@ -339,8 +333,7 @@ class POSSale(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state', 'company', 'currency'])
+            })
 
     @fields.depends('state', 'gift_cards')
     def on_change_with_total(self, name=None):
@@ -410,7 +403,6 @@ class _LineMixin:
         states={
             'invisible': ~Eval('is_gift_card_service', False),
             },
-        depends=['is_gift_card_service'],
         help="Leave empty for the customer email.")
 
     @fields.depends('product')
