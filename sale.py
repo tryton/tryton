@@ -79,7 +79,7 @@ class Line(metaclass=PoolMeta):
         domain=[
             ('company', '=', Eval('_parent_sale', {}).get('company', -1)),
             ],
-        depends=['sale'])
+        depends={'sale'})
 
 
 class Promotion(
@@ -99,56 +99,50 @@ class Promotion(
                     datetime.date.max,
                     Eval('end_date', datetime.date.max))),
             ('start_date', '=', None),
-            ],
-        depends=['end_date'])
+            ])
     end_date = fields.Date('End Date',
         domain=['OR',
             ('end_date', '>=', If(~Eval('start_date', None),
                     datetime.date.min,
                     Eval('start_date', datetime.date.min))),
             ('end_date', '=', None),
-            ],
-        depends=['start_date'])
+            ])
     price_list = fields.Many2One('product.price_list', 'Price List',
         ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     amount = Monetary("Amount", currency='currency', digits='currency')
     currency = fields.Many2One(
         'currency.currency', "Currency",
         states={
             'required': Bool(Eval('amount', 0)),
-            },
-        depends=['amount'])
+            })
     untaxed_amount = fields.Boolean(
         "Untaxed Amount",
         states={
             'invisible': ~Eval('amount'),
-            },
-        depends=['amount'])
+            })
 
     quantity = fields.Float('Quantity', digits='unit')
     unit = fields.Many2One('product.uom', 'Unit',
         states={
             'required': Bool(Eval('quantity', 0)),
-            },
-        depends=['quantity'])
+            })
     products = fields.Many2Many(
         'sale.promotion-product.product', 'promotion', 'product', "Products",
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     categories = fields.Many2Many(
         'sale.promotion-product.category', 'promotion', 'category',
         "Categories",
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
