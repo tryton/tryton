@@ -16,7 +16,6 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
         cls.analytic_accounts.domain = [
             ('company', '=', Eval('company', -1)),
             ]
-        cls.analytic_accounts.depends.append('company')
 
     @fields.depends('supplier_invoice_line', 'analytic_accounts')
     def on_change_supplier_invoice_line(self):
