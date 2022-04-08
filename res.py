@@ -39,21 +39,18 @@ class User(metaclass=PoolMeta):
         domain=[
             ('id', 'in', Eval('companies', [])),
             ],
-        depends=['companies'],
         help="Select the company to work for.")
     employees = fields.Many2Many('res.user-company.employee', 'user',
         'employee', 'Employees',
         domain=[
             ('company', 'in', Eval('companies', [])),
             ],
-        depends=['companies'],
         help="Add employees to grant the user access to them.")
     employee = fields.Many2One('company.employee', 'Current Employee',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('id', 'in', Eval('employees', [])),
             ],
-        depends=['company', 'employees'],
         help="Select the employee to make the user behave as such.")
     company_filter = fields.Selection([
             ('one', "Current"),

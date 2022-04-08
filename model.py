@@ -52,8 +52,7 @@ def employee_field(string, states=None, company='company'):
         domain=[('company', '=', Eval(company, -1))],
         states={
             'readonly': Eval('state').in_(states),
-            },
-        depends=[company, 'state'])
+            })
 
 
 def set_employee(field, company='company'):

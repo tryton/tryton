@@ -44,8 +44,7 @@ class PartyLang(CompanyValueMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.party.context['company'] = Eval('company', -1)
-        if 'company' not in cls.party.depends:
-            cls.party.depends.append('company')
+        cls.party.depends.add('company')
 
     @classmethod
     def __register__(cls, module_name):
@@ -123,8 +122,7 @@ class ContactMechanismLanguage(CompanyValueMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.contact_mechanism.context['company'] = Eval('company', -1)
-        if 'company' not in cls.contact_mechanism.depends:
-            cls.contact_mechanism.depends.append('company')
+        cls.contact_mechanism.depends.add('company')
 
 
 class LetterReport(Report):

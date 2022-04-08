@@ -55,7 +55,7 @@ class Employee(ModelSQL, ModelView):
             'company': If(
                 Eval('company', -1) >= 0, Eval('company', None), None),
             },
-        depends=['company'],
+        depends={'company'},
         help="The party which represents the employee.")
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company to which the employee belongs.")
@@ -65,7 +65,6 @@ class Employee(ModelSQL, ModelView):
                 (),
                 )
             ],
-        depends=['end_date'],
         help="When the employee joins the company.")
     end_date = fields.Date('End Date',
         domain=[If((Eval('start_date')) & (Eval('end_date')),
@@ -73,21 +72,18 @@ class Employee(ModelSQL, ModelView):
                 (),
                 )
             ],
-        depends=['start_date'],
         help="When the employee leaves the company.")
     supervisor = fields.Many2One(
         'company.employee', "Supervisor",
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'],
         help="The employee who oversees this employee.")
     subordinates = fields.One2Many(
         'company.employee', 'supervisor', "Subordinates",
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'],
         help="The employees to be overseen by this employee.")
 
     @staticmethod
