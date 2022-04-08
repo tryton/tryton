@@ -19,7 +19,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        depends=['company'])
+        depends={'company'})
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             select=True)
@@ -29,7 +29,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=['company']),
+            depends={'company'}),
         'on_change_with_company_party')
     validation = fields.Selection([
             ('balance', 'Balance'),
@@ -41,16 +41,14 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         domain=[
             ('owners.id', '=', Eval('company_party', -1)),
             ('currency', '=', Eval('currency', -1)),
-            ],
-        depends=['company_party', 'currency'])
+            ])
     account = fields.Many2One('account.account', "Account", required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ('party_required', '=', False),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def __setup__(cls):

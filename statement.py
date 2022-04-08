@@ -53,30 +53,26 @@ class Statement(Workflow, ModelSQL, ModelView):
     __name__ = 'account.statement'
 
     _states = {'readonly': Eval('state') != 'draft'}
-    _depends = ['state']
     _balance_states = _states.copy()
     _balance_states.update({
             'invisible': ~Eval('validation', '').in_(['balance']),
             'required': Eval('validation', '').in_(['balance']),
             })
-    _balance_depends = _depends + ['validation']
     _amount_states = _states.copy()
     _amount_states.update({
             'invisible': ~Eval('validation', '').in_(['amount']),
             'required': Eval('validation', '').in_(['amount']),
             })
-    _amount_depends = _depends + ['validation']
     _number_states = _states.copy()
     _number_states.update({
             'invisible': ~Eval('validation', '').in_(['number_of_lines']),
             'required': Eval('validation', '').in_(['number_of_lines']),
             })
-    _number_depends = _depends + ['validation']
 
     name = fields.Char('Name', required=True)
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True,
-        states=_states, depends=_depends)
+        states=_states)
     journal = fields.Many2One('account.statement.journal', 'Journal',
         required=True, select=True,
         domain=[
@@ -84,36 +80,33 @@ class Statement(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
-            },
-        depends=['state', 'company'])
+            })
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
     date = fields.Date('Date', required=True, select=True)
     start_balance = Monetary(
         "Start Balance", currency='currency', digits='currency',
-        states=_balance_states, depends=_balance_depends)
+        states=_balance_states)
     end_balance = Monetary(
         "End Balance", currency='currency', digits='currency',
-        states=_balance_states, depends=_balance_depends)
+        states=_balance_states)
     balance = fields.Function(Monetary(
             "Balance", currency='currency', digits='currency',
-            states=_balance_states, depends=_balance_depends),
+            states=_balance_states),
         'on_change_with_balance')
     total_amount = Monetary(
         "Total Amount", currency='currency', digits='currency',
-        states=_amount_states, depends=_amount_depends)
+        states=_amount_states)
     number_of_lines = fields.Integer('Number of Lines',
-        states=_number_states, depends=_number_depends)
+        states=_number_states)
     lines = fields.One2Many('account.statement.line', 'statement',
         'Lines', states={
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
-            },
-        depends=['state', 'journal'])
+            })
     origins = fields.One2Many('account.statement.origin', 'statement',
         "Origins", states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     origin_file = fields.Binary(
         "Origin File", readonly=True,
         file_id=file_id, store_prefix=store_prefix)
@@ -129,10 +122,10 @@ class Statement(Workflow, ModelSQL, ModelView):
     to_reconcile = fields.Function(
         fields.Boolean("To Reconcile"), 'get_to_reconcile')
 
-    del _states, _depends
-    del _balance_states, _balance_depends
-    del _amount_states, _amount_depends
-    del _number_states, _number_depends
+    del _states
+    del _balance_states
+    del _amount_states
+    del _number_states
 
     @classmethod
     def __setup__(cls):
@@ -663,13 +656,12 @@ class Statement(Workflow, ModelSQL, ModelView):
         return new_statements
 
 
-def origin_mixin(_states, _depends):
+def origin_mixin(_states):
     class Mixin:
         __slots__ = ()
         statement = fields.Many2One(
             'account.statement', "Statement",
-            required=True, ondelete='CASCADE', states=_states,
-            depends=_depends)
+            required=True, ondelete='CASCADE', states=_states)
         statement_state = fields.Function(
             fields.Selection('get_statement_states', "Statement State"),
             'on_change_with_statement_state')
@@ -678,10 +670,10 @@ def origin_mixin(_states, _depends):
             'on_change_with_company', searcher='search_company')
         number = fields.Char("Number")
         date = fields.Date(
-            "Date", required=True, states=_states, depends=_depends)
+            "Date", required=True, states=_states)
         amount = Monetary(
             "Amount", currency='currency', digits='currency', required=True,
-            states=_states, depends=_depends)
+            states=_states)
         currency = fields.Function(fields.Many2One(
                 'currency.currency', "Currency"), 'on_change_with_currency')
         party = fields.Many2One(
@@ -689,7 +681,7 @@ def origin_mixin(_states, _depends):
             context={
                 'company': Eval('company', -1),
                 },
-            depends=_depends + ['company'])
+            depends={'company'})
         account = fields.Many2One(
             'account.account', "Account",
             domain=[
@@ -700,9 +692,8 @@ def origin_mixin(_states, _depends):
             context={
                 'date': Eval('date'),
                 },
-            states=_states, depends=_depends + ['company', 'date'])
-        description = fields.Char(
-            "Description", states=_states, depends=_depends)
+            states=_states, depends={'date'})
+        description = fields.Char("Description", states=_states)
 
         @classmethod
         def __setup__(cls):
@@ -740,12 +731,9 @@ def origin_mixin(_states, _depends):
 _states = {
     'readonly': Eval('statement_state') != 'draft',
     }
-_depends = ['statement_state']
 
 
-class Line(
-        origin_mixin(_states, _depends), sequence_ordered(),
-        ModelSQL, ModelView):
+class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     'Account Statement Line'
     __name__ = 'account.statement.line'
 
@@ -771,8 +759,7 @@ class Line(
                 ],
             },
         states=_states,
-        context={'with_payment': False},
-        depends=['company', 'party', 'account'] + _depends)
+        context={'with_payment': False})
     origin = fields.Many2One('account.statement.origin', 'Origin',
         readonly=True,
         states={
@@ -781,8 +768,7 @@ class Line(
         domain=[
             ('statement', '=', Eval('statement', -1)),
             ('date', '=', Eval('date', None)),
-            ],
-        depends=['statement', 'date'])
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -792,7 +778,6 @@ class Line(
                     'readonly': (cls.date.states['readonly']
                         | Bool(Eval('origin', 0))),
                     })
-            cls.date.depends.append('origin')
         cls.account.required = True
         t = cls.__table__()
         cls._sql_constraints += [
@@ -1046,7 +1031,7 @@ class Line(
             )
 
 
-del _states, _depends
+del _states
 
 
 class LineGroup(ModelSQL, ModelView):
@@ -1120,10 +1105,9 @@ class LineGroup(ModelSQL, ModelView):
 _states = {
     'readonly': (Eval('statement_state') != 'draft') | Eval('lines', []),
     }
-_depends = ['statement_state']
 
 
-class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
+class Origin(origin_mixin(_states), ModelSQL, ModelView):
     "Account Statement Origin"
     __name__ = 'account.statement.origin'
     _rec_name = 'number'
@@ -1137,8 +1121,7 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
         domain=[
             ('statement', '=', Eval('statement', -1)),
             ('date', '=', Eval('date', None)),
-            ],
-        depends=['statement', 'date', 'statement_id'])
+            ])
     statement_id = fields.Function(
         fields.Integer("Statement ID"), 'on_change_with_statement_id')
     pending_amount = fields.Function(Monetary(
@@ -1192,7 +1175,7 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
         return super().copy(origins, default=default)
 
 
-del _states, _depends
+del _states
 
 
 class OriginInformation(DictSchemaMixin, ModelSQL, ModelView):
