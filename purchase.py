@@ -20,8 +20,7 @@ class Purchase(metaclass=PoolMeta):
             'invisible': ((Eval('state') != 'processing')
                 | ~Eval('amendments')),
             'readonly': Eval('state') != 'processing',
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def copy(cls, purchases, default=None):
@@ -44,20 +43,17 @@ class Amendment(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
-            },
-        depends=['state'])
+            })
     date = fields.Date(
         "Date", required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     description = fields.Char(
         "Description",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
     state = fields.Selection([
             ('draft', "Draft"),
             ('validated', "Validated"),
@@ -66,8 +62,7 @@ class Amendment(Workflow, ModelSQL, ModelView):
         'purchase.amendment.line', 'amendment', "Lines",
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -178,8 +173,7 @@ class AmendmentLine(ModelSQL, ModelView):
             ], "Action", required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            })
 
     purchase = fields.Function(fields.Many2One(
             'purchase.purchase', "Purchase"), 'on_change_with_purchase')
@@ -193,15 +187,13 @@ class AmendmentLine(ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
             'required': Eval('action') == 'line',
-            },
-        depends=['state', 'purchase', 'action'])
+            })
 
     payment_term = fields.Many2One(
         'account.invoice.payment_term', "Payment Term",
         states={
             'invisible': Eval('action') != 'payment_term',
-            },
-        depends=['action'])
+            })
 
     party = fields.Many2One(
         'party.party', "Party",
@@ -209,8 +201,7 @@ class AmendmentLine(ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'party',
             'required': Eval('action') == 'party',
-            },
-        depends=['state', 'action'])
+            })
     invoice_address = fields.Many2One(
         'party.address', "Invoice Address",
         domain=[
@@ -220,8 +211,7 @@ class AmendmentLine(ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'party',
             'required': Eval('action') == 'party',
-            },
-        depends=['state', 'action', 'party'])
+            })
 
     warehouse = fields.Many2One(
         'stock.location', "Warehouse",
@@ -232,8 +222,7 @@ class AmendmentLine(ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'warehouse',
             'required': Eval('action') == 'warehouse',
-            },
-        depends=['state', 'action'])
+            })
 
     product = fields.Many2One(
         'product.product', "Product",
@@ -248,8 +237,7 @@ class AmendmentLine(ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
-            },
-        depends=['action', 'state', 'product_uom_category'])
+            })
     product_supplier = fields.Many2One(
         'purchase.product_supplier', "Supplier's Product",
         domain=[
@@ -267,16 +255,14 @@ class AmendmentLine(ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
-            },
-        depends=['product', 'party', 'state', 'action'])
+            })
     quantity = fields.Float(
         "Quantity", digits='unit',
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
             'required': Eval('action') == 'line',
-            },
-        depends=['action'])
+            })
     unit = fields.Many2One(
         'product.uom', "Unit", ondelete='RESTRICT',
         domain=[
@@ -286,23 +272,20 @@ class AmendmentLine(ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
             'required': Bool(Eval('product')),
-            },
-        depends=['state', 'product_uom_category', 'action', 'product'])
+            })
     unit_price = fields.Numeric(
         "Unit Price", digits=price_digits,
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
             'required': Eval('action') == 'line',
-            },
-        depends=['state', 'action'])
+            })
     description = fields.Text(
         "Description",
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
-            },
-        depends=['state', 'action'])
+            })
 
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', "Product UoM Category"),
