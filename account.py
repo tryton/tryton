@@ -39,8 +39,6 @@ class Payment(metaclass=PoolMeta):
                 ('state', '!=', 'cancelled'),
                 ()),
             ]
-        if 'state' not in cls.origin.depends:
-            cls.origin.depends.append('state')
 
     @classmethod
     def _get_origin(cls):
