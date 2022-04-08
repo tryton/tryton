@@ -83,8 +83,7 @@ class SubscriptionLine(metaclass=PoolMeta):
                 & Eval('asset_lot_required')),
             'invisible': ~Eval('asset_lot_required'),
             'readonly': Eval('subscription_state') != 'draft',
-            },
-        depends=['service', 'subscription_state', 'asset_lot_required'])
+            })
     asset_lot_required = fields.Function(
         fields.Boolean("Asset Lot Required"),
         'on_change_with_asset_lot_required')
@@ -99,7 +98,6 @@ class SubscriptionLine(metaclass=PoolMeta):
                 ('quantity', '=', 1),
                 ()),
             ]
-        cls.quantity.depends.append('asset_lot')
 
     @fields.depends('service')
     def on_change_with_asset_lot_required(self, name=None):
