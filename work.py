@@ -27,8 +27,7 @@ class Work(metaclass=PoolMeta):
             domain=[
                 ('company', '=', Eval('company', -1)),
                 ('work', '=', Eval('timesheet_work', -1)),
-                ],
-            depends=['timesheet_works', 'timesheet_work', 'company']),
+                ]),
         'get_timesheet_lines', setter='set_timesheet_lines')
 
     def get_timesheet_work(self, name):
