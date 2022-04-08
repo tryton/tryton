@@ -43,7 +43,6 @@ class Email(ModelSQL, ModelView):
         domain=[
             ('model.model', '=', Eval('model')),
             ],
-        depends=['model'],
         help="The field that contains the recipient(s).")
     fallback_recipients = fields.Many2One(
         'res.user', "Recipients Fallback User",
@@ -53,14 +52,12 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients'),
             },
-        depends=['recipients'],
         help="User notified when no recipients e-mail is found")
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
             ],
-        depends=['model'],
         help="The field that contains the secondary recipient(s).")
     fallback_recipients_secondary = fields.Many2One(
         'res.user', "Secondary Recipients Fallback User",
@@ -70,14 +67,12 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients_secondary'),
             },
-        depends=['recipients'],
         help="User notified when no secondary recipients e-mail is found")
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
             ],
-        depends=['model'],
         help="The field that contains the hidden recipient(s).")
     fallback_recipients_hidden = fields.Many2One(
         'res.user', "Hidden Recipients Fallback User",
@@ -87,7 +82,6 @@ class Email(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('recipients_hidden'),
             },
-        depends=['recipients_hidden'],
         help="User notified when no hidden recipients e-mail is found")
 
     contact_mechanism = fields.Selection(
@@ -104,13 +98,11 @@ class Email(ModelSQL, ModelView):
         domain=[
             ('model', '=', Eval('model')),
             ],
-        depends=['model'],
         help="The reports used as attachments.")
 
     triggers = fields.One2Many(
         'ir.trigger', 'notification_email', "Triggers",
         domain=[('model.model', '=', Eval('model'))],
-        depends=['model'],
         help="Add a trigger for the notification.")
     send_after = fields.TimeDelta(
         "Send After",
@@ -346,8 +338,7 @@ class EmailAttachment(ModelSQL):
         'ir.action.report', "Report", required=True,
         domain=[
             ('model', '=', Eval('model')),
-            ],
-        depends=['model'])
+            ])
 
     model = fields.Function(fields.Char("Model"), 'get_model')
 

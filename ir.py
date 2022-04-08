@@ -13,8 +13,7 @@ class Trigger(metaclass=PoolMeta):
         states={
             'required': Eval('notification_email_required', False),
             'invisible': ~Eval('notification_email_required', False),
-            },
-        depends=['notification_email_required'])
+            })
     notification_email_required = fields.Function(
         fields.Boolean("Notification Email Required"),
         'on_change_with_notification_email_required')
