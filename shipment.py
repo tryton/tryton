@@ -2260,6 +2260,7 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('planned_date', 'planned_start_date', 'company')
     def on_change_with_transit_location(self, name=None):
         pool = Pool()
         Config = pool.get('stock.configuration')
