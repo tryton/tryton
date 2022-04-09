@@ -29,7 +29,7 @@ class ShipmentIn(ShipmentMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('supplier'), ['supplier']
+        return Eval('supplier'), {'supplier'}
 
 
 class ShipmentInReturn(ShipmentMixin, metaclass=PoolMeta):
@@ -37,7 +37,7 @@ class ShipmentInReturn(ShipmentMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('supplier'), ['supplier']
+        return Eval('supplier'), {'supplier'}
 
 
 class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
@@ -45,7 +45,7 @@ class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('customer'), ['customer']
+        return Eval('customer'), {'customer'}
 
 
 class ShipmentOutReturn(ShipmentMixin, metaclass=PoolMeta):
@@ -53,4 +53,4 @@ class ShipmentOutReturn(ShipmentMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('customer'), ['customer']
+        return Eval('customer'), {'customer'}

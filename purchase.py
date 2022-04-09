@@ -54,7 +54,7 @@ class RequestQuotation(IncotermMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_related_party(cls):
-        return Eval('supplier'), ['supplier']
+        return Eval('supplier'), {'supplier'}
 
 
 class RequestCreatePurchase(metaclass=PoolMeta):

@@ -102,7 +102,7 @@ class Opportunity(IncotermMixin, metaclass=PoolMeta):
 
     @classmethod
     def _incoterm_readonly_state(cls):
-        return ~Eval('state').in_(['lead', 'opportunity']), ['state']
+        return ~Eval('state').in_(['lead', 'opportunity'])
 
     def _get_sale_opportunity(self):
         sale = super()._get_sale_opportunity()
