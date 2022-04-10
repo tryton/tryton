@@ -5,7 +5,6 @@
 import glob
 import io
 import os
-import platform
 import re
 import subprocess
 
@@ -73,10 +72,6 @@ if minor_version % 2:
         'https://trydevpi.tryton.org/?local_version='
         + '.'.join(local_version))
 
-if platform.python_implementation() == 'PyPy':
-    pg_require = ['psycopg2cffi > 2.9.0']
-else:
-    pg_require = ['psycopg2 >= 2.7.0']
 tests_require = ['pillow']
 
 setup(name=name,
@@ -150,7 +145,6 @@ setup(name=name,
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         ],
     platforms='any',
@@ -169,7 +163,7 @@ setup(name=name,
         'passlib >= 1.7.0',
         ],
     extras_require={
-        'PostgreSQL': pg_require,
+        'PostgreSQL': ['psycopg2 >= 2.7.0'],
         'graphviz': ['pydot'],
         'Levenshtein': ['python-Levenshtein'],
         'BCrypt': ['passlib[bcrypt]'],

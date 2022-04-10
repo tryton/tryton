@@ -1,3 +1,4 @@
+* Drop support for PyPy and psycopg2cffi
 * Use a set for field's depends
 * Relax the constraint on a field's depends
 * Include only needed fields when fetching a view definition

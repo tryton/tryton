@@ -11,16 +11,10 @@ from decimal import Decimal
 from itertools import chain, repeat
 from threading import RLock
 
-try:
-    from psycopg2 import connect
-except ImportError:
-    from psycopg2cffi import compat
-    compat.register()
-    from psycopg2 import connect
-from psycopg2 import Binary
+from psycopg2 import Binary, connect
 from psycopg2.extensions import (
-    ISOLATION_LEVEL_AUTOCOMMIT, ISOLATION_LEVEL_REPEATABLE_READ, UNICODE, AsIs,
-    cursor, register_adapter, register_type)
+    ISOLATION_LEVEL_REPEATABLE_READ, UNICODE, AsIs, cursor, register_adapter,
+    register_type)
 from psycopg2.pool import PoolError, ThreadedConnectionPool
 from psycopg2.sql import SQL, Identifier
 
@@ -272,19 +266,10 @@ class Database(DatabaseInterface):
                 logger.error(
                     'connection to "%s" failed', self.name, exc_info=True)
                 raise
-        # We do not use set_session because psycopg2 < 2.7 and psycopg2cffi
-        # change the default_transaction_* attributes which breaks external
-        # pooling at the transaction level.
-        if autocommit:
-            conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-        else:
-            conn.set_isolation_level(ISOLATION_LEVEL_REPEATABLE_READ)
-        # psycopg2cffi does not have the readonly property
-        if hasattr(conn, 'readonly'):
-            conn.readonly = readonly
-        elif not autocommit and readonly:
-            cursor = conn.cursor()
-            cursor.execute('SET TRANSACTION READ ONLY')
+        conn.set_session(
+            isolation_level=ISOLATION_LEVEL_REPEATABLE_READ,
+            readonly=readonly,
+            autocommit=autocommit)
         return conn
 
     def put_connection(self, connection, close=False):
