@@ -27,7 +27,7 @@ from trytond.cache import Cache
 from trytond.config import config, parse_uri
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
-from trytond.model.fields import Function, get_eval_fields
+from trytond.model.fields import Function
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.tools import file_open, is_instance_method
