@@ -2090,13 +2090,8 @@
         },
     });
 
-    Sao.Window.Export.format_row = function(line, indent, locale_format) {
-        if (indent === undefined) {
-            indent = 0;
-        }
-        if (locale_format === undefined) {
-            locale_format = true;
-        }
+    Sao.Window.Export.format_row = function(
+        line, indent=0, locale_format=true) {
         var row = [];
         line.forEach(function(val, i) {
             if (locale_format) {

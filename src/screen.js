@@ -360,11 +360,11 @@
             }
             return this.tab_domain[idx][1];
         },
-        set_tab_counter: function(count, idx) {
+        set_tab_counter: function(count, idx=null) {
             if (jQuery.isEmptyObject(this.tab_counter) || !this.tab) {
                 return;
             }
-            if ((idx === undefined) || (idx === null)) {
+            if (idx === null) {
                 idx = this.tab.find('li').index(this.tab.find('li.active'));
             }
             if (idx < 0) {
@@ -943,12 +943,10 @@
         get number_of_views() {
             return this.views.length + this.view_to_load.length;
         },
-        switch_view: function(view_type, view_id, creatable, display) {
-            display = display === undefined ? true : display;
-            if ((view_id !== undefined) && (view_id !== null)) {
+        switch_view: function(
+            view_type=null, view_id=null, creatable=null, display=true) {
+            if (view_id !== null) {
                 view_id = Number(view_id);
-            } else {
-                view_id = null;
             }
             if (this.current_view) {
                 this.current_view.set_value();
@@ -972,13 +970,13 @@
                     return false;
                 }
                 var result = true;
-                if ((view_type !== undefined) && (view_type !== null)) {
+                if (view_type !== null) {
                     result &= this.current_view.view_type == view_type;
                 }
-                if ((view_id !== undefined) && (view_id !== null)) {
+                if (view_id !== null) {
                     result &= this.current_view.view_id == view_id;
                 }
-                if ((creatable !== undefined) && (creatable !== null)) {
+                if (creatable !== null) {
                     result &= this.current_view.creatable == creatable;
                 }
                 return result;
@@ -1110,15 +1108,14 @@
                     }.bind(this));
                 }.bind(this));
         },
-        search_domain: function(search_string, set_text, with_tab) {
+        search_domain: function(search_string=null, set_text=false, with_tab=true) {
             set_text = set_text || false;
-            with_tab = with_tab === undefined ? true : with_tab;
             var domain = [];
 
             // Test first parent to avoid calling unnecessary domain_parser
             if (!this.group.parent && this.domain_parser) {
                 var domain_parser = this.domain_parser;
-                if (search_string || search_string === '') {
+                if (search_string !== null) {
                     domain = domain_parser.parse(search_string);
                 } else {
                     domain = this.attributes.search_value;
@@ -1169,10 +1166,7 @@
             }
             return domain;
         },
-        count_tab_domain: function(current) {
-            if (current === undefined) {
-                current = false;
-            }
+        count_tab_domain: function(current=false) {
             var screen_domain = this.search_domain(
                 this.screen_container.get_text(), false, false);
             var index = this.screen_container.get_tab_index();
@@ -1255,13 +1249,13 @@
             group.readonly = this.attributes.readonly;
             this.set_group(group);
         },
-        record_modified: function(display) {
+        record_modified: function(display=true) {
             this.windows.forEach(function(window_) {
                 if (window_.record_modified) {
                     window_.record_modified();
                 }
             });
-            if (display || display === undefined) {
+            if (display) {
                 return this.display();
             }
         },
@@ -1322,11 +1316,8 @@
                 }
             }
         },
-        load: function(ids, set_cursor, modified) {
-            if (set_cursor === undefined) {
-                set_cursor = true;
-            }
-            this.group.load(ids, modified);
+        load: function(ids, set_cursor=true, modified=false, position=-1) {
+            this.group.load(ids, modified, position);
             this.current_view.reset();
             if (ids.length && this.current_view.view_type != 'calendar') {
                 this.current_record = this.group.get(ids[0]);
@@ -1483,11 +1474,8 @@
                 return this.current_record.id;
             }
         },
-        new_: function(default_, rec_name) {
+        new_: function(default_=true, rec_name=null) {
             var previous_view = this.current_view;
-            if (default_ === undefined) {
-                default_ = true;
-            }
             var prm = jQuery.when();
             if (this.current_view.view_type == 'calendar') {
                 var selected_date = this.current_view.get_selected_date();
@@ -2131,10 +2119,9 @@
             }
             return path;
         },
-        save_tree_state: function(store) {
+        save_tree_state: function(store=true) {
             var prms = [];
             var prm;
-            store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
             var clear_cache = function() {

@@ -264,26 +264,15 @@ var Sao = {};
     Sao.Date.max.set({hour: 0, minute: 0, second: 0, millisecond: 0});
     Sao.Date.max.isDate = true;
 
-    Sao.DateTime = function(year, month, day, hour, minute, second,
-            millisecond, utc) {
+    Sao.DateTime = function(
+        year, month, day,
+        hour=0, minute=0, second=0, millisecond=0, utc=false) {
         var datetime;
         if (month === undefined) {
             datetime = moment(year);
             year = undefined;
         }
         else {
-            if (hour === undefined) {
-                hour = 0;
-            }
-            if (minute === undefined) {
-                minute = 0;
-            }
-            if (second === undefined) {
-                second = 0;
-            }
-            if (millisecond === undefined) {
-                millisecond = 0;
-            }
             datetime = moment();
         }
         if (utc) {
@@ -890,11 +879,7 @@ var Sao = {};
     });
 
     Sao.Dialog = Sao.class_(Object, {
-        init: function(title, class_, size, keyboard) {
-            size = size || 'sm';
-            if (keyboard === undefined) {
-                keyboard = true;
-            }
+        init: function(title, class_, size='sm', keyboard=true) {
             this.modal = jQuery('<div/>', {
                 'class': class_ + ' modal fade',
                 'role': 'dialog',

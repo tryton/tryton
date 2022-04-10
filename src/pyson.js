@@ -32,10 +32,7 @@
         types: function() {
             throw 'NotImplementedError';
         },
-        get: function(k, d) {
-            if (d === undefined) {
-                d = '';
-            }
+        get: function(k, d='') {
             return Sao.PYSON.Get(this, k, d);
         },
         in_: function(obj) {
@@ -144,10 +141,7 @@
         return new Sao.PYSON.Eval(value, default_);
     };
     Sao.PYSON.Eval = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(value, default_) {
-            if (default_ === undefined) {
-                default_ = '';
-            }
+        init: function(value, default_='') {
             Sao.PYSON.Eval._super.init.call(this);
             this._value = value;
             this._default = default_;
@@ -409,7 +403,7 @@
         return new Sao.PYSON.Greater(statement1, statement2, equal);
     };
     Sao.PYSON.Greater = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(statement1, statement2, equal) {
+        init: function(statement1, statement2, equal=false) {
             Sao.PYSON.Greater._super.init.call(this);
             var statements = [statement1, statement2];
             for (var i = 0; i < 2; i++) {
@@ -427,9 +421,6 @@
                             'date or datetime';
                     }
                 }
-            }
-            if (equal === undefined) {
-                equal = false;
             }
             if (equal instanceof Sao.PYSON.PYSON) {
                 if (jQuery(equal.types()).not(['boolean']).length ||
@@ -522,7 +513,7 @@
         return new Sao.PYSON.If(condition, then_statement, else_statement);
     };
     Sao.PYSON.If = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(condition, then_statement, else_statement) {
+        init: function(condition, then_statement, else_statement=null) {
             Sao.PYSON.If._super.init.call(this);
             if (condition instanceof Sao.PYSON.PYSON) {
                 if (jQuery(condition.types()).not(['boolean']).length ||
@@ -537,9 +528,6 @@
                 then_types = then_statement.types();
             } else {
                 then_types = [typeof then_statement];
-            }
-            if (else_statement === undefined) {
-                else_statement = null;
             }
             if (else_statement instanceof Sao.PYSON.PYSON) {
                 else_types = else_statement.types();
@@ -590,11 +578,8 @@
         return new Sao.PYSON.Get(obj, key, default_);
     };
     Sao.PYSON.Get = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(obj, key, default_) {
+        init: function(obj, key, default_=null) {
             Sao.PYSON.Get._super.init.call(this);
-            if (default_ === undefined) {
-                default_ = null;
-            }
             if (obj instanceof Sao.PYSON.PYSON) {
                 if (jQuery(obj.types()).not(['object']).length ||
                     jQuery(['object']).not(obj.types()).length) {
@@ -714,16 +699,9 @@
     };
     Sao.PYSON.Date = Sao.class_(Sao.PYSON.PYSON, {
         init: function(
-            year, month, day, delta_years, delta_months, delta_days, start)
-        {
+            year=null, month=null, day=null,
+            delta_years=0, delta_months=0, delta_days=0, start=null) {
             Sao.PYSON.Date._super.init.call(this);
-            if (year === undefined) year = null;
-            if (month === undefined) month = null;
-            if (day === undefined) day = null;
-            if (delta_years === undefined) delta_years = 0;
-            if (delta_months === undefined) delta_months = 0;
-            if (delta_days === undefined) delta_days = 0;
-
             this._test(year, 'year');
             this._test(month, 'month');
             this._test(day, 'day');
@@ -737,7 +715,7 @@
             this._delta_years = delta_years;
             this._delta_months = delta_months;
             this._delta_days = delta_days;
-            this._start = start || null;
+            this._start = start;
         },
         pyson: function() {
             return {
@@ -801,20 +779,14 @@
             delta_minutes, delta_seconds, delta_microseconds);
     };
     Sao.PYSON.DateTime = Sao.class_(Sao.PYSON.Date, {
-        init: function(year, month, day, hour, minute, second, microsecond,
-                  delta_years, delta_months, delta_days, delta_hours,
-                  delta_minutes, delta_seconds, delta_microseconds, start) {
+        init: function(
+            year=null, month=null, day=null,
+            hour=null, minute=null, second=null, microsecond=null,
+            delta_years=0, delta_months=0, delta_days=0, 
+            delta_hours=0, delta_minutes=0, delta_seconds=0,
+            delta_microseconds=0, start=null) {
             Sao.PYSON.DateTime._super.init.call(this, year, month, day,
                 delta_years, delta_months, delta_days, start);
-            if (hour === undefined) hour = null;
-            if (minute === undefined) minute = null;
-            if (second === undefined) second = null;
-            if (microsecond === undefined) microsecond = null;
-            if (delta_hours === undefined) delta_hours = 0;
-            if (delta_minutes === undefined) delta_minutes = 0;
-            if (delta_seconds === undefined) delta_seconds = 0;
-            if (delta_microseconds === undefined) delta_microseconds = 0;
-
             this._test(hour, 'hour');
             this._test(minute, 'minute');
             this._test(second, 'second');
@@ -891,12 +863,8 @@
         return new Sao.PYSON.TimeDelta(days, seconds, microseconds);
     };
     Sao.PYSON.TimeDelta = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(days, seconds, microseconds) {
+        init: function(days=0, seconds=0, microseconds=0) {
             Sao.PYSON.TimeDelta._super.init.call(this);
-            if (days === undefined) days = 0;
-            if (seconds === undefined) seconds = 0;
-            if (microseconds === undefined) microseconds = 0;
-
             function test(value, name) {
                 if (value instanceof Sao.PYSON.TimeDelta) {
                     if (jQuery(value.types()).not(['number']).length)

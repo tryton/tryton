@@ -324,10 +324,7 @@
             this.func = func;
             this.session = session || Sao.Session.current_session;
         },
-        run: function(parameters) {
-            if (parameters === undefined) {
-                parameters = {};
-            }
+        run: function(parameters={}) {
             var dfd = jQuery.Deferred();
             var timeoutID = Sao.common.processing.show();
             var data = this.func(parameters);

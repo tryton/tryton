@@ -145,15 +145,8 @@
         }
     };
 
-    Sao.Action.exec_keyword = function(keyword, data, context, warning,
-            alwaysask)
-    {
-        if (warning === undefined) {
-            warning = true;
-        }
-        if (alwaysask === undefined) {
-            alwaysask = false;
-        }
+    Sao.Action.exec_keyword = function(
+        keyword, data, context, warning=true, alwaysask=false) {
         var actions = [];
         var model_id = data.id;
         var args = {

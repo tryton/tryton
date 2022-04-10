@@ -121,10 +121,7 @@
         return result;
     };
 
-    Sao.common.selection = function(title, values, alwaysask) {
-        if (alwaysask === undefined) {
-            alwaysask = false;
-        }
+    Sao.common.selection = function(title, values, alwaysask=false) {
         var prm = jQuery.Deferred();
         if (jQuery.isEmptyObject(values)) {
             prm.reject();
@@ -625,9 +622,7 @@
         }
     };
 
-    Sao.common.EvalEnvironment = function(parent_, eval_type) {
-        if (eval_type === undefined)
-            eval_type = 'eval';
+    Sao.common.EvalEnvironment = function(parent_, eval_type='eval') {
         var environment;
         if (eval_type == 'eval') {
             environment = parent_.get_eval();
@@ -947,10 +942,7 @@
                     this.stream = stream.split('');
                     this.i = 0;
                 },
-                read: function(length) {
-                    if (length === undefined) {
-                        length = 1;
-                    }
+                read: function(length=1) {
                     if (this.i >= this.stream.length) {
                         return null;
                     }
@@ -1435,10 +1427,7 @@
         is_leaf: function(element) {
             return ((element instanceof Array) && element.clause);
         },
-        ending_clause: function(domain, depth) {
-            if (depth === undefined) {
-                depth = 0;
-            }
+        ending_clause: function(domain, depth=0) {
             if (domain.length === 0) {
                 return [null, depth];
             }
@@ -2075,13 +2064,7 @@
                 return value;
             }
         },
-        format_value: function(field, value, target, context) {
-            if (target === undefined) {
-                target = null;
-            }
-            if (!context) {
-                context = {};
-            }
+        format_value: function(field, value, target=null, context={}) {
             var format_float = function() {
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
@@ -2266,10 +2249,7 @@
             'child_of': function() {return true;},
             'not child_of': function() {return true;}
         },
-        locale_part: function(expression, field_name, locale_name) {
-            if (locale_name === undefined) {
-                locale_name = 'id';
-            }
+        locale_part: function(expression, field_name, locale_name='id') {
             if (expression === field_name) {
                 return locale_name;
             }
@@ -2716,10 +2696,7 @@
                 return new And(domain.slice(begin));
             }
         },
-        domain_inversion: function(domain, symbol, context) {
-            if (context === undefined) {
-                context = {};
-            }
+        domain_inversion: function(domain, symbol, context={}) {
             var expression = this.parse(domain);
             if (!~expression.variables.indexOf(symbol)) {
                 return true;
@@ -4084,10 +4061,7 @@
         else if (i == 5) return [v, p, q];
     };
 
-    Sao.common.generateColorscheme = function(masterColor, keys, light) {
-        if (light === undefined) {
-            light = 0.1;
-        }
+    Sao.common.generateColorscheme = function(masterColor, keys, light=0.1) {
         var rgb = Sao.common.hex2rgb(
             Sao.common.COLOR_SCHEMES[masterColor] || masterColor);
         var hsv = Sao.common.rgb2hsv(rgb);

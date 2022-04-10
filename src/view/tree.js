@@ -339,8 +339,7 @@
                     .append(' ' + optional.attributes.string))));
             });
         },
-        save_optional: function(store) {
-            store = (store === undefined) ? true : store;
+        save_optional: function(store=true) {
             var fields = {};
             this.optionals.forEach(function(column) {
                 fields[column.attributes.name] = !column.get_visible();
@@ -1224,14 +1223,9 @@
             get_selected(this, []);
             return selected_paths;
         },
-        get_expanded_paths: function(starting_path, starting_id_path) {
+        get_expanded_paths: function(
+            starting_path=[], starting_id_path=[]) {
             var id_path, id_paths, row, children_rows, path;
-            if (starting_path === undefined) {
-                starting_path = [];
-            }
-            if (starting_id_path === undefined) {
-                starting_id_path = [];
-            }
             id_paths = [];
             row = this.find_row(starting_path);
             children_rows = row ? row.rows : this.rows;

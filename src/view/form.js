@@ -492,8 +492,7 @@ function eval_pyson(value){
     });
 
     Sao.View.Form.Container = Sao.class_(Object, {
-        init: function(col) {
-            if (col === undefined) col = 4;
+        init: function(col=4) {
             if (col < 0) col = 0;
             this.col = col;
             this.el = jQuery('<table/>', {
@@ -849,9 +848,9 @@ function eval_pyson(value){
             }
             return page;
         },
-        set_current_page: function(page_index) {
+        set_current_page: function(page_index=null) {
             var selector;
-            if (page_index === undefined) {
+            if (page_index === null) {
                 selector = ':visible:first';
             } else {
                 selector = ':eq(' + page_index + '):visible';
@@ -2602,17 +2601,14 @@ function eval_pyson(value){
         id_from_value: function(value) {
             return value;
         },
-        value_from_id: function(id, str) {
-            if (str === undefined) {
-                str = '';
-            }
+        value_from_id: function(id, str='') {
             return [id, str];
         },
         get_model: function() {
             return this.attributes.relation;
         },
-        has_target: function(value) {
-            return value !== undefined && value !== null;
+        has_target: function(value=null) {
+            return value !== null;
         },
         edit: function(evt) {
             var model = this.get_model();
@@ -4724,10 +4720,7 @@ function eval_pyson(value){
                     }.bind(this));
                 }.bind(this));
         },
-        remove: function(key, modified) {
-            if (modified === undefined) {
-                modified = true;
-            }
+        remove: function(key, modified=true) {
             delete this.fields[key];
             this.rows[key].remove();
             delete this.rows[key];

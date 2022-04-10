@@ -849,10 +849,7 @@
                 return this.screen.switch_view();
             }.bind(this));
         },
-        reload: function(test_modified) {
-            if (test_modified === undefined) {
-                test_modified = true;
-            }
+        reload: function(test_modified=true) {
             var reload = function() {
                 return this.screen.cancel_current().then(function() {
                     var set_cursor = false;

@@ -24,10 +24,7 @@
             }
             return added;
         },
-        execute: function(method, params, context, async) {
-            if (context === undefined) {
-                context = {};
-            }
+        execute: function(method, params, context={}, async=true) {
             var args = {
                 'method': 'model.' + this.name + '.' + method,
                 'params': params.concat(context)
@@ -79,8 +76,8 @@
                 this.__readonly = value;
             }
         });
-        array.load = function(ids, modified, position) {
-            if ((position === undefined) || (position == -1)) {
+        array.load = function(ids, modified=false, position=-1) {
+            if (position == -1) {
                 position = this.length;
             }
             var new_records = [];
@@ -138,14 +135,11 @@
             }
             return record;
         };
-        array.add = function(record, position, changed) {
-            if ((position === undefined) || (position == -1)) {
+        array.add = function(record, position=-1, changed=true) {
+            if (position == -1) {
                 position = this.length;
             }
             position = Math.min(position, this.length);
-            if (changed === undefined) {
-                changed = true;
-            }
             if (record.group != this) {
                 record.group = this;
             }
@@ -181,13 +175,8 @@
             }
             return record;
         };
-        array.remove = function(record, remove, modified, force_remove, signal) {
-            if (modified === undefined) {
-                modified = true;
-            }
-            if (signal === undefined) {
-                signal = true;
-            }
+        array.remove = function(
+            record, remove, modified=true, force_remove=false, signal=true) {
             var idx = this.indexOf(record);
             if (record.id >= 0) {
                 if (remove) {
@@ -546,10 +535,10 @@
 
     Sao.Record = Sao.class_(Object, {
         id_counter: -1,
-        init: function(model, id) {
+        init: function(model, id=null) {
             this.model = model;
             this.group = Sao.Group(model, {}, []);
-            if ((id === undefined) || (id === null)) {
+            if (id === null) {
                 this.id = Sao.Record.prototype.id_counter;
             } else {
                 this.id = id;
@@ -582,10 +571,7 @@
                 return false;
             }
         },
-        save: function(force_reload) {
-            if (force_reload === undefined) {
-                force_reload = false;
-            }
+        save: function(force_reload=false) {
             var context = this.get_context();
             var prm = jQuery.when();
             if ((this.id < 0) || this.modified) {
@@ -647,12 +633,9 @@
         is_loaded: function(name) {
             return ((this.id < 0) || (name in this._loaded));
         },
-        load: function(name, async) {
+        load: function(name, async=true) {
             var fname;
             var prm;
-            if (async === undefined) {
-                async = true;
-            }
             if (this.destroyed || this.is_loaded(name)) {
                 if (async) {
                     return jQuery.when();
@@ -790,8 +773,7 @@
             var result = this.model.execute('read', [Object.keys(id2record).map(
                         function (e) { return parseInt(e, 10); }),
                     fnames_to_fetch], context, async);
-            var succeed = function(values, exception) {
-                if (exception === undefined) exception = false;
+            var succeed = function(values, exception=false) {
                 var id2value = {};
                 values.forEach(function(e, i, a) {
                     id2value[e.id] = e;
@@ -846,10 +828,7 @@
                 }
             }
         },
-        set: function(values, validate) {
-            if (validate === undefined) {
-                validate = true;
-            }
+        set: function(values, validate=true) {
             var name, value;
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             var later = {};
@@ -979,13 +958,7 @@
             }
             return jQuery.when();
         },
-        set_default: function(values, validate, display) {
-            if (validate === undefined) {
-                validate = true;
-            }
-            if (display === undefined) {
-                display = true;
-            }
+        set_default: function(values, validate=true, display=true) {
             var promises = [];
             var fieldnames = [];
             for (var fname in values) {
@@ -1644,10 +1617,8 @@
         get_on_change_value: function(record) {
             return this.get_eval(record);
         },
-        set_state: function(record, states) {
-            if (states === undefined) {
-                states = ['readonly', 'required', 'invisible'];
-            }
+        set_state: function(
+            record, states=['readonly', 'required', 'invisible']) {
             var state_changes = record.expr_eval(
                     this.description.states || {});
             states.forEach(function(state) {
@@ -1887,10 +1858,7 @@
 
     Sao.field.Float = Sao.class_(Sao.field.Field, {
         _default: null,
-        digits: function(record, factor) {
-            if (factor === undefined) {
-                factor = 1;
-            }
+        digits: function(record, factor=1) {
             var digits = record.expr_eval(this.description.digits);
             if (typeof(digits) == 'string') {
                 if (!(digits in record.model.fields)) {
@@ -1983,21 +1951,12 @@
             }
             return value;
         },
-        set_client: function(record, value, force_change, factor) {
-            if (factor === undefined) {
-                factor = 1;
-            }
+        set_client: function(record, value, force_change, factor=1) {
             value = this.apply_factor(record, this.convert(value), factor);
             Sao.field.Float._super.set_client.call(this, record, value,
                 force_change);
         },
-        get_client: function(record, factor, grouping) {
-            if (factor === undefined) {
-                factor = 1;
-            }
-            if (grouping === undefined) {
-                grouping = true;
-            }
+        get_client: function(record, factor=1, grouping=true) {
             var value = this.get(record);
             if (value !== null) {
                 var options = {
@@ -2218,10 +2177,7 @@
                 });
             }
         },
-        set: function(record, value, _default) {
-            if (_default === undefined) {
-                _default = false;
-            }
+        set: function(record, value, _default=false) {
             var group = record._values[this.name];
             var model;
             if (group !== undefined) {
