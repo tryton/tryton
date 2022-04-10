@@ -101,9 +101,9 @@
             this.but_bookmark.click(function() {
                 dropdown_bookmark.empty();
                 var bookmarks = this.bookmarks();
-                for (var i=0; i < bookmarks.length; i++) {
-                    var name = bookmarks[i][1];
-                    var domain = bookmarks[i][2];
+                for (const bookmark of bookmarks) {
+                    const name = bookmark[1];
+                    const domain = bookmark[2];
                     jQuery('<li/>', {
                         'role': 'presentation'
                     })
@@ -228,11 +228,11 @@
             var completions = this.screen.domain_parser.completion(
                     this.get_text());
             this.search_list.empty();
-            completions.forEach(function(e) {
+            for (const e of completions) {
                 jQuery('<option/>', {
                     'value': e.trim()
                 }).appendTo(this.search_list);
-            }, this);
+            }
         },
         set_star: function(star) {
             var img = this.but_star.children('img');
@@ -306,12 +306,12 @@
                         current_text);
                 var star = this.get_star();
                 var bookmarks = this.bookmarks();
-                for (var i=0; i < bookmarks.length; i++) {
-                    var id = bookmarks[i][0];
-                    var name = bookmarks[i][1];
-                    var domain = bookmarks[i][2];
-                    var access = bookmarks[i][3];
-                    var text = this.screen.domain_parser.string(domain);
+                for (const bookmark of bookmarks) {
+                    const id = bookmark[0];
+                    const name = bookmark[1];
+                    const domain = bookmark[2];
+                    const access = bookmark[3];
+                    const text = this.screen.domain_parser.string(domain);
                     if ((text === current_text) ||
                             (Sao.common.compare(domain, current_domain))) {
                         this.set_star(true);
@@ -428,10 +428,10 @@
                 this.search_modal.modal('hide');
                 var text = '';
                 var quote = domain_parser.quote.bind(domain_parser);
-                for (var i = 0; i < this.search_form.fields.length; i++) {
-                    var label = this.search_form.fields[i][0];
-                    var entry = this.search_form.fields[i][1];
-                    var value;
+                for (const field of this.search_form.fields) {
+                    const label = field[0];
+                    const entry = field[1];
+                    let value;
                     if ((entry instanceof Sao.ScreenContainer.Between) ||
                         (entry instanceof Sao.ScreenContainer.Selection)) {
                         value = entry.get_value(quote);
@@ -459,36 +459,17 @@
                 });
 
                 var fields = [];
-                var field;
                 for (var f in domain_parser.fields) {
-                    field = domain_parser.fields[f];
+                    const field = domain_parser.fields[f];
                     if ((field.searchable || field.searchable === undefined) &&
                         !field.name.contains('.')) {
                         fields.push(field);
                     }
                 }
 
-                var boolean_option = function(input) {
-                    return function(e) {
-                        jQuery('<option/>', {
-                            value: e,
-                            text: e
-                        }).appendTo(input);
-                    };
-                };
-                var selection_option = function(input) {
-                    return function(s) {
-                        jQuery('<option/>', {
-                            value: s[1],
-                            text: s[1]
-                        }).appendTo(input);
-                    };
-                };
-
                 var prefix = 'filter-' + this.screen.model_name + '-';
                 this.search_form.fields = [];
-                for (var i = 0; i < fields.length; i++) {
-                    field = fields[i];
+                for (const field of fields) {
                     var form_group = jQuery('<div/>', {
                         'class': 'form-group form-group-sm'
                     }).append(jQuery('<label/>', {
@@ -506,10 +487,15 @@
                                 'class': 'form-control input-sm',
                                 id: prefix + field.name
                             });
-                            ['',
-                            Sao.i18n.gettext('True'),
-                            Sao.i18n.gettext('False')].forEach(
-                                    boolean_option(input));
+                            for (const e of [
+                                '',
+                                Sao.i18n.gettext('True'),
+                                Sao.i18n.gettext('False')]) {
+                                jQuery('<option/>', {
+                                    value: e,
+                                    text: e
+                                }).appendTo(input);
+                            }
                             break;
                         case 'selection':
                         case 'multiselection':
@@ -775,12 +761,12 @@
                 multiple: true,
                 id: id
             });
-            selections.forEach(function(s) {
+            for (const s of selections) {
                 jQuery('<option/>', {
                     value: s[1],
                     text: s[1]
                 }).appendTo(this.el);
-            }.bind(this));
+            }
         },
         get_value: function(quote) {
             var value = this.el.val();
@@ -1232,12 +1218,11 @@
                 this.current_record = null;
             }
             this.group.add_fields(fields);
-            var views_add = function(view) {
-                this.group.model.fields[name].views.add(view);
-            }.bind(this);
             for (name in fields_views) {
                 var views = fields_views[name];
-                views.forEach(views_add);
+                for (const view of views) {
+                    this.group.model.fields[name].views.add(view);
+                }
             }
             this.group.exclude_field = this.exclude_field;
         },
@@ -1250,35 +1235,35 @@
             this.set_group(group);
         },
         record_modified: function(display=true) {
-            this.windows.forEach(function(window_) {
+            for (const window_ of this.windows) {
                 if (window_.record_modified) {
                     window_.record_modified();
                 }
-            });
+            }
             if (display) {
                 return this.display();
             }
         },
         record_message: function(position, size, max_size, record_id) {
-            this.windows.forEach(function(window_) {
+            for (const window_ of this.windows) {
                 if (window_.record_message) {
                     window_.record_message(position, size, max_size, record_id);
                 }
-            });
+            }
         },
         record_saved: function() {
-            this.windows.forEach(function(window_) {
+            for (const window_ of this.windows) {
                 if (window_.record_saved) {
                     window_.record_saved();
                 }
-            });
+            }
         },
         update_resources: function(resources) {
-            this.windows.forEach(function(window_) {
+            for (const window_ of this.windows) {
                 if (window_.update_resources) {
                     window_.update_resources(resources);
                 }
-            });
+            }
         },
         has_update_resources: function() {
             return this.windows.some(function(window_) {
@@ -1345,11 +1330,11 @@
                         ~['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type));
                 deferreds.push(search_prm);
-                for (var i = 0; i < this.views.length; i++) {
-                    if (this.views[i] &&
-                        ((this.views[i] == this.current_view) ||
-                            this.views[i].el.parent().length)) {
-                        deferreds.push(this.views[i].display());
+                for (const view of this.views) {
+                    if (view &&
+                        ((view == this.current_view) ||
+                            view.el.parent().length)) {
+                        deferreds.push(view.display());
                     }
                 }
             }
@@ -1639,9 +1624,9 @@
         },
         unremove: function() {
             var records = this.current_view.selected_records;
-            records.forEach(function(record) {
+            for (const record of records) {
                 record.group.unremove(record);
-            });
+            }
         },
         remove: function(delete_, remove, force_remove, records) {
             var prm = jQuery.when();
@@ -1658,14 +1643,14 @@
             var idx = top_group.indexOf(top_record);
             var path = top_record.get_path(this.group);
             return prm.then(function() {
-                records.forEach(function(record) {
+                for (const record of records) {
                     record.group.remove(record, remove, true, force_remove, false);
-                });
+                }
                 // trigger changed only once
                 records[0].group.record_modified();
                 var prms = [];
                 if (delete_) {
-                    records.forEach(function(record) {
+                    for (const record of records) {
                         if (record.group.parent) {
                             prms.push(record.group.parent.save(false));
                         }
@@ -1678,7 +1663,7 @@
                                 record.group.record_removed.indexOf(record), 1);
                         }
                         // TODO destroy
-                    });
+                    }
                 }
                 if (idx > 0) {
                     var record = top_group[idx - 1];
@@ -1767,11 +1752,11 @@
                         // take only the first definition
                         if (!(name in dom_fields)) {
                             dom_fields[name] = fields[name];
-                            ['string', 'factor'].forEach(function(attr) {
+                            for (const attr of ['string', 'factor']) {
                                 if (node.getAttribute(attr)) {
                                     dom_fields[name][attr] = node.getAttribute(attr);
                                 }
-                            });
+                            }
                         }
                         var symbol = node.getAttribute('symbol');
                         if (symbol && !(symbol in dom_fields)) {
@@ -1789,27 +1774,25 @@
             }
 
             // Add common fields
-            [
+            const common_fields = new Map([
                 ['id', Sao.i18n.gettext('ID'), 'integer'],
                 ['create_uid', Sao.i18n.gettext('Created by'), 'many2one'],
                 ['create_date', Sao.i18n.gettext('Created at'), 'datetime'],
                 ['write_uid', Sao.i18n.gettext('Modified by'), 'many2one'],
                 ['write_date', Sao.i18n.gettext('Modified at'), 'datetime']
-                    ] .forEach(function(e) {
-                        var name = e[0];
-                        var string = e[1];
-                        var type = e[2];
-                        if (!(name in fields)) {
-                            fields[name] = {
-                                'string': string,
-                                'name': name,
-                                'type': type
-                            };
-                            if (type == 'datetime') {
-                                fields[name].format = '"%H:%M:%S"';
-                            }
-                        }
-                    });
+            ]);
+            for (const [name, string, type] of common_fields) {
+                if (!(name in fields)) {
+                    fields[name] = {
+                        'string': string,
+                        'name': name,
+                        'type': type
+                    };
+                    if (type == 'datetime') {
+                        fields[name].format = '"%H:%M:%S"';
+                    }
+                }
+            }
 
             domain_parser = new Sao.common.DomainParser(fields, this.context);
             this._domain_parser[view_id] = domain_parser;
@@ -1820,9 +1803,9 @@
             var change_with = props.selection_change_with;
             if (!jQuery.isEmptyObject(change_with)) {
                 var values = {};
-                change_with.forEach(function(p) {
+                for (const p of change_with) {
                     values[p] = null;
-                });
+                }
                 selection = this.model.execute(props.selection,
                         [values], undefined, false);
             } else {
@@ -1857,32 +1840,30 @@
             var domain_parser = new Sao.common.DomainParser(fields_desc);
             var fields = [];
             var invalid_fields = record.invalid_fields();
-            Object.keys(invalid_fields).sort().forEach(
-                function(field) {
-                    var invalid = invalid_fields[field];
-                    var string = record.model.fields[field].description.string;
-                    if ((invalid == 'required') ||
-                            (Sao.common.compare(invalid,
-                                                [[field, '!=', null]]))) {
-                        fields.push(Sao.i18n.gettext(
-                                '"%1" is required.', string));
-                    } else if (invalid == 'domain') {
-                        fields.push(Sao.i18n.gettext(
-                                '"%1" is not valid according to its domain.',
-                            string));
-                    } else if (invalid == 'children') {
-                        fields.push(Sao.i18n.gettext(
-                                'The values of "%1" are not valid.', string));
+            for (const field of Object.keys(invalid_fields).sort()) {
+                var invalid = invalid_fields[field];
+                var string = record.model.fields[field].description.string;
+                if ((invalid == 'required') ||
+                    (Sao.common.compare(invalid, [[field, '!=', null]]))) {
+                    fields.push(Sao.i18n.gettext(
+                        '"%1" is required.', string));
+                } else if (invalid == 'domain') {
+                    fields.push(Sao.i18n.gettext(
+                        '"%1" is not valid according to its domain.',
+                        string));
+                } else if (invalid == 'children') {
+                    fields.push(Sao.i18n.gettext(
+                        'The values of "%1" are not valid.', string));
+                } else {
+                    if (domain_parser.stringable(invalid)) {
+                        fields.push(domain_parser.string(invalid));
                     } else {
-                        if (domain_parser.stringable(invalid)) {
-                            fields.push(domain_parser.string(invalid));
-                        } else {
-                            fields.push(Sao.i18n.gettext(
-                                    '"%1" is not valid according to its domain.'),
-                                string);
-                        }
+                        fields.push(Sao.i18n.gettext(
+                            '"%1" is not valid according to its domain.'),
+                            string);
                     }
-                });
+                }
+            }
             if (fields.length > 5) {
                 fields.splice(5, fields.length);
                 fields.push('...');
@@ -1922,7 +1903,7 @@
                 return [];
             }
             var buttons = this.current_view.get_buttons();
-            selected_records.forEach(function(record) {
+            for (const record of selected_records) {
                 buttons = buttons.filter(function(button) {
                     if (button.attributes.type === 'instance') {
                         return false;
@@ -1931,7 +1912,7 @@
                         button.attributes.states || {});
                     return !(states.invisible || states.readonly);
                 });
-            });
+            }
             return buttons;
         },
         button: function(attributes) {
@@ -1963,9 +1944,8 @@
                     record.validate(fields);
                 }.bind(this);
             }.bind(this);
-            for (var i = 0; i < selected_records.length; i++) {
-                var record = selected_records[i];
-                var domain = record.expr_eval(
+            for (const record of selected_records) {
+                const domain = record.expr_eval(
                     (attributes.states || {})).pre_validate || [];
                 prms.push(record.validate(fields, false, domain));
             }
@@ -1996,10 +1976,10 @@
                             this.context).then(function(changes) {
                             record.set_on_change(changes);
                             record.set_modified();
-                            record.group.root_group.screens.forEach(
-                                function(screen) {
-                                    screen.display();
-                            });
+                            for (const screen of
+                                record.group.root_group.screens) {
+                                screen.display();
+                            }
                         });
                     } else {
                         return record.save(false).then(function() {
@@ -2248,8 +2228,8 @@
                     return view.display(selected_nodes, expanded_nodes);
                 } else {
                     if (!jQuery.isEmptyObject(selected_nodes)) {
-                        for (var i = 0; i < selected_nodes[0].length; i++) {
-                            var new_record = this.group.get(selected_nodes[0][i]);
+                        for (const id of selected_nodes[0]) {
+                            const new_record = this.group.get(id);
                             if (!new_record) {
                                 break;
                             } else {

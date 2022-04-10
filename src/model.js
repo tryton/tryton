@@ -81,10 +81,8 @@
                 position = this.length;
             }
             var new_records = [];
-            var i, len;
-            for (i = 0, len = ids.length; i < len; i++) {
-                var id = ids[i];
-                var new_record = this.get(id);
+            for (const id of ids) {
+                let new_record = this.get(id);
                 if (!new_record) {
                     new_record = new Sao.Record(this.model, id);
                     new_record.group = this;
@@ -95,33 +93,29 @@
             }
             // Remove previously removed or deleted records
             var record_removed = [];
-            var record;
-            for (i = 0, len = this.record_removed.length; i < len; i++) {
-                record = this.record_removed[i];
+            for (const record of this.record_removed) {
                 if (!~ids.indexOf(record.id)) {
                     record_removed.push(record);
                 }
             }
             this.record_removed = record_removed;
             var record_deleted = [];
-            for (i = 0, len = this.record_deleted.length; i < len; i++) {
-                record = this.record_deleted[i];
+            for (const record of this.record_deleted) {
                 if (!~ids.indexOf(record.id)) {
                     record_deleted.push(record);
                 }
             }
             this.record_deleted = record_deleted;
             if (new_records.length && modified) {
-                new_records.forEach(function(record) {
+                for (const record of new_records) {
                     record.modified_fields.id = true;
-                });
+                }
                 this.record_modified();
             }
         };
         array.get = function(id) {
             // TODO optimize
-            for (var i = 0, len = this.length; i < len; i++) {
-                var record = this[i];
+            for (const record of this) {
                 if (record.id == id) {
                     return record;
                 }
@@ -226,9 +220,9 @@
         };
         array.record_modified = function() {
             if (!this.parent) {
-                this.screens.forEach(function(screen) {
+                for (const screen of this.screens) {
                     screen.record_modified();
-                });
+                }
             } else {
                 this.parent.modified_fields[this.child_name] = true;
                 this.parent.model.fields[this.child_name].changed(this.parent);
@@ -252,16 +246,16 @@
             });
             var context = this.context;
             context._timestamp = {};
-            records.forEach(function(record) {
+            for (const record of records) {
                 jQuery.extend(context._timestamp, record.get_timestamp());
-            });
+            }
             var record_ids = records.map(function(record) {
                 return record.id;
             });
             return root_group.on_write_ids(record_ids).then(function(reload_ids) {
-                records.forEach(function(record) {
+                for (const record of records) {
                     record.destroy();
-                });
+                }
                 reload_ids = reload_ids.filter(function(e) {
                     return !~record_ids.indexOf(e);
                 });
@@ -288,9 +282,9 @@
                 deferreds.push(record.save());
             });
             if (!jQuery.isEmptyObject(this.record_deleted)) {
-                this.record_deleted.forEach(function(record) {
+                for (const record of this.record_deleted) {
                     this._remove(record);
-                }.bind(this));
+                }
                 deferreds.push(this.delete_(this.record_deleted));
                 this.record_deleted.splice(0, this.record_deleted.length);
             }
@@ -308,15 +302,15 @@
             }.bind(this));
         };
         array.reload = function(ids) {
-            this.children.forEach(function(child) {
+            for (const child of this.children) {
                 child.reload(ids);
-            });
-            ids.forEach(function(id) {
-                var record = this.get(id);
+            }
+            for (const id of ids) {
+                const record = this.get(id);
                 if (record && jQuery.isEmptyObject(record.modified_fields)) {
                     record.cancel();
                 }
-            }.bind(this));
+            }
         };
         array.on_write_ids = function(ids) {
             var deferreds = [];
@@ -346,17 +340,17 @@
                 return;
             }
             var new_ = [];
-            this.forEach(function(record) {
+            for (const record of this) {
                 if (record.id < 0) {
                     new_.push(record);
                 }
-            });
+            }
             if (new_.length && added.length) {
                 this.model.execute('default_get', [added, this.context])
                     .then(function(values) {
-                        new_.forEach(function(record) {
+                        for (const record of new_) {
                             record.set_default(values, true, false);
-                        });
+                        }
                         this.record_modified();
                     }.bind(this));
             }
@@ -373,11 +367,11 @@
         Object.defineProperty(array, 'domain', {
             get: function() {
                 var domain = [];
-                this.screens.forEach(function(screen) {
+                for (const screen of this.screens) {
                     if (screen.attributes.domain) {
                         domain.push(screen.attributes.domain);
                     }
-                });
+                }
                 if (this.parent && this.child_name) {
                     var field = this.parent.model.fields[this.child_name];
                     return [domain, field.get_domain(this.parent)];
@@ -487,8 +481,7 @@
             } else {
                 cmp = function(a, b) { return a < b; };
             }
-            for (var i=0; i < this.length; i++) {
-                record = this[i];
+            for (const record of this) {
                 if (record.get_loaded([field]) || changed || record.id < 0) {
                     if (prev) {
                         index = prev.field_get(field);
@@ -656,15 +649,14 @@
             if (name == '*') {
                 loading = 'eager';
                 views = new Set();
-                var views_add = function(view) {
-                    views.add(view);
-                };
                 for (fname in this.model.fields) {
                     field = this.model.fields[fname];
                     if ((field.description.loading || 'eager') == 'lazy') {
                         loading = 'lazy';
                     }
-                    field.views.forEach(views_add);
+                    for (const view of field.views) {
+                        views.add(view);
+                    }
                 }
             } else {
                 loading = this.model.fields[name].description.loading || 'eager';
@@ -694,8 +686,7 @@
             }
             var fnames_to_fetch = fnames.slice();
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
-            for (var i in fnames) {
-                fname = fnames[i];
+            for (const fname of fnames) {
                 var fdescription = this.model.fields[fname].description;
                 if (~rec_named_fields.indexOf(fdescription.type))
                     fnames_to_fetch.push(fname + '.rec_name');
@@ -775,9 +766,9 @@
                     fnames_to_fetch], context, async);
             var succeed = function(values, exception=false) {
                 var id2value = {};
-                values.forEach(function(e, i, a) {
+                for (const e of values) {
                     id2value[e.id] = e;
-                });
+                }
                 for (var id in id2record) {
                     if (!id2record.hasOwnProperty(id)) {
                         continue;
@@ -805,8 +796,8 @@
                     default_values = {
                         id: id
                     };
-                    for (var i in fnames_to_fetch) {
-                        default_values[fnames_to_fetch[i]] = null;
+                    for (const fname of fnames_to_fetch) {
+                        default_values[fname] = null;
                     }
                     failed_values.push(default_values);
                 }
@@ -1043,27 +1034,27 @@
         _get_on_change_args: function(args) {
             var result = {};
             var values = Sao.common.EvalEnvironment(this, 'on_change');
-            args.forEach(function(arg) {
+            for (const arg of args) {
                 var scope = values;
-                arg.split('.').forEach(function(e) {
+                for (const e of arg.split('.')) {
                     if (scope !== undefined) {
                         scope = scope[e];
                     }
-                });
+                }
                 result[arg] = scope;
-            });
+            }
             return result;
         },
         on_change: function(fieldnames) {
             var values = {};
-            fieldnames.forEach(function(fieldname) {
+            for (const fieldname of fieldnames) {
                 var on_change = this.model.fields[fieldname]
                 .description.on_change;
                 if (!jQuery.isEmptyObject(on_change)) {
                     values = jQuery.extend(values,
                         this._get_on_change_args(on_change));
                 }
-            }.bind(this));
+            }
             if (!jQuery.isEmptyObject(values)) {
                 var changes;
                 try {
@@ -1294,11 +1285,11 @@
         get_loaded: function(fields) {
             if (!jQuery.isEmptyObject(fields)) {
                 var result = true;
-                fields.forEach(function(field) {
+                for (const field of fields) {
                     if (!(field in this._loaded) && !(field in this.modified_fields)) {
                         result = false;
                     }
-                }.bind(this));
+                }
                 return result;
             }
             return Sao.common.compare(Object.keys(this.model.fields).sort(),
@@ -1454,8 +1445,7 @@
         },
         destroy: function() {
             var vals = Object.values(this._values);
-            for (var i=0; i < vals.length; i++) {
-                var val = vals[i];
+            for (const val of vals) {
                 if (val && val.hasOwnProperty('destroy')) {
                     val.destroy();
                 }
@@ -1621,9 +1611,9 @@
             record, states=['readonly', 'required', 'invisible']) {
             var state_changes = record.expr_eval(
                     this.description.states || {});
-            states.forEach(function(state) {
+            for (const state of states) {
                 if ((state == 'readonly') && this.description.readonly) {
-                    return;
+                    continue;
                 }
                 if (state_changes[state] !== undefined) {
                     this.get_state_attrs(record)[state] = state_changes[state];
@@ -1631,7 +1621,7 @@
                     this.get_state_attrs(record)[state] =
                         this.description[state];
                 }
-            }.bind(this));
+            }
             if (record.group.readonly ||
                     this.get_state_attrs(record).domain_readonly) {
                 this.get_state_attrs(record).readonly = true;
@@ -1707,11 +1697,10 @@
                         var localpart = leftpart.split('.', 1)[1];
                         var constraintfields = [];
                         if (domain_readonly) {
-                            inversion.localize_domain(
-                                    original_domain.slice(1))
-                                .forEach(function(leaf) {
-                                    constraintfields.push(leaf);
-                                });
+                            for (const leaf of inversion.localize_domain(
+                                original_domain.slice(1))) {
+                                constraintfields.push(leaf);
+                            }
                         }
                         if ((localpart != 'id') ||
                                 !~constraintfields.indexOf(recordpart)) {
@@ -2124,17 +2113,14 @@
             if (mode == 'list values') {
                 var context = this.get_context(record);
                 var field_names = {};
-                value.forEach(function(val) {
-                    for (var fieldname in val) {
-                        if (!val.hasOwnProperty(fieldname)) {
-                            continue;
-                        }
+                for (const val of value) {
+                    for (var fieldname of val) {
                         if (!(fieldname in group.model.fields) &&
                                 (!~fieldname.indexOf('.'))) {
                             field_names[fieldname] = true;
                         }
                     }
-                });
+                }
                 if (!jQuery.isEmptyObject(field_names)) {
                     var args = {
                         'method': 'model.' + this.description.relation +
@@ -2152,19 +2138,17 @@
             }
             if (mode == 'list ids') {
                 var records_to_remove = [];
-                for (var i = 0, len = group.length; i < len; i++) {
-                    var old_record = group[i];
+                for (const old_record of group) {
                     if (!~value.indexOf(old_record.id)) {
                         records_to_remove.push(old_record);
                     }
                 }
-                for (i = 0, len = records_to_remove.length; i < len; i++) {
-                    var record_to_remove = records_to_remove[i];
+                for (const record_to_remove of records_to_remove) {
                     group.remove(record_to_remove, true, true, false, false);
                 }
                 group.load(value, modified || default_);
             } else {
-                value.forEach(function(vals) {
+                for (const vals of value) {
                     var new_record = group.new_(false);
                     if (default_) {
                         // Don't validate as parent will validate
@@ -2174,7 +2158,7 @@
                         new_record.set(vals);
                         group.push(new_record);
                     }
-                });
+                }
             }
         },
         set: function(record, value, _default=false) {
@@ -2204,8 +2188,7 @@
             var to_add = [];
             var to_create = [];
             var to_write = [];
-            for (var i = 0, len = group.length; i < len; i++) {
-                var record2 = group[i];
+            for (const record2 of group) {
                 if (~record_removed.indexOf(record2) ||
                         ~record_deleted.indexOf(record2)) {
                     continue;
@@ -2287,29 +2270,29 @@
             if (value instanceof Array) {
                 return this._set_value(record, value, false, true);
             }
+            var new_field_names = {};
             if (value.add || value.update) {
                 var context = this.get_context(record);
                 fields = record._values[this.name].model.fields;
-                var new_field_names = {};
                 var adding_values = [];
                 if (value.add) {
-                    for (var i=0; i < value.add.length; i++) {
-                        adding_values.push(value.add[i][1]);
+                    for (const add of value.add) {
+                        adding_values.push(add[1]);
                     }
                 }
-                [adding_values, value.update].forEach(function(l) {
+                for (const l of [adding_values, value.update]) {
                     if (!jQuery.isEmptyObject(l)) {
-                        l.forEach(function(v) {
-                            Object.keys(v).forEach(function(f) {
+                        for (const v of l) {
+                            for (const f of Object.keys(v)) {
                                 if (!(f in fields) &&
                                     (f != 'id') &&
                                     (!~f.indexOf('.'))) {
                                         new_field_names[f] = true;
                                     }
-                            });
-                        });
+                            }
+                        }
                     }
-                });
+                }
                 if (!jQuery.isEmptyObject(new_field_names)) {
                     var args = {
                         'method': 'model.' + this.description.relation +
@@ -2328,31 +2311,31 @@
 
             var group = record._values[this.name];
             if (value.delete) {
-                value.delete.forEach(function(record_id) {
-                    var record2 = group.get(record_id);
+                for (const record_id of value.delete) {
+                    const record2 = group.get(record_id);
                     if (record2) {
                         group.remove(record2, false, true, false, false);
                     }
-                }.bind(this));
+                }
             }
             if (value.remove) {
-                value.remove.forEach(function(record_id) {
-                    var record2 = group.get(record_id);
+                for (const record_id of value.remove) {
+                    const record2 = group.get(record_id);
                     if (record2) {
                         group.remove(record2, true, true, false, false);
                     }
-                }.bind(this));
+                }
             }
 
             if (value.add || value.update) {
                 // First set already added fields to prevent triggering a
                 // second on_change call
                 if (value.update) {
-                    value.update.forEach(function(vals) {
+                    for (const vals of value.update) {
                         if (!vals.id) {
-                            return;
+                            continue;
                         }
-                        var record2 = group.get(vals.id);
+                        const record2 = group.get(vals.id);
                         if (record2) {
                             var vals_to_set = {};
                             for (var key in vals) {
@@ -2362,16 +2345,16 @@
                             }
                             record2.set_on_change(vals_to_set);
                         }
-                    });
+                    }
                 }
 
                 group.add_fields(new_fields);
                 if (value.add) {
-                    value.add.forEach(function(vals) {
-                        var new_record;
-                        var index = vals[0];
-                        var data = vals[1];
-                        var id_ = data.id;
+                    for (const vals of value.add) {
+                        let new_record;
+                        const index = vals[0];
+                        const data = vals[1];
+                        const id_ = data.id;
                         delete data.id;
                         if (id_) {
                             new_record = group.get(id_);
@@ -2381,18 +2364,18 @@
                         }
                         group.add(new_record, index, false);
                         new_record.set_on_change(data);
-                    });
+                    }
                 }
                 if (value.update) {
-                    value.update.forEach(function(vals) {
+                    for (const vals of value.update) {
                         if (!vals.id) {
-                            return;
+                            continue;
                         }
-                        var record2 = group.get(vals.id);
+                        const record2 = group.get(vals.id);
                         if (record2) {
                             record2.set_on_change(vals);
                         }
-                    });
+                    }
                 }
             }
         },
@@ -2420,11 +2403,10 @@
             var records = group.filter(function(record) {
                 return record.modified;
             });
-            var record2;
-            jQuery.extend(records, group.record_removed, group.record_deleted)
-            .forEach(function(record) {
+            for (const record of jQuery.extend(
+                records, group.record_removed, group.record_deleted)) {
                 jQuery.extend(timestamps, record.get_timestamp());
-            });
+            }
             return timestamps;
         },
         get_eval: function(record) {
@@ -2434,9 +2416,7 @@
 
             var record_removed = group.record_removed;
             var record_deleted = group.record_deleted;
-            for (var i = 0, len = record._values[this.name].length; i < len;
-                    i++) {
-                var record2 = group[i];
+            for (const record2 of group) {
                 if (~record_removed.indexOf(record2) ||
                         ~record_deleted.indexOf(record2))
                     continue;
@@ -2448,9 +2428,7 @@
             var result = [];
             var group = record._values[this.name];
             if (group === undefined) return result;
-            for (var i = 0, len = record._values[this.name].length; i < len;
-                    i++) {
-                var record2 = group[i];
+            for (const record2 of group) {
                 if (!record2.deleted && !record2.removed)
                     result.push(record2.get_on_change_value(
                                 [this.description.relation_field || '']));
@@ -2485,9 +2463,7 @@
                     ldomain = [['id', '=', null]];
                 }
             }
-            for (var i = 0, len = (record._values[this.name] || []).length;
-                    i < len; i++) {
-                var record2 = record._values[this.name][i];
+            for (const record2 of (record._values[this.name] || [])) {
                 if (!record2.get_loaded() && (record2.id >= 0) &&
                         !pre_validate) {
                     continue;
@@ -2775,8 +2751,7 @@
 
             keys = jQuery.extend([], keys);
             var update_keys = function(values) {
-                for (var i = 0, len = values.length; i < len; i++) {
-                    var k = values[i];
+                for (const k of values) {
                     this.keys[k.name] = k;
                 }
             }.bind(this);
@@ -2797,10 +2772,10 @@
             return this.schema_model.execute('get_keys', [ids], context)
                 .then(function(new_fields) {
                     var names = [];
-                    new_fields.forEach(function(new_field) {
+                    for (const new_field of new_fields) {
                         this.keys[new_field.name] = new_field;
                         names.push(new_field.name);
-                    }.bind(this));
+                    }
                     return names;
                 }.bind(this));
         },

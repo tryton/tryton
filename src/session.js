@@ -286,12 +286,12 @@
                 el = dialog.database_input;
             } else {
                 el = dialog.database_select;
-                databases.forEach(function(database) {
+                for (const database of databases) {
                     el.append(jQuery('<option/>', {
                         'value': database,
                         'text': database
                     }));
-                });
+                }
             }
             el.prop('readonly', databases.length == 1);
             el.show();

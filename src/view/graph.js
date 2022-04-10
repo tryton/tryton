@@ -12,8 +12,7 @@
         },
         _node_attributes: function(node) {
             var node_attrs = {};
-            for (var i = 0, len = node.attributes.length; i < len; i++) {
-                var attribute = node.attributes[i];
+            for (const attribute of node.attributes) {
                 node_attrs[attribute.name] = attribute.value;
             }
             if (node_attrs.name) {
@@ -25,9 +24,9 @@
             return node_attrs;
         },
         _parse_graph: function(node, attributes) {
-            [].forEach.call(node.childNodes, function(child) {
+            for (const child of node.childNodes) {
                 this.parse(child);
-            }.bind(this));
+            }
             var Widget = Sao.View.GraphXMLViewParser.WIDGETS[
                 attributes.type || 'vbar'];
             var widget = new Widget(this.view, this._xfield, this._yfields);
@@ -35,13 +34,13 @@
             this.view.widgets.root = widget;
         },
         _parse_x: function(node, attributes) {
-            for (var i = 0; i < node.children.length; i++) {
-                this._xfield = this._node_attributes(node.children[i]);
+            for (const child of node.children) {
+                this._xfield = this._node_attributes(child);
             }
         },
         _parse_y: function(node, attributes) {
-            for (var i = 0; i < node.children.length; i++) {
-                this._yfields.push(this._node_attributes(node.children[i]));
+            for (const child of node.children) {
+                this._yfields.push(this._node_attributes(child));
             }
         }
     });
@@ -142,16 +141,13 @@
                     }
                 }.bind(this);
             }.bind(this);
-            var load_field = function(record) {
-                return function(fname) {
-                    prms.push(record.load(fname));
-                };
-            };
 
             var r_prms = [];
             for (i = 0, len = group.length; i < len; i++) {
                 record = group[i];
-                fields2load.forEach(load_field(group[i]));
+                for (const fname of fields2load) {
+                    prms.push(record.load(fname));
+                }
                 r_prms.push(
                         jQuery.when.apply(jQuery, prms).then(set_data(i)));
             }

@@ -311,8 +311,7 @@
 
     Sao.PYSON.And.eval_ = function(value, context) {
         var result = true;
-        for (var i = 0, len = value.s.length; i < len; i++) {
-            var statement = value.s[i];
+        for (const statement of value.s) {
             result = result && statement;
         }
         return result;
@@ -335,8 +334,7 @@
 
     Sao.PYSON.Or.eval_ = function(value, context) {
         var result = false;
-        for (var i = 0, len = value.s.length; i < len; i++) {
-            var statement = value.s[i];
+        for (const statement of value.s) {
             result = result || statement;
         }
         return result;

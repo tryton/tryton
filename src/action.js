@@ -63,10 +63,10 @@
                 if (!jQuery.isEmptyObject(action.views)) {
                     params.view_ids = [];
                     params.mode = [];
-                    action.views.forEach(function(x) {
-                        params.view_ids.push(x[0]);
-                        params.mode.push(x[1]);
-                    });
+                    for (const view of action.views) {
+                        params.view_ids.push(view[0]);
+                        params.mode.push(view[1]);
+                    }
                 } else if (!jQuery.isEmptyObject(action.view_id)) {
                     params.view_ids = [action.view_id[0]];
                 }
@@ -94,10 +94,10 @@
                 params.search_value = decoder.decode(
                     action.pyson_search_value || '[]');
                 params.tab_domain = [];
-                action.domains.forEach(function(element, index) {
+                for (const element of action.domains) {
                     params.tab_domain.push(
                         [element[0], decoder.decode(element[1]), element[2]]);
-                });
+                }
                 name_prm = jQuery.when(action.name);
                 params.model = action.res_model || data.res_model;
                 params.res_id = action.res_id || data.res_id;

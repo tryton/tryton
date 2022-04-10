@@ -42,8 +42,8 @@
             new this.xml_parser(this, null, {}).parse(xml.children()[0]);
 
             actions_prms = [];
-            for (var i = 0, len = this.actions.length; i < len; i++) {
-                actions_prms.push(this.actions[i].action_prm);
+            for (const action of this.actions) {
+                actions_prms.push(action.action_prm);
             }
             this.actions_prms = jQuery.when.apply(jQuery, actions_prms);
         },
@@ -57,12 +57,11 @@
             }
         },
         active_changed: function(event_action) {
-            this.actions.forEach(function(action) {
-                if (action === event_action) {
-                    return;
+            for (const action of this.actions) {
+                if (action !== event_action) {
+                    action.update_domain(this.actions);
                 }
-                action.update_domain(this.actions);
-            });
+            }
         },
     });
 
@@ -94,10 +93,10 @@
                 if (!jQuery.isEmptyObject(action.views)) {
                     params.view_ids = [];
                     params.mode = [];
-                    action.views.forEach(function(x) {
-                        params.view_ids.push(x[0]);
-                        params.mode.push(x[1]);
-                    });
+                    for (const view of action.views) {
+                        params.view_ids.push(view[0]);
+                        params.mode.push(view[1]);
+                    }
                 } else if (!jQuery.isEmptyObject(action.view_id)) {
                     params.view_ids = [action.view_id[0]];
                 }
@@ -120,10 +119,10 @@
                 params.search_value = decoder.decode(
                     action.pyson_search_value || '[]');
                 params.tab_domain = [];
-                action.domains.forEach(function(element, index) {
+                for (const element of action.domains) {
                     params.tab_domain.push(
                         [element[0], decoder.decode(element[1]), element[2]]);
-                });
+                }
                 params.context_model = action.context_model;
                 params.context_domain = action.context_domain;
                 if (action.limit !== null) {

@@ -5,9 +5,9 @@
 
     Sao.View.CalendarXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_calendar: function(node, attributes) {
-            [].forEach.call(node.childNodes, function(child) {
+            for (const child of node.childNodes) {
                 this.parse(child);
-            }.bind(this));
+            }
 
             var view_week;
             if (this.view.screen.model.fields[attributes.dtstart]
@@ -138,10 +138,9 @@
                 model_access.write);
 
             var description = [];
-            for (var i = 1; i < this.fields.length; i++) {
+            for (const field of this.fields) {
                 description.push(
-                    this.screen.model.fields[this.fields[i]].get_client(
-                        record));
+                    this.screen.model.fields[field].get_client( record));
             }
             description = description.join('\n');
             if (date_start) {
@@ -191,9 +190,9 @@
             prm.then(function()  {
                 this.group.forEach(function(record) {
                     var record_promisses = [];
-                    this.fields.forEach(function(name) {
+                    for (const name of this.fields) {
                         record_promisses.push(record.load(name));
-                    });
+                    }
                     var prm = jQuery.when.apply(jQuery, record_promisses).then(
                         function(){
                             this.insert_event(record);

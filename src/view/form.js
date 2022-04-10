@@ -42,9 +42,9 @@ function eval_pyson(value){
             if (container) {
                 this._containers.push(container);
             }
-            [].forEach.call(node.childNodes, function(child) {
+            for (const child of node.childNodes) {
                 this.parse(child);
-            }.bind(this));
+            }
             if (container) {
                 this._containers.pop();
             }
@@ -308,13 +308,12 @@ function eval_pyson(value){
             var record = this.record;
             var field;
             var depends;
-            var name;
             var promesses = [];
             if (record) {
                 // Force to set fields in record
                 // Get first the lazy one from the view to reduce number of requests
                 var field_names = new Set(this.get_fields());
-                for (name in record.model.fields) {
+                for (const name in record.model.fields) {
                     field = record.model.fields[name];
                     if (~field.views.has(this.view_id)) {
                         field_names.add(name);
@@ -322,14 +321,14 @@ function eval_pyson(value){
                 }
 
                 var fields = [];
-                field_names.forEach(function(fname) {
+                for (const fname of field_names) {
                     field = record.model.fields[fname];
                     fields.push([
                         fname,
                         field.description.loading || 'eager' == 'eager',
                         field.views.size,
                     ]);
-                });
+                }
                 fields.sort(function(a, b) {
                     if (!a[1] && b[1]) {
                         return -1;
@@ -339,18 +338,15 @@ function eval_pyson(value){
                         return a[2] - b[2];
                     }
                 });
-                fields.forEach(function(e) {
-                    var name = e[0];
+                for (const e of fields) {
+                    const name = e[0];
                     promesses.push(record.load(name));
-                });
+                }
             }
-            var display = function(widget) {
-                widget.display();
-            };
             return jQuery.when.apply(jQuery,promesses)
                 .done(function() {
                     var record = this.record;
-                    for (name in this.widgets) {
+                    for (const name in this.widgets) {
                         var widgets = this.widgets[name];
                         field = null;
                         if (record) {
@@ -359,7 +355,9 @@ function eval_pyson(value){
                         if (field) {
                             field.set_state(record);
                         }
-                        widgets.forEach(display);
+                        for (const widget of widgets) {
+                            widget.display();
+                        }
                     }
                 }.bind(this))
                 .done(function() {
@@ -378,14 +376,13 @@ function eval_pyson(value){
         set_value: function() {
             var record = this.record;
             if (record) {
-                var set_value = function(widget) {
-                    widget.set_value(record, this);
-                };
                 for (var name in this.widgets) {
                     if (name in record.model.fields) {
                         var widgets = this.widgets[name];
                         var field = record.model.fields[name];
-                        widgets.forEach(set_value, field);
+                        for (const widget of widgets) {
+                            widget.set_value(record, field);
+                        }
                     }
                 }
             }
@@ -404,8 +401,8 @@ function eval_pyson(value){
         get modified() {
             for (var name in this.widgets) {
                 var widgets = this.widgets[name];
-                for (var i=0; i < widgets.length; i++) {
-                    if (widgets[i].modified) {
+                for (const widget of widgets) {
+                    if (widget.modified) {
                         return true;
                     }
                 }
@@ -594,7 +591,6 @@ function eval_pyson(value){
             var widths = [];
             var col = this.col;
             var has_expand = false;
-            var i, j;
 
             var parent_max_width = 0.9;
             this.el.parents('td').each(function() {
@@ -607,7 +603,7 @@ function eval_pyson(value){
             var get_xexpands = function(row) {
                 row = jQuery(row);
                 var xexpands = [];
-                i = 0;
+                let i = 0;
                 row.children().map(function() {
                     var cell = jQuery(this);
                     var colspan = Math.min(Number(cell.attr('colspan')), col);
@@ -638,19 +634,19 @@ function eval_pyson(value){
                     return b.length - a.length;
                 }
             });
-            rows.forEach(function(row) {
+            for (let row of rows) {
                 row = jQuery(row);
                 var xexpands = get_xexpands(row);
-                var width = 100 / xexpands.length;
-                xexpands.forEach(function(e) {
+                const width = 100 / xexpands.length;
+                for (const e of xexpands) {
                     var cell = e[0];
-                    i = e[1];
-                    var colspan = Math.min(Number(cell.attr('colspan')), col);
+                    let i = e[1];
+                    const colspan = Math.min(Number(cell.attr('colspan')), col);
                     var current_width = 0;
-                    for (j = 0; j < colspan; j++) {
+                    for (let j = 0; j < colspan; j++) {
                         current_width += widths[i + j] || 0;
                     }
-                    for (j = 0; j < colspan; j++) {
+                    for (let j = 0; j < colspan; j++) {
                         if (!current_width) {
                             widths[i + j] = width / colspan;
                         } else if (current_width > width) {
@@ -663,22 +659,22 @@ function eval_pyson(value){
                             }
                         }
                     }
-                });
+                }
                 if (!jQuery.isEmptyObject(xexpands)) {
                     has_expand = true;
                 }
-            });
-            rows.forEach(function(row) {
+            }
+            for (let row of rows) {
                 row = jQuery(row);
-                i = 0;
-                row.children().map(function() {
-                    var cell = jQuery(this);
-                    var colspan = Math.min(Number(cell.attr('colspan')), col);
+                let i = 0;
+                for (let cell of row.children()) {
+                    cell = jQuery(cell);
+                    const colspan = Math.min(Number(cell.attr('colspan')), col);
                     if (cell.hasClass('xexpand') &&
                         (cell.children(':not(.tooltip)').css('display') !=
                          'none')) {
-                        var width = 0;
-                        for (j = 0; j < colspan; j++) {
+                        let width = 0;
+                        for (let j = 0; j < colspan; j++) {
                             width += widths[i + j] || 0;
                         }
                         cell.css('width', width + '%');
@@ -704,8 +700,8 @@ function eval_pyson(value){
                         }
                     }
                     i += colspan;
-                });
-            });
+                }
+            }
             if (has_expand &&
                 (!this.el.closest('td').length ||
                     this.el.closest('td').hasClass('xexpand'))) {
@@ -1400,7 +1396,7 @@ function eval_pyson(value){
             }.bind(this));
         },
         write: function(widget, dialog) {
-            this.languages.forEach(function(lang) {
+            for (const lang of this.languages) {
                 var input = jQuery('[data-lang-id=' + lang.id + ']');
                 if (!input.attr('readonly')) {
                     var current_language = widget.model.session.context.
@@ -1421,7 +1417,7 @@ function eval_pyson(value){
                     };
                     Sao.rpc(args, widget.model.session, false);
                 }
-            }.bind(this));
+            }
             widget.record.cancel();
             widget.view.display();
             this.close(dialog);
@@ -1564,11 +1560,11 @@ function eval_pyson(value){
                 } else {
                     selection = [];
                 }
-                selection.forEach(function(e) {
+                for (const e of selection) {
                     jQuery('<option/>', {
                         'value': e
                     }).appendTo(this.datalist);
-                }.bind(this));
+                }
             }
 
             // Set size
@@ -2091,13 +2087,13 @@ function eval_pyson(value){
         set_selection: function(selection, help) {
             var select = this.select;
             select.empty();
-            selection.forEach(function(e) {
+            for (const e of selection) {
                 select.append(jQuery('<option/>', {
                     'value': JSON.stringify(e[0]),
                     'text': e[1],
                     'title': help[e[0]],
                 }));
-            });
+            }
         },
         display_update_selection: function() {
             var record = this.record;
@@ -2109,8 +2105,8 @@ function eval_pyson(value){
                 }
                 var value = field.get(record);
                 var prm, found = false;
-                for (var i = 0, len = this.selection.length; i < len; i++) {
-                    if (this.selection[i][0] === value) {
+                for (const option of this.selection) {
+                    if (option[0] === value) {
                         found = true;
                         break;
                     }
@@ -2883,13 +2879,13 @@ function eval_pyson(value){
         set_selection: function(selection, help) {
             var select = this.select;
             select.empty();
-            selection.forEach(function(e) {
+            for (const e of selection) {
                 select.append(jQuery('<option/>', {
                     'value': e[0],
                     'text': e[1],
                     'title': help[e[0]],
                 }));
-            });
+            }
         },
         get modified() {
             if (this.record && this.field) {
@@ -3322,10 +3318,9 @@ function eval_pyson(value){
             }
         },
         _sequence: function() {
-            for (var i=0, len = this.screen.views.length; i < len; i++) {
-                var view = this.screen.views[i];
+            for (const view of this.screen.views) {
                 if (view.view_type == 'tree') {
-                    var sequence = view.attributes.sequence;
+                    const sequence = view.attributes.sequence;
                     if (sequence) {
                         return sequence;
                     }
@@ -4556,9 +4551,9 @@ function eval_pyson(value){
         },
         translate_dialog: function(languages) {
             var options = {};
-            languages.forEach(function(language) {
+            for (const language of languages) {
                 options[language.name] = language.code;
-            });
+            }
             Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
             .done(function(language) {
                 window.open(this.uri(language), '_blank', 'noreferrer,noopener');
@@ -4709,7 +4704,7 @@ function eval_pyson(value){
                 .then(function(new_names) {
                     this.send_modified();
                     var focus = false;
-                    new_names.forEach(function(name) {
+                    for (const name of new_names) {
                         if (!(name in this.fields)) {
                             this.add_line(name);
                             if (!focus) {
@@ -4717,7 +4712,7 @@ function eval_pyson(value){
                                 focus = true;
                             }
                         }
-                    }.bind(this));
+                    }
                 }.bind(this));
         },
         remove: function(key, modified=true) {
@@ -5023,13 +5018,13 @@ function eval_pyson(value){
                     return a[1].localeCompare(b[1]);
                 });
             }
-            selection.forEach(function(e) {
+            for (const e of selection) {
                 select.append(jQuery('<option/>', {
                     'value': JSON.stringify(e[0]),
                     'text': e[1],
                     'title': this.definition.help_selection[e[0]],
                 }));
-            }.bind(this));
+            }
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;

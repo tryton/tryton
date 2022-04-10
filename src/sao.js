@@ -95,9 +95,9 @@ var Sao = {};
             // Implementation is not strictly equivalent but works for most
             // cases
             var result = [];
-            value.forEach(function(e) {
+            for (const e of value) {
                 result.push(e);
-            });
+            }
             return result;
         };
     }
@@ -404,9 +404,9 @@ var Sao = {};
                 deferreds.push(Sao.common.MODELHISTORY.load_history());
                 deferreds.push(Sao.common.VIEW_SEARCH.load_searches());
                 return jQuery.when.apply(jQuery, deferreds).then(function() {
-                    (preferences.actions || []).forEach(function(action_id) {
+                    for (const action_id of (preferences.actions || [])) {
                         Sao.Action.execute(action_id, {}, null, {});
-                    });
+                    }
                     Sao.set_title();
                     var new_lang = preferences.language != Sao.i18n.getLocale();
                     var prm = jQuery.Deferred();
@@ -465,8 +465,7 @@ var Sao = {};
             }
         } else {
             url = decodeURIComponent(url);
-            for (var i = 0; i < Sao.Tab.tabs.length; i++) {
-                tab = Sao.Tab.tabs[i];
+            for (const tab of Sao.Tab.tabs) {
                 if (decodeURIComponent(tab.get_url()) == url) {
                     tab.show();
                     return;
@@ -487,12 +486,12 @@ var Sao = {};
         var path, params = {};
         if (i >= 0) {
             path = url.substring(0, i);
-            url.substring(i + 1).split('&').forEach(function(part) {
+            for (const part of url.substring(i + 1).split('&')) {
                 if (part) {
                     var item = part.split('=').map(decodeURIComponent);
                     params[item[0]] = item[1];
                 }
-            });
+            }
         } else {
             path = url;
         }
@@ -984,18 +983,18 @@ var Sao = {};
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
                     Sao.main_menu_screen.context)
                 .then(function(s_results) {
-                var results = [];
-                for (var i=0, len=s_results.length; i < len; i++) {
-                    results.push({
-                        'model': s_results[i][1],
-                        'model_name': s_results[i][2],
-                        'record_id': s_results[i][3],
-                        'record_name': s_results[i][4],
-                        'icon': s_results[i][5],
-                    });
-                }
-                return results;
-            }.bind(this));
+                    var results = [];
+                    for (const result of s_results) {
+                        results.push({
+                            'model': result[1],
+                            'model_name': result[2],
+                            'record_id': result[3],
+                            'record_name': result[4],
+                            'icon': result[5],
+                        });
+                    }
+                    return results;
+                }.bind(this));
         },
         match_selected: function(item) {
             if (item.model == Sao.main_menu_screen.model_name) {
@@ -1175,7 +1174,7 @@ var Sao = {};
             .text(Sao.i18n.gettext('Tab shortcuts')))
             .appendTo(row);
 
-        shortcuts_defs().forEach(function(definition) {
+        for (const definition of shortcuts_defs()) {
             var dt = jQuery('<dt/>').text(definition.label);
             var dd = jQuery('<dd/>').append(jQuery('<kbd>')
                 .text(definition.shortcut));
@@ -1187,7 +1186,7 @@ var Sao = {};
             }
             dt.appendTo(dest_dl);
             dd.appendTo(dest_dl);
-        });
+        }
         dialog.modal.on('hidden.bs.modal', function() {
             jQuery(this).remove();
         });

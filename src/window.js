@@ -412,8 +412,8 @@
                 var prm = jQuery.when();
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
-                    for (var i = 0, len = result.length; i < len; i++) {
-                        ids.push(result[i][0]);
+                    for (const record of result) {
+                        ids.push(record[0]);
                     }
                     this.screen.group.load(ids, true);
                     prm = this.screen.display();
@@ -698,13 +698,13 @@
             var prm = jQuery.when();
             if (result) {
                 var unread = this.screen.group.model.fields.unread;
-                this.screen.group.forEach(function(record) {
+                for (const record of this.screen.group) {
                     if (record.get_loaded() || record.id < 0) {
                         if (!record.modified_fields.unread) {
                             unread.set_client(record, false);
                         }
                     }
-                }.bind(this));
+                }
                 prm = this.screen.save_current();
             }
             if (this.note_callback) {
@@ -978,7 +978,7 @@
                 value: null,
                 text: ''
             }));
-            revisions.forEach(function(revision) {
+            for (let revision of revisions) {
                 var name = revision[2];
                 revision = revision[0];
                 this.select.append(jQuery('<option/>', {
@@ -986,7 +986,7 @@
                     text: Sao.common.format_datetime(
                         date_format + ' ' + time_format, revision) + ' ' + name,
                 }));
-            }.bind(this));
+            }
             this.el.modal('show');
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
@@ -1252,10 +1252,10 @@
                 'id': 'input-encoding'
             });
 
-            for(var i=0; i < ENCODINGS.length; i++) {
+            for (const encoding of ENCODINGS) {
                 jQuery('<option/>', {
-                    'val': ENCODINGS[i]
-                }).append(ENCODINGS[i]).appendTo(this.el_csv_encoding);
+                    'val': encoding,
+                }).append(encoding).appendTo(this.el_csv_encoding);
             }
 
             var enc = 'utf-8';
@@ -1369,7 +1369,7 @@
             prefix_field = prefix_field || '';
             prefix_name = prefix_name || '';
 
-            Object.keys(fields).forEach(function(field) {
+            for (const field of Object.keys(fields)) {
                 if(!fields[field].readonly || field == 'id') {
                     var name = fields[field].string || field;
                     name = prefix_name + name;
@@ -1393,7 +1393,7 @@
                         node.children = {};
                     }
                 }
-            }.bind(this));
+            }
         },
         children_expand: function(node) {
             if (jQuery.isEmptyObject(node.children) && node.relation) {
@@ -1534,7 +1534,7 @@
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('CSV Export: %1',name));
             var fields = this.screen.model.fields;
-            names.forEach(function(name) {
+            for (const name of names) {
                 var type = fields[name].description.type;
                 if (type == 'selection') {
                     this.sel_field(name + '.translated');
@@ -1544,7 +1544,7 @@
                 } else {
                     this.sel_field(name);
                 }
-            }.bind(this));
+            }
 
             this.predef_exports = {};
             this.fill_predefwin();
@@ -1732,7 +1732,7 @@
             prefix_field = prefix_field || '';
             prefix_name = prefix_name || '';
 
-            Object.keys(fields).forEach(function(name) {
+            for (const name of Object.keys(fields)) {
                 var field = fields[name];
                 var string = field.string || name;
                 var items = [{ name: name, field: field, string: string }];
@@ -1756,7 +1756,7 @@
                     });
                 }
 
-                items.forEach(function(item) {
+                for (const item of items) {
                     var path = prefix_field + item.name;
                     var long_string = prefix_name + item.string;
 
@@ -1773,8 +1773,8 @@
                     if (item.name.indexOf('.') == -1 && item.field.relation) {
                         node.children = {};
                     }
-                }.bind(this));
-            }.bind(this));
+                }
+            }
         },
         children_expand: function(node) {
             if (jQuery.isEmptyObject(node.children) && node.relation) {
@@ -1795,12 +1795,12 @@
                     [['resource', '=', this.screen.model_name]], 0, null, null,
                     ['name', 'export_fields.name'], {}],
             }, this.session).done(function(exports) {
-                exports.forEach(function(export_) {
+                for (const export_ of exports) {
                     this.predef_exports[export_.id] = export_['export_fields.']
                         .map(function(field) {return field.name;});
                     this.add_to_predef(export_.id, export_.name);
                     this.predef_exports_list.children('li').first().focus();
-                }.bind(this));
+                }
             }.bind(this));
         },
         add_to_predef: function(id, name) {
@@ -1825,8 +1825,8 @@
         addreplace_predef: function() {
             var fields = [];
             var selected_fields = this.fields_selected.children('li');
-            for(var i=0; i<selected_fields.length; i++) {
-                fields.push(selected_fields[i].getAttribute('path'));
+            for (const field of selected_fields) {
+                fields.push(field.getAttribute('path'));
             }
             if(fields.length === 0) {
                 return;
@@ -1902,7 +1902,7 @@
         },
         sel_predef: function(export_id) {
             this.fields_selected.empty();
-            this.predef_exports[export_id].forEach(function(name) {
+            for (const name of this.predef_exports[export_id]) {
                 if (!(name in this.fields)) {
                     var fields = this.fields_model;
                     var prefix = '';
@@ -1913,7 +1913,7 @@
                     return;
                 }
                 this.sel_field(name);
-            }.bind(this));
+            }
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;
@@ -2054,11 +2054,11 @@
                             this.screen.offset / this.screen.limit).toString()]);
                 }
                 if (this.screen.order) {
-                    this.screen.order.forEach(function(expr) {
+                    for (const expr of this.screen.order) {
                         query_string.push(['o', expr.map(function(e) {
                             return e;
                         }).join(',')]);
-                    });
+                    }
                 }
             }
             query_string.splice(
@@ -2187,9 +2187,9 @@
             this.to = add_group('to', Sao.i18n.gettext('To:'), true);
             this.cc = add_group('cc', Sao.i18n.gettext('Cc:'));
             this.bcc = add_group('bcc', Sao.i18n.gettext('Bcc:'));
-            [this.to, this.cc, this.bcc].forEach(function(input) {
+            for (const input of [this.to, this.cc, this.bcc]) {
                 new Sao.Window.EmailEntry(input, this.record.model.session);
-            }.bind(this));
+            }
             this.subject = add_group(
                 'subject', Sao.i18n.gettext('Subject:'), true);
 
@@ -2215,8 +2215,7 @@
                 'text': Sao.i18n.gettext("Reports"),
             }).appendTo(print_frame);
             this.print_actions = {};
-            for (var i = 0; i < prints.length; i++) {
-                var print = prints[i];
+            for (const print of prints) {
                 var print_check = jQuery('<input/>', {
                     'type': 'checkbox',
                 });
@@ -2251,12 +2250,12 @@
                     ],
                     0, null, null, ['rec_name'], record.get_context()],
             }, record.model.session).then(function(attachments) {
-                attachments.forEach(function(attachment) {
+                for (const attachment of attachments) {
                     this.attachments.append(jQuery('<option/>', {
                         'value': JSON.stringify(attachment.id),
                         'text': attachment.rec_name,
                     }));
-                }.bind(this));
+                }
             }.bind(this))
             .fail(function() {
                 Sao.Logger.error(

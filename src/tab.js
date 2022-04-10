@@ -376,8 +376,7 @@
         if (attributes.context === undefined) {
             attributes.context = {};
         }
-        for (var i = 0; i < Sao.Tab.tabs.length; i++) {
-            var other = Sao.Tab.tabs[i];
+        for (const other of Sao.Tab.tabs) {
             if (other.compare(attributes)) {
                 tablist.find('a[href="#' + other.id + '"]')
                     .tab('show')[0].scrollIntoView();
@@ -609,18 +608,17 @@
                     });
 
                     var kw_plugins = [];
-                    Sao.Plugins.forEach(function(plugin) {
-                        plugin.get_plugins(screen.model.name).forEach(
-                            function(spec) {
-                                var name = spec[0],
-                                    func = spec[1],
-                                    keyword = spec[2] || 'action';
-                                if (keyword != menu_action[0]) {
-                                    return;
-                                }
+                    for (const plugin of Sao.Plugins) {
+                        for (const spec of plugin.get_plugins(
+                            screen.model.name)) {
+                            var name = spec[0],
+                                func = spec[1],
+                                keyword = spec[2] || 'action';
+                            if (keyword == menu_action[0]) {
                                 kw_plugins.push([name, func]);
-                            });
-                    });
+                            }
+                        }
+                    }
                     if (kw_plugins.length) {
                         menu.append(jQuery('<li/>', {
                             'role': 'separator',
@@ -861,12 +859,12 @@
                         return this.screen.search_filter(
                             this.screen.screen_container.search_entry.val())
                             .then(function() {
-                                this.screen.group.forEach(function(record) {
+                                for (const record of this.screen.group) {
                                     if (record.id == record_id) {
                                         this.screen.current_record = record;
                                         set_cursor = true;
                                     }
-                                }.bind(this));
+                                }
                                 return set_cursor;
                             }.bind(this));
                     }
@@ -975,15 +973,15 @@
             .then(function(data) {
                 data = data[0];
                 var message = '';
-                fields.forEach(function(field) {
-                    var key = field[0];
-                    var label = field[1];
-                    var value = data;
-                    var keys = key.split('.');
-                    var name = keys.splice(-1);
-                    keys.forEach(function(key) {
+                for (const field of fields) {
+                    const key = field[0];
+                    const label = field[1];
+                    let value = data;
+                    const keys = key.split('.');
+                    const name = keys.splice(-1);
+                    for (const key of keys) {
                         value = value[key + '.'] || {};
-                    });
+                    }
                     value = (value || {})[name] || '/';
                     if (value && value.isDateTime) {
                         value = Sao.common.format_datetime(
@@ -991,7 +989,7 @@
                             value);
                     }
                     message += label + ' ' + value + '\n';
-                });
+                }
                 message += Sao.i18n.gettext('Model: ') + this.screen.model.name;
                 Sao.common.message.run(message);
             }.bind(this));
@@ -1063,14 +1061,14 @@
         set_buttons_sensitive: function(revision) {
             if (!revision) {
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-                [['new_', access.create],
-                ['save', access.create || access.write],
-                ['delete_', access.delete],
-                ['copy', access.create],
-                ['import', access.create],
-                ].forEach(function(e) {
-                    var name = e[0];
-                    var access = e[1];
+                const accesses = new Map([
+                    ['new_', access.create],
+                    ['save', access.create || access.write],
+                    ['delete_', access.delete],
+                    ['copy', access.create],
+                    ['import', access.create],
+                ]);
+                for (const [name, access] of accesses) {
                     if (this.buttons[name]) {
                         this.buttons[name].prop('disabled', !access);
                     }
@@ -1078,17 +1076,17 @@
                         this.menu_buttons[name]
                             .toggleClass('disabled', !access);
                     }
-                }.bind(this));
+                }
             } else {
-                ['new_', 'save', 'delete_', 'copy', 'import'].forEach(
-                    function(name) {
-                        if (this.buttons[name]) {
-                            this.buttons[name].prop('disabled', true);
-                        }
-                        if (this.menu_buttons[name]) {
-                            this.menu_buttons[name].addClass('disabled');
-                        }
-                    }.bind(this));
+                for (const name of [
+                    'new_', 'save', 'delete_', 'copy', 'import']) {
+                    if (this.buttons[name]) {
+                        this.buttons[name].prop('disabled', true);
+                    }
+                    if (this.menu_buttons[name]) {
+                        this.menu_buttons[name].addClass('disabled');
+                    }
+                }
             }
         },
         attach: function(evt) {
@@ -1239,24 +1237,22 @@
             var window_ = new Sao.Window.Attachment(record, function() {
                 this.refresh_resources(true);
             }.bind(this));
-            files.forEach(function(file) {
-                Sao.common.get_file_data(file, function(data, filename) {
-                    window_.add_data(data, filename);
-                });
-            });
+            for (const file of files) {
+                Sao.common.get_file_data(file, window_.add_data);
+            }
             jQuery.when.apply(jQuery, uris).then(function() {
                 function empty(value) {
                     return Boolean(value);
                 }
-                for (var i = 0; i < arguments.length; i++) {
-                    arguments[i].split('\r\n')
+                for (const argument of arguments) {
+                    argument.split('\r\n')
                         .filter(empty)
                         .forEach(window_.add_uri, window_);
                 }
             });
             jQuery.when.apply(jQuery, texts).then(function() {
-                for (var i = 0; i < arguments.length; i++) {
-                    window_.add_text(arguments[i]);
+                for (const argument of arguments) {
+                    window_.add_text(argument);
                 }
             });
             if (evt.dataTransfer.items) {
@@ -1371,8 +1367,7 @@
                         .then(function(toolbars) {
                             var prints = toolbars.print.filter(is_report);
                             var emails = {};
-                            for (var i = 0; i < toolbars.emails.length; i++) {
-                                var email = toolbars.emails[i];
+                            for (const email of toolbars.emails) {
                                 emails[email.name] = email.id;
                             }
                             record.rec_name().then(function(rec_name) {
@@ -1476,9 +1471,9 @@
                 }
             }
             var buttons = ['print', 'relate', 'email', 'save', 'attach'];
-            buttons.forEach(function(button_id){
-                var button = this.buttons[button_id];
-                var can_be_sensitive = button._can_be_sensitive;
+            for (const button_id of buttons) {
+                const button = this.buttons[button_id];
+                let can_be_sensitive = button._can_be_sensitive;
                 if (can_be_sensitive === undefined) {
                     can_be_sensitive = true;
                 }
@@ -1494,7 +1489,7 @@
                     can_be_sensitive &= !this.screen.readonly;
                 }
                 set_sensitive(button_id, position && can_be_sensitive);
-            }.bind(this));
+            }
             set_sensitive('switch_', this.screen.number_of_views > 1);
             set_sensitive('delete_', this.screen.deletable);
             set_sensitive('previous', position > (this.screen.offset + 1));

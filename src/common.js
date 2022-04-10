@@ -109,15 +109,15 @@
             i++;
         }
         var result = [[]];
-        pools.forEach(function(pool) {
+        for (const pool of pools) {
             var tmp = [];
-            result.forEach(function(x) {
-                pool.forEach(function(y) {
+            for (const x of result) {
+                for (const y of pool) {
                     tmp.push(x.concat([y]));
-                });
-            });
+                }
+            }
             result = tmp;
-        });
+        }
         return result;
     };
 
@@ -667,9 +667,9 @@
     Sao.common.selection_mixin.init_selection = function(value, callback) {
         if (!value) {
             value = {};
-            (this.attributes.selection_change_with || []).forEach(function(e) {
+            for (const e of (this.attributes.selection_change_with || [])) {
                 value[e] = null;
-            });
+            }
         }
         var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
@@ -758,17 +758,17 @@
                 }, record.model.session);
                 prm.done(function(result) {
                     var selection = [];
-                    result.forEach(function(x) {
+                    for (const x of result) {
                         selection.push([x.id, x.rec_name]);
-                    });
+                    }
                     if (this.nullable_widget) {
                         selection.push([null, '']);
                     }
                     var help = {};
                     if (help_field){
-                        result.forEach(function(x) {
+                        for (const x of result) {
                             help[x.id] = x[help_field];
-                        });
+                        }
                     }
                     this._last_domain = [domain, context];
                     this._domain_cache[jdomain] = selection;
@@ -1554,7 +1554,7 @@
             var cur = tokens[0];
             var nex = null;
             var result = [];
-            tokens.slice(1).forEach(function(nex) {
+            for (const nex of tokens.slice(1)) {
                 if ((nex == '=') && cur &&
                     ~this.OPERATORS.indexOf(cur + nex)) {
                     result.push(cur + nex);
@@ -1565,7 +1565,7 @@
                     }
                     cur = nex;
                 }
-            }.bind(this));
+            }
             if (cur !== null) {
                 result.push(cur);
             }
@@ -1575,9 +1575,9 @@
             var result = [];
             var current = result;
             var parent = [];
-            tokens.forEach(function(token, i) {
+            for (const token of tokens) {
                 if (current === undefined) {
-                    return;
+                    continue;
                 }
                 if (token == '(') {
                     parent.push(current);
@@ -1587,7 +1587,7 @@
                 } else {
                     current.push(token);
                 }
-            });
+            }
             return result;
         },
         group: function(tokens) {
@@ -1676,24 +1676,24 @@
             _group = _group.bind(this);
 
             var parts = [];
-            tokens.forEach(function(token) {
+            for (const token of tokens) {
                 if (this.is_generator(token)) {
-                    _group(parts).forEach(function(group) {
+                    for (const group of _group(parts)) {
                         if (!Sao.common.compare(group, [null])) {
                             result.push(group);
                         }
-                    });
+                    }
                     parts = [];
                     result.push(this.group(token));
                 } else {
                     parts.push(token);
                 }
-            }.bind(this));
-            _group(parts).forEach(function(group) {
+            }
+            for (const group of _group(parts)) {
                 if (!Sao.common.compare(group, [null])) {
                     result.push(group);
                 }
-            });
+            }
             return result;
         },
         is_generator: function(value) {
@@ -2653,11 +2653,11 @@
             if (domoperator) {
                 result.push(domoperator);
             }
-            domains.forEach(function append(domain) {
+            for (const domain of domains) {
                 if (!jQuery.isEmptyObject(domain)) {
                     result.push(domain);
                 }
-            });
+            }
             return this.simplify(this.merge(result));
         },
         unique_value: function(domain) {
@@ -3066,20 +3066,20 @@
                 from = (from < 0) ? 0 : from;
                 var to = Math.round(idx + this.batchnum / 2);
                 var ids = [];
-                this.tryton_icons.slice(from, to).forEach(function(e) {
+                for (const e of this.tryton_icons.slice(from, to)) {
                     ids.push(e[0]);
-                });
+                }
 
                 var read_prm = icon_model.execute('read',
                     [ids, ['name', 'icon']], {});
                 return read_prm.then(function(icons) {
-                    icons.forEach(function(icon) {
+                    for (const icon of icons) {
                         var img_url = this._convert(icon.icon);
                         this.loaded_icons[icon.name] = img_url;
                         delete this.name2id[icon.name];
                         this.tryton_icons.splice(
                             find_array([icon.id, icon.name]), 1);
-                    }.bind(this));
+                    }
                 }.bind(this));
             }.bind(this));
             return this.register_prm;
@@ -4096,9 +4096,8 @@
                 'class': 'btn-group',
                 'role': 'group'
             }).appendTo(toolbar);
-            for (var i in buttons) {
-                var properties = buttons[i];
-                var button = jQuery('<button/>', {
+            for (const properties of buttons) {
+                const button = jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button',
                     'title': properties.label,
@@ -4144,8 +4143,7 @@
                 })));
             };
         };
-        for (var i in selections) {
-            var properties = selections[i];
+        for (var properties of selections) {
             var group = jQuery('<div/>', {
                 'class': 'btn-group',
                 'role': 'group'

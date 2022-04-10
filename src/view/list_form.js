@@ -79,11 +79,9 @@
             return frame;
         },
         get selected_records() {
-            var view_form, records = [];
-            var frame;
-            for (var i = 0; i < this._view_forms.length; i++) {
-                view_form = this._view_forms[i];
-                frame = view_form.el.parent();
+            var records = [];
+            for (const view_form of this._view_forms) {
+                const frame = view_form.el.parent();
                 if (frame.hasClass('list-group-item-selected')) {
                     records.push(view_form.record);
                 }
@@ -116,10 +114,9 @@
                 to = tmp;
             }
 
-            var select_form = function(form) {
+            for (const form of this._view_forms.slice(from, to + 1)) {
                 form.el.parent().addClass('list-group-item-selected');
-            };
-            this._view_forms.slice(from, to + 1).forEach(select_form);
+            }
         },
         _select_row: function(event_) {
             var current_view_form;
@@ -127,9 +124,9 @@
             var view_form = this._view_forms[view_form_idx];
 
             if (event_.shiftKey) {
-                for (var i=0; i < this._view_forms.length; i++) {
-                    if (this._view_forms[i].record === this.record) {
-                        current_view_form = this._view_forms[i];
+                for (const other_view_form of this._view_forms) {
+                    if (other_view_forms.record === this.record) {
+                        current_view_form = other_view_form;
                         break;
                     }
                 }

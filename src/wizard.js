@@ -86,7 +86,7 @@
 
                     var execute_actions = function execute_actions() {
                         if (result.actions) {
-                            result.actions.forEach(function(action) {
+                            for (const action of result.actions) {
                                 var context = jQuery.extend({}, this.context);
                                 // Remove wizard keys added by run
                                 delete context.active_id;
@@ -95,7 +95,7 @@
                                 delete context.action_id;
                                 Sao.Action.execute(
                                     action[0], action[1], context);
-                            }.bind(this));
+                            }
                         }
                     }.bind(this);
 
@@ -169,9 +169,9 @@
             }
         },
         update: function(view, buttons) {
-            buttons.forEach(function(button) {
+            for (const button of buttons) {
                 this._get_button(button);
-            }.bind(this));
+            }
             if (this.screen) {
                 this.screen.windows.splice(
                     this.screen.windows.indexOf(this), 1);
@@ -348,11 +348,9 @@
             if (view.view_type == 'form') {
                 expand = false;
                 var fields = view.get_fields();
-                for (var i = 0; i < fields.length; i++) {
-                    var name = fields[i];
+                for (const name of fields) {
                     var widgets = view.widgets[name];
-                    for (var j = 0; j < widgets.length; j++) {
-                        var widget = widgets[j];
+                    for (const widget of widgets) {
                         if (widget.expand) {
                             expand = true;
                             break;
