@@ -58,6 +58,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
+        depends={'company'},
         help="The party who subscribes.")
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
