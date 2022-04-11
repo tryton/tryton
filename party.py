@@ -1,12 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+
+supplier_currency = fields.Many2One(
+    'currency.currency', "Supplier Currency",
+    help="Default currency for purchases from this party.")
 
 
 class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
@@ -22,6 +26,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             "Used if no lead time is set on the product supplier."))
     supplier_lead_times = fields.One2Many(
         'party.party.supplier_lead_time', 'party', "Lead Times")
+    supplier_currency = fields.MultiValue(supplier_currency)
+    supplier_currencies = fields.One2Many(
+        'party.party.supplier_currency', 'party', "Supplier Currencies")
 
     @classmethod
     def multivalue_model(cls, field):
@@ -53,6 +60,14 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
             },
         depends={'company'})
     supplier_lead_time = fields.TimeDelta("Lead Time")
+
+
+class PartySupplierCurrency(ModelSQL, ValueMixin):
+    "Party Supplier Currency"
+    __name__ = 'party.party.supplier_currency'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    supplier_currency = supplier_currency
 
 
 class PartyReplace(metaclass=PoolMeta):

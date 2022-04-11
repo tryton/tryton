@@ -374,13 +374,15 @@ class Purchase(
     def default_state():
         return 'draft'
 
-    @staticmethod
-    def default_currency():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
+    @classmethod
+    def default_currency(cls, **pattern):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = pattern.get('company')
+        if not company:
+            company = cls.default_company()
         if company:
-            company = Company(company)
-            return company.currency.id
+            return Company(company).currency.id
 
     @classmethod
     def default_invoice_method(cls, **pattern):
@@ -397,15 +399,18 @@ class Purchase(
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'invoice_party', 'payment_term', 'lines')
+    @fields.depends(
+        'company', 'party', 'invoice_party', 'payment_term', 'lines')
     def on_change_party(self):
         cursor = Transaction().connection.cursor()
         table = self.__table__()
         if not self.invoice_party:
             self.invoice_address = None
-        self.invoice_method = self.default_invoice_method()
+        self.invoice_method = self.default_invoice_method(
+            company=self.company.id if self.company else None)
         if not self.lines:
-            self.currency = self.default_currency()
+            self.currency = self.default_currency(
+                company=self.company.id if self.company else None)
         if self.party:
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
@@ -434,7 +439,8 @@ class Purchase(
                 row = cursor.fetchone()
                 if row:
                     self.currency, self.payment_term, self.invoice_method = row
-
+                if self.party.supplier_currency:
+                    self.currency = self.party.supplier_currency
             if self.party.supplier_payment_term:
                 self.payment_term = self.party.supplier_payment_term
         else:

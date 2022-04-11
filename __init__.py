@@ -33,6 +33,7 @@ def register():
         party.Party,
         party.CustomerCode,
         party.SupplierLeadTime,
+        party.PartySupplierCurrency,
         purchase.ReturnPurchaseStart,
         module='purchase', type_='model')
     Pool.register(

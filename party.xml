@@ -28,5 +28,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase"/>
         </record>
 
+        <record model="ir.model.field.access" id="access_party_supplier_currency">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'supplier_currency')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_supplier_currency_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'supplier_currency')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
     </data>
 </tryton>
