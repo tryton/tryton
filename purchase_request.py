@@ -221,7 +221,10 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @property
     def currency(self):
-        return self.company.currency
+        currency = self.company.currency
+        if self.party and self.party.supplier_currency:
+            currency = self.party.supplier_currency
+        return currency
 
     @classmethod
     def default_state(cls):
