@@ -115,12 +115,15 @@ class SubscriptionLine(metaclass=PoolMeta):
         return super(SubscriptionLine, cls).copy(lines, default)
 
     @classmethod
-    def validate(cls, lines):
-        super(SubscriptionLine, cls).validate(lines)
-        cls._validate_dates(lines)
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls._validate_dates(lines, field_names)
 
     @classmethod
-    def _validate_dates(cls, lines):
+    def _validate_dates(cls, lines, field_names=None):
+        if field_names and not (field_names & {
+                    'start_date', 'end_date', 'asset_lot'}):
+            return
         transaction = Transaction()
         connection = transaction.connection
         cursor = connection.cursor()
