@@ -285,6 +285,11 @@ Class methods:
    ``.``.
    The number of *dots* in the name is not limited.
 
+   The virtual fields ``_write`` and ``_delete`` can be used the read the
+   writeable and deleteable state of the records.
+   Regarding the ``_timestamp`` virtual fields it contains a timestamp that is
+   used in the context to make a soft lock preventing update collisions.
+
    .. note::
       The order of the returned list is not guaranteed.
 
