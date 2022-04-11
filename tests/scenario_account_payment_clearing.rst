@@ -78,7 +78,8 @@ Create payable move::
     >>> Move = Model.get('account.move')
     >>> move = Move()
     >>> move.journal = expense_journal
-    >>> line = move.lines.new(account=payable, party=supplier,
+    >>> line = move.lines.new(
+    ...     account=payable, party=supplier, maturity_date=today,
     ...     credit=Decimal('50.00'))
     >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
     >>> move.click('post')
@@ -345,7 +346,8 @@ Create a payable move::
     >>> move = Move()
     >>> move.journal = expense_journal
     >>> line = move.lines.new(
-    ...     account=payable, party=supplier, credit=Decimal('20.00'),
+    ...     account=payable, party=supplier, maturity_date=today,
+    ...     credit=Decimal('20.00'),
     ...     amount_second_currency=Decimal('-40.00'), second_currency=euro)
     >>> line = move.lines.new(
     ...     account=expense, debit=Decimal('20.00'),
@@ -384,7 +386,8 @@ Create receivable move::
 
     >>> move = Move()
     >>> move.journal = revenue_journal
-    >>> line = move.lines.new(account=receivable, party=customer,
+    >>> line = move.lines.new(
+    ...     account=receivable, party=customer, maturity_date=today,
     ...     debit=Decimal('50.00'), second_currency=euro,
     ...     amount_second_currency=Decimal('100.0'))
     >>> line = move.lines.new(account=revenue, credit=Decimal('50.00'))
@@ -428,7 +431,8 @@ Create a payable move::
 
     >>> move = Move()
     >>> move.journal = expense_journal
-    >>> line = move.lines.new(account=payable, party=supplier,
+    >>> line = move.lines.new(
+    ...     account=payable, party=supplier, maturity_date=today,
     ...     credit=Decimal('50.00'))
     >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
     >>> move.click('post')
