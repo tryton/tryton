@@ -163,29 +163,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_refund_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_refund_form_domain_approved">
-            <field name="name">Approved</field>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_to_approve">
+            <field name="name">To Approve</field>
             <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'submitted')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_to_process">
+            <field name="name">To Process</field>
+            <field name="sequence" eval="30"/>
             <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_refund_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_refund_form_domain_processing">
             <field name="name">Processing</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_refund_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_refund_form_domain_suceeded">
             <field name="name">Succeeded</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
             <field name="act_window" ref="act_refund_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_refund_form_domain_failed">
             <field name="name">Failed</field>
-            <field name="sequence" eval="50"/>
+            <field name="sequence" eval="60"/>
             <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
             <field name="act_window" ref="act_refund_form"/>
         </record>
@@ -198,7 +205,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem
             parent="account_payment.menu_payments"
-            sequence="50"
+            sequence="20"
             action="act_refund_form"
             id="menu_refund_form"/>
 
@@ -208,6 +215,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'account.payment.braintree.refund')]"/>
         </record>
         <record model="ir.model.button-res.group" id="refund_draft_button_group_payment">
+            <field name="button" ref="refund_draft_button"/>
+            <field name="group" ref="account_payment.group_payment"/>
+        </record>
+
+        <record model="ir.model.button" id="refund_submit_button">
+            <field name="name">submit</field>
+            <field name="string">Submit</field>
+            <field name="model" search="[('model', '=', 'account.payment.braintree.refund')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="refund_submit_button_group_payment">
             <field name="button" ref="refund_draft_button"/>
             <field name="group" ref="account_payment.group_payment"/>
         </record>

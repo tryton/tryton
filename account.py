@@ -202,23 +202,23 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
         cls.amount.states['readonly'] &= ~Eval('braintree_settlement_needed')
 
         cls.braintree_customer.states['readonly'] = (
-                ~Eval('state').in_(['draft', 'approved'])
+                ~Eval('state').in_(['draft', 'submitted', 'approved'])
                 | Eval('braintree_nonce'))
 
         cls.braintree_customer_method.states['invisible'] |= (
             Eval('braintree_nonce'))
         cls.braintree_customer_method.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved']))
+            ~Eval('state').in_(['draft', 'submitted', 'approved']))
 
         cls.braintree_customer_method_selection.states['invisible'] |= (
             Eval('braintree_nonce'))
         cls.braintree_customer_method_selection.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved']))
+            ~Eval('state').in_(['draft', 'submitted', 'approved']))
 
         cls._buttons.update({
                 'braintree_checkout': {
                     'invisible': (~Eval('state', 'draft').in_(
-                            ['approved', 'processing'])
+                            ['submitted', 'approved', 'processing'])
                         | (Eval('process_method') != 'braintree')
                         | Eval('braintree_nonce')
                         | Eval('braintree_customer_method')),
@@ -529,12 +529,16 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             })
+    submitted_by = employee_field(
+        "Submitted by",
+        states=['submitted', 'approved', 'processing', 'succeeded', 'failed'])
     approved_by = employee_field(
         "Approved by",
         states=['approved', 'processing', 'succeeded', 'failed'])
 
     state = fields.Selection([
             ('draft', "Draft"),
+            ('submitted', "Submitted"),
             ('approved', "Approved"),
             ('processing', "Processing"),
             ('succeeded', "Succeeded"),
@@ -562,7 +566,8 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
         super().__setup__()
         cls.__access__.add('payment')
         cls._transitions |= set((
-                ('draft', 'approved'),
+                ('draft', 'submitted'),
+                ('submitted', 'approved'),
                 ('approved', 'processing'),
                 ('processing', 'succeeded'),
                 ('processing', 'failed'),
@@ -570,12 +575,17 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update({
                 'draft': {
-                    'invisible': Eval('state') != 'approved',
+                    'invisible': ~Eval('state').in_(['approved', 'submitted']),
                     'icon': 'tryton-back',
                     'depends': ['state'],
                     },
-                'approve': {
+                'submit': {
                     'invisible': Eval('state') != 'draft',
+                    'icon': 'tryton-forward',
+                    'depends': ['state'],
+                    },
+                'approve': {
+                    'invisible': Eval('state') != 'submitted',
                     'icon': 'tryton-forward',
                     'depends': ['state'],
                     },
@@ -608,8 +618,15 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    @reset_employee('approved_by')
+    @reset_employee('submitted_by', 'approved_by')
     def draft(cls, refunds):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('submitted')
+    @set_employee('submitted_by')
+    def submit(cls, refunds):
         pass
 
     @classmethod

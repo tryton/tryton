@@ -81,7 +81,7 @@ Create party::
     >>> customer = Party(name="Customer")
     >>> customer.save()
 
-Create approved payment::
+Create submitted payment::
 
     >>> Payment = Model.get('account.payment')
     >>> payment = Payment()
@@ -90,9 +90,9 @@ Create approved payment::
     >>> payment.party = customer
     >>> # Use random amount to prevent gateway rejection for duplicate
     >>> payment.amount = amount = Decimal(random.randint(0, 1999))
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
 Checkout the payment::
 
@@ -175,9 +175,9 @@ Make payment with customer::
     >>> _, method = Payment.get_braintree_customer_methods(payment.id, config.context)
     >>> method_token, _ = method
     >>> payment.braintree_customer_method = method_token
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
@@ -212,9 +212,9 @@ Create payment to settle::
     >>> payment.braintree_customer = None
     >>> payment.braintree_settle_payment = False
     >>> payment.amount = amount = Decimal(random.randint(0, 1999))
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
     >>> Payment.write([payment.id], {
     ...     'braintree_nonce': Nonces.Transactable,
@@ -252,6 +252,7 @@ Refund some amount::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = amount - 1
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund, = Cron.find([
     ...     ('method', '=', 'account.payment.braintree.refund|braintree_refund'),
@@ -287,6 +288,7 @@ Try to refund more::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = Decimal('10')
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund.click('run_once')
     >>> refund.reload()

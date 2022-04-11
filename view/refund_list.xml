@@ -5,4 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="payment" expand="1"/>
     <field name="amount" expand="2"/>
     <field name="state"/>
+    <button name="submit"/>
+    <button name="approve"/>
 </tree>
