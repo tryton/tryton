@@ -162,37 +162,43 @@ class Forecast(Workflow, ModelSQL, ModelView):
         return [('warehouse.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def validate(cls, forecasts):
-        super(Forecast, cls).validate(forecasts)
-        for forecast in forecasts:
-            forecast.check_date_overlap()
+    def validate_fields(cls, forecasts, field_names):
+        super().validate_fields(forecasts, field_names)
+        cls.check_date_overlap(forecasts, field_names)
 
-    def check_date_overlap(self):
-        if self.state != 'done':
+    @classmethod
+    def check_date_overlap(cls, forecasts, field_names=None):
+        if field_names and not (field_names & {
+                    'from_date', 'to_date',
+                    'warehouse', 'destination',
+                    'company', 'state'}):
             return
         transaction = Transaction()
         connection = transaction.connection
-        self.__class__.lock()
-        forcast = self.__table__()
+        cls.lock()
+        table = cls.__table__()
         cursor = connection.cursor()
-        cursor.execute(*forcast.select(forcast.id,
-                where=(((forcast.from_date <= self.from_date)
-                        & (forcast.to_date >= self.from_date))
-                    | ((forcast.from_date <= self.to_date)
-                        & (forcast.to_date >= self.to_date))
-                    | ((forcast.from_date >= self.from_date)
-                        & (forcast.to_date <= self.to_date)))
-                & (forcast.warehouse == self.warehouse.id)
-                & (forcast.destination == self.destination.id)
-                & (forcast.company == self.company.id)
-                & (forcast.id != self.id)))
-        forecast_id = cursor.fetchone()
-        if forecast_id:
-            second = self.__class__(forecast_id[0])
-            raise ForecastValidationError(
-                gettext('stock_forecast.msg_forecast_date_overlap',
-                    first=self.rec_name,
-                    second=second.rec_name))
+        for forecast in forecasts:
+            if forecast.state != 'done':
+                continue
+            cursor.execute(*table.select(table.id,
+                    where=(((table.from_date <= forecast.from_date)
+                            & (table.to_date >= forecast.from_date))
+                        | ((table.from_date <= forecast.to_date)
+                            & (table.to_date >= forecast.to_date))
+                        | ((table.from_date >= forecast.from_date)
+                            & (table.to_date <= forecast.to_date)))
+                    & (table.warehouse == forecast.warehouse.id)
+                    & (table.destination == forecast.destination.id)
+                    & (table.company == forecast.company.id)
+                    & (table.id != forecast.id)))
+            forecast_id = cursor.fetchone()
+            if forecast_id:
+                second = cls(forecast_id[0])
+                raise ForecastValidationError(
+                    gettext('stock_forecast.msg_forecast_date_overlap',
+                        first=forecast.rec_name,
+                        second=second.rec_name))
 
     @classmethod
     def delete(cls, forecasts):
