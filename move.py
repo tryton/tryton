@@ -841,6 +841,13 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         'get_amount')
     amount_currency = fields.Function(fields.Many2One('currency.currency',
             'Amount Currency'), 'get_amount_currency')
+    delegated_amount = fields.Function(Monetary(
+            "Delegated Amount",
+            currency='amount_currency', digits='amount_currency',
+            states={
+                'invisible': ~Eval('reconciliation', False),
+                }),
+        'get_delegated_amount')
 
     del _states
 
@@ -1034,6 +1041,20 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     order_date = MoveLineMixin._order_move_field('date')
     order_move_origin = MoveLineMixin._order_move_field('origin')
     order_move_state = MoveLineMixin._order_move_field('state')
+
+    def get_delegated_amount(self, name):
+        def final_delegated_line(line):
+            if not line.reconciliation or not line.reconciliation.delegate_to:
+                return line
+            return final_delegated_line(line.reconciliation.delegate_to)
+
+        final_delegation = final_delegated_line(self)
+        if final_delegation == self:
+            return None
+        elif final_delegation.reconciliation:
+            return final_delegation.amount_currency.round(0)
+        else:
+            return final_delegation.amount
 
     @classmethod
     def query_get(cls, table):

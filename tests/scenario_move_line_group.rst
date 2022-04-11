@@ -117,6 +117,14 @@ Group lines::
     >>> payable.balance, payable.amount_second_currency
     (Decimal('0.00'), Decimal('0.00'))
 
+    >>> delegated_line1, delegated_line2 = lines
+    >>> delegated_line1.reload()
+    >>> delegated_line2.reload()
+    >>> delegated_line1.delegated_amount
+    Decimal('45')
+    >>> delegated_line2.delegated_amount
+    Decimal('45')
+
     >>> Reconciliation = Model.get('account.move.reconciliation')
     >>> reconciliations = Reconciliation.find([])
     >>> len(reconciliations)
@@ -151,3 +159,6 @@ Cancelling the delegation move::
    >>> cancel.execute('cancel')
    >>> Reconciliation.find([('id', '=', reconciliations[0].id)])
    []
+
+   >>> delegated_line1.reload()
+   >>> delegated_line1.delegated_amount

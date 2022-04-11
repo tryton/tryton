@@ -34,8 +34,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="maturity_date"/>
             <label name="party"/>
             <field name="party"/>
+            <newline/>
             <label name="reconciliation"/>
             <field name="reconciliation"/>
+            <label name="delegated_amount"/>
+            <field name="delegated_amount" symbol="amount_currency"/>
             <label name="amount_second_currency"/>
             <field name="amount_second_currency"/>
             <label name="second_currency"/>
