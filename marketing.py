@@ -365,22 +365,25 @@ class Message(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     @classmethod
-    def validate(cls, messages):
-        super().validate(messages)
-        for message in messages:
-            message.check_content()
+    def validate_fields(cls, messages, field_names):
+        super().validate_fields(messages, field_names)
+        cls.check_content(messages, field_names)
 
-    def check_content(self):
-        if not self.content:
+    @classmethod
+    def check_content(cls, messages, field_names=None):
+        if field_names and 'content' not in field_names:
             return
-        try:
-            MarkupTemplate(self.content)
-        except Exception as exception:
-            raise TemplateError(
-                gettext('marketing_email'
-                    '.msg_message_invalid_content',
-                    message=self.rec_name,
-                    exception=exception)) from exception
+        for message in messages:
+            if not message.content:
+                continue
+            try:
+                MarkupTemplate(message.content)
+            except Exception as exception:
+                raise TemplateError(
+                    gettext('marketing_email'
+                        '.msg_message_invalid_content',
+                        message=message.rec_name,
+                        exception=exception)) from exception
 
     @classmethod
     @ModelView.button
