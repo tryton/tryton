@@ -566,9 +566,22 @@ class Record:
                         'model', self.model_name, 'on_change',
                         values, fieldnames, context=self.get_context())
             except RPCException:
-                return
-            for change in changes:
-                self.set_on_change(change)
+                pass
+            else:
+                for change in changes:
+                    self.set_on_change(change)
+
+        notification_fields = common.MODELNOTIFICATION.get(self.model_name)
+        if set(fieldnames) & set(notification_fields):
+            values = self._get_on_change_args(notification_fields)
+            try:
+                notifications = RPCExecute(
+                    'model', self.model_name, 'on_change_notify', values,
+                    context=self.get_context())
+            except RPCException:
+                pass
+            else:
+                self.group.record_notify(notifications)
 
     def on_change_with(self, field_names):
         field_names = set(field_names)

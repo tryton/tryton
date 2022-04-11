@@ -293,7 +293,7 @@ class Form(TabContent):
     def sig_logs(self, widget=None):
         current_record = self.screen.current_record
         if not current_record or current_record.id < 0:
-            self.message_info(
+            self.info_bar_add(
                 _('You have to select one record.'), Gtk.MessageType.INFO)
             return False
 
@@ -407,10 +407,10 @@ class Form(TabContent):
             msg = _('Are you sure to remove those records?')
         if sur(msg):
             if not self.screen.remove(delete=True, force_remove=True):
-                self.message_info(
+                self.info_bar_add(
                     _('Records not removed.'), Gtk.MessageType.ERROR)
             else:
-                self.message_info(_('Records removed.'), Gtk.MessageType.INFO)
+                self.info_bar_add(_('Records removed.'), Gtk.MessageType.INFO)
                 self.screen.count_tab_domain(True)
 
     def sig_import(self, widget=None):
@@ -467,7 +467,7 @@ class Form(TabContent):
             if not self.modified_save():
                 return
         self.screen.new()
-        self.message_info()
+        self.info_bar_clear()
         self.activate_save()
 
     def sig_copy(self, widget=None):
@@ -476,7 +476,8 @@ class Form(TabContent):
         if not self.modified_save():
             return
         if self.screen.copy():
-            self.message_info(_('Working now on the duplicated record(s).'),
+            self.info_bar_add(
+                _('Working now on the duplicated record(s).'),
                 Gtk.MessageType.INFO)
             self.screen.count_tab_domain(True)
 
@@ -489,11 +490,11 @@ class Form(TabContent):
                 or self.screen.writable):
             return
         if self.screen.save_current():
-            self.message_info(_('Record saved.'), Gtk.MessageType.INFO)
+            self.info_bar_add(_('Record saved.'), Gtk.MessageType.INFO)
             self.screen.count_tab_domain(True)
             return True
         else:
-            self.message_info(
+            self.info_bar_add(
                 self.screen.invalid_message(), Gtk.MessageType.ERROR)
             return False
 
@@ -501,14 +502,14 @@ class Form(TabContent):
         if not self.modified_save():
             return
         self.screen.display_prev()
-        self.message_info()
+        self.info_bar_clear()
         self.activate_save()
 
     def sig_next(self, widget=None):
         if not self.modified_save():
             return
         self.screen.display_next()
-        self.message_info()
+        self.info_bar_clear()
         self.activate_save()
 
     def sig_reload(self, test_modified=True):
@@ -529,7 +530,7 @@ class Form(TabContent):
                     set_cursor = True
                     break
         self.screen.display(set_cursor=set_cursor)
-        self.message_info()
+        self.info_bar_clear()
         self.set_buttons_sensitive()
         self.activate_save()
         self.screen.count_tab_domain()
@@ -628,7 +629,7 @@ class Form(TabContent):
         else:
             msg = "%s/%s" % (name, common.humanize(size))
         self.status_label.set_text(msg)
-        self.message_info()
+        self.info_bar_clear()
         self.activate_save()
         self.refresh_attachment_preview()
 

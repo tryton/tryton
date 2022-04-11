@@ -286,6 +286,25 @@ class ModelName:
 MODELNAME = ModelName()
 
 
+class ModelNotification:
+    _depends = {}
+
+    def load_names(self):
+        try:
+            self._depends = rpc.execute(
+                'model', 'ir.model', 'get_notification', rpc.CONTEXT)
+        except TrytonServerError:
+            pass
+
+    def get(self, model):
+        if not self._depends:
+            self.load_names()
+        return self._depends.get(model, [])
+
+
+MODELNOTIFICATION = ModelNotification()
+
+
 class ViewSearch(object):
     searches = {}
 

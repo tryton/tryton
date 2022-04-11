@@ -203,9 +203,8 @@ class TabContent(InfoBar):
         self.scrolledwindow.show()
         self.main.pack1(self.scrolledwindow, resize=True, shrink=False)
 
-        self.create_info_bar()
         self.widget.pack_start(
-            self.info_bar, expand=False, fill=True, padding=0)
+            self.create_info_bar(), expand=False, fill=True, padding=0)
 
     def make_title_bar(self):
         tooltips = common.Tooltips()

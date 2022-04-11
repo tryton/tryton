@@ -171,10 +171,10 @@ class Wizard(InfoBar):
         if (button_attrs.get('validate', True)
                 and not self.screen.current_record.validate()):
             self.screen.display(set_cursor=True)
-            self.message_info(
+            self.info_bar_add(
                 self.screen.invalid_message(), Gtk.MessageType.ERROR)
             return
-        self.message_info()
+        self.info_bar_clear()
         self.state = state
         self.process()
 
@@ -242,9 +242,8 @@ class Wizard(InfoBar):
         self.widget.pack_start(
             self.scrolledwindow, expand=True, fill=True, padding=0)
 
-        self.create_info_bar()
         self.widget.pack_start(
-            self.info_bar, expand=False, fill=True, padding=0)
+            self.create_info_bar(), expand=False, fill=True, padding=0)
 
 
 class WizardForm(Wizard, TabContent):

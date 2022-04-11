@@ -274,9 +274,8 @@ class WinForm(NoModal, InfoBar):
 
         scroll.add(self.screen.screen_container.alternate_viewport)
 
-        self.create_info_bar()
         self.win.vbox.pack_start(
-            self.info_bar, expand=False, fill=True, padding=0)
+            self.create_info_bar(), expand=False, fill=True, padding=0)
 
         self.screen.windows.append(self)
         if view_type == 'tree':
@@ -422,12 +421,12 @@ class WinForm(NoModal, InfoBar):
                             if record:
                                 validate = record.pre_validate()
             if not validate:
-                self.message_info(self.screen.invalid_message(),
-                    Gtk.MessageType.ERROR)
+                self.info_bar_add(
+                    self.screen.invalid_message(), Gtk.MessageType.ERROR)
                 self.screen.set_cursor()
                 self.screen.display()
                 return
-            self.message_info()
+            self.info_bar_clear()
             if response_id == Gtk.ResponseType.ACCEPT:
                 self.new()
                 return

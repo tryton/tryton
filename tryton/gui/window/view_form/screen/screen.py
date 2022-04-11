@@ -20,6 +20,7 @@ from tryton.common import (
     sur, warning)
 from tryton.common.domain_parser import DomainParser
 from tryton.config import CONFIG
+from tryton.gui.window.infobar import InfoBar
 from tryton.gui.window.view_form.model.group import Group
 from tryton.gui.window.view_form.view import View
 from tryton.gui.window.view_form.view.screen_container import ScreenContainer
@@ -446,6 +447,18 @@ class Screen:
                 window.record_modified()
         if display:
             self.display()
+
+    def record_notify(self, notifications):
+        for window in self.windows:
+            if isinstance(window, InfoBar):
+                window.info_bar_refresh()
+                for type_, message in notifications:
+                    type_ = {
+                        'info': Gtk.MessageType.INFO,
+                        'warning': Gtk.MessageType.WARNING,
+                        'error': Gtk.MessageType.ERROR,
+                        }.get(type_, Gtk.MessageType.WARNING)
+                    window.info_bar_add(message, type_)
 
     def record_message(self, position, size, max_size, record_id):
         for window in self.windows:

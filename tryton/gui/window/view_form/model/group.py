@@ -524,3 +524,7 @@ class Group(list):
             self.parent.group.fields[self.child_name].sig_changed(self.parent)
             self.parent.validate(softvalidation=True)
             self.parent.group.record_modified()
+
+    def record_notify(self, notifications):
+        for screen in self.screens:
+            screen.record_notify(notifications)
