@@ -120,18 +120,21 @@ class Account(
         return 'draft'
 
     @classmethod
-    def validate(cls, accounts):
-        super(Account, cls).validate(accounts)
-        for account in accounts:
-            account.check_distribution()
+    def validate_fields(cls, accounts, field_names):
+        super().validate_fields(accounts, field_names)
+        cls.check_distribution(accounts, field_names)
 
-    def check_distribution(self):
-        if self.type != 'distribution':
+    @classmethod
+    def check_distribution(cls, accounts, field_names=None):
+        if field_names and not (field_names & {'distributions', 'type'}):
             return
-        if sum((d.ratio for d in self.distributions)) != 1:
-            raise AccountValidationError(
-                gettext('analytic_account.msg_invalid_distribution',
-                    account=self.rec_name))
+        for account in accounts:
+            if account.type != 'distribution':
+                return
+            if sum((d.ratio for d in account.distributions)) != 1:
+                raise AccountValidationError(
+                    gettext('analytic_account.msg_invalid_distribution',
+                        account=account.rec_name))
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
