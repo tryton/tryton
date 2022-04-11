@@ -1,3 +1,4 @@
+* Add automatic reconciliation of suggestions
 * Prevent to change the type of journal with posted moves
 * Mute reconciled payable/receivable lines
 * Add delegated amount on move lines

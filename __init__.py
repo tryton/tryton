@@ -56,6 +56,7 @@ def register():
         move.WriteOff,
         move.OpenJournalAsk,
         move.ReconcileLinesWriteOff,
+        move.ReconcileStart,
         move.ReconcileShow,
         move.CancelMovesDefault,
         move.GroupLinesStart,

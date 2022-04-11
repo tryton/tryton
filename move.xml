@@ -345,6 +345,12 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20"
             id="menu_reconcile"/>
 
+        <record model="ir.ui.view" id="reconcile_start_view_form">
+            <field name="model">account.reconcile.start</field>
+            <field name="type">form</field>
+            <field name="name">reconcile_start_form</field>
+        </record>
+
         <record model="ir.ui.view" id="reconcile_show_view_form">
             <field name="model">account.reconcile.show</field>
             <field name="type">form</field>

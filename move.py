@@ -1700,7 +1700,12 @@ class UnreconcileLines(Wizard):
 class Reconcile(Wizard):
     'Reconcile'
     __name__ = 'account.reconcile'
-    start_state = 'next_'
+    start = StateView(
+        'account.reconcile.start',
+        'account.reconcile_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Reconcile", 'next_', 'tryton-ok', default=True),
+            ])
     next_ = StateTransition()
     show = StateView('account.reconcile.show',
         'account.reconcile_show_view_form', [
@@ -1783,6 +1788,8 @@ class Reconcile(Wizard):
         return [p for p, in cursor]
 
     def transition_next_(self):
+        pool = Pool()
+        Line = pool.get('account.move.line')
 
         def next_account():
             accounts = list(self.show.accounts)
@@ -1814,6 +1821,17 @@ class Reconcile(Wizard):
             while not next_party():
                 if not next_account():
                     return 'end'
+            if self.start.automatic or self.start.only_balanced:
+                lines = self._default_lines()
+                if lines and self.start.automatic:
+                    while lines:
+                        Line.reconcile(lines)
+                        lines = self._default_lines()
+                    if not self.get_parties(
+                            self.show.account, party=self.show.party):
+                        return 'next_'
+                elif not lines and self.start.only_balanced:
+                    return 'next_'
             return 'show'
 
     def default_show(self, fields):
@@ -1827,7 +1845,7 @@ class Reconcile(Wizard):
         defaults['parties'] = [p.id for p in self.show.parties]
         defaults['party'] = self.show.party.id if self.show.party else None
         defaults['currency'] = self.show.account.company.currency.id
-        defaults['lines'] = self._default_lines()
+        defaults['lines'] = list(map(int, self._default_lines()))
         defaults['write_off_amount'] = Decimal(0)
         with Transaction().set_context(company=self.show.account.company.id):
             defaults['date'] = Date.today()
@@ -1863,7 +1881,7 @@ class Reconcile(Wizard):
         all_lines = self._all_lines()
         amount = sum((l.debit - l.credit) for l in all_lines)
         if currency.is_zero(amount):
-            return [l.id for l in all_lines]
+            return all_lines
 
         chunk = config.getint('account', 'reconciliation_chunk', default=10)
         # Combination is exponential so it must be limited to small number
@@ -1878,15 +1896,16 @@ class Reconcile(Wizard):
                         continue
                     amount = sum((l.debit - l.credit) for l in comb_lines)
                     if currency.is_zero(amount):
-                        best = [l.id for l in comb_lines]
+                        best = comb_lines
                         break
                 if best:
                     break
             if best:
                 default.extend(best)
         if not default and requested:
-            default = list(map(int, requested))
-        return default
+            return requested
+        else:
+            return default
 
     def transition_reconcile(self):
         pool = Pool()
@@ -1901,6 +1920,25 @@ class Reconcile(Wizard):
         if self.get_parties(self.show.account, party=self.show.party):
             return 'show'
         return 'next_'
+
+
+class ReconcileStart(ModelView):
+    "Reconcile"
+    __name__ = 'account.reconcile.start'
+    automatic = fields.Boolean(
+        "Automatic",
+        help="Automatically reconcile suggestions.")
+    only_balanced = fields.Boolean(
+        "Only Balanced",
+        help="Skip suggestion with write-off.")
+
+    @classmethod
+    def default_automatic(cls):
+        return False
+
+    @classmethod
+    def default_only_balanced(cls):
+        return False
 
 
 class ReconcileShow(ModelView):

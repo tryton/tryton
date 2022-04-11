@@ -16,6 +16,11 @@ Activate modules::
 
     >>> config = activate_modules('account')
 
+    >>> Journal = Model.get('account.journal')
+    >>> Line = Model.get('account.move.line')
+    >>> Move = Model.get('account.move')
+    >>> Party = Model.get('party.party')
+
 Create company::
 
     >>> _ = create_company()
@@ -38,14 +43,11 @@ Create chart of accounts::
 
 Create parties::
 
-    >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
 Create Moves to reconcile::
 
-    >>> Journal = Model.get('account.journal')
-    >>> Move = Model.get('account.move')
     >>> journal_revenue, = Journal.find([
     ...         ('code', '=', 'REV'),
     ...         ])
@@ -95,9 +97,18 @@ Create a write off method::
     >>> writeoff_method.credit_account = expense
     >>> writeoff_method.save()
 
+Run Reconcile for only balanced::
+
+    >>> reconcile = Wizard('account.reconcile')
+    >>> reconcile.form.only_balanced = True
+    >>> reconcile.execute('next_')
+    >>> reconcile.state
+    'end'
+
 Run Reconcile wizard::
 
     >>> reconcile = Wizard('account.reconcile')
+    >>> reconcile.execute('next_')
     >>> reconcile.form.party == customer
     True
     >>> reconcile.form.write_off_amount
@@ -111,3 +122,9 @@ Run Reconcile wizard::
     Decimal('2.00')
     >>> reconcile.form.write_off = writeoff_method
     >>> reconcile.execute('reconcile')
+
+    >>> lines = Line.find([('account', '=', receivable.id)])
+    >>> len(lines)
+    3
+    >>> all(l.reconciliation for l in lines)
+    True
