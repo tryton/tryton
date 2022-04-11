@@ -143,6 +143,11 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                         }])
         cls.write(*to_write)
 
+    @fields.depends('party', 'email')
+    def on_change_party(self):
+        if not self.email and self.party:
+            self.email = self.party.email
+
     @classmethod
     def _format_email(cls, users):
         for user in users:
