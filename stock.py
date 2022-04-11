@@ -101,26 +101,35 @@ class ShipmentCostMixin:
         moves = []
         for shipment in shipments:
             cost = shipment._get_shipment_cost()
-            if not cost:
-                continue
-
-            sum_ = Decimal(0)
-            costs = {}
-            for move in shipment.shipment_cost_moves:
-                move_cost = (
-                    move.cost_price * Decimal(str(move.internal_quantity)))
-                costs[move] = move_cost
-                sum_ += move_cost
-
-            factors = {}
-            for move in shipment.shipment_cost_moves:
-                if sum_:
-                    ratio = costs[move] / sum_
-                else:
-                    ratio = Decimal(1) / len(shipment.shipment_cost_moves)
-                factors[move.id] = ratio
+            factors = getattr(shipment,
+                '_get_allocation_shipment_cost_factors_by_%s' %
+                shipment.allocation_shipment_cost_method)()
             moves.extend(shipment._allocate_shipment_cost(cost, factors))
         Move.save(moves)
+
+    @property
+    def allocation_shipment_cost_method(self):
+        if self.carrier:
+            return self.carrier.shipment_cost_allocation_method
+        return 'cost'
+
+    def _get_allocation_shipment_cost_factors_by_cost(self):
+        sum_ = Decimal(0)
+        costs = {}
+        for move in self.shipment_cost_moves:
+            move_cost = (
+                move.cost_price * Decimal(str(move.internal_quantity)))
+            costs[move] = move_cost
+            sum_ += move_cost
+
+        factors = {}
+        for move in self.shipment_cost_moves:
+            if sum_:
+                ratio = costs[move] / sum_
+            else:
+                ratio = Decimal(1) / len(self.shipment_cost_moves)
+            factors[move.id] = ratio
+        return factors
 
     def _allocate_shipment_cost(self, cost, factors):
         moves = []

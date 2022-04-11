@@ -4,13 +4,14 @@
 from trytond.modules.stock.stock_reporting_margin import Abstract
 from trytond.pool import Pool
 
-from . import stock, stock_reporting_margin
+from . import carrier, stock, stock_reporting_margin
 
 __all__ = ['register']
 
 
 def register():
     Pool.register(
+        carrier.Carrier,
         stock.Move,
         stock.ShipmentOut,
         stock.ShipmentOutReturn,
