@@ -279,19 +279,24 @@ class Subscription(Workflow, ModelSQL, ModelView):
             return next_date.date()
 
     @classmethod
-    def validate(cls, subscriptions):
-        super().validate(subscriptions)
-        for subscription in subscriptions:
-            subscription.validate_invoice_recurrence()
+    def validate_fields(cls, subscriptions, field_names):
+        super().validate_fields(subscriptions, field_names)
+        cls.validate_invoice_recurrence(subscriptions, field_names)
 
-    def validate_invoice_recurrence(self):
-        start_date = self.invoice_start_date or self.start_date
-        try:
-            self.invoice_recurrence.rruleset(start_date)[0]
-        except IndexError:
-            raise InvalidRecurrence(gettext(
-                    'sale_subscription.msg_invoice_recurrence_invalid',
-                    subscription=self.rec_name))
+    @classmethod
+    def validate_invoice_recurrence(cls, subscriptions, field_names=None):
+        if field_names and not (field_names & {
+                    'start_date', 'invoice_start_date', 'invoice_recurrence'}):
+            return
+        for subscription in subscriptions:
+            start_date = (
+                subscription.invoice_start_date or subscription.start_date)
+            try:
+                subscription.invoice_recurrence.rruleset(start_date)[0]
+            except IndexError:
+                raise InvalidRecurrence(gettext(
+                        'sale_subscription.msg_invoice_recurrence_invalid',
+                        subscription=subscription.rec_name))
 
     @classmethod
     def copy(cls, subscriptions, default=None):
@@ -808,20 +813,25 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return next_date
 
     @classmethod
-    def validate(cls, lines):
-        super().validate(lines)
-        for line in lines:
-            line.validate_consumption_recurrence()
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.validate_consumption_recurrence(lines, field_names)
 
-    def validate_consumption_recurrence(self):
-        if self.consumption_recurrence:
-            try:
-                self.consumption_recurrence.rruleset(self.start_date)[0]
-            except IndexError:
-                raise InvalidRecurrence(gettext(
-                        'sale_subscription.msg_consumption_recurrence_invalid',
-                        line=self.rec_name,
-                        subscription=self.subscription.rec_name))
+    @classmethod
+    def validate_consumption_recurrence(cls, lines, field_names=None):
+        if field_names and not (field_names & {
+                    'consumption_recurrence', 'start_date'}):
+            return
+        for line in lines:
+            if line.consumption_recurrence:
+                try:
+                    line.consumption_recurrence.rruleset(line.start_date)[0]
+                except IndexError:
+                    raise InvalidRecurrence(gettext(
+                            'sale_subscription'
+                            '.msg_consumption_recurrence_invalid',
+                            line=line.rec_name,
+                            subscription=line.subscription.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):
