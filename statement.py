@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 
@@ -98,9 +98,18 @@ class StatementLine(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(StatementLine, cls).__setup__()
+        cls.related_to.domain['account.payment'] = [
+            cls.related_to.domain.get('account.payment', []),
+            If(Eval('statement_state') == 'draft',
+                ('clearing_reconciled', '!=', True),
+                ()),
+            ]
         cls.related_to.domain['account.payment.group'] = [
             ('company', '=', Eval('company', -1)),
-            ('currency', '=', Eval('currency', -1))
+            ('currency', '=', Eval('currency', -1)),
+            If(Eval('statement_state') == 'draft',
+                ('clearing_reconciled', '!=', True),
+                ()),
             ]
 
     @classmethod

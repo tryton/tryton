@@ -3,9 +3,13 @@
 from collections import defaultdict
 from functools import wraps
 
+from sql.aggregate import BoolAnd, Min
+
+from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -94,6 +98,7 @@ def cancel_clearing_move(func):
         for party in to_reconcile:
             for lines in to_reconcile[party].values():
                 Line.reconcile(lines)
+        cls.update_reconciled(payments)
     return wrapper
 
 
@@ -120,6 +125,12 @@ class Payment(metaclass=PoolMeta):
         help="Define the account to use for clearing move.")
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
         readonly=True)
+    clearing_reconciled = fields.Boolean(
+        "Clearing Reconciled", select=True,
+        states={
+            'invisible': ~Eval('clearing_move'),
+            },
+        help="Checked if clearing line is reconciled.")
 
     @property
     def amount_line_paid(self):
@@ -190,6 +201,7 @@ class Payment(metaclass=PoolMeta):
                     to_reconcile.append(lines)
         Line.reconcile(*to_reconcile)
         cls.reconcile_clearing(payments)
+        cls.update_reconciled(payments)
 
     @property
     def clearing_account(self):
@@ -277,6 +289,16 @@ class Payment(metaclass=PoolMeta):
         super(Payment, cls).fail(payments)
 
     @classmethod
+    def update_reconciled(cls, payments):
+        for payment in payments:
+            if payment.clearing_move:
+                payment.clearing_reconciled = all(
+                    l.reconciliation for l in payment.clearing_lines)
+            else:
+                payment.clearing_reconciled = False
+        cls.save(payments)
+
+    @classmethod
     def reconcile_clearing(cls, payments):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -316,6 +338,50 @@ class Payment(metaclass=PoolMeta):
 
 class Group(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
+
+    clearing_reconciled = fields.Function(fields.Boolean(
+            "Clearing Reconciled",
+            help="All payments in the group are reconciled."),
+        'get_reconciled', searcher='search_reconciled')
+
+    @classmethod
+    def get_reconciled(cls, groups, name):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payment = Payment.__table__()
+        cursor = Transaction().connection.cursor()
+        result = defaultdict()
+        if backend.name == 'sqlite':
+            column = Min(payment.clearing_reconciled)
+        else:
+            column = BoolAnd(payment.clearing_reconciled)
+        for sub_groups in grouped_slice(groups):
+            cursor.execute(*payment.select(
+                    payment.group, column,
+                    where=reduce_ids(payment.group, sub_groups),
+                    group_by=payment.group))
+            result.update(cursor)
+        return result
+
+    @classmethod
+    def search_reconciled(cls, name, clause):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payment = Payment.__table__()
+
+        _, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+
+        if backend.name == 'sqlite':
+            column = Min(payment.clearing_reconciled)
+        else:
+            column = BoolAnd(payment.clearing_reconciled)
+
+        query = payment.select(
+            payment.group,
+            having=Operator(column, value),
+            group_by=payment.group)
+        return [('id', 'in', query)]
 
     @classmethod
     def reconcile_clearing(cls, groups):

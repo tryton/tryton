@@ -119,6 +119,8 @@ Succeed payment::
     True
     >>> payment.clearing_move.state
     'draft'
+    >>> bool(payment.clearing_reconciled)
+    False
     >>> payable.reload()
     >>> payable.balance
     Decimal('-20.00')
@@ -133,6 +135,8 @@ Fail payment::
     >>> payment.state
     'failed'
     >>> payment.clearing_move
+    >>> bool(payment.clearing_reconciled)
+    False
     >>> payment.line.reconciliation
     >>> payable.reload()
     >>> payable.balance
@@ -214,6 +218,8 @@ Fail payment with posted clearing::
     >>> payment.state
     'failed'
     >>> payment.clearing_move
+    >>> bool(payment.clearing_reconciled)
+    False
     >>> payment.line.reconciliation
     >>> clearing_move.reload()
     >>> line, = [l for l in clearing_move.lines
@@ -284,6 +290,20 @@ Validate statement::
     >>> bank_clearing.reload()
     >>> bank_clearing.balance
     Decimal('0.00')
+    >>> payment.reload()
+    >>> bool(payment.clearing_reconciled)
+    True
+    >>> bool(payment.group.clearing_reconciled)
+    True
+
+Unreconcile payment clearing to allow reimbursement::
+
+    >>> move_line.reconciliation.delete()
+    >>> payment.reload()
+    >>> bool(payment.clearing_reconciled)
+    False
+    >>> bool(payment.group.clearing_reconciled)
+    False
 
 Create a statement that reimburse the payment group::
 
@@ -460,6 +480,8 @@ Validate statement and check the payment is confirmed::
     >>> payment.reload()
     >>> payment.state
     'succeeded'
+    >>> bool(payment.clearing_reconciled)
+    True
     >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
     >>> debit_line.debit
     Decimal('50.00')

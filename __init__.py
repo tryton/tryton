@@ -12,6 +12,7 @@ def register():
         payment.Group,
         payment.SucceedStart,
         account.Move,
+        account.MoveReconciliation,
         ir.Cron,
         module='account_payment_clearing', type_='model')
     Pool.register(

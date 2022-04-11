@@ -1,3 +1,4 @@
+* Prevent to select reconciled payment or group on draft statement line
 * Reconcile payment clearing line with all statement lines
 * Use reference field for statement line relation
 * Add support for Python 3.10
