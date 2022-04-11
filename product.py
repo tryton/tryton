@@ -26,18 +26,19 @@ class Template(metaclass=PoolMeta):
             self.default_uom = ModelData.get_id('product', 'uom_unit')
 
     @classmethod
-    def validate(cls, templates):
+    def validate_fields(cls, templates, field_names):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         UoM = pool.get('product.uom')
-        super().validate(templates)
-        unit = UoM(ModelData.get_id('product', 'uom_unit'))
-        for template in templates:
-            if template.gift_card and template.default_uom != unit:
-                raise GiftCardValidationError(
-                    gettext('sale_gift_card.msg_gift_card_invalid_uom',
-                        template=template.rec_name,
-                        unit=unit.rec_name))
+        super().validate_fields(templates, field_names)
+        if field_names & {'gift_card', 'default_uom'}:
+            unit = UoM(ModelData.get_id('product', 'uom_unit'))
+            for template in templates:
+                if template.gift_card and template.default_uom != unit:
+                    raise GiftCardValidationError(
+                        gettext('sale_gift_card.msg_gift_card_invalid_uom',
+                            template=template.rec_name,
+                            unit=unit.rec_name))
 
     @property
     def account_expense_used(self):
