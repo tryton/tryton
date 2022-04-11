@@ -11,10 +11,6 @@ except NameError:
     pass
 
 if hasattr(sys, 'frozen'):
-    if not ('-v' in sys.argv or '--verbose' in sys.argv or
-            '-l' in sys.argv or '--log-level' in sys.argv):
-        sys.stdout = open(os.devnull, 'w')
-        sys.stderr = open(os.devnull, 'w')
     prefix = os.path.dirname(sys.executable)
     os.environ['GTK_EXE_PREFIX'] = prefix
     os.environ['GTK_DATA_PREFIX'] = prefix

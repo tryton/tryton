@@ -84,6 +84,8 @@ class ConfigManager(object):
         parser.add_option("-l", "--log-level", dest="log_level",
                 help=_("specify the log level: "
                 "DEBUG, INFO, WARNING, ERROR, CRITICAL"))
+        parser.add_option("-o", "--log-ouput", dest="log_output", default=None,
+            help=_("specify the file used to output logging information"))
         parser.add_option("-u", "--user", dest="login",
                 help=_("specify the login user"))
         parser.add_option("-s", "--server", dest="host",
@@ -93,8 +95,10 @@ class ConfigManager(object):
             get_config_dir(), 'tryton.conf')
         self.load()
 
-        self.options['dev'] = opt.dev
-        logging.basicConfig()
+        logging_config = {}
+        if opt.log_output:
+            logging_config['filename'] = opt.log_output
+
         loglevels = {
             'DEBUG': logging.DEBUG,
             'INFO': logging.INFO,
@@ -107,8 +111,10 @@ class ConfigManager(object):
                 opt.log_level = 'INFO'
             else:
                 opt.log_level = 'ERROR'
-        logging.getLogger().setLevel(loglevels[opt.log_level.upper()])
+        logging_config['level'] = loglevels[opt.log_level.upper()]
+        logging.basicConfig(**logging_config)
 
+        self.options['dev'] = opt.dev
         for arg in ['login', 'host']:
             if getattr(opt, arg):
                 self.options['login.' + arg] = getattr(opt, arg)

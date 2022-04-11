@@ -38,6 +38,9 @@ Options
 -l LOG_LEVEL, --log-level=LOG_LEVEL  Specify the log level: DEBUG, INFO,
                                      WARNING, ERROR, CRITICAL
 
+-o LOG_OUTPUT, --log-ouput=LOG_OUTPUT Specify the file used to output logging
+                                      information
+
 -u LOGIN, --user=LOGIN               Specify the login user
 
 -s SERVER, --server=SERVER           Specify the server hostname:port

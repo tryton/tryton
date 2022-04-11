@@ -1,3 +1,4 @@
+* Add option to define logging output location
 * Remove TreeViewControl
 * Manage optional column
 * Default CSV encoding to UTF8 with BOM
