@@ -2587,7 +2587,17 @@
             Sao.common.selection_mixin.update_selection.call(this, record,
                 this.field, callback);
         },
+        get_cell: function() {
+            var cell = Sao.View.Tree.ReferenceColumn._super
+                .get_cell.call(this);
+            cell.append(jQuery('<a/>', {
+                'href': '#',
+            }));
+            return cell;
+        },
         update_text: function(cell, record) {
+            cell = cell.children('a');
+            cell.unbind('click');
             this.update_selection(record, function() {
                 var value = this.field.get_client(record);
                 var model, name, text;
@@ -2610,6 +2620,22 @@
                     text = name;
                 }
                 cell.text(text).attr('title', text);
+                cell.click(function(event) {
+                    event.stopPropagation();
+                    var value = this.field.get(record);
+                    if (value) {
+                        var model = value.split(',')[0];
+                        var id = parseInt(value.split(',')[1], 10);
+                        var params = {
+                            model: model,
+                            res_id: id,
+                            mode: ['form'],
+                            name: this.attributes.string,
+                            context: this.field.get_context(record),
+                        };
+                        Sao.Tab.create(params);
+                    }
+                }.bind(this));
             }.bind(this));
         }
     });

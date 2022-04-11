@@ -1,3 +1,4 @@
+* Allow Reference to be edited from tree view
 * Set ECMAScript version to 6
 * Manage optional column
 * Display the number of selected records
