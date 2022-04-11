@@ -19,6 +19,20 @@ class Move(metaclass=PoolMeta):
         'account.move.line.group', 'move', "Grouped Lines", readonly=True)
 
 
+class MoveLine(metaclass=PoolMeta):
+    __name__ = 'account.move.line'
+
+    @classmethod
+    def _view_reconciliation_muted(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        muted = super()._view_reconciliation_muted()
+        muted.add(ModelData.get_id(
+                'account_move_line_grouping',
+                'move_line_group_view_list_move'))
+        return muted
+
+
 class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     "Account Move Line Group"
     __name__ = 'account.move.line.group'

@@ -11,6 +11,7 @@ __all__ = ['register']
 def register():
     Pool.register(
         account.Move,
+        account.MoveLine,
         account.MoveLineGroup,
         account.MoveLineGroup_MoveLine,
         module='account_move_line_grouping', type_='model')
