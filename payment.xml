@@ -282,6 +282,34 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20"
             id="menu_payment_form"/>
 
+        <record model="ir.action.act_window" id="act_payment_form_relate_party">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['succeeded', 'failed'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_relate_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form_relate_party"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_form_relate_party_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form_relate_party"/>
+        </record>
+        <record model="ir.action.keyword" id="act_payment_form_relate_party_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_payment_form_relate_party"/>
+        </record>
+        <record model="ir.action-res.group" id="act_payment_form_relate_party-group_payment">
+            <field name="action" ref="act_payment_form_relate_party"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_payment_companies">
             <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
