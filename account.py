@@ -77,7 +77,7 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
                 journal=journal,
                 kind='receivable')
             group.save()
-            cls.approve(payments)
+            cls.submit(payments)
             cls.process(payments, lambda: group)
 
         captured = defaultdict(Decimal)
