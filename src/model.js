@@ -953,6 +953,12 @@
             var promises = [];
             var fieldnames = [];
             for (var fname in values) {
+                if ((fname == '_write') ||
+                    (fname == '_delete') ||
+                    (fname == '_timestamp')) {
+                    this[fname] = values[fname];
+                    continue;
+                }
                 if (!values.hasOwnProperty(fname)) {
                     continue;
                 }
