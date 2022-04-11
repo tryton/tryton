@@ -263,18 +263,21 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
             ]
 
     @classmethod
-    def validate(cls, payments):
-        super(Payment, cls).validate(payments)
-        for payment in payments:
-            payment.check_braintree_journal()
+    def validate_fields(cls, payments, field_names):
+        super().validate_fields(payments, field_names)
+        cls.check_braintree_journal(payments, field_names)
 
-    def check_braintree_journal(self):
-        if (self.kind != 'receivable'
-                and self.journal.process_method == 'braintree'):
-            raise PaymentValidationError(
-                gettext('account_payment_braintree.msg_braintree_receivable',
-                    journal=self.journal.rec_name,
-                    payment=self.rec_name))
+    @classmethod
+    def check_braintree_journal(cls, payments, field_names=None):
+        if field_names and not (field_names & {'kind', 'journal'}):
+            return
+        for payment in payments:
+            if (payment.kind != 'receivable'
+                    and payment.journal.process_method == 'braintree'):
+                raise PaymentValidationError(gettext(
+                        'account_payment_braintree.msg_braintree_receivable',
+                        journal=payment.journal.rec_name,
+                        payment=payment.rec_name))
 
     @classmethod
     def copy(cls, payments, default=None):
