@@ -623,29 +623,33 @@ class Sale(
             return ''
 
     @classmethod
-    def validate(cls, sales):
-        super(Sale, cls).validate(sales)
-        for sale in sales:
-            sale.check_method()
+    def validate_fields(cls, sales, field_names):
+        super().validate_fields(sales, field_names)
+        cls.check_method(sales, field_names)
 
-    def check_method(self):
+    @classmethod
+    def check_method(cls, sales, field_names=None):
         '''
         Check the methods.
         '''
-        if (self.invoice_method == 'shipment'
-                and self.shipment_method in ('invoice', 'manual')):
-            raise SaleValidationError(
-                gettext('sale.msg_sale_invalid_method',
-                    invoice_method=self.invoice_method_string,
-                    shipment_method=self.shipment_method_string,
-                    sale=self.rec_name))
-        if (self.shipment_method == 'invoice'
-                and self.invoice_method in ('shipment', 'manual')):
-            raise SaleValidationError(
-                gettext('sale.msg_sale_invalid_method',
-                    invoice_method=self.invoice_method_string,
-                    shipment_method=self.shipment_method_string,
-                    sale=self.rec_name))
+        if field_names and not (field_names & {
+                    'invoice_method', 'shipment_method'}):
+            return
+        for sale in sales:
+            if (sale.invoice_method == 'shipment'
+                    and sale.shipment_method in {'invoice', 'manual'}):
+                raise SaleValidationError(
+                    gettext('sale.msg_sale_invalid_method',
+                        invoice_method=sale.invoice_method_string,
+                        shipment_method=sale.shipment_method_string,
+                        sale=sale.rec_name))
+            if (sale.shipment_method == 'invoice'
+                    and sale.invoice_method in {'shipment', 'manual'}):
+                raise SaleValidationError(
+                    gettext('sale.msg_sale_invalid_method',
+                        invoice_method=sale.invoice_method_string,
+                        shipment_method=sale.shipment_method_string,
+                        sale=sale.rec_name))
 
     @property
     def full_number(self):
