@@ -161,5 +161,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="account_invoice.invoice_view_form"/>
             <field name="name">invoice_form</field>
         </record>
+        <record model="ir.ui.view" id="move_line_view_list_to_pay">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account_invoice.move_line_view_list_to_pay"/>
+            <field name="name">move_line_list_to_pay</field>
+        </record>
     </data>
 </tryton>
