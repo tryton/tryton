@@ -380,10 +380,13 @@ class Sale(
     def default_state():
         return 'draft'
 
-    @staticmethod
-    def default_currency():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
+    @classmethod
+    def default_currency(cls, **pattern):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = pattern.get('company')
+        if not company:
+            company = cls.default_company()
         if company:
             return Company(company).currency.id
 
@@ -407,13 +410,19 @@ class Sale(
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'invoice_party', 'shipment_party', 'payment_term')
+    @fields.depends(
+        'company', 'party', 'invoice_party', 'shipment_party', 'payment_term',
+        'lines')
     def on_change_party(self):
         if not self.invoice_party:
             self.invoice_address = None
         if not self.shipment_party:
             self.shipment_address = None
-        self.payment_term = self.default_payment_term()
+        self.payment_term = self.default_payment_term(
+            company=self.company.id if self.company else None)
+        if not self.lines:
+            self.currency = self.default_currency(
+                company=self.company.id if self.company else None)
         if self.party:
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
@@ -429,6 +438,9 @@ class Sale(
                 self.invoice_method = self.party.sale_invoice_method
             else:
                 self.invoice_method = self.default_invoice_method()
+            if not self.lines:
+                if self.party.customer_currency:
+                    self.currency = self.party.customer_currency
 
     @fields.depends('party', 'invoice_party')
     def on_change_invoice_party(self):

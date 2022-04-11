@@ -11,6 +11,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sale_invoice_method"/>
             <label name="sale_shipment_method"/>
             <field name="sale_shipment_method"/>
+
+            <label name="customer_currency"/>
+            <field name="customer_currency"/>
+            <newline/>
         </page>
     </xpath>
 </data>

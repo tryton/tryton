@@ -18,6 +18,7 @@ def register():
         sale.SaleLineIgnoredMove,
         sale.SaleLineRecreatedMove,
         party.Party,
+        party.PartyCustomerCurrency,
         party.PartySaleMethod,
         product.Configuration,
         product.DefaultLeadTime,

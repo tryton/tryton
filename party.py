@@ -1,13 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+
+customer_currency = fields.Many2One(
+    'currency.currency', "Customer Currency",
+    help="Default currency for sales to this party.")
 
 
 def get_sale_methods(field_name):
@@ -33,6 +37,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             "Leave empty to use the default value from the configuration."))
     sale_methods = fields.One2Many(
         'party.party.sale_method', 'party', "Sale Methods")
+    customer_currency = fields.MultiValue(customer_currency)
+    customer_currencies = fields.One2Many(
+        'party.party.customer_currency', 'party', "Customer Currencies")
 
     @classmethod
     def multivalue_model(cls, field):
@@ -74,6 +81,14 @@ class PartySaleMethod(ModelSQL, CompanyValueMixin):
 
     get_sale_invoice_method = get_sale_methods('invoice_method')
     get_sale_shipment_method = get_sale_methods('shipment_method')
+
+
+class PartyCustomerCurrency(ModelSQL, ValueMixin):
+    "Party Customer Currency"
+    __name__ = 'party.party.customer_currency'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    customer_currency = customer_currency
 
 
 class Replace(metaclass=PoolMeta):
