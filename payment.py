@@ -1632,7 +1632,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             if setup_intent.status not in {'succeeded', 'canceled'}:
                 delay = customer.stripe_account.setup_intent_delay
                 expiration = dt.datetime.now() - delay
-                if dt.datetime.fromtimstamp(setup_intent.created) < expiration:
+                created = dt.datetime.fromtimestamp(setup_intent.created)
+                if created < expiration:
                     stripe.SetupIntent.cancel(
                         customer.stripe_customer_id,
                         api_key=customer.stripe_account.secret_key)
