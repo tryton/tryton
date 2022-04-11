@@ -1,3 +1,4 @@
+* Prevent to change the type of journal with posted moves
 * Mute reconciled payable/receivable lines
 * Add delegated amount on move lines
 * Enforce same type for children account as their parent

@@ -234,5 +234,8 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_close_period_inactive_accounts">
             <field name="text">To close period "%(period)s", you must balance the inactive account "%(account)s".</field>
         </record>
+        <record model="ir.message" id="msg_journal_account_moves">
+            <field name="text">You cannot change the type of journal "%(journal)s" because it has posted moves.</field>
+        </record>
     </data>
 </tryton>

@@ -151,6 +151,25 @@ class Journal(
                     debit - credit)
         return result
 
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Move = pool.get('account.move')
+        actions = iter(args)
+        for journals, values in zip(actions, actions):
+            if 'type' in values:
+                for sub_journals in grouped_slice(journals):
+                    moves = Move.search([
+                            ('journal', 'in', [j.id for j in sub_journals]),
+                            ('state', '=', 'posted')
+                            ], order=[], limit=1)
+                    if moves:
+                        move, = moves
+                        raise AccessError(gettext(
+                                'account.msg_journal_account_moves',
+                                journal=move.journal.rec_name))
+        super().write(*args)
+
 
 class JournalSequence(ModelSQL, CompanyValueMixin):
     "Journal Sequence"
