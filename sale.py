@@ -156,22 +156,26 @@ class Promotion(
         return False
 
     @classmethod
-    def validate(cls, promotions):
-        super().validate(promotions)
-        for promotion in promotions:
-            promotion.check_formula()
+    def validate_fields(cls, promotions, field_names):
+        super().validate_fields(promotions, field_names)
+        cls.check_formula(promotions, field_names)
 
-    def check_formula(self):
-        context = self.get_context_formula(None)
-        try:
-            if not isinstance(self.get_unit_price(**context), Decimal):
-                raise ValueError('Not a Decimal')
-        except Exception as exception:
-            raise FormulaError(
-                gettext('sale_promotion.msg_invalid_formula',
-                    formula=self.formula,
-                    promotion=self.rec_name,
-                    exception=exception)) from exception
+    @classmethod
+    def check_formula(cls, promotions, field_names=None):
+        if field_names and 'formula' not in field_names:
+            return
+        for promotion in promotions:
+            context = promotion.get_context_formula(None)
+            try:
+                unit_price = promotion.get_unit_price(**context)
+                if not isinstance(unit_price, Decimal):
+                    raise ValueError('Not a Decimal')
+            except Exception as exception:
+                raise FormulaError(
+                    gettext('sale_promotion.msg_invalid_formula',
+                        formula=promotion.formula,
+                        promotion=promotion.rec_name,
+                        exception=exception)) from exception
 
     @classmethod
     def _promotions_domain(cls, sale):
