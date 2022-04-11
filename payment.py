@@ -229,13 +229,17 @@ class Group(metaclass=PoolMeta):
                 payment.sepa_mandate = mandate
                 payment.sepa_mandate_sequence_type = sequence_type
             Payment.save(payments)
-        else:
-            for payment in self.payments:
-                if not payment.sepa_bank_account_number:
-                    raise ProcessError(
-                        gettext('account_payment_sepa'
-                            '.msg_payment_process_no_iban',
-                            payment=payment.rec_name))
+        for payment in self.payments:
+            if not payment.sepa_bank_account_number:
+                raise ProcessError(
+                    gettext('account_payment_sepa'
+                        '.msg_payment_process_no_iban',
+                        payment=payment.rec_name))
+            if not payment.sepa_bank_account_number.account.bank:
+                raise ProcessError(
+                    gettext('account_payment_sepa'
+                        '.msg_payment_process_no_bank',
+                        payment=payment.rec_name))
         to_write = []
         for key, payments in self.sepa_payments:
             to_write.append(payments)

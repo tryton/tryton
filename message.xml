@@ -9,6 +9,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_payment_process_no_iban">
             <field name="text">To process payment "%(payment)s" you must define IBAN for it.</field>
         </record>
+        <record model="ir.message" id="msg_payment_process_no_bank">
+            <field name="text">To process payment "%(payment)s" you must define a bank for the account "%(bank_account)s".</field>
+        </record>
         <record model="ir.message" id="msg_mandate_unique_id">
             <field name="text">SEPA mandate identification must be unique by company.</field>
         </record>
