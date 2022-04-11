@@ -134,11 +134,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
-        <record model="ir.model.button" id="move_assign_button">
-            <field name="name">assign</field>
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
-        </record>
-
         <record model="ir.model.button" id="move_do_button">
             <field name="name">do</field>
             <field name="string">Do</field>

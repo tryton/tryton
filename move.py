@@ -343,10 +343,6 @@ class Move(Workflow, ModelSQL, ModelView):
                     'readonly': Eval('shipment'),
                     'depends': ['state', 'shipment'],
                     },
-                'assign': {
-                    'invisible': ~Eval('state').in_(['assigned']),
-                    'depends': ['state'],
-                    },
                 'do': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
                     'readonly': (Eval('shipment')
@@ -636,7 +632,6 @@ class Move(Workflow, ModelSQL, ModelView):
                 })
 
     @classmethod
-    @ModelView.button
     @Workflow.transition('assigned')
     def assign(cls, moves):
         cls.check_origin(moves)
