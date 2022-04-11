@@ -262,18 +262,23 @@ class ContactMechanism(
         cls._format_values(all_mechanisms)
 
     @classmethod
-    def validate(cls, mechanisms):
-        super(ContactMechanism, cls).validate(mechanisms)
-        for mechanism in mechanisms:
-            mechanism.check_valid_phonenumber()
+    def validate_fields(cls, mechanisms, field_names):
+        super().validate_fields(mechanisms, field_names)
+        cls.check_valid_phonenumber(mechanisms, field_names)
 
-    def check_valid_phonenumber(self):
-        if not phonenumbers or self.type not in _PHONE_TYPES:
+    @classmethod
+    def check_valid_phonenumber(cls, mechanisms, field_names=None):
+        if field_names and not (field_names & {'type', 'value'}):
             return
-        if not self._parse_phonenumber(self.value):
-            raise InvalidPhoneNumber(
-                gettext('party.msg_invalid_phone_number',
-                    phone=self.value, party=self.party.rec_name))
+        if not phonenumbers:
+            return
+        for mechanism in mechanisms:
+            if mechanism.type not in _PHONE_TYPES:
+                continue
+            if not mechanism._parse_phonenumber(mechanism.value):
+                raise InvalidPhoneNumber(
+                    gettext('party.msg_invalid_phone_number',
+                        phone=mechanism.value, party=mechanism.party.rec_name))
 
     @classmethod
     def usages(cls, _fields=None):

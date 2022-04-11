@@ -352,22 +352,25 @@ ${COUNTRY}"""
         cls._get_format_cache.clear()
 
     @classmethod
-    def validate(cls, formats):
-        super(AddressFormat, cls).validate(formats)
-        for format_ in formats:
-            format_.check_format()
+    def validate_fields(cls, formats, field_names):
+        super().validate_fields(formats, field_names)
+        cls.check_format(formats, field_names)
 
-    def check_format(self):
+    @classmethod
+    def check_format(cls, formats, field_names=None):
         pool = Pool()
         Address = pool.get('party.address')
+        if field_names and 'format_' not in field_names:
+            return
         address = Address()
-        try:
-            Template(self.format_).substitute(
-                **address._get_address_substitutions())
-        except Exception as exception:
-            raise InvalidFormat(gettext('party.invalid_format',
-                    format=self.format_,
-                    exception=exception)) from exception
+        substitutions = address._get_address_substitutions()
+        for format_ in formats:
+            try:
+                Template(format_.format_).substitute(**substitutions)
+            except Exception as exception:
+                raise InvalidFormat(gettext('party.invalid_format',
+                        format=format_.format_,
+                        exception=exception)) from exception
 
     @classmethod
     def get_format(cls, address, pattern=None):

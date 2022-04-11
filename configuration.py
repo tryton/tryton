@@ -65,13 +65,15 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
-    def validate(cls, records):
-        super().validate(records)
-        cls(1).check_identifier_types()
+    def validate_fields(cls, records, field_names):
+        super().validate_fields(records, field_names)
+        cls(1).check_identifier_types(field_names)
 
-    def check_identifier_types(self):
+    def check_identifier_types(self, field_names=None):
         pool = Pool()
         Identifier = pool.get('party.identifier')
+        if field_names and 'identifier_types' not in field_names:
+            return
         if self.identifier_types:
             identifier_types = [None, ''] + list(self.identifier_types)
             identifiers = Identifier.search([
