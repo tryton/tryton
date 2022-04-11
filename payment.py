@@ -322,18 +322,21 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             ]
 
     @classmethod
-    def validate(cls, payments):
-        super(Payment, cls).validate(payments)
-        for payment in payments:
-            payment.check_stripe_journal()
+    def validate_fields(cls, payments, field_names):
+        super().validate_fields(payments, field_names)
+        cls.check_stripe_journal(payments, field_names)
 
-    def check_stripe_journal(self):
-        if (self.kind != 'receivable'
-                and self.journal.process_method == 'stripe'):
-            raise PaymentValidationError(
-                gettext('account_payment_stripe.msg_stripe_receivable',
-                    journal=self.journal.rec_name,
-                    payment=self.rec_name))
+    @classmethod
+    def check_stripe_journal(cls, payments, field_names=None):
+        if field_names and not (field_names & {'kind', 'journal'}):
+            return
+        for payment in payments:
+            if (payment.kind != 'receivable'
+                    and payment.journal.process_method == 'stripe'):
+                raise PaymentValidationError(
+                    gettext('account_payment_stripe.msg_stripe_receivable',
+                        journal=payment.journal.rec_name,
+                        payment=payment.rec_name))
 
     @classmethod
     def create(cls, vlist):
