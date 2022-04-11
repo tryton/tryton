@@ -73,6 +73,7 @@ class Model(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'list_models': RPC(),
                 'list_history': RPC(),
+                'get_notification': RPC(),
                 'get_names': RPC(),
                 'global_search': RPC(),
                 })
@@ -144,6 +145,15 @@ class Model(ModelSQL, ModelView):
         'Return a list of all models with history'
         return [name for name, model in Pool().iterobject()
             if getattr(model, '_history', False)]
+
+    @classmethod
+    def get_notification(cls):
+        "Return a dictionary of model to notify with the depending fields"
+        return {
+            name: list(model._on_change_notify_depends)
+            for name, model in Pool().iterobject()
+            if issubclass(model, ModelView)
+            and model._on_change_notify_depends}
 
     @classmethod
     def get_name_items(cls):

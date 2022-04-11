@@ -50,6 +50,7 @@ class ModelView(Model):
         cls.__rpc__['view_toolbar_get'] = RPC(cache=dict(days=1))
         cls.__rpc__['on_change'] = RPC(instantiate=0)
         cls.__rpc__['on_change_with'] = RPC(instantiate=0)
+        cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
         cls._buttons = {}
 
         fields_ = {}
@@ -164,6 +165,21 @@ class ModelView(Model):
                 meth_names |= (
                     methods['depend_methods'][meth_name] - meth_done)
                 meth_done.add(meth_name)
+
+        set_methods('on_change_notify')
+        cls._on_change_notify_depends = methods['depends']['on_change_notify']
+        meth_names = list(methods['depend_methods']['on_change_notify'])
+        meth_done = set()
+        while meth_names:
+            meth_name = meth_names.pop()
+            method = getattr(cls, meth_name)
+            assert callable(method) or isinstance(method, property), \
+                "%s.%s not callable or property" % (cls, meth_name)
+            set_methods(meth_name)
+            cls._on_change_notify_depends |= methods['depends'][meth_name]
+            meth_names += list(
+                methods['depend_methods'][meth_name] - meth_done)
+            meth_done.add(meth_name)
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form', level=None):
@@ -743,6 +759,12 @@ class ModelView(Model):
             method_name = 'on_change_with_%s' % fieldname
             changes[fieldname] = getattr(self, method_name)()
         return changes
+
+    def on_change_notify(self):
+        """Return a list of type and message couples.
+        Available types are info, warning and error.
+        """
+        return []
 
     @property
     def _changed_values(self):

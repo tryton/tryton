@@ -427,7 +427,7 @@ class ModuleTestCase(unittest.TestCase):
             for prefixes in [['default_'],
                     ['on_change_', 'on_change_with_'],
                     ['order_'], ['domain_'], ['autocomplete_']]:
-                if attr == 'on_change_with':
+                if attr in {'on_change_with', 'on_change_notify'}:
                     continue
                 # TODO those method should be renamed
                 if attr == 'default_get':

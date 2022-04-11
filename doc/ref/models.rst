@@ -113,6 +113,15 @@ Instance methods:
    Return the new values of all fields by calling ``on_change_with`` method of
    each field.
 
+.. method:: Model.on_change_notify(fieldnames)
+
+    Returns a list of type and message couple to display on the client side.
+    Available types are ``info``, ``warning`` and ``error``.
+
+    .. note::
+      To be called by the client, this method must be decorated
+      by :meth:`~trytond.model.fields.depends` with the fields needed.
+
 .. method:: Model.pre_validate()
 
    Validate the instance before being stored.
