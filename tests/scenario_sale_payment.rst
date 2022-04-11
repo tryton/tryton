@@ -93,9 +93,9 @@ Create a partial payment::
     >>> payment.party = sale.party
     >>> payment.origin = sale
     >>> payment.amount = Decimal('40.00')
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
 Attempt to put sale back to draft::
 
@@ -180,7 +180,7 @@ Create and process a final payment::
     >>> payment.party = sale.party
     >>> payment.origin = sale
     >>> payment.amount = Decimal('60.00')
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.click('succeed')
