@@ -1224,21 +1224,26 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
             self.template = self.product.template
 
     @classmethod
-    def validate(cls, revisions):
-        super().validate(revisions)
-        for revision in revisions:
-            revision.check_cost_price()
+    def validate_fields(cls, revisions, field_names):
+        super().validate_fields(revisions, field_names)
+        cls.check_cost_price(revisions, field_names)
 
-    def check_cost_price(self):
-        try:
-            if not isinstance(self.get_cost_price(Decimal(0)), Decimal):
-                raise ValueError
-        except Exception as exception:
-            raise ProductCostPriceError(
-                gettext('stock.msg_invalid_cost_price',
-                    cost_price=self.cost_price,
-                    product=(self.product or self.template).rec_name,
-                    exception=exception)) from exception
+    @classmethod
+    def check_cost_price(cls, revisions, field_names):
+        if field_names and 'cost_price' not in field_names:
+            return
+        for revision in revisions:
+            try:
+                if not isinstance(
+                        revision.get_cost_price(Decimal(0)), Decimal):
+                    raise ValueError
+            except Exception as exception:
+                product = revision.product or revision.template
+                raise ProductCostPriceError(
+                    gettext('stock.msg_invalid_cost_price',
+                        cost_price=revision.cost_price,
+                        product=product.rec_name,
+                        exception=exception)) from exception
 
     def get_cost_price(self, cost_price, **context):
         context.setdefault('names', {})['cost_price'] = cost_price

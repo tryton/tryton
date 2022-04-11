@@ -225,19 +225,22 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         table.index_action(['left', 'right'], 'add')
 
     @classmethod
-    def validate(cls, locations):
-        super(Location, cls).validate(locations)
+    def validate_fields(cls, locations, field_names):
+        super().validate_fields(locations, field_names)
         inactives = []
         for location in locations:
-            location.check_type_for_moves()
-            if not location.active:
+            location.check_type_for_moves(field_names)
+            if 'active' in field_names and not location.active:
                 inactives.append(location)
         cls.check_inactive(inactives)
 
-    def check_type_for_moves(self):
+    def check_type_for_moves(self, field_names=None):
         """ Check locations with moves have types compatible with moves. """
+        pool = Pool()
+        Move = pool.get('stock.move')
+        if field_names and 'type' not in field_names:
+            return
         invalid_move_types = ['warehouse', 'view']
-        Move = Pool().get('stock.move')
         if self.type in invalid_move_types:
             # Use root to compute for all companies
             with Transaction().set_user(0):
@@ -247,7 +250,8 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                             ('from_location', '=', self.id),
                             ],
                         ('state', 'not in', ['staging', 'draft']),
-                        ])
+                        ],
+                    order=[], limit=1)
             if moves:
                 raise LocationValidationError(
                     gettext('stock.msg_location_invalid_type_for_moves',
