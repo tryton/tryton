@@ -64,6 +64,7 @@ class Sale(metaclass=PoolMeta):
         Group = pool.get('res.group')
         User = pool.get('res.user')
         ModelData = pool.get('ir.model.data')
+        Lang = pool.get('ir.lang')
         Line = pool.get('sale.line')
         Warning = pool.get('res.user.warning')
 
@@ -123,6 +124,7 @@ class Sale(metaclass=PoolMeta):
 
         with Transaction().set_context(company=self.company.id):
             today = Date.today()
+        lang = Lang.get()
         sale_date = self.sale_date or today
         product_ids = {l.product.id for l in filter(filter_line, self.lines)}
         product_ids = list(product_ids)
@@ -169,10 +171,11 @@ class Sale(metaclass=PoolMeta):
             next_supply_date = self._stock_quantity_next_supply_date(product)
             message_values = {
                 'line': line.rec_name,
-                'forecast_quantity': quantities[product],
-                'default_uom': product.default_uom.symbol,
-                'quantity': line.quantity,
-                'unit': line.unit.symbol,
+                'forecast_quantity': lang.format_number_symbol(
+                    quantities[product], product.default_uom,
+                    product.default_uom.digits),
+                'quantity': lang.format_number_symbol(
+                    line.quantity, line.unit, line.unit.digits),
                 }
             if (quantities[product] < quantity
                     and sale_date < next_supply_date):
