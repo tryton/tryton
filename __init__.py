@@ -9,4 +9,5 @@ from . import sale
 def register():
     Pool.register(
         sale.Sale,
+        sale.Line,
         module='sale_stock_quantity', type_='model')

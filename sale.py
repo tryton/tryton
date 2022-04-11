@@ -5,7 +5,7 @@ import datetime
 from collections import defaultdict
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
@@ -191,3 +191,54 @@ class Sale(metaclass=PoolMeta):
                         message_values['forecast_quantity'] = forecast_quantity
                         raise_(line.id, message_values)
                     date += datetime.timedelta(1)
+
+
+class Line(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    @fields.depends(methods=['_notify_stock_quantity'])
+    def on_change_notify(self):
+        notifications = super().on_change_notify()
+        notifications.extend(self._notify_stock_quantity())
+        return notifications
+
+    @fields.depends(
+        'sale_state', 'product', 'quantity', 'unit', 'company',
+        'sale', '_parent_sale.warehouse', '_parent_sale.sale_date')
+    def _notify_stock_quantity(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Lang = pool.get('ir.lang')
+        Move = pool.get('stock.move')
+        Product = pool.get('product.product')
+        lang = Lang.get()
+        if (self.sale_state == 'draft'
+                and self.sale
+                and self.product
+                and self.product.type in Move.get_product_types()
+                and self.unit
+                and self.quantity is not None):
+            with Transaction().set_context(
+                    company=self.company.id if self.company else None):
+                today = Date.today()
+            sale_date = self.sale.sale_date or today
+            if self.sale.warehouse:
+                locations = [self.sale.warehouse.id]
+            else:
+                locations = []
+            with Transaction().set_context(
+                    locations=locations,
+                    stock_date_end=sale_date,
+                    uom=self.unit):
+                product = Product(self.product.id)
+                if product.forecast_quantity < self.quantity:
+                    yield ('warning', gettext(
+                            'sale_stock_quantity'
+                            '.msg_product_forecast_quantity_lower',
+                            forecast_quantity=lang.format_number_symbol(
+                                product.forecast_quantity, self.unit,
+                                self.unit.digits),
+                            product=self.product.rec_name,
+                            quantity=lang.format_number_symbol(
+                                self.quantity, self.unit,
+                                self.unit.digits)))

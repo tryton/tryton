@@ -110,6 +110,8 @@ Sale 3 products with enough stock::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
+    >>> len(sale_line.notifications())
+    0
     >>> sale.click('quote')
 
 Sale 1 product with still enough stock::
@@ -120,6 +122,8 @@ Sale 1 product with still enough stock::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 1.0
+    >>> len(sale_line.notifications())
+    0
     >>> sale.click('quote')
 
 Sale 2 more products with not enough stock::
@@ -130,6 +134,8 @@ Sale 2 more products with not enough stock::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
+    >>> len(sale_line.notifications())
+    0
     >>> sale.click('quote') # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -147,6 +153,8 @@ Sale 6 products with not enough stock::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 6.0
+    >>> len(sale_line.notifications())
+    1
     >>> sale.click('quote') # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...

@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_stock_quantity">
             <field name="text">The forcast quantity (%(forecast_quantity)s%(default_uom)s) for line "%(line)s" is lower than its quantity (%(quantity)s%(unit)s).</field>
         </record>
+        <record model="ir.message" id="msg_product_forecast_quantity_lower">
+            <field name="text">The forecast quantity (%(forecast_quantity)s) of product "%(product)s" is lower than the quantity (%(quantity)s).</field>
+        </record>
     </data>
 </tryton>
