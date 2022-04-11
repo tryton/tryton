@@ -47,17 +47,18 @@ class Sale(metaclass=PoolMeta):
         return super().copy(sales, default=default)
 
     @classmethod
-    def validate(cls, sales):
+    def validate_fields(cls, sales, field_names):
         pool = Pool()
         WebShop = pool.get('web.shop')
-        super().validate(sales)
+        super().validate_fields(sales, field_names)
 
-        web_shops = WebShop.search([])
-        guests = {s.guest_party for s in web_shops}
-        for sale in sales:
-            if (sale.state not in {'draft', 'cancelled'}
-                    and sale.party in guests):
-                raise SaleValidationError(
-                    gettext('web_shop.msg_sale_invalid_party',
-                        sale=sale.rec_name,
-                        party=sale.party.rec_name))
+        if field_names & {'state', 'party'}:
+            web_shops = WebShop.search([])
+            guests = {s.guest_party for s in web_shops}
+            for sale in sales:
+                if (sale.state not in {'draft', 'cancelled'}
+                        and sale.party in guests):
+                    raise SaleValidationError(
+                        gettext('web_shop.msg_sale_invalid_party',
+                            sale=sale.rec_name,
+                            party=sale.party.rec_name))
