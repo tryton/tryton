@@ -247,6 +247,15 @@ class MoveLine(metaclass=PoolMeta):
         cls._check_modify_exclude.add('invoice_payment')
 
     @classmethod
+    def _view_reconciliation_muted(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        muted = super()._view_reconciliation_muted()
+        muted.add(ModelData.get_id(
+            'account_invoice', 'move_line_view_list_to_pay'))
+        return muted
+
+    @classmethod
     def _get_origin(cls):
         return super()._get_origin() + [
             'account.invoice.line', 'account.invoice.tax']

@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="maturity_date"/>
-    <field name="debit" sum="Debit"/>
-    <field name="credit" sum="Credit"/>
+    <field name="amount"/>
     <field name="delegated_amount"/>
-    <field name="amount_second_currency"/>
+    <field name="reconciliation" optional="1"/>
 </tree>
