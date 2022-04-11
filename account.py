@@ -419,10 +419,7 @@ class PayLine(Wizard):
             amount=line.payment_amount,
             line=line,
             )
-        date = self.start.date or line.maturity_date
-        # Use default value when empty
-        if date:
-            payment.date = date
+        payment.date = self.start.date or line.maturity_date
         return payment
 
     def do_pay(self, action):

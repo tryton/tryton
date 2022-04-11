@@ -84,15 +84,3 @@ The date on the payment wizard is used for payment date::
     >>> payment, = Payment.find()
     >>> payment.date == tomorrow
     True
-
-If the line does not have any maturity date it is scheduled for today::
-
-    >>> payment.delete()
-    >>> line.maturity_date = None
-    >>> line.save()
-    >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.execute('next_')
-    >>> pay_line.execute('next_')
-    >>> payment, = line.payments
-    >>> payment.date == today
-    True

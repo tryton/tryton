@@ -1,3 +1,4 @@
+* Allow only lines with maturity date to be paid
 * Allow processing receivable payment without approval
 * Add submitted state to payment
 * Permit to edit amount for manual payment in processing

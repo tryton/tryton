@@ -322,6 +322,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             If(Eval('state') == 'draft',
                 [
                     ('reconciliation', '=', None),
+                    ('maturity_date', '!=', None),
                     ],
                 []),
             ['OR',
