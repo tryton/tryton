@@ -10,3 +10,7 @@ class IBANValidationError(ValidationError):
 
 class InvalidBIC(ValidationError):
     pass
+
+
+class AccountValidationError(ValidationError):
+    pass

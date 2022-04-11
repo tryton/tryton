@@ -2,14 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 import stdnum.exceptions
 from sql import Literal, operators
+from sql.operators import Equal
 from stdnum import bic, iban
+
+try:
+    from schwifty import BIC, IBAN
+except ImportError:
+    BIC = IBAN = None
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
+    DeactivableMixin, Exclude, ModelSQL, ModelView, fields, sequence_ordered)
+from trytond.pool import Pool
 from trytond.tools import lstrip_wildcard
 
-from .exceptions import IBANValidationError, InvalidBIC
+from .exceptions import AccountValidationError, IBANValidationError, InvalidBIC
 
 
 class Bank(ModelSQL, ModelView):
@@ -53,11 +60,35 @@ class Bank(ModelSQL, ModelView):
         if self.bic and not bic.is_valid(self.bic):
             raise InvalidBIC(gettext('bank.msg_invalid_bic', bic=self.bic))
 
+    @classmethod
+    def from_bic(cls, bic):
+        "Return or create bank from BIC instance"
+        pool = Pool()
+        Party = pool.get('party.party')
+        if IBAN:
+            assert isinstance(bic, BIC)
+            banks = cls.search([
+                    ('bic', '=', bic.compact),
+                    ], limit=1)
+            if banks:
+                bank, = banks
+                return bank
+            cls.lock()
+            names = bic.bank_names
+            if names:
+                name = names[0]
+            else:
+                name = None
+            bank = cls(party=Party(name=name), bic=bic.compact)
+            bank.save()
+            return bank
+
 
 class Account(DeactivableMixin, ModelSQL, ModelView):
     'Bank Account'
     __name__ = 'bank.account'
-    bank = fields.Many2One('bank', 'Bank', required=True,
+    bank = fields.Many2One(
+        'bank', "Bank",
         help="The bank where the account is open.")
     owners = fields.Many2Many('bank.account-party.party', 'account', 'owner',
         'Owners')
@@ -87,6 +118,48 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             ('numbers.rec_name',) + tuple(clause[1:]),
             ]
 
+    @property
+    def iban(self):
+        for number in self.numbers:
+            if number.type == 'iban':
+                return number.number
+
+    @classmethod
+    def validate(cls, accounts):
+        super().validate(accounts)
+        for account in accounts:
+            account.check_bank()
+
+    def check_bank(self):
+        if not self.bank or not self.bank.bic:
+            return
+        if IBAN:
+            iban = IBAN(self.iban)
+            if iban.bic and iban.bic != self.bank.bic:
+                raise AccountValidationError(
+                    gettext('bank.msg_invalid_iban_bic',
+                        account=self.rec_name,
+                        bic=iban.bic))
+
+    @classmethod
+    def create(cls, vlist):
+        accounts = super().create(vlist)
+        for account in accounts:
+            if not account.bank:
+                bank = account.guess_bank()
+                if bank:
+                    account.bank = bank
+        cls.save(accounts)
+        return accounts
+
+    def guess_bank(self):
+        pool = Pool()
+        Bank = pool.get('bank')
+        if IBAN:
+            iban = IBAN(self.iban)
+            if iban.bic:
+                return Bank.from_bic(iban.bic)
+
 
 class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     'Bank Account Number'
@@ -105,6 +178,17 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        table = cls.__table__()
+        cls._sql_constraints += [
+            ('number_iban_exclude',
+                Exclude(table, (table.number_compact, Equal),
+                    where=table.type == 'iban'),
+                'bank.msg_number_iban_unique'),
+            ('account_iban_exclude',
+                Exclude(table, (table.account, Equal),
+                    where=table.type == 'iban'),
+                'bank.msg_account_iban_unique'),
+            ]
         cls.__access__.add('account')
         cls._order.insert(0, ('account', 'ASC'))
 

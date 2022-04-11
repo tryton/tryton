@@ -1,3 +1,6 @@
+* Fill or create bank from IBAN
+* Enforce uniqueness of IBAN
+* Permit only one IBAN per account
 * Remove starting wildcard when searching account number
 * Search also on BIC when searching bank name
 * Add support for Python 3.10

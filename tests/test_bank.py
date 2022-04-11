@@ -2,7 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+try:
+    import schwifty
+except ImportError:
+    schwifty = None
+
 import trytond.tests.test_tryton
+from trytond.model.exceptions import SQLConstraintError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -82,6 +88,73 @@ class BankTestCase(ModuleTestCase):
                 })
         self.assertEqual(iban_number.number, 'BE82 0688 9627 4468')
         self.assertEqual(other_number.number, 'BE82068896274468')
+
+    @with_transaction()
+    def test_number_single_iban(self):
+        "Test number has single IBAN"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        account = Account(numbers=[
+                Number(type='iban', number="BE82 0688 9627 4468"),
+                Number(type='iban', number="BE67 0682 4952 8887"),
+                ])
+
+        with self.assertRaises(SQLConstraintError):
+            account.save()
+
+    @with_transaction()
+    def test_number_iban_unique(self):
+        "Test number has single IBAN"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        account = Account(numbers=[
+                Number(type='iban', number="BE82 0688 9627 4468"),
+                ])
+        account.save()
+        account = Account(numbers=[
+                Number(type='iban', number="BE82 0688 9627 4468"),
+                ])
+
+        with self.assertRaises(SQLConstraintError):
+            account.save()
+
+    @unittest.skipIf(schwifty is None, "requires schwifty")
+    @with_transaction()
+    def test_guess_new_bank(self):
+        "Test guess new bank"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        account = Account(numbers=[
+                Number(type='iban', number="BE82 0688 9627 4468")])
+        account.save()
+
+        self.assertTrue(account.bank)
+        self.assertEqual(account.bank.bic, 'GKCCBEBB')
+        self.assertEqual(account.bank.party.name, "BELFIUS BANK")
+
+    @unittest.skipIf(schwifty is None, "requires schwifty")
+    @with_transaction()
+    def test_guess_existing_bank(self):
+        "Test guess existing bank"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Bank = pool.get('bank')
+        Number = pool.get('bank.account.number')
+
+        account1 = Account(numbers=[
+                Number(type='iban', number="BE82 0688 9627 4468")])
+        account1.save()
+        account2 = Account(numbers=[
+                Number(type='iban', number="BE67 0682 4952 8887")])
+        account2.save()
+
+        self.assertEqual(len(Bank.search([])), 1)
 
 
 def suite():

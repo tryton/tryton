@@ -64,6 +64,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = ['schwifty']
 dependency_links = []
 if minor_version % 2:
     dependency_links.append(
@@ -136,6 +137,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.7',
     install_requires=requires,
+    extras_require={
+        'SWIFT': ['schwifty'],
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
@@ -144,4 +148,5 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )
