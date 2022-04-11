@@ -41,6 +41,9 @@ Accounting
 `Spanish </projects/modules-account-es/en/latest>`_
     Spanish accounting.
 
+`Spanish SII </projects/modules-account-es-sii/en/latest>`_
+    Sends invoices to "Subministro Inmediato de Información" (SII).
+
 `Europe </projects/modules-account-eu/en/latest>`_
     Common European requirements.
 
