@@ -7,6 +7,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="number"/>
     <field name="number"/>
 
+    <label name="allocation_method"/>
+    <field name="allocation_method"/>
     <label name="company"/>
     <field name="company"/>
 

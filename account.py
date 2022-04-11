@@ -102,6 +102,10 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('type', '=', 'line'),
             ],
         states=_states)
+    allocation_method = fields.Selection([
+            ('shipment', "By Shipment"),
+            ], "Allocation Method", required=True,
+        states=_states)
 
     posted_date = fields.Date("Posted Date", readonly=True)
     state = fields.Selection([
@@ -109,6 +113,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             ('posted', "Posted"),
             ('cancelled', "Cancelled"),
             ], "State", readonly=True, sort=False)
+
+    factors = fields.Dict(None, "Factors", readonly=True)
 
     del _states
 
@@ -143,6 +149,10 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     @classmethod
+    def default_allocation_method(cls):
+        return 'shipment'
+
+    @classmethod
     def default_state(cls):
         return 'draft'
 
@@ -152,9 +162,11 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
     def cancel(cls, shipment_costs):
         for shipment_cost in shipment_costs:
             if shipment_cost.state == 'posted':
-                shipment_cost.unallocate_cost()
+                getattr(shipment_cost, 'unallocate_cost_by_%s' %
+                    shipment_cost.allocation_method)()
         cls.write(shipment_costs, {
                 'posted_date': None,
+                'factors': None,
                 'state': 'cancelled',
                 })
 
@@ -186,17 +198,19 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
     def parties(self):
         return {l.invoice.party for l in self.invoice_lines}
 
-    def allocate_cost(self):
-        self._allocate_cost(self._get_value_factors())
+    def allocate_cost_by_shipment(self):
+        self.factors = self._get_shipment_factors()
+        self._allocate_cost(self.factors)
 
-    def unallocate_cost(self):
-        self._allocate_cost(self._get_value_factors(), sign=-1)
+    def unallocate_cost_by_shipment(self):
+        factors = self.factors or self._get_shipment_factors()
+        self._allocate_cost(factors, sign=-1)
 
-    def _get_value_factors(self):
+    def _get_shipment_factors(self):
         shipments = self.all_shipments
         length = Decimal(len(shipments))
         factor = 1 / length
-        return {shipment: factor for shipment in shipments}
+        return {str(shipment.id): factor for shipment in shipments}
 
     def _allocate_cost(self, factors, sign=1):
         "Allocate cost on shipments using factors"
@@ -213,9 +227,11 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             for shipment in shipments:
                 if (any(c.state == 'posted' for c in shipment.shipment_costs)
                         and shipment.cost):
-                    shipment.cost += round_price(cost * factors[shipment])
+                    shipment.cost += round_price(
+                        cost * factors[str(shipment.id)])
                 else:
-                    shipment.cost = round_price(cost * factors[shipment])
+                    shipment.cost = round_price(
+                        cost * factors[str(shipment.id)])
             klass.save(shipments)
             klass.set_shipment_cost(shipments)
 
@@ -255,7 +271,8 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                                     other=other.rec_name))
                         else:
                             break
-            shipment_cost.allocate_cost()
+            getattr(shipment_cost, 'allocate_cost_by_%s' %
+                shipment_cost.allocation_method)()
         for company, c_shipment_costs in groupby(
                 shipment_costs, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
