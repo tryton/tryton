@@ -125,16 +125,19 @@ class Line(ModelSQL, ModelView):
         return Transaction().context.get('date') or Date_.today()
 
     @classmethod
-    def validate(cls, lines):
-        super(Line, cls).validate(lines)
-        for line in lines:
-            line.check_duration()
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.check_duration(lines, field_names)
 
-    def check_duration(self):
-        if self.duration < datetime.timedelta():
-            raise DurationValidationError(
-                gettext('timesheet.msg_line_duration_positive',
-                    line=self.rec_name))
+    @classmethod
+    def check_duration(cls, lines, field_names=None):
+        if field_names and 'duration' not in field_names:
+            return
+        for line in lines:
+            if line.duration < datetime.timedelta():
+                raise DurationValidationError(
+                    gettext('timesheet.msg_line_duration_positive',
+                        line=line.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):
