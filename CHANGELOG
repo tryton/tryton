@@ -1,3 +1,4 @@
+* Support notification message
 * Use defusedxml to parse XML (11244)
 * Add support for Python 3.10
 * Remove support for Python 3.6

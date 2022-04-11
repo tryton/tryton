@@ -1172,6 +1172,10 @@ class Model(object):
             self._parent._changed.add(self._parent_field_name)
             self._parent._on_change([self._parent_field_name])
 
+    def notifications(self):
+        values = self._get_on_change_values()
+        return getattr(self._proxy, 'on_change_notify')(values, self._context)
+
 
 class Wizard(object):
     'Wizard class for Tryton wizards'
