@@ -103,59 +103,76 @@ class Period(Workflow, ModelSQL, ModelView):
             }.get(self.state)
 
     @classmethod
-    def validate(cls, periods):
-        super(Period, cls).validate(periods)
-        for period in periods:
-            period.check_dates()
-            period.check_fiscalyear_dates()
-            period.check_post_move_sequence()
+    def validate_fields(cls, periods, field_names):
+        super().validate_fields(periods, field_names)
+        cls.check_dates(periods, field_names)
+        cls.check_fiscalyear_dates(periods, field_names)
+        cls.check_post_move_sequence(periods, field_names)
 
-    def check_dates(self):
-        if self.type != 'standard':
-            return True
+    @classmethod
+    def check_dates(cls, periods, field_names=None):
+        if field_names and not (
+                field_names & {
+                    'start_date', 'end_date', 'fiscalyear', 'type'}):
+            return
         transaction = Transaction()
         connection = transaction.connection
-        self.__class__.lock()
-        table = self.__table__()
+        cls.lock()
+        table = cls.__table__()
         cursor = connection.cursor()
-        cursor.execute(*table.select(table.id,
-                where=(((table.start_date <= self.start_date)
-                        & (table.end_date >= self.start_date))
-                    | ((table.start_date <= self.end_date)
-                        & (table.end_date >= self.end_date))
-                    | ((table.start_date >= self.start_date)
-                        & (table.end_date <= self.end_date)))
-                & (table.fiscalyear == self.fiscalyear.id)
-                & (table.type == 'standard')
-                & (table.id != self.id)))
-        period_id = cursor.fetchone()
-        if period_id:
-            overlapping_period = self.__class__(period_id[0])
-            raise PeriodDatesError(
-                gettext('account.msg_period_overlap',
-                    first=self.rec_name,
-                    second=overlapping_period.rec_name))
+        for period in periods:
+            if period.type != 'standard':
+                continue
+            cursor.execute(*table.select(table.id,
+                    where=(((table.start_date <= period.start_date)
+                            & (table.end_date >= period.start_date))
+                        | ((table.start_date <= period.end_date)
+                            & (table.end_date >= period.end_date))
+                        | ((table.start_date >= period.start_date)
+                            & (table.end_date <= period.end_date)))
+                    & (table.fiscalyear == period.fiscalyear.id)
+                    & (table.type == 'standard')
+                    & (table.id != period.id)))
+            period_id = cursor.fetchone()
+            if period_id:
+                overlapping_period = cls(period_id[0])
+                raise PeriodDatesError(
+                    gettext('account.msg_period_overlap',
+                        first=period.rec_name,
+                        second=overlapping_period.rec_name))
 
-    def check_fiscalyear_dates(self):
-        if (self.start_date < self.fiscalyear.start_date
-                or self.end_date > self.fiscalyear.end_date):
-            raise PeriodDatesError(
-                gettext('account.msg_period_fiscalyear_dates',
-                    period=self.rec_name,
-                    fiscalyear=self.fiscalyear.rec_name))
-
-    def check_post_move_sequence(self):
-        if not self.post_move_sequence:
+    @classmethod
+    def check_fiscalyear_dates(cls, periods, field_names=None):
+        if field_names and not (
+                field_names & {
+                    'start_date', 'end_date', 'fiscalyear'}):
             return
-        periods = self.search([
-                ('post_move_sequence', '=', self.post_move_sequence.id),
-                ('fiscalyear', '!=', self.fiscalyear.id),
-                ])
-        if periods:
-            raise PeriodSequenceError(
-                gettext('account.msg_period_same_sequence',
-                    first=self.rec_name,
-                    second=periods[0].rec_name))
+        for period in periods:
+            fiscalyear = period.fiscalyear
+            if (period.start_date < fiscalyear.start_date
+                    or period.end_date > fiscalyear.end_date):
+                raise PeriodDatesError(
+                    gettext('account.msg_period_fiscalyear_dates',
+                        period=period.rec_name,
+                        fiscalyear=fiscalyear.rec_name))
+
+    @classmethod
+    def check_post_move_sequence(cls, periods, field_names=None):
+        if field_names and not (
+                field_names & {'post_move_sequence', 'fiscalyear'}):
+            return
+        for period in periods:
+            if not period.post_move_sequence:
+                continue
+            periods = cls.search([
+                    ('post_move_sequence', '=', period.post_move_sequence.id),
+                    ('fiscalyear', '!=', period.fiscalyear.id),
+                    ])
+            if periods:
+                raise PeriodSequenceError(
+                    gettext('account.msg_period_same_sequence',
+                        first=period.rec_name,
+                        second=periods[0].rec_name))
 
     @classmethod
     def find(cls, company_id, date=None, exception=True, test_state=True):

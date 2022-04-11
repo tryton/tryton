@@ -578,16 +578,19 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         cls._order.insert(0, ('account', 'ASC'))
 
     @classmethod
-    def validate(cls, tax_templates):
-        super(TaxTemplate, cls).validate(tax_templates)
-        for tax_template in tax_templates:
-            tax_template.check_update_unit_price()
+    def validate_fields(cls, tax_templates, field_names):
+        super().validate_fields(tax_templates, field_names)
+        cls.check_update_unit_price(tax_templates, field_names)
 
-    def check_update_unit_price(self):
-        if self.update_unit_price and self.parent:
-            raise AccessError(
-                gettext('account.msg_tax_update_unit_price_with_parent',
-                    tax=self.rec_name))
+    @classmethod
+    def check_update_unit_price(cls, tax_templates, field_names=None):
+        if field_names and not (field_names & {'update_unit_price', 'parent'}):
+            return
+        for tax in tax_templates:
+            if tax.update_unit_price and tax.parent:
+                raise AccessError(gettext(
+                        'account.msg_tax_update_unit_price_with_parent',
+                        tax=tax.rec_name))
 
     @staticmethod
     def default_type():
@@ -778,16 +781,19 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     del _states
 
     @classmethod
-    def validate(cls, taxes):
-        super(Tax, cls).validate(taxes)
-        for tax in taxes:
-            tax.check_update_unit_price()
+    def validate_fields(cls, taxes, field_names):
+        super().validate_fields(taxes, field_names)
+        cls.check_update_unit_price(taxes, field_names)
 
-    def check_update_unit_price(self):
-        if self.parent and self.update_unit_price:
-            raise AccessError(
-                gettext('account.msg_tax_update_unit_price_with_parent',
-                    tax=self.rec_name))
+    @classmethod
+    def check_update_unit_price(cls, taxes, field_names=None):
+        if field_names and not (field_names & {'parent', 'update_unit_price'}):
+            return
+        for tax in taxes:
+            if tax.parent and tax.update_unit_price:
+                raise AccessError(gettext(
+                        'account.msg_tax_update_unit_price_with_parent',
+                        tax=tax.rec_name))
 
     @staticmethod
     def default_type():

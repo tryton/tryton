@@ -952,10 +952,10 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         table_h.drop_column('kind')
 
     @classmethod
-    def validate(cls, accounts):
-        super(Account, cls).validate(accounts)
-        cls.check_second_currency(accounts)
-        cls.check_move_domain(accounts)
+    def validate_fields(cls, accounts, field_names):
+        super().validate_fields(accounts, field_names)
+        cls.check_second_currency(accounts, field_names)
+        cls.check_move_domain(accounts, field_names)
 
     @staticmethod
     def default_left():
@@ -1159,9 +1159,14 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 setattr(self, field, getattr(self.parent, field))
 
     @classmethod
-    def check_second_currency(cls, accounts):
+    def check_second_currency(cls, accounts, field_names=None):
         pool = Pool()
         Line = pool.get('account.move.line')
+        if field_names and not (
+                field_names & (
+                    {'second_currency', 'type'}
+                    | set(cls.deferral.validation_depends))):
+            return
         for account in accounts:
             if not account.second_currency:
                 continue
@@ -1190,9 +1195,11 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                         account=account.rec_name))
 
     @classmethod
-    def check_move_domain(cls, accounts):
+    def check_move_domain(cls, accounts, field_names=None):
         pool = Pool()
         Line = pool.get('account.move.line')
+        if field_names and not (field_names & {'closed', 'type'}):
+            return
         accounts = [a for a in accounts if a.closed or not a.type]
         for sub_accounts in grouped_slice(accounts):
             sub_accounts = list(sub_accounts)

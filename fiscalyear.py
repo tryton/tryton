@@ -100,45 +100,54 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             }.get(self.state)
 
     @classmethod
-    def validate(cls, years):
-        super(FiscalYear, cls).validate(years)
-        for year in years:
-            year.check_dates()
-            year.check_post_move_sequence()
+    def validate_fields(cls, fiscalyears, field_names):
+        super().validate_fields(fiscalyears, field_names)
+        cls.check_dates(fiscalyears, field_names)
+        cls.check_post_move_sequence(fiscalyears, field_names)
 
-    def check_dates(self):
+    @classmethod
+    def check_dates(cls, fiscalyears, field_names=None):
+        if field_names and not (field_names & {
+                    'start_date', 'end_date', 'company'}):
+            return
         transaction = Transaction()
         connection = transaction.connection
-        self.__class__.lock()
+        cls.lock()
         cursor = connection.cursor()
-        table = self.__table__()
-        cursor.execute(*table.select(table.id,
-                where=(((table.start_date <= self.start_date)
-                        & (table.end_date >= self.start_date))
-                    | ((table.start_date <= self.end_date)
-                        & (table.end_date >= self.end_date))
-                    | ((table.start_date >= self.start_date)
-                        & (table.end_date <= self.end_date)))
-                & (table.company == self.company.id)
-                & (table.id != self.id)))
-        second_id = cursor.fetchone()
-        if second_id:
-            second = self.__class__(second_id[0])
-            raise FiscalYearDatesError(
-                gettext('account.msg_fiscalyear_overlap',
-                    first=self.rec_name,
-                    second=second.rec_name))
+        table = cls.__table__()
+        for year in fiscalyears:
+            cursor.execute(*table.select(table.id,
+                    where=(((table.start_date <= year.start_date)
+                            & (table.end_date >= year.start_date))
+                        | ((table.start_date <= year.end_date)
+                            & (table.end_date >= year.end_date))
+                        | ((table.start_date >= year.start_date)
+                            & (table.end_date <= year.end_date)))
+                    & (table.company == year.company.id)
+                    & (table.id != year.id)))
+            second_id = cursor.fetchone()
+            if second_id:
+                second = cls(second_id[0])
+                raise FiscalYearDatesError(
+                    gettext('account.msg_fiscalyear_overlap',
+                        first=year.rec_name,
+                        second=second.rec_name))
 
-    def check_post_move_sequence(self):
-        years = self.search([
-                ('post_move_sequence', '=', self.post_move_sequence.id),
-                ('id', '!=', self.id),
-                ])
-        if years:
-            raise FiscalYearSequenceError(
-                gettext('account.msg_fiscalyear_different_post_move_sequence',
-                    first=self.rec_name,
-                    second=years[0].rec_name))
+    @classmethod
+    def check_post_move_sequence(cls, fiscalyears, field_names=None):
+        if field_names and 'post_move_sequence' not in field_names:
+            return
+        for fiscalyear in fiscalyears:
+            sequence = fiscalyear.post_move_sequence
+            years = cls.search([
+                    ('post_move_sequence', '=', sequence.id),
+                    ('id', '!=', fiscalyear.id),
+                    ], limit=1)
+            if years:
+                raise FiscalYearSequenceError(gettext(
+                        'account.msg_fiscalyear_different_post_move_sequence',
+                        first=fiscalyear.rec_name,
+                        second=years[0].rec_name))
 
     @classmethod
     def write(cls, *args):

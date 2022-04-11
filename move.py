@@ -219,17 +219,20 @@ class Move(ModelSQL, ModelView):
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
-    def validate(cls, moves):
-        super(Move, cls).validate(moves)
-        for move in moves:
-            move.check_date()
+    def validate_fields(cls, moves, field_names):
+        super().validate_fields(moves, field_names)
+        cls.check_date(moves, field_names)
 
-    def check_date(self):
-        if (self.date < self.period.start_date
-                or self.date > self.period.end_date):
-            raise MoveDatesError(
-                gettext('account.msg_move_date_outside_period',
-                    move=self.rec_name))
+    @classmethod
+    def check_date(cls, moves, field_names=None):
+        if field_names and not (field_names & {'date', 'period'}):
+            return
+        for move in moves:
+            if (move.date < move.period.start_date
+                    or move.date > move.period.end_date):
+                raise MoveDatesError(
+                    gettext('account.msg_move_date_outside_period',
+                        move=move.rec_name))
 
     @classmethod
     def check_modify(cls, moves):
@@ -1147,22 +1150,25 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         return list(set(l.id for line in lines for l in line.move.lines))
 
     @classmethod
-    def validate(cls, lines):
+    def validate_fields(cls, lines, field_names):
         super(Line, cls).validate(lines)
-        for line in lines:
-            line.check_account()
+        cls.check_account(lines, field_names)
 
-    def check_account(self):
-        if not self.account.type or self.account.closed:
-            raise AccessError(
-                gettext('account.msg_line_closed_account',
-                    account=self.account.rec_name))
-        if bool(self.party) != bool(self.account.party_required):
-            error = 'party_set' if self.party else 'party_required'
-            raise AccessError(
-                gettext('account.msg_line_%s' % error,
-                    account=self.account.rec_name,
-                    line=self.rec_name))
+    @classmethod
+    def check_account(cls, lines, field_names=None):
+        if field_names and not (field_names & {'account', 'party'}):
+            return
+        for line in lines:
+            if not line.account.type or line.account.closed:
+                raise AccessError(
+                    gettext('account.msg_line_closed_account',
+                        account=line.account.rec_name))
+            if bool(line.party) != bool(line.account.party_required):
+                error = 'party_set' if line.party else 'party_required'
+                raise AccessError(
+                    gettext('account.msg_line_%s' % error,
+                        account=line.account.rec_name,
+                        line=line.rec_name))
 
     @classmethod
     def check_journal_period_modify(cls, period, journal):
