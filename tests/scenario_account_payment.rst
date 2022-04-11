@@ -93,6 +93,9 @@ Partially pay line::
     >>> payment.amount
     Decimal('50.00')
     >>> payment.amount = Decimal('20.00')
+    >>> payment.click('submit')
+    >>> payment.submitted_by == employee
+    True
     >>> payment.click('approve')
     >>> payment.approved_by == employee
     True
@@ -149,6 +152,7 @@ Partially fail to pay the remaining::
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('30.00')
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')

@@ -31,7 +31,11 @@ The payment can be in one of this states:
 
 * Draft
 
-  The payment is waiting for approval.
+  The payment is in preparation.
+
+* Submitted
+
+  The payment has been submitted and is waiting approval or to be processed.
 
 * Approved
 

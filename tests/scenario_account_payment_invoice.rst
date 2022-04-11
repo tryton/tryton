@@ -80,7 +80,7 @@ Partially pay line::
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
     >>> payment.amount = Decimal('20')
-    >>> payment.click('approve')
+    >>> payment.click('submit')
 
 Check amount to pay::
 
@@ -121,7 +121,7 @@ Create multiple valid payments for one line::
     >>> payments = Payment.find([('state', '=', 'draft')])
     >>> for payment in payments:
     ...     payment.amount = Decimal('30')
-    >>> Payment.click(payments, 'approve')
+    >>> Payment.click(payments, 'submit')
 
 Check amount to pay::
 

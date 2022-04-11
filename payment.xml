@@ -236,29 +236,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_payment_form_domain_approved">
-            <field name="name">Approved</field>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_to_approve">
+            <field name="name">To Approve</field>
             <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
+            <field name="domain" eval="[('state', '=', 'submitted'), ('kind', '=', 'payable')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_to_process">
+            <field name="name">To Process</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="['OR', ('state', '=', 'approved'), [('state', '=', 'submitted'), ('kind', '=', 'receivable')]]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_processing">
             <field name="name">Processing</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="40"/>
             <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_suceeded">
             <field name="name">Succeeded</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_failed">
             <field name="name">Failed</field>
-            <field name="sequence" eval="50"/>
+            <field name="sequence" eval="60"/>
             <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
@@ -377,6 +384,16 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.button-res.group" id="payment_draft_button_group_payment">
             <field name="button" ref="payment_draft_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_submit_button">
+            <field name="name">submit</field>
+            <field name="string">Submit</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_submit_button_group_payment">
+            <field name="button" ref="payment_submit_button"/>
             <field name="group" ref="group_payment"/>
         </record>
 

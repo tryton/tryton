@@ -9,6 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <field name="state"/>
     <button name="draft"/>
+    <button name="submit"/>
     <button name="approve"/>
     <button name="fail"/>
     <button name="succeed"/>

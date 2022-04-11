@@ -98,7 +98,7 @@ Create no dunning::
 
 Fail the payment::
 
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.click('fail')

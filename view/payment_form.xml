@@ -27,6 +27,8 @@ this repository contains the full copyright notices and license terms. -->
             <label name="origin"/>
             <field name="origin"/>
             <newline/>
+            <label name="submitted_by"/>
+            <field name="submitted_by"/>
             <label name="approved_by"/>
             <field name="approved_by"/>
             <label name="succeeded_by"/>
@@ -40,6 +42,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="state"/>
         <group col="-1" colspan="2" id="buttons">
             <button name="draft"/>
+            <button name="submit"/>
             <button name="approve"/>
             <button name="proceed"/>
             <button name="fail"/>

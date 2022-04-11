@@ -351,6 +351,9 @@ class Payment(Workflow, ModelSQL, ModelView):
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
         'on_change_with_process_method', searcher='search_process_method')
+    submitted_by = employee_field(
+        "Submitted by",
+        states=['submitted', 'processing', 'succeeded', 'failed'])
     approved_by = employee_field(
         "Approved by",
         states=['approved', 'processing', 'succeeded', 'failed'])
@@ -361,11 +364,17 @@ class Payment(Workflow, ModelSQL, ModelView):
         states=['failed', 'processing'])
     state = fields.Selection([
             ('draft', 'Draft'),
+            ('submitted', "Submitted"),
             ('approved', 'Approved'),
             ('processing', 'Processing'),
             ('succeeded', 'Succeeded'),
             ('failed', 'Failed'),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, select=True, sort=False,
+        domain=[
+            If(Eval('kind') == 'receivable',
+                ('state', '!=', 'approved'),
+                ()),
+            ])
 
     @property
     def amount_line_paid(self):
@@ -382,10 +391,13 @@ class Payment(Workflow, ModelSQL, ModelView):
         super(Payment, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
-                ('draft', 'approved'),
+                ('draft', 'submitted'),
+                ('submitted', 'approved'),
+                ('submitted', 'processing'),
                 ('approved', 'processing'),
                 ('processing', 'succeeded'),
                 ('processing', 'failed'),
+                ('submitted', 'draft'),
                 ('approved', 'draft'),
                 ('succeeded', 'failed'),
                 ('succeeded', 'processing'),
@@ -394,14 +406,21 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update({
                 'draft': {
-                    'invisible': Eval('state') != 'approved',
+                    'invisible': ~Eval('state').in_(['submitted', 'approved']),
                     'icon': 'tryton-back',
                     'depends': ['state'],
                     },
-                'approve': {
+                'submit': {
                     'invisible': Eval('state') != 'draft',
                     'icon': 'tryton-forward',
                     'depends': ['state'],
+                    },
+                'approve': {
+                    'invisible': (
+                        (Eval('state') != 'submitted')
+                        | (Eval('kind') == 'receivable')),
+                    'icon': 'tryton-forward',
+                    'depends': ['state', 'kind'],
                     },
                 'proceed': {
                     'invisible': (
@@ -532,8 +551,15 @@ class Payment(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    @reset_employee('approved_by', 'succeeded_by', 'failed_by')
+    @reset_employee('submitted_by', 'approved_by', 'succeeded_by', 'failed_by')
     def draft(cls, payments):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('submitted')
+    @set_employee('submitted_by')
+    def submit(cls, payments):
         pass
 
     @classmethod
@@ -616,6 +642,11 @@ class ProcessPayment(Wizard):
         Payment = pool.get('account.payment')
         Warning = pool.get('res.user.warning')
         payments = self.records
+
+        payments = [
+            p for p in payments
+            if p.state == 'approved'
+            or (p.state == 'submitted' and p.kind == 'receivable')]
 
         for payment in payments:
             if payment.line and payment.line.payment_amount < 0:
