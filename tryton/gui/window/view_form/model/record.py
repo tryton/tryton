@@ -427,6 +427,9 @@ class Record:
     def set_default(self, val, signal=True, validate=True):
         fieldnames = []
         for fieldname, value in list(val.items()):
+            if fieldname in {'_write', '_delete', '_timestamp'}:
+                setattr(self, fieldname, value)
+                continue
             if fieldname not in self.group.fields:
                 continue
             if fieldname == self.group.exclude_field:
