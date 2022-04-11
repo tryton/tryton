@@ -30,13 +30,6 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     supplier_currencies = fields.One2Many(
         'party.party.supplier_currency', 'party', "Supplier Currencies")
 
-    @classmethod
-    def multivalue_model(cls, field):
-        pool = Pool()
-        if field == 'customer_code':
-            return pool.get('party.party.customer_code')
-        return super().multivalue_model(field)
-
 
 class CustomerCode(ModelSQL, CompanyValueMixin):
     "Party Customer Code"
