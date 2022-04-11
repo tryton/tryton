@@ -816,7 +816,7 @@
             }
             return this.modified_save().then(function() {
                 return this.screen.new_().then(function() {
-                    this.info_bar.message();
+                    this.info_bar.clear();
                     this.activate_save();
                 }.bind(this));
             }.bind(this));
@@ -832,12 +832,12 @@
             }
             return this.screen.save_current().then(
                     function() {
-                        this.info_bar.message(
+                        this.info_bar.add(
                                 Sao.i18n.gettext('Record saved.'), 'info');
                         this.screen.count_tab_domain(true);
                     }.bind(this),
                     function() {
-                        this.info_bar.message(
+                        this.info_bar.add(
                             this.screen.invalid_message(), 'danger');
                         return jQuery.Deferred().reject();
                     }.bind(this));
@@ -872,7 +872,7 @@
                 }.bind(this))
                 .then(function(set_cursor) {
                     return this.screen.display(set_cursor).then(function() {
-                        this.info_bar.message();
+                        this.info_bar.clear();
                         this.activate_save();
                         this.screen.count_tab_domain();
                     }.bind(this));
@@ -891,7 +891,7 @@
             }
             return this.modified_save().then(function() {
                 return this.screen.copy().then(function() {
-                    this.info_bar.message(
+                    this.info_bar.add(
                             Sao.i18n.gettext(
                                 'Working now on the duplicated record(s).'),
                             'info');
@@ -912,12 +912,12 @@
             return Sao.common.sur.run(msg).then(function() {
                 return this.screen.remove(true, false, true).then(
                         function() {
-                            this.info_bar.message(
+                            this.info_bar.add(
                                     Sao.i18n.gettext('Records removed.'),
                                     'info');
                             this.screen.count_tab_domain(true);
                         }.bind(this), function() {
-                            this.info_bar.message(
+                            this.info_bar.add(
                                     Sao.i18n.gettext('Records not removed.'),
                                     'danger');
                         }.bind(this));
@@ -926,7 +926,7 @@
         previous: function() {
             return this.modified_save().then(function() {
                 var prm = this.screen.display_previous();
-                this.info_bar.message();
+                this.info_bar.clear();
                 this.activate_save();
                 return prm;
             }.bind(this));
@@ -934,7 +934,7 @@
         next: function() {
             return this.modified_save().then(function() {
                 var prm = this.screen.display_next();
-                this.info_bar.message();
+                this.info_bar.clear();
                 this.activate_save();
                 return prm;
             }.bind(this));
@@ -951,7 +951,7 @@
         logs: function() {
             var record = this.screen.current_record;
             if ((!record) || (record.id < 0)) {
-                this.info_bar.message(
+                this.info_bar.add(
                         Sao.i18n.gettext('You have to select one record.'),
                         'info');
                 return jQuery.when();
@@ -1508,7 +1508,7 @@
                 msg = name + '/' + Sao.common.humanize(size);
             }
             this.status_label.text(msg).attr('title', msg);
-            this.info_bar.message();
+            this.info_bar.clear();
             this.activate_save();
             this.refresh_attachment_preview();
         },

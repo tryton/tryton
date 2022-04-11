@@ -54,36 +54,45 @@
 
     Sao.Window.InfoBar = Sao.class_(Object, {
         init: function() {
-            this.text = jQuery('<span/>');
-            this.text.css('white-space', 'pre-wrap');
-            this.el= jQuery('<div/>', {
-                'class': 'alert infobar',
-                'role': 'alert'
-            }).append(jQuery('<button/>', {
-                'type': 'button',
-                'class': 'close stretched-link',
-                'aria-label': Sao.i18n.gettext("Close"),
-                'title': Sao.i18n.gettext("Close"),
-            }).append(jQuery('<span/>', {
-                'aria-hidden': true
-            }).append('&times;')).click(function() {
-                this.text.text('');
-                this.el.hide();
-            }.bind(this))).append(this.text);
-            this.el.hide();
+            this.el = jQuery('<div/>', {
+                'class': 'infobar',
+            });
+            this.__messages = new Set();
         },
-        message: function(message, type) {
-            if (message) {
-                this.el.removeClass(
-                        'alert-success alert-info alert-warning alert-danger');
-                this.el.addClass('alert-' + (type || 'info'));
-                this.text.text(message);
-                this.el.show();
-            } else {
-                this.text.text('');
-                this.el.hide();
+        add: function(message, type) {
+            var key = JSON.stringify([message, type]);
+            if (!this.__messages.has(key)) {
+                var infobar = jQuery('<div/>', {
+                    'class': 'alert alert-dismissible alert-' + (
+                        type || 'error'),
+                    'role': 'alert',
+                }).append(jQuery('<button/>', {
+                    'type': 'button',
+                    'class': 'close',
+                    'aria-label': Sao.i18n.gettext("Close"),
+                    'title': Sao.i18n.gettext("Close"),
+                    'data-dismiss': 'alert',
+                }).append(jQuery('<span/>', {
+                    'aria-hidden': true,
+                }).append('&times;'))
+                ).append(jQuery('<span/>')
+                    .css('white-space','pre-wrap')
+                    .text(message))
+                    .on('close.bs.alert',
+                        null, key, this.__response.bind(this));
+                this.el.append(infobar);
             }
-        }
+        },
+        __response: function(evt) {
+            this.__messages.add(evt.data);
+        },
+        refresh: function() {
+            this.el.empty();
+        },
+        clear: function() {
+            this.refresh();
+            this.__messages.clear();
+        },
     });
 
     Sao.Window.Form = Sao.class_(Object, {
@@ -491,11 +500,11 @@
                         jQuery.when.apply(jQuery, validate_prms).then(
                             closing_prm.resolve, closing_prm.reject);
                     } else if (!validate) {
-                        this.info_bar.message(
+                        this.info_bar.add(
                             this.screen.invalid_message(), 'danger');
                         closing_prm.reject();
                     } else {
-                        this.info_bar.message();
+                        this.info_bar.clear();
                         closing_prm.resolve();
                     }
 

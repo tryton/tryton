@@ -553,6 +553,25 @@
     });
     Sao.common.MODELNAME = new Sao.common.ModelName();
 
+    Sao.common.ModelNotification = Sao.class_(Object, {
+        init: function() {
+            this._depends = {};
+        },
+        load_names: function() {
+            this._depends = Sao.rpc({
+                'method': 'model.ir.model.get_notification',
+                'params': [{}],
+            }, Sao.Session.current_session, false);
+        },
+        get: function(model) {
+            if (jQuery.isEmptyObject(this._depends)) {
+                this.load_names();
+            }
+            return this._depends[model] || [];
+        },
+    });
+    Sao.common.MODELNOTIFICATION = new Sao.common.ModelNotification();
+
     Sao.common.ViewSearch = Sao.class_(Object, {
         init: function() {
             this.encoder = new Sao.PYSON.Encoder();

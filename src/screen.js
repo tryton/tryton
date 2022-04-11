@@ -1244,6 +1244,18 @@
                 return this.display();
             }
         },
+        record_notify: function(notifications) {
+            for (const window_ of this.windows) {
+                if (window_.info_bar) {
+                    window_.info_bar.refresh();
+                    for (const notification of notifications) {
+                        const type = notification[0];
+                        const message = notification[1];
+                        window_.info_bar.add(message, type);
+                    }
+                }
+            }
+        },
         record_message: function(position, size, max_size, record_id) {
             for (const window_ of this.windows) {
                 if (window_.record_message) {

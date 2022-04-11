@@ -138,11 +138,10 @@
             if (definition.validate && !this.screen.current_record.validate(
                     null, null, null, true)) {
                 this.screen.display(true);
-                this.info_bar.message(
-                    this.screen.invalid_message(), 'danger');
+                this.info_bar.add(this.screen.invalid_message(), 'danger');
                 return;
             }
-            this.info_bar.message();
+            this.info_bar.clear();
             this.state = definition.state;
             this.process();
         },

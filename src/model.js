@@ -230,6 +230,11 @@
                 this.parent.group.record_modified();
             }
         };
+        array.record_notify = function(notifications) {
+            for (const screen of this.screens) {
+                screen.record_notify(notifications);
+            }
+        };
         array.delete_ = function(records) {
             if (jQuery.isEmptyObject(records)) {
                 return jQuery.when();
@@ -1078,6 +1083,16 @@
                     return;
                 }
                 changes.forEach(this.set_on_change, this);
+            }
+
+            var notification_fields = Sao.common.MODELNOTIFICATION.get(
+                this.model.name);
+            var notification_fields_set = new Set(notification_fields);
+            if (fieldnames.some(field => notification_fields_set.has(field))) {
+                values = this._get_on_change_args(notification_fields);
+                this.model.execute(
+                    'on_change_notify', [values], this.get_context())
+                    .then(this.group.record_notify.bind(this.group));
             }
         },
         on_change_with: function(field_names) {
