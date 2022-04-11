@@ -128,22 +128,25 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         return _round(self, number, func=floor)
 
     @classmethod
-    def validate(cls, uoms):
-        super(Uom, cls).validate(uoms)
-        for uom in uoms:
-            uom.check_factor_and_rate()
+    def validate_fields(cls, uoms, field_names):
+        super().validate_fields(uoms, field_names)
+        cls.check_factor_and_rate(uoms, field_names)
 
-    def check_factor_and_rate(self):
+    @classmethod
+    def check_factor_and_rate(cls, uoms, field_names=None):
         "Check coherence between factor and rate"
-        if self.rate == self.factor == 0.0:
+        if field_names and not (field_names & {'rate', 'factor'}):
             return
-        if (self.rate != round(
-                    1.0 / self.factor, uom_conversion_digits[1])
-                and self.factor != round(
-                    1.0 / self.rate, uom_conversion_digits[1])):
-            raise UOMValidationError(
-                gettext('product.msg_uom_incompatible_factor_rate',
-                    uom=self.rec_name))
+        for uom in uoms:
+            if uom.rate == uom.factor == 0.0:
+                continue
+            if (uom.rate != round(
+                        1.0 / uom.factor, uom_conversion_digits[1])
+                    and uom.factor != round(
+                        1.0 / uom.rate, uom_conversion_digits[1])):
+                raise UOMValidationError(
+                    gettext('product.msg_uom_incompatible_factor_rate',
+                        uom=uom.rec_name))
 
     @classmethod
     def write(cls, *args):
