@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Literal, Null, Select, Window
-from sql.aggregate import BoolAnd, Min, Sum
+from sql.aggregate import BoolAnd, BoolOr, Min, Sum
 from sql.functions import CurrentTimestamp, FirstValue
 
 from trytond.model import ModelSQL, ModelView, fields
@@ -47,7 +47,16 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
         'get_amount')
     amount_currency = fields.Function(fields.Many2One(
             'currency.currency', "Amount Currency"), 'get_amount_currency')
+    delegated_amount = fields.Function(Monetary(
+            "Delegated Amount",
+            currency='amount_currency', digits='amount_currency',
+            states={
+                'invisible': ~Eval('partially_reconciled', False),
+                }),
+        'get_delegated_amount')
 
+    partially_reconciled = fields.Boolean(
+        "Partially Reconciled", readonly=True)
     reconciled = fields.Boolean("Reconciled", readonly=True)
     amount_reconciled = Monetary(
         "Amount Reconciled",
@@ -136,6 +145,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
             Sum(line.debit).as_('debit'),
             Sum(line.credit).as_('credit'),
             Sum(line.amount_second_currency).as_('amount_second_currency'),
+            BoolOr(line.reconciliation != Null).as_('partially_reconciled'),
             BoolAnd(line.reconciliation != Null).as_('reconciled'),
             Sum(
                 line.debit + line.credit,
@@ -152,6 +162,10 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     def on_change_with_currency(self, name=None):
         if self.account:
             return self.account.currency.id
+
+    def get_delegated_amount(self, name):
+        return self.amount_currency.round(
+            sum(l.delegated_amount for l in self.lines if l.delegated_amount))
 
 
 class MoveLineGroup_MoveLine(ModelSQL):

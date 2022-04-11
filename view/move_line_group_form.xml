@@ -40,6 +40,8 @@ this repository contains the full copyright notices and license terms. -->
             <label name="amount_reconciled"/>
             <field name="amount_reconciled"/>
 
+            <label name="delegated_amount"/>
+            <field name="delegated_amount"/>
             <label name="amount_second_currency"/>
             <field name="amount_second_currency"/>
         </page>

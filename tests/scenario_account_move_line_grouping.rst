@@ -109,6 +109,10 @@ Check lines grouped::
     ...         ])
     >>> line.amount_reconciled == Decimal(22)
     True
+    >>> line.partially_reconciled
+    True
+    >>> line.delegated_amount
+    Decimal('0.00')
     >>> if backend.name != 'sqlite':
     ...     len(line.lines)
     ... else:
@@ -125,4 +129,3 @@ Check lines grouped::
     ... else:
     ...     1
     1
-
