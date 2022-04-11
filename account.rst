@@ -137,6 +137,9 @@ Accounting
 `Stock Shipment Cost </projects/modules-account-stock-shipment-cost/en/latest>`_
     Allocates shipment cost.
 
+`Stock Shipment Cost Weight </projects/modules-account-stock-shipment-cost-weight/en/latest>`_
+    Allocates shipment cost by weight.
+
 `Tax Cash </projects/modules-account-tax-cash/en/latest>`_
     Reports tax on cash basis.
 

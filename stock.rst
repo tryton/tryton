@@ -68,6 +68,9 @@ Stock
 `Shipment Cost </projects/modules-stock-shipment-cost/en/latest>`_
     Adds shipment costs to outgoing moves.
 
+`Shipment Cost Weight </projects/modules-stock-shipment-cost-weight/en/latest>`_
+    Set shipment costs based on weight.
+
 `Shipment Measurements </projects/modules-stock-shipment-measurements/en/latest>`_
     Adds measurements to shipments.
 
