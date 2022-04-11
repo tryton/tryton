@@ -818,9 +818,16 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         depends={'company'}, ondelete='RESTRICT')
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
-    maturity_date = fields.Date('Maturity Date',
-        help='This field is used for payable and receivable lines. \n'
-        'You can put the limit date for the payment.')
+    maturity_date = fields.Date(
+        "Maturity Date",
+        states={
+            'invisible': ~Eval('has_maturity_date'),
+            },
+        depends=['has_maturity_date'],
+        help="Set a date to make the line payable or receivable.")
+    has_maturity_date = fields.Function(
+        fields.Boolean("Has Maturity Date"),
+        'on_change_with_has_maturity_date')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
@@ -1034,6 +1041,12 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     def on_change_with_move_state(self, name=None):
         if self.move:
             return self.move.state
+
+    @fields.depends('account')
+    def on_change_with_has_maturity_date(self, name=None):
+        if self.account:
+            type_ = self.account.type
+            return type_.receivable or type_.payable
 
     order_journal = MoveLineMixin._order_move_field('journal')
     order_period = MoveLineMixin._order_move_field('period')
