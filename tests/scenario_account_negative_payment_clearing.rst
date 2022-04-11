@@ -86,6 +86,7 @@ Pay the line::
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('50.00')
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> payment.state
     'approved'

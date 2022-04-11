@@ -96,6 +96,7 @@ Partially pay the line::
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
     >>> payment.amount = Decimal('30.0')
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> payment.state
     'approved'
@@ -150,6 +151,7 @@ Pay the line::
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('50.00')
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> payment.state
     'approved'
@@ -340,6 +342,7 @@ Pay the line::
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('40.00')
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
@@ -381,7 +384,7 @@ Pay the line::
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('100.0')
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
@@ -419,6 +422,7 @@ Create a processing payment for the move::
     >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('next_')
     >>> payment, = Payment.find([('line', '=', line.id)])
+    >>> payment.click('submit')
     >>> payment.click('approve')
     >>> payment.state
     'approved'

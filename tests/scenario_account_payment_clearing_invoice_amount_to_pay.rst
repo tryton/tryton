@@ -98,9 +98,9 @@ Create and pay an invoice without clearing::
 
     >>> Payment = Model.get('account.payment')
     >>> payment, = Payment.find()
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
@@ -131,9 +131,9 @@ Create an invoice and pay it::
     >>> pay_line.execute('next_')
 
     >>> payment, = Payment.find([('state', '=', 'draft')])
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
