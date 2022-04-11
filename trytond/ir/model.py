@@ -1035,12 +1035,14 @@ class ModelButtonRule(ModelSQL, ModelView):
         return 1
 
     @classmethod
-    def validate(cls, rules):
-        super(ModelButtonRule, cls).validate(rules)
-        cls.check_condition(rules)
+    def validate_fields(cls, rules, field_names):
+        super().validate_fields(rules, field_names)
+        cls.check_condition(rules, field_names)
 
     @classmethod
-    def check_condition(cls, rules):
+    def check_condition(cls, rules, field_names=None):
+        if field_names and 'condition' not in field_names:
+            return
         for rule in rules:
             if not rule.condition:
                 continue

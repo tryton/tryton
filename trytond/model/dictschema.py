@@ -108,13 +108,15 @@ class DictSchemaMixin(object):
             self.name = slugify(self.string.lower(), hyphenate='_')
 
     @classmethod
-    def validate(cls, schemas):
-        super(DictSchemaMixin, cls).validate(schemas)
-        cls.check_domain(schemas)
-        cls.check_selection(schemas)
+    def validate_fields(cls, schemas, field_names):
+        super().validate_fields(schemas, field_names)
+        cls.check_domain(schemas, field_names)
+        cls.check_selection(schemas, field_names)
 
     @classmethod
-    def check_domain(cls, schemas):
+    def check_domain(cls, schemas, field_names=None):
+        if field_names and 'domain' not in field_names:
+            return
         for schema in schemas:
             if not schema.domain:
                 continue
@@ -130,7 +132,10 @@ class DictSchemaMixin(object):
                         schema=schema.rec_name))
 
     @classmethod
-    def check_selection(cls, schemas):
+    def check_selection(cls, schemas, field_names=None):
+        if field_names and not (field_names & {
+                    'type_', 'selection_json', 'help_selection_json'}):
+            return
         for schema in schemas:
             if schema.type_ not in {'selection', 'multiselection'}:
                 continue

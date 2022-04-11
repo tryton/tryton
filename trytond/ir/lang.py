@@ -230,17 +230,19 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     ]))
 
     @classmethod
-    def validate(cls, languages):
-        super(Lang, cls).validate(languages)
-        cls.check_grouping(languages)
-        cls.check_date(languages)
+    def validate_fields(cls, languages, field_names):
+        super().validate_fields(languages, field_names)
+        cls.check_grouping(languages, field_names)
+        cls.check_date(languages, field_names)
         cls.check_translatable(languages)
 
     @classmethod
-    def check_grouping(cls, langs):
+    def check_grouping(cls, langs, fields_names=None):
         '''
         Check if grouping is list of numbers
         '''
+        if fields_names and not (fields_names & {'grouping', 'mon_grouping'}):
+            return
         for lang in langs:
             for grouping in [lang.grouping, lang.mon_grouping]:
                 try:
@@ -255,10 +257,12 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                             language=lang.rec_name))
 
     @classmethod
-    def check_date(cls, langs):
+    def check_date(cls, langs, field_names=None):
         '''
         Check the date format
         '''
+        if field_names and 'date' not in field_names:
+            return
         for lang in langs:
             date = lang.date
             try:
@@ -286,9 +290,11 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                         language=lang.rec_name))
 
     @classmethod
-    def check_translatable(cls, langs):
+    def check_translatable(cls, langs, field_names=None):
         pool = Pool()
         Config = pool.get('ir.configuration')
+        if field_names and 'translatable' not in field_names:
+            return
         # Skip check for root because when languages are created from XML file,
         # translatable is not yet set.
         if Transaction().user == 0:

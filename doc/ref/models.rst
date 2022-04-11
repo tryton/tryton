@@ -444,6 +444,13 @@ Class methods:
    This method must be overridden to add validation and must raise an
    :exc:`~trytond.model.exceptions.ValidationError` if validation fails.
 
+
+.. classmethod:: ModelStorage.validate_fields(records, field_names)
+
+   Validate the integrity of records after modification of the fields. This
+   method must be overridden to add validation for the field names set and must
+   raise an exception if validation fails.
+
 Dual methods:
 
 .. classmethod:: ModelStorage.save(records)

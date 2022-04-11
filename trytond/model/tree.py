@@ -87,18 +87,21 @@ def tree(parent='parent', name='name', separator=None):
                 return domain
 
         @classmethod
-        def validate(cls, records):
-            super(TreeMixin, cls).validate(records)
-            cls.check_recursion(records)
+        def validate_fields(cls, records, field_names):
+            super().validate_fields(records, field_names)
+            cls.check_recursion(records, field_names)
 
         @classmethod
-        def check_recursion(cls, records):
+        def check_recursion(cls, records, field_names=None):
             '''
             Function that checks if there is no recursion in the tree
             composed with parent as parent field name.
             '''
             if hasattr(super(TreeMixin, cls), 'check_recursion'):
-                super(TreeMixin, cls).check_recursion(records)
+                super(TreeMixin, cls).check_recursion(records, field_names)
+
+            if field_names and parent not in field_names:
+                return
 
             parent_type = cls._fields[parent]._type
 

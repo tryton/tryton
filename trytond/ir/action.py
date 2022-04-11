@@ -170,26 +170,30 @@ class ActionKeyword(ModelSQL, ModelView):
         table.index_action(['keyword', 'model'], 'add')
 
     @classmethod
-    def validate(cls, actions):
-        super(ActionKeyword, cls).validate(actions)
-        for action in actions:
-            action.check_wizard_model()
+    def validate_fields(cls, actions, field_names):
+        super().validate_fields(actions, field_names)
+        cls.check_wizard_model(actions, field_names)
 
-    def check_wizard_model(self):
-        ActionWizard = Pool().get('ir.action.wizard')
-        if self.action.type == 'ir.action.wizard':
-            action_wizards = ActionWizard.search([
-                ('action', '=', self.action.id),
-                ], limit=1)
-            # could be empty when copying an action
-            if action_wizards:
-                action_wizard, = action_wizards
-                if action_wizard.model:
-                    if not str(self.model).startswith(
-                            '%s,' % action_wizard.model):
-                        raise WizardModelError(
-                            gettext('ir.msg_action_wrong_wizard_model',
-                                name=action_wizard.rec_name))
+    @classmethod
+    def check_wizard_model(cls, actions, field_names=None):
+        pool = Pool()
+        ActionWizard = pool.get('ir.action.wizard')
+        if field_names and not (field_names & {'action', 'model'}):
+            return
+        for action in actions:
+            if action.action.type == 'ir.action.wizard':
+                action_wizards = ActionWizard.search([
+                    ('action', '=', action.action.id),
+                    ], limit=1)
+                # could be empty when copying an action
+                if action_wizards:
+                    action_wizard, = action_wizards
+                    if action_wizard.model:
+                        if not str(action.model).startswith(
+                                '%s,' % action_wizard.model):
+                            raise WizardModelError(
+                                gettext('ir.msg_action_wrong_wizard_model',
+                                    name=action_wizard.rec_name))
 
     @staticmethod
     def _convert_vals(vals):
@@ -701,21 +705,24 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         self._template_cache.set(self.id, template)
 
     @classmethod
-    def validate(cls, reports):
-        super().validate(reports)
-        for report in reports:
-            report.check_record_name()
+    def validate_fields(cls, reports, field_names):
+        super().validate_fields(reports, field_names)
+        cls.check_record_name(reports, field_names)
 
-    def check_record_name(self):
-        if not self.record_name:
+    @classmethod
+    def check_record_name(cls, reports, field_names=None):
+        if field_names and 'record_name' not in field_names:
             return
-        try:
-            TextTemplate(self.record_name)
-        except Exception as exception:
-            raise ValidationError(
-                gettext('ir.msg_report_invalid_record_name',
-                    report=self.rec_name,
-                    exception=exception)) from exception
+        for report in reports:
+            if not report.record_name:
+                return
+            try:
+                TextTemplate(report.record_name)
+            except Exception as exception:
+                raise ValidationError(gettext(
+                        'ir.msg_report_invalid_record_name',
+                        report=report.rec_name,
+                        exception=exception)) from exception
 
 
 class ActionActWindow(ActionMixin, ModelSQL, ModelView):
@@ -790,8 +797,12 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     def validate(cls, actions):
         super(ActionActWindow, cls).validate(actions)
         cls.check_views(actions)
-        cls.check_domain(actions)
-        cls.check_context(actions)
+
+    @classmethod
+    def validate_fields(cls, actions, field_names):
+        super().validate_fields(actions, field_names)
+        cls.check_domain(actions, field_names)
+        cls.check_context(actions, field_names)
 
     @classmethod
     def check_views(cls, actions):
@@ -825,8 +836,10 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                                 action=action.rec_name))
 
     @classmethod
-    def check_domain(cls, actions):
+    def check_domain(cls, actions, field_names=None):
         "Check domain and search_value"
+        if field_names and not (field_names & {'domain', 'search_value'}):
+            return
         for action in actions:
             for domain in (action.domain, action.search_value):
                 if not domain:
@@ -859,8 +872,10 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                                 action=action.rec_name)) from exception
 
     @classmethod
-    def check_context(cls, actions):
+    def check_context(cls, actions, field_names=None):
         "Check context"
+        if field_names and 'context' not in field_names:
+            return
         for action in actions:
             if action.context:
                 try:
@@ -995,12 +1010,14 @@ class ActionActWindowDomain(
         return False
 
     @classmethod
-    def validate(cls, actions):
-        super(ActionActWindowDomain, cls).validate(actions)
-        cls.check_domain(actions)
+    def validate_fields(cls, actions, field_names):
+        super().validate_fields(actions, field_names)
+        cls.check_domain(actions, field_names)
 
     @classmethod
-    def check_domain(cls, actions):
+    def check_domain(cls, actions, field_names=None):
+        if field_names and 'domain' not in field_names:
+            return
         for action in actions:
             if not action.domain:
                 continue

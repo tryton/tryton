@@ -1,3 +1,4 @@
+* Add validate_fields to ModelStorage
 * Drop support for PyPy and psycopg2cffi
 * Use a set for field's depends
 * Relax the constraint on a field's depends

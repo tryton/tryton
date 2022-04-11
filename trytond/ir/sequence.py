@@ -225,13 +225,19 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def validate(cls, sequences):
-        super(Sequence, cls).validate(sequences)
-        cls.check_affixes(sequences)
+        super().validate(sequences)
         cls.check_last_timestamp(sequences)
 
     @classmethod
-    def check_affixes(cls, sequences):
+    def validate_fields(cls, sequences, field_names):
+        super().validate_fields(sequences, field_names)
+        cls.check_affixes(sequences, field_names)
+
+    @classmethod
+    def check_affixes(cls, sequences, field_names=None):
         "Check prefix and suffix"
+        if field_names and not (field_names & {'prefix', 'suffix'}):
+            return
         for sequence in sequences:
             for affix, error_message in [
                     (sequence.prefix, 'msg_sequence_invalid_prefix'),

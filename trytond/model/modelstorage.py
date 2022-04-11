@@ -1135,6 +1135,10 @@ class ModelStorage(Model):
         pass
 
     @classmethod
+    def validate_fields(cls, records, field_names):
+        pass
+
+    @classmethod
     @without_check_access
     def _validate(cls, records, field_names=None):
         pool = Pool()
@@ -1314,14 +1318,16 @@ class ModelStorage(Model):
                                 msg, domain=(invalid_domain, field_def))
                         raise DomainValidationError(msg)
 
-        field_names = set(field_names or [])
+        if field_names is None:
+            field_names = cls._fields.keys()
+        elif not isinstance(field_names, set):
+            field_names = set(field_names)
         function_fields = {name for name, field in cls._fields.items()
             if isinstance(field, fields.Function)}
         ctx_pref['active_test'] = False
         with Transaction().set_context(ctx_pref):
             for field_name, field in cls._fields.items():
-                if (field_names
-                        and field_name not in field_names
+                if (field_name not in field_names
                         and not (field.validation_depends & field_names)
                         and not (field.validation_depends & function_fields)):
                     continue
@@ -1504,6 +1510,7 @@ class ModelStorage(Model):
             record.pre_validate()
 
         cls.validate(records)
+        cls.validate_fields(records, field_names)
 
     @classmethod
     def _clean_defaults(cls, defaults):

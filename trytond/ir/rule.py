@@ -110,12 +110,14 @@ class Rule(ModelSQL, ModelView):
     modes = {'read', 'write', 'create', 'delete'}
 
     @classmethod
-    def validate(cls, rules):
-        super(Rule, cls).validate(rules)
-        cls.check_domain(rules)
+    def validate_fields(cls, rules, field_names):
+        super().validate_fields(rules, field_names)
+        cls.check_domain(rules, field_names)
 
     @classmethod
-    def check_domain(cls, rules):
+    def check_domain(cls, rules, field_names=None):
+        if field_names and 'domain' not in field_names:
+            return
         ctx = cls._get_context()
         for rule in rules:
             try:

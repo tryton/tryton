@@ -344,59 +344,73 @@ class EmailTemplate(ModelSQL, ModelView):
             return self.model.model
 
     @classmethod
-    def validate(cls, templates):
-        super().validate(templates)
+    def validate_fields(cls, templates, field_names):
+        super().validate_fields(templates, field_names)
+        cls.check_subject(templates, field_names)
+        cls.check_body(templates, field_names)
+        cls.check_fields_pyson(templates, field_names)
+
+    @classmethod
+    def check_subject(cls, templates, field_names=None):
+        if field_names and 'subject' not in field_names:
+            return
         for template in templates:
-            template.check_subject()
-            template.check_body()
-            template.check_fields_pyson()
-
-    def check_subject(self):
-        if not self.subject:
-            return
-        try:
-            TextTemplate(self.subject)
-        except Exception as exception:
-            raise EmailTemplateError(
-                gettext('ir.msg_email_template_invalid_subject',
-                    template=self.rec_name,
-                    exception=exception)) from exception
-
-    def check_body(self):
-        if not self.body:
-            return
-        try:
-            TextTemplate(self.body)
-        except Exception as exception:
-            raise EmailTemplateError(
-                gettext('ir.msg_email_template_invalid_body',
-                    template=self.rec_name,
-                    exception=exception)) from exception
-
-    def check_fields_pyson(self):
-        encoder = PYSONDecoder(noeval=True)
-        for field in [
-                'recipients_pyson',
-                'recipients_secondary_pyson',
-                'recipients_hidden_pyson',
-                ]:
-            value = getattr(self, field)
-            if not value:
+            if not template.subject:
                 continue
             try:
-                pyson = encoder.decode(value)
+                TextTemplate(template.subject)
             except Exception as exception:
-                raise EmailTemplateError(
-                    gettext('ir.msg_email_template_invalid_field_pyson',
-                        template=self.rec_name,
-                        field=self.__names__(field)['field'],
+                raise EmailTemplateError(gettext(
+                        'ir.msg_email_template_invalid_subject',
+                        template=template.rec_name,
                         exception=exception)) from exception
-            if not isinstance(pyson, list) and pyson.types() != {list}:
-                raise EmailTemplateError(
-                    gettext('ir.msg_email_template_invalid_field_pyson_type',
-                        template=self.rec_name,
-                        field=self.__names__(field)['field'],
-                        ))
+
+    @classmethod
+    def check_body(self, templates, field_names=None):
+        if field_names and 'body' not in field_names:
+            return
+        for template in templates:
+            if not template.body:
+                continue
+            try:
+                TextTemplate(template.body)
+            except Exception as exception:
+                raise EmailTemplateError(gettext(
+                        'ir.msg_email_template_invalid_body',
+                        template=template.rec_name,
+                        exception=exception)) from exception
+
+    @classmethod
+    def check_fields_pyson(cls, templates, field_names=None):
+        pyson_fields = {
+            'recipients_pyson',
+            'recipients_secondary_pyson',
+            'recipients_hidden_pyson',
+            }
+        if field_names:
+            pyson_fields &= field_names
+        if not pyson_fields:
+            return
+        encoder = PYSONDecoder(noeval=True)
+        for template in templates:
+            for field in pyson_fields:
+                value = getattr(template, field)
+                if not value:
+                    continue
+                try:
+                    pyson = encoder.decode(value)
+                except Exception as exception:
+                    raise EmailTemplateError(
+                        gettext('ir.msg_email_template_invalid_field_pyson',
+                            template=template.rec_name,
+                            field=cls.__names__(field)['field'],
+                            exception=exception)) from exception
+                if not isinstance(pyson, list) and pyson.types() != {list}:
+                    raise EmailTemplateError(gettext(
+                            'ir.msg_email_template_invalid_field_pyson_type',
+                            template=template.rec_name,
+                            field=cls.__names__(field)['field'],
+                            ))
 
     def get(self, record):
         pool = Pool()

@@ -109,15 +109,17 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             table_h.drop_column('action_function')
 
     @classmethod
-    def validate(cls, triggers):
-        super(Trigger, cls).validate(triggers)
-        cls.check_condition(triggers)
+    def validate_fields(cls, triggers, field_names):
+        super().validate_fields(triggers, field_names)
+        cls.check_condition(triggers, field_names)
 
     @classmethod
-    def check_condition(cls, triggers):
+    def check_condition(cls, triggers, field_names=None):
         '''
         Check condition
         '''
+        if field_names and 'condition' not in field_names:
+            return
         for trigger in triggers:
             try:
                 PYSONDecoder(noeval=True).decode(trigger.condition)
