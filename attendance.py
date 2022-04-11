@@ -123,14 +123,16 @@ class Line(ModelSQL, ModelView):
         super().delete(records)
 
     @classmethod
-    def validate(cls, records):
-        super().validate(records)
-        cls.check_closed_period(records)
+    def validate_fields(cls, records, field_names):
+        super().validate_fields(records, field_names)
+        cls.check_closed_period(records, field_names=field_names)
 
     @classmethod
-    def check_closed_period(cls, records, msg='modify'):
+    def check_closed_period(cls, records, msg='modify', field_names=None):
         pool = Pool()
         Period = pool.get('attendance.period')
+        if field_names and not (field_names & {'company', 'at'}):
+            return
         for record in records:
             period_date = Period.get_last_period_date(record.company)
             if period_date and period_date > record.at:
