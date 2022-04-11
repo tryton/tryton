@@ -97,21 +97,28 @@ class PurchaseSecondaryMixin:
         return factor
 
     @classmethod
-    def validate(cls, records):
-        super().validate(records)
-        for record in records:
-            record.check_purchase_secondary_uom_factor_and_rate()
+    def validate_fields(cls, records, field_names):
+        super().validate_fields(records, field_names)
+        cls.check_purchase_secondary_uom_factor_and_rate(records, field_names)
 
-    def check_purchase_secondary_uom_factor_and_rate(self):
-        factor = self.purchase_secondary_uom_factor
-        rate = self.purchase_secondary_uom_rate
-        if factor and rate:
-            if ((rate != round(1. / factor, uom_conversion_digits[1]))
-                    and factor != round(1. / rate, uom_conversion_digits[1])):
-                raise UOMValidationError(
-                    gettext('purchase_secondary_unit'
-                        '.msg_secondary_uom_incompatible_factor_rate',
-                        record=self))
+    @classmethod
+    def check_purchase_secondary_uom_factor_and_rate(
+            cls, records, field_names):
+        if field_names and not (field_names & {
+                    'purchase_secondary_uom_factor',
+                    'purchase_secondary_uom_rate'}):
+            return
+        for record in records:
+            factor = record.purchase_secondary_uom_factor
+            rate = record.purchase_secondary_uom_rate
+            if factor and rate:
+                new_rate = round(1. / factor, uom_conversion_digits[1])
+                new_factor = round(1. / rate, uom_conversion_digits[1])
+                if rate != new_rate and factor != new_factor:
+                    raise UOMValidationError(
+                        gettext('purchase_secondary_unit'
+                            '.msg_secondary_uom_incompatible_factor_rate',
+                            record=record.rec_ame))
 
 
 class Template(PurchaseSecondaryMixin, metaclass=PoolMeta):
