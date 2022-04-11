@@ -93,12 +93,13 @@ class Shop(metaclass=PoolMeta):
             ]
 
     @classmethod
-    def validate(cls, shops):
-        super().validate(shops)
-        for shop in shops:
-            if shop.type == 'shopify':
-                for product in shop.products:
-                    shop._shopify_check_product(product)
+    def validate_fields(cls, shops, field_names):
+        super().validate_fields(shops, field_names)
+        if field_names & {'type', 'products'}:
+            for shop in shops:
+                if shop.type == 'shopify':
+                    for product in shop.products:
+                        shop._shopify_check_product(product)
 
     def _shopify_check_product(self, product):
         if not product.template.shopify_uom:
