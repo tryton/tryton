@@ -1276,18 +1276,27 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def validate(cls, invoices):
         super(Invoice, cls).validate(invoices)
         for invoice in invoices:
-            invoice.check_same_account()
             invoice.check_payment_lines()
 
-    def check_same_account(self):
-        for line in self.lines:
-            if (line.type == 'line'
-                    and line.account == self.account):
-                raise InvoiceValidationError(
-                    gettext('account_invoice.msg_invoice_same_account_line',
-                        account=self.account.rec_name,
-                        invoice=self.rec_name,
-                        line=line.rec_name))
+    @classmethod
+    def validate_fields(cls, invoices, field_names):
+        super().validate_fields(invoices, field_names)
+        cls.check_same_account(invoices, field_names)
+
+    @classmethod
+    def check_same_account(cls, invoices, field_names=None):
+        if field_names and not (field_names & {'lines', 'account'}):
+            return
+        for invoice in invoices:
+            for line in invoice.lines:
+                if (line.type == 'line'
+                        and line.account == invoice.account):
+                    raise InvoiceValidationError(
+                        gettext(
+                            'account_invoice.msg_invoice_same_account_line',
+                            account=invoice.account.rec_name,
+                            invoice=invoice.rec_name,
+                            line=line.rec_name))
 
     def check_payment_lines(self):
         amount = sum(l.debit - l.credit for l in self.lines_to_pay)
@@ -2442,20 +2451,23 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return super(InvoiceLine, cls).copy(lines, default=default)
 
     @classmethod
-    def validate(cls, lines):
-        super(InvoiceLine, cls).validate(lines)
-        for line in lines:
-            line.check_same_account()
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.check_same_account(lines, field_names)
 
-    def check_same_account(self):
-        if self.type == 'line':
-            if (self.invoice
-                    and self.account == self.invoice.account):
+    @classmethod
+    def check_same_account(cls, lines, field_names=None):
+        if field_names and not (field_names & {'type', 'invoice', 'account'}):
+            return
+        for line in lines:
+            if (line.type == 'line'
+                    and line.invoice
+                    and line.account == line.invoice.account):
                 raise InvoiceLineValidationError(
                     gettext('account_invoice.msg_invoice_same_account_line',
-                        account=self.account.rec_name,
-                        invoice=self.invoice.rec_name,
-                        line=self.rec_name))
+                        account=line.account.rec_name,
+                        invoice=line.invoice.rec_name,
+                        line=line.rec_name))
 
     def _compute_taxes(self):
         pool = Pool()
@@ -2763,18 +2775,21 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return super(InvoiceTax, cls).create(vlist)
 
     @classmethod
-    def validate(cls, taxes):
-        super().validate(taxes)
-        for tax in taxes:
-            tax.check_same_account()
+    def validate_fields(cls, taxes, field_names):
+        super().validate_fields(taxes, field_names)
+        cls.check_same_account(taxes, field_names)
 
-    def check_same_account(self):
-        if self.account == self.invoice.account:
-            raise InvoiceTaxValidationError(
-                gettext('account_invoice.msg_invoice_same_account_line',
-                    account=self.account.rec_name,
-                    invoice=self.invoice.rec_name,
-                    line=self.rec_name))
+    @classmethod
+    def check_same_account(cls, taxes, field_names=None):
+        if field_names and not (field_names & {'account', 'invoice'}):
+            return
+        for tax in taxes:
+            if tax.account == tax.invoice.account:
+                raise InvoiceTaxValidationError(
+                    gettext('account_invoice.msg_invoice_same_account_line',
+                        account=tax.account.rec_name,
+                        invoice=tax.invoice.rec_name,
+                        line=tax.rec_name))
 
     def get_move_lines(self):
         '''

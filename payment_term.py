@@ -33,17 +33,20 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def validate(cls, terms):
-        super(PaymentTerm, cls).validate(terms)
-        for term in terms:
-            term.check_remainder()
+    def validate_fields(cls, terms, field_names):
+        super().validate_fields(terms, field_names)
+        cls.check_remainder(terms, field_names)
 
-    def check_remainder(self):
-        if not self.lines or not self.lines[-1].type == 'remainder':
-            raise PaymentTermValidationError(
-                gettext('account_invoice'
-                    '.msg_payment_term_missing_last_remainder',
-                    payment_term=self.rec_name))
+    @classmethod
+    def check_remainder(cls, terms, field_names=None):
+        if field_names and 'lines' not in field_names:
+            return
+        for term in terms:
+            if not term.lines or not term.lines[-1].type == 'remainder':
+                raise PaymentTermValidationError(gettext(
+                        'account_invoice'
+                        '.msg_payment_term_missing_last_remainder',
+                        payment_term=term.rec_name))
 
     def compute(self, amount, currency, date):
         """Calculate payment terms and return a list of tuples
@@ -194,15 +197,16 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         return Decimal(number).quantize(quantize)
 
     @classmethod
-    def validate(cls, lines):
-        super(PaymentTermLine, cls).validate(lines)
-        cls.check_ratio_and_divisor(lines)
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.check_ratio_and_divisor(lines, field_names)
 
     @classmethod
-    def check_ratio_and_divisor(cls, lines):
+    def check_ratio_and_divisor(cls, lines, field_names=None):
         "Check consistency between ratio and divisor"
-        # Use a copy because on_change will change the records
-        for line in cls.browse(lines):
+        if field_names and not (field_names & {'type', 'ratio', 'divisor'}):
+            return
+        for line in lines:
             if line.type not in ('percent', 'percent_on_total'):
                 continue
             if line.ratio is None or line.divisor is None:
