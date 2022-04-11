@@ -126,7 +126,7 @@ def validate_file(flavor, kind, xsd=None):
                     'journal': journal,
                     'kind': kind,
                     'amount': Decimal('1000.0'),
-                    'state': 'approved',
+                    'state': 'approved' if kind == 'payable' else 'submitted',
                     'description': 'PAYMENT',
                     'date': Date.today(),
                     }])
@@ -311,7 +311,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'journal': journal,
                         'kind': 'receivable',
                         'amount': Decimal('1000.0'),
-                        'state': 'approved',
+                        'state': 'submitted',
                         'description': 'PAYMENT',
                         'date': Date.today(),
                         }])
@@ -331,7 +331,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'journal': journal,
                         'kind': 'receivable',
                         'amount': Decimal('2000.0'),
-                        'state': 'approved',
+                        'state': 'submitted',
                         'description': 'PAYMENT',
                         'date': Date.today(),
                         }, {
@@ -340,7 +340,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'journal': journal,
                         'kind': 'receivable',
                         'amount': Decimal('3000.0'),
-                        'state': 'approved',
+                        'state': 'submitted',
                         'description': 'PAYMENT',
                         'date': Date.today(),
                         },
