@@ -145,12 +145,14 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
         return [('id', 'in', query)]
 
     @classmethod
-    def validate(cls, numbers):
-        super(PromotionCouponNumber, cls).validate(numbers)
-        cls.check_unique(numbers)
+    def validate_fields(cls, numbers, field_names):
+        super().validate_fields(numbers, field_names)
+        cls.check_unique(numbers, field_names)
 
     @classmethod
-    def check_unique(cls, numbers):
+    def check_unique(cls, numbers, field_names=None):
+        if field_names and not (field_names & {'number', 'coupon'}):
+            return
         duplicates = []
         for sub_numbers in grouped_slice(numbers):
             domain = ['OR']
