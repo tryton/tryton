@@ -219,10 +219,12 @@ class Subscription(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     @classmethod
-    def default_currency(cls):
+    def default_currency(cls, **pattern):
         pool = Pool()
         Company = pool.get('company.company')
-        company = cls.default_company()
+        company = pattern.get('company')
+        if not company:
+            company = cls.default_company()
         if company:
             return Company(company).currency.id
 
@@ -230,14 +232,19 @@ class Subscription(Workflow, ModelSQL, ModelView):
     def default_state(cls):
         return 'draft'
 
-    @fields.depends('party', 'invoice_party')
+    @fields.depends('company', 'party', 'invoice_party', 'currency', 'lines')
     def on_change_party(self):
         if not self.invoice_party:
             self.invoice_address = None
+        if not self.lines:
+            self.currency = self.default_currency(
+                company=self.company.id if self.company else None)
         if self.party:
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
             self.payment_term = self.party.customer_payment_term
+            if not self.lines and self.party.customer_currency:
+                self.currency = self.party.customer_currency
 
     @fields.depends('party', 'invoice_party')
     def on_change_invoice_party(self):
