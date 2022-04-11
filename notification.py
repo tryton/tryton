@@ -309,22 +309,25 @@ class Email(ModelSQL, ModelView):
         return bcc, languagues
 
     @classmethod
-    def validate(cls, notifications):
-        super().validate(notifications)
-        for notification in notifications:
-            notification.check_subject()
+    def validate_fields(cls, notifications, field_names):
+        super().validate_fields(notifications, field_names)
+        cls.check_subject(notifications, field_names)
 
-    def check_subject(self):
-        if not self.subject:
+    @classmethod
+    def check_subject(cls, notifications, field_names=None):
+        if field_names and 'subject' not in field_names:
             return
-        try:
-            TextTemplate(self.subject)
-        except Exception as exception:
-            raise TemplateError(
-                gettext('notification_email.'
-                    'msg_notification_invalid_subject',
-                    notification=self.rec_name,
-                    exception=exception)) from exception
+        for notification in notifications:
+            if not notification.subject:
+                continue
+            try:
+                TextTemplate(notification.subject)
+            except Exception as exception:
+                raise TemplateError(gettext(
+                        'notification_email.'
+                        'msg_notification_invalid_subject',
+                        notification=notification.rec_name,
+                        exception=exception)) from exception
 
 
 class EmailAttachment(ModelSQL):
