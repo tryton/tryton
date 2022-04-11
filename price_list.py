@@ -157,27 +157,29 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return 'unit_price'
 
     @classmethod
-    def validate(cls, lines):
-        super(PriceListLine, cls).validate(lines)
-        for line in lines:
-            line.check_formula()
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.check_formula(lines, field_names)
 
-    def check_formula(self):
+    @classmethod
+    def check_formula(cls, lines, field_names=None):
         '''
         Check formula
         '''
-        context = self.price_list.get_context_formula(
-            None, None, Decimal('0'), 0, None)
-
-        try:
-            if not isinstance(self.get_unit_price(**context), Decimal):
-                raise ValueError
-        except Exception as exception:
-            raise FormulaError(
-                gettext('product_price_list.msg_invalid_formula',
-                    formula=self.formula,
-                    line=self.rec_name,
-                    exception=exception)) from exception
+        if field_names and not (field_names & {'price_list', 'formula'}):
+            return
+        for line in lines:
+            context = line.price_list.get_context_formula(
+                None, None, Decimal('0'), 0, None)
+            try:
+                if not isinstance(line.get_unit_price(**context), Decimal):
+                    raise ValueError
+            except Exception as exception:
+                raise FormulaError(
+                    gettext('product_price_list.msg_invalid_formula',
+                        formula=line.formula,
+                        line=line.rec_name,
+                        exception=exception)) from exception
 
     def match(self, pattern):
         if 'quantity' in pattern:
