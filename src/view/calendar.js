@@ -187,24 +187,24 @@
             }
             this.events =  [];
             var promisses = [];
-            prm.then(function()  {
-                this.group.forEach(function(record) {
+            prm.then(() => {
+                this.group.forEach(record => {
                     var record_promisses = [];
                     for (const name of this.fields) {
                         record_promisses.push(record.load(name));
                     }
                     var prm = jQuery.when.apply(jQuery, record_promisses).then(
-                        function(){
+                        () => {
                             this.insert_event(record);
-                        }.bind(this));
+                        });
                     promisses.push(prm);
-                }.bind(this));
-                return jQuery.when.apply(jQuery, promisses).then(function() {
+                });
+                return jQuery.when.apply(jQuery, promisses).then(() => {
                     callback(this.events);
-                }.bind(this)).always(function() {
+                }).always(() => {
                     this.processing = false;
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         event_click: function(calEvent, jsEvent, view) {
             // Prevent opening the wrong event while the calendar event clicked
@@ -212,9 +212,9 @@
             if (!this.clicked_event) {
                 this.clicked_event = true;
                 this.screen.current_record = calEvent.record;
-                this.screen.switch_view().always(function(){
+                this.screen.switch_view().always(() => {
                     this.clicked_event = false;
-                }.bind(this));
+                });
             }
         },
         event_drop: function(event, delta, revertFunc, jsEvent, ui, view) {

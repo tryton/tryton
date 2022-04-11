@@ -85,7 +85,7 @@
 
             var act_window = new Sao.Model('ir.action.act_window');
             this.action_prm = act_window.execute('get', [this.name], {});
-            this.action_prm.done(function(action) {
+            this.action_prm.done(action => {
                 var params = {};
                 this.action = action;
                 params.view_ids = [];
@@ -145,11 +145,11 @@
                 } else {
                     this.title.text(this.action.name);
                 }
-                this.screen.switch_view().done(function() {
+                this.screen.switch_view().done(() => {
                     this.body.append(this.screen.screen_container.el);
                     this.screen.search_filter();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         row_activate: function() {
             var record_ids, win;
@@ -168,13 +168,13 @@
                     ids: record_ids
                 }, jQuery.extend({}, this.screen.group._context), false);
             } else {
-                win = new Sao.Window.Form(this.screen, function(result) {
+                win = new Sao.Window.Form(this.screen, result => {
                     if (result) {
                         this.screen.current_record.save();
                     } else {
                         this.screen.current_record.cancel();
                     }
-                }.bind(this), {
+                }, {
                 'title': this.title.text(),
                 });
             }

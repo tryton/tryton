@@ -105,7 +105,7 @@
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
             var title_prm = jQuery.when(kwargs.title || '').then(
-                function(title) {
+                title => {
                     if (screen.breadcrumb.length) {
                         var breadcrumb = jQuery.extend([], screen.breadcrumb);
                         if (title) {
@@ -140,7 +140,7 @@
                         label = Sao.common.ellipsize(this.title, 80);
                     }
                     return label;
-                }.bind(this));
+                });
 
             this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
@@ -148,20 +148,20 @@
             var view_type = kwargs.view_type || 'form';
 
             this.switch_prm = this.screen.switch_view(view_type)
-                .done(function() {
+                .done(() => {
                     if (kwargs.new_ &&
                         (this.screen.current_view.view_type == view_type)) {
                         this.screen.new_(undefined, kwargs.rec_name);
                     }
-                }.bind(this));
+                });
             var dialog = new Sao.Dialog('', 'window-form', 'lg', false);
             this.el = dialog.modal;
-            this.el.on('keydown', function(e) {
+            this.el.on('keydown', e => {
                 if (e.which == Sao.common.ESC_KEYCODE) {
                     e.preventDefault();
                     this.response('RESPONSE_CANCEL');
                 }
-            }.bind(this));
+            });
 
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.readonly);
@@ -192,9 +192,9 @@
                     'class': 'btn btn-link',
                     'type': 'button',
                     'title': button_text,
-                }).text(button_text).click(function() {
+                }).text(button_text).click(() => {
                     this.response('RESPONSE_CANCEL');
-                }.bind(this)));
+                }));
             }
 
             if (kwargs.new_ && this.many) {
@@ -202,9 +202,9 @@
                     'class': 'btn btn-default',
                     'type': 'button',
                     'title': Sao.i18n.gettext("New"),
-                }).text(Sao.i18n.gettext('New')).click(function() {
+                }).text(Sao.i18n.gettext('New')).click(() => {
                     this.response('RESPONSE_ACCEPT');
-                }.bind(this)));
+                }));
             }
 
             if (this.save_current) {
@@ -223,10 +223,10 @@
                     'title': Sao.i18n.gettext("OK"),
                 }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             }
-            dialog.content.submit(function(e) {
+            dialog.content.submit(e => {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
-            }.bind(this));
+            });
 
             if (view_type == 'tree') {
                 var menu = jQuery('<div/>', {
@@ -354,7 +354,7 @@
 
             this.screen.windows.push(this);
 
-            this.switch_prm.done(function() {
+            this.switch_prm.done(() => {
                 if (this.screen.current_view.view_type != view_type) {
                     this.destroy();
                 } else {
@@ -362,12 +362,12 @@
                     content.append(this.screen.screen_container.alternate_viewport);
                     this.el.modal('show');
                 }
-            }.bind(this));
-            this.el.on('shown.bs.modal', function(event) {
-                this.screen.display().done(function() {
+            });
+            this.el.on('shown.bs.modal', event => {
+                this.screen.display().done(() => {
                     this.screen.set_cursor();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
@@ -417,7 +417,7 @@
             var model_name = this.screen.model_name;
             var value = this.wid_text.val();
 
-            var callback = function(result) {
+            const callback = result => {
                 var prm = jQuery.when();
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
@@ -427,11 +427,11 @@
                     this.screen.group.load(ids, true);
                     prm = this.screen.display();
                 }
-                prm.done(function() {
+                prm.done(() => {
                     this.screen.set_cursor();
-                }.bind(this));
+                });
                 this.entry.val('');
-            }.bind(this);
+            };
             var parser = new Sao.common.DomainParser();
             var win = new Sao.Window.Search(model_name, callback, {
                 sel_multi: true,
@@ -473,12 +473,12 @@
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
-                this.screen.current_record.validate().then(function(validate) {
+                this.screen.current_record.validate().then(validate => {
                     if (validate && this.screen.attributes.pre_validate) {
                         return this.screen.current_record.pre_validate();
                     }
                     return validate;
-                }.bind(this)).then(function(validate) {
+                }).then(validate => {
                     var closing_prm = jQuery.Deferred();
                     if (validate && this.save_current) {
                         this.screen.save_current().then(closing_prm.resolve,
@@ -508,19 +508,19 @@
                         closing_prm.resolve();
                     }
 
-                    closing_prm.fail(function() {
-                        this.screen.display().done(function() {
+                    closing_prm.fail(() => {
+                        this.screen.display().done(() => {
                             this.screen.set_cursor();
-                        }.bind(this));
-                    }.bind(this));
+                        });
+                    });
 
                     // TODO Add support for many
-                    closing_prm.done(function() {
+                    closing_prm.done(() => {
                         if (response_id == 'RESPONSE_ACCEPT') {
                             this.screen.new_();
-                            this.screen.current_view.display().done(function() {
+                            this.screen.current_view.display().done(() => {
                                 this.screen.set_cursor();
-                            }.bind(this));
+                            });
                             this.many -= 1;
                             if (this.many === 0) {
                                 this.but_new.prop('disabled', true);
@@ -530,8 +530,8 @@
                             this.callback(result);
                             this.destroy();
                         }
-                    }.bind(this));
-                }.bind(this));
+                    });
+                });
                 return;
             }
 
@@ -547,9 +547,9 @@
                         this._initial_value);
                 } else if (record.modified) {
                     record.cancel();
-                    cancel_prm = record.reload().then(function() {
+                    cancel_prm = record.reload().then(() => {
                         this.screen.display();
-                    }.bind(this));
+                    });
                 }
                 if (added) {
                     record.modified_fields.id = added;
@@ -557,10 +557,10 @@
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
             }
-            (cancel_prm || jQuery.when()).then(function() {
+            (cancel_prm || jQuery.when()).then(() => {
                 this.callback(result);
                 this.destroy();
-            }.bind(this));
+            });
         },
         destroy: function() {
             this.screen.windows.splice(this.screen.windows.indexOf(this), 1);
@@ -748,34 +748,34 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.response('RESPONSE_CANCEL');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Find"),
-            }).text(Sao.i18n.gettext('Find')).click(function() {
+            }).text(Sao.i18n.gettext('Find')).click(() => {
                 this.response('RESPONSE_APPLY');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button',
                     'title': Sao.i18n.gettext("New"),
-                }).text(Sao.i18n.gettext('New')).click(function() {
+                }).text(Sao.i18n.gettext('New')).click(() => {
                     this.response('RESPONSE_ACCEPT');
-                }.bind(this)).appendTo(dialog.footer);
+                }).appendTo(dialog.footer);
             }
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
-            dialog.content.submit(function(e) {
+            dialog.content.submit(e => {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
-            }.bind(this));
+            });
 
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
@@ -788,8 +788,8 @@
                 readonly: true,
                 breadcrumb: [this.title],
             });
-            this.screen.load_next_view().done(function() {
-                this.screen.switch_view().done(function() {
+            this.screen.load_next_view().done(() => {
+                this.screen.switch_view().done(() => {
                     if (!this.sel_multi) {
                         this.screen.current_view.selection_mode = (
                             Sao.common.SELECTION_SINGLE);
@@ -803,8 +803,8 @@
                     if (kwargs.search_filter !== undefined) {
                         this.screen.search_filter(kwargs.search_filter);
                     }
-                }.bind(this));
-            }.bind(this));
+                });
+            });
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
@@ -874,18 +874,18 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.response('RESPONSE_CANCEL');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
-            dialog.content.submit(function(e) {
+            dialog.content.submit(e => {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
-            }.bind(this));
+            });
 
             this.screen = new Sao.Screen('res.user', {
                 mode: []
@@ -895,23 +895,22 @@
             this.screen.group.readonly = false;
             this.screen.group.skip_model_access = true;
 
-            var set_view = function(view) {
+            const set_view = view => {
                 this.screen.add_view(view);
-                this.screen.switch_view().done(function() {
+                this.screen.switch_view().done(() => {
                     this.screen.new_(false);
                     this.screen.model.execute('get_preferences', [false], {})
-                    .then(set_preferences.bind(this), this.destroy);
-                }.bind(this));
+                    .then(set_preferences, this.destroy);
+                });
             };
-            var set_preferences = function(preferences) {
+            const set_preferences = preferences => {
                 this.screen.current_record.cancel();
                 this.screen.current_record.set(preferences);
                 this.screen.current_record.id =
                     this.screen.model.session.user_id;
-                this.screen.current_record.validate(null, true).then(
-                    function() {
-                        this.screen.display(true);
-                    }.bind(this));
+                this.screen.current_record.validate(null, true).then(() => {
+                    this.screen.display(true);
+                });
                 dialog.body.append(this.screen.screen_container.el);
                 this.el.modal('show');
             };
@@ -920,23 +919,23 @@
             });
 
             this.screen.model.execute('get_preferences_fields_view', [], {})
-                .then(set_view.bind(this), this.destroy);
+                .then(set_view, this.destroy);
         },
         response: function(response_id) {
-            var end = function() {
+            const end = () => {
                 this.destroy();
                 this.callback();
-            }.bind(this);
+            };
             var prm = jQuery.when();
             if (response_id == 'RESPONSE_OK') {
                 prm = this.screen.current_record.validate()
-                    .then(function(validate) {
+                    .then(validate => {
                         if (validate) {
                             var values = jQuery.extend({}, this.screen.get());
                             return this.screen.model.execute(
                                 'set_preferences', [values], {});
                         }
-                    }.bind(this));
+                    });
             }
             prm.done(end);
         },
@@ -956,18 +955,18 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.response('RESPONSE_CANCEL');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
-            dialog.content.submit(function(e) {
+            dialog.content.submit(e => {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
-            }.bind(this));
+            });
 
             var group = jQuery('<div/>', {
                 'class': 'form-group'
@@ -1025,18 +1024,18 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function(){
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.response('RESPONSE_CANCEL');
-            }.bind(this)).appendTo(this.dialog.footer);
+            }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(function(e){
+            }).text(Sao.i18n.gettext('OK')).click(e => {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
-            }.bind(this)).appendTo(this.dialog.footer);
+            }).appendTo(this.dialog.footer);
 
             var row_fields = jQuery('<div/>', {
                 'class': 'row'
@@ -1071,11 +1070,11 @@
                 'title': Sao.i18n.gettext("Add"),
             }).text(' ' + Sao.i18n.gettext('Add')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-add')
-            ).click(function(){
-                this.fields_all.find('.bg-primary').each(function(i, el_field) {
+            ).click(() => {
+                this.fields_all.find('.bg-primary').each((i, el_field) => {
                     this.sig_sel_add(el_field);
-                }.bind(this));
-            }.bind(this))
+                });
+            })
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
@@ -1084,10 +1083,10 @@
                 'title': Sao.i18n.gettext("Remove"),
             }).text(' ' + Sao.i18n.gettext('Remove')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
-            ).click(function(){
+            ).click(() => {
                 // sig_unsel
                 this.fields_selected.children('li.bg-primary').remove();
-            }.bind(this))
+            })
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
@@ -1096,9 +1095,9 @@
                 'title': Sao.i18n.gettext("Clear"),
             }).text(' ' + Sao.i18n.gettext('Clear')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
-            ).click(function(){
+            ).click(() => {
                 this.fields_selected.empty();
-            }.bind(this))
+            })
             .appendTo(this.column_buttons);
 
             jQuery('<hr>').appendTo(this.column_buttons);
@@ -1132,9 +1131,9 @@
                 'class': 'caret',
             }).html('&nbsp;'))
                 .css('cursor', 'pointer')
-                .on('click', function(){
+                .on('click', () => {
                     this.expander_csv.collapse('toggle');
-                }.bind(this)).appendTo(row_csv_param);
+                }).appendTo(row_csv_param);
 
             this.expander_csv = jQuery('<div/>', {
                 'id': 'expander_csv',
@@ -1227,9 +1226,9 @@
                 'title': Sao.i18n.gettext("Auto-Detect"),
             }).text(' ' + Sao.i18n.gettext('Auto-Detect')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-search')
-            ).click(function(){
+            ).click(() => {
                 this.autodetect();
-            }.bind(this))
+            })
             .appendTo(this.column_buttons);
 
             var chooser_label = jQuery('<label/>', {
@@ -1333,24 +1332,24 @@
                 }
             }).reverse();
 
-            fields_order.forEach(function(field) {
+            fields_order.forEach(field => {
                 var name = parent_node[field].string || field;
                 var node = jQuery('<li/>', {
                     'field': parent_node[field].field,
                     'name': parent_node[field].name
-                }).text(name).click(function(e) {
+                }).text(name).click(e => {
                     if(e.ctrlKey) {
                         node.toggleClass('bg-primary');
                     } else {
                         this.fields_all.find('li').removeClass('bg-primary');
                         node.addClass('bg-primary');
                     }
-                }.bind(this)).appendTo(parent_view);
+                }).appendTo(parent_view);
                 parent_node[field].view = node;
                 var expander_icon = Sao.common.ICONFACTORY
                     .get_icon_img('tryton-arrow-right')
                     .data('expanded', false)
-                    .click(function(e) {
+                    .click(e => {
                         e.stopPropagation();
                         var icon;
                         var expanded = expander_icon.data('expanded');
@@ -1366,11 +1365,11 @@
                             .then(function(url) {
                                 expander_icon.attr('src', url);
                             });
-                    }.bind(this)).prependTo(node);
+                    }).prependTo(node);
                 expander_icon.css(
                     'visibility',
                     parent_node[field].relation ? 'visible' : 'hidden');
-            }.bind(this));
+            });
         },
         model_populate: function (fields, parent_node, prefix_field,
             prefix_name) {
@@ -1425,13 +1424,13 @@
                 quoteChar: this.el_csv_quotechar.val(),
                 preview: 1,
                 encoding: this.el_csv_encoding.val(),
-                error: function(err, file, inputElem, reason) {
+                error: (err, file, inputElem, reason) => {
                     Sao.common.warning.run(
                         reason,
                         Sao.i18n.gettext("Detection failed"));
                 },
-                complete: function(results) {
-                    results.data[0].every(function(word) {
+                complete: results => {
+                    results.data[0].every(word => {
                         if (!(word in this.fields_invert) && !(word in this.fields)) {
                             var fields = this.fields_model;
                             var prefix = '';
@@ -1439,8 +1438,8 @@
                             this._traverse(fields, prefix, parents, 0);
                         }
                         return this._auto_select(word);
-                    }.bind(this));
-                }.bind(this)
+                    });
+                }
             });
         },
         _auto_select: function(word) {
@@ -1462,7 +1461,7 @@
             }
             var node = jQuery('<li/>', {
                 'field': field
-            }).text(name).click(function(){
+            }).text(name).click(() => {
                 node.addClass('bg-primary')
                     .siblings().removeClass('bg-primary');
             }).appendTo(this.fields_selected);
@@ -1487,14 +1486,14 @@
         response: function(response_id) {
             if(response_id == 'RESPONSE_OK') {
                 var fields = [];
-                this.fields_selected.children('li').each(function(i, field_el) {
+                this.fields_selected.children('li').each((i, field_el) => {
                     fields.push(field_el.getAttribute('field'));
                 });
                 var fname = this.file_input.val();
                 if(fname) {
-                    this.import_csv(fname, fields).then(function() {
+                    this.import_csv(fname, fields).then(() => {
                         this.destroy();
-                    }.bind(this));
+                    });
                 } else {
                     this.destroy();
                 }
@@ -1512,24 +1511,24 @@
                 delimiter: this.el_csv_delimiter.val(),
                 quoteChar: this.el_csv_quotechar.val(),
                 encoding: encoding,
-                error: function(err, file, inputElem, reason) {
+                error: (err, file, inputElem, reason) => {
                     Sao.common.warning.run(
                         reason,
                         Sao.i18n.gettext("Import failed"))
                         .always(prm.reject);
                 },
-                complete: function(results) {
+                complete: results => {
                     var data = results.data.slice(skip, results.data.length - 1);
                     Sao.rpc({
                         'method': 'model.' + this.screen.model_name +
                         '.import_data',
                         'params': [fields, data, {}]
-                    }, this.session).then(function(count) {
+                    }, this.session).then(count => {
                         return Sao.common.message.run(
                             Sao.i18n.ngettext('%1 record imported',
                                 '%1 records imported', count));
                     }).then(prm.resolve, prm.reject);
-                }.bind(this)
+                }
             });
             return prm.promise();
         }
@@ -1564,9 +1563,9 @@
                 'title': Sao.i18n.gettext("Save Export"),
             }).text(' ' + Sao.i18n.gettext('Save Export')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-save')
-            ).click(function(){
+            ).click(() => {
                 this.addreplace_predef();
-            }.bind(this))
+            })
             .appendTo(this.column_buttons);
 
             this.button_url = jQuery('<a/>', {
@@ -1586,9 +1585,9 @@
                 'title': Sao.i18n.gettext("Delete Export"),
             }).text(' ' + Sao.i18n.gettext('Delete Export')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
-            ).click(function(){
+            ).click(() => {
                 this.remove_predef();
-            }.bind(this))
+            })
             .appendTo(this.column_buttons);
 
             var predefined_exports_column = jQuery('<div/>', {
@@ -1621,11 +1620,11 @@
                 'type': 'checkbox',
             });
 
-            this.selected_records.change(function() {
+            this.selected_records.change(() => {
                 this.ignore_search_limit.parents('.form-group').first().toggle(
                     !JSON.parse(this.selected_records.val()) &&
                     !this.screen_is_tree);
-            }.bind(this));
+            });
 
             jQuery('<div/>', {
                 'class': 'form-group',
@@ -1695,11 +1694,11 @@
                 }
             }).reverse();
 
-            names.forEach(function(name) {
+            names.forEach(name => {
                 var path = parent_node[name].path;
                 var node = jQuery('<li/>', {
                     'path': path
-                }).text(parent_node[name].string).click(function(e) {
+                }).text(parent_node[name].string).click(e => {
                     if(e.ctrlKey) {
                         node.toggleClass('bg-primary');
                     } else {
@@ -1707,13 +1706,13 @@
                             .removeClass('bg-primary');
                         node.addClass('bg-primary');
                     }
-                }.bind(this)).appendTo(parent_view);
+                }).appendTo(parent_view);
                 parent_node[name].view = node;
 
                 var expander_icon = Sao.common.ICONFACTORY
                     .get_icon_img('tryton-arrow-right')
                     .data('expanded', false)
-                    .click(function(e) {
+                    .click(e => {
                         e.stopPropagation();
                         var icon;
                         var expanded = expander_icon.data('expanded');
@@ -1729,11 +1728,11 @@
                             .then(function(url) {
                                 expander_icon.attr('src', url);
                             });
-                    }.bind(this)).prependTo(node);
+                    }).prependTo(node);
                 expander_icon.css(
                     'visibility',
                     parent_node[name].children ? 'visible' : 'hidden');
-            }.bind(this));
+            });
         },
         model_populate: function(fields, parent_node, prefix_field,
             prefix_name) {
@@ -1803,14 +1802,14 @@
                 'params': [
                     [['resource', '=', this.screen.model_name]], 0, null, null,
                     ['name', 'export_fields.name'], {}],
-            }, this.session).done(function(exports) {
+            }, this.session).done(exports => {
                 for (const export_ of exports) {
                     this.predef_exports[export_.id] = export_['export_fields.']
-                        .map(function(field) {return field.name;});
+                        .map(field => field.name);
                     this.add_to_predef(export_.id, export_.name);
                     this.predef_exports_list.children('li').first().focus();
                 }
-            }.bind(this));
+            });
         },
         add_to_predef: function(id, name) {
             var node = jQuery('<li/>', {
@@ -1822,13 +1821,13 @@
                 if(keyCode == 13 || keyCode == 32) {
                     node.click();
                 }
-            }).click(function(event) {
+            }).click(event => {
                 node.toggleClass('bg-primary')
                     .siblings().removeClass('bg-primary');
                 if (node.hasClass('bg-primary')) {
                     this.sel_predef(node.attr('export_id'));
                 }
-            }.bind(this));
+            });
             this.predef_exports_list.append(node);
         },
         addreplace_predef: function() {
@@ -1842,7 +1841,7 @@
             }
             var pref_id;
 
-            var save = function(name) {
+            const save = name => {
                 var prm;
                 if (!pref_id) {
                     prm = Sao.rpc({
@@ -1865,7 +1864,7 @@
                         return pref_id;
                     });
                 }
-                return prm.then(function(pref_id) {
+                return prm.then(pref_id => {
                     this.session.cache.clear(
                         'model.' + this.screen.model_name + '.view_toolbar_get');
                     this.predef_exports[pref_id] = fields;
@@ -1875,8 +1874,8 @@
                     else {
                         selection.attr('export_id', pref_id);
                     }
-                }.bind(this));
-            }.bind(this);
+                });
+            };
 
             var selection = this.predef_exports_list.children('li.bg-primary');
             if (selection.length === 0) {
@@ -1902,12 +1901,12 @@
             Sao.rpc({
                 'method': 'model.ir.export.delete',
                 'params': [[export_id], {}]
-            }, this.session).then(function() {
+            }, this.session).then(() => {
                 this.session.cache.clear(
                     'model.' + this.screen.model_name + '.view_toolbar_get');
                 delete this.predef_exports[export_id];
                 selection.remove();
-            }.bind(this));
+            });
         },
         sel_predef: function(export_id) {
             this.fields_selected.empty();
@@ -2011,11 +2010,11 @@
                             this.context],
                     }, this.session);
                 }
-                prm.then(function(data) {
-                    this.export_csv(fields2, data, paths).then(function() {
+                prm.then(data => {
+                    this.export_csv(fields2, data, paths).then(() => {
                         this.destroy();
-                    }.bind(this));
-                }.bind(this));
+                    });
+                });
             } else {
                 this.destroy();
             }
@@ -2258,14 +2257,14 @@
                         ],
                     ],
                     0, null, null, ['rec_name'], record.get_context()],
-            }, record.model.session).then(function(attachments) {
+            }, record.model.session).then(attachments => {
                 for (const attachment of attachments) {
                     this.attachments.append(jQuery('<option/>', {
                         'value': JSON.stringify(attachment.id),
                         'text': attachment.rec_name,
                     }));
                 }
-            }.bind(this))
+            })
             .fail(function() {
                 Sao.Logger.error(
                     "Could not fetch attachment for", record);
@@ -2285,9 +2284,9 @@
                 'title': Sao.i18n.gettext("Cancel"),
             }).text(' ' + Sao.i18n.gettext('Cancel')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-cancel')
-            ).click(function() {
+            ).click(() => {
                 this.response('RESPONSE_CANCEL');
-            }.bind(this)).appendTo(this.dialog.footer);
+            }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
@@ -2296,10 +2295,10 @@
             }).text(' ' + Sao.i18n.gettext('Send')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-send')
             ).appendTo(this.dialog.footer);
-            this.dialog.content.submit(function(e) {
+            this.dialog.content.submit(e => {
                 e.preventDefault();
                 this.response('RESPONSE_OK');
-            }.bind(this));
+            });
 
             this._fill_with(template);
 
@@ -2325,10 +2324,10 @@
             button.hide();
             button.appendTo(row);
 
-            file.on('change', function() {
+            file.on('change', () => {
                 button.show();
                 this._add_file_button();
-            }.bind(this));
+            });
             button.click(function() {
                 row.remove();
             });
@@ -2371,7 +2370,7 @@
                     'params': [this.record.model.name, this.record.id, {}],
                 }, this.record.model.session);
             }
-            prm.then(function(values) {
+            prm.then(values => {
                 this.to.val((values.to || []).join(', '));
                 this.cc.val((values.cc || []).join(', '));
                 this.bcc.val((values.bcc || []).join(', '));
@@ -2383,7 +2382,7 @@
                     check.prop(
                         'checked', ~print_ids.indexOf(parseInt(print_id, 10)));
                 }
-            }.bind(this));
+            });
         },
         response: function(response_id) {
             if (response_id == 'RESPONSE_OK') {
@@ -2412,9 +2411,9 @@
                             attachments,
                             {}],
                     }, record.model.session);
-                }).then(function() {
+                }).then(() => {
                     this.destroy();
-                }.bind(this));
+                });
             } else {
                 this.destroy();
             }

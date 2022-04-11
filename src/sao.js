@@ -828,7 +828,7 @@ var Sao = {};
             if (!cell) {
                 cell = this.get_cell();
             }
-            record.load(this.field.name).done(function() {
+            record.load(this.field.name).done(() => {
                 if (record._values.favorite !== null) {
                     var icon = 'tryton-star';
                     if (!record._values.favorite) {
@@ -836,13 +836,13 @@ var Sao = {};
                     }
                     cell.data('star', Boolean(record._values.favorite));
                     Sao.common.ICONFACTORY.get_icon_url(icon)
-                        .then(function(url) {
+                        .then(url => {
                             cell.attr('src', url);
                         });
                     cell.click({'record': record, 'button': cell},
                         this.favorite_click);
                     }
-                }.bind(this));
+                });
             return cell;
         },
         set_visible: function() {
@@ -983,7 +983,7 @@ var Sao = {};
             return ir_model.execute('global_search',
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
                     Sao.main_menu_screen.context)
-                .then(function(s_results) {
+                .then(s_results => {
                     var results = [];
                     for (const result of s_results) {
                         results.push({
@@ -995,7 +995,7 @@ var Sao = {};
                         });
                     }
                     return results;
-                }.bind(this));
+                });
         },
         match_selected: function(item) {
             if (item.model == Sao.main_menu_screen.model_name) {

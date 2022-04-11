@@ -40,14 +40,14 @@
             Sao.rpc({
                 'method': 'wizard.' + this.action + '.create',
                 'params': [this.session.context]
-            }, this.session).then(function(result) {
+            }, this.session).then(result => {
                 this.session_id = result[0];
                 this.start_state = this.state = result[1];
                 this.end_state = result[2];
                 this.process();
-            }.bind(this), function() {
+            }, () => {
                 this.destroy();
-            }.bind(this));
+            });
         },
         process: function() {
             if (this.__processing || this.__waiting_response) {
@@ -66,17 +66,17 @@
                 Sao.rpc({
                     'method': 'wizard.' + this.action + '.execute',
                     'params': [this.session_id, data, this.state, ctx]
-                }, this.session).then(function(result) {
+                }, this.session).then(result => {
                     if (result.view) {
                         this.clean();
                         var view = result.view;
                         this.update(view.fields_view, view.buttons);
 
-                        this.screen.new_(false).then(function() {
+                        this.screen.new_(false).then(() => {
                             this.screen.current_record.set_default(view.defaults);
                             this.update_buttons();
                             this.screen.set_cursor();
-                        }.bind(this));
+                        });
 
                         this.screen_state = view.state;
                         this.__waiting_response = true;
@@ -84,7 +84,7 @@
                         this.state = this.end_state;
                     }
 
-                    var execute_actions = function execute_actions() {
+                    const execute_actions = () => {
                         if (result.actions) {
                             for (const action of result.actions) {
                                 var context = jQuery.extend({}, this.context);
@@ -97,7 +97,7 @@
                                     action[0], action[1], context);
                             }
                         }
-                    }.bind(this);
+                    };
 
                     if (this.state == this.end_state) {
                         this.end().then(execute_actions);
@@ -105,10 +105,10 @@
                         execute_actions();
                     }
                     this.__processing = false;
-                }.bind(this), function(result) {
+                }, result => {
                     // TODO end for server error.
                     this.__processing = false;
-                }.bind(this));
+                });
             };
             process.call(this);
         },
@@ -119,10 +119,10 @@
             return Sao.rpc({
                 'method': 'wizard.' + this.action + '.delete',
                 'params': [this.session_id, this.session.context]
-            }, this.session).then(function(action) {
+            }, this.session).then(action => {
                 this.destroy(action);
-            }.bind(this))
-            .fail(function() {
+            })
+            .fail(() => {
                 Sao.Logger.warn(
                     "Unable to delete session %s of wizard %s",
                     this.session_id, this.action);
@@ -224,9 +224,9 @@
             var button = Sao.Wizard.Form._super._get_button.call(this,
                 definition);
             this.footer.append(button.el);
-            button.el.click(function() {
+            button.el.click(() => {
                 this.response(definition);
-            }.bind(this));
+            });
             return button;
         },
         destroy: function(action) {
@@ -244,9 +244,8 @@
             }
         },
         end: function() {
-            return Sao.Wizard.Form._super.end.call(this).always(function() {
-                return this.tab.close();
-            }.bind(this));
+            return Sao.Wizard.Form._super.end.call(this).always(
+                () => this.tab.close());
         }
     });
 
@@ -258,14 +257,14 @@
             this.header = dialog.header;
             this.content = dialog.content;
             this.footer = dialog.footer;
-            this.dialog.on('keydown', function(e) {
+            this.dialog.on('keydown', e => {
                 if (e.which == Sao.common.ESC_KEYCODE) {
                     e.preventDefault();
                     if (this.end_state in this.states) {
                         this.response(this.states[this.end_state].attributes);
                     }
                 }
-            }.bind(this));
+            });
             dialog.body.append(this.widget).append(this.info_bar.el);
         },
         clean: function() {
@@ -279,15 +278,15 @@
             this.footer.append(button.el);
             if (definition['default']) {
                 this.content.unbind('submit');
-                this.content.submit(function(e) {
+                this.content.submit(e => {
                     this.response(definition);
                     e.preventDefault();
-                }.bind(this));
+                });
                 button.el.attr('type', 'submit');
             } else {
-                button.el.click(function() {
+                button.el.click(() => {
                     this.response(definition);
-                }.bind(this));
+                });
             }
             return button;
         },
@@ -298,7 +297,7 @@
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this, action);
-            var destroy = function() {
+            const destroy = () => {
                 this.dialog.remove();
                 var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
                 var is_menu = false;
@@ -333,7 +332,7 @@
                         });
                     }
                 }
-            }.bind(this);
+            };
             if ((this.dialog.data('bs.modal') || {}).isShown) {
                 this.dialog.on('hidden.bs.modal', destroy);
                 this.dialog.modal('hide');

@@ -344,7 +344,7 @@ function eval_pyson(value){
                 }
             }
             return jQuery.when.apply(jQuery,promesses)
-                .done(function() {
+                .done(() => {
                     var record = this.record;
                     for (const name in this.widgets) {
                         var widgets = this.widgets[name];
@@ -359,8 +359,8 @@ function eval_pyson(value){
                             widget.display();
                         }
                     }
-                }.bind(this))
-                .done(function() {
+                })
+                .done(() => {
                     var record = this.record;
                     var j;
                     for (j in this.state_widgets) {
@@ -371,7 +371,7 @@ function eval_pyson(value){
                         var container = this.containers[j];
                         container.resize();
                     }
-                }.bind(this));
+                });
         },
         set_value: function() {
             var record = this.record;
@@ -1037,22 +1037,22 @@ function eval_pyson(value){
                                 'model.' + action.res_model + '.search_count'),
                             'params': [
                                 ['AND', domain, 0, tab_domain], 100, context],
-                        }, Sao.Session.current_session).then(function(value) {
+                        }, Sao.Session.current_session).then(value => {
                             this._set_count(
                                 value, i, current, counter,
                                 action.name, tab_domains);
-                        }.bind(this));
+                        });
                     }, this);
                 } else {
                     Sao.rpc({
                         'method': (
                             'model.' + action.res_model + '.search_count'),
                         'params': [domain, 0, 100, context],
-                    }, Sao.Session.current_session).then(function(value) {
+                    }, Sao.Session.current_session).then(value => {
                         this._set_count(
                             value, 0, current, counter,
                             action.name, tab_domains);
-                    }.bind(this));
+                    });
                 }
             }
         },
@@ -1137,13 +1137,13 @@ function eval_pyson(value){
                 }
             } else {
                 Sao.common.ICONFACTORY.get_icon_url(name)
-                    .done(function(url) {
+                    .done(url => {
                         if (url) {
                             this.img.attr('src', url);
                         } else {
                             this.img.removeAttr('src');
                         }
-                    }.bind(this));
+                    });
             }
         }
     });
@@ -1269,14 +1269,14 @@ function eval_pyson(value){
             return false;
         },
         send_modified: function() {
-            window.setTimeout(function() {
+            window.setTimeout(() => {
                 var value = this.get_value();
-                window.setTimeout(function() {
+                window.setTimeout(() => {
                     if (this.record && (this.get_value() == value)) {
                         this.view.screen.record_modified(false);
                     }
-                }.bind(this), 300);
-            }.bind(this));
+                }, 300);
+            });
         },
         set_invisible: function(invisible) {
             this.visible = !invisible;
@@ -1302,9 +1302,9 @@ function eval_pyson(value){
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.close(dialog);
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
@@ -1332,7 +1332,7 @@ function eval_pyson(value){
             function field_value(result) {
                 return result[0][widget.field_name] || '';
             }
-            this.languages.forEach(function(lang){
+            this.languages.forEach(lang => {
                 var value;
                 var row = jQuery('<div/>', {
                     'class':'row form-group'
@@ -1393,7 +1393,7 @@ function eval_pyson(value){
                 row.append(jQuery('<div/>', {
                     'class':'col-sm-1'
                 }).append(fuzzy_box));
-            }.bind(this));
+            });
         },
         write: function(widget, dialog) {
             for (const lang of this.languages) {
@@ -1462,7 +1462,7 @@ function eval_pyson(value){
             'method': 'model.ir.lang.search',
             'params': params.concat({})
         };
-        Sao.rpc(args, session).then(function(lang_ids) {
+        Sao.rpc(args, session).then(lang_ids => {
             if (jQuery.isEmptyObject(lang_ids)) {
                 Sao.common.message.run(Sao.i18n.gettext(
                         'No other language available.'));
@@ -1476,10 +1476,10 @@ function eval_pyson(value){
                 'method': 'model.ir.lang.read',
                 'params': params.concat({})
             };
-            Sao.rpc(args, session).then(function(languages) {
+            Sao.rpc(args, session).then(languages => {
                 this.translate_dialog(languages);
-            }.bind(this));
-        }.bind(this));
+            });
+        });
     };
     Sao.View.Form.TranslateMixin.translate_dialog = function(languages) {
         new Sao.View.Form.TranslateDialog(languages, this);
@@ -1675,12 +1675,12 @@ function eval_pyson(value){
                 'role': 'button',
                 'tabindex': -1,
             });
-            this.input.click(function() {
+            this.input.click(() => {
                 var value = this.get_value();
                 value = this._format(this._input_format, value);
                 this.input.val(value);
-            }.bind(this));
-            this.input.change(function() {
+            });
+            this.input.change(() => {
                 var value = this.input.val();
                 if (value) {
                     value = this._parse(this._input_format, value);
@@ -1689,7 +1689,7 @@ function eval_pyson(value){
                     this.date.focus();
                 }
                 this.send_modified();
-            }.bind(this));
+            });
             if (this.input[0].type == this._input) {
                 this.icon = jQuery('<div/>', {
                     'class': 'icon-input icon-secondary',
@@ -1704,21 +1704,21 @@ function eval_pyson(value){
             this.date.change(this.focus_out.bind(this));
             var mousetrap = new Mousetrap(this.date[0]);
 
-            mousetrap.bind('enter', function(e, combo) {
+            mousetrap.bind('enter', (e, combo) => {
                 if (!this.date.prop('readonly')) {
                     this.focus_out();
                 }
-            }.bind(this));
-            mousetrap.bind('=', function(e, combo) {
+            });
+            mousetrap.bind('=', (e, combo) => {
                 if (!this.date.prop('readonly')) {
                     e.preventDefault();
                     this.date.val(this._format(this.get_format(), moment()))
                         .change();
                 }
-            }.bind(this));
+            });
 
-            Sao.common.DATE_OPERATORS.forEach(function(operator) {
-                mousetrap.bind(operator[0], function(e, combo) {
+            Sao.common.DATE_OPERATORS.forEach(operator => {
+                mousetrap.bind(operator[0], (e, combo) => {
                     if (this.date.prop('readonly')) {
                         return;
                     }
@@ -1727,8 +1727,8 @@ function eval_pyson(value){
                     date.add(operator[1]);
                     this.date.val(this._format(this.get_format(), date))
                         .change();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         get_format: function() {
             if (this.field && this.record) {
@@ -2077,12 +2077,12 @@ function eval_pyson(value){
         },
         update_selection: function(record, field, callbak) {
             Sao.common.selection_mixin.update_selection.call(this, record,
-                field, function(selection, help) {
+                field, (selection, help) => {
                     this.set_selection(selection, help);
                     if (callbak) {
                         callbak(help);
                     }
-                }.bind(this));
+                });
         },
         set_selection: function(selection, help) {
             var select = this.select;
@@ -2098,7 +2098,7 @@ function eval_pyson(value){
         display_update_selection: function() {
             var record = this.record;
             var field = this.field;
-            this.update_selection(record, field, function(help) {
+            this.update_selection(record, field, help => {
                 if (!field) {
                     this.select.val('');
                     return;
@@ -2114,25 +2114,25 @@ function eval_pyson(value){
                 if (!found) {
                     prm = Sao.common.selection_mixin.get_inactive_selection
                         .call(this, value);
-                    prm.done(function(inactive) {
+                    prm.done(inactive => {
                         this.select.append(jQuery('<option/>', {
                             value: JSON.stringify(inactive[0]),
                             text: inactive[1],
                             disabled: true
                         }));
-                    }.bind(this));
+                    });
                 } else {
                     prm = jQuery.when();
                 }
-                prm.done(function() {
+                prm.done(() => {
                     this.select.val(JSON.stringify(value));
                     var title = help[value] || null;
                     if (this.attributes.help && title) {
                         title = this.attributes.help + '\n' + title;
                     }
                     this.select.attr('title', title);
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         display: function() {
             Sao.View.Form.Selection._super.display.call(this);
@@ -2311,11 +2311,11 @@ function eval_pyson(value){
         focus_out: function() {
             // Let browser set the next focus before testing
             // if it moved out of the widget
-            window.setTimeout(function() {
+            window.setTimeout(() => {
                 if (this.el.find(':focus').length === 0) {
                     Sao.View.Form.RichText._super.focus_out.call(this);
                 }
-            }.bind(this), 0);
+            }, 0);
         },
         display: function() {
             Sao.View.Form.RichText._super.display.call(this);
@@ -2611,7 +2611,7 @@ function eval_pyson(value){
             if (!model || !Sao.common.MODELACCESS.get(model).read) {
                 return;
             }
-            var win, callback;
+            var win;
             var record = this.record;
             var value = record.field_get(this.field_name);
 
@@ -2637,23 +2637,23 @@ function eval_pyson(value){
                     return;
                 }
                 var screen = this.get_screen();
-                callback = function(result) {
+                let callback = result => {
                     if (result) {
                         var rec_name_prm = screen.current_record.rec_name();
-                        rec_name_prm.done(function(name) {
+                        rec_name_prm.done(name => {
                             var value = this.value_from_id(
                                 screen.current_record.id, name);
                             this.record.field_set_client(this.field_name,
                                 value, true);
-                        }.bind(this));
+                        });
                     }
                 };
-                screen.switch_view().done(function() {
+                screen.switch_view().done(() => {
                     screen.load([m2o_id]);
-                    win = new Sao.Window.Form(screen, callback.bind(this), {
+                    win = new Sao.Window.Form(screen, callback, {
                         save_current: true,
                     });
-                }.bind(this));
+                });
                 return;
             }
             if (model) {
@@ -2662,7 +2662,7 @@ function eval_pyson(value){
                 var context = this.field.get_search_context(record);
                 var order = this.field.get_search_order(record);
                 var text = this.entry.val();
-                callback = function(result) {
+                let callback = result => {
                     if (!jQuery.isEmptyObject(result)) {
                         var value = this.value_from_id(result[0][0],
                                 result[0][1]);
@@ -2671,8 +2671,8 @@ function eval_pyson(value){
                     }
                 };
                 var parser = new Sao.common.DomainParser();
-                win = new Sao.Window.Search(model,
-                        callback.bind(this), {
+                win = new Sao.Window.Search(
+                    model, callback, {
                             sel_multi: false,
                             context: context,
                             domain: domain,
@@ -2694,24 +2694,24 @@ function eval_pyson(value){
                 return;
             }
             var screen = this.get_screen(true);
-            var callback = function(result) {
+            const callback = result => {
                 if (result) {
                     var rec_name_prm = screen.current_record.rec_name();
-                    rec_name_prm.done(function(name) {
+                    rec_name_prm.done(name => {
                         var value = this.value_from_id(
                             screen.current_record.id, name);
                         this.record.field_set_client(this.field_name, value);
-                    }.bind(this));
+                    });
                 }
             };
             var rec_name = this.entry.val();
-            screen.switch_view().done(function() {
-                var win = new Sao.Window.Form(screen, callback.bind(this), {
+            screen.switch_view().done(() => {
+                var win = new Sao.Window.Form(screen, callback, {
                     new_: true,
                     save_current: true,
                     rec_name: rec_name
                 });
-            }.bind(this));
+            });
         },
         key_press: function(event_) {
             var editable = !this.entry.prop('readonly');
@@ -2769,7 +2769,7 @@ function eval_pyson(value){
                     var context = this.field.get_search_context(record);
                     var order = this.field.get_search_order(record);
 
-                    var callback = function(result) {
+                    const callback = result => {
                         if (!jQuery.isEmptyObject(result)) {
                             var value = this.value_from_id(result[0][0],
                                 result[0][1]);
@@ -2780,8 +2780,8 @@ function eval_pyson(value){
                         }
                     };
                     var parser = new Sao.common.DomainParser();
-                    var win = new Sao.Window.Search(model,
-                            callback.bind(this), {
+                    var win = new Sao.Window.Search(
+                        model, callback, {
                                 sel_multi: false,
                                 context: context,
                                 domain: domain,
@@ -2869,12 +2869,12 @@ function eval_pyson(value){
         },
         update_selection: function(record, field, callback) {
             Sao.common.selection_mixin.update_selection.call(this, record,
-                field, function(selection, help) {
+                field, (selection, help) => {
                     this.set_selection(selection, help);
                     if (callback) {
                         callback();
                     }
-                }.bind(this));
+                });
         },
         set_selection: function(selection, help) {
             var select = this.select;
@@ -2996,9 +2996,9 @@ function eval_pyson(value){
             }
         },
         display: function() {
-            this.update_selection(this.record, this.field, function() {
+            this.update_selection(this.record, this.field, () => {
                 Sao.View.Form.Reference._super.display.call(this);
-            }.bind(this));
+            });
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Reference._super.set_readonly.call(this, readonly);
@@ -3201,9 +3201,9 @@ function eval_pyson(value){
             this.screen.pre_validate = attributes.pre_validate == 1;
 
             this.screen.windows.push(this);
-            this.prm = this.screen.switch_view().done(function() {
+            this.prm = this.screen.switch_view().done(() => {
                 this.content.append(this.screen.screen_container.el);
-            }.bind(this));
+            });
 
             if (attributes.add_remove) {
                 // Use keydown to not receive focus-in TAB
@@ -3332,7 +3332,7 @@ function eval_pyson(value){
 
             this._set_button_sensitive();
 
-            this.prm.done(function() {
+            this.prm.done(() => {
                 var record = this.record;
                 var field = this.field;
 
@@ -3377,7 +3377,7 @@ function eval_pyson(value){
                         .css('min-height', this.attributes.height + 'px')
                         .css('max-height', this.attributes.height + 'px');
                 }
-            }.bind(this));
+            });
         },
         focus: function() {
             if (this.attributes.add_remove) {
@@ -3402,7 +3402,7 @@ function eval_pyson(value){
 
             var sequence = this._sequence();
 
-            var callback = function(result) {
+            const callback = result => {
                 var prm = jQuery.when();
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
@@ -3417,11 +3417,11 @@ function eval_pyson(value){
                             sequence, this.screen.new_position);
                     }
                 }
-                prm.done(function() {
+                prm.done(() => {
                     this.screen.set_cursor();
-                }.bind(this));
+                });
                 this.wid_text.val('');
-            }.bind(this);
+            };
             var parser = new Sao.common.DomainParser();
             var order = this.field.get_search_order(this.record);
             var win = new Sao.Window.Search(this.attributes.relation,
@@ -3450,22 +3450,22 @@ function eval_pyson(value){
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return;
             }
-            this.validate().done(function() {
+            this.validate().done(() => {
                 if (this.attributes.product) {
                     this.new_product();
                 } else {
                     this.new_single();
                 }
-            }.bind(this));
+            });
         },
         new_single: function() {
             var sequence = this._sequence();
-            var update_sequence = function() {
+            const update_sequence = () => {
                 if (sequence) {
                     this.screen.group.set_sequence(
                         sequence, this.screen.new_position);
                 }
-            }.bind(this);
+            };
             if (this.screen.current_view.creatable) {
                 this.screen.new_().then(update_sequence);
                 this.screen.current_view.el.prop('disabled', false);
@@ -3485,11 +3485,11 @@ function eval_pyson(value){
             var product = {};
             var screen = this.screen;
 
-            screen.new_(false).then(function(first) {
-                first.default_get().then(function(default_) {
+            screen.new_(false).then(first => {
+                first.default_get().then(default_ => {
                     first.set_default(default_);
 
-                    var search_set = function() {
+                    const search_set = () => {
                         if (jQuery.isEmptyObject(fields)) {
                             return make_product();
                         }
@@ -3519,9 +3519,9 @@ function eval_pyson(value){
                                     title: this.attributes.string
 
                         });
-                    }.bind(this);
+                    };
 
-                    var make_product = function() {
+                    const make_product = () => {
                         screen.group.remove(first, true);
                         if (jQuery.isEmptyObject(product)) {
                             return;
@@ -3546,11 +3546,11 @@ function eval_pyson(value){
                             screen.group.set_sequence(
                                 sequence, screen.new_position);
                         }
-                    }.bind(this);
+                    };
 
                     search_set();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         open: function(event_) {
             return this.edit();
@@ -3566,14 +3566,10 @@ function eval_pyson(value){
             this.screen.unremove();
         },
         previous: function(event_) {
-            return this.validate().then(function() {
-                return this.screen.display_previous();
-            }.bind(this));
+            return this.validate().then(() => this.screen.display_previous());
         },
         next: function(event_) {
-            return this.validate().then(function() {
-                return this.screen.display_next();
-            }.bind(this));
+            return this.validate().then(() => this.screen.display_next());
         },
         switch_: function(event_) {
             return this.screen.switch_view();
@@ -3582,12 +3578,12 @@ function eval_pyson(value){
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).read) {
                 return;
             }
-            return this.validate().then(function() {
+            return this.validate().then(() => {
                 var record = this.screen.current_record;
                 if (record) {
                     var win = new Sao.Window.Form(this.screen, function() {});
                 }
-            }.bind(this));
+            });
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.F3_KEYCODE) {
@@ -3626,7 +3622,7 @@ function eval_pyson(value){
             var record = this.screen.current_record;
             if (record) {
                 var fields = this.screen.current_view.get_fields();
-                record.validate(fields).then(function(validate) {
+                record.validate(fields).then(validate => {
                     if (!validate) {
                         this.screen.display(true);
                         prm.reject();
@@ -3642,7 +3638,7 @@ function eval_pyson(value){
                         });
                     }
                     prm.resolve();
-                }.bind(this));
+                });
             } else {
                 prm.resolve();
             }
@@ -3775,9 +3771,9 @@ function eval_pyson(value){
                 breadcrumb: breadcrumb,
             });
             this.screen.windows.push(this);
-            this.prm = this.screen.switch_view('tree').done(function() {
+            this.prm = this.screen.switch_view('tree').done(() => {
                 this.content.append(this.screen.screen_container.el);
-            }.bind(this));
+            });
         },
         get_access: function(type) {
             var model = this.attributes.relation;
@@ -3835,7 +3831,7 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.Many2Many._super.display.call(this);
 
-            this.prm.done(function() {
+            this.prm.done(() => {
                 var record = this.record;
                 var field = this.field;
 
@@ -3857,7 +3853,7 @@ function eval_pyson(value){
                         .css('min-height', this.attributes.height + 'px')
                         .css('max-height', this.attributes.height + 'px');
                 }
-            }.bind(this));
+            });
         },
         focus: function() {
             this.entry.focus();
@@ -3877,7 +3873,7 @@ function eval_pyson(value){
             var order = this.field.get_search_order(this.record);
             var value = this.entry.val();
 
-            var callback = function(result) {
+            const callback = result => {
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
                     var i, len;
@@ -3888,7 +3884,7 @@ function eval_pyson(value){
                     this.screen.display();
                 }
                 this.entry.val('');
-            }.bind(this);
+            };
             var parser = new Sao.common.DomainParser();
             var win = new Sao.Window.Search(this.attributes.relation,
                     callback, {
@@ -3951,36 +3947,36 @@ function eval_pyson(value){
             // Create a new screen that is not linked to the parent otherwise
             // on the save of the record will trigger the save of the parent
             var screen = this._get_screen_form();
-            var callback = function(result) {
+            const callback = result => {
                 if (result) {
-                    screen.current_record.save().done(function() {
+                    screen.current_record.save().done(() => {
                         // Force a reload on next display
                         this.screen.current_record.cancel();
-                    }.bind(this));
+                    });
                 }
-            }.bind(this);
-            screen.switch_view().done(function() {
+            };
+            screen.switch_view().done(() => {
                 screen.load([this.screen.current_record.id]);
                 new Sao.Window.Form(screen, callback);
-            }.bind(this));
+            });
         },
         new_: function() {
             var screen = this._get_screen_form();
-            var callback = function(result) {
+            const callback = result => {
                 if (result) {
                     var record = screen.current_record;
                     this.screen.group.load([record.id], true);
                 }
                 this.entry.val('');
-            }.bind(this);
+            };
             var text = this.entry.val();
-            screen.switch_view().done(function() {
+            screen.switch_view().done(() => {
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
                     'save_current': true,
                     rec_name: text,
                 });
-            }.bind(this));
+            });
         },
         _update_completion: function(text) {
             if (!this.record) {
@@ -4096,14 +4092,14 @@ function eval_pyson(value){
             } else {
                 prm = jQuery.when(field.get(record));
             }
-            prm.done(function(data) {
+            prm.done(data => {
                 var name;
                 var field = this.filename_field;
                 if (field) {
                     name = field.get(this.record);
                 }
                 Sao.common.download_file(data, name);
-            }.bind(this));
+            });
         },
         clear: function() {
             this.input_select.val(null);
@@ -4252,7 +4248,7 @@ function eval_pyson(value){
             var i, len, element;
             var record = this.record;
             var field = this.field;
-            this.update_selection(record, field, function() {
+            this.update_selection(record, field, () => {
                 var yexpand = this.attributes.yexpand;
                 if (yexpand === undefined) {
                     yexpand = this.expand;
@@ -4266,7 +4262,7 @@ function eval_pyson(value){
                 var value = field.get_eval(record);
                 value = value.map(function(e) { return JSON.stringify(e); });
                 this.select.val(value);
-            }.bind(this));
+            });
         },
         get_value: function() {
             var value = this.select.val();
@@ -4327,7 +4323,7 @@ function eval_pyson(value){
             } else {
                 value = jQuery.when(null);
             }
-            value.done(function(data) {
+            value.done(data => {
                 var url, blob;
                 if (record !== this.record) {
                     return;
@@ -4340,7 +4336,7 @@ function eval_pyson(value){
                 }
                 this.image.attr('src', url);
                 this.update_buttons(Boolean(data));
-            }.bind(this));
+            });
         },
         display: function() {
             Sao.View.Form.Image._super.display.call(this);
@@ -4382,7 +4378,7 @@ function eval_pyson(value){
             if (filename_field) {
                 filename = filename_field.get_client(record);
             }
-            data.done(function(data) {
+            data.done(data => {
                 var url, blob;
                 if (record !== this.record) {
                     return;
@@ -4403,7 +4399,7 @@ function eval_pyson(value){
                 this.object.get(0).onload = function() {
                     window.URL.revokeObjectURL(url);
                 };
-            }.bind(this));
+            });
         },
     });
 
@@ -4445,9 +4441,9 @@ function eval_pyson(value){
         },
         set_icon: function(value) {
             value = value || 'tryton-public';
-            Sao.common.ICONFACTORY.get_icon_url(value).done(function(url) {
+            Sao.common.ICONFACTORY.get_icon_url(value).done(url => {
                 this.icon.attr('src', url);
-            }.bind(this));
+            });
         },
         set_url: function(value) {
             this.button.attr('href', value);
@@ -4555,9 +4551,9 @@ function eval_pyson(value){
                 options[language.name] = language.code;
             }
             Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
-            .done(function(language) {
+            .done(language => {
                 window.open(this.uri(language), '_blank', 'noreferrer,noopener');
-            }.bind(this));
+            });
         },
     });
 
@@ -4677,7 +4673,7 @@ function eval_pyson(value){
             var value = this.wid_text.val();
             var domain = this.field.get_domain(this.record);
 
-            var callback = function(result) {
+            const callback = result => {
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = result.map(function(e) {
                         return e[0];
@@ -4685,7 +4681,7 @@ function eval_pyson(value){
                     this.add_new_keys(ids);
                 }
                 this.wid_text.val('');
-            }.bind(this);
+            };
 
             var parser = new Sao.common.DomainParser();
             var win = new Sao.Window.Search(this.schema_model,
@@ -4701,7 +4697,7 @@ function eval_pyson(value){
         add_new_keys: function(ids) {
             var field = this.field;
             field.add_new_keys(ids, this.record)
-                .then(function(new_names) {
+                .then(new_names => {
                     this.send_modified();
                     var focus = false;
                     for (const name of new_names) {
@@ -4713,7 +4709,7 @@ function eval_pyson(value){
                             }
                         }
                     }
-                }.bind(this));
+                });
         },
         remove: function(key, modified=true) {
             delete this.fields[key];
@@ -4797,9 +4793,9 @@ function eval_pyson(value){
             field.labelled.attr('aria-labelledby', label.attr('id'));
             label.attr('for', field.labelled.attr('id'));
 
-            field.button.click(function() {
+            field.button.click(() => {
                 this.remove(key, true);
-            }.bind(this));
+            });
 
             row.appendTo(this.container);
         },
@@ -4823,9 +4819,8 @@ function eval_pyson(value){
             }
 
             var value = field.get_client(record);
-            var new_key_names = Object.keys(value).filter(function(e) {
-                return !this.fields[e];
-            }.bind(this));
+            var new_key_names = Object.keys(value).filter(
+                e => !this.fields[e]);
 
             var prm;
             if (!jQuery.isEmptyObject(new_key_names)) {
@@ -4833,7 +4828,7 @@ function eval_pyson(value){
             } else {
                 prm = jQuery.when();
             }
-            prm.then(function() {
+            prm.then(() => {
                 var i, len, key;
                 var keys = Object.keys(value)
                     .filter(function(key) {
@@ -4879,7 +4874,7 @@ function eval_pyson(value){
                     key = removed_key_names[i];
                     this.remove(key, false);
                 }
-            }.bind(this));
+            });
             this._set_button_sensitive();
         },
         _update_completion: function(text) {
@@ -5174,12 +5169,12 @@ function eval_pyson(value){
                 'role': 'button',
                 'tabindex': -1,
             });
-            this.input_date.click(function() {
+            this.input_date.click(() => {
                 var value = this.get_value();
                 value = this._format(this._input_format, value);
                 this.input_date.val(value);
-            }.bind(this));
-            this.input_date.change(function() {
+            });
+            this.input_date.change(() => {
                 var value = this.input_date.val();
                 if (value) {
                     value = this._parse(this._input_format, value);
@@ -5187,7 +5182,7 @@ function eval_pyson(value){
                     this.input.val(value).change();
                     this.input.focus();
                 }
-            }.bind(this));
+            });
             if (this.input_date[0].type == this._input) {
                 var icon = jQuery('<div/>', {
                     'class': 'btn btn-default',
@@ -5200,24 +5195,24 @@ function eval_pyson(value){
             }
             var mousetrap = new Mousetrap(this.el[0]);
 
-            mousetrap.bind('enter', function(e, combo) {
+            mousetrap.bind('enter', (e, combo) => {
                 var value = this._parse(this.format, this.input.val());
                 value = this._format(this.format, value);
                 this.input.val(value).change();
-            }.bind(this));
-            mousetrap.bind('=', function(e, combo) {
+            });
+            mousetrap.bind('=', (e, combo) => {
                 e.preventDefault();
                 this.input.val(this._format(this.format, moment())).change();
-            }.bind(this));
+            });
 
-            Sao.common.DATE_OPERATORS.forEach(function(operator) {
-                mousetrap.bind(operator[0], function(e, combo) {
+            Sao.common.DATE_OPERATORS.forEach(operator => {
+                mousetrap.bind(operator[0], (e, combo) => {
                     e.preventDefault();
                     var date = this.get_value() || Sao.DateTime();
                     date.add(operator[1]);
                     this.input.val(this._format(this.format, date)).change();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         get_value: function() {
             return this._parse(this.format, this.input.val());
@@ -5289,9 +5284,9 @@ function eval_pyson(value){
                 icon = 'error';
             }
             Sao.common.ICONFACTORY.get_icon_url('tryton-' + icon)
-                .then(function(url) {
+                .then(url => {
                     this.icon.attr('src', url);
-                }.bind(this));
+                });
         },
         focus_out: function() {
             this.validate_pyson();

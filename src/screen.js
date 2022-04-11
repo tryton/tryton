@@ -19,10 +19,10 @@
             });
             this.filter_box = jQuery('<form/>', {
                 'class': 'filter-box'
-            }).submit(function(e) {
+            }).submit(e => {
                 this.do_search();
                 e.preventDefault();
-            }.bind(this));
+            });
             var search_row = jQuery('<div/>', {
                 'class': 'row'
             }).appendTo(this.filter_box);
@@ -52,19 +52,19 @@
                 'title': Sao.i18n.gettext("Clear Search"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear'));
             but_clear.hide();
-            but_clear.click(function() {
+            but_clear.click(() => {
                 this.search_entry.val('').change();
                 this.do_search();
-            }.bind(this));
+            });
 
-            this.search_entry.on('keyup change', function() {
+            this.search_entry.on('keyup change', () => {
                 if (this.search_entry.val()) {
                     but_clear.show();
                 } else {
                     but_clear.hide();
                 }
                 this.bookmark_match();
-            }.bind(this));
+            });
 
             var but_submit = jQuery('<button/>', {
                 'type': 'submit',
@@ -98,7 +98,7 @@
                 'role': 'menu',
                 'aria-labelledby': this.but_bookmark.attr('id'),
             });
-            this.but_bookmark.click(function() {
+            this.but_bookmark.click(() => {
                 dropdown_bookmark.empty();
                 var bookmarks = this.bookmarks();
                 for (const bookmark of bookmarks) {
@@ -115,7 +115,7 @@
                         .click(domain, this.bookmark_activate.bind(this)))
                     .appendTo(dropdown_bookmark);
                 }
-            }.bind(this));
+            });
             this.but_star = jQuery('<button/>', {
                 'class': 'btn btn-default hidden-xs',
                 'type': 'button'
@@ -190,7 +190,7 @@
                 var content = jQuery('<div/>', {
                     'class': 'tab-content'
                 }).appendTo(this.tab);
-                this.tab_domain.forEach(function(tab_domain, i) {
+                this.tab_domain.forEach((tab_domain, i) => {
                     var name = tab_domain[0];
                     var counter = jQuery('<span/>', {
                         'class': 'badge badge-empty'
@@ -206,7 +206,7 @@
                         'href': '#' + i
                     }).text(name + ' ').append(counter)).appendTo(nav);
                     this.tab_counter.push(counter);
-                }.bind(this));
+                });
                 nav.find('a:first').tab('show');
                 var self = this;
                 nav.find('a').click(function(e) {
@@ -257,18 +257,18 @@
         star_click: function() {
             var star = this.get_star();
             var model_name = this.screen.model_name;
-            var refresh = function() {
+            const refresh = () => {
                 this.bookmark_match();
                 this.but_bookmark.prop('disabled',
                         jQuery.isEmptyObject(this.bookmarks()));
-            }.bind(this);
+            };
             if (!star) {
                 var text = this.get_text();
                 if (!text) {
                     return;
                 }
                 Sao.common.ask.run(Sao.i18n.gettext('Bookmark Name:'))
-                    .then(function(name) {
+                    .then(name => {
                         if (!name) {
                             return;
                         }
@@ -279,7 +279,7 @@
                         });
                         this.set_text(
                             this.screen.domain_parser.string(domain));
-                    }.bind(this));
+                    });
             } else {
                 var id = this.bookmark_match();
                 Sao.common.VIEW_SEARCH.remove(model_name, id).then(function() {
@@ -289,9 +289,8 @@
         },
         bookmarks: function() {
             var searches = Sao.common.VIEW_SEARCH.get(this.screen.model_name);
-            return searches.filter(function(search) {
-                return this.screen.domain_parser.stringable(search[2]);
-            }.bind(this));
+            return searches.filter(
+                search => this.screen.domain_parser.stringable(search[2]));
         },
         bookmark_activate: function(e) {
             e.preventDefault();
@@ -424,7 +423,7 @@
         },
         search_box: function() {
             var domain_parser = this.screen.domain_parser;
-            var search = function() {
+            const search = () => {
                 this.search_modal.modal('hide');
                 var text = '';
                 var quote = domain_parser.quote.bind(domain_parser);
@@ -443,10 +442,10 @@
                     }
                 }
                 this.set_text(text);
-                this.do_search().then(function() {
+                this.do_search().then(() => {
                     this.last_search_text = this.get_text();
-                }.bind(this));
-            }.bind(this);
+                });
+            };
             if (!this.search_modal) {
                 var dialog = new Sao.Dialog(
                         Sao.i18n.gettext('Filters'), '', 'lg');
@@ -659,12 +658,12 @@
                     'role': 'button',
                     'tabindex': -1,
                 });
-                input.click(function() {
+                input.click(() => {
                     var value = this._parse(this.format, date.val());
                     value = this._format(this._input_format, value);
                     input.val(value);
-                }.bind(this));
-                input.change(function() {
+                });
+                input.change(() => {
                     var value = input.val();
                     if (value) {
                         value = this._parse(this._input_format, value);
@@ -672,7 +671,7 @@
                         date.val(value);
                         date.focus();
                     }
-                }.bind(this));
+                });
                 if (input[0].type == this._input) {
                     var icon = jQuery('<div/>', {
                         'class': 'icon-input icon-secondary',
@@ -685,25 +684,25 @@
                 }
                 var mousetrap = new Mousetrap(date[0]);
 
-                mousetrap.bind('enter', function(e, combo) {
+                mousetrap.bind('enter', (e, combo) => {
                     var value = this._parse(this.format, date.val());
                     value = this._format(this.format, value);
                     date.val(value);
-                }.bind(this));
-                mousetrap.bind('=', function(e, combo) {
+                });
+                mousetrap.bind('=', (e, combo) => {
                     e.preventDefault();
                     date.val(this._format(this.format, moment()));
-                }.bind(this));
+                });
 
-                Sao.common.DATE_OPERATORS.forEach(function(operator) {
-                    mousetrap.bind(operator[0], function(e, combo) {
+                Sao.common.DATE_OPERATORS.forEach(operator => {
+                    mousetrap.bind(operator[0], (e, combo) => {
                         e.preventDefault();
                         var value = (this._parse(this.format, date.val()) ||
                             Sao.DateTime());
                         value.add(operator[1]);
                         date.val(this._format(this.format, value));
-                    }.bind(this));
-                }.bind(this));
+                    });
+                });
                 return entry;
         },
     });
@@ -828,19 +827,18 @@
                             'context': attributes.context });
 
                 this.context_screen_prm = this.context_screen.switch_view()
-                    .then(function() {
+                    .then(() => {
                         jQuery('<div/>', {
                             'class': 'row'
                         }).append(jQuery('<div/>', {
                             'class': 'col-md-12'
                         }).append(this.context_screen.screen_container.el))
                         .prependTo(this.screen_container.filter_box);
-                        return this.context_screen.new_(false).then(function(record) {
+                        return this.context_screen.new_(false).then(
                             // Set manually default to get context_screen_prm
                             // resolved when default is set.
-                            return record.default_get();
-                        });
-                    }.bind(this));
+                            record => record.default_get());
+                    });
             }
 
             if (!attributes.row_activate) {
@@ -946,12 +944,12 @@
                         !this.current_record.validate(
                             fields, false, false, true)) {
                     this.screen_container.set(this.current_view.el);
-                    return this.current_view.display().done(function() {
+                    return this.current_view.display().done(() => {
                         this.set_cursor();
-                    }.bind(this));
+                    });
                 }
             }
-            var found = function() {
+            const found = () => {
                 if (!this.current_view) {
                     return false;
                 }
@@ -966,38 +964,36 @@
                     result &= this.current_view.creatable == creatable;
                 }
                 return result;
-            }.bind(this);
-            var _switch = function() {
-                var set_container = function() {
+            };
+            const _switch = () => {
+                const set_container = () => {
                     this.screen_container.set(this.current_view.el);
                     var prm;
                     if (display) {
-                        prm = this.display().done(function() {
+                        prm = this.display().done(() => {
                             this.set_cursor();
-                        }.bind(this));
+                        });
                     } else {
                         prm = jQuery.when();
                     }
-                    return prm.done(function() {
-                            if (this.switch_callback) {
-                                this.switch_callback();
-                            }
-                        }.bind(this));
-                }.bind(this);
-                var set_current_view = function() {
+                    return prm.done(() => {
+                        if (this.switch_callback) {
+                            this.switch_callback();
+                        }
+                    });
+                };
+                const set_current_view = () => {
                     this.current_view = this.views[this.views.length - 1];
-                }.bind(this);
-                var switch_current_view = (function() {
+                };
+                const switch_current_view = () => {
                     set_current_view();
                     if (!found()) {
                         return _switch();
                     } else {
                         return set_container();
                     }
-                }.bind(this));
-                var is_view_id = function(view) {
-                    return view.view_id == view_id;
                 };
+                const is_view_id = view => view.view_id == view_id;
 
                 for (var n = 0; n < this.views.length + this.view_to_load.length; n++) {
                     if (this.view_to_load.length) {
@@ -1016,16 +1012,15 @@
                     }
                 }
                 return set_container();
-            }.bind(this);
+            };
             return _switch();
         },
         search_filter: function(search_string, only_ids) {
             only_ids = only_ids || false;
             if (this.context_screen && !only_ids) {
                 if (this.context_screen_prm.state() == 'pending') {
-                    return this.context_screen_prm.then(function() {
-                        return this.search_filter(search_string);
-                    }.bind(this));
+                    return this.context_screen_prm.then(
+                        () => this.search_filter(search_string));
                 }
                 var context_record = this.context_screen.current_record;
                 if (context_record &&
@@ -1046,20 +1041,20 @@
             if (this.screen_container.but_active.hasClass('active')) {
                 context.active_test = false;
             }
-            var search = function() {
+            const search = () => {
                 return this.model.execute(
                     'search', [domain, this.offset, this.limit, this.order],
                     context)
-                    .then(function(ids) {
+                    .then(ids => {
                         if (ids.length || this.offset <= 0) {
                             return ids;
                         } else {
                             this.offset = Math.max(this.offset - this.limit, 0);
                             return search();
                         }
-                    }.bind(this));
-            }.bind(this);
-            return search().then(function(ids) {
+                    });
+            };
+            return search().then(ids => {
                     var count_prm = jQuery.when(this.search_count);
                     if (!only_ids) {
                         if ((this.limit !== null) &&
@@ -1067,18 +1062,18 @@
                             count_prm = this.model.execute(
                                 'search_count',
                                 [domain, 0, this.count_limit], context)
-                                .then(function(count) {
+                                .then(count => {
                                     this.search_count = count;
                                     return this.search_count;
-                                }.bind(this), function() {
+                                }, () => {
                                     this.search_count = 0;
                                     return this.search_count;
-                                }.bind(this));
+                                });
                         } else {
                             this.search_count = ids.length;
                         }
                     }
-                    return count_prm.then(function(count) {
+                    return count_prm.then(count => {
                         this.screen_container.but_next.prop('disabled',
                             !(this.limit !== undefined &&
                                 ids.length == this.limit &&
@@ -1088,11 +1083,11 @@
                             return ids;
                         }
                         this.clear();
-                        return this.load(ids).then(function() {
+                        return this.load(ids).then(() => {
                             this.count_tab_domain();
-                        }.bind(this));
-                    }.bind(this));
-                }.bind(this));
+                        });
+                    });
+                });
         },
         search_domain: function(search_string=null, set_text=false, with_tab=true) {
             set_text = set_text || false;
@@ -1156,17 +1151,17 @@
             var screen_domain = this.search_domain(
                 this.screen_container.get_text(), false, false);
             var index = this.screen_container.get_tab_index();
-            this.screen_container.tab_domain.forEach(function(tab_domain, i) {
+            this.screen_container.tab_domain.forEach((tab_domain, i) => {
                 if (tab_domain[2] && (!current || (i == index))) {
                     var domain = ['AND', tab_domain[1], screen_domain];
                     this.screen_container.set_tab_counter(null, i);
                     this.group.model.execute(
                         'search_count', [domain, 0, 1000], this.context)
-                        .then(function(count) {
+                        .then(count => {
                             this.screen_container.set_tab_counter(count, i);
-                        }.bind(this));
+                        });
                 }
-            }.bind(this));
+            });
         },
         get context() {
             var context = this.group.context;
@@ -1321,11 +1316,11 @@
             } else {
                 this.current_record = null;
             }
-            return this.display().then(function() {
+            return this.display().then(() => {
                 if (set_cursor) {
                     this.set_cursor();
                 }
-            }.bind(this));
+            });
         },
         display: function(set_cursor) {
             var deferreds = [];
@@ -1350,16 +1345,15 @@
                     }
                 }
             }
-            return jQuery.when.apply(jQuery, deferreds).then(function() {
-                return this.set_tree_state().then(function() {
+            return jQuery.when.apply(jQuery, deferreds).then(
+                () => this.set_tree_state().then(() => {
                     this.current_record = this.current_record;
                     // set_cursor must be called after set_tree_state because
                     // set_tree_state redraws the tree
                     if (set_cursor) {
                         this.set_cursor(false, false);
                     }
-                }.bind(this));
-            }.bind(this));
+                }));
         },
         display_next: function() {
             var view = this.current_view;
@@ -1480,7 +1474,7 @@
             if (this.current_view && !this.current_view.creatable) {
                 prm = this.switch_view('form', undefined, true, false);
             }
-            return prm.then(function() {
+            return prm.then(() => {
                 if (!this.current_view.editable) {
                     return;
                 }
@@ -1497,18 +1491,18 @@
                 } else {
                     prm = jQuery.when();
                 }
-                return prm.then(function() {
+                return prm.then(() => {
                     group.add(record, this.new_position);
                     this.current_record = record;
                     if (previous_view.view_type == 'calendar') {
                         previous_view.set_default_date(record, selected_date);
                     }
-                    this.display().done(function() {
+                    this.display().done(() => {
                         this.set_cursor(true, true);
-                    }.bind(this));
+                    });
                     return record;
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         get new_position() {
             var order;
@@ -1575,36 +1569,28 @@
             var path = current_record.get_path(this.group);
             var prm = jQuery.Deferred();
             if (this.current_view.view_type == 'tree') {
-                prm = this.group.save().then(function() {
-                    return this.current_record;
-                }.bind(this));
+                prm = this.group.save().then(() => this.current_record);
             } else if (current_record.validate(fields, null, null, true)) {
-                prm = current_record.save().then(function() {
-                    return current_record;
-                });
+                prm = current_record.save().then(() => current_record);
             } else {
-                return this.current_view.display().then(function() {
+                return this.current_view.display().then(() => {
                     this.set_cursor();
                     return jQuery.Deferred().reject();
-                }.bind(this));
-            }
-            var display = function() {
-                // Return the original promise to keep succeed/rejected state
-                return this.display().then(function() {
-                    return prm;
-                }, function() {
-                    return prm;
                 });
-            }.bind(this);
-            return prm.then(function(current_record) {
+            }
+            const display = () => {
+                // Return the original promise to keep succeed/rejected state
+                return this.display().then(() => prm, () => prm);
+            };
+            return prm.then(current_record => {
                 if (path && current_record && current_record.id) {
                     path.splice(-1, 1,
                             [path[path.length - 1][0], current_record.id]);
                 }
-                return this.group.get_by_path(path).then(function(record) {
+                return this.group.get_by_path(path).then(record => {
                     this.current_record = record;
-                }.bind(this));
-            }.bind(this)).then(display, display);
+                });
+            }).then(display, display);
         },
         set_cursor: function(new_, reset_view) {
             if (!this.current_view) {
@@ -1654,7 +1640,7 @@
             var top_group = top_record.group;
             var idx = top_group.indexOf(top_record);
             var path = top_record.get_path(this.group);
-            return prm.then(function() {
+            return prm.then(() => {
                 for (const record of records) {
                     record.group.remove(record, remove, true, force_remove, false);
                 }
@@ -1684,31 +1670,31 @@
                     path.splice(-1, 1);
                 }
                 if (!jQuery.isEmptyObject(path)) {
-                    prms.push(this.group.get_by_path(path).then(function(record) {
+                    prms.push(this.group.get_by_path(path).then(record => {
                         this.current_record = record;
-                    }.bind(this)));
+                    }));
                 } else if (this.group.length) {
                     this.current_record = this.group[0];
                 }
 
-                return jQuery.when.apply(jQuery, prms).then(function() {
-                    return this.display().done(function() {
+                return jQuery.when.apply(jQuery, prms).then(() => {
+                    return this.display().done(() => {
                         this.set_cursor();
-                    }.bind(this));
-                }.bind(this));
-            }.bind(this));
+                    });
+                });
+            });
         },
         copy: function() {
             var dfd = jQuery.Deferred();
             var records = this.current_view.selected_records;
             this.model.copy(records, this.context)
-                .then(function(new_ids) {
-                this.group.load(new_ids, false, this.new_position);
-                if (!jQuery.isEmptyObject(new_ids)) {
-                    this.current_record = this.group.get(new_ids[0]);
-                }
-                this.display().always(dfd.resolve);
-            }.bind(this), dfd.reject);
+                .then(new_ids => {
+                    this.group.load(new_ids, false, this.new_position);
+                    if (!jQuery.isEmptyObject(new_ids)) {
+                        this.current_record = this.group.get(new_ids[0]);
+                    }
+                    this.display().always(dfd.resolve);
+                }, dfd.reject);
             return dfd.promise();
         },
         search_active: function(active) {
@@ -1905,9 +1891,9 @@
             if (this.group.parent) {
                 promises.push(this.group.parent.root_parent.reload());
             }
-            return jQuery.when.apply(jQuery, promises).then(function() {
+            return jQuery.when.apply(jQuery, promises).then(() => {
                 this.display();
-            }.bind(this));
+            });
         },
         get_buttons: function() {
             var selected_records = this.current_view.selected_records;
@@ -1929,8 +1915,8 @@
         },
         button: function(attributes) {
             var ids;
-            var process_action = function(action) {
-                return this.reload(ids, true).then(function() {
+            const process_action = action => {
+                return this.reload(ids, true).then(() => {
                     if (typeof action == 'string') {
                         this.client_action(action);
                     }
@@ -1941,7 +1927,7 @@
                             ids: ids
                         }, null, this.context, true);
                     }
-                }.bind(this));
+                });
             };
 
             var selected_records = this.current_view.selected_records;
@@ -1949,19 +1935,19 @@
             var fields = this.current_view.get_fields();
 
             var prms = [];
-            var reset_state = function(record) {
-                return function() {
+            const reset_state = record => {
+                return () => {
                     this.display(true);
                     // Reset valid state with normal domain
                     record.validate(fields);
-                }.bind(this);
-            }.bind(this);
+                };
+            };
             for (const record of selected_records) {
                 const domain = record.expr_eval(
                     (attributes.states || {})).pre_validate || [];
                 prms.push(record.validate(fields, false, domain));
             }
-            return jQuery.when.apply(jQuery, prms).then(function() {
+            return jQuery.when.apply(jQuery, prms).then(() => {
                 var record;
                 for (var i = 0; i < selected_records.length; i++) {
                     record = selected_records[i];
@@ -1979,7 +1965,7 @@
                 if (attributes.confirm) {
                     prm = Sao.common.sur.run(attributes.confirm);
                 }
-                return prm.then(function() {
+                return prm.then(() => {
                     var record = this.current_record;
                     if (attributes.type === 'instance') {
                         var args = record.expr_eval(attributes.change || []);
@@ -1994,7 +1980,7 @@
                             }
                         });
                     } else {
-                        return record.save(false).then(function() {
+                        return record.save(false).then(() => {
                             var context = this.context;
                             context._timestamp = {};
                             ids = [];
@@ -2006,14 +1992,12 @@
                             }
                             return record.model.execute(attributes.name,
                                 [ids], context)
-                                .then(process_action.bind(this))
-                                .fail(function() {
-                                    return this.reload(ids, true);
-                                }.bind(this));
-                        }.bind(this));
+                                .then(process_action)
+                                .fail(() => this.reload(ids, true));
+                        });
                     }
-                }.bind(this));
-            }.bind(this));
+                });
+            });
         },
         client_action: function(action) {
             var access = Sao.common.MODELACCESS.get(this.model_name);
@@ -2120,11 +2104,11 @@
                 Sao.Session.current_session.cache.clear(
                     'model.ir.ui.view_tree_state.get');
             };
-            var set_session_fail = function() {
+            const set_session_fail = () => {
                 Sao.Logger.warn(
                     "Unable to set view tree state for %s",
                     this.model_name);
-            }.bind(this);
+            };
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -2215,24 +2199,24 @@
                         this.model_name,
                         this.get_tree_domain(parent_),
                         view.children_field], {})
-                    .then(function(state) {
+                    .then(state => {
                         state = [JSON.parse(state[0]), JSON.parse(state[1])];
                         if (!(parent_ in this.tree_states)) {
                             this.tree_states[parent_] = {};
                         }
                         this.tree_states[parent_][view.children_field || null] = state;
                         return state;
-                    }.bind(this))
-                    .fail(function() {
+                    })
+                    .fail(() => {
                         Sao.Logger.warn(
                             "Unable to get view tree state for %s",
                             this.model_name);
-                    }.bind(this));
+                    });
             } else {
                 state_prm = jQuery.when(state);
             }
             this.tree_states_done.push(view);
-            return state_prm.done(function(state) {
+            return state_prm.done(state => {
                 var expanded_nodes, selected_nodes, record;
                 expanded_nodes = state[0];
                 selected_nodes = state[1];
@@ -2256,7 +2240,7 @@
                         }
                     }
                 }
-            }.bind(this));
+            });
         }
     });
     Sao.Screen.tree_column_optional = {};

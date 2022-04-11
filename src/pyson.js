@@ -14,7 +14,7 @@
         } else if (value instanceof Array) {
             return '[' + value.map(Sao.PYSON.toString).join(', ') + ']';
         } else if (value instanceof Object) {
-            return '{' + Object.keys(value).map(function(key) {
+            return '{' + Object.keys(value).map(key => {
                 return Sao.PYSON.toString(key) + ': ' +
                     Sao.PYSON.toString(value[key]);
             }).join(', ') + '}';
@@ -100,14 +100,14 @@
 
         encode: function(pyson) {
             pyson = this.prepare(pyson);
-            return JSON.stringify(pyson, function(k, v) {
+            return JSON.stringify(pyson, (k, v) => {
                 if (v instanceof Sao.PYSON.PYSON) {
                     return this.prepare(v.pyson());
                 } else if (v === null || v === undefined) {
                     return null;
                 }
                 return v;
-            }.bind(this));
+            });
         }
     });
 
@@ -117,7 +117,7 @@
             this.noeval = noeval || false;
         },
         decode: function(str) {
-            var reviver = function(k, v) {
+            const reviver = (k, v) => {
                 if (typeof v == 'object' && v !== null) {
                     var cls = Sao.PYSON[v.__class__];
                     if (cls) {
@@ -133,7 +133,7 @@
                 }
                 return v;
             };
-            return JSON.parse(str, reviver.bind(this));
+            return JSON.parse(str, reviver);
         }
     });
 

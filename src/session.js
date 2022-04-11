@@ -42,19 +42,19 @@
                     'params': [login, parameters, Sao.i18n.getlang()]
                 };
             };
-            new Sao.Login(func, this).run().then(function(result) {
+            new Sao.Login(func, this).run().then(result => {
                 this.login = login;
                 this.user_id = result[0];
                 this.session = result[1];
                 this.store();
                 this.renew_device_cookie();
                 dfd.resolve();
-            }.bind(this), function() {
+            }, () => {
                 this.user_id = null;
                 this.session = null;
                 this.store();
                 dfd.reject();
-            }.bind(this));
+            });
             return dfd.promise();
         },
         do_logout: function() {
@@ -93,10 +93,10 @@
             };
             this.reset_context();
             var prm = Sao.rpc(args, this);
-            return prm.then(function(context) {
+            return prm.then(context => {
                 jQuery.extend(this.context, context);
                 this.store_context();
-            }.bind(this));
+            });
         },
         reset_context: function() {
             this.context = {
@@ -156,7 +156,7 @@
                 method: 'model.res.user.device.renew',
                 params: [device_cookie, {}],
             }, this);
-            renew_prm.done(function(result) {
+            renew_prm.done(result => {
                 device_cookies = JSON.parse(
                     localStorage.getItem('sao_device_cookies'));
                 if (!device_cookies) {
@@ -168,8 +168,8 @@
                 device_cookies[this.database][this.login] = result;
                 localStorage.setItem(
                     'sao_device_cookies', JSON.stringify(device_cookies));
-            }.bind(this));
-            renew_prm.fail(function() {
+            });
+            renew_prm.fail(() => {
                 Sao.error("Cannot renew device cookie");
             });
         }
@@ -368,11 +368,11 @@
                         var name = args[0];
                         var message = args[1];
                         var type = args[2];
-                        this['get_' + type](message).then(function(value) {
+                        this['get_' + type](message).then(value => {
                             parameters[name] = value;
                             return this.run(parameters).then(
                                     dfd.resolve, dfd.reject);
-                        }.bind(this), dfd.reject);
+                        }, dfd.reject);
                     }
                 } else {
                     dfd.resolve(data.result);

@@ -521,9 +521,9 @@
             return Sao.rpc({
                 'method': 'model.ir.model.list_history',
                 'params': [{}]
-            }, Sao.Session.current_session).then(function(models) {
+            }, Sao.Session.current_session).then(models => {
                 this._models = models;
-            }.bind(this));
+            });
         },
         contains: function(model) {
             return ~this._models.indexOf(model);
@@ -581,9 +581,9 @@
             return Sao.rpc({
                 'method': 'model.ir.ui.view_search.get_search',
                 'params': [{}]
-            }, Sao.Session.current_session).then(function(searches) {
+            }, Sao.Session.current_session).then(searches => {
                 this.searches = searches;
-            }.bind(this));
+            });
         },
         get: function(model) {
             return this.searches[model] || [];
@@ -596,19 +596,19 @@
                     'name': name,
                     'domain': this.encoder.encode(domain)
                 }], {}]
-            }, Sao.Session.current_session).then(function(ids) {
+            }, Sao.Session.current_session).then(ids => {
                 var id = ids[0];
                 if (this.searches[model] === undefined) {
                     this.searches[model] = [];
                 }
                 this.searches[model].push([id, name, domain, true]);
-            }.bind(this));
+            });
         },
         remove: function(model, id) {
             return Sao.rpc({
                 'method': 'model.ir.ui.view_search.delete',
                 'params': [[id], {}]
-            }, Sao.Session.current_session).then(function() {
+            }, Sao.Session.current_session).then(() => {
                 for (var i = 0; i < this.searches[model].length; i++) {
                     var domain = this.searches[model][i];
                     if (domain[0] === id) {
@@ -616,7 +616,7 @@
                         break;
                     }
                 }
-            }.bind(this));
+            });
         }
     });
     Sao.common.VIEW_SEARCH = new Sao.common.ViewSearch();
@@ -694,7 +694,7 @@
         var selection = this.attributes.selection || [];
         var help = this.attributes.help_selection || {};
         var prm;
-        var prepare_selection = function(selection) {
+        let prepare_selection = selection => {
             selection = jQuery.extend([], selection);
             if (this.attributes.sort === undefined || this.attributes.sort) {
                 selection.sort(function(a, b) {
@@ -712,16 +712,16 @@
             } else {
                 prm = this.model.execute(selection, []);
             }
-            prm = prm.then(function(selection) {
+            prm = prm.then(selection => {
                 this._values2selection[key] = selection;
                 return selection;
-            }.bind(this));
-            prm = prm.then(prepare_selection.bind(this));
+            });
+            prm = prm.then(prepare_selection);
         } else {
             if (key in this._values2selection) {
                 selection = this._values2selection[key];
             }
-            prepare_selection.call(this, selection);
+            prepare_selection(selection);
             prm = jQuery.when();
         }
         this.inactive_selection = [];
@@ -729,7 +729,7 @@
     };
     Sao.common.selection_mixin.update_selection = function(record, field,
             callback) {
-        var _update_selection = function() {
+        const _update_selection = () => {
             if (!field) {
                 if (callback) {
                     callback(this.selection, this.help);
@@ -741,14 +741,14 @@
                 var change_with = this.attributes.selection_change_with || [];
                 var value = record._get_on_change_args(change_with);
                 delete value.id;
-                Sao.common.selection_mixin.init_selection.call(this, value,
-                        function() {
-                            Sao.common.selection_mixin.filter_selection.call(
-                                    this, domain, record, field);
-                            if (callback) {
-                                callback(this.selection, this.help);
-                            }
-                        }.bind(this));
+                Sao.common.selection_mixin.init_selection.call(
+                    this, value, () => {
+                        Sao.common.selection_mixin.filter_selection.call(
+                            this, domain, record, field);
+                        if (callback) {
+                            callback(this.selection, this.help);
+                        }
+                    });
             } else {
                 var context = field.get_context(record);
                 var jdomain = JSON.stringify([domain, context]);
@@ -775,7 +775,7 @@
                         '.search_read',
                     'params': [domain, 0, null, null, fields, context]
                 }, record.model.session);
-                prm.done(function(result) {
+                prm.done(result => {
                     var selection = [];
                     for (const x of result) {
                         selection.push([x.id, x.rec_name]);
@@ -796,17 +796,17 @@
                     if (callback) {
                         callback(this.selection, this.help);
                     }
-                }.bind(this));
-                prm.fail(function() {
+                });
+                prm.fail(() => {
                     this._last_domain = null;
                     this.selection = [];
                     if (callback) {
                         callback(this.selection, this.help);
                     }
-                }.bind(this));
+                });
             }
         };
-        this._selection_prm.done(_update_selection.bind(this));
+        this._selection_prm.done(_update_selection);
     };
     Sao.common.selection_mixin.filter_selection = function(
             domain, record, field) {
@@ -815,11 +815,11 @@
         }
 
         var inversion = new Sao.common.DomainInversion();
-        var _value_evaluator = function(value) {
+        const _value_evaluator = value => {
             var context = {};
             context[this.field_name] = value[0];
             return inversion.eval_domain(domain, context);
-        }.bind(this);
+        };
 
         var _model_evaluator = function(allowed_models) {
             return function(value) {
@@ -851,10 +851,10 @@
             'method': 'model.' + this.attributes.relation + '.read',
             'params': [[value], ['rec_name'], {}]
         }, Sao.Session.current_session);
-        return prm.then(function(result) {
+        return prm.then(result => {
             this.inactive_selection.push([result[0].id, result[0].rec_name]);
             return [result[0].id, result[0].rec_name];
-        }.bind(this));
+        });
     };
 
     Sao.common.Button = Sao.class_(Object, {
@@ -896,10 +896,10 @@
                 this.icon.hide();
                 return;
             }
-            Sao.common.ICONFACTORY.get_icon_url(icon_name).done(function(url) {
+            Sao.common.ICONFACTORY.get_icon_url(icon_name).done(url => {
                 this.icon.attr('src', url);
                 this.icon.show();
-            }.bind(this));
+            });
         },
         set_state: function(record) {
             var states;
@@ -923,7 +923,7 @@
                 } else {
                     prm = jQuery.when();
                 }
-                prm.then(function(clicks) {
+                prm.then(clicks => {
                     var counter = this.el.children('.badge');
                     var users = [];
                     var tip = '';
@@ -936,7 +936,7 @@
                     }
                     counter.text(users.length || '');
                     counter.attr('title', tip);
-                }.bind(this));
+                });
             }
 
             if (((this.attributes.type === undefined) ||
@@ -1160,7 +1160,7 @@
             }
         },
         stringable: function(domain) {
-            var stringable_ = function(clause) {
+            const stringable_ = clause => {
                 if (!clause) {
                     return true;
                 }
@@ -1210,7 +1210,7 @@
                     return true;
                 }
                 return false;
-            }.bind(this);
+            };
             if (!domain) {
                 return true;
             }
@@ -1221,7 +1221,7 @@
         },
         string: function(domain) {
 
-            var string = function(clause) {
+            const string = clause => {
                 if (jQuery.isEmptyObject(clause)) {
                     return '';
                 }
@@ -1290,7 +1290,6 @@
                 return (this.quote(field.string) + ': ' +
                         operator + formatted_value);
             };
-            string = string.bind(this);
 
             if (jQuery.isEmptyObject(domain)) {
                 return '';
@@ -1520,7 +1519,7 @@
                 return results;
             };
 
-            var complete_reference = function() {
+            const complete_reference = () => {
                 var results = [];
                 var test_value = value !== null ? value : '';
                 if (value instanceof Array) {
@@ -1540,7 +1539,7 @@
                     }
                 }
                 return results;
-            }.bind(this);
+            };
 
             var complete_datetime = function() {
                 return [Sao.Date(), Sao.DateTime().utc()];
@@ -1612,7 +1611,7 @@
         group: function(tokens) {
             var result = [];
 
-            var _group = function(parts) {
+            const _group = parts => {
                 var result = [];
                 var push_result = function(part) {
                     var clause = [part];
@@ -1692,7 +1691,6 @@
                 }
                 return result;
             };
-            _group = _group.bind(this);
 
             var parts = [];
             for (const token of tokens) {
@@ -1784,7 +1782,7 @@
         },
         parse_clause: function(tokens) {
             var result = [];
-            tokens.forEach(function(clause) {
+            tokens.forEach(clause => {
                 if (this.is_generator(clause)) {
                     result.push(this.parse_clause(clause));
                 } else if ((clause === 'OR') || (clause === 'AND')) {
@@ -1851,9 +1849,8 @@
                         }
                     }
                     if (value instanceof Array) {
-                        value = value.map(function(v) {
-                            return this.convert_value(field, v, this.context);
-                        }.bind(this));
+                        value = value.map(
+                            v => this.convert_value(field, v, this.context));
                         if (~['many2one', 'one2many', 'many2many', 'one2one',
                             'many2many', 'one2one'].indexOf(field.type)) {
                             field_name += '.rec_name';
@@ -1872,7 +1869,7 @@
                             [field_name, operator, value]));
                     }
                 }
-            }.bind(this));
+            });
             return result;
         },
         likify: function(value, escape) {
@@ -2042,32 +2039,29 @@
                 'selection': convert_selection,
                 'multiselection': convert_selection,
                 'reference': convert_selection,
-                'datetime': function() {
-                    var result = Sao.common.parse_datetime(
-                        Sao.common.date_format(context.date_format) + ' ' +
-                        this.time_format(field), value);
-                    return result;
-                }.bind(this),
+                'datetime': () => Sao.common.parse_datetime(
+                    Sao.common.date_format(context.date_format) + ' ' +
+                    this.time_format(field), value),
                 'date': function() {
                     return Sao.common.parse_date(
                             Sao.common.date_format(context.date_format),
                             value);
                 },
-                'time': function() {
+                'time': () => {
                     try {
                         return Sao.common.parse_time(this.time_format(field),
                                 value);
                     } catch (e) {
                         return null;
                     }
-                }.bind(this),
-                'timedelta': function() {
+                },
+                'timedelta': () => {
                     var converter = null;
                     if (field.converter) {
                         converter = this.context[field.converter];
                     }
                     return Sao.common.timedelta.parse(value, converter);
-                }.bind(this),
+                },
                 'many2one': function() {
                     if (value === '') {
                         return null;
@@ -2148,7 +2142,7 @@
                 'selection': format_selection,
                 'multiselection': format_selection,
                 'reference': format_reference,
-                'datetime': function() {
+                'datetime': () => {
                     if (!value) {
                         return '';
                     }
@@ -2163,21 +2157,18 @@
                     return Sao.common.format_datetime(
                         Sao.common.date_format(context.date_format) + ' ' +
                         this.time_format(field), value);
-                }.bind(this),
-                'date': function() {
-                    return Sao.common.format_date(
-                            Sao.common.date_format(context.date_format),
-                            value);
                 },
-                'time': function() {
+                'date': () => Sao.common.format_date(
+                    Sao.common.date_format(context.date_format), value),
+                'time': () => {
                     if (!value) {
                         return '';
                     }
                     return Sao.common.format_time(
                             this.time_format(field),
                             value);
-                }.bind(this),
-                'timedelta': function() {
+                },
+                'timedelta': () => {
                     if (!value || !value.valueOf()) {
                         return '';
                     }
@@ -2186,7 +2177,7 @@
                         converter = this.context[field.converter];
                     }
                     return Sao.common.timedelta.format(value, converter);
-                }.bind(this),
+                },
                 'many2one': function() {
                     if (value === null) {
                         return '';
@@ -2196,9 +2187,7 @@
                 }
             };
             if (value instanceof Array) {
-                return value.map(function(v) {
-                    return this.format_value(field, v);
-                }.bind(this)).join(';');
+                return value.map(v => this.format_value(field, v)).join(';');
             } else {
                 var func = converts[field.type];
                 if (func) {
@@ -2226,7 +2215,7 @@
                         (value[0] == value[1][0])) {
                     value = this.simplify(value[1]).concat([value[2]]);
                 }
-                return value.map(this.simplify.bind(this));
+                return value.map(v => this.simplify(v));
             }
             return value;
         }
@@ -2371,7 +2360,7 @@
                 }
                 return domain;
             } else {
-                return domain.map(this.inverse_leaf.bind(this));
+                return domain.map(d => this.inverse_leaf(d));
             }
         },
         filter_leaf: function(domain, field, model) {
@@ -2385,9 +2374,7 @@
                 }
                 return domain;
             } else {
-                return domain.map(function(d) {
-                    return this.filter_leaf(d, field, model);
-                }.bind(this));
+                return domain.map(d => this.filter_leaf(d, field, model));
             }
         },
         eval_domain: function(domain, context, boolop) {
@@ -2433,9 +2420,8 @@
                 return [this.locale_part(domain[0], field_name, local_name)]
                     .concat(domain.slice(1, n)).concat(domain.slice(4));
             } else {
-                return domain.map(function(e) {
-                    return this.localize_domain(e, field_name, strip_target);
-                }.bind(this));
+                return domain.map(
+                    e => this.localize_domain(e, field_name, strip_target));
             }
         },
         prepare_reference_domain: function(domain, reference) {
@@ -2540,9 +2526,8 @@
                 }
                 return domain;
             } else {
-                return domain.map(function(d) {
-                    return this.prepare_reference_domain(d, reference);
-                }.bind(this));
+                return domain.map(
+                    d => this.prepare_reference_domain(d, reference));
             }
         },
         extract_reference_models: function(domain, field_name) {
@@ -2557,7 +2542,7 @@
                 return [];
             } else {
                 var models = [];
-                domain.map(function(d) {
+                domain.map(d => {
                     var new_models = this.extract_reference_models(
                         d, field_name);
                     for (var i=0, len=new_models.length; i < len; i++) {
@@ -2566,7 +2551,7 @@
                             models.push(model);
                         }
                     }
-                }.bind(this));
+                });
                 return models;
             }
         },
@@ -2654,14 +2639,11 @@
             if (this.is_leaf(domain)) {
                 return [domain];
             } else if (domoperator === undefined) {
-                return [domain_type].concat([].concat.apply([],
-                        domain.map(function(e) {
-                            return this.merge(e, domain_type);
-                        }.bind(this))));
+                return [domain_type].concat([].concat.apply(
+                    [], domain.map(e => this.merge(e, domain_type))));
             } else if (domain_type == domoperator) {
-                return [].concat.apply([], domain.map(function(e) {
-                    return this.merge(e, domain_type);
-                }.bind(this)));
+                return [].concat.apply(
+                    [], domain.map(e => this.merge(e, domain_type)));
             } else {
                 // without setting the domoperator
                 return [this.merge(domain)];
@@ -3030,7 +3012,7 @@
 
             var icon_model = new Sao.Model('ir.ui.icon');
             return icon_model.execute('list_icons', [], {})
-            .then(function(icons) {
+            .then(icons => {
                 if (!refresh) {
                     this.name2id = {};
                     this.loaded_icons = {};
@@ -3047,7 +3029,7 @@
                     this.tryton_icons.push([icon_id, icon_name]);
                     this.name2id[icon_name] = icon_id;
                 }
-            }.bind(this));
+            });
         },
         register_icon: function(icon_name) {
             if (!icon_name) {
@@ -3057,9 +3039,8 @@
                 return jQuery.when();
             }
             if (this.register_prm.state() == 'pending') {
-                return this.register_prm.then(function() {
-                    return this.register_icon(icon_name);
-                }.bind(this));
+                return this.register_prm.then(
+                    () => this.register_icon(icon_name));
             }
             var loaded_prm;
             if (!(icon_name in this.name2id)) {
@@ -3069,8 +3050,8 @@
             }
 
             var icon_model = new Sao.Model('ir.ui.icon');
-            this.register_prm = loaded_prm.then(function () {
-                var find_array = function(array) {
+            this.register_prm = loaded_prm.then(() => {
+                const find_array = array => {
                     var idx, l;
                     for (idx=0, l=this.tryton_icons.length; idx < l; idx++) {
                         var icon = this.tryton_icons[idx];
@@ -3079,7 +3060,7 @@
                         }
                     }
                     return idx;
-                }.bind(this);
+                };
                 var idx = find_array([this.name2id[icon_name], icon_name]);
                 var from = Math.round(idx - this.batchnum / 2);
                 from = (from < 0) ? 0 : from;
@@ -3091,7 +3072,7 @@
 
                 var read_prm = icon_model.execute('read',
                     [ids, ['name', 'icon']], {});
-                return read_prm.then(function(icons) {
+                return read_prm.then(icons => {
                     for (const icon of icons) {
                         var img_url = this._convert(icon.icon);
                         this.loaded_icons[icon.name] = img_url;
@@ -3099,8 +3080,8 @@
                         this.tryton_icons.splice(
                             find_array([icon.id, icon.name]), 1);
                     }
-                }.bind(this));
-            }.bind(this));
+                });
+            });
             return this.register_prm;
         },
         _convert: function(data) {
@@ -3115,21 +3096,21 @@
             if (!icon_name) {
                 return jQuery.when('');
             }
-            return this.register_icon(icon_name).then(function() {
+            return this.register_icon(icon_name).then(() => {
                 if (icon_name in this.loaded_icons) {
                     return this.loaded_icons[icon_name];
                 } else {
                     return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
-                        .then(function(icon) {
+                        .then(icon => {
                             var img_url = this._convert(icon);
                             this.loaded_icons[icon_name] = img_url;
                             return img_url;
-                        }.bind(this))
-                        .fail(function() {
+                        })
+                        .fail(() => {
                             Sao.error("Unknown icon %s", icon_name);
                         });
                 }
-            }.bind(this));
+            });
         },
         get_icon_img: function(icon_name, attrs) {
             attrs = attrs || {};
@@ -3164,22 +3145,22 @@
             var prm = jQuery.Deferred();
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
-            dialog.content.submit(function(evt) {
+            dialog.content.submit(evt => {
                 dialog.footer.find('button.btn-primary').first().click();
                 evt.preventDefault();
-            }.bind(this));
+            });
             this.running = true;
             dialog.modal.modal('show');
             dialog.modal.on('shown.bs.modal', function() {
                 dialog.modal.find('input,select')
                     .filter(':visible').first().focus();
             });
-            dialog.modal.on('keydown', function(e) {
+            dialog.modal.on('keydown', e => {
                 if (e.which == Sao.common.ESC_KEYCODE) {
                     this.close(dialog);
                     prm.reject();
                 }
-            }.bind(this));
+            });
             return prm;
         },
         close: function(dialog) {
@@ -3212,10 +3193,10 @@
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(function() {
+            }).text(Sao.i18n.gettext('OK')).click(() => {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         },
         run: function(message, icon) {
@@ -3251,10 +3232,10 @@
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(function() {
+            }).text(Sao.i18n.gettext('OK')).click(() => {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3281,21 +3262,21 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("No"),
-            }).text(Sao.i18n.gettext('No')).click(function() {
+            }).text(Sao.i18n.gettext('No')).click(() => {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Yes"),
-            }).text(Sao.i18n.gettext('Yes')).click(function() {
+            }).text(Sao.i18n.gettext('Yes')).click(() => {
                 this.close(dialog);
                 if (always.prop('checked')) {
                     prm.resolve('always');
                 }
                 prm.resolve('ok');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3330,18 +3311,18 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(function() {
+            }).text(Sao.i18n.gettext('OK')).click(() => {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3355,26 +3336,26 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.close(dialog);
                 prm.resolve('cancel');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button',
                 'title': Sao.i18n.gettext("No"),
-            }).text(Sao.i18n.gettext('No')).click(function() {
+            }).text(Sao.i18n.gettext('No')).click(() => {
                 this.close(dialog);
                 prm.resolve('ko');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Yes"),
-            }).text(Sao.i18n.gettext('Yes')).click(function() {
+            }).text(Sao.i18n.gettext('Yes')).click(() => {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3406,18 +3387,18 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).click(function() {
+            }).text(Sao.i18n.gettext('OK')).click(() => {
                 this.close(dialog);
                 prm.resolve(entry.val());
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3457,15 +3438,15 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(() => {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Compare"),
-            }).text(Sao.i18n.gettext('Compare')).click(function() {
+            }).text(Sao.i18n.gettext('Compare')).click(() => {
                 this.close(dialog);
                 Sao.rpc({
                     'method': 'model.' + model + '.read',
@@ -3482,15 +3463,15 @@
                     });
                     prm.reject();
                 });
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Write Anyway"),
-            }).text(Sao.i18n.gettext('Write Anyway')).click(function() {
+            }).text(Sao.i18n.gettext('Write Anyway')).click(() => {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3526,10 +3507,10 @@
                 'class': 'btn btn-primary',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Close"),
-            }).text(Sao.i18n.gettext('Close')).click(function() {
+            }).text(Sao.i18n.gettext('Close')).click(() => {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(dialog.footer);
+            }).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -3554,15 +3535,15 @@
                 }));
             }
             this.el.hide();
-            jQuery(function() {
+            jQuery(() => {
                 this.el.appendTo('body');
-            }.bind(this));
+            });
         },
         show: function() {
-            return window.setTimeout(function() {
+            return window.setTimeout(() => {
                 this.queries += 1;
                 this.el.show();
-            }.bind(this), this.timeout);
+            }, this.timeout);
         },
         hide: function(timeoutID) {
             window.clearTimeout(timeoutID);
@@ -3633,11 +3614,11 @@
 
             this._search_text = null;
 
-            this.input.on('input', function() {
+            this.input.on('input', () => {
                 window.setTimeout(this._input.bind(this), 300,
                         this.input.val());
-            }.bind(this));
-            this.input.keydown(function(evt) {
+            });
+            this.input.keydown(evt => {
                 if (evt.which == Sao.common.ESC_KEYCODE) {
                     if (this.dropdown.hasClass('open')) {
                         evt.preventDefault();
@@ -3651,21 +3632,21 @@
                         this.menu.find('li > a').first().focus();
                     }
                 }
-            }.bind(this));
-            this.menu.keydown(function(evt) {
+            });
+            this.menu.keydown(evt => {
                 if (evt.which == Sao.common.ESC_KEYCODE) {
                     evt.preventDefault();
                     evt.stopPropagation();
                     this.menu.dropdown('toggle');
                 }
-            }.bind(this));
-            this.dropdown.on('hide.bs.dropdown', function() {
+            });
+            this.dropdown.on('hide.bs.dropdown', () => {
                 this.input.focus();
                 Sao.common.set_overflow(this.input, 'hide');
-            }.bind(this));
-            this.dropdown.on('show.bs.dropdown', function() {
+            });
+            this.dropdown.on('show.bs.dropdown', () => {
                 Sao.common.set_overflow(this.input, 'show');
-            }.bind(this));
+            });
         },
         set_actions: function(actions, action_activated) {
             if (action_activated !== undefined) {
@@ -3685,13 +3666,13 @@
                 }).append(jQuery('<a/>', {
                     'href': '#'
                 }).text(this._format_action(content)))
-                .click(function(evt) {
+                .click(evt => {
                     evt.preventDefault();
                     if (this.action_activated) {
                         this.action_activated(action_id);
                     }
                     this.input.val('');
-                }.bind(this))
+                })
                 .appendTo(this.menu);
             }, this);
         },
@@ -3719,12 +3700,12 @@
             } else {
                 prm = this.source(text);
             }
-            prm.then(function(values) {
+            prm.then(values => {
                 if (text != this.input.val()) {
                     return;
                 }
                 this._set_selection(values);
-            }.bind(this));
+            });
         },
         _set_selection: function(values) {
             if (values === undefined) {
@@ -3737,13 +3718,13 @@
                 }).append(jQuery('<a/>', {
                     'href': '#'
                 }).append(this._format(value)))
-                .click(function(evt) {
+                .click(evt => {
                     evt.preventDefault();
                     if (this.match_selected) {
                         this.match_selected(value);
                     }
                     this.input.focus();
-                }.bind(this)).prependTo(this.menu);
+                }).prependTo(this.menu);
             }, this);
             if (!this.input.val() || (
                 !this.menu.find('li.completion').length &&
@@ -3989,13 +3970,13 @@
     };
 
     Sao.common.debounce = function(func, wait) {
-        return function() {
+        return () => {
             var args = [].slice(arguments);
             clearTimeout(func._debounceTimeout);
-            func._debounceTimeout = setTimeout(function() {
+            func._debounceTimeout = setTimeout(() => {
                 func.apply(this, args);
-            }.bind(this), wait);
-        }.bind(this);
+            }, wait);
+        };
     };
 
     Sao.common.uuid4 = function() {

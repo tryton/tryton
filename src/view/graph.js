@@ -91,8 +91,8 @@
             }
 
             var prms = [];
-            var set_data = function(index) {
-                return function () {
+            const set_data = index => {
+                return () => {
                     record = group[index];
                     var x = record.field_get_client(this.xfield.name);
                     // c3 does not support moment
@@ -139,8 +139,8 @@
                             column[pos] += value || 0;
                         }
                     }
-                }.bind(this);
-            }.bind(this);
+                };
+            };
 
             var r_prms = [];
             for (i = 0, len = group.length; i < len; i++) {
@@ -163,9 +163,9 @@
         },
         display: function(group) {
             var update_prm = this.update_data(group);
-            update_prm.done(function(data) {
+            update_prm.done(data => {
                 c3.generate(this._c3_config(data));
-            }.bind(this));
+            });
             return update_prm;
         },
         _c3_config: function(data) {
