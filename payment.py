@@ -205,30 +205,30 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         super(Payment, cls).__setup__()
 
         cls.stripe_customer.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved'])
+            ~Eval('state').in_(['draft', 'submitted', 'approved'])
             | Eval('stripe_token')
             | Eval('stripe_payment_intent_id'))
 
         cls.stripe_customer_source.states['invisible'] |= (
             Eval('stripe_token') | Eval('stripe_payment_intent_id'))
         cls.stripe_customer_source.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved']))
+            ~Eval('state').in_(['draft', 'submitted', 'approved']))
 
         cls.stripe_customer_source_selection.states['invisible'] |= (
             Eval('stripe_token') | Eval('stripe_payment_intent_id'))
         cls.stripe_customer_source_selection.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved']))
+            ~Eval('state').in_(['draft', 'submitted', 'approved']))
 
         cls.stripe_customer_payment_method.states['invisible'] |= (
             Eval('stripe_token'))
         cls.stripe_customer_payment_method.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved'])
+            ~Eval('state').in_(['draft', 'submitted', 'approved'])
             | Eval('stripe_payment_intent_id'))
 
         cls.stripe_customer_payment_method_selection.states['invisible'] |= (
             Eval('stripe_token'))
         cls.stripe_customer_payment_method_selection.states['readonly'] = (
-            ~Eval('state').in_(['draft', 'approved'])
+            ~Eval('state').in_(['draft', 'submitted', 'approved'])
             | Eval('stripe_payment_intent_id'))
 
         cls.amount.states['readonly'] &= ~Eval('stripe_capture_needed')
@@ -236,7 +236,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         cls._buttons.update({
                 'stripe_checkout': {
                     'invisible': (~Eval('state', 'draft').in_(
-                            ['approved', 'processing'])
+                            ['submitted', 'approved', 'processing'])
                         | ~Eval('stripe_checkout_needed', False)),
                     'depends': ['state', 'stripe_checkout_needed'],
                     },
@@ -666,12 +666,16 @@ class Refund(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             })
+    submitted_by = employee_field(
+        "Submitted by",
+        states=['submitted', 'approved', 'processing', 'succeeded', 'failed'])
     approved_by = employee_field(
         "Approved by",
         states=['approved', 'processing', 'succeeded', 'failed'])
 
     state = fields.Selection([
             ('draft', "Draft"),
+            ('submitted', "Submitted"),
             ('approved', "Approved"),
             ('processing', "Processing"),
             ('succeeded', "Succeeded"),
@@ -706,7 +710,8 @@ class Refund(Workflow, ModelSQL, ModelView):
         super().__setup__()
         cls.__access__.add('payment')
         cls._transitions |= set((
-                ('draft', 'approved'),
+                ('draft', 'submitted'),
+                ('submitted', 'approved'),
                 ('approved', 'processing'),
                 ('processing', 'succeeded'),
                 ('processing', 'failed'),
@@ -714,8 +719,13 @@ class Refund(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update({
                 'draft': {
-                    'invisible': Eval('state') != 'approved',
+                    'invisible': ~Eval('state').in_(['approved', 'submitted']),
                     'icon': 'tryton-back',
+                    'depends': ['state'],
+                    },
+                'submit': {
+                    'invisible': Eval('state') != 'draft',
+                    'icon': 'tryton-forward',
                     'depends': ['state'],
                     },
                 'approve': {
@@ -771,8 +781,15 @@ class Refund(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    @reset_employee('approved_by')
+    @reset_employee('submitted_by', 'approved_by')
     def draft(cls, refunds):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('submitted')
+    @set_employee('submitted_by')
+    def submit(cls, refunds):
         pass
 
     @classmethod

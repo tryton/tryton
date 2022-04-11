@@ -78,7 +78,7 @@ Create party::
     >>> customer.lang, = Lang.find([('code', '=', 'en')])
     >>> customer.save()
 
-Create approved payment::
+Create submitted payment::
 
     >>> Payment = Model.get('account.payment')
     >>> payment = Payment()
@@ -87,9 +87,9 @@ Create approved payment::
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing'
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
 Checkout the payment::
 
@@ -133,9 +133,9 @@ Create failing payment::
     >>> payment, = payment.duplicate()
     >>> payment.stripe_idempotency_key != previous_idempotency_key
     True
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
     >>> action_id = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
     >>> bool(payment.stripe_checkout_id)
@@ -220,9 +220,9 @@ Make payment with customer::
     >>> source_name == 'Visa ****1881 12/%s' % (datetime.date.today().year + 1)
     True
     >>> payment.stripe_customer_source = source_id
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
@@ -269,9 +269,9 @@ Create capture payment::
 
     >>> payment, = payment.duplicate()
     >>> payment.stripe_capture = False
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
 Checkout the capture payment::
 
@@ -317,6 +317,7 @@ Refund some amount::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = Decimal('38')
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
@@ -338,6 +339,7 @@ Simulate charge.refunded event with full amount::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = Decimal('2')
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
     >>> cron_fetch_events.click('run_once')
@@ -356,6 +358,7 @@ Try to refund more::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = Decimal('10')
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create.click('run_once')
     >>> cron_fetch_events.click('run_once')

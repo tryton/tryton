@@ -95,7 +95,7 @@ Register card::
     >>> bool(customer.stripe_customer_id)
     True
 
-Create approved payment::
+Create submitted payment::
 
     >>> Payment = Model.get('account.payment')
     >>> payment = Payment()
@@ -106,9 +106,9 @@ Create approved payment::
     >>> payment.description = 'Testing'
     >>> payment.stripe_customer = customer
     >>> payment.stripe_customer_payment_method = payment_method.id
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
 Process off-session the payment::
 
@@ -131,6 +131,7 @@ Refund the payment::
     >>> refund = Refund()
     >>> refund.payment = payment
     >>> refund.amount = payment.amount
+    >>> refund.click('submit')
     >>> refund.click('approve')
     >>> cron_refund_create, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
@@ -154,9 +155,9 @@ Cancel payment intent::
     >>> payment.stripe_customer = customer
     >>> payment.stripe_customer_payment_method = payment_method.id
     >>> payment.stripe_capture = False
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')

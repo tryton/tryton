@@ -6,4 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount" expand="2"/>
     <field name="reason" expand="1"/>
     <field name="state"/>
+    <button name="submit"/>
+    <button name="approve"/>
 </tree>

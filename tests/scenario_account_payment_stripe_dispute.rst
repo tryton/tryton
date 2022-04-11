@@ -74,9 +74,9 @@ Create fully disputed payment::
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing'
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
@@ -167,9 +167,9 @@ Create partial disputed payment::
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing'
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
@@ -238,9 +238,9 @@ Create won disputed payment::
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing'
-    >>> payment.click('approve')
+    >>> payment.click('submit')
     >>> payment.state
-    'approved'
+    'submitted'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
