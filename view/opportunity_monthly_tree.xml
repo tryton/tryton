@@ -2,8 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="year" grouping="0"/>
-    <field name="month" widget="selection"/>
+    <field name="month"/>
     <field name="number" optional="1"/>
     <field name="converted" optional="1"/>
     <field name="won" optional="0"/>

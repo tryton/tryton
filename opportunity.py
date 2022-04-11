@@ -7,7 +7,7 @@ from itertools import groupby
 from sql import Literal, Null
 from sql.aggregate import Count, Max, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import Extract
+from sql.functions import DateTrunc, Extract
 
 from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
@@ -699,22 +699,30 @@ class SaleOpportunityEmployeeContext(ModelView):
     end_date = fields.Date('End Date')
 
 
-class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):
+class MonthLabelMixin:
+    __slots__ = ()
+
+    month_label = fields.Function(fields.Char("Month"), 'get_month_label')
+
+    @classmethod
+    def order_month_label(cls, tables):
+        table, _ = tables[None]
+        return [table.month]
+
+    def get_month_label(self, name):
+        return self.month.strftime('%Y-%m')
+
+
+class SaleOpportunityMonthly(
+        MonthLabelMixin, SaleOpportunityReportMixin, ModelSQL, ModelView):
     'Sale Opportunity per Month'
     __name__ = 'sale.opportunity_monthly'
-    year = fields.Integer("Year")
-    month = fields.Many2One('ir.calendar.month', "Month")
-    year_month = fields.Function(fields.Char('Year-Month'),
-            'get_year_month')
+    month = fields.Date("Month")
 
     @classmethod
     def __setup__(cls):
         super(SaleOpportunityMonthly, cls).__setup__()
-        cls._order.insert(0, ('year', 'DESC'))
-        cls._order.insert(1, ('month.index', 'DESC'))
-
-    def get_year_month(self, name):
-        return '%s-%s' % (self.year, self.month.index)
+        cls._order.insert(0, ('month', 'DESC'))
 
     @classmethod
     def table_query(cls):
@@ -723,34 +731,28 @@ class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):
         month = Month.__table__()
         query = super(SaleOpportunityMonthly, cls).table_query()
         opportunity, = query.from_
-        type_id = cls.id.sql_type().base
-        year_column = Extract('YEAR', opportunity.start_date).as_('year')
-        month_index = Extract('MONTH', opportunity.start_date)
-        query.from_ = opportunity.join(
-            month, condition=month_index == month.index)
+        month_timestamp = DateTrunc('MONTH', opportunity.start_date)
+        id_ = Extract('EPOCH', month_timestamp)
+        month = cls.month.sql_cast(month_timestamp)
         query.columns += (
-            Max(Extract('MONTH', opportunity.start_date)
-                + Extract('YEAR', opportunity.start_date) * 100
-                ).cast(type_id).as_('id'),
-            year_column,
-            month.id.as_('month'))
-        query.group_by = (year_column, month.id, opportunity.company)
+            id_.as_('id'),
+            month.as_('month'),
+            )
+        query.group_by = [id_, month, opportunity.company]
         return query
 
 
 class SaleOpportunityEmployeeMonthly(
-        SaleOpportunityReportMixin, ModelSQL, ModelView):
+        MonthLabelMixin, SaleOpportunityReportMixin, ModelSQL, ModelView):
     'Sale Opportunity per Employee per Month'
     __name__ = 'sale.opportunity_employee_monthly'
-    year = fields.Integer("Year")
-    month = fields.Many2One('ir.calendar.month', "Month")
+    month = fields.Date("Month")
     employee = fields.Many2One('company.employee', 'Employee')
 
     @classmethod
     def __setup__(cls):
         super(SaleOpportunityEmployeeMonthly, cls).__setup__()
-        cls._order.insert(0, ('year', 'DESC'))
-        cls._order.insert(1, ('month.index', 'DESC'))
+        cls._order.insert(1, ('month', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))
 
     @classmethod
@@ -760,20 +762,14 @@ class SaleOpportunityEmployeeMonthly(
         month = Month.__table__()
         query = super(SaleOpportunityEmployeeMonthly, cls).table_query()
         opportunity, = query.from_
-        type_id = cls.id.sql_type().base
-        year_column = Extract('YEAR', opportunity.start_date).as_('year')
-        month_index = Extract('MONTH', opportunity.start_date)
-        query.from_ = opportunity.join(
-            month, condition=month_index == month.index)
+        month_timestamp = DateTrunc('MONTH', opportunity.start_date)
+        id_ = Extract('EPOCH', month_timestamp)
+        month = cls.month.sql_cast(month_timestamp)
         query.columns += (
-            Max(Extract('MONTH', opportunity.start_date)
-                + Extract('YEAR', opportunity.start_date) * 100
-                + Coalesce(opportunity.employee, 0) * 1000000
-                ).cast(type_id).as_('id'),
-            year_column,
-            month.id.as_('month'),
+            id_.as_('id'),
+            month.as_('month'),
             opportunity.employee,
             )
-        query.group_by = (year_column, month.id,
-            opportunity.employee, opportunity.company)
+        query.group_by = [
+            id_, month, opportunity.employee, opportunity.company]
         return query

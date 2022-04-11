@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <graph>
     <x>
-        <field name="year_month"/>
+        <field name="month_label"/>
     </x>
     <y>
         <field name="number"/>
