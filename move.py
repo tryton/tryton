@@ -1207,6 +1207,23 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                         line=line.rec_name))
 
     @classmethod
+    def view_attributes(cls):
+        attributes = super().view_attributes()
+        view_ids = cls._view_reconciliation_muted()
+        if Transaction().context.get('view_id') in view_ids:
+            attributes.append(
+                ('/tree', 'visual',
+                    If(Bool(Eval('reconciliation')), 'muted', '')))
+        return attributes
+
+    @classmethod
+    def _view_reconciliation_muted(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return {ModelData.get_id(
+                'account', 'move_line_view_list_payable_receivable')}
+
+    @classmethod
     def delete(cls, lines):
         Move = Pool().get('account.move')
         cls.check_modify(lines)

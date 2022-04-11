@@ -1,3 +1,4 @@
+* Mute reconciled payable/receivable lines
 * Add delegated amount on move lines
 * Enforce same type for children account as their parent
 * Show debit / credit columns in ledgers when they contain lines
