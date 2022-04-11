@@ -3,7 +3,7 @@
 from trytond.model import fields
 from trytond.modules.analytic_account import AnalyticMixin
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval
 
 
 class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
@@ -13,9 +13,7 @@ class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
         cls.analytic_accounts.domain = [
-            ('company', '=', If(~Eval('company'),
-                    Eval('context', {}).get('company', -1),
-                    Eval('company', -1))),
+            ('company', '=', Eval('company', -1)),
             ]
         cls.analytic_accounts.states = {
             'invisible': Eval('type') != 'line',
