@@ -156,13 +156,15 @@ class Scenario(Workflow, ModelSQL, ModelView):
         return count
 
     @classmethod
-    def validate(cls, scenarios):
-        super().validate(scenarios)
+    def validate_fields(cls, scenarios, field_names):
+        super().validate_fields(scenarios, field_names)
         cls.check_domain(scenarios)
 
     @classmethod
-    def check_domain(cls, scenarios):
+    def check_domain(cls, scenarios, field_names=None):
         pool = Pool()
+        if field_names and not (field_names & {'model', 'domain'}):
+            return
         for scenario in scenarios:
             Model = pool.get(scenario.model)
             try:
@@ -435,14 +437,16 @@ class Activity(ModelSQL, ModelView):
         return count
 
     @classmethod
-    def validate(cls, activities):
-        super().validate(activities)
+    def validate_fields(cls, activities, fields_names):
+        super().validate_fields(activities, fields_names)
         for activity in activities:
-            activity.check_condition()
-            activity.check_email_title()
-            activity.check_email_template()
+            activity.check_condition(fields_names)
+            activity.check_email_title(fields_names)
+            activity.check_email_template(fields_names)
 
-    def check_condition(self):
+    def check_condition(self, fields_names=None):
+        if fields_names and 'condition' not in fields_names:
+            return
         if not self.condition:
             return
         try:
@@ -454,7 +458,9 @@ class Activity(ModelSQL, ModelView):
                     activity=self.rec_name,
                     exception=exception)) from exception
 
-    def check_email_template(self):
+    def check_email_template(self, fields_names=None):
+        if fields_names and 'email_template' not in fields_names:
+            return
         if not self.email_template:
             return
         try:
@@ -466,7 +472,9 @@ class Activity(ModelSQL, ModelView):
                     activity=self.rec_name,
                     exception=exception)) from exception
 
-    def check_email_title(self):
+    def check_email_title(self, fields_names=None):
+        if fields_names and 'email_title' not in fields_names:
+            return
         if not self.email_title:
             return
         try:
