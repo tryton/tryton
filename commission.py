@@ -292,23 +292,25 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return 'amount'
 
     @classmethod
-    def validate(cls, lines):
-        super(PlanLines, cls).validate(lines)
+    def validate_fields(cls, lines, field_names):
+        super().validate_fields(lines, field_names)
+        cls.check_formula(lines, field_names)
+
+    @classmethod
+    def check_formula(cls, lines, field_names=None):
+        if field_names and 'formula' not in field_names:
+            return
         for line in lines:
-            line.check_formula()
-
-    def check_formula(self):
-        context = self.plan.get_context_formula(Decimal(0), None)
-
-        try:
-            if not isinstance(self.get_amount(**context), Decimal):
-                raise ValueError
-        except Exception as exception:
-            raise FormulaError(
-                gettext('commission.msg_plan_line_invalid_formula',
-                    formula=self.formula,
-                    line=self.rec_name,
-                    exception=exception)) from exception
+            context = line.plan.get_context_formula(Decimal(0), None)
+            try:
+                if not isinstance(line.get_amount(**context), Decimal):
+                    raise ValueError
+            except Exception as exception:
+                raise FormulaError(
+                    gettext('commission.msg_plan_line_invalid_formula',
+                        formula=line.formula,
+                        line=line.rec_name,
+                        exception=exception)) from exception
 
     def get_amount(self, **context):
         'Return amount (as Decimal)'
