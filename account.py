@@ -698,13 +698,19 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
                 group_by=table.id))
 
     @classmethod
-    def validate(cls, periods):
+    def validate_fields(cls, periods, field_names):
+        super().validate_fields(periods, field_names)
+        cls.check_ratio(periods, field_names)
+
+    @classmethod
+    def check_ratio(cls, periods, field_names=None):
         pool = Pool()
         Line = pool.get('account.budget.line')
+        if field_names and not (field_names & {'ratio', 'budget_line'}):
+            return
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table__()
-        super().validate(periods)
         for sub_ids in grouped_slice({p.budget_line.id for p in periods}):
             cursor.execute(*table.select(
                     table.budget_line,
