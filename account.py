@@ -68,6 +68,15 @@ class InvoiceLine(metaclass=PoolMeta):
             domain.append(('type.unearned_revenue', '=', True))
         return domain
 
+    @property
+    def origin_name(self):
+        pool = Pool()
+        Condition = pool.get('sale.advance_payment.condition')
+        name = super().origin_name
+        if isinstance(self.origin, Condition):
+            name = self.origin.sale.rec_name
+        return name
+
     @classmethod
     def _get_origin(cls):
         return (super(InvoiceLine, cls)._get_origin()
