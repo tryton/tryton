@@ -19,29 +19,25 @@ class ShipmentIn(metaclass=PoolMeta):
     cost_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Currency",
             states={
-                'invisible': Eval('cost_edit', False),
+                'readonly': ~(Eval('state').in_(['draft'])
+                    & Eval('cost_edit', False)),
                 }),
-        'on_change_with_cost_currency_used')
+        'on_change_with_cost_currency_used', setter='set_cost')
     cost_currency = fields.Many2One(
         'currency.currency', "Cost Currency",
         states={
             'required': Bool(Eval('cost')),
-            'invisible': ~Eval('cost_edit', False),
             'readonly': ~Eval('state').in_(['draft']),
             })
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
-                'invisible': Eval('cost_edit', False),
+                'readonly': ~(Eval('state').in_(['draft'])
+                    & Eval('cost_edit', False)),
                 }),
-        'on_change_with_cost_used')
+        'on_change_with_cost_used', setter='set_cost')
     cost = fields.Numeric(
-        "Cost", digits=price_digits,
-        states={
-            'invisible': ~Eval('cost_edit', False),
-            'readonly': ~Eval('state').in_(['draft']),
-            })
-
+        "Cost", digits=price_digits, readonly=True)
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={
@@ -83,12 +79,15 @@ class ShipmentIn(metaclass=PoolMeta):
         else:
             return self.cost
 
-    @fields.depends(
-        'cost_edit', 'cost_used', 'cost_currency_used')
-    def on_change_cost_edit(self):
-        if self.cost_edit:
-            self.cost = self.cost_used
-            self.cost_currency = self.cost_currency_used
+    @classmethod
+    def set_cost(cls, lines, name, value):
+        if not value:
+            return
+        if name.endswith('_used'):
+            name = name[:-len('_used')]
+        cls.write([l for l in lines if l.cost_edit], {
+                name: value,
+                })
 
     def allocate_cost_by_value(self):
         pool = Pool()

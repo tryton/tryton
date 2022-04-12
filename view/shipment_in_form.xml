@@ -5,12 +5,9 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/notebook" position="after">
         <label name="carrier"/>
         <field name="carrier"/>
-        <group id="costs" col="-1" colspan="2">
-            <label name="cost"/>
-            <label name="cost_used"/>
-            <field name="cost"/>
+        <label name="cost_used"/>
+        <group id="costs" col="-1">
             <field name="cost_used"/>
-            <field name="cost_currency"/>
             <field name="cost_currency_used"/>
             <field name="cost_edit"/>
         </group>
