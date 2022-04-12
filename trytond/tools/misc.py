@@ -24,7 +24,13 @@ from trytond.const import OPERATORS
 
 
 def file_open(name, mode="r", subdir='modules', encoding=None):
-    """Open a file from the root dir, using a subdir folder."""
+    "Open a file from the root directory, using subdir folder"
+    path = find_path(name, subdir)
+    return io.open(path, mode, encoding=encoding)
+
+
+def find_path(name, subdir='modules', _test=os.path.isfile):
+    "Return path from the root directory, using subdir folder"
     from trytond.modules import EGG_MODULES
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -71,11 +77,16 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
     else:
         name = secure_join(root_path, name)
 
-    for i in (name, egg_name):
-        if i and os.path.isfile(i):
-            return io.open(i, mode, encoding=encoding)
+    for path in [name, egg_name]:
+        if path and _test(path):
+            return path
+    else:
+        raise FileNotFoundError("No such file or directory: %r" % name)
 
-    raise IOError('File not found : %s ' % name)
+
+def find_dir(name, subdir='modules'):
+    "Return directory from the root directory, using subdir folder"
+    return find_path(name, subdir=subdir, _test=os.path.isdir)
 
 
 def get_smtp_server():

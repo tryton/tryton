@@ -53,6 +53,8 @@ class Icon(sequence_ordered(), ModelSQL, ModelView):
 
     def get_icon(self, name):
         path = os.path.join(self.module, self.path.replace('/', os.sep))
-        with file_open(path,
-                subdir='modules', mode='r', encoding='utf-8') as fp:
+        with file_open(
+                path,
+                subdir='modules' if self.module not in {'ir', 'res'} else '',
+                mode='r', encoding='utf-8') as fp:
             return fp.read()

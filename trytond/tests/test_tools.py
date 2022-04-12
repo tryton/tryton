@@ -128,7 +128,8 @@ class ToolsTestCase(unittest.TestCase):
         with file_open('ir/__init__.py') as fp:
             self.assertTrue(fp)
 
-        with self.assertRaisesRegex(IOError, "File not found :"):
+        with self.assertRaisesRegex(
+                FileNotFoundError, "No such file or directory:"):
             with file_open('ir/noexist'):
                 pass
 

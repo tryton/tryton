@@ -2,6 +2,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import doctest
+import glob
 import inspect
 import operator
 import os
@@ -30,7 +31,7 @@ from trytond.model import (
 from trytond.model.fields import Function
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import PYSONDecoder, PYSONEncoder
-from trytond.tools import file_open, is_instance_method
+from trytond.tools import file_open, find_dir, is_instance_method
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateView
 
@@ -273,9 +274,17 @@ class ModuleTestCase(unittest.TestCase):
         View = pool.get('ir.ui.view')
         views = View.search([
                 ('module', '=', self.module),
-                ('model', '!=', ''),
                 ])
+        directory = find_dir(
+            self.module,
+            subdir='modules' if self.module not in {'ir', 'res'} else '')
+        view_files = set(glob.glob(os.path.join(directory, 'view', '*.xml')))
         for view in views:
+            if view.name:
+                view_files.discard(os.path.join(
+                        directory, 'view', view.name + '.xml'))
+            if not view.model:
+                continue
             with self.subTest(view=view):
                 if not view.inherit or view.inherit.model == view.model:
                     self.assertTrue(view.arch,
@@ -314,6 +323,7 @@ class ModuleTestCase(unittest.TestCase):
                             self.assertIn(button_name, Model._buttons.keys(),
                                 msg="Button '%s' is not in %s._buttons"
                                 % (button_name, Model.__name__))
+        self.assertFalse(view_files, msg="unused view files")
 
     @with_transaction()
     def test_icon(self):
@@ -321,9 +331,16 @@ class ModuleTestCase(unittest.TestCase):
         pool = Pool()
         Icon = pool.get('ir.ui.icon')
         icons = Icon.search([('module', '=', self.module)])
+        directory = find_dir(
+            self.module,
+            subdir='modules' if self.module not in {'ir', 'res'} else '')
+        icon_files = set(glob.glob(os.path.join(directory, 'icons', '*.svg')))
         for icon in icons:
+            icon_files.discard(os.path.join(
+                    directory, icon.path.replace('/', os.sep)))
             with self.subTest(icon=icon):
                 self.assertTrue(icon.icon)
+        self.assertFalse(icon_files, msg="unused icon files")
 
     @with_transaction()
     def test_rpc_callable(self):

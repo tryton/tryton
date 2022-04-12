@@ -1,3 +1,4 @@
+* Test all XML view and SVG icon files are used
 * Add notification message
 * Add validate_fields to ModelStorage
 * Drop support for PyPy and psycopg2cffi

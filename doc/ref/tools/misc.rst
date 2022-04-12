@@ -4,6 +4,18 @@
 Miscellaneous
 =============
 
+.. method:: file_open(name[, mode[, subdir[, encoding]]])
+
+   Open the named file in subdir from the root directory.
+
+.. method:: find_path(name[, subdir])
+
+   Return the path of the named file in subdir from root directory.
+
+.. method:: find_dir(name[, subdir])
+
+   Return the path of the named directory in subdir from root directory.
+
 .. method:: resolve(name)
 
    Resolve a dotted name to a global object.

@@ -7,17 +7,11 @@ except ImportError:
 
 from .decimal_ import decistmt
 from .misc import (
-    escape_wildcard, file_open, firstline, get_smtp_server, grouped_slice,
-    is_full_text, is_instance_method, lstrip_wildcard, reduce_domain,
-    reduce_ids, remove_forbidden_chars, resolve, rstrip_wildcard, slugify,
-    sortable_values, sql_pairing, strip_wildcard, unescape_wildcard)
-
-__all__ = ['file_open', 'get_smtp_server', 'reduce_ids',
-    'reduce_domain', 'grouped_slice', 'is_instance_method', 'resolve',
-    'strip_wildcard', 'lstrip_wildcard', 'rstrip_wildcard', 'slugify',
-    'decistmt', 'ClassProperty', 'cursor_dict', 'cached_property',
-    'sortable_values', 'escape_wildcard', 'unescape_wildcard', 'is_full_text',
-    'sql_pairing', 'firstline', 'remove_forbidden_chars']
+    escape_wildcard, file_open, find_dir, find_path, firstline,
+    get_smtp_server, grouped_slice, is_full_text, is_instance_method,
+    lstrip_wildcard, reduce_domain, reduce_ids, remove_forbidden_chars,
+    resolve, rstrip_wildcard, slugify, sortable_values, sql_pairing,
+    strip_wildcard, unescape_wildcard)
 
 
 class ClassProperty(property):
@@ -33,3 +27,31 @@ def cursor_dict(cursor, size=None):
             break
         for row in rows:
             yield {d[0]: v for d, v in zip(cursor.description, row)}
+
+
+__all__ = [
+    ClassProperty,
+    cached_property,
+    cursor_dict,
+    decistmt,
+    escape_wildcard,
+    file_open,
+    find_dir,
+    find_path,
+    firstline,
+    get_smtp_server,
+    grouped_slice,
+    is_full_text,
+    is_instance_method,
+    lstrip_wildcard,
+    reduce_domain,
+    reduce_ids,
+    remove_forbidden_chars,
+    resolve,
+    rstrip_wildcard,
+    slugify,
+    sortable_values,
+    sql_pairing,
+    strip_wildcard,
+    unescape_wildcard,
+    ]
