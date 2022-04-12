@@ -20,6 +20,9 @@ Purchase
 `Price List </projects/modules-purchase-price-list/en/latest>`_
     Applies price list.
 
+`Product Quantity </projects/modules-purchase-product-quantity/en/latest>`_
+    Adds constraints on quantity purchased.
+
 `Request </projects/modules-purchase-request/en/latest>`_
     Collects the purchase requests.
 

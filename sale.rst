@@ -50,6 +50,9 @@ Sale
 `Product Customer </projects/modules-sale-product-customer/en/latest>`_
     Adds customer's name and code for product.
 
+`Product Quantity </projects/modules-sale-product-quantity/en/latest>`_
+    Adds constraints on quantity sold.
+
 `Promotion </projects/modules-sale-promotion/en/latest>`_
     Applies promotions.
 
