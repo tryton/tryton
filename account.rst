@@ -104,6 +104,9 @@ Accounting
 `Product </projects/modules-account-product/en/latest>`_
     Adds accounting on product and category.
 
+`Receivable Rule </projects/modules-account-receivable-rule/en/latest>`_
+    Applies rules to receivable.
+
 `Rule </projects/modules-account-rule/en/latest>`_
     Applies rules on accounts.
 
