@@ -18,6 +18,8 @@ from trytond.tests.test_tryton import (
     ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
 from trytond.transaction import Transaction
 
+from ..exceptions import FiscalYearDatesError
+
 
 def create_chart(company, tax=False, chart='account.account_template_root_en'):
     pool = Pool()
@@ -273,6 +275,44 @@ class AccountTestCase(
                     p1.end_date + relativedelta(days=1) == p2.start_date
                     for p1, p2 in zip(
                         fiscalyear.periods[:-1], fiscalyear.periods[1:])))
+
+    @with_transaction()
+    def test_open_fiscalyear_before_open(self):
+        "Test create open fiscal year before an open one"
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(
+                company,
+                start_date=datetime.date(2022, 1, 1),
+                end_date=datetime.date(2022, 12, 31))
+            fiscalyear.save()
+
+            earlier_fiscalyear = get_fiscalyear(
+                company,
+                start_date=datetime.date(2021, 1, 1),
+                end_date=datetime.date(2021, 12, 31))
+            earlier_fiscalyear.save()
+
+    @with_transaction()
+    def test_open_fiscalyear_before_close(self):
+        "Test create open fiscal year before a close one"
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(
+                company,
+                start_date=datetime.date(2022, 1, 1),
+                end_date=datetime.date(2022, 12, 31))
+            fiscalyear.save()
+            close_fiscalyear(fiscalyear)
+
+            earlier_fiscalyear = get_fiscalyear(
+                company,
+                start_date=datetime.date(2021, 1, 1),
+                end_date=datetime.date(2021, 12, 31))
+            with self.assertRaises(FiscalYearDatesError):
+                earlier_fiscalyear.save()
 
     @with_transaction()
     def test_account_debit_credit(self):

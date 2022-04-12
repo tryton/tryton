@@ -60,6 +60,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_fiscalyear_overlap">
             <field name="text">The fiscal years "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
         </record>
+        <record model="ir.message" id="msg_open_fiscalyear_earlier">
+            <field name="text">The open fiscal year "%(open)s" can not be before the close fiscal year "%(closed)s".</field>
+        </record>
         <record model="ir.message" id="msg_fiscalyear_different_post_move_sequence">
             <field name="text">The fiscal years "%(first)s" and "%(second)s" cannot have the same post move sequence, you must use different sequences.</field>
         </record>

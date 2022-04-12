@@ -108,7 +108,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def check_dates(cls, fiscalyears, field_names=None):
         if field_names and not (field_names & {
-                    'start_date', 'end_date', 'company'}):
+                    'start_date', 'end_date', 'state', 'company'}):
             return
         transaction = Transaction()
         connection = transaction.connection
@@ -132,6 +132,20 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     gettext('account.msg_fiscalyear_overlap',
                         first=year.rec_name,
                         second=second.rec_name))
+            if year.state == 'open':
+                fiscalyears = cls.search([
+                        ('start_date', '>=', year.end_date),
+                        ('state', 'in', ['close', 'locked']),
+                        ('company', '=', year.company.id),
+                        ],
+                    limit=1,
+                    order=[('start_date', 'ASC')])
+                if fiscalyears:
+                    fiscalyear, = fiscalyears
+                    raise FiscalYearDatesError(
+                        gettext('account.msg_open_fiscalyear_earlier',
+                            open=year.rec_name,
+                            close=fiscalyear.rec_name))
 
     @classmethod
     def check_post_move_sequence(cls, fiscalyears, field_names=None):
@@ -277,7 +291,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         Account = pool.get('account.account')
         Deferral = pool.get('account.account.deferral')
 
-        # Lock period to be sure no new period will be created in between.
+        # Prevent create new fiscal year or period
+        cls.lock()
         Period.lock()
 
         deferrals = []
