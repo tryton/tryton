@@ -689,6 +689,7 @@ Class attribute:
 .. attribute:: Workflow._transition_state
 
    The name of the field that will be used to check state transition.
+   The default value is 'state'.
 
 .. attribute:: Workflow._transitions
 

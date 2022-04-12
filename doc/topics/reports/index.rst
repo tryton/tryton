@@ -118,7 +118,8 @@ Also note that relatorio only supports a subset of Genshi.
 The directives that are supported by relatorio can be found here: `Quick
 Example`_ .
 
-See Genshi's documentation for more information: `Genshi XML Templates`_
+See Genshi's documentation for more information: `Genshi XML Template
+Language`_.
 
 Examples
 ^^^^^^^^
@@ -243,7 +244,7 @@ Now the invoice report will be able to access the employee record.
 
             return context
 
-.. _Genshi XML Templates: http://genshi.edgewall.org/wiki/Documentation/0.5.x/xml-templates.html
+.. _Genshi XML Template Language: https://genshi.edgewall.org/wiki/Documentation/xml-templates.html
 
 .. _Quick Example: https://relatorio.readthedocs.io/en/latest/quickexample.html
 

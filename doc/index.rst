@@ -13,6 +13,9 @@ First steps
   :ref:`Setup a database <topics-setup-database>` |
   :ref:`Start the server <topics-start-server>`
 
+    * **Tutorials:**
+      :ref:`Create a module <tutorial-module>`
+
 The model layer
 ===============
 
@@ -43,7 +46,8 @@ The development process
 =======================
 
 * **Modules**
-  :ref:`Module definition <topics-modules>`
+  :ref:`Module definition <topics-modules>` |
+  :ref:`Create a module <tutorial-module>`
 
 Contents
 ========
@@ -53,6 +57,7 @@ Contents
 
    topics/index
    ref/index
+   tutorial/index
 
 Indices, glossary and tables
 ============================

@@ -20,6 +20,8 @@ files:
 :file:`tryton.cfg`
    A Configuration file that describes the Tryton module.
 
+.. _topics-modules-init:
+
 :file:`__init__.py` file
 ------------------------
 
@@ -27,6 +29,7 @@ It is the Python :file:`__init__.py` to define a module.
 It must contains a method named ``register()`` that must register to the pool
 all the objects of the module.
 
+.. _topics-modules-tryton-cfg:
 
 :file:`tryton.cfg` file
 -----------------------
@@ -68,6 +71,8 @@ Python Files
 ============
 
 The Python files define the models for the modules.
+
+.. _topics-modules-xml-files:
 
 XML Files
 =========
@@ -219,3 +224,4 @@ Here is the list of the tags:
 .. _time: http://docs.python.org/library/time.html
 .. _Decimal: https://docs.python.org/library/decimal.html
 .. _datetime: https://docs.python.org/library/datetime.html
+.. _RNG: https://en.wikipedia.org/wiki/RELAX_NG
