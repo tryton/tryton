@@ -136,6 +136,7 @@ module.exports = function(grunt) {
     },
     qunit: {
         options: {
+            timeout: 300000,
             puppeteer: {
                 headless: true,
                 args: [
