@@ -10,11 +10,13 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, PYSONDecoder
+from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateView, Wizard
+
+from ..action import DomainError
 
 
 class XMLError(ValidationError):
@@ -571,6 +573,44 @@ class ViewSearch(ModelSQL, ModelView):
     @staticmethod
     def default_user():
         return Transaction().user
+
+    @classmethod
+    def validate_fields(cls, searches, field_names):
+        super().validate_fields(searches, field_names)
+        cls.check_domain(searches, field_names)
+
+    @classmethod
+    def check_domain(cls, searches, field_names):
+        decoder = PYSONDecoder()
+        if field_names and 'domain' not in field_names:
+            return
+        for search in searches:
+            try:
+                value = decoder.decode(search.domain)
+            except Exception as exception:
+                raise DomainError(
+                    gettext('ir.msg_view_search_invalid_domain',
+                        domain=search.domain,
+                        search=search.rec_name)) from exception
+            if isinstance(value, PYSON):
+                if not value.types() == set([list]):
+                    raise DomainError(
+                        gettext('ir.msg_view_search_invalid_domain',
+                            domain=search.domain,
+                            search=search.rec_name))
+            elif not isinstance(value, list):
+                raise DomainError(
+                    gettext('ir.msg_view_search_invalid_domain',
+                        domain=search.domain,
+                        search=search.rec_name))
+            else:
+                try:
+                    fields.domain_validate(value)
+                except Exception as exception:
+                    raise DomainError(
+                        gettext('ir.msg_view_search_invalid_domain',
+                            domain=search.domain,
+                            search=search.rec_name)) from exception
 
     @classmethod
     def get_search(cls):

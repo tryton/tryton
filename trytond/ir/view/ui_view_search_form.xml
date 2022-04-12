@@ -6,8 +6,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="user"/>
     <field name="user"/>
+
     <label name="model"/>
     <field name="model"/>
+    <newline/>
+
     <label name="domain"/>
-    <field name="domain"/>
+    <field name="domain" colspan="3" widget="pyson"/>
 </form>
