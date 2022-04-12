@@ -35,19 +35,17 @@ class ShipmentCostMixin:
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
-                'invisible': Eval('cost_edit', False),
+                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                    | ~Eval('cost_edit', False)),
                 }),
-        'on_change_with_cost_used')
+        'on_change_with_cost_used', setter='set_cost')
     cost = fields.Numeric(
-        "Cost", digits=price_digits,
-        states={
-            'invisible': ~Eval('cost_edit', False),
-            'readonly': Eval('state').in_(['done', 'cancelled']),
-            })
+        "Cost", digits=price_digits, readonly=True,)
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={
             'readonly': Eval('state').in_(['done', 'cancelled']),
+            'invisible': Eval('state').in_(['done', 'cancelled']),
             },
         help="Check to edit the cost.")
 
@@ -81,10 +79,13 @@ class ShipmentCostMixin:
             cost = self._compute_costs()['cost']
         return cost
 
-    @fields.depends('cost_edit', 'cost_used')
-    def on_change_cost_edit(self):
-        if self.cost_edit:
-            self.cost = self.cost_used
+    @classmethod
+    def set_cost(cls, lines, name, value):
+        if name.endswith('_used'):
+            name = name[:-len('_used')]
+        cls.write([l for l in lines if l.cost_edit], {
+                name: value,
+                })
 
     @property
     def shipment_cost_moves(self):

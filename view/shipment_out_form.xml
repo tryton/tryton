@@ -8,12 +8,10 @@ this repository contains the full copyright notices and license terms. -->
     </xpath>
     <xpath expr="//page[@id='other']" position="before">
         <page id="costs" string="Costs">
-            <group id="costs" col="-1" colspan="4">
-                <label name="cost"/>
-                <label name="cost_used"/>
-                <field name="cost"/>
-                <field name="cost_used"/>
-                <field name="cost_edit"/>
+            <label name="cost_used"/>
+            <group id="cost_used" col="-1" colspan="3">
+                <field name="cost_used" xexpand="0"/>
+                <field name="cost_edit" xexpand="0" xalign="0"/>
             </group>
         </page>
     </xpath>
