@@ -16,35 +16,30 @@ class ShipmentOut(metaclass=PoolMeta):
     cost_sale_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Sale Currency",
             states={
-                'invisible': (
-                    Eval('cost_edit', False)
-                    | (Eval('cost_method') != 'shipment')),
+                'invisible': Eval('cost_method') != 'shipment',
+                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                    | ~Eval('cost_edit', False)),
                 }),
-        'on_change_with_cost_sale_currency_used')
+        'on_change_with_cost_sale_currency_used', setter='set_cost')
     cost_sale_currency = fields.Many2One(
         'currency.currency', "Cost Sale Currency",
         states={
-            'invisible': (
-                ~Eval('cost_edit', False)
-                | (Eval('cost_method') != 'shipment')),
+            'invisible': Eval('cost_method') != 'shipment',
             'required': Bool(Eval('cost_sale')),
             'readonly': Eval('state').in_(['done', 'cancelled']),
             })
     cost_sale_used = fields.Function(fields.Numeric(
             "Cost Sale", digits=price_digits,
             states={
-                'invisible': (
-                    Eval('cost_edit', False)
-                    | (Eval('cost_method') != 'shipment')),
+                'invisible': Eval('cost_method') != 'shipment',
+                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                    | ~Eval('cost_edit', False)),
                 }),
-        'on_change_with_cost_sale_used')
+        'on_change_with_cost_sale_used', setter='set_cost')
     cost_sale = fields.Numeric(
-        "Cost Sale", digits=price_digits,
+        "Cost Sale", digits=price_digits, readonly=True,
         states={
-            'invisible': (
-                ~Eval('cost_edit', False)
-                | (Eval('cost_method') != 'shipment')),
-            'readonly': Eval('state').in_(['done', 'cancelled']),
+            'invisible': Eval('cost_method') != 'shipment',
             })
 
     cost_invoice_line = fields.Many2One('account.invoice.line',
@@ -106,13 +101,6 @@ class ShipmentOut(metaclass=PoolMeta):
             return self._compute_costs()['cost_sale_currency']
         elif self.cost_sale_currency:
             return self.cost_sale_currency.id
-
-    @fields.depends('cost_edit', 'cost_sale_used', 'cost_sale_currency_used')
-    def on_change_cost_edit(self):
-        super().on_change_cost_edit()
-        if self.cost_edit:
-            self.cost_sale = self.cost_sale_used
-            self.cost_sale_currency = self.cost_sale_currency_used
 
     @classmethod
     def get_cost_methods(cls):
