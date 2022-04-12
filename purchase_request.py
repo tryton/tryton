@@ -515,14 +515,26 @@ class CreatePurchase(Wizard):
         line.unit_price = round_price(Decimal(0))
         for f, v in key:
             setattr(line, f, v)
-        line.quantity = sum(r.quantity for r in requests)
         line.purchase = purchase
         line.on_change_product()
+        line.quantity = cls.compute_quantity(requests, line, purchase)
+        if line.unit:
+            line.quantity = line.unit.ceil(line.quantity)
         # Set again in case on_change's changed them
         for f, v in key:
             setattr(line, f, v)
         line.on_change_quantity()
         return line
+
+    @classmethod
+    def compute_quantity(cls, requests, line, purchase):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        unit = line.unit
+        compute_qty = Uom.compute_qty
+        return sum(
+            compute_qty(r.uom, r.quantity, unit, round=False)
+            for r in requests)
 
 
 class HandlePurchaseCancellationException(Wizard):
