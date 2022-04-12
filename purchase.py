@@ -1168,29 +1168,27 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
-                'invisible': ((Eval('type') != 'line')
-                    | (Eval('delivery_date_edit', False)
-                        & ~Eval('purchase_state').in_(
-                            ['processing', 'done', 'cancelled']))),
+                'invisible': Eval('type') != 'line',
+                'readonly': (Eval('purchase_state').in_(
+                        ['processing', 'done', 'cancelled'])
+                    | ~Eval('delivery_date_edit', False)),
                 }),
-        'on_change_with_delivery_date')
+        'on_change_with_delivery_date', setter='set_delivery_date')
     delivery_date_edit = fields.Boolean(
         "Edit Delivery Date",
         states={
-            'invisible': Eval('type') != 'line',
-            'readonly': Eval('purchase_state').in_([
-                    'processing', 'done', 'cancelled']),
+            'invisible': (
+                (Eval('type') != 'line')
+                | Eval('purchase_state').in_(
+                    ['processing', 'done', 'cancelled'])),
+            'readonly': Eval('purchase_state').in_(
+                ['processing', 'done', 'cancelled']),
             },
         help="Check to edit the delivery date.")
     delivery_date_store = fields.Date(
-        "Delivery Date",
+        "Delivery Date", readonly=True,
         states={
-            'invisible': ((Eval('type') != 'line')
-                | ~Eval('delivery_date_edit', False)
-                | Eval('purchase_state').in_(
-                    ['processing', 'done', 'cancelled'])),
-            'readonly': Eval('purchase_state').in_([
-                    'processing', 'done', 'cancelled']),
+            'invisible': Eval('type') != 'line',
             })
     purchase_state = fields.Function(
         fields.Selection('get_purchase_states', 'Purchase State'),
@@ -1453,6 +1451,18 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 None, (m.effective_date or m.planned_date for m in moves))
             return min(dates, default=None)
         return self.planned_delivery_date
+
+    @classmethod
+    def set_delivery_date(cls, lines, name, value):
+        cls.write([l for l in lines if l.delivery_date_edit], {
+                'delivery_date_store': value,
+                })
+
+    @fields.depends('delivery_date_edit', 'delivery_date',
+        methods=['planned_delivery_date'])
+    def on_change_delivery_date_edit(self):
+        if not self.delivery_date_edit:
+            self.delivery_date = self.planned_delivery_date
 
     @property
     @fields.depends(
