@@ -832,7 +832,7 @@
             }
             return this.screen.save_current().then(
                 () => {
-                    this.info_bar.message(
+                    this.info_bar.add(
                         Sao.i18n.gettext('Record saved.'), 'info');
                     this.screen.count_tab_domain(true);
                 }, () => {
