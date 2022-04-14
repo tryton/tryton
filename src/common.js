@@ -2574,12 +2574,19 @@
                 return this.simplify_nested(domain[0]);
             } else {
                 var simplified = [];
-                var domain_op = this._bool_operator(domain);
                 for (var branch of domain) {
                     var simplified_branch = this.simplify_nested(branch);
-                    if ((this._bool_operator(branch) == domain_op) ||
-                        (simplified_branch.length == 1)) {
-                        simplified.push(...simplified_branch);
+                    if ((this._bool_operator(simplified_branch) ==
+                                this._bool_operator(simplified)) ||
+                            (simplified_branch.length == 1)) {
+                        if ((simplified.length > 0) &&
+                            (simplified_branch.length > 0) &&
+                            ((simplified_branch[0] == 'AND') ||
+                                (simplified_branch[0] == 'OR'))) {
+                            simplified.push(...simplified_branch.slice(1));
+                        } else {
+                            simplified.push(...simplified_branch);
+                        }
                     } else {
                         simplified.push(simplified_branch);
                     }
