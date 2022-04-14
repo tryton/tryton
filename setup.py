@@ -58,7 +58,7 @@ else:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = ['python-sql', 'werkzeug < 2']
+requires = ['python-sql', 'werkzeug']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
