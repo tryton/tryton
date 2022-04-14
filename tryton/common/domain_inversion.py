@@ -307,9 +307,14 @@ def simplify_nested(domain):
         domain_op = bool_operator(domain)
         for branch in domain:
             simplified_branch = simplify_nested(branch)
-            if (bool_operator(branch) == domain_op
+            if (bool_operator(simplified_branch) == domain_op
                     or len(simplified_branch) == 1):
-                simplified.extend(simplified_branch)
+                if (simplified
+                        and simplified_branch
+                        and simplified_branch[0] in ['AND', 'OR']):
+                    simplified.extend(simplified_branch[1:])
+                else:
+                    simplified.extend(simplified_branch)
             else:
                 simplified.append(simplified_branch)
         return simplified
