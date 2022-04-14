@@ -570,6 +570,11 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             simplify(domain), ['OR', ['x', '=', 3], ['y', '=', 5]])
 
+        domain = ['OR', ('x', '=', 1), ['OR', ('x', '=', 2), ('x', '=', 3)]]
+        self.assertEqual(
+            simplify(domain),
+            ['OR', ('x', '=', 1), ('x', '=', 2), ('x', '=', 3)])
+
         domain = [['x', '=', 3], ['OR']]
         self.assertEqual(simplify(domain), [['x', '=', 3]])
 
