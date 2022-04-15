@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot delete SII invoice "%(invoice)s" because it has already been sent.</field>
         </record>
         <record model="ir.message" id="msg_missing_sii_url">
-            <field name="text">To send invoice to SII service, you need to set an URL on the account configuration.</field>
+            <field name="text">To send invoices to SII service, you need to set an URL on the account configuration.</field>
         </record>
         <record model="ir.message" id="msg_es_sii_posted_invoices">
             <field name="text">You can not change the SII setting for period "%(period)s" because there are already posted invoices.</field>
