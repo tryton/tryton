@@ -141,6 +141,4 @@ setup(name=name,
     [trytond.modules]
     stock_supply_day = trytond.modules.stock_supply_day
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )

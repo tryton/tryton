@@ -1,10 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
-import unittest
-from decimal import Decimal
 
-import trytond.tests.test_tryton
+import datetime
+
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
@@ -153,8 +151,4 @@ class StockSupplyDayTestCase(CompanyTestMixin, ModuleTestCase):
             return product_supplier
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        StockSupplyDayTestCase))
-    return suite
+del ModuleTestCase
