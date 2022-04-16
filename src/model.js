@@ -969,8 +969,9 @@
                 this.on_change_with(fieldnames);
                 const callback = () => {
                     if (display) {
-                        return this.group.root_group.screens
-                            .forEach(screen => screen.display());
+                        return jQuery.when.apply(
+                            jQuery, this.group.root_group.screens
+                            .map(screen => screen.display()));
                     }
                 };
                 if (validate) {
