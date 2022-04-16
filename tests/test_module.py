@@ -1,9 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
+
 from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.exceptions import UserError
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
@@ -116,8 +115,4 @@ class AccountProductTestCase(CompanyTestMixin, ModuleTestCase):
                 categories[1].account_expense_used
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        AccountProductTestCase))
-    return suite
+del ModuleTestCase
