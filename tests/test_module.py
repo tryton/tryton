@@ -1,19 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
+
 from collections import defaultdict
 from contextlib import contextmanager
 
-import trytond.tests.test_tryton
 from trytond.model import ModelStorage, ModelView
+from trytond.modules.company.model import CompanyMultiValueMixin
 from trytond.modules.currency.tests import add_currency_rate, create_currency
 from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-
-from ..model import CompanyMultiValueMixin
 
 
 def create_company(name='Dunder Mifflin', currency=None):
@@ -299,8 +297,4 @@ class CompanyTestCase(
                 self.assertEqual(root.employee, employee)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            CompanyTestCase))
-    return suite
+del ModuleTestCase
