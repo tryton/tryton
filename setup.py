@@ -103,10 +103,11 @@ setup(name=name,
         ],
     extras_require={
         'trytond': [get_require_version('trytond')],
+        'test': [
+            get_require_version('trytond'),
+            get_require_version('trytond_party'),
+            ],
         },
     dependency_links=dependency_links,
     zip_safe=True,
-    test_suite='proteus.tests',
-    tests_require=[get_require_version('trytond'),
-        get_require_version('trytond_party')],
     )
