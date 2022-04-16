@@ -143,6 +143,4 @@ setup(name=name,
     [trytond.modules]
     stock_location_sequence = trytond.modules.stock_location_sequence
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
