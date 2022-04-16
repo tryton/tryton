@@ -2,15 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
-import unittest
 from decimal import Decimal
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
@@ -76,8 +73,4 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
             Decimal(9))
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            ProductPriceListDatesTestCase))
-    return suite
+del ModuleTestCase
