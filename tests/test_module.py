@@ -1,13 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import doctest
-import unittest
+
 from unittest.mock import Mock, patch
 
-import trytond.tests.test_tryton
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class AccountStockAngloSaxonTestCase(ModuleTestCase):
@@ -50,18 +47,4 @@ class AccountStockAngloSaxonTestCase(ModuleTestCase):
                 [(moves[0], 1, 3), (moves[1], 1, 2)])
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        AccountStockAngloSaxonTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_stock_anglo_saxon.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_stock_anglo_saxon_with_drop_shipment.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
