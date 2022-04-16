@@ -3,10 +3,9 @@
 
 from trytond.pool import Pool
 
-from . import gis
-
 
 def register(name):
+    from . import gis
     Pool.register(
         gis.Point,
         module=name, type_='model')

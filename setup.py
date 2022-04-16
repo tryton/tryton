@@ -56,7 +56,6 @@ if local_version:
 
 requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
 
-tests_require = []
 dependency_links = []
 if minor_version % 2:
     dependency_links.append(
@@ -106,7 +105,4 @@ setup(name=name,
         },
     dependency_links=dependency_links,
     zip_safe=False,
-    test_suite='trytond.tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )

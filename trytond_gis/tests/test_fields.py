@@ -98,10 +98,3 @@ class TestGeographicFields(unittest.TestCase):
         self.assertEqual(len(points), 3)
         for point in points:
             self.assertIsNotNone(point.point)
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            TestGeographicFields))
-    return suite_
