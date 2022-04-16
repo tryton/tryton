@@ -124,6 +124,4 @@ setup(name=name,
     [trytond.modules]
     account_be = trytond.modules.account_be
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
