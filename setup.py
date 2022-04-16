@@ -139,6 +139,7 @@ setup(name=name,
     python_requires='>=3.7',
     install_requires=requires,
     extras_require={
+        'test': tests_require,
         'timezone': ['pytz'],
         },
     dependency_links=dependency_links,
@@ -147,7 +148,4 @@ setup(name=name,
     [trytond.modules]
     product_cost_history = trytond.modules.product_cost_history
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
