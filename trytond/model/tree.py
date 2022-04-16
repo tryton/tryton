@@ -3,6 +3,7 @@
 from itertools import chain
 
 from trytond.i18n import gettext
+from trytond.tools import escape_wildcard
 
 from .modelstorage import ValidationError
 
@@ -22,7 +23,8 @@ def tree(parent='parent', name='name', separator=None):
             def __setup__(cls):
                 super(TreeMixin, cls).__setup__()
                 field = getattr(cls, name)
-                clause = (name, 'not like', '%' + separator + '%')
+                clause = (
+                    name, 'not like', '%' + escape_wildcard(separator) + '%')
                 # If TreeMixin is after the class where name is defined in
                 # __mro__, it modifies the base field copied so it must ensure
                 # to add only once the domain
