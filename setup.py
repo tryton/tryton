@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     party_siret = trytond.modules.party_siret
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
