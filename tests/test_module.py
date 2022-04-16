@@ -1,14 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import doctest
-import unittest
+
 from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.modules.currency.tests import create_currency
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class CarrierPercentageTestCase(ModuleTestCase):
@@ -58,13 +55,4 @@ class CarrierPercentageTestCase(ModuleTestCase):
                 (price, currency.id))
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            CarrierPercentageTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_carrier_percentage_with_purchase_shipment_cost.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
