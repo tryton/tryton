@@ -1,14 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import unittest
 from decimal import Decimal
 from io import BytesIO, open
 from unittest.mock import Mock, patch
 
 from lxml import etree
 
-import trytond.tests.test_tryton
 from trytond.exceptions import UserError
 from trytond.modules.account.tests import create_chart
 from trytond.modules.account_payment_sepa.payment import CAMT054
@@ -430,8 +428,4 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertTrue(content)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            AccountPaymentSepaTestCase))
-    return suite
+del ModuleTestCase
