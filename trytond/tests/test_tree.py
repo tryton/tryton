@@ -27,6 +27,15 @@ class TreeMixinTestCase(unittest.TestCase):
             record.save()
 
     @with_transaction()
+    def test_name_domain_wildcard(self):
+        "Test name domain on tree with wildcard"
+        pool = Pool()
+        Tree = pool.get('test.tree_wildcard')
+
+        record = Tree(name="test 10%")
+        record.save()
+
+    @with_transaction()
     def test_rec_name(self):
         "Test rec_name"
         pool = Pool()
