@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     timesheet_cost = trytond.modules.timesheet_cost
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )

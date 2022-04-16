@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import datetime
-import unittest
 from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, create_employee, set_company)
 from trytond.pool import Pool
@@ -50,8 +49,4 @@ class TimesheetCostTestCase(CompanyTestMixin, ModuleTestCase):
                 self.assertEqual(employee.compute_cost_price(date), cost_price)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        TimesheetCostTestCase))
-    return suite
+del ModuleTestCase
