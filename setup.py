@@ -144,6 +144,4 @@ setup(name=name,
     account_invoice_line_standalone = \
         trytond.modules.account_invoice_line_standalone
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
