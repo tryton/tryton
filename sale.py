@@ -129,15 +129,9 @@ class Sale(metaclass=PoolMeta):
         product_ids = {l.product.id for l in filter(filter_line, self.lines)}
         product_ids = list(product_ids)
 
-        # The product must be available at least the day before
-        # for sale in the future
-        stock_date = sale_date
-        if sale_date > today:
-            stock_date -= datetime.timedelta(1)
-
         with transaction.set_context(
                 locations=[self.warehouse.id],
-                stock_date_end=stock_date,
+                stock_date_end=sale_date,
                 stock_assign=True):
             products = Product.browse(product_ids)
         quantities = {p: p.forecast_quantity for p in products}
