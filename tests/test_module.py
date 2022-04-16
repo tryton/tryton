@@ -1,16 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import doctest
-import unittest
+
 from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
@@ -106,31 +103,4 @@ class PurchaseTestCase(
                 self.assertEqual(prices, {product.id: Decimal(2500)})
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        PurchaseTestCase))
-    suite.addTests(doctest.DocFileSuite('scenario_purchase.rst',
-            tearDown=doctest_teardown, encoding='UTF-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-            checker=doctest_checker))
-    suite.addTests(doctest.DocFileSuite('scenario_purchase_empty.rst',
-            tearDown=doctest_teardown, encoding='UTF-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-            checker=doctest_checker))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_purchase_modify_header.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-            checker=doctest_checker))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_purchase_return_wizard.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-            checker=doctest_checker))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_purchase_copy_product_suppliers.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-            checker=doctest_checker))
-    return suite
+del ModuleTestCase
