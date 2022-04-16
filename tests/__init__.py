@@ -1,9 +1,2 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-
-try:
-    from trytond.modules.account_tax_non_deductible.tests.test_account_tax_non_deductible import suite  # noqa: E501, isort: skip
-except ImportError:
-    from .test_account_tax_non_deductible import suite
-
-__all__ = ['suite']
