@@ -1016,10 +1016,11 @@
                 this.on_change_with(fieldnames);
                 var callback = function() {
                     if (display) {
-                        return this.group.root_group.screens
-                            .forEach(function(screen) {
+                        return jQuery.when.apply(
+                            jQuery, this.group.root_group.screens
+                            .map(function(screen) {
                                 return screen.display();
-                            });
+                            }));
                     }
                 }.bind(this);
                 if (validate) {
