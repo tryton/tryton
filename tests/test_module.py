@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import unittest
 
 try:
@@ -7,12 +8,10 @@ try:
 except ImportError:
     schwifty = None
 
-import trytond.tests.test_tryton
 from trytond.model.exceptions import SQLConstraintError
+from trytond.modules.bank.exceptions import InvalidBIC
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-
-from ..exceptions import InvalidBIC
 
 
 class BankTestCase(ModuleTestCase):
@@ -157,8 +156,4 @@ class BankTestCase(ModuleTestCase):
         self.assertEqual(len(Bank.search([])), 1)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            BankTestCase))
-    return suite
+del ModuleTestCase
