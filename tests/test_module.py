@@ -1,8 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
-import trytond.tests.test_tryton
 from trytond.modules.company.tests import CompanyTestMixin
 from trytond.tests.test_tryton import ModuleTestCase
 
@@ -12,8 +10,4 @@ class CompanyWorkTimeTestCase(CompanyTestMixin, ModuleTestCase):
     module = 'company_work_time'
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        CompanyWorkTimeTestCase))
-    return suite
+del ModuleTestCase

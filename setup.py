@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     company_work_time = trytond.modules.company_work_time
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
