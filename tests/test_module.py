@@ -1,12 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import datetime
-import unittest
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
 
-import trytond.tests.test_tryton
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
@@ -319,8 +318,4 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(forecast_line.minimal_quantity, 1)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockForecastTestCase))
-    return suite
+del ModuleTestCase
