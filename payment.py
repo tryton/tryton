@@ -174,22 +174,11 @@ class Payment(metaclass=PoolMeta):
     @Workflow.transition('succeeded')
     def succeed(cls, payments):
         pool = Pool()
-        Move = pool.get('account.move')
         Line = pool.get('account.move.line')
 
         super(Payment, cls).succeed(payments)
 
-        moves = []
-        for payment in payments:
-            move = payment.create_clearing_move(
-                date=Transaction().context.get('clearing_date'))
-            if move:
-                moves.append(move)
-        if moves:
-            Move.save(moves)
-            cls.write(*sum((([m.origin], {'clearing_move': m.id})
-                        for m in moves), ()))
-
+        cls.set_clearing_move(payments)
         to_reconcile = []
         for payment in payments:
             if (payment.line
@@ -217,7 +206,21 @@ class Payment(metaclass=PoolMeta):
         else:
             return self.party
 
-    def create_clearing_move(self, date=None):
+    @classmethod
+    def set_clearing_move(cls, payments):
+        pool = Pool()
+        Move = pool.get('account.move')
+        moves = []
+        for payment in payments:
+            move = payment._get_clearing_move()
+            if move and not payment.clearing_move:
+                payment.clearing_move = move
+                moves.append(move)
+        if moves:
+            Move.save(moves)
+        cls.save(payments)
+
+    def _get_clearing_move(self, date=None):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
@@ -233,6 +236,8 @@ class Payment(metaclass=PoolMeta):
         if self.clearing_move:
             return self.clearing_move
 
+        if date is None:
+            date = Transaction().context.get('clearing_date')
         if date is None:
             with Transaction().set_context(company=self.company.id):
                 date = Date.today()
