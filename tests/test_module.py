@@ -1,17 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
-import doctest
-import unittest
-from decimal import Decimal
 
-import trytond.tests.test_tryton
+import datetime
+
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 DATES = [
     # purchase date, lead time, supply date
@@ -160,27 +156,4 @@ class StockSupplyTestCase(CompanyTestMixin, ModuleTestCase):
                     OrderPoint.search(clause), result, msg=clause)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        StockSupplyTestCase))
-    suite.addTests(doctest.DocFileSuite('scenario_stock_internal_supply.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_stock_internal_supply_lead_time.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_stock_supply_purchase_request.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_stock_internal_supply_overflow.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
