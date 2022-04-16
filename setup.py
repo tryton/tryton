@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     product_attribute = trytond.modules.product_attribute
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
