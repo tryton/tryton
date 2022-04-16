@@ -3,12 +3,9 @@
 
 import random
 import sys
-import unittest
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class WebShortenerTestCase(ModuleTestCase):
@@ -30,8 +27,4 @@ class WebShortenerTestCase(ModuleTestCase):
             self.assertEqual(expand(shorten(x)), x)
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            WebShortenerTestCase))
-    return suite
+del ModuleTestCase
