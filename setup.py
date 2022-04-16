@@ -138,13 +138,13 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.7',
     install_requires=requires,
+    extras_require={
+        'test': tests_require,
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
     purchase_amendment = trytond.modules.purchase_amendment
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
