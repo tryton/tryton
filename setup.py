@@ -74,6 +74,7 @@ tests_require = [get_require_version('proteus'),
     get_require_version('trytond_account_stock_continental'),
     get_require_version('trytond_account_stock_anglo_saxon'),
     get_require_version('trytond_purchase')]
+extras_require['test'] = tests_require
 dependency_links = []
 if minor_version % 2:
     dependency_links.append(
@@ -154,7 +155,4 @@ setup(name=name,
     [trytond.modules]
     purchase_shipment_cost = trytond.modules.purchase_shipment_cost
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
