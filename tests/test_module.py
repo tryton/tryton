@@ -1,15 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import doctest
-import unittest
-from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
@@ -92,12 +87,4 @@ class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
                 ['assigned', 'assigned'])
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockSplitTestCase))
-    suite.addTests(doctest.DocFileSuite('scenario_stock_split_shipment.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
