@@ -1,15 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 from decimal import Decimal
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase, activate_module
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import (
+    ModuleTestCase, activate_module, with_transaction)
 
 
 class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
@@ -222,8 +220,4 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(package.total_volume, 2)
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockShipmentMeasurementsTestCase))
-    return suite
+del ModuleTestCase
