@@ -1,8 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 
-import trytond.tests.test_tryton
 from trytond.modules.account_payment_sepa.tests import validate_file
 from trytond.modules.company.tests import CompanyTestMixin
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -25,8 +23,4 @@ class AccountPaymentSepaCFONBTestCase(CompanyTestMixin, ModuleTestCase):
             xsd='pain.008.001.02')
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            AccountPaymentSepaCFONBTestCase))
-    return suite
+del ModuleTestCase
