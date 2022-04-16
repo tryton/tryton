@@ -102,11 +102,10 @@ class Invoice(metaclass=PoolMeta):
         "Add payments from sales lines to pay"
         if payments is None:
             payments = []
-        else:
-            payments = payments[:]
+        payments = set(payments)
         for sale in self.sales:
-            payments.extend(sale.payments)
-
+            payments.update(sale.payments)
+        payments = list(payments)
         # Knapsack problem:
         # simple heuristic by trying to fill biggest amount first.
         payments.sort(key=lambda p: p.amount)
@@ -160,28 +159,18 @@ class Invoice(metaclass=PoolMeta):
     def _post(cls, invoices):
         pool = Pool()
         Payment = pool.get('account.payment')
-        Move = pool.get('account.move')
 
         super()._post(invoices)
 
-        payments = []
+        payments = set()
         for invoice in invoices:
-            payments.extend(invoice.add_payments())
+            payments.update(invoice.add_payments())
         if payments:
             Payment.save(payments)
         if hasattr(Payment, 'clearing_move'):
-            moves = []
-            for payment in payments:
-                if payment.state == 'succeeded':
-                    # Ensure clearing move is created as succeed may happen
-                    # before the payment has a line.
-                    move = payment.create_clearing_move()
-                    if move:
-                        moves.append(move)
-            if moves:
-                Move.save(moves)
-                Payment.write(*sum((([m.origin], {'clearing_move': m.id})
-                            for m in moves), ()))
-
+            # Ensure clearing move is created as succeed may happen
+            # before the payment has a line.
+            Payment.set_clearing_move(
+                [p for p in payments if p.state == 'succeeded'])
             for invoice in invoices:
                 invoice.reconcile_payments()
