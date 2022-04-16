@@ -5,9 +5,7 @@ import unittest
 
 from trytond import backend
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as tryton_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
@@ -294,7 +292,4 @@ class TestCase(ModuleTestCase):
                 ['A', 'C', 'B'])
 
 
-def suite():
-    suite = tryton_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCase))
-    return suite
+del ModuleTestCase
