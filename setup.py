@@ -140,6 +140,4 @@ setup(name=name,
     [trytond.modules]
     dashboard = trytond.modules.dashboard
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
