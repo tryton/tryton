@@ -140,6 +140,4 @@ setup(name=name,
     [trytond.modules]
     product_classification = trytond.modules.product_classification
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
