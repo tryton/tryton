@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     google_maps = trytond.modules.google_maps
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
