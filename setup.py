@@ -139,6 +139,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.7',
     install_requires=requires,
+    extras_require={
+        'test': tests_require,
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
@@ -146,7 +149,4 @@ setup(name=name,
     purchase_invoice_line_standalone = \
         trytond.modules.purchase_invoice_line_standalone
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
