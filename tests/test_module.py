@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 
 from trytond.config import config
 from trytond.exceptions import LoginException
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import with_transaction
 
 
@@ -117,8 +115,4 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         self.assertEqual(user_id, user.id)
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            AuthenticationSMSTestCase))
-    return suite
+del ModuleTestCase
