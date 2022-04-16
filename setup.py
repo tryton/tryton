@@ -143,6 +143,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'sparklines': ['pygal'],
+        'test': tests_require,
         },
     dependency_links=dependency_links,
     zip_safe=False,
@@ -150,7 +151,4 @@ setup(name=name,
     [trytond.modules]
     stock = trytond.modules.stock
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
