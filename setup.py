@@ -143,6 +143,7 @@ setup(name=name,
     python_requires='>=3.7',
     install_requires=requires,
     extras_require={
+        'test': tests_require,
     },
     dependency_links=dependency_links,
     zip_safe=False,
@@ -150,7 +151,4 @@ setup(name=name,
     [trytond.modules]
     sale_shipment_cost = trytond.modules.sale_shipment_cost
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
