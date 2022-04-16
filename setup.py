@@ -146,6 +146,7 @@ setup(name=name,
         'data': [
             'pycountry', 'forex-python', get_require_version('proteus')],
         'ecb_rate': ['forex-python'],
+        'test': tests_require,
         },
     dependency_links=dependency_links,
     zip_safe=False,
@@ -155,7 +156,4 @@ setup(name=name,
     [console_scripts]
     trytond_import_currencies = trytond.modules.currency.scripts.import_currencies:run [data]
     """,  # noqa: E501
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
