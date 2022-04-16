@@ -143,6 +143,4 @@ setup(name=name,
     [trytond.modules]
     account_invoice_history = trytond.modules.account_invoice_history
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
