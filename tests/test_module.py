@@ -1,24 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import datetime
-import doctest
-import unittest
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
 
-import trytond.tests.test_tryton
 from trytond.exceptions import UserError
+from trytond.modules.account.exceptions import FiscalYearDatesError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
 from trytond.modules.currency.tests import create_currency
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-
-from ..exceptions import FiscalYearDatesError
 
 
 def create_chart(company, tax=False, chart='account.account_template_root_en'):
@@ -1741,68 +1737,4 @@ class AccountTestCase(
                     1)
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        AccountTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_reconciliation.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_reconcile.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_reconcile_automatic.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_move_cancel.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_move_line_group.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_move_line_reschedule.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_move_template.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_reports.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_renew_fiscalyear.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_close_fiscalyear.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_active.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_tax_code.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
