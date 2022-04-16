@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import doctest
 import unittest
 
 try:
@@ -8,15 +7,12 @@ try:
 except ImportError:
     phonenumbers = None
 
-import trytond.tests.test_tryton
 from trytond.exceptions import UserError
 from trytond.model.exceptions import AccessError
+from trytond.modules.party.party import IDENTIFIER_TYPES
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-
-from ..party import IDENTIFIER_TYPES
 
 
 class PartyCheckEraseMixin:
@@ -496,22 +492,4 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                 [('A', 0), ('B', None)])
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(PartyTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_party_replace.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_party_erase.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_party_phone_number.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase

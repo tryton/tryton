@@ -142,6 +142,7 @@ setup(name=name,
     python_requires='>=3.7',
     install_requires=requires,
     extras_require={
+        'test': tests_require,
         'VIES': ['python-stdnum[SOAP]'],
         'phonenumbers': ['phonenumbers'],
         },
@@ -151,7 +152,4 @@ setup(name=name,
     [trytond.modules]
     party = trytond.modules.party
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
