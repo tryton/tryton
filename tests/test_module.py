@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 from decimal import Decimal
 
 from trytond.modules.account.tests import create_chart, get_fiscalyear
@@ -9,9 +8,7 @@ from trytond.modules.account_invoice.tests import set_invoice_sequences
 from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.currency.tests import add_currency_rate, create_currency
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 today = datetime.date.today()
 
@@ -529,8 +526,4 @@ class AccountEsSiiTestCase(ModuleTestCase):
             self.assertEqual(sii_invoice, [])
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            AccountEsSiiTestCase))
-    return suite
+del ModuleTestCase
