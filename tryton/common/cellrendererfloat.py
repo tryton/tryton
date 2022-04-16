@@ -36,7 +36,8 @@ class CellRendererFloat(CellRendererInteger):
                     end_pos = None
                 if self._can_insert_text(widget, text, start_pos, end_pos):
                     buffer_ = widget.get_buffer()
-                    buffer_.delete_text(start_pos, end_pos - start_pos)
+                    if end_pos:
+                        buffer_.delete_text(start_pos, end_pos - start_pos)
                     buffer_.insert_text(start_pos, text, len(text))
                     widget.set_position(widget.get_position() + len(text))
                 return True
