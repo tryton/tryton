@@ -143,6 +143,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'data': ['pycountry', get_require_version('proteus')],
+        'test': tests_require,
         'GeoNames': [get_require_version('proteus')],
         },
     dependency_links=dependency_links,
@@ -154,7 +155,4 @@ setup(name=name,
     trytond_import_countries = trytond.modules.country.scripts.import_countries:run [data]
     trytond_import_postal_codes = trytond.modules.country.scripts.import_postal_codes:run [GeoNames]
     """,  # noqa: E501
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
