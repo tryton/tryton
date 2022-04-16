@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import unittest
 
-import trytond.tests.test_tryton
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
@@ -160,8 +158,4 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
                         (repr(context), delay))
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            StockLotSLEDTestCase))
-    return suite
+del ModuleTestCase
