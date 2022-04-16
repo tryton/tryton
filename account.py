@@ -173,7 +173,7 @@ class Period(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') != 'standard',
             },
-        help="Check to create SII records for the invoices of in the period.")
+        help="Check to create SII records for the invoices in the period.")
 
     @classmethod
     def write(cls, *args):
