@@ -1,13 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime as dt
-import doctest
-import unittest
 
-import trytond.tests.test_tryton
+import datetime as dt
+
 from trytond.modules.account_asset.asset import normalized_delta
-from trytond.tests.test_tryton import (
-    ModuleTestCase, doctest_checker, doctest_teardown)
+from trytond.tests.test_tryton import ModuleTestCase
 
 
 class AccountAssetTestCase(ModuleTestCase):
@@ -16,7 +13,7 @@ class AccountAssetTestCase(ModuleTestCase):
     extras = ['purchase']
 
     def test_normalized_delta(self):
-        "Test normalized detal"
+        "Test normalized delta"
         for start, end, delta in [
                 (dt.date(2019, 1, 1), dt.date(2019, 12, 31),
                     dt.timedelta(days=364)),
@@ -42,21 +39,4 @@ class AccountAssetTestCase(ModuleTestCase):
                 msg='%s - %s' % (start, end))
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        AccountAssetTestCase))
-    suite.addTests(doctest.DocFileSuite('scenario_account_asset.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_asset_depreciated.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    suite.addTests(doctest.DocFileSuite('scenario_purchase_asset.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
-    return suite
+del ModuleTestCase
