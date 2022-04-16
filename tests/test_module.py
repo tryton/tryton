@@ -15,9 +15,7 @@ except ImportError:
 from trytond.modules.notification_email import \
     notification as notification_module
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 FROM = 'tryton@example.com'
@@ -405,8 +403,4 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
             get_email.assert_not_called()
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            NotificationEmailTestCase))
-    return suite
+del ModuleTestCase
