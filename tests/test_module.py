@@ -1,15 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 from unittest.mock import ANY, Mock, patch
 
 from trytond.config import config
 from trytond.modules.marketing_email import marketing as marketing_module
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 SUBSCRIBE_URL = 'http://www.example.com/subscribe'
@@ -158,8 +155,4 @@ class MarketingEmailTestCase(ModuleTestCase):
         self.assertEqual(len(urls), 2)
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            MarketingEmailTestCase))
-    return suite
+del ModuleTestCase
