@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     product_classification_taxonomic = trytond.modules.product_classification_taxonomic
     """,  # noqa: E501
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
