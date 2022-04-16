@@ -1,15 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import io
-import unittest
 import urllib.request
 
 import PIL.Image
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class ProductImageTestCase(ModuleTestCase):
@@ -44,8 +41,4 @@ class ProductImageTestCase(ModuleTestCase):
         self.assertEqual(img.size, (100, 100))
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            ProductImageTestCase))
-    return suite
+del ModuleTestCase
