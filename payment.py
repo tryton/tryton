@@ -431,10 +431,10 @@ class Payment(metaclass=PoolMeta):
             and self.sepa_return_reason_code
             and self.sepa_return_reason_information == '/RTYP/RJCT')
 
-    def create_clearing_move(self, date=None):
+    def _get_clearing_move(self, date=None):
         if not date:
             date = Transaction().context.get('date_value')
-        return super(Payment, self).create_clearing_move(date=date)
+        return super()._get_clearing_move(date=date)
 
     @classmethod
     def view_attributes(cls):
