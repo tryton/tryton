@@ -1,9 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
+
 from decimal import Decimal
 
-import trytond.tests.test_tryton
 from trytond.exceptions import UserWarning
 from trytond.modules.account.tests import create_chart, get_fiscalyear
 from trytond.modules.account_invoice.tests import set_invoice_sequences
@@ -124,8 +123,4 @@ class SaleCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(party.credit_amount, Decimal('150'))
 
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        SaleCreditLimitTestCase))
-    return suite
+del ModuleTestCase

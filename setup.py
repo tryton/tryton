@@ -142,6 +142,4 @@ setup(name=name,
     [trytond.modules]
     sale_credit_limit = trytond.modules.sale_credit_limit
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
