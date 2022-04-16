@@ -145,6 +145,4 @@ setup(name=name,
     [trytond.modules]
     timesheet = trytond.modules.timesheet
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
     )
