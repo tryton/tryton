@@ -1,3 +1,4 @@
+* Use unittest discover
 * Support notification message
 * Add option to define logging output location
 * Remove TreeViewControl

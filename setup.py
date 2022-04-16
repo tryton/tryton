@@ -160,6 +160,5 @@ dist = setup(name=name,
         },
     dependency_links=dependency_links,
     zip_safe=False,
-    test_suite='tryton.tests',
     **args
     )
