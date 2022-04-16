@@ -1,16 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import unittest
 from unittest.mock import ANY, patch
 
 from trytond.config import config
 from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.modules.web_user import user as user_module
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import suite as test_suite
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 VALIDATION_URL = 'http://www.example.com/validation'
 RESET_PASSWORD_URL = 'http://www.example.com/reset_password'
@@ -200,8 +197,4 @@ class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
         self.assertEqual(auth_user, user)
 
 
-def suite():
-    suite = test_suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            WebUserTestCase))
-    return suite
+del ModuleTestCase

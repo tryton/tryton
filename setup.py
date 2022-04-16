@@ -138,6 +138,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'BCrypt': ['bcrypt'],
+        'test': tests_require,
         'html2text': ['html2text'],
         },
     dependency_links=dependency_links,
@@ -146,7 +147,4 @@ setup(name=name,
     [trytond.modules]
     web_user = trytond.modules.web_user
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
-    tests_require=tests_require,
     )
