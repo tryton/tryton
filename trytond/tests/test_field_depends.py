@@ -263,7 +263,3 @@ class FieldDependsTestCase(unittest.TestCase):
                 ]:
             with self.subTest(value=value):
                 self.assertEqual(fields.get_eval_fields(value), result)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldDependsTestCase)

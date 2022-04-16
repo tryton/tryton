@@ -429,7 +429,3 @@ class TreeMixinTestCase(unittest.TestCase):
         with self.assertRaises(RecursionError):
             parent1.parents = [child]
             parent1.save()
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(TreeMixinTestCase)

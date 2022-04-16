@@ -415,15 +415,3 @@ class RecordTestCase(unittest.TestCase):
         rec = Record(foo='baz')
 
         self.assertEqual(list(rec._values()), [('baz')])
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite_ = unittest.TestSuite()
-    for testcase in [
-            ModelTestCase,
-            ModelTranslationTestCase,
-            RecordTestCase,
-            ]:
-        suite_.addTests(func(testcase))
-    return suite_

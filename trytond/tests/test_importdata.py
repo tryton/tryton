@@ -586,7 +586,3 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(count, 1)
         self.assertEqual(len(record.one2many), 2)
         self.assertEqual([t.name for t in record.one2many], ["bar", "baz"])
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ImportDataTestCase)

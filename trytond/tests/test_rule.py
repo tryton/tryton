@@ -681,10 +681,3 @@ class ModelRuleTestCase(unittest.TestCase):
 
         with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRuleModel.read([test.id], ['name'])
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(
-        unittest.TestLoader().loadTestsFromTestCase(ModelRuleTestCase))
-    return suite_

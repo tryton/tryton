@@ -673,13 +673,3 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
         "Test order translated"
         pool = Pool()
         self._test_order(pool.get('test.char_translate'))
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite_.addTests(loader.loadTestsFromTestCase(FieldCharTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldCharTranslatedTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldCharUnaccentedTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldCharSimilarityTestCase))
-    return suite_

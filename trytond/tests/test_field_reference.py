@@ -524,7 +524,3 @@ class FieldReferenceTestCase(unittest.TestCase):
                     'reference': str(target),
                     }])
         self.assertEqual(reference.reference, target)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldReferenceTestCase)

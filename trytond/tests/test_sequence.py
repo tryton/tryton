@@ -149,12 +149,3 @@ class SequenceStrictTestCase(SequenceTestCase):
     def get_model():
         pool = Pool()
         return pool.get('ir.sequence.strict')
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            SequenceTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            SequenceStrictTestCase))
-    return suite_

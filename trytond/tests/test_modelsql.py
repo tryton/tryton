@@ -1350,12 +1350,3 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         self.assertIn(record.id, cache)
         self.assertEqual(cache[record.id]['name'], "Foo")
         self.assertNotIn('_timestamp', cache[record.id])
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            ModelSQLTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            ModelSQLTranslationTestCase))
-    return suite_

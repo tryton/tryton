@@ -65,8 +65,3 @@ def register():
             test_module = test_ep.load()
             if hasattr(test_module, 'register'):
                 test_module.register('tests')
-
-
-def suite():
-    from .test_tryton import all_suite
-    return all_suite()

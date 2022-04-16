@@ -975,13 +975,6 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(extract_reference_models(domain, 'y'), set())
 
 
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in [ToolsTestCase,
-            StringPartitionedTestCase,
-            ImmutableDictTestCase,
-            DomainInversionTestCase]:
-        suite.addTests(func(testcase))
-    suite.addTest(doctest.DocTestSuite(decimal_))
-    return suite
+def load_tests(loader, tests, pattern):
+    tests.addTest(doctest.DocTestSuite(decimal_))
+    return tests

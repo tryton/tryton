@@ -147,7 +147,3 @@ class ModelSingletonTestCase(unittest.TestCase):
 
         Singleton.delete([singleton])
         self.assertEqual(singleton2.name, 'test')
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ModelSingletonTestCase)

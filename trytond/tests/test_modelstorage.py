@@ -794,11 +794,3 @@ class EvalEnvironmentTestCase(unittest.TestCase):
             record = Model(record.id)
 
             self.assertEqual(record.name, "Test")
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite_.addTests(loader.loadTestsFromTestCase(ModelStorageTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(EvalEnvironmentTestCase))
-    return suite_

@@ -37,13 +37,18 @@ from trytond.wizard import StateAction, StateView
 
 __all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
-    'doctest_setup', 'doctest_teardown', 'doctest_checker',
-    'suite', 'all_suite', 'modules_suite']
+    'doctest_setup', 'doctest_teardown', 'doctest_checker']
 
 Pool.start()
 USER = 1
 CONTEXT = {}
-DB_NAME = os.environ['DB_NAME']
+if 'DB_NAME' in os.environ:
+    DB_NAME = os.environ['DB_NAME']
+elif backend.name == 'sqlite':
+    DB_NAME = ':memory:'
+else:
+    DB_NAME = 'test_' + str(int(time.time()))
+os.environ['DB_NAME'] = DB_NAME
 DB_CACHE = os.environ.get('DB_CACHE')
 Pool.test = True
 
@@ -1005,64 +1010,8 @@ class TestSuite(unittest.TestSuite):
         return result
 
 
-def suite():
+def load_tests(loader, tests, pattern):
     '''
     Return test suite for other modules
     '''
     return TestSuite()
-
-
-def all_suite(modules=None):
-    '''
-    Return all tests suite of current module
-    '''
-    suite_ = suite()
-
-    def add_tests(filename, module_prefix):
-        if not (filename.startswith('test_') and filename.endswith('.py')):
-            return
-        if modules and fn[:-3] not in modules:
-            return
-        modname = module_prefix + '.' + filename[:-3]
-        __import__(modname)
-        module = sys.modules[modname]
-        suite_.addTest(module.suite())
-
-    for fn in os.listdir(os.path.dirname(__file__)):
-        add_tests(fn, 'trytond.tests')
-    if pkg_resources is not None:
-        entry_points = pkg_resources.iter_entry_points('trytond.tests')
-        for test_entry_point in entry_points:
-            base_location = os.path.join(
-                test_entry_point.dist.location,
-                *test_entry_point.module_name.split('.'))
-            for fn in os.listdir(base_location):
-                add_tests(fn, test_entry_point.module_name)
-
-    return suite_
-
-
-def modules_suite(modules=None, doc=True):
-    '''
-    Return all tests suite of all modules
-    '''
-    if modules:
-        suite_ = suite()
-    else:
-        suite_ = all_suite()
-    from trytond.modules import create_graph, get_module_list, import_module
-    graph = create_graph(get_module_list())
-    for node in graph:
-        module = node.name
-        if modules and module not in modules:
-            continue
-        test_module = 'trytond.modules.%s.tests' % module
-        try:
-            test_mod = import_module(module, test_module)
-        except ImportError:
-            continue
-        for test in test_mod.suite():
-            if isinstance(test, doctest.DocTestCase) and not doc:
-                continue
-            suite_.addTest(test)
-    return suite_

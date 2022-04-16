@@ -870,7 +870,3 @@ class PYSONTestCase(unittest.TestCase):
     def test_eval_false(self):
         "Test PYSON.eval JS false"
         self.assertEqual(eval('false', pyson.CONTEXT), False)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(PYSONTestCase)

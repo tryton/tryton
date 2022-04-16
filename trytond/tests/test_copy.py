@@ -315,11 +315,3 @@ class CopyTranslationTestCase(TranslationTestCase):
         with Transaction().set_context(language=self.other_language):
             record_copies = Translate.browse(record_copies)
             self.assertEqual({r.name for r in record_copies}, {"Bar"})
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(CopyTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            CopyTranslationTestCase))
-    return suite_

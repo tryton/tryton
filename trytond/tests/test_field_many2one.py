@@ -431,13 +431,3 @@ class FieldMany2OneMPTTTestCase(FieldMany2OneTreeTestCase):
 class FieldMany2OnePathTestCase(FieldMany2OneTreeTestCase):
     "Test Field Many2One Path"
     model_name = 'test.many2one_path'
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneTreeTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OneMPTTTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2OnePathTestCase))
-    return suite_

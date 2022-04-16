@@ -317,7 +317,3 @@ class FieldOne2OneTestCase(unittest.TestCase):
             One2One.write([one2one2], {
                     'one2one': target.id,
                     })
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldOne2OneTestCase)

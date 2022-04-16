@@ -78,7 +78,3 @@ class ResourceTestCase(unittest.TestCase):
 
         note = Note(note.id)
         self.assertEqual(user_note.write_date, write_date)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ResourceTestCase)

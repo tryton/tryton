@@ -339,7 +339,3 @@ class UserTestCase(unittest.TestCase):
                         self.assertEqual(
                             User.get_login('user', {'device_cookie': value}),
                             result)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(UserTestCase)

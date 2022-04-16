@@ -724,12 +724,3 @@ class FieldMany2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
 
     def Many2ManyTarget(self):
         return Pool().get('test.many2many_reference.target')
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite_.addTests(loader.loadTestsFromTestCase(FieldMany2ManyTestCase))
-    suite_.addTests(
-        loader.loadTestsFromTestCase(FieldMany2ManyReferenceTestCase))
-    return suite_

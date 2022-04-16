@@ -653,12 +653,3 @@ class FieldFullTextTestCase(unittest.TestCase):
             self.assertListEqual(
                 Model.search([], order=[('full_text', 'DESC')]),
                 [fat_cat, sad_cat, dog])
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite_.addTests(loader.loadTestsFromTestCase(FieldTextTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldTextTranslatedTestCase))
-    suite_.addTests(loader.loadTestsFromTestCase(FieldFullTextTestCase))
-    return suite_

@@ -404,7 +404,3 @@ class ExportDataTestCase(unittest.TestCase):
             ExportData.export_data_domain(
                 [('boolean', '=', True)], ['boolean']),
             [[True]])
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ExportDataTestCase)

@@ -286,17 +286,3 @@ class LRUDictTransactionTestCase(unittest.TestCase):
 
         self.assertEqual(lru_dict, {})
         self.assertEqual(lru_dict.counter, Transaction().counter)
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in [
-            CacheTestCase,
-            MemoryCacheTestCase,
-            MemoryCacheChannelTestCase,
-            LRUDictTestCase,
-            LRUDictTransactionTestCase,
-            ]:
-        suite.addTests(func(testcase))
-    return suite

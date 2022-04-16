@@ -255,7 +255,3 @@ class FieldBooleanTestCase(unittest.TestCase):
                 })
 
         self.assertEqual(boolean.boolean, True)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldBooleanTestCase)

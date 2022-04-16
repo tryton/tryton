@@ -110,10 +110,3 @@ class WSGIAppTestCase(unittest.TestCase):
 
         self.assertEqual(next(response.response), b'baz')
         self.assertEqual(response.status, "418 I'M A TEAPOT")
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(
-        unittest.TestLoader().loadTestsFromTestCase(WSGIAppTestCase))
-    return suite_

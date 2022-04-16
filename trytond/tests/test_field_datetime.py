@@ -487,7 +487,3 @@ class FieldDateTimeTestCase(unittest.TestCase):
             DateTime.write([datetime_], {
                     'datetime': datetime.date(2009, 1, 1),
                     })
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldDateTimeTestCase)

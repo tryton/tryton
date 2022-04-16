@@ -59,10 +59,3 @@ for i, (in_, out) in enumerate([
             ]):
     test_method = create_test_format_timedelta(i, in_, out)
     setattr(ReportTestCase, test_method.__name__, test_method)
-
-
-def suite():
-    suite = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite.addTests(loader.loadTestsFromTestCase(ReportTestCase))
-    return suite

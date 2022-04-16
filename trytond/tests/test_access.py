@@ -1030,20 +1030,4 @@ class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
             TestAccess.write([record], {'field2': 'test'})
 
 
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessReadTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessWriteTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessCreateTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessDeleteTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessModelTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelFieldAccessReadTestCase))
-    suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelFieldAccessWriteTestCase))
-    return suite_
+del _ModelAccessTestCase, _ModelFieldAccessTestCase

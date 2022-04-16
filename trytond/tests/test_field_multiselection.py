@@ -345,12 +345,3 @@ class FieldMultiSelectionJSONBTestCase(FieldMultiSelectionTestCase):
                         'ALTER COLUMN %s TYPE json USING %s::json' % (
                             Model._table, name, name))
         Transaction().commit()
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in [FieldMultiSelectionTestCase,
-            FieldMultiSelectionJSONBTestCase]:
-        suite.addTests(func(testcase))
-    return suite

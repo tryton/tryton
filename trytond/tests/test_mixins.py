@@ -146,11 +146,3 @@ class DeactivableMixinTestCase(unittest.TestCase):
                 ([('active', 'in', [True, False])], [active, inactive]),
                 ]:
             self.assertListEqual(Deactivable.search(domain), founds)
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in [UrlTestCase, MixinTestCase, DeactivableMixinTestCase]:
-        suite.addTests(func(testcase))
-    return suite

@@ -475,7 +475,3 @@ class FieldTimeDeltaTestCase(unittest.TestCase):
         self.assertEqual(
             timedelta.timedelta,
             datetime.timedelta(seconds=42.5))
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldTimeDeltaTestCase)

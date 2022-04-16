@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import doctest
-import unittest
 
 from trytond.model import descriptors
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(doctest.DocTestSuite(descriptors))
-    return suite
+def load_tests(loader, tests, pattern):
+    tests.addTest(doctest.DocTestSuite(descriptors))
+    return tests

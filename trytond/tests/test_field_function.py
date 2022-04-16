@@ -86,7 +86,3 @@ class FieldFunctionTestCase(unittest.TestCase):
             Model.read([record.id], ['function1', 'function2'])
 
             self.assertEqual(getter.call_count, 1)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldFunctionTestCase)

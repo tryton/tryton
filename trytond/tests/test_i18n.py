@@ -106,10 +106,3 @@ class I18nTestCase(unittest.TestCase):
 
         self.assertIsInstance(lazy, LazyString)
         self.assertEqual(str(lazy), "Message")
-
-
-def suite():
-    suite = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite.addTests(loader.loadTestsFromTestCase(I18nTestCase))
-    return suite

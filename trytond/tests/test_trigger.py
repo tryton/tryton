@@ -479,7 +479,3 @@ class TriggerTestCase(unittest.TestCase):
 
         # Restart the cache on the get_triggers method of ir.trigger
         Trigger._get_triggers_cache.clear()
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(TriggerTestCase)

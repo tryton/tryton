@@ -497,7 +497,3 @@ class HistoryTestCase(unittest.TestCase):
 
             self.assertEqual({r.value for r in records}, {1})
             self.assertEqual(len(records), n)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(HistoryTestCase)

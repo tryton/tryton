@@ -30,11 +30,3 @@ class FieldContextTestCase(unittest.TestCase):
         parent.save()
         self.assertEqual(parent.child._context['name'], 'bar')
         self.assertEqual(parent.child._context['rec_name'], '')
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in (FieldContextTestCase,):
-        suite.addTests(func(testcase))
-    return suite

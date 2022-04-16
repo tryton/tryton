@@ -526,7 +526,3 @@ class FieldNumericTestCase(unittest.TestCase):
             Numeric.write([numeric], {
                     'digits': 0,
                     })
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldNumericTestCase)

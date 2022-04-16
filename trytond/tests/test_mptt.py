@@ -95,7 +95,3 @@ class MPTTTestCase(TreeTestCaseMixin, unittest.TestCase):
                                     }])],
                     }])
         self.check_tree()
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(MPTTTestCase)

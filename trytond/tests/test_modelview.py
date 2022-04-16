@@ -689,11 +689,3 @@ class ModelView(unittest.TestCase):
         self.assertIn('bar', writeable_fields)
         self.assertIn('baz', writeable_fields)
         self.assertIn('quux', writeable_fields)
-
-
-def suite():
-    func = unittest.TestLoader().loadTestsFromTestCase
-    suite = unittest.TestSuite()
-    for testcase in (ModelView,):
-        suite.addTests(func(testcase))
-    return suite

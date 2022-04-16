@@ -112,7 +112,3 @@ class SendmailTestCase(unittest.TestCase):
 
         server.sendmail.assert_not_called()
         self.assertFalse(datamanager.queue)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(SendmailTestCase)

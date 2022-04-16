@@ -1,3 +1,4 @@
+* Use unittest discover
 * Add module tutorial
 * Test all XML view and SVG icon files are used
 * Add notification message

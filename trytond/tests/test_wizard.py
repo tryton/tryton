@@ -152,7 +152,3 @@ class WizardTestCase(unittest.TestCase):
             with Transaction().set_context(
                     active_model='test.test_wizard.start'):
                 Wizard.execute(session_id, {}, start_state)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(WizardTestCase)

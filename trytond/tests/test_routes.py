@@ -195,7 +195,3 @@ class RoutesTestCase(unittest.TestCase):
         self.assertEqual(response_std.status_code, 200)
         self.assertEqual(response_locale.status_code, 200)
         self.assertNotEqual(response_std.data, response_locale.data)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(RoutesTestCase)

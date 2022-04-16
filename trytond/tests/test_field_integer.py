@@ -344,7 +344,3 @@ class FieldIntegerTestCase(unittest.TestCase):
             Integer.write([integer], {
                     'integer': 'non integer',
                     })
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldIntegerTestCase)

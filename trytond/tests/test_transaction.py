@@ -121,7 +121,3 @@ class TransactionTestCase(unittest.TestCase):
         dm.tpc_vote.assert_not_called()
         dm.tpc_abort.assert_called_once_with(transaction)
         dm.tpc_finish.assert_not_called()
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(TransactionTestCase)

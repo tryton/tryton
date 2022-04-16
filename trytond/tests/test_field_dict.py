@@ -928,7 +928,3 @@ class FieldDictUnaccentedTestCase(ExtensionTestCase):
                 ])
 
         self.assertListEqual(dicts, [dict_])
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldDictTestCase)

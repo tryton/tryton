@@ -32,7 +32,3 @@ class PathTestCase(TreeTestCaseMixin, unittest.TestCase):
         pool = Pool()
         Path = pool.get(self.model_name)
         Path._rebuild_path('parent')
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(PathTestCase)

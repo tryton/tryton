@@ -242,7 +242,3 @@ class FieldSelectionTestCase(unittest.TestCase):
                     }])
 
         self.assertEqual(selection.dyn_select_static_string, '1')
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldSelectionTestCase)

@@ -202,7 +202,3 @@ class FieldBinaryTestCase(unittest.TestCase):
 
         self.assertEqual(binary.binary, None)
         self.assertEqual(binary.binary_id, None)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldBinaryTestCase)

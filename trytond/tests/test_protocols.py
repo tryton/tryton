@@ -118,10 +118,3 @@ class XMLTestCase(DumpsLoadsMixin, unittest.TestCase):
         result, _ = client.loads(s)
         result, = result
         self.assertEqual(result, Decimal('3.141592653589793'))
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(JSONTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(XMLTestCase))
-    return suite_

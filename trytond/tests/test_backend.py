@@ -171,7 +171,3 @@ class BackendTestCase(unittest.TestCase):
                     cursor.execute(*Select([DateTrunc(type_, date)]))
                     value, = cursor.fetchone()
                     self.assertEqual(str(value), str(result))
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(BackendTestCase)

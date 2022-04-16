@@ -94,7 +94,3 @@ class FileStoreTestCase(unittest.TestCase):
         self.assertNotEqual(id1, id2)
         self.assertEqual(filestore.get(id1, prefix='test'), data1)
         self.assertEqual(filestore.get(id2, prefix='test'), data2)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FileStoreTestCase)

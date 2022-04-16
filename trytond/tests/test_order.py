@@ -32,8 +32,3 @@ class SequenceOrderedMixinTestCase(unittest.TestCase):
         models.insert(0, model)
 
         self.assertListEqual(Order.search([]), models)
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(
-        SequenceOrderedMixinTestCase)

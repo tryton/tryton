@@ -139,12 +139,3 @@ class BusTestCase(unittest.TestCase):
                     },
                 'channel': 'user:1',
                 })
-
-
-def suite():
-    suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            MessageQueueTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            BusTestCase))
-    return suite_

@@ -42,71 +42,66 @@ module.
             "Test method"
             self.assertTrue(True)
 
+    del ModuleTestCase
 
-Tests from this modules are found by the function
-``trytond.modules.my_module.tests.suite`` which must return a
-``unittest.TestSuite`` containing all the module's tests. This function is
-called by the Tryton test runner script to gather all the tests.
 
-A typical ``suite()`` function thus looks like this:
-
-.. code-block:: python
-
-    def suite():
-        suite = trytond.tests.test_tryton.suite()
-        suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            MyModuleTestCase))
-        suite.addTests(doctest.DocFileSuite('scenario_my_module.rst',
-                tearDown=doctest_teardown, encoding='utf-8',
-                optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
-                checker=doctest_checker))
-        return suite
+.. note::
+   The ``ModuleTestCase`` must be deleted to not be discovered by ``unittest``
+   as it fails to run without module declaration.
 
 .. _doctests: https://docs.python.org/library/doctest.html
 .. _unittest: https://docs.python.org/library/unittest.html
 
+Running trytond's tests
+-----------------------
+
+You can run a specific test file using ``unittest`` command line like:
+
+.. code-block:: console
+
+   $ python -m unittest trytond.tests.test_tools
+
+To run all trytond's tests using discover of ``unittest`` with:
+
+.. code-block:: console
+
+   $ python -m unittest discover -s trytond.tests
+
+To run all modules tests:
+
+.. code-block:: console
+
+   $ python -m unittest discover -s trytond.modules
+
+
 Running your module's tests
 ---------------------------
 
-Tryton provides the script ``trytond/tests/run-tests.py``, just invoke it like
-that:
+You just need to replace the directory path with the one of your module:
 
 .. code-block:: console
 
-    $ python -m trytond.tests.run-tests -m my_module
+   $ python -m unittest discover -s trytond.modules.my_module.tests
 
-Testing trytond
+Extending trytond's tests
+-------------------------
+
+Python modules extending ``trytond`` core can define additional classes to
+register in ``tests`` module.
+Those modules must create an entry point ``trytond.tests`` which defines a
+``register`` function to be called with the module name.
+
+Testing options
 ~~~~~~~~~~~~~~~
 
-Extending tests
----------------
+Tryton runs tests against the configured database backend.
+You can specify the name of the database to use via the environment variable
+``DB_NAME``.
+Otherwise it generates a random name.
 
-Python modules extending ``trytond`` core can define additional tests that
-should be added to the existing ones.
+A configuration file can be used by setting its path to the environment
+variable ``TRYTOND_CONFIG``.
 
-Those modules must create an entry point ``trytond.tests``.
-Any file in the module path specified by this entry point starting with
-``test_`` and ending by ``.py`` will be imported.
-Each of those file must define a ``suite()`` function that returns a
-``unittest.TestSuite`` that will be included in the ``trytond`` test suite.
-If the module from the entry point defines a ``register`` function it will be
-called when registering the test-specific models in the
-:class:`~trytond.pool.Pool`.
-
-Running trytond tests
----------------------
-
-You should use the script ``trytond/tests/run-tests.py`` by invoking it like
-that:
-
-.. code-block:: console
-
-    $ python -m trytond.tests.run-tests
-
-You can use a different configuration file to check ``trytond`` against
-different backend:
-
-.. code-block:: console
-
-    $ python -m trytond.tests.run-tests -c <config>
-
+The tests recreate frequently the database. You can accelerate the creation by
+setting a cache directory in ``DB_CACHE`` environment which will be used to
+dump and restore initial databases backups.

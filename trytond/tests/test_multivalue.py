@@ -156,7 +156,3 @@ class MultiValueTestCase(unittest.TestCase):
 
         read, = ModelMultiValue.read([record.id], ['value'])
         self.assertEqual(read['value'], "getter")
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(MultiValueTestCase)

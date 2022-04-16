@@ -85,5 +85,4 @@ class ResTestCase(ModuleTestCase):
         self.assertFalse(Warning_.check('test'))
 
 
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ResTestCase)
+del ModuleTestCase

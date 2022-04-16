@@ -101,7 +101,3 @@ class UnionMixinTestCase(unittest.TestCase):
         child_names = sorted((r.name for r in uroots[2].childs))
         self.assertEqual(child_names, ['Child1', 'Child2'])
         self.assertEqual(uroots[3].childs[0].name, 'Child3')
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(UnionMixinTestCase)

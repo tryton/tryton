@@ -455,7 +455,3 @@ class FieldFloatTestCase(unittest.TestCase):
             Float.write([float_], {
                     'digits': 0,
                     })
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldFloatTestCase)

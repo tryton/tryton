@@ -141,7 +141,3 @@ class RPCTestCase(unittest.TestCase):
         self.assertEqual(
             rpc_with_access.convert(None, {}),
             ([], {}, {'_check_access': True}, None))
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(RPCTestCase)

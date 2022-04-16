@@ -470,7 +470,3 @@ class FieldDateTestCase(unittest.TestCase):
         result, = cursor.fetchone()
 
         self.assertEqual(result, datetime.date(2021, 10, 15))
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(FieldDateTestCase)

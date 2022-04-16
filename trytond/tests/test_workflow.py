@@ -29,7 +29,3 @@ class WorkflowTestCase(unittest.TestCase):
         wkf.save()
         Workflowed.run([wkf])
         self.assertEqual(wkf.state, 'end')
-
-
-def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(WorkflowTestCase)
