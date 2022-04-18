@@ -32,7 +32,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         config.add_section('authentication_sms')
         config.set(
             'authentication_sms', 'function',
-            'trytond.modules.authentication_sms.tests.send_sms')
+            '.'.join([send_sms.__module__, send_sms.__qualname__]))
         self.addCleanup(config.remove_section, 'authentication_sms')
         del sms_queue[:]
 
