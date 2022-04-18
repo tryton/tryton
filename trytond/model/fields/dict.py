@@ -14,7 +14,8 @@ from .field import Field, SQL_OPERATORS
 
 # Use canonical form
 dumps = partial(
-    json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
+    json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True,
+    ensure_ascii=False)
 
 
 class ImmutableDict(dict):
