@@ -16,7 +16,8 @@ from .field import SQL_OPERATORS, Field
 
 # Use canonical form
 dumps = partial(
-    json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
+    json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True,
+    ensure_ascii=False)
 
 
 class Dict(Field):
