@@ -141,7 +141,7 @@ setup(name=name,
     python_requires='>=3.7',
     install_requires=requires,
     extras_require={
-        'test': 'tests_require',
+        'test': tests_require,
         },
     dependency_links=dependency_links,
     zip_safe=False,
