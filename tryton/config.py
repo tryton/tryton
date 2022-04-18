@@ -22,8 +22,9 @@ def get_config_dir():
             appdata = str(appdata, sys.getfilesystemencoding())
         return os.path.join(appdata, '.config', 'tryton',
                 __version__.rsplit('.', 1)[0])
-    return os.path.join(os.environ['HOME'], '.config', 'tryton',
-            __version__.rsplit('.', 1)[0])
+    config_path = os.getenv('XDG_CONFIG_HOME', os.path.join('~', '.config'))
+    return os.path.expanduser(
+        os.path.join(config_path, 'tryton', __version__.rsplit('.', 1)[0]))
 
 
 if not os.path.isdir(get_config_dir()):
