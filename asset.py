@@ -710,6 +710,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         default.setdefault('number', None)
         default.setdefault('supplier_invoice_line', None)
         default.setdefault('move')
+        default.setdefault('revisions', [])
         return super(Asset, cls).copy(assets, default=default)
 
     @classmethod
