@@ -4,7 +4,7 @@ User Role Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
 
@@ -51,7 +51,7 @@ Set the role to the user::
 Start the role in the future::
 
     >>> user_role, = user.roles
-    >>> user_role.from_date = datetime.date.today() + datetime.timedelta(days=1)
+    >>> user_role.from_date = dt.datetime.now() + dt.timedelta(days=1)
     >>> user_role.to_date = None
     >>> user.save()
 
@@ -62,7 +62,7 @@ End the role in the past::
 
     >>> user_role, = user.roles
     >>> user_role.from_date = None
-    >>> user_role.to_date = datetime.date.today() - datetime.timedelta(days=1)
+    >>> user_role.to_date = dt.datetime.now() - dt.timedelta(days=1)
     >>> user.save()
 
     >>> len(user.groups)
@@ -71,8 +71,8 @@ End the role in the past::
 Start the role in the past and end in the future::
 
     >>> user_role, = user.roles
-    >>> user_role.from_date = datetime.date.today() - datetime.timedelta(days=1)
-    >>> user_role.to_date = datetime.date.today() + datetime.timedelta(days=1)
+    >>> user_role.from_date = dt.datetime.now() - dt.timedelta(days=1)
+    >>> user_role.to_date = dt.datetime.now() + dt.timedelta(days=1)
     >>> user.save()
 
     >>> len(user.groups)

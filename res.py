@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
+import datetime as dt
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
@@ -63,10 +63,8 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def sync_roles(cls, users=None, date=None):
-        pool = Pool()
-        Date = pool.get('ir.date')
         if date is None:
-            date = Date.today()
+            date = dt.datetime.now()
         if users is None:
             users = cls.search([])
         to_write = []
@@ -92,14 +90,14 @@ class UserRole(ModelSQL, ModelView):
     user = fields.Many2One(
         'res.user', "User", ondelete='CASCADE', select=True, required=True)
     role = fields.Many2One('res.role', "Role", required=True)
-    from_date = fields.Date(
+    from_date = fields.DateTime(
         "From Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
                 ('from_date', '<=', Eval('to_date', None)),
                 ()),
             ])
-    to_date = fields.Date(
+    to_date = fields.DateTime(
         "To Date",
         domain=[
             If(Eval('from_date') & Eval('to_date'),
@@ -114,6 +112,6 @@ class UserRole(ModelSQL, ModelView):
         cls._order.insert(1, ('to_date', 'ASC NULLS FIRST'))
 
     def valid(self, date):
-        from_date = self.from_date or datetime.date.min
-        to_date = self.to_date or datetime.date.max
+        from_date = self.from_date or dt.datetime.min
+        to_date = self.to_date or dt.datetime.max
         return from_date <= date <= to_date
