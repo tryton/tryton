@@ -245,7 +245,7 @@
     };
 
     Sao.common.parse_time = function(format, value) {
-        if (jQuery.isEmptyObject(value)) {
+        if (!value) {
             return null;
         }
         var getNumber = function(pattern) {
