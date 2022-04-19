@@ -1775,10 +1775,8 @@
                         value = null;
                     }
                 } else if (value.isDate) {
-                    current_value = this.get(record);
-                    if (current_value) {
-                        value = Sao.DateTime.combine(value, current_value);
-                    }
+                    current_value = this.get(record) || Sao.Time();
+                    value = Sao.DateTime.combine(value, current_value);
                 }
             }
             Sao.field.DateTime._super.set_client.call(this, record, value,
