@@ -702,6 +702,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('lines', [])
+        default.setdefault('update_moves', [])
         default.setdefault('number', None)
         default.setdefault('supplier_invoice_line', None)
         default.setdefault('move')
