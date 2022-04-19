@@ -2107,20 +2107,20 @@
             }
             if (mode == 'list values') {
                 var context = this.get_context(record);
-                var field_names = {};
+                let field_names = new Set();
                 for (const val of value) {
-                    for (var fieldname of val) {
+                    for (const fieldname in val) {
                         if (!(fieldname in group.model.fields) &&
                                 (!~fieldname.indexOf('.'))) {
-                            field_names[fieldname] = true;
+                            field_names.add(fieldname);
                         }
                     }
                 }
-                if (!jQuery.isEmptyObject(field_names)) {
+                if (field_names.size) {
                     var args = {
                         'method': 'model.' + this.description.relation +
                             '.fields_get',
-                        'params': [Object.keys(field_names), context]
+                        'params': [Array.from(field_names), context]
                     };
                     var fields;
                     try {
