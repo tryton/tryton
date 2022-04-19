@@ -110,7 +110,8 @@ class ViewListForm(View):
     @property
     def selected_records(self):
         selected_rows = self.listbox.get_selected_rows()
-        return [self.group[r.get_index()] for r in selected_rows]
+        return [
+            self._model.get_item(r.get_index()).record for r in selected_rows]
 
     def group_list_changed(self, group, signal):
         action = signal[0]
@@ -132,7 +133,7 @@ class ViewListForm(View):
     def _row_selected(self, listbox, row):
         if not row:
             return
-        self.record = self.group[row.get_index()]
+        self.record = self._model.get_item(row.get_index()).record
 
     @common.idle_add
     def _select_show_row(self, index):
