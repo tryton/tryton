@@ -5,6 +5,7 @@ import threading
 import time
 
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -27,7 +28,11 @@ def run(options):
                 logger.info(
                     'skip "%s" as previous cron still running', db_name)
                 continue
+            database_list = Pool.database_list()
             pool = Pool(db_name)
+            if db_name not in database_list:
+                with Transaction().start(db_name, 0, readonly=True):
+                    pool.init()
             Cron = pool.get('ir.cron')
             thread = threading.Thread(
                     target=Cron.run,
