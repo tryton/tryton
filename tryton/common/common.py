@@ -287,7 +287,7 @@ MODELNAME = ModelName()
 
 
 class ModelNotification:
-    _depends = {}
+    _depends = None
 
     def load_names(self):
         try:
@@ -297,7 +297,7 @@ class ModelNotification:
             pass
 
     def get(self, model):
-        if not self._depends:
+        if self._depends is None:
             self.load_names()
         return self._depends.get(model, [])
 
