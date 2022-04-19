@@ -555,7 +555,7 @@
 
     Sao.common.ModelNotification = Sao.class_(Object, {
         init: function() {
-            this._depends = {};
+            this._depends = null;
         },
         load_names: function() {
             this._depends = Sao.rpc({
@@ -564,7 +564,7 @@
             }, Sao.Session.current_session, false);
         },
         get: function(model) {
-            if (jQuery.isEmptyObject(this._depends)) {
+            if (!this._depends) {
                 this.load_names();
             }
             return this._depends[model] || [];
