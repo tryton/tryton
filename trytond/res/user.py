@@ -1210,16 +1210,10 @@ class EmailResetPassword(Report):
 
     @classmethod
     def get_context(cls, records, header, data):
-        pool = Pool()
-        Lang = pool.get('ir.lang')
         context = super().get_context(records, header, data)
-        lang = Lang.get()
         context['host'] = host()
         context['http_host'] = http_host()
         context['database'] = Transaction().database.name
-        context['expire'] = lang.strftime(
-            records[0].password_reset_expire,
-            format=lang.date + ' %H:%M:%S')
         expire_delay = (
             records[0].password_reset_expire - datetime.datetime.now())
         # Use a precision of minutes
