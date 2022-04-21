@@ -2046,13 +2046,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
-        <record id="vat_code_iva_no_sujetas_pyme" model="account.tax.code.template">
-            <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originen derecho a deducción</field>
-            <field name="code">61</field>
-            <field name="aeat_report">303</field>
-            <field name="parent" ref="vat_code_iva_pyme"/>
-            <field name="account" ref="pgc_0_pyme"/>
-        </record>
 
         <record id="vat_code_irpf_purchase_pyme" model="account.tax.code.template">
             <field name="name">Retenciones e ingresos a cuentra sobre actividades económicas - Autoliquidación Empresas</field>
@@ -2499,51 +2492,18 @@ this repository contains the full copyright notices and license terms. -->
         <record id="fptt_intra_purchase_normal_pyme" model="account.tax.rule.line.template">
             <field name="rule" ref="fp_intra_purchase_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_pyme"/>
-            <field name="origin_tax" ref="iva_sop_21_pyme"/>
-            <field name="group" ref="tax_group_purchase"/>
-        </record>
-        <record id="fptt_intra_purchase_normal_10_pyme" model="account.tax.rule.line.template">
-            <field name="rule" ref="fp_intra_purchase_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_10_pyme"/>
-            <field name="origin_tax" ref="iva_sop_10_pyme"/>
-            <field name="group" ref="tax_group_purchase"/>
-        </record>
-        <record id="fptt_intra_purchase_normal_4_pyme" model="account.tax.rule.line.template">
-            <field name="rule" ref="fp_intra_purchase_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_4_pyme"/>
-            <field name="origin_tax" ref="iva_sop_4_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
         </record>
 
         <record id="fptt_intra_purchase_service_pyme" model="account.tax.rule.line.template">
             <field name="rule" ref="fp_intra_purchase_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_servicios_pyme"/>
-            <field name="origin_tax" ref="iva_sop_21_servicios_pyme"/>
-            <field name="group" ref="tax_group_purchase_service"/>
-        </record>
-        <record id="fptt_intra_purchase_service_10_pyme" model="account.tax.rule.line.template">
-            <field name="rule" ref="fp_intra_purchase_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_servicios_10_pyme"/>
-            <field name="origin_tax" ref="iva_sop_10_servicios_pyme"/>
             <field name="group" ref="tax_group_purchase_service"/>
         </record>
 
         <record id="fptt_intra_purchase_investment_pyme" model="account.tax.rule.line.template">
             <field name="rule" ref="fp_intra_purchase_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_inv_pyme"/>
-            <field name="origin_tax" ref="iva_sop_21_inv_pyme"/>
-            <field name="group" ref="tax_group_purchase_investment"/>
-        </record>
-        <record id="fptt_intra_purchase_investment_10_pyme" model="account.tax.rule.line.template">
-            <field name="rule" ref="fp_intra_purchase_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_10_pyme"/>
-            <field name="origin_tax" ref="iva_sop_10_inv_pyme"/>
-            <field name="group" ref="tax_group_purchase_investment"/>
-        </record>
-        <record id="fptt_intra_purchase_investment_4_pyme" model="account.tax.rule.line.template">
-            <field name="rule" ref="fp_intra_purchase_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_4_pyme"/>
-            <field name="origin_tax" ref="iva_sop_4_inv_pyme"/>
             <field name="group" ref="tax_group_purchase_investment"/>
         </record>
 

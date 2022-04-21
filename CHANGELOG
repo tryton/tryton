@@ -1,3 +1,5 @@
+* Remove 61 tax code no more used in AEAT303
+* Include 120, 122, 123 and 124 new keys in model 303 format
 * Add support for Python 3.10
 * Remove support for Python 3.6
 
