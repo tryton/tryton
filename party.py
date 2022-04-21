@@ -90,7 +90,7 @@ class Incoterm(sequence_ordered(), ModelView, ModelSQL):
     __name__ = 'party.incoterm'
 
     party = fields.Many2One(
-        'party.party', "Party", required=True, select=True,
+        'party.party', "Party", required=True, ondelete='CASCADE', select=True,
         context={
             'company': Eval('company', -1),
             },
