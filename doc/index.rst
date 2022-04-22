@@ -13,8 +13,8 @@ First steps
   :ref:`Setup a database <topics-setup-database>` |
   :ref:`Start the server <topics-start-server>`
 
-    * **Tutorials:**
-      :ref:`Create a module <tutorial-module>`
+* **Tutorials:**
+  :ref:`Create a module <tutorial-module>`
 
 The model layer
 ===============
