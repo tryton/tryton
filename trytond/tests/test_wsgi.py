@@ -34,7 +34,7 @@ class WSGIAppTestCase(unittest.TestCase):
             sentinel.request = request
             raise exception
 
-        client = Client(app)
+        client = Client(app, Response)
         _ = client.get('/willfail')
 
         spy.assert_called_once_with(app, sentinel.request, exception)
@@ -60,7 +60,7 @@ class WSGIAppTestCase(unittest.TestCase):
             sentinel.request = request
             raise exception
 
-        client = Client(app)
+        client = Client(app, Response)
         _ = client.get('/willfail')
 
         spy1.assert_called_once_with(app, sentinel.request, exception)
@@ -84,7 +84,7 @@ class WSGIAppTestCase(unittest.TestCase):
             sentinel.request = request
             raise exception
 
-        client = Client(app)
+        client = Client(app, Response)
         _ = client.get('/willfail')
 
         spy.assert_called_once_with(app, sentinel.request, exception)
@@ -105,7 +105,7 @@ class WSGIAppTestCase(unittest.TestCase):
         def _route(request):
             raise self.TestException('foo')
 
-        client = Client(app)
+        client = Client(app, Response)
         response = client.get('/willfail')
 
         self.assertEqual(next(response.response), b'baz')
