@@ -27,7 +27,9 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             name="Commission"
             sequence="100"
-            id="menu_commission"/>
+            id="menu_commission"
+            icon="tryton-commission" />
+
         <record model="ir.ui.menu-res.group" id="menu_commission_group_commission">
             <field name="menu" ref="menu_commission"/>
             <field name="group" ref="group_commission"/>
