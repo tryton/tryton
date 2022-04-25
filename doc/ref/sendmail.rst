@@ -8,8 +8,8 @@ Sendmail
 
    Send email message only if the current transaction is successfully committed.
 
-   The required arguments are an `RFC 822`_ from-address string, a list of `RFC
-   822`_ to-address strings (a bare string is treated as a list with 1
+   The required arguments are an :rfc:`822` from-address string, a list of
+   :rfc:`822` to-address strings (a bare string is treated as a list with 1
    address), and an email message.
    The caller may pass a :class:`~trytond.transaction.Transaction` instance to
    join otherwise the current one is joined.
@@ -52,5 +52,4 @@ Sendmail
 
    Queue the email message to send.
 
-.. _`RFC 822`: https://tools.ietf.org/html/rfc822.html
 .. _`smtplib`: https://docs.python.org/2/library/smtplib.html

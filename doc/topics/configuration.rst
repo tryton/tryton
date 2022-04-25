@@ -112,7 +112,7 @@ Defines how the database is managed.
 uri
 ~~~
 
-Contains the URI to connect to the SQL database. The URI follows the RFC-3986_.
+Contains the URI to connect to the SQL database. The URI follows the :rfc:`3986`.
 The typical form is:
 
     database://username:password@host:port/?param1=value1&param2=value2
@@ -401,7 +401,7 @@ Default: ``smtp://localhost:25``
 from
 ~~~~
 
-Defines the default ``From`` address (using RFC-822_) for emails sent by Tryton.
+Defines the default ``From`` address (using :rfc:`822`) for emails sent by Tryton.
 
 For example::
 
@@ -654,9 +654,7 @@ Example::
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
-.. _RFC-3986: http://tools.ietf.org/html/rfc3986
 .. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
-.. _RFC-822: https://tools.ietf.org/html/rfc822
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview

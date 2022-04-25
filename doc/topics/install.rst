@@ -36,9 +36,3 @@ There are three options to install Tryton:
 
       You can register modules by linking them into the ``trytond/modules``
       folder.
-
-.. warning::
-      Note that you may need administrator/root privileges for this step, as
-      this command will by default attempt to install trytond to the Python
-      site-packages directory on your system.
-..

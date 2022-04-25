@@ -112,8 +112,6 @@ Transaction
 
    Register in the transaction a data manager conforming to the `Two-Phase
    Commit protocol`_.
-   More information on how to implement such data manager is available at the
-   `Zope documentation`_.
 
    This method returns the registered datamanager.
    It could be a different yet equivalent (in term of python equality)
@@ -128,4 +126,3 @@ Transaction
 .. _`context manager`: http://docs.python.org/reference/datamodel.html#context-managers
 .. _`PEP-0249`: https://www.python.org/dev/peps/pep-0249/
 .. _`Two-Phase Commit protocol`: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
-.. _`Zope documentation`: http://zodb.readthedocs.org/en/latest/transactions.html#the-two-phase-commit-protocol-in-practice

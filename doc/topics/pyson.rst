@@ -88,7 +88,7 @@ A similar expression in Python looks like this::
 
     'context' in locals() and isinstance(context, dict) and 'company' in context and '=' or '!='
 
-.. _if-then-else: http://en.wikipedia.org/wiki/Conditional_statement#If-Then.28-Else.29
+.. _if-then-else: https://en.wikipedia.org/wiki/Conditional_(computer_programming)#If%E2%80%93then(%E2%80%93else)
 
 Given the PYSON statement::
 
