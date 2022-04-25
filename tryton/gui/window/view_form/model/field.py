@@ -184,7 +184,8 @@ class Field(object):
             elif key in self.attrs:
                 self.get_state_attrs(record)[key] = self.attrs[key]
         if (record.group.readonly
-                or self.get_state_attrs(record).get('domain_readonly')):
+                or self.get_state_attrs(record).get('domain_readonly')
+                or record.parent_name == self.name):
             self.get_state_attrs(record)['readonly'] = True
 
     def get_state_attrs(self, record):
