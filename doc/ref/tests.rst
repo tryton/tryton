@@ -81,6 +81,14 @@ doctest helpers
 
    A specialized doctest checker to ensure the Python compatibility.
 
+
+.. function:: load_doc_tests(name, path, loader, tests, pattern)
+
+   An helper that follows the ``load_tests`` protocol to load as
+   :py:class:`~doctest.DocTest` all ``*.rst`` files in ``directory``,
+   with the module ``name`` and the ``path`` to the module file from which the
+   doc tests are registered.
+
 .. function:: suite()
 
    A function returning a subclass of ``unittest.TestSuite`` that drops the

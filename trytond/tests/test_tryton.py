@@ -12,6 +12,7 @@ import time
 import unittest
 import unittest.mock
 from configparser import ConfigParser
+from fnmatch import fnmatchcase
 from functools import reduce, wraps
 from itertools import chain
 
@@ -37,7 +38,7 @@ from trytond.wizard import StateAction, StateView
 
 __all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
-    'doctest_setup', 'doctest_teardown', 'doctest_checker']
+    'doctest_setup', 'doctest_teardown', 'doctest_checker', 'load_doc_tests']
 
 Pool.start()
 USER = 1
@@ -992,6 +993,30 @@ def doctest_teardown(test):
 
 
 doctest_checker = doctest.OutputChecker()
+
+
+def load_doc_tests(name, path, loader, tests, pattern):
+    def shouldIncludeScenario(path):
+        return (
+            loader.testNamePatterns is None
+            or any(
+                fnmatchcase(path, pattern)
+                for pattern in loader.testNamePatterns))
+    directory = os.path.dirname(path)
+    # TODO: replace by glob root_dir in Python 3.10
+    cwd = os.getcwd()
+    try:
+        os.chdir(directory)
+        for scenario in filter(
+                shouldIncludeScenario, glob.glob('*.rst')):
+            tests.addTests(doctest.DocFileSuite(
+                    scenario, package=name,
+                    tearDown=doctest_teardown, encoding='utf-8',
+                    checker=doctest_checker,
+                    optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    finally:
+        os.chdir(cwd)
+    return tests
 
 
 class TestSuite(unittest.TestSuite):
