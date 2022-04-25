@@ -380,7 +380,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             all_users += users
             args.extend((users, cls._convert_vals(values)))
 
-            if 'password' in values:
+            if values.keys() & {'active', 'password'}:
                 session_to_clear += users
 
         super(User, cls).write(*args)
