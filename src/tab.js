@@ -1487,8 +1487,8 @@
             }
             set_sensitive('switch_', this.screen.number_of_views > 1);
             set_sensitive('delete_', this.screen.deletable);
-            set_sensitive('previous', position > (this.screen.offset + 1));
-            set_sensitive('next', position < size);
+            set_sensitive('previous', this.screen.has_previous());
+            set_sensitive('next', this.screen.has_next());
 
             var msg;
             if (size < max_size) {

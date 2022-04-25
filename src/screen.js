@@ -1355,10 +1355,8 @@
                     }
                 }));
         },
-        display_next: function() {
+        _get_next_record: function() {
             var view = this.current_view;
-            view.set_value();
-            this.set_cursor(false, false);
             if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
@@ -1377,17 +1375,26 @@
                         break;
                     }
                 }
-                this.current_record = record;
+                return record;
             } else {
-                this.current_record = this.group[0];
+                return this.group[0];
             }
-            this.set_cursor(false, false);
-            return view.display();
         },
-        display_previous: function() {
+        has_next: function() {
+            var next_record = this._get_next_record();
+            return next_record &&
+                (next_record !== this.current_record);
+        },
+        display_next: function() {
             var view = this.current_view;
             view.set_value();
             this.set_cursor(false, false);
+            this.current_record = this._get_next_record();
+            this.set_cursor(false, false);
+            return view.display();
+        },
+        _get_previous_record: function() {
+            var view = this.current_view;
             if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
@@ -1406,10 +1413,21 @@
                         break;
                     }
                 }
-                this.current_record = record;
+                return record;
             } else {
-                this.current_record = this.group[0];
+                return this.group[0];
             }
+        },
+        has_previous: function() {
+            var previous_record = this._get_previous_record();
+            return previous_record &&
+                (previous_record !== this.current_record);
+        },
+        display_previous: function() {
+            var view = this.current_view;
+            view.set_value();
+            this.set_cursor(false, false);
+            this.current_record = this._get_previous_record();
             this.set_cursor(false, false);
             return view.display();
         },
