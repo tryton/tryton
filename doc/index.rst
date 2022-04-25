@@ -6,7 +6,7 @@ It uses `Stripe.js and Stripe Elements`_ in a checkout form to handle `Setup
 Intent`_ and `Payment Intent`_ by card.
 
 .. _`Stripe`: https://stripe.com/
-.. _`Stripe.js and Stripe Elements`: https://stripe.com/docs/web
+.. _`Stripe.js and Stripe Elements`: https://stripe.com/docs/payments/elements
 .. _`Setup Intent`: https://stripe.com/docs/api/setup_intents
 .. _`Payment Intent`: https://stripe.com/docs/api/payment_intents
 
