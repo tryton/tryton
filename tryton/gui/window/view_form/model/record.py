@@ -141,7 +141,7 @@ class Record:
                 if record and not record.destroyed and value:
                     for key in record.modified_fields:
                         value.pop(key, None)
-                    record.set(value, signal=False)
+                    record.set(value, modified=False)
         if name != '*':
             return self.group.fields[name]
 
@@ -424,7 +424,7 @@ class Record:
         else:
             return self.group.local_context
 
-    def set_default(self, val, signal=True, validate=True):
+    def set_default(self, val, modified=True, validate=True):
         fieldnames = []
         for fieldname, value in list(val.items()):
             if fieldname in {'_write', '_delete', '_timestamp'}:
@@ -445,10 +445,10 @@ class Record:
         self.on_change_with(fieldnames)
         if validate:
             self.validate(softvalidation=True)
-        if signal:
+        if modified:
             self.set_modified()
 
-    def set(self, val, signal=True, validate=True):
+    def set(self, val, modified=True, validate=True):
         later = {}
         fieldnames = []
         for fieldname, value in val.items():
@@ -479,7 +479,7 @@ class Record:
             self._loaded.add(fieldname)
         if validate:
             self.validate(fieldnames, softvalidation=True)
-        if signal:
+        if modified:
             self.set_modified()
 
     def set_on_change(self, values):
@@ -505,7 +505,7 @@ class Record:
 
     def reset(self, value):
         self.cancel()
-        self.set(value, signal=False)
+        self.set(value, modified=False)
 
         if self.parent:
             self.parent.on_change([self.group.child_name])

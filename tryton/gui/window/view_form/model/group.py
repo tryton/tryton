@@ -308,7 +308,7 @@ class Group(list):
     def context(self, value):
         self._context = value.copy()
 
-    def add(self, record, position=-1, signal=True):
+    def add(self, record, position=-1, modified=True):
         if record.group is not self:
             record.group = self
         if record not in self:
@@ -323,8 +323,8 @@ class Group(list):
             if record_del.id == record.id:
                 self.record_deleted.remove(record_del)
         self.current_idx = position
-        record.set_modified('id')
-        if signal:
+        record.modified_fields.setdefault('id')
+        if modified:
             # Set parent field to trigger on_change
             if self.parent and self.parent_name in self.fields:
                 field = self.fields[self.parent_name]
@@ -384,16 +384,15 @@ class Group(list):
             record.default_get(rec_name=rec_name)
         return record
 
-    def unremove(self, record, signal=True):
+    def unremove(self, record, modified=True):
         if record in self.record_removed:
             self.record_removed.remove(record)
         if record in self.record_deleted:
             self.record_deleted.remove(record)
-        if signal:
+        if modified:
             self.record_modified()
 
-    def remove(self, record, remove=False, modified=True, signal=True,
-            force_remove=False):
+    def remove(self, record, remove=False, modified=True, force_remove=False):
         idx = self.index(record)
         if record.id >= 0:
             if remove:
@@ -406,10 +405,7 @@ class Group(list):
                     self.record_removed.remove(record)
                 if record not in self.record_deleted:
                     self.record_deleted.append(record)
-        if record.parent:
-            record.parent.set_modified('id')
-        if modified:
-            record.set_modified('id')
+        record.modified_fields.setdefault('id')
         if record.id < 0 or force_remove:
             self._remove(record)
 
@@ -418,7 +414,7 @@ class Group(list):
         else:
             self.current_idx = None
 
-        if signal:
+        if modified:
             self.record_modified()
 
     def prev(self):
@@ -463,8 +459,8 @@ class Group(list):
             except RPCException:
                 return False
             for record in new:
-                record.set_default(values, signal=False)
-            # Trigger signal only once with the last record
+                record.set_default(values, modified=False)
+            # Trigger modified only once with the last record
             self.record_modified()
 
     def get(self, id):
@@ -483,7 +479,7 @@ class Group(list):
                 self.parent.group.children.remove(self)
             except ValueError:
                 pass
-        # One2Many connect the group to itself to send signals to the parent
+        # One2Many connect the group to itself to send modified to the parent
         # but as we are destroying the group, we do not need to notify the
         # parent otherwise it will trigger unnecessary display.
         self.screens.clear()

@@ -674,19 +674,20 @@ class O2MField(Field):
         if mode == 'list ids':
             records_to_remove = [r for r in group if r.id not in value]
             for record_to_remove in records_to_remove:
-                group.remove(record_to_remove, remove=True, signal=False)
+                group.remove(record_to_remove, remove=True, modified=False)
             group.load(value, modified=modified or default)
         else:
             for vals in value:
                 new_record = record.value[self.name].new(default=False)
                 if default:
                     # Don't validate as parent will validate
-                    new_record.set_default(vals, signal=False, validate=False)
-                    group.add(new_record, signal=False)
+                    new_record.set_default(
+                        vals, modified=False, validate=False)
+                    group.add(new_record, modified=False)
                 else:
-                    new_record.set(vals, signal=False)
+                    new_record.set(vals, modified=False)
                     group.append(new_record)
-            # Trigger signal only once with the last record
+            # Trigger modified only once
             group.record_modified()
 
     def set(self, record, value, _default=False):
@@ -766,14 +767,14 @@ class O2MField(Field):
                 record2 = group.get(record_id)
                 if record2 is not None:
                     group.remove(
-                        record2, remove=False, signal=False,
+                        record2, remove=False, modified=False,
                         force_remove=False)
         if value and value.get('remove'):
             for record_id in value['remove']:
                 record2 = group.get(record_id)
                 if record2 is not None:
                     group.remove(
-                        record2, remove=True, signal=False,
+                        record2, remove=True, modified=False,
                         force_remove=False)
 
         if value and (value.get('add') or value.get('update', [])):
@@ -796,7 +797,7 @@ class O2MField(Field):
                     new_record = group.get(id_)
                 if not new_record:
                     new_record = group.new(obj_id=id_, default=False)
-                group.add(new_record, index, signal=False)
+                group.add(new_record, index, modified=False)
                 new_record.set_on_change(vals)
 
             for vals in value.get('update', []):

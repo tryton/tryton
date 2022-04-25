@@ -796,7 +796,8 @@ class Screen:
             # set current model to None to prevent __select_changed
             # to save the previous_model as it can be already deleted.
             self.current_record = None
-            record.group.remove(record, remove=remove, signal=False,
+            record.group.remove(
+                record, remove=remove, modified=False,
                 force_remove=force_remove)
         # call only once
         record.set_modified()
@@ -978,7 +979,7 @@ class Screen:
             if set_cursor:
                 self.set_cursor(reset_view=False)
         self.set_tree_state()
-        # Force record_message signal
+        # Force record_message
         self.current_record = self.current_record
 
     def display_next(self):
