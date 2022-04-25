@@ -2626,7 +2626,7 @@ function eval_pyson(value){
             if (this.has_target(value)) {
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
-                if (evt && evt.ctrlKey) {
+                if (evt && (evt.ctrlKey || evt.metaKey)) {
                     var params = {};
                     params.model = this.get_model();
                     params.res_id = m2o_id;

@@ -132,7 +132,7 @@
                 }
                 this.select_records(i, view_form_idx);
             } else {
-                if (!event_.ctrlKey) {
+                if (!(event_.ctrlKey || event_.metaKey)) {
                     this.select_records(null, null);
                 }
                 this.record = view_form.record;
