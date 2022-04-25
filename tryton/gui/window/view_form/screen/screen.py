@@ -982,10 +982,8 @@ class Screen:
         # Force record_message
         self.current_record = self.current_record
 
-    def display_next(self):
+    def _get_next_record(self):
         view = self.current_view
-        view.set_value()
-        self.set_cursor(reset_view=False)
         if view.view_type == 'tree' and len(self.group):
             range_ = view.treeview.get_visible_range()
             if range_:
@@ -996,7 +994,9 @@ class Screen:
                     vadjustment.props.upper)
                 model = view.treeview.get_model()
                 iter_ = model.get_iter(end)
-                self.current_record = model.get_value(iter_, 0)
+                return model.get_value(iter_, 0)
+            else:
+                return self.group[-1]
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
@@ -1024,12 +1024,12 @@ class Screen:
                     break
                 record = next
                 break
-            self.current_record = record
+            return record
         elif (view.view_type == 'list-form' and len(self.group)
                 and self.current_record in self.group):
             idx = self.group.index(self.current_record)
             if 0 <= idx < len(self.group) - 1:
-                self.current_record = self.group[idx + 1]
+                return self.group[idx + 1]
         elif view.view_type == 'calendar':
             record = self.current_record
             goocalendar = view.widgets.get('goocalendar')
@@ -1045,25 +1045,33 @@ class Screen:
                 events.sort()
                 if not record:
                     if events:
-                        self.current_record = events[0].record
+                        return events[0].record
                     else:
-                        self.current_record = None
+                        return
                 else:
                     for idx, event in enumerate(events):
                         if event.record == record:
                             next_id = idx + 1
                             if next_id < len(events):
-                                self.current_record = events[next_id].record
+                                return events[next_id].record
                             break
         else:
-            self.current_record = self.group[0] if len(self.group) else None
-        self.set_cursor(reset_view=False)
-        view.display()
+            return self.group[0] if len(self.group) else None
 
-    def display_prev(self):
+    def has_next(self):
+        next_record = self._get_next_record()
+        return next_record and next_record != self.current_record
+
+    def display_next(self):
         view = self.current_view
         view.set_value()
         self.set_cursor(reset_view=False)
+        self.current_record = self._get_next_record()
+        self.set_cursor(reset_view=False)
+        view.display()
+
+    def _get_prev_record(self):
+        view = self.current_view
         if view.view_type == 'tree' and len(self.group):
             range_ = view.treeview.get_visible_range()
             if range_:
@@ -1074,7 +1082,9 @@ class Screen:
                     vadjustment.props.lower)
                 model = view.treeview.get_model()
                 iter_ = model.get_iter(start)
-                self.current_record = model.get_value(iter_, 0)
+                return model.get_value(iter_, 0)
+            else:
+                return self.group[0]
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
@@ -1092,7 +1102,7 @@ class Screen:
                 parent = record.parent
                 if parent and record.model_name == parent.model_name:
                     record = parent
-            self.current_record = record
+            return record
         elif view.view_type == 'calendar':
             record = self.current_record
             goocalendar = view.widgets.get('goocalendar')
@@ -1108,23 +1118,33 @@ class Screen:
                 events.sort()
                 if not record:
                     if events:
-                        self.current_record = events[0].record
+                        return events[0].record
                     else:
-                        self.current_record = None
+                        return
                 else:
                     for idx, event in enumerate(events):
                         if event.record == record:
                             prev_id = idx - 1
                             if prev_id >= 0:
-                                self.current_record = events[prev_id].record
+                                return events[prev_id].record
                             break
         elif (view.view_type == 'list-form' and len(self.group)
                 and self.current_record in self.group):
             idx = self.group.index(self.current_record)
             if 0 < idx <= len(self.group) - 1:
-                self.current_record = self.group[idx - 1]
+                return self.group[idx - 1]
         else:
-            self.current_record = self.group[-1] if len(self.group) else None
+            return self.group[-1] if len(self.group) else None
+
+    def has_prev(self):
+        prev_record = self._get_prev_record()
+        return prev_record and prev_record != self.current_record
+
+    def display_prev(self):
+        view = self.current_view
+        view.set_value()
+        self.set_cursor(reset_view=False)
+        self.current_record = self._get_prev_record()
         self.set_cursor(reset_view=False)
         view.display()
 

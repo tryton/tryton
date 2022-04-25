@@ -465,6 +465,8 @@ class ViewTree(View):
         self.treeview.connect_after('row-activated', self.__sig_switch)
         if self.children_field:
             self.treeview.connect('test-expand-row', self.test_expand_row)
+            self.treeview.connect('row-expanded', self._row_expanded)
+            self.treeview.connect('row-collapsed', self._row_collapsed)
         self.treeview.set_rubber_banding(True)
 
         selection = self.treeview.get_selection()
@@ -718,6 +720,12 @@ class ViewTree(View):
                         return True
             iter_ = model.iter_next(iter_)
         return False
+
+    def _row_expanded(self, treeview, iter_, path):
+        # Force record_message
+        self.screen.current_record = self.screen.current_record
+
+    _row_collapsed = _row_expanded
 
     def on_copy(self):
         for clipboard_type in [

@@ -618,8 +618,8 @@ class Form(TabContent):
             set_sensitive(button_id, bool(position) and can_be_sensitive)
         set_sensitive('switch', self.screen.number_of_views > 1)
         set_sensitive('remove', self.screen.deletable)
-        set_sensitive('previous', position > (self.screen.offset + 1))
-        set_sensitive('next', position < size)
+        set_sensitive('previous', self.screen.has_prev())
+        set_sensitive('next', self.screen.has_next())
 
         if size < max_size:
             msg = "%s@%s/%s" % (
