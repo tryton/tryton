@@ -1642,7 +1642,7 @@
             var path = top_record.get_path(this.group);
             return prm.then(() => {
                 for (const record of records) {
-                    record.group.remove(record, remove, true, force_remove, false);
+                    record.group.remove(record, remove, force_remove, false);
                 }
                 // trigger changed only once
                 records[0].group.record_modified();

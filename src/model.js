@@ -129,7 +129,7 @@
             }
             return record;
         };
-        array.add = function(record, position=-1, changed=true) {
+        array.add = function(record, position=-1, modified=true) {
             if (position == -1) {
                 position = this.length;
             }
@@ -152,8 +152,8 @@
                             this.record_deleted.indexOf(record_del), 1);
                 }
             }
-            record.set_modified('id');
-            if (changed) {
+            record.modified_fields.id = true;
+            if (modified) {
                 // Set parent field to trigger on_change
                 if (this.parent && this.model.fields[this.parent_name]) {
                     var field = this.model.fields[this.parent_name];
@@ -170,7 +170,7 @@
             return record;
         };
         array.remove = function(
-            record, remove, modified=true, force_remove=false, signal=true) {
+            record, remove, force_remove=false, modified=true) {
             var idx = this.indexOf(record);
             if (record.id >= 0) {
                 if (remove) {
@@ -191,16 +191,11 @@
                     }
                 }
             }
-            if (record.group.parent) {
-                record.group.parent.set_modified('id');
-            }
-            if (modified) {
-                record.set_modified('id');
-            }
+            record.modified_fields.id = true;
             if ((record.id < 0) || force_remove) {
                 this._remove(record);
             }
-            if (signal) {
+            if (modified) {
                 this.record_modified();
             }
         };
@@ -805,7 +800,7 @@
                 }
             }
         },
-        set: function(values, validate=true) {
+        set: function(values, modified=true, validate=true) {
             var name, value;
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             var later = {};
@@ -851,6 +846,9 @@
             }
             if (validate) {
                 this.validate(fieldnames, true, false, false);
+            }
+            if (modified) {
+                this.set_modified();
             }
         },
         get: function() {
@@ -935,7 +933,7 @@
             }
             return jQuery.when();
         },
-        set_default: function(values, validate=true, display=true) {
+        set_default: function(values, validate=true, modified=true) {
             var promises = [];
             var fieldnames = [];
             for (var fname in values) {
@@ -968,7 +966,8 @@
                 this.on_change(fieldnames);
                 this.on_change_with(fieldnames);
                 const callback = () => {
-                    if (display) {
+                    if (modified) {
+                        this.set_modified();
                         return jQuery.when.apply(
                             jQuery, this.group.root_group.screens
                             .map(screen => screen.display()));
@@ -2139,7 +2138,7 @@
                     }
                 }
                 for (const record_to_remove of records_to_remove) {
-                    group.remove(record_to_remove, true, true, false, false);
+                    group.remove(record_to_remove, true, false, false);
                 }
                 group.load(value, modified || default_);
             } else {
@@ -2150,10 +2149,12 @@
                         new_record.set_default(vals, false, false);
                         group.add(new_record, -1, false);
                     } else {
-                        new_record.set(vals);
+                        new_record.set(vals, false);
                         group.push(new_record);
                     }
                 }
+                // Trigger modified only once
+                group.record_modified();
             }
         },
         set: function(record, value, _default=false) {
@@ -2309,7 +2310,7 @@
                 for (const record_id of value.delete) {
                     const record2 = group.get(record_id);
                     if (record2) {
-                        group.remove(record2, false, true, false, false);
+                        group.remove(record2, false, false, false);
                     }
                 }
             }
@@ -2317,7 +2318,7 @@
                 for (const record_id of value.remove) {
                     const record2 = group.get(record_id);
                     if (record2) {
-                        group.remove(record2, true, true, false, false);
+                        group.remove(record2, true, false, false);
                     }
                 }
             }

@@ -651,7 +651,7 @@
                     origin_group.splice(dest_position, 0, record);
                     origin_group.record_modified();
                 } else {
-                    origin_group.remove(record, true, true, true);
+                    origin_group.remove(record, true, true);
                     // Don't remove record from previous group
                     // as the new parent will change the parent
                     // This prevents concurrency conflict
