@@ -1255,7 +1255,7 @@
             }).text(el_field.attr('name')).prepend(
                 Sao.common.ICONFACTORY.get_icon_img('tryton-drag')
             ).click(function(e) {
-                if (e.ctrlKey) {
+                if (e.ctrlKey || e.metaKey) {
                     node.toggleClass('bg-primary');
                 } else {
                     jQuery(e.target).addClass('bg-primary')
@@ -1279,7 +1279,7 @@
                     'field': parent_node[field].field,
                     'name': parent_node[field].name
                 }).text(name).click(function(e) {
-                    if(e.ctrlKey) {
+                    if (e.ctrlKey || e.metaKey) {
                         node.toggleClass('bg-primary');
                     } else {
                         this.fields_all.find('li').removeClass('bg-primary');
@@ -1635,7 +1635,7 @@
                 var node = jQuery('<li/>', {
                     'path': path
                 }).text(parent_node[name].string).click(function(e) {
-                    if(e.ctrlKey) {
+                    if (e.ctrlKey || e.metaKey) {
                         node.toggleClass('bg-primary');
                     } else {
                         this.fields_all.find('li')
@@ -1884,7 +1884,7 @@
                 'path': name,
                 'class': 'draggable-handle',
             }).text(long_string).click(function(e) {
-                if(e.ctrlKey) {
+                if (e.ctrlKey || e.metaKey) {
                     node.toggleClass('bg-primary');
                 } else {
                     jQuery(e.target).addClass('bg-primary')

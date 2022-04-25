@@ -424,7 +424,7 @@
 
             var parent_row = null;
             var dest_position;
-            if (evt.ctrlKey && this.children_field) {
+            if ((evt.ctrlKey || evt.metaKey) && this.children_field) {
                 parent_row = this._find_row(row.el.prev());
                 dest_position = (parent_row || this).rows.length;
             } else {
@@ -1614,7 +1614,7 @@
                     current_record = this.tree.screen.current_record;
                     this.tree.select_records(current_record, this.record);
                 } else {
-                    if (!event_.ctrlKey ||
+                    if (!(event_.ctrlKey || event_.metaKey) ||
                         this.tree.selection_mode ==
                         Sao.common.SELECTION_SINGLE) {
                         this.tree.select_records(null, null);
@@ -1801,7 +1801,7 @@
 
             Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
 
-            if (!event_.shiftKey && !event_.ctrlKey) {
+            if (!event_.shiftKey && !(event_.ctrlKey || event_.metaKey)) {
                 this.tree.edit_row(this);
             }
         },
