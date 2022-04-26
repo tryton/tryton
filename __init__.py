@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from . import account, account_payment, party, reporting_tax
+from . import account, account_payment, company, party, reporting_tax
 
 
 def register():
@@ -13,6 +13,7 @@ def register():
         account.TaxTemplate,
         account.Tax,
         account.Invoice,
+        company.Company,
         party.Party,
         party.Identifier,
         reporting_tax.ESVATList,

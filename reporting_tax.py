@@ -7,9 +7,11 @@ from decimal import Decimal
 from io import BytesIO, TextIOWrapper
 from operator import attrgetter
 
+import phonenumbers
 from dateutil.relativedelta import relativedelta
 # XXX fix: https://genshi.edgewall.org/ticket/582
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
+from phonenumbers import NumberParseException
 from sql import Cast, Literal, Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case, Coalesce
@@ -66,6 +68,17 @@ def format_integer(n, size=8):
 
 def format_percentage(n, size=5):
     return ('{0:.2f}'.format(n)).replace('.', '').rjust(size, '0')
+
+
+def format_phone(phone):
+    try:
+        phone = phonenumbers.format_number(
+            phonenumbers.parse(phone, 'ES'),
+            phonenumbers.PhoneNumberFormat.NATIONAL)
+    except NumberParseException:
+        phone = ''
+    phone = phone.replace(' ', '')
+    return phone[:9].rjust(9, '0')
 
 
 def identifier_code(identifier):
@@ -543,6 +556,7 @@ class AEAT347(Report):
                 15, '0')
         context['format_decimal'] = format_decimal
         context['format_integer'] = format_integer
+        context['format_phone'] = format_phone
         context['identifier_code'] = identifier_code
         context['country_code'] = country_code
         context['strip_accents'] = strip_accents
@@ -699,6 +713,7 @@ class AEAT349(Report):
             return ('{0:.2f}'.format(abs(n))).replace('.', '').rjust(
                 digits, '0')
         context['format_decimal'] = format_decimal
+        context['format_phone'] = format_phone
 
         return context
 
