@@ -2035,7 +2035,11 @@ class GeneralLedgerAccountContext(ModelView):
     'General Ledger Account Context'
     __name__ = 'account.general_ledger.account.context'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True)
+        required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -2118,6 +2122,12 @@ class GeneralLedgerAccountContext(ModelView):
     @classmethod
     def default_to_date(cls):
         return Transaction().context.get('to_date')
+
+    @fields.depends('company', 'fiscalyear', methods=['on_change_fiscalyear'])
+    def on_change_company(self):
+        if self.fiscalyear and self.fiscalyear.company != self.company:
+            self.fiscalyear = None
+            self.on_change_fiscalyear()
 
     @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
@@ -2585,6 +2595,12 @@ class IncomeStatementContext(ModelView):
     @classmethod
     def default_comparison(cls):
         return False
+
+    @fields.depends('company', 'fiscalyear', methods=['on_change_fiscalyear'])
+    def on_change_company(self):
+        if self.fiscalyear and self.fiscalyear.company != self.company:
+            self.fiscalyear = None
+            self.on_change_fiscalyear()
 
     @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
