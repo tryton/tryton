@@ -306,6 +306,21 @@ class CommonTestCaseMixin:
         self.assertListEqual(one2manys, [])
 
     @with_transaction()
+    def test_search_not_where_others(self):
+        "Test search one2many not where with others"
+        One2Many = self.One2Many()
+        one2many, = One2Many.create([{
+                    'targets': [('create', [
+                                {'name': "Target"}, {'name': "Foo"}])],
+                    }])
+
+        one2manys = One2Many.search([
+                ('targets', 'not where', [('name', '=', "Target")]),
+                ])
+
+        self.assertListEqual(one2manys, [])
+
+    @with_transaction()
     def test_write_write(self):
         "Test write one2many write"
         One2Many = self.One2Many()
