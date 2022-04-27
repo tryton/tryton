@@ -112,7 +112,7 @@ class ShipmentAssignMixin(ShipmentMixin):
                         ('state', '=', 'assigned'),
                         ('assignation_required', '=', True),
                         ]),
-                ('state', '!=', 'assigned'),
+                ('state', '=', 'waiting'),
                 ]
         else:
             return []
