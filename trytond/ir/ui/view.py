@@ -224,20 +224,18 @@ class View(ModelSQL, ModelView):
         if result:
             return result
         if self.inherit:
-            if self.model == model:
+            if self.inherit.model == model:
                 return self.inherit.view_get(model=model)
             else:
-                arch = self.inherit.arch
-                view_id = self.inherit.id
+                arch = self.inherit.view_get(self.inherit.model)['arch']
         else:
             arch = self.arch
-            view_id = self.id
 
         views = self.__class__.search(['OR', [
-                    ('inherit', '=', view_id),
+                    ('inherit', '=', self.id),
                     ('model', '=', model),
                     ], [
-                    ('id', '=', view_id),
+                    ('id', '=', self.id),
                     ('inherit', '!=', None),
                     ],
                 ])
@@ -256,7 +254,7 @@ class View(ModelSQL, ModelView):
         arch = etree.tostring(tree, encoding='utf-8').decode('utf-8')
         result = {
             'type': self.rng_type,
-            'view_id': view_id,
+            'view_id': self.id,
             'arch': arch,
             'field_childs': self.field_childs,
             }
