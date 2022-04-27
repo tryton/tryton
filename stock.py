@@ -109,7 +109,7 @@ class Move(metaclass=PoolMeta):
         if self.product.type != 'goods':
             return
 
-        date = Date.today()
+        date = self.effective_date or Date.today()
         period_id = Period.find(self.company.id, date=date)
         period = Period(period_id)
         if not period.fiscalyear.account_stock_method:
