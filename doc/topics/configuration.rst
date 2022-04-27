@@ -655,7 +655,7 @@ Example::
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
-.. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
+.. _SMTP-URL: https://datatracker.ietf.org/doc/html/draft-earhart-url-smtp-00
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview
