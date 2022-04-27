@@ -401,7 +401,8 @@ Default: ``smtp://localhost:25``
 from
 ~~~~
 
-Defines the default ``From`` address (using :rfc:`822`) for emails sent by Tryton.
+Defines the default ``From`` address (using :rfc:`5322`) for emails sent by
+Tryton.
 
 For example::
 
