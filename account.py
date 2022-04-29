@@ -111,9 +111,11 @@ class Invoice(metaclass=PoolMeta):
     def _post(cls, invoices):
         pool = Pool()
         InvoiceChorus = pool.get('account.invoice.chorus')
+        posted_invoices = {
+            i for i in invoices if i.state in {'draft', 'validated'}}
         super()._post(invoices)
         invoices_chorus = []
-        for invoice in invoices:
+        for invoice in posted_invoices:
             if invoice.type == 'out' and invoice.party.chorus:
                 invoices_chorus.append(InvoiceChorus(invoice=invoice))
         InvoiceChorus.save(invoices_chorus)
