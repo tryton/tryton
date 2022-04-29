@@ -1146,15 +1146,6 @@ class ModelStorage(Model):
         # also convert iterator to list
         records = cls.browse(records)
 
-        ctx_pref = {}
-        if Transaction().user:
-            try:
-                User = pool.get('res.user')
-            except KeyError:
-                pass
-            else:
-                ctx_pref = User.get_preferences(context_only=True)
-
         def is_pyson(test):
             if isinstance(test, PYSON):
                 return True
@@ -1324,8 +1315,7 @@ class ModelStorage(Model):
             field_names = set(field_names)
         function_fields = {name for name, field in cls._fields.items()
             if isinstance(field, fields.Function)}
-        ctx_pref['active_test'] = False
-        with Transaction().set_context(ctx_pref):
+        with Transaction().set_context(active_test=False):
             for field_name, field in cls._fields.items():
                 if (field_name not in field_names
                         and not (field.validation_depends & field_names)

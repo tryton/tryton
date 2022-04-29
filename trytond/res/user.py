@@ -155,9 +155,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     warnings = fields.One2Many('res.user.warning', 'user', 'Warnings')
     sessions = fields.Function(fields.Integer('Sessions'),
             'get_sessions')
-    _get_preferences_cache = Cache('res_user.get_preferences')
     _get_groups_cache = Cache('res_user.get_groups', context=False)
-    _get_login_cache = Cache('res_user._get_login', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -374,10 +372,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         vlist = [cls._convert_vals(vals) for vals in vlist]
-        res = super(User, cls).create(vlist)
-        # Restart the cache for _get_login
-        cls._get_login_cache.clear()
-        return res
+        return super(User, cls).create(vlist)
 
     @classmethod
     def write(cls, users, values, *args):
@@ -413,10 +408,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         cls._get_groups_cache.clear()
-        # Restart the cache for _get_login
-        cls._get_login_cache.clear()
-        # Restart the cache for get_preferences
-        cls._get_preferences_cache.clear()
         # Restart the cache of check
         pool.get('ir.model.access')._get_access_cache.clear()
         # Restart the cache of check
@@ -534,15 +525,9 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_preferences(cls, context_only=False):
-        key = (Transaction().user, context_only)
-        preferences = cls._get_preferences_cache.get(key)
-        if preferences is not None:
-            return preferences.copy()
         user = Transaction().user
         user = cls(user)
-        preferences = cls._get_preferences(user, context_only=context_only)
-        cls._get_preferences_cache.set(key, preferences)
-        return preferences.copy()
+        return cls._get_preferences(user, context_only=context_only)
 
     @classmethod
     def set_preferences(cls, values):
@@ -642,9 +627,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def _get_login(cls, login):
-        result = cls._get_login_cache.get(login)
-        if result:
-            return result
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.select(table.id, table.password_hash,
@@ -654,9 +636,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                     else_=None),
                 where=(table.login == login)
                 & (table.active == Literal(True))))
-        result = cursor.fetchone() or (None, None, None)
-        cls._get_login_cache.set(login, result)
-        return result
+        return cursor.fetchone() or (None, None, None)
 
     @classmethod
     def get_login(cls, login, parameters):
@@ -1014,8 +994,6 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
         # Restart the cache for model access and view
         pool.get('ir.model.access')._get_access_cache.clear()
         pool.get('ir.model.field.access')._get_access_cache.clear()
@@ -1030,8 +1008,6 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
         # Restart the cache for model access and view
         pool.get('ir.model.access')._get_access_cache.clear()
         pool.get('ir.model.field.access')._get_access_cache.clear()
@@ -1045,8 +1021,6 @@ class UserGroup(ModelSQL):
         pool.get('ir.rule')._domain_get_cache.clear()
         # Restart the cache for get_groups
         pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
         # Restart the cache for model access and view
         pool.get('ir.model.access')._get_access_cache.clear()
         pool.get('ir.model.field.access')._get_access_cache.clear()
@@ -1179,30 +1153,13 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        pool = Pool()
-        User = pool.get('res.user')
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             # Ensure we get a different key for each record
             # default methods are called only once
             values.setdefault('key', cls.default_key())
         applications = super(UserApplication, cls).create(vlist)
-        User._get_preferences_cache.clear()
         return applications
-
-    @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        User = pool.get('res.user')
-        super(UserApplication, cls).write(*args)
-        User._get_preferences_cache.clear()
-
-    @classmethod
-    def delete(cls, applications):
-        pool = Pool()
-        User = pool.get('res.user')
-        super(UserApplication, cls).delete(applications)
-        User._get_preferences_cache.clear()
 
 
 class EmailResetPassword(Report):

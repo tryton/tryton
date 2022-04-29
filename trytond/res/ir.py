@@ -176,16 +176,6 @@ class RuleGroupGroup(ModelSQL):
             select=True, required=True)
 
 
-class Lang(metaclass=PoolMeta):
-    __name__ = 'ir.lang'
-
-    @classmethod
-    def write(cls, langs, values, *args):
-        super(Lang, cls).write(langs, values, *args)
-        # Restart the cache for get_preferences
-        Pool().get('res.user')._get_preferences_cache.clear()
-
-
 class SequenceType(metaclass=PoolMeta):
     __name__ = 'ir.sequence.type'
     groups = fields.Many2Many('ir.sequence.type-res.group', 'sequence_type',
@@ -222,35 +212,6 @@ class SequenceTypeGroup(ModelSQL):
         super(SequenceTypeGroup, cls).write(records, values, *args)
         # Restart the cache on the domain_get method
         Rule._domain_get_cache.clear()
-
-
-class ModuleConfigWizardItem(metaclass=PoolMeta):
-    __name__ = 'ir.module.config_wizard.item'
-
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        User = pool.get('res.user')
-        result = super(ModuleConfigWizardItem, cls).create(vlist)
-        # Restart the cache for get_preferences
-        User._get_preferences_cache.clear()
-        return result
-
-    @classmethod
-    def write(cls, items, values, *args):
-        pool = Pool()
-        User = pool.get('res.user')
-        super(ModuleConfigWizardItem, cls).write(items, values, *args)
-        # Restart the cache for get_preferences
-        User._get_preferences_cache.clear()
-
-    @classmethod
-    def delete(cls, items):
-        pool = Pool()
-        User = pool.get('res.user')
-        super(ModuleConfigWizardItem, cls).delete(items)
-        # Restart the cache for get_preferences
-        User._get_preferences_cache.clear()
 
 
 class Export(metaclass=PoolMeta):
