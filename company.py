@@ -37,10 +37,3 @@ class Company(metaclass=PoolMeta):
     @staticmethod
     def default_hours_per_work_year():
         return 1920
-
-    @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        User = pool.get('res.user')
-        super(Company, cls).write(*args)
-        User._get_preferences_cache.clear()
