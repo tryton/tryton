@@ -212,9 +212,12 @@ class Invoice(metaclass=PoolMeta):
     def _post(cls, invoices):
         pool = Pool()
         InvoiceSII = pool.get('account.invoice.sii')
+        posted_invoices = {
+            i for i in invoices if i.state in {'draft', 'validated'}}
         super()._post(invoices)
-        InvoiceSII.save(
-            [InvoiceSII(invoice=i) for i in invoices if i.es_send_to_sii])
+        InvoiceSII.save([
+                InvoiceSII(invoice=i) for i in posted_invoices
+                if i.es_send_to_sii])
 
     @property
     def es_send_to_sii(self):
