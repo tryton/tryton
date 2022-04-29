@@ -337,7 +337,7 @@
         },
         save_optional: function(store=true) {
             var fields = {};
-            for (const optional of this.optionals) {
+            for (const column of this.optionals) {
                 fields[column.attributes.name] = !column.get_visible();
             }
             if (store) {
