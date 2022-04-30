@@ -14,6 +14,7 @@ import unicodedata
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from decimal import Decimal
+from pathlib import PurePath
 
 try:
     from http import HTTPStatus
@@ -483,9 +484,9 @@ def file_selection(title, filename='',
     if button != Gtk.ResponseType.OK:
         result = None
     elif not multi:
-        result = win.get_filename()
+        result = PurePath(win.get_filename())
     else:
-        result = win.get_filenames()
+        result = [PurePath(f) for f in win.get_filenames()]
     parent.present()
     win.destroy()
     return result
@@ -570,6 +571,23 @@ def file_open(filename, type=None, print_p=False):
             subprocess.Popen(['xdg-open', filename])
         except OSError:
             save()
+
+
+def url_open(uri):
+    try:
+        return urllib.request.urlopen(uri)
+    except urllib.error.URLError:
+        if sys.platform == 'win32' and uri.startswith('file://'):
+            # There are two ways that Windows UNC filenames can be represented:
+            # file://server/folder/data.xml
+            # file:////server/folder/data.xml
+            if uri.startswith('file:////'):
+                uri = uri[len('file://'):]
+            else:
+                uri = uri[len('file:')]
+            return open(uri)
+        else:
+            raise
 
 
 def mailto(to=None, cc=None, subject=None, body=None, attachment=None):

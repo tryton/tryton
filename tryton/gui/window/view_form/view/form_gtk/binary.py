@@ -3,12 +3,11 @@
 import gettext
 import os
 from urllib.parse import unquote, urlparse
-from urllib.request import urlopen
 
 from gi.repository import Gdk, Gtk
 
 from tryton.common import (
-    Tooltips, common, file_open, file_selection, file_write)
+    Tooltips, common, file_open, file_selection, file_write, url_open)
 from tryton.common.entry_position import reset_position
 
 from .widget import Widget
@@ -92,7 +91,7 @@ class BinaryMixin(Widget):
         filename = file_selection(
             _('Select'), preview=self.preview, filters=self.filters)
         if filename:
-            self._set_uri('file:///' + filename)
+            self._set_uri(filename.as_uri())
 
     def select_drag_data_received(
             self, widget, context, x, y, selection, info, timestamp):
@@ -103,7 +102,7 @@ class BinaryMixin(Widget):
 
     def _set_uri(self, uri):
         uri = unquote(uri)
-        self.field.set_client(self.record, urlopen(uri).read())
+        self.field.set_client(self.record, url_open(uri).read())
         if self.filename_field:
             self.filename_field.set_client(self.record,
                 os.path.basename(urlparse(uri).path))

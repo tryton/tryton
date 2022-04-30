@@ -6,9 +6,9 @@ import os
 import webbrowser
 from functools import partial
 from urllib.parse import unquote, urlparse
-from urllib.request import urlopen
 
-from tryton.common import RPCException, RPCExecute, file_open, file_write
+from tryton.common import (
+    RPCException, RPCExecute, file_open, file_write, url_open)
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
 
@@ -53,7 +53,7 @@ class Attachment(WinForm):
             file_name = os.path.basename(unquote(parse.path))
             name_field.set_client(new_record, file_name)
             if parse.scheme == 'file':
-                data_field.set_client(new_record, urlopen(uri).read())
+                data_field.set_client(new_record, url_open(uri).read())
                 type_field.set_client(new_record, 'data')
             else:
                 link_field.set_client(new_record, uri)
@@ -61,7 +61,7 @@ class Attachment(WinForm):
         self.screen.display()
 
     def add_file(self, filename):
-        self.add_uri('file:///' + filename)
+        self.add_uri(filename.as_uri())
 
     @staticmethod
     def get_attachments(record):

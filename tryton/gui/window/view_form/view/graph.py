@@ -163,8 +163,7 @@ class ViewGraph(View):
                     preview=False,
                     filters=[filter])
                 if width and height and filename:
-                    if not filename.endswith('.png'):
-                        filename = filename + '.png'
+                    filename = filename.with_suffix('.png')
                     try:
                         self.widgets['root'].export_png(
                             filename, width, height)

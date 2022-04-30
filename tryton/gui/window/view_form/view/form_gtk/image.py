@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gettext
-import urllib.request
 
 from gi.repository import Gdk, Gtk
 
-from tryton.common import data2pixbuf, resize_pixbuf
+from tryton.common import data2pixbuf, resize_pixbuf, url_open
 from tryton.config import CONFIG
 
 from .binary import BinaryMixin
@@ -82,14 +81,12 @@ class Image(BinaryMixin, Widget):
         if info == 0:
             uri = selection.get_text().split('\n')[0]
             if uri:
-                self.field.set_client(
-                    self.record, urllib.request.urlopen(uri).read())
+                self.field.set_client(self.record, url_open(uri).read())
             self.update_img()
         elif info == 1:
             uri = selection.data.split('\r\n')[0]
             if uri:
-                self.field.set_client(
-                    self.record, urllib.request.urlopen(uri).read())
+                self.field.set_client(self.record, url_open(uri).read())
             self.update_img()
         elif info == 2:
             data = selection.get_pixbuf()
