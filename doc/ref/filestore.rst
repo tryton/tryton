@@ -12,28 +12,28 @@ FileStore
    It uses a two levels of directory composed of the 2 chars of the file hash.
    It is an append only storage.
 
-.. method:: get(id[, prefix])
+.. method:: FileStore.get(id[, prefix])
 
    Retrieve the content of the file referred by the id in the prefixed
    directory.
 
-.. method:: getmany(ids[, prefix])
+.. method:: FileStore.getmany(ids[, prefix])
 
    Retrieve a list of contents for the sequence of ids.
 
-.. method:: size(id[, prefix])
+.. method:: FileStore.size(id[, prefix])
 
    Return the size of the file referred by the id in the prefixed directory.
 
-.. method:: sizemany(ids[, prefix])
+.. method:: FileStore.sizemany(ids[, prefix])
 
    Return a list of sizes for the sequence of ids.
 
-.. method:: set(data[, prefix])
+.. method:: FileStore.set(data[, prefix])
 
    Store the data in the prefixed directory and return the identifiers.
 
-.. method:: setmany(data[, prefix])
+.. method:: FileStore.setmany(data[, prefix])
 
    Store the sequence of data and return a list of identifiers.
 

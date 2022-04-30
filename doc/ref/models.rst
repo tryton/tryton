@@ -904,7 +904,7 @@ Instance methods:
 sequence_ordered
 ================
 
-.. method:: sequence_ordered([field_name, [field_label, [order]]])
+.. function:: sequence_ordered([field_name, [field_label, [order]]])
 
 Return a mixin_ class which defines the order of a :class:`ModelSQL` with an
 :class:`~fields.Integer` field.
@@ -995,7 +995,7 @@ Class attributes are:
 tree
 ====
 
-.. method:: tree([parent[, name[, separator]]])
+.. function:: tree([parent[, name[, separator]]])
 
 Return a mixin_ class :class:`TreeMixin`.
 
@@ -1018,7 +1018,7 @@ name by concatenating each parent names using it as separator and
 avatar_mixin
 ============
 
-.. method:: avatar_mixin([size[, default]])
+.. function:: avatar_mixin([size[, default]])
 
 Return a mixin_ :class:`AvatarMixin`.
 

@@ -28,55 +28,55 @@ Cache
        As there is no deepcopy of the values cached, they must never be mutated
        after being set in or retrieved from the cache.
 
-.. attribute:: hit
+.. attribute:: Cache.hit
 
    Count the number of times the cache returned a cached value.
 
-.. attribute:: miss
+.. attribute:: Cache.miss
 
    Count the number of times the cache did not contain the key.
 
-.. classmethod:: stats()
+.. classmethod:: Cache.stats()
 
    Yield statistics for each instance.
 
-.. method:: get(key[, default])
+.. method:: Cache.get(key[, default])
 
    Retrieve the value of the key in the cache.
 
    If a ``default`` is specified it is returned when the key is missing
    otherwise it returns ``None``.
 
-.. method:: set(key, value)
+.. method:: Cache.set(key, value)
 
    Set the ``value`` of the ``key`` in the cache.
 
-.. method:: clear()
+.. method:: Cache.clear()
 
    Clear all the keys in the cache.
 
-.. classmethod:: clear_all()
+.. classmethod:: Cache.clear_all()
 
    Clear all cache instances.
 
-.. classmethod:: sync(transaction)
+.. classmethod:: Cache.sync(transaction)
 
    Synchronize caches between servers using :class:`transaction
    <trytond.transaction.Transaction>` instance.
 
-.. method:: sync_since(value)
+.. method:: Cache.sync_since(value)
 
    Return ``True`` if the last synchronization was done before ``value``.
 
-.. classmethod:: commit(transaction)
+.. classmethod:: Cache.commit(transaction)
 
    Apply cache changes from transaction.
 
-.. classmethod:: rollback(transaction)
+.. classmethod:: Cache.rollback(transaction)
 
    Remove cache changes from transaction.
 
-.. classmethod:: drop(dbname)
+.. classmethod:: Cache.drop(dbname)
 
    Drop all caches for named database.
 

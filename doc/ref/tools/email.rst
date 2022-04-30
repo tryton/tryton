@@ -4,6 +4,6 @@
 Email
 =====
 
-.. method:: set_from_header(message, sender, from\_)
+.. function:: set_from_header(message, sender, from\_)
 
    Fill email headers to appear at best from the address.

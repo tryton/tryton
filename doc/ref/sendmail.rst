@@ -4,7 +4,7 @@
 Sendmail
 ========
 
-.. method:: sendmail_transactional(from_addr, to_addrs, msg[, transaction[, datamanager[, strict]]])
+.. function:: sendmail_transactional(from_addr, to_addrs, msg[, transaction[, datamanager[, strict]]])
 
    Send email message only if the current transaction is successfully committed.
 
@@ -21,7 +21,7 @@ Sendmail
 
       An SMTP failure is only logged without raising any exception.
 
-.. method:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
+.. function:: sendmail(from_addr, to_addrs, msg[, server[, strict]])
 
    Send email message like :meth:`sendmail_transactional` but directly without
    caring about the transaction and return the ``server``.
@@ -32,7 +32,7 @@ Sendmail
    If strict is ``True``, an exception is raised if it is not possible to
    connect to the server.
 
-.. method:: get_smtp_server([uri[, strict]])
+.. function:: get_smtp_server([uri[, strict]])
 
    Return a SMTP instance from `smtplib`_ using the ``uri`` or the one defined
    in the ``email`` section of the :ref:`configuration <topics-configuration>`.

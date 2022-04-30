@@ -4,7 +4,7 @@
 Internationalization
 ====================
 
-.. method:: gettext(message_id, [language[, \**variables]])
+.. function:: gettext(message_id, [language[, \**variables]])
 
    Return the message translated into the ``language``.
 
@@ -14,7 +14,7 @@ Internationalization
    If ``language`` is not set, then the :attr:`Transaction.language
    <trytond.transaction.Transaction.language>` is used.
 
-.. method:: lazy_gettext(message_id, [language[, \**variables]])
+.. function:: lazy_gettext(message_id, [language[, \**variables]])
 
    Return a LazyString that will be translated with gettext later when actually
    used.

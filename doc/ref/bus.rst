@@ -69,9 +69,9 @@ The default implementation provides an helper method to construct the response:
 Notification
 ------------
 
-Tryton provides a shortcut to send a notification with the ``notify`` method.
+Tryton provides a shortcut to send a notification with the ``notify`` function.
 
-.. method:: notify(title[, body[, priority[, user[, client]]]])
+.. function:: notify(title[, body[, priority[, user[, client]]]])
 
    Send a text message to a user's client to be displayed using a notification
    popup. The meaning of ``title``, ``body`` and ``priority`` is defined in
