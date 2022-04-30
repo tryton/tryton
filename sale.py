@@ -200,7 +200,7 @@ class GiftCard(ModelSQL, ModelView):
             msg['From'] = from_
             msg['To'] = email
             msg['Subject'] = Header(title, 'utf-8')
-            sendmail_transactional(from_, [email], msg, strict=True)
+            sendmail_transactional(from_, [email], msg)
 
 
 class GiftCardEmail(Report):
