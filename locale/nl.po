@@ -8,7 +8,7 @@ msgstr "Kosten"
 
 msgctxt "field:account.dunning.fee,compute_method:"
 msgid "Compute Method"
-msgstr "Berekenings Methode"
+msgstr "Berekening Methode"
 
 msgctxt "field:account.dunning.fee,journal:"
 msgid "Journal"
@@ -36,7 +36,7 @@ msgstr "Valuta"
 
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
-msgstr "aanmaning"
+msgstr "Aanmaning"
 
 msgctxt "field:account.dunning.fee.dunning_level,level:"
 msgid "Level"
@@ -64,7 +64,7 @@ msgstr "Herinneringskosten Herinnering - Herinneringsniveau"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Fees"
-msgstr "Vergoeding"
+msgstr "Vergoedingen"
 
 msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
 msgid "Fee must be unique by dunning and level."
@@ -72,7 +72,7 @@ msgstr "De vergoeding moet uniek zijn voor aanmaning en niveau."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Fees"
-msgstr "Vergoeding"
+msgstr "Vergoedingen"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

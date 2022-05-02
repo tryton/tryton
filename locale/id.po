@@ -20,7 +20,7 @@ msgstr "Nama"
 
 msgctxt "field:account.dunning.fee,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "view:account.dunning.fee:"
 msgid "%"
