@@ -539,7 +539,7 @@ msgstr "Plannen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapporten"
+msgstr "Rapportage"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"

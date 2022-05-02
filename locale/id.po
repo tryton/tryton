@@ -102,7 +102,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:commission.agent.selection,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Karyawan"
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
@@ -185,14 +185,13 @@ msgctxt "field:commission.reporting.agent,base_amount_trend:"
 msgid "Base Amount Trend"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:commission.reporting.agent,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nomor"
 
 msgctxt "field:commission.reporting.agent,time_series:"
 msgid "Time Series"
@@ -216,19 +215,17 @@ msgctxt "field:commission.reporting.agent.time_series,base_amount_trend:"
 msgid "Base Amount Trend"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,date:"
 msgid "Date"
 msgstr "Tanggal"
 
 msgctxt "field:commission.reporting.agent.time_series,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nomor"
 
 #, fuzzy
 msgctxt "field:commission.reporting.context,from_date:"
@@ -242,7 +239,7 @@ msgstr "Faktur"
 
 msgctxt "field:commission.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 #, fuzzy
 msgctxt "field:commission.reporting.context,to_date:"
