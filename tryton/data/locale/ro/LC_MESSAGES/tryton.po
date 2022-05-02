@@ -14,6 +14,9 @@ msgstr "logare totul la nivel INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "specificați nivelul jurnalului: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "specificati utilizatorul"
 
@@ -138,10 +141,6 @@ msgstr "<i>Căutare...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Creare...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Imposibil de căutat pentru finalizarea %s"
 
 msgid "Value"
 msgstr "Valoare"
@@ -637,9 +636,6 @@ msgstr "Lucrează acum la înregistrările duplicate."
 msgid "Record saved."
 msgstr "Înregistrare salvată."
 
-msgid " of "
-msgstr " de "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -892,18 +888,8 @@ msgstr "inregistrare %d salvata."
 msgid "%d records saved."
 msgstr "inregistrari %d salvate."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-"Operația a eșuat.\n"
-"Mesaj de eroare:\n"
-"%s"
-
-msgid "Error"
-msgstr "Eroare"
+msgid "Export failed"
+msgstr "Export eşuat"
 
 msgid "Link"
 msgstr "Legătură"
@@ -951,12 +937,18 @@ msgstr "Rânduri de sarit:"
 msgid "You must select an import file first."
 msgstr "Mai întâi trebuie să selectați un fișier de import."
 
-msgid "Error opening CSV file"
-msgstr "Eroare la deschiderea fișierului CSV"
+msgid "Detection failed"
+msgstr "Detectarea a eșuat"
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Eroare la procesarea fișierului în câmpul %s."
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Import failed"
+msgstr "Import eşuat"
 
 #, python-format
 msgid "%d record imported."
@@ -976,10 +968,6 @@ msgstr "Căutare %s"
 msgid "Wizard"
 msgstr "Asistent"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Imposibil de șters asistent de configurare %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -994,10 +982,6 @@ msgstr "Editat de"
 
 msgid "Edited at"
 msgstr "Editat la"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Nu se poate obține starea arborelui de vizualizare pentru %s"
 
 msgid "Unable to set view tree state"
 msgstr "Imposibil de setat starea arborelui de vizualizare"

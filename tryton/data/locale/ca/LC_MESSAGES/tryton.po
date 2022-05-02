@@ -18,6 +18,9 @@ msgstr "Registra tota la informació amb nivell INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "indica el nivell de log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr "Indica el fitxer a utiltizar per la sortida d'informació de registre"
+
 msgid "specify the login user"
 msgstr "Indica l'usuari"
 
@@ -142,10 +145,6 @@ msgstr "<i>Cerca...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Crea...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "No es pot buscar l'autocompletat de %s"
 
 msgid "Value"
 msgstr "Valor"
@@ -641,9 +640,6 @@ msgstr "Està treballant amb un registre(s) duplicat."
 msgid "Record saved."
 msgstr "Registre desat."
 
-msgid " of "
-msgstr " de "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -896,18 +892,8 @@ msgstr "S'ha desat %d registre."
 msgid "%d records saved."
 msgstr "S'han desat %d registres."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-"Ha fallat l'operació.\n"
-"Missatge d'error:\n"
-"%s"
-
-msgid "Error"
-msgstr "Error"
+msgid "Export failed"
+msgstr "Ha fallat l'exportació"
 
 msgid "Link"
 msgstr "Enllaç"
@@ -955,12 +941,18 @@ msgstr "Línies a ometre:"
 msgid "You must select an import file first."
 msgstr "Primer heu de seleccionar un fitxer a importar."
 
-msgid "Error opening CSV file"
-msgstr "Error a l'obrir el fitxer CSV"
+msgid "Detection failed"
+msgstr "Ha fallat la detecció"
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "S'ha produït un error en processar el fitxer en el camp %s."
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Import failed"
+msgstr "Ha fallat la importació"
 
 #, python-format
 msgid "%d record imported."
@@ -980,10 +972,6 @@ msgstr "Cerca %s"
 msgid "Wizard"
 msgstr "Assistent"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "No s'ha pogut eliminar l'assistent %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -998,10 +986,6 @@ msgstr "Editat per"
 
 msgid "Edited at"
 msgstr "Editat el"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "No s'ha pogut obtenir l'estat de la vista d'arbre de %s"
 
 msgid "Unable to set view tree state"
 msgstr "No s'ha pogut desar l'estat de la vista d'arbre"

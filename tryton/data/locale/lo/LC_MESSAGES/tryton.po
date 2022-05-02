@@ -18,6 +18,9 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 "ລະບຸ ລະດັບ ການບັນທຶກ: ແກ້ໄຂຂໍ້ຜິດພາດ, ຂໍ້ມູນ, ຄຳເຕືອນ, ຂໍ້ຜິດພາດ, ທີ່ສຳຄັນ"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "ລະບຸ ຜູ້ເຂົ້າໃຊ້ງານ"
 
@@ -145,10 +148,6 @@ msgstr "<i>ຊອກຫາ...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>ສ້າງ...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr ""
 
 msgid "Value"
 msgstr "ຄ່າ"
@@ -675,9 +674,6 @@ msgstr "ດຽວນີ້ກຳລັງເຮັດວຽກກັບແຖວ
 msgid "Record saved."
 msgstr "ແຖວຂໍ້ມູນບັນທຶກແລ້ວ"
 
-msgid " of "
-msgstr " ຂອງ "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -935,18 +931,8 @@ msgstr "ແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 msgid "%d records saved."
 msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"ການດຳເນີນການລົ້ມເຫຼວ!\n"
-"ຂໍ້ຄວາມເຕືອນຂໍ້ຜິດພາດ:\n"
-"%s"
-
-msgid "Error"
-msgstr "ຜິດພາດ"
 
 msgid "Link"
 msgstr "ເຊື່ອມໂຍງ"
@@ -994,12 +980,18 @@ msgstr "ແຖວທີ່ຈະຂວ້າມ:"
 msgid "You must select an import file first."
 msgstr "ກ່ອນອື່ນ ທ່ານຕ້ອງໄດ້ເລືອກ ຟາຍລ໌ ທີ່ຈະນໍາເຂົ້າກ່ອນ."
 
-msgid "Error opening CSV file"
-msgstr "ຜິດພາດໃນການໄຂ ຟາຍລ໌ CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "ປະມວນຜົນ ຟາຍລ໌ ຜິດພາດ ໃນຊ່ອງຂໍ້ມູນ %s."
+
+msgid "Error"
+msgstr "ຜິດພາດ"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -1019,10 +1011,6 @@ msgstr "ຊອກຫາ %s"
 msgid "Wizard"
 msgstr "ໂຕນໍາພາສ້າງ"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 msgid "ID"
 msgstr "ເລກລໍາດັບ"
 
@@ -1041,10 +1029,6 @@ msgstr "ແກ້ໄຂ"
 #, fuzzy
 msgid "Edited at"
 msgstr "ແກ້ໄຂ"
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້ %s"
 
 msgid "Unable to set view tree state"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້"

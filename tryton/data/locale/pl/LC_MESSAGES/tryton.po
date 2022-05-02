@@ -17,6 +17,9 @@ msgstr "rejestrowanie wszystkiego na poziomie INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "podaj poziom rejestrowania: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "podaj login użytkownika"
 
@@ -141,10 +144,6 @@ msgstr "<i>Szukaj...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Utwórz...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Brak możliwości wyszukania uzupełnienia dla %s"
 
 msgid "Value"
 msgstr "Wartość"
@@ -643,9 +642,6 @@ msgstr "Pracujesz na zduplikowanym(ch) rekordzie(ch)."
 msgid "Record saved."
 msgstr "Rekord został zapisany."
 
-msgid " of "
-msgstr " z "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -898,18 +894,8 @@ msgstr "%d rekord został zapisany."
 msgid "%d records saved."
 msgstr "%d rekordy zostały zapisane."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Operacja nie powiodła się.\n"
-"Komunikat błędu:\n"
-"%s"
-
-msgid "Error"
-msgstr "Błąd"
 
 msgid "Link"
 msgstr "Link"
@@ -957,12 +943,18 @@ msgstr "Wiersze do ominięcia:"
 msgid "You must select an import file first."
 msgstr "Wybierz plik do zaimportowania."
 
-msgid "Error opening CSV file"
-msgstr "Błąd otwarcia pliku CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Błąd przetwarzania pliku w polu %s."
+
+msgid "Error"
+msgstr "Błąd"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -982,10 +974,6 @@ msgstr "Szukaj %s"
 msgid "Wizard"
 msgstr "Kreator"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Brak możliwości usunięcia kreatora %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -1001,10 +989,6 @@ msgstr "Zmodyfikował"
 
 msgid "Edited at"
 msgstr "Data modyfikacji"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Brak możliwości uzyskania stanu widoku drzewa dla %s"
 
 msgid "Unable to set view tree state"
 msgstr "Brak możliwości ustawienia stanu widoku drzewa"

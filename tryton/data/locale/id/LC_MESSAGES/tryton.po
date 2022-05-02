@@ -14,6 +14,9 @@ msgstr "mencatat semua pada level INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "tentukan tingkatan log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "tentukan user login"
 
@@ -57,7 +60,7 @@ msgid "OK"
 msgstr "OK"
 
 msgid "Your selection:"
-msgstr "Pilihan anda:"
+msgstr "Pilihan Anda:"
 
 msgid "Select"
 msgstr "Pilih"
@@ -84,7 +87,7 @@ msgid "Concurrency Exception"
 msgstr ""
 
 msgid "This record has been modified while you were editing it."
-msgstr "Rekaman ini telah diubah selagi anda menyuntingnya."
+msgstr "Rekaman ini telah diubah selagi Anda menyuntingnya."
 
 msgid "Cancel saving"
 msgstr "Batalkan penyimpanan"
@@ -99,7 +102,7 @@ msgid "Write Anyway"
 msgstr "Tetap Menulis"
 
 msgid "Save your current version"
-msgstr "Simpan versi anda saat ini"
+msgstr "Simpan versi Anda saat ini"
 
 #, python-format
 msgid "Compare: %s"
@@ -138,10 +141,6 @@ msgstr "<i>Cari...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Buat...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Tidak dapat mencari penyelesaian %s"
 
 msgid "Value"
 msgstr "Nilai"
@@ -210,13 +209,13 @@ msgid "E-Mail..."
 msgstr "E-Mail..."
 
 msgid "Bold"
-msgstr "Tulisan Tebal"
+msgstr "Tebal"
 
 msgid "Italic"
-msgstr "Tulisan Miring"
+msgstr "Miring"
 
 msgid "Underline"
-msgstr "Tulisan Garis Bawah"
+msgstr "Garis Bawah"
 
 msgid "Align Left"
 msgstr "Rata Kiri"
@@ -512,7 +511,7 @@ msgid "Incompatible version of the server."
 msgstr ""
 
 msgid "Could not connect to the server."
-msgstr ""
+msgstr "Tidak dapat terhubung ke server."
 
 msgid "Login"
 msgstr ""
@@ -555,38 +554,34 @@ msgid "Bcc:"
 msgstr ""
 
 msgid "Subject:"
-msgstr "Subject:"
+msgstr ""
 
 msgid "Body"
-msgstr "Body"
+msgstr ""
 
-#, fuzzy
 msgid "Reports"
-msgstr "Laporan"
+msgstr "Laporan-Laporan"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Lampiran-Lampiran"
 
 msgid "Files"
-msgstr ""
+msgstr "Berkas-Berkas"
 
 msgid "Send"
 msgstr "Kirim"
 
-#, fuzzy
 msgid "Select File"
-msgstr "Pilih"
+msgstr "Pilih Berkas"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "Hapus <Del>"
+msgstr "Hapus Berkas"
 
 msgid "Add..."
 msgstr ""
 
-#, fuzzy
 msgid "Preview"
-msgstr "Sebelumnya"
+msgstr "Pratinjau"
 
 msgid "Previous"
 msgstr "Sebelumnya"
@@ -639,9 +634,6 @@ msgid "Working now on the duplicated record(s)."
 msgstr ""
 
 msgid "Record saved."
-msgstr ""
-
-msgid " of "
 msgstr ""
 
 msgid ""
@@ -705,7 +697,7 @@ msgid "Select a revision"
 msgstr ""
 
 msgid "Revision:"
-msgstr ""
+msgstr "Revisi:"
 
 msgid "_Switch View"
 msgstr ""
@@ -895,14 +887,7 @@ msgstr ""
 msgid "%d records saved."
 msgstr ""
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-
-msgid "Error"
+msgid "Export failed"
 msgstr ""
 
 msgid "Link"
@@ -918,7 +903,7 @@ msgid "Switch"
 msgstr ""
 
 msgid "Add"
-msgstr "Tambahkan"
+msgstr "Tambah"
 
 msgid "Remove <Del>"
 msgstr "Hapus <Del>"
@@ -943,7 +928,7 @@ msgid "File to Import:"
 msgstr ""
 
 msgid "Open..."
-msgstr ""
+msgstr "Buka..."
 
 msgid "Lines to Skip:"
 msgstr ""
@@ -951,11 +936,17 @@ msgstr ""
 msgid "You must select an import file first."
 msgstr ""
 
-msgid "Error opening CSV file"
+msgid "Detection failed"
 msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Import failed"
 msgstr ""
 
 #, python-format
@@ -976,29 +967,20 @@ msgstr ""
 msgid "Wizard"
 msgstr "Wisaya"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgid "Created by"
-msgstr "Dibuat oleh:"
+msgstr "Dibuat oleh"
 
 msgid "Created at"
 msgstr "Dibuat pada"
 
 msgid "Edited by"
-msgstr ""
+msgstr "Disunting oleh"
 
 msgid "Edited at"
-msgstr ""
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr ""
+msgstr "Disunting pada"
 
 msgid "Unable to set view tree state"
 msgstr ""
@@ -1013,7 +995,7 @@ msgstr "\"%s\" diperlukan."
 
 #, python-format
 msgid "The values of \"%s\" are not valid."
-msgstr ""
+msgstr "Nilai \"%s\" tidak valid."
 
 msgid "Pre-validation"
 msgstr ""
@@ -1025,10 +1007,10 @@ msgid "Image Size"
 msgstr "Ukuran Gambar"
 
 msgid "Width:"
-msgstr ""
+msgstr "Lebar:"
 
 msgid "Height:"
-msgstr ""
+msgstr "Tinggi:"
 
 msgid "PNG image (*.png)"
 msgstr ""
@@ -1040,7 +1022,7 @@ msgid "Image size too large."
 msgstr "Ukuran gambar terlalu besar."
 
 msgid "Copy"
-msgstr ""
+msgstr "Salin"
 
 msgid "Paste"
 msgstr ""

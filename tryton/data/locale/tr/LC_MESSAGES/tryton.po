@@ -17,6 +17,9 @@ msgstr "Tamamına INFO seviyesinde giriş"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "Log seviyesini belirle: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "Giriş kullanıcısını belirle"
 
@@ -142,10 +145,6 @@ msgid "<i>Search...</i>"
 msgstr ""
 
 msgid "<i>Create...</i>"
-msgstr ""
-
-#, python-format
-msgid "Unable to search for completion of %s"
 msgstr ""
 
 msgid "Value"
@@ -643,9 +642,6 @@ msgstr ""
 msgid "Record saved."
 msgstr ""
 
-msgid " of "
-msgstr ""
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -896,15 +892,8 @@ msgstr ""
 msgid "%d records saved."
 msgstr ""
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-
-msgid "Error"
-msgstr "Hata"
 
 msgid "Link"
 msgstr ""
@@ -952,11 +941,17 @@ msgstr ""
 msgid "You must select an import file first."
 msgstr ""
 
-msgid "Error opening CSV file"
+msgid "Detection failed"
 msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
+msgstr ""
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Import failed"
 msgstr ""
 
 #, python-format
@@ -977,10 +972,6 @@ msgstr ""
 msgid "Wizard"
 msgstr ""
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 msgid "ID"
 msgstr ""
 
@@ -994,10 +985,6 @@ msgid "Edited by"
 msgstr ""
 
 msgid "Edited at"
-msgstr ""
-
-#, python-format
-msgid "Unable to get view tree state for %s"
 msgstr ""
 
 msgid "Unable to set view tree state"

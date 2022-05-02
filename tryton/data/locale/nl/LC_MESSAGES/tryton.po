@@ -6,7 +6,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgid "specify alternate config file"
-msgstr "specificeer een vervangend configuratiebestand"
+msgstr "specificeer een alternatief configuratiebestand"
 
 msgid "development mode"
 msgstr "Ontwikkelingsmodus"
@@ -17,11 +17,15 @@ msgstr "logboek bijhouden op INFO niveau"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "specificeer het log niveau: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+"specificeer het bestand dat wordt gebruikt om loggegevens uit te voeren"
+
 msgid "specify the login user"
 msgstr "specificeer de inlog gebruiker"
 
 msgid "specify the server hostname:port"
-msgstr "servernaam : poort"
+msgstr "specificeer de hostnaam:poort"
 
 #, python-format
 msgid "Unable to write config file %s."
@@ -42,10 +46,10 @@ msgid "%s (%s)"
 msgstr "%s (%s)"
 
 msgid "Select your action"
-msgstr "Selecteer je handeling"
+msgstr "Selecteer een actie"
 
 msgid "No action defined."
-msgstr "Geen handeling gedefinieerd."
+msgstr "Geen actie gedefinieerd."
 
 msgid "By: "
 msgstr "Door: "
@@ -54,7 +58,7 @@ msgid "Selection"
 msgstr "Selectie"
 
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgid "OK"
 msgstr "OK"
@@ -84,19 +88,19 @@ msgid "Yes"
 msgstr "Ja"
 
 msgid "Concurrency Exception"
-msgstr "Simultaan gebruik (error)"
+msgstr "Simultaan gebruik error"
 
 msgid "This record has been modified while you were editing it."
-msgstr "Dit veld werd gewijzigd terwijl u het aan het bewerken was."
+msgstr "Dit record werd gewijzigd terwijl u het aan het bewerken was."
 
 msgid "Cancel saving"
-msgstr "Opslaan afbreken"
+msgstr "Annuleer opslaan"
 
 msgid "Compare"
-msgstr "Vergelijken"
+msgstr "Vergelijk"
 
 msgid "See the modified version"
-msgstr "Toon de gewijzigde versie"
+msgstr "Geef de gewijzigde versie weer"
 
 msgid "Write Anyway"
 msgstr "Overschrijven"
@@ -119,13 +123,13 @@ msgstr "Programmafout melden"
 
 #, python-format
 msgid "Check URL: %s"
-msgstr "controle van de URL: %s"
+msgstr "Controleer URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Kon niet controleren op nieuwe versie."
 
 msgid "A new version is available!"
-msgstr "Een nieuwe versie is beschikbaar!"
+msgstr "Er is een nieuwe versie beschikbaar!"
 
 msgid "Download"
 msgstr "Download"
@@ -142,10 +146,6 @@ msgstr "<i>Zoek...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Maak...</i>"
 
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Kon niet zoeken naar voltooiing van %s"
-
 msgid "Value"
 msgstr "Waarde"
 
@@ -159,10 +159,10 @@ msgid "Display format"
 msgstr "Weergaveformaat"
 
 msgid "Open the calendar"
-msgstr "Open de kalender"
+msgstr "Open kalender"
 
 msgid "Date Format"
-msgstr "Datumnotatie"
+msgstr "Datum formaat"
 
 msgid "Displayed date format"
 msgstr "Weergegeven datumformaat"
@@ -177,10 +177,10 @@ msgid "t"
 msgstr "w (t)"
 
 msgid "False"
-msgstr "Niet waar"
+msgstr "Onwaar"
 
 msgid "Digits"
-msgstr "cijfers"
+msgstr "Decimalen"
 
 msgid "The number of decimal"
 msgstr "Aantal decimalen"
@@ -189,7 +189,7 @@ msgid "Template"
 msgstr "Sjabloon"
 
 msgid "Edit..."
-msgstr "Bewerk..."
+msgstr "Bewerken..."
 
 msgid "Attachments..."
 msgstr "Bijlagen..."
@@ -198,13 +198,13 @@ msgid "Notes..."
 msgstr "Notities..."
 
 msgid "Actions..."
-msgstr "Acties ..."
+msgstr "Acties..."
 
 msgid "Relate..."
-msgstr "Relatie..."
+msgstr "Gerelateerd..."
 
 msgid "Report..."
-msgstr "Verslag..."
+msgstr "Rapport..."
 
 msgid "Print..."
 msgstr "Afdrukken..."
@@ -219,7 +219,7 @@ msgid "Italic"
 msgstr "Cursief"
 
 msgid "Underline"
-msgstr "Onderlijnen"
+msgstr "Onderstrepen"
 
 msgid "Align Left"
 msgstr "Links uitlijnen"
@@ -231,7 +231,7 @@ msgid "Align Right"
 msgstr "Rechts uitlijnen"
 
 msgid "Justify"
-msgstr "Rechtvaardigen"
+msgstr "Uitvullen"
 
 msgid "Foreground Color"
 msgstr "Voorgrondkleur"
@@ -252,7 +252,7 @@ msgid "d"
 msgstr "d"
 
 msgid "h"
-msgstr "h"
+msgstr "u"
 
 msgid "m"
 msgstr "m"
@@ -306,10 +306,10 @@ msgid "Keyboard Shortcuts..."
 msgstr "Sneltoetsen..."
 
 msgid "About..."
-msgstr "Betreft..."
+msgstr "Over..."
 
 msgid "Help"
-msgstr "Help"
+msgstr "Hulp"
 
 msgid "No result found."
 msgstr "Geen resultaat gevonden."
@@ -331,7 +331,7 @@ msgstr ""
 "Verder gaan?"
 
 msgid "Application Shortcuts"
-msgstr "Applicatiesnelkoppelingen"
+msgstr "Applicatie snelkoppelingen"
 
 msgid "Global"
 msgstr "Globaal"
@@ -349,10 +349,10 @@ msgid "Previous tab"
 msgstr "Vorig tabblad"
 
 msgid "Next tab"
-msgstr "Volgende tabblad"
+msgstr "Volgend tabblad"
 
 msgid "Shortcuts"
-msgstr "shortcuts"
+msgstr "Snelkoppelingen"
 
 msgid "Quit"
 msgstr "Stop"
@@ -379,13 +379,13 @@ msgid "Previous entry"
 msgstr "Vorig veld"
 
 msgid "Relation Entries"
-msgstr "Relatie-invoer"
+msgstr "Gerelateerde velden"
 
 msgid "Create new relation"
-msgstr "Nieuwe relatie aanmaken"
+msgstr "Maak een nieuwe relatie"
 
 msgid "Open/Search relation"
-msgstr "Zoek / open relatie"
+msgstr "Zoek / open gerelateerd"
 
 msgid "List Entries"
 msgstr "Lijst invoer"
@@ -394,16 +394,16 @@ msgid "Switch view"
 msgstr "Wissel van weergave"
 
 msgid "Create/Select new line"
-msgstr "Maak/Selecteer nieuwe lijn"
+msgstr "Maak / Selecteer nieuwe regel"
 
 msgid "Open relation"
-msgstr "Open relatie"
+msgstr "Open gerelateerd"
 
 msgid "Mark line for deletion/removal"
-msgstr "Lijn markeren om wissen / verwijderen (delete/removal)"
+msgstr "Markeer regel om te wissen / verwijderen"
 
 msgid "Mark line for removal"
-msgstr "Lijn voor verwijdering markeren"
+msgstr "Markeer regel voor verwijderen"
 
 msgid "Unmark line for deletion"
 msgstr "Annuleer markering voor verwijdering"
@@ -415,31 +415,31 @@ msgid "Move Cursor"
 msgstr "Beweeg cursor"
 
 msgid "Move right"
-msgstr "Naar rechts verplaatsen"
+msgstr "Naar rechts"
 
 msgid "Move left"
-msgstr "Naar links verplaatsen"
+msgstr "Naar links"
 
 msgid "Move up"
-msgstr "Naar boven verplaatsen"
+msgstr "Naar boven"
 
 msgid "Move down"
-msgstr "Naar beneden verplaatsen"
+msgstr "Naar beneden"
 
 msgid "Move up of one page"
-msgstr "Verplaats één pagina omhoog"
+msgstr "Één pagina naar boven"
 
 msgid "Move down of one page"
-msgstr "Verplaats één pagina omlaag"
+msgstr "Één pagina naar beneden"
 
 msgid "Move to top"
-msgstr "Verplaatsen naar begin"
+msgstr "Naar het begin"
 
 msgid "Move to bottom"
-msgstr "Verplaatsen naar einde"
+msgstr "Naar het einde"
 
 msgid "Move to parent"
-msgstr "Verplaats naar bovenliggend niveau"
+msgstr "Naar bovenliggend niveau"
 
 msgid "Select all"
 msgstr "Alles selecteren"
@@ -448,16 +448,16 @@ msgid "Unselect all"
 msgstr "Alles deselecteren"
 
 msgid "Select parent"
-msgstr "Selecteer bovenliggend niveau (parent)"
+msgstr "Selecteer bovenliggend niveau"
 
 msgid "Select/Activate current row"
-msgstr "Selecteer/Activeer huidige rij"
+msgstr "Selecteer / Activeer huidige rij"
 
 msgid "Toggle selection"
 msgstr "Selectie wisselen"
 
 msgid "Expand/Collapse"
-msgstr "uitvouwen/ opvouwen"
+msgstr "Uitvouwen / samenvouwen"
 
 msgid "Expand row"
 msgstr "Rij uitvouwen"
@@ -472,13 +472,13 @@ msgid "Collapse all rows"
 msgstr "Alle rijen samenvouwen"
 
 msgid "Expand all rows"
-msgstr "Vouw alle rijen uit"
+msgstr "Alle rijen uitvouwen"
 
 msgid "Close Tab"
 msgstr "Tabblad sluiten"
 
 msgid "modularity, scalability and security"
-msgstr "modulariteit, schaalbaarheid en veiligheid"
+msgstr "modulair, schaalbaar en veilig"
 
 msgid "translator-credits"
 msgstr "Bert Defoor"
@@ -500,7 +500,7 @@ msgid "Remove selected profile"
 msgstr "Verwijder het geselecteerde profiel"
 
 msgid "Host:"
-msgstr "Host:"
+msgstr "Hostnaam:"
 
 msgid "Database:"
 msgstr "Database:"
@@ -512,16 +512,16 @@ msgid "Username:"
 msgstr "Gebruikersnaam:"
 
 msgid "Incompatible version of the server."
-msgstr "Deze versie is onverenigbaar met de server."
+msgstr "Onjuiste versie van de server."
 
 msgid "Could not connect to the server."
-msgstr "Geen verbinding met de server."
+msgstr "Kan geen verbinding maken met de server."
 
 msgid "Login"
 msgstr "Inlognaam"
 
 msgid "_Cancel"
-msgstr "_Annuleren"
+msgstr "_Annuleer"
 
 msgid "Cancel connection to the Tryton server"
 msgstr "Verbreek verbinding met Tryton server"
@@ -536,7 +536,7 @@ msgid "Profile:"
 msgstr "Profiel:"
 
 msgid "Host / Database information"
-msgstr "Host- / database-informatie"
+msgstr "Hostnaam / database informatie"
 
 msgid "User name:"
 msgstr "Gebruikersnaam:"
@@ -573,7 +573,7 @@ msgid "Files"
 msgstr "Bestanden"
 
 msgid "Send"
-msgstr "Sturen"
+msgstr "Verzenden"
 
 msgid "Select File"
 msgstr "Selecteer bestand"
@@ -599,7 +599,7 @@ msgstr "Bijlage (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr "Opmerking (%d/%d)"
+msgstr "Notitie (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "U moet één record selecteren."
@@ -614,7 +614,7 @@ msgid "Created at:"
 msgstr "Aanmaakdatum:"
 
 msgid "Edited by:"
-msgstr "Aangepast door:"
+msgstr "Bewerkt door:"
 
 msgid "Edited at:"
 msgstr "Bewerkt op:"
@@ -623,10 +623,10 @@ msgid "Model:"
 msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
-msgstr "Weet je zeker dat je dit record wilt verwijderen?"
+msgstr "Weet u zeker dat u dit record wilt verwijderen?"
 
 msgid "Are you sure to remove those records?"
-msgstr "Weet je zeker dat je deze records wilt verwijderen?"
+msgstr "Weet u zeker dat u deze records wilt verwijderen?"
 
 msgid "Records not removed."
 msgstr "Records niet verwijderd."
@@ -635,32 +635,29 @@ msgid "Records removed."
 msgstr "Records verwijderd."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Nu aan het werk op het/de gecopieërde record(s)."
+msgstr "Aan het werk op het(de) gekopieerde record(s)."
 
 msgid "Record saved."
 msgstr "Record opgeslagen."
-
-msgid " of "
-msgstr " van "
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Dit veld is aangepast.\n"
-"Wil je de wijzigingen opslaan?"
+"Dit record is aangepast.\n"
+"Wilt u de wijzigingen opslaan?"
 
 msgid "Launch action"
-msgstr "Start actie"
+msgstr "Actie uitvoeren"
 
 msgid "Relate"
-msgstr "Relatie"
+msgstr "Gerelateerd"
 
 msgid "Open related records"
 msgstr "Open gerelateerde records"
 
 msgid "Report"
-msgstr "Verslag"
+msgstr "Rapport"
 
 msgid "Open report"
 msgstr "Open rapport"
@@ -675,7 +672,7 @@ msgid "_Copy URL"
 msgstr "_Kopieer URL"
 
 msgid "Copy URL into clipboard"
-msgstr "Kopieer de URL naar het klembord"
+msgstr "Kopieer URL naar het klembord"
 
 msgid "Unknown"
 msgstr "Onbekend"
@@ -700,16 +697,16 @@ msgid "Preference"
 msgstr "Voorkeur"
 
 msgid "Revision"
-msgstr "Herziening"
+msgstr "Revisie"
 
 msgid "Select a revision"
 msgstr "Selecteer een revisie"
 
 msgid "Revision:"
-msgstr "Revisie :"
+msgstr "Revisie:"
 
 msgid "_Switch View"
-msgstr "Wijzig beeld"
+msgstr "_Wissel van weergave"
 
 msgid "Switch View"
 msgstr "Wissel van weergave"
@@ -724,7 +721,7 @@ msgid "_Next"
 msgstr "_Volgende"
 
 msgid "Next Record"
-msgstr "Volgende record"
+msgstr "Volgend record"
 
 msgid "_Search"
 msgstr "_Zoeken"
@@ -739,13 +736,13 @@ msgid "_Save"
 msgstr "Op_slaan"
 
 msgid "Save this record"
-msgstr "Bewaar deze record"
+msgstr "Record opslaan"
 
 msgid "_Reload/Undo"
-msgstr "_Ongedaan maken"
+msgstr "_Ongedaan maken / herladen"
 
 msgid "Reload/Undo"
-msgstr "Herladen/Annuleren"
+msgstr "Ongedaan maken / herladen"
 
 msgid "_Duplicate"
 msgstr "_Dupliceren"
@@ -754,31 +751,31 @@ msgid "_Delete..."
 msgstr "_Verwijderen..."
 
 msgid "View _Logs..."
-msgstr "Bekijk logregister..."
+msgstr "Bekijk _logboek..."
 
 msgid "Show revisions..."
-msgstr "Herzieningen tonen ..."
+msgstr "Revisies weergeven ..."
 
 msgid "A_ttachments..."
-msgstr "_Bijlage..."
+msgstr "_Bijlagen..."
 
 msgid "Add an attachment to the record"
 msgstr "Voeg een bijlage toe aan het record"
 
 msgid "_Notes..."
-msgstr "_Notas ..."
+msgstr "_Notities ..."
 
 msgid "Add a note to the record"
-msgstr "Voeg een nota toe aan het veld"
+msgstr "Voeg een notitie toe aan het record"
 
 msgid "_Actions..."
-msgstr "_Acties.."
+msgstr "_Acties..."
 
 msgid "_Relate..."
-msgstr "_Relatie...."
+msgstr "_Gerelateerd..."
 
 msgid "_Report..."
-msgstr "_Verslag..."
+msgstr "_Rapport..."
 
 msgid "_Print..."
 msgstr "_Afdrukken..."
@@ -820,16 +817,16 @@ msgid "CSV Parameters"
 msgstr "CSV parameters"
 
 msgid "Delimiter:"
-msgstr "scheidingsteken:"
+msgstr "Scheidingsteken:"
 
 msgid "Quote char:"
-msgstr "aanhalingstekens :"
+msgstr "Aanhalingstekens:"
 
 msgid "Encoding:"
 msgstr "Codering:"
 
 msgid "Use locale format"
-msgstr "Gebruik lokaal formaat"
+msgstr "Gebruik taalinstellingen"
 
 msgid "Field name"
 msgstr "Veldnaam"
@@ -857,7 +854,7 @@ msgid "Open"
 msgstr "Openen"
 
 msgid "Listed Records"
-msgstr "Vermelde records"
+msgstr "Weergegeven records"
 
 msgid "Selected Records"
 msgstr "Geselecteerde records"
@@ -870,7 +867,7 @@ msgstr "Voeg veldnamen toe"
 
 #, python-format
 msgid "%s (string)"
-msgstr "%s (string)"
+msgstr "%s (tekstregel)"
 
 #, python-format
 msgid "%s (model name)"
@@ -889,24 +886,14 @@ msgstr "Vervang '%s' definitie?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "%d item opgeslagen."
+msgstr "%d record opgeslagen."
 
 #, python-format
 msgid "%d records saved."
-msgstr "%d items opgeslagen."
+msgstr "%d records opgeslagen."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-"Handeling mislukt.\n"
-"Foutmelding:\n"
-"%s"
-
-msgid "Error"
-msgstr "Fout"
+msgid "Export failed"
+msgstr "Exporteren mislukt"
 
 msgid "Link"
 msgstr "Koppeling"
@@ -937,7 +924,7 @@ msgstr "Verwijderen van geselecteerde record <Ins> ongedaan maken"
 
 #, python-format
 msgid "CSV Import: %s"
-msgstr "CSV-Import: %s"
+msgstr "Importeer CSV: %s"
 
 msgid "_Auto-Detect"
 msgstr "_Automatische detectie"
@@ -954,12 +941,18 @@ msgstr "Regels overslaan:"
 msgid "You must select an import file first."
 msgstr "U moet eerst een importbestand selecteren."
 
-msgid "Error opening CSV file"
-msgstr "Fout bij openen CSV-bestand"
+msgid "Detection failed"
+msgstr "Detecteren faalde"
 
 #, python-format
 msgid "Error processing the file at field %s."
-msgstr "Fout bij verwerken van het bestand op veld %s."
+msgstr "Fout bij het verwerken van het bestand op veld %s."
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Import failed"
+msgstr "Importeren faalde"
 
 #, python-format
 msgid "%d record imported."
@@ -979,10 +972,6 @@ msgstr "Zoek %s"
 msgid "Wizard"
 msgstr "Assistent"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Kon de wizard %s niet verwijderen"
-
 msgid "ID"
 msgstr "ID"
 
@@ -993,14 +982,10 @@ msgid "Created at"
 msgstr "Aanmaakdatum"
 
 msgid "Edited by"
-msgstr "Bewerk door"
+msgstr "Bewerkt door"
 
 msgid "Edited at"
 msgstr "Bewerkt op"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Kan view tree-status voor %s niet krijgen"
 
 msgid "Unable to set view tree state"
 msgstr "Kan weergave boomstructuur niet instellen"
@@ -1042,7 +1027,7 @@ msgid "Image size too large."
 msgstr "Afbeelding te groot."
 
 msgid "Copy"
-msgstr "Kopiëren"
+msgstr "Kopieer"
 
 msgid "Paste"
 msgstr "Plakken"
@@ -1060,16 +1045,16 @@ msgid "Remove this bookmark"
 msgstr "Verwijder deze bladwijzer"
 
 msgid "Bookmark this filter"
-msgstr "Maak een bladwijzer van deze filter"
+msgstr "Maak een bladwijzer voor dit filter"
 
 msgid "Show active records"
-msgstr "Toon actieve records"
+msgstr "Geef actieve records weer"
 
 msgid "Show inactive records"
-msgstr "Toon niet actieve records"
+msgstr "Geef niet-actieve records weer"
 
 msgid "Bookmark Name:"
-msgstr "Bladwijzernaam:"
+msgstr "Bladwijzer naam:"
 
 msgid "Find"
 msgstr "Zoeken"
@@ -1127,7 +1112,7 @@ msgid "Add existing record"
 msgstr "Bestaand record toevoegen"
 
 msgid "Remove selected record"
-msgstr "Geselecteerd item verwijderen"
+msgstr "Geselecteerd record verwijderen"
 
 msgid "Open the record <F2>"
 msgstr "Open het record <F2>"
@@ -1155,16 +1140,16 @@ msgid "Translation"
 msgstr "Vertaling"
 
 msgid "Edit"
-msgstr "Bewerk"
+msgstr "Bewerken"
 
 msgid "Fuzzy"
-msgstr "Flauwe"
+msgstr "Onzeker"
 
 msgid "You need to save the record before adding translations."
-msgstr "U moet de record opslaan voordat u vertalingen toevoegt."
+msgstr "U moet de record opslaan voordat u vertalingen kunt toevoegen."
 
 msgid "No other language available."
 msgstr "Geen andere taal beschikbaar."
 
 msgid "Translate view"
-msgstr "Vertaal aanzicht"
+msgstr "Vertaal weergave"

@@ -18,6 +18,9 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 "specifica il livello di registrazione: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "specifica l'utente di accesso"
 
@@ -61,7 +64,7 @@ msgid "OK"
 msgstr "OK"
 
 msgid "Your selection:"
-msgstr "Selezione:"
+msgstr "La tua selezione:"
 
 msgid "Select"
 msgstr "Seleziona"
@@ -143,10 +146,6 @@ msgstr "<i>Cerca...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crea...</i>"
 
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Impossibile cercare per il completamento di %s"
-
 msgid "Value"
 msgstr "Valore"
 
@@ -172,7 +171,7 @@ msgid "y"
 msgstr "a"
 
 msgid "True"
-msgstr "True"
+msgstr "Vero"
 
 msgid "t"
 msgstr "o"
@@ -541,7 +540,7 @@ msgid "Host / Database information"
 msgstr "Informazione su Host/ database"
 
 msgid "User name:"
-msgstr "nome utente"
+msgstr "Nome utente:"
 
 #, fuzzy
 msgid "Unable to complete email entry"
@@ -554,9 +553,8 @@ msgstr "Email %s"
 msgid "To:"
 msgstr "a:"
 
-#, fuzzy
 msgid "Cc:"
-msgstr ".CC"
+msgstr "Cc:"
 
 msgid "Bcc:"
 msgstr ""
@@ -564,17 +562,15 @@ msgstr ""
 msgid "Subject:"
 msgstr "Oggetto:"
 
-#, fuzzy
 msgid "Body"
-msgstr "Corpo:"
+msgstr "Corpo"
 
 #, fuzzy
 msgid "Reports"
 msgstr "Rapporto"
 
-#, fuzzy
 msgid "Attachments"
-msgstr "Allegato:"
+msgstr "Allegati"
 
 msgid "Files"
 msgstr ""
@@ -650,9 +646,6 @@ msgstr "Stai ora lavorando nel record duplicato."
 msgid "Record saved."
 msgstr "Record salvato."
 
-msgid " of "
-msgstr " di "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -667,7 +660,7 @@ msgid "Relate"
 msgstr "Collegato"
 
 msgid "Open related records"
-msgstr "Apri record relazionati"
+msgstr "Apri record correlati"
 
 msgid "Report"
 msgstr "Rapporto"
@@ -907,15 +900,8 @@ msgstr "%d record salvato."
 msgid "%d records saved."
 msgstr "%d record salvato."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-
-msgid "Error"
-msgstr "Errore"
 
 msgid "Link"
 msgstr ""
@@ -961,18 +947,23 @@ msgid "Open..."
 msgstr "Apri..."
 
 msgid "Lines to Skip:"
-msgstr "Righe da saltare."
+msgstr "Righe da saltare:"
 
-#, fuzzy
 msgid "You must select an import file first."
-msgstr "Devi prima selezionare un file di import!"
+msgstr "Devi prima selezionare un file da importare."
 
-msgid "Error opening CSV file"
-msgstr "Errore nell'apertura del file CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Errore nel processare il file nel campo %s."
+
+msgid "Error"
+msgstr "Errore"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -992,21 +983,15 @@ msgstr ""
 msgid "Wizard"
 msgstr "Wizard"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 #, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgid "Created by"
-msgstr "Creato da:"
+msgstr "Creato da"
 
-#, fuzzy
 msgid "Created at"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
 #, fuzzy
 msgid "Edited by"
@@ -1015,10 +1000,6 @@ msgstr "Modifica"
 #, fuzzy
 msgid "Edited at"
 msgstr "Modifica"
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Impossibile configurare la vista ad albero %s"
 
 msgid "Unable to set view tree state"
 msgstr "Impossibile configurare la vista ad albero"
@@ -1087,7 +1068,7 @@ msgid "Show inactive records"
 msgstr ""
 
 msgid "Bookmark Name:"
-msgstr "Nome segnalibro:"
+msgstr "Nome Segnalibro:"
 
 msgid "Find"
 msgstr "Trova"
@@ -1181,13 +1162,11 @@ msgstr "Modifica"
 msgid "Fuzzy"
 msgstr "Vago"
 
-#, fuzzy
 msgid "You need to save the record before adding translations."
-msgstr "E' necessario salvare il record prima di aggiungere le traduzioni!"
+msgstr "È necessario salvare il record prima di aggiungere le traduzioni."
 
-#, fuzzy
 msgid "No other language available."
-msgstr "Nessun altra lingua disponibile!"
+msgstr "Nessun altra lingua è disponibile."
 
 msgid "Translate view"
 msgstr "Traduci vista"

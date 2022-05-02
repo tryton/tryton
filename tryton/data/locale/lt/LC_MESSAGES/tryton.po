@@ -17,6 +17,9 @@ msgstr "rašyti į žurnalą INFO lygiu"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "nurodyti rašymo į žurnalą lygmenį: DEBUG, INFO, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "nurodyti naudotoją"
 
@@ -142,10 +145,6 @@ msgstr "<i>Ieškoti...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Sukurti...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Negalima rasti %s papildymo"
 
 msgid "Value"
 msgstr "Reikšmė"
@@ -656,9 +655,6 @@ msgstr "Dabar dirbate su įrašo(-ų) kopija(-omis)."
 msgid "Record saved."
 msgstr "Įrašas išsaugotas."
 
-msgid " of "
-msgstr " iš "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -914,18 +910,8 @@ msgstr "%d įrašas išsaugotas."
 msgid "%d records saved."
 msgstr "%d įrašai išsaugoti."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Veiksmas neįvykdytas.\n"
-"Klaidos pranešimas:\n"
-"%s"
-
-msgid "Error"
-msgstr "Klaida"
 
 msgid "Link"
 msgstr "Nuoroda"
@@ -973,12 +959,18 @@ msgstr "Praleisti eilutes:"
 msgid "You must select an import file first."
 msgstr "Jūs pirmiausiai turite pasirinkti importo failą."
 
-msgid "Error opening CSV file"
-msgstr "Klaida atveriant CSV failą"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Klaida apdorojant failą ties lauku %s."
+
+msgid "Error"
+msgstr "Klaida"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -998,10 +990,6 @@ msgstr "Ieškoti %s"
 msgid "Wizard"
 msgstr "Vedlys"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Negalima ištrinti %s vedlio"
-
 msgid "ID"
 msgstr "ID"
 
@@ -1017,10 +1005,6 @@ msgstr "Taisęs naudotojas"
 
 msgid "Edited at"
 msgstr "Taisymo data"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Nepavyko gauti hierarchinio rodinio būsenos %s"
 
 msgid "Unable to set view tree state"
 msgstr "Nepavyko nustatyti hierarchinio sąrašo rodinio"

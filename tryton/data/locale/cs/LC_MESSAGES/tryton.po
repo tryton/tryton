@@ -17,6 +17,9 @@ msgstr ""
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "zadejte uživatelské jméno"
 
@@ -147,10 +150,6 @@ msgid "<i>Search...</i>"
 msgstr ""
 
 msgid "<i>Create...</i>"
-msgstr ""
-
-#, python-format
-msgid "Unable to search for completion of %s"
 msgstr ""
 
 #, fuzzy
@@ -690,9 +689,6 @@ msgstr "Nyní pracujete s duplicitním záznamem!"
 msgid "Record saved."
 msgstr "Záznam uložen!"
 
-msgid " of "
-msgstr " z "
-
 #, fuzzy
 msgid ""
 "This record has been modified\n"
@@ -970,18 +966,8 @@ msgstr "%d záznam uložen!"
 msgid "%d records saved."
 msgstr "%d záznamů uloženo!"
 
-#, fuzzy, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Operace selhala.\n"
-"Chybová zpráva:\n"
-"%s"
-
-msgid "Error"
-msgstr "Chyba"
 
 msgid "Link"
 msgstr "Odkaz"
@@ -1034,12 +1020,18 @@ msgstr "Vynechané řádky:"
 msgid "You must select an import file first."
 msgstr "Nejprve je nutné vybrat soubor pro import!"
 
-msgid "Error opening CSV file"
-msgstr "Chyba při otevírání CSV souboru"
+msgid "Detection failed"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Error processing the file at field %s."
 msgstr "Chyba při zpracování souboru u pole %s.\n"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Import failed"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "%d record imported."
@@ -1059,10 +1051,6 @@ msgstr ""
 msgid "Wizard"
 msgstr "Průvodce"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 #, fuzzy
 msgid "ID"
 msgstr "Najít"
@@ -1080,10 +1068,6 @@ msgstr ""
 
 msgid "Edited at"
 msgstr ""
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Nemohu nastavit lokalizaci %s"
 
 #, fuzzy
 msgid "Unable to set view tree state"

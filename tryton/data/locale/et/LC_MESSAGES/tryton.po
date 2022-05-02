@@ -17,6 +17,9 @@ msgstr "logi kõik INFO tasemel"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "määra logimise tase: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "määra kasutaja sisselogimise tunnus"
 
@@ -142,10 +145,6 @@ msgstr "<i>Otsi...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Loo...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr ""
 
 msgid "Value"
 msgstr "Väärtus"
@@ -656,9 +655,6 @@ msgstr ""
 msgid "Record saved."
 msgstr "Kirje salvestatud."
 
-msgid " of "
-msgstr ""
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -915,18 +911,8 @@ msgstr "%d kirje salvestatud."
 msgid "%d records saved."
 msgstr "%d kirjed salvestatud."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Toiming ebaõnnestus.\n"
-"Veateade:\n"
-"%s"
-
-msgid "Error"
-msgstr "Viga"
 
 msgid "Link"
 msgstr "Link"
@@ -974,12 +960,18 @@ msgstr ""
 msgid "You must select an import file first."
 msgstr "Esmalt tuleb valida imporditav fail."
 
-msgid "Error opening CSV file"
-msgstr "CSV faili avamisel tekkis viga"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Faili töötlemisel tekkis väljal %s viga."
+
+msgid "Error"
+msgstr "Viga"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -999,10 +991,6 @@ msgstr "Otsi %s"
 msgid "Wizard"
 msgstr "Nõustaja"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Ei saa kustutada nõustajat %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -1021,10 +1009,6 @@ msgstr "Muuda"
 #, fuzzy
 msgid "Edited at"
 msgstr "Muuda"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr ""
 
 msgid "Unable to set view tree state"
 msgstr ""

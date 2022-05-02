@@ -17,6 +17,9 @@ msgstr "گزارشگیری همه چیز در سطح اطلاعات"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "تعیین سطح گزارش : اشکال زدایی، اطلاعات، هشدار، خطا، بحرانی"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "تعیین ورود به سیستم کاربر"
 
@@ -104,9 +107,9 @@ msgstr "نوشتن بهرحال"
 msgid "Save your current version"
 msgstr "نسخه فعلی خود را ذخیره کنید"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Compare: %s"
-msgstr "مقایسه"
+msgstr "مقایسه: %s"
 
 msgid "Close"
 msgstr "بستن"
@@ -142,10 +145,6 @@ msgstr "<i>جستجو...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>ایجاد...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "قادر به جستجو برای تکمیل : \"%s\" نیست"
 
 msgid "Value"
 msgstr "مقدار"
@@ -554,9 +553,9 @@ msgstr "نام کاربر:"
 msgid "Unable to complete email entry"
 msgstr "قادر به حذف دستیار \"%s\" نیست"
 
-#, fuzzy, python-format
+#, python-format
 msgid "E-mail %s"
-msgstr "ایمیل"
+msgstr "ایمیل %s"
 
 msgid "To:"
 msgstr "به:"
@@ -660,9 +659,6 @@ msgstr "هم اکنون کار بر روی پرونده(ها) تکثیر شده 
 
 msgid "Record saved."
 msgstr "پرونده ذخیره شد."
-
-msgid " of "
-msgstr " از "
 
 msgid ""
 "This record has been modified\n"
@@ -921,18 +917,8 @@ msgstr "%d پرونده ذخیره شد."
 msgid "%d records saved."
 msgstr "%d پرونده های ذخیره شده."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"عملیات ناموفق بود.\n"
-"پیام خطا:\n"
-"%s"
-
-msgid "Error"
-msgstr "خطا"
 
 msgid "Link"
 msgstr "پیوند"
@@ -980,12 +966,18 @@ msgstr "چشم پوشی از سطرهای:"
 msgid "You must select an import file first."
 msgstr "شما باید ابتدا فایل ورودی را انتخاب کنید."
 
-msgid "Error opening CSV file"
-msgstr "خطا در بازگشایی فایل CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "خطای پردازش فایل واقع در فیلد : \"%s\"."
+
+msgid "Error"
+msgstr "خطا"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -1005,10 +997,6 @@ msgstr "جستجو %s"
 msgid "Wizard"
 msgstr "دستیار"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "قادر به حذف دستیار \"%s\" نیست"
-
 msgid "ID"
 msgstr "شناسه"
 
@@ -1027,10 +1015,6 @@ msgstr "ویرایش"
 #, fuzzy
 msgid "Edited at"
 msgstr "ویرایش"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "قادربه دریافت حالت نمایش درختی نیست برای %s"
 
 msgid "Unable to set view tree state"
 msgstr "قادر به تنظیم حالت نمایش درختی نیست"

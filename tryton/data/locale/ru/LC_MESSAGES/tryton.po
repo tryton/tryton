@@ -18,6 +18,9 @@ msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 "указать уровень вывода сообщений: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "указать имя пользователя"
 
@@ -148,10 +151,6 @@ msgstr "<i>Поиск...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Создать...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr ""
 
 #, fuzzy
 msgid "Value"
@@ -687,9 +686,6 @@ msgstr "Сейчас работает на дублирующихся запис
 msgid "Record saved."
 msgstr "Запись сохранена!"
 
-msgid " of "
-msgstr " из "
-
 #, fuzzy
 msgid ""
 "This record has been modified\n"
@@ -956,18 +952,8 @@ msgstr "%d запись сохранена!"
 msgid "%d records saved."
 msgstr "%d записей сохранено!"
 
-#, fuzzy, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Не удалось выполнить операцию!\n"
-"Сообщение об ошибке:\n"
-"%s"
-
-msgid "Error"
-msgstr "Ошибка"
 
 msgid "Link"
 msgstr "Ссылка"
@@ -1017,12 +1003,18 @@ msgstr "Строки для пропуска:"
 msgid "You must select an import file first."
 msgstr "Вы должны сначала выбрать файл для импорта!"
 
-msgid "Error opening CSV file"
-msgstr "Ошибка открытия файла CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Ошибка при обработке файла на поле %s."
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Import failed"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "%d record imported."
@@ -1042,10 +1034,6 @@ msgstr ""
 msgid "Wizard"
 msgstr "Мастер"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 msgid "ID"
 msgstr "ID"
 
@@ -1064,10 +1052,6 @@ msgstr "Редактировать"
 #, fuzzy
 msgid "Edited at"
 msgstr "Редактировать"
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Не удается установить локализацию %s"
 
 #, fuzzy
 msgid "Unable to set view tree state"

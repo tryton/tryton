@@ -17,6 +17,9 @@ msgstr "INFO级别记录日志"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "设置日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "设置登录用户"
 
@@ -141,10 +144,6 @@ msgstr "<i>查找...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>创建...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "无法找到 \" %s \" 的匹配项"
 
 msgid "Value"
 msgstr "值"
@@ -643,9 +642,6 @@ msgstr "正在处理重复记录."
 msgid "Record saved."
 msgstr "记录保存成功."
 
-msgid " of "
-msgstr " of "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -898,18 +894,8 @@ msgstr "%d 记录保存成功."
 msgid "%d records saved."
 msgstr "%d 记录保存成功."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"操作失败!\n"
-"相关错误信息:\n"
-"%s"
-
-msgid "Error"
-msgstr "错误"
 
 msgid "Link"
 msgstr "链接"
@@ -957,12 +943,18 @@ msgstr "跳过行:"
 msgid "You must select an import file first."
 msgstr "必须先选择要导入的文件."
 
-msgid "Error opening CSV file"
-msgstr "打开CSV文件出错"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "处理字段 %s 时出错."
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -982,10 +974,6 @@ msgstr "查找 %s"
 msgid "Wizard"
 msgstr "向导"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "无法删除向导 %s"
-
 msgid "ID"
 msgstr "标识"
 
@@ -1001,10 +989,6 @@ msgstr "编辑人"
 
 msgid "Edited at"
 msgstr "编辑时间"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "无法为 %s 获取视图树状态"
 
 msgid "Unable to set view tree state"
 msgstr "无法设置视图树状态"

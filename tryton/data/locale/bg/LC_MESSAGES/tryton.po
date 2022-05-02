@@ -17,6 +17,9 @@ msgstr "записване на всичко на ниво INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "укажете потребителското име"
 
@@ -146,10 +149,6 @@ msgid "<i>Search...</i>"
 msgstr ""
 
 msgid "<i>Create...</i>"
-msgstr ""
-
-#, python-format
-msgid "Unable to search for completion of %s"
 msgstr ""
 
 #, fuzzy
@@ -684,9 +683,6 @@ msgstr "Работите върху дублиран(и) запис(и)!"
 msgid "Record saved."
 msgstr "Записа съхранен!"
 
-msgid " of "
-msgstr " от"
-
 #, fuzzy
 msgid ""
 "This record has been modified\n"
@@ -955,18 +951,8 @@ msgstr "%d заспис съхранен!"
 msgid "%d records saved."
 msgstr "%d записа съхранени!"
 
-#, fuzzy, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Операцията неуспешна!\n"
-"Съобщение за грешка:\n"
-"%s"
-
-msgid "Error"
-msgstr "Грешка"
 
 msgid "Link"
 msgstr "Връзка"
@@ -1016,12 +1002,18 @@ msgstr "Редове за пропускане:"
 msgid "You must select an import file first."
 msgstr "Първо трябва да изберете файл за вмъкване!"
 
-msgid "Error opening CSV file"
-msgstr "Грешка при отваряне на CSV файл"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Грешка при обработка на файл при поле %s"
+
+msgid "Error"
+msgstr "Грешка"
+
+msgid "Import failed"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "%d record imported."
@@ -1040,10 +1032,6 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "Помощник"
-
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
 
 #, fuzzy
 msgid "ID"
@@ -1064,10 +1052,6 @@ msgstr "Редактиране"
 #, fuzzy
 msgid "Edited at"
 msgstr "Редактиране"
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Не може да зададе локални настройки %s"
 
 #, fuzzy
 msgid "Unable to set view tree state"

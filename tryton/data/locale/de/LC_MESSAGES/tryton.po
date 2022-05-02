@@ -18,6 +18,9 @@ msgstr "Allgemeiner Log-Level: INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "Log-Level angeben: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr "Logdatei angeben"
+
 msgid "specify the login user"
 msgstr "Anmeldename angeben"
 
@@ -144,10 +147,6 @@ msgstr "<i>Suche...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Erstelle...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Unmöglich nach einer Vervollständigung von %s zu suchen"
 
 msgid "Value"
 msgstr "Wert"
@@ -648,9 +647,6 @@ msgstr "Sie arbeiten nun an dem/den duplizierten Datensatz/Datensätzen."
 msgid "Record saved."
 msgstr "Der Datensatz wurde gespeichert."
 
-msgid " of "
-msgstr " von "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -903,18 +899,8 @@ msgstr "%d Datensatz gespeichert."
 msgid "%d records saved."
 msgstr "%d Datensätze gespeichert."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-"Operation fehlgeschlagen.\n"
-"Fehlermeldung:\n"
-"%s"
-
-msgid "Error"
-msgstr "Fehler"
+msgid "Export failed"
+msgstr "Export fehlgeschlagen"
 
 msgid "Link"
 msgstr "Verknüpfung"
@@ -962,12 +948,18 @@ msgstr "Zu überspringende Zeilen:"
 msgid "You must select an import file first."
 msgstr "Es muss zuerst eine Importdatei ausgewählt werden."
 
-msgid "Error opening CSV file"
-msgstr "Fehler beim Öffnen der CSV-Datei"
+msgid "Detection failed"
+msgstr "Lesen der Datei fehlgeschlagen"
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Fehler bei der Verarbeitung der Datei in Feld %s."
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Import failed"
+msgstr "Import fehlgeschlagen"
 
 #, python-format
 msgid "%d record imported."
@@ -987,10 +979,6 @@ msgstr "Suche %s"
 msgid "Wizard"
 msgstr "Assistent"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Der Assistent %s kann nicht gelöscht werden."
-
 msgid "ID"
 msgstr "ID"
 
@@ -1005,10 +993,6 @@ msgstr "Bearbeitet von"
 
 msgid "Edited at"
 msgstr "Bearbeitet um"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Unmöglich den Status für die Baumansicht von %s zu holen."
 
 msgid "Unable to set view tree state"
 msgstr "Kann Sicht für den Menübaum nicht anwenden."

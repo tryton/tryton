@@ -19,6 +19,9 @@ msgstr ""
 "Especifique o nível de registro (log level): DEBUG, INFO, WARNING, ERROR, "
 "CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "Especifique o nome do usuário"
 
@@ -144,10 +147,6 @@ msgstr "<i>Buscar...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Criar...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Não foi possível encontrar complementos de %s"
 
 msgid "Value"
 msgstr "Valor"
@@ -660,9 +659,6 @@ msgstr "Trabalhando agora no(s) registo(s) duplicado(s)"
 msgid "Record saved."
 msgstr "Registo gravado."
 
-msgid " of "
-msgstr " de "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -920,18 +916,8 @@ msgstr "%d registro gravado."
 msgid "%d records saved."
 msgstr "%d registros gravados."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Operação Falhou.\n"
-"Mensagem de erro:\n"
-"%s"
-
-msgid "Error"
-msgstr "Erro"
 
 msgid "Link"
 msgstr "Vínculo"
@@ -979,12 +965,18 @@ msgstr "Linhas a ignorar:"
 msgid "You must select an import file first."
 msgstr "Primeiro você deve selecionar um arquivo para importar."
 
-msgid "Error opening CSV file"
-msgstr "Erro ao abrir arquivo CSV"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Erro ao processar o arquivo no campo %s."
+
+msgid "Error"
+msgstr "Erro"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -1004,10 +996,6 @@ msgstr "Buscar %s"
 msgid "Wizard"
 msgstr "Assistente"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Não é possível apagar o assistente %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -1026,10 +1014,6 @@ msgstr "Editar"
 #, fuzzy
 msgid "Edited at"
 msgstr "Editar"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Não foi possível obter o estado da visualização em árvore para %s"
 
 msgid "Unable to set view tree state"
 msgstr "Não foi possível definir o estado da visão em árvore"

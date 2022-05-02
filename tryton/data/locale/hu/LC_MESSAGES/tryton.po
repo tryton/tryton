@@ -17,6 +17,9 @@ msgstr "minden INFO szintű üzenet naplózva"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "naplózási szint megadása: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+
 msgid "specify the login user"
 msgstr "adja meg a felhasználónevet"
 
@@ -144,10 +147,6 @@ msgstr "<i>Keresés...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Új rekord...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr ""
 
 msgid "Value"
 msgstr "Érték"
@@ -645,9 +644,6 @@ msgstr "Most az új másolaton(okon) dolgozik."
 msgid "Record saved."
 msgstr "Rekord elmentve."
 
-msgid " of "
-msgstr " , összesen "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -900,18 +896,8 @@ msgstr "%d rekord elmentve."
 msgid "%d records saved."
 msgstr "%d rekord elmentve."
 
-#, fuzzy, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
+msgid "Export failed"
 msgstr ""
-"Sikertelen művelet!\n"
-"Error message:\n"
-"%s"
-
-msgid "Error"
-msgstr "Hiba"
 
 msgid "Link"
 msgstr "Hivatkozás"
@@ -959,12 +945,18 @@ msgstr "Átugrandó sorok:"
 msgid "You must select an import file first."
 msgstr "Először adja meg a betöltendő fájlt."
 
-msgid "Error opening CSV file"
-msgstr "Hiba a CSV fájl megnyitásakor"
+msgid "Detection failed"
+msgstr ""
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Nem sikerült feldolgozni a fájlt, mert a %s mezőnél hiba van."
+
+msgid "Error"
+msgstr "Hiba"
+
+msgid "Import failed"
+msgstr ""
 
 #, python-format
 msgid "%d record imported."
@@ -984,10 +976,6 @@ msgstr "%s keresése"
 msgid "Wizard"
 msgstr "Wizard"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr ""
-
 msgid "ID"
 msgstr "ID"
 
@@ -1003,10 +991,6 @@ msgstr "Módosította"
 
 msgid "Edited at"
 msgstr "Módosítás dátuma"
-
-#, fuzzy, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "A menü láthatósága nem állítható be %s"
 
 msgid "Unable to set view tree state"
 msgstr "A menü láthatósága nem állítható be"

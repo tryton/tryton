@@ -17,6 +17,10 @@ msgstr "logger tout au niveau INFO"
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr "spécifie le niveau de log : DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
+msgid "specify the file used to output logging information"
+msgstr ""
+"spécifier le fichier utilisé pour générer les informations de journalisation"
+
 msgid "specify the login user"
 msgstr "spécifier l'identifiant de l'utilisateur"
 
@@ -143,10 +147,6 @@ msgstr "<i>Recherche...</i>"
 
 msgid "<i>Create...</i>"
 msgstr "<i>Créer...</i>"
-
-#, python-format
-msgid "Unable to search for completion of %s"
-msgstr "Impossible de rechercher la complétion de %s"
 
 msgid "Value"
 msgstr "Valeur"
@@ -644,9 +644,6 @@ msgstr "Sur les enregistrement(s) dupliqué(s) maintenant."
 msgid "Record saved."
 msgstr "Enregistrement sauvegardé."
 
-msgid " of "
-msgstr " de "
-
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -899,18 +896,8 @@ msgstr "%d enregistrement sauvé."
 msgid "%d records saved."
 msgstr "%d enregistrements sauvés."
 
-#, python-format
-msgid ""
-"Operation failed.\n"
-"Error message:\n"
-"%s"
-msgstr ""
-"Échec de l'opération.\n"
-"Message d'erreur :\n"
-"%s"
-
-msgid "Error"
-msgstr "Erreur"
+msgid "Export failed"
+msgstr "L'export a échoué"
 
 msgid "Link"
 msgstr "Lien"
@@ -958,12 +945,18 @@ msgstr "Lignes à ignorer :"
 msgid "You must select an import file first."
 msgstr "Vous devez d'abord sélectionner un fichier d'import."
 
-msgid "Error opening CSV file"
-msgstr "Erreur d'ouverture du fichier CSV"
+msgid "Detection failed"
+msgstr "La détection a échoué"
 
 #, python-format
 msgid "Error processing the file at field %s."
 msgstr "Erreur lors du traitement du fichier du champ %s."
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid "Import failed"
+msgstr "L'import a échoué"
 
 #, python-format
 msgid "%d record imported."
@@ -983,10 +976,6 @@ msgstr "Rechercher %s"
 msgid "Wizard"
 msgstr "Assistant"
 
-#, python-format
-msgid "Unable to delete wizard %s"
-msgstr "Impossible de supprimer l'assistant %s"
-
 msgid "ID"
 msgstr "ID"
 
@@ -1001,10 +990,6 @@ msgstr "Édité par"
 
 msgid "Edited at"
 msgstr "Édité le"
-
-#, python-format
-msgid "Unable to get view tree state for %s"
-msgstr "Impossible d'obtenir l'état de la vue arbre de %s"
 
 msgid "Unable to set view tree state"
 msgstr "Impossible de définir l'état de la vue arbre"
