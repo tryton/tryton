@@ -12,7 +12,7 @@ msgstr "Datum"
 
 msgctxt "field:account.dunning.email.log,dunning:"
 msgid "Dunning"
-msgstr "aanmaning"
+msgstr "Aanmaning"
 
 msgctxt "field:account.dunning.email.log,level:"
 msgid "Level"
@@ -20,7 +20,7 @@ msgstr "Niveau"
 
 msgctxt "field:account.dunning.email.log,recipients:"
 msgid "Recipients"
-msgstr "ontvangers"
+msgstr "Ontvangers"
 
 msgctxt "field:account.dunning.email.log,recipients_hidden:"
 msgid "Hidden Recipients"
@@ -40,7 +40,7 @@ msgstr "Van"
 
 msgctxt "field:account.dunning.level,email_template:"
 msgid "Email Template"
-msgstr "Email sjabloon"
+msgstr "Email template"
 
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
@@ -49,13 +49,13 @@ msgstr "Verstuur e-mail"
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
 msgstr ""
-"Gebruiker op de hoogte brengen wanneer er geen e-mail is gevonden om de "
-"aanmaning te verzenden"
+"Gebruiker op de hoogte brengen wanneer er geen e-mail adres is gevonden om "
+"de aanmaning naar toe te verzenden"
 
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
 msgid "Define which e-mail to use from the party's contact mechanisms"
 msgstr ""
-"Bepaal welke e-mail u wilt gebruiken van de contactmechanismen van de "
+"Bepaal welk e-mail adres u wilt gebruiken van de contactmechanismen van de "
 "relatie"
 
 msgctxt "help:account.dunning.level,email_from:"
@@ -69,7 +69,7 @@ msgstr "Aanmanings-Email logboek"
 
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr "Email Logs"
+msgstr "Email Logboek"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
