@@ -16,21 +16,19 @@ msgstr "Utente"
 
 msgctxt "field:res.user.login.sms_code,user_id:"
 msgid "User ID"
-msgstr "ID utente:"
+msgstr "ID utente"
 
-#, fuzzy
 msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
-msgstr "numero telefonico abilitato alla ricezione SMS"
+msgstr "Numero telefonico abilitato alla ricezione di SMS."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
 msgstr "%(name)s codice %(code)s"
 
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
-msgstr ""
+msgstr "Codice SMS per %(login)s"
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"
