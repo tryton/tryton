@@ -235,10 +235,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr ""
@@ -271,9 +267,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgid "Actual Quantity"
+msgstr "ຈຳນວນພາຍໃນ"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1828,9 +1825,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
@@ -1852,9 +1850,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2227,6 +2226,18 @@ msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
@@ -2636,13 +2647,19 @@ msgid "Margins"
 msgstr "ຕົ້ນສະບັບ"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
@@ -2654,9 +2671,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
@@ -3440,12 +3458,47 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "ການຈັດສົ່ງຂອງຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "ຈັດສົ່ງພາຍໃນ"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "ຈຳນວນພາຍໃນ"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventory"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "ການຈັດສົ່ງຄືນໃຫ້ຜູ່ສະໜອງ"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

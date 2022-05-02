@@ -236,10 +236,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Ожидаемое количество"
@@ -271,9 +267,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "Продукт"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Кол-во"
+msgid "Actual Quantity"
+msgstr "Внутреннее количество"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1785,9 +1782,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
@@ -1809,9 +1807,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2208,6 +2207,18 @@ msgid ""
 msgstr ""
 "Вы не можете изменить единицу измерения по умолчанию для продукта, который "
 "связан со складом перемещения."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2618,13 +2629,19 @@ msgid "Margins"
 msgstr "Первоисточник"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Доставка"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
@@ -2636,9 +2653,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
@@ -3375,13 +3393,48 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Нумерация возвратов от заказчика"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Нумерация отгрузки заказчику"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Нумерация внутреннего перемещения"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Инвентаризация"
 
 #, fuzzy
 msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Последовательность"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Доставка"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Нумерация возвратов поставщику"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Нумерация приходов от поставщика"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

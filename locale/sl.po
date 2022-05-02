@@ -226,10 +226,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Predvidena količina"
@@ -260,9 +256,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "Izdelek"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Količina"
+msgid "Actual Quantity"
+msgstr "Notranja količina"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1756,9 +1753,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
@@ -1780,9 +1778,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2178,6 +2177,18 @@ msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
 msgstr "Vrste izdelka, povezanega s prometom zaloge, ni možno popravljati."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2590,13 +2601,19 @@ msgid "Margins"
 msgstr "Porekla"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Pošiljke"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
@@ -2608,9 +2625,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
@@ -3330,13 +3348,48 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr ""
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Štetje vrnjenih odpremnic"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Štetje odpremnic"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Štetje notranjih odpremnic"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Notranja količina"
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Popis"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Zap.št."
+
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Pošiljke"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Štetje vrnjenih prevzemnic"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Štetje prevzemnic"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

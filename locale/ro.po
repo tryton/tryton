@@ -214,10 +214,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Căutare"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr "Căutare Model"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Cantitate Așteptată"
@@ -247,8 +243,8 @@ msgid "Product"
 msgstr "Produs"
 
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Cantitate"
+msgid "Actual Quantity"
+msgstr "Cantitate Reala"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -318,10 +314,9 @@ msgctxt "field:stock.location,quantity_uom_digits:"
 msgid "Quantity UOM Digits"
 msgstr "Cantitate UM Zecimale"
 
-#, fuzzy
 msgctxt "field:stock.location,right:"
 msgid "Right"
-msgstr "Corect"
+msgstr "Dreapta"
 
 msgctxt "field:stock.location,storage_location:"
 msgid "Storage"
@@ -1268,7 +1263,7 @@ msgstr "Cantitatea de stoc în locaţie."
 
 msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
-msgstr ""
+msgstr "Locația de nivel superior în care este stocat stocul."
 
 msgctxt "help:stock.location,waste_locations:"
 msgid "The locations used for waste products from the warehouse."
@@ -1682,15 +1677,13 @@ msgctxt "model:ir.action,name:act_reporting_margin_category_tree"
 msgid "Margins per Category"
 msgstr "Marja după Categorie"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_margin_main"
 msgid "Margins"
-msgstr "Marja"
+msgstr "Marje"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_margin_main_time_series"
 msgid "Margins"
-msgstr "Origine"
+msgstr "Marje"
 
 msgctxt "model:ir.action,name:act_reporting_margin_product"
 msgid "Margins per Product"
@@ -1705,8 +1698,8 @@ msgid "Supplier Shipments"
 msgstr "Expedieri Furnizor"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr "Retururi"
+msgid "Supplier Returns"
+msgstr "Retururi Furnizor"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1725,8 +1718,8 @@ msgid "Supplier Shipments"
 msgstr "Expedieri Furnizor"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr "Retururi"
+msgid "Customer Returns"
+msgstr "Retururi Client"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
@@ -1734,7 +1727,7 @@ msgstr "Configurare"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
-msgstr ""
+msgstr "Lista de reaprovizionare"
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
@@ -1750,7 +1743,7 @@ msgstr "Lista Picking"
 
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
-msgstr ""
+msgstr "Lista de reaprovizionare"
 
 msgctxt "model:ir.action,name:wizard_inventory_count"
 msgid "Count"
@@ -2053,11 +2046,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
-msgstr ""
+msgstr "Cantitatea de mișcare trebuie să fie pozitivă."
 
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
 msgid "You cannot close periods with assigned moves in it."
-msgstr ""
+msgstr "Nu puteți închide perioadele cu mutări atribuite."
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2081,6 +2074,18 @@ msgid ""
 "moves."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr ""
@@ -2092,107 +2097,105 @@ msgstr ""
 "Pentru a șterge rând inventar \"%(line)s\" trebuie anulat inventarul "
 "\"%(inventory)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
 msgstr "Companie"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_cost"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_currency"
 msgid "Currency"
 msgstr "Valută"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin"
 msgid "Margin"
-msgstr ""
+msgstr "Marja"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_margin_trend"
 msgid "Margin Trend"
-msgstr ""
+msgstr "Tendința marjelor"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_number"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_profit"
 msgid "Profit"
-msgstr ""
+msgstr "Profit"
 
 msgctxt "model:ir.message,text:msg_stock_reporting_revenue"
 msgid "Revenue"
-msgstr ""
+msgstr "Venit"
 
 msgctxt "model:ir.model.button,confirm:inventory_cancel_button"
 msgid "Are you sure you want to cancel the inventory?"
-msgstr ""
+msgstr "Sigur doriți să anulați inventarul?"
 
 msgctxt "model:ir.model.button,confirm:inventory_confirm_button"
 msgid "Are you sure you want to confirm the inventory?"
-msgstr ""
+msgstr "Sigur doriți să confirmați inventarul?"
 
 msgctxt "model:ir.model.button,confirm:move_cancel_button"
 msgid "Are you sure you want to cancel the move?"
-msgstr ""
+msgstr "Sigur doriți să anulați mutarea?"
 
 msgctxt "model:ir.model.button,confirm:move_do_button"
 msgid "Are you sure you want to complete the move?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să finalizați mişcarea?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
 msgid "Are you sure you want to receive the shipment?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să primiți transportul?"
 
 msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
 msgid "Are you sure you want to complete the shipment?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să finalizați expedierea?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
 msgid "Are you sure you want to complete the shipment?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să finalizați expedierea?"
 
 msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
 msgid "Are you sure you want to receive the shipment?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să primiți transportul?"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr ""
+msgstr "Adăugați un rând la inventar pentru fiecare produs lipsă"
 
 msgctxt "model:ir.model.button,help:inventory_count_button"
 msgid "Launch the wizard to count products"
-msgstr ""
+msgstr "Lansați expertul pentru a număra produsele"
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
 msgid "Complete"
-msgstr ""
+msgstr "Complet"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmare"
 
 msgctxt "model:ir.model.button,string:inventory_count_button"
 msgid "Count"
-msgstr ""
+msgstr "Numeratoare"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:move_do_button"
 msgid "Do"
-msgstr ""
+msgstr "Executare"
 
 msgctxt "model:ir.model.button,string:move_draft_button"
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Resetați la Draft"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
@@ -2200,115 +2203,115 @@ msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Resetare la Draft"
 
 msgctxt "model:ir.model.button,string:shipment_in_receive_button"
 msgid "Receive"
-msgstr ""
+msgstr "Recepţionat"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
 msgid "Assign"
-msgstr ""
+msgstr "Atribuit"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
 msgid "Assign"
-msgstr ""
+msgstr "Atribuire"
 
 msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminare"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
-msgstr ""
+msgstr "Expediere"
 
 msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
 msgid "Assign"
-msgstr ""
+msgstr "Atribuire"
 
 msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminare"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
 msgid "Pack"
-msgstr ""
+msgstr "Ambalare"
 
 msgctxt "model:ir.model.button,string:shipment_out_pick_button"
 msgid "Pick"
-msgstr ""
+msgstr "Pick"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
 msgid "Done"
-msgstr ""
+msgstr "Terminare"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
-msgstr ""
+msgstr "Recepţionat"
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "model:ir.rule.group,name:rule_group_inventory_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_move_companies"
 msgid "User in companies"
@@ -2321,34 +2324,32 @@ msgstr "Utilizator în companii"
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_cost_price_revision_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_product_quantities_warehouse_move_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_reporting_margin_main_companies"
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
-#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_main_time_series_companies"
 msgid "User in companies"
@@ -2357,80 +2358,80 @@ msgstr "Utilizator în companii"
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_product_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator din companie"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_in_return_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_internal_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_out_return_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în companii"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventar"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr ""
+msgstr "Expedierea furnizorului"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr ""
+msgstr "Retur al Expedierii Furnizorului"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Expediere Interna"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr ""
+msgstr "Expediere Client"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr ""
+msgstr "Retur Expediere Client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventar"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr ""
+msgstr "Expedierea furnizorului"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr ""
+msgstr "Retur al Expedierii Furnizorului"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Expediere Interna"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr ""
+msgstr "Expediere Client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr ""
+msgstr "Retur Expediere Client"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -2438,31 +2439,31 @@ msgstr "Configurare"
 
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr ""
+msgstr "Inventare"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr ""
+msgstr "Locaţii"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form2"
 msgid "Locations"
-msgstr ""
+msgstr "Locaţii"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr ""
+msgstr "Timp de Execuţie Locaţii"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr ""
+msgstr "Locaţii"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr ""
+msgstr "Mișcari"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -2470,31 +2471,35 @@ msgstr "Raportare"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
-msgstr ""
+msgstr "Marje"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Expedieri"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr ""
+msgstr "Expedieri Furnizor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Retururi Furnizor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr ""
+msgstr "Expedieri Interne"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr ""
+msgstr "Expedieri Client"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Retururi Client"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
-msgstr ""
+msgstr "Inventar şi Stoc"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
@@ -2502,31 +2507,31 @@ msgstr "Configurare"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
-msgstr ""
+msgstr "Locație Parte"
 
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
-msgstr ""
+msgstr "Produs după locație"
 
 msgctxt "model:product.cost_price.revision,name:"
 msgid "Product Cost Price Revision"
-msgstr ""
+msgstr "Revizuirea prețului costului produsului"
 
 msgctxt "model:product.modify_cost_price.start,name:"
 msgid "Modify Cost Price"
-msgstr ""
+msgstr "Modificare Cost"
 
 msgctxt "model:product.recompute_cost_price.start,name:"
 msgid "Recompute Cost Price"
-msgstr ""
+msgstr "Recalculare Cost"
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
-msgstr ""
+msgstr "Stoc"
 
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr ""
+msgstr "Administrarea Stocurilor"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
@@ -2534,11 +2539,11 @@ msgstr ""
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
-msgstr ""
+msgstr "Configurare Stoc"
 
 msgctxt "model:stock.configuration.location,name:"
 msgid "Stock Configuration Location"
-msgstr ""
+msgstr "Locația de configurare a stocului"
 
 msgctxt "model:stock.configuration.sequence,name:"
 msgid "Stock Configuration Sequence"
@@ -2546,7 +2551,7 @@ msgstr ""
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
-msgstr ""
+msgstr "Inventar Stoc"
 
 msgctxt "model:stock.inventory.count.quantity,name:"
 msgid "Stock Inventory Count"
@@ -2558,59 +2563,59 @@ msgstr ""
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
-msgstr ""
+msgstr "Rând Inventar Stocuri"
 
 msgctxt "model:stock.location,name:"
 msgid "Stock Location"
-msgstr ""
+msgstr "Locația stocului"
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr ""
+msgstr "Zona Intrare"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Pierdut şi Găsit"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr ""
+msgstr "Zona Ieşire"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr ""
+msgstr "Zona Depozitare"
 
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "model:stock.location,name:location_transit"
 msgid "Transit"
-msgstr ""
+msgstr "Tranzit"
 
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
-msgstr ""
+msgstr "Timp de Execuţie Locaţii"
 
 msgctxt "model:stock.location.waste,name:"
 msgid "Warehouse Waste Location"
-msgstr ""
+msgstr "Locația deșeurilor din depozit"
 
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
-msgstr ""
+msgstr "Mişcare Stoc"
 
 msgctxt "model:stock.period,name:"
 msgid "Stock Period"
-msgstr ""
+msgstr "Perioada Stoc"
 
 msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
@@ -2618,36 +2623,35 @@ msgstr ""
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Cantităţi de Produs după Depozit"
 
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Cantităţi de Produs după Depozit"
 
 msgctxt "model:stock.product_quantities_warehouse.move,name:"
 msgid "Product Quantities By Warehouse Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.products_by_locations,name:"
 msgid "Products by Locations"
-msgstr "Locația furnizorului"
+msgstr "Produse după Locație"
 
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Produse după Locație"
 
 msgctxt "model:stock.reporting.margin.category,name:"
 msgid "Stock Reporting Margin per Category"
-msgstr ""
+msgstr "Raportare Marja după Categorie de Stoc"
 
 msgctxt "model:stock.reporting.margin.category.time_series,name:"
 msgid "Stock Reporting Margin per Category"
-msgstr ""
+msgstr "Raportare Marja după Categorie de Stoc"
 
 msgctxt "model:stock.reporting.margin.category.tree,name:"
 msgid "Stock Reporting Margin per Category"
-msgstr ""
+msgstr "Raportare Marja după Categorie de Stoc"
 
 msgctxt "model:stock.reporting.margin.context,name:"
 msgid "Stock Reporting Margin Context"
@@ -2655,11 +2659,11 @@ msgstr ""
 
 msgctxt "model:stock.reporting.margin.main,name:"
 msgid "Stock Reporting Margin"
-msgstr ""
+msgstr "Raport Marja Stocuri"
 
 msgctxt "model:stock.reporting.margin.main.time_series,name:"
 msgid "Stock Reporting Margin"
-msgstr ""
+msgstr "Raport Marja Stocuri"
 
 msgctxt "model:stock.reporting.margin.product,name:"
 msgid "Stock Reporting Margin per Product"
@@ -2671,43 +2675,43 @@ msgstr ""
 
 msgctxt "model:stock.shipment.assign.partial,name:"
 msgid "Assign Shipment"
-msgstr ""
+msgstr "Atribuire Expediere"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
-msgstr ""
+msgstr "Expediere Furnizor"
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr ""
+msgstr "Retur al Expedierii Furnizorului"
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Expediere Interna"
 
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
-msgstr ""
+msgstr "Expediere Client"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
-msgstr ""
+msgstr "Retur Expediere Client"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
-msgstr ""
+msgstr "Din Locaţie"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Data planificată:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
@@ -2715,55 +2719,55 @@ msgstr "Produs"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
-msgstr ""
+msgstr "Lista de reaprovizionare"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Shipment Number"
-msgstr ""
+msgstr "Număr Aviz"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
-msgstr ""
+msgstr "Furnizor:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "Spre Locație"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Depozit:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
-msgstr ""
+msgstr "Din locație"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
-msgstr ""
+msgstr "Din Locaţie:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Expediere Interna"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Data planificată:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
@@ -2771,39 +2775,39 @@ msgstr "Produs"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Shipment Number"
-msgstr ""
+msgstr "Număr Aviz"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
-msgstr ""
+msgstr "Spre Locație"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
-msgstr ""
+msgstr "Spre Locație:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
-msgstr ""
+msgstr "Cod Client:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr ""
+msgstr "Aviz de Însoţire a Mărfii"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -2811,39 +2815,39 @@ msgstr "Produs"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
-msgstr ""
+msgstr "Număr Aviz:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr ""
+msgstr "Client:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
-msgstr ""
+msgstr "Din Locaţie"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr ""
+msgstr "Lista Picking"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Data planificată:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
@@ -2851,47 +2855,47 @@ msgstr "Produs"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Shipment Number"
-msgstr ""
+msgstr "Număr Aviz"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "Spre Locație"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Depozit:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
-msgstr ""
+msgstr "Din locație"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Number"
-msgstr ""
+msgstr "Număr"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Data planificată:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
@@ -2903,27 +2907,27 @@ msgstr "Cantitate"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referinţă:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr ""
+msgstr "Lista de reaprovizionare"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Shipment"
-msgstr ""
+msgstr "Expediere"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "Spre Locație"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Depozit:"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Customer Shipments"
-msgstr ""
+msgstr "Atribuire Expedierile Client"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Assign Internal Shipments"
@@ -2947,23 +2951,23 @@ msgstr ""
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
-msgstr ""
+msgstr "Gol"
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Keep"
-msgstr ""
+msgstr "Pastrare"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Product"
@@ -2979,43 +2983,43 @@ msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Pierdut şi Găsit"
 
 msgctxt "selection:stock.location,type:"
 msgid "Production"
-msgstr ""
+msgstr "Producţie"
 
 msgctxt "selection:stock.location,type:"
 msgid "Storage"
-msgstr ""
+msgstr "Depozitare"
 
 msgctxt "selection:stock.location,type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Furnizor"
 
 msgctxt "selection:stock.location,type:"
 msgid "View"
-msgstr ""
+msgstr "Vedere"
 
 msgctxt "selection:stock.location,type:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "selection:stock.move,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Atribuit"
 
 msgctxt "selection:stock.move,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.move,state:"
 msgid "Staging"
@@ -3027,273 +3031,301 @@ msgstr "Închis"
 
 msgctxt "selection:stock.period,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
-#, fuzzy
 msgctxt "selection:stock.product_quantities_warehouse,product:"
 msgid "Product"
 msgstr "Produs"
 
 msgctxt "selection:stock.product_quantities_warehouse,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Varianta"
 
-#, fuzzy
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Product"
 msgstr "Produs"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Variant"
-msgstr ""
+msgstr "Varianta"
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Day"
-msgstr ""
+msgstr "Zi"
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Month"
-msgstr ""
+msgstr "Lună"
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Year"
-msgstr ""
+msgstr "An"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Received"
-msgstr ""
+msgstr "Recepţionat"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Atribuit"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Atribuit"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"
-msgstr ""
+msgstr "Cere"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Shipped"
-msgstr ""
+msgstr "Expediat"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Atribuit"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Packed"
-msgstr ""
+msgstr "Ambalat"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Picked"
-msgstr ""
+msgstr "Colectat"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "În Aşteptare"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulat"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Received"
-msgstr ""
+msgstr "Recepţionat"
 
 msgctxt "view:party.party:"
 msgid "Stock"
-msgstr ""
+msgstr "Stoc"
 
 msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
-msgstr ""
+msgstr "Depozitul la care lucrezi."
+
+msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Secvența Retur Transport Client"
+
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Secvența Client"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Secvența Interna"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Tranzit Intern"
 
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventar"
+
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Secvenţă"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
-msgstr ""
+msgstr "Expedieri"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Secvența Retur Expediere Furnizor"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Secvența Expediere Furnizor"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"
-msgstr ""
+msgstr "Valoare Cost"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "Revenue"
-msgstr ""
+msgstr "Venituri"
 
 msgctxt "view:stock.reporting.margin.category.tree:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "Revenue"
-msgstr ""
+msgstr "Venituri"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "Revenue"
-msgstr ""
+msgstr "Venituri"
 
 msgctxt "view:stock.shipment.assign.partial:"
 msgid "Unable to assign these products:"
-msgstr ""
+msgstr "Nu se pot atribui aceste produse:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Other Info"
-msgstr ""
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
-msgstr ""
+msgstr "Mișcări Ieșire"
 
 msgctxt "wizard_button:product.modify_cost_price,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:product.modify_cost_price,start,modify:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:product.recompute_cost_price,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:product.recompute_cost_price,start,recompute:"
 msgid "Recompute"
-msgstr ""
+msgstr "Recalculare"
 
 msgctxt "wizard_button:stock.inventory.count,quantity,add:"
 msgid "Add"
-msgstr ""
+msgstr "Adăugare"
 
 msgctxt "wizard_button:stock.inventory.count,quantity,search:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:stock.inventory.count,search,end:"
 msgid "End"
-msgstr ""
+msgstr "Sfârșit"
 
 msgctxt "wizard_button:stock.inventory.count,search,quantity:"
 msgid "Select"
-msgstr ""
+msgstr "Selectați"
 
 msgctxt "wizard_button:stock.shipment.assign,partial,cancel:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 msgctxt "wizard_button:stock.shipment.assign,partial,end:"
 msgid "Wait"
-msgstr ""
+msgstr "Așteptare"
 
 msgctxt "wizard_button:stock.shipment.assign,partial,force:"
 msgid "Force"
@@ -3301,4 +3333,4 @@ msgstr ""
 
 msgctxt "wizard_button:stock.shipment.assign,partial,ignore:"
 msgid "Ignore"
-msgstr ""
+msgstr "Ignora"

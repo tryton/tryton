@@ -215,10 +215,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Keresés"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Elvárt mennyiség"
@@ -247,9 +243,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Mennyiség"
+msgid "Actual Quantity"
+msgstr "Összmennyiség"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1716,9 +1713,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Beszállítók szállítmányai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr "Visszaküldött áru"
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1736,9 +1734,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Beszállítók szállítmányai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr "Visszaküldött áru"
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
@@ -2104,6 +2103,18 @@ msgid ""
 msgstr ""
 "A típusa egy terméknek nem változtatható meg, ami raktármozgatáshoz "
 "hozzárendelt."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2507,13 +2518,19 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr "Árrések"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Szállítmányok"
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Beszállítók szállítmányai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr "Visszaküldött áru"
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipments"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2523,9 +2540,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Vevői szállítmányok"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr "Visszaküldött áru"
+msgid "Customer Returns"
+msgstr "Customer Return Shipments"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3217,13 +3235,48 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr "Válassza ki a raktárat, amelyikben munkát szeretne végezni."
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Visszaküldött vevői szállítmány"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Vevői szállítmány"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Belső szállítmány"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Belső mennyiség"
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Leltár"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Számkör"
+
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Szállítmányok"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Beszállítóhoz visszaküldött szállítmány"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Beszállító szállítmánya"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

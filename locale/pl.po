@@ -232,10 +232,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Szukaj"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Oczekiwana ilość"
@@ -267,9 +263,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "Produkt"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Ilość"
+msgid "Actual Quantity"
+msgstr "Ilość przewidywana"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1763,9 +1760,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipment"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipment"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
@@ -1787,9 +1785,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipment"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipment"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2173,6 +2172,18 @@ msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
 msgstr "Brak możliwości zmiany typu dla produktu wykazującego ruch."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2581,13 +2592,19 @@ msgid "Margins"
 msgstr "Źródła"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Wysyłki"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Supplier Shipment"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Supplier Return Shipment"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
@@ -2599,9 +2616,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Customer Shipment"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Customer Return Shipment"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
@@ -3338,12 +3356,47 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Sekwencja wysyłki od dostawcy"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Sekwencja wysyłki od dostawcy"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Internal Shipment"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Ilość przewidywana"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventory"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Sekwencja"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Wysyłki"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Sekwencja wysyłki od dostawcy"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Sekwencja wysyłki od dostawcy"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

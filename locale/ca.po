@@ -214,10 +214,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Cerca"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr "Model de la cerca"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Quantitat esperada"
@@ -247,8 +243,8 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Quantitat"
+msgid "Actual Quantity"
+msgstr "Quantitat actual"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1710,8 +1706,8 @@ msgid "Supplier Shipments"
 msgstr "Albarans de proveïdor"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr "Devolucions"
+msgid "Supplier Returns"
+msgstr "Devolucions de proveïdor"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1730,8 +1726,8 @@ msgid "Supplier Shipments"
 msgstr "Albarans de proveïdors"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr "Devolucions"
+msgid "Customer Returns"
+msgstr "Devolucions de client"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
@@ -2110,6 +2106,22 @@ msgid ""
 msgstr ""
 "No podeu canviar el tipus d'un producte que està associat amb moviments "
 "d'existències."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+"El producte \"%(product)s\" encara té algunes quantitats a les ubicacions "
+"\"%(locations)s\" per a l'empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
+"Es recomanable buidar les existències de les ubicacions d'emmagatzematge "
+"abans de desactivar el producte."
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2497,13 +2509,17 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr "Marges"
 
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Albarans"
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Albarans de proveïdor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr "Devolucions"
+msgid "Supplier Returns"
+msgstr "Devolucions de proveïdor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2514,8 +2530,8 @@ msgid "Customer Shipments"
 msgstr "Albarans de client"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr "Devolucions"
+msgid "Customer Returns"
+msgstr "Devolucions de client"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3198,12 +3214,40 @@ msgid "The warehouse that you work at."
 msgstr "El magatzem al que estas treballant."
 
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Seqüència de devolucions de client"
+
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Seqüència de clients"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Seqüència interns"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Trànsit intern"
+
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventari"
 
 msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Albarans"
+
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Seqüència de devolució de proveïdor"
+
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Seqüència de proveïdor"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

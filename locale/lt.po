@@ -223,10 +223,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Ieškoti"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr "Paieškos modelis"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Laukiamas kiekis"
@@ -257,9 +253,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "Prekė"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "Kiekis"
+msgid "Actual Quantity"
+msgstr "Bendras kiekis"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1743,9 +1740,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Tiekėjo siuntimai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Grąžinimo tiekėjui siuntimai"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1763,9 +1761,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Tiekėjo siuntimai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Pirkėjų grąžinimo siuntimai"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2119,6 +2118,18 @@ msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
@@ -2528,13 +2539,19 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr "Šaltiniai"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Siuntimai"
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Tiekėjo siuntimai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Grąžinimo tiekėjui siuntimai"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2544,9 +2561,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Siuntimai pirkėjui"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Pirkėjų grąžinimo siuntimai"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3251,13 +3269,48 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr ""
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Gražinimų iš pirkėjų numeruotė"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Siuntimų pirkėjui numeruotė"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Vidinių siuntimų numeruotė"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Vidinis kiekis"
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventorizacija"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Numeruotė"
+
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Siuntimai"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Grąžinimų tiekėjui numeruotė"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Tiekėjo siuntimų numeruotė"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

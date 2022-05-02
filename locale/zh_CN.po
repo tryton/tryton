@@ -216,10 +216,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "搜索"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr "搜索模型"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "预计数量"
@@ -248,9 +244,10 @@ msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
 msgstr "产品"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
-msgstr "数量"
+msgid "Actual Quantity"
+msgstr "总数量"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -1723,9 +1720,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "从供应商收货"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "向供应商退货"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1743,9 +1741,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "从供应商收货"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "接收客户退货"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2101,6 +2100,18 @@ msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
 msgstr "不能更改与库存变动关联的产品类型."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
@@ -2508,13 +2519,19 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr "依据"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "收发货"
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "从供应商收货"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "向供应商退货"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2524,9 +2541,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "向客户发货"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "接收客户退货"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3215,13 +3233,48 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr "你工作的仓库."
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "接收客户退货序列"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "向客户发货序列"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "内部发货序列"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "内部数量"
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "库存盘点"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "序列"
+
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "收发货"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "向供应商退货序列"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "从供应商收货序列"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

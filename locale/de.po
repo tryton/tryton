@@ -48,7 +48,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:product.cost_price.revision,cost_price:"
 msgid "New Cost Price"
-msgstr "Neuer Einstandpreis"
+msgstr "Neuer Einstandspreis"
 
 msgctxt "field:product.cost_price.revision,date:"
 msgid "Date"
@@ -214,10 +214,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Suchen"
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr "Gesuchtes Modell"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Erwartete Menge"
@@ -247,7 +243,7 @@ msgid "Product"
 msgstr "Artikel"
 
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
+msgid "Actual Quantity"
 msgstr "Ermittelte Menge"
 
 msgctxt "field:stock.inventory.line,uom:"
@@ -1716,8 +1712,8 @@ msgid "Supplier Shipments"
 msgstr "Wareneingangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr "Warenrückgaben"
+msgid "Supplier Returns"
+msgstr "Warenrückgaben (an Lieferanten)"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1736,8 +1732,8 @@ msgid "Supplier Shipments"
 msgstr "Wareneingangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr "Warenrücknahmen"
+msgid "Customer Returns"
+msgstr "Warenrücknahmen (von Kunden)"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
@@ -2127,6 +2123,22 @@ msgstr ""
 "Der Typ eines Artikels, dem Warenbewegungen zugeordnet sind, kann nicht mehr"
 " geändert werden."
 
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+"Für den Artikel \"%(product)s\" sind noch Lagerstände in den Lagerorten "
+"\"%(locations)s\" für das Unternehmen \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
+msgstr ""
+"Es wird empfohlen, vor der Deaktivierung des Artikels den Bestand aus den "
+"Lagerorten zu entfernen."
+
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
 msgid "To delete shipment \"%(shipment)s\" you must cancel it."
 msgstr ""
@@ -2515,13 +2527,17 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr "Margen"
 
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr "Lieferungen"
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Wareneingang"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr "Warenrückgaben"
+msgid "Supplier Returns"
+msgstr "Warenrückgaben (an Lieferanten)"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2532,8 +2548,8 @@ msgid "Customer Shipments"
 msgstr "Warenausgang"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr "Warenrücknahmen"
+msgid "Customer Returns"
+msgstr "Warenrücknahmen (von Kunden)"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3216,12 +3232,40 @@ msgid "The warehouse that you work at."
 msgstr "Der Logistikstandort an dem Sie arbeiten."
 
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr "Nummernkreis Warenrücknahme (von Kunden)"
+
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Nummernkreis Warenausgangslieferungen"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Nummernkreis Interne Lieferungen"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr "Interner Transit"
+
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventur"
 
 msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Nummernkreis"
+
+msgctxt "view:stock.configuration:"
 msgid "Shipments"
-msgstr "Lieferung"
+msgstr "Lieferungen"
+
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr "Nummernkreis Warenrückgabe (an Lieferanten)"
+
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Nummernkreis Wareneingangslieferung"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

@@ -219,10 +219,6 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.search,search_model:"
-msgid "Search Model"
-msgstr ""
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr ""
@@ -254,7 +250,7 @@ msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:stock.inventory.line,quantity:"
-msgid "Quantity"
+msgid "Actual Quantity"
 msgstr ""
 
 msgctxt "field:stock.inventory.line,uom:"
@@ -1716,9 +1712,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Lokasi Pemasok"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1736,9 +1733,10 @@ msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Lokasi Pelanggan"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
@@ -2084,6 +2082,18 @@ msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
 "You cannot change the type of a product which is associated with stock "
 "moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity"
+msgid ""
+"The product \"%(product)s\" has still some quantities in locations "
+"\"%(locations)s\" for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_location_quantity_description"
+msgid ""
+"It is recommended to clear the stock from the storage locations before "
+"deactivating the product."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
@@ -2489,13 +2499,18 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_shipment"
+msgid "Shipments"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Supplier Returns"
+msgstr "Lokasi Pemasok"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2505,9 +2520,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
-msgid "Returns"
-msgstr ""
+msgid "Customer Returns"
+msgstr "Lokasi Pelanggan"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -3202,12 +3218,44 @@ msgid "The warehouse that you work at."
 msgstr ""
 
 msgctxt "view:stock.configuration:"
+msgid "Customer Return Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Customer Sequence"
+msgstr "Pelanggan"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Internal Sequence"
+msgstr "Urutan"
+
+msgctxt "view:stock.configuration:"
+msgid "Internal Transit"
+msgstr ""
+
+msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Urutan"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr ""
+
+msgctxt "view:stock.configuration:"
+msgid "Supplier Return Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Supplier Sequence"
+msgstr "Pemasok"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"
@@ -3216,43 +3264,43 @@ msgstr "Nilai Biaya"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "Cost"
-msgstr ""
+msgstr "Biaya"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "Revenue"
-msgstr ""
+msgstr "Pendapatan"
 
 msgctxt "view:stock.reporting.margin.category.tree:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "Cost"
-msgstr ""
+msgstr "Biaya"
 
 msgctxt "view:stock.reporting.margin.main.time_series:"
 msgid "Revenue"
-msgstr ""
+msgstr "Pendapatan"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "Cost"
-msgstr ""
+msgstr "Biaya"
 
 msgctxt "view:stock.reporting.margin.main:"
 msgid "Revenue"
-msgstr ""
+msgstr "Pendapatan"
 
 msgctxt "view:stock.shipment.assign.partial:"
 msgid "Unable to assign these products:"
