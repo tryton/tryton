@@ -128,6 +128,11 @@ msgctxt "field:account.payment.stripe.account,secret_key:"
 msgid "Secret Key"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.payment.stripe.account,setup_intent_delay:"
+msgid "Setup Intent Delay"
+msgstr "Stripe Checkout"
+
 msgctxt "field:account.payment.stripe.account,webhook_endpoint:"
 msgid "Webhook Endpoint"
 msgstr ""
@@ -197,13 +202,21 @@ msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Stripe Accounts"
 
+msgctxt "field:account.payment.stripe.refund,approved_by:"
+msgid "Approved by"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.refund,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.payment.stripe.refund,payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Pagamento"
 
 msgctxt "field:account.payment.stripe.refund,reason:"
 msgid "Reason"
@@ -240,6 +253,10 @@ msgstr "Stripe Checkout"
 msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
 msgid "Stripe Refund ID"
 msgstr "Stripe Checkout"
+
+msgctxt "field:account.payment.stripe.refund,submitted_by:"
+msgid "Submitted by"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party,stripe_customers:"
@@ -278,6 +295,10 @@ msgctxt ""
 "field:party.party.reception_direct_debit,stripe_customer_source_selection:"
 msgid "Stripe Customer Source"
 msgstr "Stripe Customers"
+
+msgctxt "help:account.payment.stripe.account,setup_intent_delay:"
+msgid "The delay before cancelling setup intent not succeeded."
+msgstr ""
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
 msgid "The URL to be called by Stripe."
@@ -344,11 +365,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
-msgid "Approved"
-msgstr ""
-
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
 msgid "Draft"
 msgstr ""
@@ -365,6 +381,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
 msgid "Succeeded"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_approve"
+msgid "To Approve"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_process"
+msgid "To Process"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_stripe_token"
@@ -408,6 +434,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:refund_submit_button"
+msgid "Submit"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"
@@ -495,6 +525,10 @@ msgid "Processing"
 msgstr ""
 
 msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Submitted"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Succeeded"
 msgstr ""
 
@@ -544,7 +578,7 @@ msgstr ""
 #, fuzzy
 msgctxt "view:account.payment:"
 msgid "Capture:"
-msgstr "Stripe Capture"
+msgstr "Cattura:"
 
 msgctxt "view:account.payment:"
 msgid "Charge ID:"
@@ -554,10 +588,9 @@ msgctxt "view:account.payment:"
 msgid "Chargeable:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr "Stripe Customers"
+msgstr "Cliente:"
 
 msgctxt "view:account.payment:"
 msgid "Payment Intent:"
@@ -565,7 +598,7 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Metodo di Pagamento:"
 
 msgctxt "view:account.payment:"
 msgid "Source:"
@@ -580,15 +613,13 @@ msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr "Stripe Customers"
+msgstr "Cliente:"
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr "Charge Stripe Payments"
+msgstr "Metodo di Pagamento:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Source:"

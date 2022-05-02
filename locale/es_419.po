@@ -118,6 +118,10 @@ msgctxt "field:account.payment.stripe.account,secret_key:"
 msgid "Secret Key"
 msgstr ""
 
+msgctxt "field:account.payment.stripe.account,setup_intent_delay:"
+msgid "Setup Intent Delay"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.account,webhook_endpoint:"
 msgid "Webhook Endpoint"
 msgstr ""
@@ -182,6 +186,14 @@ msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr ""
 
+msgctxt "field:account.payment.stripe.refund,approved_by:"
+msgid "Approved by"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.refund,currency:"
 msgid "Currency"
 msgstr ""
@@ -222,6 +234,10 @@ msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
 msgid "Stripe Refund ID"
 msgstr ""
 
+msgctxt "field:account.payment.stripe.refund,submitted_by:"
+msgid "Submitted by"
+msgstr ""
+
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr ""
@@ -252,6 +268,10 @@ msgstr ""
 msgctxt ""
 "field:party.party.reception_direct_debit,stripe_customer_source_selection:"
 msgid "Stripe Customer Source"
+msgstr ""
+
+msgctxt "help:account.payment.stripe.account,setup_intent_delay:"
+msgid "The delay before cancelling setup intent not succeeded."
 msgstr ""
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
@@ -314,11 +334,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
-msgid "Approved"
-msgstr ""
-
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
 msgid "Draft"
 msgstr ""
@@ -335,6 +350,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
 msgid "Succeeded"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_approve"
+msgid "To Approve"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_process"
+msgid "To Process"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_stripe_token"
@@ -377,6 +402,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:refund_submit_button"
+msgid "Submit"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"
@@ -457,6 +486,10 @@ msgstr ""
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Submitted"
 msgstr ""
 
 msgctxt "selection:account.payment.stripe.refund,state:"
