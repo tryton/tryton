@@ -138,6 +138,14 @@ msgstr ""
 "Vous ne pouvez pas fermer la période « %(period)s » car certaines factures "
 "différées « %(deferrals)s » n'ont pas encore de mouvement pour la période."
 
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr "Il n'y a aucun compte de charges différée configuré."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr "Il n'y a aucun compte de produit différée configuré."
+
 msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
 msgid "Are you sure you want to defer the invoices?"
 msgstr "Êtes-vous sûr de vouloir différer les factures ?"

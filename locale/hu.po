@@ -134,6 +134,14 @@ msgid ""
 "\"%(deferrals)s\" do not have yet move for the period."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
 msgid "Are you sure you want to defer the invoices?"
 msgstr ""

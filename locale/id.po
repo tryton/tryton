@@ -30,7 +30,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:account.invoice.deferred,end_date:"
 msgid "End Date"
@@ -132,6 +132,14 @@ msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "
 "\"%(deferrals)s\" do not have yet move for the period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"

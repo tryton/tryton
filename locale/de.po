@@ -138,6 +138,14 @@ msgstr ""
 "Der Buchungszeitraum \"%(period)s\" kann nicht geschlossen werden, da für "
 "einige Rechnungsabgrenzungsposten noch keine Buchungssätze erstellt wurden."
 
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr "Es wurde kein Konto für die aktive Rechnungsabgrenzung konfiguriert."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr "Es wurde kein Konto für die passive Rechnungsabgrenzung konfiguriert."
+
 msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
 msgid "Are you sure you want to defer the invoices?"
 msgstr "Rechnungsabgrenzung für die Rechnungen ganz sicher ausführen?"
