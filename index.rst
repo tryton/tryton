@@ -5,19 +5,19 @@ Tryton Documentation
 Main
 ----
 
-`Server </projects/server/en/latest>`_
+`Server </projects/server/en/6.4>`_
     The main application.
 
-`Desktop Client </projects/client-desktop/en/latest>`_
+`Desktop Client </projects/client-desktop/en/6.4>`_
     The application to connect to the server.
 
-`Scripting Client </projects/client-library/en/latest>`_
+`Scripting Client </projects/client-library/en/6.4>`_
     The library to access models, wizards and reports like a client.
 
 Backend
 -------
 
-`GIS </projects/backend-gis/en/latest>`_
+`GIS </projects/backend-gis/en/6.4>`_
     Adds GIS support.
 
 Modules
@@ -32,7 +32,7 @@ Operational
 :ref:`Analytic Accounting <index-analytic-accounting>`
     Analyze your accounts.
 
-`Attendance </projects/modules-attendance/en/latest>`_
+`Attendance </projects/modules-attendance/en/6.4>`_
     Track presences.
 
 :ref:`Commission <index-commission>`
@@ -71,7 +71,7 @@ Operational
 Referential
 ^^^^^^^^^^^
 
-`Banking </projects/modules-bank/en/latest>`_
+`Banking </projects/modules-bank/en/6.4>`_
     Adds bank and account.
 
 :ref:`Company <index-company>`
@@ -80,22 +80,22 @@ Referential
 :ref:`Carrier <index-carrier>`
     To ship.
 
-`Country </projects/modules-country/en/latest>`_
+`Country </projects/modules-country/en/6.4>`_
     ISO 3166 list of countries and subdivisions.
 
 :ref:`Currency <index-currency>`
     Manage currencies
 
-`Customs </projects/modules-customs/en/latest>`_
+`Customs </projects/modules-customs/en/6.4>`_
     Defines customs duty per tariff code.
 
-`Dashboard </projects/modules-dashboard/en/latest>`_
+`Dashboard </projects/modules-dashboard/en/6.4>`_
     Customized dashboard.
 
-`Google Maps </projects/modules-google-maps/en/latest>`_
+`Google Maps </projects/modules-google-maps/en/6.4>`_
     Links address to Google map.
 
-`Incoterm </projects/modules-incoterm/en/latest>`_
+`Incoterm </projects/modules-incoterm/en/6.4>`_
     Defines incoterms.
 
 :ref:`Party <index-party>`
@@ -110,10 +110,10 @@ Administration
 :ref:`Authentication <index-authentication>`
     Extends authentication mechanism.
 
-`Notification Email </projects/modules-notification-email/en/latest>`_
+`Notification Email </projects/modules-notification-email/en/6.4>`_
     Sends email.
 
-`User Role </projects/modules-user-role/en/latest>`_
+`User Role </projects/modules-user-role/en/6.4>`_
     Manage user groups with roles.
 
 :ref:`Web <index-web>`

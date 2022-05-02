@@ -5,17 +5,17 @@
 Analytic Accounting
 ===================
 
-`Account </projects/modules-analytic-account/en/latest>`_
+`Account </projects/modules-analytic-account/en/6.4>`_
     Fundamentals for analytic.
 
-`Budget </projects/modules-analytic-budget/en/latest>`_
+`Budget </projects/modules-analytic-budget/en/6.4>`_
     Budgets for analytic accounts.
 
-`Invoice </projects/modules-analytic-invoice/en/latest>`_
+`Invoice </projects/modules-analytic-invoice/en/6.4>`_
     Adds analytic on invoice.
 
-`Purchase </projects/modules-analytic-purchase/en/latest>`_
+`Purchase </projects/modules-analytic-purchase/en/6.4>`_
     Adds analytic on purchase.
 
-`Sale </projects/modules-analytic-sale/en/latest>`_
+`Sale </projects/modules-analytic-sale/en/6.4>`_
     Adds analytic on sale.

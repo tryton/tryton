@@ -5,14 +5,14 @@
 Party
 =====
 
-`Party </projects/modules-party/en/latest>`_
+`Party </projects/modules-party/en/6.4>`_
     Fundamentals to store parties.
 
-`Avatar </projects/modules-party-avatar/en/latest>`_
+`Avatar </projects/modules-party-avatar/en/6.4>`_
     Adds avatar.
 
-`Relationship </projects/modules-party-relationship/en/latest>`_
+`Relationship </projects/modules-party-relationship/en/6.4>`_
     Defines relation between parties.
 
-`SIRET </projects/modules-party-siret/en/latest>`_
+`SIRET </projects/modules-party-siret/en/6.4>`_
     Adds SIRET and SIREN.
