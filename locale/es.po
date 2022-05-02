@@ -50,10 +50,6 @@ msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr "Diarios de pagos"
 
-msgctxt "field:web.shop,shopify_trial:"
-msgid "Trial"
-msgstr "Prueba"
-
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr "URL de la tienda"
@@ -65,6 +61,14 @@ msgstr "Versión"
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
 msgstr "Almacenes"
+
+msgctxt "field:web.shop,shopify_webhook_endpoint_order:"
+msgid "Webhook Order Endpoint"
+msgstr "URL Webhook Ordenes"
+
+msgctxt "field:web.shop,shopify_webhook_shared_secret:"
+msgid "Webhook Shared Secret"
+msgstr "Secreto compartido del webhook"
 
 msgctxt "field:web.shop-stock.location,shopify_id:"
 msgid "Shopify ID"
@@ -102,9 +106,9 @@ msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr "Tienda"
 
-msgctxt "help:web.shop,shopify_trial:"
-msgid "If checked reduce the number of calls per minute."
-msgstr "Si está marcado, se reduce la cantidad de llamadas por minuto."
+msgctxt "help:web.shop,shopify_webhook_endpoint_order:"
+msgid "The URL to be called by Shopify for Order events."
+msgstr "La URL que será llamada por Shopify para eventos de pedidos."
 
 msgctxt "help:web.shop-stock.location,shopify_stock_skip_warehouse:"
 msgid "Check to use only the quantity of the storage zone."

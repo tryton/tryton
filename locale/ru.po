@@ -50,10 +50,6 @@ msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr ""
 
-msgctxt "field:web.shop,shopify_trial:"
-msgid "Trial"
-msgstr ""
-
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr ""
@@ -64,6 +60,14 @@ msgstr ""
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_webhook_endpoint_order:"
+msgid "Webhook Order Endpoint"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_webhook_shared_secret:"
+msgid "Webhook Shared Secret"
 msgstr ""
 
 msgctxt "field:web.shop-stock.location,shopify_id:"
@@ -102,8 +106,8 @@ msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr ""
 
-msgctxt "help:web.shop,shopify_trial:"
-msgid "If checked reduce the number of calls per minute."
+msgctxt "help:web.shop,shopify_webhook_endpoint_order:"
+msgid "The URL to be called by Shopify for Order events."
 msgstr ""
 
 msgctxt "help:web.shop-stock.location,shopify_stock_skip_warehouse:"

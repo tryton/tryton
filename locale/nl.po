@@ -50,10 +50,6 @@ msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr "Betalingsdagboeken"
 
-msgctxt "field:web.shop,shopify_trial:"
-msgid "Trial"
-msgstr "Poging"
-
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr "Winkel-URL"
@@ -65,6 +61,14 @@ msgstr "Versie"
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
 msgstr "Magazijnen"
+
+msgctxt "field:web.shop,shopify_webhook_endpoint_order:"
+msgid "Webhook Order Endpoint"
+msgstr "Webhook order eindpunt"
+
+msgctxt "field:web.shop,shopify_webhook_shared_secret:"
+msgid "Webhook Shared Secret"
+msgstr "Webhook gedeeld geheim"
 
 msgctxt "field:web.shop-stock.location,shopify_id:"
 msgid "Shopify ID"
@@ -102,9 +106,9 @@ msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr "Winkel"
 
-msgctxt "help:web.shop,shopify_trial:"
-msgid "If checked reduce the number of calls per minute."
-msgstr "Indien aangevinkt, verminder het aantal oproepen per minuut."
+msgctxt "help:web.shop,shopify_webhook_endpoint_order:"
+msgid "The URL to be called by Shopify for Order events."
+msgstr "De url die aangeroepen wordt door Shopify voor order gebeurtenissen."
 
 msgctxt "help:web.shop-stock.location,shopify_stock_skip_warehouse:"
 msgid "Check to use only the quantity of the storage zone."
