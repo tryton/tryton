@@ -344,10 +344,6 @@ msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "A senha não pode ser a mesma que o email."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "Os mesmos caracteres aparecem na senha muitas vezes."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "A senha é proibida."
@@ -573,7 +569,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
 msgstr "A senha irá expirar em"
 
 msgctxt "selection:res.user.application,state:"

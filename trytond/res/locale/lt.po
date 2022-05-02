@@ -341,10 +341,6 @@ msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "Slaptažodis negali būti toks pat, kaip naudotojo el.pašto adresas."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "Tas pats simbolis slaptažodyje pasikartoja per dažnai."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Slaptažodis neleidžiamas."
@@ -569,7 +565,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Slaptažodžio galiojimas baigsis"
 
 msgctxt "selection:res.user.application,state:"

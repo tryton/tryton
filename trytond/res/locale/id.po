@@ -130,7 +130,7 @@ msgstr "Nama"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -146,7 +146,7 @@ msgstr "Tindakan"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
-msgstr ""
+msgstr "Aplikasi-Aplikasi"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
@@ -336,10 +336,6 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "Kata sandi tidak boleh sama dengan alamat email pengguna."
-
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "Karakter yang sama terlalu sering muncul dalam kata sandi."
 
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
@@ -561,7 +557,7 @@ msgid ""
 msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
 msgstr ""
 
 msgctxt "selection:res.user.application,state:"
@@ -622,8 +618,8 @@ msgstr "OK"
 
 msgctxt "wizard_button:res.user.config,user,add:"
 msgid "Add"
-msgstr "Tambahkan"
+msgstr "Tambah"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Akhir"
+msgstr "Selesai"

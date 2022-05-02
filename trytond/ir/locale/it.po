@@ -472,15 +472,13 @@ msgctxt "field:ir.configuration,language:"
 msgid "language"
 msgstr "lingua"
 
-#, fuzzy
 msgctxt "field:ir.cron,day:"
 msgid "Day"
-msgstr "Giorni"
+msgstr "Giorno"
 
-#, fuzzy
 msgctxt "field:ir.cron,hour:"
 msgid "Hour"
-msgstr "Ore"
+msgstr "Ora"
 
 msgctxt "field:ir.cron,interval_number:"
 msgid "Interval Number"
@@ -517,7 +515,7 @@ msgstr ""
 
 msgctxt "field:ir.email,body:"
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
@@ -556,7 +554,7 @@ msgstr "Email"
 
 msgctxt "field:ir.email.template,body:"
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 #, fuzzy
 msgctxt "field:ir.email.template,model:"
@@ -1521,6 +1519,26 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Utente"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr "Campo"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Utente"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr "Valori"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr "Vista"
+
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
 msgstr "Nome del figlio"
@@ -1631,36 +1649,33 @@ msgctxt "help:ir.email.template,recipients_hidden:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
 msgid ""
 "A PYSON expression that generates a list of hidden recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Istruzione PYSON valutata dal record rappresentato da \"self\"\n"
-" . Attiva la regola se vera."
+"Un espressione PYSON che genera una lista di recipineti nascosti dal record "
+"rappresentato da \"self\"."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_pyson:"
 msgid ""
 "A PYSON expression that generates a list of recipients with the record "
 "represented by \"self\"."
 msgstr ""
-"Istruzione PYSON valutata dal record rappresentato da \"self\"\n"
-" . Attiva la regola se vera."
+"Un espressione PYSON che genera una lista di recipineti dal record "
+"rappresentato da \"self\"."
 
 msgctxt "help:ir.email.template,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_secondary_pyson:"
 msgid ""
 "A PYSON expression that generates a list of secondary recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Istruzione PYSON valutata dal record rappresentato da \"self\"\n"
-" . Attiva la regola se vera."
+"Un espressione PYSON che genera una lista di recipineti secondari dal record"
+" rappresentato da \"self\"."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -1740,12 +1755,13 @@ msgctxt "help:ir.rule.group,default_p:"
 msgid "Add this rule to all users by default."
 msgstr "Aggiungi automaticamente questa regola a ciascun utente"
 
-#, fuzzy
 msgctxt "help:ir.rule.group,global_p:"
 msgid ""
 "Make the rule global \n"
 "so every users must follow this rule."
-msgstr "Rendere globale la regola"
+msgstr ""
+"Rendere globale la regola \n"
+"così ogni utente deve segire tale regola."
 
 msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
@@ -1770,7 +1786,9 @@ msgctxt "help:ir.trigger,limit_number:"
 msgid ""
 "Limit the number of call to \"Action Function\" by records.\n"
 "0 for no limit."
-msgstr "Limitare per record il numero delle call ad \"Action Functions\""
+msgstr ""
+"Limitare per record il numero delle chiamate ad \"Action Functions\".\n"
+"0 per nessun limite."
 
 msgctxt "help:ir.trigger,minimum_time_delay:"
 msgid ""
@@ -1811,10 +1829,9 @@ msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
 msgstr "Wizards"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Allegati"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
@@ -2019,6 +2036,11 @@ msgid "Show View"
 msgstr "Show View"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
+msgstr "Vista ad albero dello stato"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
 msgstr "Tree State"
@@ -2157,10 +2179,9 @@ msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
 msgid "Wed"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.calendar.day,name:"
 msgid "Day"
-msgstr "Giorni"
+msgstr "Giorno"
 
 msgctxt "model:ir.calendar.day,name:Friday"
 msgid "Friday"
@@ -2515,10 +2536,9 @@ msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Allegati"
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
@@ -2546,21 +2566,24 @@ msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr "This record is part of the base configuration."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr "Il nome del modulo dev'essere unico"
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_created_at"
 msgid "Created at"
-msgstr "Creazione Data"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
-msgstr "Creazione Utente"
+msgstr "Creato da"
 
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
@@ -2810,12 +2833,11 @@ msgstr ""
 "La condizione \"%(condition)s\" non e un'epressione PYSON valida nella "
 "regola bottone \"%(rule)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
-"Alcuni moduli attivi dipendono da quelli che stai tentando di disattivare."
+"Alcuni moduli attivi dipendono da quelli che stai tentando di disattivare:"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_module_delete_state"
@@ -2855,13 +2877,17 @@ msgstr ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
-msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr ""
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "Syntax error for reference %r in %s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Relation not found: %r in %s"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_report_invalid_email"
@@ -2989,9 +3015,10 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Too many relations found: %r in %s"
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -3011,9 +3038,23 @@ msgstr ""
 "trigger \"%(trigger)s\"."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "XML invalido per la vista \"%s\""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
+msgstr ""
+"Dominio o criterio di ricerca \"%(domain)s\" invalido nell'azione "
+"\"%(action)s\"."
 
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -3033,7 +3074,9 @@ msgid "You are not allowed to modify this record."
 msgstr "You are not allowed to modify this record."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
 msgstr ""
 
 msgctxt "model:ir.model,name:"
@@ -3301,10 +3344,9 @@ msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
 msgstr "Administration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Allegati"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
@@ -3485,6 +3527,11 @@ msgid "View Search"
 msgstr "View Search"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr "Vista ad albero dello stato"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
 msgstr "Tree State"
@@ -3514,6 +3561,11 @@ msgstr "Mostra vista"
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr "Cerca vista"
+
+#, fuzzy
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
+msgstr "Vista ad albero dello stato"
 
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
@@ -3827,6 +3879,16 @@ msgctxt "view:ir.cron:"
 msgid "Every"
 msgstr ""
 
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Date"
+msgstr "Prossima Call"
+
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr "Prossima Call"
+
 msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "esegui una volta"
@@ -3974,7 +4036,7 @@ msgstr "Marca Temporale"
 
 msgctxt "view:ir.sequence:"
 msgid "Year:"
-msgstr "Anno"
+msgstr "Anno:"
 
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"

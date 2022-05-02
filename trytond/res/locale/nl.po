@@ -40,7 +40,7 @@ msgstr "Groepen"
 
 msgctxt "field:ir.export,write_groups:"
 msgid "Modification Groups"
-msgstr "Modificatie groepen"
+msgstr "Wijzigings groepen"
 
 msgctxt "field:ir.export-res.group,export:"
 msgid "Export"
@@ -84,11 +84,11 @@ msgstr "Regelgroep"
 
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
-msgstr "gebruikersgroepen"
+msgstr "Gebruikersgroepen"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
-msgstr "gebruikersgroepen"
+msgstr "Gebruikersgroepen"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -104,19 +104,19 @@ msgstr "Menu"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
-msgstr "Knop"
+msgstr "Knoppen"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
-msgstr "Toegangsrechten veld"
+msgstr "Toegang veld"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
-msgstr "Toegang tot Menu"
+msgstr "Toegang menu"
 
 msgctxt "field:res.group,model_access:"
 msgid "Access Model"
-msgstr "rechtenbeheer"
+msgstr "Toegang model"
 
 msgctxt "field:res.group,name:"
 msgid "Name"
@@ -124,7 +124,7 @@ msgstr "Naam"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr "Bovenliggend niveau"
+msgstr "Bovenliggend"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -140,7 +140,7 @@ msgstr "Acties"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
-msgstr "toepassingen"
+msgstr "Toepassingen"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
@@ -160,7 +160,7 @@ msgstr "Taal"
 
 msgctxt "field:res.user,language_direction:"
 msgid "Language Direction"
-msgstr "Taalrichting(language direction)"
+msgstr "Taalrichting"
 
 msgctxt "field:res.user,login:"
 msgid "Login"
@@ -176,7 +176,7 @@ msgstr "Naam"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
-msgstr "Paswoord"
+msgstr "Wachtwoord"
 
 msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
@@ -188,11 +188,11 @@ msgstr "Reset wachtwoord"
 
 msgctxt "field:res.user,password_reset_expire:"
 msgid "Reset Password Expire"
-msgstr "Reset wachtwoord Verlopen"
+msgstr "Reset wachtwoord verlopen"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
-msgstr "PySON-menu"
+msgstr "PySON menu"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
@@ -228,7 +228,7 @@ msgstr "Gebruiker"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
-msgstr "toepassingen"
+msgstr "Toepassingen"
 
 msgctxt "field:res.user.application,key:"
 msgid "Key"
@@ -288,11 +288,11 @@ msgstr "De gebruikersgroepen die de export kunnen wijzigen."
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type."
-msgstr "Groepen mogen de reeksen (sequences) van dit type bewerken."
+msgstr "Groepen die dit type reeksen mogen bewerken."
 
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr "De groep waarvan de toegangsrechten moet worden overgenomen."
+msgstr "De groep waarvan de rechten worden overgenomen."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
@@ -312,36 +312,32 @@ msgstr "Gebruikers"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Reset wachtwoord"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
-msgstr "Aktie - Groep"
+msgstr "Actie - Groep"
 
 msgctxt "model:ir.export-res.group,name:"
 msgid "Export Group"
-msgstr "Export groep"
+msgstr "Exporteer groep"
 
 msgctxt "model:ir.export-write-res.group,name:"
 msgid "Export Modification Group"
-msgstr "Exportmodificatiegroep"
+msgstr "Exporteer modificatiegroep"
 
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
 "Het wachtwoord mag niet hetzelfde zijn als het e-mailadres van de gebruiker."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "Dezelfde tekens verschijnen te vaak in het wachtwoord."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
-msgstr "Dit paswoord is verboden."
+msgstr "Dit wachtwoord is niet toegestaan."
 
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i characters."
-msgstr "Het wachtwoord moet minimaal %(length)i-tekens bevatten."
+msgstr "Het wachtwoord moet minimaal %(length)i tekens bevatten."
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -367,19 +363,19 @@ msgstr "Wachtwoord voor %(login)s"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Stuur per e-mail een nieuw tijdelijk wachtwoord naar de gebruiker"
+msgstr "Stuur per e-mail een tijdelijk wachtwoord naar de gebruiker"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "bevestigen"
+msgstr "Bevestigen"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Reset wachtwoord"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -471,7 +467,7 @@ msgstr "Eigen waarschuwing"
 
 msgctxt "model:ir.rule.group,name:rule_group_view_search"
 msgid "Own view search"
-msgstr "Eigen zoekfunctie"
+msgstr "Eigen zoek weergave"
 
 msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
@@ -487,7 +483,7 @@ msgstr "Regelgroep - Groep"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "Volgorde Type - Groep"
+msgstr "Reeks type - Groep"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -531,7 +527,7 @@ msgstr "Gebruikerstoepassing"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "Gebruiker configuratie init"
+msgstr "Gebruiker configuratie start"
 
 msgctxt "model:res.user.device,name:"
 msgid "User Device"
@@ -539,7 +535,7 @@ msgstr "Gebruikersapparaat"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
-msgstr "Aanmeldpoging"
+msgstr "Inlogpoging"
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
@@ -564,8 +560,8 @@ msgstr ""
 "                [8:%(host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
-msgstr "Het wachtwoord verloopt op[1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
+msgstr "Het wachtwoord verloopt op [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
@@ -577,7 +573,7 @@ msgstr "Aangevraagd"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Validated"
-msgstr "Goedgekeurd"
+msgstr "Bevestigd"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
@@ -585,15 +581,15 @@ msgstr "Toegangsrechten"
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr "leden"
+msgstr "Leden"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique."
-msgstr "Opgelet: De login moet uniek zijn."
+msgstr "Letop: De login moet uniek zijn."
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr "U kunt nu gebruikers toevoegen aan het systeem."
+msgstr "Er kunnen nu gebruikers toegevoegd worden aan het systeem."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
@@ -617,7 +613,7 @@ msgstr "Gebruiker"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:res.user.config,start,user:"
 msgid "OK"

@@ -1511,6 +1511,26 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Naudotojas"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr "Laukas"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr "Vertės"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr "Peržiūra"
+
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
 msgstr ""
@@ -1938,6 +1958,11 @@ msgstr "Rodinio paieška"
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
 msgstr "Rodyti rodinį"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
+msgstr "Hierarchinio sąrašo rodinio būsena"
 
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
@@ -2432,6 +2457,10 @@ msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2718,13 +2747,17 @@ msgstr ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
-msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr ""
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "Syntax error for reference %r in %s"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Relation not found: %r in %s"
 
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
@@ -2841,9 +2874,10 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr "sav."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Too many relations found: %r in %s"
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -2857,8 +2891,19 @@ msgid ""
 "\"%(trigger)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_write_error"
@@ -2878,7 +2923,9 @@ msgid "You are not allowed to modify this record."
 msgstr "Jums nėra leista taisyti šį įrašą."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
 msgstr ""
 
 msgctxt "model:ir.model,name:"
@@ -3296,6 +3343,11 @@ msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
 msgstr "Rodinio paieška"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr "Hierarchinio sąrašo rodinio būsena"
+
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
 msgstr "Hierarchinio sąrašo būsena"
@@ -3323,6 +3375,11 @@ msgstr "Rodyti peržiūrą"
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr "Rodinio paieška"
+
+#, fuzzy
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
+msgstr "Hierarchinio sąrašo rodinio būsena"
 
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
@@ -3635,6 +3692,16 @@ msgstr ""
 msgctxt "view:ir.cron:"
 msgid "Every"
 msgstr "Kiekvienas"
+
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Date"
+msgstr "Kitas įvykis"
+
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr "Kitas įvykis"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"

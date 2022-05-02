@@ -331,10 +331,6 @@ msgid "The password cannot be the same as user's email address."
 msgstr ""
 "La contrasenya no pot ser la mateixa que el correu electrònic de l'usuari."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "El mateixos caràcters apareixen a la contrasenya massa vegades."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "La contrasenya està prohibida."
@@ -562,8 +558,8 @@ msgstr ""
 "                [8:%(host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
-msgstr "La contrasenya caducarà el [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
+msgstr "La contrasenya caducarà el [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

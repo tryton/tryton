@@ -330,10 +330,6 @@ msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "Parola nu poate fi aceeași cu adresa de e-mail a utilizatorului."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "Aceleași caractere apar în parolă de prea multe ori."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Parola este interzisă."
@@ -561,8 +557,8 @@ msgstr ""
 "[8:%(host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
-msgstr "Parola va expira la [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
+msgstr "Parola va expira in [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

@@ -331,10 +331,6 @@ msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr "密码不能与用户的电子邮件地址相同."
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr "相同的字符出现在密码中的次数太多."
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "密码已被禁止."
@@ -560,8 +556,9 @@ msgstr ""
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
 "                [8:%(host)s/#%(database)s]"
 
+#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
 msgstr "密码将在 [1:%(datetime)s UTC] 过期."
 
 msgctxt "selection:res.user.application,state:"

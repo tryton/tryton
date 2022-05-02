@@ -1514,6 +1514,26 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Usuário"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr "Campo"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Usuário"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr "Valores"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr "Sumário"
+
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
 msgstr "Nome do filho"
@@ -1978,6 +1998,11 @@ msgstr "Tela de Busca"
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
 msgstr "Mostrar Tela"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
+msgstr "Estado da tela de busca"
 
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
@@ -2478,6 +2503,10 @@ msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr "Esse registro é parte da configuração base."
 
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2784,12 +2813,16 @@ msgstr ""
 "Erro de recursão: O registro \"%(rec_name)s\" com o pai "
 "\"%(parent_rec_name)s\" foi configurado como ancestral de si mesmo."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
-msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
 msgstr "Erro de Sintaxe para referência: \"%(value)r\" em \"%(field)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
 msgstr "Relação não encontrada: \"%(value)r\" no \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_report_invalid_email"
@@ -2912,8 +2945,9 @@ msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
 msgstr "Relações demais encontradas: \"%(value)r\" em \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
@@ -2932,9 +2966,23 @@ msgstr ""
 "A condição \"%(condition)s\" não é uma expressão PYSON válida para o gatilho"
 " \"%(trigger)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "Erro de sintaxe para XML id: \"%(value)r\" em \"%(field)s\"."
+
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "XML inválido para a tela \"%(name)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
+msgstr ""
+"Domínio ou critério de busca inválido \"%(domain)s\" para a ação "
+"\"%(action)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_write_error"
@@ -2954,8 +3002,11 @@ msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid "You are not allowed to modify this record."
 msgstr "Você não pode alterar este registro."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
 msgstr "Erro de sintaxe para XML id: \"%(value)r\" em \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
@@ -3371,6 +3422,11 @@ msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
 msgstr "Tela de Busca"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr "Estado da tela de busca"
+
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
 msgstr "Estado da listagem"
@@ -3398,6 +3454,11 @@ msgstr "Ver tela"
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr "Tela de busca"
+
+#, fuzzy
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
+msgstr "Estado da tela de busca"
 
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
@@ -3710,6 +3771,16 @@ msgstr ""
 msgctxt "view:ir.cron:"
 msgid "Every"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Date"
+msgstr "Próxima chamada"
+
+#, fuzzy
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr "Próxima chamada"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"

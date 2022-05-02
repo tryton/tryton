@@ -335,10 +335,6 @@ msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_password_entropy"
-msgid "The same characters appear in the password too many times."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Ilyen jelszó nem engedélyezett."
@@ -566,8 +562,9 @@ msgstr ""
 "                [6:tryton://%(host)s/%(database)s][7:]\n"
 "                [8:%(host)s/#%(database)s]"
 
+#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at [1:%(datetime)s UTC]."
+msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Az ideiglenes jelszó az [1:%(datetime)s UTC] időpontig érvényes."
 
 msgctxt "selection:res.user.application,state:"

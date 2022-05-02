@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
-msgstr "Kata kunci"
+msgstr "Kata Kunci"
 
 msgctxt "field:ir.action,name:"
 msgid "Name"
@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
-msgstr "Kata kunci"
+msgstr "Kata Kunci"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
@@ -149,7 +149,7 @@ msgstr "Tindakan"
 
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
-msgstr "Kata kunci"
+msgstr "Kata Kunci"
 
 msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
@@ -177,7 +177,7 @@ msgstr ""
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
-msgstr "Kata kunci"
+msgstr "Kata Kunci"
 
 msgctxt "field:ir.action.report,model:"
 msgid "Model"
@@ -234,7 +234,7 @@ msgstr ""
 
 msgctxt "field:ir.action.report,translatable:"
 msgid "Translatable"
-msgstr "Dapat diterjemahkan"
+msgstr "Dapat Diterjemahkan"
 
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
@@ -500,7 +500,7 @@ msgstr ""
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
-msgstr ""
+msgstr "Alamat-Alamat"
 
 msgctxt "field:ir.email,at:"
 msgid "At"
@@ -538,7 +538,7 @@ msgstr "Pengguna"
 
 msgctxt "field:ir.email.address,address:"
 msgid "Address"
-msgstr ""
+msgstr "Alamat"
 
 #, fuzzy
 msgctxt "field:ir.email.address,email:"
@@ -588,10 +588,9 @@ msgctxt "field:ir.email.template,recipients_secondary_pyson:"
 msgid "Secondary Recipients"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.email.template,reports:"
 msgid "Reports"
-msgstr "Laporan"
+msgstr "Laporan-Laporan"
 
 msgctxt "field:ir.email.template,subject:"
 msgid "Subject"
@@ -1012,10 +1011,9 @@ msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
-msgstr "Modul"
+msgstr "Modul-Modul"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
@@ -1027,7 +1025,7 @@ msgstr "Status"
 
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
@@ -1292,6 +1290,7 @@ msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
 msgstr "ID Sumber daya"
@@ -1312,10 +1311,9 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Berkas"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
-msgstr "Berkas"
+msgstr "Nama Berkas"
 
 #, fuzzy
 msgctxt "field:ir.translation.export.result,language:"
@@ -1504,6 +1502,23 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Pengguna"
 
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Pengguna"
+
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr ""
+
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr ""
+
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
 msgstr ""
@@ -1598,7 +1613,7 @@ msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
-msgstr ""
+msgstr "Jalankan wisaya pada jendela baru."
 
 msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
@@ -1744,15 +1759,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "Tindakan"
+msgstr "Tindakan-Tindakan"
 
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "Laporan"
+msgstr "Laporan-Laporan"
 
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-URL"
 
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
@@ -1760,7 +1775,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Lampiran"
+msgstr "Lampiran-Lampiran"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -1864,11 +1879,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr ""
+msgstr "Konfigurasi Modul"
 
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr ""
+msgstr "Modul-Modul"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
@@ -1880,7 +1895,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
-msgstr ""
+msgstr "Urutan-Urutan"
 
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
@@ -1929,6 +1944,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_view_tree_state"
@@ -2212,7 +2231,7 @@ msgstr "Email"
 
 msgctxt "model:ir.email.address,name:"
 msgid "Email Address"
-msgstr ""
+msgstr "Alamat Email"
 
 msgctxt "model:ir.email.template,name:"
 msgid "Email Template"
@@ -2423,6 +2442,10 @@ msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2447,10 +2470,9 @@ msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
 msgstr "Anda tidak diizinkan untuk menghapus catatan ini."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
 msgid "No"
-msgstr "Nov"
+msgstr "Tidak"
 
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
@@ -2480,15 +2502,13 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
 msgstr "Bantuan"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
 msgid "Help Selection"
-msgstr "Pilihan"
+msgstr "Pilihan Bantuan"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
 msgid "The key followed by the help text separated by a \":\", one per line."
@@ -2558,7 +2578,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
@@ -2628,10 +2648,9 @@ msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
 msgstr "ID harus positif."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
-msgstr "Bahasa default tidak dapat dihapus."
+msgstr "Kode pada bahasa harus unik."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
@@ -2668,10 +2687,9 @@ msgid ""
 "activated."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
-msgstr "Catatan"
+msgstr "Catatan-Catatan"
 
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
@@ -2695,12 +2713,15 @@ msgid ""
 " was configured as ancestor of itself."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
-msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr ""
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "Kesalahan sintaks untuk id XML: \"%(value)r\" di dalam \"%(field)s\"."
 
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_report_invalid_email"
@@ -2812,7 +2833,7 @@ msgid "w"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
@@ -2827,8 +2848,19 @@ msgid ""
 "\"%(trigger)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr "Kesalahan sintaks untuk id XML: \"%(value)r\" di dalam \"%(field)s\"."
+
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_write_error"
@@ -2847,8 +2879,11 @@ msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid "You are not allowed to modify this record."
 msgstr "Anda tidak diizinkan untuk mengubah catatan ini."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
 msgstr "Kesalahan sintaks untuk id XML: \"%(value)r\" di dalam \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
@@ -2861,7 +2896,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin memanggil terjemahan bahasa?"
 
 msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
 msgid "Are you sure you want to remove languages' translations?"
@@ -2873,9 +2908,8 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
-msgstr ""
+msgstr "Jalankan Satu Kali"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:error_open_button"
 msgid "Open"
 msgstr "Buka"
@@ -3097,11 +3131,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "Laporan"
+msgstr "Laporan-Laporan"
 
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-URL"
 
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
@@ -3113,16 +3147,15 @@ msgstr "Administrasi"
 
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Lampiran"
+msgstr "Lampiran-Lampiran"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
 msgstr "Butir Wisaya Konfigurasi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Actions"
-msgstr "Tindakan"
+msgstr "Tindakan-Tindakan"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
@@ -3152,7 +3185,7 @@ msgstr "Jenis"
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr "Bahasa"
+msgstr "Bahasa-Bahasa"
 
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
@@ -3263,6 +3296,10 @@ msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
 msgstr ""
@@ -3289,6 +3326,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
+msgstr ""
+
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
 msgstr ""
 
 msgctxt "model:ir.ui.view_tree_state,name:"
@@ -3603,8 +3644,16 @@ msgid "Every"
 msgstr ""
 
 msgctxt "view:ir.cron:"
-msgid "Run Once"
+msgid "Next Call Date"
 msgstr ""
+
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr ""
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "Jalankan Satu Kali"
 
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
@@ -3640,19 +3689,19 @@ msgstr ""
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
-msgstr ""
+msgstr "Modul-Modul sudah ditingkatkan / diaktifkan."
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr ""
+msgstr "Perhatikan bahwa operasi ini mungkin memakan waktu beberapa menit."
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr ""
+msgstr "Sistem Anda akan ditingkatkan."
 
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
-msgstr ""
+msgstr "Anda sekarang bisa mengaktifkan modul-modul tambahan ke dalam sistem."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3678,11 +3727,11 @@ msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
-msgstr ""
+msgstr "Tandai untuk Aktivasi"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Deactivation (beta)"
-msgstr ""
+msgstr "Tandai untuk Deaktivasi (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
@@ -28,11 +28,11 @@ msgstr "Gebruik"
 
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
-msgstr "domeinen"
+msgstr "Domeinen"
 
 msgctxt "field:ir.action.act_window,act_window_views:"
 msgid "Views"
-msgstr "Aanzichten"
+msgstr "Weergaves"
 
 msgctxt "field:ir.action.act_window,action:"
 msgid "Action"
@@ -40,15 +40,15 @@ msgstr "Actie"
 
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
-msgstr "Samenhang waarde"
+msgstr "Context waarde"
 
 msgctxt "field:ir.action.act_window,context_domain:"
 msgid "Context Domain"
-msgstr "Context van het Waardebereik (domain)"
+msgstr "Context domein"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr "context model"
+msgstr "Context model"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
@@ -60,7 +60,7 @@ msgstr "Domeinen"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
@@ -68,7 +68,7 @@ msgstr "Trefwoorden"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
-msgstr "Begrenzing"
+msgstr "Limiet"
 
 msgctxt "field:ir.action.act_window,name:"
 msgid "Name"
@@ -76,11 +76,11 @@ msgstr "Naam"
 
 msgctxt "field:ir.action.act_window,order:"
 msgid "Order Value"
-msgstr "Bestellingswaarde"
+msgstr "Volgorde waarde"
 
 msgctxt "field:ir.action.act_window,pyson_context:"
 msgid "PySON Context"
-msgstr "PySON verband"
+msgstr "PySON context"
 
 msgctxt "field:ir.action.act_window,pyson_domain:"
 msgid "PySON Domain"
@@ -88,7 +88,7 @@ msgstr "PySON domein"
 
 msgctxt "field:ir.action.act_window,pyson_order:"
 msgid "PySON Order"
-msgstr "PySON-bestelling"
+msgstr "PySON volgorde"
 
 msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
@@ -116,7 +116,7 @@ msgstr "Gebruik"
 
 msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
-msgstr "Aanzichten"
+msgstr "Weergaves"
 
 msgctxt "field:ir.action.act_window.domain,act_window:"
 msgid "Action"
@@ -124,7 +124,7 @@ msgstr "Actie"
 
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
-msgstr "aantal"
+msgstr "Tellen"
 
 msgctxt "field:ir.action.act_window.domain,domain:"
 msgid "Domain"
@@ -140,7 +140,7 @@ msgstr "Actie"
 
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
-msgstr "Overzicht"
+msgstr "Weergave"
 
 msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
@@ -164,11 +164,11 @@ msgstr "Direct afdrukken"
 
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
-msgstr "Uitbreiding"
+msgstr "Extensie"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.action.report,is_custom:"
 msgid "Is Custom"
@@ -216,7 +216,7 @@ msgstr "HTML inhoud"
 
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
-msgstr "Contentnaam"
+msgstr "Inhoud naam"
 
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
@@ -224,11 +224,11 @@ msgstr "Interne naam"
 
 msgctxt "field:ir.action.report,single:"
 msgid "Single"
-msgstr "Uniek (single)"
+msgstr "Uniek"
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
-msgstr "Sjabloon uitbreiding"
+msgstr "Template extensie"
 
 msgctxt "field:ir.action.report,translatable:"
 msgid "Translatable"
@@ -248,7 +248,7 @@ msgstr "Actie"
 
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.action.url,keywords:"
 msgid "Keywords"
@@ -280,7 +280,7 @@ msgstr "Actie"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.action.wizard,keywords:"
 msgid "Keywords"
@@ -308,7 +308,7 @@ msgstr "Gebruik"
 
 msgctxt "field:ir.action.wizard,window:"
 msgid "Window"
-msgstr "Scherm"
+msgstr "Venster"
 
 msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
@@ -320,7 +320,7 @@ msgstr "Kopieer naar bronnen"
 
 msgctxt "field:ir.attachment,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr "Kopiëren naar zichtbare bronnen"
+msgstr "Kopieer naar zichtbare bronnen"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -340,7 +340,7 @@ msgstr "Bestands-ID"
 
 msgctxt "field:ir.attachment,last_modification:"
 msgid "Last Modification"
-msgstr "Laatste aanpassing"
+msgstr "Laatste wijziging"
 
 msgctxt "field:ir.attachment,last_user:"
 msgid "Last User"
@@ -348,7 +348,7 @@ msgstr "Laatste gebruiker"
 
 msgctxt "field:ir.attachment,link:"
 msgid "Link"
-msgstr "Verbinding"
+msgstr "Koppeling"
 
 msgctxt "field:ir.attachment,name:"
 msgid "Name"
@@ -356,7 +356,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
-msgstr "Middel"
+msgstr "Bron"
 
 msgctxt "field:ir.attachment,summary:"
 msgid "Summary"
@@ -376,7 +376,7 @@ msgstr "Kopieer naar bronnen"
 
 msgctxt "field:ir.avatar,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr "Kopiëren naar zichtbare bronnen"
+msgstr "Kopieer naar zichtbare bronnen"
 
 msgctxt "field:ir.avatar,image:"
 msgid "Image"
@@ -388,7 +388,7 @@ msgstr "Afbeeldings-ID"
 
 msgctxt "field:ir.avatar,last_modification:"
 msgid "Last Modification"
-msgstr "Laatste aanpassing"
+msgstr "Laatste wijziging"
 
 msgctxt "field:ir.avatar,last_user:"
 msgid "Last User"
@@ -396,7 +396,7 @@ msgstr "Laatste gebruiker"
 
 msgctxt "field:ir.avatar,resource:"
 msgid "Resource"
-msgstr "hulpbron (resource)"
+msgstr "Bron"
 
 msgctxt "field:ir.avatar,uuid:"
 msgid "UUID"
@@ -452,11 +452,11 @@ msgstr "Naam"
 
 msgctxt "field:ir.configuration,hostname:"
 msgid "Hostname"
-msgstr "Hostename"
+msgstr "Hostnaam"
 
 msgctxt "field:ir.configuration,language:"
 msgid "language"
-msgstr "Taal"
+msgstr "taal"
 
 msgctxt "field:ir.cron,day:"
 msgid "Day"
@@ -480,7 +480,7 @@ msgstr "Methode"
 
 msgctxt "field:ir.cron,minute:"
 msgid "Minute"
-msgstr "Minuten"
+msgstr "Minuut"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
@@ -516,7 +516,7 @@ msgstr "Secundaire ontvangers"
 
 msgctxt "field:ir.email,resource:"
 msgid "Resource"
-msgstr "hulpbron (resource)"
+msgstr "Bron"
 
 msgctxt "field:ir.email,subject:"
 msgid "Subject"
@@ -544,7 +544,7 @@ msgstr "Model"
 
 msgctxt "field:ir.email.template,model_name:"
 msgid "Model Name"
-msgstr "Naam module"
+msgstr "Naam model"
 
 msgctxt "field:ir.email.template,name:"
 msgid "Name"
@@ -552,7 +552,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.email.template,recipients:"
 msgid "Recipients"
-msgstr "ontvangers"
+msgstr "Ontvangers"
 
 msgctxt "field:ir.email.template,recipients_hidden:"
 msgid "Hidden Recipients"
@@ -576,7 +576,7 @@ msgstr "Secundaire ontvangers"
 
 msgctxt "field:ir.email.template,reports:"
 msgid "Reports"
-msgstr "rapporten"
+msgstr "Rapporten"
 
 msgctxt "field:ir.email.template,subject:"
 msgid "Subject"
@@ -584,11 +584,11 @@ msgstr "Onderwerp"
 
 msgctxt "field:ir.email.template-ir.action.report,report:"
 msgid "Report"
-msgstr "Verslag"
+msgstr "Rapport"
 
 msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:ir.error,description:"
 msgid "Description"
@@ -600,11 +600,11 @@ msgstr "Bericht"
 
 msgctxt "field:ir.error,origin:"
 msgid "Origin"
-msgstr "Oorsprong(herkomst)"
+msgstr "Oorsprong"
 
 msgctxt "field:ir.error,processed_by:"
 msgid "Processed by"
-msgstr "Verwerkt door"
+msgstr "Uitgevoerd door"
 
 msgctxt "field:ir.error,solved_by:"
 msgid "Solved by"
@@ -628,7 +628,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
-msgstr "Middel"
+msgstr "Bron"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -640,7 +640,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
-msgstr "AM"
+msgstr "VM"
 
 msgctxt "field:ir.lang,code:"
 msgid "Code"
@@ -708,7 +708,7 @@ msgstr "Positie positief teken"
 
 msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
-msgstr "code bovenliggend niveau (parent)"
+msgstr "Bovenliggende code"
 
 msgctxt "field:ir.lang,pg_text_search:"
 msgid "PostgreSQL Text Search Configuration"
@@ -716,7 +716,7 @@ msgstr "Configuratie voor PostgreSQL-tekst zoeken"
 
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
-msgstr "P.M"
+msgstr "NM"
 
 msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
@@ -752,7 +752,7 @@ msgstr "Informatie"
 
 msgctxt "field:ir.model,model:"
 msgid "Model Name"
-msgstr "Naam module"
+msgstr "Naam model"
 
 msgctxt "field:ir.model,module:"
 msgid "Module"
@@ -776,7 +776,7 @@ msgstr "Model"
 
 msgctxt "field:ir.model.access,perm_create:"
 msgid "Create Access"
-msgstr "Mag aanmaken"
+msgstr "Toegang aanmaken"
 
 msgctxt "field:ir.model.access,perm_delete:"
 msgid "Delete Access"
@@ -784,15 +784,15 @@ msgstr "Toegang verwijderen"
 
 msgctxt "field:ir.model.access,perm_read:"
 msgid "Read Access"
-msgstr "Leesrecht"
+msgstr "Toegang lezen"
 
 msgctxt "field:ir.model.access,perm_write:"
 msgid "Write Access"
-msgstr "Schrijfrecht"
+msgstr "Toegang schrijven"
 
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
-msgstr "klikken"
+msgstr "Aantal klikken"
 
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
@@ -816,7 +816,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
-msgstr "resetten"
+msgstr "Resetten"
 
 msgctxt "field:ir.model.button,reset_by:"
 msgid "Reset by"
@@ -828,19 +828,19 @@ msgstr "Regel"
 
 msgctxt "field:ir.model.button,string:"
 msgid "Label"
-msgstr "etiket (label)"
+msgstr "Label"
 
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
-msgstr "knoppen"
+msgstr "Knop"
 
 msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
-msgstr "Knop instelling (button ruled)"
+msgstr "Knop regels"
 
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
-msgstr "knoppen"
+msgstr "Knop"
 
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
@@ -864,7 +864,7 @@ msgstr "Aantal gebruikers"
 
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
-msgstr "Middel ID"
+msgstr "Bron ID"
 
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
@@ -884,7 +884,7 @@ msgstr "Module"
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
-msgstr "Niet bij te werken"
+msgstr "Niet bijwerken"
 
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
@@ -940,7 +940,7 @@ msgstr "Groep"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
-msgstr "Mag aanmaken"
+msgstr "Toegang aanmaken"
 
 msgctxt "field:ir.model.field.access,perm_delete:"
 msgid "Delete Access"
@@ -948,11 +948,11 @@ msgstr "Toegang verwijderen"
 
 msgctxt "field:ir.model.field.access,perm_read:"
 msgid "Read Access"
-msgstr "Leesrecht"
+msgstr "Toegang lezen"
 
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
-msgstr "Schrijfrecht"
+msgstr "Toegang schrijven"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -964,7 +964,7 @@ msgstr "Niveau"
 
 msgctxt "field:ir.module,childs:"
 msgid "Childs"
-msgstr "onderliggen niveau (module) (child)"
+msgstr "Onderliggend"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
@@ -976,7 +976,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
-msgstr "bovenliggend niveau (parent, module)"
+msgstr "Bovenliggend"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1024,11 +1024,11 @@ msgstr "Kopieer naar bronnen"
 
 msgctxt "field:ir.note,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr "Kopiëren naar zichtbare bronnen"
+msgstr "Kopieer naar zichtbare bronnen"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
-msgstr "Laatste aanpassing"
+msgstr "Laatste wijziging"
 
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
@@ -1044,7 +1044,7 @@ msgstr "Bericht"
 
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
-msgstr "hulpbron (resource)"
+msgstr "Bron"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
@@ -1052,7 +1052,7 @@ msgstr "Ongelezen"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr "Aantekening"
+msgstr "Notitie"
 
 msgctxt "field:ir.note.read,user:"
 msgid "User"
@@ -1068,7 +1068,7 @@ msgstr "Verwijderd uit de wachtrij op"
 
 msgctxt "field:ir.queue,enqueued_at:"
 msgid "Enqueued at"
-msgstr "toegevoegd aan de wachtrij op"
+msgstr "Toegevoegd aan de wachtrij op"
 
 msgctxt "field:ir.queue,expected_at:"
 msgid "Expected at"
@@ -1076,7 +1076,7 @@ msgstr "Verwacht op"
 
 msgctxt "field:ir.queue,finished_at:"
 msgid "Finished at"
-msgstr "Klaar om"
+msgstr "Afgerond om"
 
 msgctxt "field:ir.queue,name:"
 msgid "Name"
@@ -1084,7 +1084,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.queue,scheduled_at:"
 msgid "Scheduled at"
-msgstr "Gepland om"
+msgstr "Gepland op"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
@@ -1100,7 +1100,7 @@ msgstr "Standaard"
 
 msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
-msgstr "Globaal"
+msgstr "Algmeen"
 
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
@@ -1116,7 +1116,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.rule.group,perm_create:"
 msgid "Create Access"
-msgstr "Mag aanmaken"
+msgstr "Toegang aanmaken"
 
 msgctxt "field:ir.rule.group,perm_delete:"
 msgid "Delete Access"
@@ -1124,11 +1124,11 @@ msgstr "Toegang verwijderen"
 
 msgctxt "field:ir.rule.group,perm_read:"
 msgid "Read Access"
-msgstr "Leesrecht"
+msgstr "Toegang lezen"
 
 msgctxt "field:ir.rule.group,perm_write:"
 msgid "Write Access"
-msgstr "Schrijfrecht"
+msgstr "Toegang schrijven"
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
@@ -1168,7 +1168,7 @@ msgstr "Reeks type"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
-msgstr "Toevoeging"
+msgstr "Achtervoegsel"
 
 msgctxt "field:ir.sequence,timestamp_offset:"
 msgid "Timestamp Offset"
@@ -1216,7 +1216,7 @@ msgstr "Reeks type"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
-msgstr "Toevoeging"
+msgstr "Achtervoegsel"
 
 msgctxt "field:ir.sequence.strict,timestamp_offset:"
 msgid "Timestamp Offset"
@@ -1268,7 +1268,7 @@ msgstr "Module overschrijven"
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
-msgstr "Middel ID"
+msgstr "Bron ID"
 
 msgctxt "field:ir.translation,src:"
 msgid "Source"
@@ -1280,11 +1280,11 @@ msgstr "Type"
 
 msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
-msgstr "Vertaling"
+msgstr "Vertaling waarde"
 
 msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
-msgstr "bestrand"
+msgstr "Bestand"
 
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
@@ -1320,7 +1320,7 @@ msgstr "Voorwaarde"
 
 msgctxt "field:ir.trigger,limit_number:"
 msgid "Limit Number"
-msgstr "Begrenzing nummer"
+msgstr "Limiet nummer"
 
 msgctxt "field:ir.trigger,minimum_time_delay:"
 msgid "Minimum Delay"
@@ -1348,7 +1348,7 @@ msgstr "Op tijd"
 
 msgctxt "field:ir.trigger,on_write:"
 msgid "On Write"
-msgstr "Bij muteren"
+msgstr "Bij schrijven"
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -1356,11 +1356,11 @@ msgstr "Item ID"
 
 msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
-msgstr "Starter"
+msgstr "Trigger"
 
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
@@ -1372,7 +1372,7 @@ msgstr "Naam"
 
 msgctxt "field:ir.ui.icon,path:"
 msgid "SVG Path"
-msgstr "SVG-pad"
+msgstr "SVG pad"
 
 msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
@@ -1380,11 +1380,11 @@ msgstr "Actie"
 
 msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
-msgstr "Actietrefwoord"
+msgstr "Actietrefwoorden"
 
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr "Onderliggend"
 
 msgctxt "field:ir.ui.menu,complete_name:"
 msgid "Complete Name"
@@ -1392,7 +1392,7 @@ msgstr "Volledige naam"
 
 msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
-msgstr "Favoriete"
+msgstr "Favoriet"
 
 msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
@@ -1400,7 +1400,7 @@ msgstr "Groepen"
 
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "field:ir.ui.menu,name:"
 msgid "Menu"
@@ -1408,7 +1408,7 @@ msgstr "Menu"
 
 msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
-msgstr "Hoofdmenu"
+msgstr "Bovenliggend menu"
 
 msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
@@ -1420,7 +1420,7 @@ msgstr "Gebruiker"
 
 msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
-msgstr "Bekijk opbouw"
+msgstr "Architectuur weergave"
 
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
@@ -1432,11 +1432,11 @@ msgstr "Domein"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
-msgstr "Veld onderliggende niveaus"
+msgstr "Onderliggende velden"
 
 msgctxt "field:ir.ui.view,inherit:"
 msgid "Inherited View"
-msgstr "Aanzicht overnemen"
+msgstr "Overgenomen weergave"
 
 msgctxt "field:ir.ui.view,model:"
 msgid "Model"
@@ -1456,7 +1456,7 @@ msgstr "Prioriteit"
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
-msgstr "Aanzicht type"
+msgstr "Weergave type"
 
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
@@ -1474,9 +1474,25 @@ msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "Gebruiker"
 
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr "Veld"
+
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr "Waarde"
+
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr "Weergave ID"
+
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
-msgstr "Naam onderliggend niveau (child)"
+msgstr "Naam onderliggend"
 
 msgctxt "field:ir.ui.view_tree_state,domain:"
 msgid "Domain"
@@ -1488,11 +1504,11 @@ msgstr "Model"
 
 msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
-msgstr "Uitgebreide Nodes"
+msgstr "Uitgebreide knopen"
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
-msgstr "geselecteerde Nodes"
+msgstr "Geselecteerde Knopen"
 
 msgctxt "field:ir.ui.view_tree_state,user:"
 msgid "User"
@@ -1524,7 +1540,7 @@ msgstr "Een deel van het domein dat bij elke verversing wordt geëvalueerd."
 
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view."
-msgstr "Standaard begrenzing voor lijstweergave."
+msgstr "Standaard limiet voor lijstweergave."
 
 msgctxt "help:ir.action.act_window,records:"
 msgid "The records on which the action runs."
@@ -1539,8 +1555,8 @@ msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format."
 msgstr ""
-"Laat leeg voor hetzelfde als sjabloon, zie LibreOffice - documentatie voor "
-"compatibel formaat."
+"Laat leeg voor hetzelfde als template, zie LibreOffice documentatie voor "
+"ondersteunend formaat."
 
 msgctxt "help:ir.action.report,record_name:"
 msgid ""
@@ -1548,7 +1564,7 @@ msgid ""
 "Leave empty for the default name."
 msgstr ""
 "Een Genshi-expressie om de naam te berekenen met 'record'.\n"
-"Laat leeg voor de standaardnaam."
+"Laat leeg voor de standaard naam."
 
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
@@ -1556,7 +1572,7 @@ msgstr "De records waarop de actie wordt uitgevoerd."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
-msgstr "Controleer of het sjabloon slechts voor één record werkt."
+msgstr "Controleer of de template slechts voor één record werkt."
 
 msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
@@ -1577,7 +1593,7 @@ msgstr "Start assistent in nieuw venster."
 
 msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
-msgstr "Het veld dat de ontvanger (s) bevat."
+msgstr "Het veld dat de ontvanger(s) bevat."
 
 msgctxt "help:ir.email.template,recipients_hidden:"
 msgid "The field that contains the secondary recipient(s)."
@@ -1621,7 +1637,7 @@ msgstr "Code van de uitzonderlijke ouder"
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined."
-msgstr "Module waarin dit veld is gedefinieerd."
+msgstr "Module waarin dit model is gedefinieerd."
 
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
@@ -1631,14 +1647,14 @@ msgstr ""
 
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules."
-msgstr "Knop die de regels opnieuw moet instellen."
+msgstr "Knop die de regels opnieuw instellen."
 
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
 "A PYSON statement evaluated with the record represented by \"self\"\n"
 "It activate the rule if true."
 msgstr ""
-"Een PYSON-instructie geëvalueerd met record voorgesteld door \"self\"\n"
+"Een PYSON-instructie geëvalueerd met record vertegenwoordigd door \"self\"\n"
 "Het activeert de actie als het waar is."
 
 msgctxt "help:ir.model.data,db_id:"
@@ -1666,12 +1682,12 @@ msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
 msgstr ""
-"Als u een Python-reguliere expressie invoert, wordende overeenkomstige "
+"Als u een Python Regular Expression invoert, wordende overeenkomstige "
 "modellen uitgesloten van de grafiek."
 
 msgctxt "help:ir.queue,expected_at:"
 msgid "When the task should be done."
-msgstr "Wanneer de taak zou moeten worden uitgevoerd."
+msgstr "Wanneer de taak gereed moet zijn."
 
 msgctxt "help:ir.queue,scheduled_at:"
 msgid "When the task can start."
@@ -1695,7 +1711,7 @@ msgid ""
 "so every users must follow this rule."
 msgstr ""
 "Maak de regel globaal\n"
-"dus elge gebruiker moet deze regel volgen."
+"dus elke gebruiker moet deze regel volgen."
 
 msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
@@ -1712,7 +1728,7 @@ msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Een PYSON-instructie geëvalueerd met record voorgesteld door \"self\"\n"
+"Een PYSON-instructie geëvalueerd met record vertegenwoordigd door \"self\"\n"
 "Het activeert de actie als het waar is."
 
 msgctxt "help:ir.trigger,limit_number:"
@@ -1720,8 +1736,8 @@ msgid ""
 "Limit the number of call to \"Action Function\" by records.\n"
 "0 for no limit."
 msgstr ""
-"Beperk het aantal aanroepen van \"Uitvoerende functie\" door items.\n"
-"Gebruik 0 voor geen beperking."
+"Limiteer het aantal aanroepen van \"Uitvoerende functie\" door items.\n"
+"Gebruik 0 voor geen limiet."
 
 msgctxt "help:ir.trigger,minimum_time_delay:"
 msgid ""
@@ -1749,7 +1765,7 @@ msgstr "Acties"
 
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "rapporten"
+msgstr "Rapporten"
 
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
@@ -1765,7 +1781,7 @@ msgstr "Bijlagen"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Wizard-items configureren"
+msgstr "Configureer Assistent items"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Actions"
@@ -1781,23 +1797,23 @@ msgstr "E-mailarchief"
 
 msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
-msgstr "E-mailsjablonen"
+msgstr "E-mail templates"
 
 msgctxt "model:ir.action,name:act_error_form"
 msgid "Errors"
-msgstr "fouten"
+msgstr "Fouten"
 
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
-msgstr "Exports"
+msgstr "Geëxporteerd"
 
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "Icoon"
+msgstr "Pictogrammen"
 
 msgctxt "model:ir.action,name:act_lang_config"
 msgid "Configure Languages"
-msgstr "Configureer talen"
+msgstr "Talen configureren"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1825,11 +1841,11 @@ msgstr "Toegang"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr "klikken"
+msgstr "Aantal klikken"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "knoppen"
+msgstr "Knoppen"
 
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
@@ -1837,7 +1853,7 @@ msgstr "Gegevens"
 
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Leesrecht(toegansrecht)"
+msgstr "Toegang veld"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
@@ -1849,7 +1865,7 @@ msgstr "Velden"
 
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
-msgstr "modellen"
+msgstr "Modellen"
 
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
@@ -1861,7 +1877,7 @@ msgstr "Modules configureren"
 
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "Moduleconfiguratie"
+msgstr "Module configuratie"
 
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
@@ -1869,11 +1885,11 @@ msgstr "Modules"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr "Aantekeningen"
+msgstr "Notities"
 
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Record regels(veld regels)"
+msgstr "Record regels"
 
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
@@ -1881,7 +1897,7 @@ msgstr "Reeksen"
 
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Vaste reeks"
+msgstr "Strikte reeksen"
 
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Types"
@@ -1889,11 +1905,11 @@ msgstr "Types"
 
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "Vertaling opschonen"
+msgstr "Vertalingen opschonen"
 
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "Vertalingen exporteren"
+msgstr "Exporteer vertalingen"
 
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
@@ -1905,7 +1921,7 @@ msgstr "Vertalingen"
 
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
-msgstr "Vertalingen opschonen"
+msgstr "Vertalingen bijwerken"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
@@ -1917,7 +1933,7 @@ msgstr "Triggers"
 
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "weergaves"
+msgstr "Weergaves"
 
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
@@ -1927,9 +1943,13 @@ msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
 msgstr "Toon weergave"
 
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
+msgstr "Optionele boomstructuur weergave"
+
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr "status boommenu"
+msgstr "Status boom"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
@@ -1957,7 +1977,7 @@ msgstr "Actie uitvoerend scherm"
 
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
-msgstr "Actie uitvoerend schermaanzicht"
+msgstr "Actie uitvoerend scherm domein"
 
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
 msgid "All"
@@ -1970,7 +1990,7 @@ msgstr "Open"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_error_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerken"
+msgstr "Uitvoering"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -1985,16 +2005,16 @@ msgstr "Niet gesynchroniseerd"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
-msgstr "Local"
+msgstr "Lokaal"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_module"
 msgid "Modules"
-msgstr "Modulen"
+msgstr "Modules"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
-msgstr "Actie uitvoerend schermaanzicht"
+msgstr "Actie uitvoerend scherm weergave"
 
 msgctxt "model:ir.action.keyword,name:"
 msgid "Action keyword"
@@ -2026,7 +2046,7 @@ msgstr "Avatar-cache"
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
-msgstr "Tijdelijk geheugen"
+msgstr "Cache"
 
 msgctxt "model:ir.calendar.day,abbreviation:Friday"
 msgid "Fri"
@@ -2038,11 +2058,11 @@ msgstr "Ma"
 
 msgctxt "model:ir.calendar.day,abbreviation:Saturday"
 msgid "Sat"
-msgstr "Zat"
+msgstr "Za"
 
 msgctxt "model:ir.calendar.day,abbreviation:Sunday"
 msgid "Sun"
-msgstr "Zon"
+msgstr "Zo"
 
 msgctxt "model:ir.calendar.day,abbreviation:Thursday"
 msgid "Thu"
@@ -2054,7 +2074,7 @@ msgstr "Di"
 
 msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
 msgid "Wed"
-msgstr "Woe"
+msgstr "Wo"
 
 msgctxt "model:ir.calendar.day,name:"
 msgid "Day"
@@ -2134,7 +2154,7 @@ msgstr "Okt"
 
 msgctxt "model:ir.calendar.month,abbreviation:September"
 msgid "Sep"
-msgstr "Sep"
+msgstr "Sept"
 
 msgctxt "model:ir.calendar.month,name:"
 msgid "Month"
@@ -2190,7 +2210,7 @@ msgstr "September"
 
 msgctxt "model:ir.configuration,name:"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuratie"
 
 msgctxt "model:ir.cron,name:"
 msgid "Cron"
@@ -2210,11 +2230,11 @@ msgstr "E-mailadres"
 
 msgctxt "model:ir.email.template,name:"
 msgid "Email Template"
-msgstr "Email sjabloon"
+msgstr "Email template"
 
 msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
-msgstr "E-mailsjabloon - Rapport"
+msgstr "E-mail template - Rapport"
 
 msgctxt "model:ir.error,name:"
 msgid "Error"
@@ -2226,7 +2246,7 @@ msgstr "Exporteren"
 
 msgctxt "model:ir.export.line,name:"
 msgid "Export line"
-msgstr "Exporterregel"
+msgstr "Exporteer regel"
 
 msgctxt "model:ir.lang,name:"
 msgid "Language"
@@ -2234,7 +2254,7 @@ msgstr "Taal"
 
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Bulgarian"
+msgstr "Bulgaars"
 
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
@@ -2246,7 +2266,7 @@ msgstr "Tsjechisch"
 
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "Duitse"
+msgstr "Duits"
 
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
@@ -2262,7 +2282,7 @@ msgstr "Spanish (Latin American)"
 
 msgctxt "model:ir.lang,name:lang_et"
 msgid "Estonian"
-msgstr "Estlands"
+msgstr "Ests"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
@@ -2278,7 +2298,7 @@ msgstr "Frans"
 
 msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
-msgstr "Hungarian"
+msgstr "Hongaars"
 
 msgctxt "model:ir.lang,name:lang_id"
 msgid "Indonesian"
@@ -2286,7 +2306,7 @@ msgstr "Indonesisch"
 
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
-msgstr "Italian"
+msgstr "Italiaans"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "Lao"
@@ -2294,15 +2314,15 @@ msgstr "Lao"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "Litouws"
 
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "Dutch"
+msgstr "Nederlands"
 
 msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
-msgstr "Polish"
+msgstr "Pools"
 
 msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
@@ -2318,7 +2338,7 @@ msgstr "Russisch"
 
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr "Slovenian"
+msgstr "Sloveens"
 
 msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
@@ -2326,11 +2346,11 @@ msgstr "Turks"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
-msgstr "Chinese Simplified"
+msgstr "Chinees Simplified"
 
 msgctxt "model:ir.lang.config.start,name:"
 msgid "Configure languages"
-msgstr "Configureer talen"
+msgstr "Talen configureren"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2342,7 +2362,7 @@ msgstr "ID"
 
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
-msgstr "de knop \"%(button)s op\"%(model)s \"is niet toegestaan."
+msgstr "De knop \"%(button)s op\"%(model)s \" aanroepen is niet toegestaan."
 
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -2364,7 +2384,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
-msgstr "Ongeldige context\"%(context)s\" voor actie \"%(action)s\"."
+msgstr "Ongeldige context \"%(context)s\" voor actie \"%(action)s\"."
 
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
@@ -2384,7 +2404,7 @@ msgstr "Actief"
 
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
-msgstr "Haal het vinkje weg om toekomstig gebruik te voorkomen."
+msgstr "Verwijder het vinkje om toekomstig gebruik te voorkomen."
 
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
@@ -2414,6 +2434,10 @@ msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr "Deze record maakt deel uit van de basisconfiguratie."
 
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr "De naam van de knop moet uniek zijn per model."
+
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
@@ -2424,7 +2448,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_created_at"
 msgid "Created at"
-msgstr "Aanmaak Datum"
+msgstr "Aangemaakt op"
 
 msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
@@ -2435,7 +2459,7 @@ msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
-"Het is jou niet toegestaan records \"%(ids)s\" van \"%(model)s\" te verwijderen vanwege ten minste één van deze regels:\n"
+"Het is niet toegestaan records \"%(ids)s\" van \"%(model)s\" te verwijderen vanwege ten minste één van deze regels:\n"
 "%(rules)s"
 
 msgctxt "model:ir.message,text:msg_delete_xml_record"
@@ -2452,7 +2476,7 @@ msgstr "Boolean"
 
 msgctxt "model:ir.message,text:msg_dict_schema_char"
 msgid "Char"
-msgstr "tekens (char/caractères)"
+msgstr "Karakters"
 
 msgctxt "model:ir.message,text:msg_dict_schema_date"
 msgid "Date"
@@ -2464,7 +2488,7 @@ msgstr "Datum en tijd"
 
 msgctxt "model:ir.message,text:msg_dict_schema_digits"
 msgid "Digits"
-msgstr "cijfers"
+msgstr "Decimalen"
 
 msgctxt "model:ir.message,text:msg_dict_schema_domain"
 msgid "Domain"
@@ -2518,7 +2542,7 @@ msgstr "Naam"
 
 msgctxt "model:ir.message,text:msg_dict_schema_numeric"
 msgid "Numeric"
-msgstr "numeriek"
+msgstr "Numeriek"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection"
 msgid "Selection"
@@ -2526,7 +2550,7 @@ msgstr "Selectie"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
 msgid "A couple of key and label separated by \":\" per line."
-msgstr "Een paar sleutel en label gescheiden door \":\" per regel."
+msgstr "Een paar van sleutel en label gescheiden door \":\" per regel."
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
 msgid "Selection JSON"
@@ -2542,7 +2566,7 @@ msgstr "Als de selectie op label moet worden gesorteerd."
 
 msgctxt "model:ir.message,text:msg_dict_schema_string"
 msgid "String"
-msgstr "String"
+msgstr "Tekstregel"
 
 msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
@@ -2581,7 +2605,7 @@ msgid ""
 "Invalid body in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige tekst in e-mailsjabloon \"%(template)s\" met uitzondering "
+"Ongeldige tekst in e-mail template \"%(template)s\" met uitzondering "
 "\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
@@ -2589,8 +2613,8 @@ msgid ""
 "Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldig PYSON %(field)s in e-mailsjabloon \"%(template)s\" met uitzondering"
-" \"%(exception)s\"."
+"Ongeldig PYSON %(field)s in e-mail template \"%(template)s\" met "
+"uitzondering \"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
@@ -2605,7 +2629,7 @@ msgid ""
 "Invalid subject in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
-"Ongeldige onderwerp in e-mailsjabloon \"%(template)s\" met uitzondering "
+"Ongeldige onderwerp in e-mail template \"%(template)s\" met uitzondering "
 "\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
@@ -2650,7 +2674,7 @@ msgstr "De standaardtaal\"%(language)s\" kan niet verwijderd worden."
 
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
-msgstr "Ongeldige datumnotatie \"%(format)s\" voor taal \"%(language)s\"."
+msgstr "Ongeldig datum formaat \"%(format)s\" voor taal \"%(language)s\"."
 
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
@@ -2681,7 +2705,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
-msgstr "Aantekeningen"
+msgstr "Notities"
 
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
@@ -2696,7 +2720,7 @@ msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
-"Het is jou niet toegestaan om deze velden \"%(ids)s\" van \"%(model)s\" te lezen vanwege ten minste één van deze regels:\n"
+"Het is niet toegestaan om deze velden \"%(ids)s\" van \"%(model)s\" te lezen vanwege ten minste één van deze regels:\n"
 "%(rules)s"
 
 msgctxt "model:ir.message,text:msg_record_name"
@@ -2712,12 +2736,16 @@ msgstr ""
 "\"%(parent_rec_name)s\" is gedefinieerd als zijn eigen voorganger."
 
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
-msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr "Syntaxisfout voorreferentie: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Syntaxfout voor referentie: \"%(value)r\" van \"%(field)s\" in model "
+"\"%(model)s\" (%(column)s)."
 
 msgctxt "model:ir.message,text:msg_relation_not_found"
-msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
-msgstr "Relatie niet gevonden: \"%(value)r\" in \"%(model)s\"."
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Relatie niet gevonden: \"%(value)r\" in \"%(model)s\" (%(column)s)."
 
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
@@ -2827,7 +2855,7 @@ msgstr "d"
 
 msgctxt "model:ir.message,text:msg_timedelta_h"
 msgid "h"
-msgstr "h"
+msgstr "u"
 
 msgctxt "model:ir.message,text:msg_timedelta_m"
 msgid "m"
@@ -2842,8 +2870,8 @@ msgid "w"
 msgstr "w"
 
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
-msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
-msgstr "Te veel relaties gevonden: %(value)r\" in \"%(model)s\"."
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Te veel relaties gevonden: %(value)r\" in \"%(model)s\" (%(column)s)."
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -2861,9 +2889,21 @@ msgstr ""
 "Voorwaarde %(condition)s\" is geen geldige PYSON-expressie voor trigger "
 "\"%(trigger)s\"."
 
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Syntaxfout voor waarde: \"%(value)r\" in \"%(field)s\" van \"%(model)s\" "
+"(%(column)s)."
+
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
 msgstr "Ongeldige XML voor weergave \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
+msgstr "Ongeldig domein of zoekcriteria \"%(domain)s\" voor zoekactie \"%(action)s\"."
 
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -2878,7 +2918,7 @@ msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
-"Het is jou niet toegestaan om te schrijven in de records \"%(ids)s\" van \"%(model)s\"vanwege ten minste één van deze regels:\n"
+"Het is niet toegestaan om te schrijven in de records \"%(ids)s\" van \"%(model)s\"vanwege ten minste één van deze regels:\n"
 "%(rules)s"
 
 msgctxt "model:ir.message,text:msg_write_xml_record"
@@ -2886,8 +2926,12 @@ msgid "You are not allowed to modify this record."
 msgstr "U hebt niet de nodige bevoegdheid om dit record te wijzigen."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
-msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
-msgstr "Syntaxisfout voor XML-id: \"%(value)r\" in \"%(field)s\"."
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Syntaxfout voor XML-id: \"%(value)r\" in \"%(field)s\" van \"%(model)s\" "
+"(%(column)s)."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -2899,11 +2943,11 @@ msgstr "Toegang tot model"
 
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
-msgstr "Weet u zeker dat u de talen/vertalingen wilt laden?"
+msgstr "Weet u zeker dat u de talen / vertalingen wilt laden?"
 
 msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
 msgid "Are you sure you want to remove languages' translations?"
-msgstr "Weet u zeker dat u de talen/vertalingen wilt verwijderen?"
+msgstr "Weet u zeker dat u de talen / vertalingen wilt verwijderen?"
 
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
@@ -2915,7 +2959,7 @@ msgstr "Een keer uitvoeren"
 
 msgctxt "model:ir.model.button,string:error_open_button"
 msgid "Open"
-msgstr "Openen"
+msgstr "Open"
 
 msgctxt "model:ir.model.button,string:error_process_button"
 msgid "Process"
@@ -2931,7 +2975,7 @@ msgstr "Laad vertalingen"
 
 msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
-msgstr "Unload vertalingen"
+msgstr "Maak vertalingen leeg"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -2943,7 +2987,7 @@ msgstr "Markeren om te activeren"
 
 msgctxt "model:ir.model.button,string:module_activate_cancel_button"
 msgid "Cancel Activation"
-msgstr "Activering annuleren"
+msgstr "Annuleer activering"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
 msgid "Mark for Deactivation (beta)"
@@ -2951,7 +2995,7 @@ msgstr "Markeren om te deactiveren (bèta)"
 
 msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
 msgid "Cancel Deactivation"
-msgstr "Deactivering annuleren"
+msgstr "Annuleer deactivering"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
 msgid "Mark for Upgrade"
@@ -2959,7 +3003,7 @@ msgstr "Markeren om bij te werken (upgrade)"
 
 msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
 msgid "Cancel Upgrade"
-msgstr "Bijwerken annuleren"
+msgstr "Annuleer bijwerken"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -2967,11 +3011,11 @@ msgstr "Toon"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
-msgstr "Modelknop resetten"
+msgstr "Model knop resetten"
 
 msgctxt "model:ir.model.button.click,name:"
 msgid "Model Button Click"
-msgstr "Model Knop Klik"
+msgstr "Model knop Klik"
 
 msgctxt "model:ir.model.button.rule,name:"
 msgid "Model Button Rule"
@@ -2987,7 +3031,7 @@ msgstr "Model veld"
 
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
-msgstr "Modelveldtoegang"
+msgstr "Model veld toegang"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
@@ -2999,11 +3043,11 @@ msgstr "Module"
 
 msgctxt "model:ir.module.activate_upgrade.done,name:"
 msgid "Module Activate Upgrade Done"
-msgstr "Module activeren /Upgrade voltooid"
+msgstr "Module activeren / bijwerken voltooid"
 
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
-msgstr "Module Activeren/ Upgrade Start"
+msgstr "Module Activeren/ bijwerken start"
 
 msgctxt "model:ir.module.config.start,name:"
 msgid "Configure Modules"
@@ -3011,11 +3055,11 @@ msgstr "Modules configureren"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr "Wizard Moduleconfiguratie voltooid"
+msgstr "Module configuratie assistent gereed"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Module EHBC"
+msgstr "Module configuratie assistent eerste"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after activating a module"
@@ -3023,7 +3067,7 @@ msgstr "Configuratie assistent die start na installatie van de module"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Module Configuratie assistent andere"
+msgstr "Module configuratie assistent ander"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
@@ -3031,7 +3075,7 @@ msgstr "Module afhankelijkheid"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr "Aantekening"
+msgstr "Notitie"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
@@ -3055,7 +3099,7 @@ msgstr "Reeks"
 
 msgctxt "model:ir.sequence.strict,name:"
 msgid "Sequence Strict"
-msgstr "Vaste reeks"
+msgstr "Strikte reeks"
 
 msgctxt "model:ir.sequence.type,name:"
 msgid "Sequence type"
@@ -3083,11 +3127,11 @@ msgstr "Vertaling opschonen"
 
 msgctxt "model:ir.translation.export.result,name:"
 msgid "Export translation"
-msgstr "Vertaling exporteren - bestand"
+msgstr "Exporteer vertaling"
 
 msgctxt "model:ir.translation.export.start,name:"
 msgid "Export translation"
-msgstr "Vertaling exporteren - bestand"
+msgstr "Exporteer vertaling"
 
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
@@ -3103,15 +3147,15 @@ msgstr "Vertaling bijwerken"
 
 msgctxt "model:ir.trigger,name:"
 msgid "Trigger"
-msgstr "Starter"
+msgstr "Trigger"
 
 msgctxt "model:ir.trigger.log,name:"
 msgid "Trigger Log"
-msgstr "Starter logboek"
+msgstr "Trigger logboek"
 
 msgctxt "model:ir.ui.icon,name:"
 msgid "Icon"
-msgstr "Icoon"
+msgstr "Pictogram"
 
 msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
@@ -3131,7 +3175,7 @@ msgstr "Vensteracties"
 
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "rapporten"
+msgstr "Rapporten"
 
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
@@ -3163,19 +3207,19 @@ msgstr "E-mails"
 
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
-msgstr "E-mailsjablonen"
+msgstr "E-mail templates"
 
 msgctxt "model:ir.ui.menu,name:menu_error_form"
 msgid "Errors"
-msgstr "fouten"
+msgstr "Fouten"
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr "Export"
+msgstr "Geëxporteerd"
 
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "Iconen"
+msgstr "Pictogrammen"
 
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Types"
@@ -3187,7 +3231,7 @@ msgstr "Talen"
 
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "Localizatie"
+msgstr "Lokalisatie"
 
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
@@ -3203,7 +3247,7 @@ msgstr "Toegang modellen"
 
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "knoppen"
+msgstr "Knoppen"
 
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
@@ -3211,15 +3255,15 @@ msgstr "Gegevens"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Toegangsrechten velden"
+msgstr "Toegang veld"
 
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
-msgstr "modellen"
+msgstr "Modellen"
 
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
-msgstr "modellen"
+msgstr "Modellen"
 
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
@@ -3235,7 +3279,7 @@ msgstr "Modules"
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr "Aantekeningen"
+msgstr "Notities"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
@@ -3243,7 +3287,7 @@ msgstr "Record regels"
 
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "Scheduler ( Planner)"
+msgstr "Planner"
 
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
@@ -3251,7 +3295,7 @@ msgstr "Reeksen"
 
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Vaste reeks"
+msgstr "Strikte reeks"
 
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
@@ -3259,11 +3303,11 @@ msgstr "Reeksen"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "Vertaling opschonen"
+msgstr "Vertalingen opschonen"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "Vertalingen exporteren"
+msgstr "Exporteer vertalingen"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
@@ -3287,15 +3331,19 @@ msgstr "Gebruikersomgeving"
 
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "weergaves"
+msgstr "Weergaves"
 
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
 msgstr "Zoek weergave"
 
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr "Optionele boomstructuur weergave"
+
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr "status boommenu"
+msgstr "Status boom"
 
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
@@ -3311,7 +3359,7 @@ msgstr "Menu favorieten"
 
 msgctxt "model:ir.ui.view,name:"
 msgid "View"
-msgstr "Overzicht"
+msgstr "Weergave"
 
 msgctxt "model:ir.ui.view.show.start,name:"
 msgid "Show view"
@@ -3321,17 +3369,21 @@ msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr "Zoek weergave"
 
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
+msgstr "Optionele boomstructuur weergave"
+
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
-msgstr "Bekijk boomstructuur"
+msgstr "Geef boomstructuur weer"
 
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
-msgstr "Aanzicht boomstructuurbreedte"
+msgstr "Kolombreedte boomweergave"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
-msgstr "vermeld"
+msgstr "Vermeld"
 
 msgctxt "selection:ir.action,records:"
 msgid "Selected"
@@ -3339,7 +3391,7 @@ msgstr "Geselecteerd"
 
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
-msgstr "vermeld"
+msgstr "Vermeld"
 
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
@@ -3355,7 +3407,7 @@ msgstr "Formulier relatie"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open Graph"
-msgstr "Open een grafiek"
+msgstr "Open grafiek"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open tree"
@@ -3367,7 +3419,7 @@ msgstr "Formulier afdrukken"
 
 msgctxt "selection:ir.action.report,records:"
 msgid "Listed"
-msgstr "vermeld"
+msgstr "Vermeld"
 
 msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
@@ -3375,7 +3427,7 @@ msgstr "Geselecteerd"
 
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
-msgstr "vermeld"
+msgstr "Vermeld"
 
 msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
@@ -3383,7 +3435,7 @@ msgstr "Geselecteerd"
 
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
-msgstr "vermeld"
+msgstr "Vermeld"
 
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
@@ -3423,7 +3475,7 @@ msgstr "Fouten opschonen"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
-msgstr "Maak de taakwachtrij schoon"
+msgstr "Taakwachtrij opschonen"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
@@ -3443,7 +3495,7 @@ msgstr "Open"
 
 msgctxt "selection:ir.error,state:"
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "Uitvoering"
 
 msgctxt "selection:ir.error,state:"
 msgid "Solved"
@@ -3451,15 +3503,15 @@ msgstr "Opgelost"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
-msgstr "Van links naar rechts"
+msgstr "Links naar rechts"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
-msgstr "Van rechts naar links"
+msgstr "Rechts naar links"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
-msgstr "geactiveerd"
+msgstr "Geactiveerd"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Activated"
@@ -3479,7 +3531,7 @@ msgstr "Bij te werken"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Gereed"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
@@ -3487,7 +3539,7 @@ msgstr "Open"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Activated"
-msgstr "geactiveerd"
+msgstr "Geactiveerd"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Activated"
@@ -3547,7 +3599,7 @@ msgstr "Model"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
-msgstr "Verslag"
+msgstr "Rapport"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3555,7 +3607,7 @@ msgstr "Selectie"
 
 msgctxt "selection:ir.translation,type:"
 msgid "View"
-msgstr "Aanzicht"
+msgstr "Weergave"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
@@ -3626,6 +3678,14 @@ msgid "Every"
 msgstr "Elke"
 
 msgctxt "view:ir.cron:"
+msgid "Next Call Date"
+msgstr "Datum volgende oproep"
+
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr "Tijd volgende oproep"
+
+msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Een keer uitvoeren"
 
@@ -3643,7 +3703,7 @@ msgstr "Secundaire ontvangers:"
 
 msgctxt "view:ir.error:"
 msgid "Origin"
-msgstr "Oorsprong(herkomst)"
+msgstr "Oorsprong"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."
@@ -3651,11 +3711,11 @@ msgstr "U kunt nu extra vertalingen in het systeem laden."
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
-msgstr "Datum format"
+msgstr "Datum formaat"
 
 msgctxt "view:ir.lang:"
 msgid "Monetary Formatting"
-msgstr "Monetaire opmaak"
+msgstr "Monetair formaat"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
@@ -3671,7 +3731,7 @@ msgstr "Houd er rekening mee dat deze bewerking enkele minuten kan duren."
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr "Uw systeem wordt geüpgraded."
+msgstr "Het systeem wordt bijgewerkt."
 
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
@@ -3691,15 +3751,15 @@ msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Activation"
-msgstr "Activering annuleren"
+msgstr "Annuleer activering"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Deactivation"
-msgstr "Deactivering annuleren"
+msgstr "Annuleer deactivering"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr "Bijwerken annuleren"
+msgstr "Annuleer bijwerken"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
@@ -3711,7 +3771,7 @@ msgstr "Markeren om te deactiveren (bèta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
-msgstr "Selecteer voor bijwerken"
+msgstr "Markeren om bij te werken (upgrade)"
 
 msgctxt "view:ir.note:"
 msgid "Date"
@@ -3757,7 +3817,7 @@ msgstr "Oplopend"
 
 msgctxt "view:ir.sequence:"
 msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Legenda (sjabloon voor voorvoegsel, toevoeging)"
+msgstr "Legenda (sjabloon voor voorvoegsel, achtervoegsel)"
 
 msgctxt "view:ir.sequence:"
 msgid "Month:"
@@ -3781,7 +3841,7 @@ msgstr "Vertalingen met succes opgeschoond."
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
-msgstr "Vertaling synchroniseren?"
+msgstr "Vertalingen synchroniseren?"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
@@ -3789,7 +3849,7 @@ msgstr "Vertalingen zijn succesvol ingesteld."
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.lang.config,start,load:"
 msgid "Load"
@@ -3797,7 +3857,7 @@ msgstr "Laden"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
@@ -3809,11 +3869,11 @@ msgstr "OK"
 
 msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
-msgstr "Start Upgrade"
+msgstr "Start bijwerken"
 
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"
@@ -3833,7 +3893,7 @@ msgstr "Ok"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
@@ -3841,7 +3901,7 @@ msgstr "Volgende"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"
@@ -3849,7 +3909,7 @@ msgstr "Opruimen"
 
 msgctxt "wizard_button:ir.translation.clean,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
 msgid "OK"
@@ -3861,7 +3921,7 @@ msgstr "Sluiten"
 
 msgctxt "wizard_button:ir.translation.export,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.translation.export,start,export:"
 msgid "Export"
@@ -3869,7 +3929,7 @@ msgstr "Exporteren"
 
 msgctxt "wizard_button:ir.translation.set,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.translation.set,start,set_:"
 msgid "Set"
@@ -3881,7 +3941,7 @@ msgstr "Ok"
 
 msgctxt "wizard_button:ir.translation.update,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:ir.translation.update,start,update:"
 msgid "Update"
