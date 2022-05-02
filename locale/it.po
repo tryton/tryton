@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.routing.operation,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "Disponibile sul registro delle attività"
 
 msgctxt "field:production.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "Disponibile sul registro delle attività"
 
 msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Linea di attività"
 
 msgctxt "field:production.work,timesheet_work:"
 msgid "Timesheet Work"
-msgstr ""
+msgstr "Registro attività"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "Registro attività"
