@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Herinnering afdrukken"
+msgstr "Aanmaning afdrukken"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Herinneringsbrief"
+msgstr "Aanmaningsbrief"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
