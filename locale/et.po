@@ -19,6 +19,11 @@ msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
 msgstr "SEPA End To End ID"
 
+#, fuzzy
+msgctxt "field:account.payment,sepa_info_id:"
+msgid "SEPA Info ID"
+msgstr "SEPA juhise ID"
+
 msgctxt "field:account.payment,sepa_instruction_id:"
 msgid "SEPA Instruction ID"
 msgstr "SEPA juhise ID"
@@ -38,6 +43,11 @@ msgstr "Tagastamise põhjuse kood"
 msgctxt "field:account.payment,sepa_return_reason_information:"
 msgid "Return Reason Information"
 msgstr "Tagastamise põhjuse informatsioon"
+
+#, fuzzy
+msgctxt "field:account.payment.group,sepa_id:"
+msgid "SEPA ID"
+msgstr "SEPA"
 
 msgctxt "field:account.payment.group,sepa_messages:"
 msgid "SEPA Messages"
@@ -287,6 +297,13 @@ msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_process_no_bank"
+msgid ""
+"To process payment \"%(payment)s\" you must define a bank for the account "
+"\"%(bank_account)s\"."
+msgstr "Tasumise \"%(tasumiste)\" protsessimiseks tuleb defineerida SEPA mandaat"
+
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr "Tasumise \"%(tasumiste)\" protsessimiseks tuleb defineerida nende IBAN"
@@ -307,8 +324,9 @@ msgctxt "model:ir.model.button,confirm:message_do_button"
 msgid "Are you sure you want to process the messages?"
 msgstr "Oled kindel et soovid sõnumit protsessida?"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:group_generate_message_button"
-msgid "Generate Message"
+msgid "Generate SEPA Message"
 msgstr "Loo sõnum"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"

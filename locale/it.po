@@ -19,6 +19,11 @@ msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
 msgstr "ID SEPA end to end"
 
+#, fuzzy
+msgctxt "field:account.payment,sepa_info_id:"
+msgid "SEPA Info ID"
+msgstr "ID Istruzione SEPA"
+
 msgctxt "field:account.payment,sepa_instruction_id:"
 msgid "SEPA Instruction ID"
 msgstr "ID Istruzione SEPA"
@@ -38,6 +43,11 @@ msgstr "Codice motivo del ritorno"
 msgctxt "field:account.payment,sepa_return_reason_information:"
 msgid "Return Reason Information"
 msgstr "Informazione motivo del ritorno"
+
+#, fuzzy
+msgctxt "field:account.payment.group,sepa_id:"
+msgid "SEPA ID"
+msgstr "SEPA"
 
 msgctxt "field:account.payment.group,sepa_messages:"
 msgid "SEPA Messages"
@@ -290,6 +300,15 @@ msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_process_no_bank"
+msgid ""
+"To process payment \"%(payment)s\" you must define a bank for the account "
+"\"%(bank_account)s\"."
+msgstr ""
+"Per elaborare il pagamento \"%(payment)s\" è necessario definire un mandato "
+"SEPA per esso."
+
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
 msgstr ""
@@ -317,8 +336,9 @@ msgctxt "model:ir.model.button,confirm:message_do_button"
 msgid "Are you sure you want to process the messages?"
 msgstr "Are you sure to cancel the mandate?"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:group_generate_message_button"
-msgid "Generate Message"
+msgid "Generate SEPA Message"
 msgstr "Generate Message"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"
