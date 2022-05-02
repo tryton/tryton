@@ -11,7 +11,7 @@ from tryton.common import get_toplevel_window
 from tryton.config import CONFIG, PIXMAPS_DIR
 
 COPYRIGHT = '''\
-Copyright (C) 2004-2021 Tryton.
+Copyright (C) 2004-2022 Tryton.
 '''
 AUTHORS = [
         'Bertrand Chenal <bertrand.chenal@b2ck.com>',
