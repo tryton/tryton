@@ -62,3 +62,7 @@ msgstr "نقش کاربر"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "هماهنگ سازی نقش های کاربران"
+
+msgctxt "view:res.user.role:"
+msgid "Time"
+msgstr ""

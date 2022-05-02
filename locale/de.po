@@ -61,3 +61,7 @@ msgstr "Benutzerrolle"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "Benutzerrollen synchronisieren"
+
+msgctxt "view:res.user.role:"
+msgid "Time"
+msgstr "Uhrzeit"

@@ -58,7 +58,10 @@ msgctxt "model:res.user.role,name:"
 msgid "User Role"
 msgstr "Ruolo utente"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "Sincronizza ruoli utenti"
+
+msgctxt "view:res.user.role:"
+msgid "Time"
+msgstr ""
