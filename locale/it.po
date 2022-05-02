@@ -57,10 +57,9 @@ msgctxt "field:purchase.requisition,total_amount:"
 msgid "Total"
 msgstr "Totale"
 
-#, fuzzy
 msgctxt "field:purchase.requisition,total_amount_cache:"
 msgid "Total Cache"
-msgstr "totale "
+msgstr "Totale precalcolato"
 
 msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
@@ -118,7 +117,7 @@ msgstr "Unità"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
