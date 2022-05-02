@@ -11,6 +11,16 @@ msgid "Sales"
 msgstr "Prodajni nalogi"
 
 #, fuzzy
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Kupci"
+
+#, fuzzy
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Valuta"
+
+#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Način obračuna"
@@ -24,6 +34,16 @@ msgstr "Način obračuna"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Način odpreme"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Partner"
 
 #, fuzzy
 msgctxt "field:party.party.sale_method,company:"
@@ -687,6 +707,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Pridržano"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
+
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
@@ -697,6 +721,10 @@ msgctxt "help:party.party,sale_shipment_method:"
 msgid ""
 "The default sale shipment method for the customer.\n"
 "Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
 msgstr ""
 
 msgctxt "help:product.configuration,default_lead_time:"
@@ -1169,6 +1197,10 @@ msgstr "Configuration"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Sales"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:party.party.sale_method,name:"

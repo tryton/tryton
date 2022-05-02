@@ -10,6 +10,14 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Verkäufe"
 
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Kundenwährungen"
+
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Kundenwährung"
+
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Rechnungsstellung"
@@ -21,6 +29,14 @@ msgstr "Verkauf Methoden"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Liefermethode"
+
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Kundenwährung"
+
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Partei"
 
 msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
@@ -642,6 +658,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Status Vorbehalt"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "Standardwährung für Verkäufe an diese Partei."
+
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
@@ -657,6 +677,10 @@ msgid ""
 msgstr ""
 "Die Standard-Liefermethode für den Kunden.\n"
 "Leer lassen, um den Standardwert aus den Einstellungen zu verwenden."
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "Standardwährung für Verkäufe an diese Partei."
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
@@ -1126,6 +1150,10 @@ msgstr "Einstellungen"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Verkauf"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr "Partei Kundenwährung"
 
 msgctxt "model:party.party.sale_method,name:"
 msgid "Party Sale Method"

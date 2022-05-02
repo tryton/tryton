@@ -11,6 +11,16 @@ msgid "Sales"
 msgstr "Vânzări"
 
 #, fuzzy
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Clienți"
+
+#, fuzzy
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda"
+
+#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Metoda de facturare"
@@ -22,6 +32,16 @@ msgstr "Metode de Vânzare"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Metoda de Expediere"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Parte"
 
 msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
@@ -651,6 +671,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Stare de excepție"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
+
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
@@ -666,6 +690,10 @@ msgid ""
 msgstr ""
 "Metoda implicită de facturare pentru client.\n"
 "Lăsaţi gol pentru a utiliza valoarea implicită din configurare."
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
@@ -1128,6 +1156,10 @@ msgstr "Configurare"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Vânzări"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr ""
 
 msgctxt "model:party.party.sale_method,name:"
 msgid "Party Sale Method"

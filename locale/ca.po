@@ -10,6 +10,14 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Vendes"
 
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Monedes del client"
+
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda del client"
+
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Mètode de facturació"
@@ -21,6 +29,14 @@ msgstr "Mètodes de venda"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Mètode d'enviament"
+
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda del client"
+
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Tercer"
 
 msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
@@ -642,6 +658,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Estat excepció"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "La moneda per defecte per les vendes d'aquest tercer."
+
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
@@ -657,6 +677,10 @@ msgid ""
 msgstr ""
 "El mètode d'enviament de venda predeterminat per al client.\n"
 "Deixar en blanc per utilitzar el valor per defecte de la configuració."
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "La moneda per defecte per les vendes d'aquest tercer."
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
@@ -1121,6 +1145,10 @@ msgstr "Configuració"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Vendes"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr "Monedes de client per tercer"
 
 msgctxt "model:party.party.sale_method,name:"
 msgid "Party Sale Method"

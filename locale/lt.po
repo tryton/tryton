@@ -11,6 +11,16 @@ msgid "Sales"
 msgstr "Pardavimai"
 
 #, fuzzy
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Pirkėjai"
+
+#, fuzzy
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Valiuta"
+
+#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Sąskaita faktūra išrašoma"
@@ -24,6 +34,16 @@ msgstr "Pardavimo sąskaitų faktūrų išrašymo būdas"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Siuntimo būdas"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Kontrahentas"
 
 #, fuzzy
 msgctxt "field:party.party.sale_method,company:"
@@ -686,6 +706,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Išimtinė būsena"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
+
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
@@ -696,6 +720,10 @@ msgctxt "help:party.party,sale_shipment_method:"
 msgid ""
 "The default sale shipment method for the customer.\n"
 "Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
 msgstr ""
 
 msgctxt "help:product.configuration,default_lead_time:"
@@ -1164,6 +1192,10 @@ msgstr "Nuostatos"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Pardavimai"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:party.party.sale_method,name:"

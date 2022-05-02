@@ -11,6 +11,16 @@ msgid "Sales"
 msgstr "Vevői rendelések"
 
 #, fuzzy
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Értékesítés"
+
+#, fuzzy
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Pénznem"
+
+#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
 msgstr "Számlázás módja"
@@ -24,6 +34,16 @@ msgstr "Vevői rendelések számlázási módja"
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Kiszállítás módja"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Ügyfél"
 
 #, fuzzy
 msgctxt "field:party.party.sale_method,company:"
@@ -668,6 +688,10 @@ msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Visszautasítás kezelése"
 
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
@@ -685,6 +709,10 @@ msgid ""
 msgstr ""
 "Az átfutási idő a vevői rendelés jóváhagyásától az áru kiszállításáig.\n"
 "Ha üres, a termékbeállításoknál megadott átfutási időt használja a rendszer."
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr ""
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
@@ -1132,6 +1160,10 @@ msgstr "Beállítások"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Vevői rendelések"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:party.party.sale_method,name:"
