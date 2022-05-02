@@ -34,6 +34,10 @@ msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
+msgctxt "field:account.landed_cost,factors:"
+msgid "Factors"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"

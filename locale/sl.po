@@ -31,6 +31,10 @@ msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "Družba"
 
+msgctxt "field:account.landed_cost,factors:"
+msgid "Factors"
+msgstr ""
+
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Postavke računov"
