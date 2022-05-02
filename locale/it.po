@@ -6,43 +6,42 @@ msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "metodo di raggruppamento della spedizione"
 
-#, fuzzy
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
-msgstr "metodo di raggruppamento della spedizione "
+msgstr "Metodo di raggruppamento delle spedizioni"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
-#, fuzzy
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "metodo di raggruppamento della spedizione "
+msgstr "Metodo di raggruppamento delle spedizioni"
 
-#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "metodo di raggruppamento della spedizione "
+msgstr "Metodo di raggruppamento dela spedizione"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "metodo di raggruppamento della spedizione "
+msgstr "Metodo di raggruppamento della spedizione"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
 msgstr ""
+"Il metodo di raggruppamento delle spedizioni predefinito per i nuovi "
+"clienti."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
 msgstr ""
+"Il metodo di raggruppamento delle spedizioni predefinito per i nuovi "
+"clienti."
 
-#, fuzzy
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr "metodo di raggruppamento della spedizione "
+msgstr "Metodo di raggruppamento della spedizione alle controparti"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
