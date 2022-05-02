@@ -74,12 +74,20 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr ""
 
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr ""
+
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr ""
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
+msgstr ""
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
@@ -193,7 +201,7 @@ msgstr ""
 #, fuzzy
 msgctxt "view:stock.supply.start:"
 msgid "Supply Stock?"
-msgstr "Supply Stock"
+msgstr "Fornire Stock?"
 
 #, fuzzy
 msgctxt "wizard_button:stock.supply,start,create_:"

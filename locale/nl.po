@@ -40,7 +40,7 @@ msgstr "Minimale hoeveelheid"
 
 msgctxt "field:stock.order_point,overflowing_location:"
 msgid "Overflowing Location"
-msgstr "locatie overschot (surplus)"
+msgstr "Overschot locatie"
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
@@ -70,6 +70,10 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Magazijnlocatie"
 
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Magazijnen"
+
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr "Laat leeg als er geen opslaglocatie wordt gebruikt voor overschotten."
@@ -77,6 +81,10 @@ msgstr "Laat leeg als er geen opslaglocatie wordt gebruikt voor overschotten."
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
 msgstr "Laat leeg als er geen opslaglocatie wordt gebruikt voor overschotten."
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Indien leeg worden alle magazijnen gebruikt."
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"

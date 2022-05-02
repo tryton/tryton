@@ -71,6 +71,11 @@ msgid "Warehouse Location"
 msgstr "Skladišče"
 
 #, fuzzy
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Skladišče"
+
+#, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr "Pusti prazno, če ni privzetega preliva"
@@ -79,6 +84,10 @@ msgstr "Pusti prazno, če ni privzetega preliva"
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
 msgstr "Pusti prazno, če ni privzete preskrbe"
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form"

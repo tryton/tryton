@@ -72,6 +72,11 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Raktár"
 
+#, fuzzy
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Raktár"
+
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr ""
@@ -83,6 +88,10 @@ msgid "Leave empty for no default provisioning."
 msgstr ""
 "Hagyja üresen, ha nem szeretne a tárhelyre érkező rendelésekhez "
 "automatikusan készletet a beszerzési tárhelyről áthozni."
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"

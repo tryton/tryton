@@ -70,6 +70,10 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Magatzem"
 
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Magatzems"
+
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr "Deixeu-lo buit per no tenir una ubicació d'excessos per defecte."
@@ -77,6 +81,10 @@ msgstr "Deixeu-lo buit per no tenir una ubicació d'excessos per defecte."
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
 msgstr "Deixeu-lo buit per no tenir una ubicació de proveïment per defecte."
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Si es deixa en blanc s'utilitzen tots els magatzems."
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"

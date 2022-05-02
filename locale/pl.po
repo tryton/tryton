@@ -71,12 +71,21 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Lokalizacja magazynu"
 
+#, fuzzy
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Lokalizacja magazynu"
+
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr ""
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
+msgstr ""
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
 msgstr ""
 
 #, fuzzy

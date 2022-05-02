@@ -71,6 +71,11 @@ msgid "Warehouse Location"
 msgstr "Localização do Almoxarifado"
 
 #, fuzzy
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "Localização do Almoxarifado"
+
+#, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr "Deixe vazio para nenhum transbordo padrão"
@@ -79,6 +84,10 @@ msgstr "Deixe vazio para nenhum transbordo padrão"
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
 msgstr "Deixe vazio para nenhum abastecimento padrão"
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form"

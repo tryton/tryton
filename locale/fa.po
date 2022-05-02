@@ -71,6 +71,11 @@ msgid "Warehouse Location"
 msgstr "مکان انبار"
 
 #, fuzzy
+msgctxt "field:stock.supply.start,warehouses:"
+msgid "Warehouses"
+msgstr "مکان انبار"
+
+#, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing."
 msgstr "برای بدون لبریز پیش فرض، خالی بگذارید"
@@ -79,6 +84,10 @@ msgstr "برای بدون لبریز پیش فرض، خالی بگذارید"
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning."
 msgstr "برای تأمین کننده غیرپیش فرض خالی بگذارید"
+
+msgctxt "help:stock.supply.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
