@@ -182,9 +182,10 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
 msgstr "Zaplanowane aktualizacje walut"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Waluta"
+msgid "Currencies"
+msgstr "Waluty"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"

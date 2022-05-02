@@ -187,8 +187,9 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
+msgid "Currencies"
 msgstr "Mata uang"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

@@ -184,8 +184,8 @@ msgid "Scheduled Rate Updates"
 msgstr "Mises à jour programmées des taux"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Devise"
+msgid "Currencies"
+msgstr "Devises"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"

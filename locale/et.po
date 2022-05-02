@@ -189,9 +189,10 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Valuuta"
+msgid "Currencies"
+msgstr "Valuutad"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"

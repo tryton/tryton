@@ -192,8 +192,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Currency"
+msgid "Currencies"
+msgstr "Currencies"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

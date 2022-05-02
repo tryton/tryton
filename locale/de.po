@@ -183,7 +183,7 @@ msgid "Scheduled Rate Updates"
 msgstr "Zeitgesteuerte Währungskursaktualisierung"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
+msgid "Currencies"
 msgstr "Währungen"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

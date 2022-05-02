@@ -44,7 +44,7 @@ msgstr "Code"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
-msgstr "cijfers"
+msgstr "Decimalen"
 
 msgctxt "field:currency.currency,name:"
 msgid "Name"
@@ -60,7 +60,7 @@ msgstr "Huidige koers"
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr "Koers"
+msgstr "Koersen"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -104,7 +104,8 @@ msgstr "De ISO-valutacode van 3 tekens."
 
 msgctxt "help:currency.currency,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr "Het aantal cijfers dat moet worden weergegeven na het decimaalteken."
+msgstr ""
+"Het aantal decimalen dat moet worden weergegeven na het decimaalteken."
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
@@ -157,11 +158,11 @@ msgstr "Wisselkoers"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr "Geplande tariefupdates"
+msgstr "Geplande wisselkoers updates"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "valuta"
+msgstr "Valuta"
 
 msgctxt "model:ir.message,text:msg_currency_rate_positive"
 msgid "A currency rate must be positive."
@@ -173,27 +174,27 @@ msgstr "Een valuta kan maar één wisselkoers per dag hebben."
 
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
-msgstr "Geen wisselkoers gevonden voor valuta \"%(currency)s\"op datum\"%(date)s\"."
+msgstr "Geen wisselkoers gevonden voor valuta \"%(currency)s\" op datum\"%(date)s\"."
 
 msgctxt "model:ir.model.button,string:cron_run_button"
 msgid "Run"
-msgstr "uitvoeren"
+msgstr "Uitvoeren"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr "Geplande tariefupdates"
+msgstr "Geplande wisselkoers updates"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Valuta"
+msgid "Currencies"
+msgstr "Valuta's"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "valuta"
+msgstr "Valuta"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Currency Administration"
+msgstr "Valuta administratie"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Daily"
@@ -209,8 +210,8 @@ msgstr "Wekelijks"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
-msgstr "Valutakoersen bijwerken"
+msgstr "Valuta wisselkoersen bijwerken"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr "Koers"
+msgstr "Koersen"

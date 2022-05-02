@@ -183,7 +183,7 @@ msgid "Scheduled Rate Updates"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
+msgid "Currencies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

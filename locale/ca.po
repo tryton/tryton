@@ -185,8 +185,8 @@ msgid "Scheduled Rate Updates"
 msgstr "Actualització de taxes de canvi"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency"
-msgstr "Moneda"
+msgid "Currencies"
+msgstr "Monedes"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
