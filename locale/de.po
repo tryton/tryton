@@ -8,7 +8,23 @@ msgstr "Konto"
 
 msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
-msgstr "Auszifferungsbuchungssatz"
+msgstr "Abstimmungsbuchungssatz"
+
+msgctxt "field:account.payment,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Zahlungsausgleich abgestimmt"
+
+msgctxt "field:account.payment,statement_lines:"
+msgid "Statement Lines"
+msgstr "Kontoauszugspositionen"
+
+msgctxt "field:account.payment.group,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Zahlungsausgleich abgestimmt"
+
+msgctxt "field:account.payment.group,statement_lines:"
+msgid "Statement Lines"
+msgstr "Kontoauszugspositionen"
 
 msgctxt "field:account.payment.journal,clearing_account:"
 msgid "Clearing Account"
@@ -26,17 +42,17 @@ msgctxt "field:account.payment.succeed.start,date:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "field:account.statement.line,payment:"
-msgid "Payment"
-msgstr "Zahlung"
-
-msgctxt "field:account.statement.line,payment_group:"
-msgid "Payment Group"
-msgstr "Zahlungsgruppe"
-
 msgctxt "help:account.payment,account:"
 msgid "Define the account to use for clearing move."
 msgstr "Definieren des Kontos für die Ausgleichsbuchungssätze."
+
+msgctxt "help:account.payment,clearing_reconciled:"
+msgid "Checked if clearing line is reconciled."
+msgstr "Ausgewählt wenn Zahlungsausgleichsbuchung abgestimmt ist."
+
+msgctxt "help:account.payment.group,clearing_reconciled:"
+msgid "All payments in the group are reconciled."
+msgstr "Alle Zahlungen in der Gruppe sind abgestimmt."
 
 msgctxt "help:account.payment.journal,clearing_posting_delay:"
 msgid ""

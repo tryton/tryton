@@ -10,6 +10,22 @@ msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
 msgstr "Assentament de liquidació"
 
+msgctxt "field:account.payment,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Liquidació conciliada"
+
+msgctxt "field:account.payment,statement_lines:"
+msgid "Statement Lines"
+msgstr "Línies d'extracte"
+
+msgctxt "field:account.payment.group,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Liquidació conciliada"
+
+msgctxt "field:account.payment.group,statement_lines:"
+msgid "Statement Lines"
+msgstr "Línies d'extracte"
+
 msgctxt "field:account.payment.journal,clearing_account:"
 msgid "Clearing Account"
 msgstr "Compte de liquidació"
@@ -26,17 +42,17 @@ msgctxt "field:account.payment.succeed.start,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:account.statement.line,payment:"
-msgid "Payment"
-msgstr "Pagament"
-
-msgctxt "field:account.statement.line,payment_group:"
-msgid "Payment Group"
-msgstr "Grup de pagaments"
-
 msgctxt "help:account.payment,account:"
 msgid "Define the account to use for clearing move."
 msgstr "Defineix el compte a utilitzar pel moviment de liquidació."
+
+msgctxt "help:account.payment,clearing_reconciled:"
+msgid "Checked if clearing line is reconciled."
+msgstr "Marcat si l'apunt de liquidació s'ha conciliat."
+
+msgctxt "help:account.payment.group,clearing_reconciled:"
+msgid "All payments in the group are reconciled."
+msgstr "Tots els pagaments del grup s'han conciliat."
 
 msgctxt "help:account.payment.journal,clearing_posting_delay:"
 msgid ""

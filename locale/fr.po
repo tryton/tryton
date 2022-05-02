@@ -10,6 +10,22 @@ msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
 msgstr "Mouvement de compensation"
 
+msgctxt "field:account.payment,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Compensation réconciliée"
+
+msgctxt "field:account.payment,statement_lines:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "field:account.payment.group,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Compensation réconciliée"
+
+msgctxt "field:account.payment.group,statement_lines:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
 msgctxt "field:account.payment.journal,clearing_account:"
 msgid "Clearing Account"
 msgstr "Compte de compensation"
@@ -26,17 +42,17 @@ msgctxt "field:account.payment.succeed.start,date:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "field:account.statement.line,payment:"
-msgid "Payment"
-msgstr "Paiement"
-
-msgctxt "field:account.statement.line,payment_group:"
-msgid "Payment Group"
-msgstr "Groupe de paiement"
-
 msgctxt "help:account.payment,account:"
 msgid "Define the account to use for clearing move."
 msgstr "Définit le compte à utiliser pour le mouvement de compensation."
+
+msgctxt "help:account.payment,clearing_reconciled:"
+msgid "Checked if clearing line is reconciled."
+msgstr "Coché si la ligne de compensation est réconciliée."
+
+msgctxt "help:account.payment.group,clearing_reconciled:"
+msgid "All payments in the group are reconciled."
+msgstr "Tous les paiements du groupe sont réconciliés."
 
 msgctxt "help:account.payment.journal,clearing_posting_delay:"
 msgid ""
