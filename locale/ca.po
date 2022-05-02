@@ -10,6 +10,10 @@ msgctxt "field:carrier,ups_label_image_format:"
 msgid "Label Image Format"
 msgstr "Format de la imatge de l'etiqueta"
 
+msgctxt "field:carrier,ups_notifications:"
+msgid "Notifications"
+msgstr "Notificacions"
+
 msgctxt "field:carrier,ups_service_type:"
 msgid "Service Type"
 msgstr "Tipus de servei"
@@ -105,6 +109,34 @@ msgstr "Credencials UPS"
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
 msgstr "UPS"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Alternate Delivery Location"
+msgstr "Direcció d'enviament alternativa"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Quantum View Delivery"
+msgstr "Lliurament"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Quantum View Exception"
+msgstr "Excepció"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Quantum View In-transit"
+msgstr "En trànsit"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Quantum View Shop"
+msgstr "Tenda"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "Return or Label Creation"
+msgstr "Creació de devolució o etiqueta"
+
+msgctxt "selection:carrier,ups_notifications:"
+msgid "UPS Access Point Shipper"
+msgstr "UPS Punt d'accés de transportista"
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Production"
