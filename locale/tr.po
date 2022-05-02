@@ -30,16 +30,44 @@ msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr ""
+
 msgctxt "field:stock.package,packaging_weight:"
 msgid "Packaging Weight"
 msgstr ""
 
-msgctxt "field:stock.package,packaging_weight_digits:"
-msgid "Packaging Weight Digits"
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
 msgstr ""
 
-msgctxt "field:stock.package,packaging_weight_uom:"
-msgid "Packaging Weight Uom"
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr ""
+
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
 msgstr ""
 
 msgctxt "field:stock.package,parent:"
@@ -62,16 +90,44 @@ msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr ""
 
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr ""
+
 msgctxt "field:stock.package.type,packaging_weight:"
 msgid "Packaging Weight"
 msgstr ""
 
-msgctxt "field:stock.package.type,packaging_weight_digits:"
-msgid "Packaging Weight Digits"
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
 msgstr ""
 
-msgctxt "field:stock.package.type,packaging_weight_uom:"
-msgid "Packaging Weight Uom"
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr ""
+
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,packages:"
@@ -90,12 +146,44 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr ""
 
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
 msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr ""
 
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
 msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_package_type_form"
@@ -104,6 +192,12 @@ msgstr "Package Types"
 
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
@@ -137,6 +231,15 @@ msgstr ""
 
 msgctxt "selection:stock.package,state:"
 msgid "Open"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "Package Types"
+
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
 msgstr ""
 
 msgctxt "view:stock.package.type:"

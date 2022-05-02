@@ -31,17 +31,54 @@ msgid "Moves"
 msgstr "Movimentações"
 
 #, fuzzy
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Pacote"
+
+#, fuzzy
 msgctxt "field:stock.package,packaging_weight:"
 msgid "Packaging Weight"
 msgstr "Pacote"
 
-msgctxt "field:stock.package,packaging_weight_digits:"
-msgid "Packaging Weight Digits"
-msgstr ""
-
+#, fuzzy
 msgctxt "field:stock.package,packaging_weight_uom:"
-msgid "Packaging Weight Uom"
-msgstr ""
+msgid "Packaging Weight UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Pacote"
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
@@ -64,17 +101,54 @@ msgid "Name"
 msgstr "Nome"
 
 #, fuzzy
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Pacote"
+
+#, fuzzy
 msgctxt "field:stock.package.type,packaging_weight:"
 msgid "Packaging Weight"
 msgstr "Pacote"
 
-msgctxt "field:stock.package.type,packaging_weight_digits:"
-msgid "Packaging Weight Digits"
-msgstr ""
-
+#, fuzzy
 msgctxt "field:stock.package.type,packaging_weight_uom:"
-msgid "Packaging Weight Uom"
-msgstr ""
+msgid "Packaging Weight UOM"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Pacote"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -92,12 +166,44 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Pacotes"
 
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
 msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
 msgstr ""
 
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
 msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
 msgstr ""
 
 #, fuzzy
@@ -107,6 +213,12 @@ msgstr "Package Types"
 
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
@@ -143,6 +255,16 @@ msgstr ""
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "Pacote"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Sequência das Embalagens"
 
 msgctxt "view:stock.package.type:"
 msgid "Measurements"
