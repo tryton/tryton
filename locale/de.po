@@ -18,6 +18,14 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr "Kundennummern"
 
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "Lieferantenwährungen"
+
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Lieferantenwährung"
+
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr "Beschaffungszeit"
@@ -37,6 +45,14 @@ msgstr "Kundennummer"
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Partei"
+
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Lieferantenwährung"
 
 msgctxt "field:party.party.supplier_lead_time,company:"
 msgid "Company"
@@ -494,6 +510,10 @@ msgstr ""
 "Nummer die diese Partei als Lieferant dem Unternehmen als ihr Kunde "
 "zugewiesen hat."
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr "Standardwährung für Einkäufe bei dieser Partei."
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
@@ -501,6 +521,10 @@ msgid ""
 msgstr ""
 "Die Zeit zwischen der Bestellbestätigung und dem Erhalt der Ware bei Nutzung der Partei als Lieferant.\n"
 "Wird genutzt sofern auf dem Lieferantendatensatz keine Beschaffungszeit erfasst wurde."
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr "Standardwährung für Einkäufe bei dieser Partei."
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -820,6 +844,10 @@ msgstr "Parteien mit Einkäufen"
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr "Partei Kundennummer"
+
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Partei Lieferantenwährungen"
 
 msgctxt "model:party.party.supplier_lead_time,name:"
 msgid "Supplier Lead Time"

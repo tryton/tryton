@@ -18,6 +18,16 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "ຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "ສະກຸນເງິນ"
+
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr ""
@@ -39,6 +49,16 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:party.party.supplier_lead_time,company:"
@@ -549,10 +569,18 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
 msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
@@ -867,6 +895,11 @@ msgstr "Parties associated to Purchases"
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Product Suppliers"
 
 #, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"

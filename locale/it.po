@@ -19,6 +19,16 @@ msgid "Customer Codes"
 msgstr "Codici Cliente"
 
 #, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "Reso a fornitore"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Reso a fornitore"
+
+#, fuzzy
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr "Lead time"
@@ -39,6 +49,16 @@ msgstr "Codice Cliente"
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Controparte"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "Controparte"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Reso a fornitore"
 
 #, fuzzy
 msgctxt "field:party.party.supplier_lead_time,company:"
@@ -224,7 +244,7 @@ msgstr "Imposte"
 
 msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
-msgstr "a locazione"
+msgstr "A Locazione"
 
 msgctxt "field:purchase.line,type:"
 msgid "Type"
@@ -236,7 +256,7 @@ msgstr "Unità"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -317,7 +337,7 @@ msgstr "Quantità"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 msgctxt "field:purchase.product_supplier.price,uom:"
 msgid "UOM"
@@ -441,19 +461,17 @@ msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
 msgstr "Imposta"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr "ripostiglio fiscale "
+msgstr "Cache Tasse"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
 msgstr "Totale"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,total_amount_cache:"
 msgid "Total Cache"
-msgstr " "
+msgstr "Totale precalcolato"
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
@@ -506,10 +524,18 @@ msgstr ""
 "Il codice che la controparte come fornitore ha assegnato alla società come "
 "cliente."
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
 msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
@@ -829,6 +855,11 @@ msgid "Party Customer Code"
 msgstr "Codice cliente della controparte"
 
 #, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Prezzo fornitore prodotto"
+
+#, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"
 msgid "Supplier Lead Time"
 msgstr "Lead time"
@@ -936,7 +967,7 @@ msgstr "Bozza ordine di acquisto"
 
 msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr "Ordine acquisto n."
+msgstr "Ordine acquisto N°:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
@@ -944,11 +975,11 @@ msgstr "Quantità"
 
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
-msgstr "Riferimento"
+msgstr "Riferimento:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
-msgstr "Richiesta offerta n."
+msgstr "Richiesta di offerta N°:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Taxes"
@@ -968,7 +999,7 @@ msgstr "Totale:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -1079,15 +1110,13 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Fornitori"
 
-#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate:"
-msgstr "Scegliere le fatture da ricreare"
+msgstr "Scegliere le fatture da ricreare:"
 
-#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate:"
-msgstr "Scegliere il movimento da ricreare"
+msgstr "Scegliere i movimenti da ricreare:"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date:"

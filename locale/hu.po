@@ -18,6 +18,16 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "Visszaküldés beszállítóhoz"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Visszaküldés beszállítóhoz"
+
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr "Beszerzési átfutási idő"
@@ -37,6 +47,16 @@ msgstr "Szállító vevői száma"
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Ügyfél"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Visszaküldés beszállítóhoz"
 
 msgctxt "field:party.party.supplier_lead_time,company:"
 msgid "Company"
@@ -493,6 +513,10 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr "A saját cégünk vevői száma a szállító rendszerében."
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
@@ -500,6 +524,10 @@ msgid ""
 msgstr ""
 "Az átfutási idő a beszerzési rendelés jóváhagyásától az áru átvételéig, ha ettől a szállítótól rendelünk.\n"
 "Akkor használja a rendszer, ha nincs más megadva a termékspecifikus szállítói információnál."
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -798,6 +826,11 @@ msgstr "Beszerzési rendeléssel"
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Visszaküldés beszállítóhoz"
 
 #, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"

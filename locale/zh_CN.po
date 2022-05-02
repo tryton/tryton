@@ -19,6 +19,16 @@ msgid "Customer Codes"
 msgstr "客户代码"
 
 #, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "供应商退货"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "供应商退货"
+
+#, fuzzy
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr "交付时间"
@@ -39,6 +49,16 @@ msgstr "客户代码"
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "供应商退货"
 
 #, fuzzy
 msgctxt "field:party.party.supplier_lead_time,company:"
@@ -497,10 +517,18 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr "参与者代码已做为客户分配给公司."
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
 msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
@@ -803,6 +831,11 @@ msgstr "与采购相关的各个参与者"
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr "客户代码"
+
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "产品供应商价格"
 
 #, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"

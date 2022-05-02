@@ -18,6 +18,16 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "Pemasok"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Mata uang"
+
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
 msgstr ""
@@ -37,6 +47,16 @@ msgstr ""
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
 msgstr "Pihak"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "Pihak"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Mata uang"
 
 #, fuzzy
 msgctxt "field:party.party.supplier_lead_time,company:"
@@ -269,7 +289,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
@@ -299,10 +319,9 @@ msgctxt "field:purchase.product_supplier,uom:"
 msgid "UOM"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.price,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
@@ -318,7 +337,7 @@ msgstr "Harga Satuan"
 
 msgctxt "field:purchase.product_supplier.price,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "UOM"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -339,7 +358,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:purchase.purchase,delivery_date:"
 msgid "Delivery Date"
@@ -499,10 +518,18 @@ msgid ""
 "The code the party as supplier has assigned to the company as customer."
 msgstr ""
 
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
 msgctxt "help:party.party,supplier_lead_time:"
 msgid ""
 "The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
 "Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
 msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
@@ -804,6 +831,11 @@ msgstr "Pihak terkait dengan Pembelian"
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Harga Pemasok Produk"
 
 #, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"
