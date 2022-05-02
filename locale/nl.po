@@ -24,7 +24,7 @@ msgstr "aankooplijnen"
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Opbrengst/omzet?"
+msgstr "Opbrengst/omzet"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
