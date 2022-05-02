@@ -36,7 +36,7 @@ msgstr "Tipo"
 
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr "udm"
+msgstr "UdM"
 
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
