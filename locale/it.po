@@ -18,7 +18,6 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr "Acquisto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
 msgid "Invoice Lines"
 msgstr "Righe fattura"
