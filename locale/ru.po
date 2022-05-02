@@ -19,6 +19,10 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Полный адрес"
 
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:party.address,name:"
 msgid "Building Name"
@@ -38,6 +42,11 @@ msgid "Postal Code"
 msgstr "Страна"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "улица"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "улица"
 
@@ -189,6 +198,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Контрагент"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Адрес"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Код"
@@ -200,6 +214,11 @@ msgstr "Контрагент"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Тип"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Адрес"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -365,6 +384,10 @@ msgstr ""
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
+msgstr ""
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
 msgstr ""
 
 msgctxt "help:party.identifier,party:"
@@ -583,8 +606,8 @@ msgstr "Контактные способы"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Party"
+msgid "Parties"
+msgstr "Parties"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -880,6 +903,14 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1249,6 +1280,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Сайт"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Основной"
 
 msgctxt "view:party.party:"
 msgid "General"

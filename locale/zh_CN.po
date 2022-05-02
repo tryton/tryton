@@ -18,6 +18,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "详细地址"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "标识"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "建筑物名称"
@@ -36,6 +41,11 @@ msgid "Postal Code"
 msgstr "国家代码"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "街道"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "街道"
 
@@ -180,6 +190,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "参与者"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "地址"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "代码"
@@ -191,6 +206,11 @@ msgstr "参与者"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "类型"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "地址"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -367,6 +387,11 @@ msgstr "用于翻译与参与者的通信."
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "参与者已删除."
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "这条记录对应的参与者."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -560,8 +585,9 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "联系方式"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
+msgid "Parties"
 msgstr "参与者"
 
 #, fuzzy
@@ -905,6 +931,16 @@ msgstr "芬兰个人识别码"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "芬兰增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "法国个人识别号"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "法国税号"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1354,6 +1390,11 @@ msgstr "Skipe"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "网站"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "基本情况"
 
 msgctxt "view:party.party:"
 msgid "General"

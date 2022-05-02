@@ -18,6 +18,10 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Adreça completa"
 
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identificadors"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Nom de l'edifici"
@@ -35,6 +39,10 @@ msgid "Postal Code"
 msgstr "Codi postal"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Carrer"
+
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Carrer"
 
@@ -174,6 +182,10 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Tercer"
 
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Adreça"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Codi"
@@ -185,6 +197,10 @@ msgstr "Tercer"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tipus"
+
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Tipus d'adreça"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -366,6 +382,10 @@ msgstr ""
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "El tercer que serà eliminat."
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "L'adreça identificada per aquest registre."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -566,7 +586,7 @@ msgid "Contact Mechanisms"
 msgstr "Mitjans de contacte"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
+msgid "Parties"
 msgstr "Tercers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -647,7 +667,7 @@ msgstr "Administració de tercers"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
-msgstr "Identificador fiscal Albanes"
+msgstr "Identificador fiscal albanès"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Andorra Tax Number"
@@ -856,6 +876,14 @@ msgstr "Codi d'identitat personal Finlandès"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Identificador fiscal Finlandes"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Número d'identificació de l'establiment de l'empresa francesa"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Número d'identificació de l'empresa francesa"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1224,6 +1252,10 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Lloc Web"
+
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "General"
 
 msgctxt "view:party.party:"
 msgid "General"

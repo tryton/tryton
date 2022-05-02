@@ -19,6 +19,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Pilnas adresas"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identifikatoriai"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Namo numeris"
@@ -37,6 +42,11 @@ msgid "Postal Code"
 msgstr "Šalies kodas"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Gatvė"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Gatvė"
 
@@ -184,6 +194,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Kontrahentas"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Adresas"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kodas"
@@ -195,6 +210,11 @@ msgstr "Kontrahentas"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tipas"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Adresas"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -357,6 +377,10 @@ msgstr ""
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
+msgstr ""
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
 msgstr ""
 
 msgctxt "help:party.identifier,party:"
@@ -552,9 +576,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Kontaktai"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Kontrahentas"
+msgid "Parties"
+msgstr "Kontrahentai"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -898,6 +923,16 @@ msgstr "Suomijos asmens kodas"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Suomijos PVM kodas"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Prancūzijos asmens kodas"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Prancūzijos mokesčių mokėtojo kodas"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1346,6 +1381,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Interneto svetainė"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Pagrindinis"
 
 msgctxt "view:party.party:"
 msgid "General"

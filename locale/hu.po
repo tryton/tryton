@@ -18,6 +18,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Teljes cím"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Azonosítók"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Épület neve"
@@ -36,6 +41,11 @@ msgid "Postal Code"
 msgstr "Országkód"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Utca"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Utca"
 
@@ -180,6 +190,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Ügyfél"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Cím"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kód"
@@ -191,6 +206,11 @@ msgstr "Ügyfél"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Típus"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Cím"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -367,6 +387,11 @@ msgstr "A partner felé a kommunikáció ezen a nyelven történik."
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr ""
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "A kategória megnevezése."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -564,9 +589,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Kapcsolatfelvételi módok"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Ügyfél"
+msgid "Parties"
+msgstr "Ügyfelek"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Configuration"
@@ -865,6 +891,16 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Szerb adószám (PIB)"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Szerb adószám (PIB)"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1244,6 +1280,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Weboldal"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Általános"
 
 msgctxt "view:party.party:"
 msgid "General"

@@ -19,6 +19,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Alamat Lengkap"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "NPWP"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Nama Gedung"
@@ -37,6 +42,11 @@ msgid "Postal Code"
 msgstr "Kode Negara"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Jalan"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Jalan"
 
@@ -179,6 +189,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Pihak"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Alamat"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kode"
@@ -190,6 +205,11 @@ msgstr "Pihak"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Alamat"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -365,6 +385,10 @@ msgstr ""
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Pihak yang akan dihapus."
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -557,9 +581,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Mekanisme Kontak"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Pihak"
+msgid "Parties"
+msgstr "Para Pihak"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -850,6 +875,16 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Nomor Pokok Wajib Pajak"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Nomor Pokok Wajib Pajak"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1220,6 +1255,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Website"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Umum"
 
 msgctxt "view:party.party:"
 msgid "General"

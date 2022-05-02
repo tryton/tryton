@@ -18,6 +18,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Adresa completa"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identificatorii"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Numele Cladirii"
@@ -37,6 +42,10 @@ msgstr "Cod Poştal"
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Stradă"
+
+msgctxt "field:party.address,street_single_line:"
+msgid "Street"
+msgstr "Strada"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
@@ -174,6 +183,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Parte"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Adresa"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Cod"
@@ -185,6 +199,11 @@ msgstr "Parte"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tip"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Adresa"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -366,6 +385,11 @@ msgstr ""
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Partea care urmează să fie ștearsă."
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "Partea identificată prin această înregistrare."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -563,9 +587,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Mecanisme de contact"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Parte"
+msgid "Parties"
+msgstr "Părți"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Configuration"
@@ -854,6 +879,16 @@ msgstr "Finlanda, Cod numeric Personal"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Finlanda, Număr TVA"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Franţa, Cod Numeric Personal"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Franţa, Cod Fiscal"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1222,6 +1257,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Site web"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "General"
 
 msgctxt "view:party.party:"
 msgid "General"

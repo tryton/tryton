@@ -18,6 +18,10 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Adresse complète"
 
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identifiants"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Nom du bâtiment"
@@ -35,6 +39,10 @@ msgid "Postal Code"
 msgstr "Code postal"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Rue"
+
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Rue"
 
@@ -174,6 +182,10 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Tiers"
 
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Adresse"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Code"
@@ -185,6 +197,10 @@ msgstr "Tiers"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Type"
+
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Type d'adresse"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -364,6 +380,10 @@ msgstr ""
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Le tiers à effacer."
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "L'adresse identifiée par cet enregistrement."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -568,7 +588,7 @@ msgid "Contact Mechanisms"
 msgstr "Moyens de contact"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
+msgid "Parties"
 msgstr "Tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -858,6 +878,14 @@ msgstr "Code d'identité personnelle finlandais"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "Numéro de TVA finlandais"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Numéro SIRET"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Numéro SIREN"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1226,6 +1254,10 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Site web"
+
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Général"
 
 msgctxt "view:party.party:"
 msgid "General"

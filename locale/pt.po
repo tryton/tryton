@@ -19,6 +19,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Endereço completo"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identificadores"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Nome"
@@ -37,6 +42,11 @@ msgid "Postal Code"
 msgstr "País"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Rua"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Rua"
 
@@ -186,6 +196,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Pessoa"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Endereço"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Código"
@@ -197,6 +212,11 @@ msgstr "Pessoa"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tipo"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Endereço"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -373,6 +393,11 @@ msgstr "Usado para traduzir comunicação com a pessoa."
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "A pessoa a ser excluída."
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "A pessoa identificada por este registro."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -573,9 +598,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Meios de contato"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Pessoa"
+msgid "Parties"
+msgstr "Pessoas"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -868,6 +894,16 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Identificador de Tributo"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Identificador de Tributo"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1240,6 +1276,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Sítio web"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Geral"
 
 msgctxt "view:party.party:"
 msgid "General"

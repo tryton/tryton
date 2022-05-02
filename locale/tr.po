@@ -19,6 +19,10 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr ""
 
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr ""
@@ -37,6 +41,10 @@ msgid "Postal Code"
 msgstr ""
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr ""
+
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr ""
 
@@ -179,6 +187,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Party"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Addresses"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr ""
@@ -191,6 +204,11 @@ msgstr "Party"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Addresses"
 
 #, fuzzy
 msgctxt "field:party.party,addresses:"
@@ -358,6 +376,10 @@ msgstr ""
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
+msgstr ""
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
 msgstr ""
 
 msgctxt "help:party.identifier,party:"
@@ -551,9 +573,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Contact Mechanisms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Party"
+msgid "Parties"
+msgstr "Parties"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -851,6 +874,14 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1219,6 +1250,10 @@ msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
+msgstr ""
+
+msgctxt "view:party.address:"
+msgid "General"
 msgstr ""
 
 msgctxt "view:party.party:"

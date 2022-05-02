@@ -18,6 +18,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Pełny adres"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Identyfikatory"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "Nazwa budynku"
@@ -35,6 +40,11 @@ msgid "Postal Code"
 msgstr "Kod pocztowy"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Ulica"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Ulica"
 
@@ -174,6 +184,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Strona"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Adres"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kod"
@@ -185,6 +200,11 @@ msgstr "Strona"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Typ"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Adres"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -364,6 +384,11 @@ msgstr ""
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Strona przeznaczona do usunięcia."
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "Strona identyfikowana przez ten rekord."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -564,9 +589,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Sposoby kontaktu"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "Strona"
+msgid "Parties"
+msgstr "Strony"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Configuration"
@@ -860,6 +886,16 @@ msgstr "Bułgarskie Kody Tożsamości"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr "NIP"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "PESEL"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "PESEL"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1293,6 +1329,11 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Strona WWW"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Ogólne"
 
 msgctxt "view:party.party:"
 msgid "General"

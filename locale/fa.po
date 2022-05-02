@@ -19,6 +19,11 @@ msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "آدرس کامل"
 
+#, fuzzy
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "شناسه ها"
+
 msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr "نام ساختمان"
@@ -37,6 +42,11 @@ msgid "Postal Code"
 msgstr "کشور"
 
 msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "خیابان"
+
+#, fuzzy
+msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "خیابان"
 
@@ -186,6 +196,11 @@ msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
+#, fuzzy
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "آدرس"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "کد"
@@ -197,6 +212,11 @@ msgstr "نهاد/سازمان"
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "نوع"
+
+#, fuzzy
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "آدرس"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -372,6 +392,11 @@ msgstr "برای ارتباط با حزب ترجمه شده است."
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "نهاد/سازمان باید حذف شود."
+
+#, fuzzy
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "نهاد/سازمان شناسایی شده توسط این پرونده."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -571,9 +596,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "مکانیسم های تماس"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party"
-msgstr "نهاد/سازمان"
+msgid "Parties"
+msgstr "نهادها / سازمان ها"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -866,6 +892,16 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish VAT Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "شناسه مالیاتی"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "شناسه مالیاتی"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1238,6 +1274,11 @@ msgstr "اسکایپ"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "وب سایت"
+
+#, fuzzy
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "عمومی"
 
 msgctxt "view:party.party:"
 msgid "General"
