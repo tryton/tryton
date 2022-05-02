@@ -904,9 +904,9 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
-"To number the invoice \"%(invoice)s\", you must set an accounting date after"
-" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
-"for invoice \"%(after_invoice)s\"."
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
 msgstr ""
 
 #, fuzzy
@@ -956,6 +956,11 @@ msgid ""
 msgstr ""
 "شما نمیتوانید از همان حساب : \"%(account)s\" بر صورتحساب : \"%(invoice)s\" و"
 " روی سطر:\"%(lines)s\" استفاده کنید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
+msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""

@@ -880,11 +880,12 @@ msgid ""
 "\"%(fiscalyear)s\"."
 msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
-"To number the invoice \"%(invoice)s\", you must set an accounting date after"
-" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
-"for invoice \"%(after_invoice)s\"."
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
 msgstr ""
 "若要为发票 \"%(invoice)s\" 编号，必须将会计日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
 "已用于发票 \"%(after_invoice)s\"。"
@@ -926,6 +927,11 @@ msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
 "and on line \"%(line)s\"."
 msgstr "不能在原始凭证 \"%(invoice)s\" 和明细 \"%(invoice)s\"上使用相同的帐户 \"%(account)s\" 。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
+msgstr "删除原始凭证 \"%(invoice)s\" 之前必须先取消它。"
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""

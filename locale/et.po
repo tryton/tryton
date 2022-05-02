@@ -898,9 +898,9 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
-"To number the invoice \"%(invoice)s\", you must set an accounting date after"
-" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
-"for invoice \"%(after_invoice)s\"."
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
 msgstr ""
 
 #, fuzzy
@@ -947,6 +947,11 @@ msgid ""
 msgstr ""
 "Arvel \"%(arve)tele\" ja real \"%(rida)del\" ei saa kasutada sama kontot "
 "\"%(konto)sid\""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
+msgstr "Arve \"%(arve)te\" kustutamiseks tuleb see tühistada."
 
 msgctxt "model:ir.message,text:msg_invoice_tax_create"
 msgid ""

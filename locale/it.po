@@ -354,7 +354,7 @@ msgstr "Unità"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
@@ -738,7 +738,7 @@ msgstr "Riga termine pagamento"
 #, fuzzy
 msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
-msgstr "Relative Delta riga termine di pagamento "
+msgstr "Relative Delta riga termine di pagamento"
 
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
@@ -907,9 +907,9 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
-"To number the invoice \"%(invoice)s\", you must set an accounting date after"
-" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
-"for invoice \"%(after_invoice)s\"."
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
 msgstr ""
 
 #, fuzzy
@@ -949,6 +949,10 @@ msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
 "and on line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
 
 #, fuzzy
@@ -1172,7 +1176,7 @@ msgstr "Totale:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 #, fuzzy
 msgctxt "selection:account.invoice,state:"
@@ -1282,10 +1286,9 @@ msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pagamento"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr "Identificativo fiscale"
+msgstr "Identificativo Fiscale:"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

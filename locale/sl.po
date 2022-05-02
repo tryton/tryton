@@ -921,9 +921,9 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_number_after"
 msgid ""
-"To number the invoice \"%(invoice)s\", you must set an accounting date after"
-" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
-"for invoice \"%(after_invoice)s\"."
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
 msgstr ""
 
 #, fuzzy
@@ -963,6 +963,10 @@ msgctxt "model:ir.message,text:msg_invoice_same_account_line"
 msgid ""
 "You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
 "and on line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
 
 #, fuzzy
