@@ -149,6 +149,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
 msgstr "Administracinis atolas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Administracinis regionas"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr "Arkties regionas"
@@ -180,6 +185,11 @@ msgstr "Autonominė provincija"
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Autonominis regionas"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Autonominė apygarda"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -225,6 +235,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr "Kantonas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Sostinė"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr "Sostinės rajonas"
@@ -241,6 +256,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
 msgstr "Sostinė"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Salų grandinė"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
 msgstr "Salų grandinė"
@@ -252,6 +272,11 @@ msgstr "Miestas"
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr "Miestų susivienijimas"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Municipalitetas"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -278,6 +303,10 @@ msgid "County"
 msgstr "Grafystė"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "Departamentas"
 
@@ -296,6 +325,19 @@ msgstr "Apygarda"
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
 msgstr "Miesto tarybos apygarda"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Nairobi Municipality"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
@@ -329,6 +371,20 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr "Federalinė teritorija"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Federalinė teritorija"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Australijos sostinės teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr ""
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
 msgstr "Geografinis teisinis vienetas"
@@ -344,6 +400,10 @@ msgstr "Geografinis vienetas"
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
 msgstr "Provincija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
@@ -365,6 +425,16 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
 msgstr "Salų grupė"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Salų grupė"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Landai"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Vietinė taryba"
@@ -373,9 +443,23 @@ msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr "Londono rajonas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Metropolio rajonas"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
 msgstr "Metropolio miestai"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Metropolio miestai"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
@@ -409,6 +493,15 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
 msgstr "Aplinkinės sritys"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "Užjūrio teritorinis junginys"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr ""
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Užjūrio departamentas"
@@ -425,9 +518,24 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr "Užjūrio teritorinis junginys"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Užjūrio regionas"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Administracinė sritis"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "Grafystės apygarda"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "Apygardos"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -461,6 +569,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
 msgstr "Regiono taryba"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Regiono taryba"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "Respublika"
@@ -468,6 +581,11 @@ msgstr "Respublika"
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr "Respublikos miestas"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Specialus municipalitetas"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -485,6 +603,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "Specialus regionas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Specialus administracinis regionas"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "Specialus administracinis regionas"
@@ -496,6 +619,15 @@ msgstr "Specialus miestas"
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
 msgstr "Specialios priklausomybės sala"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Specialus miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
@@ -512,6 +644,11 @@ msgstr "Teritorinis vienetas"
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "Teritorija"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Hope Town"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -536,6 +673,25 @@ msgstr "Vieningas valdymas (Anglija)"
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
 msgstr "Vieningas valdymas (Velsas)"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Autonominė savivalda"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Nairobi Municipality"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Wardak"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"

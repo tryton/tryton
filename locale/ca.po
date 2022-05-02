@@ -147,6 +147,10 @@ msgid "Administrative atoll"
 msgstr "Atol administratiu"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Regió administrativa"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr "Regió Àrtica"
 
@@ -177,6 +181,10 @@ msgstr "Província autònoma"
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Regió autònoma"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Ciutat autònoma del nord d'Àfrica"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -223,6 +231,10 @@ msgid "Canton"
 msgstr "Cantó"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Capital"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr "Capital de districte"
 
@@ -239,6 +251,10 @@ msgid "Capital city"
 msgstr "Ciutat capital"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Cadena (d'illes)"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
 msgstr "Cadenes (d'illes)"
 
@@ -249,6 +265,10 @@ msgstr "Ciutat"
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr "Ciutat corporativa"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Municipalitat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -275,6 +295,10 @@ msgid "County"
 msgstr "Comtat"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr "Entitat regional descentralitzada"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "Departament"
 
@@ -293,6 +317,18 @@ msgstr "Districte"
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
 msgstr "Àrea del consell del districte"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Municipalitat de districte"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr "Districte amb estatus especial"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr "Districtes sota administració de república"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
@@ -327,6 +363,18 @@ msgid "Federal Territories"
 msgstr "Territoris federals"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Territori federal"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Territori de capital federal"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr "Consorci municipal lliure"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
 msgstr "Entitat geogràfica"
 
@@ -341,6 +389,10 @@ msgstr "Unitat geogràfica"
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
 msgstr "Governació"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr "Grup d'illes (20 illes habitades)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
@@ -363,6 +415,14 @@ msgid "Island group"
 msgstr "Grup d'illes"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Illes, grups d'illes"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Territori"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Consell local"
 
@@ -371,8 +431,20 @@ msgid "London borough"
 msgstr "Municipi de Londres"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Administració metropolitana"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
 msgstr "Ciutats metropolitanes"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Ciutat metropolitana"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr "Col·lectivitat metropolitana amb estatus especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
@@ -407,6 +479,14 @@ msgid "Outlying area"
 msgstr "Àrea externa"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "Col·lectivitat d'ultramar"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr "Col·lectivitat d'ultramar amb un estatus especial"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Departament d'ultramar"
 
@@ -423,8 +503,20 @@ msgid "Overseas territorial collectivity"
 msgstr "Territori col·lectiu d'ultramar"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Territori d'ultamar"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Zona administrada pel Pakistan"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "Parròquia"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "Popularate"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -459,12 +551,20 @@ msgid "Regional council"
 msgstr "Consell regional"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Estat regional"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "República"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr "Ciutat republicana"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Municipalitat rural"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -483,6 +583,10 @@ msgid "Special Region"
 msgstr "Regió especial"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Ciutat administrativa especial"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "Regió administrativa especial"
 
@@ -493,6 +597,14 @@ msgstr "Ciutat especial"
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
 msgstr "Autoritat especial d'illa"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Ciutat autònoma especial"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr "Província autònoma especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
@@ -509,6 +621,10 @@ msgstr "Unitat territorial"
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "Territori"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Ciutat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -533,6 +649,22 @@ msgstr "Autoritat unitària (Anglaterra)"
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
 msgstr "Autoritat unitària (Gal·les)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Comunitat urbana"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Municipalitat urbana"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr "Voivodat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Districte electoral"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"

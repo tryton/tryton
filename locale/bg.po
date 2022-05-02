@@ -153,6 +153,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
 msgstr "Административна област"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Административен район"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr ""
@@ -184,6 +189,11 @@ msgstr "Автономна провинция"
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Автономен район"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Автономен окръг"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -230,6 +240,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr "Кантон"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Главен град"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr ""
@@ -246,6 +261,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
 msgstr "Главен град"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Кайманови острови"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
 msgstr ""
@@ -257,6 +277,11 @@ msgstr "Град"
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr "Градска корпорация"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Община"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -283,6 +308,10 @@ msgid "County"
 msgstr "Държава"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "Отдел"
 
@@ -300,6 +329,19 @@ msgstr "Окръг"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Nairobi Municipality"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -336,6 +378,20 @@ msgstr "Федерални територии"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Федерални територии"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Australian Capital Territory"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
 msgstr "Географска единица"
 
@@ -350,6 +406,10 @@ msgstr "Географска единица"
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
 msgstr "Губернаторство"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
@@ -371,6 +431,16 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
 msgstr "Островна група"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Островна група"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Landes"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Местен съвет"
@@ -379,8 +449,22 @@ msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr "Квартал на Лондон"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Специален административен район"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Главен град"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -416,6 +500,14 @@ msgid "Outlying area"
 msgstr "Външни територии"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr ""
 
@@ -431,9 +523,24 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Северна територия"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Административна област"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "Енория"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "Papua Barat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -467,6 +574,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
 msgstr "Регионален съвет"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Регионален съвет"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "Република"
@@ -474,6 +586,11 @@ msgstr "Република"
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Специална община"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -491,6 +608,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "Специален регион"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Специален административен район"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "Специален административен район"
@@ -501,6 +623,15 @@ msgstr "Специален град"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Специален град"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -518,6 +649,11 @@ msgstr "Териториална единица"
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "Територия"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Hope Town"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -542,6 +678,25 @@ msgstr ""
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Автономна общност"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Nairobi Municipality"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Wardak"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"

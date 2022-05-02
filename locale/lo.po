@@ -152,6 +152,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
 msgstr "ພື້ນທີ່ການປົກຄອງ"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "ພາກການປົກຄອງ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr ""
@@ -183,6 +188,11 @@ msgstr "ແຂວງປົກຄອງຕົນເອງ"
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "ເຂດປົກຄອງຕົນເອງ"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "ເມືອງປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -228,6 +238,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "ນະຄອນຫຼວງ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr "ເມືອງເອກ"
@@ -244,6 +259,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
 msgstr "ນະຄອນຫຼວງ"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "ເກາະ ໄກຍແມນ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
 msgstr ""
@@ -255,6 +275,11 @@ msgstr "ບ້ານ"
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "ເທສະບານ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -281,6 +306,10 @@ msgid "County"
 msgstr "ປະເທດ"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "ເຂດການປົກຄອງ"
 
@@ -298,6 +327,19 @@ msgstr "ເມືອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "ເທສະບານ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -332,6 +374,19 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "ດິນແດນ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr ""
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
 msgstr ""
@@ -346,6 +401,10 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -369,6 +428,14 @@ msgid "Island group"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr ""
 
@@ -376,8 +443,22 @@ msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "ເຂດປົກຄອງພິເສດ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "ນະຄອນຫຼວງ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -413,6 +494,14 @@ msgid "Outlying area"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr ""
 
@@ -428,10 +517,23 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "ພື້ນທີ່ການປົກຄອງ"
+
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "ປາຣີ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -466,6 +568,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
 msgstr "ສະພາເຂດ"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "ສະພາເຂດ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "ສາທາລະນະລັດ"
@@ -473,6 +580,11 @@ msgstr "ສາທາລະນະລັດ"
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr "ສາທາລະນະລັດ"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "ກຳແພງນະຄອນພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -490,6 +602,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "ພາກພິເສດ"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "ເຂດປົກຄອງພິເສດ"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "ເຂດປົກຄອງພິເສດ"
@@ -501,6 +618,15 @@ msgstr "ບ້ານພິເສດ"
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
 msgstr "ເກາະພິເສດ"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "ບ້ານພິເສດ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
@@ -517,6 +643,10 @@ msgstr "ໜ່ວຍດິນແດນ"
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "ດິນແດນ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -540,6 +670,24 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "ເຂດຊຸມຊົນເອກະລາດ"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "ເທສະບານ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"

@@ -146,6 +146,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Regiunea administrativă"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr "Regiunea Arctică"
@@ -177,6 +182,11 @@ msgstr "Provincia autonomă"
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Regiune autonomă"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "District autonom"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -222,6 +232,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr "Canton"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Capitala"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr ""
@@ -239,6 +254,10 @@ msgid "Capital city"
 msgstr "Capitala"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
 msgstr ""
 
@@ -249,6 +268,11 @@ msgstr "Oraș"
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Municipalitatea specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -275,6 +299,10 @@ msgid "County"
 msgstr "Județ"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "Departament"
 
@@ -292,6 +320,19 @@ msgstr "District"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Municipalitate autonomă"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -326,6 +367,19 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Teritoriu"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr ""
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
 msgstr "Entitate geografică"
@@ -340,6 +394,10 @@ msgstr "Unitate geografică"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -362,6 +420,15 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
 msgstr "Grup de insule"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Grup de insule"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr ""
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Consiliu Local"
@@ -370,9 +437,23 @@ msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Orașe metropolitane"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
 msgstr "Orașe metropolitane"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Orașe metropolitane"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
@@ -407,6 +488,14 @@ msgid "Outlying area"
 msgstr "Zona periferică"
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr ""
 
@@ -423,7 +512,20 @@ msgid "Overseas territorial collectivity"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Zona administrativă"
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -458,6 +560,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
 msgstr "Consiliul regional"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Consiliul regional"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "Republică"
@@ -465,6 +572,11 @@ msgstr "Republică"
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Municipalitatea specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -482,6 +594,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "Regiunea specială"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Regiunea administrativă specială"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "Regiunea administrativă specială"
@@ -492,6 +609,15 @@ msgstr "Oraș special"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Oraș special"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -509,6 +635,10 @@ msgstr "Unitatea teritorială"
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "Teritoriu"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -532,6 +662,24 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Comunitatea autonomă"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Municipalitatea specială"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
