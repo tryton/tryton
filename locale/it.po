@@ -68,7 +68,7 @@ msgstr ""
 
 msgctxt "field:account.payment.braintree.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.payment.braintree.account,environment:"
 msgid "Environment"
@@ -148,6 +148,10 @@ msgctxt "field:account.payment.braintree.refund,amount:"
 msgid "Amount"
 msgstr ""
 
+msgctxt "field:account.payment.braintree.refund,approved_by:"
+msgid "Approved by"
+msgstr ""
+
 msgctxt "field:account.payment.braintree.refund,braintree_error_message:"
 msgid "Braintree Error Message"
 msgstr ""
@@ -156,16 +160,24 @@ msgctxt "field:account.payment.braintree.refund,braintree_transaction_id:"
 msgid "Braintree Transaction ID"
 msgstr ""
 
+msgctxt "field:account.payment.braintree.refund,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:account.payment.braintree.refund,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.payment.braintree.refund,payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Pagamento"
 
 msgctxt "field:account.payment.braintree.refund,state:"
 msgid "State"
+msgstr "Stato"
+
+msgctxt "field:account.payment.braintree.refund,submitted_by:"
+msgid "Submitted by"
 msgstr ""
 
 msgctxt "field:account.payment.journal,braintree_account:"
@@ -246,11 +258,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
-msgid "Approved"
-msgstr ""
-
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
 msgid "Draft"
 msgstr ""
@@ -267,6 +274,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
 msgid "Succeeded"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_approve"
+msgid "To Approve"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_process"
+msgid "To Process"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_braintree_receivable"
@@ -314,6 +331,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:refund_submit_button"
+msgid "Submit"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_form"
@@ -365,6 +386,10 @@ msgid "Processing"
 msgstr ""
 
 msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Submitted"
+msgstr ""
+
+msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Succeeded"
 msgstr ""
 
@@ -410,7 +435,7 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente:"
 
 msgctxt "view:account.payment:"
 msgid "Device Data:"
@@ -422,7 +447,7 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Metodo di Pagamento:"
 
 msgctxt "view:account.payment:"
 msgid "Settle:"
@@ -438,11 +463,11 @@ msgstr ""
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Metodo di Pagamento:"
 
 msgctxt ""
 "wizard_button:account.payment.braintree.customer.payment_method.delete,ask,delete_:"

@@ -148,12 +148,20 @@ msgctxt "field:account.payment.braintree.refund,amount:"
 msgid "Amount"
 msgstr ""
 
+msgctxt "field:account.payment.braintree.refund,approved_by:"
+msgid "Approved by"
+msgstr ""
+
 msgctxt "field:account.payment.braintree.refund,braintree_error_message:"
 msgid "Braintree Error Message"
 msgstr ""
 
 msgctxt "field:account.payment.braintree.refund,braintree_transaction_id:"
 msgid "Braintree Transaction ID"
+msgstr ""
+
+msgctxt "field:account.payment.braintree.refund,company:"
+msgid "Company"
 msgstr ""
 
 msgctxt "field:account.payment.braintree.refund,currency:"
@@ -166,6 +174,10 @@ msgstr ""
 
 msgctxt "field:account.payment.braintree.refund,state:"
 msgid "State"
+msgstr ""
+
+msgctxt "field:account.payment.braintree.refund,submitted_by:"
+msgid "Submitted by"
 msgstr ""
 
 msgctxt "field:account.payment.journal,braintree_account:"
@@ -246,11 +258,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
-msgid "Approved"
-msgstr ""
-
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
 msgid "Draft"
 msgstr ""
@@ -267,6 +274,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
 msgid "Succeeded"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_approve"
+msgid "To Approve"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_to_process"
+msgid "To Process"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_braintree_receivable"
@@ -316,6 +333,10 @@ msgctxt "model:ir.model.button,string:refund_draft_button"
 msgid "Draft"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:refund_submit_button"
+msgid "Submit"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Braintree Accounts"
 msgstr ""
@@ -362,6 +383,10 @@ msgstr ""
 
 msgctxt "selection:account.payment.braintree.refund,state:"
 msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Submitted"
 msgstr ""
 
 msgctxt "selection:account.payment.braintree.refund,state:"
