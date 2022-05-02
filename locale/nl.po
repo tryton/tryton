@@ -30,6 +30,10 @@ msgctxt "field:stock.quantity.early_plan,early_date:"
 msgid "Early Date"
 msgstr "Eerdere datum"
 
+msgctxt "field:stock.quantity.early_plan,early_quantity:"
+msgid "Early Quantity"
+msgstr "Vroege hoeveelheid"
+
 msgctxt "field:stock.quantity.early_plan,ignored_by:"
 msgid "Ignored by"
 msgstr "Genegeerd door"
