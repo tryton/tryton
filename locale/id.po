@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:sale.line:"
 msgid "Discount"

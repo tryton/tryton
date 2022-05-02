@@ -4,24 +4,24 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.line,base_price:"
 msgid "Base Price"
-msgstr ""
+msgstr "Prezzo Base"
 
 msgctxt "field:sale.line,discount:"
 msgid "Discount"
-msgstr ""
+msgstr "Sconto"
 
 msgctxt "field:sale.line,discount_amount:"
 msgid "Discount Amount"
-msgstr ""
+msgstr "Totale sconto"
 
 msgctxt "field:sale.line,discount_rate:"
 msgid "Discount Rate"
-msgstr ""
+msgstr "Tasso di sconto"
 
 msgctxt "view:sale.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:sale.line:"
 msgid "Discount"
-msgstr ""
+msgstr "Sconto"
