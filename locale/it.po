@@ -6,10 +6,9 @@ msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:sale.extra,currency:"
 msgid "Currency"
-msgstr "posizioni valuta"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
@@ -35,10 +34,9 @@ msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Data inizio"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,currency:"
 msgid "Currency"
-msgstr "posizioni valuta"
+msgstr "Valuta"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"

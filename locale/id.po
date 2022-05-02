@@ -8,7 +8,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:sale.extra,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
@@ -36,7 +36,7 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:sale.extra.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
