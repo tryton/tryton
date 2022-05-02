@@ -17,34 +17,30 @@ msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
 msgstr "Imposta"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Attributi"
 
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attribute Sets"
+msgstr "Insieme di attributi"
 
-#, fuzzy
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Attributi"
 
 #, fuzzy
 msgctxt "field:product.product,attributes_name:"
 msgid "Attributes Name"
 msgstr "Attributes"
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attribute Sets"
+msgstr "Insieme di attributi"
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
@@ -72,11 +68,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Attributi"
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Insiemi di attributi"
 
 msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
@@ -84,11 +80,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Attributi"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Insiemi di attributi"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
@@ -102,7 +98,6 @@ msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Attributi"
