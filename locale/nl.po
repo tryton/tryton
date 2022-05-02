@@ -4,29 +4,29 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,cash_rounding:"
 msgid "Cash Rounding"
-msgstr "Cash afronding"
+msgstr "Kas afronding"
 
 msgctxt "field:account.configuration,cash_rounding_credit_account:"
 msgid "Cash Rounding Credit Account"
-msgstr "Cash afronding Credit rekening"
+msgstr "Kas afronding credit grootboekrekening"
 
 msgctxt "field:account.configuration,cash_rounding_debit_account:"
 msgid "Cash Rounding Debit Account"
-msgstr "Cash afronding debet rekening"
+msgstr "Kas afronding debet grootboekrekening"
 
 msgctxt "field:account.configuration.cash_rounding_account,cash_rounding:"
 msgid "Cash Rounding"
-msgstr "Cash afronding"
+msgstr "Kas afronding"
 
 msgctxt ""
 "field:account.configuration.cash_rounding_account,cash_rounding_credit_account:"
 msgid "Cash Rounding Credit Account"
-msgstr "Cash afronding Credit rekening"
+msgstr "Kas afronding credit grootboekrekening"
 
 msgctxt ""
 "field:account.configuration.cash_rounding_account,cash_rounding_debit_account:"
 msgid "Cash Rounding Debit Account"
-msgstr "Cash afronding debet rekening"
+msgstr "Kas afronding debet grootboekrekening"
 
 msgctxt "field:account.configuration.cash_rounding_account,company:"
 msgid "Company"
@@ -34,15 +34,15 @@ msgstr "Bedrijf"
 
 msgctxt "field:account.invoice,cash_rounding:"
 msgid "Cash Rounding"
-msgstr "Cash afronding"
+msgstr "Kas afronding"
 
 msgctxt "field:currency.currency,cash_rounding:"
 msgid "Cash Rounding Factor"
-msgstr "Cash afrondingsfactor"
+msgstr "Kas afrondingsfactor"
 
 msgctxt "field:purchase.purchase,cash_rounding:"
 msgid "Cash Rounding"
-msgstr "Cash afronding"
+msgstr "Kas afronding"
 
 msgctxt "model:account.configuration.cash_rounding_account,name:"
 msgid "Account Configuration Cash Rounding Account"
@@ -50,4 +50,4 @@ msgstr "Accountconfiguratie Cash afronding rekening"
 
 msgctxt "model:ir.message,text:msg_missing_cash_rounding_account"
 msgid "There is not cash rounding account configured."
-msgstr "Er is geen cashafrondingsaccount geconfigureerd."
+msgstr "Er is geen kas afronding grootboekaccount geconfigureerd."
