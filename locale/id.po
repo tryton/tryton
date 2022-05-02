@@ -8,7 +8,7 @@ msgstr "Durasi"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
@@ -36,11 +36,11 @@ msgstr "Tahun"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durasi"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -64,11 +64,11 @@ msgstr "Deskripsi"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durasi"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
@@ -84,7 +84,7 @@ msgstr "Tanggal"
 
 msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"

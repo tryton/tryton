@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
@@ -20,7 +20,7 @@ msgstr "Start datum"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
@@ -36,7 +36,7 @@ msgstr "Jaar"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
@@ -60,11 +60,11 @@ msgstr "Datum"
 
 msgctxt "field:timesheet.line,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "Omschrijving"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
@@ -92,7 +92,7 @@ msgstr "Bedrijf"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr "Urenstaatduur"
+msgstr "Duur"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -128,7 +128,7 @@ msgstr "Tot datum"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
-msgstr "Het bedrijf waaraan de tijd wordt besteed."
+msgstr "Het bedrijf waarin de tijd wordt besteed."
 
 msgctxt "help:timesheet.line,date:"
 msgid "When the time is spent."
@@ -136,7 +136,7 @@ msgstr "Wanneer de tijd is besteed."
 
 msgctxt "help:timesheet.line,description:"
 msgid "Additional description of the work done."
-msgstr "Aanvullende beschrijving van het verrichte werk."
+msgstr "Aanvullende omschrijving van het verrichte werk."
 
 msgctxt "help:timesheet.line,employee:"
 msgid "The employee who spends the time."
@@ -156,7 +156,7 @@ msgstr "De werknemer die de tijd spendeerde."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
-msgstr "Wijs het werk toe aan het bedrijf."
+msgstr "Koppel het werk aan het bedrijf."
 
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work."
@@ -168,7 +168,7 @@ msgstr "De hoofdidentificatie van het werk."
 
 msgctxt "help:timesheet.work,origin:"
 msgid "Use to relate the time spent to other records."
-msgstr "Gebruiken om de bestede tijd te relateren aan andere records."
+msgstr "Gebruik om de bestede tijd te relateren aan andere records."
 
 msgctxt "help:timesheet.work,timesheet_end_date:"
 msgid "Restrict adding lines after the date."
@@ -176,7 +176,7 @@ msgstr "Beperk het toevoegen van regels na de datum."
 
 msgctxt "help:timesheet.work,timesheet_lines:"
 msgid "Spend time on this work."
-msgstr "Besteed tijd aan dit werk."
+msgstr "Tijd besteed aan dit werk."
 
 msgctxt "help:timesheet.work,timesheet_start_date:"
 msgid "Restrict adding lines before the date."
@@ -188,7 +188,7 @@ msgstr "Houd geen rekening met regels vóór de datum."
 
 msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
-msgstr "Houd geen rekening met regels vóór de datum."
+msgstr "Houd geen rekening met regels na de datum."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -208,7 +208,7 @@ msgstr "Voer urenstaat in"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Lines"
-msgstr "Lijnen"
+msgstr "Regels"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
@@ -224,7 +224,7 @@ msgstr "Werken"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
@@ -241,7 +241,7 @@ msgstr "De UUID van de urenstaatregel moet uniek zijn."
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
-"De bedrijven geassocieerd met werk \"%(work)s\" en de oorsprong ervan "
+"De bedrijven gekoppeld aan het werk \"%(work)s\" en de oorsprong ervan "
 "verschillen."
 
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
@@ -250,7 +250,7 @@ msgstr "De oorsprong van het werk moet uniek zijn per bedrijf."
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
-msgstr "alle medewerkers uren"
+msgstr "Elke medewerkers uren"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
 msgid "Own employee hours"
@@ -262,7 +262,7 @@ msgstr "Eigen urenstaatregel"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
-msgstr "eender welke tijdregistratieregel"
+msgstr "Elke tijdsregistratie regel"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
@@ -294,11 +294,11 @@ msgstr "Voer urenstaat in"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Lines"
-msgstr "Lijnen"
+msgstr "Regels"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapporten"
+msgstr "Rapportage"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
@@ -314,7 +314,7 @@ msgstr "Werken"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Urenregistratie administratie"
+msgstr "Tijdsregistratie administratie"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
@@ -322,7 +322,7 @@ msgstr "Uren per werknemer"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr "Uren per werknemer context"
+msgstr "Context uren per werknemer"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -338,7 +338,7 @@ msgstr "Tijdregistratieregel"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr "Lijnen invoeren"
+msgstr "Voer regels in"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
@@ -354,11 +354,11 @@ msgstr "Tijdsregistratie"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr "duur"
+msgstr "Duur"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
@@ -366,4 +366,4 @@ msgstr "Annuleer"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr "invoeren"
+msgstr "Invoeren"
