@@ -28,7 +28,7 @@ msgstr "Deskripsi"
 
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -70,14 +70,13 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Keluhan"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
-msgstr "Keluhan"
+msgstr "Status Keluhan"
 
 msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
@@ -124,7 +123,7 @@ msgstr "Keluhan"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"

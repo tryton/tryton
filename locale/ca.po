@@ -346,7 +346,7 @@ msgstr "Esborrany"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr "Refusada"
+msgstr "Rebutjada"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"

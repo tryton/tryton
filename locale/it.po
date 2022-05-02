@@ -101,7 +101,7 @@ msgstr "Unità"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr "Prezzo unitario"
+msgstr "Prezzo Unitario"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
