@@ -78,7 +78,7 @@ def main():
             'database': CONFIG['login.db'],
             }
         server = hashlib.md5(server.encode('utf-8')).hexdigest()
-        application_id = 'org.tryton._' + server
+        application_id = 'org.tryton.Tryton._' + server
         app = gui.Main(
             application_id=application_id,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE)

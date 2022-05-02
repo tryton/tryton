@@ -41,6 +41,11 @@ if hasattr(sys, 'frozen'):
     if sys.platform == 'darwin':
         sys.argv = [a for a in sys.argv if not a.startswith('-psn_')]
 
+if os.environ.get('FLATPAK_ID') and os.environ.get('XDG_RUNTIME_DIR'):
+    # Set $TMPDIR to share files outside the sandbox
+    os.environ['TMPDIR'] = os.path.join(
+        os.environ.get('XDG_RUNTIME_DIR'), 'app', os.environ.get('FLATPAK_ID'))
+
 
 # Disable dbusmenu to show second menu in tabs
 os.environ['UBUNTU_MENUPROXY'] = '0'
