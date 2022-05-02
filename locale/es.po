@@ -19,9 +19,17 @@ msgctxt "field:account.invoice.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Coste albarán"
 
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Método de asignación"
+
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Factores"
 
 msgctxt "field:account.shipment_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -126,6 +134,18 @@ msgctxt ""
 msgid "Posted"
 msgstr "Contabilizado"
 
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "El coste de envío \"%(shipment_cost)s\" no tiene albarán."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"El albarán \"%(shipment)s\" del coste de envío \"%(shipment_cost)s\" ya "
+"tiene coste de envío del mismo tercero \"%(other)s\"."
+
 msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -153,6 +173,10 @@ msgstr "Coste de envío"
 msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
 msgid "Shipment Costs"
 msgstr "Costes de envío"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Por albarán"
 
 msgctxt "selection:account.shipment_cost,state:"
 msgid "Cancelled"

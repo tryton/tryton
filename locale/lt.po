@@ -19,8 +19,16 @@ msgctxt "field:account.invoice.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr ""
 
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr ""
+
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
 msgstr ""
 
 msgctxt "field:account.shipment_cost,invoice_lines:"
@@ -126,6 +134,16 @@ msgctxt ""
 msgid "Posted"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
 msgid "Cancel"
 msgstr ""
@@ -152,6 +170,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
 msgid "Shipment Costs"
+msgstr ""
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
 msgstr ""
 
 msgctxt "selection:account.shipment_cost,state:"

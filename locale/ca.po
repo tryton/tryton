@@ -19,9 +19,17 @@ msgctxt "field:account.invoice.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Cost d'enviament"
 
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Mètode d'assignació"
+
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Factors"
 
 msgctxt "field:account.shipment_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -126,6 +134,18 @@ msgctxt ""
 msgid "Posted"
 msgstr "Comptabilitzat"
 
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "El cost d'enviament \"%(shipment_cost)s\" no té cap albarà."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"L'albarà\"%(shipment)s\" del cost d'enviament \"%(shipment_cost)s\" ja té un"
+" cost d'enviament del mateix tercer \"%(other)s\"."
+
 msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -153,6 +173,10 @@ msgstr "Cost d'albarà"
 msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
 msgid "Shipment Costs"
 msgstr "Costos d'enviament"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Per albarà"
 
 msgctxt "selection:account.shipment_cost,state:"
 msgid "Cancelled"

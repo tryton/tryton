@@ -19,9 +19,17 @@ msgctxt "field:account.invoice.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Coût d'expédition"
 
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Méthode d'allocation"
+
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
 msgstr "Société"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Facteurs"
 
 msgctxt "field:account.shipment_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -126,6 +134,18 @@ msgctxt ""
 msgid "Posted"
 msgstr "Postés"
 
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "Le coût d'expédition « %(shipment_cost)s » n'a pas d'expédition."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"L'expédition « %(shipment)s » du coût d'expédition « %(shipment_cost)s » a "
+"déjà un coût d'expédition du même tiers « %(other)s »."
+
 msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
 msgid "Cancel"
 msgstr "Annuler"
@@ -153,6 +173,10 @@ msgstr "Coût d'expédition"
 msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
 msgid "Shipment Costs"
 msgstr "Coûts d'expédition"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Par expédition"
 
 msgctxt "selection:account.shipment_cost,state:"
 msgid "Cancelled"

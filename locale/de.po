@@ -19,9 +19,17 @@ msgctxt "field:account.invoice.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Lieferkosten"
 
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Zuordnungsmethode"
+
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
 msgstr "Unternehmen"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Faktoren"
 
 msgctxt "field:account.shipment_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -126,6 +134,18 @@ msgctxt ""
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "Die Lieferkosten \"%(shipment_cost)s\" sind keiner Lieferung zugeordnet."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"Die Lieferung \"%(shipment)s\" mit den Lieferkosten \"%(shipment_cost)s\" "
+"verfügt bereits über Lieferkosten der gleichen Partei \"%(other)s\"."
+
 msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
 msgid "Cancel"
 msgstr "Annullieren"
@@ -153,6 +173,10 @@ msgstr "Lieferkosten"
 msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
 msgid "Shipment Costs"
 msgstr "Lieferkosten"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Nach Lieferungen"
 
 msgctxt "selection:account.shipment_cost,state:"
 msgid "Cancelled"
