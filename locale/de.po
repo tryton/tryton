@@ -88,11 +88,11 @@ msgstr "DPD"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Production"
-msgstr "Produktionsbetrieb"
+msgstr "Produktivumgebung"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Testing"
-msgstr "Testbetrieb"
+msgstr "Testumgebung"
 
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Information"
