@@ -34,6 +34,11 @@ msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "贷方"
 
+#, fuzzy
+msgctxt "field:account.account,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
 msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -65,6 +70,10 @@ msgstr "总分类帐余额"
 msgctxt "field:account.account,left:"
 msgid "Left"
 msgstr "左"
+
+msgctxt "field:account.account,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.account,name:"
 msgid "Name"
@@ -154,6 +163,10 @@ msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "会计年度"
 
+msgctxt "field:account.account.deferral,line_count:"
+msgid "Line Count"
+msgstr ""
+
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "第二货币"
@@ -191,6 +204,11 @@ msgid "Credit"
 msgstr "贷方"
 
 #, fuzzy
+msgctxt "field:account.account.party,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
+#, fuzzy
 msgctxt "field:account.account.party,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -206,6 +224,10 @@ msgstr "借方类型"
 msgctxt "field:account.account.party,end_date:"
 msgid "End Date"
 msgstr "结账日期"
+
+msgctxt "field:account.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.account.party,name:"
 msgid "Name"
@@ -238,6 +260,11 @@ msgstr "已结账"
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "代码"
+
+#, fuzzy
+msgctxt "field:account.account.template,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
 
 msgctxt "field:account.account.template,debit_type:"
 msgid "Debit Type"
@@ -705,6 +732,11 @@ msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "贷方"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "货币"
@@ -736,6 +768,10 @@ msgstr "期末借方"
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "总分类帐余额"
+
+msgctxt "field:account.general_ledger.account,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
@@ -833,6 +869,10 @@ msgstr "结账日期"
 msgctxt "field:account.general_ledger.account.party,end_debit:"
 msgid "End Debit"
 msgstr "期末借方"
+
+msgctxt "field:account.general_ledger.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
@@ -1172,9 +1212,19 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr "借方"
 
+#, fuzzy
+msgctxt "field:account.move.line,delegated_amount:"
+msgid "Delegated Amount"
+msgstr "委托人"
+
 msgctxt "field:account.move.line,description:"
 msgid "Description"
 msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.move.line,has_maturity_date:"
+msgid "Has Maturity Date"
+msgstr "到期日"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
@@ -1249,72 +1299,72 @@ msgid "Journal"
 msgstr "日记账"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,currency:"
+msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
 msgstr "货币"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,description:"
+msgctxt "field:account.move.line.reschedule.preview,description:"
 msgid "Description"
 msgstr "描述"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,journal:"
+msgctxt "field:account.move.line.reschedule.preview,journal:"
 msgid "Journal"
 msgstr "日记账"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,terms:"
+msgctxt "field:account.move.line.reschedule.preview,terms:"
 msgid "Terms"
 msgstr "条款"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,amount:"
+msgctxt "field:account.move.line.reschedule.start,amount:"
 msgid "Amount"
 msgstr "数额"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,currency:"
+msgctxt "field:account.move.line.reschedule.start,currency:"
 msgid "Currency"
 msgstr "货币"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,frequency:"
+msgctxt "field:account.move.line.reschedule.start,frequency:"
 msgid "Frequency"
 msgstr "频率"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,interval:"
+msgctxt "field:account.move.line.reschedule.start,interval:"
 msgid "Interval"
 msgstr "间隔"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,number:"
+msgctxt "field:account.move.line.reschedule.start,number:"
 msgid "Number"
 msgstr "编号"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,start_date:"
+msgctxt "field:account.move.line.reschedule.start,start_date:"
 msgid "Start Date"
 msgstr "启用日期"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,total_amount:"
+msgctxt "field:account.move.line.reschedule.start,total_amount:"
 msgid "Total Amount"
 msgstr "数额"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,amount:"
+msgctxt "field:account.move.line.reschedule.term,amount:"
 msgid "Amount"
 msgstr "数额"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,currency:"
+msgctxt "field:account.move.line.reschedule.term,currency:"
 msgid "Currency"
 msgstr "货币"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,date:"
+msgctxt "field:account.move.line.reschedule.term,date:"
 msgid "Date"
 msgstr "日期"
 
@@ -1572,6 +1622,15 @@ msgstr "核销"
 msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
 msgstr "数额"
+
+msgctxt "field:account.reconcile.start,automatic:"
+msgid "Automatic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reconcile.start,only_balanced:"
+msgid "Only Balanced"
+msgstr "期末余额"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
@@ -2152,6 +2211,11 @@ msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr "选中后，禁止账户入账."
 
+#, fuzzy
+msgctxt "help:account.account,credit_type:"
+msgid "The type used if not empty and debit < credit."
+msgstr "如果不为空并且借方 > 贷方，则使用此类型。"
+
 msgctxt "help:account.account,debit_type:"
 msgid "The type used if not empty and debit > credit."
 msgstr "如果不为空并且借方 > 贷方，则使用此类型。"
@@ -2281,19 +2345,15 @@ msgid "The amount expressed in a second currency."
 msgstr "用第二种货币表示的金额."
 
 msgctxt "help:account.move.line,maturity_date:"
-msgid ""
-"This field is used for payable and receivable lines. \n"
-"You can put the limit date for the payment."
+msgid "Set a date to make the line payable or receivable."
 msgstr ""
-"此字段用于应付和应收账款明细。\n"
-"可以用于设定付款的限制日期."
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "第二货币."
 
 #, fuzzy
-msgctxt "help:account.move.line.split.start,interval:"
+msgctxt "help:account.move.line.reschedule.start,interval:"
 msgid "The length of each period, in months."
 msgstr "每个分期的长度，以月为单位。"
 
@@ -2332,6 +2392,14 @@ msgstr "对于所有未结会计年度，保留为空."
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Only include posted moves."
 msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.reconcile.start,automatic:"
+msgid "Automatically reconcile suggestions."
+msgstr ""
+
+msgctxt "help:account.reconcile.start,only_balanced:"
+msgid "Skip suggestion with write-off."
+msgstr ""
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency."
@@ -2576,19 +2644,19 @@ msgid "Group Lines"
 msgstr "明细汇总"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.preview,name:"
-msgid "Split Lines"
-msgstr "明细汇总"
+msgctxt "model:account.move.line.reschedule.preview,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.start,name:"
-msgid "Split Lines"
-msgstr "明细汇总"
+msgctxt "model:account.move.line.reschedule.start,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.term,name:"
-msgid "Split Lines"
-msgstr "明细汇总"
+msgctxt "model:account.move.line.reschedule.term,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
 
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
@@ -2637,6 +2705,11 @@ msgstr "分期"
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
 msgstr "对帐"
+
+#, fuzzy
+msgctxt "model:account.reconcile.start,name:"
+msgid "Reconcile"
+msgstr "允许对账"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
@@ -2749,8 +2822,8 @@ msgstr "会计科目"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
-msgid "Types"
-msgstr "科目"
+msgid "Account Types"
+msgstr "会计科目"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
@@ -2843,9 +2916,9 @@ msgid "Grouped Account Move"
 msgstr "汇总记账凭证"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_move_form_splitting"
-msgid "Split Account Move"
-msgstr "记账凭证"
+msgctxt "model:ir.action,name:act_move_form_rescheduling"
+msgid "Reschedule Account Move"
+msgstr "汇总记账凭证"
 
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
@@ -2917,9 +2990,9 @@ msgid "Renew Fiscal Year"
 msgstr "更新会计年度"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_split_lines_wizard"
-msgid "Split Lines"
-msgstr "明细汇总"
+msgctxt "model:ir.action,name:act_reschedule_lines_wizard"
+msgid "Reschedule Lines"
+msgstr "对账明细"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
@@ -2953,14 +3026,15 @@ msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
 msgstr "税"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_form"
-msgid "Tax Rules"
-msgstr "税规则"
+msgid "Rules"
+msgstr "规则"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
-msgid "Rules"
-msgstr "规则"
+msgid "Tax Rules"
+msgstr "税规则"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
@@ -3023,8 +3097,20 @@ msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr "公司 \"%(company)s\" 已经存在一个账户一览表."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_closed_lines"
+msgid "You cannot close account \"%(account)s\" because it has move lines."
+msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
+
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr "要为帐户 \"%(account)s\" 设置第二种货币，账户必须结转。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", its lines must have "
+"the same second currency \"%(currency)s\"."
 msgstr "要为帐户 \"%(account)s\" 设置第二种货币，账户必须结转。"
 
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
@@ -3032,6 +3118,12 @@ msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr "要为帐户\"%(account)s\"设置第二种货币，账户不能有 “应付”、“收入”、“应收款” 或“费用”科目。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_no_type_lines"
+msgid ""
+"You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
 
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
@@ -3140,6 +3232,13 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "不能汇总一条明细."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_journal_account_moves"
+msgid ""
+"You cannot change the type of journal \"%(journal)s\" because it has posted "
+"moves."
+msgstr "无法更改分期 \"%(period)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
+
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "一个分期只能创建一个日记账."
@@ -3223,6 +3322,18 @@ msgid ""
 "date or the period."
 msgstr "记账凭证 \"%(move)s\" 的日期不在分期之内，必须改变日期或者分期."
 
+msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgid ""
+"The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
+" is not a number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
+msgid ""
+"Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
+"\"%(error)s\""
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
 msgstr "若要继续，必须为日期 \"%(date)s\" 创建会计年度。"
@@ -3230,6 +3341,18 @@ msgstr "若要继续，必须为日期 \"%(date)s\" 创建会计年度。"
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid "To continue, you must create a period for the date \"%(date)s\"."
 msgstr "若要继续，必须为日期 \"%(date)s\" 创建分期。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
+msgid "Account can have only one of the debit or credit type set."
+msgstr "一条明细不能同时设置借方和贷方。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
+msgid ""
+"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
+"\"%(closed)s\"."
+msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
 
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
@@ -3322,28 +3445,28 @@ msgid ""
 msgstr "要重新开启会计年度 \"%(fiscalyear)s\"，在它之后的会计年度必须全部重新开启."
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_split_line_same_account"
-msgid "You cannot split lines with different accounts."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_account"
+msgid "You cannot reschedule lines with different accounts."
 msgstr "无法将不同参与者的明细汇总."
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_split_line_same_currency"
-msgid "You cannot split lines with different currencies."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_currency"
+msgid "You cannot reschedule lines with different currencies."
 msgstr "无法将不同参与者的明细汇总."
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_split_line_same_origins"
-msgid "You cannot split lines with different origins."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_origins"
+msgid "You cannot reschedule lines with different origins."
 msgstr "无法将不同参与者的明细汇总."
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_split_line_same_party"
-msgid "You cannot split lines with different parties."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
+msgid "You cannot reschedule lines with different parties."
 msgstr "无法将不同参与者的明细汇总."
 
-msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
-"To split the lines you must change the terms to have a total amount of "
+"To reschedule the lines you must change the terms to have a total amount of "
 "%(total_amount)s instead of %(amount)s."
 msgstr ""
 
@@ -3523,8 +3646,8 @@ msgstr "会计科目"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
-msgid "Types"
-msgstr "科目"
+msgid "Account Types"
+msgstr "会计科目"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
@@ -3679,14 +3802,15 @@ msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
 msgstr "税"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
-msgid "Tax Rules"
-msgstr "税规则"
+msgid "Rules"
+msgstr "规则"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
-msgid "Rules"
-msgstr "规则"
+msgid "Tax Rules"
+msgstr "税规则"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
@@ -4198,17 +4322,17 @@ msgid "Valid"
 msgstr "有效"
 
 #, fuzzy
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Monthly"
 msgstr "每月"
 
 #, fuzzy
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Other"
 msgstr "其它"
 
 #, fuzzy
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Quarterly"
 msgstr "每季度"
 
@@ -4472,12 +4596,12 @@ msgid "Re-Open"
 msgstr "重新打开"
 
 #, fuzzy
-msgctxt "view:account.move.line.split.start:"
+msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"
 msgstr "每"
 
 #, fuzzy
-msgctxt "view:account.move.line.split.start:"
+msgctxt "view:account.move.line.reschedule.start:"
 msgid "months"
 msgstr "月"
 
@@ -4599,20 +4723,20 @@ msgid "Group"
 msgstr "组"
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgctxt "wizard_button:account.move.line.reschedule,preview,end:"
 msgid "Cancel"
 msgstr "取消"
 
-msgctxt "wizard_button:account.move.line.split,preview,split:"
-msgid "Split"
+msgctxt "wizard_button:account.move.line.reschedule,preview,reschedule:"
+msgid "Reschedule"
 msgstr ""
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.split,start,end:"
+msgctxt "wizard_button:account.move.line.reschedule,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
-msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
 
@@ -4667,6 +4791,16 @@ msgstr "跳过"
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
 msgstr "对帐"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,next_:"
+msgid "Reconcile"
+msgstr "允许对账"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"

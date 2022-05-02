@@ -34,6 +34,11 @@ msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "Crédito"
 
+#, fuzzy
+msgctxt "field:account.account,credit_type:"
+msgid "Credit Type"
+msgstr "Débito"
+
 msgctxt "field:account.account,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -67,6 +72,10 @@ msgstr "Exibir Saldo no Livro Razão"
 msgctxt "field:account.account,left:"
 msgid "Left"
 msgstr "Esquerda"
+
+msgctxt "field:account.account,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.account,name:"
 msgid "Name"
@@ -157,6 +166,10 @@ msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercício Fiscal"
 
+msgctxt "field:account.account.deferral,line_count:"
+msgid "Line Count"
+msgstr ""
+
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr "Moeda Secundária"
@@ -202,6 +215,11 @@ msgid "Credit"
 msgstr "Crédito"
 
 #, fuzzy
+msgctxt "field:account.account.party,credit_type:"
+msgid "Credit Type"
+msgstr "Débito"
+
+#, fuzzy
 msgctxt "field:account.account.party,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -220,6 +238,10 @@ msgstr "Débito"
 msgctxt "field:account.account.party,end_date:"
 msgid "End Date"
 msgstr "Data de término"
+
+msgctxt "field:account.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.party,name:"
@@ -258,6 +280,11 @@ msgstr "Close"
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "Código"
+
+#, fuzzy
+msgctxt "field:account.account.template,credit_type:"
+msgid "Credit Type"
+msgstr "Débito"
 
 #, fuzzy
 msgctxt "field:account.account.template,debit_type:"
@@ -747,6 +774,11 @@ msgid "Credit"
 msgstr "Crédito"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.account,credit_type:"
+msgid "Credit Type"
+msgstr "Débito"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -779,6 +811,10 @@ msgstr "Débito Final"
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "Exibir Saldo do Livro Razão"
+
+msgctxt "field:account.general_ledger.account,line_count:"
+msgid "Line Count"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
@@ -888,6 +924,10 @@ msgstr "Data de término"
 msgctxt "field:account.general_ledger.account.party,end_debit:"
 msgid "End Debit"
 msgstr "Débito Final"
+
+msgctxt "field:account.general_ledger.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
@@ -1234,9 +1274,19 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr "Débito"
 
+#, fuzzy
+msgctxt "field:account.move.line,delegated_amount:"
+msgid "Delegated Amount"
+msgstr "Delegar A"
+
 msgctxt "field:account.move.line,description:"
 msgid "Description"
 msgstr "Descrição"
+
+#, fuzzy
+msgctxt "field:account.move.line,has_maturity_date:"
+msgid "Has Maturity Date"
+msgstr "Data de Vencimento"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
@@ -1313,72 +1363,72 @@ msgid "Journal"
 msgstr "Diário"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,currency:"
+msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,description:"
+msgctxt "field:account.move.line.reschedule.preview,description:"
 msgid "Description"
 msgstr "Descrição"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,journal:"
+msgctxt "field:account.move.line.reschedule.preview,journal:"
 msgid "Journal"
 msgstr "Diário"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.preview,terms:"
+msgctxt "field:account.move.line.reschedule.preview,terms:"
 msgid "Terms"
 msgstr "Prazos"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,amount:"
+msgctxt "field:account.move.line.reschedule.start,amount:"
 msgid "Amount"
 msgstr "Montante"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,currency:"
+msgctxt "field:account.move.line.reschedule.start,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,frequency:"
+msgctxt "field:account.move.line.reschedule.start,frequency:"
 msgid "Frequency"
 msgstr "Sequência"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,interval:"
+msgctxt "field:account.move.line.reschedule.start,interval:"
 msgid "Interval"
 msgstr "Intervalo"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,number:"
+msgctxt "field:account.move.line.reschedule.start,number:"
 msgid "Number"
 msgstr "Número"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,start_date:"
+msgctxt "field:account.move.line.reschedule.start,start_date:"
 msgid "Start Date"
 msgstr "Data de início"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.start,total_amount:"
+msgctxt "field:account.move.line.reschedule.start,total_amount:"
 msgid "Total Amount"
 msgstr "Montante"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,amount:"
+msgctxt "field:account.move.line.reschedule.term,amount:"
 msgid "Amount"
 msgstr "Montante"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,currency:"
+msgctxt "field:account.move.line.reschedule.term,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
 #, fuzzy
-msgctxt "field:account.move.line.split.term,date:"
+msgctxt "field:account.move.line.reschedule.term,date:"
 msgid "Date"
 msgstr "Data"
 
@@ -1646,6 +1696,15 @@ msgstr "Perdas e lucros"
 msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
 msgstr "Quantidade"
+
+msgctxt "field:account.reconcile.start,automatic:"
+msgid "Automatic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reconcile.start,only_balanced:"
+msgid "Only Balanced"
+msgstr "Saldo Final"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
@@ -2250,6 +2309,10 @@ msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
 
+msgctxt "help:account.account,credit_type:"
+msgid "The type used if not empty and debit < credit."
+msgstr ""
+
 msgctxt "help:account.account,debit_type:"
 msgid "The type used if not empty and debit > credit."
 msgstr ""
@@ -2392,19 +2455,15 @@ msgid "The amount expressed in a second currency."
 msgstr "O valor expresso na moeda secundária"
 
 msgctxt "help:account.move.line,maturity_date:"
-msgid ""
-"This field is used for payable and receivable lines. \n"
-"You can put the limit date for the payment."
+msgid "Set a date to make the line payable or receivable."
 msgstr ""
-"Este campo é usado para linhas de recebíveis e pagáveis. \n"
-"Você pode colocar a data limite para o pagamento."
 
 #, fuzzy
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
 msgstr "A moeda secundária"
 
-msgctxt "help:account.move.line.split.start,interval:"
+msgctxt "help:account.move.line.reschedule.start,interval:"
 msgid "The length of each period, in months."
 msgstr ""
 
@@ -2450,6 +2509,14 @@ msgstr "Deixar vazio para todos os exercícios sociais abertos."
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Only include posted moves."
 msgstr "Exibir apenas lançamentos confirmados"
+
+msgctxt "help:account.reconcile.start,automatic:"
+msgid "Automatically reconcile suggestions."
+msgstr ""
+
+msgctxt "help:account.reconcile.start,only_balanced:"
+msgid "Skip suggestion with write-off."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:account.tax,amount:"
@@ -2714,19 +2781,19 @@ msgid "Group Lines"
 msgstr "Agrupar Linhas"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.preview,name:"
-msgid "Split Lines"
-msgstr "Agrupar Linhas"
+msgctxt "model:account.move.line.reschedule.preview,name:"
+msgid "Reschedule Lines"
+msgstr "Reconcile Lines"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.start,name:"
-msgid "Split Lines"
-msgstr "Agrupar Linhas"
+msgctxt "model:account.move.line.reschedule.start,name:"
+msgid "Reschedule Lines"
+msgstr "Reconcile Lines"
 
 #, fuzzy
-msgctxt "model:account.move.line.split.term,name:"
-msgid "Split Lines"
-msgstr "Agrupar Linhas"
+msgctxt "model:account.move.line.reschedule.term,name:"
+msgid "Reschedule Lines"
+msgstr "Reconcile Lines"
 
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
@@ -2773,6 +2840,11 @@ msgid "Period"
 msgstr "Período"
 
 msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "Reconciliar"
+
+#, fuzzy
+msgctxt "model:account.reconcile.start,name:"
 msgid "Reconcile"
 msgstr "Reconciliar"
 
@@ -2895,8 +2967,8 @@ msgstr "Account Types"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
-msgid "Types"
-msgstr "Tipo"
+msgid "Account Types"
+msgstr "Account Types"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_type_tree"
@@ -3008,8 +3080,8 @@ msgid "Grouped Account Move"
 msgstr "Lançamento Contábil"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_move_form_splitting"
-msgid "Split Account Move"
+msgctxt "model:ir.action,name:act_move_form_rescheduling"
+msgid "Reschedule Account Move"
 msgstr "Lançamento Contábil"
 
 #, fuzzy
@@ -3096,9 +3168,9 @@ msgid "Renew Fiscal Year"
 msgstr "Renew Fiscal Year"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_split_lines_wizard"
-msgid "Split Lines"
-msgstr "Agrupar Linhas"
+msgctxt "model:ir.action,name:act_reschedule_lines_wizard"
+msgid "Reschedule Lines"
+msgstr "Reconcile Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
@@ -3137,13 +3209,13 @@ msgstr "Taxes"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_form"
-msgid "Tax Rules"
-msgstr "Tax Rules"
+msgid "Rules"
+msgstr "Regra"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
-msgid "Rules"
-msgstr "Regra"
+msgid "Tax Rules"
+msgstr "Tax Rules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
@@ -3217,8 +3289,19 @@ msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_closed_lines"
+msgid "You cannot close account \"%(account)s\" because it has move lines."
+msgstr "A conta \"%s\" não pode ser excluída porque existem lançamentos."
+
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", its lines must have "
+"the same second currency \"%(currency)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
@@ -3226,6 +3309,12 @@ msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_no_type_lines"
+msgid ""
+"You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr "A conta \"%s\" não pode ser excluída porque existem lançamentos."
 
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
@@ -3340,6 +3429,13 @@ msgid "You cannot group a single line."
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_journal_account_moves"
+msgid ""
+"You cannot change the type of journal \"%(journal)s\" because it has posted "
+"moves."
+msgstr "A conta \"%s\" não pode ser excluída porque existem lançamentos."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
 msgstr "Apenas um diário pode ser aberto por período."
@@ -3424,12 +3520,34 @@ msgid ""
 "date or the period."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgid ""
+"The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
+" is not a number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
+msgid ""
+"Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
+"\"%(error)s\""
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
+msgid "Account can have only one of the debit or credit type set."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
+msgid ""
+"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
+"\"%(closed)s\"."
 msgstr ""
 
 #, fuzzy
@@ -3532,25 +3650,25 @@ msgid ""
 "years."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_split_line_same_account"
-msgid "You cannot split lines with different accounts."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_account"
+msgid "You cannot reschedule lines with different accounts."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_split_line_same_currency"
-msgid "You cannot split lines with different currencies."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_currency"
+msgid "You cannot reschedule lines with different currencies."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_split_line_same_origins"
-msgid "You cannot split lines with different origins."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_origins"
+msgid "You cannot reschedule lines with different origins."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_split_line_same_party"
-msgid "You cannot split lines with different parties."
+msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
+msgid "You cannot reschedule lines with different parties."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
 msgid ""
-"To split the lines you must change the terms to have a total amount of "
+"To reschedule the lines you must change the terms to have a total amount of "
 "%(total_amount)s instead of %(amount)s."
 msgstr ""
 
@@ -3729,8 +3847,8 @@ msgstr "Account Types"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
-msgid "Types"
-msgstr "Tipo"
+msgid "Account Types"
+msgstr "Account Types"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
@@ -3918,13 +4036,13 @@ msgstr "Taxes"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
-msgid "Tax Rules"
-msgstr "Tax Rules"
+msgid "Rules"
+msgstr "Regra"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
-msgid "Rules"
-msgstr "Regra"
+msgid "Tax Rules"
+msgstr "Tax Rules"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
@@ -4452,16 +4570,16 @@ msgid "Valid"
 msgstr "Válido"
 
 #, fuzzy
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Monthly"
 msgstr "Meses"
 
 #, fuzzy
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Other"
 msgstr "Outras Informações"
 
-msgctxt "selection:account.move.line.split.start,frequency:"
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Quarterly"
 msgstr ""
 
@@ -4741,12 +4859,12 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "Abrir Novamente"
 
-msgctxt "view:account.move.line.split.start:"
+msgctxt "view:account.move.line.reschedule.start:"
 msgid "every"
 msgstr ""
 
 #, fuzzy
-msgctxt "view:account.move.line.split.start:"
+msgctxt "view:account.move.line.reschedule.start:"
 msgid "months"
 msgstr "Meses"
 
@@ -4872,20 +4990,20 @@ msgid "Group"
 msgstr "Grupo"
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgctxt "wizard_button:account.move.line.reschedule,preview,end:"
 msgid "Cancel"
 msgstr "Cancel"
 
-msgctxt "wizard_button:account.move.line.split,preview,split:"
-msgid "Split"
+msgctxt "wizard_button:account.move.line.reschedule,preview,reschedule:"
+msgid "Reschedule"
 msgstr ""
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.split,start,end:"
+msgctxt "wizard_button:account.move.line.reschedule,start,end:"
 msgid "Cancel"
 msgstr "Cancel"
 
-msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
 
@@ -4938,6 +5056,16 @@ msgid "Skip"
 msgstr "Saltar"
 
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "Reconciliar"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,next_:"
 msgid "Reconcile"
 msgstr "Reconciliar"
 
