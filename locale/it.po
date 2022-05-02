@@ -136,19 +136,19 @@ msgstr ""
 
 msgctxt "field:account.budget.line.period,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.budget.line.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Esercizio"
 
 msgctxt "field:account.budget.line.period,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Percentuale"
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periodo"
 
 msgctxt "field:account.budget.line.period,ratio:"
 msgid "Ratio"

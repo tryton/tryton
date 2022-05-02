@@ -56,15 +56,15 @@ msgstr "Naam"
 
 msgctxt "field:account.budget.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Grootboekrekening"
 
 msgctxt "field:account.budget.line,account_type:"
 msgid "Account Type"
-msgstr "Rekeningtype"
+msgstr "Grootboekrekening soort"
 
 msgctxt "field:account.budget.line,actual_amount:"
 msgid "Actual Amount"
-msgstr "Werkelijke bedrag"
+msgstr "Werkelijk bedrag"
 
 msgctxt "field:account.budget.line,amount:"
 msgid "Amount"
@@ -76,7 +76,7 @@ msgstr "Begroting"
 
 msgctxt "field:account.budget.line,children:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr "Onderliggend"
 
 msgctxt "field:account.budget.line,company:"
 msgid "Company"
@@ -100,11 +100,11 @@ msgstr "Naam"
 
 msgctxt "field:account.budget.line,parent:"
 msgid "Parent"
-msgstr "Bovenliggend niveau"
+msgstr "Bovenliggend"
 
 msgctxt "field:account.budget.line,parent_account_type:"
 msgid "Parent Account Type"
-msgstr "Type bovenliggende rekening"
+msgstr "Soort grootboekrekening bovenliggende rekening"
 
 msgctxt "field:account.budget.line,percentage:"
 msgid "Percentage"
@@ -128,11 +128,11 @@ msgstr "Methode"
 
 msgctxt "field:account.budget.line.period,actual_amount:"
 msgid "Actual Amount"
-msgstr "Werkelijke bedrag"
+msgstr "Werkelijk bedrag"
 
 msgctxt "field:account.budget.line.period,budget_line:"
 msgid "Budget Line"
-msgstr "Budgetlijn"
+msgstr "Begroting regel"
 
 msgctxt "field:account.budget.line.period,currency:"
 msgid "Currency"
@@ -160,7 +160,7 @@ msgstr "Totaal Bedrag"
 
 msgctxt "help:account.budget,company:"
 msgid "The company that the budget is associated with."
-msgstr "Het bedrijf waaraan het budget is gekoppeld."
+msgstr "Het bedrijf waaraan de begroting is gekoppeld."
 
 msgctxt "help:account.budget,fiscalyear:"
 msgid "The fiscal year the budget applies to."
@@ -172,84 +172,88 @@ msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.budget.copy.start,factor:"
 msgid "The percentage to apply to the budget line amounts."
-msgstr "Het percentage dat van toepassing is op de budgetlijnbedragen."
+msgstr ""
+"Het percentage dat van toepassing is op de bedragen van de begroting regels."
 
 msgctxt "help:account.budget.copy.start,fiscalyear:"
 msgid "The fiscal year during which the new budget will apply."
-msgstr "Het boekjaar waarin het nieuwe budget van toepassing is."
+msgstr "Het boekjaar waarin de nieuwe begroting van toepassing is."
 
 msgctxt "help:account.budget.line,account:"
 msgid "The account the budget applies to."
-msgstr "De rekening waarop het budget van toepassing is."
+msgstr "De grootboekrekening waarop de begroting van toepassing is."
 
 msgctxt "help:account.budget.line,account_type:"
 msgid "The account type the budget applies to."
-msgstr "Het rekeningtype waarop het budget van toepassing is."
+msgstr "Het soort grootboekrekening waarop de begroting van toepassing is."
 
 msgctxt "help:account.budget.line,actual_amount:"
 msgid "The total amount booked against the budget line."
-msgstr "Het totale bedrag dat op de budgetlijn is geboekt."
+msgstr "Het totale bedrag dat op de begroting regel is geboekt."
 
 msgctxt "help:account.budget.line,amount:"
 msgid "The amount allocated to the budget line."
-msgstr "Het bedrag dat is toegewezen aan de begrotingslijn."
+msgstr "Het bedrag dat is toegewezen aan de begroting regel."
 
 msgctxt "help:account.budget.line,children:"
 msgid "Used to add structure below the budget."
-msgstr "Gebruikt om structuur toe te voegen onder het budget."
+msgstr "Wordt gebruikt om structuur toe te voegen onder de begroting."
 
 msgctxt "help:account.budget.line,parent:"
 msgid "Used to add structure above the budget."
-msgstr "Wordt gebruikt om structuur toe te voegen boven het budget."
+msgstr "Wordt gebruikt om structuur toe te voegen aan een andere begroting."
 
 msgctxt "help:account.budget.line,percentage:"
 msgid "The percentage of booked amount of the budget line."
-msgstr "Het percentage van het geboekte bedrag van de budgetlijn."
+msgstr "Het percentage van het geboekte bedrag van de begroting regel."
 
 msgctxt "help:account.budget.line,periods:"
 msgid "The periods that contain details of the budget."
-msgstr "De periodes de die details van het budget bevatten."
+msgstr "De periodes die details van begroting bevatten."
 
 msgctxt "help:account.budget.line,total_amount:"
 msgid "The total amount allocated to the budget line and its children."
 msgstr ""
-"Het totale bedrag dat is toegewezen aan de begrotingslijn en zijn kinderen."
+"Het totale bedrag dat is toegewezen aan de begroting regel en de "
+"onderliggende niveau's."
 
 msgctxt "help:account.budget.line.period,actual_amount:"
 msgid "The total amount booked against the budget line."
-msgstr "Het totale bedrag dat op de budgetlijn is geboekt."
+msgstr "Het totale bedrag dat op de begroting regel is geboekt."
 
 msgctxt "help:account.budget.line.period,budget_line:"
 msgid "The line that the budget period is part of."
-msgstr "De regel waar de budgetperiode deel van uitmaakt."
+msgstr "De regel waar de begroting periode deel van uitmaakt."
 
 msgctxt "help:account.budget.line.period,percentage:"
 msgid "The percentage of booked amount of the budget line."
-msgstr "Het percentage van het geboekte bedrag van de budgetlijn."
+msgstr "Het percentage van het geboekte bedrag van de begroting regel."
 
 msgctxt "help:account.budget.line.period,ratio:"
 msgid "The percentage allocated to the budget."
-msgstr "Het aan het budget toegewezen percentage."
+msgstr "Het aan de begroting toegewezen percentage."
 
 msgctxt "help:account.budget.line.period,total_amount:"
 msgid "The total amount allocated to the budget and its children."
-msgstr "Het totale bedrag dat is toegewezen aan het budget en zijn kinderen."
+msgstr ""
+"Het totale bedrag dat is toegewezen aan de begroting en de onderliggende "
+"niveau's."
 
 msgctxt "model:account.budget,name:"
 msgid "Account Budget"
-msgstr "Accountbudget"
+msgstr "Begrotingsrekening"
 
 msgctxt "model:account.budget.context,name:"
 msgid "Account Budget Context"
-msgstr "Boekhoudkundige budgetcontext"
+msgstr "Context begrotingsrekening"
 
 msgctxt "model:account.budget.copy.start,name:"
 msgid "Copy Budget"
-msgstr "Budget kopiëren"
+msgstr "Kopieer begroting"
 
 msgctxt "model:account.budget.line,name:"
 msgid "Account Budget Line"
-msgstr "Accountbudgetlijn"
+msgstr "Begroting regel"
 
 msgctxt "model:account.budget.line.create_periods.start,name:"
 msgid "Create Periods"
@@ -257,23 +261,23 @@ msgstr "Maak Periodes"
 
 msgctxt "model:account.budget.line.period,name:"
 msgid "Account Budget Line Period"
-msgstr "Account Budget Line Periode"
+msgstr "Begroting regel periode"
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Budgets"
-msgstr "Begroting"
+msgstr "Begrotingen"
 
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
-msgstr "Budgetlijn"
+msgstr "Begroting regels"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Budgets"
-msgstr "Begroting"
+msgstr "Begrotingen"
 
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
-msgstr "Budget kopiëren"
+msgstr "Kopieer begroting"
 
 msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
@@ -281,20 +285,20 @@ msgstr "Maak Periodes"
 
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
-msgstr "Het account moet uniek zijn voor elk budget."
+msgstr "De grootboekrekening moet uniek zijn voor elk budget."
 
 msgctxt ""
 "model:ir.message,text:msg_budget_line_period_budget_line_period_unique"
 msgid "The period must be unique for each budget line."
-msgstr "De periode moet uniek zijn voor elke budgetlijn."
+msgstr "De periode moet uniek zijn voor elke begroting regel."
 
 msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
 msgid ""
 "The sum of period ratios for the budget line \"%(budget_line)s\" must be "
 "less or equal to 100%%."
 msgstr ""
-"De som van de perioderatio's voor de budgetregel \"%(budget_line)s\" moet "
-"kleiner of gelijk zijn aan 100%%."
+"De som van de verhoudingen periode voor de begroting regel "
+"\"%(budget_line)s\" moet kleiner of gelijk zijn aan 100%%."
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
 msgid "Copy"
@@ -314,19 +318,19 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_budget"
 msgid "Budgets"
-msgstr "Budgetten"
+msgstr "Begrotingen"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_form"
 msgid "Budgets"
-msgstr "Begroting"
+msgstr "Begrotingen"
 
 msgctxt "model:ir.ui.menu,name:menu_budget_report"
 msgid "Budgets"
-msgstr "Budgetten"
+msgstr "Begrotingen"
 
 msgctxt "model:res.group,name:group_budget"
 msgid "Account Budget"
-msgstr "Accountbudget"
+msgstr "Begrotingsrekening"
 
 msgctxt "selection:account.budget.line.create_periods.start,method:"
 msgid "Evenly"
@@ -342,7 +346,7 @@ msgstr "%"
 
 msgctxt "view:account.budget.line.period:"
 msgid "Actual Amount"
-msgstr "Werkelijke bedrag"
+msgstr "Werkelijk bedrag"
 
 msgctxt "view:account.budget.line.period:"
 msgid "Ratio"
@@ -370,7 +374,7 @@ msgstr "Kopiëren"
 
 msgctxt "wizard_button:account.budget.copy,start,end:"
 msgid "Cancel"
-msgstr "Annuleer"
+msgstr "Annuleren"
 
 msgctxt ""
 "wizard_button:account.budget.line.create_periods,start,create_periods:"
@@ -379,4 +383,4 @@ msgstr "Aanmaken"
 
 msgctxt "wizard_button:account.budget.line.create_periods,start,end:"
 msgid "Cancel"
-msgstr "Annuleer"
+msgstr "Annuleren"

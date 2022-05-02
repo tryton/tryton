@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:account.budget.copy.start,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:account.budget.line,account:"
 msgid "Account"
@@ -108,11 +108,11 @@ msgstr ""
 
 msgctxt "field:account.budget.line,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "field:account.budget.line,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.budget.line,right:"
 msgid "Right"
@@ -148,7 +148,7 @@ msgstr ""
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.budget.line.period,ratio:"
 msgid "Ratio"
@@ -331,11 +331,11 @@ msgstr ""
 
 msgctxt "view:account.budget.copy.start:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line.period:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line.period:"
 msgid "Actual Amount"
@@ -351,11 +351,11 @@ msgstr ""
 
 msgctxt "view:account.budget.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.budget.line:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "view:account.budget.line:"
 msgid "Name:"
