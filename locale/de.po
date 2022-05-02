@@ -251,6 +251,18 @@ msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
 msgstr "Produktion Kommissionierung"
 
+msgctxt "field:stock.lot.trace,production_input:"
+msgid "Production Input"
+msgstr "Produktion Eingänge"
+
+msgctxt "field:stock.lot.trace,production_output:"
+msgid "Production Output"
+msgstr "Produktion Ausgänge"
+
+msgctxt "field:stock.move,production:"
+msgid "Production"
+msgstr "Produktion"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr "Einstandspreis aktualisiert"
@@ -369,6 +381,12 @@ msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
 "Für Artikel \"%(product)s\" darf keine rekursive Stückliste erstellt werden."
 
+msgctxt "model:ir.message,text:msg_stock_move_production_single"
+msgid "Move can not be used for production input and output."
+msgstr ""
+"Eine Warenbewegung kann nicht gleichzeitig für Eingang und Ausgang eines "
+"Produktionsauftrags verwendet werden."
+
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
 msgstr "Sind Sie sicher, dass Sie den Produktionsauftrag abschließen wollen?"
@@ -422,8 +440,8 @@ msgid "Configuration"
 msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
-msgid "Production"
-msgstr "Produktion"
+msgid "Productions"
+msgstr "Produktionsaufträge"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
@@ -503,7 +521,7 @@ msgstr "Produktionsaufträge neu planen"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
-msgstr "Einstandpreis auf Warenbewegungen setzen"
+msgstr "Einstandspreis auf Warenbewegungen setzen"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"

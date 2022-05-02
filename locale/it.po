@@ -152,7 +152,7 @@ msgstr "Quantità"
 
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
-msgstr "Udm"
+msgstr "UdM"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
@@ -192,7 +192,7 @@ msgstr "Quantità"
 
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
-msgstr "Udm"
+msgstr "UdM"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
@@ -257,6 +257,21 @@ msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
 msgstr "Produzione"
 
+#, fuzzy
+msgctxt "field:stock.lot.trace,production_input:"
+msgid "Production Input"
+msgstr "Ingresso produzione"
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,production_output:"
+msgid "Production Output"
+msgstr "Uscita produzione"
+
+#, fuzzy
+msgctxt "field:stock.move,production:"
+msgid "Production"
+msgstr "Produzione"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr ""
@@ -295,7 +310,7 @@ msgstr "Distinte materiali"
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produzioni"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
@@ -304,7 +319,7 @@ msgstr "Configurazione"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produzioni"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
@@ -377,6 +392,10 @@ msgstr ""
 "Non è possibile creare una distinta materiali ricorsiva per il prodotto "
 "\"%(product)s\"."
 
+msgctxt "model:ir.message,text:msg_stock_move_production_single"
+msgid "Move can not be used for production input and output."
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
 msgstr ""
@@ -430,9 +449,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurazione"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
-msgid "Production"
-msgstr "Produzione"
+msgid "Productions"
+msgstr "Produzioni"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"

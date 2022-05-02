@@ -251,6 +251,18 @@ msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
 msgstr "Productie picking"
 
+msgctxt "field:stock.lot.trace,production_input:"
+msgid "Production Input"
+msgstr "Productie input"
+
+msgctxt "field:stock.lot.trace,production_output:"
+msgid "Production Output"
+msgstr "Productie output"
+
+msgctxt "field:stock.move,production:"
+msgid "Production"
+msgstr "Productie"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr "Kostprijs bijgewerkt"
@@ -368,6 +380,11 @@ msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "U kunt geen recursieve stuklijst maken voor product \"%(product)s\"."
 
+msgctxt "model:ir.message,text:msg_stock_move_production_single"
+msgid "Move can not be used for production input and output."
+msgstr ""
+"Voorraadbeweging kan niet gebruikt worden voor productie in- en output."
+
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
 msgstr "Weet je zeker dat je de productie wilt voltooien?"
@@ -421,8 +438,8 @@ msgid "Configuration"
 msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
-msgid "Production"
-msgstr "Productie"
+msgid "Productions"
+msgstr "Producties"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"

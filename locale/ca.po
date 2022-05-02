@@ -251,6 +251,18 @@ msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
 msgstr "Recollida de la producció"
 
+msgctxt "field:stock.lot.trace,production_input:"
+msgid "Production Input"
+msgstr "Entrada de la producció"
+
+msgctxt "field:stock.lot.trace,production_output:"
+msgid "Production Output"
+msgstr "Sortida de la producció"
+
+msgctxt "field:stock.move,production:"
+msgid "Production"
+msgstr "Producció"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr "Preu de cost actualitzat"
@@ -368,6 +380,11 @@ msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "No podeu crear una LdM recursiva pel producte \"%(product)s\"."
 
+msgctxt "model:ir.message,text:msg_stock_move_production_single"
+msgid "Move can not be used for production input and output."
+msgstr ""
+"El moviment no es pot utilitzar per a l'entrada i sortida de la producció."
+
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
 msgstr "Esteu segurs que voleu completar la producció?"
@@ -421,8 +438,8 @@ msgid "Configuration"
 msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
-msgid "Production"
-msgstr "Producció"
+msgid "Productions"
+msgstr "Produccions"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
