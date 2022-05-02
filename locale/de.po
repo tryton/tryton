@@ -94,13 +94,25 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banken"
 
+msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
+msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
+msgstr "Die BIC von \"%(account)s\" passt nicht zur BIC \"%(bic)s\" aus der IBAN."
+
+msgctxt "model:ir.message,text:msg_account_iban_unique"
+msgid "Account can have only one IBAN."
+msgstr "Für das Bankkonto kann nur eine IBAN erfasst werden."
+
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
 msgstr "Die IBAN \"%(number)s\" ist ungültig."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
-msgid "IBAN number \"%(number)s\" is not valid."
+msgid "IBAN \"%(number)s\" is not valid."
 msgstr "Die IBAN \"%(number)s\" ist ungültig."
+
+msgctxt "model:ir.message,text:msg_number_iban_unique"
+msgid "IBAN must be unique."
+msgstr "IBAN muss eindeutig sein."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"

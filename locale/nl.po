@@ -24,7 +24,7 @@ msgstr "Nummers"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr "Eigenaars"
+msgstr "Eigenaren"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
@@ -48,7 +48,7 @@ msgstr "nummer compactformaat"
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -56,7 +56,7 @@ msgstr "Bankrekeningen"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "Bank/BIC (Business Identifier Code)."
+msgstr "Bank / Business Identifier Code."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -68,7 +68,7 @@ msgstr "Voeg de nummers toe die de bankrekening identificeren."
 
 msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
-msgstr "De bankrekening die wordt aangeduid met het nummer."
+msgstr "De bankrekening die wordt geïdentificeerd met het nummer."
 
 msgctxt "model:bank,name:"
 msgid "Bank"
@@ -94,13 +94,25 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banken"
 
+msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
+msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
+msgstr "De BIC van \"%(account)s\" is niet geldig met de \"%(bic)s\" van IBAN."
+
+msgctxt "model:ir.message,text:msg_account_iban_unique"
+msgid "Account can have only one IBAN."
+msgstr "Bankrekening kan maar één IBAN hebben."
+
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr "De BIC \"%(bic)s\" is niet geldig."
+msgstr "De BIC code \"%(bic)s\" is niet geldig."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
-msgid "IBAN number \"%(number)s\" is not valid."
-msgstr "IBAN-nummer \"%(number)s\" is niet geldig."
+msgid "IBAN \"%(number)s\" is not valid."
+msgstr "IBAN \"%(number)s\" is niet geldig."
+
+msgctxt "model:ir.message,text:msg_number_iban_unique"
+msgid "IBAN must be unique."
+msgstr "IBAN moet uniek zijn."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
@@ -112,11 +124,11 @@ msgstr "Banken"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Bank"
+msgstr "Bankieren"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "Bank Administration"
+msgstr "Bank Administratie"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -132,4 +144,4 @@ msgstr "Nummer"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Bank"
+msgstr "Bankieren"

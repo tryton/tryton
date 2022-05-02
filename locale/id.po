@@ -28,7 +28,7 @@ msgstr "Pemilik"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Akun"
+msgstr "Rekening"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
@@ -76,7 +76,7 @@ msgstr "Bank"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr "Akun Bank"
+msgstr "Rekening Bank"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Nomor Rekening Bank"
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
@@ -94,13 +94,26 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
+msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_iban_unique"
+msgid "Account can have only one IBAN."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
 msgstr "BIC \"%(bic)s\" tidak valid."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invalid_iban"
-msgid "IBAN number \"%(number)s\" is not valid."
+msgid "IBAN \"%(number)s\" is not valid."
 msgstr "Nomor IBAN \"%(number)s\" tidak valid."
+
+msgctxt "model:ir.message,text:msg_number_iban_unique"
+msgid "IBAN must be unique."
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
@@ -124,7 +137,7 @@ msgstr "IBAN"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr ""
+msgstr "Lainnya"
 
 msgctxt "view:bank.account:"
 msgid "Number"
