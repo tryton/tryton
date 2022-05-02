@@ -504,6 +504,10 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "El codi dels productes actius ha de ser únic."
 
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr "No podeu reduir els dígits de la UdM \"%(uom)s\"."
+
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
 msgstr "El factor i el rati de la Udm \"%(uom)s\" són incompatibles."
@@ -557,7 +561,7 @@ msgid "Configuration"
 msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
-msgid "Product"
+msgid "Products"
 msgstr "Productes"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
@@ -641,7 +645,7 @@ msgid "Carat"
 msgstr "Quirat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
-msgid "centimeter"
+msgid "Centimeter"
 msgstr "Centímetre"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"

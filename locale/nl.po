@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.configuration,product_price_decimal:"
 msgid "Product Price Decimal"
-msgstr "Productprijs decimaal (kostprijs?)"
+msgstr "Productprijs decimalen"
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
@@ -24,20 +24,20 @@ msgstr "Producten"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr "Standaard kostenmethode"
+msgstr "Standaard kostprijs methode"
 
 msgctxt "field:product.configuration,product_sequence:"
 msgid "Variant Sequence"
-msgstr "Variantsequentie"
+msgstr "Variant reeks"
 
 msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
-msgstr "Productvolgorde"
+msgstr "Product reeks"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr "Standaard kostenmethode"
+msgstr "Standaard kostprijs methode"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
@@ -61,7 +61,7 @@ msgstr "Kostprijsmethode"
 
 msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:product.identifier,code:"
 msgid "Code"
@@ -73,7 +73,7 @@ msgstr "Product"
 
 msgctxt "field:product.identifier,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:product.list_price,company:"
 msgid "Company"
@@ -85,7 +85,7 @@ msgstr "Catalogusprijs"
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:product.product,categories:"
 msgid "Categories"
@@ -105,7 +105,7 @@ msgstr "Code Alleen lezen"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr "verbruiksartikelen"
+msgstr "Verbruiksartikel"
 
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
@@ -117,7 +117,7 @@ msgstr "Kostprijsmethode"
 
 msgctxt "field:product.product,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr "Kostprijsmethode"
+msgstr "Kostprijsmethodes"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -133,11 +133,11 @@ msgstr "Standaard maateenheid"
 
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Standaard maateenheid-categorie"
+msgstr "Standaard maateenheid categorie"
 
 msgctxt "field:product.product,default_uom_digits:"
 msgid "Default Unit Digits"
-msgstr "standaard maateenheid decimalen"
+msgstr "Standaard maateenheid decimalen"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -145,7 +145,7 @@ msgstr "Omschrijving"
 
 msgctxt "field:product.product,identifiers:"
 msgid "Identifiers"
-msgstr "identificaties"
+msgstr "Identificaties"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
@@ -169,15 +169,15 @@ msgstr "Code voorvoegsel"
 
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
-msgstr "Achtervoegsel Code"
+msgstr "Achtervoegsel code"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Productsjabloon"
+msgstr "Product template"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:product.template,categories:"
 msgid "Categories"
@@ -197,7 +197,7 @@ msgstr "Code Alleen lezen"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr "verbruiksartikelen"
+msgstr "Verbruiksartikel"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
@@ -209,19 +209,19 @@ msgstr "Kostprijsmethode"
 
 msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr "Kostprijsmethode"
+msgstr "Kostprijsmethodes"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "Standaard ME"
+msgstr "Standaard maateenheid"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Standaard maateenheid-categorie"
+msgstr "Standaard maateenheid categorie"
 
 msgctxt "field:product.template,default_uom_digits:"
 msgid "Default Unit Digits"
-msgstr "standaard maateenheid decimalen"
+msgstr "Standaard maateenheid decimalen"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -237,11 +237,11 @@ msgstr "Naam"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "varianten"
+msgstr "Varianten"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Soort"
 
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
@@ -249,7 +249,7 @@ msgstr "Categorie"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:product.template-product.category.all,category:"
 msgid "Category"
@@ -257,7 +257,7 @@ msgstr "Categorie"
 
 msgctxt "field:product.template-product.category.all,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "field:product.uom,category:"
 msgid "Category"
@@ -269,7 +269,7 @@ msgstr "Zichtbare decimalen"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr "Faktor"
+msgstr "Factor"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
@@ -297,15 +297,15 @@ msgstr "Maateenheden"
 
 msgctxt "help:product.category,childs:"
 msgid "Used to add structure below the category."
-msgstr "Wordt gebruikt om structuur onder de categorie toe te voegen."
+msgstr "Wordt gebruikt om een structuur onder de categorie toe te voegen."
 
 msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
-msgstr "Wordt gebruikt om structuur boven de categorie toe te voegen."
+msgstr "Wordt gebruikt om een structuur boven de categorie toe te voegen."
 
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
-msgstr "De standaard kostprijsmethode voor nieuwe producten."
+msgstr "De standaard kostprijs methode voor nieuwe producten."
 
 msgctxt "help:product.configuration,product_sequence:"
 msgid "Used to generate the last part of the product code."
@@ -318,7 +318,7 @@ msgstr "Wordt gebruikt om het eerste deel van de productcode te genereren."
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "The default cost price method for new products."
-msgstr "De standaard kostprijsmethode voor nieuwe producten."
+msgstr "De standaard kostprijs methode voor nieuwe producten."
 
 msgctxt "help:product.identifier,product:"
 msgid "The product identified by the code."
@@ -347,8 +347,8 @@ msgid ""
 "The amount it costs to purchase or make the variant, or carry out the "
 "service."
 msgstr ""
-"Het bedrag dat het kost om de variant aan te schaffen, te maken of de dienst"
-" uit te voeren."
+"Het bedrag dat het kost om de variant aan te schaffen of te maken, of de "
+"dienst uit te voeren."
 
 msgctxt "help:product.product,cost_price_method:"
 msgid "The method used to calculate the cost price."
@@ -400,8 +400,8 @@ msgid ""
 "The amount it costs to purchase or make the product, or carry out the "
 "service."
 msgstr ""
-"Het bedrag dat het kost om de variant aan te schaffen, te maken of de dienst"
-" uit te voeren."
+"Het bedrag dat het kost om de variant aan te schaffen of te maken, of de "
+"dienst uit te voeren."
 
 msgctxt "help:product.template,cost_price_method:"
 msgid "The method used to calculate the cost price."
@@ -441,7 +441,7 @@ msgid ""
 "coefficient (base unit) = 1 (this unit)"
 msgstr ""
 "De coëfficiënt voor de formule:\n"
-"coëfficiënt (basiseenheid) = 1 (deze eenheid)"
+"coëfficiënt (basis eenheid) = 1 (deze eenheid)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
@@ -449,11 +449,11 @@ msgid ""
 "1 (base unit) = coef (this unit)"
 msgstr ""
 "De coëfficiënt voor deze formule:\n"
-"1(basiseenheid) = coëf (deze eenheid)"
+"1 (basis eenheid) = coëfficiënt (deze eenheid)"
 
 msgctxt "help:product.uom,rounding:"
 msgid "The accuracy to which values are rounded."
-msgstr "De nauwkeurigheid waarop waarden zijn afgerond."
+msgstr "De nauwkeurigheid waarop waarden worden afgerond."
 
 msgctxt "help:product.uom,symbol:"
 msgid "The symbol that represents the unit of measure."
@@ -477,11 +477,11 @@ msgstr "Instellingen"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "varianten"
+msgstr "Varianten"
 
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "varianten"
+msgstr "Varianten"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
@@ -507,17 +507,21 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "Code van actief product moet uniek zijn."
 
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr "U kunt het aantal decimalen van maateenheid \"%(uom)s\" niet verkleinen."
+
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
-msgstr "Onverenigbare factor en tarief op standaard maateenheid \"%(uom)s\"."
+msgstr "Tegenstrijdige factor en verhouding op standaard maateenheid \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_category"
 msgid "You cannot modify the category of UOM \"%(uom)s\"."
-msgstr "U kunt de standaardmaateenheidscategorie \"%(uom)s\" niet wijzigen."
+msgstr "U kunt de categorie van maateenheid \"%(uom)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of UOM \"%(uom)s\"."
-msgstr "U kunt de factor maateenheid \"% (uom) s\" niet wijzigen."
+msgstr "U kunt de factor van maateenheid \"% (uom) s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
@@ -529,11 +533,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_uom_modify_rate"
 msgid "You cannot modify the rate of UOM \"%(uom)s\"."
-msgstr "U kunt de waarde van de maateenheid \"%(uom)s\" niet wijzigen."
+msgstr "U kunt de verhouding van maateenheid \"%(uom)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
-msgstr "De waarde en factor kunnen niet beiden gelijk zijn aan nul."
+msgstr "De verhouding en factor kunnen niet beiden gelijk zijn aan nul."
 
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
@@ -560,12 +564,12 @@ msgid "Configuration"
 msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
-msgid "Product"
-msgstr "Product"
+msgid "Products"
+msgstr "Producten"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "varianten"
+msgstr "Varianten"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Configuration"
@@ -573,7 +577,7 @@ msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapporten"
+msgstr "Rapportage"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -597,11 +601,11 @@ msgstr "Product configuratie"
 
 msgctxt "model:product.configuration.default_cost_price_method,name:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr "Productconfiguratie Standaard kostprijsmethode"
+msgstr "Product configuratie standaard kostprijsmethode"
 
 msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
-msgstr "Productkostprijs"
+msgstr "Product kostprijs"
 
 msgctxt "model:product.cost_price_method,name:"
 msgid "Product Cost Price Method"
@@ -613,23 +617,23 @@ msgstr "Product identificator"
 
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
-msgstr "Product prijs lijst"
+msgstr "Product prijslijst"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr "Productvariant"
+msgstr "Product variant"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Productsjabloon"
+msgstr "Product template"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr "Sjabloon - Categorie"
+msgstr "Template - Categorie"
 
 msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
-msgstr "Sjabloon - Alle Categorieën"
+msgstr "Template - Alle Categorieën"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of Measure"
@@ -644,8 +648,8 @@ msgid "Carat"
 msgstr "Karaat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
-msgid "centimeter"
-msgstr "centimeter"
+msgid "Centimeter"
+msgstr "Centimeter"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
@@ -717,11 +721,11 @@ msgstr "Millimeter"
 
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minute"
+msgstr "Minuut"
 
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "ons"
+msgstr "Ons"
 
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
@@ -881,7 +885,7 @@ msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "u"
+msgstr "st"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
@@ -909,7 +913,7 @@ msgstr "Tijd"
 
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "eenheden"
+msgstr "Eenheden"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
@@ -921,7 +925,7 @@ msgstr "Gewicht"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Productbeheer"
+msgstr "Product administratie"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
@@ -929,7 +933,7 @@ msgstr "Internationaal artikelnummer"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Securities Identification Number"
-msgstr "internationaal veilighieds idendificatie nummer (ISIN)"
+msgstr "Internationaal veiligheids idendificatie nummer (ISIN)"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Audiovisual Number"
@@ -937,7 +941,7 @@ msgstr "Internationaal standaard audiovisueel nummer"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Book Number"
-msgstr "Internationaal Standaard Boek Nummer (ISBN)"
+msgstr "Internationaal standaard boek nummer (ISBN)"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Identifier for Libraries"

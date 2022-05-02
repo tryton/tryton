@@ -501,6 +501,10 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
 msgstr ""
@@ -554,9 +558,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurazione"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
-msgid "Product"
-msgstr "Prodotto"
+msgid "Products"
+msgstr "Prodotti"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
@@ -642,8 +647,9 @@ msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
 msgstr "Carat"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
-msgid "centimeter"
+msgid "Centimeter"
 msgstr "centimeter"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
@@ -664,7 +670,7 @@ msgstr "Cubic meter"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Day"
+msgstr "Giorno"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"

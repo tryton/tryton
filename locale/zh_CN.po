@@ -499,6 +499,11 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "已启用产品的代码不能重复."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr "你不能修改计量单位 \"%(uom)s\" 的换算率."
+
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
 msgstr "与计量单位 \"%(uom)s\" 不兼容的换算因子和换算率."
@@ -549,8 +554,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
-msgid "Product"
+msgid "Products"
 msgstr "产品"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
@@ -634,8 +640,9 @@ msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
 msgstr "克拉"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
-msgid "centimeter"
+msgid "Centimeter"
 msgstr "厘米"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"

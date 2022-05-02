@@ -137,7 +137,7 @@ msgstr "Categorie implicita al UM"
 
 msgctxt "field:product.product,default_uom_digits:"
 msgid "Default Unit Digits"
-msgstr "Zecimale Implicite al Unității"
+msgstr "Zecimale Implicite pentru Unitate"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -221,7 +221,7 @@ msgstr "Categorie implicita al UM"
 
 msgctxt "field:product.template,default_uom_digits:"
 msgid "Default Unit Digits"
-msgstr "Zecimale Implicite al Unității"
+msgstr "Zecimale Implicite pentru Unitate"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -293,7 +293,7 @@ msgstr "Denumire"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Units of Measure"
-msgstr "Unitați de masura"
+msgstr "Unități de Măsura"
 
 msgctxt "help:product.category,childs:"
 msgid "Used to add structure below the category."
@@ -505,6 +505,11 @@ msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "Codul al unui produs activ trebuie să fie unic."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr "Nu se poate modifică rate al UM \"%(uom)s\"."
+
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
 msgstr "Factor şi rata incompatibil pentru UM \"%(uom)s\"."
@@ -557,9 +562,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
-msgid "Product"
-msgstr "Produs"
+msgid "Products"
+msgstr "Produse"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
@@ -631,7 +637,7 @@ msgstr "Şablon - Categorie Toate"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of Measure"
-msgstr "Unitați de masura"
+msgstr "Unitate de Măsură"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -642,8 +648,8 @@ msgid "Carat"
 msgstr "Carat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
-msgid "centimeter"
-msgstr "centimetru"
+msgid "Centimeter"
+msgstr "Centimetru"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
@@ -891,7 +897,7 @@ msgstr "yd"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Unit of Measure Category"
-msgstr "Unitați de masura"
+msgstr "Categorie Unitate de Măsura"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
@@ -907,7 +913,7 @@ msgstr "Timp"
 
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Unitați"
+msgstr "Unități"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
