@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr ""
+msgstr "Preţ Unitate Secundara"
 
 msgctxt "view:account.invoice.line:"
 msgid "Quantity:"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Unit Price:"
-msgstr ""
+msgstr "Preţ Unitate:"
 
 msgctxt "view:account.invoice.line:"
 msgid "Unit:"
