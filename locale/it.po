@@ -2,9 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.invoice,shipments:"
+msgid "Shipments"
+msgstr "Spedizioni"
+
 msgctxt "field:account.invoice.line,correction:"
 msgid "Correction"
-msgstr ""
+msgstr "Correzione"
+
+msgctxt "field:account.invoice.line,shipments:"
+msgid "Shipments"
+msgstr "Spedizioni"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
@@ -12,7 +20,7 @@ msgstr "Movimenti di magazzino"
 
 msgctxt "field:account.invoice.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
@@ -26,14 +34,13 @@ msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Righe fattura"
 
-#, fuzzy
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
-msgstr "Righe fattura"
+msgstr "Tipi di fattura"
 
 msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
-msgstr ""
+msgstr "Spunta per correggere il prezzo della fattura già registrata."
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
