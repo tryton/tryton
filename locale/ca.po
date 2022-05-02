@@ -271,3 +271,7 @@ msgstr "Enviat"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "En espera"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Seqüència d'enviament directe"

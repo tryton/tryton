@@ -271,3 +271,7 @@ msgstr "Tarnitud"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Ootel"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr ""

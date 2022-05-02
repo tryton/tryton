@@ -206,7 +206,7 @@ msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_drop_done_button"
 msgid "Done"
-msgstr "Realizar"
+msgstr "Finalizar"
 
 msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
 msgid "Draft"
@@ -271,3 +271,7 @@ msgstr "Enviado"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "En espera"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Secuencia de envío directo"

@@ -273,3 +273,8 @@ msgstr "ارسال شد"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "در انتظار"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "ادامه دراپ شیپینگ"

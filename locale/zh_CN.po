@@ -279,3 +279,8 @@ msgstr "Shipped"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Waiting"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Drop Shipment"

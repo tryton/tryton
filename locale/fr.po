@@ -272,3 +272,7 @@ msgstr "Livré"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "En attente"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Séquence de livraison directe"

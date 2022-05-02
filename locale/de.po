@@ -274,3 +274,7 @@ msgstr "Versendet"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Wartend"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Nummernkreis Direktlieferung"

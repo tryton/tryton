@@ -137,7 +137,7 @@ msgstr "Directe leveringen"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Aankopen"
+msgstr "Inkopen"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
@@ -272,3 +272,7 @@ msgstr "verzonden"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "In afwachting"
+
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Directe levering reeks"

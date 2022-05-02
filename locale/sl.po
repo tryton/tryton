@@ -280,3 +280,8 @@ msgstr "Odpremljeno"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Čakajoče"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Drop Shipment Sequence"
+msgstr "Štetje dostav"
