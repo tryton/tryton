@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
