@@ -14,10 +14,9 @@ msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
 msgstr "Metodo di fatturazione"
 
-#, fuzzy
 msgctxt "field:project.work,invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Metodo di fatturazione"
+msgstr "Fattura fino a"
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -25,16 +24,15 @@ msgstr "Importo fatturato"
 
 msgctxt "field:project.work,invoiced_progress:"
 msgid "Invoiced Progress"
-msgstr ""
+msgstr "Progresso fatturato"
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr "Metodo di fatturazione"
 
-#, fuzzy
 msgctxt "field:project.work,project_invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Metodo di fatturazione"
+msgstr "Fattura fino a"
 
 msgctxt "field:project.work,quantity_to_invoice:"
 msgid "Quantity to Invoice"
@@ -103,10 +101,9 @@ msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
 msgstr "Fattura"
 
-#, fuzzy
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
-msgstr "Progressi fatturati dal lavoro"
+msgstr "Avanzamento del lavoro fatturato"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
