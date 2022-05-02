@@ -24,7 +24,7 @@ msgstr "Azienda"
 
 msgctxt "field:sale.promotion,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
