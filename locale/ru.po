@@ -55,6 +55,10 @@ msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr ""
 
+msgctxt "field:notification.email,send_after:"
+msgid "Send After"
+msgstr ""
+
 msgctxt "field:notification.email,subject:"
 msgid "Subject"
 msgstr ""
@@ -142,6 +146,12 @@ msgstr ""
 
 msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+msgctxt "help:notification.email,send_after:"
+msgid ""
+"The delay after which the email must be sent.\n"
+"Applied if a worker queue is activated."
 msgstr ""
 
 msgctxt "help:notification.email,subject:"
