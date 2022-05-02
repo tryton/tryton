@@ -4,12 +4,12 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.image,attribute_set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Insieme di attributi"
 
 msgctxt "field:product.image,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributi"
 
 msgctxt "field:product.image,attributes_name:"
 msgid "Attributes Name"
-msgstr ""
+msgstr "Nomi attributi"
