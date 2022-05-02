@@ -74,6 +74,10 @@ msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
 msgstr "Webbenutzer"
 
+msgctxt "model:ir.action,name:act_user_form_party"
+msgid "Web Users"
+msgstr "Webbenutzer"
+
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"

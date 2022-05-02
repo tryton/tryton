@@ -20,7 +20,7 @@ msgstr "Relatie"
 
 msgctxt "field:web.user,password:"
 msgid "Password"
-msgstr "Paswoord"
+msgstr "Wachtwoord"
 
 msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
@@ -60,7 +60,7 @@ msgstr "IP-netwerk"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
-msgstr "Inlognaam"
+msgstr "Loginnaam"
 
 msgctxt "field:web.user.session,key:"
 msgid "Key"
@@ -74,9 +74,13 @@ msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
 msgstr "Webgebruikers"
 
+msgctxt "model:ir.action,name:act_user_form_party"
+msgid "Web Users"
+msgstr "Webgebruikers"
+
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Reset wachtwoord"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
@@ -92,7 +96,7 @@ msgstr "Webgebruikerssessiesleutel moet uniek zijn."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Reset wachtwoord"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
@@ -112,7 +116,7 @@ msgstr "Webgebruiker -Secundaire Relatie"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
-msgstr "Poging tot authenticatie van webgebruikers"
+msgstr "Inlog poging webgebruikers"
 
 msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
@@ -124,7 +128,7 @@ msgstr "Knop werkt niet? Plak dit in uw browser:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr "Als je dit verzoek niet hebt gedaan, kun je deze e-mail negeren."
+msgstr "Indien u dit verzoek niet hebt gedaan, kunt u deze e-mail negeren."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
@@ -146,12 +150,11 @@ msgstr "E-mailvalidatie"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
-"Als je deze e-mail per ongeluk hebt ontvangen, negeer deze dan gewoon."
+msgstr "Negeer deze email, als u deze per ongeluk hebt ontvangen."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr "Nog maar een stap.."
+msgstr "Nog maar één stap.."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
