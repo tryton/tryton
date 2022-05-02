@@ -24,7 +24,7 @@ msgstr "Corrigeer"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct:"
-msgstr "Kies lijnen om te corrigeren:"
+msgstr "Kies regels om te corrigeren:"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
