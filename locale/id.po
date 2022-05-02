@@ -8,7 +8,7 @@ msgstr "Mata uang"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Pegawai-pegawai"
+msgstr "Para Karyawan"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
@@ -52,7 +52,7 @@ msgstr "Pengawas"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Perusahaan-perusahaan"
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
@@ -74,7 +74,6 @@ msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,company:"
 msgid "Company"
 msgstr "Perusahaan"
@@ -102,21 +101,19 @@ msgstr ""
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Pegawai-pegawai"
+msgstr "Para Karyawan"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:res.user-company.company,user:"
 msgid "User"
 msgstr "Pengguna"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
@@ -128,7 +125,7 @@ msgstr "Mata uang utama untuk perusahaan."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
-msgstr "Tambahkan pegawai ke perusahaan."
+msgstr "Tambahkan karyawan ke perusahaan."
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
@@ -148,15 +145,15 @@ msgstr ""
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr "Saat pegawai meninggalkan perusahaan."
+msgstr "Saat karyawan meninggalkan perusahaan."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr "Pihak yang mewakili pegawai."
+msgstr "Pihak yang mewakili karyawan."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr "Saat pegawai bergabung dengan perusahaan."
+msgstr "Saat karyawan bergabung dengan perusahaan."
 
 msgctxt "help:company.employee,subordinates:"
 msgid "The employees to be overseen by this employee."
@@ -216,7 +213,7 @@ msgstr "Konfigurasi Perusahaan"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -228,7 +225,7 @@ msgstr "Perusahaan-perusahaan"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Pegawai-pegawai"
+msgstr "Para Karyawan"
 
 msgctxt "model:ir.action,name:act_employee_subordinates"
 msgid "Supervised by"
@@ -252,17 +249,18 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Perusahaan"
+msgid "Companies"
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Perusahaan-perusahaan"
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Pegawai-pegawai"
+msgstr "Para Karyawan"
 
 msgctxt "model:res.group,name:group_company_admin"
 msgid "Company Administration"
@@ -279,11 +277,11 @@ msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr "Pengguna - Pegawai"
+msgstr "Pengguna - Karyawan"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr "Salam Hormat,"
+msgstr "Salam hormat,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
@@ -291,20 +289,19 @@ msgstr "Tanggal:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Nyonya dan Tuan Yth,"
+msgstr "Yth. Nyonya dan Tuan"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr "Subject:"
+msgstr "Perihal:"
 
 msgctxt "selection:res.user,company_filter:"
 msgid "All"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,company_filter:"
 msgid "Current"
-msgstr "Mata uang"
+msgstr "Saat ini"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
@@ -312,11 +309,11 @@ msgstr "Anda sekarang dapat menambahkan perusahaan Anda ke dalam sistem."
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Laporan"
+msgstr "Laporan-Laporan"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Tambahkan"
+msgstr "Tambah"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"

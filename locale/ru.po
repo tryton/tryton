@@ -261,7 +261,7 @@ msgstr "Планировщик - Организация"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
+msgid "Companies"
 msgstr "Организация"
 
 #, fuzzy

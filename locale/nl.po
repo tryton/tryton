@@ -12,11 +12,11 @@ msgstr "Werknemers"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Werknemers"
+msgstr "Voettekst"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr "Werknemers"
+msgstr "Koptekst"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
@@ -44,7 +44,7 @@ msgstr "Start Datum"
 
 msgctxt "field:company.employee,subordinates:"
 msgid "Subordinates"
-msgstr "ondergeschikten"
+msgstr "Ondergeschikten"
 
 msgctxt "field:company.employee,supervisor:"
 msgid "Supervisor"
@@ -60,7 +60,7 @@ msgstr "Bedrijf"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Cyclische opdracht"
+msgstr "Planner"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
@@ -120,7 +120,7 @@ msgstr "Gebruiker"
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr "De belangrijkste valuta voor het bedrijf."
+msgstr "De hoofd-valuta voor het bedrijf."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
@@ -132,7 +132,7 @@ msgstr "De tekst die wordt weergegeven op voetteksten van rapporten."
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr "De tekst die moet worden weergegeven op rapporthoofdingen."
+msgstr "De tekst die wordt weergegeven in de rapport aanhef."
 
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
@@ -144,27 +144,27 @@ msgstr "Het bedrijf waartoe de werknemer behoort."
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr "Wanneer de werknemer het bedrijf verlaat."
+msgstr "Wanneer de werknemer uit dienst treedt."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr "De relatie die de werknemer vertegenwoordigt."
+msgstr "De relatie die de werknemer weergeeft."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr "Wanneer een werknemer in dienst treedt."
+msgstr "Wanneer de werknemer in dienst treedt."
 
 msgctxt "help:company.employee,subordinates:"
 msgid "The employees to be overseen by this employee."
-msgstr "De werknemers waarop deze werknemer toezicht houdt."
+msgstr "De werknemers waar deze werknemer leiding aan geeft."
 
 msgctxt "help:company.employee,supervisor:"
 msgid "The employee who oversees this employee."
-msgstr "De werknemer die toezicht houdt op deze werknemer."
+msgstr "De werknemer die leiding geeft aan deze werknemer."
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron."
-msgstr "Bedrijven aangesloten op deze cron opdracht."
+msgstr "Bedrijven aangesloten op deze planner."
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -176,15 +176,15 @@ msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restricts the sequence usage to the company."
-msgstr "Beperk het gebruik van het nummerbereik tot het bedrijf."
+msgstr "Beperkt het gebruik van de reeks tot het bedrijf."
 
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restricts the sequence usage to the company."
-msgstr "Beperk het gebruik van het nummerbereik tot het bedrijf."
+msgstr "Beperkt het gebruik van de reeks tot het bedrijf."
 
 msgctxt "help:res.user,companies:"
 msgid "The companies that the user has access to."
-msgstr "De bedrijven waartoe de gebruiker toegang heeft."
+msgstr "De bedrijven waar de gebruiker toegang tot heeft."
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
@@ -196,13 +196,11 @@ msgstr "Leg vast welke bedrijven worden getoond."
 
 msgctxt "help:res.user,employee:"
 msgid "Select the employee to make the user behave as such."
-msgstr ""
-"Selecteer de medewerker om er voor te zorgen dat de gebruiker zich als "
-"zodanig zal gedragen(Select the employee to make the user behave as such)."
+msgstr "Selecteer de medewerker zodat de gebruiker zich als zodanig gedraagt."
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
-msgstr "Voeg de werknemers toe waartoe de gebruiker toegang heeft."
+msgstr "Voeg de werknemers toe die toegestaan voor de gebruiker."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
@@ -210,7 +208,7 @@ msgstr "Bedrijf"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Bedrijfsconfiguratie"
+msgstr "Bedrijf configuratie"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -230,7 +228,7 @@ msgstr "Werknemers"
 
 msgctxt "model:ir.action,name:act_employee_subordinates"
 msgid "Supervised by"
-msgstr "Onder toezicht van"
+msgstr "Onder leiding van"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
@@ -238,7 +236,7 @@ msgstr "Brief"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Cron - Bedrijf"
+msgstr "Planner - Bedrijf"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"
@@ -249,8 +247,8 @@ msgid "User in companies"
 msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Bedrijf"
+msgid "Companies"
+msgstr "Bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
@@ -262,11 +260,11 @@ msgstr "Werknemers"
 
 msgctxt "model:res.group,name:group_company_admin"
 msgid "Company Administration"
-msgstr "Bedrijfsadministratie"
+msgstr "Bedrijf administratie"
 
 msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
-msgstr "Werknemersadministratie"
+msgstr "Werknemer administratie"
 
 msgctxt "model:res.user-company.company,name:"
 msgid "User - Company"
@@ -298,7 +296,7 @@ msgstr "Alle"
 
 msgctxt "selection:res.user,company_filter:"
 msgid "Current"
-msgstr "Valuta"
+msgstr "Huidig"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
@@ -306,7 +304,7 @@ msgstr "U kunt nu uw bedrijf toevoegen aan het systeem."
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Rapportage"
+msgstr "Rapporten"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
@@ -314,12 +312,12 @@ msgstr "Toevoegen"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuleer"

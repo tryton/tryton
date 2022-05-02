@@ -262,8 +262,8 @@ msgstr "Потребител - Служител"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Фирма"
+msgid "Companies"
+msgstr "Фирми"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"

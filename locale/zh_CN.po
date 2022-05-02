@@ -255,8 +255,9 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
 msgstr "公司中的用户"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
+msgid "Companies"
 msgstr "公司"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"

@@ -258,8 +258,8 @@ msgstr "برنامه وظایف - شرکت"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "شرکت"
+msgid "Companies"
+msgstr "شرکت ها"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"

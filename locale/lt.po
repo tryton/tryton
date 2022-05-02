@@ -252,8 +252,8 @@ msgstr "Organizacijos naudotojas"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Organizacija"
+msgid "Companies"
+msgstr "Organizacijos"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"

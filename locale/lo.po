@@ -260,7 +260,7 @@ msgstr "ຄຣັອນ - ສຳນັກງານ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
+msgid "Companies"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy

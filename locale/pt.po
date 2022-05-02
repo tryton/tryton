@@ -258,8 +258,8 @@ msgstr "Cron - Empresa"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Empresa"
+msgid "Companies"
+msgstr "Empresas"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"

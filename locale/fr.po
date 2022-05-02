@@ -249,8 +249,8 @@ msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Société"
+msgid "Companies"
+msgstr "Sociétés"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"

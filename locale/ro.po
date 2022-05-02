@@ -246,9 +246,10 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Companie"
+msgid "Companies"
+msgstr "Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"

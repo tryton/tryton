@@ -257,7 +257,7 @@ msgstr "Companies"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
+msgid "Companies"
 msgstr "Companies"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"

@@ -262,8 +262,8 @@ msgstr "Razporejevalnik - Družba"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
-msgid "Company"
-msgstr "Družba"
+msgid "Companies"
+msgstr "Družbe"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
