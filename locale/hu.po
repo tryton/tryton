@@ -250,3 +250,7 @@ msgstr "Szükséges"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Raktár idő"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr ""

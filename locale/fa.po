@@ -240,3 +240,7 @@ msgstr "مورد نیاز"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "عمر مفید مصرف"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr ""

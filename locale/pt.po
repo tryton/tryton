@@ -239,3 +239,7 @@ msgstr "Requerido"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Vida Útil"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr ""

@@ -227,3 +227,7 @@ msgstr "Requis"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Limite d'utilisation optimale"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr "Lot"

@@ -231,3 +231,7 @@ msgstr "Vereist"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Houdbaarheid"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr "Partij"

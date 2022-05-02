@@ -229,3 +229,7 @@ msgstr "Erforderlich"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Mindesthaltbarkeit"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr "Charge"

@@ -239,3 +239,7 @@ msgstr "Obvezno"
 msgctxt "view:product.template:"
 msgid "Shelf Life"
 msgstr "Rok trajanja"
+
+msgctxt "view:stock.configuration:"
+msgid "Lot"
+msgstr ""
