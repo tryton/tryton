@@ -22,7 +22,6 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Vettore"
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -45,7 +44,7 @@ msgstr "Aggiungi prezzo al servizio di corriere."
 
 msgctxt "help:carrier,weight_uom:"
 msgid "The unit of weight criteria of the price list."
-msgstr ""
+msgstr "L'unità di peso utilizzata nel listino prezzi."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
 msgid "The carrier that the price list belongs to."

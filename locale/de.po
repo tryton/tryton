@@ -12,11 +12,11 @@ msgstr "Preisliste"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
-msgstr "Gewicht Maßeinheit"
+msgstr "Gewichtseinheit"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr "Nachkommastellen Maßeinheit Gewicht"
+msgstr "Nachkommastellen Gewichtseinheit"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
