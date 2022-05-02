@@ -48,11 +48,11 @@ msgid ""
 "It defines the currency of the price list."
 msgstr ""
 "Koppel de prijslijst aan het bedrijf.\n"
-"Dit definieert de munteenheid van de prijslijst."
+"Dit definieert de valuta van de prijslijst."
 
 msgctxt "help:product.price_list,lines:"
 msgid "Add price formulas for different criterias."
-msgstr "Voeg prijsformules toe voor verschillende criteria."
+msgstr "Voeg prijs formules toe voor verschillende criteria."
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
@@ -68,7 +68,7 @@ msgstr "De eenheid waarin de hoeveelheid wordt uitgedrukt."
 
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
-msgstr "Alleen van toepassing op producten van deze categorie."
+msgstr "Alleen toepassen op producten van deze categorie."
 
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
-msgstr "De prijslijst waartoe de lijn behoort."
+msgstr "De prijslijst waartoe de regel behoort."
 
 msgctxt "help:product.price_list.line,product:"
 msgid "Apply only to this product."
@@ -96,14 +96,14 @@ msgstr "Alleen toepassen wanneer de hoeveelheid groter is."
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Prijslijst"
+msgstr "Prijslijsten"
 
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"Ongeldige formule \"%(formula)s\" in prijslijstlijn \"%(line)s\" met "
+"Ongeldige formule \"%(formula)s\" in prijslijst regel \"%(line)s\" met "
 "uitzondering \"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_price_list_companies"
@@ -112,7 +112,7 @@ msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Prijslijst"
+msgstr "Prijslijsten"
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
