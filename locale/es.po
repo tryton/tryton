@@ -84,7 +84,7 @@ msgstr "Incoterms compra"
 
 msgctxt "field:party.party,sale_incoterms:"
 msgid "Sale Incoterms"
-msgstr "Incoterms venda"
+msgstr "Incoterms venta"
 
 msgctxt "field:purchase.purchase,available_incoterms:"
 msgid "Available Incoterms"
