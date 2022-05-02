@@ -12,7 +12,7 @@ msgstr "Quantità"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "UdM"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
