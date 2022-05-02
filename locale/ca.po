@@ -46,6 +46,10 @@ msgctxt "field:account.move.line.group,debit:"
 msgid "Debit"
 msgstr "Deure"
 
+msgctxt "field:account.move.line.group,delegated_amount:"
+msgid "Delegated Amount"
+msgstr "Import delegat"
+
 msgctxt "field:account.move.line.group,journal:"
 msgid "Journal"
 msgstr "Diari"
@@ -73,6 +77,10 @@ msgstr "Origen de l'assentament"
 msgctxt "field:account.move.line.group,move_state:"
 msgid "Move State"
 msgstr "Estat de l'assentament"
+
+msgctxt "field:account.move.line.group,partially_reconciled:"
+msgid "Partially Reconciled"
+msgstr "Conciliat parcialment"
 
 msgctxt "field:account.move.line.group,party:"
 msgid "Party"
