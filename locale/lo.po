@@ -253,6 +253,11 @@ msgid "Month"
 msgstr "ເດືອນ"
 
 #, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month_label:"
+msgid "Month"
+msgstr "ເດືອນ"
+
+#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "ເລກທີ"
@@ -273,11 +278,6 @@ msgstr "ວອນ ເກົາຫຼີໃຕ້"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,year:"
-msgid "Year"
-msgstr "ປີ"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,amount:"
@@ -322,6 +322,11 @@ msgid "Month"
 msgstr "ເດືອນ"
 
 #, fuzzy
+msgctxt "field:sale.opportunity_monthly,month_label:"
+msgid "Month"
+msgstr "ເດືອນ"
+
+#, fuzzy
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "ເລກທີ"
@@ -341,15 +346,6 @@ msgstr "ວອນ ເກົາຫຼີໃຕ້"
 
 msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,year:"
-msgid "Year"
-msgstr "ປີ"
-
-msgctxt "field:sale.opportunity_monthly,year_month:"
-msgid "Year-Month"
 msgstr ""
 
 msgctxt "help:sale.opportunity,amount:"

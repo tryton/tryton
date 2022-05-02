@@ -215,6 +215,11 @@ msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
 msgstr "ماه"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month_label:"
+msgid "Month"
+msgstr "ماه"
+
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "شماره"
@@ -234,10 +239,6 @@ msgstr "برد"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "مقدار برد"
-
-msgctxt "field:sale.opportunity_employee_monthly,year:"
-msgid "Year"
-msgstr "سال"
 
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
@@ -275,6 +276,11 @@ msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
 msgstr "ماه"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,month_label:"
+msgid "Month"
+msgstr "ماه"
+
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "شماره"
@@ -294,14 +300,6 @@ msgstr "برد"
 msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "مقدار برد"
-
-msgctxt "field:sale.opportunity_monthly,year:"
-msgid "Year"
-msgstr "سال"
-
-msgctxt "field:sale.opportunity_monthly,year_month:"
-msgid "Year-Month"
-msgstr "سال - ماه"
 
 #, fuzzy
 msgctxt "help:sale.opportunity,amount:"

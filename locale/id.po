@@ -49,7 +49,7 @@ msgstr "Deskripsi"
 
 msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
@@ -137,11 +137,11 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
@@ -201,17 +201,22 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
 msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,month:"
+msgid "Month"
+msgstr "Bulan"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month_label:"
 msgid "Month"
 msgstr "Bulan"
 
@@ -234,10 +239,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,year:"
-msgid "Year"
-msgstr "Tahun"
 
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
@@ -265,13 +266,18 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
 msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,month:"
+msgid "Month"
+msgstr "Bulan"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,month_label:"
 msgid "Month"
 msgstr "Bulan"
 
@@ -293,14 +299,6 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,year:"
-msgid "Year"
-msgstr "Tahun"
-
-msgctxt "field:sale.opportunity_monthly,year_month:"
-msgid "Year-Month"
 msgstr ""
 
 msgctxt "help:sale.opportunity,amount:"

@@ -215,6 +215,11 @@ msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
 msgstr "Mesec"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month_label:"
+msgid "Month"
+msgstr "Mesec"
+
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Številka"
@@ -234,10 +239,6 @@ msgstr "Dobljeno"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "Dobljeni znesek"
-
-msgctxt "field:sale.opportunity_employee_monthly,year:"
-msgid "Year"
-msgstr "Leto"
 
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
@@ -275,6 +276,11 @@ msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
 msgstr "Mesec"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,month_label:"
+msgid "Month"
+msgstr "Mesec"
+
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Številka"
@@ -294,14 +300,6 @@ msgstr "Dobljeno"
 msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "Dobljeni znesek"
-
-msgctxt "field:sale.opportunity_monthly,year:"
-msgid "Year"
-msgstr "Leto"
-
-msgctxt "field:sale.opportunity_monthly,year_month:"
-msgid "Year-Month"
-msgstr "Leto-Mesec"
 
 #, fuzzy
 msgctxt "help:sale.opportunity,amount:"

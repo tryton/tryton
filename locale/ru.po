@@ -221,6 +221,11 @@ msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
 msgstr "Месяц"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month_label:"
+msgid "Month"
+msgstr "Месяц"
+
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Номер"
@@ -241,10 +246,6 @@ msgstr "Вона"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,year:"
-msgid "Year"
-msgstr "Год"
 
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
@@ -282,6 +283,11 @@ msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
 msgstr "Месяц"
 
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,month_label:"
+msgid "Month"
+msgstr "Месяц"
+
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Номер"
@@ -302,14 +308,6 @@ msgstr "Вона"
 msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,year:"
-msgid "Year"
-msgstr "Год"
-
-msgctxt "field:sale.opportunity_monthly,year_month:"
-msgid "Year-Month"
-msgstr "Год-Месяц"
 
 #, fuzzy
 msgctxt "help:sale.opportunity,amount:"
