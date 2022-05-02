@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.address,vsf_telephone:"
 msgid "Telephone"
-msgstr ""
+msgstr "Telepon"
 
 msgctxt "field:product.product,vsf_sku:"
 msgid "SKU"
@@ -52,11 +52,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_tax"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "model:ir.message,text:msg_unknown_country_code"
 msgid "The country code \"%(code)s\" is not known."
-msgstr ""
+msgstr "Kode negara \"%(code)s\" tidak diketahui."
 
 msgctxt "model:ir.message,text:msg_vsf_identifier"
 msgid "Vue Storefront Identifier"
