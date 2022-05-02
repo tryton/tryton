@@ -24,7 +24,7 @@ msgstr "Herkunft"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
-msgstr "Wurzelkonto Kostenstelle"
+msgstr "Kostenstellenstamm"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -76,7 +76,7 @@ msgstr "Übergeordnet (Kostenstelle)"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
-msgstr "Wurzel"
+msgstr "Kostenstellenstamm"
 
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
@@ -88,7 +88,7 @@ msgstr "Typ"
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Kostenstelle"
 
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
@@ -100,11 +100,11 @@ msgstr "Anteil"
 
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
-msgstr "Wurzel"
+msgstr "Kostenstellenstamm"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Kostenstelle"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
@@ -148,7 +148,7 @@ msgstr "Kostenstellen"
 
 msgctxt "field:analytic_account.rule,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Kostenstellen"
+msgstr "Kostenstellengröße"
 
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
@@ -184,7 +184,7 @@ msgstr "Kostenstelle Zeile"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Kontenplan öffnen"
+msgstr "Kostenstellenplan öffnen"
 
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
@@ -192,11 +192,11 @@ msgstr "Kostenstelle Regel"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Kostenstellen"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Kostenstellen"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
@@ -212,7 +212,7 @@ msgstr "Kostenpositionen zu vervollständigen"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Konto eröffnen"
+msgstr "Kostenstelle öffnen"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
@@ -227,12 +227,13 @@ msgid ""
 "To save account \"%(account)s\" the sum of their distributions must be "
 "100%%."
 msgstr ""
-"Um Konto \"%(account)s\" speichern zu können, muss die Summe aller "
+"Um Kostenstelle \"%(account)s\" speichern zu können, muss die Summe aller "
 "Verteilungen 100%% ergeben."
 
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
-msgstr "Es ist nur ein Konto per Kostenstelle und Ursprung möglich."
+msgstr ""
+"Es ist nur eine Kostenstelle pro Kostenstellenstamm und Ursprung möglich."
 
 msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
 msgid "Apply Analytic Rules"
@@ -256,11 +257,11 @@ msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Kostenstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Kostenstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"

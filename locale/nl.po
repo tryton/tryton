@@ -192,11 +192,11 @@ msgstr "Analytische regel"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
@@ -256,11 +256,11 @@ msgstr "Gebruiker in bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
@@ -324,7 +324,7 @@ msgstr "analytisch"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Krediet"
+msgstr "Credit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
