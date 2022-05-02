@@ -138,10 +138,6 @@ msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Rechnung"
-
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Buchungssatz"
@@ -157,6 +153,10 @@ msgstr "Herkunft"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Partei"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr "Zugeordnet zu"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -253,6 +253,10 @@ msgstr "Kontoauszug ID"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Kontoauszugsstatus"
+
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Kontoauszug"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

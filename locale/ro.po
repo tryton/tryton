@@ -138,10 +138,6 @@ msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Descriere"
 
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Factura fiscala"
-
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr ""
@@ -157,6 +153,10 @@ msgstr "Origine"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Parte"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr ""
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -253,6 +253,11 @@ msgstr ""
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Extras de cont"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

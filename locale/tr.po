@@ -142,10 +142,6 @@ msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr ""
-
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr ""
@@ -164,6 +160,10 @@ msgstr "Origins"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Parti"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.statement.line,statement:"
@@ -270,6 +270,11 @@ msgstr "Açıklama"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Açıklama"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

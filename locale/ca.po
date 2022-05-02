@@ -64,7 +64,7 @@ msgstr "Per conciliar"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
-msgstr "Import"
+msgstr "Import total"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
@@ -138,10 +138,6 @@ msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Descripció"
 
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Factura"
-
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Assentament comptable"
@@ -157,6 +153,10 @@ msgstr "Origen"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Tercer"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr "Relacionat amb"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -253,6 +253,10 @@ msgstr "ID del Extracte"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Estat de l'extracte"
+
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Extracte"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

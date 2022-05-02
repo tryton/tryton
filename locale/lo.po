@@ -150,11 +150,6 @@ msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
 #, fuzzy
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "ໃບເກັບເງິນພາສີທີ່ດິນ"
-
-#, fuzzy
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
@@ -173,6 +168,10 @@ msgstr "Origins"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.statement.line,statement:"
@@ -289,6 +288,11 @@ msgstr "Statement"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Statement"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

@@ -89,7 +89,7 @@ msgstr "Akun"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
-msgstr "Akun Bank"
+msgstr "Rekening Bank"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -101,7 +101,7 @@ msgstr "Pihak Perusahaan"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -127,10 +127,9 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -139,10 +138,6 @@ msgstr "Tanggal"
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Deskripsi"
-
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Faktur"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
@@ -160,6 +155,10 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Pihak"
 
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr ""
+
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Pernyataan"
@@ -174,7 +173,7 @@ msgstr "Jumlah"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
@@ -212,10 +211,9 @@ msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -256,6 +254,11 @@ msgstr ""
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Pernyataan"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"

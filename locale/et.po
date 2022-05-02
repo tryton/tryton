@@ -140,10 +140,6 @@ msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Kirjeldus"
 
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Arve"
-
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Konto kanne"
@@ -159,6 +155,10 @@ msgstr "Päritolu"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Osapool"
+
+msgctxt "field:account.statement.line,related_to:"
+msgid "Related To"
+msgstr ""
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -256,6 +256,11 @@ msgstr "Aruande ID"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Aruande staatus"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_statement"
+msgid "Statement"
+msgstr "Aruanne"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
