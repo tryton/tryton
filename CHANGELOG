@@ -1,3 +1,5 @@
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
 * Prevent to select reconciled payment or group on draft statement line
 * Reconcile payment clearing line with all statement lines
 * Use reference field for statement line relation
