@@ -20,7 +20,7 @@ msgstr "Tanggal"
 
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"

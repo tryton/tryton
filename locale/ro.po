@@ -28,24 +28,24 @@ msgstr "Cost"
 
 msgctxt "help:company.employee,cost_price:"
 msgid "Hourly cost price for this Employee."
-msgstr ""
+msgstr "Costul orar pentru acest Angajat."
 
 msgctxt "help:company.employee,cost_prices:"
 msgid "List of hourly cost price over time."
-msgstr ""
+msgstr "Lista de cost pe ora în timp."
 
 msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price."
-msgstr ""
+msgstr "Preț de cost orar."
 
 msgctxt "model:company.employee_cost_price,name:"
 msgid "Employee Cost Price"
-msgstr ""
+msgstr "Preţ de cost Angajat"
 
 msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"
 msgid "An employee can only have one cost price by date."
-msgstr ""
+msgstr "Un angajat poate avea numai un sigur cost pe data."
 
 msgctxt "view:company.employee:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
