@@ -12,4 +12,4 @@ msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
