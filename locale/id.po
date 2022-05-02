@@ -63,7 +63,7 @@ msgstr "Jurnal"
 
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
-msgstr ""
+msgstr "Jurnal-Jurnal"
 
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
@@ -84,7 +84,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -125,11 +125,16 @@ msgstr "Pihak"
 
 msgctxt "field:account.payment,process_method:"
 msgid "Process Method"
-msgstr "Metode proses"
+msgstr "Metode Proses"
 
 msgctxt "field:account.payment,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
+
+#, fuzzy
+msgctxt "field:account.payment,submitted_by:"
+msgid "Submitted by"
+msgstr "Disunting oleh"
 
 #, fuzzy
 msgctxt "field:account.payment,succeeded_by:"
@@ -190,7 +195,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
@@ -230,25 +235,21 @@ msgctxt "field:party.party.reception_direct_debit,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,journal:"
 msgid "Journal"
 msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,party:"
 msgid "Party"
 msgstr "Pihak"
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,process_method:"
 msgid "Process Method"
-msgstr "Metode proses"
+msgstr "Metode Proses"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
@@ -339,13 +340,18 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr "Pembayaran"
+msgstr "Pembayaran-Pembayaran"
 
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr "Pembayaran"
+msgstr "Pembayaran-Pembayaran"
 
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Pembayaran-Pembayaran"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
 msgstr "Pembayaran"
 
@@ -354,10 +360,9 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Groups"
 msgstr "Kelompok"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Journals"
-msgstr "Jurnal"
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -382,11 +387,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
-msgid "Approved"
-msgstr "Disetujui"
-
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
 msgstr "Rancangan"
@@ -406,11 +406,25 @@ msgctxt ""
 msgid "Succeeded"
 msgstr ""
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+msgid "To Approve"
+msgstr "Setuju"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+msgid "To Process"
+msgstr "Proses"
+
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
 "company \"%(company)s\"."
 msgstr ""
+"Anda tidak dapat manghapus pihak \"%(party)s\" selagi ada pembayaran yang "
+"tertunda dengan perusahaan \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
@@ -458,6 +472,15 @@ msgstr "Gagal"
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
 msgstr "Berhasil"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_proceed_button"
+msgid "Processing"
+msgstr "Proses"
+
+msgctxt "model:ir.model.button,string:payment_submit_button"
+msgid "Submit"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
@@ -514,14 +537,13 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Groups"
 msgstr "Kelompok"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Journals"
-msgstr "Jurnal"
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr "Pembayaran"
+msgstr "Pembayaran-Pembayaran"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
@@ -569,6 +591,10 @@ msgstr "Gagal"
 
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment,state:"
+msgid "Submitted"
 msgstr ""
 
 msgctxt "selection:account.payment,state:"

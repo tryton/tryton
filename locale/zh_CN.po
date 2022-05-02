@@ -138,6 +138,10 @@ msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "状态"
 
+msgctxt "field:account.payment,submitted_by:"
+msgid "Submitted by"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
@@ -363,6 +367,11 @@ msgid "Payments"
 msgstr "Payments"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_relate_party"
+msgid "Payments"
+msgstr "Payments"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Groups"
 msgstr "用户组"
@@ -395,12 +404,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
-msgid "Approved"
-msgstr "Approved"
-
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
@@ -420,6 +423,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
 msgstr "Succeeded"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+msgid "To Approve"
+msgstr "Approve"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+msgid "To Process"
+msgstr "Processing"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
@@ -473,6 +488,15 @@ msgstr "Fail"
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_proceed_button"
+msgid "Processing"
+msgstr "Processing"
+
+msgctxt "model:ir.model.button,string:payment_submit_button"
+msgid "Submit"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
@@ -588,6 +612,10 @@ msgstr "Failed"
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
 msgstr "Processing"
+
+msgctxt "selection:account.payment,state:"
+msgid "Submitted"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:account.payment,state:"

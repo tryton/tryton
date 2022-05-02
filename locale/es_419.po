@@ -128,6 +128,10 @@ msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr ""
 
+msgctxt "field:account.payment,submitted_by:"
+msgid "Submitted by"
+msgstr ""
+
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
 msgstr ""
@@ -342,6 +346,11 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_relate_party"
+msgid "Payments"
+msgstr "Libro diario de pago"
+
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Groups"
 msgstr ""
@@ -375,11 +384,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
-msgid "Approved"
-msgstr ""
-
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
 msgstr ""
@@ -397,6 +401,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+msgid "To Approve"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+msgid "To Process"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
@@ -452,6 +466,14 @@ msgstr "Fallo"
 
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:payment_proceed_button"
+msgid "Processing"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:payment_submit_button"
+msgid "Submit"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
@@ -558,6 +580,10 @@ msgstr ""
 
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment,state:"
+msgid "Submitted"
 msgstr ""
 
 msgctxt "selection:account.payment,state:"

@@ -127,6 +127,10 @@ msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Estat"
 
+msgctxt "field:account.payment,submitted_by:"
+msgid "Submitted by"
+msgstr "Enviat per"
+
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
 msgstr "Èxit marcat per"
@@ -246,7 +250,7 @@ msgstr "Marca si la línia es paga a través de domiciliació bancària."
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
-"Crear domiciliació bancària per a les línies pendents fins aquesta data."
+"Crea domiciliacions bancàries per a les línies pendents fins aquesta data."
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
@@ -290,7 +294,7 @@ msgstr "Configuració de la seqüencia de grups de pagament"
 
 msgctxt "model:account.move.line.create_direct_debit.start,name:"
 msgid "Create Direct Debit"
-msgstr "Crear domiciliació bancària"
+msgstr "Crear domiciliacions bancàries"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
@@ -336,6 +340,10 @@ msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
 msgstr "Pagaments"
 
+msgctxt "model:ir.action,name:act_payment_form_relate_party"
+msgid "Payments"
+msgstr "Pagaments"
+
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Groups"
 msgstr "Grups"
@@ -350,7 +358,7 @@ msgstr "Processa pagaments"
 
 msgctxt "model:ir.action,name:wizard_create_direct_debit"
 msgid "Create Direct Debit"
-msgstr "Crear domiciliació bancària"
+msgstr "Crea domiciliacions bancàries"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
@@ -365,11 +373,6 @@ msgstr "A cobrar"
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
 msgstr "Tot"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
-msgid "Approved"
-msgstr "Aprovat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
@@ -389,6 +392,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
 msgstr "Amb èxit"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+msgid "To Approve"
+msgstr "A aprovar"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+msgid "To Process"
+msgstr "A processar"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
@@ -448,6 +461,14 @@ msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
 msgstr "Amb èxit"
 
+msgctxt "model:ir.model.button,string:payment_proceed_button"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "model:ir.model.button,string:payment_submit_button"
+msgid "Submit"
+msgstr "Envia"
+
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Amb èxit"
@@ -479,7 +500,7 @@ msgstr "Grup de pagaments"
 
 msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
 msgid "Create Direct Debit"
-msgstr "Crear domiciliació bancària"
+msgstr "Crea domiciliacions bancàries"
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
@@ -554,6 +575,10 @@ msgid "Processing"
 msgstr "En procés"
 
 msgctxt "selection:account.payment,state:"
+msgid "Submitted"
+msgstr "Enviat"
+
+msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
 msgstr "Amb èxit"
 
@@ -579,7 +604,7 @@ msgstr "Pagament"
 
 msgctxt "view:account.move.line.create_direct_debit.start:"
 msgid "Create Direct Debit for date"
-msgstr "Crear domiciliació bancària per data"
+msgstr "Crea domiciliacions bancàries fins la data"
 
 msgctxt "view:account.payment.group:"
 msgid "Complete"

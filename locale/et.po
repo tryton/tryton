@@ -132,6 +132,10 @@ msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Olek"
 
+msgctxt "field:account.payment,submitted_by:"
+msgid "Submitted by"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.payment,succeeded_by:"
 msgid "Success Noted by"
@@ -354,6 +358,11 @@ msgid "Payments"
 msgstr "Tasumised"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_payment_form_relate_party"
+msgid "Payments"
+msgstr "Tasumised"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Groups"
 msgstr "Grupp"
@@ -386,11 +395,6 @@ msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
 msgstr "Kõik"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
-msgid "Approved"
-msgstr "Kinnitatud"
-
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
 msgstr "Mustand"
@@ -409,6 +413,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
 msgstr "Õnnestunud"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_approve"
+msgid "To Approve"
+msgstr "Kinnita"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_to_process"
+msgid "To Process"
+msgstr "Protsessi"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
@@ -464,6 +480,15 @@ msgstr "Ebaõnnestunud"
 msgctxt "model:ir.model.button,string:payment_group_succeed_button"
 msgid "Succeed"
 msgstr "Õnnestunud"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:payment_proceed_button"
+msgid "Processing"
+msgstr "Protsessimine"
+
+msgctxt "model:ir.model.button,string:payment_submit_button"
+msgid "Submit"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
@@ -577,6 +602,10 @@ msgstr "Ebaõnnestunud"
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
 msgstr "Protsessimises"
+
+msgctxt "selection:account.payment,state:"
+msgid "Submitted"
+msgstr ""
 
 msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
