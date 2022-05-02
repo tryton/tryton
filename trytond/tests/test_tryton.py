@@ -927,6 +927,9 @@ def create_db(name=DB_NAME, lang='en'):
                     })
             Module = pool.get('ir.module')
             Module.update_list()
+    else:
+        pool = Pool(name)
+        pool.init()
 
 
 class ExtensionTestCase(unittest.TestCase):
