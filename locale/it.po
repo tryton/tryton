@@ -58,7 +58,7 @@ msgstr ""
 
 msgctxt "field:sale.gift_card,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:sale.gift_card,number:"
 msgid "Number"
