@@ -60,7 +60,7 @@ msgstr "Período"
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicio"
+msgstr "Fecha inicial"
 
 msgctxt "field:account.reporting.vat_book_es,base_amount:"
 msgid "Base Amount"

@@ -74,7 +74,7 @@ msgstr "Mata uang"
 
 msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
 #, fuzzy
 msgctxt "field:account.reporting.vat_book_es,invoice_date:"
