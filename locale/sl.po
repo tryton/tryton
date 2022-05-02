@@ -217,8 +217,8 @@ msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project"
-msgstr "Project"
+msgid "Projects"
+msgstr "Projects"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"

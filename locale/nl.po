@@ -207,8 +207,8 @@ msgid "Configuration"
 msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project"
-msgstr "Project"
+msgid "Projects"
+msgstr "Projecten"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -220,7 +220,7 @@ msgstr "projecten"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapporten"
+msgstr "Rapportage"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"

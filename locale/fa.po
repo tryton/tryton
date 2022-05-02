@@ -215,9 +215,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "پیکربندی"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project"
-msgstr "پروژه"
+msgid "Projects"
+msgstr "پروژه ها"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
