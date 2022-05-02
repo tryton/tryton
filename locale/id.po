@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.line,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "field:analytic_account.budget.line,right:"
 msgid "Right"
@@ -200,24 +200,24 @@ msgstr ""
 
 msgctxt "view:analytic_account.budget.copy.start:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:analytic_account.budget.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:analytic_account.budget.line:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "view:analytic_account.budget.line:"
 msgid "Name:"
-msgstr ""
+msgstr "Nama:"
 
 msgctxt "wizard_button:analytic_account.budget.copy,start,copy:"
 msgid "Copy"
-msgstr ""
+msgstr "Salin"
 
 msgctxt "wizard_button:analytic_account.budget.copy,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"

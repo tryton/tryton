@@ -169,7 +169,7 @@ msgstr "Analytisch budget"
 
 msgctxt "model:ir.action,name:act_budget_line_form"
 msgid "Budget Lines"
-msgstr "Budgetlijn"
+msgstr "Begroting regels"
 
 msgctxt "model:ir.action,name:act_budget_report"
 msgid "Analytic Budgets"
@@ -177,7 +177,7 @@ msgstr "Analytische budgetten"
 
 msgctxt "model:ir.action,name:wizard_budget_copy"
 msgid "Copy Budget"
-msgstr "Budget kopiëren"
+msgstr "Kopieer begroting"
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
 msgid "Copy"

@@ -28,7 +28,7 @@ msgstr "Líneas"
 
 msgctxt "field:analytic_account.budget,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicio"
+msgstr "Fecha inicial"
 
 msgctxt "field:analytic_account.budget.context,budget:"
 msgid "Budget"
