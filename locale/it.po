@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.location,consignment_party:"
 msgid "Consignment Party"
-msgstr ""
+msgstr "Controparte Spedizione"
 
 msgctxt "help:stock.location,consignment_party:"
 msgid "The party invoiced when consignment stock is used."
