@@ -53,7 +53,7 @@ msgstr "Stato"
 
 msgctxt "field:purchase.request.quotation,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Fornitore"
 
 msgctxt "field:purchase.request.quotation,supplier_address:"
 msgid "Supplier Address"
@@ -107,7 +107,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Fornitore"
 
 msgctxt "field:purchase.request.quotation.line,supply_date:"
 msgid "Supply Date"
