@@ -30,9 +30,13 @@ msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
 msgstr ""
 
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr ""
+
 msgctxt "field:sale.point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:sale.point,customer_location:"
 msgid "To Location"
@@ -40,11 +44,11 @@ msgstr ""
 
 msgctxt "field:sale.point,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:sale.point,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:sale.point,return_location:"
 msgid "Return Location"
@@ -52,11 +56,11 @@ msgstr ""
 
 msgctxt "field:sale.point,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Urutan"
 
 msgctxt "field:sale.point,storage_location:"
 msgid "Storage Location"
-msgstr ""
+msgstr "Lokasi Penyimpanan"
 
 msgctxt "field:sale.point,tax_included:"
 msgid "Tax Included"
@@ -64,11 +68,11 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.session,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "field:sale.point.cash.session,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.point.cash.session,end_amount:"
 msgid "End Amount"
@@ -96,7 +100,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.session,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.point.cash.session,transfers:"
 msgid "Transfers"
@@ -120,11 +124,11 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.point.cash.transfer,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "field:sale.point.cash.transfer,move:"
 msgid "Move"
@@ -140,7 +144,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.point.cash.transfer,type:"
 msgid "Type"
@@ -152,7 +156,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer.type,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:sale.point.cash.transfer.type,journal:"
 msgid "Journal"
@@ -172,15 +176,15 @@ msgstr ""
 
 msgctxt "field:sale.point.payment,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:sale.point.payment,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.point.payment,method:"
 msgid "Method"
-msgstr ""
+msgstr "Metode"
 
 msgctxt "field:sale.point.payment,point:"
 msgid "Point"
@@ -208,11 +212,11 @@ msgstr ""
 
 msgctxt "field:sale.point.payment.method,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:sale.point.payment.method,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:sale.point.sale,amount_paid:"
 msgid "Paid"
@@ -224,19 +228,19 @@ msgstr ""
 
 msgctxt "field:sale.point.sale,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:sale.point.sale,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:sale.point.sale,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "field:sale.point.sale,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Karyawan"
 
 msgctxt "field:sale.point.sale,lines:"
 msgid "Lines"

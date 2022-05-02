@@ -4,39 +4,43 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.gross_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:product.gross_price,gross_price:"
 msgid "Gross Price"
-msgstr ""
+msgstr "Prezzo Lordo"
 
 msgctxt "field:product.gross_price,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
 msgctxt "field:product.product,gross_price:"
 msgid "Gross Price"
-msgstr ""
+msgstr "Prezzo Lordo"
 
 msgctxt "field:product.product,gross_prices:"
 msgid "Gross Prices"
-msgstr ""
+msgstr "Prezzi Lordi"
 
 msgctxt "field:product.template,gross_price:"
 msgid "Gross Price"
-msgstr ""
+msgstr "Prezzo Lordo"
 
 msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
+msgstr "Prezzi Lordi"
+
+msgctxt "field:sale.point,address:"
+msgid "Address"
 msgstr ""
 
 msgctxt "field:sale.point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:sale.point,customer_location:"
 msgid "To Location"
-msgstr ""
+msgstr "A Locazione"
 
 msgctxt "field:sale.point,journal:"
 msgid "Journal"
@@ -124,7 +128,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:sale.point.cash.transfer,move:"
 msgid "Move"

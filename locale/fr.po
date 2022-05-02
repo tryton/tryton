@@ -30,6 +30,10 @@ msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
 msgstr "Prix bruts"
 
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr "Adresse"
+
 msgctxt "field:sale.point,company:"
 msgid "Company"
 msgstr "Société"

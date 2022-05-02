@@ -30,6 +30,10 @@ msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
 msgstr "Precios brutos"
 
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr "Dirección"
+
 msgctxt "field:sale.point,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -474,11 +478,11 @@ msgstr "¿Seguro que quieres contabilizar las sesiones?"
 
 msgctxt "model:ir.model.button,confirm:cash_transfer_post_button"
 msgid "Are you sure you want to post the transfer?"
-msgstr "¿Seguro que quieres publicar la transferencia?"
+msgstr "¿Seguro que quieres contabilizar la transferencia?"
 
 msgctxt "model:ir.model.button,confirm:sale_post_button"
 msgid "Are you sure you want to post the sales?"
-msgstr "¿Seguro que quieres publicar las ventas?"
+msgstr "¿Seguro que quieres contabilizar las ventas?"
 
 msgctxt "model:ir.model.button,string:cash_session_close_button"
 msgid "Close"

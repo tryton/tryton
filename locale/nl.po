@@ -30,6 +30,10 @@ msgctxt "field:product.template,gross_prices:"
 msgid "Gross Prices"
 msgstr "Bruto prijs"
 
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr "Adres"
+
 msgctxt "field:sale.point,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -388,7 +392,7 @@ msgstr "Geopend"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_done"
 msgid "Done"
@@ -499,7 +503,7 @@ msgstr "Boek"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Annuleer"
+msgstr "Annuleren"
 
 msgctxt "model:ir.model.button,string:sale_open_button"
 msgid "Re-Open"
@@ -515,7 +519,7 @@ msgstr "Boek"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
-msgstr "Uitvoeren"
+msgstr "Verwerken"
 
 msgctxt "model:ir.rule.group,name:rule_group_cash_session_companies"
 msgid "User in companies"
