@@ -136,8 +136,8 @@ msgstr "Utilize as contas definidas na categoria pai."
 
 #, fuzzy
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Marque para converter em categoria de conta."
+msgid "Check to indicate the category is used for accounting."
+msgstr "Marque para usar as taxas definidas na categoria da conta."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

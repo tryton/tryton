@@ -134,8 +134,8 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Kasuta kontosid mis on defineeritud ülema taseme kategoorias"
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Märgista et konverteerida raamatupidamise kategooriasse"
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

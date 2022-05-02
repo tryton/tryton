@@ -4,29 +4,29 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr "Standaard rekening journaal (Default Account Journal)"
+msgstr "Standaard grootboekrekening kosten"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Standaard omzet rekening"
+msgstr "Standaard grootboekrekening omzet"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr "Standaard kosten rekening"
+msgstr "Standaard grootboekrekening kosten"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Standaard omzet rekening"
+msgstr "Standaard grootboekrekening omzet"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr "Standaard onkostenrekening"
+msgstr "Standaard grootboekrekening kosten"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr "Standaard omzet rekening"
+msgstr "Standaard grootboekrekening omzet"
 
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
@@ -38,15 +38,15 @@ msgstr "Product categorie"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr "Kostenrekening"
+msgstr "Grootboekrekening kosten"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr "Gebruik de bovenliggende rekeningen (parents)"
+msgstr "Gebruik de grootboekrekeningen van het bovenliggende niveau"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr "Opbrengstrekening"
+msgstr "Grootboekrekening omzet"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
@@ -54,7 +54,7 @@ msgstr "Boekhouden"
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
@@ -62,23 +62,23 @@ msgstr "Belasting klanten"
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Belasting klanten gebruikt"
+msgstr "Gebruikte belasting klanten"
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr "Belastingen inkoop"
+msgstr "Leverancier belastingen"
 
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
-msgstr "Aftrekbaar tarief voor leveranciersbelastingen"
+msgstr "Aftrekbaar tarief voor leverancier belastingen"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Leveranciersbelastingen gebruikt"
+msgstr "Leverancier belastingen gebruikt"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr "Gebruik belastingen van het bovenliggend niveau (parents)"
+msgstr "Gebruik de belastingen van het bovenliggende niveau"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
@@ -98,11 +98,11 @@ msgstr "Belasting"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
-msgstr "Kostenrekening"
+msgstr "Grootboekrekening kosten"
 
 msgctxt "field:product.category.account,account_revenue:"
 msgid "Account Revenue"
-msgstr "Opbrengstrekening"
+msgstr "Grootboekrekening omzet"
 
 msgctxt "field:product.category.account,category:"
 msgid "Category"
@@ -114,11 +114,11 @@ msgstr "Bedrijf"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr "Rekening categorie"
+msgstr "Grootboekrekening categorie"
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr "Rekening categorie"
+msgstr "Grootboekrekening categorie"
 
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
@@ -126,16 +126,17 @@ msgstr "Categorie"
 
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Template"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr ""
-"Gebruik de rekeningen die zijn gedefinieerd in de bovenliggende categorie."
+"Gebruik de grootboekrekeningen die gedefinieerd zijn op het bovenliggende "
+"niveau."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Vink aan om te zetten in een boekhoudkundige categorie."
+msgid "Check to indicate the category is used for accounting."
+msgstr "Vink aan om de categorie beschikbaar te maken voor de boekhouding."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
@@ -152,7 +153,7 @@ msgstr ""
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr ""
-"Gebruik de belastingen die zijn gedefinieerd in de bovenliggende categorie."
+"Gebruik de belastingen die zijn gedefinieerd op het bovenliggende niveau."
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
@@ -160,15 +161,17 @@ msgstr "Er is geen \"%(field)s\" gedefinieerd voor \"%(name)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr "Er is geen rekeningcategorie gedefinieerd op product \"%(name)s\"."
+msgstr ""
+"Er is geen grootboekrekening categorie gedefinieerd voor product "
+"\"%(name)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr "om het even welke categorie"
+msgstr "Elke categorie"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr "Geen boekhoudcategorie"
+msgstr "Geen boekhoudkundige categorie"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -180,15 +183,15 @@ msgstr "Categorie - belasting leverancier"
 
 msgctxt "model:product.category.account,name:"
 msgid "Category Account"
-msgstr "Categorie rekening"
+msgstr "Categorie grootboekrekening"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr "Sjabloon - Accountcategorie"
+msgstr "Template - boekhoudkundige categorie"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr "Account Productbeheer"
+msgstr "Product financiën administratie"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
@@ -204,7 +207,7 @@ msgstr "Boekhouden"
 
 msgctxt "view:product.category:"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr "Grootboekrekeningen"
 
 msgctxt "view:product.category:"
 msgid "Taxes"

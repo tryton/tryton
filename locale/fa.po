@@ -134,9 +134,11 @@ msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr "استفاده از حساب های تعریف شده دردسته بندی مرجع."
 
+#, fuzzy
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "برای تبدیل به طبقه بندی حسابداری کادر را تیک بزنید."
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
+"برای استفاده مالیات های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

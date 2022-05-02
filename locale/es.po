@@ -133,8 +133,8 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Usar las cuentas definidas en la categoría padre."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Marcar para convertir en una categoría contable."
+msgid "Check to indicate the category is used for accounting."
+msgstr "Marcar para indicar que la categoría es utilizada para contabilidad."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
@@ -184,7 +184,7 @@ msgstr "Plantilla - Categoría Contable"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr "Administración de contable de productos"
+msgstr "Administración contable de productos"
 
 msgctxt "view:account.configuration:"
 msgid "Product"

@@ -142,7 +142,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Использовать счета указанные для родительской категории"
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
+msgid "Check to indicate the category is used for accounting."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"

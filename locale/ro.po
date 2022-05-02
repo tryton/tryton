@@ -133,8 +133,8 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Utilizare conturi definite la categoria părintelui."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Bifaţi pentru a converti în categorie de contabilitate."
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

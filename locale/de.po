@@ -133,8 +133,9 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Konten der übergeordneten Kategorie anwenden."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Aktivieren um in eine Buchunghaltungskategorie zu wandeln."
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
+"Aktivieren um Verwendung der Kategorie für die Buchhaltung zu ermöglichen."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

@@ -138,8 +138,8 @@ msgstr "Uporabi konte, določene v matični kategoriji"
 
 #, fuzzy
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Označite v primeru pretvorbe v računovodsko kategorijo."
+msgid "Check to indicate the category is used for accounting."
+msgstr "Označite, če uporabljate davke iz računovodske kategorije."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

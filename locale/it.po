@@ -134,8 +134,9 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Usare i conti definiti nella categoria padre."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accounting category."
-msgstr "Spunta per convertire in una categoria contabile."
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
+"Spunta per indicare che la categoria viene utilizzata per la contabilità."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
@@ -186,7 +187,7 @@ msgstr "Modello - Categoria del conto"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr ""
+msgstr "Amministrazione Conto Prodotto"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
