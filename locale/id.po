@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Aset tetap"
+msgstr "Aset Tetap"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Aset tetap"
+msgstr "Aset Tetap"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -24,7 +24,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:account.asset,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
@@ -169,12 +169,11 @@ msgstr "Aktiva"
 
 msgctxt "field:account.asset.revision,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:account.asset.revision,description:"
 msgid "Description"
-msgstr "Penyusutan"
+msgstr "Deskripsi"
 
 #, fuzzy
 msgctxt "field:account.asset.revision,end_date:"
@@ -399,7 +398,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Aktiva"
+msgstr "Aset-Aset"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
@@ -509,11 +508,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Aktiva"
+msgstr "Aset-Aset"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Aktiva"
+msgstr "Aset-Aset"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
@@ -557,7 +556,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Aktiva"
+msgstr "Aset-Aset"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"

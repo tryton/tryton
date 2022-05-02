@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Immobilizzazione"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -136,10 +136,9 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Immobilizzazione"
 
-#, fuzzy
 msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
-msgstr "Posizioni valuta"
+msgstr "Valuta"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -473,10 +472,9 @@ msgid ""
 "still have lines without move."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
-msgstr "Un immobilizzazione si può usare solo una volta in riga fattura!"
+msgstr "Il Cespite può essere usato solo una volta nella riga fattura."
 
 msgctxt "model:ir.message,text:msg_no_assets"
 msgid "There is no started asset."
