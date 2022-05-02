@@ -34,7 +34,6 @@ msgctxt "help:production.routing,supplier:"
 msgid "The supplier to outsource the production."
 msgstr "Il fornitore dove esternalizzare la produzione."
 
-#, fuzzy
 msgctxt "help:production.routing,supplier_quantity:"
 msgid "The quantity to buy to produce one time the BOM."
 msgstr "La quantità da acquistare per produrre una volta la distinta base."
