@@ -154,7 +154,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Sluiten"
+msgstr "Afsluiten"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"

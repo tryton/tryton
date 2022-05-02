@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:attendance.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:attendance.line,date:"
 msgid "Date"
@@ -16,7 +16,7 @@ msgstr "Tanggal"
 
 msgctxt "field:attendance.line,employee:"
 msgid "Employee"
-msgstr "Pegawai"
+msgstr "Karyawan"
 
 msgctxt "field:attendance.line,type:"
 msgid "Type"
@@ -32,11 +32,11 @@ msgstr ""
 
 msgctxt "field:attendance.period,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:attendance.sheet,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:attendance.sheet,date:"
 msgid "Date"
@@ -44,11 +44,11 @@ msgstr "Tanggal"
 
 msgctxt "field:attendance.sheet,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durasi"
 
 msgctxt "field:attendance.sheet,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Karyawan"
 
 msgctxt "field:attendance.sheet,lines:"
 msgid "Lines"
@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:attendance.sheet.line,date:"
 msgid "Date"
@@ -68,11 +68,11 @@ msgstr "Tanggal"
 
 msgctxt "field:attendance.sheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durasi"
 
 msgctxt "field:attendance.sheet.line,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Karyawan"
 
 msgctxt "field:attendance.sheet.line,from_:"
 msgid "From"
@@ -129,16 +129,22 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_close_period_previous_open"
 msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
 msgstr ""
+"Untuk menutup periode \"%(period)s\" Anda harus terlebih dahulu menutup "
+"\"%(other_period)s\"."
 
 msgctxt "model:ir.message,text:msg_delete_period_close"
 msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
+"Untuk menghapus kehadiran \"%(attendance)s\" Anda harus membuka kembali "
+"periode \"%(period)s\"."
 
 msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
 msgid ""
 "To change period \"%(period)s\" you must first change \"%(other_period)s\" "
 "to draft."
 msgstr ""
+"Untuk mengubah periode \"%(period)s\" Anda harus terlebih dahulu mengubah "
+"\"(other_period)s\" menjadi rancangan."
 
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."

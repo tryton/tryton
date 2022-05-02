@@ -170,7 +170,7 @@ msgstr "Cualquier asistencia"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
 msgid "User in companies"
-msgstr "Usuario en la empresa"
+msgstr "Usuario en las empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_period_companies"
 msgid "User in companies"

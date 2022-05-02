@@ -150,7 +150,7 @@ msgstr "Închidere"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.rule.group,name:rule_group_attendance"
 msgid "Own attendance"
@@ -206,7 +206,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr ""
+msgstr "Perioade"
 
 msgctxt "model:ir.ui.menu,name:menu_sheet"
 msgid "Sheets"
