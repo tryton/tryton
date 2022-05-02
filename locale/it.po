@@ -36,12 +36,10 @@ msgctxt "field:account.dunning,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:account.dunning,currency:"
 msgid "Currency"
-msgstr "Posizioni decimali valuta"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.dunning,date:"
 msgid "Date"
 msgstr "Data"

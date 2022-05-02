@@ -25,11 +25,11 @@ msgstr "Bedrag"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Bedrag alternatieve valuta"
+msgstr "Bedrag secundaire valuta"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "geblokkeerd"
+msgstr "Geblokkeerd"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
@@ -57,7 +57,7 @@ msgstr "Vervaldag"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Relatie"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
@@ -65,7 +65,7 @@ msgstr "Procedure"
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Tweede valuta"
+msgstr "Secundaire valuta"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
@@ -77,7 +77,7 @@ msgstr "Datum"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr "Achterstallig"
+msgstr "Te laat"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -93,11 +93,11 @@ msgstr "Naam"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr "aanmaningen"
+msgstr "Aanmaningen"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "aanmaningsprocedure"
+msgstr "Aanmaningsprocedure"
 
 msgctxt "field:party.party,dunning_procedures:"
 msgid "Dunning Procedures"
@@ -105,7 +105,7 @@ msgstr "Aanmaningsprocedures"
 
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "aanmaningsprocedure"
+msgstr "Aanmaningsprocedure"
 
 msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
@@ -138,11 +138,11 @@ msgstr "Wanneer de aanmaning het niveau bereikt heeft."
 
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
-msgstr "De te ontvangen lijn waarvoor een aanmaning gemaakt moet worden."
+msgstr "De regel met ontvangsten waarvoor een aanmaning gemaakt moet worden."
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."
-msgstr "Maak aanmaningen tot deze datum."
+msgstr "Maak aanmaningen tot datum."
 
 msgctxt "help:account.dunning.level,overdue:"
 msgid "When the level should be applied."
@@ -150,7 +150,7 @@ msgstr "Wanneer het niveau moet worden toegepast."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
-msgstr "De belangrijkste Id van de aanmaningsprocedure."
+msgstr "De hoofd identificatie van de aanmaningsprocedure."
 
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
@@ -158,23 +158,23 @@ msgstr "Accountconfiguratie Standaard aanmaningsprocedure"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Accountaanmaning"
+msgstr "Boekhouden aanmaning"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Accountaanmaning maken"
+msgstr "Boekhouding aanmaning maken"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr "Aanmaningsniveau account"
+msgstr "Boekhouden aanmaningsniveau"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Account Aanmanings- procedure"
+msgstr "Boekhouden aanmaning procedure"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Accountaanmaning maken"
+msgstr "Boekhouding aanmaning maken"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -194,15 +194,15 @@ msgstr "Aanmaning opnieuw plannen"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Aanmaning maken"
+msgstr "Aanmaningen maken"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Voer een aanmaning uit"
+msgstr "Verwerk een aanmaning"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -219,7 +219,7 @@ msgstr "In afwachting"
 
 msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
-msgstr "Lijn kan slechts eenmaal worden gebruikt bij aanmaning."
+msgstr "Regel kan slechts eenmaal worden gebruikt voor een aanmaning."
 
 msgctxt "model:ir.model.button,string:dunning_reschedule_button"
 msgid "Reschedule"
@@ -251,7 +251,7 @@ msgstr "Aanmaningen"
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
-msgstr "Standaard aanmaningsprocedure voor relaties"
+msgstr "Aanmaningsprocedure voor relaties"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
@@ -271,19 +271,19 @@ msgstr "In afwachting"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr "aanmaning"
+msgstr "Aanmaning"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr "Maak aanmaningen voor deze datum"
+msgstr "Maak aanmaningen voor datum"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "Aanmanings proces starten?"
+msgstr "Uitvoeren aanmaning starten?"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr "aanmaning"
+msgstr "Aanmaning"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
@@ -299,4 +299,4 @@ msgstr "Annuleren"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
-msgstr "Process"
+msgstr "Verwerken"
