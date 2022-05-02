@@ -59,6 +59,46 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
+msgctxt "field:stock.lot.trace,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.lot.trace,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:stock.lot.trace,document:"
+msgid "Document"
+msgstr "Document"
+
+msgctxt "field:stock.lot.trace,downward_traces:"
+msgid "Downward Traces"
+msgstr "Traçabilitat descendent"
+
+msgctxt "field:stock.lot.trace,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.lot.trace,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.lot.trace,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.lot.trace,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
+msgctxt "field:stock.lot.trace,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.lot.trace,upward_traces:"
+msgid "Upward Traces"
+msgstr "Traçabilitat ascendent"
+
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "A data"
@@ -235,6 +275,14 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
+msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
+msgid "Downward Traces"
+msgstr "Traçabilitat descendent"
+
+msgctxt "model:ir.action,name:act_lot_trace_upward_relate"
+msgid "Upward Traces"
+msgstr "Traçabilitat ascendent"
+
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
 msgid "Lots by Locations"
 msgstr "Lots per ubicació"
@@ -242,10 +290,6 @@ msgstr "Lots per ubicació"
 msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
 msgid "Lots By Warehouse"
 msgstr "Lots per magatzem"
-
-msgctxt "model:ir.action,name:act_move_form_relate_lot"
-msgid "Moves"
-msgstr "Moviments"
 
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
@@ -271,6 +315,14 @@ msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr "Heu de seleccionar un lot en comptes d'un producte per \"%(product)s\"."
 
+msgctxt "model:ir.model.button,string:lot_downward_traces_button"
+msgid "Downward Traces"
+msgstr "Traçabilitat descendent"
+
+msgctxt "model:ir.model.button,string:lot_upward_traces_button"
+msgid "Upward Traces"
+msgstr "Traçabilitat ascendent"
+
 msgctxt ""
 "model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
 msgid "Duplicate Lot"
@@ -279,6 +331,10 @@ msgstr "Duplica lot"
 msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
 msgid "Add Lots"
 msgstr "Afegir lots"
+
+msgctxt "model:ir.rule.group,name:rule_group_lot_trace_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
 msgid "Stock Lot"
@@ -295,6 +351,10 @@ msgstr "Configuració de les seqüències de lots"
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
 msgstr "Lot"
+
+msgctxt "model:stock.lot.trace,name:"
+msgid "Lot Trace"
+msgstr "Traçabilitat del lot"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

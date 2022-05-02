@@ -59,6 +59,48 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr ""
 
+msgctxt "field:stock.lot.trace,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,date:"
+msgid "Date"
+msgstr "Pada Tanggal"
+
+msgctxt "field:stock.lot.trace,document:"
+msgid "Document"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,downward_traces:"
+msgid "Downward Traces"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,lot:"
+msgid "Lot"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:stock.lot.trace,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,upward_traces:"
+msgid "Upward Traces"
+msgstr ""
+
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "Pada Tanggal"
@@ -236,6 +278,14 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
+msgid "Downward Traces"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lot_trace_upward_relate"
+msgid "Upward Traces"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations_relate"
 msgid "Lots by Locations"
@@ -244,10 +294,6 @@ msgstr "Lokasi"
 msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
 msgid "Lots By Warehouse"
 msgstr ""
-
-msgctxt "model:ir.action,name:act_move_form_relate_lot"
-msgid "Moves"
-msgstr "Perpindahan"
 
 msgctxt "model:ir.action,name:wizard_move_add_lots"
 msgid "Add Lots"
@@ -271,6 +317,14 @@ msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr ""
 
+msgctxt "model:ir.model.button,string:lot_downward_traces_button"
+msgid "Downward Traces"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:lot_upward_traces_button"
+msgid "Upward Traces"
+msgstr ""
+
 msgctxt ""
 "model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
 msgid "Duplicate Lot"
@@ -278,6 +332,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
 msgid "Add Lots"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_lot_trace_companies"
+msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
@@ -294,6 +352,10 @@ msgstr ""
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
+msgstr ""
+
+msgctxt "model:stock.lot.trace,name:"
+msgid "Lot Trace"
 msgstr ""
 
 msgctxt "model:stock.lots_by_location.context,name:"
