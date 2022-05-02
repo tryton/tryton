@@ -16,7 +16,7 @@ msgstr "Identificatore fiscale della controparte"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
-msgstr ""
+msgstr "Turnover"
 
 msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
