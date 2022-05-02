@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr ""
+msgstr "Preţ Unitate Secundara"
 
 msgctxt "view:stock.move:"
 msgid "Quantity:"

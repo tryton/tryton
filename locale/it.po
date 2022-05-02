@@ -8,24 +8,24 @@ msgstr ""
 
 msgctxt "field:stock.move,secondary_quantity:"
 msgid "Secondary Quantity"
-msgstr ""
+msgstr "Quantità secondaria"
 
 msgctxt "field:stock.move,secondary_unit:"
 msgid "Secondary Unit"
-msgstr ""
+msgstr "Unità secondaria"
 
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr ""
+msgstr "Prezzo unitario secondario"
 
 msgctxt "view:stock.move:"
 msgid "Quantity:"
-msgstr ""
+msgstr "Quantità:"
 
 msgctxt "view:stock.move:"
 msgid "Unit Price:"
-msgstr ""
+msgstr "Prezzo unitario:"
 
 msgctxt "view:stock.move:"
 msgid "Unit:"
-msgstr ""
+msgstr "Unità:"
