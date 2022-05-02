@@ -1,3 +1,5 @@
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
 * Allow only lines with maturity date to be paid
 * Allow processing receivable payment without approval
 * Add submitted state to payment
