@@ -229,11 +229,11 @@ msgstr "Slowenien"
 
 msgctxt "selection:carrier.credential.mygls,server:"
 msgid "Production"
-msgstr "Produktionsbetrieb"
+msgstr "Produktivumgebung"
 
 msgctxt "selection:carrier.credential.mygls,server:"
 msgid "Testing"
-msgstr "Testbetrieb"
+msgstr "Testumgebung"
 
 msgctxt "view:carrier.credential.mygls:"
 msgid "Credential Information"
