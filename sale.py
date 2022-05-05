@@ -140,3 +140,11 @@ class Line(metaclass=PoolMeta):
                     amount, self.sale.currency, digits=price_digits[1])
         else:
             return lang.format('%i', rate * 100) + '%'
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/form//label[@id="discount"]', 'states', {
+                'invisible': Eval('type') != 'line',
+                }, ['type']),
+            ]
