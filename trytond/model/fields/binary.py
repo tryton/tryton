@@ -9,13 +9,21 @@ from trytond.transaction import Transaction
 from .field import Field
 
 
+def caster(d):
+    if isinstance(d, bytes):
+        return d
+    elif isinstance(d, memoryview):
+        return bytes(d)
+    return bytes(d, encoding='utf8')
+
+
 class Binary(Field):
     '''
     Define a binary field (``bytes``).
     '''
     _type = 'binary'
     _sql_type = 'BLOB'
-    cast = bytearray if bytes == str else bytes
+    cast = staticmethod(caster)
 
     def __init__(self, string='', help='', required=False, readonly=False,
             domain=None, states=None, select=False, on_change=None,
@@ -89,8 +97,6 @@ class Binary(Field):
                 continue
             value = i[name]
             if value:
-                if isinstance(value, str):
-                    value = value.encode('utf-8')
                 value = converter(value)
             else:
                 value = default
