@@ -64,7 +64,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        table = backend.TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         journal_account = Table('account_journal_account')
 
