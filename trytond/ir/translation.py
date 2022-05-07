@@ -1009,6 +1009,7 @@ class TranslationSet(Wizard):
 
         cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
+        report_strings = defaultdict(set)
         for report in reports:
             content = None
             if report.report:
@@ -1029,7 +1030,7 @@ class TranslationSet(Wizard):
                         & (translation.module == module)))
                 trans_reports = {t['src']: t for t in cursor_dict(cursor)}
 
-                strings = set()
+                strings = report_strings[report.report_name, report.module]
                 func_name = 'extract_report_%s' % report.template_extension
                 strings.update(getattr(self, func_name)(content))
 
@@ -1070,12 +1071,14 @@ class TranslationSet(Wizard):
                                         'report', string,
                                         '', module,
                                         False, -1]]))
-                if strings:
-                    cursor.execute(*translation.delete(
-                            where=(translation.name == report.report_name)
-                            & (translation.type == 'report')
-                            & (translation.module == module)
-                            & ~translation.src.in_(list(strings))))
+        for (report_name, module), strings in report_strings.items():
+            query = translation.delete(
+                where=(translation.name == report_name)
+                & (translation.type == 'report')
+                & (translation.module == module))
+            if strings:
+                query.where &= ~translation.src.in_(list(strings))
+            cursor.execute(*query)
 
     def _translate_view(self, element):
         strings = []
