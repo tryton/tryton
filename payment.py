@@ -4,6 +4,7 @@ from collections import defaultdict
 from functools import wraps
 
 from sql.aggregate import BoolAnd, Min
+from sql.conditionals import Coalesce
 
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
@@ -356,10 +357,11 @@ class Group(metaclass=PoolMeta):
         payment = Payment.__table__()
         cursor = Transaction().connection.cursor()
         result = defaultdict()
+        column = Coalesce(payment.clearing_reconciled, False)
         if backend.name == 'sqlite':
-            column = Min(payment.clearing_reconciled)
+            column = Min(column)
         else:
-            column = BoolAnd(payment.clearing_reconciled)
+            column = BoolAnd(column)
         for sub_groups in grouped_slice(groups):
             cursor.execute(*payment.select(
                     payment.group, column,
@@ -376,11 +378,11 @@ class Group(metaclass=PoolMeta):
 
         _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
-
+        column = Coalesce(payment.clearing_reconciled, False)
         if backend.name == 'sqlite':
-            column = Min(payment.clearing_reconciled)
+            column = Min(column)
         else:
-            column = BoolAnd(payment.clearing_reconciled)
+            column = BoolAnd(column)
 
         query = payment.select(
             payment.group,
