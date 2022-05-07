@@ -299,7 +299,8 @@ class Cron(ModelSQL, ModelView):
     __name__ = 'currency.cron'
 
     source = fields.Selection(
-        [], "Source", required=True,
+        [('ecb', "European Central Bank")] if CurrencyRates else [],
+        "Source", required=True,
         help="The external source for rates.")
     frequency = fields.Selection([
             ('daily', "Daily"),
@@ -337,8 +338,6 @@ class Cron(ModelSQL, ModelView):
         cls._buttons.update({
                 'run': {},
                 })
-        if CurrencyRates:
-            cls.source.selection.append(('ecb', "European Central Bank"))
 
     @classmethod
     def default_frequency(cls):
