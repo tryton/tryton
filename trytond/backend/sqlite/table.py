@@ -4,6 +4,7 @@
 import logging
 import re
 import warnings
+from weakref import WeakKeyDictionary
 
 from trytond.backend.table import TableHandlerInterface
 from trytond.transaction import Transaction
@@ -21,13 +22,12 @@ def _escape_identifier(name):
 
 
 class TableHandler(TableHandlerInterface):
-    def __init__(self, model, module_name=None, history=False):
-        super(TableHandler, self).__init__(model,
-                module_name=module_name, history=history)
-        self._columns = {}
-        self._constraints = []
-        self._fk_deltypes = {}
-        self._indexes = []
+    __handlers = WeakKeyDictionary()
+
+    def _init(self, model, history=False):
+        super()._init(model, history=history)
+        self.__columns = None
+        self.__indexes = None
         self._model = model
 
         cursor = Transaction().connection.cursor()
@@ -143,14 +143,12 @@ class TableHandler(TableHandlerInterface):
                     'Unable to rename column %s on table %s to %s.',
                     old_name, self.table_name, new_name)
 
-    def _update_definitions(self, columns=None, indexes=None):
-        if columns is None and indexes is None:
-            columns = indexes = True
-        cursor = Transaction().connection.cursor()
-        # Fetch columns definitions from the table
-        if columns:
+    @property
+    def _columns(self):
+        if self.__columns is None:
+            cursor = Transaction().connection.cursor()
             cursor.execute('PRAGMA table_info("' + self.table_name + '")')
-            self._columns = {}
+            self.__columns = {}
             for _, column, type_, notnull, hasdef, _ in cursor:
                 column = re.sub(r'^\"|\"$', '', column)
                 match = re.match(r'(\w+)(\((.*?)\))?', type_)
@@ -160,30 +158,32 @@ class TableHandler(TableHandlerInterface):
                 else:
                     typname = type_.upper()
                     size = None
-                self._columns[column] = {
+                self.__columns[column] = {
                     'notnull': notnull,
                     'hasdef': hasdef,
                     'size': size,
                     'typname': typname,
                 }
+        return self.__columns
 
-        # Fetch indexes defined for the table
-        if indexes:
+    @property
+    def _indexes(self):
+        if self.__indexes is None:
+            cursor = Transaction().connection.cursor()
             try:
                 cursor.execute('PRAGMA index_list("' + self.table_name + '")')
             except IndexError:  # There is sometimes IndexError
                 cursor.execute('PRAGMA index_list("' + self.table_name + '")')
-            self._indexes = [l[1] for l in cursor]
+            self.__indexes = [l[1] for l in cursor]
+        return self.__indexes
 
-    @property
-    def _field2module(self):
-        cursor = Transaction().connection.cursor()
-        cursor.execute('SELECT f.name, f.module '
-            'FROM ir_model_field f '
-            'JOIN ir_model m on (f.model=m.id) '
-            'WHERE m.model = ?',
-            (self.object_name,))
-        return dict(cursor)
+    def _update_definitions(self, columns=None, indexes=None):
+        if columns is None and indexes is None:
+            columns = indexes = True
+        if columns:
+            self.__columns = None
+        if indexes:
+            self.__indexes = None
 
     def alter_size(self, column_name, column_type):
         self._recreate_table({column_name: {'size': column_type}})
@@ -324,11 +324,6 @@ class TableHandler(TableHandlerInterface):
                 params)
             self._update_definitions(indexes=True)
         elif action == 'remove':
-            if len(columns) == 1 and isinstance(columns[0], str):
-                if self._field2module.get(columns[0],
-                        self.module_name) != self.module_name:
-                    return
-
             if index_name in self._indexes:
                 cursor.execute('DROP INDEX %s'
                     % (_escape_identifier(index_name),))

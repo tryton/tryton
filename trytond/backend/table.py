@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import hashlib
+from weakref import WeakKeyDictionary
+
+from trytond.transaction import Transaction
 
 
 class TableHandlerInterface(object):
@@ -8,8 +11,18 @@ class TableHandlerInterface(object):
     Define generic interface to handle database table
     '''
     namedatalen = None
+    __handlers = WeakKeyDictionary()
 
-    def __init__(self, model, module_name=None, history=False):
+    def __new__(cls, model, history=False):
+        transaction = Transaction()
+        handlers = cls.__handlers.setdefault(transaction, {})
+        key = (model.__name__, history)
+        if key not in handlers:
+            instance = handlers[key] = super().__new__(cls)
+            instance._init(model, history=history)
+        return handlers[key]
+
+    def _init(self, model, history=False):
         '''
         :param model: the Model linked to the table
         :param module_name: the module name
@@ -25,7 +38,6 @@ class TableHandlerInterface(object):
             self.sequence_name = self.table_name + '___id_seq'
         else:
             self.sequence_name = self.table_name + '_id_seq'
-        self.module_name = module_name
         self.history = history
 
     @staticmethod

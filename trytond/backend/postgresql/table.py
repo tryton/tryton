@@ -17,13 +17,12 @@ VARCHAR_SIZE_RE = re.compile(r'VARCHAR\(([0-9]+)\)')
 class TableHandler(TableHandlerInterface):
     namedatalen = 64
 
-    def __init__(self, model, module_name=None, history=False):
-        super(TableHandler, self).__init__(model,
-                module_name=module_name, history=history)
-        self._columns = {}
-        self._constraints = []
-        self._fk_deltypes = {}
-        self._indexes = []
+    def _init(self, model, history=False):
+        super()._init(model, history=history)
+        self.__columns = None
+        self.__constraints = None
+        self.__fk_deltypes = None
+        self.__indexes = None
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
@@ -50,7 +49,6 @@ class TableHandler(TableHandlerInterface):
                         Identifier(self.table_name)),
                 (model.__doc__,))
 
-        self._update_definitions(columns=True)
         if 'id' not in self._columns:
             if not self.history:
                 cursor.execute(
@@ -77,6 +75,7 @@ class TableHandler(TableHandlerInterface):
             cursor.execute(
                 SQL('ALTER TABLE {} ADD PRIMARY KEY(__id)')
                 .format(Identifier(self.table_name)))
+            self._update_definitions(columns=True)
         else:
             default = "nextval('%s'::regclass)" % self.sequence_name
             if self.history:
@@ -86,13 +85,14 @@ class TableHandler(TableHandlerInterface):
                             "ALTER __id SET DEFAULT nextval(%s::regclass)")
                         .format(Identifier(self.table_name)),
                         (self.sequence_name,))
+                    self._update_definitions(columns=True)
             if self._columns['id']['default'] != default:
                 cursor.execute(
                     SQL("ALTER TABLE {} "
                         "ALTER id SET DEFAULT nextval(%s::regclass)")
                     .format(Identifier(self.table_name)),
                     (self.sequence_name,))
-        self._update_definitions()
+                self._update_definitions(columns=True)
 
     @staticmethod
     def table_exist(table_name):
@@ -140,13 +140,11 @@ class TableHandler(TableHandlerInterface):
                     'Unable to rename column %s on table %s to %s.',
                     old_name, self.table_name, new_name)
 
-    def _update_definitions(self,
-            columns=None, constraints=None, indexes=None):
-        if columns is None and constraints is None and indexes is None:
-            columns = constraints = indexes = True
-        cursor = Transaction().connection.cursor()
-        if columns:
-            self._columns = {}
+    @property
+    def _columns(self):
+        if self.__columns is None:
+            cursor = Transaction().connection.cursor()
+            self.__columns = {}
             # Fetch columns definitions from the table
             cursor.execute('SELECT '
                 'column_name, udt_name, is_nullable, '
@@ -156,20 +154,24 @@ class TableHandler(TableHandlerInterface):
                 'WHERE table_name = %s AND table_schema = %s',
                 (self.table_name, self.table_schema))
             for column, typname, nullable, size, default in cursor:
-                self._columns[column] = {
+                self.__columns[column] = {
                     'typname': typname,
                     'notnull': True if nullable == 'NO' else False,
                     'size': size,
                     'default': default,
                     }
+        return self.__columns
 
-        if constraints:
+    @property
+    def _constraints(self):
+        if self.__constraints is None:
+            cursor = Transaction().connection.cursor()
             # fetch constraints for the table
             cursor.execute('SELECT constraint_name '
                 'FROM information_schema.table_constraints '
                 'WHERE table_name = %s AND table_schema = %s',
                 (self.table_name, self.table_schema))
-            self._constraints = [c for c, in cursor]
+            self.__constraints = [c for c, in cursor]
 
             # add nonstandard exclude constraint
             cursor.execute('SELECT c.conname '
@@ -183,8 +185,13 @@ class TableHandler(TableHandlerInterface):
                     "AND r.relkind IN ('r', 'p') "
                     'AND r.relname = %s AND nr.nspname = %s',
                     (self.table_name, self.table_schema))
-            self._constraints.extend((c for c, in cursor))
+            self.__constraints.extend((c for c, in cursor))
+        return self.__constraints
 
+    @property
+    def _fk_deltypes(self):
+        if self.__fk_deltypes is None:
+            cursor = Transaction().connection.cursor()
             cursor.execute('SELECT k.column_name, r.delete_rule '
                 'FROM information_schema.key_column_usage AS k '
                 'JOIN information_schema.referential_constraints AS r '
@@ -192,9 +199,13 @@ class TableHandler(TableHandlerInterface):
                 'AND r.constraint_name = k.constraint_name '
                 'WHERE k.table_name = %s AND k.table_schema = %s',
                 (self.table_name, self.table_schema))
-            self._fk_deltypes = dict(cursor)
+            self.__fk_deltypes = dict(cursor)
+        return self.__fk_deltypes
 
-        if indexes:
+    @property
+    def _indexes(self):
+        if self.__indexes is None:
+            cursor = Transaction().connection.cursor()
             # Fetch indexes defined for the table
             cursor.execute("SELECT cl2.relname "
                 "FROM pg_index ind "
@@ -203,17 +214,20 @@ class TableHandler(TableHandlerInterface):
                     "JOIN pg_class cl2 on (cl2.oid = ind.indexrelid) "
                 "WHERE cl.relname = %s AND n.nspname = %s",
                 (self.table_name, self.table_schema))
-            self._indexes = [l[0] for l in cursor]
+            self.__indexes = [l[0] for l in cursor]
+        return self.__indexes
 
-    @property
-    def _field2module(self):
-        cursor = Transaction().connection.cursor()
-        cursor.execute('SELECT f.name, f.module '
-            'FROM ir_model_field f '
-                'JOIN ir_model m on (f.model=m.id) '
-            'WHERE m.model = %s',
-            (self.object_name,))
-        return dict(cursor)
+    def _update_definitions(self,
+            columns=None, constraints=None, indexes=None):
+        if columns is None and constraints is None and indexes is None:
+            columns = constraints = indexes = True
+        if columns:
+            self.__columns = None
+        if constraints:
+            self.__constraints = None
+            self.__fk_deltypes = None
+        if indexes:
+            self.__indexes = None
 
     def alter_size(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
@@ -427,11 +441,6 @@ class TableHandler(TableHandlerInterface):
                     params)
                 self._update_definitions(indexes=True)
             elif action == 'remove':
-                if len(columns) == 1 and isinstance(columns[0], str):
-                    if self._field2module.get(columns[0],
-                            self.module_name) != self.module_name:
-                        return
-
                 if index_name in self._indexes:
                     cursor.execute(SQL('DROP INDEX {}').format(
                             Identifier(index_name)))
@@ -468,9 +477,6 @@ class TableHandler(TableHandlerInterface):
                         column_name, self.table_name)
             elif action == 'remove':
                 if not self._columns[column_name]['notnull']:
-                    return
-                if (self._field2module.get(column_name, self.module_name)
-                        != self.module_name):
                     return
                 cursor.execute(
                     SQL('ALTER TABLE {} ALTER COLUMN {} DROP NOT NULL')
