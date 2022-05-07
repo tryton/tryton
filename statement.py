@@ -793,6 +793,8 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
 
         table_h = cls.__table_handler__(module)
         cursor = Transaction().connection.cursor()
+
+        # Migration from 6.2: replace invoice by related_to
         if table_h.column_exist('invoice'):
             cursor.execute(*table.update(
                     [table.related_to],
