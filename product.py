@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Or
@@ -118,7 +117,7 @@ class Template(metaclass=PoolMeta):
         sql_table = cls.__table__()
         category = Category.__table__()
 
-        table = backend.TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         category_exists = table.column_exist('category')
 
         super(Template, cls).__register__(module_name)
