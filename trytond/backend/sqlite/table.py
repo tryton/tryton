@@ -99,23 +99,30 @@ class TableHandler(TableHandlerInterface):
     def column_exist(self, column_name):
         return column_name in self._columns
 
-    def _recreate_table(self, new_columns):
+    def _recreate_table(self, update_columns=None, drop_columns=None):
+        if update_columns is None:
+            update_columns = {}
+        if drop_columns is None:
+            drop_columns = []
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
         temp_table = '__temp_%s' % self.table_name
+        temp_columns = dict(self._columns)
         TableHandler.table_rename(self.table_name, temp_table)
-        new_table = TableHandler(self._model, history=self.history)
+        self._init(self._model, history=self.history)
         columns, old_columns = [], []
-        for column, values in self._columns.items():
-            typname = new_columns.get(column, {}).get(
+        for name, values in temp_columns.items():
+            if name in drop_columns:
+                continue
+            typname = update_columns.get(name, {}).get(
                 'typname', values['typname'])
-            size = new_columns.get(column, {}).get('size', values['size'])
-            new_column = new_columns.get(column, {}).get('name', column)
-            new_table._add_raw_column(
-                new_column, database.sql_type(typname), field_size=size)
-            columns.append(new_column)
-            old_columns.append(column)
+            size = update_columns.get(name, {}).get('size', values['size'])
+            name = update_columns.get(name, {}).get('name', name)
+            self._add_raw_column(
+                name, database.sql_type(typname), field_size=size)
+            columns.append(name)
+            old_columns.append(name)
         cursor.execute(('INSERT INTO %s ('
                 + ','.join(_escape_identifier(x) for x in columns)
                 + ') SELECT '
@@ -352,7 +359,6 @@ class TableHandler(TableHandlerInterface):
         if not self.column_exist(column_name):
             return
         transaction = Transaction()
-        database = transaction.database
         cursor = transaction.connection.cursor()
         if sqlite.sqlite_version_info >= (3, 35, 0):
             cursor.execute('ALTER TABLE %s DROP COLUMN %s' % (
@@ -360,27 +366,7 @@ class TableHandler(TableHandlerInterface):
                     _escape_identifier(column_name)))
             self._update_definitions(columns=True)
         else:
-            temp_table = '__temp_%s' % self.table_name
-            TableHandler.table_rename(self.table_name, temp_table)
-            new_table = TableHandler(self._model, history=self.history)
-            for name, values in self._columns.items():
-                if name != column_name:
-                    typname = values['typname']
-                    size = values['size']
-                    new_table._add_raw_column(
-                        name, database.sql_type(typname), field_size=size)
-            columns_name = list(new_table._columns.keys())
-            cursor.execute(
-                ('INSERT INTO %s ('
-                    + ','.join(str(_escape_identifier(c))
-                        for c in columns_name)
-                    + ') SELECT '
-                    + ','.join(_escape_identifier(c) for c in columns_name)
-                    + ' FROM %s')
-                % (_escape_identifier(self.table_name),
-                    _escape_identifier(temp_table)))
-            cursor.execute('DROP TABLE %s' % _escape_identifier(temp_table))
-            self._update_definitions()
+            self._recreate_table(drop_columns=[column_name])
 
     @staticmethod
     def drop_table(model, table, cascade=False):
