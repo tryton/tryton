@@ -86,7 +86,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     'readonly': Eval('state') != 'draft',
                     'depends': ['state'],
                     },
-                'count': {
+                'do_count': {
                     'readonly': Eval('state') != 'draft',
                     'depends': ['state'],
                     },
@@ -311,7 +311,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button_action('stock.wizard_inventory_count')
-    def count(cls, inventories):
+    def do_count(cls, inventories):
         cls.complete_lines(inventories)
 
 
