@@ -84,8 +84,9 @@ class Statement(metaclass=PoolMeta):
                 with Transaction().set_context(clearing_date=date):
                     Payment.fail(Payment.browse(payments))
 
-        Payment.__queue__.reconcile_clearing(
-            list(set.union(*to_success.values(), *to_fail.values())))
+        if to_success or to_fail:
+            Payment.__queue__.reconcile_clearing(
+                list(set.union(*to_success.values(), *to_fail.values())))
         return moves
 
     def _group_key(self, line):
