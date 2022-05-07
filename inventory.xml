@@ -144,7 +144,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="inventory_count_button">
-            <field name="name">count</field>
+            <field name="name">do_count</field>
             <field name="string">Count</field>
             <field name="help">Launch the wizard to count products</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>

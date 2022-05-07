@@ -68,7 +68,7 @@ Create an inventory::
 
 Count inventory::
 
-    >>> _ = inventory.click('count')
+    >>> _ = inventory.click('do_count')
     >>> count = Wizard('stock.inventory.count', [inventory])
 
     >>> count.form.search = product
