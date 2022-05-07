@@ -2,6 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql import Null
+from sql.operators import Concat
+
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
@@ -111,6 +114,31 @@ class StatementLine(metaclass=PoolMeta):
                 ('clearing_reconciled', '!=', True),
                 ()),
             ]
+
+    @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+
+        super().__register__(module)
+
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+
+        # Migration from 6.2: replace payment by related_to
+        if table_h.column_exist('payment'):
+            cursor.execute(*table.update(
+                    [table.related_to],
+                    [Concat('account.payment,', table.payment)],
+                    where=table.payment != Null))
+            table_h.drop_column('payment')
+
+        # Migration from 6.2: replace payment_group by related_to
+        if table_h.column_exist('payment_group'):
+            cursor.execute(*table.update(
+                    [table.related_to],
+                    [Concat('account.payment.group,', table.payment_group)],
+                    where=table.payment_group != Null))
+            table_h.drop_column('payment_group')
 
     @classmethod
     def _get_relations(cls):
