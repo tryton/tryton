@@ -64,6 +64,7 @@ class MarketingEmailTestCase(ModuleTestCase):
         token = email.email_token
         self.assertTrue(token)
         self.assertFalse(email.active)
+        self.assertEqual(email_list.subscribed, 0)
 
         self.assertEqual(
             email.get_email_subscribe_url(),
@@ -77,6 +78,7 @@ class MarketingEmailTestCase(ModuleTestCase):
 
         Email.subscribe_url(email.get_email_subscribe_url())
         self.assertTrue(email.active)
+        self.assertEqual(email_list.subscribed, 1)
 
     @with_transaction()
     def test_unsubscribe(self):

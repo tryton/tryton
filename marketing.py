@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import random
 import time
+from collections import defaultdict
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -12,6 +13,8 @@ from urllib.parse import (
 
 from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
+from sql import Literal
+from sql.aggregate import Count
 
 try:
     import html2text
@@ -27,7 +30,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
-from trytond.tools import grouped_slice
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
@@ -237,6 +240,8 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
     name = fields.Char("Name", required=True)
     language = fields.Many2One('ir.lang', "Language", required=True)
     emails = fields.One2Many('marketing.email', 'list_', "Emails")
+    subscribed = fields.Function(
+        fields.Integer("Subscribed"), 'get_subscribed')
 
     @staticmethod
     def default_language():
@@ -251,6 +256,24 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             return lang.id
         except ValueError:
             return None
+
+    @classmethod
+    def get_subscribed(cls, lists, name):
+        pool = Pool()
+        Email = pool.get('marketing.email')
+        email = Email.__table__()
+        cursor = Transaction().connection.cursor()
+
+        subscribed = defaultdict(int)
+        query = email.select(
+            email.list_, Count(Literal('*')), group_by=[email.list_])
+        for sub_lists in grouped_slice(lists):
+            query.where = (
+                reduce_ids(email.list_, sub_lists)
+                & email.active)
+            cursor.execute(*query)
+            subscribed.update(cursor)
+        return subscribed
 
     def request_subscribe(self, email, from_=None):
         pool = Pool()
