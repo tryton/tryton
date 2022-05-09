@@ -23,6 +23,7 @@ def register():
         product.Configuration,
         product.DefaultLeadTime,
         product.Template,
+        product.ProductLeadTime,
         product.Product,
         product.SaleContext,
         stock.ShipmentOut,

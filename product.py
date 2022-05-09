@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.model import ModelSQL, ModelView, fields
-from trytond.modules.company.model import CompanyValueMixin
+from sql import Null
+
+from trytond.model import ModelSQL, ModelView, ValueMixin, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
@@ -26,7 +27,7 @@ class Configuration(metaclass=PoolMeta):
         return datetime.timedelta(0)
 
 
-class DefaultLeadTime(ModelSQL, CompanyValueMixin):
+class DefaultLeadTime(ModelSQL, ValueMixin):
     "Product Default Lead Time"
     __name__ = 'product.configuration.default_lead_time'
     default_lead_time = fields.TimeDelta("Default Lead Time")
@@ -44,14 +45,14 @@ class Template(metaclass=PoolMeta):
         domain=[
             ('category', '=', Eval('default_uom_category')),
             ])
-    lead_time = fields.TimeDelta(
-        "Lead Time",
-        states={
-            'invisible': ~Eval('salable', False),
-            },
-        help="The time from confirming the sales order to sending the "
-        "products.\n"
-        "If empty the default lead time from the configuration is used.")
+    lead_time = fields.MultiValue(fields.TimeDelta(
+            "Lead Time",
+            states={
+                'invisible': ~Eval('salable', False),
+                },
+            help="The time from confirming the sales order to sending the "
+            "products.\n"
+            "If empty the default lead time from the configuration is used."))
 
     @classmethod
     def __register__(cls, module_name):
@@ -77,6 +78,13 @@ class Template(metaclass=PoolMeta):
                         where=sql_table.id == id_))
             table.drop_column('delivery_time')
 
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'lead_time':
+            return pool.get('product.lead_time')
+        return super().multivalue_model(field)
+
     @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_default_uom(self):
         try:
@@ -96,6 +104,34 @@ class Template(metaclass=PoolMeta):
             ('//page[@id="customers"]', 'states', {
                     'invisible': ~Eval('salable'),
                     })]
+
+
+class ProductLeadTime(ModelSQL, ValueMixin):
+    "Product Lead Time"
+    __name__ = 'product.lead_time'
+
+    template = fields.Many2One(
+        'product.template', "Template", ondelete='CASCADE', select=True)
+    lead_time = fields.TimeDelta("Lead Time")
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Template = pool.get('product.template')
+        template = Template.__table__()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        cursor = Transaction().connection.cursor()
+        template_h = Template.__table_handler__(module_name)
+        if template_h.column_exist('lead_time'):
+            cursor.execute(*table.insert(
+                    columns=[table.template, table.lead_time],
+                    values=template.select(
+                        template.id, template.lead_time,
+                        where=template.lead_time != Null)))
+            template_h.drop_column('lead_time')
 
 
 class Product(metaclass=PoolMeta):
