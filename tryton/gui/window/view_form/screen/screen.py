@@ -420,11 +420,11 @@ class Screen:
         if self.parent:
             self.filter_widget = None
             self.order = None
+        self.__group.add_fields(fields)
         if len(group):
             self.current_record = group[0]
         else:
             self.current_record = None
-        self.__group.add_fields(fields)
         for name, views in fields_views.items():
             self.__group.fields[name].views.update(views)
         self.__group.exclude_field = self.exclude_field
