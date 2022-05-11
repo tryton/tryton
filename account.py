@@ -80,7 +80,7 @@ class InvoiceLine(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._check_modify_exclude.add('stock_moves')
+        cls._check_modify_exclude.update(['stock_moves', 'correction'])
 
     @classmethod
     def default_correction(cls):
