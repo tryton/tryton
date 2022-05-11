@@ -3,9 +3,15 @@
 
 from trytond.pool import Pool
 
+try:
+    from trytond.modules.stock.stock_reporting_margin import \
+        Abstract as StockReportingMarginAbstract
+except ImportError:
+    StockReportingMarginAbstract = None
+
 from . import (
     account, commission, commission_reporting, invoice, ir, party, product,
-    sale)
+    sale, stock, stock_reporting_margin)
 
 
 def register():
@@ -35,8 +41,18 @@ def register():
         module='commission', type_='model',
         depends=['sale'])
     Pool.register(
+        stock.Move,
+        stock_reporting_margin.Context,
+        module='commission', type_='model',
+        depends=['stock'])
+    Pool.register(
         commission.CreateInvoice,
         invoice.CreditInvoice,
         party.Replace,
         party.Erase,
         module='commission', type_='wizard')
+    if StockReportingMarginAbstract:
+        Pool.register_mixin(
+            stock_reporting_margin.AbstractCommissionMixin,
+            StockReportingMarginAbstract,
+            module='commission')

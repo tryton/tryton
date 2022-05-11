@@ -434,6 +434,10 @@ class Commission(ModelSQL, ModelView):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
+        try:
+            Move = pool.get('stock.move')
+        except KeyError:
+            Move = None
 
         def invoice_key(c):
             return c._group_to_invoice_key()
@@ -463,6 +467,11 @@ class Commission(ModelSQL, ModelView):
         InvoiceLine.save(invoice_lines)
         Invoice.update_taxes(invoices)
         cls.save(to_save)
+
+        if Move and hasattr(Move, 'update_unit_price'):
+            moves = list(set.union(*(c.stock_moves for c in commissions)))
+            if moves:
+                Move.__queue__.update_unit_price(moves)
 
     def _group_to_invoice_key(self):
         direction = {
@@ -534,6 +543,16 @@ class Commission(ModelSQL, ModelView):
 
         invoice_line.unit_price = amount
         return invoice_line
+
+    @property
+    def stock_moves(self):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        stock_moves = set()
+        if (isinstance(self.origin, InvoiceLine)
+                and hasattr(InvoiceLine, 'stock_moves')):
+            stock_moves.update(self.origin.stock_moves)
+        return stock_moves
 
 
 class CreateInvoice(Wizard):
