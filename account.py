@@ -304,6 +304,12 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                     config.landed_cost_sequence.id)
         return super(LandedCost, cls).create(vlist)
 
+    @classmethod
+    def copy(cls, landed_costs, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('invoice_lines', None)
+        return super().copy(landed_costs, default=default)
+
 
 class LandedCost_Shipment(ModelSQL):
     'Landed Cost - Shipment'
