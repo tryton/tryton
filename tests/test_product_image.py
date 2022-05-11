@@ -42,6 +42,31 @@ class ProductImageTestCase(ModuleTestCase):
         img = PIL.Image.open(io.BytesIO(image.get(size=100)))
         self.assertEqual(img.size, (100, 100))
 
+    @with_transaction()
+    def test_get_image_url(self):
+        "Test get_image_url"
+        pool = Pool()
+        Image = pool.get('product.image')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        template = Template(name="Template", code="CODE")
+        template.default_uom, = Uom.search([], limit=1)
+        template.save()
+
+        for _ in range(3):
+            image = Image(template=template)
+            image.image = urllib.request.urlopen(
+                'https://picsum.photos/200').read()
+            image.save()
+
+        self.assertRegex(
+            template.get_image_url(i=2),
+            r'/product/image/CODE/.*/Template\?i=2')
+        self.assertRegex(
+            template.get_image_url(s=400),
+            r'/product/image/CODE/.*/Template\?s=400')
+
 
 def suite():
     suite = test_suite()
