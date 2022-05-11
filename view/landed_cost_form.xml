@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="allocation_method"/>
     <label name="company"/>
     <field name="company"/>
-    <field name="invoice_lines" colspan="4"/>
+    <field name="invoice_lines" colspan="4" widget="many2many"/>
     <field name="shipments" colspan="4"/>
 
     <field name="categories" colspan="2"/>
