@@ -415,6 +415,12 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                     company=values.get('company', default_company)).get()
         return super(LandedCost, cls).create(vlist)
 
+    @classmethod
+    def copy(cls, landed_costs, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('invoice_lines', None)
+        return super().copy(landed_costs, default=default)
+
 
 class LandedCost_Shipment(ModelSQL):
     'Landed Cost - Shipment'
