@@ -132,7 +132,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         # delete purchase requests without a purchase line
         products = set(products)
         reqs = cls.search([
-                ('purchase_line', '=', None),
+                ('state', '=', 'draft'),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
         reqs = [r for r in reqs
