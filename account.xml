@@ -755,7 +755,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
-            <field name="context_model">account.balance_sheet.comparision.context</field>
+            <field name="context_model">account.balance_sheet.comparison.context</field>
             <field name="context_domain"
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
@@ -782,10 +782,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">balance_sheet_context_form</field>
         </record>
 
-        <record model="ir.ui.view" id="balance_sheet_comparision_context_view_form">
-            <field name="model">account.balance_sheet.comparision.context</field>
+        <record model="ir.ui.view" id="balance_sheet_comparison_context_view_form">
+            <field name="model">account.balance_sheet.comparison.context</field>
             <field name="inherit" ref="balance_sheet_context_view_form"/>
-            <field name="name">balance_sheet_context_comparision_form</field>
+            <field name="name">balance_sheet_context_comparison_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_income_statement_view_tree">

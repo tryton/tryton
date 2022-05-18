@@ -429,7 +429,7 @@ class OpenType(Wizard):
 
     def transition_start(self):
         context_model = Transaction().context.get('context_model')
-        if context_model == 'account.balance_sheet.comparision.context':
+        if context_model == 'account.balance_sheet.comparison.context':
             return 'account'
         elif context_model == 'account.income_statement.context':
             return 'ledger_account'
@@ -2462,7 +2462,7 @@ class BalanceSheetContext(ModelView):
 
 class BalanceSheetComparisionContext(BalanceSheetContext):
     'Balance Sheet Context'
-    __name__ = 'account.balance_sheet.comparision.context'
+    __name__ = 'account.balance_sheet.comparison.context'
     comparison = fields.Boolean('Comparison')
     date_cmp = fields.Date('Date', states={
             'required': Eval('comparison', False),
