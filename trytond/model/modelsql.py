@@ -878,9 +878,13 @@ class ModelSQL(ModelStorage):
                 add = target_ids.extend
             elif field._type == 'reference':
                 def add(value):
-                    id_ = int(value.split(',', 1)[1])
-                    if id_ >= 0:
-                        target_ids.append(id_)
+                    try:
+                        id_ = int(value.split(',', 1)[1])
+                    except ValueError:
+                        pass
+                    else:
+                        if id_ >= 0:
+                            target_ids.append(id_)
             else:
                 add = target_ids.append
             for row in rows:
@@ -902,7 +906,10 @@ class ModelSQL(ModelStorage):
                 for row in rows:
                     value = row[name]
                     if isinstance(value, str):
-                        value = int(value.split(',', 1)[1])
+                        try:
+                            value = int(value.split(',', 1)[1])
+                        except ValueError:
+                            value = None
                     if value is not None and value >= 0:
                         row[key] = targets[value]
                     else:

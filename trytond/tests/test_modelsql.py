@@ -116,6 +116,38 @@ class ModelSQLTestCase(unittest.TestCase):
                     }])
 
     @with_transaction()
+    def test_read_related_invalid_reference(self):
+        "Test read with related invalid Reference"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        record, = Model.create(
+            [{'reference': 'test.modelsql.read.target,None'}])
+        values = Model.read([record.id], ['reference.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'reference.': None,
+                    }])
+
+    @with_transaction()
+    def test_read_related_deleted_reference(self):
+        "Test read with related deleted Reference"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target, = Target.create([{'name': "Target"}])
+        record, = Model.create([{'reference': str(target)}])
+        Target.delete([target])
+        values = Model.read([record.id], ['reference.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'reference.': None,
+                    }])
+
+    @with_transaction()
     def test_read_related_reference_empty(self):
         "Test read with empty related Reference"
         pool = Pool()
