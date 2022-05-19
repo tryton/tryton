@@ -886,8 +886,6 @@
             }
             this.table.css('min-width', 'calc(' + min_width.join(' + ') + ')');
             this.scrollbar.css('min-width', this.table.css('min-width'));
-            this.tbody.find('tr.more-row > td').attr(
-                'colspan', visible_columns);
 
             if (!this.table.hasClass('no-responsive') &
                 (this.columns.filter(function(c) {
@@ -917,7 +915,9 @@
                     var more_row = jQuery('<tr/>', {
                         'class': 'more-row',
                     });
-                    var more_cell = jQuery('<td/>');
+                    var more_cell = jQuery('<td/>', {
+                        'colspan': visible_columns,
+                    });
                     var more_button = jQuery('<button/>', {
                         'class': 'btn btn-default btn-block',
                         'type': 'button',
