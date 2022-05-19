@@ -1392,8 +1392,8 @@
             }
             return results;
         },
-        is_leaf: function(element) {
-            return ((element instanceof Array) && element.clause);
+        is_subdomain: function(element) {
+            return (element instanceof Array) && !element.clause;
         },
         ending_clause: function(domain, depth) {
             if (depth === undefined) {
@@ -1403,7 +1403,7 @@
                 return [null, depth];
             }
             var last_element = domain[domain.length - 1];
-            if (!this.is_leaf(last_element)) {
+            if (this.is_subdomain(last_element)) {
                 return this.ending_clause(last_element, depth + 1);
             }
             return [last_element, depth];
@@ -1414,7 +1414,7 @@
             for (i = 0, len=domain.length - 1; i < len; i++) {
                 results.push(domain[i]);
             }
-            if (!this.is_leaf(domain[i])) {
+            if (this.is_subdomain(domain[i])) {
                 results = results.concat(this.replace_ending_clause(domain[i],
                             clause));
             } else {
@@ -1428,7 +1428,7 @@
             }
             var results = domain.slice(0, -1);
             var last_element = domain[domain.length - 1];
-            if (!this.is_leaf(last_element)) {
+            if (this.is_subdomain(last_element)) {
                 results.push(this.append_ending_clause(last_element, clause,
                             depth - 1));
             } else {
@@ -2169,19 +2169,17 @@
             }
         },
         simplify: function(value) {
-            if ((value instanceof Array) && !this.is_leaf(value)) {
-                if ((value.length == 1) && (value[0] instanceof Array) &&
-                        ((value[0][0] == 'AND') || (value[0][0] == 'OR') ||
-                         (value[0][0] instanceof Array))) {
+            if (this.is_subdomain(value)) {
+                if ((value.length == 1) && this.is_subdomain(value[0])) {
                     return this.simplify(value[0]);
                 } else if ((value.length == 2) &&
-                        ((value[0] == 'AND') || (value[0] == 'OR')) &&
-                        (value[1] instanceof Array)) {
+                    ((value[0] == 'AND') || (value[0] == 'OR')) &&
+                    this.is_subdomain(value[1])) {
                     return this.simplify(value[1]);
                 } else if ((value.length == 3) &&
-                        ((value[0] == 'AND') || (value[0] == 'OR')) &&
-                        (value[1] instanceof Array) &&
-                        (value[0] == value[1][0])) {
+                    ((value[0] == 'AND') || (value[0] == 'OR')) &&
+                    this.is_subdomain(value[1]) &&
+                    (value[0] == value[1][0])) {
                     value = this.simplify(value[1]).concat([value[2]]);
                 }
                 return value.map(this.simplify.bind(this));
