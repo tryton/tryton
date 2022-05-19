@@ -32,4 +32,6 @@ this repository contains the full copyright notices and license terms. -->
         <label name="expense"/>
         <field name="expense" xexpand="0" width="25"/>
     </group>
+
+    <field name="childs" colspan="6"/>
 </form>
