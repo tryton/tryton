@@ -238,5 +238,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">STO</field>
             <field name="type">general</field>
         </record>
+        <record model="account.journal" id="journal_miscellaneous">
+            <field name="name">Miscellaneous</field>
+            <field name="code">MISC</field>
+            <field name="type">general</field>
+        </record>
     </data>
 </tryton>
