@@ -3003,6 +3003,7 @@
         ['', ["Name: "]],
         [' ', ["", "Name: "]],
         ["Name: foo or", ["Name: foo"]],
+        ['Name: foo (Name: foo or N', ["Name: foo (Name: foo or Name: "]],
         ].forEach(function(test) {
             var value = test[0];
             var expected = test[1];
