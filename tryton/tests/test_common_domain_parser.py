@@ -1120,6 +1120,7 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(list(dom.completion('Name: !=foo')), [])
         self.assertEqual(list(dom.completion('')), ['Name: '])
         self.assertEqual(list(dom.completion(' ')), ['', 'Name: '])
+        self.assertEqual(list(dom.completion('Name: foo or')), ['Name: foo'])
 
     def test_completion_many2one(self):
         "Test completion many2one"
