@@ -3,6 +3,7 @@
 
 import os
 
+from trytond.cache import Cache
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.rpc import RPC
 from trytond.tools import file_open
@@ -17,6 +18,7 @@ class Icon(sequence_ordered(), ModelSQL, ModelView):
     module = fields.Char('Module', readonly=True, required=True)
     path = fields.Char('SVG Path', readonly=True, required=True)
     icon = fields.Function(fields.Char('Icon', depends=['path']), 'get_icon')
+    _list_icons = Cache('ir.ui.icon.list_icons', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -44,12 +46,17 @@ class Icon(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def list_icons(cls):
+        icons = cls._list_icons.get(None)
+        if icons is not None:
+            return icons
         icons = {}
         for icon in cls.browse(cls.search([],
                 order=[('sequence', 'ASC'), ('id', 'ASC')])):
             if icon.name not in icons:
                 icons[icon.name] = icon.id
-        return sorted((icon_id, name) for name, icon_id in icons.items())
+        icons = sorted((icon_id, name) for name, icon_id in icons.items())
+        cls._list_icons.set(None, icons)
+        return icons
 
     def get_icon(self, name):
         path = os.path.join(self.module, self.path.replace('/', os.sep))
@@ -58,3 +65,19 @@ class Icon(sequence_ordered(), ModelSQL, ModelView):
                 subdir='modules' if self.module not in {'ir', 'res'} else '',
                 mode='r', encoding='utf-8') as fp:
             return fp.read()
+
+    @classmethod
+    def create(cls, vlist):
+        icons = super().create(vlist)
+        cls._list_icons.clear()
+        return icons
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._list_icons.clear()
+
+    @classmethod
+    def delete(cls, icons):
+        super().delete(icons)
+        cls._list_icons.clear()
