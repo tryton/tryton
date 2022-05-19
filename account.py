@@ -16,7 +16,10 @@ class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     grouped_lines = fields.One2Many(
-        'account.move.line.group', 'move', "Grouped Lines", readonly=True)
+        'account.move.line.group', 'move', "Grouped Lines", readonly=True,
+        states={
+            'invisible': ~Eval('grouped_lines', []),
+            })
 
 
 class MoveLine(metaclass=PoolMeta):
