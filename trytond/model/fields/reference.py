@@ -135,7 +135,7 @@ class Reference(SelectionMixin, Field):
                 continue
             try:
                 ref_id = int(ref_id)
-            except Exception:
+            except ValueError:
                 continue
             if ref_id < 0:
                 continue
