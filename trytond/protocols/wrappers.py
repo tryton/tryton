@@ -195,7 +195,9 @@ def with_transaction(readonly=None, user=0, context=None):
                             continue
                         logger.error('%s', request, exc_info=True)
                         raise
-                    except Exception:
+                    except Exception as e:
+                        if isinstance(e, HTTPException):
+                            raise
                         logger.error('%s', request, exc_info=True)
                         raise
                     # Need to commit to unlock SQLite database
