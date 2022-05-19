@@ -223,6 +223,8 @@ class PurchaseRequest(metaclass=PoolMeta):
 
         for product_supplier in product.product_suppliers_used(**pattern):
             supply_date = product_supplier.compute_supply_date(date=today)
+            if supply_date == datetime.date.max:
+                continue
             next_day = today + product_supplier.get_supply_period()
             next_supply_date = product_supplier.compute_supply_date(
                 date=next_day)
