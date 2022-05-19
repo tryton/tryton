@@ -73,7 +73,7 @@ class Translation(ModelSQL, ModelView):
         context=False)
     _translation_report_cache = Cache(
         'ir.translation.get_report', context=False)
-    _get_language_cache = Cache('ir.translation.get_language')
+    _get_language_cache = Cache('ir.translation.get_language', context=False)
 
     @classmethod
     def __register__(cls, module_name):
@@ -265,14 +265,15 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def get_language(cls):
-        result = cls._get_language_cache.get(None)
+        language = Transaction().language
+        result = cls._get_language_cache.get(language)
         if result is not None:
             return result
         pool = Pool()
         Lang = pool.get('ir.lang')
         langs = Lang.search([])
         result = [(lang.code, lang.name) for lang in langs]
-        cls._get_language_cache.set(None, result)
+        cls._get_language_cache.set(language, result)
         return result
 
     @classmethod
