@@ -255,7 +255,7 @@ class InvoiceSII(ModelSQL, ModelView):
             ])
     csv = fields.Char("CSV", readonly=True,
         help="A secure validation code that confirms the delivery of the "
-        "related Invoice.")
+        "related invoice.")
     error_code = fields.Char("Error Code", readonly=True,
         states={
             'invisible': ~Bool(Eval('error_code')),
