@@ -2566,6 +2566,7 @@
         ['Name: !=foo', []],
         ['', ["Name: "]],
         [' ', ["", "Name: "]],
+        ["Name: foo or", ["Name: foo"]],
         ].forEach(function(test) {
             var value = test[0];
             var expected = test[1];
