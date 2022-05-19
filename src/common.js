@@ -1332,7 +1332,7 @@
 
             var pslice = function(string, depth) {
                 if (depth > 0) {
-                    return string.substring(0, depth);
+                    return string.substring(0, string.length - depth);
                 }
                 return string;
             };
@@ -1462,8 +1462,8 @@
                 results.push(domain[i]);
             }
             if (this.is_subdomain(domain[i])) {
-                results = results.concat(this.replace_ending_clause(domain[i],
-                            clause));
+                results.push(
+                    this.replace_ending_clause(domain[i], clause));
             } else {
                 results.push(clause);
             }
