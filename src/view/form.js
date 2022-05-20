@@ -4300,8 +4300,8 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Image._super.set_readonly.call(this, readonly);
-            this.but_select.prop('disable', readonly);
-            this.but_clear.prop('disable', readonly);
+            this.but_select.prop('disabled', readonly);
+            this.but_clear.prop('disabled', readonly);
         },
         clear: function() {
             Sao.View.Form.Image._super.clear.call(this);
