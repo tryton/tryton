@@ -52,6 +52,18 @@ class EmailTemplate(metaclass=PoolMeta):
             'party.party', 'party.contact_mechanism']
 
     @classmethod
+    def _get_default_exclude(cls, record):
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        exclude = super()._get_default_exclude(record)
+        if isinstance(record, Party):
+            exclude.append('contact_mechanisms')
+        if isinstance(record, ContactMechanism):
+            exclude.append('party')
+        return exclude
+
+    @classmethod
     def _get_address(cls, record):
         pool = Pool()
         Party = pool.get('party.party')
