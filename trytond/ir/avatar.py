@@ -71,6 +71,16 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         super().write(*args)
         cls.clear_cache(avatars)
 
+    @classmethod
+    def copy(cls, avatars, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('uuid', None)
+        default.setdefault('cache', None)
+        return super().copy(avatars, default=default)
+
     @property
     def url(self):
         if self.image_id or self.image:
