@@ -45,9 +45,9 @@ the product.
 
    A list of product templates can be found by opening the main menu item:
 
-      |Product --> Products|__
+      |Products --> Products|__
 
-      .. |Product --> Products| replace:: :menuselection:`Product --> Products`
+      .. |Products --> Products| replace:: :menuselection:`Products --> Products`
       __ https://demo.tryton.org/model/product.template
 
 .. _model-product.product:
@@ -78,9 +78,9 @@ Some of the supported types of identifier include:
 
    A list of all the product variants is available from the main menu item:
 
-      |Product --> Products --> Variants|__
+      |Products --> Products --> Variants|__
 
-      .. |Product --> Products --> Variants| replace:: :menuselection:`Product --> Products --> Variants`
+      .. |Products --> Products --> Variants| replace:: :menuselection:`Products --> Products --> Variants`
       __ https://demo.tryton.org/model/product.product
 
 .. _model-product.category:
@@ -97,9 +97,9 @@ sub-categories.
 
    A list of product categories can be found by opening the main menu item:
 
-      |Product --> Categories|__
+      |Products --> Categories|__
 
-      .. |Product --> Categories| replace:: :menuselection:`Product --> Categories`
+      .. |Products --> Categories| replace:: :menuselection:`Products --> Categories`
       __ https://demo.tryton.org/model/product.category
 
 .. _model-product.uom:
@@ -123,9 +123,9 @@ digits used when rounding or displaying values from the unit of measure.
 
    The units of measure can be found using the main menu item:
 
-      |Product --> Units of Measure|__
+      |Products --> Units of Measure|__
 
-      .. |Product --> Units of Measure| replace:: :menuselection:`Product --> Units of Measure`
+      .. |Products --> Units of Measure| replace:: :menuselection:`Products --> Units of Measure`
       __ https://demo.tryton.org/model/product.uom
 
 .. _model-product.uom.category:
@@ -142,9 +142,9 @@ These are things like length, weight, time or volume.
 
    The units of measure can be found using the main menu item:
 
-      |Product --> Units of Measure --> Categories|__
+      |Products --> Units of Measure --> Categories|__
 
-      .. |Product --> Units of Measure --> Categories| replace:: :menuselection:`Product --> Units of Measure --> Categories`
+      .. |Products --> Units of Measure --> Categories| replace:: :menuselection:`Products --> Units of Measure --> Categories`
       __ https://demo.tryton.org/model/product.uom.category
 
 .. _model-product.configuration:
@@ -162,7 +162,7 @@ generate codes for `Products <concept-product>`.
 
    The product configuration can be found using the main menu item:
 
-      |Product --> Configuration --> Configuration|__
+      |Products --> Configuration --> Configuration|__
 
-      .. |Product --> Configuration --> Configuration| replace:: :menuselection:`Product --> Configuration --> Configuration`
+      .. |Products --> Configuration --> Configuration| replace:: :menuselection:`Products --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/product.configuration/1

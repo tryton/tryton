@@ -27,7 +27,7 @@ Structuring your products like this can help you manage and update them.
    You may find that your products are not suited to being structured in this
    way.
    If so, don't worry, when you create a new *Product* from the
-   [:menuselection:`Product --> Products`] menu item a single variant is
+   [:menuselection:`Products --> Products`] menu item a single variant is
    automatically created for you and displayed as part of the product.
 
 .. _Categorising products:
@@ -69,6 +69,6 @@ belongs in the ``Clothes / Shirts / Short sleeves`` and
 .. tip::
 
    To get a list of all the products in a category first open the
-   [:menuselection:`Product --> Categories`] menu item.
+   [:menuselection:`Products --> Categories`] menu item.
    Then when you open one of the categories listed here you will get a list
    of all the products in that category.
