@@ -743,7 +743,10 @@ class ModelSQL(ModelStorage):
                 if not callable(cls.table_query):
                     rule_domain = Rule.domain_get(
                         cls.__name__, mode=f.lstrip('_'))
-                    if rule_domain:
+                    # No need to compute rule domain if it is the same as the
+                    # read rule domain because it is already applied as where
+                    # clause.
+                    if rule_domain and rule_domain != domain:
                         rule_tables = {None: (table, None)}
                         rule_tables, rule_expression = cls.search_domain(
                             rule_domain, active_test=False, tables=rule_tables)
