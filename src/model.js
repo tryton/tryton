@@ -2152,7 +2152,7 @@
                 return this._set_value(record, value, false, true);
             }
             var prm = jQuery.when();
-            if (value.add || value.update) {
+            if (value && (value.add || value.update)) {
                 var context = this.get_context(record);
                 var fields = record._values[this.name].model.fields;
                 var field_names = {};
@@ -2192,7 +2192,7 @@
                     to_remove.push(record2);
                 }
             });
-            if (value.remove) {
+            if (value && value.remove) {
                 value.remove.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
@@ -2204,7 +2204,7 @@
                 group.remove(record2, false, true, false, false);
             }.bind(this));
 
-            if (value.add || value.update) {
+            if (value && (value.add || value.update)) {
                 prm = prm.then(function(fields) {
                     var promises = [];
                     group.add_fields(fields);
