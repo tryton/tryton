@@ -162,7 +162,7 @@ generate codes for `Products <concept-product>`.
 
    The product configuration can be found using the main menu item:
 
-      |Product --> Configuration --> Product Configuration|__
+      |Product --> Configuration --> Configuration|__
 
-      .. |Product --> Configuration --> Product Configuration| replace:: :menuselection:`Product --> Configuration --> Product Configuration`
+      .. |Product --> Configuration --> Configuration| replace:: :menuselection:`Product --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/product.configuration/1
