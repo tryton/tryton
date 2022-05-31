@@ -211,7 +211,7 @@ This setting can be changed if you are `Manually assigning party codes`.
 
    Configuration settings are found by opening the main menu item:
 
-      |Party --> Configuration --> Party Configuration|__
+      |Party --> Configuration --> Configuration|__
 
-      .. |Party --> Configuration --> Party Configuration| replace:: :menuselection:`Party --> Configuration --> Party Configuration`
+      .. |Party --> Configuration --> Configuration| replace:: :menuselection:`Party --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/party.configuration/1
