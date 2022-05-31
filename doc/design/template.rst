@@ -28,21 +28,21 @@ particular country and/or company type.
 
     The templates can be found using the following menu entries:
 
-    * |Financial --> Configuration --> Templates --> Account Templates|__
-    * |Financial --> Configuration --> Templates --> Account Type Templates|__
-    * |Financial --> Configuration --> Templates --> Taxes Templates|__
-    * |Financial --> Configuration --> Templates --> Tax Codes Templates|__
-    * |Financial --> Configuration --> Templates --> Tax Rule Templates|__
+    * |Financial --> Configuration --> Templates --> Account Types|__
+    * |Financial --> Configuration --> Templates --> Accounts|__
+    * |Financial --> Configuration --> Templates --> Tax Codes|__
+    * |Financial --> Configuration --> Templates --> Taxes|__
+    * |Financial --> Configuration --> Templates --> Tax Rules|__
 
-    .. |Financial --> Configuration --> Templates --> Account Templates| replace:: :menuselection:`Financial --> Configuration --> Templates --> Account Templates`
-    __ https://demo.tryton.org/model/account.account.template
-    .. |Financial --> Configuration --> Templates --> Account Type Templates| replace:: :menuselection:`Financial --> Configuration --> Templates --> Account Type Templates`
+    .. |Financial --> Configuration --> Templates --> Account Types| replace:: :menuselection:`Financial --> Configuration --> Templates --> Account Types`
     __ https://demo.tryton.org/model/account.account.type.template
-    .. |Financial --> Configuration --> Templates --> Taxes Templates| replace:: :menuselection:`Financial --> Configuration --> Templates --> Taxes Templates`
-    __ https://demo.tryton.org/model/account.tax.template
-    .. |Financial --> Configuration --> Templates --> Tax Codes Templates| replace:: :menuselection:`Financial --> Configuration --> Templates --> Tax Codes Templates`
+    .. |Financial --> Configuration --> Templates --> Accounts| replace:: :menuselection:`Financial --> Configuration --> Templates --> Accounts`
+    __ https://demo.tryton.org/model/account.account.template
+    .. |Financial --> Configuration --> Templates --> Tax Codes| replace:: :menuselection:`Financial --> Configuration --> Templates --> Tax Codes`
     __ https://demo.tryton.org/model/account.tax.code.template
-    .. |Financial --> Configuration --> Templates --> Tax Rule Templates| replace:: :menuselection:`Financial --> Configuration --> Templates --> Tax Rule Templates`
+    .. |Financial --> Configuration --> Templates --> Taxes| replace:: :menuselection:`Financial --> Configuration --> Templates --> Taxes`
+    __ https://demo.tryton.org/model/account.tax.template
+    .. |Financial --> Configuration --> Templates --> Tax Rules| replace:: :menuselection:`Financial --> Configuration --> Templates --> Tax Rules`
     __ https://demo.tryton.org/model/account.tax.rule.template
 
 Wizards

@@ -10,7 +10,7 @@ behaviour and default values for accounting related activities.
 
    Account configuration settings are found by opening the main menu item:
 
-      |Financial --> Configuration --> Account Configuration|__
+      |Financial --> Configuration --> Configuration|__
 
-      .. |Financial --> Configuration --> Account Configuration| replace:: :menuselection:`Financial --> Configuration --> Account Configuration`
+      .. |Financial --> Configuration --> Configuration| replace:: :menuselection:`Financial --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/account.configuration/1
