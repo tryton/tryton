@@ -97,11 +97,14 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         help="Add the numbers which identify the bank account.")
 
     def get_rec_name(self, name):
-        if self.numbers:
-            number = self.numbers[0].number
+        for number in self.numbers:
+            if number.number:
+                name = number.number
+                break
         else:
-            number = '(%s)' % self.id
-        name = '%s @ %s' % (number, self.bank.rec_name)
+            name = '(%s)' % self.id
+        if self.bank:
+            name += ' @ %s' % self.bank.rec_name
         if self.currency:
             name += ' [%s]' % self.currency.code
         return name
@@ -155,7 +158,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     def guess_bank(self):
         pool = Pool()
         Bank = pool.get('bank')
-        if IBAN:
+        if IBAN and self.iban:
             iban = IBAN(self.iban)
             if iban.bic:
                 return Bank.from_bic(iban.bic)

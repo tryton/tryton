@@ -10,6 +10,7 @@ except ImportError:
 
 from trytond.model.exceptions import SQLConstraintError
 from trytond.modules.bank.exceptions import InvalidBIC
+from trytond.modules.currency.tests import create_currency
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -89,6 +90,65 @@ class BankTestCase(ModuleTestCase):
         self.assertEqual(other_number.number, 'BE82068896274468')
 
     @with_transaction()
+    def test_account_rec_name_without_number(self):
+        "Test account record name without number"
+        pool = Pool()
+        Account = pool.get('bank.account')
+
+        account = Account()
+        account.save()
+
+        self.assertEqual(account.rec_name, "(%s)" % account.id)
+
+    @with_transaction()
+    def test_account_rec_name_with_number(self):
+        "Test account record name with number"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        account = Account(numbers=[
+                Number(type='other', number="1234")])
+        account.save()
+
+        self.assertEqual(account.rec_name, "1234")
+
+    @with_transaction()
+    def test_account_rec_name_with_bank(self):
+        "Test account record name with bank"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Bank = pool.get('bank')
+        Number = pool.get('bank.account.number')
+        Party = pool.get('party.party')
+
+        party = Party(name="Bank")
+        party.save()
+        bank = Bank(party=party)
+        bank.save()
+        account = Account(
+            numbers=[Number(type='other', number="1234")],
+            bank=bank)
+        account.save()
+
+        self.assertEqual(account.rec_name, "1234 @ Bank")
+
+    @with_transaction()
+    def test_account_rec_name_with_currency(self):
+        "Test account record name with currency"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        currency = create_currency("USD")
+        account = Account(
+            numbers=[Number(type='other', number="1234")],
+            currency=currency)
+        account.save()
+
+        self.assertEqual(account.rec_name, "1234 [USD]")
+
+    @with_transaction()
     def test_number_single_iban(self):
         "Test number has single IBAN"
         pool = Pool()
@@ -154,6 +214,19 @@ class BankTestCase(ModuleTestCase):
         account2.save()
 
         self.assertEqual(len(Bank.search([])), 1)
+
+    @with_transaction()
+    def test_guess_bank_without_iban(self):
+        "Test guess bank without IBAN"
+        pool = Pool()
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+
+        account = Account(numbers=[
+                Number(type='other', number="123456")])
+        account.save()
+
+        self.assertIsNone(account.bank)
 
 
 del ModuleTestCase
