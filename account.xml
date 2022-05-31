@@ -218,6 +218,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.field.access" id="access_account_type_amount">
+            <field name="field" search="[('model.model', '=', 'account.account.type'), ('name', '=', 'amount')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_type_amount_account">
+            <field name="field" search="[('model.model', '=', 'account.account.type'), ('name', '=', 'amount')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_type_amount_cmp">
+            <field name="field" search="[('model.model', '=', 'account.account.type'), ('name', '=', 'amount_cmp')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_type_amount_cmp_account">
+            <field name="field" search="[('model.model', '=', 'account.account.type'), ('name', '=', 'amount_cmp')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_account_type_companies">
             <field name="name">User in companies</field>
             <field name="model"
@@ -242,6 +262,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_print</field>
             <field name="model">account.account.type,-1</field>
             <field name="action" ref="report_account_type_statement"/>
+        </record>
+        <record model="ir.action-res.group" id="report_account_type_statement_group_account">
+            <field name="action" ref="report_account_type_statement"/>
+            <field name="group" ref="group_account"/>
         </record>
 
         <record model="ir.ui.view" id="account_template_view_form">
@@ -494,6 +518,46 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_balance">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'balance')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_balance_account">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'balance')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_credit">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'credit')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_credit_account">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'credit')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_debit">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'debit')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_debit_account">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'debit')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_amount_second_currency">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'amount_second_currency')]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_account_amount_second_currency_account">
+            <field name="field" search="[('model.model', '=', 'account.account'), ('name', '=', 'amount_second_currency')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_account_companies">
