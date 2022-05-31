@@ -236,6 +236,15 @@ class Type(
             },
         domain=[
             ('company', '=', Eval('company')),
+            ['OR',
+                If(Eval('statement') == 'off-balance',
+                    ('statement', '=', 'off-balance'),
+                    If(Eval('statement') == 'balance',
+                        ('statement', '=', 'balance'),
+                        ('statement', '!=', 'off-balance')),
+                    ),
+                ('statement', '=', None),
+                ],
             ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
@@ -274,6 +283,11 @@ class Type(
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @fields.depends('parent', '_parent_parent.statement')
+    def on_change_parent(self):
+        if self.parent:
+            self.statement = self.parent.statement
 
     def get_currency(self, name):
         return self.company.currency.id
