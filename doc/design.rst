@@ -40,9 +40,9 @@ if its scope, or the amount of work required, changes.
 
    Work efforts can be found by opening the main menu item:
 
-      |Project --> Configuration --> Works Efforts|__
+      |Projects --> Configuration --> Works Efforts|__
 
-      .. |Project --> Configuration --> Works Efforts| replace:: :menuselection:`Project --> Configuration --> Works Efforts`
+      .. |Projects --> Configuration --> Works Efforts| replace:: :menuselection:`Projects --> Configuration --> Works Efforts`
       __ https://demo.tryton.org/model/project.work
 
 .. _concept-project.work.project:
@@ -61,9 +61,9 @@ These are used to record who the project is for.
 
    A list of projects can be found using the main menu item:
 
-      |Project --> Projects --> Projects|__
+      |Projects --> Projects|__
 
-      .. |Project --> Projects --> Projects| replace:: :menuselection:`Project --> Projects --> Projects`
+      .. |Projects --> Projects| replace:: :menuselection:`Projects --> Projects`
       __ https://demo.tryton.org/model/project.work;name="Projects"&domain=[["type"%2C"%3D"%2C"project"]]
 
 .. _concept-project.work.task:
@@ -77,9 +77,9 @@ A *Task* is a type of *Work Effort* that is used for smaller pieces of work.
 
    A list of tasks can be found using the main menu item:
 
-      |Project --> Projects --> Tasks|__
+      |Projects --> Tasks|__
 
-      .. |Project --> Projects --> Tasks| replace:: :menuselection:`Project --> Projects --> Tasks`
+      .. |Projects --> Tasks| replace:: :menuselection:`Projects --> Tasks`
       __ https://demo.tryton.org/model/project.work;name="Tasks"&domain=[["type"%2C"%3D"%2C"task"]]
 
 .. _model-project.work.status:
@@ -99,7 +99,7 @@ needed for work to have that status.
 
    The available *Work Statuses* are found using the main menu item:
 
-      |Project --> Configuration --> Work Status|__
+      |Projects --> Configuration --> Work Status|__
 
-      .. |Project --> Configuration --> Work Status| replace:: :menuselection:`Project --> Configuration --> Work Status`
+      .. |Projects --> Configuration --> Work Status| replace:: :menuselection:`Projects --> Configuration --> Work Status`
       __ https://demo.tryton.org/model/project.work
