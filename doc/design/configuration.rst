@@ -11,7 +11,7 @@ sequences used to generate `Shipment <concept-stock.shipment>` numbers.
 
    The stock configuration can be found using the main menu item:
 
-      |Inventory & Stock --> Configuration --> Stock Configuration|__
+      |Inventory & Stock --> Configuration --> Configuration|__
 
-      .. |Inventory & Stock --> Configuration --> Stock Configuration| replace:: :menuselection:`Inventory & Stock --> Configuration --> Stock Configuration`
+      .. |Inventory & Stock --> Configuration --> Configuration| replace:: :menuselection:`Inventory & Stock --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/stock.configuration/1
