@@ -1672,18 +1672,23 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return
         moved_quantity = 0
         for move in self.moves:
-            if move.state != 'cancelled':
+            if move.state != 'cancelled' and self.unit:
                 moved_quantity += Uom.compute_qty(
-                    move.uom, move.quantity, self.unit)
+                    move.uom, move.quantity, self.unit, round=False)
         if self.quantity < 0:
             moved_quantity *= -1
         invoiced_quantity = 0
         for invoice_line in self.invoice_lines:
-            if (not invoice_line.invoice
-                    or invoice_line.invoice.state != 'cancelled'):
+            if (
+                    (not invoice_line.invoice
+                        or invoice_line.invoice.state != 'cancelled')
+                    and self.unit and invoice_line.unit):
                 invoiced_quantity += Uom.compute_qty(
-                    invoice_line.unit, invoice_line.quantity, self.unit)
+                    invoice_line.unit, invoice_line.quantity, self.unit,
+                    round=False)
         actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
+        if self.unit:
+            actual_quantity = self.unit.round(actual_quantity)
         if self.actual_quantity != actual_quantity:
             self.actual_quantity = actual_quantity
 
