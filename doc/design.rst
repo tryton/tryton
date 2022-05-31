@@ -138,9 +138,9 @@ quantities.
    A list of products and their suppliers can be found by opening the main
    menu item:
 
-      |Product --> Product Suppliers|__
+      |Products --> Products --> Suppliers|__
 
-      .. |Product --> Product Suppliers| replace:: :menuselection:`Product --> Product Suppliers`
+      .. |Products --> Products --> Suppliers| replace:: :menuselection:`Products --> Products --> Suppliers`
       __ https://demo.tryton.org/model/purchase.product_supplier
 
 .. _model-purchase.configuration:

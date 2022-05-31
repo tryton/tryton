@@ -6,7 +6,7 @@ Listing Suppliers
 In Tryton, by definition, the `Parties <party:model-party.party>` that your
 `Company <company:model-company.company>` has bought from are its suppliers.
 The *Purchase Module* lets you list these when you open the
-[:menuselection:`Party --> Parties --> Parties associated to Purchases`]
+[:menuselection:`Parties --> Parties --> Associated to Purchases`]
 main menu item.
 
 .. tip::
