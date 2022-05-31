@@ -266,7 +266,7 @@ general behaviour and default values for sales related activities.
 
    Sales configuration settings are found by opening the main menu item:
 
-      |Sales --> Configuration --> Sales Configuration|__
+      |Sales --> Configuration --> Configuration|__
 
-      .. |Sales --> Configuration --> Sales Configuration| replace:: :menuselection:`Sales --> Configuration --> Sales Configuration`
+      .. |Sales --> Configuration --> Configuration| replace:: :menuselection:`Sales --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/sale.configuration/1
