@@ -16,7 +16,7 @@ they can be used.
 
    Incoterms can be found by opening the main menu item:
 
-      |Company --> Incoterms|__
+      |Companies --> Incoterms|__
 
-      .. |Company --> Incoterms| replace:: :menuselection:`Company --> Incoterms`
+      .. |Companies --> Incoterms| replace:: :menuselection:`Companies --> Incoterms`
       __ https://demo.tryton.org/model/incoterm.incoterm
