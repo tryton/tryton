@@ -21,9 +21,9 @@ money in a range of different currencies.
 
    Currencies can be found by opening the main menu item:
 
-      |Currency --> Currencies|__
+      |Currencies --> Currencies|__
 
-      .. |Currency --> Currencies| replace:: :menuselection:`Currency --> Currencies`
+      .. |Currencies --> Currencies| replace:: :menuselection:`Currencies --> Currencies`
       __ https://demo.tryton.org/model/currency.currency
 
 .. _model-currency.currency.rate:
@@ -53,7 +53,7 @@ The frequency determines which dates get rates.
 
    Scheduled Rate Updates can be found by opening the main menu item:
 
-      |Currency --> Scheduled Rate Updates|__
+      |Currencies --> Scheduled Rate Updates|__
 
-      .. |Currency --> Scheduled Rate Updates| replace:: :menuselection:`Currency --> Scheduled Rate Updates`
+      .. |Currencies --> Scheduled Rate Updates| replace:: :menuselection:`Currencies --> Scheduled Rate Updates`
       __ https://demo.tryton.org/model/currency.cron
