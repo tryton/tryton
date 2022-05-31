@@ -18,9 +18,9 @@ company, or organisation, which the users of the system are members of.
 
    Companies can be found by opening the main menu item:
 
-      |Company --> Companies|__
+      |Companies --> Companies|__
 
-      .. |Company --> Companies| replace:: :menuselection:`Company --> Companies`
+      .. |Companies --> Companies| replace:: :menuselection:`Companies --> Companies`
       __ https://demo.tryton.org/model/company.company
 
 .. _model-company.employee:
@@ -41,9 +41,9 @@ supervisor.
    A list of the employees for all the companies can be found from the main
    menu item:
 
-      |Company --> Employees|__
+      |Companies --> Employees|__
 
-      .. |Company --> Employees| replace:: :menuselection:`Company --> Employees`
+      .. |Companies --> Employees| replace:: :menuselection:`Companies --> Employees`
       __ https://demo.tryton.org/model/company.employee
 
 .. _model-res.user:
