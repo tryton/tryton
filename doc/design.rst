@@ -161,7 +161,7 @@ the general behaviour and default values for purchase related activities.
 
    Purchase configuration settings are found by opening the main menu item:
 
-      |Purchase --> Configuration --> Purchase Configuration|__
+      |Purchase --> Configuration --> Configuration|__
 
-      .. |Purchase --> Configuration --> Purchase Configuration| replace:: :menuselection:`Purchase --> Configuration --> Purchase Configuration`
+      .. |Purchase --> Configuration --> Configuration| replace:: :menuselection:`Purchase --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/purchase.configuration/1
