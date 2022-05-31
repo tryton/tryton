@@ -7,7 +7,7 @@ In Tryton, by definition, the `Parties <party:model-party.party>` that
 have bought `Products <product:concept-product>` from your
 `Company <company:model-company.company>` are its customers.
 The *Sale Module* lets you get a list of these from the
-[:menuselection:`Party --> Parties --> Parties associated to Sales`]
+[:menuselection:`Parties --> Parties --> Associated to Sales`]
 main menu item.
 
 .. tip::
