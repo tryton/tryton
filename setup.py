@@ -138,7 +138,7 @@ setup(name=name,
     python_requires='>=3.7',
     install_requires=requires,
     extras_require={
-        'SWIFT': ['schwifty'],
+        'SWIFT': ['schwifty>=2020.01.0'],
         'test': tests_require,
         },
     dependency_links=dependency_links,

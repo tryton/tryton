@@ -136,9 +136,15 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     def check_bank(self):
         if not self.bank or not self.bank.bic:
             return
-        if IBAN:
+        if IBAN and BIC:
             iban = IBAN(self.iban)
-            if iban.bic and iban.bic != self.bank.bic:
+            bic = BIC(self.bank.bic)
+            if (iban.bic
+                    and iban.bic != bic
+                    and (
+                        iban.country_code != bic.country_code
+                        or (iban.bank_code or iban.branch_code)
+                        not in bic.domestic_bank_codes)):
                 raise AccountValidationError(
                     gettext('bank.msg_invalid_iban_bic',
                         account=self.rec_name,
