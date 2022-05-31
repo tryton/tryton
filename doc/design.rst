@@ -22,9 +22,9 @@ like `Addresses <model-party.address>`,
 
    Parties can be found by opening the main menu item:
 
-      |Party --> Parties|__
+      |Parties --> Parties|__
 
-      .. |Party --> Parties| replace:: :menuselection:`Party --> Parties`
+      .. |Parties --> Parties| replace:: :menuselection:`Parties --> Parties`
       __ https://demo.tryton.org/model/party.party
 
 Reports
@@ -106,9 +106,9 @@ addresses can also be defined.
 
    Party addresses can be found by opening the main menu item:
 
-      |Party --> Addresses|__
+      |Parties --> Addresses|__
 
-      .. |Party --> Addresses| replace:: :menuselection:`Party --> Addresses`
+      .. |Parties --> Addresses| replace:: :menuselection:`Parties --> Addresses`
       __ https://demo.tryton.org/model/party.address
 
 .. _model-party.address.format:
@@ -124,9 +124,9 @@ These formats are then used when postal addresses need generating.
 
    You can find address formats by opening the main menu item:
 
-      |Party --> Configuration --> Address Formats|__
+      |Parties --> Configuration --> Address Formats|__
 
-      .. |Party --> Configuration --> Address Formats| replace:: :menuselection:`Party --> Configuration --> Address Formats`
+      .. |Parties --> Configuration --> Address Formats| replace:: :menuselection:`Parties --> Configuration --> Address Formats`
       __ https://demo.tryton.org/model/party.address.format
 
 .. _model-party.address.subdivision_type:
@@ -143,9 +143,9 @@ addresses.
 
    The address subdivision types can be accessed from the main menu item:
 
-      |Party --> Configuration --> Address Subdivision Types|__
+      |Parties --> Configuration --> Address Subdivision Types|__
 
-      .. |Party --> Configuration --> Address Subdivision Types| replace:: :menuselection:`Party --> Configuration --> Address Subdivision Types`
+      .. |Parties --> Configuration --> Address Subdivision Types| replace:: :menuselection:`Parties --> Configuration --> Address Subdivision Types`
       __ https://demo.tryton.org/model/party.address.subdivision_type
 
 .. _model-party.contact_mechanism:
@@ -171,9 +171,9 @@ can be associated with a party.
 
    A list of contact mechanisms can be found by opening the main menu item:
 
-      |Party --> Contact Mechanisms|__
+      |Parties --> Contact Mechanisms|__
 
-      .. |Party --> Contact Mechanisms| replace:: :menuselection:`Party --> Contact Mechanisms`
+      .. |Parties --> Contact Mechanisms| replace:: :menuselection:`Parties --> Contact Mechanisms`
       __ https://demo.tryton.org/model/party.contact_mechanism
 
 .. _model-party.category:
@@ -190,9 +190,9 @@ sub-categories.
 
    The party categories can be found by opening the main menu item:
 
-      |Party --> Categories|__
+      |Parties --> Categories|__
 
-      .. |Party --> Categories| replace:: :menuselection:`Party --> Categories`
+      .. |Parties --> Categories| replace:: :menuselection:`Parties --> Categories`
       __ https://demo.tryton.org/model/party.category
 
 .. _model-party.configuration:
@@ -211,7 +211,7 @@ This setting can be changed if you are `Manually assigning party codes`.
 
    Configuration settings are found by opening the main menu item:
 
-      |Party --> Configuration --> Configuration|__
+      |Parties --> Configuration --> Configuration|__
 
-      .. |Party --> Configuration --> Configuration| replace:: :menuselection:`Party --> Configuration --> Configuration`
+      .. |Parties --> Configuration --> Configuration| replace:: :menuselection:`Parties --> Configuration --> Configuration`
       __ https://demo.tryton.org/model/party.configuration/1
