@@ -41,6 +41,19 @@ Check active without start or end date::
     True
     >>> len(Account.find([('id', '=', cash.id)]))
     1
+    >>> len(Account.find([('id', '=', cash.id), ('active', '=', True)]))
+    1
+    >>> len(Account.find([('id', '=', cash.id), ('active', 'in', [True])]))
+    1
+    >>> len(Account.find([('id', '=', cash.id), ('active', 'in', [True, False])]))
+    1
+
+Check negative search::
+
+    >>> len(Account.find([('id', '=', cash.id), ('active', '=', False)]))
+    0
+    >>> len(Account.find([('id', '=', cash.id), ('active', 'in', [False])]))
+    0
 
 Check active with a start date::
 

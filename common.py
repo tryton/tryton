@@ -123,25 +123,24 @@ class ActivePeriodMixin(PeriodMixin):
         table, _ = tables[None]
         _, operator, value = domain
 
-        if operator in {'=', '!='}:
-            if (operator == '=') == value:
-                operator = 'in'
-            else:
-                operator = 'not in'
-        elif operator in {'in', 'not in'}:
-            if True in value and False not in value:
-                operator = 'in'
-            elif False in value and True not in value:
-                operator = 'not in'
-            else:
-                return Literal(True)
-        else:
-            return Literal(True)
-
         from_date, to_date = cls._active_dates()
         start_date = Coalesce(table.start_date, datetime.date.min)
         end_date = Coalesce(table.end_date, datetime.date.max)
 
-        return (((start_date <= to_date) & (end_date >= to_date))
+        expression = (((start_date <= to_date) & (end_date >= to_date))
             | ((start_date <= from_date) & (end_date >= from_date))
             | ((start_date >= from_date) & (end_date <= to_date)))
+
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
