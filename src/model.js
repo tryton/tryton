@@ -2303,7 +2303,7 @@
             if (value instanceof Array) {
                 return this._set_value(record, value, false, true);
             }
-            if (value.add || value.update) {
+            if (value && (value.add || value.update)) {
                 var context = this.get_context(record);
                 fields = record._values[this.name].model.fields;
                 var new_field_names = {};
@@ -2343,7 +2343,7 @@
             }
 
             var group = record._values[this.name];
-            if (value.delete) {
+            if (value && value.delete) {
                 value.delete.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
@@ -2351,7 +2351,7 @@
                     }
                 }.bind(this));
             }
-            if (value.remove) {
+            if (value && value.remove) {
                 value.remove.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
@@ -2360,7 +2360,7 @@
                 }.bind(this));
             }
 
-            if (value.add || value.update) {
+            if (value && (value.add || value.update)) {
                 // First set already added fields to prevent triggering a
                 // second on_change call
                 if (value.update) {
