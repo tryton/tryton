@@ -1965,11 +1965,11 @@
                     (attributes.states || {})).pre_validate || [];
                 prms.push(record.validate(fields, false, domain));
             }
-            return jQuery.when.apply(jQuery, prms).then(() => {
+            return jQuery.when.apply(jQuery, prms).then((...args) => {
                 var record;
                 for (var i = 0; i < selected_records.length; i++) {
                     record = selected_records[i];
-                    var result = arguments[i];
+                    var result = args[i];
                     if (result) {
                         continue;
                     }
