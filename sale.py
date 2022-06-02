@@ -79,7 +79,7 @@ class AmendmentLine(metaclass=PoolMeta):
             ('party', '=', Eval('party', -1)),
             ],
         states={
-            'invisible': Eval('action') != 'product',
+            'invisible': Eval('action') != 'line',
             })
 
     @fields.depends('line')
