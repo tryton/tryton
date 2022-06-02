@@ -697,7 +697,7 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
-        if self.line:
+        if self.line and self.line.unit:
             return self.line.unit.id
 
     @fields.depends('quantity', 'line')
@@ -729,7 +729,7 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
 
     @fields.depends('line')
     def on_change_with_unit(self, name=None):
-        if self.line:
+        if self.line and self.line.unit:
             return self.line.unit.id
 
     @fields.depends('quantity', 'line')
