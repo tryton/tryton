@@ -1,3 +1,6 @@
+Version 6.0.1 - 2022-06-03
+* Bug fixes (see mercurial logs for details)
+
 Version 6.0.0 - 2021-05-03
 * Bug fixes (see mercurial logs for details)
 * Manage price correction from supplier invoice
