@@ -195,6 +195,7 @@ Receive 50 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
+    >>> set_user(account_user)
     >>> stock_in.reload()
     >>> stock_in.debit
     Decimal('0.00')
