@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/group/field[@name='active']"
+        expr="//group[@id='checkboxes']/field[@name='active']"
         position="after">
         <label name="invoice"/>
         <field name="invoice" xexpand="0" width="25"/>
