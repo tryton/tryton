@@ -6,7 +6,7 @@ from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.utils import getaddresses
+from email.utils import formataddr, getaddresses, parseaddr
 
 from sql import Null
 from sql.operators import Concat
@@ -196,8 +196,8 @@ class Email(ModelSQL, ModelView):
             msg = content
 
         msg['From'] = from_
-        msg['To'] = ', '.join(to)
-        msg['Cc'] = ', '.join(cc)
+        msg['To'] = ', '.join(formataddr(parseaddr(a)) for a in to)
+        msg['Cc'] = ', '.join(formataddr(parseaddr(a)) for a in cc)
         msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
         return msg
