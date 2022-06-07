@@ -7,8 +7,11 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="model"/>
     <field name="model"/>
+    <label name="unsubscribable"/>
+    <field name="unsubscribable"/>
+
     <label name="domain"/>
-    <field name="domain" widget="pyson"/>
+    <field name="domain" widget="pyson" colspan="3"/>
 
     <field name="activities" colspan="4" view_ids="marketing_automation.activity_view_list"/>
 

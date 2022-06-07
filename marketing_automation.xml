@@ -205,6 +205,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="record_block_button">
+            <field name="name">block</field>
+            <field name="string">Block</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+        </record>
+
         <record model="ir.ui.view" id="record_activity_view_list">
             <field name="model">marketing.automation.record.activity</field>
             <field name="type">tree</field>

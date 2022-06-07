@@ -17,10 +17,12 @@ Patch sendmail_transactional::
     >>> from trytond.modules.marketing_automation import marketing_automation
     >>> smtp_calls = patch.object(
     ...     marketing_automation, 'sendmail_transactional').start()
+    >>> manager = patch.object(
+    ...     marketing_automation, 'SMTPDataManager').start()
 
 Activate modules::
 
-    >>> config = activate_modules(['marketing_automation', 'party'])
+    >>> config = activate_modules('marketing_automation')
 
 Create a party::
 

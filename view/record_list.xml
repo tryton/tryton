@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="scenario" expand="1"/>
     <field name="record" expand="1"/>
     <field name="blocked"/>
+    <button name="block" tree_invisible="1"/>
 </tree>

@@ -15,12 +15,10 @@ def register():
         marketing_automation.Activity,
         marketing_automation.Record,
         marketing_automation.RecordActivity,
+        party.Party,
+        party.PartyUnsubscribedScenario,
         web.ShortenedURL,
         module='marketing_automation', type_='model')
-    Pool.register(
-        party.Party,
-        module='marketing_automation', type_='model',
-        depends=['party'])
     Pool.register(
         sale.Sale,
         module='marketing_automation', type_='model',

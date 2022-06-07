@@ -6,6 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="record"/>
     <label name="scenario"/>
     <field name="scenario"/>
+
     <label name="blocked"/>
     <field name="blocked"/>
+    <button name="block" colspan="2"/>
 </form>

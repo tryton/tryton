@@ -4,6 +4,7 @@ import datetime
 import logging
 import time
 import uuid
+from collections import defaultdict
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -72,6 +73,9 @@ class Scenario(Workflow, ModelSQL, ModelView):
         fields.Integer("Records"), 'get_record_count')
     record_count_blocked = fields.Function(
         fields.Integer("Records Blocked"), 'get_record_count')
+    unsubscribable = fields.Boolean(
+        "Unsubscribable",
+        help="If checked parties are also unsubscribed from the scenario.")
     state = fields.Selection([
             ('draft', "Draft"),
             ('running', "Running"),
@@ -107,6 +111,10 @@ class Scenario(Workflow, ModelSQL, ModelView):
     @classmethod
     def default_domain(cls):
         return '[]'
+
+    @classmethod
+    def default_unsubscribable(cls):
+        return False
 
     @classmethod
     def get_models(cls):
@@ -212,6 +220,11 @@ class Scenario(Workflow, ModelSQL, ModelView):
             record = Record.__table__()
             cursor = Transaction().connection.cursor()
             domain = PYSONDecoder({}).decode(scenario.domain)
+            domain = [
+                domain,
+                ('marketing_party.marketing_scenario_unsubscribed',
+                    'not where', [('id', '=', scenario.id)]),
+                ]
             try:
                 query = Model.search(domain, query=True, order=[])
             except Exception:
@@ -506,28 +519,12 @@ class Activity(ModelSQL, ModelView):
                 for child in self.children])
 
     def _email_recipient(self, record):
-        pool = Pool()
-        try:
-            Party = pool.get('party.party')
-        except KeyError:
-            Party = None
-        try:
-            Sale = pool.get('sale.sale')
-        except KeyError:
-            Sale = None
-
-        def get_party_email(party):
-            contact = party.contact_mechanism_get('email')
-            if contact and contact.email:
-                return _formataddr(
-                    contact.name or party.rec_name,
-                    contact.email)
-            return None
-
-        if Party and isinstance(record, Party):
-            return get_party_email(record)
-        elif Sale and isinstance(record, Sale):
-            return get_party_email(record.party)
+        party = record.marketing_party
+        contact = party.contact_mechanism_get('email')
+        if contact and contact.email:
+            return _formataddr(
+                contact.name or party.rec_name,
+                contact.email)
 
     def execute_send_email(
             self, record_activity, smtpd_datamanager=None, **kwargs):
@@ -638,7 +635,11 @@ class Record(ModelSQL, ModelView):
         required=True, ondelete='CASCADE')
     record = fields.Reference(
         "Record", selection='get_models', required=True)
-    blocked = fields.Boolean("Blocked")
+    blocked = fields.Boolean(
+        "Blocked",
+        states={
+            'readonly': ~Eval('blocked', False),
+            })
     uuid = fields.Char("UUID", readonly=True)
 
     @classmethod
@@ -652,6 +653,11 @@ class Record(ModelSQL, ModelView):
             ('uuid_unique', Unique(t, t.uuid),
                 'marketing_automation.msg_record_uuid_unique'),
             ]
+        cls._buttons.update({
+                'block': {
+                    'invisible': Eval('blocked', False),
+                    },
+                })
 
     @classmethod
     def default_uuid(cls):
@@ -683,26 +689,25 @@ class Record(ModelSQL, ModelView):
 
     @property
     def language(self):
-        pool = Pool()
-        try:
-            Party = pool.get('party.party')
-        except KeyError:
-            Party = None
-        try:
-            Sale = pool.get('sale.sale')
-        except KeyError:
-            Sale = None
-
-        if Party and isinstance(self.record, Party):
-            if self.record.lang:
-                return self.record.lang.code
-        elif Sale and isinstance(self.record, Sale):
-            if self.record.party.lang:
-                return self.record.party.lang.code
+        lang = self.record.marketing_party.lang
+        if lang:
+            return lang.code
 
     @dualmethod
+    @ModelView.button
     def block(cls, records):
+        pool = Pool()
+        Party = pool.get('party.party')
+
         cls.write(records, {'blocked': True})
+
+        parties = defaultdict(set)
+        for record in records:
+            if record.scenario.unsubscribable:
+                parties[record.record.marketing_party].add(record.scenario.id)
+        Party.write(*sum((
+                    ([p], {'marketing_scenario_unsubscribed': [('add', s)]})
+                    for p, s in parties.items()), ()))
 
     def get_rec_name(self, name):
         if self.record:

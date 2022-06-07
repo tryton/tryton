@@ -8,3 +8,11 @@ from .mixin import MarketingAutomationMixin
 
 class Sale(MarketingAutomationMixin, metaclass=PoolMeta):
     __name__ = 'sale.sale'
+
+    def get_marketing_party(self, name):
+        return self.party.id
+
+    @classmethod
+    def search_marketing_party(cls, name, clause):
+        nested = clause[0].lstrip(name)
+        return [('party' + nested,) + tuple(clause[1:])]

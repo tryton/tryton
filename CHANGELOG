@@ -1,3 +1,5 @@
+* Allow party to be unsubscribed from scenario
+
 Version 6.4.0 - 2022-05-02
 * Bug fixes (see mercurial logs for details)
 * Add support for Python 3.10
