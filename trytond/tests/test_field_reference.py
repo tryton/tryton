@@ -511,6 +511,25 @@ class FieldReferenceTestCase(unittest.TestCase):
         self.assertEqual(reference.reference, None)
 
     @with_transaction()
+    def test_domain_different_targets(self):
+        "Test reference with domain and different targets"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+        Target1 = pool.get('test.reference.target')
+        target1 = Target1(name="Test")
+        target1.save()
+        Target2 = pool.get('test.reference_domainvalidation.target')
+        target2 = Target2(value=6)
+        target2.save()
+
+        references = Reference.create([{
+                    'reference': str(target1),
+                    }, {
+                    'reference': str(target2),
+                    }])
+        self.assertEqual(len(references), 2)
+
+    @with_transaction()
     def test_domain_pyson(self):
         "Test reference with pyson domain"
         pool = Pool()
@@ -524,3 +543,23 @@ class FieldReferenceTestCase(unittest.TestCase):
                     'reference': str(target),
                     }])
         self.assertEqual(reference.reference, target)
+
+    @with_transaction()
+    def test_domain_pyson_different_targets(self):
+        "Test reference with pyson domain and different targets"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation_pyson')
+        Target1 = pool.get('test.reference.target')
+        target1 = Target1(name="Test")
+        target1.save()
+        Target2 = pool.get('test.reference_domainvalidation.target')
+        target2 = Target2(value=42)
+        target2.save()
+
+        references = Reference.create([{
+                    'reference': str(target1),
+                    }, {
+                    'value': 1,
+                    'reference': str(target2),
+                    }])
+        self.assertEqual(len(references), 2)
