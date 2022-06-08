@@ -3895,8 +3895,7 @@
 
     Sao.common.download_file = function(data, name, options) {
         if (options === undefined) {
-            var type = Sao.common.guess_mimetype(
-                name ? name.split('.').pop() : undefined);
+            var type = Sao.common.guess_mimetype(name);
             options = {type: type};
         }
         var blob = new Blob([data], options);
