@@ -1188,10 +1188,12 @@ class ModelStorage(Model):
                 encoder = PYSONEncoder()
                 pyson_domain = encoder.encode(field.domain)
                 pyson_context = encoder.encode(field.context)
+                dict_domain = False
                 for record in records:
                     domain = _record_eval_pyson(
                         record, pyson_domain, encoded=True)
                     if isinstance(domain, dict):
+                        dict_domain = True
                         relation = get_relation(record)
                         if relation:
                             domain = domain.get(relation.__name__, [])
@@ -1207,7 +1209,8 @@ class ModelStorage(Model):
                 in_max = Transaction().database.IN_MAX
                 count = in_max // 10
                 for context, ctx_domains in domains.items():
-                    if len(ctx_domains) > len(records) * 0.5:
+                    if (not dict_domain
+                            and len(ctx_domains) > len(records) * 0.5):
                         new_domains = {}
                         for sub_domains in grouped_slice(
                                 list(ctx_domains.keys()), count):
