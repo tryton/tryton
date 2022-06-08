@@ -1739,7 +1739,7 @@ function eval_pyson(value){
             this.date.val(this._format(this.get_format(), value));
         },
         focus: function() {
-            this.input.focus();
+            this.date.focus();
         },
         get modified() {
             if (this.record && this.field) {
