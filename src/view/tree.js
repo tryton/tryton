@@ -1373,7 +1373,8 @@
                     (event_.which != Sao.common.DOWN_KEYCODE) &&
                     (event_.which != Sao.common.ESC_KEYCODE) &&
                     (event_.which != Sao.common.RETURN_KEYCODE)) ||
-                jQuery(event_.currentTarget).find('.dropdown-menu').length) {
+                jQuery(event_.currentTarget)
+                .find('.dropdown-menu:visible').length) {
                 return;
             }
             var td = this._get_column_td(this.edited_column);
