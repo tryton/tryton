@@ -3124,6 +3124,7 @@
             ['<div align="left">Test</div>', '<div align="left">Test</div>'],
             ['<font href="test" size="1">Test</font>',
                 '<font size="1">Test</font>'],
+            ["<p>Test</p>", "Test"],
         ];
         for (var i = 0; i < examples.length; i++) {
             var input = examples[i][0], output = examples[i][1];
