@@ -2707,7 +2707,8 @@
         },
         get_size: function(record) {
             var data = record._values[this.name] || 0;
-            if (data instanceof Uint8Array) {
+            if ((data instanceof Uint8Array) ||
+                (typeof(data) == 'string')) {
                 return data.length;
             }
             return data;
@@ -2715,7 +2716,8 @@
         get_data: function(record) {
             var data = record._values[this.name] || [];
             var prm = jQuery.when(data);
-            if (!(data instanceof Uint8Array)) {
+            if (!(data instanceof Uint8Array) &&
+                (typeof(data) != 'string')) {
                 if (record.id < 0) {
                     return prm;
                 }
