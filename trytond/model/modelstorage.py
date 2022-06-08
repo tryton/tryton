@@ -1598,7 +1598,11 @@ class ModelStorage(Model):
                         = self._cache[self.id][name]
                 return value
             else:
-                skip_eager = name in self._cache[self.id]
+                skip_eager = (
+                    name in self._cache[self.id]
+                    and not field.context
+                    and (not getattr(field, 'datetime_field', None)
+                        or field.datetime_field in self._cache[self.id]))
         except KeyError:
             skip_eager = False
 
@@ -1664,14 +1668,18 @@ class ModelStorage(Model):
         delete_records = self._transaction.delete_records.get(
             self.__name__, set())
 
+        def cached(id_):
+            names = set()
+            if id_ in self._cache:
+                names.update(self._cache[id_]._keys())
+            if id_ in self._local_cache:
+                names.update(self._local_cache[id_]._keys())
+            return names
+
         def filter_(id_):
             return (id_ == self.id  # Ensure the value is read
                 or (id_ not in delete_records
-                    and (
-                        id_ not in self._cache
-                        or name not in self._cache[id_])
-                    and (id_ not in self._local_cache
-                        or name not in self._local_cache[id_])))
+                    and not ffields.keys() <= cached(id_)))
 
         def unique(ids):
             s = set()
