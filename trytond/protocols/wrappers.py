@@ -19,7 +19,7 @@ from werkzeug.wrappers import Response
 
 from trytond import backend, security
 from trytond.config import config
-from trytond.exceptions import RateLimitException
+from trytond.exceptions import RateLimitException, UserError, UserWarning
 from trytond.pool import Pool
 from trytond.tools import cached_property
 from trytond.transaction import Transaction
@@ -158,7 +158,17 @@ def with_pool(func):
         if database_name not in database_list:
             with Transaction().start(database_name, 0, readonly=True):
                 pool.init()
-        return func(request, pool, *args, **kwargs)
+        try:
+            return func(request, pool, *args, **kwargs)
+        except HTTPException:
+            logger.debug('%s', request, exc_info=True)
+            raise
+        except (UserError, UserWarning) as e:
+            logger.debug('%s', request, exc_info=True)
+            abort(HTTPStatus.BAD_REQUEST, e)
+        except Exception as e:
+            logger.error('%s', request, exc_info=True)
+            abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
     return wrapper
 
 
@@ -195,12 +205,6 @@ def with_transaction(readonly=None, user=0, context=None):
                         if count and not readonly_:
                             transaction.rollback()
                             continue
-                        logger.error('%s', request, exc_info=True)
-                        raise
-                    except Exception as e:
-                        if isinstance(e, HTTPException):
-                            raise
-                        logger.error('%s', request, exc_info=True)
                         raise
                     # Need to commit to unlock SQLite database
                     transaction.commit()
@@ -238,13 +242,7 @@ def user_application(name, json=True):
             # TODO language
             with transaction.set_user(application.user.id), \
                     transaction.set_context(_check_access=True):
-                try:
-                    response = func(request, *args, **kwargs)
-                except Exception as e:
-                    if isinstance(e, HTTPException):
-                        raise
-                    logger.error('%s', request, exc_info=True)
-                    abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
+                response = func(request, *args, **kwargs)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')
