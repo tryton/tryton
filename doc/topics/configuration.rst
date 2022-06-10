@@ -86,6 +86,11 @@ cors
 
 The list (one per line) of origins allowed for `Cross-Origin Resource sharing
 <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_.
+For example::
+
+   cors =
+      http://example.com
+      https://example.com
 
 avatar_base
 ~~~~~~~~~~~
