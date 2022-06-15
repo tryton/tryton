@@ -210,7 +210,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
         shipments = self.all_shipments
         length = Decimal(len(shipments))
         factor = 1 / length
-        return {str(shipment.id): factor for shipment in shipments}
+        return {str(shipment): factor for shipment in shipments}
 
     def _allocate_cost(self, factors, sign=1):
         "Allocate cost on shipments using factors"
@@ -225,13 +225,16 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                 (list(self.shipment_returns), ShipmentReturn),
                 ]:
             for shipment in shipments:
+                try:
+                    factor = factors[str(shipment)]
+                except KeyError:
+                    # Try with just id for backward compatibility
+                    factor = factors[str(shipment.id)]
                 if (any(c.state == 'posted' for c in shipment.shipment_costs)
                         and shipment.cost):
-                    shipment.cost += round_price(
-                        cost * factors[str(shipment.id)])
+                    shipment.cost += round_price(cost * factor)
                 else:
-                    shipment.cost = round_price(
-                        cost * factors[str(shipment.id)])
+                    shipment.cost = round_price(cost * factor)
             klass.save(shipments)
             klass.set_shipment_cost(shipments)
 
