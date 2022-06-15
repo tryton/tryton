@@ -29,8 +29,8 @@ class ShipmentCost(metaclass=PoolMeta):
         factors = {}
         for shipment in shipments:
             if not sum_weight:
-                factors[str(shipment.id)] = 1 / length
+                factors[str(shipment)] = 1 / length
             else:
-                factors[str(shipment.id)] = (
+                factors[str(shipment)] = (
                     Decimal(shipment.weight or 0) / sum_weight)
         return factors
