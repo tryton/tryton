@@ -258,7 +258,6 @@
             <field name="name">Asset</field>
             <field name="code">ASS</field>
             <field name="type">asset</field>
-            <field name="sequence" ref="account.sequence_account_journal"/>
         </record>
     </data>
 </tryton>
