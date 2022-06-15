@@ -165,10 +165,16 @@ def with_pool(func):
             raise
         except (UserError, UserWarning) as e:
             logger.debug('%s', request, exc_info=True)
-            abort(HTTPStatus.BAD_REQUEST, e)
+            if request.rpc_method:
+                raise
+            else:
+                abort(HTTPStatus.BAD_REQUEST, e)
         except Exception as e:
             logger.error('%s', request, exc_info=True)
-            abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
+            if request.rpc_method:
+                raise
+            else:
+                abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
     return wrapper
 
 
