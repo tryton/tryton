@@ -84,14 +84,14 @@ class Abstract(ModelSQL):
                 condition=(sale.currency == currency_sale.currency)
                 & (currency_sale.start_date <= sale.sale_date)
                 & ((currency_sale.end_date == Null)
-                    | (currency_sale.end_date >= sale.sale_date))
+                    | (currency_sale.end_date > sale.sale_date))
                 )
             .join(company, condition=sale.company == company.id)
             .join(currency_company,
                 condition=(company.currency == currency_company.currency)
                 & (currency_company.start_date <= sale.sale_date)
                 & ((currency_company.end_date == Null)
-                    | (currency_company.end_date >= sale.sale_date))
+                    | (currency_company.end_date > sale.sale_date))
                 ))
         return from_item, tables, withs
 
