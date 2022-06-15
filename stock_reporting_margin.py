@@ -93,7 +93,7 @@ class Abstract(ModelSQL, ModelView):
                 condition=(move.currency == currency_rate.currency)
                 & (currency_rate.start_date <= move.effective_date)
                 & ((currency_rate.end_date == Null)
-                    | (currency_rate.end_date >= move.effective_date))
+                    | (currency_rate.end_date > move.effective_date))
                 )
             .join(company,
                 condition=move.company == company.id)
@@ -103,7 +103,7 @@ class Abstract(ModelSQL, ModelView):
                 condition=(company.currency == currency_rate_company.currency)
                 & (currency_rate_company.start_date <= move.effective_date)
                 & ((currency_rate_company.end_date == Null)
-                    | (currency_rate_company.end_date >= move.effective_date))
+                    | (currency_rate_company.end_date > move.effective_date))
                 )
             .join(from_location,
                 condition=(move.from_location == from_location.id))
