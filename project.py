@@ -208,6 +208,15 @@ class Progress:
             origins.append(invoiced_progress)
         return origins
 
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('invoiced_progress', None)
+        return super().copy(records, default=default)
+
 
 class Timesheet:
     __slots__ = ()
