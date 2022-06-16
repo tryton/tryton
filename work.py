@@ -211,3 +211,14 @@ class Work(metaclass=PoolMeta):
             return
         time = Category(ModelData.get_id('product', 'uom_cat_time'))
         return self.product.default_uom_category == time
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        if hasattr(cls, 'purchase_lines'):
+            # Do not copy purchase lines if purchase is activated
+            default.setdefault('purchase_lines', None)
+        return super().copy(records, default=default)
