@@ -51,14 +51,10 @@ class Invoice(metaclass=PoolMeta):
         return all_commissions
 
     @classmethod
-    @Workflow.transition('paid')
-    def paid(cls, invoices):
+    def set_commissions_date(cls, invoices):
         pool = Pool()
         Date = pool.get('ir.date')
         Commission = pool.get('commission')
-
-        super(Invoice, cls).paid(invoices)
-
         date2commissions = defaultdict(list)
         for company, c_invoices in groupby(invoices, key=lambda i: i.company):
             with Transaction().set_context(company=company.id):
@@ -82,15 +78,28 @@ class Invoice(metaclass=PoolMeta):
             Commission.write(*to_write)
 
     @classmethod
+    @Workflow.transition('paid')
+    def paid(cls, invoices):
+        super().paid(invoices)
+        cls.set_commissions_date(invoices)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
         Commission = pool.get('commission')
 
-        invoices_to_revert_commission = [x for x in invoices if not x.move]
+        invoices_to_revert_commission = []
+        invoices_to_set_date = []
+        for invoice in invoices:
+            if invoice.move:
+                invoices_to_set_date.append(invoice)
+            else:
+                invoices_to_revert_commission.append(invoice)
 
-        super(Invoice, cls).cancel(invoices)
+        super().cancel(invoices)
+        cls.set_commissions_date(invoices_to_set_date)
 
         to_delete = []
         to_save = []
