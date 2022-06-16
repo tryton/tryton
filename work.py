@@ -204,3 +204,14 @@ class Work(metaclass=PoolMeta):
         digits = self.__class__.list_price.digits
         self.list_price = self.list_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        if hasattr(cls, 'purchase_lines'):
+            # Do not copy purchase lines if purchase is activated
+            default.setdefault('purchase_lines', None)
+        return super().copy(records, default=default)
