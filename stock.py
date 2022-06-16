@@ -109,10 +109,6 @@ class ShipmentOut(metaclass=PoolMeta):
         fieldname = 'shipment_cost_method'
         return Sale.fields_get([fieldname])[fieldname]['selection']
 
-    def _get_cost_tax_rule_pattern(self):
-        'Get tax rule pattern for invoice line'
-        return {}
-
     def get_cost_invoice_line(self, invoice):
         pool = Pool()
         Currency = pool.get('currency.currency')
