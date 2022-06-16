@@ -181,5 +181,24 @@ class ProjectTestCase(
                     {'project.work': map(int, works)}):
                 self.assertFalse(TimesheetLine.default_work())
 
+    @with_transaction()
+    def test_copy_work_with_children(self):
+        "Test copy work with children"
+        pool = Pool()
+        ProjectWork = pool.get('project.work')
+
+        company = create_company()
+        with set_company(company):
+            work, = ProjectWork.create([
+                    {'name': "Parent", 'children': [('create', [
+                        {'name': "Work 1", 'timesheet_available': True},
+                        {'name': "Work 2", 'timesheet_available': False},
+                        ])]}])
+            new_work, = ProjectWork.copy([work])
+
+            child1, child2 = new_work.children
+            self.assertTrue(child1.timesheet_available)
+            self.assertFalse(child2.timesheet_available)
+
 
 del ModuleTestCase

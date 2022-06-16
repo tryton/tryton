@@ -505,11 +505,20 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('children', None)
         default.setdefault('progress', None)
         default.setdefault(
             'status', lambda data: WorkStatus.get_default_status(data['type']))
-        return super().copy(project_works, default=default)
+        new_works = super().copy(project_works, default=default)
+        to_save = []
+        for work, new_work in zip(project_works, new_works):
+            if work.timesheet_available:
+                new_work.timesheet_available = work.timesheet_available
+                new_work.timesheet_start_date = work.timesheet_start_date
+                new_work.timesheet_end_date = work.timesheet_end_date
+                to_save.append(new_work)
+        if to_save:
+            cls.save(to_save)
+        return new_works
 
     @classmethod
     def delete(cls, project_works):
