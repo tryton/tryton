@@ -1520,5 +1520,46 @@ class StockTestCase(
             product.active = False
             product.save()
 
+    @with_transaction()
+    def test_location_inactive_with_consumable_product(self):
+        "Test inactive location with consumable products"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        warehouse, = Location.search([('type', '=', 'warehouse')])
+        storage, = Location.search([('code', '=', 'STO')])
+        lost_found, = Location.search([('type', '=', 'lost_found')])
+
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    'consumable': True,
+                    }])
+        product, = Product.create([{'template': template.id}])
+
+        company = create_company()
+        with set_company(company):
+            today = datetime.date.today()
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': lost_found.id,
+                        'to_location': storage.id,
+                        'planned_date': today,
+                        'effective_date': today,
+                        'company': company.id,
+                        }])
+            Move.do(moves)
+            warehouse.active = False
+            warehouse.save()
+
 
 del ModuleTestCase

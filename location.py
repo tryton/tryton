@@ -273,6 +273,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def get_empty_locations(cls, locations=None):
         pool = Pool()
         Move = pool.get('stock.move')
+        Product = pool.get('product.product')
         if locations is None:
             locations = cls.search([])
         if not locations:
@@ -287,8 +288,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             quantities = Move.compute_quantities(
                 query, location_ids, with_childs=True)
             empty = set(location_ids)
+            product_ids = [q[1] for q in quantities.keys()]
+            consumables = {
+                p.id for p in Product.browse(product_ids) if p.consumable}
             for (location_id, product), quantity in quantities.items():
-                if quantity:
+                if quantity and product not in consumables:
                     empty.discard(location_id)
             for sub_ids in grouped_slice(list(empty)):
                 sub_ids = list(sub_ids)
