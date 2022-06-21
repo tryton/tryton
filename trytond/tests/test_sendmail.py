@@ -3,7 +3,7 @@
 import smtplib
 import unittest
 from email.message import Message
-from unittest.mock import Mock, MagicMock, patch, call
+from unittest.mock import ANY, Mock, MagicMock, patch, call
 
 from trytond.sendmail import (
     sendmail_transactional, sendmail, SMTPDataManager, get_smtp_server)
@@ -58,14 +58,14 @@ class SendmailTestCase(unittest.TestCase):
             SMTP.return_value = server = Mock()
             self.assertEqual(
                 get_smtp_server('smtps://localhost:25'), server)
-            SMTP.assert_called_once_with('localhost', 25)
+            SMTP.assert_called_once_with('localhost', 25, context=ANY)
 
         with patch.object(smtplib, 'SMTP') as SMTP:
             SMTP.return_value = server = Mock()
             self.assertEqual(
                 get_smtp_server('smtp+tls://localhost:25'), server)
             SMTP.assert_called_once_with('localhost', 25)
-            server.starttls.assert_called_once_with()
+            server.starttls.assert_called_once_with(context=ANY)
 
     def test_get_smtp_server_extra_parameters(self):
         'Test get_smtp_server uri extra parameters'
