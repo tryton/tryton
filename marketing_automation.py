@@ -62,7 +62,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
     "Marketing Scenario"
     __name__ = 'marketing.automation.scenario'
 
-    name = fields.Char("Name")
+    name = fields.Char("Name", translate=True)
     model = fields.Selection('get_models', "Model", required=True)
     domain = fields.Char(
         "Domain", required=True,
@@ -263,7 +263,7 @@ class Activity(ModelSQL, ModelView):
     "Marketing Activity"
     __name__ = 'marketing.automation.activity'
 
-    name = fields.Char("Name", required=True)
+    name = fields.Char("Name", translate=True, required=True)
     parent = fields.Reference(
         "Parent", [
             ('marketing.automation.scenario', "Scenario"),
