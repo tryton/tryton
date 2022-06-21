@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
+import ssl
 import urllib.parse
 
 import ldap3
@@ -42,10 +43,12 @@ def ldap_server():
     uri, _, _, _, _, extensions = parse_ldap_url(uri)
     if uri.scheme.startswith('ldaps'):
         scheme, port = 'ldaps', 636
+        tls = ldap3.Tls(validate=ssl.CERT_REQUIRED)
     else:
         scheme, port = 'ldap', 389
+        tls = None
     return ldap3.Server('%s://%s:%s' % (
-            scheme, uri.hostname, uri.port or port))
+            scheme, uri.hostname, uri.port or port), tls=tls)
 
 
 class User(metaclass=PoolMeta):
