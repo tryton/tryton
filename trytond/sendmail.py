@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import smtplib
+import ssl
 from email.message import Message
 from email.utils import formatdate
 from email.mime.text import MIMEText
@@ -69,6 +70,7 @@ def get_smtp_server(uri=None, strict=False):
             extra[key] = cast.get(key, lambda a: a)(value[0])
     if uri.scheme.startswith('smtps'):
         connector = smtplib.SMTP_SSL
+        extra['context'] = ssl.create_default_context()
     else:
         connector = smtplib.SMTP
     try:
@@ -80,7 +82,7 @@ def get_smtp_server(uri=None, strict=False):
         return
 
     if 'tls' in uri.scheme:
-        server.starttls()
+        server.starttls(context=ssl.create_default_context())
 
     if uri.username and uri.password:
         server.login(
