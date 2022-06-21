@@ -15,6 +15,8 @@ class InfoBar(object):
         return self.__box
 
     def info_bar_add(self, message, type_=Gtk.MessageType.ERROR):
+        if not message:
+            return
         key = (message, type_)
         if key not in self.__messages:
             info_bar = Gtk.InfoBar()
