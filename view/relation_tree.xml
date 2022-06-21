@@ -5,4 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="from_" expand="2"/>
     <field name="type" expand="1"/>
     <field name="to" expand="2"/>
+    <field name="start_date" optional="1"/>
+    <field name="end_date" optional="1"/>
 </tree>

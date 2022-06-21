@@ -1,14 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import json
 from functools import partial
 
 from sql import As, Column, Literal, Null, Union, With
 from sql.aggregate import Min
+from sql.conditionals import Coalesce
 
 from trytond.config import config
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 dumps = partial(json.dumps, separators=(',', ':'), sort_keys=True)
@@ -47,6 +50,57 @@ class Relation(ModelSQL):
         ondelete='CASCADE')
     type = fields.Many2One('party.relation.type', 'Type', required=True,
         select=True)
+    start_date = fields.Date(
+        "Start Date",
+        domain=[
+            If(Eval('start_date') & Eval('end_date'),
+                ('start_date', '<=', Eval('end_date', None)),
+                ()),
+            ])
+    end_date = fields.Date(
+        "End Date",
+        domain=[
+            If(Eval('start_date') & Eval('end_date'),
+                ('end_date', '>=', Eval('start_date', None)),
+                ()),
+            ])
+    active = fields.Function(fields.Boolean("Active"), 'get_active')
+
+    def get_active(self, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        date = context.get('date', Date.today())
+        start_date = self.start_date or dt.date.min
+        end_date = self.end_date or dt.date.max
+        return start_date <= date <= end_date
+
+    @classmethod
+    def domain_active(cls, domain, tables):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        date = context.get('date', Date.today())
+        table, _ = tables[None]
+        _, operator, value = domain
+
+        start_date = Coalesce(table.start_date, dt.date.min)
+        end_date = Coalesce(table.end_date, dt.date.max)
+        expression = (start_date <= date) & (end_date >= date)
+
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -263,17 +317,20 @@ class Party(metaclass=PoolMeta):
                 .join(relation_type,
                     condition=all_relations.type == relation_type.id)
                 .select(
-                    all_relations.from_, all_relations.to,
+                    Column(all_relations, '*'),
                     where=usages_clause))
         else:
             relations = all_relations
+
+        active_clause = RelationAll.domain_active(
+            ('active', '=', True), {None: (relations, None)})
 
         distance = With('from_', 'to', 'distance', recursive=True)
         distance.query = relations.select(
             Column(relations, 'from_'),
             relations.to,
             Literal(1).as_('distance'),
-            where=Column(relations, 'from_') == party)
+            where=(Column(relations, 'from_') == party) & active_clause)
         distance.query |= (distance
             .join(relations,
                 condition=distance.to == Column(relations, 'from_'))

@@ -1,3 +1,5 @@
+* Add start and end dates to relation
+
 Version 6.4.0 - 2022-05-02
 * Bug fixes (see mercurial logs for details)
 * Add support for Python 3.10
