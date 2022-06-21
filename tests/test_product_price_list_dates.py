@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import suite as test_suite
 
 from trytond.modules.company.tests import (
     create_company, set_company, CompanyTestMixin)
+from trytond.transaction import Transaction
 
 
 class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
@@ -74,6 +75,26 @@ class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
             price_list.compute(
                 None, None, Decimal(10), 1, None, pattern={'date': yesterday}),
             Decimal(9))
+
+    @with_transaction()
+    def test_price_list_with_context_date(self):
+        "Test price list with context date"
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        tomorrow = today + datetime.timedelta(days=1)
+
+        price_list = self.create_price_list('start_date', tomorrow)
+
+        with Transaction().set_context(date=today):
+            self.assertEqual(
+                price_list.compute(None, None, Decimal(10), 1, None),
+                Decimal(10))
+        with Transaction().set_context(date=tomorrow):
+            self.assertEqual(
+                price_list.compute(None, None, Decimal(10), 1, None),
+                Decimal(9))
 
 
 def suite():
