@@ -982,16 +982,15 @@ class Screen:
         # Force record_message
         self.current_record = self.current_record
 
-    def _get_next_record(self):
+    def _get_next_record(self, test=False):
         view = self.current_view
         if view.view_type == 'tree' and len(self.group):
             range_ = view.treeview.get_visible_range()
-            if range_:
+            if range_ and not test:
                 start, end = range_
                 vadjustment = view.treeview.get_vadjustment()
-                vadjustment.props.value = min(
-                    vadjustment.props.value + vadjustment.props.page_increment,
-                    vadjustment.props.upper)
+                vadjustment.set_value(
+                    vadjustment.props.value + vadjustment.props.page_increment)
                 model = view.treeview.get_model()
                 iter_ = model.get_iter(end)
                 return model.get_value(iter_, 0)
@@ -1059,7 +1058,7 @@ class Screen:
             return self.group[0] if len(self.group) else None
 
     def has_next(self):
-        next_record = self._get_next_record()
+        next_record = self._get_next_record(test=True)
         return next_record and next_record != self.current_record
 
     def display_next(self):
@@ -1070,16 +1069,15 @@ class Screen:
         self.set_cursor(reset_view=False)
         view.display()
 
-    def _get_prev_record(self):
+    def _get_prev_record(self, test=False):
         view = self.current_view
         if view.view_type == 'tree' and len(self.group):
             range_ = view.treeview.get_visible_range()
-            if range_:
+            if range_ and not test:
                 start, end = range_
                 vadjustment = view.treeview.get_vadjustment()
-                vadjustment.props.value = min(
-                    vadjustment.props.value - vadjustment.props.page_increment,
-                    vadjustment.props.lower)
+                vadjustment.set_value(
+                    vadjustment.props.value - vadjustment.props.page_increment)
                 model = view.treeview.get_model()
                 iter_ = model.get_iter(start)
                 return model.get_value(iter_, 0)
@@ -1137,7 +1135,7 @@ class Screen:
             return self.group[-1] if len(self.group) else None
 
     def has_prev(self):
-        prev_record = self._get_prev_record()
+        prev_record = self._get_prev_record(test=True)
         return prev_record and prev_record != self.current_record
 
     def display_prev(self):
