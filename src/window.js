@@ -2055,7 +2055,10 @@
                         val, {'s': 1, 'm': 60, 'h': 60 * 60});
                 } else if (!isNaN(Number(val))) {
                     val = val.toLocaleString(
-                        Sao.i18n.BC47(Sao.i18n.getlang()));
+                        Sao.i18n.BC47(Sao.i18n.getlang()), {
+                            'minimumFractionDigits': 0,
+                            'maximumFractionDigits': 20,
+                        });
                 }
             } else if (val.isTimeDelta) {
                 val = val.asSeconds();
