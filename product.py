@@ -3,6 +3,7 @@
 from trytond.model import ModelView, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
+from trytond.transaction import Transaction
 
 __all__ = ['PriceList', 'PriceListLine', 'PriceListLineContext']
 
@@ -22,6 +23,14 @@ class PriceList(metaclass=PoolMeta):
         'product_price_list_dates.act_price_list_line_form')
     def open_lines(cls, price_lists):
         pass
+
+    def compute(
+            self, party, product, unit_price, quantity, uom, pattern=None):
+        context = Transaction().context
+        pattern = pattern.copy() if pattern is not None else {}
+        pattern.setdefault('date', context.get('date'))
+        return super().compute(
+            party, product, unit_price, quantity, uom, pattern=pattern)
 
 
 class PriceListLine(metaclass=PoolMeta):
