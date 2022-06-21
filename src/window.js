@@ -60,6 +60,9 @@
             this.__messages = new Set();
         },
         add: function(message, type) {
+            if (!message) {
+                return;
+            }
             var key = JSON.stringify([message, type]);
             if (!this.__messages.has(key)) {
                 var infobar = jQuery('<div/>', {
