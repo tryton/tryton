@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import smtplib
+import ssl
 from email.message import Message
 from email.utils import formatdate
 from urllib.parse import parse_qs, unquote_plus
@@ -53,12 +54,13 @@ def get_smtp_server(uri=None):
         for key, value in parse_qs(uri.query, strict_parsing=True).items():
             extra[key] = cast.get(key, lambda a: a)(value[0])
     if uri.scheme.startswith('smtps'):
+        extra['context'] = ssl.create_default_context()
         server = smtplib.SMTP_SSL(uri.hostname, uri.port, **extra)
     else:
         server = smtplib.SMTP(uri.hostname, uri.port, **extra)
 
     if 'tls' in uri.scheme:
-        server.starttls()
+        server.starttls(context=ssl.create_default_context())
 
     if uri.username and uri.password:
         server.login(
