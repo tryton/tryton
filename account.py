@@ -241,6 +241,7 @@ class CreateDirectDebit(Wizard):
         pool = Pool()
         Line = pool.get('account.move.line')
         payments = Line.pay_direct_debit(date=self.start.date)
+        action['domains'] = []
         return action, {
             'res_id': [p.id for p in payments],
             }
