@@ -360,14 +360,20 @@ class ProductSupplier(
                 self.currency, = row
 
     def get_rec_name(self, name):
-        if self.name:
-            name = self.name
-        elif self.product:
-            name = self.product.name
+        if not self.name and not self.code:
+            if self.product:
+                name = self.product.rec_name
+            else:
+                name = self.template.rec_name
         else:
-            name = self.template.name
-        if self.code:
-            name = '[' + self.code + '] ' + name
+            if self.name:
+                name = self.name
+            elif self.product:
+                name = self.product.name
+            else:
+                name = self.template.name
+            if self.code:
+                name = '[' + self.code + ']' + name
         return name
 
     @classmethod
