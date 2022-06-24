@@ -1966,7 +1966,7 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
                 break
 
         ids = [a.id for a in accounts
-            if operator_(getattr(a, fname), operand)]
+            if operand is not None and operator_(getattr(a, fname), operand)]
         return [('id', 'in', ids)]
 
     @classmethod
@@ -2014,7 +2014,7 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             }.get(operator_, lambda v, l: False)
 
         ids = [a.id for a in accounts
-            if operator_(getattr(a, name), operand)]
+            if operand is not None and operator_(getattr(a, name), operand)]
         return [('id', 'in', ids)]
 
     def get_currency(self, name):
