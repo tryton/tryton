@@ -597,8 +597,11 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     ratio = prices.get(output, 0) / sum_
                 else:
                     ratio = Decimal(1) / len(outputs)
-                quantity = Decimal(str(output.quantity))
-                unit_price = round_price(cost * ratio / quantity)
+                if not output.quantity:
+                    unit_price = Decimal(0)
+                else:
+                    quantity = Decimal(str(output.quantity))
+                    unit_price = round_price(cost * ratio / quantity)
                 if output.unit_price != unit_price:
                     output.unit_price = unit_price
                     moves.append(output)
