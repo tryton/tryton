@@ -443,7 +443,7 @@ class Form(TabContent):
             paths = self.screen.selected_paths
         fields = [f['name'] for f in export['export_fields.']]
         data = RPCExecute(
-            'model', self.model, 'export_data', ids, fields,
+            'model', self.model, 'export_data', ids, fields, export['header'],
             context=self.screen.context)
         delimiter = ','
         if os.name == 'nt' and ',' == locale.localeconv()['decimal_point']:
@@ -452,7 +452,6 @@ class Form(TabContent):
             '.csv', common.slugify(export['name']) + '_')
         with open(fname, 'w') as fp:
             writer = csv.writer(fp, delimiter=delimiter)
-            writer.writerow(fields)
             for row, path in zip_longest(data, paths or []):
                 indent = len(path) - 1 if path else 0
                 if row:

@@ -163,7 +163,7 @@ class WinExport(WinCSV):
                 items.insert(0, ('%s.translated' % name, field,
                         _('%s (model name)') % string_))
                 items.insert(0, ('%s/rec_name' % name, field,
-                        _("%s (record name)") % string_))
+                        _("%s/Record Name") % string_))
 
             for name, field, string_ in items:
                 path = prefix_field + name
@@ -257,6 +257,7 @@ class WinExport(WinCSV):
                 pref_id, = RPCExecute('model', 'ir.export', 'create', [{
                         'name': name,
                         'resource': self.model,
+                        'header': self.add_field_names.get_active(),
                         'export_fields': [('create', [{
                                             'name': x,
                                             } for x in fields])],
@@ -324,12 +325,11 @@ class WinExport(WinCSV):
     def response(self, dialog, response):
         if response == Gtk.ResponseType.OK:
             fields = []
-            fields2 = []
             iter = self.model2.get_iter_first()
             while iter:
                 fields.append(self.model2.get_value(iter, 1))
-                fields2.append(self.model2.get_value(iter, 0))
                 iter = self.model2.iter_next(iter)
+            header = self.add_field_names.get_active()
 
             if self.selected_records.get_active():
                 ids = [r.id for r in self.screen.selected_records]
@@ -337,7 +337,7 @@ class WinExport(WinCSV):
                 try:
                     data = RPCExecute(
                         'model', self.model, 'export_data',
-                        ids, fields,
+                        ids, fields, header,
                         context=self.context)
                 except RPCException:
                     data = []
@@ -347,7 +347,7 @@ class WinExport(WinCSV):
                 try:
                     data = RPCExecute(
                         'model', self.model, 'export_data',
-                        ids, fields,
+                        ids, fields, header,
                         context=self.context)
                 except RPCException:
                     data = []
@@ -362,8 +362,8 @@ class WinExport(WinCSV):
                 try:
                     data = RPCExecute(
                         'model', self.model, 'export_data_domain',
-                        domain, fields, offset, limit, self.screen.order,
-                        context=self.context)
+                        domain, fields, header, offset, limit,
+                        self.screen.order, context=self.context)
                 except RPCException:
                     data = []
 
@@ -371,18 +371,18 @@ class WinExport(WinCSV):
                 fname = common.file_selection(_('Save As...'),
                         action=Gtk.FileChooserAction.SAVE)
                 if fname:
-                    self.export_csv(fname, fields2, data, paths)
+                    self.export_csv(fname, data, paths)
             else:
                 fileno, fname = tempfile.mkstemp(
                     '.csv', common.slugify(self.name) + '_')
-                if self.export_csv(fname, fields2, data, paths, popup=False):
+                if self.export_csv(fname, data, paths, popup=False):
                     os.close(fileno)
                     common.file_open(fname, 'csv')
                 else:
                     os.close(fileno)
         self.destroy()
 
-    def export_csv(self, fname, fields, data, paths, popup=True):
+    def export_csv(self, fname, data, paths, popup=True):
         encoding = self.csv_enc.get_active_text() or 'utf_8_sig'
         locale_format = self.csv_locale.get_active()
 
@@ -391,8 +391,6 @@ class WinExport(WinCSV):
                 open(fname, 'w', encoding=encoding, newline=''),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
-            if self.add_field_names.get_active():
-                writer.writerow(fields)
             for row, path in zip_longest(data, paths or []):
                 indent = len(path) - 1 if path else 0
                 if row:
