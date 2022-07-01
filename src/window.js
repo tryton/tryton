@@ -1763,7 +1763,7 @@
                     items.push({
                         name: name + '/rec_name',
                         field: field,
-                        string: Sao.i18n.gettext("%1 (record name)", string),
+                        string: Sao.i18n.gettext("%1/Record Name", string),
                     });
                 }
 
@@ -1852,6 +1852,7 @@
                         params: [[{
                             name: name,
                             resource: this.screen.model_name,
+                            header: this.el_add_field_names.is(':checked'),
                             export_fields: [['create', fields.map(function(f) {
                                 return {name: f};
                             })]],
@@ -1964,12 +1965,10 @@
         response: function(response_id) {
             if(response_id == 'RESPONSE_OK') {
                 var fields = [];
-                var fields2 = [];
                 this.fields_selected.children('li').each(function(i, field) {
                     fields.push(field.getAttribute('path'));
-                    fields2.push(field.innerText);
                 });
-
+                var header = this.el_add_field_names.is(':checked');
                 var prm, ids, paths;
                 if (JSON.parse(this.selected_records.val())) {
                     ids = this.screen.selected_records.map(function(r) {
@@ -1980,7 +1979,7 @@
                         'method': (
                             'model.' + this.screen.model_name +
                             '.export_data'),
-                        'params': [ids, fields, this.context]
+                        'params': [ids, fields, header, this.context]
                     }, this.session);
                 } else if (this.screen_is_tree) {
                     ids = this.screen.listed_records.map(function(r) {
@@ -1991,7 +1990,7 @@
                         'method': (
                             'model.' + this.screen.model_name +
                             '.export_data'),
-                        'params': [ids, fields, this.context]
+                        'params': [ids, fields, header, this.context]
                     }, this.session);
                 } else {
                     var domain = this.screen.search_domain(
@@ -2009,12 +2008,12 @@
                             'model.' + this.screen.model_name +
                             '.export_data_domain'),
                         'params': [
-                            domain, fields, offset, limit, this.screen.order,
-                            this.context],
+                            domain, fields, header, offset, limit,
+                            this.screen.order, this.context],
                     }, this.session);
                 }
                 prm.then(data => {
-                    this.export_csv(fields2, data, paths).then(() => {
+                    this.export_csv(data, paths).then(() => {
                         this.destroy();
                     });
                 });
@@ -2030,9 +2029,6 @@
                 return Sao.Window.Export.format_row(
                     row, indent, locale_format);
             });
-            if (this.el_add_field_names.is(':checked')) {
-                unparse_obj.fields = fields;
-            }
             var csv = Papa.unparse(unparse_obj, {
                 quoteChar: this.el_csv_quotechar.val(),
                 delimiter: this.el_csv_delimiter.val()
