@@ -738,23 +738,48 @@ class ModelStorage(Model):
         return [data] + lines
 
     @classmethod
-    def export_data(cls, records, fields_names):
-        '''
-        Return list of list of values for each record.
-        The list of values follows fields_names.
-        Relational fields are defined with '/' at any depth.
-        '''
+    def _convert_field_names(cls, fields_names):
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+        result = []
+        for names in fields_names:
+            descriptions = []
+            class_ = cls
+            for i, name in enumerate(names):
+                translated = name.endswith('.translated')
+                if translated:
+                    name = name[:-len('.translated')]
+                field = class_._fields[name]
+                field_name = ModelField.get_name(class_.__name__, name)
+                if translated:
+                    if isinstance(field, fields.Selection):
+                        field_name = gettext(
+                            'ir.msg_field_string', field=field_name)
+                    elif isinstance(field, fields.Reference):
+                        field_name = gettext(
+                            'ir.msg_field_model_name', field=field_name)
+                descriptions.append(field_name)
+                if hasattr(field, 'get_target'):
+                    class_ = field.get_target()
+            result.append('/'.join(descriptions))
+        return result
+
+    @classmethod
+    def export_data(cls, records, fields_names, header=False):
         fields_names = [x.split('/') for x in fields_names]
         data = []
+        if header:
+            data.append(cls._convert_field_names(fields_names))
         for record in records:
             data += cls.__export_row(record, fields_names)
         return data
 
     @classmethod
     def export_data_domain(
-            cls, domain, fields_names, offset=0, limit=None, order=None):
+            cls, domain, fields_names, offset=0, limit=None, order=None,
+            header=False):
         records = cls.search(domain, limit=limit, offset=offset, order=order)
-        return cls.export_data(records, fields_names)
+        return cls.export_data(records, fields_names, header=header)
 
     @classmethod
     def import_data(cls, fields_names, data):

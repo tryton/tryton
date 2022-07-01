@@ -28,6 +28,9 @@ class Export(_ClearCache, ModelSQL, ModelView):
     __name__ = "ir.export"
     name = fields.Char('Name')
     resource = fields.Char('Resource')
+    header = fields.Boolean(
+        "Header",
+        help="Check to include field names on the export.")
     export_fields = fields.One2Many('ir.export.line', 'export',
        'Fields')
 
@@ -36,6 +39,10 @@ class Export(_ClearCache, ModelSQL, ModelView):
         super().__setup__()
         cls.__rpc__.update(
             update=RPC(instantiate=0, readonly=False))
+
+    @classmethod
+    def default_header(cls):
+        return False
 
     @classmethod
     def update(cls, exports, fields):

@@ -404,3 +404,49 @@ class ExportDataTestCase(unittest.TestCase):
             ExportData.export_data_domain(
                 [('boolean', '=', True)], ['boolean']),
             [[True]])
+
+    @with_transaction()
+    def test_header(self):
+        "Test export data with header"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+
+        export1, = ExportData.create([{
+                    'char': "Test",
+                    'integer': 2,
+                    }])
+        self.assertEqual(
+            ExportData.export_data([export1], ['char', 'integer'], True),
+            [["Char", "Integer"], ["Test", 2]])
+
+    @with_transaction()
+    def test_nested_header(self):
+        "Test export data with header and nested fields"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+
+        fields_names = [
+            'many2one/name', 'many2one/rec_name', 'selection',
+            'selection.translated', 'reference.translated',
+            'reference/rec_name']
+        self.assertEqual(
+            ExportData.export_data([], fields_names, True),
+            [["Many2One/Name", "Many2One/Record Name", "Selection",
+                "Selection (string)", "Reference (model name)",
+                "Reference/Record Name"]])
+
+    @with_transaction()
+    def test_header_domain(self):
+        "Test export data with header and domain"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        ExportData.create([{
+                    'boolean': True,
+                    }, {
+                    'boolean': False,
+                    }])
+
+        self.assertEqual(
+            ExportData.export_data_domain(
+                [('boolean', '=', True)], ['boolean'], header=True),
+            [["Boolean"], [True]])

@@ -390,5 +390,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_view_search_invalid_domain">
             <field name="text">Invalid domain or search criteria "%(domain)s" for search "%(search)s".</field>
         </record>
+        <record model="ir.message" id="msg_field_string">
+            <field name="text">%(field)s (string)</field>
+        </record>
+        <record model="ir.message" id="msg_field_model_name">
+            <field name="text">%(field)s (model name)</field>
+        </record>
     </data>
 </tryton>

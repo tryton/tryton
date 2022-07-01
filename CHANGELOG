@@ -1,3 +1,4 @@
+* Add header parameter on export data
 * Enforce certificate validation for SMTP connection (issue11564)
 * Use singleton for TableHandler
 

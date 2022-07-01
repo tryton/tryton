@@ -413,18 +413,19 @@ Class methods:
 
    Return a list of record instance for the ``ids``.
 
-.. classmethod:: ModelStorage.export_data(records, fields_names)
+.. classmethod:: ModelStorage.export_data(records, fields_names[, header])
 
    Return a list of list of values for each ``records``.
 
    The list of values follows ``fields_names``.
+   The result includes the description of the fields if ``header`` is set.
 
    Relational fields are defined with ``/`` at any depth.
 
    Descriptor on fields are available by appending ``.`` and the name of the
    method on the field that returns the descriptor.
 
-.. classmethod:: ModelStorage.export_data_domain(domain, fields_names[, offset[, limit[, order]]])
+.. classmethod:: ModelStorage.export_data_domain(domain, fields_names[, offset[, limit[, order[, header]]]])
 
    Call :meth:`search` and :meth:`export_data` together.
 

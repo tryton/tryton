@@ -260,17 +260,15 @@ def data(request, pool, model):
 
         try:
             if domain and isinstance(domain[0], (int, float)):
-                rows = Model.export_data(domain, fields_names)
+                rows = Model.export_data(domain, fields_names, header)
             else:
                 rows = Model.export_data_domain(
                     domain, fields_names,
-                    limit=limit, offset=offset, order=order)
+                    limit=limit, offset=offset, order=order, header=header)
         except (ValueError, KeyError):
             abort(HTTPStatus.BAD_REQUEST)
         data = io.StringIO(newline='')
         writer = csv.writer(data, delimiter=delimiter, quotechar=quotechar)
-        if header:
-            writer.writerow(fields_names)
         for row in rows:
             writer.writerow(format_(row))
         data = data.getvalue().encode(encoding)

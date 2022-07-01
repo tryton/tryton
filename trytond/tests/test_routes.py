@@ -62,7 +62,7 @@ class RoutesTestCase(unittest.TestCase):
             query_string=[('f', 'name')])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'name\r\nAdministrator\r\n')
+        self.assertEqual(response.data, b'Nom\r\nAdministrator\r\n')
 
     def test_data_multiple_fields(self):
         "Test GET data with multiple fields"
@@ -74,7 +74,7 @@ class RoutesTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.data, b'name,login\r\nAdministrator,admin\r\n')
+            response.data, b'Nom,Identifiant\r\nAdministrator,admin\r\n')
 
     def test_data_language(self):
         "Test GET data with language"
@@ -89,7 +89,7 @@ class RoutesTestCase(unittest.TestCase):
                 ])
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, 'name\r\nFrançais\r\n'.encode('utf-8'))
+        self.assertEqual(response.data, 'Nom\r\nFrançais\r\n'.encode('utf-8'))
 
     def test_data_size(self):
         "Test GET data with size limit"
@@ -143,7 +143,7 @@ class RoutesTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.data, 'name\r\nFrançais\r\n'.encode('latin1'))
+            response.data, 'Nom\r\nFrançais\r\n'.encode('latin1'))
 
     def test_data_delimiter(self):
         "Test GET data with delimiter"
@@ -155,7 +155,7 @@ class RoutesTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.data, b'name|login\r\nAdministrator|admin\r\n')
+            response.data, b'Nom|Identifiant\r\nAdministrator|admin\r\n')
 
     def test_data_quotechar(self):
         "Test GET data with quotechar"
@@ -168,7 +168,8 @@ class RoutesTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.data, b'*name*n*login*\r\n*Administrator*n*admin*\r\n')
+            response.data,
+            b'Nomn*Identifiant*\r\n*Administrator*n*admin*\r\n')
 
     def test_data_no_header(self):
         "Test GET data without header"

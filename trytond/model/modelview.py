@@ -299,7 +299,7 @@ class ModelView(Model):
         relates = Action.get_keyword('form_relate', (cls.__name__, -1))
         exports = Export.search_read(
             [('resource', '=', cls.__name__)],
-            fields_names=['name', 'export_fields.name'])
+            fields_names=['name', 'header', 'export_fields.name'])
         emails = Email.search_read(
             [('model.model', '=', cls.__name__)],
             fields_names=['name'])
