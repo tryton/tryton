@@ -7,7 +7,7 @@ from email import charset
 
 from lxml import etree, objectify
 
-__version__ = "6.2.10"
+__version__ = "6.2.11"
 
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
