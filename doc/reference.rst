@@ -12,8 +12,8 @@ Budgets
 
 .. class:: BudgetLineMixin
 
-   Th *BudgetLineMixin* provides the basic parts needed to structure the budget
-   lines and define both the budgeted and actual amounts.
+   The *BudgetLineMixin* provides the basic parts needed to structure the
+   budget lines and define both the budgeted and actual amounts.
 
 Copy Budgets
 ============
