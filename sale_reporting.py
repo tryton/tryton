@@ -7,6 +7,7 @@ from trytond.pool import Pool
 
 
 class AbstractMixin:
+    __slots__ = ()
 
     @classmethod
     def _pos_sale_line(cls, length, index, company_id=None):
