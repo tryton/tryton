@@ -53,6 +53,7 @@ class Sale(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('web_shop', None)
         default.setdefault('web_id', None)
         return super().copy(sales, default=default)
 
