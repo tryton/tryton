@@ -172,10 +172,14 @@ class BOMTree(ModelView):
             childs = cls.tree(input_.product, quantity, input_.uom)
             values = {
                 'product': input_.product.id,
-                'product.rec_name': input_.product.rec_name,
+                'product.': {
+                    'rec_name': input_.product.rec_name,
+                    },
                 'quantity': quantity,
                 'uom': input_.uom.id,
-                'uom.rec_name': input_.uom.rec_name,
+                'uom.': {
+                    'rec_name': input_.uom.rec_name,
+                    },
                 'childs': childs,
             }
             result.append(values)
@@ -215,10 +219,14 @@ class OpenBOMTreeTree(ModelView):
         childs = Tree.tree(product, quantity, uom, bom=bom)
         bom_tree = [{
                 'product': product.id,
-                'product.rec_name': product.rec_name,
+                'product.': {
+                    'rec_name': product.rec_name,
+                    },
                 'quantity': quantity,
                 'uom': uom.id,
-                'uom.rec_name': uom.rec_name,
+                'uom.': {
+                    'rec_name': uom.rec_name,
+                    },
                 'childs': childs,
                 }]
         return {
