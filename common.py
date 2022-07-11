@@ -57,7 +57,7 @@ class IncotermMixin(Model):
         if self.incoterm:
             name = self.incoterm.rec_name
             if self.incoterm_location:
-                name += ' %s' + self.incoterm_location.rec_name
+                name += ' %s' % self.incoterm_location.rec_name
         return name
 
 
