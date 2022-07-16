@@ -1339,20 +1339,20 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product', methods=['_get_tax_rule_pattern'])
     def compute_taxes(self, party):
-        taxes = []
+        taxes = set()
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.supplier_taxes_used:
             if party and party.supplier_tax_rule:
                 tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
                 continue
-            taxes.append(tax.id)
+            taxes.add(tax.id)
         if party and party.supplier_tax_rule:
             tax_ids = party.supplier_tax_rule.apply(None, pattern)
             if tax_ids:
-                taxes.extend(tax_ids)
-        return taxes
+                taxes.update(tax_ids)
+        return list(taxes)
 
     @fields.depends('product', 'quantity',
         methods=['_get_context_purchase_price'])
