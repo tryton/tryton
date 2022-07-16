@@ -287,7 +287,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
             ModelField.clean()
             transaction.commit()
 
-        pool.setup_mixin(modules)
+        pool.setup_mixin()
 
         for model_name in models_to_update_history:
             model = pool.get(model_name)

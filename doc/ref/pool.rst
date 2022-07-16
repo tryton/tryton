@@ -60,10 +60,10 @@ Instance methods:
    Call all setup methods of the classes provided or for all the registered
    classes.
 
-.. method:: Pool.setup_mixin(modules)
+.. method:: Pool.setup_mixin([type[, name]])
 
-   Include all the mixin registered for the modules to the corresponding
-   registered classes.
+   Include all the mixin registered for the filled modules to the corresponding
+   registered type of classes or named.
 
 
 PoolMeta

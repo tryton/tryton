@@ -195,7 +195,7 @@ class Pool(object):
                 cls.__setup__()
                 cls.__post_setup__()
                 self.add(cls, type)
-                self.setup_mixin(self._modules, type='report', name=name)
+                self.setup_mixin(type='report', name=name)
                 return self.get(name, type=type)
             raise
 
@@ -252,13 +252,13 @@ class Pool(object):
             for cls in lst:
                 cls.__post_setup__()
 
-    def setup_mixin(self, modules, type=None, name=None):
+    def setup_mixin(self, type=None, name=None):
         logger.info('setup mixin for "%s"', self.database_name)
         if type is not None:
             types = [type]
         else:
             types = self.classes.keys()
-        for module in modules:
+        for module in self._modules:
             if module not in self.classes_mixin:
                 continue
             for type_ in types:
