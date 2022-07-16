@@ -73,6 +73,24 @@ class TestModel(ProteusTestCase):
         except AttributeError:
             pass
 
+    def test_many2many_append_unique(self):
+        User = Model.get('res.user')
+        Group = Model.get('res.group')
+        admin, = User.find([('login', '=', 'admin')])
+        group = Group(admin.groups[0].id)
+        admin.groups.append(group)
+
+        self.assertEqual(admin.groups.count(group), 1)
+
+    def test_many2many_extend_unique(self):
+        User = Model.get('res.user')
+        Group = Model.get('res.group')
+        admin, = User.find([('login', '=', 'admin')])
+        group = Group(admin.groups[0].id)
+        admin.groups.extend([group])
+
+        self.assertEqual(admin.groups.count(group), 1)
+
     # TODO test date
 
     def test_reference(self):

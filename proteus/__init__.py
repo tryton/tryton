@@ -531,6 +531,7 @@ class ModelList(list):
         self.record_removed = set()
         self.record_deleted = set()
         result = super(ModelList, self).__init__(sequence)
+        assert len(self) == len(set(self))
         self.__check(self, on_change=False)
         return result
     __init__.__doc__ = list.__init__.__doc__
@@ -577,17 +578,17 @@ class ModelList(list):
 
     def append(self, record):
         self.__check([record])
-        res = super(ModelList, self).append(record)
+        if record not in self:
+            super().append(record)
         self._changed()
-        return res
     append.__doc__ = list.append.__doc__
 
     def extend(self, iterable):
         iterable = list(iterable)
         self.__check(iterable)
-        res = super(ModelList, self).extend(iterable)
+        set_ = set(self)
+        super().extend(r for r in iterable if r not in set_)
         self._changed()
-        return res
     extend.__doc__ = list.extend.__doc__
 
     def insert(self, index, record):
