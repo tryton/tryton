@@ -184,19 +184,19 @@ class ShipmentOut(metaclass=PoolMeta):
         invoice_line.currency = invoice.currency
         invoice_line.company = invoice.company
 
-        taxes = []
+        taxes = set()
         pattern = self._get_cost_tax_rule_pattern()
         for tax in product.customer_taxes_used:
             if party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
                 continue
-            taxes.append(tax.id)
+            taxes.add(tax.id)
         if party.customer_tax_rule:
             tax_ids = party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
-                taxes.extend(tax_ids)
+                taxes.update(tax_ids)
         invoice_line.taxes = taxes
 
         invoice_line.account = product.account_revenue_used
