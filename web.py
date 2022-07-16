@@ -196,19 +196,19 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         customer_tax_rule = self._customer_taxe_rule()
         taxes2products = defaultdict(list)
         for product in all_products:
-            taxes = []
+            taxes = set()
             for tax in product.customer_taxes_used:
                 if customer_tax_rule:
                     tax_ids = customer_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        taxes.extend(tax_ids)
+                        taxes.update(tax_ids)
                     continue
-                taxes.append(tax.id)
+                taxes.add(tax.id)
             if customer_tax_rule:
                 tax_ids = customer_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
-            taxes2products[tuple(taxes)].append(product)
+                    taxes.update(tax_ids)
+            taxes2products[tuple(sorted(taxes))].append(product)
 
         prices, taxes = {}, {}
         for tax_ids, products in taxes2products.items():
