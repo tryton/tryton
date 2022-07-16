@@ -188,19 +188,19 @@ class Move(metaclass=PoolMeta):
         line.stock_moves = [self]
         line.origin = self
 
-        taxes = []
+        taxes = set()
         pattern = self._get_tax_rule_pattern()
         for tax in line.product.supplier_taxes_used:
             if line.party.supplier_tax_rule:
                 tax_ids = line.party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
                 continue
-            taxes.append(tax.id)
+            taxes.add(tax.id)
         if line.party.supplier_tax_rule:
             tax_ids = line.party.supplier_tax_rule.apply(None, pattern)
             if tax_ids:
-                taxes.extend(tax_ids)
+                taxes.update(tax_ids)
         line.taxes = taxes
 
         with Transaction().set_context(
@@ -232,19 +232,19 @@ class Move(metaclass=PoolMeta):
         line.stock_moves = [self]
         line.origin = self
 
-        taxes = []
+        taxes = set()
         pattern = self._get_tax_rule_pattern()
         for tax in line.product.customer_taxes_used:
             if line.party.customer_tax_rule:
                 tax_ids = line.party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
                 continue
-            taxes.append(tax.id)
+            taxes.add(tax.id)
         if line.party.customer_tax_rule:
             tax_ids = line.party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
-                taxes.extend(tax_ids)
+                taxes.update(tax_ids)
         line.taxes = taxes
 
         with Transaction().set_context(
