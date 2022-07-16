@@ -2158,19 +2158,19 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if type_ == 'in':
             with Transaction().set_context(date=date):
                 self.account = self.product.account_expense_used
-            taxes = []
+            taxes = set()
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.supplier_taxes_used:
                 if party and party.supplier_tax_rule:
                     tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        taxes.extend(tax_ids)
+                        taxes.update(tax_ids)
                     continue
-                taxes.append(tax)
+                taxes.add(tax.id)
             if party and party.supplier_tax_rule:
                 tax_ids = party.supplier_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
             self.taxes = taxes
 
             if self.company and self.company.purchase_taxes_expense:
@@ -2181,19 +2181,19 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         else:
             with Transaction().set_context(date=date):
                 self.account = self.product.account_revenue_used
-            taxes = []
+            taxes = set()
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.customer_taxes_used:
                 if party and party.customer_tax_rule:
                     tax_ids = party.customer_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        taxes.extend(tax_ids)
+                        taxes.update(tax_ids)
                     continue
-                taxes.append(tax.id)
+                taxes.add(tax.id)
             if party and party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
             self.taxes = taxes
 
         category = self.product.default_uom.category
@@ -2213,7 +2213,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def on_change_account(self):
         if self.product:
             return
-        taxes = []
+        taxes = set()
         party = None
         if self.invoice and self.invoice.party:
             party = self.invoice.party
@@ -2238,13 +2238,13 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 if tax_rule:
                     tax_ids = tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        taxes.extend(tax_ids)
+                        taxes.update(tax_ids)
                     continue
-                taxes.append(tax)
+                taxes.add(tax.id)
             if tax_rule:
                 tax_ids = tax_rule.apply(None, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
         self.taxes = taxes
 
     @classmethod
