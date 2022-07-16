@@ -939,20 +939,20 @@ class LineConsumption(ModelSQL, ModelView):
                         '.msg_consumption_invoice_missing_account_revenue',
                         product=line.product.rec_name))
 
-            taxes = []
+            taxes = set()
             pattern = line._get_tax_rule_pattern()
             party = invoice.party
             for tax in line.product.customer_taxes_used:
                 if party.customer_tax_rule:
                     tax_ids = party.customer_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        taxes.extend(tax_ids)
+                        taxes.update(tax_ids)
                     continue
-                taxes.append(tax.id)
+                taxes.add(tax.id)
             if party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
             line.taxes = taxes
 
             lines.append(line)
