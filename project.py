@@ -589,7 +589,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         invoice_line.currency = invoice.currency
         invoice_line.company = invoice.company
 
-        taxes = []
+        taxes = set()
         pattern = invoice_line._get_tax_rule_pattern()
         party = invoice.party
         original_taxes = (
@@ -598,13 +598,13 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
             if party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    taxes.extend(tax_ids)
+                    taxes.update(tax_ids)
                 continue
-            taxes.append(tax.id)
+            taxes.add(tax.id)
         if party.customer_tax_rule:
             tax_ids = party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
-                taxes.extend(tax_ids)
+                taxes.update(tax_ids)
         invoice_line.taxes = taxes
         return invoice_line
 
