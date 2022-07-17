@@ -107,12 +107,16 @@ def reduce_ids(field, ids):
     '''
     Return a small SQL expression for the list of ids and the sql column
     '''
-    ids = list(ids)
+    if __debug__:
+        def strict_int(value):
+            assert not isinstance(value, float) or value.is_integer(), \
+                "ids must be integer"
+            return int(value)
+    else:
+        strict_int = int
+    ids = list(map(strict_int, ids))
     if not ids:
         return Literal(False)
-    assert all(x.is_integer() for x in ids if isinstance(x, float)), \
-        'ids must be integer'
-    ids = list(map(int, ids))
     ids.sort()
     prev = ids.pop(0)
     continue_list = [prev, prev]
