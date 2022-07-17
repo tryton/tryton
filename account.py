@@ -14,11 +14,11 @@ class ShipmentCost(metaclass=PoolMeta):
         cls.allocation_method.selection.append(('weight', "By Weight"))
 
     def allocate_cost_by_weight(self):
-        self.factors = self._get_weight_factors()
+        self.factors = self._get_factors('weight')
         self._allocate_cost(self.factors)
 
     def unallocate_cost_by_weight(self):
-        factors = self.factors or self._get_weight_factors()
+        factors = self.factors or self._get_factors('weight')
         self._allocate_cost(factors, sign=-1)
 
     def _get_weight_factors(self):

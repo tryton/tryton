@@ -149,7 +149,12 @@ Add shipment cost to both shipments::
     >>> shipment_cost.save()
     >>> shipment_cost.state
     'draft'
-    >>> shipment_cost.click('post')
+    >>> post_shipment_cost = Wizard('account.shipment_cost.post', [shipment_cost])
+    >>> post_shipment_cost.form.cost
+    Decimal('20.0000')
+    >>> sorted([s.cost for s in post_shipment_cost.form.shipments])
+    [Decimal('5.0000'), Decimal('15.0000')]
+    >>> post_shipment_cost.execute('post')
     >>> shipment_cost.state
     'posted'
     >>> bool(shipment_cost.posted_date)
