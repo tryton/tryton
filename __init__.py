@@ -17,6 +17,7 @@ def register():
         account.PaymentBraintreeRefund,
         account.PaymentBraintreeAccount,
         account.PaymentBraintreeCustomer,
+        account.PaymentBraintreeCustomerIdentical,
         account.PaymentBraintreeCustomerPaymentMethodDeleteAsk,
         party.Party,
         party.PartyReceptionDirectDebit,

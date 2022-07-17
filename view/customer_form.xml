@@ -21,4 +21,6 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="braintree_error_message"/>
     <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
+
+    <field name="identical_customers" colspan="4"/>
 </form>

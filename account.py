@@ -7,6 +7,7 @@ import uuid
 import braintree
 from braintree.exceptions import GatewayTimeoutError, TooManyRequestsError
 from braintree.exceptions.braintree_error import BraintreeError
+from sql import Literal
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -21,6 +22,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval
 from trytond.report import Report
+from trytond.tools import sql_pairing
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wizard import (
@@ -916,6 +918,13 @@ class PaymentBraintreeCustomer(
             'invisible': ~Eval('braintree_error_message'),
             })
 
+    identical_customers = fields.Many2Many(
+        'account.payment.braintree.customer.identical',
+        'source', 'target', "Identical Customers", readonly=True,
+        states={
+            'invisible': ~Eval('identical_customers'),
+            })
+
     _payment_methods_cache = Cache(
         'account_payment_braintree_customer.payment_methods',
         duration=config.getint(
@@ -1144,6 +1153,34 @@ class PaymentBraintreeCustomer(
             if not result.is_success:
                 logger.error(result.message)
         self._payment_methods_cache.clear()
+
+
+class PaymentBraintreeCustomerIdentical(ModelSQL):
+    "Braintree Customer Identical"
+    __name__ = 'account.payment.braintree.customer.identical'
+    source = fields.Many2One('account.payment.braintree.customer', "Source")
+    target = fields.Many2One('account.payment.braintree.customer', "Target")
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Customer = pool.get('account.payment.braintree.customer')
+        source = Customer.__table__()
+        target = Customer.__table__()
+        return (
+            source
+            .join(target, condition=(
+                    source.braintree_customer_id
+                    == target.braintree_customer_id))
+            .select(
+                Literal(0).as_('create_uid'),
+                source.create_date.as_('create_date'),
+                Literal(None).as_('write_uid'),
+                Literal(None).as_('write_date'),
+                sql_pairing(source.id, target.id).as_('id'),
+                source.id.as_('source'),
+                target.id.as_('target'),
+                where=source.id != target.id))
 
 
 class PaymentBraintreeCustomerPaymentMethodDelete(Wizard):

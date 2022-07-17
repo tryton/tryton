@@ -13,6 +13,13 @@ class Party(metaclass=PoolMeta):
     braintree_customers = fields.One2Many(
         'account.payment.braintree.customer', 'party', "Braintree Customers")
 
+    def _payment_identical_parties(self):
+        parties = super()._payment_identical_parties()
+        for customer in self.braintree_customers:
+            for other_customer in customer.identical_customers:
+                parties.add(other_customer.party)
+        return parties
+
     @classmethod
     def write(cls, *args):
         pool = Pool()
