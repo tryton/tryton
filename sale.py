@@ -92,6 +92,8 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
         sale_number = Sale_Number.__table__()
         context = Transaction().context
         party = context.get('party')
+        if isinstance(party, int):
+            party = [party]
 
         query = (table
             .join(sale_number, 'LEFT',
@@ -101,7 +103,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
         if party:
             query = query.join(sale, 'LEFT',
                 condition=(sale_number.sale == sale.id)
-                & (sale.party == party))
+                & (sale.party.in_(party)))
             active = Case(
                 ((coupon.number_of_use > 0) & (coupon.per_party),
                     Count(sale.id) < coupon.number_of_use),
@@ -182,12 +184,26 @@ class Sale(metaclass=PoolMeta):
             ('coupon.promotion.company', '=', Eval('company', -1)),
             ],
         context={
-            'party': Eval('party', -1),
+            'party': Eval('coupon_parties', []),
             },
         states={
             'readonly': Eval('state') != 'draft',
             },
-        depends={'party'})
+        depends={'coupon_parties'})
+    coupon_parties = fields.Function(fields.Many2Many(
+            'party.party', None, None, "Coupon Parties"),
+        'on_change_with_coupon_parties')
+
+    @fields.depends(methods=['_coupon_parties'])
+    def on_change_with_coupon_parties(self, name=None):
+        return [p.id for p in self._coupon_parties()]
+
+    @fields.depends('party')
+    def _coupon_parties(self):
+        parties = set()
+        if self.party:
+            parties.add(self.party)
+        return parties
 
     @classmethod
     @ModelView.button
