@@ -8,11 +8,12 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import MatchMixin, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
-from trytond.modules.product import round_price
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import FilterUnusedWarning, NoMoveWarning
 
@@ -169,9 +170,13 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                     'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
-                'post': {
+                'post_wizard': {
                     'invisible': Eval('state') != 'draft',
                     'depends': ['state'],
+                    },
+                'show': {
+                    'invisible': Eval('state').in_(['draft', 'cancelled']),
+                    'depends': ['state']
                     },
                 })
 
@@ -290,12 +295,17 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                             product=product.rec_name))
 
     def allocate_cost_by_value(self):
-        self.factors = self._get_value_factors()
+        self.factors = self._get_factors('value')
         self._allocate_cost(self.factors)
 
     def unallocate_cost_by_value(self):
-        factors = self.factors or self._get_value_factors()
+        factors = self.factors or self._get_factors('value')
         self._allocate_cost(factors, sign=-1)
+
+    def _get_factors(self, method=None):
+        if method is None:
+            method = self.allocation_method
+        return getattr(self, '_get_%s_factors' % method)()
 
     def _get_value_factors(self):
         "Return the factor for each move based on value"
@@ -325,17 +335,10 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                     quantity * unit_prices[move.id] / sum_value)
         return factors
 
-    def _allocate_cost(self, factors, sign=1):
-        "Allocate cost on moves using factors"
+    def _costs_to_allocate(self, moves, factors):
         pool = Pool()
         Move = pool.get('stock.move')
-        Currency = pool.get('currency.currency')
-        assert sign in {1, -1}
-
         cost = self.cost
-        currency = self.company.currency
-        moves = [m for m in self.stock_moves() if m.quantity]
-
         costs = []
         digit = Move.unit_price.digits[1]
         exp = Decimal(str(10.0 ** -digit))
@@ -360,6 +363,18 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                 difference -= exp * quantity
             if difference < exp:
                 break
+        return costs
+
+    def _allocate_cost(self, factors, sign=1):
+        "Allocate cost on moves using factors"
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Currency = pool.get('currency.currency')
+        assert sign in {1, -1}
+
+        currency = self.company.currency
+        moves = [m for m in self.stock_moves() if m.quantity]
+        costs = self._costs_to_allocate(moves, factors)
 
         for cost in costs:
             move = cost['move']
@@ -376,7 +391,18 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         Move.save(moves)
 
     @classmethod
-    @ModelView.button
+    @ModelView.button_action(
+        'account_stock_landed_cost.wizard_landed_cost_post')
+    def post_wizard(cls, landed_costs):
+        pass
+
+    @classmethod
+    @ModelView.button_action(
+        'account_stock_landed_cost.wizard_landed_cost_show')
+    def show(cls, landed_costs):
+        pass
+
+    @classmethod
     @Workflow.transition('posted')
     def post(cls, landed_costs):
         pool = Pool()
@@ -457,6 +483,83 @@ class LandedCost_Product(ModelSQL):
         required=True, select=True, ondelete='CASCADE')
     product = fields.Many2One(
         'product.product', "Product", required=True, ondelete='CASCADE')
+
+
+class ShowLandedCostMixin(Wizard):
+    start_state = 'show'
+    show = StateView('account.landed_cost.show',
+        'account_stock_landed_cost.landed_cost_show_view_form', [])
+
+    @property
+    def factors(self):
+        return self.record._get_factors()
+
+    def default_show(self, fields):
+        moves = []
+        default = {
+            'cost': round_price(self.record.cost),
+            'moves': moves,
+            }
+        stock_moves = [m for m in self.record.stock_moves() if m.quantity]
+        costs = self.record._costs_to_allocate(stock_moves, self.factors)
+        for cost in costs:
+            moves.append({
+                    'move': cost['move'].id,
+                    'cost': round_price(
+                        cost['unit_landed_cost'], rounding=ROUND_HALF_EVEN),
+                    })
+        return default
+
+
+class PostLandedCost(ShowLandedCostMixin):
+    "Post Landed Cost"
+    __name__ = 'account.landed_cost.post'
+    post = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.show.buttons.extend([
+                Button("Cancel", 'end', 'tryton-cancel'),
+                Button("Post", 'post', 'tryton-ok', default=True),
+                ])
+
+    def transition_post(self):
+        self.model.post([self.record])
+        return 'end'
+
+
+class ShowLandedCost(ShowLandedCostMixin):
+    "Show Landed Cost"
+    __name__ = 'account.landed_cost.show'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.show.buttons.extend([
+                Button("Close", 'end', 'tryton-close', default=True),
+                ])
+
+    @property
+    def factors(self):
+        return self.record.factors or super().factors
+
+
+class LandedCostShow(ModelView):
+    "Landed Cost Show"
+    __name__ = 'account.landed_cost.show'
+
+    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
+    moves = fields.One2Many(
+        'account.landed_cost.show.move', None, "Moves", readonly=True)
+
+
+class LandedCostShowMove(ModelView):
+    "Landed Cost Show"
+    __name__ = 'account.landed_cost.show.move'
+
+    move = fields.Many2One('stock.move', "Move", readonly=True)
+    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
 
 
 class InvoiceLine(metaclass=PoolMeta):

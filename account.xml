@@ -127,11 +127,17 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="landed_cost_post_button">
-            <field name="name">post</field>
+            <field name="name">post_wizard</field>
             <field name="string">Post</field>
             <field name="confirm" eval="None"/>
             <field name="model"
                 search="[('model', '=', 'account.landed_cost')]"/>
+        </record>
+
+        <record model="ir.model.button" id="landed_cost_show_button">
+            <field name="name">show</field>
+            <field name="string">Show</field>
+            <field name="model" search="[('model', '=', 'account.landed_cost')]"/>
         </record>
 
         <record model="ir.model.button" id="landed_cost_draft_button">
@@ -151,6 +157,30 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_landed_cost_companies"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_landed_cost_post">
+            <field name="name">Post Landed Cost</field>
+            <field name="wiz_name">account.landed_cost.post</field>
+            <field name="model">account.landed_cost</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_landed_cost_show">
+            <field name="name">Show Landed Cost</field>
+            <field name="wiz_name">account.landed_cost.show</field>
+            <field name="model">account.landed_cost</field>
+        </record>
+
+        <record model="ir.ui.view" id="landed_cost_show_view_form">
+            <field name="model">account.landed_cost.show</field>
+            <field name="type">form</field>
+            <field name="name">landed_cost_show_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="landed_cost_show_move_view_list">
+            <field name="model">account.landed_cost.show.move</field>
+            <field name="type">tree</field>
+            <field name="name">landed_cost_show_move_list</field>
         </record>
 
         <record model="ir.ui.view" id="invoice_line_view_form">

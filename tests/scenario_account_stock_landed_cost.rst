@@ -166,13 +166,27 @@ Add landed cost::
     >>> landed_cost.save()
     >>> landed_cost.state
     'draft'
-    >>> landed_cost.click('post')
+
+    >>> post_landed_cost = Wizard('account.landed_cost.post', [landed_cost])
+    >>> post_landed_cost.form.cost
+    Decimal('10.0000')
+    >>> sorted([m.cost for m in post_landed_cost.form.moves])
+    [Decimal('1.0000')]
+    >>> post_landed_cost.execute('post')
     >>> landed_cost.state
     'posted'
     >>> bool(landed_cost.posted_date)
     True
     >>> bool(landed_cost.factors)
     True
+
+Show landed cost::
+
+    >>> show_landed_cost = Wizard('account.landed_cost.show', [landed_cost])
+    >>> show_landed_cost.form.cost
+    Decimal('10.0000')
+    >>> sorted([m.cost for m in show_landed_cost.form.moves])
+    [Decimal('1.0000')]
 
 Check move unit price is 101::
 

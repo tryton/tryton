@@ -16,6 +16,12 @@ def register():
         account.LandedCost_Shipment,
         account.LandedCost_ProductCategory,
         account.LandedCost_Product,
+        account.LandedCostShow,
+        account.LandedCostShowMove,
         account.InvoiceLine,
         stock.Move,
         module='account_stock_landed_cost', type_='model')
+    Pool.register(
+        account.PostLandedCost,
+        account.ShowLandedCost,
+        module='account_stock_landed_cost', type_='wizard')
