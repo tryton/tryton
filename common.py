@@ -142,3 +142,34 @@ class ActivePeriodMixin(PeriodMixin):
         else:
             expression = Literal(True)
         return expression
+
+
+class ContextCompanyMixin(Model):
+
+    context_company = fields.Function(fields.Boolean("Context Company"),
+        'get_context_company')
+
+    def get_context_company(self, name):
+        context = Transaction().context
+        return self.company.id == context.get('company')
+
+    @classmethod
+    def domain_context_company(cls, domain, tables):
+        context = Transaction().context
+        table, _ = tables[None]
+        _, operator, value = domain
+
+        expression = table.company == context.get('company')
+        if operator in {'=', '!='}:
+            if (operator == '=') != value:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in value and False not in value:
+                pass
+            elif False in value and True not in value:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression

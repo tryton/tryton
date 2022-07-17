@@ -132,20 +132,3 @@ lines, and the amounts provided by the tax code's children.
 
    Tax codes can be created from
    `Tax Code Templates <model-account.tax.code.template>`.
-
-Wizards
--------
-
-.. _wizard-account.tax.code.open_chart:
-
-Open Chart of Tax Codes
-^^^^^^^^^^^^^^^^^^^^^^^
-
-The *Open Chart of Tax Codes* wizard opens the chart of tax codes, showing the
-tax codes and amounts for the selected periods of time.
-
-.. seealso::
-
-   The open chart tax code wizard can be started from the main menu item:
-
-      :menuselection:`Financial --> Charts --> Open Tax Chart`

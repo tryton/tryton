@@ -153,37 +153,38 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_tax_code_list"/>
 
-        <record model="ir.ui.view" id="tax_code_view_tree2">
+        <record model="ir.ui.view" id="tax_code_view_tree_chart">
             <field name="model">account.tax.code</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
-            <field name="name">tax_code_tree2</field>
+            <field name="name">tax_code_tree_chart</field>
         </record>
-        <record model="ir.action.act_window" id="act_tax_code_tree2">
-            <field name="name">Tax Codes</field>
+
+        <record model="ir.action.act_window" id="act_tax_code_tree_chart">
+            <field name="name">Chart of Tax Codes</field>
             <field name="res_model">account.tax.code</field>
-            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+            <field name="context_model">account.tax.code.context</field>
+            <field name="domain"
+                eval="[('parent', '=', None), ('context_company', '=', True)]"
+                pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
+        <record model="ir.action.act_window.view" id="act_tax_code_tree_chart_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="tax_code_view_tree2"/>
-            <field name="act_window" ref="act_tax_code_tree2"/>
+            <field name="view" ref="tax_code_view_tree_chart"/>
+            <field name="act_window" ref="act_tax_code_tree_chart"/>
         </record>
-        <record model="ir.ui.view" id="tax_code_open_chart_start_view_form">
-            <field name="model">account.tax.code.open_chart.start</field>
-            <field name="type">form</field>
-            <field name="name">tax_code_open_chart_start_form</field>
-        </record>
-        <record model="ir.action.wizard" id="act_code_tax_open_chart">
-            <field name="name">Open Chart of Tax Codes</field>
-            <field name="wiz_name">account.tax.code.open_chart</field>
-        </record>
+
         <menuitem
-            parent="menu_charts"
-            action="act_code_tax_open_chart"
-            sequence="20"
-            id="menu_code_tax_open_chart"
-            icon="tryton-tree"/>
+            parent="menu_reporting"
+            action="act_tax_code_tree_chart"
+            sequence="30"
+            id="menu_tax_code_tree_chart"/>
+
+        <record model="ir.ui.view" id="tax_code_context_view_form">
+            <field name="model">account.tax.code.context</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_context_form</field>
+        </record>
 
         <record model="ir.model.access" id="access_tax_code">
             <field name="model" search="[('model', '=', 'account.tax.code')]"/>

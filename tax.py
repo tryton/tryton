@@ -22,7 +22,7 @@ from trytond.tools import cursor_dict, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
-from .common import ActivePeriodMixin, PeriodMixin
+from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
 
 KINDS = [
     ('sale', 'Sale'),
@@ -121,7 +121,8 @@ class TaxCodeTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
+class TaxCode(
+        ContextCompanyMixin, ActivePeriodMixin, tree(), ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
     _states = {
@@ -462,59 +463,114 @@ class TaxCodeLine(ModelSQL, ModelView):
             cls.write(*values)
 
 
-class OpenChartTaxCodeStart(ModelView):
-    'Open Chart of Tax Codes'
-    __name__ = 'account.tax.code.open_chart.start'
+class TaxCodeContext(ModelView):
+    "Tax Code Context"
+    __name__ = 'account.tax.code.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
     method = fields.Selection([
-        ('fiscalyear', 'By Fiscal Year'),
-        ('periods', 'By Periods'),
-        ], 'Method', required=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        help='Leave empty for all open fiscal year.',
+            ('fiscalyear', "By Fiscal Year"),
+            ('period', "By Period"),
+            ('periods', "Over Periods"),
+            ], 'Method', required=True)
+
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Fiscal Year",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'invisible': Eval('method') != 'fiscalyear',
             'required': Eval('method') == 'fiscalyear',
             })
-    periods = fields.Many2Many('account.period', None, None, 'Periods',
-        help='Leave empty for all periods of all open fiscal year.',
+
+    period = fields.Many2One(
+        'account.period', "Period",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('type', '=', 'standard'),
+            ],
+        states={
+            'invisible': Eval('method') != 'period',
+            'required': Eval('method') == 'period',
+            })
+
+    start_period = fields.Many2One(
+        'account.period', "Start Period",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('type', '=', 'standard'),
+            ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ],
+        states={
+            'invisible': Eval('method') != 'periods',
+            'required': Eval('method') == 'periods',
+            })
+    end_period = fields.Many2One(
+        'account.period', "End Period",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('type', '=', 'standard'),
+            ('start_date', '>=', (Eval('start_period'), 'start_date')),
+            ],
         states={
             'invisible': Eval('method') != 'periods',
             'required': Eval('method') == 'periods',
             })
 
-    @staticmethod
-    def default_method():
-        return 'periods'
-
-
-class OpenChartTaxCode(Wizard):
-    'Open Chart of Tax Codes'
-    __name__ = 'account.tax.code.open_chart'
-    start = StateView('account.tax.code.open_chart.start',
-        'account.tax_code_open_chart_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
+    periods = fields.Many2Many(
+        'account.period', None, None, "Periods",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('type', '=', 'standard'),
             ])
-    open_ = StateAction('account.act_tax_code_tree2')
 
-    def do_open_(self, action):
-        periods = []
-        if self.start.method == 'fiscalyear':
-            if self.start.fiscalyear:
-                periods = self.start.fiscalyear.periods
-                action['name'] += ' - %s' % self.start.fiscalyear.rec_name
-        elif self.start.method == 'periods':
-            if self.start.periods:
-                periods = self.start.periods
-                action['name'] += ' (%s)' % ', '.join(
-                    p.rec_name for p in self.start.periods)
-        action['pyson_context'] = PYSONEncoder().encode({
-                'periods': [p.id for p in periods],
-                })
-        return action, {}
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
-    def transition_open_(self):
-        return 'end'
+    @fields.depends(
+        'company', 'fiscalyear', 'period', methods=['on_change_with_periods'])
+    def on_change_company(self):
+        if self.fiscalyear and self.fiscalyear.company != self.company:
+            self.fiscalyear = None
+        if self.period and self.period.company != self.company:
+            self.period = None
+        self.periods = self.on_change_with_periods()
+
+    @classmethod
+    def default_method(cls):
+        return 'period'
+
+    @classmethod
+    def default_period(cls):
+        pool = Pool()
+        Period = pool.get('account.period')
+        return Period.find(
+            cls.default_company(), exception=False, test_state=False)
+
+    @fields.depends(
+        'method', 'company',
+        'fiscalyear', 'period', 'start_period', 'end_period')
+    def on_change_with_periods(self):
+        pool = Pool()
+        Period = pool.get('account.period')
+        if self.method == 'fiscalyear' and self.fiscalyear:
+            return [
+                p.id for p in self.fiscalyear.periods if p.type == 'standard']
+        elif self.method == 'period' and self.period:
+            return [self.period.id]
+        elif (self.method == 'periods'
+                and self.company
+                and self.start_period and self.end_period):
+            periods = Period.search([
+                    ('start_date', '>=', self.start_period.start_date),
+                    ('start_date', '<=', self.end_period.start_date),
+                    ('company', '=', self.company.id),
+                    ('type', '=', 'standard'),
+                    ])
+            return [p.id for p in periods]
+        return []
 
 
 class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):

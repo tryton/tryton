@@ -44,22 +44,6 @@ The amounts in these accounts are carried forward to subsequent
    Accounts can be created from
    `Account Templates <model-account.account.template>`.
 
-Wizards
--------
-
-.. _wizard-account.open_chart:
-
-Open Chart of Accounts
-^^^^^^^^^^^^^^^^^^^^^^
-
-This wizard opens the company's chart of accounts.
-
-.. seealso::
-
-   The chart of accounts can be opened using the main menu item:
-
-      :menuselection:`Financial --> Charts --> Open Chart of Accounts`
-
 .. _model-account.account.type:
 
 Account Type

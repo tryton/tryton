@@ -26,7 +26,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
-from .common import ActivePeriodMixin, PeriodMixin
+from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
 from .exceptions import (
     AccountValidationError, ChartWarning, SecondCurrencyError)
 
@@ -827,7 +827,9 @@ class AccountTemplateTaxTemplate(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
+class Account(
+        AccountMixin(), ContextCompanyMixin, ActivePeriodMixin, tree(),
+        ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
     _states = {
@@ -1751,42 +1753,31 @@ class AccountTax(ModelSQL):
             select=True, required=True)
 
 
-class OpenChartAccountStart(ModelView):
-    'Open Chart of Accounts'
-    __name__ = 'account.open_chart.start'
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            help='Leave empty for all open fiscal year.')
+class AccountContext(ModelView):
+    'Account Context'
+    __name__ = 'account.account.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Fiscal Year",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        help="Leave empty for all open fiscal year.")
     posted = fields.Boolean('Posted Moves', help="Only include posted moves.")
 
-    @staticmethod
-    def default_posted():
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @fields.depends('company', 'fiscalyear')
+    def on_change_company(self):
+        if self.fiscalyear and self.fiscalyear.company != self.company:
+            self.fiscalyear = None
+
+    @classmethod
+    def default_posted(cls):
         return False
-
-
-class OpenChartAccount(Wizard):
-    'Open Chart of Accounts'
-    __name__ = 'account.open_chart'
-    start = StateView('account.open_chart.start',
-        'account.open_chart_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('account.act_account_tree2')
-
-    def do_open_(self, action):
-        action['pyson_context'] = PYSONEncoder().encode({
-            'fiscalyear': (self.start.fiscalyear.id
-                    if self.start.fiscalyear else None),
-            'posted': self.start.posted,
-            })
-        if self.start.fiscalyear:
-            action['name'] += ' - %s' % self.start.fiscalyear.rec_name
-        if self.start.posted:
-            action['name'] += '*'
-        return action, {}
-
-    def transition_open_(self):
-        return 'end'
 
 
 class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):

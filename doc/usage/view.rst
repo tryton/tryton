@@ -30,11 +30,9 @@ that make them up, can be found by:
 Viewing your chart of accounts data
 ===================================
 
-The `Open Chart of Accounts <wizard-account.open_chart>` wizard can be run
-from the main menu to open your chart of accounts.
-
-This provides a structured view of all the `Accounts <model-account.account>`
-that form your `Company's <company:model-company.company>` accounts.
+The [:menuselection:`Financial --> Reporting -> Chart of Accounts`] provides a
+structured view of all the `Accounts <model-account.account>` that form your
+`Company's <company:model-company.company>` accounts.
 
 .. tip::
 
@@ -47,11 +45,9 @@ that form your `Company's <company:model-company.company>` accounts.
 Viewing your tax code data
 ==========================
 
-The `Open Chart of Tax Codes <wizard-account.tax.code.open_chart>` wizard can
-be run from the main menu to open your chart of tax codes.
-
-From here you are able to see data about what `Taxes <model-account.tax>` have
-been applied and what amounts these were based on.
+From [:menuselection:`Financial --> Reporting -> Chart of Tax Codes`] you are
+able to see data about what `Taxes <model-account.tax>` have been applied and
+what amounts these were based on.
 The `Tax Codes <model-account.tax.code>` are normally structured so that you
 can find the data that you need to do your tax reporting.
 
