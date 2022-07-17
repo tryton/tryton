@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_stripe_receivable">
             <field name="text">To pay "%(payment)s", you cannot use a stripe journal "%(journal)s".</field>
         </record>
+        <record model="ir.message" id="msg_customer_fingerprint_unique">
+            <field name="text">The fingerprint must be unique by customer.</field>
+        </record>
     </data>
 </tryton>

@@ -10,12 +10,14 @@ from itertools import groupby
 from operator import attrgetter
 
 import stripe
+from sql import Literal
 
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, dualmethod, fields)
+    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    fields)
 from trytond.modules.account_payment.exceptions import (
     PaymentValidationError, ProcessError)
 from trytond.modules.company.model import (
@@ -26,6 +28,7 @@ from trytond.pyson import Eval
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
+from trytond.tools import sql_pairing
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
@@ -436,6 +439,8 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
 
         The transaction is committed after each payment charge.
         """
+        pool = Pool()
+        Customer = pool.get('account.payment.stripe.customer')
         if payments is None:
             payments = cls.search([
                     ('state', '=', 'processing'),
@@ -507,6 +512,10 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                     exc_info=True)
                 continue
             Transaction().commit()
+
+        customers = [p.stripe_customer for p in payments if p.stripe_customer]
+        if customers:
+            Customer.__queue__.find_identical(customers)
 
     def _charge_parameters(self):
         source, customer = None, None
@@ -1332,6 +1341,16 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             'invisible': ~Eval('stripe_error_param'),
             })
 
+    identical_customers = fields.Many2Many(
+        'account.payment.stripe.customer.identical',
+        'source', 'target', "Identical Customers", readonly=True,
+        states={
+            'invisible': ~Eval('identical_customers'),
+            })
+    fingerprints = fields.One2Many(
+        'account.payment.stripe.customer.fingerprint', 'customer',
+        "Fingerprints", readonly=True)
+
     _sources_cache = Cache(
         'account_payment_stripe_customer.sources',
         duration=config.getint(
@@ -1352,6 +1371,10 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     'depends': ['stripe_checkout_needed'],
                     },
                 'detach_source': {
+                    'invisible': ~Eval('stripe_customer_id'),
+                    'depends': ['stripe_customer_id'],
+                    },
+                'find_identical': {
                     'invisible': ~Eval('stripe_customer_id'),
                     'depends': ['stripe_customer_id'],
                     },
@@ -1446,6 +1469,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 # TODO add card
             customer.save()
             Transaction().commit()
+        cls.__queue__.find_identical(customers)
 
     def _customer_parameters(self):
         locales = [pl.lang.code for pl in self.party.langs if pl.lang]
@@ -1694,6 +1718,84 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             customer.save()
             cls._payment_methods_cache.clear()
             Transaction().commit()
+
+    def fetch_fingeprints(self):
+        customer = self.retrieve()
+        if customer:
+            for source in customer.sources:
+                if hasattr(source, 'fingerprint'):
+                    yield source.fingerprint
+            try:
+                payment_methods = stripe.PaymentMethod.list(
+                    api_key=self.stripe_account.secret_key,
+                    customer=customer.id,
+                    type='card')
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
+                payment_methods = []
+            for payment_method in payment_methods:
+                yield payment_method.card.fingerprint
+
+    @classmethod
+    @ModelView.button
+    def find_identical(cls, customers):
+        pool = Pool()
+        Fingerprint = pool.get('account.payment.stripe.customer.fingerprint')
+        new = []
+        for customer in customers:
+            fingerprints = set(customer.fetch_fingeprints())
+            fingerprints -= {f.fingerprint for f in customer.fingerprints}
+            for fingerprint in fingerprints:
+                new.append(Fingerprint(
+                        customer=customer,
+                        fingerprint=fingerprint))
+        Fingerprint.save(new)
+
+
+class CustomerFingerprint(ModelSQL):
+    "Stripe Customer Fingerprint"
+    __name__ = 'account.payment.stripe.customer.fingerprint'
+    customer = fields.Many2One(
+        'account.payment.stripe.customer', "Customer",
+        required=True, ondelete='CASCADE')
+    fingerprint = fields.Char("Fingerprint", required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('customer_fingerprint_unique',
+                Unique(t, t.customer, t.fingerprint),
+                'account_payment_stripe.msg_customer_fingerprint_unique'),
+            ]
+
+
+class CustomerIdentical(ModelSQL):
+    "Stripe Customer Identical"
+    __name__ = 'account.payment.stripe.customer.identical'
+    source = fields.Many2One('account.payment.stripe.customer', "Source")
+    target = fields.Many2One('account.payment.stripe.customer', "Target")
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Fingerprint = pool.get('account.payment.stripe.customer.fingerprint')
+        source = Fingerprint.__table__()
+        target = Fingerprint.__table__()
+        return (
+            source
+            .join(target, condition=source.fingerprint == target.fingerprint)
+            .select(
+                Literal(0).as_('create_uid'),
+                source.create_date.as_('create_date'),
+                Literal(None).as_('write_uid'),
+                Literal(None).as_('write_date'),
+                sql_pairing(source.id, target.id).as_('id'),
+                source.customer.as_('source'),
+                target.customer.as_('target'),
+                where=source.customer != target.customer))
 
 
 class Checkout(Wizard):

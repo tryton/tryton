@@ -14,6 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     <group id="buttons" col="-1" colspan="4">
         <button name="stripe_checkout"/>
         <button name="detach_source"/>
+        <button name="find_identical"/>
     </group>
     <label name="stripe_error_message"/>
     <field name="stripe_error_message"/>
@@ -22,4 +23,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="stripe_error_code"/>
     <label name="stripe_error_param"/>
     <field name="stripe_error_param"/>
+
+    <field name="identical_customers" colspan="4"/>
 </form>

@@ -285,6 +285,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Detach Source</field>
             <field name="model" search="[('model', '=', 'account.payment.stripe.customer')]"/>
         </record>
+        <record model="ir.model.button" id="customer_find_identical_button">
+            <field name="name">find_identical</field>
+            <field name="string">Find Identical</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.customer')]"/>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_checkout">
             <field name="name">Stripe Checkout</field>

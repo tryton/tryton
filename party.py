@@ -13,6 +13,13 @@ class Party(metaclass=PoolMeta):
     stripe_customers = fields.One2Many(
         'account.payment.stripe.customer', 'party', "Stripe Customers")
 
+    def _payment_identical_parties(self):
+        parties = super()._payment_identical_parties()
+        for customer in self.stripe_customers:
+            for other_customer in customer.identical_customers:
+                parties.add(other_customer.party)
+        return parties
+
     @classmethod
     def write(cls, *args):
         pool = Pool()

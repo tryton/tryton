@@ -13,6 +13,8 @@ def register():
         payment.Account,
         payment.Refund,
         payment.Customer,
+        payment.CustomerFingerprint,
+        payment.CustomerIdentical,
         payment.Journal,
         payment.Group,
         payment.Payment,
