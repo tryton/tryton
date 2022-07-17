@@ -241,6 +241,8 @@ class Many2One(Field):
             # Used for Many2Many where clause
             if operator.endswith('where'):
                 query = Target.search(value, order=[], query=True)
+                target_id, = query.columns
+                query.where &= target_id == column
                 expression = column.in_(query)
                 if operator.startswith('not'):
                     return ~expression
