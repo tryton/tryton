@@ -13,6 +13,7 @@ import types
 import unicodedata
 import warnings
 from array import array
+from collections.abc import Sized
 from functools import wraps
 from itertools import islice
 
@@ -182,6 +183,8 @@ def grouped_slice(records, count=None):
     if count is None:
         count = Transaction().database.IN_MAX
     count = max(1, count)
+    if not isinstance(records, Sized):
+        records = list(records)
     for i in range(0, len(records), count):
         yield islice(records, i, i + count)
 

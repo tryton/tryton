@@ -11,10 +11,10 @@ import sql
 import sql.operators
 
 from trytond.tools import (
-    decimal_, escape_wildcard, file_open, firstline, is_full_text,
-    is_instance_method, lstrip_wildcard, reduce_domain, reduce_ids,
-    remove_forbidden_chars, rstrip_wildcard, slugify, sortable_values,
-    strip_wildcard, unescape_wildcard)
+    decimal_, escape_wildcard, file_open, firstline, grouped_slice,
+    is_full_text, is_instance_method, lstrip_wildcard, reduce_domain,
+    reduce_ids, remove_forbidden_chars, rstrip_wildcard, slugify,
+    sortable_values, strip_wildcard, unescape_wildcard)
 from trytond.tools.domain_inversion import (
     concat, domain_inversion, eval_domain, extract_reference_models,
     localize_domain, merge, parse, prepare_reference_domain, simplify,
@@ -99,6 +99,23 @@ class ToolsTestCase(unittest.TestCase):
         for i, j in tests:
             self.assertEqual(reduce_domain(i), j,
                     '%s -> %s != %s' % (i, reduce_domain(i), j))
+
+    def test_grouped_slice(self):
+        "Test grouped slice"
+        for (values, count, result) in [
+                (list(range(10)), 5, [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]),
+                (list(range(5)), 5, [[0, 1, 2, 3, 4]]),
+                (list(range(5)), 2, [[0, 1], [2, 3], [4]]),
+                ]:
+            with self.subTest(values=values, count=count):
+                self.assertEqual(
+                    list(map(list, grouped_slice(values, count))), result)
+
+    def test_grouped_slice_generator(self):
+        "Test grouped slice"
+        self.assertEqual(
+            list(map(list, grouped_slice((x for x in range(10)), 5))),
+            [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]])
 
     def test_is_instance_method(self):
         'Test is_instance_method'
