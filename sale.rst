@@ -59,6 +59,9 @@ Sale
 `Promotion Coupon </projects/modules-sale-promotion-coupon/en/latest>`_
     Applies promotions with coupons.
 
+`Promotion Coupon Payment </projects/modules-sale-promotion-coupon-payment/en/latest>`_
+    Count coupon per identical payment party.
+
 `Shipment Cost </projects/modules-sale-shipment-cost/en/latest>`_
     Computes shipment cost.
 
