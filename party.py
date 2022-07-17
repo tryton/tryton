@@ -22,10 +22,19 @@ class Party(metaclass=PoolMeta):
     reception_direct_debits = fields.One2Many(
         'party.party.reception_direct_debit', 'party', "Direct Debits",
         help="Fill to debit automatically the customer.")
+    payment_identical_parties = fields.Function(
+        fields.Many2Many('party.party', None, None, "Identical Parties"),
+        'get_payment_identical_parties')
 
     @classmethod
     def default_payment_direct_debit(cls, **pattern):
         return False
+
+    def get_payment_identical_parties(self, name):
+        return [p.id for p in self._payment_identical_parties()]
+
+    def _payment_identical_parties(self):
+        return set()
 
     @classmethod
     def copy(cls, parties, default=None):
