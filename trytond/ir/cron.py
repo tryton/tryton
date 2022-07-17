@@ -159,8 +159,10 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     ])
 
             for cron in crons:
+                def duration():
+                    return (time.monotonic() - started) * 1000
+                started = time.monotonic()
                 name = '<Cron %s@%s %s>' % (cron.id, db_name, cron.method)
-                logger.info("%s started", name)
                 for count in range(retry, -1, -1):
                     if count != retry:
                         time.sleep(0.02 * (retry - count))
@@ -172,15 +174,19 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     except Exception as e:
                         if (isinstance(e, backend.DatabaseOperationalError)
                                 and count):
+                            logger.debug("Retry: %i", retry - count + 1)
                             continue
                         if isinstance(e, (UserError, UserWarning)):
                             Error.log(cron, e)
-                            logger.info('%s failed', name)
+                            logger.info(
+                                "%s failed after %i ms", name, duration())
                         else:
-                            logger.critical('%s failed', name, exc_info=True)
+                            logger.exception(
+                                "%s failed after %i ms", name, duration())
                     cron.next_call = cron.compute_next_call(now)
                     cron.save()
                     break
+                logger.info("%s in %i ms", name, duration())
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(db_name, task_id)

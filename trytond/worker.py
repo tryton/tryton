@@ -114,8 +114,11 @@ def run_task(pool, task_id):
                 pool.init()
     Queue = pool.get('ir.queue')
     Error = pool.get('ir.error')
+
+    def duration():
+        return (time.monotonic() - started) * 1000
+    started = time.monotonic()
     name = '<Task %s@%s>' % (task_id, pool.database_name)
-    logger.info('%s started', name)
     retry = config.getint('database', 'retry')
     try:
         for count in range(retry, -1, -1):
@@ -134,14 +137,17 @@ def run_task(pool, task_id):
                 except backend.DatabaseOperationalError:
                     if count:
                         transaction.rollback()
+                        logger.debug("Retry: %i", retry - count + 1)
                         continue
                     raise
                 except (UserError, UserWarning) as e:
                     Error.log(task, e)
                     raise
-        logger.info('%s done', name)
+        logger.info("%s in %i ms", name, duration())
     except backend.DatabaseOperationalError:
-        logger.info('%s failed, retrying', name, exc_info=True)
+        logger.info(
+            "%s failed after %i ms, retrying", name, duration(),
+            exc_info=logger.isEnabledFor(logging.DEBUG))
         if not config.getboolean('queue', 'worker', default=False):
             time.sleep(0.02 * retry)
         try:
@@ -159,8 +165,11 @@ def run_task(pool, task_id):
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
             logger.critical(
-                'rescheduling %s failed', name, exc_info=True)
+                "rescheduling %s failed", name, exc_info=True)
     except (UserError, UserWarning):
-        logger.info('%s failed', name)
+        logger.info(
+            "%s failed after %i ms", name, duration(),
+            exc_info=logger.isEnabledFor(logging.DEBUG))
     except Exception:
-        logger.critical('%s failed', name, exc_info=True)
+        logger.critical(
+            "%s failed after %i ms", name, duration(), exc_info=True)

@@ -32,6 +32,7 @@ ir_configuration = Table('ir_configuration')
 ir_lang = Table('ir_lang')
 ir_module = Table('ir_module')
 res_user = Table('res_user')
+_MAX_LENGTH = 80
 
 
 @app.route('/<string:database_name>/', methods=['POST'])
@@ -137,6 +138,14 @@ def help_method(request, pool):
     return pydoc.getdoc(getattr(obj, method))
 
 
+def _safe_repr(args, kwargs, short=False):
+    args = args + tuple('%s=%r' % (k, v) for k, v in kwargs.items())
+    result = repr(args)
+    if not short or len(result) < _MAX_LENGTH:
+        return result
+    return result[:_MAX_LENGTH] + ' [truncated]...)'
+
+
 @app.auth_required
 @with_pool
 def _dispatch(request, pool, *args, **kwargs):
@@ -157,13 +166,18 @@ def _dispatch(request, pool, *args, **kwargs):
                 pool.database_name, user, session, context=context):
             abort(HTTPStatus.UNAUTHORIZED)
 
-    log_message = '%s.%s(*%s, **%s) from %s@%s%s'
+    log_message = '%s.%s%s from %s@%s%s in %i ms'
     username = request.authorization.username
     if isinstance(username, bytes):
         username = username.decode('utf-8')
     log_args = (
-        obj, method, args, kwargs, username, request.remote_addr, request.path)
-    logger.debug(log_message, *log_args)
+        obj.__name__, method,
+        _safe_repr(args, kwargs, not logger.isEnabledFor(logging.DEBUG)),
+        username, request.remote_addr, request.path)
+
+    def duration():
+        return (time.monotonic() - started) * 1000
+    started = time.monotonic()
 
     retry = config.getint('database', 'retry')
     for count in range(retry, -1, -1):
@@ -190,15 +204,18 @@ def _dispatch(request, pool, *args, **kwargs):
             except backend.DatabaseOperationalError:
                 if count and not rpc.readonly:
                     transaction.rollback()
+                    logger.debug("Retry: %i", retry - count + 1)
                     continue
-                logger.error(log_message, *log_args, exc_info=True)
+                logger.exception(log_message, *log_args, duration())
                 raise
             except (ConcurrencyException, UserError, UserWarning,
                     LoginException):
-                logger.debug(log_message, *log_args, exc_info=True)
+                logger.info(
+                    log_message, *log_args, duration(),
+                    exc_info=logger.isEnabledFor(logging.DEBUG))
                 raise
             except Exception:
-                logger.error(log_message, *log_args, exc_info=True)
+                logger.exception(log_message, *log_args, duration())
                 raise
             # Need to commit to unlock SQLite database
             transaction.commit()
@@ -208,7 +225,8 @@ def _dispatch(request, pool, *args, **kwargs):
         if session:
             context = {'_request': request.context}
             security.reset(pool.database_name, session, context=context)
-        logger.debug('Result: %s', result)
+        logger.info(log_message, *log_args, duration())
+        logger.debug('Result: %r', result)
         response = app.make_response(request, result)
         if rpc.readonly and rpc.cache:
             response.headers.extend(rpc.cache.headers())
