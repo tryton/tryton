@@ -149,11 +149,24 @@ Add shipment cost to both shipments::
     'draft'
     >>> bool(shipment_cost1.number)
     True
-    >>> shipment_cost1.click('post')
+    >>> post_shipment_cost = Wizard('account.shipment_cost.post', [shipment_cost1])
+    >>> post_shipment_cost.form.cost
+    Decimal('10.0000')
+    >>> sorted([s.cost for s in post_shipment_cost.form.shipments])
+    [Decimal('5.0000'), Decimal('5.0000')]
+    >>> post_shipment_cost.execute('post')
     >>> shipment_cost1.state
     'posted'
     >>> bool(shipment_cost1.posted_date)
     True
+
+Show shipment cost::
+
+    >>> show_shipment_cost = Wizard('account.shipment_cost.show', [shipment_cost1])
+    >>> show_shipment_cost.form.cost
+    Decimal('10.0000')
+    >>> sorted([s.cost for s in show_shipment_cost.form.shipments])
+    [Decimal('5.0000'), Decimal('5.0000')]
 
 Check shipment cost::
 
@@ -178,8 +191,14 @@ Add a second shipment cost to 1 shipment::
     >>> shipment_cost2 = ShipmentCost()
     >>> shipment_cost2.invoice_lines.append(InvoiceLine(line.id))
     >>> shipment_cost2.shipments.append(ShipmentOut(shipment1.id))
+    >>> shipment_cost2.save()
+    >>> post_shipment_cost = Wizard('account.shipment_cost.post', [shipment_cost2])
+    >>> post_shipment_cost.form.cost
+    Decimal('2.0000')
+    >>> sorted([s.cost for s in post_shipment_cost.form.shipments])
+    [Decimal('2.0000')]
     >>> try:
-    ...     shipment_cost2.click('post')
+    ...     post_shipment_cost.execute('post')
     ... except SamePartiesWarning as warning:
     ...     _, (key, *_) = warning.args
     ...     raise  # doctest: +IGNORE_EXCEPTION_DETAIL
@@ -187,7 +206,7 @@ Add a second shipment cost to 1 shipment::
         ...
     SamePartiesWarning: ...
     >>> Warning(user=config.user, name=key).save()
-    >>> shipment_cost2.click('post')
+    >>> post_shipment_cost.execute('post')
     >>> shipment_cost2.state
     'posted'
 

@@ -130,8 +130,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="shipment_cost_post_button">
-            <field name="name">post</field>
+            <field name="name">post_wizard</field>
             <field name="string">Post</field>
+            <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_cost_show_button">
+            <field name="name">show</field>
+            <field name="string">Show</field>
             <field name="model" search="[('model', '=', 'account.shipment_cost')]"/>
         </record>
 
@@ -149,6 +155,30 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_shipment_cost_companies">
             <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
             <field name="rule_group" ref="rule_group_shipment_cost_companies"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_cost_post">
+            <field name="name">Post Shipment Cost</field>
+            <field name="wiz_name">account.shipment_cost.post</field>
+            <field name="model">account.shipment_cost</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_cost_show">
+            <field name="name">Show Shipment Cost</field>
+            <field name="wiz_name">account.shipment_cost.show</field>
+            <field name="model">account.shipment_cost</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_cost_show_view_form">
+            <field name="model">account.shipment_cost.show</field>
+            <field name="type">form</field>
+            <field name="name">shipment_cost_show_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_cost_show_shipment_view_list">
+            <field name="model">account.shipment_cost.show.shipment</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_cost_show_shipment_list</field>
         </record>
 
         <record model="ir.ui.view" id="invoice_line_view_form">

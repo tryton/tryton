@@ -6,10 +6,11 @@ from itertools import groupby
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
-from trytond.modules.product import round_price
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import NoShipmentWarning, SamePartiesWarning
 
@@ -138,9 +139,13 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
-                'post': {
+                'post_wizard': {
                     'invisible': Eval('state') != 'draft',
                     'depends': ['state'],
+                    },
+                'show': {
+                    'invisible': Eval('state').in_(['draft', 'cancelled']),
+                    'depends': ['state']
                     },
                 })
 
@@ -199,12 +204,17 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
         return {l.invoice.party for l in self.invoice_lines}
 
     def allocate_cost_by_shipment(self):
-        self.factors = self._get_shipment_factors()
+        self.factors = self._get_factors('shipment')
         self._allocate_cost(self.factors)
 
     def unallocate_cost_by_shipment(self):
-        factors = self.factors or self._get_shipment_factors()
+        factors = self.factors or self._get_factors('shipment')
         self._allocate_cost(factors, sign=-1)
+
+    def _get_factors(self, method=None):
+        if method is None:
+            method = self.allocation_method
+        return getattr(self, '_get_%s_factors' % method)()
 
     def _get_shipment_factors(self):
         shipments = self.all_shipments
@@ -239,7 +249,18 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
             klass.set_shipment_cost(shipments)
 
     @classmethod
-    @ModelView.button
+    @ModelView.button_action(
+        'account_stock_shipment_cost.wizard_shipment_cost_post')
+    def post_wizard(cls, shipment_costs):
+        pass
+
+    @classmethod
+    @ModelView.button_action(
+        'account_stock_shipment_cost.wizard_shipment_cost_show')
+    def show(cls, shipment_costs):
+        pass
+
+    @classmethod
     @Workflow.transition('posted')
     def post(cls, shipment_costs):
         pool = Pool()
@@ -320,6 +341,86 @@ class ShipmentCost_ShipmentReturn(ModelSQL):
     shipment = fields.Many2One(
         'stock.shipment.out.return', "Shipment",
         required=True, ondelete='CASCADE')
+
+
+class ShowShipmentCostMixin(Wizard):
+    start_state = 'show'
+    show = StateView('account.shipment_cost.show',
+        'account_stock_shipment_cost.shipment_cost_show_view_form', [])
+
+    @property
+    def factors(self):
+        return self.record._get_factors()
+
+    def default_show(self, fields):
+        shipments = []
+        cost = self.record.cost
+        default = {
+            'cost': round_price(cost),
+            'shipments': shipments,
+            }
+        factors = self.factors
+        for shipment in self.record.all_shipments:
+            shipments.append({
+                    'shipment': str(shipment),
+                    'cost': round_price(cost * factors[str(shipment)]),
+                    })
+        return default
+
+
+class PostShipmentCost(ShowShipmentCostMixin):
+    "Post Shipment Cost"
+    __name__ = 'account.shipment_cost.post'
+    post = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.show.buttons.extend([
+                Button("Cancel", 'end', 'tryton-cancel'),
+                Button("Post", 'post', 'tryton-ok', default=True),
+                ])
+
+    def transition_post(self):
+        self.model.post([self.record])
+        return 'end'
+
+
+class ShowShipmentCost(ShowShipmentCostMixin):
+    "Show Shipment Cost"
+    __name__ = 'account.shipment_cost.show'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.show.buttons.extend([
+                Button("Close", 'end', 'tryton-close', default=True),
+                ])
+
+    @property
+    def factors(self):
+        return self.record.factors or super().factors
+
+
+class ShipmentCostShow(ModelView):
+    "Shipment Cost Show"
+    __name__ = 'account.shipment_cost.show'
+
+    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
+    shipments = fields.One2Many(
+        'account.shipment_cost.show.shipment', None, "Shipments",
+        readonly=True)
+
+
+class ShipmentCostShowShipment(ModelView):
+    "Post Shipment Cost"
+    __name__ = 'account.shipment_cost.show.shipment'
+
+    shipment = fields.Reference("Shipments", [
+            ('stock.shipment.out', "Shipment"),
+            ('stock.shipment.out.return', "Shipment Return"),
+            ], readonly=True)
+    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
 
 
 class InvoiceLine(metaclass=PoolMeta):
