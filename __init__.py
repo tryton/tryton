@@ -13,7 +13,7 @@ def register():
     Pool.register(
         account.Account,
         account.AccountDistribution,
-        account.OpenChartAccountStart,
+        account.AccountContext,
         account.AnalyticAccountEntry,
         line.Line,
         line.Move,
@@ -21,6 +21,5 @@ def register():
         rule.Rule,
         module='analytic_account', type_='model')
     Pool.register(
-        account.OpenChartAccount,
         line.OpenAccount,
         module='analytic_account', type_='wizard')

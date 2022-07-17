@@ -16,7 +16,6 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
 from trytond.tools import lstrip_wildcard
 from trytond.transaction import Transaction
-from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import AccountValidationError
 
@@ -297,32 +296,11 @@ class Account(
             return result
 
 
-class OpenChartAccountStart(ModelView):
+class AccountContext(ModelView):
     'Open Chart of Accounts'
-    __name__ = 'analytic_account.open_chart.start'
+    __name__ = 'analytic_account.account.context'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-
-class OpenChartAccount(Wizard):
-    'Open Chart of Accounts'
-    __name__ = 'analytic_account.open_chart'
-    start = StateView('analytic_account.open_chart.start',
-        'analytic_account.open_chart_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('analytic_account.act_account_tree2')
-
-    def do_open_(self, action):
-        action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': self.start.start_date,
-                'end_date': self.start.end_date,
-                })
-        return action, {}
-
-    def transition_open_(self):
-        return 'end'
 
 
 class AccountDistribution(ModelView, ModelSQL):

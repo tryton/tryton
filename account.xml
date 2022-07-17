@@ -77,38 +77,35 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_account_list"/>
 
-        <record model="ir.ui.view" id="account_view_tree2">
+        <record model="ir.ui.view" id="account_view_tree_chart">
             <field name="model">analytic_account.account</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
             <field name="priority" eval="20"/>
-            <field name="name">account_tree2</field>
+            <field name="name">account_tree_chart</field>
         </record>
-        <record model="ir.action.act_window" id="act_account_tree2">
-            <field name="name">Analytic Accounts</field>
+        <record model="ir.action.act_window" id="act_account_tree_chart">
+            <field name="name">Chart of Analytic Accounts</field>
             <field name="res_model">analytic_account.account</field>
+            <field name="context_model">analytic_account.account.context</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+        <record model="ir.action.act_window.view" id="act_account_tree_chart_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="account_view_tree2"/>
-            <field name="act_window" ref="act_account_tree2"/>
+            <field name="view" ref="account_view_tree_chart"/>
+            <field name="act_window" ref="act_account_tree_chart"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_account_tree2_view2">
+        <record model="ir.action.act_window.view" id="act_account_tree_chart_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="account_view_form"/>
-            <field name="act_window" ref="act_account_tree2"/>
+            <field name="act_window" ref="act_account_tree_chart"/>
         </record>
-        <record model="ir.action.wizard" id="act_open_chart">
-            <field name="name">Open Chart of Analytic Accounts</field>
-            <field name="wiz_name">analytic_account.open_chart</field>
-        </record>
+
         <menuitem
-            parent="account.menu_charts"
-            action="act_open_chart"
+            parent="account.menu_reporting"
+            action="act_account_tree_chart"
             sequence="30"
-            id="menu_open_chart"
-            icon="tryton-tree"/>
+            id="menu_account_tree_chart"/>
 
         <record model="ir.rule.group" id="rule_group_account_companies">
             <field name="name">User in companies</field>
@@ -169,10 +166,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.ui.view" id="open_chart_start_view_form">
-            <field name="model">analytic_account.open_chart.start</field>
+        <record model="ir.ui.view" id="account_context_view_form">
+            <field name="model">analytic_account.account.context</field>
             <field name="type">form</field>
-            <field name="name">open_chart_start_form</field>
+            <field name="name">account_context_form</field>
         </record>
 
         <record model="ir.ui.view" id="analytic_account_entry_view_form">
