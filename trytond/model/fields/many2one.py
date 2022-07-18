@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Column, Expression, Literal, Query, With
+from sql import As, Column, Expression, Literal, Query, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -242,6 +242,8 @@ class Many2One(Field):
             if operator.endswith('where'):
                 query = Target.search(value, order=[], query=True)
                 target_id, = query.columns
+                if isinstance(target_id, As):
+                    target_id = target_id.expression
                 query.where &= target_id == column
                 expression = column.in_(query)
                 if operator.startswith('not'):
