@@ -848,6 +848,7 @@ var Sao = {};
         set_visible: function() {
         },
         get_visible: function() {
+            return true;
         },
         favorite_click: function(e) {
             // Prevent activate the action of the row
