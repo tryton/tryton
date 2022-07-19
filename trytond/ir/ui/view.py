@@ -251,6 +251,9 @@ class View(ModelSQL, ModelView):
                 continue
             tree_inherit = etree.fromstring(view.arch, parser=parser)
             tree = self.inherit_apply(tree, tree_inherit)
+        if model:
+            root = tree.getroottree().getroot()
+            self._translate(root, model, Transaction().language)
         arch = etree.tostring(tree, encoding='utf-8').decode('utf-8')
         result = {
             'type': self.rng_type,
@@ -311,6 +314,19 @@ class View(ModelSQL, ModelView):
         for child in element:
             index = parent.index(target)
             parent.insert(index, child)
+
+    @classmethod
+    def _translate(cls, element, model, language):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        for attr in ['string', 'sum', 'confirm', 'help']:
+            if element.get(attr):
+                translation = Translation.get_source(
+                    model, 'view', language, element.get(attr))
+                if translation:
+                    element.set(attr, translation)
+        for child in element:
+            cls._translate(child, model, language)
 
 
 class ShowViewStart(ModelView):

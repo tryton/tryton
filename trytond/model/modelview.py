@@ -482,7 +482,6 @@ class ModelView(Model):
             cls, element, type, fields_width=None, fields_optional=None,
             _fields_attrs=None):
         pool = Pool()
-        Translation = pool.get('ir.translation')
         ModelData = pool.get('ir.model.data')
         ModelAccess = pool.get('ir.model.access')
         Button = pool.get('ir.model.button')
@@ -629,15 +628,6 @@ class ModelView(Model):
                     element.attrib['colspan'] = colspan
             else:
                 element.attrib['id'] = str(action.action.id)
-
-        # translate view
-        if Transaction().language != 'en':
-            for attr in ('string', 'sum', 'confirm', 'help'):
-                if element.get(attr):
-                    trans = Translation.get_source(cls.__name__, 'view',
-                            Transaction().language, element.get(attr))
-                    if trans:
-                        element.set(attr, trans)
 
         if element.tag == 'tree' and element.get('sequence'):
             fields_attrs.setdefault(element.get('sequence'), {})
