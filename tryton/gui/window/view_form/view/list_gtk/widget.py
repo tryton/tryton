@@ -5,6 +5,7 @@ import os
 import gettext
 import webbrowser
 from functools import wraps, partial
+from weakref import WeakKeyDictionary
 
 from gi.repository import Gdk, GLib, Gtk
 
@@ -51,17 +52,22 @@ def send_keys(renderer, editable, position, treeview):
 
 
 def realized(func):
-    has_been_realized = False
 
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        nonlocal has_been_realized
+        has_been_realized = _REALIZED.get(self.view.treeview, False)
         if not has_been_realized:
             has_been_realized = self.view.treeview.get_realized()
             if has_been_realized:
                 self.view.treeview.queue_resize()
+                _REALIZED[self.view.treeview] = True
+            else:
+                return
         return func(self, *args, **kwargs)
     return wrapper
+
+
+_REALIZED = WeakKeyDictionary()
 
 
 class CellCache(list):
