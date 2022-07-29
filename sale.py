@@ -8,12 +8,6 @@ class Sale(metaclass=PoolMeta):
 
     def _get_carrier_selection_pattern(self):
         pattern = super()._get_carrier_selection_pattern()
-
-        def parents(subdivision):
-            while subdivision:
-                yield subdivision
-                subdivision = subdivision.parent
-
         pattern['from_subdivision'] = None
         if self.warehouse and self.warehouse.address:
             address = self.warehouse.address
