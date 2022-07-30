@@ -606,7 +606,7 @@ function eval_pyson(value){
                 let i = 0;
                 row.children().map(function() {
                     var cell = jQuery(this);
-                    var colspan = Math.min(Number(cell.attr('colspan')), col);
+                    var colspan = Math.min(Number(cell.attr('colspan')), col || 1);
                     if (cell.hasClass('xexpand') &&
                         (!jQuery.isEmptyObject(cell.children())) &&
                         (cell.children(':not(.tooltip)').css('display') != 'none')) {
@@ -626,7 +626,7 @@ function eval_pyson(value){
                     var reduce = function(previous, current) {
                         var cell = current[0];
                         var colspan = Math.min(
-                            Number(cell.attr('colspan')), col);
+                            Number(cell.attr('colspan')), col || 1);
                         return previous + colspan;
                     };
                     return a.reduce(reduce, 0) - b.reduce(reduce, 0);
@@ -641,7 +641,8 @@ function eval_pyson(value){
                 for (const e of xexpands) {
                     var cell = e[0];
                     let i = e[1];
-                    const colspan = Math.min(Number(cell.attr('colspan')), col);
+                    const colspan = Math.min(
+                        Number(cell.attr('colspan')), col || 1);
                     var current_width = 0;
                     for (let j = 0; j < colspan; j++) {
                         current_width += widths[i + j] || 0;
@@ -669,7 +670,8 @@ function eval_pyson(value){
                 let i = 0;
                 for (let cell of row.children()) {
                     cell = jQuery(cell);
-                    const colspan = Math.min(Number(cell.attr('colspan')), col);
+                    const colspan = Math.min(
+                        Number(cell.attr('colspan')), col || 1);
                     if (cell.hasClass('xexpand') &&
                         (cell.children(':not(.tooltip)').css('display') !=
                          'none')) {
