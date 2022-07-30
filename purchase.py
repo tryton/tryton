@@ -1379,8 +1379,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit',
-        methods=['_get_context_purchase_price'])
+    @fields.depends(
+        'product', 'quantity', methods=['_get_context_purchase_price'])
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 
@@ -1401,8 +1401,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
 
-    @fields.depends('type', 'quantity', 'unit_price', 'unit', 'purchase',
-        '_parent_purchase.currency')
+    @fields.depends(
+        'type', 'quantity', 'unit_price',
+        'purchase', '_parent_purchase.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = self.purchase.currency if self.purchase else None
