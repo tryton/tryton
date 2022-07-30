@@ -243,6 +243,7 @@ class ActionKeyword(ModelSQL, ModelView):
         pool = Pool()
         Action = pool.get('ir.action')
         Menu = pool.get('ir.ui.menu')
+        ModelAccess = pool.get('ir.model.access')
         key = (keyword, tuple(value))
         keywords = cls._get_keyword_cache.get(key)
         if keywords is not None:
@@ -273,6 +274,10 @@ class ActionKeyword(ModelSQL, ModelView):
             types[type_].append(action_keyword.action.id)
         for type_, action_ids in types.items():
             for value in Action.get_action_values(type_, action_ids):
+                if (type_ == 'ir.action.act_window'
+                        and not ModelAccess.check(
+                            value['res_model'], raise_exception=False)):
+                    continue
                 value['keyword'] = keyword
                 keywords.append(value)
         if keyword == 'tree_open' and model == Menu.__name__:
