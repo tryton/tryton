@@ -1397,8 +1397,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
 
-    @fields.depends('type', 'quantity', 'unit_price', 'unit', 'sale',
-        '_parent_sale.currency')
+    @fields.depends(
+        'type', 'quantity', 'unit_price',
+        'sale', '_parent_sale.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = self.sale.currency if self.sale else None
