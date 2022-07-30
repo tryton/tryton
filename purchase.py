@@ -510,8 +510,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
 
-    @fields.depends('quantity', 'unit_price', 'unit', 'requisition',
-        '_parent_requisition.currency')
+    @fields.depends(
+        'quantity', 'unit_price',
+        'requisition', '_parent_requisition.currency')
     def on_change_with_amount(self, name=None):
         if (self.unit_price is None) or (self.quantity is None):
             return None
