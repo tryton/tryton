@@ -798,10 +798,6 @@ class Sale(
         if getattr(invoice, 'lines', None):
             invoice_lines = list(invoice.lines) + invoice_lines
         invoice.lines = invoice_lines
-        invoice.save()
-
-        invoice.update_taxes()
-        self.copy_resources_to(invoice)
         return invoice
 
     def _group_shipment_key(self, moves, move):
@@ -866,8 +862,6 @@ class Sale(
             shipment = self._get_shipment_sale(Shipment, key)
             shipment.moves = (list(getattr(shipment, 'moves', []))
                 + [x[1] for x in grouped_moves])
-            shipment.save()
-            self.copy_resources_to(shipment)
             shipments.append(shipment)
         return shipments
 
