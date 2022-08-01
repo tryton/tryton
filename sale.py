@@ -1160,7 +1160,7 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
     __name__ = 'sale.point.cash.transfer'
 
     _states = {
-        'readonly': Eval('state') == 'done',
+        'readonly': Eval('state') == 'posted',
         }
 
     point = fields.Many2One(
