@@ -801,6 +801,7 @@ class ModelStorage(Model):
                 raise ImportDataError(gettext(
                         'ir.msg_relation_not_found',
                         value=value,
+                        column=column,
                         **Relation.__names__()))
             elif len(res) > 1:
                 raise ImportDataError(
@@ -864,6 +865,7 @@ class ModelStorage(Model):
                 raise ImportDataError(gettext(
                         'ir.msg_relation_not_found',
                         value=value,
+                        column=column,
                         **Relation.__names__()))
             elif len(res) > 1:
                 raise ImportDataError(
