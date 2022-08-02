@@ -769,6 +769,8 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             ('statement', '=', Eval('statement', -1)),
             ('date', '=', Eval('date', None)),
             ])
+    party_required = fields.Function(
+        fields.Boolean("Party Required"), 'on_change_with_party_required')
 
     @classmethod
     def __setup__(cls):
@@ -779,6 +781,10 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                 | Bool(Eval('origin', 0))),
             }
         cls.account.required = True
+        cls.party.states = {
+            'required': (Eval('party_required', False)
+                & (Eval('statement_state') == 'draft')),
+            }
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_statement_line_amount', Check(t, t.amount != 0),
@@ -814,6 +820,12 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @invoice.setter
     def invoice(self, value):
         self.related_to = value
+
+    @fields.depends('account')
+    def on_change_with_party_required(self, name=None):
+        if self.account:
+            return self.account.party_required
+        return False
 
     @staticmethod
     def default_amount():

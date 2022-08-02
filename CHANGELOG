@@ -1,3 +1,5 @@
+* Require party on statement line if account requires one
+
 Version 6.4.0 - 2022-05-02
 * Bug fixes (see mercurial logs for details)
 * Use reference field for statement line relation
