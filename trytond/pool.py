@@ -256,7 +256,7 @@ class Pool(object):
             types = [type]
         else:
             types = self.classes.keys()
-        for module in modules:
+        for module in self._modules:
             if module not in self.classes_mixin:
                 continue
             for type_ in types:
