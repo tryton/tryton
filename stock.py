@@ -71,7 +71,7 @@ class ShipmentOut(metaclass=PoolMeta):
                     columns=[table.cost_method],
                     values=['shipment']))
 
-    @fields.depends('carrier', 'company', methods=['_get_carrier_context'])
+    @fields.depends('carrier', 'cost_method', methods=['_get_carrier_context'])
     def _compute_costs(self):
         costs = super()._compute_costs()
         costs.update({
