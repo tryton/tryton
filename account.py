@@ -235,11 +235,11 @@ class Type(
                 & ~Eval('template_override', False)),
             },
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     currency = fields.Function(fields.Many2One(
         'currency.currency', 'Currency'), 'get_currency')
