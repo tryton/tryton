@@ -142,12 +142,12 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     parent = fields.Many2One('account.account.type', 'Parent',
         ondelete="RESTRICT", states=_states,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
         ],
         depends=['company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
