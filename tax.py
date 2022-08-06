@@ -134,9 +134,16 @@ class TaxCode(
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     parent = fields.Many2One(
-        'account.tax.code', 'Parent', select=True, states=_states)
+        'account.tax.code', "Parent", select=True, states=_states,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     lines = fields.One2Many('account.tax.code.line', 'code', "Lines")
-    childs = fields.One2Many('account.tax.code', 'parent', 'Children')
+    childs = fields.One2Many(
+        'account.tax.code', 'parent', "Children",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'on_change_with_currency')
     amount = fields.Function(Monetary(
@@ -781,9 +788,16 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             },
         help=('If checked then the unit price for further tax computation will'
             ' be modified by this tax.'))
-    parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
-        states=_states)
-    childs = fields.One2Many('account.tax', 'parent', 'Children')
+    parent = fields.Many2One(
+        'account.tax', "Parent", ondelete='CASCADE', states=_states,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
+    childs = fields.One2Many(
+        'account.tax', 'parent', "Children",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     company = fields.Many2One(
         'company.company', "Company", required=True, select=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',

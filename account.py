@@ -884,11 +884,17 @@ class Account(
         help="The type used if not empty and debit < credit.")
     parent = fields.Many2One(
         'account.account', 'Parent', select=True,
-        left="left", right="right", ondelete="RESTRICT", states=_states)
+        left="left", right="right", ondelete="RESTRICT", states=_states,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many(
-        'account.account', 'parent', 'Children')
+        'account.account', 'parent', "Children",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     balance = fields.Function(Monetary(
             "Balance", currency='currency', digits='currency'),
         'get_balance')
