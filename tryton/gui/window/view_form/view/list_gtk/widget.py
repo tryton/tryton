@@ -1298,6 +1298,7 @@ class Button(Cell):
         # TODO icon
         self._set_visual(cell, record)
 
+    @common.idle_add
     def button_clicked(self, widget, path):
         if not path:
             return True
