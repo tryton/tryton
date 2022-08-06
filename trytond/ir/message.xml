@@ -161,25 +161,31 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Syntax error for XML id: %(value)r in "%(field)s" of "%(model)s" (%(column)s).</field>
         </record>
         <record model="ir.message" id="msg_domain_validation_record">
-            <field name="text">The value for field "%(field)s" in "%(model)s" is not valid according to its domain.</field>
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(record)s" of "%(model)s" is not valid according to its domain.</field>
         </record>
-        <record model="ir.message" id="msg_required_validation_record">
+        <record model="ir.message" id="msg_required_validation">
             <field name="text">A value is required for field "%(field)s" in "%(model)s".</field>
         </record>
+        <record model="ir.message" id="msg_required_validation_record">
+            <field name="text">A value is required for field "%(field)s" in "%(record)s" of "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_size_validation">
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" is too long (%(size)i > %(max_size)i).</field>
+        </record>
         <record model="ir.message" id="msg_size_validation_record">
-            <field name="text">The value for field "%(field)s" in "%(model)s" is too long (%(size)i > %(max_size)i).</field>
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(record)s" of "%(model)s" is too long (%(size)i > %(max_size)i).</field>
         </record>
         <record model="ir.message" id="msg_digits_validation_record">
-            <field name="text">The number of digits in the value "%(value)s" for field "%(field)s" in "%(model)s" exceeds the limit of "%(digits)i".</field>
+            <field name="text">The number of digits in the value "%(value)r" for field "%(field)s" in "%(record)s" of "%(model)s" exceeds the limit of "%(digits)i".</field>
         </record>
         <record model="ir.message" id="msg_forbidden_char_validation_record">
-            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" contains some invalid chars "%(chars)s".</field>
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(record)s" of "%(model)s" contains some invalid chars "%(chars)s".</field>
         </record>
         <record model="ir.message" id="msg_selection_validation_record">
-            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" is not one of the allowed options.</field>
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(record)s" of "%(model)s" is not one of the allowed options.</field>
         </record>
         <record model="ir.message" id="msg_time_format_validation_record">
-            <field name="text">The time value "%(value)s" for field "%(field)s" in "%(model)s" is not valid.</field>
+            <field name="text">The time value "%(value)s" for field "%(field)s" in "%(record)s" of "%(model)s" is not valid.</field>
         </record>
         <record model="ir.message" id="msg_foreign_model_missing">
             <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" does not exist.</field>

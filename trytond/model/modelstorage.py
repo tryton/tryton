@@ -1313,7 +1313,7 @@ class ModelStorage(Model):
                             domain = domain.get(Relation.__class__, [])
                         msg = gettext(
                             'ir.msg_domain_validation_record',
-                            **cls.__names__(field.name))
+                            **cls.__names__(field.name, invalid_record))
                         fields = set()
                         level = 0
                         if field not in Relation._fields.values():
@@ -1356,7 +1356,8 @@ class ModelStorage(Model):
 
                 validate_domain(field)
 
-                def required_test(value, field_name, field):
+                def required_test(record, field):
+                    value = getattr(record, field.name)
                     if ((
                                 isinstance(value,
                                     (type(None), bool, list, tuple, str, dict))
@@ -1365,7 +1366,7 @@ class ModelStorage(Model):
                                 and not isinstance(value, ModelStorage))):
                         raise RequiredValidationError(
                             gettext('ir.msg_required_validation_record',
-                                **cls.__names__(field_name)))
+                                **cls.__names__(field_name, record)))
                 # validate states required
                 if field.states and 'required' in field.states:
                     if is_pyson(field.states['required']):
@@ -1375,18 +1376,15 @@ class ModelStorage(Model):
                             required = _record_eval_pyson(
                                 record, pyson_required, encoded=True)
                             if required:
-                                required_test(getattr(record, field_name),
-                                    field_name, field)
+                                required_test(record, field)
                     else:
                         if field.states['required']:
                             for record in records:
-                                required_test(getattr(record, field_name),
-                                    field_name, field)
+                                required_test(record, field)
                 # validate required
                 if field.required:
                     for record in records:
-                        required_test(
-                            getattr(record, field_name), field_name, field)
+                        required_test(record, field)
                 # validate size
                 if hasattr(field, 'size') and field.size is not None:
                     for record in records:
@@ -1396,7 +1394,7 @@ class ModelStorage(Model):
                             field_size = field.size
                         size = len(getattr(record, field_name) or '')
                         if (size > field_size >= 0):
-                            error_args = cls.__names__(field_name)
+                            error_args = cls.__names__(field_name, record)
                             error_args['size'] = size
                             error_args['max_size'] = field_size
                             raise SizeValidationError(
@@ -1405,9 +1403,8 @@ class ModelStorage(Model):
 
                 def digits_test(record, digits, field_name):
                     def raise_error(value):
-                        error_args = cls.__names__(field_name)
+                        error_args = cls.__names__(field_name, record)
                         error_args['digits'] = digits[1]
-                        error_args['value'] = repr(value)
                         raise DigitsValidationError(
                             gettext('ir.msg_digits_validation_record',
                                 **error_args))
@@ -1447,8 +1444,7 @@ class ModelStorage(Model):
                         value = getattr(record, field_name)
                         if value and any(
                                 c in value for c in field.forbidden_chars):
-                            error_args = cls.__names__(field_name)
-                            error_args['value'] = value
+                            error_args = cls.__names__(field_name, record)
                             error_args['chars'] = ','.join(
                                 repr(c) for c in field.forbidden_chars
                                 if c in value)
@@ -1487,21 +1483,21 @@ class ModelStorage(Model):
                             values = value or []
                         for value in values:
                             if value not in test:
-                                error_args = cls.__names__(field_name)
+                                error_args = cls.__names__(field_name, record)
                                 error_args['value'] = value
                                 raise SelectionValidationError(gettext(
                                         'ir.msg_selection_validation_record',
                                         **error_args))
 
-                def format_test(value, format, field_name):
+                def format_test(record, format, field_name):
+                    value = getattr(record, field_name)
                     if not value:
                         return
                     if not isinstance(value, datetime.time):
                         value = value.time()
                     if value != datetime.datetime.strptime(
                             value.strftime(format), format).time():
-                        error_args = cls.__names__(field_name)
-                        error_args['value'] = value
+                        error_args = cls.__names__(field_name, record)
                         raise TimeFormatValidationError(
                             gettext('ir.msg_time_format_validation_record',
                                 **error_args))
@@ -1519,12 +1515,10 @@ class ModelStorage(Model):
                             env['context'] = Transaction().context
                             env['active_id'] = record.id
                             format = PYSONDecoder(env).decode(pyson_format)
-                            format_test(getattr(record, field_name), format,
-                                field_name)
+                            format_test(record, format, field_name)
                     else:
                         for record in records:
-                            format_test(getattr(record, field_name),
-                                field.format, field_name)
+                            format_test(record, field.format, field_name)
 
         for record in records:
             record.pre_validate()

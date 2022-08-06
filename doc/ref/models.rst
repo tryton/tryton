@@ -96,9 +96,10 @@ Class methods:
    ``level`` defines the number of relations to include in the relation field
    definition.
 
-.. classmethod:: Model.__names__([field])
+.. classmethod:: Model.__names__([field[, record]])
 
-   Return a dictionary with the name of the ``model`` and the ``field``.
+   Return a dictionary with the name of the ``model``, the ``field`` and the
+   ``record`` and the ``value`` of the field.
    It is a convenience-method used to format messages which should include
    those names.
 

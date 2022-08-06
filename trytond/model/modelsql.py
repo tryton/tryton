@@ -365,7 +365,7 @@ class ModelSQL(ModelStorage):
                     and field_name not in ('create_uid', 'create_date')):
                 if values.get(field_name) is None:
                     raise RequiredValidationError(
-                        gettext('ir.msg_required_validation_record',
+                        gettext('ir.msg_required_validation',
                             **cls.__names__(field_name)))
         for name, _, error in cls._sql_constraints:
             if backend.TableHandler.convert_name(name) in str(exception):
@@ -408,13 +408,15 @@ class ModelSQL(ModelStorage):
             if (hasattr(field, 'size')
                     and isinstance(field.size, int)
                     and field.sql_type()):
-                size = len(values.get(field_name) or '')
+                value = values.get(field_name) or ''
+                size = len(value)
                 if size > field.size:
                     error_args = cls.__names__(field_name)
+                    error_args['value'] = value
                     error_args['size'] = size
                     error_args['max_size'] = field.size
                     raise SizeValidationError(
-                        gettext('ir.msg_size_validation_record', **error_args))
+                        gettext('ir.msg_size_validation', **error_args))
 
     @classmethod
     def history_revisions(cls, ids):

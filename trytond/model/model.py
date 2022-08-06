@@ -234,7 +234,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         pass
 
     @classmethod
-    def __names__(cls, field=None):
+    def __names__(cls, field=None, record=None):
         pool = Pool()
         IrModel = pool.get('ir.model')
         IrModelField = pool.get('ir.model.field')
@@ -244,6 +244,20 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             }
         if field:
             names['field'] = IrModelField.get_name(cls.__name__, field)
+
+        if record:
+            try:
+                names['record'] = record.rec_name
+            except Exception:
+                names['record'] = record.id
+            if field:
+                value = getattr(record, field, None)
+                if isinstance(value, Model):
+                    try:
+                        value = value.rec_name
+                    except Exception:
+                        value = value.id
+                names['value'] = value
         return names
 
     def __init__(self, id=None, **kwargs):

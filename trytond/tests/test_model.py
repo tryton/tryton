@@ -168,6 +168,57 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(names, {'model': "Model", 'field': "Name"})
 
     @with_transaction()
+    def test_names_record(self):
+        "test __names__ with record"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(name="Test")
+        record.save()
+        names = Model.__names__(record=record)
+
+        self.assertEqual(names, {'model': "Model", 'record': "Test"})
+
+    @with_transaction()
+    def test_names_unsaved_record(self):
+        "test __names__ with unsaved record"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model()
+        names = Model.__names__(record=record)
+
+        self.assertEqual(names, {'model': "Model", 'record': record.id})
+
+    @with_transaction()
+    def test_names_value(self):
+        "test __names__ with value"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(name="Test")
+        names = Model.__names__(field='name', record=record)
+
+        self.assertEqual(
+            names, {
+                'model': "Model", 'field': "Name",
+                'record': record.id, 'value': "Test"})
+
+    @with_transaction()
+    def test_names_unset_value(self):
+        "test __names__ with unset value"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model()
+        names = Model.__names__(field='name', record=record)
+
+        self.assertEqual(
+            names, {
+                'model': "Model", 'field': "Name",
+                'record': record.id, 'value': None})
+
+    @with_transaction()
     def test_fields_get_no_write_access(self):
         "Test field is readonly when no write access on it"
         pool = Pool()
