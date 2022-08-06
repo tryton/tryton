@@ -243,12 +243,12 @@ class Type(
                 & ~Eval('template_override', False)),
             },
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ],
         depends=['company', 'statement'])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
         ],
         depends=['company'])
     currency = fields.Function(fields.Many2One(
