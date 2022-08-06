@@ -235,7 +235,7 @@ class Type(
                 & ~Eval('template_override', False)),
             },
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ['OR',
                 If(Eval('statement') == 'off-balance',
                     ('statement', '=', 'off-balance'),
@@ -248,7 +248,7 @@ class Type(
             ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ])
     currency = fields.Function(fields.Many2One(
         'currency.currency', 'Currency'), 'get_currency')
