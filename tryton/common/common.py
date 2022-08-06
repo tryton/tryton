@@ -1144,21 +1144,26 @@ class RPCProgress(object):
             # Parent is only useful if it is asynchronous
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
-            window = self.parent.get_window()
-            if window:
-                display = window.get_display()
-                watch = Gdk.Cursor.new_for_display(
-                    display, Gdk.CursorType.WATCH)
-                window.set_cursor(watch)
+            GLib.timeout_add(3000, self._set_cursor)
             _thread.start_new_thread(self.start, ())
             return
         else:
             self.start()
             return self.process()
 
+    def _set_cursor(self):
+        if self.parent:
+            window = self.parent.get_window()
+            if window:
+                display = window.get_display()
+                watch = Gdk.Cursor.new_for_display(
+                    display, Gdk.CursorType.WATCH)
+                window.set_cursor(watch)
+
     def process(self):
         if self.parent and self.parent.get_window():
             self.parent.get_window().set_cursor(None)
+            self.parent = None
 
         if self.exception and self.process_exception_p:
             def rpc_execute(*args):
