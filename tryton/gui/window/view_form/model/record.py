@@ -380,7 +380,7 @@ class Record(SignalEvent):
         elif fields is None:
             self._check_load()
         res = True
-        for field_name, field in self.group.fields.items():
+        for field_name, field in list(self.group.fields.items()):
             if fields is not None and field_name not in fields:
                 continue
             if field.attrs.get('readonly'):
