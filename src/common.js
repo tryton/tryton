@@ -3524,7 +3524,7 @@
 
     Sao.common.Processing = Sao.class_(Object, {
         queries: 0,
-        timeout: 500,
+        timeout: 3000,
         init: function() {
             this.el = jQuery('<div/>', {
                 'id': 'processing',
