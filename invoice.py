@@ -1329,7 +1329,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return best
 
     def pay_invoice(self, amount, payment_method, date, description=None,
-            amount_second_currency=None, second_currency=None, overpayment=0):
+            amount_second_currency=None, second_currency=None, overpayment=0,
+            overpayment_second_currency=0):
         '''
         Adds a payment of amount to an invoice using the journal, date and
         description.
@@ -1347,6 +1348,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         lines = [pay_line, counterpart_line]
 
         pay_amount = amount - overpayment
+        if amount_second_currency is not None:
+            pay_amount_second_currency = (
+                amount_second_currency - overpayment_second_currency)
         if pay_amount >= 0:
             if self.type == 'out':
                 pay_line.debit, pay_line.credit = 0, pay_amount
@@ -1357,6 +1361,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 pay_line.debit, pay_line.credit = -pay_amount, 0
             else:
                 pay_line.debit, pay_line.credit = 0, -pay_amount
+        if amount_second_currency is not None:
+            pay_line.amount_second_currency = (
+                pay_amount_second_currency.copy_sign(
+                    pay_line.debit - pay_line.credit))
+            pay_line.second_currency = second_currency
+
         if overpayment:
             overpayment_line = Line(account=self.account)
             lines.insert(1, overpayment_line)
@@ -1364,6 +1374,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 abs(overpayment) if pay_line.debit else 0)
             overpayment_line.credit = (
                 abs(overpayment) if pay_line.credit else 0)
+            if amount_second_currency is not None:
+                overpayment_line.amount_second_currency = (
+                    overpayment_second_currency.copy_sign(
+                        overpayment_line.debit - overpayment_line.credit))
+                overpayment_line.second_currency = second_currency
 
         counterpart_line.debit = abs(amount) if pay_line.credit else 0
         counterpart_line.credit = abs(amount) if pay_line.debit else 0
@@ -1373,14 +1388,15 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             payment_acccount = 'credit_account'
         counterpart_line.account = getattr(
             payment_method, payment_acccount).current(date=date)
+        if amount_second_currency is not None:
+            counterpart_line.amount_second_currency = (
+                amount_second_currency.copy_sign(
+                    counterpart_line.debit - counterpart_line.credit))
+            counterpart_line.second_currency = second_currency
 
         for line in lines:
             if line.account.party_required:
                 line.party = self.party
-            if amount_second_currency:
-                line.amount_second_currency = amount_second_currency.copy_sign(
-                    line.debit - line.credit)
-                line.second_currency = second_currency
 
         period_id = Period.find(self.company.id, date=date)
 
@@ -3182,6 +3198,7 @@ class PayInvoice(Wizard):
             second_currency = self.start.currency
 
         overpayment = 0
+        overpayment_second_currency = 0
         if (0 <= invoice.amount_to_pay < amount_invoice
                 or amount_invoice < invoice.amount_to_pay <= 0):
             if self.ask.type == 'partial':
@@ -3202,13 +3219,18 @@ class PayInvoice(Wizard):
                         invoice.currency,
                         amount_invoice - invoice.amount_to_pay,
                         invoice.company.currency)
+                    if second_currency:
+                        overpayment_second_currency = Currency.compute(
+                            invoice.currency,
+                            amount_invoice - invoice.amount_to_pay,
+                            second_currency)
 
         lines = []
         if not invoice.company.currency.is_zero(amount):
             lines = invoice.pay_invoice(amount,
                 self.start.payment_method, self.start.date,
                 self.start.description, amount_second_currency,
-                second_currency, overpayment)
+                second_currency, overpayment, overpayment_second_currency)
 
         if remainder:
             if self.ask.type != 'partial':
