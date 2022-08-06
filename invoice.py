@@ -3197,7 +3197,11 @@ class PayInvoice(Wizard):
                     raise PayInvoiceError(
                         gettext('account_invoice.msg_invoice_overpay_paid',
                             invoice=invoice.rec_name))
-                overpayment = amount_invoice - invoice.amount_to_pay
+                with Transaction().set_context(date=self.start.date):
+                    overpayment = Currency.compute(
+                        invoice.currency,
+                        amount_invoice - invoice.amount_to_pay,
+                        invoice.company.currency)
 
         lines = []
         if not invoice.company.currency.is_zero(amount):
