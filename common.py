@@ -65,7 +65,7 @@ class PeriodMixin(Model):
 
 class ActivePeriodMixin(PeriodMixin):
 
-    active = fields.Function(fields.Boolean("Active"), 'get_active')
+    active = fields.Function(fields.Boolean("Active"), 'on_change_with_active')
 
     @classmethod
     def _active_dates(cls):
@@ -108,7 +108,12 @@ class ActivePeriodMixin(PeriodMixin):
             min(f.start_date for f in fiscalyears),
             max(f.end_date for f in fiscalyears))
 
-    def get_active(self, name):
+    @classmethod
+    def default_active(cls):
+        return True
+
+    @fields.depends('start_date', 'end_date')
+    def on_change_with_active(self, name=None):
         from_date, to_date = self._active_dates()
         start_date = self.start_date or datetime.date.min
         end_date = self.end_date or datetime.date.max
