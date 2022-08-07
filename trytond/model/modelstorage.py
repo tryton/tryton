@@ -1337,7 +1337,9 @@ class ModelStorage(Model):
                                 [field_name], level=level)
                             raise DomainValidationError(
                                 msg, domain=(invalid_domain, field_def))
-                        raise DomainValidationError(msg)
+                        field_def = Relation.fields_get(fields, level=level)
+                        raise DomainValidationError(
+                            msg, domain=(domain, field_def))
 
         if field_names is None:
             field_names = cls._fields.keys()
