@@ -167,7 +167,7 @@
             this.rows = [];
             this.edited_row = null;
             this.table = jQuery('<table/>', {
-                'class': 'tree table table-hover table-striped table-condensed'
+                'class': 'tree table table-hover table-condensed'
             });
             if (this.editable) {
                 this.table.addClass('table-bordered');

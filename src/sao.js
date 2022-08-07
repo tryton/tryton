@@ -788,7 +788,7 @@ var Sao = {};
         Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
         form.view_prm.done(function() {
             var view = form.screen.current_view;
-            view.table.removeClass('table table-bordered table-striped');
+            view.table.removeClass('table table-bordered');
             view.table.addClass('no-responsive');
             view.table.find('thead').hide();
             var gs = new Sao.GlobalSearch();
