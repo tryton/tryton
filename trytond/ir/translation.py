@@ -626,6 +626,13 @@ class Translation(ModelSQL, ModelView):
         return cls._translation_report_cache.get(key, {}).get(text, text)
 
     @classmethod
+    def copy(cls, translations, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('module')
+        default.setdefault('overriding_module')
+        return super().copy(translations, default=default)
+
+    @classmethod
     def delete(cls, translations):
         pool = Pool()
         Message = pool.get('ir.message')
