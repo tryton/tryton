@@ -1816,6 +1816,14 @@ class TestTaxView(ModelView, TaxableMixin):
             return company.currency.id
 
     @property
+    def company(self):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = Transaction().context.get('company')
+        if company_id:
+            return Company(company_id)
+
+    @property
     def taxable_lines(self):
         return [(self.taxes, self.unit_price, self.quantity, self.tax_date)]
 
