@@ -191,7 +191,10 @@ class Sale(metaclass=PoolMeta):
             },
         depends={'coupon_parties'})
     coupon_parties = fields.Function(fields.Many2Many(
-            'party.party', None, None, "Coupon Parties"),
+            'party.party', None, None, "Coupon Parties",
+            context={
+                'company': Eval('company', -1),
+                }),
         'on_change_with_coupon_parties')
 
     @fields.depends(methods=['_coupon_parties'])
