@@ -105,7 +105,8 @@ class Sale(metaclass=PoolMeta):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
         config = Configuration(1)
-        return config.get_multivalue('sale_invoice_term', **pattern)
+        invoice_term = config.get_multivalue('sale_invoice_term', **pattern)
+        return invoice_term.id if invoice_term else None
 
     @fields.depends('party', 'company')
     def on_change_party(self):
