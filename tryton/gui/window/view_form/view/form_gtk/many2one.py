@@ -136,7 +136,10 @@ class Many2One(Widget):
                     exclude_field=self.attrs.get('relation_field'))
                 win.screen.search_filter(quote(text))
                 if len(win.screen.group) == 1:
-                    win.response(None, Gtk.ResponseType.OK)
+                    callback([
+                            (r.id, r.value.get('rec_name', ''))
+                            for r in win.screen.group])
+                    win.destroy()
                 else:
                     win.show()
                 return
