@@ -140,7 +140,10 @@ class Many2One(Widget):
                     title=self.attrs.get('string'))
                 win.screen.search_filter(quote(text))
                 if len(win.screen.group) == 1:
-                    win.response(None, gtk.RESPONSE_OK)
+                    callback([
+                            (r.id, r.value.get('rec_name', ''))
+                            for r in win.screen.group])
+                    win.destroy()
                 else:
                     win.show()
                 return
