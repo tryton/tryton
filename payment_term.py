@@ -53,8 +53,6 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
         with (date, amount) for each payment term line.
 
         amount must be a Decimal used for the calculation.
-        If specified, date will be used as the start date, otherwise current
-        date will be used.
         """
         # TODO implement business_days
         # http://pypi.python.org/pypi/BusinessHours/
@@ -356,12 +354,16 @@ class TestPaymentTermView(ModelView):
     __name__ = 'account.invoice.payment_term.test'
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True)
-    date = fields.Date('Date')
+    date = fields.Date("Date", required=True)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     result = fields.One2Many('account.invoice.payment_term.test.result',
         None, 'Result', readonly=True)
+
+    @classmethod
+    def default_date(cls):
+        return Pool().get('ir.date').today()
 
     @staticmethod
     def default_currency():
@@ -376,7 +378,7 @@ class TestPaymentTermView(ModelView):
         pool = Pool()
         Result = pool.get('account.invoice.payment_term.test.result')
         result = []
-        if (self.payment_term and self.amount and self.currency):
+        if (self.payment_term and self.amount and self.currency and self.date):
             for date, amount in self.payment_term.compute(
                     self.amount, self.currency, self.date):
                 result.append(Result(
