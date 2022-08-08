@@ -134,7 +134,10 @@ class ShipmentOut(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
 
-        if not self.cost_sale_used:
+        if (self.cost_method != 'shipment'
+                or not self.carrier
+                or not self.cost_sale_used
+                or self.cost_invoice_line):
             return
         product = self.carrier.carrier_product
 
@@ -166,18 +169,14 @@ class ShipmentOut(metaclass=PoolMeta):
         pool = Pool()
         Currency = pool.get('currency.currency')
         cost = super()._get_shipment_cost()
-        methods = {
-            m.sale.shipment_cost_method for m in self.outgoing_moves if m.sale}
-        if 'shipment' in methods:
+        if self.cost_method == 'shipment':
             if self.cost_sale:
                 cost_sale = Currency.compute(
                     self.cost_sale_currency, self.cost_sale,
                     self.company.currency, round=False)
                 cost -= cost_sale
-        if 'order' in methods:
-            sales = {
-                m.sale for m in self.outgoing_moves
-                if m.sale and m.sale.shipment_cost_method == 'order'}
+        elif self.cost_method == 'order':
+            sales = {m.sale for m in self.outgoing_moves if m.sale}
             for sale in sales:
                 shipment_cost = sum(
                     (s.cost_used or 0) for s in sale.shipments
