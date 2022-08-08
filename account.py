@@ -99,7 +99,7 @@ class CheckoutMixin:
     braintree_device_data = fields.Char(
         "Braintree Device Data", readonly=True,
         states={
-            'invisible': ~Eval('device_data'),
+            'invisible': ~Eval('braintree_device_data'),
             })
 
     @classmethod
@@ -137,7 +137,7 @@ class CheckoutMixin:
 
     def braintree_set_nonce(self, nonce, device_data=None):
         self.braintree_nonce = nonce
-        self.device_data = device_data
+        self.braintree_device_data = device_data
         self.save()
 
 
