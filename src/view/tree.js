@@ -287,6 +287,9 @@
                         'class': 'optional',
                     });
                     this.thead.children().prepend(th);
+                    if (this.tfoot) {
+                        this.tfoot.children().prepend(jQuery('<th/>'));
+                    }
                 }
                 var menu = jQuery('<ul/>', {
                     'class': 'dropdown-menu',
