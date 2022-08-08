@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="suffix_code"/>
     </group>
     <label name="active"/>
-    <field name="active" xexpand="0" width="100"/>
+    <field name="active"/>
     <label name="cost_price"/>
     <field name="cost_price"/>
     <field name="identifiers" colspan="4" pre_validate="1" view_ids="product.identifier_view_list_sequence"/>
