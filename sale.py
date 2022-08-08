@@ -339,13 +339,10 @@ class Line(metaclass=PoolMeta):
         context = Transaction().context
         shipment_cost_invoiced = context.get('_shipment_cost_invoiced')
         lines = super().get_invoice_line()
-        if (self.sale.shipment_cost_method == 'shipment'
-                and self.shipment_cost
+        if (self.shipment_cost
                 and shipment_cost_invoiced is not None):
             for shipment in self.sale.shipments:
                 if (shipment.state == 'done'
-                        and shipment.carrier
-                        and not shipment.cost_invoice_line
                         and shipment.id not in shipment_cost_invoiced):
                     invoice_line = shipment.get_cost_invoice_line(
                         self.sale._get_invoice_sale())
