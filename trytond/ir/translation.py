@@ -660,6 +660,13 @@ class Translation(ModelSQL, ModelView):
         return res
 
     @classmethod
+    def copy(cls, translations, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('module')
+        default.setdefault('overriding_module')
+        return super().copy(translations, default=default)
+
+    @classmethod
     def delete(cls, translations):
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
