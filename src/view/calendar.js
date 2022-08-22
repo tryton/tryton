@@ -118,7 +118,9 @@
             }
         },
         insert_event: function(record) {
-            var title = this.screen.model.fields[this.fields[0]].get_client(
+            var description_fields = jQuery.extend([], this.fields);
+            var title_field = description_fields.shift();
+            var title = this.screen.model.fields[title_field].get_client(
                 record);
             var field_start = record.model.fields[this.attributes.dtstart];
             var date_start = field_start.get_client(record);
@@ -138,7 +140,7 @@
                 model_access.write);
 
             var description = [];
-            for (const field of this.fields) {
+            for (const field of description_fields) {
                 description.push(
                     this.screen.model.fields[field].get_client( record));
             }
