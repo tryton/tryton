@@ -1474,8 +1474,8 @@ class StockTestCase(
                 location.save()
 
     @with_transaction()
-    def test_inactive_product_with_stock(self):
-        "Test inactivate product with stock"
+    def test_inactive_products_with_stock(self):
+        "Test inactivate products with stock"
         pool = Pool()
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
@@ -1491,7 +1491,70 @@ class StockTestCase(
                     'type': 'goods',
                     'default_uom': unit.id,
                     }])
-        product, = Product.create([{'template': template.id}])
+        products = Product.create([{'template': template.id}] * 2)
+        product, product2 = products
+
+        company = create_company()
+        with set_company(company):
+            Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }, {
+                        'product': product2.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }])
+            with self.assertRaises(UserWarning):
+                Product.write(products, {'active': False})
+
+            Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': supplier.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }, {
+                        'product': product2.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': supplier.id,
+                        'unit_price': Decimal('5'),
+                        'company': company.id,
+                        }])
+            Product.write(products, {'active': False})
+
+    @with_transaction()
+    def test_inactive_products_one_with_stock(self):
+        "Test inactivate products one with stock"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        storage, = Location.search([('code', '=', 'STO')])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    }])
+        products = Product.create([{'template': template.id}] * 2)
+        product, product2 = products
 
         company = create_company()
         with set_company(company):
@@ -1505,8 +1568,7 @@ class StockTestCase(
                         'company': company.id,
                         }])
             with self.assertRaises(UserWarning):
-                product.active = False
-                product.save()
+                Product.write(products, {'active': False})
 
             Move.create([{
                         'product': product.id,
@@ -1517,8 +1579,7 @@ class StockTestCase(
                         'unit_price': Decimal('5'),
                         'company': company.id,
                         }])
-            product.active = False
-            product.save()
+            Product.write(products, {'active': False})
 
     @with_transaction()
     def test_location_inactive_with_consumable_product(self):
