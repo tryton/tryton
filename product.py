@@ -87,11 +87,11 @@ def check_no_stock_if_inactive(func):
         Product = pool.get('product.product')
 
         product2locations = defaultdict(list)
-        product_ids = [(p.id,) for p in sub_products]
+        product_ids = list(map(int, sub_products))
         with Transaction().set_context(company=company.id):
             quantities = Product.products_by_location(
                 location_ids, with_childs=True,
-                grouping=('product',), grouping_filter=product_ids)
+                grouping=('product',), grouping_filter=(product_ids,))
         for key, quantity in quantities.items():
             location_id, product_id, = key
             if quantity:
