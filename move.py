@@ -129,7 +129,7 @@ class Move(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, moves):
-        pass
+        super().cancel(moves)
 
     @classmethod
     def delete(cls, moves):
