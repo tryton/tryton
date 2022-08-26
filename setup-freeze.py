@@ -11,6 +11,7 @@ import tempfile
 from subprocess import PIPE, Popen, check_call
 
 from cx_Freeze import Executable, setup
+from setuptools import find_packages
 
 home = os.path.expanduser('~/')
 pythonrc = os.path.join(home, '.pythonrc.py')
@@ -124,6 +125,7 @@ version = version.strip()
 
 setup(name='tryton',
     version=version,
+    packages=find_packages(),
     options={
         'build_exe': {
             'no_compress': True,
