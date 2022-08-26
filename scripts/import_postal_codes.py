@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# PYTHON_ARGCOMPLETE_OK
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from __future__ import print_function
@@ -16,6 +17,11 @@ except ImportError:
 import zipfile
 from argparse import ArgumentParser
 from io import BytesIO, TextIOWrapper
+
+try:
+    import argcomplete
+except ImportError:
+    argcomplete = None
 
 try:
     from progressbar import ETA, Bar, ProgressBar, SimpleProgress
@@ -122,6 +128,8 @@ def run():
     parser.add_argument('-c', '--config', dest='config_file',
         help='the trytond config file')
     parser.add_argument('codes', nargs='+')
+    if argcomplete:
+        argcomplete.autocomplete(parser)
 
     args = parser.parse_args()
     main(args.database, args.codes, args.config_file)
