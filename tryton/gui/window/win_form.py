@@ -461,7 +461,10 @@ class WinForm(NoModal, InfoBar):
             self.win.set_default_response(Gtk.ResponseType.OK)
 
     def destroy(self):
-        self.screen.windows.remove(self)
+        try:
+            self.screen.windows.remove(self)
+        except ValueError:
+            pass
         self.screen.screen_container.alternate_view = False
         viewport = self.screen.screen_container.alternate_viewport
         if viewport and viewport.get_parent():
