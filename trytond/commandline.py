@@ -6,12 +6,32 @@ import logging
 import logging.config
 import logging.handlers
 import os
+import os.path
 from contextlib import contextmanager
 from io import StringIO
 
 from trytond import __version__
 
 logger = logging.getLogger(__name__)
+
+
+def database_completer(parsed_args, **kwargs):
+    from trytond.config import config
+    from trytond.transaction import Transaction
+    config.update_etc(parsed_args.configfile)
+    with Transaction().start(
+            None, 0, readonly=True, close=True) as transaction:
+        return transaction.database.list()
+
+
+def module_completer(**kwargs):
+    from trytond.modules import get_module_list
+    return get_module_list()
+
+
+def language_completer(**kwargs):
+    files = os.listdir(os.path.join(os.path.dirname(__file__), 'ir', 'locale'))
+    return [os.path.splitext(f)[0] for f in files]
 
 
 def get_base_parser():
@@ -37,8 +57,10 @@ def get_parser():
         db_names = list(next(csv.reader(StringIO(db_names))))
     else:
         db_names = []
-    parser.add_argument("-d", "--database", dest="database_names", nargs='+',
-        default=db_names, metavar='DATABASE', help="specify the database name")
+    parser.add_argument(
+        "-d", "--database", dest="database_names", nargs='+',
+        default=db_names, metavar='DATABASE',
+        help="specify the database name").completer = database_completer
     parser.add_argument("--logconf", dest="logconf", metavar='FILE',
         help="logging configuration file (ConfigParser format)")
 
@@ -77,8 +99,10 @@ def get_parser_cron():
 def get_parser_admin():
     parser = get_parser()
 
-    parser.add_argument("-u", "--update", dest="update", nargs='+', default=[],
-        metavar='MODULE', help="activate or update a module")
+    parser.add_argument(
+        "-u", "--update", dest="update", nargs='+', default=[],
+        metavar='MODULE',
+        help="activate or update a module").completer = module_completer
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all activated modules")
     parser.add_argument("--activate-dependencies", dest="activatedeps",
@@ -93,8 +117,10 @@ def get_parser_admin():
         help="Send a test email to the specified address.")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="Update list of tryton modules")
-    parser.add_argument("-l", "--language", dest="languages", nargs='+',
-        default=[], metavar='CODE', help="Load language translations")
+    parser.add_argument(
+        "-l", "--language", dest="languages", nargs='+',
+        default=[], metavar='CODE',
+        help="Load language translations").completer = language_completer
     parser.add_argument("--hostname", dest="hostname", default=None,
         help="Limit database listing to the hostname")
     parser.add_argument("--validate", dest="validate", nargs='*',

@@ -1,3 +1,4 @@
+* Add command line completion with argcomplete
 * Include record name and value in validation error message
 * Add header parameter on export data
 * Enforce certificate validation for SMTP connection (issue11564)
