@@ -139,6 +139,7 @@ Forbid direct move between warehouses::
     >>> move.quantity = 1
     >>> move.from_location = warehouse1.storage_location
     >>> move.to_location = warehouse2.storage_location
+    >>> move.unit_price = product.cost_price
     >>> move.save()
     >>> move.click('do')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
@@ -161,6 +162,7 @@ Transfer 1 product between warehouses::
     >>> move.to_location = shipment.to_location
     >>> move.product = product
     >>> move.quantity = 1
+    >>> move.unit_price = product.cost_price
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'
