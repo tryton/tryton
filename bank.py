@@ -136,7 +136,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     def check_bank(self):
         if not self.bank or not self.bank.bic:
             return
-        if IBAN and BIC:
+        if IBAN and BIC and self.iban:
             iban = IBAN(self.iban)
             bic = BIC(self.bank.bic)
             if (iban.bic
