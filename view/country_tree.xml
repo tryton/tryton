@@ -2,6 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="name" expand="1"/>
+    <field name="name" expand="1">
+        <prefix name="flag"/>
+    </field>
     <field name="code" optional="1"/>
 </tree>

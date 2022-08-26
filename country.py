@@ -19,6 +19,7 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
         help="The 3 chars ISO country code.")
     code_numeric = fields.Char('Numeric Code', select=True,
         help="The ISO numeric country code.")
+    flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
 
@@ -48,6 +49,17 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
         # Migration from 5.2: remove country data
         cursor.execute(*data.delete(where=(data.module == 'country')
                 & (data.model == cls.__name__)))
+
+    @fields.depends('code')
+    def on_change_with_flag(self, name=None):
+        if self.code:
+            return ''.join(map(chr, map(lambda c: 127397 + ord(c), self.code)))
+
+    def get_rec_name(self, name):
+        name = self.name
+        if self.flag:
+            name = ' '.join([self.flag, self.name])
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -93,6 +105,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         help="The main identifier of the subdivision.")
     code = fields.Char('Code', required=True, select=True,
         help="The ISO code of the subdivision.")
+    flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
     type = fields.Selection([
         (None, ""),
         ('administration', 'Administration'),
@@ -265,6 +278,13 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
         # Migration from 6.2: remove type required
         table_h.not_null_action('type', action='remove')
+
+    @fields.depends('code')
+    def on_change_with_flag(self, name=None):
+        if self.code:
+            return '🏴' + ''.join(map(chr, map(
+                        lambda c: 917504 + ord(c),
+                        self.code.replace('-', '').lower()))) + '\U000e007f'
 
     @classmethod
     def search_rec_name(cls, name, clause):

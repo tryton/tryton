@@ -1,3 +1,5 @@
+* Add flag symbol for country and subdivision
+
 Version 6.4.0 - 2022-05-02
 * Bug fixes (see mercurial logs for details)
 * Use Tryton's CDN to download postal codes
