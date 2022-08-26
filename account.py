@@ -500,7 +500,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_current_name(cls, name, clause):
-        return super().search_rec_name(name, clause) + [
+        return super().search_current_name(name, clause) + [
             ('account_type.name',) + tuple(clause[1:]),
             ]
 
