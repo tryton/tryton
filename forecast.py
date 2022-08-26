@@ -517,7 +517,12 @@ class ForecastCompleteAsk(ModelView):
 class ForecastCompleteChoose(ModelView):
     'Complete Forecast'
     __name__ = 'stock.forecast.complete.choose'
-    products = fields.Many2Many('product.product', None, None, 'Products')
+    products = fields.Many2Many(
+        'product.product', None, None, "Products",
+        domain=[
+            ('type', '=', 'goods'),
+            ('consumable', '=', False),
+            ])
 
 
 class ForecastComplete(Wizard):
@@ -587,20 +592,17 @@ class ForecastComplete(Wizard):
             prod2line[forecast_line.product.id] = forecast_line
 
         pbl = self._get_product_quantity()
-        product_ids = [x[1] for x in pbl]
-        prod2uom = {}
-        for product in Product.browse(product_ids):
-            prod2uom[product.id] = product.default_uom.id
+        id2product = {p.id: p for p in Product.browse([x[1] for x in pbl])}
 
-        if getattr(self.choose, 'products', None):
-            products = [x.id for x in self.choose.products]
-        else:
-            products = None
+        products = set(getattr(self.choose, 'products', {}))
 
         to_save = []
         for key, qty in pbl.items():
-            _, product = key
+            _, product_id = key
+            product = id2product[product_id]
             if products and product not in products:
+                continue
+            if product.type != 'goods' or product.consumable:
                 continue
             if -qty <= 0:
                 continue
@@ -610,7 +612,7 @@ class ForecastComplete(Wizard):
                 line = ForecastLine()
             line.product = product
             line.quantity = -qty
-            line.uom = prod2uom[product]
+            line.uom = product.default_uom.id
             line.forecast = forecast
             line.minimal_quantity = min(1, -qty)
             to_save.append(line)
