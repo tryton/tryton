@@ -63,6 +63,15 @@ class Move(metaclass=PoolMeta):
         return super().to_warehouse or self.to_location.cost_warehouse
 
     @fields.depends('company', 'from_location', 'to_location')
+    def on_change_with_unit_price_required(self, name=None):
+        required = super().on_change_with_unit_price_required(name=name)
+        if (self.company and self.company.cost_price_warehouse
+                and self.from_location and self.to_location
+                and self.from_warehouse != self.to_warehouse):
+            required = True
+        return required
+
+    @fields.depends('company', 'from_location', 'to_location')
     def on_change_with_cost_price_required(self, name=None):
         required = super().on_change_with_cost_price_required(name=name)
         if (self.company and self.company.cost_price_warehouse
