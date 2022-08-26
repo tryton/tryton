@@ -51,16 +51,16 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
                     *epoint.module_name.split('.')[:-1])
             mod_path = os.path.abspath(mod_path)
             egg_name = secure_join(mod_path, name)
-            if not os.path.isfile(egg_name):
+            if not _test(egg_name):
                 # Find module in path
                 for path in sys.path:
                     mod_path = os.path.join(path,
                             *epoint.module_name.split('.')[:-1])
                     mod_path = os.path.abspath(mod_path)
                     egg_name = secure_join(mod_path, name)
-                    if os.path.isfile(egg_name):
+                    if _test(egg_name):
                         break
-                if not os.path.isfile(egg_name):
+                if not _test(egg_name):
                     # When testing modules from setuptools location is the
                     # module directory
                     egg_name = secure_join(
