@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">purchase_line_form</field>
         </record>
         <record model="ir.action.act_window" id="act_open_request_form">
-            <field name="name">Requests</field>
+            <field name="name">Purchase Requests</field>
             <field name="res_model">purchase.request</field>
             <field name="domain"
                 eval="[('purchase', 'in', Eval('active_ids'))]"
