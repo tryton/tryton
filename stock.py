@@ -75,7 +75,7 @@ class Move(metaclass=PoolMeta):
         required = super().on_change_with_unit_price_required(name=name)
         if (self.company and self.company.cost_price_warehouse
                 and self.from_location and self.to_location
-                and self.from_warehouse != self.to_warehouse):
+                and self.from_cost_warehouse != self.to_cost_warehouse):
             required = True
         return required
 
