@@ -141,6 +141,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_IV_A_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record id="actif_IV_B_fr" model="account.account.type.template">
             <field name="name">B. Autres entreprises avec lesquelles il existe un lien de participation</field>
@@ -165,6 +166,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_IV_B_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record id="actif_IV_C_fr" model="account.account.type.template">
             <field name="name">C. Autres immobilisations financières</field>
@@ -190,6 +192,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
+        <record id="actif_IV_C_2_a_fr" model="account.account.type.template">
+            <field name="name">Créances</field>
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="actif_IV_C_2_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="actif_IV_C_2_b_fr" model="account.account.type.template">
+            <field name="name">Cautionnements en numéraire</field>
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="actif_IV_C_2_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="deposit" depends="account_deposit" eval="True"/>
+        </record>
 
         <record id="actif_circulant_fr" model="account.account.type.template">
             <field name="name">Actifs circulants</field>
@@ -207,6 +227,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_circulant_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record id="actif_V_A_fr" model="account.account.type.template">
             <field name="name">A. Créances commerciales</field>
@@ -215,14 +236,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_V_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record id="actif_V_B_fr" model="account.account.type.template">
-            <field name="name">B. AUtres créances</field>
+            <field name="name">B. Autres créances</field>
             
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif_V_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
 
         <record id="actif_VI_fr" model="account.account.type.template">
@@ -310,6 +333,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_circulant_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record id="actif_VII_A_fr" model="account.account.type.template">
             <field name="name">A. Créances commerciales</field>
@@ -327,6 +351,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="actif_VII_fr"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
+        </record>
+        <record id="actif_VII_B_a_fr" model="account.account.type.template">
+            <field name="name">Créances</field>
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="actif_VII_B_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="actif_VII_B_b_fr" model="account.account.type.template">
+            <field name="name">Cautionnements en numéraire</field>
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="actif_VII_B_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="deposit" depends="account_deposit" eval="True"/>
         </record>
 
         <record id="actif_VIII_fr" model="account.account.type.template">
@@ -639,6 +681,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="passif_VIII_fr"/>
             <field name="statement">balance</field>
         </record>
+        <record id="passif_VIII_D_a_fr" model="account.account.type.template">
+            <field name="name">Dettes</field>
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="passif_VIII_D_fr"/>
+            <field name="statement">balance</field>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="passif_VIII_D_b_fr" model="account.account.type.template">
+            <field name="name">Cautionnements en numéraires</field>
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="passif_VIII_D_fr"/>
+            <field name="statement">balance</field>
+            <field name="deposit" depends="account_deposit" eval="True"/>
+        </record>
 
         <record id="passif_IX_fr" model="account.account.type.template">
             <field name="name">IX. Dettes à un an au plus</field>
@@ -655,6 +713,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="statement">balance</field>
             <field name="debt" eval="True"/>
         </record>
+        <record id="passif_IX_A_a_fr" model="account.account.type.template">
+            <field name="name">Acomptes reçus sur commandes</field>
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="passif_IX_A_fr"/>
+            <field name="statement">balance</field>
+            <field name="unearned_revenue" depends="sale_advance_payment" eval="True"/>
+        </record>
+        <record id="passif_IX_A_b_fr" model="account.account.type.template">
+            <field name="name">Cautionnements en numéraires</field>
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="passif_IX_A_fr"/>
+            <field name="statement">balance</field>
+            <field name="deposit" depends="account_deposit" eval="True"/>
+        </record>
+
         <record id="passif_IX_B_fr" model="account.account.type.template">
             <field name="name">B. Dettes financières</field>
             
@@ -1714,7 +1789,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres créances</field>
             
             <field name="code">41</field>
-            <field name="type" ref="actif_VII_B_fr"/>
+            <field name="type" eval="None"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="4_fr"/>
         </record>
@@ -1723,7 +1798,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dettes à plus d'un an échéant dans l'année</field>
             
             <field name="code">42</field>
-            <field name="type" ref="passif_IX_A_fr"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="4_fr"/>
         </record>
 
@@ -2493,7 +2568,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements reçus en numéraires</field>
             
             <field name="code">178</field>
-            <field name="type" ref="passif_VIII_D_fr"/>
+            <field name="type" ref="passif_VIII_D_b_fr"/>
             <field name="parent" ref="17_fr"/>
         </record>
 
@@ -2501,7 +2576,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dettes diverses</field>
             
             <field name="code">179</field>
-            <field name="type" ref="passif_VIII_D_fr"/>
+            <field name="type" ref="passif_VIII_D_a_fr"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="17_fr"/>
         </record>
@@ -2683,8 +2758,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres créances</field>
             
             <field name="code">285</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
-            <field name="closed" eval="True"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="28_fr"/>
         </record>
 
@@ -2692,7 +2766,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements versés en numéraires</field>
             
             <field name="code">288</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
+            <field name="type" ref="actif_IV_C_2_b_fr"/>
             <field name="parent" ref="28_fr"/>
         </record>
 
@@ -2937,23 +3011,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Produits à recevoir</field>
             
             <field name="code">414</field>
-            <field name="type" ref="actif_VII_B_fr"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="type" ref="actif_VII_B_a_fr"/>
             <field name="parent" ref="41_fr"/>
         </record>
 
         <record id="416_fr" model="account.account.template">
             <field name="name">Créances diverses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">416</field>
-            <field name="type" ref="actif_VII_B_fr"/>
+            <field name="type" ref="actif_VII_B_a_fr"/>
             <field name="parent" ref="41_fr"/>
         </record>
 
         <record id="417_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">417</field>
-            <field name="type" ref="actif_VII_B_fr"/>
+            <field name="type" ref="actif_VII_B_a_fr"/>
             <field name="parent" ref="41_fr"/>
         </record>
 
@@ -2961,7 +3041,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements versés en numéraires</field>
             
             <field name="code">418</field>
-            <field name="type" ref="actif_VII_B_fr"/>
+            <field name="type" ref="actif_VII_B_b_fr"/>
             <field name="parent" ref="41_fr"/>
         </record>
 
@@ -3019,9 +3099,11 @@ this repository contains the full copyright notices and license terms. -->
         <record id="425_fr" model="account.account.template">
             <field name="name">Dettes commerciales</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">425</field>
             <field name="type" ref="passif_IX_A_fr"/>
-            <field name="closed" eval="True"/>
+            <field name="closed" eval="False"/>
             <field name="parent" ref="42_fr"/>
         </record>
 
@@ -3029,7 +3111,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Acomptes reçus sur commandes</field>
             
             <field name="code">426</field>
-            <field name="type" ref="passif_IX_A_fr"/>
+            <field name="type" ref="passif_IX_A_a_fr"/>
             <field name="parent" ref="42_fr"/>
         </record>
 
@@ -3037,7 +3119,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements reçus en numéraires</field>
             
             <field name="code">428</field>
-            <field name="type" ref="passif_IX_A_fr"/>
+            <field name="type" ref="passif_IX_A_b_fr"/>
             <field name="parent" ref="42_fr"/>
         </record>
 
@@ -4707,6 +4789,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Créances en compte</field>
             
             <field name="code">2810</field>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_IV_A_2_fr"/>
             <field name="parent" ref="281_fr"/>
         </record>
@@ -4715,6 +4799,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Effets à recevoir</field>
             
             <field name="code">2811</field>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_IV_A_2_fr"/>
             <field name="parent" ref="281_fr"/>
         </record>
@@ -4730,6 +4816,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2817_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2817</field>
             <field name="type" ref="actif_IV_A_2_fr"/>
             <field name="parent" ref="281_fr"/>
@@ -4779,6 +4867,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Créances en compte</field>
             
             <field name="code">2830</field>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_IV_B_2_fr"/>
             <field name="parent" ref="283_fr"/>
         </record>
@@ -4786,6 +4876,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2831_fr" model="account.account.template">
             <field name="name">Effets à recevoir</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2831</field>
             <field name="type" ref="actif_IV_B_2_fr"/>
             <field name="parent" ref="283_fr"/>
@@ -4802,6 +4894,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2837_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2837</field>
             <field name="type" ref="actif_IV_B_2_fr"/>
             <field name="parent" ref="283_fr"/>
@@ -4850,16 +4944,20 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2850_fr" model="account.account.template">
             <field name="name">Créances en compte</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2850</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
+            <field name="type" ref="actif_IV_C_2_a_fr"/>
             <field name="parent" ref="285_fr"/>
         </record>
 
         <record id="2851_fr" model="account.account.template">
             <field name="name">Effets à recevoir</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2851</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
+            <field name="type" ref="actif_IV_C_2_a_fr"/>
             <field name="parent" ref="285_fr"/>
         </record>
 
@@ -4867,15 +4965,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Titres à revenu fixe</field>
             
             <field name="code">2852</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
+            <field name="type" ref="actif_IV_C_2_a_fr"/>
             <field name="parent" ref="285_fr"/>
         </record>
 
         <record id="2857_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2857</field>
-            <field name="type" ref="actif_IV_C_2_fr"/>
+            <field name="type" ref="actif_IV_C_2_a_fr"/>
             <field name="parent" ref="285_fr"/>
         </record>
 
@@ -4890,6 +4990,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2900_fr" model="account.account.template">
             <field name="name">Clients</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2900</field>
             <field name="type" ref="actif_V_A_fr"/>
             <field name="parent" ref="290_fr"/>
@@ -4898,6 +5000,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2901_fr" model="account.account.template">
             <field name="name">Effets à recevoir</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2901</field>
             <field name="type" ref="actif_V_A_fr"/>
             <field name="parent" ref="290_fr"/>
@@ -4906,6 +5010,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2906_fr" model="account.account.template">
             <field name="name">Acomptes versés</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2906</field>
             <field name="type" ref="actif_V_A_fr"/>
             <field name="parent" ref="290_fr"/>
@@ -4914,6 +5020,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2907_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2907</field>
             <field name="type" ref="actif_V_A_fr"/>
             <field name="parent" ref="290_fr"/>
@@ -4930,6 +5038,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2910_fr" model="account.account.template">
             <field name="name">Créances en compte</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2910</field>
             <field name="type" ref="actif_V_B_fr"/>
             <field name="parent" ref="291_fr"/>
@@ -4938,6 +5048,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2911_fr" model="account.account.template">
             <field name="name">Effets à recevoir</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2911</field>
             <field name="type" ref="actif_V_B_fr"/>
             <field name="parent" ref="291_fr"/>
@@ -4946,6 +5058,8 @@ this repository contains the full copyright notices and license terms. -->
         <record id="2917_fr" model="account.account.template">
             <field name="name">Créances douteuses</field>
             
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="code">2917</field>
             <field name="type" ref="actif_V_B_fr"/>
             <field name="parent" ref="291_fr"/>
