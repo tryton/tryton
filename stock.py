@@ -2,10 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from sql import Null
+
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
 
@@ -29,25 +31,44 @@ class ShipmentCostMixin:
     __slots__ = ()
 
     carrier = fields.Many2One('carrier', 'Carrier', states={
-            'readonly': Eval('state').in_(['done', 'cancelled']),
+            'readonly': Eval('shipment_cost_readonly', True),
+            })
+
+    cost_currency_used = fields.Function(fields.Many2One(
+            'currency.currency', "Cost Currency",
+            states={
+                'readonly': (
+                    Eval('shipment_cost_readonly', True)
+                    | ~Eval('cost_edit', False)),
+                }),
+        'on_change_with_cost_currency_used', setter='set_cost')
+    cost_currency = fields.Many2One(
+        'currency.currency', "Cost Currency",
+        states={
+            'required': Bool(Eval('cost')),
+            'readonly': Eval('shipment_cost_readonly', True),
             })
 
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
-                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                'readonly': (
+                    Eval('shipment_cost_readonly', True)
                     | ~Eval('cost_edit', False)),
                 }),
         'on_change_with_cost_used', setter='set_cost')
-    cost = fields.Numeric(
-        "Cost", digits=price_digits, readonly=True,)
+    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={
-            'readonly': Eval('state').in_(['done', 'cancelled']),
-            'invisible': Eval('state').in_(['done', 'cancelled']),
+            'readonly': Eval('shipment_cost_readonly', True),
+            'invisible': Eval('shipment_cost_readonly', True),
             },
         help="Check to edit the cost.")
+
+    shipment_cost_readonly = fields.Function(
+        fields.Boolean("Shipment Cost Read Only"),
+        'on_change_with_shipment_cost_readonly')
 
     def _get_carrier_context(self):
         return {}
@@ -57,25 +78,35 @@ class ShipmentCostMixin:
 
     @fields.depends('carrier', 'company', methods=['_get_carrier_context'])
     def _compute_costs(self):
-        pool = Pool()
-        Currency = pool.get('currency.currency')
         costs = {
             'cost': None,
+            'cost_currency': None,
             }
         if self.carrier:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_purchase_price()
             if cost is not None:
-                cost = Currency.compute(
-                    Currency(currency_id), cost, self.company.currency,
-                    round=False)
                 costs['cost'] = round_price(cost)
+                costs['cost_currency'] = currency_id
         return costs
 
-    @fields.depends('cost', 'state', 'cost_edit', methods=['_compute_costs'])
+    @fields.depends(
+        'cost_currency', 'cost_edit',
+        methods=['_compute_costs', 'on_change_with_shipment_cost_readonly'])
+    def on_change_with_cost_currency_used(self, name=None):
+        readonly = self.on_change_with_shipment_cost_readonly()
+        if not self.cost_edit and not readonly:
+            return self._compute_costs()['cost_currency']
+        elif self.cost_currency:
+            return self.cost_currency.id
+
+    @fields.depends(
+        'cost', 'cost_edit',
+        methods=['_compute_costs', 'on_change_with_shipment_cost_readonly'])
     def on_change_with_cost_used(self, name=None):
         cost = self.cost
-        if not self.cost_edit and self.state not in {'cancelled', 'done'}:
+        readonly = self.on_change_with_shipment_cost_readonly()
+        if not self.cost_edit and not readonly:
             cost = self._compute_costs()['cost']
         return cost
 
@@ -87,13 +118,57 @@ class ShipmentCostMixin:
                 name: value,
                 })
 
+    def on_change_with_shipment_cost_readonly(self, name=None):
+        raise NotImplementedError
+
+    @classmethod
+    def index_set_field(cls, name):
+        index = super().index_set_field(name)
+        if name == 'cost_used':
+            index = cls.index_set_field('cost_currency_used') + 1
+        return index
+
     @property
     def shipment_cost_moves(self):
         raise NotImplementedError
 
     def _get_shipment_cost(self):
         "Return the cost for the shipment in the company currency"
-        return self.cost_used or Decimal(0)
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        if self.cost_used:
+            return Currency.compute(
+                self.cost_currency_used, self.cost_used,
+                self.company.currency, round=False)
+
+
+class ShipmentOutCostMixin(ShipmentCostMixin):
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        Company = pool.get('company.company')
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+        company = Company.__table__()
+        cursor = Transaction().connection.cursor()
+
+        cost_currency_exists = table_h.column_exist('cost_currency')
+
+        super().__register__(module)
+
+        # Migration from 6.4: fill cost_currency
+        if not cost_currency_exists:
+            cursor.execute(*table.update(
+                    columns=[table.cost_currency],
+                    values=[company.select(
+                            company.currency,
+                            where=company.id == table.company)],
+                    where=table.cost != Null))
+
+    @fields.depends('state')
+    def on_change_with_shipment_cost_readonly(self, name=None):
+        return self.state in {'done', 'cancelled'}
 
     @classmethod
     def set_shipment_cost(cls, shipments):
@@ -102,6 +177,8 @@ class ShipmentCostMixin:
         moves = []
         for shipment in shipments:
             cost = shipment._get_shipment_cost()
+            if not cost:
+                continue
             factors = getattr(shipment,
                 '_get_allocation_shipment_cost_factors_by_%s' %
                 shipment.allocation_shipment_cost_method)()
@@ -152,12 +229,13 @@ class ShipmentCostMixin:
     def done(cls, shipments):
         for shipment in shipments:
             shipment.cost = shipment.cost_used
+            shipment.cost_currency = shipment.cost_currency_used
         cls.save(shipments)
         super().done(shipments)
         cls.set_shipment_cost(shipments)
 
 
-class ShipmentOut(ShipmentCostMixin, metaclass=PoolMeta):
+class ShipmentOut(ShipmentOutCostMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @property
@@ -165,7 +243,7 @@ class ShipmentOut(ShipmentCostMixin, metaclass=PoolMeta):
         return self.outgoing_moves
 
 
-class ShipmentOutReturn(ShipmentCostMixin, metaclass=PoolMeta):
+class ShipmentOutReturn(ShipmentOutCostMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @property

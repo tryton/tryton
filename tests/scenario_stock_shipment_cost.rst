@@ -13,14 +13,6 @@ Imports::
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
 
-Patch _get_shipment_cost::
-
-    >>> from unittest.mock import patch
-    >>> from trytond.modules.stock_shipment_cost.stock import ShipmentCostMixin
-    >>> mock = patch.object(
-    ...     ShipmentCostMixin, '_get_shipment_cost',
-    ...     return_value=Decimal('5')).start()
-
 Activate modules::
 
     >>> config = activate_modules('stock_shipment_cost')
@@ -92,6 +84,9 @@ Create a customer shipment::
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
+    >>> shipment.cost_edit = True
+    >>> shipment.cost_used = Decimal('5')
+    >>> shipment.cost_currency_used = company.currency
     >>> shipment.click('done')
     >>> shipment.state
     'done'

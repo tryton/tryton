@@ -5,8 +5,9 @@ from trytond.modules.stock.stock_reporting_margin import Abstract
 from trytond.pool import Pool
 
 from . import carrier, stock, stock_reporting_margin
+from .stock import ShipmentCostMixin
 
-__all__ = ['register']
+__all__ = ['register', 'ShipmentCostMixin']
 
 
 def register():
