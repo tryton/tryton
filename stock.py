@@ -5,103 +5,33 @@ from operator import itemgetter
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
+from trytond.modules.stock_shipment_cost import ShipmentCostMixin
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
-from trytond.transaction import Transaction
 
 
-class ShipmentIn(metaclass=PoolMeta):
+class ShipmentIn(ShipmentCostMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
-    carrier = fields.Many2One('carrier', 'Carrier', states={
-            'readonly': Eval('state') != 'draft',
-            })
 
-    cost_currency_used = fields.Function(fields.Many2One(
-            'currency.currency', "Cost Currency",
-            states={
-                'readonly': ~(Eval('state').in_(['draft'])
-                    & Eval('cost_edit', False)),
-                }),
-        'on_change_with_cost_currency_used', setter='set_cost')
-    cost_currency = fields.Many2One(
-        'currency.currency', "Cost Currency",
-        states={
-            'required': Bool(Eval('cost')),
-            'readonly': ~Eval('state').in_(['draft']),
-            })
-    cost_used = fields.Function(fields.Numeric(
-            "Cost", digits=price_digits,
-            states={
-                'readonly': ~(Eval('state').in_(['draft'])
-                    & Eval('cost_edit', False)),
-                }),
-        'on_change_with_cost_used', setter='set_cost')
-    cost = fields.Numeric(
-        "Cost", digits=price_digits, readonly=True)
-    cost_edit = fields.Boolean(
-        "Edit Cost",
-        states={
-            'readonly': ~Eval('state').in_(['draft']),
-            },
-        help="Check to edit the cost.")
+    @fields.depends('state')
+    def on_change_with_shipment_cost_readonly(self, name=None):
+        return self.state != 'draft'
 
-    def _get_carrier_context(self):
-        return {}
-
-    @fields.depends('carrier', methods=['_get_carrier_context'])
-    def _compute_costs(self):
-        costs = {
-            'cost': None,
-            'cost_currency': None,
-            }
-        if self.carrier:
-            with Transaction().set_context(self._get_carrier_context()):
-                cost, currency_id = self.carrier.get_purchase_price()
-            if cost is not None:
-                costs['cost'] = round_price(cost)
-                costs['cost_currency'] = currency_id
-        return costs
-
-    @fields.depends(
-        'state', 'cost_currency', 'cost_edit', methods=['_compute_costs'])
-    def on_change_with_cost_currency_used(self, name=None):
-        if (not self.cost_edit
-                and self.state not in {'cancelled', 'received', 'done'}):
-            return self._compute_costs()['cost_currency']
-        elif self.cost_currency:
-            return self.cost_currency.id
-
-    @fields.depends('state', 'cost', 'cost_edit', methods=['_compute_costs'])
-    def on_change_with_cost_used(self, name=None):
-        if (not self.cost_edit
-                and self.state not in {'cancelled', 'received', 'done'}):
-            return self._compute_costs()['cost']
-        else:
-            return self.cost
-
-    @classmethod
-    def set_cost(cls, lines, name, value):
-        if not value:
-            return
-        if name.endswith('_used'):
-            name = name[:-len('_used')]
-        cls.write([l for l in lines if l.cost_edit], {
-                name: value,
-                })
+    @property
+    def shipment_cost_moves(self):
+        return [
+            m for m in self.incoming_moves
+            if m.state not in {'done', 'cancelled'}]
 
     def allocate_cost_by_value(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Move = pool.get('stock.move')
 
-        if not self.cost_used:
+        cost = self._get_shipment_cost()
+        if not cost:
             return
 
-        cost = Currency.compute(
-            self.cost_currency_used, self.cost_used, self.company.currency,
-            round=False)
-        moves = [m for m in self.incoming_moves
-            if m.state not in ('done', 'cancelled')]
+        moves = self.shipment_cost_moves
 
         sum_value = 0
         unit_prices = {}
