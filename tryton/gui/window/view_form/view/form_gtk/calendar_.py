@@ -27,8 +27,7 @@ class Date(Widget):
         self.real_entry.connect('key_press_event', self.sig_key_press)
         self.real_entry.connect('activate', self.sig_activate)
         self.real_entry.connect('changed', lambda _: self.send_modified())
-        self.real_entry.connect('focus-out-event',
-            lambda x, y: self._focus_out())
+        self.entry.connect('date-changed', self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @property
@@ -54,6 +53,13 @@ class Date(Widget):
             field_value = self.cast(self.field.get_client(self.record))
             return field_value != self.get_value()
         return False
+
+    def changed(self, widget):
+        def focus_out():
+            if widget.props.window:
+                self._focus_out()
+        # Must be deferred because it triggers a display of the form
+        GLib.idle_add(focus_out)
 
     def sig_key_press(self, widget, event):
         self.send_modified()
@@ -111,15 +117,6 @@ class Time(Date):
             format_ = '%X'
         self.entry.props.format = format_
 
-    def changed(self, combobox):
-        def focus_out():
-            if combobox.props.window:
-                self._focus_out()
-        # Only when changed from pop list
-        if not combobox.get_child().has_focus():
-            # Must be deferred because it triggers a display of the form
-            GLib.idle_add(focus_out)
-
 
 class DateTime(Date):
     def __init__(self, view, attrs):
@@ -135,7 +132,7 @@ class DateTime(Date):
             child.connect('key_press_event', self.sig_key_press)
             child.connect('activate', self.sig_activate)
             child.connect('changed', lambda _: self.send_modified())
-            child.connect('focus-out-event', lambda x, y: self._focus_out())
+        self.entry.connect('datetime-changed', self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @classmethod
