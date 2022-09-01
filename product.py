@@ -221,8 +221,10 @@ class Product(metaclass=PoolMeta):
                     amount = company.currency.round(
                         Decimal(str(quantity)) * difference)
                     if amount:
-                        moves.append(product._update_cost_price_move(
-                                amount, company))
+                        move = product._update_cost_price_move(
+                                amount, company)
+                        if move.period.fiscalyear.account_stock_method:
+                            moves.append(move)
         Move.save(moves)
         Move.post(moves)
         super().update_cost_price(costs)
