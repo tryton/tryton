@@ -204,36 +204,35 @@ class Product(metaclass=PoolMeta):
         Stock = pool.get('stock.location')
         Company = pool.get('company.company')
         Move = pool.get('account.move')
+        Period = pool.get('account.period')
 
         context = Transaction().context
         locations = Stock.search([('type', '=', 'storage')])
         company = Company(context['company'])
         with Transaction().set_context(company=company.id):
             stock_date_end = Date.today()
-        moves = []
-        with Transaction().set_context(locations=[l.id for l in locations],
-                stock_date_end=stock_date_end):
-            for cost, products in costs.items():
-                products = cls.browse(products)
-                for product in products:
-                    difference = cost - product.cost_price
-                    quantity = product.quantity
-                    amount = company.currency.round(
-                        Decimal(str(quantity)) * difference)
-                    if amount:
-                        move = product._update_cost_price_move(
-                                amount, company)
-                        if move.period.fiscalyear.account_stock_method:
-                            moves.append(move)
+        period = Period(Period.find(company.id, date=stock_date_end))
+        if period.fiscalyear.account_stock_method:
+            moves = []
+            with Transaction().set_context(locations=[l.id for l in locations],
+                    stock_date_end=stock_date_end):
+                for cost, products in costs.items():
+                    products = cls.browse(products)
+                    for product in products:
+                        difference = cost - product.cost_price
+                        quantity = product.quantity
+                        amount = company.currency.round(
+                            Decimal(str(quantity)) * difference)
+                        if amount:
+                            moves.append(product._update_cost_price_move(
+                                    amount, company, period, stock_date_end))
         Move.save(moves)
         Move.post(moves)
         super().update_cost_price(costs)
 
-    def _update_cost_price_move(self, amount, company):
+    def _update_cost_price_move(self, amount, company, period, date):
         pool = Pool()
         AccountConfiguration = pool.get('account.configuration')
-        Date = pool.get('ir.date')
-        Period = pool.get('account.period')
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
 
@@ -242,12 +241,10 @@ class Product(metaclass=PoolMeta):
             account = self.account_stock_in_used
         else:
             account = self.account_stock_out_used
-        with Transaction().set_context(company=company.id):
-            today = Date.today()
         return Move(
-            period=Period.find(company.id),
+            period=period,
             journal=config.stock_journal,
-            date=today,
+            date=date,
             origin=self,
             lines=[Line(
                     debit=amount if amount > 0 else 0,
