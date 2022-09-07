@@ -481,8 +481,8 @@ var Sao = {};
         }
         function open_wizard(path) {
             var attributes = {};
-            attributes.name = path[0];
-            if (!attributes.name) {
+            attributes.action = path[0];
+            if (!attributes.action) {
                 return;
             }
             try {
