@@ -1,3 +1,4 @@
+* Remove same types restriction on PYSON If
 * Allow PYSON size of fields to be None
 * Add command line completion with argcomplete
 * Include record name and value in validation error message

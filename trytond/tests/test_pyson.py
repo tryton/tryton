@@ -395,12 +395,11 @@ class PYSONTestCase(unittest.TestCase):
             'e': 'bar',
             })
 
-        if not sys.flags.optimize:
-            self.assertRaises(AssertionError, pyson.If, True, 'foo', False)
-
         self.assertEqual(pyson.If(True, 'foo', 'bar').types(),
             set([str]))
         self.assertEqual(pyson.If(True, False, True).types(), set([bool]))
+        self.assertEqual(
+            pyson.If(True, 'foo', False).types(), set([bool, str]))
 
         eval = pyson.PYSONEncoder().encode(pyson.If(True, 'foo', 'bar'))
         self.assertEqual(pyson.PYSONDecoder().decode(eval), 'foo')
