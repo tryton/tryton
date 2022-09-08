@@ -1395,7 +1395,7 @@ class ModelStorage(Model):
                         else:
                             field_size = field.size
                         size = len(getattr(record, field_name) or '')
-                        if (size > field_size >= 0):
+                        if field_size is not None and (size > field_size >= 0):
                             error_args = cls.__names__(field_name, record)
                             error_args['size'] = size
                             error_args['max_size'] = field_size

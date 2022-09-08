@@ -522,6 +522,19 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                         }])
 
     @with_transaction()
+    def test_create_size_pyson_none(self):
+        "Test create one2many with PYSON size as None"
+        pool = Pool()
+        One2Many = pool.get('test.one2many_size_pyson')
+
+        one2many, = One2Many.create([{
+                    'limit': None,
+                    'targets': [
+                        ('create', [{}]),
+                        ],
+                    }])
+
+    @with_transaction()
     def test_create_filter(self):
         "Test create one2many with filter"
         One2Many = Pool().get('test.one2many_filter')

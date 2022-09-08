@@ -74,7 +74,7 @@ def size_validate(value):
     if value is not None:
         assert isinstance(value, (int, PYSON)), 'size must be PYSON'
         if hasattr(value, 'types'):
-            assert value.types() == {int}, \
+            assert value.types() <= {int, type(None)}, \
                 'size must return integer'
 
 

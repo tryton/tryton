@@ -445,6 +445,17 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
                         }])
 
     @with_transaction()
+    def test_create_size_pyson_none(self):
+        "Test create char with PYSON size as None"
+        pool = Pool()
+        Char = pool.get('test.char_size_pyson')
+
+        char, = Char.create([{
+                    'char': "foo",
+                    'size': None,
+                    }])
+
+    @with_transaction()
     def test_create_invalid_char(self):
         "Test create char with invalid char"
         Char = Pool().get('test.char')
