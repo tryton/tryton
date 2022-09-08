@@ -623,7 +623,6 @@ var Sao = {};
         var session = Sao.Session.current_session;
         Sao.Tab.tabs.close(true).done(function() {
             jQuery('#user-preferences').empty();
-            jQuery('#user-favorites').empty();
             jQuery('#global-search').empty();
             jQuery('#menu').empty();
             session.do_logout().always(Sao.login);
@@ -634,7 +633,7 @@ var Sao = {};
     Sao.preferences = function() {
         Sao.Tab.tabs.close(true).done(function() {
             jQuery('#user-preferences').empty();
-            jQuery('#user-favorites').empty();
+            jQuery('#global-search').empty();
             jQuery('#menu').empty();
             new Sao.Window.Preferences(function() {
                 Sao.Session.current_session.reset_context();
@@ -713,7 +712,6 @@ var Sao = {};
 
     Sao.user_menu = function(preferences) {
         jQuery('#user-preferences').empty();
-        jQuery('#user-favorites').empty();
         var user = jQuery('<a/>', {
             'href': '#',
             'title': preferences.status_bar,
