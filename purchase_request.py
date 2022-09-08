@@ -84,21 +84,21 @@ class PurchaseRequest(metaclass=PoolMeta):
                     ], order=[('id', 'ASC')])
         product_ids = [p.id for p in products]
         # aggregate product by minimum supply date
-        date2products = {}
+        date2products = defaultdict(list)
         for product in products:
             min_date, max_date = cls.get_supply_dates(
                 product, company=company.id)
-            date2products.setdefault((min_date, max_date), []).append(product)
+            date2products[min_date, max_date].append(product)
 
         # compute requests
         new_requests = []
-        for dates, dates_products in date2products.items():
-            min_date, max_date = dates
+        for (min_date, max_date), dates_products in date2products.items():
             for sub_products in grouped_slice(dates_products):
                 sub_products = list(sub_products)
                 product_ids = [p.id for p in sub_products]
-                with Transaction().set_context(forecast=True,
-                        stock_date_end=min_date or datetime.date.max):
+                with Transaction().set_context(
+                        forecast=True,
+                        stock_date_end=min_date):
                     pbl = Product.products_by_location(warehouse_ids,
                         with_childs=True, grouping_filter=(product_ids,))
                 for warehouse_id in warehouse_ids:
@@ -111,8 +111,9 @@ class PurchaseRequest(metaclass=PoolMeta):
                         p.id for p in sub_products
                         if (warehouse_id, p.id) not in product2ops_other]
                     # Search for shortage between min-max
-                    shortages = cls.get_shortage(warehouse_id, product_ids,
-                        min_date, max_date, min_date_qties=min_date_qties,
+                    shortages = cls.get_shortage(
+                        warehouse_id, product_ids, min_date, max_date,
+                        min_date_qties=min_date_qties,
                         order_points=product2ops)
 
                     for product in sub_products:
@@ -307,18 +308,30 @@ class PurchaseRequest(metaclass=PoolMeta):
         res_dates = {}
         res_qties = {}
 
-        min_quantities = {}
+        min_quantities = defaultdict(float)
         for product_id in product_ids:
             order_point = order_points.get((location_id, product_id))
             if order_point:
                 min_quantities[product_id] = order_point.min_quantity
-            else:
-                min_quantities[product_id] = 0.0
+
+        with Transaction().set_context(
+                forecast=True,
+                stock_date_start=min_date,
+                stock_date_end=max_date):
+            pbl = Product.products_by_location(
+                [location_id], with_childs=True,
+                grouping=('date', 'product'),
+                grouping_filter=(None, product_ids))
+        pbl_dates = defaultdict(dict)
+        for key, qty in pbl.items():
+            date, product_id = key[1:]
+            pbl_dates[date][product_id] = qty
 
         current_date = min_date
         current_qties = min_date_qties.copy()
+        products_to_check = product_ids.copy()
         while (current_date < max_date) or (current_date == min_date):
-            for product_id in product_ids:
+            for product_id in products_to_check:
                 current_qty = current_qties[product_id]
                 min_quantity = min_quantities[product_id]
                 res_qty = res_qties.get(product_id)
@@ -333,15 +346,10 @@ class PurchaseRequest(metaclass=PoolMeta):
                 break
             current_date += datetime.timedelta(1)
 
-            # Update current quantities with next moves
-            with Transaction().set_context(forecast=True,
-                    stock_date_start=current_date,
-                    stock_date_end=current_date):
-                pbl = Product.products_by_location([location_id],
-                    with_childs=True, grouping_filter=(product_ids,))
-            for key, qty in pbl.items():
-                _, product_id = key
+            pbl = pbl_dates[current_date]
+            products_to_check.clear()
+            for product_id, qty in pbl.items():
                 current_qties[product_id] += qty
+                products_to_check.append(product_id)
 
-        return dict((x, (res_dates.get(x), res_qties.get(x)))
-            for x in product_ids)
+        return {x: (res_dates.get(x), res_qties.get(x)) for x in product_ids}

@@ -38,6 +38,13 @@ Create parties::
     >>> supplier = Party(name='Supplier')
     >>> supplier.save()
 
+Configure supply period::
+
+    >>> PurchaseConfig = Model.get('purchase.configuration')
+    >>> purchase_config = PurchaseConfig(1)
+    >>> purchase_config.supply_period = datetime.timedelta(days=30)
+    >>> purchase_config.save()
+
 Create stock admin user::
 
     >>> User = Model.get('res.user')
@@ -107,6 +114,15 @@ Create product::
     >>> template.save()
     >>> product, = template.products
 
+Define a product supplier::
+
+    >>> set_user(purchase_user)
+    >>> ProductSupplier = Model.get('purchase.product_supplier')
+    >>> product_supplier = ProductSupplier(template=template)
+    >>> product_supplier.party = supplier
+    >>> product_supplier.lead_time = datetime.timedelta(days=1)
+    >>> product_supplier.save()
+
 Get stock locations::
 
     >>> set_user(stock_admin_user)
@@ -117,7 +133,7 @@ Get stock locations::
     >>> output_loc, = Location.find([('code', '=', 'OUT')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
 
-Create a need for missing product::
+Create needs for missing product::
 
     >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
@@ -136,6 +152,10 @@ Create a need for missing product::
     >>> move.company = company
     >>> move.unit_price = Decimal('1')
     >>> move.currency = company.currency
+    >>> shipment_out.click('wait')
+
+    >>> shipment_out, = shipment_out.duplicate(
+    ...     default={'planned_date': today + datetime.timedelta(days=10)})
     >>> shipment_out.click('wait')
 
 There is no purchase request::
@@ -158,7 +178,7 @@ There is now a draft purchase request::
     >>> pr.product == product
     True
     >>> pr.quantity
-    1.0
+    2.0
 
 Create an order point with negative minimal quantity::
 
@@ -168,22 +188,22 @@ Create an order point with negative minimal quantity::
     >>> order_point.type = 'purchase'
     >>> order_point.product = product
     >>> order_point.warehouse_location = warehouse_loc
-    >>> order_point.min_quantity = -1
+    >>> order_point.min_quantity = -2
     >>> order_point.target_quantity = 10
     >>> order_point.save()
 
-Create production request::
+Create purchase request::
 
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
-There is no more production request::
+There is no more purchase request::
 
     >>> set_user(purchase_user)
     >>> PurchaseRequest.find([])
     []
 
-Set a postive minimal quantity on order point create purchase request::
+Set a positive minimal quantity on order point create purchase request::
 
     >>> set_user(stock_admin_user)
     >>> order_point.min_quantity = 5
@@ -198,7 +218,7 @@ There is now a draft purchase request::
     >>> pr.product == product
     True
     >>> pr.quantity
-    11.0
+    12.0
 
 Using zero as minimal quantity on order point also creates purchase request::
 
@@ -215,13 +235,11 @@ There is now a draft purchase request::
     >>> pr.product == product
     True
     >>> pr.quantity
-    11.0
+    12.0
 
 Re-run with purchased request::
 
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
-    >>> create_purchase.form.party = supplier
-    >>> create_purchase.execute('start')
     >>> pr.state
     'purchased'
 
