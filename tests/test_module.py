@@ -665,6 +665,76 @@ class StockTestCase(
                 products_by_location[(storage2.id, product.id)], 60)
 
     @with_transaction()
+    def test_products_by_location_grouped_by_date(self):
+        "Test products_by_location grouped by date"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': "Template",
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        lost_found, = Location.search([('type', '=', 'lost_found')])
+        storage, = Location.search([('code', '=', 'STO')])
+        output, = Location.search([('code', '=', 'OUT')])
+        company = create_company()
+        with set_company(company):
+            today = Date.today()
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 10,
+                        'from_location': lost_found.id,
+                        'to_location': storage.id,
+                        'effective_date': today,
+                        'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 2,
+                        'from_location': storage.id,
+                        'to_location': output.id,
+                        'effective_date': today + relativedelta(days=1),
+                        'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 3,
+                        'from_location': storage.id,
+                        'to_location': output.id,
+                        'effective_date': today + relativedelta(days=5),
+                        'company': company.id,
+                        }])
+            with Transaction().set_context(_skip_warnings=True):
+                Move.do(moves)
+
+            with Transaction().set_context(stock_date_start=today):
+                products_by_location = Product.products_by_location(
+                    [storage.id],
+                    grouping=('date', 'product'),
+                    grouping_filter=(None, [product.id]))
+
+            self.assertDictEqual(products_by_location, {
+                    (storage.id,
+                        today, product.id): 10,
+                    (storage.id,
+                        today + relativedelta(days=1), product.id): -2,
+                    (storage.id,
+                        today + relativedelta(days=5), product.id): -3,
+                    })
+
+    @with_transaction()
     def test_templates_by_location(self, period_closed=False):
         "Test products_by_location grouped by template"
         pool = Pool()

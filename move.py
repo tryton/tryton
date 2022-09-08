@@ -1137,8 +1137,8 @@ class Move(Workflow, ModelSQL, ModelView):
             stock_destinations: A list of location ids. If set, restrict the
                 computation to moves from and to those locations.
         If with_childs, it computes also for child locations.
-        grouping is a tuple of Move (or Product if prefixed by 'product.')
-            field names and defines how stock moves are grouped.
+        grouping is a tuple of Move (or Product if prefixed by 'product.' or
+            'date') field names and defines how stock moves are grouped.
         grouping_filter is a tuple of values, for the Move's field at the same
             position in grouping tuple, used to filter which moves are used to
             compute quantities. It must be None or have the same number of
@@ -1171,14 +1171,22 @@ class Move(Workflow, ModelSQL, ModelView):
                 use_product = True
             else:
                 Model = Move
-            if field not in Model._fields:
+            if field not in Model._fields and field != 'date':
                 raise ValueError('"%s" has no field "%s"' % (Model, field))
         assert grouping_filter is None or len(grouping_filter) <= len(grouping)
         assert len(set(grouping)) == len(grouping)
+        assert ('stock_date_start' in context) if 'date' in grouping else True
 
         company = User(Transaction().user).company
 
-        def get_column(name, table, product):
+        def get_column(name, table):
+            if name == 'date':
+                return cls.effective_date.sql_cast(
+                    Coalesce(table.effective_date, table.planned_date))
+            else:
+                return Column(table, name)
+
+        def get_column_product(name, table, product):
             if name.startswith('product.'):
                 column = Column(product, name[len('product.'):])
             else:
@@ -1189,8 +1197,9 @@ class Move(Workflow, ModelSQL, ModelView):
             product = Product.__table__()
             columns = ['id', 'state', 'effective_date', 'planned_date',
             'internal_quantity', 'from_location', 'to_location', 'company']
-            columns += [c for c in grouping if c not in columns]
-            columns = [get_column(c, move, product) for c in columns]
+            columns += [
+                c for c in grouping if c not in columns and c != 'date']
+            columns = [get_column_product(c, move, product) for c in columns]
             move = (move
                 .join(product, condition=move.product == product.id)
                 .select(*columns))
@@ -1204,7 +1213,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 product_cache = Product.__table__()
                 columns = ['internal_quantity', 'period', 'location']
                 columns += [c for c in grouping if c not in columns]
-                columns = [get_column(c, period_cache, product_cache)
+                columns = [
+                    get_column_product(c, period_cache, product_cache)
                     for c in columns]
                 period_cache = (period_cache
                     .join(product_cache,
@@ -1225,7 +1235,7 @@ class Move(Workflow, ModelSQL, ModelView):
             columns = ['id', 'state', 'effective_date', 'planned_date',
                 'internal_quantity', 'company']
             columns += [c for c in grouping if c not in columns]
-            columns = [Column(move, c).as_(c) for c in columns]
+            columns = [get_column(c, move).as_(c) for c in columns]
 
             move_with_parent = (move
                 .join(from_location,
@@ -1452,7 +1462,7 @@ class Move(Workflow, ModelSQL, ModelView):
             for fieldname, grouping_ids in zip(grouping, grouping_filter):
                 if not grouping_ids:
                     continue
-                column = Column(move, fieldname)
+                column = get_column(fieldname, move)
                 if PeriodCache:
                     cache_column = Column(period_cache, fieldname)
                 if isinstance(grouping_ids[0], (int, float, Decimal)):
@@ -1480,8 +1490,8 @@ class Move(Workflow, ModelSQL, ModelView):
         # One that sums incoming moves towards locations, one that sums
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
-        move_keys_alias = [Column(move, key).as_(key) for key in grouping]
-        move_keys = [Column(move, key) for key in grouping]
+        move_keys_alias = [get_column(key, move).as_(key) for key in grouping]
+        move_keys = [get_column(key, move) for key in grouping]
         query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
             *move_keys_alias,
@@ -1564,7 +1574,12 @@ class Move(Workflow, ModelSQL, ModelView):
         for line in cursor:
             if len(location_ids) > 1:
                 location = line[0]
-            key = tuple(line[1:-1])
+            key = list(line[1:-1])
+            if 'date' in grouping:
+                i = grouping.index('date')
+                if not isinstance(key[i], datetime.date):
+                    key[i] = datetime.date.fromisoformat(key[i])
+            key = tuple(key)
             quantity = line[-1]
             quantities[(location,) + key] += quantity
             ids.add(id_getter(line))
