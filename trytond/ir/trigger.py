@@ -229,19 +229,6 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         new_ids.append(record_id)
             ids = new_ids
 
-        def cast_datetime(value):
-            datepart, timepart = value.split(" ")
-            year, month, day = map(int, datepart.split("-"))
-            timepart_full = timepart.split(".")
-            hours, minutes, seconds = map(
-                int, timepart_full[0].split(":"))
-            if len(timepart_full) == 2:
-                microseconds = int(timepart_full[1])
-            else:
-                microseconds = 0
-            return datetime.datetime(
-                year, month, day, hours, minutes, seconds, microseconds)
-
         # Filter on minimum_time_delay
         if self.minimum_time_delay:
             new_ids = []
@@ -250,7 +237,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             cursor.execute(*Select([timestamp_cast(CurrentTimestamp())]))
             now, = cursor.fetchone()
             if isinstance(now, str):
-                now = cast_datetime(now)
+                now = datetime.datetime.fromisoformat(now)
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(trigger_log.record_id, sub_ids)
@@ -265,7 +252,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         continue
                     # SQLite return string for MAX
                     if isinstance(delay[record_id], str):
-                        delay[record_id] = cast_datetime(delay[record_id])
+                        delay[record_id] = datetime.datetime.fromisoformat(
+                            delay[record_id])
                     if now - delay[record_id] >= self.minimum_time_delay:
                         new_ids.append(record_id)
             ids = new_ids

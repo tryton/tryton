@@ -36,8 +36,7 @@ class Date(Field):
 
     def sql_format(self, value):
         if isinstance(value, str):
-            year, month, day = list(map(int, value.split("-", 2)))
-            value = datetime.date(year, month, day)
+            value = datetime.date.fromisoformat(value)
         elif isinstance(value, datetime.datetime):
             if value.time() != datetime.time():
                 raise ValueError("Date field can not have time")
@@ -86,16 +85,7 @@ class Timestamp(FormatMixin, Field):
 
     def sql_format(self, value):
         if isinstance(value, str):
-            datepart, timepart = value.split(" ")
-            year, month, day = map(int, datepart.split("-", 2))
-            timepart_full = timepart.split(".", 1)
-            hours, minutes, seconds = map(int, timepart_full[0].split(":"))
-            if len(timepart_full) == 2:
-                microseconds = int(timepart_full[1])
-            else:
-                microseconds = 0
-            value = datetime.datetime(
-                year, month, day, hours, minutes, seconds, microseconds)
+            value = datetime.datetime.fromisoformat(value)
         return super().sql_format(value)
 
     def sql_cast(self, expression):
@@ -156,8 +146,7 @@ class Time(FormatMixin, Field):
 
     def sql_format(self, value):
         if isinstance(value, str):
-            hours, minutes, seconds = map(int, value.split(":"))
-            value = datetime.time(hours, minutes, seconds)
+            value = datetime.time.fromisoformat(value)
         value = super().sql_format(value)
         if isinstance(value, datetime.time):
             value = value.replace(microsecond=0)
