@@ -15,6 +15,7 @@ Reference of the ``trytond`` API:
    pyson
    transaction
    exceptions
+   backend
    tools/index
    pool
    rpc

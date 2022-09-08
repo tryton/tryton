@@ -293,11 +293,12 @@ class Database(DatabaseInterface):
         connection.commit()
         cls._list_cache.clear()
 
-    def drop(self, connection, database_name):
+    @classmethod
+    def drop(cls, connection, database_name):
         cursor = connection.cursor()
         cursor.execute(SQL("DROP DATABASE {}")
             .format(Identifier(database_name)))
-        self.__class__._list_cache.clear()
+        cls._list_cache.clear()
 
     def get_version(self, connection):
         version = connection.server_version

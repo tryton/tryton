@@ -44,8 +44,8 @@ class TableHandler(TableHandlerInterface):
 
         self._update_definitions()
 
-    @staticmethod
-    def table_exist(table_name):
+    @classmethod
+    def table_exist(cls, table_name):
         cursor = Transaction().connection.cursor()
         cursor.execute("SELECT sql FROM sqlite_master "
             "WHERE type = 'table' AND name = ?",
@@ -80,18 +80,18 @@ class TableHandler(TableHandlerInterface):
             cursor.execute('DROP TABLE "_temp_%s"' % table_name)
         return True
 
-    @staticmethod
-    def table_rename(old_name, new_name):
+    @classmethod
+    def table_rename(cls, old_name, new_name):
         cursor = Transaction().connection.cursor()
-        if (TableHandler.table_exist(old_name)
-                and not TableHandler.table_exist(new_name)):
+        if (cls.table_exist(old_name)
+                and not cls.table_exist(new_name)):
             cursor.execute('ALTER TABLE %s RENAME TO %s'
                 % (_escape_identifier(old_name), _escape_identifier(new_name)))
         # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
-        if (TableHandler.table_exist(old_history)
-                and not TableHandler.table_exist(new_history)):
+        if (cls.table_exist(old_history)
+                and not cls.table_exist(new_history)):
             cursor.execute('ALTER TABLE %s RENAME TO %s'
                 % (_escape_identifier(old_history),
                     _escape_identifier(new_history)))
@@ -109,7 +109,7 @@ class TableHandler(TableHandlerInterface):
         cursor = transaction.connection.cursor()
         temp_table = '__temp_%s' % self.table_name
         temp_columns = dict(self._columns)
-        TableHandler.table_rename(self.table_name, temp_table)
+        self.table_rename(self.table_name, temp_table)
         self._init(self._model, history=self.history)
         columns, old_columns = [], []
         for name, values in temp_columns.items():
@@ -368,8 +368,8 @@ class TableHandler(TableHandlerInterface):
         else:
             self._recreate_table(drop_columns=[column_name])
 
-    @staticmethod
-    def drop_table(model, table, cascade=False):
+    @classmethod
+    def drop_table(cls, model, table, cascade=False):
         cursor = Transaction().connection.cursor()
         cursor.execute('DELETE from ir_model_data where model = ?',
             (model,))

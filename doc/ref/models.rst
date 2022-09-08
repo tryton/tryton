@@ -538,7 +538,7 @@ Class methods:
 
 .. classmethod:: ModelSQL.__table_handler__([module_name[, history]])
 
-   Return a TableHandler for the Model.
+   Return a :class:`~trytond.backend.TableHandler` instance for the Model.
 
 .. classmethod:: ModelSQL.table_query()
 

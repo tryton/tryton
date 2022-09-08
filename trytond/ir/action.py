@@ -398,8 +398,6 @@ class ActionMixin(ModelSQL):
             cursor.execute(*ir_action.update(
                     [ir_action.id], [action.id],
                     where=ir_action.id == record.id))
-            transaction.database.update_auto_increment(
-                transaction.connection, cls._table, action.id)
             record = cls(action.id)
             new_records.append(record)
             to_write.extend(([record], later))

@@ -475,9 +475,10 @@ class Database(DatabaseInterface):
             cursor = conn.cursor()
             cursor.close()
 
-    def drop(self, connection, database_name):
+    @classmethod
+    def drop(cls, connection, database_name):
         if database_name == ':memory:':
-            self._local.memory_database._conn = None
+            cls._local.memory_database._conn = None
             return
         if os.sep in database_name:
             return

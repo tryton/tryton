@@ -94,19 +94,19 @@ class TableHandler(TableHandlerInterface):
                     (self.sequence_name,))
                 self._update_definitions(columns=True)
 
-    @staticmethod
-    def table_exist(table_name):
+    @classmethod
+    def table_exist(cls, table_name):
         transaction = Transaction()
         return bool(transaction.database.get_table_schema(
                 transaction.connection, table_name))
 
-    @staticmethod
-    def table_rename(old_name, new_name):
+    @classmethod
+    def table_rename(cls, old_name, new_name):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         # Rename table
-        if (TableHandler.table_exist(old_name)
-                and not TableHandler.table_exist(new_name)):
+        if (cls.table_exist(old_name)
+                and not cls.table_exist(new_name)):
             cursor.execute(SQL('ALTER TABLE {} RENAME TO {}').format(
                     Identifier(old_name), Identifier(new_name)))
         # Rename sequence
@@ -117,8 +117,8 @@ class TableHandler(TableHandlerInterface):
         # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
-        if (TableHandler.table_exist(old_history)
-                and not TableHandler.table_exist(new_history)):
+        if (cls.table_exist(old_history)
+                and not cls.table_exist(new_history)):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_history, new_history))
 
@@ -520,8 +520,8 @@ class TableHandler(TableHandlerInterface):
                 Identifier(column_name)))
         self._update_definitions(columns=True)
 
-    @staticmethod
-    def drop_table(model, table, cascade=False):
+    @classmethod
+    def drop_table(cls, model, table, cascade=False):
         cursor = Transaction().connection.cursor()
         cursor.execute('DELETE FROM ir_model_data WHERE model = %s', (model,))
 
