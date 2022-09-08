@@ -1043,6 +1043,8 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('waiting', 'packed'),
                 ('picked', 'packed'),
                 ('packed', 'done'),
+                ('packed', 'waiting'),
+                ('packed', 'picked'),
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'draft'),
@@ -1068,20 +1070,27 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'wait': {
-                    'invisible': ~Eval('state').in_(['assigned', 'waiting',
-                            'draft']),
-                    'icon': If(Eval('state') == 'assigned',
+                    'invisible': (
+                        ~(Eval('state').in_(['assigned', 'waiting', 'draft'])
+                            | ((Eval('state') == 'packed')
+                                & (Eval('warehouse_storage')
+                                    == Eval('warehouse_output'))))),
+                    'icon': If(Eval('state').in_(['assigned', 'packed']),
                         'tryton-back',
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
                             'tryton-forward')),
-                    'depends': ['state'],
+                    'depends': [
+                        'state', 'warehouse_storage', 'warehouse_output'],
                     },
                 'pick': {
                     'invisible': If(
                         Eval('warehouse_storage') == Eval('warehouse_output'),
                         True,
-                        Eval('state') != 'assigned'),
+                        ~Eval('state').in_(['assigned', 'packed'])),
+                    'icon': If(Eval('state') == 'packed',
+                        'tryton-back',
+                        'tryton-forward'),
                     'depends': [
                         'state', 'warehouse_storage', 'warehouse_output'],
                     },
@@ -1242,6 +1251,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move.draft(moves)
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancelled')])
+        Move.draft([m for s in shipments for m in s.outgoing_moves])
 
         to_create = []
         for shipment in shipments:
@@ -1307,6 +1317,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 m for s in shipments for m in s.inventory_moves
                 if m.state == 'staging'])
         Move.do([m for s in shipments for m in s.inventory_moves])
+        Move.draft([m for s in shipments for m in s.outgoing_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=True)
 
     @classmethod

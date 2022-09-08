@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft"/>
         <button name="wait"/>
         <button name="assign_wizard" icon="tryton-forward"/>
-        <button name="pick" icon="tryton-forward"/>
+        <button name="pick"/>
         <button name="pack" icon="tryton-forward"/>
         <button name="done" icon="tryton-ok"/>
     </group>
