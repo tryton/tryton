@@ -588,7 +588,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 date = v[name]
                 # SQLite does not convert to date
                 if isinstance(date, str):
-                    date = datetime.date(*map(int, date.split('-', 2)))
+                    date = datetime.date.fromisoformat(date)
                 result[v['id']] = date
             return result
 
@@ -753,7 +753,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
         def cast_date(date):
             if isinstance(date, str):
-                date = datetime.date(*map(int, date.split('-', 2)))
+                date = datetime.date.fromisoformat(date)
             return date
 
         dates = sorted({cast_date(l.date) for l in lines})
@@ -988,7 +988,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
 
         def cast_date(date):
             if isinstance(date, str):
-                date = datetime.date(*map(int, date.split('-', 2)))
+                date = datetime.date.fromisoformat(date)
             return date
 
         dates = sorted({cast_date(r.date) for r in records})
