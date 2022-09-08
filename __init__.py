@@ -4,7 +4,8 @@
 from trytond.pool import Pool
 
 from . import (
-    configuration, invoice, ir, party, recurrence, service, subscription)
+    configuration, invoice, ir, party, product, recurrence, service,
+    subscription)
 
 
 def register():
@@ -22,6 +23,7 @@ def register():
         subscription.CreateLineConsumptionStart,
         subscription.CreateSubscriptionInvoiceStart,
         invoice.InvoiceLine,
+        product.Product,
         ir.Cron,
         module='sale_subscription', type_='model')
     Pool.register(

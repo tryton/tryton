@@ -9,7 +9,7 @@ class Service(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'sale.subscription.service'
 
     product = fields.Many2One(
-        'product.product', "Product", required=True,
+        'product.product', "Product", required=True, ondelete='CASCADE',
         domain=[
             ('type', '=', 'service'),
             ])

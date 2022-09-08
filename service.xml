@@ -30,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_service_form"/>
         </record>
         <menuitem
-            parent="product.menu_main_product"
+            parent="product.menu_template"
             action="act_service_form"
             sequence="20"
             id="menu_service_form"/>
