@@ -220,9 +220,10 @@ class Line(metaclass=PoolMeta):
 
         moves = set()
         for move in self.moves:
-            for inv_move in move.shipment.inventory_moves:
-                if inv_move.product.id == self.product.id:
-                    moves.add(inv_move)
+            if move.shipment:
+                for inv_move in move.shipment.inventory_moves:
+                    if inv_move.product.id == self.product.id:
+                        moves.add(inv_move)
         to_write = []
         to_assign = []
         for move in moves:
