@@ -400,16 +400,6 @@ class If(PYSON):
                 condition = Bool(condition)
         elif not isinstance(condition, bool):
             condition = bool(condition)
-        if isinstance(then_statement, PYSON):
-            then_types = then_statement.types()
-        else:
-            then_types = {type(then_statement)}
-        if isinstance(else_statement, PYSON):
-            else_types = else_statement.types()
-        else:
-            else_types = {type(else_statement)}
-        assert then_types == else_types, \
-            'then and else statements must be the same type'
         self._condition = condition
         self._then_statement = then_statement
         self._else_statement = else_statement
@@ -428,9 +418,14 @@ class If(PYSON):
 
     def types(self):
         if isinstance(self._then_statement, PYSON):
-            return self._then_statement.types()
+            types = self._then_statement.types()
         else:
-            return {type(self._then_statement)}
+            types = {type(self._then_statement)}
+        if isinstance(self._else_statement, PYSON):
+            types |= self._else_statement.types()
+        else:
+            types |= {type(self._else_statement)}
+        return types
 
     @staticmethod
     def eval(dct, context):
