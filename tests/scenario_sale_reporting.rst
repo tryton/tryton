@@ -41,14 +41,13 @@ Create countries::
 
     >>> Country = Model.get('country.country')
     >>> Subdivision = Model.get('country.subdivision')
-    >>> country_us = Country(
-    ...     name="United States", code="US", code3="USA", code_numeric="840")
+    >>> country_us = Country(name="United States")
     >>> country_us.save()
     >>> california = Subdivision(
-    ...     name="California", code="US-CA", type='state', country=country_us)
+    ...     name="California", type='state', country=country_us)
     >>> california.save()
     >>> new_york = Subdivision(
-    ...     name="New York", code="US-NY", type='state', country=country_us)
+    ...     name="New York", type='state', country=country_us)
     >>> new_york.save()
 
 Create party categories::
