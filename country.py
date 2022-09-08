@@ -107,7 +107,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         help="The country where this subdivision is.")
     name = fields.Char('Name', required=True, select=True, translate=True,
         help="The main identifier of the subdivision.")
-    code = fields.Char('Code', required=True, select=True,
+    code = fields.Char('Code', select=True,
         help="The ISO code of the subdivision.")
     flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
     type = fields.Selection([
@@ -282,6 +282,9 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
         # Migration from 6.2: remove type required
         table_h.not_null_action('type', action='remove')
+
+        # Migration from 6.4: remove required on code
+        table_h.not_null_action('code', action='remove')
 
     @fields.depends('code')
     def on_change_with_flag(self, name=None):
