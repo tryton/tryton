@@ -532,10 +532,6 @@
             } else {
                 else_types = [typeof else_statement];
             }
-            if (jQuery(then_types).not(else_types).length ||
-                jQuery(else_types).not(then_types).length) {
-                throw 'then and else statements must be the same type';
-            }
             this._condition = condition;
             this._then_statement = then_statement;
             this._else_statement = else_statement;
@@ -549,11 +545,25 @@
             };
         },
         types: function() {
+            var types;
             if (this._then_statement instanceof Sao.PYSON.PYSON) {
-                return this._then_statement.types();
+                types = this._then_statement.types();
             } else {
-                return [typeof this._then_statement];
+                types = [typeof this._then_statement];
             }
+            if (this._else_statement instanceof Sao.PYSON.PYSON) {
+                for (const type of this._else_statement.types()) {
+                    if (!~types.indexOf(type)) {
+                        types.push(type);
+                    }
+                }
+            } else {
+                const type = typeof this._else_statement;
+                if (!~types.indexOf(type)) {
+                    types.push(type);
+                }
+            }
+            return types;
         },
         __string_params__: function() {
             return [this._condition, this._then_statement,

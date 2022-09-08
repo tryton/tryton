@@ -644,16 +644,15 @@
         QUnit.strictEqual(value.t, 'foo', "If(true, 'foo', 'bar')");
         QUnit.strictEqual(value.e, 'bar', "If(true, 'foo', 'bar')");
 
-        QUnit.throws(function() {
-            new Sao.PYSON.If(true, 'foo', false);
-        }, 'then and else statements must be the same type');
-
         QUnit.ok(Sao.common.compare(
                 new Sao.PYSON.If(true, 'foo', 'bar').types(),
                 [typeof 'foo']), "If(true, 'foo', 'bar').types()");
         QUnit.ok(Sao.common.compare(
                 new Sao.PYSON.If(true, false, true).types(),
                 [typeof true]), 'If(true, false, true).types()');
+        QUnit.ok(Sao.common.compare(
+                new Sao.PYSON.If(true, 'foo', false).types(),
+                [typeof 'foo', typeof true]), "If(true, 'foo', false).types()");
 
         var eval_;
         eval_ = new Sao.PYSON.Encoder().encode(
