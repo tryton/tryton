@@ -169,9 +169,10 @@ class SaleLine(metaclass=PoolMeta):
             return
         moves = set()
         for move in self.moves:
-            for inv_move in move.shipment.inventory_moves:
-                if inv_move.product.id == self.product.id:
-                    moves.add(inv_move)
+            if move.shipment:
+                for inv_move in move.shipment.inventory_moves:
+                    if inv_move.product.id == self.product.id:
+                        moves.add(inv_move)
         for move in moves:
             if move.state != 'draft':
                 continue
