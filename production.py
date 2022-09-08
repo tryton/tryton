@@ -89,43 +89,53 @@ class Production(metaclass=PoolMeta):
                 ])
         # compute requests
         today = Date.today()
+
+        # aggregate product by supply period
+        date2products = defaultdict(list)
+        for product in products:
+            min_date = today
+            max_date = today + product.get_supply_period()
+            date2products[min_date, max_date].append(product)
+
         requests = []
-        for sub_products in grouped_slice(products):
-            sub_products = list(sub_products)
-            product_ids = [p.id for p in sub_products]
-            with Transaction().set_context(forecast=True,
-                    stock_date_end=today):
-                pbl = Product.products_by_location(
-                    warehouse_ids,
-                    with_childs=True,
-                    grouping_filter=(product_ids,))
+        for (min_date, max_date), dates_products in date2products.items():
+            for sub_products in grouped_slice(products):
+                sub_products = list(sub_products)
+                product_ids = [p.id for p in sub_products]
+                with Transaction().set_context(
+                        forecast=True,
+                        stock_date_end=min_date):
+                    pbl = Product.products_by_location(
+                        warehouse_ids,
+                        with_childs=True,
+                        grouping_filter=(product_ids,))
 
-            # order product by supply period
-            products_period = sorted((p.get_supply_period(), p)
-                for p in sub_products)
+                for warehouse in warehouses:
+                    min_date_qties = defaultdict(int,
+                        ((x, pbl.pop((warehouse.id, x), 0))
+                            for x in product_ids))
+                    # Do not compute shortage for product
+                    # with different order point
+                    product_ids = [
+                        p.id for p in sub_products
+                        if (warehouse.id, p.id) not in product2ops_other]
+                    # Search for shortage between min-max
+                    shortages = cls.get_shortage(
+                        warehouse.id, product_ids, min_date, max_date,
+                        min_date_qties=min_date_qties,
+                        order_points=product2ops)
 
-            for warehouse in warehouses:
-                quantities = defaultdict(int,
-                    ((x, pbl.pop((warehouse.id, x), 0)) for x in product_ids))
-                # Do not compute shortage for product
-                # with different order point
-                product_ids = [
-                    p.id for p in sub_products
-                    if (warehouse.id, p.id) not in product2ops_other]
-                shortages = cls.get_shortage(warehouse.id, product_ids, today,
-                    quantities, products_period, product2ops)
-
-                for product in sub_products:
-                    if product.id not in shortages:
-                        continue
-                    for date, quantity in shortages[product.id]:
-                        order_point = product2ops.get(
-                            (warehouse.id, product.id))
-                        req = cls.compute_request(product, warehouse,
-                            quantity, date, company, order_point)
-                        req.planned_start_date = (
-                            req.on_change_with_planned_start_date())
-                        requests.append(req)
+                    for product in sub_products:
+                        if product.id not in shortages:
+                            continue
+                        for date, quantity in shortages[product.id]:
+                            order_point = product2ops.get(
+                                (warehouse.id, product.id))
+                            req = cls.compute_request(product, warehouse,
+                                quantity, date, company, order_point)
+                            req.planned_start_date = (
+                                req.on_change_with_planned_start_date())
+                            requests.append(req)
         cls.save(requests)
         cls.set_moves(requests)
         return requests
@@ -165,8 +175,8 @@ class Production(metaclass=PoolMeta):
             )
 
     @classmethod
-    def get_shortage(cls, location_id, product_ids, date, quantities,
-            products_period, order_points):
+    def get_shortage(cls, location_id, product_ids, min_date, max_date,
+            min_date_qties, order_points):
         """
         Return for each product a list of dates where the stock quantity is
         less than the minimal quantity and the quantity to reach the maximal
@@ -175,33 +185,40 @@ class Production(metaclass=PoolMeta):
         The minimal and maximal quantities come from the order point or are
         zero.
 
-        quantities is the quantities for each product at the date.
-        products_period is an ordered list of periods and products.
+        min_date_qty is the quantities for each product at the min date.
         order_points is a dictionary that links products to order points.
         """
         pool = Pool()
         Product = pool.get('product.product')
 
-        shortages = {}
-
-        min_quantities = {}
-        target_quantities = {}
+        shortages = defaultdict(list)
+        min_quantities = defaultdict(float)
+        target_quantities = defaultdict(float)
         for product_id in product_ids:
             order_point = order_points.get((location_id, product_id))
             if order_point:
                 min_quantities[product_id] = order_point.min_quantity
                 target_quantities[product_id] = order_point.target_quantity
-            else:
-                min_quantities[product_id] = 0.0
-                target_quantities[product_id] = 0.0
-            shortages[product_id] = []
 
-        products_period = products_period[:]
-        current_date = date
-        current_qties = quantities.copy()
-        product_ids = product_ids[:]
-        while product_ids:
-            for product_id in product_ids:
+        with Transaction().set_context(
+                forecast=True,
+                stock_date_start=min_date,
+                stock_date_end=max_date):
+            pbl = Product.products_by_location(
+                [location_id],
+                with_childs=True,
+                grouping=('date', 'product'),
+                grouping_filter=(None, product_ids))
+        pbl_dates = defaultdict(dict)
+        for key, qty in pbl.items():
+            date, product_id = key[1:]
+            pbl_dates[date][product_id] = qty
+
+        current_date = min_date
+        current_qties = min_date_qties.copy()
+        products_to_check = product_ids.copy()
+        while (current_date < max_date) or (current_date == min_date):
+            for product_id in products_to_check:
                 current_qty = current_qties[product_id]
                 min_quantity = min_quantities[product_id]
                 if min_quantity is not None and current_qty < min_quantity:
@@ -210,27 +227,14 @@ class Production(metaclass=PoolMeta):
                     shortages[product_id].append((current_date, quantity))
                     current_qties[product_id] += quantity
 
-            # Remove product with smaller period
-            while (products_period
-                    and products_period[0][0] <= (current_date - date)):
-                _, product = products_period.pop(0)
-                try:
-                    product_ids.remove(product.id)
-                except ValueError:
-                    # product may have been already removed on get_shortages
-                    pass
+            if current_date == datetime.date.max:
+                break
             current_date += datetime.timedelta(1)
 
-            # Update current quantities with next moves
-            with Transaction().set_context(forecast=True,
-                    stock_date_start=current_date,
-                    stock_date_end=current_date):
-                pbl = Product.products_by_location(
-                    [location_id],
-                    with_childs=True,
-                    grouping_filter=(product_ids,))
-            for key, qty in pbl.items():
-                _, product_id = key
+            pbl = pbl_dates[current_date]
+            products_to_check.clear()
+            for product_id, qty in pbl.items():
                 current_qties[product_id] += qty
+                products_to_check.append(product_id)
 
         return shortages

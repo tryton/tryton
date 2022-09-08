@@ -4,12 +4,14 @@ Production Request Scenario
 
 Imports::
 
-    >>> from datetime import timedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
+    >>> from trytond.modules.stock.exceptions import MoveFutureWarning
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -39,7 +41,7 @@ Define a supply period for production::
 
     >>> ProductionConfiguration = Model.get('production.configuration')
     >>> production_configuration = ProductionConfiguration(1)
-    >>> production_configuration.supply_period = timedelta(1)
+    >>> production_configuration.supply_period = dt.timedelta(days=30)
     >>> production_configuration.save()
 
 Get stock locations::
@@ -49,7 +51,7 @@ Get stock locations::
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> lost_loc, = Location.find([('type', '=', 'lost_found')])
 
-Create a need for product::
+Create needs for product::
 
     >>> Move = Model.get('stock.move')
     >>> move = Move()
@@ -60,6 +62,17 @@ Create a need for product::
     >>> move.click('do')
     >>> move.state
     'done'
+
+    >>> move, = move.duplicate(
+    ...     default={'effective_date': today + dt.timedelta(days=10)})
+    >>> try:
+    ...     move.click('do')
+    ... except MoveFutureWarning as warning:
+    ...     _, (key, *_) = warning.args
+
+    >>> Warning = Model.get('res.user.warning')
+    >>> Warning(user=config.user, name=key).save()
+    >>> move.click('do')
 
 The is no production request::
 
@@ -74,13 +87,18 @@ Create production request::
 
 There is now a production request::
 
-    >>> production, = Production.find([])
-    >>> production.state
-    'request'
-    >>> production.product == product
+    >>> productions = Production.find([])
+    >>> len(productions)
+    2
+    >>> {p.state for p in productions}
+    {'request'}
+    >>> all(p.product == product for p in productions)
     True
-    >>> production.quantity
-    1.0
+    >>> sum(p.quantity for p in productions)
+    2.0
+    >>> sorted(p.planned_date for p in productions) == [
+    ...     today, today + dt.timedelta(days=9)]
+    True
 
 Create an order point negative minimal quantity::
 
@@ -89,7 +107,7 @@ Create an order point negative minimal quantity::
     >>> order_point.type = 'production'
     >>> order_point.product = product
     >>> order_point.warehouse_location = warehouse_loc
-    >>> order_point.min_quantity = -1
+    >>> order_point.min_quantity = -2
     >>> order_point.target_quantity = 10
     >>> order_point.save()
 
