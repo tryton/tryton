@@ -147,9 +147,15 @@ class Sale(
             },
         depends={'company'})
     shipment_address = fields.Many2One('party.address', 'Shipment Address',
-        domain=[
+        domain=['OR',
             ('party', '=', If(Bool(Eval('shipment_party')),
                     Eval('shipment_party'), Eval('party'))),
+            ('warehouses', 'where', [
+                    ('id', '=', Eval('warehouse', -1)),
+                    If(Eval('state').in_(['draft', 'quotation']),
+                        ('allow_pickup', '=', True),
+                        ()),
+                    ]),
             ],
         states={
             'readonly': Eval('state') != 'draft',
@@ -411,8 +417,8 @@ class Sale(
         return 'none'
 
     @fields.depends(
-        'company', 'party', 'invoice_party', 'shipment_party', 'payment_term',
-        'lines')
+        'company', 'party', 'invoice_party', 'shipment_party', 'warehouse',
+        'payment_term', 'lines')
     def on_change_party(self):
         if not self.invoice_party:
             self.invoice_address = None
@@ -427,7 +433,11 @@ class Sale(
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
             if not self.shipment_party:
-                self.shipment_address = self.party.address_get(type='delivery')
+                with Transaction().set_context(
+                        warehouse=(
+                            self.warehouse.id if self.warehouse else None)):
+                    self.shipment_address = self.party.address_get(
+                        type='delivery')
                 if self.party.sale_shipment_method:
                     self.shipment_method = self.party.sale_shipment_method
                 else:
@@ -450,15 +460,17 @@ class Sale(
         elif self.party:
             self.invoice_address = self.party.address_get(type='invoice')
 
-    @fields.depends('party', 'shipment_party')
+    @fields.depends('party', 'shipment_party', 'warehouse')
     def on_change_shipment_party(self):
-        if self.shipment_party:
-            self.shipment_address = self.shipment_party.address_get(
-                type='delivery')
-        elif self.party:
-            self.shipment_address = self.party.address_get(type='delivery')
-            if self.party.sale_shipment_method:
-                self.shipment_method = self.party.sale_shipment_method
+        with Transaction().set_context(
+                warehouse=self.warehouse.id if self.warehouse else None):
+            if self.shipment_party:
+                self.shipment_address = self.shipment_party.address_get(
+                    type='delivery')
+            elif self.party:
+                self.shipment_address = self.party.address_get(type='delivery')
+                if self.party.sale_shipment_method:
+                    self.shipment_method = self.party.sale_shipment_method
 
     @fields.depends('party', 'company')
     def _get_tax_context(self):
@@ -729,7 +741,9 @@ class Sale(
                 gettext('sale.msg_sale_invoice_address_required_for_quotation',
                     sale=self.rec_name))
         for line in self.lines:
-            if (line.product and line.product.type != 'service'
+            if (line.product
+                    and line.product.type != 'service'
+                    and line.quantity >= 0
                     and not self.shipment_address):
                 raise SaleQuotationError(
                     gettext('sale'
@@ -837,11 +851,18 @@ class Sale(
     def _get_shipment_sale(self, Shipment, key):
         values = {
             'customer': self.shipment_party or self.party,
-            'delivery_address': self.shipment_address,
             'company': self.company,
             }
         values.update(dict(key))
-        return Shipment(**values)
+        shipment = Shipment(**values)
+        if Shipment.__name__ == 'stock.shipment.out':
+            if self.shipment_address == self.warehouse.address:
+                shipment.delivery_address = shipment.warehouse.address
+            else:
+                shipment.delivery_address = self.shipment_address
+        elif Shipment.__name__ == 'stock.shipment.out':
+            shipment.contact_address = values['customer'].address_get()
+        return shipment
 
     def _get_shipment_moves(self, shipment_type):
         moves = {}

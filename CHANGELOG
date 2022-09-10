@@ -1,3 +1,4 @@
+* Support warehouse pickup
 * Use MultiValue for product lead time
 * Remove CompanyValueMixin for default lead time
 
