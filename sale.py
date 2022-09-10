@@ -22,10 +22,10 @@ class Sale(metaclass=PoolMeta):
         if self.carrier:
             return parcel_weight(parcel, self.carrier.weight_uom, 'unit')
 
-    def _get_carrier_context(self):
-        context = super(Sale, self)._get_carrier_context()
+    def _get_carrier_context(self, carrier):
+        context = super(Sale, self)._get_carrier_context(carrier)
 
-        if not self.carrier or self.carrier.carrier_cost_method != 'weight':
+        if not carrier or carrier.carrier_cost_method != 'weight':
             return context
         context = context.copy()
         weights = []
