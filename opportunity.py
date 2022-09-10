@@ -256,6 +256,11 @@ class SaleOpportunity(
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
+    def on_change_company(self):
+        self.payment_term = self.default_payment_term(
+            company=self.company.id if self.company else None)
+
     @classmethod
     def default_currency(cls, **pattern):
         pool = Pool()
@@ -271,11 +276,13 @@ class SaleOpportunity(
         return Transaction().context.get('employee')
 
     @classmethod
-    def default_payment_term(cls):
-        PaymentTerm = Pool().get('account.invoice.payment_term')
-        payment_terms = PaymentTerm.search(cls.payment_term.domain)
-        if len(payment_terms) == 1:
-            return payment_terms[0].id
+    def default_payment_term(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        payment_term = config.get_multivalue(
+            'default_customer_payment_term', **pattern)
+        return payment_term.id if payment_term else None
 
     @classmethod
     def view_attributes(cls):
@@ -317,11 +324,11 @@ class SaleOpportunity(
 
     @fields.depends('party', 'amount', 'company')
     def on_change_party(self):
-        if self.party and self.party.customer_payment_term:
-            self.payment_term = self.party.customer_payment_term
-        else:
-            self.payment_term = self.default_payment_term()
+        self.payment_term = self.default_payment_term(
+            company=self.company.id if self.company else None)
         if self.party:
+            if self.party.customer_payment_term:
+                self.payment_term = self.party.customer_payment_term
             if not self.amount:
                 if self.party.customer_currency:
                     self.currency = self.party.customer_currency
