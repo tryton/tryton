@@ -8,10 +8,10 @@ from trytond.pool import PoolMeta
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
-    def _get_carrier_context(self):
-        context = super(Sale, self)._get_carrier_context()
+    def _get_carrier_context(self, carrier):
+        context = super()._get_carrier_context(carrier)
 
-        if self.carrier.carrier_cost_method != 'percentage':
+        if carrier.carrier_cost_method != 'percentage':
             return context
         if not self.currency:
             return context
