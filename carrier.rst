@@ -8,6 +8,9 @@ Carrier
 `Carrier </projects/modules-carrier/en/latest>`_
     Fundamentals to manage carriers.
 
+`Carriage </projects/modules-carrier-carriage/en/latest>`_
+    Supports multiple carriers per document.
+
 `Percentage </projects/modules-carrier-percentage/en/latest>`_
     Computes cost based on percentage.
 
