@@ -72,9 +72,8 @@ class SaleOpportunity(
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
             ])
-    currency = fields.Function(fields.Many2One(
-            'currency.currency', "Currency"),
-        'on_change_with_currency')
+    currency = fields.Many2One(
+        'currency.currency', "Currency", required=True, states=_states_start)
     amount = Monetary(
         "Amount", currency='currency', digits='currency',
         states=_states_stop,
@@ -130,15 +129,18 @@ class SaleOpportunity(
     @classmethod
     def __register__(cls, module_name):
         pool = Pool()
+        Company = pool.get('company.company')
         Sale = pool.get('sale.sale')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         update = transaction.connection.cursor()
         sql_table = cls.__table__()
+        company = Company.__table__()
         sale = Sale.__table__()
 
         table = cls.__table_handler__(module_name)
         number_exists = table.column_exist('number')
+        currency_exists = table.column_exist('currency')
 
         # Migration from 3.8: rename reference into number
         if table.column_exist('reference') and not number_exists:
@@ -173,6 +175,15 @@ class SaleOpportunity(
 
         # Migration from 5.0: drop required on description
         table.not_null_action('description', action='remove')
+
+        # Migration from 6.4: store currency
+        if not currency_exists:
+            value = company.select(
+                company.currency,
+                where=(sql_table.company == company.id))
+            cursor.execute(*sql_table.update(
+                    [sql_table.currency],
+                    [value]))
 
     @classmethod
     def __setup__(cls):
@@ -245,6 +256,16 @@ class SaleOpportunity(
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def default_currency(cls, **pattern):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = pattern.get('company')
+        if not company:
+            company = cls.default_company()
+        if company:
+            return Company(company).currency.id
+
     @staticmethod
     def default_employee():
         return Transaction().context.get('employee')
@@ -294,17 +315,16 @@ class SaleOpportunity(
         default.setdefault('converted_by')
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
-    @fields.depends('company')
-    def on_change_with_currency(self, name=None):
-        if self.company:
-            return self.company.currency.id
-
-    @fields.depends('party')
+    @fields.depends('party', 'amount', 'company')
     def on_change_party(self):
         if self.party and self.party.customer_payment_term:
             self.payment_term = self.party.customer_payment_term
         else:
             self.payment_term = self.default_payment_term()
+        if self.party:
+            if not self.amount:
+                if self.party.customer_currency:
+                    self.currency = self.party.customer_currency
 
     def _get_sale_opportunity(self):
         '''
@@ -319,7 +339,7 @@ class SaleOpportunity(
             company=self.company,
             invoice_address=self.address,
             shipment_address=self.address,
-            currency=self.company.currency,
+            currency=self.currency,
             comment=self.comment,
             sale_date=None,
             origin=self,

@@ -31,7 +31,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Lead/Opportunity" id="opportunity">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
+            <label name="currency"/>
+            <field name="currency"/>
             <label name="employee"/>
             <field name="employee"/>
             <label name="converted_by"/>
