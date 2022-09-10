@@ -3,11 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <graph>
     <x>
-        <field name="employee"/>
+        <field name="id"/>
     </x>
     <y>
-        <field name="amount"/>
-        <field name="converted_amount"/>
-        <field name="won_amount"/>
+        <field name="won"/>
+        <field name="lost"/>
     </y>
 </graph>
+

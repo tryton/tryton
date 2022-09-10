@@ -9,5 +9,50 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_modify_origin_opportunity">
             <field name="text">You cannot modify the opportunity origin of the sale "%(sale)s".</field>
         </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_number_help">
+            <field name="text">Number of opportunities</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_number_trend">
+            <field name="text">Number Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_amount">
+            <field name="text">Amount</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_amount_trend">
+            <field name="text">Amount Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_converted">
+            <field name="text">Converted</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_conversion_rate">
+            <field name="text">Conversion Rate</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_conversion_trend">
+            <field name="text">Conversion Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_converted_amount">
+            <field name="text">Converted Amount</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_converted_amount_trend">
+            <field name="text">Converted Amount Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_won">
+            <field name="text">Won</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_winning_rate">
+            <field name="text">Winning Rate</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_winning_trend">
+            <field name="text">Winning Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_won_amount">
+            <field name="text">Won Amount</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_won_amount_trend">
+            <field name="text">Won Amount Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_opportunity_reporting_lost">
+            <field name="text">Lost</field>
+        </record>
     </data>
 </tryton>

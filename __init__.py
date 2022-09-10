@@ -4,17 +4,21 @@
 from trytond.pool import Pool
 
 from . import (
-    account, company, configuration, opportunity, party, product, sale)
+    account, company, configuration, opportunity, opportunity_reporting, party,
+    product, sale)
 
 
 def register():
     Pool.register(
         opportunity.SaleOpportunity,
         opportunity.SaleOpportunityLine,
-        opportunity.SaleOpportunityEmployee,
-        opportunity.SaleOpportunityEmployeeContext,
-        opportunity.SaleOpportunityMonthly,
-        opportunity.SaleOpportunityEmployeeMonthly,
+        opportunity_reporting.Context,
+        opportunity_reporting.Main,
+        opportunity_reporting.MainTimeseries,
+        opportunity_reporting.Conversion,
+        opportunity_reporting.ConversionTimeseries,
+        opportunity_reporting.ConversionEmployee,
+        opportunity_reporting.ConversionEmployeeTimeseries,
         configuration.Configuration,
         configuration.ConfigurationSequence,
         sale.Sale,
