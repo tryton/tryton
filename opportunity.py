@@ -256,10 +256,13 @@ class SaleOpportunity(
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('company')
+    @fields.depends('amount', 'company')
     def on_change_company(self):
         self.payment_term = self.default_payment_term(
             company=self.company.id if self.company else None)
+        if not self.amount:
+            self.currency = self.default_currency(
+                company=self.company.id if self.company else None)
 
     @classmethod
     def default_currency(cls, **pattern):
