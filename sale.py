@@ -92,10 +92,16 @@ class Sale(metaclass=PoolMeta):
         fields.Many2Many('carrier', None, None, 'Available Carriers'),
         'on_change_with_available_carriers')
     shipment_cost_method = fields.Selection([
-        (None, "None"),
-        ('order', 'On Order'),
-        ('shipment', 'On Shipment'),
-        ], 'Shipment Cost Method', states={
+            (None, "None"),
+            ('order', "On Order"),
+            ('shipment', "On Shipment"),
+            ], "Shipment Cost Method",
+        domain=[
+            If(~Eval('carrier'),
+                ('shipment_cost_method', '=', None),
+                ()),
+            ],
+        states={
             'readonly': Eval('state') != 'draft',
             })
 
@@ -134,10 +140,17 @@ class Sale(metaclass=PoolMeta):
             pattern['to_country'] = None
         return pattern
 
-    @fields.depends(methods=['_get_carrier_selection_pattern'])
+    @fields.depends(
+        'warehouse', 'shipment_address',
+        methods=['_get_carrier_selection_pattern'])
     def on_change_with_available_carriers(self, name=None):
         pool = Pool()
         CarrierSelection = pool.get('carrier.selection')
+
+        if (self.warehouse
+                and self.shipment_address
+                and self.warehouse.address == self.shipment_address):
+            return []
 
         pattern = self._get_carrier_selection_pattern()
         carriers = CarrierSelection.get_carriers(pattern)
@@ -152,7 +165,9 @@ class Sale(metaclass=PoolMeta):
             self.carrier = self.available_carriers[0]
         elif not self.available_carriers:
             self.carrier = None
-        if self.party and self.party.sale_shipment_cost_method:
+        if not self.carrier:
+            self.shipment_cost_method = None
+        elif self.party and self.party.sale_shipment_cost_method:
             self.shipment_cost_method = self.party.sale_shipment_cost_method
         else:
             self.shipment_cost_method = self.default_shipment_cost_method()
