@@ -70,6 +70,7 @@ requires.append(get_require_version('trytond'))
 tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_sale_shipment_cost'),
+    get_require_version('trytond_carrier_carriage'),
     ]
 dependency_links = []
 if minor_version % 2:

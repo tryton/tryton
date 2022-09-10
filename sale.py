@@ -26,3 +26,24 @@ class Sale(metaclass=PoolMeta):
             if address.postal_code:
                 pattern['to_postal_code'] = address.postal_code
         return pattern
+
+
+class Carriage(metaclass=PoolMeta):
+    __name__ = 'sale.carriage'
+
+    @fields.depends('from_', 'to')
+    def _get_carrier_selection_pattern(self):
+        pattern = super()._get_carrier_selection_pattern()
+        pattern['from_subdivision'] = None
+        if self.from_:
+            if self.from_.subdivision:
+                pattern['from_subdivision'] = self.from_.subdivision.id
+            if self.from_.postal_code:
+                pattern['from_postal_code'] = self.from_.postal_code
+        pattern['to_subdivision'] = None
+        if self.to:
+            if self.to.subdivision:
+                pattern['to_subdivision'] = self.to.subdivision.id
+            if self.to.postal_code:
+                pattern['to_postal_code'] = self.to.postal_code
+        return pattern

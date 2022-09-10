@@ -7,7 +7,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class CarrierSubdivisionTestCase(ModuleTestCase):
     "Test Carrier Subdivision module"
     module = 'carrier_subdivision'
-    extras = ['sale_shipment_cost']
+    extras = ['carrier_carriage', 'sale_shipment_cost']
 
 
 del ModuleTestCase

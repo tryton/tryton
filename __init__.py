@@ -16,3 +16,7 @@ def register():
         sale.Sale,
         module='carrier_subdivision', type_='model',
         depends=['sale_shipment_cost'])
+    Pool.register(
+        sale.Carriage,
+        module='carrier_subdivision', type_='model',
+        depends=['carrier_carriage', 'sale_shipment_cost'])
