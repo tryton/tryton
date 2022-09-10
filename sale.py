@@ -115,9 +115,9 @@ class SaleShipmentCost(metaclass=PoolMeta):
         Tax = pool.get('account.tax')
         item = super().get_vsf()
         if self.carrier:
-            cost = self.compute_shipment_cost()
+            cost = self.compute_shipment_cost(self.carrier)
             if cost is not None:
-                cost_line = self.get_shipment_cost_line(cost)
+                cost_line = self.get_shipment_cost_line(self.carrier, cost)
                 taxes = Tax.compute(cost_line.taxes, cost, 1, self.tax_date)
                 cost += sum(t['amount'] for t in taxes)
                 cost = float(self.currency.round(cost))

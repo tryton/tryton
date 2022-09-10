@@ -501,7 +501,7 @@ class ShopShipmentCost(metaclass=PoolMeta):
         for carrier in sale.available_carriers:
             method = carrier.get_vsf()
             sale.carrier = carrier
-            method['price_incl_tax'] = sale.compute_shipment_cost()
+            method['price_incl_tax'] = sale.compute_shipment_cost(carrier)
             methods.append(method)
         return methods
 
