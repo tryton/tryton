@@ -40,7 +40,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
     number = fields.Char(
         "Number", readonly=True, select=True,
         help="The main identification of the subscription.")
-    # TODO revision
     reference = fields.Char(
         "Reference", select=True,
         help="The identification of an external origin.")
