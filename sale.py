@@ -8,9 +8,8 @@ from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 
-class Sale(metaclass=PoolMeta):
-    __name__ = 'sale.sale'
-    _history = True
+class RevisionMixin:
+    __slots__ = ()
     revision = fields.Integer(
         "Revision", required=True, readonly=True,
         states={
@@ -29,29 +28,31 @@ class Sale(metaclass=PoolMeta):
         return number
 
     @classmethod
-    def copy(cls, sales, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
+    def copy(cls, records, default=None):
+        default = default.copy() if default is not None else {}
         default.setdefault('revision', cls.default_revision())
-        return super().copy(sales, default=default)
+        return super().copy(records, default=default)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(cls, sales):
+    def draft(cls, records):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
 
         # Use SQL and before super to avoid two history entries
-        for sub_sales in grouped_slice(sales):
+        for sub_records in grouped_slice(records):
             cursor.execute(*table.update(
                     [table.revision],
                     [table.revision + 1],
-                    where=reduce_ids(table.id, sub_sales)))
+                    where=reduce_ids(table.id, sub_records)))
 
-        super().draft(sales)
+        super().draft(records)
+
+
+class Sale(RevisionMixin, metaclass=PoolMeta):
+    __name__ = 'sale.sale'
+    _history = True
 
 
 class Line(metaclass=PoolMeta):
@@ -61,4 +62,14 @@ class Line(metaclass=PoolMeta):
 
 class LineTax(metaclass=PoolMeta):
     __name__ = 'sale.line-account.tax'
+    _history = True
+
+
+class Subscription(RevisionMixin, metaclass=PoolMeta):
+    __name__ = 'sale.subscription'
+    _history = True
+
+
+class SubscriptionLine(metaclass=PoolMeta):
+    __name__ = 'sale.subscription.line'
     _history = True

@@ -14,3 +14,8 @@ def register():
         sale.Line,
         sale.LineTax,
         module='sale_history', type_='model')
+    Pool.register(
+        sale.Subscription,
+        sale.SubscriptionLine,
+        module='sale_history', type_='model',
+        depends=['sale_subscription'])
