@@ -10,14 +10,15 @@ from trytond.transaction import Transaction
 from .exceptions import InvoiceShipmentCostError
 
 
-class ShipmentOut(metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
+class ShipmentCostSaleMixin:
+    __slots__ = ()
 
     cost_sale_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Sale Currency",
             states={
                 'invisible': Eval('cost_method') != 'shipment',
-                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                'readonly': (
+                    Eval('shipment_cost_sale_readonly', True)
                     | ~Eval('cost_edit', False)),
                 }),
         'on_change_with_cost_sale_currency_used', setter='set_cost')
@@ -26,13 +27,14 @@ class ShipmentOut(metaclass=PoolMeta):
         states={
             'invisible': Eval('cost_method') != 'shipment',
             'required': Bool(Eval('cost_sale')),
-            'readonly': Eval('state').in_(['done', 'cancelled']),
+            'readonly': Eval('shipment_cost_sale_readonly', True),
             })
     cost_sale_used = fields.Function(fields.Numeric(
             "Cost Sale", digits=price_digits,
             states={
                 'invisible': Eval('cost_method') != 'shipment',
-                'readonly': (Eval('state').in_(['done', 'cancelled'])
+                'readonly': (
+                    Eval('shipment_cost_sale_readonly', True)
                     | ~Eval('cost_edit', False)),
                 }),
         'on_change_with_cost_sale_used', setter='set_cost')
@@ -42,34 +44,17 @@ class ShipmentOut(metaclass=PoolMeta):
             'invisible': Eval('cost_method') != 'shipment',
             })
 
-    cost_invoice_line = fields.Many2One('account.invoice.line',
-            'Cost Invoice Line', readonly=True)
+    cost_invoice_line = fields.Many2One(
+        'account.invoice.line', "Cost Invoice Line", readonly=True)
     cost_method = fields.Selection(
-        'get_cost_methods', 'Cost Method', readonly=True)
+        'get_cost_methods', "Cost Method", readonly=True)
 
-    @classmethod
-    def __register__(cls, module):
-        table_h = cls.__table_handler__(module)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
+    shipment_cost_sale_readonly = fields.Function(
+        fields.Boolean("Shipment Cost Sale Read Only"),
+        'on_change_with_shipment_cost_sale_readonly')
 
-        # Migration from 5.8: rename cost into cost_sale
-        if (table_h.column_exist('cost')
-                and not table_h.column_exist('cost_sale')):
-            table_h.column_rename('cost', 'cost_sale')
-        if (table_h.column_exist('cost_currency')
-                and not table_h.column_exist('cost_sale_currency')):
-            table_h.column_rename('cost_currency', 'cost_sale_currency')
-
-        cost_method_exists = table_h.column_exist('cost_method')
-
-        super().__register__(module)
-
-        # Migration from 6.0: fill new cost_method field
-        if not cost_method_exists:
-            cursor.execute(*table.update(
-                    columns=[table.cost_method],
-                    values=['shipment']))
+    def on_change_with_shipment_cost_sale_readonly(self, name=None):
+        raise NotImplementedError
 
     @fields.depends('carrier', 'cost_method', methods=['_get_carrier_context'])
     def _compute_costs(self):
@@ -87,17 +72,19 @@ class ShipmentOut(metaclass=PoolMeta):
         return costs
 
     @fields.depends(
-        'state', 'cost_sale', 'cost_edit', methods=['_compute_costs'])
+        'shipment_cost_sale_readonly', 'cost_sale', 'cost_edit',
+        methods=['_compute_costs'])
     def on_change_with_cost_sale_used(self, name=None):
-        if not self.cost_edit and self.state not in {'cancelled', 'done'}:
+        if not self.cost_edit and not self.shipment_cost_sale_readonly:
             return self._compute_costs()['cost_sale']
         else:
             return self.cost_sale
 
     @fields.depends(
-        'state', 'cost_sale_currency', 'cost_edit', methods=['_compute_costs'])
+        'shipment_cost_sale_readonly', 'cost_sale_currency', 'cost_edit',
+        methods=['_compute_costs'])
     def on_change_with_cost_sale_currency_used(self, name=None):
-        if not self.cost_edit and self.state not in {'cancelled', 'done'}:
+        if not self.cost_edit and not self.shipment_cost_sale_readonly:
             return self._compute_costs()['cost_sale_currency']
         elif self.cost_sale_currency:
             return self.cost_sale_currency.id
@@ -135,7 +122,6 @@ class ShipmentOut(metaclass=PoolMeta):
         invoice_line.unit_price = round_price(cost)
         invoice_line.product = product
         invoice_line.on_change_product()
-        invoice_line.cost_shipments = [self]
 
         if not invoice_line.account:
             raise InvoiceShipmentCostError(
@@ -155,8 +141,46 @@ class ShipmentOut(metaclass=PoolMeta):
                     self.cost_sale_currency, self.cost_sale,
                     self.company.currency, round=False)
                 cost -= cost_sale
-        elif self.cost_method == 'order':
-            sales = {m.sale for m in self.outgoing_moves if m.sale}
+        return cost
+
+
+class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        # Migration from 5.8: rename cost into cost_sale
+        if (table_h.column_exist('cost')
+                and not table_h.column_exist('cost_sale')):
+            table_h.column_rename('cost', 'cost_sale')
+        if (table_h.column_exist('cost_currency')
+                and not table_h.column_exist('cost_sale_currency')):
+            table_h.column_rename('cost_currency', 'cost_sale_currency')
+
+        cost_method_exists = table_h.column_exist('cost_method')
+
+        super().__register__(module)
+
+        # Migration from 6.0: fill new cost_method field
+        if not cost_method_exists:
+            cursor.execute(*table.update(
+                    columns=[table.cost_method],
+                    values=['shipment']))
+
+    @fields.depends('state')
+    def on_change_with_shipment_cost_sale_readonly(self, name=None):
+        return self.state in {'done', 'cancelled'}
+
+    def _get_shipment_cost(self):
+        cost = super()._get_shipment_cost()
+        if self.cost_method == 'order':
+            sales = {
+                m.sale for m in self.outgoing_moves
+                if m.sale and m.sale.shipment_cost_method == 'order'}
             for sale in sales:
                 shipment_cost = sum(
                     (s.cost_used or 0) for s in sale.shipments
@@ -164,6 +188,12 @@ class ShipmentOut(metaclass=PoolMeta):
                 cost_sale = sale.shipment_cost_amount
                 cost -= max(cost_sale - shipment_cost, 0)
         return cost
+
+    def get_cost_invoice_line(self, invoice):
+        invoice_line = super().get_cost_invoice_line(invoice)
+        if invoice_line:
+            invoice_line.cost_shipments = [self]
+        return invoice_line
 
     @classmethod
     @ModelView.button

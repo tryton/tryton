@@ -4,6 +4,9 @@
 from trytond.pool import Pool
 
 from . import account, party, sale, stock
+from .stock import ShipmentCostSaleMixin
+
+__all__ = ['register', 'ShipmentCostSaleMixin']
 
 
 def register():

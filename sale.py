@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelView, Unique, Workflow, fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
 from trytond.pool import Pool, PoolMeta
@@ -214,10 +214,10 @@ class Sale(metaclass=PoolMeta):
         with Transaction().set_context(_shipment_cost_invoiced=list()):
             super().process(sales)
 
-    def _get_carrier_context(self):
+    def _get_carrier_context(self, carrier):
         return {}
 
-    def compute_shipment_cost(self):
+    def compute_shipment_cost(self, carrier):
         pool = Pool()
         Date = pool.get('ir.date')
         Currency = pool.get('currency.currency')
@@ -227,9 +227,9 @@ class Sale(metaclass=PoolMeta):
             if line.type == 'line'
             and line.product
             and line.product.type in Line.get_move_product_types())
-        if self.carrier and stockable:
-            with Transaction().set_context(self._get_carrier_context()):
-                cost, currency_id = self.carrier.get_sale_price()
+        if stockable:
+            with Transaction().set_context(self._get_carrier_context(carrier)):
+                cost, currency_id = carrier.get_sale_price()
             if cost is not None:
                 with Transaction().set_context(company=self.company.id):
                     today = Date.today()
@@ -241,8 +241,8 @@ class Sale(metaclass=PoolMeta):
 
     def set_shipment_cost(self):
         cost = None
-        if self.shipment_cost_method:
-            cost = self.compute_shipment_cost()
+        if self.carrier and self.shipment_cost_method:
+            cost = self.compute_shipment_cost(self.carrier)
         removed = []
         unit_price = None
         lines = list(self.lines or [])
@@ -254,15 +254,15 @@ class Sale(metaclass=PoolMeta):
                 removed.append(line)
         if cost is not None:
             lines.append(self.get_shipment_cost_line(
-                    cost, unit_price=unit_price))
+                    self.carrier, cost, unit_price=unit_price))
         self.lines = lines
         return removed
 
-    def get_shipment_cost_line(self, cost, unit_price=None):
+    def get_shipment_cost_line(self, carrier, cost, unit_price=None):
         pool = Pool()
         SaleLine = pool.get('sale.line')
 
-        product = self.carrier.carrier_product
+        product = carrier.carrier_product
 
         sequence = None
         if self.lines:
@@ -319,14 +319,17 @@ class Line(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('sale_shipment_cost_unique',
-                Unique(t, t.sale, t.shipment_cost),
-                'sale_shipment_cost.msg_sale_shipment_cost_unique'),
-            ]
         # shipment_cost is needed to compute the unit_price
         cls.unit_price.depends.add('shipment_cost')
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        super().__register__(module)
+
+        # Migration from 6.4: drop shipment cost unique
+        table_h.drop_constraint('sale_shipment_cost_unique')
 
     @fields.depends('shipment_cost', 'unit_price')
     def compute_unit_price(self):
