@@ -236,9 +236,10 @@ class AmendmentLine(ModelSQL, ModelView):
             })
     shipment_address = fields.Many2One(
         'party.address', "Shipment Address",
-        domain=[
+        domain=['OR',
             ('party', '=', If(Eval('shipment_party'),
                     Eval('shipment_party'), Eval('party'))),
+            ('warehouses', '=', Eval('warehouse')),
             ],
         states={
             'readonly': Eval('state') != 'draft',
@@ -375,7 +376,7 @@ class AmendmentLine(ModelSQL, ModelView):
             self.product = self.quantity = self.unit = self.unit_price = None
             self.description = None
 
-    @fields.depends('party', 'shipment_party')
+    @fields.depends('party', 'shipment_party', 'warehouse')
     def on_change_party(self):
         self.invoice_address = None
         if not self.shipment_party:
@@ -383,15 +384,21 @@ class AmendmentLine(ModelSQL, ModelView):
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             if not self.shipment_party:
-                self.shipment_address = self.party.address_get(type='delivery')
+                with Transaction().set_context(
+                        warehouse=(
+                            self.warehouse.id if self.warehouse else None)):
+                    self.shipment_address = self.party.address_get(
+                        type='delivery')
 
-    @fields.depends('party', 'shipment_party')
+    @fields.depends('party', 'shipment_party', 'warehouse')
     def on_change_shipment_party(self):
-        if self.shipment_party:
-            self.shipment_address = self.shipment_party.address_get(
-                type='delivery')
-        elif self.party:
-            self.shipment_address = self.party.address_get(type='delivery')
+        with Transaction().set_context(
+                warehouse=self.warehouse.id if self.warehouse else None):
+            if self.shipment_party:
+                self.shipment_address = self.shipment_party.address_get(
+                    type='delivery')
+            elif self.party:
+                self.shipment_address = self.party.address_get(type='delivery')
 
     @fields.depends('line')
     def on_change_with_product_uom_category(self, name=None):
