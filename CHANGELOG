@@ -1,3 +1,4 @@
+* Support warehouse pickup
 * Allow resetting packed customer shipments
 * Allow grouping by date products by location
 * Ignore consumable products when inactivating locations

@@ -6,17 +6,15 @@ from decimal import Decimal
 
 from sql import Column
 
-from trytond import backend
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, MatchMixin, Model, ModelSQL, ModelView, ValueMixin,
-    fields, sequence_ordered, tree)
+    DeactivableMixin, MatchMixin, Model, ModelSQL, ModelView, fields,
+    sequence_ordered, tree)
 from trytond.modules.product import price_digits, round_price
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 from .exceptions import LocationValidationError
@@ -147,6 +145,14 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ('type', '=', 'warehouse'),
             ],
         help="The warehouses that use the location for waste products.")
+
+    allow_pickup = fields.Boolean(
+        "Allow Pickup",
+        states={
+            'invisible': (
+                (Eval('type') != 'warehouse')
+                & ~Eval('address')),
+            })
 
     quantity = fields.Function(
         fields.Float(
@@ -634,83 +640,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                     'warning', ''),
                 ['type']),
             ]
-
-
-supplier_location = fields.Many2One(
-    'stock.location', "Supplier Location", domain=[('type', '=', 'supplier')],
-    help="The default source location for stock received from the party.")
-customer_location = fields.Many2One(
-    'stock.location', "Customer Location", domain=[('type', '=', 'customer')],
-    help="The default destination location for stock sent to the party.")
-
-
-class Party(metaclass=PoolMeta):
-    __name__ = 'party.party'
-    supplier_location = fields.MultiValue(supplier_location)
-    customer_location = fields.MultiValue(customer_location)
-    locations = fields.One2Many(
-        'party.party.location', 'party', "Locations")
-
-    @classmethod
-    def multivalue_model(cls, field):
-        pool = Pool()
-        if field in {'supplier_location', 'customer_location'}:
-            return pool.get('party.party.location')
-        return super(Party, cls).multivalue_model(field)
-
-    @classmethod
-    def default_supplier_location(cls, **pattern):
-        return cls.multivalue_model(
-            'supplier_location').default_supplier_location()
-
-    @classmethod
-    def default_customer_location(cls, **pattern):
-        return cls.multivalue_model(
-            'customer_location').default_customer_location()
-
-
-class PartyLocation(ModelSQL, ValueMixin):
-    "Party Location"
-    __name__ = 'party.party.location'
-    party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
-    supplier_location = supplier_location
-    customer_location = customer_location
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(PartyLocation, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['supplier_location', 'customer_location'])
-        value_names.extend(['supplier_location', 'customer_location'])
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
-
-    @classmethod
-    def default_supplier_location(cls):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        try:
-            return ModelData.get_id('stock', 'location_supplier')
-        except KeyError:
-            return None
-
-    @classmethod
-    def default_customer_location(cls):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        try:
-            return ModelData.get_id('stock', 'location_customer')
-        except KeyError:
-            return None
 
 
 class ProductsByLocationsContext(ModelView):

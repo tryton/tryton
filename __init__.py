@@ -15,8 +15,6 @@ def register():
     Pool.register(
         location.Location,
         location.WarehouseWasteLocation,
-        location.Party,
-        location.PartyLocation,
         location.ProductsByLocationsContext,
         location.ProductsByLocations,
         location.LocationLeadTime,
@@ -27,6 +25,9 @@ def register():
         shipment.ShipmentOutReturn,
         shipment.ShipmentInternal,
         shipment.AssignPartial,
+        party.Party,
+        party.PartyLocation,
+        party.PartyDeliveredToWarehouse,
         party.Address,
         party.ContactMechanism,
         period.Period,

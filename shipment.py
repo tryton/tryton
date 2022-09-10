@@ -601,8 +601,14 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             },
-        domain=[
-            ('party', '=', Eval('supplier'))
+        domain=['OR',
+            ('party', '=', Eval('supplier')),
+            ('warehouses', 'where', [
+                    ('id', '=', Eval('warehouse', -1)),
+                    If(Eval('state') == 'draft',
+                        ('allow_pickup', '=', True),
+                        ()),
+                    ]),
             ],
         help="Where the stock is sent to.")
     from_location = fields.Many2One('stock.location', "From Location",
@@ -615,6 +621,9 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             }, domain=[('type', '=', 'supplier')],
         help="Where the stock is moved to.")
+    warehouse = fields.Function(
+        fields.Many2One('stock.location', "Warehouse"),
+        'on_change_with_warehouse')
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': (((Eval('state') != 'draft') | ~Eval('from_location'))
@@ -733,6 +742,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         if self.supplier:
             self.delivery_address = self.supplier.address_get('delivery')
             self.to_location = self.supplier.supplier_location
+
+    @fields.depends('from_location')
+    def on_change_with_warehouse(self, name=None):
+        if self.from_location and self.from_location.warehouse:
+            return self.from_location.warehouse.id
 
     @property
     def _move_planned_date(self):
@@ -955,7 +969,16 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         'Delivery Address', required=True,
         states={
             'readonly': Eval('state') != 'draft',
-            }, domain=[('party', '=', Eval('customer'))],
+            },
+        domain=['OR',
+            ('party', '=', Eval('customer')),
+            ('warehouses', 'where', [
+                    ('id', '=', Eval('warehouse', -1)),
+                    If(Eval('state') == 'draft',
+                        ('allow_pickup', '=', True),
+                        ()),
+                    ]),
+            ],
         help="Where the stock is sent to.")
     reference = fields.Char("Reference", size=None, select=True,
         states={
@@ -1153,11 +1176,14 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('customer')
+    @fields.depends('customer', 'warehouse')
     def on_change_customer(self):
         self.delivery_address = None
         if self.customer:
-            self.delivery_address = self.customer.address_get(type='delivery')
+            with Transaction().set_context(
+                    warehouse=self.warehouse.id if self.warehouse else None):
+                self.delivery_address = self.customer.address_get(
+                    type='delivery')
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
@@ -1611,8 +1637,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         help="The party that purchased the stock.")
     customer_location = fields.Function(fields.Many2One('stock.location',
             'Customer Location'), 'on_change_with_customer_location')
-    delivery_address = fields.Many2One('party.address',
-        'Delivery Address', required=True,
+    contact_address = fields.Many2One(
+        'party.address', "Contact Address",
         states={
             'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('customer'))],
@@ -1729,12 +1755,18 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
+        # Migration from 6.4: rename delivery_address to contact_address
+        table.column_rename('delivery_address', 'contact_address')
+
         super(ShipmentOutReturn, cls).__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+        # Migration from 6.4: remove required on contact_address
+        table.not_null_action('contact_address', 'remove')
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -1756,9 +1788,9 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @fields.depends('customer')
     def on_change_customer(self):
-        self.delivery_address = None
+        self.contact_address = None
         if self.customer:
-            self.delivery_address = self.customer.address_get(type='delivery')
+            self.contact_address = self.customer.address_get()
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
@@ -2736,7 +2768,7 @@ class DeliveryNote(CompanyReport):
 
     @classmethod
     def execute(cls, ids, data):
-        with Transaction().set_context(address_with_party=True):
+        with Transaction().set_context(address_with_party=False):
             return super(DeliveryNote, cls).execute(ids, data)
 
 

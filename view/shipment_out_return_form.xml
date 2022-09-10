@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <label name="customer"/>
     <field name="customer"/>
-    <label name="delivery_address"/>
-    <field name="delivery_address"/>
+    <label name="contact_address"/>
+    <field name="contact_address"/>
     <label name="planned_date"/>
     <field name="planned_date"/>
     <label name="effective_date"/>

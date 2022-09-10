@@ -12,6 +12,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="customer_location"/>
             <label name="supplier_location"/>
             <field name="supplier_location"/>
+
+            <separator name="delivered_to_warehouses" colspan="4"/>
+            <field name="delivered_to_warehouses" colspan="4" widget="multiselection"/>
         </page>
     </xpath>
 </data>
