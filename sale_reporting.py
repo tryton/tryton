@@ -214,7 +214,7 @@ class Abstract(ModelSQL):
 
 class AbstractTimeseries(Abstract):
 
-    date = fields.Date("Date")
+    date = fields.Date(lazy_gettext('sale.msg_sale_reporting_date'))
 
     @classmethod
     def __setup__(cls):
@@ -304,7 +304,8 @@ class Main(Abstract, ModelView):
     __name__ = 'sale.reporting.main'
 
     time_series = fields.Function(fields.One2Many(
-            'sale.reporting.main.time_series', None, "Time Series"),
+            'sale.reporting.main.time_series', None,
+            lazy_gettext('sale.msg_sale_reporting_time_series')),
         'get_time_series')
 
     def get_rec_name(self, name):
@@ -351,7 +352,8 @@ class Customer(CustomerMixin, Abstract, ModelView):
     __name__ = 'sale.reporting.customer'
 
     time_series = fields.One2Many(
-        'sale.reporting.customer.time_series', 'customer', "Time Series")
+        'sale.reporting.customer.time_series', 'customer',
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
@@ -435,7 +437,7 @@ class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
 
     time_series = fields.One2Many(
         'sale.reporting.customer.category.time_series', 'category',
-        "Time Series")
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
@@ -605,7 +607,8 @@ class Product(ProductMixin, Abstract, ModelView):
     __name__ = 'sale.reporting.product'
 
     time_series = fields.One2Many(
-        'sale.reporting.product.time_series', 'product', "Time Series")
+        'sale.reporting.product.time_series', 'product',
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
@@ -694,7 +697,7 @@ class ProductCategory(ProductCategoryMixin, Abstract, ModelView):
 
     time_series = fields.One2Many(
         'sale.reporting.product.category.time_series', 'category',
-        "Time Series")
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
@@ -868,7 +871,8 @@ class Country(CountryMixin, Abstract):
     __name__ = 'sale.reporting.country'
 
     time_series = fields.One2Many(
-        'sale.reporting.country.time_series', 'country', "Time Series")
+        'sale.reporting.country.time_series', 'country',
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
@@ -919,7 +923,7 @@ class Subdivision(SubdivisionMixin, Abstract):
 
     time_series = fields.One2Many(
         'sale.reporting.country.subdivision.time_series', 'subdivision',
-        "Time Series")
+        lazy_gettext('sale.msg_sale_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
