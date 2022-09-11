@@ -166,6 +166,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             })
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states=_states)
+    alternative_payees = fields.Many2Many(
+        'account.invoice.alternative_payee', 'invoice', 'party',
+        "Alternative Payee", states=_states,
+        size=If(~Eval('move'), 1, None),
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -210,7 +218,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         'invoice', 'line', string='Payment Lines',
         domain=[
             ('account', '=', Eval('account', -1)),
-            ('party', 'in', [None, Eval('party', -1)]),
+            ['OR',
+                ('party', 'in', [None, Eval('party', -1)]),
+                ('party', 'in', Eval('alternative_payees', [])),
+                ],
             ['OR',
                 ('invoice_payment', '=', None),
                 ('invoice_payment', '=', Eval('id', -1)),
@@ -253,9 +264,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).__setup__()
         cls.create_date.select = True
         cls._check_modify_exclude = {
-            'state', 'payment_lines', 'move', 'cancel_move',
-            'additional_moves', 'invoice_report_cache',
-            'invoice_report_format', 'lines'}
+            'state', 'alternative_payees', 'payment_lines',
+            'move', 'cancel_move', 'additional_moves',
+            'invoice_report_cache', 'invoice_report_format',
+            'lines'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -320,6 +332,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state'],
                     },
                 'reschedule_lines_to_pay': {
+                    'invisible': (
+                        ~Eval('lines_to_pay') | Eval('reconciled', False)),
+                    'depends': ['lines_to_pay', 'reconciled'],
+                    },
+                'delegate_lines_to_pay': {
                     'invisible': (
                         ~Eval('lines_to_pay') | Eval('reconciled', False)),
                     'depends': ['lines_to_pay', 'reconciled'],
@@ -977,7 +994,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     line.debit - line.credit))
         line.account = self.account
         if self.account.party_required:
-            line.party = self.party
+            if self.alternative_payees:
+                line.party, = self.alternative_payees
+            else:
+                line.party = self.party
         line.maturity_date = date
         line.description = self.description
         return line
@@ -1307,14 +1327,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     '.msg_invoice_payment_lines_greater_amount',
                     invoice=self.rec_name))
 
-    def get_reconcile_lines_for_amount(self, amount):
+    def get_reconcile_lines_for_amount(self, amount, party=None):
         '''
         Return list of lines and the remainder to make reconciliation.
         '''
         Result = namedtuple('Result', ['lines', 'remainder'])
 
-        lines = [l for l in self.payment_lines + self.lines_to_pay
-            if not l.reconciliation]
+        if party is None:
+            party = self.party
+
+        lines = [
+            l for l in self.payment_lines + self.lines_to_pay
+            if not l.reconciliation
+            and (not self.account.party_required or l.party == party)]
 
         best = Result([], self.total_amount)
         for n in range(len(lines), 0, -1):
@@ -1330,7 +1355,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def pay_invoice(self, amount, payment_method, date, description=None,
             amount_second_currency=None, second_currency=None, overpayment=0,
-            overpayment_second_currency=0):
+            overpayment_second_currency=0, party=None):
         '''
         Adds a payment of amount to an invoice using the journal, date and
         description.
@@ -1342,6 +1367,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
         Period = pool.get('account.period')
+
+        if party is None:
+            party = self.party
 
         pay_line = Line(account=self.account)
         counterpart_line = Line()
@@ -1396,7 +1424,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         for line in lines:
             if line.account.party_required:
-                line.party = self.party
+                line.party = party
 
         period_id = Period.find(self.company.id, date=date)
 
@@ -1516,6 +1544,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 moves.append(invoice.move)
             if invoice.additional_moves:
                 moves.extend(invoice.additional_moves)
+            if len(invoice.alternative_payees) > 1:
+                invoice.alternative_payees = []
+        cls.save(invoices)
         if moves:
             Move.delete(moves)
 
@@ -1686,6 +1717,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pass
 
     @classmethod
+    @ModelView.button_action(
+        'account_invoice.act_delegate_lines_to_pay_wizard')
+    def delegate_lines_to_pay(cls, invoices):
+        pass
+
+    @classmethod
     @ModelView.button
     def process(cls, invoices):
         paid = []
@@ -1793,6 +1830,17 @@ class InvoiceAdditionalMove(ModelSQL):
         'account.move', "Additional Move", ondelete='CASCADE')
 
 
+class AlternativePayee(ModelSQL):
+    "Invoice Alternative Payee"
+    __name__ = 'account.invoice.alternative_payee'
+
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice",
+        ondelete='CASCADE', required=True, select=True)
+    party = fields.Many2One(
+        'party.party', "Payee", ondelete='RESTRICT', required=True)
+
+
 class InvoicePaymentLine(ModelSQL):
     'Invoice - Payment Line'
     __name__ = 'account.invoice-account.move.line'
@@ -1803,12 +1851,19 @@ class InvoicePaymentLine(ModelSQL):
         'get_invoice')
     invoice_party = fields.Function(
         fields.Many2One('party.party', "Invoice Party"), 'get_invoice')
+    invoice_alternative_payees = fields.Function(
+        fields.Many2Many(
+            'party.party', None, None, "Invoice Alternative Payees"),
+        'get_invoice')
     line = fields.Many2One(
         'account.move.line', 'Payment Line', ondelete='CASCADE',
         select=True, required=True,
         domain=[
             ('account', '=', Eval('invoice_account')),
-            ('party', '=', Eval('invoice_party')),
+            ['OR',
+                ('party', '=', Eval('invoice_party', -1)),
+                ('party', 'in', Eval('invoice_alternative_payees', [])),
+                ],
             ])
 
     @classmethod
@@ -1827,6 +1882,7 @@ class InvoicePaymentLine(ModelSQL):
             result[name] = {}
         invoice_account = 'invoice_account' in result
         invoice_party = 'invoice_party' in result
+        invoice_alternative_payees = 'invoice_alternative_payees' in result
         for record in records:
             if invoice_account:
                 result['invoice_account'][record.id] = (
@@ -1837,6 +1893,9 @@ class InvoicePaymentLine(ModelSQL):
                 else:
                     party = None
                 result['invoice_party'][record.id] = party
+            if invoice_alternative_payees:
+                result['invoice_alternative_payees'][record.id] = [
+                    p.id for p in record.invoice.alternative_payees]
         return result
 
 
@@ -2976,6 +3035,22 @@ class InvoiceReport(Report):
 class PayInvoiceStart(ModelView):
     'Pay Invoice'
     __name__ = 'account.invoice.pay.start'
+
+    payee = fields.Many2One(
+        'party.party', "Payee", required=True,
+        domain=[
+            ('id', 'in', Eval('payees', []))
+            ],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    payees = fields.Many2Many(
+        'party.party', None, None, "Payees", readonly=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
@@ -3104,11 +3179,21 @@ class PayInvoice(Wizard):
     def get_reconcile_lines_for_amount(self, invoice, amount):
         if invoice.type == 'in':
             amount *= -1
-        return invoice.get_reconcile_lines_for_amount(amount)
+        return invoice.get_reconcile_lines_for_amount(
+            amount, party=self.start.payee)
 
     def default_start(self, fields):
         default = {}
         invoice = self.record
+        if not invoice.alternative_payees:
+            default['payee'] = invoice.party.id
+        else:
+            try:
+                default['payee'], = invoice.alternative_payees
+            except ValueError:
+                pass
+        default['payees'] = (
+            [invoice.party.id] + [p.id for p in invoice.alternative_payees])
         default['company'] = invoice.company.id
         default['currency'] = invoice.currency.id
         default['amount'] = (invoice.amount_to_pay_today
@@ -3230,14 +3315,17 @@ class PayInvoice(Wizard):
             lines = invoice.pay_invoice(amount,
                 self.start.payment_method, self.start.date,
                 self.start.description, amount_second_currency,
-                second_currency, overpayment, overpayment_second_currency)
+                second_currency, overpayment, overpayment_second_currency,
+                party=self.start.payee)
 
         if remainder:
             if self.ask.type != 'partial':
                 to_reconcile = {l for l in self.ask.lines}
                 to_reconcile.update(
                     l for l in invoice.payment_lines
-                    if not l.reconciliation)
+                    if not l.reconciliation
+                    and (not invoice.account.party_required
+                        or l.party == self.start.payee))
                 if self.ask.type == 'writeoff':
                     to_reconcile.update(lines)
                 if to_reconcile:
@@ -3310,6 +3398,20 @@ class RescheduleLinesToPay(Wizard):
     "Reschedule Lines to Pay"
     __name__ = 'account.invoice.lines_to_pay.reschedule'
     start = StateAction('account.act_reschedule_lines_wizard')
+
+    def do_start(self, action):
+        return action, {
+            'ids': [
+                l.id for l in self.record.lines_to_pay
+                if not l.reconciliation],
+            'model': 'account.move.line',
+            }
+
+
+class DelegateLinesToPay(Wizard):
+    "Delegate Lines to Pay"
+    __name__ = 'account.invoice.lines_to_pay.delegate'
+    start = StateAction('account.act_delegate_lines_wizard')
 
     def do_start(self, action):
         return action, {

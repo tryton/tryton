@@ -88,6 +88,7 @@ class Replace(metaclass=PoolMeta):
         return super().fields_to_replace() + [
             ('account.invoice', 'party'),
             ('account.invoice.line', 'party'),
+            ('account.invoice.alternative_payee', 'party'),
             ]
 
 
@@ -100,7 +101,10 @@ class Erase(metaclass=PoolMeta):
         super().check_erase_company(party, company)
 
         invoices = Invoice.search([
-                ('party', '=', party.id),
+                ['OR',
+                    ('party', '=', party.id),
+                    ('alternative_payees', '=', party.id),
+                    ],
                 ('company', '=', company.id),
                 ('state', 'not in', ['paid', 'cancelled']),
                 ])

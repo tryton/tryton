@@ -57,7 +57,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="account"/>
             <field name="account"/>
             <label name="accounting_date"/>
-            <field name="accounting_date"/>
+            <field name="alternative_payees" colspan="4"/>
             <label name="move"/>
             <field name="move"/>
             <label name="cancel_move"/>
@@ -75,7 +75,10 @@ this repository contains the full copyright notices and license terms. -->
             <label name="amount_to_pay"/>
             <field name="amount_to_pay"/>
             <field name="lines_to_pay" colspan="4" view_ids="account_invoice.move_line_view_list_to_pay"/>
-            <button name="reschedule_lines_to_pay" colspan="4"/>
+            <group id="lines_to_pay_buttons" colspan="4" col="-1">
+                <button name="reschedule_lines_to_pay"/>
+                <button name="delegate_lines_to_pay"/>
+            </group>
             <field name="payment_lines" colspan="4"
                 view_ids="account_invoice.move_line_view_list_payment"/>
             <field name="reconciliation_lines" colspan="4" view_ids="account_invoice.move_line_view_list_payment"/>

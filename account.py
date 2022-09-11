@@ -440,3 +440,24 @@ class RescheduleLines(metaclass=PoolMeta):
                 'additional_moves': [('add', [move.id])],
                 })
         return move, balance_line
+
+
+class DelegateLines(metaclass=PoolMeta):
+    __name__ = 'account.move.line.delegate'
+
+    @classmethod
+    def delegate_lines(cls, lines, party, journal, date=None):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        move = super().delegate_lines(lines, party, journal, date=None)
+
+        move_ids = list({l.move.id for l in lines})
+        invoices = Invoice.search(['OR',
+                ('move', 'in', move_ids),
+                ('additional_moves', 'in', move_ids),
+                ])
+        Invoice.write(invoices, {
+                'alternative_payees': [('add', [party.id])],
+                'additional_moves': [('add', [move.id])],
+                })
+        return move
