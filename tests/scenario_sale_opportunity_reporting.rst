@@ -98,8 +98,8 @@ Check opportunity reporting::
     >>> report, = reports
     >>> report.number
     5
-    >>> report.amount
-    Decimal('4500.0')
+    >>> report.amount == Decimal('4500.00')
+    True
     >>> report.converted
     2
     >>> report.conversion_rate
@@ -110,8 +110,8 @@ Check opportunity reporting::
     >>> report, = report.time_series
     >>> report.number
     5
-    >>> report.amount
-    Decimal('4500.0')
+    >>> report.amount == Decimal('4500.00')
+    True
     >>> report.converted
     2
     >>> report.conversion_rate
