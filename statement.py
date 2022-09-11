@@ -748,8 +748,11 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             'account.invoice': [
                 ('company', '=', Eval('company', -1)),
                 If(Bool(Eval('party')),
-                    ('party', '=', Eval('party')),
-                    ()),
+                    ['OR',
+                        ('party', '=', Eval('party', -1)),
+                        ('alternative_payees', '=', Eval('party', -1)),
+                        ],
+                    []),
                 If(Bool(Eval('account')),
                     ('account', '=', Eval('account')),
                     ()),
@@ -855,7 +858,8 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
 
         if self.invoice:
             if self.party:
-                if self.invoice.party != self.party:
+                if (self.invoice.party != self.party
+                        or self.party not in self.invoice.alternative_payees):
                     self.invoice = None
             else:
                 self.invoice = None
@@ -903,7 +907,13 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     def on_change_related_to(self):
         if self.invoice:
             if not self.party:
-                self.party = self.invoice.party
+                if not self.invoice.alternative_payees:
+                    self.party = self.invoice.party
+                else:
+                    try:
+                        self.party, = self.invoice.alternative_payees
+                    except ValueError:
+                        pass
             if not self.account:
                 self.account = self.invoice.account
 
@@ -985,7 +995,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                 to_reconcile.clear()
 
             reconcile_lines = line.invoice.get_reconcile_lines_for_amount(
-                move_line.credit - move_line.debit)
+                move_line.credit - move_line.debit, party=line.party)
 
             assert move_line.account == line.invoice.account
 
