@@ -497,6 +497,33 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_move_form_rescheduling"/>
         </record>
 
+        <record model="ir.action.wizard" id="act_delegate_lines_wizard">
+            <field name="name">Delegate Lines</field>
+            <field name="wiz_name">account.move.line.delegate</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_delegate_lines_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_delegate_lines_wizard"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_delegate_start_view_form">
+            <field name="model">account.move.line.delegate.start</field>
+            <field name="type">form</field>
+            <field name="name">move_line_delegate_start_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_form_delegate">
+            <field name="name">Delegate Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_delegate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_delegate"/>
+        </record>
+
         <record model="ir.action.report" id="report_general_journal">
             <field name="name">General Journal</field>
             <field name="model">account.move</field>

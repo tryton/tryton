@@ -228,6 +228,12 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_reschedule_line_wrong_amount">
             <field name="text">To reschedule the lines you must change the terms to have a total amount of %(total_amount)s instead of %(amount)s.</field>
         </record>
+        <record model="ir.message" id="msg_delegate_line_same_company">
+            <field name="text">You cannot delegate together lines of different companies.</field>
+        </record>
+        <record model="ir.message" id="msg_delegate_line_same_origins">
+            <field name="text">You cannot delegate together lines with different origins.</field>
+        </record>
         <record model="ir.message" id="msg_cancel_line_delegated">
             <field name="text">The moves "%(moves)s" contain grouped lines, cancelling them will ungroup the lines.</field>
         </record>

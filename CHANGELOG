@@ -1,3 +1,4 @@
+* Add wizard to delegate move lines to another party
 * Support date range context for account type amount
 * Use context model for chart of accounts and taxes
 

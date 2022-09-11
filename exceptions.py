@@ -99,3 +99,7 @@ class GroupLineError(UserError):
 
 class RescheduleLineError(UserError):
     pass
+
+
+class DelegateLineError(UserError):
+    pass

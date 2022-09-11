@@ -27,9 +27,9 @@ from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import (
-    CancelDelegatedWarning, CancelWarning, DeleteDelegatedWarning,
-    GroupLineError, MoveDatesError, PostError, ReconciliationError,
-    RescheduleLineError)
+    CancelDelegatedWarning, CancelWarning, DelegateLineError,
+    DeleteDelegatedWarning, GroupLineError, MoveDatesError, PostError,
+    ReconciliationError, RescheduleLineError)
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -2575,6 +2575,123 @@ class RescheduleLinesTerm(ModelView):
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True)
     currency = fields.Many2One('currency.currency', "Currency", required=True)
+
+
+class DelegateLines(Wizard):
+    "Delegate Lines"
+    __name__ = 'account.move.line.delegate'
+    start = StateView(
+        'account.move.line.delegate.start',
+        'account.move_line_delegate_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Delegate", 'delegate', 'tryton-ok', default=True),
+            ])
+    delegate = StateAction('account.act_move_form_delegate')
+
+    def default_start(self, fields):
+        values = {}
+        if 'journal' in fields:
+            journals = {l.journal for l in self.records}
+            if len(journals) == 1:
+                journal, = journals
+                values['journal'] = journal.id
+        return values
+
+    def do_delegate(self, action):
+        move = self._delegate_lines(self.records, self.start.party)
+        return action, {'res_id': move.id}
+
+    def _delegate_lines(self, lines, party, date=None):
+        move = self.delegate_lines(lines, party, self.start.journal, date)
+        move.description = self.start.description
+        move.save()
+        return move
+
+    @classmethod
+    def delegate_lines(cls, lines, party, journal, date=None):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        move, counterpart, delegated = cls.get_move(
+            lines, party, journal, date=date)
+        move.save()
+        Line.save(counterpart + delegated)
+
+        for line, cline, dline in zip(lines, counterpart, delegated):
+            Line.reconcile([line, cline], delegate_to=dline)
+        return move
+
+    @classmethod
+    def get_move(cls, lines, party, journal, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        try:
+            company, = {l.company for l in lines}
+        except ValueError:
+            raise DelegateLineError(
+                gettext('account.msg_delegate_line_same_company'))
+
+        try:
+            origin, = {l.move.origin for l in lines}
+        except ValueError:
+            raise DelegateLineError(
+                gettext('account.msg_delegate_line_same_origins'))
+
+        if not date:
+            with Transaction().set_context(company=company.id):
+                date = Date.today()
+        period = Period.find(company.id, date=date)
+
+        move = Move()
+        move.company = company
+        move.date = date
+        move.period = period
+        move.journal = journal
+        move.origin = origin
+
+        counterpart = []
+        delegated = []
+        for line in lines:
+            cline = cls.get_move_line(line)
+            cline.move = move
+            cline.debit, cline.credit = line.credit, line.debit
+            if cline.amount_second_currency:
+                cline.amount_second_currency *= -1
+            counterpart.append(cline)
+            dline = cls.get_move_line(line)
+            dline.move = move
+            dline.party = party
+            delegated.append(dline)
+        return move, counterpart, delegated
+
+    @classmethod
+    def get_move_line(cls, line):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        new = Line()
+        new.debit = line.debit
+        new.credit = line.credit
+        new.account = line.account
+        new.origin = line
+        new.description = line.description
+        new.amount_second_currency = line.amount_second_currency
+        new.second_currency = line.second_currency
+        new.party = line.party
+        new.maturity_date = line.maturity_date
+        return new
+
+
+class DelegateLinesStart(ModelView):
+    "Delegate Lines"
+    __name__ = 'account.move.line.delegate.start'
+
+    journal = fields.Many2One('account.journal', "Journal", required=True)
+    party = fields.Many2One('party.party', "Party", required=True)
+    description = fields.Char("Description")
 
 
 class GeneralJournal(Report):
