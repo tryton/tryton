@@ -20,6 +20,9 @@ Accounting
 `Cash Rounding </projects/modules-account-cash-rounding/en/latest>`_
     Round cash amounts.
 
+`Consolidation </projects/modules-account-consolidation/en/latest>`_
+    Consolidate accounting of multiple companies.
+
 `Credit Limit </projects/modules-account-credit-limit/en/latest>`_
     Manages credit limit of parties.
 
