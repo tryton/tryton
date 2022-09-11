@@ -1,3 +1,4 @@
+* Support date range context for account type amount
 * Use context model for chart of accounts and taxes
 
 Version 6.4.0 - 2022-05-02

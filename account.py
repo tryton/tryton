@@ -310,15 +310,18 @@ class Type(
         for type_ in childs:
             type_sum[type_.id] = Decimal('0.0')
 
+        period_ids = from_date = to_date = None
         if context.get('start_period') or context.get('end_period'):
             start_period_ids = GeneralLedger.get_period_ids('start_%s' % name)
             end_period_ids = GeneralLedger.get_period_ids('end_%s' % name)
             period_ids = list(
                 set(end_period_ids).difference(set(start_period_ids)))
-        else:
-            period_ids = None
+        elif context.get('from_date') or context.get('to_date'):
+            from_date, _ = GeneralLedger.get_dates('start_%s' % name)
+            _, to_date = GeneralLedger.get_dates('end_%s' % name)
 
-        with Transaction().set_context(periods=period_ids):
+        with Transaction().set_context(
+                periods=period_ids, from_date=from_date, to_date=to_date):
             accounts = Account.search([
                     ('type', 'in', [t.id for t in childs]),
                     ])
