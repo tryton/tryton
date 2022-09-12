@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="city"/>
     <newline/>
     <label name="country"/>
-    <field name="country" widget="selection"/>
+    <field name="country"/>
     <label name="subdivision"/>
-    <field name="subdivision" widget="selection"/>
+    <field name="subdivision"/>
 </form>
