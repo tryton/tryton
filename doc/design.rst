@@ -42,7 +42,7 @@ The ISO 3166 standard defines the codes and names of countries and is used when
 
       |Administration --> Countries --> Countries|__
 
-      .. |Administration --> Countries --> Countries| replace:: :menuselection:`Administration --> Countries`
+      .. |Administration --> Countries --> Countries| replace:: :menuselection:`Administration --> Countries --> Countries`
       __ https://demo.tryton.org/model/country.country
 
 .. _model-country.subdivision:
