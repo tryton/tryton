@@ -1277,7 +1277,9 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move.draft(moves)
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancelled')])
-        Move.draft([m for s in shipments for m in s.outgoing_moves])
+        Move.draft([
+                m for s in shipments for m in s.outgoing_moves
+                if m.state != 'staging'])
 
         to_create = []
         for shipment in shipments:
