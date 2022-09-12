@@ -1,11 +1,47 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
-from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields
+from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields, tree
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import lstrip_wildcard
 from trytond.transaction import Transaction
+
+
+class Region(tree(), ModelSQL, ModelView):
+    "Region"
+    __name__ = 'country.region'
+
+    name = fields.Char("Name", required=True, translate=True)
+    code_numeric = fields.Char(
+        "Numeric Code", size=3,
+        help="UN M49 region code.")
+    parent = fields.Many2One('country.region', "Parent")
+    subregions = fields.One2Many('country.region', 'parent', "Subregions")
+    countries = fields.One2Many(
+        'country.country', 'region', "Countries",
+        add_remove=[
+            ('region', '=', None),
+            ])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
+        return [bool_op,
+            ('name',) + tuple(clause[1:]),
+            ('code_numeric', clause[1], code_value) + tuple(clause[3:]),
+            ]
 
 
 class Country(DeactivableMixin, ModelSQL, ModelView):
@@ -20,6 +56,8 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
     code_numeric = fields.Char('Numeric Code', select=True,
         help="The ISO numeric country code.")
     flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
+    region = fields.Many2One(
+        'country.region', "Region", ondelete='SET NULL')
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
 

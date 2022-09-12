@@ -4,6 +4,26 @@ Design
 
 The *Country Module* introduces the following concepts:
 
+.. _model-country.region:
+
+Region
+======
+
+The *Region* represents a geographical region that groups `Countries <model-country.country>`.
+The main usage is for reporting and statistics.
+
+The `UN M49 <https://unstats.un.org/unsd/methodology/m49/>`_ methodology and
+codes are used when `Loading and updating countries and subdivisions`.
+
+.. seealso::
+
+   Regions can be found under the main menu entry:
+
+      |Administration --> Countries --> Regions|__
+
+      .. |Administration --> Countries --> Regions| replace:: :menuselection:`Administration --> Countries --> Regions`
+      __ https://demo.tryton.org/model/country.region
+
 .. _model-country.country:
 
 Country
@@ -20,9 +40,9 @@ The ISO 3166 standard defines the codes and names of countries and is used when
 
    Countries can be found under the main menu entry:
 
-      |Administration --> Countries|__
+      |Administration --> Countries --> Countries|__
 
-      .. |Administration --> Countries| replace:: :menuselection:`Administration --> Countries`
+      .. |Administration --> Countries --> Countries| replace:: :menuselection:`Administration --> Countries`
       __ https://demo.tryton.org/model/country.country
 
 .. _model-country.subdivision:
