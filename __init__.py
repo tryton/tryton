@@ -47,11 +47,12 @@ def register():
         sale_reporting.ProductCategory,
         sale_reporting.ProductCategoryTimeseries,
         sale_reporting.ProductCategoryTree,
+        sale_reporting.RegionTree,
         sale_reporting.Country,
         sale_reporting.CountryTimeseries,
         sale_reporting.Subdivision,
         sale_reporting.SubdivisionTimeseries,
-        sale_reporting.Region,
+        sale_reporting.CountryTree,
         invoice.Invoice,
         invoice.Line,
         module='sale', type_='model')
@@ -63,7 +64,8 @@ def register():
         sale.ModifyHeader,
         party.Replace,
         party.Erase,
-        sale_reporting.OpenRegion,
+        sale_reporting.OpenRegionTree,
+        sale_reporting.OpenCountryTree,
         module='sale', type_='wizard')
     Pool.register(
         sale.SaleReport,

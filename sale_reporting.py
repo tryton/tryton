@@ -866,6 +866,138 @@ class CountryMixin(object):
         return where
 
 
+class RegionTree(ModelSQL, ModelView):
+    "Sale Reporting per Region"
+    __name__ = 'sale.reporting.region.tree'
+
+    name = fields.Function(fields.Char("Name"), 'get_name')
+    parent = fields.Many2One('sale.reporting.region.tree', "Parent")
+    subregions = fields.One2Many(
+        'sale.reporting.region.tree', 'parent', "Subregions")
+
+    revenue = fields.Function(Monetary(
+            "Revenue", digits='currency'), 'get_total')
+
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Region = pool.get('country.region')
+        return Region.__table__()
+
+    @classmethod
+    def get_name(cls, regions, name):
+        pool = Pool()
+        Region = pool.get('country.region')
+        regions = Region.browse(regions)
+        return {r.id: r.name for r in regions}
+
+    @classmethod
+    def order_name(cls, tables):
+        pool = Pool()
+        Region = pool.get('country.region')
+        table, _ = tables[None]
+        if 'region' not in tables:
+            region = Region.__table__()
+            tables['region'] = {
+                None: (region, table.id == region.id),
+                }
+        return Region.name.convert_order(
+                'name', tables['region'], Region)
+
+    @classmethod
+    def get_total(cls, regions, names):
+        pool = Pool()
+        ReportingCountry = pool.get('sale.reporting.country')
+        table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+
+        regions = cls.search([
+                ('parent', 'child_of', [r.id for r in regions]),
+                ])
+        ids = [c.id for c in regions]
+        parents = {}
+        reporting_countries = []
+        for sub_ids in grouped_slice(ids):
+            sub_ids = list(sub_ids)
+            where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.select(table.id, table.parent, where=where))
+            parents.update(cursor)
+
+        result = {}
+        reporting_countries = ReportingCountry.search([
+                ('country.region', 'in', [r.id for r in regions]),
+                ])
+        for name in names:
+            values = dict.fromkeys(ids, 0)
+            for reporting_country in reporting_countries:
+                values[reporting_country.country.region.id] += (
+                    getattr(reporting_country, name))
+            result[name] = cls._sum_tree(regions, values, parents)
+        return result
+
+    @classmethod
+    def _sum_tree(cls, regions, values, parents):
+        result = values.copy()
+        regions = set((c.id for c in regions))
+        leafs = regions - set(parents.values())
+        while leafs:
+            for region in leafs:
+                regions.remove(region)
+                parent = parents.get(region)
+                if parent in result:
+                    result[parent] += result[region]
+            next_leafs = set(regions)
+            for region in regions:
+                parent = parents.get(region)
+                if not parent:
+                    continue
+                if parent in next_leafs and parent in regions:
+                    next_leafs.remove(parent)
+            leafs = next_leafs
+        return result
+
+    def get_currency(self, name):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = Transaction().context.get('company')
+        if company:
+            return Company(company).currency.id
+
+
+class OpenRegionTree(Wizard):
+    "Open Region"
+    __name__ = 'sale.reporting.region.tree.open'
+
+    start = StateAction('sale.act_reporting_country_tree')
+
+    def do_start(self, action):
+        pool = Pool()
+        Country = pool.get('country.country')
+        CountryTree = pool.get('sale.reporting.country.tree')
+        countries = Country.search([
+                ('region', 'child_of', [r.id for r in self.records], 'parent'),
+                ])
+        ids = [
+            CountryTree.union_shard(c.id, 'sale.reporting.country')
+            for c in countries]
+        data = {
+            'ids': ids,
+            }
+        name_suffix = ', '.join(r.rec_name for r in self.records[:5])
+        if len(self.records) > 5:
+            name_suffix += ',...'
+        action['name'] += ' (%s)' % name_suffix
+        return action, data
+
+
 class Country(CountryMixin, Abstract):
     "Sale Reporting per Country"
     __name__ = 'sale.reporting.country'
@@ -944,13 +1076,14 @@ class SubdivisionTimeseries(SubdivisionMixin, AbstractTimeseries, ModelView):
     __name__ = 'sale.reporting.country.subdivision.time_series'
 
 
-class Region(UnionMixin, Abstract, ModelView):
-    "Sale Reporting per Region"
-    __name__ = 'sale.reporting.region'
+class CountryTree(UnionMixin, Abstract, ModelView):
+    "Sale Reporting per Country"
+    __name__ = 'sale.reporting.country.tree'
 
     region = fields.Function(fields.Char("Region"), 'get_rec_name')
-    parent = fields.Many2One('sale.reporting.region', "Parent")
-    children = fields.One2Many('sale.reporting.region', 'parent', "Children")
+    parent = fields.Many2One('sale.reporting.country.tree', "Parent")
+    children = fields.One2Many(
+        'sale.reporting.country.tree', 'parent', "Children")
 
     @classmethod
     def union_models(cls):
@@ -958,7 +1091,7 @@ class Region(UnionMixin, Abstract, ModelView):
 
     @classmethod
     def union_column(cls, name, field, table, Model):
-        column = super(Region, cls).union_column(
+        column = super().union_column(
             name, field, table, Model)
         if (name == 'parent'
                 and Model.__name__ == 'sale.reporting.country.subdivision'):
@@ -985,9 +1118,9 @@ class Region(UnionMixin, Abstract, ModelView):
         return record.time_series
 
 
-class OpenRegion(Wizard):
-    "Open Region"
-    __name__ = 'sale.reporting.region.open'
+class OpenCountryTree(Wizard):
+    "Open Country"
+    __name__ = 'sale.reporting.country.tree.open'
 
     start = StateTransition()
     country = StateAction('sale.act_reporting_country_time_series')

@@ -802,51 +802,81 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Region -->
 
-        <record model="ir.ui.view" id="reporting_region_view_tree">
-            <field name="model">sale.reporting.region</field>
+        <record model="ir.ui.view" id="reporting_region_tree_view_tree">
+            <field name="model">sale.reporting.region.tree</field>
             <field name="type">tree</field>
+            <field name="field_childs">subregions</field>
             <field name="name">sale_reporting_region_tree</field>
-            <field name="field_childs">children</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_reporting_region">
+        <record model="ir.action.act_window" id="act_reporting_region_tree">
             <field name="name">Sales per Region</field>
-            <field name="res_model">sale.reporting.region</field>
+            <field name="res_model">sale.reporting.region.tree</field>
             <field name="context_model">sale.reporting.context</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_reporting_region_view1">
+        <record model="ir.action.act_window.view" id="act_reporting_region_tree_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="reporting_region_view_tree"/>
-            <field name="act_window" ref="act_reporting_region"/>
+            <field name="view" ref="reporting_region_tree_view_tree"/>
+            <field name="act_window" ref="act_reporting_region_tree"/>
         </record>
-        <record model="ir.action.keyword" id="act_reporting_country_keyword1">
+        <record model="ir.action.keyword" id="act_reporting_region_tree_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model" ref="menu_reporting_sale"/>
-            <field name="action" ref="act_reporting_region"/>
+            <field name="action" ref="act_reporting_region_tree"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_reporting_region_companies">
+        <record model="ir.action.wizard" id="wizard_reporting_region_tree_open">
+            <field name="name">Open Region</field>
+            <field name="wiz_name">sale.reporting.region.tree.open</field>
+            <field name="model">sale.reporting.region.tree</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_reporting_region_tree_open_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.region.tree,-1</field>
+            <field name="action" ref="wizard_reporting_region_tree_open"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_tree_view_tree">
+            <field name="model">sale.reporting.country.tree</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_country_tree</field>
+            <field name="field_childs">children</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_country_tree">
+            <field name="name">Sales per Country</field>
+            <field name="res_model">sale.reporting.country.tree</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field name="domain" eval="[('parent', '=', None), ('id', 'in', Eval('active_ids', []))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_country_tree_view_tree"/>
+            <field name="act_window" ref="act_reporting_country_tree"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_country_tree_companies">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'sale.reporting.region')]"/>
+            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_reporting_region_companies">
+        <record model="ir.rule" id="rule_reporting_country_tree_companies">
             <field name="domain"
                 eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_reporting_region_companies"/>
+            <field name="rule_group" ref="rule_group_reporting_country_tree_companies"/>
         </record>
 
-        <record model="ir.model.access" id="access_reporting_region">
-            <field name="model" search="[('model', '=', 'sale.reporting.region')]"/>
+        <record model="ir.model.access" id="access_reporting_country_tree">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_reporting_region_sale">
-            <field name="model" search="[('model', '=', 'sale.reporting.region')]"/>
+        <record model="ir.model.access" id="access_reporting_country_tree_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.tree')]"/>
             <field name="group" ref="group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
@@ -997,15 +1027,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_reporting_region_open">
+        <record model="ir.action.wizard" id="wizard_reporting_country_tree_open">
             <field name="name">Open Region</field>
-            <field name="wiz_name">sale.reporting.region.open</field>
-            <field name="model">sale.reporting.region</field>
+            <field name="wiz_name">sale.reporting.country.tree.open</field>
+            <field name="model">sale.reporting.country.tree</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_reporting_region_open_keyword1">
+        <record model="ir.action.keyword" id="wizard_reporting_country_tree_open_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">sale.reporting.region,-1</field>
-            <field name="action" ref="wizard_reporting_region_open"/>
+            <field name="model">sale.reporting.country.tree,-1</field>
+            <field name="action" ref="wizard_reporting_country_tree_open"/>
         </record>
 
     </data>

@@ -39,9 +39,11 @@ Create chart of accounts::
 
 Create countries::
 
+    >>> Region = Model.get('country.region')
     >>> Country = Model.get('country.country')
     >>> Subdivision = Model.get('country.subdivision')
-    >>> country_us = Country(name="United States")
+    >>> north_america, = Region.find([('code_numeric', '=', '021')])
+    >>> country_us = Country(name="United States", region=north_america)
     >>> country_us.save()
     >>> california = Subdivision(
     ...     name="California", type='state', country=country_us)
@@ -279,20 +281,26 @@ Check sale reporting per product categories::
     ...         ('Account Category', Decimal('40'))])
     True
 
-Check sale reporting per regions::
+Check sale reporting per countries::
 
-    >>> Region = Model.get('sale.reporting.region')
+    >>> RegionTree = Model.get('sale.reporting.region.tree')
+    >>> CountryTree = Model.get('sale.reporting.country.tree')
     >>> CountryTimeseries = Model.get('sale.reporting.country.time_series')
     >>> SubdivisionTimeseries = Model.get(
     ...     'sale.reporting.country.subdivision.time_series')
     >>> with config.set_context(context=context):
-    ...     reports = Region.find([])
+    ...     region = RegionTree(north_america.id)
+    ...     countries = CountryTree.find([])
     ...     country_time_series = CountryTimeseries.find([])
     ...     subdivision_time_series = SubdivisionTimeseries.find([])
-    >>> len(reports)
+    >>> region.revenue == Decimal('40')
+    True
+    >>> region.parent.revenue == Decimal('40')
+    True
+    >>> len(countries)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((r.region, r.number, r.revenue) for r in reports) == \
+    ...     sorted((c.region, c.number, c.revenue) for c in countries) == \
     ...     sorted([('United States', 2, Decimal('40')),
     ...         ('California', 1, Decimal('30')),
     ...         ('New York', 1, Decimal('10'))])
