@@ -209,7 +209,7 @@ By Region
 The sales reporting that is done *By Region* shows sales based on where the
 customer is located.
 This is done by combining together in a tree structure the sales
-`By Regions <country:country.region>` which can be opened to the sales
+`By Regions <country:model-country.region>` which can be opened to the sales
 `By Country <model-sale.reporting.country>` below which are the sales
 `By Subdivision <model-sale.reporting.country.subdivision>`.
 
