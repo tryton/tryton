@@ -14,6 +14,7 @@ timesheet_application = user_application('timesheet')
 
 
 @app.route('/<database_name>/timesheet/employees', methods=['GET'])
+@allow_null_origin
 @with_pool
 @with_transaction()
 @timesheet_application
@@ -25,6 +26,7 @@ def timesheet_employees(request, pool):
 
 @app.route('/<database_name>/timesheet/employee/<int:employee>/works',
     methods=['GET'])
+@allow_null_origin
 @with_pool
 @with_transaction()
 @timesheet_application
@@ -50,6 +52,7 @@ def timesheet_works(request, pool, employee):
 
 @app.route('/<database_name>/timesheet/employee/<int:employee>/lines/<date>',
     methods=['GET'])
+@allow_null_origin
 @with_pool
 @with_transaction()
 @timesheet_application
