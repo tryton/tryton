@@ -5,7 +5,7 @@ Design
 The *Sale Product Recommendation Association Rule Module* introduces the
 following concepts.
 
-.. _model-sale.product.association.rule
+.. _model-sale.product.association.rule:
 
 Product Association Rule
 ========================
