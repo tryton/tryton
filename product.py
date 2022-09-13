@@ -861,7 +861,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                         & move.to_location.in_(
                             warehouse.select(warehouse.id))))
                 & ((date_column < today) & (move.state == 'done')
-                    | (date_column >= today)),
+                    | (date_column >= today) & (move.state != 'cancelled')),
                 with_=warehouse))
 
     @classmethod
