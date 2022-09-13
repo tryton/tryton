@@ -53,6 +53,12 @@ Sale
 `Product Quantity </projects/modules-sale-product-quantity/en/latest>`_
     Adds constraints on quantity sold.
 
+`Product Recommendation </projects/modules-sale-product-recommendation/en/latest>`_
+    Recommends products.
+
+`Product Recommendation Association Rule </projects/modules-sale-product-recommendation-association-rule/en/latest>`_
+    Recommends products based on association rules.
+
 `Promotion </projects/modules-sale-promotion/en/latest>`_
     Applies promotions.
 
