@@ -331,6 +331,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 ('assigned', 'draft'),
                 ('assigned', 'done'),
                 ('assigned', 'cancelled'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
