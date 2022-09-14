@@ -3,6 +3,7 @@
 from email.header import Header
 
 from sql import Null
+from sql.functions import CharLength
 from sql.operators import Equal
 
 from trytond.config import config
@@ -96,6 +97,11 @@ class GiftCard(ModelSQL, ModelView):
                 'sale_gift_card.msg_gift_card_number_unique'),
             ]
         cls._order.insert(0, ('number', 'ASC'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
