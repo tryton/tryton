@@ -4,6 +4,8 @@ from decimal import ROUND_DOWN, ROUND_HALF_EVEN, Decimal
 from itertools import groupby
 from operator import itemgetter
 
+from sql.functions import CharLength
+
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import MatchMixin, ModelSQL, ModelView, Workflow, fields
@@ -196,6 +198,11 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_company():
