@@ -3371,18 +3371,19 @@
         class_: 'ask-dialog',
         run: function() {
             var args = Array.prototype.slice.call(arguments);
-            if (args.length == 1) {
+            if (args.length == 2) {
                 args.push(true);
             }
             return Sao.common.AskDialog._super.run.apply(this, args);
         },
-        build_dialog: function(question, visibility, prm) {
+        build_dialog: function(question, name, visibility, prm) {
             var dialog = Sao.common.AskDialog._super.build_dialog.call(this);
             dialog.header.remove();
             var entry = jQuery('<input/>', {
                 'class': 'form-control',
                 'type': visibility ? 'input' : 'password',
-                'id': 'ask-dialog-entry'
+                'id': 'ask-dialog-entry',
+                'name': name,
             });
             dialog.body.append(jQuery('<div/>', {
                 'class': 'form-group'

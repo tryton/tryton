@@ -179,15 +179,18 @@
         var dialog = new Sao.Dialog(Sao.i18n.gettext('Login'), 'lg');
         dialog.database_select = jQuery('<select/>', {
             'class': 'form-control',
-            'id': 'database'
+            'id': 'database',
+            'name': 'database',
         }).hide();
         dialog.database_input = jQuery('<input/>', {
             'class': 'form-control',
-            'id': 'database'
+            'id': 'database',
+            'name': 'database',
         }).hide();
         dialog.login_input = jQuery('<input/>', {
             'class': 'form-control',
             'id': 'login',
+            'name': 'login',
             'placeholder': Sao.i18n.gettext('User name')
         });
         dialog.body.append(jQuery('<div/>', {
@@ -368,7 +371,7 @@
                         var name = args[0];
                         var message = args[1];
                         var type = args[2];
-                        this['get_' + type](message).then(value => {
+                        this['get_' + type](message, name).then(value => {
                             parameters[name] = value;
                             return this.run(parameters).then(
                                     dfd.resolve, dfd.reject);
@@ -395,11 +398,11 @@
             ajax_prm.fail(ajax_error.bind(this));
             return dfd.promise();
         },
-        get_char: function(message) {
-            return Sao.common.ask.run(message);
+        get_char: function(message, name) {
+            return Sao.common.ask.run(message, name);
         },
-        get_password: function(message) {
-            return Sao.common.ask.run(message, false);
+        get_password: function(message, name) {
+            return Sao.common.ask.run(message, name, false);
         },
     });
 

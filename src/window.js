@@ -1885,7 +1885,8 @@
             if (selection.length === 0) {
                 pref_id = null;
                 Sao.common.ask.run(
-                    Sao.i18n.gettext('What is the name of this export?'))
+                    Sao.i18n.gettext('What is the name of this export?'),
+                    'export')
                 .then(save);
             }
             else {

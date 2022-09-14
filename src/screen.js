@@ -267,7 +267,7 @@
                 if (!text) {
                     return;
                 }
-                Sao.common.ask.run(Sao.i18n.gettext('Bookmark Name:'))
+                Sao.common.ask.run(Sao.i18n.gettext('Bookmark Name:', 'bookmark'))
                     .then(name => {
                         if (!name) {
                             return;
