@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Cast, Literal
-from sql.functions import Position, Substring
+from sql.functions import CharLength, Position, Substring
 
 from trytond import backend
 from trytond.i18n import gettext
@@ -265,6 +265,11 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
                 cursor.execute(*table.update(
                         [table.company], [value],
                         where=table.shipment.like(name + ',%')))
+
+    @classmethod
+    def order_code(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.code), table.code]
 
     @classmethod
     def default_company(cls):
