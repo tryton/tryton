@@ -541,7 +541,7 @@ class One2Many(Widget):
         if self.record:
             domain = self.field.domain_get(self.record)
             size_limit = self.record.expr_eval(self.attrs.get('size'))
-        if self._readonly:
+        if self._readonly or not self.create_access:
             if size_limit is None:
                 size_limit = len(self.screen.group)
             else:
