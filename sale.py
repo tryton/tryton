@@ -6,6 +6,7 @@ from decimal import Decimal
 from sql import Literal, Union
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 from sql.operators import Equal
 
 from trytond.i18n import gettext
@@ -198,6 +199,11 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'depends': ['state'],
                 },
             )
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
