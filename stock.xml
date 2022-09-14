@@ -193,8 +193,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_drop_ship_button">
             <field name="name">ship</field>
             <field name="string">Ship</field>
+            <field name="confirm">Are you sure you want to ship the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.drop')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="shipment_drop_ship_button_group_stock">
+            <field name="button" ref="shipment_drop_ship_button"/>
+            <field name="group" ref="stock.group_stock"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_drop_companies">
