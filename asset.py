@@ -6,6 +6,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from dateutil import relativedelta, rrule
+from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
@@ -242,6 +243,11 @@ class Asset(Workflow, ModelSQL, ModelView):
         if table_h.column_exist('reference'):
             table_h.column_rename('reference', 'number')
         super(Asset, cls).__register__(module_name)
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_state():
