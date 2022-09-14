@@ -8,7 +8,7 @@ from itertools import chain, combinations, groupby
 from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import Round
+from sql.functions import CharLength, Round
 
 from trytond import backend
 from trytond.config import config
@@ -418,6 +418,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Migration from 5.8: drop foreign key for sequence
         table.drop_fk('sequence')
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_type():
