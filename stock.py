@@ -140,6 +140,8 @@ class ShipmentCostMixin:
             return Currency.compute(
                 self.cost_currency_used, self.cost_used,
                 self.company.currency, round=False)
+        else:
+            return Decimal(0)
 
 
 class ShipmentOutCostMixin(ShipmentCostMixin):
