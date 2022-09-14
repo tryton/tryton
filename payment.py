@@ -5,6 +5,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from sql.aggregate import Count, Sum
+from sql.functions import CharLength
 from sql.operators import Abs
 
 from trytond.i18n import gettext
@@ -119,6 +120,11 @@ class Group(ModelSQL, ModelView):
         if table_h.column_exist('reference'):
             table_h.column_rename('reference', 'number')
         super(Group, cls).__register__(module_name)
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_company():
