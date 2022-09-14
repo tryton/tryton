@@ -8,6 +8,7 @@ from importlib import import_module
 import stdnum
 import stdnum.exceptions
 from sql import Column, Literal, Null
+from sql.functions import CharLength
 from sql.operators import Equal
 
 from trytond import backend
@@ -148,6 +149,14 @@ class Template(
         elif field == 'cost_price_method':
             return pool.get('product.cost_price_method')
         return super(Template, cls).multivalue_model(field)
+
+    @classmethod
+    def order_code(cls, tables):
+        table, _ = tables[None]
+        if cls.default_code_readonly():
+            return [CharLength(table.code), table.code]
+        else:
+            return [table.code]
 
     @classmethod
     def order_rec_name(cls, tables):
@@ -440,6 +449,24 @@ class Product(
     def _set_template_function(cls, products, name, value):
         # Prevent NotImplementedError for One2Many
         pass
+
+    @classmethod
+    def order_suffix_code(cls, tables):
+        table, _ = tables[None]
+        if cls.default_code_readonly():
+            return [CharLength(table.suffix_code), table.suffix_code]
+        else:
+            return [table.suffix_code]
+
+    @classmethod
+    def order_code(cls, tables):
+        pool = Pool()
+        Template = pool.get('product.template')
+        table, _ = tables[None]
+        if cls.default_code_readonly() or Template.default_code_readonly():
+            return [CharLength(table.code), table.code]
+        else:
+            return [table.code]
 
     @fields.depends('template', '_parent_template.id')
     def on_change_template(self):
