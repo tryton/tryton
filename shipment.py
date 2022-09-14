@@ -8,6 +8,7 @@ from itertools import groupby
 
 from sql import Null
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
@@ -287,6 +288,11 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -725,6 +731,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 where=sql_table.state == 'cancel'))
 
     @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
+
+    @classmethod
     def order_effective_date(cls, tables):
         table, _ = tables[None]
         return [Coalesce(table.effective_date, table.planned_date)]
@@ -1157,6 +1168,11 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
@@ -1771,6 +1787,11 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         table.not_null_action('contact_address', 'remove')
 
     @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
+
+    @classmethod
     def order_effective_date(cls, tables):
         table, _ = tables[None]
         return [Coalesce(table.effective_date, table.planned_date)]
@@ -2289,6 +2310,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
