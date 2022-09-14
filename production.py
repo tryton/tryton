@@ -7,6 +7,7 @@ from itertools import chain, groupby
 
 from sql import Null
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
@@ -269,6 +270,11 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*table.update(
                 [table.state], ['cancelled'],
                 where=table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
