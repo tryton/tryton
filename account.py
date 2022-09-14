@@ -3,6 +3,8 @@
 from decimal import Decimal
 from itertools import groupby
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
@@ -148,6 +150,11 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                     'depends': ['state']
                     },
                 })
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
