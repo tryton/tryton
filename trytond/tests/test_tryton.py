@@ -481,8 +481,7 @@ class ModuleTestCase(unittest.TestCase):
                     else:
                         getattr(model, attr)()
                 elif attr.startswith('order_'):
-                    tables = {None: (model.__table__(), None)}
-                    getattr(model, attr)(tables)
+                    model.search([], order=[(attr[len('order_'):], None)])
                 elif any(attr.startswith(p) for p in [
                             'on_change_',
                             'on_change_with_',
