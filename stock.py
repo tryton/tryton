@@ -7,6 +7,7 @@ from itertools import groupby
 from sql import Column
 from sql.aggregate import Count
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 from sql.operators import Concat
 
 from trytond import backend
@@ -301,6 +302,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def order_effective_date(cls, tables):
