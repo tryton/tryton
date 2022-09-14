@@ -7,6 +7,7 @@ from itertools import chain, groupby
 
 from sql import Literal, Null
 from sql.aggregate import Count
+from sql.functions import CharLength
 from sql.operators import Concat
 
 from trytond import backend
@@ -355,6 +356,11 @@ class Purchase(
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_warehouse(cls):
