@@ -175,7 +175,11 @@ class TrytondWSGI(object):
             cors = filter(
                 None, config.get('web', 'cors', default='').splitlines())
             if origin not in cors:
-                abort(HTTPStatus.FORBIDDEN)
+                if (origin.startswith('moz-extension://')
+                        or origin.startswith('chrome-extension://')):
+                    origin = 'null'
+                else:
+                    abort(HTTPStatus.FORBIDDEN)
         if origin == 'null':
             adapter = self.url_map.bind_to_environ(request.environ)
             endpoint = adapter.match()[0]
