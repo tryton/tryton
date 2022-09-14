@@ -100,7 +100,8 @@ Ship 20 units of the product in two shipments::
     >>> shipment1 = ShipmentOut()
     >>> shipment1.customer = customer
     >>> shipment1.cost_edit = True
-    >>> shipment1.cost = Decimal('4.00')
+    >>> shipment1.cost_used = Decimal('4.00')
+    >>> shipment1.cost_currency_used = company.currency
     >>> move = shipment1.outgoing_moves.new()
     >>> move.product = product
     >>> move.quantity = 15
