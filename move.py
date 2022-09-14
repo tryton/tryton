@@ -129,6 +129,11 @@ class Move(ModelSQL, ModelView):
         table.index_action(['journal', 'period'], 'add')
 
     @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
+
+    @classmethod
     def order_post_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.post_number), table.post_number]
@@ -533,6 +538,11 @@ class Reconciliation(ModelSQL, ModelView):
                     where=line.reconciliation == sql_table.id,
                     group_by=move.company))
             cursor.execute(*sql_table.update([sql_table.company], [value]))
+
+    @classmethod
+    def order_name(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.name), table.name]
 
     @classmethod
     def default_company(cls):
