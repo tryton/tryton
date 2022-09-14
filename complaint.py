@@ -4,6 +4,8 @@
 from collections import defaultdict
 from decimal import Decimal
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
@@ -186,6 +188,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
             'account.invoice': ['credit_note'],
             'account.invoice.line': ['credit_note'],
             }
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @staticmethod
     def default_date():
