@@ -5,6 +5,7 @@ from itertools import groupby
 
 from sql import Literal, Null, operators
 from sql.conditionals import Case, Coalesce
+from sql.functions import CharLength
 
 from trytond import backend
 from trytond.i18n import gettext
@@ -212,6 +213,11 @@ class Subscription(Workflow, ModelSQL, ModelView):
         cursor.execute(*table.update(
                 [table.state], ['cancelled'],
                 where=table.state == 'canceled'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
