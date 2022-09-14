@@ -129,6 +129,11 @@ class Move(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, moves):
+        for move in moves:
+            if move.fifo_quantity:
+                raise AccessError(
+                    gettext('product_cost_fifo.msg_move_cancel_fifo',
+                        move=move.rec_name))
         super().cancel(moves)
 
     @classmethod
