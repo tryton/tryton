@@ -3360,7 +3360,7 @@ function eval_pyson(value){
                     domain = field.get_domain(record);
                     size_limit = record.expr_eval(this.attributes.size);
                 }
-                if (this._readonly) {
+                if (this._readonly || !this.create_access) {
                     if (size_limit === null) {
                         size_limit = this.screen.group.length;
                     } else {
