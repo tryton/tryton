@@ -6,6 +6,8 @@ from decimal import Decimal
 from functools import partial
 from itertools import chain, groupby
 
+from sql.functions import CharLength
+
 from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
@@ -354,6 +356,11 @@ class Sale(
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_payment_term(cls, **pattern):
