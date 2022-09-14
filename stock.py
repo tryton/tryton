@@ -5,6 +5,7 @@ from copy import copy
 from functools import wraps
 
 from sql import Column
+from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import Model, ModelSQL, ModelView, fields
@@ -92,6 +93,11 @@ class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
                 'upward_traces': {},
                 'downward_traces': {},
                 })
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def get_quantity(cls, lots, name):
