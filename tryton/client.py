@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 
 from gi.repository import Gdk, Gio, Gtk
 
-from tryton import common, gui, translate
+from tryton import __version__, common, gui, translate
 from tryton.config import CONFIG, get_config_dir
 from tryton.gui.window.dblogin import DBLogin
 
@@ -78,7 +78,11 @@ def main():
             'database': CONFIG['login.db'],
             }
         server = hashlib.md5(server.encode('utf-8')).hexdigest()
-        application_id = 'org.tryton.Tryton._' + server
+        version = ''.join(__version__.split('.')[:2])
+        application_id = 'org.tryton.Tryton-%(version)s._%(server)s' % {
+            'version': version,
+            'server': server,
+            }
         app = gui.Main(
             application_id=application_id,
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE)
