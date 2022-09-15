@@ -97,13 +97,12 @@ class StateView(State):
                 if '.' in field_name:
                     continue
                 field = Model_._fields[field_name]
-                field_rec_name = field_name + '.rec_name'
-                if (value
-                        and field._type == 'many2one'
-                        and field_rec_name not in defaults):
+                if value and field._type == 'many2one':
                     Target = pool.get(field.model_name)
                     if 'rec_name' in Target._fields:
-                        defaults[field_rec_name] = Target(value).rec_name
+                        defaults.setdefault(
+                            field_name + '.', {})['rec_name'] = Target(
+                                value).rec_name
         return defaults
 
     def get_buttons(self, wizard, state_name):
