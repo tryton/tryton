@@ -1682,20 +1682,17 @@
         },
         _close_allowed: function() {
             var wizard = this.wizard;
-            var prm = jQuery.when();
             if ((wizard.state !== wizard.end_state) &&
                 (wizard.end_state in wizard.states)) {
-                prm = wizard.response(
+                wizard.response(
                     wizard.states[wizard.end_state].attributes);
             }
             var dfd = jQuery.Deferred();
-            prm.always(function() {
-                if (wizard.state === wizard.end_state) {
-                    dfd.resolve();
-                } else {
-                    dfd.reject();
-                }
-            });
+            if (wizard.state === wizard.end_state) {
+                dfd.resolve();
+            } else {
+                dfd.reject();
+            }
             return dfd.promise();
         }
     });
