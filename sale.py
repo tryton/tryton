@@ -691,12 +691,9 @@ class Sale(
         if Transaction().context.get('modify_header'):
             attributes.extend([
                     ('//group[@id="states"]', 'states', {'invisible': True}),
-                    ('//group[@id="amount_buttons"]',
-                        'states', {'invisible': True}),
-                    ('//page[@name="invoices"]',
-                        'states', {'invisible': True}),
-                    ('//page[@name="shipments"]',
-                        'states', {'invisible': True}),
+                    ('//group[@id="amount"]', 'states', {'invisible': True}),
+                    ('//group[@id="links"]', 'states', {'invisible': True}),
+                    ('//group[@id="buttons"]', 'states', {'invisible': True}),
                     ])
         return attributes
 
