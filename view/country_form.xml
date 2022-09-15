@@ -16,4 +16,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="code_numeric"/>
     <field name="code_numeric"/>
     <field name="subdivisions" colspan="6"/>
+
+    <field name="members" colspan="6"/>
 </form>

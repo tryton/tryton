@@ -8,6 +8,8 @@ def register():
     # Prevent to import backend when importing scripts
     from . import country
     Pool.register(
+        country.Organization,
+        country.OrganizationMember,
         country.Region,
         country.Country,
         country.Subdivision,

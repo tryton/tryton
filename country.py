@@ -1,11 +1,107 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
+
+from sql import Literal
+from sql.conditionals import Coalesce
+
 from trytond import backend
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields, tree
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.tools import lstrip_wildcard
 from trytond.transaction import Transaction
+
+
+class Organization(ModelSQL, ModelView):
+    "Organization"
+    __name__ = 'country.organization'
+
+    name = fields.Char("Name", required=True, translate=True)
+    code = fields.Char("Code")
+    members = fields.One2Many(
+        'country.organization.member', 'organization', "Members",
+        filter=[
+            ('active', 'in', [True, False]),
+            ])
+    countries = fields.Many2Many(
+        'country.organization.member', 'organization', 'country', "Countries",
+        readonly=True)
+
+
+class OrganizationMember(ModelSQL, ModelView):
+    "Organization Member"
+    __name__ = 'country.organization.member'
+
+    organization = fields.Many2One(
+        'country.organization', "Organization", required=True)
+    country = fields.Many2One(
+        'country.country', "Country", required=True)
+    from_date = fields.Date(
+        "From Date",
+        domain=[
+            If(Eval('from_date') & Eval('to_date'),
+                ('from_date', '<=', Eval('to_date')),
+                ()),
+            ])
+    to_date = fields.Date(
+        "To Date",
+        domain=[
+            If(Eval('from_date') & Eval('to_date'),
+                ('to_date', '>=', Eval('from_date')),
+                ()),
+            ])
+    active = fields.Function(fields.Boolean("Active"), 'on_change_with_active')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('country', None))
+        cls._order.insert(1, ('from_date', 'ASC NULLS FIRST'))
+        cls.__access__.add('organization')
+
+    @classmethod
+    def default_active(cls):
+        return True
+
+    @fields.depends('from_date', 'to_date')
+    def on_change_with_active(self, name=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        date = context.get('date', Date.today())
+
+        from_date = self.from_date or dt.date.min
+        to_date = self.to_date or dt.date.max
+        return from_date <= date <= to_date
+
+    @classmethod
+    def domain_active(cls, domain, tables):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        table, _ = tables[None]
+        _, operator, operand = domain
+        date = context.get('date', Date.today())
+
+        from_date = Coalesce(table.from_date, dt.date.min)
+        to_date = Coalesce(table.to_date, dt.date.max)
+
+        expression = (from_date <= date) & (to_date >= date)
+
+        if operator in {'=', '!='}:
+            if (operator == '=') != operand:
+                expression = ~expression
+        elif operator in {'in', 'not in'}:
+            if True in operand and False not in operand:
+                pass
+            elif False in operand and True not in operand:
+                expression = ~expression
+            else:
+                expression = Literal(True)
+        else:
+            expression = Literal(True)
+        return expression
 
 
 class Region(tree(), ModelSQL, ModelView):
@@ -60,6 +156,14 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
         'country.region', "Region", ondelete='SET NULL')
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
+    members = fields.One2Many(
+        'country.organization.member', 'country', "Members",
+        filter=[
+            ('active', 'in', [True, False]),
+            ])
+    organizations = fields.Many2Many(
+        'country.organization.member', 'country', 'organization',
+        "Organizations", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -114,6 +218,21 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
             ('code3', clause[1], code_value) + tuple(clause[3:]),
             ('code_numeric', clause[1], code_value) + tuple(clause[3:]),
             ]
+
+    def is_member(self, organization, date=None):
+        """Return if the country is in the organization at the date
+        organization can be an XML id"""
+        pool = Pool()
+        Date = pool.get('ir.date')
+        ModelData = pool.get('ir.model.data')
+        Organization = pool.get('country.organization')
+        if date is None:
+            date = Date.today()
+        if isinstance(organization, str):
+            organization = ModelData.get_id(organization)
+        with Transaction().set_context(date=date):
+            organization = Organization(organization)
+        return self in organization.countries
 
     @classmethod
     def create(cls, vlist):

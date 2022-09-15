@@ -4,6 +4,24 @@ Design
 
 The *Country Module* introduces the following concepts:
 
+.. _model-country.organization:
+
+Organization
+============
+
+The *Organization* represents an international organization of `Countries
+<model-country.country>`.
+
+.. seealso::
+
+   Organizations can be found under the main menu entry:
+
+      |Administration --> Countries --> Organizations|__
+
+      .. |Administration --> Countries --> Organizations| replace:: :menuselection:`Administration --> Countries --> Organizations`
+      __ https://demo.tryton.org/model/country.organization
+
+
 .. _model-country.region:
 
 Region

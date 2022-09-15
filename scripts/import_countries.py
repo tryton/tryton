@@ -2,6 +2,8 @@
 # PYTHON_ARGCOMPLETE_OK
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
 import gettext
 import os
 import sys
@@ -24,6 +26,286 @@ try:
 except ImportError:
     prog = os.path.basename(sys.argv[0])
     sys.exit("proteus must be installed to use %s" % prog)
+
+ORGANIZATIONS = {
+    # Founding members has no from date
+    'EU': {
+        'AT': [(dt.date(1995, 1, 1), None)],
+        'BE': [(None, None)],
+        'BG': [(dt.date(2007, 1, 1), None)],
+        'CY': [(dt.date(2004, 5, 1), None)],
+        'CZ': [(dt.date(2004, 5, 1), None)],
+        'DE': [(None, None)],
+        'DK': [(dt.date(1973, 1, 1), None)],
+        'EE': [(dt.date(2004, 5, 1), None)],
+        'ES': [(dt.date(1986, 1, 1), None)],
+        'FI': [(dt.date(1995, 1, 1), None)],
+        'FR': [(None, None)],
+        'GB': [(dt.date(1973, 1, 1), dt.date(2020, 1, 31))],
+        'GR': [(dt.date(1981, 1, 1), None)],
+        'HR': [(dt.date(2013, 7, 1), None)],
+        'HU': [(dt.date(2004, 5, 1), None)],
+        'IE': [(dt.date(1973, 1, 1), None)],
+        'IT': [(None, None)],
+        'LT': [(dt.date(2004, 5, 1), None)],
+        'LU': [(None, None)],
+        'LV': [(dt.date(2004, 5, 1), None)],
+        'MT': [(dt.date(2004, 5, 1), None)],
+        'NL': [(None, None)],
+        'PL': [(dt.date(2004, 5, 1), None)],
+        'PT': [(dt.date(1986, 1, 1), None)],
+        'RO': [(dt.date(2007, 1, 1), None)],
+        'SE': [(dt.date(1995, 1, 1), None)],
+        'SI': [(dt.date(2004, 5, 1), None)],
+        'SK': [(dt.date(2004, 5, 1), None)],
+        },
+    'Benelux': {
+        'BE': [(None, None)],
+        'LU': [(None, None)],
+        'NL': [(None, None)],
+        },
+    'NAFTA': {
+        'CA': [(None, None)],
+        'MX': [(None, None)],
+        'US': [(None, None)],
+        },
+    'Mercosur': {
+        'AR': [(None, None)],
+        'BR': [(None, None)],
+        'PY': [(None, None)],
+        'UY': [(None, None)],
+        'VE': [(dt.date(2012, 7, 31), dt.date(2016, 12, 2))],
+        },
+    'CAN': {
+        # days and months are default to covert the full year
+        'BO': [(None, None)],
+        'CL': [(dt.date(1969, 1, 1), dt.date(1976, 12, 31))],
+        'CO': [(None, None)],
+        'EC': [(None, None)],
+        'PE': [(None, None)],
+        'VE': [(dt.date(1973, 1, 1), dt.date(2006, 12, 31))],
+        },
+    'CARICOM': {
+        'AG': [(dt.date(1974, 7, 4), None)],
+        'BB': [(None, None)],
+        'BS': [(dt.date(1983, 7, 4), None)],
+        'BZ': [(dt.date(1974, 5, 1), None)],
+        'DM': [(dt.date(1974, 5, 1), None)],
+        'GD': [(dt.date(1974, 5, 1), None)],
+        'GY': [(None, None)],
+        'HT': [(dt.date(2002, 7, 2), None)],
+        'JM': [(None, None)],
+        'KN': [(dt.date(1974, 7, 26), None)],
+        'LC': [(dt.date(1974, 5, 1), None)],
+        'MS': [(dt.date(1974, 5, 1), None)],
+        'SR': [(dt.date(1995, 7, 4), None)],
+        'TT': [(None, None)],
+        'VC': [(dt.date(1974, 5, 1), None)],
+        },
+    'APEC': {
+        # days are default to covert the full month
+        'AU': [(None, None)],
+        'BN': [(None, None)],
+        'CA': [(None, None)],
+        'CL': [(dt.date(1994, 11, 1), None)],
+        'CN': [(dt.date(1991, 11, 1), None)],
+        'HK': [(dt.date(1991, 11, 1), None)],
+        'ID': [(None, None)],
+        'JP': [(None, None)],
+        'KR': [(None, None)],
+        'MX': [(dt.date(1993, 11, 1), None)],
+        'MY': [(None, None)],
+        'NZ': [(None, None)],
+        'PE': [(dt.date(1998, 11, 1), None)],
+        'PG': [(dt.date(1993, 11, 1), None)],
+        'PH': [(None, None)],
+        'RU': [(dt.date(1998, 11, 1), None)],
+        'SG': [(None, None)],
+        'TH': [(None, None)],
+        'TW': [(dt.date(1991, 11, 1), None)],
+        'US': [(None, None)],
+        'VN': [(dt.date(1998, 11, 1), None)],
+        },
+    'ASEAN': {
+        'BN': [(dt.date(1984, 1, 7), None)],
+        'ID': [(None, None)],
+        'KH': [(dt.date(1999, 4, 30), None)],
+        'LA': [(dt.date(1997, 7, 23), None)],
+        'MM': [(dt.date(1997, 7, 23), None)],
+        'MY': [(None, None)],
+        'PH': [(None, None)],
+        'SG': [(None, None)],
+        'TH': [(None, None)],
+        'VN': [(dt.date(1995, 7, 28), None)],
+        },
+    'SAFTA': {
+        'AF': [(None, None)],
+        'BD': [(None, None)],
+        'BT': [(None, None)],
+        'IN': [(None, None)],
+        'LK': [(None, None)],
+        'MV': [(None, None)],
+        'NP': [(None, None)],
+        'PK': [(None, None)],
+        },
+    'GCC': {
+        'AE': [(None, None)],
+        'BH': [(None, None)],
+        'KW': [(None, None)],
+        'OM': [(None, None)],
+        'QA': [(None, None)],
+        'SA': [(None, None)],
+        },
+    'CEMAC': {
+        'CF': [(None, None)],
+        'CG': [(None, None)],
+        'CM': [(None, None)],
+        'GA': [(None, None)],
+        'GQ': [(dt.date(1983, 12, 19), None)],
+        'TD': [(None, None)],
+        },
+    'ECCAS': {
+        'AO': [(None, None)],
+        'BI': [(None, None)],
+        'CM': [(None, None)],
+        'CF': [(None, None)],
+        'TD': [(None, None)],
+        'CD': [(None, None)],
+        'GQ': [(None, None)],
+        'GA': [(None, None)],
+        'CG': [(None, None)],
+        'RW': [(None, dt.date(2007, 12, 31)), (dt.date(2016, 8, 17), None)],
+        'ST': [(None, None)],
+        },
+    'ECOWAS': {
+        'BF': [(None, dt.date(2022, 1, 28))],
+        'BJ': [(None, None)],
+        'CI': [(None, None)],
+        'CV': [(dt.date(1977, 1, 1), None)],
+        'GH': [(None, None)],
+        'GM': [(None, None)],
+        'GN': [(None, dt.date(2021, 9, 8))],
+        'GW': [(None, None)],
+        'LR': [(None, None)],
+        'ML': [(None, dt.date(2021, 5, 30))],
+        'MR': [(None, dt.date(2000, 12, 1))],
+        'NE': [(None, None)],
+        'NG': [(None, None)],
+        'SL': [(None, None)],
+        'SN': [(None, None)],
+        'TG': [(None, None)],
+        },
+    'CEN-SAD': {
+        # days and months are default to covert the full year
+        'BF': [(None, None)],
+        'BJ': [(dt.date(2002, 1, 1), None)],
+        'CF': [(dt.date(1999, 1, 1), None)],
+        'CI': [(dt.date(2004, 1, 1), None)],
+        'CV': [(dt.date(2009, 1, 1), None)],
+        'DJ': [(dt.date(2000, 1, 1), None)],
+        'EG': [(dt.date(2001, 1, 1), None)],
+        'ER': [(dt.date(1999, 1, 1), None)],
+        'FN': [(dt.date(2007, 1, 1), None)],
+        'GH': [(dt.date(2005, 1, 1), None)],
+        'GM': [(dt.date(2000, 1, 1), None)],
+        'GW': [(dt.date(2004, 1, 1), None)],
+        'KE': [(dt.date(2007, 1, 1), None)],
+        'KM': [(dt.date(2007, 1, 1), None)],
+        'LR': [(dt.date(2004, 1, 1), None)],
+        'LY': [(None, None)],
+        'MA': [(dt.date(2001, 1, 1), None)],
+        'ML': [(None, None)],
+        'MR': [(dt.date(2007, 1, 1), None)],
+        'NE': [(None, None)],
+        'NG': [(dt.date(2001, 1, 1), None)],
+        'SD': [(None, None)],
+        'SL': [(dt.date(2005, 1, 1), None)],
+        'SN': [(dt.date(2000, 1, 1), None)],
+        'SO': [(dt.date(2001, 1, 1), None)],
+        'ST': [(dt.date(2007, 1, 1), None)],
+        'TD': [(None, None)],
+        'TG': [(dt.date(2002, 1, 1), None)],
+        'TN': [(dt.date(2001, 1, 1), None)],
+        },
+    'COMESA': {
+        # days and months are default to covert the full year
+        'AO': [(None, dt.date(2007, 1, 1))],
+        'BI': [(dt.date(1981, 12, 21), None)],
+        'CD': [(dt.date(1981, 12, 21), None)],
+        'DJ': [(dt.date(1981, 12, 21), None)],
+        'EG': [(dt.date(1999, 1, 6), None)],
+        'ER': [(dt.date(1994, 1, 1), None)],
+        'ET': [(dt.date(1981, 12, 21), None)],
+        'KE': [(None, None)],
+        'KM': [(dt.date(1981, 12, 21), None)],
+        'LS': [(None, dt.date(1997, 1, 1))],
+        'LY': [(dt.date(2005, 6, 3), None)],
+        'MG': [(None, None)],
+        'MU': [(None, None)],
+        'MW': [(None, None)],
+        'MZ': [(None, dt.date(1997, 1, 1))],
+        'NA': [(None, dt.date(2004, 5, 2))],
+        'RW': [(None, None)],
+        'SC': [(dt.date(2001, 1, 1), None)],
+        'SD': [(dt.date(1981, 12, 21), None)],
+        'SO': [(dt.date(2018, 7, 19), None)],
+        'SZ': [(dt.date(1981, 12, 21), None)],
+        'TN': [(dt.date(2018, 7, 18), None)],
+        'TZ': [(None, dt.date(2000, 9, 2))],
+        'UG': [(None, None)],
+        'ZM': [(None, None)],
+        'ZW': [(None, None)],
+        },
+    'EAC': {
+        # days and months are default to covert the full year
+        'BI': [(dt.date(2007, 1, 1), None)],
+        'CD': [(dt.date(2022, 1, 1), None)],
+        'KE': [(None, None)],
+        'RW': [(dt.date(2007, 1, 1), None)],
+        'SS': [(dt.date(2012, 1, 1), None)],
+        'TZ': [(None, None)],
+        'UG': [(None, None)],
+        },
+    'IGAD': {
+        # days and months are default to covert the full year
+        'DJ': [(None, None)],
+        'ER': [(dt.date(1993, 1, 1), dt.date(2007, 12, 31)),
+            (dt.date(2011, 1, 1), None)],
+        'ET': [(None, None)],
+        'KE': [(None, None)],
+        'SD': [(None, None)],
+        'SO': [(None, None)],
+        'SS': [(dt.date(2011, 1, 1), dt.date(2021, 12, 1))],
+        'UG': [(None, None)],
+        },
+    'SADC': {
+        'AO': [(None, None)],
+        'BW': [(None, None)],
+        'CD': [(dt.date(1997, 9, 8), None)],
+        'KM': [(dt.date(2017, 1, 1), None)],
+        'LS': [(None, None)],
+        'MG': [(dt.date(2005, 8, 18), dt.date(2009, 1, 26)),
+            (dt.date(2014, 1, 30), None)],
+        'MU': [(dt.date(1995, 8, 28), None)],
+        'MW': [(None, None)],
+        'MZ': [(None, None)],
+        'NA': [(dt.date(1990, 3, 21), None)],
+        'SC': [(dt.date(1997, 9, 8), dt.date(2004, 7, 1)),
+            (dt.date(2008, 1, 1), None)],
+        'SZ': [(None, None)],
+        'TZ': [(None, None)],
+        'ZA': [(dt.date(1994, 8, 30), None)],
+        'ZM': [(None, None)],
+        'ZW': [(None, None)],
+        },
+    'AMU': {
+        'DZ': [(None, None)],
+        'LY': [(None, None)],
+        'MA': [(None, None)],
+        'MR': [(None, None)],
+        'TN': [(None, None)],
+        },
+    }
 
 SUBREGIONS = {
     '001': ['002', '009', '010', '019', '142', '150'],
@@ -109,10 +391,18 @@ def get_countries():
     return {c.code: c for c in Country.find([])}
 
 
+def get_organizations():
+    Organization = Model.get('country.organization')
+    return {o.code: o for o in Organization.find([])}
+
+
 def update_countries(countries):
     print("Update countries", file=sys.stderr)
     Region = Model.get('country.region')
     Country = Model.get('country.country')
+    Member = Model.get('country.organization.member')
+
+    organizations = get_organizations()
 
     code2region = {a.code_numeric: a for a in Region.find([])}
 
@@ -122,11 +412,26 @@ def update_countries(countries):
         if code in countries:
             record = countries[code]
         else:
-            record = Country(code=code)
+            record = Country(code=code, members=[])
         record.name = _remove_forbidden_chars(country.name)
         record.code3 = country.alpha_3
         record.code_numeric = country.numeric
         record.region = code2region.get(REGION2PARENT.get(country.numeric))
+        for organization_code, members in ORGANIZATIONS.items():
+            if organization_code in organizations and code in members:
+                organization = organizations[organization_code]
+                dates = members[code].copy()
+                for member in list(record.members):
+                    if member.organization == organization:
+                        if dates:
+                            member.from_date, member.to_date = dates.pop()
+                        else:
+                            record.members.remove(member)
+                for from_date, to_date in dates:
+                    record.members.append(Member(
+                            organization=organization,
+                            from_date=from_date,
+                            to_date=to_date))
         records.append(record)
 
     Country.save(records)
