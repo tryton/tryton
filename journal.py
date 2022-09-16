@@ -14,7 +14,8 @@ from trytond.modules.company.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id
-from trytond.tools import grouped_slice, lstrip_wildcard, reduce_ids
+from trytond.tools import (
+    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
@@ -74,16 +75,17 @@ class Journal(
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('code', clause[1], code_value) + tuple(clause[3:]),
-            (cls._rec_name,) + tuple(clause[1:]),
+            ('code', operator, code_value, *extra),
+            (cls._rec_name, operator, operand, *extra),
             ]
 
     @classmethod
