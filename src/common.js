@@ -1890,11 +1890,9 @@
         is_full_text: function(value, escape) {
             escape = escape || '\\';
             var escaped = value;
-            while (escaped.charAt(0) == '%') {
-                escaped = escaped.substring(1);
-            }
-            while (escaped.charAt(escaped.length - 1) == '%') {
-                escaped = escaped.substring(0, escaped.length - 1);
+            if ((escaped.charAt(0) == '%') &&
+                (escaped.charAt(escaped.length - 1) == '%')) {
+                escaped = escaped.slice(1, -1);
             }
             escaped = escaped
                 .replace(escape + '%', '')
