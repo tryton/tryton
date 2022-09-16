@@ -6,7 +6,7 @@ from trytond.model import (
     sequence_ordered)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import lstrip_wildcard
+from trytond.tools import is_full_text, lstrip_wildcard
 
 
 class ProductCustomer(
@@ -55,21 +55,21 @@ class ProductCustomer(
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
-        domain = [bool_op,
-            ('template',) + tuple(clause[1:]),
-            ('product',) + tuple(clause[1:]),
-            ('party',) + tuple(clause[1:]),
-            ('code', clause[1], code_value) + tuple(clause[3:]),
-            ('name',) + tuple(clause[1:]),
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
+        return [bool_op,
+            ('template', operator, operand, *extra),
+            ('product', operator, operand, *extra),
+            ('party', operator, operand, *extra),
+            ('code', operator, code_value, *extra),
+            ('name', operator, operand, *extra),
             ]
-        return domain
 
 
 class Template(metaclass=PoolMeta):
