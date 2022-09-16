@@ -25,7 +25,7 @@ from trytond.modules.company import CompanyReport
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.tools import (
-    grouped_slice, lstrip_wildcard, reduce_ids, sortable_values)
+    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids, sortable_values)
 from trytond.transaction import Transaction
 
 from .sepa_handler import CAMT054
@@ -307,18 +307,18 @@ class Group(metaclass=PoolMeta):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         domain = super().search_rec_name(name, clause)
-        return [
-            bool_op,
+        return [bool_op,
             domain,
-            ('sepa_id', clause[1], code_value) + tuple(clause[3:]),
+            ('sepa_id', operator, code_value, *extra),
             ]
 
 
@@ -447,22 +447,19 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def search_rec_name(cls, name, clause):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         domain = super().search_rec_name(name, clause)
-        if domain:
-            if clause[1].startswith('!') or clause[1].startswith('not '):
-                bool_op = 'AND'
-            else:
-                bool_op = 'OR'
-            domain = [
-                bool_op,
-                domain,
-                ]
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
-        domain.append(
-            ('sepa_info_id', clause[1], code_value) + tuple(clause[3:]))
-        return domain
+        return [bool_op,
+            domain,
+            ('sepa_info_id', operator, code_value, *extra),
+            ]
 
 
 class Mandate(Workflow, ModelSQL, ModelView):
