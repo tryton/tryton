@@ -14,7 +14,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool
-from trytond.tools import lstrip_wildcard
+from trytond.tools import is_full_text, lstrip_wildcard
 
 from .exceptions import AccountValidationError, IBANValidationError, InvalidBIC
 
@@ -31,16 +31,17 @@ class Bank(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        bic_value = clause[2]
-        if clause[1].endswith('like'):
-            bic_value = lstrip_wildcard(clause[2])
+        bic_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            bic_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('party.rec_name',) + tuple(clause[1:]),
-            ('bic', clause[1], bic_value) + tuple(clause[3:]),
+            ('party.rec_name', operator, operand, *extra),
+            ('bic', operator, bic_value, *extra),
             ]
 
     @fields.depends('bic')
@@ -234,15 +235,16 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        number_value = clause[2]
-        if clause[1].endswith('like'):
-            number_value = lstrip_wildcard(clause[2])
+        number_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            number_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('number', clause[1], number_value) + tuple(clause[3:]),
+            ('number', operator, number_value, *extra),
             ]
 
     @classmethod
