@@ -9,7 +9,7 @@ from trytond import backend
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields, tree
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
-from trytond.tools import lstrip_wildcard
+from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
 
@@ -205,18 +205,19 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('name',) + tuple(clause[1:]),
-            ('code', clause[1], code_value) + tuple(clause[3:]),
-            ('code3', clause[1], code_value) + tuple(clause[3:]),
-            ('code_numeric', clause[1], code_value) + tuple(clause[3:]),
+            ('name', operator, operand, *extra),
+            ('code', operator, code_value, *extra),
+            ('code3', operator, code_value, *extra),
+            ('code_numeric', operator, code_value, *extra),
             ]
 
     def is_member(self, organization, date=None):
@@ -452,16 +453,17 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('name',) + tuple(clause[1:]),
-            ('code', clause[1], code_value) + tuple(clause[3:]),
+            ('name', operator, operand, *extra),
+            ('code', operator, code_value, *extra),
             ]
 
     @classmethod
@@ -521,14 +523,15 @@ class PostalCode(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
+        code_value = operand
+        if operator.endswith('like') and is_full_text(operand):
+            code_value = lstrip_wildcard(operand)
         return [bool_op,
-            ('postal_code', clause[1], code_value) + tuple(clause[3:]),
-            ('city',) + tuple(clause[1:]),
+            ('postal_code', operator, code_value, *extra),
+            ('city', operator, operand, *extra),
             ]
