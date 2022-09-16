@@ -167,26 +167,26 @@ class ToolsTestCase(unittest.TestCase):
         'Test strip wildcard'
         for clause, result in [
                 ('%a%', 'a'),
-                ('%%%%a%%%', 'a'),
+                ('%%a%%', '%a%'),
                 ('\\%a%', '\\%a'),
                 ('\\%a\\%', '\\%a\\%'),
                 ('a', 'a'),
                 ('', ''),
                 (None, None),
                 ]:
-            self.assertEqual(
-                strip_wildcard(clause), result, msg=clause)
+            with self.subTest(clause=clause):
+                self.assertEqual(strip_wildcard(clause), result)
 
     def test_strip_wildcard_different_wildcard(self):
         'Test strip wildcard with different wildcard'
-        self.assertEqual(strip_wildcard('___a___', '_'), 'a')
+        self.assertEqual(strip_wildcard('_a_', '_'), 'a')
 
     def test_lstrip_wildcard(self):
         'Test lstrip wildcard'
         for clause, result in [
                 ('%a', 'a'),
                 ('%a%', 'a%'),
-                ('%%%%a%', 'a%'),
+                ('%%a%', '%a%'),
                 ('\\%a%', '\\%a%'),
                 ('a', 'a'),
                 ('', ''),
@@ -197,14 +197,14 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_lstrip_wildcard_different_wildcard(self):
         'Test lstrip wildcard with different wildcard'
-        self.assertEqual(lstrip_wildcard('___a', '_'), 'a')
+        self.assertEqual(lstrip_wildcard('_a', '_'), 'a')
 
     def test_rstrip_wildcard(self):
         'Test rstrip wildcard'
         for clause, result in [
                 ('a%', 'a'),
                 ('%a%', '%a'),
-                ('%a%%%%%', '%a'),
+                ('%a%%', '%a%'),
                 ('%a\\%', '%a\\%'),
                 ('a', 'a'),
                 ('', ''),
@@ -213,8 +213,8 @@ class ToolsTestCase(unittest.TestCase):
             self.assertEqual(
                 rstrip_wildcard(clause), result, msg=clause)
 
-    def test_rstrip_wildcard_diferent_wildcard(self):
-        self.assertEqual(rstrip_wildcard('a___', '_'), 'a')
+    def test_rstrip_wildcard_different_wildcard(self):
+        self.assertEqual(rstrip_wildcard('a_', '_'), 'a')
 
     def test_escape_wildcard(self):
         self.assertEqual(
@@ -232,6 +232,8 @@ class ToolsTestCase(unittest.TestCase):
         for value, result in [
                 ('foo', True),
                 ('%foo bar%', True),
+                ('%%foo bar%', False),
+                ('%foo bar%%', False),
                 ('foo%', False),
                 ('foo_bar', False),
                 ('foo\\_bar', True),

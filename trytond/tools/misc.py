@@ -218,19 +218,18 @@ def strip_wildcard(string, wildcard='%', escape='\\'):
 
 def lstrip_wildcard(string, wildcard='%'):
     "Strip starting wildcard from string"
-    if not string:
-        return string
-    return string.lstrip(wildcard)
+    if string and string.startswith(wildcard):
+        string = string[1:]
+    return string
 
 
 def rstrip_wildcard(string, wildcard='%', escape='\\'):
     "Strip ending wildcard from string"
-    if not string:
-        return string
-    new_string = string.rstrip(wildcard)
-    if new_string[-1] == escape:
-        return string
-    return new_string
+    if (string
+            and string.endswith(wildcard)
+            and not string.endswith(escape + wildcard)):
+        string = string[:-1]
+    return string
 
 
 def escape_wildcard(string, wildcards='%_', escape='\\'):
@@ -246,7 +245,7 @@ def unescape_wildcard(string, wildcards='%_', escape='\\'):
 
 
 def is_full_text(value, escape='\\'):
-    escaped = value.strip('%')
+    escaped = strip_wildcard(value, escape=escape)
     escaped = escaped.replace(escape + '%', '').replace(escape + '_', '')
     if '%' in escaped or '_' in escaped:
         return False
