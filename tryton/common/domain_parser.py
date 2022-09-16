@@ -110,7 +110,9 @@ def likify(value, escape='\\'):
 
 
 def is_full_text(value, escape='\\'):
-    escaped = value.strip('%')
+    escaped = value
+    if escaped.startswith('%') and escaped.endswith('%'):
+        escaped = escaped[1:-1]
     escaped = escaped.replace(escape + '%', '').replace(escape + '_', '')
     if '%' in escaped or '_' in escaped:
         return False
