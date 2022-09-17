@@ -1305,11 +1305,17 @@ class Button(Cell):
         store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
 
+        if self.view.record and self.view.record != record:
+            widget.stop_emission_by_name('clicked')
+            return True
+
         state_changes = record.expr_eval(
             self.attrs.get('states', {}))
         if state_changes.get('invisible') \
                 or state_changes.get('readonly'):
             return True
+
+        self.view.treeview.set_cursor(path)
         widget.handler_block_by_func(self.button_clicked)
         try:
             self.view.screen.button(self.attrs)
