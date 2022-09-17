@@ -346,15 +346,18 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def _listen(cls, dbname):
-        database = backend.Database(dbname)
-        if not database.has_channel():
-            raise NotImplementedError
-
-        logger.info("listening on channel '%s' of '%s'", cls._channel, dbname)
-        conn = database.get_connection(autocommit=True)
-        pid = os.getpid()
         current_thread = threading.current_thread()
+        pid = os.getpid()
+        conn = None
         try:
+            database = backend.Database(dbname)
+            if not database.has_channel():
+                raise NotImplementedError
+
+            logger.info(
+                "listening on channel '%s' of '%s'", cls._channel, dbname)
+            conn = database.get_connection(autocommit=True)
+
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
             current_thread.listening = True
@@ -380,7 +383,8 @@ class MemoryCache(BaseCache):
                 "cache listener on '%s' crashed", dbname, exc_info=True)
             raise
         finally:
-            database.put_connection(conn)
+            if conn:
+                database.put_connection(conn)
             with cls._listener_lock[pid]:
                 if cls._listener.get((pid, dbname)) == current_thread:
                     del cls._listener[pid, dbname]
