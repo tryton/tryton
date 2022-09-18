@@ -131,6 +131,9 @@ class Link(StateMixin, Gtk.Button):
             self.hide()
             return
         if record:
+            if record.id < 0:
+                self.hide()
+                return
             data = {
                 'model': record.model_name,
                 'id': record.id,
