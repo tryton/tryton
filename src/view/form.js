@@ -977,6 +977,10 @@ function eval_pyson(value){
                 context = {},
                 pyson_ctx = {};
             if (record) {
+                if (record.id < 0) {
+                    this.hide();
+                    return;
+                }
                 data = {
                     model: record.model.name,
                     id: record.id,
