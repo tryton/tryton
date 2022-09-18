@@ -682,6 +682,11 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     def _type_addresses(cls):
         return {'fr_siret'}
 
+    @fields.depends('address', '_parent_address.party')
+    def on_change_address(self):
+        if self.address:
+            self.party = self.address.party
+
     @fields.depends('type')
     def on_change_with_type_address(self, name=None):
         return self.type in self._type_addresses()
