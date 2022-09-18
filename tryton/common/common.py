@@ -942,6 +942,18 @@ def check_version(box, version=__version__):
         return False
 
 
+def open_documentation():
+    version = __version__.split('.')[:2]
+    if int(version[-1]) % 2:
+        version = 'latest'
+    else:
+        version = '.'.join([version])
+    webbrowser.open(CONFIG['doc.url'] % {
+            'lang': CONFIG['client.lang'],
+            'version': version,
+            })
+
+
 def to_xml(string):
     return string.replace('&', '&amp;'
         ).replace('<', '&lt;').replace('>', '&gt;')

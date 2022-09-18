@@ -100,6 +100,10 @@ class Main(Gtk.Application):
         action.connect('activate', lambda *a: self.edit_limit())
         self.add_action(action)
 
+        action = Gio.SimpleAction.new('documentation', None)
+        action.connect('activate', lambda *a: common.open_documentation())
+        self.add_action(action)
+
         self._shortcuts = None
         action = Gio.SimpleAction.new('shortcuts', None)
         action.connect('activate', lambda *a: self.shortcuts())
@@ -306,6 +310,7 @@ class Main(Gtk.Application):
         menu.append_section(_("Options"), section)
 
         section = Gio.Menu.new()
+        section.append(_("Documentation..."), 'app.documentation')
         section.append(_("Keyboard Shortcuts..."), 'app.shortcuts')
         section.append(_("About..."), 'app.about')
         menu.append_section(_("Help"), section)
