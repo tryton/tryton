@@ -128,6 +128,9 @@ Accounting
 `Statement Rule </projects/modules-account-statement-rule/en/latest>`_
     Applies rules on imported statements.
 
+`Statement SEPA </projects/modules-account-statement-sepa/en/latest>`_
+    Imports statements in SEPA format.
+
 `Stock Anglo-Saxon </projects/modules-account-stock-anglo-saxon/en/latest>`_
     Values stock using the anglo-saxon method.
 
