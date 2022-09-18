@@ -336,6 +336,13 @@ var Sao = {
     Sao.config = {};
     Sao.config.limit = 1000;
     Sao.config.display_size = 20;
+    var doc_version = Sao.__version__.split('.').slice(0, 2);
+    if (parseInt(doc_version[1], 10) % 2) {
+        doc_version = 'latest';
+    } else {
+        doc_version = doc_version.join('.');
+    }
+    Sao.config.doc_url = `https://docs.tryton.org/en/${doc_version}`;
     Sao.config.bug_url = 'https://bugs.tryton.org/';
     Sao.config.title = 'Tryton';
     Sao.config.icon_colors = '#267f82,#3e4950,#e78e42'.split(',');
@@ -1109,7 +1116,7 @@ var Sao = {
                 shortcut: 'f1',
                 label: Sao.i18n.gettext('Show this help'),
                 callback: function() {
-                    shortcuts_dialog();
+                    help_dialog();
                 },
             }, {
                 shortcut: 'ctrl+f1',
@@ -1152,9 +1159,9 @@ var Sao = {
         }
     }
 
-    function shortcuts_dialog() {
-        var dialog = new Sao.Dialog(Sao.i18n.gettext('Keyboard shortcuts'),
-            'shortcut-dialog', 'm');
+    function help_dialog() {
+        var dialog = new Sao.Dialog(
+            Sao.i18n.gettext("Help"), 'help-dialog', 'm');
         jQuery('<button>', {
             'class': 'close',
             'data-dismiss': 'modal',
@@ -1162,6 +1169,15 @@ var Sao = {
         }).append(jQuery('<span>', {
             'aria-hidden': true,
         }).append('&times;')).prependTo(dialog.header);
+        jQuery('<a/>', {
+            'class': 'btn btn-link',
+            'href': Sao.config.doc_url,
+            'target': '_blank',
+        }).text(Sao.i18n.gettext("Documentation..."))
+            .appendTo(dialog.footer);
+        jQuery('<h4/>')
+            .text(Sao.i18n.gettext("Keyboard shortcuts"))
+            .appendTo(dialog.body);
         var row = jQuery('<div/>', {
             'class': 'row'
         }).appendTo(dialog.body);
