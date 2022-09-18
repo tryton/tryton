@@ -615,15 +615,34 @@ var Sao = {
     Sao.login = function() {
         Sao.set_title();
         Sao.i18n.setlang().always(function() {
-            Sao.Session.get_credentials()
-                .then(function(session) {
-                    Sao.Session.current_session = session;
-                    return session.reload_context();
-                }).then(Sao.get_preferences).then(function(preferences) {
-                    Sao.menu(preferences);
-                    Sao.user_menu(preferences);
-                    Sao.open_url();
-                    Sao.Bus.listen();
+            Sao.Session.server_version()
+                .then(function(version) {
+                    if (JSON.stringify(version.split('.').slice(0, 2)) !==
+                        JSON.stringify(Sao.__version__.split('.').slice(0, 2)))
+                    {
+                        Sao.common.warning.run(
+                            Sao.i18n.gettext(
+                                "Incompatible version of the server."),
+                            Sao.i18n.gettext("Version mismatch"));
+                    } else {
+                        Sao.Session.get_credentials()
+                            .then(function(session) {
+                                Sao.Session.current_session = session;
+                                return session.reload_context();
+                            })
+                            .then(Sao.get_preferences)
+                            .then(function(preferences) {
+                                Sao.menu(preferences);
+                                Sao.user_menu(preferences);
+                                Sao.open_url();
+                                Sao.Bus.listen();
+                            });
+                    }
+                }, function() {
+                    Sao.common.warning.run(
+                        Sao.i18n.gettext(
+                            "Could not connect to the server."),
+                        Sao.i18n.gettext("Connection error"));
                 });
         });
     };
@@ -887,7 +906,8 @@ var Sao = {
     });
 
     Sao.Dialog = Sao.class_(Object, {
-        init: function(title, class_, size='sm', keyboard=true) {
+        init: function(
+            title, class_, size='sm', keyboard=true, small=null) {
             this.modal = jQuery('<div/>', {
                 'class': class_ + ' modal fade',
                 'role': 'dialog',
@@ -903,7 +923,7 @@ var Sao = {
                 'class': 'modal-header'
             }).appendTo(this.content);
             if (title) {
-                this.add_title(title);
+                this.add_title(title, small);
             }
             this.body = jQuery('<div/>', {
                 'class': 'modal-body'
@@ -922,11 +942,15 @@ var Sao = {
                 }
             });
         },
-        add_title: function(title) {
-            this.header.append(jQuery('<h4/>', {
+        add_title: function(title, small=null) {
+            var titleElement = jQuery('<h4/>', {
                 'class': 'modal-title',
                 'title': title,
-            }).text(Sao.common.ellipsize(title, 120)));
+            }).text(Sao.common.ellipsize(title, 120)  + (small? ' ' : ''));
+            if (small) {
+                titleElement.append(jQuery('<small/>').text(small));
+            }
+            this.header.append(titleElement);
         }
     });
 
@@ -1161,7 +1185,8 @@ var Sao = {
 
     function help_dialog() {
         var dialog = new Sao.Dialog(
-            Sao.i18n.gettext("Help"), 'help-dialog', 'm');
+            Sao.i18n.gettext("Help"), 'help-dialog', 'md', true,
+            Sao.__version__);
         jQuery('<button>', {
             'class': 'close',
             'data-dismiss': 'modal',

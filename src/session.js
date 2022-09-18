@@ -175,8 +175,30 @@
         }
     });
 
+    Sao.Session.server_version = function() {
+        var timeoutID = Sao.common.processing.show();
+        return jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify({
+                'id': 0,
+                'method': 'common.server.version',
+                'params': []
+            }),
+            'dataType': 'json',
+            'url': '/',
+            'type': 'post',
+            'complete': [function() {
+                Sao.common.processing.hide(timeoutID);
+            }]
+        }).then(function(data) {
+            return data.result;
+        });
+    };
+
     Sao.Session.login_dialog = function() {
-        var dialog = new Sao.Dialog(Sao.i18n.gettext('Login'), 'lg');
+        var dialog = new Sao.Dialog(
+            Sao.i18n.gettext("Login"), 'login-dialog', 'md', true,
+            Sao.__version__);
         dialog.database_select = jQuery('<select/>', {
             'class': 'form-control',
             'id': 'database',
