@@ -17,7 +17,7 @@ class Sale(metaclass=PoolMeta):
 
     web_shop = fields.Many2One('web.shop', "Web Shop", ondelete='RESTRICT')
     web_id = fields.Char(
-        "Web ID",
+        "Web ID", strip=False,
         states={
             'required': Bool(Eval('web_shop')),
             'readonly': ~Eval('web_id'),
