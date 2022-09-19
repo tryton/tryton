@@ -61,7 +61,7 @@ class Template(
     code_readonly = fields.Function(
         fields.Boolean("Code Readonly"), 'get_code_readonly')
     code = fields.Char(
-        "Code", select=True,
+        "Code", select=True, strip='leading',
         states={
             'readonly': Eval('code_readonly', False),
             })
@@ -355,7 +355,7 @@ class Product(
                 }),
         'on_change_with_prefix_code')
     suffix_code = fields.Char(
-        "Suffix Code",
+        "Suffix Code", strip='trailing',
         states={
             'readonly': Eval('code_readonly', False),
             },
