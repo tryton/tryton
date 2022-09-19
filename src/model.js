@@ -1722,6 +1722,21 @@
 
     Sao.field.Char = Sao.class_(Sao.field.Field, {
         _default: '',
+        set: function(record, value) {
+            if (this.description.strip && value) {
+                switch (this.description.strip) {
+                    case 'leading':
+                        value = value.timStart();
+                        break;
+                    case 'trailing':
+                        value = value.trimEnd();
+                        break;
+                    default:
+                        value = value.trim();
+                }
+            }
+            Sao.field.Char._super.set.call(this, record, value);
+        },
         get: function(record) {
             return Sao.field.Char._super.get.call(this, record) || this._default;
         }
