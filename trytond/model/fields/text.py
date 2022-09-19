@@ -18,6 +18,9 @@ class Text(Char):
     forbidden_chars = ''
     search_full_text = True
 
+    def __init__(self, *args, strip=False, **kwarg):
+        super().__init__(*args, strip=strip, **kwarg)
+
 
 class FullText(Field):
     '''

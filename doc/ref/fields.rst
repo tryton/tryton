@@ -264,7 +264,7 @@ BigInteger
 Char
 ----
 
-.. class:: Char(string[, size[, translate[, \**options]]])
+.. class:: Char(string[, size[, translate[, strip[, \**options]]]])
 
    A single line :py:class:`string <str>` field.
 
@@ -290,6 +290,13 @@ Char
    If ``True``, the value of the field is translatable.
    The value readed and stored will depend on the ``language`` defined in the
    context.
+
+.. attribute:: Char.strip
+
+   If ``True``, leading and trailing whitespace are removed.
+   If ``leading``, leading whitespace are removed.
+   If ``trailing``, trailing whitespace are removed.
+   The default value is ``True``.
 
 .. attribute:: Char.autocomplete
 

@@ -13,7 +13,7 @@ class Session(ModelSQL):
     __name__ = 'ir.session'
     _rec_name = 'key'
 
-    key = fields.Char('Key', required=True, select=True)
+    key = fields.Char('Key', required=True, select=True, strip=False)
 
     @classmethod
     def __setup__(cls):

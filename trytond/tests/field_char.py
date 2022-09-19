@@ -10,6 +10,9 @@ class Char(ModelSQL):
     'Char'
     __name__ = 'test.char'
     char = fields.Char("Char")
+    char_lstripped = fields.Char("Char", strip='leading')
+    char_rstripped = fields.Char("Char", strip='trailing')
+    char_unstripped = fields.Char("Char", strip=False)
 
 
 class CharDefault(ModelSQL):
@@ -47,6 +50,9 @@ class CharTranslate(ModelSQL):
     'Char Translate'
     __name__ = 'test.char_translate'
     char = fields.Char("Char", translate=True)
+    char_lstripped = fields.Char("Char", strip='leading', translate=True)
+    char_rstripped = fields.Char("Char", strip='trailing', translate=True)
+    char_unstripped = fields.Char("Char", strip=False, translate=True)
 
 
 class CharUnaccentedOn(ModelSQL):

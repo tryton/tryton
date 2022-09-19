@@ -698,7 +698,8 @@ class ModelSQL(ModelStorage):
                 if (getattr(field, 'translate', False)
                         and not hasattr(field, 'set')):
                     translation_values.setdefault(
-                        '%s,%s' % (cls.__name__, fname), {})[new_id] = value
+                        '%s,%s' % (cls.__name__, fname), {})[new_id] = (
+                            field.sql_format(value))
                 if hasattr(field, 'set'):
                     args = fields_to_set.setdefault(fname, [])
                     actions = iter(args)
@@ -1113,7 +1114,8 @@ class ModelSQL(ModelStorage):
                         and not hasattr(field, 'set')):
                     Translation.set_ids(
                         '%s,%s' % (cls.__name__, fname), 'model',
-                        transaction.language, ids, [value] * len(ids))
+                        transaction.language, ids,
+                        [field.sql_format(value)] * len(ids))
                 if hasattr(field, 'set'):
                     fields_to_set.setdefault(fname, []).extend((ids, value))
 

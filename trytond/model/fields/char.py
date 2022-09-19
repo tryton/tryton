@@ -1,8 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import string
 import warnings
 
+from sql import Expression, Query
 from sql.conditionals import Coalesce, NullIf
+from sql.functions import Trim
 from sql.operators import Not
 
 from trytond.rpc import RPC
@@ -25,7 +28,7 @@ class Char(FieldTranslate):
     def __init__(self, string='', size=None, help='', required=False,
             readonly=False, domain=None, states=None, translate=False,
             select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading=None, autocomplete=None):
+            context=None, loading=None, autocomplete=None, strip=True):
         '''
         :param translate: A boolean. If ``True`` the field is translatable.
         :param size: A integer. If set defines the maximum size of the values.
@@ -41,6 +44,7 @@ class Char(FieldTranslate):
             warnings.warn('autocomplete argument is deprecated, use the '
                 'depends decorator', DeprecationWarning, stacklevel=2)
             self.autocomplete.update(autocomplete)
+        self.strip = strip
         self.translate = translate
         self.__size = None
         self.size = size
@@ -56,11 +60,50 @@ class Char(FieldTranslate):
     size = property(_get_size, _set_size)
 
     @property
+    def strip(self):
+        return self.__strip
+
+    @strip.setter
+    def strip(self, value):
+        assert value in {False, True, 'leading', 'trailing'}
+        self.__strip = value
+
+    @property
     def _sql_type(self):
         if isinstance(self.size, int):
             return 'VARCHAR(%s)' % self.size
         else:
             return 'VARCHAR'
+
+    def __set__(self, inst, value):
+        if isinstance(value, str) and self.strip:
+            if self.strip == 'leading':
+                value = value.lstrip()
+            elif self.strip == 'trailing':
+                value = value.rstrip()
+            else:
+                value = value.strip()
+        super().__set__(inst, value)
+
+    def sql_format(self, value):
+        if value is not None and self.strip:
+            if isinstance(value, (Query, Expression)):
+                if self.strip == 'leading':
+                    position = 'LEADING'
+                elif self.strip == 'trailing':
+                    position = 'TRAILING'
+                else:
+                    position = 'BOTH'
+                value = Trim(
+                    value, position=position, characters=string.whitespace)
+            else:
+                if self.strip == 'leading':
+                    value = value.lstrip()
+                elif self.strip == 'trailing':
+                    value = value.rstrip()
+                else:
+                    value = value.strip()
+        return super().sql_format(value)
 
     def set_rpc(self, model):
         super(Char, self).set_rpc(model)
@@ -188,6 +231,7 @@ class Char(FieldTranslate):
     def definition(self, model, language):
         definition = super().definition(model, language)
         definition['autocomplete'] = list(self.autocomplete)
+        definition['strip'] = self.strip
         if self.size is not None:
             definition['size'] = self.size
         return definition

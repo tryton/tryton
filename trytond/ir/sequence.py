@@ -60,8 +60,8 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             'readonly': Eval('id', -1) >= 0,
             },
         depends=['id'])
-    prefix = fields.Char('Prefix')
-    suffix = fields.Char('Suffix')
+    prefix = fields.Char('Prefix', strip='leading')
+    suffix = fields.Char('Suffix', strip='trailing')
     type = fields.Selection([
         ('incremental', 'Incremental'),
         ('decimal timestamp', 'Decimal Timestamp'),

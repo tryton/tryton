@@ -52,24 +52,26 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             ], 'Direction', required=True)
 
     # date
-    date = fields.Char('Date', required=True)
+    date = fields.Char("Date", required=True, strip=False)
 
-    am = fields.Char("AM")
-    pm = fields.Char("PM")
+    am = fields.Char("AM", strip=False)
+    pm = fields.Char("PM", strip=False)
 
     # number
     grouping = fields.Char('Grouping', required=True)
-    decimal_point = fields.Char('Decimal Separator', required=True)
-    thousands_sep = fields.Char('Thousands Separator')
+    decimal_point = fields.Char(
+        "Decimal Separator", required=True, strip=False)
+    thousands_sep = fields.Char("Thousands Separator", strip=False)
 
     # monetary formatting
     mon_grouping = fields.Char('Grouping', required=True)
-    mon_decimal_point = fields.Char('Decimal Separator', required=True)
+    mon_decimal_point = fields.Char(
+        "Decimal Separator", required=True, strip=False)
     mon_thousands_sep = fields.Char('Thousands Separator')
     p_sign_posn = fields.Integer('Positive Sign Position', required=True)
     n_sign_posn = fields.Integer('Negative Sign Position', required=True)
-    positive_sign = fields.Char('Positive Sign')
-    negative_sign = fields.Char('Negative Sign')
+    positive_sign = fields.Char("Positive Sign", strip=False)
+    negative_sign = fields.Char("Negative Sign", strip=False)
     p_cs_precedes = fields.Boolean('Positive Currency Symbol Precedes')
     n_cs_precedes = fields.Boolean('Negative Currency Symbol Precedes')
     p_sep_by_space = fields.Boolean('Positive Separate by Space')

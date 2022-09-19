@@ -112,7 +112,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     __name__ = "res.user"
     name = fields.Char('Name', select=True)
     login = fields.Char('Login', required=True)
-    password_hash = fields.Char('Password Hash')
+    password_hash = fields.Char('Password Hash', strip=False)
     password = fields.Function(fields.Char(
             "Password",
             states={
@@ -120,7 +120,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 }),
         getter='get_password', setter='set_password')
     password_reset = fields.Char(
-        "Reset Password",
+        "Reset Password", strip=False,
         states={
             'invisible': not _has_password,
             })
@@ -812,7 +812,7 @@ class LoginAttempt(ModelSQL):
     """
     __name__ = 'res.user.login.attempt'
     login = fields.Char('Login', size=512)
-    device_cookie = fields.Char("Device Cookie")
+    device_cookie = fields.Char("Device Cookie", strip=False)
     ip_address = fields.Char("IP Address")
     ip_network = fields.Char("IP Network")
 
@@ -896,7 +896,7 @@ class UserDevice(ModelSQL):
     __name__ = 'res.user.device'
 
     login = fields.Char("Login", required=True)
-    cookie = fields.Char("Cookie", readonly=True, required=True)
+    cookie = fields.Char("Cookie", readonly=True, required=True, strip=False)
 
     @classmethod
     def __setup__(cls):
@@ -1082,7 +1082,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
     __name__ = 'res.user.application'
     _rec_name = 'key'
 
-    key = fields.Char("Key", required=True, select=True)
+    key = fields.Char("Key", required=True, select=True, strip=False)
     user = fields.Many2One('res.user', "User", select=True)
     application = fields.Selection([], "Application")
     state = fields.Selection([
