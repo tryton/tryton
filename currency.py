@@ -39,9 +39,9 @@ class Cron(metaclass=PoolMeta):
         'invisible': Eval('source') != 'nbs_rs',
         }
 
-    rs_username = fields.Char("Username", states=_states)
-    rs_password = fields.Char("Password", states=_states)
-    rs_license_id = fields.Char("License ID", states=_states)
+    rs_username = fields.Char("Username", states=_states, strip=False)
+    rs_password = fields.Char("Password", states=_states, strip=False)
+    rs_license_id = fields.Char("License ID", states=_states, strip=False)
     rs_list_type = fields.Selection(
         'get_rs_list_types', "List Type", states=_states)
     _rs_list_types = Cache(__name__ + '.get_rs_list_types', context=False)
