@@ -100,16 +100,17 @@ class PaymentGroup(metaclass=PoolMeta):
 
 class CheckoutMixin:
     __slots__ = ()
-    braintree_checkout_id = fields.Char("Braintree Checkout ID", readonly=True)
+    braintree_checkout_id = fields.Char(
+        "Braintree Checkout ID", readonly=True, strip=False)
     braintree_client_token = fields.Char(
-        "Braintree Client Token", readonly=True)
+        "Braintree Client Token", readonly=True, strip=False)
     braintree_nonce = fields.Char(
-        "Braintree Nonce", readonly=True,
+        "Braintree Nonce", readonly=True, strip=False,
         states={
             'invisible': ~Eval('braintree_nonce'),
             })
     braintree_device_data = fields.Char(
-        "Braintree Device Data", readonly=True,
+        "Braintree Device Data", readonly=True, strip=False,
         states={
             'invisible': ~Eval('braintree_device_data'),
             })
@@ -157,7 +158,7 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     braintree_transaction_id = fields.Char(
-        "Braintree Transaction ID", readonly=True,
+        "Braintree Transaction ID", readonly=True, strip=False,
         states={
             'invisible': ((Eval('process_method') != 'braintree')
                 | ~Eval('braintree_transaction_id')),
@@ -551,7 +552,7 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
             ], "State", readonly=True, sort=False)
 
     braintree_transaction_id = fields.Char(
-        "Braintree Transaction ID", readonly=True)
+        "Braintree Transaction ID", readonly=True, strip=False)
 
     braintree_error_message = fields.Text(
         "Braintree Error Message", readonly=True,
@@ -765,10 +766,11 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
             ('sandbox', "Sandbox"),
             ('production', "Production"),
             ], "Environment", required=True)
-    merchant_id = fields.Char("Merchant ID", required=True)
-    public_key = fields.Char("Public Key", required=True)
-    private_key = fields.Char("Private Key", required=True)
-    webhook_identifier = fields.Char("Webhook Identifier", readonly=True)
+    merchant_id = fields.Char("Merchant ID", required=True, strip=False)
+    public_key = fields.Char("Public Key", required=True, strip=False)
+    private_key = fields.Char("Private Key", required=True, strip=False)
+    webhook_identifier = fields.Char(
+        "Webhook Identifier", readonly=True, strip=False)
     webhook_endpoint = fields.Function(
         fields.Char(
             "Webhook Endpoint",
@@ -908,7 +910,7 @@ class PaymentBraintreeCustomer(
                 Eval('braintree_customer_id') | Eval('braintree_nonce')),
             })
     braintree_customer_id = fields.Char(
-        "Braintree Customer ID",
+        "Braintree Customer ID", strip=False,
         states={
             'readonly': Eval('braintree_customer_id') & (Eval('id', -1) >= 0),
             })
