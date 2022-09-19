@@ -225,6 +225,10 @@ class LRUDictTestCase(unittest.TestCase):
 class LRUDictTransactionTestCase(unittest.TestCase):
     "Test LRUDictTransaction"
 
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
     @with_transaction()
     def test_init(self):
         "Test init set to transaction counter"
