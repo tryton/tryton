@@ -640,7 +640,7 @@ class Record(ModelSQL, ModelView):
         states={
             'readonly': ~Eval('blocked', False),
             })
-    uuid = fields.Char("UUID", readonly=True)
+    uuid = fields.Char("UUID", readonly=True, strip=False)
 
     @classmethod
     def __setup__(cls):
