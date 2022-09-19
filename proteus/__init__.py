@@ -145,6 +145,13 @@ class CharDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, str) or value is None
+        if self.definition.get('strip') and value:
+            if self.definition['strip'] == 'leading':
+                value = value.lstrip()
+            elif self.definition['strip'] == 'trailing':
+                value = value.rstrip()
+            else:
+                value = value.strip()
         super(CharDescriptor, self).__set__(instance, value or '')
 
 
