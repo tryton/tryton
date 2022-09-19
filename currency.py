@@ -35,7 +35,8 @@ class Currency(
     __name__ = 'currency.currency'
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of the currency.")
-    symbol = fields.Char('Symbol', size=10, required=True,
+    symbol = fields.Char(
+        "Symbol", size=10, required=True, strip=False,
         help="The symbol used for currency formating.")
     code = fields.Char('Code', size=3, required=True,
         help="The 3 chars ISO currency code.")
