@@ -23,8 +23,8 @@ class CredentialMyGLS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ('si', "Slovenia"),
             ('sk', "Slovakia"),
             ], "Country", required=True)
-    username = fields.Char("Username", required=True)
-    password = fields.Char("Password", required=True)
+    username = fields.Char("Username", required=True, strip=False)
+    password = fields.Char("Password", required=True, strip=False)
     client_number = fields.Integer("Client Number", required=True)
 
     @classmethod
