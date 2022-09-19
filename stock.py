@@ -103,7 +103,8 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
     shipping_label = fields.Binary(
         "Shipping Label", readonly=True,
         file_id=file_id, store_prefix=store_prefix)
-    shipping_label_id = fields.Char("Shipping Label ID", readonly=True)
+    shipping_label_id = fields.Char(
+        "Shipping Label ID", readonly=True, strip=False)
     shipping_label_mimetype = fields.Char(
         "Shipping Label MIME Type", readonly=True)
     shipping_tracking_url = fields.Function(
