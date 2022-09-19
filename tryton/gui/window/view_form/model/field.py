@@ -202,6 +202,16 @@ class Field(object):
 class CharField(Field):
     _default = ''
 
+    def set(self, record, value):
+        if self.attrs.get('strip') and value:
+            if self.attrs['strip'] == 'leading':
+                value = value.lstrip()
+            elif self.attrs['strip'] == 'trailing':
+                value = value.rstrip()
+            else:
+                value = value.strip()
+        super().set(record, value)
+
     def get(self, record):
         return super(CharField, self).get(record) or self._default
 
