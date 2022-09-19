@@ -74,11 +74,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
             'required': Eval('active', True),
             })
     email_valid = fields.Boolean('E-mail Valid')
-    email_token = fields.Char('E-mail Token', select=True)
+    email_token = fields.Char("E-mail Token", select=True, strip=False)
     password_hash = fields.Char('Password Hash')
     password = fields.Function(
         fields.Char('Password'), 'get_password', setter='set_password')
-    reset_password_token = fields.Char('Reset Password Token', select=True)
+    reset_password_token = fields.Char(
+        "Reset Password Token", select=True, strip=False)
     reset_password_token_expire = fields.Timestamp(
         'Reset Password Token Expire')
     party = fields.Many2One('party.party', 'Party', ondelete='RESTRICT')
@@ -420,7 +421,7 @@ class UserSession(ModelSQL):
     __name__ = 'web.user.session'
     _rec_name = 'key'
 
-    key = fields.Char('Key', required=True, select=True)
+    key = fields.Char("Key", required=True, select=True, strip=False)
     user = fields.Many2One(
         'web.user', 'User', required=True, select=True, ondelete='CASCADE')
 
