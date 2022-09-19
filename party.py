@@ -33,7 +33,7 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         }
 
     name = fields.Char(
-        "Name", select=True,
+        "Name", select=True, strip=False,
         help="The main identifier of the party.")
     code = fields.Char('Code', required=True, select=True,
         states={
