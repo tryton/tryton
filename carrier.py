@@ -53,8 +53,8 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'carrier.credential.sendcloud'
 
     company = fields.Many2One('company.company', "Company")
-    public_key = fields.Char("Public Key", required=True)
-    secret_key = fields.Char("Secret Key", required=True)
+    public_key = fields.Char("Public Key", required=True, strip=False)
+    secret_key = fields.Char("Secret Key", required=True, strip=False)
 
     addresses = fields.One2Many(
         'carrier.sendcloud.address', 'sendcloud', "Addresses",
