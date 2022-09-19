@@ -20,14 +20,14 @@ class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'carrier.credential.dpd'
 
     company = fields.Many2One('company.company', 'Company')
-    user_id = fields.Char('User ID', required=True)
-    password = fields.Char('Password', required=True)
+    user_id = fields.Char('User ID', required=True, strip=False)
+    password = fields.Char('Password', required=True, strip=False)
     server = fields.Selection([
             ('testing', 'Testing'),
             ('production', 'Production'),
             ], 'Server')
-    depot = fields.Char('Depot', readonly=True)
-    token = fields.Char('Token', readonly=True)
+    depot = fields.Char('Depot', readonly=True, strip=False)
+    token = fields.Char('Token', readonly=True, strip=False)
 
     @classmethod
     def default_server(cls):
