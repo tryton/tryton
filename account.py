@@ -55,9 +55,9 @@ class Configuration(_SyntaxMixin, metaclass=PoolMeta):
         'required': Bool(Eval('chorus_login')),
         }
 
-    chorus_login = fields.MultiValue(fields.Char("Chorus Login"))
+    chorus_login = fields.MultiValue(fields.Char("Chorus Login", strip=False))
     chorus_password = fields.MultiValue(fields.Char(
-            "Chorus Password", states=_states))
+            "Chorus Password", strip=False, states=_states))
     chorus_service = fields.MultiValue(fields.Selection([
                 (None, ""),
                 ('service-qualif', "Qualification"),
@@ -80,8 +80,8 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
     "Account Credential Chorus"
     __name__ = 'account.credential.chorus'
 
-    chorus_login = fields.Char("Login")
-    chorus_password = fields.Char("Password")
+    chorus_login = fields.Char("Login", strip=False)
+    chorus_password = fields.Char("Password", strip=False)
     chorus_service = fields.Selection([
             (None, ""),
             ('service-qualif', "Qualification"),
@@ -132,7 +132,7 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                     ['posted'])),
             ])
     syntax = fields.Selection('get_syntaxes', "Syntax", required=True)
-    number = fields.Char("Number", readonly=True)
+    number = fields.Char("Number", readonly=True, strip=False)
     date = fields.Date("Date", readonly=True)
 
     @classmethod
