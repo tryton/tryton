@@ -92,7 +92,8 @@ class Group(metaclass=PoolMeta):
 
 class CheckoutMixin:
     __slots__ = ()
-    stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
+    stripe_checkout_id = fields.Char(
+        "Stripe Checkout ID", readonly=True, strip=False)
 
     @classmethod
     def copy(cls, records, default=None):
@@ -131,7 +132,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         fields.Boolean("Stripe Checkout Needed"),
         'on_change_with_stripe_checkout_needed')
     stripe_charge_id = fields.Char(
-        "Stripe Charge ID", readonly=True,
+        "Stripe Charge ID", readonly=True, strip=False,
         states={
             'invisible': ((Eval('process_method') != 'stripe')
                 | ~Eval('stripe_charge_id')),
@@ -148,12 +149,12 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         fields.Boolean("Stripe Capture Needed"),
         'get_stripe_capture_needed')
     stripe_token = fields.Char(
-        "Stripe Token", readonly=True,
+        "Stripe Token", readonly=True, strip=False,
         states={
             'invisible': ~Eval('stripe_token'),
             })
     stripe_payment_intent_id = fields.Char(
-        "Stripe Payment Intent", readonly=True,
+        "Stripe Payment Intent", readonly=True, strip=False,
         states={
             'invisible': ~Eval('stripe_payment_intent_id'),
             })
@@ -171,7 +172,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 | ~Eval('stripe_capture_needed')),
             })
     stripe_idempotency_key = fields.Char(
-        "Stripe Idempotency Key", readonly=True)
+        "Stripe Idempotency Key", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -695,8 +696,9 @@ class Refund(Workflow, ModelSQL, ModelView):
             ], "State", readonly=True, select=True, sort=False)
 
     stripe_idempotency_key = fields.Char(
-        "Stripe Idempotency Key", readonly=True)
-    stripe_refund_id = fields.Char("Stripe Refund ID", readonly=True)
+        "Stripe Idempotency Key", readonly=True, strip=False)
+    stripe_refund_id = fields.Char(
+        "Stripe Refund ID", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -896,8 +898,9 @@ class Account(ModelSQL, ModelView):
     __name__ = 'account.payment.stripe.account'
 
     name = fields.Char("Name", required=True)
-    secret_key = fields.Char("Secret Key", required=True)
-    publishable_key = fields.Char("Publishable Key", required=True)
+    secret_key = fields.Char("Secret Key", required=True, strip=False)
+    publishable_key = fields.Char(
+        "Publishable Key", required=True, strip=False)
     webhook_identifier = fields.Char("Webhook Identifier", readonly=True)
     webhook_endpoint = fields.Function(
         fields.Char(
@@ -905,12 +908,12 @@ class Account(ModelSQL, ModelView):
             help="The URL to be called by Stripe."),
         'on_change_with_webhook_endpoint')
     webhook_signing_secret = fields.Char(
-        "Webhook Signing Secret",
+        "Webhook Signing Secret", strip=False,
         states={
             'invisible': ~Eval('webhook_identifier'),
             },
         help="The Stripe's signing secret of the webhook.")
-    last_event = fields.Char("Last Event", readonly=True)
+    last_event = fields.Char("Last Event", readonly=True, strip=False)
     setup_intent_delay = fields.TimeDelta(
         "Setup Intent Delay", required=True,
         help="The delay before cancelling setup intent not succeeded.")
@@ -1320,14 +1323,14 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
     stripe_customer_id = fields.Char(
-        "Stripe Customer ID",
+        "Stripe Customer ID", strip=False,
         states={
             'readonly': ((Eval('stripe_customer_id') | Eval('stripe_token'))
                 & (Eval('id', -1) >= 0)),
             })
-    stripe_token = fields.Char("Stripe Token", readonly=True)
+    stripe_token = fields.Char("Stripe Token", readonly=True, strip=False)
     stripe_setup_intent_id = fields.Char(
-        "Stripe SetupIntent ID", readonly=True)
+        "Stripe SetupIntent ID", readonly=True, strip=False)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
