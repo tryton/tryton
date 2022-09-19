@@ -53,7 +53,7 @@ class Line(ModelSQL, ModelView):
         help="The work on which the time is spent.")
     description = fields.Char('Description',
         help="Additional description of the work done.")
-    uuid = fields.Char("UUID", readonly=True)
+    uuid = fields.Char("UUID", readonly=True, strip=False)
 
     @classmethod
     def __setup__(cls):
