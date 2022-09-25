@@ -1892,9 +1892,16 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
                     period, = periods
 
         if period:
+            if name.startswith('start_'):
+                date_clause = ('end_date', '<=', period.start_date)
+            else:
+                date_clause = [
+                    ('end_date', '<=', period.end_date),
+                    ('start_date', '<', period.end_date),
+                    ]
             periods = Period.search([
                     ('fiscalyear', '=', context.get('fiscalyear')),
-                    ('end_date', '<=', period.start_date),
+                    date_clause,
                     ])
             if period.start_date == period.end_date:
                 periods.append(period)
