@@ -52,8 +52,9 @@ class Rule(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.domain.help += '\n- "employee" from the current user'
-        cls.domain.help += '\n- "companies" from the current user'
+        cls.domain.help += (
+            '\n- "employee" from the current user'
+            '\n- "companies" from the current user')
 
     @classmethod
     def _get_cache_key(cls):
