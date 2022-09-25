@@ -241,7 +241,8 @@ Detach source::
     >>> detach.form.source = source_id
     >>> detach.execute('detach')
 
-    >>> cus = stripe.Customer.retrieve(stripe_customer.stripe_customer_id)
+    >>> cus = stripe.Customer.retrieve(
+    ...     stripe_customer.stripe_customer_id, expand=['sources'])
     >>> len(cus.sources)
     0
     >>> len(stripe.PaymentMethod.list(customer=cus.id, type='card'))
