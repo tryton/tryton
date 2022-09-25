@@ -30,8 +30,6 @@ class Carrier(metaclass=PoolMeta):
         Currency = Pool().get('currency.currency')
 
         price = amount * self.percentage / Decimal(100)
-        if not currency_id:
-            return price, currency_id
         currency = Currency(currency_id)
         return currency.round(price), currency_id
 
@@ -40,7 +38,8 @@ class Carrier(metaclass=PoolMeta):
         if self.carrier_cost_method == 'percentage':
             amount = Transaction().context.get('amount', Decimal(0))
             currency_id = Transaction().context.get('currency', currency_id)
-            return self.compute_percentage(amount, currency_id)
+            if currency_id is not None:
+                return self.compute_percentage(amount, currency_id)
         return price, currency_id
 
     def get_purchase_price(self):
@@ -48,5 +47,6 @@ class Carrier(metaclass=PoolMeta):
         if self.carrier_cost_method == 'percentage':
             amount = Transaction().context.get('amount', Decimal(0))
             currency_id = Transaction().context.get('currency', currency_id)
-            return self.compute_percentage(amount, currency_id)
+            if currency_id is not None:
+                return self.compute_percentage(amount, currency_id)
         return price, currency_id
