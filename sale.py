@@ -123,6 +123,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         invoice = super().create_invoice()
         if invoice and self.shopify_tax_adjustment:
+            invoice.save()
+            invoice.update_taxes()
             adjustment = Currency.compute(
                 self.currency, self.shopify_tax_adjustment, invoice.currency,
                 round=False)
@@ -147,6 +149,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                         break
             invoice.taxes = invoice.taxes
             invoice.save()
+            invoice.update_taxes()
         return invoice
 
     @classmethod
