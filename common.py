@@ -31,9 +31,14 @@ def search_shipments_returns(model_name):
         @wraps(func)
         def wrapper(cls, name, clause):
             domain = func(cls, name, clause)
+            _, operator, operand, *extra = clause
+            if operator.startswith('!') or operator.startswith('not '):
+                bool_op = 'AND'
+            else:
+                bool_op = 'OR'
             nested = clause[0].lstrip(name)
             if nested:
-                return ['OR',
+                return [bool_op,
                     domain,
                     ('lines.components.moves.shipment' + nested,)
                     + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:]),
@@ -43,7 +48,7 @@ def search_shipments_returns(model_name):
                     target = 'rec_name'
                 else:
                     target = 'id'
-                return ['OR',
+                return [bool_op,
                     domain,
                     ('lines.components.moves.shipment.' + target,)
                     + tuple(clause[1:3]) + (model_name,)]
