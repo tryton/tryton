@@ -166,14 +166,19 @@ class Translation(ModelSQL, ModelView):
             ir_translation.module, ir_translation.fuzzy, ir_translation.res_id]
 
         def insert(field, type, name, string):
+            inserted = False
             for val in string:
                 if not val or val in translations[type][name]:
                     continue
                 if isinstance(val, LazyString):
                     continue
+                assert type not in {'field', 'help'} or not inserted, (
+                    "More than one resource "
+                    f"for {type} of {name} in {module_name}")
                 cursor.execute(
                     *ir_translation.insert(columns,
                         [[name, 'en', type, val, '', module_name, False, -1]]))
+                inserted = True
 
         for field_name, field in model._fields.items():
             name = model.__name__ + ',' + field_name
