@@ -1497,13 +1497,14 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             customer.save()
             Transaction().commit()
 
-    def retrieve(self):
+    def retrieve(self, **params):
         if not self.stripe_customer_id:
             return
         try:
             return stripe.Customer.retrieve(
                 api_key=self.stripe_account.secret_key,
-                id=self.stripe_customer_id)
+                id=self.stripe_customer_id,
+                **params)
         except (stripe.error.RateLimitError,
                 stripe.error.APIConnectionError) as e:
             logger.warning(str(e))
@@ -1513,7 +1514,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         if sources is not None:
             return sources
         sources = []
-        customer = self.retrieve()
+        customer = self.retrieve(expand=['sources'])
         if customer:
             for source in customer.sources:
                 name = source.id
