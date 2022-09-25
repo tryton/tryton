@@ -161,7 +161,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 round=False)
             remaining = invoice.currency.round(
                 adjustment * (invoice.untaxed_amount / untaxed_amount))
-            for tax in invoice.taxes:
+            taxes = invoice.taxes
+            for tax in taxes:
                 if tax.amount:
                     if invoice.tax_amount:
                         ratio = tax.amount / invoice.tax_amount
@@ -171,11 +172,11 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     tax.amount += value
                     remaining -= value
             if remaining:
-                for tax in invoice.taxes:
+                for tax in taxes:
                     if tax.amount:
                         tax.amount += remaining
                         break
-            invoice.taxes = invoice.taxes
+            invoice.taxes = taxes
             invoice.save()
             invoice.update_taxes()
         return invoice
