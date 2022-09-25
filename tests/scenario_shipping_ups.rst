@@ -53,19 +53,19 @@ Create parties::
 
     >>> belgium = Country(code='BE', name='Belgium')
     >>> belgium.save()
-    >>> britain = Country(code='GB', name='Great Britain')
-    >>> britain.save()
+    >>> france = Country(code='FR', name='France')
+    >>> france.save()
     >>> customer = Party(name='Customer')
     >>> customer.save()
     >>> customer_address = customer.addresses.new()
-    >>> customer_address.street = 'Anfield Road'
-    >>> customer_address.zip = 'L 40TH'
-    >>> customer_address.city = 'Liverpool'
-    >>> customer_address.country = britain
+    >>> customer_address.street = 'Champs élysées'
+    >>> customer_address.zip = '75008'
+    >>> customer_address.city = 'Paris'
+    >>> customer_address.country = france
     >>> customer_address.save()
     >>> customer_phone = customer.contact_mechanisms.new()
     >>> customer_phone.type = 'phone'
-    >>> customer_phone.value = '+44 151 260 6677'
+    >>> customer_phone.value = '+33 93 842 8862'
     >>> customer_phone.save()
 
 Set the warehouse address::
