@@ -210,6 +210,11 @@ class MemoryCache(BaseCache):
             self._transaction_lower.get(dbname, self._default_lower))
 
     @classmethod
+    def _clear_all(cls, dbname):
+        for inst in cls._instances.values():
+            inst._clear(dbname)
+
+    @classmethod
     def sync(cls, transaction):
         database = transaction.database
         dbname = database.name
@@ -365,6 +370,11 @@ class MemoryCache(BaseCache):
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
             current_thread.listening = True
+
+            # Clear everything in case we missed a payload
+            Pool(dbname).refresh(_get_modules(cursor))
+            cls._clear_all(dbname)
+
             selector.register(conn, selectors.EVENT_READ)
             while cls._listener.get((pid, dbname)) == current_thread:
                 selector.select(timeout=60)
