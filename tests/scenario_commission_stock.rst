@@ -191,7 +191,7 @@ Check reporting margin::
     >>> context['include_commission'] = True
     >>> with config.set_context(context=context):
     ...     report, = MarginProduct.find([])
-    >>> report.cost == Decimal('225.0000')
+    >>> report.cost == Decimal('275.0000')
     True
     >>> report.revenue == Decimal('500.0000')
     True

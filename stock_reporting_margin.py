@@ -20,7 +20,7 @@ class AbstractCommissionMixin:
         cost = super()._column_cost(tables, withs, sign)
         if (Transaction().context.get('include_commission')
                 and 'commission_price' in Move._fields):
-            cost += Sum(
+            cost -= Sum(
                 sign * cls.cost.sql_cast(move.internal_quantity)
                 * Coalesce(move.commission_price, 0))
         return cost
