@@ -25,7 +25,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="effective_date"/>
     <field name="effective_date"/>
     <label name="origin"/>
-    <field name="origin" colspan="3"/>
+    <field name="origin"/>
+    <newline/>
+
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
