@@ -38,3 +38,7 @@ def register():
         stock.MoveAddLots,
         stock.InventoryCount,
         module='stock_lot', type_='wizard')
+    Pool.register(
+        stock.ShipmentDrop,
+        module='stock_lot', type_='model',
+        depends=['sale_supply_drop_shipment'])

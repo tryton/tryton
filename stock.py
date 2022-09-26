@@ -673,6 +673,13 @@ class ShipmentInternal(metaclass=PoolMeta):
         return super()._sync_move_key(move) + (('lot', move.lot),)
 
 
+class ShipmentDrop(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.drop'
+
+    def _sync_move_key(self, move):
+        return super()._sync_move_key(move) + (('lot', move.lot),)
+
+
 class Period(metaclass=PoolMeta):
     __name__ = 'stock.period'
     lot_caches = fields.One2Many('stock.period.cache.lot', 'period',
