@@ -415,7 +415,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move.cancel([m for s in shipments for m in s.customer_moves
                 if s.state == 'shipped'])
         Move.write([m for s in shipments for m in s.customer_moves
-                if s.state != 'shipped'], {'shipment': None})
+                if s.state != 'shipped'], {
+                'shipment': None,
+                'origin_drop': None,
+                })
 
     @classmethod
     @ModelView.button
@@ -438,83 +441,88 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     def _synchronize_moves(cls, shipments):
         pool = Pool()
-        UoM = pool.get('product.uom')
+        Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
-        to_save = []
+        def active(move):
+            return move.state != 'cancelled'
+
+        moves = []
         for shipment in shipments:
-            product_qty = defaultdict(int)
+            customer_moves = {m: m for m in shipment.customer_moves}
+            supplier_qty = defaultdict(lambda: defaultdict(int))
 
-            for c_move in shipment.customer_moves:
-                if c_move.state == 'cancelled':
-                    continue
-                product_qty[c_move.product] += UoM.compute_qty(
-                    c_move.uom, c_move.quantity, c_move.product.default_uom,
-                    round=False)
-
-            s_product_qty = defaultdict(int)
-            for s_move in shipment.supplier_moves:
-                if s_move.state == 'cancelled':
-                    continue
-                quantity = UoM.compute_qty(
-                    s_move.uom, s_move.quantity, s_move.product.default_uom,
-                    round=False)
-                s_product_qty[s_move.product] += quantity
-                if product_qty[s_move.product]:
-                    if quantity <= product_qty[s_move.product]:
-                        product_qty[s_move.product] -= quantity
+            for move in filter(active, shipment.customer_moves):
+                key = shipment._sync_move_key(move)
+                supplier_qty[move][key] = 0
+            for move in filter(active, shipment.supplier_moves):
+                key = shipment._sync_move_key(move)
+                qty_default_uom = Uom.compute_qty(
+                    move.uom, move.quantity,
+                    move.product.default_uom, round=False)
+                for customer_move in move.moves_drop:
+                    customer_move = customer_moves.get(customer_move)
+                    if customer_move.uom.category != move.uom.category:
                         continue
-                    else:
-                        out_quantity = (
-                            quantity - product_qty[s_move.product])
-                        out_quantity = UoM.compute_qty(
-                            s_move.product.default_uom, out_quantity,
-                            s_move.uom)
-                        product_qty[s_move.product] = 0
+                    c_qty_default_uom = Uom.compute_qty(
+                        customer_move.uom, customer_move.quantity,
+                        customer_move.product.default_uom, round=False)
+                    qty = min(qty_default_uom, c_qty_default_uom)
+                    supplier_qty[customer_move][key] += qty
+                    qty_default_uom -= qty
+                    if qty_default_uom <= 0:
+                        break
                 else:
-                    out_quantity = s_move.quantity
+                    supplier_qty[None][key] += qty_default_uom
 
-                if not out_quantity:
-                    continue
-                unit_price = UoM.compute_price(
-                    s_move.product.default_uom, s_move.product.list_price,
-                    s_move.uom)
-                new_customer_move = shipment._get_customer_move(s_move)
-                new_customer_move.quantity = out_quantity
-                new_customer_move.unit_price = unit_price
-                to_save.append(new_customer_move)
+            for customer_move in supplier_qty:
+                if customer_move:
+                    customer_key = shipment._sync_move_key(customer_move)
+                for key, qty in supplier_qty[customer_move].items():
+                    if customer_move and key == customer_key:
+                        move = customer_move
+                    else:
+                        move = shipment._sync_customer_move(customer_move)
+                        for name, value in key:
+                            setattr(move, name, value)
+                    qty = Uom.compute_qty(
+                        move.product.default_uom, qty, move.uom)
+                    if move.quantity != qty:
+                        move.quantity = qty
+                        moves.append(move)
+        Move.save(moves)
 
-            for c_move in list(shipment.customer_moves) + to_save:
-                if c_move.id is None or c_move.state == 'cancelled':
-                    continue
-                if product_qty[c_move.product] > 0:
-                    exc_qty = UoM.compute_qty(
-                        c_move.product.default_uom,
-                        product_qty[c_move.product], c_move.uom)
-                    removed_qty = UoM.compute_qty(
-                        c_move.uom, min(exc_qty, c_move.quantity),
-                        c_move.product.default_uom, round=False)
-                    c_move.quantity = max(
-                        0, c_move.uom.round(c_move.quantity - exc_qty))
-                    product_qty[c_move.product] -= removed_qty
-                to_save.append(c_move)
+    def _sync_move_key(self, move):
+        return (
+            ('product', move.product),
+            ('uom', move.uom),
+            )
 
-        if to_save:
-            Move.save(to_save)
-
-    def _get_customer_move(self, move):
+    def _sync_customer_move(self, template=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        return Move(
-            from_location=move.to_location,
+        Purchase = pool.get('purchase.purchase')
+        move = Move(
+            from_location=Purchase.default_drop_location(),
             to_location=self.customer.customer_location,
-            product=move.product,
-            uom=move.uom,
-            quantity=move.quantity,
+            quantity=0,
             shipment=self,
             planned_date=self.planned_date,
-            company=move.company,
+            company=self.company,
             )
+        if template:
+            move.from_location = template.from_location
+            move.to_location = template.to_location
+            move.origin = template.origin
+            move.origin_drop = template.origin_drop
+        if move.on_change_with_unit_price_required():
+            if template:
+                move.unit_price = template.unit_price
+                move.currency = template.currency
+            else:
+                move.unit_price = 0
+                move.currency = self.company.currency
+        return move
 
     @classmethod
     def set_cost(cls, shipments):
@@ -580,17 +588,18 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
         to_save = []
         for shipment in shipments:
-            for move in shipment.supplier_moves:
-                if not move.origin:
+            for s_move in shipment.supplier_moves:
+                if not s_move.origin:
                     continue
-                for request in pline2requests[move.origin]:
+                for request in pline2requests[s_move.origin]:
                     for sale_line in request2slines[request]:
-                        for move in sale_line.moves:
-                            if (move.state not in ('cancelled', 'done')
-                                    and not move.shipment
-                                    and move.from_location.type == 'drop'):
-                                move.shipment = shipment
-                                to_save.append(move)
+                        for c_move in sale_line.moves:
+                            if (c_move.state not in ('cancelled', 'done')
+                                    and not c_move.shipment
+                                    and c_move.from_location.type == 'drop'):
+                                c_move.shipment = shipment
+                                c_move.origin_drop = s_move
+                                to_save.append(c_move)
         Move.save(to_save)
         Move.draft(to_save)
         cls._synchronize_moves(shipments)
@@ -615,6 +624,9 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         cls.set_cost(shipments)
+        Move.delete([
+                m for s in shipments for m in s.customer_moves
+                if not m.quantity])
         Move.do([m for s in shipments for m in s.customer_moves])
         for company, shipments in groupby(shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
@@ -627,6 +639,19 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
+    origin_drop = fields.Many2One(
+        'stock.move', "Drop Origin", readonly=True,
+        domain=[
+            ('shipment', '=', Eval('shipment', -1)),
+            ],
+        states={
+            'invisible': ~Eval('origin_drop'),
+            })
+    moves_drop = fields.One2Many(
+        'stock.move', 'origin_drop', "Drop Moves", readonly=True,
+        states={
+            'invisible': ~Eval('drop_moves'),
+            })
     customer_drop = fields.Function(fields.Many2One(
             'party.party', "Drop Customer",
             context={

@@ -10,8 +10,8 @@ def register():
     Pool.register(
         stock.Configuration,
         stock.ConfigurationSequence,
-        stock.ShipmentDrop,
         stock.Move,
+        stock.ShipmentDrop,
         sale.Configuration,
         sale.ConfigurationSaleDropLocation,
         sale.Sale,
