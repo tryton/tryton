@@ -89,7 +89,7 @@ class Abstract(ModelSQL, ModelView):
             query=Currency.currency_rate_sql())
 
         from_item = (move
-            .join(currency_rate,
+            .join(currency_rate, type_='LEFT',
                 condition=(move.currency == currency_rate.currency)
                 & (currency_rate.start_date <= move.effective_date)
                 & ((currency_rate.end_date == Null)
