@@ -7,7 +7,8 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.company.tests.tools import (
+    ...     create_company, get_company)
 
 Activate product_kit and stock::
 
@@ -16,6 +17,7 @@ Activate product_kit and stock::
 Create company::
 
     >>> _ = create_company()
+    >>> company = get_company()
 
 Create products::
 
@@ -123,6 +125,7 @@ Fill stock with some components::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
     >>> move.unit_price = Decimal('10')
+    >>> move.currency = company.currency
     >>> moves.append(move)
 
     >>> move = StockMove()
@@ -131,6 +134,7 @@ Fill stock with some components::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
     >>> move.unit_price = Decimal('20')
+    >>> move.currency = company.currency
     >>> moves.append(move)
 
     >>> move = StockMove()
@@ -139,6 +143,7 @@ Fill stock with some components::
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
     >>> move.unit_price = Decimal('1')
+    >>> move.currency = company.currency
     >>> moves.append(move)
 
     >>> StockMove.click(moves, 'do')
