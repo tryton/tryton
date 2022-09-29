@@ -69,6 +69,7 @@ Plan receiving some products tomorrow and in 2 week::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('5')
+    >>> move.currency = company.currency
     >>> move.planned_date = today
     >>> move.save()
 
@@ -89,6 +90,7 @@ Plan to ship some products in 1 week::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('20')
+    >>> move.currency = company.currency
     >>> shipment_out1.save()
 
     >>> shipment_out2, = ShipmentOut.duplicate([shipment_out1])
