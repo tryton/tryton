@@ -114,6 +114,7 @@ Transfer 1 product between warehouses::
     >>> move.product = product
     >>> move.quantity = 1
     >>> move.unit_price = product.cost_price
+    >>> move.currency = company.currency
     >>> shipment.click('wait')
     >>> shipment.click('assign_force')
 

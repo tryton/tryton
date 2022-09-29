@@ -90,6 +90,7 @@ Make 2 unit of product available @ 80 in both warehouses::
     ...     move.from_location = supplier_loc
     ...     move.to_location = warehouse.storage_location
     ...     move.unit_price = Decimal('80')
+    ...     move.currency = company.currency
     ...     moves.append(move)
     >>> StockMove.click(moves, 'do')
 

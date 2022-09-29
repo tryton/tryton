@@ -93,6 +93,7 @@ Make 1 unit of product available @ 80 in both warehouses::
     ...     move.from_location = supplier_loc
     ...     move.to_location = warehouse.storage_location
     ...     move.unit_price = Decimal('80')
+    ...     move.currency = company.currency
     ...     moves.append(move)
     >>> StockMove.click(moves, 'do')
 
@@ -140,6 +141,7 @@ Forbid direct move between warehouses::
     >>> move.from_location = warehouse1.storage_location
     >>> move.to_location = warehouse2.storage_location
     >>> move.unit_price = product.cost_price
+    >>> move.currency = company.currency
     >>> move.save()
     >>> move.click('do')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
@@ -163,6 +165,7 @@ Transfer 1 product between warehouses::
     >>> move.product = product
     >>> move.quantity = 1
     >>> move.unit_price = product.cost_price
+    >>> move.currency = company.currency
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'
