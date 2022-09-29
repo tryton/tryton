@@ -63,6 +63,7 @@ Create shipment with 2 lines::
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
     ...     move.unit_price = Decimal(1)
+    ...     move.currency = company.currency
 
     >>> shipment1.save()
     >>> move1, move2 = shipment1.outgoing_moves
