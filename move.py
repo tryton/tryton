@@ -448,7 +448,7 @@ class Move(Workflow, ModelSQL, ModelView):
             return True
         if from_type in {'storage', 'drop', 'view'} and to_type == 'supplier':
             return True
-        if from_type == 'customer' and to_type == {'storage', 'drop', 'view'}:
+        if from_type == 'customer' and to_type in {'storage', 'drop', 'view'}:
             return True
         return False
 
