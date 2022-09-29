@@ -76,6 +76,7 @@ Plan receiving some products in 1 week in second warehouse::
     ...     move.from_location = supplier_loc
     ...     move.to_location = warehouse2.input_location
     ...     move.unit_price = product.cost_price
+    ...     move.currency = company.currency
     ...     move.planned_date = date
     ...     move.save()
 
@@ -121,6 +122,7 @@ Plan to ship in 3 weeks::
     >>> move.from_location = warehouse.output_location
     >>> move.to_location = customer_loc
     >>> move.unit_price = product.list_price
+    >>> move.currency = company.currency
     >>> shipment_out.save()
     >>> shipment_out.click('wait')
 

@@ -74,6 +74,7 @@ Plan receiving some products tomorrow and in 2 week::
     ...     move.from_location = supplier_loc
     ...     move.to_location = input_loc
     ...     move.unit_price = product.cost_price
+    ...     move.currency = company.currency
     ...     move.planned_date = date
     ...     move.save()
 
@@ -94,12 +95,14 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
+    >>> move.currency = company.currency
     >>> move = shipment_out1.outgoing_moves.new()
     >>> move.product = product2
     >>> move.quantity = 6
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product2.list_price
+    >>> move.currency = company.currency
     >>> shipment_out1.save()
 
     >>> shipment_out2 = ShipmentOut()
@@ -111,6 +114,7 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
+    >>> move.currency = company.currency
     >>> shipment_out2.save()
 
     >>> shipment_out3 = ShipmentOut()
@@ -122,6 +126,7 @@ Plan to ship some products in 3 weeks::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = product1.list_price
+    >>> move.currency = company.currency
     >>> shipment_out3.save()
 
     >>> ShipmentOut.click([shipment_out1, shipment_out2, shipment_out3], 'wait')
