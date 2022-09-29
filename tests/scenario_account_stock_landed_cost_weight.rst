@@ -131,12 +131,14 @@ Receive 10 unit of the product1 @ 100 and 10 unit of product2 @50::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('100')
+    >>> move.currency = company.currency
     >>> move = shipment.incoming_moves.new()
     >>> move.product = product2
     >>> move.quantity = 10
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('50')
+    >>> move.currency = company.currency
     >>> shipment.click('receive')
     >>> sorted([m.unit_price for m in shipment.incoming_moves])
     [Decimal('50'), Decimal('100')]
