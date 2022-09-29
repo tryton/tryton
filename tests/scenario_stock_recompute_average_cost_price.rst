@@ -55,6 +55,7 @@ Create some moves::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('100'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=2)).click('do')
     >>> StockMove(
     ...     product=product,
@@ -62,6 +63,7 @@ Create some moves::
     ...     from_location=storage_loc,
     ...     to_location=customer_loc,
     ...     unit_price=Decimal('300'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=1)).click('do')
     >>> StockMove(
     ...     product=product,
@@ -69,6 +71,7 @@ Create some moves::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('120'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=1)).click('do')
     >>> StockMove(
     ...     product=product,
@@ -76,6 +79,7 @@ Create some moves::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('100'),
+    ...     currency=company.currency,
     ...     effective_date=today).click('do')
 
     >>> [m.cost_price for m in StockMove.find([])]

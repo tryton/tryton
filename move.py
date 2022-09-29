@@ -392,14 +392,6 @@ class Move(Workflow, ModelSQL, ModelView):
     def default_unit_price_updated(cls):
         return True
 
-    @staticmethod
-    def default_currency():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.id
-
     @fields.depends('product', 'uom')
     def on_change_product(self):
         if self.product:

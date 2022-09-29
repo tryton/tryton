@@ -57,6 +57,7 @@ Fill warehouse::
    >>> move.quantity = 10
    >>> move.effective_date = yesterday
    >>> move.unit_price = Decimal('10')
+   >>> move.currency = company.currency
    >>> move.click('do')
 
 Forecast some moves::
@@ -69,6 +70,7 @@ Forecast some moves::
    >>> move.quantity = 6
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('20')
+   >>> move.currency = company.currency
    >>> move.save()
 
    >>> move = Move()
@@ -79,6 +81,7 @@ Forecast some moves::
    >>> move.quantity = 5
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('10')
+   >>> move.currency = company.currency
    >>> move.save()
 
    >>> move = Move()
@@ -89,6 +92,7 @@ Forecast some moves::
    >>> move.quantity = 3
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('20')
+   >>> move.currency = company.currency
    >>> move.save()
 
 

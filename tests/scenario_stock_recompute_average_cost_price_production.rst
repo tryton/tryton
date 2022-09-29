@@ -65,6 +65,7 @@ Consume product for production and reverse some::
     ...     from_location=production_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('40.0000'),
+    ...     currency=company.currency,
     ...     effective_date=today).click('do')
 
     >>> [m.cost_price for m in StockMove.find([])]
@@ -90,6 +91,7 @@ Receive product yesterday at new cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('20.0000'),
+    ...     currency=company.currency,
     ...     effective_date=yesterday).click('do')
 
 Recompute cost price::

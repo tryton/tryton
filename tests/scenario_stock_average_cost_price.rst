@@ -190,12 +190,12 @@ Return one product to the supplier::
     >>> outgoing_move.uom = unit
     >>> outgoing_move.quantity = 1
     >>> outgoing_move.unit_price = Decimal('28')
+    >>> outgoing_move.currency = company.currency
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = supplier_loc
     >>> outgoing_move.planned_date = today
     >>> outgoing_move.effective_date = today
     >>> outgoing_move.company = company
-    >>> outgoing_move.currency = company.currency
     >>> outgoing_move.click('do')
 
 Cost price should stay 5::
@@ -209,7 +209,6 @@ Receive one unit of the product with negative stock so the stock stays negative:
     >>> incoming_move.product = negative_product
     >>> incoming_move.uom = unit
     >>> incoming_move.quantity = 1
-    >>> outgoing_move.unit_price = Decimal('28')
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
@@ -231,7 +230,6 @@ Receive two units of the product so the stock becomes positive::
     >>> incoming_move.product = negative_product
     >>> incoming_move.uom = unit
     >>> incoming_move.quantity = 2
-    >>> outgoing_move.unit_price = Decimal('28')
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today

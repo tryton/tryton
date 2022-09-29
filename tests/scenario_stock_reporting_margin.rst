@@ -70,6 +70,7 @@ Create some moves::
     >>> move.to_location = storage_loc
     >>> move.quantity = 8
     >>> move.unit_price = Decimal('20')
+    >>> move.currency = company.currency
     >>> move.effective_date = yesterday
     >>> move.click('do')
 
@@ -79,6 +80,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('40')
+    >>> move.currency = company.currency
     >>> move.effective_date = yesterday
     >>> move.click('do')
 
@@ -88,6 +90,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 4
     >>> move.unit_price = Decimal('30')
+    >>> move.currency = company.currency
     >>> move.effective_date = today
     >>> move.click('do')
 
@@ -97,6 +100,7 @@ Create some moves::
     >>> move.to_location = storage_loc
     >>> move.quantity = 1
     >>> move.unit_price = Decimal('30')
+    >>> move.currency = company.currency
     >>> move.effective_date = today
     >>> move.click('do')
 
@@ -106,6 +110,7 @@ Create some moves::
     >>> move.to_location = customer_loc
     >>> move.quantity = 2
     >>> move.unit_price = Decimal('50')
+    >>> move.currency = company.currency
     >>> move.effective_date = today
     >>> move.click('do')
 

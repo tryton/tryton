@@ -1,3 +1,4 @@
+* Remove default currency on move
 * Allow cancelling move done
 * Support warehouse pickup
 * Allow resetting packed customer shipments

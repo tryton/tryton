@@ -624,7 +624,8 @@ class StockTestCase(
                         'to_location': storage.id,
                         'effective_date': date,
                         'company': company.id,
-                        'unit_price': 10.0
+                        'unit_price': 10.0,
+                        'currency': company.currency.id,
                         }, {
                         'product': product.id,
                         'uom': unit.id,
@@ -1573,6 +1574,7 @@ class StockTestCase(
                         'from_location': supplier.id,
                         'to_location': storage.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }, {
                         'product': product2.id,
@@ -1581,6 +1583,7 @@ class StockTestCase(
                         'from_location': supplier.id,
                         'to_location': storage.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }])
             with self.assertRaises(UserWarning):
@@ -1593,6 +1596,7 @@ class StockTestCase(
                         'from_location': storage.id,
                         'to_location': supplier.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }, {
                         'product': product2.id,
@@ -1601,6 +1605,7 @@ class StockTestCase(
                         'from_location': storage.id,
                         'to_location': supplier.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }])
             Product.write(products, {'active': False})
@@ -1635,6 +1640,7 @@ class StockTestCase(
                         'from_location': supplier.id,
                         'to_location': storage.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }])
             with self.assertRaises(UserWarning):
@@ -1647,6 +1653,7 @@ class StockTestCase(
                         'from_location': storage.id,
                         'to_location': supplier.id,
                         'unit_price': Decimal('5'),
+                        'currency': company.currency.id,
                         'company': company.id,
                         }])
             Product.write(products, {'active': False})
