@@ -132,6 +132,7 @@ Receive a single product line::
     >>> move.product = product
     >>> move.quantity = 4
     >>> move.unit_price = Decimal('8')
+    >>> move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('25.0000')
