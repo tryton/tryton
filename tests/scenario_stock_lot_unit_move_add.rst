@@ -7,7 +7,8 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
 
 Activate modules::
 
@@ -16,6 +17,7 @@ Activate modules::
 Create company::
 
     >>> _ = create_company()
+    >>> company = get_company()
 
 Create product::
 
@@ -46,6 +48,7 @@ Create a move::
     >>> move.product = product
     >>> move.quantity = 5
     >>> move.unit_price = Decimal('20')
+    >>> move.currency = company.currency
     >>> move.save()
 
 Create a lot::
