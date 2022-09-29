@@ -81,6 +81,7 @@ Receive a single product line::
     >>> move.product = product
     >>> move.quantity = 50
     >>> move.unit_price = Decimal('8')
+    >>> move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
@@ -105,6 +106,7 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     ...     move.unit_price = Decimal('8')
+    ...     move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
@@ -125,12 +127,14 @@ Receive a two lines with no cost::
     >>> move.product = product
     >>> move.quantity = 75
     >>> move.unit_price = Decimal('0.0')
+    >>> move.currency = company.currency
     >>> move = shipment.incoming_moves.new()
     >>> move.from_location = supplier_location
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 25
     >>> move.unit_price = Decimal('0.0')
+    >>> move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')

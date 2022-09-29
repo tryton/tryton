@@ -130,6 +130,7 @@ Receive a single product line::
     >>> move.product = product
     >>> move.quantity = 30
     >>> move.unit_price = Decimal('8')
+    >>> move.currency = company.currency
     >>> move = Move()
     >>> shipment.incoming_moves.append(move)
     >>> move.from_location = supplier_location
@@ -137,6 +138,7 @@ Receive a single product line::
     >>> move.product = product_average
     >>> move.quantity = 20
     >>> move.unit_price = Decimal('8')
+    >>> move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
@@ -175,6 +177,7 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     ...     move.unit_price = Decimal('8')
+    ...     move.currency = company.currency
     >>> shipment.carrier = carrier
     >>> shipment.cost_used
     Decimal('3.0000')
