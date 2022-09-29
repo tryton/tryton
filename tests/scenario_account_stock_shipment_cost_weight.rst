@@ -108,6 +108,7 @@ Ship 20 units of the product in two shipments::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('100.00')
+    >>> move.currency = company.currency
     >>> shipment1.click('wait')
     >>> shipment1.click('assign_force')
     >>> shipment1.click('pick')
