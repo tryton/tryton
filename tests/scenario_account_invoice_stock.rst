@@ -81,6 +81,7 @@ Create a shipment::
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.unit_price = Decimal('40.0000')
+    >>> move.currency = company.currency
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'

@@ -86,6 +86,7 @@ Create a shipment::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('40.0000')
+    >>> move.currency = company.currency
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
