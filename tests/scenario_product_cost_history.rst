@@ -65,6 +65,7 @@ Create some moves at different dates and with different cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('100.0000'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=2)).click('do')
     >>> modify_cost_price = Wizard('product.modify_cost_price', [product])
     >>> modify_cost_price.form.cost_price = '90.0000'
@@ -75,6 +76,7 @@ Create some moves at different dates and with different cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('90.0000'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=1)).click('do')
     >>> modify_cost_price = Wizard('product.modify_cost_price', [product])
     >>> modify_cost_price.form.cost_price = '120.0000'
@@ -85,6 +87,7 @@ Create some moves at different dates and with different cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('120.0000'),
+    ...     currency=company.currency,
     ...     effective_date=today - dt.timedelta(days=1)).click('do')
     >>> modify_cost_price = Wizard('product.modify_cost_price', [product])
     >>> modify_cost_price.form.cost_price = '110.0000'
@@ -95,6 +98,7 @@ Create some moves at different dates and with different cost::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('110.0000'),
+    ...     currency=company.currency,
     ...     effective_date=today).click('do')
 
 
