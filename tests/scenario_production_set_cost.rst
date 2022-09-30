@@ -71,6 +71,7 @@ Make a production with 2 unused component::
     >>> output.product = component
     >>> output.quantity = 2
     >>> output.unit_price = Decimal(0)
+    >>> output.currency = company.currency
     >>> output.from_location = production.location
     >>> output.to_location = production.warehouse.storage_location
     >>> production.click('done')

@@ -75,6 +75,7 @@ Create outputs including waste products::
     >>> output.from_location = production.location
     >>> output.to_location = warehouse_loc.storage_location
     >>> output.unit_price = Decimal('0')
+    >>> output.currency = company.currency
     >>> waste_output = production.outputs.new()
     >>> waste_output.quantity = 1.0
     >>> waste_output.product = product
