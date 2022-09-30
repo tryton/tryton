@@ -101,6 +101,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
                 move.from_location = supplier
                 move.to_location = storage
                 move.unit_price = Decimal(50)
+                move.currency = web_shop.company.currency
                 move.save()
                 Move.do([move])
         Product.set_vsf_identifier([product])
