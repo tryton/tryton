@@ -70,19 +70,25 @@ class Abstract(ModelSQL):
             .join(sale, condition=line.sale == sale.id)
             .select(
                 (line.id * length + index).as_('id'),
-                line.product.as_('product'),
-                Coalesce(line.actual_quantity, line.quantity).as_('quantity'),
-                line.unit_price.as_('unit_price'),
-                Concat('sale.sale,', line.sale).as_('order'),
-                sale.sale_date.as_('date'),
-                sale.company.as_('company'),
-                sale.currency.as_('currency'),
-                sale.party.as_('customer'),
-                sale.warehouse.as_('location'),
-                sale.shipment_address.as_('shipment_address'),
+                *cls._sale_line_columns(line, sale),
                 where=sale.state.in_(cls._sale_states())
                 & (sale.company == company_id),
                 ))
+
+    @classmethod
+    def _sale_line_columns(cls, line, sale):
+        return [
+            line.product.as_('product'),
+            Coalesce(line.actual_quantity, line.quantity).as_('quantity'),
+            line.unit_price.as_('unit_price'),
+            Concat('sale.sale,', line.sale).as_('order'),
+            sale.sale_date.as_('date'),
+            sale.company.as_('company'),
+            sale.currency.as_('currency'),
+            sale.party.as_('customer'),
+            sale.warehouse.as_('location'),
+            sale.shipment_address.as_('shipment_address'),
+            ]
 
     @classmethod
     def _lines(cls):
