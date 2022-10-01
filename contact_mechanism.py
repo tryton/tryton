@@ -38,6 +38,31 @@ _PHONE_TYPES = {
     }
 
 
+class _ContactMechanismMixin:
+    __slots__ = ()
+
+    def contact_mechanism_get(self, types=None, usage=None):
+        """
+        Try to find a contact mechanism for the given types and usage, if no
+        usage matches the first mechanism of the given types is returned.
+        """
+        default_mechanism = None
+        if types:
+            if isinstance(types, str):
+                types = {types}
+            mechanisms = [m for m in self.contact_mechanisms
+                if m.type in types]
+        else:
+            mechanisms = self.contact_mechanisms
+        if mechanisms:
+            default_mechanism = mechanisms[0]
+            if usage:
+                for mechanism in mechanisms:
+                    if getattr(mechanism, usage):
+                        return mechanism
+        return default_mechanism
+
+
 class ContactMechanism(
         DeactivableMixin, sequence_ordered(), ModelSQL, ModelView,
         MultiValueMixin):
@@ -56,6 +81,11 @@ class ContactMechanism(
     comment = fields.Text("Comment")
     party = fields.Many2One(
         'party.party', "Party", required=True, ondelete='CASCADE', select=True)
+    address = fields.Many2One(
+        'party.address', "Address", ondelete='CASCADE', select=True,
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ])
     language = fields.MultiValue(
         fields.Many2One('ir.lang', "Language",
             help="Used to translate communication made "
@@ -106,6 +136,11 @@ class ContactMechanism(
     @classmethod
     def default_party(cls):
         return Transaction().context.get('related_party')
+
+    @fields.depends('address', '_parent_address.party')
+    def on_change_address(self):
+        if self.address:
+            self.party = self.address.party
 
     @classmethod
     def get_value(cls, mechanisms, names):

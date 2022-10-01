@@ -19,12 +19,14 @@ from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
-from .contact_mechanism import _PHONE_TYPES
+from .contact_mechanism import _PHONE_TYPES, _ContactMechanismMixin
 from .exceptions import (
     EraseError, InvalidIdentifierCode, SimilarityWarning, VIESUnavailable)
 
 
-class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
+class Party(
+        DeactivableMixin, _ContactMechanismMixin, ModelSQL, ModelView,
+        MultiValueMixin):
     "Party"
     __name__ = 'party.party'
 
@@ -323,27 +325,6 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
                     if getattr(address, type):
                         return address
         return default_address
-
-    def contact_mechanism_get(self, types=None, usage=None):
-        """
-        Try to find a contact mechanism for the given types and usage, if no
-        usage matches the first mechanism of the given types is returned.
-        """
-        default_mechanism = None
-        if types:
-            if isinstance(types, str):
-                types = {types}
-            mechanisms = [m for m in self.contact_mechanisms
-                if m.type in types]
-        else:
-            mechanisms = self.contact_mechanisms
-        if mechanisms:
-            default_mechanism = mechanisms[0]
-            if usage:
-                for mechanism in mechanisms:
-                    if getattr(mechanism, usage):
-                        return mechanism
-        return default_mechanism
 
 
 class PartyLang(ModelSQL, ValueMixin):

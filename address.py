@@ -19,10 +19,13 @@ from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
+from .contact_mechanism import _ContactMechanismMixin
 from .exceptions import InvalidFormat
 
 
-class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
+class Address(
+        DeactivableMixin, sequence_ordered(), _ContactMechanismMixin,
+        ModelSQL, ModelView):
     "Address"
     __name__ = 'party.address'
     party = fields.Many2One('party.party', 'Party', required=True,
@@ -61,6 +64,11 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         domain=[
             ('party', '=', Eval('party')),
             ('type', 'in', ['fr_siret']),
+            ])
+    contact_mechanisms = fields.One2Many(
+        'party.contact_mechanism', 'address', "Contact Mechanisms",
+        domain=[
+            ('party', '=', Eval('party', -1)),
             ])
 
     @classmethod
@@ -263,6 +271,13 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         pool = Pool()
         Types = pool.get('party.address.subdivision_type')
         return Types.get_types(self.country)
+
+    def contact_mechanism_get(self, types=None, usage=None):
+        mechanism = super().contact_mechanism_get(types=types, usage=usage)
+        if mechanism is None:
+            mechanism = self.party.contact_mechanism_get(
+                types=types, usage=usage)
+        return mechanism
 
 
 class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):

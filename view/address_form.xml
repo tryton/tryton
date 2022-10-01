@@ -35,5 +35,8 @@ this repository contains the full copyright notices and license terms. -->
         <page name="identifiers">
             <field name="identifiers" colspan="4" pre_validate="1" view_ids="party.identifier_list_sequence"/>
         </page>
+        <page name="contact_mechanisms">
+            <field name="contact_mechanisms" colspan="4" pre_validate="1" view_ids="party.contact_mechanism_view_tree_sequence"/>
+        </page>
     </notebook>
 </form>
