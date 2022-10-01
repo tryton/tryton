@@ -845,6 +845,17 @@ class Purchase(
                         purchase=purchase.rec_name))
         super(Purchase, cls).delete(purchases)
 
+    def on_change(self, fieldnames):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        context = Transaction().context
+        wizard_modify_header_id = ModelData.get_id(
+            'purchase', 'wizard_modify_header')
+        if (len(fieldnames) > 1
+                and context.get('action_id') == wizard_modify_header_id):
+            return []
+        return super().on_change(fieldnames)
+
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
