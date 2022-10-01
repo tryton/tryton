@@ -110,14 +110,14 @@ class ShippingUPSMixin:
                     shipment=self.rec_name,
                     warehouse=warehouse.rec_name))
         if warehouse.address.country != self.delivery_address.country:
-            for party in {self.shipping_to, self.company.party}:
-                if not party.contact_mechanism_get(
+            for address in [self.shipping_to_address, warehouse.address]:
+                if not address.contact_mechanism_get(
                         {'phone', 'mobile'}, usage=usage):
                     raise PackingValidationError(
                         gettext('stock_package_shipping_ups'
                             '.msg_phone_required',
                             shipment=self.rec_name,
-                            party=party.rec_name))
+                            address=address.rec_name))
             if not self.shipping_description:
                 if (any(p.type.ups_code != '01' for p in self.root_packages)
                         and self.carrier.ups_service_type != '11'):
@@ -282,12 +282,12 @@ class CreateShippingUPS(Wizard):
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
-        phone = party.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
+        phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone:
             shipping_party['Phone'] = {
                 'Number': re.sub('[() .-]', '', phone.value)[:15]
                 }
-        email = party.contact_mechanism_get('email')
+        email = address.contact_mechanism_get('email')
         if email and len(email.value) <= 50:
             shipping_party['EMailAddress'] = email.value
 
@@ -353,7 +353,8 @@ class CreateShippingUPS(Wizard):
 
     def get_notifications(self, shipment):
         for code in shipment.carrier.ups_notifications:
-            email = shipment.shipping_to.contact_mechanism_get('email')
+            shipping_to_address = shipment.shipping_to_address
+            email = shipping_to_address.contact_mechanism_get('email')
             if email and len(email.value) <= 50:
                 notification = {
                     'NotificationCode': code,
@@ -362,13 +363,13 @@ class CreateShippingUPS(Wizard):
                         },
                     }
                 if code in {'012', '013'}:
-                    phone = shipment.shipping_to.contact_mechanism_get(
+                    phone = shipping_to_address.contact_mechanism_get(
                         {'phone', 'mobile'})
                     if phone and len(phone.value) <= 15:
                         notification['VoiceMessage'] = {
                             'PhoneNumber': phone.value,
                             }
-                    mobile = shipment.shipping_to.contact_mechanism_get(
+                    mobile = shipping_to_address.contact_mechanism_get(
                         'mobile')
                     if mobile and len(mobile.value) <= 15:
                         notification['TextMessage'] = {
