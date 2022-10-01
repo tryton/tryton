@@ -1594,7 +1594,6 @@ function eval_pyson(value){
         _input_format: '%Y-%m-%d',
         _format: Sao.common.format_date,
         _parse: Sao.common.parse_date,
-        _default_format: '%x',
         init: function(view, attributes) {
             Sao.View.Form.Date._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
@@ -1673,7 +1672,8 @@ function eval_pyson(value){
             if (this.field && this.record) {
                 return this.field.date_format(this.record);
             } else {
-                return this._default_format;
+                return Sao.common.date_format(
+                    this.view.screen.context.date_format);
             }
         },
         get_value: function() {
@@ -1730,13 +1730,13 @@ function eval_pyson(value){
         _input_format: '%Y-%m-%dT%H:%M:%S',
         _format: Sao.common.format_datetime,
         _parse: Sao.common.parse_datetime,
-        _default_format: '%x %X',
         get_format: function() {
             if (this.field && this.record) {
                 return (this.field.date_format(this.record) + ' ' +
                     this.field.time_format(this.record));
             } else {
-                return this._default_format;
+                return (Sao.common.date_format(
+                    this.view.screen.context.date_format) + ' %X');
             }
         },
         cast: function(value){
@@ -1751,7 +1751,6 @@ function eval_pyson(value){
         _input_format: '%H:%M:%S',
         _format: Sao.common.format_time,
         _parse: Sao.common.parse_time,
-        _default_format: '%X',
         init: function(view, attributes) {
             Sao.View.Form.Time._super.init.call(this, view, attributes);
             if (~navigator.userAgent.indexOf("Firefox")) {
@@ -1763,7 +1762,7 @@ function eval_pyson(value){
             if (this.field && this.record) {
                 return this.field.time_format(this.record);
             } else {
-                return this._default_format;
+                return '%X';
             }
         },
         cast: function(value){
