@@ -343,8 +343,8 @@ class LotsByLocations(ModelSQL, ModelView):
 
     @classmethod
     def search_lot(cls, name, clause):
-        nested = clause[0].lstrip(name)
-        return [('lot.' + name + nested,) + tuple(clause[1:])]
+        nested = clause[0][len(name):]
+        return [('lot.' + name + nested, *clause[1:])]
 
 
 class LotByWarehouseContext(LotByLocationContext):
