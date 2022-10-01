@@ -48,17 +48,15 @@ def get_shipments_returns(model_name):
 def search_shipments_returns(model_name):
     "Search on shipments or returns"
     def method(self, name, clause):
-        nested = clause[0].lstrip(name)
-        if nested:
-            return [('lines.moves.shipment' + nested,)
-                + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
-        else:
+        _, operator, operand, *extra = clause
+        nested = clause[0][len(name):]
+        if not nested:
             if isinstance(clause[2], str):
-                target = 'rec_name'
+                nested = '.rec_name'
             else:
-                target = 'id'
-            return [('lines.moves.shipment.' + target,)
-                + tuple(clause[1:3]) + (model_name,)]
+                nested = '.id'
+        return [('lines.moves.shipment' + nested,
+                operator, operand, model_name, *extra)]
     return classmethod(method)
 
 
