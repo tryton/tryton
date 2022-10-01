@@ -19,22 +19,22 @@ class Party(MarketingAutomationMixin, metaclass=PoolMeta):
 
     @classmethod
     def search_marketing_party(cls, name, clause):
-        operand, operator, value = clause[:3]
-        nested = operand.lstrip(name)
+        _, operator, operand, *extra = clause[:3]
+        nested = clause[0][len(name):]
         if not nested:
             if operator.endswith('where'):
-                query = cls.search(value, order=[], query=True)
+                query = cls.search(operand, order=[], query=True)
                 if operator.startswith('not'):
                     return [('id', 'not in', query)]
                 else:
                     return [('id', 'in', query)]
-            elif isinstance(value, str):
+            elif isinstance(operand, str):
                 nested = 'rec_name'
             else:
                 nested = 'id'
         else:
-            nested = nested.lstrip('.')
-        return [(nested,) + tuple(clause[1:])]
+            nested = nested[1:]
+        return [(nested, operator, operand, *extra)]
 
 
 class PartyUnsubscribedScenario(ModelSQL):

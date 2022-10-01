@@ -14,5 +14,5 @@ class Sale(MarketingAutomationMixin, metaclass=PoolMeta):
 
     @classmethod
     def search_marketing_party(cls, name, clause):
-        nested = clause[0].lstrip(name)
-        return [('party' + nested,) + tuple(clause[1:])]
+        nested = clause[0][len(name):]
+        return [('party' + nested, *clause[1:])]
