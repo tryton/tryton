@@ -223,7 +223,7 @@
 
     Sao.common.date_format = function(format) {
         if (jQuery.isEmptyObject(format)) {
-            format = '%Y-%m-%d';
+            format = '%x';
             if (Sao.Session.current_session) {
                 var context = Sao.Session.current_session.context;
                 if (context.locale && context.locale.date) {
