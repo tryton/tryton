@@ -73,9 +73,14 @@
                         this.update(view.fields_view, view.buttons);
 
                         this.screen.new_(false).then(() => {
-                            this.screen.current_record.set_default(view.defaults);
-                            this.update_buttons();
-                            this.screen.set_cursor();
+                            this.screen.current_record.set_default(
+                                view.defaults || {})
+                                .then(() => {
+                                    this.screen.current_record.set(
+                                        view.values || {});
+                                    this.update_buttons();
+                                    this.screen.set_cursor();
+                                });
                         });
 
                         this.screen_state = view.state;
