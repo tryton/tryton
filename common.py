@@ -36,22 +36,17 @@ def search_shipments_returns(model_name):
                 bool_op = 'AND'
             else:
                 bool_op = 'OR'
-            nested = clause[0].lstrip(name)
-            if nested:
-                return [bool_op,
-                    domain,
-                    ('lines.components.moves.shipment' + nested,)
-                    + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:]),
-                    ]
-            else:
-                if isinstance(clause[2], str):
-                    target = 'rec_name'
+            nested = clause[0][len(name):]
+            if not nested:
+                if isinstance(operand, str):
+                    nested = '.rec_name'
                 else:
-                    target = 'id'
-                return [bool_op,
-                    domain,
-                    ('lines.components.moves.shipment.' + target,)
-                    + tuple(clause[1:3]) + (model_name,)]
+                    nested = '.id'
+            return [bool_op,
+                domain,
+                ('lines.components.moves.shipment' + nested,
+                    operator, operand, model_name, *extra),
+                ]
         return wrapper
     return _search_shipments_returns
 
