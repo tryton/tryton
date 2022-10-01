@@ -282,6 +282,9 @@ Receive purchase invoice at different price::
 
     >>> shipment, = [s for s in purchase.drop_shipments
     ...     if s.state == 'done']
+    >>> move, = shipment.supplier_moves
+    >>> move.cost_price
+    Decimal('4.0000')
     >>> move, = shipment.customer_moves
     >>> move.cost_price
     Decimal('4.0000')

@@ -551,11 +551,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 if qty:
                     product_cost[product] = round_price(cost / qty)
 
-            for c_move in shipment.customer_moves:
-                cost_price = product_cost[c_move.product]
-                if cost_price != c_move.cost_price:
-                    c_move.cost_price = cost_price
-                    to_save.append(c_move)
+            for move in shipment.moves:
+                cost_price = product_cost[move.product]
+                if cost_price != move.cost_price:
+                    move.cost_price = cost_price
+                    to_save.append(move)
         if to_save:
             Move.save(to_save)
 
