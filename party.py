@@ -153,10 +153,11 @@ class Party(
     @classmethod
     def search_tax_identifier(cls, name, clause):
         _, operator, value = clause
+        nested = clause[0][len(name) + 1:]
         types = cls.tax_identifier_types()
         domain = [
             ('identifiers', 'where', [
-                    ('code', operator, value),
+                    (nested or 'rec_name', operator, value),
                     ('type', 'in', types),
                     ]),
             ]
