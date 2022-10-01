@@ -1998,6 +1998,9 @@ class ModifyHeaderStateView(StateView):
             return super(ModifyHeaderStateView, self).get_view(
                 wizard, state_name)
 
+    def get_defaults(self, wizard, state_name, fields):
+        return {}
+
 
 class ModifyHeader(Wizard):
     "Modify Header"
@@ -2016,9 +2019,9 @@ class ModifyHeader(Wizard):
                     purchase=self.record.rec_name))
         return self.record
 
-    def default_start(self, fields):
+    def value_start(self, fields):
         purchase = self.get_purchase()
-        defaults = {}
+        values = {}
         for fieldname in fields:
             value = getattr(purchase, fieldname)
             if isinstance(value, Model):
@@ -2028,11 +2031,11 @@ class ModifyHeader(Wizard):
                     value = value.id
             elif isinstance(value, (list, tuple)):
                 value = [r.id for r in value]
-            defaults[fieldname] = value
+            values[fieldname] = value
 
         # Mimic an empty sale in draft state to get the fields' states right
-        defaults['lines'] = []
-        return defaults
+        values['lines'] = []
+        return values
 
     def transition_modify(self):
         pool = Pool()
