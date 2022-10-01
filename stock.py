@@ -222,10 +222,10 @@ class CreateDPDShipping(Wizard):
         if party.full_name != address.party_full_name:
             shipping_party['name2'] = party.full_name[:35]
 
-        phone = party.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
+        phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone and len(phone.value) <= 30:
             shipping_party['phone'] = phone.value
-        email = party.contact_mechanism_get('email', usage=usage)
+        email = address.contact_mechanism_get('email', usage=usage)
         if email and len(email.value) <= 50:
             shipping_party['email'] = email.value
 
