@@ -1243,7 +1243,10 @@ class Wizard(object):
                 view = result['view']
                 self.form = Model.get(
                     view['fields_view']['model'], self._config)()
-                self.form._default_set(view['defaults'])
+                if 'defaults' in view:
+                    self.form._default_set(view['defaults'])
+                if 'values' in view:
+                    self.form._values.update(view['values'])
                 self.states = [b['state'] for b in view['buttons']]
                 self.form_state = view['state']
             else:
