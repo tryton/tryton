@@ -116,8 +116,15 @@ StateView
 
    The form is defined by the :class:`~trytond.model.ModelView` with the name
    ``model_name``, the ``XML`` id in ``view`` and the ``buttons``.
-   The default value of the view can be set with a method on wizard having the
+   The default values of the view can be set with a method on wizard having the
    same name as the state but starting with ``default_``.
+   The values of the view can be also set with a method on wizard having the
+   same name as the state but starting with ``value_``.
+
+   .. note::
+      The difference between default values and values is that the client calls
+      :meth:`~trytond.model.Model.on_change` and
+      :meth:`~trytond.model.Model.on_change_with` for the default values.
 
 Instance attributes are:
 
@@ -147,6 +154,16 @@ Instance methods are:
 .. method:: StateView.get_defaults(wizard, state_name, fields)
 
    Return default values for the fields.
+
+   ``wizard`` is a :class:`Wizard` instance.
+
+   ``state_name`` is the name of the :class:`State`.
+
+   ``fields`` is the list of field names.
+
+.. method:: StateView.get_values(wizard, state_name, fields)
+
+   Return values for the fields.
 
    ``wizard`` is a :class:`Wizard` instance.
 

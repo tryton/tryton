@@ -1,3 +1,4 @@
+* Add straight values to wizard state view
 * Add strip option to Char fields
 * Strip only one wildcard
 * Manage web extension origin as null

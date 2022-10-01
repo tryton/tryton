@@ -93,17 +93,31 @@ class StateView(State):
         default = getattr(wizard, 'default_%s' % state_name, None)
         if default:
             defaults.update(default(fields))
-            for field_name, value in list(defaults.items()):
-                if '.' in field_name:
-                    continue
-                field = Model_._fields[field_name]
-                if value and field._type == 'many2one':
-                    Target = pool.get(field.model_name)
-                    if 'rec_name' in Target._fields:
-                        defaults.setdefault(
-                            field_name + '.', {})['rec_name'] = Target(
-                                value).rec_name
+            self._complete_values(defaults)
         return defaults
+
+    def get_values(self, wizard, state_name, fields):
+        "Return values for the fields"
+        values = {}
+        value = getattr(wizard, 'value_%s' % state_name, None)
+        if value:
+            values.update(value(fields))
+        self._complete_values(values)
+        return values
+
+    def _complete_values(self, values):
+        pool = Pool()
+        Model_ = pool.get(self.model_name)
+        for field_name, value in list(values.items()):
+            if '.' in field_name:
+                continue
+            field = Model_._fields[field_name]
+            if value and field._type == 'many2one':
+                Target = field.get_target()
+                if 'rec_name' in Target._fields:
+                    values.setdefault(
+                        field_name + '.', {})['rec_name'] = Target(
+                            value).rec_name
 
     def get_buttons(self, wizard, state_name):
         '''
@@ -300,6 +314,7 @@ class Wizard(URLMixin, PoolBase):
             - ``view``: a dictionary with:
                 - ``fields_view``: a fields/view definition
                 - ``defaults``: a dictionary with default values
+                - ``values``: a dictionary with values
                 - ``buttons``: a list of buttons
         '''
         cls.check_access()
@@ -321,12 +336,14 @@ class Wizard(URLMixin, PoolBase):
 
         if isinstance(state, StateView):
             view = state.get_view(self, state_name)
-            defaults = state.get_defaults(self, state_name,
-                list(view['fields'].keys()))
+            fields = list(view['fields'].keys())
+            defaults = state.get_defaults(self, state_name, fields)
+            values = state.get_values(self, state_name, fields)
             buttons = state.get_buttons(self, state_name)
             result['view'] = {
                 'fields_view': view,
                 'defaults': defaults,
+                'values': values,
                 'buttons': buttons,
                 'state': state_name,
                 }
