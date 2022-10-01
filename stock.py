@@ -147,9 +147,9 @@ class CreateShippingSendcloud(Wizard):
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
         party = shipment.shipping_to
         address = shipment.shipping_to_address
-        phone = party.contact_mechanism_get(
+        phone = address.contact_mechanism_get(
             {'phone', 'mobile'}, usage=usage)
-        email = party.contact_mechanism_get('email', usage=usage)
+        email = address.contact_mechanism_get('email', usage=usage)
         street_lines = (address.street or '').splitlines()
         parcel = {
             'name': address.party_full_name,
