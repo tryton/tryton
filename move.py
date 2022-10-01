@@ -677,10 +677,10 @@ class MoveLineMixin:
 
     @classmethod
     def search_move_field(cls, name, clause):
-        nested = clause[0].lstrip(name)
+        nested = clause[0][len(name):]
         if name.startswith('move_'):
             name = name[5:]
-        return [('move.' + name + nested,) + tuple(clause[1:])]
+        return [('move.' + name + nested, *clause[1:])]
 
     @staticmethod
     def _order_move_field(name):
