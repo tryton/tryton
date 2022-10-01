@@ -107,7 +107,10 @@ class Wizard(InfoBar):
                 self.update(view['fields_view'], view['buttons'])
 
                 self.screen.new(default=False)
-                self.screen.current_record.set_default(view['defaults'])
+                if 'defaults' in view:
+                    self.screen.current_record.set_default(view['defaults'])
+                if 'values' in view:
+                    self.screen.current_record.set(view['values'])
                 self.update_buttons()
                 self.screen.set_cursor()
 
