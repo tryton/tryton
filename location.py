@@ -725,8 +725,8 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_product(cls, name, clause):
-        nested = clause[0].lstrip(name)
-        return [('product.' + name + nested,) + tuple(clause[1:])]
+        nested = clause[0][len(name):]
+        return [('product.' + name + nested, *clause[1:])]
 
 
 class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
