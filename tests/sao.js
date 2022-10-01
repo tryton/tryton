@@ -1636,22 +1636,27 @@
 
     QUnit.test('DomainParser.convert_value', function() {
         var parser = new Sao.common.DomainParser();
+        var context = {
+            'date_format': '%Y-%m-%d',
+        };
 
         var test_func = function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.strictEqual(parser.convert_value(this, value), result,
+            QUnit.strictEqual(
+                parser.convert_value(this, value, context), result,
                 'convert_value(' + JSON.stringify(this) + ', ' +
-                    JSON.stringify(value) + ')');
+                JSON.stringify(value) + ', ' + JSON.stringify(context) + ')');
         };
 
         var test_valueOf_func = function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.strictEqual(parser.convert_value(this, value).valueOf(),
+            QUnit.strictEqual(
+                parser.convert_value(this, value, context).valueOf(),
                 result.valueOf(),
                 'convert_value(' + JSON.stringify(this) + ', ' +
-                    JSON.stringify(value) + ')');
+                JSON.stringify(value) + ', ' + JSON.stringify(context) + ')');
         };
 
         var field = {
@@ -1925,13 +1930,18 @@
 
     QUnit.test('DomainParser.format_value', function() {
         var parser = new Sao.common.DomainParser();
+        var context = {
+            'date_format': '%Y-%m-%d',
+        };
 
         var test_func = function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.strictEqual(parser.format_value(this, value), result,
+            QUnit.strictEqual(
+                parser.format_value(this, value, null, context), result,
                 'format_value(' + JSON.stringify(this) + ', ' +
-                    JSON.stringify(value) + ')');
+                JSON.stringify(value) + ', null, ' + JSON.stringify(context) +
+                ')');
         };
 
         var field = {
