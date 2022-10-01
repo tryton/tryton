@@ -42,8 +42,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
     "Language"
     __name__ = "ir.lang"
     name = fields.Char('Name', required=True, translate=True)
-    code = fields.Char('Code', required=True,
-        help="RFC 4646 tag: http://tools.ietf.org/html/rfc4646")
+    code = fields.Char('Code', required=True, help="RFC 4646 tag.")
     translatable = fields.Boolean('Translatable', readonly=True)
     parent = fields.Char("Parent Code", help="Code of the exceptional parent")
     direction = fields.Selection([
