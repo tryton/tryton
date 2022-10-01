@@ -14,6 +14,7 @@ _ = gettext.gettext
 
 
 class Date(Widget):
+    _changed_signal = 'date-changed'
 
     def __init__(self, view, attrs, _entry=DateEntry):
         super(Date, self).__init__(view, attrs)
@@ -24,7 +25,7 @@ class Date(Widget):
         self.real_entry.connect('key_press_event', self.sig_key_press)
         self.real_entry.connect('activate', self.sig_activate)
         self.real_entry.connect('changed', lambda _: self.send_modified())
-        self.entry.connect('date-changed', self.changed)
+        self.entry.connect(self._changed_signal, self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @property
@@ -87,9 +88,10 @@ class Date(Widget):
 
 
 class Time(Date):
+    _changed_signal = 'time-changed'
+
     def __init__(self, view, attrs):
         super(Time, self).__init__(view, attrs, _entry=TimeEntry)
-        self.entry.connect('time-changed', self.changed)
 
     def _set_editable(self, value):
         self.entry.set_sensitive(value)
@@ -116,6 +118,8 @@ class Time(Date):
 
 
 class DateTime(Date):
+    _changed_signal = 'datetime-changed'
+
     def __init__(self, view, attrs):
         Widget.__init__(self, view, attrs)
 
@@ -129,7 +133,6 @@ class DateTime(Date):
             child.connect('key_press_event', self.sig_key_press)
             child.connect('activate', self.sig_activate)
             child.connect('changed', lambda _: self.send_modified())
-        self.entry.connect('datetime-changed', self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @classmethod
