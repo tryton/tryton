@@ -15,7 +15,7 @@ Configuration
 uri
 ---
 
-The LDAP URL to use to connect to the server following the RFC-2255_.
+The LDAP URL to use to connect to the server following the :rfc:`2255`.
 
 bind_pass
 ---------
@@ -31,5 +31,3 @@ create_user
 -----------
 
 A boolean to create user if not in the database.
-
-.. _RFC-2255: http://tools.ietf.org/html/rfc2255
