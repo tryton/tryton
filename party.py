@@ -88,8 +88,8 @@ class PartyReceptionDirectDebit(
 
     @classmethod
     def search_company(cls, name, clause):
-        nested = clause[0].lstrip(name)
-        return [('journal.' + name + nested,) + tuple(clause[1:])]
+        nested = clause[0][len(name):]
+        return [('journal.' + name + nested, *clause[1:])]
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
