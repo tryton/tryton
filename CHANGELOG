@@ -1,3 +1,4 @@
+* Reset the user sessions less often
 * Add straight values to wizard state view
 * Add strip option to Char fields
 * Strip only one wildcard
