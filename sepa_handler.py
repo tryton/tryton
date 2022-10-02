@@ -35,48 +35,59 @@ class CAMT054(SEPAHandler):
             element.clear()
 
     def handle_entry(self, element):
-        payments = self.get_payments(element)
-        if self.is_returned(element):
-            for payment in payments:
-                self.set_return_information(payment, element)
-            self.Payment.save(payments)
-            self.Payment.fail(payments)
-        else:
-            date_value = self.date_value(element)
+        tag = etree.QName(element)
+        failed, succeeded = [], []
+        date_value = self.date_value(element)
+
+        for transaction in element.findall('.//{%s}TxDtls' % tag.namespace):
+            payments = self.get_payments(transaction)
+            if self.is_returned(transaction):
+                for payment in payments:
+                    self.set_return_information(payment, transaction)
+                failed.extend(payments)
+            else:
+                succeeded.extend(payments)
+
+        if failed:
+            self.Payment.save(failed)
+            self.Payment.fail(failed)
+        if succeeded:
             with Transaction().set_context(date_value=date_value):
-                self.Payment.succeed(payments)
+                self.Payment.succeed(succeeded)
 
     def get_payment_kind(self, element):
-        tag = etree.QName(element)
-        return self._kinds[
-            element.find('./{%s}CdtDbtInd' % tag.namespace).text]
+        camt_ns = etree.QName(element).namespace
+        for path in [
+                './camt:CdtDbtInd',
+                './ancestor::camt:NtryDtls/camt:Btch/camt:CdtDbtInd',
+                './ancestor::camt:Ntry/camt:CdtDbtInd',
+                ]:
+            cdtdbtind = element.xpath(path, namespaces={'camt': camt_ns})
+            if cdtdbtind:
+                return self._kinds[cdtdbtind[0].text]
     _kinds = {
         'CRDT': 'payable',
         'DBIT': 'receivable',
         }
 
-    def get_payments(self, element):
-        tag = etree.QName(element)
-        details = element.find('./{%s}NtryDtls' % tag.namespace)
-        if details is None:
-            # Version 1 doesn't have NtryDtls but directly TxDtls
-            details = element.find('./{%s}TxDtls' % tag.namespace)
-        if details is None:
-            return []
-        instr_id = details.find('.//{%s}InstrId' % tag.namespace)
+    def get_payments(self, transaction):
+        tag = etree.QName(transaction)
+        instr_id = transaction.find(
+            './/{%s}InstrId' % tag.namespace)
+        end_to_end_id = transaction.find(
+            './/{%s}EndToEndId' % tag.namespace)
+        payment_kind = self.get_payment_kind(transaction)
         if instr_id is not None:
-            payments = self.Payment.search([
+            return self.Payment.search([
                     ('sepa_instruction_id', '=', instr_id.text),
-                    ('kind', '=', self.get_payment_kind(element)),
+                    ('kind', '=', payment_kind),
                     ])
-            return payments
-        end_to_end_id = details.find('.//{%s}EndToEndId' % tag.namespace)
-        if end_to_end_id is not None:
-            payments = self.Payment.search([
+        elif end_to_end_id is not None:
+            return self.Payment.search([
                     ('sepa_end_to_end_id', '=', end_to_end_id.text),
-                    ('kind', '=', self.get_payment_kind(element)),
+                    ('kind', '=', payment_kind),
                     ])
-            return payments
+        return []
 
     def date_value(self, element):
         tag = etree.QName(element)
@@ -92,25 +103,18 @@ class CAMT054(SEPAHandler):
 
     def is_returned(self, element):
         tag = etree.QName(element)
-        details = element.find('./{%s}NtryDtls' % tag.namespace)
-        if details is None:
-            return
-        return_reason = details.find('.//{%s}RtrInf' % tag.namespace)
-        if return_reason is None:
-            return False
-        return True
+        return_reason = element.find('.//{%s}RtrInf' % tag.namespace)
+        return return_reason is not None
 
     def set_return_information(self, payment, element):
         tag = etree.QName(element)
 
         reason_code = element.find(
-            './{%(ns)s}NtryDtls//{%(ns)s}RtrInf/{%(ns)s}Rsn/{%(ns)s}Cd'
-            % {'ns': tag.namespace})
+            './/{%(ns)s}RtrInf/{%(ns)s}Rsn/{%(ns)s}Cd' % {'ns': tag.namespace})
         if reason_code is not None:
             payment.sepa_return_reason_code = reason_code.text
 
         reason_information = element.find(
-            './{%(ns)s}NtryDtls//{%(ns)s}RtrInf/{%(ns)s}AddtlInf'
-            % {'ns': tag.namespace})
+            './/{%(ns)s}RtrInf/{%(ns)s}AddtlInf' % {'ns': tag.namespace})
         if reason_information is not None:
             payment.sepa_return_reason_information = reason_information.text
