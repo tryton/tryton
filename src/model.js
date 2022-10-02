@@ -681,8 +681,8 @@
 
             var context = jQuery.extend({}, this.get_context());
             if (loading == 'eager') {
-                var limit = parseInt(Sao.config.limit / fnames_to_fetch.length,
-                        10);
+                var limit = Math.trunc(Sao.config.limit /
+                    Math.min(fnames_to_fetch.length, 10));
 
                 const filter_group = record => {
                     return (!record.destroyed &&
