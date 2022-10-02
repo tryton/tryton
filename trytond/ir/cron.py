@@ -14,6 +14,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 from trytond.worker import run_task
 
@@ -66,6 +67,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 ['minutes', 'hours', 'days', 'weeks']),
             },
         depends=['interval_type'])
+    timezone = fields.Function(fields.Char("Timezone"), 'get_timezone')
 
     next_call = fields.DateTime("Next Call", select=True)
     method = fields.Selection([
@@ -97,6 +99,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         # Migration from 5.0: remove required on next_call
         table_h.not_null_action('next_call', 'remove')
 
+    def get_timezone(self, name):
+        return tz.SERVER.key
+
     @staticmethod
     def check_xml_record(crons, values):
         return True
@@ -110,7 +115,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ]
 
     def compute_next_call(self, now):
-        return (now
+        return (now.replace(tzinfo=tz.UTC).astimezone(tz.SERVER)
             + relativedelta(**{self.interval_type: self.interval_number})
             + relativedelta(
                 microsecond=0,
@@ -132,7 +137,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     int(self.weekday.index)
                     if self.weekday
                     and self.interval_type not in {'minutes', 'hours', 'days'}
-                    else None)))
+                    else None))).astimezone(tz.UTC).replace(tzinfo=None)
 
     @dualmethod
     @ModelView.button

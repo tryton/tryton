@@ -21,6 +21,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="hour" xexpand="0"/>
         <label name="minute"/>
         <field name="minute" xexpand="0"/>
+        <label name="timezone"/>
+        <field name="timezone"/>
     </group>
     <label name="next_call"/>
     <field name="next_call"/>

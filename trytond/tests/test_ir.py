@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import unittest
 from decimal import Decimal
 from unittest.mock import ANY, Mock, patch
 
@@ -9,9 +10,11 @@ from dateutil.relativedelta import relativedelta
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONEncoder
+from trytond.tools import timezone
 from trytond.transaction import Transaction
 
-from .test_tryton import ModuleTestCase, with_transaction
+from .test_tryton import (
+    ModuleTestCase, activate_module, drop_db, with_transaction)
 
 
 class IrTestCase(ModuleTestCase):
@@ -381,6 +384,77 @@ class IrTestCase(ModuleTestCase):
                 'to': ['admin@example.com'],
                 'cc': ['fallback@example.com'],
                 })
+
+
+class IrCronTestCase(unittest.TestCase):
+    "Test ir.cron features"
+
+    @classmethod
+    def setUpClass(cls):
+        drop_db()
+        activate_module(['ir'])
+        super().setUpClass()
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        drop_db()
+
+    def setUp(self):
+        server_tz = timezone.SERVER
+        timezone.SERVER = timezone.ZoneInfo('Canada/Eastern')
+        self.addCleanup(setattr, timezone, 'SERVER', server_tz)
+
+    def _get_cron(self):
+        pool = Pool()
+        Cron = pool.get('ir.cron')
+
+        cron = Cron()
+        for attribute in [
+                'interval_number', 'interval_type', 'minute', 'hour',
+                'weekday', 'day']:
+            setattr(cron, attribute, None)
+        return cron
+
+    @with_transaction()
+    def test_scheduling_non_utc(self):
+        "Test scheduling with a non UTC timezone"
+        cron = self._get_cron()
+        cron.interval_number = 1
+        cron.interval_type = 'days'
+        cron.hour = 1
+
+        # Quebec is UTC-5
+        self.assertEqual(
+            cron.compute_next_call(datetime.datetime(2021, 12, 31, 5, 0)),
+            datetime.datetime(2022, 1, 1, 6, 0))
+
+    @with_transaction()
+    def test_scheduling_on_dst_change(self):
+        "Test scheduling while the DST change occurs"
+        cron = self._get_cron()
+        cron.interval_number = 1
+        cron.interval_type = 'days'
+        cron.hour = 2
+
+        # 2022-03-13 is the day of DST switch
+        # Quebec is UTC-4
+        self.assertEqual(
+            cron.compute_next_call(datetime.datetime(2022, 3, 12, 6, 30)),
+            datetime.datetime(2022, 3, 13, 7, 30))
+
+    @with_transaction()
+    def test_scheduling_on_standard_time(self):
+        "Test scheduling while the calendar returns to the standard time"
+        cron = self._get_cron()
+        cron.interval_number = 1
+        cron.interval_type = 'hours'
+
+        # 2022-11-06 is the day of DST switch
+        # Quebec is UTC-5
+        self.assertEqual(
+            cron.compute_next_call(datetime.datetime(2022, 11, 6, 7, 30)),
+            datetime.datetime(2022, 11, 6, 8, 30))
 
 
 del ModuleTestCase

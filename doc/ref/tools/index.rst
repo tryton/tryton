@@ -13,3 +13,4 @@ Tools API reference.
     email
     singleton
     immutabledict
+    timezone

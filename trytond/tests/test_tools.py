@@ -14,7 +14,7 @@ from trytond.tools import (
     decimal_, escape_wildcard, file_open, firstline, grouped_slice,
     is_full_text, is_instance_method, lstrip_wildcard, reduce_domain,
     reduce_ids, remove_forbidden_chars, rstrip_wildcard, slugify,
-    sortable_values, strip_wildcard, unescape_wildcard)
+    sortable_values, strip_wildcard, timezone, unescape_wildcard)
 from trytond.tools.domain_inversion import (
     concat, domain_inversion, eval_domain, extract_reference_models,
     localize_domain, merge, parse, prepare_reference_domain, simplify,
@@ -290,6 +290,18 @@ class ToolsTestCase(unittest.TestCase):
                 ]:
             with self.subTest(string=string):
                 self.assertEqual(remove_forbidden_chars(string), result)
+
+    def test_get_tzinfo_valid(self):
+        "Test get_tzinfo with an valid timezone"
+        zi = timezone.get_tzinfo('Europe/Brussels')
+        now = dt.datetime(2022, 5, 17, tzinfo=zi)
+        self.assertEqual(str(now), "2022-05-17 00:00:00+02:00")
+
+    def test_get_tzinfo_invalid(self):
+        "Test get_tzinfo with an invalid timezone"
+        zi = timezone.get_tzinfo('foo')
+        now = dt.datetime(2022, 5, 17, tzinfo=zi)
+        self.assertEqual(str(now), "2022-05-17 00:00:00+00:00")
 
 
 class StringPartitionedTestCase(unittest.TestCase):
