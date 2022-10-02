@@ -299,6 +299,8 @@ class Database(DatabaseInterface):
         cursor.execute(SQL("DROP DATABASE {}")
             .format(Identifier(database_name)))
         cls._list_cache.clear()
+        cls._has_proc.pop(database_name, None)
+        cls._search_full_text_languages.pop(database_name, None)
 
     def get_version(self, connection):
         version = connection.server_version
