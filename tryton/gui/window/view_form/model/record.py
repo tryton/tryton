@@ -83,7 +83,7 @@ class Record:
 
             record_context = self.get_context()
             if loading == 'eager':
-                limit = int(CONFIG['client.limit'] / len(fnames))
+                limit = CONFIG['client.limit'] // min(len(fnames), 10)
 
                 def filter_group(record):
                     return (not record.destroyed
