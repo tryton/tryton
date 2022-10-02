@@ -64,6 +64,8 @@ Post customer invoice::
     >>> invoice.click('post')
     >>> invoice.state
     'posted'
+    >>> invoice.amount_to_pay
+    Decimal('10.00')
 
 Post supplier invoice::
 
@@ -77,6 +79,8 @@ Post supplier invoice::
     >>> supplier_invoice.click('post')
     >>> supplier_invoice.state
     'posted'
+    >>> supplier_invoice.amount_to_pay
+    Decimal('5.00')
 
 Group lines::
 
@@ -91,9 +95,13 @@ Group lines::
     >>> invoice.reload()
     >>> invoice.state
     'posted'
+    >>> invoice.amount_to_pay
+    Decimal('0')
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     'posted'
+    >>> supplier_invoice.amount_to_pay
+    Decimal('0')
 
 Receive remaining line::
 
@@ -121,9 +129,13 @@ Receive remaining line::
     >>> invoice.reload()
     >>> invoice.state
     'paid'
+    >>> invoice.amount_to_pay
+    Decimal('0')
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     'paid'
+    >>> supplier_invoice.amount_to_pay
+    Decimal('0')
 
 Remove the created reconciliation::
 
@@ -134,6 +146,10 @@ Remove the created reconciliation::
     >>> invoice.reload()
     >>> invoice.state
     'posted'
+    >>> invoice.amount_to_pay
+    Decimal('0')
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     'posted'
+    >>> supplier_invoice.amount_to_pay
+    Decimal('0')
