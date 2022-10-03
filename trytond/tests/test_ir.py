@@ -5,6 +5,11 @@ import unittest
 from decimal import Decimal
 from unittest.mock import ANY, Mock, patch
 
+try:
+    import zoneinfo
+except ImportError:
+    zoneinfo = None
+
 from dateutil.relativedelta import relativedelta
 
 from trytond.config import config
@@ -429,6 +434,7 @@ class IrCronTestCase(unittest.TestCase):
             cron.compute_next_call(datetime.datetime(2021, 12, 31, 5, 0)),
             datetime.datetime(2022, 1, 1, 6, 0))
 
+    @unittest.skipIf(not zoneinfo, "dateutil does not compute correctly")
     @with_transaction()
     def test_scheduling_on_dst_change(self):
         "Test scheduling while the DST change occurs"
