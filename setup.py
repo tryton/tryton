@@ -161,7 +161,7 @@ setup(name=name,
         'werkzeug',
         'wrapt',
         'passlib >= 1.7.0',
-        'pytz;python_verrion<"3.9"',
+        'pytz;python_version<"3.9"',
         ],
     extras_require={
         'test': tests_require,
