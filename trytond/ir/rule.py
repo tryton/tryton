@@ -103,8 +103,9 @@ class Rule(ModelSQL, ModelView):
     rule_group = fields.Many2One('ir.rule.group', 'Group', select=True,
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,
-        help='Domain is evaluated with a PYSON context containing:\n'
-        '- "user" as the current user')
+        help="Domain is evaluated with a PYSON context containing:"
+        '\n- "user" as the current user'
+        '\n- "groups" as list of ids from the current user')
     _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
     modes = {'read', 'write', 'create', 'delete'}
