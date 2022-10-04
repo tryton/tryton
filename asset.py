@@ -658,7 +658,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         for asset in assets:
             if asset.lines:
                 raise AccessError(
-                    gettext('account_asset.msg_draft_lines',
+                    gettext('account_asset.msg_asset_draft_lines',
                         asset=asset.rec_name))
 
     @classmethod
@@ -718,7 +718,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         for asset in assets:
             if asset.state != 'draft':
                 raise AccessError(
-                    gettext('account_asset.msg_delete_draft',
+                    gettext('account_asset.msg_asset_delete_draft',
                         asset=asset.rec_name))
         return super(Asset, cls).delete(assets)
 
