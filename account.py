@@ -586,7 +586,7 @@ class InvoiceSII(ModelSQL, ModelView):
                     'DetalleIVA': list(chain(*tax_values.values())),
                 },
             }
-            detail['FechaRegContable'] = self.invoice.move.post_date.strftime(
+            detail['FechaRegContable'] = self.invoice.move.date.strftime(
                 '%d-%m-%Y')
             detail['CuotaDeducible'] = str(tax_amount)
         return detail
