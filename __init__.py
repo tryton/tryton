@@ -3,7 +3,9 @@
 
 from trytond.pool import Pool
 
-from . import configuration, invoice, party, product, purchase, stock
+from . import (
+    configuration, invoice, party, product, purchase, purchase_reporting,
+    stock)
 
 
 def register():
@@ -35,6 +37,13 @@ def register():
         party.SupplierLeadTime,
         party.PartySupplierCurrency,
         purchase.ReturnPurchaseStart,
+        purchase_reporting.Context,
+        purchase_reporting.Main,
+        purchase_reporting.MainTimeseries,
+        purchase_reporting.Supplier,
+        purchase_reporting.SupplierTimeseries,
+        purchase_reporting.Product,
+        purchase_reporting.ProductTimeseries,
         module='purchase', type_='model')
     Pool.register(
         purchase.PurchaseReport,

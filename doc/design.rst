@@ -143,6 +143,54 @@ quantities.
       .. |Products --> Products --> Suppliers| replace:: :menuselection:`Products --> Products --> Suppliers`
       __ https://demo.tryton.org/model/purchase.product_supplier
 
+.. _concept-purchase.reporting:
+
+Purchase Reporting
+==================
+
+Each of the different *Purchase Reporting* concepts are based on either an
+``Abstract`` purchases report, or an ``AbstractTimeseries``.
+There is also a base ``Context`` that is inherited and used to specify things
+such as the date range that is used by the report.
+
+The ``Abstract`` provides the basic properties that makes up a purchases report
+including the number of purchases and expense.
+The ``AbstractTimeseries`` is used to extend this with a date.
+This is used in purchases reports that cover multiple periods of time.
+These are combined together with additional specific properties to create the
+different purchases reports.
+
+.. seealso::
+
+   Purchases reports can be accessed from the main menu item:
+
+      :menuselection:`Purchases --> Reporting --> Purchases`
+
+.. _model-purchase.reporting.supplier:
+.. _model-purchase.reporting.supplier.time_series:
+
+By Supplier
+-----------
+
+The purchases reporting that is done *By Supplier* splits the purchases up
+based on what each `Supplier <party:model-party.party>` bought.
+This is done in two separate parts.
+One that shows the purchases, in total, for the selected period from the
+``Context``.
+Another that breaks them down by date into smaller chunks.
+
+.. _model-purchase.reporting.product:
+.. _model-purchase.reporting.product.time_series:
+
+By Product
+----------
+
+Purchases reporting that is done *By Product* splits up the purchases based on
+the `Product <product:concept-product>` that was purchased.
+This is structured as two parts.
+One that shows the total purchases for the selected period of time, and another
+that shows how the purchases were distributed over time.
+
 .. _model-purchase.configuration:
 
 Configuration

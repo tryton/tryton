@@ -215,7 +215,7 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_purchase"
             sequence="100"
             id="menu_reporting"
-            active="0"/>
+            active="True"/>
 
         <record model="ir.model.access" id="access_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
