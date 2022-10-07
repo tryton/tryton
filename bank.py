@@ -146,7 +146,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
                         or (iban.bank_code or iban.branch_code)
                         not in bic.domestic_bank_codes)):
                 raise AccountValidationError(
-                    gettext('bank.msg_invalid_iban_bic',
+                    gettext('bank.msg_account_iban_invalid_bic',
                         account=self.rec_name,
                         bic=iban.bic))
 
