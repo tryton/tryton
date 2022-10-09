@@ -8,6 +8,7 @@ try:
     ZoneInfo = zoneinfo.ZoneInfo
     ZoneInfoNotFoundError = zoneinfo.ZoneInfoNotFoundError
 except ImportError:
+    zoneinfo = None
     import pytz
     from dateutil.tz import gettz as ZoneInfo
 
