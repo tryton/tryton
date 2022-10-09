@@ -45,9 +45,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    address = fields.Many2One('party.address', 'Address',
-        domain=[('party', '=', Eval('customer'))],
-        states=_states)
     company = fields.Many2One(
         'company.company', 'Company', required=True,
         states={
