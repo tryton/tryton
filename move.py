@@ -305,11 +305,11 @@ class Move(Workflow, ModelSQL, ModelView):
             ('type', 'in', cls.get_product_types()),
             ]
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
-            'from_location', 'to_location', 'company', 'currency'])
+            'from_location', 'to_location', 'company'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned
             | set(['planned_date', 'effective_date', 'state']))
         cls._allow_modify_closed_period = {
-            'cost_price', 'unit_price', 'unit_price_updated'}
+            'cost_price', 'unit_price', 'unit_price_updated', 'currency'}
 
         t = cls.__table__()
         cls._sql_constraints += [
@@ -837,7 +837,9 @@ class Move(Workflow, ModelSQL, ModelView):
                     to_write.extend(([move], {
                             'internal_quantity': internal_quantity,
                             }))
-                if move.state == 'done' and 'unit_price' in values:
+                if (move.state == 'done'
+                        and ('unit_price' in values
+                            or 'currency' in values)):
                     unit_price_update.append(move)
 
         if to_write:
