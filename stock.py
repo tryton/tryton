@@ -3,12 +3,16 @@
 from trytond.model import fields
 from trytond.modules.product import price_digits
 from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    unit_landed_cost = fields.Numeric('Unit Landed Cost',
-        digits=price_digits, readonly=True)
+    unit_landed_cost = fields.Numeric(
+        "Unit Landed Cost", digits=price_digits, readonly=True,
+        states={
+            'invisible': ~Eval('unit_landed_cost'),
+            })
 
     def _compute_unit_price(self, unit_price):
         if self.unit_landed_cost:
