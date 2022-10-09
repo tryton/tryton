@@ -67,7 +67,7 @@ def set_origin_consignment(func):
         to_save = []
         move2line = {}
         for move in moves:
-            if not move.invoice_lines:
+            if all(l.origin != move for l in move.invoice_lines):
                 lines = move.get_invoice_lines_consignment()
                 if lines:
                     to_save.extend(lines)
@@ -95,7 +95,7 @@ def unset_origin_consignment(func):
             for invoice_line in move.invoice_lines:
                 if invoice_line.origin == move:
                     lines.append(invoice_line)
-                    if isinstance(move.origin, InvoiceLine):
+                    if move.origin == move:
                         move.origin = None
                     to_save.append(move)
         if lines:
@@ -107,9 +107,6 @@ def unset_origin_consignment(func):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-
-    invoice_lines = fields.One2Many(
-        'account.invoice.line', 'origin', "Invoice Lines", readonly=True)
 
     @fields.depends('state', 'from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):
