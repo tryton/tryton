@@ -229,6 +229,20 @@ maxconn
 The maximum number of simultaneous connections to the database per process.
 Default: ``64``
 
+unaccent_function
+~~~~~~~~~~~~~~~~~
+
+The name of the unaccent function.
+
+Default: ``unaccent``
+
+similarity_function
+~~~~~~~~~~~~~~~~~~~
+
+The name of the similarity function.
+
+Default: ``similarity``
+
 request
 -------
 

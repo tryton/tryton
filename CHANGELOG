@@ -1,3 +1,4 @@
+* Add configuration entries for unaccent and similarity functions
 * Add authentication services
 * Schedule actions using server timezone
 * Reset the user sessions less often
