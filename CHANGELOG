@@ -1,3 +1,4 @@
+* Limit transit only between different warehouses
 * Remove default currency on move
 * Allow cancelling move done
 * Support warehouse pickup

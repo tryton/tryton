@@ -737,11 +737,13 @@ class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         ondelete='CASCADE',
         domain=[
             ('type', '=', 'warehouse'),
+            ('id', '!=', Eval('warehouse_to', -1)),
             ])
     warehouse_to = fields.Many2One('stock.location', 'Warehouse To',
         ondelete='CASCADE',
         domain=[
             ('type', '=', 'warehouse'),
+            ('id', '!=', Eval('warehouse_from', -1)),
             ])
     lead_time = fields.TimeDelta('Lead Time',
         help="The time it takes to move stock between the warehouses.")

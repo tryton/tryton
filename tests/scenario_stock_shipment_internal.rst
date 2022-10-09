@@ -43,7 +43,8 @@ Get stock locations::
     >>> Location = Model.get('stock.location')
     >>> lost_found_loc, = Location.find([('type', '=', 'lost_found')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
-    >>> internal_loc = Location(name='Internal', type='storage')
+    >>> internal_loc = Location(
+    ...     name="Internal", type='storage', parent=storage_loc.parent)
     >>> internal_loc.save()
 
 Create stock user::
@@ -116,7 +117,7 @@ Create Internal Shipment from lost_found location::
     >>> lost_found_shipment.state
     'done'
 
-Check that now whe can finish the older shipment::
+Check that now we can finish the older shipment::
 
     >>> shipment.click('assign_try')
     True
@@ -128,72 +129,6 @@ Check that now whe can finish the older shipment::
     >>> shipment.state
     'done'
     >>> shipment.done_by == employee
-    True
-
-Add lead time inside the warehouse::
-
-    >>> set_user(1)
-    >>> LeadTime = Model.get('stock.location.lead_time')
-    >>> lead_time = LeadTime()
-    >>> lead_time.warehouse_from = internal_loc.warehouse
-    >>> lead_time.warehouse_to = storage_loc.warehouse
-    >>> lead_time.lead_time = datetime.timedelta(1)
-    >>> lead_time.save()
-
-Create Internal Shipment with lead time::
-
-    >>> set_user(stock_user)
-    >>> shipment = Shipment()
-    >>> shipment.planned_date = tomorrow
-    >>> shipment.from_location = internal_loc
-    >>> shipment.to_location = storage_loc
-    >>> shipment.planned_start_date == today
-    True
-    >>> move = shipment.moves.new()
-    >>> move.product = product
-    >>> move.quantity = 2
-    >>> move.from_location = internal_loc
-    >>> move.to_location = storage_loc
-    >>> shipment.click('wait')
-    >>> len(shipment.moves)
-    2
-    >>> outgoing_move, = shipment.outgoing_moves
-    >>> outgoing_move.quantity
-    2.0
-    >>> outgoing_move.from_location == internal_loc
-    True
-    >>> outgoing_move.to_location == shipment.transit_location
-    True
-    >>> outgoing_move.planned_date == today
-    True
-    >>> incoming_move, = shipment.incoming_moves
-    >>> incoming_move.quantity
-    2.0
-    >>> incoming_move.from_location == shipment.transit_location
-    True
-    >>> incoming_move.to_location == storage_loc
-    True
-    >>> incoming_move.planned_date == tomorrow
-    True
-
-    >>> outgoing_move.quantity = 1
-    >>> outgoing_move.save()
-
-    >>> shipment.click('assign_try')
-    True
-    >>> shipment.effective_start_date = yesterday
-    >>> shipment.click('ship')
-    >>> incoming_move, = shipment.incoming_moves
-    >>> incoming_move.quantity
-    1.0
-    >>> shipment.outgoing_moves[0].state
-    'done'
-    >>> shipment.outgoing_moves[0].effective_date == yesterday
-    True
-    >>> shipment.click('done')
-    >>> shipment.incoming_moves[0].state
-    'done'
-    >>> shipment.incoming_moves[0].effective_date == today
     True
 
 Duplicate Internal Shipment::

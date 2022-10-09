@@ -2331,11 +2331,15 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('planned_date', 'planned_start_date', 'company')
+    @fields.depends('from_location', 'to_location', 'company')
     def on_change_with_transit_location(self, name=None):
         pool = Pool()
         Config = pool.get('stock.configuration')
-        if self.planned_date != self.planned_start_date:
+        if (self.from_location
+                and self.to_location
+                and self.from_location.warehouse != self.to_location.warehouse
+                and self.from_location.warehouse
+                and self.to_location.warehouse):
             return Config(1).get_multivalue(
                 'shipment_internal_transit',
                 company=self.company.id if self.company else None).id
@@ -2345,11 +2349,14 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         if self.from_location and self.from_location.warehouse:
             return self.from_location.warehouse.id
 
-    @fields.depends('planned_date', 'from_location', 'to_location')
+    @fields.depends(
+        'planned_date', 'from_location', 'to_location',
+        methods=['on_change_with_transit_location'])
     def on_change_with_planned_start_date(self, pattern=None):
         pool = Pool()
         LocationLeadTime = pool.get('stock.location.lead_time')
-        if self.planned_date:
+        transit_location = self.on_change_with_transit_location()
+        if self.planned_date and transit_location:
             if pattern is None:
                 pattern = {}
             pattern.setdefault('warehouse_from',
