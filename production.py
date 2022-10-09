@@ -395,6 +395,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 quantity)
             if move:
                 move.unit_price = Decimal(0)
+                move.currency = self.company.currency
                 outputs.append(move)
         self.outputs = outputs
 
@@ -483,6 +484,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     if move:
                         move.production_output = production
                         move.unit_price = Decimal(0)
+                        move.currency = production.company.currency
                         to_save.append(move)
                 continue
 
@@ -506,6 +508,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 if move:
                     move.production_output = production
                     move.unit_price = Decimal(0)
+                    move.currency = production.company.currency
                     to_save.append(move)
         Move.save(to_save)
         cls._set_move_planned_date(productions)
@@ -560,8 +563,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         input_costs[product] / input_quantities[product])
                     unit_price = round_price(Uom.compute_price(
                             product.default_uom, cost_price, output.uom))
-                    if output.unit_price != unit_price:
+                    if (output.unit_price != unit_price
+                            or output.currency != production.company.currency):
                         output.unit_price = unit_price
+                        output.currency = production.company.currency
                         moves.append(output)
                     cost -= min(
                         unit_price * Decimal(str(output.quantity)), cost)
@@ -608,8 +613,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 else:
                     quantity = Decimal(str(output.quantity))
                     unit_price = round_price(cost * ratio / quantity)
-                if output.unit_price != unit_price:
+                if (output.unit_price != unit_price
+                        or output.currency != production.company.currency):
                     output.unit_price = unit_price
+                    output.currency = production.company.currency
                     moves.append(output)
         Move.save(moves)
 
