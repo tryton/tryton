@@ -138,9 +138,6 @@ class Move(metaclass=PoolMeta):
                 required = True
         return required
 
-    def _get_tax_rule_pattern(self):
-        return {}
-
     def get_invoice_lines_consignment(self):
         lines = []
         if (self.from_location.type == 'supplier'
@@ -176,27 +173,11 @@ class Move(metaclass=PoolMeta):
         line.party = self.from_location.consignment_party
         line.currency = currency
         line.product = self.product
-        line.description = self.product.name
         line.quantity = self.quantity
         line.unit = self.uom
-        line.account = self.product.account_expense_used
         line.stock_moves = [self]
         line.origin = self
-
-        taxes = set()
-        pattern = self._get_tax_rule_pattern()
-        for tax in line.product.supplier_taxes_used:
-            if line.party.supplier_tax_rule:
-                tax_ids = line.party.supplier_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.update(tax_ids)
-                continue
-            taxes.add(tax.id)
-        if line.party.supplier_tax_rule:
-            tax_ids = line.party.supplier_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.update(tax_ids)
-        line.taxes = taxes
+        line.on_change_product()
 
         with Transaction().set_context(
                 currency=line.currency.id,
@@ -221,27 +202,11 @@ class Move(metaclass=PoolMeta):
         line.party = self.from_location.consignment_party
         line.currency = self.company.currency
         line.product = self.product
-        line.description = self.product.name
         line.quantity = self.quantity
         line.unit = self.uom
-        line.account = self.product.account_revenue_used
         line.stock_moves = [self]
         line.origin = self
-
-        taxes = set()
-        pattern = self._get_tax_rule_pattern()
-        for tax in line.product.customer_taxes_used:
-            if line.party.customer_tax_rule:
-                tax_ids = line.party.customer_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.update(tax_ids)
-                continue
-            taxes.add(tax.id)
-        if line.party.customer_tax_rule:
-            tax_ids = line.party.customer_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.update(tax_ids)
-        line.taxes = taxes
+        line.on_change_product()
 
         with Transaction().set_context(
                 currency=line.currency.id,
