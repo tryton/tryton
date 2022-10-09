@@ -185,6 +185,18 @@ class Function(Field):
         return 'names' in signature.parameters
 
 
+for name in [
+        'string', 'help', 'domain', 'states', 'depends', 'display_depends',
+        'edition_depends', 'validation_depends', 'context']:
+    def getter(name):
+        return lambda self: getattr(self._field, name)
+
+    def setter(name):
+        return lambda self, value: setattr(self._field, name, value)
+
+    setattr(Function, name, property(getter(name), setter(name)))
+
+
 class MultiValue(Function):
 
     def __init__(self, field, loading='lazy'):
