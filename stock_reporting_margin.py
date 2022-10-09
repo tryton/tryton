@@ -30,3 +30,7 @@ class Context(metaclass=PoolMeta):
     __name__ = 'stock.reporting.margin.context'
 
     include_commission = fields.Boolean("Include Commission")
+
+    @classmethod
+    def default_include_commission(cls):
+        return Transaction().context.get('include_commission', False)
