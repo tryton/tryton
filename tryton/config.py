@@ -41,6 +41,8 @@ class ConfigManager(object):
         self.defaults = {
             'login.profile': demo_server,
             'login.login': 'demo',
+            'login.service': '',
+            'login.service.port': 8001,
             'login.host': demo_server,
             'login.db': demo_database,
             'login.expanded': False,

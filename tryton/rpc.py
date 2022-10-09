@@ -17,6 +17,7 @@ from tryton.config import CONFIG, get_config_dir
 from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.jsonrpc import Fault, ServerPool, ServerProxy
 
+logger = logging.getLogger(__name__)
 CONNECTION = None
 _USER = None
 CONTEXT = {}
@@ -67,6 +68,44 @@ def server_version(host, port):
     except Exception as e:
         logging.getLogger(__name__).error(e)
         return None
+
+
+def authentication_services(host, port):
+    try:
+        connection = ServerProxy(host, port)
+        logger.info('common.authentication.services()')
+        services = connection.common.authentication.services()
+        logger.debug(repr(services))
+        return connection.url, services
+    except Exception as e:
+        logger.error(e)
+        return '', []
+
+
+def set_service_session(parameters):
+    from tryton import common
+    global CONNECTION, _USER
+    host = CONFIG['login.host']
+    hostname = common.get_hostname(host)
+    port = common.get_port(host)
+    database = CONFIG['login.db']
+    CONFIG['login.login'] = username = parameters.get('login', [''])[0]
+    try:
+        user_id = int(parameters.get('user_id', [None])[0])
+    except TypeError:
+        pass
+    session = parameters.get('session', [''])[0]
+    if 'renew' in parameters:
+        renew_id = int(parameters.get('renew', [-1])[0])
+        if _USER != renew_id:
+            raise ValueError
+    _USER = user_id
+    session = ':'.join(map(str, [username, user_id, session]))
+    if CONNECTION is not None:
+        CONNECTION.close()
+    CONNECTION = ServerPool(
+        hostname, port, database, session=session, cache=not CONFIG['dev'])
+    bus.listen(CONNECTION)
 
 
 def login(parameters):

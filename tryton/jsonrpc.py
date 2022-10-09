@@ -316,6 +316,11 @@ class ServerProxy(xmlrpc.client.ServerProxy):
         return isinstance(self.__transport.make_connection(self.__host),
             http.client.HTTPSConnection)
 
+    @property
+    def url(self):
+        scheme = 'https' if self.ssl else 'http'
+        return urljoin(scheme + '://' + self.__host, self.__handler)
+
 
 class ServerPool(object):
     keep_max = 4
@@ -370,12 +375,8 @@ class ServerPool(object):
 
     @property
     def url(self):
-        if self.ssl is None:
-            return None
-        scheme = 'https' if self.ssl else 'http'
-        return urljoin(
-            scheme + '://' + self._host + ':' + str(self._port),
-            self._database)
+        for conn in self._pool + list(self._used.values()):
+            return conn.url
 
     @contextmanager
     def __call__(self):

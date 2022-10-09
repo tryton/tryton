@@ -250,11 +250,14 @@ class Main(Gtk.Application):
 
         self.set_title()  # Adds username/profile while password is asked
         try:
-            common.Login()
+            common.get_credentials()
         except Exception as exception:
-            if (not isinstance(exception, TrytonError)
-                    or exception.faultCode != 'QueryCanceled'):
+            if not isinstance(exception, TrytonError):
                 common.error(exception, traceback.format_exc())
+            elif exception.faultCode == 'SessionFailed':
+                common.message(
+                    _("Could not get a session."),
+                    msg_type=Gtk.MessageType.ERROR)
             return self.quit()
         self.get_preferences()
 

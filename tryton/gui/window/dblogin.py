@@ -457,6 +457,7 @@ class DBLogin(object):
         self.entry_host = Gtk.Entry(hexpand=True)
         self.entry_host.connect_after('focus-out-event',
             self.clear_profile_combo)
+        self.entry_host.connect('focus-out-event', self.update_services)
         self.entry_host.set_activates_default(True)
         self.label_host.set_mnemonic_widget(self.entry_host)
         grid.attach(self.label_host, 0, 3, 1, 1)
@@ -500,6 +501,10 @@ class DBLogin(object):
                 for option in ('host', 'database'))
             self.profile_store.append([section, active])
 
+        self.services = []
+        self.service_base = ''
+        self._services = {}
+
     def profile_manage(self, widget):
         def callback(profile_name):
             with open(self.profile_cfg, 'w') as configfile:
@@ -535,6 +540,7 @@ class DBLogin(object):
             self.entry_login.set_text(username)
         else:
             self.entry_login.set_text('')
+        self.update_services()
 
     def clear_profile_combo(self, *args):
         netloc = self.entry_host.get_text()
@@ -569,6 +575,33 @@ class DBLogin(object):
         self.entry_database.props.visible = visibility
         self.label_database.props.visible = visibility
 
+    def update_services(self, *args):
+        host = self.entry_host.get_text()
+        hostname = common.get_hostname(host)
+        port = common.get_port(host)
+        key = (hostname, port)
+        for response_id, service in enumerate(self.services, 1):
+            button = self.dialog.get_widget_for_response(response_id)
+            button.get_parent().remove(button)
+        self.services = []
+        if key in self._services:
+            self.services = self._services[key]
+        elif hostname and port:
+            self.service_base, self.services = rpc.authentication_services(
+                host, port)
+            self._services[key] = self.services
+        for response_id, (name, url) in enumerate(self.services, 1):
+            button = Gtk.Button(label=name)
+            self.dialog.add_action_widget(button, response_id)
+            button.show()
+
+        # Re-add connect button to be last
+        button_connect = self.dialog.get_widget_for_response(
+            Gtk.ResponseType.OK)
+        button_connect.get_parent().remove(button_connect)
+        self.dialog.add_action_widget(button_connect, Gtk.ResponseType.OK)
+        self.dialog.set_default_response(Gtk.ResponseType.OK)
+
     def run(self):
         profile_name = CONFIG['login.profile']
         can_use_profile = self.profiles.has_section(profile_name)
@@ -598,6 +631,7 @@ class DBLogin(object):
             self.entry_database.set_text(db)
             self.entry_login.set_text(CONFIG['login.login'])
             self.clear_profile_combo()
+        self.update_services()
         self.dialog.show_all()
 
         self.entry_login.grab_focus()
@@ -609,7 +643,7 @@ class DBLogin(object):
         response, result = None, ('', '', '', '')
         while not all(result):
             response = self.dialog.run()
-            if response != Gtk.ResponseType.OK:
+            if response != Gtk.ResponseType.OK and response <= 0:
                 break
             self.clear_profile_combo()
             active_profile = self.combo_profile.get_active()
@@ -632,15 +666,22 @@ class DBLogin(object):
                         parent=self.dialog)
                 continue
             database = self.entry_database.get_text()
-            login = self.entry_login.get_text()
             CONFIG['login.profile'] = profile
             CONFIG['login.host'] = host
             CONFIG['login.db'] = database
             CONFIG['login.expanded'] = self.expander.props.expanded
-            CONFIG['login.login'] = login
-            result = (
-                hostname, port, database, self.entry_login.get_text())
+            if response == Gtk.ResponseType.OK:
+                authentication = self.entry_login.get_text()
+                CONFIG['login.login'] = authentication
+                CONFIG['login.service'] = ''
+            else:
+                authentication = self.services[response - 1][1]
+                authentication = (
+                    self.service_base + database + authentication)
+                CONFIG['login.login'] = ''
+                CONFIG['login.service'] = authentication
+            result = (hostname, port, database, authentication)
 
         self.dialog.destroy()
         self._window.destroy()
-        return response == Gtk.ResponseType.OK
+        return response == Gtk.ResponseType.OK or response > 0
