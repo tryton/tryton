@@ -5,8 +5,14 @@ import urllib
 import uuid
 
 import braintree
-from braintree.exceptions import TooManyRequestsError, GatewayTimeoutError
+from braintree.exceptions import TooManyRequestsError
 from braintree.exceptions.braintree_error import BraintreeError
+
+try:
+    from braintree.exceptions import GatewayTimeoutError
+except ImportError:
+    class GatewayTimeoutError(Exception):
+        pass
 
 from trytond.cache import Cache
 from trytond.config import config
