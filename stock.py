@@ -366,7 +366,7 @@ class Type(MeasurementsMixin, DeactivableMixin, ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     package = fields.Many2One(
-        'stock.package', "Package", select=True,
+        'stock.package', "Package", select=True, readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
