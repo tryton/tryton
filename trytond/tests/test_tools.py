@@ -303,6 +303,12 @@ class ToolsTestCase(unittest.TestCase):
         now = dt.datetime(2022, 5, 17, tzinfo=zi)
         self.assertEqual(str(now), "2022-05-17 00:00:00+00:00")
 
+    def test_availabe_timezones(self):
+        "Test available_timezones"
+        available_timezones = timezone.available_timezones()
+        self.assertTrue(available_timezones)
+        self.assertIsInstance(available_timezones, set)
+
 
 class StringPartitionedTestCase(unittest.TestCase):
     "Test StringPartitioned"
