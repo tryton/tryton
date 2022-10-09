@@ -1,3 +1,4 @@
+* Add authentication services
 * Schedule actions using server timezone
 * Reset the user sessions less often
 * Add straight values to wizard state view
