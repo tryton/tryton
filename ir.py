@@ -1,13 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-try:
-    import pytz
-except ImportError:
-    pytz = None
-
 from trytond.model import (
     EvalEnvironment, ModelSQL, ModelView, dualmethod, fields)
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
 
@@ -41,8 +37,8 @@ class Date(metaclass=PoolMeta):
         company_id = Transaction().context.get('company')
         if timezone is None and company_id:
             company = Company(company_id)
-            if company.timezone and pytz:
-                timezone = pytz.timezone(company.timezone)
+            if company.timezone:
+                timezone = tz.ZoneInfo(company.timezone)
         return super(Date, cls).today(timezone=timezone)
 
 

@@ -4,14 +4,11 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.report import Report
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
-try:
-    import pytz
-    TIMEZONES = [(x, x) for x in pytz.common_timezones]
-except ImportError:
-    TIMEZONES = []
+TIMEZONES = [(z, z) for z in tz.available_timezones()]
 TIMEZONES += [(None, '')]
 
 Transaction.cache_keys.update({'company', 'employee'})
