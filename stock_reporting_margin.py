@@ -26,3 +26,7 @@ class Context(metaclass=PoolMeta):
     __name__ = 'stock.reporting.margin.context'
 
     include_shipment_cost = fields.Boolean("Include Shipment Cost")
+
+    @classmethod
+    def default_include_shipment_cost(cls):
+        return Transaction().context.get('include_shipment_cost', False)
