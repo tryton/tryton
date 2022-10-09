@@ -202,10 +202,20 @@ class AmendmentLine(ModelSQL, ModelView):
             'invisible': Eval('action') != 'party',
             'required': Eval('action') == 'party',
             })
+    invoice_party = fields.Many2One(
+        'party.party', "Invoice Party",
+        states={
+            'readonly': Eval('state') != 'draft',
+            'invisible': Eval('action') != 'party',
+            },
+        search_context={
+            'related_party': Eval('party'),
+            })
     invoice_address = fields.Many2One(
         'party.address', "Invoice Address",
         domain=[
-            ('party', '=', Eval('party')),
+            ('party', '=', If(Eval('invoice_party'),
+                    Eval('invoice_party'), Eval('party'))),
             ],
         states={
             'readonly': Eval('state') != 'draft',
@@ -301,6 +311,7 @@ class AmendmentLine(ModelSQL, ModelView):
         '_parent_amendment.purchase',
         '_parent_amendment._parent_purchase.payment_term',
         '_parent_amendment._parent_purchase.party',
+        '_parent_amendment._parent_purchase.invoice_party',
         '_parent_amendment._parent_purchase.invoice_address',
         '_parent_amendment._parent_purchase.warehouse')
     def on_change_amendment(self):
@@ -308,6 +319,7 @@ class AmendmentLine(ModelSQL, ModelView):
             self.payment_term = self.amendment.purchase.payment_term
 
             self.party = self.amendment.purchase.party
+            self.invoice_party = self.amendment.purchase.invoice_party
             self.invoice_address = self.amendment.purchase.invoice_address
 
             self.warehouse = self.amendment.purchase.warehouse
@@ -355,10 +367,20 @@ class AmendmentLine(ModelSQL, ModelView):
             self.product = self.product_supplier = self.description = None
             self.quantity = self.unit = self.unit_price = None
 
-    @fields.depends('party')
+    @fields.depends('party', 'invoice_party')
     def on_change_party(self):
-        self.invoice_address = None
+        if not self.invoice_party:
+            self.invoice_address = None
         if self.party:
+            if not self.invoice_address:
+                self.invoice_address = self.party.address_get(type='invoice')
+
+    @fields.depends('party', 'invoice_party')
+    def on_change_invoice_party(self):
+        if self.invoice_party:
+            self.invoice_address = self.invoice_party.address_get(
+                type='invoice')
+        elif self.party:
             self.invoice_address = self.party.address_get(type='invoice')
 
     @fields.depends('line')
@@ -389,6 +411,7 @@ class AmendmentLine(ModelSQL, ModelView):
 
     def _apply_party(self, purchase, purchase_line):
         purchase.party = self.party
+        purchase.invoice_party = self.invoice_party
         purchase.invoice_address = self.invoice_address
 
     def _apply_warehouse(self, purchase, purchase_line):
