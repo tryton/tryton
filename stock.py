@@ -89,7 +89,7 @@ class _ShipmentMixin:
     __slots__ = ()
 
     _states = {
-        'readonly': Eval('state') != 'draft',
+        'readonly': Eval('shipment_cost_readonly', True),
         }
 
     carriages = fields.One2Many(
