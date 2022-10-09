@@ -5,11 +5,6 @@ import datetime as dt
 from collections import defaultdict
 from itertools import chain
 
-try:
-    import pytz
-except ImportError:
-    pytz = None
-
 from sql import Column, Literal, Null, Window
 from sql.aggregate import Min, Sum
 from sql.conditionals import Coalesce
@@ -21,6 +16,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
 from .exceptions import PeriodClosedError, PeriodTransitionError
@@ -80,9 +76,9 @@ class Line(ModelSQL, ModelView):
         if not self.at:
             return
         at = self.at
-        if pytz and self.company and self.company.timezone:
-            timezone = pytz.timezone(self.company.timezone)
-            at = pytz.utc.localize(self.at, is_dst=None).astimezone(timezone)
+        if self.company and self.company.timezone:
+            timezone = tz.ZoneInfo(self.company.timezone)
+            at = self.at.replace(tzinfo=tz.UTC) .astimezone(timezone)
         return at.date()
 
     def get_rec_name(self, name):

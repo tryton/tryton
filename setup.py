@@ -143,7 +143,6 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'test': tests_require,
-        'timezone': ['pytz'],
         },
     dependency_links=dependency_links,
     zip_safe=False,
