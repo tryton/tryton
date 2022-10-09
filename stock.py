@@ -7,6 +7,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock_shipment_cost import ShipmentCostMixin
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 class ShipmentIn(ShipmentCostMixin, metaclass=PoolMeta):
@@ -110,8 +111,11 @@ class ShipmentIn(ShipmentCostMixin, metaclass=PoolMeta):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    unit_shipment_cost = fields.Numeric('Unit Shipment Cost',
-        digits=price_digits, readonly=True)
+    unit_shipment_cost = fields.Numeric(
+        "Unit Shipment Cost", digits=price_digits, readonly=True,
+        states={
+            'invisible': ~Eval('unit_shipment_cost'),
+            })
 
     def _compute_unit_price(self, unit_price):
         if self.unit_shipment_cost:
