@@ -694,7 +694,10 @@ Many2One
 
 .. class:: Many2One(model_name, string[, left[, right[, path[, ondelete[, datetime_field[, target_search[, search_order[, search_context[, \**options]]]]]]]]])
 
-   A many-to-one relation field.
+   A many-to-one relation field that refers to a record of the named model.
+
+   A :py:class:`integer <int>` as :attr:`~trytond.model.Model.id` is used for
+   low level APIs.
 
 :class:`Many2One` has some extra arguments:
 
@@ -801,12 +804,16 @@ One2Many
 
 .. class:: One2Many(model_name, field, string[, add_remove[, order[, datetime_field[, size[, search_order[, search_context[, \**options]]]]]]])
 
-   A one-to-many relation field.
+   A one-to-many relation field that refers to records of the named model.
 
    It requires to have the opposite :class:`Many2One` field or a
    :class:`Reference` field defined on the target model.
 
-:class:`One2Many` accepts as written value a list of tuples like this:
+   A :py:class:`tuple <tuple>` composed of :py:class:`integer <int>` as
+   :attr:`~trytond.model.Model.id` is used for low level APIs.
+
+:class:`One2Many` accepts as written and created value a :py:class:`list
+<list>` of :py:class:`tuples <tuple>` like this:
 
    - ``('create', [{<field name>: value, ...}, ...])``:
      create new target records and link them to this one.
@@ -897,14 +904,17 @@ Many2Many
 
 .. class:: Many2Many(relation_name, origin, target, string[, order[, datetime_field[, size[, search_order[, search_context[, \**options]]]]]])
 
-   A many-to-many relation field.
+   A many-to-many relation field that refers to records of the targeted model.
 
    It requires to have the opposite origin :class:`Many2One` field or a
    :class:`Reference` field defined on the relation model and a
    :class:`Many2One` field pointing to the target.
 
-:class:`Many2Many` accepts as written value a list of tuples like the
-:class:`One2Many`.
+   A :py:class:`tuple <tuple>` composed of :py:class:`integer <int>` as
+   :attr:`~trytond.model.Model.id` is used for low level APIs.
+
+:class:`Many2Many` accepts as written and created value a :py:class:`list
+<list>` of :py:class:`tuples <tuple>` like the :class:`One2Many`.
 
 :class:`Many2Many` has some extra arguments:
 
@@ -982,11 +992,14 @@ One2One
 
 .. class:: One2One(relation_name, origin, target, string[, datetime_field[, \**options]])
 
-   A one-to-one relation field.
+   A one-to-one relation field that refers to a record of the targeted model.
 
    .. warning::
       It is on the relation_name :class:`~trytond.model.Model` that the unicity
       of the couple (origin, target) must be checked.
+
+   A :py:class:`integer <int>` as :attr:`~trytond.model.Model.id` is used for
+   low level APIs.
 
 :class:`One2One` has some extra arguments:
 
@@ -1124,7 +1137,7 @@ Dict
 
 .. class:: Dict(schema_model[, \**options])
 
-   A dictionary field with predefined keys.
+   A :py:class:`dictionary <dict>` field with predefined keys.
 
 .. note::
     It is possible to store the dict as JSON in the database if the backend

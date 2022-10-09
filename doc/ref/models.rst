@@ -40,7 +40,8 @@ Class attributes are:
 
 .. attribute:: Model.id
 
-   The definition of the field ``id`` of records.
+   The definition of the :class:`~trytond.model.fields.Integer` field ``id`` of
+   records.
 
 .. attribute:: Model.__queue__
 
