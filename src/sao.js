@@ -649,6 +649,10 @@ var Sao = {
 
     Sao.logout = function() {
         var session = Sao.Session.current_session;
+        if (!session || !session.session) {
+            // Do not save states if there is no session
+            Sao.main_menu_screen = null;
+        }
         Sao.Tab.tabs.close(true).done(function() {
             jQuery('#user-preferences').empty();
             jQuery('#global-search').empty();
@@ -1153,6 +1157,27 @@ var Sao = {
     }
 
     jQuery(document).ready(function() {
+        var url = new URL(window.location);
+        if (url.searchParams.has('session')) {
+            var database = url.searchParams.get('database');
+            var session = {
+                login_service: url.searchParams.get('login_service'),
+                login: url.searchParams.get('login'),
+                user_id: parseInt(url.searchParams.get('user_id'), 10),
+                session: url.searchParams.get('session'),
+            };
+            if (url.searchParams.has('renew')) {
+                var renew_id = parseInt(url.searchParams.get('renew'), 10);
+                if (session.user_id !== renew_id) {
+                    window.close();
+                    return;
+                }
+            }
+            session = JSON.stringify(session);
+            localStorage.setItem('sao_session_' + database, session);
+            window.close();
+            return;
+        }
         set_shortcuts();
         try {
             Notification.requestPermission();
