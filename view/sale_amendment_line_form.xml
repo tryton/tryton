@@ -14,6 +14,9 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="party"/>
     <field name="party"/>
+    <newline/>
+    <label name="invoice_party"/>
+    <field name="invoice_party"/>
     <label name="invoice_address"/>
     <field name="invoice_address"/>
     <label name="shipment_party"/>
