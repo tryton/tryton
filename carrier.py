@@ -92,6 +92,17 @@ class Carrier(metaclass=PoolMeta):
             'invisible': Eval('shipping_service') != 'dpd',
             })
 
+    dpd_notification = fields.Selection([
+            (None, ""),
+            ('email', "E-Mail"),
+            ('sms', "SMS"),
+            ], "Notification",
+        states={
+            'invisible': Eval('shipping_service') != 'dpd',
+            },
+        help="The preferred notification channel.\n"
+        "Leave empty for no notification.")
+
     @classmethod
     def __setup__(cls):
         super(Carrier, cls).__setup__()

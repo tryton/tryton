@@ -276,5 +276,44 @@ class CreateDPDShipping(Wizard):
             'parcels': [self.get_parcel(p) for p in packages],
             'productAndServiceData': {
                 'orderType': 'consignment',
-                }
+                **self.get_notification(shipment),
+                },
             }
+
+    def get_notification(self, shipment, usage=None):
+        carrier = shipment.carrier
+        if not carrier.dpd_notification:
+            return {}
+        party = shipment.shipping_to
+        if party and party.lang:
+            lang_code = party.lang.code
+        else:
+            lang_code = Transaction().language
+        lang_code = lang_code.upper()
+        channel2type = {
+            'sms': {'mobile'},
+            }
+
+        channels = [
+            (1, 'email'),
+            (3, 'sms'),
+            ]
+        if carrier.dpd_notification == 'sms':
+            channels = reversed(channels)
+
+        for channel_id, channel in channels:
+            mechanism = party.contact_mechanism_get(
+                channel2type.get(channel, channel), usage=usage)
+            if not mechanism:
+                continue
+            value = mechanism.value
+            if len(value) > 50:
+                continue
+            return {
+                'predict': {
+                    'channel': channel_id,
+                    'value': value,
+                    'language': lang_code,
+                    },
+                }
+        return {}

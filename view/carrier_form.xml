@@ -6,7 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <separator string="DPD" colspan="4" id="dpd"/>
         <label name="dpd_product"/>
         <field name="dpd_product"/>
-        <newline/>
+        <label name="dpd_notification"/>
+        <field name="dpd_notification"/>
+
         <label name="dpd_printer_language"/>
         <field name="dpd_printer_language"/>
         <label name="dpd_paper_format"/>

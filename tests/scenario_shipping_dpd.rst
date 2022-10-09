@@ -64,8 +64,7 @@ Create parties::
     >>> customer_address.city = 'Paris'
     >>> customer_address.country = france
     >>> customer_address.save()
-    >>> customer_phone = customer.contact_mechanisms.new()
-    >>> customer_phone.type = 'phone'
+    >>> customer_phone = customer.contact_mechanisms.new(type='mobile')
     >>> customer_phone.value = '+33 93 842 8862'
     >>> customer_phone.save()
 
@@ -179,6 +178,7 @@ Create a DPD Carrier and the related credential::
     >>> carrier.dpd_product = 'CL'
     >>> carrier.dpd_printer_language = 'PDF'
     >>> carrier.dpd_paper_format = 'A6'
+    >>> carrier.dpd_notification = 'sms'
     >>> carrier.save()
 
     >>> catchall_selection = CarrierSelection(carrier=carrier)
