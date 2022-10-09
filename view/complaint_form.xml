@@ -13,10 +13,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <notebook>
         <page string="Complaint" id="complaint">
-            <label name="company"/>
-            <field name="company"/>
-            <label name="employee"/>
-            <field name="employee"/>
             <label name="type"/>
             <field name="type" widget="selection"/>
             <label name="origin"/>
@@ -25,6 +21,21 @@ this repository contains the full copyright notices and license terms. -->
             <newline/>
             <field name="description" colspan="2"/>
             <field name="actions" colspan="2"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+
+            <label name="submitted_by"/>
+            <field name="submitted_by"/>
+            <label name="cancelled_by"/>
+            <field name="cancelled_by"/>
+
+            <label name="approved_by"/>
+            <field name="approved_by"/>
+            <label name="rejected_by"/>
+            <field name="rejected_by"/>
         </page>
     </notebook>
     <label name="state"/>

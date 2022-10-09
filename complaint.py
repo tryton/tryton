@@ -10,6 +10,8 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
+from trytond.modules.company.model import (
+    employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
@@ -50,7 +52,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
         states={
             'readonly': _states['readonly'] | Eval('origin'),
             })
-    employee = fields.Many2One('company.employee', 'Employee', states=_states)
     type = fields.Many2One('sale.complaint.type', 'Type', required=True,
         states=_states)
     origin = fields.Reference('Origin', selection='get_origin',
@@ -105,6 +106,18 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 | (If(~Eval('origin_id', 0), 0, Eval('origin_id', 0)) <= 0)),
             },
         depends={'origin_model'})
+    submitted_by = employee_field(
+        "Submitted By",
+        states=['waiting', 'approved', 'rejected', 'done', 'cancelled'])
+    approved_by = employee_field(
+        "Approved By",
+        states=['approved', 'rejected', 'done', 'cancelled'])
+    rejected_by = employee_field(
+        "Rejected By",
+        states=['approved', 'rejected', 'done', 'cancelled'])
+    cancelled_by = employee_field(
+        "Cancelled By",
+        states=['cancelled'])
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
@@ -176,6 +189,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
         if (table_h.column_exist('reference')
                 and not table_h.column_exist('number')):
             table_h.column_rename('reference', 'number')
+
+        # Migration from 6.4: rename employee into submitted_by
+        if (table_h.column_exist('employee')
+                and not table_h.column_exist('submitted_by')):
+            table_h.column_rename('employee', 'submitted_by')
 
         super(Complaint, cls).__register__(module_name)
 
@@ -271,6 +289,10 @@ class Complaint(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('submitted_by')
+        default.setdefault('approved_by')
+        default.setdefault('rejected_by')
+        default.setdefault('cancelled_by')
         return super(Complaint, cls).copy(complaints, default=default)
 
     @classmethod
@@ -285,24 +307,29 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
+    @set_employee('cancelled_by')
     def cancel(cls, complaints):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee(
+        'submitted_by', 'approved_by', 'rejected_by', 'cancelled_by')
     def draft(cls, complaints):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
+    @set_employee('submitted_by')
     def wait(cls, complaints):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('approved')
+    @set_employee('approved_by')
     def approve(cls, complaints):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
@@ -317,6 +344,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('rejected')
+    @set_employee('rejected_by')
     def reject(cls, complaints):
         pass
 
