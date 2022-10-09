@@ -10,7 +10,7 @@ timezone
 
 .. function:: available_timezones()
 
-   Get a list of all the valid IANA keys available.
+   Return a set of all the valid IANA keys available.
 
 .. attribute:: UTC
 

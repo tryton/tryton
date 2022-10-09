@@ -26,8 +26,8 @@ def available_timezones():
         if zoneinfo:
             _ALL_ZONES = zoneinfo.available_timezones()
         else:
-            _ALL_ZONES = pytz.all_timezones
-    return _ALL_ZONES[:]
+            _ALL_ZONES = set(pytz.all_timezones)
+    return set(_ALL_ZONES)
 
 
 def get_tzinfo(zoneid):
