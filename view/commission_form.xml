@@ -11,14 +11,15 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product"/>
     <field name="product"/>
 
+    <label name="origin"/>
+    <field name="origin"/>
+    <newline/>
+
     <label name="base_amount"/>
     <field name="base_amount"/>
     <label name="amount"/>
     <field name="amount"/>
 
-    <label name="origin"/>
-    <field name="origin"/>
-    <newline/>
     <label name="invoice_line"/>
     <field name="invoice_line"/>
     <label name="invoice_state"/>

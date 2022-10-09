@@ -333,8 +333,8 @@ class Commission(ModelSQL, ModelView):
     _readonly_states = {
         'readonly': Bool(Eval('invoice_line')),
         }
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
-        readonly=True,
+    origin = fields.Reference(
+        "Origin", selection='get_origin', select=True, states=_readonly_states,
         help="The source of the commission.")
     date = fields.Date('Date', select=True, states=_readonly_states,
         help="When the commission is due.")
@@ -391,6 +391,20 @@ class Commission(ModelSQL, ModelView):
         get_name = Model.get_name
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
+
+    @fields.depends('agent', 'origin', 'base_amount')
+    def on_change_with_base_amount(self):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        Currency = pool.get('currency.currency')
+        if (self.agent
+                and isinstance(self.origin, InvoiceLine)
+                and self.origin.id is not None
+                and self.origin.id >= 0
+                and self.base_amount is None):
+            return Currency.compute(
+                self.origin.invoice.currency, self.origin.amount,
+                self.agent.currency, round=False)
 
     @fields.depends('agent')
     def on_change_with_currency(self, name=None):
