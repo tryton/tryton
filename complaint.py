@@ -46,8 +46,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('customer'))],
         states=_states)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        states=_states)
+    company = fields.Many2One(
+        'company.company', 'Company', required=True,
+        states={
+            'readonly': _states['readonly'] | Eval('origin'),
+            })
     employee = fields.Many2One('company.employee', 'Employee', states=_states)
     type = fields.Many2One('sale.complaint.type', 'Type', required=True,
         states=_states)
