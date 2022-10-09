@@ -5,14 +5,10 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, LastValue
 
-try:
-    import pytz
-except ImportError:
-    pytz = None
-
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
 
@@ -42,13 +38,12 @@ class Product(metaclass=PoolMeta):
             datetime = context['_datetime']
             company = pattern.get(
                 'company', Transaction().context.get('company'))
-            if pytz and company:
+            if company:
                 company = Company(company)
                 if company.timezone:
-                    timezone = pytz.timezone(company.timezone)
+                    timezone = tz.ZoneInfo(company.timezone)
                     datetime = (
-                        pytz.utc.localize(datetime, is_dst=None)
-                        .astimezone(timezone))
+                        datetime.replace(tzinfo=tz.UTC).astimezone(timezone))
             cost_price = self.get_cost_price_at(datetime.date(), **pattern)
             if cost_price is not None:
                 return cost_price
