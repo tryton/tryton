@@ -8,7 +8,7 @@ from trytond.pool import Pool, PoolMeta
 class ClassificationMixin(DeactivableMixin):
     __slots__ = ()
     name = fields.Char('Name', translate=True, required=True)
-    selectable = fields.Boolean('Selectable', select=True)
+    selectable = fields.Boolean("Selectable")
 
     @classmethod
     def default_selectable(cls):
@@ -20,7 +20,7 @@ def classification_tree(name):
 
     class ClassificationTreeMixin(tree(separator=' / '), ClassificationMixin):
         __slots__ = ()
-        parent = fields.Many2One(name, 'Parent', select=True)
+        parent = fields.Many2One(name, "Parent")
         childs = fields.One2Many(name, 'parent', 'Children')
 
     return ClassificationTreeMixin
