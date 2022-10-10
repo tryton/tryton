@@ -43,6 +43,5 @@ class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
 class Routing_BOM(ModelSQL):
     'Routing - BOM'
     __name__ = 'production.routing-production.bom'
-    routing = fields.Many2One('production.routing', 'Routing', required=True,
-        select=True)
-    bom = fields.Many2One('production.bom', 'BOM', required=True, select=True)
+    routing = fields.Many2One('production.routing', 'Routing', required=True)
+    bom = fields.Many2One('production.bom', 'BOM', required=True)

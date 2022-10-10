@@ -7,8 +7,8 @@ from trytond.pyson import Eval
 
 class ProductBom(metaclass=PoolMeta):
     __name__ = 'product.product-production.bom'
-    routing = fields.Many2One('production.routing', 'Routing',
-        ondelete='CASCADE', select=True,
+    routing = fields.Many2One(
+        'production.routing', "Routing", ondelete='CASCADE',
         domain=[
             ('boms', '=', Eval('bom', 0)),
             ])
