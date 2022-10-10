@@ -195,6 +195,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
         update = []
     modules_todo = []
     models_to_update_history = set()
+    models_with_indexes = set()
 
     # Load also parent languages
     lang = set(lang)
@@ -239,6 +240,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 for model in classes['model']:
                     if hasattr(model, '_history'):
                         models_to_update_history.add(model.__name__)
+                    if hasattr(model, '_update_sql_indexes'):
+                        models_with_indexes.add(model.__name__)
 
                 # Instanciate a new parser for the module
                 tryton_parser = convert.TrytondXmlHandler(
@@ -289,11 +292,17 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
         pool.setup_mixin()
 
-        for model_name in models_to_update_history:
-            model = pool.get(model_name)
-            if model._history:
-                logger.info('history:update %s', model.__name__)
-                model._update_history_table()
+        if update:
+            for model_name in models_with_indexes:
+                model = pool.get(model_name)
+                if model._sql_indexes:
+                    logger.info('index:create %s', model_name)
+                    model._update_sql_indexes()
+            for model_name in models_to_update_history:
+                model = pool.get(model_name)
+                if model._history:
+                    logger.info('history:update %s', model.__name__)
+                    model._update_history_table()
 
         # Vacuum :
         while modules_todo:

@@ -63,10 +63,6 @@ All are optional except :attr:`~Field.string`.
    The values are :class:`~trytond.pyson.PYSON` statements that is evaluated
    with the values of the record.
 
-.. attribute:: Field.select
-
-   If ``True``, the content of the field is indexed.
-
 .. attribute:: Field.on_change
 
    A set of field names.

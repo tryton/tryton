@@ -61,5 +61,5 @@ class ExportLine(_ClearCache, ModelSQL, ModelView):
     "Export line"
     __name__ = 'ir.export.line'
     name = fields.Char('Name')
-    export = fields.Many2One('ir.export', 'Export', select=True, required=True,
+    export = fields.Many2One('ir.export', 'Export', required=True,
         ondelete='CASCADE')

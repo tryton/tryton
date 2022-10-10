@@ -1,3 +1,4 @@
+* Use declarative index definition for ModelSQL
 * Add configuration entries for unaccent and similarity functions
 * Add authentication services
 * Schedule actions using server timezone

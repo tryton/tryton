@@ -85,10 +85,7 @@ class UIMenu(
 
     name = fields.Char('Menu', required=True, translate=True)
     childs = fields.One2Many('ir.ui.menu', 'parent', 'Children')
-    parent = fields.Many2One('ir.ui.menu', 'Parent Menu', select=True,
-            ondelete='CASCADE')
-    groups = fields.Many2Many('ir.ui.menu-res.group',
-       'menu', 'group', 'Groups')
+    parent = fields.Many2One('ir.ui.menu', 'Parent Menu', ondelete='CASCADE')
     complete_name = fields.Function(fields.Char('Complete Name'),
         'get_rec_name', searcher='search_rec_name')
     icon = fields.Selection('list_icons', 'Icon', translate=False)

@@ -6,7 +6,8 @@ import re
 import warnings
 from weakref import WeakKeyDictionary
 
-from trytond.backend.table import TableHandlerInterface
+from trytond.backend.table import (
+    IndexTranslatorInterface, TableHandlerInterface)
 from trytond.transaction import Transaction
 
 from .database import sqlite
@@ -23,6 +24,7 @@ def _escape_identifier(name):
 
 class TableHandler(TableHandlerInterface):
     __handlers = WeakKeyDictionary()
+    index_translators = []
 
     def _init(self, model, history=False):
         super()._init(model, history=history)
@@ -184,13 +186,9 @@ class TableHandler(TableHandlerInterface):
             self.__indexes = [l[1] for l in cursor]
         return self.__indexes
 
-    def _update_definitions(self, columns=None, indexes=None):
-        if columns is None and indexes is None:
-            columns = indexes = True
+    def _update_definitions(self, columns=True):
         if columns:
             self.__columns = None
-        if indexes:
-            self.__indexes = None
 
     def alter_size(self, column_name, column_type):
         self._recreate_table({column_name: {'size': column_type}})
@@ -288,56 +286,6 @@ class TableHandler(TableHandlerInterface):
     def drop_fk(self, column_name, table=None):
         warnings.warn('Unable to drop foreign key with SQLite backend')
 
-    def index_action(self, columns, action='add', where='', table=None):
-        if isinstance(columns, str):
-            columns = [columns]
-
-        def stringify(column):
-            if isinstance(column, str):
-                return column
-            else:
-                return ('_'.join(
-                        map(str, (column,) + column.params))
-                    .replace('?', '__'))
-
-        name = [table or self.table_name]
-        name.append('_'.join(map(stringify, columns)))
-        if where:
-            name.append('+where')
-            name.append(stringify(where))
-        name.append('index')
-        index_name = self.convert_name('_'.join(name))
-
-        cursor = Transaction().connection.cursor()
-        if action == 'add':
-            if index_name in self._indexes:
-                return
-            params = sum(
-                (c.params for c in columns if hasattr(c, 'params')), ())
-            if where:
-                params += where.params
-                where = ' WHERE %s' % where
-            if params:
-                warnings.warn('Unable to create index with parameters')
-                return
-            cursor.execute(
-                'CREATE INDEX %s ON %s (%s)' % (
-                    _escape_identifier(index_name),
-                    _escape_identifier(self.table_name),
-                    ','.join(
-                        _escape_identifier(c) if isinstance(c, str) else str(c)
-                        for c in columns)
-                    ) + where,
-                params)
-            self._update_definitions(indexes=True)
-        elif action == 'remove':
-            if index_name in self._indexes:
-                cursor.execute('DROP INDEX %s'
-                    % (_escape_identifier(index_name),))
-                self._update_definitions(indexes=True)
-        else:
-            raise Exception('Index action not supported!')
-
     def not_null_action(self, column_name, action='add'):
         if not self.column_exist(column_name):
             return
@@ -354,6 +302,31 @@ class TableHandler(TableHandlerInterface):
 
     def drop_constraint(self, ident, table=None):
         warnings.warn('Unable to drop constraint with SQLite backend')
+
+    def set_indexes(self, indexes):
+        cursor = Transaction().connection.cursor()
+        old = set(self._indexes)
+        for index in indexes:
+            translator = self.index_translator_for(index)
+            if translator:
+                name, query, params = translator.definition(index)
+                name = '_'.join([self.table_name, name])
+                name = 'idx_' + self.convert_name(name, reserved=len('idx_'))
+                # SQLite does not support parameters for index creation
+                if not params:
+                    cursor.execute(
+                        'CREATE INDEX IF NOT EXISTS %s ON %s %s' % (
+                            _escape_identifier(name),
+                            _escape_identifier(self.table_name),
+                            query),
+                        params)
+                else:
+                    warnings.warn("Can not create index with parameters")
+                old.discard(name)
+        for name in old:
+            if name.startswith('idx_') or name.endswith('_index'):
+                cursor.execute('DROP INDEX %s' % _escape_identifier(name))
+        self.__indexes = None
 
     def drop_column(self, column_name):
         if not self.column_exist(column_name):
@@ -378,3 +351,58 @@ class TableHandler(TableHandlerInterface):
         if cascade:
             query = query + ' CASCADE'
         cursor.execute(query)
+
+
+class IndexMixin:
+
+    def __init_subclass__(cls):
+        TableHandler.index_translators.append(cls)
+
+    @classmethod
+    def definition(cls, index):
+        expr_template = '%(expression)s %(collate)s %(order)s'
+        params = []
+        expressions = []
+        for expression, usage in index.expressions:
+            expressions.append(expr_template %
+                cls._get_expression_variables(expression, usage))
+            params.extend(expression.params)
+
+        where = ''
+        if index.options.get('where'):
+            where = 'WHERE %s' % index.options['where']
+            params.extend(index.options['where'].params)
+
+        query = '(%(expressions)s) %(where)s' % {
+            'expressions': ','.join(expressions),
+            'where': where,
+            }
+        name = cls._get_name(query, params)
+        return name, query, params
+
+    @classmethod
+    def _get_expression_variables(cls, expression, usage):
+        variables = {
+            'expression': str(expression),
+            'collate': '',
+            'order': '',
+            }
+        if usage.options.get('collation'):
+            variables['collate'] = 'COLLATE %s' % usage.options['collation']
+        if usage.options.get('order'):
+            order = usage.options['order'].upper()
+            for predicate in ['NULLS FIRST', 'NULLS LAST']:
+                if order.endswith(predicate):
+                    order = order[:-len(predicate)]
+            variables['order'] = order
+        return variables
+
+
+class IndexTranslator(IndexMixin, IndexTranslatorInterface):
+
+    @classmethod
+    def score(cls, index):
+        supported_indexes_count = sum(
+            int(u.__class__.__name__ in {'Equality', 'Range'})
+            for _, u in index.expressions)
+        return supported_indexes_count * 100

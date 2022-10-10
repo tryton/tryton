@@ -6,7 +6,8 @@ from sql import Literal
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import Check, EvalEnvironment, ModelSQL, ModelView, fields
+from trytond.model import (
+    Check, EvalEnvironment, Index, ModelSQL, ModelView, fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder
@@ -21,18 +22,16 @@ class RuleGroup(ModelSQL, ModelView):
     "Rule group"
     __name__ = 'ir.rule.group'
     name = fields.Char(
-        "Name", select=True, translate=True, required=True,
+        "Name", translate=True, required=True,
         help="Displayed to users when access error is raised for this rule.")
-    model = fields.Many2One('ir.model', 'Model', select=True,
+    model = fields.Many2One('ir.model', 'Model',
         required=True, ondelete='CASCADE')
-    global_p = fields.Boolean('Global', select=True,
+    global_p = fields.Boolean('Global',
         help="Make the rule global \nso every users must follow this rule.")
-    default_p = fields.Boolean('Default', select=True,
+    default_p = fields.Boolean('Default',
         help="Add this rule to all users by default.")
     rules = fields.One2Many('ir.rule', 'rule_group', 'Tests',
         help="The rule is satisfied if at least one test is True.")
-    groups = fields.Many2Many('ir.rule.group-res.group',
-        'rule_group', 'group', 'Groups')
     perm_read = fields.Boolean('Read Access')
     perm_write = fields.Boolean('Write Access')
     perm_create = fields.Boolean('Create Access')
@@ -41,17 +40,21 @@ class RuleGroup(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(RuleGroup, cls).__setup__()
+        t = cls.__table__()
+
         cls._order.insert(0, ('model', 'ASC'))
         cls._order.insert(1, ('global_p', 'ASC'))
         cls._order.insert(2, ('default_p', 'ASC'))
 
-        t = cls.__table__()
         cls._sql_constraints += [
             ('global_default_exclusive',
                 Check(t, (t.global_p == Literal(False))
                     | (t.default_p == Literal(False))),
                 'Global and Default are mutually exclusive!'),
             ]
+        cls._sql_indexes.update({
+                Index(t, (t.model, Index.Equality())),
+                })
 
     @staticmethod
     def default_global_p():
@@ -100,7 +103,7 @@ class RuleGroup(ModelSQL, ModelView):
 class Rule(ModelSQL, ModelView):
     "Rule"
     __name__ = 'ir.rule'
-    rule_group = fields.Many2One('ir.rule.group', 'Group', select=True,
+    rule_group = fields.Many2One('ir.rule.group', 'Group',
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,
         help="Domain is evaluated with a PYSON context containing:"
@@ -109,6 +112,14 @@ class Rule(ModelSQL, ModelView):
     _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
     modes = {'read', 'write', 'create', 'delete'}
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        table = cls.__table__()
+
+        cls._sql_indexes.add(
+            Index(table, (table.rule_group, Index.Equality())))
 
     @classmethod
     def validate_fields(cls, rules, field_names):

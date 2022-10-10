@@ -7,9 +7,17 @@ Backend
 
 The backend manages the database connection and schema manipulation.
 
+.. contents::
+   :local:
+   :backlinks: entry
+   :depth: 1
+
 .. attribute:: name
 
    The name of the backend configured.
+
+Database
+========
 
 .. class:: Database(name)
 
@@ -108,6 +116,10 @@ The backend manages the database connection and schema manipulation.
 .. method:: Database.has_unaccent()
 
    Return if the database suppport unaccentuated function.
+
+.. method:: Database.has_unaccent_indexable()
+
+   Return if the database suppport unaccentuated function in index.
 
 .. method:: Database.unaccent(value)
 
@@ -211,6 +223,9 @@ The backend manages the database connection and schema manipulation.
 
    Rteurn the SQL expression to test if the JSON ``column`` contains ``json``.
 
+TableHandler
+============
+
 .. class:: TableHandler(model[, history])
 
    Handle table for the ``model``.
@@ -219,6 +234,10 @@ The backend manages the database connection and schema manipulation.
 .. attribute:: TableHandler.namedatalen
 
    The maximing length of named data for the database.
+
+.. attribute:: TableHandler.index_translators
+
+   Contain the :class:`IndexTranslator` for the database.
 
 .. classmethod:: TableHandler.table_exist(table_name)
 
@@ -271,12 +290,6 @@ The backend manages the database connection and schema manipulation.
    Drop the foreign key constrant on the named column.
    ``table`` can be used to alter another table.
 
-.. method:: TableHandler.index_action(columns[, action[, where[, table]]])
-
-   Add or remove index on listed ``columns``.
-   ``where`` is an optional SQL expression for partial index.
-   ``table`` can be used to alter another table.
-
 .. method:: TableHandler.not_null_action(column_name[, action])
 
    Add or remove ``NOT NULL`` on the named column.
@@ -291,6 +304,11 @@ The backend manages the database connection and schema manipulation.
    Drop the named ``ident`` constraint.
    ``table`` can be used to alter another table.
 
+.. method:: TableHandler.set_indexes(indexes)
+
+   Create the :class:`indexes <trytond.model.Index>` if possible and drop
+   others having ``idx_`` as prefix or ``_index`` as suffix.
+
 .. method:: TableHandler.drop_column(column_name)
 
    Drop the named column.
@@ -301,9 +319,35 @@ The backend manages the database connection and schema manipulation.
    ``model``.
    Set ``cascade`` to drop objects that depend on the table.
 
-.. classmethod:: TableHandler.convert_name(name)
+.. classmethod:: TableHandler.convert_name(name[, reserved])
 
-   Convert the data name to be lower than namedatalen.
+   Convert the data name to be lower than namedatalen minus reserved.
+
+.. method:: Database.index_translator_for(index)
+
+   Return the best :class:`IndexTranslator` for the given index.
+
+IndexTranslator
+===============
+
+.. class:: IndexTranslator
+
+   Convert an :class:`~trytond.model.Index` into a concrete index.
+
+.. classmethod:: IndexTranslator.definition(index)
+
+   Return the name, SQL query and parameters to create the :class:`index
+   <trytond.model.Index>`.
+
+.. classmethod:: IndexTranslator.score(index)
+
+   Return a score related to the fitness of using this translator for the
+   :class:`index <trytond.model.Index>`.
+   A score of ``0`` means that the translator is unsuited for the requested
+   usage.
+
+Exceptions
+==========
 
 .. exception:: DatabaseIntegrityError
 

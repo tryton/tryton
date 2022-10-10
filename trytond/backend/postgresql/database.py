@@ -181,6 +181,7 @@ class JSONContains(BinaryOperator):
 
 class Database(DatabaseInterface):
 
+    index_translators = []
     _lock = RLock()
     _databases = defaultdict(dict)
     _connpool = None
@@ -190,7 +191,8 @@ class Database(DatabaseInterface):
     _current_user = None
     _has_returning = None
     _has_select_for_skip_locked = None
-    _has_proc = defaultdict(dict)
+    _has_proc = defaultdict(lambda: defaultdict(dict))
+    _extensions = defaultdict(dict)
     _search_full_text_languages = defaultdict(dict)
     flavor = Flavor(ilike=True)
 
@@ -515,24 +517,30 @@ class Database(DatabaseInterface):
     def has_sequence(cls):
         return True
 
-    def has_proc(self, name):
-        if name in self._has_proc[self.name]:
-            return self._has_proc[self.name][name]
+    def has_proc(self, name, property='oid'):
+        if (name in self._has_proc[self.name]
+                and property in self._has_proc[self.name][name]):
+            return self._has_proc[self.name][name][property]
         connection = self.get_connection()
         result = False
         try:
             cursor = connection.cursor()
             cursor.execute(
-                "SELECT 1 FROM pg_proc WHERE proname=%s",
-                (name,))
-            result = bool(cursor.rowcount)
+                SQL('SELECT {} FROM pg_proc WHERE proname=%s').format(
+                    Identifier(property)), (name,))
+            result = cursor.fetchone()
+            if result:
+                result, = result
         finally:
             self.put_connection(connection)
-        self._has_proc[self.name][name] = result
+        self._has_proc[self.name][name][property] = result
         return result
 
     def has_unaccent(self):
         return self.has_proc(Unaccent._function)
+
+    def has_unaccent_indexable(self):
+        return self.has_proc(Unaccent._function, 'provolatile') == 'i'
 
     def has_similarity(self):
         return self.has_proc(Similarity._function)
@@ -714,6 +722,23 @@ class Database(DatabaseInterface):
 
     def has_channel(self):
         return True
+
+    def has_extension(self, extension_name):
+        if extension_name in self._extensions[self.name]:
+            return self._extensions[self.name][extension_name]
+
+        connection = self.get_connection()
+        result = False
+        try:
+            cursor = connection.cursor()
+            cursor.execute(
+                "SELECT 1 FROM pg_extension WHERE extname=%s",
+                (extension_name,))
+            result = bool(cursor.rowcount)
+        finally:
+            self.put_connection(connection)
+        self._extensions[self.name][extension_name] = result
+        return result
 
     def json_get(self, column, key=None):
         column = Cast(column, 'jsonb')

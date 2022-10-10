@@ -231,7 +231,7 @@ class Field(object):
     _py_type = None
 
     def __init__(self, string='', help='', required=False, readonly=False,
-            domain=None, states=None, select=False, on_change=None,
+            domain=None, states=None, on_change=None,
             on_change_with=None, depends=None, context=None,
             loading='eager'):
         '''
@@ -245,7 +245,6 @@ class Field(object):
             ``readonly`` and ``invisible``. Values are pyson expressions that
             will be evaluated with record values. This allows to change
             dynamically the attributes of the field.
-        :param select: An boolean. When True search will be optimized.
         :param on_change: A list of values. If set, the client will call the
             method ``on_change_<field_name>`` when the user changes the field
             value. It then passes this list of values as arguments to the
@@ -269,7 +268,6 @@ class Field(object):
         self.domain = domain
         self.__states = None
         self.states = states or {}
-        self.select = bool(select)
         self.on_change = set()
         if on_change:
             warnings.warn('on_change argument is deprecated, '

@@ -27,12 +27,11 @@ class Dict(Field):
     _py_type = dict
 
     def __init__(self, schema_model, string='', help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='lazy'):
         super(Dict, self).__init__(string, help, required, readonly, domain,
-            states, select, on_change, on_change_with, depends, context,
-            loading)
+            states, on_change, on_change_with, depends, context, loading)
         self.schema_model = schema_model
         self.search_unaccented = True
 

@@ -153,6 +153,78 @@ class Exclude(Constraint):
         return tuple(p)
 
 
+class Index:
+    __slots__ = ('table', 'expressions', 'options')
+
+    def __init__(self, table, *expressions, **options):
+        self.table = table
+        assert all(
+            isinstance(e, Expression) and isinstance(u, self.Usage)
+            for e, u in expressions)
+        self.expressions = expressions
+        self.options = options
+
+    def __hash__(self):
+        table_def = (
+            self.table._name, self.table._schema, self.table._database)
+        expressions = (
+            (str(e), e.params, hash(u)) for e, u in self.expressions)
+        return hash((table_def, *expressions))
+
+    def __eq__(self, other):
+        return (
+            str(self.table) == str(other.table)
+            and len(self.expressions) == len(other.expressions)
+            and all((str(c), u) == (str(oc), ou)
+                for (c, u), (oc, ou) in zip(
+                    self.expressions, other.expressions))
+            and self.options == other.options)
+
+    class Unaccent(Expression):
+        "Unaccent function if database support for index"
+        __slots__ = ('_expression',)
+
+        def __init__(self, expression):
+            self._expression = expression
+
+        @property
+        def expression(self):
+            expression = self._expression
+            database = Transaction().database
+            if database.has_unaccent_indexable():
+                expression = database.unaccent(expression)
+            return expression
+
+        def __str__(self):
+            return str(self.expression)
+
+        @property
+        def params(self):
+            return self.expression.params
+
+    class Usage:
+        __slots__ = ('options',)
+
+        def __init__(self, **options):
+            self.options = options
+
+        def __hash__(self):
+            return hash((self.__class__.__name__, *self.options.items()))
+
+        def __eq__(self, other):
+            return (self.__class__ == other.__class__
+                and self.options == other.options)
+
+    class Equality(Usage):
+        __slots__ = ()
+
+    class Range(Usage):
+        __slots__ = ()
+
+    class Similarity(Usage):
+        __slots__ = ()
+
+
 def no_table_query(func):
     @wraps(func)
     def wrapper(cls, *args, **kwargs):
@@ -185,16 +257,72 @@ class ModelSQL(ModelStorage):
         super(ModelSQL, cls).__setup__()
 
         cls._sql_constraints = []
+        cls._sql_indexes = set()
         if not callable(cls.table_query):
             table = cls.__table__()
             cls._sql_constraints.append(
                 ('id_positive', Check(table, table.id >= 0),
                     'ir.msg_id_positive'))
+            rec_name_field = getattr(cls, cls._rec_name, None)
+            if (isinstance(rec_name_field, fields.Field)
+                    and not hasattr(rec_name_field, 'set')):
+                column = Column(table, cls._rec_name)
+                if getattr(rec_name_field, 'search_unaccented', False):
+                    column = Index.Unaccent(column)
+                cls._sql_indexes.add(
+                    Index(table, (column, Index.Similarity())))
         cls._order = [('id', None)]
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
                     'history_revisions': RPC(),
                     })
+        if cls._history:
+            history_table = cls.__table_history__()
+            cls._sql_indexes.add(
+                Index(
+                    history_table,
+                    (history_table.id, Index.Equality())))
+
+    @classmethod
+    def __post_setup__(cls):
+        super().__post_setup__()
+
+        # Define Range index to optimise with reduce_ids
+        for field in cls._fields.values():
+            if isinstance(field, fields.One2Many) and field.field:
+                Target = field.get_target()
+                field_name = field.field
+            elif isinstance(field, fields.Many2Many) and field.origin:
+                Target = field.get_relation()
+                field_name = field.origin
+            else:
+                continue
+            if field_name == 'id':
+                continue
+            target_field = getattr(Target, field_name)
+            if (issubclass(Target, ModelSQL)
+                    and not callable(Target.table_query)
+                    and not hasattr(target_field, 'set')):
+                target = Target.__table__()
+                column = Column(target, field_name)
+                if not target_field.required and Target != cls:
+                    where = column != Null
+                else:
+                    where = None
+                if target_field._type == 'reference':
+                    Target._sql_indexes.update({
+                            Index(
+                                target,
+                                (column, Index.Equality()),
+                                where=where),
+                            Index(
+                                target,
+                                (column, Index.Similarity(begin=True)),
+                                where=where),
+                            })
+                else:
+                    Target._sql_indexes.add(
+                        Index(target, (column, Index.Range()), where=where))
 
     @classmethod
     def __table__(cls):
@@ -230,7 +358,6 @@ class ModelSQL(ModelStorage):
         table = cls.__table_handler__(module_name)
         if cls._history:
             history_table = cls.__table_handler__(module_name, history=True)
-            history_table.index_action('id', action='add')
 
         for field_name, field in cls._fields.items():
             if field_name == 'id':
@@ -278,9 +405,6 @@ class ModelSQL(ModelStorage):
                 elif ref:
                     table.add_fk(field_name, ref, field.ondelete)
 
-            table.index_action(
-                field_name, action=field.select and 'add' or 'remove')
-
             required = field.required
             # Do not set 'NOT NULL' for Binary field as the database column
             # will be left empty if stored in the filestore or filled later by
@@ -319,6 +443,8 @@ class ModelSQL(ModelStorage):
                         cls._rebuild_tree(field_name, None, 0)
 
         for ident, constraint, _ in cls._sql_constraints:
+            assert (
+                not ident.startswith('idx_') and not ident.endswith('_index'))
             table.add_constraint(ident, constraint)
 
         if cls._history:
@@ -337,6 +463,13 @@ class ModelSQL(ModelStorage):
                                     for c in columns))))
                     cursor.execute(*history_table.update(
                             [history_table.write_date], [None]))
+
+    @classmethod
+    def _update_sql_indexes(cls):
+        if not callable(cls.table_query):
+            table_h = cls.__table_handler__()
+            # TODO: remove overlapping indexes
+            table_h.set_indexes(cls._sql_indexes)
 
     @classmethod
     def _update_history_table(cls):

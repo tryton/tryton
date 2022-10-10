@@ -7,7 +7,7 @@ from lxml import etree
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
@@ -27,10 +27,10 @@ class View(ModelSQL, ModelView):
     "View"
     __name__ = 'ir.ui.view'
     _rec_name = 'model'
-    model = fields.Char('Model', select=True, states={
+    model = fields.Char('Model', states={
             'required': Eval('type') != 'board',
             })
-    priority = fields.Integer('Priority', required=True, select=True)
+    priority = fields.Integer('Priority', required=True)
     type = fields.Selection([
             (None, ''),
             ('tree', 'Tree'),
@@ -39,7 +39,7 @@ class View(ModelSQL, ModelView):
             ('calendar', 'Calendar'),
             ('board', 'Board'),
             ('list-form', "List Form"),
-            ], 'View Type', select=True,
+            ], 'View Type',
         domain=[
             If(Bool(Eval('inherit')),
                 ('type', '=', None),
@@ -54,7 +54,7 @@ class View(ModelSQL, ModelView):
     arch = fields.Function(fields.Text('View Architecture', states={
                 'readonly': Bool(Eval('name')),
                 }, depends=['name']), 'get_arch', setter='set_arch')
-    inherit = fields.Many2One('ir.ui.view', 'Inherited View', select=True,
+    inherit = fields.Many2One('ir.ui.view', 'Inherited View',
             ondelete='CASCADE')
     field_childs = fields.Char('Children Field', states={
             'invisible': Eval('type') != 'tree',
@@ -72,6 +72,8 @@ class View(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(View, cls).__setup__()
+        table = cls.__table__()
+
         cls.__rpc__['view_get'] = RPC(instantiate=0, cache=dict(days=1))
         cls._order.insert(0, ('priority', 'ASC'))
         cls._buttons.update({
@@ -79,6 +81,15 @@ class View(ModelSQL, ModelView):
                     'readonly': Eval('type') != 'form',
                     'depends': ['type'],
                     },
+                })
+        cls._sql_indexes.update({
+                Index(table,
+                    (table.model, Index.Equality()),
+                    (table.inherit, Index.Equality())),
+                Index(
+                    table,
+                    (table.id, Index.Equality()),
+                    (table.inherit, Index.Equality())),
                 })
 
     @staticmethod
@@ -368,18 +379,25 @@ class ViewTreeWidth(ModelSQL, ModelView):
     "View Tree Width"
     __name__ = 'ir.ui.view_tree_width'
     _rec_name = 'model'
-    model = fields.Char('Model', required=True, select=True)
-    field = fields.Char('Field', required=True, select=True)
+    model = fields.Char('Model', required=True)
+    field = fields.Char('Field', required=True)
     user = fields.Many2One('res.user', 'User', required=True,
-            ondelete='CASCADE', select=True)
+        ondelete='CASCADE')
     width = fields.Integer('Width', required=True)
 
     @classmethod
     def __setup__(cls):
         super(ViewTreeWidth, cls).__setup__()
+        table = cls.__table__()
         cls.__rpc__.update({
                 'set_width': RPC(readonly=False),
                 })
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.user, Index.Equality()),
+                (table.model, Index.Equality()),
+                (table.field, Index.Equality())))
 
     @classmethod
     def delete(cls, records):
@@ -441,12 +459,12 @@ class ViewTreeOptional(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'set_optional': RPC(readonly=False),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
-        table_h.index_action(['view_id', 'user'], 'add')
+        table = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.user, Index.Equality()),
+                (table.view_id, Index.Equality())))
 
     @classmethod
     def create(cls, vlist):
@@ -505,12 +523,14 @@ class ViewTreeState(ModelSQL, ModelView):
                 'get': RPC(check_access=False, cache=dict(days=1)),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(ViewTreeState, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        table.index_action(['model', 'domain', 'user', 'child_name'], 'add')
+        table = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.user, Index.Equality()),
+                (table.model, Index.Equality()),
+                (table.child_name, Index.Equality()),
+                (table.domain, Index.Equality())))
 
     @staticmethod
     def default_nodes():

@@ -8,7 +8,7 @@ Models
 .. contents::
    :local:
    :backlinks: entry
-   :depth: 1
+   :depth: 2
 
 Model
 =====
@@ -527,6 +527,11 @@ Class attributes are:
    xml id
       The message id for :meth:`~trytond.i18n.gettext`
 
+.. attribute:: ModelSQL._sql_indexes
+
+   A :py:class:`set <set>` containing the :class:`Index` that are created on
+   the table.
+
 Class methods:
 
 .. classmethod:: ModelSQL.__table__()
@@ -679,6 +684,48 @@ Instance attributes:
 .. attribute:: Exclude.where
 
    The clause for which the exclusion applies.
+
+Index
+-----
+
+.. class:: Index(table[, \*expressions, [, \*\*options]])
+
+Represent a SQL index for the ``table`` for the sequence of ``expressions``.
+An ``expression`` is a :py:class:`tuple <tuple>` of SQL expression and a
+:attr:`~Index.Usage`.
+
+Available options are:
+
+   * ``include``: a list of columns to include in the index
+   * ``where``: the where clause for partial index
+
+.. attribute:: Index.Unaccent(expression)
+
+Apply unaccent function if the database supports it.
+
+.. attribute:: Index.Usage(\*\*options)
+
+Represent a usage of a SQL expression.
+Available options are:
+
+   * ``collation``: the name of the collation
+   * ``order``: the sort order
+
+.. attribute:: Index.Equality(\*\*options)
+
+Represent an equality usage.
+
+.. attribute:: Index.Range(\*\*options)
+
+Represent an range usage.
+
+.. attribute:: Index.Similarity(\*\*options)
+
+Represent a similar usage only for text.
+Additional options are available:
+
+   * ``begin``: optimize for constant pattern and anchored to the beginning of
+     the string
 
 Workflow
 ========

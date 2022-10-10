@@ -92,6 +92,9 @@ class DatabaseInterface(object):
     def has_unaccent(self):
         return False
 
+    def has_unaccent_indexable(self):
+        return False
+
     def unaccent(self, value):
         return value
 

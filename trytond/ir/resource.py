@@ -3,7 +3,7 @@
 from sql.conditionals import Coalesce
 
 from trytond.i18n import lazy_gettext
-from trytond.model import ModelStorage, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelStorage, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -14,7 +14,15 @@ __all__ = ['ResourceAccessMixin', 'ResourceMixin', 'resource_copy']
 class ResourceAccessMixin(ModelStorage):
 
     resource = fields.Reference(
-        "Resource", selection='get_models', required=True, select=True)
+        "Resource", selection='get_models', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        if issubclass(cls, ModelSQL):
+            table = cls.__table__()
+            cls._sql_indexes.add(
+                Index(table, (table.resource, Index.Similarity(begin=True))))
 
     @classmethod
     def default_resource(cls):

@@ -25,7 +25,7 @@ class Many2One(Field):
     def __init__(self, model_name, string='', left=None, right=None, path=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
             search_order=None, search_context=None, help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None, context=None,
             loading='eager'):
         '''
@@ -50,7 +50,7 @@ class Many2One(Field):
         self.ondelete = ondelete
         super(Many2One, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.model_name = model_name
         self.left = left

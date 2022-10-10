@@ -26,7 +26,7 @@ class Binary(Field):
     cast = staticmethod(caster)
 
     def __init__(self, string='', help='', required=False, readonly=False,
-            domain=None, states=None, select=False, on_change=None,
+            domain=None, states=None, on_change=None,
             on_change_with=None, depends=None, context=None, loading='lazy',
             filename=None, file_id=None, store_prefix=None):
         self.filename = filename
@@ -34,7 +34,7 @@ class Binary(Field):
         self.store_prefix = store_prefix
         super(Binary, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
 
     @cached_property

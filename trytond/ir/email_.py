@@ -245,8 +245,8 @@ class EmailAddress(ModelSQL):
     __name__ = 'ir.email.address'
 
     email = fields.Many2One(
-        'ir.email', "E-mail", required=True, ondelete='CASCADE', select=True)
-    address = fields.Char("Address", required=True, select=True)
+        'ir.email', "E-mail", required=True, ondelete='CASCADE')
+    address = fields.Char("Address", required=True)
 
 
 class EmailTemplate(ModelSQL, ModelView):

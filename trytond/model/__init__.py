@@ -8,7 +8,7 @@ from .digits import DigitsMixin
 from .match import MatchMixin
 from .model import Model
 from .modelsingleton import ModelSingleton
-from .modelsql import Check, Exclude, ModelSQL, Unique
+from .modelsql import Check, Exclude, Index, ModelSQL, Unique
 from .modelstorage import EvalEnvironment, ModelStorage
 from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
@@ -19,7 +19,7 @@ from .union import UnionMixin
 from .workflow import Workflow
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Check', 'Unique', 'Exclude',
+    'Check', 'Unique', 'Exclude', 'Index',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
     'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree',

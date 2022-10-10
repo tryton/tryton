@@ -7,7 +7,7 @@ from sql.aggregate import Min
 from sql.functions import CurrentTimestamp, Extract
 
 from trytond.config import config
-from trytond.model import ModelSQL, fields
+from trytond.model import Index, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
@@ -34,18 +34,17 @@ class Queue(ModelSQL):
         help="When the task should be done.")
 
     @classmethod
-    def __register__(cls, module_name):
-        queue = cls.__table__()
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
+    def __setup__(cls):
+        super().__setup__()
+        table = cls.__table__()
 
-        # Add index for candidates
-        table_h.index_action([
-                queue.scheduled_at.nulls_first,
-                queue.expected_at.nulls_first,
-                queue.dequeued_at,
-                queue.name,
-                ], action='add')
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.scheduled_at, Index.Range(nulls_first=True)),
+                (table.expected_at, Index.Range(nulls_first=True)),
+                (table.dequeued_at, Index.Equality()),
+                (table.name, Index.Equality())))
 
     @classmethod
     def default_enqueued_at(cls):

@@ -10,7 +10,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, dualmethod, fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing
@@ -69,7 +69,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         depends=['interval_type'])
     timezone = fields.Function(fields.Char("Timezone"), 'get_timezone')
 
-    next_call = fields.DateTime("Next Call", select=True)
+    next_call = fields.DateTime("Next Call")
     method = fields.Selection([
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
             ('ir.queue|clean', "Clean Task Queue"),
@@ -79,11 +79,14 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Cron, cls).__setup__()
+        table = cls.__table__()
+
         cls._buttons.update({
                 'run_once': {
                     'icon': 'tryton-launch',
                     },
                 })
+        cls._sql_indexes.add(Index(table, (table.next_call, Index.Range())))
 
     @classmethod
     def __register__(cls, module_name):

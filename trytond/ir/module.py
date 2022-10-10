@@ -331,7 +331,7 @@ class ModuleDependency(ModelSQL, ModelView):
     "Module dependency"
     __name__ = "ir.module.dependency"
     name = fields.Char('Name')
-    module = fields.Many2One('ir.module', 'Module', select=True,
+    module = fields.Many2One('ir.module', 'Module',
        ondelete='CASCADE', required=True)
     state = fields.Function(fields.Selection([
                 ('not activated', 'Not Activated'),
@@ -380,7 +380,7 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
     state = fields.Selection([
         ('open', 'Open'),
         ('done', 'Done'),
-        ], string="State", required=True, select=True, sort=False)
+        ], string="State", required=True, sort=False)
 
     @classmethod
     def __register__(cls, module_name):

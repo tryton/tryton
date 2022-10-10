@@ -27,7 +27,7 @@ class Reference(SelectionMixin, Field):
     def __init__(self, string='', selection=None, sort=True,
             selection_change_with=None, translate=True, search_order=None,
             search_context=None, help='', help_selection=None, required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None, context=None,
             loading='lazy', datetime_field=None):
         '''
@@ -42,7 +42,7 @@ class Reference(SelectionMixin, Field):
         '''
         super(Reference, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.datetime_field = datetime_field
         self.selection = selection or None

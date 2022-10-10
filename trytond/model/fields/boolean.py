@@ -13,10 +13,10 @@ class Boolean(Field):
     _py_type = bool
 
     def __init__(self, string='', help='', readonly=False, domain=None,
-            states=None, select=False, on_change=None, on_change_with=None,
+            states=None, on_change=None, on_change_with=None,
             depends=None, context=None, loading='eager'):
         super(Boolean, self).__init__(string=string, help=help, required=False,
-            readonly=readonly, domain=domain, states=states, select=select,
+            readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
 

@@ -8,7 +8,7 @@ class Path(DeactivableMixin, tree(), ModelSQL):
     "Path"
     __name__ = 'test.path'
     name = fields.Char("Name", required=True)
-    parent = fields.Many2One('test.path', "Parent", select=True, path='path')
+    parent = fields.Many2One('test.path', "Parent", path='path')
     path = fields.Char("Path")
     children = fields.One2Many('test.path', 'parent', "Children")
 

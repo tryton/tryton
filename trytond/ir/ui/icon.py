@@ -14,7 +14,7 @@ class Icon(sequence_ordered(), ModelSQL, ModelView):
     'Icon'
     __name__ = 'ir.ui.icon'
 
-    name = fields.Char('Name', required=True, select=True)
+    name = fields.Char('Name', required=True)
     module = fields.Char('Module', readonly=True, required=True)
     path = fields.Char('SVG Path', readonly=True, required=True)
     icon = fields.Function(fields.Char('Icon', depends=['path']), 'get_icon')

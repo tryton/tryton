@@ -102,7 +102,7 @@ class DateTime(Timestamp):
     _sql_type = 'DATETIME'
 
     def __init__(self, string='', format='%H:%M:%S', help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='eager'):
         '''
@@ -110,7 +110,7 @@ class DateTime(Timestamp):
         '''
         super(DateTime, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.format = format
 
@@ -132,7 +132,7 @@ class Time(FormatMixin, Field):
     _py_type = datetime.time
 
     def __init__(self, string='', format='%H:%M:%S', help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='eager'):
         '''
@@ -140,7 +140,7 @@ class Time(FormatMixin, Field):
         '''
         super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.format = format
 
@@ -167,7 +167,7 @@ class TimeDelta(Field):
     _py_type = datetime.timedelta
 
     def __init__(self, string='', converter=None, help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
+            readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='eager'):
         '''
@@ -176,7 +176,7 @@ class TimeDelta(Field):
         '''
         super(TimeDelta, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.converter = converter
 

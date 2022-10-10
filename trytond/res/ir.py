@@ -1,17 +1,26 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from trytond.cache import Cache
 from trytond.model import DeactivableMixin, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+
+
+class UIMenu(metaclass=PoolMeta):
+    __name__ = 'ir.ui.menu'
+
+    groups = fields.Many2Many(
+        'ir.ui.menu-res.group', 'menu', 'group', "Groups")
 
 
 class UIMenuGroup(ModelSQL):
     "UI Menu - Group"
     __name__ = 'ir.ui.menu-res.group'
     menu = fields.Many2One('ir.ui.menu', 'Menu', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
 
     @classmethod
     def create(cls, vlist):
@@ -37,9 +46,9 @@ class ActionGroup(ModelSQL):
     "Action - Group"
     __name__ = 'ir.action-res.group'
     action = fields.Many2One('ir.action', 'Action', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
 
     @classmethod
     def create(cls, vlist):
@@ -126,13 +135,58 @@ class ActionKeyword(metaclass=PoolMeta):
         return [('action.' + clause[0],) + tuple(clause[1:])]
 
 
+class ModelButton(metaclass=PoolMeta):
+    __name__ = 'ir.model.button'
+
+    groups = fields.Many2Many(
+        'ir.model.button-res.group', 'button', 'group', "Groups")
+    _groups_cache = Cache('ir.model.button.groups')
+
+    @classmethod
+    def create(cls, vlist):
+        result = super().create(vlist)
+        cls._groups_cache.clear()
+        return result
+
+    @classmethod
+    def write(cls, buttons, values, *args):
+        super().write(buttons, values, *args)
+        cls._groups_cache.clear()
+
+    @classmethod
+    def delete(cls, buttons):
+        super().delete(buttons)
+        cls._groups_cache.clear()
+
+    @classmethod
+    def get_groups(cls, model, name):
+        '''
+        Return a set of group ids for the named button on the model.
+        '''
+        key = (model, name)
+        groups = cls._groups_cache.get(key)
+        if groups is not None:
+            return groups
+        buttons = cls.search([
+                ('model.model', '=', model),
+                ('name', '=', name),
+                ])
+        if not buttons:
+            groups = set()
+        else:
+            button, = buttons
+            groups = set(g.id for g in button.groups)
+        cls._groups_cache.set(key, groups)
+        return groups
+
+
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
     "Model Button - Group"
     __name__ = 'ir.model.button-res.group'
     button = fields.Many2One('ir.model.button', 'Button',
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-        select=True, required=True)
+        required=True)
 
     @classmethod
     def create(cls, vlist):
@@ -167,13 +221,20 @@ class ModelButtonClick(metaclass=PoolMeta):
     user = fields.Many2One('res.user', "User", ondelete='CASCADE')
 
 
+class RuleGroup(metaclass=PoolMeta):
+    __name__ = 'ir.rule.group'
+
+    groups = fields.Many2Many(
+        'ir.rule.group-res.group', 'rule_group', 'group', "Groups")
+
+
 class RuleGroupGroup(ModelSQL):
     "Rule Group - Group"
     __name__ = 'ir.rule.group-res.group'
     rule_group = fields.Many2One('ir.rule.group', 'Rule Group',
-            ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
 
 
 class SequenceType(metaclass=PoolMeta):
@@ -187,9 +248,9 @@ class SequenceTypeGroup(ModelSQL):
     'Sequence Type - Group'
     __name__ = 'ir.sequence.type-res.group'
     sequence_type = fields.Many2One('ir.sequence.type', 'Sequence Type',
-            ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     group = fields.Many2One('res.group', 'User Groups',
-            ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
 
     @classmethod
     def delete(cls, records):
@@ -238,7 +299,7 @@ class Export_Group(ModelSQL):
     __name__ = 'ir.export-res.group'
 
     export = fields.Many2One(
-        'ir.export', "Export", required=True, select=True, ondelete='CASCADE')
+        'ir.export', "Export", required=True, ondelete='CASCADE')
     group = fields.Many2One(
         'res.group', "Group", required=True, ondelete='CASCADE')
 

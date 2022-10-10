@@ -27,8 +27,8 @@ class Char(FieldTranslate):
 
     def __init__(self, string='', size=None, help='', required=False,
             readonly=False, domain=None, states=None, translate=False,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading=None, autocomplete=None, strip=True):
+            on_change=None, on_change_with=None, depends=None, context=None,
+            loading=None, autocomplete=None, strip=True):
         '''
         :param translate: A boolean. If ``True`` the field is translatable.
         :param size: A integer. If set defines the maximum size of the values.
@@ -36,7 +36,7 @@ class Char(FieldTranslate):
         if loading is None:
             loading = 'lazy' if translate else 'eager'
         super(Char, self).__init__(string=string, help=help, required=required,
-            readonly=readonly, domain=domain, states=states, select=select,
+            readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.autocomplete = set()

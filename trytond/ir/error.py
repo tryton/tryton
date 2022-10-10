@@ -6,7 +6,7 @@ import logging
 
 from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import firstline
@@ -72,11 +72,18 @@ class Error(Workflow, ModelView, ModelSQL):
             ('open', "Open"),
             ('processing', "Processing"),
             ('solved', "Solved"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        table = cls.__table__()
+
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.state, Index.Equality()),
+                where=table.state.in_(['open', 'processing'])))
         cls._transitions |= {
             ('open', 'processing'),
             ('processing', 'solved'),

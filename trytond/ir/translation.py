@@ -20,7 +20,7 @@ from trytond.cache import Cache
 from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.tools import cursor_dict, file_open, grouped_slice
@@ -58,7 +58,7 @@ class Translation(ModelSQL, ModelView):
     __name__ = "ir.translation"
 
     name = fields.Char('Field Name', required=True)
-    res_id = fields.Integer('Resource ID', select=True, required=True)
+    res_id = fields.Integer('Resource ID', required=True)
     lang = fields.Selection('get_language', string='Language')
     type = fields.Selection(TRANSLATION_TYPE, string='Type',
        required=True)
@@ -74,6 +74,37 @@ class Translation(ModelSQL, ModelView):
     _translation_report_cache = Cache(
         'ir.translation.get_report', context=False)
     _get_language_cache = Cache('ir.translation.get_language', context=False)
+
+    @classmethod
+    def __setup__(cls):
+        cls.name.search_unaccented = False
+        super().__setup__()
+        table = cls.__table__()
+
+        cls._sql_indexes.update({
+                Index(
+                    table, (Index.Unaccent(table.src), Index.Similarity())),
+                Index(
+                    table, (Index.Unaccent(table.value), Index.Similarity())),
+                Index(
+                    table,
+                    (table.type, Index.Equality()),
+                    (table.name, Index.Equality()),
+                    (table.lang, Index.Equality()),
+                    (table.res_id, Index.Range()),
+                    (table.fuzzy, Index.Equality()),
+                    (Index.Unaccent(table.value), Index.Similarity())),
+                Index(
+                    table,
+                    (table.type, Index.Equality()),
+                    (table.name, Index.Equality())),
+                Index(
+                    table,
+                    (table.res_id, Index.Equality()),
+                    (table.name, Index.Equality()),
+                    (table.lang, Index.Equality()),
+                    (table.type, Index.Equality())),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -94,9 +125,6 @@ class Translation(ModelSQL, ModelView):
                 [ir_translation.type],
                 ['report'],
                 where=ir_translation.type == 'odt'))
-
-        table = cls.__table_handler__(module_name)
-        table.index_action(['lang', 'type', 'name'], 'add')
 
     @classmethod
     def register_model(cls, model, module_name):

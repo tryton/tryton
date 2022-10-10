@@ -11,6 +11,7 @@ class TableHandlerInterface(object):
     Define generic interface to handle database table
     '''
     namedatalen = None
+    index_translators = None
     __handlers = WeakKeyDictionary()
 
     def __new__(cls, model, history=False):
@@ -75,9 +76,6 @@ class TableHandlerInterface(object):
     def drop_fk(self, column_name, table=None):
         raise NotImplementedError
 
-    def index_action(self, columns, action='add', where=None, table=None):
-        raise NotImplementedError
-
     def not_null_action(self, column_name, action='add'):
         raise NotImplementedError
 
@@ -85,6 +83,9 @@ class TableHandlerInterface(object):
         raise NotImplementedError
 
     def drop_constraint(self, ident, table=None):
+        raise NotImplementedError
+
+    def create_index(self, index):
         raise NotImplementedError
 
     def drop_column(self, column_name):
@@ -95,9 +96,42 @@ class TableHandlerInterface(object):
         raise NotImplementedError
 
     @classmethod
-    def convert_name(cls, name):
-        if cls.namedatalen and len(name) >= cls.namedatalen:
-            if isinstance(name, str):
-                name = name.encode('utf-8')
-            name = hashlib.sha256(name).hexdigest()[:cls.namedatalen - 1]
+    def convert_name(cls, name, reserved=0):
+        if cls.namedatalen:
+            length = cls.namedatalen - reserved
+            if length <= 0:
+                raise ValueError
+            if len(name) >= length:
+                if isinstance(name, str):
+                    name = name.encode('utf-8')
+                name = hashlib.sha256(name).hexdigest()[:length - 1]
         return name
+
+    def index_translator_for(self, index):
+        return next(
+            filter(
+                lambda t: t.score(index) > 0,
+                sorted(
+                    self.index_translators, key=lambda t: t.score(index),
+                    reverse=True)),
+            None)
+
+
+class IndexTranslatorInterface:
+
+    @classmethod
+    def _get_name(cls, query, params):
+        def hash_(s):
+            return hashlib.shake_128(s.encode('utf-8')).hexdigest(16)
+        names = [str(query)]
+        if params:
+            names.append(str(params))
+        return '_'.join(map(hash_, names))
+
+    @classmethod
+    def definition(cls, index):
+        raise NotImplementedError
+
+    @classmethod
+    def score(cls, index):
+        raise NotImplementedError

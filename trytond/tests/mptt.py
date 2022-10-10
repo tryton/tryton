@@ -12,10 +12,9 @@ class MPTT(DeactivableMixin, tree(), ModelSQL, ModelView):
     'Modified Preorder Tree Traversal'
     __name__ = 'test.mptt'
     name = fields.Char('Name', required=True)
-    parent = fields.Many2One('test.mptt', "Parent", select=True,
-            left="left", right="right")
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
+    parent = fields.Many2One('test.mptt', "Parent", left="left", right="right")
+    left = fields.Integer('Left', required=True)
+    right = fields.Integer('Right', required=True)
     childs = fields.One2Many('test.mptt', 'parent', 'Children')
 
     @staticmethod

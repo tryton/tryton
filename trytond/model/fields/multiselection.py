@@ -23,7 +23,7 @@ class MultiSelection(SelectionMixin, Field):
 
     def __init__(self, selection, string='', sort=True, translate=True,
             help='', help_selection=None, required=False, readonly=False,
-            domain=None, states=None, select=False, on_change=None,
+            domain=None, states=None, on_change=None,
             on_change_with=None, depends=None, context=None, loading='eager'):
         """
         :param selection: A list or a function name that returns a list.
@@ -33,7 +33,7 @@ class MultiSelection(SelectionMixin, Field):
         """
         super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         if hasattr(selection, 'copy'):
             self.selection = selection.copy()

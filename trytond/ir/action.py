@@ -12,7 +12,7 @@ from trytond.cache import Cache, MemoryCache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSingleton, ModelSQL, ModelStorage, ModelView,
+    DeactivableMixin, Index, ModelSingleton, ModelSQL, ModelStorage, ModelView,
     fields, sequence_ordered)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
@@ -152,22 +152,22 @@ class ActionKeyword(ModelSQL, ModelView):
             ], string='Keyword', required=True)
     model = fields.Reference('Model', selection='models_get')
     action = fields.Many2One('ir.action', 'Action',
-        ondelete='CASCADE', select=True)
+        ondelete='CASCADE')
     _get_keyword_cache = Cache('ir_action_keyword.get_keyword')
 
     @classmethod
     def __setup__(cls):
         super(ActionKeyword, cls).__setup__()
+        table = cls.__table__()
+
         cls.__rpc__.update({
                 'get_keyword': RPC(cache=dict(days=1)),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(ActionKeyword, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        table.index_action(['keyword', 'model'], 'add')
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.keyword, Index.Equality()),
+                (table.model, Index.Equality())))
 
     @classmethod
     def validate_fields(cls, actions, field_names):
@@ -561,7 +561,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         "Record Name", translate=True,
         help="A Genshi expression to compute the name using 'record'.\n"
         "Leave empty for the default name.",)
-    module = fields.Char('Module', readonly=True, select=True)
+    module = fields.Char('Module', readonly=True)
     _template_cache = MemoryCache('ir.action.report.template', context=False)
 
     @classmethod
@@ -997,7 +997,7 @@ class ActionActWindowDomain(
     domain = fields.Char('Domain')
     count = fields.Boolean('Count')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
-        select=True, required=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
 
     @classmethod
     def __register__(cls, module_name):

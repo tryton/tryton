@@ -6,7 +6,7 @@ from secrets import token_hex
 
 from trytond.cache import Cache
 from trytond.config import config
-from trytond.model import ModelSQL, fields
+from trytond.model import Index, ModelSQL, fields
 
 _session_timeout = datetime.timedelta(
     seconds=config.getint('session', 'timeout'))
@@ -18,20 +18,26 @@ class Session(ModelSQL):
     __name__ = 'ir.session'
     _rec_name = 'key'
 
-    key = fields.Char('Key', required=True, select=True, strip=False)
+    key = fields.Char("Key", required=True, strip=False)
     _session_reset_cache = Cache('ir_session.session_reset', context=False)
 
     @classmethod
     def __setup__(cls):
         super(Session, cls).__setup__()
+        table = cls.__table__()
         cls.__rpc__ = {}
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Session, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        table.index_action('create_uid', 'add')
+        cls.__rpc__ = {}
+        cls._sql_indexes.update({
+                Index(table,
+                    (table.key, Index.Equality()),
+                    (table.create_uid, Index.Equality())),
+                Index(table,
+                    (table.key, Index.Equality()),
+                    (table.create_date, Index.Equality())),
+                Index(table,
+                    (table.key, Index.Equality()),
+                    (table.write_date, Index.Equality())),
+                })
 
     @classmethod
     def default_key(cls, nbytes=None):

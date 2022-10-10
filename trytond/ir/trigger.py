@@ -11,7 +11,8 @@ from sql.operators import Concat
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DeactivableMixin, EvalEnvironment, ModelSQL, ModelView, fields)
+    Check, DeactivableMixin, EvalEnvironment, Index, ModelSQL, ModelView,
+    fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder
@@ -27,19 +28,19 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     "Trigger"
     __name__ = 'ir.trigger'
     name = fields.Char('Name', required=True, translate=True)
-    model = fields.Many2One('ir.model', 'Model', required=True, select=True)
-    on_time = fields.Boolean('On Time', select=True, states={
+    model = fields.Many2One('ir.model', 'Model', required=True)
+    on_time = fields.Boolean('On Time', states={
             'invisible': (Eval('on_create', False)
                 | Eval('on_write', False)
                 | Eval('on_delete', False)),
             }, depends=['on_create', 'on_write', 'on_delete'])
-    on_create = fields.Boolean('On Create', select=True, states={
+    on_create = fields.Boolean('On Create', states={
         'invisible': Eval('on_time', False),
         }, depends=['on_time'])
-    on_write = fields.Boolean('On Write', select=True, states={
+    on_write = fields.Boolean('On Write', states={
         'invisible': Eval('on_time', False),
         }, depends=['on_time'])
-    on_delete = fields.Boolean('On Delete', select=True, states={
+    on_delete = fields.Boolean('On Delete', states={
         'invisible': Eval('on_time', False),
         }, depends=['on_time'])
     condition = fields.Char('Condition', required=True,
@@ -314,8 +315,12 @@ class TriggerLog(ModelSQL):
     record_id = fields.Integer('Record ID', required=True)
 
     @classmethod
-    def __register__(cls, module_name):
-        super(TriggerLog, cls).__register__(module_name)
+    def __setup__(cls):
+        super().__setup__()
 
-        table = cls.__table_handler__(module_name)
-        table.index_action(['trigger', 'record_id'], 'add')
+        table = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.trigger, Index.Equality()),
+                (table.record_id, Index.Range())))

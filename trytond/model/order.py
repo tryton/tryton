@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
+from sql import Column
+
 from trytond.i18n import lazy_gettext
-from trytond.model import fields
+from trytond.model import Index, fields
 
 
 def sequence_ordered(
@@ -18,7 +20,12 @@ def sequence_ordered(
         @classmethod
         def __setup__(cls):
             super(SequenceOrderedMixin, cls).__setup__()
+            table = cls.__table__()
             cls._order = [(field_name, order)] + cls._order
+            cls._sql_indexes.add(
+                Index(table,
+                    (Column(table, field_name), Index.Range(order=order)),
+                    (table.id, Index.Range(order=order))))
 
     setattr(SequenceOrderedMixin, field_name, fields.Integer(field_label))
     return SequenceOrderedMixin

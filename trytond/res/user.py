@@ -46,8 +46,8 @@ from trytond.config import config
 from trytond.exceptions import LoginException, RateLimitException, UserError
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, avatar_mixin,
-    fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
+    avatar_mixin, fields)
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONEncoder
 from trytond.report import Report, get_email
@@ -110,7 +110,7 @@ class DeleteError(UserError):
 class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     "User"
     __name__ = "res.user"
-    name = fields.Char('Name', select=True)
+    name = fields.Char('Name')
     login = fields.Char('Login', required=True)
     password_hash = fields.Char('Password Hash', strip=False)
     password = fields.Function(fields.Char(
@@ -950,10 +950,10 @@ class UserDevice(ModelSQL):
 class UserAction(ModelSQL):
     'User - Action'
     __name__ = 'res.user-ir.action'
-    user = fields.Many2One('res.user', 'User', ondelete='CASCADE', select=True,
+    user = fields.Many2One('res.user', 'User', ondelete='CASCADE',
         required=True)
     action = fields.Many2One('ir.action', 'Action', ondelete='CASCADE',
-        select=True, required=True)
+        required=True)
 
     @staticmethod
     def _convert_values(values):
@@ -981,10 +981,10 @@ class UserAction(ModelSQL):
 class UserGroup(ModelSQL):
     'User - Group'
     __name__ = 'res.user-res.group'
-    user = fields.Many2One('res.user', 'User', ondelete='CASCADE', select=True,
-            required=True)
+    user = fields.Many2One('res.user', 'User', ondelete='CASCADE',
+        required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-            select=True, required=True)
+        required=True)
 
     @classmethod
     def create(cls, vlist):
@@ -1047,8 +1047,8 @@ class Warning_(ModelSQL, ModelView):
     'User Warning'
     __name__ = 'res.user.warning'
 
-    user = fields.Many2One('res.user', 'User', required=True, select=True)
-    name = fields.Char('Name', required=True, select=True)
+    user = fields.Many2One('res.user', 'User', required=True)
+    name = fields.Char('Name', required=True)
     always = fields.Boolean('Always')
 
     @classmethod
@@ -1082,8 +1082,8 @@ class UserApplication(Workflow, ModelSQL, ModelView):
     __name__ = 'res.user.application'
     _rec_name = 'key'
 
-    key = fields.Char("Key", required=True, select=True, strip=False)
-    user = fields.Many2One('res.user', "User", select=True)
+    key = fields.Char("Key", required=True, strip=False)
+    user = fields.Many2One('res.user', "User")
     application = fields.Selection([], "Application")
     state = fields.Selection([
             ('requested', "Requested"),
@@ -1111,6 +1111,20 @@ class UserApplication(Workflow, ModelSQL, ModelView):
                 })
         # Do not cache default_key as it depends on time
         cls.__rpc__['default_get'].cache = None
+
+        table = cls.__table__()
+        cls._sql_indexes.update({
+                Index(table, (table.key, Index.Equality())),
+                Index(
+                    table,
+                    (table.user, Index.Equality()),
+                    (table.state, Index.Equality())),
+                Index(
+                    table,
+                    (table.key, Index.Equality()),
+                    (table.application, Index.Equality()),
+                    (table.state, Index.Equality())),
+                })
 
     @classmethod
     def default_key(cls):

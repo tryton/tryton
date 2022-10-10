@@ -3,9 +3,10 @@
 import logging
 import re
 
-from psycopg2.sql import SQL, Composed, Identifier
+from psycopg2.sql import SQL, Identifier
 
-from trytond.backend.table import TableHandlerInterface
+from trytond.backend.table import (
+    IndexTranslatorInterface, TableHandlerInterface)
 from trytond.transaction import Transaction
 
 __all__ = ['TableHandler']
@@ -16,6 +17,7 @@ VARCHAR_SIZE_RE = re.compile(r'VARCHAR\(([0-9]+)\)')
 
 class TableHandler(TableHandlerInterface):
     namedatalen = 64
+    index_translators = []
 
     def _init(self, model, history=False):
         super()._init(model, history=history)
@@ -212,22 +214,18 @@ class TableHandler(TableHandlerInterface):
                     "JOIN pg_class cl on (cl.oid = ind.indrelid) "
                     "JOIN pg_namespace n ON (cl.relnamespace = n.oid) "
                     "JOIN pg_class cl2 on (cl2.oid = ind.indexrelid) "
-                "WHERE cl.relname = %s AND n.nspname = %s",
+                "WHERE cl.relname = %s AND n.nspname = %s "
+                "AND NOT ind.indisprimary AND NOT ind.indisunique",
                 (self.table_name, self.table_schema))
             self.__indexes = [l[0] for l in cursor]
         return self.__indexes
 
-    def _update_definitions(self,
-            columns=None, constraints=None, indexes=None):
-        if columns is None and constraints is None and indexes is None:
-            columns = constraints = indexes = True
+    def _update_definitions(self, columns=True, constraints=True):
         if columns:
             self.__columns = None
         if constraints:
             self.__constraints = None
             self.__fk_deltypes = None
-        if indexes:
-            self.__indexes = None
 
     def alter_size(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
@@ -396,58 +394,6 @@ class TableHandler(TableHandlerInterface):
     def drop_fk(self, column_name, table=None):
         self.drop_constraint(column_name + '_fkey', table=table)
 
-    def index_action(self, columns, action='add', where='', table=None):
-        if isinstance(columns, str):
-            columns = [columns]
-
-        def stringify(column):
-            if isinstance(column, str):
-                return column
-            else:
-                return ('_'.join(
-                        map(str, (column,) + column.params))
-                    .replace('"', '')
-                    .replace('%s', '__'))
-
-        name = [table or self.table_name]
-        name.append('_'.join(map(stringify, columns)))
-        if where:
-            name.append('+where')
-            name.append(stringify(where))
-        name.append('index')
-        index_name = self.convert_name('_'.join(name))
-
-        with Transaction().connection.cursor() as cursor:
-            if action == 'add':
-                if index_name in self._indexes:
-                    return
-                params = sum(
-                    (c.params for c in columns if hasattr(c, 'params')), ())
-                if where:
-                    params += where.params
-                    where = ' WHERE %s' % where
-                cursor.execute(Composed([
-                            SQL('CREATE INDEX {name} ON {table} ({columns})')
-                            .format(
-                                name=Identifier(index_name),
-                                table=Identifier(self.table_name),
-                                columns=SQL(',').join(
-                                    (Identifier(c) if isinstance(c, str)
-                                        else SQL(str(c)))
-                                    for c in columns
-                                    )),
-                            SQL(where)
-                            ]),
-                    params)
-                self._update_definitions(indexes=True)
-            elif action == 'remove':
-                if index_name in self._indexes:
-                    cursor.execute(SQL('DROP INDEX {}').format(
-                            Identifier(index_name)))
-                    self._update_definitions(indexes=True)
-            else:
-                raise Exception('Index action not supported!')
-
     def not_null_action(self, column_name, action='add'):
         if not self.column_exist(column_name):
             return
@@ -511,6 +457,27 @@ class TableHandler(TableHandlerInterface):
                 Identifier(self.table_name), Identifier(ident)))
         self._update_definitions(constraints=True)
 
+    def set_indexes(self, indexes):
+        cursor = Transaction().connection.cursor()
+        old = set(self._indexes)
+        for index in indexes:
+            translator = self.index_translator_for(index)
+            if translator:
+                name, query, params = translator.definition(index)
+                name = '_'.join([self.table_name, name])
+                name = 'idx_' + self.convert_name(name, reserved=len('idx_'))
+                cursor.execute(
+                    SQL('CREATE INDEX IF NOT EXISTS {} ON {} USING {}').format(
+                        Identifier(name),
+                        Identifier(self.table_name),
+                        query),
+                    params)
+                old.discard(name)
+        for name in old:
+            if name.startswith('idx_') or name.endswith('_index'):
+                cursor.execute(SQL('DROP INDEX {}').format(Identifier(name)))
+        self.__indexes = None
+
     def drop_column(self, column_name):
         if not self.column_exist(column_name):
             return
@@ -529,3 +496,144 @@ class TableHandler(TableHandlerInterface):
         if cascade:
             query = query + ' CASCADE'
         cursor.execute(SQL(query).format(Identifier(table)))
+
+
+class IndexMixin:
+
+    _type = None
+
+    def __init_subclass__(cls):
+        TableHandler.index_translators.append(cls)
+
+    @classmethod
+    def definition(cls, index):
+        expr_template = SQL('{expression} {collate} {opclass} {order}')
+        indexed_expressions = cls._get_indexed_expressions(index)
+        expressions = []
+        params = []
+        for expression, usage in indexed_expressions:
+            expressions.append(expr_template.format(
+                    **cls._get_expression_variables(expression, usage)))
+            params.extend(expression.params)
+
+        include = SQL('')
+        if index.options.get('include'):
+            include = SQL('INCLUDE ({columns})').format(
+                columns=SQL(',').join(map(
+                        lambda c: SQL(str(c)),
+                        index.options.get('include'))))
+
+        where = SQL('')
+        if index.options.get('where'):
+            where = SQL('WHERE {where}').format(
+                where=SQL(str(index.options['where'])))
+            params.extend(index.options['where'].params)
+
+        query = SQL('{type} ({expressions}) {include} {where}').format(
+            type=SQL(cls._type),
+            expressions=SQL(',').join(expressions),
+            include=include,
+            where=where)
+        name = cls._get_name(query, params)
+        return name, query, params
+
+    @classmethod
+    def _get_indexed_expressions(cls, index):
+        return index.expressions
+
+    @classmethod
+    def _get_expression_variables(cls, expression, usage):
+        variables = {
+            'expression': SQL(str(expression)),
+            'collate': SQL(''),
+            'opclass': SQL(''),
+            'order': SQL(''),
+            }
+        if usage.options.get('collation'):
+            variables['collate'] = SQL('COLLATE {}').format(
+                usage.options['collation'])
+        if usage.options.get('order'):
+            order = usage.options['order'].upper()
+            variables['order'] = SQL(order)
+        return variables
+
+
+class HashTranslator(IndexMixin, IndexTranslatorInterface):
+    _type = 'HASH'
+
+    @classmethod
+    def score(cls, index):
+        if (len(index.expressions) > 1
+                or index.expressions[0][1].__class__.__name__ != 'Equality'):
+            return 0
+        return 100
+
+    @classmethod
+    def _get_indexed_expressions(cls, index):
+        return [
+            (e, u) for e, u in index.expressions
+            if u.__class__.__name__ == 'Equality'][:1]
+
+
+class BTreeTranslator(IndexMixin, IndexTranslatorInterface):
+    _type = 'BTREE'
+
+    @classmethod
+    def score(cls, index):
+        score = 0
+        for _, usage in index.expressions:
+            if usage.__class__.__name__ == 'Range':
+                score += 100
+            elif usage.__class__.__name__ == 'Equality':
+                score += 50
+            elif usage.__class__.__name__ == 'Similarity':
+                score += 20
+                if usage.options.get('begin'):
+                    score += 100
+        return score
+
+    @classmethod
+    def _get_expressions(cls, index):
+        return [
+            (e, u) for e, u in index.expressions
+            if u.__class__.__name__ in {'Equality', 'Range'}]
+
+    @classmethod
+    def _get_expression_variables(cls, expression, usage):
+        params = super()._get_expression_variables(expression, usage)
+        if (usage.__class__.__name__ == 'Similarity'
+                and not usage.options.get('collation')):
+            # text_pattern_ops and varchar_pattern_ops are the same
+            params['opclass'] = SQL('varchar_pattern_ops')
+        return params
+
+
+class TrigramTranslator(IndexMixin, IndexTranslatorInterface):
+    _type = 'GIN'
+
+    @classmethod
+    def score(cls, index):
+        has_trigram = Transaction().database.has_extension('pg_trgm')
+        if not has_trigram:
+            return 0
+
+        score = 0
+        for _, usage in index.expressions:
+            if usage.__class__.__name__ == 'Similarity':
+                score += 100
+            else:
+                return 0
+        return score
+
+    @classmethod
+    def _get_expressions(cls, index):
+        return [
+            (e, u) for e, u in index.expressions
+            if u.__class__.__name__ == 'Similarity']
+
+    @classmethod
+    def _get_expression_variables(cls, expression, usage):
+        params = super()._get_expression_variables(expression, usage)
+        if usage.__class__.__name__ == 'Similarity':
+            params['opclass'] = SQL('gin_trgm_ops')
+        return params

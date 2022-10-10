@@ -15,8 +15,8 @@ from sql.operators import Equal
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, EvalEnvironment, Exclude, ModelSingleton, ModelSQL,
-    ModelView, Unique, Workflow, fields)
+    DeactivableMixin, EvalEnvironment, Exclude, Index, ModelSingleton,
+    ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
@@ -231,7 +231,7 @@ class ModelField(ModelSQL, ModelView):
             },
         depends=['module'])
     model = fields.Many2One('ir.model', 'Model', required=True,
-        select=True, ondelete='CASCADE',
+        ondelete='CASCADE',
         states={
             'readonly': Bool(Eval('module')),
             },
@@ -859,10 +859,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     confirm = fields.Text("Confirm", translate=True,
         help="Text to ask user confirmation when clicking the button.")
     model = fields.Many2One('ir.model', 'Model', required=True, readonly=True,
-        ondelete='CASCADE', select=True)
-    groups = fields.Many2Many('ir.model.button-res.group', 'button', 'group',
-        'Groups')
-    _groups_cache = Cache('ir.model.button.groups')
+        ondelete='CASCADE')
     rules = fields.One2Many('ir.model.button.rule', 'button', "Rules")
     _rules_cache = Cache('ir.model.button.rules')
     clicks = fields.One2Many('ir.model.button.click', 'button', "Clicks")
@@ -909,8 +906,6 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         result = super(ModelButton, cls).create(vlist)
-        # Restart the cache for get_groups and get_rules
-        cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._view_attributes_cache.clear()
@@ -919,8 +914,6 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def write(cls, buttons, values, *args):
         super(ModelButton, cls).write(buttons, values, *args)
-        # Restart the cache for get_groups and get_rules
-        cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._view_attributes_cache.clear()
@@ -929,7 +922,6 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     def delete(cls, buttons):
         super(ModelButton, cls).delete(buttons)
         # Restart the cache for get_groups and get_rules
-        cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._view_attributes_cache.clear()
@@ -942,27 +934,6 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('clicks')
         return super(ModelButton, cls).copy(buttons, default=default)
-
-    @classmethod
-    def get_groups(cls, model, name):
-        '''
-        Return a set of group ids for the named button on the model.
-        '''
-        key = (model, name)
-        groups = cls._groups_cache.get(key)
-        if groups is not None:
-            return groups
-        buttons = cls.search([
-                ('model.model', '=', model),
-                ('name', '=', name),
-                ])
-        if not buttons:
-            groups = set()
-        else:
-            button, = buttons
-            groups = set(g.id for g in button.groups)
-        cls._groups_cache.set(key, groups)
-        return groups
 
     @classmethod
     def get_rules(cls, model, name):
@@ -1176,22 +1147,21 @@ class ModelButtonReset(ModelSQL):
     __name__ = 'ir.model.button-button.reset'
     button_ruled = fields.Many2One(
         'ir.model.button', "Button Ruled",
-        required=True, ondelete='CASCADE', select=True)
+        required=True, ondelete='CASCADE')
     button = fields.Many2One(
         'ir.model.button', "Button",
-        required=True, ondelete='CASCADE', select=True)
+        required=True, ondelete='CASCADE')
 
 
 class ModelData(ModelSQL, ModelView):
     "Model data"
     __name__ = 'ir.model.data'
     fs_id = fields.Char('Identifier on File System', required=True,
-        help="The id of the record as known on the file system.",
-        select=True)
-    model = fields.Char('Model', required=True, select=True)
-    module = fields.Char('Module', required=True, select=True)
+        help="The id of the record as known on the file system.")
+    model = fields.Char('Model', required=True)
+    module = fields.Char('Module', required=True)
     db_id = fields.Integer(
-        "Resource ID", select=True,
+        "Resource ID",
         states={
             'required': ~Eval('noupdate', False),
             },
@@ -1212,7 +1182,17 @@ class ModelData(ModelSQL, ModelView):
             ('fs_id_module_model_uniq',
                 Unique(table, table.fs_id, table.module, table.model),
                 'The triple (fs_id, module, model) must be unique!'),
-        ]
+            ]
+        cls._sql_indexes.update({
+                Index(
+                    table,
+                    (table.fs_id, Index.Equality()),
+                    (table.module, Index.Equality()),
+                    (table.model, Index.Equality())),
+                Index(
+                    table,
+                    (table.module, Index.Equality())),
+                })
         cls._buttons.update({
                 'sync': {
                     'invisible': ~Eval('out_of_sync'),
