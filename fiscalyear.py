@@ -49,7 +49,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ])
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+        'company.company', "Company", required=True)
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod

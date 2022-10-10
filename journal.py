@@ -177,7 +177,7 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
     "Journal Sequence"
     __name__ = 'account.journal.sequence'
     journal = fields.Many2One(
-        'account.journal', "Journal", ondelete='CASCADE', select=True,
+        'account.journal', "Journal", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },

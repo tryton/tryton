@@ -3,7 +3,7 @@
 
 from trytond.const import OPERATORS
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
@@ -23,13 +23,11 @@ class Period(Workflow, ModelSQL, ModelView):
     __name__ = 'account.period'
     name = fields.Char('Name', required=True)
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
-        domain=[('start_date', '<=', Eval('end_date', None))],
-        select=True)
+        domain=[('start_date', '<=', Eval('end_date', None))])
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
-        domain=[('end_date', '>=', Eval('start_date', None))],
-        select=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, states=_STATES, select=True)
+        domain=[('end_date', '>=', Eval('start_date', None))])
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Fiscal Year", required=True, states=_STATES)
     state = fields.Selection([
             ('open', 'Open'),
             ('close', 'Close'),
@@ -48,7 +46,7 @@ class Period(Workflow, ModelSQL, ModelView):
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
             ], 'Type', required=True,
-        states=_STATES, select=True)
+        states=_STATES)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'on_change_with_company', searcher='search_company')
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
@@ -56,7 +54,14 @@ class Period(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Period, cls).__setup__()
+        t = cls.__table__()
         cls.__access__.add('fiscalyear')
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.start_date, Index.Range()),
+                (t.end_date, Index.Range()),
+                order='DESC'))
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
                 ('open', 'close'),

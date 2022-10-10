@@ -14,7 +14,8 @@ from sql.operators import Exists
 from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import Check, DeactivableMixin, ModelSQL, ModelView, fields
+from trytond.model import (
+    Check, DeactivableMixin, Index, ModelSQL, ModelView, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -55,8 +56,7 @@ class Move(ModelSQL, ModelView):
                 ('state', '=', 'open'),
                 ()),
             ],
-        states=_MOVE_STATES,
-        select=True)
+        states=_MOVE_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states={
             'readonly': Eval('number') & Eval('journal'),
@@ -65,8 +65,7 @@ class Move(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    date = fields.Date('Effective Date', required=True, select=True,
-        states=_MOVE_STATES)
+    date = fields.Date('Effective Date', required=True, states=_MOVE_STATES)
     post_date = fields.Date('Post Date', readonly=True)
     description = fields.Char('Description', states=_MOVE_STATES)
     origin = fields.Reference('Origin', selection='get_origin',
@@ -74,7 +73,7 @@ class Move(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'State', required=True, readonly=True, select=True, sort=False)
+        ], 'State', required=True, readonly=True, sort=False)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
         states=_MOVE_STATES, depends={'company'},
         context={
@@ -86,6 +85,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        t = cls.__table__()
         cls.create_date.select = True
         cls._check_modify_exclude = ['lines']
         cls._order.insert(0, ('date', 'DESC'))
@@ -99,6 +99,14 @@ class Move(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'post': RPC(
                     readonly=False, instantiate=0, fresh_session=True),
+                })
+        cls._sql_indexes.update({
+                Index(t, (t.period, Index.Equality())),
+                Index(t, (t.date, Index.Range()), (t.number, Index.Range())),
+                Index(
+                    t,
+                    (t.journal, Index.Equality()),
+                    (t.period, Index.Equality())),
                 })
 
     @classmethod
@@ -124,9 +132,6 @@ class Move(ModelSQL, ModelView):
                     fiscalyear.company,
                     where=period.id == sql_table.period)
             cursor.execute(*sql_table.update([sql_table.company], [value]))
-
-        table = cls.__table_handler__(module_name)
-        table.index_action(['journal', 'period'], 'add')
 
     @classmethod
     def order_number(cls, tables):
@@ -491,14 +496,21 @@ class Reconciliation(ModelSQL, ModelView):
         domain=[
             ('move.company', '=', Eval('company', -1)),
             ])
-    date = fields.Date('Date', required=True, select=True,
+    date = fields.Date(
+        "Date", required=True,
         help='Highest date of the reconciled lines.')
     delegate_to = fields.Many2One(
-        'account.move.line', "Delegate To", ondelete="RESTRICT", select=True,
+        'account.move.line', "Delegate To", ondelete="RESTRICT",
         domain=[
             ('move.company', '=', Eval('company', -1)),
             ],
         help="The line to which the reconciliation status is delegated.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(Index(t, (t.date, Index.Range())))
 
     @classmethod
     def __register__(cls, module_name):
@@ -757,8 +769,9 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        select=True, states=_states, depends={'company'})
-    move = fields.Many2One('account.move', 'Move', select=True, required=True,
+        states=_states, depends={'company'})
+    move = fields.Many2One(
+        'account.move', "Move", required=True,
         ondelete='CASCADE',
         states={
             'required': False,
@@ -819,7 +832,8 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     second_currency_required = fields.Function(
         fields.Many2One('currency.currency', "Second Currency Required"),
         'on_change_with_second_currency_required')
-    party = fields.Many2One('party.party', 'Party', select=True,
+    party = fields.Many2One(
+        'party.party', "Party",
         states={
             'required': Eval('party_required', False),
             'invisible': ~Eval('party_required', False),
@@ -844,9 +858,10 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
-        ], 'State', readonly=True, required=True, select=True, sort=False)
-    reconciliation = fields.Many2One('account.move.reconciliation',
-            'Reconciliation', readonly=True, ondelete='SET NULL', select=True)
+        ], 'State', readonly=True, required=True, sort=False)
+    reconciliation = fields.Many2One(
+        'account.move.reconciliation', 'Reconciliation',
+        readonly=True, ondelete='SET NULL')
     reconciliations_delegated = fields.One2Many(
         'account.move.reconciliation', 'delegate_to',
         "Reconciliations Delegated", readonly=True)
@@ -896,18 +911,25 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
         # Do not cache default_date nor default_move
         cls.__rpc__['default_get'].cache = None
         cls._order[0] = ('id', 'DESC')
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Line, cls).__register__(module_name)
-
-        table = cls.__table__()
-        table_h = cls.__table_handler__(module_name)
-        # Index for General Ledger
-        table_h.index_action(['move', 'account'], 'add')
-        # Index for account.account.party
-        table_h.index_action(
-            ['account', 'party', 'id'], 'add', where=table.party != Null)
+        cls._sql_indexes.update({
+                Index(
+                    table,
+                    (table.account, Index.Equality()),
+                    (table.party, Index.Equality())),
+                Index(table, (table.reconciliation, Index.Equality())),
+                # Index for General Ledger
+                Index(
+                    table,
+                    (table.move, Index.Equality()),
+                    (table.account, Index.Equality())),
+                # Index for account.account.party
+                Index(
+                    table,
+                    (table.account, Index.Equality()),
+                    (table.party, Index.Equality()),
+                    (table.id, Index.Equality()),
+                    where=table.party != Null),
+                })
 
     @classmethod
     def default_date(cls):

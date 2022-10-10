@@ -293,7 +293,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
     "Party Account"
     __name__ = 'party.party.account'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },

@@ -12,7 +12,7 @@ from sql.conditionals import Case
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
@@ -129,12 +129,11 @@ class TaxCode(
         'readonly': (Bool(Eval('template', -1))
             & ~Eval('template_override', False)),
         }
-    name = fields.Char('Name', required=True, select=True, states=_states)
-    code = fields.Char('Code', select=True, states=_states)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+    name = fields.Char('Name', required=True, states=_states)
+    code = fields.Char('Code', states=_states)
+    company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One(
-        'account.tax.code', "Parent", select=True, states=_states,
+        'account.tax.code', "Parent", states=_states,
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
@@ -160,7 +159,11 @@ class TaxCode(
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super(TaxCode, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.code, Index.Similarity())))
         for date in [cls.start_date, cls.end_date]:
             date.states = {
                 'readonly': (Bool(Eval('template', -1))
@@ -799,8 +802,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-    company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
             ('company', '=', Eval('company')),
@@ -1295,13 +1297,13 @@ class TaxLine(ModelSQL, ModelView):
             ('tax', "Tax"),
             ('base', "Base"),
             ], "Type", required=True)
-    tax = fields.Many2One('account.tax', 'Tax', select=True,
-        ondelete='RESTRICT', required=True,
+    tax = fields.Many2One(
+        'account.tax', "Tax", ondelete='RESTRICT', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-    move_line = fields.Many2One('account.move.line', 'Move Line',
-            required=True, select=True, ondelete='CASCADE')
+    move_line = fields.Many2One(
+        'account.move.line', "Move Line", required=True, ondelete='CASCADE')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company')
 
@@ -1469,8 +1471,7 @@ class TaxRule(ModelSQL, ModelView):
         }
     name = fields.Char('Name', required=True, states=_states)
     kind = fields.Selection(KINDS, 'Kind', required=True, states=_states)
-    company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+    company = fields.Many2One('company.company', "Company", required=True,)
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
     template_override = fields.Boolean("Override Template",
@@ -1665,8 +1666,9 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         'readonly': (Bool(Eval('template', -1))
             & ~Eval('template_override', False)),
         }
-    rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
-            select=True, ondelete='CASCADE', states=_states)
+    rule = fields.Many2One(
+        'account.tax.rule', "Rule",
+        required=True, ondelete='CASCADE', states=_states)
     start_date = fields.Date("Starting Date")
     end_date = fields.Date("Ending Date")
     group = fields.Many2One('account.tax.group', 'Tax Group',

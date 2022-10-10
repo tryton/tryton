@@ -15,7 +15,7 @@ from sql.conditionals import Case, Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+    Check, Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -506,8 +506,8 @@ def AccountMixin(template=False):
     class Mixin:
         __slots__ = ()
         _order_name = 'rec_name'
-        name = fields.Char('Name', required=True, select=True)
-        code = fields.Char('Code', select=True)
+        name = fields.Char("Name", required=True)
+        code = fields.Char("Code")
 
         closed = fields.Boolean(
             "Closed",
@@ -659,8 +659,8 @@ class AccountTemplate(
         'account.account.type.template', "Debit Type", ondelete="RESTRICT")
     credit_type = fields.Many2One(
         'account.account.type.template', "Credit Type", ondelete="RESTRICT")
-    parent = fields.Many2One('account.account.template', 'Parent', select=True,
-            ondelete="RESTRICT")
+    parent = fields.Many2One(
+        'account.account.template', "Parent", ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
@@ -826,10 +826,12 @@ class AccountTemplateTaxTemplate(ModelSQL):
     'Account Template - Tax Template'
     __name__ = 'account.account.template-account.tax.template'
     _table = 'account_account_template_tax_rel'
-    account = fields.Many2One('account.account.template', 'Account Template',
-            ondelete='CASCADE', select=True, required=True)
-    tax = fields.Many2One('account.tax.template', 'Tax Template',
-            ondelete='RESTRICT', select=True, required=True)
+    account = fields.Many2One(
+        'account.account.template', "Account Template",
+        ondelete='CASCADE', required=True)
+    tax = fields.Many2One(
+        'account.tax.template', "Tax Template",
+        ondelete='RESTRICT', required=True)
 
 
 class Account(
@@ -888,13 +890,13 @@ class Account(
             ],
         help="The type used if not empty and debit < credit.")
     parent = fields.Many2One(
-        'account.account', 'Parent', select=True,
+        'account.account', "Parent",
         left="left", right="right", ondelete="RESTRICT", states=_states,
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
+    left = fields.Integer("Left", required=True)
+    right = fields.Integer("Right", required=True)
     childs = fields.One2Many(
         'account.account', 'parent', "Children",
         domain=[
@@ -968,6 +970,11 @@ class Account(
             ('only_one_debit_credit_types', Check(
                     table, (table.debit_type + table.credit_type) == Null),
                 'account.msg_only_one_debit_credit_types'))
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.left, Index.Range()),
+                (table.right, Index.Range())))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1620,10 +1627,9 @@ class AccountDeferral(ModelSQL, ModelView):
     It is used to deferral the debit/credit of account by fiscal year.
     '''
     __name__ = 'account.account.deferral'
-    account = fields.Many2One('account.account', 'Account', required=True,
-            select=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, select=True)
+    account = fields.Many2One('account.account', "Account", required=True)
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Fiscal Year", required=True)
     debit = Monetary(
         "Debit", currency='currency', digits='currency', required=True)
     credit = Monetary(
@@ -1651,6 +1657,11 @@ class AccountDeferral(ModelSQL, ModelView):
             ('deferral_uniq', Unique(t, t.account, t.fiscalyear),
                 'account.msg_deferral_unique'),
         ]
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.fiscalyear, Index.Equality()),
+                (t.account, Index.Equality())))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1758,10 +1769,10 @@ class AccountTax(ModelSQL):
     'Account - Tax'
     __name__ = 'account.account-account.tax'
     _table = 'account_account_tax_rel'
-    account = fields.Many2One('account.account', 'Account', ondelete='CASCADE',
-            select=True, required=True)
-    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=True, required=True)
+    account = fields.Many2One(
+        'account.account', "Account", ondelete='CASCADE', required=True)
+    tax = fields.Many2One(
+        'account.tax', "Tax", ondelete='RESTRICT', required=True)
 
 
 class AccountContext(ModelView):
