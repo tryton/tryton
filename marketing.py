@@ -25,7 +25,7 @@ from trytond.config import config
 from trytond.i18n import gettext
 from trytond.ir.session import token_hex
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
@@ -90,14 +90,10 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
             ('email_list_unique', Unique(t, t.email, t.list_),
                 'marketing.msg_email_list_unique'),
             ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-        table_h.index_action(['email', 'list_'], action='add')
-        table_h.index_action(['list_', 'active'], action='add')
+        cls._sql_indexes.add(Index(
+                t,
+                (t.list_, Index.Equality()),
+                (t.email, Index.Equality())))
 
     @classmethod
     def default_email_token(cls, nbytes=None):
@@ -357,12 +353,17 @@ class Message(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('sending', "Sending"),
             ('sent', "Sent"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
     del _states
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'sending'])))
         cls._transitions |= set([
                 ('draft', 'sending'),
                 ('sending', 'sent'),
