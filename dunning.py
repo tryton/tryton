@@ -7,7 +7,7 @@ from itertools import groupby
 from sql import Literal, Null
 
 from trytond.model import (
-    Model, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+    Index, Model, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -32,8 +32,8 @@ class Procedure(ModelSQL, ModelView):
 class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
     __name__ = 'account.dunning.level'
-    procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
-        required=True, select=True)
+    procedure = fields.Many2One(
+        'account.dunning.procedure', "Procedure", required=True)
     overdue = fields.TimeDelta('Overdue',
         help="When the level should be applied.")
 
@@ -76,10 +76,9 @@ _STATES = {
 class Dunning(ModelSQL, ModelView):
     'Account Dunning'
     __name__ = 'account.dunning'
-    company = fields.Many2One('company.company', 'Company', required=True,
-        help="Make the dunning belong to the company.",
-        select=True,
-        states=_STATES)
+    company = fields.Many2One(
+        'company.company', "Company", required=True, states=_STATES,
+        help="Make the dunning belong to the company.")
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",
         domain=[
@@ -152,6 +151,11 @@ class Dunning(ModelSQL, ModelView):
             ('line_unique', Unique(table, table.line),
                 'account_dunning.msg_dunning_line_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.state, Index.Equality()),
+                where=table.state.in_(['draft', 'waiting'])))
         cls._active_field = 'active'
         cls._buttons.update({
                 'reschedule': {

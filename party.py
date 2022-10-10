@@ -29,7 +29,7 @@ class PartyDunningProcedure(ModelSQL, ValueMixin):
     "Party Dunning Procedure"
     __name__ = 'party.party.dunning_procedure'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     dunning_procedure = dunning_procedure
 
     @classmethod
