@@ -27,10 +27,12 @@ class Attribute(DictSchemaMixin, ModelSQL, ModelView, metaclass=PoolMeta):
 class AttributeAttributeSet(ModelSQL, metaclass=PoolMeta):
     "Product Attribute - Set"
     __name__ = 'product.attribute-product.attribute-set'
-    attribute = fields.Many2One('product.attribute', 'Attribute',
-        ondelete='CASCADE', select=True, required=True)
-    attribute_set = fields.Many2One('product.attribute.set', 'Set',
-        ondelete='CASCADE', select=True, required=True)
+    attribute = fields.Many2One(
+        'product.attribute', "Attribute",
+        ondelete='CASCADE', required=True)
+    attribute_set = fields.Many2One(
+        'product.attribute.set', "Set",
+        ondelete='CASCADE', required=True)
 
 
 class Template(metaclass=PoolMeta):
