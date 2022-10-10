@@ -9,7 +9,8 @@ from trytond.transaction import Transaction
 
 class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
-    customs = fields.Boolean('Customs', select=True,
+    customs = fields.Boolean(
+        "Customs",
         states={
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             })
@@ -177,7 +178,7 @@ class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
     product = fields.Reference('Product', selection=[
             ('product.template', 'Template'),
             ('product.category', 'Category'),
-            ], required=True, select=True)
+            ], required=True)
     tariff_code = fields.Many2One('customs.tariff.code', 'Tariff Code',
         required=True, ondelete='CASCADE')
 

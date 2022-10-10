@@ -99,8 +99,8 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
 class DutyRate(ModelSQL, ModelView, MatchMixin):
     'Duty Rate'
     __name__ = 'customs.duty.rate'
-    tariff_code = fields.Many2One('customs.tariff.code', 'Tariff Code',
-        required=True, select=True)
+    tariff_code = fields.Many2One(
+        'customs.tariff.code', "Tariff Code", required=True)
     country = fields.Many2One('country.country', 'Country')
     # TODO country group
     type = fields.Selection([
