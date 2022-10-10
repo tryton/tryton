@@ -9,7 +9,7 @@ from sql.aggregate import Min
 from sql.conditionals import Coalesce
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -44,12 +44,12 @@ class Relation(ModelSQL):
     'Party Relation'
     __name__ = 'party.relation'
 
-    from_ = fields.Many2One('party.party', 'From', required=True, select=True,
-        ondelete='CASCADE')
-    to = fields.Many2One('party.party', 'To', required=True, select=True,
-        ondelete='CASCADE')
-    type = fields.Many2One('party.relation.type', 'Type', required=True,
-        select=True)
+    from_ = fields.Many2One(
+        'party.party', "From", required=True, ondelete='CASCADE')
+    to = fields.Many2One(
+        'party.party', "To", required=True, ondelete='CASCADE')
+    type = fields.Many2One(
+        'party.relation.type', 'Type', required=True)
     start_date = fields.Date(
         "Start Date",
         domain=[
@@ -65,6 +65,16 @@ class Relation(ModelSQL):
                 ()),
             ])
     active = fields.Function(fields.Boolean("Active"), 'get_active')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        if not callable(cls.table_query):
+            t = cls.__table__()
+            cls._sql_indexes.update({
+                    Index(t, (t.from_, Index.Equality())),
+                    Index(t, (t.to, Index.Equality())),
+                    })
 
     def get_active(self, name):
         pool = Pool()
