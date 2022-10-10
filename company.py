@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from trytond.cache import Cache
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -73,7 +73,7 @@ class Employee(metaclass=PoolMeta):
 class EmployeeCostPrice(ModelSQL, ModelView):
     'Employee Cost Price'
     __name__ = 'company.employee_cost_price'
-    date = fields.Date('Date', required=True, select=True)
+    date = fields.Date("Date", required=True)
     cost_price = fields.Numeric('Cost Price',
         digits=price_digits, required=True, help="Hourly cost price.")
     employee = fields.Many2One('company.employee', 'Employee')
@@ -87,6 +87,11 @@ class EmployeeCostPrice(ModelSQL, ModelView):
                 Unique(t, t.employee, t.date, t.cost_price),
                 'timesheet_cost.msg_employee_unique_cost_price_date'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.employee, Index.Equality()),
+                (t.date, Index.Range(order='ASC'))))
         cls._order.insert(0, ('date', 'DESC'))
 
     @staticmethod
