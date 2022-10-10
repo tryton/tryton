@@ -245,7 +245,7 @@ class TestRecurrenceRuleSet(Wizard):
 
     def default_test(self, fields):
         default = {}
-        if(self.model and self.model.__name__
+        if (self.model and self.model.__name__
                 == 'sale.subscription.recurrence.rule.set'):
             if self.record:
                 default['recurrence'] = self.record.id
