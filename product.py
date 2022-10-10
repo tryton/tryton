@@ -14,7 +14,7 @@ from sql.functions import CurrentTimestamp
 from sql.operators import Concat
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
@@ -1184,7 +1184,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
     __name__ = 'product.cost_price.revision'
     template = fields.Many2One(
         'product.template', "Product",
-        ondelete='CASCADE', select=True, required=True,
+        ondelete='CASCADE', required=True,
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
@@ -1196,7 +1196,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
         depends={'company'})
     product = fields.Many2One(
         'product.product', "Variant",
-        ondelete='CASCADE', select=True,
+        ondelete='CASCADE',
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
@@ -1212,6 +1212,13 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.product, Index.Equality()),
+                (t.template, Index.Equality()),
+                (t.company, Index.Equality())))
         cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod

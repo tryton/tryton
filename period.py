@@ -5,7 +5,7 @@ from itertools import chain, groupby
 from sql import For, Literal
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
@@ -29,12 +29,19 @@ class Period(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
-        ], "State", select=True, readonly=True, sort=False,
+        ], "State", readonly=True, sort=False,
         help="The current state of the stock period.")
 
     @classmethod
     def __setup__(cls):
         super(Period, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.company, Index.Equality()),
+                (t.date, Index.Range(order='DESC')),
+                where=t.state == 'closed'))
         cls._transitions |= set((
                 ('draft', 'closed'),
                 ('closed', 'draft'),
@@ -164,10 +171,28 @@ class Cache(ModelSQL, ModelView):
     It is used to store cached computation of stock quantities.
     '''
     __name__ = 'stock.period.cache'
-    period = fields.Many2One('stock.period', 'Period', required=True,
-        readonly=True, select=True, ondelete='CASCADE')
-    location = fields.Many2One('stock.location', 'Location', required=True,
-        readonly=True, select=True, ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product', required=True,
-        readonly=True, select=True, ondelete='CASCADE')
+    period = fields.Many2One(
+        'stock.period', "Period",
+        required=True, readonly=True, ondelete='CASCADE')
+    location = fields.Many2One(
+        'stock.location', "Location",
+        required=True, readonly=True, ondelete='CASCADE')
+    product = fields.Many2One(
+        'product.product', "Product",
+        required=True, readonly=True, ondelete='CASCADE')
     internal_quantity = fields.Float('Internal Quantity', readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.period, Index.Equality()),
+                    (t.product, Index.Equality()),
+                    include=[t.internal_quantity]),
+                Index(
+                    t,
+                    (t.location, Index.Equality())),
+                })

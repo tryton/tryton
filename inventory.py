@@ -5,7 +5,8 @@ from collections import defaultdict
 from sql import Null
 
 from trytond.i18n import gettext
-from trytond.model import Check, Model, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -59,7 +60,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True, sort=False,
+            ], "State", readonly=True, sort=False,
         help="The current state of the inventory.")
 
     del _states
@@ -67,7 +68,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Inventory, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'done'),

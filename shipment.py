@@ -11,7 +11,8 @@ from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
+from trytond.model import (
+    Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import employee_field, set_employee
@@ -140,7 +141,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         help="The company the shipment is associated with.")
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': Eval('state') != 'draft',
             },
@@ -227,7 +229,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char('Number', size=None, select=True, readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
@@ -241,8 +244,17 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentIn, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'received'])),
+                })
         cls._order = [
             ('id', 'DESC'),
             ]
@@ -585,9 +597,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         help="The company the shipment is associated with.")
-    number = fields.Char('Number', size=None, select=True, readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': Eval('state') != 'draft',
             },
@@ -664,8 +678,17 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentInReturn, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'waiting', 'assigned'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -991,7 +1014,8 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     ]),
             ],
         help="Where the stock is sent to.")
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': Eval('state') != 'draft',
             },
@@ -1045,7 +1069,8 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char('Number', size=None, select=True, readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
     picked_by = employee_field("Picked By")
     packed_by = employee_field("Packed By")
@@ -1063,8 +1088,19 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentOut, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_([
+                            'draft', 'waiting', 'assigned',
+                            'picked', 'packed'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -1661,7 +1697,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('customer'))],
         help="The address the customer can be contacted at.")
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': Eval('state') != 'draft',
             },
@@ -1716,7 +1753,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char('Number', size=None, select=True, readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
@@ -1730,8 +1768,17 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentOutReturn, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'received'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),
@@ -2090,9 +2137,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
         help="The company the shipment is associated with.")
-    number = fields.Char('Number', size=None, select=True, readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
@@ -2218,8 +2267,19 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentInternal, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_([
+                            'request', 'draft', 'waiting',
+                            'assigned', 'shipped'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),

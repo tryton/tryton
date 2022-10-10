@@ -13,7 +13,8 @@ from sql.conditionals import Case, Coalesce
 from sql.functions import Round
 
 from trytond.i18n import gettext
-from trytond.model import Check, Model, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
@@ -176,8 +177,8 @@ class Move(Workflow, ModelSQL, ModelView):
     "Stock Move"
     __name__ = 'stock.move'
     _order_name = 'product'
-    product = fields.Many2One("product.product", "Product", required=True,
-        select=True, states=STATES,
+    product = fields.Many2One(
+        'product.product', "Product", required=True, states=STATES,
         context={
             'company': Eval('company', -1),
             },
@@ -203,32 +204,37 @@ class Move(Workflow, ModelSQL, ModelView):
         help="The amount of stock moved.")
     internal_quantity = fields.Float('Internal Quantity', readonly=True,
         required=True)
-    from_location = fields.Many2One("stock.location", "From Location",
-        select=True, required=True, states=STATES,
+    from_location = fields.Many2One(
+        'stock.location', "From Location",
+        required=True, states=STATES,
         domain=LOCATION_DOMAIN,
         help="Where the stock is moved from.")
-    to_location = fields.Many2One("stock.location", "To Location", select=True,
+    to_location = fields.Many2One(
+        'stock.location', "To Location",
         required=True, states=STATES,
         domain=LOCATION_DOMAIN,
         help="Where the stock is moved to.")
-    shipment = fields.Reference('Shipment', selection='get_shipment',
-        readonly=True, select=True,
+    shipment = fields.Reference(
+        "Shipment", selection='get_shipment', readonly=True,
         states={
             'invisible': ~Eval('shipment'),
             },
         help="Used to group several stock moves together.")
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
+    origin = fields.Reference(
+        "Origin", selection='get_origin',
         states={
             'readonly': Eval('state') != 'draft',
             },
         help="The source of the stock move.")
-    planned_date = fields.Date("Planned Date", states={
+    planned_date = fields.Date(
+        "Planned Date",
+        states={
             'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | Eval('shipment'))
             },
-        select=True,
         help="When the stock is expected to be moved.")
-    effective_date = fields.Date("Effective Date", select=True,
+    effective_date = fields.Date(
+        "Effective Date",
         states={
             'required': Eval('state') == 'done',
             'readonly': (Eval('state').in_(['cancelled', 'done'])
@@ -241,7 +247,7 @@ class Move(Workflow, ModelSQL, ModelView):
         ('assigned', 'Assigned'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-        ], "State", select=True, readonly=True, sort=False,
+        ], "State", readonly=True, sort=False,
         help="The current state of the stock move.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
@@ -296,7 +302,6 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
-        cls.create_date.select = True
         cls.product.domain = [
             If(Bool(Eval('product_uom_category'))
                 & ~Eval('state').in_(['done', 'cancelled']),
@@ -322,6 +327,30 @@ class Move(Workflow, ModelSQL, ModelView):
                 Check(t, t.from_location != t.to_location),
                 'stock.msg_move_from_to_location'),
             ]
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.from_location, Index.Range()),
+                    (t.product, Index.Range()),
+                    (Coalesce(
+                            t.effective_date,
+                            t.planned_date,
+                            datetime.date.max),
+                        Index.Range())),
+                Index(
+                    t,
+                    (t.to_location, Index.Range()),
+                    (t.product, Index.Range()),
+                    (Coalesce(
+                            t.effective_date,
+                            t.planned_date,
+                            datetime.date.max),
+                        Index.Range())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['staging', 'draft', 'assigned'])),
+                })
         cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
                 ('staging', 'draft'),
@@ -360,13 +389,6 @@ class Move(Workflow, ModelSQL, ModelView):
         sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Index for period join in compute_quantities_query
-        table.index_action([
-                Coalesce(sql_table.effective_date,
-                    sql_table.planned_date,
-                    datetime.date.max)], action='add')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1312,11 +1334,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 return (move.state.in_(['done',
                         'assigned' if stock_assign else 'done'])
                     & (
-                        (
-                            (move.effective_date == Null)
-                            & (move.planned_date <= context['stock_date_end'])
-                            )
-                        | (move.effective_date <= context['stock_date_end'])
+                        (Coalesce(move.effective_date, move.planned_date)
+                            <= context['stock_date_end'])
                         | (move.state == (
                                 'assigned'
                                 if not context.get('stock_date_start')
@@ -1333,11 +1352,11 @@ class Move(Workflow, ModelSQL, ModelView):
                 return ((move.state.in_(['done',
                                 'assigned' if stock_assign else 'done'])
                         & (
-                            (
-                                (move.effective_date == Null)
-                                & (move.planned_date <= today)
-                                )
-                            | (move.effective_date <= today)
+                            (Coalesce(
+                                    move.effective_date,
+                                    move.planned_date,
+                                    datetime.date.max)
+                                <= today)
                             | (move.state == (
                                     'assigned'
                                     if not context.get('stock_date_start')
@@ -1347,18 +1366,16 @@ class Move(Workflow, ModelSQL, ModelView):
                     | (move.state.in_(['done', 'assigned', 'draft'])
                         & (
                             (
-                                (move.effective_date == Null)
-                                & (Coalesce(
-                                        move.planned_date, datetime.date.max)
+                                (Coalesce(
+                                        move.effective_date,
+                                        move.planned_date,
+                                        datetime.date.max)
                                     <= context['stock_date_end'])
                                 & (Coalesce(
-                                        move.planned_date, datetime.date.max)
+                                        move.effective_date,
+                                        move.planned_date,
+                                        datetime.date.max)
                                     >= today)
-                                )
-                            | (
-                                (move.effective_date
-                                    <= context['stock_date_end'])
-                                & (move.effective_date >= today)
                                 )
                             | (move.state == (
                                     'assigned'
@@ -1375,18 +1392,11 @@ class Move(Workflow, ModelSQL, ModelView):
             if context['stock_date_start'] > today:
                 def state_date_clause():
                     return (move.state.in_(['done', 'assigned', 'draft'])
-                        & (
-                            (
-                                (move.effective_date == Null)
-                                & (
-                                    (move.planned_date
-                                        >= context['stock_date_start'])
-                                    | (move.planned_date == Null)
-                                    )
-                                )
-                            | (move.effective_date
-                                >= context['stock_date_start'])
-                            )
+                        & (Coalesce(
+                                move.effective_date,
+                                move.planned_date,
+                                datetime.date.max)
+                            >= context['stock_date_start'])
                         )
                 state_date_clause_in &= state_date_clause()
                 state_date_clause_out &= state_date_clause()
@@ -1394,38 +1404,23 @@ class Move(Workflow, ModelSQL, ModelView):
                 def state_date_clause(stock_assign):
                     return ((
                             move.state.in_(['done', 'assigned', 'draft'])
-                            & (
-                                (
-                                    (move.effective_date == Null)
-                                    & (
-                                        (move.planned_date >= today)
-                                        | (move.planned_date == Null)
-                                        )
-                                    )
-                                | (move.effective_date >= today)
-                                )
+                            & (Coalesce(
+                                    move.effective_date,
+                                    move.planned_date,
+                                    datetime.date.max) >= today)
                             )
                         | (
                             move.state.in_(['done',
                                     'assigned' if stock_assign else 'done'])
-                            & (
-                                (
-                                    (move.effective_date == Null)
-                                    & (
-                                        (
-                                            (move.planned_date
-                                                >= context['stock_date_start'])
-                                            & (move.planned_date < today)
-                                            )
-                                        | (move.planned_date == Null)
-                                        )
-                                    )
-                                | (
-                                    (move.effective_date
-                                        >= context['stock_date_start'])
-                                    & (move.effective_date < today)
-                                    )
-                                )
+                            & (Coalesce(
+                                    move.effective_date,
+                                    move.planned_date,
+                                    datetime.date.max)
+                                >= context['stock_date_start'])
+                            & (Coalesce(
+                                    move.effective_date,
+                                    move.planned_date,
+                                    datetime.date.min) < today)
                             )
                         )
                 state_date_clause_in &= state_date_clause(False)

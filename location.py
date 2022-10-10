@@ -9,7 +9,7 @@ from sql import Column
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, MatchMixin, Model, ModelSQL, ModelView, fields,
+    DeactivableMixin, Index, MatchMixin, Model, ModelSQL, ModelView, fields,
     sequence_ordered, tree)
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
@@ -40,7 +40,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     name = fields.Char("Name", size=None, required=True, translate=True)
     code = fields.Char(
-        "Code", size=None, select=True,
+        "Code",
         help="The internal identifier used for the location.")
     address = fields.Many2One(
         'party.address', "Address",
@@ -58,11 +58,12 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('view', 'View'),
         ], "Location type")
     type_string = type.translated('type')
-    parent = fields.Many2One("stock.location", "Parent", select=True,
+    parent = fields.Many2One(
+        "stock.location", "Parent",
         left="left", right="right",
         help="Used to add structure above the location.")
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
+    left = fields.Integer('Left', required=True)
+    right = fields.Integer('Right', required=True)
     childs = fields.One2Many("stock.location", "parent", "Children",
         help="Used to add structure below the location.")
     flat_childs = fields.Boolean(
@@ -177,7 +178,16 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super(Location, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.code, Index.Similarity())),
+                Index(
+                    t,
+                    (t.left, Index.Range()),
+                    (t.right, Index.Range())),
+                })
         cls._order.insert(0, ('name', 'ASC'))
 
         parent_domain = [
@@ -222,13 +232,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 childs_domain.setdefault(parent, [])
                 childs_domain[parent].append(type_)
         return childs_domain
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Location, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        table.index_action(['left', 'right'], 'add')
 
     @classmethod
     def validate_fields(cls, locations, field_names):
