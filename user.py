@@ -27,8 +27,8 @@ from sql.operators import Equal
 from trytond.config import config
 from trytond.exceptions import RateLimitException
 from trytond.model import (
-    DeactivableMixin, Exclude, ModelSQL, ModelView, Unique, avatar_mixin,
-    fields)
+    DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Unique,
+    avatar_mixin, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
@@ -69,17 +69,17 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'web.user'
     _rec_name = 'email'
 
-    email = fields.Char('E-mail', select=True,
+    email = fields.Char(
+        "E-mail",
         states={
             'required': Eval('active', True),
             })
     email_valid = fields.Boolean('E-mail Valid')
-    email_token = fields.Char("E-mail Token", select=True, strip=False)
+    email_token = fields.Char("E-mail Token", strip=False)
     password_hash = fields.Char('Password Hash')
     password = fields.Function(
         fields.Char('Password'), 'get_password', setter='set_password')
-    reset_password_token = fields.Char(
-        "Reset Password Token", select=True, strip=False)
+    reset_password_token = fields.Char("Reset Password Token", strip=False)
     reset_password_token_expire = fields.Timestamp(
         'Reset Password Token Expire')
     party = fields.Many2One('party.party', 'Party', ondelete='RESTRICT')
@@ -96,6 +96,10 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                     where=table.active == Literal(True)),
                 'web_user.msg_user_email_unique'),
             ]
+        cls._sql_indexes.update({
+                Index(table, (table.email, Index.Equality())),
+                Index(table, (table.email_token, Index.Equality())),
+                })
         cls._buttons.update({
                 'validate_email': {
                     'readonly': Eval('email_valid', False),
@@ -405,7 +409,7 @@ class User_PartySecondary(ModelSQL):
     __name__ = 'web.user-party.party.secondary'
 
     user = fields.Many2One(
-        'web.user', "User", required=True, select=True, ondelete='CASCADE')
+        'web.user', "User", required=True, ondelete='CASCADE')
     party = fields.Many2One(
         'party.party', "Party", required=True, ondelete='CASCADE')
 
@@ -421,9 +425,9 @@ class UserSession(ModelSQL):
     __name__ = 'web.user.session'
     _rec_name = 'key'
 
-    key = fields.Char("Key", required=True, select=True, strip=False)
+    key = fields.Char("Key", required=True, strip=False)
     user = fields.Many2One(
-        'web.user', 'User', required=True, select=True, ondelete='CASCADE')
+        'web.user', "User", required=True, ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):
@@ -434,6 +438,13 @@ class UserSession(ModelSQL):
             ('key_unique', Unique(table, table.key),
                 'web_user.msg_user_session_key_unique'),
             ]
+        cls._sql_indexes.update({
+                Index(
+                    table,
+                    (Coalesce(table.write_date, table.create_date),
+                        Index.Range())),
+                Index(table, (table.key, Index.Equality())),
+                })
 
     @classmethod
     def default_key(cls, nbytes=None):
@@ -447,7 +458,7 @@ class UserSession(ModelSQL):
         cursor.execute(*table.delete(
                 where=(
                     Coalesce(table.write_date, table.create_date)
-                    - CurrentTimestamp()) > cls.timeout()))
+                    < CurrentTimestamp() - cls.timeout())))
 
         session = cls(user=user)
         session.save()
