@@ -10,7 +10,7 @@ from sql.operators import Abs
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -36,8 +36,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'account.payment.journal'
     name = fields.Char('Name', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     process_method = fields.Selection([
             ('manual', 'Manual'),
             ], 'Process Method', required=True)
@@ -66,7 +65,7 @@ class Group(ModelSQL, ModelView):
     number = fields.Char('Number', required=True, readonly=True)
     company = fields.Many2One(
         'company.company', "Company",
-        required=True, readonly=True, select=True)
+        required=True, readonly=True)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, readonly=True, domain=[
             ('company', '=', Eval('company', -1)),
@@ -287,8 +286,7 @@ class Payment(Workflow, ModelSQL, ModelView):
     'Payment'
     __name__ = 'account.payment'
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
-        states=_STATES)
+        'company.company', "Company", required=True, states=_STATES)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, states=_STATES, domain=[
             ('company', '=', Eval('company', -1)),
@@ -343,7 +341,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         states=_STATES)
     description = fields.Char('Description', states=_STATES)
     origin = fields.Reference(
-        "Origin", selection='get_origin', select=True,
+        "Origin", selection='get_origin',
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -376,7 +374,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             ('processing', 'Processing'),
             ('succeeded', 'Succeeded'),
             ('failed', 'Failed'),
-            ], "State", readonly=True, select=True, sort=False,
+            ], "State", readonly=True, sort=False,
         domain=[
             If(Eval('kind') == 'receivable',
                 ('state', '!=', 'approved'),
@@ -396,6 +394,12 @@ class Payment(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_([
+                        'draft', 'submitted', 'approved', 'processing'])))
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'submitted'),

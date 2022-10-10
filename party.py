@@ -50,7 +50,7 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
     "Party Payment Direct Debit"
     __name__ = 'party.party.payment_direct_debit'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -64,7 +64,7 @@ class PartyReceptionDirectDebit(
     __name__ = 'party.party.reception_direct_debit'
 
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
