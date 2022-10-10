@@ -79,10 +79,9 @@ class GiftCard(ModelSQL, ModelView):
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True, states=_states)
 
-    origin = fields.Reference(
-        "Origin", selection='get_origin', select=True, readonly=True)
+    origin = fields.Reference("Origin", selection='get_origin', readonly=True)
     spent_on = fields.Reference(
-        "Spent On", selection='get_spent_on', select=True, readonly=True)
+        "Spent On", selection='get_spent_on', readonly=True)
 
     del _states
 
