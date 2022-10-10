@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import sys
+import unittest
 from unittest.mock import ANY, MagicMock, Mock, patch
 
 import ldap3
@@ -155,6 +157,8 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
                 'ldap:///??sub??!bindname=cn=Manager%2co=Foo')[5],
             {'!bindname': ['cn=Manager,o=Foo']})
 
+    @unittest.skipIf(
+        sys.version_info < (3, 8), "call_args does not have args nor kwargs")
     def test_ldap_server(self):
         "Test ldap_server"
         for uri, (host, tls) in [
