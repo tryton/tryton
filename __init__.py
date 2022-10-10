@@ -21,3 +21,8 @@ def register():
         purchase.RequisitionLine,
         module='purchase_secondary_unit', type_='model',
         depends=['purchase_requisition'])
+    Pool.register(
+        purchase.BlanketAgreementLine,
+        purchase.LineBlanketAgreement,
+        module='purchase_secondary_unit', type_='model',
+        depends=['purchase_blanket_agreement'])
