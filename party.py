@@ -35,7 +35,7 @@ class CustomerCode(ModelSQL, CompanyValueMixin):
     "Party Customer Code"
     __name__ = 'party.party.customer_code'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -47,7 +47,7 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
     "Supplier Lead Time"
     __name__ = 'party.party.supplier_lead_time'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -59,7 +59,7 @@ class PartySupplierCurrency(ModelSQL, ValueMixin):
     "Party Supplier Currency"
     __name__ = 'party.party.supplier_currency'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     supplier_currency = supplier_currency
 
 

@@ -15,7 +15,8 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Model, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
+    Index, Model, ModelSQL, ModelView, Unique, Workflow, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
@@ -74,7 +75,7 @@ class Purchase(
         }
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': (
                 (Eval('state') != 'draft')
@@ -82,8 +83,8 @@ class Purchase(
                 | Eval('party', True)
                 | Eval('invoice_party', True)),
             })
-    number = fields.Char('Number', size=None, readonly=True, select=True)
-    reference = fields.Char('Reference', select=True)
+    number = fields.Char("Number", readonly=True)
+    reference = fields.Char("Reference")
     description = fields.Char('Description', size=None, states=_states)
     purchase_date = fields.Date('Purchase Date',
         states={
@@ -103,7 +104,7 @@ class Purchase(
         context={
             'company': Eval('company', -1),
             },
-        select=True, depends={'company'})
+        depends={'company'})
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     contact = fields.Many2One(
@@ -182,7 +183,8 @@ class Purchase(
     invoices_recreated = fields.Many2Many(
             'purchase.purchase-recreated-account.invoice',
             'purchase', 'invoice', 'Recreated Invoices', readonly=True)
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
+    origin = fields.Reference(
+        "Origin", selection='get_origin',
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -228,8 +230,27 @@ class Purchase(
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Purchase, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (t.party, Index.Equality())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_([
+                            'draft', 'quotation', 'confirmed', 'processing'])),
+                Index(
+                    t,
+                    (t.invoice_state, Index.Equality()),
+                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                Index(
+                    t,
+                    (t.shipment_state, Index.Equality()),
+                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                })
         cls._order = [
             ('purchase_date', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -1010,27 +1031,27 @@ class PurchaseIgnoredInvoice(ModelSQL):
     'Purchase - Ignored Invoice'
     __name__ = 'purchase.purchase-ignored-account.invoice'
     _table = 'purchase_invoice_ignored_rel'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
+    purchase = fields.Many2One(
+        'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
 
 
 class PurchaseRecreatedInvoice(ModelSQL):
     'Purchase - Recreated Invoice'
     __name__ = 'purchase.purchase-recreated-account.invoice'
     _table = 'purchase_invoice_recreated_rel'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
+    purchase = fields.Many2One(
+        'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
 
 
 class Line(sequence_ordered(), ModelSQL, ModelView):
     'Purchase Line'
     __name__ = 'purchase.line'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-        ondelete='CASCADE', select=True, required=True,
+    purchase = fields.Many2One(
+        'purchase.purchase', "Purchase", ondelete='CASCADE', required=True,
         states={
             'readonly': ((Eval('purchase_state') != 'draft')
                 & Bool(Eval('purchase'))),
@@ -1040,7 +1061,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=True, required=True,
+        ], "Type", required=True,
         states={
             'readonly': Eval('purchase_state') != 'draft',
             })
@@ -1786,11 +1807,12 @@ class LineTax(ModelSQL):
     'Purchase Line - Tax'
     __name__ = 'purchase.line-account.tax'
     _table = 'purchase_line_account_tax'
-    line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=True, required=True,
-            domain=[('type', '=', 'line')])
-    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=True, required=True, domain=[('parent', '=', None)])
+    line = fields.Many2One(
+        'purchase.line', "Purchase Line", ondelete='CASCADE', required=True,
+        domain=[('type', '=', 'line')])
+    tax = fields.Many2One(
+        'account.tax', "Tax", ondelete='RESTRICT', required=True,
+        domain=[('parent', '=', None)])
 
     @classmethod
     def __setup__(cls):
@@ -1806,20 +1828,20 @@ class LineIgnoredMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-ignored-stock.move'
     _table = 'purchase_line_moves_ignored_rel'
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=True, required=True)
-    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=True, required=True)
+    purchase_line = fields.Many2One(
+        'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
+    move = fields.Many2One(
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class LineRecreatedMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-recreated-stock.move'
     _table = 'purchase_line_moves_recreated_rel'
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=True, required=True)
-    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=True, required=True)
+    purchase_line = fields.Many2One(
+        'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
+    move = fields.Many2One(
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class PurchaseReport(CompanyReport):

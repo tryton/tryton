@@ -7,7 +7,7 @@ from sql.aggregate import Count
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
@@ -249,7 +249,7 @@ class ProductSupplier(
     __name__ = 'purchase.product_supplier'
     template = fields.Many2One(
         'product.template', "Product",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
@@ -261,7 +261,7 @@ class ProductSupplier(
             },
         depends={'company'})
     product = fields.Many2One(
-        'product.product', "Variant", select=True,
+        'product.product', "Variant",
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
@@ -274,18 +274,17 @@ class ProductSupplier(
         depends={'company'})
     party = fields.Many2One(
         'party.party', 'Supplier', required=True, ondelete='CASCADE',
-        select=True,
         context={
             'company': Eval('company', -1),
             },
         depends={'company'})
-    name = fields.Char('Name', size=None, translate=True, select=True)
-    code = fields.Char('Code', size=None, select=True)
+    name = fields.Char("Name", translate=True)
+    code = fields.Char("Code")
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One(
         'company.company', "Company",
-        required=True, ondelete='CASCADE', select=True)
+        required=True, ondelete='CASCADE')
     lead_time = fields.TimeDelta('Lead Time',
         help="The time from confirming the purchase order to receiving the "
         "products.\n"
@@ -294,6 +293,15 @@ class ProductSupplier(
         ondelete='RESTRICT')
     uom = fields.Function(
         fields.Many2One('product.uom', "UOM"), 'on_change_with_uom')
+
+    @classmethod
+    def __setup__(cls):
+        cls.code.search_unaccented = False
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.code, Index.Similarity())),
+                })
 
     @classmethod
     def __register__(cls, module_name):
