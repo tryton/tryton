@@ -71,7 +71,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
     number = fields.Char("Number", required=True)
     coupon = fields.Many2One(
-        'sale.promotion.coupon', "Coupon", select=True, required=True)
+        'sale.promotion.coupon', "Coupon", required=True)
 
     @classmethod
     def __setup__(cls):
@@ -224,7 +224,7 @@ class Sale_PromotionCouponNumber(ModelSQL):
     __name__ = 'sale.sale-sale.promotion.coupon.number'
 
     sale = fields.Many2One(
-        'sale.sale', "Sale", required=True, select=True, ondelete='CASCADE')
+        'sale.sale', "Sale", required=True, ondelete='CASCADE')
     number = fields.Many2One(
         'sale.promotion.coupon.number', "Number",
         required=True, ondelete='RESTRICT')
