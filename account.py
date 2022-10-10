@@ -9,7 +9,7 @@ from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+    Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -90,7 +90,7 @@ class BudgetMixin:
     __slots__ = ()
     name = fields.Char("Name", required=True)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('company') & Eval('lines', [-1]),
             },
@@ -145,13 +145,13 @@ class BudgetLineMixin(
             "the budget line and its children."),
         'get_total_amount')
 
-    left = fields.Integer("Left", required=True, select=True)
-    right = fields.Integer("Right", required=True, select=True)
+    left = fields.Integer("Left", required=True)
+    right = fields.Integer("Right", required=True)
 
     @classmethod
     def __setup__(cls):
         cls.parent = fields.Many2One(
-            cls.__name__, "Parent", select=True,
+            cls.__name__, "Parent",
             left='left', right='right', ondelete='CASCADE',
             domain=[
                 ('budget', '=', Eval('budget', -1)),
@@ -164,6 +164,12 @@ class BudgetLineMixin(
                 ],
             help="Used to add structure below the budget.")
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.left, Index.Range()),
+                (t.right, Index.Range())))
         cls.__access__.add('budget')
 
     @classmethod
@@ -421,8 +427,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
     __name__ = 'account.budget.line'
 
     budget = fields.Many2One(
-        'account.budget', "Budget",
-        required=True, select=True, ondelete='CASCADE')
+        'account.budget', "Budget", required=True, ondelete='CASCADE')
     account_type = fields.Many2One(
         'account.account.type', "Account Type",
         domain=[
@@ -586,8 +591,8 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
     __name__ = 'account.budget.line.period'
 
     budget_line = fields.Many2One(
-        'account.budget.line', "Budget Line", required=True, select=True,
-        ondelete="CASCADE",
+        'account.budget.line', "Budget Line",
+        required=True, ondelete="CASCADE",
         help="The line that the budget period is part of.")
     fiscalyear = fields.Function(
         fields.Many2One('account.fiscalyear', "Fiscal Year"),
