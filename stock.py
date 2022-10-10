@@ -105,7 +105,7 @@ class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
 
     shipment = fields.Reference("Shipment", [
             ('stock.shipment.out', "Customer Shipment"),
-            ], required=True, select=True)
+            ], required=True)
     sale = fields.Many2One('sale.sale', "Sale", required=True)
 
     @classmethod

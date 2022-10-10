@@ -696,7 +696,7 @@ class ShopShopifyPaymentJournal(
     __name__ = 'web.shop.shopify_payment_journal'
 
     shop = fields.Many2One(
-        'web.shop', "Shop", required=True, select=True, ondelete='CASCADE',
+        'web.shop', "Shop", required=True, ondelete='CASCADE',
         domain=[
             ('type', '=', 'shopify'),
             ])
