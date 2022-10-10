@@ -35,10 +35,11 @@ class InvoiceLineStockMove(ModelSQL):
     'Invoice Line - Stock Move'
     __name__ = 'account.invoice.line-stock.move'
 
-    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-        required=True, select=True, ondelete='CASCADE')
-    stock_move = fields.Many2One('stock.move', 'Stock Move', required=True,
-        select=True, ondelete='CASCADE')
+    invoice_line = fields.Many2One(
+        'account.invoice.line', "Invoice Line",
+        required=True, ondelete='CASCADE')
+    stock_move = fields.Many2One(
+        'stock.move', "Stock Move", required=True, ondelete='CASCADE')
 
 
 class InvoiceLine(metaclass=PoolMeta):
