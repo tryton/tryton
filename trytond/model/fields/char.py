@@ -137,6 +137,7 @@ class Char(FieldTranslate):
             table, _ = tables[None]
             if self.translate:
                 language = transaction.language
+                # Without domain because a different operator is applied
                 model, join, column = self._get_translation_column(
                     Model, name)
                 column = Coalesce(NullIf(column, ''), self.sql_column(model))

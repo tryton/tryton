@@ -217,6 +217,14 @@ SQL_OPERATORS = {
     }
 
 
+def sanitize_sql_expression(expression):
+    if isinstance(expression, operators.In) and not expression.right:
+        expression = Literal(False)
+    elif isinstance(expression, operators.NotIn) and not expression.right:
+        expression = Literal(True)
+    return expression
+
+
 class Field(object):
     _type = None
     _sql_type = None
@@ -429,10 +437,7 @@ class Field(object):
         column = self.sql_column(table)
         column = self._domain_column(operator, column)
         expression = Operator(column, self._domain_value(operator, value))
-        if isinstance(expression, operators.In) and not expression.right:
-            expression = Literal(False)
-        elif isinstance(expression, operators.NotIn) and not expression.right:
-            expression = Literal(True)
+        expression = sanitize_sql_expression(expression)
         expression = self._domain_add_null(column, operator, value, expression)
         return expression
 
@@ -531,8 +536,9 @@ class Field(object):
 
 class FieldTranslate(Field):
 
-    def _get_translation_join(self, Model, name,
-            translation, model, table, from_, language):
+    def _get_translation_join(
+            self, Model, name, translation, model, table, from_, language,
+            domain=None):
         if Model.__name__ == 'ir.model.field':
             pool = Pool()
             IrModel = pool.get('ir.model')
@@ -617,10 +623,19 @@ class FieldTranslate(Field):
             & (translation.type == type_)
             & (translation.fuzzy == Literal(False))
             )
+        if domain:
+            _, operator, value = domain
+            Operator = SQL_OPERATORS[operator]
+            column = self._domain_column(operator, translation.value)
+            expression = Operator(column, self._domain_value(operator, value))
+            expression = sanitize_sql_expression(expression)
+            expression = self._domain_add_null(
+                column, operator, value, expression)
+            query.where &= expression
         return query, from_.join(query, 'LEFT',
             condition=(query.res_id == res_id) & (query.name == name_))
 
-    def _get_translation_column(self, Model, name):
+    def _get_translation_column(self, Model, name, domain=None):
         from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
@@ -633,7 +648,8 @@ class FieldTranslate(Field):
         while language:
             translation = Translation.__table__()
             translation, join = self._get_translation_join(
-                Model, name, translation, model, table, join, language)
+                Model, name, translation, model, table, join, language,
+                domain=domain)
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
         return table, join, column
@@ -644,7 +660,8 @@ class FieldTranslate(Field):
                 domain, tables, Model)
         table, _ = tables[None]
         name, operator, value = domain
-        model, join, column = self._get_translation_column(Model, name)
+        model, join, column = self._get_translation_column(
+            Model, name, domain=domain)
         column = Coalesce(NullIf(column, ''), self.sql_column(model))
         column = self._domain_column(operator, column)
         Operator = SQL_OPERATORS[operator]

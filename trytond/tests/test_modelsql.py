@@ -1339,36 +1339,6 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
                 Model.search([], order=[('name', 'DESC')]),
                 [record])
 
-    @unittest.skipIf(backend.name != 'postgresql',
-        "Only PostgreSQL support DISTINCT ON")
-    @with_transaction()
-    def test_search_last_translation(self):
-        "Test unique result on search"
-        pool = Pool()
-        Model = pool.get('test.modelsql.translation')
-        Translation = pool.get('ir.translation')
-
-        with Transaction().set_context(language=self.default_language):
-            record, = Model.create([{'name': "Foo"}])
-        with Transaction().set_context(language=self.other_language):
-            Model.write([record], {'name': "Bar"})
-
-        translation, = Translation.search([
-                ('lang', '=', self.other_language),
-                ('name', '=', 'test.modelsql.translation,name'),
-                ('type', '=', 'model'),
-                ('res_id', '=', record.id),
-                ])
-        Translation.copy([translation], default={'value': "Baz"})
-
-        with Transaction().set_context(language=self.other_language):
-            self.assertEqual(
-                Model.search([('name', '=', 'Baz')]),
-                [record])
-            self.assertEqual(
-                Model.search([('name', '=', 'Bar')]),
-                [])
-
     @with_transaction()
     def test_search_fill_transaction_cache(self):
         "Test search fill the transaction cache"
