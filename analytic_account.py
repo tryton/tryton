@@ -139,8 +139,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
     __name__ = 'analytic_account.budget.line'
 
     budget = fields.Many2One(
-        'analytic_account.budget', "Budget",
-        required=True, select=True, ondelete='CASCADE')
+        'analytic_account.budget', "Budget", required=True, ondelete='CASCADE')
     account = fields.Many2One(
         'analytic_account.account', "Account",
         domain=[
