@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 class Action(sequence_ordered(), ModelSQL, ModelView):
     "Dashboard Action"
     __name__ = "dashboard.action"
-    user = fields.Many2One('res.user', 'User', required=True,
-            select=True)
+    user = fields.Many2One('res.user', "User", required=True)
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             required=True, ondelete='CASCADE', domain=[
                 ('res_model', '!=', None),
