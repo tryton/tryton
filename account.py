@@ -11,7 +11,7 @@ from zeep.transports import Transport
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
@@ -269,7 +269,7 @@ class InvoiceSII(ModelSQL, ModelView):
             ('sent', "Sent"),
             ('wrong', "Wrong"),
             ('rejected', "Rejected"),
-            ], "State", readonly=True, select=True)
+            ], "State", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -281,6 +281,11 @@ class InvoiceSII(ModelSQL, ModelView):
             ('invoice_unique', Unique(t, t.invoice),
                 'account_es_sii.msg_es_sii_invoice_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_(['pending', 'wrong', 'rejected'])))
 
     @classmethod
     def default_state(cls):
