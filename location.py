@@ -14,14 +14,14 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'stock.product.location'
     template = fields.Many2One(
         'product.template', "Product",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
             ])
     product = fields.Many2One(
-        'product.product', "Variant", ondelete='CASCADE', select=True,
+        'product.product', "Variant", ondelete='CASCADE',
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
