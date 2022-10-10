@@ -127,7 +127,7 @@ class Payment(metaclass=PoolMeta):
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
         readonly=True)
     clearing_reconciled = fields.Boolean(
-        "Clearing Reconciled", select=True,
+        "Clearing Reconciled",
         states={
             'invisible': ~Eval('clearing_move'),
             },
