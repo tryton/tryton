@@ -19,7 +19,7 @@ from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.account_payment.exceptions import (
     PaymentValidationError, ProcessError)
 from trytond.modules.company.model import (
@@ -576,6 +576,13 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_([
+                        'draft', 'submitted', 'approved', 'processing'])))
         cls.__access__.add('payment')
         cls._transitions |= set((
                 ('draft', 'submitted'),
@@ -904,7 +911,7 @@ class PaymentBraintreeCustomer(
     __name__ = 'account.payment.braintree.customer'
     _history = True
     party = fields.Many2One(
-        'party.party', "Party", required=True, select=True,
+        'party.party', "Party", required=True,
         states={
             'readonly': (
                 Eval('braintree_customer_id') | Eval('braintree_nonce')),
