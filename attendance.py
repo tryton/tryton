@@ -13,7 +13,7 @@ from sql.functions import CurrentTimestamp, Function, NthValue
 from trytond import backend
 from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import timezone as tz
@@ -167,12 +167,19 @@ class Period(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
-        ], "State", select=True, readonly=True, sort=False,
+        ], "State", readonly=True, sort=False,
         help="The current state of the attendance period.")
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.company, Index.Equality()),
+                (t.state, Index.Equality()),
+                (t.ends_at, Index.Range(order='DESC'))))
         cls._transitions |= set((
                 ('draft', 'closed'),
                 ('closed', 'draft'),
