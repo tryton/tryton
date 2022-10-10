@@ -590,10 +590,10 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 class PredecessorSuccessor(ModelSQL):
     'Predecessor - Successor'
     __name__ = 'project.predecessor_successor'
-    predecessor = fields.Many2One('project.work', 'Predecessor',
-            ondelete='CASCADE', required=True, select=True)
-    successor = fields.Many2One('project.work', 'Successor',
-            ondelete='CASCADE', required=True, select=True)
+    predecessor = fields.Many2One(
+        'project.work', "Predecessor", ondelete='CASCADE', required=True)
+    successor = fields.Many2One(
+        'project.work', "Successor", ondelete='CASCADE', required=True)
 
     @classmethod
     def write(cls, *args):

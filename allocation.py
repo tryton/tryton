@@ -7,10 +7,10 @@ from trytond.pool import Pool
 class Allocation(ModelSQL, ModelView):
     'Allocation'
     __name__ = 'project.allocation'
-    employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=True, ondelete='CASCADE')
-    work = fields.Many2One('project.work', 'Work', required=True,
-            select=True, ondelete='CASCADE')
+    employee = fields.Many2One(
+        'company.employee', "Employee", required=True, ondelete='CASCADE')
+    work = fields.Many2One(
+        'project.work', "Work", required=True, ondelete='CASCADE')
     percentage = fields.Float('Percentage', digits=(16, 2), required=True,
         domain=[('percentage', '>', 0.0)])
 
