@@ -6,7 +6,7 @@ from functools import partial
 from itertools import groupby
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -27,7 +27,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     __name__ = 'purchase.request'
 
     product = fields.Many2One(
-        'product.product', "Product", select=True, readonly=True,
+        'product.product', "Product", readonly=True,
         domain=[('purchasable', '=', True)],
         context={
             'company': Eval('company', -1),
@@ -36,15 +36,15 @@ class PurchaseRequest(ModelSQL, ModelView):
     description = fields.Text('Description', readonly=True, states=STATES)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     party = fields.Many2One(
-        'party.party', "Party", select=True, states=STATES,
+        'party.party', "Party", states=STATES,
         context={
             'company': Eval('company', -1),
             },
         depends={'company'})
     quantity = fields.Float('Quantity', required=True, states=STATES,
         digits=(16, Eval('uom_digits', 2)))
-    uom = fields.Many2One('product.uom', 'UOM', select=True,
-        ondelete='RESTRICT',
+    uom = fields.Many2One(
+        'product.uom', "UOM", ondelete='RESTRICT',
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
@@ -96,11 +96,17 @@ class PurchaseRequest(ModelSQL, ModelView):
             ('done', "Done"),
             ('cancelled', "Cancelled"),
             ('exception', "Exception"),
-            ], "State", required=True, readonly=True, select=True, sort=False)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super(PurchaseRequest, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'purchased', 'exception'])))
         cls._order[0] = ('id', 'DESC')
         cls._buttons.update({
                 'handle_purchase_cancellation_exception': {
