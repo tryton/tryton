@@ -8,7 +8,8 @@ from trytond.pyson import Eval
 class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
-    work = fields.Many2One('project.work', 'Work Effort', select=True,
+    work = fields.Many2One(
+        'project.work', "Work Effort",
         domain=[
             ('company', '=', Eval('_parent_purchase', {}).get('company', -1)),
             ],
