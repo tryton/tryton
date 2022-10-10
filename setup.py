@@ -60,7 +60,8 @@ else:
             break
 if local_version:
     version += '+' + '.'.join(local_version)
-requires = ['ShopifyAPI', 'pyactiveresource', 'python-sql', 'python-dateutil']
+requires = [
+    'ShopifyAPI<12.0.0', 'pyactiveresource', 'python-sql', 'python-dateutil']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
