@@ -8,7 +8,7 @@ from sql.functions import CharLength
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError, RequiredValidationError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -96,11 +96,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         }
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             })
-    number = fields.Char('Number', readonly=True, select=True)
+    number = fields.Char('Number', readonly=True)
     description = fields.Char('Description', states=_states)
     employee = fields.Many2One(
         'company.employee', 'Employee', required=True, states=_states)
@@ -149,7 +149,15 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super(PurchaseRequisition, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_([
+                        'draft', 'waiting', 'approved', 'processing'])))
         cls._transitions |= set((
                 ('cancelled', 'draft'),
                 ('rejected', 'draft'),
@@ -431,7 +439,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
 
     requisition = fields.Many2One(
         'purchase.requisition', 'Requisition',
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     supplier = fields.Many2One('party.party', 'Supplier', states=_states)
     product = fields.Many2One(
         'product.product', 'Product',
