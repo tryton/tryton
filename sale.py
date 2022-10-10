@@ -67,7 +67,7 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
 
     name = fields.Char('Name', translate=True, required=True)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('id', 0) > 0,
             })
