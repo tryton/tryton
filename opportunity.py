@@ -11,7 +11,7 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.currency.fields import Monetary
@@ -36,10 +36,10 @@ class SaleOpportunity(
             ['converted', 'won', 'lost', 'cancelled']),
     }
 
-    number = fields.Char('Number', readonly=True, required=True, select=True)
-    reference = fields.Char('Reference', select=True)
+    number = fields.Char("Number", readonly=True, required=True)
+    reference = fields.Char("Reference")
     party = fields.Many2One(
-        'party.party', "Party", select=True,
+        'party.party', "Party",
         states={
             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
@@ -57,12 +57,11 @@ class SaleOpportunity(
             'related_party': Eval('party'),
             },
         depends=['party', 'company'])
-    address = fields.Many2One('party.address', 'Address',
-        domain=[('party', '=', Eval('party'))],
-        select=True,
-        states=_states_stop)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True,
+    address = fields.Many2One(
+        'party.address', "Address", states=_states_stop,
+        domain=[('party', '=', Eval('party'))])
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
         states={
             'readonly': _states_stop['readonly'] | Eval('party', True),
             },
@@ -87,9 +86,8 @@ class SaleOpportunity(
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
         },
         domain=[('company', '=', Eval('company'))])
-    start_date = fields.Date('Start Date', required=True, select=True,
-        states=_states_start)
-    end_date = fields.Date('End Date', select=True, states=_states_stop)
+    start_date = fields.Date("Start Date", required=True, states=_states_start)
+    end_date = fields.Date("End Date", states=_states_stop)
     description = fields.Char('Description', states=_states_stop)
     comment = fields.Text('Comment', states=_states_stop)
     lines = fields.One2Many('sale.opportunity.line', 'opportunity', 'Lines',
@@ -119,7 +117,7 @@ class SaleOpportunity(
             ('won', "Won"),
             ('lost', "Lost"),
             ('cancelled', "Cancelled"),
-            ], "State", required=True, select=True, sort=False, readonly=True)
+            ], "State", required=True, sort=False, readonly=True)
 
     del _states_start
     del _states_stop
@@ -185,7 +183,21 @@ class SaleOpportunity(
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(SaleOpportunity, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (t.party, Index.Equality())),
+                Index(
+                    t,
+                    (t.start_date, Index.Range(order='DESC')),
+                    (t.end_date, Index.Range(order='DESC'))),
+                Index(
+                    t, (t.state, Index.Equality()),
+                    where=t.state.in_(['lead', 'opportunity'])),
+                })
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
                 ('lead', 'opportunity'),
@@ -528,8 +540,8 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             ['converted', 'won', 'lost', 'cancelled']),
         }
 
-    opportunity = fields.Many2One('sale.opportunity', 'Opportunity',
-        ondelete='CASCADE', select=True, required=True,
+    opportunity = fields.Many2One(
+        'sale.opportunity', "Opportunity", ondelete='CASCADE', required=True,
         states={
             'readonly': _states['readonly'] & Bool(Eval('opportunity')),
             })
