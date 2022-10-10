@@ -164,7 +164,7 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
             ],
         help="The last date that the agent will be considered for selection.")
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -172,7 +172,7 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     company = fields.Function(fields.Many2One('company.company', "Company"),
         'on_change_with_company', searcher='search_company')
     employee = fields.Many2One(
-        'company.employee', "Employee", select=True,
+        'company.employee', "Employee",
         domain=[
             ('company', '=', Eval('company')),
             ])
@@ -334,9 +334,10 @@ class Commission(ModelSQL, ModelView):
         'readonly': Bool(Eval('invoice_line')),
         }
     origin = fields.Reference(
-        "Origin", selection='get_origin', select=True, states=_readonly_states,
+        "Origin", selection='get_origin', states=_readonly_states,
         help="The source of the commission.")
-    date = fields.Date('Date', select=True, states=_readonly_states,
+    date = fields.Date(
+        "Date", states=_readonly_states,
         help="When the commission is due.")
     agent = fields.Many2One('commission.agent', 'Agent', required=True,
         states=_readonly_states)
