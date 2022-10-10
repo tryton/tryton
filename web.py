@@ -36,7 +36,7 @@ class Shop(metaclass=PoolMeta):
     shopify_url = fields.Char("Shop URL", states=_states)
     shopify_version = fields.Selection(
         'get_shopify_versions', "Version", states=_states)
-    shopify_password = fields.Char("Password", states=_states, strip=False)
+    shopify_password = fields.Char("Access Token", states=_states, strip=False)
     shopify_webhook_shared_secret = fields.Char(
         "Webhook Shared Secret", strip=False,
         states={

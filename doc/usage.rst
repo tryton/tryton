@@ -7,9 +7,9 @@ Usage
 Configure Shopify Web Shop
 ==========================
 
-First you must create a new `private app
-<https://help.shopify.com/en/manual/apps/private-apps>`_ for your Shopify
-store with, as a minimum, the following permissions:
+First you must create a new `custom app
+<https://help.shopify.com/en/manual/apps/app-types#custom-apps>`_ for your
+Shopify store with, as a minimum, the following permissions:
 
    * Fulfillment services: Read and write
 
@@ -20,6 +20,10 @@ store with, as a minimum, the following permissions:
    * Product listings: Read and write
 
    * Products: Read and write
+
+   * Assigned fulfillment: Read and write
+
+   * Merchant-managed fulfillment orders: Read and write
 
 You also need to copy the password that is generated.
 

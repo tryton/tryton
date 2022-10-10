@@ -67,5 +67,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_line_without_product">
             <field name="text">To process the sale "%(sale)s" you must set a product on the line "%(line)s".</field>
         </record>
+        <record model="ir.message" id="msg_fulfillment_order_line_not_found">
+            <field name="text">Failed to find fulfillment order for %(quantity)s of move "%(move)s".</field>
+        </record>
     </data>
 </tryton>

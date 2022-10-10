@@ -1,12 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import shopify
 
-from trytond.i18n import lazy_gettext
+from collections import defaultdict
+
+import shopify
+from shopify.resources.fulfillment import FulfillmentV2
+
+from trytond.i18n import gettext, lazy_gettext
 from trytond.model import ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool, PoolMeta
 
 from .common import IdentifierMixin
+from .exceptions import ShopifyError
 
 
 class ShipmentOut(metaclass=PoolMeta):
@@ -24,21 +29,28 @@ class ShipmentOut(metaclass=PoolMeta):
             # Fulfillment can not be modified
             return
         else:
-            fulfillment = shopify.Fulfillment(
-                prefix_options={'order_id': sale.shopify_identifier})
+            fulfillment = FulfillmentV2()
         for shop_warehouse in sale.web_shop.shopify_warehouses:
             if shop_warehouse.warehouse == self.warehouse:
-                fulfillment.location_id = int(shop_warehouse.shopify_id)
+                location_id = int(shop_warehouse.shopify_id)
                 break
-        line_items = []
+        else:
+            location_id = None
+        fulfillment_orders = shopify.FulfillmentOrders.find(
+            order_id=sale.shopify_identifier)
+        line_items = defaultdict(list)
         for move in self.outgoing_moves:
             if move.sale == sale:
-                line_item = move.get_shopify()
-                if line_item:
-                    line_items.append(line_item)
+                for order_id, line_item in move.get_shopify(
+                        fulfillment_orders, location_id):
+                    line_items[order_id].append(line_item)
         if not line_items:
             return
-        fulfillment.line_items = line_items
+        fulfillment.line_items_by_fulfillment_order = [{
+                'fulfillment_order_id': order_id,
+                'fulfillment_order_line_items': line_items,
+                }
+            for order_id, line_items in line_items.items()]
         return fulfillment
 
     def get_shopify_identifier(self, sale):
@@ -116,25 +128,45 @@ class ShipmentOut_PackageShipping(metaclass=PoolMeta):
     def get_shopify(self, sale):
         fulfillment = super().get_shopify(sale)
         if fulfillment and self.packages:
-            fulfillment.tracking_numbers = [
-                p.shipping_reference for p in self.packages
-                if p.shipping_reference]
-            fulfillment.tracking_urls = [
-                p.shipping_tracking_url for p in self.packages
-                if p.shipping_tracking_url]
+            tracking_info = []
+            for package in self.packages:
+                tracking_info.append({
+                        'number': package.shipping_reference,
+                        'url': package.shipping_tracking_url,
+                        })
+            fulfillment.tracking_info = tracking_info
         return fulfillment
 
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
-    def get_shopify(self):
+    def get_shopify(self, fulfillment_orders, location_id):
         pool = Pool()
         SaleLine = pool.get('sale.line')
         Uom = pool.get('product.uom')
-        if isinstance(self.origin, SaleLine):
-            return {
-                'id': self.origin.shopify_identifier,
-                'quantity': int(Uom.compute_qty(
-                        self.uom, self.quantity, self.origin.unit)),
-                }
+        if not isinstance(self.origin, SaleLine):
+            return
+        identifier = self.origin.shopify_identifier
+        quantity = int(Uom.compute_qty(
+                self.uom, self.quantity, self.origin.unit))
+        for fulfillment_order in fulfillment_orders:
+            if fulfillment_order.assigned_location_id != location_id:
+                continue
+            for line_item in fulfillment_order.line_items:
+                if line_item.line_item_id == identifier:
+                    qty = min(quantity, line_item.fulfillable_quantity)
+                    qty = quantity
+                    yield fulfillment_order.id, {
+                        'id': line_item.id,
+                        'quantity': qty,
+                        }
+                    quantity -= qty
+                    if quantity <= 0:
+                        return
+        else:
+            raise ShopifyError(gettext(
+                    'web_shop_shopify.msg_fulfillment_order_line_not_found',
+                    quantity=quantity,
+                    move=self.rec_name,
+                    ))
