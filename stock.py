@@ -5,7 +5,7 @@ from itertools import groupby
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Model, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    Index, Model, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.pool import Pool, PoolMeta
@@ -23,7 +23,7 @@ class QuantityIssue(
     __name__ = 'stock.quantity.issue'
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+        'company.company', "Company", required=True)
     origin = fields.Reference(
         "Origin", 'get_origins', required=True,
         domain={
@@ -68,11 +68,16 @@ class QuantityIssue(
             ('open', "Open"),
             ('processing', "Processing"),
             ('solved', "Solved"),
-            ], "State", required=True, select=True, readonly=True, sort=False)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['open', 'processing'])))
         cls.priority.readonly = True
         cls._transitions |= {
             ('open', 'processing'),
@@ -347,7 +352,7 @@ class QuantityIssueProduct(ModelSQL):
 
     issue = fields.Many2One(
         'stock.quantity.issue', "Issue",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     product = fields.Many2One(
         'product.product', "Product",
         required=True, ondelete='CASCADE',
