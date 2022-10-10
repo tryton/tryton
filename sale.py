@@ -6,7 +6,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.product.exceptions import UOMValidationError
@@ -111,22 +111,22 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': (
                 (Eval('state') != 'draft')
                 | Eval('lines', [0])
                 | Eval('customer', True)),
             })
-    number = fields.Char("Number", readonly=True, select=True)
-    reference = fields.Char("Reference", select=True)
+    number = fields.Char("Number", readonly=True)
+    reference = fields.Char("Reference")
     description = fields.Char(
         "Description",
         states={
             'readonly': Eval('state') != 'draft',
             })
     customer = fields.Many2One(
-        'party.party', "Customer", required=True, select=True,
+        'party.party', "Customer", required=True,
         states={
             'readonly': (
                 (Eval('state') != 'draft')
@@ -186,7 +186,17 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t, (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'running'])),
+                })
+
         cls._order = [
             ('from_date', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -404,7 +414,7 @@ class BlanketAgreementLine(ModelSQL, ModelView):
 
     blanket_agreement = fields.Many2One(
         'sale.blanket_agreement', "Blanket Agreement",
-        ondelete='CASCADE', select=True, required=True,
+        ondelete='CASCADE', required=True,
         states={
             'readonly': (
                 _states['readonly'] & Bool(Eval('blanket_agreement'))),
