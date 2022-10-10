@@ -1380,19 +1380,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends(
-        'product', 'quantity', methods=['_get_context_purchase_price'])
+    @fields.depends(methods=['compute_unit_price'])
     def on_change_quantity(self):
-        Product = Pool().get('product.product')
-
-        if not self.product:
-            return
-
-        with Transaction().set_context(self._get_context_purchase_price()):
-            self.unit_price = Product.get_purchase_price([self.product],
-                abs(self.quantity or 0))[self.product.id]
-            if self.unit_price:
-                self.unit_price = round_price(self.unit_price)
+        self.unit_price = self.compute_unit_price()
 
     @fields.depends(methods=['on_change_quantity'])
     def on_change_unit(self):
