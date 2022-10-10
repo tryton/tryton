@@ -109,7 +109,8 @@ def process_sale_move(func):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=True),
+    sale = fields.Function(
+        fields.Many2One('sale.sale', "Sale"),
         'get_sale', searcher='search_sale')
     sale_exception_state = fields.Function(fields.Selection([
         ('', ''),

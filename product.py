@@ -111,7 +111,7 @@ class ProductLeadTime(ModelSQL, ValueMixin):
     __name__ = 'product.lead_time'
 
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE', select=True)
+        'product.template', "Template", ondelete='CASCADE')
     lead_time = fields.TimeDelta("Lead Time")
 
     @classmethod

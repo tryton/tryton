@@ -69,7 +69,7 @@ class PartySaleMethod(ModelSQL, CompanyValueMixin):
     __name__ = 'party.party.sale_method'
 
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -87,7 +87,7 @@ class PartyCustomerCurrency(ModelSQL, ValueMixin):
     "Party Customer Currency"
     __name__ = 'party.party.customer_currency'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     customer_currency = customer_currency
 
 

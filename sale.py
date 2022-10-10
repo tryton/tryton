@@ -12,7 +12,8 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Model, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
+    Index, Model, ModelSQL, ModelView, Unique, Workflow, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
@@ -67,7 +68,7 @@ class Sale(
     __name__ = 'sale.sale'
     _rec_name = 'number'
     company = fields.Many2One(
-        'company.company', 'Company', required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': (
                 (Eval('state') != 'draft')
@@ -76,8 +77,8 @@ class Sale(
                 | Eval('invoice_party', True)
                 | Eval('shipment_party', True)),
             })
-    number = fields.Char('Number', readonly=True, select=True)
-    reference = fields.Char('Reference', select=True)
+    number = fields.Char("Number", readonly=True)
+    reference = fields.Char("Reference")
     description = fields.Char('Description',
         states={
             'readonly': Eval('state') != 'draft',
@@ -93,7 +94,8 @@ class Sale(
         states={
             'readonly': Eval('state') != 'draft',
             })
-    party = fields.Many2One('party.party', 'Party', required=True, select=True,
+    party = fields.Many2One(
+        'party.party', "Party", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('party'))),
@@ -233,7 +235,8 @@ class Sale(
     moves = fields.Function(
         fields.Many2Many('stock.move', None, None, "Moves"),
         'get_moves', searcher='search_moves')
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
+    origin = fields.Reference(
+        "Origin", selection='get_origin',
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -266,8 +269,27 @@ class Sale(
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Sale, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (t.party, Index.Equality())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_([
+                            'draft', 'quotation', 'confirmed', 'processing'])),
+                Index(
+                    t,
+                    (t.invoice_state, Index.Equality()),
+                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                Index(
+                    t,
+                    (t.shipment_state, Index.Equality()),
+                    where=t.state.in_(['none', 'waiting', 'exception'])),
+                })
         cls._order = [
             ('sale_date', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -1086,27 +1108,27 @@ class SaleIgnoredInvoice(ModelSQL):
     'Sale - Ignored Invoice'
     __name__ = 'sale.sale-ignored-account.invoice'
     _table = 'sale_invoice_ignored_rel'
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
+    sale = fields.Many2One(
+        'sale.sale', "Sale", ondelete='CASCADE', required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
 
 
 class SaleRecreatedInvoice(ModelSQL):
     'Sale - Recreated Invoice'
     __name__ = 'sale.sale-recreated-account.invoice'
     _table = 'sale_invoice_recreated_rel'
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
+    sale = fields.Many2One(
+        'sale.sale', "Sale", ondelete='CASCADE', required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='RESTRICT', required=True)
 
 
 class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     'Sale Line'
     __name__ = 'sale.line'
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True, required=True,
+    sale = fields.Many2One(
+        'sale.sale', "Sale", ondelete='CASCADE', required=True,
         states={
             'readonly': ((Eval('sale_state') != 'draft')
                 & Bool(Eval('sale'))),
@@ -1116,7 +1138,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=True, required=True,
+        ], "Type", required=True,
         states={
             'readonly': Eval('sale_state') != 'draft',
             })
@@ -1797,10 +1819,10 @@ class SaleLineTax(ModelSQL):
     'Sale Line - Tax'
     __name__ = 'sale.line-account.tax'
     _table = 'sale_line_account_tax'
-    line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=True, required=True)
-    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=True, required=True)
+    line = fields.Many2One(
+        'sale.line', "Sale Line", ondelete='CASCADE', required=True)
+    tax = fields.Many2One(
+        'account.tax', "Tax", ondelete='RESTRICT', required=True)
 
     @classmethod
     def __setup__(cls):
@@ -1816,20 +1838,20 @@ class SaleLineIgnoredMove(ModelSQL):
     'Sale Line - Ignored Move'
     __name__ = 'sale.line-ignored-stock.move'
     _table = 'sale_line_moves_ignored_rel'
-    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=True, required=True)
-    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=True, required=True)
+    sale_line = fields.Many2One(
+        'sale.line', "Sale Line", ondelete='CASCADE', required=True)
+    move = fields.Many2One(
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class SaleLineRecreatedMove(ModelSQL):
     'Sale Line - Recreated Move'
     __name__ = 'sale.line-recreated-stock.move'
     _table = 'sale_line_moves_recreated_rel'
-    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=True, required=True)
-    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=True, required=True)
+    sale_line = fields.Many2One(
+        'sale.line', "Sale Line", ondelete='CASCADE', required=True)
+    move = fields.Many2One(
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class SaleReport(CompanyReport):
