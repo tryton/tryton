@@ -85,4 +85,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">sale_amendment_line_form</field>
         </record>
     </data>
+
+    <data depends="sale_blanket_agreement">
+        <record model="ir.ui.view" id="sale_blanket_agreement_line_view_form">
+            <field name="model">sale.blanket_agreement.line</field>
+            <field name="inherit" ref="sale_blanket_agreement.sale_blanket_agreement_line_view_form"/>
+            <field name="name">sale_blanket_agreement_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="sale_blanket_agreement_line_view_list">
+            <field name="model">sale.blanket_agreement.line</field>
+            <field name="inherit" ref="sale_blanket_agreement.sale_blanket_agreement_line_view_list"/>
+            <field name="name">sale_blanket_agreement_line_list</field>
+        </record>
+    </data>
 </tryton>

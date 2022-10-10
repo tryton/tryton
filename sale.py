@@ -118,3 +118,91 @@ class AmendmentLine(metaclass=PoolMeta):
     def _apply_line(self, sale, sale_line):
         super()._apply_line(sale, sale_line)
         sale_line.product_customer = self.product_customer
+
+
+class LineBlanketAgreement(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    @classmethod
+    def _domain_blanket_agreemnt_line_product(cls):
+        return [
+            super()._domain_blanket_agreemnt_line_product(),
+            If(Eval('product_customer'),
+                ('product_customer', '=', Eval('product_customer')),
+                ()),
+            ]
+
+    @fields.depends(
+        'blanket_agreement_line', 'product_customer',
+        '_parent_blanket_agreement_line.product_customer')
+    def on_change_blanket_agreement_line(self):
+        if self.blanket_agreement_line:
+            line = self.blanket_agreement_line
+            if not self.product_customer:
+                self.product_customer = line.product_customer
+        super().on_change_blanket_agreement_line()
+
+
+class BlanketAgreementLine(metaclass=PoolMeta):
+    __name__ = 'sale.blanket_agreement.line'
+
+    product_customer = fields.Many2One(
+        'sale.product_customer', "Customer's Product", ondelete='RESTRICT',
+        domain=[
+            If(Bool(Eval('product')),
+                ['OR',
+                    [
+                        ('template.products', '=', Eval('product')),
+                        ('product', '=', None),
+                        ],
+                    ('product', '=', Eval('product')),
+                    ],
+                []),
+            ('party', '=', Eval('_parent_blanket_agreement', {}).get(
+                    'customer')),
+            ],
+        states={
+            'readonly': Eval('agreement_state') != 'draft'
+            })
+
+    @fields.depends('blanket_agreement', '_parent_blanket_agreement.customer')
+    def _get_product_customer_pattern(self):
+        return {
+            'party': (
+                self.blanket_agreement.customer.id
+                if self.blanket_agreement and self.blanket_agreement.customer
+                else -1),
+            }
+
+    @fields.depends('product', 'product_customer')
+    def on_change_product(self):
+        try:
+            super().on_change_product()
+        except AttributeError:
+            pass
+        if not self.product:
+            return
+        product_customers = list(self.product.product_customer_used(
+                **self._get_product_customer_pattern()))
+        if len(product_customers) == 1:
+            self.product_customer, = product_customers
+        elif (self.product_customer
+                and self.product_customer not in product_customers):
+            self.product_customer = None
+
+    @fields.depends('product', 'product_customer',
+        methods=['on_change_product'])
+    def on_change_product_customer(self):
+        if self.product_customer:
+            if self.product_customer.product:
+                self.product = self.product_customer.product
+            elif not self.product:
+                if len(self.product_customer.template.products) == 1:
+                    self.product, = self.product_customer.template.products
+        self.on_change_product()
+
+    def get_sale_line(self, sale):
+        sale_line = super().get_sale_line(sale)
+        if self.product_customer:
+            sale_line.product_customer = self.product_customer
+        return sale_line

@@ -20,6 +20,11 @@ def register():
         module='sale_product_customer', type_='model',
         depends=['sale_amendment'])
     Pool.register(
+        sale.LineBlanketAgreement,
+        sale.BlanketAgreementLine,
+        module='sale_product_customer', type_='model',
+        depends=['sale_blanket_agreement'])
+    Pool.register(
         module='sale_product_customer', type_='wizard')
     Pool.register(
         module='sale_product_customer', type_='report')

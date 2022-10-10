@@ -7,7 +7,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class SaleProductCustomerTestCase(ModuleTestCase):
     'Test Sale Product Customer module'
     module = 'sale_product_customer'
-    extras = ['sale_amendment']
+    extras = ['sale_amendment', 'sale_blanket_agreement']
 
 
 del ModuleTestCase
