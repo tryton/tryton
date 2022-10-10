@@ -11,7 +11,7 @@ from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Exclude, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.fields import Monetary
@@ -28,7 +28,7 @@ from .exceptions import SaleValidationError, SessionValidationError
 class POS(ModelSQL, ModelView):
     "Point of Sale"
     __name__ = 'sale.point'
-    name = fields.Char("Name", required=True, select=True)
+    name = fields.Char("Name", required=True)
     company = fields.Many2One('company.company', "Company", required=True)
     tax_included = fields.Boolean(
         "Tax Included",
@@ -120,7 +120,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('company', '=', Eval('company', -1)),
             ])
     number = fields.Char(
-        "Number", readonly=True, select=True,
+        "Number", readonly=True,
         states={
             'required': Eval('state').in_(['done', 'posted']),
             })
@@ -150,7 +150,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('done', "Done"),
             ('posted', "Posted"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
 
     move = fields.Many2One(
         'account.move', "Move", readonly=True,
@@ -165,7 +165,13 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['open', 'done'])))
         cls._transitions |= {
             ('open', 'done'),
             ('done', 'posted'),
@@ -771,6 +777,8 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                 Exclude(t, (Coalesce(t.previous_session, -t.point), Equal)),
                 'sale_point.msg_cash_session_previous_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(t, (t.state, Index.Equality()), where=t.state == 'open'))
         cls._transitions |= {
             ('open', 'closed'),
             ('closed', 'open'),
@@ -1215,6 +1223,9 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
         cls._transitions |= {
             ('draft', 'posted'),
             }
