@@ -181,7 +181,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
     'Stock Package'
     __name__ = 'stock.package'
     _rec_name = 'code'
-    code = fields.Char('Code', select=True, readonly=True, required=True)
+    code = fields.Char('Code', readonly=True, required=True)
     company = fields.Many2One('company.company', "Company", required=True)
     type = fields.Many2One(
         'stock.package.type', "Type", required=True,
@@ -189,7 +189,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             'readonly': Eval('state') == 'closed',
             })
     shipment = fields.Reference(
-        "Shipment", selection='get_shipment', select=True,
+        "Shipment", selection='get_shipment',
         states={
             'readonly': Eval('state') == 'closed',
             },
@@ -218,7 +218,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             'readonly': Eval('state') == 'closed',
             })
     parent = fields.Many2One(
-        'stock.package', "Parent", select=True, ondelete='CASCADE',
+        'stock.package', "Parent", ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('shipment', '=', Eval('shipment')),
@@ -239,6 +239,11 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
                 ('open', "Open"),
                 ('closed', "Closed"),
                 ], "State"), 'on_change_with_state')
+
+    @classmethod
+    def __setup__(cls):
+        cls.code.search_unaccented = False
+        super().__setup__()
 
     @classmethod
     def __register__(cls, module):
@@ -366,7 +371,7 @@ class Type(MeasurementsMixin, DeactivableMixin, ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     package = fields.Many2One(
-        'stock.package', "Package", select=True, readonly=True,
+        'stock.package', "Package", readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
