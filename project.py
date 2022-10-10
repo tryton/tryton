@@ -643,8 +643,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
 class WorkInvoicedProgress(ModelView, ModelSQL):
     'Work Invoiced Progress'
     __name__ = 'project.work.invoiced_progress'
-    work = fields.Many2One('project.work', 'Work', ondelete='RESTRICT',
-        select=True)
+    work = fields.Many2One('project.work', "Work", ondelete='RESTRICT')
     progress = fields.Float('Progress', required=True,
         domain=[
             ('progress', '>=', 0),
