@@ -7,7 +7,7 @@ import random
 from trytond.config import config
 from trytond.exceptions import LoginException
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, fields
+from trytond.model import Index, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import resolve
 
@@ -59,9 +59,15 @@ class UserLoginSMSCode(ModelSQL):
     """
     __name__ = 'res.user.login.sms_code'
 
-    user_id = fields.Integer('User ID', select=True)
+    user_id = fields.Integer("User ID")
     user = fields.Function(fields.Many2One('res.user', 'User'), 'get_user')
     code = fields.Char('Code')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(Index(t, (t.user_id, Index.Equality())))
 
     @classmethod
     def default_code(cls):
