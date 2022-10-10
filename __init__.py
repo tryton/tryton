@@ -3,11 +3,13 @@
 
 from trytond.pool import Pool
 
-from . import address, category, configuration, contact_mechanism, ir, party
+from . import (
+    address, category, configuration, contact_mechanism, country, ir, party)
 
 
 def register():
     Pool.register(
+        country.PostalCode,
         category.Category,
         party.Party,
         party.PartyLang,

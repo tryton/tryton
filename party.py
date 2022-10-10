@@ -9,8 +9,8 @@ from stdnum import get_cc_module
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, MultiValueMixin, Unique, ValueMixin,
-    fields, sequence_ordered)
+    DeactivableMixin, Index, ModelSQL, ModelView, MultiValueMixin, Unique,
+    ValueMixin, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval
@@ -35,9 +35,10 @@ class Party(
         }
 
     name = fields.Char(
-        "Name", select=True, strip=False,
+        "Name", strip=False,
         help="The main identifier of the party.")
-    code = fields.Char('Code', required=True, select=True,
+    code = fields.Char(
+        "Code", required=True,
         states={
             'readonly': Eval('code_readonly', True),
             },
@@ -89,11 +90,16 @@ class Party(
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super(Party, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('code_uniq', Unique(t, t.code), 'party.msg_party_code_unique')
             ]
+        cls._sql_indexes.update({
+                Index(t, (t.code, Index.Equality())),
+                Index(t, (t.code, Index.Similarity())),
+                })
         cls._order.insert(0, ('distance', 'ASC NULLS LAST'))
         cls._order.insert(1, ('name', 'ASC'))
         cls.active.states.update({
@@ -332,7 +338,7 @@ class PartyLang(ModelSQL, ValueMixin):
     "Party Lang"
     __name__ = 'party.party.lang'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     lang = fields.Many2One('ir.lang', "Language")
 
     @classmethod
@@ -370,10 +376,10 @@ class PartyCategory(ModelSQL):
     'Party - Category'
     __name__ = 'party.party-party.category'
     _table = 'party_category_rel'
-    party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
-            required=True, select=True)
-    category = fields.Many2One('party.category', 'Category',
-        ondelete='CASCADE', required=True, select=True)
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', required=True)
+    category = fields.Many2One(
+        'party.category', "Category", ondelete='CASCADE', required=True)
 
 
 IDENTIFIER_TYPES = [
@@ -596,11 +602,11 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     'Party Identifier'
     __name__ = 'party.identifier'
     _rec_name = 'code'
-    party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
-        required=True, select=True,
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', required=True,
         help="The party identified by this record.")
     address = fields.Many2One(
-        'party.address', "Address", ondelete='CASCADE', select=True,
+        'party.address', "Address", ondelete='CASCADE',
         states={
             'required': Eval('type_address', False),
             'invisible': ~Eval('type_address', True),

@@ -71,7 +71,8 @@ class ContactMechanism(
     _rec_name = 'value'
 
     type = fields.Selection(_TYPES, "Type", required=True, sort=False)
-    value = fields.Char("Value", select=True,
+    value = fields.Char(
+        "Value",
         # Add all function fields to ensure to always fill them via on_change
         depends={
             'email', 'website', 'skype', 'sip', 'other_value',
@@ -80,9 +81,9 @@ class ContactMechanism(
     name = fields.Char("Name")
     comment = fields.Text("Comment")
     party = fields.Many2One(
-        'party.party', "Party", required=True, ondelete='CASCADE', select=True)
+        'party.party', "Party", required=True, ondelete='CASCADE')
     address = fields.Many2One(
-        'party.address', "Address", ondelete='CASCADE', select=True,
+        'party.address', "Address", ondelete='CASCADE',
         domain=[
             ('party', '=', Eval('party', -1)),
             ])
@@ -125,6 +126,7 @@ class ContactMechanism(
 
     @classmethod
     def __setup__(cls):
+        cls.value.search_unaccented = False
         super(ContactMechanism, cls).__setup__()
         cls._order.insert(0, ('party.distance', 'ASC NULLS LAST'))
         cls._order.insert(1, ('party', 'ASC'))
@@ -330,5 +332,5 @@ class ContactMechanismLanguage(ModelSQL, ValueMixin):
     __name__ = 'party.contact_mechanism.language'
     contact_mechanism = fields.Many2One(
         'party.contact_mechanism', "Contact Mechanism",
-        ondelete='CASCADE', select=True)
+        ondelete='CASCADE')
     language = fields.Many2One('ir.lang', "Language")

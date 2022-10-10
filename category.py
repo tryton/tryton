@@ -14,7 +14,7 @@ class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
         "Name", required=True, translate=True,
         help="The main identifier of the category.")
     parent = fields.Many2One(
-        'party.category', "Parent", select=True,
+        'party.category', "Parent",
         help="Add the category below the parent.")
     childs = fields.One2Many(
         'party.category', 'parent', "Children",

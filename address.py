@@ -28,8 +28,9 @@ class Address(
         ModelSQL, ModelView):
     "Address"
     __name__ = 'party.address'
-    party = fields.Many2One('party.party', 'Party', required=True,
-        ondelete='CASCADE', select=True, states={
+    party = fields.Many2One(
+        'party.party', "Party", required=True, ondelete='CASCADE',
+        states={
             'readonly': Eval('id', 0) > 0,
             })
     party_name = fields.Char(
