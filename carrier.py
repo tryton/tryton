@@ -82,7 +82,8 @@ class Carrier(metaclass=PoolMeta):
 class WeightPriceList(ModelSQL, ModelView):
     'Carrier Weight Price List'
     __name__ = 'carrier.weight_price_list'
-    carrier = fields.Many2One('carrier', 'Carrier', required=True, select=True,
+    carrier = fields.Many2One(
+        'carrier', "Carrier", required=True,
         help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
