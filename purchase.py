@@ -1348,14 +1348,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 taxes.update(tax_ids)
         return list(taxes)
 
-    @fields.depends('product', 'quantity',
+    @fields.depends('product', 'quantity', 'unit_price',
         methods=['_get_context_purchase_price'])
     def compute_unit_price(self):
         pool = Pool()
         Product = pool.get('product.product')
 
         if not self.product:
-            return
+            return self.unit_price
 
         with Transaction().set_context(self._get_context_purchase_price()):
             unit_price = Product.get_purchase_price([self.product],
