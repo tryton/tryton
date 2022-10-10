@@ -8,5 +8,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="carrier.carrier_view_form"/>
             <field name="name">carrier_form</field>
         </record>
+        <record model="ir.ui.view" id="carrier_view_tree">
+            <field name="model">carrier</field>
+            <field name="inherit" ref="carrier.carrier_view_tree"/>
+            <field name="name">carrier_list</field>
+        </record>
     </data>
 </tryton>
