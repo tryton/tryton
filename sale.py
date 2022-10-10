@@ -37,9 +37,9 @@ class SubscriptionServiceStockLot(ModelSQL):
 
     service = fields.Many2One(
         'sale.subscription.service', "Service",
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     lot = fields.Many2One(
-        'stock.lot', "Lot", ondelete='CASCADE', select=True, required=True,
+        'stock.lot', "Lot", ondelete='CASCADE', required=True,
         domain=[
             ('product.type', '=', 'assets'),
             ])
