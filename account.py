@@ -10,7 +10,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, fields, tree)
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, fields, tree)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
@@ -25,8 +25,8 @@ class Account(
         ModelSQL, ModelView):
     'Analytic Account'
     __name__ = 'analytic_account.account'
-    name = fields.Char('Name', required=True, translate=True, select=True)
-    code = fields.Char('Code', select=True)
+    name = fields.Char("Name", required=True, translate=True)
+    code = fields.Char("Code")
     company = fields.Many2One('company.company', 'Company', required=True)
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
@@ -37,7 +37,8 @@ class Account(
         ('normal', 'Normal'),
         ('distribution', 'Distribution'),
         ], 'Type', required=True)
-    root = fields.Many2One('analytic_account.account', 'Root', select=True,
+    root = fields.Many2One(
+        'analytic_account.account', "Root",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('parent', '=', None),
@@ -47,7 +48,8 @@ class Account(
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
             })
-    parent = fields.Many2One('analytic_account.account', 'Parent', select=True,
+    parent = fields.Many2One(
+        'analytic_account.account', "Parent",
         domain=['OR',
             ('root', '=', Eval('root', -1)),
             ('parent', '=', None),
@@ -91,7 +93,11 @@ class Account(
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super(Account, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.code, Index.Similarity())))
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 
@@ -308,7 +314,7 @@ class AccountDistribution(ModelView, ModelSQL):
     "Analytic Account Distribution"
     __name__ = 'analytic_account.account.distribution'
     parent = fields.Many2One(
-        'analytic_account.account', "Parent", required=True, select=True)
+        'analytic_account.account', "Parent", required=True)
     root = fields.Function(
         fields.Many2One('analytic_account.account', "Root"),
         'on_change_with_root')
@@ -337,7 +343,7 @@ class AccountDistribution(ModelView, ModelSQL):
 class AnalyticAccountEntry(ModelView, ModelSQL):
     'Analytic Account Entry'
     __name__ = 'analytic.account.entry'
-    origin = fields.Reference('Origin', selection='get_origin', select=True)
+    origin = fields.Reference('Origin', selection='get_origin')
     root = fields.Many2One(
         'analytic_account.account', "Root Analytic", required=True,
         domain=[
@@ -398,6 +404,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             ('root_origin_uniq', Unique(t, t.origin, t.root),
                 'analytic_account.msg_root_origin_unique'),
             ]
+        cls._sql_indexes.add(Index(t, (t.origin, Index.Equality())))
 
     @classmethod
     def _get_origin(cls):

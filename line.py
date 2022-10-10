@@ -6,7 +6,7 @@ from itertools import groupby
 
 from sql import Literal
 
-from trytond.model import Check, ModelSQL, ModelView, fields
+from trytond.model import Check, Index, ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, PYSONEncoder
@@ -26,8 +26,9 @@ class Line(ModelSQL, ModelView):
         'on_change_with_currency')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_company')
-    account = fields.Many2One('analytic_account.account', 'Account',
-        required=True, select=True, domain=[
+    account = fields.Many2One(
+        'analytic_account.account', "Account", required=True,
+        domain=[
             ('type', 'not in', ['view', 'distribution']),
             ['OR',
                 ('company', '=', None),
@@ -47,6 +48,10 @@ class Line(ModelSQL, ModelView):
                 Check(t, t.credit * t.debit == 0),
                 'account.msg_line_debit_credit'),
             ]
+        cls._sql_indexes.update({
+                Index(t, (t.account, Index.Equality())),
+                Index(t, (t.date, Index.Range())),
+                })
         cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod
@@ -175,7 +180,7 @@ class MoveLine(ModelSQL, ModelView):
     analytic_state = fields.Selection([
             ('draft', 'Draft'),
             ('valid', 'Valid'),
-            ], "Analytic State", readonly=True, select=True, sort=False)
+            ], "Analytic State", readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
