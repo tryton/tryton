@@ -84,7 +84,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
     __name__ = 'account.dunning.fee.dunning_level'
 
     dunning = fields.Many2One(
-        'account.dunning', 'Dunning', required=True, select=True)
+        'account.dunning', "Dunning", required=True)
     level = fields.Many2One('account.dunning.level', 'Level', required=True)
     amount = Monetary(
         "Amount", currency='currency', digits='currency')
