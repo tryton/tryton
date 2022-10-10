@@ -14,7 +14,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
@@ -45,6 +45,7 @@ else:
 class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Invoice'
     __name__ = 'account.invoice'
+    _rec_name = 'number'
     _order_name = 'number'
 
     _states = {
@@ -52,7 +53,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     }
 
     company = fields.Many2One(
-        'company.company', 'Company', required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': _states['readonly'] | Eval('party', True),
             })
@@ -70,14 +71,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     type = fields.Selection([
             ('out', "Customer"),
             ('in', "Supplier"),
-            ], "Type", select=True, required=True,
+            ], "Type", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('context', {}).get('type')
                 | (Eval('lines', [0]) & Eval('type'))),
             })
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
-    number = fields.Char('Number', size=None, readonly=True, select=True)
+    number = fields.Char("Number", readonly=True)
     reference = fields.Char('Reference', size=None, states=_states)
     description = fields.Char('Description', size=None, states=_states)
     state = fields.Selection([
@@ -261,8 +262,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Invoice, cls).__setup__()
-        cls.create_date.select = True
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'validated', 'posted'])),
+                })
         cls._check_modify_exclude = {
             'state', 'alternative_payees', 'payment_lines',
             'move', 'cancel_move', 'additional_moves',
@@ -1829,8 +1839,7 @@ class InvoiceAdditionalMove(ModelSQL):
     "Invoice Additional Move"
     __name__ = 'account.invoice-additional-account.move'
     invoice = fields.Many2One(
-        'account.invoice', "Invoice", ondelete='CASCADE',
-        select=True, required=True)
+        'account.invoice', "Invoice", ondelete='CASCADE', required=True)
     move = fields.Many2One(
         'account.move', "Additional Move", ondelete='CASCADE')
 
@@ -1840,8 +1849,7 @@ class AlternativePayee(ModelSQL):
     __name__ = 'account.invoice.alternative_payee'
 
     invoice = fields.Many2One(
-        'account.invoice', "Invoice",
-        ondelete='CASCADE', required=True, select=True)
+        'account.invoice', "Invoice", ondelete='CASCADE', required=True)
     party = fields.Many2One(
         'party.party', "Payee", ondelete='RESTRICT', required=True)
 
@@ -1849,8 +1857,8 @@ class AlternativePayee(ModelSQL):
 class InvoicePaymentLine(ModelSQL):
     'Invoice - Payment Line'
     __name__ = 'account.invoice-account.move.line'
-    invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=True, required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='CASCADE', required=True)
     invoice_account = fields.Function(
         fields.Many2One('account.account', "Invoice Account"),
         'get_invoice')
@@ -1861,8 +1869,7 @@ class InvoicePaymentLine(ModelSQL):
             'party.party', None, None, "Invoice Alternative Payees"),
         'get_invoice')
     line = fields.Many2One(
-        'account.move.line', 'Payment Line', ondelete='CASCADE',
-        select=True, required=True,
+        'account.move.line', "Payment Line", ondelete='CASCADE', required=True,
         domain=[
             ('account', '=', Eval('invoice_account')),
             ['OR',
@@ -1911,8 +1918,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         'readonly': Eval('invoice_state') != 'draft',
         }
 
-    invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-        select=True, states={
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='CASCADE',
+        states={
             'required': (~Eval('invoice_type') & Eval('party')
                 & Eval('currency') & Eval('company')),
             'invisible': Bool(Eval('context', {}).get('standalone')),
@@ -1921,13 +1929,14 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     invoice_state = fields.Function(
         fields.Selection('get_invoice_states', "Invoice State"),
         'on_change_with_invoice_state')
-    invoice_type = fields.Selection('get_invoice_types', "Invoice Type",
-        select=True,
+    invoice_type = fields.Selection(
+        'get_invoice_types', "Invoice Type",
         states={
             'readonly': Eval('context', {}).get('type') | Eval('type'),
             'required': ~Eval('invoice'),
             })
-    party = fields.Many2One('party.party', 'Party', select=True,
+    party = fields.Many2One(
+        'party.party', "Party",
         states={
             'required': ~Eval('invoice'),
             'readonly': _states['readonly'],
@@ -1942,14 +1951,15 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         'currency.currency', "Currency", required=True,
         states=_states)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states=_states)
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=True, required=True, states={
+        ], "Type", required=True,
+        states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
             'readonly': _states['readonly'],
             })
@@ -2058,8 +2068,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         "Leave empty for the accounting date.")
     invoice_taxes = fields.Function(fields.Many2Many('account.invoice.tax',
         None, None, 'Invoice Taxes'), 'get_invoice_taxes')
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
-        states=_states)
+    origin = fields.Reference("Origin", selection='get_origin', states=_states)
 
     del _states
 
@@ -2638,8 +2647,9 @@ class InvoiceLineTax(ModelSQL):
     'Invoice Line - Tax'
     __name__ = 'account.invoice.line-account.tax'
     _table = 'account_invoice_line_account_tax'
-    line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='CASCADE', select=True, required=True)
+    line = fields.Many2One(
+        'account.invoice.line', "Invoice Line",
+        ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
@@ -2661,8 +2671,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         'readonly': Eval('invoice_state') != 'draft',
         }
 
-    invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-        select=True, required=True,
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", ondelete='CASCADE', required=True,
         states={
             'readonly': _states['readonly'] & Bool(Eval('invoice')),
             })

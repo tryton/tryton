@@ -58,7 +58,7 @@ class PartyPaymentTerm(ModelSQL, ValueMixin):
     "Party Payment Term"
     __name__ = 'party.party.payment_term'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     customer_payment_term = customer_payment_term
     supplier_payment_term = supplier_payment_term
 
