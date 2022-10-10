@@ -9,7 +9,7 @@ from dateutil import relativedelta, rrule
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
@@ -51,7 +51,7 @@ class Asset(Workflow, ModelSQL, ModelView):
     'Asset'
     __name__ = 'account.asset'
     _rec_name = 'number'
-    number = fields.Char('Number', readonly=True, select=True)
+    number = fields.Char("Number", readonly=True)
     product = fields.Many2One('product.product', 'Product', required=True,
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
@@ -195,12 +195,18 @@ class Asset(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super(Asset, cls).__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
             ('invoice_line_uniq', Unique(table, table.supplier_invoice_line),
                 'account_asset.msg_asset_invoice_line_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                table,
+                (table.state, Index.Equality()),
+                where=table.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),
                 ('running', 'closed'),
@@ -753,8 +759,8 @@ class AssetLine(ModelSQL, ModelView):
 class AssetUpdateMove(ModelSQL):
     'Asset - Update - Move'
     __name__ = 'account.asset-update-account.move'
-    asset = fields.Many2One('account.asset', 'Asset', ondelete='CASCADE',
-        select=True, required=True)
+    asset = fields.Many2One(
+        'account.asset', "Asset", ondelete='CASCADE', required=True)
     move = fields.Many2One('account.move', 'Move', required=True)
 
 
@@ -937,10 +943,9 @@ class AssetRevision(ModelSQL, ModelView):
         "Residual Value", currency='currency', digits='currency',
         required=True)
     end_date = fields.Date("End Date", required=True)
-    origin = fields.Reference("Origin", selection='get_origins', select=True)
+    origin = fields.Reference("Origin", selection='get_origins')
     description = fields.Char("Description")
-    asset = fields.Many2One(
-        'account.asset', "Asset", select=True, required=True)
+    asset = fields.Many2One('account.asset', "Asset", required=True)
 
     @classmethod
     def __setup__(cls):
