@@ -10,7 +10,7 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Equal, Eval, If, Not, Or
@@ -57,7 +57,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ('draft', "Draft"),
             ('done', "Done"),
             ('cancelled', "Cancelled"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
 
@@ -66,6 +66,12 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                (t.to_date, Index.Range())))
         cls.create_date.select = True
         cls._order.insert(0, ('from_date', 'DESC'))
         cls._order.insert(1, ('warehouse', 'ASC'))
@@ -497,10 +503,11 @@ class ForecastLineMove(ModelSQL):
     'ForecastLine - Move'
     __name__ = 'stock.forecast.line-stock.move'
     _table = 'forecast_line_stock_move_rel'
-    line = fields.Many2One('stock.forecast.line', 'Forecast Line',
-            ondelete='CASCADE', select=True, required=True)
-    move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
-            select=True, required=True)
+    line = fields.Many2One(
+        'stock.forecast.line', "Forecast Line",
+        ondelete='CASCADE', required=True)
+    move = fields.Many2One(
+        'stock.move', "Move", ondelete='CASCADE', required=True)
 
 
 class ForecastCompleteAsk(ModelView):
