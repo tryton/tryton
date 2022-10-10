@@ -16,7 +16,7 @@ class ProductCustomer(
 
     template = fields.Many2One(
         'product.template', "Product",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
@@ -24,7 +24,7 @@ class ProductCustomer(
             If(Eval('active'), ('active', '=', True), ()),
             ])
     product = fields.Many2One(
-        'product.product', "Variant", select=True,
+        'product.product', "Variant",
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
