@@ -55,7 +55,8 @@ def template_property(field_name):
 
 class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'product.category'
-    accounting = fields.Boolean('Accounting', select=True,
+    accounting = fields.Boolean(
+        "Accounting",
         states={
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             },
@@ -258,7 +259,7 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
     "Category Account"
     __name__ = 'product.category.account'
     category = fields.Many2One(
-        'product.category', "Category", ondelete='CASCADE', select=True,
+        'product.category', "Category", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -299,8 +300,8 @@ class CategoryCustomerTax(ModelSQL):
     'Category - Customer Tax'
     __name__ = 'product.category-customer-account.tax'
     _table = 'product_category_customer_taxes_rel'
-    category = fields.Many2One('product.category', 'Category',
-            ondelete='CASCADE', select=True, required=True)
+    category = fields.Many2One(
+        'product.category', "Category", ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
@@ -314,8 +315,8 @@ class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
     __name__ = 'product.category-supplier-account.tax'
     _table = 'product_category_supplier_taxes_rel'
-    category = fields.Many2One('product.category', 'Category',
-            ondelete='CASCADE', select=True, required=True)
+    category = fields.Many2One(
+        'product.category', "Category", ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
