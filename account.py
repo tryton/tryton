@@ -8,7 +8,8 @@ from sql.functions import CharLength
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import MatchMixin, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    Index, MatchMixin, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
@@ -89,7 +90,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     'Landed Cost'
     __name__ = 'account.landed_cost'
     _rec_name = 'number'
-    number = fields.Char('Number', select=True, readonly=True)
+    number = fields.Char("Number", readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -151,8 +152,11 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super(LandedCost, cls).__setup__()
-
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
         cls._order = [
             ('number', 'DESC'),
             ('id', 'DESC'),
@@ -467,7 +471,7 @@ class LandedCost_Shipment(ModelSQL):
     __name__ = 'account.landed_cost-stock.shipment.in'
     landed_cost = fields.Many2One(
         'account.landed_cost', 'Landed Cost',
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     shipment = fields.Many2One(
         'stock.shipment.in', 'Shipment', required=True, ondelete='CASCADE')
 
@@ -477,7 +481,7 @@ class LandedCost_ProductCategory(ModelSQL):
     __name__ = 'account.landed_cost-product.category'
     landed_cost = fields.Many2One(
         'account.landed_cost', 'Landed Cost',
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     category = fields.Many2One(
         'product.category', "Category", required=True, ondelete='CASCADE')
 
@@ -487,7 +491,7 @@ class LandedCost_Product(ModelSQL):
     __name__ = 'account.landed_cost-product.product'
     landed_cost = fields.Many2One(
         'account.landed_cost', "Landed Cost",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     product = fields.Many2One(
         'product.product', "Product", required=True, ondelete='CASCADE')
 
@@ -571,8 +575,8 @@ class LandedCostShowMove(ModelView):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-    landed_cost = fields.Many2One('account.landed_cost', 'Landed Cost',
-        readonly=True, select=True,
+    landed_cost = fields.Many2One(
+        'account.landed_cost', "Landed Cost", readonly=True,
         states={
             'invisible': ~Eval('landed_cost'),
             })
