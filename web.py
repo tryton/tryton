@@ -272,8 +272,7 @@ class Shop_Product(Inactivate):
     shop = fields.Many2One(
         'web.shop', "Shop", ondelete='CASCADE', required=True)
     product = fields.Many2One(
-        'product.product', "Product",
-        ondelete='RESTRICT', select=True, required=True)
+        'product.product', "Product", ondelete='RESTRICT', required=True)
 
 
 class Shop_ProductCategory(Inactivate):
@@ -283,8 +282,7 @@ class Shop_ProductCategory(Inactivate):
     shop = fields.Many2One(
         'web.shop', "Shop", ondelete='CASCADE', required=True)
     category = fields.Many2One(
-        'product.category', "Category",
-        ondelete='RESTRICT', select=True, required=True)
+        'product.category', "Category", ondelete='RESTRICT', required=True)
 
 
 class ShopAttribute(metaclass=PoolMeta):
@@ -313,8 +311,7 @@ class Shop_Attribute(Inactivate):
     shop = fields.Many2One(
         'web.shop', "Shop", ondelete='CASCADE', required=True)
     attribute = fields.Many2One(
-        'product.attribute', "Attribute",
-        ondelete='RESTRICT', select=True, required=True)
+        'product.attribute', "Attribute", ondelete='RESTRICT', required=True)
 
 
 class User(metaclass=PoolMeta):
