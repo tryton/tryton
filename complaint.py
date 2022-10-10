@@ -8,7 +8,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -38,8 +38,8 @@ class Complaint(Workflow, ModelSQL, ModelView):
         'readonly': Eval('state') != 'draft',
         }
 
-    number = fields.Char('Number', readonly=True, select=True)
-    reference = fields.Char('Reference', select=True)
+    number = fields.Char("Number", readonly=True)
+    reference = fields.Char("Reference")
     date = fields.Date('Date', states=_states)
     customer = fields.Many2One(
         'party.party', "Customer", required=True, states=_states,
@@ -129,7 +129,17 @@ class Complaint(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Complaint, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'waiting', 'approved'])),
+                })
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -646,8 +656,8 @@ class _Action_Line:
             | Bool(Eval('_parent_action.result', True))),
         }
 
-    action = fields.Many2One('sale.complaint.action', 'Action',
-        ondelete='CASCADE', select=True, required=True)
+    action = fields.Many2One(
+        'sale.complaint.action', "Action", ondelete='CASCADE', required=True)
     quantity = fields.Float(
         "Quantity", digits='unit', states=_states)
     unit = fields.Function(
