@@ -46,7 +46,7 @@ class ProductSupplierDay(ModelSQL):
     __name__ = 'purchase.product_supplier.day'
     product_supplier = fields.Many2One(
         'purchase.product_supplier', 'Supplier',
-        required=True, ondelete='CASCADE', select=True)
+        required=True, ondelete='CASCADE')
     day = fields.Many2One('ir.calendar.day', "Day", required=True)
 
     @classmethod
