@@ -51,7 +51,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
 
     advance_payment_term = fields.Many2One(
         'sale.advance_payment_term', "Advance Payment Term",
-        required=True, ondelete='CASCADE', select=True)
+        required=True, ondelete='CASCADE')
     description = fields.Char(
         "Description", required=True, translate=True,
         help="Used as description for the invoice line.")
@@ -129,8 +129,8 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
     __name__ = 'sale.advance_payment_term.line.account'
 
     line = fields.Many2One(
-        'sale.advance_payment_term.line', 'Line', required=True, select=True,
-        ondelete='CASCADE')
+        'sale.advance_payment_term.line', "Line",
+        required=True, ondelete='CASCADE')
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
@@ -148,8 +148,8 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         'readonly': Eval('sale_state') != 'draft',
         }
 
-    sale = fields.Many2One('sale.sale', 'Sale', required=True,
-        ondelete='CASCADE', select=True,
+    sale = fields.Many2One(
+        'sale.sale', "Sale", required=True, ondelete='CASCADE',
         states={
             'readonly': ((Eval('sale_state') != 'draft')
                 & Bool(Eval('sale'))),
