@@ -335,8 +335,7 @@ class EmailAttachment(ModelSQL):
     __name__ = 'notification.email.attachment'
 
     notification = fields.Many2One(
-        'notification.email', "Notification",
-        required=True, select=True)
+        'notification.email', "Notification", required=True)
     report = fields.Many2One(
         'ir.action.report', "Report", required=True,
         domain=[
