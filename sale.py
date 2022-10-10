@@ -6,7 +6,7 @@ from itertools import groupby
 from efficient_apriori import apriori
 
 from trytond.cache import Cache
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -103,7 +103,7 @@ class ProductAssociationRule(ModelSQL, ModelView):
             ],
         help="The frequency of consequents and antecedents appear together.")
     lift = fields.Float(
-        "Lift", select=True,
+        "Lift",
         domain=[
             ('lift', '>=', 0),
             ],
@@ -113,12 +113,22 @@ class ProductAssociationRule(ModelSQL, ModelView):
         "dependent on one another.\n"
         "If less than 1, the items are substitute to each other.")
     conviction = fields.Float(
-        "Conviction", select=True,
+        "Conviction",
         domain=[
             ('conviction', '>=', 0),
             ],
         help="The frequency that the rule makes an incorrect prediction.")
     _find_rules_cache = Cache(__name__ + '._find_rules', context=False)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.lift, Index.Range(order='DESC')),
+                (t.conviction, Index.Range(order='ASC'))))
 
     def get_product_names(self, name):
         return ', '.join(
@@ -232,7 +242,7 @@ class ProductAssociationRuleAntecedent(ModelSQL):
 
     rule = fields.Many2One(
         'sale.product.association.rule', "Rule",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     product = fields.Many2One(
         'product.product', "Product", required=True, ondelete='CASCADE')
 
@@ -243,7 +253,7 @@ class ProductAssociationRuleConsequent(ModelSQL):
 
     rule = fields.Many2One(
         'sale.product.association.rule', "Rule",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     product = fields.Many2One(
         'product.product', "Product", required=True, ondelete='CASCADE')
 
