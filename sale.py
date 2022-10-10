@@ -89,7 +89,7 @@ class Promotion(
 
     name = fields.Char('Name', translate=True, required=True)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('id', 0) > 0,
             })
@@ -318,8 +318,8 @@ class Promotion_Product(ModelSQL):
     'Sale Promotion - Product'
     __name__ = 'sale.promotion-product.product'
 
-    promotion = fields.Many2One('sale.promotion', 'Promotion',
-        required=True, ondelete='CASCADE', select=True)
+    promotion = fields.Many2One(
+        'sale.promotion', "Promotion", required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product',
         required=True, ondelete='CASCADE')
 
@@ -329,8 +329,7 @@ class Promotion_ProductCategory(ModelSQL):
     __name__ = 'sale.promotion-product.category'
 
     promotion = fields.Many2One(
-        'sale.promotion', "Promotion",
-        required=True, ondelete='CASCADE', select=True)
+        'sale.promotion', "Promotion", required=True, ondelete='CASCADE')
     category = fields.Many2One(
         'product.category', "Category",
         required=True, ondelete='CASCADE')
