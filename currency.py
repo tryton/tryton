@@ -16,8 +16,8 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
-    Unique, fields)
+    Check, DeactivableMixin, DigitsMixin, Index, ModelSQL, ModelView,
+    SymbolMixin, Unique, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
@@ -256,7 +256,8 @@ class Currency(
 class CurrencyRate(ModelSQL, ModelView):
     "Currency Rate"
     __name__ = 'currency.currency.rate'
-    date = fields.Date('Date', required=True, select=True,
+    date = fields.Date(
+        "Date", required=True,
         help="From when the rate applies.")
     rate = fields.Numeric(
         "Rate", digits=(rate_decimal * 2, rate_decimal), required=1,
@@ -276,6 +277,12 @@ class CurrencyRate(ModelSQL, ModelView):
             ('check_currency_rate', Check(t, t.rate >= 0),
                 'currency.msg_currency_rate_positive'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.currency, Index.Equality()),
+                (t.date, Index.Range()),
+                order='DESC'))
         cls._order.insert(0, ('date', 'DESC'))
 
     @staticmethod
@@ -451,7 +458,7 @@ class Cron_Currency(ModelSQL):
 
     cron = fields.Many2One(
         'currency.cron', "Cron",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     currency = fields.Many2One(
         'currency.currency', "Currency",
         required=True, ondelete='CASCADE')

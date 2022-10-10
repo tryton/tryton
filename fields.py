@@ -11,8 +11,8 @@ class Monetary(fields.Numeric):
     """
     def __init__(self, string='', currency=None, digits=None, help='',
             required=False, readonly=False, domain=None, states=None,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='eager'):
+            on_change=None, on_change_with=None, depends=None, context=None,
+            loading='eager'):
         '''
         :param currency: the name of the Many2One field which stores
             the currency
@@ -25,7 +25,7 @@ class Monetary(fields.Numeric):
             depends.add(currency)
         super().__init__(string=string, digits=digits, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
+            on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.currency = currency
 
