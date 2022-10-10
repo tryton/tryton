@@ -19,8 +19,8 @@ class OrderPoint(ModelSQL, ModelView):
     considered by the supply scheduler to generate purchase requests.
     """
     __name__ = 'stock.order_point'
-    product = fields.Many2One('product.product', 'Product', required=True,
-        select=True,
+    product = fields.Many2One(
+        'product.product', "Product", required=True,
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
@@ -31,15 +31,15 @@ class OrderPoint(ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    warehouse_location = fields.Many2One('stock.location',
-        'Warehouse Location', select=True,
+    warehouse_location = fields.Many2One(
+        'stock.location', 'Warehouse Location',
         domain=[('type', '=', 'warehouse')],
         states={
             'invisible': Not(Equal(Eval('type'), 'purchase')),
             'required': Equal(Eval('type'), 'purchase'),
             })
-    storage_location = fields.Many2One('stock.location', 'Storage Location',
-        select=True,
+    storage_location = fields.Many2One(
+        'stock.location', "Storage Location",
         domain=[('type', '=', 'storage')],
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
@@ -66,7 +66,7 @@ class OrderPoint(ModelSQL, ModelView):
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
-        'Type', select=True, required=True)
+        "Type", required=True)
     min_quantity = fields.Float(
         "Minimal Quantity", digits='unit',
         states={
