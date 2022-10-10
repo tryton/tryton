@@ -66,10 +66,11 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
     'Purchase - Ignored Invoice Line'
     __name__ = 'purchase.purchase-ignored-account.invoice.line'
     _table = 'purchase_invoice_line_ignored_rel'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
-    invoice = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=True, required=True)
+    purchase = fields.Many2One(
+        'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
+    invoice = fields.Many2One(
+        'account.invoice.line', "Invoice Line",
+        ondelete='RESTRICT', required=True)
 
 
 class HandleInvoiceException(metaclass=PoolMeta):
