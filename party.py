@@ -30,7 +30,7 @@ class PartySaleShipmentGroupingMethod(ModelSQL, ValueMixin):
     "Party Sale Shipment Grouping Method"
     __name__ = 'party.party.sale_shipment_grouping_method'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE')
     sale_shipment_grouping_method = fields.Selection(
         'get_sale_shipment_grouping_methods', "Sale Shipment Grouping Method")
 
