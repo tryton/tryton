@@ -16,6 +16,13 @@ uri
 ---
 
 The LDAP URL to use to connect to the server following the :rfc:`2255`.
+It is extended to support SSL_ and STARTTLS_.
+The available protocols are:
+
+   - ``ldap``: simple LDAP
+   - ``ldap+tls``: LDAP with STARTTLS
+   - ``ldaps``: LDAP with SSL
+
 
 bind_pass
 ---------
@@ -31,3 +38,6 @@ create_user
 -----------
 
 A boolean to create user if not in the database.
+
++.. _SSL: https://en.wikipedia.org/wiki/Secure_Sockets_Layer
++.. _STARTTLS: https://en.wikipedia.org/wiki/STARTTLS

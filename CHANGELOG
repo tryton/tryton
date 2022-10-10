@@ -1,3 +1,4 @@
+* Add support for STARTTLS
 * Enforce certificate validation for LDAP connection (issue11564)
 
 Version 6.4.0 - 2022-05-02

@@ -47,6 +47,8 @@ def ldap_server():
     else:
         scheme, port = 'ldap', 389
         tls = None
+        if 'tls' in uri.scheme:
+            tls = ldap3.Tls(validate=ssl.CERT_REQUIRED)
     return ldap3.Server('%s://%s:%s' % (
             scheme, uri.hostname, uri.port or port), tls=tls)
 
@@ -82,7 +84,12 @@ class User(metaclass=PoolMeta):
             # XXX find better way to get the password
             bindpass = config.get(section, 'bind_pass')
 
-        with ldap3.Connection(server, bindname, bindpass) as con:
+        bind_method = ldap3.AUTO_BIND_DEFAULT
+        if server.ssl is False and server.tls is not None:
+            bind_method = ldap3.AUTO_BIND_TLS_BEFORE_BIND
+
+        with ldap3.Connection(
+                server, bindname, bindpass, auto_bind=bind_method) as con:
             con.search(dn, filter_, search_scope=scope, attributes=attrs)
             result = con.entries
             if result and len(result) > 1:
@@ -141,7 +148,11 @@ class User(metaclass=PoolMeta):
                 users = cls.ldap_search_user(login, server, attrs=[uid])
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
-                    with ldap3.Connection(server, dn, password) as con:
+                    with ldap3.Connection(
+                            server, dn, password,
+                            auto_bind=ldap3.AUTO_BIND_NONE) as con:
+                        if server.ssl is False and server.tls is not None:
+                            con.start_tls()
                         if (password and con.bind()):
                             # Use ldap uid so we always get the right case
                             login = attrs.get(uid, [login])[0]
