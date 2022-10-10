@@ -71,7 +71,7 @@ class RecurrenceRule(ModelSQL, ModelView):
 
     set_ = fields.Many2One(
         'sale.subscription.recurrence.rule.set', "Set",
-        required=True, select=True,
+        required=True, select=True, ondelete='CASCADE',
         help="Add the rule below the set.")
     freq = fields.Selection([
             ('yearly', 'Yearly'),
