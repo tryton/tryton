@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.currency.fields import Monetary
@@ -126,6 +126,10 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ('invoice_line_unique', Unique(table, table.invoice_line),
                 'account_invoice_defer.msg_defer_invoice_line_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                table, (table.state, Index.Equality()),
+                where=table.state.in_(['draft', 'running'])))
         cls.journal.domain = [
             If(Eval('type') == 'out',
                 ('type', 'in', cls._journal_types('out')),
