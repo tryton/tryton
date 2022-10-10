@@ -189,3 +189,113 @@ class OpportunityLine(metaclass=PoolMeta):
             sale_line.secondary_quantity = self.quantity
             sale_line.secondary_unit = self.unit
             sale_line.on_change_secondary_quantity()
+
+
+class BlanketAgreementLine(metaclass=PoolMeta):
+    __name__ = 'sale.blanket_agreement.line'
+
+    product_secondary_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product Secondary UOM Category"),
+        'on_change_with_product_secondary_uom_category')
+
+    @classmethod
+    def _unit_categories(cls):
+        return super()._unit_categories() + ['product_secondary_uom_category']
+
+    def is_same_uom_category(self, sale_line):
+        return super().is_same_uom_category(sale_line) or (
+            sale_line.secondary_unit and (
+                self.unit.category == sale_line.secondary_unit.category))
+
+    def remainig_quantity_for_sale(self, line, round=True):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        remaining_quantity = super().remainig_quantity_for_sale(
+            line, round=round)
+        if (self.remaining_quantity is not None
+                and line.secondary_unit
+                and self.unit.category == line.secondary_unit.category):
+            remaining_quantity = Uom.compute_qty(
+                self.unit, self.remaining_quantity, line.unit,
+                factor=line.secondary_uom_rate,
+                rate=line.secondary_uom_factor,
+                round=round)
+        return remaining_quantity
+
+    @fields.depends('product')
+    def on_change_with_product_secondary_uom_category(self, name=None):
+        if self.product and self.product.sale_secondary_uom:
+            return self.product.sale_secondary_uom.category.id
+
+    def _set_sale_line_quantity(self, sale_line):
+        super()._set_sale_line_quantity(sale_line)
+        secondary_uom = self.product.sale_secondary_uom
+        if (secondary_uom
+                and self.unit.category == secondary_uom.category):
+            sale_line.unit = self.product.sale_uom
+            sale_line.secondary_quantity = self.remaining_quantity or 0
+            sale_line.secondary_unit = self.unit
+            sale_line.secondary_unit_price = self.unit_price
+            sale_line.on_change_secondary_quantity()
+
+
+class LineBlanketAgreement(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    @fields.depends(
+        'blanket_agreement_line', '_parent_blanket_agreement_line.unit',
+        '_parent_blanket_agreement_line.unit_price', 'unit', 'secondary_unit')
+    def compute_unit_price(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        unit_price = super().compute_unit_price()
+        line = self.blanket_agreement_line
+        if (line
+                and self.unit
+                and self.secondary_unit
+                and line.unit
+                and self.secondary_unit.category == line.unit.category):
+            secondary_unit_price = Uom.compute_price(
+                line.unit, line.unit_price, self.secondary_unit)
+            unit_price = Uom.compute_price(
+                self.secondary_unit, secondary_unit_price, self.unit,
+                factor=self.secondary_uom_rate, rate=self.secondary_uom_factor)
+            unit_price = round_price(unit_price)
+        return unit_price
+
+    @fields.depends(
+        'blanket_agreement_line',
+        '_parent_blanket_agreement_line.unit',
+        '_parent_blanket_agreement_line.remaining_quantity',
+        'sale', 'unit', 'secondary_quantity', 'secondary_unit',
+        'secondary_unit_price', methods=['on_change_secondary_quantity'])
+    def on_change_blanket_agreement_line(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        super().on_change_blanket_agreement_line()
+        if self.blanket_agreement_line:
+            line = self.blanket_agreement_line
+            if (self.secondary_unit and line.unit
+                    and self.secondary_unit.category == line.unit.category):
+                if line.remaining_quantity is not None:
+                    remaining_quantity = Uom.compute_qty(
+                        line.unit, line.remaining_quantity,
+                        self.secondary_unit)
+                    if (self.secondary_quantity is None
+                            or self.secondary_quantity > remaining_quantity):
+                        self.secondary_quantity = remaining_quantity
+                        self.on_change_secondary_quantity()
+
+    def quantity_for_blanket_agreement(self, line, round=True):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        quantity = super().quantity_for_blanket_agreement(line, round=round)
+        if (self.secondary_unit
+                and self.secondary_unit.category == line.unit.category):
+            quantity = Uom.compute_qty(
+                self.unit, (self.actual_quantity or self.quantity), line.unit,
+                factor=self.secondary_uom_factor,
+                rate=self.secondary_uom_rate,
+                round=round)
+        return quantity

@@ -9,7 +9,7 @@ class SaleSecondaryUnitTestCase(ModuleTestCase):
     module = 'sale_secondary_unit'
     extras = [
         'account_invoice_secondary_unit', 'stock_secondary_unit',
-        'sale_product_customer']
+        'sale_product_customer', 'sale_blanket_agreement']
 
 
 del ModuleTestCase

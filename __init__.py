@@ -25,3 +25,8 @@ def register():
         sale.OpportunityLine,
         module='sale_secondary_unit', type_='model',
         depends=['sale_opportunity'])
+    Pool.register(
+        sale.BlanketAgreementLine,
+        sale.LineBlanketAgreement,
+        module='sale_secondary_unit', type_='model',
+        depends=['sale_blanket_agreement'])
