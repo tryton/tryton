@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
@@ -37,7 +37,7 @@ class Amendment(Workflow, ModelSQL, ModelView):
     __name__ = 'purchase.amendment'
 
     purchase = fields.Many2One(
-        'purchase.purchase', "Purchase", required=True, select=True,
+        'purchase.purchase', "Purchase", required=True,
         domain=[
             ('state', 'in', ['processing', 'done']),
             ],
@@ -67,6 +67,12 @@ class Amendment(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Amendment, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state == 'draft'))
         cls._order = [
             ('date', 'DESC'),
             ('id', 'DESC'),
