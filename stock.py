@@ -4,7 +4,7 @@ import datetime as dt
 from collections import defaultdict
 from itertools import groupby
 
-from trytond.model import Model, ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, Model, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.pool import Pool, PoolMeta
@@ -18,7 +18,7 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
     __name__ = 'stock.quantity.early_plan'
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+        'company.company', "Company", required=True)
     origin = fields.Reference(
         "Origin", 'get_origins', required=True,
         domain={
@@ -79,11 +79,17 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('closed', "Closed"),
             ('ignored', "Ignored"),
-            ], "State", required=True, readonly=True, select=True, sort=False)
+            ], "State", required=True, readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_(['open', 'processing'])))
         cls._transitions |= {
             ('open', 'processing'),
             ('open', 'ignored'),
