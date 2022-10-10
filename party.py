@@ -42,7 +42,7 @@ class PartyUnsubscribedScenario(ModelSQL):
     __name__ = 'party.party-unsubscribed-marketing.automation.scenario'
 
     party = fields.Many2One(
-        'party.party', "Party", required=True, select=True, ondelete='CASCADE')
+        'party.party', "Party", required=True, ondelete='CASCADE')
     scenario = fields.Many2One(
         'marketing.automation.scenario', "Scenario",
         required=True, ondelete='CASCADE')

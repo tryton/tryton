@@ -26,7 +26,8 @@ from sql.functions import Position, Substring
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    EvalEnvironment, ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)
+    EvalEnvironment, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder
 from trytond.report import Report
@@ -85,6 +86,11 @@ class Scenario(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),
                 ('running', 'stopped'),
@@ -767,6 +773,11 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
             ('activity_record_unique', Unique(t, t.activity, t.record),
                 'marketing_automation.msg_activity_record_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_(['waiting'])))
         cls._transitions |= set((
                 ('waiting', 'done'),
                 ('waiting', 'cancelled'),
