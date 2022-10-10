@@ -14,8 +14,8 @@ from sql.operators import Equal
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Exclude, Model, ModelSQL, ModelView, UnionMixin, fields,
-    sequence_ordered)
+    DeactivableMixin, Exclude, Index, Model, ModelSQL, ModelView, UnionMixin,
+    fields, sequence_ordered)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
@@ -57,11 +57,11 @@ class Template(
     __name__ = "product.template"
     _order_name = 'rec_name'
     name = fields.Char(
-        "Name", size=None, required=True, translate=True, select=True)
+        "Name", size=None, required=True, translate=True)
     code_readonly = fields.Function(
         fields.Boolean("Code Readonly"), 'get_code_readonly')
     code = fields.Char(
-        "Code", select=True, strip='leading',
+        "Code", strip='leading',
         states={
             'readonly': Eval('code_readonly', False),
             })
@@ -129,7 +129,12 @@ class Template(
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.code, Index.Similarity())),
+                })
         cls._order.insert(0, ('rec_name', 'ASC'))
 
         types_cost_method = cls._cost_price_method_domain_per_type()
@@ -339,7 +344,7 @@ class Product(
     _order_name = 'rec_name'
     template = fields.Many2One(
         'product.template', "Product Template",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         search_context={'default_products': False},
         domain=[
             If(Eval('active'), ('active', '=', True), ()),
@@ -360,7 +365,8 @@ class Product(
             'readonly': Eval('code_readonly', False),
             },
         help="The unique identifier for the product (aka SKU).")
-    code = fields.Char("Code", readonly=True, select=True,
+    code = fields.Char(
+        "Code", readonly=True,
         help="A unique identifier for the variant.")
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
@@ -389,6 +395,9 @@ class Product(
             cls._no_template_field = set()
         cls._no_template_field.update(['products'])
 
+        cls.suffix_code.search_unaccented = False
+        cls.code.search_unaccented = False
+
         super(Product, cls).__setup__()
         cls.__access__.add('template')
         cls._order.insert(0, ('rec_name', 'ASC'))
@@ -400,6 +409,8 @@ class Product(
                     & (t.code != '')),
                 'product.msg_product_code_unique'),
             ]
+        cls._sql_indexes.add(
+            Index(t, (t.code, Index.Similarity())))
 
         for attr in dir(Template):
             tfield = getattr(Template, attr)
@@ -650,7 +661,7 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
     "Product List Price"
     __name__ = 'product.list_price'
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE', select=True,
+        'product.template', "Template", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -685,7 +696,7 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
     "Product Cost Price Method"
     __name__ = 'product.cost_price_method'
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE', select=True,
+        'product.template', "Template", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -744,7 +755,7 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
     "Product Cost Price"
     __name__ = 'product.cost_price'
     product = fields.Many2One(
-        'product.product', "Product", ondelete='CASCADE', select=True,
+        'product.product', "Product", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
@@ -807,10 +818,10 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
 class TemplateCategory(ModelSQL):
     'Template - Category'
     __name__ = 'product.template-product.category'
-    template = fields.Many2One('product.template', 'Template',
-        ondelete='CASCADE', required=True, select=True)
-    category = fields.Many2One('product.category', 'Category',
-        ondelete='CASCADE', required=True, select=True)
+    template = fields.Many2One(
+        'product.template', "Template", ondelete='CASCADE', required=True)
+    category = fields.Many2One(
+        'product.category', "Category", ondelete='CASCADE', required=True)
 
 
 class TemplateCategoryAll(UnionMixin, ModelSQL):
@@ -828,8 +839,8 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
     "Product Identifier"
     __name__ = 'product.identifier'
     _rec_name = 'code'
-    product = fields.Many2One('product.product', "Product", ondelete='CASCADE',
-        required=True, select=True,
+    product = fields.Many2One(
+        'product.product', "Product", ondelete='CASCADE', required=True,
         help="The product identified by the code.")
     type = fields.Selection([
             (None, ''),
@@ -845,8 +856,16 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
         super().__setup__()
         cls.__access__.add('product')
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.product, Index.Equality()),
+                    (t.code, Index.Similarity())),
+                })
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):

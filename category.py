@@ -9,7 +9,7 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
     __name__ = "product.category"
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One(
-        'product.category', "Parent", select=True,
+        'product.category', "Parent",
         help="Used to add structure above the category.")
     childs = fields.One2Many(
         'product.category', 'parent', string="Children",
