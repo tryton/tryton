@@ -33,7 +33,7 @@ class Taxon(classification_tree('product.taxon'), ModelSQL, ModelView):
             ('species', 'Species'),
             ('variety', 'Variety'),
             ('form', 'Form'),
-            ], 'Type', select=True, sort=False)
+            ], "Type", sort=False)
 
 
 class Cultivar(ClassificationMixin, ModelSQL, ModelView):
@@ -55,9 +55,9 @@ class CultivarGroup(DeactivableMixin, ModelSQL, ModelView):
 class Cultivar_CultivarGroup(ModelSQL):
     'Cultivar-CultivarGroup'
     __name__ = 'product.cultivar-product.cultivar.group'
-    cultivar = fields.Many2One('product.cultivar', 'Cultivar', select=True,
-        required=True)
-    group = fields.Many2One('product.cultivar.group', 'Group', select=True,
-        required=True)
+    cultivar = fields.Many2One(
+        'product.cultivar', "Cultivar", required=True)
+    group = fields.Many2One(
+        'product.cultivar.group', "Group", required=True)
 
 # TODO Grex
