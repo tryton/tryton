@@ -48,8 +48,9 @@ class Work(ModelSQL, ModelView):
                 ()),
             ],
         help="Restrict adding lines after the date.")
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, help="Make the work belong to the company.")
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
+        help="Make the work belong to the company.")
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
         'Timesheet Lines',
         help="Spend time on this work.")

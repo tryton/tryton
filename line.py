@@ -8,7 +8,7 @@ from sql.aggregate import Max, Sum
 from sql.functions import Extract
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model import Index, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Date, Eval, PYSONEncoder
 from trytond.transaction import Transaction
@@ -22,8 +22,8 @@ class Line(ModelSQL, ModelView):
     __name__ = 'timesheet.line'
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company on which the time is spent.")
-    employee = fields.Many2One('company.employee', 'Employee', required=True,
-        select=True, domain=[
+    employee = fields.Many2One(
+        'company.employee', "Employee", required=True, domain=[
             ('company', '=', Eval('company', -1)),
             ['OR',
                 ('start_date', '=', None),
@@ -35,11 +35,13 @@ class Line(ModelSQL, ModelView):
                 ],
             ],
         help="The employee who spends the time.")
-    date = fields.Date('Date', required=True, select=True,
+    date = fields.Date(
+        "Date", required=True,
         help="When the time is spent.")
     duration = fields.TimeDelta('Duration', 'company_work_time', required=True)
-    work = fields.Many2One('timesheet.work', 'Work',
-        required=True, select=True, domain=[
+    work = fields.Many2One(
+        'timesheet.work', "Work", required=True,
+        domain=[
             ('company', '=', Eval('company', -1)),
             ['OR',
                 ('timesheet_start_date', '=', None),
@@ -67,6 +69,27 @@ class Line(ModelSQL, ModelView):
             ('uuid_unique', Unique(t, t.uuid),
                 'timesheet.msg_line_uuid_unique'),
             ]
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.date, Index.Equality()),
+                    (t.company, Index.Equality()),
+                    (t.employee, Index.Equality())),
+                Index(
+                    t,
+                    (t.date, Index.Range()),
+                    (t.employee, Index.Equality())),
+                Index(
+                    t,
+                    (Extract('YEAR', t.date), Index.Equality()),
+                    (Extract('WEEK', t.date), Index.Equality()),
+                    (t.employee, Index.Equality())),
+                Index(
+                    t,
+                    (Extract('YEAR', t.date), Index.Equality()),
+                    (Extract('MONTH', t.date), Index.Equality()),
+                    (t.employee, Index.Equality())),
+                })
 
     @classmethod
     def __register__(cls, module_name):
