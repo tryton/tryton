@@ -225,14 +225,14 @@ class Component(ComponentMixin, ModelSQL, ModelView):
 
     parent_template = fields.Many2One(
         'product.template', "Parent Product",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         domain=[
             If(Bool(Eval('parent_product')),
                 ('products', '=', Eval('parent_product')),
                 ()),
             ])
     parent_product = fields.Many2One(
-        'product.product', "Parent Variant", ondelete='CASCADE', select=True,
+        'product.product', "Parent Variant", ondelete='CASCADE',
         domain=[
             If(Bool(Eval('parent_template')),
                 ('template', '=', Eval('parent_template')),

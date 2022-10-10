@@ -122,9 +122,9 @@ class LineComponentIgnoredMove(ModelSQL):
     __name__ = 'purchase.line.component-ignored-stock.move'
     component = fields.Many2One(
         'purchase.line.component', "Component",
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', select=True, required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class LineComponentRecreatedMove(ModelSQL):
@@ -132,9 +132,9 @@ class LineComponentRecreatedMove(ModelSQL):
     __name__ = 'purchase.line.component-recreated-stock.move'
     component = fields.Many2One(
         'purchase.line.component', "Component",
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     move = fields.Many2One(
-        'stock.move', "Move", ondelete='RESTRICT', select=True, required=True)
+        'stock.move', "Move", ondelete='RESTRICT', required=True)
 
 
 class HandleShipmentException(
