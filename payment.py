@@ -18,7 +18,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)
+    Index, ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account_payment.exceptions import ProcessError
 from trytond.modules.company import CompanyReport
@@ -465,7 +465,8 @@ class Payment(metaclass=PoolMeta):
 class Mandate(Workflow, ModelSQL, ModelView):
     'SEPA Mandate'
     __name__ = 'account.payment.sepa.mandate'
-    party = fields.Many2One('party.party', 'Party', required=True, select=True,
+    party = fields.Many2One(
+        'party.party', "Party", required=True,
         states={
             'readonly': Eval('state').in_(
                 ['requested', 'validated', 'cancelled']),
@@ -494,7 +495,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
     identification_readonly = fields.Function(fields.Boolean(
             'Identification Readonly'), 'get_identification_readonly')
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -569,6 +570,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('identification_unique', Unique(t, t.company, t.identification),
                 'account_payment_sepa.msg_mandate_unique_id'),
             ]
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'requested'])))
 
     @classmethod
     def __register__(cls, module_name):
@@ -801,22 +806,26 @@ class Message(Workflow, ModelSQL, ModelView):
             ('out', 'OUT'),
             ], 'Type', required=True, states=_states)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             })
-    origin = fields.Reference('Origin', selection='get_origin', select=True,
-        states=_states)
+    origin = fields.Reference("Origin", selection='get_origin', states=_states)
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super(Message, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'waiting'])))
         cls._transitions |= {
             ('draft', 'waiting'),
             ('waiting', 'done'),
