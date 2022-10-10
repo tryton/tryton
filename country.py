@@ -143,13 +143,17 @@ class Region(tree(), ModelSQL, ModelView):
 class Country(DeactivableMixin, ModelSQL, ModelView):
     'Country'
     __name__ = 'country.country'
-    name = fields.Char('Name', required=True, translate=True,
-           help="The main identifier of the country.", select=True)
-    code = fields.Char('Code', size=2, select=True,
-           help="The 2 chars ISO country code.")
-    code3 = fields.Char('3-letters Code', size=3, select=True,
+    name = fields.Char(
+        "Name", required=True, translate=True,
+        help="The main identifier of the country.")
+    code = fields.Char(
+        "Code", size=2,
+        help="The 2 chars ISO country code.")
+    code3 = fields.Char(
+        "3-letters Code", size=3,
         help="The 3 chars ISO country code.")
-    code_numeric = fields.Char('Numeric Code', select=True,
+    code_numeric = fields.Char(
+        "Numeric Code",
         help="The ISO numeric country code.")
     flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
     region = fields.Many2One(
@@ -260,12 +264,14 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 class Subdivision(DeactivableMixin, ModelSQL, ModelView):
     "Subdivision"
     __name__ = 'country.subdivision'
-    country = fields.Many2One('country.country', 'Country',
-            required=True, select=True,
+    country = fields.Many2One(
+        'country.country', "Country", required=True,
         help="The country where this subdivision is.")
-    name = fields.Char('Name', required=True, select=True, translate=True,
+    name = fields.Char(
+        "Name", required=True, translate=True,
         help="The main identifier of the subdivision.")
-    code = fields.Char('Code', select=True,
+    code = fields.Char(
+        "Code",
         help="The ISO code of the subdivision.")
     flag = fields.Function(fields.Char("Flag"), 'on_change_with_flag')
     type = fields.Selection([
@@ -489,11 +495,11 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 class PostalCode(ModelSQL, ModelView):
     "Postal Code"
     __name__ = 'country.postal_code'
-    country = fields.Many2One('country.country', 'Country', required=True,
-        select=True, ondelete='CASCADE',
+    country = fields.Many2One(
+        'country.country', "Country", required=True, ondelete='CASCADE',
         help="The country that contains the postal code.")
-    subdivision = fields.Many2One('country.subdivision', 'Subdivision',
-        select=True, ondelete='CASCADE',
+    subdivision = fields.Many2One(
+        'country.subdivision', "Subdivision", ondelete='CASCADE',
         domain=[('country', '=', Eval('country', -1))],
         help="The subdivision where the postal code is.")
     postal_code = fields.Char('Postal Code')
