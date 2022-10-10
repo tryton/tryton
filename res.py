@@ -30,7 +30,7 @@ class RoleGroup(ModelSQL):
     "Role - Group"
     __name__ = 'res.role-res.group'
     role = fields.Many2One(
-        'res.role', "Role", ondelete='CASCADE', select=True, required=True)
+        'res.role', "Role", ondelete='CASCADE', required=True)
     group = fields.Many2One(
         'res.group', "Group", ondelete='CASCADE', required=True)
 
@@ -88,7 +88,7 @@ class UserRole(ModelSQL, ModelView):
     "User Role"
     __name__ = 'res.user.role'
     user = fields.Many2One(
-        'res.user', "User", ondelete='CASCADE', select=True, required=True)
+        'res.user', "User", ondelete='CASCADE', required=True)
     role = fields.Many2One('res.role', "Role", required=True)
     from_date = fields.DateTime(
         "From Date",
