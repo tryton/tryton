@@ -68,10 +68,8 @@ class Incoterm_Company(ModelSQL):
     "Incoterm - Company"
     __name__ = 'incoterm.incoterm-company.company'
 
-    incoterm = fields.Many2One(
-        'incoterm.incoterm', "Incoterm", required=True, select=True)
-    company = fields.Many2One(
-        'company.company', "Company", required=True, select=True)
+    incoterm = fields.Many2One('incoterm.incoterm', "Incoterm", required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
 
     @classmethod
     def create(cls, *args, **kwargs):
