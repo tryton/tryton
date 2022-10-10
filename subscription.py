@@ -10,7 +10,7 @@ from sql.functions import CharLength
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -32,17 +32,17 @@ class Subscription(Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
 
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('party', True),
             },
         help="Make the subscription belong to the company.")
 
     number = fields.Char(
-        "Number", readonly=True, select=True,
+        "Number", readonly=True,
         help="The main identification of the subscription.")
     reference = fields.Char(
-        "Reference", select=True,
+        "Reference",
         help="The identification of an external origin.")
     description = fields.Char("Description",
         states={
@@ -162,7 +162,17 @@ class Subscription(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Subscription, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'quotation', 'running'])),
+                })
         cls._order = [
             ('start_date', 'DESC'),
             ('id', 'DESC'),
@@ -467,8 +477,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'sale.subscription.line'
 
     subscription = fields.Many2One(
-        'sale.subscription', "Subscription", required=True, select=True,
-        ondelete='CASCADE',
+        'sale.subscription', "Subscription", required=True, ondelete='CASCADE',
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
                 & Bool(Eval('subscription'))),
@@ -855,8 +864,7 @@ class LineConsumption(ModelSQL, ModelView):
     __name__ = 'sale.subscription.line.consumption'
 
     line = fields.Many2One(
-        'sale.subscription.line', "Line", required=True, select=True,
-        ondelete='RESTRICT')
+        'sale.subscription.line', "Line", required=True, ondelete='RESTRICT')
     quantity = fields.Float("Quantity", digits='unit', required=True)
     unit = fields.Function(fields.Many2One(
             'product.uom', "Unit"), 'on_change_with_unit')
