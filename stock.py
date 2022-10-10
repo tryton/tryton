@@ -12,7 +12,7 @@ from sql.operators import Concat
 
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import round_price
 from trytond.modules.purchase.stock import process_purchase
@@ -107,7 +107,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             })
-    reference = fields.Char('Reference', select=1,
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -172,7 +173,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             },
         depends={'customer'})
     number = fields.Char(
-        "Number", select=True, readonly=True,
+        "Number", readonly=True,
         help="The main identifier for the shipment.")
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -262,7 +263,16 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(ShipmentDrop, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t, (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'waiting', 'shipped'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'DESC'),
