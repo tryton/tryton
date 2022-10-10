@@ -8,7 +8,7 @@ from sql.conditionals import Case
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
@@ -95,11 +95,11 @@ class Quotation(Workflow, ModelSQL, ModelView):
         help="The unique identifier of the quotation.")
     revision = fields.Integer('Revision', readonly=True,
         help="Number incremented each time the quotation is sent.")
-    reference = fields.Char('Reference', select=True,
+    reference = fields.Char(
+        "Reference",
         help="The reference used by the supplier.")
     company = fields.Many2One(
-        'company.company', "Company",
-        required=True, select=True,
+        'company.company', "Company", required=True,
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -132,7 +132,16 @@ class Quotation(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Quotation, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t, (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'sent'])),
+                })
         cls._transitions |= set((
                 ('draft', 'cancelled'),
                 ('cancelled', 'draft'),
@@ -293,8 +302,8 @@ class QuotationLine(ModelSQL, ModelView):
         states={
             'required': Bool(Eval('unit_price')),
             })
-    request = fields.Many2One('purchase.request', 'Request',
-        ondelete='CASCADE', select=True, required=True,
+    request = fields.Many2One(
+        'purchase.request', "Request", ondelete='CASCADE', required=True,
         domain=[
             If(Eval('quotation_state') == 'draft',
                 ('state', 'in', ['draft', 'quotation', 'received']), (), ),
