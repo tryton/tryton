@@ -124,7 +124,7 @@ class Carriage(sequence_ordered(), ModelSQL, ModelView):
 
     sale = fields.Many2One(
         'sale.sale', "Sale",
-        required=True, select=True, ondelete='CASCADE', states=_states)
+        required=True, ondelete='CASCADE', states=_states)
     type = fields.Selection([
             ('before', "Before"),
             ('after', "After"),

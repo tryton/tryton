@@ -24,8 +24,7 @@ class Carriage(sequence_ordered(), ShipmentCostMixin, ModelSQL, ModelView):
         }
 
     shipment = fields.Reference(
-        "Shipment", selection='get_shipments',
-        required=True, select=True, states=_states)
+        "Shipment", selection='get_shipments', required=True, states=_states)
     type = fields.Selection([
             ('before', "Before"),
             ('after', "After"),
