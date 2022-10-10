@@ -8,7 +8,8 @@ from sql import Null
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered, tree)
+    DeactivableMixin, Index, ModelSQL, ModelView, fields, sequence_ordered,
+    tree)
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import grouped_slice, reduce_ids
@@ -121,14 +122,13 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     'Work Effort'
     __name__ = 'project.work'
-    name = fields.Char('Name', required=True, select=True)
+    name = fields.Char("Name", required=True)
     type = fields.Selection([
             ('project', 'Project'),
             ('task', 'Task')
             ],
-        'Type', required=True, select=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+        "Type", required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
@@ -190,14 +190,23 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-    path = fields.Char("Path", select=True)
+    path = fields.Char("Path")
     children = fields.One2Many('project.work', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
     status = fields.Many2One(
-        'project.work.status', "Status", required=True, select=True,
+        'project.work.status', "Status", required=True,
         domain=[If(Bool(Eval('type')), ('types', 'in', Eval('type')), ())])
+
+    @classmethod
+    def __setup__(cls):
+        cls.path.search_unaccented = False
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.path, Index.Similarity(begin=True))),
+                })
 
     @staticmethod
     def default_type():
