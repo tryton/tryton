@@ -21,8 +21,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
             },
         depends={'company'})
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    company = fields.Many2One('company.company', 'Company', required=True,
-            select=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     company_party = fields.Function(
         fields.Many2One(
             'party.party', "Company Party",

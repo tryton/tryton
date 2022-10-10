@@ -12,7 +12,7 @@ from sql.operators import Concat
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DictSchemaMixin, ModelSQL, ModelView, Workflow, fields,
+    Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
@@ -71,10 +71,9 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     company = fields.Many2One(
-        'company.company', "Company", required=True, select=True,
-        states=_states)
-    journal = fields.Many2One('account.statement.journal', 'Journal',
-        required=True, select=True,
+        'company.company', "Company", required=True, states=_states)
+    journal = fields.Many2One(
+        'account.statement.journal', "Journal", required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
@@ -83,7 +82,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             })
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
-    date = fields.Date('Date', required=True, select=True)
+    date = fields.Date("Date", required=True)
     start_balance = Monetary(
         "Start Balance", currency='currency', digits='currency',
         states=_balance_states)
@@ -116,7 +115,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             ('validated', "Validated"),
             ('cancelled', "Cancelled"),
             ('posted', "Posted"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
     to_reconcile = fields.Function(
@@ -130,6 +129,17 @@ class Statement(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Statement, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.journal, Index.Equality()),
+                    (t.date, Index.Range(order='DESC'))),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_(['draft', 'validated'])),
+                })
         cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
                 ('draft', 'validated'),
