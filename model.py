@@ -40,8 +40,7 @@ class CompanyMultiValueMixin(MultiValueMixin):
 
 class CompanyValueMixin(ValueMixin):
     __slots__ = ()
-    company = fields.Many2One(
-        'company.company', "Company", select=True, ondelete='CASCADE')
+    company = fields.Many2One('company.company', "Company", ondelete='CASCADE')
 
 
 def employee_field(string, states=None, company='company'):

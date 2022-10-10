@@ -118,10 +118,10 @@ class CronCompany(ModelSQL):
     'Cron - Company'
     __name__ = 'ir.cron-company.company'
     _table = 'cron_company_rel'
-    cron = fields.Many2One('ir.cron', 'Cron', ondelete='CASCADE',
-            required=True, select=True)
-    company = fields.Many2One('company.company', 'Company', ondelete='CASCADE',
-            required=True, select=True)
+    cron = fields.Many2One(
+        'ir.cron', "Cron", ondelete='CASCADE', required=True)
+    company = fields.Many2One(
+        'company.company', "Company", ondelete='CASCADE', required=True)
 
 
 class EmailTemplate(metaclass=PoolMeta):

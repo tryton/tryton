@@ -13,19 +13,19 @@ class UserCompany(ModelSQL):
     __name__ = 'res.user-company.company'
 
     user = fields.Many2One(
-        'res.user', "User", ondelete='CASCADE', select=True, required=True)
+        'res.user', "User", ondelete='CASCADE', required=True)
     company = fields.Many2One(
         'company.company', "Company",
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
 
 
 class UserEmployee(ModelSQL):
     'User - Employee'
     __name__ = 'res.user-company.employee'
-    user = fields.Many2One('res.user', 'User', ondelete='CASCADE', select=True,
-        required=True)
-    employee = fields.Many2One('company.employee', 'Employee',
-        ondelete='CASCADE', select=True, required=True)
+    user = fields.Many2One(
+        'res.user', "User", ondelete='CASCADE', required=True)
+    employee = fields.Many2One(
+        'company.employee', "Employee", ondelete='CASCADE', required=True)
 
 
 class User(metaclass=PoolMeta):
