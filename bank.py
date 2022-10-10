@@ -175,8 +175,8 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     'Bank Account Number'
     __name__ = 'bank.account.number'
     _rec_name = 'number'
-    account = fields.Many2One('bank.account', 'Account', required=True,
-        ondelete='CASCADE', select=True,
+    account = fields.Many2One(
+        'bank.account', "Account", required=True, ondelete='CASCADE',
         help="The bank account which is identified by the number.")
     type = fields.Selection([
             ('iban', 'IBAN'),
@@ -296,7 +296,7 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
 class AccountParty(ModelSQL):
     'Bank Account - Party'
     __name__ = 'bank.account-party.party'
-    account = fields.Many2One('bank.account', 'Account',
-        ondelete='CASCADE', select=True, required=True)
-    owner = fields.Many2One('party.party', 'Owner', ondelete='CASCADE',
-        select=True, required=True)
+    account = fields.Many2One(
+        'bank.account', "Account", ondelete='CASCADE', required=True)
+    owner = fields.Many2One(
+        'party.party', "Owner", ondelete='CASCADE', required=True)
