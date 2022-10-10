@@ -16,7 +16,7 @@ from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
     fields)
 from trytond.modules.account_payment.exceptions import (
     PaymentValidationError, ProcessError)
@@ -693,7 +693,7 @@ class Refund(Workflow, ModelSQL, ModelView):
             ('processing', "Processing"),
             ('succeeded', "Succeeded"),
             ('failed', "Failed"),
-            ], "State", readonly=True, select=True, sort=False)
+            ], "State", readonly=True, sort=False)
 
     stripe_idempotency_key = fields.Char(
         "Stripe Idempotency Key", readonly=True, strip=False)
@@ -722,6 +722,13 @@ class Refund(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t,
+                (t.state, Index.Equality()),
+                where=t.state.in_([
+                        'draft', 'submitted', 'approved', 'processing'])))
         cls.__access__.add('payment')
         cls._transitions |= set((
                 ('draft', 'submitted'),
@@ -1311,7 +1318,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     "Stripe Customer"
     __name__ = 'account.payment.stripe.customer'
     _history = True
-    party = fields.Many2One('party.party', "Party", required=True, select=True,
+    party = fields.Many2One('party.party', "Party", required=True,
         states={
             'readonly': Eval('stripe_customer_id') | Eval('stripe_token'),
             })
