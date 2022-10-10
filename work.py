@@ -7,8 +7,8 @@ from functools import wraps
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields, sequence_ordered,
-    tree)
+    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields,
+    sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
@@ -28,7 +28,7 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
     'Work Center'
     __name__ = 'production.work.center'
     name = fields.Char('Name', required=True, translate=True)
-    parent = fields.Many2One('production.work.center', 'Parent', select=True,
+    parent = fields.Many2One('production.work.center', 'Parent',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('warehouse', '=', Eval('warehouse', -1)),
@@ -51,8 +51,7 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
         states={
             'required': Bool(Eval('cost_price')),
             })
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
             ('type', '=', 'warehouse'),
@@ -100,8 +99,8 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'production.work'
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)
-    production = fields.Many2One('production', 'Production', required=True,
-        select=True, ondelete='CASCADE',
+    production = fields.Many2One(
+        'production', "Production", required=True, ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
@@ -129,8 +128,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         filter=[
             ('state', '=', 'running'),
             ])
-    company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
         'on_change_with_warehouse')
     state = fields.Selection([
@@ -140,11 +138,16 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('running', 'Running'),
             ('finished', 'Finished'),
             ('done', 'Done'),
-            ], "State", select=True, readonly=True, sort=False)
+            ], "State", readonly=True, sort=False)
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['request', 'draft', 'waiting', 'running'])))
         cls._buttons.update({
                 'start': {
                     'invisible': Bool(Eval('active_cycles', [])),
@@ -270,8 +273,8 @@ def set_work_state(func):
 class WorkCycle(Workflow, ModelSQL, ModelView):
     'Work Cycle'
     __name__ = 'production.work.cycle'
-    work = fields.Many2One('production.work', 'Work', required=True,
-        ondelete='CASCADE', select=True)
+    work = fields.Many2One(
+        'production.work', "Work", required=True, ondelete='CASCADE')
     duration = fields.TimeDelta('Duration',
         states={
             'required': Eval('state') == 'done',
@@ -288,6 +291,11 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(WorkCycle, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(
+                t, (t.state, Index.Equality()),
+                where=t.state.in_(['draft', 'running'])))
         cls._transitions |= set((
                 ('draft', 'running'),
                 ('running', 'done'),
