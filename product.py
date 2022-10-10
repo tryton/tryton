@@ -111,14 +111,14 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'product.image'
     template = fields.Many2One(
         'product.template', "Product",
-        required=True, ondelete='CASCADE', select=True,
+        required=True, ondelete='CASCADE',
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
             ])
     product = fields.Many2One(
-        'product.product', "Variant", select=True,
+        'product.product', "Variant",
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
