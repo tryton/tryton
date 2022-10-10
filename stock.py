@@ -14,7 +14,7 @@ class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     movable = fields.Boolean(
-        "Movable", select=True,
+        "Movable",
         states={
             'invisible': Eval('type') != 'storage',
             })
@@ -213,7 +213,7 @@ class ShipmentInternal_Location(ModelSQL):
     __name__ = 'stock.shipment.internal-location'
 
     shipment = fields.Many2One(
-        'stock.shipment.internal', "Shipment", required=True, select=True)
+        'stock.shipment.internal', "Shipment", required=True)
     location = fields.Many2One(
         'stock.location', "Location", required=True,
         domain=[
