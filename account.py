@@ -35,7 +35,7 @@ def with_currency_date(func):
 class Type(metaclass=PoolMeta):
     __name__ = 'account.account.type'
     consolidation = fields.Many2One(
-        'account.consolidation', "Consolidation", select=True,
+        'account.consolidation', "Consolidation",
         domain=[
             ('statement', '=', Eval('statement')),
             If(Eval('statement') == 'balance',
