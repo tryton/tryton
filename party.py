@@ -132,7 +132,7 @@ class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
     "Party Credit Limit Amount"
     __name__ = 'party.party.credit_limit_amount'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True,
+        'party.party', "Party", ondelete='CASCADE',
         context={
             'company': Eval('company', -1),
             },
