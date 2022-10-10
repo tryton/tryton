@@ -10,7 +10,8 @@ from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, dualmethod, fields
+from trytond.model import (
+    Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock.shipment import ShipmentAssignMixin
@@ -27,10 +28,12 @@ BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
 class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Production"
     __name__ = 'production'
+    _rec_name = 'number'
     _assign_moves_field = 'inputs'
 
-    number = fields.Char('Number', select=True, readonly=True)
-    reference = fields.Char('Reference', select=1,
+    number = fields.Char("Number", readonly=True)
+    reference = fields.Char(
+        "Reference",
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             })
@@ -151,14 +154,26 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             ('cancelled', 'Cancelled'),
             ], 'State', readonly=True, sort=False)
     origin = fields.Reference(
-        "Origin", selection='get_origin', select=True,
+        "Origin", selection='get_origin',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             })
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Production, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                Index(
+                    t,
+                    (t.state, Index.Equality()),
+                    where=t.state.in_([
+                            'request', 'draft', 'waiting', 'assigned',
+                            'running'])),
+                })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),
             ('id', 'ASC'),

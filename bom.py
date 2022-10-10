@@ -45,8 +45,8 @@ class BOMInput(ModelSQL, ModelView):
     "Bill of Material Input"
     __name__ = 'production.bom.input'
 
-    bom = fields.Many2One('production.bom', 'BOM', required=True,
-        select=1, ondelete='CASCADE')
+    bom = fields.Many2One(
+        'production.bom', "BOM", required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', required=True)
     uom_category = fields.Function(fields.Many2One(
         'product.uom.category', 'Uom Category'), 'on_change_with_uom_category')

@@ -80,13 +80,14 @@ class ProductBom(sequence_ordered(), ModelSQL, ModelView):
     'Product - BOM'
     __name__ = 'product.product-production.bom'
 
-    product = fields.Many2One('product.product', 'Product',
-        ondelete='CASCADE', select=1, required=True,
+    product = fields.Many2One(
+        'product.product', "Product", ondelete='CASCADE', required=True,
         domain=[
             ('producible', '=', True),
             ])
-    bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
-        select=1, required=True, domain=[
+    bom = fields.Many2One(
+        'production.bom', "BOM", ondelete='CASCADE', required=True,
+        domain=[
             ('output_products', '=', If(Bool(Eval('product')),
                     Eval('product', 0),
                     Get(Eval('_parent_product', {}), 'id', 0))),
@@ -104,8 +105,8 @@ class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Production Lead Time'
     __name__ = 'production.lead_time'
 
-    product = fields.Many2One('product.product', 'Product',
-        ondelete='CASCADE', select=True, required=True,
+    product = fields.Many2One(
+        'product.product', "Product", ondelete='CASCADE', required=True,
         domain=[
             ('producible', '=', True),
             ])
