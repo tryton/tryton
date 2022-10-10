@@ -14,6 +14,9 @@ Sale
 `Amendment </projects/modules-sale-amendment/en/latest>`_
     Amend sales in processing.
 
+`Blanket Agreement </projects/modules-sale-blanket-agreement/en/latest>`_
+    Manage sale blanket agreements.
+
 `Complaint </projects/modules-sale-complaint/en/latest>`_
     Solves customer complaints.
 

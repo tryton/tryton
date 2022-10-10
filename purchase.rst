@@ -11,6 +11,9 @@ Purchase
 `Amendment </projects/modules-purchase-amendment/en/latest>`_
     Amend purchases in processing.
 
+`Blanket Agreement </projects/modules-purchase-blanket-agreement/en/latest>`_
+    Manage blanket agreements.
+
 `History </projects/modules-purchase-history/en/latest>`_
     Manages revisions.
 
