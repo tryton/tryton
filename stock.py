@@ -8,7 +8,7 @@ from sql import Column
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import Model, ModelSQL, ModelView, fields
+from trytond.model import Index, Model, ModelSQL, ModelView, fields
 from trytond.model.exceptions import (
     AccessError, RequiredValidationError, ValidationError)
 from trytond.modules.stock import StockMixin
@@ -54,13 +54,18 @@ def check_no_move(func):
 class LotMixin:
     __slots__ = ()
     number = fields.Char(
-        "Number", required=True, select=True,
+        "Number", required=True,
         states={
             'required': ~Eval('has_sequence') | (Eval('id', -1) >= 0),
             })
     product = fields.Many2One('product.product', 'Product', required=True)
     has_sequence = fields.Function(
         fields.Boolean("Has Sequence"), 'on_change_with_has_sequence')
+
+    @classmethod
+    def __setup__(cls):
+        cls.number.search_unaccented = False
+        super().__setup__()
 
     @fields.depends('product')
     def on_change_with_has_sequence(self, name=None):
@@ -705,15 +710,33 @@ class PeriodCacheLot(ModelSQL, ModelView):
     It is used to store cached computation of stock quantities per lot.
     '''
     __name__ = 'stock.period.cache.lot'
-    period = fields.Many2One('stock.period', 'Period', required=True,
-        readonly=True, select=True, ondelete='CASCADE')
-    location = fields.Many2One('stock.location', 'Location', required=True,
-        readonly=True, select=True, ondelete='CASCADE')
+    period = fields.Many2One(
+        'stock.period', "Period",
+        required=True, readonly=True, ondelete='CASCADE')
+    location = fields.Many2One(
+        'stock.location', "Location",
+        required=True, readonly=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', required=True,
         readonly=True, ondelete='CASCADE')
     lot = fields.Many2One('stock.lot', 'Lot', readonly=True,
         ondelete='CASCADE')
     internal_quantity = fields.Float('Internal Quantity', readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.period, Index.Equality()),
+                    (t.product, Index.Equality()),
+                    (t.lot, Index.Equality()),
+                    include=[t.internal_quantity]),
+                Index(
+                    t,
+                    (t.location, Index.Equality())),
+                })
 
 
 class Inventory(metaclass=PoolMeta):
