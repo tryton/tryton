@@ -9,7 +9,7 @@ class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     production = fields.Many2One(
-        'production', "Production", select=True, ondelete='RESTRICT',
+        'production', "Production", ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('_parent_purchase', {}).get('company', -1)),
             ],
