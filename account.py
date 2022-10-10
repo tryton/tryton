@@ -6,7 +6,7 @@ from itertools import groupby
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
@@ -68,7 +68,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
         }
 
     number = fields.Char(
-        "Number", select=True, readonly=True,
+        "Number", readonly=True,
         help="The main identifier for the shipment cost.")
     company = fields.Many2One(
         'company.company', "Company", required=True,
@@ -123,8 +123,11 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super().__setup__()
-
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (t.state, Index.Equality()), where=t.state == 'draft'))
         cls._order.insert(0, ('number', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'posted'),
@@ -333,8 +336,8 @@ class ShipmentCost_Shipment(ModelSQL):
     "Shipment Cost - Shipment"
     __name__ = 'account.shipment_cost-stock.shipment.out'
     shipment_cost = fields.Many2One(
-        'account.shipment_cost', "Shipment Cost", required=True, select=True,
-        ondelete='CASCADE')
+        'account.shipment_cost', "Shipment Cost",
+        required=True, ondelete='CASCADE')
     shipment = fields.Many2One(
         'stock.shipment.out', "Shipment", required=True, ondelete='CASCADE')
 
@@ -344,7 +347,7 @@ class ShipmentCost_ShipmentReturn(ModelSQL):
     __name__ = 'account.shipment_cost-stock.shipment.out.return'
     shipment_cost = fields.Many2One(
         'account.shipment_cost', "Shipment Cost",
-        required=True, select=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     shipment = fields.Many2One(
         'stock.shipment.out.return', "Shipment",
         required=True, ondelete='CASCADE')
@@ -434,7 +437,7 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     shipment_cost = fields.Many2One(
         'account.shipment_cost', "Shipment Cost",
-        readonly=True, select=True,
+        readonly=True,
         states={
             'invisible': ~Eval('shipment_cost'),
             })
