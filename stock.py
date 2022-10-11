@@ -472,8 +472,9 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
             shipment = self.origin
             if (shipment.to_location.warehouse == warehouse
                     or shipment.from_location.warehouse != warehouse):
-                for move in shipment.outgoing_moves:
-                    yield move.product, move.internal_quantity
+                for move in shipment.moves:
+                    if move.to_location.warehouse == warehouse:
+                        yield move.product, move.internal_quantity
 
     @classmethod
     def _pick_incoming(cls, quantity, plans):
