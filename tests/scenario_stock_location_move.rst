@@ -95,12 +95,15 @@ Concurrently move pallet::
 
     >>> shipment1.click('done')
 
-Add lead time inside the warehouse::
+Add lead time between warehouses::
+
+    >>> warehouse1 = storage_loc.warehouse
+    >>> warehouse2, = warehouse1.duplicate()
 
     >>> LeadTime = Model.get('stock.location.lead_time')
     >>> lead_time = LeadTime()
-    >>> lead_time.warehouse_from = storage_loc.warehouse
-    >>> lead_time.warehouse_to = storage_loc.warehouse
+    >>> lead_time.warehouse_from = warehouse1
+    >>> lead_time.warehouse_to = warehouse2
     >>> lead_time.lead_time = datetime.timedelta(1)
     >>> lead_time.save()
 
@@ -109,8 +112,8 @@ Move pallet from storage1 to storage2 with lead_time::
     >>> Shipment = Model.get('stock.shipment.internal')
     >>> shipment = Shipment()
     >>> shipment.planned_date = tomorrow
-    >>> shipment.from_location = storage1
-    >>> shipment.to_location = storage2
+    >>> shipment.from_location = warehouse1.storage_location
+    >>> shipment.to_location = warehouse2.storage_location
     >>> shipment.locations.append(Location(pallet.id))
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
@@ -123,5 +126,5 @@ Move pallet from storage1 to storage2 with lead_time::
 
     >>> shipment.click('done')
     >>> pallet.reload()
-    >>> pallet.parent == storage2
+    >>> pallet.parent == warehouse2.storage_location
     True
