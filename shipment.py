@@ -2759,16 +2759,17 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         to_write = []
         for shipment in shipments:
             dates = shipment._move_planned_date
-            outgoing_date, incoming_date = dates
-            outgoing_moves = [m for m in shipment.outgoing_moves
-                if (m.state not in ('assigned', 'done', 'cancelled')
-                    and m.planned_date != outgoing_date)]
-            if outgoing_moves:
-                to_write.append(outgoing_moves)
-                to_write.append({
-                        'planned_date': outgoing_date,
-                        })
-            if shipment.transit_location:
+            if (shipment.transit_location
+                    and shipment.state not in {'request', 'draft'}):
+                outgoing_date, incoming_date = dates
+                outgoing_moves = [m for m in shipment.outgoing_moves
+                    if (m.state not in ('assigned', 'done', 'cancelled')
+                        and m.planned_date != outgoing_date)]
+                if outgoing_moves:
+                    to_write.append(outgoing_moves)
+                    to_write.append({
+                            'planned_date': outgoing_date,
+                            })
                 incoming_moves = [m for m in shipment.incoming_moves
                     if (m.state not in ('assigned', 'done', 'cancelled')
                         and m.planned_date != incoming_date)]
@@ -2776,6 +2777,16 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     to_write.append(incoming_moves)
                     to_write.append({
                             'planned_date': incoming_date,
+                            })
+            else:
+                planned_start_date = shipment.planned_start_date
+                moves = [m for m in shipment.moves
+                    if (m.state not in {'assigned', 'done', 'cancelled'}
+                        and m.planned_date != planned_start_date)]
+                if moves:
+                    to_write.append(moves)
+                    to_write.append({
+                            'planned_date': planned_start_date,
                             })
         if to_write:
             Move.write(*to_write)
