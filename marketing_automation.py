@@ -21,7 +21,6 @@ from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate, TextTemplate
 from sql import Literal
 from sql.aggregate import Count
-from sql.functions import Position, Substring
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -222,7 +221,6 @@ class Scenario(Workflow, ModelSQL, ModelView):
 
         for scenario in scenarios:
             Model = pool.get(scenario.model)
-            sql_int = scenario.__class__.id.sql_type().base
             record = Record.__table__()
             cursor = Transaction().connection.cursor()
             domain = PYSONDecoder({}).decode(scenario.domain)
@@ -240,10 +238,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
                 continue
             cursor.execute(*(
                     query - record.select(
-                        Substring(
-                            record.record,
-                            Position(',', record.record) + Literal(1)
-                            ).cast(sql_int),
+                        Record.record.sql_id(record.record, Model),
                         where=record.scenario == scenario.id)))
 
             records = []
