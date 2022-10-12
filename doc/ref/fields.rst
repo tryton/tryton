@@ -684,6 +684,10 @@ Instance methods:
    Same as :meth:`~Selection.translated` but for the translated name of the
    target model.
 
+.. method:: Reference.sql_id(column, Model)
+
+   Return the SQL expression that extract the record ID of the column.
+
 
 Many2One
 --------

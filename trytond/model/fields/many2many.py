@@ -3,9 +3,8 @@
 from collections import defaultdict
 from itertools import chain
 
-from sql import Cast, Literal, Null
+from sql import Literal, Null
 from sql.conditionals import Coalesce
-from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
@@ -379,9 +378,7 @@ class Many2Many(Field):
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')
-            origin = Cast(Substring(origin,
-                    Position(',', origin) + Literal(1)),
-                Relation.id.sql_type().base)
+            origin = origin_field.sql_id(origin, Relation)
 
         target = getattr(Relation, self.target).sql_column(relation)
         if '.' not in name:

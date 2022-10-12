@@ -3,9 +3,7 @@
 from collections import defaultdict
 from itertools import chain
 
-from sql import Cast, Literal
 from sql.conditionals import Coalesce
-from sql.functions import Position, Substring
 
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
@@ -332,9 +330,7 @@ class One2Many(Field):
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')
-            origin = Cast(Substring(origin,
-                    Position(',', origin) + Literal(1)),
-                Target.id.sql_type().base)
+            origin = origin_field.sql_id(origin, Target)
 
         if '.' not in name:
             if value is None:

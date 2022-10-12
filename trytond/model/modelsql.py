@@ -318,6 +318,8 @@ class ModelSQL(ModelStorage):
                             Index(
                                 target,
                                 (column, Index.Similarity(begin=True)),
+                                (target_field.sql_id(column, Target),
+                                    Index.Range()),
                                 where=where),
                             })
                 else:

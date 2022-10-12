@@ -187,6 +187,12 @@ class Reference(SelectionMixin, Field):
                 value = str(value)
         return super(Reference, self).sql_format(value)
 
+    def sql_id(self, column, Model):
+        "Return SQL expression for the id part of the field"
+        return Cast(Substring(
+                column, Position(',', column) + Literal(1)),
+            Model.id.sql_type().base)
+
     @with_inactive_records
     def convert_domain(self, domain, tables, Model):
         if '.' not in domain[0]:
@@ -203,9 +209,8 @@ class Reference(SelectionMixin, Field):
         if 'active' in Target._fields:
             target_domain.append(('active', 'in', [True, False]))
         query = Target.search(target_domain, order=[], query=True)
-        return (Cast(Substring(column,
-                    Position(',', column) + Literal(1)),
-                Model.id.sql_type().base).in_(query)
+        return (
+            self.sql_id(column, Model).in_(query)
             & column.like(target + ',%'))
 
     def definition(self, model, language):
