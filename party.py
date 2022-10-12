@@ -3,7 +3,7 @@
 import stdnum.exceptions
 from sql import Column, Literal, Null
 from sql.aggregate import Min
-from sql.functions import CharLength, Position, Substring
+from sql.functions import CharLength
 from stdnum import get_cc_module
 
 from trytond import backend
@@ -964,17 +964,18 @@ class Erase(Wizard):
                                 where=table.id.in_(query)))
                 if resource:
                     for Resource in resources:
-                        model_tables = [Resource.__table__()]
+                        model_tables = [
+                            (Resource.__table__(), Resource.resource)]
                         if Resource._history:
-                            model_tables.append(Resource.__table_history__())
-                        for table in model_tables:
+                            model_tables.append(
+                                (Resource.__table_history__(),
+                                    Resource.resource))
+                        for (table, resource_field) in model_tables:
                             cursor.execute(*table.delete(
                                     where=table.resource.like(
                                         Model.__name__ + ',%')
-                                    & Model.id.sql_cast(
-                                        Substring(table.resource,
-                                            Position(',', table.resource)
-                                            + Literal(1))).in_(query)))
+                                    & resource_field.sql_id(
+                                        table.resource, Model).in_(query)))
         return 'end'
 
     def check_erase(self, party):
