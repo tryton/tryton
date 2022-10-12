@@ -12,10 +12,10 @@ from dateutil.relativedelta import relativedelta
 # XXX fix: https://genshi.edgewall.org/ticket/582
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from phonenumbers import NumberParseException
-from sql import Cast, Literal, Null
+from sql import Literal, Null
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case, Coalesce
-from sql.functions import CurrentTimestamp, Extract, Position, Substring
+from sql.functions import CurrentTimestamp, Extract
 from sql.operators import Exists
 
 from trytond.i18n import gettext
@@ -153,6 +153,7 @@ class AEATPartyReport(AEATReport):
         '''
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        Move = pool.get('account.move')
 
         table, _ = tables[None]
         is_invoice = table.origin.like(Invoice.__name__ + ',%')
@@ -163,10 +164,8 @@ class AEATPartyReport(AEATReport):
             invoice = Invoice.__table__()
             tables['invoice'] = {
                 None: (invoice, (is_invoice
-                        & (invoice.id == Cast(
-                                Substring(table.origin,
-                                    Position(',', table.origin) + Literal(1)),
-                                Invoice.id.sql_type().base)))),
+                        & (invoice.id == Move.origin.sql_id(
+                                table.origin, Invoice)))),
                 }
 
         return Case((is_invoice, invoice.party), else_=Null), tables
