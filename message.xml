@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To validate shipment "%(shipment)s" you must add an email for address "%(address)s".</field>
         </record>
         <record model="ir.message" id="msg_mobile_required">
-            <field name="text">To validate shipment "%(shipment)s" you must add a mobile number for address "%(party)s".</field>
+            <field name="text">To validate shipment "%(shipment)s" you must add a mobile number for address "%(address)s".</field>
         </record>
         <record model="ir.message" id="msg_shipment_has_reference_number">
             <field name="text">You cannot create a shipping label for shipment "%(shipment)s" because it already has a reference number.</field>
