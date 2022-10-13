@@ -884,7 +884,7 @@ class Sale(
                 shipment.delivery_address = shipment.warehouse.address
             else:
                 shipment.delivery_address = self.shipment_address
-        elif Shipment.__name__ == 'stock.shipment.out':
+        elif Shipment.__name__ == 'stock.shipment.out.return':
             shipment.contact_address = values['customer'].address_get()
         return shipment
 
