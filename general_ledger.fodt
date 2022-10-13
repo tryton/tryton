@@ -854,7 +854,7 @@
        <text:p text:style-name="P6">Balance</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Lines.A3" office:value-type="string">
-       <text:p text:style-name="P6">Descr<text:span text:style-name="T3">iption</text:span></text:p>
+       <text:p text:style-name="P6">Description</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Lines.G3" office:value-type="string">
        <text:p text:style-name="P6">Origin</text:p>
