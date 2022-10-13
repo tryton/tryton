@@ -123,7 +123,7 @@ class Invoice(metaclass=PoolMeta):
                     continue
                 if payment.party != line.party:
                     continue
-                if (getattr(payment, 'account')
+                if (getattr(payment, 'account', None)
                         and payment.account != line.account):
                     continue
                 if payment.amount <= payment_amount:
