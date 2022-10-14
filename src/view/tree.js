@@ -1291,12 +1291,19 @@
         var redraw = function() {
             for (; i < rows.length; i++) {
                 var row = rows[i];
-                var record = row.record,
-                    column = row.tree.columns[0];
-                if (!record.is_loaded(column.attributes.name)) {
+                var record = row.record;
+                var field_name;
+                for (var j=0; j < row.tree.columns.length; j++) {
+                    var column = row.tree.columns[j];
+                    if (column.type == 'field') {
+                        field_name = column.attributes.name;
+                        break;
+                    }
+                }
+                if (field_name && !record.is_loaded(field_name)) {
                     // Prefetch the first field to prevent promises in
                     // Cell.render
-                    record.load(column.attributes.name).done(redraw);
+                    record.load(field_name).done(redraw);
                     return;
                 } else {
                     row.redraw(selected, expanded);
