@@ -76,6 +76,46 @@ class MultiValueTestCase(unittest.TestCase):
             "default")
 
     @with_transaction()
+    def test_get_multivalue_many2one(self):
+        "Test get_multivalue for Many2One"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        Target = pool.get('test.model_multivalue.target')
+
+        target = Target(name="Target")
+        target.save()
+        record = ModelMultiValue(value_many2one=target)
+        record.save()
+
+        self.assertEqual(record.get_multivalue('value_many2one'), target)
+
+    @with_transaction()
+    def test_get_multivalue_multiselection(self):
+        "Test get_multivalue for MultiSelection"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+
+        record = ModelMultiValue(value_multiselection=("foo", "bar"))
+        record.save()
+
+        self.assertEqual(
+            record.get_multivalue('value_multiselection'), ("bar", "foo"))
+
+    @with_transaction()
+    def test_get_multivalue_reference(self):
+        "Test get_multivalue for Reference"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        Target = pool.get('test.model_multivalue.target')
+
+        target = Target(name="Target")
+        target.save()
+        record = ModelMultiValue(value_reference=target)
+        record.save()
+
+        self.assertEqual(record.get_multivalue('value_reference'), target)
+
+    @with_transaction()
     def test_set_multivalue(self):
         "Test set_multivalue"
         pool = Pool()
@@ -134,7 +174,58 @@ class MultiValueTestCase(unittest.TestCase):
         self.assertEqual(value.value_default, "other default")
 
     @with_transaction()
-    def test_mutlivalue_setter(self):
+    def test_set_multivalue_many2one(self):
+        "Test set_multivalue for Many2One"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        ModelValue = pool.get('test.model_multivalue.value')
+        Target = pool.get('test.model_multivalue.target')
+
+        record = ModelMultiValue()
+        record.save()
+        target = Target(name="Test")
+        target.save()
+        record.set_multivalue('value_many2one', target)
+
+        value, = ModelValue.search([])
+        self.assertEqual(value.record, record)
+        self.assertEqual(value.value_many2one, target)
+
+    @with_transaction()
+    def test_set_multivalue_multiselection(self):
+        "Test set_multivalue for MultiSelection"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        ModelValue = pool.get('test.model_multivalue.value')
+
+        record = ModelMultiValue()
+        record.save()
+        record.set_multivalue('value_multiselection', ("foo", "bar"))
+
+        value, = ModelValue.search([])
+        self.assertEqual(value.record, record)
+        self.assertEqual(value.value_multiselection, ('bar', 'foo'))
+
+    @with_transaction()
+    def test_set_multivalue_reference(self):
+        "Test set_multivalue for Reference"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        ModelValue = pool.get('test.model_multivalue.value')
+        Target = pool.get('test.model_multivalue.target')
+
+        target = Target(name="Target")
+        target.save()
+        record = ModelMultiValue()
+        record.save()
+        record.set_multivalue('value_reference', target)
+
+        value, = ModelValue.search([])
+        self.assertEqual(value.record, record)
+        self.assertEqual(value.value_reference, target)
+
+    @with_transaction()
+    def test_multivalue_setter(self):
         "Test multivalue setter"
         pool = Pool()
         ModelMultiValue = pool.get('test.model_multivalue')
@@ -146,7 +237,7 @@ class MultiValueTestCase(unittest.TestCase):
         self.assertEqual(record.get_multivalue('value'), "setter")
 
     @with_transaction()
-    def test_mutlivalue_getter(self):
+    def test_multivalue_getter(self):
         "Test multivalue getter"
         pool = Pool()
         ModelMultiValue = pool.get('test.model_multivalue')
@@ -156,3 +247,20 @@ class MultiValueTestCase(unittest.TestCase):
 
         read, = ModelMultiValue.read([record.id], ['value'])
         self.assertEqual(read['value'], "getter")
+
+    @with_transaction()
+    def test_multivalue_getter_reference(self):
+        "Test multivalue getter for Reference"
+        pool = Pool()
+        ModelMultiValue = pool.get('test.model_multivalue')
+        Target = pool.get('test.model_multivalue.target')
+
+        target = Target(name="Target")
+        target.save()
+        record = ModelMultiValue(value_reference=target)
+        record.save()
+
+        read, = ModelMultiValue.read([record.id], ['value_reference'])
+        self.assertEqual(
+            read['value_reference'],
+            'test.model_multivalue.target,%s' % target.id)
