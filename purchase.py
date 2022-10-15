@@ -48,11 +48,6 @@ class RequestQuotation(IncotermMixin, metaclass=PoolMeta):
         cls.incoterm_location.search_context['incoterm_type'] = 'purchase'
 
     @classmethod
-    def _incoterm_editable_states(cls):
-        return ~Eval('state').in_(
-            ['draft', 'sent', 'rejected', 'received', 'cancelled']), ['state']
-
-    @classmethod
     def _incoterm_related_party(cls):
         return Eval('supplier'), {'supplier'}
 
