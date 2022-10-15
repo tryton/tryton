@@ -1222,7 +1222,8 @@ class ImportStatementStart(ModelView):
     __name__ = 'account.statement.import.start'
     company = fields.Many2One('company.company', "Company", required=True)
     file_ = fields.Binary("File", required=True)
-    file_format = fields.Selection([(None, '')], 'File Format', required=True)
+    file_format = fields.Selection(
+        [(None, '')], "File Format", required=True, translate=False)
 
     @classmethod
     def default_file_format(cls):
