@@ -60,7 +60,7 @@ class MultiValueMixin(object):
                 return str(value)
             return value.id
         elif isinstance(value, (list, tuple)):
-            return [r.id for r in value]
+            return tuple(r.id if isinstance(r, Model) else r for r in value)
         else:
             return value
 
