@@ -121,7 +121,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         'stock.location', "Lost and Found",
         states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             },
         domain=[
             ('type', '=', 'lost_found'),
