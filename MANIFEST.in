@@ -10,8 +10,5 @@ include *.nsh
 include setup-freeze.py
 include make-*-installer.sh
 include */gtk-3.0/*
-include doc/*
-recursive-include doc *.rst
-recursive-include doc *.po
-recursive-include doc *.pot
 include tryton/data/pixmaps/tryton/LICENSE
+graft doc
