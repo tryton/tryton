@@ -16,8 +16,8 @@ projects, or parts of projects.
 Each *Work Effort* is described by a name and a type, and there is space
 for additional comments to be added when required.
 
-The estimated time and effort needed for a the work is recorded, and it is
-also possible to track the actual time and effort required.
+The estimated time and effort needed for the work is recorded, and it is also
+possible to track the actual time and effort required.
 
 If timesheets are selected to be used, then the time spent on the work can
 be recorded by `Employees <company:model-company.employee>` by creating
