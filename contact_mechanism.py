@@ -10,8 +10,8 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields,
-    sequence_ordered)
+    DeactivableMixin, Index, ModelSQL, ModelView, MultiValueMixin, ValueMixin,
+    fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -127,7 +127,11 @@ class ContactMechanism(
     @classmethod
     def __setup__(cls):
         cls.value.search_unaccented = False
+        cls.value_compact.search_unaccented = False
         super(ContactMechanism, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.add(
+            Index(t, (Index.Unaccent(t.value_compact), Index.Similarity())))
         cls._order.insert(0, ('party.distance', 'ASC NULLS LAST'))
         cls._order.insert(1, ('party', 'ASC'))
 
