@@ -1726,7 +1726,7 @@
             if (this.description.strip && value) {
                 switch (this.description.strip) {
                     case 'leading':
-                        value = value.timStart();
+                        value = value.trimStart();
                         break;
                     case 'trailing':
                         value = value.trimEnd();
