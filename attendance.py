@@ -137,11 +137,12 @@ class Line(ModelSQL, ModelView):
                         attendance=record.rec_name,
                         period=period_date))
 
-    @fields.depends('employee', 'at')
+    @fields.depends('employee', 'at', 'id')
     def on_change_with_type(self):
         records = self.search([
                 ('employee', '=', self.employee),
                 ('at', '<', self.at),
+                ('id', '!=', self.id),
                 ],
             order=[('at', 'desc')],
             limit=1)
