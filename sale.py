@@ -68,6 +68,9 @@ class Sale(metaclass=PoolMeta):
         Line = pool.get('sale.line')
         Warning = pool.get('res.user.warning')
 
+        if not self.warehouse:
+            return
+
         transaction = Transaction()
 
         def in_group():
@@ -211,6 +214,7 @@ class Line(metaclass=PoolMeta):
         lang = Lang.get()
         if (self.sale_state == 'draft'
                 and self.sale
+                and self.sale.warehouse
                 and self.product
                 and self.product.type in Move.get_product_types()
                 and self.unit
@@ -219,10 +223,7 @@ class Line(metaclass=PoolMeta):
                     company=self.company.id if self.company else None):
                 today = Date.today()
             sale_date = self.sale.sale_date or today
-            if self.sale.warehouse:
-                locations = [self.sale.warehouse.id]
-            else:
-                locations = []
+            locations = [self.sale.warehouse.id]
             with Transaction().set_context(
                     locations=locations,
                     stock_date_end=sale_date,
