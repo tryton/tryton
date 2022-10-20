@@ -66,6 +66,9 @@ class Sale(metaclass=PoolMeta):
         Line = pool.get('sale.line')
         Warning = pool.get('res.user.warning')
 
+        if not self.warehouse:
+            return
+
         transaction = Transaction()
 
         def in_group():
