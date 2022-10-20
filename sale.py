@@ -88,6 +88,16 @@ class Sale(metaclass=PoolMeta):
                 pattern['after_carrier'] = 'buyer'
         return pattern
 
+    @classmethod
+    def copy(cls, sales, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('before_carriages')
+        default.setdefault('after_carriages')
+        return super().copy(sales, default=default)
+
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'

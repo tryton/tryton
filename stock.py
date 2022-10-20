@@ -126,6 +126,16 @@ class _ShipmentMixin:
         super().delete(shipments)
         Carriage.delete(carriages)
 
+    @classmethod
+    def copy(cls, shipments, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('before_carriages')
+        default.setdefault('after_carriages')
+        return super().copy(shipments, default=default)
+
 
 class Carriage_Sale(ShipmentCostSaleMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.carriage'
