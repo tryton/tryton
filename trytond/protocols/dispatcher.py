@@ -51,11 +51,6 @@ def rpc(request, database_name):
 
 
 def login(request, database_name, user, parameters, language=None):
-    try:
-        backend.Database(database_name).connect()
-    except backend.DatabaseOperationalError:
-        logger.error('fail to connect to %s', database_name, exc_info=True)
-        abort(HTTPStatus.NOT_FOUND)
     context = {
         'language': language,
         '_request': request.context,
@@ -64,6 +59,9 @@ def login(request, database_name, user, parameters, language=None):
         session = security.login(
             database_name, user, parameters, context=context)
         code = HTTPStatus.UNAUTHORIZED
+    except backend.DatabaseOperationalError:
+        logger.error('fail to connect to %s', database_name, exc_info=True)
+        abort(HTTPStatus.NOT_FOUND)
     except RateLimitException:
         session = None
         code = HTTPStatus.TOO_MANY_REQUESTS
