@@ -573,9 +573,9 @@ class MoveAddLotsStartLot(ModelView, LotMixin):
     __name__ = 'stock.move.add.lots.start.lot'
 
     parent = fields.Many2One('stock.move.add.lots.start', "Parent")
-    quantity = fields.Float("Quantity", digits='unit', required=True)
-    unit = fields.Function(
-        fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
+    quantity = fields.Float("Quantity", digits='quantity_unit', required=True)
+    quantity_unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"), 'on_change_with_quantity_unit')
 
     @fields.depends(
         'parent', '_parent_parent.quantity_remaining')
@@ -585,7 +585,7 @@ class MoveAddLotsStartLot(ModelView, LotMixin):
             self.quantity = self.parent.quantity_remaining
 
     @fields.depends('parent', '_parent_parent.unit')
-    def on_change_with_unit(self, name=None):
+    def on_change_with_quantity_unit(self, name=None):
         if self.parent and self.parent.unit:
             return self.parent.unit.id
 
