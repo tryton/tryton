@@ -158,7 +158,7 @@ class Sale(metaclass=PoolMeta):
             for line in lines:
                 product = line.product
                 date = line.sale.sale_date or today
-                if date > today:
+                if date > today or line.warehouse != self.warehouse:
                     continue
                 quantity = Uom.compute_qty(line.unit, line.quantity,
                     product.default_uom, round=False)
