@@ -8,12 +8,6 @@ from dateutil.relativedelta import relativedelta
 from sql import Window
 from sql.functions import NthValue
 
-try:
-    from forex_python.converter import CurrencyRates, RatesNotAvailableError
-    get_rates = CurrencyRates(force_decimal=True).get_rates
-except ImportError:
-    CurrencyRates = get_rates = None
-
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, DigitsMixin, Index, ModelSQL, ModelView,
@@ -23,6 +17,7 @@ from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
+from .ecb import RatesNotAvailableError, get_rates
 from .exceptions import RateError
 from .ir import rate_decimal
 
@@ -307,7 +302,7 @@ class Cron(ModelSQL, ModelView):
     __name__ = 'currency.cron'
 
     source = fields.Selection(
-        [('ecb', "European Central Bank")] if CurrencyRates else [],
+        [('ecb', "European Central Bank")],
         "Source", required=True,
         help="The external source for rates.")
     frequency = fields.Selection([
