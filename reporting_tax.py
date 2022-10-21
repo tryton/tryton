@@ -923,6 +923,8 @@ class VATBookReport(Report):
 
     @classmethod
     def format_decimal(cls, n):
+        if n is None:
+            return ''
         if not isinstance(n, Decimal):
             n = Decimal(n)
         sign = '-' if n < 0 else ''
@@ -969,14 +971,15 @@ class VATBookReport(Report):
             (record.party_tax_identifier.es_code()
                 if record.party_tax_identifier else ''),
             country_code(record),
-            record.party.name[:40],
+            record.party.name[:40] if record.party.name else '',
             '',
             cls.format_decimal(record.invoice.total_amount),
             cls.format_decimal(record.base_amount),
-            cls.format_decimal(record.tax.rate * 100),
+            (cls.format_decimal(record.tax.rate * 100)
+                if record.tax.rate is not None else ''),
             cls.format_decimal(record.tax_amount),
             (cls.format_decimal(record.surcharge_tax.rate * 100)
-                if record.surcharge_tax else ''),
+                if record.surcharge_tax is not None else ''),
             (cls.format_decimal(record.surcharge_tax_amount)
                 if record.surcharge_tax else ''),
             '',
