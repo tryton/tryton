@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The agreement "%(agreement)s" to be closed has still remaining quantities.</field>
         </record>
         <record model="ir.message" id="msg_quantity_greater_remaining">
-            <field name="text">The quantity of line "%(line)s" is greater than the remaining quantity (%(remaining)s) of agreement "%(agreement)s"</field>
+            <field name="text">The quantity of line "%(line)s" is greater than the remaining quantity (%(remaining)s) of agreement "%(agreement)s".</field>
         </record>
         <record model="ir.message" id="msg_agreement_line_incompatible_unit">
             <field name="text">To change the unit of agreement line "%(line)s", you must choose one compatible with the existing sale lines.</field>
