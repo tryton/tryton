@@ -28,6 +28,8 @@ class Date(Widget):
         self.real_entry.connect('key_press_event', self.sig_key_press)
         self.real_entry.connect('activate', self.sig_activate)
         self.real_entry.connect('changed', lambda _: self.send_modified())
+        self.real_entry.connect(
+            'focus-out-event', lambda *a: self._focus_out())
         self.entry.connect(self._changed_signal, self.changed)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
