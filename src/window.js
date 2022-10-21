@@ -869,7 +869,6 @@
 
     Sao.Window.Preferences = Sao.class_(Object, {
         init: function(callback) {
-            this.callback = callback;
             var dialog = new Sao.Dialog('Preferences', '', 'lg');
             this.el = dialog.modal;
 
@@ -918,6 +917,7 @@
                 this.el.modal('show');
             };
             this.el.on('hidden.bs.modal', function(event) {
+                callback();
                 jQuery(this).remove();
             });
 
@@ -927,7 +927,6 @@
         response: function(response_id) {
             const end = () => {
                 this.destroy();
-                this.callback();
             };
             var prm = jQuery.when();
             if (response_id == 'RESPONSE_OK') {

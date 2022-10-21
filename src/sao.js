@@ -663,7 +663,7 @@ var Sao = {
     };
 
     Sao.preferences = function() {
-        Sao.Tab.tabs.close(true).done(function() {
+        return Sao.Tab.tabs.close(true).then(function() {
             jQuery('#user-preferences').empty();
             jQuery('#global-search').empty();
             jQuery('#menu').empty();
@@ -749,7 +749,8 @@ var Sao = {
             'title': preferences.status_bar,
         }).click(function(evt) {
             evt.preventDefault();
-            Sao.preferences();
+            user.prop('disabled', true);
+            Sao.preferences().then(() => user.prop('disabled', false));
         }).text(preferences.status_bar);
         jQuery('#user-preferences').append(user);
         if (preferences.avatar_badge_url) {
