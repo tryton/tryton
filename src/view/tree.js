@@ -1777,7 +1777,7 @@
 
             var current_record = this.tree.screen.current_record;
             if ((this.record != current_record) &&
-                !current_record.validate(
+                current_record && !current_record.validate(
                     this.tree.get_fields(), false, false, true)) {
                 return;
             }
