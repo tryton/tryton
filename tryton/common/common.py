@@ -1021,6 +1021,8 @@ def process_exception(exception, *args, **kwargs):
             message(
                 _('Too many requests. Try again later.'),
                 msg_type=Gtk.MessageType.ERROR)
+        elif exception.faultCode == str(int(HTTPStatus.NOT_FOUND)):
+            message(_("Not found."), msg_type=Gtk.MessageType.ERROR)
         else:
             error(exception, exception.faultString)
     else:
@@ -1098,6 +1100,10 @@ class Login(object):
                         _('Too many requests. Try again later.'),
                         msg_type=Gtk.MessageType.ERROR)
                     continue
+                elif (exception.faultCode
+                        == str(int(HTTPStatus.NOT_FOUND))):
+                    message(_("Not Found."), msg_type=Gtk.MessageType.ERROR)
+                    raise TrytonError('QueryCanceled')
                 if exception.faultCode != 'LoginException':
                     raise
                 name, msg, type = exception.args
