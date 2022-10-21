@@ -1080,6 +1080,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario_servicios_1-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario_servicios_10_1-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario_4-invoice">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
             <field name="tax" ref="iva_sop_intracomunitario_4_1"/>
