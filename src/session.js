@@ -285,12 +285,12 @@
             }
             dialog.button.focus();
             disable_form();
-            dialog.modal.modal('hide');
             session.database = database;
             session.login = login;
             session.restore();
             (session.session ? jQuery.when() : session.do_login())
                 .then(function() {
+                    dialog.modal.modal('hide');
                     dfd.resolve(session);
                     dialog.modal.remove();
                     if (database_url() != database) {
@@ -298,7 +298,6 @@
                     }
                 }, function() {
                     disable_form(false);
-                    dialog.modal.modal('show');
                     empty_field().closest('.form-group').addClass('has-error');
                     empty_field().first().focus();
                 });
@@ -475,10 +474,12 @@
                             Sao.i18n.gettext('Too many requests. Try again later.'),
                             'tryton-error').always(dfd.resolve);
                     } else if (data.error[0].startsWith('404')) {
-                        dfd.reject();
+                        Sao.common.message.run(
+                            Sao.i18n.gettext("Not found."),
+                            'tryton-error').always(dfd.reject);
                     } else if (data.error[0] != 'LoginException') {
-                        Sao.common.error.run(data.error[0], data.error[1]);
-                        dfd.reject();
+                        Sao.common.error.run(data.error[0], data.error[1])
+                            .always(dfd.reject);
                     } else {
                         var args = data.error[1];
                         var name = args[0];
@@ -502,9 +503,12 @@
                     Sao.common.message.run(
                         Sao.i18n.gettext('Too many requests. Try again later.'),
                         'tryton-error').always(dfd.resolve);
+                } else if (query.status == 404) {
+                    Sao.common.message.run(
+                        Sao.i18n.gettext("Not found."),
+                        'tryton-error').always(dfd.reject);
                 } else {
-                    Sao.common.error.run(status_, error);
-                    dfd.reject();
+                    Sao.common.error.run(status_, error).always(dfd.reject);
                 }
             };
             ajax_prm.done(ajax_success.bind(this));
