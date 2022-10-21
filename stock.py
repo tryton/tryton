@@ -352,6 +352,8 @@ class CreateShippingUPS(Wizard):
         return service_options
 
     def get_notifications(self, shipment):
+        if not shipment.carrier.ups_notifications:
+            return
         for code in shipment.carrier.ups_notifications:
             shipping_to_address = shipment.shipping_to_address
             email = shipping_to_address.contact_mechanism_get('email')
