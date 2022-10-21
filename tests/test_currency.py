@@ -5,6 +5,8 @@ import doctest
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
+from trytond.modules.currency.ecb import (
+    RatesNotAvailableError, UnsupportedCurrencyError, get_rates)
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
@@ -368,10 +370,81 @@ class CurrencyTestCase(ModuleTestCase):
         self.assertSetEqual(data, result)
 
 
+class ECBtestCase(unittest.TestCase):
+
+    def test_rate_EUR_week_ago(self):
+        "Fetch EUR rates a week ago"
+        week_ago = datetime.date.today() - datetime.timedelta(days=7)
+
+        rates = get_rates('EUR', week_ago)
+
+        self.assertNotIn('EUR', rates)
+        self.assertIn('USD', rates)
+
+    def test_rate_USD_week_ago(self):
+        "Fetch USD rates a week ago"
+        week_ago = datetime.date.today() - datetime.timedelta(days=7)
+
+        rates = get_rates('USD', week_ago)
+
+        self.assertIn('EUR', rates)
+        self.assertNotIn('USD', rates)
+
+    def test_rate_EUR_on_weekend(self):
+        "Fetch EUR rates on weekend"
+
+        rates_fr = get_rates('EUR', datetime.date(2022, 9, 30))
+        rates_sa = get_rates('EUR', datetime.date(2022, 10, 2))
+        rates_su = get_rates('EUR', datetime.date(2022, 10, 2))
+
+        self.assertEqual(rates_sa, rates_fr)
+        self.assertEqual(rates_su, rates_fr)
+
+    def test_rate_USD_on_weekend(self):
+        "Fetch USD rates on weekend"
+
+        rates_fr = get_rates('USD', datetime.date(2022, 9, 30))
+        rates_sa = get_rates('USD', datetime.date(2022, 10, 2))
+        rates_su = get_rates('USD', datetime.date(2022, 10, 2))
+
+        self.assertEqual(rates_sa, rates_fr)
+        self.assertEqual(rates_su, rates_fr)
+
+    def test_rate_EUR_start_date(self):
+        "Fetch EUR rates at start date"
+
+        rates = get_rates('EUR', datetime.date(1999, 1, 4))
+
+        self.assertEqual(rates['USD'], Decimal('1.1789'))
+
+    def test_rate_USD_start_date(self):
+        "Fetch USD rates at start date"
+
+        rates = get_rates('USD', datetime.date(1999, 1, 4))
+
+        self.assertEqual(rates['EUR'], Decimal('0.8482'))
+
+    def test_rate_in_future(self):
+        "Fetch rate in future raise an error"
+        future = datetime.date.today() + datetime.timedelta(days=2)
+
+        with self.assertRaises(RatesNotAvailableError):
+            get_rates('USD', future)
+
+    def test_rate_unsupported_currency(self):
+        "Fetch rate for unsupported currency"
+        date = datetime.date.today() - datetime.timedelta(days=2)
+
+        with self.assertRaises(UnsupportedCurrencyError):
+            get_rates('XXX', date)
+
+
 def suite():
     suite = trytond.tests.test_tryton.suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             CurrencyTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            ECBtestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_currency_compute.rst',
             tearDown=doctest_teardown, encoding='utf-8',

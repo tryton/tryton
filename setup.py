@@ -66,7 +66,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'), 'pycountry', 'forex-python']
+tests_require = [get_require_version('proteus'), 'pycountry']
 dependency_links = []
 if minor_version % 2:
     dependency_links.append(
@@ -143,9 +143,7 @@ setup(name=name,
     python_requires='>=3.6',
     install_requires=requires,
     extras_require={
-        'data': [
-            'pycountry', 'forex-python', get_require_version('proteus')],
-        'ecb_rate': ['forex-python'],
+        'data': ['pycountry', get_require_version('proteus')],
         },
     dependency_links=dependency_links,
     zip_safe=False,
