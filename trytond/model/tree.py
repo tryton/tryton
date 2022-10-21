@@ -112,7 +112,7 @@ def tree(parent='parent', name='name', separator=None):
                                 parent_name = ', '.join(getattr(r, name)
                                     for r in getattr(record, parent))
                                 raise RecursionError(
-                                    gettext('ir.recursion_error',
+                                    gettext('ir.msg_recursion_error',
                                         rec_name=getattr(record, name),
                                         parent_rec_name=parent_name))
                         walker = list(chain(*(
@@ -125,7 +125,7 @@ def tree(parent='parent', name='name', separator=None):
                             parent_name = getattr(
                                 getattr(record, parent), name)
                             raise RecursionError(
-                                gettext('ir.recursion_error',
+                                gettext('ir.msg_recursion_error',
                                     rec_name=getattr(record, name),
                                     parent_rec_name=parent_name))
                         walker = (getattr(walker, parent) not in visited
