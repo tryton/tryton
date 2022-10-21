@@ -108,7 +108,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="purchase_blanket_agreement_create_purchase_button">
             <field name="name">create_purchase</field>
-            <field name="string">Create a purchase</field>
+            <field name="string">Create a Purchase</field>
             <field name="model" search="[('model', '=', 'purchase.blanket_agreement')]"/>
         </record>
 
