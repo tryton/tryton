@@ -299,7 +299,7 @@ class DateField(Field):
 
     def set_client(self, record, value, force_change=False):
         if isinstance(value, datetime.datetime):
-            assert(value.time() == datetime.time())
+            assert value.time() == datetime.time()
             value = value.date()
         super(DateField, self).set_client(record, value,
             force_change=force_change)
