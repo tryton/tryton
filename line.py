@@ -173,7 +173,7 @@ class Move(metaclass=PoolMeta):
         return cancel_move
 
 
-class MoveLine(ModelSQL, ModelView):
+class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
     analytic_lines = fields.One2Many('analytic_account.line', 'move_line',
             'Analytic Lines')
