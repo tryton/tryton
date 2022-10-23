@@ -82,7 +82,7 @@ class Work(metaclass=PoolMeta):
             TimesheetWork.delete(timesheet_works)
 
     @classmethod
-    def _set_timesheet_work(cls, productions):
+    def _set_timesheet_work(cls, works):
         pool = Pool()
         Timesheet = pool.get('timesheet.work')
         Date = pool.get('ir.date')
@@ -90,27 +90,27 @@ class Work(metaclass=PoolMeta):
         to_create = []
         to_delete = []
         to_write = defaultdict(list)
-        for production in productions:
-            with Transaction().set_context(company=production.company.id):
+        for work in works:
+            with Transaction().set_context(company=work.company.id):
                 today = Date.today()
-            if production.timesheet_available:
-                ended = production.state in {'done', 'cancelled'}
-                if not production.timesheet_works:
+            if work.timesheet_available:
+                ended = work.state in {'done', 'cancelled'}
+                if not work.timesheet_works:
                     to_create.append({
-                            'origin': str(production),
-                            'company': production.company.id,
+                            'origin': str(work),
+                            'company': work.company.id,
                             'timesheet_end_date': today if ended else None,
                             })
                 elif ended:
-                    for timesheet in production.timesheet_works:
+                    for timesheet in work.timesheet_works:
                         date = max([today]
                             + [l.date for l in timesheet.timesheet_lines])
                         to_write[date].append(timesheet)
-            if (not production.timesheet_available
-                    and production.timesheet_works):
+            if (not work.timesheet_available
+                    and work.timesheet_works):
                 if all(not w.timesheet_lines
-                        for w in production.timesheet_works):
-                    to_delete.extend(production.timesheet_works)
+                        for w in work.timesheet_works):
+                    to_delete.extend(work.timesheet_works)
         if to_create:
             Timesheet.create(to_create)
         if to_delete:
