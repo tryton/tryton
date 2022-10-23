@@ -18,16 +18,6 @@ from .exceptions import BadRequest
 from .web import join_name, split_name
 
 
-def remove_forbidden_chars(value):
-    from trytond.model.fields import Char
-    if value is None:
-        return value
-    for c in Char.forbidden_chars:
-        if c in value:
-            value = value.replace(c, ' ')
-    return value.strip()
-
-
 class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
