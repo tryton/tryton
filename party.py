@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, ValueMixin, fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.tools.multivalue import migrate_property
