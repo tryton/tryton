@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Table
 
-from trytond import backend
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
