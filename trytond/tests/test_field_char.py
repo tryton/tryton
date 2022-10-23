@@ -628,8 +628,8 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
 
     @with_transaction()
     def test_translation_default_language_cache(self):
-        """Test set translation for default language does not fill transactional
-        cache with former value"""
+        """Test set translation for default language does not fill
+        transactional cache with former value"""
         pool = Pool()
         Config = pool.get('ir.configuration')
         Char = self.Char()
