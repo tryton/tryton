@@ -3,8 +3,6 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 
-from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -39,6 +37,8 @@ class Sale(metaclass=PoolMeta):
 
     @fields.depends('currency', 'payment_term', 'company')
     def _cash_round_total_amount(self, amount):
+        from trytond.modules.account_invoice.exceptions import (
+            PaymentTermComputeError)
         if self.currency:
             amounts = [amount]
             if self.payment_term and self.company:
