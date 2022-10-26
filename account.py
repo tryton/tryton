@@ -5,7 +5,6 @@ from decimal import Decimal
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.account.exceptions import AccountMissing
-from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -130,6 +129,8 @@ class Invoice(metaclass=PoolMeta):
         'payment_term_date')
     def _cash_round_total_amount(self, amount):
         "Round total amount according to cash rounding"
+        from trytond.modules.account_invoice.exceptions import (
+            PaymentTermComputeError)
         pool = Pool()
         Date = pool.get('ir.date')
         if self.currency:
