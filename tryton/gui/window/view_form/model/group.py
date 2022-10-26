@@ -502,14 +502,17 @@ class Group(list):
         return record
 
     def _group_list_changed(self, action, *args):
-        group = self
-        while group.parent:
-            if group.model_name != group.parent.model_name:
-                break
-            else:
-                group = group.parent.group
-        for screen in group.screens:
-            screen.group_list_changed(group, action, *args)
+        def groups(group):
+            yield group
+            while group.parent:
+                if group.model_name != group.parent.model_name:
+                    break
+                else:
+                    group = group.parent.group
+                    yield group
+        for group in groups(self):
+            for screen in group.screens:
+                screen.group_list_changed(group, action, *args)
 
     def record_modified(self):
         if not self.parent:
