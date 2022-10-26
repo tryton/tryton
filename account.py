@@ -8,7 +8,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
 from trytond.modules.account.exceptions import AccountMissing
-from trytond.modules.account_invoice.exceptions import PaymentTermComputeError
 from trytond.modules.company.model import CompanyValueMixin
 
 
@@ -133,6 +132,8 @@ class Invoice(metaclass=PoolMeta):
     @fields.depends('currency', 'payment_term', 'company', 'invoice_date')
     def _cash_round_total_amount(self, amount):
         "Round total amount according to cash rounding"
+        from trytond.modules.account_invoice.exceptions import (
+            PaymentTermComputeError)
         if self.currency:
             amounts = [amount]
             if self.payment_term and self.company:
