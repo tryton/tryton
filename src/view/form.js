@@ -3349,7 +3349,7 @@ function eval_pyson(value){
                     size_limit = record.expr_eval(this.attributes.size);
                 }
                 if (this._readonly) {
-                    if (size_limit === null) {
+                    if ((size_limit === null) || (size_limit === undefined)) {
                         size_limit = this.screen.group.length;
                     } else {
                         size_limit = Math.min(
