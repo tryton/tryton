@@ -92,7 +92,13 @@ TIMEDELTA_DEFAULT_CONVERTER['w'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 7
 TIMEDELTA_DEFAULT_CONVERTER['M'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 30
 TIMEDELTA_DEFAULT_CONVERTER['Y'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 365
 
-REPORT_NAME_MAX_LENGTH = 200
+# For most OS maximum filename is 255 but Excel has a limitation which include
+# the path of 218.
+# As on Windows report is most likely to be open from
+# C:\Users\<username>\AppData\Local\Temp\tryton_<random>\ which has a length of
+# 56 with 12 for username and 8 for random. So 162 should be the maximum but we
+# round it to 100.
+REPORT_NAME_MAX_LENGTH = 100
 
 
 class TranslateFactory:
