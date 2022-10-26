@@ -308,6 +308,10 @@
                 ).append(menu);
                 dropdown.on('hide.bs.dropdown', () => {
                     this.save_optional(true);
+                    Sao.common.set_overflow(th, 'hide');
+                });
+                dropdown.on('show.bs.dropdown', () => {
+                    Sao.common.set_overflow(th, 'show');
                 });
                 th.append(dropdown);
             }
