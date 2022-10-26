@@ -68,7 +68,7 @@ def format(value, converter=None):
         if not any(values[-3:]):
             # Add space if no time
             text += ' '
-        text += ('%.6f' % value)[1:]
+        text += locale.format_string('%.6f', value)[1:]
     return text
 
 
