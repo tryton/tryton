@@ -201,7 +201,6 @@ class Date(Gtk.Entry):
                 assert isinstance(value, datetime.date), value
             self.__date = value
             self.update_label()
-            self.emit('date-changed')
         elif prop.name == 'format':
             self.__format = _fix_format(value)
             self.update_label()
@@ -374,7 +373,6 @@ class Time(Gtk.ComboBox):
                     value = value.time()
             self.__time = value
             self.update_label()
-            self.emit('time-changed')
         elif prop.name == 'format':
             self.__format = _fix_format(value)
             self.update_label()
