@@ -10,3 +10,4 @@ as a source for currency exchange rates.
 
    configuration
    design
+   releases
