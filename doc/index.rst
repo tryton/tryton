@@ -10,3 +10,4 @@ multiple companies.
 
    usage
    design
+   releases
