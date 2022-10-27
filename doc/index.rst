@@ -9,3 +9,4 @@ be calculated separately for each warehouse.
    :maxdepth: 2
 
    usage
+   releases
