@@ -14,6 +14,13 @@ def read(fname):
         'r', encoding='utf-8').read()
 
 
+def readme():
+    content = read('README.rst')
+    content = re.sub(
+        r'(?m)^\.\. toctree::\r?\n((^$|^\s.*$)\r?\n)*', '', content)
+    return content
+
+
 def get_require_version(name):
     if minor_version % 2:
         require = '%s >= %s.%s.dev0, < %s.%s'
@@ -66,7 +73,7 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Adds Geographic Information System support to trytond',
-    long_description=read('README.rst'),
+    long_description=readme(),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
