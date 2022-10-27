@@ -11,3 +11,4 @@ It allows these properties to be easily managed using accounting categories.
 
    usage
    design
+   releases
