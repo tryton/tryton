@@ -9,3 +9,4 @@ The *Product Image Module* adds images to each product and variant.
 
    configuration
    design
+   releases
