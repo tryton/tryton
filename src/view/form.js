@@ -1676,7 +1676,10 @@ function eval_pyson(value){
                     value = this._parse(this._input_format, value);
                     value = this._format(this.get_format(), value);
                     this.date.val(value).change();
-                    this.date.focus();
+                    if (!~navigator.userAgent.indexOf("Firefox")) {
+                        // Firefox triggers change when navigate by month/year
+                        this.date.focus();
+                    }
                 }
             }.bind(this));
             if (this.input[0].type == this._input) {
@@ -1684,6 +1687,7 @@ function eval_pyson(value){
                     'class': 'icon-input icon-secondary',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
+                    'tabindex': -1,
                 }).appendTo(group);
                 this.input.appendTo(this.icon);
                 Sao.common.ICONFACTORY.get_icon_img('tryton-date')
