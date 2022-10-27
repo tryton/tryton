@@ -11,3 +11,4 @@ a source for currency exchange rates.
    configuration
    usage
    design
+   releases
