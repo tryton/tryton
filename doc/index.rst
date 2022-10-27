@@ -9,3 +9,4 @@ and reports them.
    :maxdepth: 2
 
    design
+   releases
