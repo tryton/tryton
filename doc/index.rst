@@ -15,3 +15,4 @@ different currencies.
    configuration
    design
    reference
+   releases
