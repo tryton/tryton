@@ -13,3 +13,4 @@ and allows reports to be generated that contain aggregated sales figures.
 
    usage/index
    design
+   releases
