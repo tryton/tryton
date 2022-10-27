@@ -1,4 +1,5 @@
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Prevent early planning of production missing moves
 * Compute early date for partial quantity of stock move
@@ -7,7 +8,9 @@ Version 6.4.0 - 2022-05-02
 * Update early date base on internal incoming requests
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 
 Version 6.0.0 - 2021-05-03
+--------------------------
 * Initial release
