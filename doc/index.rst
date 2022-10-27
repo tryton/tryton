@@ -9,3 +9,4 @@ invoice.
    :maxdepth: 2
 
    design
+   releases

@@ -1,6 +1,7 @@
 * Show cost allocation before and after posting
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add allocation method
 * Store allocation factors
@@ -8,4 +9,5 @@ Version 6.4.0 - 2022-05-02
 * Remove support for Python 3.6
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Initial release
