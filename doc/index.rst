@@ -57,3 +57,4 @@ the service.
    :maxdepth: 2
 
    configuration
+   releases
