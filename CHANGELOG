@@ -7,6 +7,7 @@
 * Ignore consumable products when inactivating locations
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add location or warehouse in shipment tree view
 * Warn user when deactivating a product that has stock
@@ -14,12 +15,14 @@ Version 6.4.0 - 2022-05-02
 * Remove support for Python 3.6
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add method to sort quantities for assignation
 * Add warehouse properties to move
 * Allow view location as parent of warehouse
 
 Version 6.0.0 - 2021-05-03
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow shipments to be automatically assigned
 * Rename inventory count quantity_added to quantity
@@ -33,6 +36,7 @@ Version 6.0.0 - 2021-05-03
 * Add products_by_locations Model
 
 Version 5.8.0 - 2020-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
 * Add picked step to customer shipment workflow
@@ -55,6 +59,7 @@ Version 5.8.0 - 2020-11-02
 * Override warehouse with context value for current user
 
 Version 5.6.0 - 2020-05-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add visual on product and location quantities
 * Define one lost and found location per warehouse
@@ -65,6 +70,7 @@ Version 5.6.0 - 2020-05-04
 * Update cost of moves when recomputing product cost
 
 Version 5.4.0 - 2019-11-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add today record in Product Quantities By Warehouse
 * Allow consumable product on inventories
@@ -75,6 +81,7 @@ Version 5.4.0 - 2019-11-04
 * Open product quantities by warehouse to show moves
 
 Version 5.2.0 - 2019-05-06
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Don't set default unit price on stock move
 * Prefer to pick product from the source location
@@ -82,6 +89,7 @@ Version 5.2.0 - 2019-05-06
 * Rename inventory count quantity_resulting to total_quantity
 
 Version 5.0.0 - 2018-10-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add count wizard on inventory
 * Remove support for Python 2.7
@@ -89,6 +97,7 @@ Version 5.0.0 - 2018-10-01
 * Manage same input and storage location in customer return shipment
 
 Version 4.8.0 - 2018-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add _stock_move_split context keyword when copying move for split
 * Manage same input and storage location in supplier shipment
@@ -102,6 +111,7 @@ Version 4.8.0 - 2018-04-23
 * Allow grouping per product columns to compute quantities
 
 Version 4.6.0 - 2017-10-30
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add flat children option on location
 * Raise single warning for move without origin
@@ -112,18 +122,21 @@ Version 4.6.0 - 2017-10-30
 * Allow to deactivate only empty locations
 
 Version 4.4.0 - 2017-05-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add employee on shipments for some states
 * Add request state on internal shipment
 * Manage same picking/storage and output location
 
 Version 4.2.0 - 2016-11-28
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Make inventory number always readonly
 * Manage readonly state on Inventory Line
 * Add lead time and transit location for internal shipments between warehouses
 
 Version 4.0.0 - 2016-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Rename Shipments code into number
 * Add number to inventories
@@ -133,6 +146,7 @@ Version 4.0.0 - 2016-05-02
 * Add warehouse address on internal shipment
 
 Version 3.8.0 - 2015-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add drop location type
 * Add buttons on stock move form & list
@@ -146,6 +160,7 @@ Version 3.8.0 - 2015-11-02
 * Allow to change unit price of move done
 
 Version 3.6.0 - 2015-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add support for PyPy
 * Add 'staging' state to stock move
@@ -154,11 +169,13 @@ Version 3.6.0 - 2015-04-20
 * Do not filter out inactive products from stock computation
 
 Version 3.4.0 - 2014-10-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Always succeed assignation from lost and found on internal shipments
 * Remove return shipment out wizard
 
 Version 3.2.0 - 2014-04-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add warning for moves without origin
 * Allow to define the effective date of shipments
@@ -170,6 +187,7 @@ Version 3.2.0 - 2014-04-21
 * Allow partial assignation on Supplier Shipment Return
 
 Version 3.0.0 - 2013-10-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add Mixin class with helper to setup stock quantity fields
 * Allow to customize move creation of Inventory
@@ -178,45 +196,54 @@ Version 3.0.0 - 2013-10-21
 * Add grouping on products_by_location and assign_try
 
 Version 2.8.0 - 2013-04-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Merge all shipment Many2One into shipment Reference
 * Add origin Reference on Stock Move
 * Add workflow to stock move
 
 Version 2.6.0 - 2012-10-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add Product Quantities By Warehouse
 
 Version 2.4.0 - 2012-04-24
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove special to_location_warehouse search clause
 * Remove default from and to location and instead use domain
 * Update cost_price only from supplier to storage
 
 Version 2.2.0 - 2011-10-25
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Ensure coherence between planned date of shipments and moves
 
 Version 2.0.0 - 2011-04-27
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add period to reduce data computation
 * Add internal_quantity on move to speedup computation
 
 Version 1.8.0 - 2010-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 
 Version 1.6.0 - 2010-05-11
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use model singleton to define shipment sequences
 * Add default search value on inventory, move and shipments
 
 Version 1.4.0 - 2009-10-19
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add new group "Stock Force Assignment"
 * Migrate packing* objects and tables to shipment*
 * Return move id in create_move of inventory line
 
 Version 1.2.0 - 2009-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Added return packings and a wizard to create customer return packing.
 * Make assign_try to assign as much possible
@@ -230,4 +257,5 @@ Version 1.2.0 - 2009-04-20
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
+--------------------------
 * Initial release

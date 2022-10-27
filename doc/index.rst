@@ -16,3 +16,4 @@ and from customers and suppliers.
    usage/index
    design/index
    reference
+   releases
