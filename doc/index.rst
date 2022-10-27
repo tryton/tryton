@@ -14,3 +14,4 @@ the ability to automatically create related supplier invoices.
 
    usage/index
    design
+   releases
