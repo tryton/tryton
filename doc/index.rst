@@ -13,3 +13,4 @@ This is legal requirement for some Spanish Companies.
    usage
    configuration
    design
+   releases
