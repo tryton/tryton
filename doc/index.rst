@@ -11,3 +11,4 @@ authentication module allows to delegate the user authentication to an
 
    configuration
    design
+   releases
