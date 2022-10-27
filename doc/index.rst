@@ -10,3 +10,4 @@ The *Stock Quantity Issue Module* helps to solve stock quantity issues.
 
    usage
    design
+   releases
