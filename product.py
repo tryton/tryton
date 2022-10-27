@@ -166,7 +166,7 @@ class Template(
     @classmethod
     def order_rec_name(cls, tables):
         table, _ = tables[None]
-        return [table.code, table.name]
+        return cls.order_code(tables) + [table.name]
 
     def get_rec_name(self, name):
         if self.code:
@@ -543,7 +543,7 @@ class Product(
                 }
         else:
             template = tables['template']
-        return [product.code] + Template.name.convert_order('name',
+        return cls.order_code(tables) + Template.name.convert_order('name',
             tables['template'], Template)
 
     def get_rec_name(self, name):
