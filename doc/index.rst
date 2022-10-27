@@ -13,3 +13,4 @@ and allows you to record how the quantity of a product is measured.
    usage
    configuration
    design
+   releases
