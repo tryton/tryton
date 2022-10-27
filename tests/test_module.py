@@ -76,7 +76,9 @@ class ProductionWorkTimesheetTestCase(CompanyTestMixin, ModuleTestCase):
             # Set write as done
             work = self.create_work()
             work.save()
-            work.state = 'done'
+            work.production.state = 'done'
+            work.production.save()
+            work.state = 'done'  # Trigger a write to update state
             work.save()
             timesheet_work, = work.timesheet_works
             self.assertEqual(timesheet_work.timesheet_end_date, Date.today())
