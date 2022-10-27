@@ -227,7 +227,9 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def set_state(cls, works):
         for work in works:
-            work.state = work._state
+            state = work._state
+            if work.state != state:
+                work.state = state
         cls.save(works)
 
     def get_rec_name(self, name):
@@ -249,6 +251,12 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         works = super(Work, cls).create(values)
         cls.set_state(works)
         return works
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        works = sum(args[0:None:2], [])
+        cls.set_state(works)
 
     @classmethod
     def delete(cls, works):
