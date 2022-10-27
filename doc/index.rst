@@ -8,3 +8,4 @@ The *Sale Invoice Date Module* fills the invoice date of invoices created by sal
    :maxdepth: 2
 
    design
+   releases
