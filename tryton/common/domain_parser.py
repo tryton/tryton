@@ -578,10 +578,7 @@ class DomainParser(object):
                 field = self.fields[name]
                 if field['type'] in {
                         'many2one', 'one2one', 'one2many', 'many2many'}:
-                    if field['type'] == 'many2one':
-                        types = (str, type(None))
-                    else:
-                        types = str
+                    types = (str, type(None))
                     if isinstance(value, (list, tuple)):
                         return all(isinstance(v, types) for v in value)
                     else:

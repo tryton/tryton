@@ -607,6 +607,7 @@ class DomainParserTestCase(TestCase):
         self.assertTrue(dom.stringable([('relation.rec_name', '=', "Foo")]))
         self.assertFalse(dom.stringable([('relation', '=', 1)]))
         self.assertTrue(dom.stringable([('relations', '=', "Foo")]))
+        self.assertTrue(dom.stringable([('relations', '=', None)]))
         self.assertTrue(dom.stringable([('relations', 'in', ["Foo"])]))
         self.assertFalse(dom.stringable([('relations', 'in', [42])]))
         self.assertTrue(dom.stringable([('relation.name', '=', "Foo")]))
