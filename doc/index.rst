@@ -11,3 +11,4 @@ generated for shipments made by any of `Sendcloud's
 
    configuration
    design
+   releases
