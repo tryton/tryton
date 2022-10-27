@@ -12,3 +12,4 @@ payment terms related to the invoices and show when they have been paid.
    usage/index
    configuration
    design
+   releases
