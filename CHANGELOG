@@ -1,4 +1,5 @@
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add reporting
 * Use negative debit/credit for cash change
@@ -6,4 +7,5 @@ Version 6.4.0 - 2022-05-02
 * Remove support for Python 3.6
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Initial release

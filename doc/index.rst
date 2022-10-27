@@ -8,3 +8,4 @@ The *Sale Point Module* allows retail sales to be handled and recorded.
    :maxdepth: 2
 
    design
+   releases
