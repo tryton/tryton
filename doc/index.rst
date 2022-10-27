@@ -14,3 +14,4 @@ what their organisational structure is.
    usage
    design
    reference
+   releases
