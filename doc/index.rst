@@ -10,3 +10,4 @@ simple projects.
 
    usage
    design
+   releases
