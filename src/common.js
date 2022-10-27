@@ -1183,17 +1183,8 @@
                     if (~['many2one', 'one2one', 'one2many', 'many2many']
                         .indexOf(field.type)) {
                         var test = function(value) {
-                            if (field.type == 'many2one') {
-                                if ((typeof value != 'string') &&
-                                    (value !== null)) {
-                                    return false;
-                                }
-                            } else {
-                                if (typeof value != 'string') {
-                                    return false;
-                                }
-                            }
-                            return true;
+                            return ((typeof value == 'string') ||
+                                (value === null));
                         };
                         if (value instanceof Array) {
                             return value.every(test);

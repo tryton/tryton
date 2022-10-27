@@ -2109,6 +2109,7 @@
         QUnit.ok(parser.stringable([['relation.rec_name', '=', 'Foo']]));
         QUnit.ok(!parser.stringable([['relation', '=', 1]]));
         QUnit.ok(parser.stringable([['relations', '=', 'Foo']]));
+        QUnit.ok(parser.stringable([['relations', '=', null]]));
         QUnit.ok(parser.stringable([['relations', 'in', ['Foo']]]));
         QUnit.ok(!parser.stringable([['relations', 'in', [42]]]));
         QUnit.ok(parser.stringable([['relation.name', '=', "Foo"]]));
