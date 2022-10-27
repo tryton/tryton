@@ -9,3 +9,4 @@ other accounts.
    :maxdepth: 2
 
    design
+   releases
