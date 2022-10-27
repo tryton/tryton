@@ -9,3 +9,4 @@ grouped.
    :maxdepth: 2
 
    design
+   releases
