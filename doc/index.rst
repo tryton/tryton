@@ -12,3 +12,4 @@ identifiers and the language used by each of these different entities.
 
    usage
    design
+   releases
