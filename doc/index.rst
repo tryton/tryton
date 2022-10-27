@@ -11,3 +11,4 @@ commission plan.
 
    usage
    design
+   releases
