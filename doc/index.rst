@@ -9,3 +9,4 @@ recommendation of products on sale.
    :maxdepth: 2
 
    usage
+   releases
