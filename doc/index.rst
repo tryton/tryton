@@ -8,3 +8,4 @@ The *Product Image Attribute Module* adds attributes to product images.
    :maxdepth: 2
 
    design
+   releases
