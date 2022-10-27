@@ -12,3 +12,4 @@ sales.
 
    usage
    design
+   releases
