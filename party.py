@@ -4,7 +4,15 @@ from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
-from trytond.modules.sale.party import get_sale_methods
+
+def get_sale_methods(field_name):
+    @classmethod
+    def func(cls):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        return Sale.fields_get([field_name])[field_name]['selection'] + [
+            ('default', "")]
+    return func
 
 
 class Party(metaclass=PoolMeta):
@@ -23,6 +31,10 @@ class Party(metaclass=PoolMeta):
         return super().multivalue_model(field)
 
     get_sale_shipment_cost_method = get_sale_methods('shipment_cost_method')
+
+    @classmethod
+    def default_sale_shipment_cost_method(cls, **pattern):
+        return 'default'
 
     @classmethod
     def copy(cls, parties, default=None):

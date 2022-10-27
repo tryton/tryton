@@ -153,7 +153,7 @@ class Sale(metaclass=PoolMeta):
             self.carrier = self.available_carriers[0]
         elif not self.available_carriers:
             self.carrier = None
-        if self.party and self.party.sale_shipment_cost_method:
+        if self.party and self.party.sale_shipment_cost_method != 'default':
             self.shipment_cost_method = self.party.sale_shipment_cost_method
         else:
             self.shipment_cost_method = self.default_shipment_cost_method()
