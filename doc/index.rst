@@ -11,3 +11,4 @@ The module contains the Incoterm versions of 2010 and 2020.
 
    usage
    design
+   releases
