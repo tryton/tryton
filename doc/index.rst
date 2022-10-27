@@ -10,3 +10,4 @@ a period.
    :maxdepth: 2
 
    design
+   releases
