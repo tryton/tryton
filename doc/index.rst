@@ -58,6 +58,7 @@ Contents
    topics/index
    ref/index
    tutorial/index
+   releases
 
 Indices, glossary and tables
 ============================

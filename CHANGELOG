@@ -17,6 +17,7 @@
 * Use singleton for TableHandler
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use unittest discover
 * Add module tutorial
@@ -67,6 +68,7 @@ Version 6.4.0 - 2022-05-02
 * Use JSONB to store Dict field on PostgreSQL backend
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow to cast to date with timezone
 * Support create/delete attribute in view
@@ -105,6 +107,7 @@ Version 6.2.0 - 2021-11-01
 * Add BOOL_AND and BOOL_OR to SQLite backend
 
 Version 6.0.0 - 2021-05-03
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow column sql types to be tested from the table handler
 * Add support for database connection parameters to configuration URI
@@ -147,6 +150,7 @@ Version 6.0.0 - 2021-05-03
 * Forbid all white spaces except space in Char field
 
 Version 5.8.0 - 2020-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
 * Support import of timedelta data
@@ -183,6 +187,7 @@ Version 5.8.0 - 2020-11-02
 * Add context to export CSV route
 
 Version 5.6.0 - 2020-05-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Call getter function when accessing Function field on unsaved record
 * Add language configuration wizard
@@ -226,6 +231,7 @@ Version 5.6.0 - 2020-05-04
 * Remove implicit field names in ModelStorage.search_read
 
 Version 5.4.0 - 2019-11-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Improve tests on depends
 * Add permission groups on export
@@ -250,6 +256,7 @@ Version 5.4.0 - 2019-11-04
 * Add level on Model.fields_get to fill relation_fields
 
 Version 5.2.0 - 2019-05-06
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add sort and translate options to Reference field
 * Do not create empty translations
@@ -309,6 +316,7 @@ Version 5.2.0 - 2019-05-06
 * Use write mode by default to check create and delete of resources
 
 Version 5.0.0 - 2018-10-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow non translatable reports
 * Replace hard coded 'state' by '_transition_state' in copy
@@ -348,6 +356,7 @@ Version 5.0.0 - 2018-10-01
 * Add sql_cast on Field
 
 Version 4.8.0 - 2018-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add index method to order field set calls
 * Add deactivable mixin
@@ -384,6 +393,7 @@ Version 4.8.0 - 2018-04-23
 * Convert format, currency and strftime of ir.lang into instance methods
 
 Version 4.6.0 - 2017-10-30
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add support for Python 3.6
 * Remove support for Python 3.3
@@ -410,6 +420,7 @@ Version 4.6.0 - 2017-10-30
 * Allow to store Dict as JSON on the database
 
 Version 4.4.0 - 2017-05-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Sanitize path in file_open against suffix (CVE-2017-0360)
 * Add constraint on user password
@@ -437,6 +448,7 @@ Version 4.4.0 - 2017-05-01
 * Add relate from report to translations
 
 Version 4.2.0 - 2016-11-28
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add toolbar attribute for richtext widget
 * Add PYSON widget
@@ -483,6 +495,7 @@ Version 4.2.0 - 2016-11-28
 * Allow PYSON in tree_invisible attribute
 
 Version 4.0.0 - 2016-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add sendmail module to send transactional email
 * Support Two-Phase Commit in Transaction
@@ -513,6 +526,7 @@ Version 4.0.0 - 2016-05-02
 * Use instance context in translated descriptor of Selection
 
 Version 3.8.0 - 2015-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add test for all field methods
 * Load po files also in 'override' subdirectory
@@ -536,6 +550,7 @@ Version 3.8.0 - 2015-11-02
 * Rename ir.module.module* into ir.module*
 
 Version 3.6.0 - 2015-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use bytes and bytearray for Binary
 * Add button_change
@@ -573,6 +588,7 @@ Version 3.6.0 - 2015-04-20
 * Remove img_{width,height} form attributes
 
 Version 3.4.0 - 2014-10-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use literal_eval instead of safe_eval (CVE-2014-6633)
 * Prevent double underscore in safe_eval (CVE-2014-6633)
@@ -599,6 +615,7 @@ Version 3.4.0 - 2014-10-20
 * Remove context, current_date and time from record rule evaluation
 
 Version 3.2.0 - 2014-04-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add restore_history to ModelSQL
 * Add history revisions
@@ -634,6 +651,7 @@ Version 3.2.0 - 2014-04-21
 * Add relation_field for many2one
 
 Version 3.0.0 - 2013-10-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow customization of translation in po files
 * Use python-sql
@@ -652,6 +670,7 @@ Version 3.0.0 - 2013-10-21
 * Remove request
 
 Version 2.8.0 - 2013-04-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow to search on target of Reference field
 * Remove _inherits
@@ -673,6 +692,7 @@ Version 2.8.0 - 2013-04-22
 * Add domains on Action Window
 
 Version 2.6.0 - 2012-10-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add pre-validation
 * Allow to use XML file for views
@@ -699,6 +719,7 @@ Version 2.6.0 - 2012-10-22
 * Remove ModelSQL.default_sequence
 
 Version 2.4.0 - 2012-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Don't allow rpc call on ModelStorage without ModelView (CVE-2012-0215)
 * Add shared WebDAV
@@ -725,6 +746,7 @@ Version 2.4.0 - 2012-04-23
 * Remove change_default on fields
 
 Version 2.2.0 - 2011-10-24
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove name field in ir.property
 * Add wizard to show views
@@ -755,6 +777,7 @@ Version 2.2.0 - 2011-10-24
 * Remove support of zipped modules
 
 Version 2.0.0 - 2011-04-26
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use md5 hash for indexing translation
 * Merge tree and list views
@@ -775,6 +798,7 @@ Version 2.0.0 - 2011-04-26
 * Add AUTOINCREMENT to sqlite primary key
 
 Version 1.8.0 - 2010-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add timestamp sequence
 * New transaction management
@@ -783,6 +807,7 @@ Version 1.8.0 - 2010-11-01
 * Add default value to Boolean fields at database level
 
 Version 1.6.0 - 2010-05-08
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add symbol parameter to formatLang
 * searcher on Function fields take only one domain clause as argument
@@ -824,6 +849,7 @@ Version 1.6.0 - 2010-05-08
 * Handle current-user-privilege-set on webdav.collection
 
 Version 1.4.0 - 2009-10-19
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add datetime_field on xxx2Many to use a specific _datetime when reading the related record
 * Add new tool safe_eval
@@ -862,6 +888,7 @@ Version 1.4.0 - 2009-10-19
 * Add float_time attribute in fields view
 
 Version 1.2.0 - 2009-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add delete of foreign keys with ondelete CASCADE
 * Add write for foreign keys with ondelete SET NULL
@@ -894,4 +921,5 @@ Version 1.2.0 - 2009-04-20
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
+--------------------------
 * Initial release
