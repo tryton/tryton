@@ -1,6 +1,7 @@
 * Replace deprecated fulfillment by fulfillment order
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Support webhook for orders
 * Remove API backoff time
@@ -10,4 +11,5 @@ Version 6.4.0 - 2022-05-02
 * Remove support for Python 3.6
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Initial release

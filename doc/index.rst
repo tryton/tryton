@@ -13,3 +13,4 @@ transactions and creates fulfilments.
    usage
    configuration
    design
+   releases
