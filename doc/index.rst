@@ -9,3 +9,4 @@ for shipments using `MyGLS <https://api.mygls.hu/>`_ webservices.
    :maxdepth: 2
 
    design
+   releases
