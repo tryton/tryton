@@ -164,3 +164,8 @@ Read in French:
     >>> category_fr.reload()
     >>> category_fr.name
     'Categorie'
+
+.. toctree::
+   :maxdepth: 2
+
+   releases

@@ -14,6 +14,13 @@ def read(fname):
         'r', encoding='utf-8').read()
 
 
+def readme():
+    content = read('README.rst')
+    content = re.sub(
+        r'(?m)^\.\. toctree::\r?\n((^$|^\s.*$)\r?\n)*', '', content)
+    return content
+
+
 def get_version():
     init = read(os.path.join('proteus', '__init__.py'))
     return re.search('__version__ = "([0-9.]*)"', init).group(1)
@@ -63,7 +70,7 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Library to access Tryton server as a client',
-    long_description=read('README.rst'),
+    long_description=readme(),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
