@@ -9,3 +9,4 @@ The *Sale Gift Card Module* manages the selling and redeeming of gift cards.
 
    design
    usage
+   releases
