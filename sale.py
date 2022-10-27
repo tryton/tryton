@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from itertools import groupby
+
 from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
@@ -51,3 +53,13 @@ class Sale(metaclass=PoolMeta):
             if grouped_invoices:
                 invoice, = grouped_invoices
         return invoice
+
+    @classmethod
+    def _process_invoice(cls, sales):
+        for method, sales in groupby(
+                sales, lambda s: s.invoice_grouping_method):
+            if method:
+                for sale in sales:
+                    super()._process_invoice([sale])
+            else:
+                super()._process_invoice(list(sales))
