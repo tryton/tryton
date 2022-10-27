@@ -16,3 +16,4 @@ Contents
    installation
    usage
    glossary
+   releases

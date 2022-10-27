@@ -1,6 +1,7 @@
 * Support authentication services
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use unittest discover
 * Support notification message
@@ -18,6 +19,7 @@ Version 6.4.0 - 2022-05-02
 * Manage creatable attribute of view
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Support grouping attribute
 * Support monetary and symbol field attributes
@@ -26,6 +28,7 @@ Version 6.2.0 - 2021-11-01
 * Support Binary field in CSV import/export
 
 Version 6.0.0 - 2021-05-03
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Support printing zip archive
 * Add direct print to UNIX
@@ -46,6 +49,7 @@ Version 6.0.0 - 2021-05-03
 * Unify PYSON string format
 
 Version 5.8.0 - 2020-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
 * Format timedelta in CSV export
@@ -61,6 +65,7 @@ Version 5.8.0 - 2020-11-02
 * Add context to export URL
 
 Version 5.6.0 - 2020-05-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Support link button on form
 * Add URL for the current export
@@ -78,6 +83,7 @@ Version 5.6.0 - 2020-05-04
 * Support validate attribute of wizard's Button
 
 Version 5.4.0 - 2019-11-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Support visual context on tree view
 * Support multiselection field
@@ -88,6 +94,7 @@ Version 5.4.0 - 2019-11-04
 * Add handle to reordable line of tree views
 
 Version 5.2.0 - 2019-05-06
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add domain inversion for reference fields
 * Add list-form view
@@ -132,6 +139,7 @@ Version 5.2.0 - 2019-05-06
 * Add drag & drop support on binary widget
 
 Version 5.0.0 - 2018-10-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use dropdown for attachment
 * Apply factor on domain parser
@@ -151,6 +159,7 @@ Version 5.0.0 - 2018-10-01
 * Call on_change methods after setting default dtstart on calendar view
 
 Version 4.8.0 - 2018-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Manage active field on search widget
 * Reset record to its original state when discarding the popup window
@@ -166,6 +175,7 @@ Version 4.8.0 - 2018-04-23
 * Use translated values when exporting Reference and Selection fields
 
 Version 4.6.0 - 2017-10-30
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow to export model and record name of Reference fields
 * Re-position buttons on Binary/Image widget
@@ -177,11 +187,13 @@ Version 4.6.0 - 2017-10-30
 * Use profile name or login details in title
 
 Version 4.4.0 - 2017-05-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Verify certificate with default CA
 * Replace URL entry by a toolbar button
 
 Version 4.2.0 - 2016-11-28
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add support for GTK+ 3.0
 * Add PYSON Widget
@@ -201,6 +213,7 @@ Version 4.2.0 - 2016-11-28
 * Re-position icons on Many2One widget
 
 Version 4.0.0 - 2016-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Improvement of charts design
 * Timedelta uses 30 days for month
@@ -213,6 +226,7 @@ Version 4.0.0 - 2016-05-02
 * Use Apple key for copy/past of list
 
 Version 3.8.0 - 2015-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use italic labels for editable fields
 * Escape '_' in button string and page string
@@ -226,6 +240,7 @@ Version 3.8.0 - 2015-11-02
 * Add reversed operators to PYSON expressions
 
 Version 3.6.0 - 2015-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Hide columns containing always the same value
 * Remove Tabs Position option
@@ -241,6 +256,7 @@ Version 3.6.0 - 2015-04-20
 * Replace img_{width,height} by width and height attributes
 
 Version 3.4.0 - 2014-10-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add DnD on export window
 * Allow to overide predefined export
@@ -254,6 +270,7 @@ Version 3.4.0 - 2014-10-20
 * Explicitly set value of parent field
 
 Version 3.2.0 - 2014-04-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add option to show revisions
 * Add a multi selection widget for many2many
@@ -274,6 +291,7 @@ Version 3.2.0 - 2014-04-21
 * Sanitize report file extension
 
 Version 3.0.0 - 2013-10-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add factor on number widgets
 * Add calendar view
@@ -281,6 +299,7 @@ Version 3.0.0 - 2013-10-21
 * Remove request
 
 Version 2.8.0 - 2013-04-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Manage dynamic label
 * Manage prefix, suffix on tree view
@@ -300,6 +319,7 @@ Version 2.8.0 - 2013-04-22
 * Allow multi-selection for Selection field in filter box
 
 Version 2.6.0 - 2012-10-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow to paste in editable list view
 * Manage readonly state on group
@@ -319,6 +339,7 @@ Version 2.6.0 - 2012-10-22
 * Deactivate attachment button when record is not created
 
 Version 2.4.0 - 2012-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove workflow
 * Improve contextual menu:
@@ -344,6 +365,7 @@ Version 2.4.0 - 2012-04-23
     - link double click to open popup
 
 Version 2.2.0 - 2011-10-24
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * New search widget
 * Improve memory management of Binary fields
@@ -362,6 +384,7 @@ Version 2.2.0 - 2011-10-24
 * Allow resize columns smaller than the header
 
 Version 2.0.0 - 2011-04-26
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Popup form dialog has 3 buttons (close, ok, new)
 * New UI layout
@@ -386,6 +409,7 @@ Version 2.0.0 - 2011-04-26
 * Add One2One field
 
 Version 1.8.0 - 2010-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * More fully integrate GTK menubar for Mac OS
 * Allow to configure search limit
@@ -393,6 +417,7 @@ Version 1.8.0 - 2010-11-01
 * Set non-applicable form controls in one2many view to be insensitive
 
 Version 1.6.0 - 2010-05-08
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Don't stop wizard execution when exception occurs
 * Use ir.attachment view instead of a custom one
@@ -420,6 +445,7 @@ Version 1.6.0 - 2010-05-08
 * Use same keyboard shortcut for xxx2many than for other fields
 
 Version 1.4.0 - 2009-10-19
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Handle datetime_field in xxx2Many
 * Add new safe_eval
@@ -445,6 +471,7 @@ Version 1.4.0 - 2009-10-19
   and handle float_time attribute for contextual time convertion
 
 Version 1.2.0 - 2009-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Make graph works also with datetime
 * Add edition on Many2Many
@@ -466,4 +493,5 @@ Version 1.2.0 - 2009-04-20
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
+--------------------------
 * Initial release
