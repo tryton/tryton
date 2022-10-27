@@ -9,3 +9,4 @@ suppliers.
    :maxdepth: 2
 
    design
+   releases
