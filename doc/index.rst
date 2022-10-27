@@ -9,3 +9,4 @@ rounding of quantity sold per product.
    :maxdepth: 2
 
    design
+   releases
