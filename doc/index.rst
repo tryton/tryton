@@ -13,3 +13,4 @@ subdivisions, and selected countries' postal codes into Tryton.
    setup
    usage
    design
+   releases
