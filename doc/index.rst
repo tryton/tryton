@@ -8,3 +8,4 @@ The *Party Avatar Module* adds an avatar to each party.
    :maxdepth: 2
 
    design
+   releases
