@@ -15,3 +15,4 @@ income statement.
    configuration
    design/index
    reference
+   releases

@@ -3,6 +3,7 @@
 * Use context model for chart of accounts and taxes
 
 Version 6.4.0 - 2022-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Prevent creating fiscal year before closed one
 * Add automatic reconciliation of suggestions
@@ -20,14 +21,16 @@ Version 6.4.0 - 2022-05-02
 * Remove support for Python 3.6
 
 Version 6.2.0 - 2021-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add origin record name property on move line
 * Add group to edit accounting of parties
-* Rename lock buttons into lock_
+* Rename lock buttons into lock\_
 * Add split lines wizard
 * Validate that all inactive accounts have no balance when closing periods
 
 Version 6.0.0 - 2021-05-03
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add check to mark types as debt
 * Add relate from party to general ledger accounts
@@ -42,6 +45,7 @@ Version 6.0.0 - 2021-05-03
 * Add more term units to aged balance
 
 Version 5.8.0 - 2020-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
 * Allow defining the tax date on taxable lines
@@ -50,6 +54,7 @@ Version 5.8.0 - 2020-11-02
 * Test for lines to reconcile before showing the next account
 
 Version 5.6.0 - 2020-05-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Order account by its code and name
 * Add optional debit type on account
@@ -59,6 +64,7 @@ Version 5.6.0 - 2020-05-04
 * Modularize code in GroupLines wizard
 
 Version 5.4.0 - 2019-11-04
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add default customer and supplier tax rule
 * Update sequence name in renew fiscal year
@@ -66,6 +72,7 @@ Version 5.4.0 - 2019-11-04
 * Use today as default date when inside the period
 
 Version 5.2.0 - 2019-05-06
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add group lines wizard
 * Manage delegate reconciliation
@@ -76,6 +83,7 @@ Version 5.2.0 - 2019-05-06
 * Base journal cash report on account kind receivable and payable
 
 Version 5.0.0 - 2018-10-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Set party required on account payable and receivable of party
 * Add writeoff method
@@ -87,6 +95,7 @@ Version 5.0.0 - 2018-10-01
 * Remove journal type
 
 Version 4.8.0 - 2018-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Use tax code line for tax reporting
 * Use custom clause for Tax Code sum
@@ -98,6 +107,7 @@ Version 4.8.0 - 2018-04-23
 * Allow to reconcile many group of lines with Line.reconcile
 
 Version 4.6.0 - 2017-10-30
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Allow to keep original taxes when applying a tax rule
 * Add legal notice on taxes
@@ -110,10 +120,12 @@ Version 4.6.0 - 2017-10-30
 * Simplify default values for move line
 
 Version 4.4.0 - 2017-05-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add definitive lock of period and fiscal year
 
 Version 4.2.0 - 2016-11-28
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add test wizard for taxes
 * Remove journal view
@@ -126,6 +138,7 @@ Version 4.2.0 - 2016-11-28
 * Add comparison amount on Balance Sheet and Income Statement
 
 Version 4.0.0 - 2016-05-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Move tax Rounding configuration from account_invoice
 * Get the tax type from the base sign:
@@ -137,11 +150,13 @@ Version 4.0.0 - 2016-05-02
 * Add date on Reconciliation
 
 Version 3.8.0 - 2015-11-02
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Make Chart of Account not translatable
 * Add Journal Cash reporting
 
 Version 3.6.0 - 2015-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add support for PyPy
 * Add move template
@@ -155,12 +170,14 @@ Version 3.6.0 - 2015-04-20
 * Allow to set a description to cancel move
 
 Version 3.4.0 - 2014-10-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add option on Account for party required
 * Add wizard to reconcile all accounts
 * Add cancel to Account Move
 
 Version 3.2.0 - 2014-04-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add start/end date to tax
 * Use account of write-off journal as default
@@ -168,6 +185,7 @@ Version 3.2.0 - 2014-04-21
 * Add description on write-off move
 
 Version 3.0.0 - 2013-10-21
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add balance non-deferral wizard
 * Display write-off amount in reconciliation
@@ -177,11 +195,13 @@ Version 3.0.0 - 2013-10-21
 * Remove centralised counterpart option and functionality
 
 Version 2.8.0 - 2013-04-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Make period's post_move_sequence optional and use fiscal year's one if empty
 * Add sale, purchase or other kind on Tax Rule and Tax Group
 
 Version 2.6.0 - 2012-10-22
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Rename:
     - Move.name into number
@@ -195,20 +215,25 @@ Version 2.6.0 - 2012-10-22
 * Add start/end balance to Trial balance
 
 Version 2.4.0 - 2012-04-23
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add new account type stock
 
 Version 2.2.0 - 2011-10-24
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add test creation of minimal chart of accounts
 
 Version 2.0.0 - 2011-04-27
+--------------------------
 * Bug fixes (see mercurial logs for details)
 
 Version 1.8.0 - 2010-11-01
+--------------------------
 * Bug fixes (see mercurial logs for details)
 
 Version 1.6.0 - 2010-05-11
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add description field on account.tax.code.template and account.tax.code
 * Add tax field on account.tax.line
@@ -218,6 +243,7 @@ Version 1.6.0 - 2010-05-11
 * Improve General Ledger to compute lines for each accounts at once
 
 Version 1.4.0 - 2009-10-19
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add origin_tax field on account.tax.rule
 * Change get_receivable_payable on party.party to work with a list of name
@@ -225,6 +251,7 @@ Version 1.4.0 - 2009-10-19
 * Fix digits of amount on tax and tax line
 
 Version 1.2.0 - 2009-04-20
+--------------------------
 * Bug fixes (see mercurial logs for details)
 * Add tax rule to replace vat and supplier_vat on party
   Previous vat configuration will be lost
@@ -233,4 +260,5 @@ Version 1.2.0 - 2009-04-20
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
+--------------------------
 * Initial release
