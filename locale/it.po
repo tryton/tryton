@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr ""
+msgstr "Conteggi"
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
@@ -16,15 +16,15 @@ msgstr "UdM"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Categoria UdM"
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
-msgstr ""
+msgstr "Dominio dei movimenti"
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Movimenti"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves."
