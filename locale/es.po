@@ -88,7 +88,7 @@ msgstr "Tercero"
 
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:account.move.line.group,reconciled:"
 msgid "Reconciled"

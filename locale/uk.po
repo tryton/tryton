@@ -28,23 +28,23 @@ msgstr ""
 
 msgctxt "field:account.move.line.group,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.move.line.group,credit:"
 msgid "Credit"
-msgstr "Kredit"
+msgstr ""
 
 msgctxt "field:account.move.line.group,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.move.line.group,date:"
 msgid "Effective Date"
-msgstr "Tanggal Efektif"
+msgstr ""
 
 msgctxt "field:account.move.line.group,debit:"
 msgid "Debit"
-msgstr "Debit"
+msgstr ""
 
 msgctxt "field:account.move.line.group,delegated_amount:"
 msgid "Delegated Amount"
@@ -52,11 +52,11 @@ msgstr ""
 
 msgctxt "field:account.move.line.group,journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:account.move.line.group,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr ""
 
 msgctxt "field:account.move.line.group,maturity_date:"
 msgid "Maturity Date"
@@ -84,11 +84,11 @@ msgstr ""
 
 msgctxt "field:account.move.line.group,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr ""
 
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr ""
 
 msgctxt "field:account.move.line.group,reconciled:"
 msgid "Reconciled"
@@ -138,21 +138,21 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_payable"
 msgid "Payable"
-msgstr "Utang"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_receivable"
 msgid "Receivable"
-msgstr "Piutang"
+msgstr ""
 
 msgctxt "view:account.move.line.group:"
 msgid "Credit"
-msgstr "Kredit"
+msgstr ""
 
 msgctxt "view:account.move.line.group:"
 msgid "Debit"
-msgstr "Debit"
+msgstr ""
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"
-msgstr "Info Lain"
+msgstr ""

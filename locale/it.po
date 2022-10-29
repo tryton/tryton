@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "field:account.move.line.group,date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Decorrenza"
 
 msgctxt "field:account.move.line.group,debit:"
 msgid "Debit"
