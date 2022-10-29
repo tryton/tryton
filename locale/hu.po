@@ -122,13 +122,14 @@ msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
 msgstr "Beszerzési rendelések"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
-msgid "Requests"
-msgstr "Beszerzési igények"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Requests"
-msgstr "Beszerzési igények"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -185,8 +186,8 @@ msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Requests"
-msgstr "Beszerzési igények"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"

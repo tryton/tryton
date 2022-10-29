@@ -123,11 +123,11 @@ msgid "Purchases"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
@@ -189,7 +189,7 @@ msgid "User in companies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr ""
 
 msgctxt "model:purchase.request,name:"

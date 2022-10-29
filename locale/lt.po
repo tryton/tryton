@@ -126,12 +126,11 @@ msgstr "Purchase Request"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
@@ -188,9 +187,8 @@ msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
 #, fuzzy

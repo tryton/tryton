@@ -141,12 +141,12 @@ msgstr "Управление на покупки"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Заявки за покупки"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Заявки за покупки"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
@@ -207,7 +207,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Requests"
+msgid "Purchase Requests"
 msgstr "Заявки за покупки"
 
 #, fuzzy

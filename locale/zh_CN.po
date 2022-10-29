@@ -125,13 +125,12 @@ msgstr "采购"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
-msgid "Requests"
-msgstr "申请"
+msgid "Purchase Requests"
+msgstr "采购申请"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Requests"
-msgstr "申请"
+msgid "Purchase Requests"
+msgstr "采购申请"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -190,10 +189,9 @@ msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "公司中的用户"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Requests"
-msgstr "申请"
+msgid "Purchase Requests"
+msgstr "采购申请"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
