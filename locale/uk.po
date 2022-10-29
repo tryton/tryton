@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr "3 raidžių kodas"
+msgstr "Трилітерний код"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Код"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr "Skaitmenų kodas"
+msgstr "Числовий код"
 
 msgctxt "field:country.country,flag:"
 msgid "Flag"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Назва"
 
 msgctxt "field:country.country,organizations:"
 msgid "Organizations"
@@ -33,21 +33,21 @@ msgstr ""
 #, fuzzy
 msgctxt "field:country.country,region:"
 msgid "Region"
-msgstr "Regionas"
+msgstr "Регіон"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
-msgstr "Regionas"
+msgstr "Адмін.поділи"
 
 #, fuzzy
 msgctxt "field:country.organization,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Код"
 
 #, fuzzy
 msgctxt "field:country.organization,countries:"
 msgid "Countries"
-msgstr "Šalys"
+msgstr "Країни"
 
 msgctxt "field:country.organization,members:"
 msgid "Members"
@@ -56,22 +56,20 @@ msgstr ""
 #, fuzzy
 msgctxt "field:country.organization,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Назва"
 
-#, fuzzy
 msgctxt "field:country.organization.member,active:"
 msgid "Active"
-msgstr "Veiksni"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:country.organization.member,country:"
 msgid "Country"
-msgstr "Šalis"
+msgstr "Країна"
 
-#, fuzzy
 msgctxt "field:country.organization.member,from_date:"
 msgid "From Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:country.organization.member,organization:"
 msgid "Organization"
@@ -81,57 +79,54 @@ msgctxt "field:country.organization.member,to_date:"
 msgid "To Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:country.postal_code,city:"
 msgid "City"
-msgstr "Miestas"
+msgstr "Місто"
 
-#, fuzzy
 msgctxt "field:country.postal_code,country:"
 msgid "Country"
-msgstr "Šalis"
+msgstr "Країна"
 
 msgctxt "field:country.postal_code,postal_code:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Поштовий індекс"
 
-#, fuzzy
 msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
-msgstr "Regionas"
+msgstr "Адмін.поділ"
 
 #, fuzzy
 msgctxt "field:country.region,code_numeric:"
 msgid "Numeric Code"
-msgstr "Skaitmenų kodas"
+msgstr "Числовий код"
 
 #, fuzzy
 msgctxt "field:country.region,countries:"
 msgid "Countries"
-msgstr "Šalys"
+msgstr "Країни"
 
 #, fuzzy
 msgctxt "field:country.region,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Назва"
 
 #, fuzzy
 msgctxt "field:country.region,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Батько"
 
 #, fuzzy
 msgctxt "field:country.region,subregions:"
 msgid "Subregions"
-msgstr "Southern Region"
+msgstr "Адмін.поділи"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr "Kodas"
+msgstr "Код"
 
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr "Šalis"
+msgstr "Країна"
 
 msgctxt "field:country.subdivision,flag:"
 msgid "Flag"
@@ -139,43 +134,43 @@ msgstr ""
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr "Pavadinimas"
+msgstr "Назва"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Батько"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr "Tipas"
+msgstr "Тип"
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
-msgstr "3 raidžių šalies ISO kodas."
+msgstr "Трилітерний код країни ISO."
 
 msgctxt "help:country.country,code:"
 msgid "The 2 chars ISO country code."
-msgstr "2 raidžių ISO kodas."
+msgstr "Дволітерний код країни ISO."
 
 msgctxt "help:country.country,code_numeric:"
 msgid "The ISO numeric country code."
-msgstr "Skaitmeninis ISO šalies kodas."
+msgstr "Числовий код країни ISO."
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
-msgstr "Pagrindinis šalies identifikatorius."
+msgstr "Основний ідентифікатор країни."
 
 msgctxt "help:country.postal_code,city:"
 msgid "The city associated with the postal code."
-msgstr ""
+msgstr "Місто, пов'язане з поштовим індексом."
 
 msgctxt "help:country.postal_code,country:"
 msgid "The country that contains the postal code."
-msgstr ""
+msgstr "Країна, яка містить поштовий індекс."
 
 msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
-msgstr ""
+msgstr "Адмін.поділ, де знаходиться поштовий індекс."
 
 msgctxt "help:country.region,code_numeric:"
 msgid "UN M49 region code."
@@ -183,23 +178,23 @@ msgstr ""
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
-msgstr "Regiono ISO kodas."
+msgstr "Код ISO адмін.поділу."
 
 msgctxt "help:country.subdivision,country:"
 msgid "The country where this subdivision is."
-msgstr "Šalis, kurioje yra regionas."
+msgstr "Країна, де знаходиться цей адмін.поділ."
 
 msgctxt "help:country.subdivision,name:"
 msgid "The main identifier of the subdivision."
-msgstr "Pagrindinis regiono identifikatorius."
+msgstr "Основний ідентифікатор адмін.поділу."
 
 msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
-msgstr ""
+msgstr "Додати адмін.поділ до батька."
 
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr "Šalis"
+msgstr "Країна"
 
 msgctxt "model:country.organization,name:"
 msgid "Organization"
@@ -224,12 +219,12 @@ msgstr ""
 #, fuzzy
 msgctxt "model:country.organization,name:organization_can"
 msgid "Andean Community"
-msgstr "Autonominė savivalda"
+msgstr "Міська громада"
 
 #, fuzzy
 msgctxt "model:country.organization,name:organization_caricom"
 msgid "Caribbean Community"
-msgstr "Autonominė savivalda"
+msgstr "Міська громада"
 
 msgctxt "model:country.organization,name:organization_cemac"
 msgid "Economic and Monetary Community of Central Africa"
@@ -246,7 +241,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:country.organization,name:organization_eac"
 msgid "East African Community"
-msgstr "Autonominė savivalda"
+msgstr "Міська громада"
 
 msgctxt "model:country.organization,name:organization_eccas"
 msgid "Economic Community of Central African States"
@@ -256,10 +251,9 @@ msgctxt "model:country.organization,name:organization_ecowas"
 msgid "Economic Community of West African States"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.organization,name:organization_eu"
 msgid "European Union"
-msgstr "La Union"
+msgstr ""
 
 msgctxt "model:country.organization,name:organization_gcc"
 msgid "Cooperation Council for the Arab States of the Gulf"
@@ -269,10 +263,9 @@ msgctxt "model:country.organization,name:organization_igad"
 msgid "Intergovernmental Authority on Development"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.organization,name:organization_mercosur"
 msgid "Southern Common Market"
-msgstr "Southern Leyte"
+msgstr ""
 
 msgctxt "model:country.organization,name:organization_nafta"
 msgid "North American Free Trade Agreement"
@@ -292,168 +285,141 @@ msgstr ""
 
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
-msgstr ""
+msgstr "Поштовий індекс"
 
 #, fuzzy
 msgctxt "model:country.region,name:"
 msgid "Region"
-msgstr "Regionas"
+msgstr "Регіон"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_americas"
 msgid "Americas"
-msgstr "Amerikos Samoa"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_antarctica"
 msgid "Antarctica"
-msgstr "Antarktida"
+msgstr ""
 
 msgctxt "model:country.region,name:region_asia"
 msgid "Asia"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_australia_new_zealand"
 msgid "Australia and New Zealand"
-msgstr "Naujoji Zelandija"
+msgstr ""
 
 msgctxt "model:country.region,name:region_caribbean"
 msgid "Caribbean"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_central_america"
 msgid "Central America"
-msgstr "Central Abaco"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_central_asia"
 msgid "Central Asia"
-msgstr "Central Abaco"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:country.region,name:region_channel_islands"
 msgid "Channel Islands"
-msgstr "Kaimanų salos"
+msgstr "Ланцюг (островів)"
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_africa"
 msgid "Eastern Africa"
-msgstr "Eastern Equatoria"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_asia"
 msgid "Eastern Asia"
-msgstr "Rytų Kapas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_eastern_europe"
 msgid "Eastern Europe"
-msgstr "Rytų Kapas"
+msgstr ""
 
 msgctxt "model:country.region,name:region_europe"
 msgid "Europe"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_latin_america_caribbean"
 msgid "Latin America and the Caribbean"
-msgstr "Sent Vinsentas ir Grenadinai"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_melanesia"
 msgid "Melanesia"
-msgstr "Malaka"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_micronesia"
 msgid "Micronesia"
-msgstr "Misionesas"
+msgstr ""
 
 msgctxt "model:country.region,name:region_middle_africa"
 msgid "Middle Africa"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_north_america"
 msgid "North America"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_africa"
 msgid "Northern Africa"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_america"
 msgid "Northern America"
-msgstr "Northern Samar"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_northern_europe"
 msgid "Northern Europe"
-msgstr "Šiaurės Kapas"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_oceania"
 msgid "Oceania"
-msgstr "Chania"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_polynesia"
 msgid "Polynesia"
-msgstr "Prancūzijos Polinezija"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_south-eastern_asia"
 msgid "South-eastern Asia"
-msgstr "North-Western"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_south_america"
 msgid "South America"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_africa"
 msgid "Southern Africa"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_asia"
 msgid "Southern Asia"
-msgstr "Southern"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_southern_europe"
 msgid "Southern Europe"
-msgstr "Southern"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_sub-saharan_africa"
 msgid "Sub-Saharan Africa"
-msgstr "Pietų Afrika"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_africa"
 msgid "Western Africa"
-msgstr "Vakarų Australija"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_asia"
 msgid "Western Asia"
-msgstr "Vakarų Australija"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.region,name:region_western_europe"
 msgid "Western Europe"
-msgstr "Vakarų Kapas"
+msgstr ""
 
 msgctxt "model:country.region,name:region_world"
 msgid "World"
@@ -461,16 +427,16 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr "Regionas"
+msgstr "Адмін.поділ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_country_by_region"
 msgid "Countries by Region"
-msgstr "Central Region"
+msgstr "Країни"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Šalys"
+msgstr "Країни"
 
 msgctxt "model:ir.action,name:act_organization_form"
 msgid "Organizations"
@@ -478,26 +444,26 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
-msgstr ""
+msgstr "Поштові індекси"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_region_form"
 msgid "Regions"
-msgstr "Regionas"
+msgstr "Регіон"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_region_tree"
 msgid "Areas"
-msgstr "Sritis"
+msgstr "Область"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_country"
 msgid "Countries"
-msgstr "Šalys"
+msgstr "Країни"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr "Šalys"
+msgstr "Країни"
 
 msgctxt "model:ir.ui.menu,name:menu_organization_form"
 msgid "Organizations"
@@ -506,577 +472,553 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_region_form"
 msgid "Regions"
-msgstr "Regionas"
+msgstr "Регіон"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_region_tree"
 msgid "Areas"
-msgstr "Sritis"
+msgstr "Область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr "Valdymas"
+msgstr "Адміністрація"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr "Administracinis regionas"
+msgstr "Адміністративний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
-msgstr "Administracinė teritorija"
+msgstr "Адміністративна територія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
-msgstr "Administracinė sritis"
+msgstr "Адміністративна область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr "Administracinis atolas"
+msgstr "Адміністративний атол"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative precinct"
-msgstr "Administracinis regionas"
+msgstr "Адміністративна дільниця"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
-msgstr "Arkties regionas"
+msgstr "Арктичний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr "Sritis"
+msgstr "Область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
-msgstr "Atolas"
+msgstr "Атол"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr "Autonominis miestas"
+msgstr "Автономне місто"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr "Autonominė komuna"
+msgstr "Автономна комуна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr "Autonominė apygarda"
+msgstr "Автономний округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
-msgstr "Autonominė provincija"
+msgstr "Автономна провінція"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
-msgstr "Autonominis regionas"
+msgstr "Автономний регіон"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous city in north africa"
-msgstr "Autonominė apygarda"
+msgstr "Автономне місто в Північній Африці"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr "Autonominės savivaldos"
+msgstr "Автономні громади"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr "Autonominė savivalda"
+msgstr "Автономна громада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr "Autonominė sala"
+msgstr "Автономний острів"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
-msgstr "Autonominė vienuolių valstybė"
+msgstr "Автономний чернечий штат"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr "Autonominis municipalitetas"
+msgstr "Автономний муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr "Autonominė respublika"
+msgstr "Автономна республіка"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
-msgstr "Autonominis sektorius"
+msgstr "Автономний сектор"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territorial unit"
-msgstr "Autonominis teritorinis vienetas"
+msgstr "Автономна територіальна одиниця"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
-msgstr "Autonominė teritorija"
+msgstr "Автономна територія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
-msgstr "Miestas su grafystės teisėmis"
+msgstr "Район"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
-msgstr "Kantonas"
+msgstr "Кантон"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital"
-msgstr "Sostinė"
+msgstr "Столиця"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
-msgstr "Sostinės rajonas"
+msgstr "Столичний округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
-msgstr "Sostinės metropolio miestas"
+msgstr "Столичне місто метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
-msgstr "Sostinės teritorija"
+msgstr "Столична територія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
-msgstr "Sostinė"
+msgstr "Столичне місто"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Chain (of islands)"
-msgstr "Salų grandinė"
+msgstr "Ланцюг (островів)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
-msgstr "Salų grandinė"
+msgstr "Ланцюги (островів)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
-msgstr "Miestas"
+msgstr "Місто"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
-msgstr "Miestų susivienijimas"
+msgstr "Міська корпорація"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "City municipality"
-msgstr "Municipalitetas"
+msgstr "Муніципалітет міста"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
-msgstr "Miestas su apskrities teisėmis"
+msgstr "Місто з правами повіту"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
-msgstr "Komuna"
+msgstr "Комуна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
-msgstr "Konstitucinė provincija"
+msgstr "Конституційна провінція"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
-msgstr "Tarybos sritis"
+msgstr "Територія ради"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
-msgstr "Šalis"
+msgstr "Країна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "Grafystė"
+msgstr "Повіт"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Decentralized regional entity"
-msgstr ""
+msgstr "Децентралізований регіональний суб'єкт"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
-msgstr "Departamentas"
+msgstr "Департамент"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr "Priklausomybė"
+msgstr "Залежність"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
-msgstr "Vystymo regionas"
+msgstr "Регіон розвитку"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District"
-msgstr "Apygarda"
+msgstr "Округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
-msgstr "Miesto tarybos apygarda"
+msgstr "Територія окружної ради"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "District municipality"
-msgstr "Nairobi Municipality"
+msgstr "Окружний муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District with special status"
-msgstr ""
+msgstr "Округ з особливим статусом"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Districts under republic administration"
-msgstr ""
+msgstr "Округи республіканського управління"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
-msgstr "Sritis"
+msgstr "Поділ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic Prefecture"
-msgstr "Ekonominė prefektūra"
+msgstr "Економічна префектура"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic region"
-msgstr "Ekonominis regionas"
+msgstr "Економічний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
-msgstr "Emiratas"
+msgstr "Емірат"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
-msgstr "Teisinis vienetas"
+msgstr "Суб'єкт"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr "Federalinė priklausomybė"
+msgstr "Федеральна залежність"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
-msgstr "Federalinė apygarda"
+msgstr "Федеральний округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
-msgstr "Federalinė teritorija"
+msgstr "Федеральні території"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territory"
-msgstr "Federalinė teritorija"
+msgstr "Федеральна територія"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
-msgstr "Australijos sostinės teritorija"
+msgstr "Територія федеральної столиці"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
-msgstr ""
+msgstr "Вільний муніципальний консорціум"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
-msgstr "Geografinis teisinis vienetas"
+msgstr "Географічний суб'єкт"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
-msgstr "Geografinis regionas"
+msgstr "Географічний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
-msgstr "Geografinis vienetas"
+msgstr "Географічна одиниця"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
-msgstr "Provincija"
+msgstr "Губернаторство"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Group of islands (20 inhabited islands)"
-msgstr ""
+msgstr "Група островів (20 населених островів)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
-msgstr "Papildantis vienetas"
+msgstr "Включено для повноти"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Indigenous region"
-msgstr "Vietinis regionas"
+msgstr "Регіон корінних народів"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island"
-msgstr "Sala"
+msgstr "Острів"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island council"
-msgstr "Salos taryba"
+msgstr "Рада острова"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
-msgstr "Salų grupė"
+msgstr "Група островів"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Islands, groups of islands"
-msgstr "Salų grupė"
+msgstr "Острови, групи островів"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Land"
-msgstr "Landai"
+msgstr "Земля"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
-msgstr "Vietinė taryba"
+msgstr "Місцева рада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
-msgstr "Londono rajonas"
+msgstr "Район Лондона"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan administration"
-msgstr "Metropolio rajonas"
+msgstr "Адміністрація метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
-msgstr "Metropolio miestai"
+msgstr "Міста метрополії"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan city"
-msgstr "Metropolio miestai"
+msgstr "Місто метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan collectivity with special status"
-msgstr ""
+msgstr "Громада метрополії з особливим статусом"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
-msgstr "Metropolio departamentas"
+msgstr "Департамент метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan district"
-msgstr "Metropolio rajonas"
+msgstr "Округ метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan region"
-msgstr "Metropolio regionas"
+msgstr "Регіон метрополії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
-msgstr "Municipalitetai"
+msgstr "Муніципалітети"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipality"
-msgstr "Municipalitetas"
+msgstr "Муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Nation"
-msgstr "Tauta"
+msgstr "Край"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Oblast"
-msgstr "Sritis"
+msgstr "Область_"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
-msgstr "Aplinkinės sritys"
+msgstr "Віддалена територія"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity"
-msgstr "Užjūrio teritorinis junginys"
+msgstr "Закордонна громада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas collectivity with special status"
-msgstr ""
+msgstr "Закордонна громада з особливим статусом"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
-msgstr "Užjūrio departamentas"
+msgstr "Закордонний департамент"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
-msgstr "Užjūrio regionas"
+msgstr "Закордонний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region/department"
-msgstr "Užjūrio regionas/departamentas"
+msgstr "Закордонний регіон/департамент"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
-msgstr "Užjūrio teritorinis junginys"
+msgstr "Закордонна територіальна громада"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
-msgstr "Užjūrio regionas"
+msgstr "Закордонна територія"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
-msgstr "Administracinė sritis"
+msgstr "Пакистанська територія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr "Grafystės apygarda"
+msgstr "Парафія"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularate"
-msgstr "Apygardos"
+msgstr "Шабія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
-msgstr "Apygardos"
+msgstr "Шабії"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Prefecture"
-msgstr "Prefektūra"
+msgstr "Префектура"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
-msgstr "Kunigaikštystė"
+msgstr "Князівство"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Province"
-msgstr "Provincija"
+msgstr "Провінція"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
-msgstr "Kvartalas"
+msgstr "Квартал"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr "Rajonas"
+msgstr "Район_"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
-msgstr "Regionas"
+msgstr "Регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
-msgstr "Regiono taryba"
+msgstr "Регіональна рада"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional state"
-msgstr "Regiono taryba"
+msgstr "Регіональний штат"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
-msgstr "Respublika"
+msgstr "Республіка"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
-msgstr "Respublikos miestas"
+msgstr "Республіканське місто"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rural municipality"
-msgstr "Specialus municipalitetas"
+msgstr "Сільський муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
-msgstr "Savivaldi dalis"
+msgstr "Самоврядна частина"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
-msgstr "Speciali apygarda"
+msgstr "Особливий округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
-msgstr "Specialus municipalitetas"
+msgstr "Особливий муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
-msgstr "Specialus regionas"
+msgstr "Особливий регіон"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative city"
-msgstr "Specialus administracinis regionas"
+msgstr "Особливе адміністративне місто"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
-msgstr "Specialus administracinis regionas"
+msgstr "Особливий адміністративний регіон"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
-msgstr "Specialus miestas"
+msgstr "Особливе місто"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
-msgstr "Specialios priklausomybės sala"
+msgstr "Особлива влада островів"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Special self-governing city"
-msgstr "Specialus miestas"
+msgstr "Особливе самоврядне місто"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special self-governing province"
-msgstr ""
+msgstr "Особлива самоврядна провінція"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
-msgstr "Speciali zona"
+msgstr "Особлива зона"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr "Valstija"
+msgstr "Штат"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
-msgstr "Teritorinis vienetas"
+msgstr "Територіальна одиниця"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
-msgstr "Teritorija"
+msgstr "Територія"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Town"
-msgstr "Hope Town"
+msgstr "Містечко"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
-msgstr "Miesto taryba"
+msgstr "Міська рада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Two-tier county"
-msgstr "Dviejų lygių apygarda"
+msgstr "Дворівневий повіт"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Union territory"
-msgstr "Suvienyta teritorija"
+msgstr "Територія Союзу"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority"
-msgstr "Vieningas valdymas"
+msgstr "Унітарна влада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (england)"
-msgstr "Vieningas valdymas (Anglija)"
+msgstr "Унітарна влада (Англія)"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (wales)"
-msgstr "Vieningas valdymas (Velsas)"
+msgstr "Унітарна влада (Уельс)"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Urban community"
-msgstr "Autonominė savivalda"
+msgstr "Міська громада"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Urban municipality"
-msgstr "Nairobi Municipality"
+msgstr "Міський муніципалітет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Voivodship"
-msgstr ""
+msgstr "Воєводство"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Ward"
-msgstr "Wardak"
+msgstr "Виборчий округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"
-msgstr "Zona"
+msgstr "зона"

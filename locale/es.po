@@ -14,13 +14,65 @@ msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
 msgstr "Código numérico"
 
+msgctxt "field:country.country,flag:"
+msgid "Flag"
+msgstr "Bandera"
+
+msgctxt "field:country.country,members:"
+msgid "Members"
+msgstr "Miembros"
+
 msgctxt "field:country.country,name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:country.country,organizations:"
+msgid "Organizations"
+msgstr "Organizaciones"
+
+msgctxt "field:country.country,region:"
+msgid "Region"
+msgstr "Región"
+
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Subdivisiones"
+
+msgctxt "field:country.organization,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:country.organization,countries:"
+msgid "Countries"
+msgstr "Países"
+
+msgctxt "field:country.organization,members:"
+msgid "Members"
+msgstr "Miembros"
+
+msgctxt "field:country.organization,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:country.organization.member,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:country.organization.member,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:country.organization.member,from_date:"
+msgid "From Date"
+msgstr "Desde la fecha"
+
+msgctxt "field:country.organization.member,organization:"
+msgid "Organization"
+msgstr "Organización"
+
+msgctxt "field:country.organization.member,to_date:"
+msgid "To Date"
+msgstr "Hasta la fecha"
 
 msgctxt "field:country.postal_code,city:"
 msgid "City"
@@ -38,6 +90,26 @@ msgctxt "field:country.postal_code,subdivision:"
 msgid "Subdivision"
 msgstr "Subdivisión"
 
+msgctxt "field:country.region,code_numeric:"
+msgid "Numeric Code"
+msgstr "Código numérico"
+
+msgctxt "field:country.region,countries:"
+msgid "Countries"
+msgstr "Países"
+
+msgctxt "field:country.region,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:country.region,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:country.region,subregions:"
+msgid "Subregions"
+msgstr "Subregiones"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Código"
@@ -45,6 +117,10 @@ msgstr "Código"
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
 msgstr "País"
+
+msgctxt "field:country.subdivision,flag:"
+msgid "Flag"
+msgstr "Bandera"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -86,6 +162,10 @@ msgctxt "help:country.postal_code,subdivision:"
 msgid "The subdivision where the postal code is."
 msgstr "La subdivisión dónde se encuentra el código postal."
 
+msgctxt "help:country.region,code_numeric:"
+msgid "UN M49 region code."
+msgstr "Código región UN M49."
+
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
 msgstr "El código ISO de la subdivisión."
@@ -106,25 +186,277 @@ msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "País"
 
+msgctxt "model:country.organization,name:"
+msgid "Organization"
+msgstr "Organización"
+
+msgctxt "model:country.organization,name:organization_amu"
+msgid "Arab Maghreb Union"
+msgstr "Unión del Magreb Árabe"
+
+msgctxt "model:country.organization,name:organization_apec"
+msgid "Asia-Pacific Economic Cooperation"
+msgstr "Cooperación Económica Asia/Pacífico"
+
+msgctxt "model:country.organization,name:organization_asean"
+msgid "Association of Southeast Asian Nations"
+msgstr "Asociación de Naciones de Asia Sudoriental"
+
+msgctxt "model:country.organization,name:organization_benelux"
+msgid "Benelux Union"
+msgstr "Union del benelux"
+
+msgctxt "model:country.organization,name:organization_can"
+msgid "Andean Community"
+msgstr "Comunidad Andina"
+
+msgctxt "model:country.organization,name:organization_caricom"
+msgid "Caribbean Community"
+msgstr "Comunidad caribeña"
+
+msgctxt "model:country.organization,name:organization_cemac"
+msgid "Economic and Monetary Community of Central Africa"
+msgstr "Comunidad económica y monetaria del África central"
+
+msgctxt "model:country.organization,name:organization_cen-sad"
+msgid "Community of Sahel–Saharan States"
+msgstr "Comunidad de Estados del Sahel y el Sahara"
+
+msgctxt "model:country.organization,name:organization_comesa"
+msgid "Common Market for Eastern and Southern Africa"
+msgstr "Mercado único del África Oriental y del Sur"
+
+msgctxt "model:country.organization,name:organization_eac"
+msgid "East African Community"
+msgstr "Comunidad del Africa del Este"
+
+msgctxt "model:country.organization,name:organization_eccas"
+msgid "Economic Community of Central African States"
+msgstr "Comunidad económica de los estados del África central"
+
+msgctxt "model:country.organization,name:organization_ecowas"
+msgid "Economic Community of West African States"
+msgstr "Comunidad económica de los estados del África del oeste"
+
+msgctxt "model:country.organization,name:organization_eu"
+msgid "European Union"
+msgstr "Union europea"
+
+msgctxt "model:country.organization,name:organization_gcc"
+msgid "Cooperation Council for the Arab States of the Gulf"
+msgstr "Consejo de cooperación de los estados árabes del golfo"
+
+msgctxt "model:country.organization,name:organization_igad"
+msgid "Intergovernmental Authority on Development"
+msgstr "Autoridad del desarrollo Intergovernamental"
+
+msgctxt "model:country.organization,name:organization_mercosur"
+msgid "Southern Common Market"
+msgstr "Mercado común del sur"
+
+msgctxt "model:country.organization,name:organization_nafta"
+msgid "North American Free Trade Agreement"
+msgstr "Acuerdo de comercio libre de América del norte"
+
+msgctxt "model:country.organization,name:organization_sadc"
+msgid "Southern African Development Community"
+msgstr "Comunidad de desarrollo del África del sur"
+
+msgctxt "model:country.organization,name:organization_safta"
+msgid "South Asian Free Trade Area"
+msgstr "Área de mercado libre del sur asiático"
+
+msgctxt "model:country.organization.member,name:"
+msgid "Organization Member"
+msgstr "Miembro de la organización"
+
 msgctxt "model:country.postal_code,name:"
 msgid "Postal Code"
 msgstr "Código postal"
+
+msgctxt "model:country.region,name:"
+msgid "Region"
+msgstr "Región"
+
+msgctxt "model:country.region,name:region_africa"
+msgid "Africa"
+msgstr "África"
+
+msgctxt "model:country.region,name:region_americas"
+msgid "Americas"
+msgstr "América"
+
+msgctxt "model:country.region,name:region_antarctica"
+msgid "Antarctica"
+msgstr "Antártida"
+
+msgctxt "model:country.region,name:region_asia"
+msgid "Asia"
+msgstr "Asia"
+
+msgctxt "model:country.region,name:region_australia_new_zealand"
+msgid "Australia and New Zealand"
+msgstr "Australia y Nueva Zelanda"
+
+msgctxt "model:country.region,name:region_caribbean"
+msgid "Caribbean"
+msgstr "Caribe"
+
+msgctxt "model:country.region,name:region_central_america"
+msgid "Central America"
+msgstr "América central"
+
+msgctxt "model:country.region,name:region_central_asia"
+msgid "Central Asia"
+msgstr "Asia central"
+
+msgctxt "model:country.region,name:region_channel_islands"
+msgid "Channel Islands"
+msgstr "Islas del Canal"
+
+msgctxt "model:country.region,name:region_eastern_africa"
+msgid "Eastern Africa"
+msgstr "África oriental"
+
+msgctxt "model:country.region,name:region_eastern_asia"
+msgid "Eastern Asia"
+msgstr "Asia oriental"
+
+msgctxt "model:country.region,name:region_eastern_europe"
+msgid "Eastern Europe"
+msgstr "Europa oriental"
+
+msgctxt "model:country.region,name:region_europe"
+msgid "Europe"
+msgstr "Europa"
+
+msgctxt "model:country.region,name:region_latin_america_caribbean"
+msgid "Latin America and the Caribbean"
+msgstr "America latina y el caribe"
+
+msgctxt "model:country.region,name:region_melanesia"
+msgid "Melanesia"
+msgstr "Melanesia"
+
+msgctxt "model:country.region,name:region_micronesia"
+msgid "Micronesia"
+msgstr "Micronesia"
+
+msgctxt "model:country.region,name:region_middle_africa"
+msgid "Middle Africa"
+msgstr "Africa central"
+
+msgctxt "model:country.region,name:region_north_america"
+msgid "North America"
+msgstr "América del norte"
+
+msgctxt "model:country.region,name:region_northern_africa"
+msgid "Northern Africa"
+msgstr "África del norte"
+
+msgctxt "model:country.region,name:region_northern_america"
+msgid "Northern America"
+msgstr "América del norte"
+
+msgctxt "model:country.region,name:region_northern_europe"
+msgid "Northern Europe"
+msgstr "Europa del norte"
+
+msgctxt "model:country.region,name:region_oceania"
+msgid "Oceania"
+msgstr "Oceanía"
+
+msgctxt "model:country.region,name:region_polynesia"
+msgid "Polynesia"
+msgstr "Polinesia"
+
+msgctxt "model:country.region,name:region_south-eastern_asia"
+msgid "South-eastern Asia"
+msgstr "Sur-este asiático"
+
+msgctxt "model:country.region,name:region_south_america"
+msgid "South America"
+msgstr "América del sur"
+
+msgctxt "model:country.region,name:region_southern_africa"
+msgid "Southern Africa"
+msgstr "Suráfrica"
+
+msgctxt "model:country.region,name:region_southern_asia"
+msgid "Southern Asia"
+msgstr "Sudamérica"
+
+msgctxt "model:country.region,name:region_southern_europe"
+msgid "Southern Europe"
+msgstr "Europa del sur"
+
+msgctxt "model:country.region,name:region_sub-saharan_africa"
+msgid "Sub-Saharan Africa"
+msgstr "África subsahariana"
+
+msgctxt "model:country.region,name:region_western_africa"
+msgid "Western Africa"
+msgstr "África Occidental"
+
+msgctxt "model:country.region,name:region_western_asia"
+msgid "Western Asia"
+msgstr "Asia Occidental"
+
+msgctxt "model:country.region,name:region_western_europe"
+msgid "Western Europe"
+msgstr "Europa Occidental"
+
+msgctxt "model:country.region,name:region_world"
+msgid "World"
+msgstr "Mundo"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Subdivisión"
 
+msgctxt "model:ir.action,name:act_country_by_region"
+msgid "Countries by Region"
+msgstr "Países por región"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Países"
+
+msgctxt "model:ir.action,name:act_organization_form"
+msgid "Organizations"
+msgstr "Organizaciones"
 
 msgctxt "model:ir.action,name:act_postal_code_form"
 msgid "Postal Codes"
 msgstr "Códigos postales"
 
+msgctxt "model:ir.action,name:act_region_form"
+msgid "Regions"
+msgstr "Regiones"
+
+msgctxt "model:ir.action,name:act_region_tree"
+msgid "Areas"
+msgstr "Área"
+
+msgctxt "model:ir.ui.menu,name:menu_country"
+msgid "Countries"
+msgstr "Países"
+
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
 msgstr "Países"
+
+msgctxt "model:ir.ui.menu,name:menu_organization_form"
+msgid "Organizations"
+msgstr "Organizaciones"
+
+msgctxt "model:ir.ui.menu,name:menu_region_form"
+msgid "Regions"
+msgstr "Región"
+
+msgctxt "model:ir.ui.menu,name:menu_region_tree"
+msgid "Areas"
+msgstr "Área"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
