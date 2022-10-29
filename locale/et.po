@@ -288,6 +288,16 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Komisjoni agent"
 
+#, fuzzy
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "Komisjoni põhiosa"
+
+#, fuzzy
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Komisjonitasu"
+
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
 msgstr ""

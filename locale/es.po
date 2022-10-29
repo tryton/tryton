@@ -228,7 +228,7 @@ msgstr "Facturada"
 
 msgctxt "field:commission.reporting.context,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:commission.reporting.context,to_date:"
 msgid "To Date"
@@ -265,6 +265,14 @@ msgstr "Comisión principal"
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Agente comisión"
+
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "Precio comissión"
+
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Incluir comisiones"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."

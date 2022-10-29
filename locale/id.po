@@ -69,7 +69,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
@@ -109,15 +109,13 @@ msgctxt "field:commission.agent.selection,end_date:"
 msgid "End Date"
 msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:commission.agent.selection,party:"
 msgid "Party"
 msgstr "Pihak"
 
-#, fuzzy
 msgctxt "field:commission.agent.selection,start_date:"
 msgid "Start Date"
-msgstr "Tanggal Penulisan"
+msgstr "Tanggal Awal"
 
 msgctxt "field:commission.create_invoice.ask,agents:"
 msgid "Agents"
@@ -125,7 +123,7 @@ msgstr ""
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
@@ -277,6 +275,16 @@ msgstr ""
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "Komisi"
+
+#, fuzzy
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Komisi"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
@@ -618,11 +626,11 @@ msgstr ""
 
 msgctxt "selection:commission.reporting.context,period:"
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 msgctxt "selection:commission.reporting.context,period:"
 msgid "Year"
-msgstr ""
+msgstr "Tahun"
 
 msgctxt "selection:commission.reporting.context,type:"
 msgid "Incoming"

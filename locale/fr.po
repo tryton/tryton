@@ -266,6 +266,14 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Agent de commission"
 
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "Prix de commission"
+
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Inclure la commission"
+
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
 msgstr "L'agent qui reçoit une commission pour la facture."

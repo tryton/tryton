@@ -313,6 +313,16 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Commission Plans"
 
+#, fuzzy
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "Commission Plans"
+
+#, fuzzy
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Commission"
+
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
 msgstr ""

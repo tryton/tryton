@@ -129,7 +129,7 @@ msgstr "Agents"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr "da"
+msgstr "Da"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
@@ -288,6 +288,16 @@ msgstr "mandante"
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "agente"
+
+#, fuzzy
+msgctxt "field:stock.move,commission_price:"
+msgid "Commission Price"
+msgstr "mandante"
+
+#, fuzzy
+msgctxt "field:stock.reporting.margin.context,include_commission:"
+msgid "Include Commission"
+msgstr "Commission"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
@@ -605,10 +615,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Commission"
 msgstr "Commission"
 
-#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid "Cancelled"
-msgstr "annullato"
+msgstr "Annullato"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"
