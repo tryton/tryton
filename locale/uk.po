@@ -12,27 +12,27 @@ msgstr ""
 
 msgctxt "field:account.dunning.fee,journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,percentage:"
 msgid "Percentage"
-msgstr "Persentase"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,moves:"
 msgid "Moves"
-msgstr "Perpindahan"
+msgstr ""
 
 msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
@@ -80,8 +80,8 @@ msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "Percentage"
-msgstr "Persentase"
+msgstr ""
 
 msgctxt "view:account.dunning.fee:"
 msgid "%"
-msgstr "%"
+msgstr ""
