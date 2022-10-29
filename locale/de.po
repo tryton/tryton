@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,consolidation:"
+msgid "Consolidation"
+msgstr "Konsolidierung"
+
+msgctxt "field:account.consolidation,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.consolidation,amount_cmp:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.consolidation,assets:"
+msgid "Assets"
+msgstr "Anlagen"
+
+msgctxt "field:account.consolidation,children:"
+msgid "Children"
+msgstr "Untergeordnet (Konsolidierung)"
+
+msgctxt "field:account.consolidation,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.consolidation,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.consolidation,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Konsolidierung)"
+
+msgctxt "field:account.consolidation,statement:"
+msgid "Statement"
+msgstr "Geschäftsbericht"
+
+msgctxt "field:account.consolidation,types:"
+msgid "Types"
+msgstr "Typen"
+
+msgctxt "field:account.consolidation.balance_sheet.context,companies:"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "field:account.consolidation.balance_sheet.context,comparison:"
+msgid "Comparison"
+msgstr "Vergleich"
+
+msgctxt "field:account.consolidation.balance_sheet.context,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.consolidation.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "Nur festgeschriebene Buchungssätze"
+
+msgctxt "field:account.consolidation.income_statement.context,companies:"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "field:account.consolidation.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "Vergleich"
+
+msgctxt "field:account.consolidation.income_statement.context,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:account.consolidation.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "Nur festgeschriebene Buchungssätze"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:account.invoice,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Mutterunternehmen"
+
+msgctxt "field:account.move,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Mutterunternehmen"
+
+msgctxt "field:account.move.line,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Mutterunternehmen"
+
+msgctxt "help:account.consolidation.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "Nur festgeschriebene Buchungssätze berücksichtigen."
+
+msgctxt "help:account.consolidation.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "Nur festgeschriebene Buchungssätze berücksichtigen."
+
+msgctxt "model:account.consolidation,name:"
+msgid "Account Consolidation"
+msgstr "Buchhaltung Konsolidierung"
+
+msgctxt "model:account.consolidation.balance_sheet.context,name:"
+msgid "Consolidation Balance Sheet Context"
+msgstr "Konsolidierte Bilanz Kontext"
+
+msgctxt "model:account.consolidation.income_statement.context,name:"
+msgid "Consolidation Income Statement Context"
+msgstr "Konsolidierte Gewinn- und Verlustrechnung Kontext"
+
+msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"
+msgid "Consolidated Balance Sheet"
+msgstr "Konsolidierte Bilanz"
+
+msgctxt "model:ir.action,name:act_consolidation_income_statement_tree"
+msgid "Consolidated Income Statement"
+msgstr "Konsolidierte Gewinn- und Verlustrechnung"
+
+msgctxt "model:ir.action,name:act_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Konsolidierungen"
+
+msgctxt "model:ir.action,name:act_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Konsolidierungen"
+
+msgctxt "model:ir.action,name:report_consolidation_statement"
+msgid "Statement"
+msgstr "Geschäftsbericht"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Konsolidierungen"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Konsolidierungen"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_balance_sheet"
+msgid "Consolidated Balance Sheet"
+msgstr "Konsolidierte Bilanz"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_income_statement"
+msgid "Consolidated Income Statement"
+msgstr "Konsolidierte Gewinn- und Verlustrechnung"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Balance Sheet"
+msgstr "Bilanz"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Companies:"
+msgstr "Unternehmen:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "From Date:"
+msgstr "Von Datum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Income Statement"
+msgstr "Gewinn- und Verlustrechnung (GuV)"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Print Date:"
+msgstr "Druckdatum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Statement"
+msgstr "Geschäftsbericht"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "To"
+msgstr "Bis"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "User:"
+msgstr "Benutzer:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "at"
+msgstr "um"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Balance"
+msgstr "Bilanz"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Income"
+msgstr "Gewinn- und Verlustrechnung (GuV)"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Off-Balance"
+msgstr "Bilanzneutrale Positionen"
+
+msgctxt "view:account.consolidation:"
+msgid "Comparison"
+msgstr "Vergleich"
