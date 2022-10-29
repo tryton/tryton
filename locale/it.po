@@ -28,31 +28,29 @@ msgctxt "field:project.work,parent:"
 msgid "Parent"
 msgstr "Padre"
 
-#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr ""
+msgstr "Indirizzo contatto"
 
 msgctxt "field:project.work,path:"
 msgid "Path"
-msgstr ""
+msgstr "Percorso"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr ""
+msgstr "Progresso"
 
-#, fuzzy
 msgctxt "field:project.work,status:"
 msgid "Status"
 msgstr "Stato"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "Disponibile sul registro delle attività"
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"

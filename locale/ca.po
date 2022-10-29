@@ -189,7 +189,7 @@ msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
 "progress up to at least %(progress)s."
 msgstr ""
-"Per actualitzar el terball \"%(work)s\" al estat \"%(status)s\", heu "
+"Per actualitzar el treball \"%(work)s\" al estat \"%(status)s\", heu "
 "d'incrementar el seu progres com a mínim fins a %(progress)s."
 
 msgctxt "model:ir.message,text:msg_work_parent_progress"
