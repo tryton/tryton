@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,origin:"
 msgid "Origin"
-msgstr "Origine"
+msgstr ""
 
 msgctxt "field:stock.quantity.issue,planned_date:"
 msgid "Planned Date"
@@ -44,11 +44,11 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,warehouse:"
 msgid "Warehouse"
-msgstr "Magazzino"
+msgstr ""
 
 msgctxt "field:stock.quantity.issue.generate.start,warehouses:"
 msgid "Warehouses"
-msgstr "Magazzini"
+msgstr ""
 
 msgctxt "field:stock.quantity.issue.product,best_planned_date:"
 msgid "Best Planned Date"

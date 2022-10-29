@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:stock.quantity.issue,issue_products:"
 msgid "Issue Products"
@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:stock.quantity.issue,planned_date:"
 msgid "Planned Date"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:stock.quantity.issue.generate.start,warehouses:"
 msgid "Warehouses"
@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "help:stock.quantity.issue.generate.start,warehouses:"
 msgid "If empty all warehouses are used."
@@ -114,7 +114,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:quantity_issue_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Proses"
 
 msgctxt "model:ir.model.button,string:quantity_issue_solve_button"
 msgid "Solve"
@@ -170,11 +170,11 @@ msgstr ""
 
 msgctxt "view:stock.quantity.issue:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
 msgctxt "wizard_button:stock.quantity.issue.generate,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgctxt "wizard_button:stock.quantity.issue.generate,start,generate:"
 msgid "Generate"
