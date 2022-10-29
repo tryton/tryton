@@ -4,28 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.line,product_secondary_uom_category:"
 msgid "Product Secondary UOM Category"
-msgstr "Catégorie d'UDM secondaire du produit"
+msgstr ""
 
 msgctxt "field:account.invoice.line,secondary_quantity:"
 msgid "Secondary Quantity"
-msgstr "Quantité secondaire"
+msgstr ""
 
 msgctxt "field:account.invoice.line,secondary_unit:"
 msgid "Secondary Unit"
-msgstr "Unité secondaire"
+msgstr ""
 
 msgctxt "field:account.invoice.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr "Prix unitaire secondaire"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Quantity:"
-msgstr "Quantité :"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Unit Price:"
-msgstr "Prix unitaire :"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Unit:"
-msgstr "Unité :"
+msgstr ""
