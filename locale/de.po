@@ -154,6 +154,10 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Partei"
 
+msgctxt "field:account.statement.line,party_required:"
+msgid "Party Required"
+msgstr "Partei erforderlich"
+
 msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr "Zugeordnet zu"

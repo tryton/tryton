@@ -161,6 +161,10 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Kontrahentas"
 
+msgctxt "field:account.statement.line,party_required:"
+msgid "Party Required"
+msgstr ""
+
 msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr ""

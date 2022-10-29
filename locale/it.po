@@ -151,14 +151,17 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Numero"
 
-#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr "Origins"
+msgstr "Origine"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Controparte"
+
+msgctxt "field:account.statement.line,party_required:"
+msgid "Party Required"
+msgstr ""
 
 msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
@@ -471,7 +474,7 @@ msgstr "Reconcile"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Verifica"
 
 msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
 msgid "User in companies"

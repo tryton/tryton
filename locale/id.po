@@ -10,10 +10,9 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.statement,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -41,11 +40,11 @@ msgstr ""
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
-msgstr ""
+msgstr "Berkas Asal"
 
 msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
-msgstr ""
+msgstr "ID Berkas Asal"
 
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
@@ -154,6 +153,10 @@ msgstr "Asal"
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Pihak"
+
+msgctxt "field:account.statement.line,party_required:"
+msgid "Party Required"
+msgstr ""
 
 msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
@@ -313,10 +316,9 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Journals"
-msgstr "Jurnal"
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
@@ -473,10 +475,9 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Journals"
-msgstr "Jurnal"
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
