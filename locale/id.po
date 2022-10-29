@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:carrier.credential.sendcloud,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:carrier.credential.sendcloud,public_key:"
 msgid "Public Key"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:carrier.sendcloud.address,address:"
 msgid "Address"
-msgstr ""
+msgstr "Alamat"
 
 msgctxt "field:carrier.sendcloud.address,sendcloud:"
 msgid "Sendcloud"
