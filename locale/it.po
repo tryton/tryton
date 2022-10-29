@@ -63,7 +63,7 @@ msgstr "posizioni valuta"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
