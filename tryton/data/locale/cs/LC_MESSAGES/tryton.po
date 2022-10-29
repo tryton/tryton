@@ -139,7 +139,17 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Nelze se spojit se serverem!"
+
 msgid "Too many requests. Try again later."
+msgstr ""
+
+msgid "Not found."
+msgstr ""
+
+msgid "Not Found."
 msgstr ""
 
 #, fuzzy
@@ -326,6 +336,10 @@ msgstr ""
 #, fuzzy
 msgid "Options"
 msgstr "_Volby"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Akce..."
 
 #, fuzzy
 msgid "Keyboard Shortcuts..."
@@ -948,8 +962,8 @@ msgid "%s (model name)"
 msgstr ""
 
 #, python-format
-msgid "%s (record name)"
-msgstr ""
+msgid "%s/Record Name"
+msgstr "%s/Název záznamu"
 
 msgid "What is the name of this export?"
 msgstr ""

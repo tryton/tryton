@@ -136,8 +136,20 @@ msgstr "Új verzió elérhető!"
 msgid "Download"
 msgstr "Letöltés"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Nem sikerült csatlakozni a kiszolgálóhoz."
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Nincs találat"
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Nincs találat"
 
 msgid "..."
 msgstr "..."
@@ -303,6 +315,10 @@ msgstr "Verzió ellenőrzése"
 
 msgid "Options"
 msgstr "Testreszabás"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Műveletek"
 
 msgid "Keyboard Shortcuts..."
 msgstr "Gyorsbillentyűk..."
@@ -878,8 +894,8 @@ msgid "%s (model name)"
 msgstr ""
 
 #, python-format
-msgid "%s (record name)"
-msgstr ""
+msgid "%s/Record Name"
+msgstr "%s/Rekord neve"
 
 msgid "What is the name of this export?"
 msgstr "Mi legyen az oszloplista neve?"

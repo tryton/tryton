@@ -134,7 +134,16 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+msgid "Could not get a session."
+msgstr ""
+
 msgid "Too many requests. Try again later."
+msgstr ""
+
+msgid "Not found."
+msgstr ""
+
+msgid "Not Found."
 msgstr ""
 
 #, fuzzy
@@ -301,6 +310,9 @@ msgid "Check Version"
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Documentation..."
 msgstr ""
 
 msgid "Keyboard Shortcuts..."
@@ -871,7 +883,7 @@ msgid "%s (model name)"
 msgstr ""
 
 #, python-format
-msgid "%s (record name)"
+msgid "%s/Record Name"
 msgstr ""
 
 msgid "What is the name of this export?"

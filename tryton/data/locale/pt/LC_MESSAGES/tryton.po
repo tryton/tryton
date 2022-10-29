@@ -136,8 +136,20 @@ msgstr "Nova versão disponível!"
 msgid "Download"
 msgstr "Baixar"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Não foi possível se conectar ao servidor"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Nenhum resultado encontrado."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Nenhum resultado encontrado."
 
 msgid "..."
 msgstr "..."
@@ -304,6 +316,10 @@ msgstr "Verificar Versão"
 
 msgid "Options"
 msgstr "Opções"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Ações..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Atalhos..."
@@ -897,8 +913,8 @@ msgstr "%s (texto)"
 msgid "%s (model name)"
 msgstr "%s (nome do modelo)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (nome do registro)"
 
 msgid "What is the name of this export?"

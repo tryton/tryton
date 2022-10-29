@@ -134,8 +134,20 @@ msgstr "Uus versioon on saadaval!"
 msgid "Download"
 msgstr "Allalaadimine"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Ei saanud serveriga ühendust"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Tulemusi ei leitud."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Tulemusi ei leitud."
 
 msgid "..."
 msgstr "..."
@@ -302,6 +314,10 @@ msgstr "Kontrolli versiooni"
 
 msgid "Options"
 msgstr "Valikud"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Toimingud..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Kiirklahvid..."
@@ -892,8 +908,8 @@ msgstr "%s (string)"
 msgid "%s (model name)"
 msgstr "%s (model name)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (record name)"
 
 msgid "What is the name of this export?"

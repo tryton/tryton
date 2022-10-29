@@ -136,8 +136,20 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Ni se možno povezati s strežnikom"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Brez rezultatov."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Brez rezultatov."
 
 msgid "..."
 msgstr "..."
@@ -312,6 +324,10 @@ msgstr ""
 #, fuzzy
 msgid "Options"
 msgstr "_Možnosti"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "_Ukrepi..."
 
 #, fuzzy
 msgid "Keyboard Shortcuts..."
@@ -911,8 +927,8 @@ msgstr "%s (niz)"
 msgid "%s (model name)"
 msgstr "%s (ime modela)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (ime zapisa)"
 
 msgid "What is the name of this export?"

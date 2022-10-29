@@ -134,8 +134,20 @@ msgstr "نسخه جدید در دسترس می باشد!"
 msgid "Download"
 msgstr "دانلود"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "نمی تواند به سرور متصل شود"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "نتیجه ای پیدا نشد."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "نتیجه ای پیدا نشد."
 
 msgid "..."
 msgstr "..."
@@ -302,6 +314,10 @@ msgstr "بررسی نسخه"
 
 msgid "Options"
 msgstr "گزینه‌ها"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "اقدامات..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "میانبرهای صفحه کلید..."
@@ -898,8 +914,8 @@ msgstr "متنی %s"
 msgid "%s (model name)"
 msgstr "نام مدل %s"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "نام پرونده %s"
 
 msgid "What is the name of this export?"

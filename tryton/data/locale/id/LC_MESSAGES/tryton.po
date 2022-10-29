@@ -51,7 +51,7 @@ msgid "By: "
 msgstr "Oleh: "
 
 msgid "Selection"
-msgstr ""
+msgstr "Pilihan"
 
 msgid "Cancel"
 msgstr "Batal"
@@ -130,8 +130,18 @@ msgstr "Versi baru tersedia!"
 msgid "Download"
 msgstr "Unduh"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Tidak dapat terhubung ke server."
+
 msgid "Too many requests. Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."
+
+msgid "Not found."
+msgstr ""
+
+msgid "Not Found."
+msgstr ""
 
 msgid "..."
 msgstr "..."
@@ -200,7 +210,7 @@ msgid "Relate..."
 msgstr ""
 
 msgid "Report..."
-msgstr ""
+msgstr "Laporan..."
 
 msgid "Print..."
 msgstr "Cetak..."
@@ -296,6 +306,9 @@ msgid "Check Version"
 msgstr "Periksa Versi"
 
 msgid "Options"
+msgstr ""
+
+msgid "Documentation..."
 msgstr ""
 
 msgid "Keyboard Shortcuts..."
@@ -408,37 +421,37 @@ msgid "List/Tree Shortcuts"
 msgstr ""
 
 msgid "Move Cursor"
-msgstr ""
+msgstr "Pindahkan Kursor"
 
 msgid "Move right"
-msgstr ""
+msgstr "Pindahkan ke kanan"
 
 msgid "Move left"
-msgstr ""
+msgstr "Pindahkan ke kiri"
 
 msgid "Move up"
-msgstr ""
+msgstr "Naikkan"
 
 msgid "Move down"
-msgstr ""
+msgstr "Turunkan"
 
 msgid "Move up of one page"
-msgstr ""
+msgstr "Naik satu halaman"
 
 msgid "Move down of one page"
-msgstr ""
+msgstr "Turun satu halaman"
 
 msgid "Move to top"
-msgstr ""
+msgstr "Pindahkan ke paling atas"
 
 msgid "Move to bottom"
-msgstr ""
+msgstr "Pindahkan ke paling bawah"
 
 msgid "Move to parent"
-msgstr ""
+msgstr "Pindahkan sebagai induk"
 
 msgid "Select all"
-msgstr ""
+msgstr "Pilih semua"
 
 msgid "Unselect all"
 msgstr ""
@@ -481,7 +494,7 @@ msgstr "Ferry"
 
 #, python-format
 msgid "Attachments (%s)"
-msgstr ""
+msgstr "Lampiran-Lampiran (%s)"
 
 msgid "Profile Editor"
 msgstr ""
@@ -508,7 +521,7 @@ msgid "Username:"
 msgstr ""
 
 msgid "Incompatible version of the server."
-msgstr ""
+msgstr "Versi server tidak sesuai."
 
 msgid "Could not connect to the server."
 msgstr "Tidak dapat terhubung ke server."
@@ -595,7 +608,7 @@ msgstr "Lampiran (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Catatan (%d/%d)"
 
 msgid "You have to select one record."
 msgstr ""
@@ -616,7 +629,7 @@ msgid "Edited at:"
 msgstr "Disunting pada:"
 
 msgid "Model:"
-msgstr ""
+msgstr "Model:"
 
 msgid "Are you sure to remove this record?"
 msgstr ""
@@ -654,7 +667,7 @@ msgid "Report"
 msgstr "Laporan"
 
 msgid "Open report"
-msgstr ""
+msgstr "Buka Laporan"
 
 msgid "Print"
 msgstr "Cetak"
@@ -663,7 +676,7 @@ msgid "Print report"
 msgstr "Cetak laporan"
 
 msgid "_Copy URL"
-msgstr ""
+msgstr "_Salin URL"
 
 msgid "Copy URL into clipboard"
 msgstr ""
@@ -869,7 +882,7 @@ msgid "%s (model name)"
 msgstr "%s (nama model)"
 
 #, python-format
-msgid "%s (record name)"
+msgid "%s/Record Name"
 msgstr ""
 
 msgid "What is the name of this export?"

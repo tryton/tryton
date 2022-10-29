@@ -138,8 +138,17 @@ msgstr "Esta disponible una nueva versión!"
 msgid "Download"
 msgstr "Descargar"
 
+msgid "Could not get a session."
+msgstr "No se ha podido obtener una sesión."
+
 msgid "Too many requests. Try again later."
 msgstr "Demasiadas peticiones. Inténtelo de nuevo más tarde."
+
+msgid "Not found."
+msgstr "No se ha encontrado."
+
+msgid "Not Found."
+msgstr "No se ha encontrado."
 
 msgid "..."
 msgstr "..."
@@ -305,6 +314,9 @@ msgstr "Comprobar versión"
 
 msgid "Options"
 msgstr "Opciones"
+
+msgid "Documentation..."
+msgstr "Documentación..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Combinaciones de teclas..."
@@ -878,8 +890,8 @@ msgid "%s (model name)"
 msgstr "%s (nombre del modelo)"
 
 #, python-format
-msgid "%s (record name)"
-msgstr "%s (nombre del registro)"
+msgid "%s/Record Name"
+msgstr "%s/Nombre del registro"
 
 msgid "What is the name of this export?"
 msgstr "¿Cuál es el nombre de esta exportación?"

@@ -136,8 +136,17 @@ msgstr "Eine neue Version ist verfügbar!"
 msgid "Download"
 msgstr "Herunterladen"
 
+msgid "Could not get a session."
+msgstr "Die Session-Anforderung ist fehlgeschlagen."
+
 msgid "Too many requests. Try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
+
+msgid "Not found."
+msgstr "Nicht gefunden."
+
+msgid "Not Found."
+msgstr "Nicht gefunden."
 
 msgid "..."
 msgstr "..."
@@ -303,6 +312,9 @@ msgstr "Nach neuer Version suchen"
 
 msgid "Options"
 msgstr "Einstellungen"
+
+msgid "Documentation..."
+msgstr "Dokumentation..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Tastenkombinationen..."
@@ -881,8 +893,8 @@ msgid "%s (model name)"
 msgstr "%s (Bezeichnung des Modells)"
 
 #, python-format
-msgid "%s (record name)"
-msgstr "%s (Bezeichnung des Datensatzes)"
+msgid "%s/Record Name"
+msgstr "%s/Bezeichnung des Datensatzes"
 
 msgid "What is the name of this export?"
 msgstr "Wie soll der Name des Exports lauten?"

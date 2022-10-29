@@ -134,8 +134,17 @@ msgstr "Hi ha una nova versió disponible!"
 msgid "Download"
 msgstr "Baixa"
 
+msgid "Could not get a session."
+msgstr "No s'ha pogut obtenir una sessió."
+
 msgid "Too many requests. Try again later."
 msgstr "Massa peticions. Proveu-ho de nou més tard."
+
+msgid "Not found."
+msgstr "No s'han trobat."
+
+msgid "Not Found."
+msgstr "No s'han trobat."
 
 msgid "..."
 msgstr "..."
@@ -301,6 +310,9 @@ msgstr "Comprova versió"
 
 msgid "Options"
 msgstr "Opcions"
+
+msgid "Documentation..."
+msgstr "Documentació..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Combinacions de tecles..."
@@ -874,8 +886,8 @@ msgid "%s (model name)"
 msgstr "%s (nom del model)"
 
 #, python-format
-msgid "%s (record name)"
-msgstr "%s (nom del registre)"
+msgid "%s/Record Name"
+msgstr "%s/Nom del registre"
 
 msgid "What is the name of this export?"
 msgstr "Quin és el nom d'aquesta exportació?"

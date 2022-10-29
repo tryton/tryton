@@ -133,8 +133,20 @@ msgstr "有新版本可用！"
 msgid "Download"
 msgstr "下载"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "无法连接服务器."
+
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."
+
+#, fuzzy
+msgid "Not found."
+msgstr "无符合条件的数据."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "无符合条件的数据."
 
 msgid "..."
 msgstr "..."
@@ -300,6 +312,10 @@ msgstr "检查版本"
 
 msgid "Options"
 msgstr "选项(_O)"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "操作..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "快捷键(K)..."
@@ -875,8 +891,8 @@ msgstr "%s (字符串)"
 msgid "%s (model name)"
 msgstr "%s (模型名称)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (记录名称)"
 
 msgid "What is the name of this export?"

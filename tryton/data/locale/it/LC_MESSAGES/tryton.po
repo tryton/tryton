@@ -134,8 +134,20 @@ msgstr "Una nuova versione è disponibile!"
 msgid "Download"
 msgstr "Scarica"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Impossibile connettersi al server."
+
 msgid "Too many requests. Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."
+
+#, fuzzy
+msgid "Not found."
+msgstr "Nessun risultato trovato."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Nessun risultato trovato."
 
 msgid "..."
 msgstr "..."
@@ -302,6 +314,10 @@ msgstr "Controlla la versione"
 
 msgid "Options"
 msgstr "Opzioni"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Azioni..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Scorciatoie da tastiera..."
@@ -881,8 +897,8 @@ msgstr "%s (stringa)"
 msgid "%s (model name)"
 msgstr "%s (nome modello)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (nome record)"
 
 msgid "What is the name of this export?"

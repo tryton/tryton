@@ -134,8 +134,20 @@ msgstr "Yra prieinama nauja versija!"
 msgid "Download"
 msgstr "Atsisiųsti"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Nepavyko prisijungti prie serverio"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Nerasta rezultatų."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Nerasta rezultatų."
 
 msgid "..."
 msgstr "..."
@@ -302,6 +314,10 @@ msgstr "Tikrinti versiją"
 
 msgid "Options"
 msgstr "Parinktys"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Veiksmai..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Trumpiniai..."
@@ -891,8 +907,8 @@ msgstr "%s (eilutė)"
 msgid "%s (model name)"
 msgstr "%s (modelio pavadinimas)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (įrašo pavadinimas)"
 
 msgid "What is the name of this export?"

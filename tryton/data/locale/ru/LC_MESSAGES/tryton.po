@@ -139,8 +139,20 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Не удается подключиться к серверу!"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "Ничего не найдено."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Ничего не найдено."
 
 #, fuzzy
 msgid "..."
@@ -322,6 +334,10 @@ msgstr ""
 #, fuzzy
 msgid "Options"
 msgstr "_Параметры"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Действия..."
 
 #, fuzzy
 msgid "Keyboard Shortcuts..."
@@ -934,8 +950,8 @@ msgid "%s (model name)"
 msgstr ""
 
 #, python-format
-msgid "%s (record name)"
-msgstr ""
+msgid "%s/Record Name"
+msgstr "%s/имя записи"
 
 msgid "What is the name of this export?"
 msgstr "Укажите имя для экспорта."

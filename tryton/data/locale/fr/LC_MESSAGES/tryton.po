@@ -136,8 +136,17 @@ msgstr "Un nouvelle version est disponible !"
 msgid "Download"
 msgstr "Télécharger"
 
+msgid "Could not get a session."
+msgstr "Impossible d'obtenir une session."
+
 msgid "Too many requests. Try again later."
 msgstr "Trop de demandes. Réessayez plus tard."
+
+msgid "Not found."
+msgstr "Pas trouvé."
+
+msgid "Not Found."
+msgstr "Pas trouvé."
 
 msgid "..."
 msgstr "..."
@@ -303,6 +312,9 @@ msgstr "Vérifier la version"
 
 msgid "Options"
 msgstr "Options"
+
+msgid "Documentation..."
+msgstr "Documentation..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Raccourcis clavier..."
@@ -871,15 +883,15 @@ msgstr "Ajouter les noms des champs"
 
 #, python-format
 msgid "%s (string)"
-msgstr "%s (string)"
+msgstr "%s (chaîne)"
 
 #, python-format
 msgid "%s (model name)"
-msgstr "%s (nom de l'enregistrement)"
+msgstr "%s (nom du modèle)"
 
 #, python-format
-msgid "%s (record name)"
-msgstr "%s (nom de l'enregistrement)"
+msgid "%s/Record Name"
+msgstr "%s/Nom de l'enregistrement"
 
 msgid "What is the name of this export?"
 msgstr "Quel est le nom de cet export ?"

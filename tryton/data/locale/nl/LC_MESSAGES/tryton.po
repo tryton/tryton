@@ -134,8 +134,17 @@ msgstr "Er is een nieuwe versie beschikbaar!"
 msgid "Download"
 msgstr "Download"
 
+msgid "Could not get a session."
+msgstr "Kan geen sessie krijgen."
+
 msgid "Too many requests. Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
+
+msgid "Not found."
+msgstr "Niet gevonden."
+
+msgid "Not Found."
+msgstr "Niet gevonden."
 
 msgid "..."
 msgstr "..."
@@ -302,6 +311,9 @@ msgstr "Controleer de versie"
 msgid "Options"
 msgstr "Opties"
 
+msgid "Documentation..."
+msgstr "Documentatie..."
+
 msgid "Keyboard Shortcuts..."
 msgstr "Sneltoetsen..."
 
@@ -309,7 +321,7 @@ msgid "About..."
 msgstr "Over..."
 
 msgid "Help"
-msgstr "Hulp"
+msgstr "Help"
 
 msgid "No result found."
 msgstr "Geen resultaat gevonden."
@@ -515,7 +527,7 @@ msgid "Incompatible version of the server."
 msgstr "Onjuiste versie van de server."
 
 msgid "Could not connect to the server."
-msgstr "Kan geen verbinding maken met de server."
+msgstr "Kan geen verbinding maken met server."
 
 msgid "Login"
 msgstr "Inlognaam"
@@ -874,8 +886,8 @@ msgid "%s (model name)"
 msgstr "%s (modelnaam)"
 
 #, python-format
-msgid "%s (record name)"
-msgstr "%s (recordnaam)"
+msgid "%s/Record Name"
+msgstr "%s/Record Naam"
 
 msgid "What is the name of this export?"
 msgstr "Wat is de naam voor deze export?"

@@ -137,8 +137,20 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບແມ່ຂ່າຍໄດ້"
+
 msgid "Too many requests. Try again later."
 msgstr ""
+
+#, fuzzy
+msgid "Not found."
+msgstr "ບໍ່ພົບຜົນຊອກຫາ"
+
+#, fuzzy
+msgid "Not Found."
+msgstr "ບໍ່ພົບຜົນຊອກຫາ"
 
 msgid "..."
 msgstr "..."
@@ -313,6 +325,10 @@ msgstr ""
 #, fuzzy
 msgid "Options"
 msgstr "_ທາງເລືອກ"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "ດຳເນີນການ..."
 
 #, fuzzy
 msgid "Keyboard Shortcuts..."
@@ -913,8 +929,8 @@ msgid "%s (model name)"
 msgstr ""
 
 #, python-format
-msgid "%s (record name)"
-msgstr ""
+msgid "%s/Record Name"
+msgstr "%s/ຊື່ບັນທຶກ"
 
 msgid "What is the name of this export?"
 msgstr "ຊື່ຂອງການສົ່ງອອກນີ້ແມ່ນຫຍັງ?"

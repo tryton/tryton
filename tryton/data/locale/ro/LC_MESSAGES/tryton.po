@@ -130,8 +130,20 @@ msgstr "O nouă versiune este disponibilă!"
 msgid "Download"
 msgstr "Descarca"
 
+#, fuzzy
+msgid "Could not get a session."
+msgstr "Nu s-a putut conecta la server."
+
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
+
+#, fuzzy
+msgid "Not found."
+msgstr "Niciun rezultat găsit."
+
+#, fuzzy
+msgid "Not Found."
+msgstr "Niciun rezultat găsit."
 
 msgid "..."
 msgstr "..."
@@ -297,6 +309,10 @@ msgstr "Verificare versiune"
 
 msgid "Options"
 msgstr "Opțiuni"
+
+#, fuzzy
+msgid "Documentation..."
+msgstr "Acțiuni..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Comenzi rapide..."
@@ -869,8 +885,8 @@ msgstr "%s (string)"
 msgid "%s (model name)"
 msgstr "%s (model name)"
 
-#, python-format
-msgid "%s (record name)"
+#, fuzzy, python-format
+msgid "%s/Record Name"
 msgstr "%s (denmire inregistrare)"
 
 msgid "What is the name of this export?"
