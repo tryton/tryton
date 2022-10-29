@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.rule,account:"
 msgid "Substitution Account"
-msgstr "Conto sostitutivo"
+msgstr ""
 
 msgctxt "field:account.account.rule,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:account.account.rule,end_date:"
 msgid "Ending Date"
-msgstr "Data Fine"
+msgstr ""
 
 msgctxt "field:account.account.rule,origin_account:"
 msgid "Original Account"
-msgstr "Conto originale"
+msgstr ""
 
 msgctxt "field:account.account.rule,return_:"
 msgid "Return"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:account.account.rule,start_date:"
 msgid "Starting Date"
-msgstr "Data di inizio"
+msgstr ""
 
 msgctxt "field:account.account.rule,tax:"
 msgid "Tax"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:account.account.rule,warehouse:"
 msgid "Warehouse"
-msgstr "Magazzino"
+msgstr ""
 
 msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."

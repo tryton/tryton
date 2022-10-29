@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.account.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.account.rule,end_date:"
 msgid "Ending Date"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:account.account.rule,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "field:account.account.rule,type:"
 msgid "Type"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:account.account.rule,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
@@ -60,20 +60,20 @@ msgstr ""
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Expense"
-msgstr ""
+msgstr "Biaya"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Payable"
-msgstr ""
+msgstr "Utang"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Receivable"
-msgstr ""
+msgstr "Piutang"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Revenue"
-msgstr ""
+msgstr "Pendapatan"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Stock"
-msgstr ""
+msgstr "Persediaan"
