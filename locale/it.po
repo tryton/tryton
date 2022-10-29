@@ -13,3 +13,7 @@ msgstr "Filigrana fattura pagata"
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr "BOZZA"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "PAGATO"

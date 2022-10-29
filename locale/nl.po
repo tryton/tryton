@@ -13,3 +13,7 @@ msgstr "Factuur watermerk Betaald"
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr "CONCEPT"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "BETAALD"

@@ -13,3 +13,7 @@ msgstr "Rechnung Wasserzeichen Bezahlt"
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr "ENTWURF"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "BEZAHLT"

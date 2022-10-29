@@ -13,3 +13,7 @@ msgstr ""
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr ""
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr ""

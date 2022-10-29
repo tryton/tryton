@@ -13,3 +13,7 @@ msgstr "Marca de agua factura pagada"
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr "BORRADOR"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "PAGADA"

@@ -13,3 +13,7 @@ msgstr "Filigrane de facture payée"
 msgctxt "report:account.invoice.watermark:"
 msgid "DRAFT"
 msgstr "BROUILLON"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "PAYÉE"
