@@ -233,6 +233,10 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr ""
 
+msgctxt "field:party.party,payment_identical_parties:"
+msgid "Identical Parties"
+msgstr ""
+
 msgctxt "field:party.party,reception_direct_debits:"
 msgid "Direct Debits"
 msgstr ""

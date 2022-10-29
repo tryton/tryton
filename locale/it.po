@@ -119,11 +119,11 @@ msgstr "Riga"
 
 msgctxt "field:account.payment,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:account.payment,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
 #, fuzzy
 msgctxt "field:account.payment,process_method:"
@@ -215,6 +215,10 @@ msgstr ""
 
 msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
+msgstr ""
+
+msgctxt "field:party.party,payment_identical_parties:"
+msgid "Identical Parties"
 msgstr ""
 
 msgctxt "field:party.party,reception_direct_debits:"
