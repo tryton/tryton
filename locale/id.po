@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:analytic_account.budget,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.budget,end_date:"
 msgid "End Date"
@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:analytic_account.budget,root:"
 msgid "Root"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.copy.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.budget.copy.start,end_date:"
 msgid "End Date"
@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.copy.start,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:analytic_account.budget.copy.start,start_date:"
 msgid "Start Date"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.budget.line,currency:"
 msgid "Currency"
@@ -92,11 +92,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:analytic_account.budget.line,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:analytic_account.budget.line,percentage:"
 msgid "Percentage"

@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.budget.line,right:"
 msgid "Right"
-msgstr "Destra"
+msgstr ""
 
 msgctxt "field:analytic_account.budget.line,root:"
 msgid "Root"
