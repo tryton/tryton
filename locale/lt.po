@@ -3,6 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
+msgctxt "field:product.product,subscription_services:"
+msgid "Subscription Services"
+msgstr "Subscription Services"
+
+#, fuzzy
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
 msgstr "Subscription Services"

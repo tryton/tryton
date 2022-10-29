@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:product.product,subscription_services:"
+msgid "Subscription Services"
+msgstr "Services d'abonnement"
+
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
 msgstr "Séquence d'abonnement"

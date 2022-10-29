@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:product.product,subscription_services:"
+msgid "Subscription Services"
+msgstr "Deskripsi"
+
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
 msgstr ""
@@ -107,10 +112,9 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.subscription.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
@@ -361,7 +365,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_subscription_invoice_relate"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
@@ -624,4 +628,4 @@ msgstr "Batal"
 
 msgctxt "wizard_button:sale.subscription.recurrence.rule.set.test,test,end:"
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
