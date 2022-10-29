@@ -80,7 +80,7 @@ msgstr "La URL on s'han d'enviar les factures."
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
 "Un codi segur de validació que confirma la recepció de la factura "
 "relacionada."

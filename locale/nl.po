@@ -80,9 +80,10 @@ msgstr "De url waar de facturen naar toe gestuurd moeten worden."
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
-"Een validatie code die het verzenden van de gerelateerde factuur bevestigd."
+"Een veilige validatie code die het verzenden van de gerelateerde factuur "
+"bevestigd."
 
 msgctxt "help:account.period,es_sii_send_invoices:"
 msgid "Check to create SII records for the invoices in the period."

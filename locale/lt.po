@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
 
 msgctxt "help:account.period,es_sii_send_invoices:"

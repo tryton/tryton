@@ -80,14 +80,14 @@ msgstr "La URL donde las facturas deberían enviarse."
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
 "Un código seguro de validación el cual confirma la recepción de la factura "
 "relacionada."
 
 msgctxt "help:account.period,es_sii_send_invoices:"
 msgid "Check to create SII records for the invoices in the period."
-msgstr "Marcar para crear registros SII para las facturas del período."
+msgstr "Marcar para crear registros SII para las facturas del periodo."
 
 msgctxt "model:account.credential.sii,name:"
 msgid "Account Credential SII"

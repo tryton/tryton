@@ -80,7 +80,7 @@ msgstr "Die URL an die Rechnungen versandt werden."
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
 "Ein sicherer Validierungscode der den Versand der zugehörigen Rechnung "
 "bestätigt."

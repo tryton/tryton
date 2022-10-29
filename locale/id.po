@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:account.credential.sii,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.credential.sii,es_sii_environment:"
 msgid "SII Environment"
@@ -40,11 +40,11 @@ msgstr ""
 
 msgctxt "field:account.invoice.sii,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
 msgctxt "field:account.invoice.sii,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.period,es_sii_send_invoices:"
 msgid "Send invoices to SII"
@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "help:account.invoice.sii,csv:"
 msgid ""
-"A secure validation code that confirms the delivery of the related Invoice."
+"A secure validation code that confirms the delivery of the related invoice."
 msgstr ""
 
 msgctxt "help:account.period,es_sii_send_invoices:"
@@ -147,7 +147,7 @@ msgstr ""
 
 msgctxt "selection:account.configuration,es_sii_environment:"
 msgid "Production"
-msgstr ""
+msgstr "Produksi"
 
 msgctxt "selection:account.configuration,es_sii_environment:"
 msgid "Staging"
@@ -155,7 +155,7 @@ msgstr ""
 
 msgctxt "selection:account.credential.sii,es_sii_environment:"
 msgid "Production"
-msgstr ""
+msgstr "Produksi"
 
 msgctxt "selection:account.credential.sii,es_sii_environment:"
 msgid "Staging"
