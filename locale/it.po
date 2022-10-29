@@ -50,7 +50,7 @@ msgstr "Azienda"
 
 msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Costo"
+msgstr "Prezzo di costo"
 
 msgctxt "field:product.cost_price,product:"
 msgid "Product"
@@ -116,7 +116,7 @@ msgstr "Consumabile"
 
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr "Costo"
+msgstr "Prezzo di costo"
 
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Price Method"
@@ -128,7 +128,7 @@ msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Costo"
+msgstr "Prezzo di costo"
 
 msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
@@ -209,7 +209,7 @@ msgstr "Consumabile"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Costo"
+msgstr "Prezzo di costo"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Price Method"

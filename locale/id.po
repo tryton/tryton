@@ -155,7 +155,7 @@ msgstr "Daftar Harga"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr ""
+msgstr "Daftar Harga"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
@@ -450,7 +450,6 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -526,18 +525,17 @@ msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Produk"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Kategori-kategori"
+msgstr "Kategori-Kategori"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Kategori-kategori"
+msgstr "Kategori-Kategori"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -552,7 +550,6 @@ msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -884,7 +881,7 @@ msgstr "Kategori Satuan Ukuran"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr ""
+msgstr "Panjang"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
@@ -978,10 +975,9 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Cabang"
 
-#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Sequences"
-msgstr "Urutan Produk"
+msgstr "Urutan-Urutan"
 
 msgctxt "view:product.template:"
 msgid "General"
