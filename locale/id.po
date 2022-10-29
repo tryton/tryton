@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
@@ -68,7 +68,7 @@ msgstr "Nomor"
 
 msgctxt "field:production,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -308,7 +308,6 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Produksi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -447,7 +446,6 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Produksi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"
