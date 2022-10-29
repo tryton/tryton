@@ -138,6 +138,31 @@ msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:marketing.automation.scenario,unsubscribable:"
+msgid "Unsubscribable"
+msgstr "Darse de baja"
+
+msgctxt "field:party.party,marketing_party:"
+msgid "Marketing Party"
+msgstr "Tercero del marketing"
+
+msgctxt "field:party.party,marketing_scenario_unsubscribed:"
+msgid "Marketing Automation Scenario Unsubscribed"
+msgstr "Escenarios de automatización de marketing no suscritos"
+
+msgctxt "field:party.party-unsubscribed-marketing.automation.scenario,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt ""
+"field:party.party-unsubscribed-marketing.automation.scenario,scenario:"
+msgid "Scenario"
+msgstr "Escenario"
+
+msgctxt "field:sale.sale,marketing_party:"
+msgid "Marketing Party"
+msgstr "Tercero del marketing"
+
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""
 "The PYSON statement that the record must match in order to execute the activity.\n"
@@ -183,6 +208,10 @@ msgctxt "help:marketing.automation.scenario,domain:"
 msgid "A PYSON domain used to filter records valid for this scenario."
 msgstr ""
 "Dominio PYSON usado para filtrar los registros válidos para este escenario."
+
+msgctxt "help:marketing.automation.scenario,unsubscribable:"
+msgid "If checked parties are also unsubscribed from the scenario."
+msgstr "Si se marca los terceros también se de-suscriben del escenario."
 
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"
@@ -293,6 +322,10 @@ msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
 msgid "E-Mail Opened"
 msgstr "Correo electrónico abierto"
 
+msgctxt "model:ir.model.button,string:record_block_button"
+msgid "Block"
+msgstr "Bloquear"
+
 msgctxt "model:ir.model.button,string:scenario_draft_button"
 msgid "Draft"
 msgstr "Borrador"
@@ -324,6 +357,10 @@ msgstr "Actividad del registro de marketing"
 msgctxt "model:marketing.automation.scenario,name:"
 msgid "Marketing Scenario"
 msgstr "Escenario de marketing"
+
+msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,name:"
+msgid "Party Unsubscribed Scenario"
+msgstr "Escenarios de-suscritos del tercero"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "Unsubscribe"
@@ -440,3 +477,7 @@ msgstr "Título:"
 msgctxt "view:marketing.automation.record.activity:"
 msgid "Time"
 msgstr "Hora"
+
+msgctxt "view:party.party:"
+msgid "Marketing Automation"
+msgstr "Automatización de marketing"
