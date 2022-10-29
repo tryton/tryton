@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:marketing.email,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:marketing.email,web_user:"
 msgid "Web User"
@@ -28,11 +28,15 @@ msgstr ""
 
 msgctxt "field:marketing.email.list,language:"
 msgid "Language"
-msgstr ""
+msgstr "Bahasa"
 
 msgctxt "field:marketing.email.list,name:"
 msgid "Name"
 msgstr "Nama"
+
+msgctxt "field:marketing.email.list,subscribed:"
+msgid "Subscribed"
+msgstr ""
 
 msgctxt "field:marketing.email.message,content:"
 msgid "Content"
@@ -68,11 +72,11 @@ msgstr ""
 
 msgctxt "field:marketing.email.send_test,message:"
 msgid "Message"
-msgstr ""
+msgstr "Pesan"
 
 msgctxt "help:marketing.email.message,from_:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr ""
+msgstr "Biarkan kosong untuk nilai yang ditentukan dalam file konfigurasi."
 
 msgctxt "model:ir.action,name:act_email_list_form"
 msgid "Mailing Lists"
@@ -205,6 +209,10 @@ msgstr ""
 
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sent"
+msgstr ""
+
+msgctxt "view:marketing.email.list:"
+msgid "Subscribed"
 msgstr ""
 
 msgctxt "view:marketing.email.message:"

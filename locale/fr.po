@@ -34,6 +34,10 @@ msgctxt "field:marketing.email.list,name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:marketing.email.list,subscribed:"
+msgid "Subscribed"
+msgstr "Abonné"
+
 msgctxt "field:marketing.email.message,content:"
 msgid "Content"
 msgstr "Contenu"
@@ -210,6 +214,10 @@ msgstr "Envoi en cours"
 msgctxt "selection:marketing.email.message,state:"
 msgid "Sent"
 msgstr "Envoyé"
+
+msgctxt "view:marketing.email.list:"
+msgid "Subscribed"
+msgstr "Abonné"
 
 msgctxt "view:marketing.email.message:"
 msgid "Edit"
