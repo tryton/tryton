@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
@@ -24,7 +24,7 @@ msgstr "Pihak"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr "Zona waktu"
+msgstr "Zona Waktu"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
@@ -84,7 +84,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:res.user,companies:"
 msgid "Companies"
-msgstr "Perusahaan-perusahaan"
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -170,7 +170,9 @@ msgstr ""
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "\n"
-"- \"employee\" from the current user"
+"- \"employee\" from the current user\n"
+"- \"employees\" as list of ids from the current user\n"
+"- \"companies\" as list of ids from the current user"
 msgstr ""
 
 #, fuzzy
@@ -221,7 +223,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Perusahaan-perusahaan"
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
@@ -249,7 +251,6 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company"
 msgid "Companies"
 msgstr "Perusahaan-Perusahaan"
