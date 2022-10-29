@@ -63,13 +63,18 @@ msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Timp Implicit de execuţie"
 
-msgctxt "field:product.configuration.default_lead_time,company:"
-msgid "Company"
-msgstr "Companie"
-
 msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Timp Implicit de execuţie"
+
+#, fuzzy
+msgctxt "field:product.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Timp de livrare"
+
+msgctxt "field:product.lead_time,template:"
+msgid "Template"
+msgstr ""
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
@@ -327,10 +332,6 @@ msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr "Țară"
 
-msgctxt "field:sale.reporting.country,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr "Țară"
@@ -339,17 +340,9 @@ msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
 msgstr "Subdiviziune"
 
-msgctxt "field:sale.reporting.country.subdivision,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr "Țară"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
-msgid "Date"
-msgstr "Data"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
@@ -359,34 +352,32 @@ msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "Țară"
 
-msgctxt "field:sale.reporting.country.time_series,date:"
-msgid "Date"
-msgstr "Data"
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,children:"
+msgid "Children"
+msgstr "Copii"
+
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,region:"
+msgid "Region"
+msgstr "Regiune"
 
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
 msgstr "Client"
 
-msgctxt "field:sale.reporting.customer,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
 msgctxt "field:sale.reporting.customer.category,category:"
 msgid "Category"
 msgstr "Categorie"
 
-#, fuzzy
-msgctxt "field:sale.reporting.customer.category,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
 msgctxt "field:sale.reporting.customer.category.time_series,category:"
 msgid "Category"
 msgstr "Categorie"
-
-msgctxt "field:sale.reporting.customer.category.time_series,date:"
-msgid "Date"
-msgstr "Data"
 
 msgctxt "field:sale.reporting.customer.category.tree,children:"
 msgid "Children"
@@ -413,43 +404,17 @@ msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "Client"
 
-msgctxt "field:sale.reporting.customer.time_series,date:"
-msgid "Date"
-msgstr "Data"
-
-#, fuzzy
-msgctxt "field:sale.reporting.main,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
-msgctxt "field:sale.reporting.main.time_series,date:"
-msgid "Date"
-msgstr "Data"
-
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Produs"
-
-msgctxt "field:sale.reporting.product,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
 
 msgctxt "field:sale.reporting.product.category,category:"
 msgid "Category"
 msgstr "Categorie"
 
-#, fuzzy
-msgctxt "field:sale.reporting.product.category,time_series:"
-msgid "Time Series"
-msgstr "Seria de timp"
-
 msgctxt "field:sale.reporting.product.category.time_series,category:"
 msgid "Category"
 msgstr "Categorie"
-
-msgctxt "field:sale.reporting.product.category.time_series,date:"
-msgid "Date"
-msgstr "Data"
 
 msgctxt "field:sale.reporting.product.category.tree,children:"
 msgid "Children"
@@ -472,24 +437,33 @@ msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Venituri"
 
-msgctxt "field:sale.reporting.product.time_series,date:"
-msgid "Date"
-msgstr "Data"
-
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produs"
 
-msgctxt "field:sale.reporting.region,children:"
-msgid "Children"
-msgstr "Copii"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
-msgctxt "field:sale.reporting.region,parent:"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,name:"
+msgid "Name"
+msgstr "Denumire"
+
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
 msgstr "Părinte"
 
-msgctxt "field:sale.reporting.region,region:"
-msgid "Region"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,revenue:"
+msgid "Revenue"
+msgstr "Venituri"
+
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,subregions:"
+msgid "Subregions"
 msgstr "Regiune"
 
 msgctxt "field:sale.sale,comment:"
@@ -756,6 +730,11 @@ msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
 msgstr "Vânzări pe țară"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_country_tree"
+msgid "Sales per Country"
+msgstr "Vânzări pe țară"
+
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
 msgstr "Vânzări pe client"
@@ -804,7 +783,8 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
 msgstr "Vânzări pe produs"
 
-msgctxt "model:ir.action,name:act_reporting_region"
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
 msgstr "Vânzări pe regiune"
 
@@ -856,7 +836,13 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modificați antetul"
 
-msgctxt "model:ir.action,name:wizard_reporting_region_open"
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
+msgid "Open Region"
+msgstr "Regiune deschisă"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
 msgid "Open Region"
 msgstr "Regiune deschisă"
 
@@ -987,9 +973,10 @@ msgctxt "model:ir.message,text:msg_sale_reporting_currency"
 msgid "Currency"
 msgstr "Valută"
 
-msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
-msgid "Currency Digits"
-msgstr "Zecimale valută"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_date"
+msgid "Date"
+msgstr "Data"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_number"
 msgid "#"
@@ -1006,6 +993,11 @@ msgstr "Venit"
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
 msgstr "Tendința veniturilor"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
+msgid "Time Series"
+msgstr "Seria de timp"
 
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
@@ -1062,6 +1054,11 @@ msgctxt ""
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
 msgid "User in companies"
@@ -1106,10 +1103,6 @@ msgstr "Utilizator în companii"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
-msgid "User in companies"
-msgstr "Utilizator în companii"
-
-msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
 msgid "User in companies"
 msgstr "Utilizator în companii"
 
@@ -1167,6 +1160,11 @@ msgstr "Metodă de Vânzare al Părţi"
 
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
+msgstr "Timpul Implicit de Execuţie al Produsului"
+
+#, fuzzy
+msgctxt "model:product.lead_time,name:"
+msgid "Product Lead Time"
 msgstr "Timpul Implicit de Execuţie al Produsului"
 
 msgctxt "model:product.sale.context,name:"
@@ -1237,6 +1235,11 @@ msgctxt "model:sale.reporting.country.time_series,name:"
 msgid "Sale Reporting per Country"
 msgstr "Raportarea vânzărilor pe țară"
 
+#, fuzzy
+msgctxt "model:sale.reporting.country.tree,name:"
+msgid "Sale Reporting per Country"
+msgstr "Raportarea vânzărilor pe țară"
+
 msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr "Raportarea vânzărilor pe client"
@@ -1285,7 +1288,8 @@ msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
 msgstr "Raportarea vânzărilor pe produs"
 
-msgctxt "model:sale.reporting.region,name:"
+#, fuzzy
+msgctxt "model:sale.reporting.region.tree,name:"
 msgid "Sale Reporting per Region"
 msgstr "Raportarea vânzărilor pe regiune"
 

@@ -69,13 +69,18 @@ msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Alapértelmezett átfutási idő"
 
-msgctxt "field:product.configuration.default_lead_time,company:"
-msgid "Company"
-msgstr "Cég"
-
 msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Alapértelmezett átfutási idő"
+
+#, fuzzy
+msgctxt "field:product.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Átfutási idő"
+
+msgctxt "field:product.lead_time,template:"
+msgid "Template"
+msgstr ""
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
@@ -334,10 +339,6 @@ msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr "Ország"
 
-msgctxt "field:sale.reporting.country,time_series:"
-msgid "Time Series"
-msgstr ""
-
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr "Ország"
@@ -346,17 +347,9 @@ msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
 msgstr "Közigazgatási egység"
 
-msgctxt "field:sale.reporting.country.subdivision,time_series:"
-msgid "Time Series"
-msgstr ""
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr "Ország"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
@@ -366,36 +359,34 @@ msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "Ország"
 
-msgctxt "field:sale.reporting.country.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,children:"
+msgid "Children"
+msgstr "Alárendelt rekordok"
+
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,parent:"
+msgid "Parent"
+msgstr "Fölérendelt"
+
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,region:"
+msgid "Region"
+msgstr "Régió"
 
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
 msgstr "Vevő"
-
-msgctxt "field:sale.reporting.customer,time_series:"
-msgid "Time Series"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category,category:"
 msgid "Category"
 msgstr "Kategória"
 
-msgctxt "field:sale.reporting.customer.category,time_series:"
-msgid "Time Series"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category.time_series,category:"
 msgid "Category"
 msgstr "Kategória"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.category.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category.tree,children:"
@@ -426,45 +417,19 @@ msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "Vevő"
 
-msgctxt "field:sale.reporting.customer.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
-
-msgctxt "field:sale.reporting.main,time_series:"
-msgid "Time Series"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.main.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
-
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Termék"
-
-msgctxt "field:sale.reporting.product,time_series:"
-msgid "Time Series"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.reporting.product.category,category:"
 msgid "Category"
 msgstr "Kategória"
 
-msgctxt "field:sale.reporting.product.category,time_series:"
-msgid "Time Series"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.reporting.product.category.time_series,category:"
 msgid "Category"
 msgstr "Kategória"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.category.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
 
 #, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,children:"
@@ -491,24 +456,33 @@ msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Árbevétel"
 
-msgctxt "field:sale.reporting.product.time_series,date:"
-msgid "Date"
-msgstr "Dátum"
-
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Termék"
 
-msgctxt "field:sale.reporting.region,children:"
-msgid "Children"
-msgstr "Alárendelt rekordok"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
-msgctxt "field:sale.reporting.region,parent:"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
 msgstr "Fölérendelt"
 
-msgctxt "field:sale.reporting.region,region:"
-msgid "Region"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,revenue:"
+msgid "Revenue"
+msgstr "Árbevétel"
+
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,subregions:"
+msgid "Subregions"
 msgstr "Régió"
 
 msgctxt "field:sale.sale,comment:"
@@ -775,6 +749,11 @@ msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
 msgstr "Sales per Country"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_country_tree"
+msgid "Sales per Country"
+msgstr "Sales per Country"
+
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
 msgstr "Eladások vevőnként"
@@ -831,7 +810,8 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
 msgstr "Eladások termékenként"
 
-msgctxt "model:ir.action,name:act_reporting_region"
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
 msgstr "Eladások régiónként"
 
@@ -883,7 +863,13 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Fejléc módosítása"
 
-msgctxt "model:ir.action,name:wizard_reporting_region_open"
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
+msgid "Open Region"
+msgstr "Open Region"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
 msgid "Open Region"
 msgstr "Open Region"
 
@@ -995,9 +981,9 @@ msgid "Currency"
 msgstr "Pénznem"
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
-msgid "Currency Digits"
-msgstr "Pénznem"
+msgctxt "model:ir.message,text:msg_sale_reporting_date"
+msgid "Date"
+msgstr "Dátum"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_number"
 msgid "#"
@@ -1014,6 +1000,10 @@ msgstr "Árbevétel"
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
 msgstr "Eladások tendenciája"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
+msgid "Time Series"
+msgstr ""
 
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
@@ -1066,6 +1056,10 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
 msgid "User in companies"
@@ -1110,10 +1104,6 @@ msgstr ""
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
-msgid "User in companies"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
 msgid "User in companies"
 msgstr ""
 
@@ -1173,6 +1163,11 @@ msgstr "Vevői rendelések számlázási módja"
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:product.lead_time,name:"
+msgid "Product Lead Time"
+msgstr "Alapértelmezett átfutási idő"
 
 msgctxt "model:product.sale.context,name:"
 msgid "Product Sale Context"
@@ -1243,6 +1238,11 @@ msgctxt "model:sale.reporting.country.time_series,name:"
 msgid "Sale Reporting per Country"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:sale.reporting.country.tree,name:"
+msgid "Sale Reporting per Country"
+msgstr "Eladások termék kategóriánként"
+
 msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr ""
@@ -1299,9 +1299,10 @@ msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
 msgstr ""
 
-msgctxt "model:sale.reporting.region,name:"
+#, fuzzy
+msgctxt "model:sale.reporting.region.tree,name:"
 msgid "Sale Reporting per Region"
-msgstr ""
+msgstr "Eladások termék kategóriánként"
 
 msgctxt "model:sale.return_sale.start,name:"
 msgid "Return Sale"

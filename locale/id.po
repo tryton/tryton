@@ -49,7 +49,6 @@ msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:party.party.sale_method,party:"
 msgid "Party"
 msgstr "Pihak"
@@ -67,13 +66,16 @@ msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.configuration.default_lead_time,company:"
-msgid "Company"
-msgstr "Perusahaan"
-
 msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
+msgstr ""
+
+msgctxt "field:product.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:product.lead_time,template:"
+msgid "Template"
 msgstr ""
 
 msgctxt "field:product.product,lead_time:"
@@ -264,11 +266,11 @@ msgstr ""
 
 msgctxt "field:sale.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Ringkasan"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
 msgctxt "field:sale.line,to_location:"
 msgid "To Location"
@@ -338,10 +340,6 @@ msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr "Negara"
 
-msgctxt "field:sale.reporting.country,time_series:"
-msgid "Time Series"
-msgstr ""
-
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr "Negara"
@@ -350,17 +348,9 @@ msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
 msgstr ""
 
-msgctxt "field:sale.reporting.country.subdivision,time_series:"
-msgid "Time Series"
-msgstr ""
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr ""
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
@@ -370,36 +360,33 @@ msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "Negara"
 
-msgctxt "field:sale.reporting.country.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,children:"
+msgid "Children"
+msgstr "Cabang"
+
+#, fuzzy
+msgctxt "field:sale.reporting.country.tree,parent:"
+msgid "Parent"
+msgstr "Induk"
+
+msgctxt "field:sale.reporting.country.tree,region:"
+msgid "Region"
+msgstr ""
 
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
-msgstr ""
-
-msgctxt "field:sale.reporting.customer,time_series:"
-msgid "Time Series"
-msgstr ""
+msgstr "Pelanggan"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category,category:"
 msgid "Category"
 msgstr "Kategori"
 
-msgctxt "field:sale.reporting.customer.category,time_series:"
-msgid "Time Series"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category.time_series,category:"
 msgid "Category"
 msgstr "Kategori"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.category.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.category.tree,children:"
@@ -426,45 +413,19 @@ msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "Pelanggan"
 
-msgctxt "field:sale.reporting.customer.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
-
-msgctxt "field:sale.reporting.main,time_series:"
-msgid "Time Series"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.main.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
-
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Produk"
-
-msgctxt "field:sale.reporting.product,time_series:"
-msgid "Time Series"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.reporting.product.category,category:"
 msgid "Category"
 msgstr "Kategori"
 
-msgctxt "field:sale.reporting.product.category,time_series:"
-msgid "Time Series"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.reporting.product.category.time_series,category:"
 msgid "Category"
 msgstr "Kategori"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.category.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
 
 #, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,children:"
@@ -476,39 +437,44 @@ msgctxt "field:sale.reporting.product.category.tree,currency:"
 msgid "Currency"
 msgstr "Mata uang"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,name:"
 msgid "Name"
 msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,parent:"
 msgid "Parent"
 msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Pendapatan"
-
-msgctxt "field:sale.reporting.product.time_series,date:"
-msgid "Date"
-msgstr "Tanggal"
 
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produk"
 
-msgctxt "field:sale.reporting.region,children:"
-msgid "Children"
-msgstr "Cabang"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,currency:"
+msgid "Currency"
+msgstr "Mata uang"
 
-msgctxt "field:sale.reporting.region,parent:"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,name:"
+msgid "Name"
+msgstr "Nama"
+
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
 msgstr "Induk"
 
-msgctxt "field:sale.reporting.region,region:"
-msgid "Region"
+#, fuzzy
+msgctxt "field:sale.reporting.region.tree,revenue:"
+msgid "Revenue"
+msgstr "Pendapatan"
+
+msgctxt "field:sale.reporting.region.tree,subregions:"
+msgid "Subregions"
 msgstr ""
 
 msgctxt "field:sale.sale,comment:"
@@ -530,7 +496,7 @@ msgstr ""
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
@@ -555,11 +521,11 @@ msgstr "Status Faktur"
 
 msgctxt "field:sale.sale,invoices:"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "field:sale.sale,invoices_ignored:"
 msgid "Ignored Invoices"
-msgstr "Faktur-faktur yang Diabaikan"
+msgstr "Faktur-Faktur yang Diabaikan"
 
 msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
@@ -745,7 +711,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
@@ -761,6 +727,11 @@ msgid "Sales per Subdivision"
 msgstr "Penjualan per Subdivisi"
 
 msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Penjualan per Negara"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_country_tree"
 msgid "Sales per Country"
 msgstr "Penjualan per Negara"
 
@@ -820,7 +791,8 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
 msgstr "Penjualan per Produk"
 
-msgctxt "model:ir.action,name:act_reporting_region"
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
 msgstr "Penjualan per Wilayah"
 
@@ -828,7 +800,6 @@ msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -874,9 +845,15 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr ""
 
-msgctxt "model:ir.action,name:wizard_reporting_region_open"
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
 msgid "Open Region"
-msgstr ""
+msgstr "Penjualan per Wilayah"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
+msgid "Open Region"
+msgstr "Penjualan per Wilayah"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
@@ -987,9 +964,9 @@ msgid "Currency"
 msgstr "Mata uang"
 
 #, fuzzy
-msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
-msgid "Currency Digits"
-msgstr "Mata uang"
+msgctxt "model:ir.message,text:msg_sale_reporting_date"
+msgid "Date"
+msgstr "Tanggal"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_number"
 msgid "#"
@@ -1007,6 +984,10 @@ msgstr "Pendapatan"
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
 msgstr "Pendapatan"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
+msgid "Time Series"
+msgstr ""
 
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
@@ -1058,6 +1039,11 @@ msgstr "Pengguna di dalam perusahaan"
 #, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
@@ -1119,11 +1105,6 @@ msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
-msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
-
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
@@ -1161,7 +1142,6 @@ msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -1180,6 +1160,10 @@ msgstr ""
 
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
+msgstr ""
+
+msgctxt "model:product.lead_time,name:"
+msgid "Product Lead Time"
 msgstr ""
 
 msgctxt "model:product.sale.context,name:"
@@ -1250,6 +1234,11 @@ msgctxt "model:sale.reporting.country.time_series,name:"
 msgid "Sale Reporting per Country"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:sale.reporting.country.tree,name:"
+msgid "Sale Reporting per Country"
+msgstr "Penjualan per Kategori"
+
 msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr ""
@@ -1306,9 +1295,10 @@ msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
 msgstr ""
 
-msgctxt "model:sale.reporting.region,name:"
+#, fuzzy
+msgctxt "model:sale.reporting.region.tree,name:"
 msgid "Sale Reporting per Region"
-msgstr ""
+msgstr "Penjualan per Kategori"
 
 msgctxt "model:sale.return_sale.start,name:"
 msgid "Return Sale"
@@ -1533,95 +1523,79 @@ msgstr "Umum"
 
 msgctxt "view:sale.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Catatan-Catatan"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
-#, fuzzy
 msgctxt "view:sale.reporting.country.subdivision.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.country.subdivision.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.country.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.country.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.customer.category.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.customer.category.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.customer.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.customer.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.main.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.main.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.main:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.main:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.product.category.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.product.category.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "view:sale.reporting.product.time_series:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "view:sale.reporting.product.time_series:"
 msgid "Revenue"
 msgstr "Pendapatan"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"
-msgstr ""
+msgstr "Apakah Anda yakin akan mengembalikan penjualan ini?"
 
 msgctxt "view:sale.sale:"
 msgid "Other Info"

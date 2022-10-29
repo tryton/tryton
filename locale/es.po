@@ -58,13 +58,17 @@ msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Tiempo de espera por defecto"
 
-msgctxt "field:product.configuration.default_lead_time,company:"
-msgid "Company"
-msgstr "Empresa"
-
 msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
 msgstr "Tiempo de espera por defecto"
+
+msgctxt "field:product.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Tiempo de espera"
+
+msgctxt "field:product.lead_time,template:"
+msgid "Template"
+msgstr "Plantilla"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
@@ -308,7 +312,7 @@ msgstr "Desde la fecha"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:sale.reporting.context,to_date:"
 msgid "To Date"
@@ -322,10 +326,6 @@ msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr "País"
 
-msgctxt "field:sale.reporting.country,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr "País"
@@ -334,17 +334,9 @@ msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
 msgstr "Provincia"
 
-msgctxt "field:sale.reporting.country.subdivision,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr "País"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
@@ -354,33 +346,29 @@ msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "País"
 
-msgctxt "field:sale.reporting.country.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
+msgctxt "field:sale.reporting.country.tree,children:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:sale.reporting.country.tree,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:sale.reporting.country.tree,region:"
+msgid "Region"
+msgstr "Región"
 
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
 msgstr "Cliente"
 
-msgctxt "field:sale.reporting.customer,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
 msgctxt "field:sale.reporting.customer.category,category:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "field:sale.reporting.customer.category,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
 msgctxt "field:sale.reporting.customer.category.time_series,category:"
 msgid "Category"
 msgstr "Categoría"
-
-msgctxt "field:sale.reporting.customer.category.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
 
 msgctxt "field:sale.reporting.customer.category.tree,children:"
 msgid "Children"
@@ -406,41 +394,17 @@ msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
 msgstr "Cliente"
 
-msgctxt "field:sale.reporting.customer.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
-
-msgctxt "field:sale.reporting.main,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
-msgctxt "field:sale.reporting.main.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
-
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Producto"
-
-msgctxt "field:sale.reporting.product,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
 
 msgctxt "field:sale.reporting.product.category,category:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "field:sale.reporting.product.category,time_series:"
-msgid "Time Series"
-msgstr "Series temporales"
-
 msgctxt "field:sale.reporting.product.category.time_series,category:"
 msgid "Category"
 msgstr "Categoría"
-
-msgctxt "field:sale.reporting.product.category.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
 
 msgctxt "field:sale.reporting.product.category.tree,children:"
 msgid "Children"
@@ -462,24 +426,28 @@ msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
 msgstr "Ingresos"
 
-msgctxt "field:sale.reporting.product.time_series,date:"
-msgid "Date"
-msgstr "Fecha"
-
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "field:sale.reporting.region,children:"
-msgid "Children"
-msgstr "Hijos"
+msgctxt "field:sale.reporting.region.tree,currency:"
+msgid "Currency"
+msgstr "Moneda"
 
-msgctxt "field:sale.reporting.region,parent:"
+msgctxt "field:sale.reporting.region.tree,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
 msgstr "Padre"
 
-msgctxt "field:sale.reporting.region,region:"
-msgid "Region"
+msgctxt "field:sale.reporting.region.tree,revenue:"
+msgid "Revenue"
+msgstr "Ingresos"
+
+msgctxt "field:sale.reporting.region.tree,subregions:"
+msgid "Subregions"
 msgstr "Región"
 
 msgctxt "field:sale.sale,comment:"
@@ -744,6 +712,10 @@ msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
 msgstr "Ventas por país"
 
+msgctxt "model:ir.action,name:act_reporting_country_tree"
+msgid "Sales per Country"
+msgstr "Ventas por país"
+
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
 msgstr "Ventas por cliente"
@@ -792,7 +764,7 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
 msgstr "Ventas por región"
 
-msgctxt "model:ir.action,name:act_reporting_region"
+msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
 msgstr "Ventas por región"
 
@@ -844,7 +816,11 @@ msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modificar cabecera"
 
-msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
+msgid "Open Region"
+msgstr "Abrir región"
+
+msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
 msgid "Open Region"
 msgstr "Abrir región"
 
@@ -975,9 +951,9 @@ msgctxt "model:ir.message,text:msg_sale_reporting_currency"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgctxt "model:ir.message,text:msg_sale_reporting_date"
+msgid "Date"
+msgstr "Fecha"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_number"
 msgid "#"
@@ -994,6 +970,10 @@ msgstr "Ingresos"
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
 msgstr "Tendencia de ingresos"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
+msgid "Time Series"
+msgstr "Series temporales"
 
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
@@ -1050,6 +1030,10 @@ msgctxt ""
 msgid "User in companies"
 msgstr "Usuario en las empresas"
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
 msgid "User in companies"
@@ -1094,10 +1078,6 @@ msgstr "Usuario en las empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
-msgid "User in companies"
-msgstr "Usuario en las empresas"
-
-msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
 msgid "User in companies"
 msgstr "Usuario en las empresas"
 
@@ -1156,6 +1136,10 @@ msgstr "Método de venta de tercero"
 msgctxt "model:product.configuration.default_lead_time,name:"
 msgid "Product Default Lead Time"
 msgstr "Tiempo de envío defecto del producto"
+
+msgctxt "model:product.lead_time,name:"
+msgid "Product Lead Time"
+msgstr "Tiempo de envío del producto"
 
 msgctxt "model:product.sale.context,name:"
 msgid "Product Sale Context"
@@ -1225,6 +1209,10 @@ msgctxt "model:sale.reporting.country.time_series,name:"
 msgid "Sale Reporting per Country"
 msgstr "Informe de ventas por país"
 
+msgctxt "model:sale.reporting.country.tree,name:"
+msgid "Sale Reporting per Country"
+msgstr "Informe de ventas por país"
+
 msgctxt "model:sale.reporting.customer,name:"
 msgid "Sale Reporting per Customer"
 msgstr "Informe de ventas por cliente"
@@ -1273,7 +1261,7 @@ msgctxt "model:sale.reporting.product.time_series,name:"
 msgid "Sale Reporting per Product"
 msgstr "Informe de ventas por producto"
 
-msgctxt "model:sale.reporting.region,name:"
+msgctxt "model:sale.reporting.region.tree,name:"
 msgid "Sale Reporting per Region"
 msgstr "Informe de ventas por región"
 
