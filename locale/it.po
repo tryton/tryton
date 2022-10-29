@@ -45,7 +45,7 @@ msgstr "Stato"
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 #, fuzzy
 msgctxt "field:production.work,work_center:"
@@ -77,7 +77,7 @@ msgstr ""
 
 msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Prezzo di costo"
 
 msgctxt "field:production.work.center,name:"
 msgid "Name"
@@ -89,7 +89,7 @@ msgstr "Padre"
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
@@ -97,7 +97,7 @@ msgstr "Nome"
 
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Costo"
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
@@ -271,7 +271,7 @@ msgstr ""
 
 msgctxt "selection:production.work.cycle,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 #, fuzzy
 msgctxt "selection:production.work.cycle,state:"

@@ -116,7 +116,7 @@ msgstr "Wertkplaats"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Werken"
+msgstr "Werkzaamheden"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
