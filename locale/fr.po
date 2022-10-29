@@ -134,6 +134,14 @@ msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
 msgstr "Secret de signature du webhook"
 
+msgctxt "field:account.payment.stripe.customer,fingerprints:"
+msgid "Fingerprints"
+msgstr "Empreintes"
+
+msgctxt "field:account.payment.stripe.customer,identical_customers:"
+msgid "Identical Customers"
+msgstr "Clients identiques"
+
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
 msgstr "Tiers"
@@ -173,6 +181,22 @@ msgstr "ID de configuration d'intention"
 msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Jeton Stripe"
+
+msgctxt "field:account.payment.stripe.customer.fingerprint,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:account.payment.stripe.customer.fingerprint,fingerprint:"
+msgid "Fingerprint"
+msgstr "Empreinte"
+
+msgctxt "field:account.payment.stripe.customer.identical,source:"
+msgid "Source"
+msgstr "Source"
+
+msgctxt "field:account.payment.stripe.customer.identical,target:"
+msgid "Target"
+msgstr "Cible"
 
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
 msgid "Customer"
@@ -291,6 +315,14 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Client Stripe"
 
+msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
+msgid "Stripe Customer Fingerprint"
+msgstr "Empreinte du client Stripe"
+
+msgctxt "model:account.payment.stripe.customer.identical,name:"
+msgid "Stripe Customer Identical"
+msgstr "Client Stripe identique"
+
 msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
 msgid "Detach Customer Source"
 msgstr "Détacher la source client"
@@ -363,6 +395,10 @@ msgctxt ""
 msgid "To Process"
 msgstr "À traiter"
 
+msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
+msgid "The fingerprint must be unique by customer."
+msgstr "L'empreinte doit être unique par client."
+
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token or customer."
@@ -385,6 +421,10 @@ msgstr ""
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "Nouvelle URL"
+
+msgctxt "model:ir.model.button,string:customer_find_identical_button"
+msgid "Find Identical"
+msgstr "Trouver les identiques"
 
 msgctxt "model:ir.model.button,string:customer_source_detach_button"
 msgid "Detach Source"

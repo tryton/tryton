@@ -134,6 +134,14 @@ msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
 msgstr "Webhook Geheimer Signaturschlüssel"
 
+msgctxt "field:account.payment.stripe.customer,fingerprints:"
+msgid "Fingerprints"
+msgstr "Fingerprints"
+
+msgctxt "field:account.payment.stripe.customer,identical_customers:"
+msgid "Identical Customers"
+msgstr "Identische Kunden"
+
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
 msgstr "Partei"
@@ -173,6 +181,22 @@ msgstr "Stripe Setupintent ID"
 msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Stripe Token"
+
+msgctxt "field:account.payment.stripe.customer.fingerprint,customer:"
+msgid "Customer"
+msgstr "Kunde"
+
+msgctxt "field:account.payment.stripe.customer.fingerprint,fingerprint:"
+msgid "Fingerprint"
+msgstr "Fingerprint"
+
+msgctxt "field:account.payment.stripe.customer.identical,source:"
+msgid "Source"
+msgstr "Source"
+
+msgctxt "field:account.payment.stripe.customer.identical,target:"
+msgid "Target"
+msgstr "Target"
 
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
 msgid "Customer"
@@ -290,6 +314,14 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Stripe Kunde"
 
+msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
+msgid "Stripe Customer Fingerprint"
+msgstr "Stripe Kunde Fingerprint"
+
+msgctxt "model:account.payment.stripe.customer.identical,name:"
+msgid "Stripe Customer Identical"
+msgstr "Stripe Kunde Identisch"
+
 msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
 msgid "Detach Customer Source"
 msgstr "Kunde Ursprung Lösen"
@@ -362,6 +394,10 @@ msgctxt ""
 msgid "To Process"
 msgstr "Auszuführen"
 
+msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
+msgid "The fingerprint must be unique by customer."
+msgstr "Der Fingerprint muss für jeden Kunden eindeutig sein."
+
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token or customer."
@@ -384,6 +420,10 @@ msgstr ""
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "Neue URL erzeugen"
+
+msgctxt "model:ir.model.button,string:customer_find_identical_button"
+msgid "Find Identical"
+msgstr "Duplikate finden"
 
 msgctxt "model:ir.model.button,string:customer_source_detach_button"
 msgid "Detach Source"

@@ -134,6 +134,14 @@ msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
 msgstr ""
 
+msgctxt "field:account.payment.stripe.customer,fingerprints:"
+msgid "Fingerprints"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.customer,identical_customers:"
+msgid "Identical Customers"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
 msgstr "Pihak"
@@ -174,9 +182,26 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.payment.stripe.customer.fingerprint,customer:"
+msgid "Customer"
+msgstr "Pelanggan"
+
+msgctxt "field:account.payment.stripe.customer.fingerprint,fingerprint:"
+msgid "Fingerprint"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.customer.identical,source:"
+msgid "Source"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.customer.identical,target:"
+msgid "Target"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
 msgid "Source"
@@ -188,23 +213,23 @@ msgstr "Jumlah"
 
 msgctxt "field:account.payment.stripe.refund,approved_by:"
 msgid "Approved by"
-msgstr ""
+msgstr "Disetujui oleh"
 
 msgctxt "field:account.payment.stripe.refund,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.payment.stripe.refund,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:account.payment.stripe.refund,payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "field:account.payment.stripe.refund,reason:"
 msgid "Reason"
-msgstr ""
+msgstr "Alasan"
 
 msgctxt "field:account.payment.stripe.refund,state:"
 msgid "State"
@@ -290,6 +315,14 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr ""
 
+msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
+msgid "Stripe Customer Fingerprint"
+msgstr ""
+
+msgctxt "model:account.payment.stripe.customer.identical,name:"
+msgid "Stripe Customer Identical"
+msgstr ""
+
 msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
 msgid "Detach Customer Source"
 msgstr ""
@@ -362,6 +395,10 @@ msgctxt ""
 msgid "To Process"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
+msgid "The fingerprint must be unique by customer."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token or customer."
@@ -379,6 +416,10 @@ msgstr ""
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "URL Baru"
+
+msgctxt "model:ir.model.button,string:customer_find_identical_button"
+msgid "Find Identical"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:customer_source_detach_button"
 msgid "Detach Source"

@@ -4,61 +4,55 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.payment,stripe_account:"
 msgid "Stripe Account"
-msgstr "Stripe račun"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_amount:"
 msgid "Stripe Amount"
-msgstr "Stripe znesek"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_capturable:"
 msgid "Stripe Capturable"
-msgstr "Stripe Capture"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_capture:"
 msgid "Stripe Capture"
-msgstr "Stripe Capture"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_capture_needed:"
 msgid "Stripe Capture Needed"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_captured:"
 msgid "Stripe Captured"
-msgstr "Stripe Capture"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_charge_id:"
 msgid "Stripe Charge ID"
-msgstr "ID Stripe plačila"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_chargeable:"
 msgid "Stripe Chargeable"
-msgstr "ID Stripe plačila"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_checkout_needed:"
 msgid "Stripe Checkout Needed"
-msgstr "Stripe nakup obvezen"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_customer:"
 msgid "Stripe Customer"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_customer_payment_method:"
 msgid "Stripe Payment Method"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_customer_payment_method_selection:"
 msgid "Stripe Customer Payment Method"
-msgstr "ID Stripe stranke"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_customer_source:"
 msgid "Stripe Customer Source"
@@ -78,24 +72,23 @@ msgstr ""
 
 msgctxt "field:account.payment,stripe_error_code:"
 msgid "Stripe Error Code"
-msgstr "Šifra Stripe napake"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_error_message:"
 msgid "Stripe Error Message"
-msgstr "Vsebina Stripe napake"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_error_param:"
 msgid "Stripe Error Param"
-msgstr "Parameter Stripe napake"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment,stripe_payment_intent_id:"
 msgid "Stripe Payment Intent"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_refunds:"
 msgid "Refunds"
@@ -103,11 +96,11 @@ msgstr ""
 
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
-msgstr "Stripe žeton"
+msgstr ""
 
 msgctxt "field:account.payment.journal,stripe_account:"
 msgid "Account"
-msgstr "Račun"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,last_event:"
 msgid "Last Event"
@@ -115,20 +108,19 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,publishable_key:"
 msgid "Publishable Key"
-msgstr "Javni ključ"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,secret_key:"
 msgid "Secret Key"
-msgstr "Skriti ključ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.account,setup_intent_delay:"
 msgid "Setup Intent Delay"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,webhook_endpoint:"
 msgid "Webhook Endpoint"
@@ -146,56 +138,53 @@ msgctxt "field:account.payment.stripe.customer,fingerprints:"
 msgid "Fingerprints"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.customer,identical_customers:"
 msgid "Identical Customers"
-msgstr "Stripe stranke"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_account:"
 msgid "Account"
-msgstr "Račun"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_needed:"
 msgid "Stripe Checkout Needed"
-msgstr "Stripe nakup obvezen"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_customer_id:"
 msgid "Stripe Customer ID"
-msgstr "ID Stripe stranke"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_code:"
 msgid "Stripe Error Code"
-msgstr "Šifra Stripe napake"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_message:"
 msgid "Stripe Error Message"
-msgstr "Vsebina Stripe napake"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_param:"
 msgid "Stripe Error Param"
-msgstr "Parameter Stripe napake"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.customer,stripe_setup_intent_id:"
 msgid "Stripe SetupIntent ID"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
-msgstr "Stripe žeton"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.customer.fingerprint,customer:"
 msgid "Customer"
-msgstr "Stripe stranka"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer.fingerprint,fingerprint:"
 msgid "Fingerprint"
@@ -209,19 +198,17 @@ msgctxt "field:account.payment.stripe.customer.identical,target:"
 msgid "Target"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
 msgid "Customer"
-msgstr "Stripe stranka"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
 msgid "Source"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
-msgstr "Račun"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.refund,approved_by:"
 msgid "Approved by"
@@ -247,35 +234,29 @@ msgctxt "field:account.payment.stripe.refund,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_amount:"
 msgid "Stripe Amount"
-msgstr "Stripe znesek"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_error_code:"
 msgid "Stripe Error Code"
-msgstr "Šifra Stripe napake"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_error_message:"
 msgid "Stripe Error Message"
-msgstr "Vsebina Stripe napake"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_error_param:"
 msgid "Stripe Error Param"
-msgstr "Parameter Stripe napake"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
 msgid "Stripe Refund ID"
-msgstr "ID Stripe nakupa"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.refund,submitted_by:"
 msgid "Submitted by"
@@ -283,40 +264,34 @@ msgstr ""
 
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
-msgstr "Stripe stranke"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,stripe_account:"
 msgid "Stripe Account"
-msgstr "Stripe račun"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,stripe_customer:"
 msgid "Stripe Customer"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:party.party.reception_direct_debit,stripe_customer_payment_method:"
 msgid "Stripe Payment Method"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:party.party.reception_direct_debit,stripe_customer_payment_method_selection:"
 msgid "Stripe Customer Payment Method"
-msgstr "ID Stripe stranke"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.reception_direct_debit,stripe_customer_source:"
 msgid "Stripe Customer Source"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:party.party.reception_direct_debit,stripe_customer_source_selection:"
 msgid "Stripe Customer Source"
-msgstr "Stripe stranka"
+msgstr ""
 
 msgctxt "help:account.payment.stripe.account,setup_intent_delay:"
 msgid "The delay before cancelling setup intent not succeeded."
@@ -332,65 +307,55 @@ msgstr ""
 
 msgctxt "model:account.payment.stripe.account,name:"
 msgid "Stripe Account"
-msgstr "Stripe račun"
+msgstr ""
 
 msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
 msgid "Stripe Customer Fingerprint"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer.identical,name:"
 msgid "Stripe Customer Identical"
-msgstr "ID Stripe stranke"
+msgstr ""
 
 msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
 msgid "Detach Customer Source"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.refund,name:"
 msgid "Stripe Payment Refund"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
-msgstr "Stripe Accounts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Stripe Customers"
-msgstr "Stripe Customers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_refund_form"
 msgid "Stripe Refunds"
-msgstr "Stripe žeton"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_email_checkout"
 msgid "Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:url_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_customer_source_detach"
 msgid "Detach Source"
@@ -445,11 +410,10 @@ msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
 msgid ""
 "This action will make the previous URL unusable. Do you want to continue?"
 msgstr ""
-"This action will make the previous URL unusable. Do you want to continue?"
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
-msgstr "New URL"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:customer_find_identical_button"
 msgid "Find Identical"
@@ -465,11 +429,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_stripe_capture_button"
 msgid "Stripe Capture"
-msgstr "Stripe Capture"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:refund_approve_button"
 msgid "Approve"
@@ -483,20 +447,17 @@ msgctxt "model:ir.model.button,string:refund_submit_button"
 msgid "Submit"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
-msgstr "Stripe Accounts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Stripe Customers"
-msgstr "Stripe Customers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_refund_form"
 msgid "Stripe Refunds"
-msgstr "Stripe žeton"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Credit or debit card"
@@ -504,16 +465,15 @@ msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Pay"
-msgstr "Plačilo"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Register card"
-msgstr "Registracija"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
-msgstr "Stripe nakup"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"
@@ -523,10 +483,9 @@ msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Checkout"
-msgstr "Stripe Checkout"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "If you didn't make this request, you can ignore this email."
@@ -538,7 +497,7 @@ msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
-msgstr "Stripe"
+msgstr ""
 
 msgctxt "selection:account.payment.stripe.refund,reason:"
 msgid "Duplicate"
@@ -548,10 +507,9 @@ msgctxt "selection:account.payment.stripe.refund,reason:"
 msgid "Fraudulent"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.payment.stripe.refund,reason:"
 msgid "Requested by Customer"
-msgstr "Delete Stripe Customer"
+msgstr ""
 
 msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Approved"
@@ -577,68 +535,57 @@ msgctxt "selection:account.payment.stripe.refund,state:"
 msgid "Succeeded"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Capture Stripe Payments"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Charge Stripe Payments"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Create Stripe Customer"
-msgstr "Create Stripe Customer"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Create Stripe Refund"
-msgstr "Create Stripe Customer"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Delete Stripe Customer"
-msgstr "Delete Stripe Customer"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Fetch Stripe Events"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Stripe Intent Customer"
-msgstr "Create Stripe Customer"
+msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Stripe"
-msgstr "Stripe"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Capturable:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Capture:"
-msgstr "Stripe Capture"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Charge ID:"
-msgstr "ID Stripe plačila"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Chargeable:"
-msgstr "ID Stripe plačila"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr "Stripe stranka"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payment Intent:"
@@ -652,24 +599,21 @@ msgctxt "view:account.payment:"
 msgid "Source:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Stripe"
-msgstr "Stripe"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr "Stripe stranka"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr "Charge Stripe Payments"
+msgstr ""
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Source:"
