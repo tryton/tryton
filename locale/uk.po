@@ -4,64 +4,64 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:res.role,groups:"
 msgid "Groups"
-msgstr "Gruppi"
+msgstr ""
 
 msgctxt "field:res.role,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
-msgstr "Gruppo"
+msgstr ""
 
 msgctxt "field:res.role-res.group,role:"
 msgid "Role"
-msgstr "Ruolo"
+msgstr ""
 
 msgctxt "field:res.user,roles:"
 msgid "Roles"
-msgstr "Ruoli"
+msgstr ""
 
 msgctxt "field:res.user.role,from_date:"
 msgid "From Date"
-msgstr "Dalla data"
+msgstr ""
 
 msgctxt "field:res.user.role,role:"
 msgid "Role"
-msgstr "Ruolo"
+msgstr ""
 
 msgctxt "field:res.user.role,to_date:"
 msgid "To Date"
-msgstr "A data"
+msgstr ""
 
 msgctxt "field:res.user.role,user:"
 msgid "User"
-msgstr "Utente"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_role_form"
 msgid "Roles"
-msgstr "Ruoli"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_role_form"
 msgid "Roles"
-msgstr "Ruoli"
+msgstr ""
 
 msgctxt "model:res.role,name:"
 msgid "Role"
-msgstr "Ruolo"
+msgstr ""
 
 msgctxt "model:res.role-res.group,name:"
 msgid "Role - Group"
-msgstr "Ruolo - Gruppo"
+msgstr ""
 
 msgctxt "model:res.user.role,name:"
 msgid "User Role"
-msgstr "Ruolo utente"
+msgstr ""
 
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
-msgstr "Sincronizza ruoli utenti"
+msgstr ""
 
 msgctxt "view:res.user.role:"
 msgid "Time"
-msgstr "Orario"
+msgstr ""
