@@ -288,7 +288,7 @@ msgstr "Identificador de mandato SEPA debe ser único por empresa."
 
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
-msgstr "Falta el identificicador \"%(type)s\" para el tercero \"%(party)s\"."
+msgstr "Falta el identificador \"%(type)s\" para el tercero \"%(party)s\"."
 
 msgctxt "model:ir.message,text:msg_payment_process_no_bank"
 msgid ""
