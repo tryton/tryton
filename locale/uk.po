@@ -12,11 +12,11 @@ msgstr ""
 
 msgctxt "field:party.party.purchase_price_list,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:party.party.purchase_price_list,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr ""
 
 msgctxt "field:party.party.purchase_price_list,purchase_price_list:"
 msgid "Purchase Price List"
