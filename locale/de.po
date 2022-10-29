@@ -14,6 +14,10 @@ msgctxt "field:sale.amendment.line,product_customer:"
 msgid "Customer's Product"
 msgstr "Kundenartikel"
 
+msgctxt "field:sale.blanket_agreement.line,product_customer:"
+msgid "Customer's Product"
+msgstr "Kundenartikel"
+
 msgctxt "field:sale.line,product_customer:"
 msgid "Customer's Product"
 msgstr "Kundenartikel"
