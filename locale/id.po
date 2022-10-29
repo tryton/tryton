@@ -24,7 +24,7 @@ msgstr "Kode"
 
 msgctxt "field:incoterm.incoterm,companies:"
 msgid "Companies"
-msgstr ""
+msgstr "Perusahaan-Perusahaan"
 
 msgctxt "field:incoterm.incoterm,location:"
 msgid "Location"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:incoterm.incoterm,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:incoterm.incoterm,risk:"
 msgid "Risk"
@@ -44,11 +44,11 @@ msgstr ""
 
 msgctxt "field:incoterm.incoterm,version:"
 msgid "Version"
-msgstr ""
+msgstr "Versi"
 
 msgctxt "field:incoterm.incoterm-company.company,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:incoterm.incoterm-company.company,incoterm:"
 msgid "Incoterm"
@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:party.incoterm,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:party.incoterm,incoterm:"
 msgid "Incoterm"
@@ -72,7 +72,7 @@ msgstr ""
 
 msgctxt "field:party.incoterm,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:party.incoterm,type:"
 msgid "Type"
@@ -208,8 +208,8 @@ msgstr ""
 
 msgctxt "selection:party.incoterm,type:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "selection:party.incoterm,type:"
 msgid "Sale"
-msgstr ""
+msgstr "Penjualan"

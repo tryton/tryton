@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:incoterm.incoterm,carrier:"
 msgid "Carrier"
-msgstr "Vettore"
+msgstr ""
 
 msgctxt "field:incoterm.incoterm,code:"
 msgid "Code"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:incoterm.incoterm,location:"
 msgid "Location"
-msgstr "Luogo"
+msgstr ""
 
 msgctxt "field:incoterm.incoterm,mode:"
 msgid "Mode"
