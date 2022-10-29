@@ -8,7 +8,7 @@ msgstr "Biaya"
 
 msgctxt "field:project.work,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"

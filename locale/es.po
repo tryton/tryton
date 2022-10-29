@@ -28,7 +28,7 @@ msgstr "Ingresos"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr "Tiempo del trabajo"
+msgstr "Proyecto/Tarea"
 
 msgctxt "help:purchase.line,work:"
 msgid "Add to the cost of the work effort."
