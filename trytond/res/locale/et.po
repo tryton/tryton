@@ -68,6 +68,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Grupp"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Nupp"
@@ -83,6 +88,11 @@ msgstr "Kasutaja"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -103,6 +113,11 @@ msgstr "Kasutajagrupid"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Järjekorra tüüp"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

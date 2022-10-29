@@ -66,6 +66,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Grupė"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Mygtukas"
@@ -81,6 +86,11 @@ msgstr "Naudotojas"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grupė"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Grupės"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -101,6 +111,11 @@ msgstr "Naudotojo grupės"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Numeruotės tipas"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Grupės"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

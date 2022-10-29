@@ -68,6 +68,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "ກຸ່ມ"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "ກຸ່ມ"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "ປຸ່ມ"
@@ -82,6 +87,11 @@ msgstr "ຜູ້ໃຊ້"
 
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
+msgstr "ກຸ່ມ"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
 msgstr "ກຸ່ມ"
 
 msgctxt "field:ir.rule.group-res.group,group:"
@@ -103,6 +113,11 @@ msgstr "ກຸ່ມຜູ້ໃຊ້ງານ"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "ປະເພດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "ກຸ່ມ"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

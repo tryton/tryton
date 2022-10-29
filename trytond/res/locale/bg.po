@@ -68,6 +68,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Група"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Групи"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Бутон"
@@ -85,6 +90,11 @@ msgstr "Потребител"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Група"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Групи"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -105,6 +115,11 @@ msgstr "Групи потребители"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Вид последователност"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Групи"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

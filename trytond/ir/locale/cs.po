@@ -524,6 +524,10 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr ""
 
+msgctxt "field:ir.cron,timezone:"
+msgid "Timezone"
+msgstr ""
+
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr ""
@@ -666,6 +670,10 @@ msgstr ""
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Fields"
+
+msgctxt "field:ir.export,header:"
+msgid "Header"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.export,name:"
@@ -851,10 +859,6 @@ msgstr "Clicks"
 
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
-msgstr ""
-
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
 msgstr ""
 
 msgctxt "field:ir.model.button,help:"
@@ -1178,10 +1182,6 @@ msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
 msgstr ""
 
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
@@ -1494,10 +1494,6 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr ""
 
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
@@ -1730,8 +1726,12 @@ msgid ""
 "record represented by \"self\"."
 msgstr ""
 
+msgctxt "help:ir.export,header:"
+msgid "Check to include field names on the export."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
-msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgid "RFC 4646 tag."
 msgstr ""
 
 msgctxt "help:ir.lang,parent:"
@@ -1791,7 +1791,8 @@ msgstr ""
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user"
+"- \"user\" as the current user\n"
+"- \"groups\" as list of ids from the current user"
 msgstr ""
 
 msgctxt "help:ir.rule.group,default_p:"
@@ -2675,17 +2676,20 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
-"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
-"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
+"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
-" its domain."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid according to its domain."
 msgstr ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
@@ -2722,11 +2726,19 @@ msgid ""
 "\"%(exception)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_field_model_name"
+msgid "%(field)s (model name)"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_field_string"
+msgid "%(field)s (string)"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
-"some invalid chars \"%(chars)s\"."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
 "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
 "valid."
@@ -2840,9 +2852,15 @@ msgid ""
 "\"%(exception)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_required_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
-msgstr ""
+msgstr "Missing search function on field \"%s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
@@ -2860,8 +2878,8 @@ msgstr "Missing search function on field \"%s\"."
 #, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
-"of the allowed options."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not one of the allowed options."
 msgstr ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
 "the selection."
@@ -2903,17 +2921,25 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
+" (%(size)i > %(max_size)i)."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
-"%(max_size)i)."
-msgstr ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is too long (%(size)i > %(max_size)i)."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
-" valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid."
 msgstr ""
 "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
 "valid."

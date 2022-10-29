@@ -498,6 +498,11 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "下一次调用"
 
+#, fuzzy
+msgctxt "field:ir.cron,timezone:"
+msgid "Timezone"
+msgstr "时间"
+
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "星期几"
@@ -638,6 +643,10 @@ msgstr "摘要"
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "字段"
+
+msgctxt "field:ir.export,header:"
+msgid "Header"
+msgstr ""
 
 msgctxt "field:ir.export,name:"
 msgid "Name"
@@ -814,10 +823,6 @@ msgstr "点击"
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
 msgstr "确认"
-
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "用户组"
 
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
@@ -1121,10 +1126,6 @@ msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
 msgstr "全局"
 
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "模型"
@@ -1415,10 +1416,6 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "最喜欢的"
 
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -1646,9 +1643,13 @@ msgid ""
 "record represented by \"self\"."
 msgstr "一个 PYSON 表达式，它生成一个次要收件人列表，其中记录由 \"self\" 表示."
 
+msgctxt "help:ir.export,header:"
+msgid "Check to include field names on the export."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
-msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
-msgstr "RFC 4646 标签: http://tools.ietf.org/html/rfc4646"
+msgid "RFC 4646 tag."
+msgstr ""
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
@@ -1706,10 +1707,12 @@ msgctxt "help:ir.queue,scheduled_at:"
 msgid "When the task can start."
 msgstr "任务可以开始的时间."
 
+#, fuzzy
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user"
+"- \"user\" as the current user\n"
+"- \"groups\" as list of ids from the current user"
 msgstr ""
 "域将会和一条 PYSON 表达式一同执行，这条表达式内容中包含:\n"
 "- \"user\" 代表当前用户"
@@ -2600,16 +2603,18 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
-"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
-"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
+"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\", 其数字取值 \"%(value)s\" 的位数超出了 \"%(digits)i\" 的限制."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
-" its domain."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid according to its domain."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\"，其取值\"%(value)s\" 对于其域来说，是无效取值."
 
 msgctxt "model:ir.message,text:msg_edited_at"
@@ -2644,10 +2649,19 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "电子邮件模板 \"%(template)s\" 中的主题无效，异常为 \"%(exception)s\"."
 
+msgctxt "model:ir.message,text:msg_field_model_name"
+msgid "%(field)s (model name)"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_field_string"
+msgid "%(field)s (string)"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
-"some invalid chars \"%(chars)s\"."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "\"%(model)s\" 中字段 \"%(field)s\" 的值 \"%(value)s\" 包含一些无效字符 \"%(chars)s\"."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
@@ -2759,8 +2773,14 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "电子邮件模板 \"%(template)s\" 中的正文无效，异常为 \"%(exception)s\"."
 
-msgctxt "model:ir.message,text:msg_required_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
 msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2775,10 +2795,11 @@ msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 缺少搜索函数."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
-"of the allowed options."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not one of the allowed options."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\"，其取值\"%(value)s\" 不在允许的选项范围内."
 
 msgctxt "model:ir.message,text:msg_sequence"
@@ -2818,16 +2839,25 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "模型 \"%(model)s\" 的字段\"%(field)s\" 没有 setter 函数."
 
-msgctxt "model:ir.message,text:msg_size_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
-"%(max_size)i)."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
+" (%(size)i > %(max_size)i)."
 msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" ，其取值位数太长(%(size)i > %(max_size)i)."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is too long (%(size)i > %(max_size)i)."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" ，其取值位数太长(%(size)i > %(max_size)i)."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
-" valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid."
 msgstr "模型 \"%(model)s\" 的字段\"%(field)s\"，时间取值 \"%(value)s\" 无效."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"

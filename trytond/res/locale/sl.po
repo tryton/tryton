@@ -68,6 +68,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Skupina"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Skupine"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Gumb"
@@ -83,6 +88,11 @@ msgstr "Uporabnik"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Skupina"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Skupine"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -103,6 +113,11 @@ msgstr "Uporabniške skupine"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Tip štetja"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Skupine"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

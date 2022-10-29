@@ -58,6 +58,10 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Gruppe"
 
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Button"
@@ -73,6 +77,10 @@ msgstr "Benutzer"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Gruppe"
+
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Gruppen"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -93,6 +101,10 @@ msgstr "Benutzergruppen"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Nummernkreistyp"
+
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Gruppen"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

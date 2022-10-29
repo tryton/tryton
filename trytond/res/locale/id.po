@@ -64,6 +64,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Kelompok"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Tombol"
@@ -78,6 +83,11 @@ msgstr "Pengguna"
 
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
 msgstr "Kelompok"
 
 msgctxt "field:ir.rule.group-res.group,group:"
@@ -99,6 +109,11 @@ msgstr ""
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Jenis Urutan"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Kelompok"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
@@ -558,11 +573,11 @@ msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
-msgstr ""
+msgstr "Kata sandi akan kedaluwarsa dalam [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Dibatalkan"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Requested"

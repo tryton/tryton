@@ -59,6 +59,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Csoport"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Csoportok"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Gomb"
@@ -74,6 +79,11 @@ msgstr "Felhasználó"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Csoport"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Csoportok"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -94,6 +104,11 @@ msgstr "Felhasználócsoport"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Sorszámozás típusa"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Csoportok"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"

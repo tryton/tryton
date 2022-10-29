@@ -65,6 +65,11 @@ msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Gruppo"
 
+#, fuzzy
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Gruppi"
+
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
 msgstr "Bottone"
@@ -80,6 +85,11 @@ msgstr "Utente"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Gruppo"
+
+#, fuzzy
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Gruppi"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -100,6 +110,11 @@ msgstr "Gruppi Utente"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Tipo Sequenza"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Gruppi"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
@@ -379,7 +394,7 @@ msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Verifica"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"

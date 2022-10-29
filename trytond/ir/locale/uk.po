@@ -4,646 +4,628 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
-msgstr "Kulcsszavak"
+msgstr "Ключові слова"
 
 msgctxt "field:ir.action,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
-#, fuzzy
 msgctxt "field:ir.action,records:"
 msgid "Records"
-msgstr "Adat ID"
+msgstr "Записи"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.action,usage:"
 msgid "Usage"
-msgstr "Használat"
+msgstr "Використання"
 
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
-msgstr "Értéktartomány"
+msgstr "Домени"
 
 msgctxt "field:ir.action.act_window,act_window_views:"
 msgid "Views"
-msgstr "Nézetek"
+msgstr "Перегляди"
 
 msgctxt "field:ir.action.act_window,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
-msgstr "Összefüggés"
+msgstr "Значення контексту"
 
 msgctxt "field:ir.action.act_window,context_domain:"
 msgid "Context Domain"
-msgstr ""
+msgstr "Контекстний домен"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "Контекстна модель"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
-msgstr "Értéktartomány"
+msgstr "Значення домену"
 
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
-msgstr "Értéktartomány"
+msgstr "Домени"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
-msgstr "Kulcsszavak"
+msgstr "Ключові слова"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
-msgstr "Korlát"
+msgstr "Обмеження"
 
 msgctxt "field:ir.action.act_window,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.action.act_window,order:"
 msgid "Order Value"
-msgstr "Érték sora"
+msgstr "Значення порядку"
 
 msgctxt "field:ir.action.act_window,pyson_context:"
 msgid "PySON Context"
-msgstr "PySON összefüggés"
+msgstr "Контекст PySON"
 
 msgctxt "field:ir.action.act_window,pyson_domain:"
 msgid "PySON Domain"
-msgstr "PySON értéktartomány"
+msgstr "Домен PySON"
 
 msgctxt "field:ir.action.act_window,pyson_order:"
 msgid "PySON Order"
-msgstr "PySON sorrend"
+msgstr "Порядок PySON"
 
 msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
-msgstr "PySON Keresési feltételek"
+msgstr "Критерії пошуку PySON"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,records:"
 msgid "Records"
-msgstr "Adat ID"
+msgstr "Записи"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.action.act_window,search_value:"
 msgid "Search Criteria"
-msgstr "Keresési feltételek"
+msgstr "Критерії пошуку"
 
 msgctxt "field:ir.action.act_window,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.action.act_window,usage:"
 msgid "Usage"
-msgstr "Használat"
+msgstr "Використання"
 
 msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
-msgstr "Nézetek"
+msgstr "Перегляди"
 
 msgctxt "field:ir.action.act_window.domain,act_window:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
-msgstr "Megszámolás"
+msgstr "Кількість"
 
 msgctxt "field:ir.action.act_window.domain,domain:"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "field:ir.action.act_window.domain,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
-msgstr "Nézet"
+msgstr "Перегляд"
 
 msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
-msgstr "Kulcsszó"
+msgstr "Ключове слово"
 
 msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.action.report,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
-msgstr "Közvetlen nyomtatás"
+msgstr "Прямий друк"
 
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
-msgstr "Dokumentum típusa"
+msgstr "Розширення"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.action.report,is_custom:"
 msgid "Is Custom"
-msgstr ""
+msgstr "Користувальницький"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
-msgstr "Kulcsszavak"
+msgstr "Ключові слова"
 
 msgctxt "field:ir.action.report,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.action.report,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
-#, fuzzy
 msgctxt "field:ir.action.report,record_name:"
 msgid "Record Name"
-msgstr "Rekord neve"
+msgstr "Ім'я запису"
 
-#, fuzzy
 msgctxt "field:ir.action.report,records:"
 msgid "Records"
-msgstr "Adat ID"
+msgstr "Записи"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
-msgstr "Útvonal"
+msgstr "Шлях"
 
 msgctxt "field:ir.action.report,report_content:"
 msgid "Content"
-msgstr "Tartalom"
+msgstr "Вміст"
 
 msgctxt "field:ir.action.report,report_content_custom:"
 msgid "Content"
-msgstr "Tartalom"
+msgstr "Вміст"
 
 msgctxt "field:ir.action.report,report_content_html:"
 msgid "Content HTML"
-msgstr ""
+msgstr "HTML вмісту"
 
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
-msgstr "Tartalom neve"
+msgstr "Ім'я вмісту"
 
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
-msgstr "Belső név"
+msgstr "Внутрішнє ім'я"
 
 msgctxt "field:ir.action.report,single:"
 msgid "Single"
-msgstr ""
+msgstr "Одиночний"
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
-msgstr "Sablon kiterjesztése"
+msgstr "Розширення шаблону"
 
 msgctxt "field:ir.action.report,translatable:"
 msgid "Translatable"
-msgstr "Fordítható"
+msgstr "Перекладний"
 
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.action.report,usage:"
 msgid "Usage"
-msgstr "Használat"
+msgstr "Використання"
 
 msgctxt "field:ir.action.url,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.action.url,keywords:"
 msgid "Keywords"
-msgstr "Kulcsszavak"
+msgstr "Ключові слова"
 
 msgctxt "field:ir.action.url,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
-#, fuzzy
 msgctxt "field:ir.action.url,records:"
 msgid "Records"
-msgstr "Adat ID"
+msgstr "Записи"
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.action.url,url:"
 msgid "Action Url"
-msgstr "Művelet URL"
+msgstr "Url-адреса дії"
 
 msgctxt "field:ir.action.url,usage:"
 msgid "Usage"
-msgstr "Használat"
+msgstr "Використання"
 
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.action.wizard,keywords:"
 msgid "Keywords"
-msgstr "Kulcsszavak"
+msgstr "Ключові слова"
 
 msgctxt "field:ir.action.wizard,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,records:"
 msgid "Records"
-msgstr "Adat ID"
+msgstr "Записи"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.action.wizard,usage:"
 msgid "Usage"
-msgstr "Használat"
+msgstr "Використання"
 
 msgctxt "field:ir.action.wizard,window:"
 msgid "Window"
-msgstr "Ablak"
+msgstr "Вікно"
 
 msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
-msgstr "Wizard név"
+msgstr "Ім'я майстра"
 
-#, fuzzy
 msgctxt "field:ir.attachment,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Forrás"
+msgstr "Копіювати до ресурсів"
 
 msgctxt "field:ir.attachment,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Копіювати до видимих ресурсів"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
 msgctxt "field:ir.attachment,data_size:"
 msgid "Data size"
-msgstr "Mérer"
+msgstr "Розмір даних"
 
 msgctxt "field:ir.attachment,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Опис"
 
 msgctxt "field:ir.attachment,file_id:"
 msgid "File ID"
-msgstr ""
+msgstr "ID файла"
 
 msgctxt "field:ir.attachment,last_modification:"
 msgid "Last Modification"
-msgstr "Utolsó módosítás"
+msgstr "Остання зміна"
 
 msgctxt "field:ir.attachment,last_user:"
 msgid "Last User"
-msgstr "Utolsó felhasználó"
+msgstr "Останній користувач"
 
 msgctxt "field:ir.attachment,link:"
 msgid "Link"
-msgstr "Hivatkozás"
+msgstr "Посилання"
 
 msgctxt "field:ir.attachment,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
-msgstr "Elem"
+msgstr "Ресурс"
 
 msgctxt "field:ir.attachment,summary:"
 msgid "Summary"
-msgstr "Leírás"
+msgstr "Підсумок"
 
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
-#, fuzzy
 msgctxt "field:ir.avatar,cache:"
 msgid "Cache"
-msgstr "Cache"
+msgstr "Кеш"
 
-#, fuzzy
 msgctxt "field:ir.avatar,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Forrás"
+msgstr "Копіювати до ресурсів"
 
-#, fuzzy
 msgctxt "field:ir.avatar,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr "Forrás"
+msgstr "Копіювати до видимих ресурсів"
 
 msgctxt "field:ir.avatar,image:"
 msgid "Image"
-msgstr ""
+msgstr "Зображення"
 
 msgctxt "field:ir.avatar,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID зображення"
 
-#, fuzzy
 msgctxt "field:ir.avatar,last_modification:"
 msgid "Last Modification"
-msgstr "Utolsó módosítás"
+msgstr "Остання зміна"
 
-#, fuzzy
 msgctxt "field:ir.avatar,last_user:"
 msgid "Last User"
-msgstr "Utolsó felhasználó"
+msgstr "Останній користувач"
 
-#, fuzzy
 msgctxt "field:ir.avatar,resource:"
 msgid "Resource"
-msgstr "Elem"
+msgstr "Ресурс"
 
 msgctxt "field:ir.avatar,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:ir.avatar.cache,avatar:"
 msgid "Avatar"
-msgstr ""
+msgstr "Аватар"
 
 msgctxt "field:ir.avatar.cache,image:"
 msgid "Image"
-msgstr ""
+msgstr "Зображення"
 
 msgctxt "field:ir.avatar.cache,image_id:"
 msgid "Image ID"
-msgstr ""
+msgstr "ID зображення"
 
 msgctxt "field:ir.avatar.cache,size:"
 msgid "Size"
-msgstr ""
+msgstr "Розмір"
 
 msgctxt "field:ir.cache,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
-msgstr "Időbélyeg"
+msgstr "Часова позначка"
 
 msgctxt "field:ir.calendar.day,abbreviation:"
 msgid "Abbreviation"
-msgstr ""
+msgstr "Абревіатура"
 
 msgctxt "field:ir.calendar.day,index:"
 msgid "Index"
-msgstr ""
+msgstr "Індекс"
 
 msgctxt "field:ir.calendar.day,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.calendar.month,abbreviation:"
 msgid "Abbreviation"
-msgstr ""
+msgstr "Абревіатура"
 
 msgctxt "field:ir.calendar.month,index:"
 msgid "Index"
-msgstr ""
+msgstr "Індекс"
 
 msgctxt "field:ir.calendar.month,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.configuration,hostname:"
 msgid "Hostname"
-msgstr "Kiszolgálónév"
+msgstr "Ім'я хоста"
 
 msgctxt "field:ir.configuration,language:"
 msgid "language"
-msgstr "nyelv"
+msgstr "мова"
 
 msgctxt "field:ir.cron,day:"
 msgid "Day"
-msgstr "Nap"
+msgstr "День"
 
 msgctxt "field:ir.cron,hour:"
 msgid "Hour"
-msgstr "Óra"
+msgstr "Година"
 
 msgctxt "field:ir.cron,interval_number:"
 msgid "Interval Number"
-msgstr "Közbenső szám"
+msgstr "Номер інтервалу"
 
 msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
-msgstr "Intervallum típusa"
+msgstr "Тип інтервалу"
 
 msgctxt "field:ir.cron,method:"
 msgid "Method"
-msgstr ""
+msgstr "Метод"
 
 msgctxt "field:ir.cron,minute:"
 msgid "Minute"
-msgstr "Perc"
+msgstr "Хвилина"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
-msgstr "Következő hívás"
+msgstr "Наступний виклик"
 
 #, fuzzy
 msgctxt "field:ir.cron,timezone:"
 msgid "Timezone"
-msgstr "Időpont"
+msgstr "Час"
 
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
-msgstr "A hét napja"
+msgstr "День тижня"
 
 msgctxt "field:ir.email,addresses:"
 msgid "Addresses"
-msgstr "Címek"
+msgstr "Адреси"
 
 msgctxt "field:ir.email,at:"
 msgid "At"
-msgstr "Időpont"
+msgstr "Коли"
 
 msgctxt "field:ir.email,body:"
 msgid "Body"
-msgstr "Tartalom"
+msgstr "Тіло"
 
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
-msgstr "Címzettek"
+msgstr "Одержувачі"
 
 msgctxt "field:ir.email,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr "Rejtett másolatot kaptak"
+msgstr "Приховані одержувачі"
 
 msgctxt "field:ir.email,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr "Másolatot kaptak"
+msgstr "Вторинні одержувачі"
 
 msgctxt "field:ir.email,resource:"
 msgid "Resource"
-msgstr "Elem"
+msgstr "Ресурс"
 
 msgctxt "field:ir.email,subject:"
 msgid "Subject"
-msgstr "Tárgy"
+msgstr "Тема"
 
 msgctxt "field:ir.email,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "field:ir.email.address,address:"
 msgid "Address"
-msgstr "Cím"
+msgstr "Адреса"
 
 msgctxt "field:ir.email.address,email:"
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Ел.пошта"
 
 msgctxt "field:ir.email.template,body:"
 msgid "Body"
-msgstr "Tartalom"
+msgstr "Тіло"
 
 msgctxt "field:ir.email.template,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.email.template,model_name:"
 msgid "Model Name"
-msgstr "Mintanév"
+msgstr "Ім'я моделі"
 
 msgctxt "field:ir.email.template,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.email.template,recipients:"
 msgid "Recipients"
-msgstr "Címzettek"
+msgstr "Одержувачі"
 
 msgctxt "field:ir.email.template,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr "Rejtett másolatot kaptak"
+msgstr "Приховані одержувачі"
 
 msgctxt "field:ir.email.template,recipients_hidden_pyson:"
 msgid "Hidden Recipients"
-msgstr "Rejtett másolatot kaptak"
+msgstr "Приховані одержувачі"
 
 msgctxt "field:ir.email.template,recipients_pyson:"
 msgid "Recipients"
-msgstr "Címzettek"
+msgstr "Одержувачі"
 
 msgctxt "field:ir.email.template,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr "Másolatot kaptak"
+msgstr "Вторинні одержувачі"
 
 msgctxt "field:ir.email.template,recipients_secondary_pyson:"
 msgid "Secondary Recipients"
-msgstr "Másolatot kaptak"
+msgstr "Вторинні одержувачі"
 
 msgctxt "field:ir.email.template,reports:"
 msgid "Reports"
-msgstr "Nyomtatványok"
+msgstr "Звіти"
 
 msgctxt "field:ir.email.template,subject:"
 msgid "Subject"
-msgstr "Tárgy"
+msgstr "Тема"
 
 msgctxt "field:ir.email.template-ir.action.report,report:"
 msgid "Report"
-msgstr "Nyomtatvány"
+msgstr "Звіт"
 
 msgctxt "field:ir.email.template-ir.action.report,template:"
 msgid "Template"
-msgstr "Sablon"
+msgstr "Шаблон"
 
-#, fuzzy
 msgctxt "field:ir.error,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Опис"
 
-#, fuzzy
 msgctxt "field:ir.error,message:"
 msgid "Message"
-msgstr "Használat"
+msgstr "Повідомлення"
 
 msgctxt "field:ir.error,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Походження"
 
-#, fuzzy
 msgctxt "field:ir.error,processed_by:"
 msgid "Processed by"
-msgstr "Létrehozta"
+msgstr "Ким оброблено"
 
 msgctxt "field:ir.error,solved_by:"
 msgid "Solved by"
-msgstr ""
+msgstr "Ким вирішено"
 
-#, fuzzy
 msgctxt "field:ir.error,state:"
 msgid "State"
-msgstr "Állapot"
+msgstr "Стан"
 
-#, fuzzy
 msgctxt "field:ir.error,summary:"
 msgid "Summary"
-msgstr "Leírás"
+msgstr "Підсумок"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
-msgstr "Mezők"
+msgstr "Поля"
 
 msgctxt "field:ir.export,header:"
 msgid "Header"
@@ -651,1008 +633,995 @@ msgstr ""
 
 msgctxt "field:ir.export,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
-msgstr "Erőforrás"
+msgstr "Ресурс"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
-msgstr "Exportálás"
+msgstr "Експорт"
 
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 msgctxt "field:ir.lang,code:"
 msgid "Code"
-msgstr "Kód"
+msgstr "Код"
 
 msgctxt "field:ir.lang,date:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "Дата"
 
 msgctxt "field:ir.lang,decimal_point:"
 msgid "Decimal Separator"
-msgstr "Tizedes elválasztó"
+msgstr "Роздільник десятків"
 
 msgctxt "field:ir.lang,direction:"
 msgid "Direction"
-msgstr "Irány"
+msgstr "Напрямок"
 
 msgctxt "field:ir.lang,grouping:"
 msgid "Grouping"
-msgstr "Csoportosítás"
+msgstr "Групування"
 
 msgctxt "field:ir.lang,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr "Tizedes elválasztó"
+msgstr "Роздільник десятків"
 
 msgctxt "field:ir.lang,mon_grouping:"
 msgid "Grouping"
-msgstr "Csoportosítás"
+msgstr "Групування"
 
 msgctxt "field:ir.lang,mon_thousands_sep:"
 msgid "Thousands Separator"
-msgstr "Ezredes elválasztó jel"
+msgstr "Роздільник тисяч"
 
 msgctxt "field:ir.lang,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr ""
+msgstr "Символ від'ємної валюти передує"
 
 msgctxt "field:ir.lang,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr ""
+msgstr "Відокремлення пробілом від'ємного знака"
 
 msgctxt "field:ir.lang,n_sign_posn:"
 msgid "Negative Sign Position"
-msgstr ""
+msgstr "Позиція від'ємного знака"
 
 msgctxt "field:ir.lang,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.lang,negative_sign:"
 msgid "Negative Sign"
-msgstr ""
+msgstr "Від'ємний знак"
 
 msgctxt "field:ir.lang,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr ""
+msgstr "Символ додатної валюти передує"
 
 msgctxt "field:ir.lang,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr ""
+msgstr "Відокремлення пробілом додатного знака"
 
 msgctxt "field:ir.lang,p_sign_posn:"
 msgid "Positive Sign Position"
-msgstr ""
+msgstr "Позиція додатного знака"
 
 msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
-msgstr "Főeset"
+msgstr "Батьківський код"
 
 msgctxt "field:ir.lang,pg_text_search:"
 msgid "PostgreSQL Text Search Configuration"
-msgstr ""
+msgstr "Налаштування текстового пошуку PostgreSQL"
 
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
-msgstr ""
+msgstr "Додатний знак"
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
-msgstr "Ezredes elválasztó jel"
+msgstr "Роздільник тисяч"
 
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
-msgstr "Fordítható"
+msgstr "Перекладний"
 
 msgctxt "field:ir.lang.config.start,languages:"
 msgid "Languages"
-msgstr "Nyelvek"
+msgstr "Мови"
 
 msgctxt "field:ir.message,text:"
 msgid "Text"
-msgstr "Szöveg"
+msgstr "Текст"
 
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
-msgstr "Mezők"
+msgstr "Поля"
 
 msgctxt "field:ir.model,global_search_p:"
 msgid "Global Search"
-msgstr "Globális keresés"
+msgstr "Глобальний пошук"
 
 msgctxt "field:ir.model,info:"
 msgid "Information"
-msgstr "Információk"
+msgstr "Інформація"
 
 msgctxt "field:ir.model,model:"
 msgid "Model Name"
-msgstr "Mintanév"
+msgstr "Ім'я моделі"
 
 msgctxt "field:ir.model,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
-msgstr "Minta leírás"
+msgstr "Опис моделі"
 
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Опис"
 
 msgctxt "field:ir.model.access,group:"
 msgid "Group"
-msgstr "Csoport"
+msgstr "Група"
 
 msgctxt "field:ir.model.access,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.model.access,perm_create:"
 msgid "Create Access"
-msgstr "Létrehozni"
+msgstr "Створення"
 
 msgctxt "field:ir.model.access,perm_delete:"
 msgid "Delete Access"
-msgstr "Törlés"
+msgstr "Видалення"
 
 msgctxt "field:ir.model.access,perm_read:"
 msgid "Read Access"
-msgstr "Olvasási hozzáférés"
+msgstr "Читання"
 
 msgctxt "field:ir.model.access,perm_write:"
 msgid "Write Access"
-msgstr "Írási hozzáférés"
+msgstr "Запис"
 
-#, fuzzy
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
-msgstr "Clicks"
+msgstr "Кліки"
 
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
-msgstr "Jóváhagyás"
+msgstr "Підтвердити"
 
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
-msgstr "Súgó"
+msgstr "Довідка"
 
 msgctxt "field:ir.model.button,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.model.button,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
-msgstr ""
+msgstr "Скинути"
 
 msgctxt "field:ir.model.button,reset_by:"
 msgid "Reset by"
-msgstr ""
+msgstr "Ким скинуто"
 
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
-msgstr "Szabályok"
+msgstr "Правила"
 
 msgctxt "field:ir.model.button,string:"
 msgid "Label"
-msgstr ""
+msgstr "Мітка"
 
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
-msgstr "Gomb"
+msgstr "Кнопка"
 
 msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
-msgstr ""
+msgstr "Керована кнопка"
 
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
-msgstr "Gomb"
+msgstr "Кнопка"
 
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
-msgstr "Adat ID"
+msgstr "ID запису"
 
 msgctxt "field:ir.model.button.rule,button:"
 msgid "Button"
-msgstr "Gomb"
+msgstr "Кнопка"
 
 msgctxt "field:ir.model.button.rule,condition:"
 msgid "Condition"
-msgstr "Feltétel"
+msgstr "Умова"
 
 msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Опис"
 
 msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
-msgstr ""
+msgstr "Кількість користувачів"
 
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
-msgstr "Rekord ID"
+msgstr "ID ресурсу"
 
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
-msgstr "Azonosító a fájlrendszerben"
+msgstr "Ідентифікатор у файловій системі"
 
 msgctxt "field:ir.model.data,fs_values:"
 msgid "Values on File System"
-msgstr "Értékek a fájlrendszerben"
+msgstr "Значення у файловій системі"
 
 msgctxt "field:ir.model.data,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.model.data,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
-msgstr "Nincs frissítés"
+msgstr "Немає оновлень"
 
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
-msgstr "Nem szinkronizált"
+msgstr "Не вдалося синхронізувати"
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
-msgstr "Értékek"
+msgstr "Значення"
 
-#, fuzzy
 msgctxt "field:ir.model.field,access:"
 msgid "Access"
-msgstr "Access"
+msgstr "Доступ"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
-msgstr "Leírás"
+msgstr "Опис поля"
 
 msgctxt "field:ir.model.field,help:"
 msgid "Help"
-msgstr "Súgó"
+msgstr "Довідка"
 
 msgctxt "field:ir.model.field,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.model.field,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.model.field,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
-msgstr "Minta kapcsolat"
+msgstr "Зв'язок моделі"
 
 msgctxt "field:ir.model.field,ttype:"
 msgid "Field Type"
-msgstr "Mezőtípus"
+msgstr "Тип поля"
 
 msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "Опис"
 
 msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
-msgstr "Mező"
+msgstr "Поле"
 
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
-msgstr "Csoport"
+msgstr "Група"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
-msgstr "Létrehoz"
+msgstr "Створення"
 
 msgctxt "field:ir.model.field.access,perm_delete:"
 msgid "Delete Access"
-msgstr "Törlés"
+msgstr "Видалення"
 
 msgctxt "field:ir.model.field.access,perm_read:"
 msgid "Read Access"
-msgstr "Olvasási hozzáférés"
+msgstr "Читання"
 
 msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
-msgstr "Írási hozzáférés:"
+msgstr "Запис"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
-msgstr "Szűrő"
+msgstr "Фільтр"
 
 msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
-msgstr "Szint"
+msgstr "Рівень"
 
 msgctxt "field:ir.module,childs:"
 msgid "Childs"
-msgstr "Alárendelt (modul)"
+msgstr "Діти"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
-msgstr "Függőségek"
+msgstr "Залежності"
 
 msgctxt "field:ir.module,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
-msgstr "Fölérendelt (modul)"
+msgstr "Батьки"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
-msgstr "Állapot"
+msgstr "Стан"
 
 msgctxt "field:ir.module,version:"
 msgid "Version"
-msgstr "Verzió"
+msgstr "Версія"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
-msgstr "Aktualizálásra váró modulok"
+msgstr "Модулі для оновлення"
 
-#, fuzzy
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Модулі"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
-msgstr "Állapot"
+msgstr "Стан"
 
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr "Százalék"
+msgstr "Відсоток"
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
-msgstr "Állapot"
+msgstr "Стан"
 
-#, fuzzy
 msgctxt "field:ir.note,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Forrás"
+msgstr "Копіювати до ресурсів"
 
 msgctxt "field:ir.note,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Копіювати до видимих ресурсів"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
-msgstr "Utolsó módosítás"
+msgstr "Остання зміна"
 
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
-msgstr "Utolsó felhasználó"
+msgstr "Останній користувач"
 
 msgctxt "field:ir.note,message:"
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
-msgstr "Elem"
+msgstr "Ресурс"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
-msgstr "Olvasatlan"
+msgstr "Непрочитана"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr "Jegyzetek"
+msgstr "Примітка"
 
 msgctxt "field:ir.note.read,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "field:ir.queue,data:"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
 msgctxt "field:ir.queue,dequeued_at:"
 msgid "Dequeued at"
-msgstr ""
+msgstr "Коли вилучено з черги"
 
 msgctxt "field:ir.queue,enqueued_at:"
 msgid "Enqueued at"
-msgstr ""
+msgstr "Коли поставлено у чергу"
 
 msgctxt "field:ir.queue,expected_at:"
 msgid "Expected at"
-msgstr ""
+msgstr "Коли очікувалось"
 
 msgctxt "field:ir.queue,finished_at:"
 msgid "Finished at"
-msgstr ""
+msgstr "Коли завершено"
 
 msgctxt "field:ir.queue,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.queue,scheduled_at:"
 msgid "Scheduled at"
-msgstr ""
+msgstr "Коли заплановано"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
-msgstr "Csoport"
+msgstr "Група"
 
 msgctxt "field:ir.rule.group,default_p:"
 msgid "Default"
-msgstr "Alapértelmezett"
+msgstr "За замовчуванням"
 
 msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
-msgstr "A teljes alkalmazásban érvényes"
+msgstr "Глобальний"
 
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.rule.group,perm_create:"
 msgid "Create Access"
-msgstr "Létrehozás"
+msgstr "Створення"
 
 msgctxt "field:ir.rule.group,perm_delete:"
 msgid "Delete Access"
-msgstr "Törlés"
+msgstr "Видалення"
 
 msgctxt "field:ir.rule.group,perm_read:"
 msgid "Read Access"
-msgstr "Olvasási hozzáférés"
+msgstr "Читання"
 
 msgctxt "field:ir.rule.group,perm_write:"
 msgid "Write Access"
-msgstr "Írás hozzáférés"
+msgstr "Запис"
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
-msgstr "Teszt"
+msgstr "Тести"
 
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
-msgstr "Utolsó időpont"
+msgstr "Остання часова позначка"
 
 msgctxt "field:ir.sequence,name:"
 msgid "Sequence Name"
-msgstr "Sorszámozás neve"
+msgstr "Ім'я послідовності"
 
 msgctxt "field:ir.sequence,number_increment:"
 msgid "Increment Number"
-msgstr "Ilyen lépésekben növekedjen"
+msgstr "Число збільшення"
 
 msgctxt "field:ir.sequence,number_next:"
 msgid "Next Number"
-msgstr "Következő szám"
+msgstr "Наступне число"
 
 msgctxt "field:ir.sequence,number_next_internal:"
 msgid "Next Number"
-msgstr "Következő szám"
+msgstr "Наступне число"
 
 msgctxt "field:ir.sequence,padding:"
 msgid "Number padding"
-msgstr "Szám hossza (hány karakter széles)"
+msgstr "Кількість цифр"
 
 msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
-msgstr "Előtag"
+msgstr "Префікс"
 
-#, fuzzy
 msgctxt "field:ir.sequence,sequence_type:"
 msgid "Sequence Type"
-msgstr "Sequence Types"
+msgstr "Тип послідовності"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
-msgstr "Utótag"
+msgstr "Суфікс"
 
 msgctxt "field:ir.sequence,timestamp_offset:"
 msgid "Timestamp Offset"
-msgstr "Időpont eltolás"
+msgstr "Зміщення часової позначки"
 
 msgctxt "field:ir.sequence,timestamp_rounding:"
 msgid "Timestamp Rounding"
-msgstr "Időpont kerekítés"
+msgstr "Округлення часової позначки"
 
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
-msgstr "Számítás módja"
+msgstr "Тип"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
-msgstr "Utolsó időpont"
+msgstr "Остання часова позначка"
 
 msgctxt "field:ir.sequence.strict,name:"
 msgid "Sequence Name"
-msgstr "Sorszámozás neve"
+msgstr "Ім'я послідовності"
 
 msgctxt "field:ir.sequence.strict,number_increment:"
 msgid "Increment Number"
-msgstr "Ilyen lépésekben növekedjen"
+msgstr "Число збільшення"
 
 msgctxt "field:ir.sequence.strict,number_next:"
 msgid "Next Number"
-msgstr "Következő szám"
+msgstr "Наступне число"
 
 msgctxt "field:ir.sequence.strict,number_next_internal:"
 msgid "Next Number"
-msgstr "Következő szám"
+msgstr "Наступне число"
 
 msgctxt "field:ir.sequence.strict,padding:"
 msgid "Number padding"
-msgstr "Szám hossza (hány karakter széles)"
+msgstr "Кількість цифр"
 
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
-msgstr "Előtag"
+msgstr "Префікс"
 
-#, fuzzy
 msgctxt "field:ir.sequence.strict,sequence_type:"
 msgid "Sequence Type"
-msgstr "Sequence Types"
+msgstr "Тип послідовності"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
-msgstr "Utótag"
+msgstr "Суфікс"
 
 msgctxt "field:ir.sequence.strict,timestamp_offset:"
 msgid "Timestamp Offset"
-msgstr "Időpont eltolás"
+msgstr "Зміщення часової позначки"
 
 msgctxt "field:ir.sequence.strict,timestamp_rounding:"
 msgid "Timestamp Rounding"
-msgstr "Dátum kerekítése"
+msgstr "Округлення часової позначки"
 
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
-msgstr "Sorszámozás neve"
+msgstr "Ім'я послідовності"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
-msgstr "Kulcs"
+msgstr "Ключ"
 
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
-msgstr "Adatok"
+msgstr "Дані"
 
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
-msgstr "Pontatlan"
+msgstr "Нечіткий"
 
 msgctxt "field:ir.translation,lang:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Мова"
 
 msgctxt "field:ir.translation,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.translation,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
-msgstr "Mezőnév"
+msgstr "Ім'я поля"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
-msgstr "Átírandó modul"
+msgstr "Перевизначаючий модуль"
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
-msgstr "Rekord ID"
+msgstr "ID ресурсу"
 
 msgctxt "field:ir.translation,src:"
 msgid "Source"
-msgstr "Forrás"
+msgstr "Джерело"
 
 msgctxt "field:ir.translation,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
-msgstr "Fordítás"
+msgstr "Значення перекладу"
 
 msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
-msgstr "Fájl"
+msgstr "Файл"
 
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
-msgstr "Fájlnév"
+msgstr "Ім'я файла"
 
 msgctxt "field:ir.translation.export.result,language:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Мова"
 
 msgctxt "field:ir.translation.export.result,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Мова"
 
 msgctxt "field:ir.translation.export.start,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Мова"
 
 msgctxt "field:ir.trigger,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
-msgstr "Feltétel"
+msgstr "Умова"
 
 msgctxt "field:ir.trigger,limit_number:"
 msgid "Limit Number"
-msgstr "Limit átfutások"
+msgstr "Кількість записів"
 
 msgctxt "field:ir.trigger,minimum_time_delay:"
 msgid "Minimum Delay"
-msgstr "Minimum késés"
+msgstr "Мінімальна затримка"
 
 msgctxt "field:ir.trigger,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.trigger,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.trigger,on_create:"
 msgid "On Create"
-msgstr "Létrehozásnál"
+msgstr "При створенні"
 
 msgctxt "field:ir.trigger,on_delete:"
 msgid "On Delete"
-msgstr "Törléskor"
+msgstr "При видаленні"
 
 msgctxt "field:ir.trigger,on_time:"
 msgid "On Time"
-msgstr "Időzített"
+msgstr "У час"
 
 msgctxt "field:ir.trigger,on_write:"
 msgid "On Write"
-msgstr "Írásnál"
+msgstr "При запису"
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
-msgstr "Adat ID"
+msgstr "ID запису"
 
 msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
-msgstr "Trigger"
+msgstr "Тригер"
 
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.ui.icon,path:"
 msgid "SVG Path"
-msgstr "SVG útvonal"
+msgstr "Шлях до SVG"
 
 msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
-msgstr "Műveleti kulcsszó"
+msgstr "Ключові слова дії"
 
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
-msgstr "Alárendelt rekordok"
+msgstr "Діти"
 
 msgctxt "field:ir.ui.menu,complete_name:"
 msgid "Complete Name"
-msgstr "Teljes név"
+msgstr "Повне ім'я"
 
 msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
-msgstr "Kedvencek"
+msgstr "Вибране"
 
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "field:ir.ui.menu,name:"
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
 msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
-msgstr "Szülő menü"
+msgstr "Батьківське меню"
 
 msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
 msgctxt "field:ir.ui.menu.favorite,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
-msgstr "Nézet felépítése"
+msgstr "Перегляд архітектури"
 
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
-msgstr "Alárendelt mező"
+msgstr "Діти"
 
 msgctxt "field:ir.ui.view,inherit:"
 msgid "Inherited View"
-msgstr "Örökölt nézet"
+msgstr "Успадкований перегляд"
 
 msgctxt "field:ir.ui.view,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.ui.view,module:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
 msgctxt "field:ir.ui.view,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.ui.view,priority:"
 msgid "Priority"
-msgstr "Prioritás"
+msgstr "Пріоритет"
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
-msgstr "Nézet típusa"
+msgstr "Тип перегляду"
 
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,field:"
 msgid "Field"
-msgstr "Mező"
+msgstr "Поле"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,value:"
 msgid "Value"
-msgstr "Értékek"
+msgstr "Значення"
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,view_id:"
 msgid "View ID"
-msgstr "Nézet"
+msgstr "ID перегляду"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
-msgstr "Alárendelt elem neve"
+msgstr "Ім'я дитини"
 
 msgctxt "field:ir.ui.view_tree_state,domain:"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
-msgstr "Bővített konto"
+msgstr "Розширені вузли"
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані вузли"
 
 msgctxt "field:ir.ui.view_tree_state,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
-msgstr "Mező"
+msgstr "Поле"
 
 msgctxt "field:ir.ui.view_tree_width,model:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "field:ir.ui.view_tree_width,width:"
 msgid "Width"
-msgstr "Szélesség"
+msgstr "Ширина"
 
 msgctxt "help:ir.action,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Записи, над якими виконується дія."
 
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh."
-msgstr ""
+msgstr "Частина домену, яка буде оцінюватися під час кожного оновлення."
 
-#, fuzzy
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view."
-msgstr "Alap felső határ a lista nézethez"
+msgstr "Обмеження за замовчуванням для перегляду списку."
 
 msgctxt "help:ir.action.act_window,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Записи, над якими виконується дія."
 
-#, fuzzy
 msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
-msgstr "Alap keresési érték a listanézetben"
+msgstr "Критерії пошуку за замовчуванням для перегляду списку."
 
-#, fuzzy
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format."
 msgstr ""
-"Üresen hagyni ugyan ahhoz a formátumhoz, mint a 'bővített javaslat', lásd "
-"unoconv-dokumentáció kompatibilis formátumokhoz."
+"Залиште пустим для того самого розширення, що й у шаблоні. Дивіться "
+"документацію LibreOffice щодо сумісного формату."
 
 msgctxt "help:ir.action.report,record_name:"
 msgid ""
 "A Genshi expression to compute the name using 'record'.\n"
 "Leave empty for the default name."
 msgstr ""
+"Вираз Genshi для обчислення імені за допомогою 'запису'.\n"
+"Залиште пустим для імені за замовчуванням."
 
 msgctxt "help:ir.action.report,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Записи, над якими виконується дія."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
-msgstr ""
+msgstr "Позначте, якщо шаблон працює лише для одного запису."
 
 msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
-msgstr ""
+msgstr "Зніміть позначку, щоб вимкнути переклади для цього звіту."
 
 msgctxt "help:ir.action.url,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Записи, над якими виконується дія."
 
 msgctxt "help:ir.action.wizard,records:"
 msgid "The records on which the action runs."
-msgstr ""
+msgstr "Записи, над якими виконується дія."
 
-#, fuzzy
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
-msgstr "Wizard kivitelezés külön ablakokon"
+msgstr "Виконати майстер у новому вікні."
 
 msgctxt "help:ir.email.template,recipients:"
 msgid "The field that contains the recipient(s)."
-msgstr ""
+msgstr "Поле, яке містить одержувачів."
 
 msgctxt "help:ir.email.template,recipients_hidden:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Поле, яке містить вторинних одержувачів."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_hidden_pyson:"
 msgid ""
 "A PYSON expression that generates a list of hidden recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+"Вираз PYSON, який генерує список прихованих одержувачів із записом, "
+"представленим \"self\"."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_pyson:"
 msgid ""
 "A PYSON expression that generates a list of recipients with the record "
 "represented by \"self\"."
 msgstr ""
-"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+"Вираз PYSON, який генерує список одержувачів із записом, представленим "
+"\"self\"."
 
 msgctxt "help:ir.email.template,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Поле, у якому містяться вторинні одержувачі."
 
-#, fuzzy
 msgctxt "help:ir.email.template,recipients_secondary_pyson:"
 msgid ""
 "A PYSON expression that generates a list of secondary recipients with the "
 "record represented by \"self\"."
 msgstr ""
-"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+"Вираз PYSON, який генерує список вторинних одержувачів із записом, "
+"представленим \"self\"."
 
 msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
@@ -1664,61 +1633,62 @@ msgstr ""
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
-msgstr ""
+msgstr "Код виняткового батька"
 
-#, fuzzy
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined."
-msgstr "Modul, melyben ez a minta van definiálva"
+msgstr "Модуль, у якому визначено цю модель."
 
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
-msgstr ""
+msgstr "Текст для підтвердження користувача під час натискання кнопки."
 
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules."
-msgstr ""
+msgstr "Кнопка, яка має скинути правила."
 
-#, fuzzy
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
 "A PYSON statement evaluated with the record represented by \"self\"\n"
 "It activate the rule if true."
 msgstr ""
-"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+"Оператор PYSON, який оцінюється із записом, представленим \"self\"\n"
+"Правило активується, якщо результат оцінки істинний."
 
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
-msgstr "Az adat ID az adatbankban"
+msgstr "Ідентифікатор запису у базі даних."
 
 msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
-msgstr "Adat ID, mint az adatrendszerben"
+msgstr "Ідентифікатор запису, відомий у файловій системі."
 
 msgctxt "help:ir.model.field,access:"
 msgid ""
 "If checked, the access right on the model of the field is also tested "
 "against the relation of the field."
 msgstr ""
+"Якщо позначено, доступ до моделі поля також перевіряється на записах, "
+"пов'язаних з цим полем."
 
-#, fuzzy
 msgctxt "help:ir.model.field,module:"
 msgid "Module in which this field is defined."
-msgstr "Modul, melyben ez a mező van definiálva"
+msgstr "Модуль, у якому визначено це поле."
 
 msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
 msgstr ""
+"Введення регулярного виразу Python виключає відповідні моделі з графіка."
 
 msgctxt "help:ir.queue,expected_at:"
 msgid "When the task should be done."
-msgstr ""
+msgstr "Коли завдання має бути виконано."
 
 msgctxt "help:ir.queue,scheduled_at:"
 msgid "When the task can start."
-msgstr ""
+msgstr "Коли завдання можна розпочати."
 
 #, fuzzy
 msgctxt "help:ir.rule,domain:"
@@ -1727,938 +1697,877 @@ msgid ""
 "- \"user\" as the current user\n"
 "- \"groups\" as list of ids from the current user"
 msgstr ""
-"Az értékterület egy PYSON Kontexttel van kiértékelve, mely tartalmaz:\n"
-"- \"user\" als der aktuelle Benutzer"
+"Домен оцінюється за контекстом PYSON, що містить:\n"
+"- \"user\" у якості поточного користувача"
 
-#, fuzzy
 msgctxt "help:ir.rule.group,default_p:"
 msgid "Add this rule to all users by default."
-msgstr "Ezt a szabályt alapszabályként minden felhasználónak"
+msgstr "Додати це правило всім користувачам за замовчуванням."
 
-#, fuzzy
 msgctxt "help:ir.rule.group,global_p:"
 msgid ""
 "Make the rule global \n"
 "so every users must follow this rule."
 msgstr ""
-"Globális szabály\n"
-"(Minden felhasználóra érvényes)"
+"Зробити правило глобальним, \n"
+"всі користувачі повинні дотримуватися цього правила."
 
 msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
-msgstr ""
+msgstr "Відображається, коли виникла помилка доступу для цього правила."
 
-#, fuzzy
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
-msgstr "A szabály akkor érvényes, ha legalább egy teszt pozitív"
+msgstr "Правило задовольняється, якщо принаймні один тест істинний."
 
-#, fuzzy
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+"Оператор PYSON, який оцінюється із записом, представленим \"self\"\n"
+"Дія виконується, якщо результат оцінки істинний."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
 "Limit the number of call to \"Action Function\" by records.\n"
 "0 for no limit."
 msgstr ""
-"Hívások számának korlátozása \"műveleti funkció\" által adatokon keresztül.\n"
-"0 nem limit"
+"Обмежити кількість викликів функції дії для записів.\n"
+"Без обмеження, якщо дорівнює 0."
 
 msgctxt "help:ir.trigger,minimum_time_delay:"
 msgid ""
 "Set a minimum time delay between call to \"Action Function\" for the same record.\n"
 "empty for no delay."
 msgstr ""
-"Minimum időszak megadása 'műveleti funkció' hívásokhoz ugyan ahhoz az adathoz.\n"
-"Üres azt jelenti, nincs késés."
+"Мінімальна затримка між викликами функція дії для одного запису.\n"
+"Без затримки, якщо не задана."
 
-#, fuzzy
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
-msgstr "PySON értékterület"
+msgstr "Домен PYSON."
 
 msgctxt "model:ir.action,name:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Дії вікна"
 
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "Műveletek"
+msgstr "Дії"
 
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "Nyomtatványok"
+msgstr "Звіти"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-адреси"
 
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Майстри"
 
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Mellékletek"
+msgstr "Вкладення"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Майстри налаштування"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Actions"
-msgstr "Műveletek"
+msgstr "Дії"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
 msgid "E-mails"
-msgstr "E-mail"
+msgstr "Ел.пошта"
 
 msgctxt "model:ir.action,name:act_email_form_relate"
 msgid "E-mail Archives"
-msgstr "Korábbi e-mailek"
+msgstr "Архіви ел.пошти"
 
 msgctxt "model:ir.action,name:act_email_template_form"
 msgid "E-mail Templates"
-msgstr ""
+msgstr "Шаблони ел.пошти"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_error_form"
 msgid "Errors"
-msgstr "Hiba"
+msgstr "Помилки"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
-msgstr "Exports"
+msgstr "Експорти"
 
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "Ikonok"
+msgstr "Піктограми"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lang_config"
 msgid "Configure Languages"
-msgstr "Configure Modules"
+msgstr "Налаштувати мови"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
-msgstr "Nyelvek"
+msgstr "Мови"
 
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
 msgctxt "model:ir.action,name:act_message_form"
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Доступ до моделей"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr "Access"
+msgstr "Доступ"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr "Clicks"
+msgstr "Кліки"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "Buttons"
+msgstr "Кнопки"
 
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Доступ до полів"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr "Access"
+msgstr "Доступ"
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr "Mezők"
+msgstr "Поля"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
-msgstr "Models"
+msgstr "Моделі"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
+msgstr "Виконати активацію/оновлення"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
-msgstr "Configure Modules"
+msgstr "Налаштувати модулі"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "Module Configuration"
+msgstr "Налаштування модуля"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Модулі"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr "Jegyzetek"
+msgstr "Примітки"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr "Правила записів"
 
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
-msgstr "Sorszámozások"
+msgstr "Послідовності"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sequences Strict"
+msgstr "Суворі послідовності"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Types"
-msgstr "Típus"
+msgstr "Типи"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "Clean Translations"
+msgstr "Очистити переклади"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "Export Translations"
+msgstr "Експортувати переклади"
 
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr "Fordítások"
+msgstr "Переклади"
 
 msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
-msgstr "Fordítások"
+msgstr "Переклади"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
-msgstr "Fordítás aktualizálása"
+msgstr "Встановити переклади"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "Synchronize Translations"
+msgstr "Синхронізувати переклади"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Тригери"
 
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "Nézetek"
+msgstr "Перегляди"
 
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
-msgstr "Keresés nézet"
+msgstr "Пошуки переглядів"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
-msgstr "Show View"
+msgstr "Показати перегляд"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_optional_form"
 msgid "View Tree Optional"
-msgstr "Oszlop széles nézet"
+msgstr "Додаткові перегляди"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Стан дерев"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "Oszlopszéles nézet"
+msgstr "Ширини колонок"
 
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "Diagram"
+msgstr "Графік"
 
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "Diagram"
+msgstr "Графік"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr "Workflow Graph"
+msgstr "Графік робочого процесу"
 
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
-msgstr "Fordítások"
+msgstr "Переклади"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
-msgstr "Művelet aktív ablak"
+msgstr "Вікно дії"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
-msgstr "Aktív ablak nézet"
+msgstr "Домен вікна дії"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
 msgid "All"
-msgstr "összes"
+msgstr "Всі"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
 msgid "Open"
-msgstr "nyitott"
+msgstr "Відкрити"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_error_form_domain_processing"
 msgid "Processing"
-msgstr ""
+msgstr "Обробка"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
 msgid "All"
-msgstr "összes"
+msgstr "Всі"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
-msgstr "Nem szinkronizált"
+msgstr "Не вдалося синхронізувати"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
-msgstr "Local"
+msgstr "Локальний"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_module"
 msgid "Modules"
-msgstr "Modulok"
+msgstr "Модулі"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
-msgstr "Aktív ablak nézet"
+msgstr "Вікно дії"
 
 msgctxt "model:ir.action.keyword,name:"
 msgid "Action keyword"
-msgstr "Művelet kulcsszó"
+msgstr "Ключове слово дії"
 
 msgctxt "model:ir.action.report,name:"
 msgid "Action report"
-msgstr "Művelet jelentés"
+msgstr "Звіт дії"
 
 msgctxt "model:ir.action.url,name:"
 msgid "Action URL"
-msgstr "URL Művelet"
+msgstr "URL-адреса дії"
 
 msgctxt "model:ir.action.wizard,name:"
 msgid "Action wizard"
-msgstr "Wizard Művelet"
+msgstr "Майстер дії"
 
 msgctxt "model:ir.attachment,name:"
 msgid "Attachment"
-msgstr "Melléklet"
+msgstr "Вкладення"
 
 msgctxt "model:ir.avatar,name:"
 msgid "Avatar"
-msgstr ""
+msgstr "Аватар"
 
 msgctxt "model:ir.avatar.cache,name:"
 msgid "Avatar Cache"
-msgstr ""
+msgstr "Кеш аватара"
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
-msgstr "Cache"
+msgstr "Кеш"
 
 msgctxt "model:ir.calendar.day,abbreviation:Friday"
 msgid "Fri"
-msgstr "pén"
+msgstr "Пт"
 
 msgctxt "model:ir.calendar.day,abbreviation:Monday"
 msgid "Mon"
-msgstr "hét"
+msgstr "Пн"
 
 msgctxt "model:ir.calendar.day,abbreviation:Saturday"
 msgid "Sat"
-msgstr "szo"
+msgstr "Сб"
 
 msgctxt "model:ir.calendar.day,abbreviation:Sunday"
 msgid "Sun"
-msgstr "vas"
+msgstr "Нд"
 
 msgctxt "model:ir.calendar.day,abbreviation:Thursday"
 msgid "Thu"
-msgstr "csü"
+msgstr "Чт"
 
 msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
 msgid "Tue"
-msgstr "kedd"
+msgstr "Вт"
 
 msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
 msgid "Wed"
-msgstr "szer"
+msgstr "Ср"
 
 msgctxt "model:ir.calendar.day,name:"
 msgid "Day"
-msgstr "Nap"
+msgstr "День"
 
 msgctxt "model:ir.calendar.day,name:Friday"
 msgid "Friday"
-msgstr "péntek"
+msgstr "П'ятниця"
 
 msgctxt "model:ir.calendar.day,name:Monday"
 msgid "Monday"
-msgstr "hétfő"
+msgstr "Понеділок"
 
 msgctxt "model:ir.calendar.day,name:Saturday"
 msgid "Saturday"
-msgstr "szombat"
+msgstr "Субота"
 
 msgctxt "model:ir.calendar.day,name:Sunday"
 msgid "Sunday"
-msgstr "vasárnap"
+msgstr "Неділя"
 
 msgctxt "model:ir.calendar.day,name:Thursday"
 msgid "Thursday"
-msgstr "csütörtök"
+msgstr "Четвер"
 
 msgctxt "model:ir.calendar.day,name:Tuesday"
 msgid "Tuesday"
-msgstr "kedd"
+msgstr "Вівторок"
 
 msgctxt "model:ir.calendar.day,name:Wednesday"
 msgid "Wednesday"
-msgstr "szerda"
+msgstr "Середа"
 
 msgctxt "model:ir.calendar.month,abbreviation:April"
 msgid "Apr"
-msgstr "ápr"
+msgstr "Кві"
 
 msgctxt "model:ir.calendar.month,abbreviation:August"
 msgid "Aug"
-msgstr "aug"
+msgstr "Сер"
 
 msgctxt "model:ir.calendar.month,abbreviation:December"
 msgid "Dec"
-msgstr "dec"
+msgstr "Гру"
 
 msgctxt "model:ir.calendar.month,abbreviation:February"
 msgid "Feb"
-msgstr "feb"
+msgstr "Лют"
 
 msgctxt "model:ir.calendar.month,abbreviation:January"
 msgid "Jan"
-msgstr "jan"
+msgstr "Січ"
 
 msgctxt "model:ir.calendar.month,abbreviation:July"
 msgid "Jul"
-msgstr "júl"
+msgstr "Лип"
 
 msgctxt "model:ir.calendar.month,abbreviation:June"
 msgid "Jun"
-msgstr "jún"
+msgstr "Чер"
 
 msgctxt "model:ir.calendar.month,abbreviation:March"
 msgid "Mar"
-msgstr "márc"
+msgstr "Бер"
 
 msgctxt "model:ir.calendar.month,abbreviation:May"
 msgid "May"
-msgstr "máj"
+msgstr "Тра"
 
 msgctxt "model:ir.calendar.month,abbreviation:November"
 msgid "Nov"
-msgstr "nov"
+msgstr "Лис"
 
 msgctxt "model:ir.calendar.month,abbreviation:October"
 msgid "Oct"
-msgstr "okt"
+msgstr "Жов"
 
 msgctxt "model:ir.calendar.month,abbreviation:September"
 msgid "Sep"
-msgstr "szep"
+msgstr "Вер"
 
 msgctxt "model:ir.calendar.month,name:"
 msgid "Month"
-msgstr "Hónap"
+msgstr "Місяць"
 
 msgctxt "model:ir.calendar.month,name:April"
 msgid "April"
-msgstr "április"
+msgstr "Квітень"
 
 msgctxt "model:ir.calendar.month,name:August"
 msgid "August"
-msgstr "augusztus"
+msgstr "Серпень"
 
 msgctxt "model:ir.calendar.month,name:December"
 msgid "December"
-msgstr "december"
+msgstr "Грудень"
 
 msgctxt "model:ir.calendar.month,name:February"
 msgid "February"
-msgstr "február"
+msgstr "Лютий"
 
 msgctxt "model:ir.calendar.month,name:January"
 msgid "January"
-msgstr "január"
+msgstr "Січень"
 
 msgctxt "model:ir.calendar.month,name:July"
 msgid "July"
-msgstr "július"
+msgstr "Липень"
 
 msgctxt "model:ir.calendar.month,name:June"
 msgid "June"
-msgstr "június"
+msgstr "Червень"
 
 msgctxt "model:ir.calendar.month,name:March"
 msgid "March"
-msgstr "március"
+msgstr "Березень"
 
 msgctxt "model:ir.calendar.month,name:May"
 msgid "May"
-msgstr "máj"
+msgstr "Травень"
 
 msgctxt "model:ir.calendar.month,name:November"
 msgid "November"
-msgstr "november"
+msgstr "Листопад"
 
 msgctxt "model:ir.calendar.month,name:October"
 msgid "October"
-msgstr "október"
+msgstr "Жовтень"
 
 msgctxt "model:ir.calendar.month,name:September"
 msgid "September"
-msgstr "szeptember"
+msgstr "Вересень"
 
 msgctxt "model:ir.configuration,name:"
 msgid "Configuration"
-msgstr "Beállítások"
+msgstr "Налаштування"
 
 msgctxt "model:ir.cron,name:"
 msgid "Cron"
-msgstr "Cron"
+msgstr "Демон"
 
 msgctxt "model:ir.date,name:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "Дата"
 
 msgctxt "model:ir.email,name:"
 msgid "Email"
-msgstr "E-mail"
+msgstr "Ел.пошта"
 
 msgctxt "model:ir.email.address,name:"
 msgid "Email Address"
-msgstr ""
+msgstr "Адреса ел.пошти"
 
 msgctxt "model:ir.email.template,name:"
 msgid "Email Template"
-msgstr "E-mail sablon"
+msgstr "Шаблон ел.пошти"
 
 msgctxt "model:ir.email.template-ir.action.report,name:"
 msgid "Email Template - Report"
-msgstr ""
+msgstr "Шаблон ел.пошти - Звіт"
 
-#, fuzzy
 msgctxt "model:ir.error,name:"
 msgid "Error"
-msgstr "Hiba"
+msgstr "Помилка"
 
 msgctxt "model:ir.export,name:"
 msgid "Export"
-msgstr "Exportálás"
+msgstr "Експортувати"
 
 msgctxt "model:ir.export.line,name:"
 msgid "Export line"
-msgstr "Export sor"
+msgstr "Експортувати рядок"
 
 msgctxt "model:ir.lang,name:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Мова"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Bulgarian"
+msgstr "Болгарська"
 
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
-msgstr "Català"
+msgstr "Каталонська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "Czech"
+msgstr "Чеська"
 
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "német"
+msgstr "Німецька"
 
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
-msgstr "angol"
+msgstr "Англійська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
-msgstr "Spanyol (Spanyolország)"
+msgstr "Іспанська"
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
-msgstr "Spanish (Latin American)"
+msgstr "Іспанська (латиноамериканська)"
 
 msgctxt "model:ir.lang,name:lang_et"
 msgid "Estonian"
-msgstr ""
+msgstr "Естонська"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
-msgstr ""
+msgstr "Перська"
 
 msgctxt "model:ir.lang,name:lang_fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Фінська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
-msgstr "French"
+msgstr "Французька"
 
 msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
-msgstr "magyar"
+msgstr "Угорська"
 
 msgctxt "model:ir.lang,name:lang_id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Індонезійська"
 
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
-msgstr "Italian"
+msgstr "Італійська"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "Lao"
-msgstr "Lao"
+msgstr "Лаоська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "Литовська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "Dutch"
+msgstr "Голландська"
 
 msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
-msgstr "Polish"
+msgstr "Польська"
 
 msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
-msgstr ""
+msgstr "Португальська"
 
 msgctxt "model:ir.lang,name:lang_ro"
 msgid "Romanian"
-msgstr ""
+msgstr "Румунська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
-msgstr "Russian"
+msgstr "Російська"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr "Slovenian"
+msgstr "Словенська"
 
 msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
-msgstr ""
+msgstr "Турецька"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
-msgstr "Chinese Simplified"
+msgstr "Китайська (спрощена)"
 
-#, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
 msgid "Configure languages"
-msgstr "Configure Modules"
+msgstr "Налаштувати мови"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_ID"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
-msgstr ""
+msgstr "Виклик кнопки \"%(button)s\" на \"%(model)s\" не дозволено."
 
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
-msgstr "Nincs hozzáférési engedélye a(z) „%(model)s” elemhez."
+msgstr "Вам заборонено доступ до \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
-msgstr "Nincs hozzáférési engedélye a(z) „%(model)s.%(field)s” mezőhöz."
+msgstr "Вам заборонено доступ до \"%(model)s.%(field)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_access_wizard_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\"."
-msgstr "You are not allowed to delete this record."
+msgstr "Вам заборонено виконувати майстер \"%(wizard)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_access_wizard_model_error"
 msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
-msgstr "You are not allowed to delete this record."
+msgstr "Вам заборонено виконувати майстер \"%(wizard)s\" на \"%(model)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr "Недійсний контекст \"%(context)s\" для дії \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
-msgstr ""
-"Érvénytelen értéktartomány (Domain) vagy keresési kritérium "
-"\"%(domain)s\"akcióban \"%(action)s\"."
+msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для дії \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
-msgstr "Érvénytelen nézet \"%(view)s\" a művelethez \"%(action)s\"."
+msgstr "Недійсний перегляд \"%(view)s\" для дії \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
-msgstr "Helytelen Wizard mint a kulcsszó műveletben \"%s\"."
+msgstr "Неправильна модель майстра в дії ключового слова \"%(name)s\"."
 
 msgctxt "model:ir.message,text:msg_active"
 msgid "Active"
-msgstr "Aktív"
+msgstr "Активний"
 
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
-msgstr "Kapcsolja ki, ha ezt a rekordot a jövőben nem akarja használni."
+msgstr "Зніміть позначку, щоб виключити з наступного використання."
 
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
-msgstr "Mellékletek"
+msgstr "Вкладення"
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
-msgstr ""
+msgstr "Аватар"
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
-msgstr ""
+msgstr "На ресурс дозволяється лише один аватар."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_avatar_size_unique"
 msgid "The size of an avatar must be unique."
-msgstr "Egy modul neve csak egyszer adható."
+msgstr "Розмір аватара має бути унікальним."
 
 msgctxt "model:ir.message,text:msg_avatar_url"
 msgid "Avatar URL"
-msgstr ""
+msgstr "URL-адреса аватара"
 
 msgctxt "model:ir.message,text:msg_avatars"
 msgid "Avatars"
-msgstr ""
+msgstr "Аватари"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
-msgstr "This record is part of the base configuration."
+msgstr "Цей запис є частиною базової конфігурації."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
-msgstr "Egy modul neve csak egyszer adható."
+msgstr "Назва кнопки має бути унікальною для кожної моделі."
 
 msgctxt "model:ir.message,text:msg_create_rule_error"
 msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
-"Nem tud „%(model)s” rekordokat létrehozni, mert a következő szabályok legalább egyike nem teljesül:\n"
+"Вам заборонено створювати записи \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
 msgctxt "model:ir.message,text:msg_created_at"
 msgid "Created at"
-msgstr "Létrehozás dátuma"
+msgstr "Коли створено"
 
 msgctxt "model:ir.message,text:msg_created_by"
 msgid "Created by"
-msgstr "Létrehozta"
+msgstr "Ким створено"
 
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
-"Nem tudja a „%(model)s” „%(ids)s” ID-vel rendelkező rekordjait törölni, mert a következő szabályok legalább egyike nem teljesül:\n"
+"Вам заборонено видаляти записи \"%(ids)s\" із \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
-msgstr "You are not allowed to delete this record."
+msgstr "Ви не можете видалити цей запис."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_no"
 msgid "No"
-msgstr "nov"
+msgstr "Ні"
 
 msgctxt "model:ir.message,text:msg_dict_schema_boolean"
 msgid "Boolean"
-msgstr "igen/nem"
+msgstr "Логічний"
 
 msgctxt "model:ir.message,text:msg_dict_schema_char"
 msgid "Char"
-msgstr "szöveg"
+msgstr "Символ"
 
 msgctxt "model:ir.message,text:msg_dict_schema_date"
 msgid "Date"
-msgstr "dátum"
+msgstr "Дата"
 
 msgctxt "model:ir.message,text:msg_dict_schema_datetime"
 msgid "DateTime"
-msgstr "dátum és idő"
+msgstr "Дата і час"
 
 msgctxt "model:ir.message,text:msg_dict_schema_digits"
 msgid "Digits"
-msgstr "Tizedesjegyek"
+msgstr "Цифри"
 
 msgctxt "model:ir.message,text:msg_dict_schema_domain"
 msgid "Domain"
-msgstr "Érvényesség"
+msgstr "Домен"
 
 msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
-msgstr "lebegőpontos szám"
+msgstr "Число з плав.точкою"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
-msgstr "Magyarázat"
+msgstr "Довідка"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
 msgid "Help Selection"
-msgstr "Értéklista magyarázata"
+msgstr "Вибір довідки"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
 msgid "The key followed by the help text separated by a \":\", one per line."
-msgstr ""
+msgstr "Ключ, за яким слідує текст довідки, розділений \":\", по одному на рядок."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
 msgid "Help Selection JSON"
-msgstr "Kiválasztás"
+msgstr "JSON для вибору довідки"
 
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
-msgstr "egész szám"
+msgstr "Ціле число"
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Недійсний домен у схемі \"%(schema)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
 msgid "Invalid help selection in schema \"%(schema)s\"."
-msgstr "Érvénytelen e-mail cím a jelentésben \"%s\"."
+msgstr "Недійсний вибір довідки в схемі \"%(schema)s\"."
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Недійсний вибір у схемі \"%(schema)s\"."
 
 msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
 msgid "MultiSelection"
-msgstr "értéklista többszörös"
+msgstr "Мультивибір"
 
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
-msgstr "Név"
+msgstr "Найменування"
 
 msgctxt "model:ir.message,text:msg_dict_schema_numeric"
 msgid "Numeric"
-msgstr "szám tizedesjegyekkel"
+msgstr "Число"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection"
 msgid "Selection"
-msgstr "értéklista"
+msgstr "Вибір"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
 msgid "A couple of key and label separated by \":\" per line."
-msgstr ""
+msgstr "Пара ключів і міток, розділених \":\", по одному на рядок."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
 msgid "Selection JSON"
-msgstr "Kiválasztás"
+msgstr "Вибір JSON"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
 msgid "Selection Sorted"
-msgstr "Értéklista sorba rendezve"
+msgstr "Впорядкований вибір"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
 msgid "If the selection must be sorted on label."
-msgstr "Jelölje be, ha az értéklista elemeit sorba kell rendezni."
+msgstr "Якщо вибір слід впорядкувати за міткою."
 
 msgctxt "model:ir.message,text:msg_dict_schema_string"
 msgid "String"
-msgstr "Szöveg"
+msgstr "Рядок"
 
 msgctxt "model:ir.message,text:msg_dict_schema_type"
 msgid "Type"
-msgstr "Típus"
+msgstr "Тип"
 
 msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
@@ -2666,50 +2575,57 @@ msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
 "\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
+"Кількість цифр у значенні \"%(value)s\" для поля \"%(field)s\" у "
+"\"%(model)s\" перевищує ліміт \"%(digits)i\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not valid according to its domain."
-msgstr "A „%(model)s” elem „%(field)s” mezője hibásan van kitöltve."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" недійсне відповідно дойого "
+"домену."
 
 msgctxt "model:ir.message,text:msg_edited_at"
 msgid "Edited at"
-msgstr "Módosítás dátuma"
+msgstr "Коли змінено"
 
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
-msgstr "Módosította"
+msgstr "Ким змінено"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_body"
 msgid ""
 "Invalid body in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr ""
+"Недійсний текст у шаблоні ел.листа \"%(template)s\" з винятком "
+"\"%(exception)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
 msgid ""
 "Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr ""
+"Недійсне поле PYSON %(field)s в шаблоні ел.листа \"%(template)s\" з винятком"
+" \"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
 msgid ""
 "The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
 "list."
 msgstr ""
+"Поле PYSON %(field)s у шаблоні ел.листа \"%(template)s\" має генерувати "
+"список."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
 msgid ""
 "Invalid subject in e-mail template \"%(template)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr ""
+"Недійсна тема в шаблоні ел.листа \"%(template)s\" з винятком "
+"\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_field_model_name"
 msgid "%(field)s (model name)"
@@ -2725,152 +2641,148 @@ msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
+"Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" містить деякі "
+"недійсні символи \"%(chars)s\"."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
 "\"%(field)s\" of \"%(model)s\"."
 msgstr ""
+"Записи неможливо видалити, оскільки вони використовуються полем "
+"\"%(field)s\" моделі \"%(model)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr "Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" не існує."
 
 msgctxt "model:ir.message,text:msg_html_editor_save_fail"
 msgid "Failed to save, please retry."
-msgstr ""
+msgstr "Не вдалося зберегти, будь ласка, повторіть спробу."
 
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
-msgstr ""
+msgstr "Ідентифікатор має бути позитивним."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_code_unique"
 msgid "The code on language must be unique."
-msgstr "A minta csak egyszer adható."
+msgstr "Код мови має бути унікальним."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_default_translatable"
 msgid "The default language \"%(language)s\" must be translatable."
-msgstr "Az alapnyelv fordítható legyen."
+msgstr "Мова за замовчуванням \"%(language)s\" має перекладатися."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_delete_default"
 msgid "The default language \"%(language)s\" can not be deleted."
-msgstr "Az alapnyelvet nem lehet törölni."
+msgstr "Мова за замовчуванням \"%(language)s\" не може бути видалена."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_invalid_date"
 msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
-msgstr "Érvénytelen a dátum alakja \"%(format)s\" a \"%(language)s\" nyelvben."
+msgstr "Недійсний формат дати \"%(format)s\" для мови \"%(language)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
-msgstr "Érvénytelen csoportosítás \"%(grouping)s\" a \"%(language)s\" nyelvben."
+msgstr "Недійсне групування \"%(grouping)s\" для мови \"%(language)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
 msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
 "rule \"%(rule)s\"."
 msgstr ""
-"A Tigger \"%(trigger)s\" feltételei \"%(condition)s\" nem érvényes Python "
-"kifejezés."
+"Умова \"%(condition)s\" не є дійсним виразом PYSON для правила кнопки "
+"\"%(rule)s\"."
 
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
+"Деякі активовані модулі залежать від тих, які ви намагаєтеся деактивувати:"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_module_delete_state"
 msgid ""
 "You can not remove a module that is activated or that is about to be "
 "activated."
-msgstr "A már telepített vagy telepítésre előjegyzett modul nem törölhető."
+msgstr ""
+"Ви не можете видалити модуль, який активований або який ви збираєтесь "
+"активувати."
 
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
-msgstr "Jegyzetek"
+msgstr "Примітки"
 
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
 " anymore."
 msgstr ""
+"Ви намагаєтеся прочитати записи \"%(ids)s\" із \"%(model)s\", які більше не "
+"існують."
 
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
-"Nem tudja a „%(model)s” „%(ids)s” ID-vel rendelkező rekordjait olvasni, mert a következő szabályok legalább egyike nem teljesül:\n"
+"Вам заборонено читати записи \"%(ids)s\" з \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
 msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
-msgstr "Rekord neve"
+msgstr "Ім'я запису"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
+"Помилка рекурсії: запис \"%(rec_name)s\" з батьком \"%(parent_rec_name)s\" "
+"був налаштований як предок самого себе."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid ""
 "Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
 "(%(column)s)."
-msgstr "Syntax error for reference %r in %s"
+msgstr ""
+"Синтаксична помилка для посилання: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_relation_not_found"
 msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Relation not found: %r in %s"
+msgstr "Не знайдено зв'язку: %(value)r в моделі \"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
-msgstr "Érvénytelen e-mail cím a jelentésben \"%s\"."
+msgstr "Недійсне визначення ел.пошти для звіту \"%(name)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_report_invalid_record_name"
 msgid ""
 "Invalid record name definition for report \"%(report)s\" with exception "
 "\"%(exception)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr ""
+"Недійсне визначення ім'я запису для звіту \"%(report)s\" з винятком "
+"\"%(exception)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
-msgstr "A „%(model)s” elem „%(field)s” mezőjét ki kell tölteni."
+msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
-msgstr "A „%(model)s” elem „%(field)s” mezőjét ki kell tölteni."
+msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
-msgstr ""
+msgstr "Ресурси, на які потрібно скопіювати цей запис."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
-msgstr "Érvénytelen értéktartomány (Domain) szabályozásban \"%s\"."
+msgstr "Недійсний домен у правилі \"%(name)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
-msgstr "Missing search function on field \"%s\"."
+msgstr "Відсутня функція пошуку для поля \"%(field)s\" в \"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
@@ -2878,1081 +2790,1029 @@ msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not one of the allowed options."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
+"Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" не є одним із "
+"дозволених параметрів."
 
 msgctxt "model:ir.message,text:msg_sequence"
 msgid "Sequence"
-msgstr "Sorszám"
+msgstr "Послідовність"
 
 msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
 msgid ""
 "You cannot change the sequence type of a sequence instead create a new "
 "sequence."
 msgstr ""
+"Ви не можете змінити тип послідовності, замість цього створіть нову "
+"послідовність."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
 msgid ""
 "Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
 "(%(number_next)s) with exception \"%(exception)s\"."
-msgstr "Érvénytelen összefüggés \"%(context)s\" a műveletben \"%(action)s\"."
+msgstr ""
+"Недійсне \"Число збільшення\" (%(number_increment)s) або \"Наступний номер\""
+" (%(number_next)s) з винятком \"%(exception)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
-msgstr "Érvénytelen előtag \"%(prefix)s\" a számkörben \"%(sequence)s\"."
+msgstr "Недійсний префікс \"%(affix)s\" для послідовності \"%(sequence)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
 msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
-msgstr "Érvénytelen toldalék \"%(prefix)s\" a számkörben \"%(sequence)s\"."
+msgstr "Недійсний суфікс \"%(affix)s\" для послідовності \"%(sequence)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
 msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
-msgstr "Az idő a számkörhöz \"%s\" nem lehet a jövőben"
+msgstr ""
+"\"Остання часова позначка\" не може бути в майбутньому для послідовності "
+"\"%s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_missing"
 msgid "Missing sequence."
-msgstr "Hiányzó számkör."
+msgstr "Відсутня послідовність."
 
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
-msgstr ""
+msgstr "Відсутня функція setter для поля \"%(field)s\" в \"%(model)s\"."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
 " (%(size)i > %(max_size)i)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" задовге (%(size)i > "
+"%(max_size)i)."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is too long (%(size)i > %(max_size)i)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" задовге (%(size)i > "
+"%(max_size)i)."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
 "The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
 "\"%(model)s\" is not valid."
-msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
+msgstr "Недійсне значення часу \"%(value)s\" поля \"%(field)s\" в \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"
 msgid "M"
-msgstr "H"
+msgstr "M"
 
 msgctxt "model:ir.message,text:msg_timedelta_Y"
 msgid "Y"
-msgstr "É"
+msgstr "Р"
 
 msgctxt "model:ir.message,text:msg_timedelta_d"
 msgid "d"
-msgstr "t"
+msgstr "д"
 
 msgctxt "model:ir.message,text:msg_timedelta_h"
 msgid "h"
-msgstr "ó"
+msgstr "г"
 
 msgctxt "model:ir.message,text:msg_timedelta_m"
 msgid "m"
-msgstr "m"
+msgstr "х"
 
 msgctxt "model:ir.message,text:msg_timedelta_s"
 msgid "s"
-msgstr "s"
+msgstr "с"
 
 msgctxt "model:ir.message,text:msg_timedelta_w"
 msgid "w"
-msgstr "h"
+msgstr "т"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
 msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
-msgstr "Too many relations found: %r in %s"
+msgstr "Знайдено забагато зв'язків: %(value)r в \"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
 "by module \"%(overriding_module)s\"."
 msgstr ""
-"Fordítás %(name) nem exportálható, mert a modulokon %(overriding_module) "
-"keresztül vannak átírva."
+"Ви не можете експортувати переклад \"%(name)s\", оскільки він був "
+"перевизначений модулем \"%(overriding_module)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"A Tigger \"%(trigger)s\" feltételei \"%(condition)s\" nem érvényes Python "
-"kifejezés."
+"Умова \"%(condition)s\" не є дійсним виразом PYSON для тригера "
+"\"%(trigger)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_value_syntax_error"
 msgid ""
 "Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
 "(%(column)s)."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
+"Синтаксична помилка для значення: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_view_invalid_xml"
 msgid "Invalid XML for view \"%(name)s\"."
-msgstr "Érvénytelen XML-adat nézethez \"%s\"."
+msgstr "Недійсний XML для перегляду \"%(name)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
-msgstr ""
-"Érvénytelen értéktartomány (Domain) vagy keresési kritérium "
-"\"%(domain)s\"akcióban \"%(action)s\"."
+msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для пошуку \"%(search)s\"."
 
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
 "exist anymore."
 msgstr ""
+"Ви намагаєтеся записати в записи \"%(ids)s\" із \"%(model)s\", які більше не"
+" існують."
 
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
-"Nem tudja a „%(model)s” „%(ids)s” ID-vel rendelkező rekordjait módosítani, mert a következő szabályok legalább egyike nem teljesül:\n"
+"Вам заборонено писати в записи \"%(ids)s\" з \"%(model)s\" через принаймні одне з цих правил:\n"
 "%(rules)s"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid "You are not allowed to modify this record."
-msgstr "You are not allowed to modify this record."
+msgstr "Вам заборонено змінювати цей запис."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid ""
 "Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
 "(%(column)s)."
 msgstr ""
+"Синтаксична помилка для XML id: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "model:ir.model.access,name:"
 msgid "Model access"
-msgstr "Hozzáférés"
+msgstr "Доступ до моделі"
 
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
-msgstr ""
+msgstr "Ви впевнені, що хочете завантажити переклади мов?"
 
 msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
 msgid "Are you sure you want to remove languages' translations?"
-msgstr ""
+msgstr "Ви впевнені, що хочете видалити переклади мов?"
 
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
-msgstr "Minta gomb"
+msgstr "Кнопка моделі"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
-msgstr "Run Once"
+msgstr "Виконати одноразово"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:error_open_button"
 msgid "Open"
-msgstr "nyitott"
+msgstr "Відкрити"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:error_process_button"
 msgid "Process"
-msgstr "Access"
+msgstr "Процес"
 
 msgctxt "model:ir.model.button,string:error_solve_button"
 msgid "Solve"
-msgstr ""
+msgstr "Вирішити"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
-msgstr "Fordítás tisztítás"
+msgstr "Завантажити переклади"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
-msgstr "Fordítás tisztítás"
+msgstr "Вивантажити переклади"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
-msgstr "Sync"
+msgstr "Синхронізувати"
 
 msgctxt "model:ir.model.button,string:module_activate_button"
 msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgstr "Позначити для активації"
 
 msgctxt "model:ir.model.button,string:module_activate_cancel_button"
 msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgstr "Скасувати активацію"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
 msgid "Mark for Deactivation (beta)"
-msgstr "Mark for Deactivation (beta)"
+msgstr "Позначити для деактивації (бета)"
 
 msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
 msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
+msgstr "Скасувати деактивацію"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
 msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
+msgstr "Позначити для оновлення"
 
 msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
 msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgstr "Скасувати оновлення"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
-msgstr "Show"
+msgstr "Показати"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
-msgstr ""
+msgstr "Скидання кнопки моделі"
 
 msgctxt "model:ir.model.button.click,name:"
 msgid "Model Button Click"
-msgstr ""
+msgstr "Натиснення кнопки моделі"
 
 msgctxt "model:ir.model.button.rule,name:"
 msgid "Model Button Rule"
-msgstr ""
+msgstr "Правило кнопки моделі"
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
-msgstr "Minta adat"
+msgstr "Дані моделі"
 
 msgctxt "model:ir.model.field,name:"
 msgid "Model field"
-msgstr "Minta mező"
+msgstr "Поле моделі"
 
 msgctxt "model:ir.model.field.access,name:"
 msgid "Model Field Access"
-msgstr "Minta mező hozzáférésének engedélyezése"
+msgstr "Доступ до поля моделі"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
-msgstr "Grafikon nyomtatása"
+msgstr "Друкувати графік моделі"
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
-msgstr "Modul"
+msgstr "Модуль"
 
-#, fuzzy
 msgctxt "model:ir.module.activate_upgrade.done,name:"
 msgid "Module Activate Upgrade Done"
-msgstr "Modul telepítésének aktualizálása megtörtént"
+msgstr "Оновлення/активування модуля завершено"
 
-#, fuzzy
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
-msgstr "Modul telepítésének aktualizálása indít"
+msgstr "Початок активування/оновлення модуля"
 
-#, fuzzy
 msgctxt "model:ir.module.config.start,name:"
 msgid "Configure Modules"
-msgstr "Configure Modules"
+msgstr "Налаштувати модулі"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr "Modulkonfigurációs wizard befejezve"
+msgstr "Майстер налаштування модуля завершено"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Konfigurációs wizard első modul"
+msgstr "Початковий майстер налаштування модуля"
 
-#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after activating a module"
-msgstr "Konfigurációs wizard modul telepítés után"
+msgstr "Майстер налаштування для виконання після активації модуля"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Konfigurációs wizard más modul"
+msgstr "Інший майстер налаштування модуля"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr "Modultól függő"
+msgstr "Залежність модуля"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr "Jegyzetek"
+msgstr "Примітка"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
+msgstr "Прочитана примітка"
 
 msgctxt "model:ir.queue,name:"
 msgid "Queue"
-msgstr ""
+msgstr "Черга"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
-msgstr "Szabály"
+msgstr "Правило"
 
 msgctxt "model:ir.rule.group,name:"
 msgid "Rule group"
-msgstr "Szabályos csoport"
+msgstr "Група правил"
 
 msgctxt "model:ir.sequence,name:"
 msgid "Sequence"
-msgstr "Sorszám"
+msgstr "Послідовність"
 
 msgctxt "model:ir.sequence.strict,name:"
 msgid "Sequence Strict"
-msgstr "Pontos számkör"
+msgstr "Сувора послідовність"
 
 msgctxt "model:ir.sequence.type,name:"
 msgid "Sequence type"
-msgstr "Sorszámozás típusa"
+msgstr "Тип послідовності"
 
 msgctxt "model:ir.session,name:"
 msgid "Session"
-msgstr "Munkamenet"
+msgstr "Сеанс"
 
 msgctxt "model:ir.session.wizard,name:"
 msgid "Session Wizard"
-msgstr "Wizard Munkamenet"
+msgstr "Майстер сеансів"
 
 msgctxt "model:ir.translation,name:"
 msgid "Translation"
-msgstr "Fordítás"
+msgstr "Переклад"
 
 msgctxt "model:ir.translation.clean.start,name:"
 msgid "Clean translation"
-msgstr "Fordítás tisztítás"
+msgstr "Очистити переклад"
 
 msgctxt "model:ir.translation.clean.succeed,name:"
 msgid "Clean translation"
-msgstr "Fordítás tisztítás"
+msgstr "Очистити переклад"
 
 msgctxt "model:ir.translation.export.result,name:"
 msgid "Export translation"
-msgstr "Export fordítás"
+msgstr "Експортувати переклад"
 
 msgctxt "model:ir.translation.export.start,name:"
 msgid "Export translation"
-msgstr "Export fordítás"
+msgstr "Експортувати переклад"
 
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
-msgstr "Fordítás aktualizálása"
+msgstr "Встановити переклад"
 
 msgctxt "model:ir.translation.set.succeed,name:"
 msgid "Set Translation"
-msgstr "Fordítás aktualizálása"
+msgstr "Встановити переклад"
 
 msgctxt "model:ir.translation.update.start,name:"
 msgid "Update translation"
-msgstr "Fordítás aktualizálása"
+msgstr "Оновити переклад"
 
 msgctxt "model:ir.trigger,name:"
 msgid "Trigger"
-msgstr "Trigger"
+msgstr "Тригер"
 
 msgctxt "model:ir.trigger.log,name:"
 msgid "Trigger Log"
-msgstr "Trigger Protokoll"
+msgstr "Журнал тригерів"
 
 msgctxt "model:ir.ui.icon,name:"
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Піктограма"
 
 msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
-msgstr "Menü"
+msgstr "Меню користувача"
 
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr "Műveletek"
+msgstr "Дії"
 
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr "Műveletek"
+msgstr "Дії"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Дії вікна"
 
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "Nyomtatványok"
+msgstr "Звіти"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "URLs"
+msgstr "URL-адреси"
 
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Майстри"
 
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
-msgstr "Adminisztráció"
+msgstr "Адміністрування"
 
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Mellékletek"
+msgstr "Вкладення"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Майстри налаштування"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Actions"
-msgstr "Műveletek"
+msgstr "Дії"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "E-mails"
-msgstr "E-mail"
+msgstr "Ел.листи"
 
 msgctxt "model:ir.ui.menu,name:menu_email_template_form"
 msgid "E-mail Templates"
-msgstr ""
+msgstr "Шаблони ел.листів"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_error_form"
 msgid "Errors"
-msgstr "Hiba"
+msgstr "Помилки"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr "Exports"
+msgstr "Експорти"
 
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "Ikonok"
+msgstr "Піктограми"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Types"
-msgstr "Típus"
+msgstr "Типи"
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr "Nyelvek"
+msgstr "Мови"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "Localization"
+msgstr "Локалізація"
 
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
-msgstr "Menü"
+msgstr "Меню"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "Message"
-msgstr "Használat"
+msgstr "Повідомлення"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Доступ до моделей"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "Buttons"
+msgstr "Кнопки"
 
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Доступ до полів"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
-msgstr "Models"
+msgstr "Моделі"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
-msgstr "Models"
+msgstr "Моделі"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
+msgstr "Виконати активацію/оновлення"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Модулі"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
-msgstr "Modules"
+msgstr "Модулі"
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr "Jegyzetek"
+msgstr "Примітки"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr "Правила записів"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "Scheduler"
+msgstr "Планувальник"
 
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
-msgstr "Sorszámozások"
+msgstr "Послідовності"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Sequences Strict"
+msgstr "Суворі послідовності"
 
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
-msgstr "Sorszámozások"
+msgstr "Послідовності"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "Clean Translations"
+msgstr "Очистити переклади"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "Export Translations"
+msgstr "Експортувати переклади"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
-msgstr "Fordítások"
+msgstr "Переклади"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Set Translations"
+msgstr "Встановити переклади"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
-msgstr "Synchronize Translations"
+msgstr "Синхронізувати переклади"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Тригери"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "User Interface"
+msgstr "Інтерфейс користувача"
 
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "Nézetek"
+msgstr "Перегляди"
 
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
-msgstr "Keresés nézet"
+msgstr "Пошуки переглядів"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
 msgid "View Tree Optional"
-msgstr "Oszlop széles nézet"
+msgstr "Додаткові перегляди"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Стан дерев"
 
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr "Oszlopszéles nézet"
+msgstr "Ширини колонок"
 
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr "Mezők"
+msgstr "Поля"
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
-msgstr "Kedvencek"
+msgstr "Вибране меню"
 
 msgctxt "model:ir.ui.view,name:"
 msgid "View"
-msgstr "Nézet"
+msgstr "Перегляд"
 
 msgctxt "model:ir.ui.view.show.start,name:"
 msgid "Show view"
-msgstr "Előnézet megjelenítése"
+msgstr "Показати перегляд"
 
 msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
-msgstr "Keresés nézet"
+msgstr "Пошуки переглядів"
 
-#, fuzzy
 msgctxt "model:ir.ui.view_tree_optional,name:"
 msgid "View Tree Optional"
-msgstr "Oszlop széles nézet"
+msgstr "Додаткові перегляди"
 
-#, fuzzy
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
-msgstr "Oszlop széles nézet"
+msgstr "Стан дерев"
 
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
-msgstr "Oszlopszéles nézet"
+msgstr "Ширини колонок"
 
 msgctxt "selection:ir.action,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Перераховані"
 
-#, fuzzy
 msgctxt "selection:ir.action,records:"
 msgid "Selected"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані"
 
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Перераховані"
 
-#, fuzzy
 msgctxt "selection:ir.action.act_window,records:"
 msgid "Selected"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
-msgstr "Űrlap művelet"
+msgstr "Форма дії"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
-msgstr "Hivatkozási űrlap"
+msgstr "Пов'язана форма"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open Graph"
-msgstr "Grafika megnyitása"
+msgstr "Відкрити графік"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open tree"
-msgstr "Megnyitás"
+msgstr "Відкрити дерево"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Print form"
-msgstr "Űrlap nyomtatása"
+msgstr "Друк форми"
 
 msgctxt "selection:ir.action.report,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Перераховані"
 
-#, fuzzy
 msgctxt "selection:ir.action.report,records:"
 msgid "Selected"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані"
 
 msgctxt "selection:ir.action.url,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Перераховані"
 
-#, fuzzy
 msgctxt "selection:ir.action.url,records:"
 msgid "Selected"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані"
 
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Listed"
-msgstr ""
+msgstr "Перераховані"
 
-#, fuzzy
 msgctxt "selection:ir.action.wizard,records:"
 msgid "Selected"
-msgstr "Kiválasztott folyószámla"
+msgstr "Вибрані"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
-msgstr "Adat"
+msgstr "Дані"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Link"
-msgstr "Hivatkozás"
+msgstr "Посилання"
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Days"
-msgstr "Nap"
+msgstr "Дні"
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Hours"
-msgstr "Óra"
+msgstr "Години"
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Minutes"
-msgstr "Perc"
+msgstr "Хвилини"
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Months"
-msgstr "Hónap"
+msgstr "Місяці"
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
-msgstr "Hét"
+msgstr "Тижні"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Errors"
-msgstr ""
+msgstr "Очистити помилки"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Clean Task Queue"
-msgstr ""
+msgstr "Очистити чергу завдань"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
-msgstr ""
+msgstr "Виконати тригери у час"
 
-#, fuzzy
 msgctxt "selection:ir.error,origin:"
 msgid "Action"
-msgstr "Művelet"
+msgstr "Дія"
 
 msgctxt "selection:ir.error,origin:"
 msgid "Task"
-msgstr ""
+msgstr "Завдання"
 
-#, fuzzy
 msgctxt "selection:ir.error,state:"
 msgid "Open"
-msgstr "nyitott"
+msgstr "Відкрити"
 
 msgctxt "selection:ir.error,state:"
 msgid "Processing"
-msgstr ""
+msgstr "Обробка"
 
 msgctxt "selection:ir.error,state:"
 msgid "Solved"
-msgstr ""
+msgstr "Вирішено"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
-msgstr "Balról jobbra"
+msgstr "Зліва-направо"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
-msgstr "Jobbról balra"
+msgstr "Справа-наліво"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
-msgstr ""
+msgstr "Активовано"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Activated"
-msgstr ""
+msgstr "Не активовано"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be activated"
-msgstr ""
+msgstr "Підлягає активації"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
-msgstr "Eltávolítandó"
+msgstr "Підлягає видаленню"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
-msgstr "Frissítendő"
+msgstr "Підлягає оновленню"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
-msgstr "Kész"
+msgstr "Завершено"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
-msgstr "nyitott"
+msgstr "Відкрити"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Activated"
-msgstr ""
+msgstr "Активовано"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Activated"
-msgstr ""
+msgstr "Не активовано"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be activated"
-msgstr ""
+msgstr "Підлягає активації"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
-msgstr "Eltávolítandó"
+msgstr "Підлягає видаленню"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
-msgstr "Frissítendő"
+msgstr "Підлягає оновленню"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
-msgstr "Ismeretlen"
+msgstr "Невідомий"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Decimal Timestamp"
-msgstr "decimális időpont"
+msgstr "Десяткова часова позначка"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Hexadecimal Timestamp"
-msgstr "hexadecimális időpont"
+msgstr "Шістнадцяткова часова позначка"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Incremental"
-msgstr "növekvő"
+msgstr "Інкрементальний"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Decimal Timestamp"
-msgstr "decimális időpont"
+msgstr "Десяткова часова позначка"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Hexadecimal Timestamp"
-msgstr "hexadecimális időpont"
+msgstr "Шістнадцяткова часова позначка"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Incremental"
-msgstr "növekvő"
+msgstr "Інкрементальний"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Field"
-msgstr "Mező"
+msgstr "Поле"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Help"
-msgstr "Súgó"
+msgstr "Довідка"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Model"
-msgstr "Minta"
+msgstr "Модель"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
-msgstr "Nyomtatvány"
+msgstr "Звіт"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
-msgstr "Értéklista"
+msgstr "Вибір"
 
 msgctxt "selection:ir.translation,type:"
 msgid "View"
-msgstr "Nézet"
+msgstr "Перегляд"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
-msgstr "Wizard gomb"
+msgstr "Кнопка майстра"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
-msgstr "Info oldal"
+msgstr "Дошка"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Calendar"
-msgstr "Naptár"
+msgstr "Календар"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Form"
-msgstr "Űrlap"
+msgstr "Форма"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Graph"
-msgstr "Diagram"
+msgstr "Графік"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "List Form"
-msgstr ""
+msgstr "Форма списку"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
-msgstr "Fa"
+msgstr "Дерево"
 
 msgctxt "view:ir.action.act_window:"
 msgid "General"
-msgstr "Általános"
+msgstr "Загальний"
 
 msgctxt "view:ir.action.report:"
 msgid "Edit"
-msgstr "Módosítás"
+msgstr "Редагувати"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
-msgstr "Általános"
+msgstr "Загальний"
 
 msgctxt "view:ir.action.url:"
 msgid "General"
-msgstr "Általános"
+msgstr "Загальний"
 
 msgctxt "view:ir.action.wizard:"
 msgid "General"
-msgstr "Általános"
+msgstr "Загальний"
 
 msgctxt "view:ir.action:"
 msgid "General"
-msgstr "Általános"
+msgstr "Загальний"
 
 msgctxt "view:ir.attachment:"
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
-msgstr "Utolsó módosítás ideje"
+msgstr "Час останньої модифікації"
 
 msgctxt "view:ir.cron:"
 msgid "At"
-msgstr "Időpont"
+msgstr "Коли"
 
 msgctxt "view:ir.cron:"
 msgid "Every"
-msgstr ""
+msgstr "Кожні"
 
-#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Next Call Date"
-msgstr "Következő hívás"
+msgstr "Дата наступного виклику"
 
-#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Next Call Time"
-msgstr "Következő hívás"
+msgstr "Час наступного виклику"
 
-#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr "Run Once"
+msgstr "Виконати одноразово"
 
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
-msgstr ""
+msgstr "Приховані одержувачі:"
 
 msgctxt "view:ir.email.template:"
 msgid "Recipients:"
-msgstr ""
+msgstr "Одержувачі:"
 
 msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
-msgstr ""
+msgstr "Вторинні одержувачі:"
 
 msgctxt "view:ir.error:"
 msgid "Origin"
-msgstr ""
+msgstr "Походження"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."
-msgstr ""
+msgstr "Тепер ви можете завантажувати додаткові переклади в систему."
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
-msgstr ""
+msgstr "Форматування дат"
 
 msgctxt "view:ir.lang:"
 msgid "Monetary Formatting"
-msgstr ""
+msgstr "Форматування грошей"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
-msgstr ""
+msgstr "Форматування чисел"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
-msgstr ""
+msgstr "Модулі оновлено/активовано."
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr ""
+msgstr "Зверніть увагу, що ця операція може тривати декілька хвилин."
 
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr ""
+msgstr "Ваша система буде оновлена."
 
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
-msgstr ""
+msgstr "Тепер ви можете активувати додаткові модулі системи."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr ""
+msgstr "Налаштування виконано."
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
+"Ви зможете налаштувати свою інсталяцію залежно від встановлених модулів."
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgstr "Скасувати активацію"
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
+msgstr "Скасувати деактивацію"
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgstr "Скасувати оновлення"
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgstr "Позначити для активації"
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Deactivation (beta)"
-msgstr "Mark for Deactivation (beta)"
+msgstr "Позначити для деактивації (бета)"
 
-#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
+msgstr "Позначити для оновлення"
 
 msgctxt "view:ir.note:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "Дата"
 
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr "Időpont"
+msgstr "Час"
 
 msgctxt "view:ir.note:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Користувач"
 
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global."
 msgstr ""
+"Якщо тест не визначено, правило завжди задовольняється, якщо воно не "
+"глобально."
 
-#, fuzzy
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True."
-msgstr "A szabály akkor érvényes, ha legalább egy teszt pozitív"
+msgstr "Правило задовольняється, якщо принаймні один тест істинний."
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -3968,149 +3828,144 @@ msgstr "${year}"
 
 msgctxt "view:ir.sequence:"
 msgid "Day:"
-msgstr "Nap:"
+msgstr "День:"
 
 msgctxt "view:ir.sequence:"
 msgid "Incremental"
-msgstr "Növekvő"
+msgstr "Інкрементальний"
 
 msgctxt "view:ir.sequence:"
 msgid "Legend (Placeholders for prefix, suffix)"
-msgstr "Előtagban, utótagban használható változók"
+msgstr "Легенда (заповнювачі для префікса, суфікса)"
 
 msgctxt "view:ir.sequence:"
 msgid "Month:"
-msgstr "Hónap:"
+msgstr "Місяць:"
 
 msgctxt "view:ir.sequence:"
 msgid "Timestamp"
-msgstr "Időbélyeg"
+msgstr "Часова позначка"
 
 msgctxt "view:ir.sequence:"
 msgid "Year:"
-msgstr "Év:"
+msgstr "Рік:"
 
-#, fuzzy
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
-msgstr "Fordítások rendezése"
+msgstr "Очистити переклади?"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Translations cleaned successfully."
-msgstr ""
+msgstr "Переклади успішно очищено."
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
-msgstr "Szinkronizáljam a fordításokat?"
+msgstr "Синхронізувати переклади?"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
-msgstr "A fordítás sikeresen be lett állítva."
+msgstr "Переклади успішно встановлено."
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.lang.config,start,load:"
 msgid "Load"
-msgstr ""
+msgstr "Завантажити"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
-msgstr "Nyomtatás"
+msgstr "Друк"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
 msgid "OK"
-msgstr "OK"
+msgstr "Гаразд"
 
 msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
-msgstr "Start"
+msgstr "Почати оновлення"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"
-msgstr "Aktív"
+msgstr "Активувати"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Гаразд"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
-msgstr "OK"
+msgstr "Гаразд"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
-msgstr "Tovább"
+msgstr "Далі"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"
-msgstr "Tisztítás"
+msgstr "Очистити"
 
 msgctxt "wizard_button:ir.translation.clean,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Гаразд"
 
 msgctxt "wizard_button:ir.translation.export,result,end:"
 msgid "Close"
-msgstr "Bezárás"
+msgstr "Закрити"
 
 msgctxt "wizard_button:ir.translation.export,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.translation.export,start,export:"
 msgid "Export"
-msgstr "Exportálás"
+msgstr "Експортувати"
 
 msgctxt "wizard_button:ir.translation.set,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.translation.set,start,set_:"
 msgid "Set"
-msgstr "Aktualizálás"
+msgstr "Встановити"
 
 msgctxt "wizard_button:ir.translation.set,succeed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Гаразд"
 
 msgctxt "wizard_button:ir.translation.update,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Скасувати"
 
 msgctxt "wizard_button:ir.translation.update,start,update:"
 msgid "Update"
-msgstr "Frissítés"
+msgstr "Оновити"
 
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
-msgstr "Bezárás"
+msgstr "Закрити"

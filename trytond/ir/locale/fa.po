@@ -504,6 +504,11 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "تماس بعدی"
 
+#, fuzzy
+msgctxt "field:ir.cron,timezone:"
+msgid "Timezone"
+msgstr "زمان"
+
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr ""
@@ -653,6 +658,10 @@ msgstr "خلاصه"
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "فیلدها"
+
+msgctxt "field:ir.export,header:"
+msgid "Header"
+msgstr ""
 
 msgctxt "field:ir.export,name:"
 msgid "Name"
@@ -830,10 +839,6 @@ msgstr "کلیک ها"
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
 msgstr "تایید"
-
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "گروه ها"
 
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
@@ -1138,10 +1143,6 @@ msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
 msgstr "سراسری"
 
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "گروه ها"
-
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "مدل"
@@ -1436,10 +1437,6 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "مورد علاقه"
 
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "گروه ها"
-
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "آیکون"
@@ -1678,9 +1675,13 @@ msgstr ""
 "یک حکم PYSON ارزیابی شده با رکورد ارائه شده توسط \"خود\"\n"
 "این قانون اگر درست باشد فعال می شود."
 
+msgctxt "help:ir.export,header:"
+msgid "Check to include field names on the export."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
-msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
-msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgid "RFC 4646 tag."
+msgstr ""
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
@@ -1742,10 +1743,12 @@ msgctxt "help:ir.queue,scheduled_at:"
 msgid "When the task can start."
 msgstr "وقتی کار شروع می شود."
 
+#, fuzzy
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user"
+"- \"user\" as the current user\n"
+"- \"groups\" as list of ids from the current user"
 msgstr ""
 "دامنه ارزیابی شده با یک متن PYSON حاوی :\n"
 "- \"کاربر\" بعنوان کاربر جاری"
@@ -2660,18 +2663,20 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
-"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
-"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
+"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
 "تعداد ارقام در مقدار:\"%(value)s\" برای فیلد :\"%(field)s\" در \"%(model)s\""
 " بیش از حد \"%(digits)i\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
-" its domain."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid according to its domain."
 msgstr "مقدار فیلد: \"%s\" در مدل: \"%s\" باتوجه به دامنه آن معتبر نیست."
 
 #, fuzzy
@@ -2711,11 +2716,19 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
+msgctxt "model:ir.message,text:msg_field_model_name"
+msgid "%(field)s (model name)"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_field_string"
+msgid "%(field)s (string)"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
-"some invalid chars \"%(chars)s\"."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
@@ -2832,8 +2845,14 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
 
-msgctxt "model:ir.message,text:msg_required_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
 msgstr "یک مقدار برای فیلد :\"%(field)s\" در\"%(model)s\" مورد نیاز است."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2849,10 +2868,11 @@ msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "عملکرد جستجو برای فیلد \"٪ s\" گم شده است."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
-"of the allowed options."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not one of the allowed options."
 msgstr "مقدار : \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" یکی از گزینه های مجاز نیست."
 
 #, fuzzy
@@ -2893,18 +2913,29 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_size_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
-"%(max_size)i)."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
+" (%(size)i > %(max_size)i)."
 msgstr ""
 "مقدار فیلد :\"%(field)s\" در \"%(model)s\" خیلی طولانی است (%(size)i > "
 "%(max_size)i)."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is too long (%(size)i > %(max_size)i)."
+msgstr ""
+"مقدار فیلد :\"%(field)s\" در \"%(model)s\" خیلی طولانی است (%(size)i > "
+"%(max_size)i)."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
-" valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid."
 msgstr "مقدار زمان: \"%s\" برای فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
 
 msgctxt "model:ir.message,text:msg_timedelta_M"

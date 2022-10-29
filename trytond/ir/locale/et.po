@@ -499,6 +499,11 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Järgmine kutsung"
 
+#, fuzzy
+msgctxt "field:ir.cron,timezone:"
+msgid "Timezone"
+msgstr "Aeg"
+
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Nädalapäev"
@@ -649,6 +654,10 @@ msgstr "Kokkuvõte"
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Väljad"
+
+msgctxt "field:ir.export,header:"
+msgid "Header"
+msgstr ""
 
 msgctxt "field:ir.export,name:"
 msgid "Name"
@@ -826,10 +835,6 @@ msgstr "Klikid"
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
 msgstr "Kinnita"
-
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "Grupid"
 
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
@@ -1134,10 +1139,6 @@ msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
 msgstr "Globaalne"
 
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "Grupid"
-
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Mudel"
@@ -1432,10 +1433,6 @@ msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
 msgstr "Lemmik"
 
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "Grupid"
-
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -1661,9 +1658,13 @@ msgid ""
 "record represented by \"self\"."
 msgstr ""
 
+msgctxt "help:ir.export,header:"
+msgid "Check to include field names on the export."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
-msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
-msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgid "RFC 4646 tag."
+msgstr ""
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
@@ -1725,7 +1726,8 @@ msgstr "Millal saab ülesandega alustada."
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
-"- \"user\" as the current user"
+"- \"user\" as the current user\n"
+"- \"groups\" as list of ids from the current user"
 msgstr ""
 
 #, fuzzy
@@ -2624,16 +2626,18 @@ msgctxt "model:ir.message,text:msg_dict_yes"
 msgid "Yes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
-"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
-"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
-msgstr ""
+"The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
+"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
-" its domain."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid according to its domain."
 msgstr ""
 "Selles domeenis ei ole välja \"%(field)s\" väärtus mudelis \"%(model)s\" "
 "lubatud."
@@ -2675,11 +2679,19 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
+msgctxt "model:ir.message,text:msg_field_model_name"
+msgid "%(field)s (model name)"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_field_string"
+msgid "%(field)s (string)"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
-"some invalid chars \"%(chars)s\"."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" contains some invalid chars \"%(chars)s\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
@@ -2798,8 +2810,14 @@ msgid ""
 "\"%(exception)s\"."
 msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
-msgctxt "model:ir.message,text:msg_required_validation_record"
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
 msgstr "Mudeli \"%(model)s\" välja \"%(field)s\" jaoks on väärtus nõutud."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
@@ -2814,11 +2832,12 @@ msgctxt "model:ir.message,text:msg_search_function_missing"
 msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Välja \"%(field)s\" jaoks puudub ostingufunktsioon mudelis \"%(model)s\"."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_selection_validation_record"
 msgid ""
-"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
-"of the allowed options."
-msgstr ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not one of the allowed options."
+msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sequence"
@@ -2858,10 +2877,20 @@ msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Välja \"%(field)s\" jaoks puudub setter funktsioon mudelis \"%(model)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
+" (%(size)i > %(max_size)i)."
+msgstr ""
+"Väärtus on mudeli \"%(model)s\" välja \"%(field)s\" jaoks liiga pikk "
+"(%(size)i > %(max_size)i)."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
-"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
-"%(max_size)i)."
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is too long (%(size)i > %(max_size)i)."
 msgstr ""
 "Väärtus on mudeli \"%(model)s\" välja \"%(field)s\" jaoks liiga pikk "
 "(%(size)i > %(max_size)i)."
@@ -2869,8 +2898,8 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
-"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
-" valid."
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 #, fuzzy
