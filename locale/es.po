@@ -71,6 +71,14 @@ msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
 msgstr "Cliente de envío directo"
 
+msgctxt "field:stock.move,moves_drop:"
+msgid "Drop Moves"
+msgstr "Movimientos de envío directo"
+
+msgctxt "field:stock.move,origin_drop:"
+msgid "Drop Origin"
+msgstr "Origen envío directo"
+
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -199,6 +207,10 @@ msgstr ""
 msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
 msgid "Are you sure you want to complete the shipment?"
 msgstr "¿Estás seguro que quieres finalizar el albarán?"
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_ship_button"
+msgid "Are you sure you want to ship the shipment?"
+msgstr "¿Estás seguro que quieres enviar el albarán?"
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"

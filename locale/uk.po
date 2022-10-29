@@ -11,10 +11,9 @@ msgctxt ""
 msgid "Purchase Drop Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,drop_shipment_available:"
 msgid "Drop Shipment Available"
@@ -32,10 +31,9 @@ msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
@@ -57,10 +55,9 @@ msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
@@ -122,10 +119,9 @@ msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr "状态"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
@@ -145,49 +141,47 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "采购"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "全部"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Shipped"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
 msgctxt ""
 "model:ir.message,text:msg_delivery_address_required_quotation_purchase"
@@ -216,23 +210,23 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
 msgid "Ship"
-msgstr "Ship"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
 msgid "User in companies"
@@ -240,15 +234,15 @@ msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:purchase.configuration.purchase_drop_location,name:"
 msgid "Purchase Configuration Purchase Drop Location"
@@ -260,39 +254,32 @@ msgstr ""
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
-msgstr "Drop"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Cancelled"
-msgstr "取消"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "完成"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
-msgstr "Shipped"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Drop Shipment Sequence"
-msgstr "Drop Shipment"
+msgstr ""
