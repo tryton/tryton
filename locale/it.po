@@ -71,6 +71,10 @@ msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
 msgstr "Cancel the invoice"
 
+msgctxt "field:account.invoice,alternative_payees:"
+msgid "Alternative Payee"
+msgstr ""
+
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
 msgstr "Importo da pagare"
@@ -233,6 +237,11 @@ msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
+msgid "Invoice Alternative Payees"
+msgstr "Stato fattura"
+
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
 msgstr "Controparte di fatturazione"
@@ -248,6 +257,15 @@ msgstr "Fattura"
 
 msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.alternative_payee,invoice:"
+msgid "Invoice"
+msgstr "Fattura"
+
+msgctxt "field:account.invoice.alternative_payee,party:"
+msgid "Payee"
 msgstr ""
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
@@ -308,7 +326,7 @@ msgstr "Origine"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
@@ -320,7 +338,7 @@ msgstr "Prodotto"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Categoria unità di misura prodotto"
+msgstr "Categotia UdM prodotto"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -435,6 +453,14 @@ msgstr "Descrizione"
 
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payee:"
+msgid "Payee"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payees:"
+msgid "Payees"
 msgstr ""
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
@@ -703,6 +729,11 @@ msgctxt "model:account.invoice-additional-account.move,name:"
 msgid "Invoice Additional Move"
 msgstr "Indirizzo di fatturazione"
 
+#, fuzzy
+msgctxt "model:account.invoice.alternative_payee,name:"
+msgid "Invoice Alternative Payee"
+msgstr "Stato fattura"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Fattura credito"
@@ -751,6 +782,11 @@ msgstr "Testa il termine di pagamento"
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Imposta fattura"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
+msgid "Delegate Lines to Pay"
+msgstr "Righe pagamento"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -1014,6 +1050,10 @@ msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
 msgstr "Annulla"
 
+msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
+msgid "Modify Payee"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
 msgstr "Draft"
@@ -1036,7 +1076,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Verifica"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
 msgid "User in companies"
@@ -1178,10 +1218,9 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Prezzo Unitario"
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
-msgstr "Cancellato"
+msgstr "Annullato"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"

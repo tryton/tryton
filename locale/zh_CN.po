@@ -63,6 +63,10 @@ msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
 msgstr "允许取消原始凭证"
 
+msgctxt "field:account.invoice,alternative_payees:"
+msgid "Alternative Payee"
+msgstr ""
+
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
 msgstr "付款金额"
@@ -224,6 +228,11 @@ msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
 msgstr "原始凭证账户"
 
+#, fuzzy
+msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
+msgid "Invoice Alternative Payees"
+msgstr "原始凭证付款"
+
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
 msgstr "原始凭证参与者"
@@ -239,6 +248,15 @@ msgstr "原始凭证"
 
 msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.alternative_payee,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice.alternative_payee,party:"
+msgid "Payee"
 msgstr ""
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
@@ -425,6 +443,14 @@ msgstr "描述"
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
 msgstr "原始凭证账户"
+
+msgctxt "field:account.invoice.pay.start,payee:"
+msgid "Payee"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payees:"
+msgid "Payees"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
@@ -692,6 +718,11 @@ msgctxt "model:account.invoice-additional-account.move,name:"
 msgid "Invoice Additional Move"
 msgstr "原始凭证地址"
 
+#, fuzzy
+msgctxt "model:account.invoice.alternative_payee,name:"
+msgid "Invoice Alternative Payee"
+msgstr "原始凭证状态"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "贷方原始凭证"
@@ -739,6 +770,11 @@ msgstr "测试付款条件"
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "原始凭证税"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
+msgid "Delegate Lines to Pay"
+msgstr "待支付明细"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -986,6 +1022,10 @@ msgstr "Also known as Pro Forma"
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
+msgid "Modify Payee"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"

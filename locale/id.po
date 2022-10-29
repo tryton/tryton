@@ -65,6 +65,10 @@ msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
 msgstr "Izinkan Batalkan Faktur"
 
+msgctxt "field:account.invoice,alternative_payees:"
+msgid "Alternative Payee"
+msgstr ""
+
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
 msgstr "Jumlah yang harus dibayar"
@@ -226,6 +230,11 @@ msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
+msgid "Invoice Alternative Payees"
+msgstr "Status Faktur"
+
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
 msgstr ""
@@ -240,6 +249,15 @@ msgstr "Faktur"
 
 msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.alternative_payee,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.alternative_payee,party:"
+msgid "Payee"
 msgstr ""
 
 msgctxt "field:account.invoice.credit.start,invoice_date:"
@@ -388,7 +406,7 @@ msgstr "Baris"
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr ""
+msgstr "Baris yang Harus Dibayar"
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
@@ -424,6 +442,14 @@ msgstr "Deskripsi"
 
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payee:"
+msgid "Payee"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payees:"
+msgid "Payees"
 msgstr ""
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
@@ -468,7 +494,7 @@ msgstr "Jumlah"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
@@ -564,7 +590,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.tax,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -687,6 +713,11 @@ msgctxt "model:account.invoice-additional-account.move,name:"
 msgid "Invoice Additional Move"
 msgstr "Alamat Faktur"
 
+#, fuzzy
+msgctxt "model:account.invoice.alternative_payee,name:"
+msgid "Invoice Alternative Payee"
+msgstr "Status Faktur"
+
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
 msgstr "Faktur Kredit"
@@ -735,13 +766,18 @@ msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
+msgid "Delegate Lines to Pay"
+msgstr "Baris yang Harus Dibayar"
+
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
@@ -990,6 +1026,10 @@ msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
 msgstr "Batal"
 
+msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
+msgid "Modify Payee"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
 msgstr "Rancangan"
@@ -1004,7 +1044,7 @@ msgstr "Bukukan"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Proses"
 
 msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
 msgid "Reschedule"
@@ -1024,12 +1064,10 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
@@ -1048,11 +1086,11 @@ msgstr "Faktur Pelanggan"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "Metode Pembayaran Faktur"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
@@ -1100,7 +1138,7 @@ msgstr "Deskripsi:"
 
 msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
-msgstr ""
+msgstr "Faktur Rancangan"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
@@ -1152,7 +1190,7 @@ msgstr "Harga Satuan"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Dibatalkan"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"
@@ -1237,7 +1275,7 @@ msgstr "Umum"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Catatan-Catatan"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
