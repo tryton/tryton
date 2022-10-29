@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.unassign.manual.show,moves:"
 msgid "Moves"
-msgstr "Movimenti"
+msgstr ""
 
 msgctxt "help:stock.shipment.assign.manual.show,quantity:"
 msgid ""

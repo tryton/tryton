@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.shipment.assign.manual.show,move:"
 msgid "Move"
-msgstr "Boekingen/bewegingen"
+msgstr "Mutaties"
 
 msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
 msgid "Move Quantity"
@@ -32,7 +32,7 @@ msgstr "Toegewezen hoeveelheid"
 
 msgctxt "field:stock.shipment.assigned.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutaties"
 
 msgctxt "field:stock.shipment.assigned.move,move_quantity:"
 msgid "Move Quantity"
@@ -52,7 +52,7 @@ msgstr "Toegewezen bewegingen"
 
 msgctxt "field:stock.shipment.unassign.manual.show,moves:"
 msgid "Moves"
-msgstr "Boekingen/bewegingen"
+msgstr "Mutaties"
 
 msgctxt "help:stock.shipment.assign.manual.show,quantity:"
 msgid ""
