@@ -135,7 +135,16 @@ msgid "Reset Password"
 msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
-msgid "We received a request to reset the password for your account,"
+msgid "The link will expire in [1:%(datetime)s]."
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"We received a request to reset the password for your account: %(email)s"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "%(email)s"
 msgstr ""
 
 msgctxt "report:web.user.email_validation:"

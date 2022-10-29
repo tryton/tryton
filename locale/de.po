@@ -141,9 +141,19 @@ msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
 msgctxt "report:web.user.email_reset_password:"
-msgid "We received a request to reset the password for your account,"
+msgid "The link will expire in [1:%(datetime)s]."
+msgstr "Der Hyperlink wird in [1:%(datetime)s] ablaufen."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"We received a request to reset the password for your account: %(email)s"
 msgstr ""
-"Wir haben eine Anfrage zur Rücksetzung des Passworts für Ihr Konto erhalten,"
+"Wir haben eine Anfrage zur Rücksetzung des Passworts für Ihr Konto erhalten:"
+" %(email)s"
+
+msgctxt "report:web.user.email_validation:"
+msgid "%(email)s"
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"

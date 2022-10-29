@@ -135,10 +135,19 @@ msgid "Reset Password"
 msgstr "Reset wachtwoord"
 
 msgctxt "report:web.user.email_reset_password:"
-msgid "We received a request to reset the password for your account,"
+msgid "The link will expire in [1:%(datetime)s]."
+msgstr "De link vervalt in [1:%(datetime)s]."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"We received a request to reset the password for your account: %(email)s"
 msgstr ""
-"We hebben een verzoek ontvangen om het wachtwoord voor uw account opnieuw in"
-" te stellen,"
+"We hebben het verzoek ontvangen om het wachtwoord voor uw account %(email)s "
+"opnieuw in te stellen"
+
+msgctxt "report:web.user.email_validation:"
+msgid "%(email)s"
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"

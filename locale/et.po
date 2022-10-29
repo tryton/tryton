@@ -138,8 +138,18 @@ msgid "Reset Password"
 msgstr "Lähtesta salasõna"
 
 msgctxt "report:web.user.email_reset_password:"
-msgid "We received a request to reset the password for your account,"
+msgid "The link will expire in [1:%(datetime)s]."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"We received a request to reset the password for your account: %(email)s"
 msgstr "Saime teate salasõna lähtestamiseks,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "%(email)s"
+msgstr ""
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
