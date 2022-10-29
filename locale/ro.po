@@ -22,7 +22,3 @@ msgstr "Tip"
 msgctxt "model:ir.message,text:msg_import_no_statement"
 msgid "The OFX file is not a statement."
 msgstr "Fișierul OFX nu este un extras de cont."
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid "OFX"
-msgstr "OFX"

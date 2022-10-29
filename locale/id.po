@@ -22,7 +22,3 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_import_no_statement"
 msgid "The OFX file is not a statement."
 msgstr ""
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid "OFX"
-msgstr ""
