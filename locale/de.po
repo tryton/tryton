@@ -34,6 +34,10 @@ msgctxt "field:product.template,sale_secondary_uom_rate:"
 msgid "Sale Secondary UOM Rate"
 msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
 
+msgctxt "field:sale.blanket_agreement.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Artikel Zweitmaßeinheitenkategorie"
+
 msgctxt "field:sale.line,product_secondary_uom_category:"
 msgid "Product Secondary UOM Category"
 msgstr "Artikel Zweitmaßeinheitenkategorie"
