@@ -76,7 +76,7 @@ msgstr "Karyawan"
 
 msgctxt "field:attendance.sheet.line,from_:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "field:attendance.sheet.line,sheet:"
 msgid "Sheet"
@@ -120,7 +120,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Periode"
+msgstr "Periode-Periode"
 
 msgctxt "model:ir.action,name:act_sheet"
 msgid "Sheets"
@@ -149,6 +149,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_modify_period_close"
 msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
 msgstr ""
+"Untuk mengubah kehadiran \"%(attendance)s\" Anda harus membuka kembali "
+"periode \"%(period)s\"."
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
