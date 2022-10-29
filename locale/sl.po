@@ -6,9 +6,15 @@ msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "Ukrepi"
 
-msgctxt "field:sale.complaint,address:"
-msgid "Address"
-msgstr "Naslov"
+#, fuzzy
+msgctxt "field:sale.complaint,approved_by:"
+msgid "Approved By"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt "field:sale.complaint,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Preklicano"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -25,10 +31,6 @@ msgstr "Datum"
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:sale.complaint,employee:"
-msgid "Employee"
-msgstr "Zaposlenec"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -50,9 +52,18 @@ msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr "Sklic"
 
+#, fuzzy
+msgctxt "field:sale.complaint,rejected_by:"
+msgid "Rejected By"
+msgstr "Zavrnjeno"
+
 msgctxt "field:sale.complaint,state:"
 msgid "State"
 msgstr "Stanje"
+
+msgctxt "field:sale.complaint,submitted_by:"
+msgid "Submitted By"
+msgstr ""
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
@@ -396,6 +407,10 @@ msgstr ""
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Reklamacija"
+
+msgctxt "view:sale.complaint:"
+msgid "Other Info"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Process"

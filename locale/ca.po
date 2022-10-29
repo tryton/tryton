@@ -6,9 +6,13 @@ msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "Accions"
 
-msgctxt "field:sale.complaint,address:"
-msgid "Address"
-msgstr "Adreça"
+msgctxt "field:sale.complaint,approved_by:"
+msgid "Approved By"
+msgstr "Aprovada per"
+
+msgctxt "field:sale.complaint,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Cancel·lada per"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -25,10 +29,6 @@ msgstr "Data"
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
 msgstr "Descripció"
-
-msgctxt "field:sale.complaint,employee:"
-msgid "Employee"
-msgstr "Empleat"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -50,9 +50,17 @@ msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr "Referència"
 
+msgctxt "field:sale.complaint,rejected_by:"
+msgid "Rejected By"
+msgstr "Rebutjada per"
+
 msgctxt "field:sale.complaint,state:"
 msgid "State"
 msgstr "Estat"
+
+msgctxt "field:sale.complaint,submitted_by:"
+msgid "Submitted By"
+msgstr "Enviada per"
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
@@ -367,6 +375,10 @@ msgstr "Import"
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Reclamació"
+
+msgctxt "view:sale.complaint:"
+msgid "Other Info"
+msgstr "Informació addicional"
 
 msgctxt "view:sale.complaint:"
 msgid "Process"

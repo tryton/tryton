@@ -6,9 +6,15 @@ msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "Műveletek"
 
-msgctxt "field:sale.complaint,address:"
-msgid "Address"
-msgstr "Cím"
+#, fuzzy
+msgctxt "field:sale.complaint,approved_by:"
+msgid "Approved By"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt "field:sale.complaint,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Megszakítva"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -25,10 +31,6 @@ msgstr "Dátum"
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
 msgstr "Leírás"
-
-msgctxt "field:sale.complaint,employee:"
-msgid "Employee"
-msgstr "Alkalmazott"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -50,9 +52,18 @@ msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr "Hivatkozás"
 
+#, fuzzy
+msgctxt "field:sale.complaint,rejected_by:"
+msgid "Rejected By"
+msgstr "Elutasított"
+
 msgctxt "field:sale.complaint,state:"
 msgid "State"
 msgstr "Státusz"
+
+msgctxt "field:sale.complaint,submitted_by:"
+msgid "Submitted By"
+msgstr ""
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
@@ -396,6 +407,10 @@ msgstr ""
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Reklamáció"
+
+msgctxt "view:sale.complaint:"
+msgid "Other Info"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Process"

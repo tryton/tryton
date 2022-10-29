@@ -7,9 +7,15 @@ msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "操作"
 
-msgctxt "field:sale.complaint,address:"
-msgid "Address"
-msgstr ""
+#, fuzzy
+msgctxt "field:sale.complaint,approved_by:"
+msgid "Approved By"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt "field:sale.complaint,cancelled_by:"
+msgid "Cancelled By"
+msgstr "Cancel"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -28,10 +34,6 @@ msgstr "日期格式"
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
 msgstr "描述"
-
-msgctxt "field:sale.complaint,employee:"
-msgid "Employee"
-msgstr ""
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -54,9 +56,18 @@ msgid "Reference"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:sale.complaint,rejected_by:"
+msgid "Rejected By"
+msgstr "Reject"
+
+#, fuzzy
 msgctxt "field:sale.complaint,state:"
 msgid "State"
 msgstr "状态"
+
+msgctxt "field:sale.complaint,submitted_by:"
+msgid "Submitted By"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.complaint,type:"
@@ -394,6 +405,10 @@ msgstr ""
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Complaints"
+
+msgctxt "view:sale.complaint:"
+msgid "Other Info"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.complaint:"
