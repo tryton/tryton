@@ -58,6 +58,8 @@ msgctxt "help:project.work,project_invoice_timesheet_up_to:"
 msgid ""
 "Limits which timesheet lines get invoiced to only those before the date."
 msgstr ""
+"Limita quali righe del foglio presenze vengono fatturate solo a quelle prima"
+" della data."
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
@@ -115,7 +117,7 @@ msgstr "Manuale"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Effort"
-msgstr ""
+msgstr "Sull'impegno stimato"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Progress"

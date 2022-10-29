@@ -8,16 +8,15 @@ msgstr ""
 
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
-msgstr "Baris Faktur"
+msgstr ""
 
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
-msgstr "Metode Faktur"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Metode Faktur"
+msgstr ""
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -31,10 +30,9 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,project_invoice_timesheet_up_to:"
 msgid "Invoice up to"
-msgstr "Metode Faktur"
+msgstr ""
 
 msgctxt "field:project.work,quantity_to_invoice:"
 msgid "Quantity to Invoice"
@@ -42,7 +40,7 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr "Baris Faktur"
+msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,progress:"
 msgid "Progress"
@@ -50,11 +48,11 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr "Kerja"
+msgstr ""
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
-msgstr "Baris Faktur"
+msgstr ""
 
 msgctxt "help:project.work,project_invoice_timesheet_up_to:"
 msgid ""
@@ -67,11 +65,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Faktur-Faktur"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_delete_invoiced_line"
 msgid "You cannot delete an invoiced line."
-msgstr "Anda tidak dapat menghapus baris yang ditagih."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_missing_account_revenue"
 msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
@@ -97,7 +95,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Faktur"
+msgstr ""
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
@@ -125,4 +123,4 @@ msgstr ""
 
 msgctxt "view:project.work.invoiced_progress:"
 msgid "%"
-msgstr "%"
+msgstr ""
