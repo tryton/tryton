@@ -213,6 +213,10 @@ msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
 msgstr "heti"
 
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"

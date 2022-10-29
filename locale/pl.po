@@ -207,6 +207,10 @@ msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
 msgstr "Tygodniowo"
 
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr ""
+
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
 msgstr "Aktualizuj kursy walut"

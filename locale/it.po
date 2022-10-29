@@ -34,7 +34,7 @@ msgstr ""
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "Operazione pianificata"
 
 #, fuzzy
 msgctxt "field:currency.cron-currency.currency,currency:"
@@ -214,6 +214,10 @@ msgstr ""
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
+msgstr ""
+
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
 msgstr ""
 
 #, fuzzy
