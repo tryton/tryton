@@ -10,6 +10,10 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Stad"
 
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Contactmogelijkheden"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Land"
@@ -113,6 +117,10 @@ msgstr "Taal relatie"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Relatie reeks"
+
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Adres"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

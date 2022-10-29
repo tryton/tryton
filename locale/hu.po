@@ -10,6 +10,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Város"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Kapcsolatfelvételi módok"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Ország"
@@ -117,6 +122,11 @@ msgstr "Ügyfél nyelve"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Ügyfél sorszámozása"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Cím"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

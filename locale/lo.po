@@ -11,6 +11,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "ບ້ານ"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "ປະເທດ"
@@ -124,6 +129,11 @@ msgstr ""
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "ລໍາດັບພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "ທີ່ຢູ່"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

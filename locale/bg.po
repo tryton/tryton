@@ -11,6 +11,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Град"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Начини на контакт"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Държава"
@@ -123,6 +128,11 @@ msgstr ""
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Последователност за партньор"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Адрес"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

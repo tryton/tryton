@@ -11,6 +11,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Kota"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Mekanisme Kontak"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Negara"
@@ -36,10 +41,9 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Nama Pihak"
 
-#, fuzzy
 msgctxt "field:party.address,postal_code:"
 msgid "Postal Code"
-msgstr "Kode Negara"
+msgstr "Kode Pos"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
@@ -118,6 +122,11 @@ msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Alamat"
+
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr "Komentar"
@@ -126,14 +135,13 @@ msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,language:"
 msgid "Language"
 msgstr "Bahasa"
 
 msgctxt "field:party.contact_mechanism,languages:"
 msgid "Languages"
-msgstr "Bahasa-bahasa"
+msgstr "Bahasa-Bahasa"
 
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
@@ -180,7 +188,6 @@ msgctxt "field:party.contact_mechanism.language,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Mekanisme Kontak"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,language:"
 msgid "Language"
 msgstr "Bahasa"
@@ -257,7 +264,7 @@ msgstr "Bahasa"
 
 msgctxt "field:party.party,langs:"
 msgid "Languages"
-msgstr "Bahasa-bahasa"
+msgstr "Bahasa-Bahasa"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
@@ -315,7 +322,6 @@ msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr "Jika diisi, ganti nama pihak untuk pemformatan alamat"
 
-#, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
 "Available variables (also in upper case):\n"
@@ -330,7 +336,7 @@ msgid ""
 "- ${country}\n"
 "- ${country_code}"
 msgstr ""
-"Variabel yang tersedia (juga dalam huruf besar):\n"
+"Variabel-variabel yang tersedia (juga dalam huruf besar):\n"
 "- ${party_name}\n"
 "- ${name}\n"
 "- ${attn}\n"
@@ -458,7 +464,6 @@ msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Pihak berdasarkan Kategori"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -567,11 +572,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Kategori-kategori"
+msgstr "Kategori-Kategori"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Kategori-kategori"
+msgstr "Kategori-Kategori"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -586,7 +591,6 @@ msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Para Pihak"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"

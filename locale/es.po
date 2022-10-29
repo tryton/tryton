@@ -10,6 +10,10 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Ciudad"
 
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Métodos de contacto"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "País"
@@ -113,6 +117,10 @@ msgstr "Idioma del tercero"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secuencia de tercero"
+
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Dirección"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
@@ -924,7 +932,7 @@ msgstr "Identificador fiscal Griego"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Guatemala Tax Number"
-msgstr "Número fiscal Guatemaltenco"
+msgstr "Identificador fiscal Guatemalteco"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Hungarian VAT Number"

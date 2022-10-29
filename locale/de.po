@@ -10,6 +10,10 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Stadt"
 
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Kontaktinformationen"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Land"
@@ -113,6 +117,10 @@ msgstr "Sprache Partei"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Nummernkreis Partei"
+
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Adresse"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

@@ -10,6 +10,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Miejscowość"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Sposoby kontaktu"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Kraj"
@@ -115,6 +120,11 @@ msgstr "Język strony"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Numeracja strony"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Adres"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

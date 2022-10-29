@@ -10,6 +10,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Oraș"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Mecanisme de contact"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Țară"
@@ -114,6 +119,11 @@ msgstr "Limba Părții"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secvență Părții"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Adresa"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

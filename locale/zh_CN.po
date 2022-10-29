@@ -10,6 +10,11 @@ msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "城市"
 
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "联系方式"
+
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "国家"
@@ -117,6 +122,11 @@ msgstr "参与者所用语言"
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "参与者序列"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "地址"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"

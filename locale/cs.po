@@ -12,6 +12,11 @@ msgid "City"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Contact Mechanisms"
+
+#, fuzzy
 msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Coventry"
@@ -123,6 +128,11 @@ msgstr ""
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Addresses"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
