@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.email.log,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:account.dunning.email.log,dunning:"
 msgid "Dunning"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,email_from:"
 msgid "From"
-msgstr "Dari"
+msgstr ""
 
 msgctxt "field:account.dunning.level,email_template:"
 msgid "Email Template"
@@ -72,19 +72,19 @@ msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Tanggal:"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Referensi"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
@@ -108,8 +108,8 @@ msgstr ""
 
 msgctxt "view:account.dunning.email.log:"
 msgid "Time"
-msgstr "Waktu"
+msgstr ""
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"
-msgstr "E-mail"
+msgstr ""
