@@ -27,14 +27,13 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
 msgctxt "field:stock.lot,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "UdM predefinita"
 
 msgctxt "field:stock.lot,default_uom_digits:"
 msgid "Default Unit Digits"
@@ -77,10 +76,9 @@ msgctxt "field:stock.lot.trace,downward_traces:"
 msgid "Downward Traces"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
 #, fuzzy
 msgctxt "field:stock.lot.trace,product:"
@@ -125,17 +123,14 @@ msgctxt "field:stock.lots_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "Quantità prevista"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_locations,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_locations,product:"
 msgid "Product"
 msgstr "Prodotto"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_locations,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -157,21 +152,19 @@ msgstr "Utente scrittura"
 
 msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
-#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
 msgctxt "field:stock.move.add.lots.start,duplicate_lot_number:"
 msgid "Duplicate Lot Number"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,lots:"
 msgid "Lots"
-msgstr "Lot"
+msgstr "Lotti"
 
 #, fuzzy
 msgctxt "field:stock.move.add.lots.start,product:"
@@ -215,7 +208,7 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgctxt "field:stock.move.add.lots.start.lot,quantity_unit:"
 msgid "Unit"
 msgstr ""
 
@@ -232,10 +225,9 @@ msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
 msgstr "Luogo"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,period:"
@@ -290,10 +282,9 @@ msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
 msgstr "Quantità prevista"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lot"
+msgstr "Lotti"
 
 msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
 msgid "Downward Traces"
@@ -361,10 +352,9 @@ msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
 msgid "Stock Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lot"
+msgstr "Lotti"
 
 msgctxt "model:product.configuration.default_lot_sequence,name:"
 msgid "Product Configuration Default Lot Sequence"
@@ -410,60 +400,51 @@ msgctxt "selection:product.product,lot_required:"
 msgid "Customer"
 msgstr "Cliente"
 
-#, fuzzy
 msgctxt "selection:product.product,lot_required:"
 msgid "Lost and Found"
-msgstr "Lost and Found"
+msgstr "Perso e ritrovato"
 
 #, fuzzy
 msgctxt "selection:product.product,lot_required:"
 msgid "Production"
 msgstr "Production"
 
-#, fuzzy
 msgctxt "selection:product.product,lot_required:"
 msgid "Storage"
-msgstr "Storage"
+msgstr "Deposito"
 
-#, fuzzy
 msgctxt "selection:product.product,lot_required:"
 msgid "Supplier"
 msgstr "Fornitore"
 
-#, fuzzy
 msgctxt "selection:product.template,lot_required:"
 msgid "Customer"
 msgstr "Cliente"
 
-#, fuzzy
 msgctxt "selection:product.template,lot_required:"
 msgid "Lost and Found"
-msgstr "Lost and Found"
+msgstr "Perso e ritrovato"
 
 #, fuzzy
 msgctxt "selection:product.template,lot_required:"
 msgid "Production"
 msgstr "Production"
 
-#, fuzzy
 msgctxt "selection:product.template,lot_required:"
 msgid "Storage"
-msgstr "Storage"
+msgstr "Deposito"
 
-#, fuzzy
 msgctxt "selection:product.template,lot_required:"
 msgid "Supplier"
 msgstr "Fornitore"
 
-#, fuzzy
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Lotto"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lot"
+msgstr "Lotti"
 
 msgctxt "view:stock.move.add.lots.start:"
 msgid "Remaining:"

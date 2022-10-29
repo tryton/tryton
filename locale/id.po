@@ -61,16 +61,15 @@ msgstr ""
 
 msgctxt "field:stock.lot.trace,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,date:"
 msgid "Date"
-msgstr "Pada Tanggal"
+msgstr "Tanggal"
 
 msgctxt "field:stock.lot.trace,document:"
 msgid "Document"
-msgstr ""
+msgstr "Dokumen"
 
 msgctxt "field:stock.lot.trace,downward_traces:"
 msgid "Downward Traces"
@@ -80,14 +79,13 @@ msgctxt "field:stock.lot.trace,lot:"
 msgid "Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,product:"
 msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:stock.lot.trace,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kuantitas"
 
 msgctxt "field:stock.lot.trace,shipment:"
 msgid "Shipment"
@@ -151,7 +149,7 @@ msgstr "Pada Tanggal"
 
 msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -165,14 +163,13 @@ msgctxt "field:stock.move.add.lots.start,lots:"
 msgid "Lots"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start,product:"
 msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:stock.move.add.lots.start,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kuantitas"
 
 msgctxt "field:stock.move.add.lots.start,quantity_remaining:"
 msgid "Quantity Remaining"
@@ -186,16 +183,14 @@ msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
 msgid "Has Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,number:"
 msgid "Number"
 msgstr "Nomor"
 
 msgctxt "field:stock.move.add.lots.start.lot,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,product:"
 msgid "Product"
 msgstr "Produk"
@@ -204,7 +199,7 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgctxt "field:stock.move.add.lots.start.lot,quantity_unit:"
 msgid "Unit"
 msgstr ""
 
@@ -385,7 +380,7 @@ msgstr ""
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Lost and Found"
@@ -405,7 +400,7 @@ msgstr "Pemasok"
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "selection:product.template,lot_required:"
 msgid "Lost and Found"

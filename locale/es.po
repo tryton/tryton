@@ -195,7 +195,7 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgctxt "field:stock.move.add.lots.start.lot,quantity_unit:"
 msgid "Unit"
 msgstr "Unidad"
 
@@ -217,7 +217,7 @@ msgstr "Lote"
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
@@ -380,7 +380,7 @@ msgstr "Añadir lotes"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Período de existencias precalculado por lote"
+msgstr "Periodo de existencias precalculado por lote"
 
 msgctxt "selection:product.product,lot_required:"
 msgid "Customer"

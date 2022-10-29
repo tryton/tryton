@@ -197,7 +197,7 @@ msgctxt "field:stock.move.add.lots.start.lot,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgctxt "field:stock.move.add.lots.start.lot,quantity_unit:"
 msgid "Unit"
 msgstr ""
 
