@@ -4,16 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
-msgstr "Righe"
+msgstr ""
 
 msgctxt "field:product.price_list,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -29,20 +28,19 @@ msgstr ""
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
-msgstr "Formula"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
-msgstr "Price Lists"
+msgstr ""
 
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
-msgstr "Prodotto"
+msgstr ""
 
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
-msgstr "Quantità"
+msgstr ""
 
 msgctxt "help:product.price_list,company:"
 msgid ""
@@ -92,7 +90,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
@@ -106,18 +104,16 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Price Lists"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
-msgstr "Price Lists"
+msgstr ""
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Default"
-msgstr "Prodotto"
+msgstr ""
