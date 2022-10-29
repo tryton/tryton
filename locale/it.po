@@ -61,7 +61,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
@@ -73,7 +73,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
@@ -85,7 +85,7 @@ msgstr "Prodotto"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Categotia UdM prodotto"
 
 msgctxt "field:purchase.request.quotation.line,quantity:"
 msgid "Quantity"
@@ -287,7 +287,7 @@ msgstr ""
 
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 #, fuzzy
 msgctxt "selection:purchase.request.quotation,state:"
