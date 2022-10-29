@@ -241,7 +241,7 @@ msgstr "Hier is je code:"
 
 msgctxt "report:sale.gift_card.email:"
 msgid "You received a gift card of %(value)s for %(company)s."
-msgstr "Je hebt een waardebon van %(value)s ontvangen voor %(company)s."
+msgstr "U hebt een waardebon van %(value)s ontvangen voor %(company)s."
 
 msgctxt "report:sale.gift_card:"
 msgid "Value:"

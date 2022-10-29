@@ -66,7 +66,7 @@ msgstr ""
 
 msgctxt "field:sale.gift_card,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:sale.gift_card,product:"
 msgid "Product"

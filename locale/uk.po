@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.gift_card_account,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.gift_card_account,gift_card_account_expense:"
@@ -46,7 +46,7 @@ msgstr ""
 
 msgctxt "field:sale.configuration.gift_card.sequence,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.configuration.gift_card.sequence,gift_card_sequence:"
 msgid "Gift Card Sequence"
@@ -54,7 +54,7 @@ msgstr ""
 
 msgctxt "field:sale.gift_card,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.gift_card,currency:"
 msgid "Currency"
@@ -62,11 +62,11 @@ msgstr ""
 
 msgctxt "field:sale.gift_card,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:sale.gift_card,origin:"
 msgid "Origin"
-msgstr "Asal"
+msgstr ""
 
 msgctxt "field:sale.gift_card,product:"
 msgid "Product"
@@ -130,11 +130,11 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.pay.gift_card,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr ""
 
 msgctxt "field:sale.point.sale.pay.gift_card,sale:"
 msgid "Sale"
-msgstr "Penjualan"
+msgstr ""
 
 msgctxt "field:sale.sale,gift_cards:"
 msgid "Gift Cards"
