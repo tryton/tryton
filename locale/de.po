@@ -86,6 +86,14 @@ msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:analytic_account.account.context,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:analytic_account.account.context,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Kostenstelle"
@@ -130,14 +138,6 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "Buchungszeile"
 
-msgctxt "field:analytic_account.open_chart.start,end_date:"
-msgid "End Date"
-msgstr "Enddatum"
-
-msgctxt "field:analytic_account.open_chart.start,start_date:"
-msgid "Start Date"
-msgstr "Startdatum"
-
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
 msgstr "Konto"
@@ -174,6 +174,10 @@ msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Kostenstelle"
 
+msgctxt "model:analytic_account.account.context,name:"
+msgid "Open Chart of Accounts"
+msgstr "Kostenstellenplan öffnen"
+
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
 msgstr "Kostenstellenverteilung"
@@ -182,25 +186,21 @@ msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
 msgstr "Kostenstelle Zeile"
 
-msgctxt "model:analytic_account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
-msgstr "Kostenstellenplan öffnen"
-
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
 msgstr "Kostenstelle Regel"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Kostenstellen"
+msgstr "Konten"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Kostenstellen"
+msgstr "Konten"
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Kostenstellenplan"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
@@ -213,10 +213,6 @@ msgstr "Kostenpositionen zu vervollständigen"
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
 msgstr "Kostenstelle öffnen"
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Kostenstellenplan öffnen"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
@@ -257,11 +253,15 @@ msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Kostenstellen"
+msgstr "Konten"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Kostenstellen"
+msgstr "Konten"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Kostenstellenplan"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
@@ -270,10 +270,6 @@ msgstr "Kostenrechnung"
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
 msgstr "Kostenpositionen vervollständigen"
-
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Kostenstellenplan öffnen"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
@@ -342,11 +338,3 @@ msgstr "Allgemein"
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
 msgstr "Notizen"
-
-msgctxt "wizard_button:analytic_account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
-msgid "Open"
-msgstr "Öffnen"

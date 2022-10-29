@@ -48,7 +48,7 @@ msgstr "Kredit"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -85,6 +85,16 @@ msgstr ""
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.context,end_date:"
+msgid "End Date"
+msgstr "Tanggal Akhir"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.context,start_date:"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
@@ -131,14 +141,6 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
-msgctxt "field:analytic_account.open_chart.start,end_date:"
-msgid "End Date"
-msgstr "Tanggal Akhir"
-
-msgctxt "field:analytic_account.open_chart.start,start_date:"
-msgid "Start Date"
-msgstr "Tanggal Awal"
-
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
 msgstr "Akun"
@@ -175,16 +177,17 @@ msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:analytic_account.account.context,name:"
+msgid "Open Chart of Accounts"
+msgstr "Buka Bagan Akun"
+
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
 msgstr ""
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr ""
-
-msgctxt "model:analytic_account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
 msgstr ""
 
 msgctxt "model:analytic_account.rule,name:"
@@ -201,9 +204,10 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr "Akun"
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Analytic Accounts"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Buka Bagan Akun"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
@@ -215,10 +219,6 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Analytic Accounts"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_rule_form"
@@ -269,16 +269,17 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Akun"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Buka Bagan Akun"
+
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Analytic Accounts"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
@@ -347,12 +348,4 @@ msgstr "Informasi Umum"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr ""
-
-msgctxt "wizard_button:analytic_account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
-msgid "Open"
-msgstr "Buka"
+msgstr "Catatan-Catatan"

@@ -94,6 +94,16 @@ msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr "类型"
 
+#, fuzzy
+msgctxt "field:analytic_account.account.context,end_date:"
+msgid "End Date"
+msgstr "日期格式"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.context,start_date:"
+msgid "Start Date"
+msgstr "写入日期"
+
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr ""
@@ -140,14 +150,6 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
-msgctxt "field:analytic_account.open_chart.start,end_date:"
-msgid "End Date"
-msgstr ""
-
-msgctxt "field:analytic_account.open_chart.start,start_date:"
-msgid "Start Date"
-msgstr ""
-
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
 msgstr ""
@@ -187,6 +189,11 @@ msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Analytic Account"
 
+#, fuzzy
+msgctxt "model:analytic_account.account.context,name:"
+msgid "Open Chart of Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
 msgstr ""
@@ -195,10 +202,6 @@ msgstr ""
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
 msgstr "Analytic Lines"
-
-msgctxt "model:analytic_account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
-msgstr ""
 
 #, fuzzy
 msgctxt "model:analytic_account.rule,name:"
@@ -215,9 +218,10 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr "Open Account"
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
@@ -230,10 +234,6 @@ msgstr "Analytic Lines to Complete"
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
 msgstr "Open Account"
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
@@ -281,6 +281,11 @@ msgid "Accounts"
 msgstr "Open Account"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic"
 msgstr "Analytic Lines"
@@ -288,10 +293,6 @@ msgstr "Analytic Lines"
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
 msgstr "Analytic Lines to Complete"
-
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
@@ -363,13 +364,3 @@ msgstr ""
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
 msgstr "注释"
-
-#, fuzzy
-msgctxt "wizard_button:analytic_account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "取消"
-
-#, fuzzy
-msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
-msgid "Open"
-msgstr "打开"
