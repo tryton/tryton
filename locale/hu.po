@@ -6,6 +6,11 @@ msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr "Szállítási"
 
+#, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Raktár"
+
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Szállítási"
@@ -14,6 +19,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "vevőnél lévő tárhely"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Kiválasztott raktár"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Tárhelyek"
@@ -21,6 +31,16 @@ msgstr "Tárhelyek"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "szállítónál lévő tárhely"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Tárhely"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Ügyfél"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -255,6 +275,10 @@ msgstr "Mértékegység"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Cím"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -826,6 +850,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Cél tárhely"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Raktár"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Átvette"
@@ -989,6 +1018,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Cég"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Kapcsolattartó"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Vevő"
@@ -996,10 +1030,6 @@ msgstr "Vevő"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "vevőnél lévő tárhely"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Szállítási cím"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1582,13 +1612,13 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "A szállítmány tulajdonosa."
 
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr ""
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "Az ügyfél, aki megveszi az árut."
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr ""
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -2553,6 +2583,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Beállítások"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Kiválasztott raktár"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr ""
@@ -3277,6 +3312,21 @@ msgstr "Beszállítóhoz visszaküldött szállítmány"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Beszállító szállítmánya"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr "Költség"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Tétel"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Egyéb info"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

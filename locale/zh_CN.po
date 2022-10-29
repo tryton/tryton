@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "交付"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "仓库"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "交付"
@@ -15,6 +20,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "客户库位"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "当前仓库"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "库位"
@@ -22,6 +32,16 @@ msgstr "库位"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "供应商库位"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "库位"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "参与者"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -256,6 +276,10 @@ msgstr "计量单位"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "地址"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -834,6 +858,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "到库位"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "仓库"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "接收人"
@@ -997,6 +1026,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "公司"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "联系地址"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "客户"
@@ -1004,10 +1038,6 @@ msgstr "客户"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "客户库位"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "交货地址"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1590,13 +1620,14 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "退货关联的公司."
 
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr "客户联系地址."
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "购买库存的参与方."
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr "客户联系地址."
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -2555,6 +2586,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "设置"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "当前仓库"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr "参与者库位"
@@ -3275,6 +3311,20 @@ msgstr "向供应商退货序列"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "从供应商收货序列"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "变动"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "其它信息"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

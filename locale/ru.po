@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "Доставка"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Товарный склад"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Доставка"
@@ -16,6 +21,11 @@ msgid "Customer Location"
 msgstr "Местоположение заказчика"
 
 #, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Товарный склад"
+
+#, fuzzy
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Местоположения"
@@ -23,6 +33,15 @@ msgstr "Местоположения"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Местоположение поставщика"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.location,customer_location:"
@@ -279,6 +298,10 @@ msgstr "Ед.изм."
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Адрес"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -887,6 +910,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "В местоположение"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr ""
@@ -1056,6 +1084,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Организация"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Контактный адрес"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Заказчик"
@@ -1063,10 +1096,6 @@ msgstr "Заказчик"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Местоположение заказчика"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Адрес доставки"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1640,12 +1669,12 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,customer:"
-msgid "The party that purchased the stock."
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
 msgstr ""
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
@@ -2668,6 +2697,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Товарный склад"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr ""
@@ -3435,6 +3469,19 @@ msgstr "Нумерация возвратов поставщику"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Нумерация приходов от поставщика"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Перемещения"
+
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

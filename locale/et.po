@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "Tarne"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Ladu"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Tarne"
@@ -15,6 +20,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Kliendi asukoht"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Ladu"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Asukohad"
@@ -22,6 +32,16 @@ msgstr "Asukohad"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Hankija asukoht"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Osapool"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -265,6 +285,10 @@ msgstr "Ühik"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Aadress"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -863,6 +887,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Asukohta"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Vastuvõtja"
@@ -1027,6 +1056,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Kontaktaadress"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Klient"
@@ -1034,10 +1068,6 @@ msgstr "Klient"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Kliendi asukoht"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Tarneaadress"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1620,13 +1650,14 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "Ettevõte kellega tarne on seotud"
 
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr "Kliendi aadress"
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "Kauba soetaja osapool"
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr "Kliendi aadress"
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -2593,6 +2624,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Seadistus"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Ladu"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr "Osapoole asukoht"
@@ -3332,6 +3368,20 @@ msgstr "Hankija tagastuse järjestus"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Tarnete järjestus"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Liikumised"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Täiendav info"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

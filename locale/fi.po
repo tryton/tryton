@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Warehouse"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Delivery Note"
@@ -16,12 +21,26 @@ msgid "Customer Location"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Warehouse"
+
+#, fuzzy
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Locations"
 
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Locations"
+
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.location,customer_location:"
@@ -266,6 +285,10 @@ msgstr ""
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
+msgstr ""
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
 msgstr ""
 
 msgctxt "field:stock.location,childs:"
@@ -858,6 +881,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Warehouse"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr ""
@@ -1026,6 +1054,10 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
@@ -1033,10 +1065,6 @@ msgstr "Customer"
 
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
-msgstr ""
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,done_by:"
@@ -1607,12 +1635,12 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,customer:"
-msgid "The party that purchased the stock."
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
 msgstr ""
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
@@ -2557,6 +2585,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Warehouse"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr ""
@@ -3361,6 +3394,19 @@ msgstr "Supplier Return Shipment"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Supplier Shipment"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Moves"
+
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr ""
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

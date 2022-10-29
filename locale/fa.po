@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "تحویل"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "انبار"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "تحویل"
@@ -15,6 +20,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "محل مشتری"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "انبار"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "مکان ها"
@@ -22,6 +32,16 @@ msgstr "مکان ها"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "محل تامین کننده"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "مکان"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -265,6 +285,10 @@ msgstr "واحد اندازی گیری"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "آدرس"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -863,6 +887,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "به مکان"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "دریافت شده توسط"
@@ -1027,6 +1056,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "آدرس تماس"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "مشتری"
@@ -1034,10 +1068,6 @@ msgstr "مشتری"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "محل مشتری"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "آدرس تحویل"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1626,13 +1656,14 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "شرکت حمل و نقل با آن مرتبط است."
 
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr "آدرس مشتری که می توان با آن تماس گرفت."
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "نهاد/سازمانی که اموال را خریداری کرده است."
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr "آدرس مشتری که می توان با آن تماس گرفت."
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -2615,6 +2646,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "پیکربندی"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "انبار"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr "مکان نهاد/سازمان"
@@ -3351,6 +3387,20 @@ msgstr "ادامه ارچاع محموله مرجوعی به تأمیین کنن
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "ادامه محموله تأمیین کننده"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "جابجایی ها"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

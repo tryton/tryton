@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "Dostava"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Skladišče"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Dostava"
@@ -15,6 +20,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Lokacija kupca"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Skladišče"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Lokacije"
@@ -22,6 +32,16 @@ msgstr "Lokacije"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Lokacija dobavitelja"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Lokacija"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Partner"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -268,6 +288,10 @@ msgstr "ME"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Naslov"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -866,6 +890,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Na lokacijo"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Prejel"
@@ -1030,6 +1059,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Kontakt"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Kupec"
@@ -1037,10 +1071,6 @@ msgstr "Kupec"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Lokacija kupca"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Prejemnik"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1610,12 +1640,12 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,customer:"
-msgid "The party that purchased the stock."
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
 msgstr ""
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
@@ -2640,6 +2670,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Skladišče"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr "Lokacija partnerja"
@@ -3390,6 +3425,20 @@ msgstr "Štetje vrnjenih prevzemnic"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Štetje prevzemnic"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Promet"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Drugo"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"

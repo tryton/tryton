@@ -7,6 +7,11 @@ msgid "Delivery"
 msgstr "Pengiriman"
 
 #, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Gudang"
+
+#, fuzzy
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Pengiriman"
@@ -15,6 +20,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Lokasi Pelanggan"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Gudang saat ini"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Lokasi"
@@ -22,6 +32,16 @@ msgstr "Lokasi"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Lokasi Pemasok"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Lokasi"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Pihak"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -43,7 +63,6 @@ msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr "Pada Tanggal"
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,company:"
 msgid "Company"
 msgstr "Perusahaan"
@@ -61,7 +80,6 @@ msgctxt "field:product.cost_price.revision,product:"
 msgid "Variant"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.cost_price.revision,template:"
 msgid "Product"
 msgstr "Produk"
@@ -89,7 +107,7 @@ msgstr ""
 
 msgctxt "field:product.recompute_cost_price.start,from_:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
@@ -227,12 +245,10 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,inventory_date:"
 msgid "Date"
 msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,inventory_location:"
 msgid "Location"
 msgstr "Lokasi"
@@ -260,6 +276,10 @@ msgstr "UOM"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Alamat"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -364,7 +384,6 @@ msgctxt "field:stock.location.waste,location:"
 msgid "Waste Location"
 msgstr "Lokasi Pelanggan"
 
-#, fuzzy
 msgctxt "field:stock.location.waste,warehouse:"
 msgid "Warehouse"
 msgstr "Gudang"
@@ -387,11 +406,11 @@ msgstr ""
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
@@ -494,7 +513,6 @@ msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse,product:"
 msgid "Product"
 msgstr "Produk"
@@ -539,19 +557,17 @@ msgstr "Tanggal"
 
 msgctxt "field:stock.product_quantities_warehouse.move,document:"
 msgid "Document"
-msgstr ""
+msgstr "Dokumen"
 
 #, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,move:"
 msgid "Move"
 msgstr "Perpindahan"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,origin:"
 msgid "Origin"
 msgstr "Asal"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.move,product:"
 msgid "Product"
 msgstr "Produk"
@@ -581,7 +597,6 @@ msgctxt "field:stock.products_by_locations,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.products_by_locations,product:"
 msgid "Product"
 msgstr "Produk"
@@ -610,7 +625,6 @@ msgctxt "field:stock.reporting.margin.category.time_series,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.time_series,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -620,17 +634,14 @@ msgctxt "field:stock.reporting.margin.category.tree,children:"
 msgid "Children"
 msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.tree,name:"
 msgid "Name"
 msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.category.tree,parent:"
 msgid "Parent"
 msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,company:"
 msgid "Company"
 msgstr "Perusahaan"
@@ -644,21 +655,18 @@ msgctxt "field:stock.reporting.margin.context,include_lost:"
 msgid "Include Lost"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,period:"
 msgid "Period"
 msgstr "Periode"
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.context,to_date:"
 msgid "To Date"
-msgstr "Tanggal"
+msgstr "Ke Tanggal"
 
 msgctxt "field:stock.reporting.margin.main,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.main.time_series,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -667,14 +675,13 @@ msgctxt "field:stock.reporting.margin.product,internal_quantity:"
 msgid "Internal Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product,product:"
 msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:stock.reporting.margin.product,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kuantitas"
 
 msgctxt "field:stock.reporting.margin.product,time_series:"
 msgid "Time Series"
@@ -684,7 +691,6 @@ msgctxt "field:stock.reporting.margin.product,unit:"
 msgid "Unit"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -693,18 +699,17 @@ msgctxt "field:stock.reporting.margin.product.time_series,internal_quantity:"
 msgid "Internal Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.reporting.margin.product.time_series,product:"
 msgid "Product"
 msgstr "Produk"
 
 msgctxt "field:stock.reporting.margin.product.time_series,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kuantitas"
 
 msgctxt "field:stock.reporting.margin.product.time_series,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Satuan"
 
 #, fuzzy
 msgctxt "field:stock.shipment.assign.partial,moves:"
@@ -725,7 +730,7 @@ msgstr "Dilakukan Oleh"
 
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
@@ -801,7 +806,7 @@ msgstr "Dilakukan Oleh"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
@@ -843,6 +848,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Diterima oleh"
@@ -857,7 +867,7 @@ msgstr "Dilakukan Oleh"
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.shipment.internal,effective_start_date:"
 msgid "Effective Start Date"
@@ -942,7 +952,7 @@ msgstr "Dilakukan Oleh"
 
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
@@ -1004,6 +1014,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Alamat"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Pelanggan"
@@ -1012,17 +1027,13 @@ msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Lokasi Pelanggan"
 
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Alamat Pengiriman"
-
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
 msgstr "Dilakukan Oleh"
 
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Tanggal Efektif"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
@@ -1582,12 +1593,12 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,customer:"
-msgid "The party that purchased the stock."
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
 msgstr ""
 
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
 msgstr ""
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
@@ -1656,7 +1667,7 @@ msgstr "Perpindahan"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Periode"
+msgstr "Periode-Periode"
 
 msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
@@ -1738,7 +1749,6 @@ msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Returns"
 msgstr "Lokasi Pelanggan"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -2104,7 +2114,6 @@ msgctxt "model:ir.message,text:msg_shipment_pack_inventory_done"
 msgid "To pack shipment \"%(shipment)s\" you must do the inventory moves."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_stock_reporting_company"
 msgid "Company"
 msgstr "Perusahaan"
@@ -2137,11 +2146,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_stock_reporting_revenue"
 msgid "Revenue"
-msgstr ""
+msgstr "Pendapatan"
 
 msgctxt "model:ir.model.button,confirm:inventory_cancel_button"
 msgid "Are you sure you want to cancel the inventory?"
-msgstr ""
+msgstr "Apakah Anda yakin Anda ingin membatalkan inventaris?"
 
 msgctxt "model:ir.model.button,confirm:inventory_confirm_button"
 msgid "Are you sure you want to confirm the inventory?"
@@ -2529,10 +2538,14 @@ msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"
+
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Gudang saat ini"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -2600,7 +2613,7 @@ msgstr ""
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
@@ -2914,7 +2927,7 @@ msgstr ":"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
@@ -3007,7 +3020,7 @@ msgstr "Produk"
 
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Pelanggan"
 
 msgctxt "selection:stock.location,type:"
 msgid "Drop"
@@ -3090,16 +3103,15 @@ msgstr ""
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Year"
-msgstr ""
+msgstr "Tahun"
 
-#, fuzzy
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Cancelled"
-msgstr "Batal"
+msgstr "Dibatalkan"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
@@ -3239,7 +3251,6 @@ msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Sequence"
 msgstr "Urutan"
@@ -3256,6 +3267,21 @@ msgstr ""
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Pemasok"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr "Biaya"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Perpindahan"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Info Lain"
 
 #, fuzzy
 msgctxt "view:stock.products_by_locations:"
@@ -3335,12 +3361,10 @@ msgctxt "wizard_button:product.modify_cost_price,start,end:"
 msgid "Cancel"
 msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:product.modify_cost_price,start,modify:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:product.recompute_cost_price,start,end:"
 msgid "Cancel"
 msgstr "Batal"

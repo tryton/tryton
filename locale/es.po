@@ -6,6 +6,10 @@ msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr "Envío"
 
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Almacenes"
+
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Envío"
@@ -14,6 +18,10 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Ubicación de cliente"
 
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Enviado a los almacenes"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Ubicaciones"
@@ -21,6 +29,14 @@ msgstr "Ubicaciones"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Ubicación de proveedor"
+
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Tercero"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -254,6 +270,10 @@ msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Dirección"
 
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr "Permitir recogida"
+
 msgctxt "field:stock.location,childs:"
 msgid "Children"
 msgstr "Hijos"
@@ -468,7 +488,7 @@ msgstr "Ubicación"
 
 msgctxt "field:stock.period.cache,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:stock.period.cache,product:"
 msgid "Product"
@@ -620,7 +640,7 @@ msgstr "Incluye perdidos"
 
 msgctxt "field:stock.reporting.margin.context,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:stock.reporting.margin.context,to_date:"
 msgid "To Date"
@@ -810,6 +830,10 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "A ubicación"
 
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Recibido por"
@@ -970,6 +994,10 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Dirección de contacto"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Cliente"
@@ -977,10 +1005,6 @@ msgstr "Cliente"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Ubicación de cliente"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Dirección de envío"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1044,7 +1068,7 @@ msgstr "Marcar para enviar mercancías a esta dirección."
 
 msgctxt "help:party.contact_mechanism,delivery:"
 msgid "Check to use for delivery."
-msgstr "Marcar para utlizar en los envíos."
+msgstr "Marcar para utilizar en los envíos."
 
 msgctxt "help:party.party,customer_location:"
 msgid "The default destination location for stock sent to the party."
@@ -1577,13 +1601,13 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "La empresa con la que el albarán está asociado."
 
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr "La dirección en la que el cliente puede ser contactado."
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "El tercero que compró las existencias."
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr "La dirección en la que el cliente puede ser contactado."
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -1651,7 +1675,7 @@ msgstr "Movimientos"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Períodos"
+msgstr "Periodos"
 
 msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
@@ -2499,7 +2523,7 @@ msgstr "Movimientos"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Períodos"
+msgstr "Periodos"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -2540,6 +2564,10 @@ msgstr "Logística"
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configuración"
+
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Tercero entregado en almacén"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -2651,11 +2679,11 @@ msgstr "Movimiento de existencias"
 
 msgctxt "model:stock.period,name:"
 msgid "Stock Period"
-msgstr "Período de existencias"
+msgstr "Periodo de existencias"
 
 msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
-msgstr "Período de existencias precalculado"
+msgstr "Periodo de existencias precalculado"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
@@ -3248,6 +3276,18 @@ msgstr "Secuencia devoluciones proveedor"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Secuencia proveedores"
+
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Movimiento"
+
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Información adicional"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"

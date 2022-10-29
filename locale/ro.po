@@ -6,6 +6,11 @@ msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr "Livrare"
 
+#, fuzzy
+msgctxt "field:party.address,warehouses:"
+msgid "Warehouses"
+msgstr "Depozit"
+
 msgctxt "field:party.contact_mechanism,delivery:"
 msgid "Delivery"
 msgstr "Livrare"
@@ -14,6 +19,11 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr "Locaţia Client"
 
+#, fuzzy
+msgctxt "field:party.party,delivered_to_warehouses:"
+msgid "Delivered to Warehouses"
+msgstr "Depozit Curent"
+
 msgctxt "field:party.party,locations:"
 msgid "Locations"
 msgstr "Locaţii"
@@ -21,6 +31,16 @@ msgstr "Locaţii"
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Locaţia Furnizor"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,location:"
+msgid "Location"
+msgstr "Locație"
+
+#, fuzzy
+msgctxt "field:party.party-delivered_to-stock.location,party:"
+msgid "Party"
+msgstr "Parte"
 
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
@@ -253,6 +273,10 @@ msgstr "UM"
 msgctxt "field:stock.location,address:"
 msgid "Address"
 msgstr "Adresa"
+
+msgctxt "field:stock.location,allow_pickup:"
+msgid "Allow Pickup"
+msgstr ""
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -811,6 +835,11 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Spre Locație"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,warehouse:"
+msgid "Warehouse"
+msgstr "Depozit"
+
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Primit De"
@@ -971,6 +1000,11 @@ msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Companie"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,contact_address:"
+msgid "Contact Address"
+msgstr "Adresa de Contact"
+
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
 msgstr "Client"
@@ -978,10 +1012,6 @@ msgstr "Client"
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
 msgstr "Locaţia Client"
-
-msgctxt "field:stock.shipment.out.return,delivery_address:"
-msgid "Delivery Address"
-msgstr "Adresa de Livrare"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
@@ -1569,13 +1599,14 @@ msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
 msgstr "Compania cu care este asociată expedierea."
 
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,contact_address:"
+msgid "The address the customer can be contacted at."
+msgstr "Adresa la care poate fi contactat clientul."
+
 msgctxt "help:stock.shipment.out.return,customer:"
 msgid "The party that purchased the stock."
 msgstr "Partea care a achiziţionat stocul."
-
-msgctxt "help:stock.shipment.out.return,delivery_address:"
-msgid "The address the customer can be contacted at."
-msgstr "Adresa la care poate fi contactat clientul."
 
 msgctxt "help:stock.shipment.out.return,effective_date:"
 msgid "When the stock was returned."
@@ -2505,6 +2536,11 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Configuration"
 msgstr "Configurare"
 
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,name:"
+msgid "Party Delivered to Warehouse"
+msgstr "Depozit Curent"
+
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
 msgstr "Locație Parte"
@@ -3214,6 +3250,21 @@ msgstr "Secvența Retur Expediere Furnizor"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Secvența Expediere Furnizor"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Cost"
+msgstr "Cost"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Move"
+msgstr "Mișcare"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Other Info"
+msgstr "Alte Informaţii"
 
 msgctxt "view:stock.products_by_locations:"
 msgid "Cost Value"
