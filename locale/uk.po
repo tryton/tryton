@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:sale.invoice.term,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:sale.invoice.term,relative_deltas:"
 msgid "Deltas"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:sale.invoice.term.relative_delta,month:"
 msgid "Month"
-msgstr "Bulan"
+msgstr ""
 
 msgctxt "field:sale.invoice.term.relative_delta,months:"
 msgid "Number of Months"

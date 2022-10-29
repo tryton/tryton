@@ -4,23 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_invoice_term:"
 msgid "Sale Invoice Term"
-msgstr ""
+msgstr "Termine di fatturazione della vendita"
 
 msgctxt "field:party.party.sale_method,sale_invoice_term:"
 msgid "Sale Invoice Term"
-msgstr ""
+msgstr "Termine di fatturazione della vendita"
 
 msgctxt "field:sale.configuration,sale_invoice_term:"
 msgid "Sale Invoice Term"
-msgstr ""
+msgstr "Termine di fatturazione della vendita"
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
 msgid "Sale Invoice Term"
-msgstr ""
+msgstr "Termine di fatturazione della vendita"
 
 msgctxt "field:sale.invoice.term,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:sale.invoice.term,relative_deltas:"
 msgid "Deltas"
