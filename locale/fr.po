@@ -38,6 +38,10 @@ msgctxt "field:sale.amendment.line,invoice_address:"
 msgid "Invoice Address"
 msgstr "Adresse de facturation"
 
+msgctxt "field:sale.amendment.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tiers de facturation"
+
 msgctxt "field:sale.amendment.line,line:"
 msgid "Line"
 msgstr "Ligne"

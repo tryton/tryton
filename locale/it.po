@@ -28,7 +28,7 @@ msgstr "Azione"
 
 msgctxt "field:sale.amendment.line,amendment:"
 msgid "Amendment"
-msgstr ""
+msgstr "Correzzione"
 
 msgctxt "field:sale.amendment.line,description:"
 msgid "Description"
@@ -37,6 +37,10 @@ msgstr "Descrizione"
 msgctxt "field:sale.amendment.line,invoice_address:"
 msgid "Invoice Address"
 msgstr "Indirizzo di fatturazione"
+
+msgctxt "field:sale.amendment.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "Controparte di fatturazione"
 
 msgctxt "field:sale.amendment.line,line:"
 msgid "Line"
@@ -56,7 +60,7 @@ msgstr "Prodotto"
 
 msgctxt "field:sale.amendment.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Categoria UdM prodotto"
 
 msgctxt "field:sale.amendment.line,quantity:"
 msgid "Quantity"
@@ -72,7 +76,7 @@ msgstr "Indirizzo di spedizione"
 
 msgctxt "field:sale.amendment.line,shipment_party:"
 msgid "Shipment Party"
-msgstr ""
+msgstr "Controparte di spedizione"
 
 msgctxt "field:sale.amendment.line,state:"
 msgid "State"
@@ -92,12 +96,11 @@ msgstr "Magazzino"
 
 msgctxt "field:sale.sale,amendments:"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_amendment_form"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_all"
@@ -114,29 +117,27 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validata"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_one_sale_at_time"
 msgid ""
 "You cannot validate more than one amendment at the same time for sale "
 "\"%(sale)s\"."
 msgstr ""
-"Non è possibile convalidare più di una modifica contemporaneamente per la "
+"Non è possibile verificare più di una correzione contemporaneamente per la "
 "vendita \"%(sale)s\"."
 
 msgctxt ""
 "model:ir.model.button,confirm:sale_amendment_validation_amendment_button"
 msgid "Are you sure you want to validate the amendments?"
-msgstr ""
+msgstr "Sei sicuro di voler verificare le correzioni?"
 
 msgctxt ""
 "model:ir.model.button,string:sale_amendment_validation_amendment_button"
 msgid "Validate"
-msgstr ""
+msgstr "Verifica"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
 msgctxt "model:res.group,name:group_sale_amendment"
 msgid "Sale Amendment"
@@ -148,7 +149,7 @@ msgstr "Modifiche sulla vendita"
 
 msgctxt "model:sale.amendment.line,name:"
 msgid "Sale Amendment Line"
-msgstr ""
+msgstr "Riga di correzione della vendita"
 
 msgctxt "selection:sale.amendment,state:"
 msgid "Draft"
@@ -156,11 +157,11 @@ msgstr "Bozza"
 
 msgctxt "selection:sale.amendment,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Verificato"
 
 msgctxt "selection:sale.amendment.line,action:"
 msgid "Change Line"
-msgstr ""
+msgstr "Cambia riga"
 
 msgctxt "selection:sale.amendment.line,action:"
 msgid "Change Parties and Addresses"
