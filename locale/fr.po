@@ -69,7 +69,3 @@ msgctxt ""
 "model:account.statement.origin.information,string:information_second_reference"
 msgid "Second Reference"
 msgstr "Seconde référence"
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid "AEB Norm 43"
-msgstr "AEB Norme 43"
