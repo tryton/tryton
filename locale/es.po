@@ -38,6 +38,10 @@ msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:sale.sale,coupon_parties:"
+msgid "Coupon Parties"
+msgstr "Terceros de los cupones"
+
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "Cupones"

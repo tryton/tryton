@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
 msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
@@ -37,6 +37,10 @@ msgstr ""
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Numero"
+
+msgctxt "field:sale.sale,coupon_parties:"
+msgid "Coupon Parties"
+msgstr ""
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
