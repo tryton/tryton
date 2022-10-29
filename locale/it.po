@@ -78,7 +78,3 @@ msgctxt ""
 "model:account.statement.origin.information,string:information_transaction_transaction"
 msgid "Transaction"
 msgstr "Transazione"
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid "CODA"
-msgstr "CODA"
