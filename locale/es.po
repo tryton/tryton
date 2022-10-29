@@ -8,11 +8,11 @@ msgstr "Reglas de abastecimiento"
 
 msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
-msgstr "Período de suministro"
+msgstr "Periodo de suministro"
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
-msgstr "Período de suministro"
+msgstr "Periodo de suministro"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
