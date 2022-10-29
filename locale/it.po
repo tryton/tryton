@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 msgctxt "field:stock.quantity.early_plan,planned_date:"
 msgid "Planned Date"
@@ -60,11 +60,11 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 msgctxt "field:stock.quantity.early_plan.generate.start,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Magazzini"
 
 msgctxt "help:stock.quantity.early_plan.generate.start,warehouses:"
 msgid "If empty all warehouses are used."

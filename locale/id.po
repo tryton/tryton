@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:stock.quantity.early_plan,earlier_date:"
 msgid "Earlier Date"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.quantity.early_plan,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:stock.quantity.early_plan,planned_date:"
 msgid "Planned Date"
@@ -95,7 +95,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:quantity_early_plan_close_button"
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 msgctxt "model:ir.model.button,string:quantity_early_plan_ignore_button"
 msgid "Ignore"
@@ -107,11 +107,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:quantity_early_plan_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Proses"
 
 msgctxt "model:ir.rule.group,name:rule_group_quantity_early_plan_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_form"
 msgid "Quantity Early Planning"
@@ -151,11 +151,11 @@ msgstr ""
 
 msgctxt "view:stock.quantity.early_plan:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
 msgctxt "wizard_button:stock.quantity.early_plan.generate,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgctxt "wizard_button:stock.quantity.early_plan.generate,start,generate:"
 msgid "Generate"
