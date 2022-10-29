@@ -76,12 +76,10 @@ msgctxt "field:account.reporting.vat_book_es,invoice:"
 msgid "Invoice"
 msgstr "Faktur"
 
-#, fuzzy
 msgctxt "field:account.reporting.vat_book_es,invoice_date:"
 msgid "Invoice Date"
-msgstr "Tanggal Penulisan"
+msgstr "Tanggal Faktur"
 
-#, fuzzy
 msgctxt "field:account.reporting.vat_book_es,party:"
 msgid "Party"
 msgstr "Pihak"
@@ -100,7 +98,7 @@ msgstr ""
 
 msgctxt "field:account.reporting.vat_book_es,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 #, fuzzy
 msgctxt "field:account.reporting.vat_book_es,tax_amount:"
@@ -121,15 +119,13 @@ msgctxt "field:account.reporting.vat_book_es.context,es_vat_book_type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.reporting.vat_book_es.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Tahun Fiskal"
 
-#, fuzzy
 msgctxt "field:account.reporting.vat_book_es.context,start_period:"
 msgid "Start Period"
-msgstr "Periode"
+msgstr "Periode Awal"
 
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
