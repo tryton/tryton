@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:ir.cron-stock.warehouse,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:product.configuration,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:product.configuration.cost_price_warehouse,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt ""
 "field:product.configuration.cost_price_warehouse,cost_price_warehouse:"
@@ -33,7 +33,7 @@ msgstr ""
 
 msgctxt "field:product.cost_price,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:product.cost_price,warehouse_required:"
 msgid "Warehouse Required"
@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "field:product.cost_price.revision,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:product.cost_price.revision,warehouse_required:"
 msgid "Warehouse Required"
