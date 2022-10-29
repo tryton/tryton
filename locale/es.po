@@ -104,7 +104,7 @@ msgid ""
 "move \"%(move)s\" in a closed period."
 msgstr ""
 "No puede modificar las fechas de caducidad del lote \"%(lot)s\" porque se "
-"utiliza en el movimento \"%(move)s\" en un período cerrado."
+"utiliza en el movimento \"%(move)s\" en un periodo cerrado."
 
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."

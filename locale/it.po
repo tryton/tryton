@@ -240,4 +240,4 @@ msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Lot"
-msgstr ""
+msgstr "Lotto"
