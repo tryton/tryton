@@ -4,71 +4,71 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Aset Tetap"
+msgstr ""
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Aset Tetap"
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr ""
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.asset,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "Baris Faktur Pelanggan"
+msgstr ""
 
 msgctxt "field:account.asset,depreciated_amount:"
 msgid "Depreciated Amount"
-msgstr "Jumlah Penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset,depreciating_value:"
 msgid "Depreciating Value"
-msgstr "Nilai Penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Metode Penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Tanggal Akhir"
+msgstr ""
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Frekuensi"
+msgstr ""
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr ""
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "Perpindahan Akun"
+msgstr ""
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr ""
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Tanggal Pembelian"
+msgstr ""
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "Nilai Sisa"
+msgstr ""
 
 msgctxt "field:account.asset,revisions:"
 msgid "Revisions"
@@ -84,11 +84,11 @@ msgstr ""
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "Tanggal Awal"
+msgstr ""
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "Nilai"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
@@ -112,23 +112,23 @@ msgstr ""
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Perpindahan"
+msgstr ""
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "Akumulasi penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Nilai yang Diperoleh"
+msgstr ""
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "Nilai sebenarnya"
+msgstr ""
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
@@ -136,11 +136,11 @@ msgstr ""
 
 msgctxt "field:account.asset.line,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
@@ -148,67 +148,63 @@ msgstr ""
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "Penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "Perpindahan Akun"
+msgstr ""
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Tanggal Akhir"
+msgstr ""
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Tanggal Awal"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset.revision,asset:"
 msgid "Asset"
-msgstr "Aktiva"
+msgstr ""
 
 msgctxt "field:account.asset.revision,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.asset.revision,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset.revision,end_date:"
 msgid "End Date"
-msgstr "Tanggal Akhir"
+msgstr ""
 
 msgctxt "field:account.asset.revision,origin:"
 msgid "Origin"
-msgstr "Asal"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset.revision,residual_value:"
 msgid "Residual Value"
-msgstr "Nilai Sisa"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset.revision,value:"
 msgid "Asset Value"
-msgstr "Nilai Aset"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "Rekening Rekanan"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "Akun Penyusutan"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
@@ -216,11 +212,11 @@ msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "Tanggal Penyusutan Berikutnya"
+msgstr ""
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr "Bulan"
+msgstr ""
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
@@ -228,7 +224,7 @@ msgstr ""
 
 msgctxt "field:account.configuration,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Frekuensi Penyusutan Aset"
+msgstr ""
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -236,7 +232,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr "Bulan"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
@@ -244,15 +240,15 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
 msgid "Asset Depreciation Frequency"
-msgstr "Frekuensi Penyusutan Aset"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -260,7 +256,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -398,11 +394,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Aset-Aset"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Tabel Penyusutan"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
@@ -426,7 +422,7 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
@@ -474,16 +470,15 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Tutup"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:asset_draft_button"
 msgid "Draft"
-msgstr "Rancangan"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
@@ -493,10 +488,9 @@ msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_asset_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -508,11 +502,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Aset-Aset"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Aset-Aset"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
@@ -524,27 +518,27 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
-msgstr "("
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
-msgstr ")"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
-msgstr "+"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "Nilai sebenarnya"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
@@ -556,7 +550,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Aset-Aset"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
@@ -564,7 +558,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Perusahaan:"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
@@ -580,7 +574,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Kepada:"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
@@ -600,15 +594,15 @@ msgstr ""
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "Bulanan"
+msgstr ""
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "Tahunan"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "Tutup"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
@@ -620,39 +614,39 @@ msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
-msgstr "April"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr "Agustus"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr "Desember"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
-msgstr "Februari"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "January"
-msgstr "Januari"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "July"
-msgstr "Juli"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "June"
-msgstr "Juni"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr "Maret"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
-msgstr "Mei"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
@@ -660,11 +654,11 @@ msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
-msgstr "Oktober"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr "September"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
@@ -676,51 +670,51 @@ msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
-msgstr "April"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr "Agustus"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr "Desember"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
-msgstr "Februari"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "January"
-msgstr "Januari"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "July"
-msgstr "Juli"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "June"
-msgstr "Juni"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr "Maret"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
-msgstr "Mei"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "November"
-msgstr "November"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "October"
-msgstr "Oktober"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "September"
-msgstr "September"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
@@ -740,11 +734,11 @@ msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Baris"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Info Lain"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
@@ -756,11 +750,11 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Depreciation Frequency"
-msgstr "Frekuensi Penyusutan"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Urutan"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
@@ -768,32 +762,32 @@ msgstr ""
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "Cetak"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "OK"
+msgstr ""

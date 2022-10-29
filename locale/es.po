@@ -449,7 +449,7 @@ msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
 "still have lines without move."
 msgstr ""
-"No se puede cerrar el período \"%(period)s\" porqué algunos activos "
+"No se puede cerrar el periodo \"%(period)s\" porque algunos activos "
 "\"%(assets)s\" todavía tienen líneas sin asiento."
 
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"

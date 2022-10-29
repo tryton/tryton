@@ -186,7 +186,7 @@ msgstr "Data fine"
 
 msgctxt "field:account.asset.revision,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 #, fuzzy
 msgctxt "field:account.asset.revision,residual_value:"
