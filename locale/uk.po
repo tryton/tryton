@@ -16,19 +16,19 @@ msgstr ""
 
 msgctxt "field:stock.package,children:"
 msgid "Children"
-msgstr "Cabang"
+msgstr ""
 
 msgctxt "field:stock.package,code:"
 msgid "Code"
-msgstr "Kode"
+msgstr ""
 
 msgctxt "field:stock.package,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Perpindahan"
+msgstr ""
 
 msgctxt "field:stock.package,packaging_height:"
 msgid "Packaging Height"
@@ -72,7 +72,7 @@ msgstr ""
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Induk"
+msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -88,7 +88,7 @@ msgstr ""
 
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:stock.package.type,packaging_height:"
 msgid "Packaging Height"
@@ -230,7 +230,7 @@ msgstr ""
 
 msgctxt "selection:stock.package,state:"
 msgid "Open"
-msgstr "Buka"
+msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Package"
@@ -238,7 +238,7 @@ msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Sequence"
-msgstr "Urutan"
+msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Measurements"

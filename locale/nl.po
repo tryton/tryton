@@ -28,7 +28,7 @@ msgstr "Bedrijf"
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Boekingen/bewegingen"
+msgstr "Mutaties"
 
 msgctxt "field:stock.package,packaging_height:"
 msgid "Packaging Height"
@@ -76,7 +76,7 @@ msgstr "Bovenliggend niveau"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
-msgstr "levering"
+msgstr "Levering"
 
 msgctxt "field:stock.package,state:"
 msgid "State"
@@ -132,19 +132,19 @@ msgstr "Maateenheid breedte verpakking"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
-msgstr "pakketten"
+msgstr "Pakketten"
 
 msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
-msgstr "pakketten"
+msgstr "Pakketten"
 
 msgctxt "field:stock.shipment.out,packages:"
 msgid "Packages"
-msgstr "pakketten"
+msgstr "Pakketten"
 
 msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
-msgstr "pakketten"
+msgstr "Pakketten"
 
 msgctxt "help:stock.package,packaging_height:"
 msgid "The height of the package."
@@ -160,7 +160,7 @@ msgstr "Het volume van de verpakking."
 
 msgctxt "help:stock.package,packaging_weight:"
 msgid "The weight of the package when empty."
-msgstr "Het gewicht van het pakket wanneer het leeg is."
+msgstr "Het gewicht van de lege verpakking."
 
 msgctxt "help:stock.package,packaging_width:"
 msgid "The width of the package."
@@ -180,7 +180,7 @@ msgstr "Het volume van de verpakking."
 
 msgctxt "help:stock.package.type,packaging_weight:"
 msgid "The weight of the package when empty."
-msgstr "Het gewicht van het pakket wanneer het leeg is."
+msgstr "Het gewicht van de lege verpakking."
 
 msgctxt "help:stock.package.type,packaging_width:"
 msgid "The width of the package."
@@ -188,12 +188,12 @@ msgstr "De breedte van de verpakking."
 
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Pakkettypen"
+msgstr "Pakket Soorten"
 
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
-"Om verzending \"%(shipment)s\" te verwerken, moet u alle bewegingen "
+"Om zending \"%(shipment)s\" te verwerken, moet u alle voorraadmutaties "
 "inpakken."
 
 msgctxt "model:ir.message,text:msg_package_volume_too_small"
@@ -210,23 +210,23 @@ msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr "verpakking voorraad"
+msgstr "Voorraad Verpakking"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr "verpakking voorraad"
+msgstr "Voorraad Verpakking"
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Pakkettypen"
+msgstr "Pakket Soorten"
 
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"
-msgstr "verpakking voorraad"
+msgstr "Voorraad Verpakking"
 
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
-msgstr "Type voorraadpakket"
+msgstr "Voorraad Pakket Soort"
 
 msgctxt "selection:stock.package,state:"
 msgid "Closed"
