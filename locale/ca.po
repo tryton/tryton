@@ -487,6 +487,50 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+msgctxt "field:purchase.reporting.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:purchase.reporting.context,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:purchase.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:purchase.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:purchase.reporting.product,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.reporting.product,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Producte proveïdor"
+
+msgctxt "field:purchase.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Producte proveïdor"
+
+msgctxt "field:purchase.reporting.supplier,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr "Devolució proveïdor"
@@ -613,6 +657,30 @@ msgstr "Compres"
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
 msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Purchases per Product"
+msgstr "Compres per producte"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Purchases per Product"
+msgstr "Compres per producte"
+
+msgctxt "model:ir.action,name:act_reporting_supplier"
+msgid "Purchases per Supplier"
+msgstr "Compres per proveïdor"
+
+msgctxt "model:ir.action,name:act_reporting_supplier_time_series"
+msgid "Purchases per Supplier"
+msgstr "Compres per proveïdor"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -743,6 +811,38 @@ msgstr ""
 "Per facturar la compra \"%(purchase)s\" heu de definir un compte de despeses"
 " pel producte \"%(product)s\"."
 
+msgctxt "model:ir.message,text:msg_purchase_reporting_company"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_date"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense_trend"
+msgid "Expense Trend"
+msgstr "Tendència despeses"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number_help"
+msgid "Number of purchases."
+msgstr "Nombre de compres."
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -799,6 +899,33 @@ msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_supplier_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_supplier_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
 msgstr "Compres"
@@ -830,6 +957,10 @@ msgstr "Compres"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Informes"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
+msgid "Purchases"
+msgstr "Compres"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Associated to Purchases"
@@ -902,6 +1033,34 @@ msgstr "Compra - Factura ignorada"
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Compra - Factura recreada"
+
+msgctxt "model:purchase.reporting.context,name:"
+msgid "Purchase Reporting Context"
+msgstr "Context informe de compres"
+
+msgctxt "model:purchase.reporting.main,name:"
+msgid "Purchase Reporting"
+msgstr "Informes de compres"
+
+msgctxt "model:purchase.reporting.main.time_series,name:"
+msgid "Purchase Reporting"
+msgstr "Informes de compres"
+
+msgctxt "model:purchase.reporting.product,name:"
+msgid "Purchase Reporting per Product"
+msgstr "Informe de compres per Producte"
+
+msgctxt "model:purchase.reporting.product.time_series,name:"
+msgid "Purchase Reporting per Product"
+msgstr "Informe de compres per Producte"
+
+msgctxt "model:purchase.reporting.supplier,name:"
+msgid "Purchase Reporting per Supplier"
+msgstr "Informe de compres per Proveïdor"
+
+msgctxt "model:purchase.reporting.supplier.time_series,name:"
+msgid "Purchase Reporting per Supplier"
+msgstr "Informe de compres per Proveïdor"
 
 msgctxt "model:purchase.return_purchase.start,name:"
 msgid "Return Purchase"
@@ -1075,6 +1234,18 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Pressupost"
 
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Year"
+msgstr "Any"
+
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
 msgstr "Ignorat"
@@ -1122,6 +1293,38 @@ msgstr "Informació addicional"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Compra"
+
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:purchase.reporting.main:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "view:purchase.reporting.main:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Number"
+msgstr "Número"
 
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"

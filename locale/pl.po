@@ -503,6 +503,60 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Zakup"
 
+#, fuzzy
+msgctxt "field:purchase.reporting.context,company:"
+msgid "Company"
+msgstr "Firma"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Z lokalizacji"
+
+msgctxt "field:purchase.reporting.context,period:"
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Data:"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magazyn"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product,product:"
+msgid "Product"
+msgstr "Produkt"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Dostawcy"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Produkt"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Dostawcy"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier,supplier:"
+msgid "Supplier"
+msgstr "Dostawca"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
+msgid "Supplier"
+msgstr "Dostawca"
+
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr "Zwrot do dostawcy"
@@ -633,6 +687,36 @@ msgid "Purchases"
 msgstr "Purchases"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Purchases"
+msgstr "Zakupy"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Purchases"
+msgstr "Zakupy"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Purchases per Product"
+msgstr "Cena zakupu"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Purchases per Product"
+msgstr "Cena zakupu"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_supplier"
+msgid "Purchases per Supplier"
+msgstr "Cena zakupu"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_supplier_time_series"
+msgid "Purchases per Supplier"
+msgstr "Cena zakupu"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Returns"
@@ -757,6 +841,41 @@ msgid ""
 "product \"%(product)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_company"
+msgid "Company"
+msgstr "Firma"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
+msgid "Currency"
+msgstr "Waluta"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_date"
+msgid "Date"
+msgstr "Data:"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense"
+msgid "Expense"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense_trend"
+msgid "Expense Trend"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number"
+msgid "#"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number_help"
+msgid "Number of purchases."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
+msgid "Time Series"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -809,6 +928,33 @@ msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_supplier_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_supplier_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -846,6 +992,11 @@ msgstr "Purchases"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
+msgid "Purchases"
+msgstr "Zakupy"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
@@ -924,6 +1075,37 @@ msgstr "Zakup - Zignorowana faktura"
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Zakup - Zignorowana faktura"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.context,name:"
+msgid "Purchase Reporting Context"
+msgstr "Konfiguracja zakupu"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.main,name:"
+msgid "Purchase Reporting"
+msgstr "Wiersz zakupu"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.main.time_series,name:"
+msgid "Purchase Reporting"
+msgstr "Wiersz zakupu"
+
+msgctxt "model:purchase.reporting.product,name:"
+msgid "Purchase Reporting per Product"
+msgstr ""
+
+msgctxt "model:purchase.reporting.product.time_series,name:"
+msgid "Purchase Reporting per Product"
+msgstr ""
+
+msgctxt "model:purchase.reporting.supplier,name:"
+msgid "Purchase Reporting per Supplier"
+msgstr ""
+
+msgctxt "model:purchase.reporting.supplier.time_series,name:"
+msgid "Purchase Reporting per Supplier"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:purchase.return_purchase.start,name:"
@@ -1105,6 +1287,18 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Quotation"
 
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Day"
+msgstr ""
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Month"
+msgstr ""
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Year"
+msgstr ""
+
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
 msgstr "Zignorowano"
@@ -1154,6 +1348,42 @@ msgstr "Inne informacje"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Zakup"
+
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:purchase.reporting.main:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.main:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Number"
+msgstr "Numer"
+
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Number"
+msgstr "Numer"
 
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"

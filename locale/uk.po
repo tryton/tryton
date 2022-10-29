@@ -6,10 +6,9 @@ msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "field:party.party,customer_code:"
 msgid "Customer Code"
@@ -19,15 +18,13 @@ msgctxt "field:party.party,customer_codes:"
 msgid "Customer Codes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,supplier_currencies:"
 msgid "Supplier Currencies"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,supplier_currency:"
 msgid "Supplier Currency"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "field:party.party,supplier_lead_time:"
 msgid "Lead Time"
@@ -53,10 +50,9 @@ msgctxt "field:party.party.supplier_currency,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.supplier_currency,supplier_currency:"
 msgid "Supplier Currency"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "field:party.party.supplier_lead_time,company:"
 msgid "Company"
@@ -215,10 +211,9 @@ msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
@@ -292,19 +287,17 @@ msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,party:"
 msgid "Supplier"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,prices:"
 msgid "Prices"
-msgstr "Prices"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
@@ -346,10 +339,9 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,confirmed_by:"
 msgid "Confirmed By"
-msgstr "Confirmed"
+msgstr ""
 
 msgctxt "field:purchase.purchase,contact:"
 msgid "Contact"
@@ -375,19 +367,17 @@ msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoice_party:"
 msgid "Invoice Party"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "field:purchase.purchase,invoices_ignored:"
 msgid "Ignored Invoices"
@@ -429,10 +419,9 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
-msgstr "Quote"
+msgstr ""
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -446,10 +435,9 @@ msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr ""
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
@@ -483,25 +471,21 @@ msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "field:purchase.reporting.context,company:"
 msgid "Company"
@@ -523,44 +507,37 @@ msgctxt "field:purchase.reporting.context,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product,product:"
 msgid "Product"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product,product_supplier:"
 msgid "Supplier's Product"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.supplier,supplier:"
 msgid "Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
@@ -632,37 +609,35 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Parties associated to Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Suppliers"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
-msgstr "Prices"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_move_relate"
 msgid "Moves"
@@ -670,21 +645,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main_time_series"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Purchases per Product"
@@ -694,60 +667,55 @@ msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Purchases per Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_supplier"
 msgid "Purchases per Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_supplier_time_series"
 msgid "Purchases per Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Returns"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_return_purchase"
 msgid "Return Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
@@ -757,12 +725,12 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
@@ -824,10 +792,9 @@ msgctxt "model:ir.message,text:msg_purchase_reporting_company"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
 msgid "Currency"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_date"
 msgid "Date"
@@ -866,36 +833,36 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
 msgid "User in companies"
@@ -932,71 +899,61 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Налаштування"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Suppliers"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Звітність"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Associated to Purchases"
-msgstr "Parties associated to Purchases"
+msgstr ""
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:party.party.supplier_currency,name:"
 msgid "Party Supplier Currency"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:party.party.supplier_lead_time,name:"
 msgid "Supplier Lead Time"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgstr ""
 
 msgctxt "model:purchase.configuration.purchase_method,name:"
 msgid "Purchase Configuration Purchase Method"
@@ -1006,15 +963,13 @@ msgctxt "model:purchase.configuration.sequence,name:"
 msgid "Purchase Configuration Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
@@ -1032,19 +987,17 @@ msgctxt "model:purchase.line-recreated-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
 msgid "Purchase - Ignored Invoice"
@@ -1054,20 +1007,19 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.reporting.context,name:"
 msgid "Purchase Reporting Context"
-msgstr "Purchase Configuration"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:purchase.reporting.main,name:"
 msgid "Purchase Reporting"
-msgstr "Purchase Configuration"
+msgstr "Звітність"
 
 #, fuzzy
 msgctxt "model:purchase.reporting.main.time_series,name:"
 msgid "Purchase Reporting"
-msgstr "Purchase Configuration"
+msgstr "Звітність"
 
 msgctxt "model:purchase.reporting.product,name:"
 msgid "Purchase Reporting per Product"
@@ -1085,24 +1037,21 @@ msgctxt "model:purchase.reporting.supplier.time_series,name:"
 msgid "Purchase Reporting per Supplier"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.return_purchase.start,name:"
 msgid "Return Purchase"
-msgstr "Purchases"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr ""
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
-msgstr "Purchase Administrator"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid ":"
-msgstr ":"
+msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
@@ -1236,34 +1185,29 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Cancelled"
-msgstr "Cancel"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr "Confirm"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
 msgctxt "selection:purchase.reporting.context,period:"
 msgid "Day"
@@ -1285,10 +1229,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Supplier"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Suppliers"
@@ -1322,10 +1265,9 @@ msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "view:purchase.reporting.main.time_series:"
 msgid "Expense"
@@ -1363,39 +1305,34 @@ msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.modify_header,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.return_purchase,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.return_purchase,start,return_:"
 msgid "Return"
-msgstr "Returns"
+msgstr ""

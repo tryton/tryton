@@ -233,11 +233,11 @@ msgstr ""
 
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Ringkasan"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
 msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
@@ -370,11 +370,11 @@ msgstr "Deskripsi"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Alamat Faktur"
 
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metode Faktur"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,invoice_party:"
@@ -387,11 +387,11 @@ msgstr "Status Faktur"
 
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "field:purchase.purchase,invoices_ignored:"
 msgid "Ignored Invoices"
-msgstr "Faktur-faktur yang Diabaikan"
+msgstr "Faktur-Faktur yang Diabaikan"
 
 msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
@@ -411,7 +411,7 @@ msgstr "Nomor"
 
 msgctxt "field:purchase.purchase,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -497,6 +497,60 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Pembelian"
 
+#, fuzzy
+msgctxt "field:purchase.reporting.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Tanggal Penulisan"
+
+msgctxt "field:purchase.reporting.context,period:"
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Tanggal:"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product,product:"
+msgid "Product"
+msgstr "Produk"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Pemasok"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Produk"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Pemasok"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier,supplier:"
+msgid "Supplier"
+msgstr "Pemasok"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
+msgid "Supplier"
+msgstr "Pemasok"
+
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr ""
@@ -575,7 +629,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Faktur-faktur"
+msgstr "Faktur-Faktur"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
@@ -590,7 +644,6 @@ msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -619,6 +672,34 @@ msgstr ""
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Purchases"
+msgstr "Pembelian"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Purchases"
+msgstr "Pembelian"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Purchases per Product"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Purchases per Product"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_supplier"
+msgid "Purchases per Supplier"
+msgstr "Pemasok Produk"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_supplier_time_series"
+msgid "Purchases per Supplier"
+msgstr "Pemasok Produk"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -734,6 +815,41 @@ msgid ""
 "product \"%(product)s\"."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_company"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_reporting_date"
+msgid "Date"
+msgstr "Tanggal:"
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense"
+msgid "Expense"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_expense_trend"
+msgid "Expense Trend"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number"
+msgid "#"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_number_help"
+msgid "Number of purchases."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_reporting_time_series"
+msgid "Time Series"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
@@ -788,6 +904,39 @@ msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_supplier_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_supplier_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
 msgstr "Pembelian"
@@ -810,7 +959,6 @@ msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchases"
 msgstr "Pembelian"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -822,6 +970,11 @@ msgstr "Pembelian"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Pelaporan"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
+msgid "Purchases"
+msgstr "Pembelian"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
@@ -896,6 +1049,37 @@ msgstr "Pembelian - Faktur yang Diabaikan"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:purchase.reporting.context,name:"
+msgid "Purchase Reporting Context"
+msgstr "Konfigurasi Pembelian"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.main,name:"
+msgid "Purchase Reporting"
+msgstr "Baris Pembelian"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.main.time_series,name:"
+msgid "Purchase Reporting"
+msgstr "Baris Pembelian"
+
+msgctxt "model:purchase.reporting.product,name:"
+msgid "Purchase Reporting per Product"
+msgstr ""
+
+msgctxt "model:purchase.reporting.product.time_series,name:"
+msgid "Purchase Reporting per Product"
+msgstr ""
+
+msgctxt "model:purchase.reporting.supplier,name:"
+msgid "Purchase Reporting per Supplier"
+msgstr ""
+
+msgctxt "model:purchase.reporting.supplier.time_series,name:"
+msgid "Purchase Reporting per Supplier"
 msgstr ""
 
 #, fuzzy
@@ -1072,6 +1256,18 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr ""
 
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Day"
+msgstr ""
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Month"
+msgstr ""
+
+msgctxt "selection:purchase.reporting.context,period:"
+msgid "Year"
+msgstr ""
+
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
 msgstr ""
@@ -1106,11 +1302,11 @@ msgstr "Umum"
 
 msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Catatan-Catatan"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
@@ -1119,6 +1315,42 @@ msgstr "Info Lain"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Pembelian"
+
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.main.time_series:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "view:purchase.reporting.main:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.main:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.product.time_series:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Expense"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:purchase.reporting.supplier.time_series:"
+msgid "Number"
+msgstr "Nomor"
 
 msgctxt "view:purchase.return_purchase.start:"
 msgid "Are you sure to return these/this purchase(s)?"
