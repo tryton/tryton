@@ -4,11 +4,24 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,relations:"
 msgid "Relations"
+msgstr "Relazioni"
+
+msgctxt "field:party.relation,active:"
+msgid "Active"
+msgstr "Attivo"
+
+msgctxt "field:party.relation,end_date:"
+msgid "End Date"
 msgstr ""
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
+msgstr "Da"
+
+#, fuzzy
+msgctxt "field:party.relation,start_date:"
+msgid "Start Date"
+msgstr "Utente scrittura"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -19,9 +32,22 @@ msgctxt "field:party.relation,type:"
 msgid "Type"
 msgstr "Tipo"
 
+msgctxt "field:party.relation.all,active:"
+msgid "Active"
+msgstr "Attivo"
+
+msgctxt "field:party.relation.all,end_date:"
+msgid "End Date"
+msgstr ""
+
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
+msgstr "Da"
+
+#, fuzzy
+msgctxt "field:party.relation.all,start_date:"
+msgid "Start Date"
+msgstr "Utente scrittura"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -52,19 +78,17 @@ msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Relations"
-msgstr "Relation Types"
+msgstr "Relazioni"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
 msgstr "Relation Types"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Relations"
-msgstr "Relation Types"
+msgstr "Relazioni"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
@@ -87,4 +111,4 @@ msgstr "Relation Types"
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr ""
+msgstr "Relazioni"

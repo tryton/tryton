@@ -6,9 +6,21 @@ msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr "Relaciones"
 
+msgctxt "field:party.relation,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:party.relation,end_date:"
+msgid "End Date"
+msgstr "Fecha fin"
+
 msgctxt "field:party.relation,from_:"
 msgid "From"
 msgstr "De"
+
+msgctxt "field:party.relation,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicio"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -18,9 +30,21 @@ msgctxt "field:party.relation,type:"
 msgid "Type"
 msgstr "Tipo"
 
+msgctxt "field:party.relation.all,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:party.relation.all,end_date:"
+msgid "End Date"
+msgstr "Fecha final"
+
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
 msgstr "De"
+
+msgctxt "field:party.relation.all,start_date:"
+msgid "Start Date"
+msgstr "Fecha de Inicio"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
