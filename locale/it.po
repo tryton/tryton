@@ -78,10 +78,9 @@ msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Selection"
 msgstr "scelta vettore"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Carrier"
+msgstr "Vettore"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
