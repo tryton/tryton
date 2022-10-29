@@ -48,18 +48,17 @@ msgid ""
 "Leave empty for no notification."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr "DPD Credentials"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr "Create DPD Shipping for Packages"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
@@ -85,7 +84,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr ""
 
 msgctxt "selection:carrier,dpd_notification:"
 msgid "E-Mail"

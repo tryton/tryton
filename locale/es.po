@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:carrier,dpd_notification:"
+msgid "Notification"
+msgstr "Notificación"
+
 msgctxt "field:carrier,dpd_paper_format:"
 msgid "Paper Format"
 msgstr "Formato papel"
@@ -37,6 +41,14 @@ msgstr "Token"
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
 msgstr "Identificador de usuario"
+
+msgctxt "help:carrier,dpd_notification:"
+msgid ""
+"The preferred notification channel.\n"
+"Leave empty for no notification."
+msgstr ""
+"El canal de notificación preferido. \n"
+"Dejare en blanco para desactivar la notificación."
 
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
@@ -81,6 +93,14 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "Credenciales DPD"
+
+msgctxt "selection:carrier,dpd_notification:"
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+msgctxt "selection:carrier,dpd_notification:"
+msgid "SMS"
+msgstr "SMS"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"

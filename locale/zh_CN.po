@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:carrier,dpd_notification:"
+msgid "Notification"
+msgstr ""
+
 msgctxt "field:carrier,dpd_paper_format:"
 msgid "Paper Format"
 msgstr ""
@@ -37,6 +41,12 @@ msgstr ""
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
+msgstr ""
+
+msgctxt "help:carrier,dpd_notification:"
+msgid ""
+"The preferred notification channel.\n"
+"Leave empty for no notification."
 msgstr ""
 
 #, fuzzy
@@ -77,6 +87,14 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "DPD Credentials"
+
+msgctxt "selection:carrier,dpd_notification:"
+msgid "E-Mail"
+msgstr ""
+
+msgctxt "selection:carrier,dpd_notification:"
+msgid "SMS"
+msgstr ""
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
