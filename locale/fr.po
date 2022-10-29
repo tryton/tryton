@@ -234,6 +234,10 @@ msgctxt "view:stock.configuration:"
 msgid "Weight"
 msgstr "Poids"
 
+msgctxt "view:stock.move:"
+msgid "Measurements"
+msgstr "Mesures"
+
 msgctxt "view:stock.shipment.in.return:"
 msgid "Measurements"
 msgstr "Mesures"

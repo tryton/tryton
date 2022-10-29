@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:stock.configuration.measurement,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:stock.configuration.measurement,measurement_volume_uom:"
 msgid "Measurement Volume Uom"
@@ -232,6 +232,10 @@ msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Weight"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Measurements"
 msgstr ""
 
 msgctxt "view:stock.shipment.in.return:"
