@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:product.shopify_inventory_item,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:product.template,shopify_uom:"
 msgid "Shopify UOM"
@@ -43,7 +43,7 @@ msgid "Shipment"
 msgstr ""
 
 msgctxt "field:web.shop,shopify_password:"
-msgid "Password"
+msgid "Access Token"
 msgstr ""
 
 msgctxt "field:web.shop,shopify_payment_journals:"
@@ -56,7 +56,7 @@ msgstr ""
 
 msgctxt "field:web.shop,shopify_version:"
 msgid "Version"
-msgstr ""
+msgstr "Versi"
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
@@ -100,11 +100,11 @@ msgstr ""
 
 msgctxt "field:web.shop.shopify_payment_journal,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Toko"
 
 msgctxt "help:web.shop,shopify_webhook_endpoint_order:"
 msgid "The URL to be called by Shopify for Order events."
@@ -136,6 +136,10 @@ msgctxt "model:ir.message,text:msg_fulfillment_fail"
 msgid ""
 "Failed to save fulfillment for sale \"%(sale)s\" with error:\n"
 "%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
+msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"

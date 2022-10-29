@@ -43,8 +43,8 @@ msgid "Shipment"
 msgstr "Lieferung"
 
 msgctxt "field:web.shop,shopify_password:"
-msgid "Password"
-msgstr "Passwort"
+msgid "Access Token"
+msgstr "Zugangstoken"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
@@ -143,6 +143,12 @@ msgid ""
 msgstr ""
 "Beim Speichern der Auftragsabwicklung für den Verkauf \"%(sale)s\" ist folgender Fehler aufgetreten:\n"
 "%(error)s"
+
+msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
+msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
+msgstr ""
+"Fulfillment-Auftrag für %(quantity)s der Warenbewegung \"%(move)s\" konnte "
+"nicht gefunden werden."
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."

@@ -43,8 +43,8 @@ msgid "Shipment"
 msgstr "Albarán"
 
 msgctxt "field:web.shop,shopify_password:"
-msgid "Password"
-msgstr "Contraseña"
+msgid "Access Token"
+msgstr "Token de acceso"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
@@ -142,6 +142,12 @@ msgid ""
 msgstr ""
 "No se ha podido guardar el cumplimiento para la venta \"%(sale)s\" con el error:\n"
 "%(error)s"
+
+msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
+msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
+msgstr ""
+"No se ha podido encontrar una orden de cumplimiento para la cantidad "
+"%(quantity)s del movimiento \"%(move)s\"."
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."

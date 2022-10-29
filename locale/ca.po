@@ -43,8 +43,8 @@ msgid "Shipment"
 msgstr "Albarà"
 
 msgctxt "field:web.shop,shopify_password:"
-msgid "Password"
-msgstr "Contrasenya"
+msgid "Access Token"
+msgstr "Token d'accés"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
@@ -143,6 +143,12 @@ msgid ""
 msgstr ""
 "No s'ha pogut desar el compliment de la venda \"%(sale)s\" amb error:\n"
 "%(error)s"
+
+msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
+msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
+msgstr ""
+"No s'ha pogut trobar una orde de copliment per la quantitat \"%(quantity)s\""
+" del moviment \"%(move)s\"."
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."

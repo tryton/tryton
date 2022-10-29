@@ -43,7 +43,7 @@ msgid "Shipment"
 msgstr ""
 
 msgctxt "field:web.shop,shopify_password:"
-msgid "Password"
+msgid "Access Token"
 msgstr ""
 
 msgctxt "field:web.shop,shopify_payment_journals:"
@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Magazzini"
 
 msgctxt "field:web.shop,shopify_webhook_endpoint_order:"
 msgid "Webhook Order Endpoint"
@@ -136,6 +136,10 @@ msgctxt "model:ir.message,text:msg_fulfillment_fail"
 msgid ""
 "Failed to save fulfillment for sale \"%(sale)s\" with error:\n"
 "%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
+msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
