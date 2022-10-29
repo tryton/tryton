@@ -85,6 +85,22 @@ msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
 msgstr "Remessa"
 
+msgctxt "field:account.landed_cost.show,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:account.landed_cost.show,moves:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "field:account.landed_cost.show.move,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:account.landed_cost.show.move,move:"
+msgid "Move"
+msgstr ""
+
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
 msgstr "Custo de Recepção"
@@ -127,6 +143,16 @@ msgid "Landed Cost - Shipment"
 msgstr "Custo de Recepção - Remessa"
 
 #, fuzzy
+msgctxt "model:account.landed_cost.show,name:"
+msgid "Landed Cost Show"
+msgstr "Custo de Recepção"
+
+#, fuzzy
+msgctxt "model:account.landed_cost.show.move,name:"
+msgid "Landed Cost Show"
+msgstr "Custo de Recepção"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
 msgstr "Landed Costs"
@@ -135,6 +161,16 @@ msgstr "Landed Costs"
 msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
 msgid "Landed Costs"
 msgstr "Landed Costs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_landed_cost_post"
+msgid "Post Landed Cost"
+msgstr "Custo de Recepção"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_landed_cost_show"
+msgid "Show Landed Cost"
+msgstr "Custo de Recepção"
 
 #, fuzzy
 msgctxt ""
@@ -177,6 +213,10 @@ msgstr "Draft"
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr "Post"
+
+msgctxt "model:ir.model.button,string:landed_cost_show_button"
+msgid "Show"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_landed_cost_companies"
 msgid "User in companies"
@@ -221,3 +261,17 @@ msgstr "Custo de Recepção"
 msgctxt "view:account.configuration:"
 msgid "Sequence"
 msgstr "Sequência"
+
+#, fuzzy
+msgctxt "wizard_button:account.landed_cost.post,show,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:account.landed_cost.post,show,post:"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "wizard_button:account.landed_cost.show,show,end:"
+msgid "Close"
+msgstr ""
