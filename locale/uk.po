@@ -4,156 +4,156 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr "Groepen"
+msgstr ""
 
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr "selecteerbaar"
+msgstr ""
 
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr "Taxon"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
-msgstr "Cultivar"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr "Groep"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr "Onderliggend"
+msgstr ""
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr "Bovenliggend"
+msgstr ""
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr "Selecteerbaar"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Groups"
-msgstr "Groepen"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Groups"
-msgstr "Groepen"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
-msgstr "Cultivar"
+msgstr ""
 
 msgctxt "model:product.cultivar-product.cultivar.group,name:"
 msgid "Cultivar-CultivarGroup"
-msgstr "Cultivar-CultivarGroep"
+msgstr ""
 
 msgctxt "model:product.cultivar.group,name:"
 msgid "Cultivar Group"
-msgstr "Cultivar Groep"
+msgstr ""
 
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr "Taxon"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr "Klasse"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr "Divisie"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr "Domein"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr "Familie"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr "Formulier"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr "Geslacht"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr "Koninkrijk"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr "Orde"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
-msgstr "Afkomst"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr "Sectie"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr "Serie"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr "Soort"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr "Stam"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr "Variëteit"
+msgstr ""
