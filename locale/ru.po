@@ -22,12 +22,24 @@ msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
 msgstr ""
 
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_currency_used:"
+msgid "Cost Currency"
+msgstr ""
+
 msgctxt "field:stock.shipment.out,cost_edit:"
 msgid "Edit Cost"
 msgstr ""
 
 msgctxt "field:stock.shipment.out,cost_used:"
 msgid "Cost"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,carrier:"
@@ -38,12 +50,24 @@ msgctxt "field:stock.shipment.out.return,cost:"
 msgid "Cost"
 msgstr ""
 
+msgctxt "field:stock.shipment.out.return,cost_currency:"
+msgid "Cost Currency"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,cost_currency_used:"
+msgid "Cost Currency"
+msgstr ""
+
 msgctxt "field:stock.shipment.out.return,cost_edit:"
 msgid "Edit Cost"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,cost_used:"
 msgid "Cost"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
 msgstr ""
 
 msgctxt "help:carrier,shipment_cost_allocation_method:"

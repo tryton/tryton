@@ -22,6 +22,14 @@ msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
 msgstr "Coût"
 
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr "Devise du coût"
+
+msgctxt "field:stock.shipment.out,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Devise du coût"
+
 msgctxt "field:stock.shipment.out,cost_edit:"
 msgid "Edit Cost"
 msgstr "Modifier le coût"
@@ -29,6 +37,10 @@ msgstr "Modifier le coût"
 msgctxt "field:stock.shipment.out,cost_used:"
 msgid "Cost"
 msgstr "Coût"
+
+msgctxt "field:stock.shipment.out,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Coût d'expédition en lecture seule"
 
 msgctxt "field:stock.shipment.out.return,carrier:"
 msgid "Carrier"
@@ -38,6 +50,14 @@ msgctxt "field:stock.shipment.out.return,cost:"
 msgid "Cost"
 msgstr "Coût"
 
+msgctxt "field:stock.shipment.out.return,cost_currency:"
+msgid "Cost Currency"
+msgstr "Devise du coût"
+
+msgctxt "field:stock.shipment.out.return,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Devise du coût"
+
 msgctxt "field:stock.shipment.out.return,cost_edit:"
 msgid "Edit Cost"
 msgstr "Modifier le coût"
@@ -45,6 +65,10 @@ msgstr "Modifier le coût"
 msgctxt "field:stock.shipment.out.return,cost_used:"
 msgid "Cost"
 msgstr "Coût"
+
+msgctxt "field:stock.shipment.out.return,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Coût d'expédition en lecture seule"
 
 msgctxt "help:carrier,shipment_cost_allocation_method:"
 msgid "Method to allocate shipment cost."
