@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
-msgstr "Pemberitahuan Email"
+msgstr ""
 
 msgctxt "field:ir.trigger,notification_email_required:"
 msgid "Notification Email Required"
@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
-msgstr "Lampiran-Lampiran"
+msgstr ""
 
 msgctxt "field:notification.email,contact_mechanism:"
 msgid "Contact Mechanism"
@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:notification.email,content:"
 msgid "Content"
-msgstr "Kandungan"
+msgstr ""
 
 msgctxt "field:notification.email,fallback_recipients:"
 msgid "Recipients Fallback User"
@@ -36,15 +36,15 @@ msgstr ""
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
-msgstr "Dari"
+msgstr ""
 
 msgctxt "field:notification.email,model:"
 msgid "Model"
-msgstr "Model"
+msgstr ""
 
 msgctxt "field:notification.email,recipients:"
 msgid "Recipients"
-msgstr "Penerima"
+msgstr ""
 
 msgctxt "field:notification.email,recipients_hidden:"
 msgid "Hidden Recipients"
@@ -68,7 +68,7 @@ msgstr ""
 
 msgctxt "field:notification.email.attachment,model:"
 msgid "Model"
-msgstr "Model"
+msgstr ""
 
 msgctxt "field:notification.email.attachment,notification:"
 msgid "Notification"
@@ -76,16 +76,15 @@ msgstr ""
 
 msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
-msgstr "Laporan"
+msgstr ""
 
 msgctxt "field:notification.email.log,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:notification.email.log,notification:"
 msgid "Notification"
-msgstr "Pemberitahuan Email"
+msgstr ""
 
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
@@ -171,10 +170,9 @@ msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_notification_email_log_relate"
 msgid "Notification E-Mails"
-msgstr "Pemberitahuan Email"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
 msgid ""
@@ -186,10 +184,9 @@ msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:notification.email,name:"
 msgid "Email Notification"
-msgstr "Pemberitahuan Email"
+msgstr ""
 
 msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
@@ -199,11 +196,10 @@ msgctxt "model:notification.email.log,name:"
 msgid "Notification Email Log"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
-msgstr "Pemberitahuan Email"
+msgstr ""
 
 msgctxt "view:notification.email.log:"
 msgid "Time"
-msgstr "Waktu"
+msgstr ""
