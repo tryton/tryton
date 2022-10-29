@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.shipment_cost_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt ""
 "field:account.configuration.shipment_cost_sequence,shipment_cost_sequence:"
@@ -25,7 +25,7 @@ msgstr ""
 
 msgctxt "field:account.shipment_cost,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.shipment_cost,factors:"
 msgid "Factors"
@@ -37,7 +37,7 @@ msgstr ""
 
 msgctxt "field:account.shipment_cost,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nomor"
 
 msgctxt "field:account.shipment_cost,posted_date:"
 msgid "Posted Date"
@@ -69,6 +69,22 @@ msgstr ""
 
 msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment_cost:"
 msgid "Shipment Cost"
+msgstr ""
+
+msgctxt "field:account.shipment_cost.show,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:account.shipment_cost.show,shipments:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "field:account.shipment_cost.show.shipment,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipments"
 msgstr ""
 
 msgctxt "field:product.product,shipment_cost:"
@@ -111,12 +127,28 @@ msgctxt "model:account.shipment_cost-stock.shipment.out.return,name:"
 msgid "Shipment Cost - Shipment Return"
 msgstr ""
 
+msgctxt "model:account.shipment_cost.show,name:"
+msgid "Shipment Cost Show"
+msgstr ""
+
+msgctxt "model:account.shipment_cost.show.shipment,name:"
+msgid "Post Shipment Cost"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_shipment_cost_form"
 msgid "Shipment Costs"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_cost_form_shipment"
 msgid "Shipment Costs"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_post"
+msgid "Post Shipment Cost"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_show"
+msgid "Show Shipment Cost"
 msgstr ""
 
 msgctxt ""
@@ -156,6 +188,10 @@ msgctxt "model:ir.model.button,string:shipment_cost_post_button"
 msgid "Post"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:shipment_cost_show_button"
+msgid "Show"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_shipment_cost_companies"
 msgid "User in companies"
 msgstr ""
@@ -188,10 +224,30 @@ msgctxt "selection:account.shipment_cost,state:"
 msgid "Posted"
 msgstr ""
 
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment Return"
+msgstr ""
+
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Urutan"
 
 msgctxt "view:account.configuration:"
 msgid "Shipment Cost"
 msgstr ""
+
+msgctxt "wizard_button:account.shipment_cost.post,show,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.shipment_cost.post,show,post:"
+msgid "Post"
+msgstr ""
+
+msgctxt "wizard_button:account.shipment_cost.show,show,end:"
+msgid "Close"
+msgstr "Tutup"

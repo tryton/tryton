@@ -71,6 +71,22 @@ msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Lieferkosten"
 
+msgctxt "field:account.shipment_cost.show,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:account.shipment_cost.show,shipments:"
+msgid "Shipments"
+msgstr "Lieferungen"
+
+msgctxt "field:account.shipment_cost.show.shipment,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipments"
+msgstr "Lieferungen"
+
 msgctxt "field:product.product,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Lieferkosten"
@@ -111,6 +127,14 @@ msgctxt "model:account.shipment_cost-stock.shipment.out.return,name:"
 msgid "Shipment Cost - Shipment Return"
 msgstr "Lieferkosten - Warenrücknahmen"
 
+msgctxt "model:account.shipment_cost.show,name:"
+msgid "Shipment Cost Show"
+msgstr "Lieferkosten anzeigen"
+
+msgctxt "model:account.shipment_cost.show.shipment,name:"
+msgid "Post Shipment Cost"
+msgstr "Lieferkosten festschreiben"
+
 msgctxt "model:ir.action,name:act_shipment_cost_form"
 msgid "Shipment Costs"
 msgstr "Lieferkosten"
@@ -118,6 +142,14 @@ msgstr "Lieferkosten"
 msgctxt "model:ir.action,name:act_shipment_cost_form_shipment"
 msgid "Shipment Costs"
 msgstr "Lieferkosten"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_post"
+msgid "Post Shipment Cost"
+msgstr "Lieferkosten festschreiben"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_show"
+msgid "Show Shipment Cost"
+msgstr "Lieferkosten anzeigen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_all"
@@ -158,6 +190,10 @@ msgctxt "model:ir.model.button,string:shipment_cost_post_button"
 msgid "Post"
 msgstr "Festschreiben"
 
+msgctxt "model:ir.model.button,string:shipment_cost_show_button"
+msgid "Show"
+msgstr "Anzeigen"
+
 msgctxt "model:ir.rule.group,name:rule_group_shipment_cost_companies"
 msgid "User in companies"
 msgstr "Benutzer im Unternehmen"
@@ -190,6 +226,14 @@ msgctxt "selection:account.shipment_cost,state:"
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment"
+msgstr "Lieferung"
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment Return"
+msgstr "Warenrücknahme"
+
 msgctxt "view:account.configuration:"
 msgid "Sequence"
 msgstr "Nummernkreis"
@@ -197,3 +241,15 @@ msgstr "Nummernkreis"
 msgctxt "view:account.configuration:"
 msgid "Shipment Cost"
 msgstr "Lieferkosten"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,post:"
+msgid "Post"
+msgstr "Festschreiben"
+
+msgctxt "wizard_button:account.shipment_cost.show,show,end:"
+msgid "Close"
+msgstr "Schließen"
