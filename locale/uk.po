@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:account.budget,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:account.budget,root_lines:"
 msgid "Lines"
@@ -40,11 +40,11 @@ msgstr ""
 
 msgctxt "field:account.budget.copy.start,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:account.budget.copy.start,factor:"
 msgid "Factor"
-msgstr "Fattore"
+msgstr ""
 
 msgctxt "field:account.budget.copy.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:account.budget.copy.start,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:account.budget.line,account:"
 msgid "Account"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:account.budget.line,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr ""
 
 msgctxt "field:account.budget.line,current_name:"
 msgid "Current Name"
@@ -92,15 +92,15 @@ msgstr ""
 
 msgctxt "field:account.budget.line,left:"
 msgid "Left"
-msgstr "Sinistra"
+msgstr ""
 
 msgctxt "field:account.budget.line,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:account.budget.line,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:account.budget.line,parent_account_type:"
 msgid "Parent Account Type"
@@ -116,7 +116,7 @@ msgstr ""
 
 msgctxt "field:account.budget.line,right:"
 msgid "Right"
-msgstr "Destra"
+msgstr ""
 
 msgctxt "field:account.budget.line,total_amount:"
 msgid "Total Amount"
@@ -136,19 +136,19 @@ msgstr ""
 
 msgctxt "field:account.budget.line.period,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr ""
 
 msgctxt "field:account.budget.line.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Esercizio"
+msgstr ""
 
 msgctxt "field:account.budget.line.period,percentage:"
 msgid "Percentage"
-msgstr "Percentuale"
+msgstr ""
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
-msgstr "Periodo"
+msgstr ""
 
 msgctxt "field:account.budget.line.period,ratio:"
 msgid "Ratio"
@@ -355,7 +355,7 @@ msgstr ""
 
 msgctxt "view:account.budget.line:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "view:account.budget.line:"
 msgid "Name:"

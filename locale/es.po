@@ -32,7 +32,7 @@ msgstr "Ejercicio fiscal"
 
 msgctxt "field:account.budget.context,periods:"
 msgid "Periods"
-msgstr "Períodos"
+msgstr "Periodos"
 
 msgctxt "field:account.budget.context,posted:"
 msgid "Posted"
@@ -112,7 +112,7 @@ msgstr "Porcentaje"
 
 msgctxt "field:account.budget.line,periods:"
 msgid "Periods"
-msgstr "Períodos"
+msgstr "Periodos"
 
 msgctxt "field:account.budget.line,right:"
 msgid "Right"
@@ -148,7 +148,7 @@ msgstr "Porcentaje"
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
-msgstr "Período"
+msgstr "Periodo"
 
 msgctxt "field:account.budget.line.period,ratio:"
 msgid "Ratio"
@@ -209,7 +209,7 @@ msgstr "El porcentaje del importe contabilizado de la línea presupuestaria."
 
 msgctxt "help:account.budget.line,periods:"
 msgid "The periods that contain details of the budget."
-msgstr "Los períodos que contienen detalles del presupuesto."
+msgstr "Los periodos que contienen detalles del presupuesto."
 
 msgctxt "help:account.budget.line,total_amount:"
 msgid "The total amount allocated to the budget line and its children."
@@ -221,7 +221,7 @@ msgstr "El importe total contabilizado en la línea presupuestaria."
 
 msgctxt "help:account.budget.line.period,budget_line:"
 msgid "The line that the budget period is part of."
-msgstr "La línea de la que forma parte el período presupuestario."
+msgstr "La línea de la que forma parte el periodo presupuestario."
 
 msgctxt "help:account.budget.line.period,percentage:"
 msgid "The percentage of booked amount of the budget line."
@@ -253,11 +253,11 @@ msgstr "Línea de presupuesto contable"
 
 msgctxt "model:account.budget.line.create_periods.start,name:"
 msgid "Create Periods"
-msgstr "Crear períodos"
+msgstr "Crear periodos"
 
 msgctxt "model:account.budget.line.period,name:"
 msgid "Account Budget Line Period"
-msgstr "Período de la línea presupuesto contable"
+msgstr "Periodo de la línea presupuesto contable"
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Budgets"
@@ -277,7 +277,7 @@ msgstr "Copiar presupuesto"
 
 msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
 msgid "Create Periods"
-msgstr "Crear períodos"
+msgstr "Crear periodos"
 
 msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
 msgid "The account must be unique for each budget."
@@ -286,14 +286,14 @@ msgstr "La cuenta debe ser única para cada presupuesto."
 msgctxt ""
 "model:ir.message,text:msg_budget_line_period_budget_line_period_unique"
 msgid "The period must be unique for each budget line."
-msgstr "El período debe ser único para cada línea de presupuesto."
+msgstr "El periodo debe ser único para cada línea de presupuesto."
 
 msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
 msgid ""
 "The sum of period ratios for the budget line \"%(budget_line)s\" must be "
 "less or equal to 100%%."
 msgstr ""
-"La suma de los porcentajes de los períodos para la línea presupuestaria "
+"La suma de los porcentajes de los periodos para la línea presupuestaria "
 "\"%(budget_line)s\" debe ser menor o igual al 100%%."
 
 msgctxt "model:ir.model.button,string:budget_copy_button"
@@ -302,7 +302,7 @@ msgstr "Copiar"
 
 msgctxt "model:ir.model.button,string:budget_line_create_periods_button"
 msgid "Create Periods"
-msgstr "Crear períodos"
+msgstr "Crear periodos"
 
 msgctxt "model:ir.model.button,string:budget_update_lines_button"
 msgid "Update Lines"

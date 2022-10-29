@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.budget,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.budget,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.budget,lines:"
 msgid "Lines"
@@ -16,11 +16,11 @@ msgstr ""
 
 msgctxt "field:account.budget,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:account.budget,root_lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:account.budget.context,budget:"
 msgid "Budget"
@@ -28,11 +28,11 @@ msgstr ""
 
 msgctxt "field:account.budget.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.budget.context,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Periode-Periode"
 
 msgctxt "field:account.budget.context,posted:"
 msgid "Posted"
@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "field:account.budget.copy.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.budget.copy.start,factor:"
 msgid "Factor"
@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:account.budget.copy.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.budget.copy.start,name:"
 msgid "Name"
@@ -80,11 +80,11 @@ msgstr ""
 
 msgctxt "field:account.budget.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.budget.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:account.budget.line,current_name:"
 msgid "Current Name"
@@ -96,11 +96,11 @@ msgstr ""
 
 msgctxt "field:account.budget.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:account.budget.line,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:account.budget.line,parent_account_type:"
 msgid "Parent Account Type"
@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "field:account.budget.line.create_periods.start,method:"
 msgid "Method"
-msgstr ""
+msgstr "Metode"
 
 msgctxt "field:account.budget.line.period,actual_amount:"
 msgid "Actual Amount"
@@ -136,15 +136,15 @@ msgstr ""
 
 msgctxt "field:account.budget.line.period,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata Uang"
 
 msgctxt "field:account.budget.line.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.budget.line.period,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Persentase"
 
 msgctxt "field:account.budget.line.period,period:"
 msgid "Period"
