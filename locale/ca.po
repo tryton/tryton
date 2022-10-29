@@ -66,6 +66,10 @@ msgctxt "field:stock.shipment.out,cost_sale_used:"
 msgid "Cost Sale"
 msgstr "Cost de la venda"
 
+msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr "Cost d'enviament només lectura"
+
 msgctxt "help:party.party,sale_shipment_cost_method:"
 msgid ""
 "The default shipment cost method for the customer.\n"
@@ -79,10 +83,6 @@ msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\".
 msgstr ""
 "Per confirmar la venda \"%(sale)s\" heu de canviar el transportista "
 "\"%(carrier)s\"."
-
-msgctxt "model:ir.message,text:msg_sale_shipment_cost_unique"
-msgid "A sale can have only one shipment cost line."
-msgstr "Una venda només pot tenir una línia de cost d’enviament."
 
 msgctxt ""
 "model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
