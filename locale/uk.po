@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr "Karyawan"
+msgstr ""
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
-msgstr "Persentase"
+msgstr ""
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
