@@ -26,11 +26,11 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.invoice.deferred,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:account.invoice.deferred,end_date:"
 msgid "End Date"
@@ -42,7 +42,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:account.invoice.deferred,moves:"
 msgid "Moves"
@@ -184,11 +184,11 @@ msgstr ""
 
 msgctxt "selection:account.invoice.deferred,type:"
 msgid "Customer"
-msgstr "Pelanggan"
+msgstr ""
 
 msgctxt "selection:account.invoice.deferred,type:"
 msgid "Supplier"
-msgstr "Pemasok"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Deferred"
@@ -196,4 +196,4 @@ msgstr ""
 
 msgctxt "view:account.invoice.deferred:"
 msgid "Other Info"
-msgstr "Info Lain"
+msgstr ""

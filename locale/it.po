@@ -46,7 +46,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.deferred,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Movimenti"
 
 msgctxt "field:account.invoice.deferred,start_date:"
 msgid "Start Date"
