@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:purchase.amendment.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "field:purchase.amendment.line,amendment:"
 msgid "Amendment"
@@ -36,6 +36,11 @@ msgstr "Deskripsi"
 
 msgctxt "field:purchase.amendment.line,invoice_address:"
 msgid "Invoice Address"
+msgstr "Alamat Faktur"
+
+#, fuzzy
+msgctxt "field:purchase.amendment.line,invoice_party:"
+msgid "Invoice Party"
 msgstr "Alamat Faktur"
 
 msgctxt "field:purchase.amendment.line,line:"
@@ -64,7 +69,7 @@ msgstr ""
 
 msgctxt "field:purchase.amendment.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "field:purchase.amendment.line,quantity:"
 msgid "Quantity"

@@ -28,7 +28,7 @@ msgstr "Azione"
 
 msgctxt "field:purchase.amendment.line,amendment:"
 msgid "Amendment"
-msgstr "Modifiche"
+msgstr "Correzzione"
 
 msgctxt "field:purchase.amendment.line,description:"
 msgid "Description"
@@ -36,6 +36,11 @@ msgstr "Descrizione"
 
 msgctxt "field:purchase.amendment.line,invoice_address:"
 msgid "Invoice Address"
+msgstr "Indirizzo di fatturazione"
+
+#, fuzzy
+msgctxt "field:purchase.amendment.line,invoice_party:"
+msgid "Invoice Party"
 msgstr "Indirizzo di fatturazione"
 
 msgctxt "field:purchase.amendment.line,line:"
@@ -88,12 +93,11 @@ msgstr "Magazzino"
 
 msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_all"
@@ -126,10 +130,9 @@ msgctxt ""
 msgid "Validate"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
-msgstr "Modifiche"
+msgstr "Correzioni"
 
 msgctxt "model:purchase.amendment,name:"
 msgid "Purchase Amendment"
