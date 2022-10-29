@@ -4,40 +4,40 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.split.start,count:"
 msgid "Count"
-msgstr "Conteggio"
+msgstr ""
 
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
-msgstr "Quantità"
+msgstr ""
 
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr ""
 
 msgctxt "field:production.split.start,uom_category:"
 msgid "Uom Category"
-msgstr "Categoria UdM"
+msgstr ""
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
-msgstr "Il numero limite di produzioni"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Produzione separata"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
-msgstr "Separa"
+msgstr ""
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
-msgstr "Dividi produzione"
+msgstr ""
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
 
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"
-msgstr "Dividi"
+msgstr ""
