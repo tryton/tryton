@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,sale_company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment_term,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
@@ -74,10 +74,9 @@ msgctxt "field:sale.advance_payment_term.line,accounts:"
 msgid "Accounts"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.advance_payment_term.line,advance_payment_term:"
 msgid "Advance Payment Term"
-msgstr "Advance Payment Terms"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line,block_shipping:"
 msgid "Block Shipping"
@@ -93,7 +92,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line,formula:"
 msgid "Formula"
-msgstr "Formula"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
 msgid "Invoice Delay"
@@ -105,11 +104,11 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
-msgstr "Riga"
+msgstr ""
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
@@ -119,10 +118,9 @@ msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
-msgstr "Advance Payment Terms"
+msgstr ""
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
@@ -154,11 +152,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_advance_invoice_form"
 msgid "Advance Invoices"
-msgstr "Advance Invoices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr "Advance Payment Terms"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipping_blocked"
 msgid ""
@@ -174,23 +172,20 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr "Advance Payment Terms"
+msgstr ""
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term,name:"
 msgid "Advance Payment Term"
-msgstr "Advance Payment Terms"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term.line,name:"
 msgid "Advance Payment Term Line"
-msgstr "Advance Payment Terms"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term.line.account,name:"
 msgid "Advance Payment Term Line Account"
-msgstr "Advance Payment Terms"
+msgstr ""
