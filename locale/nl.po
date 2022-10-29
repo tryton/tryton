@@ -32,7 +32,7 @@ msgstr "Lengte-eenheid"
 
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
-msgstr "verzendlabel"
+msgstr "Verzendlabel"
 
 msgctxt "field:stock.package,shipping_label_id:"
 msgid "Shipping Label ID"
@@ -80,7 +80,7 @@ msgstr "Lengte"
 
 msgctxt "field:stock.package.type,length_digits:"
 msgid "Length Digits"
-msgstr "lengte decimalen"
+msgstr "Lengte decimalen"
 
 msgctxt "field:stock.package.type,length_uom:"
 msgid "Length Unit"
@@ -92,7 +92,7 @@ msgstr "Breedte"
 
 msgctxt "field:stock.package.type,width_digits:"
 msgid "Width Digits"
-msgstr "decimalen breedte"
+msgstr "Decimalen breedte"
 
 msgctxt "field:stock.package.type,width_uom:"
 msgid "Width Unit"
@@ -112,11 +112,11 @@ msgstr "Verzending omschrijving"
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
-msgstr "Maak verzending"
+msgstr "Maak zending"
 
 msgctxt "model:ir.action,name:report_shipping_label"
 msgid "Shipping Label"
-msgstr "verzendlabel"
+msgstr "Verzendlabel"
 
 msgctxt "model:ir.action,name:wizard_print_shipping_label"
 msgid "Shipping Labels"
@@ -130,11 +130,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_without_carrier"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set."
-msgstr "De zending \"\"%(shipment)s\" heeft geen koerier."
+msgstr "De zending \"%(shipment)s\" heeft geen transporteur."
 
 msgctxt "model:ir.model.button,string:package_print_shipping_label_button"
 msgid "Shipping Label"
-msgstr "verzendlabel"
+msgstr "Verzendlabel"
 
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"

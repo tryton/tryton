@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:stock.package,height:"
 msgid "Height"
-msgstr ""
+msgstr "Tinggi"
 
 msgctxt "field:stock.package,height_digits:"
 msgid "Height Digits"
@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:stock.package,length:"
 msgid "Length"
-msgstr ""
+msgstr "Panjang"
 
 msgctxt "field:stock.package,length_digits:"
 msgid "Length Digits"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:stock.package,width:"
 msgid "Width"
-msgstr ""
+msgstr "Lebar"
 
 msgctxt "field:stock.package,width_digits:"
 msgid "Width Digits"
@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
-msgstr ""
+msgstr "Tinggi"
 
 msgctxt "field:stock.package.type,height_digits:"
 msgid "Height Digits"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:stock.package.type,length:"
 msgid "Length"
-msgstr ""
+msgstr "Panjang"
 
 msgctxt "field:stock.package.type,length_digits:"
 msgid "Length Digits"
@@ -88,7 +88,7 @@ msgstr ""
 
 msgctxt "field:stock.package.type,width:"
 msgid "Width"
-msgstr ""
+msgstr "Lebar"
 
 msgctxt "field:stock.package.type,width_digits:"
 msgid "Width Digits"
