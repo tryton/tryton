@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:product.image,template:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "field:product.image.cache,image:"
 msgid "Image"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:product.image.cache,size:"
 msgid "Size"
-msgstr ""
+msgstr "Dimensione"
 
 msgctxt "field:product.product,image_url:"
 msgid "Image URL"
