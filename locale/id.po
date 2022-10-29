@@ -111,195 +111,35 @@ msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.opportunity_employee,amount:"
-msgid "Amount"
-msgstr "Jumlah"
-
-msgctxt "field:sale.opportunity_employee,company:"
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,conversion_rate:"
-msgid "Conversion Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,converted:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,currency:"
-msgid "Currency"
-msgstr "Mata Uang"
-
-msgctxt "field:sale.opportunity_employee,employee:"
-msgid "Employee"
-msgstr "Karyawan"
-
-msgctxt "field:sale.opportunity_employee,lost:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,number:"
-msgid "Number"
-msgstr "Nomor"
-
-msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,won:"
-msgid "Won"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,won_amount:"
-msgid "Won Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee.context,end_date:"
-msgid "End Date"
-msgstr "Tanggal Akhir"
-
-msgctxt "field:sale.opportunity_employee.context,start_date:"
-msgid "Start Date"
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,from_date:"
+msgid "From Date"
 msgstr "Tanggal Awal"
 
-msgctxt "field:sale.opportunity_employee_monthly,amount:"
-msgid "Amount"
-msgstr "Jumlah"
-
-msgctxt "field:sale.opportunity_employee_monthly,company:"
-msgid "Company"
-msgstr "Perusahaan"
-
-msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
+msgctxt "field:sale.opportunity.reporting.context,period:"
+msgid "Period"
 msgstr ""
 
-msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
-msgid "Conversion Rate"
-msgstr ""
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Tanggal Akhir"
 
-msgctxt "field:sale.opportunity_employee_monthly,converted:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,currency:"
-msgid "Currency"
-msgstr "Mata Uang"
-
-msgctxt "field:sale.opportunity_employee_monthly,employee:"
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
 msgid "Employee"
 msgstr "Karyawan"
 
-msgctxt "field:sale.opportunity_employee_monthly,lost:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,month:"
-msgid "Month"
-msgstr "Bulan"
-
 #, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,month_label:"
-msgid "Month"
-msgstr "Bulan"
-
-msgctxt "field:sale.opportunity_employee_monthly,number:"
-msgid "Number"
-msgstr "Nomor"
-
-msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,won:"
-msgid "Won"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
-msgid "Won Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,amount:"
-msgid "Amount"
-msgstr "Jumlah"
-
-msgctxt "field:sale.opportunity_monthly,company:"
-msgid "Company"
-msgstr "Perusahaan"
-
-msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,conversion_rate:"
-msgid "Conversion Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,converted:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,currency:"
-msgid "Currency"
-msgstr "Mata Uang"
-
-msgctxt "field:sale.opportunity_monthly,lost:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,month:"
-msgid "Month"
-msgstr "Bulan"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,month_label:"
-msgid "Month"
-msgstr "Bulan"
-
-msgctxt "field:sale.opportunity_monthly,number:"
-msgid "Number"
-msgstr "Nomor"
-
-msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,won:"
-msgid "Won"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,won_amount:"
-msgid "Won Amount"
-msgstr ""
+msgctxt ""
+"field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
+msgid "Employee"
+msgstr "Karyawan"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
@@ -313,14 +153,6 @@ msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_opportunity_employee_form"
-msgid "Opportunities per Employee"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
-msgid "Opportunities per Employee per Month"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr ""
@@ -329,8 +161,28 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_opportunity_monthly_form"
-msgid "Opportunities per Month"
+msgctxt "model:ir.action,name:act_reporting_conversion"
+msgid "Opportunity Conversions"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_conversion_employee"
+msgid "Opportunity Conversions per Employee"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_conversion_employee_time_series"
+msgid "Opportunity Conversions per Employee"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_conversion_time_series"
+msgid "Opportunity Conversions"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Opportunities"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Opportunities"
 msgstr ""
 
 msgctxt ""
@@ -376,6 +228,76 @@ msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount"
+msgid "Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount_trend"
+msgid "Amount Trend"
+msgstr "Jumlah"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
+msgid "Conversion Rate"
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_conversion_trend"
+msgid "Conversion Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_converted"
+msgid "Converted"
+msgstr "Dibuat oleh"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount"
+msgid "Converted Amount"
+msgstr "Dibuat oleh"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount_trend"
+msgid "Converted Amount Trend"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_lost"
+msgid "Lost"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_help"
+msgid "Number of opportunities"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_trend"
+msgid "Number Trend"
+msgstr "Nomor"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_rate"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_trend"
+msgid "Winning Trend"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won"
+msgid "Won"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won_amount"
+msgid "Won Amount"
+msgstr "Jumlah"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_won_amount_trend"
+msgid "Won Amount Trend"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
 msgstr "Batal"
@@ -402,18 +324,36 @@ msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_companies"
+msgctxt "model:ir.rule.group,name:rule_group_reporting_conversion_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 #, fuzzy
 msgctxt ""
-"model:ir.rule.group,name:rule_group_opportunity_employee_monthly_companies"
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly_companies"
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
@@ -425,20 +365,12 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
-msgid "Opportunities per Employee per Month"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
-msgid "Opportunities per Employee"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
-msgid "Opportunities per Month"
+msgctxt "model:ir.ui.menu,name:menu_reporting_opportunity"
+msgid "Opportunities"
 msgstr ""
 
 msgctxt "model:res.group,name:group_opportunity"
@@ -453,20 +385,33 @@ msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr ""
 
-msgctxt "model:sale.opportunity_employee,name:"
-msgid "Sale Opportunity per Employee"
+msgctxt "model:sale.opportunity.reporting.context,name:"
+msgid "Sale Opportunity Reporting Context"
 msgstr ""
 
-msgctxt "model:sale.opportunity_employee.context,name:"
-msgid "Sale Opportunity per Employee Context"
+msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgid "Sale Opportunity Reporting Conversion"
 msgstr ""
 
-msgctxt "model:sale.opportunity_employee_monthly,name:"
-msgid "Sale Opportunity per Employee per Month"
+msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
 msgstr ""
 
-msgctxt "model:sale.opportunity_monthly,name:"
-msgid "Sale Opportunity per Month"
+msgctxt ""
+"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr ""
+
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr ""
+
+msgctxt "model:sale.opportunity.reporting.main,name:"
+msgid "Sale Opportunity Reporting"
+msgstr ""
+
+msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
+msgid "Sale Opportunity Reporting"
 msgstr ""
 
 msgctxt "selection:sale.opportunity,state:"
@@ -493,6 +438,109 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr ""
 
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Day"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Month"
+msgstr "Bulan"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Year"
+msgstr "Tahun"
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Lost"
+msgstr ""
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won Amount"
+msgstr "Jumlah"
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Lost"
+msgstr ""
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Lost"
+msgstr ""
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted"
+msgstr "Dibuat oleh"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted Amount"
+msgstr "Dibuat oleh"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Number"
+msgstr "Nomor"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted"
+msgstr "Dibuat oleh"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted Amount"
+msgstr "Dibuat oleh"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Number"
+msgstr "Nomor"
+
 msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"
@@ -500,15 +548,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr ""
-
-msgctxt "view:sale.opportunity_employee:"
-msgid "%"
-msgstr "%"
-
-msgctxt "view:sale.opportunity_employee_monthly:"
-msgid "%"
-msgstr "%"
-
-msgctxt "view:sale.opportunity_monthly:"
-msgid "%"
-msgstr "%"

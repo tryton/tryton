@@ -111,198 +111,35 @@ msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Ühik"
 
-msgctxt "field:sale.opportunity_employee,amount:"
-msgid "Amount"
-msgstr "Väärtus"
-
-msgctxt "field:sale.opportunity_employee,company:"
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,conversion_rate:"
-msgid "Conversion Rate"
-msgstr ""
-
 #, fuzzy
-msgctxt "field:sale.opportunity_employee,converted:"
-msgid "Converted"
-msgstr "Muudetud"
-
-msgctxt "field:sale.opportunity_employee,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,currency:"
-msgid "Currency"
-msgstr "Valuuta"
-
-msgctxt "field:sale.opportunity_employee,employee:"
-msgid "Employee"
-msgstr "Töötaja"
-
-msgctxt "field:sale.opportunity_employee,lost:"
-msgid "Lost"
-msgstr "Kaotatud"
-
-msgctxt "field:sale.opportunity_employee,number:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,won:"
-msgid "Won"
-msgstr "Võidetud"
-
-msgctxt "field:sale.opportunity_employee,won_amount:"
-msgid "Won Amount"
-msgstr "Võidetud väärtus"
-
-msgctxt "field:sale.opportunity_employee.context,end_date:"
-msgid "End Date"
-msgstr "Lõppkuupäev"
-
-msgctxt "field:sale.opportunity_employee.context,start_date:"
-msgid "Start Date"
+msgctxt "field:sale.opportunity.reporting.context,from_date:"
+msgid "From Date"
 msgstr "Alguskuupäev"
 
-msgctxt "field:sale.opportunity_employee_monthly,amount:"
-msgid "Amount"
-msgstr "Väärtus"
-
-msgctxt "field:sale.opportunity_employee_monthly,company:"
-msgid "Company"
-msgstr "Ettevõte"
-
-msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
-msgid "Conversion Rate"
+msgctxt "field:sale.opportunity.reporting.context,period:"
+msgid "Period"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,converted:"
-msgid "Converted"
-msgstr "Muudetud"
+msgctxt "field:sale.opportunity.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Lõppkuupäev"
 
-msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,currency:"
-msgid "Currency"
-msgstr "Valuuta"
-
-msgctxt "field:sale.opportunity_employee_monthly,employee:"
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
 msgid "Employee"
 msgstr "Töötaja"
 
-msgctxt "field:sale.opportunity_employee_monthly,lost:"
-msgid "Lost"
-msgstr "Kaotatud"
-
-msgctxt "field:sale.opportunity_employee_monthly,month:"
-msgid "Month"
-msgstr "Kuu"
-
 #, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,month_label:"
-msgid "Month"
-msgstr "Kuu"
-
-msgctxt "field:sale.opportunity_employee_monthly,number:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,won:"
-msgid "Won"
-msgstr "Võidetud"
-
-msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
-msgid "Won Amount"
-msgstr "Võidetud väärtus"
-
-msgctxt "field:sale.opportunity_monthly,amount:"
-msgid "Amount"
-msgstr "Väärtus"
-
-msgctxt "field:sale.opportunity_monthly,company:"
-msgid "Company"
-msgstr "Ettevõte"
-
-msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
-msgid "Conversion Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,conversion_rate:"
-msgid "Conversion Rate"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,converted:"
-msgid "Converted"
-msgstr "Muudetud"
-
-msgctxt "field:sale.opportunity_monthly,converted_amount:"
-msgid "Converted Amount"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,currency:"
-msgid "Currency"
-msgstr "Valuuta"
-
-msgctxt "field:sale.opportunity_monthly,lost:"
-msgid "Lost"
-msgstr "Kaotatud"
-
-msgctxt "field:sale.opportunity_monthly,month:"
-msgid "Month"
-msgstr "Kuu"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,month_label:"
-msgid "Month"
-msgstr "Kuu"
-
-msgctxt "field:sale.opportunity_monthly,number:"
-msgid "Number"
-msgstr "Number"
-
-msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
-msgid "Winning Amount Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,winning_rate:"
-msgid "Winning Rate"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,won:"
-msgid "Won"
-msgstr "Võidetud"
-
-msgctxt "field:sale.opportunity_monthly,won_amount:"
-msgid "Won Amount"
-msgstr "Võidetud väärtus"
+msgctxt ""
+"field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
+msgid "Employee"
+msgstr "Töötaja"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount."
@@ -317,14 +154,6 @@ msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
 msgstr "Müük"
 
-msgctxt "model:ir.action,name:act_opportunity_employee_form"
-msgid "Opportunities per Employee"
-msgstr "Võimlaused töötaja lõikes"
-
-msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
-msgid "Opportunities per Employee per Month"
-msgstr "Võimalused töötaja ja kuu lõikes"
-
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr "Potensiaalid ja võimalused"
@@ -333,9 +162,35 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr "Müügid potensiaalid/võimalused"
 
-msgctxt "model:ir.action,name:act_opportunity_monthly_form"
-msgid "Opportunities per Month"
-msgstr "Võimalused kuude lõikes"
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion"
+msgid "Opportunity Conversions"
+msgstr "Võimalused"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_employee"
+msgid "Opportunity Conversions per Employee"
+msgstr "Võimlaused töötaja lõikes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_employee_time_series"
+msgid "Opportunity Conversions per Employee"
+msgstr "Võimlaused töötaja lõikes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_time_series"
+msgid "Opportunity Conversions"
+msgstr "Võimalused"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Opportunities"
+msgstr "Võimalused"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Opportunities"
+msgstr "Võimalused"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
@@ -381,6 +236,82 @@ msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
 msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount"
+msgid "Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount_trend"
+msgid "Amount Trend"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
+msgid "Conversion Rate"
+msgstr "Pöördumise tõenäosus"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_conversion_trend"
+msgid "Conversion Trend"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_converted"
+msgid "Converted"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount"
+msgid "Converted Amount"
+msgstr "Muudetud"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount_trend"
+msgid "Converted Amount Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_lost"
+msgid "Lost"
+msgstr "Kaotatud"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_help"
+msgid "Number of opportunities"
+msgstr "Võimalused"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_trend"
+msgid "Number Trend"
+msgstr "Number"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_rate"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_trend"
+msgid "Winning Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won"
+msgid "Won"
+msgstr "Võidetud"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won_amount"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_won_amount_trend"
+msgid "Won Amount Trend"
+msgstr "Võidetud väärtus"
+
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
 msgstr "Tühista"
@@ -407,18 +338,36 @@ msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_companies"
+msgctxt "model:ir.rule.group,name:rule_group_reporting_conversion_companies"
 msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
 msgctxt ""
-"model:ir.rule.group,name:rule_group_opportunity_employee_monthly_companies"
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_companies"
 msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
-msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly_companies"
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_time_series_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_time_series_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
@@ -430,21 +379,14 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
 msgstr "Müügivõimalus"
 
-msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
-msgid "Opportunities per Employee per Month"
-msgstr "Võimalused töötaja ja kuu lõikes"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
-msgid "Opportunities per Employee"
-msgstr "Võimalused töötaja"
-
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr "Potentsiaalid ja võimalused"
 
-msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
-msgid "Opportunities per Month"
-msgstr "Võimalused kuude lõikes"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_opportunity"
+msgid "Opportunities"
+msgstr "Võimalused"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
@@ -458,21 +400,41 @@ msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Müügi võimaluse rida"
 
-msgctxt "model:sale.opportunity_employee,name:"
-msgid "Sale Opportunity per Employee"
-msgstr "Müügi võimalus töötaja lõikes"
-
-msgctxt "model:sale.opportunity_employee.context,name:"
-msgid "Sale Opportunity per Employee Context"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.context,name:"
+msgid "Sale Opportunity Reporting Context"
 msgstr "Müügi võimalus töötaja lõikes - sisu"
 
-msgctxt "model:sale.opportunity_employee_monthly,name:"
-msgid "Sale Opportunity per Employee per Month"
-msgstr "Müügi võimalus töötaja ja kuu lõikes"
-
-msgctxt "model:sale.opportunity_monthly,name:"
-msgid "Sale Opportunity per Month"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgid "Sale Opportunity Reporting Conversion"
 msgstr "Müügi võimalus kuu lõikes"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Müügi võimalus töötaja lõikes"
+
+#, fuzzy
+msgctxt ""
+"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Müügi võimalus töötaja lõikes"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr "Müügi võimalus kuu lõikes"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Müügi võimaluse rida"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Müügi võimaluse rida"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
@@ -498,6 +460,115 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Võidetud"
 
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Day"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Month"
+msgstr "Kuu"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Year"
+msgstr "Aasta"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won"
+msgstr "Võidetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won"
+msgstr "Võidetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won"
+msgstr "Võidetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted Amount"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Number"
+msgstr "Number"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted Amount"
+msgstr "Muudetud"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Number"
+msgstr "Number"
+
 msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"
@@ -505,15 +576,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Potesntsiaal/Võimalus"
-
-msgctxt "view:sale.opportunity_employee:"
-msgid "%"
-msgstr "%"
-
-msgctxt "view:sale.opportunity_employee_monthly:"
-msgid "%"
-msgstr "%"
-
-msgctxt "view:sale.opportunity_monthly:"
-msgid "%"
-msgstr "%"
