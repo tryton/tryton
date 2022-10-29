@@ -66,8 +66,8 @@ msgstr "UPS Credentials"
 
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
-"To validate shipment \"%(shipment)s\" you must add phone number to party "
-"\"%(party)s\"."
+"To validate shipment \"%(shipment)s\" you must add phone number for address "
+"\"%(address)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"

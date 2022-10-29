@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
-msgstr "Altura da Etiqueta"
+msgstr ""
 
 msgctxt "field:carrier,ups_label_image_format:"
 msgid "Label Image Format"
-msgstr "Formato da Imagem da Etiqueta"
+msgstr ""
 
 msgctxt "field:carrier,ups_notifications:"
 msgid "Notifications"
@@ -16,53 +16,51 @@ msgstr ""
 
 msgctxt "field:carrier,ups_service_type:"
 msgid "Service Type"
-msgstr "Tipo de serviço"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
-msgstr "Número da Conta"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
-msgstr "Licença"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr "Senha"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
-msgstr "Servidor"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
-msgstr "Usar Métrica"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
-msgstr "ID de usuário"
+msgstr ""
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
-msgstr "Código UPS"
+msgstr ""
 
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr "Credencial UPS"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "Create UPS Shipping for Packages"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
@@ -82,15 +80,11 @@ msgid ""
 "description."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_ups_webservice_error"
 msgid ""
 "UPS webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
-"A chamada ao serviço web UPS falhou com a seguinte mensagem:\n"
-"\n"
-"%(message)s"
 
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
@@ -98,14 +92,13 @@ msgid ""
 "\"%(warehouse)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr ""
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
-msgstr "UPS"
+msgstr ""
 
 msgctxt "selection:carrier,ups_notifications:"
 msgid "Alternate Delivery Location"
@@ -137,21 +130,20 @@ msgstr ""
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Production"
-msgstr "Produção"
+msgstr ""
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
-msgstr "Testando"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"
-msgstr "Informações da Credencial"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "UPS"
-msgstr "UPS"
+msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "UPS"
-msgstr "UPS"
+msgstr ""

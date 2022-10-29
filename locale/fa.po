@@ -62,10 +62,11 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "گواهی نامه UPS"
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
-"To validate shipment \"%(shipment)s\" you must add phone number to party "
-"\"%(party)s\"."
+"To validate shipment \"%(shipment)s\" you must add phone number for address "
+"\"%(address)s\"."
 msgstr ""
 "برای تأیید حمل و نقل :\"%(shipment)s\" شما باید شماره تلفن را به نهاد/سازمان"
 " :\"%(party)s\" اضافه کنید."
