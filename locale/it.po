@@ -288,7 +288,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Movimenti"
 
 msgctxt "field:sale.point.sale.line,product:"
 msgid "Product"
@@ -621,7 +621,7 @@ msgstr ""
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Done"

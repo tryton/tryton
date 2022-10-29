@@ -248,7 +248,7 @@ msgstr "Regels"
 
 msgctxt "field:sale.point.sale,move:"
 msgid "Move"
-msgstr "Boeking"
+msgstr "Mutatie"
 
 msgctxt "field:sale.point.sale,number:"
 msgid "Number"
@@ -288,7 +288,7 @@ msgstr "Valuta"
 
 msgctxt "field:sale.point.sale.line,moves:"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "Mutaties"
 
 msgctxt "field:sale.point.sale.line,product:"
 msgid "Product"
@@ -357,7 +357,7 @@ msgstr "POS Cash-sessies"
 
 msgctxt "model:ir.action,name:act_cash_transfer_type_form"
 msgid "POS Cash Transfer Types"
-msgstr "Soorten POS-contante overboekingen"
+msgstr "POS kas soorten boeking"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "POS Payment Methods"
@@ -464,8 +464,7 @@ msgstr "U kunt verkoop \"%(sale)s\" niet verwijderen omdat deze een nummer heeft
 msgctxt "model:ir.message,text:msg_transfer_delete_posted"
 msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
 msgstr ""
-"U kunt overboeking \"%(overboeking)s\" niet verwijderen omdat deze geboekt "
-"is ."
+"U kunt overboeking \"%(transfer)s\" niet verwijderen omdat deze geboekt is ."
 
 msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
 msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
@@ -555,7 +554,7 @@ msgstr "POS Cash-sessies"
 
 msgctxt "model:ir.ui.menu,name:menu_cash_transfer_type_form"
 msgid "POS Cash Transfer Types"
-msgstr "Soorten POS-contante overboekingen"
+msgstr "POS kas soorten boeking"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "POS Payment Methods"
@@ -595,11 +594,11 @@ msgstr "POS-sessierelatie"
 
 msgctxt "model:sale.point.cash.transfer,name:"
 msgid "POS Cash Transfer"
-msgstr "POS-contante overboeking"
+msgstr "POS kas overboeking"
 
 msgctxt "model:sale.point.cash.transfer.type,name:"
 msgid "POS Cash Transfer Type"
-msgstr "Soorten POS-contante overboekingen"
+msgstr "POS kas soort boeking"
 
 msgctxt "model:sale.point.payment,name:"
 msgid "POS Payment"

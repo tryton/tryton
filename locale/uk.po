@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.gross_price,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:product.gross_price,gross_price:"
 msgid "Gross Price"
@@ -32,11 +32,11 @@ msgstr ""
 
 msgctxt "field:sale.point,address:"
 msgid "Address"
-msgstr "Alamat"
+msgstr ""
 
 msgctxt "field:sale.point,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point,customer_location:"
 msgid "To Location"
@@ -44,11 +44,11 @@ msgstr ""
 
 msgctxt "field:sale.point,journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:sale.point,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:sale.point,return_location:"
 msgid "Return Location"
@@ -56,11 +56,11 @@ msgstr ""
 
 msgctxt "field:sale.point,sequence:"
 msgid "Sequence"
-msgstr "Urutan"
+msgstr ""
 
 msgctxt "field:sale.point,storage_location:"
 msgid "Storage Location"
-msgstr "Lokasi Penyimpanan"
+msgstr ""
 
 msgctxt "field:sale.point,tax_included:"
 msgid "Tax Included"
@@ -68,11 +68,11 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.session,balance:"
 msgid "Balance"
-msgstr "Saldo"
+msgstr ""
 
 msgctxt "field:sale.point.cash.session,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:sale.point.cash.session,end_amount:"
 msgid "End Amount"
@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.session,state:"
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 msgctxt "field:sale.point.cash.session,transfers:"
 msgid "Transfers"
@@ -120,15 +120,15 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,move:"
 msgid "Move"
@@ -144,7 +144,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,state:"
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 msgctxt "field:sale.point.cash.transfer,type:"
 msgid "Type"
@@ -156,7 +156,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer.type,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.cash.transfer.type,journal:"
 msgid "Journal"
@@ -164,7 +164,7 @@ msgstr ""
 
 msgctxt "field:sale.point.cash.transfer.type,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:sale.point.payment,amount:"
 msgid "Amount"
@@ -172,19 +172,19 @@ msgstr ""
 
 msgctxt "field:sale.point.payment,cash:"
 msgid "Cash"
-msgstr "Kas"
+msgstr ""
 
 msgctxt "field:sale.point.payment,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.payment,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:sale.point.payment,method:"
 msgid "Method"
-msgstr "Metode"
+msgstr ""
 
 msgctxt "field:sale.point.payment,point:"
 msgid "Point"
@@ -192,11 +192,11 @@ msgstr ""
 
 msgctxt "field:sale.point.payment,sale:"
 msgid "Sale"
-msgstr "Penjualan"
+msgstr ""
 
 msgctxt "field:sale.point.payment,sale_state:"
 msgid "Sale State"
-msgstr "Status Penjualan"
+msgstr ""
 
 msgctxt "field:sale.point.payment,session:"
 msgid "Session"
@@ -208,15 +208,15 @@ msgstr ""
 
 msgctxt "field:sale.point.payment.method,cash:"
 msgid "Cash"
-msgstr "Kas"
+msgstr ""
 
 msgctxt "field:sale.point.payment.method,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.payment.method,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:sale.point.sale,amount_paid:"
 msgid "Paid"
@@ -228,19 +228,19 @@ msgstr ""
 
 msgctxt "field:sale.point.sale,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.sale,currency:"
 msgid "Currency"
-msgstr "Mata Uang"
+msgstr ""
 
 msgctxt "field:sale.point.sale,date:"
 msgid "Date"
-msgstr "Tanggal"
+msgstr ""
 
 msgctxt "field:sale.point.sale,employee:"
 msgid "Employee"
-msgstr "Karyawan"
+msgstr ""
 
 msgctxt "field:sale.point.sale,lines:"
 msgid "Lines"
@@ -252,7 +252,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale,number:"
 msgid "Number"
-msgstr "Nomor"
+msgstr ""
 
 msgctxt "field:sale.point.sale,payments:"
 msgid "Payments"
@@ -268,7 +268,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale,total:"
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 msgctxt "field:sale.point.sale,total_tax:"
 msgid "Total Tax"
@@ -280,7 +280,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.line,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:sale.point.sale.line,currency:"
 msgid "Currency"
@@ -292,7 +292,7 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.line,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr ""
 
 msgctxt "field:sale.point.sale.line,quantity:"
 msgid "Quantity"
@@ -300,15 +300,15 @@ msgstr ""
 
 msgctxt "field:sale.point.sale.line,sale:"
 msgid "Sale"
-msgstr "Penjualan"
+msgstr ""
 
 msgctxt "field:sale.point.sale.line,sale_state:"
 msgid "Sale State"
-msgstr "Status Penjualan"
+msgstr ""
 
 msgctxt "field:sale.point.sale.line,unit:"
 msgid "Unit"
-msgstr "Satuan"
+msgstr ""
 
 msgctxt "field:sale.point.sale.line,unit_gross_price:"
 msgid "Unit Gross Price"
@@ -469,7 +469,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:cash_session_close_button"
 msgid "Close"
-msgstr "Tutup"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:cash_session_open_button"
 msgid "Re-Open"
@@ -501,23 +501,23 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
-msgstr "Proses"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_cash_session_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_type_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
-msgstr "Pengguna di dalam perusahaan"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_point_sale_companies"
 msgid "User in companies"
@@ -637,11 +637,11 @@ msgstr ""
 
 msgctxt "view:sale.point.sale.line:"
 msgid "General"
-msgstr "Umum"
+msgstr ""
 
 msgctxt "view:sale.point.sale:"
 msgid "Other Info"
-msgstr "Info Lain"
+msgstr ""
 
 msgctxt "view:sale.point.sale:"
 msgid "Payments"
@@ -649,12 +649,12 @@ msgstr ""
 
 msgctxt "view:sale.point.sale:"
 msgid "Sale"
-msgstr "Penjualan"
+msgstr ""
 
 msgctxt "wizard_button:sale.point.sale.pay,payment,end:"
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 msgctxt "wizard_button:sale.point.sale.pay,payment,pay:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
