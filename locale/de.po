@@ -130,9 +130,21 @@ msgctxt "field:account.payment.braintree.customer,braintree_nonce:"
 msgid "Braintree Nonce"
 msgstr "Braintree Nonce"
 
+msgctxt "field:account.payment.braintree.customer,identical_customers:"
+msgid "Identical Customers"
+msgstr "Identische Kunden"
+
 msgctxt "field:account.payment.braintree.customer,party:"
 msgid "Party"
 msgstr "Partei"
+
+msgctxt "field:account.payment.braintree.customer.identical,source:"
+msgid "Source"
+msgstr "Source"
+
+msgctxt "field:account.payment.braintree.customer.identical,target:"
+msgid "Target"
+msgstr "Ziel"
 
 msgctxt ""
 "field:account.payment.braintree.customer.payment_method.delete.ask,customer:"
@@ -216,6 +228,10 @@ msgstr "Braintree Konto"
 msgctxt "model:account.payment.braintree.customer,name:"
 msgid "Braintree Customer"
 msgstr "Braintree Kunde"
+
+msgctxt "model:account.payment.braintree.customer.identical,name:"
+msgid "Braintree Customer Identical"
+msgstr "Braintree Kunde Identisch"
 
 msgctxt ""
 "model:account.payment.braintree.customer.payment_method.delete.ask,name:"
