@@ -6,6 +6,15 @@ msgctxt "field:sale.sale,revision:"
 msgid "Revision"
 msgstr "Revisão"
 
+#, fuzzy
+msgctxt "field:sale.subscription,revision:"
+msgid "Revision"
+msgstr "Revisão"
+
 msgctxt "view:sale.sale:"
+msgid "/"
+msgstr ""
+
+msgctxt "view:sale.subscription:"
 msgid "/"
 msgstr ""
