@@ -20,7 +20,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
@@ -66,10 +66,9 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:purchase.requisition.line,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
@@ -170,7 +169,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:requisition_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Proses"
 
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"

@@ -89,7 +89,7 @@ msgstr "Udm categoria del prodotto"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
 msgid "Purchase Request"
-msgstr "richiesta di acquisto"
+msgstr "Richiesta di acquisto"
 
 msgctxt "field:purchase.requisition.line,purchase_requisition_state:"
 msgid "Purchase Requisition State"
@@ -119,15 +119,13 @@ msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Prezzo Unitario"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
-msgstr "Requests"
+msgstr "Richieste"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_request_form2"
 msgid "Requests"
-msgstr "Requests"
+msgstr "Richieste"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
