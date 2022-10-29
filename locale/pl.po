@@ -34,6 +34,11 @@ msgctxt "field:product.template,purchase_secondary_uom_rate:"
 msgid "Purchase Secondary UOM Rate"
 msgstr ""
 
+msgctxt ""
+"field:purchase.blanket_agreement.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr ""
+
 msgctxt "field:purchase.line,product_secondary_uom_category:"
 msgid "Product Secondary UOM Category"
 msgstr ""

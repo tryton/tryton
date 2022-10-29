@@ -34,6 +34,11 @@ msgctxt "field:product.template,purchase_secondary_uom_rate:"
 msgid "Purchase Secondary UOM Rate"
 msgstr "Rati UdM de compra secundaria"
 
+msgctxt ""
+"field:purchase.blanket_agreement.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Categoria de UdM secundaria del producte"
+
 msgctxt "field:purchase.line,product_secondary_uom_category:"
 msgid "Product Secondary UOM Category"
 msgstr "Categoria UdM de compra secundaria"
