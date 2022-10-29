@@ -4,79 +4,76 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.address,vsf_telephone:"
 msgid "Telephone"
-msgstr "Telefono"
+msgstr ""
 
 msgctxt "field:product.product,vsf_sku:"
 msgid "SKU"
-msgstr "SKU"
+msgstr ""
 
 msgctxt "field:product.template,vsf_sku:"
 msgid "SKU"
-msgstr "SKU"
+msgstr ""
 
 msgctxt "field:web.shop,vsf_elasticsearch_index:"
 msgid "Elasticsearch Index"
-msgstr "Indice Elasticsearch"
+msgstr ""
 
 msgctxt "field:web.shop,vsf_elasticsearch_url:"
 msgid "Elasticsearch URL"
-msgstr "URL Elasticsearch"
+msgstr ""
 
 msgctxt "field:web.shop.vsf_identifier,record:"
 msgid "Record"
-msgstr "Record"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_grand_total"
 msgid "Grand Total"
-msgstr "Somma totale"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_record_unique"
 msgid "The Vue Storefront identifier must be unique for each record."
 msgstr ""
-"L'identificatore di Vue Storefront deve essere univoco per ogni record."
 
 msgctxt "model:ir.message,text:msg_invalid_tax_identifier"
 msgid "The number \"%(code)s\" is not a valid tax identifier."
-msgstr "Il numero \"%(code)s\" non è un codice fiscale valido."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_login_wrong"
 msgid "You did not sign in correctly or your account is temporarily disabled."
 msgstr ""
-"Non hai eseguito l'accesso correttamente o il tuo account è temporaneamente "
-"disabilitato."
 
 msgctxt "model:ir.message,text:msg_shipping"
 msgid "Shipping"
-msgstr "Spedizione"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_subtotal"
 msgid "Subtotal"
-msgstr "Subtotale"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_tax"
 msgid "Tax"
-msgstr "Imposta"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_unknown_country_code"
 msgid "The country code \"%(code)s\" is not known."
-msgstr "Il codice paese \"%(code)s\" è sconoscito."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_vsf_identifier"
 msgid "Vue Storefront Identifier"
-msgstr "Identificatore Vue Storefront"
+msgstr ""
 
 msgctxt "model:web.shop.vsf_identifier,name:"
 msgid "Web Shop Vue Storefront Identifier"
-msgstr "Identificatore negozio web Vue Storefront"
+msgstr ""
 
 msgctxt "selection:ir.cron,method:"
 msgid "Update Vue Storefront"
-msgstr "Aggiorna Vue Storefront"
+msgstr ""
 
 msgctxt "selection:web.shop,type:"
 msgid "Vue Storefront"
-msgstr "Vue Storefront"
+msgstr ""
 
 msgctxt "view:web.shop:"
 msgid "Vue Storefront"
-msgstr "Vue Storefront"
+msgstr ""
