@@ -60,7 +60,7 @@ msgstr "Minimale hoeveelheid"
 
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr "Boekingen/bewegingen"
+msgstr "Mutaties"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
@@ -88,7 +88,7 @@ msgstr "prognose lijn"
 
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutatie"
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
@@ -169,7 +169,7 @@ msgstr "Stock prognose lijn"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
-msgstr "prognose lijn - boeking/beweging"
+msgstr "Prognose lijn - Mutatie"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"

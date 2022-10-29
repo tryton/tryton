@@ -2,62 +2,53 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:stock.forecast,active:"
 msgid "Active"
-msgstr "Attivo"
+msgstr ""
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr ""
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
-msgstr "Data Inizio"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
-msgstr "Righe"
+msgstr ""
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
-msgstr "Stato"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast,to_date:"
 msgid "To Date"
-msgstr "a data"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
-msgstr "Luogo"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
-msgstr "Data Inizio"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
-msgstr "a data"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
-msgstr "Prodotto"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
-msgstr "Forecasts"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
@@ -67,22 +58,21 @@ msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr "Movimenti"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
-msgstr "Prodotto"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Categotia UdM prodotto"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
-msgstr "Quantità"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
@@ -90,40 +80,36 @@ msgstr ""
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
-msgstr "UdM"
+msgstr ""
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr "Movimento"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
-msgstr "Forecasts"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
-msgstr "Complete Forecast"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
-msgstr "Tutti"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
-msgstr "Fatto"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
-msgstr "Bozza"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_forecast_date_overlap"
 msgid ""
@@ -141,15 +127,15 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_forecast_companies"
 msgid "User in companies"
@@ -157,26 +143,23 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
-msgstr "Forecasts"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
-msgstr "Stock Forecast"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
-msgstr "Stock Forecast"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
-msgstr "Complete Forecast"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
-msgstr "Complete Forecast"
+msgstr ""
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
@@ -188,26 +171,23 @@ msgstr ""
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"
-msgstr "Annullato"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
-msgstr "Fatto"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
-msgstr "Bozza"
+msgstr ""
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
-msgstr "Complete Forecast"
+msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
@@ -219,12 +199,11 @@ msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
-msgstr "Scelta date"
+msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
@@ -232,4 +211,4 @@ msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
