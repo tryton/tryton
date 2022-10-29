@@ -19,6 +19,15 @@ msgctxt "help:stock.move,fifo_quantity_available:"
 msgid "Quantity available for FIFO"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_move_cancel_fifo"
+msgid ""
+"You cannot cancel move \"%(move)s\" because it is used for FIFO cost price "
+"calculation."
+msgstr ""
+"Você não pode apagar a movimentação \"%s\" que é usada para o preço de custo"
+" PEPS."
+
 msgctxt "model:ir.message,text:msg_move_delete_fifo"
 msgid ""
 "You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
