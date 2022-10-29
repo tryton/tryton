@@ -26,6 +26,10 @@ msgctxt "field:stock.move.add.lots.start.lot,product_default_uom_category:"
 msgid "Default Product UoM Category"
 msgstr "Standardmaßeinheitenkategorie"
 
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
 msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Maßeinheit Menge"
@@ -45,6 +49,10 @@ msgstr "Die größte Maßeinheit für die Charge."
 msgctxt "help:stock.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
 msgstr "Die maximale Menge für die Charge."
+
+msgctxt "help:stock.move.add.lots.start.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "Die größte Maßeinheit für die Charge."
 
 msgctxt "help:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."

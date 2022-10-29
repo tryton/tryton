@@ -29,6 +29,11 @@ msgid "Default Product UoM Category"
 msgstr "Vaikimisi toote mõõtühiku kategooria"
 
 #, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+#, fuzzy
 msgctxt "field:stock.move.add.lots.start.lot,unit_quantity:"
 msgid "Unit Quantity"
 msgstr "Kogus"
@@ -48,6 +53,11 @@ msgstr "Partii suurim ühik."
 msgctxt "help:stock.lot,unit_quantity:"
 msgid "The maximal quantity for the lot."
 msgstr "Suurim partiikogus."
+
+#, fuzzy
+msgctxt "help:stock.move.add.lots.start.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "Partii suurim ühik."
 
 #, fuzzy
 msgctxt "help:stock.move.add.lots.start.lot,unit_quantity:"
