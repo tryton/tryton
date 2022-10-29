@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.statement.origin,keywords:"
 msgid "Keywords"
-msgstr "Kata Kunci"
+msgstr ""
 
 msgctxt "field:account.statement.rule,amount_high:"
 msgid "Amount High"
@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.statement.rule,currency:"
 msgid "Currency"
@@ -24,23 +24,23 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
-msgstr "Deskripsi"
+msgstr ""
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
-msgstr "Aturan Informasi"
+msgstr ""
 
 msgctxt "field:account.statement.rule,journal:"
 msgid "Journal"
-msgstr "Jurnal"
+msgstr ""
 
 msgctxt "field:account.statement.rule,lines:"
 msgid "Lines"
-msgstr "Baris"
+msgstr ""
 
 msgctxt "field:account.statement.rule,name:"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
@@ -68,11 +68,11 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.information,key:"
 msgid "Key"
-msgstr "Kunci"
+msgstr ""
 
 msgctxt "field:account.statement.rule.information,key_type:"
 msgid "Key Type"
-msgstr "Jenis Kunci"
+msgstr ""
 
 msgctxt "field:account.statement.rule.information,number_high:"
 msgid "Numeric High"
@@ -88,23 +88,23 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.information,selection:"
 msgid "Selection"
-msgstr "Pilihan"
+msgstr ""
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
-msgstr "Akun"
+msgstr ""
 
 msgctxt "field:account.statement.rule.line,amount:"
 msgid "Amount"
-msgstr "Jumlah"
+msgstr ""
 
 msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
-msgstr "Perusahaan"
+msgstr ""
 
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
-msgstr "Pihak"
+msgstr ""
 
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
@@ -169,11 +169,11 @@ msgstr ""
 
 msgctxt "view:account.statement.rule.information:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
 msgctxt "view:account.statement.rule:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
 msgctxt "view:account.statement.rule:"
 msgid "Between"
