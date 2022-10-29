@@ -37,6 +37,10 @@ msgctxt "field:stock.shipment.in,cost_used:"
 msgid "Cost"
 msgstr "Költség"
 
+msgctxt "field:stock.shipment.in,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr ""
+
 msgctxt "help:stock.shipment.in,cost_edit:"
 msgid "Check to edit the cost."
 msgstr ""
@@ -44,3 +48,8 @@ msgstr ""
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.shipment.in:"
+msgid "Costs"
+msgstr "Költség"

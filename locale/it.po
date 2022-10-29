@@ -20,27 +20,34 @@ msgstr "Costo"
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
-msgstr "Valuta costo"
+msgstr "Valuta di costo"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost_currency_used:"
 msgid "Cost Currency"
-msgstr "Valuta costo"
+msgstr "Valuta di costo"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost_edit:"
 msgid "Edit Cost"
-msgstr "Costo"
+msgstr "Modifica costo"
 
 #, fuzzy
 msgctxt "field:stock.shipment.in,cost_used:"
 msgid "Cost"
 msgstr "Costo"
 
+msgctxt "field:stock.shipment.in,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Costo di spedizione in sola lettura"
+
 msgctxt "help:stock.shipment.in,cost_edit:"
 msgid "Check to edit the cost."
-msgstr ""
+msgstr "Spunta per modificare il costo."
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
 msgstr "A valore"
+
+#, fuzzy
+msgctxt "view:stock.shipment.in:"
+msgid "Costs"
+msgstr "Costo"

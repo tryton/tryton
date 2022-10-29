@@ -34,6 +34,10 @@ msgctxt "field:stock.shipment.in,cost_used:"
 msgid "Cost"
 msgstr "Coste"
 
+msgctxt "field:stock.shipment.in,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Coste envío solo lectura"
+
 msgctxt "help:stock.shipment.in,cost_edit:"
 msgid "Check to edit the cost."
 msgstr "Marcar para editar el coste."
@@ -41,3 +45,7 @@ msgstr "Marcar para editar el coste."
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
 msgstr "Por valor"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Costs"
+msgstr "Costes"
