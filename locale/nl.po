@@ -191,7 +191,7 @@ msgstr "Template - boekhoudkundige categorie"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr "Product financiën administratie"
+msgstr "Product financiële administratie"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
