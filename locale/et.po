@@ -12,6 +12,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Kas soovid lahkuda?"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "Serverit ei leita."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Serverit ei leita."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Looja"
+
 msgid "Favorites"
 msgstr "Lemmikud"
 
@@ -84,11 +99,17 @@ msgstr "Näita abiinfot"
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
-msgstr "Kiirklahvid"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "Sulge"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "Kiirklahvid"
 
 msgid "Global shortcuts"
 msgstr "Globaalsed otseteed"
@@ -110,6 +131,13 @@ msgstr "Kasutaja nimi"
 
 msgid "Database"
 msgstr "Andmebaas"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Logi sisse"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Valik:"
@@ -668,7 +696,8 @@ msgstr "%1 (tekst)"
 msgid "%1 (model name)"
 msgstr "%1 (mudeli nimi)"
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "%1 (kirje nimi)"
 
 msgid "What is the name of this export?"

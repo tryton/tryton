@@ -5,6 +5,18 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Ben je zeker dat je weggaat?"
 
+msgid "Incompatible version of the server."
+msgstr "Onjuiste versie van de server."
+
+msgid "Version mismatch"
+msgstr "Foutieve versie"
+
+msgid "Could not connect to the server."
+msgstr "Kan geen verbinding maken met server."
+
+msgid "Connection error"
+msgstr "Verbindingsfout"
+
 msgid "Favorites"
 msgstr "Favorieten"
 
@@ -77,11 +89,17 @@ msgstr "Toon deze hulp"
 msgid "Show/Hide access keys"
 msgstr "Toegangssleutels tonen/verbergen"
 
-msgid "Keyboard shortcuts"
-msgstr "Toetsenbord sneltoetsen"
+msgid "Help"
+msgstr "Help"
 
 msgid "Close"
 msgstr "Sluiten"
+
+msgid "Documentation..."
+msgstr "Documentatie..."
+
+msgid "Keyboard shortcuts"
+msgstr "Toetsenbord sneltoetsen"
 
 msgid "Global shortcuts"
 msgstr "algemene snelkoppeling"
@@ -103,6 +121,12 @@ msgstr "Gebruikersnaam"
 
 msgid "Database"
 msgstr "Database"
+
+msgid "Login with"
+msgstr "Inloggen met"
+
+msgid "Not found."
+msgstr "Niet gevonden."
 
 msgid "Your selection:"
 msgstr "Uw selectie:"
@@ -637,8 +661,8 @@ msgstr "%1 (string)"
 msgid "%1 (model name)"
 msgstr "%1 (model naam)"
 
-msgid "%1 (record name)"
-msgstr "%1 (recordnaam)"
+msgid "%1/Record Name"
+msgstr "%1/Record Naam"
 
 msgid "What is the name of this export?"
 msgstr "Wat is de naam voor deze export?"

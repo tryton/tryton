@@ -5,6 +5,18 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Esteu segur que voleu sortir?"
 
+msgid "Incompatible version of the server."
+msgstr "El client no és compatible amb la versió del servidor."
+
+msgid "Version mismatch"
+msgstr "Versió incompatible"
+
+msgid "Could not connect to the server."
+msgstr "No s'ha pogut connectar amb el servidor."
+
+msgid "Connection error"
+msgstr "Error de connexió"
+
 msgid "Favorites"
 msgstr "Preferits"
 
@@ -77,11 +89,17 @@ msgstr "Mostra aquesta ajuda"
 msgid "Show/Hide access keys"
 msgstr "Mostra/Amaga les tecles ràpides"
 
-msgid "Keyboard shortcuts"
-msgstr "Dreceres de teclat"
+msgid "Help"
+msgstr "Ajuda"
 
 msgid "Close"
 msgstr "Tanca"
+
+msgid "Documentation..."
+msgstr "Documentació..."
+
+msgid "Keyboard shortcuts"
+msgstr "Dreceres de teclat"
 
 msgid "Global shortcuts"
 msgstr "Dreceres globals"
@@ -103,6 +121,12 @@ msgstr "Nom d'usuari"
 
 msgid "Database"
 msgstr "Base de dades"
+
+msgid "Login with"
+msgstr "Identificar-se amb"
+
+msgid "Not found."
+msgstr "No s'han trobat."
 
 msgid "Your selection:"
 msgstr "La vostra selecció:"
@@ -637,8 +661,8 @@ msgstr "%1 (cadena)"
 msgid "%1 (model name)"
 msgstr "%1 (nom del model)"
 
-msgid "%1 (record name)"
-msgstr "%1 (nom del registre)"
+msgid "%1/Record Name"
+msgstr "%1/Nom del registre"
 
 msgid "What is the name of this export?"
 msgstr "Quin és el nom d'aquesta exportació?"

@@ -5,6 +5,18 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Wollen Sie die Seite wirklich verlassen?"
 
+msgid "Incompatible version of the server."
+msgstr "Inkompatible Serverversion."
+
+msgid "Version mismatch"
+msgstr "Versionskonflikt"
+
+msgid "Could not connect to the server."
+msgstr "Verbindung zum Server nicht möglich."
+
+msgid "Connection error"
+msgstr "Verbindungsfehler"
+
 msgid "Favorites"
 msgstr "Favoriten"
 
@@ -77,11 +89,17 @@ msgstr "Diese Hilfe anzeigen"
 msgid "Show/Hide access keys"
 msgstr "Zugriffstasten anzeigen/ausblenden"
 
-msgid "Keyboard shortcuts"
-msgstr "Tastenkombinationen"
+msgid "Help"
+msgstr "Hilfe"
 
 msgid "Close"
 msgstr "Schließen"
+
+msgid "Documentation..."
+msgstr "Dokumentation..."
+
+msgid "Keyboard shortcuts"
+msgstr "Tastenkombinationen"
 
 msgid "Global shortcuts"
 msgstr "Globale Tastenkombinationen"
@@ -103,6 +121,12 @@ msgstr "Benutzername"
 
 msgid "Database"
 msgstr "Datenbank"
+
+msgid "Login with"
+msgstr "Log-in mit"
+
+msgid "Not found."
+msgstr "Nicht gefunden."
 
 msgid "Your selection:"
 msgstr "Ihre Auswahl:"
@@ -643,8 +667,8 @@ msgstr "%1 (string)"
 msgid "%1 (model name)"
 msgstr "%1 (Bezeichnung des Datensatzes)"
 
-msgid "%1 (record name)"
-msgstr "%1 (Bezeichnung des Datensatzes)"
+msgid "%1/Record Name"
+msgstr "%1/Bezeichnung des Datensatzes"
 
 msgid "What is the name of this export?"
 msgstr "Wie soll der Name des Exports lauten?"

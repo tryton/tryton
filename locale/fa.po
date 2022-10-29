@@ -19,6 +19,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "برای ترک برنامه، آیا مطمئن هستید؟"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "امکان دسترسی به سرور وجود ندارد."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "امکان دسترسی به سرور وجود ندارد."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "ایجاد کاربر"
+
 msgid "Favorites"
 msgstr "علاقه مندی ها"
 
@@ -91,11 +106,17 @@ msgstr "نمایش این راهنما"
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
-msgstr "میانبرهای صفحه کلید"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "بسته"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "میانبرهای صفحه کلید"
 
 msgid "Global shortcuts"
 msgstr "کلید های میانبر سراسری"
@@ -117,6 +138,13 @@ msgstr "نام کاربری"
 
 msgid "Database"
 msgstr "پایگاه داده"
+
+#, fuzzy
+msgid "Login with"
+msgstr "ورود"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "انتخاب شما :"
@@ -678,7 +706,8 @@ msgstr "\"1%\" (متنی)"
 msgid "%1 (model name)"
 msgstr "\"1%\" (نام مدل)"
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "\"1%\" (نام پرونده)"
 
 msgid "What is the name of this export?"

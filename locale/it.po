@@ -5,6 +5,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Sei sicuro di voler abbandonare?"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "server non raggiungibile"
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "server non raggiungibile"
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Errore dell'applicazione"
+
 msgid "Favorites"
 msgstr "Preferiti"
 
@@ -77,11 +92,17 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
+msgid "Help"
 msgstr ""
 
 msgid "Close"
 msgstr "Chiudi"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr ""
 
 msgid "Global shortcuts"
 msgstr ""
@@ -103,6 +124,13 @@ msgstr ""
 
 msgid "Database"
 msgstr "Database"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Login"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "La tua selezione:"
@@ -403,7 +431,7 @@ msgid "Find"
 msgstr "Trova"
 
 msgid "From"
-msgstr ""
+msgstr "Da"
 
 msgid "To"
 msgstr ""
@@ -649,8 +677,9 @@ msgstr "%1 (stringa)"
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
-msgstr ""
+#, fuzzy
+msgid "%1/Record Name"
+msgstr "Record salvato."
 
 msgid "What is the name of this export?"
 msgstr "qual è il nome di questa esportazione?"
@@ -658,11 +687,10 @@ msgstr "qual è il nome di questa esportazione?"
 msgid "Override %1 definition?"
 msgstr "sovrascrivere definizione %1?"
 
-#, fuzzy
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
-msgstr[0] "Record salvato."
-msgstr[1] "Record salvato."
+msgstr[0] "%1 record salvato"
+msgstr[1] "%1 record salvati"
 
 msgid "E-mail %1"
 msgstr ""

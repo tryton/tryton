@@ -6,6 +6,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "您确定要离开吗？"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "无法连接服务器."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "无法连接服务器."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "创建者"
+
 msgid "Favorites"
 msgstr "收藏(_V)"
 
@@ -80,11 +95,17 @@ msgstr "显示此帮助"
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
-msgstr "键盘快捷键"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "关闭"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "键盘快捷键"
 
 msgid "Global shortcuts"
 msgstr "全局快捷方式"
@@ -106,6 +127,13 @@ msgstr "用户名"
 
 msgid "Database"
 msgstr "数据库"
+
+#, fuzzy
+msgid "Login with"
+msgstr "登录"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "已选择:"
@@ -644,7 +672,8 @@ msgstr "%1 (字符串)"
 msgid "%1 (model name)"
 msgstr "%1 (模型名称)"
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "%1 (记录名称)"
 
 msgid "What is the name of this export?"

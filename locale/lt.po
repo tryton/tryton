@@ -6,6 +6,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr ""
 
+msgid "Incompatible version of the server."
+msgstr ""
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Prisegti pastabą prie įrašo"
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Sukūręs naudotojas"
+
 msgid "Favorites"
 msgstr "Mėgstami"
 
@@ -80,11 +94,17 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
+msgid "Help"
 msgstr ""
 
 msgid "Close"
 msgstr "Užverti"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr ""
 
 msgid "Global shortcuts"
 msgstr ""
@@ -105,6 +125,13 @@ msgid "User name"
 msgstr "Naudotojo vardas"
 
 msgid "Database"
+msgstr ""
+
+#, fuzzy
+msgid "Login with"
+msgstr "Prisijungti"
+
+msgid "Not found."
 msgstr ""
 
 msgid "Your selection:"
@@ -650,8 +677,9 @@ msgstr ""
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
-msgstr ""
+#, fuzzy
+msgid "%1/Record Name"
+msgstr "Įrašas išsaugotas."
 
 msgid "What is the name of this export?"
 msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"

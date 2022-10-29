@@ -6,6 +6,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr ""
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "Ni se mogoče povezati s strežnikom."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Ni se mogoče povezati s strežnikom."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Ustvaril"
+
 msgid "Favorites"
 msgstr "Zaznamki"
 
@@ -80,11 +95,17 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
+msgid "Help"
 msgstr ""
 
 msgid "Close"
 msgstr "Zapri"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr ""
 
 msgid "Global shortcuts"
 msgstr ""
@@ -106,6 +127,13 @@ msgstr "Uporabniško ime"
 
 msgid "Database"
 msgstr "Podatkovna baza"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Prijava"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Vaša izbira:"
@@ -667,7 +695,8 @@ msgstr "%1 (niz)"
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "%1 (ime zapisa)"
 
 msgid "What is the name of this export?"

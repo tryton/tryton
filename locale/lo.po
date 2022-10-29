@@ -6,6 +6,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr ""
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
+
+#, fuzzy
+msgid "Connection error"
+msgstr "ຜູ້ສ້າງ"
+
 msgid "Favorites"
 msgstr "ທີ່ມັກ"
 
@@ -79,11 +94,17 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
+msgid "Help"
 msgstr ""
 
 msgid "Close"
 msgstr "ອັດ"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr ""
 
 msgid "Global shortcuts"
 msgstr ""
@@ -105,6 +126,13 @@ msgstr "ຊື່ຜູ້ໃຊ້"
 
 msgid "Database"
 msgstr "ຖານຂໍ້ມູນ"
+
+#, fuzzy
+msgid "Login with"
+msgstr "ເຂົ້າສູ່ລະບົບ"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "ການເລືອກຂອງທ່ານ:"
@@ -662,8 +690,9 @@ msgstr "%1 (string)"
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
-msgstr ""
+#, fuzzy
+msgid "%1/Record Name"
+msgstr "ແຖວຂໍ້ມູນຖືກບັນທຶກໄວ້ແລ້ວ"
 
 msgid "What is the name of this export?"
 msgstr "ຊື່ຂອງການສົ່ງອອກນີ້ແມ່ນຫຍັງ?"

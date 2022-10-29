@@ -5,6 +5,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Sigur iesiti?"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "Serverul nu se poate accessa."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Serverul nu se poate accessa."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Eroare de aplicație"
+
 msgid "Favorites"
 msgstr "Favorite"
 
@@ -77,11 +92,17 @@ msgstr "Arătați acest ajutor"
 msgid "Show/Hide access keys"
 msgstr "Arata/Ascunde taste de access"
 
-msgid "Keyboard shortcuts"
-msgstr "Comenzi rapide"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "Închidere"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "Comenzi rapide"
 
 msgid "Global shortcuts"
 msgstr "Comenzile rapide globale"
@@ -103,6 +124,13 @@ msgstr "Utilizator"
 
 msgid "Database"
 msgstr "Bază de date"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Autentificare"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Selecția dvs.:"
@@ -640,7 +668,8 @@ msgstr "%1 (șir)"
 msgid "%1 (model name)"
 msgstr "%1 (denumire model)"
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "%1 (denmire inregistrare)"
 
 msgid "What is the name of this export?"

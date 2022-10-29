@@ -18,6 +18,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr ""
 
+msgid "Incompatible version of the server."
+msgstr ""
+
+msgid "Version mismatch"
+msgstr ""
+
+msgid "Could not connect to the server."
+msgstr ""
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Creado por:"
+
 msgid "Favorites"
 msgstr ""
 
@@ -90,10 +103,16 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
+msgid "Help"
 msgstr ""
 
 msgid "Close"
+msgstr ""
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
 msgstr ""
 
 msgid "Global shortcuts"
@@ -115,6 +134,12 @@ msgid "User name"
 msgstr ""
 
 msgid "Database"
+msgstr ""
+
+msgid "Login with"
+msgstr ""
+
+msgid "Not found."
 msgstr ""
 
 msgid "Your selection:"
@@ -656,7 +681,7 @@ msgstr ""
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
+msgid "%1/Record Name"
 msgstr ""
 
 msgid "What is the name of this export?"

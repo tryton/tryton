@@ -20,6 +20,21 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr "Czy na pewno wyjść?"
 
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "Brak dostępu do serwera."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Brak dostępu do serwera."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Utworzył"
+
 msgid "Favorites"
 msgstr "Ulubione"
 
@@ -92,11 +107,17 @@ msgstr "Wyświetl tę pomoc"
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
-msgstr "Skróty klawiszowe"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "Zamknij"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "Skróty klawiszowe"
 
 msgid "Global shortcuts"
 msgstr "Skróty globalne"
@@ -118,6 +139,13 @@ msgstr "Nazwa użytkownika"
 
 msgid "Database"
 msgstr "Baza danych"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Login"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Twoje zaznaczenie:"
@@ -658,7 +686,8 @@ msgstr "%1 (string)"
 msgid "%1 (model name)"
 msgstr "%1 (model name)"
 
-msgid "%1 (record name)"
+#, fuzzy
+msgid "%1/Record Name"
 msgstr "%1 (record name)"
 
 msgid "What is the name of this export?"

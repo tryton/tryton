@@ -6,6 +6,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgid "Are your sure to leave?"
 msgstr ""
 
+msgid "Incompatible version of the server."
+msgstr ""
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Jegyzet hozzáadása a rekordhoz"
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Alkalmazáshiba"
+
 msgid "Favorites"
 msgstr "Könyvjelzők"
 
@@ -78,11 +92,17 @@ msgstr ""
 msgid "Show/Hide access keys"
 msgstr ""
 
-msgid "Keyboard shortcuts"
-msgstr "Gyorsbillentyűk"
+msgid "Help"
+msgstr ""
 
 msgid "Close"
 msgstr "Bezárás"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "Gyorsbillentyűk"
 
 msgid "Global shortcuts"
 msgstr ""
@@ -104,6 +124,13 @@ msgstr "Felhasználónév"
 
 msgid "Database"
 msgstr "Adatbázis"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Bejelentkezés"
+
+msgid "Not found."
+msgstr ""
 
 msgid "Your selection:"
 msgstr "Az ön választásai:"
@@ -644,8 +671,9 @@ msgstr ""
 msgid "%1 (model name)"
 msgstr ""
 
-msgid "%1 (record name)"
-msgstr ""
+#, fuzzy
+msgid "%1/Record Name"
+msgstr "Rekord elmentve."
 
 msgid "What is the name of this export?"
 msgstr "Mi legyen az oszloplista neve?"
