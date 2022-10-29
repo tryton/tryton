@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:purchase.line.component,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "field:purchase.line.component,quantity_ratio:"
 msgid "Quantity Ratio"
@@ -156,7 +156,7 @@ msgstr ""
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Movimenti"
 
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
@@ -184,7 +184,7 @@ msgstr ""
 
 msgctxt "field:sale.line.component,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "field:sale.line.component,quantity_ratio:"
 msgid "Quantity Ratio"

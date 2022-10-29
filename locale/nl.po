@@ -64,11 +64,11 @@ msgstr "Regel"
 
 msgctxt "field:purchase.line.component,move_done:"
 msgid "Moves Done"
-msgstr "Boekingen klaar"
+msgstr "Mutaties gereed"
 
 msgctxt "field:purchase.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr "Boekingen uitzondering"
+msgstr "Mutaties uitzondering"
 
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
@@ -76,11 +76,11 @@ msgstr "beweging"
 
 msgctxt "field:purchase.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Genegeerde boekingen"
+msgstr "Genegeerde mutaties"
 
 msgctxt "field:purchase.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Opnieuw aangemaakte boekingen"
+msgstr "Opnieuw aangemaakte mutaties"
 
 msgctxt "field:purchase.line.component,parent_type:"
 msgid "Parent Type"
@@ -116,7 +116,7 @@ msgstr "Component"
 
 msgctxt "field:purchase.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutatie"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,component:"
 msgid "Component"
@@ -124,7 +124,7 @@ msgstr "Component"
 
 msgctxt "field:purchase.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutatie"
 
 msgctxt "field:sale.line,component_children:"
 msgid "Component Children"
@@ -148,23 +148,23 @@ msgstr "Regels"
 
 msgctxt "field:sale.line.component,move_done:"
 msgid "Moves Done"
-msgstr "Boekingen klaar"
+msgstr "Mutaties gereed"
 
 msgctxt "field:sale.line.component,move_exception:"
 msgid "Moves Exception"
-msgstr "Boekingen uitzondering"
+msgstr "Mutaties uitzondering"
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"
-msgstr "Boekingen/bewegingen"
+msgstr "Mutaties"
 
 msgctxt "field:sale.line.component,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Genegeerde boekingen"
+msgstr "Genegeerde mutaties"
 
 msgctxt "field:sale.line.component,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Opnieuw aangemaakte boekingen"
+msgstr "Opnieuw aangemaakte mutaties"
 
 msgctxt "field:sale.line.component,parent_type:"
 msgid "Parent Type"
@@ -200,7 +200,7 @@ msgstr "Component"
 
 msgctxt "field:sale.line.component-ignored-stock.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutatie"
 
 msgctxt "field:sale.line.component-recreated-stock.move,component:"
 msgid "Sale Line Component"
@@ -208,7 +208,7 @@ msgstr "Verkooplijncomponent"
 
 msgctxt "field:sale.line.component-recreated-stock.move,move:"
 msgid "Move"
-msgstr "Boeking/beweging"
+msgstr "Mutatie"
 
 msgctxt "help:product.component,fixed:"
 msgid ""

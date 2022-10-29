@@ -176,7 +176,7 @@ msgstr ""
 
 msgctxt "field:sale.line.component,product:"
 msgid "Product"
-msgstr "Produk"
+msgstr ""
 
 msgctxt "field:sale.line.component,product_unit_category:"
 msgid "Product Unit Category"
