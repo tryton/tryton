@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Periodo di fornitura"
 
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Periodo di fornitura"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
@@ -21,13 +21,12 @@ msgstr "Production"
 
 msgctxt "model:ir.message,text:msg_late_productions"
 msgid "There are some productions that are late."
-msgstr ""
+msgstr "Ci sono alcune produzioni che sono in ritardo."
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr "Production"
+msgstr "Produzione"

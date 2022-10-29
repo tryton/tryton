@@ -21,7 +21,7 @@ msgstr "Productie"
 
 msgctxt "model:ir.message,text:msg_late_productions"
 msgid "There are some productions that are late."
-msgstr "Er zijn enkele producties die te laat zijn."
+msgstr "Er zijn enkele producties die laat zijn."
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"
