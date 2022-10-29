@@ -31,6 +31,11 @@ msgctxt "field:account.account,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.account,context_company:"
+msgid "Context Company"
+msgstr "شرکت"
+
 msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
@@ -136,6 +141,21 @@ msgstr "حساب"
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
 msgstr "مالیات"
+
+#, fuzzy
+msgctxt "field:account.account.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+#, fuzzy
+msgctxt "field:account.account.context,posted:"
+msgid "Posted Moves"
+msgstr "جابجایی ها ارسال شده"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
@@ -530,23 +550,28 @@ msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
 msgstr "واحد"
 
-msgctxt "field:account.balance_sheet.comparision.context,company:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
 msgstr "مقایسه"
 
-msgctxt "field:account.balance_sheet.comparision.context,date:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,date:"
 msgid "Date"
 msgstr "تاریخ"
 
-msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,date_cmp:"
 msgid "Date"
 msgstr "تاریخ"
 
-msgctxt "field:account.balance_sheet.comparision.context,posted:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,posted:"
 msgid "Posted Move"
 msgstr "جابجایی ارسال شده"
 
@@ -1350,6 +1375,21 @@ msgid "Tax Lines"
 msgstr "سطرهای مالیات"
 
 #, fuzzy
+msgctxt "field:account.move.line.delegate.start,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.move.line.delegate.start,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:account.move.line.delegate.start,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
 msgstr "شرح"
@@ -1594,14 +1634,6 @@ msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
 msgstr "نوع"
 
-msgctxt "field:account.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "سال مالی"
-
-msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Moves"
-msgstr "جابجایی ها ارسال شده"
-
 msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -1803,6 +1835,11 @@ msgid "Company"
 msgstr "شرکت"
 
 #, fuzzy
+msgctxt "field:account.tax.code,context_company:"
+msgid "Context Company"
+msgstr "شرکت"
+
+#, fuzzy
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "واحد پول"
@@ -1838,6 +1875,41 @@ msgstr "الگو"
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
 msgstr "بازنویسی الگو"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,end_period:"
+msgid "End Period"
+msgstr "پایان دوره"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,method:"
+msgid "Method"
+msgstr "روش"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,periods:"
+msgid "Periods"
+msgstr "دوره ها"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,start_period:"
+msgid "Start Period"
+msgstr "شروع دوره"
 
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
@@ -1886,18 +1958,6 @@ msgstr "مالیات"
 msgctxt "field:account.tax.code.line.template,type:"
 msgid "Type"
 msgstr "نوع"
-
-msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "سال مالی"
-
-msgctxt "field:account.tax.code.open_chart.start,method:"
-msgid "Method"
-msgstr "روش"
-
-msgctxt "field:account.tax.code.open_chart.start,periods:"
-msgid "Periods"
-msgstr "دوره ها"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
@@ -2319,6 +2379,16 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
 
+#, fuzzy
+msgctxt "help:account.account.context,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "برای تمام سال های مالی باز، خالی بگذارید"
+
+#, fuzzy
+msgctxt "help:account.account.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
@@ -2353,7 +2423,7 @@ msgid "Only include posted moves."
 msgstr "نمایش فقط جابجایی ارسال شده"
 
 #, fuzzy
-msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgctxt "help:account.balance_sheet.comparison.context,posted:"
 msgid "Only include posted moves."
 msgstr "نمایش فقط جابجایی ارسال شده"
 
@@ -2465,16 +2535,6 @@ msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr "مقادیر کلمات کلیدی جایگزین توسط براکت ('{' و '}') معرفی میشوند."
 
-#, fuzzy
-msgctxt "help:account.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr "برای تمام سال های مالی باز، خالی بگذارید"
-
-#, fuzzy
-msgctxt "help:account.open_chart.start,posted:"
-msgid "Only include posted moves."
-msgstr "نمایش فقط جابجایی ارسال شده"
-
 msgctxt "help:account.reconcile.start,automatic:"
 msgid "Automatically reconcile suggestions."
 msgstr ""
@@ -2513,16 +2573,6 @@ msgstr "برای بازنویسی تعاریف الگو، کادر را تیک �
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
 msgstr "برای بازنویسی تعاریف الگو، کادر را تیک بزنید"
-
-#, fuzzy
-msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr "برای تمام سال های مالی باز، خالی بگذارید"
-
-#, fuzzy
-msgctxt "help:account.tax.code.open_chart.start,periods:"
-msgid "Leave empty for all periods of all open fiscal year."
-msgstr "برای تمام دوره های سال های مالی باز، خالی بگذارید"
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2574,6 +2624,11 @@ msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
 msgstr "حساب - مالیات"
 
+#, fuzzy
+msgctxt "model:account.account.context,name:"
+msgid "Account Context"
+msgstr "حساب جابجایی"
+
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "حساب بازپرداخت"
@@ -2607,7 +2662,8 @@ msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
 msgstr "مفاد تراز قدیمی"
 
-msgctxt "model:account.balance_sheet.comparision.context,name:"
+#, fuzzy
+msgctxt "model:account.balance_sheet.comparison.context,name:"
 msgid "Balance Sheet Context"
 msgstr "مفاد برگه تراز"
 
@@ -2703,6 +2759,10 @@ msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "هزینه"
 
+msgctxt "model:account.journal,name:journal_miscellaneous"
+msgid "Miscellaneous"
+msgstr ""
+
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
 msgstr "درآمد"
@@ -2734,6 +2794,11 @@ msgstr "لغو جابجایی ها"
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "حساب سطر جابجایی"
+
+#, fuzzy
+msgctxt "model:account.move.line.delegate.start,name:"
+msgid "Delegate Lines"
+msgstr "حساب بدهی"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
@@ -2790,10 +2855,6 @@ msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
 msgstr "کلیدواژه الگوی حساب جابجای"
 
-msgctxt "model:account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
-msgstr "بازکردن نمودار حساب ها"
-
 msgctxt "model:account.period,name:"
 msgid "Period"
 msgstr "دوره"
@@ -2815,6 +2876,11 @@ msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
 msgstr "کد مالیات"
 
+#, fuzzy
+msgctxt "model:account.tax.code.context,name:"
+msgid "Tax Code Context"
+msgstr "سطر کد مالیات"
+
 msgctxt "model:account.tax.code.line,name:"
 msgid "Tax Code Line"
 msgstr "سطر کد مالیات"
@@ -2822,10 +2888,6 @@ msgstr "سطر کد مالیات"
 msgctxt "model:account.tax.code.line.template,name:"
 msgid "Tax Code Line Template"
 msgstr "الگوی سطر کد مالیات"
-
-msgctxt "model:account.tax.code.open_chart.start,name:"
-msgid "Open Chart of Tax Codes"
-msgstr "بازکردن نمودار کدهای مالیاتی"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
@@ -2908,9 +2970,10 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr "حساب ها"
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Accounts"
-msgstr "حساب ها"
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
@@ -2937,10 +3000,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr "لغو جابجایی ها"
 
-msgctxt "model:ir.action,name:act_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
-msgstr "بازکردن نمودار کدهای مالیاتی"
-
 #, fuzzy
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Configuration"
@@ -2950,6 +3009,11 @@ msgstr "پیکربندی"
 msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
 msgstr "ایجاد دوره های ماهانه"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_delegate_lines_wizard"
+msgid "Delegate Lines"
+msgstr "حساب بدهی"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -3011,6 +3075,11 @@ msgid "Account Moves"
 msgstr "حساب جابجایی ها"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_move_form_delegate"
+msgid "Delegate Account Move"
+msgstr "حساب جابجایی"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "حساب جابجایی"
@@ -3048,10 +3117,6 @@ msgstr "جابجایی"
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "حساب جابجایی باز"
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Accounts"
-msgstr "بازکردن نمودار حساب ها"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
@@ -3109,9 +3174,10 @@ msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Codes"
 msgstr "کد"
 
-msgctxt "model:ir.action,name:act_tax_code_tree2"
-msgid "Tax Codes"
-msgstr "کدهای مالیاتی"
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "بازکردن نمودار کدهای مالیاتی"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
@@ -3300,6 +3366,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_deferral_unique"
 msgid "Deferral must be unique by account and fiscal year."
 msgstr "بازپرداخت باید در حساب و سال مالی منحصر به فرد باشد"
+
+msgctxt "model:ir.message,text:msg_delegate_line_same_company"
+msgid "You cannot delegate together lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
+msgid "You cannot delegate together lines with different origins."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
@@ -3796,6 +3870,11 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "حساب ها"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
+
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr "انواع حسابها"
@@ -3817,10 +3896,6 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr "تراز حساب های بدون بازپرداخت"
 
-msgctxt "model:ir.ui.menu,name:menu_charts"
-msgid "Charts"
-msgstr "نمودار ها"
-
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
 msgstr "بستن سال مالی"
@@ -3832,10 +3907,6 @@ msgstr "بستن روزنامه ها - دوره ها"
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
 msgstr "بستن دوره ها"
-
-msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
-msgstr "بازکردن نمودار کدهای مالیاتی"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -3898,10 +3969,6 @@ msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
 msgstr "ترازنامه"
 
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Accounts"
-msgstr "بازکردن نمودار حساب ها"
-
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "صورت حساب درآمد"
@@ -3948,6 +4015,11 @@ msgstr "کدهای مالیاتی"
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Codes"
 msgstr "کد"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "بازکردن نمودار کدهای مالیاتی"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
@@ -4153,9 +4225,15 @@ msgctxt "report:account.general_ledger:"
 msgid "Debit"
 msgstr "بدهی"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
-msgid "Descr."
-msgstr "شرح."
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "Draft"
+msgstr "پیش‌نویس"
 
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
@@ -4188,10 +4266,6 @@ msgstr "مبداء"
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "تاریخ چاپ :"
-
-msgctxt "report:account.general_ledger:"
-msgid "State"
-msgstr "وضعیت"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
@@ -4551,61 +4625,68 @@ msgctxt "selection:account.tax,type:"
 msgid "Percentage"
 msgstr "درصد"
 
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Base"
-msgstr "پایه"
-
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Tax"
-msgstr "مالیات"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Invoice"
-msgstr "صورت حساب"
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Base"
-msgstr "پایه"
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Tax"
-msgstr "مالیات"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Credit"
-msgstr "بستانکاری"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Invoice"
-msgstr "صورت حساب"
-
-msgctxt "selection:account.tax.code.open_chart.start,method:"
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
 msgid "By Fiscal Year"
 msgstr "بوسیله سال مالی"
 
-msgctxt "selection:account.tax.code.open_chart.start,method:"
-msgid "By Periods"
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
+msgid "By Period"
 msgstr "بوسیله دوره ها"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
+msgid "Over Periods"
+msgstr "دوره ها"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "صورت حساب"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
@@ -4878,6 +4959,16 @@ msgid "Cancel"
 msgstr "انصراف"
 
 #, fuzzy
+msgctxt "wizard_button:account.move.line.delegate,start,delegate:"
+msgid "Delegate"
+msgstr "حساب بدهی"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.delegate,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
 msgstr "انصراف"
@@ -4937,14 +5028,6 @@ msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
 msgstr "بعدی"
 
-msgctxt "wizard_button:account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "wizard_button:account.open_chart,start,open_:"
-msgid "Open"
-msgstr "باز"
-
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
 msgstr "انصراف"
@@ -4966,14 +5049,6 @@ msgstr "انصراف"
 msgctxt "wizard_button:account.reconcile,start,next_:"
 msgid "Reconcile"
 msgstr "تطبیق"
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
-msgid "Open"
-msgstr "باز"
 
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"

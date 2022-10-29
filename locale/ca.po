@@ -30,6 +30,10 @@ msgctxt "field:account.account,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.account,context_company:"
+msgid "Context Company"
+msgstr "Empresa del contexte"
+
 msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "Haver"
@@ -133,6 +137,18 @@ msgstr "Compte"
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
 msgstr "Impost"
+
+msgctxt "field:account.account.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:account.account.context,posted:"
+msgid "Posted Moves"
+msgstr "Assentaments comptabilitzats"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
@@ -494,23 +510,23 @@ msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
 msgstr "Unitat"
 
-msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
 msgstr "Comparació"
 
-msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgctxt "field:account.balance_sheet.comparison.context,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgctxt "field:account.balance_sheet.comparison.context,date_cmp:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgctxt "field:account.balance_sheet.comparison.context,posted:"
 msgid "Posted Move"
 msgstr "Assentaments comptabilitzats"
 
@@ -1273,6 +1289,18 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr "Línies d'impost"
 
+msgctxt "field:account.move.line.delegate.start,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.move.line.delegate.start,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.move.line.delegate.start,party:"
+msgid "Party"
+msgstr "Tercer"
+
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
 msgstr "Descripció"
@@ -1501,14 +1529,6 @@ msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
 msgstr "Tipus"
 
-msgctxt "field:account.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
-msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Moves"
-msgstr "Assentaments comptabilitzats"
-
 msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -1705,6 +1725,10 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.tax.code,context_company:"
+msgid "Context Company"
+msgstr "Empresa del contexte"
+
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -1740,6 +1764,34 @@ msgstr "Plantilla"
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
 msgstr "Sobreescriu plantilla"
+
+msgctxt "field:account.tax.code.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.tax.code.context,end_period:"
+msgid "End Period"
+msgstr "Període final"
+
+msgctxt "field:account.tax.code.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:account.tax.code.context,method:"
+msgid "Method"
+msgstr "Mètode"
+
+msgctxt "field:account.tax.code.context,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:account.tax.code.context,periods:"
+msgid "Periods"
+msgstr "Períodes"
+
+msgctxt "field:account.tax.code.context,start_period:"
+msgid "Start Period"
+msgstr "Període inicial"
 
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
@@ -1788,18 +1840,6 @@ msgstr "Impost"
 msgctxt "field:account.tax.code.line.template,type:"
 msgid "Type"
 msgstr "Tipus"
-
-msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
-msgctxt "field:account.tax.code.open_chart.start,method:"
-msgid "Method"
-msgstr "Mètode"
-
-msgctxt "field:account.tax.code.open_chart.start,periods:"
-msgid "Periods"
-msgstr "Períodes"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
@@ -2213,6 +2253,14 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr "Marca per sobreescriure la definició de la plantilla"
 
+msgctxt "help:account.account.context,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "Deixeu-lo buit per tots els exercicis fiscals oberts."
+
+msgctxt "help:account.account.context,posted:"
+msgid "Only include posted moves."
+msgstr "Mostra només assentaments comptabilitzats."
+
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr "Marcar per prevenir la comptabilització d'apunts al compte."
@@ -2243,7 +2291,7 @@ msgctxt "help:account.aged_balance.context,posted:"
 msgid "Only include posted moves."
 msgstr "Mostra només assentaments comptabilitzats."
 
-msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgctxt "help:account.balance_sheet.comparison.context,posted:"
 msgid "Only include posted moves."
 msgstr "Mostra només assentaments comptabilitzats."
 
@@ -2351,14 +2399,6 @@ msgstr ""
 "Les paraules clau a substituir per valors s'identifiquen escrivint-les dins "
 "de claus ('{' i '}')."
 
-msgctxt "help:account.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr "Deixeu-lo buit per tots els exercicis fiscals oberts."
-
-msgctxt "help:account.open_chart.start,posted:"
-msgid "Only include posted moves."
-msgstr "Mostra només assentaments comptabilitzats."
-
 msgctxt "help:account.reconcile.start,automatic:"
 msgid "Automatically reconcile suggestions."
 msgstr "Conciliar automàticament els suggeriments."
@@ -2394,15 +2434,6 @@ msgstr "Marca per sobreescriure la definició de la plantilla"
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
 msgstr "Marca per sobreescriure la definició de la plantilla"
-
-msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr "Deixeu-lo buit per tots els exercicis fiscals oberts."
-
-msgctxt "help:account.tax.code.open_chart.start,periods:"
-msgid "Leave empty for all periods of all open fiscal year."
-msgstr ""
-"Deixeu-lo buit per tots els períodes de tots els exercicis fiscals oberts."
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
@@ -2454,6 +2485,10 @@ msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
 msgstr "Compte - Impost"
 
+msgctxt "model:account.account.context,name:"
+msgid "Account Context"
+msgstr "Context comptable"
+
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "Tancament comptable"
@@ -2486,7 +2521,7 @@ msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
 msgstr "Context del balanç històric"
 
-msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgctxt "model:account.balance_sheet.comparison.context,name:"
 msgid "Balance Sheet Context"
 msgstr "Context del balanç de situació"
 
@@ -2578,6 +2613,10 @@ msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "Despesa"
 
+msgctxt "model:account.journal,name:journal_miscellaneous"
+msgid "Miscellaneous"
+msgstr "Miscel·lània"
+
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
 msgstr "Ingressos"
@@ -2609,6 +2648,10 @@ msgstr "Cancel·la assentaments"
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "Apunt comptable"
+
+msgctxt "model:account.move.line.delegate.start,name:"
+msgid "Delegate Lines"
+msgstr "Línies delegades"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
@@ -2662,10 +2705,6 @@ msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
 msgstr "Paraula clau de plantilla d'assentament comptable"
 
-msgctxt "model:account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
-msgstr "Obre pla comptable"
-
 msgctxt "model:account.period,name:"
 msgid "Period"
 msgstr "Període"
@@ -2686,6 +2725,10 @@ msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
 msgstr "Codi d'impost"
 
+msgctxt "model:account.tax.code.context,name:"
+msgid "Tax Code Context"
+msgstr "Context codi d'impost"
+
 msgctxt "model:account.tax.code.line,name:"
 msgid "Tax Code Line"
 msgstr "Línia codi d'impost"
@@ -2693,10 +2736,6 @@ msgstr "Línia codi d'impost"
 msgctxt "model:account.tax.code.line.template,name:"
 msgid "Tax Code Line Template"
 msgstr "Plantilla de línia codi d'impost"
-
-msgctxt "model:account.tax.code.open_chart.start,name:"
-msgid "Open Chart of Tax Codes"
-msgstr "Obre pla de codis d'impost"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
@@ -2778,9 +2817,9 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr "Comptes"
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Accounts"
-msgstr "Comptes"
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "Pla comptable"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
@@ -2806,10 +2845,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr "Cancel·la assentaments"
 
-msgctxt "model:ir.action,name:act_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
-msgstr "Obre pla de codis d'impost"
-
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Configuration"
 msgstr "Configuració"
@@ -2817,6 +2852,10 @@ msgstr "Configuració"
 msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
 msgstr "Crear períodes"
+
+msgctxt "model:ir.action,name:act_delegate_lines_wizard"
+msgid "Delegate Lines"
+msgstr "Línies delegades"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -2874,6 +2913,10 @@ msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Assentaments comptables"
 
+msgctxt "model:ir.action,name:act_move_form_delegate"
+msgid "Delegate Account Move"
+msgstr "Delegar assentament comptable"
+
 msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
 msgstr "Assentament comptable agrupat"
@@ -2909,10 +2952,6 @@ msgstr "Assentaments"
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "Obre compte de l'assentament"
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Accounts"
-msgstr "Obre pla comptable"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
@@ -2966,9 +3005,9 @@ msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Codes"
 msgstr "Codis"
 
-msgctxt "model:ir.action,name:act_tax_code_tree2"
-msgid "Tax Codes"
-msgstr "Codis d'impost"
+msgctxt "model:ir.action,name:act_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "Pla de codis d'impost"
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Groups"
@@ -3155,6 +3194,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_deferral_unique"
 msgid "Deferral must be unique by account and fiscal year."
 msgstr "El tancament ha ser únic per compte i exercici fiscal."
+
+msgctxt "model:ir.message,text:msg_delegate_line_same_company"
+msgid "You cannot delegate together lines of different companies."
+msgstr "No es pot delegar a la vegada línies d'empreses diferents."
+
+msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
+msgid "You cannot delegate together lines with different origins."
+msgstr "No es pot delegar a la vegada línies amb orígens diferents."
 
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
@@ -3649,6 +3696,10 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Comptes"
 
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "Pla comptable"
+
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr "Tipus de compte"
@@ -3669,10 +3720,6 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr "Crea l'assentament de regularització"
 
-msgctxt "model:ir.ui.menu,name:menu_charts"
-msgid "Charts"
-msgstr "Plans comptables"
-
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
 msgstr "Tanca exercicis fiscals"
@@ -3684,10 +3731,6 @@ msgstr "Tanca diaris - períodes"
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
 msgstr "Tanca períodes"
-
-msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
-msgstr "Obre pla de codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -3749,10 +3792,6 @@ msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
 msgstr "Balanç de situació"
 
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Accounts"
-msgstr "Obre pla comptable"
-
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Pèrdues i guanys"
@@ -3796,6 +3835,10 @@ msgstr "Codis d'impost"
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Codes"
 msgstr "Codis"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "Pla de codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Groups"
@@ -3982,8 +4025,12 @@ msgid "Debit"
 msgstr "Deure"
 
 msgctxt "report:account.general_ledger:"
-msgid "Descr."
-msgstr "Descr."
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "report:account.general_ledger:"
+msgid "Draft"
+msgstr "Esborrany"
 
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
@@ -4016,10 +4063,6 @@ msgstr "Origen"
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Data d'impressió:"
-
-msgctxt "report:account.general_ledger:"
-msgid "State"
-msgstr "Estat"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
@@ -4373,61 +4416,65 @@ msgctxt "selection:account.tax,type:"
 msgid "Percentage"
 msgstr "Percentatge"
 
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Base"
-msgstr "Base"
-
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Tax"
-msgstr "Impost"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Credit"
-msgstr "Abonament"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Invoice"
-msgstr "Factura"
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Base"
-msgstr "Base"
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Tax"
-msgstr "Impost"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Credit"
-msgstr "Abonament"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Invoice"
-msgstr "Factura"
-
-msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgctxt "selection:account.tax.code.context,method:"
 msgid "By Fiscal Year"
 msgstr "Per exercici fiscal"
 
-msgctxt "selection:account.tax.code.open_chart.start,method:"
-msgid "By Periods"
+msgctxt "selection:account.tax.code.context,method:"
+msgid "By Period"
 msgstr "Per períodes"
+
+msgctxt "selection:account.tax.code.context,method:"
+msgid "Over Periods"
+msgstr "Per períodes"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "Abonament"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "Abonament"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "Factura"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
@@ -4694,6 +4741,14 @@ msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
+msgctxt "wizard_button:account.move.line.delegate,start,delegate:"
+msgid "Delegate"
+msgstr "Delega"
+
+msgctxt "wizard_button:account.move.line.delegate,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -4750,14 +4805,6 @@ msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
 msgstr "Següent"
 
-msgctxt "wizard_button:account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "wizard_button:account.open_chart,start,open_:"
-msgid "Open"
-msgstr "Obre"
-
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -4777,14 +4824,6 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:account.reconcile,start,next_:"
 msgid "Reconcile"
 msgstr "Concilia"
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
-msgid "Open"
-msgstr "Obre"
 
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"

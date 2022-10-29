@@ -30,14 +30,18 @@ msgctxt "field:account.account,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
+msgctxt "field:account.account,context_company:"
+msgid "Context Company"
+msgstr "Perusahaan"
+
 msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:account.account,credit_type:"
 msgid "Credit Type"
-msgstr "Jenis Debit"
+msgstr "Jenis Kredit"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
@@ -135,6 +139,19 @@ msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
 msgstr "Pajak"
 
+msgctxt "field:account.account.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Tahun Fiskal"
+
+#, fuzzy
+msgctxt "field:account.account.context,posted:"
+msgid "Posted Moves"
+msgstr "Membukukan Perpindahan"
+
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Akun"
@@ -204,10 +221,9 @@ msgctxt "field:account.account.party,credit:"
 msgid "Credit"
 msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:account.account.party,credit_type:"
 msgid "Credit Type"
-msgstr "Jenis Debit"
+msgstr "Jenis Kredit"
 
 msgctxt "field:account.account.party,currency:"
 msgid "Currency"
@@ -261,10 +277,9 @@ msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "Kode"
 
-#, fuzzy
 msgctxt "field:account.account.template,credit_type:"
 msgid "Credit Type"
-msgstr "Jenis Debit"
+msgstr "Jenis Kredit"
 
 msgctxt "field:account.account.template,debit_type:"
 msgid "Debit Type"
@@ -498,23 +513,24 @@ msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
 msgstr "Satuan"
 
-msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
-msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
 msgstr "Perbandingan"
 
-msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgctxt "field:account.balance_sheet.comparison.context,date:"
 msgid "Date"
 msgstr "Tanggal"
 
-msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgctxt "field:account.balance_sheet.comparison.context,date_cmp:"
 msgid "Date"
 msgstr "Tanggal"
 
-msgctxt "field:account.balance_sheet.comparision.context,posted:"
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparison.context,posted:"
 msgid "Posted Move"
 msgstr "Membukukan Perpindahan"
 
@@ -730,10 +746,9 @@ msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,credit_type:"
 msgid "Credit Type"
-msgstr "Jenis Debit"
+msgstr "Jenis Kredit"
 
 msgctxt "field:account.general_ledger.account,currency:"
 msgid "Currency"
@@ -815,6 +830,7 @@ msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
 msgstr "Jurnal"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
 msgstr "Membukukan Perpindahan"
@@ -855,7 +871,6 @@ msgctxt "field:account.general_ledger.account.party,end_balance:"
 msgid "End Balance"
 msgstr "Saldo Akhir"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.party,end_credit:"
 msgid "End Credit"
 msgstr "Kredit Akhir"
@@ -987,6 +1002,7 @@ msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
 msgstr "Membukukan Perpindahan"
@@ -1031,6 +1047,7 @@ msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
 msgstr "Dari Tanggal"
 
+#, fuzzy
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
 msgstr "Membukukan Perpindahan"
@@ -1081,7 +1098,7 @@ msgstr "Urutan"
 
 msgctxt "field:account.journal,sequences:"
 msgid "Sequences"
-msgstr ""
+msgstr "Urutan-Urutan"
 
 msgctxt "field:account.journal,type:"
 msgid "Type"
@@ -1225,6 +1242,7 @@ msgctxt "field:account.move.line,journal:"
 msgid "Journal"
 msgstr "Jurnal"
 
+#, fuzzy
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
 msgstr "Tanggal Jatuh tempo"
@@ -1285,6 +1303,21 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.move.line.delegate.start,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+#, fuzzy
+msgctxt "field:account.move.line.delegate.start,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+#, fuzzy
+msgctxt "field:account.move.line.delegate.start,party:"
+msgid "Party"
+msgstr "Pihak"
+
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -1293,17 +1326,14 @@ msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,currency:"
 msgid "Currency"
 msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,description:"
 msgid "Description"
 msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.preview,journal:"
 msgid "Journal"
 msgstr "Jurnal"
@@ -1317,12 +1347,10 @@ msgctxt "field:account.move.line.reschedule.start,amount:"
 msgid "Amount"
 msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,currency:"
 msgid "Currency"
 msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,frequency:"
 msgid "Frequency"
 msgstr "Frekuensi"
@@ -1331,12 +1359,10 @@ msgctxt "field:account.move.line.reschedule.start,interval:"
 msgid "Interval"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,number:"
 msgid "Number"
 msgstr "Nomor"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.start,start_date:"
 msgid "Start Date"
 msgstr "Tanggal Awal"
@@ -1351,12 +1377,10 @@ msgctxt "field:account.move.line.reschedule.term,amount:"
 msgid "Amount"
 msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,currency:"
 msgid "Currency"
 msgstr "Mata Uang"
 
-#, fuzzy
 msgctxt "field:account.move.line.reschedule.term,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -1483,7 +1507,7 @@ msgstr "Jurnal"
 
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
-msgstr "Kata kunci"
+msgstr "Kata Kunci"
 
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
@@ -1524,14 +1548,6 @@ msgstr "String"
 msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
 msgstr "Jenis"
-
-msgctxt "field:account.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Tahun Fiskal"
-
-msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Moves"
-msgstr ""
 
 msgctxt "field:account.period,company:"
 msgid "Company"
@@ -1730,6 +1746,11 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
+msgctxt "field:account.tax.code,context_company:"
+msgid "Context Company"
+msgstr "Perusahaan"
+
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
 msgstr "Mata Uang"
@@ -1765,6 +1786,36 @@ msgstr "Templat"
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.tax.code.context,end_period:"
+msgid "End Period"
+msgstr "Periode Akhir"
+
+msgctxt "field:account.tax.code.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Tahun Fiskal"
+
+msgctxt "field:account.tax.code.context,method:"
+msgid "Method"
+msgstr "Metode"
+
+msgctxt "field:account.tax.code.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:account.tax.code.context,periods:"
+msgid "Periods"
+msgstr "Periode"
+
+msgctxt "field:account.tax.code.context,start_period:"
+msgid "Start Period"
+msgstr "Periode Awal"
 
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
@@ -1813,18 +1864,6 @@ msgstr "Pajak"
 msgctxt "field:account.tax.code.line.template,type:"
 msgid "Type"
 msgstr ""
-
-msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Tahun Fiskal"
-
-msgctxt "field:account.tax.code.open_chart.start,method:"
-msgid "Method"
-msgstr "Metode"
-
-msgctxt "field:account.tax.code.open_chart.start,periods:"
-msgid "Periods"
-msgstr "Periode"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
@@ -1938,7 +1977,6 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
 msgid "Ending Date"
 msgstr "Tanggal Berakhir"
@@ -1959,7 +1997,6 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
 msgid "Starting Date"
 msgstr "Tanggal Berawal"
@@ -1976,7 +2013,6 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
 msgid "Ending Date"
 msgstr "Tanggal Berakhir"
@@ -1997,7 +2033,6 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
 msgid "Starting Date"
 msgstr "Tanggal Berawal"
@@ -2136,11 +2171,11 @@ msgstr ""
 
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
-msgstr "Utang Usaha"
+msgstr "Akun Utang Usaha"
 
 msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
-msgstr "Piutang Usaha"
+msgstr "Akun Piutang Usaha"
 
 msgctxt "field:party.party,accounts:"
 msgid "Accounts"
@@ -2160,7 +2195,7 @@ msgstr "Utang"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr ""
+msgstr "Utang Hari Ini"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
@@ -2168,7 +2203,7 @@ msgstr "Piutang"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr ""
+msgstr "Piutang Hari Ini"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
@@ -2176,11 +2211,11 @@ msgstr ""
 
 msgctxt "field:party.party.account,account_payable:"
 msgid "Account Payable"
-msgstr ""
+msgstr "Akun Utang Usaha"
 
 msgctxt "field:party.party.account,account_receivable:"
 msgid "Account Receivable"
-msgstr "Akun piutang"
+msgstr "Akun Piutang Usaha"
 
 msgctxt "field:party.party.account,company:"
 msgid "Company"
@@ -2212,7 +2247,7 @@ msgstr ""
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Tampilkan hanya saldo dalam laporan buku besar."
 
 msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
@@ -2234,13 +2269,21 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+msgctxt "help:account.account.context,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "Biarkan kosong untuk semua tahun fiskal terbuka."
+
+msgctxt "help:account.account.context,posted:"
+msgid "Only include posted moves."
+msgstr ""
+
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Tampilkan hanya saldo dalam laporan buku besar."
 
 msgctxt "help:account.account.template,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
@@ -2262,7 +2305,7 @@ msgctxt "help:account.aged_balance.context,posted:"
 msgid "Only include posted moves."
 msgstr ""
 
-msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgctxt "help:account.balance_sheet.comparison.context,posted:"
 msgid "Only include posted moves."
 msgstr ""
 
@@ -2286,7 +2329,7 @@ msgstr ""
 
 msgctxt "help:account.fiscalyear.create_periods.start,interval:"
 msgid "The length of each period, in months."
-msgstr ""
+msgstr "Lamanya setiap periode, dalam bulan."
 
 msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Used as reference for fiscalyear configuration."
@@ -2346,7 +2389,7 @@ msgstr ""
 
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
-msgstr ""
+msgstr "Nama kata kunci 'Pihak'."
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines."
@@ -2358,18 +2401,10 @@ msgstr ""
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today."
-msgstr ""
+msgstr "Biarkan kosong untuk hari ini."
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
-msgstr ""
-
-msgctxt "help:account.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr ""
-
-msgctxt "help:account.open_chart.start,posted:"
-msgid "Only include posted moves."
 msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
@@ -2386,7 +2421,7 @@ msgstr ""
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports."
-msgstr ""
+msgstr "Nama yang akan digunakan dalam laporan."
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
@@ -2404,14 +2439,6 @@ msgstr ""
 
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
-msgstr ""
-
-msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year."
-msgstr ""
-
-msgctxt "help:account.tax.code.open_chart.start,periods:"
-msgid "Leave empty for all periods of all open fiscal year."
 msgstr ""
 
 msgctxt "help:account.tax.line.template,amount:"
@@ -2459,7 +2486,12 @@ msgstr "Akun"
 
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
-msgstr ""
+msgstr "Akun - Pajak"
+
+#, fuzzy
+msgctxt "model:account.account.context,name:"
+msgid "Account Context"
+msgstr "Perpindahan Akun"
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
@@ -2494,9 +2526,10 @@ msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
 msgstr ""
 
-msgctxt "model:account.balance_sheet.comparision.context,name:"
+#, fuzzy
+msgctxt "model:account.balance_sheet.comparison.context,name:"
 msgid "Balance Sheet Context"
-msgstr ""
+msgstr "Laporan Neraca"
 
 msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
@@ -2588,6 +2621,10 @@ msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
 msgstr "Biaya"
 
+msgctxt "model:account.journal,name:journal_miscellaneous"
+msgid "Miscellaneous"
+msgstr ""
+
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
 msgstr "Pendapatan"
@@ -2608,6 +2645,7 @@ msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.move,name:"
 msgid "Account Move"
 msgstr "Perpindahan Akun"
@@ -2619,6 +2657,11 @@ msgstr ""
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.move.line.delegate.start,name:"
+msgid "Delegate Lines"
+msgstr "Akun Debit"
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
@@ -2672,10 +2715,6 @@ msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
 msgstr ""
 
-msgctxt "model:account.open_chart.start,name:"
-msgid "Open Chart of Accounts"
-msgstr ""
-
 msgctxt "model:account.period,name:"
 msgid "Period"
 msgstr "Periode"
@@ -2694,7 +2733,12 @@ msgstr ""
 
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
-msgstr ""
+msgstr "Kode Pajak"
+
+#, fuzzy
+msgctxt "model:account.tax.code.context,name:"
+msgid "Tax Code Context"
+msgstr "Kode Pajak"
 
 msgctxt "model:account.tax.code.line,name:"
 msgid "Tax Code Line"
@@ -2702,10 +2746,6 @@ msgstr ""
 
 msgctxt "model:account.tax.code.line.template,name:"
 msgid "Tax Code Line Template"
-msgstr ""
-
-msgctxt "model:account.tax.code.open_chart.start,name:"
-msgid "Open Chart of Tax Codes"
 msgstr ""
 
 msgctxt "model:account.tax.code.template,name:"
@@ -2788,9 +2828,10 @@ msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_account_tree2"
-msgid "Accounts"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "Buka Bagan Akun"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
@@ -2817,10 +2858,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Configuration"
 msgstr "Konfigurasi"
@@ -2828,6 +2865,11 @@ msgstr "Konfigurasi"
 msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
 msgstr "Buat Periode"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_delegate_lines_wizard"
+msgid "Delegate Lines"
+msgstr "Akun Debit"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -2865,7 +2907,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr ""
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
@@ -2886,6 +2928,11 @@ msgstr ""
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_delegate"
+msgid "Delegate Account Move"
+msgstr "Perpindahan Akun"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_grouping"
@@ -2924,10 +2971,6 @@ msgstr "Perpindahan"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_open_chart"
-msgid "Open Chart of Accounts"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_journal"
@@ -2974,18 +3017,18 @@ msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Codes"
 msgstr "Kode-Kode"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes"
-msgstr "Kode"
+msgstr "Kode Pajak"
 
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Codes"
 msgstr "Kode-Kode"
 
-msgctxt "model:ir.action,name:act_tax_code_tree2"
-msgid "Tax Codes"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "Kode"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
@@ -3011,7 +3054,7 @@ msgstr "Kode"
 
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
@@ -3066,18 +3109,18 @@ msgstr "Piutang"
 
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
-msgstr ""
+msgstr "Bagan akun sudah ada bagi perusahaan \"%(company)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
 msgstr ""
-"Untuk membuat baris di akun \"%(account)s\", Anda harus mengatur pihak di "
-"baris \"%(line)s\"."
+"Anda tidak dapat menutup akun \"%(account)s\" karena telah memiliki baris "
+"perpindahan."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
-msgstr ""
+msgstr "Untuk membuat mata uang kedua untuk \"%(account)s\", harus ditangguhkan."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
@@ -3160,10 +3203,22 @@ msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
 msgstr ""
+"Anda tidak dapat membuat periode di dalam tahun fiskal \"%(fiscalyear)s\" "
+"karena sudah ditutup."
 
 msgctxt "model:ir.message,text:msg_deferral_unique"
 msgid "Deferral must be unique by account and fiscal year."
-msgstr ""
+msgstr "Penangguhan harus unik berdasarkan akun dan tahun fiskal."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_delegate_line_same_company"
+msgid "You cannot delegate together lines of different companies."
+msgstr "Anda tidak dapat mengelompokkan baris dengan pihak yang berbeda."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
+msgid "You cannot delegate together lines with different origins."
+msgstr "Anda tidak dapat mengelompokkan baris dengan pihak yang berbeda."
 
 msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
 msgid "You cannot delete account \"%(account)s\" because it has move lines."
@@ -3174,6 +3229,8 @@ msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
 "receivable/payable with company \"%(company)s\"."
 msgstr ""
+"Anda tidak dapat menghapus pihak \"%(party)s\" selagi masih ada "
+"piutang/utang dengan perusahaan \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
 msgid ""
@@ -3186,14 +3243,16 @@ msgid ""
 "The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
 "different dates."
 msgstr ""
+"Tahun fiskal \"%(first)s\" dan \"%(second)s\" tumpang tindih, Anda harus "
+"menggunakan tanggal berbeda."
 
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
-msgstr ""
+msgstr "Baris \"%(line)s\" tidak dapat dikelompokkan."
 
 msgctxt "model:ir.message,text:msg_group_line_many_parties"
 msgid "You cannot group lines with different parties."
-msgstr ""
+msgstr "Anda tidak dapat mengelompokkan baris dengan pihak yang berbeda."
 
 msgctxt "model:ir.message,text:msg_group_line_maximum_account"
 msgid "You cannot group lines from more than 2 different accounts."
@@ -3239,6 +3298,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
 msgstr ""
+"Anda tidak dapat mengatur debit dan kredit keduanya pada baris tersebut."
 
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
@@ -3616,14 +3676,18 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
+msgid "Chart of Accounts"
+msgstr "Buka Bagan Akun"
+
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Types"
-msgstr "Akun"
+msgstr "Jenis Akun"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
@@ -3637,10 +3701,6 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_charts"
-msgid "Charts"
-msgstr "Bagan-bagan"
-
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
 msgstr ""
@@ -3651,10 +3711,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
-msgid "Open Chart of Tax Codes"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
@@ -3683,11 +3739,11 @@ msgstr "Buku Besar"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr ""
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr ""
+msgstr "Jurnal-Jurnal"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
@@ -3717,10 +3773,6 @@ msgstr "Perpindahan"
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
 msgstr "Laporan Neraca"
-
-msgctxt "model:ir.ui.menu,name:menu_open_chart"
-msgid "Open Chart of Accounts"
-msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
@@ -3759,24 +3811,25 @@ msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Codes"
 msgstr "Kode"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes"
-msgstr "Kode"
+msgstr "Kode Pajak"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Codes"
-msgstr "Kode"
+msgstr "Kode-Kode"
 
-#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree_chart"
+msgid "Chart of Tax Codes"
+msgstr "Bagan Kode Pajak"
+
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Groups"
-msgstr "Kelompok"
+msgstr "Kelompok-Kelompok"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr ""
+msgstr "Pajak-Pajak"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Rules"
@@ -3960,9 +4013,15 @@ msgctxt "report:account.general_ledger:"
 msgid "Debit"
 msgstr "Debit"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
-msgid "Descr."
-msgstr ""
+msgid "Description"
+msgstr "Deskripsi"
+
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "Draft"
+msgstr "Rancangan"
 
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
@@ -3995,10 +4054,6 @@ msgstr "Asal"
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Tanggal Cetak:"
-
-msgctxt "report:account.general_ledger:"
-msgid "State"
-msgstr "Status"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
@@ -4054,7 +4109,7 @@ msgstr ""
 
 msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
-msgstr ""
+msgstr "Asal:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Posted"
@@ -4218,7 +4273,7 @@ msgstr "Buka"
 
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "Bulanan"
 
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Other"
@@ -4286,16 +4341,15 @@ msgstr ""
 
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "Bulanan"
 
-#, fuzzy
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Other"
 msgstr "Lainnya"
 
 msgctxt "selection:account.move.line.reschedule.start,frequency:"
 msgid "Quarterly"
-msgstr ""
+msgstr "Setiap Triwulan"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
@@ -4353,61 +4407,68 @@ msgctxt "selection:account.tax,type:"
 msgid "Percentage"
 msgstr "Persentase"
 
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Base"
-msgstr ""
-
-msgctxt "selection:account.tax.code.line,amount:"
-msgid "Tax"
-msgstr "Pajak"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "selection:account.tax.code.line,type:"
-msgid "Invoice"
-msgstr "Faktur"
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Base"
-msgstr ""
-
-msgctxt "selection:account.tax.code.line.template,amount:"
-msgid "Tax"
-msgstr "Pajak"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "+"
-msgstr "+"
-
-msgctxt "selection:account.tax.code.line.template,operator:"
-msgid "-"
-msgstr "-"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "selection:account.tax.code.line.template,type:"
-msgid "Invoice"
-msgstr "Faktur"
-
-msgctxt "selection:account.tax.code.open_chart.start,method:"
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
 msgid "By Fiscal Year"
+msgstr "Tahun Fiskal"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
+msgid "By Period"
+msgstr "Periode"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.context,method:"
+msgid "Over Periods"
+msgstr "Periode"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
 msgstr ""
 
-msgctxt "selection:account.tax.code.open_chart.start,method:"
-msgid "By Periods"
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
 msgstr ""
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "Faktur"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
@@ -4522,7 +4583,7 @@ msgstr "Periode"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
-msgstr ""
+msgstr "Urutan-Urutan"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
@@ -4673,6 +4734,16 @@ msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "Batal"
 
+#, fuzzy
+msgctxt "wizard_button:account.move.line.delegate,start,delegate:"
+msgid "Delegate"
+msgstr "Akun Debit"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.delegate,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
 msgstr "Batal"
@@ -4731,14 +4802,6 @@ msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
 msgstr "Berikutnya"
 
-msgctxt "wizard_button:account.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:account.open_chart,start,open_:"
-msgid "Open"
-msgstr "Buka"
-
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
 msgstr "Batal"
@@ -4759,14 +4822,6 @@ msgstr "Batal"
 msgctxt "wizard_button:account.reconcile,start,next_:"
 msgid "Reconcile"
 msgstr ""
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
-msgid "Open"
-msgstr "Buka"
 
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"
