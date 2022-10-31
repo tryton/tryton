@@ -1,3 +1,6 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add wizard to delegate move lines to another party
 * Support date range context for account type amount
 * Use context model for chart of accounts and taxes
