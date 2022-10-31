@@ -1,3 +1,6 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add support for STARTTLS
 * Enforce certificate validation for LDAP connection (issue11564)
 
