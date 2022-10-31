@@ -1,3 +1,6 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Limit transit only between different warehouses
 * Remove default currency on move
 * Allow cancelling move done
