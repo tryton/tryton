@@ -433,10 +433,8 @@ class ECBtestCase(unittest.TestCase):
 
     def test_rate_unsupported_currency(self):
         "Fetch rate for unsupported currency"
-        date = datetime.date.today() - datetime.timedelta(days=2)
-
         with self.assertRaises(UnsupportedCurrencyError):
-            get_rates('XXX', date)
+            get_rates('XXX', datetime.date(2022, 10, 3))
 
 
 def suite():
