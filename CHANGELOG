@@ -1,3 +1,6 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add sale reporting per region
 * Support warehouse pickup
 * Use MultiValue for product lead time
