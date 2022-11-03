@@ -50,7 +50,7 @@ class Template(metaclass=PoolMeta):
             to_copy = []
             for template, new_template in zip(templates, new_templates):
                 to_copy.extend(
-                    c for c in template.components if not c.product)
+                    c for c in template.components if not c.parent_product)
                 old2new[template.id] = new_template.id
             if to_copy:
                 Component.copy(to_copy, {
