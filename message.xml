@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_root_origin_unique">
             <field name="text">Only one account is allowed by analytic root and origin.</field>
         </record>
+        <record model="ir.message" id="msg_analytic_account_root_change">
+            <field name="text">You cannot change the root of the analytic account "%(account)s" which is associated with analytic account entry.</field>
+        </record>
     </data>
 </tryton>

@@ -183,3 +183,19 @@ Balance non-deferral accounts::
     >>> move.click('post')
     >>> [l for l in move.lines if l.analytic_lines]
     []
+
+Prevent changing root of account with entries::
+
+    >>> root2 = AnalyticAccount(type='root', name="Root2")
+    >>> root2.save()
+    >>> analytic_account.root = root2
+    >>> analytic_account.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    AccessError: ...
+
+    >>> analytic_account.reload()
+    >>> analytic_account.code = "1"
+    >>> analytic_account.save()
+    >>> analytic_account.code
+    '1'

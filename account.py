@@ -11,10 +11,11 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, fields, tree)
+from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
-from trytond.tools import is_full_text, lstrip_wildcard
+from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
 from .exceptions import AccountValidationError
@@ -301,6 +302,26 @@ class Account(
                     i = (i + 1) % len(result)
             assert sum(a for _, a in result) == amount
             return result
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Entry = pool.get('analytic.account.entry')
+        actions = iter(args)
+        for records, values in zip(actions, actions):
+            if 'root' in values:
+                for sub_records in grouped_slice(records):
+                    entries = Entry.search([
+                            ('account', 'in', list(map(int, sub_records))),
+                            ],
+                        limit=1, order=[])
+                    if entries:
+                        entry, = entries
+                        raise AccessError(gettext(
+                                'analytic_account'
+                                '.msg_analytic_account_root_change',
+                                account=entry.account.rec_name))
+        super().write(*args)
 
 
 class AccountContext(ModelView):
