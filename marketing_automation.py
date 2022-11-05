@@ -706,9 +706,11 @@ class Record(ModelSQL, ModelView):
         for record in records:
             if record.scenario.unsubscribable:
                 parties[record.record.marketing_party].add(record.scenario.id)
-        Party.write(*sum((
-                    ([p], {'marketing_scenario_unsubscribed': [('add', s)]})
-                    for p, s in parties.items()), ()))
+        if parties:
+            Party.write(*sum((
+                        ([p], {'marketing_scenario_unsubscribed': [
+                                    ('add', s)]})
+                        for p, s in parties.items()), ()))
 
     def get_rec_name(self, name):
         if self.record:
