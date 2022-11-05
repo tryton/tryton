@@ -469,21 +469,22 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def check_period_closed(cls, moves):
         Period = Pool().get('stock.period')
-        for company, moves in groupby(moves, lambda m: m.company):
-            periods = Period.search([
-                    ('state', '=', 'closed'),
-                    ('company', '=', company.id),
-                    ], order=[('date', 'DESC')], limit=1)
-            if periods:
-                period, = periods
-                for move in moves:
-                    date = (move.effective_date if move.effective_date
-                        else move.planned_date)
-                    if date and date <= period.date:
-                        cls.raise_user_error('period_closed', {
-                                'move': move.rec_name,
-                                'period': period.rec_name,
-                                })
+        with Transaction().set_context(_check_access=False):
+            for company, moves in groupby(moves, lambda m: m.company):
+                periods = Period.search([
+                        ('state', '=', 'closed'),
+                        ('company', '=', company.id),
+                        ], order=[('date', 'DESC')], limit=1)
+                if periods:
+                    period, = periods
+                    for move in moves:
+                        date = (move.effective_date if move.effective_date
+                            else move.planned_date)
+                        if date and date <= period.date:
+                            cls.raise_user_error('period_closed', {
+                                    'move': move.rec_name,
+                                    'period': period.rec_name,
+                                    })
 
     def get_rec_name(self, name):
         return ("%s%s %s"
