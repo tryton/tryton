@@ -144,8 +144,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             })
     timesheet_works = fields.One2Many(
         'timesheet.work', 'origin', 'Timesheet Works', readonly=True, size=1)
-    timesheet_available = fields.Function(
-        fields.Boolean('Available on timesheets'),
+    timesheet_available = fields.Function(fields.Boolean(
+            "Available on timesheets",
+            help="Check to record time spent."),
         'get_timesheet_available', setter='set_timesheet_available')
     timesheet_start_date = fields.Function(fields.Date('Timesheet Start',
             states={
