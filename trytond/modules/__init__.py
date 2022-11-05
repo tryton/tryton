@@ -298,11 +298,13 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 if model._sql_indexes:
                     logger.info('index:create %s', model_name)
                     model._update_sql_indexes()
+            transaction.commit()
             for model_name in models_to_update_history:
                 model = pool.get(model_name)
                 if model._history:
                     logger.info('history:update %s', model.__name__)
                     model._update_history_table()
+            transaction.commit()
 
         # Vacuum :
         while modules_todo:
