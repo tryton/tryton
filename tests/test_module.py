@@ -498,5 +498,92 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
             with self.subTest(value=value):
                 self.assertEqual(round_price(value), result)
 
+    @with_transaction()
+    def test_product_identifier_get_single_type(self):
+        "Test identifier get with a single type"
+        pool = Pool()
+        Identifier = pool.get('product.identifier')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        template = Template(name="Product", default_uom=uom)
+        template.save()
+        product = Product(template=template)
+        product.identifiers = [
+            Identifier(code='FOO'),
+            Identifier(type='ean', code='978-0-471-11709-4'),
+            ]
+        product.save()
+
+        self.assertEqual(
+            product.identifier_get('ean').code,
+            '978-0-471-11709-4')
+
+    @with_transaction()
+    def test_product_identifier_get_many_types(self):
+        "Test identifier get with many types"
+        pool = Pool()
+        Identifier = pool.get('product.identifier')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        template = Template(name="Product", default_uom=uom)
+        template.save()
+        product = Product(template=template)
+        product.identifiers = [
+            Identifier(code='FOO'),
+            Identifier(type='isbn', code='0-6332-4980-7'),
+            Identifier(type='ean', code='978-0-471-11709-4'),
+            ]
+        product.save()
+
+        self.assertEqual(
+            product.identifier_get({'ean', 'isbn'}).code,
+            '0-6332-4980-7')
+
+    @with_transaction()
+    def test_product_identifier_get_any(self):
+        "Test identifier get for any type"
+        pool = Pool()
+        Identifier = pool.get('product.identifier')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        template = Template(name="Product", default_uom=uom)
+        template.save()
+        product = Product(template=template)
+        product.identifiers = [
+            Identifier(code='FOO'),
+            ]
+        product.save()
+
+        self.assertEqual(product.identifier_get(None).code, 'FOO')
+
+    @with_transaction()
+    def test_product_identifier_get_unknown_type(self):
+        "Test identifier get with a unknown type"
+        pool = Pool()
+        Identifier = pool.get('product.identifier')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        template = Template(name="Product", default_uom=uom)
+        template.save()
+        product = Product(template=template)
+        product.identifiers = [
+            Identifier(code='FOO'),
+            ]
+        product.save()
+
+        self.assertEqual(product.identifier_get('ean'), None)
+
 
 del ModuleTestCase

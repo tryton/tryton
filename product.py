@@ -603,6 +603,14 @@ class Product(
     def get_code_readonly(self, name):
         return self.default_code_readonly()
 
+    def identifier_get(self, types=None):
+        "Return the first identifier for the given types"
+        if isinstance(types, str) or types is None:
+            types = {types}
+        for identifier in self.identifiers:
+            if identifier.type in types:
+                return identifier
+
     @classmethod
     def _new_suffix_code(cls):
         pool = Pool()
