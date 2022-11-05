@@ -51,8 +51,9 @@ class MultiSelection(SelectionMixin, Field):
             assert hasattr(model, self.selection), \
                 'Missing %s on model %s' % (self.selection, model.__name__)
             instantiate = 0 if self.selection_change_with else None
+            cache = dict(days=1) if instantiate is None else None
             model.__rpc__.setdefault(
-                self.selection, RPC(instantiate=instantiate))
+                self.selection, RPC(instantiate=instantiate, cache=cache))
 
     def get(self, ids, model, name, values=None):
         lists = {id: () for id in ids}
