@@ -845,32 +845,34 @@ class Screen:
         if view.view_type == 'form' and self.tree_states_done:
             return
         if (view.view_type == 'tree'
-                and not view.attributes.get('tree_state', False)):
+                and not int(view.attributes.get('tree_state', False))):
             # Mark as done to not set later when the view_type change
             self.tree_states_done.add(id(view))
         parent = self.parent.id if self.parent else None
         if parent is not None and parent < 0:
             return
         expanded_nodes, selected_nodes = [], []
-        state = self.tree_states[parent][view.children_field]
-        if state:
-            expanded_nodes, selected_nodes = state
-        if state is None and CONFIG['client.save_tree_state']:
-            json_domain = self.get_tree_domain(parent)
-            try:
-                expanded_nodes, selected_nodes = RPCExecute('model',
-                    'ir.ui.view_tree_state', 'get',
-                    self.model_name, json_domain,
-                    view.children_field)
-                expanded_nodes = json.loads(expanded_nodes)
-                selected_nodes = json.loads(selected_nodes)
-            except RPCException:
-                logger.warn(
-                    'Unable to get view tree state for %s',
-                    self.model_name)
-            self.tree_states[parent][view.children_field] = (
-                expanded_nodes, selected_nodes)
         if view.view_type == 'tree':
+            state = self.tree_states[parent][view.children_field]
+            if state:
+                expanded_nodes, selected_nodes = state
+            if (state is None
+                    and CONFIG['client.save_tree_state']
+                    and int(view.attributes.get('tree_state', False))):
+                json_domain = self.get_tree_domain(parent)
+                try:
+                    expanded_nodes, selected_nodes = RPCExecute('model',
+                        'ir.ui.view_tree_state', 'get',
+                        self.model_name, json_domain,
+                        view.children_field)
+                    expanded_nodes = json.loads(expanded_nodes)
+                    selected_nodes = json.loads(selected_nodes)
+                except RPCException:
+                    logger.warn(
+                        'Unable to get view tree state for %s',
+                        self.model_name)
+                self.tree_states[parent][view.children_field] = (
+                    expanded_nodes, selected_nodes)
             view.expand_nodes(expanded_nodes)
             view.select_nodes(selected_nodes)
         else:
