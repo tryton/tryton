@@ -2158,7 +2158,7 @@
                     }
                     this.tree_states[parent_][view.children_field || null] = [
                         paths, selected_paths];
-                    if (store && view.attributes.tree_state) {
+                    if (store && parseInt(view.attributes.tree_state, 10)) {
                         var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
                         prm = tree_state_model.execute('set', [
@@ -2199,7 +2199,8 @@
                     !jQuery.isEmptyObject(this.tree_states_done)) {
                 return jQuery.when();
             }
-            if (view.view_type == 'tree' && !view.attributes.tree_state) {
+            if (view.view_type == 'tree' &&
+                !parseInt(view.attributes.tree_state, 10)) {
                 this.tree_states_done.push(view);
             }
 
@@ -2211,7 +2212,8 @@
                 this.tree_states[parent_] = {};
             }
             state = this.tree_states[parent_][view.children_field || null];
-            if (state === undefined) {
+            if ((state === undefined) &&
+                (parseInt(view.attributes.tree_state, 10))) {
                 tree_state_model = new Sao.Model('ir.ui.view_tree_state');
                 state_prm = tree_state_model.execute('get', [
                         this.model_name,
@@ -2235,12 +2237,15 @@
             }
             this.tree_states_done.push(view);
             return state_prm.done(state => {
-                var expanded_nodes, selected_nodes, record;
-                expanded_nodes = state[0];
-                selected_nodes = state[1];
+                var expanded_nodes = [], selected_nodes = [];
+                if (state) {
+                    expanded_nodes = state[0];
+                    selected_nodes = state[1];
+                }
                 if (view.view_type == 'tree') {
                     return view.display(selected_nodes, expanded_nodes);
                 } else {
+                    var record;
                     if (!jQuery.isEmptyObject(selected_nodes)) {
                         for (const id of selected_nodes[0]) {
                             const new_record = this.group.get(id);
