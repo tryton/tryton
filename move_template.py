@@ -68,7 +68,8 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'account.move.template.keyword'
     name = fields.Char('Name', required=True)
     string = fields.Char('String', required=True, translate=True)
-    move = fields.Many2One('account.move.template', 'Move', required=True)
+    move = fields.Many2One(
+        'account.move.template', "Move", required=True, ondelete='CASCADE')
     type_ = fields.Selection([
             ('char', 'Char'),
             ('numeric', 'Numeric'),
@@ -158,7 +159,8 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
 class MoveLineTemplate(ModelSQL, ModelView):
     'Account Move Line Template'
     __name__ = 'account.move.line.template'
-    move = fields.Many2One('account.move.template', 'Move', required=True)
+    move = fields.Many2One(
+        'account.move.template', "Move", required=True, ondelete='CASCADE')
     operation = fields.Selection([
             ('debit', 'Debit'),
             ('credit', 'Credit'),
@@ -245,7 +247,9 @@ class MoveLineTemplate(ModelSQL, ModelView):
 class TaxLineTemplate(ModelSQL, ModelView):
     'Account Tax Line Template'
     __name__ = 'account.tax.line.template'
-    line = fields.Many2One('account.move.line.template', 'Line', required=True)
+    line = fields.Many2One(
+        'account.move.line.template', "Line",
+        required=True, ondelete='CASCADE')
     amount = fields.Char('Amount', required=True,
         help="A python expression that will be evaluated with the keywords.")
     type = fields.Selection([
