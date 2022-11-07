@@ -330,11 +330,14 @@ class QuotationLine(ModelSQL, ModelView):
     def order_quotation_state(tables):
         pool = Pool()
         Quotation = pool.get('purchase.request.quotation')
-        quotation_line, _ = tables[None]
-        quotation = Quotation.__table__()
-        tables['purchase.request.quotation'] = {
-            None: (quotation, quotation_line.quotation == quotation.id),
-            }
+        table, _ = tables[None]
+        if 'quotation' not in tables:
+            quotation = Quotation.__table__()
+            tables['quotation'] = {
+                None: (quotation, table.quotation == quotation.id),
+                }
+        else:
+            quotation, _ = tables['quotation'][None]
         return [Case((quotation.state == 'received', 0), else_=1),
             quotation.state]
 
