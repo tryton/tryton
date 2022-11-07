@@ -768,8 +768,9 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
             ],
         context={
             'company': Eval('company', -1),
+            'period': Eval('period', -1),
             },
-        states=_states, depends={'company'})
+        states=_states, depends={'company', 'period'})
     move = fields.Many2One(
         'account.move', "Move", required=True,
         ondelete='CASCADE',

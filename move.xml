@@ -211,6 +211,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_line_form">
             <field name="name">Account Move Lines</field>
             <field name="res_model">account.move.line</field>
+            <field
+                name="domain"
+                eval="[('account', 'in', Eval('active_ids', [])), ('state', '=', 'valid')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_line_form_view1">
             <field name="sequence" eval="10"/>
@@ -227,8 +231,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">account.move.open_account</field>
             <field name="model">account.account</field>
         </record>
-        <record model="ir.action.keyword" id="act_open_account_keyword">
+        <record model="ir.action.keyword" id="act_open_account_keyword1">
             <field name="keyword">tree_open</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword2">
+            <field name="keyword">form_relate</field>
             <field name="model">account.account,-1</field>
             <field name="action" ref="act_open_account"/>
         </record>

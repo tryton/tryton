@@ -19,7 +19,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
     grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
@@ -1414,6 +1414,20 @@ class Account(
         else:
             return self
 
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//page[@id="general_ledger"]', 'states', {
+                    'invisible': ((Eval('id', -1) < 0)
+                        | ~Id('account', 'group_account').in_(
+                            Eval('context', {}).get('groups', []))),
+                    }),
+            ('//link[@name="account.act_general_ledger_account_party_form"]',
+                'states', {
+                    'invisible': ~Eval('party_required', False),
+                    }),
+            ]
+
 
 class AccountParty(ActivePeriodMixin, ModelSQL):
     "Account Party"
@@ -1861,7 +1875,10 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     @classmethod
     def table_query(cls):
-        context = Transaction().context
+        pool = Pool()
+        LedgerAccountContext = pool.get(
+            'account.general_ledger.account.context')
+        context = LedgerAccountContext.get_context()
         Account = cls._get_account()
         account = Account.__table__()
         columns = []
@@ -1882,7 +1899,9 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
     def get_period_ids(cls, name):
         pool = Pool()
         Period = pool.get('account.period')
-        context = Transaction().context
+        LedgerAccountContext = pool.get(
+            'account.general_ledger.account.context')
+        context = LedgerAccountContext.get_context()
 
         period = None
         if name.startswith('start_'):
@@ -1925,7 +1944,10 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_dates(cls, name):
-        context = Transaction().context
+        pool = Pool()
+        LedgerAccountContext = pool.get(
+            'account.general_ledger.account.context')
+        context = LedgerAccountContext.get_context()
         if name.startswith('start_'):
             from_date = context.get('from_date')
             if from_date:
@@ -1937,10 +1959,13 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_account(cls, records, name):
+        pool = Pool()
+        LedgerAccountContext = pool.get(
+            'account.general_ledger.account.context')
         Account = cls._get_account()
 
         period_ids, from_date, to_date = None, None, None
-        context = Transaction().context
+        context = LedgerAccountContext.get_context()
         if context.get('start_period') or context.get('end_period'):
             period_ids = cls.get_period_ids(name)
         elif context.get('from_date') or context.get('end_date'):
@@ -1991,8 +2016,11 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
     @classmethod
     def _debit_credit_context(cls):
+        pool = Pool()
+        LedgerAccountContext = pool.get(
+            'account.general_ledger.account.context')
         period_ids, from_date, to_date = None, None, None
-        context = Transaction().context
+        context = LedgerAccountContext.get_context()
         if context.get('start_period') or context.get('end_period'):
             start_period_ids = set(cls.get_period_ids('start_balance'))
             end_period_ids = set(cls.get_period_ids('end_balance'))
@@ -2124,10 +2152,15 @@ class GeneralLedgerAccountContext(ModelView):
     def default_fiscalyear(cls):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
+        Period = pool.get('account.period')
         context = Transaction().context
-        return context.get(
-            'fiscalyear',
-            FiscalYear.find(context.get('company'), exception=False))
+        if context.get('fiscalyear', -1) >= 0:
+            return context['fiscalyear']
+        elif context.get('period', -1) >= 0:
+            period = Period(context['period'])
+            return period.fiscalyear.id
+        else:
+            return FiscalYear.find(context.get('company'), exception=False)
 
     @classmethod
     def default_start_period(cls):
@@ -2191,6 +2224,14 @@ class GeneralLedgerAccountContext(ModelView):
     def on_change_to_date(self):
         if self.to_date:
             self.start_period = self.end_period = None
+
+    @classmethod
+    def get_context(cls, fields_names=None):
+        fields_names = fields_names.copy() if fields_names is not None else []
+        fields_names += [
+            'fiscalyear', 'start_period', 'end_period', 'from_date', 'to_date',
+            'company', 'posted', 'journal']
+        return cls.default_get(fields_names, with_rec_name=False)
 
 
 class GeneralLedgerAccountParty(_GeneralLedgerAccount):
@@ -2304,10 +2345,12 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         Line = pool.get('account.move.line')
         Move = pool.get('account.move')
         LedgerAccount = pool.get('account.general_ledger.account')
+        LedgerLineContext = pool.get(
+            'account.general_ledger.line.context')
         Account = pool.get('account.account')
         transaction = Transaction()
         database = transaction.database
-        context = transaction.context
+        context = LedgerLineContext.get_context()
         line = Line.__table__()
         move = Move.__table__()
         account = Account.__table__()
@@ -2338,7 +2381,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             else:
                 column = Column(line, fname).as_(fname)
             columns.append(column)
-        with Transaction().set_context(LedgerAccount._debit_credit_context()):
+        with Transaction().set_context(
+                context, **LedgerAccount._debit_credit_context()):
             line_query, fiscalyear_ids = Line.query_get(line)
         return line.join(move, condition=line.move == move.id
             ).join(account, condition=line.account == account.id
@@ -2353,8 +2397,11 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         return Line.get_origin()
 
     def get_balance(self, name):
+        pool = Pool()
+        LedgerLineContext = pool.get(
+            'account.general_ledger.line.context')
         transaction = Transaction()
-        context = transaction.context
+        context = LedgerLineContext.get_context()
         database = transaction.database
         balance = self.internal_balance
         if database.has_window_functions():
@@ -2410,6 +2457,12 @@ class GeneralLedgerLineContext(GeneralLedgerAccountContext):
     @classmethod
     def default_party_cumulate(cls):
         return False
+
+    @classmethod
+    def get_context(cls, fields_names=None):
+        fields_names = fields_names.copy() if fields_names is not None else []
+        fields_names.append('party_cumulate')
+        return super().get_context(fields_names=fields_names)
 
 
 class GeneralLedger(Report):

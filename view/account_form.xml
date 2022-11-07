@@ -13,6 +13,20 @@ this repository contains the full copyright notices and license terms. -->
         <field name="template_override" xexpand="0" width="100"/>
     </group>
     <notebook colspan="6">
+        <page string="General Ledger" id="general_ledger" col="6">
+            <label name="debit"/>
+            <field name="debit"/>
+            <label name="credit"/>
+            <field name="credit"/>
+            <label name="balance"/>
+            <field name="balance"/>
+
+            <group id="general_ledger_links" col="-1" colspan="6">
+                <link icon="tryton-list" name="account.act_general_ledger_line_form"/>
+                <link icon="tryton-list" name="account.act_general_ledger_account_party_form"/>
+                <link icon="tryton-list" name="account.act_move_line_form"/>
+            </group>
+        </page>
         <page string="General Information" id="general" col="6">
             <label name="company"/>
             <field name="company"/>

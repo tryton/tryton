@@ -692,6 +692,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.general_ledger.account,-1</field>
             <field name="action" ref="act_general_ledger_account_party_form"/>
         </record>
+        <record model="ir.action.keyword" id="act_general_ledger_account_party_form_keyword_account">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_general_ledger_account_party_form"/>
+        </record>
 
         <record model="ir.action.wizard" id="act_general_ledger_account_party_open">
             <field name="name">Open General Ledger Account Parties</field>
@@ -773,7 +778,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.general_ledger.account,-1</field>
             <field name="action" ref="act_general_ledger_line_form"/>
         </record>
-        <!-- TODO relate from account -->
+        <record model="ir.action.keyword" id="act_general_ledger_line_form_keyword_account">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_general_ledger_line_form"/>
+        </record>
 
         <record model="ir.rule.group" id="rule_group_general_ledger_line_companies">
             <field name="name">User in companies</field>
