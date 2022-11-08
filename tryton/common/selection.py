@@ -107,9 +107,12 @@ class SelectionMixin(object):
                 return value[0] in allowed_models or not allowed_models
             return test
 
-        if field.attrs['type'] == 'reference':
+        type_ = field.attrs['type']
+        if type_ == 'reference':
             allowed_models = field.get_models(record)
             evaluator = _model_evaluator(allowed_models)
+        elif type_ == 'multiselection':
+            return
         else:
             evaluator = _value_evaluator
         self.selection = list(filter(evaluator, self.selection))
