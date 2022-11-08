@@ -829,9 +829,12 @@
         };
 
         var evaluator;
-        if (field.description.type == 'reference') {
+        var type_ = field.description.type;
+        if (type_ == 'reference') {
             var allowed_models = field.get_models(record);
             evaluator = _model_evaluator(allowed_models);
+        } else if (type_ == 'multiselection') {
+            return;
         } else {
             evaluator = _value_evaluator;
         }
