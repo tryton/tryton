@@ -31,7 +31,7 @@ class PYSON(object):
             other = Bool(other)
         if (isinstance(self, And)
                 and not isinstance(self, Or)):
-            return And(*self._statements, other)
+            return And(*(self._statements + [other]))
         if self.types() != {bool}:
             return And(Bool(self), other)
         else:
@@ -44,7 +44,7 @@ class PYSON(object):
                 and other.types() != {bool}):
             other = Bool(other)
         if isinstance(self, Or):
-            return Or(*self._statements, other)
+            return Or(*(self._statements + [other]))
         if self.types() != {bool}:
             return Or(Bool(self), other)
         else:
