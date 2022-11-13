@@ -100,7 +100,7 @@ setup(name=name,
     package_data={
         'trytond.modules.account_statement_sepa': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
-                'icons/*.svg', 'tests/*.rst']),
+                'icons/*.svg', 'tests/*.rst', 'tests/*.xml']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
