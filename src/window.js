@@ -2008,8 +2008,8 @@
                             'model.' + this.screen.model_name +
                             '.export_data_domain'),
                         'params': [
-                            domain, fields, header, offset, limit,
-                            this.screen.order, this.context],
+                            domain, fields, offset, limit, this.screen.order,
+                            header, this.context],
                     }, this.session);
                 }
                 prm.then(data => {
