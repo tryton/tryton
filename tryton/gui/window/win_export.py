@@ -362,8 +362,8 @@ class WinExport(WinCSV):
                 try:
                     data = RPCExecute(
                         'model', self.model, 'export_data_domain',
-                        domain, fields, header, offset, limit,
-                        self.screen.order, context=self.context)
+                        domain, fields, offset, limit, self.screen.order,
+                        header, context=self.context)
                 except RPCException:
                     data = []
 
