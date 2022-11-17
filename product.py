@@ -108,7 +108,8 @@ class Template(metaclass=PoolMeta):
         'country.country', "Country",
         states={
             'invisible': Eval('type') == 'service',
-            })
+            },
+        help="The country of origin of the product.")
 
     @classmethod
     def __register__(cls, module_name):
