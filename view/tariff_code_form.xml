@@ -15,11 +15,11 @@ this repository contains the full copyright notices and license terms. -->
     <label id="from" string="From"/>
     <group id="start" col="2">
         <field name="start_day"/>
-        <field name="start_month"/>
+        <field name="start_month" widget="selection"/>
     </group>
     <label id="to" string="To"/>
     <group id="end" col="2">
         <field name="end_day"/>
-        <field name="end_month"/>
+        <field name="end_month" widget="selection"/>
     </group>
 </form>

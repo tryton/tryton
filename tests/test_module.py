@@ -20,12 +20,16 @@ class CustomsTestCase(ModuleTestCase):
         Template = pool.get('product.template')
         Product_TariffCode = pool.get(
             'product-customs.tariff.code')
+        Month = pool.get('ir.calendar.month')
+
+        june, = Month.search([('index', '=', 6)])
+        august, = Month.search([('index', '=', 8)])
 
         # Test start <= end
         tariff1 = Tariff(code='170390')
         tariff2 = Tariff(code='17039099',
-                start_month='06', start_day=20,
-                end_month='08', end_day=20)
+                start_month=june, start_day=20,
+                end_month=august, end_day=20)
         Tariff.save([tariff1, tariff2])
         template = Template(tariff_codes=[
                 Product_TariffCode(tariff_code=tariff2),
@@ -40,8 +44,8 @@ class CustomsTestCase(ModuleTestCase):
             self.assertEqual(template.get_tariff_code(pattern), result)
 
         # Test start > end
-        tariff2.start_month = '08'
-        tariff2.end_month = '06'
+        tariff2.start_month = august
+        tariff2.end_month = june
         tariff2.save()
 
         for pattern, result in [

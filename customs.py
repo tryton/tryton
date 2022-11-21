@@ -5,28 +5,13 @@ from decimal import Decimal
 
 from sql import Null
 
+from trytond import backend
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields)
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-
-# Use 2 chars numbering to allow string comparison
-MONTHS = [
-    (None, ''),
-    ('01', 'January'),
-    ('02', 'February'),
-    ('03', 'March'),
-    ('04', 'April'),
-    ('05', 'May'),
-    ('06', 'June'),
-    ('07', 'July'),
-    ('08', 'August'),
-    ('09', 'September'),
-    ('10', 'October'),
-    ('11', 'November'),
-    ('12', 'December'),
-    ]
+from trytond.transaction import Transaction
 
 
 class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
@@ -38,30 +23,26 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     description = fields.Char('Description', translate=True)
     country = fields.Many2One('country.country', 'Country')
     # TODO country group
-    start_month = fields.Selection(MONTHS, 'Start Month', sort=False,
+    start_month = fields.Many2One('ir.calendar.month', "Start Month",
         states={
             'required': Eval('end_month') | Eval('start_day'),
             })
     start_day = fields.Integer('Start Day',
         domain=['OR',
-            ('start_day', '<=', If(Eval('start_month').in_(
-                        ['01', '03', '05', '07', '08', '10', '12']), 31,
-                    If(Eval('start_month') == '02', 29, 30))),
             ('start_day', '=', None),
+            [('start_day', '>=', 1), ('start_day', '<=', 31)],
             ],
         states={
             'required': Bool(Eval('start_month')),
             })
-    end_month = fields.Selection(MONTHS, 'End Month', sort=False,
+    end_month = fields.Many2One('ir.calendar.month', "End Month",
         states={
             'required': Eval('start_month') | Eval('end_day'),
             })
     end_day = fields.Integer('End Day',
         domain=['OR',
-            ('end_day', '<=', If(Eval('end_month').in_(
-                        ['01', '03', '05', '07', '08', '10', '12']), 31,
-                    If(Eval('end_month') == '02', 29, 30))),
             ('end_day', '=', None),
+            [('end_day', '>=', 1), ('end_day', '<=', 31)],
             ],
         states={
             'required': Bool(Eval('end_month')),
@@ -74,13 +55,54 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
         super(TariffCode, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
 
+    @classmethod
+    def __register__(cls, module_name):
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        pool = Pool()
+        Month = pool.get('ir.calendar.month')
+        sql_table = cls.__table__()
+        month = Month.__table__()
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.6: use ir.calendar
+        migrate_calendar = False
+        if (backend.TableHandler.table_exist(cls._table)
+                and table_h.column_exist('start_month')
+                and table_h.column_exist('end_month')):
+            migrate_calendar = (
+                table_h.column_is_type('start_month', 'VARCHAR')
+                or table_h.column_is_type('end_month', 'VARCHAR'))
+            if migrate_calendar:
+                table_h.column_rename('start_month', '_temp_start_month')
+                table_h.column_rename('end_month', '_temp_end_month')
+
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 6.6: use ir.calendar
+        if migrate_calendar:
+            update = transaction.connection.cursor()
+            cursor.execute(*month.select(month.id, month.index))
+            for month_id, index in cursor:
+                str_index = f'{index:02d}'
+                update.execute(*sql_table.update(
+                        [sql_table.start_month], [month_id],
+                        where=sql_table._temp_start_month == str_index))
+                update.execute(*sql_table.update(
+                        [sql_table.end_month], [month_id],
+                        where=sql_table._temp_end_month == str_index))
+            table_h.drop_column('_temp_start_month')
+            table_h.drop_column('_temp_end_month')
+
     def match(self, pattern):
         if 'date' in pattern:
             pattern = pattern.copy()
             date = pattern.pop('date')
             if self.start_month and self.end_month:
-                start = (int(self.start_month), self.start_day)
-                end = (int(self.end_month), self.end_day)
+                start = (self.start_month.index, self.start_day)
+                end = (self.end_month.index, self.end_day)
                 date = (date.month, date.day)
                 if start <= end:
                     if not (start <= date <= end):
