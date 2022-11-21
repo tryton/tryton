@@ -57,6 +57,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="account"/>
             <field name="account"/>
             <label name="accounting_date"/>
+            <field name="accounting_date"/>
             <field name="alternative_payees" colspan="4"/>
             <label name="move"/>
             <field name="move"/>
