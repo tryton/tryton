@@ -10,7 +10,7 @@ from trytond.model import ModelSQL, ModelView, ValueMixin, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.stock.exceptions import PeriodCloseError
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, TimeDelta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
@@ -23,6 +23,10 @@ DATE_STATE = [
     ]
 shelf_life_delay = fields.TimeDelta(
     "Shelf Life Delay",
+    domain=['OR',
+        ('shelf_life_delay', '=', None),
+        ('shelf_life_delay', '>=', TimeDelta()),
+        ],
     help="The delay before removal from the forecast.")
 
 
