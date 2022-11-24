@@ -11,7 +11,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, fields, sequence_ordered,
     tree)
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, PYSONEncoder
+from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
@@ -162,7 +162,12 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             'company_work_time',
             help="Total time spent on this work and the sub-works."),
         'get_total')
-    effort_duration = fields.TimeDelta('Effort', 'company_work_time',
+    effort_duration = fields.TimeDelta(
+        "Effort", 'company_work_time',
+        domain=['OR',
+            ('effort_duration', '=', None),
+            ('effort_duration', '>=', TimeDelta()),
+            ],
         help="Estimated Effort for this work.")
     total_effort = fields.Function(fields.TimeDelta('Total Effort',
             'company_work_time',
