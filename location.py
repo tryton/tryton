@@ -13,7 +13,7 @@ from trytond.model import (
     sequence_ordered, tree)
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, TimeDelta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
@@ -747,7 +747,12 @@ class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ('type', '=', 'warehouse'),
             ('id', '!=', Eval('warehouse_from', -1)),
             ])
-    lead_time = fields.TimeDelta('Lead Time',
+    lead_time = fields.TimeDelta(
+        "Lead Time",
+        domain=['OR',
+            ('lead_time', '=', None),
+            ('lead_time', '>=', TimeDelta()),
+            ],
         help="The time it takes to move stock between the warehouses.")
 
     @classmethod
