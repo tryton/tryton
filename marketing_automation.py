@@ -303,7 +303,7 @@ class Activity(ModelSQL, ModelView):
 
     delay = fields.TimeDelta(
         "Delay",
-        domain=[
+        domain=['OR',
             ('delay', '=', None),
             ('delay', '>=', TimeDelta()),
             ],
