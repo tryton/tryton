@@ -5,10 +5,16 @@ from collections import defaultdict
 
 from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import TimeDelta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
-supply_period = fields.TimeDelta("Supply Period")
+supply_period = fields.TimeDelta(
+    "Supply Period",
+    domain=['OR',
+        ('supply_period', '=', None),
+        ('supply_period', '>=', TimeDelta()),
+        ])
 
 
 class Configuration(metaclass=PoolMeta):
