@@ -142,7 +142,7 @@ def order_mixin(prefix):
                         components = []
                         for component in line.product.components_used:
                             components.append(line.get_component(component))
-                        Component.set_price_ratio(components)
+                        Component.set_price_ratio(components, line.quantity)
                         line.components = components
                     else:
                         for component in line.product.components_used:
@@ -284,7 +284,7 @@ def order_line_component_mixin(prefix):
                 return self.line.product.type
 
         @classmethod
-        def set_price_ratio(cls, components):
+        def set_price_ratio(cls, components, quantity):
             "Set price ratio between components"
             pool = Pool()
             Uom = pool.get('product.uom')
@@ -294,7 +294,11 @@ def order_line_component_mixin(prefix):
                 product = component.product
                 list_price = Uom.compute_price(
                     product.default_uom, product.list_price,
-                    component.unit) * Decimal(str(component.quantity))
+                    component.unit)
+                if component.fixed:
+                    list_price *= Decimal(str(component.quantity / quantity))
+                else:
+                    list_price *= Decimal(str(component.quantity_ratio))
                 list_prices[component] = list_price
                 sum_ += list_price
 
@@ -303,6 +307,10 @@ def order_line_component_mixin(prefix):
                     ratio = list_prices[component] / sum_
                 else:
                     ratio = 1 / len(components)
+                if component.fixed:
+                    ratio /= Decimal(str(component.quantity / quantity))
+                else:
+                    ratio /= Decimal(str(component.quantity_ratio))
                 component.price_ratio = ratio
 
         def get_move(self, type_):
