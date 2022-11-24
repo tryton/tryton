@@ -5,7 +5,7 @@ from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.model.exceptions import RecursionError
 from trytond.pool import PoolMeta
-from trytond.pyson import Bool, Eval, Get, If
+from trytond.pyson import Bool, Eval, Get, If, TimeDelta
 
 
 class Template(metaclass=PoolMeta):
@@ -116,7 +116,12 @@ class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     Eval('product', -1),
                     Get(Eval('_parent_product', {}), 'id', 0))),
             ])
-    lead_time = fields.TimeDelta('Lead Time')
+    lead_time = fields.TimeDelta(
+        "Lead Time",
+        domain=['OR',
+            ('lead_time', '=', None),
+            ('lead_time', '>=', TimeDelta()),
+            ])
 
     @classmethod
     def __setup__(cls):
