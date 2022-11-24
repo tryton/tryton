@@ -210,7 +210,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @property
     def _state(self):
-        if self.production.state == 'waiting':
+        if self.production.state == 'waiting' and not self.cycles:
             return 'request'
         elif self.production.state == 'done':
             return 'done'
