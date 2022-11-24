@@ -2259,15 +2259,26 @@ function eval_pyson(value){
         },
         get modified() {
             if (this.record && this.field) {
-                return this.field.get_client(this.record) != this.get_value();
+                var value = this._normalize_newline(
+                    this.field.get_client(this.record));
+                return value != this.get_value();
             }
             return false;
         },
         get_value: function() {
-            return this.input.val() || '';
+            return this._normalize_newline(this.input.val() || '');
         },
         set_value: function() {
-            this.field.set_client(this.record, this.get_value());
+            // avoid modification of not normalized value
+            var value = this.get_value();
+            var prev_value = this.field.get_client(this.record);
+            if (value == this._normalize_newline(prev_value)) {
+                value = prev_value;
+            }
+            this.field.set_client(this.record, value);
+        },
+        _normalize_newline: function(content) {
+            return content.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Text._super.set_readonly.call(this, readonly);
