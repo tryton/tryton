@@ -10,7 +10,7 @@ from sql.functions import Extract
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool
-from trytond.pyson import Date, Eval, PYSONEncoder
+from trytond.pyson import Date, Eval, PYSONEncoder, TimeDelta
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -38,7 +38,11 @@ class Line(ModelSQL, ModelView):
     date = fields.Date(
         "Date", required=True,
         help="When the time is spent.")
-    duration = fields.TimeDelta('Duration', 'company_work_time', required=True)
+    duration = fields.TimeDelta(
+        'Duration', 'company_work_time', required=True,
+        domain=[
+            ('duration', '>=', TimeDelta()),
+            ])
     work = fields.Many2One(
         'timesheet.work', "Work", required=True,
         domain=[
