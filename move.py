@@ -1569,7 +1569,7 @@ class Move(Workflow, ModelSQL, ModelView):
             key = list(line[1:-1])
             if 'date' in grouping:
                 i = grouping.index('date')
-                if not isinstance(key[i], datetime.date):
+                if key[i] and not isinstance(key[i], datetime.date):
                     key[i] = datetime.date.fromisoformat(key[i])
             key = tuple(key)
             quantity = line[-1]
