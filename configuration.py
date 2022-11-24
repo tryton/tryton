@@ -6,7 +6,7 @@ from trytond.model import (
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval, Id, TimeDelta
 from trytond.tools.multivalue import migrate_property
 
 purchase_invoice_method = fields.Selection(
@@ -36,7 +36,12 @@ class Configuration(
                 ]))
     purchase_invoice_method = fields.MultiValue(purchase_invoice_method)
     get_purchase_invoice_method = get_purchase_methods('invoice_method')
-    purchase_process_after = fields.TimeDelta("Process Purchase after",
+    purchase_process_after = fields.TimeDelta(
+        "Process Purchase after",
+        domain=['OR',
+            ('purchase_process_after', '=', None),
+            ('purchase_process_after', '>=', TimeDelta()),
+            ],
         help="The grace period during which confirmed purchase "
         "can still be reset to draft.\n"
         "Applied only if a worker queue is activated.")

@@ -6,11 +6,20 @@ from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, TimeDelta
 
 supplier_currency = fields.Many2One(
     'currency.currency', "Supplier Currency",
     help="Default currency for purchases from this party.")
+supplier_lead_time = fields.TimeDelta(
+    "Lead Time",
+    domain=['OR',
+        ('supplier_lead_time', '=', None),
+        ('supplier_lead_time', '>=', TimeDelta()),
+        ],
+    help="The time from confirming the purchase order to receiving "
+    "the goods from the party when used as a supplier.\n"
+    "Used if no lead time is set on the product supplier.")
 
 
 class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
@@ -20,10 +29,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             " as customer."))
     customer_codes = fields.One2Many(
         'party.party.customer_code', 'party', "Customer Codes")
-    supplier_lead_time = fields.MultiValue(fields.TimeDelta("Lead Time",
-            help="The time from confirming the purchase order to receiving "
-            "the goods from the party when used as a supplier.\n"
-            "Used if no lead time is set on the product supplier."))
+    supplier_lead_time = fields.MultiValue(supplier_lead_time)
     supplier_lead_times = fields.One2Many(
         'party.party.supplier_lead_time', 'party', "Lead Times")
     supplier_currency = fields.MultiValue(supplier_currency)
@@ -52,7 +58,7 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
             'company': Eval('company', -1),
             },
         depends={'company'})
-    supplier_lead_time = fields.TimeDelta("Lead Time")
+    supplier_lead_time = supplier_lead_time
 
 
 class PartySupplierCurrency(ModelSQL, ValueMixin):

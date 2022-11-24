@@ -12,7 +12,7 @@ from trytond.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
@@ -285,7 +285,12 @@ class ProductSupplier(
     company = fields.Many2One(
         'company.company', "Company",
         required=True, ondelete='CASCADE')
-    lead_time = fields.TimeDelta('Lead Time',
+    lead_time = fields.TimeDelta(
+        "Lead Time",
+        domain=['OR',
+            ('lead_time', '=', None),
+            ('lead_time', '>=', TimeDelta()),
+            ],
         help="The time from confirming the purchase order to receiving the "
         "products.\n"
         "If empty the lead time of the supplier is used.")
