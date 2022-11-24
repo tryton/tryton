@@ -51,7 +51,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         '0 for no limit.')
     minimum_time_delay = fields.TimeDelta(
         "Minimum Delay",
-        domain=[
+        domain=['OR',
+            ('minimum_time_delay', '=', None),
             ('minimum_time_delay', '>=', TimeDelta()),
             ],
         help='Set a minimum time delay between call to "Action Function" '
