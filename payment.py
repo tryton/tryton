@@ -24,7 +24,7 @@ from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, TimeDelta
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
@@ -923,6 +923,9 @@ class Account(ModelSQL, ModelView):
     last_event = fields.Char("Last Event", readonly=True, strip=False)
     setup_intent_delay = fields.TimeDelta(
         "Setup Intent Delay", required=True,
+        domain=[
+            ('setup_intent_delay', '>=', TimeDelta()),
+            ],
         help="The delay before cancelling setup intent not succeeded.")
 
     @classmethod
