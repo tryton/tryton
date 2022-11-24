@@ -98,6 +98,7 @@ class Production(metaclass=PoolMeta):
         for production in draft_productions:
             works.extend(production.get_works(work_center_picker))
         Work.save(works)
+        Work.set_state([w for p in productions for w in p.works])
 
     def get_works(self, work_center_picker):
         if not self.routing:
