@@ -8,6 +8,7 @@ from efficient_apriori import apriori
 from trytond.cache import Cache
 from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import TimeDelta
 from trytond.transaction import Transaction
 
 
@@ -15,7 +16,11 @@ class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     product_association_rule_transactions_up_to = fields.TimeDelta(
-        "Transactions Up to")
+        "Transactions Up to",
+        domain=['OR',
+            ('product_association_rule_transactions_up_to', '=', None),
+            ('product_association_rule_transactions_up_to', '>=', TimeDelta()),
+            ])
     product_association_rule_min_support = fields.Float(
         "Minimum Support", required=True,
         domain=[
