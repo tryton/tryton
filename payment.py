@@ -9,7 +9,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Bool, Eval, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -32,6 +32,10 @@ class Journal(metaclass=PoolMeta):
             })
     clearing_posting_delay = fields.TimeDelta(
         "Clearing Posting Delay",
+        domain=['OR',
+            ('clearing_posting_delay', '=', None),
+            ('clearing_posting_delay', '>=', TimeDelta()),
+            ],
         help="Post automatically the clearing moves after the delay.\n"
         "Leave empty for no posting.")
 
