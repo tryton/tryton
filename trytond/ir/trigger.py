@@ -15,7 +15,7 @@ from trytond.model import (
     fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Eval, PYSONDecoder
+from trytond.pyson import Eval, PYSONDecoder, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
@@ -49,7 +49,11 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     limit_number = fields.Integer('Limit Number', required=True,
         help='Limit the number of call to "Action Function" by records.\n'
         '0 for no limit.')
-    minimum_time_delay = fields.TimeDelta('Minimum Delay',
+    minimum_time_delay = fields.TimeDelta(
+        "Minimum Delay",
+        domain=[
+            ('minimum_time_delay', '>=', TimeDelta()),
+            ],
         help='Set a minimum time delay between call to "Action Function" '
         'for the same record.\n'
         'empty for no delay.')
