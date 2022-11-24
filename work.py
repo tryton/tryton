@@ -12,7 +12,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.transaction import Transaction
 
 from .exceptions import PickerError
@@ -283,7 +283,12 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
     __name__ = 'production.work.cycle'
     work = fields.Many2One(
         'production.work', "Work", required=True, ondelete='CASCADE')
-    duration = fields.TimeDelta('Duration',
+    duration = fields.TimeDelta(
+        "Duration",
+        domain=['OR',
+            ('duration', '=', None),
+            ('duration', '>=', TimeDelta()),
+            ],
         states={
             'required': Eval('state') == 'done',
             'readonly': Eval('state').in_(['done', 'draft', 'cancelled']),
