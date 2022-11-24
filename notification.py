@@ -17,7 +17,7 @@ from trytond.i18n import gettext
 from trytond.ir.resource import ResourceAccessMixin
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools.email_ import set_from_header
@@ -106,6 +106,10 @@ class Email(ModelSQL, ModelView):
         help="Add a trigger for the notification.")
     send_after = fields.TimeDelta(
         "Send After",
+        domain=['OR',
+            ('send_after', '=', None),
+            ('send_after', '>=', TimeDelta()),
+            ],
         help="The delay after which the email must be sent.\n"
         "Applied if a worker queue is activated.")
 
