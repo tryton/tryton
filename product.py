@@ -8,19 +8,24 @@ from trytond.model import ModelSQL, ModelView, ValueMixin, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, TimeDelta
 from trytond.transaction import Transaction
+
+default_lead_time = fields.TimeDelta(
+    "Default Lead Time",
+    domain=['OR',
+        ('default_lead_time', '=', None),
+        ('default_lead_time', '>=', TimeDelta()),
+        ],
+    help="The time from confirming the sales order to sending the "
+    "products.\n"
+    "Used for products without a lead time.")
 
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'product.configuration'
 
-    default_lead_time = fields.MultiValue(
-        fields.TimeDelta(
-            "Default Lead Time",
-            help="The time from confirming the sales order to sending the "
-            "products.\n"
-            "Used for products without a lead time."))
+    default_lead_time = fields.MultiValue(default_lead_time)
 
     @classmethod
     def default_default_lead_time(cls, **pattern):
@@ -30,7 +35,7 @@ class Configuration(metaclass=PoolMeta):
 class DefaultLeadTime(ModelSQL, ValueMixin):
     "Product Default Lead Time"
     __name__ = 'product.configuration.default_lead_time'
-    default_lead_time = fields.TimeDelta("Default Lead Time")
+    default_lead_time = default_lead_time
 
 
 class Template(metaclass=PoolMeta):
@@ -47,6 +52,10 @@ class Template(metaclass=PoolMeta):
             ])
     lead_time = fields.MultiValue(fields.TimeDelta(
             "Lead Time",
+            domain=['OR',
+                ('lead_time', '=', None),
+                ('lead_time', '>=', TimeDelta()),
+                ],
             states={
                 'invisible': ~Eval('salable', False),
                 },
@@ -112,7 +121,12 @@ class ProductLeadTime(ModelSQL, ValueMixin):
 
     template = fields.Many2One(
         'product.template', "Template", ondelete='CASCADE')
-    lead_time = fields.TimeDelta("Lead Time")
+    lead_time = fields.TimeDelta(
+        "Lead Time",
+        domain=['OR',
+            ('lead_time', '=', None),
+            ('lead_time', '>=', TimeDelta()),
+            ])
 
     @classmethod
     def __register__(cls, module_name):

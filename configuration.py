@@ -6,7 +6,7 @@ from trytond.model import (
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval, Id, TimeDelta
 from trytond.tools.multivalue import migrate_property
 
 sale_invoice_method = fields.Selection(
@@ -48,7 +48,12 @@ class Configuration(
     get_sale_invoice_methods = get_sale_methods('invoice_method')
     sale_shipment_method = fields.MultiValue(sale_shipment_method)
     get_sale_shipment_methods = get_sale_methods('shipment_method')
-    sale_process_after = fields.TimeDelta("Process Sale after",
+    sale_process_after = fields.TimeDelta(
+        "Process Sale after",
+        domain=['OR',
+            ('sale_process_after', '=', None),
+            ('sale_process_after', '>=', TimeDelta()),
+            ],
         help="The grace period during which confirmed sale "
         "can still be reset to draft.\n"
         "Applied if a worker queue is activated.")
