@@ -28,7 +28,7 @@ from trytond.model import (
     EvalEnvironment, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
     fields)
 from trytond.pool import Pool
-from trytond.pyson import Eval, If, PYSONDecoder
+from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
@@ -303,6 +303,10 @@ class Activity(ModelSQL, ModelView):
 
     delay = fields.TimeDelta(
         "Delay",
+        domain=[
+            ('delay', '=', None),
+            ('delay', '>=', TimeDelta()),
+            ],
         states={
             'required': Eval('negative', False),
             },
