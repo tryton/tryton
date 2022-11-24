@@ -1936,9 +1936,8 @@ class ModelStorage(Model):
                     to_create.append(record)
                 elif save_values[record]:
                     to_write.append(record)
-            transaction = Transaction()
             try:
-                with transaction.set_current_transaction(transaction), \
+                with Transaction().set_current_transaction(transaction), \
                         transaction.set_user(user), \
                         transaction.reset_context(), \
                         transaction.set_context(context, _check_access=False):
