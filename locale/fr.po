@@ -671,7 +671,7 @@ msgid "What is the name of this export?"
 msgstr "Quel est le nom de cet export ?"
 
 msgid "Override %1 definition?"
-msgstr "Surcharger la définition %s ?"
+msgstr "Surcharger la définition %1 ?"
 
 msgid "%1 record saved"
 msgid_plural "%1 records saved"
