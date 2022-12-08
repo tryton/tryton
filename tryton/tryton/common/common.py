@@ -373,6 +373,7 @@ def file_selection(title, filename='',
     win.set_transient_for(parent)
     win.set_icon(TRYTON_ICON)
     if filename:
+        filename = slugify(filename)
         if action in (gtk.FILE_CHOOSER_ACTION_SAVE,
                 gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER):
             win.set_current_name(filename)
