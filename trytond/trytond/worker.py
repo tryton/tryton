@@ -59,15 +59,15 @@ def work(options):
     queues = [Queue(pool, mpool) for pool in initializer(options, False)]
 
     tasks = TaskList()
-    timeout = options.timeout
     try:
         while True:
+            timeout = options.timeout
             while len(tasks.filter()) >= processes:
                 time.sleep(0.1)
             for queue in queues:
                 task_id, next_ = queue.pull(options.name)
-                timeout = min(
-                    next_ or options.timeout, timeout, options.timeout)
+                if next_ is not None:
+                    timeout = min(next_, timeout)
                 if task_id:
                     tasks.append(queue.run(task_id))
                     break
