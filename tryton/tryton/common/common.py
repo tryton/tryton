@@ -448,6 +448,7 @@ def file_selection(title, filename='',
     win.add_buttons(*buttons)
     win.set_icon(TRYTON_ICON)
     if filename:
+        filename = slugify(filename)
         if action in (Gtk.FileChooserAction.SAVE,
                 Gtk.FileChooserAction.CREATE_FOLDER):
             win.set_current_name(filename)
