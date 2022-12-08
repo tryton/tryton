@@ -64,18 +64,18 @@ def work(options):
     queues = [Queue(name, mpool) for name in options.database_names]
 
     tasks = TaskList()
-    timeout = options.timeout
     selector = selectors.DefaultSelector()
     for queue in queues:
         selector.register(queue.connection, selectors.EVENT_READ)
     try:
         while True:
+            timeout = options.timeout
             while len(tasks.filter()) >= processes:
                 time.sleep(0.1)
             for queue in queues:
                 task_id, next_ = queue.pull(options.name)
-                timeout = min(
-                    next_ or options.timeout, timeout, options.timeout)
+                if next_ is not None:
+                    timeout = min(next_, timeout)
                 if task_id:
                     tasks.append(queue.run(task_id))
                     break
