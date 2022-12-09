@@ -105,7 +105,8 @@
                 sum_row.append(jQuery('<td/>'));
                 this.tfoot = jQuery('<tfoot/>');
                 this.tfoot.append(sum_row);
-                this.table.append(this.tfoot);
+                // insert before thead to not hide drop-down from thead
+                this.table.prepend(this.tfoot);
             }
 
             this.columns.forEach(function(column) {
