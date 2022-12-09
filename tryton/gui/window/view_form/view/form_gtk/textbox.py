@@ -94,8 +94,6 @@ class TextBox(Widget, TranslateMixin):
     def _readonly_set(self, value):
         super(TextBox, self)._readonly_set(value)
         self.textview.set_editable(not value)
-        if self.button:
-            self.button.set_sensitive(not value)
 
     @property
     def modified(self):
