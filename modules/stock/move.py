@@ -312,7 +312,7 @@ class Move(Workflow, ModelSQL, ModelView):
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
             'from_location', 'to_location', 'company'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned
-            | set(['planned_date', 'effective_date', 'state']))
+            | set(['planned_date', 'effective_date']))
         cls._allow_modify_closed_period = {
             'cost_price', 'unit_price', 'unit_price_updated', 'currency'}
 
