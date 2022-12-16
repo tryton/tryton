@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.shortened_url,count:"
+msgid "Click Count"
+msgstr "点击计数"
+
+msgctxt "field:web.shortened_url,method:"
+msgid "Method"
+msgstr "方法"
+
+msgctxt "field:web.shortened_url,record:"
+msgid "Record"
+msgstr "记录"
+
+msgctxt "field:web.shortened_url,redirect_url:"
+msgid "Redirect URL"
+msgstr "重定向网址"
+
+msgctxt "field:web.shortened_url,shortened_url:"
+msgid "Shortened URL"
+msgstr "网址短名"
+
+msgctxt "field:web.shortened_url.access,url:"
+msgid "URL"
+msgstr "网址"
+
+msgctxt "model:ir.action,name:act_shortened_url"
+msgid "Shortened URLs"
+msgstr "网址短名"
+
+msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
+msgid "Shortened URLs"
+msgstr "网址短名"
+
+msgctxt "model:web.shortened_url,name:"
+msgid "Short URL"
+msgstr "简短网址"
+
+msgctxt "model:web.shortened_url.access,name:"
+msgid "URL Access"
+msgstr "URL访问"
