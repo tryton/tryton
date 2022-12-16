@@ -1,0 +1,4853 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+msgctxt "field:account.account,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:account.account,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "بسته"
+
+msgctxt "field:account.account,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.account,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "field:account.account,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.account,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.account,debit_type:"
+msgid "Debit Type"
+msgstr "بدهی"
+
+msgctxt "field:account.account,deferral:"
+msgid "Deferral"
+msgstr "بازپرداخت"
+
+msgctxt "field:account.account,deferrals:"
+msgid "Deferrals"
+msgstr "بازپرداخت ها"
+
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "تراز دفتر کل"
+
+msgctxt "field:account.account,left:"
+msgid "Left"
+msgstr "چپ"
+
+msgctxt "field:account.account,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.account,note:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "field:account.account,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr "مورد نیاز نهاد/سازمان"
+
+msgctxt "field:account.account,reconcile:"
+msgid "Reconcile"
+msgstr "تطبیق"
+
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr "جایگزین شده توسط"
+
+msgctxt "field:account.account,right:"
+msgid "Right"
+msgstr "راست"
+
+msgctxt "field:account.account,second_currency:"
+msgid "Secondary Currency"
+msgstr "واحد پول دوم"
+
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.account,taxes:"
+msgid "Default Taxes"
+msgstr "مالیات های پیش فرض"
+
+msgctxt "field:account.account,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.account,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+msgctxt "field:account.account,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.account-account.tax,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.account-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.account.deferral,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:account.account.deferral,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.account.deferral,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:account.account.deferral,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr "مقدارپول دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "واحد پول دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.account.template,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "بسته"
+
+msgctxt "field:account.account.template,code:"
+msgid "Code"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "field:account.account.template,debit_type:"
+msgid "Debit Type"
+msgstr "بدهی"
+
+msgctxt "field:account.account.template,deferral:"
+msgid "Deferral"
+msgstr "بازپرداخت"
+
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "تراز دفتر کل"
+
+msgctxt "field:account.account.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.account.template,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr "مورد نیاز نهاد/سازمان"
+
+msgctxt "field:account.account.template,reconcile:"
+msgid "Reconcile"
+msgstr "تطبیق"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr "جایگزین شده توسط"
+
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.account.template,taxes:"
+msgid "Default Taxes"
+msgstr "مالیات های پیش فرض"
+
+msgctxt "field:account.account.template,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.account.template-account.tax.template,account:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "field:account.account.template-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "الگوی مالیات"
+
+msgctxt "field:account.account.type,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "field:account.account.type,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.account.type,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.account.type,debt:"
+msgid "Debt"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "هزینه"
+
+msgctxt "field:account.account.type,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.account.type,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
+#, fuzzy
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+#, fuzzy
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "field:account.account.type,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.account.type,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "field:account.account.type.template,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.account.type.template,debt:"
+msgid "Debt"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "هزینه"
+
+msgctxt "field:account.account.type.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.account.type.template,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "field:account.aged_balance,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:account.aged_balance,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.aged_balance,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.aged_balance,term0:"
+msgid "Now"
+msgstr "اکنون"
+
+msgctxt "field:account.aged_balance,term1:"
+msgid "First Term"
+msgstr "دوره اول"
+
+msgctxt "field:account.aged_balance,term2:"
+msgid "Second Term"
+msgstr "دوره دوم"
+
+msgctxt "field:account.aged_balance,term3:"
+msgid "Third Term"
+msgstr "دوره سوم"
+
+msgctxt "field:account.aged_balance.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.aged_balance.context,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.aged_balance.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.aged_balance.context,term1:"
+msgid "First Term"
+msgstr "دوره اول"
+
+msgctxt "field:account.aged_balance.context,term2:"
+msgid "Second Term"
+msgstr "دوره دوم"
+
+msgctxt "field:account.aged_balance.context,term3:"
+msgid "Third Term"
+msgstr "دوره سوم"
+
+msgctxt "field:account.aged_balance.context,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.aged_balance.context,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgid "Comparison"
+msgstr "مقایسه"
+
+msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.balance_sheet.context,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.configuration,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "حساب قابل پرداخت پیش فرض"
+
+msgctxt "field:account.configuration,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "حساب دریافتی پیش فرض"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "قانون مالیات مشتری"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "قانون مالیات تامین کننده"
+
+#, fuzzy
+msgctxt "field:account.configuration,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "تطبیق دادن سطرها"
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "گرد کردن مالیات"
+
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "حساب قابل پرداخت پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "حساب دریافتی پیش فرض"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_tax_rule,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "قانون مالیات مشتری"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "قانون مالیات تامین کننده"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "تطبیق دادن سطرها"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "روش"
+
+msgctxt "field:account.create_chart.account,account_template:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "field:account.create_chart.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.create_chart.properties,account_payable:"
+msgid "Default Payable Account"
+msgstr "حساب قابل پرداخت پیش فرض"
+
+msgctxt "field:account.create_chart.properties,account_receivable:"
+msgid "Default Receivable Account"
+msgstr "حساب دریافتی پیش فرض"
+
+msgctxt "field:account.create_chart.properties,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.fiscalyear,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.fiscalyear,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:account.fiscalyear,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.fiscalyear,periods:"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "field:account.fiscalyear,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "ارسال دنباله جابجایی"
+
+msgctxt "field:account.fiscalyear,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.fiscalyear,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "حساب بستانکاری"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "حساب بدهی"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
+msgid "End Day"
+msgstr "تاریخ پایان"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
+msgid "Frequency"
+msgstr "ادامه"
+
+msgctxt "field:account.fiscalyear.create_periods.start,interval:"
+msgid "Interval"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.renew.start,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.fiscalyear.renew.start,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.fiscalyear.renew.start,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Previous Fiscalyear"
+msgstr "سال مالی قبلی"
+
+msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
+msgid "Reset Sequences"
+msgstr "بازنشانی ادامه ها"
+
+msgctxt "field:account.fiscalyear.renew.start,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.general_ledger.account,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:account.general_ledger.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.general_ledger.account,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.general_ledger.account,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,debit_type:"
+msgid "Debit Type"
+msgstr "بدهی"
+
+msgctxt "field:account.general_ledger.account,end_balance:"
+msgid "End Balance"
+msgstr "تراز پایانی"
+
+msgctxt "field:account.general_ledger.account,end_credit:"
+msgid "End Credit"
+msgstr "پایان بستانکاری"
+
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.general_ledger.account,end_debit:"
+msgid "End Debit"
+msgstr "پایان بدهی"
+
+msgctxt "field:account.general_ledger.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "تراز دفتر کل"
+
+msgctxt "field:account.general_ledger.account,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.general_ledger.account,start_balance:"
+msgid "Start Balance"
+msgstr "تراز شروع"
+
+msgctxt "field:account.general_ledger.account,start_credit:"
+msgid "Start Credit"
+msgstr "شروع بستانکاری"
+
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.general_ledger.account,start_debit:"
+msgid "Start Debit"
+msgstr "شروع بدهی"
+
+msgctxt "field:account.general_ledger.account,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.general_ledger.account.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.general_ledger.account.context,end_period:"
+msgid "End Period"
+msgstr "پایان دوره"
+
+msgctxt "field:account.general_ledger.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.general_ledger.account.context,from_date:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.general_ledger.account.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.general_ledger.account.context,start_period:"
+msgid "Start Period"
+msgstr "شروع دوره"
+
+msgctxt "field:account.general_ledger.account.context,to_date:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "تراز پایانی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "پایان بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "پایان بدهی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "تراز شروع"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "شروع بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "شروع بدهی"
+
+msgctxt "field:account.general_ledger.line,account:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account_party:"
+msgid "Account Party"
+msgstr "حساب پرداختی"
+
+msgctxt "field:account.general_ledger.line,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:account.general_ledger.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.general_ledger.line,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.general_ledger.line,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.general_ledger.line,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:account.general_ledger.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,internal_balance:"
+msgid "Internal Balance"
+msgstr "تراز آزمایشی"
+
+msgctxt "field:account.general_ledger.line,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:account.general_ledger.line,move_description:"
+msgid "Move Description"
+msgstr "توضیحات جابجایی"
+
+msgctxt "field:account.general_ledger.line,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.general_ledger.line,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.general_ledger.line,party_required:"
+msgid "Party Required"
+msgstr "مورد نیاز نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "تطبیق دادن"
+
+msgctxt "field:account.general_ledger.line,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.general_ledger.line.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.general_ledger.line.context,end_period:"
+msgid "End Period"
+msgstr "پایان دوره"
+
+msgctxt "field:account.general_ledger.line.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.general_ledger.line.context,from_date:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.general_ledger.line.context,party_cumulate:"
+msgid "Cumulate per Party"
+msgstr "تقسیم بر هر نهاد/سازمان"
+
+msgctxt "field:account.general_ledger.line.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.general_ledger.line.context,start_period:"
+msgid "Start Period"
+msgstr "شروع دوره"
+
+msgctxt "field:account.general_ledger.line.context,to_date:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+msgctxt "field:account.income_statement.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "مقایسه"
+
+msgctxt "field:account.income_statement.context,end_period:"
+msgid "End Period"
+msgstr "پایان دوره"
+
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "پایان دوره"
+
+msgctxt "field:account.income_statement.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+msgctxt "field:account.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+msgctxt "field:account.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "جابجایی ارسال شده"
+
+msgctxt "field:account.income_statement.context,start_period:"
+msgid "Start Period"
+msgstr "شروع دوره"
+
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "شروع دوره"
+
+msgctxt "field:account.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+msgctxt "field:account.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+msgctxt "field:account.journal,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:account.journal,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.journal,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.journal,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:account.journal,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.journal,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "ترتیب ها"
+
+msgctxt "field:account.journal,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.journal.open_cash.context,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.journal.open_cash.context,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.journal.period,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:account.journal.period,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.journal.period,period:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "field:account.journal.period,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move,date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "عدد"
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.move,period:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "field:account.move,post_date:"
+msgid "Post Date"
+msgstr "تاریخ ارسال"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr "تعداد ارسال"
+
+msgctxt "field:account.move,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move.line,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr "مقدارپول"
+
+msgctxt "field:account.move.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+#, fuzzy
+msgctxt "field:account.move.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move.line,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.move.line,date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:account.move.line,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move.line,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move.line,maturity_date:"
+msgid "Maturity Date"
+msgstr "تاریخ سررسید"
+
+msgctxt "field:account.move.line,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "توضیحات جابجایی"
+
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
+msgctxt "field:account.move.line,move_state:"
+msgid "Move State"
+msgstr "وضعیت جابجایی"
+
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.move.line,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr "مورد نیاز نهاد/سازمان"
+
+msgctxt "field:account.move.line,period:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "field:account.move.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "تطبیق دادن"
+
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr ""
+
+msgctxt "field:account.move.line,second_currency:"
+msgid "Second Currency"
+msgstr "مقدارپول دوم"
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
+msgstr "پول دوم مورد نیاز"
+
+msgctxt "field:account.move.line,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.move.line,tax_lines:"
+msgid "Tax Lines"
+msgstr "سطرهای مالیات"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr "مقررات"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr "ادامه"
+
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr "عدد"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "حساب کاربری"
+
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr "عملگر"
+
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr "مورد نیاز نهاد/سازمان"
+
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "field:account.move.open_journal.ask,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move.open_journal.ask,period:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "حساب بستانکاری"
+
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "حساب بدهی"
+
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "قلم زده شده"
+
+#, fuzzy
+msgctxt "field:account.move.reconciliation,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move.reconciliation,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr ""
+
+msgctxt "field:account.move.reconciliation,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.move.reconciliation,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr "رقم‌ها"
+
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "حرکت"
+
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr "متنی"
+
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.open_chart.start,posted:"
+msgid "Posted Moves"
+msgstr "جابجایی ها ارسال شده"
+
+msgctxt "field:account.period,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.period,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:account.period,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.period,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "ارسال دنباله جابجایی"
+
+msgctxt "field:account.period,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.period,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.period,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "نهادها / سازمان ها"
+
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write Off"
+msgstr "قلم زده شده"
+
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.tax,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.tax,credit_base_amount:"
+msgid "Credit Base Amount"
+msgstr "مقدار پایه بستانکاری"
+
+msgctxt "field:account.tax,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "ملاحظات حساب بستانکاری"
+
+msgctxt "field:account.tax,credit_tax_amount:"
+msgid "Credit Tax Amount"
+msgstr "مقدار مالیات بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.tax,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:account.tax,invoice_account:"
+msgid "Invoice Account"
+msgstr "حساب فاکتور"
+
+msgctxt "field:account.tax,invoice_base_amount:"
+msgid "Invoice Base Amount"
+msgstr "مقدار پایه صورتحساب"
+
+msgctxt "field:account.tax,invoice_tax_amount:"
+msgid "Invoice Tax Amount"
+msgstr "مبلغ مالیات صورتحساب"
+
+msgctxt "field:account.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "اطلاع قانونی"
+
+msgctxt "field:account.tax,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "نرخ"
+
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.tax,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+msgctxt "field:account.tax,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "به روز رسانی قیمت واحد"
+
+msgctxt "field:account.tax.code,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:account.tax.code,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax.code,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.tax.code,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.tax.code,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.tax.code,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax.code,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.tax.code,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.code,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax.code,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.tax.code,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+msgctxt "field:account.tax.code.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax.code.line,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.tax.code.line,operator:"
+msgid "Operator"
+msgstr "عملگر"
+
+msgctxt "field:account.tax.code.line,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.tax.code.line,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.tax.code.line,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+msgctxt "field:account.tax.code.line,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax.code.line.template,amount:"
+msgid "Amount"
+msgstr "میزان"
+
+msgctxt "field:account.tax.code.line.template,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.tax.code.line.template,operator:"
+msgid "Operator"
+msgstr "عملگر"
+
+msgctxt "field:account.tax.code.line.template,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.tax.code.line.template,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.tax.code.open_chart.start,method:"
+msgid "Method"
+msgstr "روش"
+
+msgctxt "field:account.tax.code.open_chart.start,periods:"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "field:account.tax.code.template,account:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "field:account.tax.code.template,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.tax.code.template,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.tax.code.template,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax.code.template,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.tax.code.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.code.template,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax.group,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "نوع"
+
+msgctxt "field:account.tax.group,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.tax.line,move_line:"
+msgid "Move Line"
+msgstr "سطر جابجایی"
+
+msgctxt "field:account.tax.line,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.tax.line,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "سطر"
+
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.tax.line.template,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax.rule,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "نوع"
+
+msgctxt "field:account.tax.rule,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.tax.rule,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.rule,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax.rule.line,group:"
+msgid "Tax Group"
+msgstr "گروه مالیات"
+
+msgctxt "field:account.tax.rule.line,keep_origin:"
+msgid "Keep Origin"
+msgstr "حفظ منشاء"
+
+msgctxt "field:account.tax.rule.line,origin_tax:"
+msgid "Original Tax"
+msgstr "مالیات اصلی"
+
+msgctxt "field:account.tax.rule.line,rule:"
+msgid "Rule"
+msgstr "قانون"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax.rule.line,tax:"
+msgid "Substitution Tax"
+msgstr "مالیات جایگزین"
+
+msgctxt "field:account.tax.rule.line,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax.rule.line.template,group:"
+msgid "Tax Group"
+msgstr "گروه مالیات"
+
+msgctxt "field:account.tax.rule.line.template,keep_origin:"
+msgid "Keep Origin"
+msgstr "حفظ منشاء"
+
+msgctxt "field:account.tax.rule.line.template,origin_tax:"
+msgid "Original Tax"
+msgstr "مالیات اصلی"
+
+msgctxt "field:account.tax.rule.line.template,rule:"
+msgid "Rule"
+msgstr "قانون"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax.rule.line.template,tax:"
+msgid "Substitution Tax"
+msgstr "مالیات جایگزین"
+
+msgctxt "field:account.tax.rule.template,account:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "نوع"
+
+msgctxt "field:account.tax.rule.template,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:account.tax.rule.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.template,account:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "field:account.tax.template,amount:"
+msgid "Amount"
+msgstr "میزان"
+
+msgctxt "field:account.tax.template,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:account.tax.template,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "ملاحظات حساب بستانکاری"
+
+msgctxt "field:account.tax.template,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:account.tax.template,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:account.tax.template,invoice_account:"
+msgid "Invoice Account"
+msgstr "حساب فاکتور"
+
+msgctxt "field:account.tax.template,legal_notice:"
+msgid "Legal Notice"
+msgstr "اطلاع قانونی"
+
+msgctxt "field:account.tax.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.tax.template,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "نرخ"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:account.tax.template,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "به روز رسانی قیمت واحد"
+
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr "نتیجه"
+
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr "اطلاع قانونی"
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.update_chart.start,account:"
+msgid "Root Account"
+msgstr "حساب ریشه"
+
+msgctxt "field:party.party,account_payable:"
+msgid "Account Payable"
+msgstr "حساب پرداختی"
+
+msgctxt "field:party.party,account_receivable:"
+msgid "Account Receivable"
+msgstr "حساب دریافتی"
+
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+#, fuzzy
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:party.party,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "قانون مالیات مشتری"
+
+msgctxt "field:party.party,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
+msgctxt "field:party.party,payable_today:"
+msgid "Payable Today"
+msgstr "پرداختی امروز"
+
+msgctxt "field:party.party,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+msgctxt "field:party.party,receivable_today:"
+msgid "Receivable Today"
+msgstr "دریافتی امروز"
+
+msgctxt "field:party.party,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "قانون مالیات تامین کننده"
+
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "حساب پرداختی"
+
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "حساب دریافتی"
+
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "قانون مالیات مشتری"
+
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "قانون مالیات تامین کننده"
+
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
+msgctxt "help:account.account,debit_type:"
+msgid "The type used if not empty and debit > credit."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "نمایش فقط تراز در گزارش دفتر کل"
+
+#, fuzzy
+msgctxt "help:account.account,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"جابجایی سطرهای این حساب مجاز است\n"
+"برای تطبیق دادن."
+
+msgctxt "help:account.account,second_currency:"
+msgid ""
+"Force all moves for this account \n"
+"to have this secondary currency."
+msgstr ""
+"مجموع تمام جابجایی های این حساب\n"
+" برای داشتن ارز ثانویه."
+
+#, fuzzy
+msgctxt "help:account.account,taxes:"
+msgid ""
+"Default tax for manual encoding of move lines\n"
+"for journal types: \"expense\" and \"revenue\"."
+msgstr ""
+"مالیات پیش فرض برای رمزگذاری دستی سطرهای جابجایی \n"
+"برای انواع روزنامه : \"هزینه\" و \"درآمد\""
+
+msgctxt "help:account.account,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
+
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "نمایش فقط تراز در گزارش دفتر کل"
+
+#, fuzzy
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"جابجایی سطرهای این حساب مجاز است\n"
+"برای تطبیق دادن."
+
+msgctxt "help:account.account.type,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+msgctxt "help:account.account.type,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
+
+msgctxt "help:account.account.type.template,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.aged_balance.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+msgctxt "help:account.configuration,default_customer_tax_rule:"
+msgid "Default customer tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.configuration,default_supplier_tax_rule:"
+msgid "Default supplier tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
+msgid ""
+"The day of the month on which periods end.\n"
+"Months with fewer days will end on the last day."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Used as reference for fiscalyear configuration."
+msgstr "به عنوان مرجع برای تنظیم سال مالی استفاده می شود."
+
+msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
+msgid "If checked, new sequences will be created."
+msgstr "اگر کادر را تیک بزنید، توالی های جدید ایجاد خواهند شد."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number."
+msgstr "همچنین به عنوان شماره برگه شناخته می شود"
+
+#, fuzzy
+msgctxt "help:account.move.line,amount_second_currency:"
+msgid "The amount expressed in a second currency."
+msgstr "مقدار بیان شده در یک ارز دوم"
+
+msgctxt "help:account.move.line,maturity_date:"
+msgid ""
+"This field is used for payable and receivable lines. \n"
+"You can put the limit date for the payment."
+msgstr ""
+"این فیلد برای سطرهای قابل پرداخت و قابل دریافت استفاده می شود. \n"
+"شما می توانید تاریخ محدود برای پرداخت قرار دهید."
+
+#, fuzzy
+msgctxt "help:account.move.line,second_currency:"
+msgid "The second currency."
+msgstr "ارز دوم"
+
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "یک عبارت پایتون که با کلمات کلیدی ارزیابی می شود."
+
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgstr "مقادیر کلمات کلیدی جایگزین توسط براکت ('{' و '}') معرفی میشوند."
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
+msgstr "نام کلمه کلیدی \"نهاد/سازمان\"."
+
+#, fuzzy
+msgctxt "help:account.move.reconciliation,date:"
+msgid "Highest date of the reconciled lines."
+msgstr "بالاترین تاریخ تطبیق دادن سطرها"
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr ""
+
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today."
+msgstr "برای امروز خالی بگذارید."
+
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgstr "مقادیر کلمات کلیدی جایگزین توسط براکت ('{' و '}') معرفی میشوند."
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "برای تمام سال های مالی باز، خالی بگذارید"
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,posted:"
+msgid "Only include posted moves."
+msgstr "نمایش فقط جابجایی ارسال شده"
+
+#, fuzzy
+msgctxt "help:account.tax,amount:"
+msgid "In company's currency."
+msgstr "واحد پول در شرکت ها"
+
+#, fuzzy
+msgctxt "help:account.tax,description:"
+msgid "The name that will be used in reports."
+msgstr "نامی که در گزارش ها استفاده می شود"
+
+msgctxt "help:account.tax,template_override:"
+msgid "Check to override template definition"
+msgstr "برای بازنویسی تعاریف الگو تیک بزنید"
+
+#, fuzzy
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation will be modified "
+"by this tax."
+msgstr ""
+"اگر کادر را تیک بزنید، قیمت واحد برای محاسبه مالیات بیشتر با این مالیات "
+"اصلاح خواهد شد"
+
+msgctxt "help:account.tax.code,template_override:"
+msgid "Check to override template definition"
+msgstr "برای بازنویسی تعاریف الگو، کادر را تیک بزنید"
+
+msgctxt "help:account.tax.code.line,template_override:"
+msgid "Check to override template definition"
+msgstr "برای بازنویسی تعاریف الگو، کادر را تیک بزنید"
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "برای تمام سال های مالی باز، خالی بگذارید"
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,periods:"
+msgid "Leave empty for all periods of all open fiscal year."
+msgstr "برای تمام دوره های سال های مالی باز، خالی بگذارید"
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "یک عبارت پایتون که با کلمات کلیدی ارزیابی می شود."
+
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
+
+msgctxt "help:account.tax.rule.line,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "برای اضافه کردن مالیات اصلی به مالیات جایگزین، کادر را تیک بزنید."
+
+msgctxt "help:account.tax.rule.line,origin_tax:"
+msgid ""
+"If the original tax is filled, the rule will be applied only for this tax."
+msgstr "اگر مالیات اصلی پر شود، این قانون فقط برای این مالیات اعمال خواهد شد."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
+
+msgctxt "help:account.tax.rule.line.template,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "برای اضافه کردن مالیات اصلی به مالیات جایگزین، کادر را تیک بزنید."
+
+msgctxt "help:account.tax.rule.line.template,origin_tax:"
+msgid ""
+"If the original tax template is filled, the rule will be applied only for "
+"this tax template."
+msgstr ""
+"اگر الگوی مالیات اصلی پر شده، این قانون تنها برای این الگو مالیات اعمال می "
+"شود."
+
+msgctxt "help:party.party,customer_tax_rule:"
+msgid "Apply this rule on taxes when party is customer."
+msgstr "زمانی که نهاد/سازمان مشتری است این قانون را بر مالیات ها اعمال کنید."
+
+msgctxt "help:party.party,supplier_tax_rule:"
+msgid "Apply this rule on taxes when party is supplier."
+msgstr ""
+"زمانی که نهاد/سازمان تامین کننده است،این قانون بر مالیات ها اعمال می شود."
+
+msgctxt "model:account.account,name:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "model:account.account-account.tax,name:"
+msgid "Account - Tax"
+msgstr "حساب - مالیات"
+
+msgctxt "model:account.account.deferral,name:"
+msgid "Account Deferral"
+msgstr "حساب بازپرداخت"
+
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "حساب پرداختی"
+
+msgctxt "model:account.account.template,name:"
+msgid "Account Template"
+msgstr "الگوی حساب"
+
+msgctxt "model:account.account.template-account.tax.template,name:"
+msgid "Account Template - Tax Template"
+msgstr "الگوی حساب - الگوی مالیات"
+
+msgctxt "model:account.account.type,name:"
+msgid "Account Type"
+msgstr "نوع حساب"
+
+msgctxt "model:account.account.type.template,name:"
+msgid "Account Type Template"
+msgstr "الگوی نوع حساب"
+
+msgctxt "model:account.aged_balance,name:"
+msgid "Aged Balance"
+msgstr "تراز قدیمی"
+
+msgctxt "model:account.aged_balance.context,name:"
+msgid "Aged Balance Context"
+msgstr "مفاد تراز قدیمی"
+
+msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgid "Balance Sheet Context"
+msgstr "مفاد برگه تراز"
+
+msgctxt "model:account.balance_sheet.context,name:"
+msgid "Balance Sheet Context"
+msgstr "مفاد برگه تراز"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "پیکربندی حساب"
+
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr "پیکربندی حساب : حساب پیش فرض"
+
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,name:"
+msgid "Account Configuration Default Tax Rule"
+msgstr "پیکربندی حساب : حساب پیش فرض"
+
+#, fuzzy
+msgctxt "model:account.configuration.sequence,name:"
+msgid "Account Configuration Sequence"
+msgstr "پیکربندی حساب"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "پیکربندی حساب : گردکردن مالیات"
+
+msgctxt "model:account.create_chart.account,name:"
+msgid "Create Chart"
+msgstr "ایجاد نمودار"
+
+msgctxt "model:account.create_chart.properties,name:"
+msgid "Create Chart"
+msgstr "ایجاد نمودار"
+
+msgctxt "model:account.create_chart.start,name:"
+msgid "Create Chart"
+msgstr "ایجاد نمودار"
+
+msgctxt "model:account.fiscalyear,name:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "تراز حساب های بدون بازپرداخت"
+
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,name:"
+msgid "Create Periods Start"
+msgstr "ایجاد دوره های ماهانه"
+
+msgctxt "model:account.fiscalyear.renew.start,name:"
+msgid "Renew Fiscal Year Start"
+msgstr "دوباره ایحاد کردن شروع سال مالی"
+
+msgctxt "model:account.general_ledger.account,name:"
+msgid "General Ledger Account"
+msgstr "حساب دفتر کل"
+
+msgctxt "model:account.general_ledger.account.context,name:"
+msgid "General Ledger Account Context"
+msgstr "مفاد حساب دفتر کل"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "حساب دفتر کل"
+
+msgctxt "model:account.general_ledger.line,name:"
+msgid "General Ledger Line"
+msgstr "سطر دفتر کل"
+
+msgctxt "model:account.general_ledger.line.context,name:"
+msgid "General Ledger Line Context"
+msgstr "مفاد سطر دفتر کل"
+
+msgctxt "model:account.income_statement.context,name:"
+msgid "Income Statement Context"
+msgstr "مفاد صورت درآمد"
+
+msgctxt "model:account.journal,name:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "نقدی"
+
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "هزینه"
+
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
+msgstr "مفاد روزنامه نقدی"
+
+msgctxt "model:account.journal.period,name:"
+msgid "Journal - Period"
+msgstr "روزنامه - دوره"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr "ادامه روزنامه"
+
+msgctxt "model:account.move,name:"
+msgid "Account Move"
+msgstr "حساب جابجایی"
+
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr "لغو جابجایی ها"
+
+msgctxt "model:account.move.line,name:"
+msgid "Account Move Line"
+msgstr "حساب سطر جابجایی"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr "بستن خطوط"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr "بستن خطوط"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
+msgstr "بستن خطوط"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr "حساب الگوی سطر جابجایی"
+
+msgctxt "model:account.move.open_journal.ask,name:"
+msgid "Open Journal Ask"
+msgstr "درخواست روزنامه باز"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr "تطبیق دادن قلم زده شده"
+
+msgctxt "model:account.move.reconcile_lines.writeoff,name:"
+msgid "Reconcile Lines Write-Off"
+msgstr "تطبیق دادن سطرهای قلم زده شده"
+
+msgctxt "model:account.move.reconciliation,name:"
+msgid "Account Move Reconciliation Lines"
+msgstr "تطبیق دادن سطرهای حساب جابجایی"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr "الگوی حساب جابجای"
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr "ایجاد جابجایی از روی الگو"
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr "ایجاد جابجایی از روی الگو"
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr "کلیدواژه الگوی حساب جابجای"
+
+msgctxt "model:account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
+
+msgctxt "model:account.period,name:"
+msgid "Period"
+msgstr "دوره"
+
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "تطبیق"
+
+msgctxt "model:account.tax,name:"
+msgid "Account Tax"
+msgstr "حساب مالیات"
+
+msgctxt "model:account.tax.code,name:"
+msgid "Tax Code"
+msgstr "کد مالیات"
+
+msgctxt "model:account.tax.code.line,name:"
+msgid "Tax Code Line"
+msgstr "سطر کد مالیات"
+
+msgctxt "model:account.tax.code.line.template,name:"
+msgid "Tax Code Line Template"
+msgstr "الگوی سطر کد مالیات"
+
+msgctxt "model:account.tax.code.open_chart.start,name:"
+msgid "Open Chart of Tax Codes"
+msgstr "بازکردن نمودار کدهای مالیاتی"
+
+msgctxt "model:account.tax.code.template,name:"
+msgid "Tax Code Template"
+msgstr "الگوی کد مالیات"
+
+msgctxt "model:account.tax.group,name:"
+msgid "Tax Group"
+msgstr "گروه مالیات"
+
+msgctxt "model:account.tax.line,name:"
+msgid "Tax Line"
+msgstr "سطر مالیات"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr "الگوی خط حساب مالیات"
+
+msgctxt "model:account.tax.rule,name:"
+msgid "Tax Rule"
+msgstr "قانون مالیات"
+
+msgctxt "model:account.tax.rule.line,name:"
+msgid "Tax Rule Line"
+msgstr "خط قانون مالیات"
+
+msgctxt "model:account.tax.rule.line.template,name:"
+msgid "Tax Rule Line Template"
+msgstr "الگوی خط قانون مالیات"
+
+msgctxt "model:account.tax.rule.template,name:"
+msgid "Tax Rule Template"
+msgstr "الگوی قانون مالیات"
+
+msgctxt "model:account.tax.template,name:"
+msgid "Account Tax Template"
+msgstr "الگوی حساب مالیات"
+
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr "آزمایش مالیات"
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr "آزمایش مالیات"
+
+msgctxt "model:account.update_chart.start,name:"
+msgid "Update Chart"
+msgstr "به روزرسانی نمودار"
+
+msgctxt "model:account.update_chart.succeed,name:"
+msgid "Update Chart"
+msgstr "به روزرسانی نمودار"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
+msgid "Balance Sheet"
+msgstr "ترازنامه"
+
+msgctxt "model:ir.action,name:act_account_general_ledger"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.action,name:act_account_income_statement_tree"
+msgid "Income Statement"
+msgstr "صورت حساب درآمد"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_template_tree"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "انواع حسابها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_template_tree"
+msgid "Types"
+msgstr "نوع"
+
+msgctxt "model:ir.action,name:act_account_type_tree"
+msgid "Account Types"
+msgstr "انواع حسابها"
+
+msgctxt "model:ir.action,name:act_aged_balance_list"
+msgid "Aged Balance"
+msgstr "تراز قدیمی"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "تراز حساب های بدون بازپرداخت"
+
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
+msgstr "لغو جابجایی ها"
+
+msgctxt "model:ir.action,name:act_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "بازکردن نمودار کدهای مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_periods"
+msgid "Create Periods"
+msgstr "ایجاد دوره های ماهانه"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "سال مالی"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "بستن سال مالی"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_form"
+msgid "General Ledger - Accounts"
+msgstr "دفتر کل - حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "دفتر کل - حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
+msgid "Accounts"
+msgstr "حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "حساب دفتر کل"
+
+msgctxt "model:ir.action,name:act_general_ledger_line_form"
+msgid "General Ledger - Lines"
+msgstr "دفتر کل - خطوط"
+
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_journal_form"
+msgid "Journals"
+msgstr "روزنامه ها"
+
+msgctxt "model:ir.action,name:act_journal_open_cash"
+msgid "Journals Cash"
+msgstr "روزنامه های نقدی"
+
+msgctxt "model:ir.action,name:act_journal_period_form_close"
+msgid "Close Journals - Periods"
+msgstr "بستن روزنامه ها - دوره ها"
+
+msgctxt "model:ir.action,name:act_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "روزنامه ها - دوره ها"
+
+msgctxt "model:ir.action,name:act_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "روزنامه ها - دوره ها"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Account Moves"
+msgstr "حساب جابجایی ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_grouping"
+msgid "Grouped Account Move"
+msgstr "حساب جابجایی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "حساب جابجایی"
+
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "حساب جابجایی"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Account Move Lines"
+msgstr "خطوط حساب جابجایی"
+
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr "خطوط پرداختی و دریافتی"
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "تطبیق دادن سطرها"
+
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr "ایجاد جابجایی از روی الگو"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Moves"
+msgstr "جابجایی"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account"
+msgstr "حساب جابجایی باز"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
+
+msgctxt "model:ir.action,name:act_open_journal"
+msgid "Open Journal"
+msgstr "روزنامه باز"
+
+msgctxt "model:ir.action,name:act_open_tax_code"
+msgid "Open Tax Code"
+msgstr "کد مالیاتی باز"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "بازکردن نوع"
+
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "بستن دوره ها"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr "تطبیق دادن حساب ها"
+
+msgctxt "model:ir.action,name:act_reconcile_lines"
+msgid "Reconcile Lines"
+msgstr "تطبیق دادن سطرها"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "روش های قلم زدن"
+
+msgctxt "model:ir.action,name:act_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "ایجاد مجدد سال مالی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr "بستن خطوط"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Codes"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "کدهای مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Codes"
+msgstr "کد"
+
+msgctxt "model:ir.action,name:act_tax_code_tree2"
+msgid "Tax Codes"
+msgstr "کدهای مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_group_form"
+msgid "Groups"
+msgstr "گروه"
+
+msgctxt "model:ir.action,name:act_tax_line_form"
+msgid "Tax Lines"
+msgstr "خطوط مالیات"
+
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "model:ir.action,name:act_tax_rule_form"
+msgid "Tax Rules"
+msgstr "قوانین مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_template_form"
+msgid "Rules"
+msgstr "قانون"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_template_list"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "model:ir.action,name:act_unreconcile_lines"
+msgid "Unreconcile Lines"
+msgstr "سطرهای تطبیق داده نشده"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_account_type_statement"
+msgid "Statement"
+msgstr "صورت حساب درآمد"
+
+msgctxt "model:ir.action,name:report_aged_balance"
+msgid "Aged Balance"
+msgstr "تراز قدیمی"
+
+msgctxt "model:ir.action,name:report_general_journal"
+msgid "General Journal"
+msgstr "روزنامه کل"
+
+msgctxt "model:ir.action,name:report_general_ledger"
+msgid "General Ledger"
+msgstr "دفتر کل"
+
+msgctxt "model:ir.action,name:report_trial_balance"
+msgid "Trial Balance"
+msgstr "تراز آزمایشی"
+
+msgctxt "model:ir.action,name:wizard_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "ایجاد نمودار حساب ها از روی الگو"
+
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
+msgstr "آزمایش مالیات"
+
+msgctxt "model:ir.action,name:wizard_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "به روزرسانی نمودار حساب ها از روی الگو"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "قابل پرداخت"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "قابل دریافت"
+
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr "یک نمودار حساب ها برای شرکت \"%s\" وجود دارد."
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+"برای تعیین یک ارز دوم برای حساب \"%(account)s\" ، باید آن را به تعویق "
+"انداخت."
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_line_delegated"
+msgid ""
+"The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
+"the lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+"شما نمی توانید دنباله حرکت پست را در سال مالی \"%(fiscalyear)s\" تغییر "
+"دهید،زیرا شامل حرکت های ارسال شده است."
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+"شما نمیتوانید دنباله حرکت پست در دوره \"%(period)s\" را تغییر دهید، زیرا "
+"حرکتهای ارسال شده را ارسال کرده است."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr "برای بستن سال مالی، تعادل حساب \"%(account)s\" باید صفر باشد."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+"برای بستن سال مالی \"%(fiscalyear)s\"، شما باید تمام سال های مالی قبل را "
+"ببندید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
+msgstr ""
+"برای بستن دوره \"%(period)s\" شما باید جابجایی های \"%(moves)s\" را ارسال "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr ""
+"برای بستن دوره \"%(period)s\" شما باید جابجایی های \"%(moves)s\" را ارسال "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_company_change_currency"
+msgid ""
+"You cannot change the currency of a company which is associated with account"
+" moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "شما نمی توانید یک دوره - روزنامه ایجاد کنید در دوره بسته شده : \"%s\"."
+
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+"شما نمیتوانید دوره ایی برای سال مالی : \"%s\" ایجاد کنید زیرا بسته شده است."
+
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "بازپرداخت باید در حساب و سال مالی منحصر به فرد باشد"
+
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان: \"%(party)s\" در حالی که آنها در انتظار قابل "
+"دریافت/ قابل پرداخت با شرکت:\"%(company)s\" هستند راحذف کنید."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" نمی تواند دنباله انتقال پست "
+"یکسان داشته باشد، شما باید از توالی های مختلف استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" همپوشانی دارند، شما باید از "
+"تاریخ های مختلف استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "شما برای هر دوره فقط میتوانید یک روزنامه ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr "شما نمیتوانید مطابقت سطر: \"%(line)s\" را تطبیق دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
+"سطر:\"%(line)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr "شما نمی توانید هر دو (بدهی و اعتباری) را در سطرتنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
+"سطر:\"%(line)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید نهاد/سازمان روی "
+"سطر:\"%(line)s\" را حذف کنید."
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+"شما باید علامت ارز دوم را برای مطابقت با کارت اعتباری-کارت پیش خرید تنظیم "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+"شما نمیتوانید روزنامه-دوره : \"%(journal_period)s\" را اصلاح یا حذف کنید، "
+"زیرا دارای جابجایی ها میباشد."
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+"شما نمیتوانید دوره : \"%(period)s\" را اصلاح یا حذف کنید، زیرا دارای جابجایی"
+" ها میباشد."
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+"شما نمیتوانید سطرهایی را در روزنامه-دوره بسته شده :\"%(journal_period)s\"، "
+"اضافه / اصلاح/ حذف کنید."
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr ""
+"شما نمی توانید خط :\"%(line)s\" از حرکت ارسال شده :\"%(move)s\" را تغییر "
+"دهید."
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr "شما نمی توانید سطر : \"%(line)s\" مطابقت شده را اصلاح کنید."
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr "شما نمی توانید جابجایی: \"%(جابجایی)s\" ارسال شده را اصلاح کنید."
+
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr ""
+"شما نمی توانید سطرهای مالیاتی را در دوره بسته \"%s\" ،اضافه / تغییر/حذف "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+"دوره جابجایی:\"%(move)s\" بسته شده است.\n"
+"از دوره جاری برای لغو جابجایی استفاده می کنید؟"
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+"تاریخ جابجایی : \"%(move)s\" خارج از دوره است، شما باید تاریخ یا دوره را "
+"تغییر دهید."
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr "برای ادامه، شما باید یک سال مالی برای تاریخ : \"%(date)s\" ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr "برای ادامه، شما باید یک دوره برای تاریخ : \"%(date)s\" ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+"شما نمیتوانید روزنامه - دوره : \"%s\" را دوباره باز کنید، چونکه دوره \"%s\" "
+"بسته شده است."
+
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+"شما نمیتوانید دوره : \"%(period)s\" را دوباره باز کنید چرا که سال مالی : "
+"\"%(fiscalyear)s\" بسته شده است."
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل پرداخت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+"تاریخ های دوره : \"%(period)s\" باید مابین تاریخ های این سال مای : "
+"\"%(fiscalyear)s\" باشد."
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr ""
+"دوره های : \"%(اولیه)s\" و \"%(ثانویه)s\" دارای همپوشانی هستند، شما باید از "
+"تاریخ های متفاوت استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+"شما نمیتوانید از همان دنباله ارسال جابجایی برای دوره های : \"%(اولیه)s\" و "
+"\"%(ثانویه)s\" استفاده کنید، چراکه آنها از سال های مالی مختلف هستند."
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr "برای ارسال جابجایی : \"%(move)s\" شما باید این سطرها را پر کنید."
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+"برای ارسال جابجایی : \"%(move)s\" شما باید تمام خطوط بدهی و اعتبارات آن را "
+"تراز کنید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr ""
+"برای مطابقت سطر: \"%(line)s\" شماباید حساب : \"%(account)s\" را بعنوان قابل "
+"مطابقت تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" با \"%s\" دارای "
+"تفاوت است."
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه نهاد/مؤسسه: \"%s\" مغایراست "
+"با \"%s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr "شما نمی توانید سطرغیر معتبر: \"%(line)s\" را مطابقت دهید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+"برای مطابقت دادن سطرها، آنها باید دارای مقدار بدهی: \"%(debit)s\" و اعتبار: "
+"\"%(credit)s\" باشند."
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+"برای دوباره باز کردن سال مالی : \"%(fiscalyear)s\" شما باید همه سالهای مالی "
+"بعدی را دوباره باز کنید."
+
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+"شما نمی توانید \"به روز رسانی قیمت واحد\" را بر روی زیرمجموعه مالیات: "
+"\"%(tax)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr "شما نمی توانید هر گونه حساب معوقه را اصلاح کنید."
+
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr "شما نمی توانید هرگونه اصلاحیه و تطابق را تغییر دهید."
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
+msgid "Are you sure you want to lock the fiscal year?"
+msgstr "برای قفل کردن سال مالی اطمینان کامل دارید؟"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:period_lock_button"
+msgid "Are you sure you want to lock the period?"
+msgstr "برای قفل کردن دوره اطمینان دارید؟"
+
+msgctxt "model:ir.model.button,string:fiscalyear_close_button"
+msgid "Close"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
+msgid "Create Periods"
+msgstr "ایجاد دوره های ماهانه"
+
+msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
+msgid "Lock"
+msgstr "قفل"
+
+msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
+msgid "Re-Open"
+msgstr "بازگشایی"
+
+msgctxt "model:ir.model.button,string:move_post_button"
+msgid "Post"
+msgstr "صدور"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "model:ir.model.button,string:period_lock_button"
+msgid "Lock"
+msgstr "قفل"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "بازگشایی"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_account_journal"
+msgid "Default Account Journal"
+msgstr "حساب روزنامه پیش فرض"
+
+msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
+msgid "Default Account Move Reconciliation"
+msgstr "تطبیق دادن حساب جابجایی پیش فرض"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
+msgid "Account Journal"
+msgstr "حساب روزنامه"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
+msgid "Account Move"
+msgstr "حساب جابجایی"
+
+msgctxt ""
+"model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
+msgid "Account Move Reconciliation"
+msgstr "تطبیق دادن حساب جابجایی"
+
+msgctxt "model:ir.ui.menu,name:menu_account"
+msgid "Financial"
+msgstr "مالی"
+
+msgctxt "model:ir.ui.menu,name:menu_account_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "انواع حسابها"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
+msgid "Types"
+msgstr "نوع"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
+msgid "Account Types"
+msgstr "انواع حسابها"
+
+msgctxt "model:ir.ui.menu,name:menu_aged_balance"
+msgid "Aged Balance"
+msgstr "تراز قدیمی"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "تراز حساب های بدون بازپرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_charts"
+msgid "Charts"
+msgstr "نمودار ها"
+
+msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
+msgid "Close Fiscal Years"
+msgstr "بستن سال مالی"
+
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "بستن روزنامه ها - دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "بستن دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "بازکردن نمودار کدهای مالیاتی"
+
+msgctxt "model:ir.ui.menu,name:menu_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "ایجاد نمودار حساب ها از روی الگو"
+
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "ورودی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
+msgid "Fiscal Years"
+msgstr "سال مالی"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "سال مالی"
+
+msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
+msgid "General Account"
+msgstr "حساب عمومی"
+
+msgctxt "model:ir.ui.menu,name:menu_general_ledger"
+msgid "General Ledger"
+msgstr "دفتر کل"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
+msgid "Journals"
+msgstr "روزنامه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_form"
+msgid "Journals"
+msgstr "روزنامه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
+msgid "Journals Cash"
+msgstr "روزنامه های نقدی"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "روزنامه ها - دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "روزنامه ها - دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Account Moves"
+msgstr "حساب جابجایی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr "ایجاد جابجایی از روی الگو"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Moves"
+msgstr "جابجایی"
+
+msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
+msgid "Balance Sheet"
+msgstr "ترازنامه"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
+msgid "Income Statement"
+msgstr "صورت حساب درآمد"
+
+msgctxt "model:ir.ui.menu,name:menu_open_journal"
+msgid "Open Journal"
+msgstr "روزنامه باز"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_processing"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr "تطبیق دادن حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "روش های قلم زدن"
+
+msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "ایجاد مجدد سال مالی"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "گزارش گیری"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Codes"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "کدهای مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Codes"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
+msgid "Groups"
+msgstr "گروه"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
+msgid "Tax Rules"
+msgstr "قوانین مالیاتی"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
+msgid "Rules"
+msgstr "قانون"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr "آزمایش مالیات"
+
+msgctxt "model:ir.ui.menu,name:menu_taxes"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
+msgstr "الگوها"
+
+msgctxt "model:ir.ui.menu,name:menu_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "به روزرسانی نمودار حساب ها از روی الگو"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr "حساب نهاد/سازمان"
+
+msgctxt "model:res.group,name:group_account"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "model:res.group,name:group_account_admin"
+msgid "Account Administration"
+msgstr "مدیریت حسابداری"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "حساب پرداختی"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Balance Sheet"
+msgstr "ترازنامه"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Company:"
+msgstr "شرکت :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Fiscal Year:"
+msgstr "سال مالی :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Date:"
+msgstr "از تاریخ :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Period"
+msgstr "از دوره"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Income Statement"
+msgstr "صورت حساب درآمد"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Print Date:"
+msgstr "تاریخ چاپ :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Statement"
+msgstr "صورت حساب درآمد"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "To"
+msgstr "تا"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "User:"
+msgstr "کاربر :"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "at"
+msgstr "در"
+
+msgctxt "report:account.aged_balance:"
+msgid "+"
+msgstr "+"
+
+msgctxt "report:account.aged_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.aged_balance:"
+msgid "Aged Balance for"
+msgstr "تراز قدیمی برای"
+
+msgctxt "report:account.aged_balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "report:account.aged_balance:"
+msgid "Company:"
+msgstr "شرکت :"
+
+msgctxt "report:account.aged_balance:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+msgctxt "report:account.aged_balance:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "report:account.aged_balance:"
+msgid "Print Date:"
+msgstr "تاریخ چاپ :"
+
+msgctxt "report:account.aged_balance:"
+msgid "Total"
+msgstr "مجموع"
+
+msgctxt "report:account.aged_balance:"
+msgid "User:"
+msgstr "کاربر :"
+
+msgctxt "report:account.aged_balance:"
+msgid "at"
+msgstr "در"
+
+msgctxt "report:account.general_ledger:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.general_ledger:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.general_ledger:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "report:account.general_ledger:"
+msgid "Company:"
+msgstr "شرکت :"
+
+msgctxt "report:account.general_ledger:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "report:account.general_ledger:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "report:account.general_ledger:"
+msgid "Descr."
+msgstr "شرح."
+
+msgctxt "report:account.general_ledger:"
+msgid "Fiscal Year:"
+msgstr "سال مالی :"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Date:"
+msgstr "از تاریخ :"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Period"
+msgstr "از دوره"
+
+msgctxt "report:account.general_ledger:"
+msgid "General Ledger"
+msgstr "دفتر کل"
+
+msgctxt "report:account.general_ledger:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "report:account.general_ledger:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "report:account.general_ledger:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "report:account.general_ledger:"
+msgid "Print Date:"
+msgstr "تاریخ چاپ :"
+
+msgctxt "report:account.general_ledger:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "report:account.general_ledger:"
+msgid "To"
+msgstr "تا"
+
+msgctxt "report:account.general_ledger:"
+msgid "Total"
+msgstr "مجموع"
+
+msgctxt "report:account.general_ledger:"
+msgid "User:"
+msgstr "کاربر:"
+
+msgctxt "report:account.general_ledger:"
+msgid "at"
+msgstr "در"
+
+msgctxt "report:account.move.general_journal:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Company:"
+msgstr "شرکت :"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "report:account.move.general_journal:"
+msgid "General Journal"
+msgstr "روزنامه کل"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Journal Entry:"
+msgstr "ورودی روزنامه :"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Origin:"
+msgstr "مبداء :"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Print Date:"
+msgstr "تاریخ چاپ :"
+
+msgctxt "report:account.move.general_journal:"
+msgid "User:"
+msgstr "کاربر:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "at"
+msgstr "در"
+
+msgctxt "report:account.trial_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.trial_balance:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "report:account.trial_balance:"
+msgid "Company:"
+msgstr "شرکت :"
+
+msgctxt "report:account.trial_balance:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "report:account.trial_balance:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "report:account.trial_balance:"
+msgid "End Balance"
+msgstr "تراز پایانی"
+
+msgctxt "report:account.trial_balance:"
+msgid "Fiscal Year:"
+msgstr "سال مالی :"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Date:"
+msgstr "از تاریخ :"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Period:"
+msgstr "از دوره :"
+
+msgctxt "report:account.trial_balance:"
+msgid "Print Date:"
+msgstr "تاریخ چاپ :"
+
+msgctxt "report:account.trial_balance:"
+msgid "Start Balance"
+msgstr "تراز شروع"
+
+msgctxt "report:account.trial_balance:"
+msgid "To"
+msgstr "تا"
+
+msgctxt "report:account.trial_balance:"
+msgid "Total"
+msgstr "مجموع"
+
+msgctxt "report:account.trial_balance:"
+msgid "Trial Balance"
+msgstr "تراز آزمایشی"
+
+msgctxt "report:account.trial_balance:"
+msgid "User:"
+msgstr "کاربر:"
+
+msgctxt "report:account.trial_balance:"
+msgid "at"
+msgstr "در"
+
+#, fuzzy
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr ""
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr ""
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers"
+msgstr "مشتریان"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers and Suppliers"
+msgstr "مشتریان و تامین کنندگان"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Suppliers"
+msgstr "تأمین کنندگان"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Days"
+msgstr "روزها"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Months"
+msgstr "ماه ها"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Weeks"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Years"
+msgstr ""
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "در هر سند"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "در هر خط"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Document"
+msgstr "در هر سند"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Line"
+msgstr "در هر خط"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr "قفل شده"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Open"
+msgstr "باز"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Monthly"
+msgstr "ماه ها"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Other"
+msgstr "سایر اطلاعات"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "نقدی"
+
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "هزینه"
+
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "وضعیت"
+
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "قلم زده شده"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "selection:account.move,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.move,state:"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Valid"
+msgstr "معتبر"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr "ماه ها"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr "سایر اطلاعات"
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr "کاراکتر"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr "عددی"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "selection:account.period,state:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr "قفل شده"
+
+msgctxt "selection:account.period,state:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "selection:account.period,type:"
+msgid "Adjustment"
+msgstr "تنظیم"
+
+msgctxt "selection:account.period,type:"
+msgid "Standard"
+msgstr "استاندارد"
+
+msgctxt "selection:account.tax,type:"
+msgid "Fixed"
+msgstr "درست شد"
+
+msgctxt "selection:account.tax,type:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:account.tax,type:"
+msgid "Percentage"
+msgstr "درصد"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Fiscal Year"
+msgstr "بوسیله سال مالی"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Periods"
+msgstr "بوسیله دوره ها"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "هر دو"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "خرید"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "هر دو"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "خرید"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "هر دو"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "خرید"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Fixed"
+msgstr "درست شد"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Percentage"
+msgstr "درصد"
+
+msgctxt "view:account.account.type:"
+msgid "Comparison"
+msgstr "مقایسه"
+
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "view:account.account:"
+msgid "General Information"
+msgstr "اطلاعات عمومی"
+
+msgctxt "view:account.aged_balance.context:"
+msgid "Terms"
+msgstr "مقررات"
+
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "view:account.configuration:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "view:account.create_chart.start:"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+"اکنون شما میتوانید با انتخاب الگوی نمودار حساب برای شرکت خود نمودار حساب "
+"ایجاد کنید."
+
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "months"
+msgstr "ماه ها"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Sequences"
+msgstr "ترتیب ها"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "End Balance"
+msgstr "پایان تراز"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Start Balance"
+msgstr "شروع تراز"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr "دوباره باز کردن"
+
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr "ماه ها"
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
+msgid "General Information"
+msgstr "اطلاعات عمومی"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax:"
+msgid "General Information"
+msgstr "اطلاعات عمومی"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Chart of accounts updated successfully."
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "view:party.party:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "wizard_button:account.create_chart,account,create_account:"
+msgid "Create"
+msgstr "ایجاد"
+
+msgctxt "wizard_button:account.create_chart,account,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.create_chart,properties,create_properties:"
+msgid "Create"
+msgstr "ایجاد"
+
+msgctxt "wizard_button:account.create_chart,properties,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.create_chart,start,account:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt ""
+"wizard_button:account.fiscalyear.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "ایجاد"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
+msgid "Create"
+msgstr "ایجاد"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "گروه"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
+msgstr ""
+
+msgctxt "wizard_button:account.move.open_journal,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.open_journal,ask,open_:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
+msgid "Reconcile"
+msgstr "تطبیق"
+
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "ایجاد"
+
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "بعدی"
+
+msgctxt "wizard_button:account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.open_chart,start,open_:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr "چشم پوشی"
+
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "تطبیق"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "wizard_button:account.update_chart,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.update_chart,start,update:"
+msgid "Update"
+msgstr "بروزرسانی"
+
+msgctxt "wizard_button:account.update_chart,succeed,end:"
+msgid "OK"
+msgstr "قبول"

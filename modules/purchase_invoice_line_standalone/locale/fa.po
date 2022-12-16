@@ -1,0 +1,28 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr "خطوط صورتحساب نادیده گرفته شده"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "خرید"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "خرید - خط صورتحساب نادیده گرفته شده"
