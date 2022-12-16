@@ -1,0 +1,72 @@
+Version 4.2.2 - 2017-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.1 - 2017-06-06
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add get_analytic_lines on AnalyticAccountEntry
+* Add distribution account type
+* Add analytic state on move line
+* Improve account tree creation
+* Remove name, journal, reference, party and active from line
+* Remove currency from account
+* Require company on account
+* Enforce company consistency
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Use One2Many for analytic accounts
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-12
+* Bug fixes (see mercurial logs for details)
+* Remove egenix-mx-base
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Convert currency on line into Function field
+* Use digits of currency for debit and credit
+* Use the right currency to compute  balance, debit/credit of accounts
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

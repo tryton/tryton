@@ -1,0 +1,75 @@
+Version 4.2.2 - 2017-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.1 - 2017-07-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Manage readonly state on Statement Line
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove states on statement's date
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add line group model
+* Create Move by grouped lines (number, date, party)
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add different validation type on journal
+* Add explicit name on statement
+* Add report to statement
+* Add number and sequence on statement line
+* Switch journal debit/credit account usage
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Append new line under the original one
+* Prevent usage of paid invoice in draft statements
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Allow to use invoice to fill party and account on statement line
+* Replace move_lines by a relate
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Allow to use credit note on statement line
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Don't deactivate payment wizard on invoice
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+* Add company on statement
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Fix digits of start and end balance
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+
+Version 1.0.0 - 2009-05-01
+* Initial release
