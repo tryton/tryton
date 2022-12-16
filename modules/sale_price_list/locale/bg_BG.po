@@ -1,0 +1,11 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Ценова листа при продажба"
+
+msgctxt "field:sale.sale,price_list:"
+msgid "Price List"
+msgstr "Ценова листа"
