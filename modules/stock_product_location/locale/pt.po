@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Localizações padrão"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Localização de armazenamento"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Almoxarifado"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Localização do produto"
