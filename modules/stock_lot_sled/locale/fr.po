@@ -1,0 +1,189 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "État d'expiration"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Délai d'expiration"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "État de la durée limite d'utilisation optimale"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Durée limite d'utilisation optimale"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "État d'expiration"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Délai d'expiration"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "État de la durée limite d'utilisation optimale"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Durée limite d'utilisation optimale"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Délai de durée limite d'utilisation optimale"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Délai de durée limite d'utilisation optimale"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "État d'expiration"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Date limite d'utilisation optimale"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Date limite d'utilisation optimale"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days."
+msgstr "En nombre de jours."
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days."
+msgstr "En nombre de jours."
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days."
+msgstr "En nombre de jours."
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days."
+msgstr "En nombre de jours."
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Le délai avant d'être retiré de la prévision."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Le délai avant d'être retiré de la prévision."
+
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+"Vous ne pouvez pas modifier les dates d'expiration du lot « %(lot)s » car il"
+" est utilisé sur un mouvement « %(move)s » d'une période clôturée."
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+"Vous ne pouvez pas traiter le mouvement « %(move)s » car son lot « %(lot)s »"
+" a expiré."
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
+msgstr ""
+"Vous ne pouvez pas clôturer les périodes avant l'expiration du lot "
+"« %(lot)s » (%(date)s)."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Force l'expiration des stocks"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Configuration de lot de stock Durée limite d'utilisation optimale"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Requise"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Requise"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Requis"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Optionnel"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Requis"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Requis"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Optionnelle"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Requis"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Limite d'utilisation optimale"
