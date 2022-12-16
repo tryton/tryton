@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="account"/>
+    <field name="account"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <notebook colspan="4">
+        <page string="General Information" id="general">
+            <label name="group"/>
+            <field name="group"/>
+            <label name="sequence"/>
+            <field name="sequence"/>
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+            <label name="type"/>
+            <field name="type"/>
+            <group col="1" id="label_amount_rate">
+                <label name="amount" yfill="1" xexpand="1" yexpand="1"/>
+                <label name="rate" yfill="1" xexpand="1" yexpand="1"/>
+            </group>
+            <group col="1" id="amount_rate">
+                <field name="amount"/>
+                <group col="2" id="rate">
+                    <field name="rate" factor="100" xexpand="0"/>
+                    <label name="rate" string="%" xalign="0.0" xexpand="1"/>
+                </group>
+            </group>
+            <newline/>
+            <label name="update_unit_price"/>
+            <field name="update_unit_price"/>
+            <newline/>
+            <label name="invoice_account"/>
+            <field name="invoice_account"/>
+            <newline/>
+            <label name="credit_note_account"/>
+            <field name="credit_note_account"/>
+            <newline/>
+            <field name="childs" colspan="4"
+                view_ids="account.tax_template_view_list"/>
+        </page>
+        <page string="Code" id="code">
+            <separator string="Invoice" colspan="4" id="invoice"/>
+            <label name="invoice_base_code"/>
+            <field name="invoice_base_code"/>
+            <label name="invoice_base_sign"/>
+            <field name="invoice_base_sign"/>
+            <label name="invoice_tax_code"/>
+            <field name="invoice_tax_code"/>
+            <label name="invoice_tax_sign"/>
+            <field name="invoice_tax_sign"/>
+            <separator string="Credit Note" colspan="4" id="credit_note"/>
+            <label name="credit_note_base_code"/>
+            <field name="credit_note_base_code"/>
+            <label name="credit_note_base_sign"/>
+            <field name="credit_note_base_sign"/>
+            <label name="credit_note_tax_code"/>
+            <field name="credit_note_tax_code"/>
+            <label name="credit_note_tax_sign"/>
+            <field name="credit_note_tax_sign"/>
+        </page>
+    </notebook>
+</form>

@@ -1,0 +1,195 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+#, fuzzy
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Százalék:"
+
+#, fuzzy
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Tevékenység"
+
+#, fuzzy
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr ""
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr ""
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Időtartam"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr ""
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr ""
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr ""
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr ""
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr ""
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr ""
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr ""
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr ""
