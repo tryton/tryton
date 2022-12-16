@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Sequences"
+            parent="menu_administration"
+            sequence="20"
+            id="menu_sequences"/>
+
+        <record model="ir.ui.view" id="sequence_view_form">
+            <field name="model">ir.sequence</field>
+            <field name="type">form</field>
+            <field name="name">sequence_form</field>
+        </record>
+        <record model="ir.ui.view" id="sequence_view_tree">
+            <field name="model">ir.sequence</field>
+            <field name="type">tree</field>
+            <field name="name">sequence_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_sequence_form">
+            <field name="name">Sequences</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence</field>
+            <field name="context"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_view_tree"/>
+            <field name="act_window" ref="act_sequence_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_view_form"/>
+            <field name="act_window" ref="act_sequence_form"/>
+        </record>
+        <menuitem
+            parent="menu_sequences"
+            action="act_sequence_form"
+            sequence="10"
+            id="menu_sequence_form"/>
+
+        <record model="ir.ui.view" id="sequence_strict_view_form">
+            <field name="model">ir.sequence.strict</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sequence_view_form"/>
+        </record>
+        <record model="ir.ui.view" id="sequence_strict_view_tree">
+            <field name="model">ir.sequence.strict</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sequence_view_tree"/>
+        </record>
+        <record model="ir.action.act_window" id="act_sequence_strict_form">
+            <field name="name">Sequences Strict</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence.strict</field>
+            <field name="context"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_strict_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_strict_view_tree"/>
+            <field name="act_window" ref="act_sequence_strict_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_strict_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_strict_view_form"/>
+            <field name="act_window" ref="act_sequence_strict_form"/>
+        </record>
+        <menuitem
+            parent="menu_sequences"
+            action="act_sequence_strict_form"
+            sequence="10"
+            id="menu_sequence_strict_form"
+            icon="tryton-list"/>
+
+        <record model="ir.ui.view" id="sequence_type_view_form">
+            <field name="model">ir.sequence.type</field>
+            <field name="type">form</field>
+            <field name="name">sequence_type_form</field>
+        </record>
+        <record model="ir.ui.view" id="sequence_type_view_tree">
+            <field name="model">ir.sequence.type</field>
+            <field name="type">tree</field>
+            <field name="name">sequence_type_list</field>
+        </record>
+        <record model="ir.action.act_window"
+            id="act_sequence_type_form">
+            <field name="name">Types</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence.type</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_type_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_type_view_tree"/>
+            <field name="act_window" ref="act_sequence_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_type_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_type_view_form"/>
+            <field name="act_window" ref="act_sequence_type_form"/>
+        </record>
+        <menuitem
+            parent="menu_sequences"
+            action="act_sequence_type_form"
+            sequence="20"
+            id="menu_ir_sequence_type"/>
+    </data>
+</tryton>
