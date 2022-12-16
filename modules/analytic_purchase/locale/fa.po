@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "field:purchase.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "اندازه تجزیه و تحلیل حساب ها"
+
+msgctxt "view:purchase.line:"
+msgid "Analytic"
+msgstr "تحلیلی"

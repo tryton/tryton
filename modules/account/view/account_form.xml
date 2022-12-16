@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="100"/>
+        <label name="template_override"/>
+        <field name="template_override" xexpand="0" width="100"/>
+    </group>
+    <notebook colspan="6">
+        <page string="General Ledger" id="general_ledger" col="6">
+            <label name="debit"/>
+            <field name="debit"/>
+            <label name="credit"/>
+            <field name="credit"/>
+            <label name="balance"/>
+            <field name="balance"/>
+
+            <group id="general_ledger_links" col="-1" colspan="6">
+                <link icon="tryton-list" name="account.act_general_ledger_line_form"/>
+                <link icon="tryton-list" name="account.act_general_ledger_account_party_form"/>
+                <link icon="tryton-list" name="account.act_move_line_form"/>
+            </group>
+        </page>
+        <page string="General Information" id="general" col="6">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="parent"/>
+            <field name="parent"/>
+            <newline/>
+
+            <label name="type"/>
+            <field name="type" colspan="5"/>
+
+            <label name="debit_type"/>
+            <field name="debit_type" colspan="5"/>
+
+            <label name="credit_type"/>
+            <field name="credit_type" colspan="5"/>
+
+            <label name="closed"/>
+            <field name="closed"/>
+            <label name="general_ledger_balance"/>
+            <field name="general_ledger_balance"/>
+            <newline/>
+
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+            <label name="replaced_by"/>
+            <field name="replaced_by"/>
+
+            <label name="currency"/>
+            <field name="currency"/>
+            <label name="second_currency"/>
+            <field name="second_currency"/>
+            <newline/>
+
+            <label name="reconcile"/>
+            <field name="reconcile"/>
+            <label name="party_required"/>
+            <field name="party_required"/>
+
+            <field name="taxes" colspan="6"/>
+        </page>
+        <page string="Children" id="children">
+            <field name="childs" colspan="4"/>
+        </page>
+        <page name="deferrals">
+            <field name="deferrals"/>
+        </page>
+        <page name="note">
+            <field name="note"/>
+        </page>
+    </notebook>
+</form>

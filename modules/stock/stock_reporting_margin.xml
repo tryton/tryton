@@ -1,0 +1,591 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Margins"
+            parent="product.menu_reporting"
+            sequence="50"
+            id="menu_reporting_margin"
+            icon="tryton-graph"/>
+        <record model="ir.ui.menu-res.group" id="menu_reporting_margin_group_product_admin">
+            <field name="menu" ref="menu_reporting_margin"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_context_view_form">
+            <field name="model">stock.reporting.margin.context</field>
+            <field name="type">form</field>
+            <field name="name">reporting_margin_context_form</field>
+        </record>
+
+        <!-- Main -->
+
+        <record model="ir.ui.view" id="reporting_margin_main_view_list">
+            <field name="model">stock.reporting.margin.main</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_margin_main_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_view_graph_margin">
+            <field name="model">stock.reporting.margin.main</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_view_graph_profit">
+            <field name="model">stock.reporting.margin.main</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_view_graph_amount">
+            <field name="model">stock.reporting.margin.main</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_main">
+            <field name="name">Margins</field>
+            <field name="res_model">stock.reporting.margin.main</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_main_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_main"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_main_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_main"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_main_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_main"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_main_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_main"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_main_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="menu_reporting_margin"/>
+            <field name="action" ref="act_reporting_margin_main"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_main_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_main_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_main_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_main">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_main_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_time_series_view_list">
+            <field name="model">stock.reporting.margin.main.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_margin_main_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_time_series_view_graph_margin">
+            <field name="model">stock.reporting.margin.main.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_time_series_view_graph_profit">
+            <field name="model">stock.reporting.margin.main.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_main_time_series_view_graph_amount">
+            <field name="model">stock.reporting.margin.main.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_main_time_series">
+            <field name="name">Margins</field>
+            <field name="res_model">stock.reporting.margin.main.time_series</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_main_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_main_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_main_time_series_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_main_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_main_time_series_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_main_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_main_time_series_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_main_time_series_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_main_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_main_time_series_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.reporting.margin.main,-1</field>
+            <field name="action" ref="act_reporting_margin_main_time_series"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_main_time_series_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main.time_series')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_main_time_series_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_main_time_series_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_main_time_series">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_main_time_series_main_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.main.time_series')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- Product -->
+
+        <record model="ir.ui.view" id="reporting_margin_product_view_list">
+            <field name="model">stock.reporting.margin.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_list"/>
+            <field name="name">reporting_margin_product_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_view_graph_margin">
+            <field name="model">stock.reporting.margin.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_margin"/>
+            <field name="name">reporting_margin_product_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_view_graph_profit">
+            <field name="model">stock.reporting.margin.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_profit"/>
+            <field name="name">reporting_margin_product_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_view_graph_amount">
+            <field name="model">stock.reporting.margin.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_amount"/>
+            <field name="name">reporting_margin_product_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_product">
+            <field name="name">Margins per Product</field>
+            <field name="res_model">stock.reporting.margin.product</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_product_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_product_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_product_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_product_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_product"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_product_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="menu_reporting_margin"/>
+            <field name="action" ref="act_reporting_margin_product"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_product_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_product_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_product_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_product">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_product_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_time_series_view_list">
+            <field name="model">stock.reporting.margin.product.time_series</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_time_series_view_list"/>
+            <field name="name">reporting_margin_product_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_time_series_view_graph_margin">
+            <field name="model">stock.reporting.margin.product.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_time_series_view_graph_profit">
+            <field name="model">stock.reporting.margin.product.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_product_time_series_view_graph_amount">
+            <field name="model">stock.reporting.margin.product.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_product_time_series">
+            <field name="name">Margins per Product</field>
+            <field name="res_model">stock.reporting.margin.product.time_series</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+            <field
+                name="domain"
+                eval="[('product', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_product_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_product_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_product_time_series_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_product_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_product_time_series_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_product_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_product_time_series_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_product_time_series_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_product_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_product_time_series_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.reporting.margin.product,-1</field>
+            <field name="action" ref="act_reporting_margin_product_time_series"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_product_time_series_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product.time_series')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_product_time_series_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_product_time_series_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_product_time_series">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_product_time_series_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.product.time_series')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- Category -->
+
+        <record model="ir.ui.view" id="reporting_margin_category_tree_view_tree">
+            <field name="model">stock.reporting.margin.category.tree</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="name">reporting_margin_category_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_category_tree">
+            <field name="name">Margins per Category</field>
+            <field name="res_model">stock.reporting.margin.category.tree</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_category_tree_view_tree"/>
+            <field name="act_window" ref="act_reporting_margin_category_tree"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_category_tree_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="menu_reporting_margin"/>
+            <field name="action" ref="act_reporting_margin_category_tree"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_category_tree">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category.tree')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_category_tree_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category.tree')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_view_list">
+            <field name="model">stock.reporting.margin.category</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_list"/>
+            <field name="name">reporting_margin_category_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_view_graph_margin">
+            <field name="model">stock.reporting.margin.category</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_margin"/>
+            <field name="name">reporting_margin_category_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_view_graph_profit">
+            <field name="model">stock.reporting.margin.category</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_profit"/>
+            <field name="name">reporting_margin_category_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_view_graph_amount">
+            <field name="model">stock.reporting.margin.category</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="reporting_margin_main_view_graph_amount"/>
+            <field name="name">reporting_margin_category_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_category">
+            <field name="name">Margins per Category</field>
+            <field name="res_model">stock.reporting.margin.category</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+            <field
+                name="domain"
+                eval="[('category', 'child_of', Eval('active_ids', []), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_category_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_category"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_category_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_category"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_category_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_category"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_category_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_category"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_category_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.reporting.margin.category.tree,-1</field>
+            <field name="action" ref="act_reporting_margin_category"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_category_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_category_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_category_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_category">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_category_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_time_series_view_list">
+            <field name="model">stock.reporting.margin.category.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_margin_main_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_time_series_view_graph_margin">
+            <field name="model">stock.reporting.margin.category.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_margin</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_time_series_view_graph_profit">
+            <field name="model">stock.reporting.margin.category.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_profit</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_margin_category_time_series_view_graph_amount">
+            <field name="model">stock.reporting.margin.category.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_margin_main_time_series_graph_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_margin_category_time_series">
+            <field name="name">Margins per Category</field>
+            <field name="res_model">stock.reporting.margin.category.time_series</field>
+            <field name="context_model">stock.reporting.margin.context</field>
+            <field
+                name="domain"
+                eval="[('category', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_margin_category_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_margin_category_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_margin_category_time_series_view_graph_margin"/>
+            <field name="act_window" ref="act_reporting_margin_category_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_margin_category_time_series_view_graph_profit"/>
+            <field name="act_window" ref="act_reporting_margin_category_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_margin_category_time_series_view4">
+            <field name="sequence" eval="40"/>
+            <field name="view" ref="reporting_margin_category_time_series_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_margin_category_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_margin_category_time_series_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.reporting.margin.category,-1</field>
+            <field name="action" ref="act_reporting_margin_category_time_series"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_margin_category_time_series_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category.time_series')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_margin_category_time_series_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_margin_category_time_series_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_margin_category_time_series">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_margin_category_time_series_product_admin">
+            <field name="model" search="[('model', '=', 'stock.reporting.margin.category.time_series')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>

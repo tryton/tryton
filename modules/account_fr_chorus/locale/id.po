@@ -1,0 +1,113 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,chorus_login:"
+msgid "Chorus Login"
+msgstr ""
+
+msgctxt "field:account.configuration,chorus_password:"
+msgid "Chorus Password"
+msgstr ""
+
+msgctxt "field:account.configuration,chorus_service:"
+msgid "Chorus Service"
+msgstr ""
+
+msgctxt "field:account.configuration,chorus_syntax:"
+msgid "Chorus Syntax"
+msgstr ""
+
+msgctxt "field:account.credential.chorus,chorus_login:"
+msgid "Login"
+msgstr ""
+
+msgctxt "field:account.credential.chorus,chorus_password:"
+msgid "Password"
+msgstr "Kata sandi"
+
+msgctxt "field:account.credential.chorus,chorus_service:"
+msgid "Service"
+msgstr "Jasa"
+
+msgctxt "field:account.credential.chorus,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.chorus,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.invoice.chorus,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.chorus,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.invoice.chorus,syntax:"
+msgid "Syntax"
+msgstr "Sintaks"
+
+msgctxt "field:party.party,chorus:"
+msgid "Chorus Pro"
+msgstr ""
+
+msgctxt "help:party.party,chorus:"
+msgid "Send documents for this party through Chorus Pro"
+msgstr ""
+
+msgctxt "model:account.credential.chorus,name:"
+msgid "Account Credential Chorus"
+msgstr ""
+
+msgctxt "model:account.invoice.chorus,name:"
+msgid "Invoice Chorus"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_chorus_form"
+msgid "Chorus"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
+msgid ""
+"To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
+"address \"%(address)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_sent"
+msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_unique"
+msgid "You can create only one Chorus invoice per invoice."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
+msgid "Chorus"
+msgstr ""
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Production"
+msgstr "Produksi"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Qualification"
+msgstr ""
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Production"
+msgstr "Produksi"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Qualification"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to Chorus"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Chorus"
+msgstr ""
