@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="name" expand="1"/>
+    <field name="on"/>
+    <field name="delay"/>
+    <field name="action"/>
+    <field name="record_count"/>
+    <field name="email_opened"/>
+    <field name="email_clicked"/>
+</tree>
