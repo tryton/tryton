@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/field[@name='invoice']"
+        position="after">
+        <label name="invoice_type"/>
+        <field name="invoice_type"/>
+        <label name="company"/>
+        <field name="company"/>
+        <label name="party"/>
+        <field name="party"/>
+        <label name="currency"/>
+        <field name="currency"/>
+    </xpath>
+</data>
