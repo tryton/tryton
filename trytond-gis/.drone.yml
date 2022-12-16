@@ -1,0 +1,34 @@
+clone:
+    hg:
+        image: plugins/hg
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        environment:
+            - CFLAGS=-O0
+            - DB_CACHE=/cache
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE
+            - POSTGIS_URI=postgis://postgres@postgresql:5432/
+        commands:
+            - pip install tox
+            - tox -e "${TOXENV}"
+        volumes:
+            - cache:/root/.cache
+
+services:
+    postgresql:
+        image: postgis/postgis
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+
+matrix:
+    include:
+        - IMAGE: python:3.4
+          TOXENV: py34
+        - IMAGE: python:3.5
+          TOXENV: py35
+        - IMAGE: python:3.6
+          TOXENV: py36
+        - IMAGE: python:3.7
+          TOXENV: py37

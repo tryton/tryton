@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='general']/group[@id='checkboxes']"
+        position="inside">
+        <label name="purchasable"/>
+        <field name="purchasable" xexpand="0" width="25"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page string="Suppliers" id="suppliers">
+            <label name="purchasable"/>
+            <field name="purchasable"/>
+            <label name="purchase_uom"/>
+            <field name="purchase_uom"/>
+            <field name="product_suppliers" colspan="4"
+                view_ids="purchase.product_supplier_view_tree_sequence"/>
+        </page>
+    </xpath>
+</data>
