@@ -1,0 +1,50 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Költség"
+
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Árlista szerinti ár"
+
+#, fuzzy
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr ""
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr ""
+
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr ""
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Purchases"
+msgstr ""
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr ""
