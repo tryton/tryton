@@ -1,0 +1,719 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "Are your sure to leave?"
+msgstr "Ви впевнені, що хочете вийти?"
+
+#, fuzzy
+msgid "Incompatible version of the server."
+msgstr "Не вдається підключитися до сервера."
+
+msgid "Version mismatch"
+msgstr ""
+
+#, fuzzy
+msgid "Could not connect to the server."
+msgstr "Не вдається підключитися до сервера."
+
+#, fuzzy
+msgid "Connection error"
+msgstr "Помилка програми"
+
+msgid "Favorites"
+msgstr "Вибране"
+
+msgid "Manage..."
+msgstr "Керування..."
+
+msgid "Logout"
+msgstr "Вихід"
+
+msgid "Action"
+msgstr "Дія"
+
+msgid "New"
+msgstr "Новий"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "Switch"
+msgstr "Переключити"
+
+msgid "Reload/Undo"
+msgstr "Оновити"
+
+msgid "Duplicate"
+msgstr "Копіювати"
+
+msgid "Delete"
+msgstr "Видалити"
+
+msgid "Previous"
+msgstr "Попередній"
+
+msgid "Next"
+msgstr "Наступний"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Close Tab"
+msgstr "Закрити вкладку"
+
+msgid "Attachment"
+msgstr "Вкладення"
+
+msgid "Note"
+msgstr "Примітка"
+
+msgid "Relate"
+msgstr "Пов'язані"
+
+msgid "Print"
+msgstr "Друк"
+
+msgid "E-Mail"
+msgstr "Ел.пошта"
+
+msgid "Previous tab"
+msgstr "Попередня вкладка"
+
+msgid "Next tab"
+msgstr "Наступна вкладка"
+
+msgid "Global search"
+msgstr "Глобальний пошук"
+
+msgid "Show this help"
+msgstr "Показати цю довідку"
+
+msgid "Show/Hide access keys"
+msgstr "Показати/cховати ключі доступу"
+
+msgid "Help"
+msgstr ""
+
+msgid "Close"
+msgstr "Закрити"
+
+msgid "Documentation..."
+msgstr ""
+
+msgid "Keyboard shortcuts"
+msgstr "Комбінації клавіш"
+
+msgid "Global shortcuts"
+msgstr "Глобальні комбінації клавіш"
+
+msgid "Tab shortcuts"
+msgstr "Комбінації клавіш вкладки"
+
+msgid "Unable to reach the server."
+msgstr "Не вдається підключитися до сервера."
+
+msgid "Too many requests. Try again later."
+msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+
+msgid "Login"
+msgstr "Логін"
+
+msgid "User name"
+msgstr "Ім'я користувача"
+
+msgid "Database"
+msgstr "База даних"
+
+#, fuzzy
+msgid "Login with"
+msgstr "Логін"
+
+msgid "Not found."
+msgstr ""
+
+msgid "Your selection:"
+msgstr "Ваш вибір:"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "OK"
+msgstr "Гаразд"
+
+msgid "Y"
+msgstr "Р"
+
+msgid "M"
+msgstr "М"
+
+msgid "w"
+msgstr "т"
+
+msgid "d"
+msgstr "д"
+
+msgid "h"
+msgstr "г"
+
+msgid "m"
+msgstr "х"
+
+msgid "s"
+msgstr "с"
+
+msgid "By: "
+msgstr "Від: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "т"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid "True"
+msgstr "Правда"
+
+msgid "t"
+msgstr "п"
+
+msgid "False"
+msgstr "Неправда"
+
+msgid "Message: "
+msgstr "Повідомлення: "
+
+msgid "Warning: "
+msgstr "Попередження: "
+
+msgid "Always ignore this warning."
+msgstr "Завжди ігнорувати це попередження."
+
+msgid "Do you want to proceed?"
+msgstr "Ви бажаєте продовжити?"
+
+msgid "No"
+msgstr "Ні"
+
+msgid "Confirmation: "
+msgstr "Підтвердження: "
+
+msgid "Concurrency Exception"
+msgstr "Виняток одночасного доступу"
+
+msgid "Write Concurrency Warning: "
+msgstr "Попередження одночасного запису: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Цей запис було змінено, поки ви його редагували."
+
+msgid "Choose:"
+msgstr "Вибрати:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Скасувати\", щоб скасувати збереження;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Порівняти\", щоб побачити змінену версію;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Записати все одно\", щоб зберегти поточну версію."
+
+msgid "Compare"
+msgstr "Порівняти"
+
+msgid "Compare: %1"
+msgstr "Порівняти: %1"
+
+msgid "Write Anyway"
+msgstr "Записати все одно"
+
+msgid "Application Error"
+msgstr "Помилка програми"
+
+msgid "Report Bug"
+msgstr "Повідомити про помилку"
+
+msgid "Processing"
+msgstr "Обробка"
+
+msgid "Search..."
+msgstr "Пошук..."
+
+msgid "Create..."
+msgstr "Створити..."
+
+msgid "Download"
+msgstr "Завантажити"
+
+msgid "..."
+msgstr "..."
+
+msgid "Bold"
+msgstr "Жирний"
+
+msgid "Italic"
+msgstr "Курсив"
+
+msgid "Underline"
+msgstr "Підкреслений"
+
+msgid "Font"
+msgstr "Шрифт"
+
+msgid "Size"
+msgstr "Розмір"
+
+msgid "Justify Right"
+msgstr "Вирівняти праворуч"
+
+msgid "Justify Left"
+msgstr "Вирівняти ліворуч"
+
+msgid "Justify Center"
+msgstr "Вирівняти по центру"
+
+msgid "Justify Full"
+msgstr "Вирівняти по ширині"
+
+msgid "Switch view"
+msgstr "Переключити вид"
+
+msgid "Previous Record"
+msgstr "Попередній запис"
+
+msgid "Next Record"
+msgstr "Наступний запис"
+
+msgid "Create a new record"
+msgstr "Створити новий запис"
+
+msgid "Save this record"
+msgstr "Зберегти цей запис"
+
+msgid "Reload"
+msgstr "Перезавантажити"
+
+msgid "View Logs..."
+msgstr "Переглянути журнали..."
+
+msgid "Show revisions..."
+msgstr "Показати ревізії..."
+
+msgid "Add an attachment to the record"
+msgstr "Додати вкладення до запису"
+
+msgid "Add a note to the record"
+msgstr "Додати примітку до запису"
+
+msgid "E-Mail..."
+msgstr "Ел.пошта..."
+
+msgid "Send an e-mail using the record"
+msgstr "Надіслати ел.лист, використовуючи запис"
+
+msgid "Export"
+msgstr "Експорт"
+
+msgid "Import"
+msgstr "Імпорт"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Наступна дія вимагає закриття всіх вкладок.\n"
+"Продовжити?"
+
+msgid "Launch action"
+msgstr "Виконати дію"
+
+msgid "Open related records"
+msgstr "Відкрити пов'язані записи"
+
+msgid "Print report"
+msgstr "Друкувати звіт"
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Цей запис було змінено,\n"
+"ви бажаєте зберегти його?"
+
+msgid "Record saved."
+msgstr "Запис збережено."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Зараз працюємо з дубльованим записом(записами)."
+
+msgid "Are you sure to remove this record?"
+msgstr "Ви впевнені, що бажаєте видалити цей запис?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Ви впевнені, що бажаєте видалити ці записи?"
+
+msgid "Records removed."
+msgstr "Записи видалено."
+
+msgid "Records not removed."
+msgstr "Записи не видалено."
+
+msgid "You have to select one record."
+msgstr "Ви повинні вибрати один запис."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Ким створено:"
+
+msgid "Created at:"
+msgstr "Коли створено:"
+
+msgid "Edited by:"
+msgstr "Ким змінено:"
+
+msgid "Edited at:"
+msgstr "Коли змінено:"
+
+msgid "Model: "
+msgstr "Модель: "
+
+msgid "Add..."
+msgstr "Додати..."
+
+msgid "Preview"
+msgstr "Перегляд"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Attachment (%1)"
+msgstr "Вкладення (%1)"
+
+msgid "Note (%1/%2)"
+msgstr "Примітка (%1/%2)"
+
+msgid "Filters"
+msgstr "Фільтри"
+
+msgid "Clear Search"
+msgstr "Очистити пошук"
+
+msgid "Bookmarks"
+msgstr "Закладки"
+
+msgid "Remove this bookmark"
+msgstr "Видалити цю закладку"
+
+msgid "Bookmark this filter"
+msgstr "Зберегти цей фільтр"
+
+msgid "Bookmark Name:"
+msgstr "Ім'я закладки:"
+
+msgid "Show active records"
+msgstr "Показати активні записи"
+
+msgid "Show inactive records"
+msgstr "Показати неактивні записи"
+
+msgid "Find"
+msgstr "Знайти"
+
+msgid "From"
+msgstr "Від"
+
+msgid "To"
+msgstr "До"
+
+msgid "Open the calendar"
+msgstr "Відкрити календар"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Created by"
+msgstr "Ким створено"
+
+msgid "Created at"
+msgstr "Коли створенно"
+
+msgid "Modified by"
+msgstr "Ким змінено"
+
+msgid "Modified at"
+msgstr "Коли змінено"
+
+msgid "\"%1\" is required."
+msgstr "Значення \"%1\" обов'язкове."
+
+msgid "\"%1\" is not valid according to its domain."
+msgstr "Значення \"%1\" недійсне відповідно до свого домену."
+
+msgid "The values of \"%1\" are not valid."
+msgstr "Значення \"%1\" недійсні."
+
+msgid "Pre-validation"
+msgstr "Попередня перевірка"
+
+msgid ":"
+msgstr ":"
+
+msgid "Translate"
+msgstr "Перекласти"
+
+msgid "Edit"
+msgstr "Редагувати"
+
+msgid "Fuzzy"
+msgstr "Нечіткий"
+
+msgid "You need to save the record before adding translations."
+msgstr "Треба зберегти запис перед додаванням перекладів."
+
+msgid "No other language available."
+msgstr "Немає іншої мови."
+
+msgid "Show"
+msgstr "Показати"
+
+msgid "Hide"
+msgstr "Сховати"
+
+msgid "Open the record"
+msgstr "Відкрити запис"
+
+msgid "Clear the field"
+msgstr "Очистити поле"
+
+msgid "Search a record"
+msgstr "Пошук запису"
+
+msgid "Add"
+msgstr "Додати"
+
+msgid "Remove"
+msgstr "Видалити"
+
+msgid "Open"
+msgstr "Відкрити"
+
+msgid "Undelete"
+msgstr "Відновити"
+
+msgid "Save As"
+msgstr "Зберегти як"
+
+msgid "Save As..."
+msgstr "Зберегти як..."
+
+msgid "Select"
+msgstr "Вибрати"
+
+msgid "Select..."
+msgstr "Вибрати..."
+
+msgid "Clear"
+msgstr "Очистити"
+
+msgid "Open..."
+msgstr "Відкрити..."
+
+msgid "Choose a language"
+msgstr "Вибрати мову"
+
+#, javascript-format
+msgid "%1%"
+msgstr "%1%"
+
+msgid ": "
+msgstr ": "
+
+msgid "Customize"
+msgstr "Налаштувати"
+
+msgid "More"
+msgstr "Додатково"
+
+msgid "Today"
+msgstr "Сьогодні"
+
+msgid "Month"
+msgstr "Місяць"
+
+msgid "Week"
+msgstr "Тиждень"
+
+msgid "Day"
+msgstr "День"
+
+msgid ",..."
+msgstr ",..."
+
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+msgid "Select your action"
+msgstr "Виберіть дію"
+
+msgid "No action defined."
+msgstr "Ніяких дій не визначено."
+
+msgid "Attachments (%1)"
+msgstr "Вкладення (%1)"
+
+msgid "Notes (%1)"
+msgstr "Примітки (%1)"
+
+msgid "Search %1"
+msgstr "Пошук %1"
+
+msgid "Revision"
+msgstr "Ревізія"
+
+msgid "All Fields"
+msgstr "Усі поля"
+
+msgid "Fields Selected"
+msgstr "Вибрані поля"
+
+msgid "CSV Parameters"
+msgstr "Параметри CSV"
+
+msgid "Delimiter:"
+msgstr "Роздільник:"
+
+msgid "Quote Char:"
+msgstr "Символ цитати:"
+
+msgid "CSV Import: %1"
+msgstr "Імпорт CSV: %1"
+
+msgid "Auto-Detect"
+msgstr "Автовизначення"
+
+msgid "File to Import"
+msgstr "Файл для імпорту"
+
+msgid "Encoding:"
+msgstr "Кодування:"
+
+msgid "Lines to Skip:"
+msgstr "Рядки для пропуску:"
+
+msgid "You must select an import file first."
+msgstr "Спочатку потрібно вибрати файл імпорту."
+
+msgid "Detection failed"
+msgstr "Помилка визначення"
+
+msgid "Error processing the file at field %1."
+msgstr "Помилка обробки файлу в полі %1."
+
+msgid "Error"
+msgstr "Помилка"
+
+msgid "Import failed"
+msgstr "Помилка імпорту"
+
+msgid "%1 record imported"
+msgid_plural "%1 records imported"
+msgstr[0] "Імпортовано %1 запис"
+msgstr[1] "Імпортовано %1 записи"
+msgstr[2] "Імпортовано %1 записів"
+
+msgid "CSV Export: %1"
+msgstr "Експорт CSV: %1"
+
+msgid "Save Export"
+msgstr "Зберегти експорт"
+
+msgid "URL Export"
+msgstr "Експорт URL"
+
+msgid "Delete Export"
+msgstr "Видалити експорт"
+
+msgid "Predefined Exports"
+msgstr "Попередньо визначені експорти"
+
+msgid "Selected Records"
+msgstr "Вибрані записи"
+
+msgid "Listed Records"
+msgstr "Записи списку"
+
+msgid "Export:"
+msgstr "Експортувати:"
+
+msgid "Ignore search limit"
+msgstr "Ігнорувати обмеження пошуку"
+
+msgid "Use locale format"
+msgstr "Використовувати локальний формат"
+
+msgid "Add Field Names"
+msgstr "Додати імена полів"
+
+msgid "%1 (string)"
+msgstr "%1 (рядок)"
+
+msgid "%1 (model name)"
+msgstr "%1 (ім'я моделі)"
+
+#, fuzzy
+msgid "%1/Record Name"
+msgstr "%1 (ім'я запису)"
+
+msgid "What is the name of this export?"
+msgstr "Як називається цей експорт?"
+
+msgid "Override %1 definition?"
+msgstr "Перевизначити визначення %1?"
+
+msgid "%1 record saved"
+msgid_plural "%1 records saved"
+msgstr[0] "Збережено %1 запис"
+msgstr[1] "Збережено %1 записи"
+msgstr[2] "Збережено %1 записів"
+
+msgid "E-mail %1"
+msgstr "Ел.лист %1"
+
+msgid "To:"
+msgstr "Кому:"
+
+msgid "Cc:"
+msgstr "Копія:"
+
+msgid "Bcc:"
+msgstr "Сліпа копія:"
+
+msgid "Subject:"
+msgstr "Тема:"
+
+msgid "Reports"
+msgstr "Звіти"
+
+msgid "Attachments"
+msgstr "Вкладення"
+
+msgid "Files"
+msgstr "Файли"
+
+msgid "Send"
+msgstr "Надіслати"
+
+msgid "Remove File"
+msgstr "Видалити файл"
+
+msgid "Wizard"
+msgstr "Майстер"
+
+msgid "Translate view"
+msgstr "Переклад вкладки"
