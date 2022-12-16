@@ -1,0 +1,1537 @@
+# Slovenian (Slovenia) translations for tryton.
+# Copyright (C) 2010 B2CK
+# This file is distributed under the same license as the tryton project.
+# Venceslav Vezjak <vezjakv@gmail.com>, 2010.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#: tryton/config.py:74
+msgid "specify alternate config file"
+msgstr "določi alterntivno konfiguracijsko datoteko"
+
+#: tryton/config.py:77
+msgid "development mode"
+msgstr "Razvijalski način"
+
+#: tryton/config.py:80
+msgid "logging everything at INFO level"
+msgstr "beleženje vsega na INFO ravni"
+
+#: tryton/config.py:82
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "določi nivo beleženja: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+#: tryton/config.py:85
+msgid "specify the login user"
+msgstr "določi uporabniško ime"
+
+#: tryton/config.py:87
+msgid "specify the server hostname:port"
+msgstr "določi ime in vrata strežniškega gostitelja"
+
+#: tryton/config.py:127
+#, python-format, python-format, python-format, python-format
+msgid "Unable to write config file %s."
+msgstr "Ni možno zapisati konfiguracijske datoteke %s."
+
+#: tryton/translate.py:185
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Ni možno nastaviti krajevnih nastavitev %s"
+
+#: tryton/action/main.py:89 tryton/common/button.py:54
+msgid ", "
+msgstr ", "
+
+#: tryton/action/main.py:91
+msgid ",…"
+msgstr ",…"
+
+# ?
+#: tryton/action/main.py:92
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: tryton/action/main.py:187
+msgid "Select your action"
+msgstr "Izberi ukrep"
+
+#: tryton/action/main.py:193
+msgid "No action defined."
+msgstr "Nobenega ukrepa ni določenega."
+
+#: tryton/common/button.py:54
+msgid "By: "
+msgstr "Od: "
+
+#: tryton/common/common.py:307 tryton/gui/window/shortcuts.py:64
+msgid "Selection"
+msgstr "Izbira"
+
+#: tryton/common/common.py:309 tryton/common/common.py:365
+#: tryton/common/common.py:368 tryton/common/common.py:642
+#: tryton/common/common.py:693 tryton/common/common.py:796
+#: tryton/gui/window/email.py:23 tryton/gui/window/limit.py:24
+#: tryton/gui/window/preference.py:35 tryton/gui/window/revision.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:149
+#: tryton/gui/window/view_form/view/graph.py:106
+#: tryton/gui/window/win_csv.py:173 tryton/gui/window/win_form.py:68
+#: tryton/gui/window/win_search.py:54
+#, fuzzy
+msgid "Cancel"
+msgstr "_Prekliči"
+
+#: tryton/common/common.py:310 tryton/common/common.py:797
+#: tryton/gui/window/email.py:28 tryton/gui/window/limit.py:29
+#: tryton/gui/window/preference.py:40 tryton/gui/window/revision.py:30
+#: tryton/gui/window/shortcuts.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:154
+#: tryton/gui/window/view_form/view/graph.py:111
+#: tryton/gui/window/win_csv.py:178 tryton/gui/window/win_form.py:97
+#: tryton/gui/window/win_search.py:72
+msgid "OK"
+msgstr ""
+
+#: tryton/common/common.py:315
+msgid "Your selection:"
+msgstr "Vaša izbira:"
+
+#: tryton/common/common.py:366 tryton/gui/window/form.py:114
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:83
+msgid "Select"
+msgstr "Izberi"
+
+#: tryton/common/common.py:369 tryton/gui/window/win_export.py:83
+msgid "Save"
+msgstr "Shrani"
+
+#: tryton/common/common.py:447
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:31
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:116
+#: tryton/gui/window/view_form/view/graph.py:171
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:493
+#: tryton/gui/window/win_export.py:305
+msgid "Save As..."
+msgstr "Shrani kot..."
+
+#: tryton/common/common.py:592
+msgid "Always ignore this warning."
+msgstr "Vedno prezri to opozorilo."
+
+#: tryton/common/common.py:597
+msgid "Do you want to proceed?"
+msgstr "Ali želite nadaljevati?"
+
+#: tryton/common/common.py:643
+msgid "No"
+msgstr ""
+
+#: tryton/common/common.py:644 tryton/common/domain_parser.py:239
+msgid "Yes"
+msgstr "Da"
+
+#: tryton/common/common.py:689 tryton/common/common.py:983
+msgid "Concurrency Exception"
+msgstr "Izjema sočasnega izvajanja"
+
+#: tryton/common/common.py:691
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+#: tryton/common/common.py:694
+msgid "Cancel saving"
+msgstr ""
+
+#: tryton/common/common.py:696
+msgid "Compare"
+msgstr "Primerjaj"
+
+#: tryton/common/common.py:697
+msgid "See the modified version"
+msgstr ""
+
+#: tryton/common/common.py:699
+msgid "Write Anyway"
+msgstr "Vseeno zapiši"
+
+#: tryton/common/common.py:700
+msgid "Save your current version"
+msgstr ""
+
+#: tryton/common/common.py:729
+#, fuzzy
+msgid "Application Error"
+msgstr "Napaka programa."
+
+#: tryton/common/common.py:732
+msgid "Report Bug"
+msgstr "Prijava programske napake"
+
+#: tryton/common/common.py:733 tryton/gui/window/dblogin.py:36
+msgid "Close"
+msgstr ""
+
+#: tryton/common/common.py:751
+msgid "Error: "
+msgstr "Napaka: "
+
+#: tryton/common/common.py:768
+#, python-format, fuzzy, python-format
+msgid "To report bugs you must have an account on %s"
+msgstr "Za prijavo programskih napak morate imeti odprt račun pri <u>%s</u>"
+
+#: tryton/common/common.py:794
+msgid "Bug Tracker"
+msgstr "Sledilnik programskih napak"
+
+#: tryton/common/common.py:811
+msgid "User:"
+msgstr "Uporabnik:"
+
+#: tryton/common/common.py:819
+msgid "Password:"
+msgstr "Geslo:"
+
+#: tryton/common/common.py:875
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"Drugi uporabnik je že prijavil enako programsko napako.\n"
+"Zaradi obveščanja je vaše uporabniško ime dodano na seznam te programske napake"
+
+#: tryton/common/common.py:886
+msgid "Created new bug with ID "
+msgstr "Evidentirana je nova programska napaka z ID "
+
+#: tryton/common/common.py:894
+msgid ""
+"Connection error.\n"
+"Bad username or password."
+msgstr ""
+"Napaka pri povezavovanju.\n"
+"Napačno uporabniško ime ali geslo."
+
+#: tryton/common/common.py:899
+msgid "Exception:"
+msgstr "Izjema:"
+
+#: tryton/common/common.py:926
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+#: tryton/common/common.py:934
+msgid "Unable to check for new version"
+msgstr ""
+
+#: tryton/common/common.py:940
+msgid "A new version is available!"
+msgstr ""
+
+#: tryton/common/common.py:942
+msgid "Download"
+msgstr ""
+
+#: tryton/common/common.py:1323
+msgid "..."
+msgstr "..."
+
+#: tryton/common/completion.py:25
+msgid "<i>Search...</i>"
+msgstr "<i>Išči...</i>"
+
+#: tryton/common/completion.py:27
+msgid "<i>Create...</i>"
+msgstr "<i>Ustvari...</i>"
+
+#: tryton/common/completion.py:70
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr ""
+
+#: tryton/common/datetime_.py:32 tryton/common/datetime_.py:238
+#: tryton/common/datetime_.py:391
+msgid "Value"
+msgstr "Vrednost"
+
+#: tryton/common/datetime_.py:33 tryton/common/datetime_.py:239
+#: tryton/common/datetime_.py:392
+msgid "Displayed value"
+msgstr "Prikazana vrednost"
+
+#: tryton/common/datetime_.py:37 tryton/common/datetime_.py:195
+#: tryton/common/datetime_.py:242 tryton/common/datetime_.py:347
+msgid "Format"
+msgstr "Oblika"
+
+#: tryton/common/datetime_.py:38 tryton/common/datetime_.py:196
+#: tryton/common/datetime_.py:243 tryton/common/datetime_.py:348
+msgid "Display format"
+msgstr "Oblika prikaza"
+
+#: tryton/common/datetime_.py:63
+msgid "Open the calendar"
+msgstr "Odpri koledar"
+
+#: tryton/common/datetime_.py:396 tryton/common/datetime_.py:401
+msgid "Date Format"
+msgstr "Oblika datuma"
+
+#: tryton/common/datetime_.py:397 tryton/common/datetime_.py:402
+msgid "Displayed date format"
+msgstr "Prikazana oblika datuma"
+
+#: tryton/common/domain_parser.py:239
+msgid "y"
+msgstr "d"
+
+#: tryton/common/domain_parser.py:239 tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "True"
+msgstr "Da"
+
+#: tryton/common/domain_parser.py:239
+msgid "t"
+msgstr "t"
+
+#: tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "False"
+msgstr "Ne"
+
+#: tryton/common/popup_menu.py:84
+msgid "Edit..."
+msgstr "Uredi ..."
+
+#: tryton/common/popup_menu.py:89
+msgid "Attachments..."
+msgstr "Priponke..."
+
+#: tryton/common/popup_menu.py:95
+msgid "Notes..."
+msgstr "Zabeležke ..."
+
+#: tryton/common/popup_menu.py:107
+msgid "Actions..."
+msgstr "_Ukrepi..."
+
+#: tryton/common/popup_menu.py:108
+msgid "Relate..."
+msgstr "_Veze..."
+
+#: tryton/common/popup_menu.py:109
+msgid "Report..."
+msgstr "Poročila..."
+
+#: tryton/common/popup_menu.py:110
+msgid "E-Mail..."
+msgstr "_Elektronska pošta..."
+
+#: tryton/common/popup_menu.py:111
+msgid "Print..."
+msgstr "_Izpis..."
+
+#: tryton/common/timedelta.py:26
+msgid "Y"
+msgstr "l"
+
+#: tryton/common/timedelta.py:27
+msgid "M"
+msgstr "M"
+
+#: tryton/common/timedelta.py:28
+msgid "w"
+msgstr "t"
+
+#: tryton/common/timedelta.py:29
+msgid "d"
+msgstr "d"
+
+#: tryton/common/timedelta.py:30
+msgid "h"
+msgstr "u"
+
+#: tryton/common/timedelta.py:31
+msgid "m"
+msgstr "m"
+
+#: tryton/common/timedelta.py:32
+msgid "s"
+msgstr "s"
+
+#: tryton/gui/main.py:123
+#, fuzzy
+msgid "Preferences..."
+msgstr "_Nastavitve..."
+
+#: tryton/gui/main.py:127
+#, fuzzy
+msgid "Toolbar"
+msgstr "_Orodna vrstica"
+
+#: tryton/gui/main.py:128
+#, fuzzy
+msgid "Default"
+msgstr "_Privzeto"
+
+#: tryton/gui/main.py:129
+#, fuzzy
+msgid "Text and Icons"
+msgstr "Bese_dilo in ikone"
+
+#: tryton/gui/main.py:130
+#, fuzzy
+msgid "Text"
+msgstr "_Besedilo"
+
+#: tryton/gui/main.py:131
+#, fuzzy
+msgid "Icons"
+msgstr "_Ikone"
+
+#: tryton/gui/main.py:134
+#, fuzzy
+msgid "Form"
+msgstr "O_brazec"
+
+#: tryton/gui/main.py:135
+msgid "Save Width/Height"
+msgstr "Shrani širino/višino"
+
+#: tryton/gui/main.py:136
+msgid "Save Tree State"
+msgstr "Shrani stanje drevesa"
+
+#: tryton/gui/main.py:137
+msgid "Fast Tabbing"
+msgstr "Hitri premik"
+
+#: tryton/gui/main.py:138
+msgid "Spell Checking"
+msgstr "Črkovanje"
+
+#: tryton/gui/main.py:140
+msgid "PDA Mode"
+msgstr ""
+
+#: tryton/gui/main.py:141
+msgid "Search Limit..."
+msgstr "Omejitev iskanja..."
+
+#: tryton/gui/main.py:142
+#, fuzzy
+msgid "Email..."
+msgstr "_Epošta..."
+
+#: tryton/gui/main.py:143
+msgid "Check Version"
+msgstr ""
+
+#: tryton/gui/main.py:145
+#, fuzzy
+msgid "Options"
+msgstr "_Možnosti"
+
+#: tryton/gui/main.py:148
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "_Bližnjice na tipkovnici..."
+
+#: tryton/gui/main.py:149
+#, fuzzy
+msgid "About..."
+msgstr "_Vizitka..."
+
+#: tryton/gui/main.py:150
+#, fuzzy
+msgid "Help"
+msgstr "_Pomoč"
+
+#: tryton/gui/main.py:153
+msgid "Quit"
+msgstr ""
+
+#: tryton/gui/main.py:395
+msgid "No result found."
+msgstr "Brez rezultatov."
+
+#: tryton/gui/main.py:447
+#, fuzzy
+msgid "Favorites"
+msgstr "P_riljubljeno"
+
+#: tryton/gui/main.py:464 tryton/gui/window/dblogin.py:438
+#: tryton/gui/window/form.py:139
+msgid "Manage..."
+msgstr ""
+
+#: tryton/gui/main.py:541 tryton/gui/window/form.py:559
+msgid "Action"
+msgstr "Ukrep"
+
+#: tryton/gui/main.py:563
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Za naslednji ukrep morajo biti vsi zavihki zaprti.\n"
+"Ali želite nadaljevati?"
+
+#: tryton/gui/main.py:747
+msgid "Close Tab"
+msgstr "Zapri zavihek"
+
+#: tryton/gui/window/about.py:37
+msgid "modularity, scalability and security"
+msgstr ""
+
+#: tryton/gui/window/about.py:43
+msgid "translator-credits"
+msgstr ""
+
+#: tryton/gui/window/attachment.py:24
+#, python-format, python-format, python-format, python-format
+msgid "Attachments (%s)"
+msgstr "Priponke (%s)"
+
+#: tryton/gui/window/dblogin.py:33
+msgid "Profile Editor"
+msgstr "Urejevalnik profilov"
+
+#: tryton/gui/window/dblogin.py:49
+msgid "Profile"
+msgstr "Profil"
+
+#: tryton/gui/window/dblogin.py:58
+msgid "Add new profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:63
+msgid "Remove selected profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:77 tryton/gui/window/dblogin.py:450
+msgid "Host:"
+msgstr "Strežnik:"
+
+#: tryton/gui/window/dblogin.py:88 tryton/gui/window/dblogin.py:462
+msgid "Database:"
+msgstr "Podatkovna baza:"
+
+#: tryton/gui/window/dblogin.py:108
+msgid "Fetching databases list"
+msgstr "Pridobivanje seznama podatkovnih baz"
+
+#: tryton/gui/window/dblogin.py:122
+msgid "Username:"
+msgstr "Uporabniško ime:"
+
+#: tryton/gui/window/dblogin.py:309 tryton/gui/window/dblogin.py:619
+msgid "Incompatible version of the server"
+msgstr "Nezdružljiva inačica strežnika"
+
+#: tryton/gui/window/dblogin.py:311 tryton/gui/window/dblogin.py:623
+msgid "Could not connect to the server"
+msgstr "Ni se možno povezati s strežnikom"
+
+#: tryton/gui/window/dblogin.py:390
+msgid "Login"
+msgstr "Prijava"
+
+#: tryton/gui/window/dblogin.py:396
+msgid "_Cancel"
+msgstr "_Prekliči"
+
+#: tryton/gui/window/dblogin.py:398
+msgid "Cancel connection to the Tryton server"
+msgstr "Prekliči povezavo do Tryton strežnika"
+
+#: tryton/gui/window/dblogin.py:400
+msgid "C_onnect"
+msgstr "P_oveži"
+
+#: tryton/gui/window/dblogin.py:404
+msgid "Connect the Tryton server"
+msgstr "Poveži se s Tryton strežnikom"
+
+#: tryton/gui/window/dblogin.py:432
+msgid "Profile:"
+msgstr "Profil:"
+
+#: tryton/gui/window/dblogin.py:447
+msgid "Host / Database information"
+msgstr "Strežnik in podatkovna baza"
+
+#: tryton/gui/window/dblogin.py:478
+msgid "User name:"
+msgstr "Uporabnik:"
+
+#: tryton/gui/window/email.py:19
+msgid "Email"
+msgstr "Epošta"
+
+#: tryton/gui/window/email.py:36
+msgid "Email Program Settings"
+msgstr "Nastavitve poštnega odjemalca"
+
+#: tryton/gui/window/email.py:39
+msgid "Command Line:"
+msgstr "Ukazna vrstica:"
+
+#: tryton/gui/window/email.py:49
+msgid "Legend of Available Placeholders:"
+msgstr "Opis možnih prostornikov:"
+
+#: tryton/gui/window/email.py:56
+msgid "To:"
+msgstr "Za:"
+
+#: tryton/gui/window/email.py:60
+msgid "CC:"
+msgstr "Kp:"
+
+#: tryton/gui/window/email.py:64
+msgid "Subject:"
+msgstr "Zadeva:"
+
+#: tryton/gui/window/email.py:68
+msgid "Body:"
+msgstr "Vsebina:"
+
+#: tryton/gui/window/email.py:72
+msgid "Attachment:"
+msgstr "Priponka:"
+
+#: tryton/gui/window/form.py:135
+msgid "Add..."
+msgstr ""
+
+#: tryton/gui/window/form.py:155
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Priponka(%d)"
+
+#: tryton/gui/window/form.py:185
+#, python-format
+msgid "Note(%d)"
+msgstr "Zabeležka(%d)"
+
+#: tryton/gui/window/form.py:207
+msgid "You have to select one record."
+msgstr "En zapis mora biti izbran."
+
+#: tryton/gui/window/form.py:211
+msgid "ID:"
+msgstr "ID:"
+
+#: tryton/gui/window/form.py:212
+msgid "Creation User:"
+msgstr "Ustvaril:"
+
+#: tryton/gui/window/form.py:213
+msgid "Creation Date:"
+msgstr "Ustvarjeno:"
+
+#: tryton/gui/window/form.py:214
+msgid "Latest Modification by:"
+msgstr "Nazadnje popravil:"
+
+#: tryton/gui/window/form.py:215
+msgid "Latest Modification Date:"
+msgstr "Nazadnje popravljeno:"
+
+#: tryton/gui/window/form.py:234
+msgid "Model:"
+msgstr "Model:"
+
+#: tryton/gui/window/form.py:312
+msgid "Are you sure to remove this record?"
+msgstr "Ali res želiš izbrisati ta zapis?"
+
+#: tryton/gui/window/form.py:314
+msgid "Are you sure to remove those records?"
+msgstr "Ali res želiš izbrisati te zapise?"
+
+#: tryton/gui/window/form.py:317
+msgid "Records not removed."
+msgstr "Zapisi niso izbrisani."
+
+#: tryton/gui/window/form.py:319
+msgid "Records removed."
+msgstr "Zapisi izbrisani."
+
+#: tryton/gui/window/form.py:356
+msgid "Working now on the duplicated record(s)."
+msgstr "Trenutno se dela na podvojenih zapisih."
+
+#: tryton/gui/window/form.py:368
+msgid "Record saved."
+msgstr "Zapis shranjen."
+
+#: tryton/gui/window/form.py:485
+msgid " of "
+msgstr " od "
+
+#: tryton/gui/window/form.py:505
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Ta zapis je bil spremenjen,\n"
+"ga želiš shraniti?"
+
+#: tryton/gui/window/form.py:559
+msgid "Launch action"
+msgstr "Zaženi ukrep"
+
+#: tryton/gui/window/form.py:560
+msgid "Relate"
+msgstr "Veza"
+
+#: tryton/gui/window/form.py:560
+msgid "Open related records"
+msgstr "Odpri vezo"
+
+#: tryton/gui/window/form.py:562
+msgid "Report"
+msgstr "Poročila"
+
+#: tryton/gui/window/form.py:562
+msgid "Open report"
+msgstr "Odpri poročilo"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail"
+msgstr "Pošlji"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail report"
+msgstr "Pošlji poročilo"
+
+#: tryton/gui/window/form.py:564
+msgid "Print"
+msgstr "Tisk"
+
+#: tryton/gui/window/form.py:564
+msgid "Print report"
+msgstr "Izpis poročila"
+
+#: tryton/gui/window/form.py:590
+msgid "_Copy URL"
+msgstr "_Kopirak URL"
+
+#: tryton/gui/window/form.py:593
+msgid "Copy URL into clipboard"
+msgstr "Kopiraj URL na odložišče"
+
+#: tryton/gui/window/form.py:652
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:932
+msgid "Unknown"
+msgstr "Neznano"
+
+#: tryton/gui/window/limit.py:20
+msgid "Limit"
+msgstr "Omejitev"
+
+#: tryton/gui/window/limit.py:37
+msgid "Search Limit Settings"
+msgstr "Nastavitev omejitev iskanja"
+
+#: tryton/gui/window/limit.py:40
+msgid "Limit:"
+msgstr "Omejitev:"
+
+#: tryton/gui/window/note.py:17
+#, python-format
+msgid "Notes (%s)"
+msgstr "Zabeležke (%s)"
+
+#: tryton/gui/window/preference.py:25
+msgid "Preferences"
+msgstr "Nastavitve"
+
+#: tryton/gui/window/preference.py:58
+msgid "Edit User Preferences"
+msgstr "Uredi uporabniške nastavitve"
+
+#: tryton/gui/window/preference.py:85
+msgid "Preference"
+msgstr "Nastavitev"
+
+#: tryton/gui/window/revision.py:21
+msgid "Revision"
+msgstr "Različica"
+
+#: tryton/gui/window/revision.py:38
+msgid "Select a revision"
+msgstr "Izberi različico"
+
+#: tryton/gui/window/revision.py:41
+msgid "Revision:"
+msgstr "Različica:"
+
+#: tryton/gui/window/shortcuts.py:20
+msgid "Keyboard Shortcuts"
+msgstr "Bližnjice"
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Text Entries Shortcuts"
+msgstr "Bližnjice za urejanje"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Cut selected text"
+msgstr "Izreži vsebino"
+
+#: tryton/gui/window/shortcuts.py:37
+msgid "Copy selected text"
+msgstr "Kopiraj vsebino"
+
+#: tryton/gui/window/shortcuts.py:38
+msgid "Paste copied text"
+msgstr "Prilepi vsebino"
+
+#: tryton/gui/window/shortcuts.py:39
+msgid "Next widget"
+msgstr "Naslednje polje"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Previous widget"
+msgstr "Prejšnje polje"
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Relation Entries Shortcuts"
+msgstr "Bližnjice za veze"
+
+#: tryton/gui/window/shortcuts.py:42
+msgid "Create new relation"
+msgstr "Dodajanje nove veze"
+
+#: tryton/gui/window/shortcuts.py:43
+msgid "Open/Search relation"
+msgstr "Urejanje/iskanje veze"
+
+#: tryton/gui/window/shortcuts.py:44
+msgid "List Entries Shortcuts"
+msgstr "Bližnjice za postavke"
+
+#: tryton/gui/window/shortcuts.py:45
+msgid "Create new line"
+msgstr "Dodajanje postavke"
+
+#: tryton/gui/window/shortcuts.py:46
+msgid "Open relation"
+msgstr "Urejenje postavke"
+
+#: tryton/gui/window/shortcuts.py:47
+msgid "Mark line for deletion"
+msgstr "Postavka označena za brisanje"
+
+#: tryton/gui/window/shortcuts.py:48
+msgid "Unmark line for deletion"
+msgstr "Postavka neoznačena za brisanje"
+
+#: tryton/gui/window/shortcuts.py:51
+msgid "Edition Widgets"
+msgstr "Vnašanje podatkov"
+
+#: tryton/gui/window/shortcuts.py:54
+msgid "Move Cursor"
+msgstr "Premiki"
+
+#: tryton/gui/window/shortcuts.py:55
+msgid "Move to right"
+msgstr "Premik desno"
+
+#: tryton/gui/window/shortcuts.py:56
+msgid "Move to left"
+msgstr "Premik levo"
+
+#: tryton/gui/window/shortcuts.py:57
+msgid "Move up"
+msgstr "Premik gor"
+
+#: tryton/gui/window/shortcuts.py:58
+msgid "Move down"
+msgstr "Premik dol"
+
+#: tryton/gui/window/shortcuts.py:59
+msgid "Move up of one page"
+msgstr "Premik za eno stran gor"
+
+#: tryton/gui/window/shortcuts.py:60
+msgid "Move down of one page"
+msgstr "Premik za eno stran dol"
+
+#: tryton/gui/window/shortcuts.py:61
+msgid "Move to top"
+msgstr "Premik na začetek"
+
+#: tryton/gui/window/shortcuts.py:62
+msgid "Move to bottom"
+msgstr "Premik na konec"
+
+#: tryton/gui/window/shortcuts.py:63
+msgid "Move to parent"
+msgstr "Premik na nadrejeno vejo"
+
+#: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
+msgid "Select all"
+msgstr "Izberi vse"
+
+#: tryton/gui/window/shortcuts.py:67 tryton/gui/window/shortcuts.py:68
+msgid "Unselect all"
+msgstr "Odznači vse"
+
+#: tryton/gui/window/shortcuts.py:69
+msgid "Select parent"
+msgstr "Izberi nadrejeno vejo"
+
+#: tryton/gui/window/shortcuts.py:70 tryton/gui/window/shortcuts.py:71
+#: tryton/gui/window/shortcuts.py:72 tryton/gui/window/shortcuts.py:73
+msgid "Select/Activate current row"
+msgstr "Izberi/Aktiviraj trenutno vrstico"
+
+#: tryton/gui/window/shortcuts.py:74
+msgid "Toggle selection"
+msgstr "Vklopi/Izklopi izbor"
+
+#: tryton/gui/window/shortcuts.py:75
+msgid "Expand/Collapse"
+msgstr "Razširi/Skrči"
+
+#: tryton/gui/window/shortcuts.py:76
+msgid "Expand row"
+msgstr "Razširi vrstico"
+
+#: tryton/gui/window/shortcuts.py:77
+msgid "Collapse row"
+msgstr "Skrči vrstico"
+
+#: tryton/gui/window/shortcuts.py:78
+msgid "Toggle row"
+msgstr "Razširi/Skrči vrstico"
+
+#: tryton/gui/window/shortcuts.py:79
+msgid "Collapse all rows"
+msgstr "Skrči vse vrstice"
+
+#: tryton/gui/window/shortcuts.py:80
+msgid "Expand all rows"
+msgstr "Razširi vse vrstice"
+
+#: tryton/gui/window/shortcuts.py:83
+msgid "Tree view"
+msgstr "Drevesni pogled"
+
+#: tryton/gui/window/tabcontent.py:43
+msgid "_Switch View"
+msgstr "Preklopi po_gled"
+
+#: tryton/gui/window/tabcontent.py:44
+msgid "Switch View"
+msgstr "Preklopi pogled"
+
+#: tryton/gui/window/tabcontent.py:49
+msgid "_Previous"
+msgstr "P_rejšnji"
+
+#: tryton/gui/window/tabcontent.py:50
+msgid "Previous Record"
+msgstr "Prejšnji zapis"
+
+#: tryton/gui/window/tabcontent.py:55
+msgid "_Next"
+msgstr "Nas_lednji"
+
+#: tryton/gui/window/tabcontent.py:56
+msgid "Next Record"
+msgstr "Naslednji zapis"
+
+#: tryton/gui/window/tabcontent.py:61
+msgid "_Search"
+msgstr "_Išči"
+
+#: tryton/gui/window/tabcontent.py:67
+msgid "_New"
+msgstr "_Nov"
+
+#: tryton/gui/window/tabcontent.py:68
+msgid "Create a new record"
+msgstr "Ustvari nov zapis"
+
+#: tryton/gui/window/tabcontent.py:73 tryton/gui/window/win_form.py:85
+msgid "_Save"
+msgstr "_Shrani"
+
+#: tryton/gui/window/tabcontent.py:74
+msgid "Save this record"
+msgstr "Shrani ta zapis"
+
+#: tryton/gui/window/tabcontent.py:79
+msgid "_Reload/Undo"
+msgstr "Ponovno naloži/Razvel_javi"
+
+#: tryton/gui/window/tabcontent.py:80
+msgid "Reload/Undo"
+msgstr "Ponovno naloži/Razveljavi"
+
+#: tryton/gui/window/tabcontent.py:85
+msgid "_Duplicate"
+msgstr "_Podvoji"
+
+#: tryton/gui/window/tabcontent.py:90
+msgid "_Delete..."
+msgstr "Z_briši..."
+
+#: tryton/gui/window/tabcontent.py:96
+msgid "View _Logs..."
+msgstr "Poglej dnevni_k..."
+
+#: tryton/gui/window/tabcontent.py:100
+msgid "Show revisions..."
+msgstr "Prikaži različice ..."
+
+#: tryton/gui/window/tabcontent.py:105
+msgid "A_ttachments..."
+msgstr "P_riponke..."
+
+#: tryton/gui/window/tabcontent.py:106
+msgid "Add an attachment to the record"
+msgstr "Dodaj priponko zapisu"
+
+#: tryton/gui/window/tabcontent.py:112
+msgid "_Notes..."
+msgstr "_Zabeležke ..."
+
+#: tryton/gui/window/tabcontent.py:113
+msgid "Add a note to the record"
+msgstr "K zapisu dodaj zabeležko"
+
+#: tryton/gui/window/tabcontent.py:118
+msgid "_Actions..."
+msgstr "_Ukrepi..."
+
+#: tryton/gui/window/tabcontent.py:123
+msgid "_Relate..."
+msgstr "_Veze..."
+
+#: tryton/gui/window/tabcontent.py:129
+msgid "_Report..."
+msgstr "P_oročila..."
+
+#: tryton/gui/window/tabcontent.py:134
+msgid "_E-Mail..."
+msgstr "_Elektronska pošta..."
+
+#: tryton/gui/window/tabcontent.py:139
+msgid "_Print..."
+msgstr "_Tiskaj..."
+
+#: tryton/gui/window/tabcontent.py:145
+msgid "_Export Data..."
+msgstr "I_zvozi podatke..."
+
+#: tryton/gui/window/tabcontent.py:150
+msgid "_Import Data..."
+msgstr "Uv_ozi podatke..."
+
+#: tryton/gui/window/tabcontent.py:155
+msgid "Copy _URL..."
+msgstr "_Kopiraj URL ..."
+
+#: tryton/gui/window/tabcontent.py:161
+msgid "_Close Tab"
+msgstr "Zapri zavi_hek"
+
+#: tryton/gui/window/win_csv.py:60
+msgid "<b>All fields</b>"
+msgstr "<b>Vsa polja</b>"
+
+#: tryton/gui/window/win_csv.py:69
+msgid "_Add"
+msgstr "_Dodaj"
+
+#: tryton/gui/window/win_csv.py:77
+msgid "_Remove"
+msgstr "_Odstrani"
+
+#: tryton/gui/window/win_csv.py:85
+msgid "_Clear"
+msgstr "_Počisti"
+
+#: tryton/gui/window/win_csv.py:105
+msgid "<b>Fields selected</b>"
+msgstr "<b>Izbrana polja</b>"
+
+#: tryton/gui/window/win_csv.py:124
+msgid "CSV Parameters"
+msgstr "CSV parametri"
+
+#: tryton/gui/window/win_csv.py:132
+msgid "Delimiter:"
+msgstr "Ločilo:"
+
+#: tryton/gui/window/win_csv.py:146
+msgid "Quote char:"
+msgstr "Narekovaj:"
+
+#: tryton/gui/window/win_csv.py:155
+msgid "Encoding:"
+msgstr "Kodiranje:"
+
+#: tryton/gui/window/win_csv.py:195 tryton/gui/window/win_csv.py:199
+msgid "Field name"
+msgstr "Naziv polja"
+
+#: tryton/gui/window/win_export.py:28
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:32
+msgid "_Save Export"
+msgstr "_Shrani izvoz"
+
+#: tryton/gui/window/win_export.py:40
+msgid "_Delete Export"
+msgstr "_Izbriši izvoz"
+
+#: tryton/gui/window/win_export.py:55
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Predefinirani izvozi</b>"
+
+#: tryton/gui/window/win_export.py:62
+msgid "Name"
+msgstr "Naziv"
+
+#: tryton/gui/window/win_export.py:82
+msgid "Open"
+msgstr "Odpri"
+
+#: tryton/gui/window/win_export.py:87
+msgid "Add _field names"
+msgstr "Dodaj imena _polj"
+
+#: tryton/gui/window/win_export.py:103
+#, python-format
+msgid "%s (string)"
+msgstr "%s (niz)"
+
+#: tryton/gui/window/win_export.py:106
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (ime modela)"
+
+#: tryton/gui/window/win_export.py:108
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (ime zapisa)"
+
+#: tryton/gui/window/win_export.py:207
+msgid "What is the name of this export?"
+msgstr "Kako se imenuje ta izvoz?"
+
+#: tryton/gui/window/win_export.py:213
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Prepišem definicijo izvoza '%s'?"
+
+#: tryton/gui/window/win_export.py:328
+#, python-format, python-format, python-format, python-format
+msgid "%d record saved."
+msgstr "%d zapis shranjen."
+
+#: tryton/gui/window/win_export.py:330
+#, python-format, python-format, python-format, python-format
+msgid "%d records saved."
+msgstr "%d zapisov shranjenih."
+
+#: tryton/gui/window/win_export.py:333
+#, python-format, python-format, python-format, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Operacija odpovedala.\n"
+"Sporočilo napake:\n"
+"%s"
+
+#: tryton/gui/window/win_export.py:334 tryton/gui/window/win_import.py:112
+#: tryton/gui/window/win_import.py:139
+msgid "Error"
+msgstr "Napaka"
+
+#: tryton/gui/window/win_form.py:38
+msgid "Link"
+msgstr "Povezava"
+
+#: tryton/gui/window/win_form.py:66
+msgid "Delete"
+msgstr "Zbriši"
+
+#: tryton/gui/window/win_form.py:78 tryton/gui/window/win_search.py:65
+msgid "New"
+msgstr "Novo"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:48
+#: tryton/gui/window/win_form.py:140
+msgid "Switch"
+msgstr "Preklopi"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:56
+#: tryton/gui/window/view_form/view/screen_container.py:222
+#: tryton/gui/window/win_form.py:148
+msgid "Previous"
+msgstr "Prejšnji"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:67
+#: tryton/gui/window/view_form/view/screen_container.py:231
+#: tryton/gui/window/win_form.py:159
+msgid "Next"
+msgstr "Naslednji"
+
+#: tryton/gui/window/win_form.py:176
+msgid "Add"
+msgstr "Dodaj"
+
+#: tryton/gui/window/win_form.py:186
+msgid "Remove <Del>"
+msgstr "Odstrani <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:118
+#: tryton/gui/window/win_form.py:198
+msgid "Create a new record <F3>"
+msgstr "Ustvari nov zapis <F3>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:134
+#: tryton/gui/window/win_form.py:208
+msgid "Delete selected record <Del>"
+msgstr "Zbriši izbran zapis <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:142
+#: tryton/gui/window/win_form.py:219
+msgid "Undelete selected record <Ins>"
+msgstr "Povrni izbran zapis <Ins>"
+
+#: tryton/gui/window/win_import.py:26
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#: tryton/gui/window/win_import.py:30
+msgid "_Auto-Detect"
+msgstr "_Samozaznava"
+
+#: tryton/gui/window/win_import.py:41
+msgid "File to Import:"
+msgstr "Datoteka za uvoz:"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:200
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:466
+#: tryton/gui/window/win_import.py:43
+msgid "Open..."
+msgstr "Odpri..."
+
+#: tryton/gui/window/win_import.py:48
+msgid "Lines to Skip:"
+msgstr "Izpuščene vrstice:"
+
+#: tryton/gui/window/win_import.py:101
+msgid "You must select an import file first."
+msgstr "Najprej morate izbrati datoteke za uvažanje."
+
+#: tryton/gui/window/win_import.py:112
+msgid "Error opening CSV file"
+msgstr "Napaka pri odpiranju CSV datoteke"
+
+#: tryton/gui/window/win_import.py:138
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Napaka obdelave datoteke pri polju %s."
+
+#: tryton/gui/window/win_import.py:198
+#, python-format, python-format, python-format, python-format
+msgid "%d record imported."
+msgstr "%d zapis uvožen."
+
+#: tryton/gui/window/win_import.py:200
+#, python-format, python-format, python-format, python-format
+msgid "%d records imported."
+msgstr "%d zapisov uvoženih."
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:344
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:46
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:81
+#: tryton/gui/window/view_form/view/screen_container.py:146
+#: tryton/gui/window/win_search.py:36 tryton/gui/window/win_search.py:59
+msgid "Search"
+msgstr "Išči"
+
+#: tryton/gui/window/win_search.py:91
+#, python-format
+msgid "Search %s"
+msgstr "Išči %s"
+
+#: tryton/gui/window/wizard.py:160
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+#: tryton/gui/window/wizard.py:317
+msgid "Wizard"
+msgstr "Čarovnik"
+
+#: tryton/gui/window/view_form/screen/screen.py:206
+msgid "ID"
+msgstr "ID"
+
+#: tryton/gui/window/view_form/screen/screen.py:207
+msgid "Creation User"
+msgstr "Ustvaril"
+
+#: tryton/gui/window/view_form/screen/screen.py:208
+msgid "Creation Date"
+msgstr "Ustvarjeno"
+
+#: tryton/gui/window/view_form/screen/screen.py:209
+msgid "Modification User"
+msgstr "Popravil"
+
+#: tryton/gui/window/view_form/screen/screen.py:210
+msgid "Modification Date"
+msgstr "Popravljeno"
+
+#: tryton/gui/window/view_form/screen/screen.py:806
+#, python-format, python-format, fuzzy, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "Ni možno nastaviti stanja obrazca %s"
+
+#: tryton/gui/window/view_form/screen/screen.py:867
+msgid "Unable to set view tree state"
+msgstr "Ni možno nastaviti stanja obrazca"
+
+#: tryton/gui/window/view_form/screen/screen.py:1054
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "Polje \"%s\" ni veljavno glede na svojo domeno"
+
+#: tryton/gui/window/view_form/screen/screen.py:1061
+#, python-format
+msgid "\"%s\" is required"
+msgstr "Polje \"%s\" je obvezno"
+
+#: tryton/gui/window/view_form/screen/screen.py:1065
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "Vrednosti v polju \"%s\" niso veljavne"
+
+#: tryton/gui/window/view_form/screen/screen.py:1114
+msgid "Pre-validation"
+msgstr "Predpreverjanje"
+
+#: tryton/gui/window/view_form/view/form.py:261
+#: tryton/gui/window/view_form/view/form.py:263
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:476
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:478
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:172
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:174
+#: tryton/gui/window/view_form/view/list.py:530
+#: tryton/gui/window/view_form/view/list.py:532
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:102
+msgid "Image Size"
+msgstr "Velikost slike"
+
+#: tryton/gui/window/view_form/view/graph.py:121
+msgid "Width:"
+msgstr "Širina:"
+
+#: tryton/gui/window/view_form/view/graph.py:129
+msgid "Height:"
+msgstr "Velikost:"
+
+#: tryton/gui/window/view_form/view/graph.py:140
+msgid "PNG image (*.png)"
+msgstr "PNG slika (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:149
+msgid "Save As"
+msgstr "Shrani kot"
+
+#: tryton/gui/window/view_form/view/graph.py:161
+msgid "Image size too large."
+msgstr "Slika je prevelika."
+
+#: tryton/gui/window/view_form/view/screen_container.py:23
+msgid ".."
+msgstr ".."
+
+#: tryton/gui/window/view_form/view/screen_container.py:152
+msgid "Open filters"
+msgstr "Odpri filtre"
+
+#: tryton/gui/window/view_form/view/screen_container.py:209
+msgid "Show bookmarks of filters"
+msgstr "Prikaži zaznamke filtrov"
+
+#: tryton/gui/window/view_form/view/screen_container.py:371
+msgid "Remove this bookmark"
+msgstr "Odstrani ta zaznamek"
+
+#: tryton/gui/window/view_form/view/screen_container.py:379
+msgid "Bookmark this filter"
+msgstr "Shrani ta filter"
+
+#: tryton/gui/window/view_form/view/screen_container.py:396
+msgid "Show active records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:398
+msgid "Show inactive records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:479
+msgid "Bookmark Name:"
+msgstr "Ime zaznamka:"
+
+#: tryton/gui/window/view_form/view/screen_container.py:599
+msgid "Find"
+msgstr "Najdi"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:22
+msgid "Today"
+msgstr "Danes"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:32
+msgid "go back"
+msgstr "pojdi nazaj"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:73
+msgid "go forward"
+msgstr "pojdi naprej"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:82
+msgid "previous year"
+msgstr "Prejšnje leto"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:96
+msgid "next year"
+msgstr "naslednje leto"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:107
+msgid "Week View"
+msgstr "Tedensko"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:117
+msgid "Month View"
+msgstr "Mesečno"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:142
+msgid "Week"
+msgstr "Teden"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:39
+msgid "Select..."
+msgstr "Izberi ..."
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:47
+msgid "Clear"
+msgstr "Počisti"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:60
+msgid "All files"
+msgstr "Vse datoteke"
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:169
+msgid "Show plain text"
+msgstr "Prikaži navadno besedilo"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:369
+msgid "Add value"
+msgstr "Dodaj vrednost"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:490
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Odstrani \"%s\""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:50
+msgid "Images"
+msgstr "Slike"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:99
+msgid "Add existing record"
+msgstr "Dodaj obstoječi zapis"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:74
+msgid "Remove selected record <Del>"
+msgstr "Odstrani izbran zapis <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:305
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:582
+msgid "Open the record <F2>"
+msgstr "Odpri zapis <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:306
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:583
+#, fuzzy
+msgid "Clear the field <Del>"
+msgstr "Počisti zapis <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:309
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:586
+msgid "Search a record <F2>"
+msgstr "Poišči zapis <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:108
+msgid "Remove selected record"
+msgstr "Odstrani izbran zapis"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:126
+msgid "Edit selected record <F2>"
+msgstr "Uredi izbran zapis <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:908
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:85
+msgid "Foreground"
+msgstr "Ospredje"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:328
+msgid "Select a color"
+msgstr "Izberi barvo"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:136
+msgid "Translation"
+msgstr "Prevod"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:209
+msgid "Edit"
+msgstr "Uredi"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:214
+msgid "Fuzzy"
+msgstr "Nejasno"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:285
+msgid "You need to save the record before adding translations."
+msgstr "Pred dodajanjem prevodov morate zapis shraniti."
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:296
+msgid "No other language available."
+msgstr "Drugih jezikov ni na voljo."
+
+#: tryton/plugins/translation/__init__.py:17
+#: tryton/plugins/translation/__init__.py:24
+msgid "Translate view"
+msgstr "Prevedi pogled"

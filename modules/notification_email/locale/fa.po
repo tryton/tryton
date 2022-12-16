@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,action_model_name:"
+msgid "Action Model Name"
+msgstr "نام مدل اقدام"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "ایمیل اطلاعیه"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "پیوست ها"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "مکانیسم های تماس"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "محتوا"
+
+msgctxt "field:notification.email,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:notification.email,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "کاربردریافت کننده پاسخگو"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "کاربردریافت کننده پاسخگو پنهان"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "کاربردریافت کننده پاسخگو ثانویه"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "از"
+
+msgctxt "field:notification.email,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:notification.email,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "گیرندگان"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "گیرنده گان پنهان"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "گیرندگان ثانویه"
+
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "ماشه ها"
+
+msgctxt "field:notification.email,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:notification.email,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:notification.email.attachment,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:notification.email.attachment,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:notification.email.attachment,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "اطلاعیه"
+
+msgctxt "field:notification.email.attachment,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "گزارش"
+
+msgctxt "field:notification.email.attachment,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:notification.email.attachment,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:notification.email.log,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:notification.email.log,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:notification.email.log,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:notification.email.log,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "گیرندگان"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "گیرنده گان پنهان"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "گیرندگان ثانویه"
+
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "ماشه"
+
+msgctxt "field:notification.email.log,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:notification.email.log,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "استفاده از گزارش ها بعنوان پیوست ها."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+"تعیین کنید کدام ایمیل برای استفاده از مکانیزم های تماس نهاد/سازمان استفاده "
+"شود"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "استفاده از گزارش بعنوان الگوی ایمیل."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr "ابلاغ به کاربر هنگامی که هیچ گیرنده ایمیلی یافت نشد"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr "ابلاغ به کاربر هنگامی که هیچ گیرنده پنهان ایمیلی یافت نشد"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr "ابلاغ به کاربر هنگامی که هیچ گیرنده ثانویه ایمیلی یافت نشد"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "برای مقدار تعریف شده در فایل پیکربندی خالی بگذارید."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "فیلد حاوی گیرنده (ها)."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "فیلد حاوی گیرنده (ها) پنهان."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "فیلد حاوی گیرنده (ها) ثانویه."
+
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "یک ماشه برای اعلان اضافه کنید."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "ایمیل‌های اطلاعیه"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "گزارش ها"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "ایمیل‌های اطلاعیه"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notitification"
+msgstr "ایمیل اطلاعیه"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "پیوست ایمیل اطلاعیه"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notitification Email Log"
+msgstr "گزارش ایمیل اطلاعیه"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "زمان"
