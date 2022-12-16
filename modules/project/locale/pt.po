@@ -1,0 +1,250 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Filhos"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Comentário"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Esforço"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Esquerda"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Pai"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Endereço de contato"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Progresso"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Direita"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponível em quadros de tempo"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Duração"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fim do Horário de Trabalho"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Início do Horário de Trabalho"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Horários de Trabalho"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Esforço total"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Progresso Total"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Tipo"
+
+#, fuzzy
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "Esforço estimado para este trabalho"
+
+#, fuzzy
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "Esforço estimado para este trabalho"
+
+#, fuzzy
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Tempo total gasto nesta tarefa e nas sub-tarefas"
+
+#, fuzzy
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "O esforço total estimado para este trabalho e tarefas secundárias"
+
+#, fuzzy
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "O progresso total estimado para esta tarefa e para suas sub-tarefas."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tarefas"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projetos"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Projetos"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tarefas"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Linhas de Horário de Trabalho"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Esforços de trabalhos"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Esforços de trabalhos"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Concluído"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Aberto"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Concluído"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Aberto"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Concluído"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Aberto"
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+"Você não pode remover a pessoa \"%(party)s\" enquanto ela tiver projetos em "
+"aberto com a empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_work_invalid_children_state"
+msgid "To close work \"%(parent)s\", you must close its child \"%(child)s\"."
+msgstr ""
+"Para fechar o trabalho \"%(parent)s\", você precisa fechar o trabalho "
+"\"%(child)s\"."
+
+msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
+msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
+msgstr "Para abrir o trabalho \"%(child)s\", você precisa abrir \"%(parent)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuração"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Projeto"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projetos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projetos"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tarefas"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Esforços de Trabalhos"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Esforços de Trabalhos"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Esforço do trabalho"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administração de Projetos"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Feito"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Aberto"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projeto"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tarefa"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fim:"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Geral"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Início:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Quadro de Tempo:"
