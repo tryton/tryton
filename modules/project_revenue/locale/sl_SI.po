@@ -1,0 +1,23 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Strošek"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "Prihodki"
