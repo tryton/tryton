@@ -1,0 +1,35 @@
+type,name,res_id,src,value,fuzzy
+field,"product.category,account_journal_stock_customer",0,Journal Stock Customer,Journal Lager Kunde,0
+field,"product.category,account_journal_stock_lost_found",0,Journal Stock Lost and Found,Journal Lager Inventurdifferenz,0
+field,"product.category,account_journal_stock_supplier",0,Journal Stock Supplier,Journal Lager Lieferant,0
+field,"product.category,account_stock",0,Account Stock,Konto Lager,0
+field,"product.category,account_stock_customer",0,Account Stock Customer,Konto Lager Kunde,0
+field,"product.category,account_stock_lost_found",0,Account Stock Lost and Found,Konto Lager Inventurdifferenz,0
+field,"product.category,account_stock_supplier",0,Account Stock Supplier,Konto Lager Lieferant,0
+field,"product.template,account_journal_stock_customer",0,Account Journal Stock Customer,Journal Lager Kunde,0
+field,"product.template,account_journal_stock_customer_used",0,Journal Stock Customer,Journal Lager Kunde,0
+field,"product.template,account_journal_stock_lost_found",0,Account Journal Stock Lost and Found,Journal Lager Inventurdifferenz,0
+field,"product.template,account_journal_stock_lost_found_used",0,Journal Stock Lost and Found,Journal Lager Inventurdifferenz,0
+field,"product.template,account_journal_stock_supplier",0,Account Journal Stock Supplier,Journal Lager Lieferant,0
+field,"product.template,account_journal_stock_supplier_used",0,Journal Stock Supplier,Journal Lager Lieferant,0
+field,"product.template,account_stock",0,Account Stock,Konto Lager,0
+field,"product.template,account_stock_customer",0,Account Stock Customer,Konto Lager Kunde,0
+field,"product.template,account_stock_customer_used",0,Account Stock Customer Used,Verwendetes Konto Lager Kunde,0
+field,"product.template,account_stock_lost_found",0,Account Stock Lost and Found,Konto Lager Inventurdifferenz,0
+field,"product.template,account_stock_lost_found_used",0,Account Stock Lost and Found,Konto Lager Inventurdifferenz,0
+field,"product.template,account_stock_supplier",0,Account Stock Supplier,Konto Lager Lieferant,0
+field,"product.template,account_stock_supplier_used",0,Account Stock Supplier Used,Verwendetes Konto Lager Lieferant,0
+field,"product.template,account_stock_used",0,Account Stock Used,Verwendetes Konto Lager,0
+field,"stock.move,account_move",0,Account Move,Buchungssatz,0
+help,"product.template,account_journal_stock_customer",0,This journal will be used instead of the one defined on the category.,Dieses Journal überschreibt das Journal welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_journal_stock_lost_found",0,This journal will be used instead of the one defined on the category.,Dieses Journal überschreibt das Journal welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_journal_stock_supplier",0,This journal will be used instead of the one defined on the category.,Dieses Journal überschreibt das Journal welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_stock",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_stock_customer",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_stock_lost_found",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
+help,"product.template,account_stock_supplier",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
+model,"account.account.template,name",account_template_stock,Stock,Lager,0
+model,"account.account.template,name",account_template_stock_customer,Stock Customer,Lager Kunde,0
+model,"account.account.template,name",account_template_stock_lost_found,Stock Lost and Found,Lager Inventurdifferenz,0
+model,"account.account.template,name",account_template_stock_supplier,Stock Supplier,Lager Lieferant,0
+model,"account.account.type.template,name",account_type_template_asset_current_inventories,Inventories,Bestandskorrekturen,0
