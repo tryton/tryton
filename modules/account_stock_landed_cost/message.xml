@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_landed_cost_post_no_stock_move">
+            <field name="text">The posted landed cost "%(landed_cost)s" has no stock move.</field>
+        </record>
+        <record model="ir.message" id="msg_landed_cost_unused_category">
+            <field name="text">The category "%(category)s" on landed cost "%(landed_cost)s" is not used.</field>
+        </record>
+        <record model="ir.message" id="msg_landed_cost_unused_product">
+            <field name="text">The product "%(product)s" on landed cost "%(landed_cost)s" is not used.</field>
+        </record>
+    </data>
+</tryton>
+
