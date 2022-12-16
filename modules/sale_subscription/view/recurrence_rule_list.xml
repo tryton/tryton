@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="set_"/>
+    <field name="exclusive"/>
+    <field name="freq"/>
+    <field name="interval"/>
+    <field name="byweekday"/>
+    <field name="bymonthday"/>
+    <field name="byyearday"/>
+    <field name="byweekno"/>
+    <field name="bymonth"/>
+    <field name="bysetpos"/>
+    <field name="week_start_day" widget="selection"/>
+</tree>
