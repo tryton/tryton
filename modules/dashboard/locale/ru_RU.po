@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Последовательность"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Панель действий"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Расположение на панели"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr "Панель действий"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Квадрат"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Стек Нижний"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "Стек слева"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "Стек справа"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "Стек сверху"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Панель действия"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Панель действий"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Действия панели"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Действия панели"

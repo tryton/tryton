@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Aktion"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Dashboard Aktionen"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Dashboard Anordnung"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr "Dashboard Aktion"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Rechtecke"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Stapel unten"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "Stapel links"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "Stapel rechts"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "Stapel oben"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Dashboard Aktion"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Dashboard Aktionen"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Dashboard Aktion"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Dashboard Aktionen"
