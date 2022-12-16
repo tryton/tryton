@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkauf Rechnungskonditionen"
+
+msgctxt "field:party.party.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkauf Rechnungskonditionen"
+
+msgctxt "field:sale.configuration,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkauf Rechnungskonditionen"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkauf Rechnungskondition"
+
+msgctxt "field:sale.invoice.term,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.invoice.term,relative_deltas:"
+msgid "Deltas"
+msgstr "Zeitspannen"
+
+msgctxt "field:sale.invoice.term.relative_delta,day:"
+msgid "Day of Month"
+msgstr "Tag des Monats"
+
+msgctxt "field:sale.invoice.term.relative_delta,days:"
+msgid "Number of Days"
+msgstr "Anzahl an Tagen"
+
+msgctxt "field:sale.invoice.term.relative_delta,month:"
+msgid "Month"
+msgstr "Monat"
+
+msgctxt "field:sale.invoice.term.relative_delta,months:"
+msgid "Number of Months"
+msgstr "Anzahl an Monaten"
+
+msgctxt "field:sale.invoice.term.relative_delta,term:"
+msgid "Invoice Term"
+msgstr "Rechnungskonditionen"
+
+msgctxt "field:sale.invoice.term.relative_delta,weekday:"
+msgid "Day of Week"
+msgstr "Wochentag"
+
+msgctxt "field:sale.invoice.term.relative_delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Anzahl an Wochen"
+
+msgctxt "field:sale.sale,invoice_term:"
+msgid "Invoice Term"
+msgstr "Rechnungskonditionen"
+
+msgctxt "help:party.party,sale_invoice_term:"
+msgid ""
+"The default sale invoice term for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"Die Standardrechnungskonditionen für den Kunden.\n"
+"Leer lassen um den Standardwert aus der Konfiguration zu verwenden."
+
+msgctxt "help:sale.invoice.term,name:"
+msgid "The main identifier of the invoice term."
+msgstr "Das Hauptidentifizierungsmerkmal der Rechnungskonditionen."
+
+msgctxt "model:ir.action,name:act_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Rechnungskonditionen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Rechnungskonditionen"
+
+msgctxt "model:sale.invoice.term,name:"
+msgid "Invoice Term"
+msgstr "Rechnungskonditionen"
+
+msgctxt "model:sale.invoice.term.relative_delta,name:"
+msgid "Invoice Term Delta"
+msgstr "Rechnungskondition Zeitspanne"

@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.ui.menu,name:menu_marketing"
+msgid "Marketing"
+msgstr "Márketing"
+
+msgctxt "model:res.group,name:group_marketing"
+msgid "Marketing"
+msgstr "Márketing"
