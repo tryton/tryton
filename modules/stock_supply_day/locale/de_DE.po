@@ -1,0 +1,59 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:0"
+msgid "Week Days"
+msgstr "Wochentage"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:0"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:purchase.product_supplier.day,weekday:0"
+msgid "Week Day"
+msgstr "Wochentag"
+
+msgctxt "model:purchase.product_supplier.day,name:0"
+msgid "Product Supplier Day"
+msgstr "Artikel Lieferant Tag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Friday"
+msgstr "Freitag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Monday"
+msgstr "Montag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Saturday"
+msgstr "Samstag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Sunday"
+msgstr "Sonntag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Thursday"
+msgstr "Donnerstag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Tuesday"
+msgstr "Dienstag"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+msgctxt "view:purchase.product_supplier.day:0"
+msgid "Week Day"
+msgstr "Wochentag"
+
+msgctxt "view:purchase.product_supplier:0"
+msgid "Week Days"
+msgstr "Wochentage"
