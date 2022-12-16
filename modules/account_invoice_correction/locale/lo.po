@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.correct.start,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.invoice.correct.start,invoice:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+msgctxt "field:account.invoice.correct.start,lines:"
+msgid "Invoice Lines"
+msgstr "ລາຍການເກັບເງິນ"
+
+msgctxt "model:account.invoice.correct.start,name:"
+msgid "Correct Invoice"
+msgstr "ກວດແກ້ໃບເກັບເງິນ"
+
+msgctxt "model:ir.action,name:wizard_invoice_correct"
+msgid "Correct"
+msgstr "ກວດແກ້"
+
+msgctxt "view:account.invoice.correct.start:"
+msgid "Choose lines to correct"
+msgstr "ເລືອກລາຍການທີ່ຈະກວດແກ້"
+
+msgctxt "view:account.invoice:"
+msgid "Correct"
+msgstr "ກວດແກ້"
+
+msgctxt "wizard_button:account.invoice.correct,start,correct:"
+msgid "Correct"
+msgstr "ກວດແກ້"
+
+msgctxt "wizard_button:account.invoice.correct,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"

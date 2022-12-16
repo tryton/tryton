@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.003.03"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.001.003.03
+    pain.001.003.03.xsd"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:py="http://genshi.edgewall.org/">
+    <xi:include href="base.xml"/>
+    <xi:include href="base.003.xml"/>
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>${group.number[:35]}</MsgId>
+            <CreDtTm>${datetime.datetime.now().replace(microsecond=0).isoformat()}</CreDtTm>
+            <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
+            <InitgPty>
+                ${PartyIdentification(group.sepa_initiating_party, with_address=False)}
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf py:for="key, payments in group.sepa_payments">
+            <PmtInfId>${group.sepa_group_payment_id(key)[:35]}</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <BtchBookg>${'true' if group.journal.sepa_batch_booking else 'false'}</BtchBookg>
+            <NbOfTxs>${len(payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in payments)}</CtrlSum>
+            <PmtTpInf>
+                <!-- InstrPrty -->
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+                <!-- CtgyPurp -->
+            </PmtTpInf>
+            <ReqdExctnDt>${key['date'].isoformat()}</ReqdExctnDt>
+            <Dbtr>
+                ${PartyIdentification(group.company.party)}
+            </Dbtr>
+            <DbtrAcct>
+                ${Account(group.journal.sepa_bank_account_number)}
+            </DbtrAcct>
+            <DbtrAgt>
+                ${FinancialInstitution(group.journal.sepa_bank_account_number.account.bank, only_bic=True)}
+            </DbtrAgt>
+            <!-- UltmtDbtr -->
+            <ChrgBr>SLEV</ChrgBr>
+            <CdtTrfTxInf py:for="payment in payments">
+                <PmtId>
+                    <InstrId>${payment.sepa_instruction_id}</InstrId>
+                    <EndToEndId>${payment.sepa_end_to_end_id}</EndToEndId>
+                </PmtId>
+                <!-- PmtTpInf --> <!-- EPC only at payment information level -->
+                <Amt>
+                    <InstdAmt py:attrs="{'Ccy': payment.currency.code}">${payment.amount}</InstdAmt>
+                </Amt>
+                <!-- ChrgBr --> <!-- EPC only at payment information level -->
+                <!-- UltmtDbtr -->
+                <CdtrAgt>
+                    ${FinancialInstitution(payment.sepa_bank_account_number.account.bank, only_bic=True)}
+                </CdtrAgt>
+                <Cdtr>
+                    ${PartyIdentification(payment.party)}
+                </Cdtr>
+                <CdtrAcct>
+                    ${Account(payment.sepa_bank_account_number, with_ccy=False)}
+                </CdtrAcct>
+                <!-- UltmtCdtr -->
+                <!-- Purp -->
+                <RmtInf py:if="payment.sepa_remittance_information">
+                    <Ustrd>${normalize('NFKD', payment.sepa_remittance_information).encode('ascii', 'replace')[:140]}</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>
