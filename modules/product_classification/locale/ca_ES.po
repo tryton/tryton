@@ -1,0 +1,107 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Classificació"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Classificació"
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Classificacions"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "Classificació de productes de prova"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "Arbre de la classificació de productes de prova"
+
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Classificació"
