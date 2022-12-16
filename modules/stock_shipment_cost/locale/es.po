@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,shipment_out_cost_price:"
+msgid "Shipment Cost Price"
+msgstr "Precio de coste del envío"
+
+msgctxt "field:stock.reporting.margin.context,include_shipment_cost:"
+msgid "Include Shipment Cost"
+msgstr "Incluir coste del envío"
