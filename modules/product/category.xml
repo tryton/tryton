@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="category_view_list">
+            <field name="model">product.category</field>
+            <field name="type">tree</field>
+            <field name="priority">10</field>
+            <field name="name">category_list</field>
+        </record>
+        <record model="ir.ui.view" id="category_view_tree">
+            <field name="model">product.category</field>
+            <field name="type">tree</field>
+            <field name="priority">20</field>
+            <field name="field_childs">childs</field>
+            <field name="name">category_tree</field>
+        </record>
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="type">form</field>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_category_tree">
+            <field name="name">Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_tree"/>
+        </record>
+
+        <menuitem parent="menu_main_product" sequence="2"
+            action="act_category_tree" id="menu_category_tree"/>
+
+        <record model="ir.action.act_window" id="act_category_list">
+            <field name="name">Categories</field>
+            <field name="res_model">product.category</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_list"/>
+            <field name="act_window" ref="act_category_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_list"/>
+        </record>
+        <menuitem parent="menu_category_tree"
+            sequence="10" id="menu_category_list"
+            action="act_category_list"/>
+
+        <record model="ir.model.access" id="access_product_category">
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_admin">
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
