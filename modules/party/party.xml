@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_party_admin">
+            <field name="name">Party Administration</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_party_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="party_icon">
+            <field name="name">tryton-party</field>
+            <field name="path">icons/tryton-party.svg</field>
+        </record>
+        <menuitem
+            name="Parties"
+            sequence="10"
+            id="menu_party"
+            icon="tryton-party"/>
+
+        <menuitem
+            name="Configuration"
+            parent="menu_party"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_party_group_party_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_tree">
+            <field name="model">party.party</field>
+            <field name="type">tree</field>
+            <field name="name">party_tree</field>
+        </record>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="type">form</field>
+            <field name="name">party_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_party_form">
+            <field name="name">Parties</field>
+            <field name="res_model">party.party</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_party_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="party_view_tree"/>
+            <field name="act_window" ref="act_party_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_party_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="party_view_form"/>
+            <field name="act_window" ref="act_party_form"/>
+        </record>
+        <menuitem
+            parent="menu_party"
+            action="act_party_form"
+            sequence="10"
+            id="menu_party_form"/>
+
+        <record model="ir.action.act_window" id="act_party_by_category">
+            <field name="name">Parties by Category</field>
+            <field name="res_model">party.party</field>
+            <field name="context"
+                eval="{'categories': [Eval('active_id')]}" pyson="1"/>
+            <field name="domain"
+                eval="[('categories', 'child_of', [Eval('active_id')], 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_party_by_category_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">party.category,-1</field>
+            <field name="action" ref="act_party_by_category"/>
+        </record>
+        <record model="ir.action.report" id="report_label">
+            <field name="name">Labels</field>
+            <field name="model">party.party</field>
+            <field name="report_name">party.label</field>
+            <field name="report">party/label.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_label_party">
+            <field name="keyword">form_print</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="report_label"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_party">
+            <field name="name">Party</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_party_group_admin">
+            <field name="sequence_type" ref="sequence_type_party"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_party_group_party_admin">
+            <field name="sequence_type" ref="sequence_type_party"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_party">
+            <field name="name">Party</field>
+            <field name="sequence_type" ref="sequence_type_party"/>
+        </record>
+
+        <record model="ir.ui.view" id="identifier_form">
+            <field name="model">party.identifier</field>
+            <field name="type">form</field>
+            <field name="name">identifier_form</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_list">
+            <field name="model">party.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">identifier_list</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_list_sequence">
+            <field name="model">party.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">identifier_list_sequence</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_check_vies">
+            <field name="name">Check VIES</field>
+            <field name="wiz_name">party.check_vies</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action.keyword" id="check_vies_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="wizard_check_vies"/>
+        </record>
+
+        <record model="ir.ui.view" id="check_vies_result">
+            <field name="model">party.check_vies.result</field>
+            <field name="type">form</field>
+            <field name="name">check_vies_result</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_replace">
+            <field name="name">Replace</field>
+            <field name="wiz_name">party.replace</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_replace-group_party_admin">
+            <field name="action" ref="wizard_replace"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_replace_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="wizard_replace"/>
+        </record>
+
+        <record model="ir.ui.view" id="replace_ask_view_form">
+            <field name="model">party.replace.ask</field>
+            <field name="type">form</field>
+            <field name="name">replace_ask_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_erase">
+            <field name="name">Erase</field>
+            <field name="wiz_name">party.erase</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_erase-group_party_admin">
+            <field name="action" ref="wizard_erase"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_erase_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="wizard_erase"/>
+        </record>
+
+        <record model="ir.ui.view" id="erase_ask_view_form">
+            <field name="model">party.erase.ask</field>
+            <field name="type">form</field>
+            <field name="name">erase_ask_form</field>
+        </record>
+    </data>
+</tryton>
