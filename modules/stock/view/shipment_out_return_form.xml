@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="4" cursor="customer">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="customer"/>
+    <field name="customer"/>
+    <label name="delivery_address"/>
+    <field name="delivery_address"/>
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="effective_date"/>
+    <field name="effective_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <notebook colspan="6">
+        <page string="Incoming Moves" id="incoming_moves">
+            <field name="incoming_moves" colspan="4"/>
+        </page>
+        <page string="Inventory Moves" id="inventory_moves">
+            <field name="inventory_moves" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="received_by"/>
+            <field name="received_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
+    </notebook>
+    <group col="4" colspan="6" id="state_buttons">
+        <label name="state"/>
+        <field name="state"/>
+        <group col="-1" colspan="2" id="buttons">
+            <button name="cancel" icon="tryton-cancel"/>
+            <button name="draft" icon="tryton-clear"/>
+            <button name="receive" icon="tryton-go-next"/>
+            <button name="done" icon="tryton-ok"/>
+        </group>
+    </group>
+</form>
