@@ -1,0 +1,240 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,action_model_name:"
+msgid "Action Model Name"
+msgstr "Aktion Modellname"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "Anhänge"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontaktmöglichkeit"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "Inhalt"
+
+msgctxt "field:notification.email,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:notification.email,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Empfänger im Ausweichfall"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Versteckte Emfänger im Ausweichfall"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Sekundäre Empfänger im Ausweichfall"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:notification.email,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:notification.email,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "Empfänger"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Versteckte Empfänger"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Sekundäre Empfänger"
+
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "Auslöser"
+
+msgctxt "field:notification.email,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:notification.email,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:notification.email.attachment,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:notification.email.attachment,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:notification.email.attachment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "Benachrichtigung"
+
+msgctxt "field:notification.email.attachment,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "Bericht"
+
+msgctxt "field:notification.email.attachment,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:notification.email.attachment,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:notification.email.log,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:notification.email.log,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:notification.email.log,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email.log,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "Empfänger"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Versteckte Empfänger"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Sekundäre Empfänger"
+
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "Auslöser"
+
+msgctxt "field:notification.email.log,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:notification.email.log,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "Der als Anhang genutzte Bericht."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr "Auswahl der E-Mail-Adresse aus den Kontaktmöglichkeiten der Partei"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "Der als E-Mail-Vorlage genutzte Bericht."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine E-Mail-Adresse vorhanden ist"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine versteckte E-Mail-Adresse "
+"vorhanden ist"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine sekundäre E-Mail-Adresse vorhanden"
+" ist"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Leer lassen um den Wert aus der Konfigurationsdatei zu übernehmen."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Das Feld das den/die Empfänger enthält."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "Das Feld das den/die versteckten Empfänger enthält."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Das Feld das den/die sekundären Empfänger enthält."
+
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "Einen Auslöser für die Benachrichtigung hinzufügen."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "Logs"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notitification"
+msgstr "E-Mail-Benachrichtigung"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "Anhang für die E-Mail-Benachrichtigung"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notitification Email Log"
+msgstr "Log der E-Mail-Benachrichtigung"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "Zeit"

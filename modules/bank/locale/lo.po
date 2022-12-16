@@ -1,0 +1,245 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:bank.account.number:"
+msgid "Invalid IBAN \"%s\"."
+msgstr "ເລກບັນຊີ IBAN \"%s\" ບໍ່ຖືກຕ້ອງ."
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:bank,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:bank,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:bank,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:bank,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:bank,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "ທະນາຄານ"
+
+msgctxt "field:bank.account,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:bank.account,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:bank.account,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "ເລກບັນຊີ"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "ເຈົ້າຂອງບັນຊີ"
+
+msgctxt "field:bank.account,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:bank.account,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:bank.account,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:bank.account-party.party,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:bank.account-party.party,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:bank.account-party.party,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "ເຈົ້າຂອງບັນຊີ"
+
+msgctxt "field:bank.account-party.party,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:bank.account-party.party,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:bank.account-party.party,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:bank.account.number,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:bank.account.number,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:bank.account.number,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "ເລກບັນຊີ"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "ເລກບັນຊີຍໍ້"
+
+msgctxt "field:bank.account.number,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:bank.account.number,sequence:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:bank.account.number,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:bank.account.number,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "ບັນຊີທະນາຄານ"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code."
+msgstr "ທະນາຄານ/ລະຫັດລະບຸຕົວຕົນທຸລະກິດ"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "ທະນາຄານບ່ອນທີ່ເປີດບັນຊີຢູ່"
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "ໃສ່ເລກທີ່ລະບຸບັນຊີທະນາຄານ"
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "ບັນຊີທະນາຄານທີ່ຖືກລະບຸຕົວຕົນດ້ວຍເລກບັນຊີ"
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "ທະນາຄານ"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "ບັນຊີທະນາຄານ"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "ບັນຊີທະນາຄານ - ພາກສ່ວນ"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "ເລກບັນຊີທະນາຄານ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Banks"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Banks"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Banking"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Bank Administration"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "ອື່ນໆ"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "ການທະນາຄານ"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "ປົດໝາຍອອກເພື່ອບໍ່ລວມເອົາບັນຊີທະນາຄານຈາກການໃຊ້ງານໃນອະນາຄົດ"
