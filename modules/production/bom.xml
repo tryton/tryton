@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="bom_view_list">
+            <field name="model">production.bom</field>
+            <field name="type">tree</field>
+            <field name="name">bom_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="bom_view_form">
+            <field name="model">production.bom</field>
+            <field name="type">form</field>
+            <field name="name">bom_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_bom_list">
+            <field name="name">BOMs</field>
+            <field name="res_model">production.bom</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_bom_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="bom_view_list"/>
+            <field name="act_window" ref="act_bom_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_bom_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="bom_view_form"/>
+            <field name="act_window" ref="act_bom_list"/>
+        </record>
+        <menuitem parent="menu_configuration" sequence="10"
+            action="act_bom_list" id="menu_bom_list"/>
+
+        <record model="ir.action.act_window" id="act_bom_form">
+            <field name="name">BOM</field>
+            <field name="res_model">production.bom</field>
+        </record>
+
+        <record model="ir.model.access" id="access_bom">
+            <field name="model" search="[('model', '=', 'production.bom')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_bom_admin">
+            <field name="model" search="[('model', '=', 'production.bom')]"/>
+            <field name="group" ref="group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="bom_input_view_list">
+            <field name="model">production.bom.input</field>
+            <field name="type">tree</field>
+            <field name="name">bom_input_list</field>
+        </record>
+        <record model="ir.ui.view" id="bom_input_view_form">
+            <field name="model">production.bom.input</field>
+            <field name="type">form</field>
+            <field name="name">bom_input_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_bom_input">
+            <field name="model" search="[('model', '=', 'production.bom.input')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_bom_input_admin">
+            <field name="model" search="[('model', '=', 'production.bom.input')]"/>
+            <field name="group" ref="group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="bom_output_view_list">
+            <field name="model">production.bom.output</field>
+            <field name="type">tree</field>
+            <field name="name">bom_output_list</field>
+        </record>
+        <record model="ir.ui.view" id="bom_output_view_form">
+            <field name="model">production.bom.output</field>
+            <field name="type">form</field>
+            <field name="name">bom_output_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_bom_output">
+            <field name="model" search="[('model', '=', 'production.bom.output')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_bom_output_admin">
+            <field name="model" search="[('model', '=', 'production.bom.output')]"/>
+            <field name="group" ref="group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="bom_tree_view_tree">
+            <field name="model">production.bom.tree</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">bom_tree_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="bom_tree_open_start_view_form">
+            <field name="model">production.bom.tree.open.start</field>
+            <field name="type">form</field>
+            <field name="name">bom_tree_open_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="bom_tree_open_tree_view_form">
+            <field name="model">production.bom.tree.open.tree</field>
+            <field name="type">form</field>
+            <field name="name">bom_tree_open_tree_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_bom_tree_open">
+            <field name="name">BOM Tree</field>
+            <field name="wiz_name">production.bom.tree.open</field>
+            <field name="model">product.product</field>
+            <field name="window" eval="True"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_bom_tree_open_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_bom_tree_open"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_in_bom">
+            <field name="name">BOMs</field>
+            <field name="res_model">production.bom</field>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_product_in_bom_output_domain_input">
+            <field name="name">As Inputs</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" pyson="1"
+                eval="[('inputs.product', 'in', Eval('active_ids'))]"/>
+            <field name="act_window" ref="act_product_in_bom"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_product_in_bom_output_domain_output">
+            <field name="name">As Outputs</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" pyson="1"
+                eval="[('outputs.product', 'in', Eval('active_ids'))]"/>
+            <field name="act_window" ref="act_product_in_bom"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_in_bom_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_in_bom"/>
+        </record>
+
+    </data>
+</tryton>
