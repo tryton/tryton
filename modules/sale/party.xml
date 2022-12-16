@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_sale_form2">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[('party', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_sale_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_sale_form2"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_sale_form2-group_sale">
+            <field name="action" ref="act_sale_form2"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+    </data>
+</tryton>
