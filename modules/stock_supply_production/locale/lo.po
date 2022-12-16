@@ -1,0 +1,34 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "ໄລຍະສະໜອງ"
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "ໄລຍະສະໜອງ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "Request Productions"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:ir.message,text:msg_late_productions"
+msgid "There are some productions that are late."
+msgstr ""
+
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
+msgstr "ໄລຍະກຳນົດການສະໜອງຜະລິດຕະພັນ"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "ການຜະລິດ"
