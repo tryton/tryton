@@ -1,0 +1,3 @@
+JournalCode	JournalLib	EcritureNum	EcritureDate	CompteNum	CompteLib	CompAuxNum	CompAuxLib	PieceRef	PieceDate	EcritureLib	Debit	Credit	EcritureLet	DateLet	ValidDate	Montantdevise	Idevise
+REV	Revenue	1	20170101	7011	Produits finis (ou groupe) A			-	20170101	-	0,00	5,00			20170101		
+REV	Revenue	1	20170101	4111	Clients - Ventes de biens ou de prestations de services	2	Party	-	20170101	-	5,00	0,00			20170101		

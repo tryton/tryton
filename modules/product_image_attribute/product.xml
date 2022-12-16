@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="image_view_list">
+            <field name="model">product.image</field>
+            <field name="inherit" ref="product_image.image_view_list"/>
+            <field name="name">image_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="image_view_form">
+            <field name="model">product.image</field>
+            <field name="inherit" ref="product_image.image_view_form"/>
+            <field name="name">image_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="image_view_list_form">
+            <field name="model">product.image</field>
+            <field name="inherit" ref="product_image.image_view_list_form"/>
+            <field name="name">image_form</field>
+        </record>
+    </data>
+</tryton>

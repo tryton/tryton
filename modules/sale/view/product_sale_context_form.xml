@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <group colspan="2" col="4" id="fields">
+        <label name="company"/>
+        <field name="company"/>
+        <label name="currency"/>
+        <field name="currency"/>
+        <label name="sale_date"/>
+        <field name="sale_date"/>
+        <label name="quantity"/>
+        <field name="quantity"/>
+        <label name="customer"/>
+        <field name="customer"/>
+    </group>
+    <field name="locations" colspan="2" yexpand="0"/>
+    <field name="stock_date_end" invisible="1" colspan="4"/>
+</form>

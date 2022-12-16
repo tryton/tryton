@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <newline/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="credit_account"/>
+    <field name="credit_account"/>
+    <label name="debit_account"/>
+    <field name="debit_account"/>
+</form>
