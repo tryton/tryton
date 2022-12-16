@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<graph string="Sale Opportunities per Month">
+    <x>
+        <field name="year_month"/>
+    </x>
+    <y>
+        <field name="amount"/>
+        <field name="converted_amount"/>
+    </y>
+</graph>
