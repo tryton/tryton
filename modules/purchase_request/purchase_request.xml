@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_purchase_request">
+            <field name="name">Purchase Request</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_request_view_form">
+            <field name="model">purchase.request</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_form</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_request_view_tree">
+            <field name="model">purchase.request</field>
+            <field name="type">tree</field>
+            <field name="name">purchase_request_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_request_form">
+            <field name="name">Purchase Requests</field>
+            <field name="res_model">purchase.request</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_request_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_request_view_tree"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_request_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_request_view_form"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('purchase_line', '=', None)]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_form_domain_exception">
+            <field name="name">Exception</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'exception')]" 
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_group_purchase_request">
+            <field name="menu" ref="purchase.menu_purchase"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
+        <menuitem parent="purchase.menu_purchase" sequence="20"
+            action="act_purchase_request_form"
+            id="menu_purchase_request_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_group_purchase_request">
+            <field name="menu" ref="menu_purchase_request_form"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_group_purchase">
+            <field name="menu" ref="menu_purchase_request_form"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
+
+        <record model="ir.ui.view"
+            id="purchase_request_create_purchase_ask_party">
+            <field name="model">purchase.request.create_purchase.ask_party</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_create_purchase_ask_party_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_create_purchase">
+            <field name="name">Create Purchase</field>
+            <field name="wiz_name">purchase.request.create_purchase</field>
+            <field name="model">purchase.request</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_create_purchase_group_purchase_request">
+            <field name="action" ref="wizard_create_purchase"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
+        <record model="ir.action.keyword" id="create_purchase_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.request,-1</field>
+            <field name="action" ref="wizard_create_purchase"/>
+        </record>
+
+        <record model="ir.ui.view" id="handle_purchase_cancellation_start">
+            <field name="model">purchase.request.handle.purchase.cancellation.start</field>
+            <field name="type">form</field>
+            <field name="name">handle_purchase_cancellation_start_form</field>
+        </record>
+        <record model="ir.action.wizard"
+            id="wizard_purchase_cancellation_handle_exception">
+            <field name="name">Handle Purchase Cancellation</field>
+            <field name="wiz_name">purchase.request.handle.purchase.cancellation</field>
+            <field name="model">purchase.request</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_purchase_cancellation_handle_exception_group_purchase_request">
+            <field name="action"
+                ref="wizard_purchase_cancellation_handle_exception"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="purchase_hande_purchase_cancellation_exception_button">
+            <field name="name">handle_purchase_cancellation_exception</field>
+            <field name="string">Handle Purchase Cancellation</field>
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+        </record>
+
+        <record model="ir.action.keyword"
+            id="wizard_purchase_cancellation_handle_exception_keyword">
+            <field name="action"
+                ref="wizard_purchase_cancellation_handle_exception"/>
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.request,-1</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_purchase_request">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase_request">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_purchase_request"/>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_request">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_request_sale">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="group" ref="purchase.group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_request_admin">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="group" ref="group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="res.user-res.group"
+            id="user_admin_group_purchase_request">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_purchase_request">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_purchase_request">
+            <field name="model" search="[('model', '=',
+                'purchase.purchase')]"/>
+            <field name="group" ref="group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_purchase_line_purchase_request">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="group" ref="group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>
+
