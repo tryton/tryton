@@ -1,0 +1,1008 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_purchase_admin">
+            <field name="name">Purchase Administrator</field>
+        </record>
+        <record model="res.group" id="group_purchase">
+            <field name="name">Purchase</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_purchase">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_purchase_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="res.user-res.group" id="user_trigger_group_purchase">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_purchase_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <menuitem name="Purchase" id="menu_purchase" sequence="4"/>
+        <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase">
+            <field name="menu" ref="menu_purchase"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <!-- set active for 1.4 migration -->
+        <menuitem name="Configuration" parent="menu_purchase"
+            id="menu_configuration" sequence="0" icon="tryton-preferences"
+            active="1"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_purchase_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
+            <field name="name">Handle Shipment Exception</field>
+            <field name="wiz_name">purchase.handle.shipment.exception</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_invoice_handle_exception">
+            <field name="name">Handle Invoice Exception</field>
+            <field name="wiz_name">purchase.handle.invoice.exception</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Purchase" col="6">
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="invoice_address"/>
+                    <field name="invoice_address"/>
+                    <label name="supplier_reference"/>
+                    <field name="supplier_reference"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <notebook colspan="6">
+                        <page string="Purchase" id="purchase">
+                            <label name="purchase_date"/>
+                            <field name="purchase_date"/>
+                            <label name="payment_term"/>
+                            <field name="payment_term"/>
+                            <label name="warehouse"/>
+                            <field name="warehouse"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <field name="lines" colspan="4">
+                                <tree string="Lines" sequence="sequence" fill="1">
+                                    <field name="type"/>
+                                    <field name="product"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                    <field name="unit"/>
+                                    <field name="unit_price"/>
+                                    <field name="taxes"/>
+                                    <field name="amount"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                            <group col="2" colspan="2" id="states">
+                                <label name="invoice_state"/>
+                                <field name="invoice_state"/>
+                                <label name="shipment_state"/>
+                                <field name="shipment_state"/>
+                                <label name="state"/>
+                                <field name="state"/>
+                            </group>
+                            <group col="2" colspan="2" id="amount_buttons">
+                                <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                                <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                                <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                                <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                                <field name="total_amount" xalign="1.0" xexpand="0"/>
+                                <group col="6" colspan="2" id="buttons">
+                                    <button name="cancel" string="Cancel"
+                                        states="{'invisible': Or(Equal(Eval('state'), 'cancel'), And(Not(In(Eval('state'), ['draft', 'quotation'])), Not(Equal(Eval('invoice_state'), 'exception')), Not(Equal(Eval('shipment_state'), 'exception')))), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                        icon="tryton-cancel"/>
+                                    <button name="draft" string="Draft"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                        icon="tryton-go-previous"/>
+                                    <button name="quotation" string="Quotation"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Or(Not(Bool(Eval('lines'))), Not(In(%(group_purchase)d, Eval('groups', []))))}"
+                                        icon="tryton-go-next"/>
+                                    <button name="%(wizard_invoice_handle_exception)d"
+                                            string="Handle Invoice Exception"
+                                            type="action"
+                                            states="{'invisible': Or(Not(Equal(Eval('invoice_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                            icon="tryton-go-next"/>
+                                    <button name="%(wizard_shipment_handle_exception)d"
+                                            string="Handle Shipment Exception"
+                                            type="action"
+                                            states="{'invisible': Or(Not(Equal(Eval('shipment_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                            icon="tryton-go-next"/>
+                                    <button name="confirm" string="Confirm"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                        icon="tryton-ok"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info" id="info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <label name="invoice_method"/>
+                            <field name="invoice_method"/>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4" spell="Eval('party_lang')"/>
+                        </page>
+                        <page string="Invoices" id="invoices">
+                            <field name="invoices" colspan="4">
+                                <tree>
+                                    <field name="number"/>
+                                    <field name="reference"/>
+                                    <field name="invoice_date"/>
+                                    <field name="party"/>
+                                    <field name="currency"/>
+                                    <field name="untaxed_amount"/>
+                                    <field name="tax_amount"/>
+                                    <field name="total_amount"/>
+                                    <field name="state"/>
+                                    <field name="purchase_exception_state"/>
+                                    <field name="amount_to_pay_today"/>
+                                    <field name="description"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Shipments" id="shipments">
+                            <field name="moves" colspan="4">
+                                <tree string="Moves">
+                                    <field name="product"/>
+                                    <field name="from_location"/>
+                                    <field name="to_location"/>
+                                    <field name="quantity"/>
+                                    <field name="uom"/>
+                                    <field name="state"/>
+                                    <field name="purchase_exception_state"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                            <field name="shipments" colspan="4"/>
+                        </page>
+                    </notebook>
+                    <field name="currency_digits" invisible="1" colspan="6"/>
+                    <field name="party_lang" invisible="1" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="purchase_view_tree">
+            <field name="model">purchase.purchase</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Purchases">
+                    <field name="reference"/>
+                    <field name="supplier_reference"/>
+                    <field name="purchase_date"/>
+                    <field name="party"/>
+                    <field name="warehouse"/>
+                    <field name="currency"/>
+                    <field name="untaxed_amount"/>
+                    <field name="total_amount"/>
+                    <field name="state"/>
+                    <field name="invoice_state"/>
+                    <field name="shipment_state"/>
+                    <field name="description"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                    <field name="create_date" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_form">
+            <field name="name">Shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="domain">[("id", "in", Eval('shipments'))]</field>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_shipment_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_shipment_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain">[("id", "in", Eval('invoices'))]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_invoice_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="handle_shipment_exception_view_form">
+            <field name="model">purchase.handle.shipment.exception.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Handle shipment Exception" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="Choose move to recreate"
+                        id="choose"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
+                    <field name="recreate_moves" colspan="2">
+                        <tree string="Recreated Moves" fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_invoice_exception_view_form">
+            <field name="model">purchase.handle.invoice.exception.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Handle Invoice Exception" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="Choose invoices to recreate"
+                        id="choose"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
+                    <field name="recreate_invoices" colspan="2"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_form">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <menuitem parent="menu_purchase" action="act_purchase_form"
+            id="menu_purchase_form" sequence="10"/>
+        <record model="ir.ui.menu-res.group" id="menu_purchase_form_group_purchase">
+            <field name="menu" ref="menu_purchase_form"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_form_draft">
+            <field name="name">Draft Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_draft"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_draft"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_draft"
+            id="menu_purchase_form_draft" sequence="20"/>
+
+        <record model="ir.action.act_window" id="act_purchase_form_quotation">
+            <field name="name">Purchases in Quotation</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain">[('state', '=', 'quotation')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_quotation_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_quotation"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_quotation_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_quotation"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_quotation"
+            id="menu_purchase_form_quotation" sequence="30"/>
+
+        <record model="ir.action.act_window" id="act_purchase_form_confirmed">
+            <field name="name">Confirmed Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain">[('state', '=', 'confirmed')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_confirmed_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_confirmed"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_confirmed_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_confirmed"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_confirmed"
+            id="menu_purchase_form_confirmed" sequence="40"/>
+
+        <menuitem name="Reporting" parent="menu_purchase"
+            id="menu_reporting" sequence="100" active="0"/>
+
+        <record model="ir.model.access" id="access_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_purchase">
+            <field name="name">Purchase</field>
+            <field name="code">purchase.purchase</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_purchase_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_purchase">
+            <field name="name">Purchase</field>
+            <field name="code">purchase.purchase</field>
+        </record>
+        <record model="workflow" id="purchase_workflow">
+            <field name="name">Purchase workflow</field>
+            <field name="model">purchase.purchase</field>
+            <field name="on_create" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_draft">
+            <field name="name">Draft</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_draft</field>
+            <field name="flow_start" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_quotation">
+            <field name="name">Quotation</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_quotation</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_confirmed">
+            <field name="name">Confirmed</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="split_mode">AND</field>
+            <field name="method">wkf_confirmed</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_method">
+            <field name="name">Invoice Method</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="split_mode">OR</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_waiting_invoice_purchase">
+            <field name="name">Waiting Invoice</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_waiting</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_purchase_exception">
+            <field name="name">Invoice Exception</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_exception</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_done">
+            <field name="name">Invoice Done</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_done</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_method_done">
+            <field name="name">Invoice Method Done</field>
+            <field name="workflow" ref="purchase_workflow"/>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_waiting_shipment">
+            <field name="name">Waiting Shipment</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_shipment_waiting</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_shipment_exception">
+            <field name="name">Shipment Exception</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_shipment_exception</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_method">
+            <field name="name">Invoice Shipment Method</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="split_mode">OR</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment">
+            <field name="name">Invoice Shipment</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_shipment</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_waiting_invoice_shipment">
+            <field name="name">Waiting Invoice Shipment</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_shipment_waiting</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_exception">
+            <field name="name">Invoice Shipment Exception</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_shipment_exception</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_done">
+            <field name="name">Invoice Shipment Done</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_shipment_done</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_method_done">
+            <field name="name">Invoice Shipment Method Done</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_invoice_shipment_method_done</field>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_done">
+            <field name="name">Done</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="join_mode">AND</field>
+            <field name="method">wkf_done</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="purchase_activity_cancel">
+            <field name="name">Canceled</field>
+            <field name="workflow" ref="purchase_workflow"/>
+            <field name="method">wkf_cancel</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_draft_quotation">
+            <field name="act_from" ref="purchase_activity_draft"/>
+            <field name="act_to" ref="purchase_activity_quotation"/>
+            <field name="condition">wkf_draft2quotation</field>
+            <field name="signal">quotation</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_draft_cancel">
+            <field name="act_from" ref="purchase_activity_draft"/>
+            <field name="act_to" ref="purchase_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_quotation_draft">
+            <field name="act_from" ref="purchase_activity_quotation"/>
+            <field name="act_to" ref="purchase_activity_draft"/>
+            <field name="signal">draft</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_quotation_confirmed">
+            <field name="act_from" ref="purchase_activity_quotation"/>
+            <field name="act_to" ref="purchase_activity_confirmed"/>
+            <field name="signal">confirm</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_quotation_cancel">
+            <field name="act_from" ref="purchase_activity_quotation"/>
+            <field name="act_to" ref="purchase_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_confirmed_invoice_method">
+            <field name="act_from" ref="purchase_activity_confirmed"/>
+            <field name="act_to" ref="purchase_activity_invoice_method"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_method_waiting_invoice_purchase">
+            <field name="act_from" ref="purchase_activity_invoice_method"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_purchase"/>
+            <field name="condition">wkf_invoice_method2invoice_waiting</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_method_invoice_done">
+            <field name="act_from" ref="purchase_activity_invoice_method"/>
+            <field name="act_to" ref="purchase_activity_invoice_method_done"/>
+            <field name="condition">wkf_invoice_method2invoice_done</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_purchase_invoice_purchase_exception">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_purchase"/>
+            <field name="act_to" ref="purchase_activity_invoice_purchase_exception"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field name="condition">wkf_invoice_waiting2invoice_purchase_exception</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_purchase_exception_invoice_purchase">
+            <field name="act_from" ref="purchase_activity_invoice_purchase_exception"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_purchase"/>
+            <field name="signal">invoice_ok</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_purchase_exception_cancel">
+            <field name="act_from" ref="purchase_activity_invoice_purchase_exception"/>
+            <field name="act_to" ref="purchase_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_purchase_invoice_done">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_purchase"/>
+            <field name="act_to" ref="purchase_activity_invoice_done"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field name="condition">wkf_invoice_waiting2invoice_done</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_done_invoice_method_done">
+            <field name="act_from" ref="purchase_activity_invoice_done"/>
+            <field name="act_to" ref="purchase_activity_invoice_method_done"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_method_done_done">
+            <field name="act_from" ref="purchase_activity_invoice_method_done"/>
+            <field name="act_to" ref="purchase_activity_done"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_confirmed_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_confirmed"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_shipment_exception">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_shipment_exception"/>
+            <field name="signal">shipment_update</field>
+            <field name="condition">wkf_shipment_waiting2shipment_exception</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_shipment_exception_cancel">
+            <field name="act_from" ref="purchase_activity_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_shipment_exception_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field name="signal">shipment_ok</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_invoice_shipment_method">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="signal">shipment_update</field>
+            <field
+                name="condition">wkf_shipment_waiting2invoice_shipment_method</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_invoice_shipment_method2">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method"/>
+            <field
+                name="condition">wkf_shipment_waiting2invoice_shipment_method_nosignal</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment"/>
+            <field
+                name="condition">wkf_invoice_shipment_method2invoice_shipment</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_invoice_shipment_method_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method_done"/>
+            <field
+                name="condition">wkf_invoice_shipment_method2inv_shipment_method_done</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field
+                name="condition">wkf_invoice_shipment_method2shipment_waiting</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field name="condition">wkf_invoice_shipment2shipment_waiting</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_waiting_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field
+                name="condition">wkf_invoice_shipment2waiting_invoice_shipment</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_shipment_invoice_shipment_exception">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_exception"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field
+                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_exception</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_exception_cancel">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_exception_waiting_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="signal">invoice_ok</field>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_shipment_invoice_shipment_done">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_done"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field
+                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_done</field>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_done_invoice_shipment_method_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_done"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method_done"/>
+        </record>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_done_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method_done"/>
+            <field name="act_to" ref="purchase_activity_done"/>
+        </record>
+
+        <record model="ir.action.report" id="report_purchase">
+            <field name="name">Purchase</field>
+            <field name="model">purchase.purchase</field>
+            <field name="report_name">purchase.purchase</field>
+            <field name="report">purchase/purchase.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_purchase_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="report_purchase"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_view_form">
+            <field name="model">purchase.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Purchase Line" cursor="product">
+                    <label name="purchase"/>
+                    <field name="purchase" colspan="3"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="sequence"/>
+                            <field name="sequence"/>
+                            <label name="product"/>
+                            <field name="product">
+                                <tree string="Products">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="list_price_uom"/>
+                                    <field name="cost_price_uom"/>
+                                    <field name="quantity"/>
+                                    <field name="forecast_quantity"/>
+                                    <field name="default_uom"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                            <newline/>
+                            <label name="description"/>
+                            <field name="description" colspan="3"
+                                spell="Get(Eval('_parent_purchase', {}), 'party_lang')"/>
+                            <label name="quantity"/>
+                            <field name="quantity"/>
+                            <label name="unit"/>
+                            <field name="unit"/>
+                            <label name="unit_price"/>
+                            <field name="unit_price"/>
+                            <label name="amount"/>
+                            <field name="amount"/>
+                            <field name="taxes" colspan="4"/>
+                        </page>
+                        <page string="Notes" id="notes">
+                            <separator name="note" colspan="4"/>
+                            <field name="note" colspan="4"
+                                spell="Get(Eval('_parent_purchase', {}), 'party_lang')"/>
+                        </page>
+                    </notebook>
+                    <field name="unit_digits" invisible="1" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_view_tree">
+            <field name="model">purchase.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Purchase Lines">
+                    <field name="purchase"/>
+                    <field name="type"/>
+                    <field name="product"/>
+                    <field name="description"/>
+                    <field name="quantity"/>
+                    <field name="unit"/>
+                    <field name="unit_price"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.model.access" id="access_purchase_line">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_line_purchase">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_view_form">
+            <field name="model">purchase.product_supplier</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Supplier">
+                    <label name="product"/>
+                    <field name="product" colspan="3"/>
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="delivery_time"/>
+                    <field name="delivery_time"/>
+                    <field name="prices" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_supplier_view_tree">
+            <field name="model">purchase.product_supplier</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Product Suppliers">
+                    <field name="product"/>
+                    <field name="party"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sequence"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.rule.group" id="rule_group_product_supplier">
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_supplier">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.product_supplier')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_product_supplier"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_price_view_form">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Supplier Price" col="6">
+                    <label name="product_supplier"/>
+                    <field name="product_supplier" colspan="5"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="unit_price"/>
+                    <field name="unit_price"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_supplier_price_view_tree">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Product Supplier Prices">
+                    <field name="product_supplier"/>
+                    <field name="quantity"/>
+                    <field name="unit_price"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;cost_price_method&quot;]"
+                        position="after">
+                        <label name="purchasable"/>
+                        <field name="purchasable"/>
+                    </xpath>
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
+                        position="after">
+                        <page string="Suppliers"
+                            states="{'invisible': Not(Bool(Eval('purchasable')))}"
+                            id="suppliers">
+                            <label name="purchasable"/>
+                            <field name="purchasable"/>
+                            <label name="purchase_uom"/>
+                            <field name="purchase_uom"/>
+                            <field name="product_suppliers" colspan="4">
+                                <tree string="Product Suppliers" sequence="sequence">
+                                    <field name="party"/>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name=&quot;default_uom&quot;]"
+                        position="after">
+                        <field name="purchasable"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="inherit" ref="stock.shipment_in_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page/field[@name=&quot;incoming_moves&quot;]/tree/field[@name=&quot;uom&quot;]"
+                        position="after">
+                        <field name="purchase"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name=&quot;uom&quot;]"
+                        position="after">
+                        <label name="purchase_quantity"/>
+                        <field name="purchase_quantity"/>
+                        <label name="purchase_unit"/>
+                        <field name="purchase_unit"/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;currency&quot;]"
+                        position="after">
+                        <label name="purchase_unit_price"/>
+                        <field name="purchase_unit_price"/>
+                        <label name="purchase_currency"/>
+                        <field name="purchase_currency"/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;effective_date&quot;]"
+                        position="after">
+                        <label name="purchase"/>
+                        <field name="purchase"/>
+                        <newline/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;unit_digits&quot;]"
+                        position="after">
+                        <field name="purchase_unit_digits" invisible="1" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_supplier">
+            <field name="name">Parties associated to Purchases</field>
+            <field name="wiz_name">purchase.open_supplier</field>
+        </record>
+        <menuitem name="Parties associated to Purchases"
+            parent="party.menu_party_form"
+            action="act_open_supplier"
+            icon="tryton-list"
+            id="menu_supplier"/>
+
+        <record model="ir.rule.group" id="rule_group_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.purchase')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_purchase"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_purchase">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_line_purchase">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_group_purchase">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in_group_purchase">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>

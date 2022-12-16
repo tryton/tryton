@@ -1,0 +1,173 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:0"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:0"
+msgid "Account Expense"
+msgstr ""
+
+msgctxt "field:product.category,account_revenue:0"
+msgid "Account Revenue"
+msgstr ""
+
+msgctxt "field:product.category,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr ""
+
+msgctxt "field:product.category,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.category-customer-account.tax,category:0"
+msgid "Category"
+msgstr "Категории"
+
+#, fuzzy
+msgctxt "field:product.category-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.category-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.category-supplier-account.tax,category:0"
+msgid "Category"
+msgstr "Категории"
+
+#, fuzzy
+msgctxt "field:product.category-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.category-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:product.template,account_category:0"
+msgid "Use Category's accounts"
+msgstr ""
+
+msgctxt "field:product.template,account_expense:0"
+msgid "Account Expense"
+msgstr ""
+
+msgctxt "field:product.template,account_expense_used:0"
+msgid "Account Expense Used"
+msgstr ""
+
+msgctxt "field:product.template,account_revenue:0"
+msgid "Account Revenue"
+msgstr ""
+
+msgctxt "field:product.template,account_revenue_used:0"
+msgid "Account Revenue Used"
+msgstr ""
+
+msgctxt "field:product.template,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr ""
+
+msgctxt "field:product.template,customer_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr ""
+
+msgctxt "field:product.template,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr ""
+
+msgctxt "field:product.template,supplier_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr ""
+
+msgctxt "field:product.template,taxes_category:0"
+msgid "Use Category's Taxes"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-customer-account.tax,product:0"
+msgid "Product Template"
+msgstr "Шаблон Товара"
+
+#, fuzzy
+msgctxt "field:product.template-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.template-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-supplier-account.tax,product:0"
+msgid "Product Template"
+msgstr "Шаблон Товара"
+
+#, fuzzy
+msgctxt "field:product.template-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.template-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr ""
+
+msgctxt "help:product.template,account_category:0"
+msgid "Use the accounts defined on the category"
+msgstr ""
+
+msgctxt "help:product.template,account_expense:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+
+msgctxt "help:product.template,account_revenue:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+
+msgctxt "help:product.template,taxes_category:0"
+msgid "Use the taxes defined on the category"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:0"
+msgid "Category - Customer Tax"
+msgstr ""
+
+msgctxt "model:product.category-supplier-account.tax,name:0"
+msgid "Category - Supplier Tax"
+msgstr ""
+
+msgctxt "model:product.template-customer-account.tax,name:0"
+msgid "Product Template - Customer Tax"
+msgstr ""
+
+msgctxt "model:product.template-supplier-account.tax,name:0"
+msgid "Product Template - Supplier Tax"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.category:0"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+msgctxt "view:product.category:0"
+msgid "Taxes"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.template:0"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+msgctxt "view:product.template:0"
+msgid "Accounts"
+msgstr ""
+
+msgctxt "view:product.template:0"
+msgid "Taxes"
+msgstr ""

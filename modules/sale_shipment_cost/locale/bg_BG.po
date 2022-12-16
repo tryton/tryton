@@ -1,0 +1,65 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "error:stock.shipment.out:0"
+msgid "It misses an \"Account Revenue\" on product \"%s\"!"
+msgstr "Не е зададена \"Сметка за приходи\" за продукт \"%s\"!"
+
+msgctxt "field:sale.configuration,sale_carrier:0"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:0"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:sale.line,shipment_cost:0"
+msgid "Shipment Cost"
+msgstr ""
+
+msgctxt "field:sale.sale,carrier:0"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_cost_method:0"
+msgid "Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,carrier:0"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost:0"
+msgid "Cost"
+msgstr "Разход"
+
+msgctxt "field:stock.shipment.out,cost_currency:0"
+msgid "Cost Currency"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_currency_digits:0"
+msgid "Cost Currency Digits"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:0"
+msgid "Cost Invoice Line"
+msgstr ""
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:0"
+msgid "On Order"
+msgstr ""
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:0"
+msgid "On Shipment"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:0"
+msgid "On Order"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:0"
+msgid "On Shipment"
+msgstr ""
