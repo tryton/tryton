@@ -1,0 +1,59 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
+msgstr "Anglosaška količina ne more biti večja od same količine."
+
+msgctxt "field:product.category,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
+msgctxt "field:product.category,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Uporabljen konto stroškov prodanega blaga"
+
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
+msgctxt "field:product.product,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
+msgctxt "field:product.product,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Uporabljen konto stroškov prodanega blaga"
+
+msgctxt "field:product.template,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
+msgctxt "field:product.template,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Uporabljen konto stroškov prodanega blaga"
+
+msgctxt "field:product.template.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "Vhodna anglosaška količina"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "Izhodna anglosaška količina"
+
+msgctxt "help:product.product,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
+
+msgctxt "help:product.template,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "Anglosaški"
