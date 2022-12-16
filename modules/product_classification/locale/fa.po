@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "قابل انتخاب"
+
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "قابل انتخاب"
+
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "طبقه بندی"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "طبقه بندی"
+
+msgctxt "help:product.classification.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:product.classification_tree.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "انواع محصول"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "طبقه بندی محصول ساختگی"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "درخت طبقه بندی محصول ساختگی"
