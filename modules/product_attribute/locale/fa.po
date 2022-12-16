@@ -1,0 +1,231 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "رقم‌ها"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "انتخاب"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "انتخاب JSON"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "انتخاب مرتب شده"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "مجموعه ها"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "متنی"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "ویژگی"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "مجموعه"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "مجموعه ویژگی"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "مجموعه ویژگی"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "یک چند کلید و برچسب جدا شده توسط \":\" در هر خط"
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "اگر انتخاب باید بر روی برچسب مرتب شود"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "اضافه کردن مجموعه ها به ویژگی."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "اضافه کردن ویژگی ها به مجموعه."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "شناسه اصلی مجموعه ویژگی محصول."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "اضافه کردن ویژگی ها به نوع."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "مجموعه ویژگی"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "مجموعه ویژگی"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "ویژگی محصول"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "ویژگی محصول - مجموعه"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "مجموعه ویژگی محصول"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr "بولین"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "کاراکتر"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "تاریخ و زمان"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr "شناور"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "عدد صحیح"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "عددی"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "انتخاب"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "ویژگی ها"
