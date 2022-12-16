@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="res.user_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook" position="inside">
+                        <page string="Dashboard" id="dashboard" col="2">
+                            <label name="dashboard_layout"/>
+                            <field name="dashboard_layout"/>
+                            <field name="dashboard_actions" colspan="2">
+                                <tree string="Dashboard Actions"
+                                    sequence="sequence" fill="1">
+                                    <field name="act_window"/>
+                                </tree>
+                                <form string="Dashboard Action">
+                                    <label name="act_window"/>
+                                    <field name="act_window"/>
+                                </form>
+                            </field>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="user_view_form_preferences">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="res.user_view_form_preferences"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook" position="inside">
+                        <page string="Dashboard" id="dashboard" col="2">
+                            <label name="dashboard_layout"/>
+                            <field name="dashboard_layout"/>
+                            <field name="dashboard_actions" colspan="2">
+                                <tree string="Dashboard Actions"
+                                    sequence="sequence" fill="1">
+                                    <field name="act_window"/>
+                                </tree>
+                                <form string="Dashboard Action">
+                                    <label name="act_window"/>
+                                    <field name="act_window" widget="selection"/>
+                                </form>
+                            </field>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
