@@ -1,0 +1,179 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Manage dereferenced name in tax identifier clause of party
+* Add optional address to contact mechanism
+
+Version 6.4.0 - 2022-05-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Always show country name in English language
+* Add fr_siren and fr_siret identifiers
+* Add optional address to identifiers
+* Add autonomous city as subdivision type for Spain
+* Add support for Python 3.10
+* Remove support for Python 3.6
+* Use all street lines in record name of address
+
+Version 6.2.0 - 2021-11-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Support replacing party on reference field
+* Allow setting a single contact mechanism at party creation
+* Make identifiers deactivatable
+* Replace party on identifier when replacing parties
+* Add au_abn and au_acn as tax identifiers
+* Add at, ua and vn party identifiers
+
+Version 6.0.0 - 2021-05-03
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add language to contact mechanism
+* Add contact_mechanism as email recipient
+* Rename zip into postal code
+* Add simple distance between parties
+* Configure available identifiers
+* Add ar, at, by, cn, cr, gr, id, il, kr, lt, no, ro and se identifiers
+
+Version 5.8.0 - 2020-11-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Add ad, gt, jp, md, nz, pe, py, uy, ve and za tax identifiers
+
+Version 5.6.0 - 2020-05-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Display name on contact mechanism record name
+
+Version 5.4.0 - 2019-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Limit subdivision types on address
+* Add call url for mobile contact mechanisms
+* Replace country and language in address format by codes
+* Add sequence field to contact mechanism form view
+
+Version 5.2.0 - 2019-05-06
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove starting wildcard when searching on codes and numbers
+* Include all identifier from python-stdnum
+* Use country code as local prefix to parse phone numbers
+
+Version 5.0.0 - 2018-10-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Support attention party in address format
+* Add party name on address
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add Erase Party wizard
+* Search party also by contact mechanisms
+* Add contact_mechanism_get
+* Add name to contact mechanism
+* Improve distinction of address record name
+
+Version 4.6.0 - 2017-10-30
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Use static selection for identifier type
+
+Version 4.2.0 - 2016-11-28
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add format to phone numbers
+* Rename VAT Code into Tax Identifier
+* Add sequence order on Identifier
+* Add Replace Party wizard
+* Remove streetbis from Address
+* Add address format per country and language
+* Restrict subdivision address to first level
+
+Version 4.0.0 - 2016-05-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+* Remove required on Party name
+
+Version 3.8.0 - 2015-11-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Change Party.lang into Property
+* Add a list of identifier to party
+
+Version 3.6.0 - 2015-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* compact vat number
+* value Function fields don't set the value anymore
+
+Version 3.4.0 - 2014-10-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add autocomplete on zip and city
+
+Version 3.2.0 - 2014-04-21
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add url widget to contact mechanism list view
+
+Version 2.6.0 - 2012-10-22
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Allow to have no Party Sequence
+
+Version 2.2.0 - 2011-10-24
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add default address on party
+
+Version 1.6.0 - 2010-05-10
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Don't allow empty vat_number if vat_country is set
+* Use model singleton to define which party sequence to use
+* Improve search_rec_name of category to take care of separator
+
+Version 1.4.0 - 2009-10-19
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add CheckVIES wizard (VAT Information Exchange System)
+* Add default categories on party with context
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+--------------------------
+* Initial release

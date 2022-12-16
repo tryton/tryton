@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.selection,from_postal_code:"
+msgid "From Postal Code"
+msgstr "Del codi postal"
+
+msgctxt "field:carrier.selection,from_subdivision:"
+msgid "From Subdivision"
+msgstr "De la subdivisió"
+
+msgctxt "field:carrier.selection,to_postal_code:"
+msgid "To Postal Code"
+msgstr "Al codi postal"
+
+msgctxt "field:carrier.selection,to_subdivision:"
+msgid "To Subdivision"
+msgstr "A la subdiviisió"
+
+msgctxt "help:carrier.selection,from_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier collects from.\n"
+"Leave empty to allow collection from any postal code."
+msgstr ""
+"Expressió regular que coincideix amb els codis postals dels quals recull el transportista.\n"
+"Deixeu-ho en blanc per permetre la recollida de qualsevol codi postal."
+
+msgctxt "help:carrier.selection,from_subdivision:"
+msgid ""
+"The subdivision the carrier collects from.\n"
+"Leave empty to allow collection from any subdivision."
+msgstr ""
+"La subdivisió de la qual recull el transportista.\n"
+"Deixeu-ho en blanc per permetre la recollida de qualsevol subdivisió."
+
+msgctxt "help:carrier.selection,to_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier delivers to.\n"
+"Leave empty to allow delivery to any postal code."
+msgstr ""
+"Expressió regular que coincideix amb els codis postals als quals entrega el transportista.\n"
+"Deixeu-ho en blanc per permetre l'entrega a qualsevol codi postal."
+
+msgctxt "help:carrier.selection,to_subdivision:"
+msgid ""
+"The subdivision the carrier delivers to.\n"
+"Leave empty to allow delivery to any subdivision."
+msgstr ""
+"La subdivisió a la qual el transportista entrega.\n"
+"Deixar buida per permetre l'entrega a qualsevol subdivisió."
