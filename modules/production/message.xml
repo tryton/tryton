@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_recursive_bom">
+            <field name="text">You cannot create a recursive BOM for product "%(product)s".</field>
+        </record>
+        <record model="ir.message" id="msg_missing_product_list_price">
+            <field name="text">The product "%(product)s" on production "%(production)s" does not have any list price defined.</field>
+        </record>
+        <record model="ir.message" id="msg_stock_move_production_single">
+            <field name="text">Move can not be used for production input and output.</field>
+        </record>
+    </data>
+</tryton>
