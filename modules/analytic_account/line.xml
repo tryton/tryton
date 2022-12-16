@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="line_view_form">
+            <field name="model">analytic_account.line</field>
+            <field name="type">form</field>
+            <field name="name">line_form</field>
+        </record>
+        <record model="ir.ui.view" id="line_view_tree">
+            <field name="model">analytic_account.line</field>
+            <field name="type">tree</field>
+            <field name="name">line_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_line_form">
+            <field name="name">Analytic Lines</field>
+            <field name="res_model">analytic_account.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="line_view_tree"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="line_view_form"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_line">
+            <field name="model" search="[('model', '=', 'analytic_account.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_line_account">
+            <field name="model" search="[('model', '=', 'analytic_account.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Account</field>
+            <field name="wiz_name">analytic_account.line.open_account</field>
+            <field name="model">analytic_account.account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">analytic_account.account,-1</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form_move">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form_move"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+    </data>
+</tryton>

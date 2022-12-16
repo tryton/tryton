@@ -1,0 +1,860 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.uom:"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Če ME še vendno ni uporabljena, jo lahko zbrišete ali pa izklopite in "
+"izdelate novo."
+
+msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Neveljavna faktor in razmerje v ME\"%s\"."
+
+msgctxt "error:product.uom:"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Oba, razmerje in faktor, ne moreta biti enaka ničli."
+
+msgctxt "error:product.uom:"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
+msgstr ""
+"Pri merski enoti ni možno popraviti razmerja, faktorja ali kategorije."
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "Podkategorije"
+
+msgctxt "field:product.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "Matična kategorija"
+
+msgctxt "field:product.category,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Privzeti obračun"
+
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.configuration,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Potrošni material"
+
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Nabavna cena"
+
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Method"
+msgstr "Obračun"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Nabavna cena"
+
+msgctxt "field:product.product,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.product,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "Privzeta ME"
+
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Privzeta kategorija ME"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.product,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "Predloga"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.product,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.product,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.template,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "Potrošni material"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "Nabavna cena"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Method"
+msgstr "Obračun"
+
+msgctxt "field:product.template,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.template,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "Privzeta ME"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Privzeta kategorija ME"
+
+msgctxt "field:product.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.template,products:"
+msgid "Variants"
+msgstr "Različice"
+
+msgctxt "field:product.template,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.template,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr "Predloga"
+
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.uom,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:product.uom,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:product.uom,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.uom,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "Decimalke"
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "Faktor"
+
+msgctxt "field:product.uom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "Razmerje"
+
+msgctxt "field:product.uom,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "Zaokroževanje"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "Simbol"
+
+msgctxt "field:product.uom,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.uom,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.uom.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.uom.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.uom.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.uom.category,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Unit of Measures"
+msgstr "Merske enote"
+
+msgctxt "field:product.uom.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.uom.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"Koeficient za formulo:\n"
+"koef * (osnovna enota) = 1 (ta enota)"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"Koeficient za formulo:\n"
+"1 (osnovna enota) = koef * (ta enota)"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr "Konfiguracija izdelkov"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Različice"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "Izdelki po kategorijah"
+
+msgctxt "model:ir.action,name:act_template_form"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Kategorije merskih enot"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Merske enote"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Nastavitve"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Različice"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr "Konfiguracija"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Merske enote"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "Kategorija izdelkov"
+
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr "Konfiguracija izdelkov"
+
+msgctxt "model:product.product,name:"
+msgid "Product Variant"
+msgstr "Različica"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "Predloga izdelka"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr "Predloga - Kategorija"
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of measure"
+msgstr "Merska enota"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "ar"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "karat"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "centimeter"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "kubični centimeter"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "kubični čevelj"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "kubični palec"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "kubični meter"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "dan"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "čevelj"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "galona"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "gram"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "hektar"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "ura"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "palec"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "kilogram"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "kilometer"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "liter"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "meter"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "milja"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "milimeter"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "minuta"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "unča"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "funt"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "sekunda"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "kvadratni centimeter"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "kvadratni čevelj"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "kvadratni palec"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "kvadratni meter"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "kvadratni jard"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "enota"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Delovni dan"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "jard"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "ft³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "in³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "ft"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "in"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lb"
+msgstr "lb"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "ft²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "in²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "e"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "dd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Product uom category"
+msgstr "Kategorija ME izdelkov"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Dolžina"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Površina"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Čas"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Enote"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Prostornina"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Teža"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Izdelek - vodenje"
+
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Average"
+msgstr "Povprečna cena"
+
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Fixed"
+msgstr "Fiksna"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Povprečna cena"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Fiksna"
+
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Osnovna sredstva"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Blago"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Storitev"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "Povprečna cena"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "Fiksna"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "Osnovna sredstva"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "Blago"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "Storitev"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "Podkategorije"
+
+msgctxt "view:product.category:"
+msgid "Product Categories"
+msgstr "Kategorije"
+
+msgctxt "view:product.category:"
+msgid "Product Category"
+msgstr "Kategorija"
+
+msgctxt "view:product.configuration:"
+msgid "Party Configuration"
+msgstr "Konfiguracija partnerjev"
+
+msgctxt "view:product.product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "view:product.product:"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:product.template:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "view:product.template:"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "view:product.uom.category:"
+msgid "Categories of Unit of Measure"
+msgstr "Kategorije merskih enot"
+
+msgctxt "view:product.uom.category:"
+msgid "Category of Unit of Measure"
+msgstr "Kategorija merskih enot"
+
+msgctxt "view:product.uom:"
+msgid "Unit of Measure"
+msgstr "Merska enota"
+
+msgctxt "view:product.uom:"
+msgid "Units of Measure"
+msgstr "Merske enote"
