@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="incoterm_view_form">
+            <field name="model">incoterm.incoterm</field>
+            <field name="type">form</field>
+            <field name="name">incoterm_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="incoterm_view_list">
+            <field name="model">incoterm.incoterm</field>
+            <field name="type">tree</field>
+            <field name="name">incoterm_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_incoterm_form">
+            <field name="name">Incoterms</field>
+            <field name="res_model">incoterm.incoterm</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_incoterm_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="incoterm_view_list"/>
+            <field name="act_window" ref="act_incoterm_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_incoterm_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="incoterm_view_form"/>
+            <field name="act_window" ref="act_incoterm_form"/>
+        </record>
+
+        <menuitem
+            parent="company.menu_company"
+            sequence="30"
+            action="act_incoterm_form"
+            id="menu_incoterm"/>
+
+        <record model="ir.model.access" id="access_incoterm">
+            <field name="model" search="[('model', '=', 'incoterm.incoterm')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="incoterm.incoterm" id="incoterm_exw_2010">
+            <field name="name">Ex Works</field>
+            <field name="code">EXW</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fca_2010">
+            <field name="name">Free Carrier</field>
+            <field name="code">FCA</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cpt_2010">
+            <field name="name">Carriage Paid To</field>
+            <field name="code">CPT</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cip_2010">
+            <field name="name">Carriage and Insurance Paid To</field>
+            <field name="code">CIP</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_dat_2010">
+            <field name="name">Delivered at Terminal</field>
+            <field name="code">DAT</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_dap_2010">
+            <field name="name">Delivered at Place</field>
+            <field name="code">DAP</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_ddp_2010">
+            <field name="name">Delivered Duty Paid</field>
+            <field name="code">DDP</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fas_2010">
+            <field name="name">Free Alongside Ship</field>
+            <field name="code">FAS</field>
+            <field name="version">2010</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fob_2010">
+            <field name="name">Free On Board</field>
+            <field name="code">FOB</field>
+            <field name="version">2010</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cfr_2010">
+            <field name="name">Cost and Freight</field>
+            <field name="code">CFR</field>
+            <field name="version">2010</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cif_2010">
+            <field name="name">Cost Insurance and Freight</field>
+            <field name="code">CIF</field>
+            <field name="version">2010</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_exw_2020">
+            <field name="name">Ex Works</field>
+            <field name="code">EXW</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fca_2020">
+            <field name="name">Free Carrier</field>
+            <field name="code">FCA</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cpt_2020">
+            <field name="name">Carriage Paid To</field>
+            <field name="code">CPT</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cip_2020">
+            <field name="name">Carriage and Insurance Paid To</field>
+            <field name="code">CIP</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_dpu_2020">
+            <field name="name">Delivered at Place Unloaded</field>
+            <field name="code">DPU</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_dap_2020">
+            <field name="name">Delivered at Place</field>
+            <field name="code">DAP</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_ddp_2020">
+            <field name="name">Delivered Duty Paid</field>
+            <field name="code">DDP</field>
+            <field name="version">2020</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fas_2020">
+            <field name="name">Free Alongside Ship</field>
+            <field name="code">FAS</field>
+            <field name="version">2020</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fob_2020">
+            <field name="name">Free On Board</field>
+            <field name="code">FOB</field>
+            <field name="version">2020</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cfr_2020">
+            <field name="name">Cost and Freight</field>
+            <field name="code">CFR</field>
+            <field name="version">2020</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cif_2020">
+            <field name="name">Cost Insurance and Freight</field>
+            <field name="code">CIF</field>
+            <field name="version">2020</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+    </data>
+</tryton>

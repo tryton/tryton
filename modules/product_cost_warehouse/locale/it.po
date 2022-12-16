@@ -1,0 +1,85 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Prezzo di costo per magazzino"
+
+msgctxt "field:ir.cron,warehouses:"
+msgid "Warehouses"
+msgstr "Magazzini"
+
+msgctxt "field:ir.cron-stock.warehouse,cron:"
+msgid "Cron"
+msgstr "Operazione pianificata"
+
+msgctxt "field:ir.cron-stock.warehouse,warehouse:"
+msgid "Warehouse"
+msgstr "Magazzino"
+
+msgctxt "field:product.configuration,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Prezzo di costo per magazzino"
+
+msgctxt "field:product.configuration.cost_price_warehouse,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt ""
+"field:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Prezzo di costo per magazzino"
+
+msgctxt "field:product.cost_price,warehouse:"
+msgid "Warehouse"
+msgstr "Magazzino"
+
+msgctxt "field:product.cost_price,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Magazzino richiesto"
+
+msgctxt "field:product.cost_price.revision,warehouse:"
+msgid "Warehouse"
+msgstr "Magazzino"
+
+msgctxt "field:product.cost_price.revision,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Magazzino richiesto"
+
+msgctxt "field:stock.location,cost_warehouse:"
+msgid "Cost Warehouse"
+msgstr "Costo per magazzino"
+
+msgctxt "help:company.company,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Calcola il prezzo di costo del prodotto per ogni magazzino."
+
+msgctxt "help:ir.cron,warehouses:"
+msgid "Warehouses registered for this cron."
+msgstr "Magazzini registrati in questa operazione pianificata."
+
+msgctxt "help:product.configuration,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Calcola il prezzo di costo del prodotto per ogni magazzino."
+
+msgctxt ""
+"help:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Calcola il prezzo di costo del prodotto per ogni magazzino."
+
+msgctxt "model:ir.cron-stock.warehouse,name:"
+msgid "Cron - Warehouse"
+msgstr "Operazione pianificata - Magazzino"
+
+msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
+msgid ""
+"To move products between \"%(from_)s\" and \"%(to)s\", you must use the "
+"internal shipment transit location."
+msgstr ""
+"Per spostare i prodotti tra \"%(from_)s\" e \"%(to)s\", devi utilizzare il "
+"luogo di transito della movimentazione interna."
+
+msgctxt "model:product.configuration.cost_price_warehouse,name:"
+msgid "Product Configuration Cost Price per Warehouse"
+msgstr "Configurazione prezzo di costo del prodotto per magazzino"
