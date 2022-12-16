@@ -1,0 +1,290 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"."
+msgstr "Serija je obvezna pri prometu izdelka \"%s\"."
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Serija obvezna"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Serija obvezna"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Predloga"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Serija"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Predvidena količina"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "Na dan"
+
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "Na dan"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Serija"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Predpomnjene serije"
+
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Notranja količina"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Lokacija"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Serija"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Obdobje"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Tip lokacije, za katero je serija obvezna"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Tip lokacije, za katero je serija obvezna"
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Omogoča izračun predvidenih zalog na ta dan.\n"
+"* Prazno polje pomeni neskončno v prihodnost.\n"
+"* Pretekli datum daje zgodovino zaloge."
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Lots"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr "Lot"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Moves"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Predloga - Tip serije"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Serija"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Tip serije"
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Customer"
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Lost and Found"
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Storage"
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Supplier"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "Serija po lokaciji"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Predpomnjena obdobja po serijah"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Serije"
+
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Serija"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr "Serije"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Cache"
+msgstr "Predpomnjena serija po obdobjih"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Caches"
+msgstr "Predpomnjene serije po obdobjih"

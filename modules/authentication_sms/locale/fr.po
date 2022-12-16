@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user.login.sms_code:"
+msgid "%(name)s code %(code)s"
+msgstr "%(name)s code %(code)s"
+
+msgctxt "error:res.user:"
+msgid "Wrong mobile."
+msgstr "Mauvais mobile."
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "Mobile"
+
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:res.user.login.sms_code,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:res.user.login.sms_code,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:res.user.login.sms_code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.sms_code,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr "ID d'utilisateur"
+
+msgctxt "field:res.user.login.sms_code,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:res.user.login.sms_code,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS"
+msgstr "Numéro de téléphone qui support la réception de SMS"
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr "Code SMS"
