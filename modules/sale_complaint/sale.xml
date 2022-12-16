@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_complaint">
+            <field name="name">Customer Complaint</field>
+            <field name="code">sale.complaint</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_admin">
+            <field name="sequence_type" ref="sequence_type_complaint"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_complaint"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_complaint">
+            <field name="name">Customer Complaint</field>
+            <field name="code">sale.complaint</field>
+        </record>
+
+        <record model="ir.property" id="property_complaint_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'complaint_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_complaint'))"/>
+        </record>
+    </data>
+</tryton>

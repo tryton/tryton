@@ -1,0 +1,275 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.cultivar,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.cultivar,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
+msgctxt "field:product.cultivar,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cultivar,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr "Taxón"
+
+msgctxt "field:product.cultivar,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.cultivar,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr "Cultivar"
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr "Grupo"
+
+msgctxt "field:product.cultivar-product.cultivar.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:product.cultivar.group,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr "Cultivares"
+
+msgctxt "field:product.cultivar.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cultivar.group,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:product.taxon,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:product.taxon,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.taxon,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:product.taxon,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:product.taxon,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.taxon,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.taxon,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr "Cultivares"
+
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr "Grupos de cultivares"
+
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr "Taxones"
+
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr "Taxones"
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr "Cultivares"
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr "Grupos de Cultivares"
+
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr "Taxones"
+
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr "Taxones"
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr "Cultivar"
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr "Cultivar - Grupo de cultivar"
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr "Grupo de cultivar"
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr "Taxón"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr "Clase"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr "División"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr "Dominio"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr "Familia"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr "Forma"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr "Género"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr "Reino"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr "Orden"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr "Filo"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr "Sección"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr "Serie"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr "Especie"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr "Tribu"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr "Variedad"
+
+msgctxt "view:product.cultivar.group:"
+msgid "Cultivar Group"
+msgstr "Grupo de cultivar"
+
+msgctxt "view:product.cultivar.group:"
+msgid "Cultivar Groups"
+msgstr "Grupos de cultivares"
