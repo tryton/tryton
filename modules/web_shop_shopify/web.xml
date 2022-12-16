@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shop_view_form">
+            <field name="model">web.shop</field>
+            <field name="inherit" ref="web_shop.shop_view_form"/>
+            <field name="name">shop_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_stock_location_view_form">
+            <field name="model">web.shop-stock.location</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">shop_stock_location_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_stock_location_view_list">
+            <field name="model">web.shop-stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">shop_stock_location_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_shopify_identifier_view_form">
+            <field name="model">web.shop.shopify_identifier</field>
+            <field name="type">form</field>
+            <field name="name">shop_shopify_identifier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_shopify_identifier_view_list">
+            <field name="model">web.shop.shopify_identifier</field>
+            <field name="type">tree</field>
+            <field name="name">shop_shopify_identifier_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shop_shopify_identifier_form">
+            <field name="name">Shopify Identifiers</field>
+            <field name="res_model">web.shop.shopify_identifier</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_shop_shopify_identifier_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="shop_shopify_identifier_view_list"/>
+            <field name="act_window" ref="act_shop_shopify_identifier_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_shop_shopify_identifier_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="shop_shopify_identifier_view_form"/>
+            <field name="act_window" ref="act_shop_shopify_identifier_form"/>
+        </record>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_shop_shopify_identifier_form"
+            sequence="50"
+            id="menu_shop_shopify_identifier_form"/>
+
+        <record model="ir.model.access" id="access_shop_shopify_identifier">
+            <field name="model" search="[('model', '=', 'web.shop.shopify_identifier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shop_shopify_identifier_admin">
+            <field name="model" search="[('model', '=', 'web.shop.shopify_identifier')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shop_shopify_identifier_set_to_update_button">
+            <field name="name">set_to_update</field>
+            <field name="string">Set to Update</field>
+            <field name="model" search="[('model', '=', 'web.shop.shopify_identifier')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="shop_shopify_payment_journal_view_form">
+            <field name="model">web.shop.shopify_payment_journal</field>
+            <field name="type">form</field>
+            <field name="name">shop_shopify_payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_shopify_payment_journal_view_list">
+            <field name="model">web.shop.shopify_payment_journal</field>
+            <field name="type">tree</field>
+            <field name="name">shop_shopify_payment_journal_list</field>
+        </record>
+    </data>
+</tryton>
