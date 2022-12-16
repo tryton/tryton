@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Deposito"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Contraseña"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Servidor"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "Identificador de usuario"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "Credencial DPD"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Crear envíos DPD para paquetes"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Credenciales DPD"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr "La identificación DPD ha fallado con las credenciales \"%(credential)s\"."
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"La llamada al servicio web DPD ha fallado con el siguiente mensaje de error:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+"No puede crear el envío para el albarán \"%(shipment)s\" porque ya tiene un "
+"número de referencia."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
+"Para validar el albarán \"%(shipment)s\" debe establecer una dirección en el"
+" almacén \"%(warehouse)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Credenciales DPD"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "Pruebas"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Information"
+msgstr "Información de las credenciales"

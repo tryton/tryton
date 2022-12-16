@@ -1,0 +1,442 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:marketing.automation.activity,action:"
+msgid "Action"
+msgstr "Aktion"
+
+msgctxt "field:marketing.automation.activity,children:"
+msgid "Children"
+msgstr "Untergeordnet"
+
+msgctxt "field:marketing.automation.activity,condition:"
+msgid "Condition"
+msgstr "Bedingung"
+
+msgctxt "field:marketing.automation.activity,delay:"
+msgid "Delay"
+msgstr "Verzögerung"
+
+msgctxt "field:marketing.automation.activity,email_clicked:"
+msgid "E-Mails Clicked"
+msgstr "Angeklickte E-Mails"
+
+msgctxt "field:marketing.automation.activity,email_from:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:marketing.automation.activity,email_opened:"
+msgid "E-Mails Opened"
+msgstr "Geöffnete E-Mails"
+
+msgctxt "field:marketing.automation.activity,email_template:"
+msgid "E-Mail Template"
+msgstr "E-Mail Vorlage"
+
+msgctxt "field:marketing.automation.activity,email_title:"
+msgid "E-Mail Title"
+msgstr "E-Mail Titel"
+
+msgctxt "field:marketing.automation.activity,event:"
+msgid "Event"
+msgstr "Ereignis"
+
+msgctxt "field:marketing.automation.activity,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:marketing.automation.activity,negative:"
+msgid "Negative"
+msgstr "Negativ"
+
+msgctxt "field:marketing.automation.activity,on:"
+msgid "On"
+msgstr "Bei"
+
+msgctxt "field:marketing.automation.activity,parent:"
+msgid "Parent"
+msgstr "Übergeordnet"
+
+msgctxt "field:marketing.automation.activity,parent_action:"
+msgid "Parent Action"
+msgstr "Übergeordnete Aktion"
+
+msgctxt "field:marketing.automation.activity,record_count:"
+msgid "Records"
+msgstr "Datensätze"
+
+msgctxt "field:marketing.automation.record,blocked:"
+msgid "Blocked"
+msgstr "Gesperrt"
+
+msgctxt "field:marketing.automation.record,record:"
+msgid "Record"
+msgstr "Datensatz"
+
+msgctxt "field:marketing.automation.record,scenario:"
+msgid "Scenario"
+msgstr "Szenario"
+
+msgctxt "field:marketing.automation.record,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:marketing.automation.record.activity,activity:"
+msgid "Activity"
+msgstr "Aktivität"
+
+msgctxt "field:marketing.automation.record.activity,activity_action:"
+msgid "Activity Action"
+msgstr "Aktivität Aktion"
+
+msgctxt "field:marketing.automation.record.activity,at:"
+msgid "At"
+msgstr "Um"
+
+msgctxt "field:marketing.automation.record.activity,email_clicked:"
+msgid "E-Mail Clicked"
+msgstr "Angeklickte E-Mail"
+
+msgctxt "field:marketing.automation.record.activity,email_opened:"
+msgid "E-Mail Opened"
+msgstr "Geöffnete E-Mail"
+
+msgctxt "field:marketing.automation.record.activity,record:"
+msgid "Record"
+msgstr "Datensatz"
+
+msgctxt "field:marketing.automation.record.activity,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:marketing.automation.scenario,activities:"
+msgid "Activities"
+msgstr "Aktivitäten"
+
+msgctxt "field:marketing.automation.scenario,domain:"
+msgid "Domain"
+msgstr "Wertebereich (Domain)"
+
+msgctxt "field:marketing.automation.scenario,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:marketing.automation.scenario,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:marketing.automation.scenario,record_count:"
+msgid "Records"
+msgstr "Datensätze"
+
+msgctxt "field:marketing.automation.scenario,record_count_blocked:"
+msgid "Records Blocked"
+msgstr "Blockierte Datensätze"
+
+msgctxt "field:marketing.automation.scenario,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "help:marketing.automation.activity,condition:"
+msgid ""
+"The PYSON statement that the record must match in order to execute the activity.\n"
+"The record is represented by \"self\"."
+msgstr ""
+"Der PYSON Ausdruck, dem der Datensatz entsprechen muss, damit die Aktivität ausgeführt wird.\n"
+"Der Datensatz wird durch \"self\" repräsentiert."
+
+msgctxt "help:marketing.automation.activity,delay:"
+msgid "After how much time the action should be executed."
+msgstr "Nach welcher Zeit die Aktion ausgeführt werden soll."
+
+msgctxt "help:marketing.automation.activity,email_from:"
+msgid "Leave empty to use the value defined in the configuration file."
+msgstr "Leer lassen, um den Wert aus der Konfigurationsdatei zu verwenden."
+
+msgctxt "help:marketing.automation.activity,email_template:"
+msgid ""
+"The HTML content of the E-mail.\n"
+"The Genshi syntax can be used with 'record' in the evaluation context."
+msgstr ""
+"Der HTML Content der E-Mail.\n"
+"Die Genshi Syntax kann mit 'record' im Evaluierungskontext verwendet werden."
+
+msgctxt "help:marketing.automation.activity,email_title:"
+msgid ""
+"The subject of the email.\n"
+"The Genshi syntax can be used with 'record' in the evaluation context."
+msgstr ""
+"Der Betreff der E-Mail.\n"
+"Die Genshi Syntax kann mit 'record' im Evaluierungskontext verwendet werden."
+
+msgctxt "help:marketing.automation.activity,negative:"
+msgid ""
+"Check to execute the activity if the event has not happened by the end of "
+"the delay."
+msgstr ""
+"Aktivieren um die Aktivität auszulösen, wenn das Ereignis nach Ablauf des "
+"Verzögerungszeitraums noch nicht eingetreten ist."
+
+msgctxt "help:marketing.automation.scenario,domain:"
+msgid "A PYSON domain used to filter records valid for this scenario."
+msgstr ""
+"Ein PYSON Wertebereich (Domain) zum Filtern der Datensätze, die diesem "
+"Szenario entsprechen."
+
+msgctxt "model:ir.action,name:act_activity_tree"
+msgid "Activities"
+msgstr "Aktivitäten"
+
+msgctxt "model:ir.action,name:act_record_activity_form"
+msgid "Record Activities"
+msgstr "Datensatzaktivitäten"
+
+msgctxt "model:ir.action,name:act_record_form"
+msgid "Records"
+msgstr "Datensätze"
+
+msgctxt "model:ir.action,name:act_scenario_form"
+msgid "Scenarios"
+msgstr "Szenarien"
+
+msgctxt "model:ir.action,name:report_unsubscribe"
+msgid "Marketing Automation Unsubscribe"
+msgstr "Abmeldung Marketingautomatisierung"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_waiting"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt "model:ir.action.act_window.domain,name:act_scenario_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_running"
+msgid "Running"
+msgstr "In Ausführung"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_stopped"
+msgid "Stopped"
+msgstr "Gestoppt"
+
+msgctxt "model:ir.message,text:msg_activity_invalid_condition"
+msgid ""
+"Invalid condition \"%(condition)s\" in activity \"%(activity)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ungültige Bedingung \"%(condition)s\" in Aktiviät \"%(activity)s\" mit "
+"Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_invalid_email_template"
+msgid ""
+"Invalid e-mail template in activity \"%(activity)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Ungültige E-Mail Vorlage in Aktivität \"%(activity)s\" mit Fehler "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_invalid_email_title"
+msgid ""
+"Invalid e-mail title in activity \"%(activity)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Ungültiger E-Mail Betreff in Aktivität \"%(activity)s\" mit Fehler "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_record_unique"
+msgid "Record Activity must be unique by record and activity."
+msgstr ""
+"Eine Datensatzaktivität kann es je Datensatz und Aktivität nur einmal geben."
+
+msgctxt "model:ir.message,text:msg_record_scenario_record_unique"
+msgid "Record must be unique by scenario."
+msgstr "Es kann je Szenario nur einen Datensatz geben."
+
+msgctxt "model:ir.message,text:msg_record_uuid_unique"
+msgid "UUID of record must be unique."
+msgstr "Die UUID des Datensatzes existiert bereits."
+
+msgctxt "model:ir.message,text:msg_scenario_invalid_domain"
+msgid "Invalid domain in scenario \"%(scenario)s\" with exception \"%(exception)s\"."
+msgstr ""
+"Ungültiger Wertebereich (Domain) in Szenario \"%(scenario)s\" mit Fehler "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:record_activity_on_email_clicked_button"
+msgid "E-Mail Clicked"
+msgstr "E-Mail angeklickt"
+
+msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
+msgid "E-Mail Opened"
+msgstr "E-Mail geöffnet"
+
+msgctxt "model:ir.model.button,string:scenario_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:scenario_run_button"
+msgid "Run"
+msgstr "Ausführen"
+
+msgctxt "model:ir.model.button,string:scenario_stop_button"
+msgid "Stop"
+msgstr "Stopp"
+
+msgctxt "model:ir.ui.menu,name:menu_scenario_form"
+msgid "Scenarios"
+msgstr "Szenarien"
+
+msgctxt "model:marketing.automation.activity,name:"
+msgid "Marketing Activity"
+msgstr "Marketingaktivität"
+
+msgctxt "model:marketing.automation.record,name:"
+msgid "Marketing Record"
+msgstr "Marketingdatensatz"
+
+msgctxt "model:marketing.automation.record.activity,name:"
+msgid "Marketing Record Activity"
+msgstr "Marketing Datensatzaktivität"
+
+msgctxt "model:marketing.automation.scenario,name:"
+msgid "Marketing Scenario"
+msgstr "Marketing Szenario"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "Unsubscribe"
+msgstr "Abmelden"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid ""
+"We are sorry to see you go, and apologize if we have overwhelmed your inbox."
+msgstr ""
+"Wir bedauern Ihre Abmeldung und entschuldigen uns sofern wir Ihren "
+"Posteingang überflutet haben sollten."
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "You are unsubscribed"
+msgstr "Sie sind abgemeldet"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "You have been successfully unsubscribed from this kind of email."
+msgstr "Sie haben sich für diese Art von E-Mails erfolgreich abgemeldet."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Process Marketing Activity"
+msgstr "Marketingaktivitäten ausführen"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Trigger Marketing Scenarios"
+msgstr "Marketingszenarios auslösen"
+
+msgctxt "selection:marketing.automation.activity,action:"
+msgid "Send E-Mail"
+msgstr "E-Mail senden"
+
+msgctxt "selection:marketing.automation.activity,event:"
+msgid "E-Mail Clicked"
+msgstr "E-Mail angeklickt"
+
+msgctxt "selection:marketing.automation.activity,event:"
+msgid "E-Mail Opened"
+msgstr "E-Mail geöffnet"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Clicked"
+msgstr "E-Mail angeklickt"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Not Clicked"
+msgstr "E-Mail nicht angeklickt"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Not Opened"
+msgstr "E-Mail nicht geöffnet"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Opened"
+msgstr "E-Mail geöffnet"
+
+msgctxt "selection:marketing.automation.activity,parent:"
+msgid "Activity"
+msgstr "Aktivität"
+
+msgctxt "selection:marketing.automation.activity,parent:"
+msgid "Scenario"
+msgstr "Szenario"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Running"
+msgstr "In Ausführung"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Stopped"
+msgstr "Gestoppt"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "After"
+msgstr "Nach"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "If"
+msgstr "Wenn"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "On"
+msgstr "Bei"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Template:"
+msgstr "Vorlage:"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Title:"
+msgstr "Titel:"
+
+msgctxt "view:marketing.automation.record.activity:"
+msgid "Time"
+msgstr "Zeit"

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//label[@name='unit_price']" position="before">
+        <label name="base_price"/>
+        <field name="base_price" symbol="currency"/>
+        <label id="discount" string="Discount"/>
+        <group col="-1" id="discounts">
+            <group col="-1" id="discount_rate">
+                <field name="discount_rate" factor="100" xexpand="0"/>
+                <label name="discount_rate" string="%" xalign="0.0" xexpand="1"/>
+            </group>
+            <field name="discount_amount" symbol="currency"/>
+        </group>
+    </xpath>
+</data>

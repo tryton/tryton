@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="sale" expand="1"/>
+    <field name="description" expand="1"/>
+    <field name="account" expand="1"/>
+    <field name="invoice_delay"/>
+    <field name="block_supply"/>
+    <field name="block_shipping"/>
+    <field name="amount"/>
+</tree>
