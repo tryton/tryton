@@ -1,0 +1,364 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "Offerte-aanvraag inkoopaanvraag"
+
+msgctxt ""
+"field:purchase.configuration.sequence,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "Offerte-aanvraag inkoopaanvraag"
+
+msgctxt "field:purchase.request,best_quotation_line:"
+msgid "Best Quotation Line"
+msgstr "Beste offertelijn"
+
+msgctxt "field:purchase.request,preferred_quotation_line:"
+msgid "Preferred Quotation Line"
+msgstr "Gewenste offertelijn"
+
+msgctxt "field:purchase.request,quotation_lines:"
+msgid "Quotation Lines"
+msgstr "Offertelijnen"
+
+msgctxt "field:purchase.request,quotation_lines_active:"
+msgid "Active Quotation Lines"
+msgstr "Actieve Offertelijnen"
+
+msgctxt "field:purchase.request.quotation,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:purchase.request.quotation,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:purchase.request.quotation,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:purchase.request.quotation,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:purchase.request.quotation,revision:"
+msgid "Revision"
+msgstr "Herziening"
+
+msgctxt "field:purchase.request.quotation,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:purchase.request.quotation,supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "field:purchase.request.quotation,supplier_address:"
+msgid "Supplier Address"
+msgstr "Adres leverancier"
+
+msgctxt "field:purchase.request.quotation,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
+msgid "Suppliers"
+msgstr "Leverancier"
+
+msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
+msgid "Number of Created Quotations"
+msgstr "Aantal gemaakte offertes"
+
+msgctxt "field:purchase.request.quotation.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:purchase.request.quotation.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:purchase.request.quotation.line,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:purchase.request.quotation.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:purchase.request.quotation.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Poduct maateenheid categorie"
+
+msgctxt "field:purchase.request.quotation.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:purchase.request.quotation.line,quotation:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "field:purchase.request.quotation.line,quotation_state:"
+msgid "Quotation State"
+msgstr "Offerte status"
+
+msgctxt "field:purchase.request.quotation.line,request:"
+msgid "Request"
+msgstr "Verzoek"
+
+msgctxt "field:purchase.request.quotation.line,supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "field:purchase.request.quotation.line,supply_date:"
+msgid "Supply Date"
+msgstr "Leveringsdatum"
+
+msgctxt "field:purchase.request.quotation.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:purchase.request.quotation.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:purchase.request.quotation.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "help:purchase.request,preferred_quotation_line:"
+msgid ""
+"The quotation that will be chosen to create the purchase\n"
+"otherwise first ordered received quotation line will be selected."
+msgstr ""
+"De offerte die gebruikt wordt om de aankoop te maken\n"
+"anders wordt de eerste  offertelijn geselecteerd."
+
+msgctxt "help:purchase.request.quotation,number:"
+msgid "The unique identifier of the quotation."
+msgstr "De unieke id van de offerte."
+
+msgctxt "help:purchase.request.quotation,reference:"
+msgid "The reference used by the supplier."
+msgstr "De referentie die door de leverancier wordt gebruikt."
+
+msgctxt "help:purchase.request.quotation,revision:"
+msgid "Number incremented each time the quotation is sent."
+msgstr "Nummer dat verhoogd wordt elke keer een offerte verzonden wordt ."
+
+msgctxt "help:purchase.request.quotation.line,request:"
+msgid "The request which this line belongs to."
+msgstr "Het verzoek waartoe deze regel behoort."
+
+msgctxt "help:purchase.request.quotation.line,supply_date:"
+msgid "When it should be delivered."
+msgstr "Wanneer het moet worden afgeleverd."
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Quotations"
+msgstr "offertes"
+
+msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "Aankoopaanvraag Offertes"
+
+msgctxt "model:ir.action,name:report_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Aankoopaanvraag Offertes"
+
+msgctxt "model:ir.action,name:wizard_create_quotation"
+msgid "Create Quotation"
+msgstr "Offerte maken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
+msgid "Sent"
+msgstr "Verzonden"
+
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "Er is al een offerte gemaakt voor aanvraag \"%(request)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Aankoopaanvraag Offerte"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Aankoopaanvraag Offerte"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "Aankoopaanvraag Offertes"
+
+msgctxt "model:purchase.request.quotation,name:"
+msgid "Purchase Request For Quotation"
+msgstr "Offerteaanvraag"
+
+msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
+msgid "Create Purchase Request Quotation Ask Suppliers"
+msgstr "aanmaken Offerte aanvraagleveranciers"
+
+msgctxt "model:purchase.request.quotation.create.succeed,name:"
+msgid "Create Purchase Request Quotation Succeed"
+msgstr "aanmaken Offerte aanvraagleveranciers geslaagd"
+
+msgctxt "model:purchase.request.quotation.line,name:"
+msgid "Purchase Request For Quotation Line"
+msgstr "offerteaanvraag lijn"
+
+msgctxt "report:purchase.request.quotation:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Customer Code:"
+msgstr "Klantencode:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Delivery Address:"
+msgstr "Leveringsadres:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Expected Supply Date"
+msgstr "Verwachte leverdatum"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Purchase"
+msgstr "Aankoop"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Reference:"
+msgstr "Referentie:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Request for Quotation N°:"
+msgstr "Offerte-aanvraagnummer:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Revision:"
+msgstr "Revisie :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Received"
+msgstr "Ontvangen"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Received"
+msgstr "Ontvangen"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Rejected"
+msgstr "Verworpen"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Sent"
+msgstr "Verzonden"
+
+msgctxt "view:purchase.request.quotation.line:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Other Info"
+msgstr "Overige informatie"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Receive"
+msgstr "Te ontvangen"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Reject"
+msgstr "afwijzen"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Send"
+msgstr "Sturen"
+
+msgctxt "view:purchase.request:"
+msgid "Preferred Quotation:"
+msgstr "Gewenste offerte:"
+
+msgctxt "view:purchase.request:"
+msgid "Quotations"
+msgstr "offertes"
+
+msgctxt ""
+"wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
+msgid "Close"
+msgstr "Sluiten"
