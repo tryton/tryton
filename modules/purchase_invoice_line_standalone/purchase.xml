@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_line_invoice_type">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="30"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Lines">
+                    <field name="invoice"/>
+                    <field name="invoice_type"/>
+                    <field name="type"/>
+                    <field name="product"/>
+                    <field name="account"/>
+                    <field name="description"/>
+                    <field name="quantity"/>
+                    <field name="unit"/>
+                    <field name="unit_price"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page/field[@name=&quot;invoices&quot;]"
+                        position="after">
+                        <field name="invoice_lines" colspan="4" view_ids="purchase_invoice_line_standalone.invoice_line_invoice_type"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
