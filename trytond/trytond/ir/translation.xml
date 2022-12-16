@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="translation_view_form">
+            <field name="model">ir.translation</field>
+            <field name="type">form</field>
+            <field name="name">translation_form</field>
+        </record>
+        <record model="ir.ui.view" id="translation_view_tree">
+            <field name="model">ir.translation</field>
+            <field name="type">tree</field>
+            <field name="name">translation_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_translation_form">
+            <field name="name">Translations</field>
+            <field name="res_model">ir.translation</field>
+            <field name="domain" eval="None"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_module">
+            <field name="name">Modules</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('module', '!=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_local">
+            <field name="name">Local</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('module', '=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_translation_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="translation_view_tree"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_translation_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="translation_view_form"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_form"
+            sequence="20"
+            id="menu_translation_form"/>
+
+        <record model="ir.action.wizard" id="wizard_translation_report">
+            <field name="name">Translations</field>
+            <field name="wiz_name">ir.translation.report</field>
+            <field name="model">ir.action.report</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_translation_report_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="wizard_translation_report"/>
+        </record>
+        <record model="ir.action.act_window" id="act_translation_report">
+            <field name="name">Translations</field>
+            <field name="res_model">ir.translation</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_set_start_view_form">
+            <field name="model">ir.translation.set.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_set_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_set_succeed_view_form">
+            <field name="model">ir.translation.set.succeed</field>
+            <field name="type">form</field>
+            <field name="name">translation_set_succeed_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_set">
+            <field name="name">Set Translations</field>
+            <field name="wiz_name">ir.translation.set</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_set"
+            sequence="90"
+            id="menu_translation_set"/>
+
+        <record model="ir.ui.view" id="translation_clean_start_view_form">
+            <field name="model">ir.translation.clean.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_clean_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_clean_succeed_view_form">
+            <field name="model">ir.translation.clean.succeed</field>
+            <field name="type">form</field>
+            <field name="name">translation_clean_succeed_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_clean">
+            <field name="name">Clean Translations</field>
+            <field name="wiz_name">ir.translation.clean</field>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_clean"
+            sequence="91"
+            id="menu_translation_clean"/>
+
+        <record model="ir.ui.view" id="translation_update_start_view_form">
+            <field name="model">ir.translation.update.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_update_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_update">
+            <field name="name">Synchronize Translations</field>
+            <field name="wiz_name">ir.translation.update</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_update"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_update"/>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_update"
+            sequence="92"
+            id="menu_translation_update"/>
+
+        <record model="ir.ui.view" id="translation_export_start_view_form">
+            <field name="model">ir.translation.export.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_export_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_export_result_view_form">
+            <field name="model">ir.translation.export.result</field>
+            <field name="type">form</field>
+            <field name="name">translation_export_result_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_export">
+            <field name="name">Export Translations</field>
+            <field name="wiz_name">ir.translation.export</field>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_export"
+            sequence="93"
+            id="menu_translation_export"/>
+    </data>
+</tryton>
