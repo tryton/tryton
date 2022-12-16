@@ -1,0 +1,1340 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "نحوه پرداخت مشتری"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "نحوه پرداخت مشتری"
+
+msgctxt "field:account.fiscalyear,invoice_sequences:"
+msgid "Invoice Sequences"
+msgstr "دنباله های صورتحساب"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "ادامه یاداشت خرید(اعتباری) تأمیین کننده"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "ادامه صورتحساب تأمیین کننده"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "ادامه یاداشت خرید(اعتباری) مشتری"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "ادامه صورتحساب مشتری"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "تاریخ حسابداری"
+
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Cancel the invoice"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "مبلغ پرداختی"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "مبلغ پرداختی امروز"
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
+msgstr "لغو جابجایی"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr "شرکت نهاد/سازمان"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "تاریخ ارز"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "آدرس صورتحساب"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "تاریخ صورت حساب"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "گزارش صورت حساب"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "شناسه گزارش صورت حساب"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "فرمت گزارش فاکتور"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "خطوط پرداخت"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "عدد"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "مبداء"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "شناسه مالیاتی نهاد/سازمان"
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "خطوط پرداخت"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "نحوه پرداخت"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr "مغایرت گیری شده"
+
+#, fuzzy
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "خطوط پرداخت"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+#, fuzzy
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "شناسه مالیاتی"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "خطوط مالیات"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "مجموع"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "بدون اعمال مالیات"
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr "حساب فاکتور"
+
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "صورتحساب نهاد/سازمان"
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "خط پرداخت"
+
+#, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "تاریخ صورت حساب"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr "با بازپرداخت"
+
+msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
+msgid "With Refund Allowed"
+msgstr "با بازپرداخت مجاز است"
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "وضعیت صورت حساب"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr "مالیات های صورتحساب"
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr "نوع صورتحساب"
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "دسته بندی واحد اندازه گیری محصول"
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "مالیات ها"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
+msgstr "مالیات ها"
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr "مبلغ پرداختی"
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr "مقدار نوسان"
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "واحد پول پرداخت"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr "نوسانات واحد پول"
+
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "خطوط پرداخت"
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "خطوط پرداخت"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "قلم زده شده"
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "حساب فاکتور"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "روش پرداخت"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "حساب اعتباری"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "حساب پیش خرید بدهکاری"
+
+msgctxt "field:account.invoice.payment.method,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr "تقسیم کننده"
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr "نسبت"
+
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr "دلتاها"
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
+msgid "Day of Month"
+msgstr "روز ماه"
+
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
+msgid "Number of Days"
+msgstr "تعداد روزها"
+
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
+msgid "Payment Term Line"
+msgstr "خط شرایط پرداخت"
+
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
+msgid "Month"
+msgstr "ماه"
+
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
+msgid "Number of Months"
+msgstr "تعداد ماه ها"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
+msgid "Day of Week"
+msgstr "روز از هفته"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
+msgid "Number of Weeks"
+msgstr "تعداد هفته ها"
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "نتیجه"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr "پایه"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "وضعیت صورت حساب"
+
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "اطلاع قانونی"
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "شماره دنباله"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr "صورتحساب پرداخت"
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr "صورتحساب پرداخت ها"
+
+#, fuzzy
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "صورتحساب های مشتری"
+
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:party.contact_mechanism,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "نحوه پرداخت مشتری"
+
+msgctxt "field:party.party,payment_terms:"
+msgid "Payment Terms"
+msgstr "دوره های پرداخت"
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "نحوه پرداخت تامین کننده"
+
+msgctxt "field:party.party.payment_term,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "نحوه پرداخت مشتری"
+
+msgctxt "field:party.party.payment_term,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.payment_term,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "نحوه پرداخت تامین کننده"
+
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be cancelled."
+msgstr "اگر درست باشد، صورتحساب های فعلی پرداخت خواهد شد."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
+
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
+msgstr ""
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr ""
+
+msgctxt "model:account.fiscalyear.invoice_sequence,name:"
+msgid "Invoice Sequence"
+msgstr "صف فاکتور"
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "خط پرداخت - صورتحساب"
+
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "آدرس صورتحساب"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice"
+msgstr "صورتحساب خرید(اعتباری)"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "مالیات - خط صورتحساب"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr "پرداخت صورتحساب"
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr "پرداخت صورتحساب"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "روش پرداخت"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "خط شرایط پرداخت"
+
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr "خط شرایط پرداخت مربوط به دلتا"
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr "شرایط پرداخت آزمایشی"
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr "شرایط پرداخت آزمایشی"
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr "مالیات صورتحساب"
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.action,name:act_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "صورت حسابهای تامین کننده"
+
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "صورتحساب های مشتری"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "روش پرداخت صورتحساب"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "دوره های پرداخت"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "خطوط پرداخت"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr "پرداخت صورتحساب"
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr "شرایط پرداخت آزمایشی"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان : \"%(party)s\"را حذف کنید هنگامی که با شرکت : "
+"\"%(company)s\"صورتحساب معوقه دارد."
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr ""
+"شما نمی توانید صورتحساب : \"%(invoice)s\" را بازپرداخت شده کنید، چرا که "
+"ارسال نشده است."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
+msgstr ""
+"شما نمیتوانید صورتحساب مشتری : \"%(invoice)s\" را لغو کنید، چراکه آن ارسال "
+"شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr ""
+"شما نمیتوانید صورتحساب : \"%(invoice)s\" را حذف کنید چراکه آن یک شماره دارد."
+
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"شما نمیتوانید یک سطر به صورتحساب : \"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
+" یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+"شما نمیتوانید سطر: \"%(line)s\" را تغییر دهید، زیرا صورتحساب : \"٪s\" ارسال،"
+" پرداخت و یا لغو شده است."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr "یک سطر پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr ""
+"شما نمیتوانید صورتحساب\"٪s\" را تغییر دهید، زیرا آن ارسال، پرداخت و یا لغو "
+"شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr ""
+"برای ارسال صورتحساب : \"%(invoice)s\"،شما باید یک دنباله در سال مالی : "
+"\"%(fiscalyear)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr ""
+"شما نمی توانید صورتحساب : \"%(invoice)s\" را بازپرداخت شده کنید، چرا که "
+"ارسال نشده است."
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr ""
+"شما نمیتوانید یک پرداخت جزئی به صورتحساب : \"%(invoice)s\" با مقدار بیشتر از"
+" مبلغ پرداختی: \"%(amount_to_pay)s\" اضافه کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr "یک سطر پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr ""
+"شما نمی توانید سطرهای پرداخت را در صورتحساب : \"%(invoice)s\"پرداخت شده، "
+"اضافه / حذف کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+"مبلغ سطرهای پرداخت در صورتحساب :\"%s\" نمیتوانند بزرگتراز مجموع مبلغ "
+"صورتحساب باشد."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(line)s\"."
+msgstr ""
+"شما نمیتوانید از همان حساب : \"%(account)s\" بر صورتحساب : \"%(invoice)s\" و"
+" روی سطر:\"%(lines)s\" استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"شما نمیتوانید مالیات را به صورتحساب\"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
+" یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr ""
+"مالیات بر صورتحساب: \"%(invoice)s\" غیر معتبر است،شما باید آن را دوباره "
+"ذخیره کنید تا مجبور شوید آنها را مجددا محاسبه کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+"شما نمیتوانید مالیات : \"%(tax)s\" را تغیردهید، زیرا صورتحساب: \"٪s\" ارسال،"
+" پرداخت و یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr "ضریب و تقسیم کننده در سطر: \"%(line)s\" سازگارنیستند."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr ""
+"برای صرفه جویی در مدت پرداخت: \"%(payment_term)s\" شما باید یک سطر\"یادآوری "
+"آخر\" اضافه کنید."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr ""
+"برای محاسبه مدت، شما باید یک سطر یادآوری ،بر روی مدت پرداخت: "
+"\"%(payment_term)s\" اضافه کنید."
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "Are you sure to cancel the invoice?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
+msgstr "Are you sure to cancel the invoice?"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Cancel the invoice"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr "Also known as Pro Forma"
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Pay"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "صورت حسابهای تامین کننده"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "صورتحساب های مشتری"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "روش پرداخت صورتحساب"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "دوره های پرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr "شرایط پرداخت آزمایشی"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "دوره های پرداخت"
+
+msgctxt "model:party.party.payment_term,name:"
+msgid "Party Payment Term"
+msgstr "مدت پرداخت نهاد/سازمان"
+
+msgctxt "report:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.invoice:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "report:account.invoice:"
+msgid "Base"
+msgstr "پایه"
+
+msgctxt "report:account.invoice:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "report:account.invoice:"
+msgid "Date:"
+msgstr "تاریخ:"
+
+msgctxt "report:account.invoice:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "report:account.invoice:"
+msgid "Description:"
+msgstr "توضیحات :"
+
+msgctxt "report:account.invoice:"
+msgid "Draft Invoice"
+msgstr "پیش نویس صورتحساب"
+
+msgctxt "report:account.invoice:"
+msgid "Invoice N°:"
+msgstr "صورتحساب N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+msgctxt "report:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr "صورتحساب پیش فاکتور"
+
+msgctxt "report:account.invoice:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:account.invoice:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "صورتحساب تامین کننده N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes:"
+msgstr "مالیات ها :"
+
+msgctxt "report:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "مجموع (بدون احتساب مالیات) :"
+
+msgctxt "report:account.invoice:"
+msgid "Total:"
+msgstr "مجموع :"
+
+msgctxt "report:account.invoice:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "پرداخت شده"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Posted"
+msgstr "ارسال شده"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr "خط"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr "زیرمجموع"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr "عنوان"
+
+#, fuzzy
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "پرداخت"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr "پرداخت جزئی"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr "سوخت شده"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr "درست شد"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr "درصد باقیمانده"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr "درصد مجموع"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr "باقيمانده"
+
+#, fuzzy
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit these/this invoice(s)?"
+msgstr "آیا شما برای خرید(اعتباری) این صورتحساب(ها) اطمینان دارید؟"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr "یادداشت ها"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "پرداخت"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier:"
+msgstr "شناسه مالیاتی:"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr "دوره های پرداخت"
+
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "بسته"

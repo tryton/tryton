@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="ru">
+
+        <record id="account_type_template_asset_current_inventories_ru" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Инвентаризация</field>
+            
+            <field name="parent" ref="account.account_type_template_asset_current_ru"/>
+            <field name="statement">balance</field>
+            <field name="stock" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record id="account_template_stock_ru" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Хранилище</field>
+            
+            <field name="type" ref="account_type_template_asset_current_inventories_ru"/>
+            <field name="parent" ref="account.account_template_root_ru"/>
+        </record>
+
+        <record id="account_type_template_stock_expense_ru" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Расходы на акции</field>
+            
+            <field name="parent" ref="account.account_type_template_expense_ru"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="30"/>
+            <field name="stock" eval="True"/>
+        </record>
+
+        <record id="account_template_stock_expense_ru" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Расходы на акции</field>
+            
+            <field name="type" ref="account_type_template_stock_expense_ru"/>
+            <field name="parent" ref="account.account_template_root_ru"/>
+        </record>
+    </data>
+</tryton>

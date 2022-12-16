@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='default_account_payable']"
+        position="after">
+        <separator string="Credit Limit" colspan="4" id="credit_limit"/>
+        <newline/>
+        <label name="default_credit_limit_amount"/>
+        <field name="default_credit_limit_amount"/>
+        <newline/>
+    </xpath>
+</data>
