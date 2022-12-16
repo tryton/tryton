@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="inherit" ref="carrier.carrier_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id='carrier']/field[@name='carrier_cost_method']"
+                        position="after">
+                        <newline/>
+                        <label name="weight_uom"/>
+                        <field name="weight_uom"/>
+                        <label name="weight_currency"/>
+                        <field name="weight_currency"/>
+                        <field name="weight_price_list" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="carrier_view_form2">
+            <field name="model">carrier</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="carrier.carrier_view_form2"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/field[@name='carrier_cost_method']"
+                        position="after">
+                        <newline/>
+                        <label name="weight_uom"/>
+                        <field name="weight_uom"/>
+                        <label name="weight_currency"/>
+                        <field name="weight_currency"/>
+                        <field name="weight_price_list" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="weight_price_list_view_form">
+            <field name="model">carrier.weight_price_list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Carrier Weight Price List">
+                    <label name="carrier"/>
+                    <field name="carrier"/>
+                    <newline/>
+                    <label name="weight"/>
+                    <field name="weight"/>
+                    <label name="price"/>
+                    <field name="price"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="weight_price_list_view_tree">
+            <field name="model">carrier.weight_price_list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Carrier Weight Price Lists">
+                    <field name="carrier"/>
+                    <field name="weight"/>
+                    <field name="price"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
