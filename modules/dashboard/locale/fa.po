@@ -1,0 +1,55 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "اقدامات میزکار"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "چیدمان میزکار"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "اقدام میزکار"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "ميزكار"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "ميزكار"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "چهارگوش"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "قفسه پایین"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "قفسه چپ"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "قفسه راست"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "قفسه بالا"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "ميزكار"

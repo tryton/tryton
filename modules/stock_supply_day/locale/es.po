@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:"
+msgid "Week Days"
+msgstr "Días de la semana"
+
+msgctxt "field:purchase.product_supplier.day,day:"
+msgid "Day"
+msgstr "Día"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "model:purchase.product_supplier.day,name:"
+msgid "Product Supplier Day"
+msgstr "Día del proveedor del producto"

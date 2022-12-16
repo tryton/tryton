@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?Standards Smart Test Messages for SEPA Credit Transfer Scheme product version 3.0?>
+<?valid true?>
+<?description Besides providing an intraday AccountReport at 12.30 PM (see example with BankToCustomerAccountReport), AAAA Banken and Finpetrol have agreed on a credit notification service, for all incoming credits above a certain threshold. On 18 October 2010, at 1.20 PM, AAAASESS sends a BankToCustomerDebitCreditNotification to Company Finpetrol, to advise Finpetrol of an incoming credit on its account.?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.03" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:camt.054.001.03 file:///C:/No_Backup/tmp/camt.054.001.03.xsd">
+	<BkToCstmrDbtCdtNtfctn>
+		<GrpHdr>
+			<MsgId>AAAASESS-FP-00001</MsgId>
+			<CreDtTm>2010-10-18T13:20:00+01:00</CreDtTm>
+		</GrpHdr>
+		<Ntfctn>
+			<Id>AAAASESS-FP-CN-98765</Id>
+			<CreDtTm>2010-10-18T13:20:00+01:00</CreDtTm>
+			<Acct>
+				<Id>
+					<Othr>
+						<Id>50000000054910000003</Id>
+					</Othr>
+				</Id>
+				<Ownr>
+					<Nm>FINPETROL</Nm>
+				</Ownr>
+				<Svcr>
+					<FinInstnId>
+						<Nm>AAAA BANKEN</Nm>
+						<PstlAdr>
+							<Ctry>SE</Ctry>
+						</PstlAdr>
+					</FinInstnId>
+				</Svcr>
+			</Acct>
+			<Ntry>
+				<Amt Ccy="SEK">105678.50</Amt>
+				<CdtDbtInd>CRDT</CdtDbtInd>
+				<Sts>BOOK</Sts>
+				<BookgDt>
+					<DtTm>2010-10-18T13:15:00+01:00</DtTm>
+				</BookgDt>
+				<ValDt>
+					<Dt>2010-10-18</Dt>
+				</ValDt>
+				<AcctSvcrRef>AAAASESS-FP-CN-98765/01</AcctSvcrRef>
+				<BkTxCd>
+					<Domn>
+						<Cd>PAYM</Cd>
+						<Fmly>
+							<Cd>0001</Cd>
+							<SubFmlyCd>0005</SubFmlyCd>
+						</Fmly>
+					</Domn>
+				</BkTxCd>
+				<NtryDtls>
+					<TxDtls>
+						<Refs>
+							<EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+						</Refs>
+						<Amt Ccy="SEK">105678.50</Amt>
+						<CdtDbtInd>CRDT</CdtDbtInd>
+						<RltdPties>
+							<Dbtr>
+								<Nm>MUELLER</Nm>
+							</Dbtr>
+						</RltdPties>
+					</TxDtls>
+				</NtryDtls>
+			</Ntry>
+		</Ntfctn>
+	</BkToCstmrDbtCdtNtfctn>
+</Document>
