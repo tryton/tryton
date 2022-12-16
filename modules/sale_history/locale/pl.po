@@ -1,0 +1,21 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,revision:"
+msgid "Revision"
+msgstr "Wersja"
+
+#, fuzzy
+msgctxt "field:sale.subscription,revision:"
+msgid "Revision"
+msgstr "Wersja"
+
+msgctxt "view:sale.sale:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "view:sale.subscription:"
+msgid "/"
+msgstr "/"
