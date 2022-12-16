@@ -1,0 +1,411 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.dunning:"
+msgid "Line can be used only once on dunning."
+msgstr ""
+
+msgctxt "field:account.configuration,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:account.dunning,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.dunning,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
+msgctxt "field:account.dunning,blocked:"
+msgid "Blocked"
+msgstr ""
+
+msgctxt "field:account.dunning,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.dunning,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.dunning,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.dunning,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.dunning,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning,level:"
+msgid "Level"
+msgstr ""
+
+msgctxt "field:account.dunning,line:"
+msgid "Line"
+msgstr ""
+
+msgctxt "field:account.dunning,maturity_date:"
+msgid "Maturity Date"
+msgstr ""
+
+msgctxt "field:account.dunning,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:account.dunning,procedure:"
+msgid "Procedure"
+msgstr ""
+
+msgctxt "field:account.dunning,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.dunning,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
+msgctxt "field:account.dunning,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr ""
+
+msgctxt "field:account.dunning,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.dunning,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.dunning,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning.create.start,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.dunning.create.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning.level,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.dunning.level,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.dunning.level,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr ""
+
+msgctxt "field:account.dunning.level,procedure:"
+msgid "Procedure"
+msgstr ""
+
+msgctxt "field:account.dunning.level,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.dunning.level,sequence:"
+msgid "Sequence"
+msgstr ""
+
+msgctxt "field:account.dunning.level,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.dunning.level,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,levels:"
+msgid "Levels"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.dunning.procedure,name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:account.dunning.procedure,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.dunning.procedure,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning.process.start,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line,dunnings:"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+#, fuzzy
+msgctxt "field:party.party,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Dunning Procedures"
+
+#, fuzzy
+msgctxt "field:party.party,dunning_procedures:"
+msgid "Dunning Procedures"
+msgstr "Dunning Procedures"
+
+msgctxt "field:party.party.dunning_procedure,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.party.dunning_procedure,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Dunning Procedures"
+
+msgctxt "field:party.party.dunning_procedure,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party.dunning_procedure,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.party.dunning_procedure,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:party.party.dunning_procedure,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.party.dunning_procedure,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr ""
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr ""
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr ""
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr ""
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr ""
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr ""
+
+msgctxt "model:account.configuration.default_dunning_procedure,name:"
+msgid "Account Configuration Default Dunning Procedure"
+msgstr ""
+
+msgctxt "model:account.dunning,name:"
+msgid "Account Dunning"
+msgstr ""
+
+msgctxt "model:account.dunning.create.start,name:"
+msgid "Create Account Dunning"
+msgstr ""
+
+msgctxt "model:account.dunning.level,name:"
+msgid "Account Dunning Level"
+msgstr ""
+
+msgctxt "model:account.dunning.procedure,name:"
+msgid "Account Dunning Procedure"
+msgstr ""
+
+msgctxt "model:account.dunning.process.start,name:"
+msgid "Create Account Dunning"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dunning_form"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+msgctxt "model:ir.action,name:act_dunning_party"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+msgctxt "model:ir.action,name:act_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Dunning Procedures"
+
+msgctxt "model:ir.action,name:wizard_dunning_create"
+msgid "Create Dunnings"
+msgstr "Create Dunnings"
+
+msgctxt "model:ir.action,name:wizard_dunning_process"
+msgid "Process Dunning"
+msgstr "Process Dunning"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
+msgid "All"
+msgstr "All"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_create"
+msgid "Create Dunnings"
+msgstr "Create Dunnings"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_form"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Dunning Procedures"
+
+msgctxt "model:ir.ui.menu,name:menu_dunnings"
+msgid "Dunnings"
+msgstr "Dunnings"
+
+msgctxt "model:party.party.dunning_procedure,name:"
+msgid "Party Dunning Procedure"
+msgstr ""
+
+msgctxt "model:res.group,name:group_dunning"
+msgid "Dunning"
+msgstr "Dunning"
+
+#, fuzzy
+msgctxt "selection:account.dunning,state:"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt "selection:account.dunning,state:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Dunning"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning for date"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning?"
+msgstr "Process Dunning"
+
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Dunning"
+msgstr "Dunning"
+
+msgctxt "wizard_button:account.dunning.create,start,create_:"
+msgid "Create"
+msgstr ""
+
+msgctxt "wizard_button:account.dunning.create,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr ""
