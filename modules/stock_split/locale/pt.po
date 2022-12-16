@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr "Contador"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos decimais da unidade"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "UDM"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Categoria da UDM"
+
+msgctxt "field:stock.shipment.split.start,domain_moves:"
+msgid "Domain Moves"
+msgstr "Domínio de Movimentações"
+
+msgctxt "field:stock.shipment.split.start,moves:"
+msgid "Moves"
+msgstr "Movimentos"
+
+#, fuzzy
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves."
+msgstr "O número limite de movimentações."
+
+msgctxt "help:stock.shipment.split.start,moves:"
+msgid "The selected moves will be sent in the new shipment."
+msgstr "As movimentações selecionadas serão enviadas na próxima remessa."
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr "Split Move"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_split_shipment"
+msgid "Split Shipment"
+msgstr "Split Shipment"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "Dividir movimento"
+
+msgctxt "model:stock.shipment.split.start,name:"
+msgid "Split Shipment"
+msgstr "Dividir Remessa"
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr "Dividir"
+
+#, fuzzy
+msgctxt "view:stock.shipment.split.start:"
+msgid "Choose move to send in new shipment:"
+msgstr "Escolher movimentações para enviar na nova remessa"
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr "Dividir"
+
+msgctxt "wizard_button:stock.shipment.split,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "Dividir"
