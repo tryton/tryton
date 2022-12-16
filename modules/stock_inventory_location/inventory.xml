@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="wizard_create_inventory">
+            <field name="name">Create Inventories</field>
+            <field name="wiz_name">stock.inventory.create</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_create_inventory_group_stock">
+            <field name="action" ref="wizard_create_inventory"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <menuitem parent="stock.menu_inventory_form" action="wizard_create_inventory"
+            id="menu_create_inventory" sequence="10"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_create_inventory_group_stock">
+            <field name="menu" ref="menu_create_inventory"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.ui.view" id="inventory_create_start_view_form">
+            <field name="model">stock.inventory.create.start</field>
+            <field name="type">form</field>
+            <field name="name">inventory_create_start_form</field>
+        </record>
+    </data>
+</tryton>
