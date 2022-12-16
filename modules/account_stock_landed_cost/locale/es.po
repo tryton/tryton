@@ -1,0 +1,213 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Secuencia de coste de recepción"
+
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Secuencia de coste de recepción"
+
+msgctxt "field:account.invoice.line,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:account.landed_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Método de asignación"
+
+msgctxt "field:account.landed_cost,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "field:account.landed_cost,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.landed_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.landed_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Fecha contabilización"
+
+msgctxt "field:account.landed_cost,products:"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "field:account.landed_cost,shipments:"
+msgid "Shipments"
+msgstr "Albaranes"
+
+msgctxt "field:account.landed_cost,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.landed_cost-product.category,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:account.landed_cost-product.category,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:account.landed_cost-product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:account.landed_cost-product.product,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:product.template,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "field:stock.move,unit_landed_cost:"
+msgid "Unit Landed Cost"
+msgstr "Unidad coste de recepción"
+
+msgctxt "help:account.landed_cost,categories:"
+msgid "Apply only to products of these categories."
+msgstr "Aplica solo a los productos de estas categorías."
+
+msgctxt "help:account.landed_cost,products:"
+msgid "Apply only to these products."
+msgstr "Aplica solo a estos productos."
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Configuración de la secuencia de coste de recepción"
+
+msgctxt "model:account.landed_cost,name:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "model:account.landed_cost-product.category,name:"
+msgid "Landed Cost - Product Category"
+msgstr "Coste de recepción - Categoría de producto"
+
+msgctxt "model:account.landed_cost-product.product,name:"
+msgid "Landed Cost - Product"
+msgstr "Coste de recepción - Producto"
+
+msgctxt "model:account.landed_cost-stock.shipment.in,name:"
+msgid "Landed Cost - Shipment"
+msgstr "Coste de recepción - Albarán"
+
+msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Costes de recepción"
+
+msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
+msgid "Landed Costs"
+msgstr "Costes de recepción"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
+msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
+msgstr ""
+"El coste de recepción contabilizado \"%(landed_cost)s\" no tiene ningún "
+"movimiento de existencias."
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
+msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+"La categoría \"%(category)s\" del coste de recepción \"%(landed_cost)s\" no "
+"se utiliza."
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
+msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+"El producto \"%(product)s\" del coste de recepción \"%(landed_cost)s\" no se"
+" utiliza."
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr "Usuario en la empresa"
+
+msgctxt "model:ir.sequence,name:sequence_landed_cost"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "model:ir.ui.menu,name:menu_landed_cost"
+msgid "Landed Costs"
+msgstr "Costes de recepción"
+
+msgctxt "selection:account.landed_cost,allocation_method:"
+msgid "By Value"
+msgstr "Por valor"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Posted"
+msgstr "Contabilizados"
+
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Coste de recepción"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Secuencia"

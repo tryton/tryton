@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_product_admin">
+            <field name="name">Product Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_product_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="product_icon">
+            <field name="name">tryton-product</field>
+            <field name="path">icons/tryton-product.svg</field>
+        </record>
+        <menuitem name="Product" id="menu_main_product" sequence="1"
+            icon="tryton-product"/>
+
+        <menuitem name="Configuration" parent="menu_main_product" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_product_group_product_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="type">tree</field>
+            <field name="name">template_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="name">template_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_template_form">
+            <field name="name">Products</field>
+            <field name="res_model">product.template</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="template_view_tree"/>
+            <field name="act_window" ref="act_template_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="template_view_form"/>
+            <field name="act_window" ref="act_template_form"/>
+        </record>
+
+        <menuitem parent="menu_main_product" sequence="1" id="menu_template"
+            action="act_template_form"/>
+
+        <record model="ir.action.act_window" id="act_template_by_category">
+            <field name="name">Product by Category</field>
+            <field name="res_model">product.template</field>
+            <field name="context"
+                eval="{'categories': [Eval('active_id')]}" pyson="1"/>
+            <field name="domain"
+                eval="[('categories_all','child_of', [Eval('active_id')], 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_by_category_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="template_view_tree"/>
+            <field name="act_window" ref="act_template_by_category"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_by_category_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="template_view_form"/>
+            <field name="act_window" ref="act_template_by_category"/>
+        </record>
+        <record model="ir.action.keyword" id="act_template_by_category_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">product.category,-1</field>
+            <field name="action" ref="act_template_by_category"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_tree">
+            <field name="model">product.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="template_view_tree"/>
+            <field name="priority" eval="10"/>
+            <field name="name">product_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_tree_simple">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_tree_simple</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="template_view_form"/>
+            <field name="priority" eval="10"/>
+            <field name="name">product_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form_simple">
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_form_simple</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_form">
+            <field name="name">Variants</field>
+            <field name="res_model">product.product</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree"/>
+            <field name="act_window" ref="act_product_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_view_form"/>
+            <field name="act_window" ref="act_product_form"/>
+        </record>
+
+        <menuitem parent="menu_template" sequence="1" id="menu_product"
+            action="act_product_form" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_product">
+            <field name="model" search="[('model', '=', 'product.product')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_admin">
+            <field name="model" search="[('model', '=', 'product.product')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_template">
+            <field name="model" search="[('model', '=', 'product.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_template_admin">
+            <field name="model" search="[('model', '=', 'product.template')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_from_template">
+            <field name="name">Variants</field>
+            <field name="res_model">product.product</field>
+            <field name="domain" pyson="1"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('template', '=', Eval('active_id')), ('template', 'in', Eval('active_ids')))]"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_product_from_template_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree"/>
+            <field name="act_window" ref="act_product_from_template"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_productfrom_template_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_view_form"/>
+            <field name="act_window" ref="act_product_from_template"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_product_from_template_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_from_template"/>
+        </record>
+
+        <record model="ir.ui.view" id="identifier_view_form">
+            <field name="model">product.identifier</field>
+            <field name="type">form</field>
+            <field name="name">identifier_form</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_view_list">
+            <field name="model">product.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">identifier_list</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_view_list_sequence">
+            <field name="model">product.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">identifier_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_product_identifier">
+            <field name="model" search="[('model', '=', 'product.identifier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_identifier_admin">
+            <field name="model" search="[('model', '=', 'product.identifier')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_product">
+            <field name="name">Variant</field>
+            <field name="code">product.product</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_product_group_admin">
+            <field name="sequence_type" ref="sequence_type_product"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_product_group_product_admin">
+            <field name="sequence_type" ref="sequence_type_product"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_template">
+            <field name="name">Product</field>
+            <field name="code">product.template</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_template_group_admin">
+            <field name="sequence_type" ref="sequence_type_template"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_template_group_template_admin">
+            <field name="sequence_type" ref="sequence_type_template"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+
+    </data>
+</tryton>
