@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@id='general']/label[@name='party']"
+                        position="before">
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="list_price"/>
+                        <field name="list_price"/>
+                        <newline/>
+                    </xpath>
+                    <xpath expr="/form/notebook/page[@id='general']/field[@name='effort']"
+                        position="after">
+                        <label name="cost"/>
+                        <field name="cost"/>
+                        <label name="revenue"/>
+                        <field name="revenue"/>
+                        <newline/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_tree">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name='total_effort']" position="after">
+                        <field name="product"/>
+                        <field name="list_price"/>
+                        <field name="revenue"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_list2">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_list2"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name='total_effort']" position="after">
+                        <field name="product"/>
+                        <field name="list_price"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
