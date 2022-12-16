@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,product_customers:"
+msgid "Customers"
+msgstr "Clienti"
+
+msgctxt "field:product.template,product_customers:"
+msgid "Customers"
+msgstr "Clienti"
+
+msgctxt "field:sale.amendment.line,product_customer:"
+msgid "Customer's Product"
+msgstr ""
+
+msgctxt "field:sale.line,product_customer:"
+msgid "Customer's Product"
+msgstr ""
+
+msgctxt "field:sale.product_customer,code:"
+msgid "Code"
+msgstr "Codice"
+
+msgctxt "field:sale.product_customer,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:sale.product_customer,party:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "field:sale.product_customer,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:sale.product_customer,template:"
+msgid "Product"
+msgstr "Prodotto"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_customer_form"
+msgid "Customers"
+msgstr "Clienti"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product_customer"
+msgid "Customers"
+msgstr "Clienti"
+
+msgctxt "model:sale.product_customer,name:"
+msgid "Product Customer"
+msgstr ""
