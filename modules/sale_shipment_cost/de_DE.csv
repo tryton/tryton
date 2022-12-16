@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+error,stock.shipment.out,0,"It misses an ""Account Revenue"" on product ""%s""!","Es ist kein Ertragskonto für Artikel ""%s"" definiert!",0
+field,"sale.configuration,sale_carrier",0,Carrier,Frachtführer,0
+field,"sale.configuration,sale_shipment_cost_method",0,Sale Shipment Cost Method,Verkauf Lieferposten Kostenmethode,0
+field,"sale.line,shipment_cost",0,Shipment Cost,Lieferposten Kosten,0
+field,"sale.sale,carrier",0,Carrier,Frachtführer,0
+field,"sale.sale,shipment_cost_method",0,Shipment Cost Method,Verkauf Kostenmethode,0
+field,"stock.shipment.out,carrier",0,Carrier,Frachtführer,0
+field,"stock.shipment.out,cost",0,Cost,Kosten,0
+field,"stock.shipment.out,cost_currency",0,Cost Currency,Währung Kosten,0
+field,"stock.shipment.out,cost_currency_digits",0,Cost Currency Digits,Kosten Stellen Währung,0
+field,"stock.shipment.out,cost_invoice_line",0,Cost Invoice Line,Rechnungsposition Kosten,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Order,Pro Auftrag,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Shipment,Pro Lieferposten,0
+selection,"sale.sale,shipment_cost_method",0,On Order,Pro Auftrag,0
+selection,"sale.sale,shipment_cost_method",0,On Shipment,Pro Lieferposten,0
