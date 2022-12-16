@@ -1,0 +1,1227 @@
+# Translations template for tryton.
+# Copyright (C) 2016 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "zadejte alternativní konfigurační soubor"
+
+msgid "development mode"
+msgstr ""
+
+msgid "logging everything at INFO level"
+msgstr ""
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr ""
+
+msgid "specify the login user"
+msgstr "zadejte uživatelské jméno"
+
+#, fuzzy
+msgid "specify the server hostname:port"
+msgstr "zadejte název hostitele pro server"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "Unable to write config file %s."
+msgstr "Nelze zapsat konfigurační soubor %s!"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Nemohu nastavit lokalizaci %s"
+
+#, fuzzy
+msgid ", "
+msgstr ", "
+
+#, fuzzy
+msgid ",…"
+msgstr ",…"
+
+#, python-format
+msgid "%s (%s)"
+msgstr ""
+
+msgid "Select your action"
+msgstr "Vyberte akci"
+
+#, fuzzy
+msgid "No action defined."
+msgstr "Žádná akce není definována!"
+
+msgid "By: "
+msgstr ""
+
+msgid "Selection"
+msgstr "Výběr"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "_Zrušit"
+
+msgid "OK"
+msgstr ""
+
+msgid "Your selection:"
+msgstr "Váš výběr:"
+
+msgid "Select"
+msgstr ""
+
+#, fuzzy
+msgid "Save"
+msgstr "_Uložit"
+
+msgid "Save As..."
+msgstr "Uložit jako..."
+
+msgid "Always ignore this warning."
+msgstr "zadejte alternativní konfigurační soubor"
+
+msgid "Do you want to proceed?"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Concurrency Exception"
+msgstr "Výjimka při souběhu"
+
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+msgid "Cancel saving"
+msgstr ""
+
+msgid "Compare"
+msgstr "Porovnat"
+
+msgid "See the modified version"
+msgstr ""
+
+msgid "Write Anyway"
+msgstr "Přesto zapsat"
+
+msgid "Save your current version"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+#, fuzzy
+msgid "Application Error"
+msgstr "Chyba aplikace!"
+
+msgid "Report Bug"
+msgstr "Nahlásit chybu"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+msgid "Unable to check for new version"
+msgstr ""
+
+msgid "A new version is available!"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+#, fuzzy
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr ""
+
+msgid "<i>Create...</i>"
+msgstr ""
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr ""
+
+#, fuzzy
+msgid "Value"
+msgstr "Nepravda"
+
+msgid "Displayed value"
+msgstr ""
+
+#, fuzzy
+msgid "Format"
+msgstr "_Normální"
+
+msgid "Display format"
+msgstr ""
+
+#, fuzzy
+msgid "Open the calendar"
+msgstr "Otevřít kalendář"
+
+msgid "Date Format"
+msgstr ""
+
+msgid "Displayed date format"
+msgstr ""
+
+msgid "y"
+msgstr ""
+
+msgid "True"
+msgstr "Pravda"
+
+msgid "t"
+msgstr ""
+
+msgid "False"
+msgstr "Nepravda"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+#, fuzzy
+msgid "Edit..."
+msgstr "Konec..."
+
+#, fuzzy
+msgid "Attachments..."
+msgstr "Příloha:"
+
+msgid "Notes..."
+msgstr ""
+
+#, fuzzy
+msgid "Actions..."
+msgstr "Akce..."
+
+#, fuzzy
+msgid "Relate..."
+msgstr "_Odstranit..."
+
+#, fuzzy
+msgid "Report..."
+msgstr "Importovat data..."
+
+#, fuzzy
+msgid "E-Mail..."
+msgstr "_Email..."
+
+#, fuzzy
+msgid "Print..."
+msgstr "_Tisk..."
+
+msgid "Y"
+msgstr ""
+
+msgid "M"
+msgstr ""
+
+msgid "w"
+msgstr ""
+
+msgid "d"
+msgstr ""
+
+msgid "h"
+msgstr ""
+
+msgid "m"
+msgstr ""
+
+msgid "s"
+msgstr ""
+
+#, fuzzy
+msgid "Preferences..."
+msgstr "_Vlastnosti..."
+
+#, fuzzy
+msgid "Toolbar"
+msgstr "Nástrojová lišta"
+
+#, fuzzy
+msgid "Default"
+msgstr "_Výchozí"
+
+#, fuzzy
+msgid "Text and Icons"
+msgstr "_Text a ikony"
+
+#, fuzzy
+msgid "Text"
+msgstr "_Text"
+
+#, fuzzy
+msgid "Icons"
+msgstr "_Ikony"
+
+#, fuzzy
+msgid "Form"
+msgstr "Formulář"
+
+msgid "Save Width/Height"
+msgstr ""
+
+msgid "Save Tree State"
+msgstr ""
+
+msgid "Fast Tabbing"
+msgstr ""
+
+msgid "Spell Checking"
+msgstr "Kontrola pravopisu"
+
+msgid "PDA Mode"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr ""
+
+#, fuzzy
+msgid "Email..."
+msgstr "_Email..."
+
+msgid "Check Version"
+msgstr ""
+
+#, fuzzy
+msgid "Options"
+msgstr "_Volby"
+
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "_Klávesové zkratky..."
+
+#, fuzzy
+msgid "About..."
+msgstr "_O programu..."
+
+#, fuzzy
+msgid "Help"
+msgstr "Nápo_věda"
+
+msgid "Quit"
+msgstr ""
+
+msgid "No result found."
+msgstr ""
+
+msgid "Favorites"
+msgstr ""
+
+msgid "Manage..."
+msgstr ""
+
+msgid "Action"
+msgstr "Akce"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+#, fuzzy
+msgid "Previous tab"
+msgstr "_Předchozí"
+
+msgid "Next tab"
+msgstr ""
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr "Vyjmout vybraný text"
+
+msgid "Copy selected text"
+msgstr "Kopírovat vybraný text"
+
+msgid "Paste copied text"
+msgstr "Vložit vybraný text"
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr "Vytvořit novou relaci"
+
+msgid "Open/Search relation"
+msgstr "Otevřít/prohledat relaci"
+
+msgid "List Entries"
+msgstr ""
+
+msgid "Switch view"
+msgstr "Přepnout pohled"
+
+msgid "Create/Select new line"
+msgstr ""
+
+#, fuzzy
+msgid "Open relation"
+msgstr "Otevřít/prohledat relaci"
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr ""
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr ""
+
+msgid "Move right"
+msgstr ""
+
+msgid "Move left"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up of one page"
+msgstr ""
+
+msgid "Move down of one page"
+msgstr ""
+
+msgid "Move to top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid "Move to parent"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Unselect all"
+msgstr ""
+
+msgid "Select parent"
+msgstr ""
+
+msgid "Select/Activate current row"
+msgstr ""
+
+msgid "Toggle selection"
+msgstr ""
+
+msgid "Expand/Collapse"
+msgstr ""
+
+msgid "Expand row"
+msgstr ""
+
+msgid "Collapse row"
+msgstr ""
+
+msgid "Toggle row"
+msgstr ""
+
+msgid "Collapse all rows"
+msgstr ""
+
+msgid "Expand all rows"
+msgstr ""
+
+msgid "Close Tab"
+msgstr "Zavřít záložku"
+
+msgid "modularity, scalability and security"
+msgstr ""
+
+msgid "translator-credits"
+msgstr ""
+
+#, python-format, python-format, fuzzy, python-format
+msgid "Attachments (%s)"
+msgstr "Příloha(%s)"
+
+msgid "Profile Editor"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Add new profile"
+msgstr ""
+
+msgid "Remove selected profile"
+msgstr ""
+
+#, fuzzy
+msgid "Host:"
+msgstr "Port:"
+
+msgid "Database:"
+msgstr "Databáze:"
+
+#, fuzzy
+msgid "Fetching databases list"
+msgstr "Nastavení nové databáze:"
+
+#, fuzzy
+msgid "Username:"
+msgstr "Uživatelské jméno:"
+
+#, fuzzy
+msgid "Incompatible version of the server"
+msgstr "Verze serveru není kompatibilní!"
+
+#, fuzzy
+msgid "Could not connect to the server"
+msgstr "Nelze se spojit se serverem!"
+
+msgid "Login"
+msgstr "Přihlášení"
+
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Zrušit spojení k Tryton serveru."
+
+msgid "C_onnect"
+msgstr "_Připojit"
+
+msgid "Connect the Tryton server"
+msgstr "Připojit k Tryton serveru"
+
+msgid "Profile:"
+msgstr ""
+
+msgid "Host / Database information"
+msgstr ""
+
+msgid "User name:"
+msgstr "Uživatelské jméno:"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Program Settings"
+msgstr "Poslat nastavení programu emailem"
+
+msgid "Command Line:"
+msgstr "Příkazový řádek:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Seznam dostupných náhrad:"
+
+msgid "To:"
+msgstr "Komu:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Předmět: "
+
+msgid "Body:"
+msgstr "Tělo:"
+
+msgid "Attachment:"
+msgstr "Příloha:"
+
+msgid "Add..."
+msgstr ""
+
+#, python-format, fuzzy
+msgid "Attachment (%s)"
+msgstr "Příloha(%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+#, fuzzy
+msgid "You have to select one record."
+msgstr "Musíte vybrat právě jeden záznam!"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Vytvořeno uživatelem:"
+
+msgid "Creation Date:"
+msgstr "Datum vytvoření:"
+
+msgid "Latest Modification by:"
+msgstr "Poslední úpravu provedl:"
+
+msgid "Latest Modification Date:"
+msgstr "Datum poslední úpravy:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Opravdu chcete odstranit tento záznam?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Opravdu chcete odstranit tyto záznamy?"
+
+#, fuzzy
+msgid "Records not removed."
+msgstr "Záznamy neodstraněny!"
+
+#, fuzzy
+msgid "Records removed."
+msgstr "Záznamy odstraněny!"
+
+#, fuzzy
+msgid "Working now on the duplicated record(s)."
+msgstr "Nyní pracujete s duplicitním záznamem!"
+
+#, fuzzy
+msgid "Record saved."
+msgstr "Záznam uložen!"
+
+msgid " of "
+msgstr " z "
+
+#, fuzzy
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Tento záznam byl upraven\n"
+"chcete ho uložit?"
+
+msgid "Launch action"
+msgstr ""
+
+#, fuzzy
+msgid "Relate"
+msgstr "_Vytvořit"
+
+#, fuzzy
+msgid "Open related records"
+msgstr "Otevřít záznam"
+
+#, fuzzy
+msgid "Report"
+msgstr "Sestavy"
+
+#, fuzzy
+msgid "Open report"
+msgstr "Otevřít záznam"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Email"
+
+msgid "E-Mail report"
+msgstr ""
+
+msgid "Print"
+msgstr "Tisk"
+
+msgid "Print report"
+msgstr ""
+
+msgid "_Copy URL"
+msgstr ""
+
+msgid "Copy URL into clipboard"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Neznámý"
+
+#, fuzzy
+msgid "Limit"
+msgstr "Omezit:"
+
+msgid "Search Limit Settings"
+msgstr ""
+
+#, fuzzy
+msgid "Limit:"
+msgstr "Omezit:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr ""
+
+msgid "Preferences"
+msgstr "Nastavení"
+
+msgid "Edit User Preferences"
+msgstr "Upravit uživatelské nastavení"
+
+msgid "Preference"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "Revision"
+msgstr "Předchozí"
+
+#, fuzzy
+msgid "Select a revision"
+msgstr "Výběr"
+
+#, fuzzy
+msgid "Revision:"
+msgstr "Předchozí"
+
+msgid "_Switch View"
+msgstr "Přepnout pohled"
+
+#, fuzzy
+msgid "Switch View"
+msgstr "Přepnout pohled"
+
+msgid "_Previous"
+msgstr "_Předchozí"
+
+msgid "Previous Record"
+msgstr "Předchozí záznam"
+
+msgid "_Next"
+msgstr "_Následující"
+
+msgid "Next Record"
+msgstr "Následující záznam"
+
+#, fuzzy
+msgid "_Search"
+msgstr "Hledat"
+
+msgid "_New"
+msgstr "_Nový"
+
+msgid "Create a new record"
+msgstr "Vytvořit nový záznam"
+
+msgid "_Save"
+msgstr "_Uložit"
+
+msgid "Save this record"
+msgstr "Uložit tento záznam"
+
+msgid "_Reload/Undo"
+msgstr "Obnovit/Zpět"
+
+#, fuzzy
+msgid "Reload/Undo"
+msgstr "Obnovit/Zpět"
+
+msgid "_Duplicate"
+msgstr "_Duplikovat"
+
+msgid "_Delete..."
+msgstr "_Odstranit..."
+
+msgid "View _Logs..."
+msgstr "Zobrazit záznamy..."
+
+msgid "Show revisions..."
+msgstr ""
+
+#, fuzzy
+msgid "A_ttachments..."
+msgstr "Příloha:"
+
+msgid "Add an attachment to the record"
+msgstr "Přidat přílohu k záznamu"
+
+msgid "_Notes..."
+msgstr ""
+
+msgid "Add a note to the record"
+msgstr ""
+
+msgid "_Actions..."
+msgstr "Akce..."
+
+#, fuzzy
+msgid "_Relate..."
+msgstr "_Odstranit..."
+
+#, fuzzy
+msgid "_Report..."
+msgstr "Importovat data..."
+
+#, fuzzy
+msgid "_E-Mail..."
+msgstr "_Email..."
+
+msgid "_Print..."
+msgstr "_Tisk..."
+
+msgid "_Export Data..."
+msgstr "Exportovat data"
+
+msgid "_Import Data..."
+msgstr "Importovat data..."
+
+msgid "Copy _URL..."
+msgstr ""
+
+msgid "_Close Tab"
+msgstr "_Zavřít kartu"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Všechna pole</b>"
+
+msgid "_Add"
+msgstr "_Přidat"
+
+msgid "_Remove"
+msgstr "_Odstranit"
+
+#, fuzzy
+msgid "_Clear"
+msgstr "Vymazat"
+
+msgid "<b>Fields selected</b>"
+msgstr ""
+
+msgid "CSV Parameters"
+msgstr "Parametry CSV"
+
+msgid "Delimiter:"
+msgstr ""
+
+msgid "Quote char:"
+msgstr ""
+
+msgid "Encoding:"
+msgstr "Kódování:"
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr "Jméno pole"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#, fuzzy
+msgid "_Save Export"
+msgstr "Uložit exportu"
+
+#, fuzzy
+msgid "_Delete Export"
+msgstr "Smazat exportu"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Předdefinované exporty</b>"
+
+msgid "Name"
+msgstr ""
+
+msgid "Open"
+msgstr "Otevřít"
+
+#, fuzzy
+msgid "Add field names"
+msgstr "Přidat jména polí"
+
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+#, python-format
+msgid "%s (model name)"
+msgstr ""
+
+#, python-format
+msgid "%s (record name)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr ""
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record saved."
+msgstr "%d záznam uložen!"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records saved."
+msgstr "%d záznamů uloženo!"
+
+#, python-format, python-format, fuzzy, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Operace selhala.\n"
+"Chybová zpráva:\n"
+"%s"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Link"
+msgstr "Odkaz"
+
+msgid "Delete"
+msgstr "Smazat"
+
+msgid "New"
+msgstr "_Nový"
+
+msgid "Switch"
+msgstr "Přepnout"
+
+msgid "Previous"
+msgstr "Předchozí"
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Add"
+msgstr "Přidat"
+
+msgid "Remove <Del>"
+msgstr ""
+
+#, fuzzy
+msgid "Create a new record <F3>"
+msgstr "Vytvořit nový záznam"
+
+#, fuzzy
+msgid "Delete selected record <Del>"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Undelete selected record <Ins>"
+msgstr "Smazat vybraný záznam"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#, fuzzy
+msgid "_Auto-Detect"
+msgstr "Automatická detekce"
+
+msgid "File to Import:"
+msgstr "Soubor k importu:"
+
+msgid "Open..."
+msgstr "Otevřít..."
+
+msgid "Lines to Skip:"
+msgstr "Vynechané řádky:"
+
+#, fuzzy
+msgid "You must select an import file first."
+msgstr "Nejprve je nutné vybrat soubor pro import!"
+
+msgid "Error opening CSV file"
+msgstr "Chyba při otevírání CSV souboru"
+
+#, python-format, python-format, python-format, fuzzy, python-format
+msgid "Error processing the file at field %s."
+msgstr "Chyba při zpracování souboru u pole %s.\n"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record imported."
+msgstr "%d záznam načten!"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records imported."
+msgstr "%d záznamů načteno!"
+
+msgid "Search"
+msgstr "Hledat"
+
+#, python-format
+msgid "Search %s"
+msgstr ""
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+msgid "Wizard"
+msgstr "Průvodce"
+
+#, fuzzy
+msgid "ID"
+msgstr "Najít"
+
+#, fuzzy
+msgid "Creation User"
+msgstr "Vytvořeno uživatelem:"
+
+#, fuzzy
+msgid "Creation Date"
+msgstr "Datum vytvoření:"
+
+#, fuzzy
+msgid "Modification User"
+msgstr "Datum poslední úpravy:"
+
+#, fuzzy
+msgid "Modification Date"
+msgstr "Datum poslední úpravy:"
+
+#, python-format, python-format, fuzzy
+msgid "Unable to get view tree state for %s"
+msgstr "Nemohu nastavit lokalizaci %s"
+
+#, fuzzy
+msgid "Unable to set view tree state"
+msgstr "Nemohu nastavit lokalizaci %s"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is required"
+msgstr ""
+
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr ""
+
+msgid "Pre-validation"
+msgstr ""
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Velikost obrázku"
+
+msgid "Width:"
+msgstr "Šířka:"
+
+msgid "Height:"
+msgstr "Výška:"
+
+msgid "PNG image (*.png)"
+msgstr "Obrázek PNG (*.png)"
+
+msgid "Save As"
+msgstr "Uložit jako"
+
+#, fuzzy
+msgid "Image size too large."
+msgstr "Rozměry obrázku jsou příliš velké!"
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ""
+
+msgid "Open filters"
+msgstr ""
+
+msgid "Show bookmarks of filters"
+msgstr ""
+
+msgid "Remove this bookmark"
+msgstr ""
+
+msgid "Bookmark this filter"
+msgstr ""
+
+msgid "Show active records"
+msgstr ""
+
+msgid "Show inactive records"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr ""
+
+msgid "Find"
+msgstr "Najít"
+
+#, fuzzy
+msgid "Today"
+msgstr "Tělo:"
+
+msgid "go back"
+msgstr ""
+
+msgid "go forward"
+msgstr ""
+
+msgid "previous year"
+msgstr ""
+
+msgid "next year"
+msgstr ""
+
+msgid "Day View"
+msgstr ""
+
+#, fuzzy
+msgid "Week View"
+msgstr "Přepnout pohled"
+
+#, fuzzy
+msgid "Month View"
+msgstr "Přepnout pohled"
+
+msgid "Week"
+msgstr ""
+
+msgid "Select..."
+msgstr ""
+
+msgid "Clear"
+msgstr "Vymazat"
+
+msgid "All files"
+msgstr "Všechny soubory"
+
+msgid "Show plain text"
+msgstr ""
+
+msgid "Add value"
+msgstr ""
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr ""
+
+msgid "Images"
+msgstr "Obrázky"
+
+#, fuzzy
+msgid "Add existing record"
+msgstr "Uložit tento záznam"
+
+#, fuzzy
+msgid "Remove selected record"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Open the record <F2>"
+msgstr "Otevřít záznam"
+
+msgid "Clear the field <Del>"
+msgstr ""
+
+#, fuzzy
+msgid "Search a record <F2>"
+msgstr "Hledat záznam"
+
+#, fuzzy
+msgid "Edit selected record"
+msgstr "Upravit vybraný záznam"
+
+#, fuzzy
+msgid "Delete selected record"
+msgstr "Smazat vybraný záznam"
+
+#, python-format
+msgid "%s%%"
+msgstr ""
+
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr ""
+
+msgid "Choose a language"
+msgstr ""
+
+#, fuzzy
+msgid "Translation"
+msgstr "Přidat překlad"
+
+msgid "Edit"
+msgstr ""
+
+msgid "Fuzzy"
+msgstr ""
+
+#, fuzzy
+msgid "You need to save the record before adding translations."
+msgstr "Musíte uložit záznam před přidáváním překladů!"
+
+#, fuzzy
+msgid "No other language available."
+msgstr "Jiný jazyk není k dispozici!"
+
+msgid "Translate view"
+msgstr "Přeložit pohled"

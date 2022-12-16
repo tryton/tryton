@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_view_tree_qty">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_tree_qty</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_recompute_cost_price">
+            <field name="name">Recompute Cost Price</field>
+            <field name="wiz_name">product.recompute_cost_price</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_recompute_cost_price_product_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_recompute_cost_price"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_recompute_cost_price_template_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="wizard_recompute_cost_price"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_recompute_cost_price-group_product_admin">
+            <field name="action" ref="wizard_recompute_cost_price"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="recompute_cost_price_start_view_form">
+            <field name="model">product.recompute_cost_price.start</field>
+            <field name="type">form</field>
+            <field name="name">recompute_cost_price_start_form</field>
+        </record>
+
+        <record model="ir.cron" id="cron_recompute_cost_price_from_moves">
+            <field name="method">product.product|recompute_cost_price_from_moves</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_cost_price_revision_view_form">
+            <field name="model">product.cost_price.revision</field>
+            <field name="type">form</field>
+            <field name="name">product_cost_price_revision_form</field>
+        </record>
+        <record model="ir.ui.view" id="product_cost_price_revision_view_list">
+            <field name="model">product.cost_price.revision</field>
+            <field name="type">tree</field>
+            <field name="name">product_cost_price_revision_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_cost_price_revision">
+            <field name="name">Cost Price Revision</field>
+            <field name="res_model">product.cost_price.revision</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'product.template', 'template', 'product'), '=', Eval('active_id', -1)), (If(Eval('active_model') == 'product.template', 'template', 'product'), 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_cost_price_revision_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_cost_price_revision_view_list"/>
+            <field name="act_window" ref="act_product_cost_price_revision"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_cost_price_revision_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_cost_price_revision_view_form"/>
+            <field name="act_window" ref="act_product_cost_price_revision"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_cost_price_revision_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_cost_price_revision"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_cost_price_revision_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_cost_price_revision"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_cost_price_revision">
+            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_cost_price_revision_admin">
+            <field name="model" search="[('model', '=', 'product.cost_price.revision')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_modify_cost_price_start_form">
+            <field name="model">product.modify_cost_price.start</field>
+            <field name="type">form</field>
+            <field name="name">product_modify_cost_price_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_product_modify_cost_price">
+            <field name="name">Modify Cost Price</field>
+            <field name="wiz_name">product.modify_cost_price</field>
+        </record>
+        <record model="ir.action.keyword" id="product_modify_cost_price_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_product_modify_cost_price"/>
+        </record>
+        <record model="ir.action.keyword" id="product_modify_cost_price_keyword2">
+            <field name="keyword">form_action</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="wizard_product_modify_cost_price"/>
+        </record>
+        <record model="ir.action-res.group" id="wizard_product_modify_cost_price-group_account">
+            <field name="action" ref="wizard_product_modify_cost_price"/>
+            <field name="group" ref="product.group_product_admin" />
+        </record>
+
+        <record model="ir.ui.view" id="location_quantity_view_tree">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="name">location_quantity_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="location_quantity_view_form">
+            <field name="model">stock.location</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">location_quantity_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="location_quantity_view_list">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">location_quantity_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_quantity_tree">
+            <field name="name">Locations Tree Quantity</field>
+            <field name="res_model">stock.location</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'stock_skip_warehouse': False}, {'product': Eval('active_id'), 'stock_skip_warehouse': False})"/>
+            <field name="context_model">product.by_location.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_quantity_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_quantity_view_tree"/>
+            <field name="act_window" ref="act_location_quantity_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_quantity_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_quantity_view_form"/>
+            <field name="act_window" ref="act_location_quantity_tree"/>
+        </record>
+
+        <record model="ir.action.keyword"
+                id="act_location_quantity_tree_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_location_quantity_tree"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_tree_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_location_quantity_tree"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_location-quantity_tree-group_stock">
+            <field name="action" ref="act_location_quantity_tree"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_quantity_list">
+            <field name="name">Locations List Quantity</field>
+            <field name="res_model">stock.location</field>
+            <field name="search_value" eval="['OR', ('quantity', '!=', 0), ('forecast_quantity', '!=', 0)]" pyson="1"/>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'with_childs': False, 'stock_skip_warehouse': False}, {'product': Eval('active_id'), 'with_childs': False, 'stock_skip_warehouse': False})"/>
+            <field name="context_model">product.by_location.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_quantity_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_quantity_view_list"/>
+            <field name="act_window" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_list_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_list_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_location-quantity_list-group_stock">
+            <field name="action" ref="act_location_quantity_list"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_by_location_context_view_form">
+            <field name="model">product.by_location.context</field>
+            <field name="type">form</field>
+            <field name="name">product_by_location_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_view_graph">
+            <field name="model">stock.product_quantities_warehouse</field>
+            <field name="type">graph</field>
+            <field name="name">product_quantities_warehouse_graph</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_view_list">
+            <field name="model">stock.product_quantities_warehouse</field>
+            <field name="type">tree</field>
+            <field name="name">product_quantities_warehouse_list</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_product_quantities_warehouse">
+            <field name="name">Product Quantities By Warehouse</field>
+            <field name="res_model">stock.product_quantities_warehouse</field>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"/>
+            <field name="search_value" eval="[('date', '>=', Date())]"
+                pyson="1"/>
+            <field name="context_model">stock.product_quantities_warehouse.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_quantities_warehouse_graph_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_quantities_warehouse_view_graph"/>
+            <field name="act_window" ref="act_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_quantities_warehouse_list_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_quantities_warehouse_view_list"/>
+            <field name="act_window" ref="act_product_quantities_warehouse"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_product_quantities_warehouse">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_quantities_warehouse">
+            <field
+                name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_product_quantities_warehouse"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_quantities_warehouse">
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_quantities_warehouse_group_stock">
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_context_view_form">
+            <field
+                name="model">stock.product_quantities_warehouse.context</field>
+            <field name="type">form</field>
+            <field name="name">product_quantities_warehouse_context_form</field>
+        </record>
+
+        <record model="ir.action.keyword"
+            id="act_product_quantities_warehouse_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_product_quantities_warehouse_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_product_quantities_warehouse-group_stock">
+            <field name="action" ref="act_product_quantities_warehouse"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_product_quantities_by_warehouse">
+            <field name="name">Stock Moves</field>
+            <field name="wiz_name">stock.product_quantities_warehouse.open</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.product_quantities_warehouse,-1</field>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_move_view_list">
+            <field name="model">stock.product_quantities_warehouse.move</field>
+            <field name="type">tree</field>
+            <field name="name">product_quantities_warehouse_move_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_quantities_warehouse_move">
+            <field name="name">Stock Moves By Warehouse</field>
+            <field name="res_model">stock.product_quantities_warehouse.move</field>
+            <field
+                name="context"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"
+                pyson="1"/>
+            <field name="search_value" eval="[('date', '>=', Date())]" pyson="1"/>
+            <field name="context_model">stock.product_quantities_warehouse.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_quantities_warehouse_move_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_quantities_warehouse_move_view_list"/>
+            <field name="act_window" ref="act_product_quantities_warehouse_move"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_product_quantities_warehouse_move_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_quantities_warehouse_move"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_quantities_warehouse_move_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_quantities_warehouse_move"/>
+        </record>
+        <record model="ir.action-res.group" id="act_product_quantities_warehouse_move-group_stock">
+            <field name="action" ref="act_product_quantities_warehouse_move"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_product_quantities_warehouse_move">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_quantities_warehouse_move">
+            <field
+                name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_product_quantities_warehouse_move"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_quantities_warehouse_move">
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_quantities_warehouse_move_group_stock">
+            <field name="model" search="[('model', '=', 'stock.product_quantities_warehouse.move')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>
