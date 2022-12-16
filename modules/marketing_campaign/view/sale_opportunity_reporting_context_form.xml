@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <group string="Marketing Campaign" id="marketing_campaign" expandable="0" col="-1" colspan="6">
+            <label name="marketing_campaign"/>
+            <field name="marketing_campaign"/>
+            <label name="marketing_medium"/>
+            <field name="marketing_medium"/>
+            <label name="marketing_source"/>
+            <field name="marketing_source"/>
+        </group>
+    </xpath>
+</data>

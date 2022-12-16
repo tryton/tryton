@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='frequency']" position="after">
+        <label name="rs_username"/>
+        <field name="rs_username"/>
+        <label name="rs_password"/>
+        <field name="rs_password" widget="password"/>
+
+        <label name="rs_license_id"/>
+        <field name="rs_license_id"/>
+        <label name="rs_list_type"/>
+        <field name="rs_list_type"/>
+    </xpath>
+</data>
