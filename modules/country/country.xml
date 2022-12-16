@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="country_view_form">
+            <field name="model">country.country</field>
+            <field name="type">form</field>
+            <field name="name">country_form</field>
+        </record>
+        <record model="ir.ui.view" id="country_view_tree">
+            <field name="model">country.country</field>
+            <field name="type">tree</field>
+            <field name="name">country_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_country_form">
+            <field name="name">Countries</field>
+            <field name="res_model">country.country</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_country_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="country_view_tree"/>
+            <field name="act_window" ref="act_country_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_country_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="country_view_form"/>
+            <field name="act_window" ref="act_country_form"/>
+        </record>
+        <menuitem parent="ir.menu_administration" action="act_country_form"
+            id="menu_country_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_country_form_group_admin">
+            <field name="menu" ref="menu_country_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="subdivision_view_form">
+            <field name="model">country.subdivision</field>
+            <field name="type">form</field>
+            <field name="name">subdivision_form</field>
+        </record>
+        <record model="ir.ui.view" id="subdivision_view_tree">
+            <field name="model">country.subdivision</field>
+            <field name="type">tree</field>
+            <field name="name">subdivision_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="zip_view_form">
+            <field name="model">country.zip</field>
+            <field name="type">form</field>
+            <field name="name">zip_form</field>
+        </record>
+        <record model="ir.ui.view" id="zip_view_list">
+            <field name="model">country.zip</field>
+            <field name="type">tree</field>
+            <field name="name">zip_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_zip_form">
+            <field name="name">Zip</field>
+            <field name="res_model">country.zip</field>
+            <field name="domain"
+                eval="[('country', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_zip_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="zip_view_list"/>
+            <field name="act_window" ref="act_zip_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_zip_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="zip_view_form"/>
+            <field name="act_window" ref="act_zip_form"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_zip_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">country.country,-1</field>
+            <field name="action" ref="act_zip_form"/>
+        </record>
+    </data>
+</tryton>
