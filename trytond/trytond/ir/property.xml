@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="property_view_form">
+            <field name="model">ir.property</field>
+            <field name="type">form</field>
+            <field name="name">property_form</field>
+        </record>
+        <record model="ir.ui.view" id="property_view_tree">
+            <field name="model">ir.property</field>
+            <field name="type">tree</field>
+            <field name="name">property_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_property_form_default">
+            <field name="name">Default Properties</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.property</field>
+            <field name="domain">[('res','=',False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_property_form_view1_default">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="property_view_tree"/>
+            <field name="act_window" ref="act_property_form_default"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_property_form_view2_default">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="property_view_form"/>
+            <field name="act_window" ref="act_property_form_default"/>
+        </record>
+        <menuitem parent="ir.menu_models"
+            action="act_property_form_default" id="menu_property_form_default"/>
+        <record model="ir.action.act_window" id="act_property_form">
+            <field name="name">Properties</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.property</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_property_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="property_view_tree"/>
+            <field name="act_window" ref="act_property_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_property_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="property_view_form"/>
+            <field name="act_window" ref="act_property_form"/>
+        </record>
+        <menuitem parent="ir.menu_models"
+            action="act_property_form" id="menu_property_form"/>
+    </data>
+</tryton>
