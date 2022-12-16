@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="customer">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="customer"/>
+    <field name="customer"/>
+    <label name="delivery_address"/>
+    <field name="delivery_address"/>
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="effective_date"/>
+    <field name="effective_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <notebook colspan="4">
+        <page name="inventory_moves">
+            <field name="inventory_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
+        </page>
+        <page string="Outgoing Moves" id="outgoing_moves">
+            <field name="outgoing_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="picked_by"/>
+            <field name="picked_by"/>
+            <label name="packed_by"/>
+            <field name="packed_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft"/>
+        <button name="wait"/>
+        <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="pick" icon="tryton-forward"/>
+        <button name="pack" icon="tryton-forward"/>
+        <button name="done" icon="tryton-ok"/>
+    </group>
+</form>
