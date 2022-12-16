@@ -1,0 +1,204 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:"
+msgid ""
+"You can not create an attachment\n"
+"in a collection with the name\n"
+"of an existing child collection!"
+msgstr ""
+"Вы не можете создавать вложение\n"
+"в каталоге с именем\n"
+" существующующего подкаталога!"
+
+msgctxt "error:webdav.collection:"
+msgid "The collection name must be unique inside a collection!"
+msgstr "Имя каталога должно быть уникальным внутри каталога!"
+
+msgctxt "error:webdav.collection:"
+msgid ""
+"You can not create a collection\n"
+"in a collection with the name of an existing file!"
+msgstr ""
+"Вы не можете создавать каталог\n"
+"в каталоге с именем существующего файла!"
+
+msgctxt "error:webdav.collection:"
+msgid "You can not create recursive collections!"
+msgstr "Вы не можете создавать рекурсивные категории!"
+
+#, fuzzy
+msgctxt "field:ir.attachment,path:"
+msgid "Path"
+msgstr "Путь"
+
+msgctxt "field:ir.attachment,shares:"
+msgid "Shares"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.attachment,url:"
+msgid "URL"
+msgstr "Ссылка"
+
+msgctxt "field:webdav.collection,childs:"
+msgid "Children"
+msgstr "Подчиненый"
+
+#, fuzzy
+msgctxt "field:webdav.collection,complete_name:"
+msgid "Complete Name"
+msgstr "Полное название"
+
+msgctxt "field:webdav.collection,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:webdav.collection,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:webdav.collection,domain:"
+msgid "Domain"
+msgstr "Область"
+
+msgctxt "field:webdav.collection,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:webdav.collection,model:"
+msgid "Model"
+msgstr "Шаблон"
+
+msgctxt "field:webdav.collection,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:webdav.collection,parent:"
+msgid "Parent"
+msgstr "Основной"
+
+msgctxt "field:webdav.collection,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:webdav.collection,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:webdav.collection,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:webdav.share,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:webdav.share,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:webdav.share,expiration_date:"
+msgid "Expiration Date"
+msgstr ""
+
+msgctxt "field:webdav.share,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:webdav.share,key:"
+msgid "Key"
+msgstr ""
+
+msgctxt "field:webdav.share,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:webdav.share,path:"
+msgid "Path"
+msgstr "Путь"
+
+#, fuzzy
+msgctxt "field:webdav.share,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:webdav.share,url:"
+msgid "URL"
+msgstr "Ссылка"
+
+#, fuzzy
+msgctxt "field:webdav.share,user:"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:webdav.share,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:webdav.share,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.action,name:act_share_list"
+msgid "Shares"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.ui.menu,name:menu_share_list"
+msgid "Shares"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:"
+msgid "Collection"
+msgstr "Каталог"
+
+msgctxt "model:webdav.share,name:"
+msgid "Share"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.attachment:"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "view:webdav.collection:"
+msgid "Collection"
+msgstr "Каталог"
+
+msgctxt "view:webdav.collection:"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "view:webdav.share:"
+msgid "Share"
+msgstr ""
+
+msgctxt "view:webdav.share:"
+msgid "Shares"
+msgstr ""
