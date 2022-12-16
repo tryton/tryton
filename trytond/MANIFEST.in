@@ -1,0 +1,25 @@
+include LICENSE
+include COPYRIGHT
+include README
+include INSTALL
+include TODO
+include CHANGELOG
+include doc/*
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot
+include etc/*
+include trytond/backend/*/init.sql
+include trytond/ir/*.xml
+include trytond/ir/*.csv
+include trytond/ir/module/*.xml
+include trytond/ir/ui/*.xml
+include trytond/ir/ui/*.rng
+include trytond/ir/ui/*.rnc
+include trytond/res/*.xml
+include trytond/res/*.csv
+include trytond/test/*.xml
+include trytond/webdav/*.xml
+include trytond/webdav/*.csv
+include trytond/workflow/*.xml
+include trytond/workflow/*.csv
