@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="extra_view_form">
+            <field name="model">sale.extra</field>
+            <field name="type">form</field>
+            <field name="name">extra_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="extra_view_list">
+            <field name="model">sale.extra</field>
+            <field name="type">tree</field>
+            <field name="name">extra_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_extra_form">
+            <field name="name">Extras</field>
+            <field name="res_model">sale.extra</field>
+            <field name="domain"></field>
+            <field name="search_value"
+                eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_extra_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="extra_view_list"/>
+            <field name="act_window" ref="act_extra_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_extra_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="extra_view_form"/>
+            <field name="act_window" ref="act_extra_form"/>
+        </record>
+        <menuitem parent="sale.menu_configuration" action="act_extra_form"
+            id="menu_extra"/>
+
+        <record model="ir.action.act_window" id="act_extra_relate">
+            <field name="name">Sale Extras</field>
+            <field name="res_model">sale.extra</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('price_list', '=', Eval('active_id')), ('price_list', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_extra_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.price_list,-1</field>
+            <field name="action" ref="act_extra_relate"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_extra">
+            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_extra1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_extra"/>
+        </record>
+
+        <record model="ir.model.access" id="access_extra">
+            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_extra_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.extra')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="extra_line_view_form">
+            <field name="model">sale.extra.line</field>
+            <field name="type">form</field>
+            <field name="name">extra_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="extra_line_view_list">
+            <field name="model">sale.extra.line</field>
+            <field name="type">tree</field>
+            <field name="name">extra_line_list</field>
+            <field name="priority" eval="10"/>
+        </record>
+
+        <record model="ir.ui.view" id="extra_line_view_list_sequence">
+            <field name="model">sale.extra.line</field>
+            <field name="type">tree</field>
+            <field name="name">extra_line_list_sequence</field>
+            <field name="priority" eval="20"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_extra_line">
+            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_extra_line1">
+            <field name="domain"
+                eval="[('extra.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_extra_line"/>
+        </record>
+
+        <record model="ir.model.access" id="access_extra_line">
+            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_extra_line_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
