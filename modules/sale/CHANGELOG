@@ -1,0 +1,54 @@
+Version 2.6.5 - 2015-02-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.4 - 2014-11-06
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.3 - 2013-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.2 - 2013-06-09
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.1 - 2012-12-23
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Manage negative amounts in sale
+* Add cache on amount fields in readonly states
+* Confirmed state split into Confirmed and Processing
+* Add a Function field delivery_date to sale line
+* Sale date is required only at confirmation
+* warehouse is not always required
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Add delivery time on product
+* Use compute delivery date for stock moves
+* Group stock moves on shipment using a key
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Use a modelsingleton to define which sale sequence to use
+* Add default search value on sale
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add buttons to handle invoice and packing exceptions
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
