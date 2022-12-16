@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakendamise jada"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakendamise jada"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Pakend"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Kanded"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Tarne"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Pakendi tüüp"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Pakendi etiketid"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Pakendi tüüp"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Laopakendi tüüp"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "Laopakend:"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "Tarne:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Suletud"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Avatud"
