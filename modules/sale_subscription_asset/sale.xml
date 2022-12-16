@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="subscription_service_view_form">
+            <field name="model">sale.subscription.service</field>
+            <field name="inherit" ref="sale_subscription.service_view_form"/>
+            <field name="name">subscription_service_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_view_form">
+            <field name="model">sale.subscription.line</field>
+            <field name="inherit" ref="sale_subscription.subscription_line_view_form"/>
+            <field name="name">subscription_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="subscription_line_view_list">
+            <field name="model">sale.subscription.line</field>
+            <field name="inherit" ref="sale_subscription.subscription_line_view_list"/>
+            <field name="name">subscription_line_list</field>
+        </record>
+    </data>
+</tryton>
