@@ -1,0 +1,207 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project!"
+msgstr "Es kann nur ein Zeiterfassungsblatt pro Aufgabe oder Projekt geben!"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Untergeordnet (Arbeiten)"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Kommentar"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:project.work,effort:"
+msgid "Effort"
+msgstr "Aufwand (Personenstunden)"
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Arbeit)"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Kontaktadresse"
+
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Gesamtaufwand (Personenstunden)"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Arbeit"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Zeitpositionen"
+
+msgctxt "help:project.work,effort:"
+msgid "Estimated Effort for this work"
+msgstr ""
+"Geschätzter Aufwand für diese Arbeit in Stunden (Format: Personenstunden, "
+"-tage, -wochen)"
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr ""
+"Geschätzter Gesamtaufwand für diese Arbeit inkl. aller untergeordneten "
+"Arbeiten in Stunden (Format: Personenstunden, -tage, -wochen)"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projekte"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Projekte"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Arbeitsaufwände"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Arbeitsaufwände"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Projekte"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projekte"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projekte"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Arbeitsaufwände"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Arbeitsaufwände"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Arbeitsaufwand"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Projekte Administration"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projekt"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Aufgabe"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Untergeordnet (Arbeiten)"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "view:project.work:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:project.work:"
+msgid "Projects"
+msgstr "Projekte"
+
+msgctxt "view:project.work:"
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgctxt "view:project.work:"
+msgid "Timesheet"
+msgstr "Zeiterfassungsblatt"
+
+msgctxt "view:project.work:"
+msgid "Work"
+msgstr "Arbeit"
+
+msgctxt "view:project.work:"
+msgid "Work Efforts"
+msgstr "Arbeitsaufwände"
+
+msgctxt "view:project.work:"
+msgid "Works"
+msgstr "Arbeiten"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Arbeiten Aufwände"
