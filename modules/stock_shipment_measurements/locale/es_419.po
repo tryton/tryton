@@ -1,0 +1,123 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,internal_volume:"
+msgid "Internal Volume"
+msgstr ""
+
+msgctxt "field:stock.move,internal_weight:"
+msgid "Internal Weight"
+msgstr ""
+
+msgctxt "field:stock.package,additional_weight:"
+msgid "Additional Weight"
+msgstr ""
+
+msgctxt "field:stock.package,total_volume:"
+msgid "Total Volume"
+msgstr ""
+
+msgctxt "field:stock.package,total_weight:"
+msgid "Total Weight"
+msgstr ""
+
+msgctxt "field:stock.package,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:stock.package,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.in,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.in,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "help:stock.move,internal_volume:"
+msgid "The volume of the moved product in liter."
+msgstr ""
+
+msgctxt "help:stock.move,internal_weight:"
+msgid "The weight of the moved product in kg."
+msgstr ""
+
+msgctxt "help:stock.package,additional_weight:"
+msgid "The weight to add to the packages in kg."
+msgstr ""
+
+msgctxt "help:stock.package,total_volume:"
+msgid "The total volume of the packages in liter."
+msgstr ""
+
+msgctxt "help:stock.package,total_weight:"
+msgid "The total weight of the packages in kg."
+msgstr ""
+
+msgctxt "help:stock.package,volume:"
+msgid "The total volume of the record's moves in liter."
+msgstr ""
+
+msgctxt "help:stock.package,weight:"
+msgid "The total weight of the record's moves in kg."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,volume:"
+msgid "The total volume of the record's moves in liter."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,weight:"
+msgid "The total weight of the record's moves in kg."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,volume:"
+msgid "The total volume of the record's moves in liter."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,weight:"
+msgid "The total weight of the record's moves in kg."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,volume:"
+msgid "The total volume of the record's moves in liter."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,weight:"
+msgid "The total weight of the record's moves in kg."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,volume:"
+msgid "The total volume of the record's moves in liter."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,weight:"
+msgid "The total weight of the record's moves in kg."
+msgstr ""

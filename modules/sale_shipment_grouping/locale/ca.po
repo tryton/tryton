@@ -1,0 +1,76 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Mètode d'agrupació albarans de venda"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Mètodes d'agrupació albarans de venda"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Mètode d'agrupació albarans de venda"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Mètode d'agrupació albarans de venda"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Mètode d'agrupació albarans de venda"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "El mètode d'agrupació per defecte per als nous clients."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "El mètode d'agrupació per defecte per als nous clients."
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Mètode d'agrupació albarans de venda"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr "Estàndard"
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Albarans"
