@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='header']" position="after">
+        <field name="avatar" widget="image" height="100" width="100" xexpand="0"/>
+    </xpath>
+</data>

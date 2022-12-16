@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.rule,account:"
+msgid "Substitution Account"
+msgstr ""
+
+msgctxt "field:account.account.rule,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.account.rule,end_date:"
+msgid "Ending Date"
+msgstr ""
+
+msgctxt "field:account.account.rule,origin_account:"
+msgid "Original Account"
+msgstr ""
+
+msgctxt "field:account.account.rule,return_:"
+msgid "Return"
+msgstr ""
+
+msgctxt "field:account.account.rule,start_date:"
+msgid "Starting Date"
+msgstr ""
+
+msgctxt "field:account.account.rule,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:account.account.rule,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:account.account.rule,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "help:account.account.rule,return_:"
+msgid "Check to limit to return operation."
+msgstr ""
+
+msgctxt "model:account.account.rule,name:"
+msgid "Account Rule"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_rule_form"
+msgid "Account Rules"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
+msgid "Account Rules"
+msgstr ""
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Expense"
+msgstr ""
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Payable"
+msgstr ""
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Receivable"
+msgstr ""
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Revenue"
+msgstr ""
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Stock"
+msgstr ""

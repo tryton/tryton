@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton. The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="invoice"/>
+    <field name="invoice"/>
+    <newline/>
+    <label name="error_code"/>
+    <field name="error_code"/>
+    <label name="error_description"/>
+    <field name="error_description"/>
+    <label name="csv"/>
+    <field name="csv"/>
+    <label name="state"/>
+    <field name="state"/>
+</form>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <group col="4" colspan="2" id="group" yalign="0">
+        <label name="currency"/>
+        <field name="currency"/>
+        <label name="posted"/>
+        <field name="posted"/>
+
+        <label name="date"/>
+        <field name="date"/>
+        <newline/>
+
+        <label name="comparison"/>
+        <field name="comparison"/>
+
+        <separator id="comparison" colspan="4"/>
+
+        <label name="date_cmp"/>
+        <field name="date_cmp"/>
+    </group>
+    <group col="2" colspan="2" id="companies" yalign="0">
+        <label name="companies"/>
+        <field name="companies" widget="multiselection"/>
+    </group>
+</form>

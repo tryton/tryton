@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,consolidation:"
+msgid "Consolidation"
+msgstr "Consolidació"
+
+msgctxt "field:account.consolidation,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.consolidation,amount_cmp:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.consolidation,assets:"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "field:account.consolidation,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:account.consolidation,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.consolidation,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.consolidation,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:account.consolidation,statement:"
+msgid "Statement"
+msgstr "Extracte"
+
+msgctxt "field:account.consolidation,types:"
+msgid "Types"
+msgstr "Tipus"
+
+msgctxt "field:account.consolidation.balance_sheet.context,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:account.consolidation.balance_sheet.context,comparison:"
+msgid "Comparison"
+msgstr "Comparació"
+
+msgctxt "field:account.consolidation.balance_sheet.context,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.consolidation.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "Assentaments comptabilitzats"
+
+msgctxt "field:account.consolidation.income_statement.context,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:account.consolidation.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "Comparació"
+
+msgctxt "field:account.consolidation.income_statement.context,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:account.consolidation.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "Assentaments comptabilitzats"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:account.invoice,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Empresa consolidació"
+
+msgctxt "field:account.move,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Empresa consolidació"
+
+msgctxt "field:account.move.line,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Empresa consolidació"
+
+msgctxt "help:account.consolidation.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "Mostra només assentaments comptabilitzats."
+
+msgctxt "help:account.consolidation.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "Mostra només assentaments comptabilitzats."
+
+msgctxt "model:account.consolidation,name:"
+msgid "Account Consolidation"
+msgstr "Consolidació comptable"
+
+msgctxt "model:account.consolidation.balance_sheet.context,name:"
+msgid "Consolidation Balance Sheet Context"
+msgstr "Context del balanç consolidat"
+
+msgctxt "model:account.consolidation.income_statement.context,name:"
+msgid "Consolidation Income Statement Context"
+msgstr "Context del pérdues i guanys consolidat"
+
+msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"
+msgid "Consolidated Balance Sheet"
+msgstr "Balanç consolidat"
+
+msgctxt "model:ir.action,name:act_consolidation_income_statement_tree"
+msgid "Consolidated Income Statement"
+msgstr "Pèrdues i guanys consolidat"
+
+msgctxt "model:ir.action,name:act_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Comptes consolidats"
+
+msgctxt "model:ir.action,name:act_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Comptes consolidats"
+
+msgctxt "model:ir.action,name:report_consolidation_statement"
+msgid "Statement"
+msgstr "Extracte"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Comptes consolidats"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Comptes consolidats"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_balance_sheet"
+msgid "Consolidated Balance Sheet"
+msgstr "Balanç consolidat"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_income_statement"
+msgid "Consolidated Income Statement"
+msgstr "Pèrdues i guanys consolidat"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Balance Sheet"
+msgstr "Balanç de situació"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Companies:"
+msgstr "Empreses:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "From Date:"
+msgstr "Des de la data:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Income Statement"
+msgstr "Pèrdues i guanys"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Print Date:"
+msgstr "Data d'impressió:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Statement"
+msgstr "Extracte"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "To"
+msgstr "A"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "User:"
+msgstr "Usuari:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "at"
+msgstr "a les"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Balance"
+msgstr "Balanç"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Income"
+msgstr "Pèrdues i guanys"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Off-Balance"
+msgstr "Fora de balanç"
+
+msgctxt "view:account.consolidation:"
+msgid "Comparison"
+msgstr "Comparació"
