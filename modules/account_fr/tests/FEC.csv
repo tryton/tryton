@@ -1,0 +1,9 @@
+JournalCode	JournalLib	EcritureNum	EcritureDate	CompteNum	CompteLib	CompAuxNum	CompAuxLib	PieceRef	PieceDate	EcritureLib	Debit	Credit	EcritureLet	DateLet	ValidDate	Montantdevise	Idevise
+OUV	Balance Initiale	0	20180101	4111	Clients - Ventes de biens ou de prestations de services	2	Party	-	20180101	-	5,00	0,00			20180101		
+OUV	Balance Initiale	0	20180101	7011	Produits finis (ou groupe) A			-	20180101	-	0,00	5,00			20180101		
+REV	Revenue	1	20180101	7011	Produits finis (ou groupe) A			-	20180101	-	0,00	10,00			20180101		
+REV	Revenue	1	20180101	4111	Clients - Ventes de biens ou de prestations de services	2	Party	-	20180101	-	10,00	0,00			20180101		
+REV	Revenue	2	20180101	7011	Produits finis (ou groupe) A			-	20180101	-	0,00	42,00			20180101		
+REV	Revenue	2	20180101	4111	Clients - Ventes de biens ou de prestations de services	2	Party	-	20180101	-	42,00	0,00	1	{current_date}	20180101		
+CASH	Cash	3	20180101	5311	Caisse en monnaie nationale			-	20180101	-	42,00	0,00			20180101		
+CASH	Cash	3	20180101	4111	Clients - Ventes de biens ou de prestations de services	2	Party	-	20180101	-	0,00	42,00	1	{current_date}	20180101		

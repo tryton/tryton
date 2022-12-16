@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="incoterm">
+        <record model="ir.ui.view" id="incoterm_view_form">
+            <field name="model">incoterm.incoterm</field>
+            <field name="inherit" ref="incoterm.incoterm_view_form"/>
+            <field name="name">incoterm_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="incoterm_view_list">
+            <field name="model">incoterm.incoterm</field>
+            <field name="inherit" ref="incoterm.incoterm_view_list"/>
+            <field name="name">incoterm_list</field>
+        </record>
+    </data>
+    <data depends="incoterm" grouped="1">
+        <record model="incoterm.incoterm" id="incoterm.incoterm_exw_2010">
+            <field name="before_carrier">buyer</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fca_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cpt_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cip_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_dat_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_dap_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_ddp_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fas_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fob_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cfr_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cif_2010">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_exw_2020">
+            <field name="before_carrier">buyer</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fca_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cpt_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cip_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_dpu_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_dap_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_ddp_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fas_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fob_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cfr_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cif_2020">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+    </data>
+</tryton>

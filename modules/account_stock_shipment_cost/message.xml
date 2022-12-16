@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_shipment_cost_post_no_shipment">
+            <field name="text">The shipment cost "%(shipment_cost)s" has no shipment.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_cost_post_same_parties">
+            <field name="text">The shipment "%(shipment)s" of shipment cost "%(shipment_cost)s" has already shipment cost from the same party "%(other)s".</field>
+        </record>
+    </data>
+</tryton>
