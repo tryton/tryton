@@ -1,0 +1,34 @@
+Version 4.6.3 - 2019-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.2 - 2019-07-17
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.1 - 2019-01-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Allow to use account instead of line for clearing
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Allow to set the date of the clearing move
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Mark Payment as succeded or failed when imported in statement
+* Allow to link statement line to group of payments
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Initial release
