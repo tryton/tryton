@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="model"/>
+    <field name="model"/>
+    <label name="user"/>
+    <field name="user"/>
+    <label name="domain"/>
+    <field name="domain"/>
+    <label name="child_name"/>
+    <field name="child_name"/>
+    <separator name="nodes" colspan="4"/>
+    <field name="nodes" colspan="4"/>
+    <separator name="selected_nodes" colspan="4"/>
+    <field name="selected_nodes" colspan="4"/>
+</form>

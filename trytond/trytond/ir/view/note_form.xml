@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="resource"/>
+    <field name="resource" colspan="5"/>
+    <label name="last_user"/>
+    <field name="last_user"/>
+    <label name="last_modification"/>
+    <field name="last_modification"/>
+    <label name="unread"/>
+    <field name="unread"/>
+    <field name="message" colspan="6"/>
+</form>
