@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_work_invalid_progress_status">
+            <field name="text">To set work "%(work)s" in "%(status)s" status, you must increase its progress up to at least %(progress)s.</field>
+        </record>
+        <record model="ir.message" id="msg_work_children_progress">
+            <field name="text">To complete work "%(work)s" you must complete also all its children.</field>
+        </record>
+        <record model="ir.message" id="msg_work_parent_progress">
+            <field name="text">To re-open work "%(work)s" you must re-open also its parent "%(parent)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_opened_project">
+            <field name="text">You cannot erase party "%(party)s" while they have opened projects with company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_domain_all">
+            <field name="text">All</field>
+        </record>
+    </data>
+</tryton>

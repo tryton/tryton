@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="email_view_form">
+            <field name="model">ir.email</field>
+            <field name="type">form</field>
+            <field name="name">email_form</field>
+        </record>
+        <record model="ir.ui.view" id="email_view_list">
+            <field name="model">ir.email</field>
+            <field name="type">tree</field>
+            <field name="name">email_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_form">
+            <field name="name">E-mails</field>
+            <field name="res_model">ir.email</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_view_list"/>
+            <field name="act_window" ref="act_email_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_view_form"/>
+            <field name="act_window" ref="act_email_form"/>
+        </record>
+        <menuitem
+            parent="menu_models"
+            action="act_email_form"
+            sequence="50"
+            id="menu_email_form"/>
+
+        <record model="ir.model.access" id="access_email">
+            <field name="model" search="[('model', '=', 'ir.email')]"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_form_relate">
+            <field name="name">E-mail Archives</field>
+            <field name="res_model">ir.email</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('resource', '=', [Eval('active_model'), Eval('active_id')]), ('resource.id', 'in', Eval('active_ids'), Eval('active_model')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_form_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_view_list"/>
+            <field name="act_window" ref="act_email_form_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_form_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_view_form"/>
+            <field name="act_window" ref="act_email_form_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_email_form_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="action" ref="act_email_form_relate"/>
+        </record>
+
+        <record model="ir.ui.view" id="email_template_view_form">
+            <field name="model">ir.email.template</field>
+            <field name="type">form</field>
+            <field name="name">email_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="email_template_view_list">
+            <field name="model">ir.email.template</field>
+            <field name="type">tree</field>
+            <field name="name">email_template_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_template_form">
+            <field name="name">E-mail Templates</field>
+            <field name="res_model">ir.email.template</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_template_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_template_view_list"/>
+            <field name="act_window" ref="act_email_template_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_template_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_template_view_form"/>
+            <field name="act_window" ref="act_email_template_form"/>
+        </record>
+        <menuitem
+            parent="menu_action"
+            action="act_email_template_form"
+            sequence="50"
+            id="menu_email_template_form"/>
+    </data>
+</tryton>
