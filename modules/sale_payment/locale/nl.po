@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "betalingen"
+
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.message,text:msg_payment_sale_cancel"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"cancelled sale."
+msgstr ""
+"U kunt verkoop \"%(sale)s niet gebruiken bij betaling \"%(payment)s\" omdat "
+"het een geannuleerde verkoop is."
+
+msgctxt "model:ir.message,text:msg_payment_sale_draft"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"draft sale."
+msgstr ""
+"U kunt verkoop \"%(sale)s niet gebruiken bij betaling \"%(payment)s\" omdat "
+"hij nog in concept status staat."
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr ""
+"U kunt de verkoop \"% (sale)s\" niet annuleren omdat deze een betalingen "
+"heeft."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr ""
+"U kunt de verkoop \"%(sale)s\" niet terug zetten naar concept status omdat "
+"deze betalingen heeft."
