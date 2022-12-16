@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.image,attribute_set:"
+msgid "Attribute Set"
+msgstr "Grup d'atributs"
+
+msgctxt "field:product.image,attributes:"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "field:product.image,attributes_name:"
+msgid "Attributes Name"
+msgstr "Nom dels atributs"

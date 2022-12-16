@@ -1,0 +1,55 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Veiksmas"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Skydelio veiksmai"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Skydelio išdėstymas"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Skydelio veiksmas"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Informacinis skydelis"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Informacinis skydelis"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Kvadratas"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Rikiuoti žemyn"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Rikiuoti kairėn"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Rikiuoti dešinėn"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Rikiuoti viršuje"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Informacinis skydelis"

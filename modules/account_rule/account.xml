@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="account_rule_view_list">
+            <field name="model">account.account.rule</field>
+            <field name="type">tree</field>
+            <field name="name">account_rule_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_rule_view_form">
+            <field name="model">account.account.rule</field>
+            <field name="type">form</field>
+            <field name="name">account_rule_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_rule_form">
+            <field name="name">Account Rules</field>
+            <field name="res_model">account.account.rule</field>
+            <field name="domain" eval="[('company', '=', Eval('company', -1))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_rule_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_rule_view_list"/>
+            <field name="act_window" ref="act_account_rule_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_rule_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_rule_view_form"/>
+            <field name="act_window" ref="act_account_rule_form"/>
+        </record>
+        <menuitem
+            parent="account.menu_general_account_configuration"
+            action="act_account_rule_form"
+            sequence="50"
+            id="menu_account_rule_form"/>
+
+        <record model="ir.model.access" id="access_account_rule">
+            <field name="model" search="[('model', '=', 'account.account.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_rule_account_admin">
+            <field name="model" search="[('model', '=', 'account.account.rule')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_rule_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'account.account.rule')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_rule_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_rule_companies"/>
+        </record>
+    </data>
+    <data depends="stock">
+        <record model="ir.ui.view" id="account_rule_view_list_stock">
+            <field name="model">account.account.rule</field>
+            <field name="inherit" ref="account_rule_view_list"/>
+            <field name="name">account_rule_list_stock</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_rule_view_form_stock">
+            <field name="model">account.account.rule</field>
+            <field name="inherit" ref="account_rule_view_form"/>
+            <field name="name">account_rule_form_stock</field>
+        </record>
+    </data>
+</tryton>
