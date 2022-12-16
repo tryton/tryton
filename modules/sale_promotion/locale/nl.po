@@ -1,0 +1,115 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr "concept eenheids prijs"
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr "Promoties"
+
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr "Formule"
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr "prijslijst"
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Promotie"
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr "Promotie"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Python-expressie die wordt geëvalueerd met:\n"
+"- unit_price: de oorspronkelijke eenheidsprijs"
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr "Promoties"
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr "Verkoopspromoties"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ongeldige formule \"%(formula)s\" in promotie \"%(promotion)s\" 'met "
+"uitzondering \"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr "Promoties"
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr "Verkoopspromotie"
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr "Verkooppromotie - Productcategorie"
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr "Verkooppromotie - Product"

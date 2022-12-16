@@ -1,0 +1,176 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.amendment,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:purchase.amendment,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:purchase.amendment,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:purchase.amendment,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.amendment,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:purchase.amendment.line,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:purchase.amendment.line,amendment:"
+msgid "Amendment"
+msgstr "Corrección"
+
+msgctxt "field:purchase.amendment.line,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:purchase.amendment.line,invoice_address:"
+msgid "Invoice Address"
+msgstr "Dirección de facturación"
+
+msgctxt "field:purchase.amendment.line,line:"
+msgid "Line"
+msgstr "Línea"
+
+msgctxt "field:purchase.amendment.line,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:purchase.amendment.line,payment_term:"
+msgid "Payment Term"
+msgstr "Plazo de pago"
+
+msgctxt "field:purchase.amendment.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:purchase.amendment.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Producto proveedor"
+
+msgctxt "field:purchase.amendment.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoría UdM del producto"
+
+msgctxt "field:purchase.amendment.line,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.amendment.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:purchase.amendment.line,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:purchase.amendment.line,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:purchase.amendment.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:purchase.amendment.line,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt "field:purchase.amendment.line,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:purchase.purchase,amendments:"
+msgid "Amendments"
+msgstr "Correcciones"
+
+msgctxt "model:ir.action,name:act_purchase_amendment_form"
+msgid "Purchase Amendments"
+msgstr "Correciones de compras"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_validated"
+msgid "Validated"
+msgstr "Validada"
+
+msgctxt "model:ir.message,text:msg_one_purchase_at_time"
+msgid ""
+"You cannot validate more than one amendment at the same time for purchase "
+"\"%(purchase)s\"."
+msgstr ""
+"No puedes validar a la vez mas de una corrección de la misma compra "
+"\"%(compra)s\"."
+
+msgctxt ""
+"model:ir.model.button,confirm:purchase_amendment_validation_amendment_button"
+msgid "Are you sure you want to validate the amendements?"
+msgstr "Estas seguro que quieres validar las correciones?"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_amendment_validation_amendment_button"
+msgid "Validate"
+msgstr "Validar"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
+msgid "Purchase Amendments"
+msgstr "Correciones de compras"
+
+msgctxt "model:purchase.amendment,name:"
+msgid "Purchase Amendment"
+msgstr "Correción de compra"
+
+msgctxt "model:purchase.amendment.line,name:"
+msgid "Purchase Amendment Line"
+msgstr "Línea de correción de compra"
+
+msgctxt "model:res.group,name:group_purchase_amendment"
+msgid "Purchase Amendment"
+msgstr "Correción de compra"
+
+msgctxt "selection:purchase.amendment,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:purchase.amendment,state:"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "selection:purchase.amendment.line,action:"
+msgid "Change Line"
+msgstr "Modificar línea"
+
+msgctxt "selection:purchase.amendment.line,action:"
+msgid "Change Parties and Addresses"
+msgstr "Modificar terceros y direcciones"
+
+msgctxt "selection:purchase.amendment.line,action:"
+msgid "Change Payment Term"
+msgstr "Modificar plazo de pago"
+
+msgctxt "selection:purchase.amendment.line,action:"
+msgid "Change Warehouse"
+msgstr "Modificar almacén"
+
+msgctxt "selection:purchase.amendment.line,action:"
+msgid "Recompute Taxes"
+msgstr "Recalcular impuestos"

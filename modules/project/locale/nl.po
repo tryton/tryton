@@ -1,0 +1,287 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Inspanning"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Links"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "contact adres"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Vooruitgang"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Rechts"
+
+msgctxt "field:project.work,status:"
+msgid "Status"
+msgstr "Status"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Beschikbaar in tijdregistartie"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Looptijd"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Einde urenstaat"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Start urenstaat"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Tijdsregistratie werken"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Totale inspanning"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Totale vooruitgang"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr "Tellen"
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr "Standaard"
+
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "Vooruitgang"
+
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "Types"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "Geschatte inspanning voor dit werk."
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "Geschatte voortgang voor dit werk."
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Totale tijd besteed aan dit werk en de subwerken."
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Geschatte totale inspanning voor dit werk en de subwerken."
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "Geschatte totale voortgang voor dit werk en de subwerken."
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr "Vink aan om het aantal werken in deze status te tonen."
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr "Vink aan om als standaardstatus voor het type te gebruiken."
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr "De minimaal vereiste voortgang voor deze status."
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr "Het soort werken dat deze status kan gebruiken."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "taken"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "projecten"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "projecten"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "taken"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregel"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Werkt inspanningen"
+
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr "Werk status"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Werkt inspanningen"
+
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+"U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze facturen in "
+"behandeling hebben bij bedrijf \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
+msgstr ""
+"Om het werk \"%(work)s\" te voltooien, moet u ook al zijn kinderen "
+"voltooien."
+
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr ""
+"Om werk \"%(work)s\" in te stellen op \"%(status)s\" status, moet u de "
+"progressie (vooruitgang) verhogen tot minstens %(progress)s."
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgstr ""
+"Om werk \"%(work)s\" opnieuw te openen, moet u ook het bovenliggende niveau "
+"\"%(parent)s\" opnieuw openen."
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Project"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "projecten"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "projecten"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "taken"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Werkt inspanningen"
+
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr "Werk status"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Werkt inspanningen"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Arbeidsinspanning"
+
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr "Werk status"
+
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "Klaar"
+
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "Open"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Project Administration"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Project"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Taak"
+
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Einde:"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Begin:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Tijdsregistratie:"

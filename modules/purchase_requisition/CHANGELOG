@@ -1,0 +1,37 @@
+Version 5.6.2 - 2021-04-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.1 - 2021-01-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add employee on requisitions for some states
+* Allow setting unit on line without product
+* Add button to process requisition
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Remove domain constraint on unit
+* Use processing delay to process approved requisition
+* Allow reset to draft approved but not processed requisition
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Make description on purchase requisition line optional
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Initial release
