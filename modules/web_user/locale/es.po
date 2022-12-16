@@ -1,0 +1,162 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "Correo electrónico"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "Token del correo electrónico"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "Correo electrónico válido"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "Contraseña"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "Hash de la contraseña"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "Restablecer el token de la contraseña"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "Restablecer el token de expiración de la contraseña"
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr "Terceros secundarios"
+
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr "Dirección IP"
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr "Red IP"
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "Nombre usuario"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "Clave"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Usuarios web"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Validación correo electrónico"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "El correo electrónico del usuario web debe ser único."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr "La clave de sesión del usuario web debe ser única."
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validar correo electrónico"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Usuarios web"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Usuario web"
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "Usuario web - Tercero secundario"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "Intento de identificación usuario web"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "Sesión usuario web"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "¿El botón no funciona? Pega esto en tu navegador:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr ""
+"Si no habéis realizado esta petición, podéis ignorar este correo "
+"electrónico."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr ""
+"Hemos recibido una solicitud para reiniciar la contraseña de vuestra cuenta,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "¿El botón no funciona? Pega esto en tu navegador:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Validación correo electrónico"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Si ha recibido este correo electrónico por error, por favor ignórelo."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "Solo un paso mas..."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "Validar"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "Validar correo electrónico"

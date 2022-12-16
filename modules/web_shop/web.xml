@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shop_view_form">
+            <field name="model">web.shop</field>
+            <field name="type">form</field>
+            <field name="name">shop_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shop_view_list">
+            <field name="model">web.shop</field>
+            <field name="type">tree</field>
+            <field name="name">shop_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shop">
+            <field name="name">Web Shops</field>
+            <field name="res_model">web.shop</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_shop_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="shop_view_list"/>
+            <field name="act_window" ref="act_shop"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_shop_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="shop_view_form"/>
+            <field name="act_window" ref="act_shop"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_configuration"
+            action="act_shop"
+            id="menu_shop"
+            sequence="20"/>
+
+        <record model="ir.model.access" id="access_shop">
+            <field name="model"
+                search="[('model', '=', 'web.shop')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_shop_sale_admin">
+            <field name="model"
+                search="[('model', '=', 'web.shop')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+
+    <data depends="product_attribute">
+        <record model="ir.ui.view" id="shop_view_attribute_form">
+            <field name="model">web.shop</field>
+            <field name="inherit" ref="shop_view_form"/>
+            <field name="name">shop_attribute_form</field>
+        </record>
+    </data>
+
+    <data>
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">web.user</field>
+            <field name="inherit" ref="web_user.user_view_form"/>
+            <field name="name">user_form</field>
+        </record>
+    </data>
+</tryton>
