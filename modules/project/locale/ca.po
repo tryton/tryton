@@ -1,0 +1,287 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Esforç"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Esquerra"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Adreça de contacte"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Progrés"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Dreta"
+
+msgctxt "field:project.work,status:"
+msgid "Status"
+msgstr "Estat"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en fulls de treball"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Final del full de treball"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inici del full de treball"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Fulls de treball"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Esforç total"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Progrés total"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr "Comptador"
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr "Per defecte"
+
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "Progrés"
+
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "Tipus"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "Esforç estimat per aquest treball."
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "Progrés estimat per aquest treball."
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Temps total dedicat en aquest treball i els seus subtreballs."
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Esforç total estimat per aquest treball i els seus subtreballs."
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "Progrés total estimat per aquest treball i els seus subtreballs."
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr "Marqueu per mostrar el nombre de treballs en aquest estat."
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr "Marqueu per utilizar com a estat per defecte pel tipus."
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr "El progrés mínim que es requereix per aquest estat."
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr "Els tipus de treball que poden utilitzar aquest estat."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Arbre de projectes"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Projectes i tasques"
+
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr "Estat del treball"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Arbre de projectes i tasques"
+
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" mentre tingui projectes oberts "
+"amb l'empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
+msgstr ""
+"Per completar el treball \"%(work)s\", heu de completar primer tots els seus"
+" fills."
+
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr ""
+"Per actualitzar el terball \"%(work)s\" al estat \"%(status)s\", heu "
+"d'incrementar el seu progres com a mínim fins a %(progress)s."
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgstr ""
+"Per re-obrir el treball \"%(work)s\", heu de re-obrir primer el seu pare "
+"\"%(parent)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Arbre de projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Projectes i tasques"
+
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr "Estat del treball"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Arbre de projectes i tasques"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Projecte i tasca"
+
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr "Estat del treball"
+
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "Obert"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administració de projectes"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projecte"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tasca"
+
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fi:"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Inici:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Full de treball:"
