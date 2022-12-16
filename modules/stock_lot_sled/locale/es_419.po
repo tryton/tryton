@@ -1,0 +1,207 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
+"used on a move \"%(move)s\" in a closed period"
+msgstr ""
+
+msgctxt "error:stock.move:"
+msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
+msgstr "El lote \"%(lot)s\" del movimiento \"%(move)s\" está caducado."
+
+msgctxt "error:stock.period:"
+msgid ""
+"You can not close a period before the Shelf Live Expiration Date "
+"\"%(date)s\" of Lot \"%(lot)s\""
+msgstr ""
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Estado de caducidad"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Tiempo de caducidad"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Estado de vida útil"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Tiempo de vida útil"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Estado de caducidad"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Tiempo de caducidad"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Estado de vida útil"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Tiempo de vida útil"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Fecha de caducidad"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Estado de caducidad"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Fecha de caducidad de vida útil"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Estado de caducidad de vida útil"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr ""
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr ""
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days"
+msgstr ""
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days"
+msgstr ""
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr ""
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr ""
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Forzar caducidad de stock"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr ""
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr ""
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr ""
