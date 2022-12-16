@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/group[@id='buttons']" position="before">
+        <separator string="Authentication" id="authentication"
+            colspan="6"/>
+        <label name="auth_uid"/>
+        <field name="auth_uid"/>
+        <label name="auth_base_dn"/>
+        <field name="auth_base_dn"/>
+        <newline/>
+        <label name="auth_require_filter"/>
+        <field name="auth_require_filter"/>
+        <label name="auth_scope"/>
+        <field name="auth_scope"/>
+        <newline/>
+        <label name="auth_create_user"/>
+        <field name="auth_create_user"/>
+        <newline/>
+    </xpath>
+</data>
