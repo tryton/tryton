@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <image name="name" xexpand="0"/>
+    <group id="form">
+        <label name="name"/>
+        <field name="name"/>
+        <label name="sequence"/>
+        <field name="sequence"/>
+        <label name="module"/>
+        <field name="module"/>
+        <label name="path"/>
+        <field name="path"/>
+    </group>
+</form>
