@@ -1,0 +1,273 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "ادامه بسته"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "ادامه بسته"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "بسته"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "بسته"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "بسته"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "انواع بسته"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"برای پردازش محموله :\"%(shipment)s\"، شما باید همه جابجایی های آن را بسته "
+"بندی کنید."
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "انواع بسته"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "نوع بسته کالا"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "ادامه بسته"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr ""
