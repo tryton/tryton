@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="product" col="6">
+    <separator string="Order Point Type" colspan="6" id="type"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="warehouse_location"/>
+    <field name="warehouse_location"/>
+    <label name="storage_location"/>
+    <field name="storage_location"/>
+    <label name="provisioning_location"/>
+    <field name="provisioning_location"/>
+    <label name="overflowing_location"/>
+    <field name="overflowing_location"/>
+    <separator string="Product Info" colspan="6" id="info"/>
+    <label name="product"/>
+    <field name="product" colspan="5"/>
+
+    <label name="min_quantity"/>
+    <field name="min_quantity" symbol="unit"/>
+    <label name="target_quantity"/>
+    <field name="target_quantity" symbol="unit"/>
+    <label name="max_quantity"/>
+    <field name="max_quantity" symbol="unit"/>
+</form>
