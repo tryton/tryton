@@ -1,0 +1,57 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid "You cannot change the unit of a lot which is associated to done moves."
+msgstr ""
+"Vous ne pouvez pas changer l'unité d'un lot qui est associé à des mouvements"
+" faits."
+
+msgctxt "error:stock.move:"
+msgid ""
+"The quantity in \"%(name)s\" of the lot \"%(lot)s\" cannot be greater than "
+"%(quantity)s%(unit)s."
+msgstr ""
+"La quantité de « %(name)s » du lot « %(lot)s » ne peut pas être plus grande "
+"que %(quantity)s%(unit)s."
+
+msgctxt "field:product.product,lot_unit:"
+msgid "Lot Unit"
+msgstr "Unité de lot"
+
+msgctxt "field:product.template,lot_unit:"
+msgid "Lot Unit"
+msgstr "Unité de lot"
+
+msgctxt "field:stock.lot,product_default_uom_category:"
+msgid "Default Product UoM Category"
+msgstr "Catégorie d'unité de mesure par défaut"
+
+msgctxt "field:stock.lot,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.lot,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:stock.lot,unit_quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "help:product.product,lot_unit:"
+msgid "The default unit for lot."
+msgstr "L'unité par défaut pour le lot."
+
+msgctxt "help:product.template,lot_unit:"
+msgid "The default unit for lot."
+msgstr "L'unité par défaut pour le lot."
+
+msgctxt "help:stock.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "La plus grande unité pour le lot."
+
+msgctxt "help:stock.lot,unit_quantity:"
+msgid "The maximal quantity for the lot."
+msgstr "La quantité maximal pour le lot."

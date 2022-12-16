@@ -1,0 +1,903 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.model.access" id="access_ir_sequence_type">
+            <field name="model" search="[('model', '=', 'ir.sequence.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_sequence_type_admin">
+            <field name="model" search="[('model', '=', 'ir.sequence.type')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_icon">
+            <field name="model" search="[('model', '=', 'ir.ui.icon')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_icon_admin">
+            <field name="model" search="[('model', '=', 'ir.ui.icon')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_menu">
+            <field name="model" search="[('model', '=', 'ir.ui.menu')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_menu_admin">
+            <field name="model" search="[('model', '=', 'ir.ui.menu')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_view">
+            <field name="model" search="[('model', '=', 'ir.ui.view')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_ui_view_admin">
+            <field name="model" search="[('model', '=', 'ir.ui.view')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action">
+            <field name="model" search="[('model', '=', 'ir.action')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_admin">
+            <field name="model" search="[('model', '=', 'ir.action')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_keyword">
+            <field name="model" search="[('model', '=', 'ir.action.keyword')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_keyword_admin">
+            <field name="model" search="[('model', '=', 'ir.action.keyword')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_report">
+            <field name="model" search="[('model', '=', 'ir.action.report')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_report_admin">
+            <field name="model" search="[('model', '=', 'ir.action.report')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window">
+            <field name="model" search="[('model', '=', 'ir.action.act_window')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window_admin">
+            <field name="model" search="[('model', '=', 'ir.action.act_window')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window_view">
+            <field name="model" search="[('model', '=', 'ir.action.act_window.view')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window_view_admin">
+            <field name="model" search="[('model', '=', 'ir.action.act_window.view')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window_domain">
+            <field name="model" search="[('model', '=', 'ir.action.act_window.domain')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_act_window_domain_admin">
+            <field name="model" search="[('model', '=', 'ir.action.act_window.domain')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_wizard">
+            <field name="model" search="[('model', '=', 'ir.action.wizard')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_wizard_admin">
+            <field name="model" search="[('model', '=', 'ir.action.wizard')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_url">
+            <field name="model" search="[('model', '=', 'ir.action.url')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_action_url_admin">
+            <field name="model" search="[('model', '=', 'ir.action.url')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model">
+            <field name="model" search="[('model', '=', 'ir.model')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_admin">
+            <field name="model" search="[('model', '=', 'ir.model')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_field">
+            <field name="model" search="[('model', '=', 'ir.model.field')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_field_admin">
+            <field name="model" search="[('model', '=', 'ir.model.field')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_access">
+            <field name="model" search="[('model', '=', 'ir.model.access')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_access_ir_admin">
+            <field name="model" search="[('model', '=', 'ir.model.access')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_button">
+            <field name="model" search="[('model', '=', 'ir.model.button')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_button_admin">
+            <field name="model" search="[('model', '=', 'ir.model.button')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_ir_model_button_rule">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_button_rule_admin">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.rule')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_ir_model_button_click">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.click')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_ir_model_button_click_admin">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.click')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_ir_model_data">
+            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_data_admin">
+            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_cron">
+            <field name="model" search="[('model', '=', 'ir.cron')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_cron_admin">
+            <field name="model" search="[('model', '=', 'ir.cron')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_queue">
+            <field name="model" search="[('model', '=', 'ir.queue')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_queue_admin">
+            <field name="model" search="[('model', '=', 'ir.queue')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_lang">
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_lang_admin">
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_translation">
+            <field name="model" search="[('model', '=', 'ir.translation')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_translation_admin">
+            <field name="model" search="[('model', '=', 'ir.translation')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_rule_group">
+            <field name="model" search="[('model', '=', 'ir.rule.group')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_rule_group_admin">
+            <field name="model" search="[('model', '=', 'ir.rule.group')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_rule">
+            <field name="model" search="[('model', '=', 'ir.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_rule_admin">
+            <field name="model" search="[('model', '=', 'ir.rule')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_module">
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_module_admin">
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_module_dependency">
+            <field name="model" search="[('model', '=', 'ir.module.dependency')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_module_dependency_admin">
+            <field name="model" search="[('model', '=', 'ir.module.dependency')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_trigger">
+            <field name="model" search="[('model', '=', 'ir.trigger')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_trigger_admin">
+            <field name="model" search="[('model', '=', 'ir.trigger')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_trigger_log">
+            <field name="model" search="[('model', '=', 'ir.trigger.log')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_trigger_log_admin">
+            <field name="model" search="[('model', '=', 'ir.trigger.log')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_menu">
+            <field name="model" search="[('model', '=', 'ir.ui.menu')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_menu1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_menu"/>
+        </record>
+        <record model="ir.rule" id="rule_menu2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_menu"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_action">
+            <field name="model" search="[('model', '=', 'ir.action')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action"/>
+        </record>
+        <record model="ir.rule" id="rule_action2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_action_keyword">
+            <field name="model" search="[('model', '=', 'ir.action.keyword')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action_keyword1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_keyword"/>
+        </record>
+        <record model="ir.rule" id="rule_action_keyword2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_keyword"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_action_report">
+            <field name="model" search="[('model', '=', 'ir.action.report')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action_report1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_report"/>
+        </record>
+        <record model="ir.rule" id="rule_action_report2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_report"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_action_act_window">
+            <field name="model" search="[('model', '=', 'ir.action.act_window')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action_act_window1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_act_window"/>
+        </record>
+        <record model="ir.rule" id="rule_action_act_window2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_act_window"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_action_wizard">
+            <field name="model" search="[('model', '=', 'ir.action.wizard')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action_wizard1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_wizard"/>
+        </record>
+        <record model="ir.rule" id="rule_action_wizard2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_wizard"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_action_url">
+            <field name="model" search="[('model', '=', 'ir.action.url')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action_url1">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_url"/>
+        </record>
+        <record model="ir.rule" id="rule_action_url2">
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_action_url"/>
+        </record>
+
+        <record model="ir.action-res.group" id="act_module_activate_upgrade_group_admin">
+            <field name="action" ref="ir.act_module_activate_upgrade"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.action-res.group" id="act_translation_update_group_admin">
+            <field name="action" ref="ir.act_translation_update"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.action-res.group" id="act_translation_export_group_admin">
+            <field name="action" ref="ir.act_translation_export"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.menu-res.group" id="menu_administration_group_admin">
+            <field name="menu" ref="ir.menu_administration"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_ui_group_admin">
+            <field name="menu" ref="ir.menu_ui"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_icon_form_group_admin">
+            <field name="menu" ref="ir.menu_icon_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_menu_tree_group_admin">
+            <field name="menu" ref="ir.menu_menu_list"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_view_group_admin">
+            <field name="menu" ref="ir.menu_view"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_view_tree_width_group_admin">
+            <field name="menu" ref="ir.menu_view_tree_width"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_action_group_admin">
+            <field name="menu" ref="ir.menu_action"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_act_action_group_admin">
+            <field name="menu" ref="ir.menu_act_action"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_action_report_form_group_admin">
+            <field name="menu" ref="ir.menu_action_report_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_action_act_window_group_admin">
+            <field name="menu" ref="ir.menu_action_act_window"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_action_wizard_group_admin">
+            <field name="menu" ref="ir.menu_action_wizard"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_action_url_group_admin">
+            <field name="menu" ref="ir.menu_action_url"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_models_group_admin">
+            <field name="menu" ref="ir.menu_models"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_model_form_group_admin">
+            <field name="menu" ref="ir.menu_model_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="model_model_fields_form_group_admin">
+            <field name="menu" ref="ir.model_model_fields_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_model_access_form_group_admin">
+            <field name="menu" ref="ir.menu_model_access_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_model_field_access_form_group_admin">
+            <field name="menu" ref="ir.menu_model_field_access_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_sequences_group_admin">
+            <field name="menu" ref="ir.menu_sequences"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_sequence_form_group_admin">
+            <field name="menu" ref="ir.menu_sequence_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_sequence_strict_form_group_admin">
+            <field name="menu" ref="ir.menu_sequence_strict_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_ir_sequence_type_group_admin">
+            <field name="menu" ref="ir.menu_ir_sequence_type"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_attachment_form_group_admin">
+            <field name="menu" ref="ir.menu_attachment_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_scheduler_group_admin">
+            <field name="menu" ref="ir.menu_scheduler"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_cron_form_group_admin">
+            <field name="menu" ref="ir.menu_cron_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_localization_group_admin">
+            <field name="menu" ref="ir.menu_localization"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_lang_form_group_admin">
+            <field name="menu" ref="ir.menu_lang_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_translation_form_group_admin">
+            <field name="menu" ref="ir.menu_translation_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_translation_set_group_admin">
+            <field name="menu" ref="ir.menu_translation_set"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_translation_clean_group_admin">
+            <field name="menu" ref="ir.menu_translation_clean"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_translation_update_group_admin">
+            <field name="menu" ref="ir.menu_translation_update"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_translation_export_group_admin">
+            <field name="menu" ref="ir.menu_translation_export"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_export_form_group_admin">
+            <field name="menu" ref="ir.menu_export_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_rule_group_form_group_admin">
+            <field name="menu" ref="ir.menu_rule_group_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_modules_group_admin">
+            <field name="menu" ref="ir.menu_modules"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_module_form_group_admin">
+            <field name="menu" ref="ir.menu_module_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_config_wizard_item_form_group_admin">
+            <field name="menu" ref="ir.menu_config_wizard_item_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_module_activate_upgrade_group_admin">
+            <field name="menu" ref="ir.menu_module_activate_upgrade"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_trigger_form_group_admin">
+            <field name="menu" ref="ir.menu_trigger_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.model.button-res.group"
+            id="module_activate_button_group_admin">
+            <field name="button" ref="ir.module_activate_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="module_activate_cancel_button_group_admin">
+            <field name="button" ref="ir.module_activate_cancel_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="module_deactivate_button_group_admin">
+            <field name="button" ref="ir.module_deactivate_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="module_deactivate_cancel_button_group_admin">
+            <field name="button" ref="ir.module_deactivate_cancel_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="module_upgrade_button_group_admin">
+            <field name="button" ref="ir.module_upgrade_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="module_upgrade_cancel_button_group_admin">
+            <field name="button" ref="ir.module_upgrade_cancel_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="cron_run_once_button_group_admin">
+            <field name="button" ref="ir.cron_run_once_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="model_data_sync_button_group_admin">
+            <field name="button" ref="ir.model_data_sync_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="view_show_button_group_admin">
+            <field name="button" ref="ir.view_show_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="sequence_type_view_form">
+          <field name="model">ir.sequence.type</field>
+          <field name="inherit" ref="ir.sequence_type_view_form"/>
+          <field name="name">sequence_type_form</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence">
+            <field name="model" search="[('model', '=', 'ir.sequence')]"/>
+            <field name="global_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence_strict">
+            <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
+            <field name="global_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict">
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+
+        <record model="res.user" id="user_trigger">
+            <field name="login">user_cron_trigger</field>
+            <field name="name">Cron Trigger</field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_admin">
+            <field name="user" ref="user_trigger"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.cron" id="cron_trigger_time">
+            <field name="name">Run On Time Triggers</field>
+            <field name="request_user" ref="user_admin"/>
+            <field name="user" ref="user_trigger"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="5"/>
+            <field name="interval_type">minutes</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">ir.trigger</field>
+            <field name="function">trigger_time</field>
+        </record>
+
+        <record model="ir.model.access" id="rule_default_view_tree_state">
+            <field name="model" search="[('model', '=', 'ir.ui.view_tree_state')]" />
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="rule_group_view_tree_state">
+            <field name="model" search="[('model', '=', 'ir.ui.view_tree_state')]" />
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_view_search">
+            <field name="model"
+                search="[('model', '=', 'ir.ui.view_search')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_view_search1">
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_view_search"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_view_search_admin">
+            <field name="model"
+                search="[('model', '=', 'ir.ui.view_search')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_view_search_admin_group_admin">
+            <field name="rule_group" ref="rule_group_view_search_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_session">
+            <field name="model"
+                search="[('model', '=', 'ir.session')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_session1">
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_session"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_session_wizard">
+            <field name="model"
+                search="[('model', '=', 'ir.session.wizard')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_session_wizard1">
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_session_wizard"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_ui_menu_favorite">
+            <field name="model"
+                search="[('model', '=', 'ir.ui.menu.favorite')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_ui_menu_favorite1">
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_ui_menu_favorite"/>
+        </record>
+
+    </data>
+</tryton>
