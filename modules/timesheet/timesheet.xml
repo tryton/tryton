@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_timesheet_admin">
+            <field name="name">Timesheet Administration</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_timesheet_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="timesheet_icon">
+            <field name="name">tryton-timesheet</field>
+            <field name="path">icons/tryton-timesheet.svg</field>
+        </record>
+
+        <menuitem name="Timesheet" sequence="6" id="menu_timesheet" icon="tryton-timesheet"/>
+        <menuitem name="Configuration" parent="menu_timesheet" id="menu_configuration" sequence="10" icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_timesheet_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+        <menuitem name="Reporting" parent="menu_timesheet"
+            id="menu_reporting" sequence="100"/>
+    </data>
+</tryton>
