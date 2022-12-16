@@ -1,0 +1,77 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "Kupongid"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "Kasutuse arv"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "Numbrid"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "Osapoole kohta"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "Soodustus"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "Kupong"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "Kupongid"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "Müük"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr ""
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "Sooduskupong"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "Sooduskupongi number"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "Müük - sooduskupongi number"
