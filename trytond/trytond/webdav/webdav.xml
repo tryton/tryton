@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="WebDAV" id="menu_webdav"
+            parent="ir.menu_administration"/>
+        <record model="ir.ui.menu-res.group" id="menu_webdav_group_admin">
+            <field name="menu" ref="menu_webdav"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="collection_view_tree">
+            <field name="model">webdav.collection</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">collection_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="collection_view_list">
+            <field name="model">webdav.collection</field>
+            <field name="type">tree</field>
+            <field name="name">collection_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="collection_view_form">
+            <field name="model">webdav.collection</field>
+            <field name="type">form</field>
+            <field name="name">collection_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_collection_tree">
+            <field name="name">Collections</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">webdav.collection</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="collection_view_tree"/>
+            <field name="act_window" ref="act_collection_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="collection_view_form"/>
+            <field name="act_window" ref="act_collection_tree"/>
+        </record>
+        <menuitem parent="menu_webdav"
+            action="act_collection_tree" id="menu_collection_tree"/>
+        <record model="ir.ui.menu-res.group" id="menu_collection_tree_group_admin">
+            <field name="menu" ref="menu_collection_tree"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_collection_list">
+            <field name="name">Collections</field>
+            <field name="res_model">webdav.collection</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="collection_view_list"/>
+            <field name="act_window" ref="act_collection_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_lis_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="collection_view_form"/>
+            <field name="act_window" ref="act_collection_list"/>
+        </record>
+        <menuitem name="Collections" parent="menu_collection_tree"
+            action="act_collection_list" id="menu_collection_list"/>
+        <record model="ir.ui.menu-res.group" id="menu_collection_list_group_admin">
+            <field name="menu" ref="menu_collection_list"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="share_view_list">
+            <field name="model">webdav.share</field>
+            <field name="type">tree</field>
+            <field name="name">share_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="share_view_form">
+            <field name="model">webdav.share</field>
+            <field name="type">form</field>
+            <field name="name">share_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_share_list">
+            <field name="name">Shares</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">webdav.share</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_share_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="share_view_list"/>
+            <field name="act_window" ref="act_share_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_share_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="share_view_form"/>
+            <field name="act_window" ref="act_share_list"/>
+        </record>
+        <menuitem parent="menu_webdav" action="act_share_list"
+            id="menu_share_list"/>
+
+        <record model="ir.rule.group" id="rule_group_share">
+            <field name="model" search="[('model', '=', 'webdav.share')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_share">
+            <field name="domain">[('user', '=', user.id)]</field>
+            <field name="rule_group" ref="rule_group_share"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_share_admin">
+            <field name="model" search="[('model', '=', 'webdav.share')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_share_admin_group_admin">
+            <field name="rule_group" ref="rule_group_share_admin"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="attachment_view_form">
+            <field name="model">ir.attachment</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ir.attachment_view_form"/>
+            <field name="name">attachment_form</field>
+        </record>
+    </data>
+</tryton>
