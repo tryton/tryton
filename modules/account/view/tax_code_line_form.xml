@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="5">
+    <label name="code"/>
+    <field name="code" colspan="4"/>
+    <field name="operator"/>
+    <label name="tax"/>
+    <field name="tax"/>
+    <field name="amount"/>
+    <field name="type"/>
+    <label name="template_override"/>
+    <field name="template_override"/>
+</form>
