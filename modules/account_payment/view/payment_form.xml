@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="kind"/>
+    <field name="kind"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="line"/>
+    <field name="line" view_ids="account_payment.move_line_view_list"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="date"/>
+    <field name="date"/>
+    <notebook colspan="4">
+        <page string="Description" id="description">
+            <label name="description"/>
+            <field name="description" colspan="3"/>
+        </page>
+        <page string="Other Info" id="info">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="group"/>
+            <field name="group"/>
+            <label name="origin"/>
+            <field name="origin"/>
+        </page>
+    </notebook>
+    <group col="4" colspan="4" id="state_buttons">
+        <label name="state"/>
+        <field name="state"/>
+        <group col="-1" colspan="2" id="buttons">
+            <button name="draft"/>
+            <button name="approve"/>
+            <button name="fail"/>
+            <button name="succeed"/>
+        </group>
+    </group>
+</form>

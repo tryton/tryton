@@ -1,0 +1,136 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.create_shipping.ups:"
+msgid "Shipment \"%(shipment)s\" already has a reference number."
+msgstr "O Envio \"%(shipment)s\" já possui número de referência."
+
+msgctxt "error:stock.shipment.create_shipping.ups:"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"A chamada ao serviço web UPS falhou com a seguinte mensagem:\n"
+"\n"
+"%(message)s"
+
+msgctxt "error:stock.shipment.out:"
+msgid "A phone number is required for party \"%(party)s\"."
+msgstr "Um número de telefone é necessário para a pessoa \"%(party)s\"."
+
+msgctxt "error:stock.shipment.out:"
+msgid "A shipping description is required for shipment \"%(shipment)s\"."
+msgstr "É necessária uma descrição de remessa para o envio \"%(shipment)s\"."
+
+msgctxt "field:carrier,ups_label_height:"
+msgid "Label Height"
+msgstr "Altura da Etiqueta"
+
+msgctxt "field:carrier,ups_label_image_format:"
+msgid "Label Image Format"
+msgstr "Formato da Imagem da Etiqueta"
+
+msgctxt "field:carrier,ups_service_type:"
+msgid "Service Type"
+msgstr "Tipo de serviço"
+
+msgctxt "field:carrier.credential.ups,account_number:"
+msgid "Account Number"
+msgstr "Número da Conta"
+
+msgctxt "field:carrier.credential.ups,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier.credential.ups,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:carrier.credential.ups,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:carrier.credential.ups,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.credential.ups,license:"
+msgid "License"
+msgstr "Licença"
+
+msgctxt "field:carrier.credential.ups,password:"
+msgid "Password"
+msgstr "Senha"
+
+msgctxt "field:carrier.credential.ups,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:carrier.credential.ups,server:"
+msgid "Server"
+msgstr "Servidor"
+
+msgctxt "field:carrier.credential.ups,use_metric:"
+msgid "Use Metric"
+msgstr "Usar Métrica"
+
+msgctxt "field:carrier.credential.ups,user_id:"
+msgid "User ID"
+msgstr "ID de usuário"
+
+msgctxt "field:carrier.credential.ups,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:carrier.credential.ups,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:stock.package.type,ups_code:"
+msgid "UPS Code"
+msgstr "Código UPS"
+
+msgctxt "model:carrier.credential.ups,name:"
+msgid "UPS Credential"
+msgstr "Credencial UPS"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
+msgid "Create UPS Shipping for Packages"
+msgstr "Create UPS Shipping for Packages"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS Credentials"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS Credentials"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Production"
+msgstr "Produção"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Testing"
+msgstr "Testando"
+
+msgctxt "view:carrier.credential.ups:"
+msgid "Credential Informations"
+msgstr "Informações da Credencial"
+
+msgctxt "view:carrier:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "view:stock.package.type:"
+msgid "UPS"
+msgstr "UPS"

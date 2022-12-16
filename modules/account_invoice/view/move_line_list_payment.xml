@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="date"/>
+    <field name="debit" sum="Debit"/>
+    <field name="credit" sum="Credit"/>
+    <field name="amount_second_currency"
+        sum="Amount Second Currency"/>
+    <field name="second_currency"/>
+    <field name="currency_digits" tree_invisible="1"/>
+    <field name="second_currency_digits" tree_invisible="1"/>
+</tree>

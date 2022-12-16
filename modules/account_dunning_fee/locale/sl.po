@@ -1,0 +1,149 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.dunning.fee.dunning_level:"
+msgid "Fee must be unique per dunning and level."
+msgstr "Strošek mora biti unikaten po izterjavi in stopnji"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Stroški"
+
+msgctxt "field:account.dunning.fee,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Način izračuna"
+
+msgctxt "field:account.dunning.fee,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.dunning.fee,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.dunning.fee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Odstotno"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:account.dunning.fee,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:account.dunning.fee,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.dunning.fee,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.dunning.fee.dunning_level,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.dunning.fee.dunning_level,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "Izterjava"
+
+msgctxt "field:account.dunning.fee.dunning_level,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Stopnja"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Promet"
+
+msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:account.dunning.fee.dunning_level,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.dunning.fee.dunning_level,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Plačilo"
+
+msgctxt "help:account.dunning.fee,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Načina izračuna višine stroška"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Strošek izterjave"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Stopnja stroškov izterjave"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Odstotno"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"

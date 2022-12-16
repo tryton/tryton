@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.account.type.template"
+                id="account_type_template_minimal">
+            <field name="name" lang="en">Minimal Account Type Chart</field>
+            <field name="name" lang="bg">Минимален сметкоплан</field>
+            <field name="name" lang="ca">Pla de tipus de compte mínim</field>
+            <field name="name" lang="de">Minimaler Kontentypenplan</field>
+            <field name="name" lang="es">Tipo de cuenta de plan mínimo</field>
+            <field name="name" lang="fr">Plan de type de compte minimal</field>
+            <field name="name" lang="nl">Basaal rekeningschematype</field>
+            <field name="name" lang="pt">Plano de tipos de conta mínimo</field>
+            <field name="name" lang="ru">Минимальная схема типов счетов</field>
+            <field name="name" lang="sl">Minimalni kontni načrt</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_asset">
+            <field name="name" lang="en">Asset</field>
+            <field name="name" lang="bg">Притежание</field>
+            <field name="name" lang="ca">Actiu</field>
+            <field name="name" lang="de">Aktiva</field>
+            <field name="name" lang="es">Activo</field>
+            <field name="name" lang="fr">Actif</field>
+            <field name="name" lang="nl">Activa</field>
+            <field name="name" lang="pt">Ativo</field>
+            <field name="name" lang="ru">Активы</field>
+            <field name="name" lang="sl">Sredstvo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_minimal"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_asset_current">
+            <field name="name" lang="en">Current</field>
+            <field name="name" lang="bg">Текущ</field>
+            <field name="name" lang="ca">Banc</field>
+            <field name="name" lang="de">Umlaufvermögen</field>
+            <field name="name" lang="es">Banco</field>
+            <field name="name" lang="fr">Courant</field>
+            <field name="name" lang="nl">Actueel</field>
+            <field name="name" lang="pt">Circulante</field>
+            <field name="name" lang="ru">Текущие</field>
+            <field name="name" lang="sl">Kratkoročno</field>
+            <field name="parent" ref="account_type_template_asset"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_asset_current_cash">
+            <field name="name" lang="en">Cash</field>
+            <field name="name" lang="bg">В брой</field>
+            <field name="name" lang="ca">Banc</field>
+            <field name="name" lang="de">Barvermögen</field>
+            <field name="name" lang="es">Efectivo</field>
+            <field name="name" lang="fr">Cash</field>
+            <field name="name" lang="nl">Kas</field>
+            <field name="name" lang="pt">Caixa</field>
+            <field name="name" lang="ru">Наличные</field>
+            <field name="name" lang="sl">Denar</field>
+            <field name="parent" ref="account_type_template_asset_current"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_asset_current_receivable">
+            <field name="name" lang="en">Receivable</field>
+            <field name="name" lang="bg">В брой</field>
+            <field name="name" lang="ca">Banc</field>
+            <field name="name" lang="de">Barvermögen</field>
+            <field name="name" lang="es">Efectivo</field>
+            <field name="name" lang="fr">Recevable</field>
+            <field name="name" lang="nl">Kas</field>
+            <field name="name" lang="pt">A Receber</field>
+            <field name="name" lang="ru">Наличные</field>
+            <field name="name" lang="sl">Denar</field>
+            <field name="parent" ref="account_type_template_asset_current"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_asset_long_term">
+            <field name="name" lang="en">Long-term</field>
+            <field name="name" lang="bg">Дългосрочен</field>
+            <field name="name" lang="ca">A llarg termini</field>
+            <field name="name" lang="de">Anlagevermögen</field>
+            <field name="name" lang="es">A largo plazo</field>
+            <field name="name" lang="fr">Long terme</field>
+            <field name="name" lang="nl">Langlopend</field>
+            <field name="name" lang="pt">Longo Prazo</field>
+            <field name="name" lang="ru">Долгосрочные</field>
+            <field name="name" lang="sl">Dolgoročno</field>
+            <field name="parent" ref="account_type_template_asset"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_liability">
+            <field name="name" lang="en">Liability</field>
+            <field name="name" lang="bg">Дълг</field>
+            <field name="name" lang="ca">Passiu</field>
+            <field name="name" lang="de">Verbindlichkeiten</field>
+            <field name="name" lang="es">Pasivo</field>
+            <field name="name" lang="fr">Passif</field>
+            <field name="name" lang="nl">Verplichting</field>
+            <field name="name" lang="pt">Passivo</field>
+            <field name="name" lang="ru">Пассивы</field>
+            <field name="name" lang="sl">Obveznosti</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_minimal"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_liability_current">
+            <field name="name" lang="en">Current</field>
+            <field name="name" lang="bg">Текущ</field>
+            <field name="name" lang="ca">Banc</field>
+            <field name="name" lang="de">Umlaufvermögen</field>
+            <field name="name" lang="es">Banco</field>
+            <field name="name" lang="fr">Courant</field>
+            <field name="name" lang="nl">Actueel</field>
+            <field name="name" lang="pt">Circulante</field>
+            <field name="name" lang="ru">Текущие</field>
+            <field name="name" lang="sl">Kratkoročno</field>
+            <field name="parent" ref="account_type_template_liability"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_liability_current_payable">
+            <field name="name" lang="en">Payable</field>
+            <field name="name" lang="bg">Разходен</field>
+            <field name="name" lang="ca">A pagar</field>
+            <field name="name" lang="de">Verbindlichkeiten</field>
+            <field name="name" lang="es">A pagar</field>
+            <field name="name" lang="fr">À payer</field>
+            <field name="name" lang="nl">Te betalen</field>
+            <field name="name" lang="pt">A Pagar</field>
+            <field name="name" lang="ru">Подлежащие уплате</field>
+            <field name="name" lang="sl">Obveznosti</field>
+            <field name="parent" ref="account_type_template_liability_current"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_liability_current_tax">
+            <field name="name" lang="en">Tax</field>
+            <field name="name" lang="bg">Данък</field>
+            <field name="name" lang="ca">Impost</field>
+            <field name="name" lang="de">Steuer</field>
+            <field name="name" lang="es">Impuesto</field>
+            <field name="name" lang="fr">Taxe</field>
+            <field name="name" lang="nl">Belasting</field>
+            <field name="name" lang="pt">Tributos</field>
+            <field name="name" lang="ru">Налоги</field>
+            <field name="name" lang="sl">Davek</field>
+            <field name="parent" ref="account_type_template_liability_current"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_liability_long_term">
+            <field name="name" lang="en">Long-term</field>
+            <field name="name" lang="bg">Дългосрочен</field>
+            <field name="name" lang="ca">A llarg termini</field>
+            <field name="name" lang="de">Anlagevermögen</field>
+            <field name="name" lang="es">A largo plazo</field>
+            <field name="name" lang="fr">Long terme</field>
+            <field name="name" lang="nl">Langlopend</field>
+            <field name="name" lang="pt">Longo Prazo</field>
+            <field name="name" lang="ru">Долгосрочные</field>
+            <field name="name" lang="sl">Dolgoročno</field>
+            <field name="parent" ref="account_type_template_liability"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_equity">
+            <field name="name" lang="en">Equity</field>
+            <field name="name" lang="bg">Капитал</field>
+            <field name="name" lang="ca">Patrimoni</field>
+            <field name="name" lang="de">Kapital</field>
+            <field name="name" lang="es">Patrimonio</field>
+            <field name="name" lang="fr">Capitaux propres</field>
+            <field name="name" lang="nl">Eigen vermogen</field>
+            <field name="name" lang="pt">Patrimônio Líquido</field>
+            <field name="name" lang="ru">Собственные средства</field>
+            <field name="name" lang="sl">Kapital</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_minimal"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_income">
+            <field name="name" lang="en">Income</field>
+            <field name="name" lang="bg">Приход</field>
+            <field name="name" lang="ca">Benefici</field>
+            <field name="name" lang="de">Erträge</field>
+            <field name="name" lang="es">Beneficio</field>
+            <field name="name" lang="fr">Revenu</field>
+            <field name="name" lang="nl">Inkomsten</field>
+            <field name="name" lang="pt">Resultados</field>
+            <field name="name" lang="ru">Поступления</field>
+            <field name="name" lang="sl">Prihodki</field>
+            <field name="parent" ref="account_type_template_equity"/>
+            <field name="sequence" eval="40"/>
+            <field name="income_statement" eval="True"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_revenue">
+            <field name="name" lang="en">Revenue</field>
+            <field name="name" lang="bg">Приход</field>
+            <field name="name" lang="ca">Ingressos</field>
+            <field name="name" lang="de">Ertrag</field>
+            <field name="name" lang="es">Ingresos</field>
+            <field name="name" lang="fr">Produit</field>
+            <field name="name" lang="nl">Opbrengst</field>
+            <field name="name" lang="pt">Receitas</field>
+            <field name="name" lang="ru">Доходы</field>
+            <field name="name" lang="sl">Prihodki</field>
+            <field name="parent" ref="account_type_template_income"/>
+            <field name="sequence" eval="10"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_expense">
+            <field name="name" lang="en">Expense</field>
+            <field name="name" lang="bg">Разход</field>
+            <field name="name" lang="ca">Despesa</field>
+            <field name="name" lang="de">Aufwand</field>
+            <field name="name" lang="es">Gastos</field>
+            <field name="name" lang="fr">Charge</field>
+            <field name="name" lang="nl">Kosten</field>
+            <field name="name" lang="pt">Despesas</field>
+            <field name="name" lang="ru">Расходы</field>
+            <field name="name" lang="sl">Odhodki</field>
+            <field name="parent" ref="account_type_template_income"/>
+            <field name="sequence" eval="20"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_template_off_balance">
+            <field name="name" lang="en">Off-Balance</field>
+            <field name="name" lang="bg">Неутрално салдо</field>
+            <field name="name" lang="ca">Fora de balanç</field>
+            <field name="name" lang="de">Bilanzneutral</field>
+            <field name="name" lang="es">Fuera de balance</field>
+            <field name="name" lang="fr">Hors bilan</field>
+            <field name="name" lang="nl">Buiten balans</field>
+            <field name="name" lang="pt">Fora do Balanço</field>
+            <field name="name" lang="ru">Внебалансовые</field>
+            <field name="name" lang="sl">Zunaj bilance</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_minimal"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_root">
+            <field name="name" lang="en">Minimal Account Chart</field>
+            <field name="name" lang="bg">Минимална графика на сметката</field>
+            <field name="name" lang="ca">Pla de comptes mínim</field>
+            <field name="name" lang="de">Minimaler Kontenplan</field>
+            <field name="name" lang="es">Plan de cuentas mínimo</field>
+            <field name="name" lang="fr">Plan comptable minimal</field>
+            <field name="name" lang="nl">Basaal rekeningschema</field>
+            <field name="name" lang="pt">Plano de Contas Mínimo</field>
+            <field name="name" lang="ru">Минимальная схема счетов</field>
+            <field name="name" lang="sl">Minimalni kontni načrt</field>
+            <field name="type" ref="account_type_template_minimal"/>
+        </record>
+        <record model="account.account.template" id="account_template_receivable">
+            <field name="name" lang="en">Main Receivable</field>
+            <field name="name" lang="bg">Основна приходна сметка</field>
+            <field name="name" lang="ca">A cobrar principal</field>
+            <field name="name" lang="de">Forderungen</field>
+            <field name="name" lang="es">A cobrar principal</field>
+            <field name="name" lang="fr">Compte client</field>
+            <field name="name" lang="nl">Basisrekening ontvangen</field>
+            <field name="name" lang="pt">Clientes Principal</field>
+            <field name="name" lang="ru">Основной Подлежащий получению</field>
+            <field name="name" lang="sl">Glavne terjatve</field>
+            <field name="type" ref="account_type_template_asset_current_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">receivable</field>
+        </record>
+        <record model="account.account.template" id="account_template_payable">
+            <field name="name" lang="en">Main Payable</field>
+            <field name="name" lang="bg">Основна разходна сметка</field>
+            <field name="name" lang="ca">A pagar principal</field>
+            <field name="name" lang="de">Verbindlichkeiten</field>
+            <field name="name" lang="es">A pagar principal</field>
+            <field name="name" lang="fr">Compte fournisseur</field>
+            <field name="name" lang="nl">Basisrekening betalen</field>
+            <field name="name" lang="pt">Fornecedores Principal</field>
+            <field name="name" lang="ru">Основной Подлежащий уплате</field>
+            <field name="name" lang="sl">Glavne obveznosti</field>
+            <field name="type" ref="account_type_template_liability_current_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">payable</field>
+        </record>
+        <record model="account.account.template" id="account_template_revenue">
+            <field name="name" lang="en">Main Revenue</field>
+            <field name="name" lang="bg">Основна приходи</field>
+            <field name="name" lang="ca">Ingrés principal</field>
+            <field name="name" lang="de">Ertrag</field>
+            <field name="name" lang="es">Ingresos principal</field>
+            <field name="name" lang="fr">Compte de produits</field>
+            <field name="name" lang="nl">Basis opbrengstrekening</field>
+            <field name="name" lang="pt">Receitas Principal</field>
+            <field name="name" lang="ru">Основной Доходы</field>
+            <field name="name" lang="sl">Glavni prihodki</field>
+            <field name="type" ref="account_type_template_revenue"/>
+            <field name="deferral" eval="False"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">revenue</field>
+        </record>
+        <record model="account.account.template" id="account_template_expense">
+            <field name="name" lang="en">Main Expense</field>
+            <field name="name" lang="bg">Основена разходи</field>
+            <field name="name" lang="ca">Despesa principal</field>
+            <field name="name" lang="de">Aufwand</field>
+            <field name="name" lang="es">Gastos principal</field>
+            <field name="name" lang="fr">Compte de charges</field>
+            <field name="name" lang="nl">Basis kostenrekening</field>
+            <field name="name" lang="pt">Despesas Principal</field>
+            <field name="name" lang="ru">Основной Расходы</field>
+            <field name="name" lang="sl">Glavni odhodki</field>
+            <field name="type" ref="account_type_template_expense"/>
+            <field name="deferral" eval="False"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">expense</field>
+        </record>
+        <record model="account.account.template" id="account_template_cash">
+            <field name="name" lang="en">Main Cash</field>
+            <field name="name" lang="bg">Основна наличност</field>
+            <field name="name" lang="ca">Efectiu principal</field>
+            <field name="name" lang="de">Barvermögen</field>
+            <field name="name" lang="es">Efectivo principal</field>
+            <field name="name" lang="fr">Compte de liquidité</field>
+            <field name="name" lang="nl">Basis kasrekening</field>
+            <field name="name" lang="pt">Caixa Principal</field>
+            <field name="name" lang="ru">Основной Наличные</field>
+            <field name="name" lang="sl">Glavna denarna sredstva</field>
+            <field name="type" ref="account_type_template_asset_current_cash"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">other</field>
+        </record>
+        <record model="account.account.template" id="account_template_tax">
+            <field name="name" lang="en">Main Tax</field>
+            <field name="name" lang="bg">Основна данъци</field>
+            <field name="name" lang="ca">Impost principal</field>
+            <field name="name" lang="de">Steuern</field>
+            <field name="name" lang="es">Impuestos principal</field>
+            <field name="name" lang="fr">Compte de taxes</field>
+            <field name="name" lang="nl">Basis belastingrekening</field>
+            <field name="name" lang="pt">Tributos Principal</field>
+            <field name="name" lang="ru">Основной Налоги</field>
+            <field name="name" lang="sl">Glavni davki</field>
+            <field name="type" ref="account_type_template_liability_current_tax"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account_template_root"/>
+            <field name="kind">other</field>
+        </record>
+    </data>
+</tryton>
