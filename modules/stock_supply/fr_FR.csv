@@ -1,0 +1,78 @@
+type,name,res_id,src,value,fuzzy
+error,purchase.request,0,Purchase requests are only created by the system.,Les demandes d'achat sont uniquement crées par le sytème,0
+error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Le prix d'achat est absent pour le produit : %s (id: %s) !,0
+error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Ce prix est nécessaire pour créer les achats.,0
+error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,La Quantité maximale doit être supérieure à la quantité minimale,0
+error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Une seule règle d'approvisionnement est autorisée par paire produit-emplacement,0
+error,stock.order_point,0,You can not define two order points on the same product with opposite locations.,Vous ne pouvez pas définir deux règles d'approvisionnement sur le même produit avec des emplacement opposés,0
+field,"product.product,order_points",0,Order Points,Règles d'approvisionnements,0
+field,"purchase.request,company",0,Company,Société,0
+field,"purchase.request,computed_quantity",0,Computed Quantity,Quantité calculée,0
+field,"purchase.request,computed_uom",0,Computed UOM,UDM calculée,0
+field,"purchase.request.create_purchase.ask_party,company",0,Company,Société,0
+field,"purchase.request.create_purchase.ask_party,party",0,Supplier,Fournisseur,0
+field,"purchase.request.create_purchase.ask_party,product",0,Product,Produit,0
+field,"purchase.request.create_purchase.ask_term,company",0,Company,Société,0
+field,"purchase.request.create_purchase.ask_term,party",0,Supplier,Fournisseur,0
+field,"purchase.request.create_purchase.ask_term,payment_term",0,Payment Term,Condition de paiement,0
+field,"purchase.request,origin",0,Origin,Origine,0
+field,"purchase.request,party",0,Party,Tiers,0
+field,"purchase.request,product",0,Product,Produit,0
+field,"purchase.request,purchase",0,Purchase,Achat,0
+field,"purchase.request,purchase_date",0,Best Purchase Date,Meilleur date d'achat,0
+field,"purchase.request,purchase_line",0,Purchase Line,Ligne d'achat,0
+field,"purchase.request,quantity",0,Quantity,Quantité,0
+field,"purchase.request,rec_name",0,Name,Nom,0
+field,"purchase.request,state",0,State,État,0
+field,"purchase.request,stock_level",0,Stock at Supply Date,Stock à la date de livraison,0
+field,"purchase.request,supply_date",0,Expected Supply Date,Date de livraison attendue,0
+field,"purchase.request,uom",0,UOM,UDM,0
+field,"purchase.request,warehouse",0,Warehouse,Entrepôt,0
+field,"stock.order_point,company",0,Company,Société,0
+field,"stock.order_point,location",0,Location,Emplacement,0
+field,"stock.order_point,max_quantity",0,Maximal Quantity,Quantité maximale,0
+field,"stock.order_point,min_quantity",0,Minimal Quantity,Quantité minimale,0
+field,"stock.order_point,product",0,Product,Produit,0
+field,"stock.order_point,provisioning_location",0,Provisioning Location,Emplacement d'appro.,0
+field,"stock.order_point,rec_name",0,Name,Nom,0
+field,"stock.order_point,storage_location",0,Storage Location,Emplacement de stockage,0
+field,"stock.order_point,type",0,Type,Type,0
+field,"stock.order_point,unit",0,Unit,Unité,0
+field,"stock.order_point,unit_digits",0,Unit Digits,Décimales de l'unité,0
+field,"stock.order_point,warehouse_location",0,Warehouse Location,Entrepôt,0
+model,"ir.action,name",wizard_create_purchase,Create Purchase,Créer achat,0
+model,"ir.action,name",act_order_point_form,Order Points,Règles d'approvisionnement,0
+model,"ir.action,name",act_purchase_request_form,Purchase Requests,Demandes d'achat,0
+model,"ir.action,name",act_purchase_form,Purchases,Achats,0
+model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Générer les expéditions internes,0
+model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Générer les demandes d'achat,0
+model,"ir.ui.menu,name",menu_order_point_form,Order Points,Règles d'approvisionnement,0
+model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Demandes d'achat,0
+model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Créer l'achat - Demande de tiers,0
+model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Créer l'achat - Demande de condition de paiment,0
+model,"purchase.request,name",0,Purchase Request,Demande d'achat,0
+model,"res.group,name",group_purchase_request,Purchase Request,Demande d'achat,0
+model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Cron expédition interne,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Demande d'achat,0
+model,"stock.order_point,name",0,Order Point,Règle d'approvisionnement,0
+selection,"purchase.request,origin",0,Order Point,Règle d'approvisionnement,0
+selection,"purchase.request,state",0,Cancel,Annulé,0
+selection,"purchase.request,state",0,Done,Fait,0
+selection,"purchase.request,state",0,Draft,Brouillon,0
+selection,"purchase.request,state",0,Purchased,Commandé,0
+selection,"stock.order_point,type",0,Internal,Interne,0
+selection,"stock.order_point,type",0,Purchase,Achat,0
+view,purchase.request,0,Product Info,Info produit,0
+view,purchase.request,0,Purchase Request,Demande d'achat,0
+view,purchase.request,0,Purchase Requests,Demandes d'achat,0
+view,purchase.request,0,Supply Info,Information d'approvisionnement,0
+view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Création de la commande: fournisseur absent,0
+view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Création de la commande: règle d'appro. absente,0
+view,stock.order_point,0,Locations,Emplacements,0
+view,stock.order_point,0,Order Point,Règle d'approvisionnement,0
+view,stock.order_point,0,Order Point Type,Type de Règle d'approvisionnement,0
+view,stock.order_point,0,Product Info,Info produit,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Annuler,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,init",0,Continue,Continuer,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,end",0,Cancel,Annuler,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,init",0,Continue,Continuer,0
