@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="number" sum="Number"/>
+    <field name="number_trend" expand="1"/>
+    <field name="amount" sum="Amount" optional="1"/>
+    <field name="amount_trend" expand="1" optional="1"/>
+    <field name="converted" sum="Converted" optional="1"/>
+    <field name="conversion_rate" factor="100" optional="0">
+        <suffix string="%" name="conversion_rate"/>
+    </field>
+    <field name="conversion_trend" expand="1" optional="0"/>
+    <field name="converted_amount" sum="Converted Amount" optional="1"/>
+    <field name="converted_amount_trend" expand="1" optional="1"/>
+</tree>
