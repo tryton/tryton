@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="unread"/>
+    <field name="resource" expand="1"/>
+    <field name="last_user" string="User" expand="1"/>
+    <field name="last_modification" widget="date" string="Date"/>
+    <field name="last_modification" widget="time" string="Time"/>
+    <field name="message_wrapped" expand="2"/>
+</tree>
