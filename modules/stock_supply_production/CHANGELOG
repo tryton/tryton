@@ -1,0 +1,26 @@
+Version 3.6.1 - 2016-07-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add warning for late production when creating production request.
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Allow to calculate production requests filtered by warehouse
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-08-15
+* Initial release
