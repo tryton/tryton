@@ -1,0 +1,289 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Alapértelmezett felszólítási folyamat"
+
+msgctxt ""
+"field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Alapértelmezett felszólítási folyamat"
+
+msgctxt "field:account.dunning,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:account.dunning,amount:"
+msgid "Amount"
+msgstr "Összeg"
+
+msgctxt "field:account.dunning,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Összeg devizában"
+
+msgctxt "field:account.dunning,blocked:"
+msgid "Blocked"
+msgstr "Felfüggesztve"
+
+msgctxt "field:account.dunning,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:account.dunning,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.dunning,level:"
+msgid "Level"
+msgstr "Szint"
+
+msgctxt "field:account.dunning,line:"
+msgid "Line"
+msgstr "Könyvelési tétel"
+
+msgctxt "field:account.dunning,maturity_date:"
+msgid "Maturity Date"
+msgstr "Esedékesség"
+
+msgctxt "field:account.dunning,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt "field:account.dunning,procedure:"
+msgid "Procedure"
+msgstr "Felszólítási folyamat"
+
+msgctxt "field:account.dunning,second_currency:"
+msgid "Second Currency"
+msgstr "Deviza pénznem"
+
+msgctxt "field:account.dunning,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr ""
+
+msgctxt "field:account.dunning,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:account.dunning.create.start,date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr "Fizetési késedelem"
+
+msgctxt "field:account.dunning.level,procedure:"
+msgid "Procedure"
+msgstr "Felszólítási folyamat"
+
+msgctxt "field:account.dunning.procedure,levels:"
+msgid "Levels"
+msgstr "Szintek"
+
+msgctxt "field:account.dunning.procedure,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:account.move.line,dunnings:"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "field:party.party,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Felszólítási folyamat"
+
+msgctxt "field:party.party,dunning_procedures:"
+msgid "Dunning Procedures"
+msgstr "Felszólítási folyamatok"
+
+msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Felszólítási folyamat"
+
+msgctxt "field:party.party.dunning_procedure,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+"Új vevők létrehozásakor ezt a felszólítási folyamatot adja meg automatikusan"
+" a rendszer."
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+"Új vevők létrehozásakor ezt a felszólítási folyamatot adja meg automatikusan"
+" a rendszer."
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr ""
+"Jelölje be, hogy a fizetési felszólítás következő szintjeinek életbe lépését"
+" felfüggessze."
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr "A fizetési felszólítást küldő cég."
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr "A hátralékban lévő követelés könyvelési tétele."
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr "Az ezen a napon hátralékban lévők kapnak fizetési megszólítást."
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr "Mennyi késedelmi idő után lépjen érvénybe ez a szint."
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr "A felszólítási folyamat megnevezése."
+
+msgctxt "model:account.configuration.default_dunning_procedure,name:"
+msgid "Account Configuration Default Dunning Procedure"
+msgstr ""
+
+msgctxt "model:account.dunning,name:"
+msgid "Account Dunning"
+msgstr "Fizetési felszólítás"
+
+msgctxt "model:account.dunning.create.start,name:"
+msgid "Create Account Dunning"
+msgstr ""
+
+msgctxt "model:account.dunning.level,name:"
+msgid "Account Dunning Level"
+msgstr ""
+
+msgctxt "model:account.dunning.procedure,name:"
+msgid "Account Dunning Procedure"
+msgstr ""
+
+msgctxt "model:account.dunning.process.start,name:"
+msgid "Create Account Dunning"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dunning_form"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "model:ir.action,name:act_dunning_party"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "model:ir.action,name:act_dunning_procedure_form"
+msgid "Procedures"
+msgstr "Felszólítási folyamatok"
+
+msgctxt "model:ir.action,name:wizard_dunning_create"
+msgid "Create Dunnings"
+msgstr "Fizetési felszólítások létrehozása"
+
+msgctxt "model:ir.action,name:wizard_dunning_process"
+msgid "Process Dunning"
+msgstr "Fizetési felszólítás(ok) kiküldése"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
+msgid "All"
+msgstr "összes"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr "végig ért"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr "várakozik"
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr ""
+"Ehhez a könyvelési tételhez már létezik egy másik fizetési felszólítás."
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_create"
+msgid "Create Dunnings"
+msgstr "Fizetési felszólítások létrehozása"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_form"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
+msgid "Procedures"
+msgstr "Felszólítási folyamatok"
+
+msgctxt "model:ir.ui.menu,name:menu_dunnings"
+msgid "Dunnings"
+msgstr "Fizetési felszólítások"
+
+msgctxt "model:party.party.dunning_procedure,name:"
+msgid "Party Dunning Procedure"
+msgstr ""
+
+msgctxt "model:res.group,name:group_dunning"
+msgid "Dunning"
+msgstr "Fizetési felszólítás"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr "végig ért"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr "várakozik"
+
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Fizetési felszólítás"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning for date"
+msgstr "Hátralék számításának napja"
+
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning?"
+msgstr "Kiküldje a fizetési megszólításokat?"
+
+msgctxt "view:party.party:"
+msgid "Dunning"
+msgstr "Fizetési felszólítás"
+
+msgctxt "wizard_button:account.dunning.create,start,create_:"
+msgid "Create"
+msgstr "Létrehozás"
+
+msgctxt "wizard_button:account.dunning.create,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Feldolgozás"
