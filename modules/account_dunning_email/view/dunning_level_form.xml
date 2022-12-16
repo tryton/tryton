@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='print_on_letter']" position="after">
+        <label name="send_email"/>
+        <field name="send_email"/>
+        <newline/>
+        <label name="email_template"/>
+        <field name="email_template"/>
+        <label name="email_from"/>
+        <field name="email_from"/>
+    </xpath>
+</data>
