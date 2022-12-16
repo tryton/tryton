@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr "Aantal decimalen verkoop"
+
+msgctxt "field:product.product,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr "Minimale hoeveelheid verkoop"
+
+msgctxt "field:product.product,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr "Afronding hoeveelheid verkoop"
+
+msgctxt "field:product.template,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr "Aantal decimalen verkoop"
+
+msgctxt "field:product.template,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr "Minimale hoeveelheid verkoop"
+
+msgctxt "field:product.template,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr "Afronding hoeveelheid verkoop"
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_minimal"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is too small, you must set at "
+"least %(minimum)s."
+msgstr ""
+"Het aantal %(quantity)s van regel %(line)s is te klein, het moet minimaal "
+"%(minimum)s zijn."
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_rounding"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is not valid, you must set "
+"multiple of %(rounding)s."
+msgstr ""
+"Het aantal %(quantity)s van regel %(line)s is niet geldig, het moet een "
+"veelvoud zijn van %(rounding)s."
