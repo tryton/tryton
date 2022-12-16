@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Customer Complaint" parent="sale.menu_configuration"
+            sequence="20" id="menu_configuration"/>
+
+        <record model="ir.ui.view" id="type_view_form">
+            <field name="model">sale.complaint.type</field>
+            <field name="type">form</field>
+            <field name="name">type_form</field>
+        </record>
+        <record model="ir.ui.view" id="type_view_list">
+            <field name="model">sale.complaint.type</field>
+            <field name="type">tree</field>
+            <field name="name">type_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_type_form">
+            <field name="name">Types</field>
+            <field name="res_model">sale.complaint.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="type_view_list"/>
+            <field name="act_window" ref="act_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="type_view_form"/>
+            <field name="act_window" ref="act_type_form"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_type_form"
+            id="menu_type"/>
+
+        <record model="ir.model.access" id="access_type">
+            <field name="model" search="[('model', '=', 'sale.complaint.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_type_admin">
+            <field name="model" search="[('model', '=', 'sale.complaint.type')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="complaint_view_form">
+            <field name="model">sale.complaint</field>
+            <field name="type">form</field>
+            <field name="name">complaint_form</field>
+        </record>
+        <record model="ir.ui.view" id="complaint_view_list">
+            <field name="model">sale.complaint</field>
+            <field name="type">tree</field>
+            <field name="name">complaint_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_complaint_form">
+            <field name="name">Complaints</field>
+            <field name="res_model">sale.complaint</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_complaint_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="complaint_view_list"/>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_complaint_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="complaint_view_form"/>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_complaint_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"
+                eval="[('state', '=', 'draft')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_complaint_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain"
+                eval="[('state', '=', 'waiting')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_complaint_form_domain_approved">
+            <field name="name">Approved</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain"
+                eval="[('state', '=', 'approved')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_complaint_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_complaint_form"/>
+        </record>
+        <menuitem parent="sale.menu_sale" action="act_complaint_form"
+            id="menu_complaint" sequence="30"/>
+
+        <record model="ir.action.act_window" id="act_complaint_relate_party">
+            <field name="name">Customer Complaints</field>
+            <field name="res_model">sale.complaint</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('customer', '=', Eval('active_id')), ('customer', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_complaint_relate_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="complaint_view_list"/>
+            <field name="act_window" ref="act_complaint_relate_party"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_complaint_relate_party_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="complaint_view_form"/>
+            <field name="act_window" ref="act_complaint_relate_party"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_complaint_relate_party_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_complaint_relate_party"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_complaint_relate_sale">
+            <field name="name">Complaints</field>
+            <field name="res_model">sale.complaint</field>
+            <field name="domain"
+                eval="[['OR', ('origin.id', 'in', Eval('active_ids'), 'sale.sale'), ('origin.sale', 'in', Eval('active_ids'), 'sale.line')], ('type.origin.model', 'in', ['sale.sale', 'sale.line'])]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_complaint_relate_sale_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="complaint_view_list"/>
+            <field name="act_window" ref="act_complaint_relate_sale"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_complaint_relate_sale_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="complaint_view_form"/>
+            <field name="act_window" ref="act_complaint_relate_sale"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_complaint_relate_sale_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_complaint_relate_sale"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_complaint">
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_complaint1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_complaint"/>
+        </record>
+
+        <record model="ir.model.access" id="access_complaint">
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_complaint_sale">
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="complaint_cancel_button_group_sale">
+            <field name="button" ref="complaint_cancel_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="complaint_draft_button_group_sale">
+            <field name="button" ref="complaint_draft_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="complaint_wait_button_group_sale">
+            <field name="button" ref="complaint_wait_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_approve_button">
+            <field name="name">approve</field>
+            <field name="string">Approve</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="complaint_approve_button_group_sale_admin">
+            <field name="button" ref="complaint_approve_button"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_reject_button">
+            <field name="name">reject</field>
+            <field name="string">Reject</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="complaint_reject_button_group_sale_admin">
+            <field name="button" ref="complaint_reject_button"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="complaint_do_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'sale.complaint')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="complaint_do_button_group_sale">
+            <field name="button" ref="complaint_do_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.ui.view" id="action_view_form">
+            <field name="model">sale.complaint.action</field>
+            <field name="type">form</field>
+            <field name="name">action_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_view_list">
+            <field name="model">sale.complaint.action</field>
+            <field name="type">tree</field>
+            <field name="name">action_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_action">
+            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_action1">
+            <field name="domain"
+                eval="[('complaint.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_action"/>
+        </record>
+
+        <record model="ir.model.access" id="access_action">
+            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_action_sale">
+            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
