@@ -1,0 +1,200 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,unearned_revenue:"
+msgid "Unearned Revenue"
+msgstr "Revenu non gagné"
+
+msgctxt "field:account.account.type.template,unearned_revenue:"
+msgid "Unearned Revenue"
+msgstr "Revenu non gagné"
+
+msgctxt "field:sale.advance_payment.condition,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:sale.advance_payment.condition,amount:"
+msgid "Amount"
+msgstr "Quantité"
+
+msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgid "Block Shipping"
+msgstr "Bloquer l'envoi"
+
+msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgid "Block Supply"
+msgstr "Bloquer l'approvisionnement"
+
+msgctxt "field:sale.advance_payment.condition,completed:"
+msgid "Completed"
+msgstr "Terminée"
+
+msgctxt "field:sale.advance_payment.condition,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "Délai de facturation"
+
+msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+msgctxt "field:sale.advance_payment.condition,sale:"
+msgid "Sale"
+msgstr "Vente"
+
+msgctxt "field:sale.advance_payment.condition,sale_company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.advance_payment.condition,sale_state:"
+msgid "Sale State"
+msgstr "État de la vente"
+
+msgctxt "field:sale.advance_payment_term,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:sale.advance_payment_term,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.advance_payment_term.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:sale.advance_payment_term.line,accounts:"
+msgid "Accounts"
+msgstr "Comptes"
+
+msgctxt "field:sale.advance_payment_term.line,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "Conditions d'acompte"
+
+msgctxt "field:sale.advance_payment_term.line,block_shipping:"
+msgid "Block Shipping"
+msgstr "Bloquer l'envoi"
+
+msgctxt "field:sale.advance_payment_term.line,block_supply:"
+msgid "Block Supply"
+msgstr "Bloquer l'approvisionnement"
+
+msgctxt "field:sale.advance_payment_term.line,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:sale.advance_payment_term.line,formula:"
+msgid "Formula"
+msgstr "Formule"
+
+msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "Délai de facturation"
+
+msgctxt "field:sale.advance_payment_term.line.account,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:sale.advance_payment_term.line.account,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.advance_payment_term.line.account,line:"
+msgid "Line"
+msgstr "Ligne"
+
+msgctxt "field:sale.sale,advance_payment_conditions:"
+msgid "Advance Payment Conditions"
+msgstr "Conditions de l'acompte"
+
+msgctxt "field:sale.sale,advance_payment_invoices:"
+msgid "Advance Payment Invoices"
+msgstr "Factures d'acompte"
+
+msgctxt "field:sale.sale,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "Conditions d'acompte"
+
+msgctxt "help:sale.advance_payment_term.line,account:"
+msgid "Used for the line of advance payment invoice."
+msgstr "Utilisé sur la ligne de la facture d'acompte."
+
+msgctxt "help:sale.advance_payment_term.line,block_shipping:"
+msgid "Check to prevent the packing of the shipment before advance payment."
+msgstr ""
+"À cocher afin d'empêcher l'emballage de l'expédition avant le paiement de "
+"l'acompte."
+
+msgctxt "help:sale.advance_payment_term.line,block_supply:"
+msgid "Check to prevent any supply request before advance payment."
+msgstr ""
+"À cocher afin d'empêcher le réapprovisionnement avant le paiement de "
+"l'acompte."
+
+msgctxt "help:sale.advance_payment_term.line,description:"
+msgid "Used as description for the invoice line."
+msgstr "Utilisé comme description sur la ligne de la facture d'acompte."
+
+msgctxt "help:sale.advance_payment_term.line,formula:"
+msgid ""
+"A python expression used to compute the advance payment amount that will be evaluated with:\n"
+"- total_amount: The total amount of the sale.\n"
+"- untaxed_amount: The total untaxed amount of the sale."
+msgstr ""
+"Une expression python utilisée pour calculer le montant de l'acompte ; elle sera évaluée avec :\n"
+"- total_amount : Le montant total de la vente.\n"
+"- untaxed_amount : Le montat total hors-taxes de la vente."
+
+msgctxt "help:sale.advance_payment_term.line,invoice_delay:"
+msgid ""
+"Delta to apply on the sale date for the date of the advance payment invoice."
+msgstr ""
+"Le délai à appliquer à la date de vente pour déterminer la date de la "
+"facture d'acompte."
+
+msgctxt "model:ir.action,name:act_advance_invoice_form"
+msgid "Advance Invoices"
+msgstr "Factures d'acompte"
+
+msgctxt "model:ir.action,name:act_advance_payment_term_form"
+msgid "Advance Payment Terms"
+msgstr "Conditions de paiement d'acompte"
+
+msgctxt "model:ir.message,text:msg_shipping_blocked"
+msgid ""
+"To pack shipments the customer must paid the advance payment for sale "
+"\"%(sale)s\"."
+msgstr ""
+"Pour emballer les expéditions, le client doit payer l'acompte pour la vente "
+"« %(sale)s »."
+
+msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Formule invalide « %(formula)s » sur la ligne de condition de paiement "
+"« %(term_line)s » avec l'exception « %(exception)s »."
+
+msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
+msgid "Advance Payment Terms"
+msgstr "Conditions de paiement d'acompte"
+
+msgctxt "model:sale.advance_payment.condition,name:"
+msgid "Advance Payment Condition"
+msgstr "Condition d'acompte"
+
+msgctxt "model:sale.advance_payment_term,name:"
+msgid "Advance Payment Term"
+msgstr "Conditions d'acompte"
+
+msgctxt "model:sale.advance_payment_term.line,name:"
+msgid "Advance Payment Term Line"
+msgstr "Ligne des conditidons d'acompte"
+
+msgctxt "model:sale.advance_payment_term.line.account,name:"
+msgid "Advance Payment Term Line Account"
+msgstr "Compte de la ligne des conditions d'acompte"
