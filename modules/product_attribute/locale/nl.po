@@ -1,0 +1,101 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Groepen"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Specificatie"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Groep"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Specificaties"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Specificatie Groep"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Specificaties"
+
+msgctxt "field:product.product,attributes_name:"
+msgid "Attributes Name"
+msgstr "Specificaties Naam"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Specificatie Groep"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Voeg groepen toe aan een specificatie."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Voeg specificaties toe aan de groep."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "De hoofdidentificatie van de specificatie groep."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+"Selecteer een groep met specificaties om aan de variant toe te voegen."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Voeg specificaties toe aan de variant."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+"Selecteer een groep met specificaties om aan de variant toe te voegen."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Specificaties"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Specificatie Groepen"
+
+msgctxt "model:ir.message,text:msg_label_value"
+msgid "%(label)s: %(value)s"
+msgstr "%(label)s : %(value)s"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Specificaties"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Specificatie Groepen"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Product Specificatie"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Product Specificatie - Groep"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Product Specificatie Groep"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Specificaties"
