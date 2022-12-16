@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Purchase Request">
+    <separator string="Product Info" colspan="4" id="product"/>
+    <label name="product"/>
+    <field name="product"/>
+    <newline/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="uom"/>
+    <field name="uom"/>
+    <label name="computed_quantity"/>
+    <field name="computed_quantity"/>
+    <label name="computed_uom"/>
+    <field name="computed_uom"/>
+    <separator string="Supply Info" colspan="4" id="supply"/>
+    <label name="party"/>
+    <field name="party"/>
+    <newline/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="purchase_date"/>
+    <field name="purchase_date"/>
+    <label name="supply_date"/>
+    <field name="supply_date"/>
+    <label name="purchase"/>
+    <field name="purchase"/>
+    <label name="stock_level"/>
+    <field name="stock_level"/>
+    <label name="origin"/>
+    <field name="origin"/>
+    <label name="state"/>
+    <field name="state"/>
+</form>
