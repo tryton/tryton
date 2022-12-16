@@ -1,0 +1,444 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.complaint.action:"
+msgid "Action \"%s\" must not have result to be deleted."
+msgstr ""
+
+msgctxt "error:sale.complaint:"
+msgid "Complaint \"%s\" must be in draft to be deleted."
+msgstr "Reklamation \"%s\" csak piszkozat státuszban törölhető"
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Műveletek"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Cím"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:sale.complaint,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+msgctxt "field:sale.complaint,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Vevő"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Leírás"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "field:sale.complaint,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Szám"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Származás"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "Származási ID"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Származási modell"
+
+msgctxt "field:sale.complaint,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Hivatkozás"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Státusz"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:sale.complaint,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.complaint,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "Reklamáció"
+
+msgctxt "field:sale.complaint.action,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+msgctxt "field:sale.complaint.action,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:sale.complaint.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Számla pozíció"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:sale.complaint.action,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Eredmény"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Eladási pozíció"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "Egység"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző utáni számjegy"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Darab ár"
+
+msgctxt "field:sale.complaint.action,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.complaint.action,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:sale.complaint.action-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Számla pozíció"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "field:sale.complaint.action-sale.line,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+msgctxt "field:sale.complaint.action-sale.line,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:sale.complaint.action-sale.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Eladási pozíció"
+
+msgctxt "field:sale.complaint.action-sale.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-sale.line,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.complaint.action-sale.line,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:sale.complaint.type,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+msgctxt "field:sale.complaint.type,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:sale.complaint.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Származás"
+
+msgctxt "field:sale.complaint.type,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.complaint.type,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.complaint.type,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Reklamáció számkör"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Reklamáció számkör"
+
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines"
+msgstr "Üresen hagyni a soroknak"
+
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity"
+msgstr "Üresen hagyni az azonos mennyiségnek"
+
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines"
+msgstr "Üresen hagyni a soroknak"
+
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price"
+msgstr "Üresen hagyni az azonos árnak"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Customer Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Types"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Types"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Reklamáció"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Reklamációs művelet"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "Reklamációs művelet- Számla pozíció"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "Reklamációs művelet- Eladási pozíció"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "Reklamáció típusa"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Jóváhagyva"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Megszakítva"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "Piszkozat"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Elutasított"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "Várakozás"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Jóváíró kiállítása"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "Visszavonás kiállítása"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reklamáció"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Kivitelez"
+
+msgctxt "view:sale.complaint:"
+msgid "Approve"
+msgstr "Jóváhagyás"
+
+msgctxt "view:sale.complaint:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "view:sale.complaint:"
+msgid "Draft"
+msgstr "Piszkozat"
+
+msgctxt "view:sale.complaint:"
+msgid "Reject"
+msgstr "Elutasítás"
+
+msgctxt "view:sale.complaint:"
+msgid "Wait"
+msgstr "Várakozás"
