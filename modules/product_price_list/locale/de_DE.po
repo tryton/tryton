@@ -1,0 +1,139 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:"
+msgid "Invalid formula!"
+msgstr "Ungültige Formel!"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:product.price_list,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.price_list,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Zeilen"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.price_list,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.price_list,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.price_list,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.price_list.line,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.price_list.line,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Formel"
+
+msgctxt "field:product.price_list.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Anzahl"
+
+msgctxt "field:product.price_list.line,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.price_list.line,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:product.price_list.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Anzahl Stellen"
+
+msgctxt "field:product.price_list.line,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.price_list.line,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Ein Pythonausdruck, der ausgewertet wird mit:\n"
+"unit_price: originaler unit_price (Preis pro Einheit)"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Preislisten"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Preislisten"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Preisliste Zeile"
+
+msgctxt "view:party.party:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Line"
+msgstr "Preisliste Zeile"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Lines"
+msgstr "Preisliste Zeilen"
+
+msgctxt "view:product.price_list:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "view:product.price_list:"
+msgid "Price List Lines"
+msgstr "Preisliste Zeilen"
+
+msgctxt "view:product.price_list:"
+msgid "Price Lists"
+msgstr "Preislisten"
