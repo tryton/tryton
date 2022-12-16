@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,sendcloud_format:"
+msgid "Format"
+msgstr "Format"
+
+msgctxt "field:carrier.credential.sendcloud,addresses:"
+msgid "Addresses"
+msgstr "Adreces"
+
+msgctxt "field:carrier.credential.sendcloud,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier.credential.sendcloud,public_key:"
+msgid "Public Key"
+msgstr "Clau pública"
+
+msgctxt "field:carrier.credential.sendcloud,secret_key:"
+msgid "Secret Key"
+msgstr "Clau secreta"
+
+msgctxt "field:carrier.credential.sendcloud,shipping_methods:"
+msgid "Methods"
+msgstr "Mètodes"
+
+msgctxt "field:carrier.sendcloud.address,address:"
+msgid "Address"
+msgstr "Adreça"
+
+msgctxt "field:carrier.sendcloud.address,sendcloud:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "field:carrier.sendcloud.address,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:carrier.sendcloud.shipping_method,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.sendcloud.shipping_method,sendcloud:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "field:carrier.sendcloud.shipping_method,shipping_method:"
+msgid "Shipping Method"
+msgstr "Mètode d'enviament"
+
+msgctxt "field:stock.package,sendcloud_shipping_id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package,sendcloud_shipping_tracking_url:"
+msgid "Tracking URL"
+msgstr "URL de seguiment"
+
+msgctxt "help:carrier.sendcloud.address,address:"
+msgid "Leave empty for the Sendcloud default."
+msgstr "Deixar buit per al valor per defecte de Sendcloud."
+
+msgctxt "model:carrier.credential.sendcloud,name:"
+msgid "Sendcloud Credential"
+msgstr "Credencial Sendcloud"
+
+msgctxt "model:carrier.sendcloud.address,name:"
+msgid "Sendcloud Address"
+msgstr "Adreça Sendcloud"
+
+msgctxt "model:carrier.sendcloud.shipping_method,name:"
+msgid "Sendcloud Shipping Method"
+msgstr "Mètode d'enviament Sendcloud"
+
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Sendcloud Shipping for Packages"
+msgstr "Crear enviament Sendcloud pels paquets"
+
+msgctxt "model:ir.action,name:act_credential_form"
+msgid "Sendcloud Credentials"
+msgstr "Credencials Sendcloud"
+
+msgctxt "model:ir.message,text:msg_sendcloud_webserver_error"
+msgid ""
+"Sendcloud webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"La trucada del servei web Sendcloud ha fallat amb el següent missatge d'error:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create a shipping label for shipment \"%(shipment)s\" because it "
+"already has a reference number."
+msgstr ""
+"No podeu crear una etiqueta d'enviament per l'albarà \"%(shipment)s\" perquè"
+" ja té un número de referència."
+
+msgctxt "model:ir.ui.menu,name:menu_credential_form"
+msgid "Sendcloud Credentials"
+msgstr "Credencials Sendcloud"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Bottom left"
+msgstr "A4 - A baix a l'esquerra"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Bottom right"
+msgstr "A4 - A baix a la dreta"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Top left"
+msgstr "A4 - A dalt a l'esquerra"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Top right"
+msgstr "A4 - A dalt a la dreta"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A6 - Full page"
+msgstr "A6 - Pàgina completa"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "view:carrier:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
