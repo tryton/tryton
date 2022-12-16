@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Requests" col="6" cursor="act_to">
+    <label name="act_from"/>
+    <field name="act_from"/>
+    <label name="act_to"/>
+    <field name="act_to"/>
+    <group colspan="2" col="4" id="active_ref">
+        <label name="active"/>
+        <field name="active"/>
+        <label name="references"/>
+        <field name="number_references"/>
+    </group>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="priority"/>
+    <field name="priority"/>
+    <notebook colspan="6">
+        <page string="Request" id="request">
+            <separator name="body" colspan="4"/>
+            <field name="body" colspan="4" widget="richtext"/>
+            <field name="history" colspan="4"/>
+            <label name="trigger_date"/>
+            <field name="trigger_date"/>
+            <group col="2" colspan="2" id="buttons">
+                <button name="send" string="Send"/>
+                <button name="reply" string="Reply"/>
+            </group>
+            <label name="state"/>
+            <field name="state"/>
+            <group col="3" colspan="2" id="button">
+                <button name="close" string="Close"/>
+            </group>
+        </page>
+        <page string="References" col="1" id="references">
+            <field name="references"/>
+        </page>
+    </notebook>
+</form>
