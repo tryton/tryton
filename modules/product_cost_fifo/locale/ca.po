@@ -1,0 +1,38 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "Quantitat FIFO"
+
+msgctxt "model:ir.message,text:msg_move_delete_fifo"
+msgid ""
+"You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
+"calculation."
+msgstr ""
+"No podeu eliminar el moviment \"%(move)s\" perquè es fa servir en el càlcul "
+"del cost FIFO."
+
+msgctxt "model:ir.message,text:msg_move_fifo_quantity_greater"
+msgid "The FIFO quantity on move cannot be greater than its quantity."
+msgstr ""
+"La quantitat FIFo del moviment no pot ser més gran que la seva quantitat."
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
+
+msgctxt "error:stock.move:"
+msgid "FIFO quantity can not be greater than quantity."
+msgstr "Quantitat FIFO no pot ser més gran que quantitat."
+
+msgctxt "error:stock.move:"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
+msgstr ""
+"No podeu eliminar el moviment \"%s\" que està sent usat pel preu de cost "
+"FIFO."
