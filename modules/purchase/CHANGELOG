@@ -1,0 +1,112 @@
+Version 4.4.8 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.7 - 2018-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.6 - 2018-05-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.5 - 2018-03-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.4 - 2017-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.3 - 2017-11-07
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.2 - 2017-09-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.1 - 2017-06-06
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Add purchase price on product view from line
+* Allow to edit delivery date on purchase line
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Manage readonly state on Purchase Line
+* Allow purchase without payment term
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Purchase reference into number and supplier reference into reference
+* Add return location on warehouse
+* Add Python3 support
+* Replace Delivery Time by Lead Time on Product Template
+* New workflow do() for purchase
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Delivery Date of Line shows effective date if possible
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Support mixed invoice type by line in invoiced quantity calculation
+* Use TaxableMixin
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Confirmed state split into Confirmed and Processing
+* Use MatchMixin for ProductSupplier
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Add link between stock moves and invoice lines
+* Add warning for supplier moves without origin
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Replace reference copying by relate
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Use origin Reference on Invoice Line and Stock Move
+* Allow no delivery time on product supplier
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Manage negative amount in purchase
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Add cache on amount fields in readonly states
+* Use the most used currency by party on the 10 last records as default value
+  for purchase and product_supplier
+* Add currency on product_supplier
+* Add a Function field delivery_date to purchase line
+* Purchase date is required only at confirmation
+* compute_supply_date returns only one date
+* warehouse is not always required
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Use model singleton to define which purchase sequence to use
+* Add default search value on purchase
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Migrate packing* objects and tables to shipment*
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Use the purchase uom to compute purchase price from product supplier
+* Add buttons to handle invoice and packing exceptions
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
