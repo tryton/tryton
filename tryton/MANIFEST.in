@@ -1,0 +1,22 @@
+include LICENSE
+include COPYRIGHT
+include README
+include INSTALL
+include TODO
+include CHANGELOG
+include setup.nsi
+include setup-single.nsi
+include setup-bundle.sh
+include tryton.desktop
+include *.nsh
+include Microsoft.VC90.CRT.manifest
+include doc/*
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot
+include share/pixmaps/tryton/LICENSE
+include share/pixmaps/tryton/*.png
+include share/pixmaps/tryton/*.svg
+include share/pixmaps/tryton/*.ico
+include share/pixmaps/tryton/*.icns
+recursive-include share/locale *.mo
