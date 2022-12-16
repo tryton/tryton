@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="payment_method"/>
+    <field name="payment_method" widget="selection"/>
+    <label name="date"/>
+    <field name="date"/>
+    <field name="currency_digits" colspan="4" invisible="1"/>
+</form>
