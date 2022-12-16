@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.statement.origin.information" id="information_message_identification">
+            <field name="name">camt_message_identification</field>
+            <field name="string">Message Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_account_service_reference">
+            <field name="name">camt_account_service_reference</field>
+            <field name="string">Account Service Reference</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_payment_information_identification">
+            <field name="name">camt_payment_information_identification</field>
+            <field name="string">Payment Information Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_instruction_identification">
+            <field name="name">camt_instruction_identification</field>
+            <field name="string">Instruction Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_end_to_end_identification">
+            <field name="name">camt_end_to_end_identification</field>
+            <field name="string">End to End Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_transaction_identification">
+            <field name="name">camt_transaction_identification</field>
+            <field name="string">Transaction Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_mandate_identification">
+            <field name="name">camt_mandate_identification</field>
+            <field name="string">Mandate Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_cheque_number">
+            <field name="name">camt_cheque_number</field>
+            <field name="string">Cheque Number</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_clearing_system_reference">
+            <field name="name">camt_clearing_system_reference</field>
+            <field name="string">Clearing System Reference</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_account_owner_transaction_identification">
+            <field name="name">camt_account_owner_transaction_identification</field>
+            <field name="string">Account Owner Transaction Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_account_servicer_transaction_identification">
+            <field name="name">camt_account_servicer_transaction_identification</field>
+            <field name="string">Account Servicer Transaction Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_market_infrastructure_transaction_identification">
+            <field name="name">camt_market_infrastructure_transaction_identification</field>
+            <field name="string">Market Infrastructure Transaction Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_processing_identification">
+            <field name="name">camt_processing_identification</field>
+            <field name="string">Processing Identification</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_remittance_information">
+            <field name="name">camt_remittance_information</field>
+            <field name="string">Remittance Information</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_additional_transaction_information">
+            <field name="name">camt_additional_transaction_information</field>
+            <field name="string">Additional Transaction Information</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_debtor_name">
+            <field name="name">camt_debtor_name</field>
+            <field name="string">Debtor Name</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_ultimate_debtor_name">
+            <field name="name">camt_ultimate_debtor_name</field>
+            <field name="string">Ultimate Debtor Name</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_debtor_iban">
+            <field name="name">camt_debtor_iban</field>
+            <field name="string">Debtor IBAN</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_creditor_name">
+            <field name="name">camt_creditor_name</field>
+            <field name="string">Creditor Name</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_ultimate_creditor_name">
+            <field name="name">camt_ultimate_creditor_name</field>
+            <field name="string">Ultimate Creditor Name</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_creditor_iban">
+            <field name="name">camt_creditor_iban</field>
+            <field name="string">Creditor IBAN</field>
+            <field name="type_">char</field>
+        </record>
+    </data>
+</tryton>

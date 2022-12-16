@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator string="Product Recommendation" id="product_recommendation" colspan="4"/>
+        <label name="product_recommendation_method"/>
+        <field name="product_recommendation_method"/>
+        <label name="product_recommendation_size"/>
+        <field name="product_recommendation_size"/>
+    </xpath>
+</data>
