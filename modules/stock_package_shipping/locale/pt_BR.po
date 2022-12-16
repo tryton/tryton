@@ -1,0 +1,93 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.out:"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set"
+msgstr "A remessa \"%(shipment)s\"  não tem uma transportadora definida"
+
+msgctxt "error:stock.shipment.out:"
+msgid ""
+"The shipment \"%(shipment)s\" must be packed before creating the shipping "
+"labels"
+msgstr ""
+"A remessa \"%(shipment)s\" deve ser empacotada antes da criação das "
+"etiquetas da remessa"
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Serviço de Envio"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "Etiquetas de envio"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Referência de Envio"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Dígitos decimais da altura"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Unidade da Altura"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Comprimento"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "Dígitos decimais do comprimento"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Unidade do Comprimento"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Largura"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "Dígitos decimais da largura"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Unidade da Largura"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Descrição do Envio"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Create Shipping"
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
+msgid "Shipping"
+msgstr "Shipping"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid ""
+msgstr ""
+
+msgctxt "view:stock.package.type:"
+msgid "Dimensions"
+msgstr "Dimensões"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Create Shipping for Packages"
+msgstr "Criar Envio para Pacotes"

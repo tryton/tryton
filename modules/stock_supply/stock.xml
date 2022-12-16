@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="act_stock_supply">
+            <field name="name">Supply Stock</field>
+            <field name="wiz_name">stock.supply</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_stock_supply_group_stock_admin">
+            <field name="action" ref="act_stock_supply"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <menuitem parent="menu_order_point_form" sequence="10"
+            action="act_stock_supply" id="menu_stock_supply"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_stock_supply_group_stock_admin">
+            <field name="menu" ref="menu_stock_supply"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="supply_start_view_form">
+            <field name="model">stock.supply.start</field>
+            <field name="type">form</field>
+            <field name="name">supply_start_form</field>
+        </record>
+    </data>
+</tryton>
