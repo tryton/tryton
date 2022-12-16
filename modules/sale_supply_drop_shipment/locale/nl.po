@@ -1,0 +1,275 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Opslaglocatie Directe levering Inkoop"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Opslaglocatie Directe levering Inkoop"
+
+msgctxt "field:purchase.product_supplier,drop_shipment:"
+msgid "Drop Shipment"
+msgstr "Directe levering"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "Directe levering beschikbaar"
+
+msgctxt "field:purchase.purchase,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:purchase.purchase,delivery_address:"
+msgid "Delivery Address"
+msgstr "Leveringsadres"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "Directe leveringslocatie (drop location)"
+
+msgctxt "field:purchase.purchase,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "field:purchase.request,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:purchase.request,delivery_address:"
+msgid "Delivery Address"
+msgstr "Leveringsadres"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Opslaglocatie directe verkoop"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Opslaglocatie directe verkoop"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "Directe leveringslocatie (drop location)"
+
+msgctxt "field:sale.sale,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Directe leveringsvolgorde"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Directe leveringsvolgorde"
+
+msgctxt "field:stock.move,customer_drop:"
+msgid "Drop Customer"
+msgstr "spoed levering klant"
+
+msgctxt "field:stock.shipment.drop,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.shipment.drop,contact_address:"
+msgid "Contact Address"
+msgstr "contact adres"
+
+msgctxt "field:stock.shipment.drop,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "klant boekingen/bewegingen"
+
+msgctxt "field:stock.shipment.drop,delivery_address:"
+msgid "Delivery Address"
+msgstr "Leveringsadres"
+
+msgctxt "field:stock.shipment.drop,effective_date:"
+msgid "Effective Date"
+msgstr "Effectieve datum"
+
+msgctxt "field:stock.shipment.drop,moves:"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:stock.shipment.drop,planned_date:"
+msgid "Planned Date"
+msgstr "Geplande datum"
+
+msgctxt "field:stock.shipment.drop,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:stock.shipment.drop,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:stock.shipment.drop,supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "leveranciers boekingen/bewegingen"
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr "Wanneer de voorraad daadwerkelijk werd verzonden."
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Aankopen"
+
+msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "verzonden"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
+msgid "Waiting"
+msgstr "In afwachting"
+
+msgctxt ""
+"model:ir.message,text:msg_delivery_address_required_quotation_purchase"
+msgid ""
+"To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
+" address."
+msgstr ""
+"Om een offerte te krijgen voor aankoop \"% (purchase) s\" moet u een "
+"afleveradres opgeven."
+
+msgctxt "model:ir.message,text:msg_drop_shipment_delete_cancel"
+msgid "To delete drop shipment \"%(shipment)s\" you must cancel it."
+msgstr ""
+"Om spoed-verzending \"%(shipment)s\" te verwijderen, moet u deze annuleren."
+
+msgctxt "model:ir.message,text:msg_reset_move"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale or a purchase."
+msgstr ""
+"U kunt de beweging \"%(move)s\" niet terugzetten naar concept omdat deze is "
+"gegenereerd door een verkoop of een aankoop."
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr "Weet u zeker dat u de zending wilt voltooien?"
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Klaar"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "verzenden"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "wachten"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Directe levering"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Directe levering"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Directe leveringen"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "Instellingen Aankoop Opslag Locatie Directe levering"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "Instellingen Verkoop Opslag Directe levering"
+
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Directe levering"
+
+msgctxt "model:stock.shipment.drop,name:"
+msgid "Drop Shipment"
+msgstr "Directe leveringen"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Done"
+msgstr "Klaar"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "verzonden"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Waiting"
+msgstr "In afwachting"
