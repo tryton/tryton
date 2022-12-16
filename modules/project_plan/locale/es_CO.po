@@ -1,0 +1,187 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Empleado"
+
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Porcentaje"
+
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Tarea"
+
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Predecesor"
+
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Sucesor"
+
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Fin Actual"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Tiempo del Actual Fin"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Comienzo Actual"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Tiempo del Actual Comienzo"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Cuotas"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Retardo de Escalamiento"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Final de la Restricción"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Tiempo Final de la Restricción"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Comienzo de la Restricción"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Tiempo del Comienzo de la Restricción"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Duración"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Finalizar Temprano"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Tiempo de Finalización Temprana"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Iniciar Temprano"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Tiempo de Inicio Temprano"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Final Tardío"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Tiempo del Tardío Final"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Comienzo Tardío"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Tiempo del Tardío Comienzo"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Retardo de Nivel"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Predecesores"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Sucesores"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Niveles de Tareas"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Cuota"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Predecesor - Sucesor"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Cuota"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Cuotas"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Cuotas"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Plan"
