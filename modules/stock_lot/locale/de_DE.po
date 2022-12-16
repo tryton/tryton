@@ -1,0 +1,167 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"!"
+msgstr "Chargen-Nummer ist erforderlich für Lagerbewegung von Artikel \"%s\"!"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Charge erforderlich für Lagerort"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Vorlage für Steuerkonto"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Länderkürzel"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Typ Lagerort, für den eine Chargen-Nummer erforderlich ist"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Vorlage - Lager Charge Typ"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Lager Charge"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Lager Charge Typ"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Kunde"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Inventurdifferenz"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Lager"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "view:product.product:"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr "Chargen"
