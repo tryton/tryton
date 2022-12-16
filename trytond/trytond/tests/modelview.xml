@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<tryton>
+    <record model="ir.ui.view" id="test_modelview_empty_page_view_form">
+        <field name="model">test.modelview.empty_page</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <notebook>
+                    <page id="empty"></page>
+                    <page id="non-empty">
+                        <label id="foo"/>
+                    </page>
+                </notebook>
+            </form>
+            ]]>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="test_modelview_depends_depends_form">
+        <field name="model">test.modelview.depends_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <field name="foo"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="test_modelview_button_view_form">
+        <field name="model">test.modelview.button_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <label name="value"/>
+                <field name="value"/>
+                <button name="test"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+
+    <record model="ir.action.url" id="test_modelview_button_action">
+        <field name="name">Test Button Action</field>
+        <field name="url">http://www.example.com/</field>
+    </record>
+
+    <record model="ir.ui.view" id="test_modelview_link">
+        <field name="model">test.modelview.link</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <link name="tests.test_modelview_link_action"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+
+    <record model="ir.action.act_window" id="test_modelview_link_action">
+        <field name="name">Link</field>
+        <field name="res_model">test.modelview.link.target</field>
+    </record>
+
+    <record model="ir.ui.view" id="test_modelview_view_attributes">
+        <field name="model">test.modelview.view_attributes</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <label name="foo"/>
+                <field name="foo"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="test_modelview_view_attributes_depends">
+        <field name="model">test.modelview.view_attributes_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <label name="foo"/>
+                <field name="foo"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="test_modelview_states_depends_tree">
+        <field name="model">test.modelview.states_depends</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <tree>
+                <field name="foo"/>
+            </tree>
+            ]]>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="test_modelview_states_depends_form">
+        <field name="model">test.modelview.states_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <label name="foo"/>
+                <field name="foo"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+</tryton>

@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.rule,account:"
+msgid "Substitution Account"
+msgstr "Cuenta de sustitución"
+
+msgctxt "field:account.account.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.account.rule,end_date:"
+msgid "Ending Date"
+msgstr "Fecha final"
+
+msgctxt "field:account.account.rule,origin_account:"
+msgid "Original Account"
+msgstr "Cuenta original"
+
+msgctxt "field:account.account.rule,return_:"
+msgid "Return"
+msgstr "Devolución"
+
+msgctxt "field:account.account.rule,start_date:"
+msgid "Starting Date"
+msgstr "Fecha inicial"
+
+msgctxt "field:account.account.rule,tax:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "field:account.account.rule,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:account.account.rule,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "help:account.account.rule,return_:"
+msgid "Check to limit to return operation."
+msgstr "Marcar para limitar la operaciones de devolucion."
+
+msgctxt "model:account.account.rule,name:"
+msgid "Account Rule"
+msgstr "Regla de cuenta"
+
+msgctxt "model:ir.action,name:act_account_rule_form"
+msgid "Account Rules"
+msgstr "Reglas de contabilización"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
+msgid "Account Rules"
+msgstr "Reglas de contabilización"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Expense"
+msgstr "Gastos"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Payable"
+msgstr "A pagar"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Receivable"
+msgstr "A cobrar"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Revenue"
+msgstr "Ingresos"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Stock"
+msgstr "Existencias"
