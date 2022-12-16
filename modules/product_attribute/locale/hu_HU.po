@@ -1,0 +1,244 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "Számjegyek"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Kiválasztás"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "Kijelölés JSON"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Válogatott kiválasztás"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Rész"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "Karakterlánc"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Tulajdonságok"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Megad"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Tulajdonságok"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Attribute Sets"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Tulajdonságok"
+
+#, fuzzy
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Attribute Sets"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr ""
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr ""
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Attributes"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Attributes"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Termékek jellemzői"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Termék jellemzői"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Termék tulajdonság"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "Karakter"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "Dátum és idő"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "Egész szám"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "Numerikus"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Kiválasztás"
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Tulajdonságok"
+
+msgctxt "view:product.attribute:"
+msgid "Attribute"
+msgstr "Tulajdonságok"
+
+msgctxt "view:product.attribute:"
+msgid "Attributes"
+msgstr "Tulajdonságok"
