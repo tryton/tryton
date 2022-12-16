@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree tree_state="1">
+    <field name="current_name" string="Name" expand="2"/>
+    <field name="total_amount"/>
+    <field name="actual_amount"/>
+    <field name="percentage" factor="100">
+        <suffix name="percentage" string="%"/>
+    </field>
+</tree>

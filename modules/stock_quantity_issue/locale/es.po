@@ -1,0 +1,183 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.quantity.issue,best_planned_date:"
+msgid "Best Planned Date"
+msgstr "Mejor fecha planificada"
+
+msgctxt "field:stock.quantity.issue,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.quantity.issue,issue_products:"
+msgid "Issue Products"
+msgstr "Productos con incidencias"
+
+msgctxt "field:stock.quantity.issue,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:stock.quantity.issue,planned_date:"
+msgid "Planned Date"
+msgstr "Fecha estimada"
+
+msgctxt "field:stock.quantity.issue,priority:"
+msgid "Priority"
+msgstr "Prioridad"
+
+msgctxt "field:stock.quantity.issue,processed_by:"
+msgid "Processed by"
+msgstr "Procesado por"
+
+msgctxt "field:stock.quantity.issue,products:"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "field:stock.quantity.issue,solved_by:"
+msgid "Solved by"
+msgstr "Resuelto por"
+
+msgctxt "field:stock.quantity.issue,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:stock.quantity.issue,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:stock.quantity.issue.generate.start,warehouses:"
+msgid "Warehouses"
+msgstr "Almacenes"
+
+msgctxt "field:stock.quantity.issue.product,best_planned_date:"
+msgid "Best Planned Date"
+msgstr "Mejor fecha planificada"
+
+msgctxt "field:stock.quantity.issue.product,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Cantidad prevista"
+
+msgctxt "field:stock.quantity.issue.product,issue:"
+msgid "Issue"
+msgstr "Incidencia"
+
+msgctxt "field:stock.quantity.issue.product,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "help:stock.quantity.issue.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Si está vacío se utilizan todos los almacenes."
+
+msgctxt "help:stock.quantity.issue.product,forecast_quantity:"
+msgid "The amount of stock expected to be in the warehouse."
+msgstr "La cantidad de stock que se espera que haya en el almacén."
+
+msgctxt "model:ir.action,name:act_quantity_issue_form"
+msgid "Quantity Issues"
+msgstr "Incidencias de abastecimiento"
+
+msgctxt "model:ir.action,name:act_quantity_issue_generate"
+msgid "Generate Stock Quantity Issues"
+msgstr "Generar incidencias de abastecimiento"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_issue_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_issue_form_domain_open"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_issue_form_domain_processing"
+msgid "Processing"
+msgstr "En proceso"
+
+msgctxt "model:ir.message,text:msg_issue_solve_product_forecast_quantity"
+msgid ""
+"You cannot solve the stock quantity issue \"%(issue)s\" because product "
+"\"%(product)s\" has still a negative forecast."
+msgstr ""
+"No se puede resolver la incidencia de abastecimiento \"%(issue)s\" porqué el"
+" producto \"%(product)s\" todavía tiene una previsión negativa."
+
+msgctxt ""
+"model:ir.model.button,string:quantity_issue_apply_best_planned_date_button"
+msgid "Apply Best Planned Date"
+msgstr "Aplicar la mejor fecha planificada"
+
+msgctxt "model:ir.model.button,string:quantity_issue_open_button"
+msgid "Reset to Open"
+msgstr "Restablecer a Abierto"
+
+msgctxt "model:ir.model.button,string:quantity_issue_process_button"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "model:ir.model.button,string:quantity_issue_solve_button"
+msgid "Solve"
+msgstr "Resolver"
+
+msgctxt "model:ir.rule.group,name:rule_group_quantity_issue_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.ui.menu,name:menu_quantity_issue_form"
+msgid "Quantity Issues"
+msgstr "Incidencias de abastecimiento"
+
+msgctxt "model:ir.ui.menu,name:menu_quantity_issue_generate"
+msgid "Generate Stock Quantity Issues"
+msgstr "Generar incidencias de abastecimiento"
+
+msgctxt "model:stock.quantity.issue,name:"
+msgid "Stock Quantity Issue"
+msgstr "Incidencias de abastecimiento"
+
+msgctxt "model:stock.quantity.issue.generate.start,name:"
+msgid "Stock Quantity Issue Generate"
+msgstr "Generar incidencias de abastecimiento"
+
+msgctxt "model:stock.quantity.issue.product,name:"
+msgid "Stock Quantity Issue Product"
+msgstr "Productos con oncidencias de abastecimiento"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Stock Quantity Issues"
+msgstr "Generar incidencias de abastecimiento"
+
+msgctxt "selection:stock.quantity.issue,state:"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "selection:stock.quantity.issue,state:"
+msgid "Processing"
+msgstr "En proceso"
+
+msgctxt "selection:stock.quantity.issue,state:"
+msgid "Solved"
+msgstr "Resuelto"
+
+msgctxt "view:stock.quantity.issue.generate.start:"
+msgid "Generate Stock Quantity Issues?"
+msgstr "¿Generar incidencias de abastecimiento?"
+
+msgctxt "view:stock.quantity.issue:"
+msgid "Apply"
+msgstr "Aplicar"
+
+msgctxt "view:stock.quantity.issue:"
+msgid "Other Info"
+msgstr "Información adicional"
+
+msgctxt "wizard_button:stock.quantity.issue.generate,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.quantity.issue.generate,start,generate:"
+msgid "Generate"
+msgstr "Generar"

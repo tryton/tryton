@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="carrier.carrier_view_form"/>
+            <field name="name">carrier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="weight_price_list_view_form">
+            <field name="model">carrier.weight_price_list</field>
+            <field name="type">form</field>
+            <field name="name">weight_price_list_form</field>
+        </record>
+        <record model="ir.ui.view" id="weight_price_list_view_tree">
+            <field name="model">carrier.weight_price_list</field>
+            <field name="type">tree</field>
+            <field name="name">weight_price_list_tree</field>
+        </record>
+    </data>
+</tryton>
