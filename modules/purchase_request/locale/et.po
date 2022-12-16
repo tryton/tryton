@@ -1,0 +1,251 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Päringud"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "Arvutatu kogus"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "Arvutatud ühik"
+
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Vaikimisi mõõtühiku numbriväärtus"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Vaikimisi mõõtühiku numbriväärtus"
+
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+msgctxt "field:purchase.request,exception_ignored:"
+msgid "Ignored Exception"
+msgstr ""
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "Ost"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "Parim ostu kuupäev"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "Ostu rida"
+
+#, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Hangitud"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr ""
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "Eeldatav tarne kuupäev"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "Ühik"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "Mõõtühiku numbriväärtus"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Ladu on kohustuslik"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "Hankija"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Ostupäring"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "Loo ost"
+
+msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
+msgid "Handle Purchase Cancellation"
+msgstr "Käitle ostu tühistamist"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
+msgid "Exception"
+msgstr "Erand"
+
+msgctxt "model:ir.message,text:msg_purchase_delete_request"
+msgid ""
+"You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
+" requests."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
+msgid ""
+"Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
+"different to warehouse \"%(request_warehouse)s\" on linked purchase request "
+"\"%(request)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_request_delete_purchased"
+msgid ""
+"You cannot delete purchase request \"%(request)s\" because it is purchased."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_request_no_create"
+msgid "Purchase requests can only be created by the system."
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Halda hanke tühistamist"
+
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Hankesoov"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "Hankesoov"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr ""
+
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
+msgid "Handle Purchase Cancellation Exception - Start"
+msgstr ""
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "Hankesoov"
+
+#, fuzzy
+msgctxt "selection:purchase.request,state:"
+msgid "Cancelled"
+msgstr "Tühista"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Exception"
+msgstr "Erand"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "Hangitud"
+
+msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
+msgid "Do you want to cancel the request or to reset it to draft?"
+msgstr ""
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "Tooteinfo"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "Hanke info"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "Jätka"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
+msgid "Cancel Request"
+msgstr "Tühista päring"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
+msgid "Reset to draft"
+msgstr "Muuda mustaniks"
