@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_stock_admin">
+            <field name="name">Stock Administration</field>
+        </record>
+        <record model="res.group" id="group_stock">
+            <field name="name">Stock</field>
+        </record>
+        <record model="res.group" id="group_stock_force_assignment">
+            <field name="name">Stock Force Assignment</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_force_assignment">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_force_assignment">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.ui.icon" id="inventory_icon">
+            <field name="name">tryton-inventory</field>
+            <field name="path">icons/tryton-inventory.svg</field>
+        </record>
+        <menuitem name="Inventory &amp; Stock" sequence="3" id="menu_stock"
+            icon="tryton-inventory"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_stock_group_stock">
+            <field name="menu" ref="menu_stock"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <menuitem name="Configuration" parent="menu_stock"
+            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_stock_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <menuitem name="Reporting" parent="menu_stock"
+            id="menu_reporting" sequence="100" active="0"/>
+
+    </data>
+</tryton>
